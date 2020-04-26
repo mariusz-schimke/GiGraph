@@ -16,7 +16,7 @@ namespace Dotless.Graphs
 
         public string ToString(GeneratorOptions options)
         {
-            return GraphGenerator.CreateDefault(options).Generate(this);
+            return GraphGenerator.CreateDefault().Generate(this, options);
         }
 
         public override string ToString()

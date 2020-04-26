@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dotless.Core;
+using System;
 using System.Collections.Generic;
 
 namespace Dotless.Generators
@@ -13,30 +14,37 @@ namespace Dotless.Generators
         }
 
         public void Add<T>(IEntityGenerator<T> generator)
+            where T : IEntity
         {
             _generators.Add(typeof(T), generator);
         }
 
         public void Replace<T>(IEntityGenerator<T> generator)
+            where T : IEntity
         {
             _generators[typeof(T)] = generator;
         }
 
-        public IEntityGenerator GetForType(Type entityType)
+        public IEntityGenerator GetForTypeOrForAnyBaseType(IEntity entity)
+        {
+            return GetForTypeOrForAnyBaseType(entity.GetType());
+        }
+
+        public IEntityGenerator GetForTypeOrForAnyBaseType(Type entityType)
         {
             var seek = entityType;
 
-            while (seek is { })
+            do
             {
-                if (_generators.ContainsKey(entityType))
+                if (_generators.ContainsKey(seek))
                 {
                     return _generators[seek];
                 }
 
                 seek = seek.BaseType;
-            }
+            } while (seek is { });
 
-            throw new NotSupportedException($"No entity generator has been found for type {entityType.FullName} and any of its base types.");
+            throw new NotSupportedException($"No entity generator has been found for the type {entityType.FullName} and any of its base types.");
         }
     }
 }

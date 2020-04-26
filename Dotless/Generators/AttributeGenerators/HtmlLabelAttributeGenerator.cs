@@ -1,6 +1,6 @@
 ﻿using Dotless.Attributes;
 
-namespace Dotless.Generators
+namespace Dotless.Generators.AttributeGenerators
 {
     public class HtmlLabelAttributeGenerator : TextualAttributeGenerator<HtmlLabel>
     {

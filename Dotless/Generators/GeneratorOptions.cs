@@ -28,7 +28,7 @@ namespace Dotless.Generators
             LineBreak = lineBreak;
         }
 
-        public GeneratorOptions IncreaseBaseIndentation()
+        public GeneratorOptions IncreaseIndentation()
         {
             return new GeneratorOptions(SingleLine, Indent, IndentChar, Indentation, BaseIndentation + Indentation, TokenSpacing, LineBreak);
         }

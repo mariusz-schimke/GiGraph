@@ -1,91 +1,122 @@
-﻿using Dotless.Generators.Extensions;
+﻿using Dotless.Core;
+using Dotless.Generators.AttributeGenerators;
+using Dotless.Generators.Extensions;
+using Dotless.Generators.NodeGenerators;
+using Dotless.GraphElements;
 using Dotless.Graphs;
 using Dotless.TextEscaping;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Dotless.Generators
 {
-    public class GraphGenerator
+    public class GraphGenerator : IEntityGenerator<Graph>
     {
-        public GeneratorOptions Options { get; }
+        protected readonly EntityGeneratorCollection _entityGenerators;
 
-        public virtual EntityGeneratorCollection EntityGenerators { get; }
-
-        public GraphGenerator(EntityGeneratorCollection generators)
-            : this(generators, new GeneratorOptions())
+        public GraphGenerator(EntityGeneratorCollection entityGenerators)
         {
-        }
-
-        public GraphGenerator(EntityGeneratorCollection generators, GeneratorOptions generatorOptions)
-        {
-            EntityGenerators = generators;
-            Options = generatorOptions;
+            _entityGenerators = entityGenerators;
         }
 
         public virtual string Generate(Graph graph)
         {
+            return Generate(graph, new GeneratorOptions());
+        }
+
+        public virtual string Generate(Graph graph, GeneratorOptions options)
+        {
             var result = new StringBuilder();
 
-            GraphSpecification(graph, result);
-            BeginningOfGraph(result);
+            GraphSpecification(result, graph, options);
+            GraphBlockStart(result, options);
 
-            GraphAttributes(graph, result);
+            GraphAttributes(result, graph.Attributes, options);
+            GraphNodes(result, graph.Nodes, options);
 
-            EndOfGraph(result);
+            GraphBlockEnd(result, options);
 
             return result.ToString();
         }
 
-
-        protected virtual void GraphSpecification(Graph graph, StringBuilder result)
+        protected virtual void GraphSpecification(StringBuilder result, Graph graph, GeneratorOptions options)
         {
             if (graph.IsStrict)
             {
                 result.Append("strict");
-                result.Append(Options.TSoS());
+                result.Append(options.TSoS());
             }
 
             result.Append(graph.IsDirected ? "digraph" : "graph");
 
             if (graph.Name is { })
             {
-                result.Append(Options.TS());
+                result.Append(options.TS());
                 result.Append($"\"{new QuotationMarkEscaper().Escape(graph.Name)}\"");
-                result.Append(Options.TS());
             }
+
+            result.Append(options.TS());
         }
 
-        protected virtual void BeginningOfGraph(StringBuilder result)
+        protected virtual void GraphAttributes(StringBuilder result, AttributeCollection attributes, GeneratorOptions options)
+        {
+            var generator = _entityGenerators.GetForTypeOrForAnyBaseType(attributes);
+            var generated = generator.Generate(attributes, options);
+
+            result.Append(generated);
+            result.Append(options.LBoS());
+        }
+
+        protected virtual void GraphBlockStart(StringBuilder result, GeneratorOptions options)
         {
             result.Append("{");
-            result.Append(Options.LBoS());
+            result.Append(options.LBoS());
         }
 
-        protected virtual void EndOfGraph(StringBuilder result)
+        protected virtual void GraphBlockEnd(StringBuilder result, GeneratorOptions options)
         {
-            result.Append(Options.LBoS());
+            result.Append(options.LBoS());
             result.Append("}");
         }
 
-        protected virtual void GraphAttributes(Graph graph, StringBuilder result)
+        protected virtual void GraphNodes(StringBuilder result, List<GraphNode> nodes, GeneratorOptions options)
         {
-            foreach (var attribute in graph.Attributes)
+            if (!nodes.Any())
             {
-                var generator = EntityGenerators.GetForType(attribute.GetType());
-                result.Append(generator.Generate(attribute, Options));
+                return;
             }
+
+            foreach (var node in nodes)
+            {
+                var generator = _entityGenerators.GetForTypeOrForAnyBaseType(node);
+                var generated = generator.Generate(node, options);
+
+                result.Append(generated);
+                result.Append(options.LBoS());
+            }
+
+            result.Append(options.LBoS());
         }
 
-        public static GraphGenerator CreateDefault(GeneratorOptions? options = null)
+        public static GraphGenerator CreateDefault()
         {
             var generators = new EntityGeneratorCollection();
+
+            generators.Add(new GraphGenerator(generators));
+            generators.Add(new AttributeCollectionGenerator(generators));
 
             generators.Add(new TextLabelAttributeGenerator());
             generators.Add(new HtmlLabelAttributeGenerator());
 
-            return options is { }
-                ? new GraphGenerator(generators, options)
-                : new GraphGenerator(generators);
+            generators.Add(new NodeGenerator(generators));
+
+            return new GraphGenerator(generators);
+        }
+
+        string? IEntityGenerator.Generate(IEntity graph, GeneratorOptions options)
+        {
+            return Generate((Graph)graph, options);
         }
     }
 }

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Dotless.Core;
 
 namespace Dotless.GraphElements
 {
-    public abstract class GraphElement
+    public abstract class GraphElement : IEntity
     {
-        public IDictionary<Type, Attribute> Attributes { get; } = new Dictionary<Type, Attribute>();
+        public AttributeCollection Attributes { get; } = new AttributeCollection();
     }
 }
