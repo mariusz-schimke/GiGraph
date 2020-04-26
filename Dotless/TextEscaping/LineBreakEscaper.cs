@@ -4,8 +4,8 @@ namespace Dotless.TextEscaping
 {
     public class LineBreakEscaper : ITextEscaper
     {
-        protected static readonly char CR = Convert.ToChar(0xD);
-        protected static readonly char LF = Convert.ToChar(0xA);
+        protected static readonly char CR = '\r';
+        protected static readonly char LF = '\n';
 
         public virtual string? Escape(string? value)
         {

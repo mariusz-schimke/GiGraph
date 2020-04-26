@@ -1,15 +1,15 @@
-﻿namespace Dotless.Generators
+﻿using Dotless.Core;
+
+namespace Dotless.Generators
 {
     public interface IEntityGenerator
     {
-        string? Generate(object entity, GeneratorOptions options);
+        string? Generate(IEntity entity, GeneratorOptions options);
     }
 
     public interface IEntityGenerator<T> : IEntityGenerator
+        where T : IEntity
     {
-        string? Generate(T entity, GeneratorOptions options)
-        {
-            return Generate(entity, options);
-        }
+        string? Generate(T entity, GeneratorOptions options);
     }
 }

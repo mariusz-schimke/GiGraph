@@ -3,7 +3,7 @@ using Dotless.Generators.Extensions;
 using Dotless.TextEscaping;
 using System.Collections.Generic;
 
-namespace Dotless.Generators
+namespace Dotless.Generators.AttributeGenerators
 {
     public abstract class TextualAttributeGenerator<TAttribute> : AttributeGenerator<TAttribute, string>
         where TAttribute : Attribute<string>
@@ -11,7 +11,6 @@ namespace Dotless.Generators
         public List<ITextEscaper> ValueEscapingPipeline { get; } = new List<ITextEscaper>();
 
         protected TextualAttributeGenerator()
-            : base(key: "label")
         {
             PrepareValueEscapingPipeline();
         }
@@ -35,7 +34,7 @@ namespace Dotless.Generators
         public override string? Generate(TAttribute attribute, GeneratorOptions o)
         {
             return attribute.Value is { }
-                ? $@"{Key}{o.TS()}={o.TS()}{QuoteValue(EscapeValue(attribute.Value))}"
+                ? $@"{attribute.Key}{o.TS()}={o.TS()}{QuoteValue(EscapeValue(attribute.Value))}"
                 : null;
         }
     }

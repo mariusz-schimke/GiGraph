@@ -1,7 +1,7 @@
 ﻿using Dotless.Attributes;
 using Dotless.TextEscaping;
 
-namespace Dotless.Generators
+namespace Dotless.Generators.AttributeGenerators
 {
     public class TextLabelAttributeGenerator : TextualAttributeGenerator<TextLabel>
     {

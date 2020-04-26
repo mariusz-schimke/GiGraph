@@ -1,11 +1,15 @@
 ﻿namespace Dotless.Attributes
 {
-    public abstract class Attribute<T>
+    public abstract class Attribute<T> : IAttribute<T>
     {
-        public T Value { get; set; }
+        public virtual string Key { get; }
+        public virtual T Value { get; }
 
-        public Attribute(T value)
+        object? IAttribute.Value => Value!;
+
+        public Attribute(string key, T value)
         {
+            Key = key;
             Value = value;
         }
     }
