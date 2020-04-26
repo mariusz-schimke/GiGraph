@@ -8,10 +8,10 @@ namespace Dotless
     {
         private static void Main(string[] args)
         {
-            DotHtmlLabel htmlLabel = "HTML label";
-            DotLabel label = "Text \" \\label";
+            HtmlLabel htmlLabel = "HTML label";
+            Label label = "Text \" \\label";
 
-            var dotGraph = new DotGraph("test graph", isDirected: true, isStrict: true);
+            var dotGraph = new Graph("test graph", isDirected: true, isStrict: true);
 
             Console.WriteLine($"{label}");
             Console.WriteLine($"{htmlLabel}");

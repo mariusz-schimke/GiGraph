@@ -1,11 +1,16 @@
-﻿using Dotless.TextEscaping;
+﻿using Dotless.Attributes;
+using Dotless.TextEscaping;
 
-namespace Dotless.Attributes
+namespace Dotless.Generators
 {
-    public class DotTextLabel : DotLabel
+    public class TextLabelAttributeGenerator : TextualAttributeGenerator<TextLabel>
     {
-        public DotTextLabel(string value)
-            : base(value)
+        public TextLabelAttributeGenerator()
+            : base()
+        {
+        }
+
+        protected override void PrepareValueEscapingPipeline()
         {
             ValueEscapingPipeline.Add(new HtmlEscaper());
             ValueEscapingPipeline.Add(new BackslashEscaper());
@@ -16,11 +21,6 @@ namespace Dotless.Attributes
         protected override string? QuoteValue(string? value)
         {
             return $"\"{value}\"";
-        }
-
-        public static implicit operator DotTextLabel(string value)
-        {
-            return new DotTextLabel(value);
         }
     }
 }
