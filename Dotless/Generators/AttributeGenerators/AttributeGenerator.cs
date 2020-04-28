@@ -8,11 +8,11 @@ namespace Dotless.Generators.AttributeGenerators
     public abstract class AttributeGenerator<TAttribute, TAttributeValue> : IEntityGenerator<TAttribute>
         where TAttribute : Attribute<TAttributeValue>
     {
-        public abstract ICollection<IToken> Generate(TAttribute attribute, GeneratorOptions options);
+        public abstract ICollection<IToken> Generate(TAttribute attribute);
 
-        ICollection<IToken> IEntityGenerator.Generate(IEntity attribute, GeneratorOptions options)
+        ICollection<IToken> IEntityGenerator.Generate(IEntity attribute)
         {
-            return Generate((TAttribute)attribute, options);
+            return Generate((TAttribute)attribute);
         }
     }
 }

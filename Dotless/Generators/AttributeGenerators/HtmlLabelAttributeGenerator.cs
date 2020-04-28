@@ -1,4 +1,5 @@
 ﻿using Dotless.Attributes;
+using Dotless.DotBuilders;
 using Dotless.DotBuilders.Tokens;
 using System.Collections.Generic;
 
@@ -6,7 +7,7 @@ namespace Dotless.Generators.AttributeGenerators
 {
     public class HtmlLabelAttributeGenerator : TextualAttributeGenerator<HtmlLabel>
     {
-        public override ICollection<IToken> Generate(HtmlLabel attribute, GeneratorOptions options)
+        public override ICollection<IToken> Generate(HtmlLabel attribute)
         {
             var result = new List<IToken>();
 

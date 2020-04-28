@@ -1,4 +1,5 @@
 ﻿using Dotless.Core;
+using Dotless.DotBuilders;
 using Dotless.DotBuilders.Tokens;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace Dotless.Generators.AttributeGenerators
             _entityGenerators = entityGenerators;
         }
 
-        public ICollection<IToken> Generate(AttributeCollection attributes, GeneratorOptions options)
+        public ICollection<IToken> Generate(AttributeCollection attributes)
         {
             var result = new List<IToken>();
 
@@ -24,13 +25,19 @@ namespace Dotless.Generators.AttributeGenerators
             }
 
             result.AttributeBlockStart();
+            var attributeList = attributes.ToList();
 
-            foreach (var attribute in attributes)
+            for (int i = 0; i < attributeList.Count; i++)
             {
-                var generator = _entityGenerators.GetForTypeOrForAnyBaseType(attribute);
-                var tokens = generator.Generate(attribute, options);
+                var generator = _entityGenerators.GetForTypeOrForAnyBaseType(attributeList[i]);
+                var tokens = generator.Generate(attributeList[i]);
 
                 result.AddRange(tokens);
+
+                if (i < attributeList.Count - 1)
+                {
+                    result.AttributeSeparator();
+                }
             }
 
             result.AttributeBlockEnd();
@@ -38,9 +45,9 @@ namespace Dotless.Generators.AttributeGenerators
             return result;
         }
 
-        ICollection<IToken> IEntityGenerator.Generate(IEntity attributes, GeneratorOptions options)
+        ICollection<IToken> IEntityGenerator.Generate(IEntity attributes)
         {
-            return Generate((AttributeCollection)attributes, options);
+            return Generate((AttributeCollection)attributes);
         }
     }
 }

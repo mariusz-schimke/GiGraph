@@ -1,4 +1,5 @@
 ﻿using Dotless.Core;
+using Dotless.DotBuilders;
 using Dotless.DotBuilders.Tokens;
 using Dotless.Generators.AttributeGenerators;
 using Dotless.Generators.NodeGenerators;
@@ -19,22 +20,22 @@ namespace Dotless.Generators
             _entityGenerators = entityGenerators;
         }
 
-        public virtual ICollection<IToken> Generate(Graph graph, GeneratorOptions options)
+        public virtual ICollection<IToken> Generate(Graph graph)
         {
             var result = new List<IToken>();
 
-            GraphSpecification(result, graph, options);
+            GraphSpecification(result, graph);
             result.GraphBlockStart();
 
-            GraphAttributes(result, graph.Attributes, options);
-            GraphNodes(result, graph.Nodes, options);
+            GraphAttributes(result, graph.Attributes);
+            GraphNodes(result, graph.Nodes);
 
             result.GraphBlockEnd();
 
             return result;
         }
 
-        protected virtual void GraphSpecification(List<IToken> result, Graph graph, GeneratorOptions options)
+        protected virtual void GraphSpecification(List<IToken> result, Graph graph)
         {
             if (graph.IsStrict)
             {
@@ -49,14 +50,14 @@ namespace Dotless.Generators
             }
         }
 
-        protected virtual void GraphAttributes(List<IToken> result, AttributeCollection attributes, GeneratorOptions options)
+        protected virtual void GraphAttributes(List<IToken> result, AttributeCollection attributes)
         {
             var attributeListGenerator = _entityGenerators.GetForTypeOrForAnyBaseType(attributes);
-            var tokens = attributeListGenerator.Generate(attributes, options);
+            var tokens = attributeListGenerator.Generate(attributes);
             result.AddRange(tokens);
         }
 
-        protected virtual void GraphNodes(List<IToken> result, List<GraphNode> nodes, GeneratorOptions options)
+        protected virtual void GraphNodes(List<IToken> result, List<GraphNode> nodes)
         {
             if (!nodes.Any())
             {
@@ -65,8 +66,7 @@ namespace Dotless.Generators
 
             foreach (var node in nodes)
             {
-                var tokens = _entityGenerators.GetForTypeOrForAnyBaseType(node)
-                    .Generate(node, options);
+                var tokens = _entityGenerators.GetForTypeOrForAnyBaseType(node).Generate(node);
 
                 result.AddRange(tokens);
                 result.StatementSeparator();
@@ -88,9 +88,9 @@ namespace Dotless.Generators
             return new GraphGenerator(generators);
         }
 
-        ICollection<IToken> IEntityGenerator.Generate(IEntity graph, GeneratorOptions options)
+        ICollection<IToken> IEntityGenerator.Generate(IEntity graph)
         {
-            return Generate((Graph)graph, options);
+            return Generate((Graph)graph);
         }
     }
 }
