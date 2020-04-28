@@ -36,38 +36,53 @@ namespace Dotless.DotBuilders
 
         protected virtual void HandleTokenPair(StringBuilder sb, TokenWriterOptions o, IToken curr, IToken? next, ref int level)
         {
-            sb.Append(curr.ToString());
-
-            switch (curr)
+            switch ((curr, next))
             {
-                case Keyword k1 when next is Keyword:
-                case Keyword k2 when next is Identifier:
+                case (Keyword _, Keyword _): // strict graph
+                case (Keyword _, Identifier _): // graph name
+                case (Keyword _, QuoteStart _): // graph "name"
+                    sb.Append(curr.ToString());
                     sb.Append(o.MandatoryTokenSpace());
                     break;
 
-                case GraphBlockStart gbs:
-                case AttributeBlockStart abs:
-                case HtmlBlockStart hbs:
+                // multiline items
+                case (Identifier _, _):
+                case (Html _, _):
+                    sb.Append(o.String(curr.ToString()));
+                    break;
+
+                // increase indentation of block items
+                case (GraphBlockStart _, _):
+                case (AttributeBlockStart _, _):
+                case (HtmlBlockStart _, _):
+                    sb.Append(curr.ToString());
                     sb.Append(o.NewLine(++level));
                     break;
 
-                case IToken t1 when next is GraphBlockEnd:
-                case IToken t2 when next is AttributeBlockEnd:
-                case IToken t3 when next is HtmlBlockEnd:
-                    sb.Append(o.NewLine(--level));
-                    break;
-
-                case StatementSeparator ssep:
-                case AttributeSeparator asep:
+                // statements and attribute list items separated into lines
+                case (StatementSeparator _, _):
+                case (AttributeSeparator _, _):
+                    sb.Append(curr.ToString());
                     sb.Append(o.NewLine(level));
                     break;
 
-                case QuoteStart qs:
-                case IToken t1 when next is QuoteEnd:
-                case IToken t2 when next is StatementSeparator:
+                // no space after quotation mark, before quotation mark and before a semicolon
+                case (QuoteStart _, _):
+                case (_, QuoteEnd _):
+                case (_, StatementSeparator _):
+                    sb.Append(curr.ToString());
+                    break;
+
+                // decrease indentation when block ends
+                case (IToken _, GraphBlockEnd _):
+                case (IToken _, AttributeBlockEnd _):
+                case (IToken _, HtmlBlockEnd _):
+                    sb.Append(curr.ToString());
+                    sb.Append(o.NewLine(--level));
                     break;
 
                 default:
+                    sb.Append(curr.ToString());
                     sb.Append(o.TokenSpace());
                     break;
             }

@@ -1,4 +1,5 @@
 ﻿using Dotless.Attributes;
+using Dotless.DotBuilders;
 using Dotless.GraphElements;
 using Dotless.Graphs;
 using System;
@@ -9,22 +10,29 @@ namespace Dotless
     {
         private static void Main(string[] args)
         {
-            HtmlLabel htmlLabel = (string)null!;
-            Label label = "Text \" \\label" + htmlLabel;
+            var o = new TokenWriterOptions
+            {
+                SingleLine = true,
+                TokenSpacing = 0
+            };
 
-            var dotGraph = new Graph();
+            var dotGraph = new Graph()
+            {
+                IsStrict = true,
+                Name = "My \"awesome\" \r\ngraph"
+            };
 
-            var node = new GraphNode("my_node")
+            dotGraph.Nodes.Add(new GraphNode("my \"node")
             {
                 Label = "my label"
-            };
-            dotGraph.Nodes.Add(node);
+            });
 
-            Console.WriteLine($"{label}");
-            Console.WriteLine($"{htmlLabel}");
+            dotGraph.Nodes.Add(new GraphNode("my \"node")
+            {
+                Label = new HtmlLabel("<b>text<b>")
+            });
 
-            Console.WriteLine();
-            Console.WriteLine(dotGraph.ToString());
+            Console.WriteLine(dotGraph.ToString(o));
 
             Console.ReadLine();
         }
