@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Dotless.DotBuilders.Tokens;
+using System.Collections.Generic;
 
-namespace Dotless.DotBuilders.Tokens
+namespace Dotless.DotBuilders
 {
     public static class TokenCollectionExtension
     {
@@ -68,9 +69,9 @@ namespace Dotless.DotBuilders.Tokens
             @this.Add(new AttributeBlockEnd());
         }
 
-        public static void ListItemSeparator(this ICollection<IToken> @this)
+        public static void AttributeSeparator(this ICollection<IToken> @this)
         {
-            @this.Add(new ListItemSeparator());
+            @this.Add(new AttributeSeparator());
         }
 
         public static void NodePort(this ICollection<IToken> @this)

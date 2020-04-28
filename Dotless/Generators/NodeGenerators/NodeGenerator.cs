@@ -1,4 +1,5 @@
 ﻿using Dotless.Core;
+using Dotless.DotBuilders;
 using Dotless.DotBuilders.Tokens;
 using Dotless.GraphElements;
 using Dotless.TextEscaping;
@@ -15,22 +16,22 @@ namespace Dotless.Generators.NodeGenerators
             _entityGenerators = entityGenerators;
         }
 
-        public ICollection<IToken> Generate(GraphNode node, GeneratorOptions options)
+        public ICollection<IToken> Generate(GraphNode node)
         {
             var result = new List<IToken>();
 
             result.QuotedIdentifier(new QuotationMarkEscaper().Escape(node.Id)!);
 
             var tokens = _entityGenerators.GetForTypeOrForAnyBaseType(node.Attributes)
-                .Generate(node.Attributes, options);
+                .Generate(node.Attributes);
             result.AddRange(tokens);
 
             return result;
         }
 
-        ICollection<IToken> IEntityGenerator.Generate(IEntity entity, GeneratorOptions options)
+        ICollection<IToken> IEntityGenerator.Generate(IEntity entity)
         {
-            return Generate((GraphNode)entity, options);
+            return Generate((GraphNode)entity);
         }
     }
 }

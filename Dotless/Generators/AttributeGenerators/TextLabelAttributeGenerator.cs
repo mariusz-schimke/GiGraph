@@ -1,4 +1,5 @@
 ﻿using Dotless.Attributes;
+using Dotless.DotBuilders;
 using Dotless.DotBuilders.Tokens;
 using Dotless.TextEscaping;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ namespace Dotless.Generators.AttributeGenerators
 {
     public class TextLabelAttributeGenerator : TextualAttributeGenerator<TextLabel>
     {
-        public override ICollection<IToken> Generate(TextLabel attribute, GeneratorOptions options)
+        public override ICollection<IToken> Generate(TextLabel attribute)
         {
             var result = new List<IToken>();
 

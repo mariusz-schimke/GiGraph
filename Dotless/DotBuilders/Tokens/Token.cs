@@ -1,6 +1,4 @@
-﻿using Dotless.Generators;
-
-namespace Dotless.DotBuilders.Tokens
+﻿namespace Dotless.DotBuilders.Tokens
 {
     public abstract class Token : IToken
     {
@@ -11,7 +9,7 @@ namespace Dotless.DotBuilders.Tokens
             _token = token;
         }
 
-        public string ToString(GeneratorOptions options)
+        public override string ToString()
         {
             return _token;
         }

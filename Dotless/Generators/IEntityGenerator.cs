@@ -6,12 +6,12 @@ namespace Dotless.Generators
 {
     public interface IEntityGenerator
     {
-        ICollection<IToken> Generate(IEntity entity, GeneratorOptions options);
+        ICollection<IToken> Generate(IEntity entity);
     }
 
     public interface IEntityGenerator<T> : IEntityGenerator
         where T : IEntity
     {
-        ICollection<IToken> Generate(T entity, GeneratorOptions options);
+        ICollection<IToken> Generate(T entity);
     }
 }
