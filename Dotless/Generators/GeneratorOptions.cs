@@ -9,7 +9,7 @@ namespace Dotless.Generators
         public bool Indent { get; set; } = true;
         public char IndentChar { get; set; } = ' ';
         public int Indentation { get; set; } = 2;
-        public int BaseIndentation { get; set; } = 0;
+        public int IndentationLevel { get; set; } = 0;
         public int TokenSpacing { get; set; } = 1;
         public string LineBreak { get; set; } = Environment.NewLine;
 
@@ -17,20 +17,25 @@ namespace Dotless.Generators
         {
         }
 
-        public GeneratorOptions(bool singleLine, bool indent, char indentChar, int indentation, int baseIndentation, int tokenSpacing, string lineBreak)
+        public GeneratorOptions(bool singleLine, bool indent, char indentChar, int indentation, int indentationLevel, int tokenSpacing, string lineBreak)
         {
             SingleLine = singleLine;
             Indent = indent;
             IndentChar = indentChar;
             Indentation = indentation;
-            BaseIndentation = baseIndentation;
+            IndentationLevel = indentationLevel;
             TokenSpacing = tokenSpacing;
             LineBreak = lineBreak;
         }
 
-        public GeneratorOptions IncreaseIndentation()
+        public int GetIndentation()
         {
-            return new GeneratorOptions(SingleLine, Indent, IndentChar, Indentation, BaseIndentation + Indentation, TokenSpacing, LineBreak);
+            return IndentationLevel * Indentation;
+        }
+
+        public GeneratorOptions IncreaseIndentationLevel()
+        {
+            return new GeneratorOptions(SingleLine, Indent, IndentChar, Indentation, IndentationLevel + 1, TokenSpacing, LineBreak);
         }
     }
 }

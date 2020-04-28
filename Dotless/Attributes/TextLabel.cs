@@ -2,7 +2,7 @@
 {
     public class TextLabel : Label
     {
-        public TextLabel(string value)
+        public TextLabel(string? value)
             : base(value)
         {
         }

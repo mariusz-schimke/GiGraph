@@ -9,8 +9,8 @@ namespace Dotless
     {
         private static void Main(string[] args)
         {
-            HtmlLabel htmlLabel = "HTML label";
-            Label label = "Text \" \\label";
+            HtmlLabel htmlLabel = (string)null!;
+            Label label = "Text \" \\label" + htmlLabel;
 
             var dotGraph = new Graph();
 

@@ -2,7 +2,7 @@
 {
     public class HtmlLabel : Label
     {
-        public HtmlLabel(string value)
+        public HtmlLabel(string? value)
             : base(value)
         {
         }
