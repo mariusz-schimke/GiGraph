@@ -16,12 +16,14 @@ namespace Dotless.Graphs
 
         public string ToString(GeneratorOptions options)
         {
-            return GraphGenerator.CreateDefault().Generate(this, options);
+            var tokens = GraphGenerator.CreateDefault().Generate(this, options);
+
+            return "this is not a graph yet";
         }
 
         public override string ToString()
         {
-            return GraphGenerator.CreateDefault().Generate(this);
+            return ToString(new GeneratorOptions());
         }
 
         public void WriteToFile(string filePath, GeneratorOptions? options = null)

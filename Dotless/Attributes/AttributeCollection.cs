@@ -35,11 +35,6 @@ namespace Dotless.Core
             return null;
         }
 
-        public ICollection<IAttribute> ToList()
-        {
-            return _attributes.Values;
-        }
-
         public IEnumerator<IAttribute> GetEnumerator()
         {
             return _attributes.Values.GetEnumerator();

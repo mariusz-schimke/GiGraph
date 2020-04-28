@@ -1,6 +1,7 @@
 ﻿using Dotless.Core;
-using Dotless.Generators.Extensions;
-using System.Text;
+using Dotless.DotBuilders.Tokens;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Dotless.Generators.AttributeGenerators
 {
@@ -13,42 +14,31 @@ namespace Dotless.Generators.AttributeGenerators
             _entityGenerators = entityGenerators;
         }
 
-        public string? Generate(AttributeCollection attributes, GeneratorOptions options)
+        public ICollection<IToken> Generate(AttributeCollection attributes, GeneratorOptions options)
         {
-            var result = new StringBuilder();
+            var result = new List<IToken>();
 
-            AttributesBlockStart(result, options);
+            if (!attributes.Any())
+            {
+                return result;
+            }
 
-            Attributes(result, attributes, options.IncreaseIndentation());
+            result.AttributeBlockStart();
 
-            AttributesBlockEnd(result, options);
-
-            return result.ToString();
-        }
-
-
-        protected virtual void AttributesBlockStart(StringBuilder result, GeneratorOptions options)
-        {
-            result.Append("[");
-            result.Append(options.LBoS());
-        }
-
-        protected virtual void Attributes(StringBuilder result, AttributeCollection attributes, GeneratorOptions options)
-        {
-            foreach (var attribute in attributes.ToList())
+            foreach (var attribute in attributes)
             {
                 var generator = _entityGenerators.GetForTypeOrForAnyBaseType(attribute);
-                result.Append(generator.Generate(attribute, options));
+                var tokens = generator.Generate(attribute, options);
+
+                result.AddRange(tokens);
             }
+
+            result.AttributeBlockEnd();
+
+            return result;
         }
 
-        protected virtual void AttributesBlockEnd(StringBuilder result, GeneratorOptions options)
-        {
-            result.Append("]");
-            result.Append(options.LBoS());
-        }
-
-        string? IEntityGenerator.Generate(IEntity attributes, GeneratorOptions options)
+        ICollection<IToken> IEntityGenerator.Generate(IEntity attributes, GeneratorOptions options)
         {
             return Generate((AttributeCollection)attributes, options);
         }

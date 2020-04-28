@@ -1,13 +1,12 @@
 ﻿using Dotless.Core;
+using Dotless.DotBuilders.Tokens;
 using Dotless.Generators.AttributeGenerators;
-using Dotless.Generators.Extensions;
 using Dotless.Generators.NodeGenerators;
 using Dotless.GraphElements;
 using Dotless.Graphs;
 using Dotless.TextEscaping;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Dotless.Generators
 {
@@ -20,67 +19,44 @@ namespace Dotless.Generators
             _entityGenerators = entityGenerators;
         }
 
-        public virtual string Generate(Graph graph)
+        public virtual ICollection<IToken> Generate(Graph graph, GeneratorOptions options)
         {
-            return Generate(graph, new GeneratorOptions());
-        }
-
-        public virtual string Generate(Graph graph, GeneratorOptions options)
-        {
-            var result = new StringBuilder();
+            var result = new List<IToken>();
 
             GraphSpecification(result, graph, options);
-            GraphBlockStart(result, options);
+            result.GraphBlockStart();
 
             GraphAttributes(result, graph.Attributes, options);
             GraphNodes(result, graph.Nodes, options);
 
-            GraphBlockEnd(result, options);
+            result.GraphBlockEnd();
 
-            return result.ToString();
+            return result;
         }
 
-        protected virtual void GraphSpecification(StringBuilder result, Graph graph, GeneratorOptions options)
+        protected virtual void GraphSpecification(List<IToken> result, Graph graph, GeneratorOptions options)
         {
             if (graph.IsStrict)
             {
-                result.Append("strict");
-                result.Append(options.TSoS());
+                result.Keyword("strict");
             }
 
-            result.Append(graph.IsDirected ? "digraph" : "graph");
+            result.Keyword(graph.IsDirected ? "digraph" : "graph");
 
             if (graph.Name is { })
             {
-                result.Append(options.TS());
-                result.Append($"\"{new QuotationMarkEscaper().Escape(graph.Name)}\"");
+                result.QuotedIdentifier(new QuotationMarkEscaper().Escape(graph.Name)!);
             }
-
-            result.Append(options.TS());
         }
 
-        protected virtual void GraphAttributes(StringBuilder result, AttributeCollection attributes, GeneratorOptions options)
+        protected virtual void GraphAttributes(List<IToken> result, AttributeCollection attributes, GeneratorOptions options)
         {
-            var generator = _entityGenerators.GetForTypeOrForAnyBaseType(attributes);
-            var generated = generator.Generate(attributes, options);
-
-            result.Append(generated);
-            result.Append(options.LBoS());
+            var attributeListGenerator = _entityGenerators.GetForTypeOrForAnyBaseType(attributes);
+            var tokens = attributeListGenerator.Generate(attributes, options);
+            result.AddRange(tokens);
         }
 
-        protected virtual void GraphBlockStart(StringBuilder result, GeneratorOptions options)
-        {
-            result.Append("{");
-            result.Append(options.LBoS());
-        }
-
-        protected virtual void GraphBlockEnd(StringBuilder result, GeneratorOptions options)
-        {
-            result.Append(options.LBoS());
-            result.Append("}");
-        }
-
-        protected virtual void GraphNodes(StringBuilder result, List<GraphNode> nodes, GeneratorOptions options)
+        protected virtual void GraphNodes(List<IToken> result, List<GraphNode> nodes, GeneratorOptions options)
         {
             if (!nodes.Any())
             {
@@ -89,14 +65,12 @@ namespace Dotless.Generators
 
             foreach (var node in nodes)
             {
-                var generator = _entityGenerators.GetForTypeOrForAnyBaseType(node);
-                var generated = generator.Generate(node, options);
+                var tokens = _entityGenerators.GetForTypeOrForAnyBaseType(node)
+                    .Generate(node, options);
 
-                result.Append(generated);
-                result.Append(options.LBoS());
+                result.AddRange(tokens);
+                result.StatementSeparator();
             }
-
-            result.Append(options.LBoS());
         }
 
         public static GraphGenerator CreateDefault()
@@ -114,7 +88,7 @@ namespace Dotless.Generators
             return new GraphGenerator(generators);
         }
 
-        string? IEntityGenerator.Generate(IEntity graph, GeneratorOptions options)
+        ICollection<IToken> IEntityGenerator.Generate(IEntity graph, GeneratorOptions options)
         {
             return Generate((Graph)graph, options);
         }

@@ -1,15 +1,17 @@
 ﻿using Dotless.Core;
+using Dotless.DotBuilders.Tokens;
+using System.Collections.Generic;
 
 namespace Dotless.Generators
 {
     public interface IEntityGenerator
     {
-        string? Generate(IEntity entity, GeneratorOptions options);
+        ICollection<IToken> Generate(IEntity entity, GeneratorOptions options);
     }
 
     public interface IEntityGenerator<T> : IEntityGenerator
         where T : IEntity
     {
-        string? Generate(T entity, GeneratorOptions options);
+        ICollection<IToken> Generate(T entity, GeneratorOptions options);
     }
 }
