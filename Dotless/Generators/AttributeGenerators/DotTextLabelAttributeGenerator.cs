@@ -21,7 +21,7 @@ namespace Dotless.Generators.AttributeGenerators
                 return null;
             }
 
-            var escapedValue = EscapeValue(attribute.Value)!;
+            var escapedValue = EscapeValue(attribute.Value, options)!;
 
             if (RequiresQuoting(escapedValue, options))
             {
@@ -36,12 +36,20 @@ namespace Dotless.Generators.AttributeGenerators
             return options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
         }
 
-        protected override void PrepareValueEscapingPipeline()
+        protected override ICollection<IDotTextEscaper> GetValueEscapingPipeline(DotEntityGeneratorOptions options)
         {
-            ValueEscapingPipeline.Add(new DotHtmlEscaper());
-            ValueEscapingPipeline.Add(new DotBackslashEscaper());
-            ValueEscapingPipeline.Add(new DotQuotationMarkEscaper());
-            ValueEscapingPipeline.Add(new DotLineBreakEscaper());
+            var result = new List<IDotTextEscaper>();
+
+            if (options.Attributes.HtmlEscapeText)
+            {
+                result.Add(new DotHtmlEscaper());
+            }
+
+            result.Add(new DotBackslashEscaper());
+            result.Add(new DotQuotationMarkEscaper());
+            result.Add(new DotLineBreakEscaper());
+
+            return result;
         }
     }
 }
