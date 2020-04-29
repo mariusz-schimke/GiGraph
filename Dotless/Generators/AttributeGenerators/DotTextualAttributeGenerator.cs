@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Dotless.Generators.AttributeGenerators
 {
-    public abstract class DotTextualAttributeGenerator<TAttribute> : DotAttributeGenerator<TAttribute, string>
+    public abstract class DotTextualAttributeGenerator<TAttribute> : DotAttributeGenerator<TAttribute>
         where TAttribute : DotAttribute<string>
     {
         public List<IDotTextEscaper> ValueEscapingPipeline { get; } = new List<IDotTextEscaper>();

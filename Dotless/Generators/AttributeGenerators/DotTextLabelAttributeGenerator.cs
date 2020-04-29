@@ -8,20 +8,15 @@ namespace Dotless.Generators.AttributeGenerators
 {
     public class DotTextLabelAttributeGenerator : DotTextualAttributeGenerator<DotTextLabel>
     {
-        public override ICollection<IDotToken> Generate(DotTextLabel attribute)
+        protected override ICollection<IDotToken>? ConvertValueToTokens(DotTextLabel attribute)
         {
-            var result = new List<IDotToken>();
-
-            if (attribute.Value is null)
+            if (attribute.Value is { })
             {
-                return result;
+                return new List<IDotToken>()
+                    .QuotedText(EscapeValue(attribute.Value)!);
             }
 
-            result.AttributeKey(attribute.Key);
-            result.AssignmentOperator();
-            result.QuotedText(EscapeValue(attribute.Value)!);
-
-            return result;
+            return null;
         }
 
         protected override void PrepareValueEscapingPipeline()
