@@ -6,12 +6,12 @@ namespace Dotless.Generators
 {
     public interface IDotEntityGenerator
     {
-        ICollection<IDotToken> Generate(IDotEntity entity);
+        ICollection<IDotToken> Generate(IDotEntity entity, DotEntityGeneratorOptions options);
     }
 
-    public interface IEntityGenerator<T> : IDotEntityGenerator
+    public interface IDotEntityGenerator<T> : IDotEntityGenerator
         where T : IDotEntity
     {
-        ICollection<IDotToken> Generate(T entity);
+        ICollection<IDotToken> Generate(T entity, DotEntityGeneratorOptions options);
     }
 }

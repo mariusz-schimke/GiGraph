@@ -1,4 +1,5 @@
 ﻿using Dotless.Attributes;
+using Dotless.Core;
 using Dotless.DotBuilders;
 using Dotless.DotBuilders.Tokens;
 using Dotless.TextEscaping;
@@ -8,15 +9,31 @@ namespace Dotless.Generators.AttributeGenerators
 {
     public class DotTextLabelAttributeGenerator : DotTextualAttributeGenerator<DotTextLabel>
     {
-        protected override ICollection<IDotToken>? ConvertValueToTokens(DotTextLabel attribute)
+        public DotTextLabelAttributeGenerator(DotSyntaxRules syntaxRules, DotEntityGeneratorCollection entityGenerators)
+            : base(syntaxRules, entityGenerators)
         {
-            if (attribute.Value is { })
+        }
+
+        protected override ICollection<IDotToken>? ConvertValueToTokens(DotTextLabel attribute, DotEntityGeneratorOptions options)
+        {
+            if (attribute.Value is null)
             {
-                return new List<IDotToken>()
-                    .QuotedText(EscapeValue(attribute.Value)!);
+                return null;
             }
 
-            return null;
+            var escapedValue = EscapeValue(attribute.Value)!;
+
+            if (RequiresQuoting(escapedValue, options))
+            {
+                return new List<IDotToken>().QuotedText(escapedValue);
+            }
+
+            return new List<IDotToken>().Text(escapedValue);
+        }
+
+        protected virtual bool RequiresQuoting(string value, DotEntityGeneratorOptions options)
+        {
+            return options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
         }
 
         protected override void PrepareValueEscapingPipeline()

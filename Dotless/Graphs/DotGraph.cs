@@ -17,18 +17,21 @@ namespace Dotless.Graphs
         public List<DotGraphNode> Nodes { get; } = new List<DotGraphNode>();
         public DotAttributeCollection Attributes { get; } = new DotAttributeCollection();
 
-        public string ToString(DotTokenWriterOptions options)
+        public string ToString(DotTokenWriterOptions? writerOptions = null, DotEntityGeneratorOptions? generatorOptions = null)
         {
-            var result = new StringBuilder();
-            var tokens = DotGraphGenerator.CreateDefault().Generate(this);
+            writerOptions ??= new DotTokenWriterOptions();
+            generatorOptions ??= new DotEntityGeneratorOptions();
 
-            new DotTokenWriter(tokens).Write(result, options);
+            var result = new StringBuilder();
+            var tokens = DotGraphGenerator.CreateDefault().Generate(this, generatorOptions);
+
+            new DotTokenWriter(tokens).Write(result, writerOptions);
             return result.ToString();
         }
 
         public override string ToString()
         {
-            return ToString(new DotTokenWriterOptions());
+            return ToString(writerOptions: null, generatorOptions: null);
         }
 
         public void WriteToFile(string filePath, DotTokenWriterOptions? options = null)

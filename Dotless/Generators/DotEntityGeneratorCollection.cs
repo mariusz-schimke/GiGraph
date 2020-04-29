@@ -13,13 +13,13 @@ namespace Dotless.Generators
             _generators.Clear();
         }
 
-        public void Add<T>(IEntityGenerator<T> generator)
+        public void Add<T>(IDotEntityGenerator<T> generator)
             where T : IDotEntity
         {
             _generators.Add(typeof(T), generator);
         }
 
-        public void Replace<T>(IEntityGenerator<T> generator)
+        public void Replace<T>(IDotEntityGenerator<T> generator)
             where T : IDotEntity
         {
             _generators[typeof(T)] = generator;

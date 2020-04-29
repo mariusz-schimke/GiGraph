@@ -7,15 +7,20 @@ using System.Linq;
 
 namespace Dotless.Generators.AttributeGenerators
 {
-    public abstract class DotAttributeGenerator<TAttribute> : IEntityGenerator<TAttribute>
+    public abstract class DotAttributeGenerator<TAttribute> : DotEntityGenerator<TAttribute>
         where TAttribute : IDotAttribute
     {
-        protected abstract ICollection<IDotToken>? ConvertValueToTokens(TAttribute attribute);
+        public DotAttributeGenerator(DotSyntaxRules syntaxRules, DotEntityGeneratorCollection entityGenerators)
+            : base(syntaxRules, entityGenerators)
+        {
+        }
 
-        public virtual ICollection<IDotToken> Generate(TAttribute attribute)
+        protected abstract ICollection<IDotToken>? ConvertValueToTokens(TAttribute attribute, DotEntityGeneratorOptions options);
+
+        public override ICollection<IDotToken> Generate(TAttribute attribute, DotEntityGeneratorOptions options)
         {
             var result = new List<IDotToken>();
-            var valueAsTokens = ConvertValueToTokens(attribute);
+            var valueAsTokens = ConvertValueToTokens(attribute, options);
 
             if (true != valueAsTokens?.Any())
             {
@@ -26,12 +31,6 @@ namespace Dotless.Generators.AttributeGenerators
                 .AttributeKey(attribute.Key)
                 .AssignmentOperator()
                 .Tokens(valueAsTokens);
-        }
-
-
-        ICollection<IDotToken> IDotEntityGenerator.Generate(IDotEntity attribute)
-        {
-            return Generate((TAttribute)attribute);
         }
     }
 }

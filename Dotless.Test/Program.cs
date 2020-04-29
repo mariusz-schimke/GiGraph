@@ -1,5 +1,6 @@
 ﻿using Dotless.Attributes;
 using Dotless.DotBuilders;
+using Dotless.Generators;
 using Dotless.GraphElements;
 using Dotless.Graphs;
 using System;
@@ -10,11 +11,17 @@ namespace Dotless
     {
         private static void Main(string[] args)
         {
-            var o = new DotTokenWriterOptions
+            var wo = new DotTokenWriterOptions
             {
                 //SingleLine = true,
                 //TokenSpacing = 0
             };
+
+            var go = new DotEntityGeneratorOptions()
+            {
+            };
+
+            go.Attributes.PreferQuotedValue = false;
 
             var dotGraph = new DotGraph()
             {
@@ -32,7 +39,17 @@ namespace Dotless
                 Label = new DotHtmlLabel("<b>text<b>")
             });
 
-            Console.WriteLine(dotGraph.ToString(o));
+            dotGraph.Nodes.Add(new DotGraphNode("myNode")
+            {
+                Label = new DotTextLabel("label")
+            });
+
+            dotGraph.Nodes.Add(new DotGraphNode("myNode")
+            {
+                Label = new DotTextLabel("graph")
+            });
+
+            Console.WriteLine(dotGraph.ToString(wo, go));
 
             Console.ReadLine();
         }

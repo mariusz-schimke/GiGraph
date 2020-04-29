@@ -7,31 +7,24 @@ using System.Collections.Generic;
 
 namespace Dotless.Generators.NodeGenerators
 {
-    public class DotNodeGenerator : IEntityGenerator<DotGraphNode>
+    public class DotNodeGenerator : DotEntityGenerator<DotGraphNode>
     {
-        protected readonly DotEntityGeneratorCollection _entityGenerators;
-
-        public DotNodeGenerator(DotEntityGeneratorCollection entityGenerators)
+        public DotNodeGenerator(DotSyntaxRules syntaxRules, DotEntityGeneratorCollection entityGenerators)
+            : base(syntaxRules, entityGenerators)
         {
-            _entityGenerators = entityGenerators;
         }
 
-        public ICollection<IDotToken> Generate(DotGraphNode node)
+        public override ICollection<IDotToken> Generate(DotGraphNode node, DotEntityGeneratorOptions options)
         {
             var result = new List<IDotToken>();
 
             result.QuotedIdentifier(new DotQuotationMarkEscaper().Escape(node.Id)!);
 
             var tokens = _entityGenerators.GetForTypeOrForAnyBaseType(node.Attributes)
-                .Generate(node.Attributes);
+                .Generate(node.Attributes, options);
             result.AddRange(tokens);
 
             return result;
-        }
-
-        ICollection<IDotToken> IDotEntityGenerator.Generate(IDotEntity entity)
-        {
-            return Generate((DotGraphNode)entity);
         }
     }
 }
