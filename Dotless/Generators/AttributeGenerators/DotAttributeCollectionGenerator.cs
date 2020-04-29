@@ -6,16 +6,14 @@ using System.Linq;
 
 namespace Dotless.Generators.AttributeGenerators
 {
-    public class DotAttributeCollectionGenerator : IEntityGenerator<DotAttributeCollection>
+    public class DotAttributeCollectionGenerator : DotEntityGenerator<DotAttributeCollection>
     {
-        protected readonly DotEntityGeneratorCollection _entityGenerators;
-
-        public DotAttributeCollectionGenerator(DotEntityGeneratorCollection entityGenerators)
+        public DotAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotEntityGeneratorCollection entityGenerators)
+            : base(syntaxRules, entityGenerators)
         {
-            _entityGenerators = entityGenerators;
         }
 
-        public ICollection<IDotToken> Generate(DotAttributeCollection attributes)
+        public override ICollection<IDotToken> Generate(DotAttributeCollection attributes, DotEntityGeneratorOptions options)
         {
             var result = new List<IDotToken>();
 
@@ -30,7 +28,7 @@ namespace Dotless.Generators.AttributeGenerators
             for (int i = 0; i < attributeList.Count; i++)
             {
                 var generator = _entityGenerators.GetForTypeOrForAnyBaseType(attributeList[i]);
-                var tokens = generator.Generate(attributeList[i]);
+                var tokens = generator.Generate(attributeList[i], options);
 
                 result.AddRange(tokens);
 
@@ -43,11 +41,6 @@ namespace Dotless.Generators.AttributeGenerators
             result.AttributeCollectionEnd();
 
             return result;
-        }
-
-        ICollection<IDotToken> IDotEntityGenerator.Generate(IDotEntity attributes)
-        {
-            return Generate((DotAttributeCollection)attributes);
         }
     }
 }

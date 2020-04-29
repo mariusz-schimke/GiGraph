@@ -1,4 +1,5 @@
 ﻿using Dotless.Attributes;
+using Dotless.Core;
 using Dotless.TextEscaping;
 using System.Collections.Generic;
 
@@ -9,7 +10,8 @@ namespace Dotless.Generators.AttributeGenerators
     {
         public List<IDotTextEscaper> ValueEscapingPipeline { get; } = new List<IDotTextEscaper>();
 
-        protected DotTextualAttributeGenerator()
+        public DotTextualAttributeGenerator(DotSyntaxRules syntaxRules, DotEntityGeneratorCollection entityGenerators)
+            : base(syntaxRules, entityGenerators)
         {
             PrepareValueEscapingPipeline();
         }
