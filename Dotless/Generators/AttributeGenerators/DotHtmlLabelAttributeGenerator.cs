@@ -17,8 +17,7 @@ namespace Dotless.Generators.AttributeGenerators
         {
             if (attribute.Value is { })
             {
-                return new List<IDotToken>()
-                    .BracedHtmlText(EscapeValue(attribute.Value)!);
+                return new List<IDotToken>().BracedHtmlText(EscapeValue(attribute.Value, options)!);
             }
 
             return null;
