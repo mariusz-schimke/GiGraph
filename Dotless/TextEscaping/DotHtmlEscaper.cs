@@ -2,7 +2,7 @@
 
 namespace Dotless.TextEscaping
 {
-    public class HtmlEscaper : ITextEscaper
+    public class DotHtmlEscaper : IDotTextEscaper
     {
         public virtual string? Escape(string? value)
         {

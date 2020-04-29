@@ -1,9 +1,11 @@
 ﻿namespace Dotless.Attributes
 {
-    public abstract class DotLabel : DotTextualAttribute
+    public abstract class DotLabel : DotAttribute<string?>
     {
-        public DotLabel(string value)
-            : base(key: "label", value)
+        public static readonly string AttributeKey = "label";
+
+        public DotLabel(string? value)
+            : base(AttributeKey, value)
         {
         }
 
@@ -12,7 +14,7 @@
             return new DotTextLabel(value);
         }
 
-        public static implicit operator string(DotLabel label)
+        public static implicit operator string?(DotLabel label)
         {
             return label._value;
         }

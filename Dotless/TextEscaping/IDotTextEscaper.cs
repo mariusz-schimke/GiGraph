@@ -1,6 +1,6 @@
 ﻿namespace Dotless.TextEscaping
 {
-    public interface ITextEscaper
+    public interface IDotTextEscaper
     {
         string? Escape(string? value);
     }

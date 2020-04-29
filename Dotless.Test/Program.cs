@@ -1,4 +1,7 @@
 ﻿using Dotless.Attributes;
+using Dotless.DotBuilders;
+using Dotless.Generators;
+using Dotless.GraphElements;
 using Dotless.Graphs;
 using System;
 
@@ -8,17 +11,45 @@ namespace Dotless
     {
         private static void Main(string[] args)
         {
-            DotHtmlLabel htmlLabel = "HTML label";
-            DotLabel label = "Text \" \\label";
+            var wo = new DotTokenWriterOptions
+            {
+                //SingleLine = true,
+                //TokenSpacing = 0
+            };
 
-            var dotGraph = new DotGraph("test graph", isDirected: true, isStrict: true);
+            var go = new DotEntityGeneratorOptions()
+            {
+            };
 
-            Console.WriteLine($"{label}");
-            Console.WriteLine($"{htmlLabel}");
-            Console.WriteLine($"{label == htmlLabel}");
+            go.Attributes.PreferQuotedValue = false;
 
-            Console.WriteLine();
-            Console.WriteLine(dotGraph.ToString(true));
+            var dotGraph = new DotGraph()
+            {
+                IsStrict = true,
+                Name = "My \"awesome\" graph"
+            };
+
+            dotGraph.Nodes.Add(new DotGraphNode("my \"node")
+            {
+                Label = "my label"
+            });
+
+            dotGraph.Nodes.Add(new DotGraphNode("my \"node")
+            {
+                Label = new DotHtmlLabel("<b>text<b>")
+            });
+
+            dotGraph.Nodes.Add(new DotGraphNode("myNode")
+            {
+                Label = new DotTextLabel("label")
+            });
+
+            dotGraph.Nodes.Add(new DotGraphNode("myNode")
+            {
+                Label = new DotTextLabel("graph")
+            });
+
+            Console.WriteLine(dotGraph.ToString(wo, go));
 
             Console.ReadLine();
         }

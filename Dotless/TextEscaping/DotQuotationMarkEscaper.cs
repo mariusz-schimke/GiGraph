@@ -1,6 +1,6 @@
 ﻿namespace Dotless.TextEscaping
 {
-    public class QuotationMarkEscaper : ITextEscaper
+    public class DotQuotationMarkEscaper : IDotTextEscaper
     {
         public virtual string? Escape(string? value)
         {
