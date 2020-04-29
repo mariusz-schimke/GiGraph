@@ -5,110 +5,128 @@ namespace Dotless.DotBuilders
 {
     public static class DotTokenCollectionExtension
     {
-        public static void Keyword(this ICollection<IDotToken> @this, string keyword)
+        public static ICollection<IDotToken> Token(this ICollection<IDotToken> collection, IDotToken token)
         {
-            @this.Add(new DotKeyword(keyword));
+            collection.Add(token);
+            return collection;
         }
 
-        public static void Identifier(this ICollection<IDotToken> @this, string name)
+        public static ICollection<IDotToken> Tokens(this ICollection<IDotToken> @this, ICollection<IDotToken> tokens)
         {
-            @this.Add(new DotIdentifier(name));
+            foreach (var token in tokens)
+            {
+                @this.Add(token);
+            }
+
+            return @this;
         }
 
-        public static void QuotedIdentifier(this ICollection<IDotToken> @this, string name)
+        public static ICollection<IDotToken> Keyword(this ICollection<IDotToken> @this, string keyword)
         {
-            @this.QuotationStart();
-            @this.Identifier(name);
-            @this.QuotationEnd();
+            return @this.Token(new DotKeyword(keyword));
         }
 
-        public static void GraphBlockStart(this ICollection<IDotToken> @this)
+        public static ICollection<IDotToken> Identifier(this ICollection<IDotToken> @this, string name)
         {
-            @this.Add(new DotGraphBlockStart());
+            return @this.Token(new DotIdentifier(name));
         }
 
-        public static void GraphBlockEnd(this ICollection<IDotToken> @this)
+        public static ICollection<IDotToken> QuotedIdentifier(this ICollection<IDotToken> @this, string name)
         {
-            @this.Add(new DotGraphBlockEnd());
+            return @this
+                .QuotationStart()
+                .Identifier(name)
+                .QuotationEnd();
         }
 
-        public static void HtmlText(this ICollection<IDotToken> @this, string html)
+        public static ICollection<IDotToken> GraphBlockStart(this ICollection<IDotToken> @this)
         {
-            @this.Add(new DotHtmlText(html));
+            return @this.Token(new DotGraphBlockStart());
         }
 
-        public static void BracedHtmlText(this ICollection<IDotToken> @this, string html)
+        public static ICollection<IDotToken> GraphBlockEnd(this ICollection<IDotToken> @this)
         {
-            @this.HtmlTextStart();
-            @this.HtmlText(html);
-            @this.HtmlTextEnd();
+            return @this.Token(new DotGraphBlockEnd());
         }
 
-        public static void HtmlTextStart(this ICollection<IDotToken> @this)
+        public static ICollection<IDotToken> HtmlText(this ICollection<IDotToken> @this, string html)
         {
-            @this.Add(new DotHtmlTextStart());
+            return @this.Token(new DotHtmlText(html));
         }
 
-        public static void HtmlTextEnd(this ICollection<IDotToken> @this)
+        public static ICollection<IDotToken> BracedHtmlText(this ICollection<IDotToken> @this, string html)
         {
-            @this.Add(new DotHtmlTextEnd());
+            return @this.HtmlTextStart()
+                .HtmlText(html)
+                .HtmlTextEnd();
         }
 
-        public static void AttributeKey(this ICollection<IDotToken> @this, string name)
+        public static ICollection<IDotToken> HtmlTextStart(this ICollection<IDotToken> @this)
         {
-            @this.Add(new DotAttributeKey(name));
+            return @this.Token(new DotHtmlTextStart());
         }
 
-        public static void AttributeCollectionStart(this ICollection<IDotToken> @this)
+        public static ICollection<IDotToken> HtmlTextEnd(this ICollection<IDotToken> @this)
         {
-            @this.Add(new DotAttributeCollectionStart());
+            return @this.Token(new DotHtmlTextEnd());
         }
 
-        public static void AttributeCollectionEnd(this ICollection<IDotToken> @this)
+        public static ICollection<IDotToken> AttributeKey(this ICollection<IDotToken> @this, string name)
         {
-            @this.Add(new DotAttributeCollectionEnd());
+            return @this.Token(new DotAttributeKey(name));
         }
 
-        public static void AttributeSeparator(this ICollection<IDotToken> @this)
+        public static ICollection<IDotToken> AttributeCollectionStart(this ICollection<IDotToken> @this)
         {
-            @this.Add(new DotAttributeSeparator());
+            return @this.Token(new DotAttributeCollectionStart());
         }
 
-        public static void NodePort(this ICollection<IDotToken> @this)
+        public static ICollection<IDotToken> AttributeCollectionEnd(this ICollection<IDotToken> @this)
         {
-            @this.Add(new DotNodePort());
+            return @this.Token(new DotAttributeCollectionEnd());
         }
 
-        public static void Text(this ICollection<IDotToken> @this, string text)
+        public static ICollection<IDotToken> AttributeSeparator(this ICollection<IDotToken> @this)
         {
-            @this.Add(new DotText(text));
+            return @this.Token(new DotAttributeSeparator());
         }
 
-        public static void QuotedText(this ICollection<IDotToken> @this, string text)
+        public static ICollection<IDotToken> NodePort(this ICollection<IDotToken> @this)
         {
-            @this.QuotationStart();
-            @this.Text(text);
-            @this.QuotationEnd();
+            return @this.Token(new DotNodePort());
         }
 
-        public static void QuotationStart(this ICollection<IDotToken> @this)
+        public static ICollection<IDotToken> Text(this ICollection<IDotToken> @this, string text)
         {
-            @this.Add(new DotQuotationStart());
+            return @this.Token(new DotText(text));
         }
 
-        public static void QuotationEnd(this ICollection<IDotToken> @this)
+        public static ICollection<IDotToken> QuotedText(this ICollection<IDotToken> @this, string text)
         {
-            @this.Add(new DotQuotationEnd());
+            return @this
+                .QuotationStart()
+                .Text(text)
+                .QuotationEnd();
         }
 
-        public static void StatementSeparator(this ICollection<IDotToken> @this)
+        public static ICollection<IDotToken> QuotationStart(this ICollection<IDotToken> @this)
         {
-            @this.Add(new DotStatementSeparator());
+            return @this.Token(new DotQuotationStart());
         }
 
-        public static void AssignmentOperator(this ICollection<IDotToken> @this)
+        public static ICollection<IDotToken> QuotationEnd(this ICollection<IDotToken> @this)
         {
-            @this.Add(new DotAssignmentOperator());
+            return @this.Token(new DotQuotationEnd());
+        }
+
+        public static ICollection<IDotToken> StatementSeparator(this ICollection<IDotToken> @this)
+        {
+            return @this.Token(new DotStatementSeparator());
+        }
+
+        public static ICollection<IDotToken> AssignmentOperator(this ICollection<IDotToken> @this)
+        {
+            return @this.Token(new DotAssignmentOperator());
         }
     }
 }

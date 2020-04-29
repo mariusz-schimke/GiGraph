@@ -7,20 +7,15 @@ namespace Dotless.Generators.AttributeGenerators
 {
     public class DotHtmlLabelAttributeGenerator : DotTextualAttributeGenerator<DotHtmlLabel>
     {
-        public override ICollection<IDotToken> Generate(DotHtmlLabel attribute)
+        protected override ICollection<IDotToken>? ConvertValueToTokens(DotHtmlLabel attribute)
         {
-            var result = new List<IDotToken>();
-
-            if (attribute.Value is null)
+            if (attribute.Value is { })
             {
-                return result;
+                return new List<IDotToken>()
+                    .BracedHtmlText(EscapeValue(attribute.Value)!);
             }
 
-            result.AttributeKey(attribute.Key);
-            result.AssignmentOperator();
-            result.BracedHtmlText(EscapeValue(attribute.Value)!);
-
-            return result;
+            return null;
         }
     }
 }
