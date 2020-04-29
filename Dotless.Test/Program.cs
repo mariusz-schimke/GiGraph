@@ -10,26 +10,26 @@ namespace Dotless
     {
         private static void Main(string[] args)
         {
-            var o = new TokenWriterOptions
+            var o = new DotTokenWriterOptions
             {
-                SingleLine = true,
-                TokenSpacing = 0
+                //SingleLine = true,
+                //TokenSpacing = 0
             };
 
-            var dotGraph = new Graph()
+            var dotGraph = new DotGraph()
             {
                 IsStrict = true,
-                Name = "My \"awesome\" \r\ngraph"
+                Name = "My \"awesome\" graph"
             };
 
-            dotGraph.Nodes.Add(new GraphNode("my \"node")
+            dotGraph.Nodes.Add(new DotGraphNode("my \"node")
             {
                 Label = "my label"
             });
 
-            dotGraph.Nodes.Add(new GraphNode("my \"node")
+            dotGraph.Nodes.Add(new DotGraphNode("my \"node")
             {
-                Label = new HtmlLabel("<b>text<b>")
+                Label = new DotHtmlLabel("<b>text<b>")
             });
 
             Console.WriteLine(dotGraph.ToString(o));
