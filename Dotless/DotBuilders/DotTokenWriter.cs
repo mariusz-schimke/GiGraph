@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Dotless.DotBuilders
 {
+
     public class DotTokenWriter
     {
         private readonly IDotToken[] _tokens;
@@ -14,77 +15,166 @@ namespace Dotless.DotBuilders
             _tokens = tokens.ToArray();
         }
 
-        public void Write(StringBuilder sb, DotTokenWriterOptions options)
+        public virtual void Write(StringBuilder sb, DotTokenWriterOptions options)
         {
             if (!_tokens.Any())
             {
                 return;
             }
 
-            var level = 0;
+            sb.Append(options.Indentation(level: 0));
 
-            sb.Append(options.Indentation(level));
+            var reader = new DotTokenCollectionReader(_tokens);
 
-            for (int i = 0; i < _tokens.Length; i++)
+            while (reader.Next(out var token))
             {
-                var curr = _tokens[i];
-                var next = i < _tokens.Length - 1 ? _tokens[i + 1] : null;
-
-                HandleTokenPair(sb, options, curr, next, ref level);
+                HandleToken(token!, sb, options, reader, level: 0);
             }
         }
 
-        protected virtual void HandleTokenPair(StringBuilder sb, DotTokenWriterOptions o, IDotToken curr, IDotToken? next, ref int level)
+        protected virtual void HandleToken(IDotToken token, StringBuilder sb, DotTokenWriterOptions o, DotTokenCollectionReader reader, int level)
         {
-            switch ((curr, next))
+            switch (reader.Current)
             {
-                case (DotKeyword _, DotKeyword _): // strict graph
-                case (DotKeyword _, DotIdentifier _): // graph name
-                case (DotKeyword _, DotQuotationStart _): // graph "name"
-                    sb.Append(curr.ToString());
-                    sb.Append(o.MandatoryTokenSpace());
+                case DotKeyword kw:
+                    Keyword(kw, sb, o, reader, ref level);
                     break;
 
+                case DotIdentifier id:
+                    Identifier(id, sb, o, reader, ref level);
+                    break;
+
+                case DotGraphBlockStart gb:
+                    GraphBlock(gb, sb, o, reader, level);
+                    break;
+
+                case DotAttributeCollectionStart ac:
+                    AttributeCollection(ac, sb, o, reader, level);
+                    break;
+            }
+
+            return;
+
+            switch (reader.Current)
+            {
+                // required space between tokens
+                //case DotKeyword _ when reader.Peek<DotKeyword>(): // e.g. strict graph
+                //case DotKeyword _ when reader.Peek<DotIdentifier>(): // e.g. graph name
+                //case DotKeyword _ when reader.Peek<DotQuotationStart>(): // e.g. graph "name"
+                //    sb.Append(reader.Current);
+                //    sb.Append(o.MandatoryTokenSpace());
+                //    break;
+
                 // multiline items
-                case (DotIdentifier _, _):
-                case (DotHtmlText _, _):
-                    sb.Append(o.String(curr.ToString()));
+                case DotIdentifier _:
+                case DotHtmlText _:
+                    sb.Append(o.String(reader.Current.ToString()));
+
+                    if (!reader.IsLast)
+                    {
+                        sb.Append(o.TokenSpace());
+                    }
                     break;
 
                 // increase indentation of block items
-                case (DotGraphBlockStart _, _):
-                case (DotAttributeCollectionStart _, _):
-                case (DotHtmlTextStart _, _):
-                    sb.Append(curr.ToString());
+                case DotGraphBlockStart _:
+                    sb.Append(reader.Current);
                     sb.Append(o.NewLine(++level));
                     break;
 
                 // decrease indentation when block ends
-                case (IDotToken _, DotGraphBlockEnd _):
-                case (IDotToken _, DotAttributeCollectionEnd _):
-                case (IDotToken _, DotHtmlTextEnd _):
-                    sb.Append(curr.ToString());
-                    sb.Append(o.NewLine(--level));
+                case DotGraphBlockEnd _:
+                    sb.Append(o.Indentation(--level));
+                    sb.Append(reader.Current);
+                    break;
+
+                // increase indentation of attributes if more than one
+                case DotAttributeCollectionStart _:
+                    sb.Append(reader.Current);
+                    sb.Append(o.NewLine(++level));
+                    break;
+
+                // increase indentation of HTML text lines if more than one
+                case DotHtmlTextStart _:
+                    sb.Append(reader.Current);
+                    sb.Append(o.NewLine(++level));
+                    break;
+
+                case IDotToken _ when reader.Peek<DotGraphBlockEnd>():
+                case IDotToken _ when reader.Peek<DotAttributeCollectionEnd>():
+                case IDotToken _ when reader.Peek<DotHtmlTextEnd>():
+                    sb.Append(reader.Current);
+                    sb.Append(o.LineBreak());
                     break;
 
                 // statements and attribute list items separated into lines
-                case (DotStatementSeparator _, _):
-                case (DotAttributeSeparator _, _):
-                    sb.Append(curr.ToString());
+                case DotStatementSeparator _:
+                case DotAttributeSeparator _:
+                    sb.Append(reader.Current);
                     sb.Append(o.NewLine(level));
                     break;
 
-                // no space after quotation mark, before quotation mark and before a semicolon
-                case (DotQuotationStart _, _):
-                case (_, DotQuotationEnd _):
-                case (_, DotStatementSeparator _):
-                    sb.Append(curr.ToString());
+                // no space after quotation mark, before quotation mark, and before a semicolon
+                case DotQuotationStart _:
+                case IDotToken _ when reader.Peek<DotQuotationEnd>():
+                case IDotToken _ when reader.Peek<DotStatementSeparator>():
+                    sb.Append(reader.Current);
                     break;
 
                 default:
-                    sb.Append(curr.ToString());
+                    sb.Append(reader.Current);
                     sb.Append(o.TokenSpace());
                     break;
+            }
+        }
+
+        protected virtual void Keyword(DotKeyword kw, StringBuilder sb, DotTokenWriterOptions o, DotTokenCollectionReader reader, ref int level)
+        {
+            sb.Append(kw);
+
+            // space required between tokens
+            switch (reader.Peek())
+            {
+                case DotKeyword _:
+                case DotIdentifier _:
+                case DotQuotationStart _:
+                    sb.Append(o.MandatoryTokenSpace());
+                    break;
+            }
+        }
+
+        protected virtual void Identifier(DotIdentifier id, StringBuilder sb, DotTokenWriterOptions o, DotTokenCollectionReader reader, ref int level)
+        {
+            sb.Append(o.String(id.ToString()));
+        }
+
+        protected virtual void GraphBlock(DotGraphBlockStart gb, StringBuilder sb, DotTokenWriterOptions o, DotTokenCollectionReader reader, int level)
+        {
+            sb.Append(gb);
+
+            while (reader.NextUntil<DotGraphBlockEnd>(out var token))
+            {
+                HandleToken(token!, sb, o, reader, level + 1);
+            }
+
+            if (reader.CurrentIs<DotGraphBlockEnd>())
+            {
+                sb.Append(reader.Current);
+            }
+        }
+
+        protected virtual void AttributeCollection(DotAttributeCollectionStart ac, StringBuilder sb, DotTokenWriterOptions o, DotTokenCollectionReader reader, int level)
+        {
+            sb.Append(ac);
+
+            while (reader.NextUntil<DotAttributeCollectionEnd>(out var token))
+            {
+                HandleToken(token!, sb, o, reader, level + 1);
+            }
+
+            if (reader.CurrentIs<DotAttributeCollectionEnd>())
+            {
+                sb.Append(reader.Current);
             }
         }
     }

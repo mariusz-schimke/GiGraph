@@ -18,7 +18,16 @@ namespace Dotless.Generators.NodeGenerators
         {
             var result = new List<IDotToken>();
 
-            result.QuotedIdentifier(new DotQuotationMarkEscaper().Escape(node.Id)!);
+            var id = new DotQuotationMarkEscaper().Escape(node.Id)!;
+
+            if (RequiresQuoting(id, options))
+            {
+                result.QuotedIdentifier(id);
+            }
+            else
+            {
+                result.Identifier(id);
+            }
 
             var tokens = _entityGenerators.GetForTypeOrForAnyBaseType(node.Attributes)
                 .Generate(node.Attributes, options);

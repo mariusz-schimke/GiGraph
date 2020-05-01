@@ -31,11 +31,6 @@ namespace Dotless.Generators.AttributeGenerators
             return new List<IDotToken>().Text(escapedValue);
         }
 
-        protected virtual bool RequiresQuoting(string value, DotEntityGeneratorOptions options)
-        {
-            return options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
-        }
-
         protected override ICollection<IDotTextEscaper> GetValueEscapingPipeline(DotEntityGeneratorOptions options)
         {
             var result = new List<IDotTextEscaper>();

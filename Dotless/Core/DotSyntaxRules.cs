@@ -29,8 +29,8 @@ namespace Dotless.Core
         public virtual bool IsValidIdentifier(string value)
         {
             return !IsKeyword(value) &&
-                Regex.Match(value, AlphabeticIdentifierPattern, RegexOptions.IgnoreCase).Success ||
-                Regex.Match(value, NumericIdentifierPattern, RegexOptions.IgnoreCase).Success;
+                Regex.Match(value, AlphabeticIdentifierPattern).Success ||
+                Regex.Match(value, NumericIdentifierPattern).Success;
         }
     }
 }

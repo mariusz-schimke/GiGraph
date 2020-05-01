@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Dotless.DotBuilders
 {
-    public static class DotTokenCollectionExtension
+    public static class IDotTokenCollectionExtension
     {
         public static ICollection<IDotToken> Token(this ICollection<IDotToken> collection, IDotToken token)
         {
