@@ -6,7 +6,9 @@ namespace Dotless.DotBuilders
     {
         public static string Indentation(this DotTokenWriterOptions options, int level)
         {
-            return string.Empty.PadRight(options.BaseIndentation + options.Indentation * level);
+            return options.Indent
+                ? string.Empty.PadRight(options.BaseIndentation + options.Indentation * level)
+                : string.Empty;
         }
 
         public static string TokenSpace(this DotTokenWriterOptions options)
@@ -21,21 +23,27 @@ namespace Dotless.DotBuilders
 
         public static string NewLine(this DotTokenWriterOptions options, int level)
         {
-            return options.SingleLine
+            return options.SingleLineOutput
                 ? options.TokenSpace()
                 : options.LineBreak + options.Indentation(level);
         }
 
+        public static string LineBreak(this DotTokenWriterOptions options)
+        {
+            return options.SingleLineOutput
+                ? options.TokenSpace()
+                : options.LineBreak;
+        }
+
         public static string? String(this DotTokenWriterOptions options, string? value)
         {
-            if (!options.SingleLine || value is null)
+            if (!options.SingleLineOutput || value is null)
             {
                 return value;
             }
 
             var lines = value.Split(options.LineBreak, StringSplitOptions.None);
-
-            return string.Join(options.MandatoryTokenSpace(), lines);
+            return string.Join(options.SingleLineOutputLineBreakReplacement, lines);
         }
     }
 }

@@ -7,6 +7,11 @@ using System;
 
 namespace Dotless
 {
+    // TODO: przejrzec wszystkie metody, czy powinny lub nie powinny byc wirtualne
+    // TODO: przejrzeć klasy, czy powinny miec interfejsy (np. TokenWriter itp.)
+
+
+
     internal class Program
     {
         private static void Main(string[] args)

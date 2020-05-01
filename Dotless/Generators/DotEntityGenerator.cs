@@ -18,6 +18,11 @@ namespace Dotless.Generators
             _entityGenerators = entityGenerators;
         }
 
+        protected virtual bool RequiresQuoting(string value, DotEntityGeneratorOptions options)
+        {
+            return options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
+        }
+
         ICollection<IDotToken> IDotEntityGenerator.Generate(IDotEntity entity, DotEntityGeneratorOptions options)
         {
             return Generate((TEntity)entity, options);
