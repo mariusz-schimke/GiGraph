@@ -7,7 +7,7 @@ namespace Dotless.GraphElements
     {
         public string Id { get; set; }
 
-        public DotAttributeCollection Attributes { get; } = new DotAttributeCollection();
+        public DotNodeAttributes Attributes { get; } = new DotNodeAttributes();
 
         public DotGraphNode(string id)
         {

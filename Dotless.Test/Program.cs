@@ -1,8 +1,8 @@
 ﻿using Dotless.Attributes;
-using Dotless.DotBuilders;
-using Dotless.Generators;
+using Dotless.DotWriters.Options;
 using Dotless.GraphElements;
 using Dotless.Graphs;
+using Dotless.Writers.Options;
 using System;
 
 namespace Dotless
@@ -16,17 +16,17 @@ namespace Dotless
     {
         private static void Main(string[] args)
         {
-            var wo = new DotTokenWriterOptions
+            var fo = new DotFormattingOptions
             {
                 //SingleLine = true,
                 //TokenSpacing = 0
             };
 
-            var go = new DotEntityGeneratorOptions()
+            var wo = new DotWriterOptions()
             {
             };
 
-            go.Attributes.PreferQuotedValue = false;
+            wo.Attributes.PreferQuotedValue = false;
 
             var dotGraph = new DotGraph()
             {
@@ -54,7 +54,7 @@ namespace Dotless
                 Label = new DotTextLabel("graph")
             });
 
-            Console.WriteLine(dotGraph.ToString(wo, go));
+            // Console.WriteLine(dotGraph.ToString(fo, fo));
 
             Console.ReadLine();
         }
