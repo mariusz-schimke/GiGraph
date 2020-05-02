@@ -10,6 +10,8 @@
 
         string IDotAttribute.Key => _key;
 
+        public bool HasValue => _value is { };
+
         public DotAttribute(string key, T value)
         {
             _key = key;

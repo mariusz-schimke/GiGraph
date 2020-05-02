@@ -2,7 +2,7 @@
 {
     public class DotHtmlLabel : DotLabel
     {
-        public DotHtmlLabel(string? value)
+        public DotHtmlLabel(string value)
             : base(value)
         {
         }

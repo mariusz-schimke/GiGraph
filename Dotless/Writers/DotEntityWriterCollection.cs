@@ -2,35 +2,36 @@
 using System;
 using System.Collections.Generic;
 
-namespace Dotless.Generators
+namespace Dotless.Writers
 {
-    public class DotEntityGeneratorCollection
+    // TODO: wyodrębnić interfejs
+    public class DotEntityWriterCollection
     {
-        protected IDictionary<Type, IDotEntityGenerator> _generators { get; } = new Dictionary<Type, IDotEntityGenerator>();
+        protected IDictionary<Type, IDotEntityWriter> _generators { get; } = new Dictionary<Type, IDotEntityWriter>();
 
         public void Clear()
         {
             _generators.Clear();
         }
 
-        public void Add<T>(IDotEntityGenerator<T> generator)
+        public void Add<T>(IDotEntityWriter<T> generator)
             where T : IDotEntity
         {
             _generators.Add(typeof(T), generator);
         }
 
-        public void Replace<T>(IDotEntityGenerator<T> generator)
+        public void Replace<T>(IDotEntityWriter<T> generator)
             where T : IDotEntity
         {
             _generators[typeof(T)] = generator;
         }
 
-        public IDotEntityGenerator GetForTypeOrForAnyBaseType(IDotEntity entity)
+        public IDotEntityWriter GetForTypeOrForAnyBaseType(IDotEntity entity)
         {
             return GetForTypeOrForAnyBaseType(entity.GetType());
         }
 
-        public IDotEntityGenerator GetForTypeOrForAnyBaseType(Type entityType)
+        public IDotEntityWriter GetForTypeOrForAnyBaseType(Type entityType)
         {
             var seek = entityType;
 

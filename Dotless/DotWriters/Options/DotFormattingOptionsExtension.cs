@@ -1,41 +1,41 @@
 ﻿using System;
 
-namespace Dotless.DotBuilders
+namespace Dotless.DotWriters.Options
 {
-    public static class DotTokenWriterOptionsExtension
+    public static class DotFormattingOptionsExtension
     {
-        public static string Indentation(this DotTokenWriterOptions options, int level)
+        public static string Indentation(this DotFormattingOptions options)
         {
             return options.Indent
-                ? string.Empty.PadRight(options.BaseIndentation + options.Indentation * level)
+                ? string.Empty.PadRight(options.Indentation)
                 : string.Empty;
         }
 
-        public static string TokenSpace(this DotTokenWriterOptions options)
+        public static string TokenSpace(this DotFormattingOptions options)
         {
             return string.Empty.PadRight(options.TokenSpacing);
         }
 
-        public static string MandatoryTokenSpace(this DotTokenWriterOptions options)
+        public static string KeywordSpace(this DotFormattingOptions options)
         {
             return options.TokenSpace().PadRight(1);
         }
 
-        public static string NewLine(this DotTokenWriterOptions options, int level)
+        public static string NewLine(this DotFormattingOptions options)
         {
             return options.SingleLineOutput
                 ? options.TokenSpace()
-                : options.LineBreak + options.Indentation(level);
+                : options.LineBreak + options.Indentation();
         }
 
-        public static string LineBreak(this DotTokenWriterOptions options)
+        public static string LineBreak(this DotFormattingOptions options)
         {
             return options.SingleLineOutput
                 ? options.TokenSpace()
                 : options.LineBreak;
         }
 
-        public static string? String(this DotTokenWriterOptions options, string? value)
+        public static string? String(this DotFormattingOptions options, string? value)
         {
             if (!options.SingleLineOutput || value is null)
             {
