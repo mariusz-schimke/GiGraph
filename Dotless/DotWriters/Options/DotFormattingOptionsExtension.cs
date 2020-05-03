@@ -13,7 +13,7 @@ namespace Dotless.DotWriters.Options
 
         public static string TokenSpace(this DotFormattingOptions options)
         {
-            return string.Empty.PadRight(options.TokenSpacing);
+            return string.Empty.PadRight(1);
         }
 
         public static string KeywordSpace(this DotFormattingOptions options)
@@ -43,7 +43,7 @@ namespace Dotless.DotWriters.Options
             }
 
             var lines = value.Split(options.LineBreak, StringSplitOptions.None);
-            return string.Join(options.SingleLineOutputLineBreakReplacement, lines);
+            return string.Join(" ", lines);
         }
     }
 }

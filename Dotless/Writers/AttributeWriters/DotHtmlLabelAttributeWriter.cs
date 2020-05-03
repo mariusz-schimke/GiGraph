@@ -16,7 +16,13 @@ namespace Dotless.Writers.AttributeWriters
         {
             writer
                 .AssertContext<DotStringWriter.AttributeListContext>()
-                .WriteHtmlAttribute(key, value);
+                .WriteHtmlAttribute
+                (
+                    key,
+                    quoteKey: IdRequiresQuoting(key),
+                    value,
+                    braceValue: true
+                );
         }
     }
 }

@@ -1,34 +1,39 @@
 ﻿using Dotless.DotWriters.Options;
-using System;
+using System.IO;
 
 namespace Dotless.DotWriters
 {
     public partial class DotStringWriter
     {
-        public class GraphContext : DotWriterContext
+        public class GraphContext : GraphBlockContext
         {
-            public GraphContext(DotWriterContext parentContext, DotFormattingOptions options, int level)
-                : base(parentContext, options, level)
+            public GraphContext(StreamWriter writer, DotFormattingOptions options, int level, bool strict, bool directed, string? name, bool quoteName)
+                : base(writer, options, level)
             {
+                WriteGraphDeclaration(strict, directed, name, quoteName);
+                WriteBlockStart();
             }
 
-            public override void EndContext()
+            protected virtual void WriteGraphDeclaration(bool strict, bool directed, string? name, bool quoteName)
             {
-            }
+                if (strict)
+                {
+                    WriteKeyword("strict");
+                }
 
-            public virtual GraphAttributesContext BeginAttributesContext(bool preferExplicitDelimiter)
-            {
-                throw new NotImplementedException();
-            }
+                if (directed)
+                {
+                    WriteKeyword("digraph");
+                }
+                else
+                {
+                    WriteKeyword("graph");
+                }
 
-            public virtual NodeContext BeginNodeContext(string id, bool quoteId)
-            {
-                throw new NotImplementedException();
-            }
-
-            public virtual GraphContext BeginSubgraphContext(string id, bool quoteId)
-            {
-                throw new NotImplementedException();
+                if (name != null)
+                {
+                    WriteIdentifier(name, quoteName);
+                }
             }
         }
     }

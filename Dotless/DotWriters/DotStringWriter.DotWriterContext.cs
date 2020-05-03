@@ -1,4 +1,5 @@
 ﻿using Dotless.DotWriters.Options;
+using System.IO;
 
 namespace Dotless.DotWriters
 {
@@ -6,12 +7,9 @@ namespace Dotless.DotWriters
     {
         public abstract class DotWriterContext : DotStringWriter
         {
-            protected readonly DotStringWriter? _parentContext;
-
-            public DotWriterContext(DotStringWriter? parentContext, DotFormattingOptions options, int level)
-                : base(options, level)
+            public DotWriterContext(StreamWriter writer, DotFormattingOptions options, int level)
+                : base(writer, options, level)
             {
-                _parentContext = parentContext;
             }
 
             public virtual void EndContext()
