@@ -15,11 +15,11 @@ namespace Dotless.Writers.AttributeWriters
         {
         }
 
-        public override void Write(DotNodeAttributes attributes, DotStringWriter writer)
+        public override bool Write(DotNodeAttributes attributes, DotStringWriter writer)
         {
             if (!attributes.Any())
             {
-                return;
+                return false;
             }
 
             var context = writer.AssertContext<DotStringWriter.AttributesContext>();
@@ -28,6 +28,8 @@ namespace Dotless.Writers.AttributeWriters
             {
                 _entityGenerators.GetForTypeOrForAnyBaseType(attribute).Write(attribute, context);
             }
+
+            return true;
         }
     }
 }

@@ -6,7 +6,7 @@ using Dotless.Writers.Options;
 namespace Dotless.Writers.AttributeWriters
 {
     public abstract class DotAttributeWriter<TAttribute> : DotEntityWriter<TAttribute>
-        where TAttribute : IDotAttribute
+        where TAttribute : DotAttribute
     {
         public DotAttributeWriter(DotSyntaxRules syntaxRules, DotWriterOptions options, DotEntityWriterCollection entityGenerators)
             : base(syntaxRules, options, entityGenerators)
@@ -15,15 +15,15 @@ namespace Dotless.Writers.AttributeWriters
 
         protected abstract string GetAttributeValue(TAttribute attribute);
 
-        public override void Write(TAttribute attribute, DotStringWriter writer)
+        public override bool Write(TAttribute attribute, DotStringWriter writer)
         {
-            if (!attribute.HasValue)
+            if (((IDotAttribute)attribute).HasValue)
             {
-                return;
+                var value = GetAttributeValue(attribute);
+                return WriteAttribute(((IDotAttribute)attribute).Key, value, writer);
             }
 
-            var value = GetAttributeValue(attribute);
-            WriteAttribute(attribute.Key, value, writer);
+            return false;
         }
 
         protected virtual bool IdRequiresQuoting(string id)
@@ -36,7 +36,7 @@ namespace Dotless.Writers.AttributeWriters
             return _options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
         }
 
-        protected virtual void WriteAttribute(string key, string value, DotStringWriter writer)
+        protected virtual bool WriteAttribute(string key, string value, DotStringWriter writer)
         {
             writer
                 .AssertContext<DotStringWriter.AttributesContext>()
@@ -47,6 +47,8 @@ namespace Dotless.Writers.AttributeWriters
                     value,
                     quoteValue: ValueRequiresQuoting(value)
                 );
+
+            return true;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Dotless.Writers
         protected readonly DotEntityWriterCollection _entityGenerators;
 
         // TODO: writer powinien być od razu konkretnego typu, rzutowany przez IDotEntityWriter.Write
-        public abstract void Write(TEntity entity, DotStringWriter writer);
+        public abstract bool Write(TEntity entity, DotStringWriter writer);
 
         // TODO: zdecydować się co do nazwy - obecnie jest writers, a tu zostało generators
         public DotEntityWriter(DotSyntaxRules syntaxRules, DotWriterOptions options, DotEntityWriterCollection entityGenerators)
@@ -22,9 +22,9 @@ namespace Dotless.Writers
             _entityGenerators = entityGenerators;
         }
 
-        void IDotEntityWriter.Write(IDotEntity entity, DotStringWriter writer)
+        bool IDotEntityWriter.Write(IDotEntity entity, DotStringWriter writer)
         {
-            Write((TEntity)entity, writer);
+            return Write((TEntity)entity, writer);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Dotless.Writers.NodeWriters
         {
         }
 
-        public override void Write(DotGraphNodes nodes, DotStringWriter writer)
+        public override bool Write(DotGraphNodes nodes, DotStringWriter writer)
         {
             var nodesContext = writer.AssertContext<DotStringWriter.GraphNodesContext>();
 
@@ -20,6 +20,8 @@ namespace Dotless.Writers.NodeWriters
             {
                 _entityGenerators.GetForTypeOrForAnyBaseType(node).Write(node, nodesContext);
             }
+
+            return true;
         }
     }
 }

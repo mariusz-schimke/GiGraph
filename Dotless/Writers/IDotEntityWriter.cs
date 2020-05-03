@@ -5,12 +5,12 @@ namespace Dotless.Writers
 {
     public interface IDotEntityWriter
     {
-        void Write(IDotEntity entity, DotStringWriter writer);
+        bool Write(IDotEntity entity, DotStringWriter writer);
     }
 
     public interface IDotEntityWriter<T> : IDotEntityWriter
         where T : IDotEntity
     {
-        void Write(T entity, DotStringWriter writer);
+        bool Write(T entity, DotStringWriter writer);
     }
 }
