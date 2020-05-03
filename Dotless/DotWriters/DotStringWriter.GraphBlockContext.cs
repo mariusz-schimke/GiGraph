@@ -17,14 +17,14 @@ namespace Dotless.DotWriters
                 WriteBlockEnd();
             }
 
-            public virtual GraphAttributeListContext BeginAttributeListContext(bool preferExplicitAttributeDelimiter)
+            public virtual GraphAttributesContext BeginAttributesContext(bool preferExplicitAttributeDelimiter)
             {
-                return new GraphAttributeListContext(_writer, _options, _level + 1, preferExplicitAttributeDelimiter);
+                return new GraphAttributesContext(_writer, _options, _level + 1, preferExplicitAttributeDelimiter);
             }
 
-            public virtual GraphNodeListContext BeginNodeListContext(string id, bool quoteId, bool preferExplicitNodeDelimiter)
+            public virtual GraphNodesContext BeginNodesContext(bool useStatementDelimiter)
             {
-                return new GraphNodeListContext(_writer, _options, _level + 1, preferExplicitNodeDelimiter);
+                return new GraphNodesContext(_writer, _options, _level + 1, useStatementDelimiter);
             }
 
             public virtual SubgraphContext BeginSubgraphContext(string? name, bool quoteName)

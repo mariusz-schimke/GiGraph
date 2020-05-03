@@ -1,12 +1,12 @@
 ﻿using Dotless.Core;
 using Dotless.DotWriters;
-using Dotless.GraphElements;
+using Dotless.Nodes;
 using Dotless.TextEscaping;
 using Dotless.Writers.Options;
 
 namespace Dotless.Writers.NodeWriters
 {
-    public class DotNodeWriter : DotEntityWriter<DotGraphNode>
+    public class DotNodeWriter : DotEntityWriter<DotNode>
     {
         public DotNodeWriter(DotSyntaxRules syntaxRules, DotWriterOptions options, DotEntityWriterCollection entityGenerators)
             : base(syntaxRules, options, entityGenerators)
@@ -18,12 +18,12 @@ namespace Dotless.Writers.NodeWriters
             return _options.Nodes.PreferQuotedId || !_syntaxRules.IsValidIdentifier(value);
         }
 
-        public override void Write(DotGraphNode node, DotStringWriter writer)
+        public override void Write(DotNode node, DotStringWriter writer)
         {
             var id = new DotQuotationMarkEscaper().Escape(node.Id)!;
 
             var nodeContext = writer
-                .AssertContext<DotStringWriter.GraphNodeListContext>()
+                .AssertContext<DotStringWriter.GraphNodesContext>()
                 .BeginNodeContext(id, IdRequiresQuoting(id));
 
             WriteNodeAttributes(node.Attributes, nodeContext);

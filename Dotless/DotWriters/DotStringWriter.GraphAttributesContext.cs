@@ -5,9 +5,9 @@ namespace Dotless.DotWriters
 {
     public partial class DotStringWriter
     {
-        public class GraphAttributeListContext : AttributeListContext
+        public class GraphAttributesContext : AttributesContext
         {
-            public GraphAttributeListContext(StreamWriter writer, DotFormattingOptions options, int level, bool preferExplicitAttributeDelimiter)
+            public GraphAttributesContext(StreamWriter writer, DotFormattingOptions options, int level, bool preferExplicitAttributeDelimiter)
                 : base(writer, options, level, preferExplicitAttributeDelimiter)
             {
             }
@@ -17,7 +17,7 @@ namespace Dotless.DotWriters
                 PushLineBreak();
             }
 
-            protected override AttributeListContext WriteAttributeDelimiter()
+            protected override AttributesContext WriteAttributeDelimiter()
             {
                 if (_preferExplicitAttributeDelimiter)
                 {

@@ -13,9 +13,9 @@ namespace Dotless.DotWriters
                 WriteIdentifier(id, quoteId);
             }
 
-            public virtual NodeAttributeListContext BeginAttributesContext(bool preferExplicitAttributeDelimiter)
+            public virtual NodeAttributesContext BeginAttributesContext(bool preferExplicitAttributeDelimiter)
             {
-                return new NodeAttributeListContext(_writer, _options, _level + 1, preferExplicitAttributeDelimiter);
+                return new NodeAttributesContext(_writer, _options, _level + 1, preferExplicitAttributeDelimiter);
             }
         }
     }

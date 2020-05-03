@@ -8,6 +8,6 @@
         /// <summary>
         /// When set, all statements within the graph will be followed by a delimiter (;).
         /// </summary>
-        public bool UseStatementDelimiter { get; set; } = true;
+        public bool PreferStatementDelimiter { get; set; } = true;
     }
 }

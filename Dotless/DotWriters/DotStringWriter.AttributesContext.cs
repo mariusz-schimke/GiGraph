@@ -5,17 +5,17 @@ namespace Dotless.DotWriters
 {
     public partial class DotStringWriter
     {
-        public abstract class AttributeListContext : DotWriterContext
+        public abstract class AttributesContext : DotWriterContext
         {
             protected readonly bool _preferExplicitAttributeDelimiter;
 
-            public AttributeListContext(StreamWriter writer, DotFormattingOptions options, int level, bool preferExplicitAttributeDelimiter)
+            public AttributesContext(StreamWriter writer, DotFormattingOptions options, int level, bool preferExplicitAttributeDelimiter)
                 : base(writer, options, level)
             {
                 _preferExplicitAttributeDelimiter = preferExplicitAttributeDelimiter;
             }
 
-            public virtual AttributeListContext WriteAttribute(string key, bool quoteKey, string value, bool quoteValue)
+            public virtual AttributesContext WriteAttribute(string key, bool quoteKey, string value, bool quoteValue)
             {
                 WriteIdentifier(key, quoteKey);
                 WriteValueAssignmentOperator();
@@ -24,7 +24,7 @@ namespace Dotless.DotWriters
                 return WriteAttributeDelimiter();
             }
 
-            public virtual AttributeListContext WriteHtmlAttribute(string key, bool quoteKey, string value, bool braceValue)
+            public virtual AttributesContext WriteHtmlAttribute(string key, bool quoteKey, string value, bool braceValue)
             {
                 WriteIdentifier(key, quoteKey);
                 WriteValueAssignmentOperator();
@@ -33,7 +33,7 @@ namespace Dotless.DotWriters
                 return WriteAttributeDelimiter();
             }
 
-            protected virtual AttributeListContext WriteAttributeDelimiter()
+            protected virtual AttributesContext WriteAttributeDelimiter()
             {
                 return this;
             }

@@ -1,6 +1,5 @@
 ﻿using Dotless.Core;
-using Dotless.GraphElements;
-using System.Collections.Generic;
+using Dotless.Nodes;
 
 namespace Dotless.Graphs
 {
@@ -10,7 +9,7 @@ namespace Dotless.Graphs
         public bool IsDirected { get; set; }
         public bool IsStrict { get; set; }
 
-        public List<DotGraphNode> Nodes { get; } = new List<DotGraphNode>();
+        public DotGraphNodes Nodes { get; } = new DotGraphNodes();
         public DotGraphAttributes Attributes { get; } = new DotGraphAttributes();
     }
 }

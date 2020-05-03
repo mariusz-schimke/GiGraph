@@ -22,16 +22,12 @@ namespace Dotless.Writers.AttributeWriters
                 return;
             }
 
-            var context = writer
-                .AssertContext<DotStringWriter.GraphContext>()
-                .BeginAttributeListContext(_options.Attributes.PreferExplicitDelimiter);
+            var context = writer.AssertContext<DotStringWriter.AttributesContext>();
 
             foreach (var attribute in attributes)
             {
                 _entityGenerators.GetForTypeOrForAnyBaseType(attribute).Write(attribute, context);
             }
-
-            context.EndContext();
         }
     }
 }

@@ -173,11 +173,5 @@ namespace Dotless.DotWriters
             PushSeparator(_options.TokenSpace());
             return this;
         }
-
-        public static GraphContext CreateGraphWriter(StreamWriter writer, DotFormattingOptions options,
-            bool strict, bool directed, string? name, bool quoteName, int level = 0)
-        {
-            return new GraphContext(writer, options, level, strict, directed, name, quoteName);
-        }
     }
 }

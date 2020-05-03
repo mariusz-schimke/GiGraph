@@ -14,6 +14,7 @@ namespace Dotless.Writers
         // TODO: writer powinien być od razu konkretnego typu, rzutowany przez IDotEntityWriter.Write
         public abstract void Write(TEntity entity, DotStringWriter writer);
 
+        // TODO: zdecydować się co do nazwy - obecnie jest writers, a tu zostało generators
         public DotEntityWriter(DotSyntaxRules syntaxRules, DotWriterOptions options, DotEntityWriterCollection entityGenerators)
         {
             _syntaxRules = syntaxRules;
