@@ -5,9 +5,9 @@ namespace Dotless.DotWriters
 {
     public partial class DotStringWriter
     {
-        public class NodeAttributeListContext : AttributeListContext
+        public class NodeAttributesContext : AttributesContext
         {
-            public NodeAttributeListContext(StreamWriter writer, DotFormattingOptions options, int level, bool preferExplicitAttributeDelimiter)
+            public NodeAttributesContext(StreamWriter writer, DotFormattingOptions options, int level, bool preferExplicitAttributeDelimiter)
                 : base(writer, options, level, preferExplicitAttributeDelimiter)
             {
                 WriteListStart();
@@ -18,7 +18,7 @@ namespace Dotless.DotWriters
                 WriteListEnd();
             }
 
-            protected override AttributeListContext WriteAttributeDelimiter()
+            protected override AttributesContext WriteAttributeDelimiter()
             {
                 if (_preferExplicitAttributeDelimiter)
                 {

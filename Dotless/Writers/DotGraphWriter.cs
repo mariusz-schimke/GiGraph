@@ -1,6 +1,7 @@
 ﻿using Dotless.Core;
 using Dotless.DotWriters;
 using Dotless.Graphs;
+using Dotless.Nodes;
 using Dotless.Writers.AttributeWriters;
 using Dotless.Writers.NodeWriters;
 using Dotless.Writers.Options;
@@ -17,6 +18,25 @@ namespace Dotless.Writers
         public override void Write(DotGraph graph, DotStringWriter writer)
         {
             var context = writer.AssertContext<DotStringWriter.GraphContext>();
+
+            WriteAttributes(graph.Attributes, context);
+            WriteNodes(graph.Nodes, context);
+
+            context.EndContext();
+        }
+
+        protected virtual void WriteAttributes(DotGraphAttributes attributes, DotStringWriter.GraphContext graphContext)
+        {
+            var attributesContext = graphContext.BeginAttributesContext(_options.Attributes.PreferExplicitDelimiter);
+            _entityGenerators.GetForTypeOrForAnyBaseType(attributes).Write(attributes, attributesContext);
+            attributesContext.EndContext();
+        }
+
+        protected virtual void WriteNodes(DotGraphNodes nodes, DotStringWriter.GraphContext graphContext)
+        {
+            var nodesContext = graphContext.BeginNodesContext(_options.PreferStatementDelimiter);
+            _entityGenerators.GetForTypeOrForAnyBaseType(nodes).Write(nodes, nodesContext);
+            nodesContext.EndContext();
         }
 
         public static DotGraphWriter CreateDefault()
@@ -33,6 +53,7 @@ namespace Dotless.Writers
             converters.Add(new DotHtmlLabelAttributeWriter(syntaxRules, dotWriterOptions, converters));
 
             converters.Add(new DotNodeWriter(syntaxRules, dotWriterOptions, converters));
+            converters.Add(new DotGraphNodesWriter(syntaxRules, dotWriterOptions, converters));
 
             return new DotGraphWriter(syntaxRules, dotWriterOptions, converters);
         }

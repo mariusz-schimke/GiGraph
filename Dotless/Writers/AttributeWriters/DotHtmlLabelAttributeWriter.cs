@@ -15,7 +15,7 @@ namespace Dotless.Writers.AttributeWriters
         protected override void WriteAttribute(string key, string value, DotStringWriter writer)
         {
             writer
-                .AssertContext<DotStringWriter.AttributeListContext>()
+                .AssertContext<DotStringWriter.AttributesContext>()
                 .WriteHtmlAttribute
                 (
                     key,

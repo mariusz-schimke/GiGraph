@@ -1,9 +1,12 @@
 ﻿using Dotless.Attributes;
+using Dotless.DotWriters;
 using Dotless.DotWriters.Options;
-using Dotless.GraphElements;
 using Dotless.Graphs;
+using Dotless.Nodes;
+using Dotless.Writers;
 using Dotless.Writers.Options;
 using System;
+using System.IO;
 
 namespace Dotless
 {
@@ -28,31 +31,40 @@ namespace Dotless
 
             wo.Attributes.PreferQuotedValue = false;
 
-            var dotGraph = new DotGraph()
+            var graph = new DotGraph()
             {
                 IsStrict = true,
                 Name = "My \"awesome\" graph"
             };
 
-            dotGraph.Nodes.Add(new DotGraphNode("my \"node")
+            graph.Nodes.Add(new DotNode("my \"node")
             {
                 Label = "my label"
             });
 
-            dotGraph.Nodes.Add(new DotGraphNode("my \"node")
+            graph.Nodes.Add(new DotNode("my \"node")
             {
                 Label = new DotHtmlLabel("<b>text<b>")
             });
 
-            dotGraph.Nodes.Add(new DotGraphNode("myNode")
+            graph.Nodes.Add(new DotNode("myNode")
             {
                 Label = new DotTextLabel("label")
             });
 
-            dotGraph.Nodes.Add(new DotGraphNode("myNode")
+            graph.Nodes.Add(new DotNode("myNode")
             {
                 Label = new DotTextLabel("graph")
             });
+
+            var sw = new StreamWriter(Console.OpenStandardOutput());
+
+            var stringWriter = new DotStringWriter.GraphContext(sw, fo, level: 0, graph.IsStrict, graph.IsDirected, graph.Name, quoteName: true);
+
+            var graphWriter = DotGraphWriter.CreateDefault();
+            graphWriter.Write(graph, stringWriter);
+
+            sw.Dispose();
 
             // Console.WriteLine(dotGraph.ToString(fo, fo));
 

@@ -39,7 +39,7 @@ namespace Dotless.Writers.AttributeWriters
         protected virtual void WriteAttribute(string key, string value, DotStringWriter writer)
         {
             writer
-                .AssertContext<DotStringWriter.AttributeListContext>()
+                .AssertContext<DotStringWriter.AttributesContext>()
                 .WriteAttribute
                 (
                     key,

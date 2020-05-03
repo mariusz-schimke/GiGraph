@@ -5,11 +5,11 @@ namespace Dotless.DotWriters
 {
     public partial class DotStringWriter
     {
-        public class GraphNodeListContext : DotWriterContext
+        public class GraphNodesContext : DotWriterContext
         {
             protected readonly bool _useStatementDelimiter;
 
-            public GraphNodeListContext(StreamWriter writer, DotFormattingOptions options, int level, bool useStatementDelimiter)
+            public GraphNodesContext(StreamWriter writer, DotFormattingOptions options, int level, bool useStatementDelimiter)
                 : base(writer, options, level)
             {
                 _useStatementDelimiter = useStatementDelimiter;
