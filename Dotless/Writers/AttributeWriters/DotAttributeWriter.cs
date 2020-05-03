@@ -26,6 +26,11 @@ namespace Dotless.Writers.AttributeWriters
             WriteAttribute(attribute.Key, value, writer);
         }
 
+        protected virtual bool IdRequiresQuoting(string id)
+        {
+            return !_syntaxRules.IsValidIdentifier(id);
+        }
+
         protected virtual bool ValueRequiresQuoting(string value)
         {
             return _options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
@@ -35,7 +40,13 @@ namespace Dotless.Writers.AttributeWriters
         {
             writer
                 .AssertContext<DotStringWriter.AttributeListContext>()
-                .WriteAttribute(key, value, quoteValue: ValueRequiresQuoting(value));
+                .WriteAttribute
+                (
+                    key,
+                    quoteKey: IdRequiresQuoting(key),
+                    value,
+                    quoteValue: ValueRequiresQuoting(value)
+                );
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Dotless.Writers
         protected readonly DotWriterOptions _options;
         protected readonly DotEntityWriterCollection _entityGenerators;
 
+        // TODO: writer powinien być od razu konkretnego typu, rzutowany przez IDotEntityWriter.Write
         public abstract void Write(TEntity entity, DotStringWriter writer);
 
         public DotEntityWriter(DotSyntaxRules syntaxRules, DotWriterOptions options, DotEntityWriterCollection entityGenerators)

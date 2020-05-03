@@ -23,8 +23,8 @@ namespace Dotless.Writers.NodeWriters
             var id = new DotQuotationMarkEscaper().Escape(node.Id)!;
 
             var nodeContext = writer
-                .AssertContext<DotStringWriter.GraphContext>()
-                .BeginNodeContext(id, quoteId: IdRequiresQuoting(id));
+                .AssertContext<DotStringWriter.GraphNodeListContext>()
+                .BeginNodeContext(id, IdRequiresQuoting(id));
 
             WriteNodeAttributes(node.Attributes, nodeContext);
 

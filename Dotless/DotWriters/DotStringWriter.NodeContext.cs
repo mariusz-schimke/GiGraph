@@ -1,5 +1,5 @@
 ﻿using Dotless.DotWriters.Options;
-using System;
+using System.IO;
 
 namespace Dotless.DotWriters
 {
@@ -7,18 +7,15 @@ namespace Dotless.DotWriters
     {
         public class NodeContext : DotWriterContext
         {
-            public NodeContext(GraphContext parentContext, DotFormattingOptions options, int level)
-                : base(parentContext, options, level)
+            public NodeContext(StreamWriter writer, DotFormattingOptions options, int level, string id, bool quoteId)
+                : base(writer, options, level)
             {
+                WriteIdentifier(id, quoteId);
             }
 
-            public virtual NodeAttributesContext BeginAttributesContext(bool preferExplicitDelimiter)
+            public virtual NodeAttributeListContext BeginAttributesContext(bool preferExplicitAttributeDelimiter)
             {
-                throw new NotImplementedException();
-            }
-
-            public override void EndContext()
-            {
+                return new NodeAttributeListContext(_writer, _options, _level + 1, preferExplicitAttributeDelimiter);
             }
         }
     }

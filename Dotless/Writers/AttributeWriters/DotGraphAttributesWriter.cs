@@ -24,7 +24,7 @@ namespace Dotless.Writers.AttributeWriters
 
             var context = writer
                 .AssertContext<DotStringWriter.GraphContext>()
-                .BeginAttributesContext(_options.Attributes.PreferExplicitDelimiter);
+                .BeginAttributeListContext(_options.Attributes.PreferExplicitDelimiter);
 
             foreach (var attribute in attributes)
             {

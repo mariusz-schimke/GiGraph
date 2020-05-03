@@ -1,5 +1,5 @@
 ﻿using Dotless.DotWriters.Options;
-using System;
+using System.IO;
 
 namespace Dotless.DotWriters
 {
@@ -7,22 +7,35 @@ namespace Dotless.DotWriters
     {
         public abstract class AttributeListContext : DotWriterContext
         {
-            protected readonly bool _preferExplicitDelimiter;
+            protected readonly bool _preferExplicitAttributeDelimiter;
 
-            public AttributeListContext(DotWriterContext parentContext, DotFormattingOptions options, int level, bool preferExplicitDelimiter)
-                : base(parentContext, options, level)
+            public AttributeListContext(StreamWriter writer, DotFormattingOptions options, int level, bool preferExplicitAttributeDelimiter)
+                : base(writer, options, level)
             {
-                _preferExplicitDelimiter = preferExplicitDelimiter;
+                _preferExplicitAttributeDelimiter = preferExplicitAttributeDelimiter;
             }
 
-            public virtual void WriteAttribute(string key, string value, bool quoteValue)
+            public virtual AttributeListContext WriteAttribute(string key, bool quoteKey, string value, bool quoteValue)
             {
-                throw new NotImplementedException();
+                WriteIdentifier(key, quoteKey);
+                WriteValueAssignmentOperator();
+                WriteTextValue(value, quoteValue);
+
+                return WriteAttributeDelimiter();
             }
 
-            public virtual void WriteHtmlAttribute(string key, string value)
+            public virtual AttributeListContext WriteHtmlAttribute(string key, bool quoteKey, string value, bool braceValue)
             {
-                throw new NotImplementedException();
+                WriteIdentifier(key, quoteKey);
+                WriteValueAssignmentOperator();
+                WriteHtmlValue(value, braceValue);
+
+                return WriteAttributeDelimiter();
+            }
+
+            protected virtual AttributeListContext WriteAttributeDelimiter()
+            {
+                return this;
             }
         }
     }
