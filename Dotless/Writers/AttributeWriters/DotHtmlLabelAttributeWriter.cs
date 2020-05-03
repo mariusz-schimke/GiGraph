@@ -12,7 +12,7 @@ namespace Dotless.Writers.AttributeWriters
         {
         }
 
-        protected override void WriteAttribute(string key, string value, DotStringWriter writer)
+        protected override bool WriteAttribute(string key, string value, DotStringWriter writer)
         {
             writer
                 .AssertContext<DotStringWriter.AttributesContext>()
@@ -23,6 +23,8 @@ namespace Dotless.Writers.AttributeWriters
                     value,
                     braceValue: true
                 );
+
+            return true;
         }
     }
 }

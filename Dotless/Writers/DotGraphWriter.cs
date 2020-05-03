@@ -15,7 +15,7 @@ namespace Dotless.Writers
         {
         }
 
-        public override void Write(DotGraph graph, DotStringWriter writer)
+        public override bool Write(DotGraph graph, DotStringWriter writer)
         {
             var context = writer.AssertContext<DotStringWriter.GraphContext>();
 
@@ -23,6 +23,8 @@ namespace Dotless.Writers
             WriteNodes(graph.Nodes, context);
 
             context.EndContext();
+
+            return true;
         }
 
         protected virtual void WriteAttributes(DotGraphAttributes attributes, DotStringWriter.GraphContext graphContext)

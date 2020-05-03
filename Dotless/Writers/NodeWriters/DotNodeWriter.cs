@@ -18,7 +18,7 @@ namespace Dotless.Writers.NodeWriters
             return _options.Nodes.PreferQuotedId || !_syntaxRules.IsValidIdentifier(value);
         }
 
-        public override void Write(DotNode node, DotStringWriter writer)
+        public override bool Write(DotNode node, DotStringWriter writer)
         {
             var id = new DotQuotationMarkEscaper().Escape(node.Id)!;
 
@@ -29,6 +29,8 @@ namespace Dotless.Writers.NodeWriters
             WriteNodeAttributes(node.Attributes, nodeContext);
 
             nodeContext.EndContext();
+
+            return true;
         }
 
         protected virtual void WriteNodeAttributes(DotNodeAttributes attributes, DotStringWriter.NodeContext nodeContext)

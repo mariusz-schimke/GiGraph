@@ -17,7 +17,7 @@ namespace Dotless.Writers.AttributeWriters
 
         protected override string GetAttributeValue(TAttribute attribute)
         {
-            return EscapeValue(attribute.Value);
+            return EscapeValue(((IDotAttribute<string>)attribute).Value);
         }
 
         protected virtual ICollection<IDotTextEscaper> GetValueEscapingPipeline()
