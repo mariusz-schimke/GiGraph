@@ -13,10 +13,5 @@
         {
             return new DotTextLabel(value);
         }
-
-        public static implicit operator string(DotLabel label)
-        {
-            return label._value;
-        }
     }
 }
