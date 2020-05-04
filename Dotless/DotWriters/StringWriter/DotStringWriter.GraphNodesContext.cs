@@ -1,7 +1,7 @@
 ﻿using Dotless.DotWriters.Options;
 using System.IO;
 
-namespace Dotless.DotWriters
+namespace Dotless.DotWriters.StringWriter
 {
     public partial class DotStringWriter
     {
@@ -13,18 +13,16 @@ namespace Dotless.DotWriters
                 : base(writer, options, level)
             {
                 _useStatementDelimiter = useStatementDelimiter;
-                WriteListStart();
             }
 
-            public override void EndContext()
+            public IDotNodeWriter BeginNode()
             {
-                PushLineBreak();
-                WriteListEnd();
+                return new NodeContext(_writer, _options, _level);
             }
 
-            public IDotNodeWriter BeginNewNodeContext(string id, bool quoteId)
+            public void EndNode()
             {
-                return new NodeContext(_writer, _options, _level, id, quoteId);
+                WriteStatementEnd();
             }
         }
     }

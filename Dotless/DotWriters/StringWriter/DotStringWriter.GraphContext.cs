@@ -1,20 +1,18 @@
 ﻿using Dotless.DotWriters.Options;
 using System.IO;
 
-namespace Dotless.DotWriters
+namespace Dotless.DotWriters.StringWriter
 {
     public partial class DotStringWriter
     {
         public class GraphContext : GraphBlockContext, IDotGraphWriter
         {
-            public GraphContext(StreamWriter writer, DotFormattingOptions options, int level, bool strict, bool directed, string? name, bool quoteName)
+            public GraphContext(StreamWriter writer, DotFormattingOptions options, int level)
                 : base(writer, options, level)
             {
-                OpenGraphContext(strict, directed, name, quoteName);
-                WriteBlockStart();
             }
 
-            public virtual void OpenGraphContext(bool strict, bool directed, string? name, bool quoteName)
+            public void WriteGraphDeclaration(string? id, bool directed, bool strict, bool quoteId)
             {
                 if (strict)
                 {
@@ -30,10 +28,23 @@ namespace Dotless.DotWriters
                     WriteKeyword("graph");
                 }
 
-                if (name != null)
+                if (id != null)
                 {
-                    WriteIdentifier(name, quoteName);
+                    WriteIdentifier(id, quoteId);
                 }
+            }
+
+            public IDotGraphBodyWriter BeginGraphBody()
+            {
+                WriteBlockStart();
+                PushLineBreak();
+
+                return this;
+            }
+
+            public void EndGraphBody()
+            {
+                WriteBlockEnd();
             }
         }
     }

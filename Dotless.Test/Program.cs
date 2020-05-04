@@ -59,7 +59,7 @@ namespace Dotless
 
             var sw = new StreamWriter(Console.OpenStandardOutput());
 
-            var stringWriter = new DotStringWriter.GraphContext(sw, fo, level: 0, graph.IsStrict, graph.IsDirected, graph.Id, quoteName: true);
+            var stringWriter = new DotStringWriter.GraphContext(sw, fo, level: 0);
 
             var graphWriter = DotGraphGeneratorFactory.CreateDefault();
             graphWriter.Write(graph, stringWriter);

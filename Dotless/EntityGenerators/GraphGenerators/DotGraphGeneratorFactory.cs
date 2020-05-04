@@ -1,6 +1,5 @@
 ﻿using Dotless.Core;
 using Dotless.EntityGenerators.AttributeGenerators;
-using Dotless.EntityGenerators.GraphGenerators;
 using Dotless.EntityGenerators.NodeGenerators;
 using Dotless.EntityGenerators.Options;
 
@@ -16,6 +15,8 @@ namespace Dotless.EntityGenerators.GraphGenerators
             var converters = new DotEntityGeneratorsProvider();
 
             converters.Register(new DotGraphGenerator(syntaxRules, dotWriterOptions, converters));
+            converters.Register(new DotGraphBodyGenerator(syntaxRules, dotWriterOptions, converters));
+
             converters.Register(new DotSubgraphGenerator(syntaxRules, dotWriterOptions, converters));
 
             converters.Register(new DotAttributeCollectionGenerator(syntaxRules, dotWriterOptions, converters));

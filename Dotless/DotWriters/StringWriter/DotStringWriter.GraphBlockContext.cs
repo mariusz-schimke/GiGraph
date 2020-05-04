@@ -1,7 +1,7 @@
 ﻿using Dotless.DotWriters.Options;
 using System.IO;
 
-namespace Dotless.DotWriters
+namespace Dotless.DotWriters.StringWriter
 {
     public partial class DotStringWriter
     {
@@ -12,19 +12,24 @@ namespace Dotless.DotWriters
             {
             }
 
-            public override void EndContext()
-            {
-                WriteBlockEnd();
-            }
-
             public virtual IDotAttributeCollectionWriter BeginAttributesSection(bool preferExplicitAttributeDelimiter)
             {
                 return new GraphAttributesContext(_writer, _options, _level + 1, preferExplicitAttributeDelimiter);
             }
 
+            public void EndAttributesSection()
+            {
+                PushLineBreak();
+            }
+
             public virtual IDotNodeCollectionWriter BeginNodesSection(bool useStatementDelimiter)
             {
                 return new GraphNodesContext(_writer, _options, _level + 1, useStatementDelimiter);
+            }
+
+            public void EndNodesSection()
+            {
+                PushLineBreak();
             }
 
             public virtual IDotSubgraphWriter BeginSubgraphContext(string? name, bool quoteName)

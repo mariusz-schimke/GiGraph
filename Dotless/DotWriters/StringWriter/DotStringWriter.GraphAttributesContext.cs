@@ -1,7 +1,7 @@
 ﻿using Dotless.DotWriters.Options;
 using System.IO;
 
-namespace Dotless.DotWriters
+namespace Dotless.DotWriters.StringWriter
 {
     public partial class DotStringWriter
     {
@@ -10,11 +10,6 @@ namespace Dotless.DotWriters
             public GraphAttributesContext(StreamWriter writer, DotFormattingOptions options, int level, bool preferExplicitAttributeDelimiter)
                 : base(writer, options, level, preferExplicitAttributeDelimiter)
             {
-            }
-
-            public override void EndContext()
-            {
-                PushLineBreak();
             }
 
             protected override void WriteAttributeDelimiter()

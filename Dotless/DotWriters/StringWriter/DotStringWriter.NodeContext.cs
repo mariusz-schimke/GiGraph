@@ -1,21 +1,33 @@
 ﻿using Dotless.DotWriters.Options;
 using System.IO;
 
-namespace Dotless.DotWriters
+namespace Dotless.DotWriters.StringWriter
 {
     public partial class DotStringWriter
     {
         public class NodeContext : DotWriterContext, IDotNodeWriter
         {
-            public NodeContext(StreamWriter writer, DotFormattingOptions options, int level, string id, bool quoteId)
+            public NodeContext(StreamWriter writer, DotFormattingOptions options, int level)
                 : base(writer, options, level)
             {
-                WriteIdentifier(id, quoteId);
+            }
+
+            public void WriteNodeIdentifier(string id, bool quote)
+            {
+                WriteIdentifier(id, quote);
             }
 
             public virtual IDotAttributeCollectionWriter BeginAttributeList(bool useAttributeSeparator)
             {
+                WriteListStart();
+                PushLineBreak();
+
                 return new NodeAttributesContext(_writer, _options, _level + 1, useAttributeSeparator);
+            }
+
+            public void EndAttributeList()
+            {
+                WriteListEnd();
             }
         }
     }
