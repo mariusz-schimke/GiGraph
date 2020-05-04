@@ -24,9 +24,11 @@ namespace Dotless.EntityGenerators
             _entityGenerators = entityGenerators;
         }
 
-        public virtual bool Supports<TRequiredWriter>(Type entityType, bool exactEntityTypeMatching = false)
+        public virtual bool Supports<TRequiredWriter>(Type entityType, out bool isExactEntityTypeMatch)
             where TRequiredWriter : IDotWriter
         {
+            isExactEntityTypeMatch = false;
+
             if (typeof(TRequiredWriter) != typeof(TWriter))
             {
                 return false;
@@ -34,15 +36,11 @@ namespace Dotless.EntityGenerators
 
             if (entityType == typeof(TEntity))
             {
+                isExactEntityTypeMatch = true;
                 return true;
             }
 
-            if (!exactEntityTypeMatching)
-            {
-                return typeof(TEntity).IsAssignableFrom(entityType);
-            }
-
-            return false;
+            return typeof(TEntity).IsAssignableFrom(entityType);
         }
 
         protected virtual bool IdRequiresQuoting(string id)
