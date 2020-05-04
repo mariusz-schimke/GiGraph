@@ -4,7 +4,7 @@ using Dotless.EntityGenerators.GraphGenerators;
 using Dotless.EntityGenerators.NodeGenerators;
 using Dotless.EntityGenerators.Options;
 
-namespace Dotless.EntityGenerators
+namespace Dotless.EntityGenerators.GraphGenerators
 {
     // TODO: dokończyć tę klasę (jakieś interfejsy, możliwość modyfikacji/dostarczenia providerów)
     public static class DotGraphGeneratorFactory
