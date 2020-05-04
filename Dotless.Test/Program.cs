@@ -1,7 +1,7 @@
 ﻿using Dotless.Attributes;
-using Dotless.DotWriters;
 using Dotless.DotWriters.Options;
-using Dotless.EntityGenerators;
+using Dotless.DotWriters.StringWriter;
+using Dotless.EntityGenerators.GraphGenerators;
 using Dotless.EntityGenerators.Options;
 using Dotless.Graphs;
 using Dotless.Nodes;

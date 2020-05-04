@@ -1,4 +1,5 @@
-﻿using Dotless.Core;
+﻿using Dotless.Attributes;
+using Dotless.Core;
 using Dotless.DotWriters;
 using Dotless.EntityGenerators.Options;
 using Dotless.Graphs;

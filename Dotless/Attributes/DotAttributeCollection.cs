@@ -1,9 +1,9 @@
-﻿using Dotless.Attributes;
+﻿using Dotless.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Dotless.Core
+namespace Dotless.Attributes
 {
     public class DotAttributeCollection : IDotEntity, IEnumerable<DotAttribute>
     {
