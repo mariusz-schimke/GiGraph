@@ -5,16 +5,16 @@ namespace Dotless.DotWriters
 {
     public partial class DotStringWriter
     {
-        public class SubgraphContext : GraphBlockContext
+        public class SubgraphContext : GraphBlockContext, IDotSubgraphWriter
         {
             public SubgraphContext(StreamWriter writer, DotFormattingOptions options, int level, string? name, bool quoteName)
                 : base(writer, options, level)
             {
-                WriteGraphDeclaration(name, quoteName);
+                WriteSubgraphDeclaration(name, quoteName);
                 WriteBlockStart();
             }
 
-            protected virtual void WriteGraphDeclaration(string? name, bool quoteName)
+            public virtual void WriteSubgraphDeclaration(string? name, bool quoteName)
             {
                 WriteKeyword("subgraph");
 

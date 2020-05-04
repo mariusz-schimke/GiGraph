@@ -1,10 +1,10 @@
 ﻿using Dotless.Attributes;
 using Dotless.DotWriters;
 using Dotless.DotWriters.Options;
+using Dotless.EntityGenerators;
+using Dotless.EntityGenerators.Options;
 using Dotless.Graphs;
 using Dotless.Nodes;
-using Dotless.Writers;
-using Dotless.Writers.Options;
 using System;
 using System.IO;
 
@@ -25,7 +25,7 @@ namespace Dotless
                 //TokenSpacing = 0
             };
 
-            var wo = new DotWriterOptions()
+            var wo = new DotGenerationOptions()
             {
             };
 
@@ -34,7 +34,7 @@ namespace Dotless
             var graph = new DotGraph()
             {
                 IsStrict = true,
-                Name = "My \"awesome\" graph"
+                Id = "My \"awesome\" graph"
             };
 
             graph.Nodes.Add(new DotNode("my \"node")
@@ -59,9 +59,9 @@ namespace Dotless
 
             var sw = new StreamWriter(Console.OpenStandardOutput());
 
-            var stringWriter = new DotStringWriter.GraphContext(sw, fo, level: 0, graph.IsStrict, graph.IsDirected, graph.Name, quoteName: true);
+            var stringWriter = new DotStringWriter.GraphContext(sw, fo, level: 0, graph.IsStrict, graph.IsDirected, graph.Id, quoteName: true);
 
-            var graphWriter = DotGraphWriter.CreateDefault();
+            var graphWriter = DotGraphGeneratorFactory.CreateDefault();
             graphWriter.Write(graph, stringWriter);
 
             sw.Dispose();

@@ -5,7 +5,7 @@ namespace Dotless.DotWriters
 {
     public partial class DotStringWriter
     {
-        public class GraphNodesContext : DotWriterContext
+        public class GraphNodesContext : DotWriterContext, IDotNodeCollectionWriter
         {
             protected readonly bool _useStatementDelimiter;
 
@@ -22,7 +22,7 @@ namespace Dotless.DotWriters
                 WriteListEnd();
             }
 
-            public NodeContext BeginNodeContext(string id, bool quoteId)
+            public IDotNodeWriter BeginNewNodeContext(string id, bool quoteId)
             {
                 return new NodeContext(_writer, _options, _level, id, quoteId);
             }

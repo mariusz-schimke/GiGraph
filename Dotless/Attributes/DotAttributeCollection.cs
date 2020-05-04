@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Dotless.Core
 {
-    public abstract class DotAttributeCollection : IEnumerable<DotAttribute>
+    public class DotAttributeCollection : IDotEntity, IEnumerable<DotAttribute>
     {
         protected IDictionary<string, DotAttribute> _attributes { get; } = new Dictionary<string, DotAttribute>(StringComparer.OrdinalIgnoreCase);
 

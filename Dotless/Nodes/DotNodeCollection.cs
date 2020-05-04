@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using Dotless.Core;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Dotless.Nodes
 {
-    public class DotNodeCollection : IEnumerable<DotNode>
+    public class DotNodeCollection : IDotEntity, IEnumerable<DotNode>
     {
         protected readonly List<DotNode> _nodes = new List<DotNode>();
 

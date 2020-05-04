@@ -5,37 +5,36 @@ namespace Dotless.DotWriters
 {
     public partial class DotStringWriter
     {
-        public abstract class AttributesContext : DotWriterContext
+        public abstract class AttributesContext : DotWriterContext, IDotAttributeCollectionWriter
         {
-            protected readonly bool _preferExplicitAttributeDelimiter;
+            protected readonly bool _preferExplicitAttributesDelimiter;
 
-            public AttributesContext(StreamWriter writer, DotFormattingOptions options, int level, bool preferExplicitAttributeDelimiter)
+            public AttributesContext(StreamWriter writer, DotFormattingOptions options, int level, bool preferExplicitAttributesDelimiter)
                 : base(writer, options, level)
             {
-                _preferExplicitAttributeDelimiter = preferExplicitAttributeDelimiter;
+                _preferExplicitAttributesDelimiter = preferExplicitAttributesDelimiter;
             }
 
-            public virtual AttributesContext WriteAttribute(string key, bool quoteKey, string value, bool quoteValue)
+            public virtual void WriteAttribute(string key, bool quoteKey, string value, bool quoteValue)
             {
                 WriteIdentifier(key, quoteKey);
                 WriteValueAssignmentOperator();
                 WriteTextValue(value, quoteValue);
 
-                return WriteAttributeDelimiter();
+                WriteAttributeDelimiter();
             }
 
-            public virtual AttributesContext WriteHtmlAttribute(string key, bool quoteKey, string value, bool braceValue)
+            public virtual void WriteHtmlAttribute(string key, bool quoteKey, string value, bool braceValue)
             {
                 WriteIdentifier(key, quoteKey);
                 WriteValueAssignmentOperator();
                 WriteHtmlValue(value, braceValue);
 
-                return WriteAttributeDelimiter();
+                WriteAttributeDelimiter();
             }
 
-            protected virtual AttributesContext WriteAttributeDelimiter()
+            protected virtual void WriteAttributeDelimiter()
             {
-                return this;
             }
         }
     }

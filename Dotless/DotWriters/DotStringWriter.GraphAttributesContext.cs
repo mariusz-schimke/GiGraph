@@ -17,15 +17,14 @@ namespace Dotless.DotWriters
                 PushLineBreak();
             }
 
-            protected override AttributesContext WriteAttributeDelimiter()
+            protected override void WriteAttributeDelimiter()
             {
-                if (_preferExplicitAttributeDelimiter)
+                if (_preferExplicitAttributesDelimiter)
                 {
                     WriteStatementEnd();
                 }
 
                 PushLineBreak();
-                return this;
             }
         }
     }

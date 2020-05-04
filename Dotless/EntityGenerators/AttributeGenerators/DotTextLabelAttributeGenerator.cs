@@ -1,14 +1,14 @@
 ﻿using Dotless.Attributes;
 using Dotless.Core;
 using Dotless.TextEscaping;
-using Dotless.Writers.Options;
+using Dotless.EntityGenerators.Options;
 using System.Collections.Generic;
 
-namespace Dotless.Writers.AttributeWriters
+namespace Dotless.EntityGenerators.AttributeGenerators
 {
-    public class DotTextLabelAttributeWriter : DotTextualAttributeWriter<DotTextLabel>
+    public class DotTextLabelAttributeGenerator : DotTextualAttributeGenerator<DotTextLabel>
     {
-        public DotTextLabelAttributeWriter(DotSyntaxRules syntaxRules, DotWriterOptions options, DotEntityWriterCollection entityGenerators)
+        public DotTextLabelAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, DotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

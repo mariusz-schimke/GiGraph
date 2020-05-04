@@ -1,16 +1,16 @@
 ﻿using Dotless.Attributes;
 using Dotless.Core;
+using Dotless.EntityGenerators.Options;
 using Dotless.TextEscaping;
-using Dotless.Writers.Options;
 using System;
 using System.Collections.Generic;
 
-namespace Dotless.Writers.AttributeWriters
+namespace Dotless.EntityGenerators.AttributeGenerators
 {
-    public abstract class DotTextualAttributeWriter<TAttribute> : DotAttributeWriter<TAttribute>
+    public abstract class DotTextualAttributeGenerator<TAttribute> : DotAttributeGenerator<TAttribute>
         where TAttribute : DotAttribute<string>
     {
-        public DotTextualAttributeWriter(DotSyntaxRules syntaxRules, DotWriterOptions options, DotEntityWriterCollection entityGenerators)
+        public DotTextualAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, DotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

@@ -5,16 +5,16 @@ namespace Dotless.DotWriters
 {
     public partial class DotStringWriter
     {
-        public class GraphContext : GraphBlockContext
+        public class GraphContext : GraphBlockContext, IDotGraphWriter
         {
             public GraphContext(StreamWriter writer, DotFormattingOptions options, int level, bool strict, bool directed, string? name, bool quoteName)
                 : base(writer, options, level)
             {
-                WriteGraphDeclaration(strict, directed, name, quoteName);
+                OpenGraphContext(strict, directed, name, quoteName);
                 WriteBlockStart();
             }
 
-            protected virtual void WriteGraphDeclaration(bool strict, bool directed, string? name, bool quoteName)
+            public virtual void OpenGraphContext(bool strict, bool directed, string? name, bool quoteName)
             {
                 if (strict)
                 {
