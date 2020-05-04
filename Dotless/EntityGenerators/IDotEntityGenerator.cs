@@ -6,7 +6,7 @@ namespace Dotless.EntityGenerators
 {
     public interface IDotEntityGenerator
     {
-        bool Supports<TWriter>(Type entityType, bool exactEntityTypeMatching = false) where TWriter : IDotWriter;
+        bool Supports<TWriter>(Type entityType, out bool isExactEntityTypeMatch) where TWriter : IDotWriter;
 
         void Write(IDotEntity entity, IDotWriter writer);
     }

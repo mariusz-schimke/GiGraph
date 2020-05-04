@@ -35,20 +35,12 @@ namespace Dotless.EntityGenerators
         public IDotEntityGenerator GetForEntity<TRequiredWriter>(Type entityType)
             where TRequiredWriter : IDotWriter
         {
-            var searchedEntityType = entityType;
+            var lastExactMatch = _generators.LastOrDefault(g => g.Supports<TRequiredWriter>(entityType, out var isExactEntityTypeMatch) && isExactEntityTypeMatch);
+            var lastCompatibleMatch = _generators.LastOrDefault(g => g.Supports<TRequiredWriter>(entityType, out var isExactEntityTypeMatch) && !isExactEntityTypeMatch);
 
-            do
-            {
-                if (_generators.FirstOrDefault(g => g.Supports<TRequiredWriter>(searchedEntityType, exactEntityTypeMatching: true)) is { } result)
-                {
-                    return result;
-                }
-
-                searchedEntityType = searchedEntityType.BaseType;
-
-            } while (searchedEntityType is { });
-
-            throw new NotSupportedException($"No generator has been registered for the entity type {entityType.FullName} nor for any of its base types, with the supported writer type {typeof(TRequiredWriter).FullName}.");
+            return lastExactMatch
+                ?? lastCompatibleMatch
+                ?? throw new NotSupportedException($"No compatible generator has been registered for the entity type {entityType.FullName} with the writer type {typeof(TRequiredWriter).FullName}.");
         }
     }
 }

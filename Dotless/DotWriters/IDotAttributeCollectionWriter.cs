@@ -2,7 +2,7 @@
 {
     public interface IDotAttributeCollectionWriter : IDotWriter
     {
-        IDotNodeWriter BeginAttribute();
+        IDotAttributeWriter BeginAttribute();
         void EndAttribute();
     }
 }
