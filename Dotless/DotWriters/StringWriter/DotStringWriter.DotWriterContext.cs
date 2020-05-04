@@ -1,7 +1,7 @@
 ﻿using Dotless.DotWriters.Options;
 using System.IO;
 
-namespace Dotless.DotWriters
+namespace Dotless.DotWriters.StringWriter
 {
     public partial class DotStringWriter
     {

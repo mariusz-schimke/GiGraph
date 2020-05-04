@@ -1,7 +1,7 @@
 ﻿using Dotless.DotWriters.Options;
 using System.IO;
 
-namespace Dotless.DotWriters
+namespace Dotless.DotWriters.StringWriter
 {
     public partial class DotStringWriter
     {
@@ -22,6 +22,17 @@ namespace Dotless.DotWriters
                 {
                     WriteIdentifier(name, quoteName);
                 }
+            }
+
+            public IDotGraphBodyWriter BeginSubgraphBody()
+            {
+                WriteBlockStart();
+                return this;
+            }
+
+            public void EndSubraphBody()
+            {
+                WriteBlockEnd();
             }
         }
     }

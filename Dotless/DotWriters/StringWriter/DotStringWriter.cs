@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace Dotless.DotWriters
+namespace Dotless.DotWriters.StringWriter
 {
     // TODO: dać możliwość przekazania strumienia, żeby do niego zapisywało
     // TODO: uściślić, gdzie mają być dodawane w poniżych metodach separatory za tokenem, a gdzie nie (gdzie ma być odpowiedzialność za to)
