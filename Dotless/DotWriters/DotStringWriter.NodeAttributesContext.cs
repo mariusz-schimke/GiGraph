@@ -7,8 +7,8 @@ namespace Dotless.DotWriters
     {
         public class NodeAttributesContext : AttributesContext
         {
-            public NodeAttributesContext(StreamWriter writer, DotFormattingOptions options, int level, bool preferExplicitAttributeDelimiter)
-                : base(writer, options, level, preferExplicitAttributeDelimiter)
+            public NodeAttributesContext(StreamWriter writer, DotFormattingOptions options, int level, bool useAttributeSeparator)
+                : base(writer, options, level, useAttributeSeparator)
             {
                 WriteListStart();
             }
@@ -18,15 +18,14 @@ namespace Dotless.DotWriters
                 WriteListEnd();
             }
 
-            protected override AttributesContext WriteAttributeDelimiter()
+            protected override void WriteAttributeDelimiter()
             {
-                if (_preferExplicitAttributeDelimiter)
+                if (_preferExplicitAttributesDelimiter)
                 {
                     WriteStatementEnd();
                 }
 
                 PushLineBreak();
-                return this;
             }
         }
     }

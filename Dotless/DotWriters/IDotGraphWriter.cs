@@ -1,0 +1,10 @@
+﻿namespace Dotless.DotWriters
+{
+    public interface IDotGraphWriter : IDotWriter
+    {
+        void WriteGraphDeclaration(string? id, bool directed, bool strict, bool quoteId);
+
+        IDotGraphBodyWriter BeginGraphBody();
+        void EndGraphBody();
+    }
+}

@@ -11,10 +11,6 @@ namespace Dotless.DotWriters
                 : base(writer, options, level)
             {
             }
-
-            public virtual void EndContext()
-            {
-            }
         }
     }
 }

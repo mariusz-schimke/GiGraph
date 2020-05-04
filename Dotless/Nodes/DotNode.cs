@@ -7,7 +7,7 @@ namespace Dotless.Nodes
     {
         public string Id { get; set; }
 
-        public DotNodeAttributes Attributes { get; } = new DotNodeAttributes();
+        public DotAttributeCollection Attributes { get; } = new DotAttributeCollection();
 
         public DotNode(string id)
         {

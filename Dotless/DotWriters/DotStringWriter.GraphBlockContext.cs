@@ -5,7 +5,7 @@ namespace Dotless.DotWriters
 {
     public partial class DotStringWriter
     {
-        public abstract class GraphBlockContext : DotWriterContext
+        public abstract class GraphBlockContext : DotWriterContext, IDotGraphBodyWriter
         {
             protected GraphBlockContext(StreamWriter writer, DotFormattingOptions options, int level)
                 : base(writer, options, level)
@@ -17,17 +17,17 @@ namespace Dotless.DotWriters
                 WriteBlockEnd();
             }
 
-            public virtual GraphAttributesContext BeginAttributesContext(bool preferExplicitAttributeDelimiter)
+            public virtual IDotAttributeCollectionWriter BeginAttributesSection(bool preferExplicitAttributeDelimiter)
             {
                 return new GraphAttributesContext(_writer, _options, _level + 1, preferExplicitAttributeDelimiter);
             }
 
-            public virtual GraphNodesContext BeginNodesContext(bool useStatementDelimiter)
+            public virtual IDotNodeCollectionWriter BeginNodesSection(bool useStatementDelimiter)
             {
                 return new GraphNodesContext(_writer, _options, _level + 1, useStatementDelimiter);
             }
 
-            public virtual SubgraphContext BeginSubgraphContext(string? name, bool quoteName)
+            public virtual IDotSubgraphWriter BeginSubgraphContext(string? name, bool quoteName)
             {
                 return new SubgraphContext(_writer, _options, _level + 1, name, quoteName);
             }
