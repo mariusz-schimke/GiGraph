@@ -3,7 +3,6 @@ using Dotless.Core;
 using Dotless.DotWriters;
 using Dotless.EntityGenerators.Options;
 using Dotless.Nodes;
-using Dotless.TextEscaping;
 using System.Linq;
 
 namespace Dotless.EntityGenerators.NodeGenerators
@@ -21,9 +20,9 @@ namespace Dotless.EntityGenerators.NodeGenerators
             WriteAttributes(node.Attributes, writer);
         }
 
-        private void WriteIdentifier(string id, IDotNodeWriter writer)
+        protected virtual void WriteIdentifier(string id, IDotNodeWriter writer)
         {
-            id = new DotQuotationMarkEscaper().Escape(id)!;
+            id = EscapeId(id)!;
             writer.WriteNodeIdentifier(id, IdRequiresQuoting(id));
         }
 

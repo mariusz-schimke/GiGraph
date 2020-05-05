@@ -1,6 +1,7 @@
 ﻿using Dotless.Core;
 using Dotless.DotWriters;
 using Dotless.EntityGenerators.Options;
+using Dotless.TextEscaping;
 using System;
 
 namespace Dotless.EntityGenerators
@@ -46,6 +47,12 @@ namespace Dotless.EntityGenerators
         protected virtual bool IdRequiresQuoting(string id)
         {
             return _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);
+        }
+
+        protected virtual string? EscapeId(string? id)
+        {
+            // TODO: does it need backslash escaping? (test graph id as well as node id)
+            return new DotQuotationMarkEscaper().Escape(id);
         }
 
         void IDotEntityGenerator.Write(IDotEntity entity, IDotEntityWriter writer)
