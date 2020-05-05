@@ -16,6 +16,9 @@ namespace Dotless.DotWriters.StringWriter
 
         public virtual void EndAttribute()
         {
+            _writer.AttributeSeparator(linger: true)
+                   .LineBreak(linger: true)
+                   .Indentation(_level, linger: true);
         }
     }
 }
