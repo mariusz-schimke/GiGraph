@@ -1,6 +1,6 @@
 ﻿namespace Dotless.DotWriters
 {
-    public interface IDotWriter
+    public interface IDotEntityWriter
     {
     }
 }

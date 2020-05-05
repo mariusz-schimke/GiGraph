@@ -1,6 +1,6 @@
 ﻿namespace Dotless.DotWriters
 {
-    public interface IDotNodeWriter : IDotWriter
+    public interface IDotNodeWriter : IDotEntityWriter
     {
         void WriteNodeIdentifier(string id, bool quote);
 

@@ -1,6 +1,6 @@
 ﻿namespace Dotless.DotWriters
 {
-    public interface IDotNodeCollectionWriter : IDotWriter
+    public interface IDotNodeCollectionWriter : IDotEntityWriter
     {
         IDotNodeWriter BeginNode();
         void EndNode();

@@ -57,14 +57,15 @@ namespace Dotless
                 Label = new DotTextLabel("graph")
             });
 
-            var sw = new StreamWriter(Console.OpenStandardOutput());
+            var streamWriter = new StreamWriter(Console.OpenStandardOutput());
+            var sw = new DotStringWriter(streamWriter, fo);
 
-            var stringWriter = new DotStringWriter.GraphContext(sw, fo, level: 0);
+            var stringWriter = new DotGraphStringWriter(sw, fo, level: 0);
 
             var graphWriter = DotGraphGeneratorFactory.CreateDefault();
             graphWriter.Write(graph, stringWriter);
 
-            sw.Dispose();
+            streamWriter.Dispose();
 
             // Console.WriteLine(dotGraph.ToString(fo, fo));
 

@@ -4,46 +4,39 @@ namespace Dotless.DotWriters.Options
 {
     public static class DotFormattingOptionsExtension
     {
-        public static string Indentation(this DotFormattingOptions options)
+        public static string Indentation(this DotFormattingOptions options, int level = 0)
         {
-            return options.Indent
-                ? string.Empty.PadRight(options.Indentation)
-                : string.Empty;
+            return string.Empty.PadRight(options.Indentation * level, options.IndentChar);
         }
 
-        public static string TokenSpace(this DotFormattingOptions options)
+        public static string Space(this DotFormattingOptions options)
         {
             return string.Empty.PadRight(1);
         }
 
-        public static string KeywordSpace(this DotFormattingOptions options)
-        {
-            return options.TokenSpace().PadRight(1);
-        }
-
-        public static string NewLine(this DotFormattingOptions options)
+        public static string NewLine(this DotFormattingOptions options, int indentationLevel = 0)
         {
             return options.SingleLineOutput
-                ? options.TokenSpace()
-                : options.LineBreak + options.Indentation();
+                ? options.Space()
+                : options.LineBreak + options.Indentation(indentationLevel);
         }
 
         public static string LineBreak(this DotFormattingOptions options)
         {
             return options.SingleLineOutput
-                ? options.TokenSpace()
+                ? options.Space()
                 : options.LineBreak;
         }
 
-        public static string? String(this DotFormattingOptions options, string? value)
+        public static string? Text(this DotFormattingOptions options, string? text)
         {
-            if (!options.SingleLineOutput || value is null)
+            if (!options.SingleLineOutput || text is null)
             {
-                return value;
+                return text;
             }
 
-            var lines = value.Split(options.LineBreak, StringSplitOptions.None);
-            return string.Join(" ", lines);
+            var lines = text.Split(options.LineBreak, StringSplitOptions.None);
+            return string.Join(options.Space(), lines);
         }
     }
 }

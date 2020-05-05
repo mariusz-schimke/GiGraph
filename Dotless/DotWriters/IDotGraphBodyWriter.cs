@@ -1,8 +1,8 @@
 ﻿namespace Dotless.DotWriters
 {
-    public interface IDotGraphBodyWriter : IDotWriter
+    public interface IDotGraphBodyWriter : IDotEntityWriter
     {
-        IDotAttributeCollectionWriter BeginAttributesSection(bool preferExplicitAttributesSeparator);
+        IDotAttributeCollectionWriter BeginAttributesSection(bool useStatementDelimiter);
         void EndAttributesSection();
 
         IDotNodeCollectionWriter BeginNodesSection(bool useStatementDelimiter);

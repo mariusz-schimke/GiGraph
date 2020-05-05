@@ -6,12 +6,10 @@ namespace Dotless.DotWriters.Options
     {
         /// <summary>
         /// Gets or sets the value indicating if the output should be generated as a single line of text.
-        /// In such case <see cref="LineBreak"/> sequences in identifiers and HTML labels will be replaced with
-        /// <see cref="SingleLineOutputLineBreakReplacement"/>.
+        /// In such case <see cref="LineBreak"/> sequences in identifiers and HTML labels will be replaced with white space.
         /// </summary>
         public bool SingleLineOutput { get; set; } = false;
 
-        public bool Indent { get; set; } = true;
         public char IndentChar { get; set; } = ' ';
         public int Indentation { get; set; } = 4;
 
