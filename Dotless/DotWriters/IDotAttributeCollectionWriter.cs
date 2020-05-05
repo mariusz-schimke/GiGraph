@@ -1,6 +1,6 @@
 ﻿namespace Dotless.DotWriters
 {
-    public interface IDotAttributeCollectionWriter : IDotWriter
+    public interface IDotAttributeCollectionWriter : IDotEntityWriter
     {
         IDotAttributeWriter BeginAttribute();
         void EndAttribute();

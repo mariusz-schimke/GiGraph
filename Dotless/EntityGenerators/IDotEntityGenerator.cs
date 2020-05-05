@@ -6,14 +6,14 @@ namespace Dotless.EntityGenerators
 {
     public interface IDotEntityGenerator
     {
-        bool Supports<TWriter>(Type entityType, out bool isExactEntityTypeMatch) where TWriter : IDotWriter;
+        bool Supports<TWriter>(Type entityType, out bool isExactEntityTypeMatch) where TWriter : IDotEntityWriter;
 
-        void Write(IDotEntity entity, IDotWriter writer);
+        void Write(IDotEntity entity, IDotEntityWriter writer);
     }
 
     public interface IDotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator
         where TEntity : IDotEntity
-        where TWriter : IDotWriter
+        where TWriter : IDotEntityWriter
     {
         void Write(TEntity entity, TWriter writer);
     }

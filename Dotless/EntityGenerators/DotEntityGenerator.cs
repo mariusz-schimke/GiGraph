@@ -7,7 +7,7 @@ namespace Dotless.EntityGenerators
 {
     public abstract class DotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator<TEntity, TWriter>
         where TEntity : IDotEntity
-        where TWriter : IDotWriter
+        where TWriter : IDotEntityWriter
     {
         protected readonly DotSyntaxRules _syntaxRules;
         protected readonly DotGenerationOptions _options;
@@ -25,7 +25,7 @@ namespace Dotless.EntityGenerators
         }
 
         public virtual bool Supports<TRequiredWriter>(Type entityType, out bool isExactEntityTypeMatch)
-            where TRequiredWriter : IDotWriter
+            where TRequiredWriter : IDotEntityWriter
         {
             isExactEntityTypeMatch = false;
 
@@ -48,7 +48,7 @@ namespace Dotless.EntityGenerators
             return _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);
         }
 
-        void IDotEntityGenerator.Write(IDotEntity entity, IDotWriter writer)
+        void IDotEntityGenerator.Write(IDotEntity entity, IDotEntityWriter writer)
         {
             if (entity is { } && !(entity is TEntity))
             {

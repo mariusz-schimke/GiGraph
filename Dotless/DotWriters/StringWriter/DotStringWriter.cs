@@ -1,5 +1,5 @@
 ﻿using Dotless.DotWriters.Options;
-using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Dotless.DotWriters.StringWriter
@@ -8,169 +8,188 @@ namespace Dotless.DotWriters.StringWriter
     // TODO: uściślić, gdzie mają być dodawane w poniżych metodach separatory za tokenem, a gdzie nie (gdzie ma być odpowiedzialność za to)
     // TODO: czy te metody powinny być publiczne? Może jednak prywatne, z dostępem tylko z poziomu kontekstów?
     // TODO: bazując na punkcie wyżej, sprawdzić, czy dostępność wszystkich metod jest spójna
-    public abstract partial class DotStringWriter
+    public class DotStringWriter
     {
         protected readonly StreamWriter _writer;
-        protected readonly DotFormattingOptions _options;
-        protected readonly int _level;
-        protected string _separator = string.Empty;
+        protected readonly Queue<string> _lingerBuffer = new Queue<string>();
 
-        protected DotStringWriter(StreamWriter writer, DotFormattingOptions options, int level = 0)
+        protected readonly DotFormattingOptions _options;
+
+        public DotStringWriter(StreamWriter writer, DotFormattingOptions options)
         {
             _writer = writer;
             _options = options;
-            _level = level;
         }
 
-        public virtual DotStringWriter WriteToken(string token)
+        public virtual DotStringWriter Token(string token, bool linger = false)
         {
-            return Append(token);
+            return Append(token, linger);
         }
 
-        public virtual DotStringWriter WriteKeyword(string keyword)
+        public virtual DotStringWriter Keyword(string keyword, bool linger = false)
         {
-            return WriteToken(keyword).PushTokenSpace();
+            return Token(keyword, linger);
         }
 
-        public virtual DotStringWriter WriteIdentifier(string id, bool quote = false)
-        {
-            if (quote)
-            {
-                WriteQuotationStart().WriteToken(id).WriteQuotationEnd();
-            }
-            else
-            {
-                WriteToken(id);
-            }
-
-            return PushTokenSpace();
-        }
-
-        public virtual DotStringWriter WriteValueAssignmentOperator()
-        {
-            return WriteToken("=").PushTokenSpace();
-        }
-
-        public virtual DotStringWriter WriteBlockStart()
-        {
-            return WriteToken("{").PushLineBreak();
-        }
-
-        public virtual DotStringWriter WriteBlockEnd()
-        {
-            return PushLineBreak().WriteToken("}");
-        }
-
-        public virtual DotStringWriter WriteListStart()
-        {
-            return WriteToken("[").PushLineBreak();
-        }
-
-        public virtual DotStringWriter WriteListEnd()
-        {
-            return PushLineBreak().WriteToken("]");
-        }
-
-        public virtual DotStringWriter WriteListItemDelimiter()
-        {
-            return ClearSeparator().WriteToken(",").PushTokenSpace();
-        }
-
-        public virtual DotStringWriter WriteTextValue(string text, bool quote = true)
+        public virtual DotStringWriter Identifier(string id, bool quote = false, bool linger = false)
         {
             if (quote)
             {
-                WriteQuotationStart().WriteToken(text).WriteQuotationEnd();
+                QuotationStart(linger);
+                Token(_options.Text(id)!, linger);
+                QuotationEnd(linger);
             }
             else
             {
-                WriteToken(text);
+                Token(id, linger);
             }
 
-            return PushTokenSpace();
+            return this;
         }
 
-        public virtual DotStringWriter WriteHtmlValue(string html, bool brace = true)
+        public virtual DotStringWriter ValueAssignmentOperator(bool linger = false)
+        {
+            return Token("=", linger);
+        }
+
+        public virtual DotStringWriter SectionStart(bool linger = false)
+        {
+            return Token("{", linger);
+        }
+
+        public virtual DotStringWriter SectionEnd(bool linger = false)
+        {
+            return Token("}", linger);
+        }
+
+        public virtual DotStringWriter AttributeListStart(bool linger = false)
+        {
+            return Token("[", linger);
+        }
+
+        public virtual DotStringWriter AttributeListEnd(bool linger = false)
+        {
+            return Token("]", linger);
+        }
+
+        public virtual DotStringWriter AttributeSeparator(bool linger = false)
+        {
+            return Token(",", linger);
+        }
+
+        public virtual DotStringWriter StatementEnd(bool linger = false)
+        {
+            return Token(";", linger);
+        }
+
+        public virtual DotStringWriter QuotationStart(bool linger = false)
+        {
+            return Token("\"", linger);
+        }
+
+        public virtual DotStringWriter QuotationEnd(bool linger = false)
+        {
+            return Token("\"", linger);
+        }
+
+        public virtual DotStringWriter HtmlStartBrace(bool linger = false)
+        {
+            return Token("<", linger);
+        }
+
+        public virtual DotStringWriter HtmlEndBrace(bool linger = false)
+        {
+            return Token(">", linger);
+        }
+
+        public virtual DotStringWriter Edge(bool linger = false)
+        {
+            return Token("--", linger);
+        }
+
+        public virtual DotStringWriter DirectedEdge(bool linger = false)
+        {
+            return Token("->", linger);
+        }
+
+        public virtual DotStringWriter TextValue(string text, bool quote = true, bool linger = false)
+        {
+            if (quote)
+            {
+                QuotationStart(linger);
+                Token(_options.Text(text)!, linger);
+                QuotationEnd(linger);
+            }
+            else
+            {
+                Token(text, linger);
+            }
+
+            return this;
+        }
+
+        public virtual DotStringWriter HtmlValue(string html, bool brace = true, bool linger = false)
         {
             if (brace)
             {
-                WriteHtmlStart().WriteToken(html).WriteHtmlEnd();
+                HtmlStartBrace(linger);
+                Token(_options.Text(html)!, linger);
+                HtmlEndBrace(linger);
             }
             else
             {
-                WriteToken(html);
+                Token(html, linger);
             }
 
-            return PushTokenSpace();
+            return this;
         }
 
-        public virtual DotStringWriter WriteQuotationStart()
+        public virtual DotStringWriter LineBreak(bool linger = false)
         {
-            return WriteToken("\"");
+            Append(_options.LineBreak(), linger);
+            return this;
         }
 
-        public virtual DotStringWriter WriteQuotationEnd()
+        public virtual DotStringWriter Space(bool linger = false)
         {
-            return WriteToken("\"");
+            Append(_options.Space(), linger);
+            return this;
         }
 
-        public virtual DotStringWriter WriteHtmlStart()
+        public virtual DotStringWriter Indentation(int level, bool linger = false)
         {
-            return WriteToken("<");
+            Append(_options.Indentation(level), linger);
+            return this;
         }
 
-        public virtual DotStringWriter WriteHtmlEnd()
+        protected virtual DotStringWriter Append(string value, bool linger = false)
         {
-            return WriteToken(">");
-        }
-
-        public virtual DotStringWriter WriteStatementEnd()
-        {
-            return ClearSeparator().WriteToken(";");
-        }
-
-        public virtual TContext AssertContext<TContext>()
-            where TContext : DotWriterContext
-        {
-            return this as TContext
-                ?? throw new InvalidCastException($"The current DOT writer context {GetType().Name} cannot be accessed as {typeof(TContext).Name}.");
-        }
-
-        protected virtual DotStringWriter Append(string value)
-        {
-            FlushSeparator();
-            _writer.Write(value);
+            if (linger)
+            {
+                _lingerBuffer.Enqueue(value);
+            }
+            else
+            {
+                FlushLingerBuffer();
+                _writer.Write(value);
+            }
 
             return this;
         }
 
-        protected virtual DotStringWriter PushSeparator(string separator)
+        public virtual DotStringWriter FlushLingerBuffer()
         {
-            _separator = separator;
+            while (_lingerBuffer.TryDequeue(out var value))
+            {
+                _writer.Write(value);
+            }
+
             return this;
         }
 
-        protected virtual DotStringWriter FlushSeparator()
+        public virtual DotStringWriter ClearLingerBuffer()
         {
-            _writer.Write(_separator);
-            return ClearSeparator();
-        }
-
-        protected virtual DotStringWriter ClearSeparator()
-        {
-            _separator = string.Empty;
-            return this;
-        }
-
-        protected virtual DotStringWriter PushLineBreak()
-        {
-            PushSeparator(_options.LineBreak());
-            return this;
-        }
-
-        protected virtual DotStringWriter PushTokenSpace()
-        {
-            PushSeparator(_options.TokenSpace());
+            _lingerBuffer.Clear();
             return this;
         }
     }

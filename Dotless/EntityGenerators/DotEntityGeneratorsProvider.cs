@@ -27,13 +27,13 @@ namespace Dotless.EntityGenerators
         }
 
         public IDotEntityGenerator GetForEntity<TRequiredWriter>(IDotEntity entity)
-            where TRequiredWriter : IDotWriter
+            where TRequiredWriter : IDotEntityWriter
         {
             return GetForEntity<TRequiredWriter>(entity.GetType());
         }
 
         public IDotEntityGenerator GetForEntity<TRequiredWriter>(Type entityType)
-            where TRequiredWriter : IDotWriter
+            where TRequiredWriter : IDotEntityWriter
         {
             var lastExactMatch = _generators.LastOrDefault(g => g.Supports<TRequiredWriter>(entityType, out var isExactEntityTypeMatch) && isExactEntityTypeMatch);
             var lastCompatibleMatch = _generators.LastOrDefault(g => g.Supports<TRequiredWriter>(entityType, out var isExactEntityTypeMatch) && !isExactEntityTypeMatch);

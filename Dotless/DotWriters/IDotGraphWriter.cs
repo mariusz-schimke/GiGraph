@@ -1,6 +1,6 @@
 ﻿namespace Dotless.DotWriters
 {
-    public interface IDotGraphWriter : IDotWriter
+    public interface IDotGraphWriter : IDotEntityWriter
     {
         void WriteGraphDeclaration(string? id, bool directed, bool strict, bool quoteId);
 

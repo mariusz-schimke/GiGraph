@@ -1,8 +1,8 @@
 ﻿namespace Dotless.DotWriters
 {
-    public interface IDotSubgraphWriter : IDotWriter
+    public interface IDotSubgraphWriter : IDotEntityWriter
     {
-        void WriteSubgraphDeclaration(string? name, bool quote);
+        void WriteSubgraphDeclaration(string? id, bool quote);
 
         IDotGraphBodyWriter BeginSubgraphBody();
         void EndSubraphBody();
