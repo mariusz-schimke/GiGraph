@@ -24,6 +24,11 @@ namespace Dotless.EntityGenerators.AttributeGenerators
             }
         }
 
+        protected virtual string EscapeKey(string key)
+        {
+            return EscapeId(key)!;
+        }
+
         protected virtual bool KeyRequiresQuoting(string key)
         {
             return !_syntaxRules.IsValidIdentifier(key);
@@ -36,6 +41,8 @@ namespace Dotless.EntityGenerators.AttributeGenerators
 
         protected virtual void WriteAttribute(string key, string value, IDotAttributeWriter writer)
         {
+            key = EscapeKey(key);
+
             writer.WriteAttribute
             (
                 key,

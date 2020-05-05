@@ -14,6 +14,8 @@ namespace Dotless.EntityGenerators.AttributeGenerators
 
         protected override void WriteAttribute(string key, string value, IDotAttributeWriter writer)
         {
+            key = EscapeKey(key);
+
             writer.WriteHtmlAttribute
             (
                 key,

@@ -14,12 +14,14 @@ namespace Dotless.EntityGenerators.GraphGenerators
 
         public override void Write(DotGraph graph, IDotGraphWriter writer)
         {
+            var id = EscapeId(graph.Id);
+
             writer.WriteGraphDeclaration
             (
-                graph.Id,
+                id,
                 graph.IsDirected,
                 graph.IsStrict,
-                quoteId: graph.Id is { } && IdRequiresQuoting(graph.Id!)
+                quoteId: id is { } && IdRequiresQuoting(id!)
             );
 
             WriteBody(graph, writer);
