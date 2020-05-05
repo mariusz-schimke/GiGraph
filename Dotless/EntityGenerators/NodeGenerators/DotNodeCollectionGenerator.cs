@@ -17,10 +17,10 @@ namespace Dotless.EntityGenerators.NodeGenerators
         {
             var orderedNodes = nodes.OrderBy(n => n.Id).ToList();
 
-            for (int i = 0; i < orderedNodes.Count; i++)
+            foreach (var node in orderedNodes)
             {
                 var nodeWriter = writer.BeginNode();
-                _entityGenerators.GetForEntity<IDotNodeWriter>(orderedNodes[i]).Write(orderedNodes[i], nodeWriter);
+                _entityGenerators.GetForEntity<IDotNodeWriter>(node).Write(node, nodeWriter);
                 writer.EndNode();
             }
         }
