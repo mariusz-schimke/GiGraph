@@ -5,17 +5,21 @@ using Dotless.EntityGenerators.Options;
 
 namespace Dotless.EntityGenerators.AttributeGenerators
 {
-    public class DotHtmlLabelAttributeGenerator : DotTextualAttributeGenerator<DotHtmlLabel>
+    public class DotHtmlLabelAttributeGenerator : DotStringAttributeGenerator<DotHtmlLabel>
     {
         public DotHtmlLabelAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, DotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
+        protected override string EscapeValue(string value)
+        {
+            // do not escape HTML value
+            return value;
+        }
+
         protected override void WriteAttribute(string key, string value, IDotAttributeWriter writer)
         {
-            key = EscapeKey(key);
-
             writer.WriteHtmlAttribute
             (
                 key,

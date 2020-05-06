@@ -2,26 +2,34 @@
 using Dotless.DotWriters;
 using Dotless.EntityGenerators.Options;
 using Dotless.Graphs;
+using Dotless.TextEscaping;
 
 namespace Dotless.EntityGenerators.GraphGenerators
 {
     public class DotGraphGenerator : DotEntityGenerator<DotGraph, IDotGraphWriter>
     {
+        protected readonly TextEscapingPipeline _graphIdEscaper = TextEscapingPipeline.CreateForGraphId();
+
         public DotGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, DotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
+        protected virtual string? EscapeGraphIdentifier(string? id)
+        {
+            return _graphIdEscaper.Escape(id);
+        }
+
         public override void Write(DotGraph graph, IDotGraphWriter writer)
         {
-            var id = EscapeId(graph.Id);
+            var id = EscapeGraphIdentifier(graph.Id);
 
             writer.WriteGraphDeclaration
             (
                 id,
                 graph.IsDirected,
                 graph.IsStrict,
-                quoteId: id is { } && IdRequiresQuoting(id!)
+                quoteId: id is { } && IdentifierRequiresQuoting(id!)
             );
 
             WriteBody(graph, writer);
