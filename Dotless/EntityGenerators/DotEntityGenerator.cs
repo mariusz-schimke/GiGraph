@@ -13,11 +13,10 @@ namespace Dotless.EntityGenerators
         protected readonly DotSyntaxRules _syntaxRules;
         protected readonly DotGenerationOptions _options;
         protected readonly DotEntityGeneratorsProvider _entityGenerators;
+        protected readonly TextEscapingPipeline _valueEscaper = TextEscapingPipeline.CreateDefault();
 
-        // TODO: writer powinien być od razu konkretnego typu, rzutowany przez IDotEntityWriter.Write
         public abstract void Write(TEntity entity, TWriter writer);
 
-        // TODO: zdecydować się co do nazwy - obecnie jest writers, a tu zostało generators
         public DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, DotEntityGeneratorsProvider entityGenerators)
         {
             _syntaxRules = syntaxRules;
@@ -44,15 +43,14 @@ namespace Dotless.EntityGenerators
             return typeof(TEntity).IsAssignableFrom(entityType);
         }
 
-        protected virtual bool IdRequiresQuoting(string id)
+        protected virtual bool IdentifierRequiresQuoting(string id)
         {
             return _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);
         }
 
-        protected virtual string? EscapeId(string? id)
+        protected virtual string? EscapeIdentifier(string? id)
         {
-            // TODO: does it need backslash escaping? (test graph id as well as node id)
-            return new DotQuotationMarkEscaper().Escape(id);
+            return _valueEscaper.Escape(id);
         }
 
         void IDotEntityGenerator.Write(IDotEntity entity, IDotEntityWriter writer)

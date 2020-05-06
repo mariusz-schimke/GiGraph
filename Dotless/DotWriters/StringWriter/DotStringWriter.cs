@@ -4,10 +4,6 @@ using System.IO;
 
 namespace Dotless.DotWriters.StringWriter
 {
-    // TODO: dać możliwość przekazania strumienia, żeby do niego zapisywało
-    // TODO: uściślić, gdzie mają być dodawane w poniżych metodach separatory za tokenem, a gdzie nie (gdzie ma być odpowiedzialność za to)
-    // TODO: czy te metody powinny być publiczne? Może jednak prywatne, z dostępem tylko z poziomu kontekstów?
-    // TODO: bazując na punkcie wyżej, sprawdzić, czy dostępność wszystkich metod jest spójna
     public class DotStringWriter
     {
         protected readonly StreamWriter _writer;
