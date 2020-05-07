@@ -4,8 +4,10 @@ namespace Dotless.Attributes
 {
     public class DotBackgroundColorAttribute : DotColorAttribute
     {
+        public static new string AttributeKey => "bgcolor";
+
         public DotBackgroundColorAttribute(Color value)
-            : base("bgcolor", value)
+            : base(AttributeKey, value)
         {
         }
 

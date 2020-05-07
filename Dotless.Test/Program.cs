@@ -2,7 +2,6 @@
 using Dotless.DotWriters.Options;
 using Dotless.DotWriters.StringWriter;
 using Dotless.EntityGenerators.GraphGenerators;
-using Dotless.EntityGenerators.Options;
 using Dotless.Graphs;
 using Dotless.Nodes;
 using System;
@@ -50,7 +49,8 @@ namespace Dotless
         private static void AddAttributes(DotGraph graph)
         {
             graph.Label = "My graph";
-            graph.Attributes.SetAttribute(new DotBackgroundColorAttribute(Color.Green));
+            graph.Color = Color.Black;
+            graph.BackgroundColor = Color.BlueViolet;
         }
 
         private static void AddNodes(DotGraph graph)
@@ -67,8 +67,8 @@ namespace Dotless
 
             graph.Nodes.Add(new DotNode("node3")
             {
-                Label = new DotTextLabel("label")
-            }).Attributes.SetAttribute(new DotTextLabel("label2"));
+                Label = new DotTextLabelAttribute("label")
+            }).Attributes.SetAttribute(new DotTextLabelAttribute("label2"));
 
             graph.Nodes.Add(new DotNode("node 4"));
         }

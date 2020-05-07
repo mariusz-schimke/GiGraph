@@ -1,5 +1,7 @@
 ﻿using Dotless.Attributes;
 using Dotless.Core;
+using System;
+using System.Drawing;
 
 namespace Dotless
 {
@@ -7,20 +9,57 @@ namespace Dotless
     {
         public DotAttributeCollection Attributes { get; } = new DotAttributeCollection();
 
-        public virtual DotLabel? Label
+        public virtual DotLabelAttribute Label
         {
-            get => (DotLabel?)Attributes.TryGet<DotLabel>(DotLabel.AttributeKey);
-            set
+            get => Attributes.TryGet<DotLabelAttribute>(DotLabelAttribute.AttributeKey);
+            set => AddOrRemove(DotLabelAttribute.AttributeKey, value);
+        }
+
+        public virtual Color? Color
+        {
+            get
             {
-                if (value is null)
+                if (Attributes.TryGet<DotColorAttribute>(DotColorAttribute.AttributeKey, out var result))
                 {
-                    Attributes.Remove(DotLabel.AttributeKey);
+                    return result;
                 }
-                else
-                {
-                    Attributes.SetAttribute(value);
-                }
+
+                return null;
             }
+            set => AddOrRemove(DotColorAttribute.AttributeKey, value, v => new DotColorAttribute(v.Value));
+        }
+
+        public virtual Color? BackgroundColor
+        {
+            get
+            {
+                if (Attributes.TryGet<DotBackgroundColorAttribute>(DotBackgroundColorAttribute.AttributeKey, out var result))
+                {
+                    return result;
+                }
+
+                return null;
+            }
+            set => AddOrRemove(DotBackgroundColorAttribute.AttributeKey, value, v => new DotBackgroundColorAttribute(v.Value));
+        }
+
+        protected virtual void AddOrRemove<T>(string key, T attribute)
+            where T : DotAttribute
+        {
+            if (attribute is null)
+            {
+                Attributes.Remove(key);
+            }
+            else
+            {
+                Attributes.SetAttribute(attribute);
+            }
+        }
+
+        protected virtual void AddOrRemove<TAttribute, TValue>(string key, TValue value, Func<TValue, TAttribute> attribute)
+            where TAttribute : DotAttribute
+        {
+            AddOrRemove(key, value is null ? null : attribute(value));
         }
     }
 }

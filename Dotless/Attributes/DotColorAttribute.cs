@@ -4,13 +4,15 @@ namespace Dotless.Attributes
 {
     public class DotColorAttribute : DotAttribute<Color>
     {
+        public static string AttributeKey => "color";
+
         protected DotColorAttribute(string key, Color color)
             : base(key, color)
         {
         }
 
         public DotColorAttribute(Color value)
-            : this("color", value)
+            : this(AttributeKey, value)
         {
         }
 

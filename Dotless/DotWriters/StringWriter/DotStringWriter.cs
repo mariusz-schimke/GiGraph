@@ -32,7 +32,7 @@ namespace Dotless.DotWriters.StringWriter
             if (quote)
             {
                 QuotationStart(linger);
-                Token(_options.Text(id)!, linger);
+                Token(_options.Text(id), linger);
                 QuotationEnd(linger);
             }
             else
@@ -113,7 +113,7 @@ namespace Dotless.DotWriters.StringWriter
             if (quote)
             {
                 QuotationStart(linger);
-                Token(_options.Text(text)!, linger);
+                Token(_options.Text(text), linger);
                 QuotationEnd(linger);
             }
             else
@@ -129,7 +129,7 @@ namespace Dotless.DotWriters.StringWriter
             if (brace)
             {
                 HtmlStartBrace(linger);
-                Token(_options.Text(html)!, linger);
+                Token(_options.Text(html), linger);
                 HtmlEndBrace(linger);
             }
             else
