@@ -6,19 +6,14 @@ namespace Dotless.DotWriters.Options
     {
         public static string Indentation(this DotFormattingOptions options, int level = 0)
         {
-            return string.Empty.PadRight(options.Indentation * level, options.IndentChar);
+            return options.SingleLineOutput
+                ? string.Empty
+                : string.Empty.PadRight(options.Indentation * level, options.IndentChar);
         }
 
         public static string Space(this DotFormattingOptions options)
         {
             return string.Empty.PadRight(1);
-        }
-
-        public static string NewLine(this DotFormattingOptions options, int indentationLevel = 0)
-        {
-            return options.SingleLineOutput
-                ? options.Space()
-                : options.LineBreak + options.Indentation(indentationLevel);
         }
 
         public static string LineBreak(this DotFormattingOptions options)

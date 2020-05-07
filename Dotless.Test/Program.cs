@@ -7,7 +7,6 @@ using Dotless.Graphs;
 using Dotless.Nodes;
 using System;
 using System.IO;
-using System.Linq;
 
 namespace Dotless
 {
@@ -20,20 +19,13 @@ namespace Dotless
         {
             var fo = new DotFormattingOptions
             {
-                //SingleLine = true,
-                //TokenSpacing = 0
+                //SingleLineOutput = true
             };
-
-            var wo = new DotGenerationOptions()
-            {
-            };
-
-            wo.Attributes.PreferQuotedValue = false;
 
             var graph = new DotGraph()
             {
                 IsStrict = true,
-                Id = "My \"awesome\" graph"
+                Id = "Graph1"
             };
 
             AddAttributes(graph);

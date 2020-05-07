@@ -12,6 +12,6 @@
         /// <summary>
         /// When set, all statements within the graph will be followed by a delimiter (;).
         /// </summary>
-        public bool PreferStatementDelimiter { get; set; } = false;
+        public bool PreferStatementDelimiter { get; set; } = true;
     }
 }
