@@ -8,5 +8,10 @@ namespace Dotless.Attributes
             : base("bgcolor", value)
         {
         }
+
+        public static implicit operator DotBackgroundColorAttribute(Color color)
+        {
+            return new DotBackgroundColorAttribute(color);
+        }
     }
 }
