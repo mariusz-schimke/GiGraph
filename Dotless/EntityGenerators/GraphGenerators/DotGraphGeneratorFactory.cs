@@ -1,5 +1,4 @@
-﻿using Dotless.Attributes;
-using Dotless.Core;
+﻿using Dotless.Core;
 using Dotless.EntityGenerators.AttributeGenerators;
 using Dotless.EntityGenerators.NodeGenerators;
 using Dotless.EntityGenerators.Options;
@@ -26,7 +25,7 @@ namespace Dotless.EntityGenerators.GraphGenerators
 
             converters.Register(new DotAttributeCollectionGenerator(syntaxRules, options, converters));
 
-            converters.Register(new DotStringAttributeGenerator<DotTextLabel>(syntaxRules, options, converters));
+            converters.Register(new DotAttributeGenerator(syntaxRules, options, converters));
             converters.Register(new DotHtmlLabelAttributeGenerator(syntaxRules, options, converters));
 
             converters.Register(new DotNodeGenerator(syntaxRules, options, converters));
