@@ -19,19 +19,29 @@ namespace Dotless.DotWriters.StringWriter
             return new DotNodeStatementStringWriter(_writer, _options, _level, useStatementDelimiter);
         }
 
+        public virtual IDotEdgeCollectionWriter BeginEdgesSection(bool useStatementDelimiter)
+        {
+            return new DotEdgeStatementStringWriter(_writer, _options, _level, useStatementDelimiter);
+        }
+
         public virtual void EndAttributesSection(int attributeCount)
         {
-            if (attributeCount > 0)
-            {
-                _writer.ClearLingerBuffer()
-                       .LineBreak(linger: true)
-                       .Indentation(_level, linger: true);
-            }
+            EndSection(attributeCount);
         }
 
         public virtual void EndNodesSection(int nodeCount)
         {
-            if (nodeCount > 0)
+            EndSection(nodeCount);
+        }
+
+        public virtual void EndEdgesSection(int edgeCount)
+        {
+            EndSection(edgeCount);
+        }
+
+        protected virtual void EndSection(int entityCount)
+        {
+            if (entityCount > 0)
             {
                 _writer.ClearLingerBuffer()
                        .LineBreak(linger: true)

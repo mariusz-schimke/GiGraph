@@ -2,7 +2,7 @@
 {
     public class DotBackslashEscaper : IDotTextEscaper
     {
-        public virtual string? Escape(string? value)
+        public virtual string Escape(string value)
         {
             return value?.Replace(@"\", @"\\");
         }

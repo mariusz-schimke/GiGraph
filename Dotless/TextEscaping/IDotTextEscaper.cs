@@ -2,6 +2,6 @@
 {
     public interface IDotTextEscaper
     {
-        string? Escape(string? value);
+        string Escape(string value);
     }
 }

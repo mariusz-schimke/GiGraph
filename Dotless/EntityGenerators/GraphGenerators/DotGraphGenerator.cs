@@ -15,7 +15,7 @@ namespace Dotless.EntityGenerators.GraphGenerators
         {
         }
 
-        protected virtual string? EscapeGraphIdentifier(string? id)
+        protected virtual string EscapeGraphIdentifier(string id)
         {
             return _graphIdEscaper.Escape(id);
         }
