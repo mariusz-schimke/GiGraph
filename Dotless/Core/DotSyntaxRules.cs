@@ -6,17 +6,20 @@ namespace Dotless.Core
 {
     public class DotSyntaxRules
     {
-        public string AlphabeticIdentifierPattern { get; set; } = @"^[_a-zA-Z\200-\377]+[_0-9a-zA-Z\200-\377]*$";
-        public string NumericIdentifierPattern { get; set; } = @"^[-]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)$";
-
-        public HashSet<string> Keywords = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        protected readonly HashSet<string> _keywords = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
-            // TODO: verify all keywords
             "node",
+            "edge",
             "strict",
             "graph",
+            "digraph",
             "subgraph"
         };
+
+        public virtual string AlphabeticIdentifierPattern => @"^[_a-zA-Z\200-\377]+[_0-9a-zA-Z\200-\377]*$";
+        public virtual string NumericIdentifierPattern => @"^[-]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)$";
+
+        public virtual HashSet<string> Keywords => _keywords;
 
         public virtual bool IsKeyword(string value)
         {
@@ -26,8 +29,8 @@ namespace Dotless.Core
         public virtual bool IsValidIdentifier(string value)
         {
             return !IsKeyword(value) &&
-                Regex.Match(value, AlphabeticIdentifierPattern, RegexOptions.IgnoreCase).Success ||
-                Regex.Match(value, NumericIdentifierPattern, RegexOptions.IgnoreCase).Success;
+                Regex.Match(value, AlphabeticIdentifierPattern).Success ||
+                Regex.Match(value, NumericIdentifierPattern).Success;
         }
     }
 }

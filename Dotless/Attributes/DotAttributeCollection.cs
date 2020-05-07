@@ -1,22 +1,22 @@
-﻿using Dotless.Attributes;
+﻿using Dotless.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Dotless.Core
+namespace Dotless.Attributes
 {
-    public class DotAttributeCollection : IDotEntity, IEnumerable<IDotAttribute>
+    public class DotAttributeCollection : IDotEntity, IEnumerable<DotAttribute>
     {
-        protected IDictionary<string, IDotAttribute> _attributes { get; } = new Dictionary<string, IDotAttribute>(StringComparer.OrdinalIgnoreCase);
+        protected IDictionary<string, DotAttribute> _attributes { get; } = new Dictionary<string, DotAttribute>(StringComparer.OrdinalIgnoreCase);
 
         public void Clear()
         {
             _attributes.Clear();
         }
 
-        public void Include(IDotAttribute attribute)
+        public void SetAttribute(DotAttribute attribute)
         {
-            _attributes[attribute.Key] = attribute;
+            _attributes[((IDotAttribute)attribute).Key] = attribute;
         }
 
         public bool Remove(string key)
@@ -24,8 +24,8 @@ namespace Dotless.Core
             return _attributes.Remove(key);
         }
 
-        public IDotAttribute? TryGet<T>(string key)
-            where T : IDotAttribute
+        public DotAttribute? TryGet<T>(string key)
+            where T : DotAttribute
         {
             if (_attributes.TryGetValue(key, out var result))
             {
@@ -35,7 +35,7 @@ namespace Dotless.Core
             return null;
         }
 
-        public IEnumerator<IDotAttribute> GetEnumerator()
+        public IEnumerator<DotAttribute> GetEnumerator()
         {
             return _attributes.Values.GetEnumerator();
         }
