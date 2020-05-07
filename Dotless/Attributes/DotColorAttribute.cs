@@ -14,9 +14,19 @@ namespace Dotless.Attributes
         {
         }
 
+        public override string ToString()
+        {
+            return _value.Name.ToString();
+        }
+
         protected override string GetValueAsString()
         {
             return $"#{_value.R:x2}{_value.G:x2}{_value.B:x2}{_value.A:x2}";
+        }
+
+        public static implicit operator DotColorAttribute(Color color)
+        {
+            return new DotColorAttribute(color);
         }
     }
 }
