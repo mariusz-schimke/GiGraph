@@ -28,7 +28,7 @@
             _value = value;
         }
 
-        public override string? ToString()
+        public override string ToString()
         {
             return _value?.ToString();
         }
@@ -40,7 +40,7 @@
 
         public static implicit operator T(DotAttribute<T> value)
         {
-            return value._value;
+            return value is { } ? value._value : default;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Dotless.EntityGenerators.GraphGenerators
     // TODO: dokończyć tę klasę (jakieś interfejsy, możliwość modyfikacji/dostarczenia providerów)
     public static class DotGraphGeneratorFactory
     {
-        public static DotGraphGenerator CreateDefault(Action<DotGenerationOptions>? setOptions = null, Action<DotSyntaxRules>? setSyntaxRules = null)
+        public static DotGraphGenerator CreateDefault(Action<DotGenerationOptions> setOptions = null, Action<DotSyntaxRules> setSyntaxRules = null)
         {
             var syntaxRules = new DotSyntaxRules();
             var options = new DotGenerationOptions();

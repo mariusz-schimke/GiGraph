@@ -39,12 +39,12 @@ namespace Dotless.EntityGenerators.AttributeGenerators
 
         protected virtual string EscapeKey(string key)
         {
-            return _valueEscaper.Escape(key)!;
+            return _valueEscaper.Escape(key);
         }
 
         protected virtual string EscapeValue(string value)
         {
-            return _valueEscaper.Escape(value)!;
+            return _valueEscaper.Escape(value);
         }
 
         protected virtual bool KeyRequiresQuoting(string key)

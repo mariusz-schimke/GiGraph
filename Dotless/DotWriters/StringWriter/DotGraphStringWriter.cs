@@ -9,7 +9,7 @@ namespace Dotless.DotWriters.StringWriter
         {
         }
 
-        public virtual void WriteGraphDeclaration(string? id, bool directed, bool strict, bool quoteId)
+        public virtual void WriteGraphDeclaration(string id, bool directed, bool strict, bool quoteId)
         {
             if (strict)
             {
