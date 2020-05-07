@@ -24,15 +24,28 @@ namespace Dotless.Attributes
             return _attributes.Remove(key);
         }
 
-        public DotAttribute? TryGet<T>(string key)
+        public T TryGet<T>(string key)
+            where T : DotAttribute
+        {
+            if (TryGet<T>(key, out var result))
+            {
+                return result;
+            }
+
+            return null;
+        }
+
+        public bool TryGet<T>(string key, out T attribute)
             where T : DotAttribute
         {
             if (_attributes.TryGetValue(key, out var result))
             {
-                return (T)result;
+                attribute = (T)result;
+                return true;
             }
 
-            return null;
+            attribute = null;
+            return false;
         }
 
         public IEnumerator<DotAttribute> GetEnumerator()

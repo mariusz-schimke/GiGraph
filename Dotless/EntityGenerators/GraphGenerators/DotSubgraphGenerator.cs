@@ -15,7 +15,7 @@ namespace Dotless.EntityGenerators.GraphGenerators
         {
         }
 
-        protected virtual string? EscapeSubgraphIdentifier(string? id)
+        protected virtual string EscapeSubgraphIdentifier(string id)
         {
             return _graphIdEscaper.Escape(id);
         }
@@ -31,7 +31,7 @@ namespace Dotless.EntityGenerators.GraphGenerators
             // the identifier has to be prefixed with the 'cluster' keyword,
             // as otherwise subgraph is not explicitly drawn by DOT graph renderers
             var id = $"cluster {EscapeSubgraphIdentifier(graph.Id)}";
-            writer.WriteSubgraphDeclaration(id, IdentifierRequiresQuoting(id!));
+            writer.WriteSubgraphDeclaration(id, IdentifierRequiresQuoting(id));
         }
 
         protected virtual void WriteBody(DotGraphBody subgraphBody, IDotSubgraphWriter writer)

@@ -48,7 +48,7 @@ namespace Dotless.EntityGenerators
             return _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);
         }
 
-        protected virtual string? EscapeIdentifier(string? id)
+        protected virtual string EscapeIdentifier(string id)
         {
             return _valueEscaper.Escape(id);
         }
@@ -65,7 +65,7 @@ namespace Dotless.EntityGenerators
                 throw new ArgumentException($"The writer type {writer.GetType().FullName} is not supported by the {GetType().FullName} generator.");
             }
 
-            Write((TEntity)entity!, (TWriter)writer);
+            Write((TEntity)entity, (TWriter)writer);
         }
     }
 }

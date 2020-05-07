@@ -23,7 +23,7 @@ namespace Dotless.DotWriters.Options
                 : options.LineBreak;
         }
 
-        public static string? Text(this DotFormattingOptions options, string? text)
+        public static string Text(this DotFormattingOptions options, string text)
         {
             if (!options.SingleLineOutput || text is null)
             {

@@ -5,7 +5,7 @@ using Dotless.EntityGenerators.Options;
 
 namespace Dotless.EntityGenerators.AttributeGenerators
 {
-    public class DotHtmlLabelAttributeGenerator : DotStringAttributeGenerator<DotHtmlLabel>
+    public class DotHtmlLabelAttributeGenerator : DotGenericAttributeGenerator<DotHtmlLabelAttribute>
     {
         public DotHtmlLabelAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, DotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
