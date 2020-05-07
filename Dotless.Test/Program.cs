@@ -6,6 +6,7 @@ using Dotless.EntityGenerators.Options;
 using Dotless.Graphs;
 using Dotless.Nodes;
 using System;
+using System.Drawing;
 using System.IO;
 
 namespace Dotless
@@ -49,7 +50,7 @@ namespace Dotless
         private static void AddAttributes(DotGraph graph)
         {
             graph.Label = "My graph";
-            //graph.Attributes.SetAttribute(new DotTextLabel("My label"));
+            graph.Attributes.SetAttribute(new DotBackgroundColorAttribute(Color.Green));
         }
 
         private static void AddNodes(DotGraph graph)
@@ -59,10 +60,10 @@ namespace Dotless
                 Label = "my label"
             });
 
-            graph.Nodes.Add(new DotNode("node2")
-            {
-                Label = new DotHtmlLabel("<b>text</b>")
-            });
+            //graph.Nodes.Add(new DotNode("node2")
+            //{
+            //    Label = new DotHtmlLabel("<b>text</b>")
+            //});
 
             graph.Nodes.Add(new DotNode("node3")
             {
