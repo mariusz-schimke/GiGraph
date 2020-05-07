@@ -22,19 +22,19 @@ namespace Dotless.EntityGenerators.GraphGenerators
 
         public override void Write(DotGraph graph, IDotGraphWriter writer)
         {
-            WriteDeclaration(graph, writer);
+            WriteDeclaration(graph.Id, graph.IsDirected, graph.IsStrict, writer);
             WriteBody(graph, writer);
         }
 
-        protected virtual void WriteDeclaration(DotGraph graph, IDotGraphWriter writer)
+        protected virtual void WriteDeclaration(string id, bool isDirected, bool isStrict, IDotGraphWriter writer)
         {
-            var id = EscapeGraphIdentifier(graph.Id);
+            id = EscapeGraphIdentifier(id);
 
             writer.WriteGraphDeclaration
             (
                 id,
-                graph.IsDirected,
-                graph.IsStrict,
+                isDirected,
+                isStrict,
                 quoteId: id is { } && IdentifierRequiresQuoting(id!)
             );
         }
