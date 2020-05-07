@@ -4,7 +4,7 @@
     {
         void WriteSubgraphDeclaration(string? id, bool quote);
 
-        IDotGraphBodyWriter BeginSubgraphBody();
-        void EndSubraphBody();
+        IDotGraphBodyWriter BeginBody();
+        void EndBody();
     }
 }

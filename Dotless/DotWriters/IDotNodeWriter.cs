@@ -5,6 +5,6 @@
         void WriteNodeIdentifier(string id, bool quote);
 
         IDotAttributeCollectionWriter BeginAttributeList(bool useAttributeSeparator);
-        void EndAttributeList();
+        void EndAttributeList(int attributeCount);
     }
 }

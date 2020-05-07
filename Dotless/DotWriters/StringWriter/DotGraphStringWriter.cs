@@ -2,7 +2,7 @@
 
 namespace Dotless.DotWriters.StringWriter
 {
-    public class DotGraphStringWriter : DotGraphBodyStringWriter, IDotGraphWriter
+    public class DotGraphStringWriter : DotGraphBlockStringWriter, IDotGraphWriter
     {
         public DotGraphStringWriter(DotStringWriter writer, DotFormattingOptions options, int level)
             : base(writer, options, level)
@@ -33,16 +33,6 @@ namespace Dotless.DotWriters.StringWriter
                 _writer.Identifier(id, quoteId)
                        .Space();
             }
-        }
-
-        public virtual IDotGraphBodyWriter BeginGraphBody()
-        {
-            return BeginBody();
-        }
-
-        public virtual void EndGraphBody()
-        {
-            EndBody();
         }
     }
 }

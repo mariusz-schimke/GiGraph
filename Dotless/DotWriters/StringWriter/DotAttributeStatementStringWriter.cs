@@ -4,17 +4,14 @@ namespace Dotless.DotWriters.StringWriter
 {
     public class DotAttributeStatementStringWriter : DotAttributeListStringWriter
     {
-        protected readonly bool _useStatementDelimiter;
-
         public DotAttributeStatementStringWriter(DotStringWriter writer, DotFormattingOptions options, int level, bool useStatementDelimiter)
-            : base(writer, options, level)
+            : base(writer, options, level, useStatementDelimiter)
         {
-            _useStatementDelimiter = useStatementDelimiter;
         }
 
         public override void EndAttribute()
         {
-            if (_useStatementDelimiter)
+            if (_useAttributeSeparator)
             {
                 _writer.StatementEnd();
             }

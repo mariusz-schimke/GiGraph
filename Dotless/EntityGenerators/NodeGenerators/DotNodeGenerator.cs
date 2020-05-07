@@ -28,12 +28,9 @@ namespace Dotless.EntityGenerators.NodeGenerators
 
         protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotNodeWriter writer)
         {
-            if (attributes.Any())
-            {
-                var attributesWriter = writer.BeginAttributeList(_options.Attributes.PreferExplicitSeparator);
-                _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Write(attributes, attributesWriter);
-                writer.EndAttributeList();
-            }
+            var attributesWriter = writer.BeginAttributeList(_options.Attributes.PreferExplicitSeparator);
+            _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Write(attributes, attributesWriter);
+            writer.EndAttributeList(attributes.Count());
         }
     }
 }

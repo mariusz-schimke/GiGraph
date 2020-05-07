@@ -19,6 +19,8 @@ namespace Dotless.DotWriters.StringWriter
 
         public virtual void EndNode()
         {
+            _writer.ClearLingerBuffer();
+
             if (_useStatementDelimiter)
             {
                 _writer.StatementEnd();
