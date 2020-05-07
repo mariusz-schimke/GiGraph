@@ -1,5 +1,6 @@
 ﻿using Dotless.Core;
 using Dotless.EntityGenerators.AttributeGenerators;
+using Dotless.EntityGenerators.Edges;
 using Dotless.EntityGenerators.NodeGenerators;
 using Dotless.EntityGenerators.Options;
 using System;
@@ -30,6 +31,9 @@ namespace Dotless.EntityGenerators.GraphGenerators
 
             converters.Register(new DotNodeGenerator(syntaxRules, options, converters));
             converters.Register(new DotNodeCollectionGenerator(syntaxRules, options, converters));
+
+            converters.Register(new DotEdgeGenerator(syntaxRules, options, converters));
+            converters.Register(new DotEdgeCollectionGenerator(syntaxRules, options, converters));
 
             return new DotGraphGenerator(syntaxRules, options, converters);
         }

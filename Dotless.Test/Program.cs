@@ -30,6 +30,7 @@ namespace Dotless
 
             AddAttributes(graph);
             AddNodes(graph);
+            AddEdges(graph);
 
             var streamWriter = new StreamWriter(Console.OpenStandardOutput());
             var sw = new DotStringWriter(streamWriter, fo);
@@ -44,6 +45,11 @@ namespace Dotless
             // Console.WriteLine(dotGraph.ToString(fo, fo));
 
             Console.ReadLine();
+        }
+
+        private static void AddEdges(DotGraph graph)
+        {
+            graph.Edges.Add("node1", "node2");
         }
 
         private static void AddAttributes(DotGraph graph)

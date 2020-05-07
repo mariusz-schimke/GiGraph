@@ -16,7 +16,7 @@ namespace Dotless.TextEscaping
         {
         }
 
-        public virtual string? Escape(string? value)
+        public virtual string Escape(string value)
         {
             foreach (var escaper in this)
             {

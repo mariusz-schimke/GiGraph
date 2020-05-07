@@ -9,7 +9,7 @@ namespace Dotless.DotWriters.StringWriter
         {
         }
 
-        public virtual void WriteSubgraphDeclaration(string? id, bool quote)
+        public virtual void WriteSubgraphDeclaration(string id, bool quote)
         {
             _writer.Keyword("subgraph")
                    .Space();
