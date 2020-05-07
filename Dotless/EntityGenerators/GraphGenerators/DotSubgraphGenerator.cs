@@ -28,9 +28,13 @@ namespace Dotless.EntityGenerators.GraphGenerators
 
         protected virtual void WriteDeclaration(DotSubgraph graph, IDotSubgraphWriter writer)
         {
-            // the identifier has to be prefixed with the 'cluster' keyword,
-            // as otherwise subgraph is not explicitly drawn by DOT graph renderers
-            var id = $"cluster {EscapeSubgraphIdentifier(graph.Id)}";
+            var id = EscapeSubgraphIdentifier(graph.Id);
+
+            if (graph.IsCluster)
+            {
+                id = $"cluster {id}";
+            }
+
             writer.WriteSubgraphDeclaration(id, IdentifierRequiresQuoting(id));
         }
 
