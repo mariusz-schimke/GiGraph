@@ -22,15 +22,15 @@ namespace Dotless.EntityGenerators.GraphGenerators
 
         public override void Write(DotSubgraph graph, IDotSubgraphWriter writer)
         {
-            WriteDeclaration(graph, writer);
+            WriteDeclaration(graph.Id, graph.IsCluster, writer);
             WriteBody(graph, writer);
         }
 
-        protected virtual void WriteDeclaration(DotSubgraph graph, IDotSubgraphWriter writer)
+        protected virtual void WriteDeclaration(string id, bool isCluster, IDotSubgraphWriter writer)
         {
-            var id = EscapeSubgraphIdentifier(graph.Id);
+            id = EscapeSubgraphIdentifier(id);
 
-            if (graph.IsCluster)
+            if (isCluster)
             {
                 id = $"cluster {id}";
             }
