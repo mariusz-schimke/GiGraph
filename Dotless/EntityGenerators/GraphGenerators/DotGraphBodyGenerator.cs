@@ -23,22 +23,16 @@ namespace Dotless.EntityGenerators.GraphGenerators
 
         protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotGraphBodyWriter writer)
         {
-            if (attributes.Any())
-            {
-                var attributesWriter = writer.BeginAttributesSection(_options.Attributes.PreferExplicitSeparator);
-                _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Write(attributes, attributesWriter);
-                writer.EndAttributesSection();
-            }
+            var attributesWriter = writer.BeginAttributesSection(_options.PreferStatementDelimiter);
+            _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Write(attributes, attributesWriter);
+            writer.EndAttributesSection(attributes.Count());
         }
 
         protected virtual void WriteNodes(DotNodeCollection nodes, IDotGraphBodyWriter writer)
         {
-            if (nodes.Any())
-            {
-                var nodesWriter = writer.BeginNodesSection(_options.PreferStatementDelimiter);
-                _entityGenerators.GetForEntity<IDotNodeCollectionWriter>(nodes).Write(nodes, nodesWriter);
-                writer.EndNodesSection();
-            }
+            var nodesWriter = writer.BeginNodesSection(_options.PreferStatementDelimiter);
+            _entityGenerators.GetForEntity<IDotNodeCollectionWriter>(nodes).Write(nodes, nodesWriter);
+            writer.EndNodesSection(nodes.Count());
         }
     }
 }

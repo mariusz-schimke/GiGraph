@@ -22,6 +22,12 @@ namespace Dotless.EntityGenerators.GraphGenerators
 
         public override void Write(DotGraph graph, IDotGraphWriter writer)
         {
+            WriteDeclaration(graph, writer);
+            WriteBody(graph, writer);
+        }
+
+        protected virtual void WriteDeclaration(DotGraph graph, IDotGraphWriter writer)
+        {
             var id = EscapeGraphIdentifier(graph.Id);
 
             writer.WriteGraphDeclaration
@@ -31,15 +37,13 @@ namespace Dotless.EntityGenerators.GraphGenerators
                 graph.IsStrict,
                 quoteId: id is { } && IdentifierRequiresQuoting(id!)
             );
-
-            WriteBody(graph, writer);
         }
 
         protected virtual void WriteBody(DotGraphBody graphBody, IDotGraphWriter writer)
         {
-            var bodyWriter = writer.BeginGraphBody();
+            var bodyWriter = writer.BeginBody();
             _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graphBody).Write(graphBody, bodyWriter);
-            writer.EndGraphBody();
+            writer.EndBody();
         }
     }
 }

@@ -4,9 +4,12 @@ namespace Dotless.DotWriters.StringWriter
 {
     public class DotAttributeListStringWriter : DotEntityStringWriter, IDotAttributeCollectionWriter
     {
-        public DotAttributeListStringWriter(DotStringWriter writer, DotFormattingOptions options, int level)
+        protected readonly bool _useAttributeSeparator;
+
+        public DotAttributeListStringWriter(DotStringWriter writer, DotFormattingOptions options, int level, bool useAttributeSeparator)
             : base(writer, options, level)
         {
+            _useAttributeSeparator = useAttributeSeparator;
         }
 
         public virtual IDotAttributeWriter BeginAttribute()
@@ -16,9 +19,12 @@ namespace Dotless.DotWriters.StringWriter
 
         public virtual void EndAttribute()
         {
-            _writer.AttributeSeparator(linger: true)
-                   .LineBreak(linger: true)
-                   .Indentation(_level, linger: true);
+            if (_useAttributeSeparator)
+            {
+                _writer.AttributeSeparator(linger: true);
+            }
+
+            _writer.Space(linger: true);
         }
     }
 }

@@ -3,9 +3,9 @@
     public interface IDotGraphBodyWriter : IDotEntityWriter
     {
         IDotAttributeCollectionWriter BeginAttributesSection(bool useStatementDelimiter);
-        void EndAttributesSection();
+        void EndAttributesSection(int attributeCount);
 
         IDotNodeCollectionWriter BeginNodesSection(bool useStatementDelimiter);
-        void EndNodesSection();
+        void EndNodesSection(int nodeCount);
     }
 }

@@ -4,7 +4,7 @@
     {
         void WriteGraphDeclaration(string? id, bool directed, bool strict, bool quoteId);
 
-        IDotGraphBodyWriter BeginGraphBody();
-        void EndGraphBody();
+        IDotGraphBodyWriter BeginBody();
+        void EndBody();
     }
 }

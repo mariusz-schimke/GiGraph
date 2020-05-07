@@ -17,20 +17,21 @@ namespace Dotless.DotWriters.StringWriter
 
         public virtual IDotAttributeCollectionWriter BeginAttributeList(bool useAttributeSeparator)
         {
-            _writer.AttributeListStart()
-                   .LineBreak(linger: true)
-                   .Indentation(_level + 1, linger: true);
+            _writer.AttributeListStart(linger: true)
+                   .Space(linger: true);
 
-            return new DotAttributeListStringWriter(_writer, _options, _level + 1);
+            return new DotAttributeListStringWriter(_writer, _options, _level + 1, useAttributeSeparator);
         }
 
-        public virtual void EndAttributeList()
+        public virtual void EndAttributeList(int attributeCount)
         {
             _writer.ClearLingerBuffer();
 
-            _writer.LineBreak()
-                   .Indentation(_level)
-                   .AttributeListEnd();
+            if (attributeCount > 0)
+            {
+                _writer.Space()
+                       .AttributeListEnd();
+            }
         }
     }
 }
