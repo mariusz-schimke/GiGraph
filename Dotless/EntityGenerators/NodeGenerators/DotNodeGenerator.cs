@@ -22,7 +22,7 @@ namespace Dotless.EntityGenerators.NodeGenerators
 
         protected virtual void WriteIdentifier(string id, IDotNodeWriter writer)
         {
-            id = EscapeIdentifier(id)!;
+            id = EscapeIdentifier(id);
             writer.WriteNodeIdentifier(id, IdentifierRequiresQuoting(id));
         }
 

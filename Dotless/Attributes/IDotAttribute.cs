@@ -5,14 +5,8 @@ namespace Dotless.Attributes
     public interface IDotAttribute : IDotEntity
     {
         string Key { get; }
+        string Value { get; }
+
         bool HasValue { get; }
-
-        // TODO: dodać GetStringValue()
-    }
-
-    // TODO: usunąć ten interfejs
-    public interface IDotAttribute<T> : IDotAttribute
-    {
-        T Value { get; }
     }
 }
