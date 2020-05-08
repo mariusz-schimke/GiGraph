@@ -47,7 +47,8 @@ namespace Dotless.TextEscaping
             return new TextEscapingPipeline
             {
                 new DotHtmlEscaper(),
-                new DotQuotationMarkEscaper()
+                new DotQuotationMarkEscaper(),
+                new DotLineBreakEscaper()
             };
         }
     }
