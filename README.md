@@ -1,5 +1,9 @@
 # Gigraph
 
+<p align="center">
+  <img src="/Assets/logo.svg" width="300" />
+</p>
 
-<img src="/Assets/logo.svg" alt="Graph" style="zoom:25%;" />
+<hr/>
 
+## Simple yet versatile library for generating graphs in the DOT language
