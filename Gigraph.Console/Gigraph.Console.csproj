@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dotless\Gigraph.Dot.Core.csproj" />
     <ProjectReference Include="..\Gigraph.Dot.Entities\Gigraph.Dot.Entities.csproj" />
     <ProjectReference Include="..\Gigraph.Dot.Generators\Gigraph.Dot.Generators.csproj" />
     <ProjectReference Include="..\Gigraph.Dot.Writers\Gigraph.Dot.Writers.csproj" />
