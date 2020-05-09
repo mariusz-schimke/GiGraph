@@ -24,26 +24,26 @@ namespace Dotless.EntityGenerators.GraphGenerators
         {
             var writer = writerFactory.Create(graph.IsDirected);
 
-            WriteDeclaration(graph, writer);
+            WriteDeclaration(graph.Id, graph.IsStrict, writer);
             WriteBody(graph, writer);
         }
 
-        protected virtual void WriteDeclaration(DotGraph graph, IDotGraphWriter writer)
+        protected virtual void WriteDeclaration(string id, bool isStrict, IDotGraphWriter writer)
         {
-            var id = EscapeGraphIdentifier(graph.Id);
+            id = EscapeGraphIdentifier(id);
 
             writer.WriteGraphDeclaration
             (
                 id,
-                graph.IsStrict,
+                isStrict,
                 quoteId: id is { } && IdentifierRequiresQuoting(id)
             );
         }
 
-        protected virtual void WriteBody(DotGraph graph, IDotGraphWriter writer)
+        protected virtual void WriteBody(DotGraphBody graphBody, IDotGraphWriter writer)
         {
             var bodyWriter = writer.BeginBody();
-            _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graph).Write(graph, bodyWriter);
+            _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graphBody).Write(graphBody, bodyWriter);
             writer.EndBody();
         }
     }
