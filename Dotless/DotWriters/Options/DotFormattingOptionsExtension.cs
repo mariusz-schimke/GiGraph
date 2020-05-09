@@ -30,7 +30,7 @@ namespace Dotless.DotWriters.Options
                 return text;
             }
 
-            var lines = text.Split(options.LineBreak, StringSplitOptions.None);
+            var lines = text.Split(new string[] { options.LineBreak }, StringSplitOptions.None);
             return string.Join(options.Space(), lines);
         }
     }

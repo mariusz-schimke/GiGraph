@@ -175,9 +175,9 @@ namespace Dotless.DotWriters.StringWriter
 
         public virtual DotStringWriter FlushLingerBuffer()
         {
-            while (_lingerBuffer.TryDequeue(out var value))
+            while (_lingerBuffer.Count > 0)
             {
-                _writer.Write(value);
+                _writer.Write(_lingerBuffer.Dequeue());
             }
 
             return this;
