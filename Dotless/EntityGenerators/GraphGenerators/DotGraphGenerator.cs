@@ -6,7 +6,7 @@ using Dotless.TextEscaping;
 
 namespace Dotless.EntityGenerators.GraphGenerators
 {
-    public class DotGraphGenerator : DotEntityGenerator<DotGraph, IDotGraphWriter>
+    public class DotGraphGenerator : DotEntityGenerator<DotGraph, IDotGraphWriterFactory>
     {
         protected readonly TextEscapingPipeline _graphIdEscaper = TextEscapingPipeline.CreateForGraphId();
 
@@ -15,27 +15,28 @@ namespace Dotless.EntityGenerators.GraphGenerators
         {
         }
 
-        protected virtual string? EscapeGraphIdentifier(string? id)
+        protected virtual string EscapeGraphIdentifier(string id)
         {
             return _graphIdEscaper.Escape(id);
         }
 
-        public override void Write(DotGraph graph, IDotGraphWriter writer)
+        public override void Write(DotGraph graph, IDotGraphWriterFactory writerFactory)
         {
-            WriteDeclaration(graph, writer);
+            var writer = writerFactory.Create(graph.IsDirected);
+
+            WriteDeclaration(graph.Id, graph.IsStrict, writer);
             WriteBody(graph, writer);
         }
 
-        protected virtual void WriteDeclaration(DotGraph graph, IDotGraphWriter writer)
+        protected virtual void WriteDeclaration(string id, bool isStrict, IDotGraphWriter writer)
         {
-            var id = EscapeGraphIdentifier(graph.Id);
+            id = EscapeGraphIdentifier(id);
 
             writer.WriteGraphDeclaration
             (
                 id,
-                graph.IsDirected,
-                graph.IsStrict,
-                quoteId: id is { } && IdentifierRequiresQuoting(id!)
+                isStrict,
+                quoteId: id is { } && IdentifierRequiresQuoting(id)
             );
         }
 

@@ -1,33 +1,23 @@
-﻿using Dotless.DotWriters.Options;
+﻿using Dotless.DotWriters.Contexts;
+using Dotless.DotWriters.Options;
 
 namespace Dotless.DotWriters.StringWriter
 {
-    public class DotNodeStatementStringWriter : DotEntityStringWriter, IDotNodeCollectionWriter
+    public class DotNodeStatementStringWriter : DotStatementStringWriter, IDotNodeCollectionWriter
     {
-        protected readonly bool _useStatementDelimiter;
-
-        public DotNodeStatementStringWriter(DotStringWriter writer, DotFormattingOptions options, int level, bool useStatementDelimiter)
-            : base(writer, options, level)
+        public DotNodeStatementStringWriter(DotStringWriter writer, DotFormattingOptions format, DotEntityWriterContext context, bool useStatementDelimiter)
+            : base(writer, format, context, useStatementDelimiter)
         {
-            _useStatementDelimiter = useStatementDelimiter;
         }
 
         public virtual IDotNodeWriter BeginNode()
         {
-            return new DotNodeStringWriter(_writer, _options, _level);
+            return new DotNodeStringWriter(_writer, _format, _context);
         }
 
-        public virtual void EndNode()
+        public void EndNode()
         {
-            _writer.ClearLingerBuffer();
-
-            if (_useStatementDelimiter)
-            {
-                _writer.StatementEnd();
-            }
-
-            _writer.LineBreak()
-                   .Indentation(_level, linger: true);
+            EndStatement();
         }
     }
 }

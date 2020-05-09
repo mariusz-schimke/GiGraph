@@ -1,11 +1,12 @@
-﻿using Dotless.DotWriters.Options;
+﻿using Dotless.DotWriters.Contexts;
+using Dotless.DotWriters.Options;
 
 namespace Dotless.DotWriters.StringWriter
 {
     public class DotAttributeStringWriter : DotEntityStringWriter, IDotAttributeWriter
     {
-        public DotAttributeStringWriter(DotStringWriter writer, DotFormattingOptions options, int level)
-            : base(writer, options, level)
+        public DotAttributeStringWriter(DotStringWriter writer, DotFormattingOptions format, DotEntityWriterContext context)
+            : base(writer, format, context)
         {
         }
 

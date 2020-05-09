@@ -16,7 +16,7 @@ namespace Dotless.TextEscaping
         {
         }
 
-        public virtual string? Escape(string? value)
+        public virtual string Escape(string value)
         {
             foreach (var escaper in this)
             {
@@ -47,7 +47,8 @@ namespace Dotless.TextEscaping
             return new TextEscapingPipeline
             {
                 new DotHtmlEscaper(),
-                new DotQuotationMarkEscaper()
+                new DotQuotationMarkEscaper(),
+                new DotLineBreakEscaper()
             };
         }
     }

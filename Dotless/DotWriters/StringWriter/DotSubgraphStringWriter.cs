@@ -1,15 +1,16 @@
-﻿using Dotless.DotWriters.Options;
+﻿using Dotless.DotWriters.Contexts;
+using Dotless.DotWriters.Options;
 
 namespace Dotless.DotWriters.StringWriter
 {
     public class DotSubgraphStringWriter : DotGraphBlockStringWriter, IDotSubgraphWriter
     {
-        public DotSubgraphStringWriter(DotStringWriter writer, DotFormattingOptions options, int level)
-            : base(writer, options, level)
+        public DotSubgraphStringWriter(DotStringWriter writer, DotFormattingOptions format, DotEntityWriterContext context)
+            : base(writer, format, context)
         {
         }
 
-        public virtual void WriteSubgraphDeclaration(string? id, bool quote)
+        public virtual void WriteSubgraphDeclaration(string id, bool quote)
         {
             _writer.Keyword("subgraph")
                    .Space();

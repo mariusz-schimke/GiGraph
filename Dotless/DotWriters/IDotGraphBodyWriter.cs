@@ -7,5 +7,8 @@
 
         IDotNodeCollectionWriter BeginNodesSection(bool useStatementDelimiter);
         void EndNodesSection(int nodeCount);
+
+        IDotEdgeCollectionWriter BeginEdgesSection(bool useStatementDelimiter);
+        void EndEdgesSection(int nodeCount);
     }
 }
