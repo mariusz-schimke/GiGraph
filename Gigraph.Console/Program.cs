@@ -6,8 +6,6 @@ using Gigraph.Dot.Helpers;
 using Gigraph.Dot.Writers.Options;
 using System;
 using System.Drawing;
-using System.IO;
-using System.Text;
 
 namespace Gigraph
 {
@@ -39,13 +37,9 @@ namespace Gigraph
             AddNodes(graph);
             AddEdges(graph);
 
-            using var streamWriter = new StreamWriter(Console.OpenStandardOutput());
+            Console.WriteLine(graph.Build(fo, go));
+            graph.SaveToFile(@"C:\Temp\gigraph.gv");
 
-            var encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: true, throwOnInvalidBytes: true);
-            //graph.Build(streamWriter, fo, go, encoding);
-            //streamWriter.Flush();
-
-            Console.WriteLine(graph.Build(fo, go, Encoding.Default));
             Console.ReadLine();
         }
 
