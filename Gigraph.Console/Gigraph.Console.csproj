@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gigraph.Dot.Entities\Gigraph.Dot.Entities.csproj" />
+    <ProjectReference Include="..\Gigraph.Dot.Generators\Gigraph.Dot.Generators.csproj" />
+    <ProjectReference Include="..\Gigraph.Dot.Writers\Gigraph.Dot.Writers.csproj" />
+    <ProjectReference Include="..\Gigraph.Dot\Gigraph.Dot.csproj" />
+  </ItemGroup>
+
+</Project>
