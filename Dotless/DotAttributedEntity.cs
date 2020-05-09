@@ -17,29 +17,13 @@ namespace Dotless
 
         public virtual Color? Color
         {
-            get
-            {
-                if (Attributes.TryGet<DotColorAttribute>(DotColorAttribute.AttributeKey, out var result))
-                {
-                    return result;
-                }
-
-                return null;
-            }
+            get => Attributes.TryGet<DotColorAttribute>(DotColorAttribute.AttributeKey, out var result) ? (Color)result : (Color?)null;
             set => AddOrRemove(DotColorAttribute.AttributeKey, value, v => new DotColorAttribute(v.Value));
         }
 
         public virtual Color? BackgroundColor
         {
-            get
-            {
-                if (Attributes.TryGet<DotBackgroundColorAttribute>(DotBackgroundColorAttribute.AttributeKey, out var result))
-                {
-                    return result;
-                }
-
-                return null;
-            }
+            get => Attributes.TryGet<DotBackgroundColorAttribute>(DotBackgroundColorAttribute.AttributeKey, out var result) ? (Color)result : (Color?)null;
             set => AddOrRemove(DotBackgroundColorAttribute.AttributeKey, value, v => new DotBackgroundColorAttribute(v.Value));
         }
 
