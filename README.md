@@ -1,2 +1,5 @@
-# Dotless
-Versatile yet simple graph generator for .NET. Produces output in the DOT language.
+# Gigraph
+
+
+<img src="D:\Work\Dotless\Assets\logo.svg" alt="Graph" style="zoom:25%;" />
+
