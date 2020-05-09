@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gigraph.Test", "Dotless.Test\Gigraph.Test.csproj", "{A9472EBB-A99C-4533-A081-75DEABC15CD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gigraph.Console", "Gigraph.Console\Gigraph.Console.csproj", "{A9472EBB-A99C-4533-A081-75DEABC15CD9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gigraph.Dot.Core", "Dotless\Gigraph.Dot.Core.csproj", "{8E4557E5-A38A-4DF1-AFF6-8496035AAAB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gigraph.Dot.Core", "Gigraph.Core\Gigraph.Dot.Core.csproj", "{8E4557E5-A38A-4DF1-AFF6-8496035AAAB0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gigraph.Dot.Entities", "Gigraph.Dot.Entities\Gigraph.Dot.Entities.csproj", "{1A861052-3B71-42B0-A667-E859CC554640}"
 EndProject
