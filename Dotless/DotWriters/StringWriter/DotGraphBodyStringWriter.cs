@@ -1,41 +1,52 @@
-﻿using Dotless.DotWriters.Options;
+﻿using Dotless.DotWriters.Contexts;
+using Dotless.DotWriters.Options;
 
 namespace Dotless.DotWriters.StringWriter
 {
     public class DotGraphBodyStringWriter : DotEntityStringWriter, IDotGraphBodyWriter
     {
-        public DotGraphBodyStringWriter(DotStringWriter writer, DotFormattingOptions options, int level)
-            : base(writer, options, level)
+        public DotGraphBodyStringWriter(DotStringWriter writer, DotFormattingOptions format, DotEntityWriterContext context)
+            : base(writer, format, context)
         {
         }
 
         public virtual IDotAttributeCollectionWriter BeginAttributesSection(bool useStatementDelimiter)
         {
-            return new DotAttributeStatementStringWriter(_writer, _options, _level, useStatementDelimiter);
+            return new DotAttributeStatementStringWriter(_writer, _format, _context, useStatementDelimiter);
         }
 
         public virtual IDotNodeCollectionWriter BeginNodesSection(bool useStatementDelimiter)
         {
-            return new DotNodeStatementStringWriter(_writer, _options, _level, useStatementDelimiter);
+            return new DotNodeStatementStringWriter(_writer, _format, _context, useStatementDelimiter);
+        }
+
+        public virtual IDotEdgeCollectionWriter BeginEdgesSection(bool useStatementDelimiter)
+        {
+            return new DotEdgeStatementStringWriter(_writer, _format, _context, useStatementDelimiter);
         }
 
         public virtual void EndAttributesSection(int attributeCount)
         {
-            if (attributeCount > 0)
-            {
-                _writer.ClearLingerBuffer()
-                       .LineBreak(linger: true)
-                       .Indentation(_level, linger: true);
-            }
+            EndSection(attributeCount);
         }
 
         public virtual void EndNodesSection(int nodeCount)
         {
-            if (nodeCount > 0)
+            EndSection(nodeCount);
+        }
+
+        public virtual void EndEdgesSection(int edgeCount)
+        {
+            EndSection(edgeCount);
+        }
+
+        protected virtual void EndSection(int entityCount)
+        {
+            if (entityCount > 0)
             {
                 _writer.ClearLingerBuffer()
                        .LineBreak(linger: true)
-                       .Indentation(_level, linger: true);
+                       .Indentation(_context.Level, linger: true);
             }
         }
     }

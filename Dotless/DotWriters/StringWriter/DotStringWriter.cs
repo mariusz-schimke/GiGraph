@@ -98,9 +98,9 @@ namespace Dotless.DotWriters.StringWriter
             return Token(">", linger);
         }
 
-        public virtual DotStringWriter Edge(bool linger = false)
+        public virtual DotStringWriter Edge(bool directed = false, bool linger = false)
         {
-            return Token("--", linger);
+            return directed ? DirectedEdge(linger) : Token("--", linger);
         }
 
         public virtual DotStringWriter DirectedEdge(bool linger = false)
