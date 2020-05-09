@@ -1,16 +1,15 @@
-﻿using Dotless.Attributes;
-using Dotless.Core;
-using Dotless.DotWriters.Options;
-using Dotless.DotWriters.StringWriter;
-using Dotless.EntityGenerators.GraphGenerators;
-using Dotless.EntityGenerators.Options;
-using Dotless.Graphs;
-using Dotless.Nodes;
+﻿using Gigraph.Dot.Entities.Attributes;
+using Gigraph.Dot.Entities.Graphs;
+using Gigraph.Dot.Entities.Nodes;
+using Gigraph.Dot.Generators.Options;
+using Gigraph.Dot.Helpers;
+using Gigraph.Dot.Writers.Options;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Text;
 
-namespace Dotless
+namespace Gigraph
 {
     // TODO: przejrzec wszystkie metody, czy powinny lub nie powinny byc wirtualne
     // TODO: przejrzeć klasy, czy powinny miec interfejsy (np. TokenWriter itp.)
@@ -40,18 +39,13 @@ namespace Dotless
             AddNodes(graph);
             AddEdges(graph);
 
-            var streamWriter = new StreamWriter(Console.OpenStandardOutput());
-            var sw = new DotStringWriter(streamWriter, fo);
+            using var streamWriter = new StreamWriter(Console.OpenStandardOutput());
 
-            var graphWriter = DotGraphGeneratorFactory.CreateDefault(go, new DotSyntaxRules());
+            var encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: true, throwOnInvalidBytes: true);
+            //graph.Build(streamWriter, fo, go, encoding);
+            //streamWriter.Flush();
 
-            var stringWriter = new DotGraphStringWriterFactory(sw, fo);
-            graphWriter.Write(graph, stringWriter);
-
-            streamWriter.Dispose();
-
-            // Console.WriteLine(dotGraph.ToString(fo, fo));
-
+            Console.WriteLine(graph.Build(fo, go, Encoding.Default));
             Console.ReadLine();
         }
 
