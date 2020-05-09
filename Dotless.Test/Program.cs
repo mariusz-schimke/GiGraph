@@ -1,7 +1,9 @@
 ﻿using Dotless.Attributes;
+using Dotless.Core;
 using Dotless.DotWriters.Options;
 using Dotless.DotWriters.StringWriter;
 using Dotless.EntityGenerators.GraphGenerators;
+using Dotless.EntityGenerators.Options;
 using Dotless.Graphs;
 using Dotless.Nodes;
 using System;
@@ -22,9 +24,15 @@ namespace Dotless
                 //SingleLineOutput = true
             };
 
+            var go = new DotGenerationOptions
+            {
+
+            };
+
             var graph = new DotGraph()
             {
                 IsStrict = true,
+                IsDirected = true,
                 Id = "Graph1"
             };
 
@@ -35,9 +43,9 @@ namespace Dotless
             var streamWriter = new StreamWriter(Console.OpenStandardOutput());
             var sw = new DotStringWriter(streamWriter, fo);
 
-            var stringWriter = new DotGraphStringWriter(sw, fo, level: 0);
+            var graphWriter = DotGraphGeneratorFactory.CreateDefault(go, new DotSyntaxRules());
 
-            var graphWriter = DotGraphGeneratorFactory.CreateDefault();
+            var stringWriter = new DotGraphStringWriterFactory(sw, fo);
             graphWriter.Write(graph, stringWriter);
 
             streamWriter.Dispose();

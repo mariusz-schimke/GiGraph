@@ -1,15 +1,16 @@
-﻿using Dotless.DotWriters.Options;
+﻿using Dotless.DotWriters.Contexts;
+using Dotless.DotWriters.Options;
 
 namespace Dotless.DotWriters.StringWriter
 {
     public class DotGraphStringWriter : DotGraphBlockStringWriter, IDotGraphWriter
     {
-        public DotGraphStringWriter(DotStringWriter writer, DotFormattingOptions options, int level)
-            : base(writer, options, level)
+        public DotGraphStringWriter(DotStringWriter writer, DotFormattingOptions format, DotEntityWriterContext context)
+            : base(writer, format, context)
         {
         }
 
-        public virtual void WriteGraphDeclaration(string id, bool directed, bool strict, bool quoteId)
+        public virtual void WriteGraphDeclaration(string id, bool strict, bool quoteId)
         {
             if (strict)
             {
@@ -17,7 +18,7 @@ namespace Dotless.DotWriters.StringWriter
                        .Space();
             }
 
-            if (directed)
+            if (_context.IsDirectedGraph)
             {
                 _writer.Keyword("digraph")
                        .Space();

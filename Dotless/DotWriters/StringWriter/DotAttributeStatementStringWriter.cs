@@ -1,11 +1,12 @@
-﻿using Dotless.DotWriters.Options;
+﻿using Dotless.DotWriters.Contexts;
+using Dotless.DotWriters.Options;
 
 namespace Dotless.DotWriters.StringWriter
 {
     public class DotAttributeStatementStringWriter : DotAttributeListStringWriter
     {
-        public DotAttributeStatementStringWriter(DotStringWriter writer, DotFormattingOptions options, int level, bool useStatementDelimiter)
-            : base(writer, options, level, useStatementDelimiter)
+        public DotAttributeStatementStringWriter(DotStringWriter writer, DotFormattingOptions format, DotEntityWriterContext context, bool useStatementDelimiter)
+            : base(writer, format, context, useStatementDelimiter)
         {
         }
 
@@ -17,7 +18,7 @@ namespace Dotless.DotWriters.StringWriter
             }
 
             _writer.LineBreak()
-                   .Indentation(_level, linger: true);
+                   .Indentation(_context.Level, linger: true);
         }
     }
 }

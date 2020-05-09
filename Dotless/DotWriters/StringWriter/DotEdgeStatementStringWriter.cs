@@ -1,17 +1,18 @@
-﻿using Dotless.DotWriters.Options;
+﻿using Dotless.DotWriters.Contexts;
+using Dotless.DotWriters.Options;
 
 namespace Dotless.DotWriters.StringWriter
 {
     public class DotEdgeStatementStringWriter : DotStatementStringWriter, IDotEdgeCollectionWriter
     {
-        public DotEdgeStatementStringWriter(DotStringWriter writer, DotFormattingOptions options, int level, bool useStatementDelimiter)
-            : base(writer, options, level, useStatementDelimiter)
+        public DotEdgeStatementStringWriter(DotStringWriter writer, DotFormattingOptions format, DotEntityWriterContext context, bool useStatementDelimiter)
+            : base(writer, format, context, useStatementDelimiter)
         {
         }
 
         public virtual IDotEdgeWriter BeginEdge()
         {
-            return new DotEdgeStringWriter(_writer, _options, _level);
+            return new DotEdgeStringWriter(_writer, _format, _context);
         }
 
         public virtual void EndEdge()

@@ -1,18 +1,19 @@
-﻿using Dotless.DotWriters.Options;
+﻿using Dotless.DotWriters.Contexts;
+using Dotless.DotWriters.Options;
 
 namespace Dotless.DotWriters.StringWriter
 {
     public abstract class DotEntityStringWriter : IDotEntityWriter
     {
         protected readonly DotStringWriter _writer;
-        protected readonly DotFormattingOptions _options;
-        protected readonly int _level;
+        protected readonly DotFormattingOptions _format;
+        protected readonly DotEntityWriterContext _context;
 
-        public DotEntityStringWriter(DotStringWriter writer, DotFormattingOptions options, int level)
+        protected DotEntityStringWriter(DotStringWriter writer, DotFormattingOptions format, DotEntityWriterContext context)
         {
             _writer = writer;
-            _options = options;
-            _level = level;
+            _format = format;
+            _context = context;
         }
     }
 }
