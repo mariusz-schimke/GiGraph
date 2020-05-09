@@ -11,31 +11,48 @@ namespace Gigraph.Dot.Helpers
 {
     public static class DotGraphExtension
     {
-        public static string Build(this DotGraph graph, DotFormattingOptions formattingOptions, DotGenerationOptions generationOptions, Encoding encoding)
+        public static string Build(this DotGraph graph, DotFormattingOptions formattingOptions = null, DotGenerationOptions generationOptions = null, Encoding encoding = null)
         {
-            var stream = new MemoryStream();
-            using var streamWriter = new StreamWriter(stream, encoding);
+            var output = new MemoryStream();
 
-            graph.Build(streamWriter, formattingOptions, generationOptions, encoding);
+            using var outputWriter = encoding is { }
+                ? new StreamWriter(output, encoding)
+                : new StreamWriter(output);
 
-            streamWriter.Flush();
-            return encoding.GetString(stream.ToArray());
+            graph.Build(outputWriter, formattingOptions, generationOptions);
+
+            outputWriter.Flush();
+            return outputWriter.Encoding.GetString(output.ToArray());
         }
 
-        public static void BuildToFile(this DotGraph graph, string filePath, DotFormattingOptions formattingOptions, DotGenerationOptions generationOptions, Encoding encoding)
+        public static void SaveToFile(this DotGraph graph, string filePath, DotFormattingOptions formattingOptions = null, DotGenerationOptions generationOptions = null, Encoding encoding = null)
         {
-            using var streamWriter = new StreamWriter(filePath, append: false, encoding);
-            graph.Build(streamWriter, formattingOptions, generationOptions, encoding);
+            using var streamWriter = encoding is { }
+                ? new StreamWriter(filePath, append: false, encoding)
+                : new StreamWriter(filePath, append: false);
+
+            graph.Build(streamWriter, formattingOptions, generationOptions);
         }
 
-        public static void Build(this DotGraph graph, StreamWriter output, DotFormattingOptions formattingOptions, DotGenerationOptions generationOptions, Encoding encoding)
+        public static void Build(this DotGraph graph, StreamWriter outputWriter, DotFormattingOptions formattingOptions = null,
+            DotGenerationOptions generationOptions = null, DotSyntaxRules syntaxRules = null)
         {
             var generatorsProviderBuilder = new DotEntityGeneratorsProviderBuilder();
             var graphGeneratorBuilder = new DotGraphGeneratorBuilder(generatorsProviderBuilder);
 
-            var graphBuilder = graphGeneratorBuilder.Build(new DotSyntaxRules(), generationOptions);
+            graph.Build(outputWriter, graphGeneratorBuilder, formattingOptions, generationOptions, syntaxRules);
+        }
 
-            var stringWriter = new DotStringWriter(output, formattingOptions);
+        public static void Build(this DotGraph graph, StreamWriter outputWriter, DotGraphGeneratorBuilder graphGeneratorBuilder,
+            DotFormattingOptions formattingOptions = null, DotGenerationOptions generationOptions = null, DotSyntaxRules syntaxRules = null)
+        {
+            syntaxRules ??= new DotSyntaxRules();
+            formattingOptions ??= new DotFormattingOptions();
+            generationOptions ??= new DotGenerationOptions();
+
+            var graphBuilder = graphGeneratorBuilder.Build(syntaxRules, generationOptions);
+
+            var stringWriter = new DotStringWriter(outputWriter, formattingOptions);
             var graphWriterFactory = new DotGraphStringWriterFactory(stringWriter);
 
             graphBuilder.Generate(graph, graphWriterFactory);
