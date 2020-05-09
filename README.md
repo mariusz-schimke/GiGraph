@@ -1,5 +1,5 @@
 # Gigraph
 
 
-<img src="D:\Work\Dotless\Assets\logo.svg" alt="Graph" style="zoom:25%;" />
+<img src="Assets\logo.svg" alt="Graph" style="zoom:25%;" />
 
