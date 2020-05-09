@@ -6,7 +6,7 @@ using Dotless.TextEscaping;
 
 namespace Dotless.EntityGenerators.GraphGenerators
 {
-    public class DotGraphGenerator : DotEntityGenerator<DotGraph, IDotGraphWriter>
+    public class DotGraphGenerator : DotEntityGenerator<DotGraph, IDotGraphWriterFactory>
     {
         protected readonly TextEscapingPipeline _graphIdEscaper = TextEscapingPipeline.CreateForGraphId();
 
@@ -20,29 +20,30 @@ namespace Dotless.EntityGenerators.GraphGenerators
             return _graphIdEscaper.Escape(id);
         }
 
-        public override void Write(DotGraph graph, IDotGraphWriter writer)
+        public override void Write(DotGraph graph, IDotGraphWriterFactory writerFactory)
         {
-            WriteDeclaration(graph.Id, graph.IsDirected, graph.IsStrict, writer);
+            var writer = writerFactory.Create(graph.IsDirected);
+
+            WriteDeclaration(graph, writer);
             WriteBody(graph, writer);
         }
 
-        protected virtual void WriteDeclaration(string id, bool isDirected, bool isStrict, IDotGraphWriter writer)
+        protected virtual void WriteDeclaration(DotGraph graph, IDotGraphWriter writer)
         {
-            id = EscapeGraphIdentifier(id);
+            var id = EscapeGraphIdentifier(graph.Id);
 
             writer.WriteGraphDeclaration
             (
                 id,
-                isDirected,
-                isStrict,
-                quoteId: id is { } && IdentifierRequiresQuoting(id!)
+                graph.IsStrict,
+                quoteId: id is { } && IdentifierRequiresQuoting(id)
             );
         }
 
-        protected virtual void WriteBody(DotGraphBody graphBody, IDotGraphWriter writer)
+        protected virtual void WriteBody(DotGraph graph, IDotGraphWriter writer)
         {
             var bodyWriter = writer.BeginBody();
-            _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graphBody).Write(graphBody, bodyWriter);
+            _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graph).Write(graph, bodyWriter);
             writer.EndBody();
         }
     }

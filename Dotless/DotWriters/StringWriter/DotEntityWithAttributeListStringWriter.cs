@@ -1,11 +1,12 @@
-﻿using Dotless.DotWriters.Options;
+﻿using Dotless.DotWriters.Contexts;
+using Dotless.DotWriters.Options;
 
 namespace Dotless.DotWriters.StringWriter
 {
     public abstract class DotEntityWithAttributeListStringWriter : DotEntityStringWriter
     {
-        public DotEntityWithAttributeListStringWriter(DotStringWriter writer, DotFormattingOptions options, int level)
-            : base(writer, options, level)
+        public DotEntityWithAttributeListStringWriter(DotStringWriter writer, DotFormattingOptions format, DotEntityWriterContext context)
+            : base(writer, format, context)
         {
         }
 
@@ -14,7 +15,7 @@ namespace Dotless.DotWriters.StringWriter
             _writer.AttributeListStart(linger: true)
                    .Space(linger: true);
 
-            return new DotAttributeListStringWriter(_writer, _options, _level + 1, useAttributeSeparator);
+            return new DotAttributeListStringWriter(_writer, _format, _context.NextLevel(), useAttributeSeparator);
         }
 
         public virtual void EndAttributeList(int attributeCount)

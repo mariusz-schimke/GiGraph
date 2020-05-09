@@ -1,4 +1,5 @@
-﻿using Dotless.DotWriters.Options;
+﻿using Dotless.DotWriters.Contexts;
+using Dotless.DotWriters.Options;
 
 namespace Dotless.DotWriters.StringWriter
 {
@@ -6,8 +7,8 @@ namespace Dotless.DotWriters.StringWriter
     {
         protected readonly bool _useStatementDelimiter;
 
-        public DotStatementStringWriter(DotStringWriter writer, DotFormattingOptions options, int level, bool useStatementDelimiter)
-            : base(writer, options, level)
+        public DotStatementStringWriter(DotStringWriter writer, DotFormattingOptions format, DotEntityWriterContext context, bool useStatementDelimiter)
+            : base(writer, format, context)
         {
             _useStatementDelimiter = useStatementDelimiter;
         }
@@ -22,7 +23,7 @@ namespace Dotless.DotWriters.StringWriter
             }
 
             _writer.LineBreak()
-                   .Indentation(_level, linger: true);
+                   .Indentation(_context.Level, linger: true);
         }
     }
 }
