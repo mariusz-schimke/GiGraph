@@ -8,7 +8,7 @@ using Gigraph.Dot.Writers.Options;
 using System.IO;
 using System.Text;
 
-namespace Gigraph.Dot.Helpers
+namespace Gigraph.Dot.Extensions
 {
     public static class DotGraphExtension
     {
@@ -44,7 +44,7 @@ namespace Gigraph.Dot.Helpers
             graph.Build(outputWriter, graphGeneratorBuilder, formattingOptions, generationOptions, syntaxRules);
         }
 
-        public static void Build(this DotGraph graph, StreamWriter outputWriter, DotGraphGeneratorBuilder graphGeneratorBuilder,
+        public static void Build(this DotGraph graph, StreamWriter outputWriter, IDotGraphGeneratorBuilder graphGeneratorBuilder,
             DotFormattingOptions formattingOptions = null, DotGenerationOptions generationOptions = null, DotSyntaxRules syntaxRules = null)
         {
             syntaxRules ??= new DotSyntaxRules();

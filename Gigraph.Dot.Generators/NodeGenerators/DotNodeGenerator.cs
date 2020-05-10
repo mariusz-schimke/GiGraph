@@ -2,6 +2,7 @@
 using Gigraph.Dot.Entities.Attributes;
 using Gigraph.Dot.Entities.Nodes;
 using Gigraph.Dot.Generators.Options;
+using Gigraph.Dot.Generators.Providers;
 using Gigraph.Dot.Writers.AttributeWriters;
 using Gigraph.Dot.Writers.NodeWriters;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Gigraph.Dot.Generators.NodeGenerators
 {
     public class DotNodeGenerator : DotEntityGenerator<DotNode, IDotNodeWriter>
     {
-        public DotNodeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, DotEntityGeneratorsProvider entityGenerators)
+        public DotNodeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
