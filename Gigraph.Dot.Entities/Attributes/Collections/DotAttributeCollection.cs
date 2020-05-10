@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Gigraph.Dot.Entities.Attributes
+namespace Gigraph.Dot.Entities.Attributes.Collections
 {
     public class DotAttributeCollection : IDotEntity, IEnumerable<DotAttribute>
     {
