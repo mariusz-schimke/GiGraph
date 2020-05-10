@@ -13,7 +13,7 @@ namespace Gigraph.Dot.Writers
         public virtual IDotAttributeCollectionWriter BeginAttributeList(bool useAttributeSeparator)
         {
             _tokenWriter.AttributeListStart(linger: true)
-                   .Space(linger: true);
+                        .Space(linger: true);
 
             return new DotAttributeListWriter(_tokenWriter, _context.NextLevel(), useAttributeSeparator);
         }
@@ -25,7 +25,7 @@ namespace Gigraph.Dot.Writers
             if (attributeCount > 0)
             {
                 _tokenWriter.Space()
-                       .AttributeListEnd();
+                            .AttributeListEnd();
             }
         }
     }

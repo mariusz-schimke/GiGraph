@@ -1,4 +1,6 @@
-﻿namespace Gigraph.Dot.Entities.Graphs
+﻿using Gigraph.Dot.Entities.Graphs;
+
+namespace Gigraph.Dot.Entities.Subgraphs
 {
     public class DotSubgraph : DotGraphBody
     {

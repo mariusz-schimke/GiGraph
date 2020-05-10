@@ -3,12 +3,14 @@ using Gigraph.Dot.Entities.Attributes;
 using Gigraph.Dot.Entities.Edges;
 using Gigraph.Dot.Entities.Graphs;
 using Gigraph.Dot.Entities.Nodes;
+using Gigraph.Dot.Entities.Subgraphs;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Generators.Providers;
 using Gigraph.Dot.Writers.AttributeWriters;
 using Gigraph.Dot.Writers.EdgeWriters;
 using Gigraph.Dot.Writers.GraphWriters;
 using Gigraph.Dot.Writers.NodeWriters;
+using Gigraph.Dot.Writers.SubgraphWriters;
 using System.Linq;
 
 namespace Gigraph.Dot.Generators.GraphGenerators
@@ -25,6 +27,7 @@ namespace Gigraph.Dot.Generators.GraphGenerators
             WriteAttributes(graphBody.Attributes, writer);
             WriteNodes(graphBody.Nodes, writer);
             WriteEdges(graphBody.Edges, writer);
+            WriteSubgraphs(graphBody.Subgraphs, writer);
         }
 
         protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotGraphBodyWriter writer)
@@ -46,6 +49,13 @@ namespace Gigraph.Dot.Generators.GraphGenerators
             var nodesWriter = writer.BeginEdgesSection(_options.PreferStatementDelimiter);
             _entityGenerators.GetForEntity<IDotEdgeCollectionWriter>(edges).Generate(edges, nodesWriter);
             writer.EndEdgesSection(edges.Count());
+        }
+
+        protected virtual void WriteSubgraphs(DotSubgraphCollection subgraphs, IDotGraphBodyWriter writer)
+        {
+            var subgraphsWriter = writer.BeginSubgraphsSection();
+            _entityGenerators.GetForEntity<IDotSubgraphCollectionWriter>(subgraphs).Generate(subgraphs, subgraphsWriter);
+            writer.EndSubgraphsSection(subgraphs.Count());
         }
     }
 }

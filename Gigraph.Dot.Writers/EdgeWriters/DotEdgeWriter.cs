@@ -12,11 +12,11 @@ namespace Gigraph.Dot.Writers.EdgeWriters
         public virtual void WriteEdge(string leftNodeId, bool quoteLeftNodeId, string rightNodeId, bool quoteRightNodeId)
         {
             _tokenWriter.Identifier(leftNodeId, quoteLeftNodeId)
-                   .Space()
-                   .Edge(_context.IsDirectedGraph)
-                   .Space()
-                   .Identifier(rightNodeId, quoteRightNodeId)
-                   .Space(linger: true);
+                        .Space()
+                        .Edge(_context.IsDirectedGraph)
+                        .Space()
+                        .Identifier(rightNodeId, quoteRightNodeId)
+                        .Space(linger: true);
         }
     }
 }
