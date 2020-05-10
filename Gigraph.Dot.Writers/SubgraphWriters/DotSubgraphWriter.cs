@@ -3,21 +3,21 @@ using Gigraph.Dot.Writers.GraphWriters;
 
 namespace Gigraph.Dot.Writers.SubgraphWriters
 {
-    public class DotSubgraphStringWriter : DotGraphBlockStringWriter, IDotSubgraphWriter
+    public class DotSubgraphWriter : DotGraphBlockWriter, IDotSubgraphWriter
     {
-        public DotSubgraphStringWriter(DotStringWriter writer, DotEntityWriterContext context)
-            : base(writer, context)
+        public DotSubgraphWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
+            : base(tokenWriter, context)
         {
         }
 
         public virtual void WriteSubgraphDeclaration(string id, bool quote)
         {
-            _writer.Keyword("subgraph")
+            _tokenWriter.Keyword("subgraph")
                    .Space();
 
             if (id is { })
             {
-                _writer.Identifier(id, quote)
+                _tokenWriter.Identifier(id, quote)
                        .Space();
             }
         }

@@ -2,16 +2,16 @@
 
 namespace Gigraph.Dot.Writers.AttributeWriters
 {
-    public class DotAttributeStringWriter : DotEntityStringWriter, IDotAttributeWriter
+    public class DotAttributeWriter : DotEntityWriter, IDotAttributeWriter
     {
-        public DotAttributeStringWriter(DotStringWriter writer, DotEntityWriterContext context)
-            : base(writer, context)
+        public DotAttributeWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
+            : base(tokenWriter, context)
         {
         }
 
         public virtual void WriteAttribute(string key, bool quoteKey, string value, bool quoteValue)
         {
-            _writer.Identifier(key, quoteKey)
+            _tokenWriter.Identifier(key, quoteKey)
                    .Space()
                    .ValueAssignmentOperator()
                    .Space()
@@ -20,7 +20,7 @@ namespace Gigraph.Dot.Writers.AttributeWriters
 
         public virtual void WriteHtmlAttribute(string key, bool quoteKey, string value, bool braceValue)
         {
-            _writer.Identifier(key, quoteKey)
+            _tokenWriter.Identifier(key, quoteKey)
                    .Space()
                    .ValueAssignmentOperator()
                    .Space()

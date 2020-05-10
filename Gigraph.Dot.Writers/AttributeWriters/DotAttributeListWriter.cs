@@ -2,29 +2,29 @@
 
 namespace Gigraph.Dot.Writers.AttributeWriters
 {
-    public class DotAttributeListStringWriter : DotEntityStringWriter, IDotAttributeCollectionWriter
+    public class DotAttributeListWriter : DotEntityWriter, IDotAttributeCollectionWriter
     {
         protected readonly bool _useAttributeSeparator;
 
-        public DotAttributeListStringWriter(DotStringWriter writer, DotEntityWriterContext context, bool useAttributeSeparator)
-            : base(writer, context)
+        public DotAttributeListWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useAttributeSeparator)
+            : base(tokenWriter, context)
         {
             _useAttributeSeparator = useAttributeSeparator;
         }
 
         public virtual IDotAttributeWriter BeginAttribute()
         {
-            return new DotAttributeStringWriter(_writer, _context);
+            return new DotAttributeWriter(_tokenWriter, _context);
         }
 
         public virtual void EndAttribute()
         {
             if (_useAttributeSeparator)
             {
-                _writer.AttributeSeparator(linger: true);
+                _tokenWriter.AttributeSeparator(linger: true);
             }
 
-            _writer.Space(linger: true);
+            _tokenWriter.Space(linger: true);
         }
     }
 }

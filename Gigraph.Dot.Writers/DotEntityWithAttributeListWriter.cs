@@ -3,28 +3,28 @@ using Gigraph.Dot.Writers.Contexts;
 
 namespace Gigraph.Dot.Writers
 {
-    public abstract class DotEntityWithAttributeListStringWriter : DotEntityStringWriter
+    public abstract class DotEntityWithAttributeListWriter : DotEntityWriter
     {
-        public DotEntityWithAttributeListStringWriter(DotStringWriter writer, DotEntityWriterContext context)
-            : base(writer, context)
+        public DotEntityWithAttributeListWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
+            : base(tokenWriter, context)
         {
         }
 
         public virtual IDotAttributeCollectionWriter BeginAttributeList(bool useAttributeSeparator)
         {
-            _writer.AttributeListStart(linger: true)
+            _tokenWriter.AttributeListStart(linger: true)
                    .Space(linger: true);
 
-            return new DotAttributeListStringWriter(_writer, _context.NextLevel(), useAttributeSeparator);
+            return new DotAttributeListWriter(_tokenWriter, _context.NextLevel(), useAttributeSeparator);
         }
 
         public virtual void EndAttributeList(int attributeCount)
         {
-            _writer.ClearLingerBuffer();
+            _tokenWriter.ClearLingerBuffer();
 
             if (attributeCount > 0)
             {
-                _writer.Space()
+                _tokenWriter.Space()
                        .AttributeListEnd();
             }
         }

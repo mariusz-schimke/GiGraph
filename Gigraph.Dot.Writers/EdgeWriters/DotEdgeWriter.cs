@@ -2,16 +2,16 @@
 
 namespace Gigraph.Dot.Writers.EdgeWriters
 {
-    public class DotEdgeStringWriter : DotEntityWithAttributeListStringWriter, IDotEdgeWriter
+    public class DotEdgeWriter : DotEntityWithAttributeListWriter, IDotEdgeWriter
     {
-        public DotEdgeStringWriter(DotStringWriter writer, DotEntityWriterContext context)
-            : base(writer, context)
+        public DotEdgeWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
+            : base(tokenWriter, context)
         {
         }
 
         public virtual void WriteEdge(string leftNodeId, bool quoteLeftNodeId, string rightNodeId, bool quoteRightNodeId)
         {
-            _writer.Identifier(leftNodeId, quoteLeftNodeId)
+            _tokenWriter.Identifier(leftNodeId, quoteLeftNodeId)
                    .Space()
                    .Edge(_context.IsDirectedGraph)
                    .Space()
