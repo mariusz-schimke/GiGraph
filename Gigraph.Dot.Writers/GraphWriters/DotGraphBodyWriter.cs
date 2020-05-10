@@ -47,8 +47,8 @@ namespace Gigraph.Dot.Writers.GraphWriters
             if (entityCount > 0)
             {
                 _tokenWriter.ClearLingerBuffer()
-                       .LineBreak(linger: true)
-                       .Indentation(_context.Level, linger: true);
+                            .LineBreak(linger: true)
+                            .Indentation(_context.Level, linger: true);
             }
         }
     }

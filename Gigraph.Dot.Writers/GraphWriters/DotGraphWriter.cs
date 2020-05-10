@@ -14,24 +14,24 @@ namespace Gigraph.Dot.Writers.GraphWriters
             if (strict)
             {
                 _tokenWriter.Keyword("strict")
-                       .Space();
+                            .Space();
             }
 
             if (_context.IsDirectedGraph)
             {
                 _tokenWriter.Keyword("digraph")
-                       .Space();
+                            .Space();
             }
             else
             {
                 _tokenWriter.Keyword("graph")
-                       .Space();
+                            .Space();
             }
 
             if (id != null)
             {
                 _tokenWriter.Identifier(id, quoteId)
-                       .Space();
+                            .Space();
             }
         }
     }
