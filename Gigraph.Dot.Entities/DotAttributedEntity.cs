@@ -47,7 +47,7 @@ namespace Gigraph.Dot.Entities
             }
             else
             {
-                Attributes.AddOrReplace(attribute);
+                Attributes.Set(attribute);
             }
         }
 
