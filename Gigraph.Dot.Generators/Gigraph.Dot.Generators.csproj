@@ -11,8 +11,4 @@
     <ProjectReference Include="..\Gigraph.Dot.Writers\Gigraph.Dot.Writers.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="EntityGenerators\" />
-  </ItemGroup>
-
 </Project>

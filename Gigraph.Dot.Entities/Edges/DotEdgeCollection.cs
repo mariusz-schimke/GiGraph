@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Gigraph.Dot.Entities.Edges
@@ -7,18 +8,18 @@ namespace Gigraph.Dot.Entities.Edges
     {
         protected readonly List<DotEdge> _edges = new List<DotEdge>();
 
-        public DotEdge Add(DotEdge edge)
+        public virtual DotEdge Add(DotEdge edge)
         {
             _edges.Add(edge);
             return edge;
         }
 
-        public DotEdge Add(string leftNodeId, string rightNodeId)
+        public virtual DotEdge Add(string leftNodeId, string rightNodeId)
         {
             return Add(new DotEdge(leftNodeId, rightNodeId));
         }
 
-        public int Remove(DotEdge node)
+        public virtual int Remove(DotEdge node)
         {
             var result = 0;
 
@@ -30,13 +31,23 @@ namespace Gigraph.Dot.Entities.Edges
             return result;
         }
 
-        public int Remove(string leftNodeId, string rightNodeId)
+        public virtual int Remove(string leftNodeId, string rightNodeId)
         {
-            return _edges.RemoveAll(edge => edge.LeftNodeId == leftNodeId &&
-                                            edge.RightNodeId == rightNodeId);
+            return RemoveAll(edge => edge.LeftNodeId == leftNodeId &&
+                                     edge.RightNodeId == rightNodeId);
         }
 
-        public IEnumerator<DotEdge> GetEnumerator()
+        public virtual int RemoveAll(Predicate<DotEdge> match)
+        {
+            return _edges.RemoveAll(match);
+        }
+
+        public virtual void Clear()
+        {
+            _edges.Clear();
+        }
+
+        public virtual IEnumerator<DotEdge> GetEnumerator()
         {
             return ((IEnumerable<DotEdge>)_edges).GetEnumerator();
         }

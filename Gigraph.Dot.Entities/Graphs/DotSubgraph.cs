@@ -2,7 +2,7 @@
 {
     public class DotSubgraph : DotGraphBody
     {
-        public string Id { get; set; }
-        public bool IsCluster { get; set; } = true;
+        public virtual string Id { get; set; }
+        public virtual bool IsCluster { get; set; } = true;
     }
 }

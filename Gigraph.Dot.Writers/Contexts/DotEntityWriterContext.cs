@@ -2,8 +2,8 @@
 {
     public class DotEntityWriterContext
     {
-        public int Level { get; }
-        public bool IsDirectedGraph { get; }
+        public virtual int Level { get; }
+        public virtual bool IsDirectedGraph { get; }
 
         public DotEntityWriterContext(int level, bool isDirectedGraph)
         {

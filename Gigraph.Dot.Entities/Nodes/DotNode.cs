@@ -3,8 +3,7 @@
 
     public class DotNode : DotAttributedEntity
     {
-        public string Id { get; set; }
-
+        public virtual string Id { get; set; }
 
         public DotNode(string id)
         {
