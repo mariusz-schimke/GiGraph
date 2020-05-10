@@ -53,8 +53,8 @@ namespace Gigraph.Dot.Helpers
 
             var graphBuilder = graphGeneratorBuilder.Build(syntaxRules, generationOptions);
 
-            var stringWriter = new DotStringWriter(outputWriter, formattingOptions);
-            var graphWriterFactory = new DotGraphStringWriterFactory(stringWriter);
+            var tokenWriter = new DotTokenWriter(outputWriter, formattingOptions);
+            var graphWriterFactory = new DotGraphWriterFactory(tokenWriter);
 
             graphBuilder.Generate(graph, graphWriterFactory);
         }

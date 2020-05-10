@@ -2,26 +2,26 @@
 
 namespace Gigraph.Dot.Writers
 {
-    public abstract class DotStatementStringWriter : DotEntityStringWriter
+    public abstract class DotStatementWriter : DotEntityWriter
     {
         protected readonly bool _useStatementDelimiter;
 
-        public DotStatementStringWriter(DotStringWriter writer, DotEntityWriterContext context, bool useStatementDelimiter)
-            : base(writer, context)
+        public DotStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
+            : base(tokenWriter, context)
         {
             _useStatementDelimiter = useStatementDelimiter;
         }
 
         public virtual void EndStatement()
         {
-            _writer.ClearLingerBuffer();
+            _tokenWriter.ClearLingerBuffer();
 
             if (_useStatementDelimiter)
             {
-                _writer.StatementEnd();
+                _tokenWriter.StatementEnd();
             }
 
-            _writer.LineBreak()
+            _tokenWriter.LineBreak()
                    .Indentation(_context.Level, linger: true);
         }
     }

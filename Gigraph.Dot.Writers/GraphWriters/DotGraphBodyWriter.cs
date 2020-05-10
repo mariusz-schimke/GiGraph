@@ -5,26 +5,26 @@ using Gigraph.Dot.Writers.NodeWriters;
 
 namespace Gigraph.Dot.Writers.GraphWriters
 {
-    public class DotGraphBodyStringWriter : DotEntityStringWriter, IDotGraphBodyWriter
+    public class DotGraphBodyWriter : DotEntityWriter, IDotGraphBodyWriter
     {
-        public DotGraphBodyStringWriter(DotStringWriter writer, DotEntityWriterContext context)
-            : base(writer, context)
+        public DotGraphBodyWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
+            : base(tokenWriter, context)
         {
         }
 
         public virtual IDotAttributeCollectionWriter BeginAttributesSection(bool useStatementDelimiter)
         {
-            return new DotAttributeStatementStringWriter(_writer, _context, useStatementDelimiter);
+            return new DotAttributeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
 
         public virtual IDotNodeCollectionWriter BeginNodesSection(bool useStatementDelimiter)
         {
-            return new DotNodeStatementStringWriter(_writer, _context, useStatementDelimiter);
+            return new DotNodeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
 
         public virtual IDotEdgeCollectionWriter BeginEdgesSection(bool useStatementDelimiter)
         {
-            return new DotEdgeStatementStringWriter(_writer, _context, useStatementDelimiter);
+            return new DotEdgeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
 
         public virtual void EndAttributesSection(int attributeCount)
@@ -46,7 +46,7 @@ namespace Gigraph.Dot.Writers.GraphWriters
         {
             if (entityCount > 0)
             {
-                _writer.ClearLingerBuffer()
+                _tokenWriter.ClearLingerBuffer()
                        .LineBreak(linger: true)
                        .Indentation(_context.Level, linger: true);
             }

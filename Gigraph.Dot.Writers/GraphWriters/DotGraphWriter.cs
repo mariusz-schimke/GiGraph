@@ -2,10 +2,10 @@
 
 namespace Gigraph.Dot.Writers.GraphWriters
 {
-    public class DotGraphStringWriter : DotGraphBlockStringWriter, IDotGraphWriter
+    public class DotGraphWriter : DotGraphBlockWriter, IDotGraphWriter
     {
-        public DotGraphStringWriter(DotStringWriter writer, DotEntityWriterContext context)
-            : base(writer, context)
+        public DotGraphWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
+            : base(tokenWriter, context)
         {
         }
 
@@ -13,24 +13,24 @@ namespace Gigraph.Dot.Writers.GraphWriters
         {
             if (strict)
             {
-                _writer.Keyword("strict")
+                _tokenWriter.Keyword("strict")
                        .Space();
             }
 
             if (_context.IsDirectedGraph)
             {
-                _writer.Keyword("digraph")
+                _tokenWriter.Keyword("digraph")
                        .Space();
             }
             else
             {
-                _writer.Keyword("graph")
+                _tokenWriter.Keyword("graph")
                        .Space();
             }
 
             if (id != null)
             {
-                _writer.Identifier(id, quoteId)
+                _tokenWriter.Identifier(id, quoteId)
                        .Space();
             }
         }
