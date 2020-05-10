@@ -1,5 +1,8 @@
 ﻿namespace Gigraph.Dot.Entities.Attributes
 {
+    /// <summary>
+    /// Element label attribute (textual or HTML). Supported by edges, nodes, graphs, and cluster subgraphs.
+    /// </summary>
     public abstract class DotLabelAttribute : DotAttribute<string>
     {
         public static string AttributeKey => "label";
