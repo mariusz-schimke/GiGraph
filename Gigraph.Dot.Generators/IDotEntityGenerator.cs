@@ -7,7 +7,6 @@ namespace Gigraph.Dot.Generators
     public interface IDotEntityGenerator
     {
         bool Supports<TWriter>(Type entityType, out bool isExactEntityTypeMatch) where TWriter : IDotEntityWriter;
-
         void Generate(IDotEntity entity, IDotEntityWriter writer);
     }
 

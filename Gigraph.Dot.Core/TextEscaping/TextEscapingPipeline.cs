@@ -26,7 +26,7 @@ namespace Gigraph.Dot.Core.TextEscaping
             return value;
         }
 
-        public TextEscapingPipeline BuildFrom(params IDotTextEscaper[] escaper)
+        public virtual TextEscapingPipeline BuildFrom(params IDotTextEscaper[] escaper)
         {
             return new TextEscapingPipeline(escaper);
         }

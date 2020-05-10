@@ -2,6 +2,9 @@
 
 namespace Gigraph.Dot.Entities.Attributes
 {
+    /// <summary>
+    /// Color attribute. Supported by edges, nodes, and cluster subgraphs.
+    /// </summary>
     public class DotColorAttribute : DotAttribute<Color>
     {
         public static string AttributeKey => "color";

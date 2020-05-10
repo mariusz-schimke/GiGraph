@@ -1,14 +1,15 @@
-﻿using Gigraph.Dot.Entities.Attributes;
-using Gigraph.Dot.Core;
-using Gigraph.Dot.Writers;
+﻿using Gigraph.Dot.Core;
+using Gigraph.Dot.Entities.Attributes;
 using Gigraph.Dot.Generators.Options;
+using Gigraph.Dot.Generators.Providers;
+using Gigraph.Dot.Writers.AttributeWriters;
 using System.Linq;
 
 namespace Gigraph.Dot.Generators.AttributeGenerators
 {
     public class DotAttributeCollectionGenerator : DotEntityGenerator<DotAttributeCollection, IDotAttributeCollectionWriter>
     {
-        public DotAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, DotEntityGeneratorsProvider entityGenerators)
+        public DotAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

@@ -2,7 +2,8 @@
 using Gigraph.Dot.Core.TextEscaping;
 using Gigraph.Dot.Entities.Graphs;
 using Gigraph.Dot.Generators.Options;
-using Gigraph.Dot.Writers;
+using Gigraph.Dot.Generators.Providers;
+using Gigraph.Dot.Writers.GraphWriters;
 
 namespace Gigraph.Dot.Generators.GraphGenerators
 {
@@ -10,7 +11,7 @@ namespace Gigraph.Dot.Generators.GraphGenerators
     {
         protected readonly TextEscapingPipeline _graphIdEscaper = TextEscapingPipeline.CreateForGraphId();
 
-        public DotGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, DotEntityGeneratorsProvider entityGenerators)
+        public DotGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

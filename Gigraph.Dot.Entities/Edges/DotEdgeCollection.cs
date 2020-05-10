@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Gigraph.Dot.Entities.Edges
@@ -7,18 +8,31 @@ namespace Gigraph.Dot.Entities.Edges
     {
         protected readonly List<DotEdge> _edges = new List<DotEdge>();
 
-        public DotEdge Add(DotEdge edge)
+        /// <summary>
+        /// Adds the specified edge to the collection.
+        /// </summary>
+        /// <param name="edge">The edge to add.</param>
+        public virtual DotEdge Add(DotEdge edge)
         {
             _edges.Add(edge);
             return edge;
         }
 
-        public DotEdge Add(string leftNodeId, string rightNodeId)
+        /// <summary>
+        /// Adds an edge to the collection, that connects two nodes with the specified identifiers.
+        /// </summary>
+        /// <param name="leftNodeId">The left (source) node identifier.</param>
+        /// <param name="rightNodeId">The right (destination) node identifier.</param>
+        public virtual DotEdge Add(string leftNodeId, string rightNodeId)
         {
             return Add(new DotEdge(leftNodeId, rightNodeId));
         }
 
-        public int Remove(DotEdge node)
+        /// <summary>
+        /// Removes the specified edge from the collection.
+        /// </summary>
+        /// <param name="edge">The edge to remove.</param>
+        public virtual int Remove(DotEdge node)
         {
             var result = 0;
 
@@ -30,13 +44,35 @@ namespace Gigraph.Dot.Entities.Edges
             return result;
         }
 
-        public int Remove(string leftNodeId, string rightNodeId)
+        /// <summary>
+        /// Removes an edge from the collection, that connects two nodes with the specified identifiers.
+        /// </summary>
+        /// <param name="leftNodeId">The left (source) node identifier.</param>
+        /// <param name="rightNodeId">The right (destination) node identifier.</param>
+        public virtual int Remove(string leftNodeId, string rightNodeId)
         {
-            return _edges.RemoveAll(edge => edge.LeftNodeId == leftNodeId &&
-                                            edge.RightNodeId == rightNodeId);
+            return RemoveAll(edge => edge.LeftNodeId == leftNodeId &&
+                                     edge.RightNodeId == rightNodeId);
         }
 
-        public IEnumerator<DotEdge> GetEnumerator()
+        /// <summary>
+        /// Removes all edges from the collection, that match the specified criteria.
+        /// </summary>
+        /// <param name="match">The predicate to use for matching edges.</param>
+        public virtual int RemoveAll(Predicate<DotEdge> match)
+        {
+            return _edges.RemoveAll(match);
+        }
+
+        /// <summary>
+        /// Clears the collection.
+        /// </summary>
+        public virtual void Clear()
+        {
+            _edges.Clear();
+        }
+
+        public virtual IEnumerator<DotEdge> GetEnumerator()
         {
             return ((IEnumerable<DotEdge>)_edges).GetEnumerator();
         }

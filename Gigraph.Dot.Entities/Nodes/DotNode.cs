@@ -3,9 +3,19 @@
 
     public class DotNode : DotAttributedEntity
     {
-        public string Id { get; set; }
+        /// <summary>
+        /// Gets or sets the unique identifier of the node.
+        /// </summary>
+        public virtual string Id { get; set; }
 
+        protected DotNode()
+        {
+        }
 
+        /// <summary>
+        /// The unique identifier of the node.
+        /// </summary>
+        /// <param name="id"></param>
         public DotNode(string id)
         {
             Id = id;

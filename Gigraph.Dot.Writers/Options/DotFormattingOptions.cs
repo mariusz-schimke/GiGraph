@@ -8,11 +8,21 @@ namespace Gigraph.Dot.Writers.Options
         /// Gets or sets the value indicating if the output should be generated as a single line of text.
         /// In such case <see cref="LineBreak"/> sequences in identifiers and HTML labels will be replaced with white space.
         /// </summary>
-        public bool SingleLineOutput { get; set; } = false;
+        public virtual bool SingleLineOutput { get; set; } = false;
 
-        public char IndentChar { get; set; } = ' ';
-        public int Indentation { get; set; } = 4;
+        /// <summary>
+        /// Determines what character to use for indentation (space by default).
+        /// </summary>
+        public virtual char IndentChar { get; set; } = ' ';
 
-        public string LineBreak { get; set; } = Environment.NewLine;
+        /// <summary>
+        /// The default indentation to apply to the DOT output.
+        /// </summary>
+        public virtual int Indentation { get; set; } = 4;
+
+        /// <summary>
+        /// The line break sequence to use in the DOT output (<see cref="Environment.NewLine"/> by default).
+        /// </summary>
+        public virtual string LineBreak { get; set; } = Environment.NewLine;
     }
 }

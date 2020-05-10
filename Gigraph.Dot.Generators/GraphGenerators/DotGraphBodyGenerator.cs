@@ -4,14 +4,18 @@ using Gigraph.Dot.Entities.Edges;
 using Gigraph.Dot.Entities.Graphs;
 using Gigraph.Dot.Entities.Nodes;
 using Gigraph.Dot.Generators.Options;
-using Gigraph.Dot.Writers;
+using Gigraph.Dot.Generators.Providers;
+using Gigraph.Dot.Writers.AttributeWriters;
+using Gigraph.Dot.Writers.EdgeWriters;
+using Gigraph.Dot.Writers.GraphWriters;
+using Gigraph.Dot.Writers.NodeWriters;
 using System.Linq;
 
 namespace Gigraph.Dot.Generators.GraphGenerators
 {
     public class DotGraphBodyGenerator : DotEntityGenerator<DotGraphBody, IDotGraphBodyWriter>
     {
-        public DotGraphBodyGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, DotEntityGeneratorsProvider entityGenerators)
+        public DotGraphBodyGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

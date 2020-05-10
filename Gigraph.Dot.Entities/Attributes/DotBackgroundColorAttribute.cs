@@ -2,6 +2,9 @@
 
 namespace Gigraph.Dot.Entities.Attributes
 {
+    /// <summary>
+    /// Background color attribute. Supported by graphs and cluster subgraphs.
+    /// </summary>
     public class DotBackgroundColorAttribute : DotColorAttribute
     {
         public static new string AttributeKey => "bgcolor";

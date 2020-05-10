@@ -1,8 +1,8 @@
 ﻿using Gigraph.Dot.Entities.Attributes;
 using Gigraph.Dot.Entities.Graphs;
 using Gigraph.Dot.Entities.Nodes;
+using Gigraph.Dot.Extensions;
 using Gigraph.Dot.Generators.Options;
-using Gigraph.Dot.Helpers;
 using Gigraph.Dot.Writers.Options;
 using System;
 using System.Drawing;
@@ -10,7 +10,8 @@ using System.Drawing;
 namespace Gigraph
 {
     // TODO: przejrzec wszystkie metody, czy powinny lub nie powinny byc wirtualne
-    // TODO: przejrzeć klasy, czy powinny miec interfejsy (np. TokenWriter itp.)
+    // TODO: przejrzeć klasy, czy powinny miec interfejsy
+    // TODO: "node [style=filled];" - obsłużyć domyślne style węzłów i krawędzi
 
     internal class Program
     {
@@ -70,7 +71,7 @@ namespace Gigraph
             graph.Nodes.Add(new DotNode("node3")
             {
                 Label = new DotTextLabelAttribute("label")
-            }).Attributes.SetAttribute(new DotTextLabelAttribute("label2"));
+            }).Attributes.AddOrReplace(new DotTextLabelAttribute("label2"));
 
             graph.Nodes.Add(new DotNode("node 4"));
         }
