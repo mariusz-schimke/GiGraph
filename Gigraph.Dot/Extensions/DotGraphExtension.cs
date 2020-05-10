@@ -1,7 +1,8 @@
-﻿using Gigraph.Dot.Builders;
-using Gigraph.Dot.Core;
+﻿using Gigraph.Dot.Core;
 using Gigraph.Dot.Entities.Graphs;
+using Gigraph.Dot.Generators.GraphGenerators;
 using Gigraph.Dot.Generators.Options;
+using Gigraph.Dot.Generators.Providers;
 using Gigraph.Dot.Writers;
 using Gigraph.Dot.Writers.GraphWriters;
 using Gigraph.Dot.Writers.Options;
