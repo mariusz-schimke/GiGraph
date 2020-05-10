@@ -19,20 +19,21 @@ namespace Gigraph.Dot.Writers.GraphWriters
 
             if (_context.IsDirectedGraph)
             {
-                _tokenWriter.Keyword("digraph")
-                            .Space();
+                _tokenWriter.Keyword("digraph");
             }
             else
             {
-                _tokenWriter.Keyword("graph")
-                            .Space();
+                _tokenWriter.Keyword("graph");
             }
 
             if (id != null)
             {
-                _tokenWriter.Identifier(id, quoteId)
-                            .Space();
+                _tokenWriter.Space()
+                            .Identifier(id, quoteId);
             }
+
+            _tokenWriter.LineBreak()
+                        .Indentation(_context.Level);
         }
     }
 }
