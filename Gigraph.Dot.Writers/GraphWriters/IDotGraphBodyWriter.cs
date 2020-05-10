@@ -1,6 +1,7 @@
 ﻿using Gigraph.Dot.Writers.AttributeWriters;
 using Gigraph.Dot.Writers.EdgeWriters;
 using Gigraph.Dot.Writers.NodeWriters;
+using Gigraph.Dot.Writers.SubgraphWriters;
 
 namespace Gigraph.Dot.Writers.GraphWriters
 {
@@ -14,5 +15,8 @@ namespace Gigraph.Dot.Writers.GraphWriters
 
         IDotEdgeCollectionWriter BeginEdgesSection(bool useStatementDelimiter);
         void EndEdgesSection(int nodeCount);
+
+        IDotSubgraphCollectionWriter BeginSubgraphsSection();
+        void EndSubgraphsSection(int subgraphCount);
     }
 }

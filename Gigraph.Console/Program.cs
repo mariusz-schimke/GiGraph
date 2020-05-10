@@ -1,6 +1,7 @@
 ﻿using Gigraph.Dot.Entities.Attributes;
 using Gigraph.Dot.Entities.Graphs;
 using Gigraph.Dot.Entities.Nodes;
+using Gigraph.Dot.Entities.Subgraphs;
 using Gigraph.Dot.Extensions;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Writers.Options;
@@ -37,11 +38,36 @@ namespace Gigraph
             AddAttributes(graph);
             AddNodes(graph);
             AddEdges(graph);
+            AddSubgraphs(graph);
 
             Console.WriteLine(graph.Build(fo, go));
             graph.SaveToFile(@"C:\Temp\gigraph.gv");
 
             Console.ReadLine();
+        }
+
+        private static void AddSubgraphs(DotGraph graph)
+        {
+            var subgraph1 = new DotSubgraph(isCluster: false);
+            var subgraph2 = new DotSubgraph("sg2", isCluster: false);
+
+            var cluster1 = new DotSubgraph();
+            var cluster2 = new DotSubgraph("sgc2");
+
+            foreach (var attr in graph.Attributes)
+            {
+                cluster2.Attributes.AddOrReplace(attr);
+            }
+
+            foreach (var node in graph.Nodes)
+            {
+                cluster2.Nodes.Add(node);
+            }
+
+            graph.Subgraphs.Add(subgraph1);
+            graph.Subgraphs.Add(subgraph2);
+            graph.Subgraphs.Add(cluster1);
+            graph.Subgraphs.Add(cluster2);
         }
 
         private static void AddEdges(DotGraph graph)

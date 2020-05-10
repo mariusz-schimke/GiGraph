@@ -22,7 +22,7 @@ namespace Gigraph.Dot.Writers
             }
 
             _tokenWriter.LineBreak()
-                   .Indentation(_context.Level, linger: true);
+                        .Indentation(_context.Level, linger: true);
         }
     }
 }

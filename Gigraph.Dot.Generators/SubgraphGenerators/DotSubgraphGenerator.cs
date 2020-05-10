@@ -1,6 +1,7 @@
 ﻿using Gigraph.Dot.Core;
 using Gigraph.Dot.Core.TextEscaping;
 using Gigraph.Dot.Entities.Graphs;
+using Gigraph.Dot.Entities.Subgraphs;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Generators.Providers;
 using Gigraph.Dot.Writers.GraphWriters;
@@ -30,14 +31,30 @@ namespace Gigraph.Dot.Generators.SubgraphGenerators
 
         protected virtual void WriteDeclaration(string id, bool isCluster, IDotSubgraphWriter writer)
         {
-            id = EscapeSubgraphIdentifier(id);
+            id = FormatIdentifier(id, isCluster);
+            writer.WriteSubgraphDeclaration(id, IdentifierRequiresQuoting(id));
+        }
+
+        protected virtual string FormatIdentifier(string id, bool isCluster)
+        {
+            var cluster = "cluster";
+
+            if (id is { })
+            {
+                id = EscapeSubgraphIdentifier(id);
+            }
+
+            if (isCluster && !string.IsNullOrEmpty(id))
+            {
+                return $"{cluster} {id}";
+            }
 
             if (isCluster)
             {
-                id = $"cluster {id}";
+                return cluster;
             }
 
-            writer.WriteSubgraphDeclaration(id, IdentifierRequiresQuoting(id));
+            return id;
         }
 
         protected virtual void WriteBody(DotGraphBody subgraphBody, IDotSubgraphWriter writer)

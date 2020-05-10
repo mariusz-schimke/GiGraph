@@ -2,6 +2,7 @@
 using Gigraph.Dot.Writers.Contexts;
 using Gigraph.Dot.Writers.EdgeWriters;
 using Gigraph.Dot.Writers.NodeWriters;
+using Gigraph.Dot.Writers.SubgraphWriters;
 
 namespace Gigraph.Dot.Writers.GraphWriters
 {
@@ -27,6 +28,11 @@ namespace Gigraph.Dot.Writers.GraphWriters
             return new DotEdgeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
 
+        public virtual IDotSubgraphCollectionWriter BeginSubgraphsSection()
+        {
+            return new DotSubgraphCollectionWriter(_tokenWriter, _context);
+        }
+
         public virtual void EndAttributesSection(int attributeCount)
         {
             EndSection(attributeCount);
@@ -42,13 +48,18 @@ namespace Gigraph.Dot.Writers.GraphWriters
             EndSection(edgeCount);
         }
 
+        public virtual void EndSubgraphsSection(int subgraphCount)
+        {
+            EndSection(subgraphCount);
+        }
+
         protected virtual void EndSection(int entityCount)
         {
             if (entityCount > 0)
             {
                 _tokenWriter.ClearLingerBuffer()
-                       .LineBreak(linger: true)
-                       .Indentation(_context.Level, linger: true);
+                            .LineBreak(linger: true)
+                            .Indentation(_context.Level, linger: true);
             }
         }
     }

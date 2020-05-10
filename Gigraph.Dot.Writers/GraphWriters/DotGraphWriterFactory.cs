@@ -15,6 +15,7 @@ namespace Gigraph.Dot.Writers.GraphWriters
 
         public virtual IDotGraphWriter Create(bool directed)
         {
+            _tokenWriter.Indentation(_level, linger: true);
             return new DotGraphWriter(_tokenWriter, new DotEntityWriterContext(_level, directed));
         }
     }

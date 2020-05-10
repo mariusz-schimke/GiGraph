@@ -37,9 +37,11 @@ namespace Gigraph.Dot.Core
 
         public virtual bool IsValidIdentifier(string value)
         {
-            return !IsKeyword(value) &&
+            return value is { } && !IsKeyword(value) &&
+            (
                 Regex.Match(value, AlphabeticIdentifierPattern).Success ||
-                Regex.Match(value, NumericIdentifierPattern).Success;
+                Regex.Match(value, NumericIdentifierPattern).Success
+            );
         }
     }
 }
