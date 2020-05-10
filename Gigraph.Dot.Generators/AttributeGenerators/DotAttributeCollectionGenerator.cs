@@ -1,7 +1,7 @@
-﻿using Gigraph.Dot.Entities.Attributes;
-using Gigraph.Dot.Core;
-using Gigraph.Dot.Writers;
+﻿using Gigraph.Dot.Core;
+using Gigraph.Dot.Entities.Attributes;
 using Gigraph.Dot.Generators.Options;
+using Gigraph.Dot.Writers.AttributeWriters;
 using System.Linq;
 
 namespace Gigraph.Dot.Generators.AttributeGenerators

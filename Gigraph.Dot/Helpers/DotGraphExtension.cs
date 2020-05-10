@@ -2,8 +2,9 @@
 using Gigraph.Dot.Core;
 using Gigraph.Dot.Entities.Graphs;
 using Gigraph.Dot.Generators.Options;
+using Gigraph.Dot.Writers;
+using Gigraph.Dot.Writers.GraphWriters;
 using Gigraph.Dot.Writers.Options;
-using Gigraph.Dot.Writers.StringWriter;
 using System.IO;
 using System.Text;
 

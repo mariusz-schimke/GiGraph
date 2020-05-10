@@ -1,10 +1,11 @@
 ﻿using Gigraph.Dot.Core;
 using Gigraph.Dot.Generators;
 using Gigraph.Dot.Generators.AttributeGenerators;
-using Gigraph.Dot.Generators.Edges;
+using Gigraph.Dot.Generators.EdgeGenerators;
 using Gigraph.Dot.Generators.GraphGenerators;
 using Gigraph.Dot.Generators.NodeGenerators;
 using Gigraph.Dot.Generators.Options;
+using Gigraph.Dot.Generators.SubgraphGenerators;
 
 namespace Gigraph.Dot.Builders
 {
