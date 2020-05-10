@@ -1,5 +1,5 @@
 ﻿using Gigraph.Dot.Core;
-using Gigraph.Dot.Entities.Attributes;
+using Gigraph.Dot.Entities.Attributes.LabelAttributes;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Generators.Providers;
 using Gigraph.Dot.Writers.AttributeWriters;

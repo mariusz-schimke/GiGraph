@@ -1,4 +1,4 @@
-﻿namespace Gigraph.Dot.Entities.Attributes
+﻿namespace Gigraph.Dot.Entities.Attributes.LabelAttributes
 {
     /// <summary>
     /// Element label attribute (textual or HTML). Supported by edges, nodes, graphs, and cluster subgraphs.
