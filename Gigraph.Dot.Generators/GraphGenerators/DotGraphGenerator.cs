@@ -31,7 +31,10 @@ namespace Gigraph.Dot.Generators.GraphGenerators
 
         protected virtual void WriteDeclaration(string id, bool isStrict, IDotGraphWriter writer)
         {
-            id = EscapeGraphIdentifier(id);
+            if (id is { })
+            {
+                id = EscapeGraphIdentifier(id);
+            }
 
             writer.WriteGraphDeclaration
             (
