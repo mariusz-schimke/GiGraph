@@ -10,7 +10,7 @@ using System.Drawing;
 namespace Gigraph
 {
     // TODO: przejrzec wszystkie metody, czy powinny lub nie powinny byc wirtualne
-    // TODO: przejrzeć klasy, czy powinny miec interfejsy (np. TokenWriter itp.)
+    // TODO: przejrzeć klasy, czy powinny miec interfejsy
 
     internal class Program
     {

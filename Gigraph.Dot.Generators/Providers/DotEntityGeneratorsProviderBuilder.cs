@@ -4,12 +4,11 @@ using Gigraph.Dot.Generators.EdgeGenerators;
 using Gigraph.Dot.Generators.GraphGenerators;
 using Gigraph.Dot.Generators.NodeGenerators;
 using Gigraph.Dot.Generators.Options;
-using Gigraph.Dot.Generators.Providers;
 using Gigraph.Dot.Generators.SubgraphGenerators;
 
-namespace Gigraph.Dot.Builders
+namespace Gigraph.Dot.Generators.Providers
 {
-    public class DotEntityGeneratorsProviderBuilder
+    public class DotEntityGeneratorsProviderBuilder : IDotEntityGeneratorsProviderBuilder
     {
         /// <summary>
         /// Builds a provider with all generators necessary to generate a graph.

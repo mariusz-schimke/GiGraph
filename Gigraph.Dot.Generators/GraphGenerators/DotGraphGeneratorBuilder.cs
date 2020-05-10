@@ -1,15 +1,14 @@
 ﻿using Gigraph.Dot.Core;
-using Gigraph.Dot.Generators;
-using Gigraph.Dot.Generators.GraphGenerators;
 using Gigraph.Dot.Generators.Options;
+using Gigraph.Dot.Generators.Providers;
 
-namespace Gigraph.Dot.Builders
+namespace Gigraph.Dot.Generators.GraphGenerators
 {
     public class DotGraphGeneratorBuilder : IDotGraphGeneratorBuilder
     {
-        protected readonly DotEntityGeneratorsProviderBuilder _dotEntityGeneratorsProviderBuilder;
+        protected readonly IDotEntityGeneratorsProviderBuilder _dotEntityGeneratorsProviderBuilder;
 
-        public DotGraphGeneratorBuilder(DotEntityGeneratorsProviderBuilder dotEntityGeneratorsProviderBuilder)
+        public DotGraphGeneratorBuilder(IDotEntityGeneratorsProviderBuilder dotEntityGeneratorsProviderBuilder)
         {
             _dotEntityGeneratorsProviderBuilder = dotEntityGeneratorsProviderBuilder;
         }

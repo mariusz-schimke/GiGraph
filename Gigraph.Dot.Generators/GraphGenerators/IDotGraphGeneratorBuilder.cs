@@ -2,7 +2,7 @@
 using Gigraph.Dot.Generators;
 using Gigraph.Dot.Generators.Options;
 
-namespace Gigraph.Dot.Builders
+namespace Gigraph.Dot.Generators.GraphGenerators
 {
     public interface IDotGraphGeneratorBuilder
     {
