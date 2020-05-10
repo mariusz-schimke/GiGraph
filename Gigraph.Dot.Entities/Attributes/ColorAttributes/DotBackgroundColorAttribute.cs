@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Gigraph.Dot.Entities.Attributes
+namespace Gigraph.Dot.Entities.Attributes.ColorAttributes
 {
     /// <summary>
     /// Background color attribute. Supported by graphs and cluster subgraphs.

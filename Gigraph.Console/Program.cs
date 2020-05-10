@@ -1,4 +1,4 @@
-﻿using Gigraph.Dot.Entities.Attributes;
+﻿using Gigraph.Dot.Entities.Attributes.LabelAttributes;
 using Gigraph.Dot.Entities.Graphs;
 using Gigraph.Dot.Entities.Nodes;
 using Gigraph.Dot.Entities.Subgraphs;
