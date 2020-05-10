@@ -1,13 +1,14 @@
-﻿using Gigraph.Dot.Entities.Attributes;
-using Gigraph.Dot.Core;
-using Gigraph.Dot.Writers;
+﻿using Gigraph.Dot.Core;
+using Gigraph.Dot.Entities.Attributes;
 using Gigraph.Dot.Generators.Options;
+using Gigraph.Dot.Generators.Providers;
+using Gigraph.Dot.Writers.AttributeWriters;
 
 namespace Gigraph.Dot.Generators.AttributeGenerators
 {
     public class DotHtmlLabelAttributeGenerator : DotGenericAttributeGenerator<DotHtmlLabelAttribute>
     {
-        public DotHtmlLabelAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, DotEntityGeneratorsProvider entityGenerators)
+        public DotHtmlLabelAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

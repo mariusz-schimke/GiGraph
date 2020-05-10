@@ -28,11 +28,17 @@
             _value = value;
         }
 
+        /// <summary>
+        /// Converts the value to string using the default converter (unless overriden in a descendant class).
+        /// </summary>
         public override string ToString()
         {
             return _value?.ToString();
         }
 
+        /// <summary>
+        /// Gets the value of the attribute in a format understood by DOT graph renderer.
+        /// </summary>
         protected override string GetValueAsString()
         {
             return _value?.ToString() ?? string.Empty;

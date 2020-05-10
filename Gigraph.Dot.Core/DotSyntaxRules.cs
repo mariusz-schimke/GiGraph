@@ -6,7 +6,7 @@ namespace Gigraph.Dot.Core
 {
     public class DotSyntaxRules
     {
-        protected readonly HashSet<string> _keywords = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        protected readonly HashSet<string> _keywords = new HashSet<string>(StringComparer.InvariantCulture)
         {
             "node",
             "edge",
@@ -15,6 +15,15 @@ namespace Gigraph.Dot.Core
             "digraph",
             "subgraph"
         };
+
+        protected DotSyntaxRules(HashSet<string> keywords)
+        {
+            _keywords = keywords;
+        }
+
+        public DotSyntaxRules()
+        {
+        }
 
         public virtual string AlphabeticIdentifierPattern => @"^[_a-zA-Z\200-\377]+[_0-9a-zA-Z\200-\377]*$";
         public virtual string NumericIdentifierPattern => @"^[-]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)$";
