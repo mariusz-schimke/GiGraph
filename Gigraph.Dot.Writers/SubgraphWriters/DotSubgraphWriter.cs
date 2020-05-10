@@ -13,12 +13,12 @@ namespace Gigraph.Dot.Writers.SubgraphWriters
         public virtual void WriteSubgraphDeclaration(string id, bool quote)
         {
             _tokenWriter.Keyword("subgraph")
-                   .Space();
+                        .Space();
 
             if (id is { })
             {
                 _tokenWriter.Identifier(id, quote)
-                       .Space();
+                            .Space();
             }
         }
     }
