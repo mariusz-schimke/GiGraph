@@ -12,6 +12,7 @@ namespace Gigraph.Dot.Writers.SubgraphWriters
 
         public virtual void WriteSubgraphDeclaration(string id, bool quote)
         {
+            // TODO: dodać opcję, czy dopisywać to słowo kluczowe
             _tokenWriter.Keyword("subgraph");
 
             if (id is { })

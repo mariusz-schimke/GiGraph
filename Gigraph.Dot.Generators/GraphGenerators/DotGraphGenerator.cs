@@ -7,7 +7,7 @@ using Gigraph.Dot.Writers.GraphWriters;
 
 namespace Gigraph.Dot.Generators.GraphGenerators
 {
-    public class DotGraphGenerator : DotEntityGenerator<DotGraph, IDotGraphWriterFactory>
+    public class DotGraphGenerator : DotEntityGenerator<DotGraph, IDotGraphWriterRoot>
     {
         protected readonly TextEscapingPipeline _graphIdEscaper = TextEscapingPipeline.CreateForGraphId();
 
@@ -21,9 +21,9 @@ namespace Gigraph.Dot.Generators.GraphGenerators
             return _graphIdEscaper.Escape(id);
         }
 
-        public override void Generate(DotGraph graph, IDotGraphWriterFactory writerFactory)
+        public override void Generate(DotGraph graph, IDotGraphWriterRoot writerRoot)
         {
-            var writer = writerFactory.Create(graph.IsDirected);
+            var writer = writerRoot.BeginGraph(graph.IsDirected);
 
             WriteDeclaration(graph.Id, graph.IsStrict, writer);
             WriteBody(graph, writer);

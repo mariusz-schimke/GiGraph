@@ -1,6 +1,6 @@
 ﻿namespace Gigraph.Dot.Entities.Subgraphs
 {
-    public class DotSubgraphCollection : DotGenericSubgraphCollection<DotSubgraph>
+    public class DotClusterCollection : DotGenericSubgraphCollection<DotCluster>
     {
         public override int Remove(string id)
         {
