@@ -1,4 +1,5 @@
 ﻿using Gigraph.Dot.Entities.Attributes;
+using Gigraph.Dot.Entities.Attributes.Collections;
 using Gigraph.Dot.Entities.Attributes.ColorAttributes;
 using Gigraph.Dot.Entities.Attributes.LabelAttributes;
 using System;
