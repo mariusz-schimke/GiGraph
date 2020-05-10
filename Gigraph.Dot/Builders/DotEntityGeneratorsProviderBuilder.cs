@@ -1,10 +1,10 @@
 ﻿using Gigraph.Dot.Core;
-using Gigraph.Dot.Generators;
 using Gigraph.Dot.Generators.AttributeGenerators;
 using Gigraph.Dot.Generators.EdgeGenerators;
 using Gigraph.Dot.Generators.GraphGenerators;
 using Gigraph.Dot.Generators.NodeGenerators;
 using Gigraph.Dot.Generators.Options;
+using Gigraph.Dot.Generators.Providers;
 using Gigraph.Dot.Generators.SubgraphGenerators;
 
 namespace Gigraph.Dot.Builders
@@ -16,7 +16,7 @@ namespace Gigraph.Dot.Builders
         /// </summary>
         /// <param name="syntaxRules">The syntax rules to follow.</param>
         /// <param name="options">The DOT language generation options to use for graph generation and its components.</param>
-        public virtual DotEntityGeneratorsProvider Build(DotSyntaxRules syntaxRules, DotGenerationOptions options)
+        public virtual IDotEntityGeneratorsProvider Build(DotSyntaxRules syntaxRules, DotGenerationOptions options)
         {
             var provider = new DotEntityGeneratorsProvider();
 

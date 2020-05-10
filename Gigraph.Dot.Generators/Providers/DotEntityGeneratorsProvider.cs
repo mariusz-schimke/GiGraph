@@ -4,10 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Gigraph.Dot.Generators
+namespace Gigraph.Dot.Generators.Providers
 {
-    // TODO: wyodrębnić interfejs
-    public class DotEntityGeneratorsProvider
+    public class DotEntityGeneratorsProvider : IDotEntityGeneratorsProvider
     {
         protected readonly List<IDotEntityGenerator> _generators = new List<IDotEntityGenerator>();
 

@@ -2,6 +2,7 @@
 using Gigraph.Dot.Core.TextEscaping;
 using Gigraph.Dot.Entities;
 using Gigraph.Dot.Generators.Options;
+using Gigraph.Dot.Generators.Providers;
 using Gigraph.Dot.Writers;
 using System;
 
@@ -13,12 +14,12 @@ namespace Gigraph.Dot.Generators
     {
         protected readonly DotSyntaxRules _syntaxRules;
         protected readonly DotGenerationOptions _options;
-        protected readonly DotEntityGeneratorsProvider _entityGenerators;
+        protected readonly IDotEntityGeneratorsProvider _entityGenerators;
         protected readonly TextEscapingPipeline _valueEscaper = TextEscapingPipeline.CreateDefault();
 
         public abstract void Generate(TEntity entity, TWriter writer);
 
-        public DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, DotEntityGeneratorsProvider entityGenerators)
+        public DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
         {
             _syntaxRules = syntaxRules;
             _options = options;
