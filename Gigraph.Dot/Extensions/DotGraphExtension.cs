@@ -88,9 +88,9 @@ namespace Gigraph.Dot.Extensions
             var graphBuilder = graphGeneratorBuilder.Build(syntaxRules, generationOptions);
 
             var tokenWriter = new DotTokenWriter(outputWriter, formattingOptions);
-            var graphWriterFactory = new DotGraphWriterFactory(tokenWriter);
+            var graphWriterRoot = new DotGraphWriterRoot(tokenWriter);
 
-            graphBuilder.Generate(graph, graphWriterFactory);
+            graphBuilder.Generate(graph, graphWriterRoot);
         }
     }
 }

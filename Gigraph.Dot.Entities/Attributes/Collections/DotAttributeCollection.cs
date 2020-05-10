@@ -7,7 +7,7 @@ namespace Gigraph.Dot.Entities.Attributes.Collections
 {
     public class DotAttributeCollection : IDotEntity, IEnumerable<DotAttribute>
     {
-        protected IDictionary<string, DotAttribute> _attributes { get; } = new Dictionary<string, DotAttribute>(StringComparer.InvariantCulture);
+        protected readonly IDictionary<string, DotAttribute> _attributes = new Dictionary<string, DotAttribute>(StringComparer.InvariantCulture);
 
         /// <summary>
         /// Adds or replaces the specified attribute in the collection.
@@ -98,12 +98,31 @@ namespace Gigraph.Dot.Entities.Attributes.Collections
         {
             if (_attributes.TryGetValue(key, out var result))
             {
-                attribute = (T)result;
-                return true;
+                attribute = result as T;
+                return attribute is { };
             }
 
             attribute = null;
             return false;
+        }
+
+        protected virtual void AddOrRemove<T>(string key, T attribute)
+            where T : DotAttribute
+        {
+            if (attribute is null)
+            {
+                Remove(key);
+            }
+            else
+            {
+                Set(attribute);
+            }
+        }
+
+        protected virtual void AddOrRemove<TAttribute, TValue>(string key, TValue value, Func<TValue, TAttribute> attribute)
+            where TAttribute : DotAttribute
+        {
+            AddOrRemove(key, value is null ? null : attribute(value));
         }
 
         public virtual IEnumerator<DotAttribute> GetEnumerator()

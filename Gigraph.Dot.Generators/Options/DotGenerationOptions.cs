@@ -2,7 +2,7 @@
 {
     public partial class DotGenerationOptions
     {
-        public AttributeOptions Attributes { get; } = new AttributeOptions();
+        public virtual AttributeOptions Attributes { get; protected set; } = new AttributeOptions();
 
         /// <summary>
         /// When set, identifiers will always be quoted, even if it is not required.

@@ -1,4 +1,6 @@
-﻿namespace Gigraph.Dot.Entities.Graphs
+﻿using Gigraph.Dot.Entities.Attributes.Collections;
+
+namespace Gigraph.Dot.Entities.Graphs
 {
     public class DotGraph : DotGraphBody
     {
@@ -19,8 +21,18 @@
         /// </summary>
         public bool IsStrict { get; set; }
 
+        /// <summary>
+        /// The attributes of the graph.
+        /// </summary>
+        public new DotGraphAttributeCollection Attributes
+        {
+            get => (DotGraphAttributeCollection)base.Attributes;
+            protected set => base.Attributes = value;
+        }
+
         protected DotGraph()
         {
+            Attributes = new DotGraphAttributeCollection();
         }
 
         /// <summary>
@@ -32,6 +44,7 @@
         /// <param name="isStrict">Determines if the graph is strict.
         /// Strict graph forbids the creation of multi-edges, i.e., there can be at most one edge with a given tail node and head node in the directed case.</param>
         public DotGraph(string id = null, bool isDirected = true, bool isStrict = false)
+            : this()
         {
             Id = id;
             IsDirected = isDirected;

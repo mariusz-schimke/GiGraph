@@ -1,7 +1,11 @@
-﻿using Gigraph.Dot.Entities.Graphs;
+﻿using Gigraph.Dot.Entities.Attributes.Collections;
+using Gigraph.Dot.Entities.Graphs;
 
 namespace Gigraph.Dot.Entities.Subgraphs
 {
+    /// <summary>
+    /// Represents a subgraph as a collection of nodes constrained with a rank attribute.
+    /// </summary>
     public class DotSubgraph : DotGraphBody
     {
         /// <summary>
@@ -10,29 +14,29 @@ namespace Gigraph.Dot.Entities.Subgraphs
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets a value that determines whether the subgraph is a cluster subgraph.
-        /// If supported, the layout engine used to render the graph, will do the layout so that the nodes belonging to the cluster 
-        /// are drawn together, with the entire drawing of the cluster contained within a bounding rectangle.
-        /// Note that cluster subgraphs are not part of the DOT language, but solely a syntactic convention adhered to by certain of the layout engines.
+        /// The attributes of the subgraph. The only valid attribute for a non-cluster subgraph is rank.
         /// </summary>
-        public virtual bool IsCluster { get; set; }
+        public new DotSubgraphAttributeCollection Attributes
+        {
+            get => (DotSubgraphAttributeCollection)base.Attributes;
+            protected set => base.Attributes = value;
+        }
 
         protected DotSubgraph()
         {
+            Attributes = new DotSubgraphAttributeCollection();
         }
 
         /// <summary>
         /// Creates a new subgraph.
         /// </summary>
         /// <param name="id">The unique identifier of the subgraph. Pass null if no identifier should be used.</param>
-        /// <param name="isCluster">Determines whether the subgraph is a cluster subgraph.
-        /// If supported, the layout engine used to render the graph, will do the layout so that the nodes belonging to the cluster 
-        /// are drawn together, with the entire drawing of the cluster contained within a bounding rectangle.
-        /// Note that cluster subgraphs are not part of the DOT language, but solely a syntactic convention adhered to by certain of the layout engines.</param>
-        public DotSubgraph(string id = null, bool isCluster = true)
+        public DotSubgraph(string id = null)
+            : this()
         {
             Id = id;
-            IsCluster = isCluster;
         }
+
+        // TODO: dodać metodę wytwórczą, która przyjmuje rank i pramams string[] id węzłów
     }
 }

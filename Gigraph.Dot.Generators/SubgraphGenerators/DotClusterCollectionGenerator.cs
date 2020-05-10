@@ -7,18 +7,18 @@ using System.Linq;
 
 namespace Gigraph.Dot.Generators.SubgraphGenerators
 {
-    public class DotSubgraphCollectionGenerator : DotEntityGenerator<DotSubgraphCollection, IDotSubgraphCollectionWriter>
+    public class DotClusterCollectionGenerator : DotEntityGenerator<DotClusterCollection, IDotSubgraphCollectionWriter>
     {
-        public DotSubgraphCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotClusterCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        public override void Generate(DotSubgraphCollection subgraphs, IDotSubgraphCollectionWriter writer)
+        public override void Generate(DotClusterCollection clusters, IDotSubgraphCollectionWriter writer)
         {
-            var orderedSubgraphs = subgraphs.OrderBy(n => n.Id).ToList();
+            var orderedClusters = clusters.OrderBy(n => n.Id).ToList();
 
-            foreach (var subgraph in orderedSubgraphs)
+            foreach (var subgraph in orderedClusters)
             {
                 var subgraphWriter = writer.BeginSubgraph();
                 _entityGenerators.GetForEntity<IDotSubgraphWriter>(subgraph).Generate(subgraph, subgraphWriter);

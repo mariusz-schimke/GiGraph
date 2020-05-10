@@ -28,6 +28,7 @@ namespace Gigraph.Dot.Generators.GraphGenerators
             WriteNodes(graphBody.Nodes, writer);
             WriteEdges(graphBody.Edges, writer);
             WriteSubgraphs(graphBody.Subgraphs, writer);
+            WriteClusters(graphBody.Clusters, writer);
         }
 
         protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotGraphBodyWriter writer)
@@ -56,6 +57,13 @@ namespace Gigraph.Dot.Generators.GraphGenerators
             var subgraphsWriter = writer.BeginSubgraphsSection();
             _entityGenerators.GetForEntity<IDotSubgraphCollectionWriter>(subgraphs).Generate(subgraphs, subgraphsWriter);
             writer.EndSubgraphsSection(subgraphs.Count());
+        }
+
+        protected virtual void WriteClusters(DotClusterCollection clusters, IDotGraphBodyWriter writer)
+        {
+            var subgraphsWriter = writer.BeginSubgraphsSection();
+            _entityGenerators.GetForEntity<IDotSubgraphCollectionWriter>(clusters).Generate(clusters, subgraphsWriter);
+            writer.EndSubgraphsSection(clusters.Count());
         }
     }
 }

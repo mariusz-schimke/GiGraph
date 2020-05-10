@@ -49,18 +49,17 @@ namespace Gigraph
 
         private static void AddAttributes(DotGraph graph)
         {
-            graph.Label = "My graph";
-            graph.Color = Color.Black;
-            graph.BackgroundColor = Color.BlueViolet;
+            graph.Attributes.Label = "My graph";
+            graph.Attributes.BackgroundColor = Color.BlueViolet;
 
             graph.Attributes.Set("shape", "star");
         }
 
         private static void AddNodes(DotGraph graph)
         {
-            graph.Nodes.Add(new DotNode("node1")
+            graph.Nodes.Add("node1", n =>
             {
-                Label = "my label"
+                n.Attributes.Label = "my label";
             });
 
             //graph.Nodes.Add(new DotNode("node2")
@@ -68,9 +67,9 @@ namespace Gigraph
             //    Label = new DotHtmlLabel("<b>text</b>")
             //});
 
-            graph.Nodes.Add(new DotNode("node3")
+            graph.Nodes.Add("node3", n =>
             {
-                Label = new DotTextLabelAttribute("label")
+                n.Attributes.Label = new DotTextLabelAttribute("label");
             })
             .Attributes.Set("color", "red");
 
@@ -84,13 +83,13 @@ namespace Gigraph
 
         private static void AddSubgraphs(DotGraph graph)
         {
-            var subgraph1 = new DotSubgraph(isCluster: false);
-            var subgraph2 = new DotSubgraph("sg2", isCluster: false);
+            var subgraph1 = new DotSubgraph();
+            var subgraph2 = new DotSubgraph("sg2");
             subgraph1.Subgraphs.Add(subgraph2);
 
-            var cluster1 = new DotSubgraph();
-            var cluster2 = new DotSubgraph("sgc2");
-            cluster1.Subgraphs.Add(cluster2);
+            var cluster1 = new DotCluster();
+            var cluster2 = new DotCluster("sgc2");
+            cluster1.Clusters.Add(cluster2);
 
             foreach (var attr in graph.Attributes)
             {
@@ -104,7 +103,7 @@ namespace Gigraph
 
             graph.Subgraphs.Add(subgraph1);
             //graph.Subgraphs.Add(subgraph2);
-            graph.Subgraphs.Add(cluster1);
+            graph.Clusters.Add(cluster1);
             //graph.Subgraphs.Add(cluster2);
         }
     }
