@@ -12,8 +12,8 @@ namespace Gigraph.Dot.Writers.GraphWriters
         public virtual IDotGraphBodyWriter BeginBody()
         {
             _tokenWriter.SectionStart()
-                   .LineBreak()
-                   .Indentation(_context.Level + 1, linger: true);
+                        .LineBreak()
+                        .Indentation(_context.Level + 1, linger: true);
 
             return new DotGraphBodyWriter(_tokenWriter, _context.NextLevel());
         }

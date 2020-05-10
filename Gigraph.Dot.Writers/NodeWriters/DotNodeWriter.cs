@@ -12,7 +12,7 @@ namespace Gigraph.Dot.Writers.NodeWriters
         public virtual void WriteNodeIdentifier(string id, bool quote)
         {
             _tokenWriter.Identifier(id, quote)
-                   .Space(linger: true);
+                        .Space(linger: true);
         }
     }
 }
