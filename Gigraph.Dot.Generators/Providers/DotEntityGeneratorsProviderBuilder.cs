@@ -20,8 +20,10 @@ namespace Gigraph.Dot.Generators.Providers
             var provider = new DotEntityGeneratorsProvider();
 
             provider.Register(new DotGraphGenerator(syntaxRules, options, provider));
-            provider.Register(new DotSubgraphGenerator(syntaxRules, options, provider));
             provider.Register(new DotGraphBodyGenerator(syntaxRules, options, provider));
+
+            provider.Register(new DotSubgraphGenerator(syntaxRules, options, provider));
+            provider.Register(new DotSubgraphCollectionGenerator(syntaxRules, options, provider));
 
             provider.Register(new DotAttributeGenerator(syntaxRules, options, provider));
             provider.Register(new DotAttributeCollectionGenerator(syntaxRules, options, provider));

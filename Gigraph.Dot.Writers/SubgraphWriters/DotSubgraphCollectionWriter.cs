@@ -5,8 +5,8 @@ namespace Gigraph.Dot.Writers.NodeWriters
 {
     public class DotSubgraphCollectionWriter : DotStatementWriter, IDotSubgraphCollectionWriter
     {
-        public DotSubgraphCollectionWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
-            : base(tokenWriter, context, useStatementDelimiter)
+        public DotSubgraphCollectionWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
+            : base(tokenWriter, context, useStatementDelimiter: false)
         {
         }
 
@@ -18,6 +18,15 @@ namespace Gigraph.Dot.Writers.NodeWriters
         public virtual void EndSubgraph()
         {
             EndStatement();
+        }
+
+        public override void EndStatement()
+        {
+            _tokenWriter.ClearLingerBuffer();
+
+            _tokenWriter.LineBreak()
+                        .LineBreak(linger: true)
+                        .Indentation(_context.Level, linger: true);
         }
     }
 }
