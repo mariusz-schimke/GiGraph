@@ -8,7 +8,7 @@
         string Key { get; }
 
         /// <summary>
-        /// The value of the attribute accepted by DOT graph renderer.
+        /// Gets the value of the attribute in a format understood by DOT graph renderer.
         /// </summary>
         string Value { get; }
 

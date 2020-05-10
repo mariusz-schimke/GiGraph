@@ -10,9 +10,19 @@ namespace Gigraph.Dot.Writers.Options
         /// </summary>
         public virtual bool SingleLineOutput { get; set; } = false;
 
+        /// <summary>
+        /// Determines what character to use for indentation (space by default).
+        /// </summary>
         public virtual char IndentChar { get; set; } = ' ';
+
+        /// <summary>
+        /// The default indentation to apply to the DOT output.
+        /// </summary>
         public virtual int Indentation { get; set; } = 4;
 
+        /// <summary>
+        /// The line break sequence to use in the DOT output (<see cref="Environment.NewLine"/> by default).
+        /// </summary>
         public virtual string LineBreak { get; set; } = Environment.NewLine;
     }
 }
