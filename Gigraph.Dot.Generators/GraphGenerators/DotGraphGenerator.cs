@@ -2,7 +2,7 @@
 using Gigraph.Dot.Core.TextEscaping;
 using Gigraph.Dot.Entities.Graphs;
 using Gigraph.Dot.Generators.Options;
-using Gigraph.Dot.Writers;
+using Gigraph.Dot.Writers.GraphWriters;
 
 namespace Gigraph.Dot.Generators.GraphGenerators
 {
