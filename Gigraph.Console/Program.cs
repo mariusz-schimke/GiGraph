@@ -48,11 +48,26 @@ namespace Gigraph
 
         private static void AddSubgraphs(DotGraph graph)
         {
-            var subgraph = new DotSubgraph(isCluster: false);
-            var cluster = new DotSubgraph();
+            var subgraph1 = new DotSubgraph(isCluster: false);
+            var subgraph2 = new DotSubgraph("sg2", isCluster: false);
 
-            graph.Subgraphs.Add(subgraph);
-            graph.Subgraphs.Add(cluster);
+            var cluster1 = new DotSubgraph();
+            var cluster2 = new DotSubgraph("sgc2");
+
+            foreach (var attr in graph.Attributes)
+            {
+                cluster2.Attributes.AddOrReplace(attr);
+            }
+
+            foreach (var node in graph.Nodes)
+            {
+                cluster2.Nodes.Add(node);
+            }
+
+            graph.Subgraphs.Add(subgraph1);
+            graph.Subgraphs.Add(subgraph2);
+            graph.Subgraphs.Add(cluster1);
+            graph.Subgraphs.Add(cluster2);
         }
 
         private static void AddEdges(DotGraph graph)
