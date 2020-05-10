@@ -70,7 +70,7 @@ namespace Gigraph
             graph.Nodes.Add(new DotNode("node3")
             {
                 Label = new DotTextLabelAttribute("label")
-            }).Attributes.SetAttribute(new DotTextLabelAttribute("label2"));
+            }).Attributes.AddOrReplace(new DotTextLabelAttribute("label2"));
 
             graph.Nodes.Add(new DotNode("node 4"));
         }

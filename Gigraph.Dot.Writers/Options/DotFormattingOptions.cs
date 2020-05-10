@@ -8,11 +8,11 @@ namespace Gigraph.Dot.Writers.Options
         /// Gets or sets the value indicating if the output should be generated as a single line of text.
         /// In such case <see cref="LineBreak"/> sequences in identifiers and HTML labels will be replaced with white space.
         /// </summary>
-        public bool SingleLineOutput { get; set; } = false;
+        public virtual bool SingleLineOutput { get; set; } = false;
 
-        public char IndentChar { get; set; } = ' ';
-        public int Indentation { get; set; } = 4;
+        public virtual char IndentChar { get; set; } = ' ';
+        public virtual int Indentation { get; set; } = 4;
 
-        public string LineBreak { get; set; } = Environment.NewLine;
+        public virtual string LineBreak { get; set; } = Environment.NewLine;
     }
 }

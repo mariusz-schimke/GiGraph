@@ -13,7 +13,7 @@ namespace Gigraph.Dot.Writers.GraphWriters
             _level = level;
         }
 
-        public IDotGraphWriter Create(bool directed)
+        public virtual IDotGraphWriter Create(bool directed)
         {
             return new DotGraphWriter(_tokenWriter, new DotEntityWriterContext(_level, directed));
         }

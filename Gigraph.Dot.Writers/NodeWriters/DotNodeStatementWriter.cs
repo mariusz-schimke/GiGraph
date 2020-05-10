@@ -14,7 +14,7 @@ namespace Gigraph.Dot.Writers.NodeWriters
             return new DotNodeWriter(_tokenWriter, _context);
         }
 
-        public void EndNode()
+        public virtual void EndNode()
         {
             EndStatement();
         }

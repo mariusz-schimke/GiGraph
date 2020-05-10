@@ -6,7 +6,7 @@ namespace Gigraph.Dot.Entities
 {
     public abstract class DotAttributedEntity : IDotEntity
     {
-        public DotAttributeCollection Attributes { get; } = new DotAttributeCollection();
+        public virtual DotAttributeCollection Attributes { get; } = new DotAttributeCollection();
 
         public virtual DotLabelAttribute Label
         {
@@ -35,7 +35,7 @@ namespace Gigraph.Dot.Entities
             }
             else
             {
-                Attributes.SetAttribute(attribute);
+                Attributes.AddOrReplace(attribute);
             }
         }
 
