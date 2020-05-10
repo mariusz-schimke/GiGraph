@@ -13,9 +13,19 @@ namespace Gigraph.Dot.Entities.Attributes
         /// Adds or replaces the specified attribute in the collection.
         /// </summary>
         /// <param name="attribute">The attribute to include in the collection.</param>
-        public virtual void AddOrReplace(DotAttribute attribute)
+        public virtual void Set(DotAttribute attribute)
         {
             _attributes[((IDotAttribute)attribute).Key] = attribute;
+        }
+
+        /// <summary>
+        /// Adds or replaces the specified custom attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        public virtual void Set(string key, string value)
+        {
+            _attributes[key] = new DotCustomAttribute(key, value);
         }
 
         /// <summary>
