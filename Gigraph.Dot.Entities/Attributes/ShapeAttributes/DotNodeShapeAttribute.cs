@@ -207,5 +207,10 @@ namespace Gigraph.Dot.Entities.Attributes
                     throw new ArgumentOutOfRangeException($"The specified node shape '{_value}' is not supported.");
             }
         }
+
+        public static implicit operator DotNodeShapeAttribute(DotNodeShape shape)
+        {
+            return new DotNodeShapeAttribute(shape);
+        }
     }
 }
