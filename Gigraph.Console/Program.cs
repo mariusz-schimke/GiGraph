@@ -1,4 +1,5 @@
 ﻿using Gigraph.Dot.Entities.Attributes.LabelAttributes;
+using Gigraph.Dot.Entities.Attributes.ShapeAttributes;
 using Gigraph.Dot.Entities.Graphs;
 using Gigraph.Dot.Entities.Nodes;
 using Gigraph.Dot.Entities.Subgraphs;
@@ -26,7 +27,7 @@ namespace Gigraph
 
             var go = new DotGenerationOptions
             {
-                
+
             };
             //go.Subgraphs.PreferExplicitKeyword = true;
 
@@ -53,7 +54,7 @@ namespace Gigraph
             graph.Attributes.LabelHtml = "My graph";
             graph.Attributes.BackgroundColor = Color.BlueViolet;
 
-            graph.Attributes.Set("shape", "star");
+            graph.Attributes.Set("shape", "rect");
         }
 
         private static void AddNodes(DotGraph graph)
@@ -61,6 +62,7 @@ namespace Gigraph
             graph.Nodes.Add("node1", n =>
             {
                 n.Attributes.Label = "my label";
+                n.Attributes.Shape = DotNodeShape.Hexagon;
             });
 
             //graph.Nodes.Add(new DotNode("node2")
