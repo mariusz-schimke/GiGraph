@@ -59,7 +59,7 @@ namespace Gigraph
 
         private static void AddNodes(DotGraph graph)
         {
-            graph.Nodes.Add("node1", n =>
+            var node1 = graph.Nodes.Add("node1", n =>
             {
                 n.Attributes.Label = "my label";
                 n.Attributes.Shape = DotNodeShape.Hexagon;
@@ -81,16 +81,16 @@ namespace Gigraph
 
         private static void AddEdges(DotGraph graph)
         {
-            graph.Edges.Add("node1", "node2");
+            var edge1 = graph.Edges.Add("node1", "node2");
         }
 
         private static void AddSubgraphs(DotGraph graph)
         {
-            var subgraph1 = new DotSubgraph();
+            var subgraph1 = new DotSubgraph("");
             var subgraph2 = new DotSubgraph("sg2");
             subgraph1.Subgraphs.Add(subgraph2);
 
-            var cluster1 = new DotCluster();
+            var cluster1 = new DotCluster("");
             var cluster2 = new DotCluster("sgc2");
             cluster1.Subgraphs.Add(cluster2);
 

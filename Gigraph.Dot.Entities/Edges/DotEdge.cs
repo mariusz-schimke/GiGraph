@@ -1,4 +1,5 @@
 ﻿using Gigraph.Dot.Entities.Attributes.Collections;
+using System;
 
 namespace Gigraph.Dot.Entities.Edges
 {
@@ -7,15 +8,26 @@ namespace Gigraph.Dot.Entities.Edges
     /// </summary>
     public class DotEdge : IDotEntity
     {
+        protected string _leftNodeId;
+        protected string _rightNodeId;
+
         /// <summary>
         /// The identifier of the left (source) node the edge is connected to.
         /// </summary>
-        public string LeftNodeId { get; set; }
+        public virtual string LeftNodeId
+        {
+            get => _leftNodeId;
+            set => _leftNodeId = value ?? throw new ArgumentNullException(nameof(LeftNodeId), "Node identifier cannot be null.");
+        }
 
         /// <summary>
         /// The identifier of the right (destination) node the edge is connected to.
         /// </summary>
-        public string RightNodeId { get; set; }
+        public virtual string RightNodeId
+        {
+            get => _rightNodeId;
+            set => _rightNodeId = value ?? throw new ArgumentNullException(nameof(RightNodeId), "Node identifier cannot be null.");
+        }
 
         /// <summary>
         /// The attributes of the edge.

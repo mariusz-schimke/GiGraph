@@ -11,13 +11,13 @@ namespace Gigraph.Dot.Entities.Graphs
         /// Gets or sets a value that determines if the graph is directed.
         /// The edges of directed graphs are presented as arrows, whereas edges in undirected graphs are presented as lines.
         /// </summary>
-        public bool IsDirected { get; set; }
+        public virtual bool IsDirected { get; set; }
 
         /// <summary>
         /// Gets or sets a value that determines if the graph is strict.
         /// Strict graph forbids the creation of multi-edges, i.e., there can be at most one edge with a given tail node and head node in the directed case.
         /// </summary>
-        public bool IsStrict { get; set; }
+        public virtual bool IsStrict { get; set; }
 
         /// <summary>
         /// The attributes of the graph.

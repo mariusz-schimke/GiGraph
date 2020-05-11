@@ -31,19 +31,14 @@ namespace Gigraph.Dot.Generators.GraphGenerators
 
         protected virtual void WriteDeclaration(DotGraph graph, IDotGraphWriter writer)
         {
-            var id = graph.Id;
-
-            if (id is { })
-            {
-                id = EscapeGraphIdentifier(id);
-            }
+            var id = EscapeGraphIdentifier(graph.Id);
 
             // whether the graph and its edges will be directed, is decided by the writer instance
             writer.WriteGraphDeclaration
             (
                 id,
                 graph.IsStrict,
-                quoteId: id is { } && IdentifierRequiresQuoting(id)
+                quoteId: IdentifierRequiresQuoting(id)
             );
         }
 
