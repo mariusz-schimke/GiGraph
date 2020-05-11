@@ -28,6 +28,18 @@ namespace Gigraph.Dot.Entities.Nodes
         }
 
         /// <summary>
+        /// Adds a new node with the specified identifier to the collection, and returns it.
+        /// </summary>
+        /// <param name="id">The identifier of the node to add.</param>
+        /// <param name="initNode">An optional node initializer delegate.</param>
+        public virtual DotNode Add(string id, Action<DotNode> initNode)
+        {
+            var node = Add(id);
+            initNode?.Invoke(node);
+            return node;
+        }
+
+        /// <summary>
         /// Removes the specified node from the collection if found.
         /// </summary>
         /// <param name="node">The node to remove.</param>

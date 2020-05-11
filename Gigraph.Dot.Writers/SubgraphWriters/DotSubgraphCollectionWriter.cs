@@ -10,9 +10,9 @@ namespace Gigraph.Dot.Writers.NodeWriters
         {
         }
 
-        public virtual IDotSubgraphWriter BeginSubgraph()
+        public virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitSubgraphKeyword)
         {
-            return new DotSubgraphWriter(_tokenWriter, _context);
+            return new DotSubgraphWriter(_tokenWriter, _context, preferExplicitSubgraphKeyword);
         }
 
         public virtual void EndSubgraph()

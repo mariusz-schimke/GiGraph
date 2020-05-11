@@ -22,10 +22,11 @@ namespace Gigraph.Dot.Generators.Providers
             provider.Register(new DotGraphGenerator(syntaxRules, options, provider));
             provider.Register(new DotGraphBodyGenerator(syntaxRules, options, provider));
 
+            provider.Register(new DotClusterGenerator(syntaxRules, options, provider));
             provider.Register(new DotSubgraphGenerator(syntaxRules, options, provider));
-            provider.Register(new DotSubgraphCollectionGenerator(syntaxRules, options, provider));
+            provider.Register(new DotCommonSubgraphCollectionGenerator(syntaxRules, options, provider));
 
-            provider.Register(new DotAttributeGenerator(syntaxRules, options, provider));
+            provider.Register(new DotCustomAttributeGenerator(syntaxRules, options, provider));
             provider.Register(new DotAttributeCollectionGenerator(syntaxRules, options, provider));
             provider.Register(new DotHtmlLabelAttributeGenerator(syntaxRules, options, provider));
 

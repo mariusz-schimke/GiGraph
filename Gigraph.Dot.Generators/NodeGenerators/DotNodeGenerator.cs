@@ -1,5 +1,4 @@
 ﻿using Gigraph.Dot.Core;
-using Gigraph.Dot.Entities.Attributes;
 using Gigraph.Dot.Entities.Nodes;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Generators.Providers;
@@ -18,21 +17,21 @@ namespace Gigraph.Dot.Generators.NodeGenerators
 
         public override void Generate(DotNode node, IDotNodeWriter writer)
         {
-            WriteIdentifier(node.Id, writer);
-            WriteAttributes(node.Attributes, writer);
+            WriteIdentifier(node, writer);
+            WriteAttributes(node, writer);
         }
 
-        protected virtual void WriteIdentifier(string id, IDotNodeWriter writer)
+        protected virtual void WriteIdentifier(DotNode node, IDotNodeWriter writer)
         {
-            id = EscapeIdentifier(id);
+            var id = EscapeIdentifier(node.Id);
             writer.WriteNodeIdentifier(id, IdentifierRequiresQuoting(id));
         }
 
-        protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotNodeWriter writer)
+        protected virtual void WriteAttributes(DotNode node, IDotNodeWriter writer)
         {
             var attributesWriter = writer.BeginAttributeList(_options.Attributes.PreferExplicitSeparator);
-            _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Generate(attributes, attributesWriter);
-            writer.EndAttributeList(attributes.Count());
+            _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(node.Attributes).Generate(node.Attributes, attributesWriter);
+            writer.EndAttributeList(node.Attributes.Count());
         }
     }
 }

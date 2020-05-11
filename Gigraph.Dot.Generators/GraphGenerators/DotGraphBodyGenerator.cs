@@ -1,9 +1,5 @@
 ﻿using Gigraph.Dot.Core;
-using Gigraph.Dot.Entities.Attributes;
-using Gigraph.Dot.Entities.Edges;
 using Gigraph.Dot.Entities.Graphs;
-using Gigraph.Dot.Entities.Nodes;
-using Gigraph.Dot.Entities.Subgraphs;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Generators.Providers;
 using Gigraph.Dot.Writers.AttributeWriters;
@@ -15,47 +11,47 @@ using System.Linq;
 
 namespace Gigraph.Dot.Generators.GraphGenerators
 {
-    public class DotGraphBodyGenerator : DotEntityGenerator<DotGraphBody, IDotGraphBodyWriter>
+    public class DotGraphBodyGenerator : DotEntityGenerator<DotCommonGraph, IDotGraphBodyWriter>
     {
         public DotGraphBodyGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        public override void Generate(DotGraphBody graphBody, IDotGraphBodyWriter writer)
+        public override void Generate(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
         {
-            WriteAttributes(graphBody.Attributes, writer);
-            WriteNodes(graphBody.Nodes, writer);
-            WriteEdges(graphBody.Edges, writer);
-            WriteSubgraphs(graphBody.Subgraphs, writer);
+            WriteAttributes(graphBody, writer);
+            WriteNodes(graphBody, writer);
+            WriteEdges(graphBody, writer);
+            WriteSubgraphs(graphBody, writer);
         }
 
-        protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotGraphBodyWriter writer)
+        protected virtual void WriteAttributes(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
         {
             var attributesWriter = writer.BeginAttributesSection(_options.PreferStatementDelimiter);
-            _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Generate(attributes, attributesWriter);
-            writer.EndAttributesSection(attributes.Count());
+            _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(graphBody.Attributes).Generate(graphBody.Attributes, attributesWriter);
+            writer.EndAttributesSection(graphBody.Attributes.Count());
         }
 
-        protected virtual void WriteNodes(DotNodeCollection nodes, IDotGraphBodyWriter writer)
+        protected virtual void WriteNodes(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
         {
             var nodesWriter = writer.BeginNodesSection(_options.PreferStatementDelimiter);
-            _entityGenerators.GetForEntity<IDotNodeCollectionWriter>(nodes).Generate(nodes, nodesWriter);
-            writer.EndNodesSection(nodes.Count());
+            _entityGenerators.GetForEntity<IDotNodeCollectionWriter>(graphBody.Nodes).Generate(graphBody.Nodes, nodesWriter);
+            writer.EndNodesSection(graphBody.Nodes.Count());
         }
 
-        protected virtual void WriteEdges(DotEdgeCollection edges, IDotGraphBodyWriter writer)
+        protected virtual void WriteEdges(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
         {
             var nodesWriter = writer.BeginEdgesSection(_options.PreferStatementDelimiter);
-            _entityGenerators.GetForEntity<IDotEdgeCollectionWriter>(edges).Generate(edges, nodesWriter);
-            writer.EndEdgesSection(edges.Count());
+            _entityGenerators.GetForEntity<IDotEdgeCollectionWriter>(graphBody.Edges).Generate(graphBody.Edges, nodesWriter);
+            writer.EndEdgesSection(graphBody.Edges.Count());
         }
 
-        protected virtual void WriteSubgraphs(DotSubgraphCollection subgraphs, IDotGraphBodyWriter writer)
+        protected virtual void WriteSubgraphs(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
         {
             var subgraphsWriter = writer.BeginSubgraphsSection();
-            _entityGenerators.GetForEntity<IDotSubgraphCollectionWriter>(subgraphs).Generate(subgraphs, subgraphsWriter);
-            writer.EndSubgraphsSection(subgraphs.Count());
+            _entityGenerators.GetForEntity<IDotSubgraphCollectionWriter>(graphBody.Subgraphs).Generate(graphBody.Subgraphs, subgraphsWriter);
+            writer.EndSubgraphsSection(graphBody.Subgraphs.Count());
         }
     }
 }
