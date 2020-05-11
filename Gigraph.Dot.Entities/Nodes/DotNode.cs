@@ -15,10 +15,12 @@ namespace Gigraph.Dot.Entities.Nodes
         /// <summary>
         /// The attributes of the node.
         /// </summary>
-        public virtual DotNodeAttributeCollection Attributes { get; protected set; } = new DotNodeAttributeCollection();
+        public virtual DotNodeAttributeCollection Attributes { get; protected set; }
 
-        protected DotNode()
+        protected DotNode(string id, DotNodeAttributeCollection attributes)
         {
+            Id = id;
+            Attributes = attributes;
         }
 
         /// <summary>
@@ -26,8 +28,8 @@ namespace Gigraph.Dot.Entities.Nodes
         /// </summary>
         /// <param name="id"></param>
         public DotNode(string id)
+            : this(id, new DotNodeAttributeCollection())
         {
-            Id = id;
         }
     }
 }

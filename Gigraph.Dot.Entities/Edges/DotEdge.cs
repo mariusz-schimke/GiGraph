@@ -20,7 +20,14 @@ namespace Gigraph.Dot.Entities.Edges
         /// <summary>
         /// The attributes of the edge.
         /// </summary>
-        public virtual DotEdgeAttributeCollection Attributes { get; protected set; } = new DotEdgeAttributeCollection();
+        public virtual DotEdgeAttributeCollection Attributes { get; }
+
+        protected DotEdge(string leftNodeId, string rightNodeId, DotEdgeAttributeCollection attributes)
+        {
+            LeftNodeId = leftNodeId;
+            RightNodeId = rightNodeId;
+            Attributes = attributes;
+        }
 
         /// <summary>
         /// Creates a new edge connecting two nodes.
@@ -28,9 +35,8 @@ namespace Gigraph.Dot.Entities.Edges
         /// <param name="leftNodeId">The identifier of the left (source) node the edge should be connected to.</param>
         /// <param name="rightNodeId">The identifier of the right (destination) node the should be connected to.</param>
         public DotEdge(string leftNodeId, string rightNodeId)
+            : this(leftNodeId, rightNodeId, new DotEdgeAttributeCollection())
         {
-            LeftNodeId = leftNodeId;
-            RightNodeId = rightNodeId;
         }
     }
 }
