@@ -10,7 +10,7 @@ namespace Gigraph.Dot.Entities.Graphs
         /// <summary>
         /// Gets or sets the identifier of the graph. Set null if no identifier should be used.
         /// </summary>
-        public string Id { get; set; }
+        public virtual string Id { get; set; }
 
         /// <summary>
         /// The collection of attributes of the element.

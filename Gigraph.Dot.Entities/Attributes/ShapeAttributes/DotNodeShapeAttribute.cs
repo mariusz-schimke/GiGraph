@@ -204,7 +204,7 @@ namespace Gigraph.Dot.Entities.Attributes
                     return "Mrecord";
 
                 default:
-                    throw new ArgumentOutOfRangeException($"The specified node shape '{_value}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(IDotAttribute.Value), $"The specified node shape '{_value}' is not supported.");
             }
         }
 

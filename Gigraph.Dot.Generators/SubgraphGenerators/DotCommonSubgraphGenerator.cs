@@ -12,10 +12,12 @@ namespace Gigraph.Dot.Generators.SubgraphGenerators
         where TSubgraph : DotCommonSubgraph
     {
         protected readonly TextEscapingPipeline _graphIdEscaper = TextEscapingPipeline.CreateForGraphId();
+        protected readonly bool _isCluster;
 
-        public DotCommonSubgraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotCommonSubgraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, bool isCluster)
             : base(syntaxRules, options, entityGenerators)
         {
+            _isCluster = isCluster;
         }
 
         public override void Generate(TSubgraph subgraph, IDotSubgraphWriter writer)
@@ -32,7 +34,7 @@ namespace Gigraph.Dot.Generators.SubgraphGenerators
         protected virtual void WriteDeclaration(TSubgraph subgraph, IDotSubgraphWriter writer)
         {
             var id = EscapeSubgraphIdentifier(subgraph.Id);
-            writer.WriteSubgraphDeclaration(id, IdentifierRequiresQuoting(id));
+            writer.WriteSubgraphDeclaration(id, _isCluster, IdentifierRequiresQuoting(id));
         }
 
         protected virtual void WriteBody(TSubgraph subgraph, IDotSubgraphWriter writer)

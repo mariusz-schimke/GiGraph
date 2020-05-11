@@ -8,7 +8,7 @@ namespace Gigraph.Dot.Generators.SubgraphGenerators
     public class DotSubgraphGenerator : DotCommonSubgraphGenerator<DotSubgraph>
     {
         public DotSubgraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
-            : base(syntaxRules, options, entityGenerators)
+            : base(syntaxRules, options, entityGenerators, isCluster: false)
         {
         }
     }

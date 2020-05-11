@@ -1,4 +1,5 @@
 ﻿using Gigraph.Dot.Entities.Attributes.Collections;
+using System;
 
 namespace Gigraph.Dot.Entities.Nodes
 {
@@ -7,10 +8,16 @@ namespace Gigraph.Dot.Entities.Nodes
     /// </summary>
     public class DotNode : IDotEntity
     {
+        protected string _id;
+
         /// <summary>
         /// Gets or sets the unique identifier of the node.
         /// </summary>
-        public virtual string Id { get; set; }
+        public virtual string Id
+        {
+            get => _id;
+            set => _id = value ?? throw new ArgumentNullException(nameof(Id), "Node identifier cannot be null.");
+        }
 
         /// <summary>
         /// The attributes of the node.
