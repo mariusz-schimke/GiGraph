@@ -15,7 +15,7 @@ namespace Gigraph.Dot.Entities.Nodes
         /// <summary>
         /// The attributes of the node.
         /// </summary>
-        public virtual DotNodeAttributeCollection Attributes { get; protected set; }
+        public virtual DotNodeAttributeCollection Attributes { get; }
 
         protected DotNode(string id, DotNodeAttributeCollection attributes)
         {
