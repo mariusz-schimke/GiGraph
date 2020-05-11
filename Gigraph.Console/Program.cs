@@ -26,8 +26,9 @@ namespace Gigraph
 
             var go = new DotGenerationOptions
             {
-
+                
             };
+            //go.Subgraphs.PreferExplicitKeyword = true;
 
             var graph = new DotGraph()
             {
@@ -49,7 +50,7 @@ namespace Gigraph
 
         private static void AddAttributes(DotGraph graph)
         {
-            graph.Attributes.Label = "My graph";
+            graph.Attributes.LabelHtml = "My graph";
             graph.Attributes.BackgroundColor = Color.BlueViolet;
 
             graph.Attributes.Set("shape", "star");

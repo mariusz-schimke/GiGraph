@@ -3,6 +3,7 @@
     public partial class DotGenerationOptions
     {
         public virtual AttributeOptions Attributes { get; }
+        public virtual SubgraphOptions Subgraphs { get; }
 
         /// <summary>
         /// When set, identifiers will always be quoted, even if it is not required.
@@ -14,13 +15,14 @@
         /// </summary>
         public virtual bool PreferStatementDelimiter { get; set; } = true;
 
-        protected DotGenerationOptions(AttributeOptions attributes)
+        protected DotGenerationOptions(AttributeOptions attributes, SubgraphOptions subgraphs)
         {
             Attributes = attributes;
+            Subgraphs = subgraphs;
         }
 
         public DotGenerationOptions()
-            : this(new AttributeOptions())
+            : this(new AttributeOptions(), new SubgraphOptions())
         {
         }
     }
