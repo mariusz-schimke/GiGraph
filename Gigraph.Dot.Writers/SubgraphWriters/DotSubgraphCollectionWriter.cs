@@ -1,7 +1,7 @@
 ﻿using Gigraph.Dot.Writers.Contexts;
 using Gigraph.Dot.Writers.SubgraphWriters;
 
-namespace Gigraph.Dot.Writers.NodeWriters
+namespace Gigraph.Dot.Writers.SubgraphWriters
 {
     public class DotSubgraphCollectionWriter : DotStatementWriter, IDotSubgraphCollectionWriter
     {

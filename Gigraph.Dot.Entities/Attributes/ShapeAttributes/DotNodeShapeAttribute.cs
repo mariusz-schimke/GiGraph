@@ -1,7 +1,7 @@
 ﻿using Gigraph.Dot.Entities.Attributes.ShapeAttributes;
 using System;
 
-namespace Gigraph.Dot.Entities.Attributes
+namespace Gigraph.Dot.Entities.Attributes.ShapeAttributes
 {
     /// <summary>
     /// A node shape attribute. Assignable to nodes only.
