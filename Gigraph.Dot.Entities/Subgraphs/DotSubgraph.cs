@@ -1,14 +1,21 @@
 ﻿using Gigraph.Dot.Entities.Attributes.Collections;
 using Gigraph.Dot.Entities.Edges;
-using Gigraph.Dot.Entities.Graphs;
 using Gigraph.Dot.Entities.Nodes;
 
 namespace Gigraph.Dot.Entities.Subgraphs
 {
     /// <summary>
     /// Represents a subgraph as a collection of nodes constrained with a rank attribute, that determines their layout.
-    /// Use a subgraph when you want to have more granular control on the layout of specific nodes.
-    /// When you also want to control the appearance of the subgraph bounding box, use a cluster instead (<see cref="DotCluster"/>).
+    /// Use a subgraph (<see cref="DotSubgraph"/>) when you want to have more granular control on the layout and style of specific nodes.
+    /// However, when you want the nodes to be displayed together in a bounding box, use a cluster (<see cref="DotCluster"/>) instead.
+    /// <para>
+    ///     Subgraph (<see cref="DotSubgraph"/>) does not have any border or fill, as opposed to cluster subgraph (<see cref="DotCluster"/>), which supports them.
+    ///     However, it supports setting common style of nodes and edges within it, as well as the layout of nodes (by the rank attribute).
+    /// </para>
+    /// <para>
+    ///     Subgraph (<see cref="DotSubgraph"/>) can also be used as a head or tail of an edge, in which case all nodes within them
+    ///     are connected to the other side of the edge.
+    /// </para>
     /// </summary>
     public class DotSubgraph : DotCommonSubgraph
     {

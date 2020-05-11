@@ -7,6 +7,7 @@ using Gigraph.Dot.Extensions;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Writers.Options;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace Gigraph
@@ -27,7 +28,7 @@ namespace Gigraph
 
             var go = new DotGenerationOptions
             {
-
+                // PreferQuotedIdentifiers = true
             };
             //go.Subgraphs.PreferExplicitKeyword = true;
 
@@ -37,6 +38,8 @@ namespace Gigraph
                 IsDirected = true,
                 Id = "Graph1"
             };
+
+            graph.Edges
 
             AddAttributes(graph);
             AddNodes(graph);
@@ -90,7 +93,7 @@ namespace Gigraph
             var subgraph2 = new DotSubgraph("sg2");
             subgraph1.Subgraphs.Add(subgraph2);
 
-            var cluster1 = new DotCluster("");
+            var cluster1 = new DotCluster();
             var cluster2 = new DotCluster("sgc2");
             cluster1.Subgraphs.Add(cluster2);
 
