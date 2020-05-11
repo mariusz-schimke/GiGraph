@@ -1,30 +1,25 @@
 ﻿using Gigraph.Dot.Entities.Attributes.Collections;
+using Gigraph.Dot.Entities.Edges;
 using Gigraph.Dot.Entities.Graphs;
+using Gigraph.Dot.Entities.Nodes;
 
 namespace Gigraph.Dot.Entities.Subgraphs
 {
     /// <summary>
-    /// Represents a subgraph as a collection of nodes constrained with a rank attribute.
+    /// Represents a subgraph as a collection of nodes constrained with a rank attribute, that determines their layout.
+    /// Use a subgraph when you want to have more granular control on the layout of specific nodes.
+    /// When you also want to control the appearance of the subgraph bounding box, use a cluster instead (<see cref="DotCluster"/>).
     /// </summary>
-    public class DotSubgraph : DotGraphBody
+    public class DotSubgraph : DotCommonSubgraph
     {
-        /// <summary>
-        /// Gets or sets the unique identifier of the subgraph. Set null if no identifier should be used.
-        /// </summary>
-        public virtual string Id { get; set; }
-
         /// <summary>
         /// The attributes of the subgraph. The only valid attribute for a non-cluster subgraph is rank.
         /// </summary>
-        public new DotSubgraphAttributeCollection Attributes
-        {
-            get => (DotSubgraphAttributeCollection)base.Attributes;
-            protected set => base.Attributes = value;
-        }
+        public new DotSubgraphAttributeCollection Attributes => (DotSubgraphAttributeCollection)base.Attributes;
 
-        protected DotSubgraph()
+        protected DotSubgraph(string id, DotSubgraphAttributeCollection attributes, DotNodeCollection nodes, DotEdgeCollection edges, DotCommonSubgraphCollection subgraphs)
+            : base(id, attributes, nodes, edges, subgraphs)
         {
-            Attributes = new DotSubgraphAttributeCollection();
         }
 
         /// <summary>
@@ -32,9 +27,8 @@ namespace Gigraph.Dot.Entities.Subgraphs
         /// </summary>
         /// <param name="id">The unique identifier of the subgraph. Pass null if no identifier should be used.</param>
         public DotSubgraph(string id = null)
-            : this()
+            : this(id, new DotSubgraphAttributeCollection(), new DotNodeCollection(), new DotEdgeCollection(), new DotCommonSubgraphCollection())
         {
-            Id = id;
         }
 
         // TODO: dodać metodę wytwórczą, która przyjmuje rank i pramams string[] id węzłów

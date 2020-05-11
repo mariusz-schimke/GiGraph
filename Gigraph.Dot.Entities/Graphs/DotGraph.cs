@@ -1,14 +1,12 @@
 ﻿using Gigraph.Dot.Entities.Attributes.Collections;
+using Gigraph.Dot.Entities.Edges;
+using Gigraph.Dot.Entities.Nodes;
+using Gigraph.Dot.Entities.Subgraphs;
 
 namespace Gigraph.Dot.Entities.Graphs
 {
-    public class DotGraph : DotGraphBody
+    public class DotGraph : DotCommonGraph
     {
-        /// <summary>
-        /// Gets or sets the identifier of the graph. Set null if no identifier should be used.
-        /// </summary>
-        public string Id { get; set; }
-
         /// <summary>
         /// Gets or sets a value that determines if the graph is directed.
         /// The edges of directed graphs are presented as arrows, whereas edges in undirected graphs are presented as lines.
@@ -24,15 +22,13 @@ namespace Gigraph.Dot.Entities.Graphs
         /// <summary>
         /// The attributes of the graph.
         /// </summary>
-        public new DotGraphAttributeCollection Attributes
-        {
-            get => (DotGraphAttributeCollection)base.Attributes;
-            protected set => base.Attributes = value;
-        }
+        public new DotGraphAttributeCollection Attributes => (DotGraphAttributeCollection)base.Attributes;
 
-        protected DotGraph()
+        protected DotGraph(string id, bool isDirected, bool isStrict, DotGraphAttributeCollection attributes, DotNodeCollection nodes, DotEdgeCollection edges, DotCommonSubgraphCollection subgraphs)
+            : base(id, attributes, nodes, edges, subgraphs)
         {
-            Attributes = new DotGraphAttributeCollection();
+            IsDirected = isDirected;
+            IsStrict = isStrict;
         }
 
         /// <summary>
@@ -44,11 +40,8 @@ namespace Gigraph.Dot.Entities.Graphs
         /// <param name="isStrict">Determines if the graph is strict.
         /// Strict graph forbids the creation of multi-edges, i.e., there can be at most one edge with a given tail node and head node in the directed case.</param>
         public DotGraph(string id = null, bool isDirected = true, bool isStrict = false)
-            : this()
+            : this(id, isDirected, isStrict, new DotGraphAttributeCollection(), new DotNodeCollection(), new DotEdgeCollection(), new DotCommonSubgraphCollection())
         {
-            Id = id;
-            IsDirected = isDirected;
-            IsStrict = isStrict;
         }
     }
 }

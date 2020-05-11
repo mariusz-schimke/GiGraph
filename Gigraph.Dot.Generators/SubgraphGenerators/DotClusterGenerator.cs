@@ -6,17 +6,34 @@ using Gigraph.Dot.Writers.SubgraphWriters;
 
 namespace Gigraph.Dot.Generators.SubgraphGenerators
 {
-    public class DotClusterGenerator : DotGenericSubgraphGenerator<DotCluster>
+    public class DotClusterGenerator : DotCommonSubgraphGenerator<DotCluster>
     {
         public DotClusterGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        public override void Generate(DotCluster cluster, IDotSubgraphWriter writer)
+        protected override void WriteDeclaration(DotCluster cluster, IDotSubgraphWriter writer)
         {
-            WriteDeclaration(cluster.Id, isCluster: true, writer);
-            WriteBody(cluster, writer);
+            var id = FormatIdentifier(cluster.Id);
+            writer.WriteSubgraphDeclaration(id, IdentifierRequiresQuoting(id));
+        }
+
+        protected virtual string FormatIdentifier(string id)
+        {
+            var cluster = "cluster";
+
+            if (id is { })
+            {
+                id = EscapeSubgraphIdentifier(id);
+            }
+
+            if (!string.IsNullOrEmpty(id))
+            {
+                return $"{cluster} {id}";
+            }
+
+            return cluster;
         }
     }
 }

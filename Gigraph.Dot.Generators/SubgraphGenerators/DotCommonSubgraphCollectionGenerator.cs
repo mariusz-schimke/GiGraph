@@ -7,16 +7,16 @@ using System.Linq;
 
 namespace Gigraph.Dot.Generators.SubgraphGenerators
 {
-    public class DotSubgraphCollectionGenerator : DotEntityGenerator<DotSubgraphCollection, IDotSubgraphCollectionWriter>
+    public class DotCommonSubgraphCollectionGenerator : DotEntityGenerator<DotCommonSubgraphCollection, IDotSubgraphCollectionWriter>
     {
-        public DotSubgraphCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotCommonSubgraphCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        public override void Generate(DotSubgraphCollection subgraphs, IDotSubgraphCollectionWriter writer)
+        public override void Generate(DotCommonSubgraphCollection subgraphs, IDotSubgraphCollectionWriter writer)
         {
-            var orderedSubgraphs = subgraphs.OrderBy(n => n.Id).ToList();
+            var orderedSubgraphs = subgraphs.OrderByDescending(n => n.GetType().FullName).ThenBy(n => n.Id).ToList();
 
             foreach (var subgraph in orderedSubgraphs)
             {

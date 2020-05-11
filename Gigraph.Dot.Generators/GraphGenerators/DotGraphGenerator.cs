@@ -25,29 +25,32 @@ namespace Gigraph.Dot.Generators.GraphGenerators
         {
             var writer = writerRoot.BeginGraph(graph.IsDirected);
 
-            WriteDeclaration(graph.Id, graph.IsStrict, writer);
+            WriteDeclaration(graph, writer);
             WriteBody(graph, writer);
         }
 
-        protected virtual void WriteDeclaration(string id, bool isStrict, IDotGraphWriter writer)
+        protected virtual void WriteDeclaration(DotGraph graph, IDotGraphWriter writer)
         {
+            var id = graph.Id;
+
             if (id is { })
             {
                 id = EscapeGraphIdentifier(id);
             }
 
+            // whether the graph and its edges will be directed, is decided by the writer instance
             writer.WriteGraphDeclaration
             (
                 id,
-                isStrict,
+                graph.IsStrict,
                 quoteId: id is { } && IdentifierRequiresQuoting(id)
             );
         }
 
-        protected virtual void WriteBody(DotGraphBody graphBody, IDotGraphWriter writer)
+        protected virtual void WriteBody(DotGraph graph, IDotGraphWriter writer)
         {
             var bodyWriter = writer.BeginBody();
-            _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graphBody).Generate(graphBody, bodyWriter);
+            _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graph).Generate(graph, bodyWriter);
             writer.EndBody();
         }
     }
