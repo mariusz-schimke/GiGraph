@@ -5,6 +5,9 @@ using Gigraph.Dot.Entities.Subgraphs;
 
 namespace Gigraph.Dot.Entities.Graphs
 {
+    /// <summary>
+    /// Represents a graph (the root DOT graph).
+    /// </summary>
     public class DotGraph : DotCommonGraph
     {
         /// <summary>

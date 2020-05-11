@@ -7,7 +7,6 @@ using Gigraph.Dot.Extensions;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Writers.Options;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 
 namespace Gigraph
