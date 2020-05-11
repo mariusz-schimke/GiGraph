@@ -1,6 +1,5 @@
 ﻿using Gigraph.Dot.Entities.Attributes.Collections;
 using Gigraph.Dot.Entities.Edges;
-using Gigraph.Dot.Entities.Graphs;
 using Gigraph.Dot.Entities.Nodes;
 
 namespace Gigraph.Dot.Entities.Subgraphs
@@ -30,7 +29,6 @@ namespace Gigraph.Dot.Entities.Subgraphs
         public DotCluster(string id = null)
             : this(id, new DotClusterAttributeCollection(), new DotNodeCollection(), new DotEdgeCollection(), new DotCommonSubgraphCollection())
         {
-            Id = id;
         }
     }
 }

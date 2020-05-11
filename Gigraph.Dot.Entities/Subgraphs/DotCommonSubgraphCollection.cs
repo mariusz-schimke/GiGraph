@@ -38,7 +38,7 @@ namespace Gigraph.Dot.Entities.Subgraphs
         /// Removes the specified subgraph from the collection if found.
         /// </summary>
         /// <param name="id">The identifier of the subgraph to remove.</param>
-        public int Remove(string id)
+        public virtual int Remove(string id)
         {
             return RemoveAll(subgraph => subgraph.Id == id);
         }
