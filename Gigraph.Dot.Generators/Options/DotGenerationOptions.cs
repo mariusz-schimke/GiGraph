@@ -2,7 +2,7 @@
 {
     public partial class DotGenerationOptions
     {
-        public virtual AttributeOptions Attributes { get; protected set; } = new AttributeOptions();
+        public virtual AttributeOptions Attributes { get; }
 
         /// <summary>
         /// When set, identifiers will always be quoted, even if it is not required.
@@ -13,5 +13,15 @@
         /// When set, all statements within the graph will be followed by a delimiter (;).
         /// </summary>
         public virtual bool PreferStatementDelimiter { get; set; } = true;
+
+        protected DotGenerationOptions(AttributeOptions attributes)
+        {
+            Attributes = attributes;
+        }
+
+        public DotGenerationOptions()
+            : this(new AttributeOptions())
+        {
+        }
     }
 }
