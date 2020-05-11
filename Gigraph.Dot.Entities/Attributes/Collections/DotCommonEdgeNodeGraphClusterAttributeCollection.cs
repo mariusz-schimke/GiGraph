@@ -19,8 +19,10 @@ namespace Gigraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         /// Gets or sets the label in HTML format to display on the element.
+        /// <para>
         /// <see cref="Label"/> and <see cref="LabelHtml"/> are actually the same attribute in a different format,
         /// so when one is set, the other is replaced.
+        /// </para>
         /// </summary>
         public virtual string LabelHtml
         {

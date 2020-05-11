@@ -89,7 +89,7 @@ namespace Gigraph
 
             var cluster1 = new DotCluster();
             var cluster2 = new DotCluster("sgc2");
-            cluster1.Clusters.Add(cluster2);
+            cluster1.Subgraphs.Add(cluster2);
 
             foreach (var attr in graph.Attributes)
             {
@@ -103,7 +103,7 @@ namespace Gigraph
 
             graph.Subgraphs.Add(subgraph1);
             //graph.Subgraphs.Add(subgraph2);
-            graph.Clusters.Add(cluster1);
+            graph.Subgraphs.Add(cluster1);
             //graph.Subgraphs.Add(cluster2);
         }
     }
