@@ -47,7 +47,7 @@ namespace Gigraph.Dot.Generators
 
         protected virtual bool IdentifierRequiresQuoting(string id)
         {
-            return _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);
+            return id is { } && (_options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id));
         }
 
         protected virtual string EscapeIdentifier(string id)

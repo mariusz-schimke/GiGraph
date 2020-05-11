@@ -1,4 +1,5 @@
 ﻿using Gigraph.Dot.Core;
+using Gigraph.Dot.Entities.Attributes;
 using Gigraph.Dot.Entities.Attributes.LabelAttributes;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Generators.Providers;
@@ -6,21 +7,20 @@ using Gigraph.Dot.Writers.AttributeWriters;
 
 namespace Gigraph.Dot.Generators.AttributeGenerators
 {
-    public class DotHtmlLabelAttributeGenerator : DotGenericAttributeGenerator<DotHtmlLabelAttribute>
+    public class DotHtmlLabelAttributeGenerator : DotAttributeGenerator<DotHtmlLabelAttribute>
     {
         public DotHtmlLabelAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        protected override string EscapeValue(string value)
+        protected override void WriteAttribute(DotHtmlLabelAttribute attribute, IDotAttributeWriter writer)
         {
-            // do not escape HTML value
-            return value;
-        }
+            var key = EscapeKey(((IDotAttribute)attribute).Key);
 
-        protected override void WriteAttribute(string key, string value, IDotAttributeWriter writer)
-        {
+            // don't escape the HTML value
+            var value = ((IDotAttribute)attribute).Value;
+
             writer.WriteHtmlAttribute
             (
                 key,

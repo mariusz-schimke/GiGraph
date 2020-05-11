@@ -1,4 +1,5 @@
 ﻿using Gigraph.Dot.Entities.Attributes.LabelAttributes;
+using Gigraph.Dot.Entities.Attributes.ShapeAttributes;
 using Gigraph.Dot.Entities.Graphs;
 using Gigraph.Dot.Entities.Nodes;
 using Gigraph.Dot.Entities.Subgraphs;
@@ -6,6 +7,7 @@ using Gigraph.Dot.Extensions;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Writers.Options;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace Gigraph
@@ -13,6 +15,7 @@ namespace Gigraph
     // TODO: przejrzec wszystkie metody, czy powinny lub nie powinny byc wirtualne
     // TODO: przejrzeć klasy, czy powinny miec interfejsy
     // TODO: "node [style=filled];" - obsłużyć domyślne style węzłów i krawędzi
+    // TODO: customowe węzły HTML (shape none, margin 0): https://www.graphviz.org/doc/info/shapes.html#polygon
 
     internal class Program
     {
@@ -25,8 +28,9 @@ namespace Gigraph
 
             var go = new DotGenerationOptions
             {
-
+                // PreferQuotedIdentifiers = true
             };
+            //go.Subgraphs.PreferExplicitKeyword = true;
 
             var graph = new DotGraph()
             {
@@ -34,6 +38,8 @@ namespace Gigraph
                 IsDirected = true,
                 Id = "Graph1"
             };
+
+            graph.Edges
 
             AddAttributes(graph);
             AddNodes(graph);
@@ -48,18 +54,18 @@ namespace Gigraph
 
         private static void AddAttributes(DotGraph graph)
         {
-            graph.Label = "My graph";
-            graph.Color = Color.Black;
-            graph.BackgroundColor = Color.BlueViolet;
+            graph.Attributes.LabelHtml = "My graph";
+            graph.Attributes.BackgroundColor = Color.BlueViolet;
 
-            graph.Attributes.Set("shape", "star");
+            graph.Attributes.Set("shape", "rect");
         }
 
         private static void AddNodes(DotGraph graph)
         {
-            graph.Nodes.Add(new DotNode("node1")
+            var node1 = graph.Nodes.Add("node1", n =>
             {
-                Label = "my label"
+                n.Attributes.Label = "my label";
+                n.Attributes.Shape = DotNodeShape.Hexagon;
             });
 
             //graph.Nodes.Add(new DotNode("node2")
@@ -67,9 +73,9 @@ namespace Gigraph
             //    Label = new DotHtmlLabel("<b>text</b>")
             //});
 
-            graph.Nodes.Add(new DotNode("node3")
+            graph.Nodes.Add("node3", n =>
             {
-                Label = new DotTextLabelAttribute("label")
+                n.Attributes.Label = new DotTextLabelAttribute("label");
             })
             .Attributes.Set("color", "red");
 
@@ -78,17 +84,17 @@ namespace Gigraph
 
         private static void AddEdges(DotGraph graph)
         {
-            graph.Edges.Add("node1", "node2");
+            var edge1 = graph.Edges.Add("node1", "node2");
         }
 
         private static void AddSubgraphs(DotGraph graph)
         {
-            var subgraph1 = new DotSubgraph(isCluster: false);
-            var subgraph2 = new DotSubgraph("sg2", isCluster: false);
+            var subgraph1 = new DotSubgraph("");
+            var subgraph2 = new DotSubgraph("sg2");
             subgraph1.Subgraphs.Add(subgraph2);
 
-            var cluster1 = new DotSubgraph();
-            var cluster2 = new DotSubgraph("sgc2");
+            var cluster1 = new DotCluster();
+            var cluster2 = new DotCluster("sgc2");
             cluster1.Subgraphs.Add(cluster2);
 
             foreach (var attr in graph.Attributes)

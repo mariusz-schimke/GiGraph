@@ -7,7 +7,7 @@ using Gigraph.Dot.Writers.GraphWriters;
 
 namespace Gigraph.Dot.Generators.GraphGenerators
 {
-    public class DotGraphGenerator : DotEntityGenerator<DotGraph, IDotGraphWriterFactory>
+    public class DotGraphGenerator : DotEntityGenerator<DotGraph, IDotGraphWriterRoot>
     {
         protected readonly TextEscapingPipeline _graphIdEscaper = TextEscapingPipeline.CreateForGraphId();
 
@@ -21,33 +21,31 @@ namespace Gigraph.Dot.Generators.GraphGenerators
             return _graphIdEscaper.Escape(id);
         }
 
-        public override void Generate(DotGraph graph, IDotGraphWriterFactory writerFactory)
+        public override void Generate(DotGraph graph, IDotGraphWriterRoot writerRoot)
         {
-            var writer = writerFactory.Create(graph.IsDirected);
+            var writer = writerRoot.BeginGraph(graph.IsDirected);
 
-            WriteDeclaration(graph.Id, graph.IsStrict, writer);
+            WriteDeclaration(graph, writer);
             WriteBody(graph, writer);
         }
 
-        protected virtual void WriteDeclaration(string id, bool isStrict, IDotGraphWriter writer)
+        protected virtual void WriteDeclaration(DotGraph graph, IDotGraphWriter writer)
         {
-            if (id is { })
-            {
-                id = EscapeGraphIdentifier(id);
-            }
+            var id = EscapeGraphIdentifier(graph.Id);
 
+            // whether the graph and its edges will be directed, is decided by the writer instance
             writer.WriteGraphDeclaration
             (
                 id,
-                isStrict,
-                quoteId: id is { } && IdentifierRequiresQuoting(id)
+                graph.IsStrict,
+                quoteId: IdentifierRequiresQuoting(id)
             );
         }
 
-        protected virtual void WriteBody(DotGraphBody graphBody, IDotGraphWriter writer)
+        protected virtual void WriteBody(DotGraph graph, IDotGraphWriter writer)
         {
             var bodyWriter = writer.BeginBody();
-            _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graphBody).Generate(graphBody, bodyWriter);
+            _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graph).Generate(graph, bodyWriter);
             writer.EndBody();
         }
     }

@@ -4,15 +4,15 @@ using System.Collections.Generic;
 
 namespace Gigraph.Dot.Entities.Subgraphs
 {
-    public class DotSubgraphCollection : IDotEntity, IEnumerable<DotSubgraph>
+    public class DotCommonSubgraphCollection : IDotEntity, IEnumerable<DotCommonSubgraph>
     {
-        protected readonly List<DotSubgraph> _subgraphs = new List<DotSubgraph>();
+        protected readonly List<DotCommonSubgraph> _subgraphs = new List<DotCommonSubgraph>();
 
         /// <summary>
         /// Adds a subgraph to the collection.
         /// </summary>
         /// <param name="subgraph">The subgraph to add.</param>
-        public virtual DotSubgraph Add(DotSubgraph subgraph)
+        public virtual DotCommonSubgraph Add(DotCommonSubgraph subgraph)
         {
             _subgraphs.Add(subgraph);
             return subgraph;
@@ -22,7 +22,7 @@ namespace Gigraph.Dot.Entities.Subgraphs
         /// Removes the specified subgraph from the collection if found.
         /// </summary>
         /// <param name="subgraph">The subgraph to remove.</param>
-        public virtual int Remove(DotSubgraph subgraph)
+        public virtual int Remove(DotCommonSubgraph subgraph)
         {
             var result = 0;
 
@@ -47,7 +47,7 @@ namespace Gigraph.Dot.Entities.Subgraphs
         /// Removes all subgraphs matching the specified criteria from the collection.
         /// </summary>
         /// <param name="match">The predicate to use for matching subgraphs.</param>
-        public virtual int RemoveAll(Predicate<DotSubgraph> match)
+        public virtual int RemoveAll(Predicate<DotCommonSubgraph> match)
         {
             return _subgraphs.RemoveAll(match);
         }
@@ -60,14 +60,14 @@ namespace Gigraph.Dot.Entities.Subgraphs
             _subgraphs.Clear();
         }
 
-        public virtual IEnumerator<DotSubgraph> GetEnumerator()
+        public virtual IEnumerator<DotCommonSubgraph> GetEnumerator()
         {
-            return ((IEnumerable<DotSubgraph>)_subgraphs).GetEnumerator();
+            return ((IEnumerable<DotCommonSubgraph>)_subgraphs).GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return ((IEnumerable<DotSubgraph>)_subgraphs).GetEnumerator();
+            return ((IEnumerable<DotCommonSubgraph>)_subgraphs).GetEnumerator();
         }
     }
 }

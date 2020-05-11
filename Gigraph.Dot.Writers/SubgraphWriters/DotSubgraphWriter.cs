@@ -5,23 +5,58 @@ namespace Gigraph.Dot.Writers.SubgraphWriters
 {
     public class DotSubgraphWriter : DotGraphBlockWriter, IDotSubgraphWriter
     {
-        public DotSubgraphWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
+        protected readonly bool _preferExplicitSubgraphKeyword;
+
+        public DotSubgraphWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool preferExplicitSubgraphKeyword)
             : base(tokenWriter, context)
         {
+            _preferExplicitSubgraphKeyword = preferExplicitSubgraphKeyword;
         }
 
-        public virtual void WriteSubgraphDeclaration(string id, bool quote)
+        public virtual void WriteSubgraphDeclaration(string id, bool isCluster, bool quoteId)
         {
-            _tokenWriter.Keyword("subgraph");
+            id = FormatIdentifier(id, isCluster, ref quoteId);
+            var separate = false;
+
+            if (_preferExplicitSubgraphKeyword || id is { })
+            {
+                _tokenWriter.Keyword("subgraph");
+                separate = true;
+            }
 
             if (id is { })
             {
-                _tokenWriter.Space()
-                            .Identifier(id, quote);
+                if (separate)
+                {
+                    _tokenWriter.Space();
+                }
+
+                _tokenWriter.Identifier(id, quoteId);
             }
 
-            _tokenWriter.LineBreak()
-                        .Indentation(_context.Level);
+            if (separate)
+            {
+                _tokenWriter.LineBreak()
+                            .Indentation(_context.Level);
+            }
+        }
+
+        protected virtual string FormatIdentifier(string id, bool isCluster, ref bool quoteId)
+        {
+            var cluster = "cluster";
+
+            if (isCluster && id is { })
+            {
+                quoteId = true;
+                return $"{cluster} {id}";
+            }
+
+            if (isCluster)
+            {
+                return cluster;
+            }
+
+            return id;
         }
     }
 }

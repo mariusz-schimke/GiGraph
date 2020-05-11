@@ -1,5 +1,4 @@
 ﻿using Gigraph.Dot.Core;
-using Gigraph.Dot.Entities.Attributes;
 using Gigraph.Dot.Entities.Edges;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Generators.Providers;
@@ -18,14 +17,14 @@ namespace Gigraph.Dot.Generators.EdgeGenerators
 
         public override void Generate(DotEdge edge, IDotEdgeWriter writer)
         {
-            WriteEdge(edge.LeftNodeId, edge.RightNodeId, writer);
-            WriteAttributes(edge.Attributes, writer);
+            WriteEdge(edge, writer);
+            WriteAttributes(edge, writer);
         }
 
-        protected virtual void WriteEdge(string leftNodeId, string rightNodeId, IDotEdgeWriter writer)
+        protected virtual void WriteEdge(DotEdge edge, IDotEdgeWriter writer)
         {
-            leftNodeId = EscapeIdentifier(leftNodeId);
-            rightNodeId = EscapeIdentifier(rightNodeId);
+            var leftNodeId = EscapeIdentifier(edge.LeftNodeId);
+            var rightNodeId = EscapeIdentifier(edge.RightNodeId);
 
             writer.WriteEdge
             (
@@ -36,11 +35,11 @@ namespace Gigraph.Dot.Generators.EdgeGenerators
             );
         }
 
-        protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotEdgeWriter writer)
+        protected virtual void WriteAttributes(DotEdge edge, IDotEdgeWriter writer)
         {
             var attributesWriter = writer.BeginAttributeList(_options.Attributes.PreferExplicitSeparator);
-            _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Generate(attributes, attributesWriter);
-            writer.EndAttributeList(attributes.Count());
+            _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(edge.Attributes).Generate(edge.Attributes, attributesWriter);
+            writer.EndAttributeList(edge.Attributes.Count());
         }
     }
 }
