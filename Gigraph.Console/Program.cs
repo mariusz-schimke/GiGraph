@@ -39,8 +39,6 @@ namespace Gigraph
                 Id = "Graph1"
             };
 
-            graph.Edges
-
             AddAttributes(graph);
             AddNodes(graph);
             AddEdges(graph);
