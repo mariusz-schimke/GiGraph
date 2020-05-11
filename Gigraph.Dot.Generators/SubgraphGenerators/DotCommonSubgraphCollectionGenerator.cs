@@ -20,7 +20,7 @@ namespace Gigraph.Dot.Generators.SubgraphGenerators
 
             foreach (var subgraph in orderedSubgraphs)
             {
-                var subgraphWriter = writer.BeginSubgraph();
+                var subgraphWriter = writer.BeginSubgraph(_options.Subgraphs.PreferExplicitKeyword);
                 _entityGenerators.GetForEntity<IDotSubgraphWriter>(subgraph).Generate(subgraph, subgraphWriter);
                 writer.EndSubgraph();
             }

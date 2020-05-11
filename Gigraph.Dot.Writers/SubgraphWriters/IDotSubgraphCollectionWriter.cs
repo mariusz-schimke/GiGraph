@@ -2,7 +2,7 @@
 {
     public interface IDotSubgraphCollectionWriter : IDotEntityWriter
     {
-        IDotSubgraphWriter BeginSubgraph();
+        IDotSubgraphWriter BeginSubgraph(bool preferExplicitSubgraphKeyword);
         void EndSubgraph();
     }
 }

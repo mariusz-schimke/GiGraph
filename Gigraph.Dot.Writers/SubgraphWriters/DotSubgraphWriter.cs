@@ -5,24 +5,40 @@ namespace Gigraph.Dot.Writers.SubgraphWriters
 {
     public class DotSubgraphWriter : DotGraphBlockWriter, IDotSubgraphWriter
     {
-        public DotSubgraphWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
+        protected readonly bool _preferExplicitSubgraphKeyword;
+
+        public DotSubgraphWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool preferExplicitSubgraphKeyword)
             : base(tokenWriter, context)
         {
+            _preferExplicitSubgraphKeyword = preferExplicitSubgraphKeyword;
         }
 
         public virtual void WriteSubgraphDeclaration(string id, bool quote)
         {
-            // TODO: dodać opcję, czy dopisywać to słowo kluczowe
-            _tokenWriter.Keyword("subgraph");
+            var separate = false;
+
+            if (_preferExplicitSubgraphKeyword || id is { })
+            {
+                _tokenWriter.Keyword("subgraph");
+                separate = true;
+            }
 
             if (id is { })
             {
-                _tokenWriter.Space()
-                            .Identifier(id, quote);
+                if (separate)
+                {
+                    _tokenWriter.Space();
+                }
+
+                _tokenWriter.Identifier(id, quote);
             }
 
-            _tokenWriter.LineBreak()
-                        .Indentation(_context.Level);
+            if (separate)
+            {
+                _tokenWriter.LineBreak()
+                            .Indentation(_context.Level);
+            }
+
         }
     }
 }
