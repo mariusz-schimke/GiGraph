@@ -3,14 +3,14 @@ using Gigraph.Dot.Writers.Contexts;
 
 namespace Gigraph.Dot.Writers.EdgeWriters
 {
-    public class DotEdgeDefaultsWriter : DotEntityWithAttributeListWriter, IDotEdgeDefaultsWriter
+    public class DotEdgeDefaultsWriter : DotEntityWithAttributeListWriter, IDotEntityDefaultsWriter
     {
         public DotEdgeDefaultsWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
             : base(tokenWriter, context)
         {
         }
 
-        public virtual void WriteEdgeKeyword()
+        public virtual void WriteEntityKeyword()
         {
             _tokenWriter.Keyword("edge")
                         .Space();

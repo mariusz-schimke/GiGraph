@@ -8,23 +8,25 @@ using System.Linq;
 
 namespace Gigraph.Dot.Generators.CommonEntityGenerators
 {
-    public abstract class DotEntityDefaultsGenerator<TWriter> : DotEntityGenerator<DotAttributeCollection, TWriter>
-        where TWriter : IDotEntityDefaultsWriter
+    public class DotEntityDefaultsGenerator : DotEntityGenerator<DotAttributeCollection, IDotEntityDefaultsWriter>
     {
         public DotEntityDefaultsGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        public override void Generate(DotAttributeCollection defaults, TWriter writer)
+        public override void Generate(DotAttributeCollection defaults, IDotEntityDefaultsWriter writer)
         {
-            WriteKeyword(defaults, writer);
+            WriteEntityKeyword(defaults, writer);
             WriteAttributes(defaults, writer);
         }
 
-        protected abstract void WriteKeyword(DotAttributeCollection defaults, TWriter writer);
+        protected virtual void WriteEntityKeyword(DotAttributeCollection defaults, IDotEntityDefaultsWriter writer)
+        {
+            writer.WriteEntityKeyword();
+        }
 
-        protected virtual void WriteAttributes(DotAttributeCollection defaults, TWriter writer)
+        protected virtual void WriteAttributes(DotAttributeCollection defaults, IDotEntityDefaultsWriter writer)
         {
             var attributesWriter = writer.BeginAttributeList(_options.Attributes.PreferExplicitSeparator);
             _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(defaults).Generate(defaults, attributesWriter);
