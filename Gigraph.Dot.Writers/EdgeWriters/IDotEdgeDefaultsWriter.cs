@@ -1,12 +1,9 @@
-﻿using Gigraph.Dot.Writers.AttributeWriters;
+﻿using Gigraph.Dot.Writers.CommonEntityWriters;
 
 namespace Gigraph.Dot.Writers.EdgeWriters
 {
-    public interface IDotEdgeDefaultsWriter : IDotEntityWriter
+    public interface IDotEdgeDefaultsWriter : IDotEntityDefaultsWriter
     {
         void WriteEdgeKeyword();
-
-        IDotAttributeCollectionWriter BeginAttributeList(bool useAttributeSeparator);
-        void EndAttributeList(int attributeCount);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Gigraph.Dot.Writers.AttributeWriters;
 using Gigraph.Dot.Writers.Contexts;
 
-namespace Gigraph.Dot.Writers
+namespace Gigraph.Dot.Writers.CommonEntityWriters
 {
     public abstract class DotEntityWithAttributeListWriter : DotEntityWriter
     {

@@ -1,4 +1,5 @@
 ﻿using Gigraph.Dot.Writers.AttributeWriters;
+using Gigraph.Dot.Writers.CommonEntityWriters;
 
 namespace Gigraph.Dot.Writers.EdgeWriters
 {

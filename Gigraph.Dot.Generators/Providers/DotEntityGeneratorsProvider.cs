@@ -1,5 +1,6 @@
 ﻿using Gigraph.Dot.Entities;
-using Gigraph.Dot.Writers;
+using Gigraph.Dot.Generators.CommonEntityGenerators;
+using Gigraph.Dot.Writers.CommonEntityWriters;
 using System;
 using System.Collections.Generic;
 using System.Linq;

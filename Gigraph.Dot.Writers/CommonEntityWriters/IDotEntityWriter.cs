@@ -1,4 +1,4 @@
-﻿namespace Gigraph.Dot.Writers
+﻿namespace Gigraph.Dot.Writers.CommonEntityWriters
 {
     public interface IDotEntityWriter
     {
