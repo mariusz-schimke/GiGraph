@@ -18,15 +18,11 @@ namespace Gigraph.Dot.Writers.CommonEntityWriters
             return new DotAttributeListWriter(_tokenWriter, _context.NextLevel(), useAttributeSeparator);
         }
 
-        public virtual void EndAttributeList(int attributeCount)
+        public virtual void EndAttributeList()
         {
-            _tokenWriter.ClearLingerBuffer();
-
-            if (attributeCount > 0)
-            {
-                _tokenWriter.Space()
-                            .AttributeListEnd();
-            }
+            _tokenWriter.ClearLingerBuffer()
+                        .Space()
+                        .AttributeListEnd();
         }
     }
 }

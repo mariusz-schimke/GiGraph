@@ -39,9 +39,12 @@ namespace Gigraph.Dot.Generators.GraphGenerators
 
         protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotGraphBodyWriter writer)
         {
-            var attributesWriter = writer.BeginAttributesSection(_options.PreferStatementDelimiter);
-            _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Generate(attributes, attributesWriter);
-            writer.EndAttributesSection(attributes.Count());
+            if (attributes.Any())
+            {
+                var attributesWriter = writer.BeginAttributesSection(_options.PreferStatementDelimiter);
+                _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Generate(attributes, attributesWriter);
+                writer.EndAttributesSection();
+            }
         }
 
         protected virtual void WriteNodeDefaults(DotNodeAttributeCollection nodeDefaults, IDotGraphBodyWriter writer)
@@ -66,23 +69,32 @@ namespace Gigraph.Dot.Generators.GraphGenerators
 
         protected virtual void WriteNodes(DotNodeCollection nodes, IDotGraphBodyWriter writer)
         {
-            var nodesWriter = writer.BeginNodesSection(_options.PreferStatementDelimiter);
-            _entityGenerators.GetForEntity<IDotNodeCollectionWriter>(nodes).Generate(nodes, nodesWriter);
-            writer.EndNodesSection(nodes.Count());
+            if (nodes.Any())
+            {
+                var nodesWriter = writer.BeginNodesSection(_options.PreferStatementDelimiter);
+                _entityGenerators.GetForEntity<IDotNodeCollectionWriter>(nodes).Generate(nodes, nodesWriter);
+                writer.EndNodesSection();
+            }
         }
 
         protected virtual void WriteEdges(DotEdgeCollection edges, IDotGraphBodyWriter writer)
         {
-            var nodesWriter = writer.BeginEdgesSection(_options.PreferStatementDelimiter);
-            _entityGenerators.GetForEntity<IDotEdgeCollectionWriter>(edges).Generate(edges, nodesWriter);
-            writer.EndEdgesSection(edges.Count());
+            if (edges.Any())
+            {
+                var nodesWriter = writer.BeginEdgesSection(_options.PreferStatementDelimiter);
+                _entityGenerators.GetForEntity<IDotEdgeCollectionWriter>(edges).Generate(edges, nodesWriter);
+                writer.EndEdgesSection();
+            }
         }
 
         protected virtual void WriteSubgraphs(DotCommonSubgraphCollection subgraphs, IDotGraphBodyWriter writer)
         {
-            var subgraphsWriter = writer.BeginSubgraphsSection();
-            _entityGenerators.GetForEntity<IDotSubgraphCollectionWriter>(subgraphs).Generate(subgraphs, subgraphsWriter);
-            writer.EndSubgraphsSection(subgraphs.Count());
+            if (subgraphs.Any())
+            {
+                var subgraphsWriter = writer.BeginSubgraphsSection();
+                _entityGenerators.GetForEntity<IDotSubgraphCollectionWriter>(subgraphs).Generate(subgraphs, subgraphsWriter);
+                writer.EndSubgraphsSection();
+            }
         }
     }
 }

@@ -20,9 +20,12 @@ namespace Gigraph.Dot.Generators.CommonEntityGenerators
 
         protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotEntityWithAttributeListWriter writer)
         {
-            var attributesWriter = writer.BeginAttributeList(_options.Attributes.PreferExplicitSeparator);
-            _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Generate(attributes, attributesWriter);
-            writer.EndAttributeList(attributes.Count());
+            if (attributes.Any())
+            {
+                var attributesWriter = writer.BeginAttributeList(_options.Attributes.PreferExplicitSeparator);
+                _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Generate(attributes, attributesWriter);
+                writer.EndAttributeList();
+            }
         }
     }
 }
