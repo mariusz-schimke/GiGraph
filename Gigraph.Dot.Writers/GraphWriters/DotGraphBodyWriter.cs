@@ -24,24 +24,24 @@ namespace Gigraph.Dot.Writers.GraphWriters
             EndSection(attributeCount);
         }
 
-        public virtual IDotNodeDefaultsWriter BeginNodeDefaults()
+        public virtual IDotEntityDefaultsWriter BeginNodeDefaults()
         {
             return new DotNodeDefaultsWriter(_tokenWriter, _context);
         }
 
         public virtual void EndNodeDefaults(bool useStatementDelimiter)
         {
-
+            EndDefaults(useStatementDelimiter);
         }
 
-        public virtual IDotEdgeDefaultsWriter BeginEdgeDefaults()
+        public virtual IDotEntityDefaultsWriter BeginEdgeDefaults()
         {
             return new DotEdgeDefaultsWriter(_tokenWriter, _context);
         }
 
         public virtual void EndEdgeDefaults(bool useStatementDelimiter)
         {
-
+            EndDefaults(useStatementDelimiter);
         }
 
         public virtual IDotNodeCollectionWriter BeginNodesSection(bool useStatementDelimiter)
@@ -72,6 +72,18 @@ namespace Gigraph.Dot.Writers.GraphWriters
         public virtual void EndSubgraphsSection(int subgraphCount)
         {
             EndSection(subgraphCount);
+        }
+
+        protected virtual void EndDefaults(bool useStatementDelimiter)
+        {
+            if (useStatementDelimiter)
+            {
+                _tokenWriter.StatementEnd();
+            }
+
+            _tokenWriter.LineBreak();
+
+            EndSection(entityCount: 1);
         }
 
         protected virtual void EndSection(int entityCount)

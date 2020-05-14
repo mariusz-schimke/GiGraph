@@ -4,6 +4,7 @@ using Gigraph.Dot.Generators.CommonEntityGenerators;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Generators.Providers;
 using Gigraph.Dot.Writers.AttributeWriters;
+using Gigraph.Dot.Writers.CommonEntityWriters;
 using Gigraph.Dot.Writers.EdgeWriters;
 using Gigraph.Dot.Writers.GraphWriters;
 using Gigraph.Dot.Writers.NodeWriters;
@@ -23,8 +24,8 @@ namespace Gigraph.Dot.Generators.GraphGenerators
         {
             WriteAttributes(graphBody, writer);
 
-            WriteDefaultNodeAttributes(graphBody, writer);
-            WriteDefaultEdgeAttributes(graphBody, writer);
+            WriteNodeDefaults(graphBody, writer);
+            WriteEdgeDefaults(graphBody, writer);
 
             WriteNodes(graphBody, writer);
             WriteEdges(graphBody, writer);
@@ -41,26 +42,26 @@ namespace Gigraph.Dot.Generators.GraphGenerators
             writer.EndAttributesSection(attributes.Count());
         }
 
-        protected virtual void WriteDefaultNodeAttributes(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
+        protected virtual void WriteNodeDefaults(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
         {
             var attributes = graphBody.NodeDefaults;
 
             if (attributes.Any())
             {
-                var attributesWriter = writer.BeginNodeDefaults();
-                _entityGenerators.GetForEntity<IDotNodeDefaultsWriter>(attributes).Generate(attributes, attributesWriter);
+                var defaultsWriter = writer.BeginNodeDefaults();
+                _entityGenerators.GetForEntity<IDotEntityDefaultsWriter>(attributes).Generate(attributes, defaultsWriter);
                 writer.EndNodeDefaults(_options.PreferStatementDelimiter);
             }
         }
 
-        protected virtual void WriteDefaultEdgeAttributes(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
+        protected virtual void WriteEdgeDefaults(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
         {
             var attributes = graphBody.EdgeDefaults;
 
             if (attributes.Any())
             {
-                var attributesWriter = writer.BeginEdgeDefaults();
-                _entityGenerators.GetForEntity<IDotEdgeDefaultsWriter>(attributes).Generate(attributes, attributesWriter);
+                var defaultsWriter = writer.BeginEdgeDefaults();
+                _entityGenerators.GetForEntity<IDotEntityDefaultsWriter>(attributes).Generate(attributes, defaultsWriter);
                 writer.EndEdgeDefaults(_options.PreferStatementDelimiter);
             }
         }

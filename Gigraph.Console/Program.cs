@@ -39,6 +39,8 @@ namespace Gigraph
             };
 
             AddAttributes(graph);
+            AddNodeDefaults(graph);
+            AddEdgeDefaults(graph);
             AddNodes(graph);
             AddEdges(graph);
             AddSubgraphs(graph);
@@ -55,6 +57,16 @@ namespace Gigraph
             graph.Attributes.BackgroundColor = Color.BlueViolet;
 
             graph.Attributes.Set("shape", "rect");
+        }
+
+        private static void AddNodeDefaults(DotGraph graph)
+        {
+            graph.NodeDefaults.Color = Color.Red;
+        }
+
+        private static void AddEdgeDefaults(DotGraph graph)
+        {
+            graph.EdgeDefaults.Color = Color.Green;
         }
 
         private static void AddNodes(DotGraph graph)
