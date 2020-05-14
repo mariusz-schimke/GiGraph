@@ -18,24 +18,34 @@ namespace Gigraph.Dot.Writers.GraphWriters
             return new DotAttributeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
 
-        public virtual IDotNodeCollectionWriter BeginNodesSection(bool useStatementDelimiter)
-        {
-            return new DotNodeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
-        }
-
-        public virtual IDotEdgeCollectionWriter BeginEdgesSection(bool useStatementDelimiter)
-        {
-            return new DotEdgeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
-        }
-
-        public virtual IDotSubgraphCollectionWriter BeginSubgraphsSection()
-        {
-            return new DotSubgraphCollectionWriter(_tokenWriter, _context);
-        }
-
         public virtual void EndAttributesSection(int attributeCount)
         {
             EndSection(attributeCount);
+        }
+
+        public virtual IDotNodeDefaultsWriter BeginNodeDefaults()
+        {
+            return new DotNodeDefaultsWriter(_tokenWriter, _context);
+        }
+
+        public virtual void EndNodeDefaults(bool useStatementDelimiter)
+        {
+
+        }
+
+        public virtual IDotEdgeDefaultsWriter BeginEdgeDefaults()
+        {
+            return new DotEdgeDefaultsWriter(_tokenWriter, _context);
+        }
+
+        public virtual void EndEdgeDefaults(bool useStatementDelimiter)
+        {
+
+        }
+
+        public virtual IDotNodeCollectionWriter BeginNodesSection(bool useStatementDelimiter)
+        {
+            return new DotNodeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
 
         public virtual void EndNodesSection(int nodeCount)
@@ -43,9 +53,19 @@ namespace Gigraph.Dot.Writers.GraphWriters
             EndSection(nodeCount);
         }
 
+        public virtual IDotEdgeCollectionWriter BeginEdgesSection(bool useStatementDelimiter)
+        {
+            return new DotEdgeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
+        }
+
         public virtual void EndEdgesSection(int edgeCount)
         {
             EndSection(edgeCount);
+        }
+
+        public virtual IDotSubgraphCollectionWriter BeginSubgraphsSection()
+        {
+            return new DotSubgraphCollectionWriter(_tokenWriter, _context);
         }
 
         public virtual void EndSubgraphsSection(int subgraphCount)
