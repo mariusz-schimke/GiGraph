@@ -3,7 +3,7 @@ using Gigraph.Dot.Writers.Contexts;
 
 namespace Gigraph.Dot.Writers.EdgeWriters
 {
-    public class DotEdgeStatementWriter : DotStatementWriter, IDotEdgeCollectionWriter
+    public class DotEdgeStatementWriter : DotEntityStatementWriter, IDotEdgeCollectionWriter
     {
         public DotEdgeStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
             : base(tokenWriter, context, useStatementDelimiter)

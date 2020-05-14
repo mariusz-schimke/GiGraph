@@ -2,7 +2,7 @@
 
 namespace Gigraph.Dot.Writers.EdgeWriters
 {
-    public interface IDotEdgeWriter : IDotEntityWithAttributesWriter
+    public interface IDotEdgeWriter : IDotEntityWithAttributeListWriter
     {
         void WriteEdge(string leftNodeId, bool quoteLeftNodeId, string rightNodeId, bool quoteRightNodeId);
     }
