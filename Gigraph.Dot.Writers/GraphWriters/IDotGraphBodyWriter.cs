@@ -10,6 +10,12 @@ namespace Gigraph.Dot.Writers.GraphWriters
         IDotAttributeCollectionWriter BeginAttributesSection(bool useStatementDelimiter);
         void EndAttributesSection(int attributeCount);
 
+        IDotNodeDefaultsWriter BeginNodeDefaults();
+        void EndNodeDefaults(bool useStatementDelimiter);
+
+        IDotEdgeDefaultsWriter BeginEdgeDefaults();
+        void EndEdgeDefaults(bool useStatementDelimiter);
+
         IDotNodeCollectionWriter BeginNodesSection(bool useStatementDelimiter);
         void EndNodesSection(int nodeCount);
 

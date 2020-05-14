@@ -21,16 +21,47 @@ namespace Gigraph.Dot.Generators.GraphGenerators
         public override void Generate(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
         {
             WriteAttributes(graphBody, writer);
+
+            WriteDefaultNodeAttributes(graphBody, writer);
+            WriteDefaultEdgeAttributes(graphBody, writer);
+
             WriteNodes(graphBody, writer);
             WriteEdges(graphBody, writer);
+
             WriteSubgraphs(graphBody, writer);
         }
 
         protected virtual void WriteAttributes(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
         {
+            var attributes = graphBody.Attributes;
+
             var attributesWriter = writer.BeginAttributesSection(_options.PreferStatementDelimiter);
-            _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(graphBody.Attributes).Generate(graphBody.Attributes, attributesWriter);
-            writer.EndAttributesSection(graphBody.Attributes.Count());
+            _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Generate(attributes, attributesWriter);
+            writer.EndAttributesSection(attributes.Count());
+        }
+
+        protected virtual void WriteDefaultNodeAttributes(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
+        {
+            var attributes = graphBody.NodeDefaults;
+
+            if (attributes.Any())
+            {
+                var attributesWriter = writer.BeginNodeDefaults();
+                _entityGenerators.GetForEntity<IDotNodeDefaultsWriter>(attributes).Generate(attributes, attributesWriter);
+                writer.EndNodeDefaults(_options.PreferStatementDelimiter);
+            }
+        }
+
+        protected virtual void WriteDefaultEdgeAttributes(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
+        {
+            var attributes = graphBody.EdgeDefaults;
+
+            if (attributes.Any())
+            {
+                var attributesWriter = writer.BeginEdgeDefaults();
+                _entityGenerators.GetForEntity<IDotEdgeDefaultsWriter>(attributes).Generate(attributes, attributesWriter);
+                writer.EndEdgeDefaults(_options.PreferStatementDelimiter);
+            }
         }
 
         protected virtual void WriteNodes(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
