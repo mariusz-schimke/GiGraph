@@ -16,14 +16,14 @@ namespace Gigraph.Dot.Generators.EdgeGenerators
 
         public override void Generate(DotEdge edge, IDotEdgeWriter writer)
         {
-            WriteEdge(edge, writer);
+            WriteEdge(edge.LeftNodeId, edge.RightNodeId, writer);
             WriteAttributes(edge.Attributes, writer);
         }
 
-        protected virtual void WriteEdge(DotEdge edge, IDotEdgeWriter writer)
+        protected virtual void WriteEdge(string leftNodeId, string rightNodeId, IDotEdgeWriter writer)
         {
-            var leftNodeId = EscapeIdentifier(edge.LeftNodeId);
-            var rightNodeId = EscapeIdentifier(edge.RightNodeId);
+            leftNodeId = EscapeIdentifier(leftNodeId);
+            rightNodeId = EscapeIdentifier(rightNodeId);
 
             writer.WriteEdge
             (

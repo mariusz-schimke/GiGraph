@@ -23,7 +23,7 @@ namespace Gigraph.Dot.Generators.SubgraphGenerators
 
         public override void Generate(TSubgraph subgraph, IDotSubgraphWriter writer)
         {
-            WriteDeclaration(subgraph, writer);
+            WriteDeclaration(subgraph.Id, writer);
             WriteBody(subgraph, writer);
         }
 
@@ -32,16 +32,16 @@ namespace Gigraph.Dot.Generators.SubgraphGenerators
             return _graphIdEscaper.Escape(id);
         }
 
-        protected virtual void WriteDeclaration(TSubgraph subgraph, IDotSubgraphWriter writer)
+        protected virtual void WriteDeclaration(string id, IDotSubgraphWriter writer)
         {
-            var id = EscapeSubgraphIdentifier(subgraph.Id);
+            id = EscapeSubgraphIdentifier(id);
             writer.WriteSubgraphDeclaration(id, _isCluster, IdentifierRequiresQuoting(id));
         }
 
-        protected virtual void WriteBody(TSubgraph subgraph, IDotSubgraphWriter writer)
+        protected virtual void WriteBody(DotCommonSubgraph subgraphBody, IDotSubgraphWriter writer)
         {
             var bodyWriter = writer.BeginBody();
-            _entityGenerators.GetForEntity<IDotGraphBodyWriter>(subgraph).Generate(subgraph, bodyWriter);
+            _entityGenerators.GetForEntity<IDotGraphBodyWriter>(subgraphBody).Generate(subgraphBody, bodyWriter);
             writer.EndBody();
         }
     }

@@ -16,13 +16,13 @@ namespace Gigraph.Dot.Generators.NodeGenerators
 
         public override void Generate(DotNode node, IDotNodeWriter writer)
         {
-            WriteIdentifier(node, writer);
+            WriteIdentifier(node.Id, writer);
             WriteAttributes(node.Attributes, writer);
         }
 
-        protected virtual void WriteIdentifier(DotNode node, IDotNodeWriter writer)
+        protected virtual void WriteIdentifier(string id, IDotNodeWriter writer)
         {
-            var id = EscapeIdentifier(node.Id);
+            id = EscapeIdentifier(id);
             writer.WriteNodeIdentifier(id, IdentifierRequiresQuoting(id));
         }
     }
