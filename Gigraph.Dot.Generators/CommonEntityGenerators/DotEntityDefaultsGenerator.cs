@@ -15,11 +15,11 @@ namespace Gigraph.Dot.Generators.CommonEntityGenerators
 
         public override void Generate(DotAttributeCollection defaults, IDotEntityDefaultsWriter writer)
         {
-            WriteEntityKeyword(defaults, writer);
+            WriteEntityKeyword(writer);
             WriteAttributes(defaults, writer);
         }
 
-        protected virtual void WriteEntityKeyword(DotAttributeCollection defaults, IDotEntityDefaultsWriter writer)
+        protected virtual void WriteEntityKeyword(IDotEntityDefaultsWriter writer)
         {
             writer.WriteEntityKeyword();
         }

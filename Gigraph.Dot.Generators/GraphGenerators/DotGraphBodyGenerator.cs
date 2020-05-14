@@ -1,5 +1,9 @@
 ﻿using Gigraph.Dot.Core;
+using Gigraph.Dot.Entities.Attributes.Collections;
+using Gigraph.Dot.Entities.Edges;
 using Gigraph.Dot.Entities.Graphs;
+using Gigraph.Dot.Entities.Nodes;
+using Gigraph.Dot.Entities.Subgraphs;
 using Gigraph.Dot.Generators.CommonEntityGenerators;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Generators.Providers;
@@ -22,69 +26,63 @@ namespace Gigraph.Dot.Generators.GraphGenerators
 
         public override void Generate(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
         {
-            WriteAttributes(graphBody, writer);
+            WriteAttributes(graphBody.Attributes, writer);
 
-            WriteNodeDefaults(graphBody, writer);
-            WriteEdgeDefaults(graphBody, writer);
+            WriteNodeDefaults(graphBody.NodeDefaults, writer);
+            WriteEdgeDefaults(graphBody.EdgeDefaults, writer);
 
-            WriteNodes(graphBody, writer);
-            WriteEdges(graphBody, writer);
+            WriteNodes(graphBody.Nodes, writer);
+            WriteEdges(graphBody.Edges, writer);
 
-            WriteSubgraphs(graphBody, writer);
+            WriteSubgraphs(graphBody.Subgraphs, writer);
         }
 
-        protected virtual void WriteAttributes(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
+        protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotGraphBodyWriter writer)
         {
-            var attributes = graphBody.Attributes;
-
             var attributesWriter = writer.BeginAttributesSection(_options.PreferStatementDelimiter);
             _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Generate(attributes, attributesWriter);
             writer.EndAttributesSection(attributes.Count());
         }
 
-        protected virtual void WriteNodeDefaults(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
+        protected virtual void WriteNodeDefaults(DotNodeAttributeCollection nodeDefaults, IDotGraphBodyWriter writer)
         {
-            var attributes = graphBody.NodeDefaults;
-
-            if (attributes.Any())
+            if (nodeDefaults.Any())
             {
                 var defaultsWriter = writer.BeginNodeDefaults();
-                _entityGenerators.GetForEntity<IDotEntityDefaultsWriter>(attributes).Generate(attributes, defaultsWriter);
+                _entityGenerators.GetForEntity<IDotEntityDefaultsWriter>(nodeDefaults).Generate(nodeDefaults, defaultsWriter);
                 writer.EndNodeDefaults(_options.PreferStatementDelimiter);
             }
         }
 
-        protected virtual void WriteEdgeDefaults(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
+        protected virtual void WriteEdgeDefaults(DotEdgeAttributeCollection edgeDefaults, IDotGraphBodyWriter writer)
         {
-            var attributes = graphBody.EdgeDefaults;
-
-            if (attributes.Any())
+            if (edgeDefaults.Any())
             {
                 var defaultsWriter = writer.BeginEdgeDefaults();
-                _entityGenerators.GetForEntity<IDotEntityDefaultsWriter>(attributes).Generate(attributes, defaultsWriter);
+                _entityGenerators.GetForEntity<IDotEntityDefaultsWriter>(edgeDefaults).Generate(edgeDefaults, defaultsWriter);
                 writer.EndEdgeDefaults(_options.PreferStatementDelimiter);
             }
         }
 
-        protected virtual void WriteNodes(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
+        protected virtual void WriteNodes(DotNodeCollection nodes, IDotGraphBodyWriter writer)
         {
             var nodesWriter = writer.BeginNodesSection(_options.PreferStatementDelimiter);
-            _entityGenerators.GetForEntity<IDotNodeCollectionWriter>(graphBody.Nodes).Generate(graphBody.Nodes, nodesWriter);
-            writer.EndNodesSection(graphBody.Nodes.Count());
+            _entityGenerators.GetForEntity<IDotNodeCollectionWriter>(nodes).Generate(nodes, nodesWriter);
+            writer.EndNodesSection(nodes.Count());
         }
 
-        protected virtual void WriteEdges(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
+        protected virtual void WriteEdges(DotEdgeCollection edges, IDotGraphBodyWriter writer)
         {
             var nodesWriter = writer.BeginEdgesSection(_options.PreferStatementDelimiter);
-            _entityGenerators.GetForEntity<IDotEdgeCollectionWriter>(graphBody.Edges).Generate(graphBody.Edges, nodesWriter);
-            writer.EndEdgesSection(graphBody.Edges.Count());
+            _entityGenerators.GetForEntity<IDotEdgeCollectionWriter>(edges).Generate(edges, nodesWriter);
+            writer.EndEdgesSection(edges.Count());
         }
 
-        protected virtual void WriteSubgraphs(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
+        protected virtual void WriteSubgraphs(DotCommonSubgraphCollection subgraphs, IDotGraphBodyWriter writer)
         {
             var subgraphsWriter = writer.BeginSubgraphsSection();
-            _entityGenerators.GetForEntity<IDotSubgraphCollectionWriter>(graphBody.Subgraphs).Generate(graphBody.Subgraphs, subgraphsWriter);
-            writer.EndSubgraphsSection(graphBody.Subgraphs.Count());
+            _entityGenerators.GetForEntity<IDotSubgraphCollectionWriter>(subgraphs).Generate(subgraphs, subgraphsWriter);
+            writer.EndSubgraphsSection(subgraphs.Count());
         }
     }
 }

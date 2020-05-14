@@ -17,13 +17,18 @@ namespace Gigraph.Dot.Generators.AttributeGenerators
 
         public override void Generate(TAttribute attribute, IDotAttributeWriter writer)
         {
-            WriteAttribute(attribute, writer);
+            WriteAttribute
+            (
+                ((IDotAttribute)attribute).Key,
+                ((IDotAttribute)attribute).Value,
+                writer
+            );
         }
 
-        protected virtual void WriteAttribute(TAttribute attribute, IDotAttributeWriter writer)
+        protected virtual void WriteAttribute(string key, string value, IDotAttributeWriter writer)
         {
-            var key = EscapeKey(((IDotAttribute)attribute).Key);
-            var value = EscapeValue(((IDotAttribute)attribute).Value);
+            key = EscapeKey(key);
+            value = EscapeValue(value);
 
             writer.WriteAttribute
             (
