@@ -1,6 +1,7 @@
 ﻿using Gigraph.Dot.Core;
 using Gigraph.Dot.Core.TextEscaping;
 using Gigraph.Dot.Entities.Graphs;
+using Gigraph.Dot.Generators.CommonEntityGenerators;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Generators.Providers;
 using Gigraph.Dot.Writers.GraphWriters;

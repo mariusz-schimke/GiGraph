@@ -3,10 +3,10 @@ using Gigraph.Dot.Core.TextEscaping;
 using Gigraph.Dot.Entities;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Generators.Providers;
-using Gigraph.Dot.Writers;
+using Gigraph.Dot.Writers.CommonEntityWriters;
 using System;
 
-namespace Gigraph.Dot.Generators
+namespace Gigraph.Dot.Generators.CommonEntityGenerators
 {
     public abstract class DotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator<TEntity, TWriter>
         where TEntity : IDotEntity

@@ -1,4 +1,6 @@
-﻿namespace Gigraph.Dot.Writers.SubgraphWriters
+﻿using Gigraph.Dot.Writers.CommonEntityWriters;
+
+namespace Gigraph.Dot.Writers.SubgraphWriters
 {
     public interface IDotSubgraphCollectionWriter : IDotEntityWriter
     {

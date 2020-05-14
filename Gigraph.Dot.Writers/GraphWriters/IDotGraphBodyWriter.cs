@@ -1,4 +1,5 @@
 ﻿using Gigraph.Dot.Writers.AttributeWriters;
+using Gigraph.Dot.Writers.CommonEntityWriters;
 using Gigraph.Dot.Writers.EdgeWriters;
 using Gigraph.Dot.Writers.NodeWriters;
 using Gigraph.Dot.Writers.SubgraphWriters;

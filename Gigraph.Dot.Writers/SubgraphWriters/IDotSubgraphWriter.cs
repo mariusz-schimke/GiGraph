@@ -1,4 +1,5 @@
-﻿using Gigraph.Dot.Writers.GraphWriters;
+﻿using Gigraph.Dot.Writers.CommonEntityWriters;
+using Gigraph.Dot.Writers.GraphWriters;
 
 namespace Gigraph.Dot.Writers.SubgraphWriters
 {
