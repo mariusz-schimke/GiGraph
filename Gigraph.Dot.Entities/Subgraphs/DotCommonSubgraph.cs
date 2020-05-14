@@ -7,8 +7,15 @@ namespace Gigraph.Dot.Entities.Subgraphs
 {
     public abstract class DotCommonSubgraph : DotCommonGraph
     {
-        protected DotCommonSubgraph(string id, DotAttributeCollection attributes, DotNodeCollection nodes, DotEdgeCollection edges, DotCommonSubgraphCollection subgraphs)
-            : base(id, attributes, nodes, edges, subgraphs)
+        protected DotCommonSubgraph(
+            string id,
+            DotAttributeCollection attributes,
+            DotNodeCollection nodes,
+            DotEdgeCollection edges,
+            DotCommonSubgraphCollection subgraphs,
+            DotNodeAttributeCollection defaultNodeAttributes,
+            DotEdgeAttributeCollection defaultEdgeAttributes)
+            : base(id, attributes, nodes, edges, subgraphs, defaultNodeAttributes, defaultEdgeAttributes)
         {
         }
     }
