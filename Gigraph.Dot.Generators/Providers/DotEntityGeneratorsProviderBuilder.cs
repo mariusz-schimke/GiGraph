@@ -30,6 +30,9 @@ namespace Gigraph.Dot.Generators.Providers
             provider.Register(new DotAttributeCollectionGenerator(syntaxRules, options, provider));
             provider.Register(new DotHtmlLabelAttributeGenerator(syntaxRules, options, provider));
 
+            provider.Register(new DotNodeDefaultsGenerator(syntaxRules, options, provider));
+            provider.Register(new DotEdgeDefaultsGenerator(syntaxRules, options, provider));
+
             provider.Register(new DotNodeGenerator(syntaxRules, options, provider));
             provider.Register(new DotNodeCollectionGenerator(syntaxRules, options, provider));
 
