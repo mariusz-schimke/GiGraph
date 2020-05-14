@@ -1,12 +1,7 @@
-﻿using Gigraph.Dot.Writers.AttributeWriters;
-
-namespace Gigraph.Dot.Writers.CommonEntityWriters
+﻿namespace Gigraph.Dot.Writers.CommonEntityWriters
 {
-    public interface IDotEntityDefaultsWriter : IDotEntityWriter
+    public interface IDotEntityDefaultsWriter : IDotEntityWithAttributesWriter
     {
         void WriteEntityKeyword();
-
-        IDotAttributeCollectionWriter BeginAttributeList(bool useAttributeSeparator);
-        void EndAttributeList(int attributeCount);
     }
 }
