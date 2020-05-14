@@ -11,6 +11,9 @@ namespace Gigraph.Dot.Writers.GraphWriters
         IDotAttributeCollectionWriter BeginAttributesSection(bool useStatementDelimiter);
         void EndAttributesSection();
 
+        void BeginDefaultsSection();
+        void EndDefaultsSection();
+
         IDotEntityDefaultsWriter BeginNodeDefaults();
         void EndNodeDefaults(bool useStatementDelimiter);
 

@@ -24,6 +24,16 @@ namespace Gigraph.Dot.Writers.GraphWriters
             EndSection();
         }
 
+        public void BeginDefaultsSection()
+        {
+            // TODO: zwrócić osobny obiekt
+        }
+
+        public void EndDefaultsSection()
+        {
+            EndSection();
+        }
+
         public virtual IDotEntityDefaultsWriter BeginNodeDefaults()
         {
             return new DotNodeDefaultsWriter(_tokenWriter, _context);
@@ -31,7 +41,7 @@ namespace Gigraph.Dot.Writers.GraphWriters
 
         public virtual void EndNodeDefaults(bool useStatementDelimiter)
         {
-            EndDefaults(useStatementDelimiter);
+            EndEntityDefaults(useStatementDelimiter);
         }
 
         public virtual IDotEntityDefaultsWriter BeginEdgeDefaults()
@@ -41,7 +51,7 @@ namespace Gigraph.Dot.Writers.GraphWriters
 
         public virtual void EndEdgeDefaults(bool useStatementDelimiter)
         {
-            EndDefaults(useStatementDelimiter);
+            EndEntityDefaults(useStatementDelimiter);
         }
 
         public virtual IDotNodeCollectionWriter BeginNodesSection(bool useStatementDelimiter)
@@ -74,16 +84,15 @@ namespace Gigraph.Dot.Writers.GraphWriters
             EndSection();
         }
 
-        protected virtual void EndDefaults(bool useStatementDelimiter)
+        protected virtual void EndEntityDefaults(bool useStatementDelimiter)
         {
             if (useStatementDelimiter)
             {
                 _tokenWriter.StatementEnd();
             }
 
-            _tokenWriter.LineBreak();
-
-            EndSection();
+            _tokenWriter.LineBreak()
+                        .Indentation(_context.Level, linger: true);
         }
 
         protected virtual void EndSection()

@@ -28,8 +28,7 @@ namespace Gigraph.Dot.Generators.GraphGenerators
         {
             WriteAttributes(graphBody.Attributes, writer);
 
-            WriteNodeDefaults(graphBody.NodeDefaults, writer);
-            WriteEdgeDefaults(graphBody.EdgeDefaults, writer);
+            WriteDefaults(graphBody.NodeDefaults, graphBody.EdgeDefaults, writer);
 
             WriteNodes(graphBody.Nodes, writer);
             WriteEdges(graphBody.Edges, writer);
@@ -45,6 +44,21 @@ namespace Gigraph.Dot.Generators.GraphGenerators
                 _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Generate(attributes, attributesWriter);
                 writer.EndAttributesSection();
             }
+        }
+
+        private void WriteDefaults(DotNodeAttributeCollection nodeDefaults, DotEdgeAttributeCollection edgeDefaults, IDotGraphBodyWriter writer)
+        {
+            if (!nodeDefaults.Any() && !edgeDefaults.Any())
+            {
+                return;
+            }
+
+            writer.BeginDefaultsSection();
+
+            WriteNodeDefaults(nodeDefaults, writer);
+            WriteEdgeDefaults(edgeDefaults, writer);
+
+            writer.EndDefaultsSection();
         }
 
         protected virtual void WriteNodeDefaults(DotNodeAttributeCollection nodeDefaults, IDotGraphBodyWriter writer)
