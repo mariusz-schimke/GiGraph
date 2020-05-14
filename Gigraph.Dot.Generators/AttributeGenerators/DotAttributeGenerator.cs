@@ -17,10 +17,7 @@ namespace Gigraph.Dot.Generators.AttributeGenerators
 
         public override void Generate(TAttribute attribute, IDotAttributeWriter writer)
         {
-            if (((IDotAttribute)attribute).HasValue)
-            {
-                WriteAttribute(attribute, writer);
-            }
+            WriteAttribute(attribute, writer);
         }
 
         protected virtual void WriteAttribute(TAttribute attribute, IDotAttributeWriter writer)
