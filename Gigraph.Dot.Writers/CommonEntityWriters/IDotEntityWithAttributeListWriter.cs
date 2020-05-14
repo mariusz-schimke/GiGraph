@@ -2,7 +2,7 @@
 
 namespace Gigraph.Dot.Writers.CommonEntityWriters
 {
-    public interface IDotEntityWithAttributesWriter : IDotEntityWriter
+    public interface IDotEntityWithAttributeListWriter : IDotEntityWriter
     {
         IDotAttributeCollectionWriter BeginAttributeList(bool useAttributeSeparator);
         void EndAttributeList(int attributeCount);

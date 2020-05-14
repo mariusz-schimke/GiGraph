@@ -3,7 +3,7 @@ using Gigraph.Dot.Writers.Contexts;
 
 namespace Gigraph.Dot.Writers.NodeWriters
 {
-    public class DotNodeDefaultsWriter : DotEntityWithAttributesWriter, IDotEntityDefaultsWriter
+    public class DotNodeDefaultsWriter : DotEntityWithAttributeListWriter, IDotEntityDefaultsWriter
     {
         public DotNodeDefaultsWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
             : base(tokenWriter, context)

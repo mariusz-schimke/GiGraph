@@ -3,10 +3,10 @@ using Gigraph.Dot.Writers.Contexts;
 
 namespace Gigraph.Dot.Writers.SubgraphWriters
 {
-    public class DotSubgraphCollectionWriter : DotStatementWriter, IDotSubgraphCollectionWriter
+    public class DotSubgraphCollectionWriter : DotEntityWriter, IDotSubgraphCollectionWriter
     {
         public DotSubgraphCollectionWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context, useStatementDelimiter: false)
+            : base(tokenWriter, context)
         {
         }
 
@@ -16,11 +16,6 @@ namespace Gigraph.Dot.Writers.SubgraphWriters
         }
 
         public virtual void EndSubgraph()
-        {
-            EndStatement();
-        }
-
-        public override void EndStatement()
         {
             _tokenWriter.ClearLingerBuffer();
 
