@@ -18,7 +18,7 @@ namespace Gigraph.Dot.Generators.CommonEntityGenerators
         {
         }
 
-        protected virtual void WriteAttributes(DotAttributeCollection attributes, TWriter writer)
+        protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotEntityWithAttributeListWriter writer)
         {
             var attributesWriter = writer.BeginAttributeList(_options.Attributes.PreferExplicitSeparator);
             _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Generate(attributes, attributesWriter);
