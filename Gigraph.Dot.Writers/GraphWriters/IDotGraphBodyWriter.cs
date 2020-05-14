@@ -9,7 +9,7 @@ namespace Gigraph.Dot.Writers.GraphWriters
     public interface IDotGraphBodyWriter : IDotEntityWriter
     {
         IDotAttributeCollectionWriter BeginAttributesSection(bool useStatementDelimiter);
-        void EndAttributesSection(int attributeCount);
+        void EndAttributesSection();
 
         IDotEntityDefaultsWriter BeginNodeDefaults();
         void EndNodeDefaults(bool useStatementDelimiter);
@@ -18,12 +18,12 @@ namespace Gigraph.Dot.Writers.GraphWriters
         void EndEdgeDefaults(bool useStatementDelimiter);
 
         IDotNodeCollectionWriter BeginNodesSection(bool useStatementDelimiter);
-        void EndNodesSection(int nodeCount);
+        void EndNodesSection();
 
         IDotEdgeCollectionWriter BeginEdgesSection(bool useStatementDelimiter);
-        void EndEdgesSection(int nodeCount);
+        void EndEdgesSection();
 
         IDotSubgraphCollectionWriter BeginSubgraphsSection();
-        void EndSubgraphsSection(int subgraphCount);
+        void EndSubgraphsSection();
     }
 }

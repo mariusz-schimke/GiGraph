@@ -19,9 +19,9 @@ namespace Gigraph.Dot.Writers.GraphWriters
             return new DotAttributeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
 
-        public virtual void EndAttributesSection(int attributeCount)
+        public virtual void EndAttributesSection()
         {
-            EndSection(attributeCount);
+            EndSection();
         }
 
         public virtual IDotEntityDefaultsWriter BeginNodeDefaults()
@@ -49,9 +49,9 @@ namespace Gigraph.Dot.Writers.GraphWriters
             return new DotNodeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
 
-        public virtual void EndNodesSection(int nodeCount)
+        public virtual void EndNodesSection()
         {
-            EndSection(nodeCount);
+            EndSection();
         }
 
         public virtual IDotEdgeCollectionWriter BeginEdgesSection(bool useStatementDelimiter)
@@ -59,9 +59,9 @@ namespace Gigraph.Dot.Writers.GraphWriters
             return new DotEdgeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
 
-        public virtual void EndEdgesSection(int edgeCount)
+        public virtual void EndEdgesSection()
         {
-            EndSection(edgeCount);
+            EndSection();
         }
 
         public virtual IDotSubgraphCollectionWriter BeginSubgraphsSection()
@@ -69,9 +69,9 @@ namespace Gigraph.Dot.Writers.GraphWriters
             return new DotSubgraphCollectionWriter(_tokenWriter, _context);
         }
 
-        public virtual void EndSubgraphsSection(int subgraphCount)
+        public virtual void EndSubgraphsSection()
         {
-            EndSection(subgraphCount);
+            EndSection();
         }
 
         protected virtual void EndDefaults(bool useStatementDelimiter)
@@ -83,17 +83,14 @@ namespace Gigraph.Dot.Writers.GraphWriters
 
             _tokenWriter.LineBreak();
 
-            EndSection(entityCount: 1);
+            EndSection();
         }
 
-        protected virtual void EndSection(int entityCount)
+        protected virtual void EndSection()
         {
-            if (entityCount > 0)
-            {
-                _tokenWriter.ClearLingerBuffer()
-                            .LineBreak(linger: true)
-                            .Indentation(_context.Level, linger: true);
-            }
+            _tokenWriter.ClearLingerBuffer()
+                        .LineBreak(linger: true)
+                        .Indentation(_context.Level, linger: true);
         }
     }
 }
