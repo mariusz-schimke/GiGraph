@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Nodes
 {
+    // TODO: IEnumerable zastąpić ICollection (podobnie w innych kolekcjach)
     public class DotNodeCollection : IDotEntity, IEnumerable<DotNode>
     {
         protected readonly List<DotNode> _nodes = new List<DotNode>();

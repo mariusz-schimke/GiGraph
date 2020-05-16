@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Generators.CommonEntityGenerators
         {
         }
 
-        protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotEntityWithAttributeListWriter writer)
+        protected virtual void WriteAttributes(IDotAttributeCollection attributes, IDotEntityWithAttributeListWriter writer)
         {
             if (attributes.Any())
             {

@@ -5,9 +5,12 @@ using System.Linq;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotAttributeCollection : IDotEntity, IEnumerable<DotAttribute>
+    public class DotAttributeCollection : IDotEntity, IDotAttributeCollection
     {
         protected readonly IDictionary<string, DotAttribute> _attributes = new Dictionary<string, DotAttribute>(StringComparer.InvariantCulture);
+
+        public virtual int Count => _attributes.Count;
+        bool ICollection<DotAttribute>.IsReadOnly => false;
 
         /// <summary>
         /// Adds or replaces the specified attribute in the collection.
@@ -28,13 +31,23 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             _attributes[key] = new DotCustomAttribute(key, value);
         }
 
+        public virtual bool Contains(DotAttribute attribute)
+        {
+            return _attributes.Values.Contains(attribute);
+        }
+
+        public virtual bool Contains(string key)
+        {
+            return _attributes.ContainsKey(key);
+        }
+
         /// <summary>
         /// Removes the specified attribute from the collection.
         /// </summary>
         /// <param name="attribute">The attribute to remove.</param>
-        public virtual void Remove(DotAttribute attribute)
+        public virtual bool Remove(DotAttribute attribute)
         {
-            Remove(((IDotAttribute)attribute).Key);
+            return Remove(((IDotAttribute)attribute).Key);
         }
 
         /// <summary>
@@ -76,7 +89,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         /// <typeparam name="T">The type to return the attribute as.</typeparam>
         /// <param name="key">The key of the attribute to get.</param>
-        public virtual T TryGet<T>(string key)
+        public virtual T Get<T>(string key)
             where T : DotAttribute
         {
             if (TryGet<T>(key, out var result))
@@ -133,6 +146,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        void ICollection<DotAttribute>.Add(DotAttribute attribute)
+        {
+            Set(attribute);
+        }
+
+        void ICollection<DotAttribute>.CopyTo(DotAttribute[] array, int arrayIndex)
+        {
+            _attributes.Values.CopyTo(array, arrayIndex);
         }
     }
 }
