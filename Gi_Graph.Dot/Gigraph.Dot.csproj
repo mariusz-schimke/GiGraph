@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gigraph.Dot.Entities\GiGraph.Dot.Entities.csproj" />
+    <ProjectReference Include="..\Gigraph.Dot.Generators\GiGraph.Dot.Generators.csproj" />
+  </ItemGroup>
+
+</Project>
