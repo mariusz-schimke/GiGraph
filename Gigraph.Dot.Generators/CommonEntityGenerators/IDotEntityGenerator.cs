@@ -1,8 +1,8 @@
 ﻿using Gigraph.Dot.Entities;
-using Gigraph.Dot.Writers;
+using Gigraph.Dot.Writers.CommonEntityWriters;
 using System;
 
-namespace Gigraph.Dot.Generators
+namespace Gigraph.Dot.Generators.CommonEntityGenerators
 {
     public interface IDotEntityGenerator
     {

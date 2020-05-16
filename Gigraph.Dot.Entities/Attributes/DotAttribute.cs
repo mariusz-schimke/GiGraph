@@ -3,13 +3,11 @@
     public abstract class DotAttribute : IDotAttribute
     {
         protected readonly string _key;
-        protected abstract bool HasValue { get; }
 
         protected abstract string GetValueAsString();
 
         string IDotAttribute.Key => _key;
         string IDotAttribute.Value => GetValueAsString();
-        bool IDotAttribute.HasValue => HasValue;
 
         protected DotAttribute(string key)
         {
@@ -20,7 +18,6 @@
     public abstract class DotAttribute<T> : DotAttribute, IDotAttribute
     {
         protected readonly T _value;
-        protected override bool HasValue => _value is { };
 
         protected DotAttribute(string key, T value)
             : base(key)

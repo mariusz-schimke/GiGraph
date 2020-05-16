@@ -1,5 +1,6 @@
 ﻿using Gigraph.Dot.Core;
 using Gigraph.Dot.Entities.Nodes;
+using Gigraph.Dot.Generators.CommonEntityGenerators;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Generators.Providers;
 using Gigraph.Dot.Writers.NodeWriters;
@@ -7,14 +8,14 @@ using System.Linq;
 
 namespace Gigraph.Dot.Generators.NodeGenerators
 {
-    public class DotNodeCollectionGenerator : DotEntityGenerator<DotNodeCollection, IDotNodeCollectionWriter>
+    public class DotNodeCollectionGenerator : DotEntityGenerator<DotNodeCollection, IDotNodeStatementWriter>
     {
         public DotNodeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        public override void Generate(DotNodeCollection nodes, IDotNodeCollectionWriter writer)
+        public override void Generate(DotNodeCollection nodes, IDotNodeStatementWriter writer)
         {
             var orderedNodes = nodes.OrderBy(n => n.Id).ToList();
 

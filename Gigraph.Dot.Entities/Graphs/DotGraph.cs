@@ -27,8 +27,16 @@ namespace Gigraph.Dot.Entities.Graphs
         /// </summary>
         public new DotGraphAttributeCollection Attributes => (DotGraphAttributeCollection)base.Attributes;
 
-        protected DotGraph(string id, bool isDirected, bool isStrict, DotGraphAttributeCollection attributes, DotNodeCollection nodes, DotEdgeCollection edges, DotCommonSubgraphCollection subgraphs)
-            : base(id, attributes, nodes, edges, subgraphs)
+        protected DotGraph(string id,
+            bool isDirected,
+            bool isStrict,
+            DotGraphAttributeCollection attributes,
+            DotNodeCollection nodes,
+            DotEdgeCollection edges,
+            DotCommonSubgraphCollection subgraphs,
+            DotNodeAttributeCollection defaultNodeAttributes,
+            DotEdgeAttributeCollection defaultEdgeAttributes)
+            : base(id, attributes, nodes, edges, subgraphs, defaultNodeAttributes, defaultEdgeAttributes)
         {
             IsDirected = isDirected;
             IsStrict = isStrict;
@@ -43,7 +51,18 @@ namespace Gigraph.Dot.Entities.Graphs
         /// <param name="isStrict">Determines if the graph is strict.
         /// Strict graph forbids the creation of multi-edges, i.e., there can be at most one edge with a given tail node and head node in the directed case.</param>
         public DotGraph(string id = null, bool isDirected = true, bool isStrict = false)
-            : this(id, isDirected, isStrict, new DotGraphAttributeCollection(), new DotNodeCollection(), new DotEdgeCollection(), new DotCommonSubgraphCollection())
+            : this
+              (
+                  id,
+                  isDirected,
+                  isStrict,
+                  new DotGraphAttributeCollection(),
+                  new DotNodeCollection(),
+                  new DotEdgeCollection(),
+                  new DotCommonSubgraphCollection(),
+                  new DotNodeAttributeCollection(),
+                  new DotEdgeAttributeCollection()
+              )
         {
         }
     }

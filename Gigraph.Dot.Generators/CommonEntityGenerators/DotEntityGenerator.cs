@@ -3,10 +3,10 @@ using Gigraph.Dot.Core.TextEscaping;
 using Gigraph.Dot.Entities;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Generators.Providers;
-using Gigraph.Dot.Writers;
+using Gigraph.Dot.Writers.CommonEntityWriters;
 using System;
 
-namespace Gigraph.Dot.Generators
+namespace Gigraph.Dot.Generators.CommonEntityGenerators
 {
     public abstract class DotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator<TEntity, TWriter>
         where TEntity : IDotEntity
@@ -64,7 +64,7 @@ namespace Gigraph.Dot.Generators
 
             if (!(writer is TWriter))
             {
-                throw new ArgumentException($"The writer type {writer.GetType().FullName} is not supported by the {GetType().FullName} generator.");
+                throw new ArgumentException($"The writer type {writer.GetType().FullName} is not valid for the {GetType().FullName} generator.");
             }
 
             Generate((TEntity)entity, (TWriter)writer);

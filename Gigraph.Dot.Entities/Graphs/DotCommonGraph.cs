@@ -23,6 +23,11 @@ namespace Gigraph.Dot.Entities.Graphs
         public virtual DotNodeCollection Nodes { get; }
 
         /// <summary>
+        /// The attributes to be used as default for all nodes in this graph when not specified explicitly for individual nodes in the <see cref="Nodes"/> collection.
+        /// </summary>
+        public virtual DotNodeAttributeCollection NodeDefaults { get; }
+
+        /// <summary>
         /// Gets the collection of edges.
         /// <para>
         ///     (!) When an edge connects two elements belonging to two different
@@ -31,6 +36,11 @@ namespace Gigraph.Dot.Entities.Graphs
         /// </para>
         /// </summary>
         public virtual DotEdgeCollection Edges { get; }
+
+        /// <summary>
+        /// The attributes to be used as default for all edges in this graph when not specified explicitly for individual edges in the <see cref="Edges"/> collection.
+        /// </summary>
+        public virtual DotEdgeAttributeCollection EdgeDefaults { get; }
 
         /// <summary>
         /// Gets the collection of subgraphs. There are two supported types of subgraphs:
@@ -51,13 +61,22 @@ namespace Gigraph.Dot.Entities.Graphs
         /// </summary>
         public virtual DotCommonSubgraphCollection Subgraphs { get; }
 
-        protected DotCommonGraph(string id, DotAttributeCollection attributes, DotNodeCollection nodes, DotEdgeCollection edges, DotCommonSubgraphCollection subgraphs)
+        protected DotCommonGraph(
+            string id,
+            DotAttributeCollection attributes,
+            DotNodeCollection nodes,
+            DotEdgeCollection edges,
+            DotCommonSubgraphCollection subgraphs,
+            DotNodeAttributeCollection defaultNodeAttributes,
+            DotEdgeAttributeCollection defaultEdgeAttributes)
         {
             Id = id;
             Attributes = attributes;
             Nodes = nodes;
             Edges = edges;
             Subgraphs = subgraphs;
+            NodeDefaults = defaultNodeAttributes;
+            EdgeDefaults = defaultEdgeAttributes;
         }
     }
 }

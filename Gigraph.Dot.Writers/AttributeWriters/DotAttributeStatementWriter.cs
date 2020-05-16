@@ -2,7 +2,7 @@
 
 namespace Gigraph.Dot.Writers.AttributeWriters
 {
-    public class DotAttributeStatementWriter : DotAttributeListWriter
+    public class DotAttributeStatementWriter : DotAttributeListItemWriter
     {
         public DotAttributeStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
             : base(tokenWriter, context, useStatementDelimiter)

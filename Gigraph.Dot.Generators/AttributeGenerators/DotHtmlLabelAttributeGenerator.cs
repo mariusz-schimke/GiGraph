@@ -1,5 +1,4 @@
 ﻿using Gigraph.Dot.Core;
-using Gigraph.Dot.Entities.Attributes;
 using Gigraph.Dot.Entities.Attributes.LabelAttributes;
 using Gigraph.Dot.Generators.Options;
 using Gigraph.Dot.Generators.Providers;
@@ -14,18 +13,15 @@ namespace Gigraph.Dot.Generators.AttributeGenerators
         {
         }
 
-        protected override void WriteAttribute(DotHtmlLabelAttribute attribute, IDotAttributeWriter writer)
+        protected override void WriteAttribute(string key, string value, IDotAttributeWriter writer)
         {
-            var key = EscapeKey(((IDotAttribute)attribute).Key);
-
-            // don't escape the HTML value
-            var value = ((IDotAttribute)attribute).Value;
+            key = EscapeKey(key);
 
             writer.WriteHtmlAttribute
             (
                 key,
                 quoteKey: KeyRequiresQuoting(key),
-                value,
+                value, // don't escape the HTML value
                 braceValue: true
             );
         }

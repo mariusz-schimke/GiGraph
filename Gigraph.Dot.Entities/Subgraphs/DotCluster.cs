@@ -21,8 +21,14 @@ namespace Gigraph.Dot.Entities.Subgraphs
         /// </summary>
         public new DotClusterAttributeCollection Attributes => (DotClusterAttributeCollection)base.Attributes;
 
-        protected DotCluster(string id, DotClusterAttributeCollection attributes, DotNodeCollection nodes, DotEdgeCollection edges, DotCommonSubgraphCollection subgraphs)
-            : base(id, attributes, nodes, edges, subgraphs)
+        protected DotCluster(string id,
+            DotClusterAttributeCollection attributes,
+            DotNodeCollection nodes,
+            DotEdgeCollection edges,
+            DotCommonSubgraphCollection subgraphs,
+            DotNodeAttributeCollection defaultNodeAttributes,
+            DotEdgeAttributeCollection defaultEdgeAttributes)
+            : base(id, attributes, nodes, edges, subgraphs, defaultNodeAttributes, defaultEdgeAttributes)
         {
         }
 
@@ -31,7 +37,16 @@ namespace Gigraph.Dot.Entities.Subgraphs
         /// </summary>
         /// <param name="id">The unique identifier of the subgraph. Pass null if no identifier should be used.</param>
         public DotCluster(string id = null)
-            : this(id, new DotClusterAttributeCollection(), new DotNodeCollection(), new DotEdgeCollection(), new DotCommonSubgraphCollection())
+            : this
+              (
+                  id,
+                  new DotClusterAttributeCollection(),
+                  new DotNodeCollection(),
+                  new DotEdgeCollection(),
+                  new DotCommonSubgraphCollection(),
+                  new DotNodeAttributeCollection(),
+                  new DotEdgeAttributeCollection()
+              )
         {
         }
     }
