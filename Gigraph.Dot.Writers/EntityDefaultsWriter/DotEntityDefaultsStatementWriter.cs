@@ -1,8 +1,9 @@
-﻿using Gigraph.Dot.Writers.Contexts;
+﻿using Gigraph.Dot.Writers.CommonEntityWriters;
+using Gigraph.Dot.Writers.Contexts;
 using Gigraph.Dot.Writers.EdgeWriters;
 using Gigraph.Dot.Writers.NodeWriters;
 
-namespace Gigraph.Dot.Writers.CommonEntityWriters
+namespace Gigraph.Dot.Writers.EntityDefaultsWriter
 {
     public class DotEntityDefaultsStatementWriter : DotEntityWriter, IDotEntityDefaultsStatementWriter
     {
