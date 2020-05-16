@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gigraph.Console", "Gigraph.Console\Gigraph.Console.csproj", "{A9472EBB-A99C-4533-A081-75DEABC15CD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Console", "GiGraph.Console\GiGraph.Console.csproj", "{A9472EBB-A99C-4533-A081-75DEABC15CD9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gigraph.Dot.Core", "Gigraph.Dot.Core\Gigraph.Dot.Core.csproj", "{8E4557E5-A38A-4DF1-AFF6-8496035AAAB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot.Core", "GiGraph.Dot.Core\GiGraph.Dot.Core.csproj", "{8E4557E5-A38A-4DF1-AFF6-8496035AAAB0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gigraph.Dot.Entities", "Gigraph.Dot.Entities\Gigraph.Dot.Entities.csproj", "{1A861052-3B71-42B0-A667-E859CC554640}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot.Entities", "GiGraph.Dot.Entities\GiGraph.Dot.Entities.csproj", "{1A861052-3B71-42B0-A667-E859CC554640}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gigraph.Dot.Generators", "Gigraph.Dot.Generators\Gigraph.Dot.Generators.csproj", "{0DBB96E9-0379-49AB-9A08-7D61C64C8ACF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot.Generators", "GiGraph.Dot.Generators\GiGraph.Dot.Generators.csproj", "{0DBB96E9-0379-49AB-9A08-7D61C64C8ACF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gigraph.Dot.Writers", "Gigraph.Dot.Writers\Gigraph.Dot.Writers.csproj", "{197FDC91-76B3-44FC-8C24-ADC082435495}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot.Writers", "GiGraph.Dot.Writers\GiGraph.Dot.Writers.csproj", "{197FDC91-76B3-44FC-8C24-ADC082435495}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gigraph.Dot", "Gigraph.Dot\Gigraph.Dot.csproj", "{BAC8EB9A-B449-4697-AC51-9A34FEDD0EC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot", "GiGraph.Dot\GiGraph.Dot.csproj", "{BAC8EB9A-B449-4697-AC51-9A34FEDD0EC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
