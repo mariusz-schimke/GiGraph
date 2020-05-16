@@ -3,11 +3,11 @@ using Gigraph.Dot.Writers.Contexts;
 
 namespace Gigraph.Dot.Writers.AttributeWriters
 {
-    public class DotAttributeListWriter : DotEntityWriter, IDotAttributeCollectionWriter
+    public class DotAttributeListItemWriter : DotEntityWriter, IDotAttributeStatementWriter
     {
         protected readonly bool _useAttributeSeparator;
 
-        public DotAttributeListWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useAttributeSeparator)
+        public DotAttributeListItemWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useAttributeSeparator)
             : base(tokenWriter, context)
         {
             _useAttributeSeparator = useAttributeSeparator;

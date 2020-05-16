@@ -2,7 +2,7 @@
 
 namespace Gigraph.Dot.Writers.NodeWriters
 {
-    public interface IDotNodeCollectionWriter : IDotEntityWriter
+    public interface IDotNodeStatementWriter : IDotEntityWriter
     {
         IDotNodeWriter BeginNode();
         void EndNode();

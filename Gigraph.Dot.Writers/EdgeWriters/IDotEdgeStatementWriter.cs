@@ -2,7 +2,7 @@
 
 namespace Gigraph.Dot.Writers.EdgeWriters
 {
-    public interface IDotEdgeCollectionWriter : IDotEntityWriter
+    public interface IDotEdgeStatementWriter : IDotEntityWriter
     {
         IDotEdgeWriter BeginEdge();
         void EndEdge();

@@ -3,9 +3,9 @@ using Gigraph.Dot.Writers.Contexts;
 
 namespace Gigraph.Dot.Writers.SubgraphWriters
 {
-    public class DotSubgraphCollectionWriter : DotEntityWriter, IDotSubgraphCollectionWriter
+    public class DotSubgraphWriterRoot : DotEntityWriter, IDotSubgraphWriterRoot
     {
-        public DotSubgraphCollectionWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
+        public DotSubgraphWriterRoot(DotTokenWriter tokenWriter, DotEntityWriterContext context)
             : base(tokenWriter, context)
         {
         }

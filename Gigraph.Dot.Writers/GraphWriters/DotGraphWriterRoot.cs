@@ -18,5 +18,9 @@ namespace Gigraph.Dot.Writers.GraphWriters
             _tokenWriter.Indentation(_level, linger: true);
             return new DotGraphWriter(_tokenWriter, new DotEntityWriterContext(_level, directed));
         }
+
+        public void EndGraph()
+        {
+        }
     }
 }

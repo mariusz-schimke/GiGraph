@@ -14,7 +14,7 @@ namespace Gigraph.Dot.Writers.GraphWriters
         {
         }
 
-        public virtual IDotAttributeCollectionWriter BeginAttributesSection(bool useStatementDelimiter)
+        public virtual IDotAttributeStatementWriter BeginAttributesSection(bool useStatementDelimiter)
         {
             return new DotAttributeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
@@ -24,37 +24,17 @@ namespace Gigraph.Dot.Writers.GraphWriters
             EndSection();
         }
 
-        public void BeginDefaultsSection()
+        public virtual IDotEntityDefaultsStatementWriter BeginDefaultsSection(bool useStatementDelimiter)
         {
-            // TODO: zwrócić osobny obiekt
+            return new DotEntityDefaultsStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
 
-        public void EndDefaultsSection()
+        public virtual void EndDefaultsSection()
         {
             EndSection();
         }
 
-        public virtual IDotEntityDefaultsWriter BeginNodeDefaults()
-        {
-            return new DotNodeDefaultsWriter(_tokenWriter, _context);
-        }
-
-        public virtual void EndNodeDefaults(bool useStatementDelimiter)
-        {
-            EndEntityDefaults(useStatementDelimiter);
-        }
-
-        public virtual IDotEntityDefaultsWriter BeginEdgeDefaults()
-        {
-            return new DotEdgeDefaultsWriter(_tokenWriter, _context);
-        }
-
-        public virtual void EndEdgeDefaults(bool useStatementDelimiter)
-        {
-            EndEntityDefaults(useStatementDelimiter);
-        }
-
-        public virtual IDotNodeCollectionWriter BeginNodesSection(bool useStatementDelimiter)
+        public virtual IDotNodeStatementWriter BeginNodesSection(bool useStatementDelimiter)
         {
             return new DotNodeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
@@ -64,7 +44,7 @@ namespace Gigraph.Dot.Writers.GraphWriters
             EndSection();
         }
 
-        public virtual IDotEdgeCollectionWriter BeginEdgesSection(bool useStatementDelimiter)
+        public virtual IDotEdgeStatementWriter BeginEdgesSection(bool useStatementDelimiter)
         {
             return new DotEdgeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
@@ -74,25 +54,14 @@ namespace Gigraph.Dot.Writers.GraphWriters
             EndSection();
         }
 
-        public virtual IDotSubgraphCollectionWriter BeginSubgraphsSection()
+        public virtual IDotSubgraphWriterRoot BeginSubgraphsSection()
         {
-            return new DotSubgraphCollectionWriter(_tokenWriter, _context);
+            return new DotSubgraphWriterRoot(_tokenWriter, _context);
         }
 
         public virtual void EndSubgraphsSection()
         {
             EndSection();
-        }
-
-        protected virtual void EndEntityDefaults(bool useStatementDelimiter)
-        {
-            if (useStatementDelimiter)
-            {
-                _tokenWriter.StatementEnd();
-            }
-
-            _tokenWriter.LineBreak()
-                        .Indentation(_context.Level, linger: true);
         }
 
         protected virtual void EndSection()

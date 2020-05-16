@@ -41,7 +41,7 @@ namespace Gigraph.Dot.Generators.GraphGenerators
             if (attributes.Any())
             {
                 var attributesWriter = writer.BeginAttributesSection(_options.PreferStatementDelimiter);
-                _entityGenerators.GetForEntity<IDotAttributeCollectionWriter>(attributes).Generate(attributes, attributesWriter);
+                _entityGenerators.GetForEntity<IDotAttributeStatementWriter>(attributes).Generate(attributes, attributesWriter);
                 writer.EndAttributesSection();
             }
         }
@@ -53,31 +53,31 @@ namespace Gigraph.Dot.Generators.GraphGenerators
                 return;
             }
 
-            writer.BeginDefaultsSection();
+            var defaultsWriter = writer.BeginDefaultsSection(_options.PreferStatementDelimiter);
 
-            WriteNodeDefaults(nodeDefaults, writer);
-            WriteEdgeDefaults(edgeDefaults, writer);
+            WriteNodeDefaults(nodeDefaults, defaultsWriter);
+            WriteEdgeDefaults(edgeDefaults, defaultsWriter);
 
             writer.EndDefaultsSection();
         }
 
-        protected virtual void WriteNodeDefaults(DotNodeAttributeCollection nodeDefaults, IDotGraphBodyWriter writer)
+        protected virtual void WriteNodeDefaults(DotNodeAttributeCollection nodeDefaults, IDotEntityDefaultsStatementWriter writer)
         {
             if (nodeDefaults.Any())
             {
-                var defaultsWriter = writer.BeginNodeDefaults();
-                _entityGenerators.GetForEntity<IDotEntityDefaultsWriter>(nodeDefaults).Generate(nodeDefaults, defaultsWriter);
-                writer.EndNodeDefaults(_options.PreferStatementDelimiter);
+                var nodeDefaultsWriter = writer.BeginNodeDefaults();
+                _entityGenerators.GetForEntity<IDotNodeDefaultsWriter>(nodeDefaults).Generate(nodeDefaults, nodeDefaultsWriter);
+                writer.EndNodeDefaults();
             }
         }
 
-        protected virtual void WriteEdgeDefaults(DotEdgeAttributeCollection edgeDefaults, IDotGraphBodyWriter writer)
+        protected virtual void WriteEdgeDefaults(DotEdgeAttributeCollection edgeDefaults, IDotEntityDefaultsStatementWriter writer)
         {
             if (edgeDefaults.Any())
             {
-                var defaultsWriter = writer.BeginEdgeDefaults();
-                _entityGenerators.GetForEntity<IDotEntityDefaultsWriter>(edgeDefaults).Generate(edgeDefaults, defaultsWriter);
-                writer.EndEdgeDefaults(_options.PreferStatementDelimiter);
+                var edgeDefaultsWriter = writer.BeginEdgeDefaults();
+                _entityGenerators.GetForEntity<IDotEdgeDefaultsWriter>(edgeDefaults).Generate(edgeDefaults, edgeDefaultsWriter);
+                writer.EndEdgeDefaults();
             }
         }
 
@@ -85,8 +85,8 @@ namespace Gigraph.Dot.Generators.GraphGenerators
         {
             if (nodes.Any())
             {
-                var nodesWriter = writer.BeginNodesSection(_options.PreferStatementDelimiter);
-                _entityGenerators.GetForEntity<IDotNodeCollectionWriter>(nodes).Generate(nodes, nodesWriter);
+                var nodeStatementWriter = writer.BeginNodesSection(_options.PreferStatementDelimiter);
+                _entityGenerators.GetForEntity<IDotNodeStatementWriter>(nodes).Generate(nodes, nodeStatementWriter);
                 writer.EndNodesSection();
             }
         }
@@ -95,8 +95,8 @@ namespace Gigraph.Dot.Generators.GraphGenerators
         {
             if (edges.Any())
             {
-                var nodesWriter = writer.BeginEdgesSection(_options.PreferStatementDelimiter);
-                _entityGenerators.GetForEntity<IDotEdgeCollectionWriter>(edges).Generate(edges, nodesWriter);
+                var edgeStatementWriter = writer.BeginEdgesSection(_options.PreferStatementDelimiter);
+                _entityGenerators.GetForEntity<IDotEdgeStatementWriter>(edges).Generate(edges, edgeStatementWriter);
                 writer.EndEdgesSection();
             }
         }
@@ -105,8 +105,8 @@ namespace Gigraph.Dot.Generators.GraphGenerators
         {
             if (subgraphs.Any())
             {
-                var subgraphsWriter = writer.BeginSubgraphsSection();
-                _entityGenerators.GetForEntity<IDotSubgraphCollectionWriter>(subgraphs).Generate(subgraphs, subgraphsWriter);
+                var subgraphWriterRoot = writer.BeginSubgraphsSection();
+                _entityGenerators.GetForEntity<IDotSubgraphWriterRoot>(subgraphs).Generate(subgraphs, subgraphWriterRoot);
                 writer.EndSubgraphsSection();
             }
         }

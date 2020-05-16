@@ -64,7 +64,7 @@ namespace Gigraph.Dot.Generators.CommonEntityGenerators
 
             if (!(writer is TWriter))
             {
-                throw new ArgumentException($"The writer type {writer.GetType().FullName} is not supported by the {GetType().FullName} generator.");
+                throw new ArgumentException($"The writer type {writer.GetType().FullName} is not valid for the {GetType().FullName} generator.");
             }
 
             Generate((TEntity)entity, (TWriter)writer);

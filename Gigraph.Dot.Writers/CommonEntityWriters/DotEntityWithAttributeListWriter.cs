@@ -10,12 +10,12 @@ namespace Gigraph.Dot.Writers.CommonEntityWriters
         {
         }
 
-        public virtual IDotAttributeCollectionWriter BeginAttributeList(bool useAttributeSeparator)
+        public virtual IDotAttributeStatementWriter BeginAttributeList(bool useAttributeSeparator)
         {
             _tokenWriter.AttributeListStart(linger: true)
                         .Space(linger: true);
 
-            return new DotAttributeListWriter(_tokenWriter, _context.NextLevel(), useAttributeSeparator);
+            return new DotAttributeListItemWriter(_tokenWriter, _context.NextLevel(), useAttributeSeparator);
         }
 
         public virtual void EndAttributeList()
