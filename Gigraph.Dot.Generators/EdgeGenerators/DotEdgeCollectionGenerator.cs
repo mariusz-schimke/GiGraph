@@ -8,14 +8,14 @@ using System.Linq;
 
 namespace Gigraph.Dot.Generators.EdgeGenerators
 {
-    public class DotEdgeCollectionGenerator : DotEntityGenerator<DotEdgeCollection, IDotEdgeCollectionWriter>
+    public class DotEdgeCollectionGenerator : DotEntityGenerator<DotEdgeCollection, IDotEdgeStatementWriter>
     {
         public DotEdgeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        public override void Generate(DotEdgeCollection edges, IDotEdgeCollectionWriter writer)
+        public override void Generate(DotEdgeCollection edges, IDotEdgeStatementWriter writer)
         {
             var orderedEdges = edges
                 .OrderBy(e => e.LeftNodeId)

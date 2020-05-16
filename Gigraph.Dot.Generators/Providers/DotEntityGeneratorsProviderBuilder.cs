@@ -1,6 +1,5 @@
 ﻿using Gigraph.Dot.Core;
 using Gigraph.Dot.Generators.AttributeGenerators;
-using Gigraph.Dot.Generators.CommonEntityGenerators;
 using Gigraph.Dot.Generators.EdgeGenerators;
 using Gigraph.Dot.Generators.GraphGenerators;
 using Gigraph.Dot.Generators.NodeGenerators;
@@ -31,7 +30,8 @@ namespace Gigraph.Dot.Generators.Providers
             provider.Register(new DotAttributeCollectionGenerator(syntaxRules, options, provider));
             provider.Register(new DotHtmlLabelAttributeGenerator(syntaxRules, options, provider));
 
-            provider.Register(new DotEntityDefaultsGenerator(syntaxRules, options, provider));
+            provider.Register(new DotNodeDefaultsGenerator(syntaxRules, options, provider));
+            provider.Register(new DotEdgeDefaultsGenerator(syntaxRules, options, provider));
 
             provider.Register(new DotNodeGenerator(syntaxRules, options, provider));
             provider.Register(new DotNodeCollectionGenerator(syntaxRules, options, provider));

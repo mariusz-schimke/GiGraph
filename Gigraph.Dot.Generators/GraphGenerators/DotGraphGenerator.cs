@@ -19,6 +19,8 @@ namespace Gigraph.Dot.Generators.GraphGenerators
 
             WriteDeclaration(graph.Id, graph.IsStrict, writer);
             WriteBody(graph, writer);
+
+            writerRoot.EndGraph();
         }
 
         protected virtual void WriteDeclaration(string id, bool isStrict, IDotGraphWriter writer)

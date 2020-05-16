@@ -4,7 +4,7 @@ namespace Gigraph.Dot.Writers.CommonEntityWriters
 {
     public interface IDotEntityWithAttributeListWriter : IDotEntityWriter
     {
-        IDotAttributeCollectionWriter BeginAttributeList(bool useAttributeSeparator);
+        IDotAttributeStatementWriter BeginAttributeList(bool useAttributeSeparator);
         void EndAttributeList();
     }
 }
