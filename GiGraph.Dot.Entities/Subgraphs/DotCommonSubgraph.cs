@@ -9,12 +9,12 @@ namespace GiGraph.Dot.Entities.Subgraphs
     {
         protected DotCommonSubgraph(
             string id,
-            DotAttributeCollection attributes,
+            IDotAttributeCollection attributes,
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotCommonSubgraphCollection subgraphs,
-            DotNodeAttributeCollection defaultNodeAttributes,
-            DotEdgeAttributeCollection defaultEdgeAttributes)
+            IDotNodeAttributes defaultNodeAttributes,
+            IDotEdgeAttributes defaultEdgeAttributes)
             : base(id, attributes, nodes, edges, subgraphs, defaultNodeAttributes, defaultEdgeAttributes)
         {
         }
