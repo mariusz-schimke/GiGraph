@@ -1,4 +1,6 @@
-﻿namespace Gigraph.Dot.Writers.AttributeWriters
+﻿using Gigraph.Dot.Writers.CommonEntityWriters;
+
+namespace Gigraph.Dot.Writers.AttributeWriters
 {
     public interface IDotAttributeWriter : IDotEntityWriter
     {

@@ -1,6 +1,6 @@
 ﻿using Gigraph.Dot.Writers.Contexts;
 
-namespace Gigraph.Dot.Writers
+namespace Gigraph.Dot.Writers.CommonEntityWriters
 {
     public abstract class DotEntityWriter : IDotEntityWriter
     {

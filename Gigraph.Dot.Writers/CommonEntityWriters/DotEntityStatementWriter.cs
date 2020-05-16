@@ -1,12 +1,12 @@
 ﻿using Gigraph.Dot.Writers.Contexts;
 
-namespace Gigraph.Dot.Writers
+namespace Gigraph.Dot.Writers.CommonEntityWriters
 {
-    public abstract class DotStatementWriter : DotEntityWriter
+    public abstract class DotEntityStatementWriter : DotEntityWriter
     {
         protected readonly bool _useStatementDelimiter;
 
-        public DotStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
+        public DotEntityStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
             : base(tokenWriter, context)
         {
             _useStatementDelimiter = useStatementDelimiter;

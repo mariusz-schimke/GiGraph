@@ -24,8 +24,14 @@ namespace Gigraph.Dot.Entities.Subgraphs
         /// </summary>
         public new DotSubgraphAttributeCollection Attributes => (DotSubgraphAttributeCollection)base.Attributes;
 
-        protected DotSubgraph(string id, DotSubgraphAttributeCollection attributes, DotNodeCollection nodes, DotEdgeCollection edges, DotCommonSubgraphCollection subgraphs)
-            : base(id, attributes, nodes, edges, subgraphs)
+        protected DotSubgraph(string id,
+            DotSubgraphAttributeCollection attributes,
+            DotNodeCollection nodes,
+            DotEdgeCollection edges,
+            DotCommonSubgraphCollection subgraphs,
+            DotNodeAttributeCollection defaultNodeAttributes,
+            DotEdgeAttributeCollection defaultEdgeAttributes)
+            : base(id, attributes, nodes, edges, subgraphs, defaultNodeAttributes, defaultEdgeAttributes)
         {
         }
 
@@ -34,7 +40,16 @@ namespace Gigraph.Dot.Entities.Subgraphs
         /// </summary>
         /// <param name="id">The unique identifier of the subgraph. Pass null if no identifier should be used.</param>
         public DotSubgraph(string id = null)
-            : this(id, new DotSubgraphAttributeCollection(), new DotNodeCollection(), new DotEdgeCollection(), new DotCommonSubgraphCollection())
+            : this
+              (
+                  id,
+                  new DotSubgraphAttributeCollection(),
+                  new DotNodeCollection(),
+                  new DotEdgeCollection(),
+                  new DotCommonSubgraphCollection(),
+                  new DotNodeAttributeCollection(),
+                  new DotEdgeAttributeCollection()
+              )
         {
         }
 

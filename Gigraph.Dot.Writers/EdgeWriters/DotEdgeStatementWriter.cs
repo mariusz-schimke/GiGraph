@@ -1,8 +1,9 @@
-﻿using Gigraph.Dot.Writers.Contexts;
+﻿using Gigraph.Dot.Writers.CommonEntityWriters;
+using Gigraph.Dot.Writers.Contexts;
 
 namespace Gigraph.Dot.Writers.EdgeWriters
 {
-    public class DotEdgeStatementWriter : DotStatementWriter, IDotEdgeCollectionWriter
+    public class DotEdgeStatementWriter : DotEntityStatementWriter, IDotEdgeStatementWriter
     {
         public DotEdgeStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
             : base(tokenWriter, context, useStatementDelimiter)

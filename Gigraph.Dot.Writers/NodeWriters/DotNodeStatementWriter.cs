@@ -1,8 +1,9 @@
-﻿using Gigraph.Dot.Writers.Contexts;
+﻿using Gigraph.Dot.Writers.CommonEntityWriters;
+using Gigraph.Dot.Writers.Contexts;
 
 namespace Gigraph.Dot.Writers.NodeWriters
 {
-    public class DotNodeStatementWriter : DotStatementWriter, IDotNodeCollectionWriter
+    public class DotNodeStatementWriter : DotEntityStatementWriter, IDotNodeStatementWriter
     {
         public DotNodeStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
             : base(tokenWriter, context, useStatementDelimiter)

@@ -1,12 +1,12 @@
-﻿using Gigraph.Dot.Writers.Contexts;
-using Gigraph.Dot.Writers.SubgraphWriters;
+﻿using Gigraph.Dot.Writers.CommonEntityWriters;
+using Gigraph.Dot.Writers.Contexts;
 
 namespace Gigraph.Dot.Writers.SubgraphWriters
 {
-    public class DotSubgraphCollectionWriter : DotStatementWriter, IDotSubgraphCollectionWriter
+    public class DotSubgraphWriterRoot : DotEntityWriter, IDotSubgraphWriterRoot
     {
-        public DotSubgraphCollectionWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context, useStatementDelimiter: false)
+        public DotSubgraphWriterRoot(DotTokenWriter tokenWriter, DotEntityWriterContext context)
+            : base(tokenWriter, context)
         {
         }
 
@@ -16,11 +16,6 @@ namespace Gigraph.Dot.Writers.SubgraphWriters
         }
 
         public virtual void EndSubgraph()
-        {
-            EndStatement();
-        }
-
-        public override void EndStatement()
         {
             _tokenWriter.ClearLingerBuffer();
 
