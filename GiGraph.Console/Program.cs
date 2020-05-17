@@ -1,5 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.LabelAttributes;
-using GiGraph.Dot.Entities.Attributes.ShapeAttributes;
+﻿using GiGraph.Dot.Entities.Attributes;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Subgraphs;
@@ -67,6 +67,10 @@ namespace GiGraph
         private static void AddEdgeDefaults(DotGraph graph)
         {
             graph.EdgeDefaults.Color = Color.Green;
+            graph.EdgeDefaults.ArrowHead = DotArrowType.Diamond;
+            graph.EdgeDefaults.ArrowTail = DotArrowType.Diamond;
+            graph.EdgeDefaults.ArrowSize = 0.9;
+            graph.EdgeDefaults.ArrowDirection = DotArrowDirection.Backward;
         }
 
         private static void AddNodes(DotGraph graph)
@@ -84,7 +88,7 @@ namespace GiGraph
 
             graph.Nodes.Add("node3", n =>
             {
-                n.Attributes.Label = new DotTextLabelAttribute("label");
+                n.Attributes.Label = "some label";
             })
             .Attributes.Set("color", "red");
 

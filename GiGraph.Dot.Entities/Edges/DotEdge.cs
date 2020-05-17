@@ -32,9 +32,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// The attributes of the edge.
         /// </summary>
-        public virtual DotEdgeAttributeCollection Attributes { get; }
+        public virtual IDotEdgeAttributes Attributes { get; }
 
-        protected DotEdge(string leftNodeId, string rightNodeId, DotEdgeAttributeCollection attributes)
+        protected DotEdge(string leftNodeId, string rightNodeId, IDotEdgeAttributes attributes)
         {
             LeftNodeId = leftNodeId;
             RightNodeId = rightNodeId;
@@ -47,7 +47,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="leftNodeId">The identifier of the left (source) node the edge should be connected to.</param>
         /// <param name="rightNodeId">The identifier of the right (destination) node the should be connected to.</param>
         public DotEdge(string leftNodeId, string rightNodeId)
-            : this(leftNodeId, rightNodeId, new DotEdgeAttributeCollection())
+            : this(leftNodeId, rightNodeId, new DotEntityAttributes())
         {
         }
     }

@@ -19,15 +19,15 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// The attributes of the cluster.
         /// </summary>
-        public new DotClusterAttributeCollection Attributes => (DotClusterAttributeCollection)base.Attributes;
+        public new IDotClusterAttributes Attributes => (IDotClusterAttributes)base.Attributes;
 
         protected DotCluster(string id,
-            DotClusterAttributeCollection attributes,
+            IDotClusterAttributes attributes,
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotCommonSubgraphCollection subgraphs,
-            DotNodeAttributeCollection defaultNodeAttributes,
-            DotEdgeAttributeCollection defaultEdgeAttributes)
+            IDotNodeAttributes defaultNodeAttributes,
+            IDotEdgeAttributes defaultEdgeAttributes)
             : base(id, attributes, nodes, edges, subgraphs, defaultNodeAttributes, defaultEdgeAttributes)
         {
         }
@@ -40,12 +40,12 @@ namespace GiGraph.Dot.Entities.Subgraphs
             : this
               (
                   id,
-                  new DotClusterAttributeCollection(),
+                  new DotEntityAttributes(),
                   new DotNodeCollection(),
                   new DotEdgeCollection(),
                   new DotCommonSubgraphCollection(),
-                  new DotNodeAttributeCollection(),
-                  new DotEdgeAttributeCollection()
+                  new DotEntityAttributes(),
+                  new DotEntityAttributes()
               )
         {
         }
