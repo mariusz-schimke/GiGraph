@@ -36,6 +36,8 @@ namespace GiGraph
                 Id = "Graph1"
             };
 
+            graph.Attributes.Layout = DotRankDirection.LeftToRight;
+
             AddAttributes(graph);
             AddNodeDefaults(graph);
             AddEdgeDefaults(graph);

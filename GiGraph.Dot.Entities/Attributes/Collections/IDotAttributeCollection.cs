@@ -66,6 +66,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         void Set(string key, DotRank value);
 
         /// <summary>
+        /// Adds or replaces the specified graph layout direction attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        void Set(string key, DotRankDirection value);
+
+        /// <summary>
         /// Adds or replaces the specified HTML text attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>

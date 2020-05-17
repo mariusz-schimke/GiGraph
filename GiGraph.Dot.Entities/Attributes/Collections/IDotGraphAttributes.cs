@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using GiGraph.Dot.Entities.Attributes.Enums;
+using System.Drawing;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -22,5 +23,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Gets or sets the background color of the graph (default: none).
         /// </summary>
         Color? BackgroundColor { get; set; }
+
+        /// <summary>
+        /// Gets or sets the direction of graph layout (default: <see cref="DotRankDirection.TopToBottom"/>).
+        /// </summary>
+        DotRankDirection? Layout { get; set; }
     }
 }
