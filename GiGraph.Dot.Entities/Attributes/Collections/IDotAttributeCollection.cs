@@ -30,6 +30,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         void Set(string key, double value);
 
         /// <summary>
+        /// Adds or replaces the specified boolean value attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        void Set(string key, bool value);
+
+        /// <summary>
         /// Adds or replaces the specified custom attribute in the collection.
         /// <para>
         ///     The value provided will be rendered in the generated graph exactly the way it is provided here,
