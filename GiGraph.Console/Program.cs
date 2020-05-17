@@ -13,6 +13,7 @@ namespace GiGraph
     // TODO: przejrzec wszystkie metody, czy powinny lub nie powinny byc wirtualne
     // TODO: przejrzeć klasy, czy powinny miec interfejsy
     // TODO: customowe węzły HTML (shape none, margin 0): https://www.graphviz.org/doc/info/shapes.html#polygon
+    // TODO: atrybuty można określic też raz dla wielu elementów, np. myNode1, myNode2, myNode3 [shape="box", style="filled, rounded"]
 
     internal class Program
     {
@@ -63,6 +64,7 @@ namespace GiGraph
         private static void AddNodeDefaults(DotGraph graph)
         {
             graph.NodeDefaults.Color = Color.Red;
+            graph.NodeDefaults.Style = DotStyle.Bold | DotStyle.Dotted;
         }
 
         private static void AddEdgeDefaults(DotGraph graph)
@@ -81,6 +83,7 @@ namespace GiGraph
             {
                 n.Attributes.Label = "my label";
                 n.Attributes.Shape = DotShape.Hexagon;
+                n.Attributes.Style = DotStyle.Default;
             });
 
             //graph.Nodes.Add(new DotNode("node2")

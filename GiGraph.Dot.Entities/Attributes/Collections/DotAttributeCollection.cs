@@ -43,6 +43,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             _attributes[key] = new DotShapeAttribute(key, value);
         }
 
+        public virtual void Set(string key, DotStyle value)
+        {
+            _attributes[key] = new DotStyleAttribute(key, value);
+        }
+
         public virtual void Set(string key, DotArrowType value)
         {
             _attributes[key] = new DotArrowTypeAttribute(key, value);

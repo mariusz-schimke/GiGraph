@@ -28,5 +28,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Gets or sets the shape of the node (default: <see cref="DotShape.Ellipse"/>).
         /// </summary>
         DotShape? Shape { get; set; }
+
+        /// <summary>
+        /// Sets the style of the node (default: null). See the descriptions of individual <see cref="DotStyle"/> values
+        /// to learn which styles are applicable to this element type.
+        /// <para>
+        ///     Multiple styles can be used at once, for example:
+        ///     <code>
+        ///         <see cref="Style"/> = <see cref="DotStyle.Solid"/> | <see cref="DotStyle.Bold"/>;
+        ///     </code>
+        /// </para>
+        /// </summary>
+        DotStyle? Style { get; set; }
     }
 }
