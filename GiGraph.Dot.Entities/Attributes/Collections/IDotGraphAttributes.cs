@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         string LabelHtml { get; set; }
 
         /// <summary>
-        /// Gets or sets the background color of the graph.
+        /// Gets or sets the background color of the graph (default: none).
         /// </summary>
         Color? BackgroundColor { get; set; }
     }

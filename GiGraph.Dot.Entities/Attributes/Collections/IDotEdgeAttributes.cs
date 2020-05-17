@@ -20,20 +20,25 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         string LabelHtml { get; set; }
 
         /// <summary>
-        /// Gets or sets the color of the edge.
+        /// Gets or sets the color of the edge (default: <see cref="Color.Black"/>).
         /// </summary>
         Color? Color { get; set; }
 
         /// <summary>
-        /// Gets or sets the style of arrow head on the head node of an edge.
+        /// Gets or sets the style of arrow head on the head node of an edge (default: <see cref="DotArrowType.Normal"/>).
         /// This will only appear if the direction attribute is "forward" or "both". 
         /// </summary>
         DotArrowType? ArrowHead { get; set; }
 
         /// <summary>
-        /// Gets or sets the style of arrow head on the tail node of an edge.
+        /// Gets or sets the style of arrow head on the tail node of an edge (default: <see cref="DotArrowType.Normal"/>).
         /// This will only appear if the direction attribute is "back" or "both".
         /// </summary>
         DotArrowType? ArrowTail { get; set; }
+
+        /// <summary>
+        /// Gets or sets the multiplicative scale factor for arrowheads (default: 1.0, minimum: 0.0).
+        /// </summary>
+        double? ArrowSize { get; set; }
     }
 }

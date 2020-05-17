@@ -20,12 +20,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         string LabelHtml { get; set; }
 
         /// <summary>
-        /// Gets or sets the color of the node.
+        /// Gets or sets the color of the node (default: <see cref="Color.Black"/>).
         /// </summary>
         Color? Color { get; set; }
 
         /// <summary>
-        /// Gets or sets the shape of the node.
+        /// Gets or sets the shape of the node (default: <see cref="DotNodeShape.Ellipse"/>).
         /// </summary>
         DotNodeShape? Shape { get; set; }
     }

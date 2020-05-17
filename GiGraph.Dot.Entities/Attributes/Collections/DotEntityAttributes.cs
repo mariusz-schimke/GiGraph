@@ -3,6 +3,7 @@ using System.Drawing;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
+    // TODO: check if properties are virtual
     public class DotEntityAttributes : DotAttributeCollection,
         IDotGraphAttributes,
         IDotSubgraphAttributes,
@@ -56,16 +57,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("label", value, v => new DotHtmlAttribute("label", v));
         }
 
-        public DotArrowType? ArrowHead
+        public virtual DotArrowType? ArrowHead
         {
             get => TryGetAs<DotArrowTypeAttribute>("arrowhead", out var result) ? result.Value : (DotArrowType?)null;
             set => AddOrRemove("arrowhead", value, v => new DotArrowTypeAttribute("arrowhead", v.Value));
         }
 
-        public DotArrowType? ArrowTail
+        public virtual DotArrowType? ArrowTail
         {
             get => TryGetAs<DotArrowTypeAttribute>("arrowtail", out var result) ? result.Value : (DotArrowType?)null;
             set => AddOrRemove("arrowtail", value, v => new DotArrowTypeAttribute("arrowtail", v.Value));
+        }
+
+        public virtual double? ArrowSize
+        {
+            get => TryGetAs<DotDoubleAttribute>("arrowsize", out var result) ? result.Value : (double?)null;
+            set => AddOrRemove("arrowsize", value, v => new DotDoubleAttribute("arrowsize", v.Value));
         }
     }
 }
