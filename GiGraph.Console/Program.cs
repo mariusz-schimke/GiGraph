@@ -43,6 +43,7 @@ namespace GiGraph
             AddNodes(graph);
             AddEdges(graph);
             AddSubgraphs(graph);
+            AddClusters(graph);
 
             Console.WriteLine(graph.Build(fo, go));
             graph.SaveToFile(@"C:\Temp\gigraph.gv");
@@ -102,27 +103,24 @@ namespace GiGraph
         private static void AddSubgraphs(DotGraph graph)
         {
             var subgraph1 = new DotSubgraph("");
-            var subgraph2 = new DotSubgraph("sg2");
+            var subgraph2 = new DotSubgraph(rank: DotRank.Same);
             subgraph1.Subgraphs.Add(subgraph2);
 
+            subgraph2.Nodes.Add("snode1");
+            subgraph2.Nodes.Add("snode2");
+
+            subgraph1.Edges.Add("snode1", "snode2");
+
+            graph.Subgraphs.Add(subgraph1);
+        }
+
+        private static void AddClusters(DotGraph graph)
+        {
             var cluster1 = new DotCluster();
             var cluster2 = new DotCluster("sgc2");
             cluster1.Subgraphs.Add(cluster2);
 
-            foreach (var attr in graph.Attributes)
-            {
-                cluster2.Attributes.Set(attr);
-            }
-
-            foreach (var node in graph.Nodes)
-            {
-                cluster2.Nodes.Add(node);
-            }
-
-            graph.Subgraphs.Add(subgraph1);
-            //graph.Subgraphs.Add(subgraph2);
             graph.Subgraphs.Add(cluster1);
-            //graph.Subgraphs.Add(cluster2);
         }
     }
 }

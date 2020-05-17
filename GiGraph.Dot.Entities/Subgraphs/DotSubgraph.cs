@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Nodes;
 
@@ -39,7 +40,8 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// Creates a new subgraph.
         /// </summary>
         /// <param name="id">The unique identifier of the subgraph. Pass null if no identifier should be used.</param>
-        public DotSubgraph(string id = null)
+        /// <param name="rank">The rank attribute to assign to the subgraph.</param>
+        public DotSubgraph(string id = null, DotRank? rank = null)
             : this
               (
                   id,
@@ -51,6 +53,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
                   new DotEntityAttributes()
               )
         {
+            Attributes.Rank = rank;
         }
 
         // TODO: dodać metodę wytwórczą, która przyjmuje rank i pramams string[] id węzłów

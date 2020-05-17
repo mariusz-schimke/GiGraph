@@ -53,6 +53,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             _attributes[key] = new DotArrowDirectionAttribute(key, value);
         }
 
+        public virtual void Set(string key, DotRank value)
+        {
+            _attributes[key] = new DotRankAttribute(key, value);
+        }
+
         public virtual void SetCustom(string key, string value)
         {
             _attributes[key] = new DotCustomAttribute(key, value);
