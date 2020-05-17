@@ -57,6 +57,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("label", value, v => new DotHtmlAttribute("label", v));
         }
 
+        public virtual double? ArrowSize
+        {
+            get => TryGetAs<DotDoubleAttribute>("arrowsize", out var result) ? result.Value : (double?)null;
+            set => AddOrRemove("arrowsize", value, v => new DotDoubleAttribute("arrowsize", v.Value));
+        }
+
         public virtual DotArrowType? ArrowHead
         {
             get => TryGetAs<DotArrowTypeAttribute>("arrowhead", out var result) ? result.Value : (DotArrowType?)null;
@@ -68,11 +74,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetAs<DotArrowTypeAttribute>("arrowtail", out var result) ? result.Value : (DotArrowType?)null;
             set => AddOrRemove("arrowtail", value, v => new DotArrowTypeAttribute("arrowtail", v.Value));
         }
-
-        public virtual double? ArrowSize
+        public virtual DotArrowDirection? ArrowDirection
         {
-            get => TryGetAs<DotDoubleAttribute>("arrowsize", out var result) ? result.Value : (double?)null;
-            set => AddOrRemove("arrowsize", value, v => new DotDoubleAttribute("arrowsize", v.Value));
+            get => TryGetAs<DotArrowDirectionAttribute>("dir", out var result) ? result.Value : (DotArrowDirection?)null;
+            set => AddOrRemove("dir", value, v => new DotArrowDirectionAttribute("dir", v.Value));
         }
     }
 }

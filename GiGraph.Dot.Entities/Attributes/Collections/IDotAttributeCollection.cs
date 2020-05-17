@@ -52,6 +52,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         void Set(string key, DotArrowType value);
 
         /// <summary>
+        /// Adds or replaces the specified arrow direction attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        void Set(string key, DotArrowDirection value);
+
+        /// <summary>
         /// Adds or replaces the specified HTML text attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>

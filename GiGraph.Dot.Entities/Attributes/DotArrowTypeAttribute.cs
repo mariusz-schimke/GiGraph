@@ -4,8 +4,8 @@ using System;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    /// An arrow type attribute. Assignable to edges only.
-    /// To see how each arrow type is rendered, please go to <seealso cref="https://www.graphviz.org/doc/info/attrs.html#k:arrowType"/>.
+    /// Arrow type attribute. Assignable to edges only.
+    /// To see how each arrow type is rendered, please go to <see cref="https://www.graphviz.org/doc/info/attrs.html#k:arrowType"/>.
     /// </summary>
     public class DotArrowTypeAttribute : DotAttribute<DotArrowType>
     {
@@ -83,7 +83,6 @@ namespace GiGraph.Dot.Entities.Attributes
                 default:
                     throw new ArgumentOutOfRangeException(nameof(IDotAttribute.GetDotEncodedValue), $"The specified arrow type '{Value}' is not supported.");
             }
-
         }
     }
 }
