@@ -72,6 +72,7 @@ namespace GiGraph
             graph.EdgeDefaults.ArrowTail = DotArrowType.Diamond;
             graph.EdgeDefaults.ArrowSize = 0.9;
             graph.EdgeDefaults.ArrowDirection = DotArrowDirection.Backward;
+            graph.EdgeDefaults.Decorate = true;
         }
 
         private static void AddNodes(DotGraph graph)
@@ -98,7 +99,8 @@ namespace GiGraph
 
         private static void AddEdges(DotGraph graph)
         {
-            var edge1 = graph.Edges.Add("node1", "node2");
+            var edge1 = graph.Edges.Add("node1", "node2",
+                e => e.Attributes.Label = "edge label");
         }
 
         private static void AddSubgraphs(DotGraph graph)

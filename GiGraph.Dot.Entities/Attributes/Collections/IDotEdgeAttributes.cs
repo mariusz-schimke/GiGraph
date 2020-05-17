@@ -64,5 +64,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </para>
         /// </summary>
         DotArrowDirection? ArrowDirection { get; set; }
+
+        /// <summary>
+        /// If true, attaches edge label to edge by a 2-segment polyline, underlining the label,
+        /// then going to the closest point of spline. Default: false;
+        /// </summary>
+        bool? Decorate { get; set; }
     }
 }

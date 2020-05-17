@@ -29,6 +29,19 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
+        /// Adds an edge to the collection, that connects two nodes with the specified identifiers.
+        /// </summary>
+        /// <param name="leftNodeId">The left (source) node identifier.</param>
+        /// <param name="rightNodeId">The right (destination) node identifier.</param>
+        /// <param name="initEdge">An optional edge initializer delegate.</param>
+        public virtual DotEdge Add(string leftNodeId, string rightNodeId, Action<DotEdge> initEdge)
+        {
+            var edge = Add(leftNodeId, rightNodeId);
+            initEdge?.Invoke(edge);
+            return edge;
+        }
+
+        /// <summary>
         /// Removes the specified edge from the collection.
         /// </summary>
         /// <param name="edge">The edge to remove.</param>
