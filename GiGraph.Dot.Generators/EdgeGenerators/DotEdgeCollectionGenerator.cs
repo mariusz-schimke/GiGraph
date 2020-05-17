@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Core;
+using GiGraph.Dot.Core.TextEscaping;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Options;
@@ -10,6 +11,11 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
 {
     public class DotEdgeCollectionGenerator : DotEntityGenerator<DotEdgeCollection, IDotEdgeStatementWriter>
     {
+        protected DotEdgeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+            : base(syntaxRules, options, entityGenerators, identifierEscaper)
+        {
+        }
+
         public DotEdgeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {

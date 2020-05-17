@@ -13,16 +13,14 @@ namespace GiGraph.Dot.Generators.GraphGenerators
         where TGraph : DotCommonGraph
         where TWriter : IDotEntityWriter
     {
-        protected readonly TextEscapingPipeline _graphIdEscaper = TextEscapingPipeline.CreateForGraphId();
-
-        public DotCommonGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
-            : base(syntaxRules, options, entityGenerators)
+        protected DotCommonGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+            : base(syntaxRules, options, entityGenerators, identifierEscaper ?? TextEscapingPipeline.CreateForGraphId())
         {
         }
 
-        protected virtual string EscapeGraphIdentifier(string id)
+        public DotCommonGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+            : this(syntaxRules, options, entityGenerators, identifierEscaper: null)
         {
-            return _graphIdEscaper.Escape(id);
         }
 
         protected virtual void WriteBody(DotCommonGraph graphBody, IDotCommonGraphWriter writer)

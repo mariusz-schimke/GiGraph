@@ -15,15 +15,21 @@ namespace GiGraph.Dot.Generators.CommonEntityGenerators
         protected readonly DotSyntaxRules _syntaxRules;
         protected readonly DotGenerationOptions _options;
         protected readonly IDotEntityGeneratorsProvider _entityGenerators;
-        protected readonly TextEscapingPipeline _valueEscaper = TextEscapingPipeline.CreateDefault();
+        protected readonly TextEscapingPipeline _identifierEscaper;
 
         public abstract void Generate(TEntity entity, TWriter writer);
 
-        public DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        protected DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
         {
             _syntaxRules = syntaxRules;
             _options = options;
             _entityGenerators = entityGenerators;
+            _identifierEscaper = identifierEscaper ?? TextEscapingPipeline.CreateDefault();
+        }
+
+        public DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+            : this(syntaxRules, options, entityGenerators, identifierEscaper: null)
+        {
         }
 
         public virtual bool Supports<TRequiredWriter>(Type entityType, out bool isExactEntityTypeMatch)
@@ -52,7 +58,7 @@ namespace GiGraph.Dot.Generators.CommonEntityGenerators
 
         protected virtual string EscapeIdentifier(string id)
         {
-            return _valueEscaper.Escape(id);
+            return _identifierEscaper.Escape(id);
         }
 
         void IDotEntityGenerator.Generate(IDotEntity entity, IDotEntityWriter writer)

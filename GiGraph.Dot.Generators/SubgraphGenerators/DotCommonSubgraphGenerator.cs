@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Core;
+using GiGraph.Dot.Core.TextEscaping;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Generators.GraphGenerators;
 using GiGraph.Dot.Generators.Options;
@@ -12,10 +13,15 @@ namespace GiGraph.Dot.Generators.SubgraphGenerators
     {
         protected readonly bool _isCluster;
 
-        public DotCommonSubgraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, bool isCluster)
-            : base(syntaxRules, options, entityGenerators)
+        protected DotCommonSubgraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper, bool isCluster)
+            : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
             _isCluster = isCluster;
+        }
+
+        public DotCommonSubgraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, bool isCluster)
+            : this(syntaxRules, options, entityGenerators, identifierEscaper: null, isCluster)
+        {
         }
 
         public override void Generate(TSubgraph subgraph, IDotSubgraphWriter writer)
@@ -26,7 +32,7 @@ namespace GiGraph.Dot.Generators.SubgraphGenerators
 
         protected virtual void WriteDeclaration(string id, IDotSubgraphWriter writer)
         {
-            id = EscapeGraphIdentifier(id);
+            id = EscapeIdentifier(id);
             writer.WriteSubgraphDeclaration(id, _isCluster, IdentifierRequiresQuoting(id));
         }
     }

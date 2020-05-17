@@ -1,5 +1,6 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Core;
+﻿using GiGraph.Dot.Core;
+using GiGraph.Dot.Core.TextEscaping;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Options;
 using GiGraph.Dot.Generators.Providers;
@@ -9,6 +10,11 @@ namespace GiGraph.Dot.Generators.NodeGenerators
 {
     public class DotNodeDefaultsGenerator : DotEntityWithAttributeListGenerator<DotAttributeCollection, IDotNodeDefaultsWriter>
     {
+        protected DotNodeDefaultsGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+            : base(syntaxRules, options, entityGenerators, identifierEscaper)
+        {
+        }
+
         public DotNodeDefaultsGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {

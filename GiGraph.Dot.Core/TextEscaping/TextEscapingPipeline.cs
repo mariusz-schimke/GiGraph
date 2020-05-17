@@ -31,6 +31,11 @@ namespace GiGraph.Dot.Core.TextEscaping
             return new TextEscapingPipeline(escaper);
         }
 
+        public static TextEscapingPipeline CreateNone()
+        {
+            return new TextEscapingPipeline();
+        }
+
         public static TextEscapingPipeline CreateDefault()
         {
             return new TextEscapingPipeline
