@@ -19,6 +19,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual void Set(string key, string value)
         {
+            _attributes[key] = new DotStringAttribute(key, value);
+        }
+
+        public virtual void SetCustom(string key, string value)
+        {
             _attributes[key] = new DotCustomAttribute(key, value);
         }
 
