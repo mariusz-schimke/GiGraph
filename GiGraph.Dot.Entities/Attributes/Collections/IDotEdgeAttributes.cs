@@ -25,20 +25,44 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         Color? Color { get; set; }
 
         /// <summary>
+        /// Gets or sets the multiplicative scale factor for arrowheads (default: 1.0, minimum: 0.0).
+        /// </summary>
+        double? ArrowSize { get; set; }
+
+        /// <summary>
         /// Gets or sets the style of arrow head on the head node of an edge (default: <see cref="DotArrowType.Normal"/>).
-        /// This will only appear if the direction attribute is "forward" or "both". 
+        /// Appears only if the <see cref="ArrowDirection"/> attribute is <see cref="DotArrowDirection.Forward"/> or 
+        /// <see cref="DotArrowDirection.Both"/>.
         /// </summary>
         DotArrowType? ArrowHead { get; set; }
 
         /// <summary>
         /// Gets or sets the style of arrow head on the tail node of an edge (default: <see cref="DotArrowType.Normal"/>).
-        /// This will only appear if the direction attribute is "back" or "both".
+        /// Appears only if the <see cref="ArrowDirection"/> attribute is <see cref="DotArrowDirection.Backward"/> or 
+        /// <see cref="DotArrowDirection.Both"/>.
         /// </summary>
         DotArrowType? ArrowTail { get; set; }
 
         /// <summary>
-        /// Gets or sets the multiplicative scale factor for arrowheads (default: 1.0, minimum: 0.0).
+        /// Gets or sets edge type for drawing arrow heads. Default: <see cref="DotArrowDirection.Forward"/> (for directed graphs),
+        /// <see cref="DotArrowDirection.None"/> (for undirected graphs).
+        /// <para>
+        ///     Indicates which ends of the edge should be decorated with an arrow head.
+        ///     The actual style of the arrow head can be specified using the <see cref="ArrowHead"/> and <see cref="ArrowTail"/> attributes.
+        /// </para>
+        /// <para>
+        ///     A glyph is drawn at the head end of an edge if and only if the arrow direction is 
+        ///     <see cref="DotArrowDirection.Forward"/> or <see cref="DotArrowDirection.Both"/>.
+        /// </para>    
+        /// <para>
+        ///     A glyph is drawn at the tail end of an edge if and only if the direction is 
+        ///     <see cref="DotArrowDirection.Backward"/> or <see cref="DotArrowDirection.Both"/>.
+        /// </para>    
+        /// <para>
+        ///     For undirected edges T -- H, one of the nodes, usually the right hand one, is treated as the head
+        ///     for the purpose of interpreting <see cref="DotArrowDirection.Forward"/> and <see cref="DotArrowDirection.Backward"/>.
+        /// </para>
         /// </summary>
-        double? ArrowSize { get; set; }
+        DotArrowDirection? ArrowDirection { get; set; }
     }
 }

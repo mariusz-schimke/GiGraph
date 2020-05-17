@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// The node shape. To see how each shape is rendered,
-    /// please go to <seealso cref="https://www.graphviz.org/doc/info/shapes.html"/>.
+    /// please go to <see cref="https://www.graphviz.org/doc/info/shapes.html"/>.
     /// </summary>
     public enum DotNodeShape
     {

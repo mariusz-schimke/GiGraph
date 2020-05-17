@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// The arrow type. To see how each arrow type is rendered,
-    /// please go to <seealso cref="https://www.graphviz.org/doc/info/attrs.html#k:arrowType"/>.
+    /// please go to <see cref="https://www.graphviz.org/doc/info/attrs.html#k:arrowType"/>.
     /// </summary>
     public enum DotArrowType
     {

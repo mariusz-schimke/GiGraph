@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
     /// A node shape attribute. Assignable to nodes only.
-    /// To see how each shape is rendered, please go to <seealso cref="https://www.graphviz.org/doc/info/shapes.html"/>.
+    /// To see how each shape is rendered, please go to <see cref="https://www.graphviz.org/doc/info/shapes.html"/>.
     /// </summary>
     public class DotNodeShapeAttribute : DotAttribute<DotNodeShape>
     {

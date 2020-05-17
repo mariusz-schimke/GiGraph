@@ -69,7 +69,8 @@ namespace GiGraph
             graph.EdgeDefaults.Color = Color.Green;
             graph.EdgeDefaults.ArrowHead = DotArrowType.Diamond;
             graph.EdgeDefaults.ArrowTail = DotArrowType.Diamond;
-            graph.EdgeDefaults.ArrowSize = 2;
+            graph.EdgeDefaults.ArrowSize = 0.9;
+            graph.EdgeDefaults.ArrowDirection = DotArrowDirection.Backward;
         }
 
         private static void AddNodes(DotGraph graph)
