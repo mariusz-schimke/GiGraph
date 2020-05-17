@@ -1,7 +1,7 @@
-﻿using GiGraph.Dot.Entities.Attributes.ShapeAttributes;
+﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System;
 
-namespace GiGraph.Dot.Entities.Attributes.ShapeAttributes
+namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
     /// A node shape attribute. Assignable to nodes only.
@@ -9,16 +9,28 @@ namespace GiGraph.Dot.Entities.Attributes.ShapeAttributes
     /// </summary>
     public class DotNodeShapeAttribute : DotAttribute<DotNodeShape>
     {
-        public static string AttributeKey => "shape";
-
+        /// <summary>
+        /// Creates a new instance of the attribute with a key of "shape".
+        /// </summary>
+        /// <param name="value">The value of the attribute.</param>
         public DotNodeShapeAttribute(DotNodeShape value)
-            : base(AttributeKey, value)
+            : base("shape", value)
         {
         }
 
-        protected override string GetValueAsString()
+        /// <summary>
+        /// Creates a new instance of the attribute.
+        /// </summary>
+        /// <param name="key">The key of the attribute.</param>
+        /// <param name="value">The value of the attribute.</param>
+        public DotNodeShapeAttribute(string key, DotNodeShape value)
+            : base(key, value)
         {
-            switch (_value)
+        }
+
+        protected override string GetDotEncodedValue()
+        {
+            switch (Value)
             {
                 case DotNodeShape.None:
                     return "none";
@@ -204,7 +216,7 @@ namespace GiGraph.Dot.Entities.Attributes.ShapeAttributes
                     return "Mrecord";
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(IDotAttribute.Value), $"The specified node shape '{_value}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(IDotAttribute.GetDotEncodedValue), $"The specified node shape '{Value}' is not supported.");
             }
         }
 

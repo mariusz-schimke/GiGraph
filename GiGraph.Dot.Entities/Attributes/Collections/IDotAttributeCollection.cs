@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GiGraph.Dot.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections

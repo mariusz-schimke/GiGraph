@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.ShapeAttributes;
+﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System.Drawing;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
