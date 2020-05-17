@@ -1,5 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.LabelAttributes;
-using GiGraph.Dot.Entities.Attributes.ShapeAttributes;
+﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Subgraphs;
@@ -84,7 +83,7 @@ namespace GiGraph
 
             graph.Nodes.Add("node3", n =>
             {
-                n.Attributes.Label = new DotTextLabelAttribute("label");
+                n.Attributes.Label = "some label";
             })
             .Attributes.Set("color", "red");
 

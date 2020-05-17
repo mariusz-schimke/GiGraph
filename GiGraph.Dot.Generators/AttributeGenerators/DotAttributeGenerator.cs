@@ -19,8 +19,8 @@ namespace GiGraph.Dot.Generators.AttributeGenerators
         {
             WriteAttribute
             (
-                ((IDotAttribute)attribute).Key,
-                ((IDotAttribute)attribute).Value,
+                attribute.Key,
+                ((IDotAttribute)attribute).GetDotEncodedValue(),
                 writer
             );
         }

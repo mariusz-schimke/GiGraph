@@ -1,4 +1,4 @@
-﻿namespace GiGraph.Dot.Entities.Attributes.ShapeAttributes
+﻿namespace GiGraph.Dot.Entities.Attributes.Enums
 {
     /// <summary>
     /// The node shape. To see how each of the shapes are rendered, please go to <seealso cref="https://www.graphviz.org/doc/info/shapes.html"/>.

@@ -2,27 +2,26 @@
 {
     public abstract class DotAttribute : IDotAttribute
     {
-        protected readonly string _key;
+        public string Key { get; set; }
 
-        protected abstract string GetValueAsString();
-
-        string IDotAttribute.Key => _key;
-        string IDotAttribute.Value => GetValueAsString();
+        protected abstract string GetDotEncodedValue();
 
         protected DotAttribute(string key)
         {
-            _key = key;
+            Key = key;
         }
+
+        string IDotAttribute.GetDotEncodedValue() => GetDotEncodedValue();
     }
 
     public abstract class DotAttribute<T> : DotAttribute, IDotAttribute
     {
-        protected readonly T _value;
+        protected T Value { get; set; }
 
-        protected DotAttribute(string key, T value)
+        public DotAttribute(string key, T value)
             : base(key)
         {
-            _value = value;
+            Value = value;
         }
 
         /// <summary>
@@ -30,20 +29,20 @@
         /// </summary>
         public override string ToString()
         {
-            return _value?.ToString();
+            return Value?.ToString();
         }
 
         /// <summary>
         /// Gets the value of the attribute in a format understood by DOT graph renderer.
         /// </summary>
-        protected override string GetValueAsString()
+        protected override string GetDotEncodedValue()
         {
-            return _value?.ToString() ?? string.Empty;
+            return Value?.ToString() ?? string.Empty;
         }
 
-        public static implicit operator T(DotAttribute<T> value)
+        public static implicit operator T(DotAttribute<T> attribute)
         {
-            return value is { } ? value._value : default;
+            return attribute is { } ? attribute.Value : default;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Entities.Attributes
+﻿using GiGraph.Dot.Entities;
+
+namespace GiGraph.Dot.Entities.Attributes
 {
     public interface IDotAttribute : IDotEntity
     {
@@ -10,6 +12,6 @@
         /// <summary>
         /// Gets the value of the attribute in a format understood by DOT graph renderer.
         /// </summary>
-        string Value { get; }
+        string GetDotEncodedValue();
     }
 }

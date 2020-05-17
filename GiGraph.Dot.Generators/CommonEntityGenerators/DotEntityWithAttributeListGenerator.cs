@@ -1,6 +1,6 @@
-﻿using GiGraph.Dot.Core;
+﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Core;
 using GiGraph.Dot.Entities;
-using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Generators.Options;
 using GiGraph.Dot.Generators.Providers;
 using GiGraph.Dot.Writers.AttributeWriters;
