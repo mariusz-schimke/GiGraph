@@ -27,6 +27,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             _attributes[key] = new DotDoubleAttribute(key, value);
         }
 
+        public virtual void Set(string key, bool value)
+        {
+            _attributes[key] = new DotBoolAttribute(key, value);
+        }
+
         public virtual void SetCustom(string key, string value)
         {
             _attributes[key] = new DotCustomAttribute(key, value);
