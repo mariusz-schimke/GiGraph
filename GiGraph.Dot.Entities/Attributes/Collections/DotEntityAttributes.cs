@@ -29,10 +29,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("bgcolor", value, v => new DotColorAttribute("bgcolor", v.Value));
         }
 
-        public virtual DotNodeShape? Shape
+        public virtual DotShape? Shape
         {
-            get => TryGetValueAs<DotNodeShape>("shape", out var result) ? result : (DotNodeShape?)null;
-            set => AddOrRemove("shape", value, v => new DotNodeShapeAttribute("shape", v.Value));
+            get => TryGetValueAs<DotShape>("shape", out var result) ? result : (DotShape?)null;
+            set => AddOrRemove("shape", value, v => new DotShapeAttribute("shape", v.Value));
         }
 
         /// <summary>
@@ -78,6 +78,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetAs<DotArrowDirectionAttribute>("dir", out var result) ? result.Value : (DotArrowDirection?)null;
             set => AddOrRemove("dir", value, v => new DotArrowDirectionAttribute("dir", v.Value));
+        }
+
+        public virtual DotRank? Rank
+        {
+            get => TryGetAs<DotRankAttribute>("rank", out var result) ? result.Value : (DotRank?)null;
+            set => AddOrRemove("rank", value, v => new DotRankAttribute("rank", v.Value));
         }
     }
 }

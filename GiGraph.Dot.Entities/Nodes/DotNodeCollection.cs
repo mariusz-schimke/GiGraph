@@ -29,6 +29,18 @@ namespace GiGraph.Dot.Entities.Nodes
         }
 
         /// <summary>
+        /// Adds new nodes with the specified identifiers to the collection.
+        /// </summary>
+        /// <param name="ids">The identifiers of the nodes to add.</param>
+        public virtual void Add(params string[] ids)
+        {
+            foreach (var id in ids)
+            {
+                Add(id);
+            }
+        }
+
+        /// <summary>
         /// Adds a new node with the specified identifier to the collection, and returns it.
         /// </summary>
         /// <param name="id">The identifier of the node to add.</param>
@@ -38,6 +50,19 @@ namespace GiGraph.Dot.Entities.Nodes
             var node = Add(id);
             initNode?.Invoke(node);
             return node;
+        }
+
+        /// <summary>
+        /// Adds a new node with the specified identifier to the collection, and returns it.
+        /// </summary>
+        /// <param name="initNode">An optional node initializer delegate to call for each provided ID.</param>
+        /// <param name="ids">The identifiers of the nodes to add.</param>
+        public virtual void Add(Action<DotNode> initNode, params string[] ids)
+        {
+            foreach (var id in ids)
+            {
+                Add(id, initNode);
+            }
         }
 
         /// <summary>

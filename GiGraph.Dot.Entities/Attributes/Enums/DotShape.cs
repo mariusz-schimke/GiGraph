@@ -4,7 +4,7 @@
     /// The node shape. To see how each shape is rendered,
     /// please go to <see cref="https://www.graphviz.org/doc/info/shapes.html"/>.
     /// </summary>
-    public enum DotNodeShape
+    public enum DotShape
     {
         None,
 
