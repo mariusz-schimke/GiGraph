@@ -11,11 +11,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         IDotEdgeAttributes
     {
         /// <summary>
+        /// Gets or sets the color of the element.
+        /// </summary>
+        public virtual Color? Color
+        {
+            get => TryGetValueAs<Color>("color", out var result) ? result : (Color?)null;
+            set => AddOrRemove("color", value, v => new DotColorAttribute("color", v.Value));
+        }
+
+        /// <summary>
         /// Gets or sets the background color of the graph.
         /// </summary>
         public virtual Color? BackgroundColor
         {
-            get => TryGet<DotColorAttribute>("bgcolor", out var result) ? result : (Color?)null;
+            get => TryGetValueAs<Color>("bgcolor", out var result) ? result : (Color?)null;
             set => AddOrRemove("bgcolor", value, v => new DotColorAttribute("bgcolor", v.Value));
         }
 
@@ -24,17 +33,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         public virtual DotNodeShape? Shape
         {
-            get => TryGet<DotNodeShapeAttribute>("shape", out var result) ? (DotNodeShape)result : (DotNodeShape?)null;
+            get => TryGetValueAs<DotNodeShape>("shape", out var result) ? result : (DotNodeShape?)null;
             set => AddOrRemove("shape", value, v => new DotNodeShapeAttribute("shape", v.Value));
-        }
-
-        /// <summary>
-        /// Gets or sets the color of the element.
-        /// </summary>
-        public virtual Color? Color
-        {
-            get => TryGet<DotColorAttribute>("color", out var result) ? result : (Color?)null;
-            set => AddOrRemove("color", value, v => new DotColorAttribute("color", v.Value));
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         public virtual string Label
         {
-            get => TryGet<DotStringAttribute>("label", out var result) ? result : (string)null;
+            get => TryGetAs<DotStringAttribute>("label", out var result) ? result.Value : null;
             set => AddOrRemove("label", value, v => new DotStringAttribute("label", v));
         }
 
@@ -55,7 +55,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         public virtual string LabelHtml
         {
-            get => TryGet<DotHtmlAttribute>("label", out var result) ? (string)result : null;
+            get => TryGetAs<DotHtmlAttribute>("label", out var result) ? result.Value : null;
             set => AddOrRemove("label", value, v => new DotHtmlAttribute("label", v));
         }
     }

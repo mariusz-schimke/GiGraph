@@ -12,20 +12,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual int Count => _attributes.Count;
         bool ICollection<DotAttribute>.IsReadOnly => false;
 
-        /// <summary>
-        /// Adds or replaces the specified attribute in the collection.
-        /// </summary>
-        /// <param name="attribute">The attribute to include in the collection.</param>
         public virtual void Set(DotAttribute attribute)
         {
             _attributes[((IDotAttribute)attribute).Key] = attribute;
         }
 
-        /// <summary>
-        /// Adds or replaces the specified custom attribute in the collection.
-        /// </summary>
-        /// <param name="key">The key of the attribute to include in the collection.</param>
-        /// <param name="value">The value of the attribute to include in the collection.</param>
         public virtual void Set(string key, string value)
         {
             _attributes[key] = new DotCustomAttribute(key, value);
@@ -41,28 +32,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return _attributes.ContainsKey(key);
         }
 
-        /// <summary>
-        /// Removes the specified attribute from the collection.
-        /// </summary>
-        /// <param name="attribute">The attribute to remove.</param>
         public virtual bool Remove(DotAttribute attribute)
         {
             return Remove(((IDotAttribute)attribute).Key);
         }
 
-        /// <summary>
-        /// Removes the specified attribute from the collection.
-        /// </summary>
-        /// <param name="key">The key of the attribute to remove.</param>
         public virtual bool Remove(string key)
         {
             return _attributes.Remove(key);
         }
 
-        /// <summary>
-        /// Removes all attributes matching the specified criteria from the collection.
-        /// </summary>
-        /// <param name="match">The predicate to use for matching attributes.</param>
         public virtual int RemoveAll(Predicate<DotAttribute> match)
         {
             var result = 0;
@@ -76,37 +55,23 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return result;
         }
 
-        /// <summary>
-        /// Clears the collection.
-        /// </summary>
         public virtual void Clear()
         {
             _attributes.Clear();
         }
 
-        /// <summary>
-        /// Checks if an attribute with the specified key exists in the collection, and returns it.
-        /// </summary>
-        /// <typeparam name="T">The type to return the attribute as.</typeparam>
-        /// <param name="key">The key of the attribute to get.</param>
-        public virtual T Get<T>(string key)
+        public virtual T GetAs<T>(string key)
             where T : DotAttribute
         {
-            if (TryGet<T>(key, out var result))
+            if (_attributes.TryGetValue(key, out var result))
             {
-                return result;
+                return (T)result;
             }
 
             return null;
         }
 
-        /// <summary>
-        /// Checks if an attribute with the specified key exists in the collection, and returns it.
-        /// </summary>
-        /// <typeparam name="T">The type to return the attribute as.</typeparam>
-        /// <param name="key">The key of the attribute to get.</param>
-        /// <param name="attribute">The attribute if found or null otherwise.</param>
-        public virtual bool TryGet<T>(string key, out T attribute)
+        public virtual bool TryGetAs<T>(string key, out T attribute)
             where T : DotAttribute
         {
             if (_attributes.TryGetValue(key, out var result))
@@ -116,6 +81,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
 
             attribute = null;
+            return false;
+        }
+
+        public virtual bool TryGetValueAs<T>(string key, out T value)
+        {
+            if (_attributes.TryGetValue(key, out var attribute) && attribute is DotAttribute<T> attributeWithValue)
+            {
+                value = attributeWithValue.Value;
+                return true;
+            }
+
+            value = default;
             return false;
         }
 

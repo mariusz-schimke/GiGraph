@@ -2,8 +2,14 @@
 {
     public abstract class DotAttribute : IDotAttribute
     {
+        /// <summary>
+        /// Gets or sets the key of the attribute.
+        /// </summary>
         public string Key { get; set; }
 
+        /// <summary>
+        /// Gets the value of the attribute in a format understood by DOT graph renderer.
+        /// </summary>
         protected abstract string GetDotEncodedValue();
 
         protected DotAttribute(string key)
@@ -16,7 +22,10 @@
 
     public abstract class DotAttribute<T> : DotAttribute, IDotAttribute
     {
-        protected T Value { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the attribute.
+        /// </summary>
+        public T Value { get; set; }
 
         public DotAttribute(string key, T value)
             : base(key)
