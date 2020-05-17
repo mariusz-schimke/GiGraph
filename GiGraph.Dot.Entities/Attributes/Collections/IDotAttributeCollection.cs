@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        void Set(string key, DotNodeShape value);
+        void Set(string key, DotShape value);
 
         /// <summary>
         /// Adds or replaces the specified arrow type attribute in the collection.

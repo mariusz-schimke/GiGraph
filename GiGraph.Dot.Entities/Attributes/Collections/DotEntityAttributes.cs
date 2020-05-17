@@ -29,10 +29,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("bgcolor", value, v => new DotColorAttribute("bgcolor", v.Value));
         }
 
-        public virtual DotNodeShape? Shape
+        public virtual DotShape? Shape
         {
-            get => TryGetValueAs<DotNodeShape>("shape", out var result) ? result : (DotNodeShape?)null;
-            set => AddOrRemove("shape", value, v => new DotNodeShapeAttribute("shape", v.Value));
+            get => TryGetValueAs<DotShape>("shape", out var result) ? result : (DotShape?)null;
+            set => AddOrRemove("shape", value, v => new DotShapeAttribute("shape", v.Value));
         }
 
         /// <summary>

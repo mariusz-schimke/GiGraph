@@ -38,9 +38,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             _attributes[key] = new DotBoolAttribute(key, value);
         }
 
-        public virtual void Set(string key, DotNodeShape value)
+        public virtual void Set(string key, DotShape value)
         {
-            _attributes[key] = new DotNodeShapeAttribute(key, value);
+            _attributes[key] = new DotShapeAttribute(key, value);
         }
 
         public virtual void Set(string key, DotArrowType value)

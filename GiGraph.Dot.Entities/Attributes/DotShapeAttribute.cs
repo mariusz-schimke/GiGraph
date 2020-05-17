@@ -7,13 +7,13 @@ namespace GiGraph.Dot.Entities.Attributes
     /// A node shape attribute. Assignable to nodes only.
     /// To see how each shape is rendered, please go to <see cref="https://www.graphviz.org/doc/info/shapes.html"/>.
     /// </summary>
-    public class DotNodeShapeAttribute : DotAttribute<DotNodeShape>
+    public class DotShapeAttribute : DotAttribute<DotShape>
     {
         /// <summary>
         /// Creates a new instance of the attribute with a key of "shape".
         /// </summary>
         /// <param name="value">The value of the attribute.</param>
-        public DotNodeShapeAttribute(DotNodeShape value)
+        public DotShapeAttribute(DotShape value)
             : base("shape", value)
         {
         }
@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// </summary>
         /// <param name="key">The key of the attribute.</param>
         /// <param name="value">The value of the attribute.</param>
-        public DotNodeShapeAttribute(string key, DotNodeShape value)
+        public DotShapeAttribute(string key, DotShape value)
             : base(key, value)
         {
         }
@@ -32,187 +32,187 @@ namespace GiGraph.Dot.Entities.Attributes
         {
             switch (Value)
             {
-                case DotNodeShape.None:
+                case DotShape.None:
                     return "none";
 
-                case DotNodeShape.Box:
+                case DotShape.Box:
                     return "box";
 
-                case DotNodeShape.Polygon:
+                case DotShape.Polygon:
                     return "polygon";
 
-                case DotNodeShape.Ellipse:
+                case DotShape.Ellipse:
                     return "ellipse";
 
-                case DotNodeShape.Oval:
+                case DotShape.Oval:
                     return "oval";
 
-                case DotNodeShape.Circle:
+                case DotShape.Circle:
                     return "circle";
 
-                case DotNodeShape.Point:
+                case DotShape.Point:
                     return "point";
 
-                case DotNodeShape.Egg:
+                case DotShape.Egg:
                     return "egg";
 
-                case DotNodeShape.Triangle:
+                case DotShape.Triangle:
                     return "triangle";
 
-                case DotNodeShape.PlainText:
+                case DotShape.PlainText:
                     return "plaintext";
 
-                case DotNodeShape.Plain:
+                case DotShape.Plain:
                     return "plain";
 
-                case DotNodeShape.Diamond:
+                case DotShape.Diamond:
                     return "diamond";
 
-                case DotNodeShape.Trapezium:
+                case DotShape.Trapezium:
                     return "trapezium";
 
-                case DotNodeShape.Parallelogram:
+                case DotShape.Parallelogram:
                     return "parallelogram";
 
-                case DotNodeShape.House:
+                case DotShape.House:
                     return "house";
 
-                case DotNodeShape.Pentagon:
+                case DotShape.Pentagon:
                     return "pentagon";
 
-                case DotNodeShape.Hexagon:
+                case DotShape.Hexagon:
                     return "hexagon";
 
-                case DotNodeShape.Septagon:
+                case DotShape.Septagon:
                     return "septagon";
 
-                case DotNodeShape.Octagon:
+                case DotShape.Octagon:
                     return "octagon";
 
-                case DotNodeShape.DoubleCircle:
+                case DotShape.DoubleCircle:
                     return "doublecircle";
 
-                case DotNodeShape.DoubleOctagon:
+                case DotShape.DoubleOctagon:
                     return "doubleoctagon";
 
-                case DotNodeShape.TripleOctagon:
+                case DotShape.TripleOctagon:
                     return "tripleoctagon";
 
-                case DotNodeShape.InvTriangle:
+                case DotShape.InvTriangle:
                     return "invtriangle";
 
-                case DotNodeShape.InvTrapezium:
+                case DotShape.InvTrapezium:
                     return "invtrapezium";
 
-                case DotNodeShape.InvHouse:
+                case DotShape.InvHouse:
                     return "invhouse";
 
-                case DotNodeShape.MDiamond:
+                case DotShape.MDiamond:
                     return "Mdiamond";
 
-                case DotNodeShape.MSquare:
+                case DotShape.MSquare:
                     return "Msquare";
 
-                case DotNodeShape.MCircle:
+                case DotShape.MCircle:
                     return "Mcircle";
 
-                case DotNodeShape.Rect:
+                case DotShape.Rect:
                     return "rect";
 
-                case DotNodeShape.Rectangle:
+                case DotShape.Rectangle:
                     return "rectangle";
 
-                case DotNodeShape.Square:
+                case DotShape.Square:
                     return "square";
 
-                case DotNodeShape.Star:
+                case DotShape.Star:
                     return "star";
 
-                case DotNodeShape.Underline:
+                case DotShape.Underline:
                     return "underline";
 
-                case DotNodeShape.Cylinder:
+                case DotShape.Cylinder:
                     return "cylinder";
 
-                case DotNodeShape.Note:
+                case DotShape.Note:
                     return "note";
 
-                case DotNodeShape.Tab:
+                case DotShape.Tab:
                     return "tab";
 
-                case DotNodeShape.Folder:
+                case DotShape.Folder:
                     return "folder";
 
-                case DotNodeShape.Box3D:
+                case DotShape.Box3D:
                     return "box3d";
 
-                case DotNodeShape.Component:
+                case DotShape.Component:
                     return "component";
 
-                case DotNodeShape.Promoter:
+                case DotShape.Promoter:
                     return "promoter";
 
-                case DotNodeShape.Cds:
+                case DotShape.Cds:
                     return "cds";
 
-                case DotNodeShape.Terminator:
+                case DotShape.Terminator:
                     return "terminator";
 
-                case DotNodeShape.Utr:
+                case DotShape.Utr:
                     return "utr";
 
-                case DotNodeShape.PrimerSite:
+                case DotShape.PrimerSite:
                     return "primersite";
 
-                case DotNodeShape.RestrictionSite:
+                case DotShape.RestrictionSite:
                     return "restrictionsite";
 
-                case DotNodeShape.FivePOverhang:
+                case DotShape.FivePOverhang:
                     return "fivepoverhang";
 
-                case DotNodeShape.ThreePOverhang:
+                case DotShape.ThreePOverhang:
                     return "threepoverhang";
 
-                case DotNodeShape.NOverhang:
+                case DotShape.NOverhang:
                     return "noverhang";
 
-                case DotNodeShape.Assembly:
+                case DotShape.Assembly:
                     return "assembly";
 
-                case DotNodeShape.Signature:
+                case DotShape.Signature:
                     return "signature";
 
-                case DotNodeShape.Insulator:
+                case DotShape.Insulator:
                     return "insulator";
 
-                case DotNodeShape.Ribosite:
+                case DotShape.Ribosite:
                     return "ribosite";
 
-                case DotNodeShape.RnaStab:
+                case DotShape.RnaStab:
                     return "rnastab";
 
-                case DotNodeShape.Proteasesite:
+                case DotShape.Proteasesite:
                     return "proteasesite";
 
-                case DotNodeShape.ProteinStab:
+                case DotShape.ProteinStab:
                     return "proteinstab";
 
-                case DotNodeShape.RPromoter:
+                case DotShape.RPromoter:
                     return "rpromoter";
 
-                case DotNodeShape.RArrow:
+                case DotShape.RArrow:
                     return "rarrow";
 
-                case DotNodeShape.LArrow:
+                case DotShape.LArrow:
                     return "larrow";
 
-                case DotNodeShape.LPromoter:
+                case DotShape.LPromoter:
                     return "lpromoter";
 
-                case DotNodeShape.Record:
+                case DotShape.Record:
                     return "record";
 
-                case DotNodeShape.MRecord:
+                case DotShape.MRecord:
                     return "Mrecord";
 
                 default:
@@ -220,9 +220,9 @@ namespace GiGraph.Dot.Entities.Attributes
             }
         }
 
-        public static implicit operator DotNodeShapeAttribute(DotNodeShape shape)
+        public static implicit operator DotShapeAttribute(DotShape shape)
         {
-            return new DotNodeShapeAttribute(shape);
+            return new DotShapeAttribute(shape);
         }
     }
 }
