@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
+﻿using GiGraph.Dot.Entities.Attributes;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Subgraphs;
@@ -66,6 +67,8 @@ namespace GiGraph
         private static void AddEdgeDefaults(DotGraph graph)
         {
             graph.EdgeDefaults.Color = Color.Green;
+            graph.EdgeDefaults.ArrowHead = DotArrowType.Diamond;
+            graph.EdgeDefaults.ArrowTail = DotArrowType.Diamond;
         }
 
         private static void AddNodes(DotGraph graph)

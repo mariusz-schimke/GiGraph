@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        /// Gets or sets the background color of the graph.
+        /// Gets or sets the background color of the element.
         /// </summary>
         public virtual Color? BackgroundColor
         {
@@ -28,9 +28,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("bgcolor", value, v => new DotColorAttribute("bgcolor", v.Value));
         }
 
-        /// <summary>
-        /// Gets or sets the shape of the node.
-        /// </summary>
         public virtual DotNodeShape? Shape
         {
             get => TryGetValueAs<DotNodeShape>("shape", out var result) ? result : (DotNodeShape?)null;
@@ -57,6 +54,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetAs<DotHtmlAttribute>("label", out var result) ? result.Value : null;
             set => AddOrRemove("label", value, v => new DotHtmlAttribute("label", v));
+        }
+
+        public DotArrowType? ArrowHead
+        {
+            get => TryGetAs<DotArrowTypeAttribute>("arrowhead", out var result) ? result.Value : (DotArrowType?)null;
+            set => AddOrRemove("arrowhead", value, v => new DotArrowTypeAttribute("arrowhead", v.Value));
+        }
+
+        public DotArrowType? ArrowTail
+        {
+            get => TryGetAs<DotArrowTypeAttribute>("arrowtail", out var result) ? result.Value : (DotArrowType?)null;
+            set => AddOrRemove("arrowtail", value, v => new DotArrowTypeAttribute("arrowtail", v.Value));
         }
     }
 }
