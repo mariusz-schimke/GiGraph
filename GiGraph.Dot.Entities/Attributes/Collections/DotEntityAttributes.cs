@@ -97,5 +97,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetAs<DotBoolAttribute>("decorate", out var result) ? result.Value : (bool?)null;
             set => AddOrRemove("decorate", value, v => new DotBoolAttribute("decorate", v.Value));
         }
+
+        public virtual DotStyle? Style
+        {
+            get => TryGetAs<DotStyleAttribute>("style", out var result) ? result.Value : (DotStyle?)null;
+            set => AddOrRemove("style", value, v => new DotStyleAttribute("style", v.Value));
+        }
     }
 }

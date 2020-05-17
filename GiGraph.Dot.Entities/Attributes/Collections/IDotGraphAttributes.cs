@@ -28,5 +28,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Gets or sets the direction of graph layout (default: <see cref="DotRankDirection.TopToBottom"/>).
         /// </summary>
         DotRankDirection? Layout { get; set; }
+
+        /// <summary>
+        /// Sets the style of the graph (default: null). See the descriptions of individual <see cref="DotStyle"/> values
+        /// to learn which styles are applicable to this element type.
+        /// <para>
+        ///     Multiple styles can be used at once, for example:
+        ///     <code>
+        ///         <see cref="Style"/> = <see cref="DotStyle.Rounded"/> | <see cref="DotStyle.Bold"/>;
+        ///     </code>
+        /// </para>
+        /// </summary>
+        DotStyle? Style { get; set; }
     }
 }
