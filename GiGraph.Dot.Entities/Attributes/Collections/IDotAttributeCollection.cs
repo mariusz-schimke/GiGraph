@@ -41,22 +41,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Adds or replaces the specified node shape attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
-        /// <param name="shape">The value of the attribute to include in the collection.</param>
-        void Set(string key, DotNodeShape shape);
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        void Set(string key, DotNodeShape value);
 
         /// <summary>
         /// Adds or replaces the specified arrow type attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
-        /// <param name="arrowType">The value of the attribute to include in the collection.</param>
-        void Set(string key, DotArrowType arrowType);
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        void Set(string key, DotArrowType value);
 
         /// <summary>
         /// Adds or replaces the specified HTML text attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
-        /// <param name="html">The value of the attribute to include in the collection.</param>
-        void SetHtml(string key, string html);
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        void SetHtml(string key, string value);
 
         /// <summary>
         /// Adds or replaces the specified custom attribute in the collection.

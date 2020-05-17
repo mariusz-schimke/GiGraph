@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using GiGraph.Dot.Entities.Attributes.Enums;
+using System.Drawing;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -22,5 +23,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Gets or sets the color of the edge.
         /// </summary>
         Color? Color { get; set; }
+
+        /// <summary>
+        /// Gets or sets the style of arrow head on the head node of an edge.
+        /// This will only appear if the direction attribute is "forward" or "both". 
+        /// </summary>
+        DotArrowType? ArrowHead { get; set; }
+
+        /// <summary>
+        /// Gets or sets the style of arrow head on the tail node of an edge.
+        /// This will only appear if the direction attribute is "back" or "both".
+        /// </summary>
+        DotArrowType? ArrowTail { get; set; }
     }
 }

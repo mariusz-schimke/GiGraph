@@ -23,9 +23,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             _attributes[key] = new DotStringAttribute(key, value);
         }
 
-        public virtual void SetHtml(string key, string html)
+        public virtual void SetHtml(string key, string value)
         {
-            _attributes[key] = new DotHtmlAttribute(key, html);
+            _attributes[key] = new DotHtmlAttribute(key, value);
         }
 
         public virtual void Set(string key, double value)
@@ -38,14 +38,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             _attributes[key] = new DotBoolAttribute(key, value);
         }
 
-        public virtual void Set(string key, DotNodeShape shape)
+        public virtual void Set(string key, DotNodeShape value)
         {
-            _attributes[key] = new DotNodeShapeAttribute(key, shape);
+            _attributes[key] = new DotNodeShapeAttribute(key, value);
         }
 
-        public virtual void Set(string key, DotArrowType arrowType)
+        public virtual void Set(string key, DotArrowType value)
         {
-            _attributes[key] = new DotArrowTypeAttribute(key, arrowType);
+            _attributes[key] = new DotArrowTypeAttribute(key, value);
         }
 
         public virtual void SetCustom(string key, string value)
