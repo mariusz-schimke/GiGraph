@@ -45,7 +45,7 @@ namespace GiGraph
             AddClusters(graph);
 
             Console.WriteLine(graph.Build(fo, go));
-            graph.SaveToFile(@"C:\Temp\gigraph.gv");
+            graph.SaveToFile(@"C:\Temp\gigraph.gv", fo, go);
 
             Console.ReadLine();
         }
