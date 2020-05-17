@@ -12,7 +12,6 @@ namespace GiGraph
 {
     // TODO: przejrzec wszystkie metody, czy powinny lub nie powinny byc wirtualne
     // TODO: przejrzeć klasy, czy powinny miec interfejsy
-    // TODO: "node [style=filled];" - obsłużyć domyślne style węzłów i krawędzi
     // TODO: customowe węzły HTML (shape none, margin 0): https://www.graphviz.org/doc/info/shapes.html#polygon
 
     internal class Program
