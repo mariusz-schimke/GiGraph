@@ -85,5 +85,23 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetAs<DotRankAttribute>("rank", out var result) ? result.Value : (DotRank?)null;
             set => AddOrRemove("rank", value, v => new DotRankAttribute("rank", v.Value));
         }
+
+        public virtual DotRankDirection? Layout
+        {
+            get => TryGetAs<DotRankDirectionAttribute>("rankdir", out var result) ? result.Value : (DotRankDirection?)null;
+            set => AddOrRemove("rankdir", value, v => new DotRankDirectionAttribute("rankdir", v.Value));
+        }
+
+        public virtual bool? Decorate
+        {
+            get => TryGetAs<DotBoolAttribute>("decorate", out var result) ? result.Value : (bool?)null;
+            set => AddOrRemove("decorate", value, v => new DotBoolAttribute("decorate", v.Value));
+        }
+
+        public virtual DotStyle? Style
+        {
+            get => TryGetAs<DotStyleAttribute>("style", out var result) ? result.Value : (DotStyle?)null;
+            set => AddOrRemove("style", value, v => new DotStyleAttribute("style", v.Value));
+        }
     }
 }
