@@ -55,7 +55,5 @@ namespace GiGraph.Dot.Entities.Subgraphs
         {
             Attributes.Rank = rank;
         }
-
-        // TODO: dodać metodę wytwórczą, która przyjmuje rank i pramams string[] id węzłów
     }
 }
