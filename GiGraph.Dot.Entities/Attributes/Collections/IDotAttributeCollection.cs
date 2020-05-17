@@ -12,11 +12,26 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         void Set(DotAttribute attribute);
 
         /// <summary>
-        /// Adds or replaces the specified custom attribute in the collection.
+        /// Adds or replaces the specified attribute in the collection.
+        /// <para>
+        ///     When necessary, the value specified will be rendered escaped in the generated graph, so it can be displayed properly when visualized.
+        ///     If you want the value to be rendered as is, without any further processing, use the <see cref="SetCustom"/> method instead.
+        /// </para>
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
         void Set(string key, string value);
+
+        /// <summary>
+        /// Adds or replaces the specified custom attribute in the collection.
+        /// <para>
+        ///     The value provided will be rendered in the generated graph exactly the way it is provided here,
+        ///     without any further processing (escaping). Therefore, it has to follow the DOT language syntax rules.
+        /// </para>
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        void SetCustom(string key, string value);
 
         /// <summary>
         /// Checks if an attribute with the specified key exists in the collection, and returns it as the specified type.
