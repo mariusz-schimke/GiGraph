@@ -106,8 +106,7 @@ namespace GiGraph
             var subgraph2 = new DotSubgraph(rank: DotRank.Same);
             subgraph1.Subgraphs.Add(subgraph2);
 
-            subgraph2.Nodes.Add("snode1");
-            subgraph2.Nodes.Add("snode2");
+            subgraph2.Nodes.Add(n => n.Attributes.Color = Color.Red, "snode1", "snode2");
 
             subgraph1.Edges.Add("snode1", "snode2");
 
