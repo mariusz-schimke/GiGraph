@@ -22,5 +22,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Gets or sets the color of the cluster (default: <see cref="Color.Black"/>).
         /// </summary>
         Color? Color { get; set; }
+
+        /// <summary>
+        /// Gets or sets the background color of the cluster (default: none).
+        /// </summary>
+        Color? BackgroundColor { get; set; }
     }
 }
