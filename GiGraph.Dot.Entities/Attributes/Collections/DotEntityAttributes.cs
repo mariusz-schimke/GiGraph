@@ -79,5 +79,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetAs<DotArrowDirectionAttribute>("dir", out var result) ? result.Value : (DotArrowDirection?)null;
             set => AddOrRemove("dir", value, v => new DotArrowDirectionAttribute("dir", v.Value));
         }
+
+        public virtual DotRank? Rank
+        {
+            get => TryGetAs<DotRankAttribute>("rank", out var result) ? result.Value : (DotRank?)null;
+            set => AddOrRemove("rank", value, v => new DotRankAttribute("rank", v.Value));
+        }
     }
 }
