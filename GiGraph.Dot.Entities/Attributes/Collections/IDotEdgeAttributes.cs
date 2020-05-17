@@ -25,6 +25,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         Color? Color { get; set; }
 
         /// <summary>
+        /// Sets the style of the edge (default: null). See the descriptions of individual <see cref="DotStyle"/> values
+        /// to learn which styles are applicable to this element type.
+        /// <para>
+        ///     Multiple styles can be used at once, for example:
+        ///     <code>
+        ///         <see cref="Style"/> = <see cref="DotStyle.Solid"/> | <see cref="DotStyle.Bold"/>;
+        ///     </code>
+        /// </para>
+        /// </summary>
+        DotStyle? Style { get; set; }
+
+        /// <summary>
         /// Gets or sets the multiplicative scale factor for arrowheads (default: 1.0, minimum: 0.0).
         /// </summary>
         double? ArrowSize { get; set; }
@@ -64,5 +76,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </para>
         /// </summary>
         DotArrowDirection? ArrowDirection { get; set; }
+
+        /// <summary>
+        /// If true, attaches edge label to edge by a 2-segment polyline, underlining the label,
+        /// then going to the closest point of spline. Default: false;
+        /// </summary>
+        bool? Decorate { get; set; }
     }
 }

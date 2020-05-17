@@ -45,6 +45,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         void Set(string key, DotShape value);
 
         /// <summary>
+        /// Adds or replaces the specified element style attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        void Set(string key, DotStyle value);
+
+        /// <summary>
         /// Adds or replaces the specified arrow type attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
@@ -64,6 +71,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
         void Set(string key, DotRank value);
+
+        /// <summary>
+        /// Adds or replaces the specified graph layout direction attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        void Set(string key, DotRankDirection value);
 
         /// <summary>
         /// Adds or replaces the specified HTML text attribute in the collection.

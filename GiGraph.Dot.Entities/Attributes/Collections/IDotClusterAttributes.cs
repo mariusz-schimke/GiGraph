@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using GiGraph.Dot.Entities.Attributes.Enums;
+using System.Drawing;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -22,5 +23,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Gets or sets the color of the cluster (default: <see cref="Color.Black"/>).
         /// </summary>
         Color? Color { get; set; }
+
+        /// <summary>
+        /// Gets or sets the background color of the cluster (default: none).
+        /// </summary>
+        Color? BackgroundColor { get; set; }
+
+        /// <summary>
+        /// Sets the style of the cluster (default: null). See the descriptions of individual <see cref="DotStyle"/> values
+        /// to learn which styles are applicable to this element type.
+        /// <para>
+        ///     Multiple styles can be used at once, for example:
+        ///     <code>
+        ///         <see cref="Style"/> = <see cref="DotStyle.Rounded"/> | <see cref="DotStyle.Bold"/>;
+        ///     </code>
+        /// </para>
+        /// </summary>
+        DotStyle? Style { get; set; }
     }
 }
