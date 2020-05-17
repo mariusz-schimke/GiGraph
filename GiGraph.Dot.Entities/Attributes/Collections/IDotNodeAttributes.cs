@@ -25,8 +25,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         Color? Color { get; set; }
 
         /// <summary>
-        /// Gets or sets the shape of the node (default: <see cref="DotNodeShape.Ellipse"/>).
+        /// Gets or sets the shape of the node (default: <see cref="DotShape.Ellipse"/>).
         /// </summary>
-        DotNodeShape? Shape { get; set; }
+        DotShape? Shape { get; set; }
     }
 }
