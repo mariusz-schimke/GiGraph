@@ -1,7 +1,8 @@
 ﻿namespace GiGraph.Dot.Entities.Attributes.Enums
 {
     /// <summary>
-    /// The node shape. To see how each of the shapes are rendered, please go to <seealso cref="https://www.graphviz.org/doc/info/shapes.html"/>.
+    /// The node shape. To see how each shape is rendered,
+    /// please go to <seealso cref="https://www.graphviz.org/doc/info/shapes.html"/>.
     /// </summary>
     public enum DotNodeShape
     {

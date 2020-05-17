@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GiGraph.Dot.Entities.Attributes.Enums;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             _attributes[key] = new DotStringAttribute(key, value);
         }
 
+        public virtual void SetHtml(string key, string html)
+        {
+            _attributes[key] = new DotHtmlAttribute(key, html);
+        }
+
         public virtual void Set(string key, double value)
         {
             _attributes[key] = new DotDoubleAttribute(key, value);
@@ -30,6 +36,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual void Set(string key, bool value)
         {
             _attributes[key] = new DotBoolAttribute(key, value);
+        }
+
+        public virtual void Set(string key, DotNodeShape shape)
+        {
+            _attributes[key] = new DotNodeShapeAttribute(key, shape);
+        }
+
+        public virtual void Set(string key, DotArrowType arrowType)
+        {
+            _attributes[key] = new DotArrowTypeAttribute(key, arrowType);
         }
 
         public virtual void SetCustom(string key, string value)
