@@ -22,9 +22,9 @@ namespace GiGraph.Dot.Entities.Nodes
         /// <summary>
         /// The attributes of the node.
         /// </summary>
-        public virtual DotNodeAttributeCollection Attributes { get; }
+        public virtual IDotNodeAttributes Attributes { get; }
 
-        protected DotNode(string id, DotNodeAttributeCollection attributes)
+        protected DotNode(string id, IDotNodeAttributes attributes)
         {
             Id = id;
             Attributes = attributes;
@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// </summary>
         /// <param name="id"></param>
         public DotNode(string id)
-            : this(id, new DotNodeAttributeCollection())
+            : this(id, new DotEntityAttributes())
         {
         }
     }

@@ -25,17 +25,17 @@ namespace GiGraph.Dot.Entities.Graphs
         /// <summary>
         /// The attributes of the graph.
         /// </summary>
-        public new DotGraphAttributeCollection Attributes => (DotGraphAttributeCollection)base.Attributes;
+        public new IDotGraphAttributes Attributes => (IDotGraphAttributes)base.Attributes;
 
         protected DotGraph(string id,
             bool isDirected,
             bool isStrict,
-            DotGraphAttributeCollection attributes,
+            IDotGraphAttributes attributes,
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotCommonSubgraphCollection subgraphs,
-            DotNodeAttributeCollection defaultNodeAttributes,
-            DotEdgeAttributeCollection defaultEdgeAttributes)
+            IDotNodeAttributes defaultNodeAttributes,
+            IDotEdgeAttributes defaultEdgeAttributes)
             : base(id, attributes, nodes, edges, subgraphs, defaultNodeAttributes, defaultEdgeAttributes)
         {
             IsDirected = isDirected;
@@ -56,12 +56,12 @@ namespace GiGraph.Dot.Entities.Graphs
                   id,
                   isDirected,
                   isStrict,
-                  new DotGraphAttributeCollection(),
+                  new DotEntityAttributes(),
                   new DotNodeCollection(),
                   new DotEdgeCollection(),
                   new DotCommonSubgraphCollection(),
-                  new DotNodeAttributeCollection(),
-                  new DotEdgeAttributeCollection()
+                  new DotEntityAttributes(),
+                  new DotEntityAttributes()
               )
         {
         }

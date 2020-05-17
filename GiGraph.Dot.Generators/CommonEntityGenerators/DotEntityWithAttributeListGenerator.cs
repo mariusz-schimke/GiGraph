@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Core;
+using GiGraph.Dot.Core.TextEscaping;
 using GiGraph.Dot.Entities;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Generators.Options;
@@ -13,12 +14,17 @@ namespace GiGraph.Dot.Generators.CommonEntityGenerators
         where TEntity : IDotEntity
         where TWriter : IDotEntityWithAttributeListWriter
     {
+        protected DotEntityWithAttributeListGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+            : base(syntaxRules, options, entityGenerators, identifierEscaper)
+        {
+        }
+
         public DotEntityWithAttributeListGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotEntityWithAttributeListWriter writer)
+        protected virtual void WriteAttributes(IDotAttributeCollection attributes, IDotEntityWithAttributeListWriter writer)
         {
             if (attributes.Any())
             {

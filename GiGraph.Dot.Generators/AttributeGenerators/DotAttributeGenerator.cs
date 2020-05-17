@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Core;
+using GiGraph.Dot.Core.TextEscaping;
 using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Options;
@@ -10,8 +11,21 @@ namespace GiGraph.Dot.Generators.AttributeGenerators
     public class DotAttributeGenerator<TAttribute> : DotEntityGenerator<TAttribute, IDotAttributeWriter>
         where TAttribute : DotAttribute
     {
+        protected readonly TextEscapingPipeline _valueEscaper;
+
+        protected DotAttributeGenerator(
+            DotSyntaxRules syntaxRules,
+            DotGenerationOptions options,
+            IDotEntityGeneratorsProvider entityGenerators,
+            TextEscapingPipeline identifierEscaper = null,
+            TextEscapingPipeline valueEscaper = null)
+            : base(syntaxRules, options, entityGenerators, identifierEscaper)
+        {
+            _valueEscaper = valueEscaper ?? TextEscapingPipeline.CreateDefault();
+        }
+
         public DotAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
-            : base(syntaxRules, options, entityGenerators)
+            : this(syntaxRules, options, entityGenerators, identifierEscaper: null, valueEscaper: null)
         {
         }
 
@@ -19,15 +33,15 @@ namespace GiGraph.Dot.Generators.AttributeGenerators
         {
             WriteAttribute
             (
-                ((IDotAttribute)attribute).Key,
-                ((IDotAttribute)attribute).Value,
+                attribute.Key,
+                ((IDotAttribute)attribute).GetDotEncodedValue(),
                 writer
             );
         }
 
         protected virtual void WriteAttribute(string key, string value, IDotAttributeWriter writer)
         {
-            key = EscapeKey(key);
+            key = EscapeIdentifier(key);
             value = EscapeValue(value);
 
             writer.WriteAttribute
@@ -37,11 +51,6 @@ namespace GiGraph.Dot.Generators.AttributeGenerators
                 value,
                 quoteValue: ValueRequiresQuoting(value)
             );
-        }
-
-        protected virtual string EscapeKey(string key)
-        {
-            return _valueEscaper.Escape(key);
         }
 
         protected virtual string EscapeValue(string value)

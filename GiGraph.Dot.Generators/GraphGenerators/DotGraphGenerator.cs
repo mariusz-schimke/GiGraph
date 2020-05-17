@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Core;
+using GiGraph.Dot.Core.TextEscaping;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Generators.Options;
 using GiGraph.Dot.Generators.Providers;
@@ -8,6 +9,11 @@ namespace GiGraph.Dot.Generators.GraphGenerators
 {
     public class DotGraphGenerator : DotCommonGraphGenerator<DotGraph, IDotGraphWriterRoot>
     {
+        protected DotGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+            : base(syntaxRules, options, entityGenerators, identifierEscaper)
+        {
+        }
+
         public DotGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
@@ -25,7 +31,7 @@ namespace GiGraph.Dot.Generators.GraphGenerators
 
         protected virtual void WriteDeclaration(string id, bool isStrict, IDotGraphWriter writer)
         {
-            id = EscapeGraphIdentifier(id);
+            id = EscapeIdentifier(id);
 
             // whether the graph and its edges will be directed, is decided by the writer instance
             writer.WriteGraphDeclaration

@@ -1,55 +1,83 @@
-﻿using System;
+﻿using GiGraph.Dot.Entities.Attributes.Enums;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotAttributeCollection : IDotEntity, IEnumerable<DotAttribute>
+    public class DotAttributeCollection : IDotEntity, IDotAttributeCollection
     {
         protected readonly IDictionary<string, DotAttribute> _attributes = new Dictionary<string, DotAttribute>(StringComparer.InvariantCulture);
 
-        /// <summary>
-        /// Adds or replaces the specified attribute in the collection.
-        /// </summary>
-        /// <param name="attribute">The attribute to include in the collection.</param>
+        public virtual int Count => _attributes.Count;
+        bool ICollection<DotAttribute>.IsReadOnly => false;
+
         public virtual void Set(DotAttribute attribute)
         {
             _attributes[((IDotAttribute)attribute).Key] = attribute;
         }
 
-        /// <summary>
-        /// Adds or replaces the specified custom attribute in the collection.
-        /// </summary>
-        /// <param name="key">The key of the attribute to include in the collection.</param>
-        /// <param name="value">The value of the attribute to include in the collection.</param>
         public virtual void Set(string key, string value)
+        {
+            _attributes[key] = new DotStringAttribute(key, value);
+        }
+
+        public virtual void SetHtml(string key, string value)
+        {
+            _attributes[key] = new DotHtmlAttribute(key, value);
+        }
+
+        public virtual void Set(string key, double value)
+        {
+            _attributes[key] = new DotDoubleAttribute(key, value);
+        }
+
+        public virtual void Set(string key, bool value)
+        {
+            _attributes[key] = new DotBoolAttribute(key, value);
+        }
+
+        public virtual void Set(string key, DotNodeShape value)
+        {
+            _attributes[key] = new DotNodeShapeAttribute(key, value);
+        }
+
+        public virtual void Set(string key, DotArrowType value)
+        {
+            _attributes[key] = new DotArrowTypeAttribute(key, value);
+        }
+
+        public virtual void Set(string key, DotArrowDirection value)
+        {
+            _attributes[key] = new DotArrowDirectionAttribute(key, value);
+        }
+
+        public virtual void SetCustom(string key, string value)
         {
             _attributes[key] = new DotCustomAttribute(key, value);
         }
 
-        /// <summary>
-        /// Removes the specified attribute from the collection.
-        /// </summary>
-        /// <param name="attribute">The attribute to remove.</param>
-        public virtual void Remove(DotAttribute attribute)
+        public virtual bool Contains(DotAttribute attribute)
         {
-            Remove(((IDotAttribute)attribute).Key);
+            return _attributes.Values.Contains(attribute);
         }
 
-        /// <summary>
-        /// Removes the specified attribute from the collection.
-        /// </summary>
-        /// <param name="key">The key of the attribute to remove.</param>
+        public virtual bool Contains(string key)
+        {
+            return _attributes.ContainsKey(key);
+        }
+
+        public virtual bool Remove(DotAttribute attribute)
+        {
+            return Remove(((IDotAttribute)attribute).Key);
+        }
+
         public virtual bool Remove(string key)
         {
             return _attributes.Remove(key);
         }
 
-        /// <summary>
-        /// Removes all attributes matching the specified criteria from the collection.
-        /// </summary>
-        /// <param name="match">The predicate to use for matching attributes.</param>
         public virtual int RemoveAll(Predicate<DotAttribute> match)
         {
             var result = 0;
@@ -63,37 +91,23 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return result;
         }
 
-        /// <summary>
-        /// Clears the collection.
-        /// </summary>
         public virtual void Clear()
         {
             _attributes.Clear();
         }
 
-        /// <summary>
-        /// Checks if an attribute with the specified key exists in the collection, and returns it.
-        /// </summary>
-        /// <typeparam name="T">The type to return the attribute as.</typeparam>
-        /// <param name="key">The key of the attribute to get.</param>
-        public virtual T TryGet<T>(string key)
+        public virtual T GetAs<T>(string key)
             where T : DotAttribute
         {
-            if (TryGet<T>(key, out var result))
+            if (_attributes.TryGetValue(key, out var result))
             {
-                return result;
+                return (T)result;
             }
 
             return null;
         }
 
-        /// <summary>
-        /// Checks if an attribute with the specified key exists in the collection, and returns it.
-        /// </summary>
-        /// <typeparam name="T">The type to return the attribute as.</typeparam>
-        /// <param name="key">The key of the attribute to get.</param>
-        /// <param name="attribute">The attribute if found or null otherwise.</param>
-        public virtual bool TryGet<T>(string key, out T attribute)
+        public virtual bool TryGetAs<T>(string key, out T attribute)
             where T : DotAttribute
         {
             if (_attributes.TryGetValue(key, out var result))
@@ -103,6 +117,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
 
             attribute = null;
+            return false;
+        }
+
+        public virtual bool TryGetValueAs<T>(string key, out T value)
+        {
+            if (_attributes.TryGetValue(key, out var attribute) && attribute is DotAttribute<T> attributeWithValue)
+            {
+                value = attributeWithValue.Value;
+                return true;
+            }
+
+            value = default;
             return false;
         }
 
@@ -133,6 +159,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        void ICollection<DotAttribute>.Add(DotAttribute attribute)
+        {
+            Set(attribute);
+        }
+
+        void ICollection<DotAttribute>.CopyTo(DotAttribute[] array, int arrayIndex)
+        {
+            _attributes.Values.CopyTo(array, arrayIndex);
         }
     }
 }
