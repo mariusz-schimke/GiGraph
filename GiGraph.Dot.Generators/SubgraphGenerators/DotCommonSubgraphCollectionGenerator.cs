@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Core;
+using GiGraph.Dot.Core.TextEscaping;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Options;
@@ -10,6 +11,11 @@ namespace GiGraph.Dot.Generators.SubgraphGenerators
 {
     public class DotCommonSubgraphCollectionGenerator : DotEntityGenerator<DotCommonSubgraphCollection, IDotSubgraphWriterRoot>
     {
+        protected DotCommonSubgraphCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+            : base(syntaxRules, options, entityGenerators, identifierEscaper)
+        {
+        }
+
         public DotCommonSubgraphCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {

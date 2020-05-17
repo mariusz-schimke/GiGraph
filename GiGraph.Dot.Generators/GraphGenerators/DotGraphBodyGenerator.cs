@@ -1,5 +1,6 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Core;
+﻿using GiGraph.Dot.Core;
+using GiGraph.Dot.Core.TextEscaping;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Nodes;
@@ -19,6 +20,11 @@ namespace GiGraph.Dot.Generators.GraphGenerators
 {
     public class DotGraphBodyGenerator : DotEntityGenerator<DotCommonGraph, IDotGraphBodyWriter>
     {
+        protected DotGraphBodyGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+            : base(syntaxRules, options, entityGenerators, identifierEscaper)
+        {
+        }
+
         public DotGraphBodyGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
