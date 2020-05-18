@@ -21,6 +21,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
+        /// Gets or sets the background color of the element.
+        /// </summary>
+        public virtual Color? BackgroundColor
+        {
+            get => TryGetValueAs<Color>("bgcolor", out var result) ? result : (Color?)null;
+            set => AddOrRemove("bgcolor", value, v => new DotColorAttribute("bgcolor", v.Value));
+        }
+
+        /// <summary>
         /// Gets or sets the color used to fill the background of a node or cluster, assuming that <see cref="Style"/> is <see cref="DotStyle.Filled"/>,
         /// or a filled arrowhead. If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used. 
         /// For clusters, if <see cref="Color"/> is not defined, <see cref="BackgroundColor"/> is used.)
@@ -42,19 +51,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("fillcolor", value, v => new DotColorAttribute("fillcolor", v.Value));
         }
 
-        /// <summary>
-        /// Gets or sets the background color of the element.
-        /// </summary>
-        public virtual Color? BackgroundColor
+        public virtual int? GradientAngle
         {
-            get => TryGetValueAs<Color>("bgcolor", out var result) ? result : (Color?)null;
-            set => AddOrRemove("bgcolor", value, v => new DotColorAttribute("bgcolor", v.Value));
-        }
-
-        public virtual DotShape? Shape
-        {
-            get => TryGetValueAs<DotShape>("shape", out var result) ? result : (DotShape?)null;
-            set => AddOrRemove("shape", value, v => new DotShapeAttribute("shape", v.Value));
+            get => TryGetAs<DotIntAttribute>("gradientangle", out var result) ? result.Value : (int?)null;
+            set => AddOrRemove("gradientangle", value, v => new DotIntAttribute("gradientangle", v.Value));
         }
 
         /// <summary>
@@ -77,6 +77,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetAs<DotHtmlAttribute>("label", out var result) ? result.Value : null;
             set => AddOrRemove("label", value, v => new DotHtmlAttribute("label", v));
+        }
+
+        public virtual DotShape? Shape
+        {
+            get => TryGetValueAs<DotShape>("shape", out var result) ? result : (DotShape?)null;
+            set => AddOrRemove("shape", value, v => new DotShapeAttribute("shape", v.Value));
+        }
+
+        public virtual DotStyle? Style
+        {
+            get => TryGetAs<DotStyleAttribute>("style", out var result) ? result.Value : (DotStyle?)null;
+            set => AddOrRemove("style", value, v => new DotStyleAttribute("style", v.Value));
         }
 
         public virtual double? ArrowSize
@@ -102,6 +114,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("dir", value, v => new DotArrowDirectionAttribute("dir", v.Value));
         }
 
+        public virtual bool? Decorate
+        {
+            get => TryGetAs<DotBoolAttribute>("decorate", out var result) ? result.Value : (bool?)null;
+            set => AddOrRemove("decorate", value, v => new DotBoolAttribute("decorate", v.Value));
+        }
+
         public virtual DotRank? Rank
         {
             get => TryGetAs<DotRankAttribute>("rank", out var result) ? result.Value : (DotRank?)null;
@@ -112,18 +130,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetAs<DotRankDirectionAttribute>("rankdir", out var result) ? result.Value : (DotRankDirection?)null;
             set => AddOrRemove("rankdir", value, v => new DotRankDirectionAttribute("rankdir", v.Value));
-        }
-
-        public virtual bool? Decorate
-        {
-            get => TryGetAs<DotBoolAttribute>("decorate", out var result) ? result.Value : (bool?)null;
-            set => AddOrRemove("decorate", value, v => new DotBoolAttribute("decorate", v.Value));
-        }
-
-        public virtual DotStyle? Style
-        {
-            get => TryGetAs<DotStyleAttribute>("style", out var result) ? result.Value : (DotStyle?)null;
-            set => AddOrRemove("style", value, v => new DotStyleAttribute("style", v.Value));
         }
     }
 }
