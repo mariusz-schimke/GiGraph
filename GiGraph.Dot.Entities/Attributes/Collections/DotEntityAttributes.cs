@@ -21,6 +21,28 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
+        /// Gets or sets the color used to fill the background of a node or cluster, assuming that <see cref="Style"/> is <see cref="DotStyle.Filled"/>,
+        /// or a filled arrowhead. If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used. 
+        /// For clusters, if <see cref="Color"/> is not defined, <see cref="BackgroundColor"/> is used.)
+        /// If it is not defined too, the default is used, except for <see cref="Shape"/> of <see cref="DotShape.Point"/>,
+        /// or when the output format is MIF, which use black by default.
+        /// <para>
+        ///     If the value is a color list, a gradient fill is used. By default, this is a linear fill; 
+        ///     setting <see cref="Style"/> to <see cref="DotStyle.Radial"/> will cause a radial fill.
+        ///     At present, only two colors are used. If the second color is missing, the default color is used for it.
+        ///     See also the <see cref="GradientAngle"/> attribute for setting the gradient angle.
+        ///     Note that a cluster inherits the root graph's attributes if defined. 
+        ///     Thus, if the root graph has defined a fillcolor, this will override a 
+        ///     <see cref="Color"/> or <see cref="BackgroundColor"/> attribute set for the cluster.
+        /// </para>
+        /// </summary>
+        public virtual Color? FillColor
+        {
+            get => TryGetValueAs<Color>("fillcolor", out var result) ? result : (Color?)null;
+            set => AddOrRemove("fillcolor", value, v => new DotColorAttribute("fillcolor", v.Value));
+        }
+
+        /// <summary>
         /// Gets or sets the background color of the element.
         /// </summary>
         public virtual Color? BackgroundColor

@@ -71,7 +71,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         Wedged = 1 << 8,
 
         /// <summary>
-        /// Applicable to nodes, clusters and graphs. Indicates a radial-style gradient fill
+        /// Applicable to nodes, clusters, and graphs. Indicates a radial-style gradient fill
         /// when colors are specified via a color list.
         /// </summary>
         Radial = 1 << 9,
