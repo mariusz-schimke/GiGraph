@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Writers
             if (quote)
             {
                 QuotationStart(linger);
-                Token(_options.Text(id), linger);
+                Token(id, linger);
                 QuotationEnd(linger);
             }
             else
@@ -113,7 +113,7 @@ namespace GiGraph.Dot.Writers
             if (quote)
             {
                 QuotationStart(linger);
-                Token(_options.Text(text), linger);
+                Token(text, linger);
                 QuotationEnd(linger);
             }
             else
@@ -129,7 +129,7 @@ namespace GiGraph.Dot.Writers
             if (brace)
             {
                 HtmlStartBrace(linger);
-                Token(_options.Text(html), linger);
+                Token(html, linger);
                 HtmlEndBrace(linger);
             }
             else

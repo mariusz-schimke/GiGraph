@@ -56,7 +56,7 @@ namespace GiGraph
         private static void AddAttributes(DotGraph graph)
         {
             graph.Attributes.LabelHtml = "My graph";
-            graph.Attributes.BackgroundColor = Color.BlueViolet;
+            graph.Attributes.BackgroundColor = Color.LightCyan;
 
             graph.Attributes.Set("shape", "rect");
         }
@@ -65,6 +65,8 @@ namespace GiGraph
         {
             graph.NodeDefaults.Color = Color.Red;
             graph.NodeDefaults.Style = DotStyle.Bold | DotStyle.Dotted;
+            graph.NodeDefaults.GradientAngle = 45;
+            graph.NodeDefaults.FillColor = Color.Blue;
         }
 
         private static void AddEdgeDefaults(DotGraph graph)

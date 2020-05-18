@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GiGraph.Dot.Writers.Options
+﻿namespace GiGraph.Dot.Writers.Options
 {
     public static class DotFormattingOptionsExtension
     {
@@ -21,17 +19,6 @@ namespace GiGraph.Dot.Writers.Options
             return options.SingleLineOutput
                 ? options.Space()
                 : options.LineBreak;
-        }
-
-        public static string Text(this DotFormattingOptions options, string text)
-        {
-            if (!options.SingleLineOutput || text is null)
-            {
-                return text;
-            }
-
-            var lines = text.Split(new string[] { options.LineBreak }, StringSplitOptions.None);
-            return string.Join(options.Space(), lines);
         }
     }
 }
