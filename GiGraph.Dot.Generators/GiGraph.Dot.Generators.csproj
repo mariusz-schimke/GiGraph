@@ -5,6 +5,7 @@
     <LangVersion>latest</LangVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\Solution Items\GiGraph.snk</AssemblyOriginatorKeyFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <ApplicationIcon>..\Assets\logo.ico</ApplicationIcon>
     <NeutralLanguage>en</NeutralLanguage>
     <AssemblyVersion>0.9.0.0</AssemblyVersion>
