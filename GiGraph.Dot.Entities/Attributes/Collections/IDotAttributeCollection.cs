@@ -17,6 +17,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <para>
         ///     When necessary, the value specified will be rendered escaped in the generated graph, so it can be displayed properly when visualized.
         ///     If you want the value to be rendered as is, without any further processing, use the <see cref="SetCustom"/> method instead.
+        ///     If you are not sure which one to choose, then most probably the current method <see cref="Set(string, string)"/> is the right choice.
         /// </para>
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
