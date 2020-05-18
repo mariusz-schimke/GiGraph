@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace GiGraph.Dot.Core
+namespace GiGraph.Dot.Generators.Options
 {
     public class DotSyntaxRules
     {

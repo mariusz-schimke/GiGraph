@@ -1,6 +1,4 @@
-﻿using GiGraph.Dot.Core;
-using GiGraph.Dot.Core.TextEscaping;
-using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Nodes;
@@ -8,6 +6,7 @@ using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Options;
 using GiGraph.Dot.Generators.Providers;
+using GiGraph.Dot.Generators.TextEscaping;
 using GiGraph.Dot.Writers.AttributeWriters;
 using GiGraph.Dot.Writers.EdgeWriters;
 using GiGraph.Dot.Writers.EntityDefaultsWriter;

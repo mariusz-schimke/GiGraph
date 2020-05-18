@@ -1,6 +1,6 @@
 ﻿using System.Web;
 
-namespace GiGraph.Dot.Core.TextEscaping
+namespace GiGraph.Dot.Generators.TextEscaping
 {
     public class DotHtmlEscaper : IDotTextEscaper
     {
