@@ -25,6 +25,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         Color? Color { get; set; }
 
         /// <summary>
+        /// Gets or sets the background color of the cluster (default: none).
+        /// </summary>
+        Color? BackgroundColor { get; set; }
+
+        /// <summary>
         /// Gets or sets the color used to fill the background of the cluster, assuming that <see cref="Style"/> is <see cref="DotStyle.Filled"/>.
         /// If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used. 
         /// If <see cref="Color"/> is not defined, <see cref="BackgroundColor"/> is used.
@@ -42,9 +47,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         Color? FillColor { get; set; }
 
         /// <summary>
-        /// Gets or sets the background color of the cluster (default: none).
+        /// If a gradient fill is being used, this determines the angle of the fill. 
+        /// For linear fills, the colors transform along a line specified by the angle and the center of the object.
+        /// For radial fills, a value of zero causes the colors to transform radially from the center;
+        /// for non-zero values, the colors transform from a point near the object's periphery as specified by the value.
+        /// If unset, the default angle is 0.
         /// </summary>
-        Color? BackgroundColor { get; set; }
+        int? GradientAngle { get; set; }
 
         /// <summary>
         /// Sets the style of the cluster (default: null). See the descriptions of individual <see cref="DotStyle"/> values

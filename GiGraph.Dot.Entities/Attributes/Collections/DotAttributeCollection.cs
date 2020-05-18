@@ -28,6 +28,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             _attributes[key] = new DotHtmlAttribute(key, value);
         }
 
+        public virtual void Set(string key, int value)
+        {
+            _attributes[key] = new DotIntAttribute(key, value);
+        }
+
         public virtual void Set(string key, double value)
         {
             _attributes[key] = new DotDoubleAttribute(key, value);
