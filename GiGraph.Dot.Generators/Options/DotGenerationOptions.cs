@@ -13,7 +13,7 @@
         /// <summary>
         /// When set, all statements within the graph will be followed by a delimiter (;).
         /// </summary>
-        public virtual bool PreferStatementDelimiter { get; set; } = true;
+        public virtual bool PreferStatementDelimiter { get; set; } = false;
 
         protected DotGenerationOptions(AttributeOptions attributes, SubgraphOptions subgraphs)
         {
