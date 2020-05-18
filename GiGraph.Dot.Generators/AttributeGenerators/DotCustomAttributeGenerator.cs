@@ -1,8 +1,7 @@
-﻿using GiGraph.Dot.Core;
-using GiGraph.Dot.Core.TextEscaping;
-using GiGraph.Dot.Entities.Attributes;
+﻿using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Generators.Options;
 using GiGraph.Dot.Generators.Providers;
+using GiGraph.Dot.Generators.TextEscaping;
 
 namespace GiGraph.Dot.Generators.AttributeGenerators
 {

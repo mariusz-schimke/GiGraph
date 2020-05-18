@@ -1,4 +1,4 @@
-﻿namespace GiGraph.Dot.Core.TextEscaping
+﻿namespace GiGraph.Dot.Generators.TextEscaping
 {
     public interface IDotTextEscaper
     {

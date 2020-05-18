@@ -1,5 +1,4 @@
-﻿using GiGraph.Dot.Core;
-using GiGraph.Dot.Generators.CommonEntityGenerators;
+﻿using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Options;
 
 namespace GiGraph.Dot.Generators.GraphGenerators

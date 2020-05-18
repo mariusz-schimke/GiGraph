@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Gigraph.Dot.Core\GiGraph.Dot.Core.csproj" />
     <ProjectReference Include="..\Gigraph.Dot.Entities\GiGraph.Dot.Entities.csproj" />
     <ProjectReference Include="..\Gigraph.Dot.Writers\GiGraph.Dot.Writers.csproj" />
   </ItemGroup>
