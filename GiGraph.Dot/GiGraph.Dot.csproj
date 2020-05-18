@@ -21,6 +21,7 @@
     <NeutralLanguage>en</NeutralLanguage>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>An initial release</PackageReleaseNotes>
+    <ApplicationIcon>..\Assets\logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
