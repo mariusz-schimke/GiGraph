@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>GiGraph.Dot</id>
+    <version>0.9.0</version>
+    <title>GiGraph DOT</title>
+    <tags>DOT Graphviz graph</tags>
+
+    <authors>Mariusz Schimke</authors>
+    <owners>Mariusz Schimke</owners>
+    <copyright>Copyright © 2020 Mariusz Schimke</copyright>
+    
+    <icon>images\icon.png</icon>
+    
+    <projectUrl>https://github.com/mariusz-schimke/GiGraph</projectUrl>
+    <repository type="Git" url="https://github.com/mariusz-schimke/GiGraph.git" />
+
+    <license type="file">LICENSE.txt</license>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    
+    <summary>Simple yet versatile library for generating graphs in the DOT language.</summary>
+    
+    <description>A simple solution for generating graphs in the DOT language. The output is a textual script that can be visualized and/or converted to an image with external tools. A handy one is a plugin for Visual Studio Code, named Graphviz Preview. There are also online tools like www.webgraphviz.com, where you can paste the script to view your graph.</description>
+    
+    <releaseNotes>An initial, but functional release of the package!</releaseNotes>
+  </metadata>
+
+  <files>
+    <file src="..\Assets\icon.png" target="images\" />
+    <file src="..\LICENSE.txt" target="" />
+  </files>
+</package>
