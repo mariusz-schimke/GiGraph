@@ -34,7 +34,7 @@ When necessary, **subgraphs** can be used as well, and there are two types of th
 
 Each individual element described above may have **attributes** specified, like background color, style, node shape, arrow head shape and so on. You don't have to specify them, however, and if you don't, the visualizing tool will use its own style defaults for rendering them.
 
-```
+```csharp
 myElement.Attributes.Label = "This is a label";
 ```
 
@@ -44,11 +44,11 @@ myElement.Attributes.Label = "This is a label";
 
 The root graph and the subgraphs allow you to set **global defaults** for all nodes and/or edges within them, so that you don't have to set them individually for every element they contain.
 
-```
+```csharp
 myGraph.NodeDefaults.Color = Color.Yellow;
 ```
 
-```
+```csharp
 myGraph.EdgeDefaults.Color = Color.Red;
 ```
 
@@ -63,13 +63,13 @@ There are two types of graphs:
 
 Graph contains nodes and edges, and may optionally have some attributes set, that determine its style, layout etc.
 
-```
+```csharp
 myGraph.IsDirected = true;
 ```
 
 When you want to forbid creating multi-edges, use the *IsStrict* property. In strict graphs there can be at most one edge with a given tail node and head node in the directed case.
 
-```
+```csharp
 myGraph.IsStrict = true;
 ```
 
@@ -79,7 +79,7 @@ myGraph.IsStrict = true;
 
 Nodes are distinguished by their **textual identifiers**. The identifiers are used by edges to refer to a head and a tail node that they connect. If you don't specify a **label** attribute for a node, the identifier will be used as a label when visualized.
 
-```
+```csharp
 myGraph.Nodes.Add("MyNode1", node =>
 {
     node.Attributes.Label = "Hello World!";
@@ -95,7 +95,7 @@ Edges **connect two nodes** by referring to their identifiers. Edges may also **
 
 Note that **a node does not necessarily have to be added to the nodes collection** of the graph or subgraph when it is referenced by an edge (as long as there is no need to specify any attributes for the node for instance).
 
-```
+```csharp
 myGraph.Edges.Add("MyNode1", "MyNode2");
 ```
 
