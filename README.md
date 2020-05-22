@@ -10,6 +10,7 @@ A simple solution for generating graphs in the <a href="https://en.wikipedia.org
 
 
 
+
 Built with [.NET Standard 2.0](https://docs.microsoft.com/pl-pl/dotnet/standard/net-standard#net-implementation-support) (compatible with *.NET Core 2.0* and above, *.NET Framework 4.6.1* and above).
 
 Available on NuGet: [![#](https://img.shields.io/nuget/v/GiGraph.Dot)](https://www.nuget.org/packages/GiGraph.Dot/)
@@ -118,7 +119,7 @@ To generate a graph script, just call the ***Build()*** extension method on a gr
 
 ```c#
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Extensions;
+using GiGraph.Dot.Extensions; // Build(), SaveToFile()
 using System;
 
 namespace GiGraph.Examples
@@ -130,8 +131,11 @@ namespace GiGraph.Examples
             var graph = new DotGraph(isDirected: true);
             graph.Edges.Add("Hello", "World!");
 
-            // using GiGraph.Dot.Extensions
+            // write it to console as string
             Console.WriteLine( graph.Build() );
+            
+            // or save it to a file (.gv and .dot are the default extensions)
+            graph.SaveToFile( @"C:\MyGraphs\hello-world.gv" );
             
             Console.Read();
         }
