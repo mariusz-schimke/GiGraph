@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Console", "GiGraph.Console\GiGraph.Console.csproj", "{A9472EBB-A99C-4533-A081-75DEABC15CD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Examples", "GiGraph.Examples\GiGraph.Examples.csproj", "{A9472EBB-A99C-4533-A081-75DEABC15CD9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot.Entities", "GiGraph.Dot.Entities\GiGraph.Dot.Entities.csproj", "{1A861052-3B71-42B0-A667-E859CC554640}"
 EndProject
