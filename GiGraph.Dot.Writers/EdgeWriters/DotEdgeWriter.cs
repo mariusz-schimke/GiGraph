@@ -10,13 +10,13 @@ namespace GiGraph.Dot.Writers.EdgeWriters
         {
         }
 
-        public virtual void WriteEdge(string leftNodeId, bool quoteLeftNodeId, string rightNodeId, bool quoteRightNodeId)
+        public virtual void WriteEdge(string tailNodeId, bool quoteTailNodeId, string headNodeId, bool quoteHeadNodeId)
         {
-            _tokenWriter.Identifier(leftNodeId, quoteLeftNodeId)
+            _tokenWriter.Identifier(tailNodeId, quoteTailNodeId)
                         .Space()
                         .Edge(_context.IsDirectedGraph)
                         .Space()
-                        .Identifier(rightNodeId, quoteRightNodeId)
+                        .Identifier(headNodeId, quoteHeadNodeId)
                         .Space(linger: true);
         }
     }

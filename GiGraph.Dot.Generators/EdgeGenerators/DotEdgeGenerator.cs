@@ -21,21 +21,21 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
 
         public override void Generate(DotEdge edge, IDotEdgeWriter writer)
         {
-            WriteEdge(edge.LeftNodeId, edge.RightNodeId, writer);
+            WriteEdge(edge.TailNodeId, edge.HeadNodeId, writer);
             WriteAttributes(edge.Attributes, writer);
         }
 
-        protected virtual void WriteEdge(string leftNodeId, string rightNodeId, IDotEdgeWriter writer)
+        protected virtual void WriteEdge(string tailNodeId, string headNodeId, IDotEdgeWriter writer)
         {
-            leftNodeId = EscapeIdentifier(leftNodeId);
-            rightNodeId = EscapeIdentifier(rightNodeId);
+            tailNodeId = EscapeIdentifier(tailNodeId);
+            headNodeId = EscapeIdentifier(headNodeId);
 
             writer.WriteEdge
             (
-                leftNodeId,
-                IdentifierRequiresQuoting(leftNodeId),
-                rightNodeId,
-                IdentifierRequiresQuoting(rightNodeId)
+                tailNodeId,
+                IdentifierRequiresQuoting(tailNodeId),
+                headNodeId,
+                IdentifierRequiresQuoting(headNodeId)
             );
         }
     }

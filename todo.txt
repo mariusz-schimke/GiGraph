@@ -1,0 +1,4 @@
+1. przejrzec wszystkie metody, czy powinny lub nie powinny byc wirtualne
+2. przejrzeć klasy, czy powinny miec interfejsy
+3. customowe węzły HTML (shape none, margin 0): https://www.graphviz.org/doc/info/shapes.html#polygon
+4. atrybuty można określic też raz dla wielu elementów, np. myNode1, myNode2, myNode3 [shape="box", style="filled, rounded"]
