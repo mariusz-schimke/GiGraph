@@ -8,25 +8,25 @@ namespace GiGraph.Dot.Entities.Edges
     /// </summary>
     public class DotEdge : IDotEntity
     {
-        protected string _leftNodeId;
-        protected string _rightNodeId;
+        protected string _tailNodeId;
+        protected string _headNodeId;
 
         /// <summary>
         /// The identifier of the left (source) node the edge is connected to.
         /// </summary>
-        public virtual string LeftNodeId
+        public virtual string TailNodeId
         {
-            get => _leftNodeId;
-            set => _leftNodeId = value ?? throw new ArgumentNullException(nameof(LeftNodeId), "Node identifier cannot be null.");
+            get => _tailNodeId;
+            set => _tailNodeId = value ?? throw new ArgumentNullException(nameof(TailNodeId), "Tail node identifier cannot be null.");
         }
 
         /// <summary>
         /// The identifier of the right (destination) node the edge is connected to.
         /// </summary>
-        public virtual string RightNodeId
+        public virtual string HeadNodeId
         {
-            get => _rightNodeId;
-            set => _rightNodeId = value ?? throw new ArgumentNullException(nameof(RightNodeId), "Node identifier cannot be null.");
+            get => _headNodeId;
+            set => _headNodeId = value ?? throw new ArgumentNullException(nameof(HeadNodeId), "Head node identifier cannot be null.");
         }
 
         /// <summary>
@@ -34,20 +34,20 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         public virtual IDotEdgeAttributes Attributes { get; }
 
-        protected DotEdge(string leftNodeId, string rightNodeId, IDotEdgeAttributes attributes)
+        protected DotEdge(string tailNodeId, string headNodeId, IDotEdgeAttributes attributes)
         {
-            LeftNodeId = leftNodeId;
-            RightNodeId = rightNodeId;
+            TailNodeId = tailNodeId;
+            HeadNodeId = headNodeId;
             Attributes = attributes;
         }
 
         /// <summary>
         /// Creates a new edge connecting two nodes.
         /// </summary>
-        /// <param name="leftNodeId">The identifier of the left (source) node the edge should be connected to.</param>
-        /// <param name="rightNodeId">The identifier of the right (destination) node the should be connected to.</param>
-        public DotEdge(string leftNodeId, string rightNodeId)
-            : this(leftNodeId, rightNodeId, new DotEntityAttributes())
+        /// <param name="tailNodeId">The identifier of the left (source, tail) node the edge should be connected to.</param>
+        /// <param name="headNodeId">The identifier of the right (destination, head) node the should be connected to.</param>
+        public DotEdge(string tailNodeId, string headNodeId)
+            : this(tailNodeId, headNodeId, new DotEntityAttributes())
         {
         }
     }
