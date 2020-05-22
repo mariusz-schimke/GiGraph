@@ -1,8 +1,8 @@
 ﻿namespace GiGraph.Dot.Entities.Attributes.Enums
 {
     /// <summary>
-    /// The arrow direction. To see how each arrow direction is interpreted,
-    /// please go to <see cref="https://www.graphviz.org/doc/info/attrs.html#k:dirType"/>.
+    /// The arrow direction.
+    /// <see href="https://www.graphviz.org/doc/info/attrs.html#k:dirType">View how individual arrow directions are visualized</see>.
     /// </summary>
     public enum DotArrowDirection
     {

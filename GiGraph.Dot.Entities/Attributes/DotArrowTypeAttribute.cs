@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
     /// Arrow type attribute. Assignable to edges only.
-    /// To see how each arrow type is rendered, please go to <see cref="https://www.graphviz.org/doc/info/attrs.html#k:arrowType"/>.
+    /// <see href="https://www.graphviz.org/doc/info/attrs.html#k:arrowType">View how individual arrow types are visualized</see>.
     /// </summary>
     public class DotArrowTypeAttribute : DotAttribute<DotArrowType>
     {
