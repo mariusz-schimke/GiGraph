@@ -42,14 +42,52 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
+        /// Adds multiple edges to the collection, that connect consecutive nodes with the specified identifiers.
+        /// </summary>
+        /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
+        public virtual DotEdge[] Add(params string[] nodeIds)
+        {
+            return Add(initEdge: null, nodeIds);
+        }
+
+        /// <summary>
+        /// Adds multiple edges to the collection, that connect consecutive nodes with the specified identifiers.
+        /// </summary>
+        /// <param name="initEdge">An edge initializer delegate.</param>
+        /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
+        public virtual DotEdge[] Add(Action<DotEdge> initEdge, params string[] nodeIds)
+        {
+            if (nodeIds.Length < 2)
+            {
+                throw new ArgumentException("At least two node identifiers have to be specified.");
+            }
+
+            var edges = new List<DotEdge>();
+
+            for (int i = 0; i < nodeIds.Length - 1; i++)
+            {
+                var edge = Add
+                (
+                    tailNodeId: nodeIds[i],
+                    headNodeId: nodeIds[i + 1],
+                    initEdge
+                );
+
+                edges.Add(edge);
+            }
+
+            return edges.ToArray();
+        }
+
+        /// <summary>
         /// Removes the specified edge from the collection.
         /// </summary>
         /// <param name="edge">The edge to remove.</param>
-        public virtual int Remove(DotEdge node)
+        public virtual int Remove(DotEdge edge)
         {
             var result = 0;
 
-            while (_edges.Remove(node))
+            while (_edges.Remove(edge))
             {
                 result++;
             }
