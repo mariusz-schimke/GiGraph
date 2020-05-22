@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Graphs;
 
-namespace GiGraph.Examples
+namespace GiGraph.Examples.Basic
 {
     public static class HelloWorld
     {
