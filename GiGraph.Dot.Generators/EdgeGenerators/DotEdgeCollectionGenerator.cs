@@ -23,8 +23,8 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
         public override void Generate(DotEdgeCollection edges, IDotEdgeStatementWriter writer)
         {
             var orderedEdges = edges
-                .OrderBy(e => e.LeftNodeId)
-                .ThenBy(e => e.RightNodeId)
+                .OrderBy(e => e.TailNodeId)
+                .ThenBy(e => e.HeadNodeId)
                 .ToList();
 
             foreach (var edge in orderedEdges)

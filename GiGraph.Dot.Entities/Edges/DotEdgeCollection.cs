@@ -21,22 +21,22 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Adds an edge to the collection, that connects two nodes with the specified identifiers.
         /// </summary>
-        /// <param name="leftNodeId">The left (source) node identifier.</param>
-        /// <param name="rightNodeId">The right (destination) node identifier.</param>
-        public virtual DotEdge Add(string leftNodeId, string rightNodeId)
+        /// <param name="tailNodeId">The left (source, tail) node identifier.</param>
+        /// <param name="headNodeId">The right (destination, head) node identifier.</param>
+        public virtual DotEdge Add(string tailNodeId, string headNodeId)
         {
-            return Add(new DotEdge(leftNodeId, rightNodeId));
+            return Add(new DotEdge(tailNodeId, headNodeId));
         }
 
         /// <summary>
         /// Adds an edge to the collection, that connects two nodes with the specified identifiers.
         /// </summary>
-        /// <param name="leftNodeId">The left (source) node identifier.</param>
-        /// <param name="rightNodeId">The right (destination) node identifier.</param>
+        /// <param name="tailNodeId">The left (source, tail) node identifier.</param>
+        /// <param name="headNodeId">The right (destination, head) node identifier.</param>
         /// <param name="initEdge">An optional edge initializer delegate.</param>
-        public virtual DotEdge Add(string leftNodeId, string rightNodeId, Action<DotEdge> initEdge)
+        public virtual DotEdge Add(string tailNodeId, string headNodeId, Action<DotEdge> initEdge)
         {
-            var edge = Add(leftNodeId, rightNodeId);
+            var edge = Add(tailNodeId, headNodeId);
             initEdge?.Invoke(edge);
             return edge;
         }
@@ -60,12 +60,12 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Removes an edge from the collection, that connects two nodes with the specified identifiers.
         /// </summary>
-        /// <param name="leftNodeId">The left (source) node identifier.</param>
-        /// <param name="rightNodeId">The right (destination) node identifier.</param>
-        public virtual int Remove(string leftNodeId, string rightNodeId)
+        /// <param name="tailNodeId">The left (source, tail) node identifier.</param>
+        /// <param name="headNodeId">The right (destination, head) node identifier.</param>
+        public virtual int Remove(string tailNodeId, string headNodeId)
         {
-            return RemoveAll(edge => edge.LeftNodeId == leftNodeId &&
-                                     edge.RightNodeId == rightNodeId);
+            return RemoveAll(edge => edge.TailNodeId == tailNodeId &&
+                                     edge.HeadNodeId == headNodeId);
         }
 
         /// <summary>
