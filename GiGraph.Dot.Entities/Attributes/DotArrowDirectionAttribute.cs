@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
     /// Arrow direction attribute. Assignable to edges only.
-    /// To see how each arrow direction is interpreted, please go to <see cref="https://www.graphviz.org/doc/info/attrs.html#k:dirType"/>.
+    /// <see href="https://www.graphviz.org/doc/info/attrs.html#k:dirType">View how individual arrow directions are visualized</see>.
     /// </summary>
     public class DotArrowDirectionAttribute : DotAttribute<DotArrowDirection>
     {
