@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
@@ -80,6 +81,32 @@ namespace GiGraph.Dot.Entities.Subgraphs
         }
 
         /// <summary>
+        /// Gets all subgraphs of the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type of subgraphs to get.</typeparam>
+        public virtual IEnumerable<T> Get<T>()
+            where T : DotCommonSubgraph
+        {
+            return _subgraphs.Where(s => s is T).Cast<T>();
+        }
+
+        /// <summary>
+        /// Gets all clusters from the collection.
+        /// </summary>
+        public virtual IEnumerable<DotCluster> GetClusters()
+        {
+            return Get<DotCluster>();
+        }
+
+        /// <summary>
+        /// Gets all subgraphs from the collection.
+        /// </summary>
+        public virtual IEnumerable<DotSubgraph> GetSubgraphs()
+        {
+            return Get<DotSubgraph>();
+        }
+
+        /// <summary>
         /// Removes the specified subgraph from the collection if found.
         /// </summary>
         /// <param name="subgraph">The subgraph to remove.</param>
@@ -111,6 +138,22 @@ namespace GiGraph.Dot.Entities.Subgraphs
         public virtual int RemoveAll(Predicate<DotCommonSubgraph> match)
         {
             return _subgraphs.RemoveAll(match);
+        }
+
+        /// <summary>
+        /// Removes all clusters from the collection.
+        /// </summary>
+        public virtual int RemoveClusters()
+        {
+            return RemoveAll(s => s is DotCluster);
+        }
+
+        /// <summary>
+        /// Removes all subgraphs from the collection.
+        /// </summary>
+        public virtual int RemoveSubgraphs()
+        {
+            return RemoveAll(s => s is DotSubgraph);
         }
 
         /// <summary>
