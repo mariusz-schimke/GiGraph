@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Graphs
         ///     then it should be added to the common upper level graph or subgraph, not to the current graph.
         /// </para>
         /// </summary>
-        public virtual DotEdgeCollection Edges { get; }
+        public virtual DotCommonEdgeCollection Edges { get; }
 
         /// <summary>
         /// The attributes to be used as default for all edges in this graph when not specified explicitly for individual edges in the <see cref="Edges"/> collection.
@@ -65,7 +65,7 @@ namespace GiGraph.Dot.Entities.Graphs
             string id,
             IDotAttributeCollection attributes,
             DotNodeCollection nodes,
-            DotEdgeCollection edges,
+            DotCommonEdgeCollection edges,
             DotCommonSubgraphCollection subgraphs,
             IDotNodeAttributes defaultNodeAttributes,
             IDotEdgeAttributes defaultEdgeAttributes)

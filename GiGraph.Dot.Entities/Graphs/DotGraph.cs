@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Graphs
             bool isStrict,
             IDotGraphAttributes attributes,
             DotNodeCollection nodes,
-            DotEdgeCollection edges,
+            DotCommonEdgeCollection edges,
             DotCommonSubgraphCollection subgraphs,
             IDotNodeAttributes defaultNodeAttributes,
             IDotEdgeAttributes defaultEdgeAttributes)
@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Entities.Graphs
                   isStrict,
                   new DotEntityAttributes(),
                   new DotNodeCollection(),
-                  new DotEdgeCollection(),
+                  new DotCommonEdgeCollection(),
                   new DotCommonSubgraphCollection(),
                   new DotEntityAttributes(),
                   new DotEntityAttributes()
