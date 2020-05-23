@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GiGraph.Dot.Entities.Edges
 {
@@ -19,10 +20,19 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
+        /// Adds the specified edges to the collection.
+        /// </summary>
+        /// <param name="edges">The edges to add.</param>
+        public virtual void AddRange(IEnumerable<DotEdge> edges)
+        {
+            _edges.AddRange(edges);
+        }
+
+        /// <summary>
         /// Adds an edge to the collection, that connects two nodes with the specified identifiers.
         /// </summary>
-        /// <param name="tailNodeId">The left (source, tail) node identifier.</param>
-        /// <param name="headNodeId">The right (destination, head) node identifier.</param>
+        /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
+        /// <param name="headNodeId">The head (destination, right) node identifier.</param>
         public virtual DotEdge Add(string tailNodeId, string headNodeId)
         {
             return Add(new DotEdge(tailNodeId, headNodeId));
@@ -31,8 +41,8 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Adds an edge to the collection, that connects two nodes with the specified identifiers.
         /// </summary>
-        /// <param name="tailNodeId">The left (source, tail) node identifier.</param>
-        /// <param name="headNodeId">The right (destination, head) node identifier.</param>
+        /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
+        /// <param name="headNodeId">The head (destination, right) node identifier.</param>
         /// <param name="initEdge">An optional edge initializer delegate.</param>
         public virtual DotEdge Add(string tailNodeId, string headNodeId, Action<DotEdge> initEdge)
         {
@@ -57,26 +67,71 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
         public virtual DotEdge[] Add(Action<DotEdge> initEdge, params string[] nodeIds)
         {
-            if (nodeIds.Length < 2)
+            if (nodeIds.Length == 1)
             {
-                throw new ArgumentException("At least two node identifiers have to be specified.");
+                throw new ArgumentException("At least a pair of node identifiers has to be specified.");
             }
 
-            var edges = new List<DotEdge>();
+            return nodeIds
+                .Take(nodeIds.Length - 1)
+                .Select((tailNodeId, i) => Add(tailNodeId, headNodeId: nodeIds[i + 1], initEdge))
+                .ToArray();
+        }
 
-            for (int i = 0; i < nodeIds.Length - 1; i++)
+        /// <summary>
+        /// Adds multiple edges to the collection, where the <paramref name="tailNodeId"/> as the tail node is connected
+        /// to all <paramref name="headNodeIds"/> as the head nodes.
+        /// </summary>
+        /// <param name="tailNodeId">The identifier of the tail (source, left) node.</param>
+        /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes to connect the tail node to.</param>
+        public virtual DotEdge[] AddOneToMany(string tailNodeId, params string[] headNodeIds)
+        {
+            return AddOneToMany(tailNodeId, initEdge: null, headNodeIds);
+        }
+
+        /// <summary>
+        /// Adds multiple edges to the collection, where the <paramref name="tailNodeId"/> as the tail node is connected
+        /// to all <paramref name="headNodeIds"/> as the head nodes.
+        /// </summary>
+        /// <param name="initEdge">An edge initializer delegate.</param>
+        /// <param name="tailNodeId">The identifier of the tail (source, left) node.</param>
+        /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes to connect the tail node to.</param>
+        public virtual DotEdge[] AddOneToMany(string tailNodeId, Action<DotEdge> initEdge, params string[] headNodeIds)
+        {
+            if (!headNodeIds.Any())
             {
-                var edge = Add
-                (
-                    tailNodeId: nodeIds[i],
-                    headNodeId: nodeIds[i + 1],
-                    initEdge
-                );
-
-                edges.Add(edge);
+                throw new ArgumentException("At least one head node identifier has to be specified.");
             }
 
-            return edges.ToArray();
+            return headNodeIds.Select(headNodeId => Add(tailNodeId, headNodeId, initEdge)).ToArray();
+        }
+
+        /// <summary>
+        /// Adds multiple edges to the collection, where all <paramref name="tailNodeIds"/> as tail nodes
+        /// are connected to the <paramref name="headNodeId"/> as the head node.
+        /// </summary>
+        /// <param name="headNodeId">The identifier of the head (destination, right) node.</param>
+        /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes to connect to the head node.</param>
+        public virtual DotEdge[] AddManyToOne(string headNodeId, params string[] tailNodeIds)
+        {
+            return AddManyToOne(headNodeId, initEdge: null, tailNodeIds);
+        }
+
+        /// <summary>
+        /// Adds multiple edges to the collection, where all <paramref name="tailNodeIds"/> as tail nodes
+        /// are connected to the <paramref name="headNodeId"/> as the head node.
+        /// </summary>
+        /// <param name="initEdge">An edge initializer delegate.</param>
+        /// <param name="headNodeId">The identifier of the head (destination, right) node.</param>
+        /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes to connect to the head node.</param>
+        public virtual DotEdge[] AddManyToOne(string headNodeId, Action<DotEdge> initEdge, params string[] tailNodeIds)
+        {
+            if (!tailNodeIds.Any())
+            {
+                throw new ArgumentException("At least one tail node identifier has to be specified.");
+            }
+
+            return tailNodeIds.Select(tailNodeId => Add(tailNodeId, headNodeId, initEdge)).ToArray();
         }
 
         /// <summary>
@@ -98,8 +153,8 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Removes an edge from the collection, that connects two nodes with the specified identifiers.
         /// </summary>
-        /// <param name="tailNodeId">The left (source, tail) node identifier.</param>
-        /// <param name="headNodeId">The right (destination, head) node identifier.</param>
+        /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
+        /// <param name="headNodeId">The head (destination, right) node identifier.</param>
         public virtual int Remove(string tailNodeId, string headNodeId)
         {
             return RemoveAll(edge => edge.TailNodeId == tailNodeId &&
