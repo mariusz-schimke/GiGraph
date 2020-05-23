@@ -32,7 +32,8 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// Adds a new cluster subgraph to the collection.
         /// </summary>
-        /// <param name="id">The unique identifier of the subgraph. Pass null if no identifier should be used.</param>
+        /// <param name="id">The unique identifier of the cluster. If no identifier is specified for multiple clusters,
+        /// they will be treated as one cluster when visualized.</param>
         /// <param name="init">An optional initialization delegate.</param>
         public virtual DotCluster AddCluster(string id, Action<DotCluster> init = null)
         {
