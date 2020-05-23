@@ -408,7 +408,7 @@ Subgraph, represented by the **DotSubgraph** class, is a collection of nodes con
 
 Subgraph does not have any border or fill, as opposed to cluster subgraph, represented by the **DotCluster** class, which supports them.
 
-Subgraph supports setting common style of nodes and edges within it, as well as the layout of nodes (by the **rank** attribute). Subgraph can also be used as a head or tail of an edge, in which case all nodes within it are connected to the other side of the edge.
+Subgraph supports setting common style of nodes and edges within it, as well as the layout of nodes (by the **rank attribute**). Subgraph can also be used as a head or tail of an edge, in which case all nodes within it are connected to the other side of the edge.
 
 
 
@@ -420,7 +420,7 @@ Consider the following graph in which all nodes are laid out automatically:
 
 
 
-By using subgraphs, you can change the way some node groups are visualized:
+By using **subgraphs with a rank attribute** specified, you can change the way individual node groups are visualized:
 
 <p align="center">
   <img src="/Assets/Examples/complex-graph-with-subgraphs.svg">
