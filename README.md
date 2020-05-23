@@ -166,7 +166,7 @@ And when visualized, it looks like this:
 
 
 
-### Graph defaults example
+## Graph defaults example
 
 ```c#
 using GiGraph.Dot.Entities.Attributes.Enums;
@@ -283,7 +283,7 @@ digraph
 
 
 
-### Clusters
+## Clusters example
 
 ```c#
 using GiGraph.Dot.Entities.Attributes.Enums;
