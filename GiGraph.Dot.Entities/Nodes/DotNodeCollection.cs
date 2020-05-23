@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -33,10 +34,10 @@ namespace GiGraph.Dot.Entities.Nodes
         /// </summary>
         /// <param name="id">The identifier of the node to add.</param>
         /// <param name="initNode">An optional node initializer delegate.</param>
-        public virtual DotNode Add(string id, Action<DotNode> initNode)
+        public virtual DotNode Add(string id, Action<IDotNodeAttributes> initNode)
         {
             var node = Add(id);
-            initNode?.Invoke(node);
+            initNode?.Invoke(node.Attributes);
             return node;
         }
 
@@ -54,7 +55,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// </summary>
         /// <param name="initNode">An optional node initializer delegate to call for each provided ID.</param>
         /// <param name="ids">The identifiers of the nodes to add.</param>
-        public virtual DotNode[] Add(Action<DotNode> initNode, params string[] ids)
+        public virtual DotNode[] Add(Action<IDotNodeAttributes> initNode, params string[] ids)
         {
             var nodes = new List<DotNode>();
 
