@@ -1,6 +1,8 @@
-﻿using System;
+﻿using GiGraph.Dot.Entities.Attributes.Enums;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
@@ -12,10 +14,96 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// Adds a subgraph to the collection.
         /// </summary>
         /// <param name="subgraph">The subgraph to add.</param>
-        public virtual DotCommonSubgraph Add(DotCommonSubgraph subgraph)
+        public virtual T Add<T>(T subgraph)
+            where T : DotCommonSubgraph
         {
             _subgraphs.Add(subgraph);
             return subgraph;
+        }
+
+        /// <summary>
+        /// Adds a new cluster subgraph to the collection.
+        /// </summary>
+        /// <param name="init">An optional initialization delegate.</param>
+        public virtual DotCluster AddCluster(Action<DotCluster> init = null)
+        {
+            return AddCluster(id: null, init);
+        }
+
+        /// <summary>
+        /// Adds a new cluster subgraph to the collection.
+        /// </summary>
+        /// <param name="id">The unique identifier of the cluster. If no identifier is specified for multiple clusters,
+        /// they will be treated as one cluster when visualized.</param>
+        /// <param name="init">An optional initialization delegate.</param>
+        public virtual DotCluster AddCluster(string id, Action<DotCluster> init = null)
+        {
+            var cluster = Add(new DotCluster(id));
+            init?.Invoke(cluster);
+            return cluster;
+        }
+
+        /// <summary>
+        /// Adds a new subgraph to the collection.
+        /// </summary>
+        /// <param name="init">An optional initialization delegate.</param>
+        public virtual DotSubgraph AddSubgraph(Action<DotSubgraph> init = null)
+        {
+            return DoAddSubgraph(id: null, rank: null, init);
+        }
+
+        /// <summary>
+        /// Adds a new subgraph to the collection.
+        /// </summary>
+        /// <param name="rank">The rank attribute to assign to the subgraph.</param>
+        /// <param name="init">An optional initialization delegate.</param>
+        public virtual DotSubgraph AddSubgraph(DotRank rank, Action<DotSubgraph> init = null)
+        {
+            return DoAddSubgraph(id: null, rank, init);
+        }
+
+        /// <summary>
+        /// Adds a new subgraph to the collection.
+        /// </summary>
+        /// <param name="id">The unique identifier of the subgraph. Pass null if no identifier should be used.</param>
+        /// <param name="rank">The rank attribute to assign to the subgraph.</param>
+        /// <param name="init">An optional initialization delegate.</param>
+        public virtual DotSubgraph AddSubgraph(string id, DotRank rank, Action<DotSubgraph> init = null)
+        {
+            return DoAddSubgraph(id, rank, init);
+        }
+
+        protected virtual DotSubgraph DoAddSubgraph(string id, DotRank? rank, Action<DotSubgraph> init)
+        {
+            var subgraph = Add(new DotSubgraph(id, rank));
+            init?.Invoke(subgraph);
+            return subgraph;
+        }
+
+        /// <summary>
+        /// Gets all subgraphs of the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type of subgraphs to get.</typeparam>
+        public virtual IEnumerable<T> Get<T>()
+            where T : DotCommonSubgraph
+        {
+            return _subgraphs.Where(s => s is T).Cast<T>();
+        }
+
+        /// <summary>
+        /// Gets all clusters from the collection.
+        /// </summary>
+        public virtual IEnumerable<DotCluster> GetClusters()
+        {
+            return Get<DotCluster>();
+        }
+
+        /// <summary>
+        /// Gets all subgraphs from the collection.
+        /// </summary>
+        public virtual IEnumerable<DotSubgraph> GetSubgraphs()
+        {
+            return Get<DotSubgraph>();
         }
 
         /// <summary>
@@ -50,6 +138,22 @@ namespace GiGraph.Dot.Entities.Subgraphs
         public virtual int RemoveAll(Predicate<DotCommonSubgraph> match)
         {
             return _subgraphs.RemoveAll(match);
+        }
+
+        /// <summary>
+        /// Removes all clusters from the collection.
+        /// </summary>
+        public virtual int RemoveClusters()
+        {
+            return RemoveAll(s => s is DotCluster);
+        }
+
+        /// <summary>
+        /// Removes all subgraphs from the collection.
+        /// </summary>
+        public virtual int RemoveSubgraphs()
+        {
+            return RemoveAll(s => s is DotSubgraph);
         }
 
         /// <summary>

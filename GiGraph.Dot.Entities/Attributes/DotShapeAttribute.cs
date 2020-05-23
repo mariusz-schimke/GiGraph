@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
     /// A node shape attribute. Assignable to nodes only.
-    /// To see how each shape is rendered, please go to <see cref="https://www.graphviz.org/doc/info/shapes.html"/>.
+    /// <see href="https://www.graphviz.org/doc/info/shapes.html">View how individual shapes are visualized</see>.
     /// </summary>
     public class DotShapeAttribute : DotAttribute<DotShape>
     {
@@ -98,13 +98,13 @@ namespace GiGraph.Dot.Entities.Attributes
                 case DotShape.TripleOctagon:
                     return "tripleoctagon";
 
-                case DotShape.InvTriangle:
+                case DotShape.InvertedTriangle:
                     return "invtriangle";
 
-                case DotShape.InvTrapezium:
+                case DotShape.InvertedTrapezium:
                     return "invtrapezium";
 
-                case DotShape.InvHouse:
+                case DotShape.InvertedHouse:
                     return "invhouse";
 
                 case DotShape.MDiamond:
@@ -167,10 +167,10 @@ namespace GiGraph.Dot.Entities.Attributes
                 case DotShape.RestrictionSite:
                     return "restrictionsite";
 
-                case DotShape.FivePOverhang:
+                case DotShape.FivePrimeOverhang:
                     return "fivepoverhang";
 
-                case DotShape.ThreePOverhang:
+                case DotShape.ThreePrimeOverhang:
                     return "threepoverhang";
 
                 case DotShape.NOverhang:
@@ -185,28 +185,28 @@ namespace GiGraph.Dot.Entities.Attributes
                 case DotShape.Insulator:
                     return "insulator";
 
-                case DotShape.Ribosite:
+                case DotShape.RiboSite:
                     return "ribosite";
 
                 case DotShape.RnaStab:
                     return "rnastab";
 
-                case DotShape.Proteasesite:
+                case DotShape.ProteaseSite:
                     return "proteasesite";
 
                 case DotShape.ProteinStab:
                     return "proteinstab";
 
-                case DotShape.RPromoter:
+                case DotShape.RightPromoter:
                     return "rpromoter";
 
-                case DotShape.RArrow:
+                case DotShape.RightArrow:
                     return "rarrow";
 
-                case DotShape.LArrow:
+                case DotShape.LeftArrow:
                     return "larrow";
 
-                case DotShape.LPromoter:
+                case DotShape.LeftPromoter:
                     return "lpromoter";
 
                 case DotShape.Record:
