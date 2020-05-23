@@ -158,8 +158,28 @@ digraph
 And when visualized, it looks like this:
 
 <p align="center">
-  <img src="/Assets/Examples/hello-world.svg">
+  <img src="/Assets/Examples/hello-world-directed.svg">
 </p>
+
+
+
+And here's an undirected version of the same graph:
+
+```c#
+var graph = new DotGraph(isDirected: false);
+```
+
+```dot
+graph
+{
+    Hello -- "World!"
+}
+```
+
+<p align="center">
+  <img src="/Assets/Examples/hello-world-undirected.svg">
+</p>
+
 
 
 # Examples
