@@ -114,7 +114,7 @@ myGraph.Edges.Add("MyNodeId1", "MyNodeId2");
 
 # Generating a graph
 
-To generate a graph script, just call the ***Build()*** extension method on a graph instance as follows:
+To generate a graph script, just call the ***Build*** extension method on a graph instance as follows:
 
 ```c#
 using GiGraph.Dot.Entities.Graphs;
@@ -128,6 +128,10 @@ namespace GiGraph.Examples
         private static void Main(string[] args)
         {
             var graph = new DotGraph(isDirected: true);
+            
+            // add an edge that connects the two specified nodes
+            // (you don't have to add the nodes to the node collection of the graph
+            // unless you need to specify some attributes for them)
             graph.Edges.Add("Hello", "World!");
 
             // write it to console as string
@@ -166,7 +170,9 @@ And when visualized, it looks like this:
 
 
 
-## Graph defaults example
+## Defaults attributes example
+
+This example shows the usage of default attributes of nodes and edges. When they are specified, there is no need to set them for individual elements, unless you want to override some of them. Both these scenarios are covered by the example.
 
 ```c#
 using GiGraph.Dot.Entities.Attributes.Enums;
@@ -244,7 +250,7 @@ namespace GiGraph.Examples
             Console.WriteLine(graphString);
 
             // or save it to a file (.gv and .dot are the default extensions)
-            graph.SaveToFile(@"C:\MyGraphs\hello-world.gv");
+            graph.SaveToFile(@"C:\MyGraphs\defaults-example.gv");
 
             Console.ReadLine();
         }
@@ -284,6 +290,12 @@ digraph
 
 
 ## Clusters example
+
+A cluster subgraph represented by the **DotCluster** class is a special type of subgraph whose appearance can be customized (as opposed to a normal subgraph, represented by the **DotSubgraph** class). If supported, the layout engine used to render it, will do the layout so that the nodes belonging to the cluster are drawn together, with the entire drawing of the cluster contained within a bounding rectangle. 
+
+*Note that cluster subgraphs are not part of the DOT language, but solely a syntactic convention adhered to by certain of the layout engines.*
+
+Cluster subgraphs do not support setting custom node layout the way normal subgraphs do, but they do support setting common style of nodes and edges within it.
 
 ```c#
 using GiGraph.Dot.Entities.Attributes.Enums;
@@ -347,7 +359,7 @@ namespace GiGraph.Examples
             Console.WriteLine(graphString);
 
             // or save it to a file (.gv and .dot are the default extensions)
-            graph.SaveToFile(@"C:\MyGraphs\hello-world.gv");
+            graph.SaveToFile(@"C:\MyGraphs\clusters-example.gv");
 
             Console.ReadLine();
         }
@@ -394,3 +406,78 @@ digraph
 <p align="center">
   <img src="/Assets/Examples/clusters.svg">
 </p>
+
+
+
+# Custom output formatting
+
+The DOT generation engine supports setting some custom preferences for generating the output. These include syntax preferences, and formatting preferences. 
+
+### Formatting preferences
+
+Formatting preferences can be modified using the **DotFormattingOptions** class. If you want to change the indentation level or generate the output as a single line, pass a customized formatting options instance to the **Build** or **SaveToFile** method on a graph instance.
+
+```c#
+...
+using GiGraph.Dot.Writers.Options;
+
+var formatting = new DotFormattingOptions()
+{
+    SingleLineOutput = true
+};
+
+Console.WriteLine( graph.Build(formatting) );
+
+graph.SaveToFile( @"C:\MyGraphs\hello-world.gv", formatting );
+```
+
+
+
+The hello world example from the earlier chapter of the text would render like this:
+
+```dot
+digraph { Hello -> "World!" }
+```
+
+
+
+### Syntax preferences
+
+Syntax preferences can be modified using the **DotFormattingOptions** class. You can for example force statement delimiters (*;*) at the end of lines or require identifiers to be quoted even when that is not required.
+
+```c#
+var options = DotGenerationOptions.Custom(o =>
+{
+    o.PreferQuotedIdentifiers = true;
+    o.PreferStatementDelimiter = true;
+
+    o.Attributes.PreferQuotedValue = true;
+});
+
+Console.WriteLine( graph.Build(generationOptions: options) );
+
+graph.SaveToFile( @"C:\MyGraphs\example.gv", generationOptions: options);
+```
+
+An example graph output based on the code above: 
+
+```dot
+digraph
+{
+    "Node1" [ shape = "box" ];
+
+    "Hello" -> "World!";
+}
+```
+
+The same graph output with the default preferences:
+
+```dot
+digraph
+{
+    Node1 [ shape = box ]
+
+    Hello -> "World!"
+}
+```
+
