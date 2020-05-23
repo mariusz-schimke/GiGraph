@@ -477,6 +477,7 @@ namespace GiGraph.Examples
             graph.Subgraphs.AddSubgraph(DotRank.Same).Nodes.Add("o", "p", "q", "r");
             graph.Subgraphs.AddSubgraph(DotRank.Same).Nodes.Add("s", "t");
 
+
             // build a graph as string
             var graphString = graph.Build();
             Console.WriteLine(graphString);
