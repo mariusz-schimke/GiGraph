@@ -275,3 +275,116 @@ digraph
 <p align="center">
   <img src="/Assets/Examples/graph-defaults.svg">
 </p>
+
+
+#### Clusters
+
+```c#
+using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Extensions; // Build(), SaveToFile()
+using System;
+using System.Drawing;
+
+namespace GiGraph.Examples
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            var graph = new DotGraph(isDirected: true);
+
+            graph.Attributes.Label = "Example Flow";
+            graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
+
+            graph.Nodes.Add("Start").Attributes.Shape = DotShape.Circle;
+            graph.Nodes.Add("Decision").Attributes.Shape = DotShape.Diamond;
+            graph.Nodes.Add("Exit").Attributes.Shape = DotShape.DoubleCircle;
+
+            // --- define edges ---
+
+            graph.Edges.Add("Start", "Decision");
+
+            // (!) Note that CROSS-DIAGRAM EDGES SHOULD BE DEFINED IN THE COMMON PARENT LEVEL GRAPH/SUBGRAPH
+            // (which is the root graph in this case)
+            graph.Edges.Add("Decision", "Cluster 1 Start").Attributes.Label = "yes";
+            graph.Edges.Add("Decision", "Cluster 2 Start").Attributes.Label = "no";
+
+            graph.Edges.Add("Cluster 1 Exit", "Exit");
+            graph.Edges.Add("Cluster 2 Exit", "Exit");
+
+
+            // --- add clusters ---
+
+            // (!) Note that clusters do not require an identifier, but when you don't specify it
+            // for multiple of them, or specify the same identifier for multiple clusters,
+            // they will be treated as one cluster when visualized.
+
+            graph.Subgraphs.AddCluster(id: "Positive path", cluster =>
+            {
+                cluster.Attributes.BackgroundColor = Color.LightGreen;
+                cluster.Attributes.Label = "Positive path";
+
+                cluster.Edges.Add("Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit");
+            });
+
+            graph.Subgraphs.AddCluster(id: "Negative path", cluster =>
+            {
+                cluster.Attributes.Label = "Negative path";
+                cluster.Attributes.BackgroundColor = Color.LightPink;
+
+                cluster.Edges.Add("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");
+            });
+
+            // build a graph as string
+            var graphString = graph.Build();
+            Console.WriteLine(graphString);
+
+            // or save it to a file (.gv and .dot are the default extensions)
+            graph.SaveToFile(@"C:\MyGraphs\hello-world.gv");
+
+            Console.ReadLine();
+        }
+    }
+}
+```
+
+```dot
+digraph
+{
+    label = "Example Flow"
+    rankdir = LR
+
+    Decision [ shape = diamond ]
+    Exit [ shape = doublecircle ]
+    Start [ shape = circle ]
+
+    "Cluster 1 Exit" -> Exit
+    "Cluster 2 Exit" -> Exit
+    Decision -> "Cluster 1 Start" [ label = yes ]
+    Decision -> "Cluster 2 Start" [ label = no ]
+    Start -> Decision
+
+    subgraph "cluster Negative path"
+    {
+        bgcolor = "#ffb6c1ff"
+        label = "Negative path"
+
+        "Cluster 2 Node" -> "Cluster 2 Exit"
+        "Cluster 2 Start" -> "Cluster 2 Node"
+    }
+
+    subgraph "cluster Positive path"
+    {
+        bgcolor = "#90ee90ff"
+        label = "Positive path"
+
+        "Cluster 1 Node" -> "Cluster 1 Exit"
+        "Cluster 1 Start" -> "Cluster 1 Node"
+    }
+}
+```
+
+<p align="center">
+  <img src="/Assets/Examples/clusters.svg">
+</p>
