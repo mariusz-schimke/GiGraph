@@ -10,7 +10,7 @@ A simple solution for generating graphs in the <a href="https://en.wikipedia.org
 
 
 
-###### Built with [.NET Standard 2.0](https://docs.microsoft.com/pl-pl/dotnet/standard/net-standard#net-implementation-support) (compatible with *.NET Core 2.0* and above, *.NET Framework 4.6.1* and above).
+###### Built with [.NET Standard 2.0](https://docs.microsoft.com/en-US/dotnet/standard/net-standard#net-implementation-support) (compatible with *.NET Core 2.0* and above, *.NET Framework 4.6.1* and above).
 
 ###### Available on NuGet: [![#](https://img.shields.io/nuget/v/GiGraph.Dot)](https://www.nuget.org/packages/GiGraph.Dot/)
 
