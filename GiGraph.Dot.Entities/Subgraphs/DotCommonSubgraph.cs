@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
             string id,
             IDotAttributeCollection attributes,
             DotNodeCollection nodes,
-            DotEdgeCollection edges,
+            DotCommonEdgeCollection edges,
             DotCommonSubgraphCollection subgraphs,
             IDotNodeAttributes defaultNodeAttributes,
             IDotEdgeAttributes defaultEdgeAttributes)
