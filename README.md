@@ -409,7 +409,7 @@ The DOT generation engine supports setting some custom preferences for generatin
 
 ### Formatting preferences
 
-Formatting preferences can be modified using the **DotFormattingOptions** class. If you want to change the indentation level or generate the output as a single line, pass a customized formatting options instance to the **Build** or **SaveToFile** method on a graph instance.
+Formatting preferences can be modified using the **DotFormattingOptions** class. If you want to change the indentation level, the indentation character, set a custom line break character/sequence, or generate the output as a single line, pass a customized formatting options instance to the **Build** or **SaveToFile** method on a graph instance.
 
 ```c#
 ...
