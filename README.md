@@ -1,5 +1,3 @@
-# GiGraph
-
 <p align="center">
   <img src="/Assets/social-preview.png">
 </p>
@@ -170,7 +168,7 @@ And when visualized, it looks like this:
 
 
 
-## Defaults attributes example
+## Default attributes example
 
 This example shows the usage of default attributes of nodes and edges. When they are specified, there is no need to set them for individual elements, unless you want to override some of them. Both these scenarios are covered by the example.
 
@@ -284,8 +282,6 @@ digraph
   <img src="/Assets/Examples/graph-defaults.svg">
 </p>
 
-
-------
 
 
 
@@ -421,6 +417,8 @@ Formatting preferences can be modified using the **DotFormattingOptions** class.
 ...
 using GiGraph.Dot.Writers.Options;
 
+...
+
 var formatting = new DotFormattingOptions()
 {
     SingleLineOutput = true
@@ -443,9 +441,14 @@ digraph { Hello -> "World!" }
 
 ### Syntax preferences
 
-Syntax preferences can be modified using the **DotFormattingOptions** class. You can for example force statement delimiters (*;*) at the end of lines or require identifiers to be quoted even when that is not required.
+Syntax preferences can be modified using the **DotFormattingOptions** class. You can for example force statement delimiters (*;*) at the end of lines or require identifiers to be quoted, even if it is not required.
 
 ```c#
+...
+using GiGraph.Dot.Generators.Options;
+
+...
+
 var options = DotGenerationOptions.Custom(o =>
 {
     o.PreferQuotedIdentifiers = true;
