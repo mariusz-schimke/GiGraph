@@ -44,8 +44,8 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Creates a new edge connecting two nodes.
         /// </summary>
-        /// <param name="tailNodeId">The identifier of the left (source, tail) node the edge should be connected to.</param>
-        /// <param name="headNodeId">The identifier of the right (destination, head) node the should be connected to.</param>
+        /// <param name="tailNodeId">The identifier of the tail (source, left) node the edge should be connected to.</param>
+        /// <param name="headNodeId">The identifier of the head (destination, right) node the should be connected to.</param>
         public DotEdge(string tailNodeId, string headNodeId)
             : this(tailNodeId, headNodeId, new DotEntityAttributes())
         {

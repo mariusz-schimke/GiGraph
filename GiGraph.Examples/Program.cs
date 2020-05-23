@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions; // the Build() and SaveToFile() extension methods are defined here
+using GiGraph.Examples.Basic;
 using System;
 
 namespace GiGraph.Examples
