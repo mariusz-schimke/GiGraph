@@ -18,8 +18,4 @@
     <ProjectReference Include="..\Gigraph.Dot\GiGraph.Dot.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Complex\" />
-  </ItemGroup>
-
 </Project>

@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Generators.Options
+﻿using System;
+
+namespace GiGraph.Dot.Generators.Options
 {
     public partial class DotGenerationOptions
     {
@@ -24,6 +26,13 @@
         public DotGenerationOptions()
             : this(new AttributeOptions(), new SubgraphOptions())
         {
+        }
+
+        public static DotGenerationOptions Custom(Action<DotGenerationOptions> init)
+        {
+            var result = new DotGenerationOptions();
+            init?.Invoke(result);
+            return result;
         }
     }
 }
