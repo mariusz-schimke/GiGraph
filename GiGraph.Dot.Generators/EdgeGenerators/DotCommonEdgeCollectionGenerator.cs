@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Edges;
+﻿using GiGraph.Dot.Entities;
+using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Options;
 using GiGraph.Dot.Generators.Providers;
@@ -23,9 +24,10 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
         public override void Generate(DotCommonEdgeCollection edges, IDotEdgeStatementWriter writer)
         {
             var orderedEdges = edges
-                .Where(e => e.NodeIds.Any())
-                .OrderBy(e => string.Join(" ", e.NodeIds))
-                .ToList();
+                .Cast<IDotEntityWithIds>()
+                .Where(e => e.Ids.Any())
+                .OrderBy(e => string.Join(" ", e.Ids))
+                .ToArray();
 
             foreach (var edge in orderedEdges)
             {
