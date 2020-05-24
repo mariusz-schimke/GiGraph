@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Edges
         {
             NodeIds = nodeIds.Count > 1
                 ? nodeIds
-                : throw new ArgumentException("At least a pair of node identifiers has to be specified for an edge chain.");
+                : throw new ArgumentException("At least a pair of node identifiers has to be specified for an edge chain.", nameof(nodeIds));
         }
 
         /// <summary>
