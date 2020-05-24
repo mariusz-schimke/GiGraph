@@ -99,6 +99,15 @@ namespace GiGraph.Dot.Entities.Nodes
         }
 
         /// <summary>
+        /// Adds the specified nodes to the collection.
+        /// </summary>
+        /// <param name="nodes">The nodes to add.</param>
+        public virtual void AddRange(IEnumerable<DotNode> nodes)
+        {
+            _nodes.AddRange(nodes);
+        }
+
+        /// <summary>
         /// Gets a node with the specified identifier from the collection.
         /// </summary>
         /// <param name="id">The identifier of the node to add.</param>
