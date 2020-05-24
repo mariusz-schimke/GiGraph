@@ -1,6 +1,8 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Edges.Elements;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GiGraph.Dot.Entities.Edges
 {
@@ -15,16 +17,51 @@ namespace GiGraph.Dot.Entities.Edges
         public override IDotEdgeAttributes Attributes => base.Attributes;
 
         /// <summary>
-        /// Gets the identifiers of the nodes of this edge chain.
+        /// Gets the elements this edge chain.
         /// </summary>
-        public virtual IEnumerable<string> NodeIds { get; }
+        public virtual IEnumerable<DotEdgeElement> Elements { get; }
 
-        protected DotEdgeChain(ICollection<string> nodeIds, IDotEdgeAttributes attributes)
+        protected DotEdgeChain(ICollection<DotEdgeElement> elements, IDotEdgeAttributes attributes)
             : base(attributes)
         {
-            NodeIds = nodeIds.Count > 1
-                ? nodeIds
-                : throw new ArgumentException("At least a pair of node identifiers has to be specified for an edge chain.", nameof(nodeIds));
+            Elements = elements.Count > 1
+                ? elements
+                : throw new ArgumentException("At least a pair of elements has to be specified for an edge chain.", nameof(elements));
+        }
+
+        /// <summary>
+        /// Creates a new edge chain initialized with the specified elements.
+        /// At least a pair of elements has to be specified.
+        /// </summary>
+        /// <param name="elements">The elements to initialize the instance with.</param>
+        public DotEdgeChain(params DotEdgeElement[] elements)
+            : this((IEnumerable<DotEdgeElement>)elements)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new edge chain initialized with the specified elements.
+        /// At least a pair of elements has to be specified.
+        /// </summary>
+        /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
+        public DotEdgeChain(IEnumerable<DotEdgeElement> nodeIds)
+            : this(new List<DotEdgeElement>(nodeIds), new DotEntityAttributes())
+        {
+        }
+
+        /// <summary>
+        /// Gets the elements of this edge chain.
+        /// </summary>
+        protected override IEnumerable<DotEdgeElement> GetElements() => Elements;
+
+        /// <summary>
+        /// Creates a new edge chain initialized with the specified node identifiers.
+        /// At least a pair of identifiers has to be specified.
+        /// </summary>
+        /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
+        public static DotEdgeChain CreateNodeEdgeChain(params string[] nodeIds)
+        {
+            return CreateNodeChain((IEnumerable<string>)nodeIds);
         }
 
         /// <summary>
@@ -32,24 +69,12 @@ namespace GiGraph.Dot.Entities.Edges
         /// At least a pair of identifiers has to be specified.
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
-        public DotEdgeChain(params string[] nodeIds)
-            : this((IEnumerable<string>)nodeIds)
+        public static DotEdgeChain CreateNodeChain(IEnumerable<string> nodeIds)
         {
+            return new DotEdgeChain
+            (
+                nodeIds.Select(nodeId => new DotEdgeNode(nodeId))
+            );
         }
-
-        /// <summary>
-        /// Creates a new edge chain initialized with the specified node identifiers.
-        /// At least a pair of identifiers has to be specified.
-        /// </summary>
-        /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
-        public DotEdgeChain(IEnumerable<string> nodeIds)
-            : this(new List<string>(nodeIds), new DotEntityAttributes())
-        {
-        }
-
-        /// <summary>
-        /// Gets the identifiers of the nodes of this edge chain.
-        /// </summary>
-        protected override IEnumerable<string> GetNodeIds() => NodeIds;
     }
 }
