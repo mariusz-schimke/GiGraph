@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Edges
 {
+    /// <summary>
+    /// Represents an chain of edges that connect multiple consecutive nodes.
+    /// </summary>
     public class DotEdgeChain : DotCommonEdge
     {
         protected readonly ICollection<string> _nodeIds;

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace GiGraph.Dot.Entities.Edges
 {
     /// <summary>
-    /// Represents a graph edge that connects two consecutive nodes.
+    /// Represents a graph edge that connects two nodes.
     /// </summary>
     public class DotEdge : DotCommonEdge
     {
