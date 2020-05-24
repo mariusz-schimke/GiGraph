@@ -1,8 +1,6 @@
 Road map:
-1. Support subgraphs in edge chains.
-2. Add port support for nodes connected with edges (equivalent to tailport/headport edge attributes, but these attributes are shared between all nodes in an edge chain, so port should be implemented as well for individual nodes of an edge).
-3. Support color list.
-4. Gradually add support for all available attributes.
+1. Support color list.
+2. Gradually add support for all available attributes.
 
 Other (always valid): 
 1. Check if methods are coherently marked as virtual.
