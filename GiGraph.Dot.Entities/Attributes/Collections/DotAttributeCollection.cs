@@ -19,6 +19,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             _attributes[((IDotAttribute)attribute).Key] = attribute;
         }
 
+        public virtual void SetRange(IEnumerable<DotAttribute> attributes)
+        {
+            foreach (var attribute in attributes)
+            {
+                Set(attribute);
+            }
+        }
+
         public virtual void Set(string key, string value)
         {
             _attributes[key] = new DotStringAttribute(key, value);
