@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Edges
         public virtual IDotEdgeAttributes Attributes { get; }
 
         /// <summary>
-        /// Gets the identifiers of nodes of this edge chain.
+        /// Gets the identifiers of nodes of this edge or edge chain.
         /// </summary>
         public abstract IEnumerable<string> NodeIds { get; }
 
