@@ -154,7 +154,9 @@ namespace GiGraph.Dot.Entities.Edges
             var head = new DotSubgraph();
             head.Nodes.Add(headNodeIds);
 
-            return Add(DotEdge.CreateOneToMany(tailNodeId, head));
+            var edge = Add(DotEdge.CreateOneToMany(tailNodeId, head));
+            initEdge?.Invoke(edge.Attributes);
+            return edge;
         }
 
         /// <summary>
@@ -203,7 +205,9 @@ namespace GiGraph.Dot.Entities.Edges
             var tail = new DotSubgraph();
             tail.Nodes.Add(tailNodeIds);
 
-            return Add(DotEdge.CreateManyToOne(tail, headNodeId));
+            var edge = Add(DotEdge.CreateManyToOne(tail, headNodeId));
+            initEdge?.Invoke(edge.Attributes);
+            return edge;
         }
 
         /// <summary>
