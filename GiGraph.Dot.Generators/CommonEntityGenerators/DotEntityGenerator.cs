@@ -64,12 +64,12 @@ namespace GiGraph.Dot.Generators.CommonEntityGenerators
         {
             if (entity is { } && !(entity is TEntity))
             {
-                throw new ArgumentException($"The entity type {entity.GetType().FullName} is not supported by the {GetType().FullName} generator.");
+                throw new ArgumentException($"The entity type {entity.GetType().FullName} is not supported by the {GetType().FullName} generator.", nameof(entity));
             }
 
             if (!(writer is TWriter))
             {
-                throw new ArgumentException($"The writer type {writer.GetType().FullName} is not valid for the {GetType().FullName} generator.");
+                throw new ArgumentException($"The writer type {writer.GetType().FullName} is not valid for the {GetType().FullName} generator.", nameof(writer));
             }
 
             Generate((TEntity)entity, (TWriter)writer);

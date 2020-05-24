@@ -86,7 +86,7 @@ namespace GiGraph.Dot.Generators.GraphGenerators
             }
         }
 
-        protected virtual void WriteNodes(DotNodeCollection nodes, IDotGraphBodyWriter writer)
+        protected virtual void WriteNodes(DotCommonNodeCollection nodes, IDotGraphBodyWriter writer)
         {
             if (nodes.Any())
             {
