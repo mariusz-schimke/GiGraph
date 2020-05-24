@@ -23,14 +23,22 @@ namespace GiGraph.Dot.Generators.AttributeGenerators
 
         public override void Generate(DotAttributeCollection attributes, IDotAttributeStatementWriter writer)
         {
-            var orderedAttributes = attributes.OrderBy((IDotAttribute a) => a.Key).ToList();
+            var orderedAttributes = attributes
+                .OrderBy((IDotAttribute a) => a.Key)
+                .Cast<DotAttribute>()
+                .ToArray();
 
             foreach (var attribute in orderedAttributes)
             {
-                var nodeWriter = writer.BeginAttribute();
-                _entityGenerators.GetForEntity<IDotAttributeWriter>(attribute).Generate(attribute, nodeWriter);
-                writer.EndAttribute();
+                WriteAttribute(attribute, writer);
             }
+        }
+
+        protected virtual void WriteAttribute(DotAttribute attribute, IDotAttributeStatementWriter writer)
+        {
+            var nodeWriter = writer.BeginAttribute();
+            _entityGenerators.GetForEntity<IDotAttributeWriter>(attribute).Generate(attribute, nodeWriter);
+            writer.EndAttribute();
         }
     }
 }

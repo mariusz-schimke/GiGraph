@@ -22,14 +22,22 @@ namespace GiGraph.Dot.Generators.SubgraphGenerators
 
         public override void Generate(DotCommonSubgraphCollection subgraphs, IDotSubgraphWriterRoot writer)
         {
-            var orderedSubgraphs = subgraphs.OrderByDescending(n => n.GetType().FullName).ThenBy(n => n.Id).ToList();
+            var orderedSubgraphs = subgraphs
+                .OrderByDescending(n => n.GetType().FullName)
+                .ThenBy(n => n.Id)
+                .ToArray();
 
             foreach (var subgraph in orderedSubgraphs)
             {
-                var subgraphWriter = writer.BeginSubgraph(_options.Subgraphs.PreferExplicitKeyword);
-                _entityGenerators.GetForEntity<IDotSubgraphWriter>(subgraph).Generate(subgraph, subgraphWriter);
-                writer.EndSubgraph();
+                WriteSubgraph(subgraph, writer);
             }
+        }
+
+        protected virtual void WriteSubgraph(DotCommonSubgraph subgraph, IDotSubgraphWriterRoot writer)
+        {
+            var subgraphWriter = writer.BeginSubgraph(_options.Subgraphs.PreferExplicitKeyword);
+            _entityGenerators.GetForEntity<IDotSubgraphWriter>(subgraph).Generate(subgraph, subgraphWriter);
+            writer.EndSubgraph();
         }
     }
 }
