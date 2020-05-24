@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Gets the elements this edge chain.
         /// </summary>
-        public virtual IEnumerable<DotEdgeElement> Elements { get; }
+        public override IEnumerable<DotEdgeElement> Elements { get; }
 
         protected DotEdgeChain(ICollection<DotEdgeElement> elements, IDotEdgeAttributes attributes)
             : base(attributes)
@@ -50,16 +50,11 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        /// Gets the elements of this edge chain.
-        /// </summary>
-        protected override IEnumerable<DotEdgeElement> GetElements() => Elements;
-
-        /// <summary>
         /// Creates a new edge chain initialized with the specified node identifiers.
         /// At least a pair of identifiers has to be specified.
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
-        public static DotEdgeChain CreateNodeEdgeChain(params string[] nodeIds)
+        public static DotEdgeChain CreateNodeChain(params string[] nodeIds)
         {
             return CreateNodeChain((IEnumerable<string>)nodeIds);
         }

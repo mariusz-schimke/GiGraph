@@ -7,14 +7,28 @@ namespace GiGraph.Dot.Writers
     public class DotTokenWriter
     {
         protected readonly StreamWriter _writer;
-        protected readonly Queue<string> _lingerBuffer = new Queue<string>();
+        protected readonly Queue<string> _lingerBuffer;
 
         protected readonly DotFormattingOptions _options;
 
-        public DotTokenWriter(StreamWriter writer, DotFormattingOptions options)
+        protected DotTokenWriter(StreamWriter writer, DotFormattingOptions options, Queue<string> lingerBuffer)
         {
             _writer = writer;
             _options = options;
+            _lingerBuffer = lingerBuffer;
+        }
+
+        public DotTokenWriter(StreamWriter writer, DotFormattingOptions options)
+            : this(writer, options, new Queue<string>())
+        {
+        }
+
+        public virtual DotTokenWriter SingleLine()
+        {
+            var singleLineOutputOptions = _options.Clone();
+            singleLineOutputOptions.SingleLineOutput = true;
+
+            return new DotTokenWriter(_writer, singleLineOutputOptions, _lingerBuffer);
         }
 
         public virtual DotTokenWriter Token(string token, bool linger = false)
@@ -76,6 +90,11 @@ namespace GiGraph.Dot.Writers
         public virtual DotTokenWriter NodeSeparator(bool linger = false)
         {
             return Token(",", linger);
+        }
+
+        public virtual DotTokenWriter NodePortDelimiter(bool linger = false)
+        {
+            return Token(":", linger);
         }
 
         public virtual DotTokenWriter StatementEnd(bool linger = false)
