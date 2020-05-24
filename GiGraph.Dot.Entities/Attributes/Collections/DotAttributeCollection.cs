@@ -176,7 +176,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             Set(attribute);
         }
 
-        void ICollection<DotAttribute>.CopyTo(DotAttribute[] array, int arrayIndex)
+        public void CopyTo(DotAttribute[] array, int arrayIndex)
         {
             _attributes.Values.CopyTo(array, arrayIndex);
         }

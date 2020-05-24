@@ -6,9 +6,16 @@ using System.Linq;
 
 namespace GiGraph.Dot.Entities.Edges
 {
-    public class DotCommonEdgeCollection : IDotEntity, IEnumerable<DotCommonEdge>
+    public class DotCommonEdgeCollection : IDotEntity, ICollection<DotCommonEdge>
     {
         protected readonly List<DotCommonEdge> _edges = new List<DotCommonEdge>();
+
+        /// <summary>
+        /// Gets the number of elements contained in the collection.
+        /// </summary>
+        public int Count => _edges.Count;
+
+        bool ICollection<DotCommonEdge>.IsReadOnly => ((ICollection<DotCommonEdge>)_edges).IsReadOnly;
 
         /// <summary>
         /// Adds the specified edge to the collection.
@@ -20,6 +27,11 @@ namespace GiGraph.Dot.Entities.Edges
         {
             _edges.Add(edge);
             return edge;
+        }
+
+        void ICollection<DotCommonEdge>.Add(DotCommonEdge item)
+        {
+            Add(item);
         }
 
         /// <summary>
@@ -132,6 +144,27 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
+        /// Determines whether the specified edge is in the collection.
+        /// </summary>
+        /// <param name="item">The edge to locate in the collection.</param>
+        public bool Contains(DotCommonEdge item)
+        {
+            return _edges.Contains(item);
+        }
+
+        /// <summary>
+        /// Determines whether the specified edge is in the collection.
+        /// </summary>
+        /// <param name="tailNodeId">The tail (source, left) node identifier to locate.</param>
+        /// <param name="headNodeId">The head (destination, right) node identifier to locate.</param>
+        public bool Contains(string tailNodeId, string headNodeId)
+        {
+            return _edges.Any(commonEdge => commonEdge is DotEdge edge &&
+                edge.TailNodeId == tailNodeId &&
+                edge.HeadNodeId == headNodeId);
+        }
+
+        /// <summary>
         /// Removes the specified edge from the collection.
         /// </summary>
         /// <param name="edge">The edge to remove.</param>
@@ -145,6 +178,11 @@ namespace GiGraph.Dot.Entities.Edges
             }
 
             return result;
+        }
+
+        bool ICollection<DotCommonEdge>.Remove(DotCommonEdge item)
+        {
+            return Remove(item) > 0;
         }
 
         /// <summary>
@@ -174,6 +212,11 @@ namespace GiGraph.Dot.Entities.Edges
         public virtual void Clear()
         {
             _edges.Clear();
+        }
+
+        public void CopyTo(DotCommonEdge[] array, int arrayIndex)
+        {
+            _edges.CopyTo(array, arrayIndex);
         }
 
         public virtual IEnumerator<DotCommonEdge> GetEnumerator()
