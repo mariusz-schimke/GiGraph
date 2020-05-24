@@ -3,7 +3,6 @@ using System.Drawing;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    // TODO: check if properties are virtual
     public class DotEntityAttributes : DotAttributeCollection,
         IDotGraphAttributes,
         IDotSubgraphAttributes,

@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Nodes;
+﻿using GiGraph.Dot.Entities;
+using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Options;
 using GiGraph.Dot.Generators.Providers;
@@ -8,21 +9,24 @@ using System.Linq;
 
 namespace GiGraph.Dot.Generators.NodeGenerators
 {
-    public class DotNodeCollectionGenerator : DotEntityGenerator<DotNodeCollection, IDotNodeStatementWriter>
+    public class DotCommonNodeCollectionGenerator : DotEntityGenerator<DotNodeCollection, IDotNodeStatementWriter>
     {
-        protected DotNodeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+        protected DotCommonNodeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }
 
-        public DotNodeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotCommonNodeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
         public override void Generate(DotNodeCollection nodes, IDotNodeStatementWriter writer)
         {
-            var orderedNodes = nodes.OrderBy(n => n.Id).ToList();
+            var orderedNodes = nodes
+                .Cast<IDotEntityWithIds>()
+                .OrderBy(n => string.Join(" ", n.Ids))
+                .ToArray();
 
             foreach (var node in orderedNodes)
             {
