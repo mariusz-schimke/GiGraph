@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Gets the number of elements contained in the collection.
         /// </summary>
-        public int Count => _edges.Count;
+        public virtual int Count => _edges.Count;
 
         bool ICollection<DotCommonEdge>.IsReadOnly => ((ICollection<DotCommonEdge>)_edges).IsReadOnly;
 
@@ -51,6 +51,18 @@ namespace GiGraph.Dot.Entities.Edges
         public virtual DotEdge Add(string tailNodeId, string headNodeId)
         {
             return Add(new DotEdge(tailNodeId, headNodeId));
+        }
+
+        /// <summary>
+        /// Gets an edge to the collection, that connects two nodes with the specified identifiers.
+        /// </summary>
+        /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
+        /// <param name="headNodeId">The head (destination, right) node identifier.</param>
+        public virtual DotEdge Get(string tailNodeId, string headNodeId)
+        {
+            return (DotEdge)_edges.FirstOrDefault(commonEdge => commonEdge is DotEdge edge &&
+                edge.TailNodeId == tailNodeId &&
+                edge.HeadNodeId == headNodeId);
         }
 
         /// <summary>
@@ -147,7 +159,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// Determines whether the specified edge is in the collection.
         /// </summary>
         /// <param name="item">The edge to locate in the collection.</param>
-        public bool Contains(DotCommonEdge item)
+        public virtual bool Contains(DotCommonEdge item)
         {
             return _edges.Contains(item);
         }
@@ -157,7 +169,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tailNodeId">The tail (source, left) node identifier to locate.</param>
         /// <param name="headNodeId">The head (destination, right) node identifier to locate.</param>
-        public bool Contains(string tailNodeId, string headNodeId)
+        public virtual bool Contains(string tailNodeId, string headNodeId)
         {
             return _edges.Any(commonEdge => commonEdge is DotEdge edge &&
                 edge.TailNodeId == tailNodeId &&
@@ -214,7 +226,7 @@ namespace GiGraph.Dot.Entities.Edges
             _edges.Clear();
         }
 
-        public void CopyTo(DotCommonEdge[] array, int arrayIndex)
+        public virtual void CopyTo(DotCommonEdge[] array, int arrayIndex)
         {
             _edges.CopyTo(array, arrayIndex);
         }

@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// <summary>
         /// Gets the number of elements contained in the collection.
         /// </summary>
-        public int Count => _nodes.Count;
+        public virtual int Count => _nodes.Count;
 
         bool ICollection<DotNode>.IsReadOnly => ((ICollection<DotNode>)_nodes).IsReadOnly;
 
@@ -99,10 +99,19 @@ namespace GiGraph.Dot.Entities.Nodes
         }
 
         /// <summary>
+        /// Gets a node with the specified identifier from the collection.
+        /// </summary>
+        /// <param name="id">The identifier of the node to add.</param>
+        public virtual DotNode Get(string id)
+        {
+            return _nodes.FirstOrDefault(node => node.Id == id);
+        }
+
+        /// <summary>
         /// Determines whether the specified node is in the collection.
         /// </summary>
         /// <param name="item">The node to locate in the collection.</param>
-        public bool Contains(DotNode item)
+        public virtual bool Contains(DotNode item)
         {
             return _nodes.Contains(item);
         }
@@ -111,7 +120,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// Determines whether the specified node is in the collection.
         /// </summary>
         /// <param name="id">The identifier of the node to locate in the collection.</param>
-        public bool Contains(string id)
+        public virtual bool Contains(string id)
         {
             return _nodes.Any(node => node.Id == id);
         }
@@ -163,7 +172,7 @@ namespace GiGraph.Dot.Entities.Nodes
             _nodes.Clear();
         }
 
-        public void CopyTo(DotNode[] array, int arrayIndex)
+        public virtual void CopyTo(DotNode[] array, int arrayIndex)
         {
             _nodes.CopyTo(array, arrayIndex);
         }
