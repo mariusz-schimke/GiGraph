@@ -19,6 +19,6 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Gets the elements (head(s) and tail(s)) of this edge.
         /// </summary>
-        protected abstract IEnumerable<DotEdgeElement> GetElements();
+        public abstract IEnumerable<DotEdgeElement> Elements { get; }
     }
 }
