@@ -6,15 +6,17 @@ using System.Linq;
 
 namespace GiGraph.Dot.Entities.Edges
 {
-    public class DotEdgeCollection : IDotEntity, IEnumerable<DotEdge>
+    public class DotCommonEdgeCollection : IDotEntity, IEnumerable<DotCommonEdge>
     {
-        protected readonly List<DotEdge> _edges = new List<DotEdge>();
+        protected readonly List<DotCommonEdge> _edges = new List<DotCommonEdge>();
 
         /// <summary>
         /// Adds the specified edge to the collection.
         /// </summary>
+        /// <typeparam name="T">The type of edge added.</typeparam>
         /// <param name="edge">The edge to add.</param>
-        public virtual DotEdge Add(DotEdge edge)
+        public virtual T Add<T>(T edge)
+            where T : DotCommonEdge
         {
             _edges.Add(edge);
             return edge;
@@ -24,7 +26,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// Adds the specified edges to the collection.
         /// </summary>
         /// <param name="edges">The edges to add.</param>
-        public virtual void AddRange(IEnumerable<DotEdge> edges)
+        public virtual void AddRange(IEnumerable<DotCommonEdge> edges)
         {
             _edges.AddRange(edges);
         }
@@ -56,7 +58,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// Adds multiple edges to the collection, that connect consecutive nodes with the specified identifiers.
         /// </summary>
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
-        public virtual DotEdge[] Add(params string[] nodeIds)
+        public virtual DotEdgeChain Add(params string[] nodeIds)
         {
             return Add(initEdge: null, nodeIds);
         }
@@ -66,17 +68,11 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="initEdge">An edge initializer delegate.</param>
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
-        public virtual DotEdge[] Add(Action<IDotEdgeAttributes> initEdge, params string[] nodeIds)
+        public virtual DotEdgeChain Add(Action<IDotEdgeAttributes> initEdge, params string[] nodeIds)
         {
-            if (nodeIds.Length == 1)
-            {
-                throw new ArgumentException("At least a pair of node identifiers has to be specified.");
-            }
-
-            return nodeIds
-                .Take(nodeIds.Length - 1)
-                .Select((tailNodeId, i) => Add(tailNodeId, headNodeId: nodeIds[i + 1], initEdge))
-                .ToArray();
+            var edge = Add(new DotEdgeChain(nodeIds));
+            initEdge?.Invoke(edge.Attributes);
+            return edge;
         }
 
         /// <summary>
@@ -139,7 +135,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// Removes the specified edge from the collection.
         /// </summary>
         /// <param name="edge">The edge to remove.</param>
-        public virtual int Remove(DotEdge edge)
+        public virtual int Remove(DotCommonEdge edge)
         {
             var result = 0;
 
@@ -158,15 +154,16 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="headNodeId">The head (destination, right) node identifier.</param>
         public virtual int Remove(string tailNodeId, string headNodeId)
         {
-            return RemoveAll(edge => edge.TailNodeId == tailNodeId &&
-                                     edge.HeadNodeId == headNodeId);
+            return RemoveAll(commonEdge => commonEdge is DotEdge edge &&
+                edge.TailNodeId == tailNodeId &&
+                edge.HeadNodeId == headNodeId);
         }
 
         /// <summary>
         /// Removes all edges from the collection, that match the specified criteria.
         /// </summary>
         /// <param name="match">The predicate to use for matching edges.</param>
-        public virtual int RemoveAll(Predicate<DotEdge> match)
+        public virtual int RemoveAll(Predicate<DotCommonEdge> match)
         {
             return _edges.RemoveAll(match);
         }
@@ -179,14 +176,14 @@ namespace GiGraph.Dot.Entities.Edges
             _edges.Clear();
         }
 
-        public virtual IEnumerator<DotEdge> GetEnumerator()
+        public virtual IEnumerator<DotCommonEdge> GetEnumerator()
         {
-            return ((IEnumerable<DotEdge>)_edges).GetEnumerator();
+            return ((IEnumerable<DotCommonEdge>)_edges).GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return ((IEnumerable<DotEdge>)_edges).GetEnumerator();
+            return ((IEnumerable<DotCommonEdge>)_edges).GetEnumerator();
         }
     }
 }

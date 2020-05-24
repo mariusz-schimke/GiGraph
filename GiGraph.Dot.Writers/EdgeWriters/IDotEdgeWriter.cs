@@ -4,6 +4,7 @@ namespace GiGraph.Dot.Writers.EdgeWriters
 {
     public interface IDotEdgeWriter : IDotEntityWithAttributeListWriter
     {
-        void WriteEdge(string tailNodeId, bool quoteTailNodeId, string headNodeId, bool quoteHeadNodeId);
+        void WriteNodeId(string nodeId, bool quoteNodeId);
+        void WriteEdge();
     }
 }
