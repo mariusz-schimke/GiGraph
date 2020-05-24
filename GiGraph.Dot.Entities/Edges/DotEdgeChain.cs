@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Edges
 
         /// <summary>
         /// Creates a new edge chain initialized with the specified node identifiers.
-        /// Any number of identifiers is accepted, except one.
+        /// At least a pair of identifiers has to be specified.
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
         public DotEdgeChain(params string[] nodeIds)
@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Edges
 
         /// <summary>
         /// Creates a new edge chain initialized with the specified node identifiers.
-        /// Any number of identifiers is accepted, except one.
+        /// At least a pair of identifiers has to be specified.
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
         public DotEdgeChain(IEnumerable<string> nodeIds)
