@@ -123,36 +123,24 @@ namespace GiGraph.Dot.Entities.Edges
         /// Adds multiple edges to the collection, where the <paramref name="tailNodeId"/> as the tail node is connected
         /// to all <paramref name="headNodeIds"/> as the head nodes.
         /// </summary>
-        /// <param name="tailNodeId">The identifier of the tail (source, left) node.</param>
-        /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes to connect the tail node to.</param>
-        public virtual DotEdge<DotEdgeNode, DotEdgeSubgraph> AddOneToMany(string tailNodeId, IEnumerable<string> headNodeIds)
-        {
-            return AddOneToMany(tailNodeId, initEdge: null, headNodeIds);
-        }
-
-        /// <summary>
-        /// Adds multiple edges to the collection, where the <paramref name="tailNodeId"/> as the tail node is connected
-        /// to all <paramref name="headNodeIds"/> as the head nodes.
-        /// </summary>
         /// <param name="initEdge">An edge initializer delegate.</param>
         /// <param name="tailNodeId">The identifier of the tail (source, left) node.</param>
         /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes to connect the tail node to.</param>
         public virtual DotEdge<DotEdgeNode, DotEdgeSubgraph> AddOneToMany(string tailNodeId, Action<IDotEdgeAttributes> initEdge, params string[] headNodeIds)
         {
-            return AddOneToMany(tailNodeId, initEdge, (IEnumerable<string>)headNodeIds);
+            return AddOneToMany(tailNodeId, headNodeIds, initEdge);
         }
 
         /// <summary>
         /// Adds multiple edges to the collection, where the <paramref name="tailNodeId"/> as the tail node is connected
         /// to all <paramref name="headNodeIds"/> as the head nodes.
         /// </summary>
-        /// <param name="initEdge">An edge initializer delegate.</param>
         /// <param name="tailNodeId">The identifier of the tail (source, left) node.</param>
         /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes to connect the tail node to.</param>
-        public virtual DotEdge<DotEdgeNode, DotEdgeSubgraph> AddOneToMany(string tailNodeId, Action<IDotEdgeAttributes> initEdge, IEnumerable<string> headNodeIds)
+        /// <param name="initEdge">An edge initializer delegate.</param>
+        public virtual DotEdge<DotEdgeNode, DotEdgeSubgraph> AddOneToMany(string tailNodeId, IEnumerable<string> headNodeIds, Action<IDotEdgeAttributes> initEdge = null)
         {
-            var head = new DotSubgraph();
-            head.Nodes.Add(headNodeIds);
+            var head = DotSubgraph.FromNodes(headNodeIds);
 
             var edge = Add(DotEdge.CreateOneToMany(tailNodeId, head));
             initEdge?.Invoke(edge.Attributes);
@@ -167,18 +155,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes to connect to the head node.</param>
         public virtual DotEdge<DotEdgeSubgraph, DotEdgeNode> AddManyToOne(string headNodeId, params string[] tailNodeIds)
         {
-            return AddManyToOne(headNodeId, (IEnumerable<string>)tailNodeIds);
-        }
-
-        /// <summary>
-        /// Adds multiple edges to the collection, where all <paramref name="tailNodeIds"/> as tail nodes
-        /// are connected to the <paramref name="headNodeId"/> as the head node.
-        /// </summary>
-        /// <param name="headNodeId">The identifier of the head (destination, right) node.</param>
-        /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes to connect to the head node.</param>
-        public virtual DotEdge<DotEdgeSubgraph, DotEdgeNode> AddManyToOne(string headNodeId, IEnumerable<string> tailNodeIds)
-        {
-            return AddManyToOne(headNodeId, initEdge: null, tailNodeIds);
+            return AddManyToOne(tailNodeIds, headNodeId);
         }
 
         /// <summary>
@@ -190,22 +167,39 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes to connect to the head node.</param>
         public virtual DotEdge<DotEdgeSubgraph, DotEdgeNode> AddManyToOne(string headNodeId, Action<IDotEdgeAttributes> initEdge, params string[] tailNodeIds)
         {
-            return AddManyToOne(headNodeId, initEdge, (IEnumerable<string>)tailNodeIds);
+            return AddManyToOne(tailNodeIds, headNodeId, initEdge);
         }
 
         /// <summary>
         /// Adds multiple edges to the collection, where all <paramref name="tailNodeIds"/> as tail nodes
         /// are connected to the <paramref name="headNodeId"/> as the head node.
         /// </summary>
-        /// <param name="initEdge">An edge initializer delegate.</param>
-        /// <param name="headNodeId">The identifier of the head (destination, right) node.</param>
         /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes to connect to the head node.</param>
-        public virtual DotEdge<DotEdgeSubgraph, DotEdgeNode> AddManyToOne(string headNodeId, Action<IDotEdgeAttributes> initEdge, IEnumerable<string> tailNodeIds)
+        /// <param name="headNodeId">The identifier of the head (destination, right) node.</param>
+        /// <param name="initEdge">An edge initializer delegate.</param>
+        public virtual DotEdge<DotEdgeSubgraph, DotEdgeNode> AddManyToOne(IEnumerable<string> tailNodeIds, string headNodeId, Action<IDotEdgeAttributes> initEdge = null)
         {
-            var tail = new DotSubgraph();
-            tail.Nodes.Add(tailNodeIds);
+            var tail = DotSubgraph.FromNodes(tailNodeIds);
 
             var edge = Add(DotEdge.CreateManyToOne(tail, headNodeId));
+            initEdge?.Invoke(edge.Attributes);
+            return edge;
+        }
+
+        /// <summary>
+        /// Adds multiple edges to the collection, where all <paramref name="tailNodeIds"/> as tail nodes
+        /// are connected to all <paramref name="headNodeIds"/> as head nodes.
+        /// </summary>
+        /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes.</param>
+        /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes.</param>
+        /// <param name="initEdge">An edge initializer delegate.</param>
+        public virtual DotEdge<DotEdgeSubgraph, DotEdgeSubgraph> AddManyToMany(
+            IEnumerable<string> tailNodeIds, IEnumerable<string> headNodeIds, Action<IDotEdgeAttributes> initEdge = null)
+        {
+            var tail = DotSubgraph.FromNodes(tailNodeIds);
+            var head = DotSubgraph.FromNodes(headNodeIds);
+
+            var edge = Add(DotEdge.CreateManyToMany(tail, head));
             initEdge?.Invoke(edge.Attributes);
             return edge;
         }

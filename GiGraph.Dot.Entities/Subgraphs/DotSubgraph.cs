@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Nodes;
+using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
@@ -54,6 +55,39 @@ namespace GiGraph.Dot.Entities.Subgraphs
               )
         {
             Attributes.Rank = rank;
+        }
+
+        /// <summary>
+        /// Creates a new subgraph with the specified nodes.
+        /// </summary>
+        /// <param name="rank">The rank attribute to assign to the subgraph.</param>
+        /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
+        public static DotSubgraph FromNodes(DotRank rank, params string[] nodeIds)
+        {
+            return FromNodes(nodeIds, rank: rank);
+        }
+
+        /// <summary>
+        /// Creates a new subgraph with the specified nodes.
+        /// </summary>
+        /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
+        public static DotSubgraph FromNodes(params string[] nodeIds)
+        {
+            return FromNodes((IEnumerable<string>)nodeIds);
+        }
+
+        /// <summary>
+        /// Creates a new subgraph with the specified nodes.
+        /// </summary>
+        /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
+        /// <param name="id">The unique identifier of the subgraph. Pass null if no identifier should be used.</param>
+        /// <param name="rank">The rank attribute to assign to the subgraph.</param>
+        public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, string id = null, DotRank? rank = null)
+        {
+            var result = new DotSubgraph();
+            result.Nodes.Add(nodeIds);
+
+            return result;
         }
     }
 }
