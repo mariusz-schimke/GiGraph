@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace GiGraph.Dot.Entities.Nodes
 {
-    public class DotNodeCollection : IDotEntity, ICollection<DotCommonNode>
+    public class DotCommonNodeCollection : IDotEntity, ICollection<DotCommonNode>
     {
         protected readonly List<DotCommonNode> _nodes = new List<DotCommonNode>();
 

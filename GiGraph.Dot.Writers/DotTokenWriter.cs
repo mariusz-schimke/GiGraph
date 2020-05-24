@@ -73,6 +73,11 @@ namespace GiGraph.Dot.Writers
             return Token(",", linger);
         }
 
+        public virtual DotTokenWriter NodeSeparator(bool linger)
+        {
+            return Token(",", linger);
+        }
+
         public virtual DotTokenWriter StatementEnd(bool linger = false)
         {
             return Token(";", linger);

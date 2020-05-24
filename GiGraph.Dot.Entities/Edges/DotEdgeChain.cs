@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Gets the identifiers of nodes of this edge chain.
         /// </summary>
-        protected override IEnumerable<string> NodeIds { get; }
+        public virtual IEnumerable<string> NodeIds { get; }
 
         protected DotEdgeChain(ICollection<string> nodeIds, IDotEdgeAttributes attributes)
             : base(attributes)
@@ -46,5 +46,10 @@ namespace GiGraph.Dot.Entities.Edges
             : this(new List<string>(nodeIds), new DotEntityAttributes())
         {
         }
+
+        /// <summary>
+        /// Gets the identifiers of the nodes of this edge chain.
+        /// </summary>
+        protected override IEnumerable<string> GetNodeIds() => NodeIds;
     }
 }

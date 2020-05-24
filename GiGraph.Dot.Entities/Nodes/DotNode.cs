@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using System;
+using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Nodes
 {
@@ -38,5 +39,10 @@ namespace GiGraph.Dot.Entities.Nodes
             : this(id, new DotEntityAttributes())
         {
         }
+
+        /// <summary>
+        /// Gets the identifier of the node.
+        /// </summary>
+        protected override IEnumerable<string> GetNodeIds() => new[] { _id };
     }
 }
