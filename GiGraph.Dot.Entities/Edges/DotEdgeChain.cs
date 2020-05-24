@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Edges
         public override IDotEdgeAttributes Attributes => base.Attributes;
 
         /// <summary>
-        /// Gets the identifiers of nodes of this edge chain.
+        /// Gets the identifiers of the nodes of this edge chain.
         /// </summary>
         public virtual IEnumerable<string> NodeIds { get; }
 
