@@ -1,12 +1,13 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using System;
+using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Edges
 {
     /// <summary>
     /// Represents a graph edge that connects two consecutive nodes.
     /// </summary>
-    public class DotEdge : IDotEntity
+    public class DotEdge : DotCommonEdge
     {
         protected string _tailNodeId;
         protected string _headNodeId;
@@ -30,15 +31,15 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        /// The attributes of the edge.
+        /// Gets the identifiers of nodes of this edge chain.
         /// </summary>
-        public virtual IDotEdgeAttributes Attributes { get; }
+        public override IEnumerable<string> NodeIds => new string[] { _tailNodeId, _headNodeId };
 
         protected DotEdge(string tailNodeId, string headNodeId, IDotEdgeAttributes attributes)
+            : base(attributes)
         {
             TailNodeId = tailNodeId;
             HeadNodeId = headNodeId;
-            Attributes = attributes;
         }
 
         /// <summary>

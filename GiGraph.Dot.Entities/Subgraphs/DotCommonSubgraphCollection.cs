@@ -13,6 +13,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// Adds a subgraph to the collection.
         /// </summary>
+        /// <typeparam name="T">The type of subgraph added.</typeparam>
         /// <param name="subgraph">The subgraph to add.</param>
         public virtual T Add<T>(T subgraph)
             where T : DotCommonSubgraph
