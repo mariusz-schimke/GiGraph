@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Generators.GraphGenerators
         where TWriter : IDotEntityWriter
     {
         protected DotCommonGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
-            : base(syntaxRules, options, entityGenerators, identifierEscaper ?? TextEscapingPipeline.CreateForGraphId())
+            : base(syntaxRules, options, entityGenerators, identifierEscaper ?? TextEscapingPipeline.ForGraphId())
         {
         }
 

@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tailNodeId">The identifier of the tail (source, left) node the edge should be connected to.</param>
         /// <param name="headNodeId">The identifier of the head (destination, right) node the should be connected to.</param>
-        public static DotEdge<DotEdgeNode, DotEdgeNode> CreateOneToOne(string tailNodeId, string headNodeId)
+        public static DotEdge<DotEdgeNode, DotEdgeNode> OneToOne(string tailNodeId, string headNodeId)
         {
             return new DotEdge<DotEdgeNode, DotEdgeNode>
             (
@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tailNodeId">The identifier of the tail (source, left) node the edge should be connected to.</param>
         /// <param name="headSubgraph">The subgraph to use as the head (destination, right) element the edge should be connected to.</param>
-        public static DotEdge<DotEdgeNode, DotEdgeSubgraph> CreateOneToMany(string tailNodeId, DotSubgraph headSubgraph)
+        public static DotEdge<DotEdgeNode, DotEdgeSubgraph> OneToMany(string tailNodeId, DotSubgraph headSubgraph)
         {
             return new DotEdge<DotEdgeNode, DotEdgeSubgraph>
             (
@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tailSubgraph">The subgraph to use as the tail (source, left) element the edge should be connected to.</param>
         /// <param name="headNodeId">The identifier of the head (destination, right) node the edge should be connected to.</param>
-        public static DotEdge<DotEdgeSubgraph, DotEdgeNode> CreateManyToOne(DotSubgraph tailSubgraph, string headNodeId)
+        public static DotEdge<DotEdgeSubgraph, DotEdgeNode> ManyToOne(DotSubgraph tailSubgraph, string headNodeId)
         {
             return new DotEdge<DotEdgeSubgraph, DotEdgeNode>
             (
@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tailSubgraph">The subgraph to use as the tail (source, left) element the edge should be connected to.</param>
         /// <param name="headSubgraph">The subgraph to use as the head (destination, right) element the edge should be connected to.</param>
-        public static DotEdge<DotEdgeSubgraph, DotEdgeSubgraph> CreateManyToMany(DotSubgraph tailSubgraph, DotSubgraph headSubgraph)
+        public static DotEdge<DotEdgeSubgraph, DotEdgeSubgraph> ManyToMany(DotSubgraph tailSubgraph, DotSubgraph headSubgraph)
         {
             return new DotEdge<DotEdgeSubgraph, DotEdgeSubgraph>
             (

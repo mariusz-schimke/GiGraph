@@ -54,9 +54,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// At least a pair of identifiers has to be specified.
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
-        public static DotEdgeChain CreateNodeChain(params string[] nodeIds)
+        public static DotEdgeChain FromNodes(params string[] nodeIds)
         {
-            return CreateNodeChain((IEnumerable<string>)nodeIds);
+            return FromNodes((IEnumerable<string>)nodeIds);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// At least a pair of identifiers has to be specified.
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
-        public static DotEdgeChain CreateNodeChain(IEnumerable<string> nodeIds)
+        public static DotEdgeChain FromNodes(IEnumerable<string> nodeIds)
         {
             return new DotEdgeChain
             (
