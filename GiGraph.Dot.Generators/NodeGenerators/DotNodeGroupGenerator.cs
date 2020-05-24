@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Generators.NodeGenerators
         {
             if (!nodeIds.Any())
             {
-                throw new ArgumentException("At least one node identifier has to be specified for a node group.");
+                throw new ArgumentException("At least one node identifier has to be specified for a node group.", nameof(nodeIds));
             }
 
             foreach (var nodeId in nodeIds)
