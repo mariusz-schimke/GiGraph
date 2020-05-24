@@ -87,7 +87,7 @@ namespace GiGraph.Dot.Entities.Edges
         public virtual THead Head { get; set; }
 
         /// <summary>
-        /// Gets the elements (head and tail) of this edge.
+        /// Gets the elements (tail and head) of this edge.
         /// </summary>
         public override IEnumerable<DotEdgeElement> Elements => new DotEdgeElement[] { Tail, Head };
 
