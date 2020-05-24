@@ -31,9 +31,9 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        /// Gets the identifiers of nodes of this edge chain.
+        /// The attributes of the edge.
         /// </summary>
-        public override IEnumerable<string> NodeIds => new string[] { _tailNodeId, _headNodeId };
+        public override IDotEdgeAttributes Attributes => base.Attributes;
 
         protected DotEdge(string tailNodeId, string headNodeId, IDotEdgeAttributes attributes)
             : base(attributes)
@@ -51,5 +51,10 @@ namespace GiGraph.Dot.Entities.Edges
             : this(tailNodeId, headNodeId, new DotEntityAttributes())
         {
         }
+
+        /// <summary>
+        /// Gets the identifiers of the nodes of this edge.
+        /// </summary>
+        protected override IEnumerable<string> GetNodeIds() => new[] { _tailNodeId, _headNodeId };
     }
 }

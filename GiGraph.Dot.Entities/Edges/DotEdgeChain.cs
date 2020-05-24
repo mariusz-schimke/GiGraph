@@ -9,19 +9,22 @@ namespace GiGraph.Dot.Entities.Edges
     /// </summary>
     public class DotEdgeChain : DotCommonEdge
     {
-        protected readonly ICollection<string> _nodeIds;
+        /// <summary>
+        /// The attributes of the edge chain.
+        /// </summary>
+        public override IDotEdgeAttributes Attributes => base.Attributes;
 
         /// <summary>
-        /// Gets the identifiers of nodes of this edge chain.
+        /// Gets the identifiers of the nodes of this edge chain.
         /// </summary>
-        public override IEnumerable<string> NodeIds => _nodeIds;
+        public virtual IEnumerable<string> NodeIds { get; }
 
-        protected DotEdgeChain(IDotEdgeAttributes attributes, ICollection<string> nodeIds)
+        protected DotEdgeChain(ICollection<string> nodeIds, IDotEdgeAttributes attributes)
             : base(attributes)
         {
-            _nodeIds = nodeIds.Count > 1
+            NodeIds = nodeIds.Count > 1
                 ? nodeIds
-                : throw new ArgumentException("At least a pair of node identifiers has to be specified for an edge chain.");
+                : throw new ArgumentException("At least a pair of node identifiers has to be specified for an edge chain.", nameof(nodeIds));
         }
 
         /// <summary>
@@ -40,8 +43,13 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
         public DotEdgeChain(IEnumerable<string> nodeIds)
-            : this(new DotEntityAttributes(), new List<string>(nodeIds))
+            : this(new List<string>(nodeIds), new DotEntityAttributes())
         {
         }
+
+        /// <summary>
+        /// Gets the identifiers of the nodes of this edge chain.
+        /// </summary>
+        protected override IEnumerable<string> GetNodeIds() => NodeIds;
     }
 }

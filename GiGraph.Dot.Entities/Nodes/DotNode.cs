@@ -1,12 +1,13 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using System;
+using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Nodes
 {
     /// <summary>
     /// Represents a graph node.
     /// </summary>
-    public class DotNode : IDotEntity
+    public class DotNode : DotCommonNode
     {
         protected string _id;
 
@@ -22,12 +23,12 @@ namespace GiGraph.Dot.Entities.Nodes
         /// <summary>
         /// The attributes of the node.
         /// </summary>
-        public virtual IDotNodeAttributes Attributes { get; }
+        public override IDotNodeAttributes Attributes => base.Attributes;
 
         protected DotNode(string id, IDotNodeAttributes attributes)
+            : base(attributes)
         {
             Id = id;
-            Attributes = attributes;
         }
 
         /// <summary>
@@ -38,5 +39,10 @@ namespace GiGraph.Dot.Entities.Nodes
             : this(id, new DotEntityAttributes())
         {
         }
+
+        /// <summary>
+        /// Gets the identifier of the node.
+        /// </summary>
+        protected override IEnumerable<string> GetNodeIds() => new[] { _id };
     }
 }

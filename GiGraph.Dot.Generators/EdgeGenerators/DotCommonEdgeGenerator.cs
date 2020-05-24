@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Edges;
+﻿using GiGraph.Dot.Entities;
+using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Options;
 using GiGraph.Dot.Generators.Providers;
@@ -24,7 +25,7 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
 
         public override void Generate(DotCommonEdge edge, IDotEdgeWriter writer)
         {
-            WriteEdges(edge.NodeIds.ToArray(), writer);
+            WriteEdges(((IDotEntityWithIds)edge).Ids.ToArray(), writer);
             WriteAttributes(edge.Attributes, writer);
         }
 
@@ -32,7 +33,7 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
         {
             if (nodeIds.Count < 2)
             {
-                throw new ArgumentException("At least a pair of node identifiers has to be specified for an edge.");
+                throw new ArgumentException("At least a pair of node identifiers has to be specified for an edge.", nameof(nodeIds));
             }
 
             foreach (var nodeId in nodeIds)
