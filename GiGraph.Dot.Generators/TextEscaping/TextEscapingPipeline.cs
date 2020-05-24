@@ -31,12 +31,12 @@ namespace GiGraph.Dot.Generators.TextEscaping
             return new TextEscapingPipeline(escaper);
         }
 
-        public static TextEscapingPipeline CreateNone()
+        public static TextEscapingPipeline None()
         {
             return new TextEscapingPipeline();
         }
 
-        public static TextEscapingPipeline CreateDefault()
+        public static TextEscapingPipeline Default()
         {
             return new TextEscapingPipeline
             {
@@ -47,7 +47,7 @@ namespace GiGraph.Dot.Generators.TextEscaping
             };
         }
 
-        public static TextEscapingPipeline CreateForGraphId()
+        public static TextEscapingPipeline ForGraphId()
         {
             return new TextEscapingPipeline
             {
