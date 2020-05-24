@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions; // the Build() and SaveToFile() extension methods are defined here
-using GiGraph.Examples.Basic;
+using GiGraph.Examples.Complex;
 using System;
 
 namespace GiGraph.Examples
@@ -9,7 +9,7 @@ namespace GiGraph.Examples
     {
         private static void Main(string[] args)
         {
-            DotGraph graph = HelloWorld.Generate();
+            DotGraph graph = WithSubgraphs.Generate();
 
             // build a graph as string
             var graphString = graph.Build();
