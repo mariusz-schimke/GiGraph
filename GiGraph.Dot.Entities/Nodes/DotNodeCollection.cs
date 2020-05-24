@@ -2,13 +2,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GiGraph.Dot.Entities.Nodes
 {
-    // TODO: IEnumerable zastąpić ICollection (podobnie w innych kolekcjach)
-    public class DotNodeCollection : IDotEntity, IEnumerable<DotNode>
+    public class DotNodeCollection : IDotEntity, ICollection<DotNode>
     {
         protected readonly List<DotNode> _nodes = new List<DotNode>();
+
+        public int Count => _nodes.Count;
+
+        bool ICollection<DotNode>.IsReadOnly => ((ICollection<DotNode>)_nodes).IsReadOnly;
 
         /// <summary>
         /// Adds a node to the collection.
@@ -18,6 +22,11 @@ namespace GiGraph.Dot.Entities.Nodes
         {
             _nodes.Add(node);
             return node;
+        }
+
+        void ICollection<DotNode>.Add(DotNode item)
+        {
+            Add(item);
         }
 
         /// <summary>
@@ -67,6 +76,16 @@ namespace GiGraph.Dot.Entities.Nodes
             return nodes.ToArray();
         }
 
+        public bool Contains(DotNode item)
+        {
+            return _nodes.Contains(item);
+        }
+
+        public bool Contains(string id)
+        {
+            return _nodes.Any(node => node.Id == id);
+        }
+
         /// <summary>
         /// Removes the specified node from the collection if found.
         /// </summary>
@@ -81,6 +100,11 @@ namespace GiGraph.Dot.Entities.Nodes
             }
 
             return result;
+        }
+
+        bool ICollection<DotNode>.Remove(DotNode item)
+        {
+            return Remove(item) > 0;
         }
 
         /// <summary>
@@ -107,6 +131,11 @@ namespace GiGraph.Dot.Entities.Nodes
         public virtual void Clear()
         {
             _nodes.Clear();
+        }
+
+        public void CopyTo(DotNode[] array, int arrayIndex)
+        {
+            _nodes.CopyTo(array, arrayIndex);
         }
 
         public virtual IEnumerator<DotNode> GetEnumerator()
