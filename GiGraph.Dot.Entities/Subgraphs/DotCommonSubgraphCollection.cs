@@ -6,9 +6,16 @@ using System.Linq;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
-    public class DotCommonSubgraphCollection : IDotEntity, IEnumerable<DotCommonSubgraph>
+    public class DotCommonSubgraphCollection : IDotEntity, ICollection<DotCommonSubgraph>
     {
         protected readonly List<DotCommonSubgraph> _subgraphs = new List<DotCommonSubgraph>();
+
+        /// <summary>
+        /// Gets the number of elements contained in the collection.
+        /// </summary>
+        public int Count => _subgraphs.Count;
+
+        bool ICollection<DotCommonSubgraph>.IsReadOnly => ((ICollection<DotCommonSubgraph>)_subgraphs).IsReadOnly;
 
         /// <summary>
         /// Adds a subgraph to the collection.
@@ -20,6 +27,11 @@ namespace GiGraph.Dot.Entities.Subgraphs
         {
             _subgraphs.Add(subgraph);
             return subgraph;
+        }
+
+        void ICollection<DotCommonSubgraph>.Add(DotCommonSubgraph item)
+        {
+            Add(item);
         }
 
         /// <summary>
@@ -108,6 +120,24 @@ namespace GiGraph.Dot.Entities.Subgraphs
         }
 
         /// <summary>
+        /// Determines whether the specified subgraph is in the collection.
+        /// </summary>
+        /// <param name="item">The subgraph to locate in the collection.</param>
+        public bool Contains(DotCommonSubgraph item)
+        {
+            return _subgraphs.Contains(item);
+        }
+
+        /// <summary>
+        /// Determines whether the specified subgraph is in the collection.
+        /// </summary>
+        /// <param name="id">The identifier of the subgraph to locate in the collection.</param>
+        public bool Contains(string id)
+        {
+            return _subgraphs.Any(subgraph => subgraph.Id == id);
+        }
+
+        /// <summary>
         /// Removes the specified subgraph from the collection if found.
         /// </summary>
         /// <param name="subgraph">The subgraph to remove.</param>
@@ -121,6 +151,11 @@ namespace GiGraph.Dot.Entities.Subgraphs
             }
 
             return result;
+        }
+
+        bool ICollection<DotCommonSubgraph>.Remove(DotCommonSubgraph item)
+        {
+            return Remove(item) > 0;
         }
 
         /// <summary>
@@ -163,6 +198,11 @@ namespace GiGraph.Dot.Entities.Subgraphs
         public virtual void Clear()
         {
             _subgraphs.Clear();
+        }
+
+        public void CopyTo(DotCommonSubgraph[] array, int arrayIndex)
+        {
+            _subgraphs.CopyTo(array, arrayIndex);
         }
 
         public virtual IEnumerator<DotCommonSubgraph> GetEnumerator()

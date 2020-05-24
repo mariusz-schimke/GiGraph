@@ -171,16 +171,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             AddOrRemove(key, value is null ? null : attribute(value));
         }
 
-        public virtual IEnumerator<DotAttribute> GetEnumerator()
-        {
-            return _attributes.Values.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
         void ICollection<DotAttribute>.Add(DotAttribute attribute)
         {
             Set(attribute);
@@ -189,6 +179,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         void ICollection<DotAttribute>.CopyTo(DotAttribute[] array, int arrayIndex)
         {
             _attributes.Values.CopyTo(array, arrayIndex);
+        }
+
+        public virtual IEnumerator<DotAttribute> GetEnumerator()
+        {
+            return _attributes.Values.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

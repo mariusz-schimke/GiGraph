@@ -98,11 +98,19 @@ namespace GiGraph.Dot.Entities.Nodes
             return nodes.ToArray();
         }
 
+        /// <summary>
+        /// Determines whether the specified node is in the collection.
+        /// </summary>
+        /// <param name="item">The node to locate in the collection.</param>
         public bool Contains(DotNode item)
         {
             return _nodes.Contains(item);
         }
 
+        /// <summary>
+        /// Determines whether the specified node is in the collection.
+        /// </summary>
+        /// <param name="id">The identifier of the node to locate in the collection.</param>
         public bool Contains(string id)
         {
             return _nodes.Any(node => node.Id == id);
