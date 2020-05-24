@@ -35,6 +35,15 @@ namespace GiGraph.Dot.Entities.Subgraphs
         }
 
         /// <summary>
+        /// Adds the specified subgraphs to the collection.
+        /// </summary>
+        /// <param name="subgraphs">The subgraphs to add.</param>
+        public virtual void AddRange(IEnumerable<DotCommonSubgraph> subgraphs)
+        {
+            _subgraphs.AddRange(subgraphs);
+        }
+
+        /// <summary>
         /// Adds a new cluster subgraph to the collection.
         /// </summary>
         /// <param name="init">An optional initialization delegate.</param>
