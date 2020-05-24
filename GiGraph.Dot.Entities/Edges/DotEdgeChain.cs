@@ -7,7 +7,7 @@ using System.Linq;
 namespace GiGraph.Dot.Entities.Edges
 {
     /// <summary>
-    /// Represents an chain of edges that connect multiple consecutive nodes.
+    /// Represents an chain of edges that connect multiple consecutive elements.
     /// </summary>
     public class DotEdgeChain : DotCommonEdge
     {
@@ -43,9 +43,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// Creates a new edge chain initialized with the specified elements.
         /// At least a pair of elements has to be specified.
         /// </summary>
-        /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
-        public DotEdgeChain(IEnumerable<DotEdgeElement> nodeIds)
-            : this(new List<DotEdgeElement>(nodeIds), new DotEntityAttributes())
+        /// <param name="elements">The elements to initialize the instance with.</param>
+        public DotEdgeChain(IEnumerable<DotEdgeElement> elements)
+            : this(new List<DotEdgeElement>(elements), new DotEntityAttributes())
         {
         }
 
