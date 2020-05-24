@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace GiGraph.Dot.Generators.NodeGenerators
 {
-    public class DotCommonNodeCollectionGenerator : DotEntityGenerator<DotNodeCollection, IDotNodeStatementWriter>
+    public class DotCommonNodeCollectionGenerator : DotEntityGenerator<DotCommonNodeCollection, IDotNodeStatementWriter>
     {
         protected DotCommonNodeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Generators.NodeGenerators
         {
         }
 
-        public override void Generate(DotNodeCollection nodes, IDotNodeStatementWriter writer)
+        public override void Generate(DotCommonNodeCollection nodes, IDotNodeStatementWriter writer)
         {
             var orderedNodes = nodes
                 .Cast<IDotEntityWithIds>()

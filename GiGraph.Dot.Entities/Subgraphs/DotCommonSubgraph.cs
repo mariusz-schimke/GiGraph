@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         protected DotCommonSubgraph(
             string id,
             IDotAttributeCollection attributes,
-            DotNodeCollection nodes,
+            DotCommonNodeCollection nodes,
             DotCommonEdgeCollection edges,
             DotCommonSubgraphCollection subgraphs,
             IDotNodeAttributes defaultNodeAttributes,

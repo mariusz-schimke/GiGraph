@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Entities.Graphs
         /// <summary>
         /// Gets the collection of nodes.
         /// </summary>
-        public virtual DotNodeCollection Nodes { get; }
+        public virtual DotCommonNodeCollection Nodes { get; }
 
         /// <summary>
         /// The attributes to be used as default for all nodes in this graph when not specified explicitly for individual nodes in the <see cref="Nodes"/> collection.
@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Entities.Graphs
         protected DotCommonGraph(
             string id,
             IDotAttributeCollection attributes,
-            DotNodeCollection nodes,
+            DotCommonNodeCollection nodes,
             DotCommonEdgeCollection edges,
             DotCommonSubgraphCollection subgraphs,
             IDotNodeAttributes defaultNodeAttributes,

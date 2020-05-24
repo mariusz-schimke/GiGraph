@@ -47,5 +47,10 @@ namespace GiGraph.Dot.Entities.Nodes
             : this(new List<string>(nodeIds), new DotEntityAttributes())
         {
         }
+
+        /// <summary>
+        /// Gets the identifiers of the nodes.
+        /// </summary>
+        protected override IEnumerable<string> GetNodeIds() => NodeIds;
     }
 }

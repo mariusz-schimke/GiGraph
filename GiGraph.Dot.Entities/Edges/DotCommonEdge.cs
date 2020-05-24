@@ -10,16 +10,16 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         public virtual IDotEdgeAttributes Attributes { get; }
 
-        /// <summary>
-        /// Gets the identifiers of nodes of this edge or edge chain.
-        /// </summary>
-        protected abstract IEnumerable<string> NodeIds { get; }
-
-        IEnumerable<string> IDotEntityWithIds.Ids => NodeIds;
+        IEnumerable<string> IDotEntityWithIds.Ids => GetNodeIds();
 
         protected DotCommonEdge(IDotEdgeAttributes attributes)
         {
             Attributes = attributes;
         }
+
+        /// <summary>
+        /// Gets the identifiers of the nodes of this edge or edge chain.
+        /// </summary>
+        protected abstract IEnumerable<string> GetNodeIds();
     }
 }
