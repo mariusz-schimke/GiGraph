@@ -10,6 +10,9 @@ namespace GiGraph.Dot.Entities.Nodes
     {
         protected readonly List<DotNode> _nodes = new List<DotNode>();
 
+        /// <summary>
+        /// Gets the number of elements contained in the collection.
+        /// </summary>
         public int Count => _nodes.Count;
 
         bool ICollection<DotNode>.IsReadOnly => ((ICollection<DotNode>)_nodes).IsReadOnly;
