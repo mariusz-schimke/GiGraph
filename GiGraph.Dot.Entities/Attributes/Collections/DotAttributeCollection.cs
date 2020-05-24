@@ -11,11 +11,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         protected readonly IDictionary<string, DotAttribute> _attributes = new Dictionary<string, DotAttribute>(StringComparer.InvariantCulture);
 
         public virtual int Count => _attributes.Count;
+
         bool ICollection<DotAttribute>.IsReadOnly => false;
 
         public virtual void Set(DotAttribute attribute)
         {
             _attributes[((IDotAttribute)attribute).Key] = attribute;
+        }
+
+        public virtual void SetRange(IEnumerable<DotAttribute> attributes)
+        {
+            foreach (var attribute in attributes)
+            {
+                Set(attribute);
+            }
         }
 
         public virtual void Set(string key, string value)
@@ -171,6 +180,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             AddOrRemove(key, value is null ? null : attribute(value));
         }
 
+        void ICollection<DotAttribute>.Add(DotAttribute attribute)
+        {
+            Set(attribute);
+        }
+
+        public virtual void CopyTo(DotAttribute[] array, int arrayIndex)
+        {
+            _attributes.Values.CopyTo(array, arrayIndex);
+        }
+
         public virtual IEnumerator<DotAttribute> GetEnumerator()
         {
             return _attributes.Values.GetEnumerator();
@@ -179,16 +198,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
-        }
-
-        void ICollection<DotAttribute>.Add(DotAttribute attribute)
-        {
-            Set(attribute);
-        }
-
-        void ICollection<DotAttribute>.CopyTo(DotAttribute[] array, int arrayIndex)
-        {
-            _attributes.Values.CopyTo(array, arrayIndex);
         }
     }
 }

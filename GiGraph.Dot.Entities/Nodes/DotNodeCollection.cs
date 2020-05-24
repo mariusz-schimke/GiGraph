@@ -2,13 +2,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GiGraph.Dot.Entities.Nodes
 {
-    // TODO: IEnumerable zastąpić ICollection (podobnie w innych kolekcjach)
-    public class DotNodeCollection : IDotEntity, IEnumerable<DotNode>
+    public class DotNodeCollection : IDotEntity, ICollection<DotNode>
     {
         protected readonly List<DotNode> _nodes = new List<DotNode>();
+
+        /// <summary>
+        /// Gets the number of elements contained in the collection.
+        /// </summary>
+        public virtual int Count => _nodes.Count;
+
+        bool ICollection<DotNode>.IsReadOnly => ((ICollection<DotNode>)_nodes).IsReadOnly;
 
         /// <summary>
         /// Adds a node to the collection.
@@ -18,6 +25,11 @@ namespace GiGraph.Dot.Entities.Nodes
         {
             _nodes.Add(node);
             return node;
+        }
+
+        void ICollection<DotNode>.Add(DotNode item)
+        {
+            Add(item);
         }
 
         /// <summary>
@@ -47,6 +59,15 @@ namespace GiGraph.Dot.Entities.Nodes
         /// <param name="ids">The identifiers of the nodes to add.</param>
         public virtual DotNode[] Add(params string[] ids)
         {
+            return Add((IEnumerable<string>)ids);
+        }
+
+        /// <summary>
+        /// Adds new nodes with the specified identifiers to the collection.
+        /// </summary>
+        /// <param name="ids">The identifiers of the nodes to add.</param>
+        public virtual DotNode[] Add(IEnumerable<string> ids)
+        {
             return Add(initNode: null, ids);
         }
 
@@ -57,6 +78,16 @@ namespace GiGraph.Dot.Entities.Nodes
         /// <param name="ids">The identifiers of the nodes to add.</param>
         public virtual DotNode[] Add(Action<IDotNodeAttributes> initNode, params string[] ids)
         {
+            return Add(initNode, (IEnumerable<string>)ids);
+        }
+
+        /// <summary>
+        /// Adds a new node with the specified identifier to the collection, and returns it.
+        /// </summary>
+        /// <param name="initNode">An optional node initializer delegate to call for each provided ID.</param>
+        /// <param name="ids">The identifiers of the nodes to add.</param>
+        public virtual DotNode[] Add(Action<IDotNodeAttributes> initNode, IEnumerable<string> ids)
+        {
             var nodes = new List<DotNode>();
 
             foreach (var id in ids)
@@ -65,6 +96,42 @@ namespace GiGraph.Dot.Entities.Nodes
             }
 
             return nodes.ToArray();
+        }
+
+        /// <summary>
+        /// Adds the specified nodes to the collection.
+        /// </summary>
+        /// <param name="nodes">The nodes to add.</param>
+        public virtual void AddRange(IEnumerable<DotNode> nodes)
+        {
+            _nodes.AddRange(nodes);
+        }
+
+        /// <summary>
+        /// Gets a node with the specified identifier from the collection.
+        /// </summary>
+        /// <param name="id">The identifier of the node to add.</param>
+        public virtual DotNode Get(string id)
+        {
+            return _nodes.FirstOrDefault(node => node.Id == id);
+        }
+
+        /// <summary>
+        /// Determines whether the specified node is in the collection.
+        /// </summary>
+        /// <param name="item">The node to locate in the collection.</param>
+        public virtual bool Contains(DotNode item)
+        {
+            return _nodes.Contains(item);
+        }
+
+        /// <summary>
+        /// Determines whether the specified node is in the collection.
+        /// </summary>
+        /// <param name="id">The identifier of the node to locate in the collection.</param>
+        public virtual bool Contains(string id)
+        {
+            return _nodes.Any(node => node.Id == id);
         }
 
         /// <summary>
@@ -81,6 +148,11 @@ namespace GiGraph.Dot.Entities.Nodes
             }
 
             return result;
+        }
+
+        bool ICollection<DotNode>.Remove(DotNode item)
+        {
+            return Remove(item) > 0;
         }
 
         /// <summary>
@@ -107,6 +179,11 @@ namespace GiGraph.Dot.Entities.Nodes
         public virtual void Clear()
         {
             _nodes.Clear();
+        }
+
+        public virtual void CopyTo(DotNode[] array, int arrayIndex)
+        {
+            _nodes.CopyTo(array, arrayIndex);
         }
 
         public virtual IEnumerator<DotNode> GetEnumerator()

@@ -13,6 +13,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         void Set(DotAttribute attribute);
 
         /// <summary>
+        /// Adds or replaces the specified attributes in the collection.
+        /// </summary>
+        /// <param name="attributes">The attributes to include in the collection.</param>
+        void SetRange(IEnumerable<DotAttribute> attributes);
+
+        /// <summary>
         /// Adds or replaces the specified attribute in the collection.
         /// <para>
         ///     When necessary, the value specified will be rendered escaped in the generated graph, so it can be displayed properly when visualized.

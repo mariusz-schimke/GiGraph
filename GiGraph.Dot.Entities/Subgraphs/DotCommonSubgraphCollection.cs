@@ -6,9 +6,16 @@ using System.Linq;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
-    public class DotCommonSubgraphCollection : IDotEntity, IEnumerable<DotCommonSubgraph>
+    public class DotCommonSubgraphCollection : IDotEntity, ICollection<DotCommonSubgraph>
     {
         protected readonly List<DotCommonSubgraph> _subgraphs = new List<DotCommonSubgraph>();
+
+        /// <summary>
+        /// Gets the number of elements contained in the collection.
+        /// </summary>
+        public virtual int Count => _subgraphs.Count;
+
+        bool ICollection<DotCommonSubgraph>.IsReadOnly => ((ICollection<DotCommonSubgraph>)_subgraphs).IsReadOnly;
 
         /// <summary>
         /// Adds a subgraph to the collection.
@@ -20,6 +27,20 @@ namespace GiGraph.Dot.Entities.Subgraphs
         {
             _subgraphs.Add(subgraph);
             return subgraph;
+        }
+
+        void ICollection<DotCommonSubgraph>.Add(DotCommonSubgraph item)
+        {
+            Add(item);
+        }
+
+        /// <summary>
+        /// Adds the specified subgraphs to the collection.
+        /// </summary>
+        /// <param name="subgraphs">The subgraphs to add.</param>
+        public virtual void AddRange(IEnumerable<DotCommonSubgraph> subgraphs)
+        {
+            _subgraphs.AddRange(subgraphs);
         }
 
         /// <summary>
@@ -82,10 +103,18 @@ namespace GiGraph.Dot.Entities.Subgraphs
         }
 
         /// <summary>
+        /// Gets a subgraphs with the specified identifier from the collection.
+        /// </summary>
+        public virtual DotCommonSubgraph Get(string id)
+        {
+            return _subgraphs.FirstOrDefault(subgraph => subgraph.Id == id);
+        }
+
+        /// <summary>
         /// Gets all subgraphs of the specified type.
         /// </summary>
         /// <typeparam name="T">The type of subgraphs to get.</typeparam>
-        public virtual IEnumerable<T> Get<T>()
+        public virtual IEnumerable<T> GetAll<T>()
             where T : DotCommonSubgraph
         {
             return _subgraphs.Where(s => s is T).Cast<T>();
@@ -96,7 +125,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// </summary>
         public virtual IEnumerable<DotCluster> GetClusters()
         {
-            return Get<DotCluster>();
+            return GetAll<DotCluster>();
         }
 
         /// <summary>
@@ -104,7 +133,25 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// </summary>
         public virtual IEnumerable<DotSubgraph> GetSubgraphs()
         {
-            return Get<DotSubgraph>();
+            return GetAll<DotSubgraph>();
+        }
+
+        /// <summary>
+        /// Determines whether the specified subgraph is in the collection.
+        /// </summary>
+        /// <param name="item">The subgraph to locate in the collection.</param>
+        public virtual bool Contains(DotCommonSubgraph item)
+        {
+            return _subgraphs.Contains(item);
+        }
+
+        /// <summary>
+        /// Determines whether the specified subgraph is in the collection.
+        /// </summary>
+        /// <param name="id">The identifier of the subgraph to locate in the collection.</param>
+        public virtual bool Contains(string id)
+        {
+            return _subgraphs.Any(subgraph => subgraph.Id == id);
         }
 
         /// <summary>
@@ -121,6 +168,11 @@ namespace GiGraph.Dot.Entities.Subgraphs
             }
 
             return result;
+        }
+
+        bool ICollection<DotCommonSubgraph>.Remove(DotCommonSubgraph item)
+        {
+            return Remove(item) > 0;
         }
 
         /// <summary>
@@ -163,6 +215,11 @@ namespace GiGraph.Dot.Entities.Subgraphs
         public virtual void Clear()
         {
             _subgraphs.Clear();
+        }
+
+        public virtual void CopyTo(DotCommonSubgraph[] array, int arrayIndex)
+        {
+            _subgraphs.CopyTo(array, arrayIndex);
         }
 
         public virtual IEnumerator<DotCommonSubgraph> GetEnumerator()
