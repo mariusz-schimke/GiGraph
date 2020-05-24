@@ -11,6 +11,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         protected readonly IDictionary<string, DotAttribute> _attributes = new Dictionary<string, DotAttribute>(StringComparer.InvariantCulture);
 
         public virtual int Count => _attributes.Count;
+
         bool ICollection<DotAttribute>.IsReadOnly => false;
 
         public virtual void Set(DotAttribute attribute)
@@ -176,7 +177,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             Set(attribute);
         }
 
-        public void CopyTo(DotAttribute[] array, int arrayIndex)
+        public virtual void CopyTo(DotAttribute[] array, int arrayIndex)
         {
             _attributes.Values.CopyTo(array, arrayIndex);
         }

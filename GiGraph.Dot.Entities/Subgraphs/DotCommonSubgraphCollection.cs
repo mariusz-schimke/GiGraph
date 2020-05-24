@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// Gets the number of elements contained in the collection.
         /// </summary>
-        public int Count => _subgraphs.Count;
+        public virtual int Count => _subgraphs.Count;
 
         bool ICollection<DotCommonSubgraph>.IsReadOnly => ((ICollection<DotCommonSubgraph>)_subgraphs).IsReadOnly;
 
@@ -94,10 +94,18 @@ namespace GiGraph.Dot.Entities.Subgraphs
         }
 
         /// <summary>
+        /// Gets a subgraphs with the specified identifier from the collection.
+        /// </summary>
+        public virtual DotCommonSubgraph Get(string id)
+        {
+            return _subgraphs.FirstOrDefault(subgraph => subgraph.Id == id);
+        }
+
+        /// <summary>
         /// Gets all subgraphs of the specified type.
         /// </summary>
         /// <typeparam name="T">The type of subgraphs to get.</typeparam>
-        public virtual IEnumerable<T> Get<T>()
+        public virtual IEnumerable<T> GetAll<T>()
             where T : DotCommonSubgraph
         {
             return _subgraphs.Where(s => s is T).Cast<T>();
@@ -108,7 +116,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// </summary>
         public virtual IEnumerable<DotCluster> GetClusters()
         {
-            return Get<DotCluster>();
+            return GetAll<DotCluster>();
         }
 
         /// <summary>
@@ -116,14 +124,14 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// </summary>
         public virtual IEnumerable<DotSubgraph> GetSubgraphs()
         {
-            return Get<DotSubgraph>();
+            return GetAll<DotSubgraph>();
         }
 
         /// <summary>
         /// Determines whether the specified subgraph is in the collection.
         /// </summary>
         /// <param name="item">The subgraph to locate in the collection.</param>
-        public bool Contains(DotCommonSubgraph item)
+        public virtual bool Contains(DotCommonSubgraph item)
         {
             return _subgraphs.Contains(item);
         }
@@ -132,7 +140,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// Determines whether the specified subgraph is in the collection.
         /// </summary>
         /// <param name="id">The identifier of the subgraph to locate in the collection.</param>
-        public bool Contains(string id)
+        public virtual bool Contains(string id)
         {
             return _subgraphs.Any(subgraph => subgraph.Id == id);
         }
@@ -200,7 +208,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
             _subgraphs.Clear();
         }
 
-        public void CopyTo(DotCommonSubgraph[] array, int arrayIndex)
+        public virtual void CopyTo(DotCommonSubgraph[] array, int arrayIndex)
         {
             _subgraphs.CopyTo(array, arrayIndex);
         }
