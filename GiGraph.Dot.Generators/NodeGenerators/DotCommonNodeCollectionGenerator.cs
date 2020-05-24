@@ -26,14 +26,20 @@ namespace GiGraph.Dot.Generators.NodeGenerators
             var orderedNodes = nodes
                 .Cast<IDotEntityWithIds>()
                 .OrderBy(n => string.Join(" ", n.Ids))
+                .Cast<DotCommonNode>()
                 .ToArray();
 
             foreach (var node in orderedNodes)
             {
-                var nodeWriter = writer.BeginNode();
-                _entityGenerators.GetForEntity<IDotNodeWriter>(node).Generate(node, nodeWriter);
-                writer.EndNode();
+                WriteNode(node, writer);
             }
+        }
+
+        protected virtual void WriteNode(DotCommonNode node, IDotNodeStatementWriter writer)
+        {
+            var nodeWriter = writer.BeginNode();
+            _entityGenerators.GetForEntity<IDotNodeWriter>(node).Generate(node, nodeWriter);
+            writer.EndNode();
         }
     }
 }
