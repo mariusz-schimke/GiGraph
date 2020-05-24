@@ -54,18 +54,6 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        /// Gets an edge to the collection, that connects two nodes with the specified identifiers.
-        /// </summary>
-        /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
-        /// <param name="headNodeId">The head (destination, right) node identifier.</param>
-        public virtual DotEdge Get(string tailNodeId, string headNodeId)
-        {
-            return (DotEdge)_edges.FirstOrDefault(commonEdge => commonEdge is DotEdge edge &&
-                edge.TailNodeId == tailNodeId &&
-                edge.HeadNodeId == headNodeId);
-        }
-
-        /// <summary>
         /// Adds an edge to the collection, that connects two nodes with the specified identifiers.
         /// </summary>
         /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
@@ -218,6 +206,28 @@ namespace GiGraph.Dot.Entities.Edges
             }
 
             return tailNodeIds.Select(tailNodeId => Add(tailNodeId, headNodeId, initEdge)).ToArray();
+        }
+
+        /// <summary>
+        /// Gets an edge to the collection, that connects two nodes with the specified identifiers.
+        /// </summary>
+        /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
+        /// <param name="headNodeId">The head (destination, right) node identifier.</param>
+        public virtual DotEdge Get(string tailNodeId, string headNodeId)
+        {
+            return (DotEdge)_edges.FirstOrDefault(commonEdge => commonEdge is DotEdge edge &&
+                edge.TailNodeId == tailNodeId &&
+                edge.HeadNodeId == headNodeId);
+        }
+
+        /// <summary>
+        /// Gets all edges of the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type of edges to get.</typeparam>
+        public virtual IEnumerable<T> GetAll<T>()
+            where T : DotCommonEdge
+        {
+            return _edges.Where(edge => edge is T).Cast<T>();
         }
 
         /// <summary>

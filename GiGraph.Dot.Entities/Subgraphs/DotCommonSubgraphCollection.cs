@@ -117,7 +117,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         public virtual IEnumerable<T> GetAll<T>()
             where T : DotCommonSubgraph
         {
-            return _subgraphs.Where(s => s is T).Cast<T>();
+            return _subgraphs.Where(subgraph => subgraph is T).Cast<T>();
         }
 
         /// <summary>

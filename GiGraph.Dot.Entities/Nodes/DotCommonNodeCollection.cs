@@ -114,6 +114,16 @@ namespace GiGraph.Dot.Entities.Nodes
         }
 
         /// <summary>
+        /// Gets all nodes of the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type of nodes to get.</typeparam>
+        public virtual IEnumerable<T> GetAll<T>()
+            where T : DotCommonNode
+        {
+            return _nodes.Where(node => node is T).Cast<T>();
+        }
+
+        /// <summary>
         /// Determines whether the specified node is in the collection.
         /// </summary>
         /// <param name="item">The node to locate in the collection.</param>
