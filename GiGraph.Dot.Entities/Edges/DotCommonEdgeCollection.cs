@@ -163,7 +163,7 @@ namespace GiGraph.Dot.Entities.Edges
         {
             if (!headNodeIds.Any())
             {
-                throw new ArgumentException("At least one head node identifier has to be specified.");
+                throw new ArgumentException("At least one head node identifier has to be specified.", nameof(headNodeIds));
             }
 
             return headNodeIds.Select(headNodeId => Add(tailNodeId, headNodeId, initEdge)).ToArray();
@@ -214,7 +214,7 @@ namespace GiGraph.Dot.Entities.Edges
         {
             if (!tailNodeIds.Any())
             {
-                throw new ArgumentException("At least one tail node identifier has to be specified.");
+                throw new ArgumentException("At least one tail node identifier has to be specified.", nameof(tailNodeIds));
             }
 
             return tailNodeIds.Select(tailNodeId => Add(tailNodeId, headNodeId, initEdge)).ToArray();

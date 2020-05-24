@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
         {
             if (nodeIds.Count < 2)
             {
-                throw new ArgumentException("At least a pair of node identifiers has to be specified for an edge.");
+                throw new ArgumentException("At least a pair of node identifiers has to be specified for an edge.", nameof(nodeIds));
             }
 
             foreach (var nodeId in nodeIds)
