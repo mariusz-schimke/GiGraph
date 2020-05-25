@@ -38,11 +38,9 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
                 throw new ArgumentException("At least a pair of elements has to be specified for an edge.", nameof(endpoints));
             }
 
-            // TODO: add optional sorting (_options.OrderElements)
-
-            foreach (var element in endpoints)
+            foreach (var endpoint in endpoints)
             {
-                WriteElement(element, writer);
+                WriteElement(endpoint, writer);
             }
         }
 
