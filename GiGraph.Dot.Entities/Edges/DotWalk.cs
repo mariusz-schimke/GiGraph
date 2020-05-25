@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Edges.Elements;
+using GiGraph.Dot.Entities.Edges.Endpoints;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +7,9 @@ using System.Linq;
 namespace GiGraph.Dot.Entities.Edges
 {
     /// <summary>
-    /// Represents an chain of edges that connect multiple consecutive elements.
+    /// Represents a walk (also called a chain), that is a sequence of nodes and edges in graph theory.
     /// </summary>
-    public class DotEdgeChain : DotCommonEdge
+    public class DotWalk : DotCommonEdge
     {
         /// <summary>
         /// The attributes of the edge chain.
@@ -19,14 +19,14 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Gets the elements of this edge chain.
         /// </summary>
-        public override IEnumerable<DotEdgeElement> Elements { get; }
+        public override IEnumerable<DotEndpoint> Endpoints { get; }
 
-        protected DotEdgeChain(ICollection<DotEdgeElement> elements, IDotEdgeAttributes attributes)
+        protected DotWalk(ICollection<DotEndpoint> endpoints, IDotEdgeAttributes attributes)
             : base(attributes)
         {
-            Elements = elements.Count > 1
-                ? elements
-                : throw new ArgumentException("At least a pair of elements has to be specified for an edge chain.", nameof(elements));
+            Endpoints = endpoints.Count > 1
+                ? endpoints
+                : throw new ArgumentException("At least a pair of elements has to be specified for an edge chain.", nameof(endpoints));
         }
 
         /// <summary>
@@ -34,8 +34,8 @@ namespace GiGraph.Dot.Entities.Edges
         /// At least a pair of elements has to be specified.
         /// </summary>
         /// <param name="elements">The elements to initialize the instance with.</param>
-        public DotEdgeChain(params DotEdgeElement[] elements)
-            : this((IEnumerable<DotEdgeElement>)elements)
+        public DotWalk(params DotEndpoint[] elements)
+            : this((IEnumerable<DotEndpoint>)elements)
         {
         }
 
@@ -44,8 +44,8 @@ namespace GiGraph.Dot.Entities.Edges
         /// At least a pair of elements has to be specified.
         /// </summary>
         /// <param name="elements">The elements to initialize the instance with.</param>
-        public DotEdgeChain(IEnumerable<DotEdgeElement> elements)
-            : this(new List<DotEdgeElement>(elements), new DotEntityAttributes())
+        public DotWalk(IEnumerable<DotEndpoint> elements)
+            : this(new List<DotEndpoint>(elements), new DotEntityAttributes())
         {
         }
 
@@ -54,7 +54,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// At least a pair of identifiers has to be specified.
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
-        public static DotEdgeChain FromNodes(params string[] nodeIds)
+        public static DotWalk FromNodes(params string[] nodeIds)
         {
             return FromNodes((IEnumerable<string>)nodeIds);
         }
@@ -64,11 +64,11 @@ namespace GiGraph.Dot.Entities.Edges
         /// At least a pair of identifiers has to be specified.
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
-        public static DotEdgeChain FromNodes(IEnumerable<string> nodeIds)
+        public static DotWalk FromNodes(IEnumerable<string> nodeIds)
         {
-            return new DotEdgeChain
+            return new DotWalk
             (
-                nodeIds.Select(nodeId => new DotEdgeNode(nodeId))
+                nodeIds.Select(nodeId => new DotNodeEndpoint(nodeId))
             );
         }
     }

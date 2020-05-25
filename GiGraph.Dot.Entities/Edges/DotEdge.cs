@@ -56,8 +56,8 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Creates a new edge instance.
         /// </summary>
-        /// <param name="tail">The tail (source, left) endpoint the edge should be connected to.</param>
-        /// <param name="head">The head (destination, right) endpoint the edge should be connected to.</param>
+        /// <param name="tail">The tail (source, left) endpoint.</param>
+        /// <param name="head">The head (destination, right) endpoint.</param>
         public DotEdge(TTail tail, THead head)
             : this(tail, head, new DotEntityAttributes())
         {
