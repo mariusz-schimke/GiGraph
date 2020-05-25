@@ -22,10 +22,11 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
 
         public override void Generate(DotCommonEdgeCollection edges, IDotEdgeStatementWriter writer)
         {
-            var orderedEdges = edges
-                .Where(edge => edge.Endpoints.Any())
-                .OrderBy(edge => edge.GetType().FullName)
-                .ToArray();
+            var orderedEdges = _options.OrderElements
+                ? edges.Where(edge => edge.Endpoints.Any())
+                       .OrderBy(edge => edge.GetType().FullName)
+                       .Cast<DotCommonEdge>()
+                : edges;
 
             foreach (var edge in orderedEdges)
             {

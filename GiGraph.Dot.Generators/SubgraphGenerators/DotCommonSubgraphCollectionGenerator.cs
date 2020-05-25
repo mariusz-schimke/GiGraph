@@ -22,10 +22,11 @@ namespace GiGraph.Dot.Generators.SubgraphGenerators
 
         public override void Generate(DotCommonSubgraphCollection subgraphs, IDotSubgraphWriterRoot writer)
         {
-            var orderedSubgraphs = subgraphs
-                .OrderByDescending(n => n.GetType().FullName)
-                .ThenBy(n => n.Id)
-                .ToArray();
+            var orderedSubgraphs = _options.OrderElements
+                ? subgraphs.OrderByDescending(n => n.GetType().FullName)
+                           .ThenBy(n => n.Id)
+                           .Cast<DotCommonSubgraph>()
+                : subgraphs;
 
             foreach (var subgraph in orderedSubgraphs)
             {
