@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Writers.EdgeWriters
 
         protected virtual void WriteEdge()
         {
-            // these will be removed by the parent chain writer if no further edges are written
+            // these will be removed by the parent writer if no further edges are written
             _tokenWriter.Space(linger: true)
                         .Edge(_context.IsDirectedGraph, linger: true)
                         .Space(linger: true);

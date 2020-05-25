@@ -36,9 +36,9 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
 
         protected virtual void WriteEdge(DotCommonEdge edge, IDotEdgeStatementWriter writer)
         {
-            var edgeWriter = writer.BeginEdgeChain();
+            var edgeWriter = writer.BeginWalk();
             _entityGenerators.GetForEntity<IDotEdgeWriter>(edge).Generate(edge, edgeWriter);
-            writer.EndEdgeChain();
+            writer.EndWalk();
         }
     }
 }
