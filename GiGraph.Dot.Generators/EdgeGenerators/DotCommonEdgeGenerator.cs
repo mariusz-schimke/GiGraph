@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Edges;
-using GiGraph.Dot.Entities.Edges.Elements;
+using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Converters;
 using GiGraph.Dot.Generators.Options;
@@ -27,11 +27,11 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
 
         public override void Generate(DotCommonEdge edge, IDotEdgeWriter writer)
         {
-            WriteEdges(edge.Elements.ToArray(), writer);
+            WriteEdges(edge.Endpoints.ToArray(), writer);
             WriteAttributes(edge.Attributes, writer);
         }
 
-        protected virtual void WriteEdges(ICollection<DotEdgeElement> elements, IDotEdgeWriter writer)
+        protected virtual void WriteEdges(ICollection<DotEndpoint> elements, IDotEdgeWriter writer)
         {
             if (elements.Count < 2)
             {
@@ -44,15 +44,15 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
             }
         }
 
-        protected virtual void WriteElement(DotEdgeElement element, IDotEdgeWriter writer)
+        protected virtual void WriteElement(DotEndpoint element, IDotEdgeWriter writer)
         {
             switch (element)
             {
-                case DotEdgeNode node:
+                case DotNodeEndpoint node:
                     WriteNode(node, writer);
                     break;
 
-                case DotEdgeSubgraph subgraph:
+                case DotSubgraphEndpoint subgraph:
                     WriteSubgraph(subgraph, writer);
                     break;
 
@@ -61,9 +61,9 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
             }
         }
 
-        protected virtual void WriteNode(DotEdgeNode node, IDotEdgeWriter writer)
+        protected virtual void WriteNode(DotNodeEndpoint node, IDotEdgeWriter writer)
         {
-            var nodeId = EscapeIdentifier(node.Id);
+            var nodeId = EscapeIdentifier(node.NodeId);
 
             var portName = node.PortName is { }
                 ? EscapeIdentifier(node.PortName)
@@ -84,7 +84,7 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
             );
         }
 
-        protected virtual void WriteSubgraph(DotEdgeSubgraph element, IDotEdgeWriter writer)
+        protected virtual void WriteSubgraph(DotSubgraphEndpoint element, IDotEdgeWriter writer)
         {
             var subgraphWriter = writer.BeginSubgraph(_options.Subgraphs.PreferExplicitKeyword);
             _entityGenerators.GetForEntity<IDotSubgraphWriter>(element.Subgraph).Generate(element.Subgraph, subgraphWriter);

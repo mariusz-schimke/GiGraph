@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Edges.Elements;
+using GiGraph.Dot.Entities.Edges.Endpoints;
 using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Edges
@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Edges
     public abstract class DotCommonEdge : IDotEntity
     {
         /// <summary>
-        /// The attributes of the edge or the edge chain.
+        /// Gets the attributes of the edge.
         /// </summary>
         public virtual IDotEdgeAttributes Attributes { get; }
 
@@ -17,8 +17,8 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        /// Gets the elements (tail(s) and head(s)) of this edge.
+        /// Gets the edge endpoints.
         /// </summary>
-        public abstract IEnumerable<DotEdgeElement> Elements { get; }
+        public abstract IEnumerable<DotEndpoint> Endpoints { get; }
     }
 }

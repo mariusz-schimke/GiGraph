@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Edges.Elements;
+using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Subgraphs;
 using System;
 using System.Collections;
@@ -50,7 +50,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
         /// <param name="headNodeId">The head (destination, right) node identifier.</param>
-        public virtual DotEdge<DotEdgeNode, DotEdgeNode> Add(string tailNodeId, string headNodeId)
+        public virtual DotEdge<DotNodeEndpoint, DotNodeEndpoint> Add(string tailNodeId, string headNodeId)
         {
             return Add(DotEdge.OneToOne(tailNodeId, headNodeId));
         }
@@ -61,7 +61,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
         /// <param name="headNodeId">The head (destination, right) node identifier.</param>
         /// <param name="initEdge">An optional edge initializer delegate.</param>
-        public virtual DotEdge<DotEdgeNode, DotEdgeNode> Add(string tailNodeId, string headNodeId, Action<IDotEdgeAttributes> initEdge)
+        public virtual DotEdge<DotNodeEndpoint, DotNodeEndpoint> Add(string tailNodeId, string headNodeId, Action<IDotEdgeAttributes> initEdge)
         {
             var edge = Add(tailNodeId, headNodeId);
             initEdge?.Invoke(edge.Attributes);
@@ -72,7 +72,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// Adds multiple edges to the collection, that connect consecutive nodes with the specified identifiers.
         /// </summary>
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
-        public virtual DotEdgeChain Add(params string[] nodeIds)
+        public virtual DotWalk Add(params string[] nodeIds)
         {
             return Add((IEnumerable<string>)nodeIds);
         }
@@ -81,7 +81,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// Adds multiple edges to the collection, that connect consecutive nodes with the specified identifiers.
         /// </summary>
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
-        public virtual DotEdgeChain Add(IEnumerable<string> nodeIds)
+        public virtual DotWalk Add(IEnumerable<string> nodeIds)
         {
             return Add(initEdge: null, nodeIds);
         }
@@ -91,7 +91,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="initEdge">An edge initializer delegate.</param>
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
-        public virtual DotEdgeChain Add(Action<IDotEdgeAttributes> initEdge, params string[] nodeIds)
+        public virtual DotWalk Add(Action<IDotEdgeAttributes> initEdge, params string[] nodeIds)
         {
             return Add(initEdge, (IEnumerable<string>)nodeIds);
         }
@@ -101,9 +101,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="initEdge">An edge initializer delegate.</param>
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
-        public virtual DotEdgeChain Add(Action<IDotEdgeAttributes> initEdge, IEnumerable<string> nodeIds)
+        public virtual DotWalk Add(Action<IDotEdgeAttributes> initEdge, IEnumerable<string> nodeIds)
         {
-            var edge = Add(DotEdgeChain.FromNodes(nodeIds));
+            var edge = Add(DotWalk.FromNodes(nodeIds));
             initEdge?.Invoke(edge.Attributes);
             return edge;
         }
@@ -114,7 +114,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tailNodeId">The identifier of the tail (source, left) node.</param>
         /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes to connect the tail node to.</param>
-        public virtual DotEdge<DotEdgeNode, DotEdgeSubgraph> AddOneToMany(string tailNodeId, params string[] headNodeIds)
+        public virtual DotEdge<DotNodeEndpoint, DotSubgraphEndpoint> AddOneToMany(string tailNodeId, params string[] headNodeIds)
         {
             return AddOneToMany(tailNodeId, (IEnumerable<string>)headNodeIds);
         }
@@ -126,7 +126,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="initEdge">An edge initializer delegate.</param>
         /// <param name="tailNodeId">The identifier of the tail (source, left) node.</param>
         /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes to connect the tail node to.</param>
-        public virtual DotEdge<DotEdgeNode, DotEdgeSubgraph> AddOneToMany(string tailNodeId, Action<IDotEdgeAttributes> initEdge, params string[] headNodeIds)
+        public virtual DotEdge<DotNodeEndpoint, DotSubgraphEndpoint> AddOneToMany(string tailNodeId, Action<IDotEdgeAttributes> initEdge, params string[] headNodeIds)
         {
             return AddOneToMany(tailNodeId, headNodeIds, initEdge);
         }
@@ -138,7 +138,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="tailNodeId">The identifier of the tail (source, left) node.</param>
         /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes to connect the tail node to.</param>
         /// <param name="initEdge">An edge initializer delegate.</param>
-        public virtual DotEdge<DotEdgeNode, DotEdgeSubgraph> AddOneToMany(string tailNodeId, IEnumerable<string> headNodeIds, Action<IDotEdgeAttributes> initEdge = null)
+        public virtual DotEdge<DotNodeEndpoint, DotSubgraphEndpoint> AddOneToMany(string tailNodeId, IEnumerable<string> headNodeIds, Action<IDotEdgeAttributes> initEdge = null)
         {
             var head = DotSubgraph.FromNodes(headNodeIds);
 
@@ -153,7 +153,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="headNodeId">The identifier of the head (destination, right) node.</param>
         /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes to connect to the head node.</param>
-        public virtual DotEdge<DotEdgeSubgraph, DotEdgeNode> AddManyToOne(string headNodeId, params string[] tailNodeIds)
+        public virtual DotEdge<DotSubgraphEndpoint, DotNodeEndpoint> AddManyToOne(string headNodeId, params string[] tailNodeIds)
         {
             return AddManyToOne(tailNodeIds, headNodeId);
         }
@@ -165,7 +165,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="initEdge">An edge initializer delegate.</param>
         /// <param name="headNodeId">The identifier of the head (destination, right) node.</param>
         /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes to connect to the head node.</param>
-        public virtual DotEdge<DotEdgeSubgraph, DotEdgeNode> AddManyToOne(string headNodeId, Action<IDotEdgeAttributes> initEdge, params string[] tailNodeIds)
+        public virtual DotEdge<DotSubgraphEndpoint, DotNodeEndpoint> AddManyToOne(string headNodeId, Action<IDotEdgeAttributes> initEdge, params string[] tailNodeIds)
         {
             return AddManyToOne(tailNodeIds, headNodeId, initEdge);
         }
@@ -177,7 +177,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes to connect to the head node.</param>
         /// <param name="headNodeId">The identifier of the head (destination, right) node.</param>
         /// <param name="initEdge">An edge initializer delegate.</param>
-        public virtual DotEdge<DotEdgeSubgraph, DotEdgeNode> AddManyToOne(IEnumerable<string> tailNodeIds, string headNodeId, Action<IDotEdgeAttributes> initEdge = null)
+        public virtual DotEdge<DotSubgraphEndpoint, DotNodeEndpoint> AddManyToOne(IEnumerable<string> tailNodeIds, string headNodeId, Action<IDotEdgeAttributes> initEdge = null)
         {
             var tail = DotSubgraph.FromNodes(tailNodeIds);
 
@@ -193,7 +193,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes.</param>
         /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes.</param>
         /// <param name="initEdge">An edge initializer delegate.</param>
-        public virtual DotEdge<DotEdgeSubgraph, DotEdgeSubgraph> AddManyToMany(
+        public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(
             IEnumerable<string> tailNodeIds, IEnumerable<string> headNodeIds, Action<IDotEdgeAttributes> initEdge = null)
         {
             var tail = DotSubgraph.FromNodes(tailNodeIds);
@@ -209,11 +209,11 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
         /// <param name="headNodeId">The head (destination, right) node identifier.</param>
-        public virtual DotEdge<DotEdgeNode, DotEdgeNode> Get(string tailNodeId, string headNodeId)
+        public virtual DotEdge<DotNodeEndpoint, DotNodeEndpoint> Get(string tailNodeId, string headNodeId)
         {
-            return (DotEdge<DotEdgeNode, DotEdgeNode>)_edges.FirstOrDefault(commonEdge => commonEdge is DotEdge<DotEdgeNode, DotEdgeNode> edge &&
-                edge.Tail.Id == tailNodeId &&
-                edge.Head.Id == headNodeId);
+            return (DotEdge<DotNodeEndpoint, DotNodeEndpoint>)_edges.FirstOrDefault(commonEdge => commonEdge is DotEdge<DotNodeEndpoint, DotNodeEndpoint> edge &&
+                edge.Tail.NodeId == tailNodeId &&
+                edge.Head.NodeId == headNodeId);
         }
 
         /// <summary>
@@ -242,9 +242,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="headNodeId">The head (destination, right) node identifier to locate.</param>
         public virtual bool Contains(string tailNodeId, string headNodeId)
         {
-            return _edges.Any(commonEdge => commonEdge is DotEdge<DotEdgeNode, DotEdgeNode> edge &&
-                edge.Tail.Id == tailNodeId &&
-                edge.Head.Id == headNodeId);
+            return _edges.Any(commonEdge => commonEdge is DotEdge<DotNodeEndpoint, DotNodeEndpoint> edge &&
+                edge.Tail.NodeId == tailNodeId &&
+                edge.Head.NodeId == headNodeId);
         }
 
         /// <summary>
@@ -275,9 +275,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="headNodeId">The head (destination, right) node identifier.</param>
         public virtual int Remove(string tailNodeId, string headNodeId)
         {
-            return RemoveAll(commonEdge => commonEdge is DotEdge<DotEdgeNode, DotEdgeNode> edge &&
-                edge.Tail.Id == tailNodeId &&
-                edge.Head.Id == headNodeId);
+            return RemoveAll(commonEdge => commonEdge is DotEdge<DotNodeEndpoint, DotNodeEndpoint> edge &&
+                edge.Tail.NodeId == tailNodeId &&
+                edge.Head.NodeId == headNodeId);
         }
 
         /// <summary>
