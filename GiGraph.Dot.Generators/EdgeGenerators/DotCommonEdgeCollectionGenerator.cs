@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
         public override void Generate(DotCommonEdgeCollection edges, IDotEdgeStatementWriter writer)
         {
             var orderedEdges = edges
-                .Where(edge => edge.Elements.Any())
+                .Where(edge => edge.Endpoints.Any())
                 .OrderBy(edge => edge.GetType().FullName)
                 .ToArray();
 

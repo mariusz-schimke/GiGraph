@@ -1,100 +1,50 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Edges.Elements;
-using GiGraph.Dot.Entities.Subgraphs;
+using GiGraph.Dot.Entities.Edges.Endpoints;
 using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Edges
 {
-    public abstract class DotEdge : DotCommonEdge
-    {
-        protected DotEdge(IDotEdgeAttributes attributes)
-            : base(attributes)
-        {
-        }
-
-        /// <summary>
-        /// Creates a new edge connecting two nodes.
-        /// </summary>
-        /// <param name="tailNodeId">The identifier of the tail (source, left) node the edge should be connected to.</param>
-        /// <param name="headNodeId">The identifier of the head (destination, right) node the should be connected to.</param>
-        public static DotEdge<DotEdgeNode, DotEdgeNode> OneToOne(string tailNodeId, string headNodeId)
-        {
-            return new DotEdge<DotEdgeNode, DotEdgeNode>
-            (
-                new DotEdgeNode(tailNodeId),
-                new DotEdgeNode(headNodeId)
-            );
-        }
-
-        /// <summary>
-        /// Creates a new edge connecting a single tail node to the nodes of a subgraph as the head.
-        /// </summary>
-        /// <param name="tailNodeId">The identifier of the tail (source, left) node the edge should be connected to.</param>
-        /// <param name="headSubgraph">The subgraph to use as the head (destination, right) element the edge should be connected to.</param>
-        public static DotEdge<DotEdgeNode, DotEdgeSubgraph> OneToMany(string tailNodeId, DotSubgraph headSubgraph)
-        {
-            return new DotEdge<DotEdgeNode, DotEdgeSubgraph>
-            (
-                tail: new DotEdgeNode(tailNodeId),
-                head: new DotEdgeSubgraph(headSubgraph)
-            );
-        }
-
-        /// <summary>
-        /// Creates a new edge connecting the nodes of a subgraph as the tail to a single head node.
-        /// </summary>
-        /// <param name="tailSubgraph">The subgraph to use as the tail (source, left) element the edge should be connected to.</param>
-        /// <param name="headNodeId">The identifier of the head (destination, right) node the edge should be connected to.</param>
-        public static DotEdge<DotEdgeSubgraph, DotEdgeNode> ManyToOne(DotSubgraph tailSubgraph, string headNodeId)
-        {
-            return new DotEdge<DotEdgeSubgraph, DotEdgeNode>
-            (
-                tail: new DotEdgeSubgraph(tailSubgraph),
-                head: new DotEdgeNode(headNodeId)
-            );
-        }
-
-        /// <summary>
-        /// Creates a new edge connecting the nodes of a tail subgraph to the nodes of a head subgraph.
-        /// </summary>
-        /// <param name="tailSubgraph">The subgraph to use as the tail (source, left) element the edge should be connected to.</param>
-        /// <param name="headSubgraph">The subgraph to use as the head (destination, right) element the edge should be connected to.</param>
-        public static DotEdge<DotEdgeSubgraph, DotEdgeSubgraph> ManyToMany(DotSubgraph tailSubgraph, DotSubgraph headSubgraph)
-        {
-            return new DotEdge<DotEdgeSubgraph, DotEdgeSubgraph>
-            (
-                tail: new DotEdgeSubgraph(tailSubgraph),
-                head: new DotEdgeSubgraph(headSubgraph)
-            );
-        }
-    }
-
     /// <summary>
-    /// Represents a graph edge that connects two elements.
+    /// Represents an edge that joins:
+    /// <list type="bullet">
+    ///     <item>
+    ///         two nodes, when <typeparamref name="TTail"/> and <typeparamref name="THead"/> are both
+    ///         <see cref="DotNodeEndpoint"/>,
+    ///     </item>
+    ///     <item>
+    ///         a set of edges that join one <typeparamref name="TTail"/> <see cref="DotNodeEndpoint"/> node
+    ///         to multiple <typeparamref name="THead"/> <see cref="DotSubgraphEndpoint"/> nodes,
+    ///     </item>
+    ///     <item>
+    ///         or a set of edges that join multiple <typeparamref name="TTail"/> <see cref="DotSubgraphEndpoint"/> nodes
+    ///         to one <typeparamref name="THead"/> <see cref="DotNodeEndpoint"/> node,
+    ///     </item>
+    ///     <item>
+    ///         or a set of edges that join multiple <typeparamref name="TTail"/> <see cref="DotSubgraphEndpoint"/> nodes
+    ///         to multiple <typeparamref name="THead"/> <see cref="DotSubgraphEndpoint"/> nodes.
+    ///     </item>
+    /// </list>
     /// </summary>
-    public class DotEdge<TTail, THead> : DotEdge
-        where TTail : DotEdgeElement
-        where THead : DotEdgeElement
+    /// <typeparam name="TTail">The type of the tail endpoint.</typeparam>
+    /// <typeparam name="THead">The type of the head endpoint.</typeparam>
+    public class DotEdge<TTail, THead> : DotCommonEdge
+        where TTail : DotEndpoint
+        where THead : DotEndpoint
     {
         /// <summary>
-        /// The tail (source, left) element.
+        /// The tail (source, left) endpoint.
         /// </summary>
         public virtual TTail Tail { get; set; }
 
         /// <summary>
-        /// The head (destination, right) element.
+        /// The head (destination, right) endpoint.
         /// </summary>
         public virtual THead Head { get; set; }
 
         /// <summary>
-        /// Gets the elements (tail and head) of this edge.
+        /// Gets the endpoints of this edge.
         /// </summary>
-        public override IEnumerable<DotEdgeElement> Elements => new DotEdgeElement[] { Tail, Head };
-
-        /// <summary>
-        /// The attributes of the edge.
-        /// </summary>
-        public override IDotEdgeAttributes Attributes => base.Attributes;
+        public override IEnumerable<DotEndpoint> Endpoints => new DotEndpoint[] { Tail, Head };
 
         protected DotEdge(TTail tail, THead head, IDotEdgeAttributes attributes)
             : base(attributes)
@@ -104,10 +54,10 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        /// Creates a new edge connecting two elements.
+        /// Creates a new edge instance.
         /// </summary>
-        /// <param name="tail">The tail (source, left) element the edge should be connected to.</param>
-        /// <param name="head">The head (destination, right) element the should be connected to.</param>
+        /// <param name="tail">The tail (source, left) endpoint the edge should be connected to.</param>
+        /// <param name="head">The head (destination, right) endpoint the edge should be connected to.</param>
         public DotEdge(TTail tail, THead head)
             : this(tail, head, new DotEntityAttributes())
         {
