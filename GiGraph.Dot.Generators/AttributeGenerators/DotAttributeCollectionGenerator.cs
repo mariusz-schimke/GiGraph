@@ -23,10 +23,10 @@ namespace GiGraph.Dot.Generators.AttributeGenerators
 
         public override void Generate(DotAttributeCollection attributes, IDotAttributeStatementWriter writer)
         {
-            var orderedAttributes = attributes
-                .OrderBy((IDotAttribute a) => a.Key)
-                .Cast<DotAttribute>()
-                .ToArray();
+            var orderedAttributes = _options.OrderElements
+                ? attributes.OrderBy((IDotAttribute a) => a.Key)
+                            .Cast<DotAttribute>()
+                : attributes;
 
             foreach (var attribute in orderedAttributes)
             {

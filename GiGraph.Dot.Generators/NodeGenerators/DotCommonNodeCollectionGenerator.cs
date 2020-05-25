@@ -23,11 +23,11 @@ namespace GiGraph.Dot.Generators.NodeGenerators
 
         public override void Generate(DotCommonNodeCollection nodes, IDotNodeStatementWriter writer)
         {
-            var orderedNodes = nodes
-                .Cast<IDotEntityWithIds>()
-                .OrderBy(n => string.Join(" ", n.Ids))
-                .Cast<DotCommonNode>()
-                .ToArray();
+            var orderedNodes = _options.OrderElements
+                ? nodes.Cast<IDotEntityWithIds>()
+                       .OrderBy(n => string.Join(" ", n.Ids))
+                       .Cast<DotCommonNode>()
+                : nodes;
 
             foreach (var node in orderedNodes)
             {
