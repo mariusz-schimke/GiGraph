@@ -27,18 +27,20 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
 
         public override void Generate(DotCommonEdge edge, IDotEdgeWriter writer)
         {
-            WriteEdges(edge.Endpoints.ToArray(), writer);
+            WriteEdges(edge.Endpoints, writer);
             WriteAttributes(edge.Attributes, writer);
         }
 
-        protected virtual void WriteEdges(ICollection<DotEndpoint> elements, IDotEdgeWriter writer)
+        protected virtual void WriteEdges(IEnumerable<DotEndpoint> endpoints, IDotEdgeWriter writer)
         {
-            if (elements.Count < 2)
+            if (endpoints.Count() < 2)
             {
-                throw new ArgumentException("At least a pair of elements has to be specified for an edge.", nameof(elements));
+                throw new ArgumentException("At least a pair of elements has to be specified for an edge.", nameof(endpoints));
             }
 
-            foreach (var element in elements)
+            // TODO: add optional sorting (_options.OrderElements)
+
+            foreach (var element in endpoints)
             {
                 WriteElement(element, writer);
             }

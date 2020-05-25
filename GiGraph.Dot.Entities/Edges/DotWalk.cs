@@ -12,12 +12,7 @@ namespace GiGraph.Dot.Entities.Edges
     public class DotWalk : DotCommonEdge
     {
         /// <summary>
-        /// The attributes of the edge chain.
-        /// </summary>
-        public override IDotEdgeAttributes Attributes => base.Attributes;
-
-        /// <summary>
-        /// Gets the elements of this edge chain.
+        /// Gets the endpoints of this walk.
         /// </summary>
         public override IEnumerable<DotEndpoint> Endpoints { get; }
 
@@ -26,31 +21,31 @@ namespace GiGraph.Dot.Entities.Edges
         {
             Endpoints = endpoints.Count > 1
                 ? endpoints
-                : throw new ArgumentException("At least a pair of elements has to be specified for an edge chain.", nameof(endpoints));
+                : throw new ArgumentException("At least a pair of endpoints has to be specified for a walk.", nameof(endpoints));
         }
 
         /// <summary>
-        /// Creates a new edge chain initialized with the specified elements.
-        /// At least a pair of elements has to be specified.
+        /// Creates a new walk initialized with the specified endpoints.
+        /// At least a pair of endpoints has to be specified.
         /// </summary>
-        /// <param name="elements">The elements to initialize the instance with.</param>
-        public DotWalk(params DotEndpoint[] elements)
-            : this((IEnumerable<DotEndpoint>)elements)
+        /// <param name="endpoints">The endpoints to initialize the instance with.</param>
+        public DotWalk(params DotEndpoint[] endpoints)
+            : this((IEnumerable<DotEndpoint>)endpoints)
         {
         }
 
         /// <summary>
-        /// Creates a new edge chain initialized with the specified elements.
-        /// At least a pair of elements has to be specified.
+        /// Creates a new walk initialized with the specified endpoints.
+        /// At least a pair of endpoints has to be specified.
         /// </summary>
-        /// <param name="elements">The elements to initialize the instance with.</param>
-        public DotWalk(IEnumerable<DotEndpoint> elements)
-            : this(new List<DotEndpoint>(elements), new DotEntityAttributes())
+        /// <param name="endpoints">The endpoints to initialize the instance with.</param>
+        public DotWalk(IEnumerable<DotEndpoint> endpoints)
+            : this(new List<DotEndpoint>(endpoints), new DotEntityAttributes())
         {
         }
 
         /// <summary>
-        /// Creates a new edge chain initialized with the specified node identifiers.
+        /// Creates a new walk initialized with the specified node identifiers.
         /// At least a pair of identifiers has to be specified.
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
@@ -60,7 +55,7 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        /// Creates a new edge chain initialized with the specified node identifiers.
+        /// Creates a new walk initialized with the specified node identifiers.
         /// At least a pair of identifiers has to be specified.
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
