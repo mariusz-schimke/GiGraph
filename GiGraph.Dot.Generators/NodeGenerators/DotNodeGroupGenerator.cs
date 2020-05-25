@@ -23,18 +23,22 @@ namespace GiGraph.Dot.Generators.NodeGenerators
 
         public override void Generate(DotNodeGroup nodeGroup, IDotNodeWriter writer)
         {
-            WriteIdentifiers(nodeGroup.NodeIds.ToArray(), writer);
+            WriteIdentifiers(nodeGroup.NodeIds, writer);
             WriteAttributes(nodeGroup.Attributes, writer);
         }
 
-        protected virtual void WriteIdentifiers(ICollection<string> nodeIds, IDotNodeWriter writer)
+        protected virtual void WriteIdentifiers(IEnumerable<string> nodeIds, IDotNodeWriter writer)
         {
             if (!nodeIds.Any())
             {
                 throw new ArgumentException("At least one node identifier has to be specified for a node group.", nameof(nodeIds));
             }
 
-            foreach (var nodeId in nodeIds)
+            var orderedNodeIds = _options.OrderElements
+                ? nodeIds.OrderBy(nodeId => nodeId)
+                : nodeIds;
+
+            foreach (var nodeId in orderedNodeIds)
             {
                 WriteIdentifier(nodeId, writer);
             }
