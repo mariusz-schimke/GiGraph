@@ -245,7 +245,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="headNodeId">The head (destination, right) node identifier to locate.</param>
         public virtual bool Contains(string tailNodeId, string headNodeId)
         {
-            return GetAll<DotEdge<DotNodeEndpoint, DotNodeEndpoint>>()
+            return GetAll<DotEdge<DotEndpoint, DotEndpoint>>()
                 .Where(edge => edge.Tail.NodeId == tailNodeId)
                 .Where(edge => edge.Head.NodeId == headNodeId)
                 .Any();
@@ -288,7 +288,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="headNodeId">The head (destination, right) node identifier.</param>
         public virtual int Remove(string tailNodeId, string headNodeId)
         {
-            return RemoveAll(commonEdge => commonEdge is DotEdge<DotNodeEndpoint, DotNodeEndpoint> edge &&
+            return RemoveAll(commonEdge => commonEdge is DotEdge<DotEndpoint, DotEndpoint> edge &&
                 edge.Tail.NodeId == tailNodeId &&
                 edge.Head.NodeId == headNodeId);
         }

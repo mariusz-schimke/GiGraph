@@ -9,27 +9,27 @@ namespace GiGraph.Dot.Entities.Edges
     /// <list type="bullet">
     ///     <item>
     ///         two nodes, when <typeparamref name="TTail"/> and <typeparamref name="THead"/> are both
-    ///         <see cref="DotNodeEndpoint"/>,
+    ///         <see cref="DotEndpoint"/>,
     ///     </item>
     ///     <item>
-    ///         a set of edges that join one <typeparamref name="TTail"/> <see cref="DotNodeEndpoint"/> node
-    ///         to multiple <typeparamref name="THead"/> <see cref="DotSubgraphEndpoint"/> nodes,
+    ///         a set of edges that join one <typeparamref name="TTail"/> <see cref="DotEndpoint"/> node
+    ///         to multiple <typeparamref name="THead"/> <see cref="DotEndpointGroup"/> nodes,
     ///     </item>
     ///     <item>
-    ///         or a set of edges that join multiple <typeparamref name="TTail"/> <see cref="DotSubgraphEndpoint"/> nodes
-    ///         to one <typeparamref name="THead"/> <see cref="DotNodeEndpoint"/> node,
+    ///         or a set of edges that join multiple <typeparamref name="TTail"/> <see cref="DotEndpointGroup"/> nodes
+    ///         to one <typeparamref name="THead"/> <see cref="DotEndpoint"/> node,
     ///     </item>
     ///     <item>
-    ///         or a set of edges that join multiple <typeparamref name="TTail"/> <see cref="DotSubgraphEndpoint"/> nodes
-    ///         to multiple <typeparamref name="THead"/> <see cref="DotSubgraphEndpoint"/> nodes.
+    ///         or a set of edges that join multiple <typeparamref name="TTail"/> <see cref="DotEndpointGroup"/> nodes
+    ///         to multiple <typeparamref name="THead"/> <see cref="DotEndpointGroup"/> nodes.
     ///     </item>
     /// </list>
     /// </summary>
     /// <typeparam name="TTail">The type of the tail endpoint.</typeparam>
     /// <typeparam name="THead">The type of the head endpoint.</typeparam>
     public class DotEdge<TTail, THead> : DotCommonEdge
-        where TTail : DotEndpoint
-        where THead : DotEndpoint
+        where TTail : DotCommonEndpoint
+        where THead : DotCommonEndpoint
     {
         /// <summary>
         /// The tail (source, left) endpoint.
@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Gets the endpoints of this edge.
         /// </summary>
-        public override IEnumerable<DotEndpoint> Endpoints => new DotEndpoint[] { Tail, Head };
+        public override IEnumerable<DotCommonEndpoint> Endpoints => new DotCommonEndpoint[] { Tail, Head };
 
         protected DotEdge(TTail tail, THead head, IDotEdgeAttributes attributes)
             : base(attributes)
@@ -67,14 +67,14 @@ namespace GiGraph.Dot.Entities.Edges
     /// <summary>
     /// Represents an edge (joins two nodes).
     /// </summary>
-    public class DotEdge : DotEdge<DotNodeEndpoint, DotNodeEndpoint>
+    public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     {
         /// <summary>
         /// Indicates if the current instance is a loop edge.
         /// </summary>
         public bool IsLoop => Tail.NodeId == Head.NodeId;
 
-        protected DotEdge(DotNodeEndpoint tail, DotNodeEndpoint head, IDotEdgeAttributes attributes)
+        protected DotEdge(DotEndpoint tail, DotEndpoint head, IDotEdgeAttributes attributes)
             : base(tail, head, attributes)
         {
         }
@@ -84,7 +84,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tail">The tail (source, left) node.</param>
         /// <param name="head">The head (destination, right) node.</param>
-        public DotEdge(DotNodeEndpoint tail, DotNodeEndpoint head)
+        public DotEdge(DotEndpoint tail, DotEndpoint head)
             : base(tail, head)
         {
         }
@@ -95,7 +95,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="tailNodeId">The identifier of the tail (source, left) node.</param>
         /// <param name="headNodeId">The identifier of the head (destination, right) node.</param>
         public DotEdge(string tailNodeId, string headNodeId)
-            : this(new DotNodeEndpoint(tailNodeId), new DotNodeEndpoint(headNodeId))
+            : this(new DotEndpoint(tailNodeId), new DotEndpoint(headNodeId))
         {
         }
 
