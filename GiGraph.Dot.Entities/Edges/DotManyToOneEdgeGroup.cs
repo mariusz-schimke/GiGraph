@@ -6,11 +6,11 @@ using System.Collections.Generic;
 namespace GiGraph.Dot.Entities.Edges
 {
     /// <summary>
-    /// Represents a set of edges that join the nodes in a subgraph with a single node.
+    /// Represents a group of edges that join the nodes in a subgraph with a single node.
     /// </summary>
-    public class DotManyToOneEdge : DotEdge<DotSubgraphEndpoint, DotNodeEndpoint>
+    public class DotManyToOneEdgeGroup : DotEdge<DotSubgraphEndpoint, DotNodeEndpoint>
     {
-        protected DotManyToOneEdge(DotSubgraphEndpoint tail, DotNodeEndpoint head, IDotEdgeAttributes attributes)
+        protected DotManyToOneEdgeGroup(DotSubgraphEndpoint tail, DotNodeEndpoint head, IDotEdgeAttributes attributes)
             : base(tail, head, attributes)
         {
         }
@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tail">The subgraph whose nodes should be the tail endpoints.</param>
         /// <param name="head">The head (destination, right) node the <paramref name="tail"/> nodes should be connected to.</param>
-        public DotManyToOneEdge(DotSubgraphEndpoint tail, DotNodeEndpoint head)
+        public DotManyToOneEdgeGroup(DotSubgraphEndpoint tail, DotNodeEndpoint head)
             : base(tail, head)
         {
         }
@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tail">The subgraph whose nodes should be the tail endpoints.</param>
         /// <param name="headNodeId">The identifier of the head (destination, right) node the <paramref name="tail"/> nodes should be connected to.</param>
-        public DotManyToOneEdge(DotSubgraph tail, string headNodeId)
+        public DotManyToOneEdgeGroup(DotSubgraph tail, string headNodeId)
             : this(new DotSubgraphEndpoint(tail), new DotNodeEndpoint(headNodeId))
         {
         }
@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="headNodeId">The identifier of the head (destination, right) node the <paramref name="tailNodeIds"/> nodes should be connected to.</param>
         /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes.</param>
-        public static DotManyToOneEdge Create(string headNodeId, params string[] tailNodeIds)
+        public static DotManyToOneEdgeGroup Create(string headNodeId, params string[] tailNodeIds)
         {
             return Create(tailNodeIds, headNodeId);
         }
@@ -50,9 +50,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes.</param>
         /// <param name="headNodeId">The identifier of the head (destination, right) node the <paramref name="tailNodeIds"/> nodes should be connected to.</param>
-        public static DotManyToOneEdge Create(IEnumerable<string> tailNodeIds, string headNodeId)
+        public static DotManyToOneEdgeGroup Create(IEnumerable<string> tailNodeIds, string headNodeId)
         {
-            return new DotManyToOneEdge(DotSubgraph.FromNodes(tailNodeIds), headNodeId);
+            return new DotManyToOneEdgeGroup(DotSubgraph.FromNodes(tailNodeIds), headNodeId);
         }
     }
 }
