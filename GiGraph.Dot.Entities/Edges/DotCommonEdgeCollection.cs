@@ -70,9 +70,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="nodeId">The node identifier.</param>
         /// <param name="initEdge">An optional edge initializer delegate.</param>
-        public virtual DotLoopEdge AddLoop(string nodeId, Action<IDotEdgeAttributes> initEdge = null)
+        public virtual DotEdge AddLoop(string nodeId, Action<IDotEdgeAttributes> initEdge = null)
         {
-            return Add(new DotLoopEdge(nodeId), initEdge);
+            return Add(DotEdge.Loop(nodeId), initEdge);
         }
 
         /// <summary>
@@ -195,8 +195,7 @@ namespace GiGraph.Dot.Entities.Edges
         public virtual IEnumerable<DotEdge> GetAll(string tailNodeId, string headNodeId)
         {
             return GetAll<DotEdge>()
-                .Where(edge => edge.Tail.NodeId == tailNodeId)
-                .Where(edge => edge.Head.NodeId == headNodeId);
+                .Where(edge => edge.Equals(tailNodeId, headNodeId));
         }
 
         /// <summary>
@@ -222,12 +221,12 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        /// Gets edges that connect the specified node to itself.
+        /// Gets loop edges that connect the specified node to itself.
         /// </summary>
         /// <param name="nodeId">The node identifier.</param>
-        public virtual IEnumerable<DotLoopEdge> GetLoops(string nodeId)
+        public virtual IEnumerable<DotEdge> GetLoops(string nodeId)
         {
-            return GetAll<DotLoopEdge>(edge => edge.Node.NodeId == nodeId);
+            return GetAll(nodeId, nodeId);
         }
 
         /// <summary>
@@ -258,7 +257,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="nodeId">The node identifier.</param>
         public virtual bool ContainsLoop(string nodeId)
         {
-            return GetLoops(nodeId).Any() || Contains(nodeId, nodeId);
+            return GetLoops(nodeId).Any();
         }
 
         /// <summary>
@@ -300,8 +299,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="nodeId">The node identifier.</param>
         public virtual int RemoveLoops(string nodeId)
         {
-            return RemoveAll(edge => edge is DotLoopEdge loopEdge && loopEdge.Node.NodeId == nodeId) +
-                   Remove(nodeId, nodeId);
+            return Remove(nodeId, nodeId);
         }
 
         /// <summary>
