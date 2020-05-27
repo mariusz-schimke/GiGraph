@@ -29,6 +29,16 @@ namespace GiGraph.Dot.Entities.Edges
         /// At least a pair of endpoints has to be provided.
         /// </summary>
         /// <param name="endpoints">The endpoints to initialize the instance with.</param>
+        public DotEdgeSequence(params DotEndpoint[] endpoints)
+            : this((IEnumerable<DotEndpoint>)endpoints)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new edge sequence initialized with the specified endpoints.
+        /// At least a pair of endpoints has to be provided.
+        /// </summary>
+        /// <param name="endpoints">The endpoints to initialize the instance with.</param>
         public DotEdgeSequence(IEnumerable<DotEndpoint> endpoints)
             : this(endpoints.ToArray(), new DotEntityAttributes())
         {
@@ -72,16 +82,6 @@ namespace GiGraph.Dot.Entities.Edges
                     return endpoint;
                 })
             );
-        }
-
-        /// <summary>
-        /// Creates a new edge sequence initialized with the specified endpoints.
-        /// At least a pair of endpoints has to be provided.
-        /// </summary>
-        /// <param name="endpoints">The endpoints to initialize the instance with.</param>
-        public static DotEdgeSequence FromEndpoints(params DotEndpoint[] endpoints)
-        {
-            return new DotEdgeSequence(endpoints);
         }
     }
 }
