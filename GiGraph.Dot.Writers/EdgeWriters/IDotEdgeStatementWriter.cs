@@ -4,7 +4,7 @@ namespace GiGraph.Dot.Writers.EdgeWriters
 {
     public interface IDotEdgeStatementWriter : IDotEntityWriter
     {
-        IDotEdgeWriter BeginWalk();
-        void EndWalk();
+        IDotEdgeWriter BeginSequence();
+        void EndSequence();
     }
 }

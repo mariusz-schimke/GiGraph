@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     /// Represents a node as an edge endpoint.
     /// This node may be connected to another node represented by a second instance of the same
     /// <see cref="DotNodeEndpoint"/> class, or to multiple nodes represented by the <see cref="DotSubgraphEndpoint"/> class.
-    /// To make such connection, use <see cref="DotEdge{TTail, THead}"/> (or one of its specific descendants), or <see cref="DotWalk"/>.
+    /// To make such connection, use <see cref="DotEdge{TTail, THead}"/> (or one of its specific descendants), or <see cref="DotEdgeSequence"/>.
     /// </summary>
     public class DotNodeEndpoint : DotEndpoint
     {
