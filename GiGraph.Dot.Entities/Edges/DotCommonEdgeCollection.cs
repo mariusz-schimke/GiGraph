@@ -33,6 +33,8 @@ namespace GiGraph.Dot.Entities.Edges
             return edge;
         }
 
+        // TODO: add loop edge
+
         void ICollection<DotCommonEdge>.Add(DotCommonEdge item)
         {
             Add(item);
@@ -74,7 +76,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// Adds multiple edges to the collection, that connect consecutive nodes with the specified identifiers.
         /// </summary>
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
-        public virtual DotWalk Add(params string[] nodeIds)
+        public virtual DotEdgeSequence Add(params string[] nodeIds)
         {
             return Add((IEnumerable<string>)nodeIds);
         }
@@ -83,7 +85,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// Adds multiple edges to the collection, that connect consecutive nodes with the specified identifiers.
         /// </summary>
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
-        public virtual DotWalk Add(IEnumerable<string> nodeIds)
+        public virtual DotEdgeSequence Add(IEnumerable<string> nodeIds)
         {
             return Add(initEdge: null, nodeIds);
         }
@@ -93,7 +95,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="initEdge">An edge initializer delegate.</param>
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
-        public virtual DotWalk Add(Action<IDotEdgeAttributes> initEdge, params string[] nodeIds)
+        public virtual DotEdgeSequence Add(Action<IDotEdgeAttributes> initEdge, params string[] nodeIds)
         {
             return Add(initEdge, (IEnumerable<string>)nodeIds);
         }
@@ -103,9 +105,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="initEdge">An edge initializer delegate.</param>
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
-        public virtual DotWalk Add(Action<IDotEdgeAttributes> initEdge, IEnumerable<string> nodeIds)
+        public virtual DotEdgeSequence Add(Action<IDotEdgeAttributes> initEdge, IEnumerable<string> nodeIds)
         {
-            var edge = Add(DotWalk.FromNodes(nodeIds));
+            var edge = Add(DotEdgeSequence.FromNodes(nodeIds));
             initEdge?.Invoke(edge.Attributes);
             return edge;
         }

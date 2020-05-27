@@ -60,6 +60,7 @@ namespace GiGraph.Dot.Entities.Graphs
         /// </para>
         /// </summary>
         public virtual DotCommonSubgraphCollection Subgraphs { get; }
+        // TODO: split subgraphs into two collections (subgraphs, clusters)
 
         protected DotCommonGraph(
             string id,
