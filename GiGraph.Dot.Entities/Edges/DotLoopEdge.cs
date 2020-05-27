@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Edges
     /// <para>
     ///     If you would like to control the port (<see cref="DotNodeEndpoint.PortName"/>) and/or
     ///     the compass point (<see cref="DotNodeEndpoint.CompassPoint"/>) of the head and the tail of the edge
-    ///     that connects the node to itself, please use a <see cref="DotOneToOneEdge"/> edge with the same node identifier
+    ///     that connects the node to itself, please use a <see cref="DotEdge"/> edge with the same node identifier
     ///     used for the head and the tail, but with different ports and/or compass points specified for each.
     /// </para>
     /// </summary>

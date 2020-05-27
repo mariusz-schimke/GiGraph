@@ -60,9 +60,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
         /// <param name="headNodeId">The head (destination, right) node identifier.</param>
         /// <param name="initEdge">An optional edge initializer delegate.</param>
-        public virtual DotOneToOneEdge Add(string tailNodeId, string headNodeId, Action<IDotEdgeAttributes> initEdge = null)
+        public virtual DotEdge Add(string tailNodeId, string headNodeId, Action<IDotEdgeAttributes> initEdge = null)
         {
-            return Add(new DotOneToOneEdge(tailNodeId, headNodeId), initEdge);
+            return Add(new DotEdge(tailNodeId, headNodeId), initEdge);
         }
 
         /// <summary>
@@ -192,9 +192,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
         /// <param name="headNodeId">The head (destination, right) node identifier.</param>
-        public virtual IEnumerable<DotOneToOneEdge> GetAll(string tailNodeId, string headNodeId)
+        public virtual IEnumerable<DotEdge> GetAll(string tailNodeId, string headNodeId)
         {
-            return GetAll<DotOneToOneEdge>()
+            return GetAll<DotEdge>()
                 .Where(edge => edge.Tail.NodeId == tailNodeId)
                 .Where(edge => edge.Head.NodeId == headNodeId);
         }

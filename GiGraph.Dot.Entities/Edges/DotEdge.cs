@@ -63,4 +63,35 @@ namespace GiGraph.Dot.Entities.Edges
         {
         }
     }
+
+    /// <summary>
+    /// Represents an edge (joins two nodes).
+    /// </summary>
+    public class DotEdge : DotEdge<DotNodeEndpoint, DotNodeEndpoint>
+    {
+        protected DotEdge(DotNodeEndpoint tail, DotNodeEndpoint head, IDotEdgeAttributes attributes)
+            : base(tail, head, attributes)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new edge instance.
+        /// </summary>
+        /// <param name="tail">The tail (source, left) node.</param>
+        /// <param name="head">The head (destination, right) node.</param>
+        public DotEdge(DotNodeEndpoint tail, DotNodeEndpoint head)
+            : base(tail, head)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new edge instance.
+        /// </summary>
+        /// <param name="tailNodeId">The identifier of the tail (source, left) node.</param>
+        /// <param name="headNodeId">The identifier of the head (destination, right) node.</param>
+        public DotEdge(string tailNodeId, string headNodeId)
+            : this(new DotNodeEndpoint(tailNodeId), new DotNodeEndpoint(headNodeId))
+        {
+        }
+    }
 }
