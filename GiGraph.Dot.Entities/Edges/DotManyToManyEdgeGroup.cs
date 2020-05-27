@@ -6,11 +6,11 @@ using System.Collections.Generic;
 namespace GiGraph.Dot.Entities.Edges
 {
     /// <summary>
-    /// Represents a set of edges that join all nodes in a subgraph to all nodes in another subgraph.
+    /// Represents a group of edges that join all nodes in a subgraph to all nodes in another subgraph.
     /// </summary>
-    public class DotManyToManyEdge : DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>
+    public class DotManyToManyEdgeGroup : DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>
     {
-        protected DotManyToManyEdge(DotSubgraphEndpoint tail, DotSubgraphEndpoint head, IDotEdgeAttributes attributes)
+        protected DotManyToManyEdgeGroup(DotSubgraphEndpoint tail, DotSubgraphEndpoint head, IDotEdgeAttributes attributes)
             : base(tail, head, attributes)
         {
         }
@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tail">The subgraph whose nodes should be the tail endpoints.</param>
         /// <param name="head">The subgraph whose nodes (as the head endpoints) the <paramref name="tail"/> nodes should be connected to.</param>
-        public DotManyToManyEdge(DotSubgraphEndpoint tail, DotSubgraphEndpoint head)
+        public DotManyToManyEdgeGroup(DotSubgraphEndpoint tail, DotSubgraphEndpoint head)
             : base(tail, head)
         {
         }
@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tail">The subgraph whose nodes should be the tail endpoints.</param>
         /// <param name="head">The subgraph whose nodes (as the head endpoints) the <paramref name="tail"/> nodes should be connected to.</param>
-        public DotManyToManyEdge(DotSubgraph tail, DotSubgraph head)
+        public DotManyToManyEdgeGroup(DotSubgraph tail, DotSubgraph head)
             : this(new DotSubgraphEndpoint(tail), new DotSubgraphEndpoint(head))
         {
         }
@@ -40,9 +40,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes.</param>
         /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes the <paramref name="tailNodeIds"/> nodes should be connected to.</param>
-        public static DotManyToManyEdge Create(IEnumerable<string> tailNodeIds, IEnumerable<string> headNodeIds)
+        public static DotManyToManyEdgeGroup Create(IEnumerable<string> tailNodeIds, IEnumerable<string> headNodeIds)
         {
-            return new DotManyToManyEdge
+            return new DotManyToManyEdgeGroup
             (
                 DotSubgraph.FromNodes(tailNodeIds),
                 DotSubgraph.FromNodes(headNodeIds)
