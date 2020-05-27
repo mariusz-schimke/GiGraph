@@ -1,5 +1,4 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Edges.Endpoints;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -110,6 +109,15 @@ namespace GiGraph.Dot.Entities.Edges
             var edge = Add(DotEdgeSequence.FromNodes(nodeIds));
             initEdge?.Invoke(edge.Attributes);
             return edge;
+        }
+
+        /// <summary>
+        /// Adds a loop edge to the collection, that connects the specified node to itself.
+        /// </summary>
+        /// <param name="nodeId">The node identifier.</param>
+        public virtual DotLoopEdge AddLoop(string nodeId)
+        {
+            return Add(new DotLoopEdge(nodeId));
         }
 
         /// <summary>
