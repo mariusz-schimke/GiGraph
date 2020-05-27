@@ -4,12 +4,13 @@ using System;
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
     /// <summary>
-    /// Represents a collection of nodes in a subgraph as edge endpoints.
-    /// These nodes may be connected to a single node represented by the <see cref="DotNodeEndpoint"/> class,
-    /// or to multiple nodes represented by a second instance of the same <see cref="DotSubgraphEndpoint"/> class.
-    /// To make such connection, use <see cref="DotEdge{TTail, THead}"/> (or one of its specific descendants), or <see cref="DotEdgeSequence"/>.
+    /// Represents a collection of nodes in a subgraph as a group of endpoints.
+    /// These nodes may be connected to a single node represented by the <see cref="DotEndpoint"/> class,
+    /// or to multiple nodes represented by a second instance of the same <see cref="DotEndpointGroup"/> class.
+    /// To make such connection, use <see cref="DotEdge{TTail, THead}"/> (or one of its more specific descendants),
+    /// or <see cref="DotEdgeSequence"/>.
     /// </summary>
-    public class DotSubgraphEndpoint : DotEndpoint
+    public class DotEndpointGroup : DotCommonEndpoint
     {
         protected DotSubgraph _subgraph;
 
@@ -26,7 +27,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// Creates a new instance of the class.
         /// </summary>
         /// <param name="subgraph">The subgraph whose nodes to use as the endpoints of multiple edges.</param>
-        public DotSubgraphEndpoint(DotSubgraph subgraph)
+        public DotEndpointGroup(DotSubgraph subgraph)
         {
             Subgraph = subgraph;
         }

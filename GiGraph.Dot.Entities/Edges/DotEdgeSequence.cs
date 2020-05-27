@@ -14,9 +14,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Gets the sequence of endpoints.
         /// </summary>
-        public override IEnumerable<DotEndpoint> Endpoints { get; }
+        public override IEnumerable<DotCommonEndpoint> Endpoints { get; }
 
-        protected DotEdgeSequence(ICollection<DotEndpoint> endpoints, IDotEdgeAttributes attributes)
+        protected DotEdgeSequence(ICollection<DotCommonEndpoint> endpoints, IDotEdgeAttributes attributes)
             : base(attributes)
         {
             Endpoints = endpoints.Count > 1
@@ -29,8 +29,8 @@ namespace GiGraph.Dot.Entities.Edges
         /// At least a pair of endpoints has to be provided.
         /// </summary>
         /// <param name="endpoints">The endpoints to initialize the instance with.</param>
-        public DotEdgeSequence(params DotEndpoint[] endpoints)
-            : this((IEnumerable<DotEndpoint>)endpoints)
+        public DotEdgeSequence(params DotCommonEndpoint[] endpoints)
+            : this((IEnumerable<DotCommonEndpoint>)endpoints)
         {
         }
 
@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// At least a pair of endpoints has to be provided.
         /// </summary>
         /// <param name="endpoints">The endpoints to initialize the instance with.</param>
-        public DotEdgeSequence(IEnumerable<DotEndpoint> endpoints)
+        public DotEdgeSequence(IEnumerable<DotCommonEndpoint> endpoints)
             : this(endpoints.ToArray(), new DotEntityAttributes())
         {
         }
@@ -60,7 +60,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
         /// <param name="initEndpoint">An optional endpoint initializer.</param>
-        public static DotEdgeSequence FromNodes(Action<DotNodeEndpoint> initEndpoint, params string[] nodeIds)
+        public static DotEdgeSequence FromNodes(Action<DotEndpoint> initEndpoint, params string[] nodeIds)
         {
             return FromNodes(nodeIds, initEndpoint);
         }
@@ -71,13 +71,13 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
         /// <param name="initEndpoint">An optional endpoint initializer.</param>
-        public static DotEdgeSequence FromNodes(IEnumerable<string> nodeIds, Action<DotNodeEndpoint> initEndpoint = null)
+        public static DotEdgeSequence FromNodes(IEnumerable<string> nodeIds, Action<DotEndpoint> initEndpoint = null)
         {
             return new DotEdgeSequence
             (
                 nodeIds.Select(nodeId =>
                 {
-                    var endpoint = new DotNodeEndpoint(nodeId);
+                    var endpoint = new DotEndpoint(nodeId);
                     initEndpoint?.Invoke(endpoint);
                     return endpoint;
                 })

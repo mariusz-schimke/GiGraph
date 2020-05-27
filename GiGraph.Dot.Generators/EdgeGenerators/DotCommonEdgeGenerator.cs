@@ -31,46 +31,46 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
             WriteAttributes(edge.Attributes, writer);
         }
 
-        protected virtual void WriteEdges(IEnumerable<DotEndpoint> endpoints, IDotEdgeWriter writer)
+        protected virtual void WriteEdges(IEnumerable<DotCommonEndpoint> endpoints, IDotEdgeWriter writer)
         {
             if (endpoints.Count() < 2)
             {
-                throw new ArgumentException("At least a pair of elements has to be specified for an edge.", nameof(endpoints));
+                throw new ArgumentException("At least a pair of endpoints has to be specified for an edge or an edge sequence.", nameof(endpoints));
             }
 
             foreach (var endpoint in endpoints)
             {
-                WriteElement(endpoint, writer);
+                WriteEndpoint(endpoint, writer);
             }
         }
 
-        protected virtual void WriteElement(DotEndpoint element, IDotEdgeWriter writer)
+        protected virtual void WriteEndpoint(DotCommonEndpoint commonEndpoint, IDotEdgeWriter writer)
         {
-            switch (element)
+            switch (commonEndpoint)
             {
-                case DotNodeEndpoint node:
-                    WriteNode(node, writer);
+                case DotEndpoint endpoint:
+                    WriteNode(endpoint, writer);
                     break;
 
-                case DotSubgraphEndpoint subgraph:
-                    WriteSubgraph(subgraph, writer);
+                case DotEndpointGroup endpointGroup:
+                    WriteSubgraph(endpointGroup, writer);
                     break;
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(element), $"The specified edge element type '{element.GetType().FullName}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(commonEndpoint), $"The specified endpoint type '{commonEndpoint.GetType().FullName}' is not supported.");
             }
         }
 
-        protected virtual void WriteNode(DotNodeEndpoint node, IDotEdgeWriter writer)
+        protected virtual void WriteNode(DotEndpoint endpoint, IDotEdgeWriter writer)
         {
-            var nodeId = EscapeIdentifier(node.NodeId);
+            var nodeId = EscapeIdentifier(endpoint.NodeId);
 
-            var portName = node.PortName is { }
-                ? EscapeIdentifier(node.PortName)
+            var portName = endpoint.PortName is { }
+                ? EscapeIdentifier(endpoint.PortName)
                 : null;
 
-            var compassPoint = node.CompassPoint.HasValue
-                ? EscapeIdentifier(new DotCompassPointConverter().Convert(node.CompassPoint.Value))
+            var compassPoint = endpoint.CompassPoint.HasValue
+                ? EscapeIdentifier(new DotCompassPointConverter().Convert(endpoint.CompassPoint.Value))
                 : null;
 
             writer.WriteNode
@@ -84,10 +84,10 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
             );
         }
 
-        protected virtual void WriteSubgraph(DotSubgraphEndpoint element, IDotEdgeWriter writer)
+        protected virtual void WriteSubgraph(DotEndpointGroup endpointGroup, IDotEdgeWriter writer)
         {
             var subgraphWriter = writer.BeginSubgraph(_options.Subgraphs.PreferExplicitKeyword);
-            _entityGenerators.GetForEntity<IDotSubgraphWriter>(element.Subgraph).Generate(element.Subgraph, subgraphWriter);
+            _entityGenerators.GetForEntity<IDotSubgraphWriter>(endpointGroup.Subgraph).Generate(endpointGroup.Subgraph, subgraphWriter);
             writer.EndSubgraph();
         }
     }

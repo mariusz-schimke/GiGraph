@@ -19,6 +19,6 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Gets the edge endpoints.
         /// </summary>
-        public abstract IEnumerable<DotEndpoint> Endpoints { get; }
+        public abstract IEnumerable<DotCommonEndpoint> Endpoints { get; }
     }
 }

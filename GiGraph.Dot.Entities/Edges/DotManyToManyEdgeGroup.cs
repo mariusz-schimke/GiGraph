@@ -8,9 +8,9 @@ namespace GiGraph.Dot.Entities.Edges
     /// <summary>
     /// Represents a group of edges that join all nodes in a subgraph to all nodes in another subgraph.
     /// </summary>
-    public class DotManyToManyEdgeGroup : DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>
+    public class DotManyToManyEdgeGroup : DotEdge<DotEndpointGroup, DotEndpointGroup>
     {
-        protected DotManyToManyEdgeGroup(DotSubgraphEndpoint tail, DotSubgraphEndpoint head, IDotEdgeAttributes attributes)
+        protected DotManyToManyEdgeGroup(DotEndpointGroup tail, DotEndpointGroup head, IDotEdgeAttributes attributes)
             : base(tail, head, attributes)
         {
         }
@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tail">The subgraph whose nodes should be the tail endpoints.</param>
         /// <param name="head">The subgraph whose nodes (as the head endpoints) the <paramref name="tail"/> nodes should be connected to.</param>
-        public DotManyToManyEdgeGroup(DotSubgraphEndpoint tail, DotSubgraphEndpoint head)
+        public DotManyToManyEdgeGroup(DotEndpointGroup tail, DotEndpointGroup head)
             : base(tail, head)
         {
         }
@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="tail">The subgraph whose nodes should be the tail endpoints.</param>
         /// <param name="head">The subgraph whose nodes (as the head endpoints) the <paramref name="tail"/> nodes should be connected to.</param>
         public DotManyToManyEdgeGroup(DotSubgraph tail, DotSubgraph head)
-            : this(new DotSubgraphEndpoint(tail), new DotSubgraphEndpoint(head))
+            : this(new DotEndpointGroup(tail), new DotEndpointGroup(head))
         {
         }
 
