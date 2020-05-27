@@ -69,6 +69,11 @@ namespace GiGraph.Dot.Entities.Edges
     /// </summary>
     public class DotEdge : DotEdge<DotNodeEndpoint, DotNodeEndpoint>
     {
+        /// <summary>
+        /// Indicates if the current instance is a loop edge.
+        /// </summary>
+        public bool IsLoop => Tail.NodeId == Head.NodeId;
+
         protected DotEdge(DotNodeEndpoint tail, DotNodeEndpoint head, IDotEdgeAttributes attributes)
             : base(tail, head, attributes)
         {
@@ -92,6 +97,35 @@ namespace GiGraph.Dot.Entities.Edges
         public DotEdge(string tailNodeId, string headNodeId)
             : this(new DotNodeEndpoint(tailNodeId), new DotNodeEndpoint(headNodeId))
         {
+        }
+
+        /// <summary>
+        /// Determines whether the edge joins the specified nodes.
+        /// </summary>
+        /// <param name="tailNodeId">The identifier of the tail (source, left) node to check.</param>
+        /// <param name="headNodeId">The identifier of the head (destination, right) node to check.</param>
+        public bool Equals(string tailNodeId, string headNodeId)
+        {
+            return Tail.NodeId == tailNodeId &&
+                   Head.NodeId == headNodeId;
+        }
+
+        /// <summary>
+        /// Determines whether the current edge connects the specified node to itself.
+        /// </summary>
+        /// <param name="nodeId">The identifier of the node to check.</param>
+        public bool Loops(string nodeId)
+        {
+            return Equals(nodeId, nodeId);
+        }
+
+        /// <summary>
+        /// Creates a new loop edge instance.
+        /// </summary>
+        /// <param name="nodeId">The identifier of the node the edge should connect to itself.</param>
+        public static DotEdge Loop(string nodeId)
+        {
+            return new DotEdge(nodeId, nodeId);
         }
     }
 }
