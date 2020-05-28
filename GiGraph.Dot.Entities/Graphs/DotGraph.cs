@@ -1,7 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Nodes;
-using GiGraph.Dot.Entities.Subgraphs;
+using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
@@ -33,10 +33,11 @@ namespace GiGraph.Dot.Entities.Graphs
             IDotGraphAttributes attributes,
             DotCommonNodeCollection nodes,
             DotCommonEdgeCollection edges,
-            DotCommonSubgraphCollection subgraphs,
+            DotSubgraphCollection subgraphs,
+            DotClusterCollection clusters,
             IDotNodeAttributes defaultNodeAttributes,
             IDotEdgeAttributes defaultEdgeAttributes)
-            : base(id, attributes, nodes, edges, subgraphs, defaultNodeAttributes, defaultEdgeAttributes)
+            : base(id, attributes, nodes, edges, subgraphs, clusters, defaultNodeAttributes, defaultEdgeAttributes)
         {
             IsDirected = isDirected;
             IsStrict = isStrict;
@@ -59,7 +60,8 @@ namespace GiGraph.Dot.Entities.Graphs
                   new DotEntityAttributes(),
                   new DotCommonNodeCollection(),
                   new DotCommonEdgeCollection(),
-                  new DotCommonSubgraphCollection(),
+                  new DotSubgraphCollection(),
+                  new DotClusterCollection(),
                   new DotEntityAttributes(),
                   new DotEntityAttributes()
               )

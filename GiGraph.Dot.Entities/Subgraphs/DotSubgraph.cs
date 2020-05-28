@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Nodes;
+using GiGraph.Dot.Entities.Subgraphs.Collections;
 using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Subgraphs
@@ -30,10 +31,11 @@ namespace GiGraph.Dot.Entities.Subgraphs
             IDotSubgraphAttributes attributes,
             DotCommonNodeCollection nodes,
             DotCommonEdgeCollection edges,
-            DotCommonSubgraphCollection subgraphs,
+            DotSubgraphCollection subgraphs,
+            DotClusterCollection clusters,
             IDotNodeAttributes defaultNodeAttributes,
             IDotEdgeAttributes defaultEdgeAttributes)
-            : base(id, attributes, nodes, edges, subgraphs, defaultNodeAttributes, defaultEdgeAttributes)
+            : base(id, attributes, nodes, edges, subgraphs, clusters, defaultNodeAttributes, defaultEdgeAttributes)
         {
         }
 
@@ -49,7 +51,8 @@ namespace GiGraph.Dot.Entities.Subgraphs
                   new DotEntityAttributes(),
                   new DotCommonNodeCollection(),
                   new DotCommonEdgeCollection(),
-                  new DotCommonSubgraphCollection(),
+                  new DotSubgraphCollection(),
+                  new DotClusterCollection(),
                   new DotEntityAttributes(),
                   new DotEntityAttributes()
               )
