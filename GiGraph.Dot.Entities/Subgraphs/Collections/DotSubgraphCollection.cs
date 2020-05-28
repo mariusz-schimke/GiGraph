@@ -50,17 +50,6 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         /// Adds a new subgraph with the specified rank to the collection, and returns it.
         /// </summary>
         /// <param name="rank">The rank attribute to assign to the subgraph.</param>
-        /// <param name="nodeIds">A node identifier collection to initialize the subgraph with.</param>
-        /// <param name="init">An optional subgraph initialization delegate.</param>
-        public virtual DotSubgraph Add(DotRank rank, IEnumerable<string> nodeIds, Action<DotSubgraph> init = null)
-        {
-            return AddSubgraph(rank, nodeIds, init);
-        }
-
-        /// <summary>
-        /// Adds a new subgraph with the specified rank to the collection, and returns it.
-        /// </summary>
-        /// <param name="rank">The rank attribute to assign to the subgraph.</param>
         /// <param name="nodeIds">Optional node identifiers to initialize the subgraph with.</param>
         public virtual DotSubgraph Add(DotRank rank, params string[] nodeIds)
         {
@@ -78,9 +67,20 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
             return AddSubgraph(rank, nodeIds, init);
         }
 
+        /// <summary>
+        /// Adds a new subgraph with the specified rank to the collection, and returns it.
+        /// </summary>
+        /// <param name="rank">The rank attribute to assign to the subgraph.</param>
+        /// <param name="nodeIds">A node identifier collection to initialize the subgraph with.</param>
+        /// <param name="init">An optional subgraph initialization delegate.</param>
+        public virtual DotSubgraph Add(DotRank rank, IEnumerable<string> nodeIds, Action<DotSubgraph> init = null)
+        {
+            return AddSubgraph(rank, nodeIds, init);
+        }
+
         protected virtual DotSubgraph AddSubgraph(DotRank? rank, IEnumerable<string> nodeIds, Action<DotSubgraph> init)
         {
-            return Add(DotSubgraph.FromNodes(nodeIds, rank, id: null), init);
+            return Add(DotSubgraph.FromNodes(nodeIds, rank), init);
         }
     }
 }
