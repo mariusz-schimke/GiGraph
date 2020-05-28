@@ -4,6 +4,7 @@ using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
@@ -87,7 +88,11 @@ namespace GiGraph.Dot.Entities.Subgraphs
         public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, DotRank? rank = null)
         {
             var result = new DotSubgraph(rank: rank);
-            result.Nodes.Add(nodeIds);
+
+            if (nodeIds.Any())
+            {
+                result.Nodes.Add(nodeIds);
+            }
 
             return result;
         }
