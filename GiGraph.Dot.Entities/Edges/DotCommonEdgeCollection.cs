@@ -194,30 +194,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="headNodeId">The head (destination, right) node identifier.</param>
         public virtual IEnumerable<DotEdge> GetAll(string tailNodeId, string headNodeId)
         {
-            return GetAll<DotEdge>()
+            return _edges
+                .OfType<DotEdge>()
                 .Where(edge => edge.Equals(tailNodeId, headNodeId));
-        }
-
-        /// <summary>
-        /// Gets all edges of the specified type.
-        /// </summary>
-        /// <typeparam name="T">The type of edges to get.</typeparam>
-        public virtual IEnumerable<T> GetAll<T>()
-            where T : DotCommonEdge
-        {
-            return _edges.Where(edge => edge is T)
-                         .Cast<T>();
-        }
-
-        /// <summary>
-        /// Gets all edges of the specified type that match the specified criteria.
-        /// </summary>
-        /// <typeparam name="T">The type of edges to get.</typeparam>
-        /// <param name="predicate">The function to test each element for a condition.</param>
-        public virtual IEnumerable<T> GetAll<T>(Func<T, bool> predicate)
-            where T : DotCommonEdge
-        {
-            return GetAll<T>().Where(predicate);
         }
 
         /// <summary>
@@ -245,7 +224,8 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="headNodeId">The head (destination, right) node identifier to locate.</param>
         public virtual bool Contains(string tailNodeId, string headNodeId)
         {
-            return GetAll<DotEdge<DotEndpoint, DotEndpoint>>()
+            return _edges
+                .OfType<DotEdge<DotEndpoint, DotEndpoint>>()
                 .Where(edge => edge.Tail.NodeId == tailNodeId)
                 .Where(edge => edge.Head.NodeId == headNodeId)
                 .Any();
