@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Nodes
     /// <summary>
     /// Represents a graph node.
     /// </summary>
-    public class DotNode : DotCommonNode
+    public class DotNode : DotCommonNode, IDotEntityWithIds
     {
         protected string _id;
 
@@ -19,6 +19,8 @@ namespace GiGraph.Dot.Entities.Nodes
             get => _id;
             set => _id = value ?? throw new ArgumentNullException(nameof(Id), "Node identifier cannot be null.");
         }
+
+        IEnumerable<string> IDotEntityWithIds.Ids => new[] { _id };
 
         /// <summary>
         /// The attributes of the node.
@@ -39,10 +41,5 @@ namespace GiGraph.Dot.Entities.Nodes
             : this(id, new DotEntityAttributes())
         {
         }
-
-        /// <summary>
-        /// Gets the identifier of the node.
-        /// </summary>
-        protected override IEnumerable<string> GetNodeIds() => new[] { _id };
     }
 }
