@@ -188,7 +188,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// </summary>
         public virtual int RemoveClusters()
         {
-            return RemoveAll(s => s is DotCluster);
+            return RemoveAll(subgraph => subgraph is DotCluster);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// </summary>
         public virtual int RemoveSubgraphs()
         {
-            return RemoveAll(s => s is DotSubgraph);
+            return RemoveAll(subgraph => subgraph is DotSubgraph);
         }
 
         /// <summary>
