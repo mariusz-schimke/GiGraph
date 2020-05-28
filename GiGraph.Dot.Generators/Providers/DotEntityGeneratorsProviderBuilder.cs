@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Generators.AttributeGenerators;
+﻿using GiGraph.Dot.Entities.Subgraphs;
+using GiGraph.Dot.Generators.AttributeGenerators;
 using GiGraph.Dot.Generators.EdgeGenerators;
 using GiGraph.Dot.Generators.GraphGenerators;
 using GiGraph.Dot.Generators.NodeGenerators;
@@ -23,7 +24,8 @@ namespace GiGraph.Dot.Generators.Providers
 
             provider.Register(new DotClusterGenerator(syntaxRules, options, provider));
             provider.Register(new DotSubgraphGenerator(syntaxRules, options, provider));
-            provider.Register(new DotCommonSubgraphCollectionGenerator(syntaxRules, options, provider));
+            provider.Register(new DotCommonSubgraphCollectionGenerator<DotSubgraph>(syntaxRules, options, provider));
+            provider.Register(new DotCommonSubgraphCollectionGenerator<DotCluster>(syntaxRules, options, provider));
 
             provider.Register(new DotCommonAttributeGenerator(syntaxRules, options, provider));
             provider.Register(new DotCustomAttributeGenerator(syntaxRules, options, provider));

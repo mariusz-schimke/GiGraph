@@ -125,7 +125,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         /// <typeparam name="T">The type to return the attribute as.</typeparam>
         /// <param name="key">The key of the attribute to get.</param>
-        /// <param name="value">The attribute if found and valid, or null otherwise.</param>
+        /// <param name="attribute">The attribute if found and valid, or null otherwise.</param>
         bool TryGetAs<T>(string key, out T attribute) where T : DotAttribute;
 
         /// <summary>
