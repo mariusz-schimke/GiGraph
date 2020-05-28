@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Generators.NodeGenerators
         {
             var orderedNodes = _options.OrderElements
                 ? nodes.Cast<IDotEntityWithIds>()
-                       .OrderBy(n => string.Join(" ", n.Ids))
+                       .OrderBy(node => string.Join(" ", node.Ids))
                        .Cast<DotCommonNode>()
                 : nodes;
 

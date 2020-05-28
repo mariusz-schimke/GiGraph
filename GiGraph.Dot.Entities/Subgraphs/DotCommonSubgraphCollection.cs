@@ -111,21 +111,11 @@ namespace GiGraph.Dot.Entities.Subgraphs
         }
 
         /// <summary>
-        /// Gets all subgraphs of the specified type.
-        /// </summary>
-        /// <typeparam name="T">The type of subgraphs to get.</typeparam>
-        public virtual IEnumerable<T> GetAll<T>()
-            where T : DotCommonSubgraph
-        {
-            return _subgraphs.Where(subgraph => subgraph is T).Cast<T>();
-        }
-
-        /// <summary>
         /// Gets all clusters from the collection.
         /// </summary>
         public virtual IEnumerable<DotCluster> GetClusters()
         {
-            return GetAll<DotCluster>();
+            return _subgraphs.OfType<DotCluster>();
         }
 
         /// <summary>
@@ -133,7 +123,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// </summary>
         public virtual IEnumerable<DotSubgraph> GetSubgraphs()
         {
-            return GetAll<DotSubgraph>();
+            return _subgraphs.OfType<DotSubgraph>();
         }
 
         /// <summary>
