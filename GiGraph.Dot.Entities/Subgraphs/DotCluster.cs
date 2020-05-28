@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
+using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
@@ -51,6 +52,14 @@ namespace GiGraph.Dot.Entities.Subgraphs
                   new DotEntityAttributes()
               )
         {
+        }
+
+        public static DotCluster FromNodes(IEnumerable<string> nodeIds, string id)
+        {
+            var result = new DotCluster(id);
+            result.Nodes.Add(nodeIds);
+
+            return result;
         }
     }
 }
