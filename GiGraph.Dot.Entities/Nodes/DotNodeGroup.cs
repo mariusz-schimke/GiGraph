@@ -8,12 +8,14 @@ namespace GiGraph.Dot.Entities.Nodes
     /// <summary>
     /// Represents a group of graph nodes with a shared list of attributes.
     /// </summary>
-    public class DotNodeGroup : DotCommonNode
+    public class DotNodeGroup : DotCommonNode, IDotEntityWithIds
     {
         /// <summary>
         /// Gets the identifiers of nodes in the group.
         /// </summary>
         public virtual IEnumerable<string> NodeIds { get; }
+
+        IEnumerable<string> IDotEntityWithIds.Ids => NodeIds;
 
         /// <summary>
         /// The attributes of the node group.
@@ -47,10 +49,5 @@ namespace GiGraph.Dot.Entities.Nodes
             : this(new List<string>(nodeIds), new DotEntityAttributes())
         {
         }
-
-        /// <summary>
-        /// Gets the identifiers of the nodes.
-        /// </summary>
-        protected override IEnumerable<string> GetNodeIds() => NodeIds;
     }
 }
