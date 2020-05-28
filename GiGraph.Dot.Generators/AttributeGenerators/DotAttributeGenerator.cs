@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Generators.AttributeGenerators
             TextEscapingPipeline valueEscaper = null)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
-            _valueEscaper = valueEscaper ?? TextEscapingPipeline.CreateDefault();
+            _valueEscaper = valueEscaper ?? TextEscapingPipeline.Default();
         }
 
         public DotAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)

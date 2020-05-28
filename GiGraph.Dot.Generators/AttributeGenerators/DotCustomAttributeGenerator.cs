@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Generators.AttributeGenerators
     public class DotCustomAttributeGenerator : DotAttributeGenerator<DotCustomAttribute>
     {
         protected DotCustomAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper = null, TextEscapingPipeline valueEscaper = null)
-            : base(syntaxRules, options, entityGenerators, identifierEscaper, valueEscaper ?? TextEscapingPipeline.CreateNone())
+            : base(syntaxRules, options, entityGenerators, identifierEscaper, valueEscaper ?? TextEscapingPipeline.None())
         {
         }
 
