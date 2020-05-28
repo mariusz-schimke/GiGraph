@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Nodes;
+using GiGraph.Dot.Entities.Subgraphs.Collections;
 using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Subgraphs
@@ -30,10 +31,11 @@ namespace GiGraph.Dot.Entities.Subgraphs
             IDotSubgraphAttributes attributes,
             DotCommonNodeCollection nodes,
             DotCommonEdgeCollection edges,
-            DotCommonSubgraphCollection subgraphs,
+            DotSubgraphCollection subgraphs,
+            DotClusterCollection clusters,
             IDotNodeAttributes defaultNodeAttributes,
             IDotEdgeAttributes defaultEdgeAttributes)
-            : base(id, attributes, nodes, edges, subgraphs, defaultNodeAttributes, defaultEdgeAttributes)
+            : base(id, attributes, nodes, edges, subgraphs, clusters, defaultNodeAttributes, defaultEdgeAttributes)
         {
         }
 
@@ -49,7 +51,8 @@ namespace GiGraph.Dot.Entities.Subgraphs
                   new DotEntityAttributes(),
                   new DotCommonNodeCollection(),
                   new DotCommonEdgeCollection(),
-                  new DotCommonSubgraphCollection(),
+                  new DotSubgraphCollection(),
+                  new DotClusterCollection(),
                   new DotEntityAttributes(),
                   new DotEntityAttributes()
               )
@@ -60,31 +63,30 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// Creates a new subgraph with the specified nodes.
         /// </summary>
+        /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
+        public static DotSubgraph FromNodes(params string[] nodeIds)
+        {
+            return FromNodes(nodeIds, rank: null);
+        }
+
+        /// <summary>
+        /// Creates a new subgraph with the specified nodes.
+        /// </summary>
         /// <param name="rank">The rank attribute to assign to the subgraph.</param>
         /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
         public static DotSubgraph FromNodes(DotRank rank, params string[] nodeIds)
         {
-            return FromNodes(nodeIds, rank: rank);
+            return FromNodes(nodeIds, rank);
         }
 
         /// <summary>
         /// Creates a new subgraph with the specified nodes.
         /// </summary>
         /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
-        public static DotSubgraph FromNodes(params string[] nodeIds)
-        {
-            return FromNodes((IEnumerable<string>)nodeIds);
-        }
-
-        /// <summary>
-        /// Creates a new subgraph with the specified nodes.
-        /// </summary>
-        /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
-        /// <param name="id">The unique identifier of the subgraph. Pass null if no identifier should be used.</param>
         /// <param name="rank">The rank attribute to assign to the subgraph.</param>
-        public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, string id = null, DotRank? rank = null)
+        public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, DotRank? rank = null)
         {
-            var result = new DotSubgraph();
+            var result = new DotSubgraph(rank: rank);
             result.Nodes.Add(nodeIds);
 
             return result;

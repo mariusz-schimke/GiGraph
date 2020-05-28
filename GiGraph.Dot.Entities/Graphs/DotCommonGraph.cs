@@ -1,7 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Nodes;
-using GiGraph.Dot.Entities.Subgraphs;
+using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
@@ -43,31 +43,35 @@ namespace GiGraph.Dot.Entities.Graphs
         public virtual IDotEdgeAttributes EdgeDefaults { get; }
 
         /// <summary>
-        /// Gets the collection of subgraphs. There are two supported types of subgraphs:
-        /// <list type="bullet">
-        ///     <item>
-        ///         <see cref="DotSubgraph"/> as a collection of nodes constrained with a rank attribute that determines their layout,
-        ///     </item>
-        ///     <item>
-        ///         <see cref="DotCluster"/> as a collection of nodes drawn within a bounding rectangle.
-        ///     </item>
-        /// </list>
+        /// Gets the collection of subgraphs.
+        /// A subgraph is interpreted as a collection of nodes constrained with a rank attribute that determines their layout.
         /// <para>
-        ///     Use a subgraph (<see cref="DotSubgraph"/>) when you want to have more granular control on the layout of a specific group of nodes.
-        ///     However, when you want the nodes to be drawn together in a bounding rectangle, that has a custom color and fill, use a cluster subgraph instead
-        ///     (<see cref="DotCluster"/>). You can use either of these subgraphs to set a common style of nodes and edges within it,
-        ///     but you cannot control the layout of nodes within a cluster subgraph.
+        ///     Use a subgraph when you want to have more granular control on the layout of a specific group of nodes.
+        ///     However, when you want the nodes to be drawn together in a bounding rectangle, that has a custom color and fill, use a cluster instead
+        ///     (<see cref="Clusters"/>). You can use either of these types to set a common style of nodes and edges within them,
+        ///     but you cannot control the layout of nodes within a cluster.
         /// </para>
         /// </summary>
-        public virtual DotCommonSubgraphCollection Subgraphs { get; }
-        // TODO: split subgraphs into two collections (subgraphs, clusters)
+        public virtual DotSubgraphCollection Subgraphs { get; }
+
+        /// <summary>
+        /// Gets the collection of clusters.
+        /// A cluster is interpreted as a collection of nodes drawn within a bounding rectangle.
+        /// <para>
+        ///     Use a cluster when you want the nodes within it to be drawn together in a bounding rectangle, that has a custom color and fill.
+        ///     However, when you want to have more granular control on the layout of a specific group of nodes, use a subgraph instead (<see cref="Subgraphs"/>).
+        ///     You can use either of these types to set a common style of nodes and edges within them, but you cannot control the layout of nodes within a cluster.
+        /// </para>
+        /// </summary>
+        public virtual DotClusterCollection Clusters { get; }
 
         protected DotCommonGraph(
             string id,
             IDotAttributeCollection attributes,
             DotCommonNodeCollection nodes,
             DotCommonEdgeCollection edges,
-            DotCommonSubgraphCollection subgraphs,
+            DotSubgraphCollection subgraphs,
+            DotClusterCollection clusters,
             IDotNodeAttributes defaultNodeAttributes,
             IDotEdgeAttributes defaultEdgeAttributes)
         {
@@ -76,6 +80,7 @@ namespace GiGraph.Dot.Entities.Graphs
             Nodes = nodes;
             Edges = edges;
             Subgraphs = subgraphs;
+            Clusters = clusters;
             NodeDefaults = defaultNodeAttributes;
             EdgeDefaults = defaultEdgeAttributes;
         }
