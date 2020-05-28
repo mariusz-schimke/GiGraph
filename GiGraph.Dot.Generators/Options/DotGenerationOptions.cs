@@ -17,6 +17,15 @@ namespace GiGraph.Dot.Generators.Options
         /// </summary>
         public virtual bool PreferStatementDelimiter { get; set; } = false;
 
+        /// <summary>
+        /// Gets or sets a value indicating if graph elements should be ordered.
+        /// This includes nodes, edges, subgraphs, clusters, and attributes.
+        /// Useful when the output is going to be compared to its other version.
+        /// If false, all elements will be rendered in the output script in the order
+        /// they were added to graph element collections.
+        /// </summary>
+        public virtual bool OrderElements { get; set; } = true;
+
         protected DotGenerationOptions(AttributeOptions attributes, SubgraphOptions subgraphs)
         {
             Attributes = attributes;

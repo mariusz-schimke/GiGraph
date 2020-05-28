@@ -23,17 +23,23 @@ namespace GiGraph.Dot.Generators.NodeGenerators
 
         public override void Generate(DotCommonNodeCollection nodes, IDotNodeStatementWriter writer)
         {
-            var orderedNodes = nodes
-                .Cast<IDotEntityWithIds>()
-                .OrderBy(n => string.Join(" ", n.Ids))
-                .ToArray();
+            var orderedNodes = _options.OrderElements
+                ? nodes.Cast<IDotEntityWithIds>()
+                       .OrderBy(node => string.Join(" ", node.Ids))
+                       .Cast<DotCommonNode>()
+                : nodes;
 
             foreach (var node in orderedNodes)
             {
-                var nodeWriter = writer.BeginNode();
-                _entityGenerators.GetForEntity<IDotNodeWriter>(node).Generate(node, nodeWriter);
-                writer.EndNode();
+                WriteNode(node, writer);
             }
+        }
+
+        protected virtual void WriteNode(DotCommonNode node, IDotNodeStatementWriter writer)
+        {
+            var nodeWriter = writer.BeginNode();
+            _entityGenerators.GetForEntity<IDotNodeWriter>(node).Generate(node, nodeWriter);
+            writer.EndNode();
         }
     }
 }
