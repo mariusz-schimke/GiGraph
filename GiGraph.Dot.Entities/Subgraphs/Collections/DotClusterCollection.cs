@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Subgraphs.Collections
 {
@@ -22,6 +23,11 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         public virtual DotCluster Add(string id, Action<DotCluster> init = null)
         {
             return Add(new DotCluster(id), init);
+        }
+
+        protected override DotCluster AddSubgraph(string id, IEnumerable<string> nodeIds, Action<DotCluster> init)
+        {
+            return Add(DotCluster.FromNodes(nodeIds, id), init);
         }
     }
 }
