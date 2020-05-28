@@ -63,12 +63,10 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// Creates a new subgraph with the specified nodes.
         /// </summary>
-        /// <param name="id">The unique identifier of the subgraph. Pass null if no identifier should be used.</param>
-        /// <param name="rank">The rank attribute to assign to the subgraph.</param>
         /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
-        public static DotSubgraph FromNodes(string id, DotRank rank, params string[] nodeIds)
+        public static DotSubgraph FromNodes(params string[] nodeIds)
         {
-            return FromNodes(nodeIds, rank, id);
+            return FromNodes(nodeIds, rank: null);
         }
 
         /// <summary>
@@ -78,16 +76,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
         public static DotSubgraph FromNodes(DotRank rank, params string[] nodeIds)
         {
-            return FromNodes(nodeIds, rank, id: null);
-        }
-
-        /// <summary>
-        /// Creates a new subgraph with the specified nodes.
-        /// </summary>
-        /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
-        public static DotSubgraph FromNodes(params string[] nodeIds)
-        {
-            return FromNodes(nodeIds, rank: null, id: null);
+            return FromNodes(nodeIds, rank);
         }
 
         /// <summary>
@@ -95,10 +84,9 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// </summary>
         /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
         /// <param name="rank">The rank attribute to assign to the subgraph.</param>
-        /// <param name="id">The unique identifier of the subgraph. Pass null if no identifier should be used.</param>
-        public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, DotRank? rank = null, string id = null)
+        public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, DotRank? rank = null)
         {
-            var result = new DotSubgraph(id, rank);
+            var result = new DotSubgraph(rank: rank);
             result.Nodes.Add(nodeIds);
 
             return result;
