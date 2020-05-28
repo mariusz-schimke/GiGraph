@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace GiGraph.Dot.Entities.Subgraphs.Collections
 {
-    public abstract class DotCommonSubgraphCollection<T> : IDotEntity, ICollection<T>
+    public class DotCommonSubgraphCollection<T> : IDotEntity, ICollection<T>
         where T : DotCommonSubgraph
     {
         protected readonly List<T> _subgraphs = new List<T>();
@@ -37,37 +37,6 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         {
             Add(item);
         }
-
-        /// <summary>
-        /// Adds a new subgraph to the collection, and returns it.
-        /// </summary>
-        /// <param name="nodeIds">Optional node identifiers to initialize the subgraph with.</param>
-        public virtual T Add(params string[] nodeIds)
-        {
-            return AddSubgraph(id: null, nodeIds, init: null);
-        }
-
-        /// <summary>
-        /// Adds a new subgraph to the collection, and returns it.
-        /// </summary>
-        /// <param name="init">An optional subgraph initialization delegate.</param>
-        /// <param name="nodeIds">Optional node identifiers to initialize the subgraph with.</param>
-        public virtual T Add(Action<T> init, params string[] nodeIds)
-        {
-            return AddSubgraph(id: null, nodeIds, init);
-        }
-
-        /// <summary>
-        /// Adds a new subgraph to the collection, and returns it.
-        /// </summary>
-        /// <param name="nodeIds">A node identifier collection to initialize the subgraph with.</param>
-        /// <param name="init">An optional subgraph initialization delegate.</param>
-        public virtual T Add(IEnumerable<string> nodeIds, Action<T> init = null)
-        {
-            return AddSubgraph(id: null, nodeIds, init);
-        }
-
-        protected abstract T AddSubgraph(string id, IEnumerable<string> nodeIds, Action<T> init);
 
         /// <summary>
         /// Adds the specified subgraphs to the collection.
