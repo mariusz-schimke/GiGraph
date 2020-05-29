@@ -5,7 +5,7 @@ using GiGraph.Dot.Generators.TextEscaping;
 
 namespace GiGraph.Dot.Generators.AttributeGenerators
 {
-    public class DotCommonAttributeGenerator : DotAttributeGenerator<DotAttribute>
+    public class DotCommonAttributeGenerator : DotAttributeGenerator<DotCommonAttribute>
     {
         protected DotCommonAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper = null, TextEscapingPipeline valueEscaper = null)
             : base(syntaxRules, options, entityGenerators, identifierEscaper, valueEscaper)

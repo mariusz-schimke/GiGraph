@@ -6,20 +6,20 @@ using System.Linq;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotAttributeCollection : IDotEntity, IDotAttributeCollection
+    public class DotCommonAttributeCollection : IDotEntity, IDotAttributeCollection
     {
-        protected readonly IDictionary<string, DotAttribute> _attributes = new Dictionary<string, DotAttribute>(StringComparer.InvariantCulture);
+        protected readonly IDictionary<string, DotCommonAttribute> _attributes = new Dictionary<string, DotCommonAttribute>(StringComparer.InvariantCulture);
 
         public virtual int Count => _attributes.Count;
 
-        bool ICollection<DotAttribute>.IsReadOnly => false;
+        bool ICollection<DotCommonAttribute>.IsReadOnly => false;
 
-        public virtual void Set(DotAttribute attribute)
+        public virtual void Set(DotCommonAttribute attribute)
         {
             _attributes[attribute.Key] = attribute;
         }
 
-        public virtual void SetRange(IEnumerable<DotAttribute> attributes)
+        public virtual void SetRange(IEnumerable<DotCommonAttribute> attributes)
         {
             foreach (var attribute in attributes)
             {
@@ -87,7 +87,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             _attributes[key] = new DotCustomAttribute(key, value);
         }
 
-        public virtual bool Contains(DotAttribute attribute)
+        public virtual bool Contains(DotCommonAttribute attribute)
         {
             return _attributes.Values.Contains(attribute);
         }
@@ -97,7 +97,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return _attributes.ContainsKey(key);
         }
 
-        public virtual bool Remove(DotAttribute attribute)
+        public virtual bool Remove(DotCommonAttribute attribute)
         {
             return Remove(attribute.Key);
         }
@@ -107,7 +107,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return _attributes.Remove(key);
         }
 
-        public virtual int RemoveAll(Predicate<DotAttribute> match)
+        public virtual int RemoveAll(Predicate<DotCommonAttribute> match)
         {
             var result = 0;
             var matches = _attributes.Values.Where(a => match(a)).ToList();
@@ -126,7 +126,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         public virtual T GetAs<T>(string key)
-            where T : DotAttribute
+            where T : DotCommonAttribute
         {
             if (_attributes.TryGetValue(key, out var result))
             {
@@ -137,7 +137,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         public virtual bool TryGetAs<T>(string key, out T attribute)
-            where T : DotAttribute
+            where T : DotCommonAttribute
         {
             if (_attributes.TryGetValue(key, out var result))
             {
@@ -151,7 +151,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual bool TryGetValueAs<T>(string key, out T value)
         {
-            if (_attributes.TryGetValue(key, out var attribute) && attribute is DotAttribute<T> attributeWithValue)
+            if (_attributes.TryGetValue(key, out var attribute) && attribute is DotCommonAttribute<T> attributeWithValue)
             {
                 value = attributeWithValue.Value;
                 return true;
@@ -162,7 +162,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         protected virtual void AddOrRemove<T>(string key, T attribute)
-            where T : DotAttribute
+            where T : DotCommonAttribute
         {
             if (attribute is null)
             {
@@ -175,22 +175,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         protected virtual void AddOrRemove<TAttribute, TValue>(string key, TValue value, Func<TValue, TAttribute> attribute)
-            where TAttribute : DotAttribute
+            where TAttribute : DotCommonAttribute
         {
             AddOrRemove(key, value is null ? null : attribute(value));
         }
 
-        void ICollection<DotAttribute>.Add(DotAttribute attribute)
+        void ICollection<DotCommonAttribute>.Add(DotCommonAttribute attribute)
         {
             Set(attribute);
         }
 
-        public virtual void CopyTo(DotAttribute[] array, int arrayIndex)
+        public virtual void CopyTo(DotCommonAttribute[] array, int arrayIndex)
         {
             _attributes.Values.CopyTo(array, arrayIndex);
         }
 
-        public virtual IEnumerator<DotAttribute> GetEnumerator()
+        public virtual IEnumerator<DotCommonAttribute> GetEnumerator()
         {
             return _attributes.Values.GetEnumerator();
         }

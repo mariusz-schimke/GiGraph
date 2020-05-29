@@ -8,7 +8,7 @@ using GiGraph.Dot.Writers.AttributeWriters;
 namespace GiGraph.Dot.Generators.AttributeGenerators
 {
     public class DotAttributeGenerator<TAttribute> : DotEntityGenerator<TAttribute, IDotAttributeWriter>
-        where TAttribute : DotAttribute
+        where TAttribute : DotCommonAttribute
     {
         protected readonly TextEscapingPipeline _valueEscaper;
 

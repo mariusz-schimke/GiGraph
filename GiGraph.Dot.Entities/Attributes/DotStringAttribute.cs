@@ -4,7 +4,7 @@
     /// String attribute. The text provided will be escaped on graph generation, 
     /// so when the graph is visualized, the text will be displayed exactly the way it is provided here.
     /// </summary>
-    public class DotStringAttribute : DotAttribute<string>
+    public class DotStringAttribute : DotCommonAttribute<string>
     {
         /// <summary>
         /// Creates a new instance of a string attribute.

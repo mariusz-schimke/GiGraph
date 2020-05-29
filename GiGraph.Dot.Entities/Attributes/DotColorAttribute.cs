@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     /// Color attribute.
     /// </summary>
-    public class DotColorAttribute : DotAttribute<Color>
+    public class DotColorAttribute : DotCommonAttribute<Color>
     {
         /// <summary>
         /// Creates a new color attribute.

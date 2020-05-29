@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// Arrow direction attribute. Assignable to edges only.
     /// <see href="https://www.graphviz.org/doc/info/attrs.html#k:dirType">View how individual arrow directions are visualized</see>.
     /// </summary>
-    public class DotArrowDirectionAttribute : DotAttribute<DotArrowDirection>
+    public class DotArrowDirectionAttribute : DotCommonAttribute<DotArrowDirection>
     {
         /// <summary>
         /// Creates a new instance of the attribute.

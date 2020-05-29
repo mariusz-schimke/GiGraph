@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     /// An integer value attribute.
     /// </summary>
-    public class DotIntAttribute : DotAttribute<int>
+    public class DotIntAttribute : DotCommonAttribute<int>
     {
         /// <summary>
         /// Creates a new instance of the attribute.
