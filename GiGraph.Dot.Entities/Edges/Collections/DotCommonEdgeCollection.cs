@@ -5,12 +5,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GiGraph.Dot.Entities.Edges
+namespace GiGraph.Dot.Entities.Edges.Collections
 {
     /// <summary>
     /// A collection of edges.
     /// </summary>
-    public class DotCommonEdgeCollection : IDotEntity, ICollection<DotCommonEdge>
+    public partial class DotCommonEdgeCollection : IDotEntity, ICollection<DotCommonEdge>
     {
         protected readonly List<DotCommonEdge> _edges = new List<DotCommonEdge>();
 
@@ -73,118 +73,6 @@ namespace GiGraph.Dot.Entities.Edges
         public virtual DotEdge AddLoop(string nodeId, Action<IDotEdgeAttributes> initEdge = null)
         {
             return Add(DotEdge.Loop(nodeId), initEdge);
-        }
-
-        /// <summary>
-        /// Adds a sequence of edges that join consecutive nodes with the specified identifiers.
-        /// </summary>
-        /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
-        public virtual DotEdgeSequence AddSequence(params string[] nodeIds)
-        {
-            return AddSequence(nodeIds, initEdge: null);
-        }
-
-        /// <summary>
-        /// Adds a sequence of edges that connect consecutive nodes with the specified identifiers.
-        /// </summary>
-        /// <param name="initEdge">An optional edge initializer delegate.</param>
-        /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
-        public virtual DotEdgeSequence AddSequence(Action<IDotEdgeAttributes> initEdge, params string[] nodeIds)
-        {
-            return AddSequence(nodeIds, initEdge);
-        }
-
-        /// <summary>
-        /// Adds a sequence of edges that connect consecutive nodes with the specified identifiers.
-        /// </summary>
-        /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
-        /// <param name="initEdge">An optional edge initializer delegate.</param>
-        public virtual DotEdgeSequence AddSequence(IEnumerable<string> nodeIds, Action<IDotEdgeAttributes> initEdge = null)
-        {
-            return Add(DotEdgeSequence.FromNodes(nodeIds), initEdge);
-        }
-
-        /// <summary>
-        /// Adds a group of edges where the <paramref name="tailNodeId"/> as the tail node is connected
-        /// to all <paramref name="headNodeIds"/> as the head nodes.
-        /// </summary>
-        /// <param name="tailNodeId">The identifier of the tail (source, left) node.</param>
-        /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes to connect the tail node to.</param>
-        public virtual DotOneToManyEdgeGroup AddOneToMany(string tailNodeId, params string[] headNodeIds)
-        {
-            return AddOneToMany(tailNodeId, (IEnumerable<string>)headNodeIds);
-        }
-
-        /// <summary>
-        /// Adds a group of edges where the <paramref name="tailNodeId"/> as the tail node is connected
-        /// to all <paramref name="headNodeIds"/> as the head nodes.
-        /// </summary>
-        /// <param name="initEdge">An optional edge initializer delegate.</param>
-        /// <param name="tailNodeId">The identifier of the tail (source, left) node.</param>
-        /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes to connect the tail node to.</param>
-        public virtual DotOneToManyEdgeGroup AddOneToMany(Action<IDotEdgeAttributes> initEdge, string tailNodeId, params string[] headNodeIds)
-        {
-            return AddOneToMany(tailNodeId, headNodeIds, initEdge);
-        }
-
-        /// <summary>
-        /// Adds a group of edges where the <paramref name="tailNodeId"/> as the tail node is connected
-        /// to all <paramref name="headNodeIds"/> as the head nodes.
-        /// </summary>
-        /// <param name="tailNodeId">The identifier of the tail (source, left) node.</param>
-        /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes to connect the tail node to.</param>
-        /// <param name="initEdge">An optional edge initializer delegate.</param>
-        public virtual DotOneToManyEdgeGroup AddOneToMany(string tailNodeId, IEnumerable<string> headNodeIds, Action<IDotEdgeAttributes> initEdge = null)
-        {
-            return Add(DotOneToManyEdgeGroup.Create(tailNodeId, headNodeIds), initEdge);
-        }
-
-        /// <summary>
-        /// Adds a group of edges where all <paramref name="tailNodeIds"/> as tail nodes
-        /// are connected to the <paramref name="headNodeId"/> as the head node.
-        /// </summary>
-        /// <param name="headNodeId">The identifier of the head (destination, right) node.</param>
-        /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes to connect to the head node.</param>
-        public virtual DotManyToOneEdgeGroup AddManyToOne(string headNodeId, params string[] tailNodeIds)
-        {
-            return AddManyToOne(tailNodeIds, headNodeId);
-        }
-
-        /// <summary>
-        /// Adds a group of edges where all <paramref name="tailNodeIds"/> as tail nodes
-        /// are connected to the <paramref name="headNodeId"/> as the head node.
-        /// </summary>
-        /// <param name="initEdge">An optional edge initializer delegate.</param>
-        /// <param name="headNodeId">The identifier of the head (destination, right) node.</param>
-        /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes to connect to the head node.</param>
-        public virtual DotManyToOneEdgeGroup AddManyToOne(Action<IDotEdgeAttributes> initEdge, string headNodeId, params string[] tailNodeIds)
-        {
-            return AddManyToOne(tailNodeIds, headNodeId, initEdge);
-        }
-
-        /// <summary>
-        /// Adds a group of edges where all <paramref name="tailNodeIds"/> as tail nodes
-        /// are connected to the <paramref name="headNodeId"/> as the head node.
-        /// </summary>
-        /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes to connect to the head node.</param>
-        /// <param name="headNodeId">The identifier of the head (destination, right) node.</param>
-        /// <param name="initEdge">An optional edge initializer delegate.</param>
-        public virtual DotManyToOneEdgeGroup AddManyToOne(IEnumerable<string> tailNodeIds, string headNodeId, Action<IDotEdgeAttributes> initEdge = null)
-        {
-            return Add(DotManyToOneEdgeGroup.Create(tailNodeIds, headNodeId), initEdge);
-        }
-
-        /// <summary>
-        /// Adds a group of edges where all <paramref name="tailNodeIds"/> as tail nodes
-        /// are connected to all <paramref name="headNodeIds"/> as head nodes.
-        /// </summary>
-        /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes.</param>
-        /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes.</param>
-        /// <param name="initEdge">An optional edge initializer delegate.</param>
-        public virtual DotManyToManyEdgeGroup AddManyToMany(IEnumerable<string> tailNodeIds, IEnumerable<string> headNodeIds,
-            Action<IDotEdgeAttributes> initEdge = null)
-        {
-            return Add(DotManyToManyEdgeGroup.Create(tailNodeIds, headNodeIds), initEdge);
         }
 
         /// <summary>
