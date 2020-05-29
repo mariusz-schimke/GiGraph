@@ -1,7 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Edges;
+using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Nodes;
+using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
