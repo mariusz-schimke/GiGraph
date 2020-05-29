@@ -91,7 +91,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
 
             if (nodeIds.Any())
             {
-                result.Nodes.Add(nodeIds);
+                result.Nodes.AddRange(nodeIds);
             }
 
             return result;
