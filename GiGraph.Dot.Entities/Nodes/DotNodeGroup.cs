@@ -49,5 +49,10 @@ namespace GiGraph.Dot.Entities.Nodes
             : this(new List<string>(nodeIds), new DotEntityAttributes())
         {
         }
+
+        protected override string GetOrderingKey()
+        {
+            return string.Join(" ", NodeIds.OrderBy(nodeId => nodeId));
+        }
     }
 }
