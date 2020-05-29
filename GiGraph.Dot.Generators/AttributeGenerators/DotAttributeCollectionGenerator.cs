@@ -24,8 +24,7 @@ namespace GiGraph.Dot.Generators.AttributeGenerators
         public override void Generate(DotAttributeCollection attributes, IDotAttributeStatementWriter writer)
         {
             var orderedAttributes = _options.OrderElements
-                ? attributes.Cast<IDotAttribute>()
-                            .OrderBy(attribute => attribute.Key)
+                ? attributes.OrderBy(attribute => attribute.Key)
                             .Cast<DotAttribute>()
                 : attributes;
 
