@@ -5,7 +5,7 @@ using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
-    public abstract class DotCommonGraph : IDotEntity
+    public abstract class DotCommonGraph : IDotOrderableEntity
     {
         /// <summary>
         /// Gets or sets the identifier of the graph. Set null if no identifier should be used.
@@ -64,6 +64,8 @@ namespace GiGraph.Dot.Entities.Graphs
         /// </para>
         /// </summary>
         public virtual DotClusterCollection Clusters { get; }
+
+        string IDotOrderableEntity.OrderingKey => Id;
 
         protected DotCommonGraph(
             string id,

@@ -41,5 +41,10 @@ namespace GiGraph.Dot.Entities.Nodes
             : this(id, new DotEntityAttributes())
         {
         }
+
+        protected override string GetOrderingKey()
+        {
+            return _id;
+        }
     }
 }

@@ -4,21 +4,25 @@ using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Edges
 {
-    public abstract class DotCommonEdge : IDotEntity
+    public abstract class DotCommonEdge : IDotEntity, IDotOrderableEntity
     {
         /// <summary>
         /// Gets the attributes of the edge.
         /// </summary>
         public virtual IDotEdgeAttributes Attributes { get; }
 
+        /// <summary>
+        /// Gets the edge endpoints.
+        /// </summary>
+        public abstract IEnumerable<DotCommonEndpoint> Endpoints { get; }
+
+        string IDotOrderableEntity.OrderingKey => GetOrderingKey();
+
         protected DotCommonEdge(IDotEdgeAttributes attributes)
         {
             Attributes = attributes;
         }
 
-        /// <summary>
-        /// Gets the edge endpoints.
-        /// </summary>
-        public abstract IEnumerable<DotCommonEndpoint> Endpoints { get; }
+        protected abstract string GetOrderingKey();
     }
 }
