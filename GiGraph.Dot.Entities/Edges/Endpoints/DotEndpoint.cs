@@ -63,5 +63,10 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
             PortName = portName;
             CompassPoint = compassPoint;
         }
+
+        protected override string GetOrderingKey()
+        {
+            return _nodeId;
+        }
     }
 }

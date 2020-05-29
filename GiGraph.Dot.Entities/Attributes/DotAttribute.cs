@@ -1,11 +1,13 @@
 ﻿namespace GiGraph.Dot.Entities.Attributes
 {
-    public abstract class DotAttribute : IDotAttribute
+    public abstract class DotAttribute : IDotAttribute, IDotOrderableEntity
     {
         /// <summary>
         /// Gets or sets the key of the attribute.
         /// </summary>
         public string Key { get; set; }
+
+        string IDotOrderableEntity.OrderingKey => Key;
 
         /// <summary>
         /// Gets the value of the attribute in a format understood by DOT graph renderer.

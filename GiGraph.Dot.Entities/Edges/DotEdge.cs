@@ -5,22 +5,21 @@ using System.Collections.Generic;
 namespace GiGraph.Dot.Entities.Edges
 {
     /// <summary>
-    /// Represents an edge that joins:
+    /// Represents:
     /// <list type="bullet">
     ///     <item>
-    ///         two nodes, when <typeparamref name="TTail"/> and <typeparamref name="THead"/> are both
-    ///         <see cref="DotEndpoint"/>,
+    ///         an edge that joins two nodes, when <typeparamref name="TTail"/> and <typeparamref name="THead"/> are both <see cref="DotEndpoint"/>,
     ///     </item>
     ///     <item>
-    ///         a set of edges that join one <typeparamref name="TTail"/> <see cref="DotEndpoint"/> node
+    ///         a group of edges that join one <typeparamref name="TTail"/> <see cref="DotEndpoint"/> node
     ///         to multiple <typeparamref name="THead"/> <see cref="DotEndpointGroup"/> nodes,
     ///     </item>
     ///     <item>
-    ///         or a set of edges that join multiple <typeparamref name="TTail"/> <see cref="DotEndpointGroup"/> nodes
+    ///         a group of edges that join multiple <typeparamref name="TTail"/> <see cref="DotEndpointGroup"/> nodes
     ///         to one <typeparamref name="THead"/> <see cref="DotEndpoint"/> node,
     ///     </item>
     ///     <item>
-    ///         or a set of edges that join multiple <typeparamref name="TTail"/> <see cref="DotEndpointGroup"/> nodes
+    ///         a group of edges that join multiple <typeparamref name="TTail"/> <see cref="DotEndpointGroup"/> nodes
     ///         to multiple <typeparamref name="THead"/> <see cref="DotEndpointGroup"/> nodes.
     ///     </item>
     /// </list>
@@ -28,8 +27,8 @@ namespace GiGraph.Dot.Entities.Edges
     /// <typeparam name="TTail">The type of the tail endpoint.</typeparam>
     /// <typeparam name="THead">The type of the head endpoint.</typeparam>
     public class DotEdge<TTail, THead> : DotCommonEdge
-        where TTail : DotCommonEndpoint
-        where THead : DotCommonEndpoint
+        where TTail : DotCommonEndpoint, IDotOrderableEntity
+        where THead : DotCommonEndpoint, IDotOrderableEntity
     {
         /// <summary>
         /// The tail (source, left) endpoint.
@@ -61,6 +60,11 @@ namespace GiGraph.Dot.Entities.Edges
         public DotEdge(TTail tail, THead head)
             : this(tail, head, new DotEntityAttributes())
         {
+        }
+
+        protected override string GetOrderingKey()
+        {
+            return $"{Tail.OrderingKey} {Head.OrderingKey}";
         }
     }
 
