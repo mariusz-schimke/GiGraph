@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GiGraph.Dot.Entities.Nodes
+namespace GiGraph.Dot.Entities.Nodes.Collections
 {
     public class DotCommonNodeCollection : IDotEntity, ICollection<DotCommonNode>
     {
