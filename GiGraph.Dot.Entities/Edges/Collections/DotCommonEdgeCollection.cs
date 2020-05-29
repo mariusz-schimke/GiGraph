@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GiGraph.Dot.Entities.Edges
+namespace GiGraph.Dot.Entities.Edges.Collections
 {
     /// <summary>
     /// A collection of edges.
