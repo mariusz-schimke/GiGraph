@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes;
+﻿using GiGraph.Dot.Entities;
+using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Options;
@@ -24,8 +25,8 @@ namespace GiGraph.Dot.Generators.AttributeGenerators
         public override void Generate(DotAttributeCollection attributes, IDotAttributeStatementWriter writer)
         {
             var orderedAttributes = _options.OrderElements
-                ? attributes.Cast<IDotAttribute>()
-                            .OrderBy(attribute => attribute.Key)
+                ? attributes.Cast<IDotOrderableEntity>()
+                            .OrderBy(attribute => attribute.OrderingKey)
                             .Cast<DotAttribute>()
                 : attributes;
 

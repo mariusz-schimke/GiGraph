@@ -44,6 +44,13 @@ namespace GiGraph.Dot.Entities.Edges
         {
         }
 
+        protected override string GetOrderingKey()
+        {
+            return string.Join(" ", Endpoints
+                .Cast<IDotOrderableEntity>()
+                .Select(endpoint => endpoint.OrderingKey));
+        }
+
         /// <summary>
         /// Creates a new edge sequence initialized with the specified endpoints.
         /// At least a pair of endpoints has to be provided.

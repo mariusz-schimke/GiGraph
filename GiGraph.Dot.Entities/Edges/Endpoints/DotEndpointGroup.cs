@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Subgraphs;
 using System;
+using System.Linq;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
@@ -30,6 +31,15 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         public DotEndpointGroup(DotSubgraph subgraph)
         {
             Subgraph = subgraph;
+        }
+
+        protected override string GetOrderingKey()
+        {
+            return string.Join(" ",
+                _subgraph.Nodes
+                         .Cast<IDotOrderableEntity>()
+                         .Select(node => node.OrderingKey)
+                         .OrderBy(key => key));
         }
     }
 }

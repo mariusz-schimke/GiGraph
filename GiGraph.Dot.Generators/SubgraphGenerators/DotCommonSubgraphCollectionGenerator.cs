@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Subgraphs;
+﻿using GiGraph.Dot.Entities;
+using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Options;
@@ -25,7 +26,8 @@ namespace GiGraph.Dot.Generators.SubgraphGenerators
         public override void Generate(DotCommonSubgraphCollection<TSubgraph> subgraphs, IDotSubgraphWriterRoot writer)
         {
             var orderedSubgraphs = _options.OrderElements
-                ? subgraphs.OrderBy(subgraph => subgraph.Id)
+                ? subgraphs.Cast<IDotOrderableEntity>()
+                           .OrderBy(subgraph => subgraph.OrderingKey)
                            .Cast<DotCommonSubgraph>()
                 : subgraphs;
 
