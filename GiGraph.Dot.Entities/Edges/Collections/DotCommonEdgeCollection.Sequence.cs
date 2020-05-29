@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <summary>
         /// Adds a sequence of edges that connect consecutive nodes with the specified identifiers.
         /// </summary>
-        /// <param name="initEdge">An optional edge initializer delegate.</param>
+        /// <param name="initEdge">An optional initializer delegate to call for the attributes of the created sequence.</param>
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
         public virtual DotEdgeSequence AddSequence(Action<IDotEdgeAttributes> initEdge, params string[] nodeIds)
         {
@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// Adds a sequence of edges that connect consecutive nodes with the specified identifiers.
         /// </summary>
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges.</param>
-        /// <param name="initEdge">An optional edge initializer delegate.</param>
+        /// <param name="initEdge">An optional initializer delegate to call for the attributes of the created sequence.</param>
         public virtual DotEdgeSequence AddSequence(IEnumerable<string> nodeIds, Action<IDotEdgeAttributes> initEdge = null)
         {
             return Add(DotEdgeSequence.FromNodes(nodeIds), initEdge);
