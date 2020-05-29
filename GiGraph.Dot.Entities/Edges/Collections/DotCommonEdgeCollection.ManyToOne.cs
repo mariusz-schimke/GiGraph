@@ -55,7 +55,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        /// Adds a group of edges where all nodes in the specified tail endpoint group are connected to specified head endpoint.
+        /// Adds a group of edges where all nodes in the specified tail subgraph are connected to specified head endpoint.
         /// </summary>
         /// <param name="tail">The subgraph whose nodes should be the tail endpoints.</param>
         /// <param name="headNodeId">The identifier of the head (destination, right) node the <paramref name="tail"/> subgraph nodes should be connected to.</param>
