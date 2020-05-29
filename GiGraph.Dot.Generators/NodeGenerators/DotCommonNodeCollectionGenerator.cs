@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities;
 using GiGraph.Dot.Entities.Nodes;
+using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Options;
 using GiGraph.Dot.Generators.Providers;
