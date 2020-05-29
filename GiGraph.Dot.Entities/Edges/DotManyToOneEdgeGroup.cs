@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// Creates a new instance that joins the nodes in a subgraph with a single node.
         /// </summary>
         /// <param name="tail">The subgraph whose nodes should be the tail endpoints.</param>
-        /// <param name="headNodeId">The identifier of the head (destination, right) node the <paramref name="tail"/> nodes should be connected to.</param>
+        /// <param name="headNodeId">The identifier of the head (destination, right) node the <paramref name="tail"/> subgraph nodes should be connected to.</param>
         public DotManyToOneEdgeGroup(DotSubgraph tail, string headNodeId)
             : this(new DotEndpointGroup(tail), new DotEndpoint(headNodeId))
         {

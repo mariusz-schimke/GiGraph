@@ -18,8 +18,8 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Creates a new instance that joins all nodes in a subgraph to all nodes in another subgraph.
         /// </summary>
-        /// <param name="tail">The subgraph whose nodes should be the tail endpoints.</param>
-        /// <param name="head">The subgraph whose nodes (as the head endpoints) the <paramref name="tail"/> nodes should be connected to.</param>
+        /// <param name="tail">The group whose nodes should be the tail endpoints.</param>
+        /// <param name="head">The group whose nodes (as the head endpoints) the <paramref name="tail"/> nodes should be connected to.</param>
         public DotManyToManyEdgeGroup(DotEndpointGroup tail, DotEndpointGroup head)
             : base(tail, head)
         {
