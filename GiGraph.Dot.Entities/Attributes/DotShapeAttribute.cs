@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// A node shape attribute. Assignable to nodes only.
     /// <see href="https://www.graphviz.org/doc/info/shapes.html">View how individual shapes are visualized</see>.
     /// </summary>
-    public class DotShapeAttribute : DotAttribute<DotShape>
+    public class DotShapeAttribute : DotCommonAttribute<DotShape>
     {
         /// <summary>
         /// Creates a new instance of the attribute with a key of "shape".

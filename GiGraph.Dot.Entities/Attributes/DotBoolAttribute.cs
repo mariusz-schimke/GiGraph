@@ -3,7 +3,7 @@
     /// <summary>
     /// A boolean value attribute.
     /// </summary>
-    public class DotBoolAttribute : DotAttribute<bool>
+    public class DotBoolAttribute : DotCommonAttribute<bool>
     {
         /// <summary>
         /// Creates a new instance of the attribute.

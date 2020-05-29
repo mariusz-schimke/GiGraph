@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     /// Rank constraints for the nodes in a subgraph. Assignable to non-cluster subgraphs only.
     /// </summary>
-    public class DotRankAttribute : DotAttribute<DotRank>
+    public class DotRankAttribute : DotCommonAttribute<DotRank>
     {
         /// <summary>
         /// Creates a new instance of the attribute.
