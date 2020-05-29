@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Edges;
+﻿using GiGraph.Dot.Entities;
+using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Options;
 using GiGraph.Dot.Generators.Providers;
@@ -22,9 +23,9 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
 
         public override void Generate(DotCommonEdgeCollection edges, IDotEdgeStatementWriter writer)
         {
-            // TODO: improve sorting to include node names
             var orderedEdges = _options.OrderElements
-                ? edges.OrderBy(edge => edge.GetType().FullName)
+                ? edges.Cast<IDotOrderableEntity>()
+                       .OrderBy(edge => edge.OrderingKey)
                        .Cast<DotCommonEdge>()
                 : edges;
 

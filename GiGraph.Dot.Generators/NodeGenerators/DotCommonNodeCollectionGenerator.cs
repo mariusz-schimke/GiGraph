@@ -24,8 +24,8 @@ namespace GiGraph.Dot.Generators.NodeGenerators
         public override void Generate(DotCommonNodeCollection nodes, IDotNodeStatementWriter writer)
         {
             var orderedNodes = _options.OrderElements
-                ? nodes.Cast<IDotEntityWithNodeIds>()
-                       .OrderBy(node => string.Join(" ", node.NodeIds))
+                ? nodes.Cast<IDotOrderableEntity>()
+                       .OrderBy(node => node.OrderingKey)
                        .Cast<DotCommonNode>()
                 : nodes;
 
