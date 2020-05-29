@@ -7,7 +7,7 @@ using GiGraph.Dot.Writers.NodeWriters;
 
 namespace GiGraph.Dot.Generators.NodeGenerators
 {
-    public class DotNodeDefaultsGenerator : DotEntityWithAttributeListGenerator<DotAttributeCollection, IDotNodeDefaultsWriter>
+    public class DotNodeDefaultsGenerator : DotEntityWithAttributeListGenerator<DotCommonAttributeCollection, IDotNodeDefaultsWriter>
     {
         protected DotNodeDefaultsGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Generators.NodeGenerators
         {
         }
 
-        public override void Generate(DotAttributeCollection defaults, IDotNodeDefaultsWriter writer)
+        public override void Generate(DotCommonAttributeCollection defaults, IDotNodeDefaultsWriter writer)
         {
             WriteNodeKeyword(writer);
             WriteAttributes(defaults, writer);

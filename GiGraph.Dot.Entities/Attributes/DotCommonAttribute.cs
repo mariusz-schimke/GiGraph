@@ -1,6 +1,6 @@
 ﻿namespace GiGraph.Dot.Entities.Attributes
 {
-    public abstract class DotAttribute : IDotAttribute, IDotOrderableEntity
+    public abstract class DotCommonAttribute : IDotAttribute, IDotOrderableEntity
     {
         /// <summary>
         /// Gets or sets the key of the attribute.
@@ -14,7 +14,7 @@
         /// </summary>
         protected abstract string GetDotEncodedValue();
 
-        protected DotAttribute(string key)
+        protected DotCommonAttribute(string key)
         {
             Key = key;
         }
@@ -22,14 +22,14 @@
         string IDotAttribute.GetDotEncodedValue() => GetDotEncodedValue();
     }
 
-    public abstract class DotAttribute<T> : DotAttribute, IDotAttribute
+    public abstract class DotCommonAttribute<T> : DotCommonAttribute, IDotAttribute
     {
         /// <summary>
         /// Gets or sets the value of the attribute.
         /// </summary>
         public T Value { get; set; }
 
-        public DotAttribute(string key, T value)
+        public DotCommonAttribute(string key, T value)
             : base(key)
         {
             Value = value;
@@ -51,7 +51,7 @@
             return Value?.ToString() ?? string.Empty;
         }
 
-        public static implicit operator T(DotAttribute<T> attribute)
+        public static implicit operator T(DotCommonAttribute<T> attribute)
         {
             return attribute is { } ? attribute.Value : default;
         }

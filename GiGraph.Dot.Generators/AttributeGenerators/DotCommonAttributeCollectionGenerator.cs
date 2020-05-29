@@ -10,24 +10,24 @@ using System.Linq;
 
 namespace GiGraph.Dot.Generators.AttributeGenerators
 {
-    public class DotAttributeCollectionGenerator : DotEntityGenerator<DotAttributeCollection, IDotAttributeStatementWriter>
+    public class DotCommonAttributeCollectionGenerator : DotEntityGenerator<DotCommonAttributeCollection, IDotAttributeStatementWriter>
     {
-        protected DotAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+        protected DotCommonAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }
 
-        public DotAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotCommonAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        public override void Generate(DotAttributeCollection attributes, IDotAttributeStatementWriter writer)
+        public override void Generate(DotCommonAttributeCollection attributes, IDotAttributeStatementWriter writer)
         {
             var orderedAttributes = _options.OrderElements
                 ? attributes.Cast<IDotOrderableEntity>()
                             .OrderBy(attribute => attribute.OrderingKey)
-                            .Cast<DotAttribute>()
+                            .Cast<DotCommonAttribute>()
                 : attributes;
 
             foreach (var attribute in orderedAttributes)
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Generators.AttributeGenerators
             }
         }
 
-        protected virtual void WriteAttribute(DotAttribute attribute, IDotAttributeStatementWriter writer)
+        protected virtual void WriteAttribute(DotCommonAttribute attribute, IDotAttributeStatementWriter writer)
         {
             var nodeWriter = writer.BeginAttribute();
             _entityGenerators.GetForEntity<IDotAttributeWriter>(attribute).Generate(attribute, nodeWriter);

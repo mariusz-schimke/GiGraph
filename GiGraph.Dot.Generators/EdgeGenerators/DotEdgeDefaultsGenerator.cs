@@ -7,7 +7,7 @@ using GiGraph.Dot.Writers.EdgeWriters;
 
 namespace GiGraph.Dot.Generators.EdgeGenerators
 {
-    public class DotEdgeDefaultsGenerator : DotEntityWithAttributeListGenerator<DotAttributeCollection, IDotEdgeDefaultsWriter>
+    public class DotEdgeDefaultsGenerator : DotEntityWithAttributeListGenerator<DotCommonAttributeCollection, IDotEdgeDefaultsWriter>
     {
         protected DotEdgeDefaultsGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
         {
         }
 
-        public override void Generate(DotAttributeCollection defaults, IDotEdgeDefaultsWriter writer)
+        public override void Generate(DotCommonAttributeCollection defaults, IDotEdgeDefaultsWriter writer)
         {
             WriteEdgeKeyword(writer);
             WriteAttributes(defaults, writer);

@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotEntityAttributes : DotAttributeCollection,
+    public class DotEntityAttributes : DotCommonAttributeCollection,
         IDotGraphAttributes,
         IDotSubgraphAttributes,
         IDotClusterAttributes,
