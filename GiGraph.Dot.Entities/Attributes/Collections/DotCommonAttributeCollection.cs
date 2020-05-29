@@ -14,9 +14,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         bool ICollection<DotCommonAttribute>.IsReadOnly => false;
 
-        public virtual void Set(DotCommonAttribute attribute)
+        public virtual T Set<T>(T attribute)
+            where T : DotCommonAttribute
         {
             _attributes[attribute.Key] = attribute;
+            return attribute;
         }
 
         public virtual void SetRange(IEnumerable<DotCommonAttribute> attributes)
@@ -27,64 +29,64 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
         }
 
-        public virtual void Set(string key, string value)
+        public virtual DotStringAttribute Set(string key, string value)
         {
-            _attributes[key] = new DotStringAttribute(key, value);
+            return Set(new DotStringAttribute(key, value));
         }
 
-        public virtual void SetHtml(string key, string value)
+        public virtual DotHtmlAttribute SetHtml(string key, string value)
         {
-            _attributes[key] = new DotHtmlAttribute(key, value);
+            return Set(new DotHtmlAttribute(key, value));
         }
 
-        public virtual void Set(string key, int value)
+        public virtual DotIntAttribute Set(string key, int value)
         {
-            _attributes[key] = new DotIntAttribute(key, value);
+            return Set(new DotIntAttribute(key, value));
         }
 
-        public virtual void Set(string key, double value)
+        public virtual DotDoubleAttribute Set(string key, double value)
         {
-            _attributes[key] = new DotDoubleAttribute(key, value);
+            return Set(new DotDoubleAttribute(key, value));
         }
 
-        public virtual void Set(string key, bool value)
+        public virtual DotBoolAttribute Set(string key, bool value)
         {
-            _attributes[key] = new DotBoolAttribute(key, value);
+            return Set(new DotBoolAttribute(key, value));
         }
 
-        public virtual void Set(string key, DotShape value)
+        public virtual DotShapeAttribute Set(string key, DotShape value)
         {
-            _attributes[key] = new DotShapeAttribute(key, value);
+            return Set(new DotShapeAttribute(key, value));
         }
 
-        public virtual void Set(string key, DotStyle value)
+        public virtual DotStyleAttribute Set(string key, DotStyle value)
         {
-            _attributes[key] = new DotStyleAttribute(key, value);
+            return Set(new DotStyleAttribute(key, value));
         }
 
-        public virtual void Set(string key, DotArrowType value)
+        public virtual DotArrowTypeAttribute Set(string key, DotArrowType value)
         {
-            _attributes[key] = new DotArrowTypeAttribute(key, value);
+            return Set(new DotArrowTypeAttribute(key, value));
         }
 
-        public virtual void Set(string key, DotArrowDirection value)
+        public virtual DotArrowDirectionAttribute Set(string key, DotArrowDirection value)
         {
-            _attributes[key] = new DotArrowDirectionAttribute(key, value);
+            return Set(new DotArrowDirectionAttribute(key, value));
         }
 
-        public virtual void Set(string key, DotRank value)
+        public virtual DotRankAttribute Set(string key, DotRank value)
         {
-            _attributes[key] = new DotRankAttribute(key, value);
+            return Set(new DotRankAttribute(key, value));
         }
 
-        public virtual void Set(string key, DotRankDirection value)
+        public virtual DotRankDirectionAttribute Set(string key, DotRankDirection value)
         {
-            _attributes[key] = new DotRankDirectionAttribute(key, value);
+            return Set(new DotRankDirectionAttribute(key, value));
         }
 
-        public virtual void SetCustom(string key, string value)
+        public virtual DotCustomAttribute SetCustom(string key, string value)
         {
-            _attributes[key] = new DotCustomAttribute(key, value);
+            return Set(new DotCustomAttribute(key, value));
         }
 
         public virtual bool Contains(DotCommonAttribute attribute)
