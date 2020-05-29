@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GiGraph.Dot.Entities.Edges
+namespace GiGraph.Dot.Entities.Edges.Collections
 {
     public partial class DotCommonEdgeCollection : IDotEntity, ICollection<DotCommonEdge>
     {
