@@ -136,7 +136,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="initEdge">An optional edge initializer delegate.</param>
         public virtual DotOneToManyEdgeGroup AddOneToMany(string tailNodeId, IEnumerable<string> headNodeIds, Action<IDotEdgeAttributes> initEdge = null)
         {
-            return Add(DotOneToManyEdgeGroup.Create(tailNodeId, headNodeIds), initEdge);
+            return Add(new DotOneToManyEdgeGroup(tailNodeId, headNodeIds), initEdge);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="initEdge">An optional edge initializer delegate.</param>
         public virtual DotManyToOneEdgeGroup AddManyToOne(IEnumerable<string> tailNodeIds, string headNodeId, Action<IDotEdgeAttributes> initEdge = null)
         {
-            return Add(DotManyToOneEdgeGroup.Create(tailNodeIds, headNodeId), initEdge);
+            return Add(new DotManyToOneEdgeGroup(tailNodeIds, headNodeId), initEdge);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace GiGraph.Dot.Entities.Edges
         public virtual DotManyToManyEdgeGroup AddManyToMany(IEnumerable<string> tailNodeIds, IEnumerable<string> headNodeIds,
             Action<IDotEdgeAttributes> initEdge = null)
         {
-            return Add(DotManyToManyEdgeGroup.Create(tailNodeIds, headNodeIds), initEdge);
+            return Add(new DotManyToManyEdgeGroup(tailNodeIds, headNodeIds), initEdge);
         }
 
         /// <summary>

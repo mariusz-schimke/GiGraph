@@ -40,13 +40,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes.</param>
         /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes the <paramref name="tailNodeIds"/> nodes should be connected to.</param>
-        public static DotManyToManyEdgeGroup Create(IEnumerable<string> tailNodeIds, IEnumerable<string> headNodeIds)
+        public DotManyToManyEdgeGroup(IEnumerable<string> tailNodeIds, IEnumerable<string> headNodeIds)
+            : this(DotSubgraph.FromNodes(tailNodeIds), DotSubgraph.FromNodes(headNodeIds))
         {
-            return new DotManyToManyEdgeGroup
-            (
-                DotSubgraph.FromNodes(tailNodeIds),
-                DotSubgraph.FromNodes(headNodeIds)
-            );
         }
     }
 }
