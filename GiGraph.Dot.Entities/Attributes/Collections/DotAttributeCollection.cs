@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual void Set(DotAttribute attribute)
         {
-            _attributes[((IDotAttribute)attribute).Key] = attribute;
+            _attributes[attribute.Key] = attribute;
         }
 
         public virtual void SetRange(IEnumerable<DotAttribute> attributes)
@@ -99,7 +99,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual bool Remove(DotAttribute attribute)
         {
-            return Remove(((IDotAttribute)attribute).Key);
+            return Remove(attribute.Key);
         }
 
         public virtual bool Remove(string key)
@@ -112,7 +112,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             var result = 0;
             var matches = _attributes.Values.Where(a => match(a)).ToList();
 
-            foreach (IDotAttribute attribute in matches)
+            foreach (var attribute in matches)
             {
                 result += _attributes.Remove(attribute.Key) ? 1 : 0;
             }
