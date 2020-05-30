@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package >
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>GiGraph.Dot</id>
-    <version>0.9.0</version>
+    <version>0.9.1</version>
     <title>GiGraph DOT</title>
     <tags>DOT Graphviz graph</tags>
 
@@ -13,7 +13,7 @@
     <icon>images\icon.png</icon>
     
     <projectUrl>https://github.com/mariusz-schimke/GiGraph</projectUrl>
-    <repository type="Git" url="https://github.com/mariusz-schimke/GiGraph.git" />
+    <repository type="Git" url="https://github.com/mariusz-schimke/GiGraph.git" branch="master" commit="d4fcc6ded6b212f1353353739bbb93c8f7db7940" />
 
     <license type="file">LICENSE.txt</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -22,7 +22,16 @@
     
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that can be visualized and/or converted to an image with external tools. A handy one is a plugin for Visual Studio Code, named Graphviz Preview. There are also online tools like www.webgraphviz.com, where you can paste the script to view your graph.</description>
     
-    <releaseNotes>An initial, but functional release of the package!</releaseNotes>
+    <releaseNotes>
+      1. Node port support added. It enables setting which side of a node an edge head and/or tail is attached to.
+      2. Added methods to edge, node, subgraph, and cluster collections to simplify adding new elements.
+      3. The collection of subgraphs has been split in two separate collections (Subgraphs, Clusters).
+      4. Added support for node groups (in the DOT script they are rendered as a list of nodes with a shared list of attributes).
+      5. Added support for edge sequences (in the DOT script they are rendered as a sequence of nodes and edges with a shared list of attributes; subgraphs in the sequence are supported too).
+      6. Added support for endpoints embedded in subgraphs. This facilitates generating edges joining one node to multiple nodes, multiple nodes to one node, or multiple nodes to multiple nodes.
+      7. The elements of the DOT script can optionally be sorted now by setting an appropriate flag in the DOT generation options (disabled by default).
+      8. Refactoring.
+    </releaseNotes>
   </metadata>
 
   <files>
