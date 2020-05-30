@@ -3,9 +3,9 @@
     public abstract class DotCommonAttribute : IDotAttribute, IDotOrderableEntity
     {
         /// <summary>
-        /// Gets or sets the key of the attribute.
+        /// Gets the key of the attribute.
         /// </summary>
-        public string Key { get; set; }
+        public string Key { get; }
 
         string IDotOrderableEntity.OrderingKey => Key;
 
