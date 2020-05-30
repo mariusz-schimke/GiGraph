@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Edges
         protected DotEdgeSequence(DotCommonEndpoint[] endpoints, IDotEdgeAttributes attributes)
             : base(attributes)
         {
-            _endpoints = endpoints.Any()
+            _endpoints = endpoints.Length > 1
                 ? endpoints
                 : throw new ArgumentException("At least a pair of endpoints has to be specified for an edge sequence.", nameof(endpoints));
         }

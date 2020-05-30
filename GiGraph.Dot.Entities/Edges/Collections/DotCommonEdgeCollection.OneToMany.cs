@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes to connect the tail node to.</param>
         public virtual DotOneToManyEdgeGroup AddOneToMany(string tailNodeId, params string[] headNodeIds)
         {
-            return AddOneToMany(tailNodeId, (IEnumerable<string>)headNodeIds);
+            return Add(new DotOneToManyEdgeGroup(tailNodeId, headNodeIds));
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes to connect the tail node to.</param>
         public virtual DotOneToManyEdgeGroup AddOneToMany(Action<IDotEdgeAttributes> initEdge, string tailNodeId, params string[] headNodeIds)
         {
-            return AddOneToMany(tailNodeId, headNodeIds, initEdge);
+            return Add(new DotOneToManyEdgeGroup(tailNodeId, headNodeIds), initEdge);
         }
 
         /// <summary>
