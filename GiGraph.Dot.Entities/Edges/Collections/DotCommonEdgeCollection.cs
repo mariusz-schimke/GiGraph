@@ -11,6 +11,27 @@ namespace GiGraph.Dot.Entities.Edges.Collections
     /// </summary>
     public partial class DotCommonEdgeCollection : List<DotCommonEdge>, IDotEntity
     {
+        protected readonly Func<string, string, Predicate<DotCommonEdge>> _matchEdgePredicate;
+        protected readonly Predicate<DotCommonEdge> _matchLoopPredicate;
+
+        protected DotCommonEdgeCollection(
+            Func<string, string, Predicate<DotCommonEdge>> matchEdgePredicate,
+            Predicate<DotCommonEdge> matchLoopPredicate)
+        {
+            _matchEdgePredicate = matchEdgePredicate;
+            _matchLoopPredicate = matchLoopPredicate;
+        }
+
+        public DotCommonEdgeCollection()
+        {
+            _matchEdgePredicate = (tailNodeId, headNodeId) => commonEdge => commonEdge is DotEdge<DotEndpoint, DotEndpoint> edge &&
+                edge.Tail.NodeId == tailNodeId &&
+                edge.Head.NodeId == headNodeId;
+
+            _matchLoopPredicate = commonEdge => commonEdge is DotEdge<DotEndpoint, DotEndpoint> edge &&
+                edge.Tail.NodeId == edge.Head.NodeId;
+        }
+
         protected virtual T Add<T>(T edge, Action<IDotEdgeAttributes> initEdge)
             where T : DotCommonEdge
         {
@@ -31,13 +52,13 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        /// Adds a loop edge that connects the specified node to itself.
+        /// Gets the first matching edge that connects two nodes with the specified identifiers.
         /// </summary>
-        /// <param name="nodeId">The node identifier.</param>
-        /// <param name="initEdge">An optional edge initializer delegate.</param>
-        public virtual DotEdge AddLoop(string nodeId, Action<IDotEdgeAttributes> initEdge = null)
+        /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
+        /// <param name="headNodeId">The head (destination, right) node identifier.</param>
+        public virtual DotEdge Get(string tailNodeId, string headNodeId)
         {
-            return Add(DotEdge.Loop(nodeId), initEdge);
+            return GetAll(tailNodeId, headNodeId).FirstOrDefault();
         }
 
         /// <summary>
@@ -47,18 +68,8 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="headNodeId">The head (destination, right) node identifier.</param>
         public virtual IEnumerable<DotEdge> GetAll(string tailNodeId, string headNodeId)
         {
-            return this
-                .OfType<DotEdge>()
-                .Where(edge => edge.Equals(tailNodeId, headNodeId));
-        }
-
-        /// <summary>
-        /// Gets loop edges that connect the specified node to itself.
-        /// </summary>
-        /// <param name="nodeId">The node identifier.</param>
-        public virtual IEnumerable<DotEdge> GetLoops(string nodeId)
-        {
-            return GetAll(nodeId, nodeId);
+            return this.OfType<DotEdge>()
+                       .Where(edge => edge.Equals(tailNodeId, headNodeId));
         }
 
         /// <summary>
@@ -68,20 +79,25 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="headNodeId">The head (destination, right) node identifier to locate.</param>
         public virtual bool Contains(string tailNodeId, string headNodeId)
         {
-            return this
-                .OfType<DotEdge<DotEndpoint, DotEndpoint>>()
-                .Where(edge => edge.Tail.NodeId == tailNodeId)
-                .Where(edge => edge.Head.NodeId == headNodeId)
-                .Any();
+            return Exists(_matchEdgePredicate(tailNodeId, headNodeId));
         }
 
         /// <summary>
-        /// Determines whether the collection contains any loop edge that connects the specified node to itself.
+        /// Removes the first matching edge that connects two nodes with the specified identifiers.
         /// </summary>
-        /// <param name="nodeId">The node identifier.</param>
-        public virtual bool ContainsLoop(string nodeId)
+        /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
+        /// <param name="headNodeId">The head (destination, right) node identifier.</param>
+        public virtual bool Remove(string tailNodeId, string headNodeId)
         {
-            return GetLoops(nodeId).Any();
+            var index = FindIndex(_matchEdgePredicate(tailNodeId, headNodeId));
+
+            if (index >= 0)
+            {
+                RemoveAt(index);
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -91,18 +107,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="headNodeId">The head (destination, right) node identifier.</param>
         public virtual int RemoveAll(string tailNodeId, string headNodeId)
         {
-            return RemoveAll(commonEdge => commonEdge is DotEdge<DotEndpoint, DotEndpoint> edge &&
-                edge.Tail.NodeId == tailNodeId &&
-                edge.Head.NodeId == headNodeId);
-        }
-
-        /// <summary>
-        /// Removes all loop edges that connect the specified node to itself.
-        /// </summary>
-        /// <param name="nodeId">The node identifier.</param>
-        public virtual int RemoveLoops(string nodeId)
-        {
-            return RemoveAll(nodeId, nodeId);
+            return RemoveAll(_matchEdgePredicate(tailNodeId, headNodeId));
         }
     }
 }
