@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges.Endpoints;
+using System;
 using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Edges
@@ -30,15 +31,26 @@ namespace GiGraph.Dot.Entities.Edges
         where TTail : DotCommonEndpoint, IDotOrderableEntity
         where THead : DotCommonEndpoint, IDotOrderableEntity
     {
-        /// <summary>
-        /// The tail (source, left) endpoint.
-        /// </summary>
-        public virtual TTail Tail { get; set; }
+        protected TTail _tail;
+        protected THead _head;
 
         /// <summary>
-        /// The head (destination, right) endpoint.
+        /// Gets or sets the tail (source, left) endpoint.
         /// </summary>
-        public virtual THead Head { get; set; }
+        public virtual TTail Tail
+        {
+            get => _tail;
+            set => _tail = value ?? throw new ArgumentNullException(nameof(Tail), "Endpoint cannot be null.");
+        }
+
+        /// <summary>
+        /// Gets or sets the head (destination, right) endpoint.
+        /// </summary>
+        public virtual THead Head
+        {
+            get => _head;
+            set => _head = value ?? throw new ArgumentNullException(nameof(Head), "Endpoint cannot be null.");
+        }
 
         /// <summary>
         /// Gets the endpoints of this edge.
