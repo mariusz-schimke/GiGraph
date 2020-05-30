@@ -27,11 +27,11 @@ namespace GiGraph.Dot.Entities.Edges.Collections
             _matchLoopPredicate = commonEdge => DotEdge.IsLoopEdge(commonEdge);
         }
 
-        protected virtual T Add<T>(T edge, Action<IDotEdgeAttributes> initEdge)
+        protected virtual T Add<T>(T edge, Action<IDotEdgeAttributes> initAttrs)
             where T : DotCommonEdge
         {
             Add(edge);
-            initEdge?.Invoke(edge.Attributes);
+            initAttrs?.Invoke(edge.Attributes);
             return edge;
         }
 
@@ -40,10 +40,10 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// </summary>
         /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
         /// <param name="headNodeId">The head (destination, right) node identifier.</param>
-        /// <param name="initEdge">An optional edge initializer delegate.</param>
-        public virtual DotEdge Add(string tailNodeId, string headNodeId, Action<IDotEdgeAttributes> initEdge = null)
+        /// <param name="initAttrs">An optional edge attributes initializer delegate.</param>
+        public virtual DotEdge Add(string tailNodeId, string headNodeId, Action<IDotEdgeAttributes> initAttrs = null)
         {
-            return Add(new DotEdge(tailNodeId, headNodeId), initEdge);
+            return Add(new DotEdge(tailNodeId, headNodeId), initAttrs);
         }
 
         /// <summary>

@@ -11,10 +11,10 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// Adds a loop edge that connects the specified node to itself.
         /// </summary>
         /// <param name="nodeId">The node identifier.</param>
-        /// <param name="initEdge">An optional edge initializer delegate.</param>
-        public virtual DotEdge AddLoop(string nodeId, Action<IDotEdgeAttributes> initEdge = null)
+        /// <param name="initAttrs">An optional edge attributes initializer delegate.</param>
+        public virtual DotEdge AddLoop(string nodeId, Action<IDotEdgeAttributes> initAttrs = null)
         {
-            return Add(DotEdge.Loop(nodeId), initEdge);
+            return Add(DotEdge.Loop(nodeId), initAttrs);
         }
 
         /// <summary>
