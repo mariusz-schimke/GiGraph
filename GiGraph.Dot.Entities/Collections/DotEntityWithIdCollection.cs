@@ -1,16 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Collections
 {
     public abstract class DotEntityWithIdCollection<T> : List<T>
         where T : IDotEntity
     {
-        /// <summary>
-        /// Searches for an item with the specified identifier, and returns the zero-based index of the first occurrence
-        /// within the collection.
-        /// </summary>
-        /// <param name="id">The identifier of the items to search.</param>
-        public abstract int IndexOf(string id);
+        protected readonly Func<string, Predicate<T>> _matchIdPredicate;
+
+        protected DotEntityWithIdCollection(Func<string, Predicate<T>> matchIdPredicate)
+        {
+            _matchIdPredicate = matchIdPredicate;
+        }
 
         /// <summary>
         /// Determines whether the specified items is in the collection.
@@ -18,7 +19,7 @@ namespace GiGraph.Dot.Entities.Collections
         /// <param name="id">The identifier of the items to locate in the collection.</param>
         public virtual bool Contains(string id)
         {
-            return IndexOf(id) >= 0;
+            return Exists(_matchIdPredicate(id));
         }
 
         /// <summary>
@@ -27,7 +28,7 @@ namespace GiGraph.Dot.Entities.Collections
         /// <param name="id">The identifier of the item to remove.</param>
         public virtual bool Remove(string id)
         {
-            var index = IndexOf(id);
+            var index = FindIndex(_matchIdPredicate(id));
 
             if (index >= 0)
             {
@@ -36,6 +37,15 @@ namespace GiGraph.Dot.Entities.Collections
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Removes all occurrences of an item with the specified identifier from the collection.
+        /// </summary>
+        /// <param name="id">The identifier of the items to remove.</param>
+        public virtual int RemoveAll(string id)
+        {
+            return RemoveAll(_matchIdPredicate(id));
         }
     }
 }
