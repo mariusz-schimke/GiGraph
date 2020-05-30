@@ -4,13 +4,19 @@ using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotAttributeCollection : IDotEntity, ICollection<DotAttribute>
+    public interface IDotAttributeCollection : IDotEntity, ICollection<DotCommonAttribute>
     {
         /// <summary>
         /// Adds or replaces the specified attribute in the collection.
         /// </summary>
         /// <param name="attribute">The attribute to include in the collection.</param>
-        void Set(DotAttribute attribute);
+        T Set<T>(T attribute) where T : DotCommonAttribute;
+
+        /// <summary>
+        /// Adds or replaces the specified attributes in the collection.
+        /// </summary>
+        /// <param name="attributes">The attributes to include in the collection.</param>
+        void SetRange(IEnumerable<DotCommonAttribute> attributes);
 
         /// <summary>
         /// Adds or replaces the specified attribute in the collection.
@@ -22,77 +28,77 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        void Set(string key, string value);
+        DotStringAttribute Set(string key, string value);
 
         /// <summary>
         /// Adds or replaces the specified integer value attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        void Set(string key, int value);
+        DotIntAttribute Set(string key, int value);
 
         /// <summary>
         /// Adds or replaces the specified double value attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        void Set(string key, double value);
+        DotDoubleAttribute Set(string key, double value);
 
         /// <summary>
         /// Adds or replaces the specified boolean value attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        void Set(string key, bool value);
+        DotBoolAttribute Set(string key, bool value);
 
         /// <summary>
         /// Adds or replaces the specified node shape attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        void Set(string key, DotShape value);
+        DotShapeAttribute Set(string key, DotShape value);
 
         /// <summary>
         /// Adds or replaces the specified element style attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        void Set(string key, DotStyle value);
+        DotStyleAttribute Set(string key, DotStyle value);
 
         /// <summary>
         /// Adds or replaces the specified arrow type attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        void Set(string key, DotArrowType value);
+        DotArrowTypeAttribute Set(string key, DotArrowType value);
 
         /// <summary>
         /// Adds or replaces the specified arrow direction attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        void Set(string key, DotArrowDirection value);
+        DotArrowDirectionAttribute Set(string key, DotArrowDirection value);
 
         /// <summary>
         /// Adds or replaces the specified rank constraint attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        void Set(string key, DotRank value);
+        DotRankAttribute Set(string key, DotRank value);
 
         /// <summary>
         /// Adds or replaces the specified graph layout direction attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        void Set(string key, DotRankDirection value);
+        DotRankDirectionAttribute Set(string key, DotRankDirection value);
 
         /// <summary>
         /// Adds or replaces the specified HTML text attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        void SetHtml(string key, string value);
+        DotHtmlAttribute SetHtml(string key, string value);
 
         /// <summary>
         /// Adds or replaces the specified custom attribute in the collection.
@@ -103,7 +109,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        void SetCustom(string key, string value);
+        DotCustomAttribute SetCustom(string key, string value);
 
         /// <summary>
         /// Checks if an attribute with the specified key exists in the collection, and returns it as the specified type.
@@ -111,7 +117,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         /// <typeparam name="T">The type to return the attribute as.</typeparam>
         /// <param name="key">The key of the attribute to get.</param>
-        T GetAs<T>(string key) where T : DotAttribute;
+        T GetAs<T>(string key) where T : DotCommonAttribute;
 
         /// <summary>
         /// Checks if an attribute with the specified key exists in the collection, and returns it as the specified type.
@@ -119,8 +125,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         /// <typeparam name="T">The type to return the attribute as.</typeparam>
         /// <param name="key">The key of the attribute to get.</param>
-        /// <param name="value">The attribute if found and valid, or null otherwise.</param>
-        bool TryGetAs<T>(string key, out T attribute) where T : DotAttribute;
+        /// <param name="attribute">The attribute if found and valid, or null otherwise.</param>
+        bool TryGetAs<T>(string key, out T attribute) where T : DotCommonAttribute;
 
         /// <summary>
         /// Checks if an attribute with the specified key exists in the collection, and returns its value as the specified type.
@@ -141,6 +147,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Removes all attributes matching the specified criteria from the collection.
         /// </summary>
         /// <param name="match">The predicate to use for matching attributes.</param>
-        int RemoveAll(Predicate<DotAttribute> match);
+        int RemoveAll(Predicate<DotCommonAttribute> match);
     }
 }

@@ -4,7 +4,7 @@
     /// An HTML string attribute that can be used as element label.
     /// <see href="https://www.graphviz.org/doc/info/shapes.html#html">See supported HTML grammar</see>.
     /// </summary>
-    public class DotHtmlAttribute : DotAttribute<string>
+    public class DotHtmlAttribute : DotCommonAttribute<string>
     {
         /// <summary>
         /// Creates a new HTML attribute with a key of "label".

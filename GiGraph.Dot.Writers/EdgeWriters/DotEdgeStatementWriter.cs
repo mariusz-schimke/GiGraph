@@ -10,12 +10,12 @@ namespace GiGraph.Dot.Writers.EdgeWriters
         {
         }
 
-        public virtual IDotEdgeWriter BeginEdge()
+        public virtual IDotEdgeWriter BeginSequence()
         {
             return new DotEdgeWriter(_tokenWriter, _context);
         }
 
-        public virtual void EndEdge()
+        public virtual void EndSequence()
         {
             EndStatement();
         }

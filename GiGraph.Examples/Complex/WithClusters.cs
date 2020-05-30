@@ -36,20 +36,20 @@ namespace GiGraph.Examples.Complex
             // for multiple of them, or specify the same identifier for multiple clusters,
             // they will be treated as one cluster when visualized.
 
-            graph.Subgraphs.AddCluster(id: "Positive path", cluster =>
+            graph.Clusters.Add(id: "Positive path", cluster =>
             {
                 cluster.Attributes.BackgroundColor = Color.LightGreen;
                 cluster.Attributes.Label = "Positive path";
 
-                cluster.Edges.Add("Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit");
+                cluster.Edges.AddSequence("Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit");
             });
 
-            graph.Subgraphs.AddCluster(id: "Negative path", cluster =>
+            graph.Clusters.Add(id: "Negative path", cluster =>
             {
                 cluster.Attributes.Label = "Negative path";
                 cluster.Attributes.BackgroundColor = Color.LightPink;
 
-                cluster.Edges.Add("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");
+                cluster.Edges.AddSequence("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");
             });
 
             return graph;

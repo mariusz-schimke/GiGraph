@@ -1,54 +1,113 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using System;
+using GiGraph.Dot.Entities.Edges.Endpoints;
 
 namespace GiGraph.Dot.Entities.Edges
 {
     /// <summary>
-    /// Represents a graph edge that connects two consecutive nodes.
+    /// Represents an edge (joins two nodes).
     /// </summary>
-    public class DotEdge : IDotEntity
+    public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     {
-        protected string _tailNodeId;
-        protected string _headNodeId;
-
         /// <summary>
-        /// The identifier of the left (source) node the edge is connected to.
+        /// Indicates if the current instance is a loop edge.
         /// </summary>
-        public virtual string TailNodeId
+        public virtual bool IsLoop => IsLoopEdge(this);
+
+        protected DotEdge(DotEndpoint tail, DotEndpoint head, IDotEdgeAttributes attributes)
+            : base(tail, head, attributes)
         {
-            get => _tailNodeId;
-            set => _tailNodeId = value ?? throw new ArgumentNullException(nameof(TailNodeId), "Tail node identifier cannot be null.");
         }
 
         /// <summary>
-        /// The identifier of the right (destination) node the edge is connected to.
+        /// Creates a new edge instance.
         /// </summary>
-        public virtual string HeadNodeId
+        /// <param name="tail">The tail (source, left) node.</param>
+        /// <param name="head">The head (destination, right) node.</param>
+        public DotEdge(DotEndpoint tail, DotEndpoint head)
+            : base(tail, head)
         {
-            get => _headNodeId;
-            set => _headNodeId = value ?? throw new ArgumentNullException(nameof(HeadNodeId), "Head node identifier cannot be null.");
         }
 
         /// <summary>
-        /// The attributes of the edge.
+        /// Creates a new edge instance.
         /// </summary>
-        public virtual IDotEdgeAttributes Attributes { get; }
-
-        protected DotEdge(string tailNodeId, string headNodeId, IDotEdgeAttributes attributes)
-        {
-            TailNodeId = tailNodeId;
-            HeadNodeId = headNodeId;
-            Attributes = attributes;
-        }
-
-        /// <summary>
-        /// Creates a new edge connecting two nodes.
-        /// </summary>
-        /// <param name="tailNodeId">The identifier of the tail (source, left) node the edge should be connected to.</param>
-        /// <param name="headNodeId">The identifier of the head (destination, right) node the should be connected to.</param>
+        /// <param name="tailNodeId">The identifier of the tail (source, left) node.</param>
+        /// <param name="headNodeId">The identifier of the head (destination, right) node.</param>
         public DotEdge(string tailNodeId, string headNodeId)
-            : this(tailNodeId, headNodeId, new DotEntityAttributes())
+            : this(new DotEndpoint(tailNodeId), new DotEndpoint(headNodeId))
         {
+        }
+
+        /// <summary>
+        /// Determines whether the current edge connects the specified node to itself.
+        /// </summary>
+        /// <param name="nodeId">The identifier of the node to check.</param>
+        public virtual bool Loops(string nodeId)
+        {
+            return Equals(nodeId, nodeId);
+        }
+
+        /// <summary>
+        /// Determines whether the current edge joins the specified nodes.
+        /// </summary>
+        /// <param name="tailNodeId">The identifier of the tail (source, left) node to check.</param>
+        /// <param name="headNodeId">The identifier of the head (destination, right) node to check.</param>
+        public virtual bool Equals(string tailNodeId, string headNodeId)
+        {
+            return Equals(this, tailNodeId, headNodeId);
+        }
+
+        /// <summary>
+        /// Determines whether the specified edge joins the specified nodes.
+        /// </summary>
+        /// <param name="edge">The edge whose endpoints to check.</param>
+        /// <param name="tailNodeId">The identifier of the tail (source, left) node to check.</param>
+        /// <param name="headNodeId">The identifier of the head (destination, right) node to check.</param>
+        public static bool Equals(DotCommonEdge edge, string tailNodeId, string headNodeId)
+        {
+            return edge is DotEdge<DotEndpoint, DotEndpoint> e &&
+                Equals(e, tailNodeId, headNodeId);
+        }
+
+        /// <summary>
+        /// Determines whether the specified edge joins the specified nodes.
+        /// </summary>
+        /// <param name="edge">The edge whose endpoints to check.</param>
+        /// <param name="tailNodeId">The identifier of the tail (source, left) node to check.</param>
+        /// <param name="headNodeId">The identifier of the head (destination, right) node to check.</param>
+        public static bool Equals(DotEdge<DotEndpoint, DotEndpoint> edge, string tailNodeId, string headNodeId)
+        {
+            return edge is { } &&
+                edge.Tail.NodeId == tailNodeId &&
+                edge.Head.NodeId == headNodeId;
+        }
+
+        /// <summary>
+        /// Determines whether the specified edge is a loop edge.
+        /// </summary>
+        /// <param name="edge">The edge to check.</param>
+        public static bool IsLoopEdge(DotCommonEdge edge)
+        {
+            return edge is DotEdge<DotEndpoint, DotEndpoint> e &&
+                IsLoopEdge(e);
+        }
+
+        /// <summary>
+        /// Determines whether the specified edge is a loop edge.
+        /// </summary>
+        /// <param name="edge">The edge to check.</param>
+        public static bool IsLoopEdge(DotEdge<DotEndpoint, DotEndpoint> edge)
+        {
+            return edge.Tail.NodeId == edge.Head.NodeId;
+        }
+
+        /// <summary>
+        /// Creates a new loop edge instance.
+        /// </summary>
+        /// <param name="nodeId">The identifier of the node the edge should connect to itself.</param>
+        public static DotEdge Loop(string nodeId)
+        {
+            return new DotEdge(nodeId, nodeId);
         }
     }
 }

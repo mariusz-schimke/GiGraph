@@ -24,5 +24,10 @@ namespace GiGraph.Dot.Writers.Options
         /// The line break sequence to use in the DOT output (<see cref="Environment.NewLine"/> by default).
         /// </summary>
         public virtual string LineBreak { get; set; } = Environment.NewLine;
+
+        public virtual DotFormattingOptions Clone()
+        {
+            return (DotFormattingOptions)MemberwiseClone();
+        }
     }
 }

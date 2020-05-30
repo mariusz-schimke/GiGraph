@@ -1,6 +1,9 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Edges;
-using GiGraph.Dot.Entities.Nodes;
+using GiGraph.Dot.Entities.Edges.Collections;
+using GiGraph.Dot.Entities.Nodes.Collections;
+using GiGraph.Dot.Entities.Subgraphs.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
@@ -23,12 +26,13 @@ namespace GiGraph.Dot.Entities.Subgraphs
 
         protected DotCluster(string id,
             IDotClusterAttributes attributes,
-            DotNodeCollection nodes,
-            DotEdgeCollection edges,
-            DotCommonSubgraphCollection subgraphs,
+            DotCommonNodeCollection nodes,
+            DotCommonEdgeCollection edges,
+            DotSubgraphCollection subgraphs,
+            DotClusterCollection clusters,
             IDotNodeAttributes defaultNodeAttributes,
             IDotEdgeAttributes defaultEdgeAttributes)
-            : base(id, attributes, nodes, edges, subgraphs, defaultNodeAttributes, defaultEdgeAttributes)
+            : base(id, attributes, nodes, edges, subgraphs, clusters, defaultNodeAttributes, defaultEdgeAttributes)
         {
         }
 
@@ -41,13 +45,26 @@ namespace GiGraph.Dot.Entities.Subgraphs
               (
                   id,
                   new DotEntityAttributes(),
-                  new DotNodeCollection(),
-                  new DotEdgeCollection(),
-                  new DotCommonSubgraphCollection(),
+                  new DotCommonNodeCollection(),
+                  new DotCommonEdgeCollection(),
+                  new DotSubgraphCollection(),
+                  new DotClusterCollection(),
                   new DotEntityAttributes(),
                   new DotEntityAttributes()
               )
         {
+        }
+
+        public static DotCluster FromNodes(IEnumerable<string> nodeIds, string id)
+        {
+            var result = new DotCluster(id);
+
+            if (nodeIds.Any())
+            {
+                result.Nodes.AddRange(nodeIds);
+            }
+
+            return result;
         }
     }
 }

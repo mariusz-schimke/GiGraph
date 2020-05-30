@@ -1,7 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Edges;
-using GiGraph.Dot.Entities.Nodes;
-using GiGraph.Dot.Entities.Subgraphs;
+using GiGraph.Dot.Entities.Edges.Collections;
+using GiGraph.Dot.Entities.Nodes.Collections;
+using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
@@ -31,12 +31,13 @@ namespace GiGraph.Dot.Entities.Graphs
             bool isDirected,
             bool isStrict,
             IDotGraphAttributes attributes,
-            DotNodeCollection nodes,
-            DotEdgeCollection edges,
-            DotCommonSubgraphCollection subgraphs,
+            DotCommonNodeCollection nodes,
+            DotCommonEdgeCollection edges,
+            DotSubgraphCollection subgraphs,
+            DotClusterCollection clusters,
             IDotNodeAttributes defaultNodeAttributes,
             IDotEdgeAttributes defaultEdgeAttributes)
-            : base(id, attributes, nodes, edges, subgraphs, defaultNodeAttributes, defaultEdgeAttributes)
+            : base(id, attributes, nodes, edges, subgraphs, clusters, defaultNodeAttributes, defaultEdgeAttributes)
         {
             IsDirected = isDirected;
             IsStrict = isStrict;
@@ -57,9 +58,10 @@ namespace GiGraph.Dot.Entities.Graphs
                   isDirected,
                   isStrict,
                   new DotEntityAttributes(),
-                  new DotNodeCollection(),
-                  new DotEdgeCollection(),
-                  new DotCommonSubgraphCollection(),
+                  new DotCommonNodeCollection(),
+                  new DotCommonEdgeCollection(),
+                  new DotSubgraphCollection(),
+                  new DotClusterCollection(),
                   new DotEntityAttributes(),
                   new DotEntityAttributes()
               )

@@ -1,8 +1,9 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Edges;
+using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Nodes;
+using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs;
+using GiGraph.Dot.Entities.Subgraphs.Collections;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Options;
 using GiGraph.Dot.Generators.Providers;
@@ -39,6 +40,7 @@ namespace GiGraph.Dot.Generators.GraphGenerators
             WriteEdges(graphBody.Edges, writer);
 
             WriteSubgraphs(graphBody.Subgraphs, writer);
+            WriteClusters(graphBody.Clusters, writer);
         }
 
         protected virtual void WriteAttributes(IDotAttributeCollection attributes, IDotGraphBodyWriter writer)
@@ -86,7 +88,7 @@ namespace GiGraph.Dot.Generators.GraphGenerators
             }
         }
 
-        protected virtual void WriteNodes(DotNodeCollection nodes, IDotGraphBodyWriter writer)
+        protected virtual void WriteNodes(DotCommonNodeCollection nodes, IDotGraphBodyWriter writer)
         {
             if (nodes.Any())
             {
@@ -96,7 +98,7 @@ namespace GiGraph.Dot.Generators.GraphGenerators
             }
         }
 
-        protected virtual void WriteEdges(DotEdgeCollection edges, IDotGraphBodyWriter writer)
+        protected virtual void WriteEdges(DotCommonEdgeCollection edges, IDotGraphBodyWriter writer)
         {
             if (edges.Any())
             {
@@ -106,7 +108,18 @@ namespace GiGraph.Dot.Generators.GraphGenerators
             }
         }
 
-        protected virtual void WriteSubgraphs(DotCommonSubgraphCollection subgraphs, IDotGraphBodyWriter writer)
+        protected virtual void WriteSubgraphs(DotSubgraphCollection subgraphs, IDotGraphBodyWriter writer)
+        {
+            WriteCommonSubgraphs(subgraphs, writer);
+        }
+
+        protected virtual void WriteClusters(DotClusterCollection clusters, IDotGraphBodyWriter writer)
+        {
+            WriteCommonSubgraphs(clusters, writer);
+        }
+
+        protected virtual void WriteCommonSubgraphs<T>(DotCommonSubgraphCollection<T> subgraphs, IDotGraphBodyWriter writer)
+            where T : DotCommonSubgraph
         {
             if (subgraphs.Any())
             {
