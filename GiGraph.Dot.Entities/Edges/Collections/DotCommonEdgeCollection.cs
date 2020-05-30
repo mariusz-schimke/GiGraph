@@ -1,5 +1,4 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Edges.Endpoints;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +23,8 @@ namespace GiGraph.Dot.Entities.Edges.Collections
 
         public DotCommonEdgeCollection()
         {
-            _matchEdgePredicate = (tailNodeId, headNodeId) => commonEdge => commonEdge is DotEdge<DotEndpoint, DotEndpoint> edge &&
-                edge.Tail.NodeId == tailNodeId &&
-                edge.Head.NodeId == headNodeId;
-
-            _matchLoopPredicate = commonEdge => commonEdge is DotEdge<DotEndpoint, DotEndpoint> edge &&
-                edge.Tail.NodeId == edge.Head.NodeId;
+            _matchEdgePredicate = (tailNodeId, headNodeId) => commonEdge => DotEdge.Equals(commonEdge, tailNodeId, headNodeId);
+            _matchLoopPredicate = commonEdge => DotEdge.IsLoopEdge(commonEdge);
         }
 
         protected virtual T Add<T>(T edge, Action<IDotEdgeAttributes> initEdge)

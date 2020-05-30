@@ -1,85 +1,8 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges.Endpoints;
-using System;
-using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Edges
 {
-    /// <summary>
-    /// Represents:
-    /// <list type="bullet">
-    ///     <item>
-    ///         an edge that joins two nodes, when <typeparamref name="TTail"/> and <typeparamref name="THead"/> are both <see cref="DotEndpoint"/>,
-    ///     </item>
-    ///     <item>
-    ///         a group of edges that join one <typeparamref name="TTail"/> <see cref="DotEndpoint"/> node
-    ///         to multiple <typeparamref name="THead"/> <see cref="DotEndpointGroup"/> nodes,
-    ///     </item>
-    ///     <item>
-    ///         a group of edges that join multiple <typeparamref name="TTail"/> <see cref="DotEndpointGroup"/> nodes
-    ///         to one <typeparamref name="THead"/> <see cref="DotEndpoint"/> node,
-    ///     </item>
-    ///     <item>
-    ///         a group of edges that join multiple <typeparamref name="TTail"/> <see cref="DotEndpointGroup"/> nodes
-    ///         to multiple <typeparamref name="THead"/> <see cref="DotEndpointGroup"/> nodes.
-    ///     </item>
-    /// </list>
-    /// </summary>
-    /// <typeparam name="TTail">The type of the tail endpoint.</typeparam>
-    /// <typeparam name="THead">The type of the head endpoint.</typeparam>
-    public class DotEdge<TTail, THead> : DotCommonEdge
-        where TTail : DotCommonEndpoint, IDotOrderableEntity
-        where THead : DotCommonEndpoint, IDotOrderableEntity
-    {
-        protected TTail _tail;
-        protected THead _head;
-
-        /// <summary>
-        /// Gets or sets the tail (source, left) endpoint.
-        /// </summary>
-        public virtual TTail Tail
-        {
-            get => _tail;
-            set => _tail = value ?? throw new ArgumentNullException(nameof(Tail), "Endpoint cannot be null.");
-        }
-
-        /// <summary>
-        /// Gets or sets the head (destination, right) endpoint.
-        /// </summary>
-        public virtual THead Head
-        {
-            get => _head;
-            set => _head = value ?? throw new ArgumentNullException(nameof(Head), "Endpoint cannot be null.");
-        }
-
-        /// <summary>
-        /// Gets the endpoints of this edge.
-        /// </summary>
-        public override IEnumerable<DotCommonEndpoint> Endpoints => new DotCommonEndpoint[] { Tail, Head };
-
-        protected DotEdge(TTail tail, THead head, IDotEdgeAttributes attributes)
-            : base(attributes)
-        {
-            Tail = tail;
-            Head = head;
-        }
-
-        /// <summary>
-        /// Creates a new edge instance.
-        /// </summary>
-        /// <param name="tail">The tail (source, left) endpoint.</param>
-        /// <param name="head">The head (destination, right) endpoint.</param>
-        public DotEdge(TTail tail, THead head)
-            : this(tail, head, new DotEntityAttributes())
-        {
-        }
-
-        protected override string GetOrderingKey()
-        {
-            return $"{Tail.OrderingKey} {Head.OrderingKey}";
-        }
-    }
-
     /// <summary>
     /// Represents an edge (joins two nodes).
     /// </summary>
@@ -88,7 +11,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Indicates if the current instance is a loop edge.
         /// </summary>
-        public bool IsLoop => Tail.NodeId == Head.NodeId;
+        public bool IsLoop => IsLoopEdge(this);
 
         protected DotEdge(DotEndpoint tail, DotEndpoint head, IDotEdgeAttributes attributes)
             : base(tail, head, attributes)
@@ -122,8 +45,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="headNodeId">The identifier of the head (destination, right) node to check.</param>
         public bool Equals(string tailNodeId, string headNodeId)
         {
-            return Tail.NodeId == tailNodeId &&
-                   Head.NodeId == headNodeId;
+            return Equals(this, tailNodeId, headNodeId);
         }
 
         /// <summary>
@@ -133,6 +55,49 @@ namespace GiGraph.Dot.Entities.Edges
         public bool Loops(string nodeId)
         {
             return Equals(nodeId, nodeId);
+        }
+
+        /// <summary>
+        /// Determines whether the specified edge joins the specified nodes.
+        /// </summary>
+        /// <param name="edge">The edge whose endpoints to check.</param>
+        /// <param name="tailNodeId">The identifier of the tail (source, left) node to check.</param>
+        /// <param name="headNodeId">The identifier of the head (destination, right) node to check.</param>
+        public static bool Equals(DotCommonEdge edge, string tailNodeId, string headNodeId)
+        {
+            return edge is DotEdge<DotEndpoint, DotEndpoint> e &&
+                Equals(e, tailNodeId, headNodeId);
+        }
+
+        /// <summary>
+        /// Determines whether the specified edge joins the specified nodes.
+        /// </summary>
+        /// <param name="edge">The edge whose endpoints to check.</param>
+        /// <param name="tailNodeId">The identifier of the tail (source, left) node to check.</param>
+        /// <param name="headNodeId">The identifier of the head (destination, right) node to check.</param>
+        public static bool Equals(DotEdge<DotEndpoint, DotEndpoint> edge, string tailNodeId, string headNodeId)
+        {
+            return edge.Tail.NodeId == tailNodeId &&
+                   edge.Head.NodeId == headNodeId;
+        }
+
+        /// <summary>
+        /// Determines whether the specified edge is a loop edge.
+        /// </summary>
+        /// <param name="edge">The edge to check.</param>
+        public static bool IsLoopEdge(DotCommonEdge edge)
+        {
+            return edge is DotEdge<DotEndpoint, DotEndpoint> e &&
+                IsLoopEdge(e);
+        }
+
+        /// <summary>
+        /// Determines whether the specified edge is a loop edge.
+        /// </summary>
+        /// <param name="edge">The edge to check.</param>
+        public static bool IsLoopEdge(DotEdge<DotEndpoint, DotEndpoint> edge)
+        {
+            return edge.Tail.NodeId == edge.Head.NodeId;
         }
 
         /// <summary>
