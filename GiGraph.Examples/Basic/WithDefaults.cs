@@ -15,12 +15,12 @@ namespace GiGraph.Examples.Basic
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
 
 
-            // set the defaults for all nodes
+            // set style defaults for all nodes
             graph.NodeDefaults.Shape = DotShape.Rectangle;
             graph.NodeDefaults.Style = DotStyle.Filled | DotStyle.Bold;
             graph.NodeDefaults.FillColor = Color.DarkOrange;
 
-            // set the defaults for all edges
+            // set style defaults for all edges
             graph.EdgeDefaults.ArrowHead = DotArrowType.Vee;
 
 

@@ -18,11 +18,11 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         {
         }
 
-        protected virtual T Add<T>(T node, Action<IDotNodeAttributes> initNode)
+        protected virtual T Add<T>(T node, Action<IDotNodeAttributes> initAttrs)
             where T : DotCommonNode
         {
             Add(node);
-            initNode?.Invoke(node.Attributes);
+            initAttrs?.Invoke(node.Attributes);
             return node;
         }
 
@@ -30,10 +30,10 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// Adds a node with the specified identifier to the collection, and returns it.
         /// </summary>
         /// <param name="id">The identifier of the node to add.</param>
-        /// <param name="initNode">An optional initializer delegate to call for the attributes of the created node.</param>
-        public virtual DotNode Add(string id, Action<IDotNodeAttributes> initNode = null)
+        /// <param name="initAttrs">An optional initializer delegate to call for the attributes of the created node.</param>
+        public virtual DotNode Add(string id, Action<IDotNodeAttributes> initAttrs = null)
         {
-            return Add(new DotNode(id), initNode);
+            return Add(new DotNode(id), initAttrs);
         }
 
         /// <summary>
@@ -42,27 +42,27 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="ids">The identifiers of the nodes to add.</param>
         public virtual DotNodeGroup Add(params string[] ids)
         {
-            return Add(ids, initGroup: null);
+            return Add(ids, initGroupAttrs: null);
         }
 
         /// <summary>
         /// Adds a group of nodes with the specified identifiers to the collection.
         /// </summary>
-        /// <param name="initGroup">An optional initializer delegate to call for the attributes of the created group.</param>
+        /// <param name="initGroupAttrs">An optional initializer delegate to call for the attributes of the created group.</param>
         /// <param name="ids">The identifiers of the nodes to add.</param>
-        public virtual DotNodeGroup Add(Action<IDotNodeAttributes> initGroup, params string[] ids)
+        public virtual DotNodeGroup Add(Action<IDotNodeAttributes> initGroupAttrs, params string[] ids)
         {
-            return Add(ids, initGroup);
+            return Add(ids, initGroupAttrs);
         }
 
         /// <summary>
         /// Adds a group of nodes with the specified identifiers to the collection.
         /// </summary>
         /// <param name="ids">The identifiers of the nodes to add.</param>
-        /// <param name="initGroup">An optional initializer delegate to call for the attributes of the created group.</param>
-        public virtual DotNodeGroup Add(IEnumerable<string> ids, Action<IDotNodeAttributes> initGroup = null)
+        /// <param name="initGroupAttrs">An optional initializer delegate to call for the attributes of the created group.</param>
+        public virtual DotNodeGroup Add(IEnumerable<string> ids, Action<IDotNodeAttributes> initGroupAttrs = null)
         {
-            return Add(new DotNodeGroup(ids), initGroup);
+            return Add(new DotNodeGroup(ids), initGroupAttrs);
         }
 
         /// <summary>
@@ -71,15 +71,15 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="ids">The identifiers of the nodes to add.</param>
         public virtual DotNode[] AddRange(params string[] ids)
         {
-            return AddRange((IEnumerable<string>)ids);
+            return AddRange(ids, initNode: null);
         }
 
         /// <summary>
         /// Adds nodes with the specified identifiers to the collection, and returns them.
         /// </summary>
         /// <param name="ids">The identifiers of the nodes to add.</param>
-        /// <param name="initNode">An optional initializer delegate to call for the attributes of each created node.</param>
-        public virtual DotNode[] AddRange(Action<IDotNodeAttributes> initNode, params string[] ids)
+        /// <param name="initNode">An optional initializer delegate to call for each created node.</param>
+        public virtual DotNode[] AddRange(Action<DotNode> initNode, params string[] ids)
         {
             return AddRange(ids, initNode);
         }
@@ -88,10 +88,19 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// Adds nodes with the specified identifiers to the collection, and returns them.
         /// </summary>
         /// <param name="ids">The identifiers of the nodes to add.</param>
-        /// <param name="initNode">An optional initializer delegate to call for the attributes of each created node.</param>
-        public virtual DotNode[] AddRange(IEnumerable<string> ids, Action<IDotNodeAttributes> initNode = null)
+        /// <param name="initNode">An optional initializer delegate to call for each created node.</param>
+        public virtual DotNode[] AddRange(IEnumerable<string> ids, Action<DotNode> initNode = null)
         {
-            return ids.Select(id => Add(id, initNode)).ToArray();
+            return ids.Select
+                (
+                    id =>
+                    {
+                        var node = Add(id);
+                        initNode?.Invoke(node);
+                        return node;
+                    }
+                )
+                .ToArray();
         }
 
         /// <summary>
