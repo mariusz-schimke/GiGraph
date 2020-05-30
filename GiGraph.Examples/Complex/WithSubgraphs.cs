@@ -14,8 +14,6 @@ namespace GiGraph.Examples.Complex
             graph.Edges.Add("e", "h");
             graph.Edges.Add("g", "k");
             graph.Edges.Add("r", "t");
-            graph.Edges.Add("s", "z");
-            graph.Edges.Add("t", "z");
 
             graph.Edges.AddOneToMany("a", "b", "c", "d");
             graph.Edges.AddOneToMany("b", "c", "e");
@@ -33,14 +31,19 @@ namespace GiGraph.Examples.Complex
             graph.Edges.AddOneToMany("p", "s", "t", "q");
             graph.Edges.AddOneToMany("q", "t", "r");
 
+            graph.Edges.AddManyToOne("z", "s", "t", "v", "w", "x", "y");
+
 
             // add subgraphs to control the layout of some node groups
-            graph.Subgraphs.AddSubgraph(rank: DotRank.Same).Nodes.Add("b", "c", "d");
-            graph.Subgraphs.AddSubgraph(rank: DotRank.Same).Nodes.Add("e", "f", "g");
-            graph.Subgraphs.AddSubgraph(rank: DotRank.Same).Nodes.Add("h", "i", "j", "k");
-            graph.Subgraphs.AddSubgraph(rank: DotRank.Same).Nodes.Add("l", "m", "n");
-            graph.Subgraphs.AddSubgraph(rank: DotRank.Same).Nodes.Add("o", "p", "q", "r");
-            graph.Subgraphs.AddSubgraph(rank: DotRank.Same).Nodes.Add("s", "t");
+            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("b", "c", "d");
+            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("e", "f", "g");
+            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("h", "i", "j", "k");
+            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("l", "m", "n");
+            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("o", "p", "q", "r");
+            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("s", "t");
+            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("z", "y");
+
+            graph.Subgraphs.Add(DotRank.Max).Nodes.Add("v", "w", "x");
 
             return graph;
         }
