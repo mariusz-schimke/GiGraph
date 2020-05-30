@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<package>
   <metadata>
     <id>GiGraph.Dot</id>
     <version>0.9.1</version>
@@ -13,7 +13,7 @@
     <icon>images\icon.png</icon>
     
     <projectUrl>https://github.com/mariusz-schimke/GiGraph</projectUrl>
-    <repository type="Git" url="https://github.com/mariusz-schimke/GiGraph.git" branch="master" commit="d4fcc6ded6b212f1353353739bbb93c8f7db7940" />
+    <repository type="git" url="https://github.com/mariusz-schimke/GiGraph.git" branch="master" commit="" />
 
     <license type="file">LICENSE.txt</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
