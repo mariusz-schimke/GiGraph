@@ -10,22 +10,22 @@ namespace GiGraph.Dot.Entities.Nodes
     /// </summary>
     public class DotNodeGroup : DotCommonNode, IDotEntityWithNodeIds
     {
+        protected readonly string[] _nodeIds;
+
         /// <summary>
         /// Gets the identifiers of nodes in the group.
         /// </summary>
-        public virtual IEnumerable<string> NodeIds { get; }
-
-        IEnumerable<string> IDotEntityWithNodeIds.NodeIds => NodeIds;
+        public virtual IEnumerable<string> NodeIds => _nodeIds;
 
         /// <summary>
         /// The attributes of the node group.
         /// </summary>
         public override IDotNodeAttributes Attributes => base.Attributes;
 
-        protected DotNodeGroup(ICollection<string> nodeIds, IDotNodeAttributes attributes)
+        protected DotNodeGroup(string[] nodeIds, IDotNodeAttributes attributes)
             : base(attributes)
         {
-            NodeIds = nodeIds.Any()
+            _nodeIds = nodeIds.Any()
                 ? nodeIds
                 : throw new ArgumentException("At least one node identifier has to be specified for a node group.", nameof(nodeIds));
         }
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
         public DotNodeGroup(params string[] nodeIds)
-            : this((IEnumerable<string>)nodeIds)
+            : this(nodeIds, new DotEntityAttributes())
         {
         }
 
@@ -46,7 +46,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
         public DotNodeGroup(IEnumerable<string> nodeIds)
-            : this(new List<string>(nodeIds), new DotEntityAttributes())
+            : this(nodeIds.ToArray())
         {
         }
 
