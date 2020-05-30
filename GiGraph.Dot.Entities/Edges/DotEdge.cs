@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Indicates if the current instance is a loop edge.
         /// </summary>
-        public bool IsLoop => IsLoopEdge(this);
+        public virtual bool IsLoop => IsLoopEdge(this);
 
         protected DotEdge(DotEndpoint tail, DotEndpoint head, IDotEdgeAttributes attributes)
             : base(tail, head, attributes)
@@ -39,22 +39,22 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        /// Determines whether the edge joins the specified nodes.
-        /// </summary>
-        /// <param name="tailNodeId">The identifier of the tail (source, left) node to check.</param>
-        /// <param name="headNodeId">The identifier of the head (destination, right) node to check.</param>
-        public bool Equals(string tailNodeId, string headNodeId)
-        {
-            return Equals(this, tailNodeId, headNodeId);
-        }
-
-        /// <summary>
         /// Determines whether the current edge connects the specified node to itself.
         /// </summary>
         /// <param name="nodeId">The identifier of the node to check.</param>
-        public bool Loops(string nodeId)
+        public virtual bool Loops(string nodeId)
         {
             return Equals(nodeId, nodeId);
+        }
+
+        /// <summary>
+        /// Determines whether the current edge joins the specified nodes.
+        /// </summary>
+        /// <param name="tailNodeId">The identifier of the tail (source, left) node to check.</param>
+        /// <param name="headNodeId">The identifier of the head (destination, right) node to check.</param>
+        public virtual bool Equals(string tailNodeId, string headNodeId)
+        {
+            return Equals(this, tailNodeId, headNodeId);
         }
 
         /// <summary>
@@ -77,8 +77,9 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="headNodeId">The identifier of the head (destination, right) node to check.</param>
         public static bool Equals(DotEdge<DotEndpoint, DotEndpoint> edge, string tailNodeId, string headNodeId)
         {
-            return edge.Tail.NodeId == tailNodeId &&
-                   edge.Head.NodeId == headNodeId;
+            return edge is { } &&
+                edge.Tail.NodeId == tailNodeId &&
+                edge.Head.NodeId == headNodeId;
         }
 
         /// <summary>
