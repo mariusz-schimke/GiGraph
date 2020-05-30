@@ -1,54 +1,39 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Collections;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GiGraph.Dot.Entities.Nodes.Collections
 {
-    public class DotCommonNodeCollection : IDotEntity, ICollection<DotCommonNode>
+    public class DotCommonNodeCollection : DotEntityWithIdCollection<DotCommonNode>, IDotEntity
     {
-        protected readonly List<DotCommonNode> _nodes = new List<DotCommonNode>();
-
-        /// <summary>
-        /// Gets the number of elements contained in the collection.
-        /// </summary>
-        public virtual int Count => _nodes.Count;
-
-        bool ICollection<DotCommonNode>.IsReadOnly => ((ICollection<DotCommonNode>)_nodes).IsReadOnly;
-
-        /// <summary>
-        /// Adds a node to the collection.
-        /// </summary>
-        /// <typeparam name="T">The type of the node added.</typeparam>
-        /// <param name="node">The node to add.</param>
-        public virtual T Add<T>(T node)
-            where T : DotCommonNode
+        protected DotCommonNodeCollection(Func<string, Predicate<DotCommonNode>> matchIdPredicate)
+            : base(matchIdPredicate)
         {
-            return Add(node, initNode: null);
         }
 
-        protected virtual T Add<T>(T node, Action<IDotNodeAttributes> initNode)
+        public DotCommonNodeCollection() :
+            base(matchIdPredicate: id => commonNode => commonNode is DotNode node && node.Id == id)
+        {
+        }
+
+        protected virtual T Add<T>(T node, Action<IDotNodeAttributes> initAttrs)
             where T : DotCommonNode
         {
-            _nodes.Add(node);
-            initNode?.Invoke(node.Attributes);
+            Add(node);
+            initAttrs?.Invoke(node.Attributes);
             return node;
-        }
-
-        void ICollection<DotCommonNode>.Add(DotCommonNode item)
-        {
-            Add(item);
         }
 
         /// <summary>
         /// Adds a node with the specified identifier to the collection, and returns it.
         /// </summary>
         /// <param name="id">The identifier of the node to add.</param>
-        /// <param name="initNode">An optional initializer delegate to call for the attributes of the created node.</param>
-        public virtual DotNode Add(string id, Action<IDotNodeAttributes> initNode = null)
+        /// <param name="initAttrs">An optional initializer delegate to call for the attributes of the created node.</param>
+        public virtual DotNode Add(string id, Action<IDotNodeAttributes> initAttrs = null)
         {
-            return Add(new DotNode(id), initNode);
+            return Add(new DotNode(id), initAttrs);
         }
 
         /// <summary>
@@ -57,36 +42,27 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="ids">The identifiers of the nodes to add.</param>
         public virtual DotNodeGroup Add(params string[] ids)
         {
-            return Add(ids, initGroup: null);
+            return Add(ids, initGroupAttrs: null);
         }
 
         /// <summary>
         /// Adds a group of nodes with the specified identifiers to the collection.
         /// </summary>
-        /// <param name="initGroup">An optional initializer delegate to call for the attributes of the created group.</param>
+        /// <param name="initGroupAttrs">An optional initializer delegate to call for the attributes of the created group.</param>
         /// <param name="ids">The identifiers of the nodes to add.</param>
-        public virtual DotNodeGroup Add(Action<IDotNodeAttributes> initGroup, params string[] ids)
+        public virtual DotNodeGroup Add(Action<IDotNodeAttributes> initGroupAttrs, params string[] ids)
         {
-            return Add(ids, initGroup);
+            return Add(ids, initGroupAttrs);
         }
 
         /// <summary>
         /// Adds a group of nodes with the specified identifiers to the collection.
         /// </summary>
         /// <param name="ids">The identifiers of the nodes to add.</param>
-        /// <param name="initGroup">An optional initializer delegate to call for the attributes of the created group.</param>
-        public virtual DotNodeGroup Add(IEnumerable<string> ids, Action<IDotNodeAttributes> initGroup = null)
+        /// <param name="initGroupAttrs">An optional initializer delegate to call for the attributes of the created group.</param>
+        public virtual DotNodeGroup Add(IEnumerable<string> ids, Action<IDotNodeAttributes> initGroupAttrs = null)
         {
-            return Add(new DotNodeGroup(ids), initGroup);
-        }
-
-        /// <summary>
-        /// Adds the specified nodes to the collection.
-        /// </summary>
-        /// <param name="nodes">The nodes to add.</param>
-        public virtual void AddRange(IEnumerable<DotCommonNode> nodes)
-        {
-            _nodes.AddRange(nodes);
+            return Add(new DotNodeGroup(ids), initGroupAttrs);
         }
 
         /// <summary>
@@ -95,15 +71,15 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="ids">The identifiers of the nodes to add.</param>
         public virtual DotNode[] AddRange(params string[] ids)
         {
-            return AddRange((IEnumerable<string>)ids);
+            return AddRange(ids, initNode: null);
         }
 
         /// <summary>
         /// Adds nodes with the specified identifiers to the collection, and returns them.
         /// </summary>
         /// <param name="ids">The identifiers of the nodes to add.</param>
-        /// <param name="initNode">An optional initializer delegate to call for the attributes of each created node.</param>
-        public virtual DotNode[] AddRange(Action<IDotNodeAttributes> initNode, params string[] ids)
+        /// <param name="initNode">An optional initializer delegate to call for each created node.</param>
+        public virtual DotNode[] AddRange(Action<DotNode> initNode, params string[] ids)
         {
             return AddRange(ids, initNode);
         }
@@ -112,99 +88,38 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// Adds nodes with the specified identifiers to the collection, and returns them.
         /// </summary>
         /// <param name="ids">The identifiers of the nodes to add.</param>
-        /// <param name="initNode">An optional initializer delegate to call for the attributes of each created node.</param>
-        public virtual DotNode[] AddRange(IEnumerable<string> ids, Action<IDotNodeAttributes> initNode = null)
+        /// <param name="initNode">An optional initializer delegate to call for each created node.</param>
+        public virtual DotNode[] AddRange(IEnumerable<string> ids, Action<DotNode> initNode = null)
         {
-            return ids.Select(id => Add(id, initNode)).ToArray();
+            return ids.Select
+                (
+                    id =>
+                    {
+                        var node = Add(id);
+                        initNode?.Invoke(node);
+                        return node;
+                    }
+                )
+                .ToArray();
         }
 
         /// <summary>
         /// Gets a node with the specified identifier from the collection.
         /// </summary>
-        /// <param name="id">The identifier of the node to add.</param>
+        /// <param name="id">The identifier of the node to get.</param>
         public virtual DotNode Get(string id)
         {
-            return _nodes.OfType<DotNode>().FirstOrDefault(node => node.Id == id);
+            return GetAll(id).FirstOrDefault();
         }
 
         /// <summary>
-        /// Determines whether the specified node is in the collection.
+        /// Gets all nodes with the specified identifier from the collection.
         /// </summary>
-        /// <param name="item">The node to locate in the collection.</param>
-        public virtual bool Contains(DotCommonNode item)
+        /// <param name="id">The identifier of the nodes to get.</param>
+        public virtual IEnumerable<DotNode> GetAll(string id)
         {
-            return _nodes.Contains(item);
-        }
-
-        /// <summary>
-        /// Determines whether the specified node is in the collection.
-        /// </summary>
-        /// <param name="id">The identifier of the node to locate in the collection.</param>
-        public virtual bool Contains(string id)
-        {
-            return _nodes.OfType<DotNode>().Any(node => node.Id == id);
-        }
-
-        /// <summary>
-        /// Removes the specified node from the collection if found.
-        /// </summary>
-        /// <param name="node">The node to remove.</param>
-        public virtual int Remove(DotCommonNode node)
-        {
-            var result = 0;
-
-            while (_nodes.Remove(node))
-            {
-                result++;
-            }
-
-            return result;
-        }
-
-        bool ICollection<DotCommonNode>.Remove(DotCommonNode item)
-        {
-            return Remove(item) > 0;
-        }
-
-        /// <summary>
-        /// Removes the specified node from the collection if found.
-        /// </summary>
-        /// <param name="id">The identifier of the node to remove.</param>
-        public virtual int Remove(string id)
-        {
-            return RemoveAll(commonNode => commonNode is DotNode node && node.Id == id);
-        }
-
-        /// <summary>
-        /// Removes all nodes matching the specified criteria from the collection.
-        /// </summary>
-        /// <param name="match">The predicate to use for matching nodes.</param>
-        public virtual int RemoveAll(Predicate<DotCommonNode> match)
-        {
-            return _nodes.RemoveAll(match);
-        }
-
-        /// <summary>
-        /// Clears the collection.
-        /// </summary>
-        public virtual void Clear()
-        {
-            _nodes.Clear();
-        }
-
-        public virtual void CopyTo(DotCommonNode[] array, int arrayIndex)
-        {
-            _nodes.CopyTo(array, arrayIndex);
-        }
-
-        public virtual IEnumerator<DotCommonNode> GetEnumerator()
-        {
-            return ((IEnumerable<DotCommonNode>)_nodes).GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable<DotCommonNode>)_nodes).GetEnumerator();
+            return this.OfType<DotNode>()
+                       .Where(node => node.Id == id);
         }
     }
 }

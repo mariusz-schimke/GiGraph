@@ -14,18 +14,18 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges (at least a pair is required).</param>
         public virtual DotEdgeSequence AddSequence(params string[] nodeIds)
         {
-            return AddSequence(nodeIds, initEdge: null);
+            return AddSequence(nodeIds, initSequenceAttrs: null);
         }
 
         /// <summary>
         /// Adds a sequence of edges that join specified nodes consecutively.
         /// At least a pair of identifiers has to be provided.
         /// </summary>
-        /// <param name="initEdge">An optional initializer delegate to call for the attributes of the created sequence.</param>
+        /// <param name="initSequenceAttrs">An optional initializer delegate to call for the attributes of the created sequence.</param>
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges (at least a pair is required).</param>
-        public virtual DotEdgeSequence AddSequence(Action<IDotEdgeAttributes> initEdge, params string[] nodeIds)
+        public virtual DotEdgeSequence AddSequence(Action<IDotEdgeAttributes> initSequenceAttrs, params string[] nodeIds)
         {
-            return AddSequence(nodeIds, initEdge);
+            return AddSequence(nodeIds, initSequenceAttrs);
         }
 
         /// <summary>
@@ -33,10 +33,10 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// At least a pair of identifiers has to be provided.
         /// </summary>
         /// <param name="nodeIds">The identifiers of consecutive nodes to connect with edges (at least a pair is required).</param>
-        /// <param name="initEdge">An optional initializer delegate to call for the attributes of the created sequence.</param>
-        public virtual DotEdgeSequence AddSequence(IEnumerable<string> nodeIds, Action<IDotEdgeAttributes> initEdge = null)
+        /// <param name="initSequenceAttrs">An optional initializer delegate to call for the attributes of the created sequence.</param>
+        public virtual DotEdgeSequence AddSequence(IEnumerable<string> nodeIds, Action<IDotEdgeAttributes> initSequenceAttrs = null)
         {
-            return Add(DotEdgeSequence.FromNodes(nodeIds), initEdge);
+            return Add(DotEdgeSequence.FromNodes(nodeIds), initSequenceAttrs);
         }
 
         /// <summary>
@@ -46,18 +46,18 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="endpoints">The endpoints to initialize the instance with (at least a pair is required).</param>
         public virtual DotEdgeSequence AddSequence(params DotCommonEndpoint[] endpoints)
         {
-            return AddSequence(endpoints, initEdge: null);
+            return AddSequence(endpoints, initSequenceAttrs: null);
         }
 
         /// <summary>
         /// Adds a sequence of edges that connect the specified endpoints consecutively.
         /// At least a pair of endpoints has to be provided.
         /// </summary>
-        /// <param name="initEdge">An optional initializer delegate to call for the attributes of the created sequence.</param>
+        /// <param name="initSequenceAttrs">An optional initializer delegate to call for the attributes of the created sequence.</param>
         /// <param name="endpoints">The endpoints to initialize the instance with (at least a pair is required).</param>
-        public virtual DotEdgeSequence AddSequence(Action<IDotEdgeAttributes> initEdge, params DotCommonEndpoint[] endpoints)
+        public virtual DotEdgeSequence AddSequence(Action<IDotEdgeAttributes> initSequenceAttrs, params DotCommonEndpoint[] endpoints)
         {
-            return AddSequence(endpoints, initEdge);
+            return AddSequence(endpoints, initSequenceAttrs);
         }
 
         /// <summary>
@@ -65,10 +65,10 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// At least a pair of endpoints has to be provided.
         /// </summary>
         /// <param name="endpoints">The endpoints to initialize the instance with (at least a pair is required).</param>
-        /// <param name="initEdge">An optional initializer delegate to call for the attributes of the created sequence.</param>
-        public virtual DotEdgeSequence AddSequence(IEnumerable<DotCommonEndpoint> endpoints, Action<IDotEdgeAttributes> initEdge = null)
+        /// <param name="initSequenceAttrs">An optional initializer delegate to call for the attributes of the created sequence.</param>
+        public virtual DotEdgeSequence AddSequence(IEnumerable<DotCommonEndpoint> endpoints, Action<IDotEdgeAttributes> initSequenceAttrs = null)
         {
-            return Add(new DotEdgeSequence(endpoints), initEdge);
+            return Add(new DotEdgeSequence(endpoints), initSequenceAttrs);
         }
     }
 }
