@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Generators.Options
         /// If false, all elements will be rendered in the output script in the order
         /// they were added to graph element collections.
         /// </summary>
-        public virtual bool OrderElements { get; set; } = true;
+        public virtual bool OrderElements { get; set; } = false;
 
         protected DotGenerationOptions(AttributeOptions attributes, SubgraphOptions subgraphs)
         {
