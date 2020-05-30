@@ -8,6 +8,16 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
 {
     public class DotCommonNodeCollection : DotEntityWithIdCollection<DotCommonNode>, IDotEntity
     {
+        protected DotCommonNodeCollection(Func<string, Predicate<DotCommonNode>> matchIdPredicate)
+            : base(matchIdPredicate)
+        {
+        }
+
+        public DotCommonNodeCollection() :
+            base(matchIdPredicate: id => commonNode => commonNode is DotNode node && node.Id == id)
+        {
+        }
+
         protected virtual T Add<T>(T node, Action<IDotNodeAttributes> initNode)
             where T : DotCommonNode
         {
@@ -87,16 +97,20 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <summary>
         /// Gets a node with the specified identifier from the collection.
         /// </summary>
-        /// <param name="id">The identifier of the node to add.</param>
+        /// <param name="id">The identifier of the node to get.</param>
         public virtual DotNode Get(string id)
         {
-            return this.OfType<DotNode>()
-                       .FirstOrDefault(node => node.Id == id);
+            return GetAll(id).FirstOrDefault();
         }
 
-        public override int IndexOf(string id)
+        /// <summary>
+        /// Gets all nodes with the specified identifier from the collection.
+        /// </summary>
+        /// <param name="id">The identifier of the nodes to get.</param>
+        public virtual IEnumerable<DotNode> GetAll(string id)
         {
-            return FindIndex(comonNode => comonNode is DotNode node && node.Id == id);
+            return this.OfType<DotNode>()
+                       .Where(node => node.Id == id);
         }
     }
 }
