@@ -545,8 +545,6 @@ Console.WriteLine( graph.Build(formatting) );
 graph.SaveToFile( @"C:\MyGraphs\hello-world.gv", formatting );
 ```
 
-
-
 The hello world example from the earlier chapter of the text would render like this:
 
 ```dot
@@ -557,7 +555,7 @@ digraph { Hello -> "World!" }
 
 ### Syntax preferences
 
-Syntax preferences can be modified using the **DotFormattingOptions** class. You can for example force statement delimiters (*;*) at the end of lines or require identifiers to be quoted, even if it is not required.
+Syntax preferences can be modified using the **DotGenerationOptions** class. You can for example force statement delimiters (*;*) at the end of lines or require identifiers to be quoted, even if it is not required.
 
 ```c#
 ...
@@ -600,3 +598,10 @@ digraph
 }
 ```
 
+
+
+#### Sorting elements of the DOT script
+
+Using mentioned **DotFormattingOptions**, and its *OrderElements* property, you can also enable sorting elements of the output script alphabetically. This comes in handy when the graph is built based on some input elements the order of which changes each time you generate the graph. Sometimes you need to compare the output to its other versions, and in such cases you want to see only actual differences, not the lines that only moved from one place of the file to another, without actually changing. When you enable this setting, all attribute lists, the lists of edges, nodes, and subgraphs/clusters, will always be ordered alphabetically. This way you should get more consistent outputs on every build.
+
+Have in mind, however, that even though this feature does not affect the structure of the graph, it may affect the locations of some elements when the graph is visualized, but in the described scenario this will probably be of no importance.
