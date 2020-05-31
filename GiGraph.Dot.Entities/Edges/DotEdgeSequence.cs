@@ -46,21 +46,21 @@ namespace GiGraph.Dot.Entities.Edges
         {
         }
 
-        protected override string GetOrderingKey()
-        {
-            return string.Join(" ", Endpoints
-                .Cast<IDotOrderableEntity>()
-                .Select(endpoint => endpoint.OrderingKey));
-        }
-
         /// <summary>
         /// Creates a new edge sequence initialized with the specified node identifiers.
         /// At least a pair of identifiers has to be provided.
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
-        public static DotEdgeSequence FromNodes(params string[] nodeIds)
+        public DotEdgeSequence(params string[] nodeIds)
+            : this(nodeIds.Select(nodeId => new DotEndpoint(nodeId)))
         {
-            return FromNodes(nodeIds, initEndpoint: null);
+        }
+
+        protected override string GetOrderingKey()
+        {
+            return string.Join(" ", Endpoints
+                .Cast<IDotOrderableEntity>()
+                .Select(endpoint => endpoint.OrderingKey));
         }
 
         /// <summary>
