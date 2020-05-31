@@ -560,13 +560,27 @@ myGraph.Nodes.Add("MyNodeId1", node =>
 
 
 
+You can also manually instantiate a node or a node group, and add it to the collection:
+
+```c#
+var node = new DotNode("MyNodeId1");
+graph.Nodes.Add(node);
+```
+
+```c#
+var nodeGroup = new DotNodeGroup("MyNodeId1", "MyNodeId2", "MyNodeId3");
+graph.Nodes.Add(nodeGroup);
+```
+
+
+
 *Note that **a node does not necessarily have to be added to the nodes collection** of the graph or subgraph when it is referenced by an edge in the collection of edges (as long as there is no need to specify any attributes for the node, for example).*
 
 
 
 ### Edge
 
-Edges **connect two nodes** by referring to their identifiers. They support customizing which side and/or cell (when records are used) of the node the head and tail of the edge is attached to.
+Edges **join two nodes** by referring to their identifiers. They support customizing which side and/or cell (when records are used) of the node the head and tail of the edge is attached to.
 
 ```c#
 var edge = graph.Edges.Add("MyNodeId1", "MyNodeId2");
@@ -576,6 +590,40 @@ edge.Tail.CompassPoint = DotCompassPoint.North;
 
 // the head of the edge will be attached to the bottom of the node
 edge.Head.CompassPoint = DotCompassPoint.South;
+```
+
+
+
+You can also manually instantiate a node, a node group or a node sequence (see the building blocks section), and add it to the collection:
+
+```c#
+// join two nodes
+var edge = new DotEdge("MyNodeId1", "MyNodeId2");
+graph.Edges.Add(edge);
+```
+
+```c#
+// join one node with multiple nodes (see also two other combinations, that is many to one, and many to many)
+var edgeGroup = new DotOneToManyEdgeGroup("MyNode Src", "MyNode Dst 1", "MyNode Dst 2");
+graph.Edges.Add(edgeGroup);
+```
+
+
+
+```c#
+// join a sequence of consecutive nodes
+var edgeSequence = new DotEdgeSequence("MyNodeId1", "MyNodeId2", "MyNodeId3");
+graph.Edges.Add(edgeSequence);
+```
+
+```c#
+// join a sequence of consecutive nodes and groups of nodes
+var edgeSequence = new DotEdgeSequence(
+    new DotEndpoint("MyNodeId1"),
+    new DotEndpointGroup("MyNodeId2", "MyNodeId3", "MyNodeId4"),
+    new DotEndpoint("MyNodeId5"));
+
+graph.Edges.Add(edgeSequence);
 ```
 
 
@@ -600,6 +648,9 @@ The root graph and the subgraphs allow you to set **global defaults** for all no
 
 ```c#
 myGraph.NodeDefaults.Color = Color.Yellow;
+```
+
+```c#
 myGraph.EdgeDefaults.Color = Color.Red;
 ```
 
