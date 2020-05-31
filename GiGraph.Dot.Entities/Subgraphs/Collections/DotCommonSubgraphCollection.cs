@@ -16,7 +16,12 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         {
         }
 
-        protected virtual T Add(T subgraph, Action<T> init)
+        /// <summary>
+        /// Adds a subgraph to the collection and initializes it.
+        /// </summary>
+        /// <param name="subgraph">The subgraph to add.</param>
+        /// <param name="init">An optional initializer delegate.</param>
+        public virtual T Add(T subgraph, Action<T> init)
         {
             Add(subgraph);
             init?.Invoke(subgraph);
