@@ -5,7 +5,7 @@
 // associated with an assembly.
 [assembly: AssemblyDescription("Simple yet versatile library for generating graphs in the DOT language")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Mariusz Schimke")]
 [assembly: AssemblyProduct("GiGraph DOT")]
 [assembly: AssemblyCopyright("Copyright © 2020 Mariusz Schimke")]
 [assembly: AssemblyTrademark("")]
