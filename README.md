@@ -31,7 +31,7 @@ namespace GiGraph.Examples
             // create a new graph (directed or undirected)
             var graph = new DotGraph(isDirected: true);
             
-            // add an edge that connects the two specified nodes
+            // add an edge that joins the two specified nodes
             // (you don't have to add the nodes to the node collection of the graph
             // unless you need to specify some attributes for them)
             graph.Edges.Add("Hello", "World!");
@@ -50,7 +50,7 @@ namespace GiGraph.Examples
 
 
 
-Here's what you get on the console and in the file:
+Here's what you get on the console, and in the file:
 
 ```dot
 digraph
@@ -61,7 +61,7 @@ digraph
 
 
 
-Here's a visualization generated based on the script:
+Here's how the script is visualized:
 
 <p align="center">
   <img src="/Assets/Examples/hello-world-directed.svg">
@@ -73,9 +73,7 @@ Here's a visualization generated based on the script:
 And here's an example of an undirected version of the same graph:
 
 ```c#
-...
 var graph = new DotGraph(isDirected: false);
-...
 ```
 
 ```dot
@@ -202,7 +200,7 @@ myGraph.Edges.Add("MyNodeId1", "MyNodeId2");
 Graph nodes and edges can by styled globally, locally, and individually.
 
 - To set their attributes globally, for the whole graph, use *NodeDefaults* and *EdgeDefaults* on the graph instance.
-- To set them locally, for a group of nodes and edges, use a subgraph or a cluster, and set above properties on the subgraph/cluster instance (see the examples below to know the difference between these two types).
+- To set them locally, for a group of nodes and edges, use a subgraph or a cluster, and set above properties on the subgraph/cluster instance (see the examples below to know the difference between a subgraph and a cluster).
 - To set them individually for edges and nodes, use the *Attributes* property on the edge/node instances.
 
 ```c#
@@ -220,7 +218,7 @@ namespace GiGraph.Examples
         {
             var graph = new DotGraph(isDirected: true);
 
-            // set left to right layout direction of the graph
+            // set left to right layout direction of the graph using graph attributes
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
 
 
@@ -325,11 +323,11 @@ digraph
 
 ## Clusters example
 
-A cluster subgraph represented by the **DotCluster** class is a special type of subgraph whose appearance can be customized (as opposed to a normal subgraph, represented by the **DotSubgraph** class). If supported, the layout engine used to render it, will do the layout so that the nodes belonging to the cluster are drawn together, with the entire drawing of the cluster contained within a bounding rectangle. 
+A cluster is represented by the **DotCluster** class. It is a special type of subgraph whose appearance can be customized (as opposed to the subgraph represented by the **DotSubgraph** class). If supported, the layout engine used to render a cluster subgraph, will do the layout so that the nodes belonging to the cluster are drawn together, with the entire drawing of the cluster contained within a bounding rectangle. 
 
 *Note that cluster subgraphs are not part of the DOT language, but solely a syntactic convention adhered to by certain of the layout engines.*
 
-Cluster subgraphs do not support setting custom node layout the way normal subgraphs do, but they do support setting common style of nodes and edges within it.
+Cluster subgraphs do not support setting custom node layout the way normal subgraphs do, but they do support setting common style of nodes and edges within them.
 
 ```c#
 using GiGraph.Dot.Entities.Attributes.Enums;
@@ -407,32 +405,30 @@ digraph
     label = "Example Flow"
     rankdir = LR
 
+    Start [ shape = circle ]
     Decision [ shape = diamond ]
     Exit [ shape = doublecircle ]
-    Start [ shape = circle ]
 
-    "Cluster 1 Exit" -> Exit
-    "Cluster 2 Exit" -> Exit
+    Start -> Decision
     Decision -> "Cluster 1 Start" [ label = yes ]
     Decision -> "Cluster 2 Start" [ label = no ]
-    Start -> Decision
-
-    subgraph "cluster Negative path"
-    {
-        bgcolor = "#ffb6c1ff"
-        label = "Negative path"
-
-        "Cluster 2 Node" -> "Cluster 2 Exit"
-        "Cluster 2 Start" -> "Cluster 2 Node"
-    }
+    "Cluster 1 Exit" -> Exit
+    "Cluster 2 Exit" -> Exit
 
     subgraph "cluster Positive path"
     {
         bgcolor = "#90ee90ff"
         label = "Positive path"
 
-        "Cluster 1 Node" -> "Cluster 1 Exit"
-        "Cluster 1 Start" -> "Cluster 1 Node"
+        "Cluster 1 Start" -> "Cluster 1 Node" -> "Cluster 1 Exit"
+    }
+
+    subgraph "cluster Negative path"
+    {
+        label = "Negative path"
+        bgcolor = "#ffb6c1ff"
+
+        "Cluster 2 Start" -> "Cluster 2 Node" -> "Cluster 2 Exit"
     }
 }
 ```

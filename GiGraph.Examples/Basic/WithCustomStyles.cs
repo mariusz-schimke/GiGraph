@@ -11,7 +11,7 @@ namespace GiGraph.Examples.Basic
         {
             var graph = new DotGraph(isDirected: true);
 
-            // set left to right layout direction of the graph
+            // set left to right layout direction of the graph using graph attributes
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
 
 

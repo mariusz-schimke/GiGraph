@@ -10,12 +10,15 @@ namespace GiGraph.Examples.Complex
         {
             var graph = new DotGraph(isDirected: true);
 
+            // set graph attributes
             graph.Attributes.Label = "Example Flow";
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
 
+            // set individual node styles
             graph.Nodes.Add("Start").Attributes.Shape = DotShape.Circle;
             graph.Nodes.Add("Decision").Attributes.Shape = DotShape.Diamond;
             graph.Nodes.Add("Exit").Attributes.Shape = DotShape.DoubleCircle;
+
 
             // --- define edges ---
 
@@ -32,7 +35,7 @@ namespace GiGraph.Examples.Complex
 
             // --- add clusters ---
 
-            // (!) Note that clusters do not require an identifier, but when you don't specify it
+            // (!) Note that even though clusters do not require an identifier, when you don't specify it
             // for multiple of them, or specify the same identifier for multiple clusters,
             // they will be treated as one cluster when visualized.
 
