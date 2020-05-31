@@ -527,6 +527,9 @@ There are two types of graphs:
 
 ```c#
 var graph = new DotGraph(isDirected: false);
+
+// or
+graph.IsDirected = false;
 ```
 
 
@@ -534,6 +537,9 @@ var graph = new DotGraph(isDirected: false);
 When you want to forbid creating multi-edges, use the *IsStrict* property. In strict graphs there can be at most one edge with a given tail node and head node in the directed case.
 
 ```c#
+var graph = new DotGraph(isStrict: true);
+
+// or
 myGraph.IsStrict = true;
 ```
 
@@ -541,9 +547,10 @@ myGraph.IsStrict = true;
 
 ### Node
 
-Nodes are distinguished by their **identifiers**. The identifiers are used by edges to refer to a head and a tail node that they connect. If you don't specify a **label** attribute for a node, the identifier will also be used as a label when visualized.
+Nodes are distinguished by their **identifiers**. The identifiers are used by edges to refer to a head and a tail node that they join. If you don't specify a **label** attribute for a node, the identifier will also be used as a label when the node is visualized.
 
 ```c#
+// add the node to the nodes collection of the graph (or subgraph/cluster)
 myGraph.Nodes.Add("MyNodeId1", node =>
 {
     node.Attributes.Label = "Hello World!";
@@ -559,35 +566,40 @@ myGraph.Nodes.Add("MyNodeId1", node =>
 
 ### Edge
 
-Edges **connect two nodes** by referring to their identifiers. Edges may also **connect two subgraphs** or **a single node with a subgraph** (or the other way round). In both these cases such connection is interpreted as a many-to-many or a one-to-many connection respectively, between the nodes within the subgraphs or between the single node, and the nodes in the subgraph.
-
-It supports customizing which side and/or cell (when records are used) of the node the head and tail of the edge is attached to.
+Edges **connect two nodes** by referring to their identifiers. They support customizing which side and/or cell (when records are used) of the node the head and tail of the edge is attached to.
 
 ```c#
-myGraph.Edges.Add("MyNodeId1", "MyNodeId2");
+var edge = graph.Edges.Add("MyNodeId1", "MyNodeId2");
+
+// the tail of the edge will be attached to the top of the node
+edge.Tail.CompassPoint = DotCompassPoint.North;
+
+// the head of the edge will be attached to the bottom of the node
+edge.Head.CompassPoint = DotCompassPoint.South;
 ```
 
 
 
 ### Attributes
 
-Each individual element described above may have **attributes**, like background color, style, node shape, arrow head shape and so on. You don't have to specify them, however, and if you don't, the visualizing tool will use its own style defaults for rendering them.
+Each individual element described above may have **attributes** like background color, style, node shape, arrow head shape and so on. You don't have to specify them, however, and if you don't, the visualizing tool will use its own style defaults for rendering them.
 
 ```c#
-myElement.Attributes.Label = "This is a label";
+myNode.Attributes.Label = "My node label";
+```
+
+```c#
+myEdge.Attributes.Label = "My edge label";
 ```
 
 
 
 ### Default attributes
 
-The root graph and the subgraphs allow you to set **global defaults** for all nodes and/or edges within them, so that you don't have to set them individually for every element they contain.
+The root graph and the subgraphs allow you to set **global defaults** for all nodes and/or edges within them, so that you don't have to specify them individually for every element.
 
 ```c#
 myGraph.NodeDefaults.Color = Color.Yellow;
-```
-
-```c#
 myGraph.EdgeDefaults.Color = Color.Red;
 ```
 
