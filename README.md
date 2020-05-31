@@ -89,112 +89,6 @@ graph
 
 
 
-
-# 
-
-
-
-# Intro
-
-### Building blocks
-
-There are three basic types that are the building blocks of a graph:
-
-- **DotGraph** - the *root* graph itself,
-- **DotNode** - a node of the graph,
-- **DotEdge** - an edge that connects two nodes (or more, when subgraphs are used).
-
-In some cases **subgraphs** come in handy, and there are two types of them:
-
-- **DotSubgraph** - groups nodes together *logically* and allows you to control their layout against other nodes in the graph,
-- **DotCluster** - a special type of subgraph that groups nodes together *visually* by placing them inside a rectangle.
-
-
-
-### Attributes
-
-Each individual element described above may have **attributes**, like background color, style, node shape, arrow head shape and so on. You don't have to specify them, however, and if you don't, the visualizing tool will use its own style defaults for rendering them.
-
-```c#
-myElement.Attributes.Label = "This is a label";
-```
-
-
-
-### Default attributes
-
-The root graph and the subgraphs allow you to set **global defaults** for all nodes and/or edges within them, so that you don't have to set them individually for every element they contain.
-
-```c#
-myGraph.NodeDefaults.Color = Color.Yellow;
-```
-
-```c#
-myGraph.EdgeDefaults.Color = Color.Red;
-```
-
-
-
-## Graph
-
-Graphs contains nodes (vertices) and edges, and may optionally have some attributes set, that determine their style, layout etc.
-
-
-
-There are two types of graphs:
-
-- **directed** (the edges are presented as arrows),
-- **undirected** (the edges are presented as lines).
-
-```c#
-myGraph.IsDirected = true;
-```
-
-
-
-When you want to forbid creating multi-edges, use the *IsStrict* property. In strict graphs there can be at most one edge with a given tail node and head node in the directed case.
-
-```c#
-myGraph.IsStrict = true;
-```
-
-
-
-
-
-## Node
-
-Nodes are distinguished by their **identifiers**. The identifiers are used by edges to refer to a head and a tail node that they connect. If you don't specify a **label** attribute for a node, the identifier will also be used as a label when visualized.
-
-```c#
-myGraph.Nodes.Add("MyNodeId1", node =>
-{
-    node.Attributes.Label = "Hello World!";
-    node.Attributes.Shape = DotShape.Hexagon;
-});
-```
-
-
-
-*Note that **a node does not necessarily have to be added to the nodes collection** of the graph or subgraph when it is referenced by an edge in the collection of edges (as long as there is no need to specify any attributes for the node, for example).*
-
-
-
-## Edge
-
-Edges **connect two nodes** by referring to their identifiers. Edges may also **connect two subgraphs** or **a single node with a subgraph** (or the other way round). In both these cases such connection is interpreted as a many-to-many or a one-to-many connection respectively, between the nodes within the subgraphs or between the single node, and the nodes in the subgraph.
-
-```c#
-myGraph.Edges.Add("MyNodeId1", "MyNodeId2");
-```
-
-
-
-
-# More Examples
-
-
-
 ## Customizing style
 
 Graph nodes and edges can by styled globally, locally, and individually.
@@ -321,7 +215,8 @@ digraph
 
 
 
-## Clusters example
+
+## Using clusters
 
 A cluster is represented by the **DotCluster** class. It is a special type of subgraph whose appearance can be customized (as opposed to the subgraph represented by the **DotSubgraph** class). If supported, the layout engine used to render a cluster subgraph, will do the layout so that the nodes belonging to the cluster are drawn together, with the entire drawing of the cluster contained within a bounding rectangle. 
 
@@ -442,6 +337,7 @@ digraph
 </p>
 
 
+
 ## Subgraphs example
 
 Subgraph, represented by the **DotSubgraph** class, is a collection of nodes constrained with a rank attribute, that determines their layout.  Use a subgraph when you want to have more granular control on the layout and style of specific nodes.
@@ -460,11 +356,13 @@ Consider the following graph in which all nodes are laid out automatically:
 
 
 
+
 By using **subgraphs with a rank attribute** specified, you can change the way individual node groups are visualized:
 
 <p align="center">
   <img src="/Assets/Examples/complex-graph-with-subgraphs.svg">
 </p>
+
 
 
 
@@ -529,6 +427,96 @@ namespace GiGraph.Examples
         }
     }
 }
+```
+
+
+
+# Building blocks
+
+There are three basic types that are the building blocks of a graph:
+
+- **DotGraph** - the *root* graph itself,
+- **DotNode** - a node of the graph,
+- **DotEdge** - an edge that connects two nodes (or more, when subgraphs are used).
+
+In some cases **subgraphs** come in handy, and there are two types of them:
+
+- **DotSubgraph** - groups nodes together *logically* and allows you to control their layout against other nodes in the graph,
+- **DotCluster** - a special type of subgraph that groups nodes together *visually* by placing them inside a rectangle.
+
+
+
+### Graph
+
+Graphs contains nodes (vertices) and edges, and may optionally have some attributes set, that determine their style, layout etc.
+
+There are two types of graphs:
+
+- **directed** (the edges are presented as arrows),
+- **undirected** (the edges are presented as lines).
+
+```c#
+myGraph.IsDirected = true;
+```
+
+
+
+When you want to forbid creating multi-edges, use the *IsStrict* property. In strict graphs there can be at most one edge with a given tail node and head node in the directed case.
+
+```c#
+myGraph.IsStrict = true;
+```
+
+
+
+### Node
+
+Nodes are distinguished by their **identifiers**. The identifiers are used by edges to refer to a head and a tail node that they connect. If you don't specify a **label** attribute for a node, the identifier will also be used as a label when visualized.
+
+```c#
+myGraph.Nodes.Add("MyNodeId1", node =>
+{
+    node.Attributes.Label = "Hello World!";
+    node.Attributes.Shape = DotShape.Hexagon;
+});
+```
+
+
+
+*Note that **a node does not necessarily have to be added to the nodes collection** of the graph or subgraph when it is referenced by an edge in the collection of edges (as long as there is no need to specify any attributes for the node, for example).*
+
+
+
+### Edge
+
+Edges **connect two nodes** by referring to their identifiers. Edges may also **connect two subgraphs** or **a single node with a subgraph** (or the other way round). In both these cases such connection is interpreted as a many-to-many or a one-to-many connection respectively, between the nodes within the subgraphs or between the single node, and the nodes in the subgraph.
+
+```c#
+myGraph.Edges.Add("MyNodeId1", "MyNodeId2");
+```
+
+
+
+### Attributes
+
+Each individual element described above may have **attributes**, like background color, style, node shape, arrow head shape and so on. You don't have to specify them, however, and if you don't, the visualizing tool will use its own style defaults for rendering them.
+
+```c#
+myElement.Attributes.Label = "This is a label";
+```
+
+
+
+### Default attributes
+
+The root graph and the subgraphs allow you to set **global defaults** for all nodes and/or edges within them, so that you don't have to set them individually for every element they contain.
+
+```c#
+myGraph.NodeDefaults.Color = Color.Yellow;
+```
+
+```c#
+myGraph.EdgeDefaults.Color = Color.Red;
 ```
 
 
