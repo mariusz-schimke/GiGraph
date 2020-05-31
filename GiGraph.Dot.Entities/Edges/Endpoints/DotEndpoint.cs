@@ -57,7 +57,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         ///     If no compass point is specified explicitly with a <paramref name="portName"/>,
         ///     the default value is <see cref="DotCompassPoint.Center"/>.
         /// </param>
-        public DotEndpoint(string nodeId, string portName = null, DotCompassPoint? compassPoint = null)
+        public DotEndpoint(string nodeId, string portName, DotCompassPoint? compassPoint = null)
         {
             NodeId = nodeId;
             PortName = portName;

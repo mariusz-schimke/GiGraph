@@ -18,7 +18,13 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         {
         }
 
-        protected virtual T Add<T>(T node, Action<IDotNodeAttributes> initAttrs)
+        /// <summary>
+        /// Adds a node to the collection and initializes its attributes.
+        /// </summary>
+        /// <typeparam name="T">The type of node to add.</typeparam>
+        /// <param name="node">The node to add.</param>
+        /// <param name="initAttrs">An optional node attributes initializer delegate.</param>
+        public virtual T Add<T>(T node, Action<IDotNodeAttributes> initAttrs)
             where T : DotCommonNode
         {
             Add(node);
