@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
     /// Note that cluster subgraphs are not part of the DOT language, but solely a syntactic convention adhered to by certain of the layout engines.
     /// <para>
     ///     Cluster subgraphs (<see cref="DotCluster"/>) do not support setting custom node layout the way normal subgraphs (<see cref="DotSubgraph"/>) do,
-    ///     but they do support setting common style of nodes and edges within it.
+    ///     but they do support setting common style of nodes and edges within them.
     /// </para>
     /// </summary>
     public class DotCluster : DotCommonSubgraph
