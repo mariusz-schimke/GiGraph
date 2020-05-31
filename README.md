@@ -37,10 +37,10 @@ namespace GiGraph.Examples
             graph.Edges.Add("Hello", "World!");
 
             // write it to console as string
-            Console.WriteLine( graph.Build() );
+            Console.WriteLine(graph.Build());
             
             // or save it to a file (.gv and .dot are the default extensions)
-            graph.SaveToFile( @"C:\MyGraphs\hello-world.gv" );
+            graph.SaveToFile(@"C:\MyGraphs\example.gv");
             
             Console.Read();
         }
@@ -344,12 +344,15 @@ namespace GiGraph.Examples
         {
             var graph = new DotGraph(isDirected: true);
 
+            // set graph attributes
             graph.Attributes.Label = "Example Flow";
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
 
+            // set individual node styles
             graph.Nodes.Add("Start").Attributes.Shape = DotShape.Circle;
             graph.Nodes.Add("Decision").Attributes.Shape = DotShape.Diamond;
             graph.Nodes.Add("Exit").Attributes.Shape = DotShape.DoubleCircle;
+
 
             // --- define edges ---
 
@@ -366,32 +369,33 @@ namespace GiGraph.Examples
 
             // --- add clusters ---
 
-            // (!) Note that clusters do not require an identifier, but when you don't specify it
+            // (!) Note that even though clusters do not require an identifier, when you don't specify it
             // for multiple of them, or specify the same identifier for multiple clusters,
             // they will be treated as one cluster when visualized.
 
-            graph.Subgraphs.AddCluster(id: "Positive path", cluster =>
+            graph.Clusters.Add(id: "Positive path", cluster =>
             {
                 cluster.Attributes.BackgroundColor = Color.LightGreen;
                 cluster.Attributes.Label = "Positive path";
 
-                cluster.Edges.Add("Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit");
+                cluster.Edges.AddSequence("Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit");
             });
 
-            graph.Subgraphs.AddCluster(id: "Negative path", cluster =>
+            graph.Clusters.Add(id: "Negative path", cluster =>
             {
                 cluster.Attributes.Label = "Negative path";
                 cluster.Attributes.BackgroundColor = Color.LightPink;
 
-                cluster.Edges.Add("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");
+                cluster.Edges.AddSequence("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");
             });
+
 
             // build a graph as string
             var graphString = graph.Build();
             Console.WriteLine(graphString);
 
             // or save it to a file (.gv and .dot are the default extensions)
-            graph.SaveToFile( @"C:\MyGraphs\clusters-example.gv" );
+            graph.SaveToFile(@"C:\MyGraphs\example.gv");
 
             Console.ReadLine();
         }
