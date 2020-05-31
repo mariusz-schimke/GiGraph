@@ -605,7 +605,11 @@ graph.Nodes.Add(nodeGroup);
 Edges **join two nodes** by referring to their identifiers. They support customizing which side and/or cell (when records are used) of the node the head and tail of the edge is attached to.
 
 ```c#
-var edge = graph.Edges.Add("MyNodeId1", "MyNodeId2");
+var edge = graph.Edges.Add("MyNodeId1", "MyNodeId2", attrs =>
+{
+    attrs.Label = "Foo";
+    attrs.Color = Color.Blue;
+});
 
 // the tail of the edge will be attached to the top of the node
 edge.Tail.CompassPoint = DotCompassPoint.North;
@@ -616,21 +620,77 @@ edge.Head.CompassPoint = DotCompassPoint.South;
 
 
 
-You can also manually instantiate a node, a node group or a node sequence (see the building blocks section), and add it to the collection:
+You can also manually instantiate an edge with endpoints, and add it to the collection:
 
 ```c#
-// join two nodes
 var edge = new DotEdge("MyNodeId1", "MyNodeId2");
+edge.Tail.CompassPoint = DotCompassPoint.North;
+edge.Head.CompassPoint = DotCompassPoint.South;
+
+// or another way
+edge = new DotEdge(
+    new DotEndpoint("MyNodeId1", DotCompassPoint.North),
+    new DotEndpoint("MyNodeId2", DotCompassPoint.South));
+
+edge.Attributes.Label = "Foo";
+edge.Attributes.Color = Color.Blue;
+
 graph.Edges.Add(edge);
 ```
 
+
+
+#### Edge group
+
+Edge groups join a single node with multiple nodes, or multiple nodes with multiple nodes.
+
 ```c#
-// join one node with multiple nodes (see also two other combinations, that is many to one, and many to many)
+// join one node with multiple nodes
 var edgeGroup = new DotOneToManyEdgeGroup("MyNode Src", "MyNode Dst 1", "MyNode Dst 2");
+
+// or another way
+edgeGroup = new DotOneToManyEdgeGroup(
+    new DotEndpoint("MyNode Src"),
+    new DotEndpointGroup("MyNode Dst 1", "MyNode Dst 2"));
+
 graph.Edges.Add(edgeGroup);
+
+// which is equivalent to
+graph.Edges.AddOneToMany("MyNode Src", "MyNode Dst 1", "MyNode Dst 2");
+```
+
+```c#
+// join multiple nodes with one node
+var edgeGroup = new DotManyToOneEdgeGroup("MyNode Dst", "MyNode Src 1", "MyNode Src 2");
+
+// or another way
+edgeGroup = new DotManyToOneEdgeGroup(
+    new DotEndpointGroup("MyNode Dst 1", "MyNode Dst 2"),
+    new DotEndpoint("MyNode Src"));
+
+graph.Edges.Add(edgeGroup);
+
+// which is equivalent to
+graph.Edges.AddManyToOne("MyNode Dst", "MyNode Src 1", "MyNode Src 2");
+```
+
+```c#
+// join multiple nodes with multiple nodes
+var edgeGroup = new DotManyToManyEdgeGroup(
+    new DotEndpointGroup("MyNode Src 1", "MyNode Src 2"),
+    new DotEndpointGroup("MyNode Dst 1", "MyNode Dst 2"));
+
+graph.Edges.Add(edgeGroup);
+
+// which is equivalent to
+graph.Edges.AddManyToMany(
+    new DotEndpointGroup("MyNode Src 1", "MyNode Src 2"),
+    new DotEndpointGroup("MyNode Dst 1", "MyNode Dst 2"));
 ```
 
 
+
+#### Edge sequence
 
 ```c#
 // join a sequence of consecutive nodes
