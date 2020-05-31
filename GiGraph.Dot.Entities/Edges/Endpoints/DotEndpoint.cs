@@ -57,11 +57,24 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         ///     If no compass point is specified explicitly with a <paramref name="portName"/>,
         ///     the default value is <see cref="DotCompassPoint.Center"/>.
         /// </param>
-        public DotEndpoint(string nodeId, string portName = null, DotCompassPoint? compassPoint = null)
+        public DotEndpoint(string nodeId, string portName, DotCompassPoint? compassPoint = null)
         {
             NodeId = nodeId;
             PortName = portName;
             CompassPoint = compassPoint;
+        }
+
+
+        /// <summary>
+        /// Creates a new instance of the class.
+        /// </summary>
+        /// <param name="nodeId">The node identifier.</param>
+        /// <param name="compassPoint">Determines the edge placement to aim for the specified compass point on the node.
+        /// If no compass point is specified explicitly with a <see cref="PortName"/>,
+        /// the default value is <see cref="DotCompassPoint.Center"/>.</param>
+        public DotEndpoint(string nodeId, DotCompassPoint? compassPoint = null)
+            : this(nodeId, portName: null, compassPoint)
+        {
         }
 
         protected override string GetOrderingKey()

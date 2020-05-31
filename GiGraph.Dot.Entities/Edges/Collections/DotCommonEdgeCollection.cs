@@ -27,7 +27,13 @@ namespace GiGraph.Dot.Entities.Edges.Collections
             _matchLoopPredicate = commonEdge => DotEdge.IsLoopEdge(commonEdge);
         }
 
-        protected virtual T Add<T>(T edge, Action<IDotEdgeAttributes> initAttrs)
+        /// <summary>
+        /// Adds an edge to the collection and initializes its attributes.
+        /// </summary>
+        /// <typeparam name="T">The type of edge to add.</typeparam>
+        /// <param name="edge">The edge to add.</param>
+        /// <param name="initAttrs">An optional edge attributes initializer delegate.</param>
+        public virtual T Add<T>(T edge, Action<IDotEdgeAttributes> initAttrs)
             where T : DotCommonEdge
         {
             Add(edge);
