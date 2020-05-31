@@ -346,11 +346,9 @@ Subgraph does not have any border or fill, as opposed to cluster subgraph, repre
 
 A subgraph supports setting common style of nodes and edges within it, as well as the layout of nodes (by the **rank attribute**).
 
-A subgraph can also be used to simplify adding multiple edges at once. You can, for example, join a node to a subgraph, in which case the node will be joined by edges with all nodes within the subgraph.
 
 
-
-But let's go back to layout. Consider the following graph, for which we didn't specify any node layout preferences, except the left-to-right layout direction of the graph itself:
+Consider the following graph, for which we didn't specify any node layout preferences, except the left-to-right layout direction of the graph itself:
 
 <p align="center">
   <img src="/Assets/Examples/complex-graph.svg">
@@ -365,6 +363,7 @@ By using **subgraphs with a rank attribute**, you can change the way individual 
   <img src="/Assets/Examples/complex-graph-with-subgraphs.svg">
 </p>
 
+The nodes embedded in subgraphs with rank *DotRank.Same* are visualized in the same rows. The nodes in a subgraph with *DotRank.Max* are pushed together towards the border.
 
 
 
@@ -427,6 +426,8 @@ namespace GiGraph.Examples
     }
 }
 ```
+
+And here's the complete DOT output with subgraphs:
 
 ```DOT
 graph
