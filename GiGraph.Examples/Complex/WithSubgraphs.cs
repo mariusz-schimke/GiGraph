@@ -28,22 +28,17 @@ namespace GiGraph.Examples.Complex
             graph.Edges.AddOneToMany("m", "o", "p", "n");
             graph.Edges.AddOneToMany("n", "q", "r");
             graph.Edges.AddOneToMany("o", "s", "p");
-            graph.Edges.AddOneToMany("p", "s", "t", "q");
+            graph.Edges.AddOneToMany("p", "t", "q");
             graph.Edges.AddOneToMany("q", "t", "r");
 
-            graph.Edges.AddManyToOne("z", "s", "t", "v", "w", "x", "y");
-
-
-            // add subgraphs to control the layout of some node groups
+            // add subgraphs to control the layout of individual node groups
+            // (check how the visualization changes when you remove these lines)
             graph.Subgraphs.Add(DotRank.Same).Nodes.Add("b", "c", "d");
             graph.Subgraphs.Add(DotRank.Same).Nodes.Add("e", "f", "g");
             graph.Subgraphs.Add(DotRank.Same).Nodes.Add("h", "i", "j", "k");
             graph.Subgraphs.Add(DotRank.Same).Nodes.Add("l", "m", "n");
-            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("o", "p", "q", "r");
-            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("s", "t");
-            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("z", "y");
-
-            graph.Subgraphs.Add(DotRank.Max).Nodes.Add("v", "w", "x");
+            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("q", "r");
+            graph.Subgraphs.Add(DotRank.Max).Nodes.Add("o", "s", "p");
 
             return graph;
         }
