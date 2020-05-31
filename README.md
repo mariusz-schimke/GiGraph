@@ -518,7 +518,7 @@ Auxiliary types:
 
 
 
-### Graph
+## Graph
 
 There are two types of graphs:
 
@@ -545,7 +545,7 @@ graph.IsStrict = true;
 
 
 
-### Node
+## Node
 
 Nodes are distinguished by their **identifiers**. The identifiers are used by edges to refer to a head and a tail node that they join. If you don't specify a **label** attribute for a node, the identifier will also be used as a label when the node is visualized.
 
@@ -600,7 +600,7 @@ graph.Nodes.Add(nodeGroup);
 
 
 
-### Edge
+## Edge
 
 Edges **join two nodes** by referring to their identifiers. They support customizing which side and/or cell (when records are used) of the node the head and tail of the edge is attached to.
 
@@ -636,11 +636,18 @@ edge.Attributes.Label = "Foo";
 edge.Attributes.Color = Color.Blue;
 
 graph.Edges.Add(edge);
+
+// or simply
+graph.Edges.Add(edge, attrs =>
+{
+    attrs.Label = "Foo";
+    attrs.Color = Color.Blue;
+});
 ```
 
 
 
-#### Edge group
+### Edge group
 
 Edge groups join a single node with multiple nodes, or multiple nodes with multiple nodes.
 
@@ -690,12 +697,21 @@ graph.Edges.AddManyToMany(
 
 
 
-#### Edge sequence
+Each group used in the above examples supports attributes. You can set them either directly on a group instance, or by using a delegate passed by an argument of the *AddOneToMany*, *AddManyToOne*, *AddManyToMany* methods on the *Edges* collection.
+
+
+
+### Edge sequence
+
+An edge sequence lets you join a sequence of consecutive nodes an/or node groups represented by subgraphs.
 
 ```c#
 // join a sequence of consecutive nodes
 var edgeSequence = new DotEdgeSequence("MyNodeId1", "MyNodeId2", "MyNodeId3");
 graph.Edges.Add(edgeSequence);
+
+// or simply
+graph.Edges.AddSequence("MyNodeId1", "MyNodeId2", "MyNodeId3");
 ```
 
 ```c#
@@ -706,20 +722,30 @@ var edgeSequence = new DotEdgeSequence(
     new DotEndpoint("MyNodeId5"));
 
 graph.Edges.Add(edgeSequence);
+
+// or simply
+graph.Edges.AddSequence(
+    new DotEndpoint("MyNodeId1"),
+    new DotEndpointGroup("MyNodeId2", "MyNodeId3", "MyNodeId4"),
+    new DotEndpoint("MyNodeId5"));
 ```
 
 
 
-### Attributes
+Sequences support attributes too. You can set them either directly on a sequence instance, or by using a delegate passed by an argument of the *AddSequence* method on the *Edges* collection.
+
+
+
+## Attributes
 
 Each individual element described above may have **attributes** like background color, style, node shape, arrow head shape and so on. You don't have to specify them, however, and if you don't, the visualizing tool will use its own style defaults for rendering them.
 
 ```c#
-myNode.Attributes.Label = "My node label";
+node.Attributes.Label = "My node label";
 ```
 
 ```c#
-myEdge.Attributes.Label = "My edge label";
+edge.Attributes.Label = "My edge label";
 ```
 
 
@@ -729,11 +755,11 @@ myEdge.Attributes.Label = "My edge label";
 The root graph and the subgraphs allow you to set **global defaults** for all nodes and/or edges within them, so that you don't have to specify them individually for every element.
 
 ```c#
-myGraph.NodeDefaults.Color = Color.Yellow;
+graph.NodeDefaults.Color = Color.Yellow;
 ```
 
 ```c#
-myGraph.EdgeDefaults.Color = Color.Red;
+graph.EdgeDefaults.Color = Color.Red;
 ```
 
 
@@ -742,7 +768,7 @@ myGraph.EdgeDefaults.Color = Color.Red;
 
 The DOT generation engine supports setting some custom preferences for generating the output. These include syntax preferences, and formatting preferences. 
 
-### Formatting preferences
+## Formatting preferences
 
 Formatting preferences can be modified using the **DotFormattingOptions** class. If you want to change the indentation level, the indentation character, set a custom line break character/sequence, or generate the output as a single line, pass a customized formatting options instance to the **Build** or **SaveToFile** method on a graph instance.
 
@@ -770,7 +796,7 @@ digraph { Hello -> "World!" }
 
 
 
-### Syntax preferences
+## Syntax preferences
 
 Syntax preferences, on the other hand, can be modified using the **DotGenerationOptions** class. You can, for example, force statement delimiters (*;*) at the end of lines, or require identifiers to be quoted, even when it is not required.
 
@@ -815,7 +841,7 @@ digraph
 }
 ```
 
-#### Sorting elements of the DOT script
+### Sorting elements of the DOT script
 
 Using mentioned **DotGenerationOptions**, and its *OrderElements* property, you can also enable sorting elements of the output script alphabetically. This comes in handy when the graph is built based on some input elements the order of which changes each time you generate the graph. Sometimes you need to compare the output to its other versions, and in such cases you want to see only actual differences, not the lines that only moved from one place of the file to another, without actually changing. When you enable this setting, all attribute lists, the lists of edges, nodes, and subgraphs/clusters, will always be ordered alphabetically. This way you should get more consistent outputs on every build.
 
