@@ -338,7 +338,7 @@ digraph
 
 
 
-## Subgraphs example
+## Using subgraphs
 
 A subgraph, represented by the **DotSubgraph** class, is a collection of nodes constrained with a rank attribute, that determines their layout. Use a subgraph when you want to have more granular control on the layout and style of specific nodes.
 
@@ -363,7 +363,7 @@ By using **subgraphs with a rank attribute**, you can change the way individual 
   <img src="/Assets/Examples/complex-graph-with-subgraphs.svg">
 </p>
 
-The nodes embedded in subgraphs with rank *DotRank.Same* are visualized in the same rows. The nodes in a subgraph with *DotRank.Max* are pushed together towards the border.
+The nodes embedded in subgraphs with a rank *DotRank.Same* are visualized in same rows. The nodes *p* and *t* in a subgraph with a rank *DotRank.Max* are pushed together towards a border.
 
 
 
@@ -383,6 +383,7 @@ namespace GiGraph.Examples
         {
             var graph = new DotGraph(isDirected: false);
 
+            // see also how this attribute affects the layout of the nodes
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
 
             graph.Edges.Add("e", "h");
@@ -493,24 +494,31 @@ graph
 
 
 
-# Building blocks
+# Graph building blocks
 
-There are three basic types that are the building blocks of a graph:
+There are five basic types that are the building blocks of a graph in the *GiGraph.Dot* library:
 
-- **DotGraph** - the *root* graph itself,
-- **DotNode** - a node of the graph,
-- **DotEdge** - an edge that connects two nodes (or more, when subgraphs are used).
-
-In some cases **subgraphs** come in handy, and there are two types of them:
+- **DotGraph** - the *root* graph,
+- **DotNode** - a node (vertex) of the graph,
+- **DotEdge** - an edge that joins two nodes,
 
 - **DotSubgraph** - groups nodes together *logically* and allows you to control their layout against other nodes in the graph,
 - **DotCluster** - a special type of subgraph that groups nodes together *visually* by placing them inside a rectangle.
 
 
 
-### Graph
+Auxiliary types:
 
-Graphs contains nodes (vertices) and edges, and may optionally have some attributes set, that determine their style, layout etc.
+- **DotNodeGroup** - a group of nodes that share a common list of attributes. Useful when you want to set attributes for multiple nodes at once. This will render as a single DOT script statement with a list of nodes and one list of attributes.
+- **DotEdge<*TTail*, *THead*>** - a custom edge (or a group of edges), where *TTail* and *THead* can either be a single node (**DotEndpoint**) or a multiple nodes of a subgraph (**DotEndpointGroup**).
+- **DotEdgeSequence** - a sequence of edges composed of **DotEndpoint** and/or **DotEndpointGroup** instances. Used to join consecutive nodes one to another. All edges in the sequence share a common list of attributes, and will render as a single DOT script statement with a list of nodes and/or subgraphs joined by edges, and a single list of attributes.
+- **DotManyToManyEdgeGroup** - a group of edges that join nodes of a subgraph to nodes of another subgraph (this is actually a descendant of **DotEdge<DotEndpointGroup, DotEndpointGroup>**).
+- **DotManyToOneEdgeGroup** - a group of edges that join nodes of a subgraph to a single node (this is actually a descendant of **DotEdge<DotEndpointGroup, DotEndpoint>**).
+- **DotOneToManyEdgeGroup** - a group of edges that join a single node to nodes of a subgraph (this is actually a descendant of **DotEdge<DotEndpoint, DotEndpointGroup>**).
+
+
+
+### Graph
 
 There are two types of graphs:
 
@@ -518,7 +526,7 @@ There are two types of graphs:
 - **undirected** (the edges are presented as lines).
 
 ```c#
-myGraph.IsDirected = true;
+var graph = new DotGraph(isDirected: false);
 ```
 
 
@@ -552,6 +560,8 @@ myGraph.Nodes.Add("MyNodeId1", node =>
 ### Edge
 
 Edges **connect two nodes** by referring to their identifiers. Edges may also **connect two subgraphs** or **a single node with a subgraph** (or the other way round). In both these cases such connection is interpreted as a many-to-many or a one-to-many connection respectively, between the nodes within the subgraphs or between the single node, and the nodes in the subgraph.
+
+It supports customizing which side and/or cell (when records are used) of the node the head and tail of the edge is attached to.
 
 ```c#
 myGraph.Edges.Add("MyNodeId1", "MyNodeId2");
