@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Subgraphs;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
@@ -25,12 +26,32 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         }
 
         /// <summary>
-        /// Creates a new instance of the class.
+        /// Creates a new endpoint group initialized with a subgraph.
         /// </summary>
         /// <param name="subgraph">The subgraph whose nodes to use as the endpoints of multiple edges.</param>
         public DotEndpointGroup(DotSubgraph subgraph)
         {
             Subgraph = subgraph;
+        }
+
+        /// <summary>
+        /// Creates a new endpoint group initialized with the specified node identifiers.
+        /// At least a pair of identifiers has to be provided.
+        /// </summary>
+        /// <param name="nodeIds">The identifiers of nodes to use as the endpoints of multiple edges.</param>
+        public DotEndpointGroup(params string[] nodeIds)
+            : this(DotSubgraph.FromNodes(nodeIds))
+        {
+        }
+
+        /// <summary>
+        /// Creates a new endpoint group initialized with the specified node identifiers.
+        /// At least a pair of identifiers has to be provided.
+        /// </summary>
+        /// <param name="nodeIds">The identifiers of nodes to use as the endpoints of multiple edges.</param>
+        public DotEndpointGroup(IEnumerable<string> nodeIds)
+            : this(DotSubgraph.FromNodes(nodeIds))
+        {
         }
 
         protected override string GetOrderingKey()

@@ -52,6 +52,16 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
         public DotEdgeSequence(params string[] nodeIds)
+            : this((IEnumerable<string>)nodeIds)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new edge sequence initialized with the specified node identifiers.
+        /// At least a pair of identifiers has to be provided.
+        /// </summary>
+        /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
+        public DotEdgeSequence(IEnumerable<string> nodeIds)
             : this(nodeIds.Select(nodeId => new DotEndpoint(nodeId)))
         {
         }
