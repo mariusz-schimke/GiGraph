@@ -28,7 +28,8 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// </summary>
         public new IDotSubgraphAttributes Attributes => (IDotSubgraphAttributes)base.Attributes;
 
-        protected DotSubgraph(string id,
+        protected DotSubgraph(
+            string id,
             IDotSubgraphAttributes attributes,
             DotCommonNodeCollection nodes,
             DotCommonEdgeCollection edges,
@@ -43,9 +44,18 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// Creates a new subgraph.
         /// </summary>
+        /// <param name="rank">The rank attribute to assign to the subgraph.</param>
+        public DotSubgraph(DotRank? rank = null)
+            : this(id: null, rank)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new subgraph.
+        /// </summary>
         /// <param name="id">The unique identifier of the subgraph. Pass null if no identifier should be used.</param>
         /// <param name="rank">The rank attribute to assign to the subgraph.</param>
-        public DotSubgraph(string id = null, DotRank? rank = null)
+        public DotSubgraph(string id, DotRank? rank = null)
             : this
               (
                   id,
@@ -58,7 +68,10 @@ namespace GiGraph.Dot.Entities.Subgraphs
                   new DotEntityAttributes()
               )
         {
-            Attributes.Rank = rank;
+            if (rank is { })
+            {
+                Attributes.Rank = rank;
+            }
         }
 
         /// <summary>
@@ -87,7 +100,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <param name="rank">The rank attribute to assign to the subgraph.</param>
         public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, DotRank? rank = null)
         {
-            var result = new DotSubgraph(rank: rank);
+            var result = new DotSubgraph(rank);
 
             if (nodeIds.Any())
             {
