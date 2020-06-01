@@ -77,7 +77,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// Creates a new subgraph with the specified nodes.
         /// </summary>
-        /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
+        /// <param name="nodeIds">The identifiers of nodes to add to the subgraph.</param>
         public static DotSubgraph FromNodes(params string[] nodeIds)
         {
             return FromNodes(nodeIds, rank: null);
@@ -87,7 +87,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// Creates a new subgraph with the specified nodes.
         /// </summary>
         /// <param name="rank">The rank attribute to assign to the subgraph.</param>
-        /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
+        /// <param name="nodeIds">The identifiers of nodes to add to the subgraph.</param>
         public static DotSubgraph FromNodes(DotRank rank, params string[] nodeIds)
         {
             return FromNodes(nodeIds, rank);
@@ -96,7 +96,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// Creates a new subgraph with the specified nodes.
         /// </summary>
-        /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
+        /// <param name="nodeIds">The identifiers of nodes to add to the subgraph.</param>
         /// <param name="rank">The rank attribute to assign to the subgraph.</param>
         public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, DotRank? rank = null)
         {

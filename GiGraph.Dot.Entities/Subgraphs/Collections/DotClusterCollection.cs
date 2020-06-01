@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         /// <param name="init">An optional cluster initialization delegate.</param>
         public virtual DotCluster Add(string id, Action<DotCluster> init = null)
         {
-            return AddSubgraph(id, nodeIds: Enumerable.Empty<string>(), init);
+            return AddCluster(id, nodeIds: Enumerable.Empty<string>(), init);
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         /// <param name="nodeIds">Optional node identifiers to initialize the cluster with.</param>
         public virtual DotCluster Add(string id, params string[] nodeIds)
         {
-            return AddSubgraph(id, nodeIds, init: null);
+            return AddCluster(id, nodeIds, init: null);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         /// <param name="init">An optional cluster initialization delegate.</param>
         public virtual DotCluster Add(string id, Action<DotCluster> init, params string[] nodeIds)
         {
-            return AddSubgraph(id, nodeIds, init);
+            return AddCluster(id, nodeIds, init);
         }
 
         /// <summary>
@@ -53,12 +53,12 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         /// <param name="init">An optional cluster initialization delegate.</param>
         public virtual DotCluster Add(string id, IEnumerable<string> nodeIds, Action<DotCluster> init = null)
         {
-            return AddSubgraph(id, nodeIds, init);
+            return AddCluster(id, nodeIds, init);
         }
 
-        protected virtual DotCluster AddSubgraph(string id, IEnumerable<string> nodeIds, Action<DotCluster> init)
+        protected virtual DotCluster AddCluster(string id, IEnumerable<string> nodeIds, Action<DotCluster> init)
         {
-            return Add(DotCluster.FromNodes(nodeIds, id), init);
+            return Add(DotCluster.FromNodes(id, nodeIds), init);
         }
     }
 }
