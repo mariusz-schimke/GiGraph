@@ -34,13 +34,18 @@ namespace GiGraph.Dot.Generators.GraphGenerators
         {
             WriteAttributes(graphBody.Attributes, writer);
 
+            // the defaults have to appear first, so that they are applied to all elements that come later in the output script
             WriteDefaults(graphBody.NodeDefaults, graphBody.EdgeDefaults, writer);
 
-            WriteNodes(graphBody.Nodes, writer);
-            WriteEdges(graphBody.Edges, writer);
-
+            // subgraphs and clusters may also specify node defaults, and these are applied only
+            // if the nodes they contain do not appear earlier in the parent graph or subgraph
             WriteSubgraphs(graphBody.Subgraphs, writer);
             WriteClusters(graphBody.Clusters, writer);
+
+            WriteEdges(graphBody.Edges, writer);
+
+            // as already mentioned, nodes should not appear before subgraphs and clusters
+            WriteNodes(graphBody.Nodes, writer);
         }
 
         protected virtual void WriteAttributes(IDotAttributeCollection attributes, IDotGraphBodyWriter writer)
