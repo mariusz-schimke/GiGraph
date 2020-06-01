@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// Creates a new cluster subgraph.
         /// </summary>
-        /// <param name="id">The unique identifier of the subgraph. Pass null if no identifier should be used.</param>
+        /// <param name="id">The unique identifier of the cluster.</param>
         public DotCluster(string id = null)
             : this
               (
@@ -55,7 +55,22 @@ namespace GiGraph.Dot.Entities.Subgraphs
         {
         }
 
-        public static DotCluster FromNodes(IEnumerable<string> nodeIds, string id)
+        /// <summary>
+        /// Creates a new cluster with the specified nodes.
+        /// </summary>
+        /// <param name="id">The unique identifier of the cluster.</param>
+        /// <param name="nodeIds">The identifiers of nodes to add to the subgraph.</param>
+        public static DotCluster FromNodes(string id, params string[] nodeIds)
+        {
+            return FromNodes(id, (IEnumerable<string>)nodeIds);
+        }
+
+        /// <summary>
+        /// Creates a new cluster with the specified nodes.
+        /// </summary>
+        /// <param name="id">The unique identifier of the cluster.</param>
+        /// <param name="nodeIds">The identifiers of nodes to add to the subgraph.</param>
+        public static DotCluster FromNodes(string id, IEnumerable<string> nodeIds)
         {
             var result = new DotCluster(id);
 
