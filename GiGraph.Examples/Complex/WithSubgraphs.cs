@@ -34,12 +34,12 @@ namespace GiGraph.Examples.Complex
 
             // add subgraphs to control the layout of individual node groups
             // (check how the visualization changes when you remove these lines)
-            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("b", "c", "d");
-            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("e", "f", "g");
-            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("h", "i", "j", "k");
-            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("l", "m", "n");
-            graph.Subgraphs.Add(DotRank.Same).Nodes.Add("q", "r");
-            graph.Subgraphs.Add(DotRank.Max).Nodes.Add("o", "s", "p");
+            graph.Subgraphs.Add(DotRank.Same, "b", "c", "d");
+            graph.Subgraphs.Add(DotRank.Same, "e", "f", "g");
+            graph.Subgraphs.Add(DotRank.Same, "h", "i", "j", "k");
+            graph.Subgraphs.Add(DotRank.Same, "l", "m", "n");
+            graph.Subgraphs.Add(DotRank.Same, "q", "r");
+            graph.Subgraphs.Add(DotRank.Max, "o", "s", "p");
 
             return graph;
         }
