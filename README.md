@@ -408,7 +408,7 @@ namespace GiGraph.Examples
 
             // add subgraphs to control the layout of individual node groups
             // (when you remove these lines, you will get the first visualization example)
-			graph.Subgraphs.Add(DotRank.Same, "b", "c", "d");
+            graph.Subgraphs.Add(DotRank.Same, "b", "c", "d");
             graph.Subgraphs.Add(DotRank.Same, "e", "f", "g");
             graph.Subgraphs.Add(DotRank.Same, "h", "i", "j", "k");
             graph.Subgraphs.Add(DotRank.Same, "l", "m", "n");
