@@ -1,7 +1,7 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Graphs;
-using System;
+﻿using System;
 using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Graphs;
 
 namespace GiGraph.Examples.Basic
 {
@@ -36,16 +36,13 @@ namespace GiGraph.Examples.Basic
                 attrs.Label = $"Decision{Environment.NewLine}point";
             });
 
-            graph.Nodes.Add("Option1", attrs =>
+            // use a subgraph to set a different for a group of nodes
+            graph.Subgraphs.Add(sg =>
             {
-                attrs.Color = Color.Green;
-                attrs.Label = "Positive path";
-            });
-
-            graph.Nodes.Add("Option2", attrs =>
-            {
-                attrs.Color = Color.DarkRed;
-                attrs.Label = "Negative path";
+                sg.NodeDefaults.FillColor = Color.YellowGreen;
+                
+                sg.Nodes.Add("Option1", attrs => attrs.Label = "Positive path");
+                sg.Nodes.Add("Option2", attrs => attrs.Label = "Negative path");
             });
 
             graph.Nodes.Add("Exit").Attributes.Shape = DotShape.DoubleCircle;

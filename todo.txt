@@ -8,3 +8,4 @@ Other (always valid):
 
 Nice-to-haves:
 1. Implement predefined HTML nodes (shape = none, margin = 0): https://www.graphviz.org/doc/info/shapes.html#polygon.
+2. Add a generation option for generating graph attributes as "graph [attr_list]" instead of current attribute statements.
