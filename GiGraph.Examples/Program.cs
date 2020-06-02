@@ -2,6 +2,7 @@
 using GiGraph.Dot.Extensions; // the Build() and SaveToFile() extension methods are defined here
 using GiGraph.Examples.Complex;
 using System;
+using GiGraph.Examples.Basic;
 
 namespace GiGraph.Examples
 {
@@ -9,14 +10,14 @@ namespace GiGraph.Examples
     {
         private static void Main(string[] args)
         {
-            DotGraph graph = WithSubgraphs.Generate();
+            DotGraph graph = WithCustomStyles.Generate();
 
             // build a graph as string
             var graphString = graph.Build();
             Console.WriteLine(graphString);
 
             // or save it to a file (.gv and .dot are the default extensions)
-            graph.SaveToFile(@"C:\MyGraphs\example.gv");
+            graph.SaveToFile(@"example.gv");
 
             Console.ReadLine();
         }
