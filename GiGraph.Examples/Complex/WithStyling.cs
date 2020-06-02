@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Graphs;
 
 namespace GiGraph.Examples.Complex
 {
