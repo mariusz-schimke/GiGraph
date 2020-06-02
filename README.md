@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/Assets/social-preview.png">
+  <img src="./Assets/social-preview.png">
 </p>
 ------
 
@@ -15,7 +15,7 @@ For the complete documentation of the DOT language, and the visualization capabi
 
 # Generating a graph
 
-For a basic case, just create a new **DotGraph** instance, and add an edge to its *Edges* collection, or a node to its *Nodes* collection. To generate the output graph script, call the ***Build*** extension method on the graph.
+For a basic case, create a new **DotGraph** instance, and just add an edge to its *Edges* collection, or a node to its *Nodes* collection. To generate the output DOT script, call the ***Build*** extension method on the graph.
 
 Here's a simple *Hello World!* graph example with two nodes joined by an edge.
 
@@ -42,7 +42,7 @@ namespace GiGraph.Examples
             Console.WriteLine(graph.Build());
             
             // or save it to a file (.gv and .dot are the default extensions)
-            graph.SaveToFile(@"C:\MyGraphs\example.gv");
+            graph.SaveToFile(@"example.gv");
             
             Console.Read();
         }
@@ -50,7 +50,7 @@ namespace GiGraph.Examples
 }
 ```
 
-Here's what you get on the console, and in the file:
+Here's what you get on the console and in the file:
 
 ```dot
 digraph
@@ -62,7 +62,7 @@ digraph
 Here's how the script is visualized:
 
 <p align="center">
-  <img src="/Assets/Examples/hello-world-directed.svg">
+  <img src="./Assets/Examples/hello-world-directed.svg">
 </p>
 And here's an example of an undirected version of the same graph:
 
@@ -78,7 +78,7 @@ graph
 ```
 
 <p align="center">
-  <img src="/Assets/Examples/hello-world-undirected.svg">
+  <img src="./Assets/Examples/hello-world-undirected.svg">
 </p>
 
 
@@ -88,17 +88,17 @@ graph
 Graph nodes and edges can by styled globally, locally, and individually.
 
 - To set their attributes globally, for the whole graph, use *NodeDefaults* and *EdgeDefaults* on the graph instance.
-- To set them locally, for a group of nodes and edges, use a subgraph or a cluster, and set above properties on the subgraph/cluster instance (see the examples below to learn about the difference between a [subgraph](#subgraph) and a [cluster](#cluster).
+- To set them locally, for a group of nodes and edges, use a subgraph or a cluster, and set above properties on the subgraph/cluster instance (see the [subgraph](#subgraph) and a [cluster](#cluster) sections to learn when to use which).
 - To set them individually, use the *Attributes* property on the edge and/or node instances directly.
 
-The example below sets global node style as bold and filled, with a dark orange color fill, and a rectangular shape. If it comes to edges, their head is changed globally to a 'vee' shape. Also, some nodes and edges have their attributes set individually.
+The example below sets global node style as bold and filled, with a dark orange color fill, and a rectangular shape. If it comes to edges, their head is changed globally to a 'vee' shape. Also, some nodes and edges have their attributes set individually. What's more, a subgraph is used to set a fill color for a group of nodes only.
 
 ```c#
-using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Extensions; // Build(), SaveToFile()
+using GiGraph.Dot.Extensions; // the Build() and SaveToFile() extension methods are defined here
 using System;
 using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Enums;
 
 namespace GiGraph.Examples
 {
@@ -106,7 +106,7 @@ namespace GiGraph.Examples
     {
         private static void Main(string[] args)
         {
-            var graph = new DotGraph(isDirected: true);
+             var graph = new DotGraph(isDirected: true);
 
             // set left to right layout direction of the graph using graph attributes
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
@@ -133,16 +133,13 @@ namespace GiGraph.Examples
                 attrs.Label = $"Decision{Environment.NewLine}point";
             });
 
-            graph.Nodes.Add("Option1", attrs =>
+            // use a subgraph to set a different for a group of nodes
+            graph.Subgraphs.Add(sg =>
             {
-                attrs.Color = Color.Green;
-                attrs.Label = "Positive path";
-            });
-
-            graph.Nodes.Add("Option2", attrs =>
-            {
-                attrs.Color = Color.DarkRed;
-                attrs.Label = "Negative path";
+                sg.NodeDefaults.FillColor = Color.YellowGreen;
+                
+                sg.Nodes.Add("Option1", attrs => attrs.Label = "Positive path");
+                sg.Nodes.Add("Option2", attrs => attrs.Label = "Negative path");
             });
 
             graph.Nodes.Add("Exit").Attributes.Shape = DotShape.DoubleCircle;
@@ -168,14 +165,13 @@ namespace GiGraph.Examples
 
             // this is a shorthand for adding two edges at once, that join multiple nodes with one node
             graph.Edges.AddManyToOne("Exit", "Option1", "Option2");
-
+            
 
             // build a graph as string
-            var graphString = graph.Build();
-            Console.WriteLine(graphString);
+            Console.WriteLine(graph.Build());
 
             // or save it to a file (.gv and .dot are the default extensions)
-            graph.SaveToFile(@"C:\MyGraphs\example.gv");
+            graph.SaveToFile(@"example.gv");
 
             Console.ReadLine();
         }
@@ -191,10 +187,15 @@ digraph
     node [ shape = rectangle, style = "bold, filled", fillcolor = "#ff8c00ff" ]
     edge [ arrowhead = vee ]
 
+    {
+        node [ fillcolor = "#9acd32ff" ]
+
+        Option1 [ label = "Positive path" ]
+        Option2 [ label = "Negative path" ]
+    }
+
     Entry [ shape = circle ]
     Decision [ shape = diamond, label = "Decision\npoint" ]
-    Option1 [ color = "#008000ff", label = "Positive path" ]
-    Option2 [ color = "#8b0000ff", label = "Negative path" ]
     Exit [ shape = doublecircle ]
 
     Entry -> Decision
@@ -205,7 +206,7 @@ digraph
 ```
 
 <p align="center">
-  <img src="/Assets/Examples/graph-defaults.svg">
+  <img src="./Assets/Examples/custom-styling.svg">
 </p>
 
 
@@ -296,16 +297,6 @@ digraph
     label = "Example Flow"
     rankdir = LR
 
-    Start [ shape = circle ]
-    Decision [ shape = diamond ]
-    Exit [ shape = doublecircle ]
-
-    Start -> Decision
-    Decision -> "Cluster 1 Start" [ label = yes ]
-    Decision -> "Cluster 2 Start" [ label = no ]
-    "Cluster 1 Exit" -> Exit
-    "Cluster 2 Exit" -> Exit
-
     subgraph "cluster Positive path"
     {
         bgcolor = "#90ee90ff"
@@ -321,11 +312,21 @@ digraph
 
         "Cluster 2 Start" -> "Cluster 2 Node" -> "Cluster 2 Exit"
     }
+
+    Start [ shape = circle ]
+    Decision [ shape = diamond ]
+    Exit [ shape = doublecircle ]
+
+    Start -> Decision
+    Decision -> "Cluster 1 Start" [ label = yes ]
+    Decision -> "Cluster 2 Start" [ label = no ]
+    "Cluster 1 Exit" -> Exit
+    "Cluster 2 Exit" -> Exit
 }
 ```
 
 <p align="center">
-  <img src="/Assets/Examples/clusters.svg">
+  <img src="./Assets/Examples/clusters.svg">
 </p>
 
 
@@ -337,7 +338,7 @@ In order to customize the layout of certain node groups, and/or to change the st
 Consider the following graph with no layout settings applied:
 
 <p align="center">
-  <img src="/Assets/Examples/complex-graph.svg">
+  <img src="./Assets/Examples/complex-graph.svg">
 </p>
 
 
@@ -346,10 +347,10 @@ Consider the following graph with no layout settings applied:
 By using subgraphs with a **rank attribute** you can change the way individual node groups are visualized:
 
 <p align="center">
-  <img src="/Assets/Examples/complex-graph-with-subgraphs.svg">
+  <img src="./Assets/Examples/complex-graph-with-subgraphs.svg">
 </p>
 
-The nodes embedded in subgraphs with a rank *DotRank.Same* are visualized in the same rows. The nodes *p* and *t* in the subgraph with a rank *DotRank.Max* are pushed together towards a border.
+The nodes embedded in subgraphs with a rank *DotRank.Same* are visualized in the same rows. The nodes *p* and *t* in the subgraph with a rank *DotRank.Max* are pushed together towards a border. The groups are vertical in these examples because the graph layout direction is left-to-right. When you change it to the default top-to-bottom setting, the groups will be oriented horizontally.
 
 
 
@@ -421,6 +422,54 @@ graph
 {
     rankdir = LR
 
+    {
+        rank = same
+
+        b
+        c
+        d
+    }
+
+    {
+        rank = same
+
+        e
+        f
+        g
+    }
+
+    {
+        rank = same
+
+        h
+        i
+        j
+        k
+    }
+
+    {
+        rank = same
+
+        l
+        m
+        n
+    }
+
+    {
+        rank = same
+
+        q
+        r
+    }
+
+    {
+        rank = max
+
+        o
+        s
+        p
+    }
+
     e -- h
     g -- k
     r -- t
@@ -439,42 +488,6 @@ graph
     o -- { s p }
     p -- { t q }
     q -- { t r }
-
-    {
-        rank = same
-
-        b, c, d
-    }
-
-    {
-        rank = same
-
-        e, f, g
-    }
-
-    {
-        rank = same
-
-        h, i, j, k
-    }
-
-    {
-        rank = same
-
-        l, m, n
-    }
-
-    {
-        rank = same
-
-        o, s, q, r
-    }
-
-    {
-        rank = max
-
-        p, t
-    }
 }
 ```
 
@@ -505,13 +518,13 @@ Auxiliary types:
 
 There are also attributes based on the type of the value they specify for a key. There are quite a lot of them, but just to mention a few basic ones:
 
-- DotStringAttribute - a string value attribute,
+- **DotStringAttribute** - a string value attribute,
 
-- DotShapeAttribute - a shape attribute (node shape),
+- **DotShapeAttribute** - a shape attribute (node shape),
 
-- DotColorAttribute - a color attribute,
+- **DotColorAttribute** - a color attribute,
 
-- DotBoolAttribute - a boolean attribute.
+- **DotBoolAttribute** - a boolean attribute.
 
   
 
@@ -547,7 +560,7 @@ graph.Attributes.BackgroundColor = Color.LightGray;
 
 ### Default attributes
 
-A graph, a subgraph, and a cluster may have node and edge defaults specified. When you set them, they affect all nodes and/or edges encompassed by the graph, subgraph, or cluster.
+A graph, a subgraph, and a cluster may have node and edge defaults specified. When you set them, they affect all nodes and/or edges encompassed by the graph, subgraph, or cluster. They can be overridden by attributes set on individual graph elements.
 
 ```c#
 graph.NodeDefaults.Color = Color.Yellow;
@@ -561,7 +574,7 @@ graph.EdgeDefaults.Color = Color.Red;
 
 ### Subgraph
 
-A subgraph, represented by the **DotSubgraph** class, is a collection of nodes constrained with a rank attribute, that determines their layout. Use a subgraph when you want to have more granular control on the layout and style of specific nodes.
+A subgraph, represented by the **DotSubgraph** class, is a collection of nodes constrained with a rank attribute, that determines their layout. Use a subgraph when you want to have more granular control on the **layout** and **style** of specific groups of nodes.
 
 Subgraph does not have any border or fill, as opposed to cluster subgraph, represented by the **DotCluster** class, which supports them.
 
@@ -578,9 +591,14 @@ subgraph.Nodes.Add("d", "e", "f");
 // or use a factory method to add nodes more easily
 subgraph = DotSubgraph.FromNodes(DotRank.Same, "d", "e", "f");
 
+// style settings are accepted as well for the elements inside
 subgraph.NodeDefaults.Shape = DotShape.Box;
+
 graph.Subgraphs.Add(subgraph);
 ```
+
+A subgraph may also be used as a group of endpoints to facilitate adding multiple edges at once. For details refer to [edge groups](#edge-group) and [edge sequences](#edge-sequence).
+
 
 
 
@@ -603,7 +621,9 @@ cluster.Nodes.Add("d", "e", "f");
 // or use a factory method to add nodes more easily
 cluster = DotCluster.FromNodes("My cluster 2", "e", "d", "f");
 
+// style settings are accepted as well for the elements inside
 cluster.NodeDefaults.Shape = DotShape.Box;
+
 graph.Clusters.Add(cluster);
 ```
 
@@ -816,25 +836,24 @@ edge.Attributes.Label = "My edge label";
 
 
 
-It is also possible to create a new attribute instance, and add it to the collection. This is useful when an attribute is not supported directly by the library, and recommended only in such cases.
+You can set attributes as shown above, by assigning a value to a property, or by adding an attribute instance to the collection. The latter approach may be useful when an attribute is not supported directly by the library. In such case, however, you have to know what key to use, and what value format is valid for it ([see documentation](https://www.graphviz.org/doc/info/attrs.html)).
 
 ```c#
+// this is equivalent to setting the Label property on the attributes collection
 var attribute = new DotStringAttribute("label", "My node label");
 node.Attributes.Set(attribute);
 
-// or still with specifying the key, but without creating an instance explicitly
+// you can achieve the same without creating an instance explicitly
 node.Attributes.Set("label", "My node label");
 ```
 
-
-
-In case there is a **complex attribute** that you want to set manually in a way accepted by a DOT script visualization tool, use a **DotCustomAttribute**. What is specific about it is that its value is rendered in the output script directly, with no special character escaping. Therefore, it should be used with care, and the value should always follow the DOT syntax rules. Otherwise the visualization tool you use may be unable to parse it.
+In such case consider also the **DotCustomAttribute** class. What is specific about it is that its value is rendered in the output DOT script directly, with **no special character escaping** (which is not the case for the above mentioned **DotStringAttribute**). Therefore, it should be used with care, and the value should always follow the DOT syntax rules. Otherwise the visualization tool you use may be unable to parse it. In most cases, hower, you won't need either of these, and if any, **DotStringAttribute** will probably be the right choice.
 
 ```c#
 var attribute = new DotCustomAttribute("myattrkey", "myattrvalue");
 node.Attributes.Set(attribute);
 
-// or still with specifying the key, but without creating an instance explicitly
+// or without creating an instance explicitly
 node.Attributes.SetCustom("myattrkey", "myattrvalue");
 ```
 
