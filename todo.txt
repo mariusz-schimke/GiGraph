@@ -1,7 +1,6 @@
 Road map:
 1. Support color list.
 2. Gradually add support for all available attributes.
-3. Add a generation option for generating graph attributes as "graph [attr_list]" instead of current attribute statements. 
 
 Other (always valid): 
 1. Check if methods are coherently marked as virtual.
@@ -9,3 +8,4 @@ Other (always valid):
 
 Nice-to-haves:
 1. Implement predefined HTML nodes (shape = none, margin = 0): https://www.graphviz.org/doc/info/shapes.html#polygon.
+2. Add a generation option for generating graph attributes as "graph [attr_list]" instead of current attribute statements.

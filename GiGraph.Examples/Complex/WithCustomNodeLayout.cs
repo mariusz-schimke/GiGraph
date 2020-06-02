@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Graphs;
 
 namespace GiGraph.Examples.Complex
 {
-    public static class WithSubgraphs
+    public static class WithCustomNodeLayout
     {
         public static DotGraph Generate()
         {
