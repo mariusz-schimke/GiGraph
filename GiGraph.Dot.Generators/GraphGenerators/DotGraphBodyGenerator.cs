@@ -42,10 +42,10 @@ namespace GiGraph.Dot.Generators.GraphGenerators
             WriteSubgraphs(graphBody.Subgraphs, writer);
             WriteClusters(graphBody.Clusters, writer);
 
-            WriteEdges(graphBody.Edges, writer);
-
             // as already mentioned, nodes should not appear before subgraphs and clusters
             WriteNodes(graphBody.Nodes, writer);
+
+            WriteEdges(graphBody.Edges, writer);
         }
 
         protected virtual void WriteAttributes(IDotAttributeCollection attributes, IDotGraphBodyWriter writer)
