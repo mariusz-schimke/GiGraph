@@ -1,5 +1,4 @@
-﻿using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Extensions; // the Build() and SaveToFile()
+﻿using GiGraph.Dot.Extensions; // Build(), SaveToFile()
 using System;
 using GiGraph.Examples.Basic;
 
@@ -9,7 +8,7 @@ namespace GiGraph.Examples
     {
         private static void Main(string[] args)
         {
-            DotGraph graph = WithCustomStyles.Generate();
+            var graph = WithCustomStyles.Generate();
 
             // build a graph as string
             Console.WriteLine(graph.Build());

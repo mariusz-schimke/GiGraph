@@ -6,13 +6,13 @@ using System.Linq;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotCommonAttributeCollection : IDotEntity, IDotAttributeCollection
+    public class DotCommonAttributeCollection : IDotAttributeCollection
     {
         protected readonly IDictionary<string, DotCommonAttribute> _attributes = new Dictionary<string, DotCommonAttribute>(StringComparer.InvariantCulture);
 
         public virtual int Count => _attributes.Count;
 
-        bool ICollection<DotCommonAttribute>.IsReadOnly => false;
+        bool ICollection<DotCommonAttribute>.IsReadOnly => _attributes.IsReadOnly;
 
         public virtual T Set<T>(T attribute)
             where T : DotCommonAttribute
