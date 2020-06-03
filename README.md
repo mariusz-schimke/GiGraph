@@ -288,7 +288,7 @@ namespace GiGraph.Examples
             Console.WriteLine(graphString);
 
             // or save it to a file (.gv and .dot are the default extensions)
-            graph.SaveToFile("C:\MyGraphs\example.gv");
+            graph.SaveToFile("example.gv");
 
             Console.ReadLine();
         }
@@ -402,7 +402,7 @@ namespace GiGraph.Examples
             Console.WriteLine(graph.Build());
 
             // or save it to a file (.gv and .dot are the default extensions)
-            graph.SaveToFile("C:\MyGraphs\example.gv");
+            graph.SaveToFile("example.gv");
 
             Console.Read();
         }
