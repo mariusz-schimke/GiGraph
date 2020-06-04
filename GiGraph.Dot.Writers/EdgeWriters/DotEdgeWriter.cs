@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Writers.EdgeWriters
         {
         }
 
-        public override IDotAttributeStatementWriter BeginAttributeList(bool useAttributeSeparator)
+        public override IDotAttributeListItemWriter BeginAttributeList(bool useAttributeSeparator)
         {
             _tokenWriter.ClearLingerBuffer()
                         .Space(linger: true);
@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Writers.EdgeWriters
             return base.BeginAttributeList(useAttributeSeparator);
         }
 
-        public virtual void WriteNode(string nodeId, bool quoteNodeId, string portName, bool quotePortName, string compassPoint, bool quoteCompassPoint)
+        public virtual void WriteEndpoint(string nodeId, bool quoteNodeId, string portName, bool quotePortName, string compassPoint, bool quoteCompassPoint)
         {
             _tokenWriter.Identifier(nodeId, quoteNodeId);
 

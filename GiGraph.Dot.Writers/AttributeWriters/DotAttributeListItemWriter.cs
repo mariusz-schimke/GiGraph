@@ -3,7 +3,7 @@ using GiGraph.Dot.Writers.Contexts;
 
 namespace GiGraph.Dot.Writers.AttributeWriters
 {
-    public class DotAttributeListItemWriter : DotEntityWriter, IDotAttributeStatementWriter
+    public class DotAttributeListItemWriter : DotEntityWriter, IDotAttributeListItemWriter
     {
         protected readonly bool _useAttributeSeparator;
 
