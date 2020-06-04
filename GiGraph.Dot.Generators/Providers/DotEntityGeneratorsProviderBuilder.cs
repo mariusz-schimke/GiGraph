@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Generators.Providers
             provider.Register(new DotGraphBodyGenerator(syntaxRules, options, provider));
 
             provider.Register(new DotClusterGenerator(syntaxRules, options, provider));
-            provider.Register(new DotSubgraphGenerator(syntaxRules, options, provider));
+            provider.Register(new DotCommonSubgraphGenerator<DotSubgraph>(syntaxRules, options, provider));
             provider.Register(new DotCommonSubgraphCollectionGenerator<DotSubgraph>(syntaxRules, options, provider));
             provider.Register(new DotCommonSubgraphCollectionGenerator<DotCluster>(syntaxRules, options, provider));
 

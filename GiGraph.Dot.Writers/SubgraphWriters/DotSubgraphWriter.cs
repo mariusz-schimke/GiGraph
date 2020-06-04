@@ -13,9 +13,8 @@ namespace GiGraph.Dot.Writers.SubgraphWriters
             _preferExplicitSubgraphKeyword = preferExplicitSubgraphKeyword;
         }
 
-        public virtual void WriteSubgraphDeclaration(string id, bool isCluster, bool quoteId)
+        public virtual void WriteSubgraphDeclaration(string id, bool quoteId)
         {
-            id = FormatIdentifier(id, isCluster, ref quoteId);
             var separate = false;
 
             if (_preferExplicitSubgraphKeyword || id is { })
@@ -39,24 +38,6 @@ namespace GiGraph.Dot.Writers.SubgraphWriters
                 _tokenWriter.LineBreak()
                             .Indentation(_context.Level);
             }
-        }
-
-        protected virtual string FormatIdentifier(string id, bool isCluster, ref bool quoteId)
-        {
-            var cluster = "cluster";
-
-            if (isCluster && id is { })
-            {
-                quoteId = true;
-                return $"{cluster} {id}";
-            }
-
-            if (isCluster)
-            {
-                return cluster;
-            }
-
-            return id;
         }
     }
 }
