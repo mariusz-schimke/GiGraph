@@ -49,5 +49,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </para>
         /// </summary>
         DotStyle? Style { get; set; }
+
+        /// <summary>
+        /// If true, edge concentrators are used. This merges multiedges into a single edge, and causes partially parallel edges
+        /// to share part of their paths. The latter feature is not yet available outside of DOT.
+        /// </summary>
+        bool? ConcentrateEdges { get; set; }
     }
 }
