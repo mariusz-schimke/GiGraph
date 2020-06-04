@@ -141,6 +141,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetAs<DotBoolAttribute>("concentrate", out var result) ? result.Value : (bool?)null;
             set => AddOrRemove("concentrate", value, v => new DotBoolAttribute("concentrate", v.Value));
+        }        
+        
+        public virtual bool? Compound
+        {
+            get => TryGetAs<DotBoolAttribute>("compound", out var result) ? result.Value : (bool?)null;
+            set => AddOrRemove("compound", value, v => new DotBoolAttribute("compound", v.Value));
         }
     }
 }
