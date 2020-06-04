@@ -58,7 +58,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         
         /// <summary>
         /// If true, allows edges between clusters. Default: false;
-        /// See also lhead and ltail.
+        /// See also the <see cref="IDotEdgeAttributes.LogicalHead"/> and <see cref="IDotEdgeAttributes.LogicalTail"/>
+        /// attributes of the edge.
         /// </summary>
         bool? Compound { get; set; }
     }

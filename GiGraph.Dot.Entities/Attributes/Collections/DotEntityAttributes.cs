@@ -112,6 +112,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetAs<DotArrowDirectionAttribute>("dir", out var result) ? result.Value : (DotArrowDirection?)null;
             set => AddOrRemove("dir", value, v => new DotArrowDirectionAttribute("dir", v.Value));
         }
+        
+        public virtual string LogicalHead
+        {
+            get => TryGetAs<DotLogicalEndpointAttribute>("lhead", out var result) ? result.Value : null;
+            set => AddOrRemove("lhead", value, v => new DotLogicalEndpointAttribute("lhead", v));
+        }
+        
+        public virtual string LogicalTail
+        {
+            get => TryGetAs<DotLogicalEndpointAttribute>("ltail", out var result) ? result.Value : null;
+            set => AddOrRemove("ltail", value, v => new DotLogicalEndpointAttribute("ltail", v));
+        }
 
         public virtual bool? Decorate
         {
