@@ -86,8 +86,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         /// If true, attaches edge label to edge by a 2-segment polyline, underlining the label,
-        /// then going to the closest point of spline. Default: false;
+        /// then going to the closest point of spline. Default: false.
         /// </summary>
         bool? Decorate { get; set; }
+
+        /// <summary>
+        /// If false, the edge is not used in ranking the nodes. Default: true.
+        /// <see href="http://www.graphviz.org/doc/info/attrs.html#a:constraint"/>
+        /// </summary>
+        bool? Constraint { get; set; }
     }
 }
