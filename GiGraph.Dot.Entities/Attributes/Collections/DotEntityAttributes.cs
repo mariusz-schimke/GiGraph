@@ -130,5 +130,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetAs<DotRankDirectionAttribute>("rankdir", out var result) ? result.Value : (DotRankDirection?)null;
             set => AddOrRemove("rankdir", value, v => new DotRankDirectionAttribute("rankdir", v.Value));
         }
+
+        public virtual bool? ConcentrateEdges
+        {
+            get => TryGetAs<DotBoolAttribute>("concentrate", out var result) ? result.Value : (bool?)null;
+            set => AddOrRemove("concentrate", value, v => new DotBoolAttribute("concentrate", v.Value));
+        }
     }
 }
