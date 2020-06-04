@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Writers.CommonEntityWriters
         {
         }
 
-        public virtual IDotAttributeStatementWriter BeginAttributeList(bool useAttributeSeparator)
+        public virtual IDotAttributeListItemWriter BeginAttributeList(bool useAttributeSeparator)
         {
             _tokenWriter.AttributeListStart(linger: true)
                         .Space(linger: true);
