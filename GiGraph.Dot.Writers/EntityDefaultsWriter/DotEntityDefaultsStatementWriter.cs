@@ -15,7 +15,6 @@ namespace GiGraph.Dot.Writers.EntityDefaultsWriter
             _useStatementDelimiter = useStatementDelimiter;
         }
 
-
         public virtual IDotNodeDefaultsWriter BeginNodeDefaults()
         {
             return new DotNodeDefaultsWriter(_tokenWriter, _context);

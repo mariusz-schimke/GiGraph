@@ -30,7 +30,8 @@ namespace GiGraph.Dot.Generators.Providers
             provider.Register(new DotCommonAttributeGenerator(syntaxRules, options, provider));
             provider.Register(new DotCustomAttributeGenerator(syntaxRules, options, provider));
             provider.Register(new DotHtmlAttributeGenerator(syntaxRules, options, provider));
-            provider.Register(new DotCommonAttributeCollectionGenerator(syntaxRules, options, provider));
+            provider.Register(new DotCommonAttributeListGenerator(syntaxRules, options, provider));
+            provider.Register(new DotCommonAttributeStatementListGenerator(syntaxRules, options, provider));
 
             provider.Register(new DotNodeDefaultsGenerator(syntaxRules, options, provider));
             provider.Register(new DotEdgeDefaultsGenerator(syntaxRules, options, provider));

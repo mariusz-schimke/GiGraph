@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Writers.EdgeWriters
 {
     public interface IDotEdgeWriter : IDotEntityWithAttributeListWriter
     {
-        void WriteNode(string nodeId, bool quoteNodeId, string portName, bool quotePortName, string compassPoint, bool quoteCompassPoint);
+        void WriteEndpoint(string nodeId, bool quoteNodeId, string portName, bool quotePortName, string compassPoint, bool quoteCompassPoint);
 
         IDotSubgraphWriter BeginSubgraph(bool preferExplicitKeyword);
         void EndSubgraph();

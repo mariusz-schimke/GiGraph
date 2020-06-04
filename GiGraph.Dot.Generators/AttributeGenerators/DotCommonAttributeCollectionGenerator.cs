@@ -5,12 +5,13 @@ using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Options;
 using GiGraph.Dot.Generators.Providers;
 using GiGraph.Dot.Generators.TextEscaping;
-using GiGraph.Dot.Writers.AttributeWriters;
 using System.Linq;
+using GiGraph.Dot.Writers.CommonEntityWriters;
 
 namespace GiGraph.Dot.Generators.AttributeGenerators
 {
-    public class DotCommonAttributeCollectionGenerator : DotEntityGenerator<DotCommonAttributeCollection, IDotAttributeStatementWriter>
+    public abstract class DotCommonAttributeCollectionGenerator<TWriter> : DotEntityGenerator<DotCommonAttributeCollection, TWriter>
+        where TWriter : IDotEntityWriter
     {
         protected DotCommonAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
@@ -22,7 +23,7 @@ namespace GiGraph.Dot.Generators.AttributeGenerators
         {
         }
 
-        public override void Generate(DotCommonAttributeCollection attributes, IDotAttributeStatementWriter writer)
+        public override void Generate(DotCommonAttributeCollection attributes, TWriter writer)
         {
             var orderedAttributes = _options.OrderElements
                 ? attributes.Cast<IDotOrderableEntity>()
@@ -36,11 +37,6 @@ namespace GiGraph.Dot.Generators.AttributeGenerators
             }
         }
 
-        protected virtual void WriteAttribute(DotCommonAttribute attribute, IDotAttributeStatementWriter writer)
-        {
-            var nodeWriter = writer.BeginAttribute();
-            _entityGenerators.GetForEntity<IDotAttributeWriter>(attribute).Generate(attribute, nodeWriter);
-            writer.EndAttribute();
-        }
+        protected abstract void WriteAttribute(DotCommonAttribute attribute, TWriter writer);
     }
 }
