@@ -55,5 +55,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// to share part of their paths. The latter feature is not yet available outside of DOT.
         /// </summary>
         bool? ConcentrateEdges { get; set; }
+        
+        /// <summary>
+        /// If true, allows edges between clusters. Default: false;
+        /// See also lhead and ltail.
+        /// </summary>
+        bool? Compound { get; set; }
     }
 }
