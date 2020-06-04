@@ -73,7 +73,7 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
                 ? EscapeIdentifier(new DotCompassPointConverter().Convert(endpoint.CompassPoint.Value))
                 : null;
 
-            writer.WriteNode
+            writer.WriteEndpoint
             (
                 nodeId,
                 IdentifierRequiresQuoting(nodeId),
