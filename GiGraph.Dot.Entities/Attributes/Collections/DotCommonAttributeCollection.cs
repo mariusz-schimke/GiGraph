@@ -1,24 +1,17 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotCommonAttributeCollection : IDotAttributeCollection
+    public class DotCommonAttributeCollection : SortedList<string, DotCommonAttribute>, IDotAttributeCollection
     {
-        protected readonly IDictionary<string, DotCommonAttribute> _attributes = new Dictionary<string, DotCommonAttribute>(StringComparer.InvariantCulture);
-
-        public virtual int Count => _attributes.Count;
-
-        bool ICollection<DotCommonAttribute>.IsReadOnly => _attributes.IsReadOnly;
-
         public virtual T Set<T>(T attribute)
             where T : DotCommonAttribute
         {
-            _attributes[attribute.Key] = attribute;
+            this[attribute.Key] = attribute;
             return attribute;
         }
 
@@ -89,20 +82,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             return Set(new DotCustomAttribute(key, value));
         }
-        
+
         public virtual DotCustomAttribute SetCustom(string key, string value, IDotTextEscaper valueEscaper)
         {
             return Set(new DotCustomAttribute(key, value, valueEscaper));
-        }
-
-        public virtual bool Contains(DotCommonAttribute attribute)
-        {
-            return _attributes.Values.Contains(attribute);
-        }
-
-        public virtual bool Contains(string key)
-        {
-            return _attributes.ContainsKey(key);
         }
 
         public virtual bool Remove(DotCommonAttribute attribute)
@@ -110,35 +93,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Remove(attribute.Key);
         }
 
-        public virtual bool Remove(string key)
-        {
-            return _attributes.Remove(key);
-        }
-
-        public virtual int RemoveAll(Predicate<DotCommonAttribute> match)
-        {
-            var result = 0;
-            var matches = _attributes.Values.Where(a => match(a)).ToList();
-
-            foreach (var attribute in matches)
-            {
-                result += _attributes.Remove(attribute.Key) ? 1 : 0;
-            }
-
-            return result;
-        }
-
-        public virtual void Clear()
-        {
-            _attributes.Clear();
-        }
-
         public virtual T GetAs<T>(string key)
             where T : DotCommonAttribute
         {
-            if (_attributes.TryGetValue(key, out var result))
+            if (TryGetValue(key, out var result))
             {
-                return (T)result;
+                return (T) result;
             }
 
             return null;
@@ -147,7 +107,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual bool TryGetAs<T>(string key, out T attribute)
             where T : DotCommonAttribute
         {
-            if (_attributes.TryGetValue(key, out var result))
+            if (TryGetValue(key, out var result))
             {
                 attribute = result as T;
                 return attribute is { };
@@ -159,7 +119,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual bool TryGetValueAs<T>(string key, out T value)
         {
-            if (_attributes.TryGetValue(key, out var attribute) && attribute is DotCommonAttribute<T> attributeWithValue)
+            if (TryGetValue(key, out var attribute) && attribute is DotCommonAttribute<T> attributeWithValue)
             {
                 value = attributeWithValue.Value;
                 return true;
@@ -167,6 +127,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
             value = default;
             return false;
+        }
+
+        public virtual int RemoveAll(Predicate<DotCommonAttribute> match)
+        {
+            var result = 0;
+            var matches = Values.Where(a => match(a)).ToList();
+
+            foreach (var attribute in matches)
+            {
+                result += Remove(attribute.Key) ? 1 : 0;
+            }
+
+            return result;
         }
 
         protected virtual void AddOrRemove<T>(string key, T attribute)
@@ -186,26 +159,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             where TAttribute : DotCommonAttribute
         {
             AddOrRemove(key, value is null ? null : attribute(value));
-        }
-
-        void ICollection<DotCommonAttribute>.Add(DotCommonAttribute attribute)
-        {
-            Set(attribute);
-        }
-
-        public virtual void CopyTo(DotCommonAttribute[] array, int arrayIndex)
-        {
-            _attributes.Values.CopyTo(array, arrayIndex);
-        }
-
-        public virtual IEnumerator<DotCommonAttribute> GetEnumerator()
-        {
-            return _attributes.Values.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
     }
 }

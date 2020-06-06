@@ -5,7 +5,7 @@ using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotAttributeCollection : IDotEntity, ICollection<DotCommonAttribute>
+    public interface IDotAttributeCollection : IDotEntity, IDictionary<string, DotCommonAttribute>
     {
         /// <summary>
         /// Adds or replaces the specified attribute in the collection.
