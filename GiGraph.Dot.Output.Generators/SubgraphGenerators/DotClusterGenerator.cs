@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Generators.TextEscaping;
-using GiGraph.Dot.Writers.SubgraphWriters;
+using GiGraph.Dot.Output.Writers.SubgraphWriters;
 
 namespace GiGraph.Dot.Output.Generators.SubgraphGenerators
 {

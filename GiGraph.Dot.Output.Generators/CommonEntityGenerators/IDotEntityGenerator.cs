@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities;
-using GiGraph.Dot.Writers.CommonEntityWriters;
+using GiGraph.Dot.Output.Writers.CommonEntityWriters;
 using System;
 
 namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators

@@ -6,7 +6,7 @@ using System.Linq;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Generators.TextEscaping;
-using GiGraph.Dot.Writers.CommonEntityWriters;
+using GiGraph.Dot.Output.Writers.CommonEntityWriters;
 
 namespace GiGraph.Dot.Output.Generators.AttributeGenerators
 {

@@ -2,7 +2,7 @@
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Generators.TextEscaping;
-using GiGraph.Dot.Writers.GraphWriters;
+using GiGraph.Dot.Output.Writers.GraphWriters;
 
 namespace GiGraph.Dot.Output.Generators.GraphGenerators
 {
