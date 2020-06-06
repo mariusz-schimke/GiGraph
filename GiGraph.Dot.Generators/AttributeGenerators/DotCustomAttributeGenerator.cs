@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes;
-using GiGraph.Dot.Generators.Options;
+using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Generators.Providers;
 using GiGraph.Dot.Generators.TextEscaping;
 

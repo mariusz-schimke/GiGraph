@@ -3,7 +3,7 @@ using GiGraph.Dot.Generators.AttributeGenerators;
 using GiGraph.Dot.Generators.EdgeGenerators;
 using GiGraph.Dot.Generators.GraphGenerators;
 using GiGraph.Dot.Generators.NodeGenerators;
-using GiGraph.Dot.Generators.Options;
+using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Generators.SubgraphGenerators;
 
 namespace GiGraph.Dot.Generators.Providers

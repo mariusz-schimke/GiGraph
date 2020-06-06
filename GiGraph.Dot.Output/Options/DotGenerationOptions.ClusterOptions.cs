@@ -1,6 +1,4 @@
-﻿using GiGraph.Dot.Entities.Subgraphs;
-
-namespace GiGraph.Dot.Generators.Options
+﻿namespace GiGraph.Dot.Output.Options
 {
     public partial class DotGenerationOptions
     {
@@ -8,10 +6,10 @@ namespace GiGraph.Dot.Generators.Options
         {
             /// <summary>
             /// Cluster is a subgraph with an identifier prefixed with the "cluster" keyword.
-            /// This property determines what string to use between the keyword and the actual
-            /// identifier specified for a <see cref="DotCluster"/> instance.
+            /// This property determines what string to use between that keyword and the actual
+            /// identifier specified for a cluster instance.
             /// The default separator is space, which forms an identifier in a format "cluster identifier",
-            /// where 'identifier' is any string assigned to <see cref="DotCluster.Id"/> of a cluster.
+            /// where 'identifier' is any string used as a cluster identifier.
             /// </summary>
             public string ClusterIdSeparator { get; set; } = " ";
         }

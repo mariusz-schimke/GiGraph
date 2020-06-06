@@ -28,6 +28,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <ProjectReference Include="..\Gigraph.Dot.Entities\GiGraph.Dot.Entities.csproj" />
+    <ProjectReference Include="..\GiGraph.Dot.Output\GiGraph.Dot.Output.csproj" />
     <ProjectReference Include="..\Gigraph.Dot.Writers\GiGraph.Dot.Writers.csproj" />
   </ItemGroup>
 
