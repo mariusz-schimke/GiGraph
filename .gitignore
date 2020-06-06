@@ -350,3 +350,6 @@ MigrationBackup/
 .ionide/
 *.snk
 .idea/
+
+# macOS
+.DS_Store
