@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Output.Generators.NodeGenerators
 {
     public class DotCommonNodeCollectionGenerator : DotEntityGenerator<DotCommonNodeCollection, IDotNodeStatementWriter>
     {
-        protected DotCommonNodeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+        protected DotCommonNodeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }
