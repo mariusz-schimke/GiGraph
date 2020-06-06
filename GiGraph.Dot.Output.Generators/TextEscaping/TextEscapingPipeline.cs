@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Output.Generators.TextEscaping
             return value;
         }
 
-        public virtual TextEscapingPipeline BuildFrom(params IDotTextEscaper[] escaper)
+        public virtual TextEscapingPipeline From(params IDotTextEscaper[] escaper)
         {
             return new TextEscapingPipeline(escaper);
         }
