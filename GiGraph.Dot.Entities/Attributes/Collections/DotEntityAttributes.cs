@@ -112,6 +112,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetAs<DotArrowDirectionAttribute>("dir", out var result) ? result.Value : (DotArrowDirection?)null;
             set => AddOrRemove("dir", value, v => new DotArrowDirectionAttribute("dir", v.Value));
         }
+        
+        public virtual string LogicalHead
+        {
+            get => TryGetAs<DotLogicalEndpointAttribute>("lhead", out var result) ? result.Value : null;
+            set => AddOrRemove("lhead", value, v => new DotLogicalEndpointAttribute("lhead", v));
+        }
+        
+        public virtual string LogicalTail
+        {
+            get => TryGetAs<DotLogicalEndpointAttribute>("ltail", out var result) ? result.Value : null;
+            set => AddOrRemove("ltail", value, v => new DotLogicalEndpointAttribute("ltail", v));
+        }
 
         public virtual bool? Decorate
         {
@@ -141,6 +153,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetAs<DotBoolAttribute>("concentrate", out var result) ? result.Value : (bool?)null;
             set => AddOrRemove("concentrate", value, v => new DotBoolAttribute("concentrate", v.Value));
+        }        
+        
+        public virtual bool? Compound
+        {
+            get => TryGetAs<DotBoolAttribute>("compound", out var result) ? result.Value : (bool?)null;
+            set => AddOrRemove("compound", value, v => new DotBoolAttribute("compound", v.Value));
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using GiGraph.Dot.Writers.EdgeWriters;
 using GiGraph.Dot.Writers.NodeWriters;
 
-namespace GiGraph.Dot.Writers.EntityDefaultsWriter
+namespace GiGraph.Dot.Writers.EntityDefaultsWriters
 {
     public interface IDotEntityDefaultsStatementWriter
     {

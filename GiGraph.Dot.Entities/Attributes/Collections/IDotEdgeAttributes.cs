@@ -85,6 +85,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotArrowDirection? ArrowDirection { get; set; }
 
         /// <summary>
+        /// Logical head of an edge. When the <see cref="IDotGraphAttributes.Compound"/> property of the graph is true,
+        /// if the current property is defined and is the identifier of a cluster containing the real head, the edge is clipped
+        /// to the boundary of the cluster.
+        /// </summary>
+        string LogicalHead { get; set; }
+
+        /// <summary>
+        /// Logical tail of an edge. When the <see cref="IDotGraphAttributes.Compound"/> property of the graph is true,
+        /// if the current property is defined and is the identifier of a cluster containing the real tail, the edge is clipped
+        /// to the boundary of the cluster.
+        /// </summary>
+        string LogicalTail { get; set; }
+        
+        /// <summary>
         /// If true, attaches edge label to edge by a 2-segment polyline, underlining the label,
         /// then going to the closest point of spline. Default: false.
         /// </summary>

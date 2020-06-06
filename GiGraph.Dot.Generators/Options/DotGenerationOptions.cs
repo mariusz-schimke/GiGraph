@@ -10,9 +10,14 @@ namespace GiGraph.Dot.Generators.Options
         public virtual AttributeOptions Attributes { get; }
 
         /// <summary>
-        /// The generation options for subgraphs, including clusters.
+        /// The generation options for subgraphs.
         /// </summary>
         public virtual SubgraphOptions Subgraphs { get; }
+
+        /// <summary>
+        /// The generation options for clusters.
+        /// </summary>
+        public virtual ClusterOptions Clusters { get; }
 
         /// <summary>
         /// When set, identifiers will always be quoted, even if it is not required.
@@ -36,14 +41,15 @@ namespace GiGraph.Dot.Generators.Options
         /// </summary>
         public virtual bool OrderElements { get; set; } = false;
 
-        protected DotGenerationOptions(AttributeOptions attributes, SubgraphOptions subgraphs)
+        protected DotGenerationOptions(AttributeOptions attributes, SubgraphOptions subgraphs, ClusterOptions clusters)
         {
             Attributes = attributes;
             Subgraphs = subgraphs;
+            Clusters = clusters;
         }
 
         public DotGenerationOptions()
-            : this(new AttributeOptions(), new SubgraphOptions())
+            : this(new AttributeOptions(), new SubgraphOptions(), new ClusterOptions())
         {
         }
 

@@ -10,11 +10,11 @@ using GiGraph.Dot.Generators.Providers;
 using GiGraph.Dot.Generators.TextEscaping;
 using GiGraph.Dot.Writers.AttributeWriters;
 using GiGraph.Dot.Writers.EdgeWriters;
-using GiGraph.Dot.Writers.EntityDefaultsWriter;
 using GiGraph.Dot.Writers.GraphWriters;
 using GiGraph.Dot.Writers.NodeWriters;
 using GiGraph.Dot.Writers.SubgraphWriters;
 using System.Linq;
+using GiGraph.Dot.Writers.EntityDefaultsWriters;
 
 namespace GiGraph.Dot.Generators.GraphGenerators
 {

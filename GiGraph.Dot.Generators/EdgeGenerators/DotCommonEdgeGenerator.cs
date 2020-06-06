@@ -49,11 +49,11 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
             switch (commonEndpoint)
             {
                 case DotEndpoint endpoint:
-                    WriteNode(endpoint, writer);
+                    WriteEndpoint(endpoint, writer);
                     break;
 
                 case DotEndpointGroup endpointGroup:
-                    WriteSubgraph(endpointGroup, writer);
+                    WriteEndpointGroup(endpointGroup, writer);
                     break;
 
                 default:
@@ -61,7 +61,7 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
             }
         }
 
-        protected virtual void WriteNode(DotEndpoint endpoint, IDotEdgeWriter writer)
+        protected virtual void WriteEndpoint(DotEndpoint endpoint, IDotEdgeWriter writer)
         {
             var nodeId = EscapeIdentifier(endpoint.NodeId);
 
@@ -84,7 +84,7 @@ namespace GiGraph.Dot.Generators.EdgeGenerators
             );
         }
 
-        protected virtual void WriteSubgraph(DotEndpointGroup endpointGroup, IDotEdgeWriter writer)
+        protected virtual void WriteEndpointGroup(DotEndpointGroup endpointGroup, IDotEdgeWriter writer)
         {
             var subgraphWriter = writer.BeginSubgraph(_options.Subgraphs.PreferExplicitKeyword);
             _entityGenerators.GetForEntity<IDotSubgraphWriter>(endpointGroup.Subgraph).Generate(endpointGroup.Subgraph, subgraphWriter);
