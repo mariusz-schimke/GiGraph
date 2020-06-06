@@ -1,4 +1,4 @@
-﻿namespace GiGraph.Dot.Generators.Options
+﻿namespace GiGraph.Dot.Output.Options
 {
     public partial class DotGenerationOptions
     {

@@ -2,7 +2,7 @@
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Generators.Converters;
-using GiGraph.Dot.Generators.Options;
+using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Generators.Providers;
 using GiGraph.Dot.Generators.TextEscaping;
 using GiGraph.Dot.Writers.EdgeWriters;
