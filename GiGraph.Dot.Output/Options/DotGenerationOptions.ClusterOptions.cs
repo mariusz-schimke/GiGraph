@@ -11,7 +11,7 @@
             /// The default separator is space, which forms an identifier in a format "cluster identifier",
             /// where 'identifier' is any string used as a cluster identifier.
             /// </summary>
-            public string ClusterIdSeparator { get; set; } = " ";
+            public virtual string ClusterIdSeparator { get; set; } = " ";
         }
     }
 }
