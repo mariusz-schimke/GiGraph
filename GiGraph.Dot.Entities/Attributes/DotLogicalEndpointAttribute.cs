@@ -13,9 +13,9 @@ namespace GiGraph.Dot.Entities.Attributes
     /// </summary>
     public class DotLogicalEndpointAttribute : DotCommonAttribute<string>
     {
-        protected readonly TextEscapingPipeline _valueEscaper;
+        protected readonly IDotTextEscaper _valueEscaper;
 
-        protected DotLogicalEndpointAttribute(string key, string value, TextEscapingPipeline valueEscaper)
+        protected DotLogicalEndpointAttribute(string key, string value, IDotTextEscaper valueEscaper)
             : base(key, value)
         {
             // use the same value escaping pipeline as the cluster generator uses for escaping cluster identifier

@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Output.Generators.NodeGenerators
 {
     public class DotNodeGroupGenerator : DotCommonNodeGenerator<DotNodeGroup>
     {
-        protected DotNodeGroupGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+        protected DotNodeGroupGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }

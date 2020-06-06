@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
         where TEntity : IDotEntity
         where TWriter : IDotEntityWithAttributeListWriter
     {
-        protected DotEntityWithAttributeListGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+        protected DotEntityWithAttributeListGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }

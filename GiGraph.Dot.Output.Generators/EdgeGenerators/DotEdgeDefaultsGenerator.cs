@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
 {
     public class DotEdgeDefaultsGenerator : DotEntityWithAttributeListGenerator<DotCommonAttributeCollection, IDotEdgeDefaultsWriter>
     {
-        protected DotEdgeDefaultsGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+        protected DotEdgeDefaultsGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }
