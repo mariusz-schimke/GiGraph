@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
@@ -20,7 +21,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected override string GetDotEncodedValue()
+        protected override string GetDotEncodedValue(DotGenerationOptions options)
         {
             // keep this value coherent with the format the cluster generator uses to generate cluster identifier,
             // and use the same identifier escaping pipeline
