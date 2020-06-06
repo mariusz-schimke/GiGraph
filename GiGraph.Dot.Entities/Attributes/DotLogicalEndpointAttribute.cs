@@ -22,6 +22,8 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected override string GetDotEncodedValue()
         {
+            // keep this value coherent with the format the cluster generator uses to generate cluster identifier,
+            // and use the same identifier escaping pipeline
             return $"cluster {Value}";
         }
     }
