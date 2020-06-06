@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GiGraph.Dot.Output.Generators.TextEscaping
+﻿namespace GiGraph.Dot.Output.TextEscaping
 {
     public class DotLineBreakEscaper : IDotTextEscaper
     {

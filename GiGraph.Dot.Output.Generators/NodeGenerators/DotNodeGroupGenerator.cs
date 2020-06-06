@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Output.Generators.Providers;
-using GiGraph.Dot.Output.Generators.TextEscaping;
+using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Generators.NodeGenerators
 {
