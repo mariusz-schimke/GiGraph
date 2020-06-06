@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GiGraph.Dot.Output.Generators.TextEscaping
+namespace GiGraph.Dot.Output.TextEscaping
 {
     public class TextEscapingPipeline : List<IDotTextEscaper>
     {
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Output.Generators.TextEscaping
             return new TextEscapingPipeline();
         }
 
-        public static TextEscapingPipeline Default()
+        public static TextEscapingPipeline ForString()
         {
             return new TextEscapingPipeline
             {

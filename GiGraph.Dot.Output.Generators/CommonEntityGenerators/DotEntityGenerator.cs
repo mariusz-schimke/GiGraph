@@ -3,7 +3,7 @@ using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.CommonEntityWriters;
 using System;
 using GiGraph.Dot.Output.Generators.Providers;
-using GiGraph.Dot.Output.Generators.TextEscaping;
+using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 {
@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
             _syntaxRules = syntaxRules;
             _options = options;
             _entityGenerators = entityGenerators;
-            _identifierEscaper = identifierEscaper ?? TextEscapingPipeline.Default();
+            _identifierEscaper = identifierEscaper ?? TextEscapingPipeline.ForString();
         }
 
         public DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
@@ -72,7 +72,7 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
                 throw new ArgumentException($"The writer type {writer.GetType().FullName} is not valid for the {GetType().FullName} generator.", nameof(writer));
             }
 
-            Generate((TEntity)entity, (TWriter)writer);
+            Generate((TEntity) entity, (TWriter) writer);
         }
     }
 }

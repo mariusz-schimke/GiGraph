@@ -28,9 +28,7 @@ namespace GiGraph.Dot.Output.Generators.Providers
             provider.Register(new DotCommonSubgraphCollectionGenerator<DotCluster>(syntaxRules, options, provider));
 
             provider.Register(new DotCommonAttributeGenerator(syntaxRules, options, provider));
-            provider.Register(new DotCustomAttributeGenerator(syntaxRules, options, provider));
             provider.Register(new DotHtmlAttributeGenerator(syntaxRules, options, provider));
-            provider.Register(new DotLogicalEndpointAttributeGenerator(syntaxRules, options, provider));
             provider.Register(new DotCommonAttributeListGenerator(syntaxRules, options, provider));
             provider.Register(new DotCommonAttributeStatementListGenerator(syntaxRules, options, provider));
 
