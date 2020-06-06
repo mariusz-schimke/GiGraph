@@ -1,6 +1,6 @@
-﻿using GiGraph.Dot.Writers.Options;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Writers
 {

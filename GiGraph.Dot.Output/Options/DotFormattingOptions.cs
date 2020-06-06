@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GiGraph.Dot.Writers.Options
+namespace GiGraph.Dot.Output.Options
 {
     public class DotFormattingOptions
     {

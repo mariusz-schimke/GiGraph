@@ -4,7 +4,6 @@ using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Generators.Providers;
 using GiGraph.Dot.Writers;
 using GiGraph.Dot.Writers.GraphWriters;
-using GiGraph.Dot.Writers.Options;
 using System.IO;
 using System.Text;
 
