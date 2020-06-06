@@ -1,4 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Subgraphs;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
@@ -10,6 +12,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// </summary>
     public class DotLogicalEndpointAttribute : DotCommonAttribute<string>
     {
+        
         /// <summary>
         /// Creates a new attribute instance.
         /// </summary>
@@ -18,6 +21,12 @@ namespace GiGraph.Dot.Entities.Attributes
         public DotLogicalEndpointAttribute(string key, string clusterId)
             : base(key, clusterId)
         {
+        }
+
+        protected override string GetDotEncodedValue(DotGenerationOptions options)
+        {
+            // keep this value coherent with the format the cluster generator uses to generate cluster identifier
+            return DotClusterIdFormatter.Format(Value, options);
         }
     }
 }
