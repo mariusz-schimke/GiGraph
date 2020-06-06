@@ -14,11 +14,11 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
         protected readonly DotSyntaxRules _syntaxRules;
         protected readonly DotGenerationOptions _options;
         protected readonly IDotEntityGeneratorsProvider _entityGenerators;
-        protected readonly TextEscapingPipeline _identifierEscaper;
+        protected readonly IDotTextEscaper _identifierEscaper;
 
         public abstract void Generate(TEntity entity, TWriter writer);
 
-        protected DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+        protected DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
         {
             _syntaxRules = syntaxRules;
             _options = options;

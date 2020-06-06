@@ -2,7 +2,7 @@
 
 namespace GiGraph.Dot.Output.TextEscaping
 {
-    public class TextEscapingPipeline : List<IDotTextEscaper>
+    public class TextEscapingPipeline : List<IDotTextEscaper>, IDotTextEscaper
     {
         public TextEscapingPipeline()
         {

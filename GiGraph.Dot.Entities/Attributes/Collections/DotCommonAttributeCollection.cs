@@ -90,7 +90,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotCustomAttribute(key, value));
         }
         
-        public virtual DotCustomAttribute SetCustom(string key, string value, TextEscapingPipeline valueEscaper)
+        public virtual DotCustomAttribute SetCustom(string key, string value, IDotTextEscaper valueEscaper)
         {
             return Set(new DotCustomAttribute(key, value, valueEscaper));
         }

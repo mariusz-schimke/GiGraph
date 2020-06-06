@@ -121,7 +121,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
         /// <param name="valueEscaper">The text escaping pipeline to use for the value when generating a DOT script.</param>
-        DotCustomAttribute SetCustom(string key, string value, TextEscapingPipeline valueEscaper);
+        DotCustomAttribute SetCustom(string key, string value, IDotTextEscaper valueEscaper);
 
         /// <summary>
         /// Checks if an attribute with the specified key exists in the collection, and returns it as the specified type.
