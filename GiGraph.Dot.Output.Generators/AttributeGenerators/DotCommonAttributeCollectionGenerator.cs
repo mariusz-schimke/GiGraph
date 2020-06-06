@@ -26,10 +26,11 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
         public override void Generate(DotCommonAttributeCollection attributes, TWriter writer)
         {
             var orderedAttributes = _options.OrderElements
-                ? attributes.Cast<IDotOrderableEntity>()
+                ? attributes.Values
+                            .Cast<IDotOrderableEntity>()
                             .OrderBy(attribute => attribute.OrderingKey)
                             .Cast<DotCommonAttribute>()
-                : attributes;
+                : attributes.Values;
 
             foreach (var attribute in orderedAttributes)
             {
