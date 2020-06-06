@@ -1,4 +1,4 @@
-﻿namespace GiGraph.Dot.Entities.Nodes.Enums
+﻿namespace GiGraph.Dot.Entities.Edges.Enums
 {
     /// <summary>
     /// Modifies the edge placement to aim for the corresponding compass point on the port,

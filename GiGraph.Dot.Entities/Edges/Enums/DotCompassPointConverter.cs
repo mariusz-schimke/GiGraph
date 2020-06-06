@@ -1,7 +1,6 @@
-﻿using GiGraph.Dot.Entities.Nodes.Enums;
-using System;
+﻿using System;
 
-namespace GiGraph.Dot.Output.Generators.Converters
+namespace GiGraph.Dot.Entities.Edges.Enums
 {
     public class DotCompassPointConverter
     {
