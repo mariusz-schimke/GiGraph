@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot.Writers", "GiGr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot", "GiGraph.Dot\GiGraph.Dot.csproj", "{BAC8EB9A-B449-4697-AC51-9A34FEDD0EC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Output", "GiGraph.Dot.Output\GiGraph.Dot.Output.csproj", "{738795A3-54D5-443D-B827-E4E093BFE6F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BAC8EB9A-B449-4697-AC51-9A34FEDD0EC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAC8EB9A-B449-4697-AC51-9A34FEDD0EC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAC8EB9A-B449-4697-AC51-9A34FEDD0EC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{738795A3-54D5-443D-B827-E4E093BFE6F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{738795A3-54D5-443D-B827-E4E093BFE6F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{738795A3-54D5-443D-B827-E4E093BFE6F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{738795A3-54D5-443D-B827-E4E093BFE6F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
