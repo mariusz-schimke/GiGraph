@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Subgraphs;
+﻿using GiGraph.Dot.Entities.Attributes;
+using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Generators.Options;
 using GiGraph.Dot.Generators.Providers;
 using GiGraph.Dot.Generators.TextEscaping;
@@ -24,6 +25,9 @@ namespace GiGraph.Dot.Generators.SubgraphGenerators
             writer.WriteSubgraphDeclaration(id, IdentifierRequiresQuoting(id));
         }
 
+        /// <summary>
+        /// See <see cref="DotLogicalEndpointAttribute.GetDotEncodedValue" /> to keep the identifier format and escaping pipeline coherent.
+        /// </summary>
         protected virtual string FormatIdentifier(string id)
         {
             const string cluster = "cluster";
