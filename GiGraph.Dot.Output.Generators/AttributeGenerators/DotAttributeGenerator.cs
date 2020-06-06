@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
         protected virtual void WriteAttribute(string key, string value, IDotAttributeWriter writer)
         {
             key = EscapeIdentifier(key);
-            value = EscapeValue(value);
+            value = EscapeValue(FormatValue(value));
 
             writer.WriteAttribute
             (
@@ -52,19 +52,10 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
             );
         }
 
-        protected virtual string EscapeValue(string value)
-        {
-            return _valueEscaper.Escape(value);
-        }
+        protected virtual string EscapeValue(string value) => _valueEscaper.Escape(value);
+        protected virtual bool KeyRequiresQuoting(string key) => !_syntaxRules.IsValidIdentifier(key);
+        protected virtual bool ValueRequiresQuoting(string value) => _options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
 
-        protected virtual bool KeyRequiresQuoting(string key)
-        {
-            return !_syntaxRules.IsValidIdentifier(key);
-        }
-
-        protected virtual bool ValueRequiresQuoting(string value)
-        {
-            return _options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
-        }
+        protected virtual string FormatValue(string value) => value;
     }
 }

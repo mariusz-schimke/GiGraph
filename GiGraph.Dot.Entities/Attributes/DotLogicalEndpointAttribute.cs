@@ -1,7 +1,4 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Subgraphs;
-using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
@@ -13,30 +10,14 @@ namespace GiGraph.Dot.Entities.Attributes
     /// </summary>
     public class DotLogicalEndpointAttribute : DotCommonAttribute<string>
     {
-        protected readonly TextEscapingPipeline _textEscapingPipeline;
-
-        protected DotLogicalEndpointAttribute(string key, string value, TextEscapingPipeline textEscapingPipeline)
-            : base(key, value)
-        {
-            _textEscapingPipeline = textEscapingPipeline;
-        }
-
         /// <summary>
         /// Creates a new attribute instance.
         /// </summary>
         /// <param name="key">The key of the attribute.</param>
         /// <param name="clusterId">The identifier of the cluster to use as a logical head or tail of the edge.</param>
         public DotLogicalEndpointAttribute(string key, string clusterId)
-            : this(key, clusterId, TextEscapingPipeline.ForGraphId())
+            : base(key, clusterId)
         {
-        }
-
-        protected override string GetDotEncodedValue(DotGenerationOptions options)
-        {
-            // keep this value coherent with the format the cluster generator uses to generate cluster identifier,
-            // and use the same identifier escaping pipeline
-            return _textEscapingPipeline.Escape(
-                DotClusterIdFormatter.Format(Value, options));
         }
     }
 }
