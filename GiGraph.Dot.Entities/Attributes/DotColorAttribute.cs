@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
@@ -19,10 +20,10 @@ namespace GiGraph.Dot.Entities.Attributes
 
         public override string ToString()
         {
-            return Value.Name.ToString();
+            return Value.Name;
         }
 
-        protected override string GetDotEncodedValue()
+        protected override string GetDotEncodedValue(DotGenerationOptions options)
         {
             return $"#{Value.R:x2}{Value.G:x2}{Value.B:x2}{Value.A:x2}";
         }
