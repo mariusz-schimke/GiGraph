@@ -2,7 +2,7 @@
 using GiGraph.Dot.Writers.CommonEntityWriters;
 using GiGraph.Dot.Writers.Contexts;
 using GiGraph.Dot.Writers.EdgeWriters;
-using GiGraph.Dot.Writers.EntityDefaultsWriter;
+using GiGraph.Dot.Writers.EntityDefaultsWriters;
 using GiGraph.Dot.Writers.NodeWriters;
 using GiGraph.Dot.Writers.SubgraphWriters;
 
