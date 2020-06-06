@@ -2,9 +2,9 @@
 
 namespace GiGraph.Dot.Entities.Edges.Enums
 {
-    public class DotCompassPointConverter
+    public static class DotCompassPointConverter
     {
-        public virtual string Convert(DotCompassPoint compassPoint)
+        public static string Convert(DotCompassPoint compassPoint)
         {
             switch (compassPoint)
             {

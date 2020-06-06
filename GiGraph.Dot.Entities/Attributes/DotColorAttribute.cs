@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Entities.Attributes
 
         public override string ToString()
         {
-            return Value.Name.ToString();
+            return Value.Name;
         }
 
         protected override string GetDotEncodedValue(DotGenerationOptions options)
