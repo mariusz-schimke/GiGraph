@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -87,6 +88,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotCustomAttribute SetCustom(string key, string value)
         {
             return Set(new DotCustomAttribute(key, value));
+        }
+        
+        public virtual DotCustomAttribute SetCustom(string key, string value, TextEscapingPipeline valueEscaper)
+        {
+            return Set(new DotCustomAttribute(key, value, valueEscaper));
         }
 
         public virtual bool Contains(DotCommonAttribute attribute)

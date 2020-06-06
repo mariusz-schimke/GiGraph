@@ -2,7 +2,7 @@
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
-using GiGraph.Dot.Output.Generators.TextEscaping;
+using GiGraph.Dot.Output.TextEscaping;
 using GiGraph.Dot.Output.Writers.AttributeWriters;
 
 namespace GiGraph.Dot.Output.Generators.AttributeGenerators
@@ -10,21 +10,13 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
     public class DotAttributeGenerator<TAttribute> : DotEntityGenerator<TAttribute, IDotAttributeWriter>
         where TAttribute : DotCommonAttribute, IDotAttribute
     {
-        protected readonly TextEscapingPipeline _valueEscaper;
-
-        protected DotAttributeGenerator(
-            DotSyntaxRules syntaxRules,
-            DotGenerationOptions options,
-            IDotEntityGeneratorsProvider entityGenerators,
-            TextEscapingPipeline identifierEscaper = null,
-            TextEscapingPipeline valueEscaper = null)
+        protected DotAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
-            _valueEscaper = valueEscaper ?? TextEscapingPipeline.Default();
         }
 
         public DotAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
-            : this(syntaxRules, options, entityGenerators, identifierEscaper: null, valueEscaper: null)
+            : base(syntaxRules, options, entityGenerators)
         {
         }
 
@@ -52,10 +44,10 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
             );
         }
 
-        protected virtual string EscapeValue(string value) => _valueEscaper.Escape(value);
+        protected virtual string FormatValue(string value) => value;
+        protected virtual string EscapeValue(string value) => value;
+        
         protected virtual bool KeyRequiresQuoting(string key) => !_syntaxRules.IsValidIdentifier(key);
         protected virtual bool ValueRequiresQuoting(string value) => _options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
-
-        protected virtual string FormatValue(string value) => value;
     }
 }
