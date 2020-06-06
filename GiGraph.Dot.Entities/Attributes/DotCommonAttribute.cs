@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Entities.Attributes
+﻿using GiGraph.Dot.Output.Options;
+
+namespace GiGraph.Dot.Entities.Attributes
 {
     public abstract class DotCommonAttribute : IDotAttribute, IDotOrderableEntity
     {
@@ -12,14 +14,15 @@
         /// <summary>
         /// Gets the value of the attribute in a format understood by DOT graph renderer.
         /// </summary>
-        protected abstract string GetDotEncodedValue();
+        /// <param name="options">The DOT generation options to use.</param>
+        protected abstract string GetDotEncodedValue(DotGenerationOptions options);
 
         protected DotCommonAttribute(string key)
         {
             Key = key;
         }
 
-        string IDotAttribute.GetDotEncodedValue() => GetDotEncodedValue();
+        string IDotAttribute.GetDotEncodedValue(DotGenerationOptions options) => GetDotEncodedValue(options);
     }
 
     public abstract class DotCommonAttribute<T> : DotCommonAttribute, IDotAttribute
@@ -46,7 +49,8 @@
         /// <summary>
         /// Gets the value of the attribute in a format understood by DOT graph renderer.
         /// </summary>
-        protected override string GetDotEncodedValue()
+        /// <param name="options">The DOT generation options to use.</param>
+        protected override string GetDotEncodedValue(DotGenerationOptions options)
         {
             return Value?.ToString() ?? string.Empty;
         }

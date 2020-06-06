@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Entities.Attributes
+﻿using GiGraph.Dot.Output.Options;
+
+namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
     /// A boolean value attribute.
@@ -15,7 +17,7 @@
         {
         }
 
-        protected override string GetDotEncodedValue()
+        protected override string GetDotEncodedValue(DotGenerationOptions options)
         {
             return Value ? "true" : "false";
         }
