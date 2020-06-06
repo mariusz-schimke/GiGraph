@@ -9,7 +9,7 @@ using System.Linq;
 using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
-using GiGraph.Dot.Output.Generators.TextEscaping;
+using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Generators.EdgeGenerators
 {
