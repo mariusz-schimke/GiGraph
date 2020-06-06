@@ -6,8 +6,8 @@ using GiGraph.Dot.Output.Writers.SubgraphWriters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
-using GiGraph.Dot.Output.Generators.Converters;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Generators.TextEscaping;
 

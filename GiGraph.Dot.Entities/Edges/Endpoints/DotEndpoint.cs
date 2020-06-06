@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Nodes.Enums;
 using System;
+using GiGraph.Dot.Entities.Edges.Enums;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
