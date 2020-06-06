@@ -22,13 +22,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="..\Solution Items\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs"/>
+        <Compile Include="..\Solution Items\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
-        <ProjectReference Include="..\Gigraph.Dot.Entities\GiGraph.Dot.Entities.csproj"/>
-        <ProjectReference Include="..\Gigraph.Dot.Generators\GiGraph.Dot.Generators.csproj"/>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+        <ProjectReference Include="..\Gigraph.Dot.Entities\GiGraph.Dot.Entities.csproj" />
+        <ProjectReference Include="..\GiGraph.Dot.Output.Generators\GiGraph.Dot.Output.Generators.csproj" />
     </ItemGroup>
 
 </Project>
