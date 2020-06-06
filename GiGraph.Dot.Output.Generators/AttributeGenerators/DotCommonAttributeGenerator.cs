@@ -7,8 +7,8 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
 {
     public class DotCommonAttributeGenerator : DotAttributeGenerator<DotCommonAttribute>
     {
-        protected DotCommonAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper = null, TextEscapingPipeline valueEscaper = null)
-            : base(syntaxRules, options, entityGenerators, identifierEscaper, valueEscaper)
+        protected DotCommonAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+            : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }
 

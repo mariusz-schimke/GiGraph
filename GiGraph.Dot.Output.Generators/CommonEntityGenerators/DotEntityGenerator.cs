@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
             _syntaxRules = syntaxRules;
             _options = options;
             _entityGenerators = entityGenerators;
-            _identifierEscaper = identifierEscaper ?? TextEscapingPipeline.Default();
+            _identifierEscaper = identifierEscaper ?? TextEscapingPipeline.ForString();
         }
 
         public DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
@@ -72,7 +72,7 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
                 throw new ArgumentException($"The writer type {writer.GetType().FullName} is not valid for the {GetType().FullName} generator.", nameof(writer));
             }
 
-            Generate((TEntity)entity, (TWriter)writer);
+            Generate((TEntity) entity, (TWriter) writer);
         }
     }
 }

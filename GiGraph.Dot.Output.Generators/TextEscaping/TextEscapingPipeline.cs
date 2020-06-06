@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Output.Generators.TextEscaping
             return new TextEscapingPipeline();
         }
 
-        public static TextEscapingPipeline Default()
+        public static TextEscapingPipeline ForString()
         {
             return new TextEscapingPipeline
             {

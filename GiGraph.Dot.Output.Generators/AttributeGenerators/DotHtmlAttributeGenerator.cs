@@ -8,20 +8,20 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
 {
     public class DotHtmlAttributeGenerator : DotAttributeGenerator<DotHtmlAttribute>
     {
-        protected DotHtmlAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper = null, TextEscapingPipeline valueEscaper = null)
-            : base(syntaxRules, options, entityGenerators, identifierEscaper, valueEscaper ?? TextEscapingPipeline.None())
+        protected DotHtmlAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+            : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }
 
         public DotHtmlAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
-            : this(syntaxRules, options, entityGenerators, identifierEscaper: null, valueEscaper: null)
+            : base(syntaxRules, options, entityGenerators)
         {
         }
 
         protected override void WriteAttribute(string key, string value, IDotAttributeWriter writer)
         {
             key = EscapeIdentifier(key);
-            value = EscapeValue(value);
+            value = EscapeValue(FormatValue(value));
 
             writer.WriteHtmlAttribute
             (
