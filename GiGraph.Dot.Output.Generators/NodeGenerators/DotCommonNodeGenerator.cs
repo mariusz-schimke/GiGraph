@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Output.Generators.NodeGenerators
     public abstract class DotCommonNodeGenerator<TEntity> : DotEntityWithAttributeListGenerator<TEntity, IDotNodeWriter>
         where TEntity : DotCommonNode
     {
-        protected DotCommonNodeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+        protected DotCommonNodeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }

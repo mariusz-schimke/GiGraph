@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Output.Generators.NodeGenerators
 {
     public class DotNodeDefaultsGenerator : DotEntityWithAttributeListGenerator<DotCommonAttributeCollection, IDotNodeDefaultsWriter>
     {
-        protected DotNodeDefaultsGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+        protected DotNodeDefaultsGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }

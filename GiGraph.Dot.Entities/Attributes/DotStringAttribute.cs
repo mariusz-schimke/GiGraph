@@ -10,9 +10,9 @@ namespace GiGraph.Dot.Entities.Attributes
     /// </summary>
     public class DotStringAttribute : DotCommonAttribute<string>
     {
-        protected readonly TextEscapingPipeline _valueEscaper;
+        protected readonly IDotTextEscaper _valueEscaper;
 
-        protected DotStringAttribute(string key, string value, TextEscapingPipeline valueEscaper)
+        protected DotStringAttribute(string key, string value, IDotTextEscaper valueEscaper)
             : base(key, value)
         {
             _valueEscaper = valueEscaper ?? TextEscapingPipeline.ForString();

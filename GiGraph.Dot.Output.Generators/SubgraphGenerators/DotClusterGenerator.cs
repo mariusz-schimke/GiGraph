@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Output.Generators.SubgraphGenerators
 {
     public class DotClusterGenerator : DotCommonSubgraphGenerator<DotCluster>
     {
-        protected DotClusterGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, TextEscapingPipeline identifierEscaper)
+        protected DotClusterGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }
