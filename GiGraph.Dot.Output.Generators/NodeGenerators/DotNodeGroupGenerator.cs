@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Writers.NodeWriters;
+using GiGraph.Dot.Output.Writers.NodeWriters;
 using System;
 using System.Collections.Generic;
 using System.Linq;

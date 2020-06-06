@@ -2,8 +2,8 @@
 using GiGraph.Dot.Output.Generators.GraphGenerators;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Generators.Providers;
-using GiGraph.Dot.Writers;
-using GiGraph.Dot.Writers.GraphWriters;
+using GiGraph.Dot.Output.Writers;
+using GiGraph.Dot.Output.Writers.GraphWriters;
 using System.IO;
 using System.Text;
 

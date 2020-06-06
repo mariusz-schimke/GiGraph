@@ -1,8 +1,8 @@
 ﻿using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Writers.EdgeWriters;
-using GiGraph.Dot.Writers.SubgraphWriters;
+using GiGraph.Dot.Output.Writers.EdgeWriters;
+using GiGraph.Dot.Output.Writers.SubgraphWriters;
 using System;
 using System.Collections.Generic;
 using System.Linq;

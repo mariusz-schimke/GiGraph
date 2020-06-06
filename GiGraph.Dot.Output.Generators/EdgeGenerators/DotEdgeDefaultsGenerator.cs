@@ -3,7 +3,7 @@ using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Generators.TextEscaping;
-using GiGraph.Dot.Writers.EdgeWriters;
+using GiGraph.Dot.Output.Writers.EdgeWriters;
 
 namespace GiGraph.Dot.Output.Generators.EdgeGenerators
 {

@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Writers.CommonEntityWriters;
+using GiGraph.Dot.Output.Writers.CommonEntityWriters;
 using System;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Generators.TextEscaping;

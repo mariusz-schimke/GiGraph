@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot.Entities", "GiG
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot.Output.Generators", "GiGraph.Dot.Output.Generators\GiGraph.Dot.Output.Generators.csproj", "{0DBB96E9-0379-49AB-9A08-7D61C64C8ACF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot.Writers", "GiGraph.Dot.Writers\GiGraph.Dot.Writers.csproj", "{197FDC91-76B3-44FC-8C24-ADC082435495}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot.Output.Writers", "GiGraph.Dot.Output.Writers\GiGraph.Dot.Output.Writers.csproj", "{197FDC91-76B3-44FC-8C24-ADC082435495}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot", "GiGraph.Dot\GiGraph.Dot.csproj", "{BAC8EB9A-B449-4697-AC51-9A34FEDD0EC3}"
 EndProject

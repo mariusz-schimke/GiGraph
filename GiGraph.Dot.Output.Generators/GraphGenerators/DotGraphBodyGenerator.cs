@@ -5,16 +5,16 @@ using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Writers.AttributeWriters;
-using GiGraph.Dot.Writers.EdgeWriters;
-using GiGraph.Dot.Writers.GraphWriters;
-using GiGraph.Dot.Writers.NodeWriters;
-using GiGraph.Dot.Writers.SubgraphWriters;
+using GiGraph.Dot.Output.Writers.AttributeWriters;
+using GiGraph.Dot.Output.Writers.EdgeWriters;
+using GiGraph.Dot.Output.Writers.GraphWriters;
+using GiGraph.Dot.Output.Writers.NodeWriters;
+using GiGraph.Dot.Output.Writers.SubgraphWriters;
 using System.Linq;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Generators.TextEscaping;
-using GiGraph.Dot.Writers.EntityDefaultsWriters;
+using GiGraph.Dot.Output.Writers.EntityDefaultsWriters;
 
 namespace GiGraph.Dot.Output.Generators.GraphGenerators
 {
