@@ -1,6 +1,8 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Colors;
 using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -51,6 +53,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
         DotBoolAttribute Set(string key, bool value);
+        
+        /// <summary>
+        /// Adds or replaces the specified color value attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotColorAttribute Set(string key, Color value);
 
         /// <summary>
         /// Adds or replaces the specified node shape attribute in the collection.
