@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -23,6 +24,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Gets or sets the color of the cluster (default: <see cref="Color.Black"/>).
         /// </summary>
         Color? Color { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the color list of the cluster.
+        /// If the value specifies multiple colors, with no weights, and the <see cref="Style"/> is <see cref="DotStyle.Filled"/>,
+        /// a linear gradient fill is done using the first two colors. If weights are present (see <see cref="DotWeightedColor.Weight"/>),
+        /// a degenerate linear gradient fill is done. This essentially does a fill using two colors,
+        /// with the <see cref="DotWeightedColor.Weight"/> specifying how much of region is filled with each color.
+        /// If the <see cref="Style"/> attribute contains the value <see cref="DotStyle.Radial"/>, then a radial gradient fill is done.
+        /// </summary>
+        DotWeightedColor[] ColorList { get; set; }
 
         /// <summary>
         /// Gets or sets the background color of the cluster (default: none).
