@@ -2,7 +2,7 @@
 using GiGraph.Dot.Output.Writers.CommonEntityWriters;
 using GiGraph.Dot.Output.Writers.Contexts;
 using GiGraph.Dot.Output.Writers.EdgeWriters;
-using GiGraph.Dot.Output.Writers.EntityDefaultsWriters;
+using GiGraph.Dot.Output.Writers.GlobalAttributesWriters;
 using GiGraph.Dot.Output.Writers.NodeWriters;
 using GiGraph.Dot.Output.Writers.SubgraphWriters;
 
@@ -25,12 +25,12 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
             EndSection();
         }
 
-        public virtual IDotEntityDefaultsStatementWriter BeginDefaultsSection(bool useStatementDelimiter)
+        public virtual IDotGlobalAttributesStatementWriter BeginGlobalAttributesSection(bool useStatementDelimiter)
         {
-            return new DotEntityDefaultsStatementWriter(_tokenWriter, _context, useStatementDelimiter);
+            return new DotGlobalAttributesStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
 
-        public virtual void EndDefaultsSection()
+        public virtual void EndGlobalAttributesSection()
         {
             EndSection();
         }
