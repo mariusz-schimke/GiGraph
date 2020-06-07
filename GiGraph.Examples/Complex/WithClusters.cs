@@ -13,6 +13,7 @@ namespace GiGraph.Examples.Complex
             // set graph attributes
             graph.Attributes.Label = "Example Flow";
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
+            graph.Attributes.Compound = true;
 
             // set individual node styles
             graph.Nodes.Add("Start").Attributes.Shape = DotShape.Circle;
@@ -26,11 +27,24 @@ namespace GiGraph.Examples.Complex
 
             // (!) Note that CROSS-DIAGRAM EDGES SHOULD BE DEFINED IN THE COMMON PARENT LEVEL GRAPH/SUBGRAPH
             // (which is the root graph in this case)
-            graph.Edges.Add("Decision", "Cluster 1 Start").Attributes.Label = "yes";
-            graph.Edges.Add("Decision", "Cluster 2 Start").Attributes.Label = "no";
+            graph.Edges.Add("Decision", "Cluster 1 Start", attrs =>
+            {
+                attrs.Label = "yes";
+                
+                // attach the arrow to cluster border
+                attrs.LogicalHead = "Positive path";
+            });
+            
+            graph.Edges.Add("Decision", "Cluster 2 Start", attrs =>
+            {
+                attrs.Label = "no";
+                
+                // attach the arrow to cluster border
+                attrs.LogicalHead = "Negative path";
+            });
 
-            graph.Edges.Add("Cluster 1 Exit", "Exit");
-            graph.Edges.Add("Cluster 2 Exit", "Exit");
+            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.LogicalTail = "Positive path";
+            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.LogicalTail = "Negative path";
 
 
             // --- add clusters ---
