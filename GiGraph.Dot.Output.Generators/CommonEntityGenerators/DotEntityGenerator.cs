@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
             _syntaxRules = syntaxRules;
             _options = options;
             _entityGenerators = entityGenerators;
-            _identifierEscaper = identifierEscaper ?? TextEscapingPipeline.ForString();
+            _identifierEscaper = identifierEscaper ?? TextEscapingPipeline.ForIdentifier();
         }
 
         public DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
