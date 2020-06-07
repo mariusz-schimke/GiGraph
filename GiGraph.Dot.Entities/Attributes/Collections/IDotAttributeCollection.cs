@@ -150,12 +150,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         bool TryGetValueAs<T>(string key, out T value);
 
         /// <summary>
-        /// Removes the specified attribute from the collection.
-        /// </summary>
-        /// <param name="key">The key of the attribute to remove.</param>
-        bool Remove(string key);
-
-        /// <summary>
         /// Removes all attributes matching the specified criteria from the collection.
         /// </summary>
         /// <param name="match">The predicate to use for matching attributes.</param>
