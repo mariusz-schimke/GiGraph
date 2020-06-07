@@ -91,7 +91,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual T GetAs<T>(string key)
             where T : DotCommonAttribute
         {
-            if (TryGetValue(key, out var result))
+            if (base.TryGetValue(key, out var result))
             {
                 return (T) result;
             }
