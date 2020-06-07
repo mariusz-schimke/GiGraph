@@ -41,6 +41,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("fillcolor", value, v => new DotColorAttribute("fillcolor", v.Value));
         }
 
+        public virtual DotWeightedColor[] FillColorList
+        {
+            get => TryGetValueAs<DotWeightedColor[]>("fillcolor", out var result) ? result : null;
+            set => AddOrRemove("fillcolor", value, v => new DotColorListAttribute("fillcolor", v));
+        }
+
         public virtual int? GradientAngle
         {
             get => TryGetAs<DotIntAttribute>("gradientangle", out var result) ? result.Value : (int?) null;
