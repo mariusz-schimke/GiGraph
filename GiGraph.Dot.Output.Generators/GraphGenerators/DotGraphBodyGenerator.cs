@@ -14,7 +14,7 @@ using System.Linq;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.TextEscaping;
-using GiGraph.Dot.Output.Writers.EntityDefaultsWriters;
+using GiGraph.Dot.Output.Writers.GlobalAttributesWriters;
 
 namespace GiGraph.Dot.Output.Generators.GraphGenerators
 {
@@ -32,10 +32,8 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
 
         public override void Generate(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
         {
-            WriteAttributes(graphBody.Attributes, writer);
-
-            // the defaults have to appear first, so that they are applied to all elements that come later in the output script
-            WriteDefaults(graphBody.NodeDefaults, graphBody.EdgeDefaults, writer);
+            // node and edge defaults have to appear first, so that they are applied to all elements that come later in the output script
+            WriteGlobalAttributes(graphBody.Attributes, graphBody.NodeDefaults, graphBody.EdgeDefaults, writer);
 
             // subgraphs and clusters may also specify node defaults, and these are applied only
             // if the nodes they contain do not appear earlier in the parent graph or subgraph
@@ -48,7 +46,37 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
             WriteEdges(graphBody.Edges, writer);
         }
 
-        protected virtual void WriteAttributes(IDotAttributeCollection attributes, IDotGraphBodyWriter writer)
+        protected virtual void WriteGlobalAttributes(IDotAttributeCollection graphAttributes, IDotNodeAttributes nodeDefaults, IDotEdgeAttributes edgeDefaults, IDotGraphBodyWriter writer)
+        {
+            var writeGraphAttributes = graphAttributes.Any();
+
+            // write graph attributes as a list of individual statements
+            if (_options.Attributes.PreferGraphAttributesAsStatements)
+            {
+                WriteGraphAttributesAsStatementList(graphAttributes, writer);
+                writeGraphAttributes = false;
+            }
+
+            if (!nodeDefaults.Any() && !edgeDefaults.Any() && !writeGraphAttributes)
+            {
+                return;
+            }
+
+            var globalAttributesWriter = writer.BeginGlobalAttributesSection(_options.PreferStatementDelimiter);
+
+            if (writeGraphAttributes)
+            {
+                // write graph attributes as a "graph [attr_list]" clause
+                WriteGraphAttributesAsClause(graphAttributes, globalAttributesWriter);
+            }
+
+            WriteNodeDefaults(nodeDefaults, globalAttributesWriter);
+            WriteEdgeDefaults(edgeDefaults, globalAttributesWriter);
+
+            writer.EndGlobalAttributesSection();
+        }
+
+        protected virtual void WriteGraphAttributesAsStatementList(IDotAttributeCollection attributes, IDotGraphBodyWriter writer)
         {
             if (attributes.Any())
             {
@@ -58,22 +86,17 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
             }
         }
 
-        private void WriteDefaults(IDotNodeAttributes nodeDefaults, IDotEdgeAttributes edgeDefaults, IDotGraphBodyWriter writer)
+        protected virtual void WriteGraphAttributesAsClause(IDotAttributeCollection attributes, IDotGlobalAttributesStatementWriter writer)
         {
-            if (!nodeDefaults.Any() && !edgeDefaults.Any())
+            if (attributes.Any())
             {
-                return;
+                var attributesWriter = writer.BeginGraphAttributes();
+                _entityGenerators.GetForEntity<IDotGraphAttributesWriter>(attributes).Generate(attributes, attributesWriter);
+                writer.EndGraphAttributes();
             }
-
-            var defaultsWriter = writer.BeginDefaultsSection(_options.PreferStatementDelimiter);
-
-            WriteNodeDefaults(nodeDefaults, defaultsWriter);
-            WriteEdgeDefaults(edgeDefaults, defaultsWriter);
-
-            writer.EndDefaultsSection();
         }
 
-        protected virtual void WriteNodeDefaults(IDotNodeAttributes nodeDefaults, IDotEntityDefaultsStatementWriter writer)
+        protected virtual void WriteNodeDefaults(IDotNodeAttributes nodeDefaults, IDotGlobalAttributesStatementWriter writer)
         {
             if (nodeDefaults.Any())
             {
@@ -83,7 +106,7 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
             }
         }
 
-        protected virtual void WriteEdgeDefaults(IDotEdgeAttributes edgeDefaults, IDotEntityDefaultsStatementWriter writer)
+        protected virtual void WriteEdgeDefaults(IDotEdgeAttributes edgeDefaults, IDotGlobalAttributesStatementWriter writer)
         {
             if (edgeDefaults.Any())
             {
