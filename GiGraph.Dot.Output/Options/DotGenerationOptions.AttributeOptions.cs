@@ -5,6 +5,11 @@
         public class AttributeOptions
         {
             /// <summary>
+            /// When set, keys will always be quoted, even if it is not required.
+            /// </summary>
+            public virtual bool PreferQuotedKey { get; set; } = false;
+            
+            /// <summary>
             /// When set, attribute value will always be quoted, even if it is not required.
             /// </summary>
             public virtual bool PreferQuotedValue { get; set; } = false;
