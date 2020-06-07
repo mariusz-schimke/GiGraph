@@ -43,14 +43,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used. 
         /// If it is not defined too, the default is used, except for <see cref="Shape"/> of <see cref="DotShape.Point"/>,
         /// or when the output format is MIF, which use black by default.
+        /// </summary>
+        Color? FillColor { get; set; }
+
+        /// <summary>
+        /// Gets or sets the color list used to fill the background of the node, assuming that <see cref="Style"/> is <see cref="DotStyle.Filled"/>.
+        /// If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used. 
+        /// If it is not defined too, the default is used, except for <see cref="Shape"/> of <see cref="DotShape.Point"/>,
+        /// or when the output format is MIF, which use black by default.
         /// <para>
-        ///     If the value is a color list, a gradient fill is used. By default, this is a linear fill; 
+        ///     If the value specifies multiple colors, a gradient fill is used. By default, this is a linear fill; 
         ///     setting <see cref="Style"/> to <see cref="DotStyle.Radial"/> will cause a radial fill.
         ///     At present, only two colors are used. If the second color is missing, the default color is used for it.
         ///     See also the <see cref="GradientAngle"/> attribute for setting the gradient angle.
         /// </para>
         /// </summary>
-        Color? FillColor { get; set; }
+        DotWeightedColor[] FillColorList { get; set; }
 
         /// <summary>
         /// If a gradient fill is being used, this determines the angle of the fill. 
