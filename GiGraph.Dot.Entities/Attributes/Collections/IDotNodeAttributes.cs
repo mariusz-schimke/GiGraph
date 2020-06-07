@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -23,6 +24,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Gets or sets the color of the node (default: <see cref="Color.Black"/>).
         /// </summary>
         Color? Color { get; set; }
+
+        /// <summary>
+        /// Gets or sets the color list of the node.
+        /// If the value specifies multiple colors, with no weights, and a <see cref="DotStyle.Filled"/> style is specified,
+        /// a linear gradient fill is done using the first two colors. If weights are present, a degenerate linear gradient fill is done.
+        /// This essentially does a fill using two colors, with the <see cref="DotWeightedColor.Weight"/> specifying how much of region
+        /// is filled with each color. If the <see cref="Style"/> attribute contains the value <see cref="DotStyle.Radial"/>,
+        /// then a radial gradient fill is done. These fills work with any shape. For certain shapes,
+        /// the <see cref="Style"/> attribute can be set to do fills using more than 2 colors
+        /// (see <see cref="DotStyle.Striped"/> and <see cref="DotStyle.Wedged"/>).
+        /// </summary>
+        DotWeightedColor[] ColorList { get; set; }
 
         /// <summary>
         /// Gets or sets the color used to fill the background of the node, assuming that <see cref="Style"/> is <see cref="DotStyle.Filled"/>.
