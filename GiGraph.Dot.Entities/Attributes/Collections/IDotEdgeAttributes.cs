@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -23,6 +24,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Gets or sets the color of the edge (default: <see cref="Color.Black"/>).
         /// </summary>
         Color? Color { get; set; }
+
+        /// <summary>
+        /// Gets or sets the color list of the edge.
+        /// If the list has no fractions (see <see cref="DotWeightedColor.Weight"/>), the edge is drawn using parallel splines or lines,
+        /// one for each color in the list, in the order given. The head arrow, if any, is drawn using the first color in the list,
+        /// and the tail arrow, if any, the second color. This supports the common case of drawing opposing edges,
+        /// but using parallel splines instead of separately routed multiedges.
+        /// If any fraction is used, the colors are drawn in series, with each color being given roughly its specified fraction of the edge.
+        /// </summary>
+        DotWeightedColor[] ColorList { get; set; }
 
         /// <summary>
         /// Gets or sets the color used to fill the arrow head, assuming it has a filled style.
@@ -97,7 +108,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// to the boundary of the cluster.
         /// </summary>
         string LogicalTail { get; set; }
-        
+
         /// <summary>
         /// If true, attaches edge label to edge by a 2-segment polyline, underlining the label,
         /// then going to the closest point of spline. Default: false.

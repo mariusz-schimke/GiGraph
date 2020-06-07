@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Entities.Attributes
+namespace GiGraph.Dot.Entities.Attributes.Colors
 {
     /// <summary>
     /// Color attribute.
@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected override string GetDotEncodedValue(DotGenerationOptions options)
         {
-            return $"#{Value.R:x2}{Value.G:x2}{Value.B:x2}{Value.A:x2}";
+            return DotColorConverter.Convert(Value);
         }
     }
 }

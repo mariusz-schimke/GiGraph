@@ -1,6 +1,5 @@
 Road map:
-1. Support color list.
-2. Gradually add support for all available attributes.
+1. Gradually add support for all available attributes.
 
 Other (always valid): 
 1. Check if methods are coherently marked as virtual.
@@ -10,5 +9,6 @@ Nice-to-haves:
 1. Implement predefined HTML nodes (shape = none, margin = 0): https://www.graphviz.org/doc/info/shapes.html#polygon.
 2. Text justification markers support (\l, \r) and others like \N, \E etc.
 3. Record nodes.
+4. Color translated to text when possible, not to hex.
 
 Useful examples: https://www.graphviz.org/pdf/dotguide.pdf
