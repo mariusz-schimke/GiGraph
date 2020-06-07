@@ -29,6 +29,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("bgcolor", value, v => new DotColorAttribute("bgcolor", v.Value));
         }
 
+        public virtual DotWeightedColor[] BackgroundColorList
+        {
+            get => TryGetValueAs<DotWeightedColor[]>("bgcolor", out var result) ? result : null;
+            set => AddOrRemove("bgcolor", value, v => new DotColorListAttribute("bgcolor", v));
+        }
+
         public virtual Color? FillColor
         {
             get => TryGetValueAs<Color>("fillcolor", out var result) ? result : (Color?) null;
