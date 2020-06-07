@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
