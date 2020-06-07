@@ -41,6 +41,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// If it is not defined too, the default is used, except when the output format is MIF, which use black by default.
         /// </summary>
         Color? FillColor { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the color used to fill the arrow head, assuming it has a filled style.
+        /// If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used.
+        /// If it is not defined too, the default is used, except when the output format is MIF, which use black by default.
+        /// </summary>
+        DotWeightedColor[] FillColorList { get; set; }
 
         /// <summary>
         /// Sets the style of the edge (default: null). See the descriptions of individual <see cref="DotStyle"/> values
