@@ -13,13 +13,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     {
         public virtual Color? Color
         {
-            get => TryGetAs<DotColorAttribute>("color", out var result) ? result.Value : (Color?) null;
+            get => TryGetValueAs<Color>("color", out var result) ? result : (Color?) null;
             set => AddOrRemove("color", value, v => new DotColorAttribute("color", v.Value));
         }
 
         public DotWeightedColor[] ColorList
         {
-            get => TryGetAs<DotColorListAttribute>("color", out var result) ? result.Value : null;
+            get => TryGetValueAs<DotWeightedColor[]>("color", out var result) ? result : null;
             set => AddOrRemove("color", value, v => new DotColorListAttribute("color", v));
         }
 
