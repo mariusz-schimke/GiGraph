@@ -1,7 +1,9 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Colors;
 using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -48,6 +50,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotBoolAttribute(key, value));
         }
 
+        public virtual DotColorAttribute Set(string key, Color value)
+        {
+            return Set(new DotColorAttribute(key, value));
+        }
+
         public virtual DotShapeAttribute Set(string key, DotShape value)
         {
             return Set(new DotShapeAttribute(key, value));
@@ -87,7 +94,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             return Set(new DotCustomAttribute(key, value, valueEscaper));
         }
-        
+
         public virtual T GetAs<T>(string key)
             where T : DotCommonAttribute
         {
