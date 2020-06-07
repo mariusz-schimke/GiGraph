@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <summary>
         /// Gets or sets the background color list of the cluster.
         /// Used as the background for entire canvas.
-        /// If a color list is specified, a gradient fill is used. By default, this is a linear fill;
+        /// If the value specifies multiple colors, a gradient fill is used. By default, this is a linear fill;
         /// setting <see cref="Style"/> to <see cref="DotStyle.Radial"/> will cause a radial fill.
         /// At present, only two colors are used. If the second color is missing, the default color is used for it.
         /// See also the <see cref="GradientAngle"/> attribute for setting the gradient angle.
