@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// Creates a new cluster subgraph.
         /// </summary>
         /// <param name="id">The unique identifier of the cluster.</param>
-        public DotCluster(string id = null)
+        public DotCluster(string id)
             : this
               (
                   id,
