@@ -5,7 +5,7 @@ using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotAttributeCollection : IDotEntity, ICollection<DotCommonAttribute>
+    public interface IDotAttributeCollection : IDotEntity, IDictionary<string, DotCommonAttribute>
     {
         /// <summary>
         /// Adds or replaces the specified attribute in the collection.
@@ -148,12 +148,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="key">The key of the attribute to get.</param>
         /// <param name="value">The value of the attribute if found and valid, or null otherwise.</param>
         bool TryGetValueAs<T>(string key, out T value);
-
-        /// <summary>
-        /// Removes the specified attribute from the collection.
-        /// </summary>
-        /// <param name="key">The key of the attribute to remove.</param>
-        bool Remove(string key);
 
         /// <summary>
         /// Removes all attributes matching the specified criteria from the collection.
