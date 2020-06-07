@@ -14,7 +14,7 @@ using System.Linq;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.TextEscaping;
-using GiGraph.Dot.Output.Writers.EntityDefaultsWriters;
+using GiGraph.Dot.Output.Writers.GlobalAttributesWriters;
 
 namespace GiGraph.Dot.Output.Generators.GraphGenerators
 {
@@ -65,15 +65,15 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
                 return;
             }
 
-            var defaultsWriter = writer.BeginDefaultsSection(_options.PreferStatementDelimiter);
+            var globalAttributesWriter = writer.BeginGlobalAttributesSection(_options.PreferStatementDelimiter);
 
-            WriteNodeDefaults(nodeDefaults, defaultsWriter);
-            WriteEdgeDefaults(edgeDefaults, defaultsWriter);
+            WriteNodeDefaults(nodeDefaults, globalAttributesWriter);
+            WriteEdgeDefaults(edgeDefaults, globalAttributesWriter);
 
-            writer.EndDefaultsSection();
+            writer.EndGlobalAttributesSection();
         }
 
-        protected virtual void WriteNodeDefaults(IDotNodeAttributes nodeDefaults, IDotEntityDefaultsStatementWriter writer)
+        protected virtual void WriteNodeDefaults(IDotNodeAttributes nodeDefaults, IDotGlobalAttributesStatementWriter writer)
         {
             if (nodeDefaults.Any())
             {
@@ -83,7 +83,7 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
             }
         }
 
-        protected virtual void WriteEdgeDefaults(IDotEdgeAttributes edgeDefaults, IDotEntityDefaultsStatementWriter writer)
+        protected virtual void WriteEdgeDefaults(IDotEdgeAttributes edgeDefaults, IDotGlobalAttributesStatementWriter writer)
         {
             if (edgeDefaults.Any())
             {
