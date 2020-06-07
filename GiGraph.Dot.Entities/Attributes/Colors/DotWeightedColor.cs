@@ -52,6 +52,15 @@ namespace GiGraph.Dot.Entities.Attributes.Colors
         /// <summary>
         /// Creates a new weighted color array from the specified colors.
         /// </summary>
+        /// <param name="colors">The colors to initialize the array with.</param>
+        public static DotWeightedColor[] FromColors(IEnumerable<Color> colors)
+        {
+            return colors.Select(c => new DotWeightedColor(c)).ToArray();
+        }
+
+        /// <summary>
+        /// Creates a new weighted color array from the specified colors.
+        /// </summary>
         /// <param name="color1">The first color to initialize the array with.</param>
         /// <param name="color2">The second color to initialize the array with.</param>
         /// <param name="weight1">The optional weight of the first color in the range 0 ≤ <paramref name="weight1"/> ≤ 1.</param>
@@ -63,15 +72,6 @@ namespace GiGraph.Dot.Entities.Attributes.Colors
                 new DotWeightedColor(color1, weight1),
                 new DotWeightedColor(color2, weight2)
             };
-        }
-
-        /// <summary>
-        /// Creates a new weighted color array from the specified colors.
-        /// </summary>
-        /// <param name="colors">The colors to initialize the array with.</param>
-        public static DotWeightedColor[] FromColors(IEnumerable<Color> colors)
-        {
-            return colors.Select(c => new DotWeightedColor(c)).ToArray();
         }
     }
 }
