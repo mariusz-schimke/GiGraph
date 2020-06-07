@@ -46,7 +46,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Gets or sets the background color list of the cluster.
         /// Used as the initial background for the cluster. If the <see cref="Style"/> attribute of the cluster
         /// contains the <see cref="DotStyle.Filled"/> style, the cluster's <see cref="FillColor"/> will overlay the background color.
-        /// If a color list is specified, a gradient fill is used. By default, this is a linear fill;
+        /// If the value specifies multiple colors, a gradient fill is used. By default, this is a linear fill;
         /// setting <see cref="Style"/> to <see cref="DotStyle.Radial"/> will cause a radial fill.
         /// At present, only two colors are used. If the second color is missing, the default color is used for it.
         /// See also the <see cref="GradientAngle"/> attribute for setting the gradient angle.
@@ -58,8 +58,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used. 
         /// If <see cref="Color"/> is not defined, <see cref="BackgroundColor"/> is used.
         /// If it is not defined too, the default is used, except when the output format is MIF, which use black by default.
+        /// </summary>
+        Color? FillColor { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the color used to fill the background of the cluster, assuming that <see cref="Style"/> is <see cref="DotStyle.Filled"/>.
+        /// If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used. 
+        /// If <see cref="Color"/> is not defined, <see cref="BackgroundColor"/> is used.
+        /// If it is not defined too, the default is used, except when the output format is MIF, which use black by default.
         /// <para>
-        ///     If the value is a color list, a gradient fill is used. By default, this is a linear fill; 
+        ///     If the value specifies multiple colors, a gradient fill is used. By default, this is a linear fill; 
         ///     setting <see cref="Style"/> to <see cref="DotStyle.Radial"/> will cause a radial fill.
         ///     At present, only two colors are used. If the second color is missing, the default color is used for it.
         ///     See also the <see cref="GradientAngle"/> attribute for setting the gradient angle.
@@ -68,7 +76,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     <see cref="Color"/> or <see cref="BackgroundColor"/> attribute set for the cluster.
         /// </para>
         /// </summary>
-        Color? FillColor { get; set; }
+        DotWeightedColor[] FillColorList { get; set; }
 
         /// <summary>
         /// If a gradient fill is being used, this determines the angle of the fill. 
