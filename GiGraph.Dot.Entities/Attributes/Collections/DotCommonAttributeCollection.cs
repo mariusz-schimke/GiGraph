@@ -87,12 +87,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             return Set(new DotCustomAttribute(key, value, valueEscaper));
         }
-
-        public virtual bool Remove(DotCommonAttribute attribute)
-        {
-            return Remove(attribute.Key);
-        }
-
+        
         public virtual T GetAs<T>(string key)
             where T : DotCommonAttribute
         {
@@ -107,7 +102,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual bool TryGetAs<T>(string key, out T attribute)
             where T : DotCommonAttribute
         {
-            if (TryGetValue(key, out var result))
+            if (base.TryGetValue(key, out var result))
             {
                 attribute = result as T;
                 return attribute is { };
@@ -119,7 +114,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual bool TryGetValueAs<T>(string key, out T value)
         {
-            if (TryGetValue(key, out var attribute) && attribute is DotCommonAttribute<T> attributeWithValue)
+            if (base.TryGetValue(key, out var attribute) && attribute is DotCommonAttribute<T> attributeWithValue)
             {
                 value = attributeWithValue.Value;
                 return true;
@@ -132,7 +127,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual int RemoveAll(Predicate<DotCommonAttribute> match)
         {
             var result = 0;
-            var matches = Values.Where(a => match(a)).ToList();
+            var matches = Values.Where(a => match(a)).ToArray();
 
             foreach (var attribute in matches)
             {
@@ -167,7 +162,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             {
                 throw new ArgumentException($"The key specified (\"{key}\") has to match attribute key (\"{attribute.Key}\").", nameof(key));
             }
-            
+
             Add(key, attribute);
         }
     }
