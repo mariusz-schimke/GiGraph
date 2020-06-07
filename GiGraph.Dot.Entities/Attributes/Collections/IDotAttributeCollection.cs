@@ -53,13 +53,51 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
         DotBoolAttribute Set(string key, bool value);
-        
+
         /// <summary>
         /// Adds or replaces the specified color value attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
         DotColorAttribute Set(string key, Color value);
+
+        /// <summary>
+        /// Adds or replaces the specified color list attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute as a color list, to include in the collection.</param>
+        DotColorListAttribute Set(string key, params Color[] value);
+
+        /// <summary>
+        /// Adds or replaces the specified color list attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute as a color list, to include in the collection.</param>
+        DotColorListAttribute Set(string key, IEnumerable<Color> value);
+
+        /// <summary>
+        /// Adds or replaces the specified color list attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute as a weighted color list, to include in the collection.</param>
+        DotColorListAttribute Set(string key, params DotWeightedColor[] value);
+
+        /// <summary>
+        /// Adds or replaces the specified color list attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute as a weighted color list, to include in the collection.</param>
+        DotColorListAttribute Set(string key, IEnumerable<DotWeightedColor> value);
+
+        /// <summary>
+        /// Adds or replaces the specified color list attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="color1">The first color to initialize the array with.</param>
+        /// <param name="color2">The second color to initialize the array with.</param>
+        /// <param name="weight1">The optional weight of the first color in the range 0 ≤ <paramref name="weight1"/> ≤ 1.</param>
+        /// <param name="weight2">The optional weight of the second color in the range 0 ≤ <paramref name="weight2"/> ≤ 1.</param>
+        DotColorListAttribute Set(string key, Color color1, Color color2, double? weight1 = null, double? weight2 = null);
 
         /// <summary>
         /// Adds or replaces the specified node shape attribute in the collection.
@@ -120,7 +158,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
         DotCustomAttribute SetCustom(string key, string value);
-        
+
         /// <summary>
         /// Adds or replaces the specified custom attribute in the collection.
         /// <para>
