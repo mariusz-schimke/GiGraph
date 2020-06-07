@@ -48,23 +48,23 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
 
         protected virtual void WriteGlobalAttributes(IDotAttributeCollection graphAttributes, IDotNodeAttributes nodeDefaults, IDotEdgeAttributes edgeDefaults, IDotGraphBodyWriter writer)
         {
-            var writeAttributes = graphAttributes.Any();
+            var writeGraphAttributes = graphAttributes.Any();
 
             // write graph attributes as a list of individual statements
             if (_options.Attributes.PreferGraphAttributesAsStatements)
             {
                 WriteGraphAttributesAsStatementList(graphAttributes, writer);
-                writeAttributes = false;
+                writeGraphAttributes = false;
             }
 
-            if (!nodeDefaults.Any() && !edgeDefaults.Any() && !writeAttributes)
+            if (!nodeDefaults.Any() && !edgeDefaults.Any() && !writeGraphAttributes)
             {
                 return;
             }
 
             var globalAttributesWriter = writer.BeginGlobalAttributesSection(_options.PreferStatementDelimiter);
 
-            if (writeAttributes)
+            if (writeGraphAttributes)
             {
                 // write graph attributes as a "graph [attr_list]" clause
                 WriteGraphAttributesAsClause(graphAttributes, globalAttributesWriter);
