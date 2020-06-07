@@ -160,5 +160,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             AddOrRemove(key, value is null ? null : attribute(value));
         }
+
+        void IDictionary<string, DotCommonAttribute>.Add(string key, DotCommonAttribute attribute)
+        {
+            if (key != attribute.Key)
+            {
+                throw new ArgumentException($"The key specified (\"{key}\") has to match attribute key (\"{attribute.Key}\").", nameof(key));
+            }
+            
+            Add(key, attribute);
+        }
     }
 }
