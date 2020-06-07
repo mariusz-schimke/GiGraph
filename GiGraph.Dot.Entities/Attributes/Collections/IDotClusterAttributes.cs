@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -25,9 +26,32 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         Color? Color { get; set; }
 
         /// <summary>
+        /// Gets or sets the color list of the cluster.
+        /// If the value specifies multiple colors, with no weights, and the <see cref="Style"/> is <see cref="DotStyle.Filled"/>,
+        /// a linear gradient fill is done using the first two colors. If weights are present (see <see cref="DotWeightedColor.Weight"/>),
+        /// a degenerate linear gradient fill is done. This essentially does a fill using two colors,
+        /// with the <see cref="DotWeightedColor.Weight"/> specifying how much of region is filled with each color.
+        /// If the <see cref="Style"/> attribute contains the value <see cref="DotStyle.Radial"/>, then a radial gradient fill is done.
+        /// </summary>
+        DotWeightedColor[] ColorList { get; set; }
+
+        /// <summary>
         /// Gets or sets the background color of the cluster (default: none).
+        /// Used as the initial background for the cluster. If the <see cref="Style"/> attribute of the cluster
+        /// contains the <see cref="DotStyle.Filled"/> style, the cluster's <see cref="FillColor"/> will overlay the background color.
         /// </summary>
         Color? BackgroundColor { get; set; }
+
+        /// <summary>
+        /// Gets or sets the background color list of the cluster.
+        /// Used as the initial background for the cluster. If the <see cref="Style"/> attribute of the cluster
+        /// contains the <see cref="DotStyle.Filled"/> style, the cluster's <see cref="FillColor"/> will overlay the background color.
+        /// If a color list is specified, a gradient fill is used. By default, this is a linear fill;
+        /// setting <see cref="Style"/> to <see cref="DotStyle.Radial"/> will cause a radial fill.
+        /// At present, only two colors are used. If the second color is missing, the default color is used for it.
+        /// See also the <see cref="GradientAngle"/> attribute for setting the gradient angle.
+        /// </summary>
+        DotWeightedColor[] BackgroundColorList { get; set; }
 
         /// <summary>
         /// Gets or sets the color used to fill the background of the cluster, assuming that <see cref="Style"/> is <see cref="DotStyle.Filled"/>.
