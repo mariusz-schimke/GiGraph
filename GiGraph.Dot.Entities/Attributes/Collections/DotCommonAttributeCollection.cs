@@ -55,6 +55,31 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotColorAttribute(key, value));
         }
 
+        public virtual DotColorListAttribute Set(string key, params Color[] value)
+        {
+            return Set(new DotColorListAttribute(key, value));
+        }
+
+        public virtual DotColorListAttribute Set(string key, IEnumerable<Color> value)
+        {
+            return Set(new DotColorListAttribute(key, value));
+        }
+
+        public virtual DotColorListAttribute Set(string key, params DotWeightedColor[] value)
+        {
+            return Set(new DotColorListAttribute(key, value));
+        }
+
+        public virtual DotColorListAttribute Set(string key, IEnumerable<DotWeightedColor> value)
+        {
+            return Set(new DotColorListAttribute(key, value));
+        }
+
+        public virtual DotColorListAttribute Set(string key, Color color1, Color color2, double? weight1 = null, double? weight2 = null)
+        {
+            return Set(new DotColorListAttribute(key, DotWeightedColor.FromColors(color1, color2, weight1, weight2)));
+        }
+
         public virtual DotShapeAttribute Set(string key, DotShape value)
         {
             return Set(new DotShapeAttribute(key, value));
