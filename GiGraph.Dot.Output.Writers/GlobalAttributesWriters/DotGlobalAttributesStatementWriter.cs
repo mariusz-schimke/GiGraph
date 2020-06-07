@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Output.Writers.GlobalAttributesWriters
 
         public IDotGraphAttributesWriter BeginGraphAttributes()
         {
-            throw new System.NotImplementedException();
+            return new DotGraphAttributesWriter(_tokenWriter, _context);
         }
 
         public void EndGraphAttributes()
