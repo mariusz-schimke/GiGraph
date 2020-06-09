@@ -5,19 +5,24 @@ namespace GiGraph.Dot.Output.Options
     public partial class DotGenerationOptions
     {
         /// <summary>
-        /// The generation options for attributes.
+        /// Gets the generation options for attributes.
         /// </summary>
         public virtual AttributeOptions Attributes { get; }
 
         /// <summary>
-        /// The generation options for subgraphs.
+        /// Gets the generation options for subgraphs.
         /// </summary>
         public virtual SubgraphOptions Subgraphs { get; }
 
         /// <summary>
-        /// The generation options for clusters.
+        /// Gets the generation options for clusters.
         /// </summary>
         public virtual ClusterOptions Clusters { get; }
+
+        /// <summary>
+        /// Gets the generation options for colors.
+        /// </summary>
+        public virtual ColorOptions Colors { get; }
 
         /// <summary>
         /// When set, identifiers will always be quoted, even if it is not required.
@@ -41,15 +46,16 @@ namespace GiGraph.Dot.Output.Options
         /// </summary>
         public virtual bool OrderElements { get; set; } = false;
 
-        protected DotGenerationOptions(AttributeOptions attributes, SubgraphOptions subgraphs, ClusterOptions clusters)
+        protected DotGenerationOptions(AttributeOptions attributes, SubgraphOptions subgraphs, ClusterOptions clusters, ColorOptions colors)
         {
             Attributes = attributes;
             Subgraphs = subgraphs;
             Clusters = clusters;
+            Colors = colors;
         }
 
         public DotGenerationOptions()
-            : this(new AttributeOptions(), new SubgraphOptions(), new ClusterOptions())
+            : this(new AttributeOptions(), new SubgraphOptions(), new ClusterOptions(), new ColorOptions())
         {
         }
 
