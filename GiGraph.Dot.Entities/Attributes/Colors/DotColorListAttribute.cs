@@ -73,7 +73,7 @@ namespace GiGraph.Dot.Entities.Attributes.Colors
         {
             var weightedColors = Value.Select(wc =>
             {
-                var color = DotColorConverter.Convert(wc.Color);
+                var color = DotColorConverter.Convert(wc.Color, options);
 
                 return wc.Weight.HasValue
                     ? $"{color};{wc.Weight.Value.ToString(CultureInfo.InvariantCulture)}"
