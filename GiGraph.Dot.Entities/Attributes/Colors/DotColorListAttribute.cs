@@ -80,6 +80,12 @@ namespace GiGraph.Dot.Entities.Attributes.Colors
                     : color;
             });
 
+            if (Value.Length == 1)
+            {
+                // if the second color is missing, add a blank value at the end so that it is interpreted as a default color
+                weightedColors = weightedColors.Concat(new[] {" "});
+            }
+
             return string.Join(":", weightedColors);
         }
     }
