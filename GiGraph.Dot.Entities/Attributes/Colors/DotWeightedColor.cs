@@ -44,16 +44,16 @@ namespace GiGraph.Dot.Entities.Attributes.Colors
         /// Creates a new weighted color array from the specified colors.
         /// </summary>
         /// <param name="colors">The colors to initialize the array with.</param>
-        public static DotWeightedColor[] FromColors(params Color[] colors)
+        public static DotWeightedColor[] From(params Color[] colors)
         {
-            return FromColors((IEnumerable<Color>) colors);
+            return From((IEnumerable<Color>) colors);
         }
 
         /// <summary>
         /// Creates a new weighted color array from the specified colors.
         /// </summary>
         /// <param name="colors">The colors to initialize the array with.</param>
-        public static DotWeightedColor[] FromColors(IEnumerable<Color> colors)
+        public static DotWeightedColor[] From(IEnumerable<Color> colors)
         {
             return colors.Select(c => new DotWeightedColor(c)).ToArray();
         }
@@ -65,13 +65,19 @@ namespace GiGraph.Dot.Entities.Attributes.Colors
         /// <param name="color2">The second color to initialize the array with.</param>
         /// <param name="weight1">The optional weight of the first color in the range 0 ≤ <paramref name="weight1"/> ≤ 1.</param>
         /// <param name="weight2">The optional weight of the second color in the range 0 ≤ <paramref name="weight2"/> ≤ 1.</param>
-        public static DotWeightedColor[] FromColors(Color color1, Color color2, double? weight1 = null, double? weight2 = null)
+        public static DotWeightedColor[] From(Color color1, Color? color2 = null, double? weight1 = null, double? weight2 = null)
         {
-            return new[]
+            var result = new List<DotWeightedColor>
             {
-                new DotWeightedColor(color1, weight1),
-                new DotWeightedColor(color2, weight2)
+                new DotWeightedColor(color1, weight1)
             };
+
+            if (color2.HasValue)
+            {
+                result.Add(new DotWeightedColor(color2.Value, weight2));
+            }
+
+            return result.ToArray();
         }
     }
 }
