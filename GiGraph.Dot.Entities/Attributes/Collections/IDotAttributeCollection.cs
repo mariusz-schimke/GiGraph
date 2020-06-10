@@ -97,7 +97,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="color2">The second color to initialize the array with.</param>
         /// <param name="weight1">The optional weight of the first color in the range 0 ≤ <paramref name="weight1"/> ≤ 1.</param>
         /// <param name="weight2">The optional weight of the second color in the range 0 ≤ <paramref name="weight2"/> ≤ 1.</param>
-        DotColorListAttribute Set(string key, Color color1, Color color2, double? weight1 = null, double? weight2 = null);
+        DotColorListAttribute Set(string key, Color color1, Color? color2, double? weight1 = null, double? weight2 = null);
 
         /// <summary>
         /// Adds or replaces the specified node shape attribute in the collection.
