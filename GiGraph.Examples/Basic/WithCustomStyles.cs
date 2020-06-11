@@ -1,7 +1,7 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Examples.Basic
 {
@@ -17,57 +17,88 @@ namespace GiGraph.Examples.Basic
 
             // set the defaults for all nodes of the graph
             graph.NodeDefaults.Shape = DotShape.Rectangle;
-            graph.NodeDefaults.Style = DotStyle.Filled | DotStyle.Bold;
-            graph.NodeDefaults.FillColor = Color.DarkOrange;
+            graph.NodeDefaults.Style = DotStyle.Filled;
+            graph.NodeDefaults.FillColor = DotColorDefinition.From(Color.Turquoise, Color.RoyalBlue);
 
             // set the defaults for all edges of the graph
-            graph.EdgeDefaults.ArrowHead = DotArrowType.Vee;
+            graph.EdgeDefaults.ArrowHead
+                = graph.EdgeDefaults.ArrowTail
+                    = DotArrowType.Vee;
+
+            // just to change the order the elements are visualized
+            graph.Nodes.Add("h", "g", "f", "e", "d", "c", "b", "a");
 
 
             // -- add nodes --
 
-            // the Add method returns the newly added node, so you can easily access its attributes
-            graph.Nodes.Add("Entry").Attributes.Shape = DotShape.Circle;
+            graph.Nodes.Add("a").Attributes.FillColor = DotColorDefinition.From(Color.RoyalBlue, Color.Turquoise, weight2: 0.25);
+            graph.Nodes.Add("b").Attributes.FillColor = DotColorDefinition.From(Color.Navy, Color.RoyalBlue, weight1: 0.25);
 
-            // or you can set the attributes using a delegate
-            graph.Nodes.Add("Decision", attrs =>
+            graph.Nodes.Add("striped", attrs =>
             {
-                attrs.Shape = DotShape.Diamond;
-                attrs.Label = $"Decision{Environment.NewLine}point";
+                attrs.Style = DotStyle.Filled | DotStyle.Striped;
+
+                attrs.Color = Color.Transparent;
+                attrs.FillColor = DotColorDefinition.From(
+                    new DotWeightedColor(Color.Navy, 0.1),
+                    Color.RoyalBlue,
+                    Color.Turquoise,
+                    Color.Orange);
             });
 
-            // use a subgraph to set a different for a group of nodes
+            graph.Nodes.Add("wedged", attrs =>
+            {
+                attrs.Shape = DotShape.Circle;
+                attrs.Style = DotStyle.Filled | DotStyle.Wedged;
+
+                attrs.Color = Color.Transparent;
+                attrs.FillColor = DotColorDefinition.From(
+                    Color.Orange,
+                    Color.RoyalBlue,
+                    new DotWeightedColor(Color.Navy, 0.1),
+                    Color.Turquoise);
+            });
+
+            // use a subgraph to override the default attributes for a group of nodes and/or edges
             graph.Subgraphs.Add(sg =>
             {
-                sg.NodeDefaults.FillColor = Color.YellowGreen;
-                
-                sg.Nodes.Add("Option1", attrs => attrs.Label = "Positive path");
-                sg.Nodes.Add("Option2", attrs => attrs.Label = "Negative path");
-            });
+                sg.NodeDefaults.Color = Color.RoyalBlue;
+                sg.NodeDefaults.FillColor = Color.White;
+                sg.NodeDefaults.Shape = DotShape.Circle;
 
-            graph.Nodes.Add("Exit").Attributes.Shape = DotShape.DoubleCircle;
+                sg.EdgeDefaults.Color = Color.RoyalBlue;
+
+                sg.Edges.Add("g", "h").Attributes.Label = "plain color";
+            });
 
 
             // -- add edges --
 
-            // join the nodes by edges
-            graph.Edges.Add("Entry", "Decision");
-
-            // you can set custom attributes for the added edge the same way you can do it for nodes
-            graph.Edges.Add("Decision", "Option1", attrs =>
+            graph.Edges.Add("c", "d", attrs =>
             {
-                attrs.Color = Color.Green;
-                attrs.Label = "yes";
+                attrs.Label = "parallel splines";
+                attrs.ArrowDirection = DotArrowDirection.Both;
+                attrs.Color = DotColorDefinition.From(Color.Turquoise, Color.RoyalBlue);
             });
 
-            graph.Edges.Add("Decision", "Option2", attrs =>
+            graph.Edges.Add("a", "b", attrs =>
             {
-                attrs.Color = Color.DarkRed;
-                attrs.Label = "no";
+                attrs.Label = "multicolor series";
+                attrs.ArrowDirection = DotArrowDirection.Both;
+
+                attrs.Color = DotColorDefinition.From(
+                    new DotWeightedColor(Color.Turquoise, 0.33),
+                    new DotWeightedColor(Color.Gray, 0.33),
+                    Color.Navy);
             });
 
-            // this is a shorthand for adding two edges at once, that join multiple nodes with one node
-            graph.Edges.AddManyToOne("Exit", "Option1", "Option2");
+            graph.Edges.Add("e", "f", attrs =>
+            {
+                attrs.Label = "dotted";
+                attrs.Style = DotStyle.Dotted;
+            });
+
+            graph.Edges.Add("striped", "wedged");
 
             return graph;
         }
