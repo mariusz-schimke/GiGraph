@@ -85,8 +85,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
         public DotColorList(Color color1, Color color2, double? weight1 = null, double? weight2 = null)
             : this(new[]
             {
-                Create(color1, weight1),
-                Create(color2, weight2)
+                From(color1, weight1),
+                From(color2, weight2)
             })
         {
         }

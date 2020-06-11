@@ -67,7 +67,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual DotColorDefinitionAttribute Set(string key, params DotWeightedColor[] value)
         {
-            // TODO: sprawdzić, czy działa bez wyjątku
             return Set(new DotColorDefinitionAttribute(key, new DotColorList(value)));
         }
 

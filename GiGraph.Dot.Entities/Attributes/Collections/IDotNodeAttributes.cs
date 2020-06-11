@@ -1,6 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using System.Drawing;
-using GiGraph.Dot.Entities.Attributes.Colors;
+using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -21,44 +20,30 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         string LabelHtml { get; set; }
 
         /// <summary>
-        /// Gets or sets the color of the node (default: <see cref="Color.Black"/>).
-        /// </summary>
-        Color? Color { get; set; }
-
-        /// <summary>
-        /// Gets or sets the color list of the node.
-        /// If the value specifies multiple colors, with no weights, and the <see cref="Style"/> is <see cref="DotStyle.Filled"/>,
-        /// a linear gradient fill is done using the first two colors. If weights are present (see <see cref="DotWeightedColor.Weight"/>),
-        /// a degenerate linear gradient fill is done. This essentially does a fill using two colors,
-        /// with the <see cref="DotWeightedColor.Weight"/> specifying how much of region is filled with each color.
-        /// If the <see cref="Style"/> attribute contains the value <see cref="DotStyle.Radial"/>,
-        /// then a radial gradient fill is done. These fills work with any shape. For certain shapes,
-        /// the <see cref="Style"/> attribute can be set to do fills using more than 2 colors
+        /// Gets or sets the color of the node (default: <see cref="System.Drawing.Color.Black"/>).
+        /// If <see cref="DotColorList"/> is used, with no weighted colors in its color collection (<see cref="DotColor"/> items only),
+        /// and the <see cref="Style"/> is <see cref="DotStyle.Filled"/>, a linear gradient fill is done using the first two colors.
+        /// If weighted colors are present (see <see cref="DotWeightedColor"/>), a degenerate linear gradient fill is done.
+        /// This essentially does a fill using two colors, with the <see cref="DotWeightedColor.Weight"/> specifying how much of region is filled with each color.
+        /// If the <see cref="Style"/> attribute contains the value <see cref="DotStyle.Radial"/>, then a radial gradient fill is done.
+        /// These fills work with any shape. For certain shapes, the <see cref="Style"/> attribute can be set to do fills using more than 2 colors
         /// (see <see cref="DotStyle.Striped"/> and <see cref="DotStyle.Wedged"/>).
         /// </summary>
-        DotWeightedColor[] ColorList { get; set; }
+        DotColorDefinition Color { get; set; }
 
         /// <summary>
         /// Gets or sets the color used to fill the background of the node, assuming that <see cref="Style"/> is <see cref="DotStyle.Filled"/>.
         /// If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used. 
         /// If it is not defined too, the default is used, except for <see cref="Shape"/> of <see cref="DotShape.Point"/>,
         /// or when the output format is MIF, which use black by default.
-        /// </summary>
-        Color? FillColor { get; set; }
-
-        /// <summary>
-        /// Gets or sets the color list used to fill the background of the node, assuming that <see cref="Style"/> is <see cref="DotStyle.Filled"/>.
-        /// If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used. 
-        /// If it is not defined too, the default is used, except for <see cref="Shape"/> of <see cref="DotShape.Point"/>,
-        /// or when the output format is MIF, which use black by default.
         /// <para>
-        ///     If the value specifies multiple colors, a gradient fill is used. By default, this is a linear fill; 
-        ///     setting <see cref="Style"/> to <see cref="DotStyle.Radial"/> will cause a radial fill.
-        ///     At present, only two colors are used. If the second color is missing, the default color is used for it.
-        ///     See also the <see cref="GradientAngle"/> attribute for setting the gradient angle.
+        /// If <see cref="DotColorList"/> is used, a gradient fill is generated. By default, this is a linear fill; 
+        /// setting <see cref="Style"/> to <see cref="DotStyle.Radial"/> will cause a radial fill.
+        /// At present, only two colors are used. If the second color is missing, the default color is used for it.
+        /// See also the <see cref="GradientAngle"/> attribute for setting the gradient angle.
         /// </para>
         /// </summary>
-        DotWeightedColor[] FillColorList { get; set; }
+        DotColorDefinition FillColor { get; set; }
 
         /// <summary>
         /// If a gradient fill is being used, this determines the angle of the fill. 

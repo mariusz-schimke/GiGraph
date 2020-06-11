@@ -1,6 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using System.Drawing;
-using GiGraph.Dot.Entities.Attributes.Colors;
+using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -24,31 +23,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Gets or sets the background color of the graph (default: none).
         /// Used as the background for entire canvas.
         /// <para>
-        /// For certain output formats, such as PostScript, no fill is done for the root graph unless background color is explicitly set.
-        /// For bitmap formats, however, the bits need to be initialized to something, so the canvas is filled with white by default.
-        /// This means that if the bitmap output is included in some other document, all of the bits within the bitmap's bounding box will be set,
-        /// overwriting whatever color or graphics were already on the page. If this effect is not desired,
-        /// and you only want to set bits explicitly assigned in drawing the graph, set <see cref="BackgroundColor"/> = <see cref="Color.Transparent"/>.
-        /// </para>
-        /// </summary>
-        Color? BackgroundColor { get; set; }
-
-        /// <summary>
-        /// Gets or sets the background color list of the cluster.
-        /// Used as the background for entire canvas.
-        /// If the value specifies multiple colors, a gradient fill is used. By default, this is a linear fill;
+        /// When <see cref="DotColorList"/> is used, a gradient fill is generated. By default, this is a linear fill;
         /// setting <see cref="Style"/> to <see cref="DotStyle.Radial"/> will cause a radial fill.
-        /// At present, only two colors are used. If the second color is missing, the default color is used for it.
-        /// See also the <see cref="GradientAngle"/> attribute for setting the gradient angle.
+        /// At present, only two colors are used. If the second color is <see cref="System.Drawing.Color.Empty"/>,
+        /// the default color is used for it. See also the <see cref="GradientAngle"/> attribute for setting the gradient angle.
+        /// </para>
         /// <para>
         /// For certain output formats, such as PostScript, no fill is done for the root graph unless background color is explicitly set.
         /// For bitmap formats, however, the bits need to be initialized to something, so the canvas is filled with white by default.
         /// This means that if the bitmap output is included in some other document, all of the bits within the bitmap's bounding box will be set,
         /// overwriting whatever color or graphics were already on the page. If this effect is not desired,
-        /// and you only want to set bits explicitly assigned in drawing the graph, set <see cref="BackgroundColor"/> = <see cref="Color.Transparent"/>.
+        /// and you only want to set bits explicitly assigned in drawing the graph, set <see cref="BackgroundColor"/> = <see cref="System.Drawing.Color.Transparent"/>.
         /// </para>
         /// </summary>
-        DotWeightedColor[] BackgroundColorList { get; set; }
+        DotColorDefinition BackgroundColor { get; set; }
 
         /// <summary>
         /// If a gradient fill is being used, this determines the angle of the fill. 
