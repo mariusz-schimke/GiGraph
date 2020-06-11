@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System.Drawing;
-using GiGraph.Dot.Entities.Attributes.Colors;
+using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -11,40 +11,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         IDotNodeAttributes,
         IDotEdgeAttributes
     {
-        public virtual Color? Color
+        public virtual DotColorDefinition Color
         {
-            get => TryGetValueAs<Color>("color", out var result) ? result : (Color?) null;
-            set => AddOrRemove("color", value, v => new DotColorAttribute("color", v.Value));
+            get => TryGetValueAsColorDefinition("color");
+            set => AddOrRemove("color", value, v => new DotColorDefinitionAttribute("color", v));
         }
 
-        public DotWeightedColor[] ColorList
+        public virtual DotColorDefinition BackgroundColor
         {
-            get => TryGetValueAs<DotWeightedColor[]>("color", out var result) ? result : null;
-            set => AddOrRemove("color", value, v => new DotColorListAttribute("color", v));
+            get => TryGetValueAsColorDefinition("bgcolor");
+            set => AddOrRemove("bgcolor", value, v => new DotColorDefinitionAttribute("bgcolor", v));
         }
 
-        public virtual Color? BackgroundColor
+        public virtual DotColorDefinition FillColor
         {
-            get => TryGetValueAs<Color>("bgcolor", out var result) ? result : (Color?) null;
-            set => AddOrRemove("bgcolor", value, v => new DotColorAttribute("bgcolor", v.Value));
-        }
-
-        public virtual DotWeightedColor[] BackgroundColorList
-        {
-            get => TryGetValueAs<DotWeightedColor[]>("bgcolor", out var result) ? result : null;
-            set => AddOrRemove("bgcolor", value, v => new DotColorListAttribute("bgcolor", v));
-        }
-
-        public virtual Color? FillColor
-        {
-            get => TryGetValueAs<Color>("fillcolor", out var result) ? result : (Color?) null;
-            set => AddOrRemove("fillcolor", value, v => new DotColorAttribute("fillcolor", v.Value));
-        }
-
-        public virtual DotWeightedColor[] FillColorList
-        {
-            get => TryGetValueAs<DotWeightedColor[]>("fillcolor", out var result) ? result : null;
-            set => AddOrRemove("fillcolor", value, v => new DotColorListAttribute("fillcolor", v));
+            get => TryGetValueAsColorDefinition("fillcolor");
+            set => AddOrRemove("fillcolor", value, v => new DotColorDefinitionAttribute("fillcolor", v));
         }
 
         public virtual int? GradientAngle
@@ -147,6 +129,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetAs<DotBoolAttribute>("compound", out var result) ? result.Value : (bool?) null;
             set => AddOrRemove("compound", value, v => new DotBoolAttribute("compound", v.Value));
+        }
+
+        protected virtual DotColorDefinition TryGetValueAsColorDefinition(string key)
+        {
+            if (TryGetValueAs<DotColorDefinition>(key, out var colorDefinition))
+            {
+                return colorDefinition;
+            }
+
+            return TryGetValueAs<Color>(key, out var color) ? new DotColor(color) : null;
         }
     }
 }
