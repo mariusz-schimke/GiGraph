@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
+﻿using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -46,6 +47,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// If unset, the default angle is 0.
         /// </summary>
         int? GradientAngle { get; set; }
+
+        /// <summary>
+        /// Color used to draw the bounding box around clusters (default: <see cref="System.Drawing.Color.Black"/>).
+        /// If <see cref="PenColor"/> is not defined, <see cref="Color"/> is used. If this is not defined, the default is used.
+        /// Note that a cluster inherits the root graph's attributes if defined.
+        /// </summary>
+        Color? PenColor { get; set; }
 
         /// <summary>
         /// Gets or sets the direction of graph layout (default: <see cref="DotRankDirection.TopToBottom"/>).

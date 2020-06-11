@@ -1,4 +1,6 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
+﻿using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -75,6 +77,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// The value is inherited by subclusters. It has no effect on text. Default: 1.0, minimum: 0.0.
         /// </summary>
         double? PenWidth { get; set; }
+
+        /// <summary>
+        /// Color used to draw the bounding box around the cluster (default: <see cref="System.Drawing.Color.Black"/>).
+        /// If <see cref="PenColor"/> is not defined, <see cref="Color"/> is used. If this is not defined, the default is used.
+        /// Note that a cluster inherits the root graph's attributes if defined.
+        /// </summary>
+        Color? PenColor { get; set; }
 
         /// <summary>
         /// Sets the style of the cluster (default: null). See the descriptions of individual <see cref="DotStyle"/> values
