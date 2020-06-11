@@ -4,13 +4,12 @@ Road map:
 Other (always valid): 
 1. Check if methods are coherently marked as virtual.
 2. Check if interfaces should be extracted for any classes.
+3. Check if properties should or shouldn't have setters.
 
 Nice-to-haves:
 1. Implement predefined HTML nodes (shape = none, margin = 0): https://www.graphviz.org/doc/info/shapes.html#polygon.
 2. Text justification markers support (\l, \r) and others like \N, \E etc.
 3. Record nodes.
-4. Color translated to text when possible, not to hex.
-5. Double list (doubleList) attribute type (and other types, even if not supported directly).
-6. Consider removing setters from entities.
+4. Double list (doubleList) attribute type (and other types, even if not supported directly).
 
 Useful examples: https://www.graphviz.org/pdf/dotguide.pdf
