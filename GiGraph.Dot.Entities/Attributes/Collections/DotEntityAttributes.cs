@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotEntityAttributes : DotCommonAttributeCollection,
+    public class DotEntityAttributes : DotAttributeCollection,
         IDotGraphAttributes,
         IDotSubgraphAttributes,
         IDotClusterAttributes,

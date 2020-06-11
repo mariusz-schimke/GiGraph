@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     /// A boolean value attribute.
     /// </summary>
-    public class DotBoolAttribute : DotCommonAttribute<bool>
+    public class DotBoolAttribute : DotAttribute<bool>
     {
         /// <summary>
         /// Creates a new instance of the attribute.
