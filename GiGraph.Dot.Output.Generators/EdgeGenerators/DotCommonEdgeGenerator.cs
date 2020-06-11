@@ -13,7 +13,7 @@ using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Generators.EdgeGenerators
 {
-    public class DotCommonEdgeGenerator : DotEntityWithAttributeListGenerator<DotCommonEdge, IDotEdgeWriter>
+    public class DotCommonEdgeGenerator : DotEntityWithAttributeListGenerator<DotEdgeDefinition, IDotEdgeWriter>
     {
         protected DotCommonEdgeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
         {
         }
 
-        public override void Generate(DotCommonEdge edge, IDotEdgeWriter writer)
+        public override void Generate(DotEdgeDefinition edge, IDotEdgeWriter writer)
         {
             WriteEdges(edge.Endpoints, writer);
             WriteAttributes(edge.Attributes, writer);

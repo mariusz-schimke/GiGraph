@@ -10,7 +10,7 @@ using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Generators.EdgeGenerators
 {
-    public class DotCommonEdgeCollectionGenerator : DotEntityGenerator<DotCommonEdgeCollection, IDotEdgeStatementWriter>
+    public class DotCommonEdgeCollectionGenerator : DotEntityGenerator<DotEdgeDefinitionCollection, IDotEdgeStatementWriter>
     {
         protected DotCommonEdgeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
@@ -22,12 +22,12 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
         {
         }
 
-        public override void Generate(DotCommonEdgeCollection edges, IDotEdgeStatementWriter writer)
+        public override void Generate(DotEdgeDefinitionCollection edges, IDotEdgeStatementWriter writer)
         {
             var orderedEdges = _options.OrderElements
                 ? edges.Cast<IDotOrderableEntity>()
                        .OrderBy(edge => edge.OrderingKey)
-                       .Cast<DotCommonEdge>()
+                       .Cast<DotEdgeDefinition>()
                 : edges;
 
             foreach (var edge in orderedEdges.Where(edge => edge.Endpoints.Any()))
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
             }
         }
 
-        protected virtual void WriteEdge(DotCommonEdge edge, IDotEdgeStatementWriter writer)
+        protected virtual void WriteEdge(DotEdgeDefinition edge, IDotEdgeStatementWriter writer)
         {
             var edgeWriter = writer.BeginSequence();
             _entityGenerators.GetForEntity<IDotEdgeWriter>(edge).Generate(edge, edgeWriter);

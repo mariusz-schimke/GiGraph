@@ -11,5 +11,6 @@ Nice-to-haves:
 3. Record nodes.
 4. Color translated to text when possible, not to hex.
 5. Double list (doubleList) attribute type (and other types, even if not supported directly).
+6. Consider removing setters from entities.
 
 Useful examples: https://www.graphviz.org/pdf/dotguide.pdf
