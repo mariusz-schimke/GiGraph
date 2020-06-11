@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Attributes
                     return "RL";
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(IDotAttribute.GetDotEncodedValue), $"The specified graph layout direction '{Value}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified graph layout direction '{Value}' is not supported.");
             }
         }
     }

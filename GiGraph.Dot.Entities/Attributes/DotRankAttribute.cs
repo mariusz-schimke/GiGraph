@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Entities.Attributes
                     return "sink";
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(IDotAttribute.GetDotEncodedValue), $"The specified rank '{Value}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified rank '{Value}' is not supported.");
             }
         }
     }
