@@ -56,7 +56,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// At present, only two colors are used. If the second color is missing, the default color is used for it.
         /// See also the <see cref="GradientAngle"/> attribute for setting the gradient angle.
         /// Note that a cluster inherits the root graph's attributes if defined. 
-        /// Thus, if the root graph has defined a fill color, this will override a 
+        /// Thus, if the root graph has defined a fill color (<see cref="IDotGraphAttributes.FillColor"/>), this will override a 
         /// <see cref="Color"/> or <see cref="BackgroundColor"/> attribute set for the cluster.
         /// </para>
         /// </summary>
