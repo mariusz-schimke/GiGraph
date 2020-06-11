@@ -6,15 +6,15 @@ using System.Linq;
 
 namespace GiGraph.Dot.Entities.Nodes.Collections
 {
-    public class DotCommonNodeCollection : DotEntityWithIdCollection<DotCommonNode>, IDotEntity
+    public class DotNodeCollection : DotEntityWithIdCollection<DotNodeDefinition>, IDotEntity
     {
-        protected DotCommonNodeCollection(Func<string, Predicate<DotCommonNode>> matchIdPredicate)
+        protected DotNodeCollection(Func<string, Predicate<DotNodeDefinition>> matchIdPredicate)
             : base(matchIdPredicate)
         {
         }
 
-        public DotCommonNodeCollection() :
-            base(matchIdPredicate: id => commonNode => commonNode is DotNode node && node.Id == id)
+        public DotNodeCollection() :
+            base(matchIdPredicate: id => nodeDefinition => nodeDefinition is DotNode node && node.Id == id)
         {
         }
 
@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="node">The node to add.</param>
         /// <param name="initAttrs">An optional node attributes initializer delegate.</param>
         public virtual T Add<T>(T node, Action<IDotNodeAttributes> initAttrs)
-            where T : DotCommonNode
+            where T : DotNodeDefinition
         {
             Add(node);
             initAttrs?.Invoke(node.Attributes);

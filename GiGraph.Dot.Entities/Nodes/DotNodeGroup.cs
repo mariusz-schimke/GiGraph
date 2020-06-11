@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Nodes
     /// <summary>
     /// Represents a group of graph nodes with a shared list of attributes.
     /// </summary>
-    public class DotNodeGroup : DotCommonNode
+    public class DotNodeGroup : DotNodeDefinition
     {
         protected readonly string[] _nodeIds;
 
