@@ -71,6 +71,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         int? GradientAngle { get; set; }
 
         /// <summary>
+        /// Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges and clusters.
+        /// The value is inherited by subclusters. It has no effect on text. Default: 1.0, minimum: 0.0.
+        /// </summary>
+        double? PenWidth { get; set; }
+
+        /// <summary>
         /// Sets the style of the cluster (default: null). See the descriptions of individual <see cref="DotStyle"/> values
         /// to learn which styles are applicable to this element type.
         /// <para>
