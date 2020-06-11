@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// </summary>
         /// <param name="color">The color to initialize the instance with.</param>
         /// <param name="weight">The optional weight of the color in the range 0 ≤ <paramref name="weight"/> ≤ 1.</param>
-        public static DotColor Create(Color color, double? weight = null)
+        public static DotColor From(Color color, double? weight = null)
         {
             if (weight.HasValue)
             {
