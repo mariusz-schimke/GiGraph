@@ -2,7 +2,7 @@
 
 namespace GiGraph.Dot.Entities.Attributes
 {
-    public abstract class DotAttribute : IDotAttribute, IDotOrderableEntity
+    public abstract class DotAttribute : IDotEncodableValue, IDotOrderableEntity
     {
         /// <summary>
         /// Gets the key of the attribute.
@@ -22,6 +22,6 @@ namespace GiGraph.Dot.Entities.Attributes
             Key = key;
         }
 
-        string IDotAttribute.GetDotEncodedValue(DotGenerationOptions options) => GetDotEncodedValue(options);
+        string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options) => GetDotEncodedValue(options);
     }
 }

@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes;
+﻿using GiGraph.Dot.Entities;
+using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
@@ -8,7 +9,7 @@ using GiGraph.Dot.Output.Writers.AttributeWriters;
 namespace GiGraph.Dot.Output.Generators.AttributeGenerators
 {
     public class DotAttributeGenerator<TAttribute> : DotEntityGenerator<TAttribute, IDotAttributeWriter>
-        where TAttribute : DotAttribute, IDotAttribute
+        where TAttribute : DotAttribute, IDotEncodableValue
     {
         protected DotAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
