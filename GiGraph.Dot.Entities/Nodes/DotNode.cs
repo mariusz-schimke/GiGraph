@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Nodes
     /// <summary>
     /// Represents a graph node.
     /// </summary>
-    public class DotNode : DotCommonNode
+    public class DotNode : DotNodeDefinition
     {
         protected string _id;
 

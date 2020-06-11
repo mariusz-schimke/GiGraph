@@ -10,24 +10,24 @@ using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Generators.NodeGenerators
 {
-    public class DotCommonNodeCollectionGenerator : DotEntityGenerator<DotCommonNodeCollection, IDotNodeStatementWriter>
+    public class DotNodeCollectionGenerator : DotEntityGenerator<DotNodeCollection, IDotNodeStatementWriter>
     {
-        protected DotCommonNodeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
+        protected DotNodeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }
 
-        public DotCommonNodeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotNodeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        public override void Generate(DotCommonNodeCollection nodes, IDotNodeStatementWriter writer)
+        public override void Generate(DotNodeCollection nodes, IDotNodeStatementWriter writer)
         {
             var orderedNodes = _options.OrderElements
                 ? nodes.Cast<IDotOrderableEntity>()
                        .OrderBy(node => node.OrderingKey)
-                       .Cast<DotCommonNode>()
+                       .Cast<DotNodeDefinition>()
                 : nodes;
 
             foreach (var node in orderedNodes)
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Output.Generators.NodeGenerators
             }
         }
 
-        protected virtual void WriteNode(DotCommonNode node, IDotNodeStatementWriter writer)
+        protected virtual void WriteNode(DotNodeDefinition node, IDotNodeStatementWriter writer)
         {
             var nodeWriter = writer.BeginNode();
             _entityGenerators.GetForEntity<IDotNodeWriter>(node).Generate(node, nodeWriter);

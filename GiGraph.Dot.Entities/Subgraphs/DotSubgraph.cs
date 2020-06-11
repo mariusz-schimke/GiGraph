@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         protected DotSubgraph(
             string id,
             IDotSubgraphAttributes attributes,
-            DotCommonNodeCollection nodes,
+            DotNodeCollection nodes,
             DotEdgeDefinitionCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
@@ -49,7 +49,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
             (
                 id: null,
                 new DotEntityAttributes(),
-                new DotCommonNodeCollection(),
+                new DotNodeCollection(),
                 new DotEdgeDefinitionCollection(),
                 new DotSubgraphCollection(),
                 new DotClusterCollection(),

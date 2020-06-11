@@ -9,7 +9,7 @@ using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Generators.NodeGenerators
 {
-    public class DotNodeGroupGenerator : DotCommonNodeGenerator<DotNodeGroup>
+    public class DotNodeGroupGenerator : DotNodeGenerator<DotNodeGroup>
     {
         protected DotNodeGroupGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
