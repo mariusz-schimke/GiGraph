@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Gets the edge endpoints.
         /// </summary>
-        public abstract IEnumerable<DotCommonEndpoint> Endpoints { get; }
+        public abstract IEnumerable<DotEndpointDefinition> Endpoints { get; }
 
         string IDotOrderableEntity.OrderingKey => GetOrderingKey();
 

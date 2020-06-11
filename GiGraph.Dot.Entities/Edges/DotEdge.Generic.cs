@@ -28,8 +28,8 @@ namespace GiGraph.Dot.Entities.Edges
     /// <typeparam name="TTail">The type of the tail endpoint.</typeparam>
     /// <typeparam name="THead">The type of the head endpoint.</typeparam>
     public class DotEdge<TTail, THead> : DotEdgeDefinition
-        where TTail : DotCommonEndpoint, IDotOrderableEntity
-        where THead : DotCommonEndpoint, IDotOrderableEntity
+        where TTail : DotEndpointDefinition, IDotOrderableEntity
+        where THead : DotEndpointDefinition, IDotOrderableEntity
     {
         protected TTail _tail;
         protected THead _head;
@@ -55,7 +55,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         /// Gets the endpoints of this edge.
         /// </summary>
-        public override IEnumerable<DotCommonEndpoint> Endpoints => new DotCommonEndpoint[] { Tail, Head };
+        public override IEnumerable<DotEndpointDefinition> Endpoints => new DotEndpointDefinition[] { Tail, Head };
 
         protected DotEdge(TTail tail, THead head, IDotEdgeAttributes attributes)
             : base(attributes)

@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
             WriteAttributes(edge.Attributes, writer);
         }
 
-        protected virtual void WriteEdges(IEnumerable<DotCommonEndpoint> endpoints, IDotEdgeWriter writer)
+        protected virtual void WriteEdges(IEnumerable<DotEndpointDefinition> endpoints, IDotEdgeWriter writer)
         {
             if (endpoints.Count() < 2)
             {
@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
             }
         }
 
-        protected virtual void WriteEndpoint(DotCommonEndpoint commonEndpoint, IDotEdgeWriter writer)
+        protected virtual void WriteEndpoint(DotEndpointDefinition commonEndpoint, IDotEdgeWriter writer)
         {
             switch (commonEndpoint)
             {
