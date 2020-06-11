@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
+﻿using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -20,7 +21,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         string LabelHtml { get; set; }
 
         /// <summary>
-        /// Gets or sets the color of the node (default: <see cref="System.Drawing.Color.Black"/>).
+        /// Gets or sets the color of the cluster (default: <see cref="System.Drawing.Color.Black"/>).
         /// If <see cref="DotColorList"/> is used, with no weighted colors in its color collection (<see cref="DotColor"/> items only),
         /// and the <see cref="Style"/> is <see cref="DotStyle.Filled"/>, a linear gradient fill is done using the first two colors.
         /// If weighted colors are present (see <see cref="DotWeightedColor"/>), a degenerate linear gradient fill is done.
@@ -55,7 +56,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// At present, only two colors are used. If the second color is missing, the default color is used for it.
         /// See also the <see cref="GradientAngle"/> attribute for setting the gradient angle.
         /// Note that a cluster inherits the root graph's attributes if defined. 
-        /// Thus, if the root graph has defined a fill color, this will override a 
+        /// Thus, if the root graph has defined a fill color (<see cref="IDotGraphAttributes.FillColor"/>), this will override a 
         /// <see cref="Color"/> or <see cref="BackgroundColor"/> attribute set for the cluster.
         /// </para>
         /// </summary>
@@ -75,6 +76,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// The value is inherited by subclusters. It has no effect on text. Default: 1.0, minimum: 0.0.
         /// </summary>
         double? PenWidth { get; set; }
+
+        /// <summary>
+        /// Color used to draw the bounding box around the cluster (default: <see cref="System.Drawing.Color.Black"/>).
+        /// If <see cref="PenColor"/> is not defined, <see cref="Color"/> is used. If this is not defined, the default is used.
+        /// Note that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a pen color
+        /// (<see cref="IDotGraphAttributes.PenColor"/>), this will override a <see cref="Color"/> or <see cref="BackgroundColor"/>
+        /// attribute set for the cluster.
+        /// </summary>
+        Color? PenColor { get; set; }
 
         /// <summary>
         /// Sets the style of the cluster (default: null). See the descriptions of individual <see cref="DotStyle"/> values
