@@ -48,8 +48,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         /// Gets or sets the color used to fill the background of the cluster, assuming that <see cref="Style"/> is <see cref="DotStyle.Filled"/>.
-        /// If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used. 
-        /// If <see cref="Color"/> is not defined, <see cref="BackgroundColor"/> is used.
+        /// If <see cref="FillColor"/> is not defined, <see cref="BackgroundColor"/> is used.
         /// If it is not defined too, the default is used, except when the output format is MIF, which use black by default.
         /// <para>
         /// When <see cref="DotColorList"/> is used, a gradient fill is generated. By default, this is a linear fill; 
