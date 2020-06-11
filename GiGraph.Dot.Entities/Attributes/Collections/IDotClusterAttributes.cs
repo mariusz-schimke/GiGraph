@@ -47,7 +47,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         /// Gets or sets the color used to fill the background of the cluster, assuming that <see cref="Style"/> is <see cref="DotStyle.Filled"/>.
-        /// If <see cref="FillColor"/> is not defined, <see cref="BackgroundColor"/> is used.
+        /// If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used. 
+        /// If <see cref="Color"/> is not defined, <see cref="BackgroundColor"/> is used.
         /// If it is not defined too, the default is used, except when the output format is MIF, which use black by default.
         /// <para>
         /// When <see cref="DotColorList"/> is used, a gradient fill is generated. By default, this is a linear fill; 
@@ -79,7 +80,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <summary>
         /// Color used to draw the bounding box around the cluster (default: <see cref="System.Drawing.Color.Black"/>).
         /// If <see cref="PenColor"/> is not defined, <see cref="Color"/> is used. If this is not defined, the default is used.
-        /// Note that a cluster inherits the root graph's attributes if defined.
+        /// Note that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a pen color
+        /// (<see cref="IDotGraphAttributes.PenColor"/>), this will override a <see cref="Color"/> or <see cref="BackgroundColor"/>
+        /// attribute set for the cluster.
         /// </summary>
         Color? PenColor { get; set; }
 
