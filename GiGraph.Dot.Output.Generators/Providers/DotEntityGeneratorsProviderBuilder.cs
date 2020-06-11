@@ -40,8 +40,8 @@ namespace GiGraph.Dot.Output.Generators.Providers
             provider.Register(new DotNodeGroupGenerator(syntaxRules, options, provider));
             provider.Register(new DotCommonNodeCollectionGenerator(syntaxRules, options, provider));
 
-            provider.Register(new DotCommonEdgeGenerator(syntaxRules, options, provider));
-            provider.Register(new DotCommonEdgeCollectionGenerator(syntaxRules, options, provider));
+            provider.Register(new DotEdgeGenerator(syntaxRules, options, provider));
+            provider.Register(new DotEdgeCollectionGenerator(syntaxRules, options, provider));
 
             return provider;
         }

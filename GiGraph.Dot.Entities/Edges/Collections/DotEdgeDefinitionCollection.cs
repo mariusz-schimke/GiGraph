@@ -23,8 +23,8 @@ namespace GiGraph.Dot.Entities.Edges.Collections
 
         public DotEdgeDefinitionCollection()
         {
-            _matchEdgePredicate = (tailNodeId, headNodeId) => commonEdge => DotEdge.Equals(commonEdge, tailNodeId, headNodeId);
-            _matchLoopPredicate = commonEdge => DotEdge.IsLoopEdge(commonEdge);
+            _matchEdgePredicate = (tailNodeId, headNodeId) => edgeDefinition => DotEdge.Equals(edgeDefinition, tailNodeId, headNodeId);
+            _matchLoopPredicate = edgeDefinition => DotEdge.IsLoopEdge(edgeDefinition);
         }
 
         /// <summary>
