@@ -31,26 +31,15 @@ namespace GiGraph.Dot.Entities.Edges
         where TTail : DotEndpointDefinition, IDotOrderableEntity
         where THead : DotEndpointDefinition, IDotOrderableEntity
     {
-        protected TTail _tail;
-        protected THead _head;
-
         /// <summary>
         /// Gets or sets the tail (source, left) endpoint.
         /// </summary>
-        public virtual TTail Tail
-        {
-            get => _tail;
-            set => _tail = value ?? throw new ArgumentNullException(nameof(Tail), "Endpoint cannot be null.");
-        }
+        public virtual TTail Tail { get; }
 
         /// <summary>
         /// Gets or sets the head (destination, right) endpoint.
         /// </summary>
-        public virtual THead Head
-        {
-            get => _head;
-            set => _head = value ?? throw new ArgumentNullException(nameof(Head), "Endpoint cannot be null.");
-        }
+        public virtual THead Head { get; }
 
         /// <summary>
         /// Gets the endpoints of this edge.
@@ -60,8 +49,8 @@ namespace GiGraph.Dot.Entities.Edges
         protected DotEdge(TTail tail, THead head, IDotEdgeAttributes attributes)
             : base(attributes)
         {
-            Tail = tail;
-            Head = head;
+            Tail = tail ?? throw new ArgumentNullException(nameof(tail), "Edge tail cannot be null.");
+            Head = head ?? throw new ArgumentNullException(nameof(head), "Edge head cannot be null.");
         }
 
         /// <summary>

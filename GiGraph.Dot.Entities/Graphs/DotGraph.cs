@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Graphs
         /// <summary>
         /// The attributes of the graph.
         /// </summary>
-        public new IDotGraphAttributes Attributes => (IDotGraphAttributes)base.Attributes;
+        public new IDotGraphAttributes Attributes => (IDotGraphAttributes) base.Attributes;
 
         protected DotGraph(string id,
             bool isDirected,
@@ -53,18 +53,18 @@ namespace GiGraph.Dot.Entities.Graphs
         /// Strict graph forbids the creation of multi-edges, i.e., there may be at most one edge with a given tail node and head node in the directed case.</param>
         public DotGraph(string id = null, bool isDirected = true, bool isStrict = false)
             : this
-              (
-                  id,
-                  isDirected,
-                  isStrict,
-                  new DotEntityAttributes(),
-                  new DotNodeCollection(),
-                  new DotEdgeCollection(),
-                  new DotSubgraphCollection(),
-                  new DotClusterCollection(),
-                  new DotEntityAttributes(),
-                  new DotEntityAttributes()
-              )
+            (
+                id,
+                isDirected,
+                isStrict,
+                new DotEntityAttributes(),
+                new DotNodeCollection(),
+                new DotEdgeCollection(),
+                new DotSubgraphCollection(),
+                new DotClusterCollection(),
+                new DotEntityAttributes(),
+                new DotEntityAttributes()
+            )
         {
         }
     }
