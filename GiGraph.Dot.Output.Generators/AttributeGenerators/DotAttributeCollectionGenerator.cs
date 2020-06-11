@@ -10,26 +10,26 @@ using GiGraph.Dot.Output.Writers.CommonEntityWriters;
 
 namespace GiGraph.Dot.Output.Generators.AttributeGenerators
 {
-    public abstract class DotCommonAttributeCollectionGenerator<TWriter> : DotEntityGenerator<DotCommonAttributeCollection, TWriter>
+    public abstract class DotAttributeCollectionGenerator<TWriter> : DotEntityGenerator<DotAttributeCollection, TWriter>
         where TWriter : IDotEntityWriter
     {
-        protected DotCommonAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
+        protected DotAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }
 
-        public DotCommonAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        public override void Generate(DotCommonAttributeCollection attributes, TWriter writer)
+        public override void Generate(DotAttributeCollection attributes, TWriter writer)
         {
             var orderedAttributes = _options.OrderElements
                 ? attributes.Values
                             .Cast<IDotOrderableEntity>()
                             .OrderBy(attribute => attribute.OrderingKey)
-                            .Cast<DotCommonAttribute>()
+                            .Cast<DotAttribute>()
                 : attributes.Values;
 
             foreach (var attribute in orderedAttributes)
@@ -38,6 +38,6 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
             }
         }
 
-        protected abstract void WriteAttribute(DotCommonAttribute attribute, TWriter writer);
+        protected abstract void WriteAttribute(DotAttribute attribute, TWriter writer);
     }
 }

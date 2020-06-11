@@ -116,7 +116,7 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
             }
         }
 
-        protected virtual void WriteNodes(DotCommonNodeCollection nodes, IDotGraphBodyWriter writer)
+        protected virtual void WriteNodes(DotNodeCollection nodes, IDotGraphBodyWriter writer)
         {
             if (nodes.Any())
             {
@@ -126,7 +126,7 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
             }
         }
 
-        protected virtual void WriteEdges(DotCommonEdgeCollection edges, IDotGraphBodyWriter writer)
+        protected virtual void WriteEdges(DotEdgeCollection edges, IDotGraphBodyWriter writer)
         {
             if (edges.Any())
             {

@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     /// A double value attribute.
     /// </summary>
-    public class DotDoubleAttribute : DotCommonAttribute<double>
+    public class DotDoubleAttribute : DotAttribute<double>
     {
         /// <summary>
         /// Creates a new instance of the attribute.
@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected override string GetDotEncodedValue(DotGenerationOptions options)
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             return Value.ToString(CultureInfo.InvariantCulture);
         }

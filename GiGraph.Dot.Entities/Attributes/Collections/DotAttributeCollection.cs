@@ -8,16 +8,16 @@ using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotCommonAttributeCollection : SortedList<string, DotCommonAttribute>, IDotAttributeCollection
+    public class DotAttributeCollection : SortedList<string, DotAttribute>, IDotAttributeCollection
     {
         public virtual T Set<T>(T attribute)
-            where T : DotCommonAttribute
+            where T : DotAttribute
         {
             this[attribute.Key] = attribute;
             return attribute;
         }
 
-        public virtual void SetRange(IEnumerable<DotCommonAttribute> attributes)
+        public virtual void SetRange(IEnumerable<DotAttribute> attributes)
         {
             foreach (var attribute in attributes)
             {
@@ -121,7 +121,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         public virtual T GetAs<T>(string key)
-            where T : DotCommonAttribute
+            where T : DotAttribute
         {
             if (base.TryGetValue(key, out var result))
             {
@@ -132,7 +132,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         public virtual bool TryGetAs<T>(string key, out T attribute)
-            where T : DotCommonAttribute
+            where T : DotAttribute
         {
             if (base.TryGetValue(key, out var result))
             {
@@ -146,7 +146,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual bool TryGetValueAs<T>(string key, out T value)
         {
-            if (base.TryGetValue(key, out var attribute) && attribute is DotCommonAttribute<T> attributeWithValue)
+            if (base.TryGetValue(key, out var attribute) && attribute is DotAttribute<T> attributeWithValue)
             {
                 value = attributeWithValue.Value;
                 return true;
@@ -156,7 +156,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return false;
         }
 
-        public virtual int RemoveAll(Predicate<DotCommonAttribute> match)
+        public virtual int RemoveAll(Predicate<DotAttribute> match)
         {
             var result = 0;
             var matches = Values.Where(a => match(a)).ToArray();
@@ -170,7 +170,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         protected virtual void AddOrRemove<T>(string key, T attribute)
-            where T : DotCommonAttribute
+            where T : DotAttribute
         {
             if (attribute is null)
             {
@@ -183,12 +183,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         protected virtual void AddOrRemove<TAttribute, TValue>(string key, TValue value, Func<TValue, TAttribute> attribute)
-            where TAttribute : DotCommonAttribute
+            where TAttribute : DotAttribute
         {
             AddOrRemove(key, value is null ? null : attribute(value));
         }
 
-        void IDictionary<string, DotCommonAttribute>.Add(string key, DotCommonAttribute attribute)
+        void IDictionary<string, DotAttribute>.Add(string key, DotAttribute attribute)
         {
             if (key != attribute.Key)
             {

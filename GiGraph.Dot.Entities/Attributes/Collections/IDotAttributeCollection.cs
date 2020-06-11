@@ -7,19 +7,19 @@ using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotAttributeCollection : IDotEntity, IDictionary<string, DotCommonAttribute>
+    public interface IDotAttributeCollection : IDotEntity, IDictionary<string, DotAttribute>
     {
         /// <summary>
         /// Adds or replaces the specified attribute in the collection.
         /// </summary>
         /// <param name="attribute">The attribute to include in the collection.</param>
-        T Set<T>(T attribute) where T : DotCommonAttribute;
+        T Set<T>(T attribute) where T : DotAttribute;
 
         /// <summary>
         /// Adds or replaces the specified attributes in the collection.
         /// </summary>
         /// <param name="attributes">The attributes to include in the collection.</param>
-        void SetRange(IEnumerable<DotCommonAttribute> attributes);
+        void SetRange(IEnumerable<DotAttribute> attributes);
 
         /// <summary>
         /// Adds or replaces the specified attribute in the collection.
@@ -176,7 +176,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         /// <typeparam name="T">The type to return the attribute as.</typeparam>
         /// <param name="key">The key of the attribute to get.</param>
-        T GetAs<T>(string key) where T : DotCommonAttribute;
+        T GetAs<T>(string key) where T : DotAttribute;
 
         /// <summary>
         /// Checks if an attribute with the specified key exists in the collection, and returns it as the specified type.
@@ -185,7 +185,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <typeparam name="T">The type to return the attribute as.</typeparam>
         /// <param name="key">The key of the attribute to get.</param>
         /// <param name="attribute">The attribute if found and valid, or null otherwise.</param>
-        bool TryGetAs<T>(string key, out T attribute) where T : DotCommonAttribute;
+        bool TryGetAs<T>(string key, out T attribute) where T : DotAttribute;
 
         /// <summary>
         /// Checks if an attribute with the specified key exists in the collection, and returns its value as the specified type.
@@ -200,6 +200,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Removes all attributes matching the specified criteria from the collection.
         /// </summary>
         /// <param name="match">The predicate to use for matching attributes.</param>
-        int RemoveAll(Predicate<DotCommonAttribute> match);
+        int RemoveAll(Predicate<DotAttribute> match);
     }
 }

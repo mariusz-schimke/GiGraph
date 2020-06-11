@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// A node shape attribute. Assignable to nodes only.
     /// <see href="https://www.graphviz.org/doc/info/shapes.html">View how individual shapes are visualized</see>.
     /// </summary>
-    public class DotShapeAttribute : DotCommonAttribute<DotShape>
+    public class DotShapeAttribute : DotAttribute<DotShape>
     {
         /// <summary>
         /// Creates a new instance of the attribute with a key of "shape".
@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected override string GetDotEncodedValue(DotGenerationOptions options)
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             switch (Value)
             {
@@ -217,7 +217,7 @@ namespace GiGraph.Dot.Entities.Attributes
                     return "Mrecord";
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(IDotAttribute.GetDotEncodedValue), $"The specified node shape '{Value}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified node shape '{Value}' is not supported.");
             }
         }
 

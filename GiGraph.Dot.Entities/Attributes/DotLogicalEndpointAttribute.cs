@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// if the current attribute is defined and is the identifier of a cluster containing the real head/tail,
     /// the edge is clipped to the boundary of the cluster.
     /// </summary>
-    public class DotLogicalEndpointAttribute : DotCommonAttribute<string>
+    public class DotLogicalEndpointAttribute : DotAttribute<string>
     {
         protected readonly IDotTextEscaper _valueEscaper;
 
@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected override string GetDotEncodedValue(DotGenerationOptions options)
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             // keep this value coherent with the format the cluster generator uses to generate cluster identifier
             return _valueEscaper.Escape(
