@@ -10,12 +10,10 @@ namespace GiGraph.Dot.Entities.Nodes
     /// </summary>
     public class DotNodeGroup : DotNodeDefinition
     {
-        protected readonly string[] _nodeIds;
-
         /// <summary>
         /// Gets the identifiers of nodes in the group.
         /// </summary>
-        public virtual IEnumerable<string> NodeIds => _nodeIds;
+        public virtual string[] NodeIds { get; }
 
         /// <summary>
         /// The attributes of the node group.
@@ -25,7 +23,7 @@ namespace GiGraph.Dot.Entities.Nodes
         protected DotNodeGroup(string[] nodeIds, IDotNodeAttributes attributes)
             : base(attributes)
         {
-            _nodeIds = nodeIds.Any()
+            NodeIds = nodeIds.Any()
                 ? nodeIds
                 : throw new ArgumentException("At least one node identifier has to be specified for a node group.", nameof(nodeIds));
         }
