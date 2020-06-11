@@ -32,7 +32,7 @@ namespace GiGraph.Examples.Complex
                 attrs.Label = "yes";
                 
                 // attach the arrow to cluster border
-                attrs.LogicalHead = "Positive path";
+                attrs.LogicalHead = "Flow 1";
             });
             
             graph.Edges.Add("Decision", "Cluster 2 Start", attrs =>
@@ -40,11 +40,11 @@ namespace GiGraph.Examples.Complex
                 attrs.Label = "no";
                 
                 // attach the arrow to cluster border
-                attrs.LogicalHead = "Negative path";
+                attrs.LogicalHead = "Flow 2";
             });
 
-            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.LogicalTail = "Positive path";
-            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.LogicalTail = "Negative path";
+            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.LogicalTail = "Flow 1";
+            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.LogicalTail = "Flow 2";
 
 
             // --- add clusters ---
@@ -53,18 +53,18 @@ namespace GiGraph.Examples.Complex
             // for multiple of them, or specify the same identifier for multiple clusters,
             // they will be treated as one cluster when visualized.
 
-            graph.Clusters.Add(id: "Positive path", cluster =>
+            graph.Clusters.Add(id: "Flow 1", cluster =>
             {
-                cluster.Attributes.BackgroundColor = Color.LightGreen;
-                cluster.Attributes.Label = "Positive path";
+                cluster.Attributes.BackgroundColor = Color.Turquoise;
+                cluster.Attributes.Label = "Flow 1";
 
                 cluster.Edges.AddSequence("Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit");
             });
 
-            graph.Clusters.Add(id: "Negative path", cluster =>
+            graph.Clusters.Add(id: "Flow 2", cluster =>
             {
-                cluster.Attributes.Label = "Negative path";
-                cluster.Attributes.BackgroundColor = Color.LightPink;
+                cluster.Attributes.Label = "Flow 2";
+                cluster.Attributes.BackgroundColor = Color.Orange;
 
                 cluster.Edges.AddSequence("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");
             });
