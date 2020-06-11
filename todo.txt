@@ -1,5 +1,6 @@
 Road map:
 1. Gradually add support for all available attributes.
+2. String types (escString, html, record).
 
 Other (always valid): 
 1. Check if methods are coherently marked as virtual.
