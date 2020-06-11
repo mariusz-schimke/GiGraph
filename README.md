@@ -44,8 +44,6 @@ namespace GiGraph.Examples
             
             // or save it to a file (.gv and .dot are the default extensions)
             graph.SaveToFile("example.gv");
-            
-            Console.Read();
         }
     }
 }
@@ -293,11 +291,11 @@ In order to group nodes visually by displaying them in a rectangle, embed them i
 And here's the code to generate it:
 
 ```c#
+using System;
+using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions; // Build(), SaveToFile()
-using System;
-using System.Drawing;
 
 namespace GiGraph.Examples
 {
@@ -310,6 +308,7 @@ namespace GiGraph.Examples
             // set graph attributes
             graph.Attributes.Label = "Example Flow";
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
+            graph.Attributes.Compound = true;
 
             // set individual node styles
             graph.Nodes.Add("Start").Attributes.Shape = DotShape.Circle;
@@ -323,11 +322,24 @@ namespace GiGraph.Examples
 
             // (!) Note that CROSS-DIAGRAM EDGES SHOULD BE DEFINED IN THE COMMON PARENT LEVEL GRAPH/SUBGRAPH
             // (which is the root graph in this case)
-            graph.Edges.Add("Decision", "Cluster 1 Start").Attributes.Label = "yes";
-            graph.Edges.Add("Decision", "Cluster 2 Start").Attributes.Label = "no";
+            graph.Edges.Add("Decision", "Cluster 1 Start", attrs =>
+            {
+                attrs.Label = "yes";
 
-            graph.Edges.Add("Cluster 1 Exit", "Exit");
-            graph.Edges.Add("Cluster 2 Exit", "Exit");
+                // attach the arrow to cluster border
+                attrs.LogicalHead = "Flow 1";
+            });
+
+            graph.Edges.Add("Decision", "Cluster 2 Start", attrs =>
+            {
+                attrs.Label = "no";
+
+                // attach the arrow to cluster border
+                attrs.LogicalHead = "Flow 2";
+            });
+
+            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.LogicalTail = "Flow 1";
+            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.LogicalTail = "Flow 2";
 
 
             // --- add clusters ---
@@ -336,31 +348,28 @@ namespace GiGraph.Examples
             // for multiple of them, or specify the same identifier for multiple clusters,
             // they will be treated as one cluster when visualized.
 
-            graph.Clusters.Add(id: "Positive path", cluster =>
+            graph.Clusters.Add(id: "Flow 1", cluster =>
             {
-                cluster.Attributes.BackgroundColor = Color.LightGreen;
-                cluster.Attributes.Label = "Positive path";
+                cluster.Attributes.BackgroundColor = Color.Turquoise;
+                cluster.Attributes.Label = "Flow 1";
 
                 cluster.Edges.AddSequence("Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit");
             });
 
-            graph.Clusters.Add(id: "Negative path", cluster =>
+            graph.Clusters.Add(id: "Flow 2", cluster =>
             {
-                cluster.Attributes.Label = "Negative path";
-                cluster.Attributes.BackgroundColor = Color.LightPink;
+                cluster.Attributes.Label = "Flow 2";
+                cluster.Attributes.BackgroundColor = Color.Orange;
 
                 cluster.Edges.AddSequence("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");
             });
 
 
             // build a graph as string
-            var graphString = graph.Build();
-            Console.WriteLine(graphString);
+            Console.WriteLine(graph.Build());
 
             // or save it to a file (.gv and .dot are the default extensions)
             graph.SaveToFile("example.gv");
-
-            Console.ReadLine();
         }
     }
 }
@@ -369,21 +378,22 @@ namespace GiGraph.Examples
 ```dot
 digraph
 {
+    compound = true
     label = "Example Flow"
     rankdir = LR
 
-    subgraph "cluster Positive path"
+    subgraph "cluster Flow 1"
     {
-        bgcolor = "#90ee90ff"
-        label = "Positive path"
+        bgcolor = turquoise
+        label = "Flow 1"
 
         "Cluster 1 Start" -> "Cluster 1 Node" -> "Cluster 1 Exit"
     }
 
-    subgraph "cluster Negative path"
+    subgraph "cluster Flow 2"
     {
-        label = "Negative path"
-        bgcolor = "#ffb6c1ff"
+        bgcolor = orange
+        label = "Flow 2"
 
         "Cluster 2 Start" -> "Cluster 2 Node" -> "Cluster 2 Exit"
     }
@@ -393,10 +403,10 @@ digraph
     Exit [ shape = doublecircle ]
 
     Start -> Decision
-    Decision -> "Cluster 1 Start" [ label = yes ]
-    Decision -> "Cluster 2 Start" [ label = no ]
-    "Cluster 1 Exit" -> Exit
-    "Cluster 2 Exit" -> Exit
+    Decision -> "Cluster 1 Start" [ label = yes, lhead = "cluster Flow 1" ]
+    Decision -> "Cluster 2 Start" [ label = no, lhead = "cluster Flow 2" ]
+    "Cluster 1 Exit" -> Exit [ ltail = "cluster Flow 1" ]
+    "Cluster 2 Exit" -> Exit [ ltail = "cluster Flow 2" ]
 }
 ```
 
@@ -424,10 +434,10 @@ The nodes embedded in subgraphs with a rank *DotRank.Same* are visualized in the
 The second example above is generated by the following code. When you remove the lines of code where subgraphs are added, you will get the layout from the first example above.
 
 ```c#
+using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions; // Build(), SaveToFile()
-using System;
 
 namespace GiGraph.Examples
 {
@@ -475,8 +485,6 @@ namespace GiGraph.Examples
 
             // or save it to a file (.gv and .dot are the default extensions)
             graph.SaveToFile("example.gv");
-
-            Console.Read();
         }
     }
 }
