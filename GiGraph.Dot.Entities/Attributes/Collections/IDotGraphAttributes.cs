@@ -52,6 +52,25 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotColorDefinition BackgroundColor { get; set; }
 
         /// <summary>
+        /// Gets or sets the color used to fill the background of clusters, assuming that their
+        /// <see cref="IDotClusterAttributes.Style"/> is <see cref="DotStyle.Filled"/>.
+        /// If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used. 
+        /// If <see cref="Color"/> is not defined, <see cref="IDotClusterAttributes.BackgroundColor"/> is used.
+        /// If it is not defined too, the default is used, except when the output format is MIF, which use black by default.
+        /// <para>
+        /// When <see cref="DotColorList"/> is used, a gradient fill is generated. By default, this is a linear fill; 
+        /// setting <see cref="Style"/> to <see cref="DotStyle.Radial"/> will cause a radial fill.
+        /// At present, only two colors are used. If the second color is missing, the default color is used for it.
+        /// See also the <see cref="GradientAngle"/> attribute for setting the gradient angle.
+        /// Note that a cluster inherits the root graph's attributes if defined. 
+        /// Thus, if the root graph has defined a fill color, this will override a 
+        /// <see cref="IDotClusterAttributes.Color"/> or <see cref="IDotClusterAttributes.BackgroundColor"/>
+        /// attribute set for the cluster.
+        /// </para>
+        /// </summary>
+        DotColorDefinition FillColor { get; set; }
+
+        /// <summary>
         /// If a gradient fill is being used, this determines the angle of the fill. 
         /// For linear fills, the colors transform along a line specified by the angle and the center of the object.
         /// For radial fills, a value of zero causes the colors to transform radially from the center;
@@ -93,13 +112,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotStyle? Style { get; set; }
 
         /// <summary>
-        /// If true, edge concentrators are used. This merges multiedges into a single edge, and causes partially parallel edges
-        /// to share part of their paths. The latter feature is not yet available outside of DOT.
+        /// If true, edge concentrators are used (default: false). This merges multiedges into a single edge,
+        /// and causes partially parallel edges to share part of their paths. The latter feature is not yet available outside of DOT.
         /// </summary>
         bool? ConcentrateEdges { get; set; }
 
         /// <summary>
-        /// If true, allows edges between clusters. Default: false;
+        /// If true, allows edges between clusters (default: false).
         /// See also the <see cref="IDotEdgeAttributes.LogicalHead"/> and <see cref="IDotEdgeAttributes.LogicalTail"/>
         /// attributes of the edge.
         /// </summary>
