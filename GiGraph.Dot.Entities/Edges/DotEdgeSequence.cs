@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Edges
     /// <summary>
     /// Represents a sequence of edges that join a specified sequence of endpoints.
     /// </summary>
-    public class DotEdgeSequence : DotCommonEdge
+    public class DotEdgeSequence : DotEdgeDefinition
     {
         protected readonly DotCommonEndpoint[] _endpoints;
 

@@ -8,20 +8,20 @@ namespace GiGraph.Dot.Entities.Edges.Collections
     /// <summary>
     /// A collection of edges.
     /// </summary>
-    public partial class DotCommonEdgeCollection : List<DotCommonEdge>, IDotEntity
+    public partial class DotEdgeDefinitionCollection : List<DotEdgeDefinition>, IDotEntity
     {
-        protected readonly Func<string, string, Predicate<DotCommonEdge>> _matchEdgePredicate;
-        protected readonly Predicate<DotCommonEdge> _matchLoopPredicate;
+        protected readonly Func<string, string, Predicate<DotEdgeDefinition>> _matchEdgePredicate;
+        protected readonly Predicate<DotEdgeDefinition> _matchLoopPredicate;
 
-        protected DotCommonEdgeCollection(
-            Func<string, string, Predicate<DotCommonEdge>> matchEdgePredicate,
-            Predicate<DotCommonEdge> matchLoopPredicate)
+        protected DotEdgeDefinitionCollection(
+            Func<string, string, Predicate<DotEdgeDefinition>> matchEdgePredicate,
+            Predicate<DotEdgeDefinition> matchLoopPredicate)
         {
             _matchEdgePredicate = matchEdgePredicate;
             _matchLoopPredicate = matchLoopPredicate;
         }
 
-        public DotCommonEdgeCollection()
+        public DotEdgeDefinitionCollection()
         {
             _matchEdgePredicate = (tailNodeId, headNodeId) => commonEdge => DotEdge.Equals(commonEdge, tailNodeId, headNodeId);
             _matchLoopPredicate = commonEdge => DotEdge.IsLoopEdge(commonEdge);
@@ -34,7 +34,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="edge">The edge to add.</param>
         /// <param name="initAttrs">An optional edge attributes initializer delegate.</param>
         public virtual T Add<T>(T edge, Action<IDotEdgeAttributes> initAttrs)
-            where T : DotCommonEdge
+            where T : DotEdgeDefinition
         {
             Add(edge);
             initAttrs?.Invoke(edge.Attributes);

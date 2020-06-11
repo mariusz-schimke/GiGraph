@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Edges
     /// </summary>
     /// <typeparam name="TTail">The type of the tail endpoint.</typeparam>
     /// <typeparam name="THead">The type of the head endpoint.</typeparam>
-    public class DotEdge<TTail, THead> : DotCommonEdge
+    public class DotEdge<TTail, THead> : DotEdgeDefinition
         where TTail : DotCommonEndpoint, IDotOrderableEntity
         where THead : DotCommonEndpoint, IDotOrderableEntity
     {
