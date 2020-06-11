@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Output.Generators.Providers
         {
             if (!TryGet<TGenerator>(out var result))
             {
-                throw new KeyNotFoundException($"No generator compatible with {typeof(TGenerator).FullName} has been registered.");
+                throw new NotSupportedException($"No generator compatible with {typeof(TGenerator).FullName} has been registered.");
             }
 
             return result;

@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// </param>
         public DotEndpoint(string nodeId, string portName, DotCompassPoint? compassPoint = null)
         {
-            NodeId = nodeId ?? throw new ArgumentNullException(nameof(NodeId), "Node identifier cannot be null.");
+            NodeId = nodeId ?? throw new ArgumentNullException(nameof(nodeId), "Node identifier cannot be null.");
             PortName = portName;
             CompassPoint = compassPoint;
         }

@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// <param name="subgraph">The subgraph whose nodes to use as the endpoints of multiple edges.</param>
         public DotEndpointGroup(DotSubgraph subgraph)
         {
-            Subgraph = subgraph ?? throw new ArgumentNullException(nameof(Subgraph), "Subgraph is required.");
+            Subgraph = subgraph ?? throw new ArgumentNullException(nameof(subgraph), "Subgraph is required.");
         }
 
         /// <summary>
