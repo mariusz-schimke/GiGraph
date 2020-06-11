@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     /// Graph layout direction attribute. Assignable to graphs only.
     /// </summary>
-    public class DotRankDirectionAttribute : DotCommonAttribute<DotRankDirection>
+    public class DotRankDirectionAttribute : DotAttribute<DotRankDirection>
     {
         /// <summary>
         /// Creates a new instance of the attribute.

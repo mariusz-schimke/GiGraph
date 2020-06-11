@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// Arrow type attribute. Assignable to edges only.
     /// <see href="https://www.graphviz.org/doc/info/attrs.html#k:arrowType">View how individual arrow types are visualized</see>.
     /// </summary>
-    public class DotArrowTypeAttribute : DotCommonAttribute<DotArrowType>
+    public class DotArrowTypeAttribute : DotAttribute<DotArrowType>
     {
         /// <summary>
         /// Creates a new instance of the attribute.

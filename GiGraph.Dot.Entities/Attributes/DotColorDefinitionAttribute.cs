@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// If the style attribute of the element contains the value <see cref="DotStyle.Radial"/>, then a radial gradient fill is done.
     /// These fills work with any shape.
     /// </summary>
-    public class DotColorDefinitionAttribute : DotCommonAttribute<DotColorDefinition>
+    public class DotColorDefinitionAttribute : DotAttribute<DotColorDefinition>
     {
         /// <summary>
         /// Creates a new color list attribute.

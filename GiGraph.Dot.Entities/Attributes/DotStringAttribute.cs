@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// String attribute. The text provided as a value will be escaped on DOT script generation so that is is interpreted correctly
     /// by graph visualization tools. If you want the value to be rendered as is, use <see cref="DotCustomAttribute"/> instead.
     /// </summary>
-    public class DotStringAttribute : DotCommonAttribute<string>
+    public class DotStringAttribute : DotAttribute<string>
     {
         protected readonly IDotTextEscaper _valueEscaper;
 

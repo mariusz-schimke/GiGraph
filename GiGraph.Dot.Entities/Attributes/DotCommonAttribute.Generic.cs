@@ -2,14 +2,14 @@
 
 namespace GiGraph.Dot.Entities.Attributes
 {
-    public abstract class DotCommonAttribute<T> : DotCommonAttribute
+    public abstract class DotAttribute<T> : DotAttribute
     {
         /// <summary>
         /// Gets or sets the value of the attribute.
         /// </summary>
         public virtual T Value { get; }
 
-        public DotCommonAttribute(string key, T value)
+        public DotAttribute(string key, T value)
             : base(key)
         {
             Value = value;
@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Attributes
             return Value?.ToString() ?? string.Empty;
         }
 
-        public static implicit operator T(DotCommonAttribute<T> attribute)
+        public static implicit operator T(DotAttribute<T> attribute)
         {
             return attribute is { } ? attribute.Value : default;
         }

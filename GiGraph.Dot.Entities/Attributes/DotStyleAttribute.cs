@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     /// Style attribute. Individual styles are applicable to specific element types only.
     /// </summary>
-    public class DotStyleAttribute : DotCommonAttribute<DotStyle>
+    public class DotStyleAttribute : DotAttribute<DotStyle>
     {
         /// <summary>
         /// Creates a new instance of the attribute.

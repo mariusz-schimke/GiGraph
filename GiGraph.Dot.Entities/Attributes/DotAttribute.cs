@@ -2,7 +2,7 @@
 
 namespace GiGraph.Dot.Entities.Attributes
 {
-    public abstract class DotCommonAttribute : IDotAttribute, IDotOrderableEntity
+    public abstract class DotAttribute : IDotAttribute, IDotOrderableEntity
     {
         /// <summary>
         /// Gets the key of the attribute.
@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="options">The DOT generation options to use.</param>
         protected abstract string GetDotEncodedValue(DotGenerationOptions options);
 
-        protected DotCommonAttribute(string key)
+        protected DotAttribute(string key)
         {
             Key = key;
         }
