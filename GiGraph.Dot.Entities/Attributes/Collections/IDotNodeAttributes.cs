@@ -33,8 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         /// Gets or sets the color used to fill the background of the node, assuming that <see cref="Style"/> is <see cref="DotStyle.Filled"/>.
-        /// If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used. 
-        /// If it is not defined too, the default is used, except for <see cref="Shape"/> of <see cref="DotShape.Point"/>,
+        /// If <see cref="FillColor"/> is not defined, the default is used, except for <see cref="Shape"/> of <see cref="DotShape.Point"/>,
         /// or when the output format is MIF, which use black by default.
         /// <para>
         /// If <see cref="DotColorList"/> is used, a gradient fill is generated. By default, this is a linear fill; 
