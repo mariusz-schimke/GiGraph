@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Attributes
             return new DotColor(Value).ToString();
         }
 
-        protected override string GetDotEncodedValue(DotGenerationOptions options)
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             return new DotColor(Value).GetDotEncodedColor(options);
         }

@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected override string GetDotEncodedValue(DotGenerationOptions options)
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             var styles = Enum.GetValues(typeof(DotStyle))
                 .Cast<DotStyle>()
