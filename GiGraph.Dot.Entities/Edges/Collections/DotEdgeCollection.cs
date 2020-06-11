@@ -8,12 +8,12 @@ namespace GiGraph.Dot.Entities.Edges.Collections
     /// <summary>
     /// A collection of edges.
     /// </summary>
-    public partial class DotEdgeDefinitionCollection : List<DotEdgeDefinition>, IDotEntity
+    public partial class DotEdgeCollection : List<DotEdgeDefinition>, IDotEntity
     {
         protected readonly Func<string, string, Predicate<DotEdgeDefinition>> _matchEdgePredicate;
         protected readonly Predicate<DotEdgeDefinition> _matchLoopPredicate;
 
-        protected DotEdgeDefinitionCollection(
+        protected DotEdgeCollection(
             Func<string, string, Predicate<DotEdgeDefinition>> matchEdgePredicate,
             Predicate<DotEdgeDefinition> matchLoopPredicate)
         {
@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
             _matchLoopPredicate = matchLoopPredicate;
         }
 
-        public DotEdgeDefinitionCollection()
+        public DotEdgeCollection()
         {
             _matchEdgePredicate = (tailNodeId, headNodeId) => edgeDefinition => DotEdge.Equals(edgeDefinition, tailNodeId, headNodeId);
             _matchLoopPredicate = edgeDefinition => DotEdge.IsLoopEdge(edgeDefinition);

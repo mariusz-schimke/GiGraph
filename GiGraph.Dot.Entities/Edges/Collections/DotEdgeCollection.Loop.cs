@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace GiGraph.Dot.Entities.Edges.Collections
 {
-    public partial class DotEdgeDefinitionCollection : List<DotEdgeDefinition>, IDotEntity
+    public partial class DotEdgeCollection : List<DotEdgeDefinition>, IDotEntity
     {
         /// <summary>
         /// Adds a loop edge that connects the specified node to itself.

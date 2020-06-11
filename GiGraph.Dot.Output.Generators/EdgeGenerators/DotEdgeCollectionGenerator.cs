@@ -10,7 +10,7 @@ using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Generators.EdgeGenerators
 {
-    public class DotEdgeCollectionGenerator : DotEntityGenerator<DotEdgeDefinitionCollection, IDotEdgeStatementWriter>
+    public class DotEdgeCollectionGenerator : DotEntityGenerator<DotEdgeCollection, IDotEdgeStatementWriter>
     {
         protected DotEdgeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
         {
         }
 
-        public override void Generate(DotEdgeDefinitionCollection edges, IDotEdgeStatementWriter writer)
+        public override void Generate(DotEdgeCollection edges, IDotEdgeStatementWriter writer)
         {
             var orderedEdges = _options.OrderElements
                 ? edges.Cast<IDotOrderableEntity>()

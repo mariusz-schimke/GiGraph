@@ -126,7 +126,7 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
             }
         }
 
-        protected virtual void WriteEdges(DotEdgeDefinitionCollection edges, IDotGraphBodyWriter writer)
+        protected virtual void WriteEdges(DotEdgeCollection edges, IDotGraphBodyWriter writer)
         {
             if (edges.Any())
             {
