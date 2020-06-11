@@ -35,6 +35,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// If it is not defined too, the default is used, except when the output format is MIF, which use black by default.
         /// </summary>
         DotColorDefinition FillColor { get; set; }
+        
+        /// <summary>
+        /// Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges.
+        /// The value has no effect on text. Default: 1.0, minimum: 0.0.
+        /// </summary>
+        double? PenWidth { get; set; }
 
         /// <summary>
         /// Sets the style of the edge (default: null). See the descriptions of individual <see cref="DotStyle"/> values

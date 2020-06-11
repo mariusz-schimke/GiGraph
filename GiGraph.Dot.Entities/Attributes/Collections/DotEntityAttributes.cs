@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
+﻿using System;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using System.Drawing;
 using GiGraph.Dot.Entities.Types.Colors;
 
@@ -33,6 +34,23 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetAs<DotIntAttribute>("gradientangle", out var result) ? result.Value : (int?) null;
             set => AddOrRemove("gradientangle", value, v => new DotIntAttribute("gradientangle", v.Value));
+        }
+
+        public virtual double? PenWidth
+        {
+            get => TryGetAs<DotDoubleAttribute>("penwidth", out var result) ? result.Value : (double?) null;
+            set
+            {
+                AddOrRemove("penwidth", value, v =>
+                {
+                    if (v.Value < 0.0)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(PenWidth), v.Value, "Pen width must be greater than or equal to 0.");
+                    }
+
+                    return new DotDoubleAttribute("penwidth", v.Value);
+                });
+            }
         }
 
         public virtual string Label
