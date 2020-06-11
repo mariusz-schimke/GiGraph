@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     /// To make such connection, use <see cref="DotEdge{TTail, THead}"/> (or one of its more specific descendants),
     /// or <see cref="DotEdgeSequence"/>.
     /// </summary>
-    public class DotEndpoint : DotCommonEndpoint
+    public class DotEndpoint : DotEndpointDefinition
     {
         protected string _nodeId;
 
