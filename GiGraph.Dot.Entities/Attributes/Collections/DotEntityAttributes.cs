@@ -41,14 +41,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetAs<DotDoubleAttribute>("penwidth", out var result) ? result.Value : (double?) null;
             set
             {
-                AddOrRemove("penwidth", value, v =>
+                const string key = "penwidth";
+                AddOrRemove(key, value, v =>
                 {
                     if (v.Value < 0.0)
                     {
                         throw new ArgumentOutOfRangeException(nameof(PenWidth), v.Value, "Pen width must be greater than or equal to 0.");
                     }
 
-                    return new DotDoubleAttribute("penwidth", v.Value);
+                    return new DotDoubleAttribute(key, v.Value);
                 });
             }
         }
@@ -80,7 +81,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual double? ArrowSize
         {
             get => TryGetAs<DotDoubleAttribute>("arrowsize", out var result) ? result.Value : (double?) null;
-            set => AddOrRemove("arrowsize", value, v => new DotDoubleAttribute("arrowsize", v.Value));
+            set
+            {
+                const string key = "arrowsize";
+                AddOrRemove(key, value, v =>
+                {
+                    if (v.Value < 0.0)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(ArrowSize), v.Value, "Arrow size must be greater than or equal to 0.");
+                    }
+
+                    return new DotDoubleAttribute(key, v.Value);
+                });
+            }
         }
 
         public virtual DotArrowType? ArrowHead
