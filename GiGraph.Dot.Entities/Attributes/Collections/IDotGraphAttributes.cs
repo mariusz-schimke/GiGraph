@@ -21,6 +21,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         string LabelHtml { get; set; }
 
         /// <summary>
+        /// Gets or sets the color to use for clusters (default: <see cref="System.Drawing.Color.Black"/>).
+        /// If <see cref="DotColorList"/> is used, with no weighted colors in its color collection (<see cref="DotColor"/> items only),
+        /// and the <see cref="Style"/> is <see cref="DotStyle.Filled"/>, a linear gradient fill is done using the first two colors.
+        /// If weighted colors are present (see <see cref="DotWeightedColor"/>), a degenerate linear gradient fill is done.
+        /// This essentially does a fill using two colors, with the <see cref="DotWeightedColor.Weight"/> specifying how much of region is filled with each color.
+        /// If the <see cref="Style"/> attribute contains the value <see cref="DotStyle.Radial"/>, then a radial gradient fill is done.
+        /// These fills work with any shape. For certain shapes, the <see cref="Style"/> attribute can be set to do fills using more than 2 colors
+        /// (see <see cref="DotStyle.Striped"/>).
+        /// </summary>
+        DotColorDefinition Color { get; set; }
+
+        /// <summary>
         /// Gets or sets the background color of the graph (default: none).
         /// Used as the background for entire canvas.
         /// <para>
