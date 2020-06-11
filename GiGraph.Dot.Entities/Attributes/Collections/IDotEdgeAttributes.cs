@@ -1,6 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using System.Drawing;
-using GiGraph.Dot.Entities.Attributes.Colors;
+using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -21,33 +20,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         string LabelHtml { get; set; }
 
         /// <summary>
-        /// Gets or sets the color of the edge (default: <see cref="Color.Black"/>).
-        /// </summary>
-        Color? Color { get; set; }
-
-        /// <summary>
-        /// Gets or sets the color list of the edge.
-        /// If the list has no fractions (see <see cref="DotWeightedColor.Weight"/>), the edge is drawn using parallel splines or lines,
-        /// one for each color in the list, in the order given. The head arrow, if any, is drawn using the first color in the list,
-        /// and the tail arrow, if any, the second color. This supports the common case of drawing opposing edges,
-        /// but using parallel splines instead of separately routed multiedges.
+        /// Gets or sets the color of the edge (default: <see cref="System.Drawing.Color.Black"/>).
+        /// If <see cref="DotColorList"/> is used, with no weighted colors in its color collection (<see cref="DotColor"/> items only),
+        /// the edge is drawn using parallel splines or lines, one for each color in the list, in the order given.
+        /// The head arrow, if any, is drawn using the first color in the list, and the tail arrow, if any, the second color.
+        /// This supports the common case of drawing opposing edges, but using parallel splines instead of separately routed multiedges.
         /// If any fraction is used, the colors are drawn in series, with each color being given roughly its specified fraction of the edge.
         /// </summary>
-        DotWeightedColor[] ColorList { get; set; }
+        DotColorDefinition Color { get; set; }
 
         /// <summary>
         /// Gets or sets the color used to fill the arrow head, assuming it has a filled style.
         /// If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used.
         /// If it is not defined too, the default is used, except when the output format is MIF, which use black by default.
         /// </summary>
-        Color? FillColor { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the color used to fill the arrow head, assuming it has a filled style.
-        /// If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used.
-        /// If it is not defined too, the default is used, except when the output format is MIF, which use black by default.
-        /// </summary>
-        DotWeightedColor[] FillColorList { get; set; }
+        DotColorDefinition FillColor { get; set; }
 
         /// <summary>
         /// Sets the style of the edge (default: null). See the descriptions of individual <see cref="DotStyle"/> values
