@@ -49,6 +49,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         int? GradientAngle { get; set; }
 
         /// <summary>
+        /// Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges and clusters.
+        /// The value is inherited by subclusters. It has no effect on text. Default: 1.0, minimum: 0.0.
+        /// </summary>
+        double? PenWidth { get; set; }
+
+        /// <summary>
         /// Color used to draw the bounding box around clusters (default: <see cref="System.Drawing.Color.Black"/>).
         /// If <see cref="PenColor"/> is not defined, <see cref="Color"/> is used. If this is not defined, the default is used.
         /// Note that a cluster inherits the root graph's attributes if defined.
