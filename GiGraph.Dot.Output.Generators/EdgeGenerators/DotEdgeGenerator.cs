@@ -13,25 +13,25 @@ using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Generators.EdgeGenerators
 {
-    public class DotCommonEdgeGenerator : DotEntityWithAttributeListGenerator<DotCommonEdge, IDotEdgeWriter>
+    public class DotEdgeGenerator : DotEntityWithAttributeListGenerator<DotEdgeDefinition, IDotEdgeWriter>
     {
-        protected DotCommonEdgeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
+        protected DotEdgeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }
 
-        public DotCommonEdgeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotEdgeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        public override void Generate(DotCommonEdge edge, IDotEdgeWriter writer)
+        public override void Generate(DotEdgeDefinition edge, IDotEdgeWriter writer)
         {
             WriteEdges(edge.Endpoints, writer);
             WriteAttributes(edge.Attributes, writer);
         }
 
-        protected virtual void WriteEdges(IEnumerable<DotCommonEndpoint> endpoints, IDotEdgeWriter writer)
+        protected virtual void WriteEdges(IEnumerable<DotEndpointDefinition> endpoints, IDotEdgeWriter writer)
         {
             if (endpoints.Count() < 2)
             {
@@ -44,9 +44,9 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
             }
         }
 
-        protected virtual void WriteEndpoint(DotCommonEndpoint commonEndpoint, IDotEdgeWriter writer)
+        protected virtual void WriteEndpoint(DotEndpointDefinition endpointDefinition, IDotEdgeWriter writer)
         {
-            switch (commonEndpoint)
+            switch (endpointDefinition)
             {
                 case DotEndpoint endpoint:
                     WriteEndpoint(endpoint, writer);
@@ -57,7 +57,7 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
                     break;
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(commonEndpoint), $"The specified endpoint type '{commonEndpoint.GetType().FullName}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(endpointDefinition), $"The specified endpoint type '{endpointDefinition.GetType().FullName}' is not supported.");
             }
         }
 

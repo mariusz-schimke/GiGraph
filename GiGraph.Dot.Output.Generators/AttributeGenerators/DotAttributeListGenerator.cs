@@ -6,19 +6,19 @@ using GiGraph.Dot.Output.Writers.AttributeWriters;
 
 namespace GiGraph.Dot.Output.Generators.AttributeGenerators
 {
-    public class DotCommonAttributeStatementListGenerator : DotCommonAttributeCollectionGenerator<IDotAttributeStatementWriter>
+    public class DotAttributeListGenerator : DotAttributeCollectionGenerator<IDotAttributeListItemWriter>
     {
-        protected DotCommonAttributeStatementListGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
+        protected DotAttributeListGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }
 
-        public DotCommonAttributeStatementListGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotAttributeListGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        protected override void WriteAttribute(DotCommonAttribute attribute, IDotAttributeStatementWriter writer)
+        protected override void WriteAttribute(DotAttribute attribute, IDotAttributeListItemWriter writer)
         {
             var nodeWriter = writer.BeginAttribute();
             _entityGenerators.GetForEntity<IDotAttributeWriter>(attribute).Generate(attribute, nodeWriter);

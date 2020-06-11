@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     /// Represents a single color.
     /// </summary>
-    public class DotColorAttribute : DotCommonAttribute<Color>
+    public class DotColorAttribute : DotAttribute<Color>
     {
         /// <summary>
         /// Creates a new color attribute.
@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Attributes
             return new DotColor(Value).ToString();
         }
 
-        protected override string GetDotEncodedValue(DotGenerationOptions options)
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             return new DotColor(Value).GetDotEncodedColor(options);
         }

@@ -11,18 +11,12 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     /// To make such connection, use <see cref="DotEdge{TTail, THead}"/> (or one of its more specific descendants),
     /// or <see cref="DotEdgeSequence"/>.
     /// </summary>
-    public class DotEndpoint : DotCommonEndpoint
+    public class DotEndpoint : DotEndpointDefinition
     {
-        protected string _nodeId;
-
         /// <summary>
-        /// The node identifier.
+        /// Gets the node identifier.
         /// </summary>
-        public virtual string NodeId
-        {
-            get => _nodeId;
-            set => _nodeId = value ?? throw new ArgumentNullException(nameof(NodeId), "Node identifier cannot be null.");
-        }
+        public virtual string NodeId { get; }
 
         /// <summary>
         /// Gets a value that modifies the edge placement to aim for the specified port. 
@@ -30,7 +24,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// (<see cref="DotShape.Record"/>, <see cref="DotShape.MRecord"/>) with one of its fields having the given portname,
         /// or have an HTML-like label, one of whose components has a PORT attribute set to the specified port name.
         /// </summary>
-        public string PortName { get; set; }
+        public virtual string PortName { get; set; }
 
         /// <summary>
         /// Gets a value that modifies the edge placement to aim for the specified compass point on the <see cref="PortName"/> if specified,
@@ -40,7 +34,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         ///     the default value is <see cref="DotCompassPoint.Center"/>.
         /// </para>
         /// </summary>
-        public DotCompassPoint? CompassPoint { get; set; }
+        public virtual DotCompassPoint? CompassPoint { get; set; }
 
         /// <summary>
         /// Creates a new instance of the class.
@@ -59,7 +53,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// </param>
         public DotEndpoint(string nodeId, string portName, DotCompassPoint? compassPoint = null)
         {
-            NodeId = nodeId;
+            NodeId = nodeId ?? throw new ArgumentNullException(nameof(nodeId), "Node identifier cannot be null.");
             PortName = portName;
             CompassPoint = compassPoint;
         }
@@ -79,7 +73,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
 
         protected override string GetOrderingKey()
         {
-            return _nodeId;
+            return NodeId;
         }
     }
 }

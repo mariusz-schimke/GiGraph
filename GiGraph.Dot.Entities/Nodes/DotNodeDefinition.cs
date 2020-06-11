@@ -2,7 +2,7 @@
 
 namespace GiGraph.Dot.Entities.Nodes
 {
-    public abstract class DotCommonNode : IDotOrderableEntity
+    public abstract class DotNodeDefinition : IDotOrderableEntity
     {
         /// <summary>
         /// The attributes of the node or node group.
@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Nodes
 
         string IDotOrderableEntity.OrderingKey => GetOrderingKey();
 
-        protected DotCommonNode(IDotNodeAttributes attributes)
+        protected DotNodeDefinition(IDotNodeAttributes attributes)
         {
             Attributes = attributes;
         }

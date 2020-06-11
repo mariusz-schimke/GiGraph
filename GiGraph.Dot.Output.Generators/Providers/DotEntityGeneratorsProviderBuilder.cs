@@ -31,17 +31,17 @@ namespace GiGraph.Dot.Output.Generators.Providers
             provider.Register(new DotCommonSubgraphCollectionGenerator<DotSubgraph>(syntaxRules, options, provider));
             provider.Register(new DotCommonSubgraphCollectionGenerator<DotCluster>(syntaxRules, options, provider));
 
-            provider.Register(new DotCommonAttributeGenerator(syntaxRules, options, provider));
+            provider.Register(new DotAttributeGenerator(syntaxRules, options, provider));
             provider.Register(new DotHtmlAttributeGenerator(syntaxRules, options, provider));
-            provider.Register(new DotCommonAttributeListGenerator(syntaxRules, options, provider));
-            provider.Register(new DotCommonAttributeStatementListGenerator(syntaxRules, options, provider));
+            provider.Register(new DotAttributeListGenerator(syntaxRules, options, provider));
+            provider.Register(new DotAttributeStatementListGenerator(syntaxRules, options, provider));
 
             provider.Register(new DotNodeGenerator(syntaxRules, options, provider));
             provider.Register(new DotNodeGroupGenerator(syntaxRules, options, provider));
-            provider.Register(new DotCommonNodeCollectionGenerator(syntaxRules, options, provider));
+            provider.Register(new DotNodeCollectionGenerator(syntaxRules, options, provider));
 
-            provider.Register(new DotCommonEdgeGenerator(syntaxRules, options, provider));
-            provider.Register(new DotCommonEdgeCollectionGenerator(syntaxRules, options, provider));
+            provider.Register(new DotEdgeGenerator(syntaxRules, options, provider));
+            provider.Register(new DotEdgeCollectionGenerator(syntaxRules, options, provider));
 
             return provider;
         }

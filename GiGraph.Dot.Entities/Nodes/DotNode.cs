@@ -6,18 +6,12 @@ namespace GiGraph.Dot.Entities.Nodes
     /// <summary>
     /// Represents a graph node.
     /// </summary>
-    public class DotNode : DotCommonNode
+    public class DotNode : DotNodeDefinition
     {
-        protected string _id;
-
         /// <summary>
         /// Gets or sets the unique identifier of the node.
         /// </summary>
-        public virtual string Id
-        {
-            get => _id;
-            set => _id = value ?? throw new ArgumentNullException(nameof(Id), "Node identifier cannot be null.");
-        }
+        public virtual string Id { get; }
 
         /// <summary>
         /// The attributes of the node.
@@ -27,7 +21,7 @@ namespace GiGraph.Dot.Entities.Nodes
         protected DotNode(string id, IDotNodeAttributes attributes)
             : base(attributes)
         {
-            Id = id;
+            Id = id ?? throw new ArgumentNullException(nameof(id), "Node identifier cannot be null.");
         }
 
         /// <summary>
@@ -41,7 +35,7 @@ namespace GiGraph.Dot.Entities.Nodes
 
         protected override string GetOrderingKey()
         {
-            return _id;
+            return Id;
         }
     }
 }

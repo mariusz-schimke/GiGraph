@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// The value specified for the attribute will be rendered as is in the output script (without escaping)
     /// or escaped using a custom value escaping pipeline if provided.
     /// </summary>
-    public class DotCustomAttribute : DotCommonAttribute<string>
+    public class DotCustomAttribute : DotAttribute<string>
     {
         protected readonly IDotTextEscaper _valueEscaper;
 
@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Attributes
             _valueEscaper = valueEscaper ?? TextEscapingPipeline.None();
         }
 
-        protected override string GetDotEncodedValue(DotGenerationOptions options)
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             return _valueEscaper.Escape(Value);
         }
