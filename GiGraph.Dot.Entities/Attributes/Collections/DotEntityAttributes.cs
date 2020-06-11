@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
+﻿using System;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using System.Drawing;
 using GiGraph.Dot.Entities.Types.Colors;
 
@@ -35,6 +36,24 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("gradientangle", value, v => new DotIntAttribute("gradientangle", v.Value));
         }
 
+        public virtual double? PenWidth
+        {
+            get => TryGetAs<DotDoubleAttribute>("penwidth", out var result) ? result.Value : (double?) null;
+            set
+            {
+                const string key = "penwidth";
+                AddOrRemove(key, value, v =>
+                {
+                    if (v.Value < 0.0)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(PenWidth), v.Value, "Pen width must be greater than or equal to 0.");
+                    }
+
+                    return new DotDoubleAttribute(key, v.Value);
+                });
+            }
+        }
+
         public virtual string Label
         {
             get => TryGetAs<DotStringAttribute>("label", out var result) ? result.Value : null;
@@ -62,7 +81,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual double? ArrowSize
         {
             get => TryGetAs<DotDoubleAttribute>("arrowsize", out var result) ? result.Value : (double?) null;
-            set => AddOrRemove("arrowsize", value, v => new DotDoubleAttribute("arrowsize", v.Value));
+            set
+            {
+                const string key = "arrowsize";
+                AddOrRemove(key, value, v =>
+                {
+                    if (v.Value < 0.0)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(ArrowSize), v.Value, "Arrow size must be greater than or equal to 0.");
+                    }
+
+                    return new DotDoubleAttribute(key, v.Value);
+                });
+            }
         }
 
         public virtual DotArrowType? ArrowHead

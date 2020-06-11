@@ -77,11 +77,11 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         /// </summary>
         Radial = 1 << 9,
 
-        // TODO: update with attribute references.
         /// <summary>
         /// Applicable to edges.
-        /// The effect depends on the penwidth, <see cref="IDotEdgeAttributes.ArrowDirection"/>, <see cref="IDotEdgeAttributes.ArrowHead"/>,
-        /// and <see cref="IDotEdgeAttributes.ArrowTail"/> attributes. The edge starts with width penwidth, and tapers to width 1, in points.
+        /// The effect depends on the <see cref="IDotEdgeAttributes.PenWidth"/>, <see cref="IDotEdgeAttributes.ArrowDirection"/>,
+        /// <see cref="IDotEdgeAttributes.ArrowHead"/>, and <see cref="IDotEdgeAttributes.ArrowTail"/> attributes.
+        /// The edge starts with width <see cref="IDotEdgeAttributes.PenWidth"/>, and tapers to width 1, in points.
         /// The <see cref="IDotEdgeAttributes.ArrowDirection"/> attribute determines whether the tapering goes from tail to head
         /// (<see cref="IDotEdgeAttributes.ArrowDirection"/> = <see cref="DotArrowDirection.Forward"/>),
         /// from head to tail (<see cref="IDotEdgeAttributes.ArrowDirection"/> = <see cref="DotArrowDirection.Backward"/>),
@@ -89,7 +89,8 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         /// or no tapering at all (<see cref="IDotEdgeAttributes.ArrowDirection"/> = <see cref="DotArrowDirection.None"/>).
         /// If the <see cref="IDotEdgeAttributes.ArrowDirection"/> attribute is not explicitly set, the default for the graph type is used.
         /// Arrow heads and arrow tails are also drawn, based on the value of <see cref="IDotEdgeAttributes.ArrowDirection"/> attribute;
-        /// to avoid this, set the <see cref="IDotEdgeAttributes.ArrowHead"/> and/or <see cref="IDotEdgeAttributes.ArrowTail"/> attributes to "none".
+        /// to avoid this, set the <see cref="IDotEdgeAttributes.ArrowHead"/> and/or <see cref="IDotEdgeAttributes.ArrowTail"/> attributes to
+        /// <see cref="DotArrowType.None"/>.
         /// </summary>
         Tapered = 1 << 10,
 

@@ -44,8 +44,6 @@ namespace GiGraph.Examples
             
             // or save it to a file (.gv and .dot are the default extensions)
             graph.SaveToFile("example.gv");
-            
-            Console.Read();
         }
     }
 }
@@ -94,18 +92,25 @@ Graph nodes and edges can by styled globally, locally, and individually.
 
 Apart from those, the graph itself, and a cluster, also have their own collections of attributes that you can set. These are for instance background color, style, label, etc.
 
-The example below sets global node style as bold and filled, with a dark orange color fill, and a rectangular shape. If it comes to edges, their head is set globally to a 'vee' shape. Also, some nodes and edges have their attributes set individually. What's more, a subgraph is used to set a fill color for a group of nodes only.
+The example below presents how individual elements can be styled. At the beginning, the global node shape is set to rectangular, and the style to filled, so that their fill color can be set. The example nodes have set a plain color fill, a striped/wedged fill (with custom stripe/wedge proportions), a gradient fill, or a two-color fill with proportions. Edges, on the other hand, have the 'vee' shape set globally, and custom styles set individually: plain color, multicolor series or splines, and a dotted style.
+
+
 
 <p align="center">
   <img src="./Assets/Examples/custom-styling.svg">
 </p>
 
+
+*In the example, groups of elements are embedded in subgraphs only to control the order they are visualized (for clarity). In one case, a subgraph is used as an example of setting style locally, for a group of elements.*
+
+
 ```c#
-using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Extensions; // Build(), SaveToFile()
 using System;
 using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Extensions; // Build(), SaveToFile()
 
 namespace GiGraph.Examples
 {
@@ -113,74 +118,122 @@ namespace GiGraph.Examples
     {
         private static void Main(string[] args)
         {
-             var graph = new DotGraph(isDirected: true);
+            var graph = new DotGraph(isDirected: true);
 
             // set left to right layout direction of the graph using graph attributes
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
 
-
             // set the defaults for all nodes of the graph
             graph.NodeDefaults.Shape = DotShape.Rectangle;
-            graph.NodeDefaults.Style = DotStyle.Filled | DotStyle.Bold;
-            graph.NodeDefaults.FillColor = Color.DarkOrange;
+            graph.NodeDefaults.Style = DotStyle.Filled;
+            graph.NodeDefaults.FillColor = DotColorDefinition.From(Color.Turquoise, Color.RoyalBlue);
 
             // set the defaults for all edges of the graph
-            graph.EdgeDefaults.ArrowHead = DotArrowType.Vee;
+            graph.EdgeDefaults.ArrowHead
+                = graph.EdgeDefaults.ArrowTail
+                    = DotArrowType.Vee;
 
 
-            // -- add nodes --
+            // -- (subgraphs are used here only to control the order in which elements are visualized) --
 
-            // the Add method returns the newly added node, so you can easily access its attributes
-            graph.Nodes.Add("Entry").Attributes.Shape = DotShape.Circle;
-
-            // or you can set the attributes using a delegate
-            graph.Nodes.Add("Decision", attrs =>
-            {
-                attrs.Shape = DotShape.Diamond;
-                attrs.Label = $"Decision{Environment.NewLine}point";
-            });
-
-            // use a subgraph to set a different for a group of nodes
             graph.Subgraphs.Add(sg =>
             {
-                sg.NodeDefaults.FillColor = Color.YellowGreen;
-                
-                sg.Nodes.Add("Option1", attrs => attrs.Label = "Positive path");
-                sg.Nodes.Add("Option2", attrs => attrs.Label = "Negative path");
+                // a dotted edge
+                sg.Edges.Add("G", "H", attrs =>
+                {
+                    attrs.Label = "dotted";
+                    attrs.Style = DotStyle.Dotted;
+                });
             });
 
-            graph.Nodes.Add("Exit").Attributes.Shape = DotShape.DoubleCircle;
-
-
-            // -- add edges --
-
-            // join the nodes by edges
-            graph.Edges.Add("Entry", "Decision");
-
-            // you can set custom attributes for the added edge the same way you can do it for nodes
-            graph.Edges.Add("Decision", "Option1", attrs =>
+            graph.Subgraphs.Add(sg =>
             {
-                attrs.Color = Color.Green;
-                attrs.Label = "yes";
+                // edges rendered as parallel splines
+                sg.Edges.Add("E", "F", attrs =>
+                {
+                    attrs.Label = "parallel splines";
+                    attrs.ArrowDirection = DotArrowDirection.Both;
+
+                    // this will render two parallel splines (but more of them can be added by adding further colors)
+                    attrs.Color = DotColorDefinition.From(Color.Turquoise, Color.RoyalBlue);
+                });
             });
 
-            graph.Edges.Add("Decision", "Option2", attrs =>
+            graph.Subgraphs.Add(sg =>
             {
-                attrs.Color = Color.DarkRed;
-                attrs.Label = "no";
+                // nodes with a two-color fill; fill proportions specified by the weight parameter
+                sg.Nodes.Add("C").Attributes.FillColor = DotColorDefinition.From(Color.RoyalBlue, Color.Turquoise, weight2: 0.25);
+                sg.Nodes.Add("D").Attributes.FillColor = DotColorDefinition.From(Color.Navy, Color.RoyalBlue, weight1: 0.25);
+
+                sg.Edges.Add("C", "D", attrs =>
+                {
+                    attrs.Label = "multicolor series";
+                    attrs.ArrowDirection = DotArrowDirection.Both;
+
+                    // this will render a multicolor edge, where each color may optionally have a proportion specified by the weight parameter
+                    attrs.Color = DotColorDefinition.From(
+                        new DotWeightedColor(Color.Turquoise, 0.33),
+                        new DotWeightedColor(Color.Gray, 0.33),
+                        Color.Navy);
+                });
             });
 
-            // this is a shorthand for adding two edges at once, that join multiple nodes with one node
-            graph.Edges.AddManyToOne("Exit", "Option1", "Option2");
+            graph.Subgraphs.Add(sg =>
+            {
+                // a rectangular node with a striped fill
+                sg.Nodes.Add("Striped", attrs =>
+                {
+                    // set style to striped
+                    attrs.Style = DotStyle.Filled | DotStyle.Striped;
+
+                    attrs.Color = Color.Transparent;
+
+                    // set the colors of individual stripes and their proportions
+                    attrs.FillColor = DotColorDefinition.From(
+                        new DotWeightedColor(Color.Navy, 0.1),
+                        Color.RoyalBlue,
+                        Color.Turquoise,
+                        Color.Orange);
+                });
+
+                // a circular node with a wedged fill
+                sg.Nodes.Add("Wedged", attrs =>
+                {
+                    attrs.Shape = DotShape.Circle;
+
+                    // set wedged style
+                    attrs.Style = DotStyle.Filled | DotStyle.Wedged;
+
+                    attrs.Color = Color.Transparent;
+
+                    // set the colors of individual wedges and their proportions
+                    attrs.FillColor = DotColorDefinition.From(
+                        Color.Orange,
+                        Color.RoyalBlue,
+                        new DotWeightedColor(Color.Navy, 0.1),
+                        Color.Turquoise);
+                });
+
+                sg.Edges.Add("Striped", "Wedged");
+            });
+
+            // a subgraph example – to override the default attributes for a group of nodes and/or edges
+            graph.Subgraphs.Add(sg =>
+            {
+                sg.NodeDefaults.Color = Color.RoyalBlue;
+                sg.NodeDefaults.FillColor = Color.Orange;
+                sg.NodeDefaults.Shape = DotShape.Circle;
+
+                sg.EdgeDefaults.Color = Color.RoyalBlue;
+
+                sg.Edges.Add("A", "B").Attributes.Label = "plain color";
+            });
             
-
             // build a graph as string
             Console.WriteLine(graph.Build());
 
             // or save it to a file (.gv and .dot are the default extensions)
-            graph.SaveToFile("example.gv");
-
-            Console.ReadLine();
+            graph.SaveToFile(@"example.gv");
         }
     }
 }
@@ -191,26 +244,41 @@ digraph
 {
     rankdir = LR
 
-    node [ shape = rectangle, style = "bold, filled", fillcolor = "#ff8c00ff" ]
-    edge [ arrowhead = vee ]
+    node [ fillcolor = "turquoise:royalblue", shape = rectangle, style = filled ]
+    edge [ arrowhead = vee, arrowtail = vee ]
 
     {
-        node [ fillcolor = "#9acd32ff" ]
-
-        Option1 [ label = "Positive path" ]
-        Option2 [ label = "Negative path" ]
+        G -> H [ label = dotted, style = dotted ]
     }
 
-    Entry [ shape = circle ]
-    Decision [ shape = diamond, label = "Decision\npoint" ]
-    Exit [ shape = doublecircle ]
+    {
+        E -> F [ color = "turquoise:royalblue", dir = both, label = "parallel splines" ]
+    }
 
-    Entry -> Decision
-    Decision -> Option1 [ color = "#008000ff", label = yes ]
-    Decision -> Option2 [ color = "#8b0000ff", label = no ]
-    { Option1 Option2 } -> Exit
+    {
+        C [ fillcolor = "royalblue:turquoise;0.25" ]
+        D [ fillcolor = "navy;0.25:royalblue" ]
+
+        C -> D [ color = "turquoise;0.33:gray;0.33:navy", dir = both, label = "multicolor series" ]
+    }
+
+    {
+        Striped [ color = transparent, fillcolor = "navy;0.1:royalblue:turquoise:orange", style = "filled, striped" ]
+        Wedged [ color = transparent, fillcolor = "orange:royalblue:navy;0.1:turquoise", shape = circle, style = "filled, wedged" ]
+
+        Striped -> Wedged
+    }
+
+    {
+        node [ color = royalblue, fillcolor = orange, shape = circle ]
+        edge [ color = royalblue ]
+
+        A -> B [ label = "plain color" ]
+    }
 }
 ```
+
+
 
 ## Grouping nodes visually
 
@@ -223,11 +291,11 @@ In order to group nodes visually by displaying them in a rectangle, embed them i
 And here's the code to generate it:
 
 ```c#
+using System;
+using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions; // Build(), SaveToFile()
-using System;
-using System.Drawing;
 
 namespace GiGraph.Examples
 {
@@ -240,6 +308,7 @@ namespace GiGraph.Examples
             // set graph attributes
             graph.Attributes.Label = "Example Flow";
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
+            graph.Attributes.Compound = true;
 
             // set individual node styles
             graph.Nodes.Add("Start").Attributes.Shape = DotShape.Circle;
@@ -253,11 +322,24 @@ namespace GiGraph.Examples
 
             // (!) Note that CROSS-DIAGRAM EDGES SHOULD BE DEFINED IN THE COMMON PARENT LEVEL GRAPH/SUBGRAPH
             // (which is the root graph in this case)
-            graph.Edges.Add("Decision", "Cluster 1 Start").Attributes.Label = "yes";
-            graph.Edges.Add("Decision", "Cluster 2 Start").Attributes.Label = "no";
+            graph.Edges.Add("Decision", "Cluster 1 Start", attrs =>
+            {
+                attrs.Label = "yes";
 
-            graph.Edges.Add("Cluster 1 Exit", "Exit");
-            graph.Edges.Add("Cluster 2 Exit", "Exit");
+                // attach the arrow to cluster border
+                attrs.LogicalHead = "Flow 1";
+            });
+
+            graph.Edges.Add("Decision", "Cluster 2 Start", attrs =>
+            {
+                attrs.Label = "no";
+
+                // attach the arrow to cluster border
+                attrs.LogicalHead = "Flow 2";
+            });
+
+            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.LogicalTail = "Flow 1";
+            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.LogicalTail = "Flow 2";
 
 
             // --- add clusters ---
@@ -266,31 +348,28 @@ namespace GiGraph.Examples
             // for multiple of them, or specify the same identifier for multiple clusters,
             // they will be treated as one cluster when visualized.
 
-            graph.Clusters.Add(id: "Positive path", cluster =>
+            graph.Clusters.Add(id: "Flow 1", cluster =>
             {
-                cluster.Attributes.BackgroundColor = Color.LightGreen;
-                cluster.Attributes.Label = "Positive path";
+                cluster.Attributes.BackgroundColor = Color.Turquoise;
+                cluster.Attributes.Label = "Flow 1";
 
                 cluster.Edges.AddSequence("Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit");
             });
 
-            graph.Clusters.Add(id: "Negative path", cluster =>
+            graph.Clusters.Add(id: "Flow 2", cluster =>
             {
-                cluster.Attributes.Label = "Negative path";
-                cluster.Attributes.BackgroundColor = Color.LightPink;
+                cluster.Attributes.Label = "Flow 2";
+                cluster.Attributes.BackgroundColor = Color.Orange;
 
                 cluster.Edges.AddSequence("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");
             });
 
 
             // build a graph as string
-            var graphString = graph.Build();
-            Console.WriteLine(graphString);
+            Console.WriteLine(graph.Build());
 
             // or save it to a file (.gv and .dot are the default extensions)
             graph.SaveToFile("example.gv");
-
-            Console.ReadLine();
         }
     }
 }
@@ -299,21 +378,22 @@ namespace GiGraph.Examples
 ```dot
 digraph
 {
+    compound = true
     label = "Example Flow"
     rankdir = LR
 
-    subgraph "cluster Positive path"
+    subgraph "cluster Flow 1"
     {
-        bgcolor = "#90ee90ff"
-        label = "Positive path"
+        bgcolor = turquoise
+        label = "Flow 1"
 
         "Cluster 1 Start" -> "Cluster 1 Node" -> "Cluster 1 Exit"
     }
 
-    subgraph "cluster Negative path"
+    subgraph "cluster Flow 2"
     {
-        label = "Negative path"
-        bgcolor = "#ffb6c1ff"
+        bgcolor = orange
+        label = "Flow 2"
 
         "Cluster 2 Start" -> "Cluster 2 Node" -> "Cluster 2 Exit"
     }
@@ -323,12 +403,14 @@ digraph
     Exit [ shape = doublecircle ]
 
     Start -> Decision
-    Decision -> "Cluster 1 Start" [ label = yes ]
-    Decision -> "Cluster 2 Start" [ label = no ]
-    "Cluster 1 Exit" -> Exit
-    "Cluster 2 Exit" -> Exit
+    Decision -> "Cluster 1 Start" [ label = yes, lhead = "cluster Flow 1" ]
+    Decision -> "Cluster 2 Start" [ label = no, lhead = "cluster Flow 2" ]
+    "Cluster 1 Exit" -> Exit [ ltail = "cluster Flow 1" ]
+    "Cluster 2 Exit" -> Exit [ ltail = "cluster Flow 2" ]
 }
 ```
+
+
 
 ## Customizing node layout
 
@@ -352,10 +434,10 @@ The nodes embedded in subgraphs with a rank *DotRank.Same* are visualized in the
 The second example above is generated by the following code. When you remove the lines of code where subgraphs are added, you will get the layout from the first example above.
 
 ```c#
+using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions; // Build(), SaveToFile()
-using System;
 
 namespace GiGraph.Examples
 {
@@ -403,8 +485,6 @@ namespace GiGraph.Examples
 
             // or save it to a file (.gv and .dot are the default extensions)
             graph.SaveToFile("example.gv");
-
-            Console.Read();
         }
     }
 }
@@ -486,6 +566,8 @@ graph
 }
 ```
 
+
+
 # Graph building blocks
 
 There are five basic types that are the building blocks of a graph in this library:
@@ -518,6 +600,7 @@ There are also attributes based on the type of the value they specify for a give
 - **DotBoolAttribute** – a boolean attribute.
 
 
+
 ## Graph
 
 Graph is represented by the **DotGraph** class which is the root graph that the output DOT script is based on. There are two types of graphs:
@@ -544,6 +627,7 @@ graph.Attributes.BackgroundColor = Color.LightGray;
 ```
 
 
+
 ### Default attributes
 
 A graph, a subgraph, and a cluster may have node and edge defaults specified. When you set them, they affect all nodes and/or edges encompassed by the graph, subgraph, or cluster respectively. They can be overridden by attributes set on individual graph elements.
@@ -555,6 +639,7 @@ graph.NodeDefaults.Color = Color.Yellow;
 ```c#
 graph.EdgeDefaults.Color = Color.Red;
 ```
+
 
 
 ## Subgraph
@@ -587,6 +672,7 @@ graph.Subgraphs.Add(subgraph);
 A subgraph may also be used as a group of endpoints to facilitate adding multiple edges at once. For details refer to [edge groups](#edge-group) and [edge sequences](#edge-sequence).
 
 
+
 ## Cluster
 
 A cluster is represented by the **DotCluster** class. It is a special type of subgraph whose appearance can be customized (as opposed to the subgraph represented by the **DotSubgraph** class). If supported, the layout engine used to render a cluster subgraph, will do the layout so that the nodes belonging to the cluster are drawn together, with the entire drawing of the cluster contained within a bounding rectangle. 
@@ -615,6 +701,7 @@ graph.Clusters.Add(cluster);
 ```
 
 
+
 ## Node
 
 Nodes are distinguished by their **identifiers**. The identifiers are used by edges to refer to a head and a tail node (endpoint) that they join. If you don't specify a **label** attribute for a node, the identifier will also be used as a label by default, when the node is visualized.
@@ -637,6 +724,7 @@ node.Attributes.Shape = DotShape.Hexagon;
 
 graph.Nodes.Add(node);
 ```
+
 
 
 ### Node group
@@ -669,6 +757,7 @@ Note that there is also an ***AddRange*** method available on the node collectio
 
 
 Have in mind that **a node does not necessarily have to be added to the nodes collection** of the graph, subgraph or cluster if you are not going to set its attributes or its layout. As long as it is not an isolated node, which means that any edge uses it as an endpoint, it will be visualized.
+
 
 
 ## Edge
@@ -720,6 +809,7 @@ graph.Edges.Add(edge, attrs =>
     attrs.Color = Color.Blue;
 });
 ```
+
 
 
 ### Edge group
@@ -774,6 +864,7 @@ graph.Edges.AddManyToMany(
 Each group used in the above examples supports attributes. You can set them either directly on a group instance, or by using a lambda expression passed by an argument of the *AddOneToMany*, *AddManyToOne*, *AddManyToMany* methods, on the *Edges* collection.
 
 
+
 ### Edge sequence
 
 An edge sequence lets you join a sequence of consecutive nodes an/or node groups represented by subgraphs. The examples below present two use cases:
@@ -808,6 +899,7 @@ graph.Edges.AddSequence(
 
 
 Sequences support attributes too. You can set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection.
+
 
 
 ## Attribute
@@ -846,9 +938,12 @@ node.Attributes.SetCustom("fillcolor", "yellow:blue");
 ```
 
 
+
 # Custom output formatting
 
 The DOT generation engine supports setting some custom preferences for generating the output. These include **syntax preferences**, and **formatting preferences**. 
+
+
 
 ## Formatting preferences
 
@@ -875,6 +970,7 @@ The hello world example from the [earlier chapter](#generating-a-graph) of the t
 ```dot
 digraph { Hello -> "World!" }
 ```
+
 
 
 ## Syntax preferences
@@ -921,6 +1017,8 @@ digraph
     Hello -> "World!"
 }
 ```
+
+
 
 ### Sorting elements of the DOT script
 
