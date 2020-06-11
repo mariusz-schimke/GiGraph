@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Attributes
                     return "both";
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(IDotAttribute.GetDotEncodedValue), $"The specified arrow direction '{Value}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified arrow direction '{Value}' is not supported.");
             }
         }
     }

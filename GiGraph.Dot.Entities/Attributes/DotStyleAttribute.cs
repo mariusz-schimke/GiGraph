@@ -78,7 +78,7 @@ namespace GiGraph.Dot.Entities.Attributes
                     return "invis";
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(IDotAttribute.GetDotEncodedValue), $"The specified element style '{Value}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified element style '{Value}' is not supported.");
             }
         }
     }
