@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <summary>
         /// Gets the key of the attribute.
         /// </summary>
-        public string Key { get; }
+        public virtual string Key { get; }
 
         string IDotOrderableEntity.OrderingKey => Key;
 
@@ -25,12 +25,12 @@ namespace GiGraph.Dot.Entities.Attributes
         string IDotAttribute.GetDotEncodedValue(DotGenerationOptions options) => GetDotEncodedValue(options);
     }
 
-    public abstract class DotCommonAttribute<T> : DotCommonAttribute, IDotAttribute
+    public abstract class DotCommonAttribute<T> : DotCommonAttribute
     {
         /// <summary>
         /// Gets or sets the value of the attribute.
         /// </summary>
-        public T Value { get; set; }
+        public virtual T Value { get; }
 
         public DotCommonAttribute(string key, T value)
             : base(key)
