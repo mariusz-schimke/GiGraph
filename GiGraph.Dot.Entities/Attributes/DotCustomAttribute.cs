@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Attributes
             _valueEscaper = valueEscaper ?? TextEscapingPipeline.None();
         }
 
-        protected override string GetDotEncodedValue(DotGenerationOptions options)
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             return _valueEscaper.Escape(Value);
         }

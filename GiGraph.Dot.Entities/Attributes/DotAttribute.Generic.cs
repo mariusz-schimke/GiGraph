@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// Gets the value of the attribute in a format understood by DOT graph renderer.
         /// </summary>
         /// <param name="options">The DOT generation options to use.</param>
-        protected override string GetDotEncodedValue(DotGenerationOptions options)
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             return Value?.ToString() ?? string.Empty;
         }
