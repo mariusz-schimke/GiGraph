@@ -160,6 +160,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// The default path is system dependent.
         /// </summary>
         string FontPath { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the font size used for text (in points; 72 points per inch). Default: 14.0, minimum: 1.0.
+        /// </summary>
+        double? FontSize { get; set; }
 
         /// <summary>
         /// If true, edge concentrators are used (default: false). This merges multiedges into a single edge,
