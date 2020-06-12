@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
+﻿using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -76,5 +77,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </para>
         /// </summary>
         DotStyle? Style { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black"/>).
+        /// </summary>
+        Color? FontColor { get; set; }
     }
 }
