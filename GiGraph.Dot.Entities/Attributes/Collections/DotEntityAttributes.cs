@@ -65,7 +65,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetValueAs<Color>("fontcolor", out var result) ? result : (Color?) null;
             set => AddOrRemove("fontcolor", value, v => new DotColorAttribute("fontcolor", v.Value));
         }
+
+        public virtual string FontName
+        {
+            get => TryGetValueAs<string>("fontname", out var result) ? result : null;
+            set => AddOrRemove("fontname", value, v => new DotCustomAttribute("fontname", v));
+        }
         
+        public virtual string FontPath
+        {
+            get => TryGetValueAs<string>("fontpath", out var result) ? result : null;
+            set => AddOrRemove("fontpath", value, v => new DotCustomAttribute("fontpath", v));
+        }
+
         public virtual string Label
         {
             get => TryGetAs<DotStringAttribute>("label", out var result) ? result.Value : null;

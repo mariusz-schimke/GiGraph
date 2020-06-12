@@ -5,7 +5,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     public interface IDotSubgraphAttributes : IDotAttributeCollection
     {
         /// <summary>
-        /// Gets or sets the rank constraints on the nodes in the subgraph.
+        /// <para>
+        ///     Gets or sets the rank constraints on the nodes in the subgraph.
+        /// </para>
         /// <para>
         ///     If rank is <see cref="DotRank.Same"/>, all nodes are placed on the same rank.
         /// </para>
