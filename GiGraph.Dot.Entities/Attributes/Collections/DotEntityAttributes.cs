@@ -120,13 +120,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("dir", value, v => new DotArrowDirectionAttribute("dir", v.Value));
         }
 
-        public virtual string LogicalHead
+        public virtual string LogicalHeadId
         {
             get => TryGetAs<DotLogicalEndpointAttribute>("lhead", out var result) ? result.Value : null;
             set => AddOrRemove("lhead", value, v => new DotLogicalEndpointAttribute("lhead", v));
         }
 
-        public virtual string LogicalTail
+        public virtual string LogicalTailId
         {
             get => TryGetAs<DotLogicalEndpointAttribute>("ltail", out var result) ? result.Value : null;
             set => AddOrRemove("ltail", value, v => new DotLogicalEndpointAttribute("ltail", v));

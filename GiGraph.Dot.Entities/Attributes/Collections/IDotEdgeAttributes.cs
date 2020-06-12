@@ -35,12 +35,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// If it is not defined too, the default is used, except when the output format is MIF, which use black by default.
         /// </summary>
         DotColorDefinition FillColor { get; set; }
-        
-        /// <summary>
-        /// Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges.
-        /// The value has no effect on text. Default: 1.0, minimum: 0.0.
-        /// </summary>
-        double? PenWidth { get; set; }
 
         /// <summary>
         /// Sets the style of the edge (default: null). See the descriptions of individual <see cref="DotStyle"/> values
@@ -53,6 +47,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </para>
         /// </summary>
         DotStyle? Style { get; set; }
+
+        /// <summary>
+        /// Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges.
+        /// The value has no effect on text. Default: 1.0, minimum: 0.0.
+        /// </summary>
+        double? PenWidth { get; set; }
 
         /// <summary>
         /// Gets or sets the multiplicative scale factor for arrowheads (default: 1.0, minimum: 0.0).
@@ -97,17 +97,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         /// Logical head of an edge. When the <see cref="IDotGraphAttributes.Compound"/> property of the graph is true,
-        /// if the current property is defined and is the identifier of a cluster containing the real head, the edge is clipped
-        /// to the boundary of the cluster.
+        /// if the current property is defined and is the identifier of a cluster containing the real head node,
+        /// the edge is clipped to the boundary of the cluster.
         /// </summary>
-        string LogicalHead { get; set; }
+        string LogicalHeadId { get; set; }
 
         /// <summary>
         /// Logical tail of an edge. When the <see cref="IDotGraphAttributes.Compound"/> property of the graph is true,
-        /// if the current property is defined and is the identifier of a cluster containing the real tail, the edge is clipped
-        /// to the boundary of the cluster.
+        /// if the current property is defined and is the identifier of a cluster containing the real tail node,
+        /// the edge is clipped to the boundary of the cluster.
         /// </summary>
-        string LogicalTail { get; set; }
+        string LogicalTailId { get; set; }
 
         /// <summary>
         /// If true, attaches edge label to edge by a 2-segment polyline, underlining the label,
