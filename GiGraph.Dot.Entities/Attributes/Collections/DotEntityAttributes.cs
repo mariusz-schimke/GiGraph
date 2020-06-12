@@ -60,6 +60,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("pencolor", value, v => new DotColorAttribute("pencolor", v.Value));
         }
 
+        public virtual Color? FontColor
+        {
+            get => TryGetValueAs<Color>("fontcolor", out var result) ? result : (Color?) null;
+            set => AddOrRemove("fontcolor", value, v => new DotColorAttribute("fontcolor", v.Value));
+        }
+        
         public virtual string Label
         {
             get => TryGetAs<DotStringAttribute>("label", out var result) ? result.Value : null;

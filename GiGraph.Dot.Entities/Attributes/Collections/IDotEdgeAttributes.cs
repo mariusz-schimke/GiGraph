@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
+﻿using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -47,6 +48,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </para>
         /// </summary>
         DotStyle? Style { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black"/>).
+        /// </summary>
+        Color? FontColor { get; set; }
 
         /// <summary>
         /// Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges.

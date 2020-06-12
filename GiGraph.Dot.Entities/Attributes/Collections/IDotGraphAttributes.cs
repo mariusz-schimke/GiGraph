@@ -110,6 +110,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </para>
         /// </summary>
         DotStyle? Style { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black"/>).
+        /// </summary>
+        Color? FontColor { get; set; }
 
         /// <summary>
         /// If true, edge concentrators are used (default: false). This merges multiedges into a single edge,
