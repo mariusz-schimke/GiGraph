@@ -170,7 +170,8 @@ namespace GiGraph.Examples
                     attrs.Label = "multicolor series";
                     attrs.ArrowDirection = DotArrowDirection.Both;
 
-                    // this will render a multicolor edge, where each color may optionally have a proportion specified by the weight parameter
+                    // this will render a multicolor edge, where each color may optionally have a proportion
+                    // specified by the weight parameter
                     attrs.Color = DotColorDefinition.From(
                         new DotWeightedColor(Color.Turquoise, 0.33),
                         new DotWeightedColor(Color.Gray, 0.33),
@@ -327,7 +328,7 @@ namespace GiGraph.Examples
                 attrs.Label = "yes";
 
                 // attach the arrow to cluster border
-                attrs.LogicalHead = "Flow 1";
+                attrs.LogicalHeadId = "Flow 1";
             });
 
             graph.Edges.Add("Decision", "Cluster 2 Start", attrs =>
@@ -335,11 +336,11 @@ namespace GiGraph.Examples
                 attrs.Label = "no";
 
                 // attach the arrow to cluster border
-                attrs.LogicalHead = "Flow 2";
+                attrs.LogicalHeadId = "Flow 2";
             });
 
-            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.LogicalTail = "Flow 1";
-            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.LogicalTail = "Flow 2";
+            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.LogicalTailId = "Flow 1";
+            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.LogicalTailId = "Flow 2";
 
 
             // --- add clusters ---
