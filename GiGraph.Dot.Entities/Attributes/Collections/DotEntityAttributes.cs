@@ -71,7 +71,25 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetValueAs<string>("fontname", out var result) ? result : null;
             set => AddOrRemove("fontname", value, v => new DotCustomAttribute("fontname", v));
         }
-        
+
+        public virtual double? FontSize
+        {
+            get => TryGetValueAs<double>("fontsize", out var result) ? result : (double?) null;
+            set
+            {
+                const string key = "fontsize";
+                AddOrRemove(key, value, v =>
+                {
+                    if (v.Value < 1.0)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(FontSize), v.Value, "Font size must be greater than or equal to 1.");
+                    }
+
+                    return new DotDoubleAttribute(key, v.Value);
+                });
+            }
+        }
+
         public virtual string FontPath
         {
             get => TryGetValueAs<string>("fontpath", out var result) ? result : null;
