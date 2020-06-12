@@ -955,14 +955,14 @@ using GiGraph.Dot.Output.Options;
 
 ...
 
-var formatting = new DotFormattingOptions()
+var options = new DotFormattingOptions()
 {
     SingleLineOutput = true
 };
 
-Console.WriteLine(graph.Build(formatting));
+Console.WriteLine(graph.Build(options));
 
-graph.SaveToFile("example.gv", formatting);
+graph.SaveToFile("example.gv", options);
 ```
 
 The hello world example from the [earlier chapter](#generating-a-graph) of the text, would render like this:
