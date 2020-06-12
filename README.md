@@ -951,7 +951,7 @@ Formatting preferences can be modified using the **DotFormattingOptions** class.
 
 ```c#
 ...
-using GiGraph.Dot.Writers.Options;
+using GiGraph.Dot.Output.Options;
 
 ...
 
@@ -979,7 +979,7 @@ Syntax preferences, on the other hand, can be modified using the **DotGeneration
 
 ```c#
 ...
-using GiGraph.Dot.Generators.Options;
+using GiGraph.Dot.Output.Options;
 
 ...
 
