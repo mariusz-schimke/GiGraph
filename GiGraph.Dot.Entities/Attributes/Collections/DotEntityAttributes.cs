@@ -32,13 +32,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual int? GradientAngle
         {
-            get => TryGetAs<DotIntAttribute>("gradientangle", out var result) ? result.Value : (int?) null;
+            get => TryGetValueAs<int>("gradientangle", out var result) ? result : (int?) null;
             set => AddOrRemove("gradientangle", value, v => new DotIntAttribute("gradientangle", v.Value));
         }
 
         public virtual double? PenWidth
         {
-            get => TryGetAs<DotDoubleAttribute>("penwidth", out var result) ? result.Value : (double?) null;
+            get => TryGetValueAs<double>("penwidth", out var result) ? result : (double?) null;
             set
             {
                 const string key = "penwidth";
@@ -98,13 +98,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual DotStyle? Style
         {
-            get => TryGetAs<DotStyleAttribute>("style", out var result) ? result.Value : (DotStyle?) null;
+            get => TryGetValueAs<DotStyle>("style", out var result) ? result : (DotStyle?) null;
             set => AddOrRemove("style", value, v => new DotStyleAttribute("style", v.Value));
         }
 
         public virtual double? ArrowSize
         {
-            get => TryGetAs<DotDoubleAttribute>("arrowsize", out var result) ? result.Value : (double?) null;
+            get => TryGetValueAs<double>("arrowsize", out var result) ? result : (double?) null;
             set
             {
                 const string key = "arrowsize";
@@ -122,67 +122,67 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual DotArrowType? ArrowHead
         {
-            get => TryGetAs<DotArrowTypeAttribute>("arrowhead", out var result) ? result.Value : (DotArrowType?) null;
+            get => TryGetValueAs<DotArrowType>("arrowhead", out var result) ? result : (DotArrowType?) null;
             set => AddOrRemove("arrowhead", value, v => new DotArrowTypeAttribute("arrowhead", v.Value));
         }
 
         public virtual DotArrowType? ArrowTail
         {
-            get => TryGetAs<DotArrowTypeAttribute>("arrowtail", out var result) ? result.Value : (DotArrowType?) null;
+            get => TryGetValueAs<DotArrowType>("arrowtail", out var result) ? result : (DotArrowType?) null;
             set => AddOrRemove("arrowtail", value, v => new DotArrowTypeAttribute("arrowtail", v.Value));
         }
 
         public virtual DotArrowDirection? ArrowDirection
         {
-            get => TryGetAs<DotArrowDirectionAttribute>("dir", out var result) ? result.Value : (DotArrowDirection?) null;
+            get => TryGetValueAs<DotArrowDirection>("dir", out var result) ? result : (DotArrowDirection?) null;
             set => AddOrRemove("dir", value, v => new DotArrowDirectionAttribute("dir", v.Value));
         }
 
         public virtual string LogicalHeadId
         {
-            get => TryGetAs<DotLogicalEndpointAttribute>("lhead", out var result) ? result.Value : null;
+            get => TryGetValueAs<string>("lhead", out var result) ? result : null;
             set => AddOrRemove("lhead", value, v => new DotLogicalEndpointAttribute("lhead", v));
         }
 
         public virtual string LogicalTailId
         {
-            get => TryGetAs<DotLogicalEndpointAttribute>("ltail", out var result) ? result.Value : null;
+            get => TryGetValueAs<string>("ltail", out var result) ? result : null;
             set => AddOrRemove("ltail", value, v => new DotLogicalEndpointAttribute("ltail", v));
         }
 
         public virtual bool? Decorate
         {
-            get => TryGetAs<DotBoolAttribute>("decorate", out var result) ? result.Value : (bool?) null;
+            get => TryGetValueAs<bool>("decorate", out var result) ? result : (bool?) null;
             set => AddOrRemove("decorate", value, v => new DotBoolAttribute("decorate", v.Value));
         }
 
         public virtual bool? Constraint
         {
-            get => TryGetAs<DotBoolAttribute>("constraint", out var result) ? result.Value : (bool?) null;
+            get => TryGetValueAs<bool>("constraint", out var result) ? result : (bool?) null;
             set => AddOrRemove("constraint", value, v => new DotBoolAttribute("constraint", v.Value));
         }
 
         public virtual DotRank? Rank
         {
-            get => TryGetAs<DotRankAttribute>("rank", out var result) ? result.Value : (DotRank?) null;
+            get => TryGetValueAs<DotRank>("rank", out var result) ? result : (DotRank?) null;
             set => AddOrRemove("rank", value, v => new DotRankAttribute("rank", v.Value));
         }
 
         public virtual DotRankDirection? LayoutDirection
         {
-            get => TryGetAs<DotRankDirectionAttribute>("rankdir", out var result) ? result.Value : (DotRankDirection?) null;
+            get => TryGetValueAs<DotRankDirection>("rankdir", out var result) ? result : (DotRankDirection?) null;
             set => AddOrRemove("rankdir", value, v => new DotRankDirectionAttribute("rankdir", v.Value));
         }
 
         public virtual bool? ConcentrateEdges
         {
-            get => TryGetAs<DotBoolAttribute>("concentrate", out var result) ? result.Value : (bool?) null;
+            get => TryGetValueAs<bool>("concentrate", out var result) ? result : (bool?) null;
             set => AddOrRemove("concentrate", value, v => new DotBoolAttribute("concentrate", v.Value));
         }
 
         public virtual bool? Compound
         {
-            get => TryGetAs<DotBoolAttribute>("compound", out var result) ? result.Value : (bool?) null;
+            get => TryGetValueAs<bool>("compound", out var result) ? result : (bool?) null;
             set => AddOrRemove("compound", value, v => new DotBoolAttribute("compound", v.Value));
         }
 
