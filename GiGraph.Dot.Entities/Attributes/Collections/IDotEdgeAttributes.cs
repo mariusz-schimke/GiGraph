@@ -1,6 +1,9 @@
 ﻿using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Edges;
+using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -52,12 +55,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </para>
         /// </summary>
         DotStyle? Style { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black"/>).
         /// </summary>
         Color? FontColor { get; set; }
-        
+
         /// <summary>
         /// <para>
         ///     Gets or sets the font used for text (default: "Times-Roman"). This very much depends on the output format and,
@@ -86,7 +89,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </para>
         /// </summary>
         string FontName { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the font size used for text (in points; 72 points per inch). Default: 14.0, minimum: 1.0.
         /// </summary>
@@ -140,6 +143,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </para>
         /// </summary>
         DotArrowDirection? ArrowDirection { get; set; }
+
+        /// <summary>
+        /// Indicates where on the head node to attach the head of the edge. In the default case,
+        /// the edge is aimed towards the center of the node, and then clipped at the node boundary.
+        /// See also <see cref="DotEdge{TTail,THead}.Head"/> as a <see cref="DotEndpoint"/>.
+        /// </summary>
+        DotEdgePort HeadPort { get; set; }
+
+        /// <summary>
+        /// Indicates where on the tail node to attach the tail of the edge. See also <see cref="DotEdge{TTail,THead}.Tail"/>
+        /// as a <see cref="DotEndpoint"/>.
+        /// </summary>
+        DotEdgePort TailPort { get; set; }
 
         /// <summary>
         /// Logical head of an edge. When the <see cref="IDotGraphAttributes.Compound"/> property of the graph is true,
