@@ -63,7 +63,7 @@ namespace GiGraph.Examples.Basic
                     attrs.Label = "MULTICOLOR SERIES";
                     attrs.ArrowDirection = DotArrowDirection.Both;
 
-                    // this will render a multicolor edge, where each color may optionally have a proportion
+                    // this will render a multicolor edge, where each color may optionally have an area proportion
                     // specified by the weight parameter
                     attrs.Color = DotColorDefinition.Multi(
                         new DotWeightedColor(Color.Turquoise, 0.33),

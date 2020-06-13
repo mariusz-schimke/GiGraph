@@ -139,8 +139,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <summary>
         /// Creates a new color list that will be rendered as a gradient fill when weights are not specified
         /// (refers to the root graph, nodes, and clusters), or as two parallel splines when applied to an edge.
-        /// When a weight is specified for either of the colors, the returned color list will be rendered as a two-color
-        /// background (refers to the root graph, nodes, and clusters), or as a two-segment line, when applied to an edge.
+        /// When a weight is specified for either of the colors, the returned color list will be rendered as a two-color fill
+        /// (refers to the root graph, nodes, and clusters), or as a two-segment line, when applied to an edge.
         /// </summary>
         /// <param name="color1">The first color to initialize the instance with.</param>
         /// <param name="color2">The second color to initialize the instance with.</param>
