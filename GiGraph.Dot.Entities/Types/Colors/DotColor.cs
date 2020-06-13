@@ -33,8 +33,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
 
             if (Color.IsEmpty)
             {
-                // this should be treated as a default color
-                return " ";
+                return string.Empty;
             }
 
             // add alpha only when necessary
@@ -52,7 +51,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
 
             if (Color.IsEmpty)
             {
-                return "default";
+                return string.Empty;
             }
 
             return $"#{Color.ToArgb():x8}";
