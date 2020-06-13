@@ -16,7 +16,7 @@ namespace GiGraph.Examples
             // or save it to a file (.gv and .dot are the default extensions)
             graph.SaveToFile(@"example.gv");
 
-            //Console.ReadLine();
+            Console.ReadLine();
         }
     }
 }
