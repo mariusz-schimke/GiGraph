@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using System.Drawing;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -154,6 +155,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetValueAs<DotArrowDirection>("dir", out var result) ? result : (DotArrowDirection?) null;
             set => AddOrRemove("dir", value, v => new DotArrowDirectionAttribute("dir", v.Value));
+        }
+
+        public virtual DotEdgePort HeadPort
+        {
+            get => TryGetValueAs<DotEdgePort>("headport", out var result) ? result : null;
+            set => AddOrRemove("headport", value, v => new DotEdgePortAttribute("headport", v));
+        }
+
+        public virtual DotEdgePort TailPort
+        {
+            get => TryGetValueAs<DotEdgePort>("tailport", out var result) ? result : null;
+            set => AddOrRemove("tailport", value, v => new DotEdgePortAttribute("tailport", v));
         }
 
         public virtual string LogicalHeadId
