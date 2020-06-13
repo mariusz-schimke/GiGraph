@@ -26,12 +26,12 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <summary>
         /// Creates a new color instance initialized with a color (<see cref="DotColor"/>),
         /// or with a weighted color (<see cref="DotWeightedColor"/>) if <paramref name="weight"/> is specified.
-        /// The latter may be used in color lists only, where the weight specifies the area proportion for the color.
+        /// <see cref="DotWeightedColor"/> may be used in color lists only, where the weight specifies the area proportion for the color.
         /// </summary>
         /// <param name="color">The color to initialize the instance with.</param>
         /// <param name="weight">The optional weight of the color in the range 0 ≤ <paramref name="weight"/> ≤ 1.
         /// Use only if the returned color will be an item of a color lists.</param>
-        public static DotColor Mono(Color color, double? weight)
+        public static DotColor Weighted(Color color, double? weight)
         {
             if (weight.HasValue)
             {
@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <summary>
         /// <para>
         ///     Creates a new color definition that will be rendered in a specific way depending on how many colors are specified,
-        ///     whether they have weights, and to what type of element the color definition is applied.
+        ///     whether they have weights, and what type of element the color definition is applied to.
         /// </para>
         /// <para>
         ///     The returned definition will be rendered as a gradient fill when two colors with no weights (<see cref="DotColor"/>)
@@ -73,7 +73,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <summary>
         /// <para>
         ///     Creates a new color definition that will be rendered in a specific way depending on how many colors are specified,
-        ///     whether they have weights, and to what type of element the color definition is applied.
+        ///     whether they have weights, and what type of element the color definition is applied to.
         /// </para>
         /// <para>
         ///     The returned definition will be rendered as a gradient fill when two colors with no weights (<see cref="DotColor"/>)
@@ -102,7 +102,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <summary>
         /// <para>
         ///     Creates a new color definition that will be rendered in a specific way depending on how many colors are specified,
-        ///     and to what type of element the color definition is applied.
+        ///     and what type of element the color definition is applied to.
         /// </para>
         /// <para>
         ///     The returned definition will be rendered as a gradient fill when only two colors are specified
@@ -124,7 +124,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <summary>
         /// <para>
         ///     Creates a new color definition that will be rendered in a specific way depending on how many colors are specified,
-        ///     and to what type of element the color definition is applied.
+        ///     and what type of element the color definition is applied to.
         /// </para>
         /// <para>
         ///     The returned definition will be rendered as a gradient fill when only two colors are specified
