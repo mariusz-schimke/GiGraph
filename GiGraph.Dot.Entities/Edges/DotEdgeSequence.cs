@@ -9,16 +9,16 @@ namespace GiGraph.Dot.Entities.Edges
     /// <summary>
     /// Represents a sequence of edges that join a specified sequence of endpoints.
     /// </summary>
-    public class DotEdgeSequence : DotCommonEdge
+    public class DotEdgeSequence : DotEdgeDefinition
     {
-        protected readonly DotCommonEndpoint[] _endpoints;
+        protected readonly DotEndpointDefinition[] _endpoints;
 
         /// <summary>
         /// Gets the sequence of endpoints.
         /// </summary>
-        public override IEnumerable<DotCommonEndpoint> Endpoints => _endpoints;
+        public override IEnumerable<DotEndpointDefinition> Endpoints => _endpoints;
 
-        protected DotEdgeSequence(DotCommonEndpoint[] endpoints, IDotEdgeAttributes attributes)
+        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, IDotEdgeAttributes attributes)
             : base(attributes)
         {
             _endpoints = endpoints.Length > 1
@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// At least a pair of endpoints has to be provided.
         /// </summary>
         /// <param name="endpoints">The endpoints to initialize the instance with.</param>
-        public DotEdgeSequence(params DotCommonEndpoint[] endpoints)
+        public DotEdgeSequence(params DotEndpointDefinition[] endpoints)
             : this(endpoints, new DotEntityAttributes())
         {
         }
@@ -41,8 +41,28 @@ namespace GiGraph.Dot.Entities.Edges
         /// At least a pair of endpoints has to be provided.
         /// </summary>
         /// <param name="endpoints">The endpoints to initialize the instance with.</param>
-        public DotEdgeSequence(IEnumerable<DotCommonEndpoint> endpoints)
+        public DotEdgeSequence(IEnumerable<DotEndpointDefinition> endpoints)
             : this(endpoints.ToArray())
+        {
+        }
+
+        /// <summary>
+        /// Creates a new edge sequence initialized with the specified node identifiers.
+        /// At least a pair of identifiers has to be provided.
+        /// </summary>
+        /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
+        public DotEdgeSequence(params string[] nodeIds)
+            : this((IEnumerable<string>)nodeIds)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new edge sequence initialized with the specified node identifiers.
+        /// At least a pair of identifiers has to be provided.
+        /// </summary>
+        /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
+        public DotEdgeSequence(IEnumerable<string> nodeIds)
+            : this(nodeIds.Select(nodeId => new DotEndpoint(nodeId)))
         {
         }
 
@@ -51,16 +71,6 @@ namespace GiGraph.Dot.Entities.Edges
             return string.Join(" ", Endpoints
                 .Cast<IDotOrderableEntity>()
                 .Select(endpoint => endpoint.OrderingKey));
-        }
-
-        /// <summary>
-        /// Creates a new edge sequence initialized with the specified node identifiers.
-        /// At least a pair of identifiers has to be provided.
-        /// </summary>
-        /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
-        public static DotEdgeSequence FromNodes(params string[] nodeIds)
-        {
-            return FromNodes(nodeIds, initEndpoint: null);
         }
 
         /// <summary>

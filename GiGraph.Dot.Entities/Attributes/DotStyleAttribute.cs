@@ -1,13 +1,14 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System;
 using System.Linq;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
     /// Style attribute. Individual styles are applicable to specific element types only.
     /// </summary>
-    public class DotStyleAttribute : DotCommonAttribute<DotStyle>
+    public class DotStyleAttribute : DotAttribute<DotStyle>
     {
         /// <summary>
         /// Creates a new instance of the attribute.
@@ -19,16 +20,18 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected override string GetDotEncodedValue()
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             var styles = Enum.GetValues(typeof(DotStyle))
                 .Cast<DotStyle>()
                 .Where(style => style != DotStyle.Default)
                 .Where(style => Value.HasFlag(style))
-                .Select(style => GetDotEncodedStyleItemValue(style))
-                .OrderBy(style => style);
+                .Select(GetDotEncodedStyleItemValue);
 
-            return string.Join(", ", styles);
+            const string separator = ", ";
+            return options.OrderElements
+                ? string.Join(separator, styles.OrderBy(style => style))
+                : string.Join(separator, styles);
         }
 
         protected virtual string GetDotEncodedStyleItemValue(DotStyle item)
@@ -75,7 +78,7 @@ namespace GiGraph.Dot.Entities.Attributes
                     return "invis";
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(IDotAttribute.GetDotEncodedValue), $"The specified element style '{Value}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified element style '{Value}' is not supported.");
             }
         }
     }

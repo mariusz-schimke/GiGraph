@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
@@ -7,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// Arrow type attribute. Assignable to edges only.
     /// <see href="https://www.graphviz.org/doc/info/attrs.html#k:arrowType">View how individual arrow types are visualized</see>.
     /// </summary>
-    public class DotArrowTypeAttribute : DotCommonAttribute<DotArrowType>
+    public class DotArrowTypeAttribute : DotAttribute<DotArrowType>
     {
         /// <summary>
         /// Creates a new instance of the attribute.
@@ -19,7 +20,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected override string GetDotEncodedValue()
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             switch (Value)
             {
@@ -81,7 +82,7 @@ namespace GiGraph.Dot.Entities.Attributes
                     return "halfopen";
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(IDotAttribute.GetDotEncodedValue), $"The specified arrow type '{Value}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified arrow type '{Value}' is not supported.");
             }
         }
     }

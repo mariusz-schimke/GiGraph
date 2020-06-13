@@ -1,12 +1,13 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
     /// Rank constraints for the nodes in a subgraph. Assignable to non-cluster subgraphs only.
     /// </summary>
-    public class DotRankAttribute : DotCommonAttribute<DotRank>
+    public class DotRankAttribute : DotAttribute<DotRank>
     {
         /// <summary>
         /// Creates a new instance of the attribute.
@@ -18,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected override string GetDotEncodedValue()
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             switch (Value)
             {
@@ -38,7 +39,7 @@ namespace GiGraph.Dot.Entities.Attributes
                     return "sink";
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(IDotAttribute.GetDotEncodedValue), $"The specified rank '{Value}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified rank '{Value}' is not supported.");
             }
         }
     }

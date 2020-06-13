@@ -1,9 +1,11 @@
-﻿namespace GiGraph.Dot.Entities.Attributes
+﻿using GiGraph.Dot.Output.Options;
+
+namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
     /// A boolean value attribute.
     /// </summary>
-    public class DotBoolAttribute : DotCommonAttribute<bool>
+    public class DotBoolAttribute : DotAttribute<bool>
     {
         /// <summary>
         /// Creates a new instance of the attribute.
@@ -15,7 +17,7 @@
         {
         }
 
-        protected override string GetDotEncodedValue()
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             return Value ? "true" : "false";
         }

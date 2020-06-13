@@ -1,28 +1,33 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using GiGraph.Dot.Entities.Edges.Enums;
+using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotAttributeCollection : IDotEntity, ICollection<DotCommonAttribute>
+    public interface IDotAttributeCollection : IDotEntity, IDictionary<string, DotAttribute>
     {
         /// <summary>
         /// Adds or replaces the specified attribute in the collection.
         /// </summary>
         /// <param name="attribute">The attribute to include in the collection.</param>
-        T Set<T>(T attribute) where T : DotCommonAttribute;
+        T Set<T>(T attribute) where T : DotAttribute;
 
         /// <summary>
         /// Adds or replaces the specified attributes in the collection.
         /// </summary>
         /// <param name="attributes">The attributes to include in the collection.</param>
-        void SetRange(IEnumerable<DotCommonAttribute> attributes);
+        void SetRange(IEnumerable<DotAttribute> attributes);
 
         /// <summary>
         /// Adds or replaces the specified attribute in the collection.
         /// <para>
         ///     When necessary, the value specified will be rendered escaped in the generated graph, so it can be displayed properly when visualized.
-        ///     If you want the value to be rendered as is, without any further processing, use the <see cref="SetCustom"/> method instead.
+        ///     If you want the value to be rendered as is, without any further processing, use the <see cref="SetCustom(string,string)"/> method instead.
         ///     If you are not sure which one to choose, then most probably the current method <see cref="Set(string, string)"/> is the right choice.
         /// </para>
         /// </summary>
@@ -50,6 +55,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
         DotBoolAttribute Set(string key, bool value);
+
+        /// <summary>
+        /// Adds or replaces the specified color value attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotColorAttribute Set(string key, Color value);
+
+        /// <summary>
+        /// Adds or replaces the specified color definition attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotColorDefinitionAttribute Set(string key, DotColorDefinition value);
 
         /// <summary>
         /// Adds or replaces the specified node shape attribute in the collection.
@@ -94,6 +113,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotRankDirectionAttribute Set(string key, DotRankDirection value);
 
         /// <summary>
+        /// Sets an edge port, that is a point on a node where the edge is attached to.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotEdgePortAttribute Set(string key, DotEdgePort value);
+
+        /// <summary>
+        /// Sets an edge compass point, that is a point on a node where the edge is attached to.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotEdgePortAttribute Set(string key, DotCompassPoint value);
+
+        /// <summary>
         /// Adds or replaces the specified HTML text attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
@@ -103,7 +136,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <summary>
         /// Adds or replaces the specified custom attribute in the collection.
         /// <para>
-        ///     The value provided will be rendered in the generated graph exactly the way it is provided here,
+        ///     The value provided will be rendered in the generated DOT script exactly the way it is provided here,
         ///     without any further processing (escaping). Therefore, it has to follow the DOT language syntax rules.
         /// </para>
         /// </summary>
@@ -112,12 +145,23 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotCustomAttribute SetCustom(string key, string value);
 
         /// <summary>
+        /// Adds or replaces the specified custom attribute in the collection.
+        /// <para>
+        /// The value provided will be rendered escaped in the output DOT script by the specified text escaping pipeline.
+        /// </para>
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        /// <param name="valueEscaper">The text escaping pipeline to use for the value when generating a DOT script.</param>
+        DotCustomAttribute SetCustom(string key, string value, IDotTextEscaper valueEscaper);
+
+        /// <summary>
         /// Checks if an attribute with the specified key exists in the collection, and returns it as the specified type.
         /// If the attribute is found, but cannot be cast as the specified type, an exception is thrown.
         /// </summary>
         /// <typeparam name="T">The type to return the attribute as.</typeparam>
         /// <param name="key">The key of the attribute to get.</param>
-        T GetAs<T>(string key) where T : DotCommonAttribute;
+        T GetAs<T>(string key) where T : DotAttribute;
 
         /// <summary>
         /// Checks if an attribute with the specified key exists in the collection, and returns it as the specified type.
@@ -126,7 +170,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <typeparam name="T">The type to return the attribute as.</typeparam>
         /// <param name="key">The key of the attribute to get.</param>
         /// <param name="attribute">The attribute if found and valid, or null otherwise.</param>
-        bool TryGetAs<T>(string key, out T attribute) where T : DotCommonAttribute;
+        bool TryGetAs<T>(string key, out T attribute) where T : DotAttribute;
 
         /// <summary>
         /// Checks if an attribute with the specified key exists in the collection, and returns its value as the specified type.
@@ -138,15 +182,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         bool TryGetValueAs<T>(string key, out T value);
 
         /// <summary>
-        /// Removes the specified attribute from the collection.
-        /// </summary>
-        /// <param name="key">The key of the attribute to remove.</param>
-        bool Remove(string key);
-
-        /// <summary>
         /// Removes all attributes matching the specified criteria from the collection.
         /// </summary>
         /// <param name="match">The predicate to use for matching attributes.</param>
-        int RemoveAll(Predicate<DotCommonAttribute> match);
+        int RemoveAll(Predicate<DotAttribute> match);
     }
 }

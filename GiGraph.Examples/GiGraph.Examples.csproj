@@ -21,8 +21,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Gigraph.Dot.Entities\GiGraph.Dot.Entities.csproj" />
-    <ProjectReference Include="..\Gigraph.Dot.Generators\GiGraph.Dot.Generators.csproj" />
-    <ProjectReference Include="..\Gigraph.Dot.Writers\GiGraph.Dot.Writers.csproj" />
+    <ProjectReference Include="..\GiGraph.Dot.Output.Generators\GiGraph.Dot.Output.Generators.csproj" />
+    <ProjectReference Include="..\GiGraph.Dot.Output.Writers\GiGraph.Dot.Output.Writers.csproj" />
     <ProjectReference Include="..\Gigraph.Dot\GiGraph.Dot.csproj" />
   </ItemGroup>
 

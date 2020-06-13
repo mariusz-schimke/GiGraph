@@ -1,17 +1,19 @@
 ﻿using System.Drawing;
+using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    /// Color attribute.
+    /// Represents a single color.
     /// </summary>
-    public class DotColorAttribute : DotCommonAttribute<Color>
+    public class DotColorAttribute : DotAttribute<Color>
     {
         /// <summary>
         /// Creates a new color attribute.
         /// </summary>
-        /// <param name="key">The key of the attribute, for example "color" or "bgcolor".</param>
-        /// <param name="color">The value of the attribute as color.</param>
+        /// <param name="key">The key of the attribute, for example "color", "bgcolor", or "fillcolor".</param>
+        /// <param name="color">The value of the attribute as a color.</param>
         public DotColorAttribute(string key, Color color)
             : base(key, color)
         {
@@ -19,12 +21,12 @@ namespace GiGraph.Dot.Entities.Attributes
 
         public override string ToString()
         {
-            return Value.Name.ToString();
+            return new DotColor(Value).ToString();
         }
 
-        protected override string GetDotEncodedValue()
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
-            return $"#{Value.R:x2}{Value.G:x2}{Value.B:x2}{Value.A:x2}";
+            return new DotColor(Value).GetDotEncodedColor(options);
         }
     }
 }

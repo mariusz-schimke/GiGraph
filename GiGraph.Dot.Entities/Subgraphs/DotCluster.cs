@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
     /// Note that cluster subgraphs are not part of the DOT language, but solely a syntactic convention adhered to by certain of the layout engines.
     /// <para>
     ///     Cluster subgraphs (<see cref="DotCluster"/>) do not support setting custom node layout the way normal subgraphs (<see cref="DotSubgraph"/>) do,
-    ///     but they do support setting common style of nodes and edges within it.
+    ///     but they do support setting common style of nodes and edges within them.
     /// </para>
     /// </summary>
     public class DotCluster : DotCommonSubgraph
@@ -26,8 +26,8 @@ namespace GiGraph.Dot.Entities.Subgraphs
 
         protected DotCluster(string id,
             IDotClusterAttributes attributes,
-            DotCommonNodeCollection nodes,
-            DotCommonEdgeCollection edges,
+            DotNodeCollection nodes,
+            DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
             IDotNodeAttributes defaultNodeAttributes,
@@ -39,14 +39,14 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// Creates a new cluster subgraph.
         /// </summary>
-        /// <param name="id">The unique identifier of the subgraph. Pass null if no identifier should be used.</param>
-        public DotCluster(string id = null)
+        /// <param name="id">The unique identifier of the cluster.</param>
+        public DotCluster(string id)
             : this
               (
                   id,
                   new DotEntityAttributes(),
-                  new DotCommonNodeCollection(),
-                  new DotCommonEdgeCollection(),
+                  new DotNodeCollection(),
+                  new DotEdgeCollection(),
                   new DotSubgraphCollection(),
                   new DotClusterCollection(),
                   new DotEntityAttributes(),
@@ -55,7 +55,22 @@ namespace GiGraph.Dot.Entities.Subgraphs
         {
         }
 
-        public static DotCluster FromNodes(IEnumerable<string> nodeIds, string id)
+        /// <summary>
+        /// Creates a new cluster with the specified nodes.
+        /// </summary>
+        /// <param name="id">The unique identifier of the cluster.</param>
+        /// <param name="nodeIds">The identifiers of nodes to add to the subgraph.</param>
+        public static DotCluster FromNodes(string id, params string[] nodeIds)
+        {
+            return FromNodes(id, (IEnumerable<string>)nodeIds);
+        }
+
+        /// <summary>
+        /// Creates a new cluster with the specified nodes.
+        /// </summary>
+        /// <param name="id">The unique identifier of the cluster.</param>
+        /// <param name="nodeIds">The identifiers of nodes to add to the subgraph.</param>
+        public static DotCluster FromNodes(string id, IEnumerable<string> nodeIds)
         {
             var result = new DotCluster(id);
 

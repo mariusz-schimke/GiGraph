@@ -26,12 +26,13 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// The attributes of the subgraph. The only valid attribute for a non-cluster subgraph is rank.
         /// </summary>
-        public new IDotSubgraphAttributes Attributes => (IDotSubgraphAttributes)base.Attributes;
+        public new IDotSubgraphAttributes Attributes => (IDotSubgraphAttributes) base.Attributes;
 
-        protected DotSubgraph(string id,
+        protected DotSubgraph(
+            string id,
             IDotSubgraphAttributes attributes,
-            DotCommonNodeCollection nodes,
-            DotCommonEdgeCollection edges,
+            DotNodeCollection nodes,
+            DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
             IDotNodeAttributes defaultNodeAttributes,
@@ -43,20 +44,27 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// Creates a new subgraph.
         /// </summary>
-        /// <param name="id">The unique identifier of the subgraph. Pass null if no identifier should be used.</param>
-        /// <param name="rank">The rank attribute to assign to the subgraph.</param>
-        public DotSubgraph(string id = null, DotRank? rank = null)
+        public DotSubgraph()
             : this
-              (
-                  id,
-                  new DotEntityAttributes(),
-                  new DotCommonNodeCollection(),
-                  new DotCommonEdgeCollection(),
-                  new DotSubgraphCollection(),
-                  new DotClusterCollection(),
-                  new DotEntityAttributes(),
-                  new DotEntityAttributes()
-              )
+            (
+                id: null,
+                new DotEntityAttributes(),
+                new DotNodeCollection(),
+                new DotEdgeCollection(),
+                new DotSubgraphCollection(),
+                new DotClusterCollection(),
+                new DotEntityAttributes(),
+                new DotEntityAttributes()
+            )
+        {
+        }
+
+        /// <summary>
+        /// Creates a new subgraph.
+        /// </summary>
+        /// <param name="rank">The rank attribute to assign to the subgraph.</param>
+        public DotSubgraph(DotRank rank)
+            : this()
         {
             Attributes.Rank = rank;
         }
@@ -64,7 +72,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// Creates a new subgraph with the specified nodes.
         /// </summary>
-        /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
+        /// <param name="nodeIds">The identifiers of nodes to add to the subgraph.</param>
         public static DotSubgraph FromNodes(params string[] nodeIds)
         {
             return FromNodes(nodeIds, rank: null);
@@ -74,7 +82,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// Creates a new subgraph with the specified nodes.
         /// </summary>
         /// <param name="rank">The rank attribute to assign to the subgraph.</param>
-        /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
+        /// <param name="nodeIds">The identifiers of nodes to add to the subgraph.</param>
         public static DotSubgraph FromNodes(DotRank rank, params string[] nodeIds)
         {
             return FromNodes(nodeIds, rank);
@@ -83,11 +91,13 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// Creates a new subgraph with the specified nodes.
         /// </summary>
-        /// <param name="nodeIds">The node identifiers to add to the subgraph.</param>
+        /// <param name="nodeIds">The identifiers of nodes to add to the subgraph.</param>
         /// <param name="rank">The rank attribute to assign to the subgraph.</param>
         public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, DotRank? rank = null)
         {
-            var result = new DotSubgraph(rank: rank);
+            var result = rank.HasValue
+                ? new DotSubgraph(rank.Value)
+                : new DotSubgraph();
 
             if (nodeIds.Any())
             {

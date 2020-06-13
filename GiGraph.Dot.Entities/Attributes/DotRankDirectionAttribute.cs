@@ -1,12 +1,13 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using System;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
     /// Graph layout direction attribute. Assignable to graphs only.
     /// </summary>
-    public class DotRankDirectionAttribute : DotCommonAttribute<DotRankDirection>
+    public class DotRankDirectionAttribute : DotAttribute<DotRankDirection>
     {
         /// <summary>
         /// Creates a new instance of the attribute.
@@ -18,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected override string GetDotEncodedValue()
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             switch (Value)
             {
@@ -35,7 +36,7 @@ namespace GiGraph.Dot.Entities.Attributes
                     return "RL";
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(IDotAttribute.GetDotEncodedValue), $"The specified graph layout direction '{Value}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified graph layout direction '{Value}' is not supported.");
             }
         }
     }

@@ -15,6 +15,9 @@
         /// </summary>
         Min,
 
+        /// <summary>
+        /// All nodes are placed on the maximum rank.
+        /// </summary>
         Max,
 
         /// <summary>

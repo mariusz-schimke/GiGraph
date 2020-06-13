@@ -1,10 +1,9 @@
 ﻿using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Generators.GraphGenerators;
-using GiGraph.Dot.Generators.Options;
-using GiGraph.Dot.Generators.Providers;
-using GiGraph.Dot.Writers;
-using GiGraph.Dot.Writers.GraphWriters;
-using GiGraph.Dot.Writers.Options;
+using GiGraph.Dot.Output.Generators.GraphGenerators;
+using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Generators.Providers;
+using GiGraph.Dot.Output.Writers;
+using GiGraph.Dot.Output.Writers.GraphWriters;
 using System.IO;
 using System.Text;
 

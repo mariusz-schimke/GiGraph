@@ -1,10 +1,18 @@
 Road map:
-1. Support color list.
-2. Gradually add support for all available attributes.
+1. Gradually add support for all available attributes.
+2. String types (escString, html, record).
 
 Other (always valid): 
 1. Check if methods are coherently marked as virtual.
 2. Check if interfaces should be extracted for any classes.
+3. Check if properties should or shouldn't have setters.
+4. Some attributes are settable only on specified elements, but it turns out that the documentation is not always right.
 
 Nice-to-haves:
 1. Implement predefined HTML nodes (shape = none, margin = 0): https://www.graphviz.org/doc/info/shapes.html#polygon.
+2. Text justification markers support (\l, \r) and others like \N, \E etc.
+3. Record nodes.
+4. Double list (doubleList) attribute type (and other types, even if not supported directly).
+5. Comments assigned to nodes, edges, graph, subgraphs, clusters, and statement attributes, rendered above these elements. Generation options for comment style (// or /* */)? NOTE! Single-line output cannot have // comments!
+
+Useful examples: https://www.graphviz.org/pdf/dotguide.pdf

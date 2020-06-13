@@ -1,11 +1,12 @@
 ﻿using System.Globalization;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
     /// An integer value attribute.
     /// </summary>
-    public class DotIntAttribute : DotCommonAttribute<int>
+    public class DotIntAttribute : DotAttribute<int>
     {
         /// <summary>
         /// Creates a new instance of the attribute.
@@ -17,7 +18,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected override string GetDotEncodedValue()
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             return Value.ToString(CultureInfo.InvariantCulture);
         }
