@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Attributes
         protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
             var result = new StringBuilder();
-            var separator = "";
+            var separator = string.Empty;
 
             if (Value.PortName is { })
             {
