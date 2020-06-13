@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Output.Options;
+﻿using System;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
@@ -12,6 +13,11 @@ namespace GiGraph.Dot.Entities.Attributes
         public DotAttribute(string key, T value)
             : base(key)
         {
+            if (key is null)
+            {
+                throw new ArgumentNullException(nameof(key), "Attribute key cannot be null.");
+            }
+
             Value = value;
         }
 
