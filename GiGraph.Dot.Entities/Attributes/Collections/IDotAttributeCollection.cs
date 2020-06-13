@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -62,42 +64,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotColorAttribute Set(string key, Color value);
 
         /// <summary>
-        /// Adds or replaces the specified color list attribute in the collection.
+        /// Adds or replaces the specified color definition attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
-        /// <param name="value">The value of the attribute as a color list, to include in the collection.</param>
-        DotColorDefinitionAttribute Set(string key, params Color[] value);
-
-        /// <summary>
-        /// Adds or replaces the specified color list attribute in the collection.
-        /// </summary>
-        /// <param name="key">The key of the attribute to include in the collection.</param>
-        /// <param name="value">The value of the attribute as a color list, to include in the collection.</param>
-        DotColorDefinitionAttribute Set(string key, IEnumerable<Color> value);
-
-        /// <summary>
-        /// Adds or replaces the specified color list attribute in the collection.
-        /// </summary>
-        /// <param name="key">The key of the attribute to include in the collection.</param>
-        /// <param name="value">The value of the attribute as a weighted color list, to include in the collection.</param>
-        DotColorDefinitionAttribute Set(string key, params DotWeightedColor[] value);
-
-        /// <summary>
-        /// Adds or replaces the specified color list attribute in the collection.
-        /// </summary>
-        /// <param name="key">The key of the attribute to include in the collection.</param>
-        /// <param name="value">The value of the attribute as a weighted color list, to include in the collection.</param>
-        DotColorDefinitionAttribute Set(string key, IEnumerable<DotWeightedColor> value);
-
-        /// <summary>
-        /// Adds or replaces the specified color list attribute in the collection.
-        /// </summary>
-        /// <param name="key">The key of the attribute to include in the collection.</param>
-        /// <param name="color1">The first color to initialize the array with.</param>
-        /// <param name="color2">The second color to initialize the array with.</param>
-        /// <param name="weight1">The optional weight of the first color in the range 0 ≤ <paramref name="weight1"/> ≤ 1.</param>
-        /// <param name="weight2">The optional weight of the second color in the range 0 ≤ <paramref name="weight2"/> ≤ 1.</param>
-        DotColorDefinitionAttribute Set(string key, Color color1, Color color2, double? weight1 = null, double? weight2 = null);
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotColorDefinitionAttribute Set(string key, DotColorDefinition value);
 
         /// <summary>
         /// Adds or replaces the specified node shape attribute in the collection.
@@ -140,6 +111,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
         DotRankDirectionAttribute Set(string key, DotRankDirection value);
+
+        /// <summary>
+        /// Sets an edge port, that is a point on a node where the edge is attached to.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotEdgePortAttribute Set(string key, DotEdgePort value);
+
+        /// <summary>
+        /// Sets an edge compass point, that is a point on a node where the edge is attached to.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotEdgePortAttribute Set(string key, DotCompassPoint value);
 
         /// <summary>
         /// Adds or replaces the specified HTML text attribute in the collection.
