@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -55,29 +57,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotColorAttribute(key, value));
         }
 
-        public virtual DotColorDefinitionAttribute Set(string key, params Color[] value)
+        public virtual DotColorDefinitionAttribute Set(string key, DotColorDefinition value)
         {
-            return Set(new DotColorDefinitionAttribute(key, new DotColorList(value)));
-        }
-
-        public virtual DotColorDefinitionAttribute Set(string key, IEnumerable<Color> value)
-        {
-            return Set(new DotColorDefinitionAttribute(key, new DotColorList(value)));
-        }
-
-        public virtual DotColorDefinitionAttribute Set(string key, params DotWeightedColor[] value)
-        {
-            return Set(new DotColorDefinitionAttribute(key, new DotColorList(value)));
-        }
-
-        public virtual DotColorDefinitionAttribute Set(string key, IEnumerable<DotWeightedColor> value)
-        {
-            return Set(new DotColorDefinitionAttribute(key, new DotColorList(value)));
-        }
-
-        public virtual DotColorDefinitionAttribute Set(string key, Color color1, Color color2, double? weight1 = null, double? weight2 = null)
-        {
-            return Set(new DotColorDefinitionAttribute(key, new DotColorList(color1, color2, weight1, weight2)));
+            return Set(new DotColorDefinitionAttribute(key, value));
         }
 
         public virtual DotShapeAttribute Set(string key, DotShape value)
@@ -108,6 +90,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotRankDirectionAttribute Set(string key, DotRankDirection value)
         {
             return Set(new DotRankDirectionAttribute(key, value));
+        }
+
+        public virtual DotEdgePortAttribute Set(string key, DotEdgePort value)
+        {
+            return new DotEdgePortAttribute(key, value);
+        }
+
+        public virtual DotEdgePortAttribute Set(string key, DotCompassPoint value)
+        {
+            return new DotEdgePortAttribute(key, new DotEdgePort(value));
         }
 
         public virtual DotCustomAttribute SetCustom(string key, string value)
