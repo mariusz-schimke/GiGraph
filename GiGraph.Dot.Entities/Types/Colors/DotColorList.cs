@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Colors
@@ -17,12 +18,29 @@ namespace GiGraph.Dot.Entities.Types.Colors
         public virtual DotColor[] Colors { get; }
 
         /// <summary>
-        /// Creates a new color list instance.
+        /// <para>
+        ///     Creates a new color list that will be rendered in a specific way depending on how many colors are specified,
+        ///     whether they have weights, and what type of element the color list is applied to.
+        /// </para>
+        /// <para>
+        ///     The returned color list will be rendered as a gradient fill when two colors with no weights (<see cref="DotColor"/>)
+        ///     are specified (refers to the root graph, nodes, and clusters), or as two parallel splines when applied to an edge.
+        ///     When a weight is specified for either of the colors (<see cref="DotWeightedColor"/>), the returned color list
+        ///     will be rendered as a two-color fill (refers to the root graph, nodes, and clusters), or as a two-segment line,
+        ///     when applied to an edge (with color proportions determined by the weight in both cases).
+        /// </para>
+        /// <para>
+        ///     When more than two colors are specified, they will be rendered as parallel splines if used for edges
+        ///     (when no weights are present), or as multicolor segments (when at least one weighted color is present).
+        ///     When used for rectangularly-shaped nodes or clusters with the <see cref="DotStyle.Striped"/> style,
+        ///     the returned color list will be rendered as a striped multicolor fill, or as a wedged multicolor fill,
+        ///     when used for elliptically-shaped nodes with the <see cref="DotStyle.Wedged"/> style.
+        /// </para>
         /// </summary>
         /// <param name="colors">The colors to initialize the instance with. The supported types are
-        /// <see cref="DotColor"/> and <see cref="DotWeightedColor"/>. If only weighted colors are provided,
-        /// the weights must sum to at most 1. If both colors with and without weights are provided,
-        /// the sum of the weighted ones must be below 1.</param>
+        /// <see cref="DotColor"/> (with no weight) and <see cref="DotWeightedColor"/> (with weight).
+        /// If only weighted colors are provided, the weights must sum to at most 1.
+        /// If both colors with and without weights are provided, the sum of the weighted ones must be below 1.</param>
         public DotColorList(params DotColor[] colors)
         {
             if (true != colors?.Any())
@@ -46,19 +64,49 @@ namespace GiGraph.Dot.Entities.Types.Colors
         }
 
         /// <summary>
-        /// Creates a new color list instance.
+        /// <para>
+        ///     Creates a new color list that will be rendered in a specific way depending on how many colors are specified,
+        ///     whether they have weights, and what type of element the color list is applied to.
+        /// </para>
+        /// <para>
+        ///     The returned color list will be rendered as a gradient fill when two colors with no weights (<see cref="DotColor"/>)
+        ///     are specified (refers to the root graph, nodes, and clusters), or as two parallel splines when applied to an edge.
+        ///     When a weight is specified for either of the colors (<see cref="DotWeightedColor"/>), the returned color list
+        ///     will be rendered as a two-color fill (refers to the root graph, nodes, and clusters), or as a two-segment line,
+        ///     when applied to an edge (with color proportions determined by the weight in both cases).
+        /// </para>
+        /// <para>
+        ///     When more than two colors are specified, they will be rendered as parallel splines if used for edges
+        ///     (when no weights are present), or as multicolor segments (when at least one weighted color is present).
+        ///     When used for rectangularly-shaped nodes or clusters with the <see cref="DotStyle.Striped"/> style,
+        ///     the returned color list will be rendered as a striped multicolor fill, or as a wedged multicolor fill,
+        ///     when used for elliptically-shaped nodes with the <see cref="DotStyle.Wedged"/> style.
+        /// </para>
         /// </summary>
         /// <param name="colors">The colors to initialize the instance with. The supported types are
-        /// <see cref="DotColor"/> and <see cref="DotWeightedColor"/>. If only weighted colors are provided,
-        /// the weights must sum to at most 1. If both colors with and without weights are provided,
-        /// the sum of the weighted ones must be below 1.</param>
+        /// <see cref="DotColor"/> (with no weight) and <see cref="DotWeightedColor"/> (with weight).
+        /// If only weighted colors are provided, the weights must sum to at most 1.
+        /// If both colors with and without weights are provided, the sum of the weighted ones must be below 1.</param>
         public DotColorList(IEnumerable<DotColor> colors)
             : this(colors.ToArray())
         {
         }
 
         /// <summary>
-        /// Creates a new color list instance.
+        /// <para>
+        ///     Creates a new color list that will be rendered in a specific way depending on how many colors are specified,
+        ///     and what type of element the color list is applied to.
+        /// </para>
+        /// <para>
+        ///     The returned color list will be rendered as a gradient fill when only two colors are specified
+        ///     (refers to the root graph, nodes, and clusters), or as two parallel splines when applied to an edge.
+        /// </para>
+        /// <para>
+        ///     When more than two colors are specified, they will be rendered as parallel splines, if used for edges;
+        ///     when used for rectangularly-shaped nodes or clusters with the <see cref="DotStyle.Striped"/> style,
+        ///     the returned color list will be rendered as a striped multicolor fill, or as a wedged multicolor fill,
+        ///     when used for elliptically-shaped nodes with the <see cref="DotStyle.Wedged"/> style.
+        /// </para>
         /// </summary>
         /// <param name="colors">The colors to initialize the instance with.</param>
         public DotColorList(params Color[] colors)
@@ -67,7 +115,20 @@ namespace GiGraph.Dot.Entities.Types.Colors
         }
 
         /// <summary>
-        /// Creates a new color list instance.
+        /// <para>
+        ///     Creates a new color list that will be rendered in a specific way depending on how many colors are specified,
+        ///     and what type of element the color list is applied to.
+        /// </para>
+        /// <para>
+        ///     The returned color list will be rendered as a gradient fill when only two colors are specified
+        ///     (refers to the root graph, nodes, and clusters), or as two parallel splines when applied to an edge.
+        /// </para>
+        /// <para>
+        ///     When more than two colors are specified, they will be rendered as parallel splines, if used for edges;
+        ///     when used for rectangularly-shaped nodes or clusters with the <see cref="DotStyle.Striped"/> style,
+        ///     the returned color list will be rendered as a striped multicolor fill, or as a wedged multicolor fill,
+        ///     when used for elliptically-shaped nodes with the <see cref="DotStyle.Wedged"/> style.
+        /// </para>
         /// </summary>
         /// <param name="colors">The colors to initialize the instance with.</param>
         public DotColorList(IEnumerable<Color> colors)
@@ -76,17 +137,22 @@ namespace GiGraph.Dot.Entities.Types.Colors
         }
 
         /// <summary>
-        /// Creates a new color list instance.
+        /// Creates a new color list that will be rendered as a gradient fill when weights are not specified
+        /// (refers to the root graph, nodes, and clusters), or as two parallel splines when applied to an edge.
+        /// When a weight is specified for either of the colors, the returned color list will be rendered as a two-color fill
+        /// (refers to the root graph, nodes, and clusters), or as a two-segment line, when applied to an edge.
         /// </summary>
         /// <param name="color1">The first color to initialize the instance with.</param>
         /// <param name="color2">The second color to initialize the instance with.</param>
-        /// <param name="weight1">The optional weight of the first color in the range 0 ≤ <paramref name="weight1"/> ≤ 1.</param>
-        /// <param name="weight2">The optional weight of the second color in the range 0 ≤ <paramref name="weight2"/> ≤ 1.</param>
+        /// <param name="weight1">The optional weight of the first color. Only one of the weight parameters should be specified,
+        /// and it must be in the range 0 ≤ <paramref name="weight1"/> &lt; 1.</param>
+        /// <param name="weight2">The optional weight of the second color. Only one of the weight parameters should be specified,
+        /// and it must be in the range 0 ≤ <paramref name="weight2"/> &lt; 1.</param>
         public DotColorList(Color color1, Color color2, double? weight1 = null, double? weight2 = null)
             : this(new[]
             {
-                From(color1, weight1),
-                From(color2, weight2)
+                Weighted(color1, weight1),
+                Weighted(color2, weight2)
             })
         {
         }
