@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Attributes
     public class DotColorDefinitionAttribute : DotAttribute<DotColorDefinition>
     {
         /// <summary>
-        /// Creates a new color list attribute.
+        /// Creates a new color definition attribute.
         /// </summary>
         /// <param name="key">The key of the attribute, for example "color", "bgcolor", or "fillcolor".</param>
         /// <param name="colorDefinition">The value of the attribute as a color definition.
