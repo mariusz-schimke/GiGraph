@@ -136,7 +136,7 @@ namespace GiGraph.Examples
             graph.EdgeDefaults.FontSize = 10;
 
 
-            // -- (subgraphs are used here only to control the order in which elements are visualized) --
+            // -- (subgraphs are used here only to control the order the elements are visualized, and may be removed) --
 
             graph.Subgraphs.Add(sg =>
             {
@@ -172,8 +172,7 @@ namespace GiGraph.Examples
                     attrs.Label = "MULTICOLOR SERIES";
                     attrs.ArrowDirection = DotArrowDirection.Both;
 
-                    // this will render a multicolor edge, where each color may optionally have an area proportion
-                    // specified by the weight parameter
+                    // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
                     attrs.Color = DotColorDefinition.Multi(
                         new DotWeightedColor(Color.Turquoise, 0.33),
                         new DotWeightedColor(Color.Gray, 0.33),

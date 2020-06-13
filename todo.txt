@@ -13,5 +13,6 @@ Nice-to-haves:
 2. Text justification markers support (\l, \r) and others like \N, \E etc.
 3. Record nodes.
 4. Double list (doubleList) attribute type (and other types, even if not supported directly).
+5. Comments assigned to nodes, edges, graph, subgraphs, clusters, and statement attributes, rendered above these elements. Generation options for comment style (// or /* */)? NOTE! Single-line output cannot have // comments!
 
 Useful examples: https://www.graphviz.org/pdf/dotguide.pdf
