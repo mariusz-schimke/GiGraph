@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     The returned color list will be rendered as a gradient fill when two colors with no weights (<see cref="DotColor"/>)
         ///     are specified (refers to the root graph, nodes, and clusters), or as two parallel splines when applied to an edge.
         ///     When a weight is specified for either of the colors (<see cref="DotWeightedColor"/>), the returned color list
-        ///     will be rendered as a two-color fill (refers to the root graph, nodes, and clusters), or as a two-segment line,
+        ///     will be rendered as a two-color fill (refers to the root graph, nodes, and clusters), or as a two-segment spline,
         ///     when applied to an edge (with color proportions determined by the weight in both cases).
         /// </para>
         /// <para>
@@ -40,24 +40,19 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <param name="colors">The colors to initialize the instance with. The supported types are
         /// <see cref="DotColor"/> (with no weight) and <see cref="DotWeightedColor"/> (with weight).
         /// If only weighted colors are provided, the weights must sum to at most 1.
-        /// If both colors with and without weights are provided, the sum of the weighted ones must be below 1.</param>
+        /// If both colors with and without weights are provided, the sum of the weighted ones should be below 1,
+        /// as otherwise those without weights will be ignored by the visualization tool.</param>
         public DotColorList(params DotColor[] colors)
         {
-            if (true != colors?.Any())
+            if (colors is null)
             {
-                throw new ArgumentException("At least one color has to be specified for a color list.", nameof(colors));
+                throw new ArgumentNullException(nameof(colors), "Color collection cannot be null.");
             }
 
             var totalWeight = colors.Sum(c => c.GetWeight().GetValueOrDefault(0));
-
             if (totalWeight > 1)
             {
                 throw new ArgumentException("The weights of the colors must sum to at most 1 for a color list.", nameof(colors));
-            }
-
-            if (totalWeight == 1 && colors.Any(color => !color.GetWeight().HasValue))
-            {
-                throw new ArgumentException("The weights of the colors sum to 1, but some colors have no weights assigned. Remove them or decrease the total weight below 1.", nameof(colors));
             }
 
             Colors = colors;
@@ -72,7 +67,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     The returned color list will be rendered as a gradient fill when two colors with no weights (<see cref="DotColor"/>)
         ///     are specified (refers to the root graph, nodes, and clusters), or as two parallel splines when applied to an edge.
         ///     When a weight is specified for either of the colors (<see cref="DotWeightedColor"/>), the returned color list
-        ///     will be rendered as a two-color fill (refers to the root graph, nodes, and clusters), or as a two-segment line,
+        ///     will be rendered as a two-color fill (refers to the root graph, nodes, and clusters), or as a two-segment spline,
         ///     when applied to an edge (with color proportions determined by the weight in both cases).
         /// </para>
         /// <para>
@@ -86,7 +81,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <param name="colors">The colors to initialize the instance with. The supported types are
         /// <see cref="DotColor"/> (with no weight) and <see cref="DotWeightedColor"/> (with weight).
         /// If only weighted colors are provided, the weights must sum to at most 1.
-        /// If both colors with and without weights are provided, the sum of the weighted ones must be below 1.</param>
+        /// If both colors with and without weights are provided, the sum of the weighted ones should be below 1,
+        /// as otherwise those without weights will be ignored by the visualization tool.</param>
         public DotColorList(IEnumerable<DotColor> colors)
             : this(colors.ToArray())
         {
@@ -140,14 +136,16 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// Creates a new color list that will be rendered as a gradient fill when weights are not specified
         /// (refers to the root graph, nodes, and clusters), or as two parallel splines when applied to an edge.
         /// When a weight is specified for either of the colors, the returned color list will be rendered as a two-color fill
-        /// (refers to the root graph, nodes, and clusters), or as a two-segment line, when applied to an edge.
+        /// (refers to the root graph, nodes, and clusters), or as a two-segment spline, when applied to an edge.
         /// </summary>
         /// <param name="color1">The first color to initialize the instance with.</param>
         /// <param name="color2">The second color to initialize the instance with.</param>
-        /// <param name="weight1">The optional weight of the first color. Only one of the weight parameters should be specified,
-        /// and it must be in the range 0 ≤ <paramref name="weight1"/> &lt; 1.</param>
-        /// <param name="weight2">The optional weight of the second color. Only one of the weight parameters should be specified,
-        /// and it must be in the range 0 ≤ <paramref name="weight2"/> &lt; 1.</param>
+        /// <param name="weight1">The optional weight of the first color, that is the proportion of the area to cover with the color.
+        /// If both weight parameters are specified, they must sum to at most 1.
+        /// If only one of them is specified, it must be in the range 0 ≤ <paramref name="weight1"/> &lt; 1.</param>
+        /// <param name="weight2">The optional weight of the second color, that is the proportion of the area to cover with the color.
+        /// If both weight parameters are specified, they must sum to at most 1.
+        /// If only one of them is specified, it must be in the range 0 ≤ <paramref name="weight2"/> &lt; 1.</param>
         public DotColorList(Color color1, Color color2, double? weight1 = null, double? weight2 = null)
             : this(new[]
             {
