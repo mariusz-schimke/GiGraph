@@ -1,6 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Graphs;
 using System;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Enums
 {
@@ -56,7 +57,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         /// <summary>
         /// Applicable to clusters and rectangularly-shaped nodes.
         /// Causes the fill to be done as a set of vertical stripes.
-        /// The colors are specified via a color list, and drawn from left to right in list order. 
+        /// The colors are specified via a color list (see <see cref="DotColorList"/>), and drawn from left to right in list order. 
         /// Optional color weights can be specified to indicate the proportional widths of the bars.
         /// If the sum of the weights is less than 1, the remainder is divided evenly among the colors with no weight.
         /// </summary>
@@ -64,7 +65,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
 
         /// <summary>
         /// Applicable to elliptically-shaped nodes.
-        /// Causes the fill to be done as a set of wedges. The colors are specified via a color list, 
+        /// Causes the fill to be done as a set of wedges. The colors are specified via a color list (see <see cref="DotColorList"/>), 
         /// with the colors drawn counter-clockwise starting at angle 0.
         /// Optional color weights can be specified to indicate the proportional widths of the bars.
         /// If the sum of the weights is less than 1, the remainder is divided evenly among the colors with no weight.
@@ -73,7 +74,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
 
         /// <summary>
         /// Applicable to nodes, clusters, and graphs. Indicates a radial-style gradient fill
-        /// when colors are specified via a color list.
+        /// when colors are specified via a color list (see <see cref="DotColorList"/>).
         /// </summary>
         Radial = 1 << 9,
 
