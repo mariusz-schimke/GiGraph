@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
 
         public DotLabelString(string text)
         {
-            _text = (DotUnescapedString) text;
+            _text = (DotEscapableString) text;
         }
 
         public DotLabelString(DotString text)

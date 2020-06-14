@@ -1,9 +1,16 @@
+using GiGraph.Dot.Output.TextEscaping;
+
 namespace GiGraph.Dot.Entities.Types.Strings
 {
-    public class DotEscapedString : DotString
+    public class DotEscapedString : DotEscapableString
     {
+        protected DotEscapedString(string value, IDotTextEscaper valueEscaper)
+            : base(value, valueEscaper)
+        {
+        }
+
         public DotEscapedString(string value)
-            : base(value)
+            : base(value, TextEscapingPipeline.None())
         {
         }
 
