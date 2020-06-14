@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
     {
         protected readonly bool _useStatementDelimiter;
 
-        public DotEntityStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
+        protected DotEntityStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
             : base(tokenWriter, context)
         {
             _useStatementDelimiter = useStatementDelimiter;
