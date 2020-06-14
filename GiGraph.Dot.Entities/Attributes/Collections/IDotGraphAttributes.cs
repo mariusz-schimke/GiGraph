@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -9,18 +10,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <summary>
         /// Gets or sets the label to display on the graph.
         /// </summary>
-        string Label { get; set; }
-
-        /// <summary>
-        /// <para>
-        ///     Gets or sets the label in HTML format to display on the graph.
-        /// </para>
-        /// <para>
-        ///     <see cref="Label"/> and <see cref="LabelHtml"/> are actually the same attribute in a different format,
-        ///     so when one is set, the other is replaced.
-        /// </para>
-        /// </summary>
-        string LabelHtml { get; set; }
+        DotLabelString Label { get; set; }
 
         /// <summary>
         /// Gets or sets the color to use for clusters (default: <see cref="System.Drawing.Color.Black"/>).
@@ -118,12 +108,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </para>
         /// </summary>
         DotStyle? Style { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black"/>).
         /// </summary>
         Color? FontColor { get; set; }
-        
+
         /// <summary>
         /// <para>
         ///     Gets or sets the font used for text (default: "Times-Roman"). This very much depends on the output format and,
@@ -152,7 +142,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </para>
         /// </summary>
         string FontName { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the directory list used by libgd to search for bitmap fonts if Graphviz was not built
         /// with the fontconfig library. If <see cref="FontPath"/> is not set, the environment variable DOTFONTPATH is checked.
@@ -160,7 +150,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// The default path is system dependent.
         /// </summary>
         string FontPath { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the font size used for text (in points; 72 points per inch). Default: 14.0, minimum: 1.0.
         /// </summary>

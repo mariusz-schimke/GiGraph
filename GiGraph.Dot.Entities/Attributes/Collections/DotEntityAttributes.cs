@@ -3,6 +3,8 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 using System.Drawing;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -97,16 +99,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("fontpath", value, v => new DotCustomAttribute("fontpath", v));
         }
 
-        public virtual string Label
+        public virtual DotLabelString Label
         {
-            get => TryGetAs<DotStringAttribute>("label", out var result) ? result.Value : null;
-            set => AddOrRemove("label", value, v => new DotStringAttribute("label", v));
-        }
-
-        public virtual string LabelHtml
-        {
-            get => TryGetAs<DotHtmlAttribute>("label", out var result) ? result.Value : null;
-            set => AddOrRemove("label", value, v => new DotHtmlAttribute("label", v));
+            get => TryGetValueAs<DotString>("label", out var result) ? result : null;
+            set => AddOrRemove("label", value, v => new DotStringAttribute("label", (DotString) v));
         }
 
         public virtual DotShape? Shape
