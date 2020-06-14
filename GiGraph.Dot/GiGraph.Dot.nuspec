@@ -10,12 +10,12 @@
     <owners>$author$</owners>
     <copyright>$copyright$</copyright>
     
-    <icon>images\icon.png</icon>
+    <icon>content\icon.png</icon>
     
     <projectUrl>https://github.com/mariusz-schimke/GiGraph</projectUrl>
     <repository type="git" url="https://github.com/mariusz-schimke/GiGraph.git" branch="master" commit="3d803d92febee4c1d99d6e4f269c6cdaec1b12d7" />
 
-    <license type="file">LICENSE.txt</license>
+    <license type="file">content\LICENSE.txt</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     
     <summary>Simple yet versatile library for generating graphs in the DOT language.</summary>
@@ -29,9 +29,4 @@
 
 See also https://github.com/mariusz-schimke/GiGraph/releases</releaseNotes>
   </metadata>
-
-  <files>
-    <file src="..\Assets\icon.png" target="images\" />
-    <file src="..\LICENSE.txt" target="" />
-  </files>
 </package>
