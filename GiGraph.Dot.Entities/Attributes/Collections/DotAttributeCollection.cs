@@ -102,11 +102,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return new DotEdgePortAttribute(key, new DotEdgePort(value));
         }
 
-        public virtual DotCustomAttribute SetCustom(string key, string value)
-        {
-            return Set(new DotCustomAttribute(key, value));
-        }
-
         public virtual T GetAs<T>(string key)
             where T : DotAttribute
         {
@@ -133,9 +128,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual bool TryGetValueAs<T>(string key, out T value)
         {
-            if (base.TryGetValue(key, out var attribute) && attribute is DotAttribute<T> attributeWithValue)
+            if (base.TryGetValue(key, out var attribute) && attribute.GetValue() is T attributeValue)
             {
-                value = attributeWithValue.Value;
+                value = attributeValue;
                 return true;
             }
 

@@ -11,6 +11,8 @@ namespace GiGraph.Dot.Entities.Attributes
 
         string IDotOrderableEntity.OrderingKey => Key;
 
+        protected internal abstract object GetValue();
+        
         /// <summary>
         /// Gets the value of the attribute in a format understood by DOT graph renderer.
         /// </summary>

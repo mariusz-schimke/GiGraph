@@ -26,11 +26,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         /// Adds or replaces the specified string attribute in the collection.
+        /// The value can be any string understood by the DOT visualization tool for the specified attribute key.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
         DotStringAttribute Set(string key, string value);
-        
+
         /// <summary>
         /// Adds or replaces the specified string attribute in the collection.
         /// </summary>
@@ -128,17 +129,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
         DotEdgePortAttribute Set(string key, DotCompassPoint value);
-
-        /// <summary>
-        /// Adds or replaces the specified custom attribute in the collection.
-        /// <para>
-        ///     The value provided will be rendered in the generated DOT script exactly the way it is provided here,
-        ///     without any further processing (escaping). Therefore, it has to follow the DOT language syntax rules.
-        /// </para>
-        /// </summary>
-        /// <param name="key">The key of the attribute to include in the collection.</param>
-        /// <param name="value">The value of the attribute to include in the collection.</param>
-        DotCustomAttribute SetCustom(string key, string value);
 
         /// <summary>
         /// Checks if an attribute with the specified key exists in the collection, and returns it as the specified type.
