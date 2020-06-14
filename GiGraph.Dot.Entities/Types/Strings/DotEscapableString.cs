@@ -1,21 +1,28 @@
+using System;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Types.Strings
 {
-    public class DotEscapableString : DotString
+    public class DotEscapableString : IDotEncodableValue
     {
+        protected readonly string _value;
         protected readonly IDotTextEscaper _valueEscaper;
 
         protected DotEscapableString(string value, IDotTextEscaper valueEscaper)
-            : base(value)
         {
-            _valueEscaper = valueEscaper;
+            _value = value ?? throw new ArgumentNullException(nameof(value), "Value cannot be null.");
+            _valueEscaper = valueEscaper ?? throw new ArgumentNullException(nameof(valueEscaper), "Value escaper cannot be null.");
         }
 
-        public DotEscapableString(string value)
+        protected DotEscapableString(string value)
             : this(value, TextEscapingPipeline.ForString())
         {
+        }
+
+        public override string ToString()
+        {
+            return _value;
         }
 
         public virtual DotEscapedString Escape()
@@ -23,14 +30,21 @@ namespace GiGraph.Dot.Entities.Types.Strings
             return _valueEscaper.Escape(_value);
         }
 
-        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
+        protected internal virtual string GetDotEncodedString(DotGenerationOptions options)
         {
             return Escape();
         }
 
+        string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options) => GetDotEncodedString(options);
+
         public static implicit operator DotEscapableString(string value)
         {
             return value is {} ? new DotEscapableString(value) : null;
+        }
+
+        public static implicit operator string(DotEscapableString value)
+        {
+            return value?._value;
         }
     }
 }

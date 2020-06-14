@@ -6,6 +6,7 @@ using System.Linq;
 using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -32,9 +33,24 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotStringAttribute(key, value));
         }
 
-        public virtual DotStringAttribute Set(string key, DotString value)
+        public virtual DotEscapableStringAttribute Set(string key, DotEscapableString value)
         {
-            return Set(new DotStringAttribute(key, value));
+            return Set(new DotEscapableStringAttribute(key, value));
+        }
+
+        public virtual DotEscapableStringAttribute Set(string key, DotEscapedString value)
+        {
+            return Set(new DotEscapableStringAttribute(key, value));
+        }
+
+        public virtual DotLabelStringAttribute Set(string key, DotLabelString value)
+        {
+            return Set(new DotLabelStringAttribute(key, value));
+        }
+
+        public virtual DotLabelStringAttribute Set(string key, DotLabelHtml value)
+        {
+            return Set(new DotLabelStringAttribute(key, value));
         }
 
         public virtual DotIntAttribute Set(string key, int value)

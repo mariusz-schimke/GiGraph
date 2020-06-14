@@ -5,6 +5,7 @@ using System.Drawing;
 using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Strings;
 using GiGraph.Dot.Output.TextEscaping;
 
@@ -25,7 +26,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         void SetRange(IEnumerable<DotAttribute> attributes);
 
         /// <summary>
-        /// Adds or replaces the specified string attribute in the collection.
+        /// Adds or replaces the specified attribute in the collection.
         /// The value can be any string understood by the DOT visualization tool for the specified attribute key.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
@@ -34,10 +35,33 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         /// Adds or replaces the specified string attribute in the collection.
+        /// The specified string will be escaped on DOT script generation.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        DotStringAttribute Set(string key, DotString value);
+        DotEscapableStringAttribute Set(string key, DotEscapableString value);
+
+        /// <summary>
+        /// Adds or replaces the specified string attribute in the collection.
+        /// It is assumed that the value is an escaped string (it will be rendered as is on DOT script generation).
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotEscapableStringAttribute Set(string key, DotEscapedString value);
+
+        /// <summary>
+        /// Adds or replaces the specified label attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotLabelStringAttribute Set(string key, DotLabelString value);
+
+        /// <summary>
+        /// Adds or replaces the specified HTML label attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotLabelStringAttribute Set(string key, DotLabelHtml value);
 
         /// <summary>
         /// Adds or replaces the specified integer value attribute in the collection.
