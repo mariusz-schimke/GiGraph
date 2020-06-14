@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
 {
     public abstract class DotGraphBlockWriter : DotEntityWriter
     {
-        public DotGraphBlockWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
+        protected DotGraphBlockWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
             : base(tokenWriter, context)
         {
         }

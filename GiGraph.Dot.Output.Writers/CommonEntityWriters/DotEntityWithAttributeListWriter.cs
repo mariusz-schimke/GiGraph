@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
 {
     public abstract class DotEntityWithAttributeListWriter : DotEntityWriter, IDotEntityWithAttributeListWriter
     {
-        public DotEntityWithAttributeListWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
+        protected DotEntityWithAttributeListWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
             : base(tokenWriter, context)
         {
         }
