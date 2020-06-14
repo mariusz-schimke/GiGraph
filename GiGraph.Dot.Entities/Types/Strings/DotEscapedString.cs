@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         {
         }
 
-        public DotEscapedString(string value)
+        protected DotEscapedString(string value)
             : base(value, TextEscapingPipeline.None())
         {
         }

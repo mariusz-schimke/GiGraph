@@ -71,13 +71,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual string FontName
         {
-            get => TryGetValueAsString("fontname");
+            get => TryGetValueAs<string>("fontname", out var result) ? result : null;
             set => AddOrRemove("fontname", value, v => new DotStringAttribute("fontname", v));
         }
 
         public virtual string FontPath
         {
-            get => TryGetValueAsString("fontpath");
+            get => TryGetValueAs<string>("fontpath", out var result) ? result : null;
             set => AddOrRemove("fontpath", value, v => new DotStringAttribute("fontpath", v));
         }
 
@@ -101,8 +101,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual DotLabelString Label
         {
-            get => TryGetValueAsString("label");
-            set => AddOrRemove("label", value, v => new DotStringAttribute("label", (DotString) v));
+            get => TryGetValueAsLabelString("label");
+            set => AddOrRemove("label", value, v => new DotLabelStringAttribute("label", v));
         }
 
         public virtual DotShape? Shape
@@ -223,14 +223,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return TryGetValueAs<Color>(key, out var color) ? new DotColor(color) : null;
         }
 
-        protected virtual DotString TryGetValueAsString(string key)
+        protected virtual DotLabelString TryGetValueAsLabelString(string key)
         {
-            if (TryGetValueAs<DotString>(key, out var dotString))
+            if (TryGetValueAs<DotLabelString>(key, out var dotLabelString))
             {
-                return dotString;
+                return dotLabelString;
             }
 
-            return TryGetValueAs<string>(key, out var value) ? new DotString(value) : null;
+            if (TryGetValueAs<DotEscapableString>(key, out var dotEscapableString))
+            {
+                return dotEscapableString;
+            }
+
+            return TryGetValueAs<string>(key, out var value) ? (DotEscapedString) value : null;
         }
     }
 }

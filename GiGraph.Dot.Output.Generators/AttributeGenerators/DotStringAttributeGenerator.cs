@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities;
 using GiGraph.Dot.Entities.Attributes;
-using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.TextEscaping;
@@ -8,7 +8,7 @@ using GiGraph.Dot.Output.Writers.AttributeWriters;
 
 namespace GiGraph.Dot.Output.Generators.AttributeGenerators
 {
-    public class DotStringAttributeGenerator : DotAttributeGenerator<DotStringAttribute>
+    public class DotStringAttributeGenerator : DotAttributeGenerator<DotLabelStringAttribute>
     {
         protected DotStringAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
@@ -20,11 +20,11 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
         {
         }
 
-        public override void Generate(DotStringAttribute attribute, IDotAttributeWriter writer)
+        public override void Generate(DotLabelStringAttribute attribute, IDotAttributeWriter writer)
         {
             var value = ((IDotEncodableValue) attribute).GetDotEncodedValue(_options);
 
-            if (attribute.Value is DotHtmlString)
+            if (attribute.Value is DotLabelHtml)
             {
                 WriteHtmlAttribute(attribute.Key, value, writer);
             }
