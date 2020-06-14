@@ -3,17 +3,17 @@ using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Types.Strings
 {
-    public class DotUnescapedString : DotString
+    public class DotEscapableString : DotString
     {
         protected readonly IDotTextEscaper _valueEscaper;
 
-        protected DotUnescapedString(string value, IDotTextEscaper valueEscaper)
+        protected DotEscapableString(string value, IDotTextEscaper valueEscaper)
             : base(value)
         {
             _valueEscaper = valueEscaper;
         }
 
-        public DotUnescapedString(string value)
+        public DotEscapableString(string value)
             : this(value, TextEscapingPipeline.ForString())
         {
         }
@@ -28,9 +28,9 @@ namespace GiGraph.Dot.Entities.Types.Strings
             return Escape();
         }
 
-        public static implicit operator DotUnescapedString(string value)
+        public static implicit operator DotEscapableString(string value)
         {
-            return value is {} ? new DotUnescapedString(value) : null;
+            return value is {} ? new DotEscapableString(value) : null;
         }
     }
 }
