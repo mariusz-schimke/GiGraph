@@ -29,6 +29,11 @@ namespace GiGraph.Dot.Entities.Attributes
             return Value?.ToString();
         }
 
+        protected internal override object GetValue()
+        {
+            return Value;
+        }
+
         /// <summary>
         /// Gets the value of the attribute in a format understood by DOT graph renderer.
         /// </summary>
