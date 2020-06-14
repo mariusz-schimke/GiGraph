@@ -4,6 +4,9 @@ using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Types.Strings
 {
+    /// <summary>
+    /// A string that will be escaped on output DOT script generation.
+    /// </summary>
     public class DotEscapableString : IDotEncodableValue
     {
         protected readonly string _value;
@@ -25,6 +28,9 @@ namespace GiGraph.Dot.Entities.Types.Strings
             return _value;
         }
 
+        /// <summary>
+        /// Escapes the string to a DOT-compatible format.
+        /// </summary>
         public virtual DotEscapedString Escape()
         {
             return _valueEscaper.Escape(_value);

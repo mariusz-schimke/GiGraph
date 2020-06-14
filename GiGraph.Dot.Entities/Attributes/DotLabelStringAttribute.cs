@@ -4,7 +4,7 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    /// A label attribute.
+    /// A label attribute. The value can either be a string (<see cref="DotLabelString"/>) or an HTML string (<see cref="DotLabelHtml"/>).
     /// </summary>
     public class DotLabelStringAttribute : DotAttribute<DotLabelString>
     {
