@@ -26,6 +26,11 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Content Include="..\Assets\icon.png" Link="icon.png" />
+      <Content Include="..\LICENSE.txt" Link="LICENSE.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
         <ProjectReference Include="..\Gigraph.Dot.Entities\GiGraph.Dot.Entities.csproj" />
         <ProjectReference Include="..\GiGraph.Dot.Output.Generators\GiGraph.Dot.Output.Generators.csproj" />
