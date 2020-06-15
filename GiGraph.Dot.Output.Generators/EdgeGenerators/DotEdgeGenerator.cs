@@ -65,12 +65,12 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
         {
             var nodeId = EscapeIdentifier(endpoint.NodeId);
 
-            var portName = endpoint.PortName is { }
-                ? EscapeIdentifier(endpoint.PortName)
+            var portName = endpoint.Port.Name is { }
+                ? EscapeIdentifier(endpoint.Port.Name)
                 : null;
 
-            var compassPoint = endpoint.CompassPoint.HasValue
-                ? EscapeIdentifier(DotCompassPointConverter.Convert(endpoint.CompassPoint.Value))
+            var compassPoint = endpoint.Port.CompassPoint.HasValue
+                ? EscapeIdentifier(DotCompassPointConverter.Convert(endpoint.Port.CompassPoint.Value))
                 : null;
 
             writer.WriteEndpoint
