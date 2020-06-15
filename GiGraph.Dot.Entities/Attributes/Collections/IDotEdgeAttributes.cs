@@ -140,13 +140,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// the edge is aimed towards the center of the node, and then clipped at the node boundary.
         /// See also <see cref="DotEdge{TTail,THead}.Head"/> as a <see cref="DotEndpoint"/>.
         /// </summary>
-        DotEdgePort HeadPort { get; set; }
+        DotEndpointPort HeadPort { get; set; }
 
         /// <summary>
         /// Indicates where on the tail node to attach the tail of the edge. See also <see cref="DotEdge{TTail,THead}.Tail"/>
         /// as a <see cref="DotEndpoint"/>.
         /// </summary>
-        DotEdgePort TailPort { get; set; }
+        DotEndpointPort TailPort { get; set; }
 
         /// <summary>
         /// Logical head of an edge. When the <see cref="IDotGraphAttributes.Compound"/> property of the graph is true,

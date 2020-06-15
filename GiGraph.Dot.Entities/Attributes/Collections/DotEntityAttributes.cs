@@ -153,16 +153,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("dir", value, v => new DotArrowDirectionAttribute("dir", v.Value));
         }
 
-        public virtual DotEdgePort HeadPort
+        public virtual DotEndpointPort HeadPort
         {
-            get => TryGetValueAs<DotEdgePort>("headport", out var result) ? result : null;
-            set => AddOrRemove("headport", value, v => new DotEdgePortAttribute("headport", v));
+            get => TryGetValueAs<DotEndpointPort>("headport", out var result) ? result : null;
+            set => AddOrRemove("headport", value, v => new DotEndpointPortAttribute("headport", v));
         }
 
-        public virtual DotEdgePort TailPort
+        public virtual DotEndpointPort TailPort
         {
-            get => TryGetValueAs<DotEdgePort>("tailport", out var result) ? result : null;
-            set => AddOrRemove("tailport", value, v => new DotEdgePortAttribute("tailport", v));
+            get => TryGetValueAs<DotEndpointPort>("tailport", out var result) ? result : null;
+            set => AddOrRemove("tailport", value, v => new DotEndpointPortAttribute("tailport", v));
         }
 
         public virtual string LogicalHeadId
