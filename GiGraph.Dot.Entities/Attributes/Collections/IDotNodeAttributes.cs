@@ -9,6 +9,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     {
         /// <summary>
         /// Gets or sets the label to display on the node.
+        /// It can be plain text, HTML (<see cref="DotLabelHtml"/>) or a record (TODO).
         /// </summary>
         DotLabelString Label { get; set; }
 
