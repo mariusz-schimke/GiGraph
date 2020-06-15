@@ -27,20 +27,20 @@ namespace GiGraph.Examples.Complex
 
             // (!) Note that CROSS-DIAGRAM EDGES SHOULD BE DEFINED IN THE COMMON PARENT LEVEL GRAPH/SUBGRAPH
             // (which is the root graph in this case)
-            graph.Edges.Add("Decision", "Cluster 1 Start", attrs =>
+            graph.Edges.Add("Decision", "Cluster 1 Start", edge =>
             {
-                attrs.Label = "yes";
-                
+                edge.Attributes.Label = "yes";
+
                 // attach the arrow to cluster border
-                attrs.LogicalHeadId = "Flow 1";
+                edge.Attributes.LogicalHeadId = "Flow 1";
             });
-            
+
             graph.Edges.Add("Decision", "Cluster 2 Start", attrs =>
             {
-                attrs.Label = "no";
-                
+                attrs.Attributes.Label = "no";
+
                 // attach the arrow to cluster border
-                attrs.LogicalHeadId = "Flow 2";
+                attrs.Attributes.LogicalHeadId = "Flow 2";
             });
 
             graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.LogicalTailId = "Flow 1";
