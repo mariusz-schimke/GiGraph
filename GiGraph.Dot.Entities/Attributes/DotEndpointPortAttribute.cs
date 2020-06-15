@@ -30,9 +30,10 @@ namespace GiGraph.Dot.Entities.Attributes
             var result = new StringBuilder();
             var separator = string.Empty;
 
-            if (Value.PortName is { })
+            if (Value.Name is { })
             {
-                result.Append(Value.PortName);
+                // TODO: escape the name
+                result.Append(Value.Name);
                 separator = ":";
             }
 
