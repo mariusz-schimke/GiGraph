@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// </summary>
         public virtual T Value { get; }
 
-        public DotAttribute(string key, T value)
+        protected DotAttribute(string key, T value)
             : base(key)
         {
             if (key is null)
@@ -27,6 +27,11 @@ namespace GiGraph.Dot.Entities.Attributes
         public override string ToString()
         {
             return Value?.ToString();
+        }
+
+        protected internal override object GetValue()
+        {
+            return Value;
         }
 
         /// <summary>

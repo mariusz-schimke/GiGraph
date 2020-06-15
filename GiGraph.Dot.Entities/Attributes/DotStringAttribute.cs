@@ -1,37 +1,19 @@
-﻿using GiGraph.Dot.Entities.Subgraphs;
-using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.TextEscaping;
-
-namespace GiGraph.Dot.Entities.Attributes
+﻿namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    /// String attribute. The text provided as a value will be escaped on DOT script generation so that is is interpreted correctly
-    /// by graph visualization tools. If you want the value to be rendered as is, use <see cref="DotCustomAttribute"/> instead.
+    /// A string attribute. The value is rendered as is in the output DOT script, so the attribute can be used
+    /// for any type of value, not only for strings.
     /// </summary>
     public class DotStringAttribute : DotAttribute<string>
     {
-        protected readonly IDotTextEscaper _valueEscaper;
-
-        protected DotStringAttribute(string key, string value, IDotTextEscaper valueEscaper)
-            : base(key, value)
-        {
-            _valueEscaper = valueEscaper ?? TextEscapingPipeline.ForString();
-        }
-
         /// <summary>
         /// Creates a new instance of a string attribute.
         /// </summary>
         /// <param name="key">The key of the attribute.</param>
-        /// <param name="value">The value of the attribute. The text will be escaped on graph generation, 
-        /// so when the graph is visualized, it will be displayed exactly the way it is provided here.</param>
+        /// <param name="value">The value of the attribute.</param>
         public DotStringAttribute(string key, string value)
-            : this(key, value, valueEscaper: null)
+            : base(key, value)
         {
-        }
-
-        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
-        {
-            return _valueEscaper.Escape(Value);
         }
     }
 }

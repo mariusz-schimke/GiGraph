@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -8,19 +9,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     {
         /// <summary>
         /// Gets or sets the label to display on the cluster.
+        /// It can either be plain text, or HTML (<see cref="DotLabelHtml"/>).
         /// </summary>
-        string Label { get; set; }
-
-        /// <summary>
-        /// <para>
-        ///     Gets or sets the label in HTML format to display on the cluster.
-        /// </para>
-        /// <para>
-        ///     <see cref="Label"/> and <see cref="LabelHtml"/> are actually the same attribute in a different format,
-        ///     so when one is set, the other is replaced.
-        /// </para>
-        /// </summary>
-        string LabelHtml { get; set; }
+        DotLabelString Label { get; set; }
 
         /// <summary>
         /// Gets or sets the color of the cluster (default: <see cref="System.Drawing.Color.Black"/>).
