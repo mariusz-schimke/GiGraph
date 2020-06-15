@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
         {
         }
 
-        public DotCommonGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        protected DotCommonGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : this(syntaxRules, options, entityGenerators, identifierEscaper: null)
         {
         }

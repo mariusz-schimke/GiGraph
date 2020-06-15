@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Output.Generators.Providers
             provider.Register(new DotCommonSubgraphCollectionGenerator<DotCluster>(syntaxRules, options, provider));
 
             provider.Register(new DotAttributeGenerator(syntaxRules, options, provider));
-            provider.Register(new DotHtmlAttributeGenerator(syntaxRules, options, provider));
+            provider.Register(new DotLabelStringAttributeGenerator(syntaxRules, options, provider));
             provider.Register(new DotAttributeListGenerator(syntaxRules, options, provider));
             provider.Register(new DotAttributeStatementListGenerator(syntaxRules, options, provider));
 

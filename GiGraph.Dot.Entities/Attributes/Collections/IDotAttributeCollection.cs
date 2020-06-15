@@ -5,6 +5,8 @@ using System.Drawing;
 using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Strings;
 using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -25,15 +27,41 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         /// Adds or replaces the specified attribute in the collection.
-        /// <para>
-        ///     When necessary, the value specified will be rendered escaped in the generated graph, so it can be displayed properly when visualized.
-        ///     If you want the value to be rendered as is, without any further processing, use the <see cref="SetCustom(string,string)"/> method instead.
-        ///     If you are not sure which one to choose, then most probably the current method <see cref="Set(string, string)"/> is the right choice.
-        /// </para>
+        /// The value can be any string understood by the DOT visualization tool for the specified attribute key.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
         DotStringAttribute Set(string key, string value);
+
+        /// <summary>
+        /// Adds or replaces the specified string attribute in the collection.
+        /// The specified string will be escaped on DOT script generation.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotEscapeStringAttribute Set(string key, DotEscapableString value);
+
+        /// <summary>
+        /// Adds or replaces the specified string attribute in the collection.
+        /// It is assumed that the value is an escaped string (it will be rendered as is on DOT script generation).
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotEscapeStringAttribute Set(string key, DotEscapedString value);
+
+        /// <summary>
+        /// Adds or replaces the specified label attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotLabelStringAttribute Set(string key, DotLabelString value);
+
+        /// <summary>
+        /// Adds or replaces the specified HTML label attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotLabelStringAttribute Set(string key, DotLabelHtml value);
 
         /// <summary>
         /// Adds or replaces the specified integer value attribute in the collection.
@@ -125,35 +153,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
         DotEdgePortAttribute Set(string key, DotCompassPoint value);
-
-        /// <summary>
-        /// Adds or replaces the specified HTML text attribute in the collection.
-        /// </summary>
-        /// <param name="key">The key of the attribute to include in the collection.</param>
-        /// <param name="value">The value of the attribute to include in the collection.</param>
-        DotHtmlAttribute SetHtml(string key, string value);
-
-        /// <summary>
-        /// Adds or replaces the specified custom attribute in the collection.
-        /// <para>
-        ///     The value provided will be rendered in the generated DOT script exactly the way it is provided here,
-        ///     without any further processing (escaping). Therefore, it has to follow the DOT language syntax rules.
-        /// </para>
-        /// </summary>
-        /// <param name="key">The key of the attribute to include in the collection.</param>
-        /// <param name="value">The value of the attribute to include in the collection.</param>
-        DotCustomAttribute SetCustom(string key, string value);
-
-        /// <summary>
-        /// Adds or replaces the specified custom attribute in the collection.
-        /// <para>
-        /// The value provided will be rendered escaped in the output DOT script by the specified text escaping pipeline.
-        /// </para>
-        /// </summary>
-        /// <param name="key">The key of the attribute to include in the collection.</param>
-        /// <param name="value">The value of the attribute to include in the collection.</param>
-        /// <param name="valueEscaper">The text escaping pipeline to use for the value when generating a DOT script.</param>
-        DotCustomAttribute SetCustom(string key, string value, IDotTextEscaper valueEscaper);
 
         /// <summary>
         /// Checks if an attribute with the specified key exists in the collection, and returns it as the specified type.

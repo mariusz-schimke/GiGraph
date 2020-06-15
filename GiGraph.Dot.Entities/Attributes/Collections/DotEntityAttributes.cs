@@ -3,6 +3,8 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 using System.Drawing;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -70,7 +72,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual string FontName
         {
             get => TryGetValueAs<string>("fontname", out var result) ? result : null;
-            set => AddOrRemove("fontname", value, v => new DotCustomAttribute("fontname", v));
+            set => AddOrRemove("fontname", value, v => new DotStringAttribute("fontname", v));
+        }
+
+        public virtual string FontPath
+        {
+            get => TryGetValueAs<string>("fontpath", out var result) ? result : null;
+            set => AddOrRemove("fontpath", value, v => new DotStringAttribute("fontpath", v));
         }
 
         public virtual double? FontSize
@@ -91,22 +99,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
         }
 
-        public virtual string FontPath
+        public virtual DotLabelString Label
         {
-            get => TryGetValueAs<string>("fontpath", out var result) ? result : null;
-            set => AddOrRemove("fontpath", value, v => new DotCustomAttribute("fontpath", v));
-        }
-
-        public virtual string Label
-        {
-            get => TryGetAs<DotStringAttribute>("label", out var result) ? result.Value : null;
-            set => AddOrRemove("label", value, v => new DotStringAttribute("label", v));
-        }
-
-        public virtual string LabelHtml
-        {
-            get => TryGetAs<DotHtmlAttribute>("label", out var result) ? result.Value : null;
-            set => AddOrRemove("label", value, v => new DotHtmlAttribute("label", v));
+            get => TryGetValueAsLabelString("label");
+            set => AddOrRemove("label", value, v => new DotLabelStringAttribute("label", v));
         }
 
         public virtual DotShape? Shape
@@ -225,6 +221,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
 
             return TryGetValueAs<Color>(key, out var color) ? new DotColor(color) : null;
+        }
+
+        protected virtual DotLabelString TryGetValueAsLabelString(string key)
+        {
+            if (TryGetValueAs<DotLabelString>(key, out var dotLabelString))
+            {
+                return dotLabelString;
+            }
+
+            if (TryGetValueAs<DotEscapableString>(key, out var dotEscapableString))
+            {
+                return dotEscapableString;
+            }
+
+            return TryGetValueAs<string>(key, out var value) ? (DotEscapedString) value : null;
         }
     }
 }
