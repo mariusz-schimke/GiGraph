@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Edges.Enums;
 namespace GiGraph.Dot.Entities.Types.Edges
 {
     /// <summary>
-    /// Represents the endpoint port, that is a point on a node where an edge is attached to.
+    /// Represents the endpoint port, that is a point on a node an edge is attached to.
     /// </summary>
     public class DotEndpointPort
     {

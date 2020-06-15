@@ -44,12 +44,8 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// or on the node itself otherwise. If no compass point is specified explicitly, the default value is <see cref="DotCompassPoint.Center"/>.
         /// </param>
         public DotEndpoint(string nodeId, string portName, DotCompassPoint? compassPoint = null)
+            : this(nodeId, new DotEndpointPort(portName) { CompassPoint = compassPoint })
         {
-            NodeId = nodeId ?? throw new ArgumentNullException(nameof(nodeId), "Node identifier cannot be null.");
-            Port = new DotEndpointPort(portName)
-            {
-                CompassPoint = compassPoint
-            };
         }
 
         /// <summary>
@@ -59,8 +55,19 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// <param name="compassPoint">Determines the edge placement to aim for the specified compass point on the node.
         /// If no compass point is specified explicitly, the default value is <see cref="DotCompassPoint.Center"/>.</param>
         public DotEndpoint(string nodeId, DotCompassPoint? compassPoint = null)
-            : this(nodeId, portName: null, compassPoint)
+            : this(nodeId, new DotEndpointPort() { CompassPoint = compassPoint })
         {
+        }
+
+        /// <summary>
+        /// Creates a new instance of the class.
+        /// </summary>
+        /// <param name="nodeId">The node identifier.</param>
+        /// <param name="port">The endpoint port, that is a point on a node an edge will be attached to.</param>
+        public DotEndpoint(string nodeId, DotEndpointPort port)
+        {
+            NodeId = nodeId ?? throw new ArgumentNullException(nameof(nodeId), "Node identifier cannot be null.");
+            _port = port ?? throw new ArgumentNullException(nameof(port), "Port cannot be null.");
         }
 
         protected override string GetOrderingKey()
