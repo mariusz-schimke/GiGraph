@@ -37,7 +37,6 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
         protected virtual void WriteHtmlAttribute(string key, string value, IDotAttributeWriter writer)
         {
             key = EscapeIdentifier(key);
-            value = EscapeValue(FormatValue(value));
 
             writer.WriteHtmlAttribute
             (
