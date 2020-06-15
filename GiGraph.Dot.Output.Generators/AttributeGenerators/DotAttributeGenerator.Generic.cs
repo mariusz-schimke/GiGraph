@@ -34,7 +34,6 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
         protected virtual void WriteAttribute(string key, string value, IDotAttributeWriter writer)
         {
             key = EscapeIdentifier(key);
-            value = EscapeValue(FormatValue(value));
 
             writer.WriteAttribute
             (
@@ -44,9 +43,6 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
                 quoteValue: ValueRequiresQuoting(value)
             );
         }
-
-        protected virtual string FormatValue(string value) => value;
-        protected virtual string EscapeValue(string value) => value;
 
         protected virtual bool KeyRequiresQuoting(string key) => _options.Attributes.PreferQuotedKey || !_syntaxRules.IsValidIdentifier(key);
         protected virtual bool ValueRequiresQuoting(string value) => _options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
