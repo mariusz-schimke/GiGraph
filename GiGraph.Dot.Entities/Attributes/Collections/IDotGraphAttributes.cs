@@ -169,5 +169,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// attributes of the edge.
         /// </summary>
         bool? Compound { get; set; }
+
+        /// <summary>
+        /// Comments are inserted into output. Device-dependent.
+        /// </summary>
+        string Comment { get; set; }
     }
 }
