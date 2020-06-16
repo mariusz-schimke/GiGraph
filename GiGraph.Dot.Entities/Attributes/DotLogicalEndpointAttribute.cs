@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes
             : base(key, value)
         {
             // use the same value escaping pipeline as the cluster generator uses for escaping cluster identifier
-            _valueEscaper = valueEscaper ?? TextEscapingPipeline.ForIdentifier();
+            _valueEscaper = valueEscaper ?? DotTextEscapingPipeline.ForIdentifier();
         }
 
         /// <summary>
