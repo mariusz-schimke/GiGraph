@@ -7,32 +7,34 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    /// Represents the edge port, that is a point on a node where the edge is attached to.
+    /// Represents the endpoint port, that is a point on a node where an edge is attached to.
     /// </summary>
-    public class DotEdgePortAttribute : DotAttribute<DotEdgePort>
+    public class DotEndpointPortAttribute : DotAttribute<DotEndpointPort>
     {
         /// <summary>
         /// Creates a new edge port attribute instance.
         /// </summary>
         /// <param name="key">The key of the attribute (e.g. tailport, headport).</param>
         /// <param name="port">The edge port to use as the value of the attribute.</param>
-        public DotEdgePortAttribute(string key, DotEdgePort port)
+        public DotEndpointPortAttribute(string key, DotEndpointPort port)
             : base(key, port)
         {
-            if (port is null)
-            {
-                throw new ArgumentNullException(nameof(port), "Edge port cannot be null.");
-            }
         }
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
+            if (Value is null)
+            {
+                return null;
+            }
+
             var result = new StringBuilder();
             var separator = string.Empty;
 
-            if (Value.PortName is { })
+            if (Value.Name is { })
             {
-                result.Append(Value.PortName);
+                // TODO: escape the name
+                result.Append(Value.Name);
                 separator = ":";
             }
 

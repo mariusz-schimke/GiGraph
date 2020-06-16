@@ -108,14 +108,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotRankDirectionAttribute(key, value));
         }
 
-        public virtual DotEdgePortAttribute Set(string key, DotEdgePort value)
+        public virtual DotEndpointPortAttribute Set(string key, DotEndpointPort value)
         {
-            return new DotEdgePortAttribute(key, value);
+            return new DotEndpointPortAttribute(key, value);
         }
 
-        public virtual DotEdgePortAttribute Set(string key, DotCompassPoint value)
+        public virtual DotEndpointPortAttribute Set(string key, DotCompassPoint value)
         {
-            return new DotEdgePortAttribute(key, new DotEdgePort(value));
+            return new DotEndpointPortAttribute(key, new DotEndpointPort(value));
         }
 
         public virtual T GetAs<T>(string key)

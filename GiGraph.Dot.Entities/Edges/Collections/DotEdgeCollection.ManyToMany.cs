@@ -1,5 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Edges.Endpoints;
+﻿using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Subgraphs;
 using System;
 using System.Collections.Generic;
@@ -14,10 +13,10 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// </summary>
         /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes.</param>
         /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes.</param>
-        /// <param name="initGroupAttrs">An optional initializer delegate to call for the attributes of the created edge group.</param>
-        public virtual DotManyToManyEdgeGroup AddManyToMany(IEnumerable<string> tailNodeIds, IEnumerable<string> headNodeIds, Action<IDotEdgeAttributes> initGroupAttrs = null)
+        /// <param name="init">An optional initializer delegate to call for the created edge group.</param>
+        public virtual DotManyToManyEdgeGroup AddManyToMany(IEnumerable<string> tailNodeIds, IEnumerable<string> headNodeIds, Action<DotManyToManyEdgeGroup> init = null)
         {
-            return Add(new DotManyToManyEdgeGroup(tailNodeIds, headNodeIds), initGroupAttrs);
+            return Add(new DotManyToManyEdgeGroup(tailNodeIds, headNodeIds), init);
         }
 
         /// <summary>
@@ -26,10 +25,10 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// </summary>
         /// <param name="tail">The group whose nodes should be the tail endpoints.</param>
         /// <param name="head">The group whose nodes (as the head endpoints) the <paramref name="tail"/> nodes should be connected to.</param>
-        /// <param name="initGroupAttrs">An optional initializer delegate to call for the attributes of the created edge group.</param>
-        public virtual DotManyToManyEdgeGroup AddManyToMany(DotEndpointGroup tail, DotEndpointGroup head, Action<IDotEdgeAttributes> initGroupAttrs = null)
+        /// <param name="init">An optional initializer delegate to call for the created edge group.</param>
+        public virtual DotManyToManyEdgeGroup AddManyToMany(DotEndpointGroup tail, DotEndpointGroup head, Action<DotManyToManyEdgeGroup> init = null)
         {
-            return Add(new DotManyToManyEdgeGroup(tail, head), initGroupAttrs);
+            return Add(new DotManyToManyEdgeGroup(tail, head), init);
         }
 
         /// <summary>
@@ -38,10 +37,10 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// </summary>
         /// <param name="tail">The subgraph whose nodes should be the tail endpoints.</param>
         /// <param name="head">The subgraph whose nodes (as the head endpoints) the <paramref name="tail"/> nodes should be connected to.</param>
-        /// <param name="initGroupAttrs">An optional initializer delegate to call for the attributes of the created edge group.</param>
-        public virtual DotManyToManyEdgeGroup AddManyToMany(DotSubgraph tail, DotSubgraph head, Action<IDotEdgeAttributes> initGroupAttrs = null)
+        /// <param name="init">An optional initializer delegate to call for the created edge group.</param>
+        public virtual DotManyToManyEdgeGroup AddManyToMany(DotSubgraph tail, DotSubgraph head, Action<DotManyToManyEdgeGroup> init = null)
         {
-            return Add(new DotManyToManyEdgeGroup(tail, head), initGroupAttrs);
+            return Add(new DotManyToManyEdgeGroup(tail, head), init);
         }
     }
 }

@@ -13,11 +13,6 @@ namespace GiGraph.Dot.Entities.Attributes
         protected DotAttribute(string key, T value)
             : base(key)
         {
-            if (key is null)
-            {
-                throw new ArgumentNullException(nameof(key), "Attribute key cannot be null.");
-            }
-
             Value = value;
         }
 

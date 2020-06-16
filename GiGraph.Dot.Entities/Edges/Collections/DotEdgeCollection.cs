@@ -1,5 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -32,12 +31,12 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// </summary>
         /// <typeparam name="T">The type of edge to add.</typeparam>
         /// <param name="edge">The edge to add.</param>
-        /// <param name="initAttrs">An optional edge attributes initializer delegate.</param>
-        public virtual T Add<T>(T edge, Action<IDotEdgeAttributes> initAttrs)
+        /// <param name="init">An optional edge initializer delegate.</param>
+        public virtual T Add<T>(T edge, Action<T> init)
             where T : DotEdgeDefinition
         {
             Add(edge);
-            initAttrs?.Invoke(edge.Attributes);
+            init?.Invoke(edge);
             return edge;
         }
 
@@ -46,10 +45,10 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// </summary>
         /// <param name="tailNodeId">The tail (source, left) node identifier.</param>
         /// <param name="headNodeId">The head (destination, right) node identifier.</param>
-        /// <param name="initAttrs">An optional edge attributes initializer delegate.</param>
-        public virtual DotEdge Add(string tailNodeId, string headNodeId, Action<IDotEdgeAttributes> initAttrs = null)
+        /// <param name="init">An optional edge initializer delegate.</param>
+        public virtual DotEdge Add(string tailNodeId, string headNodeId, Action<DotEdge> init = null)
         {
-            return Add(new DotEdge(tailNodeId, headNodeId), initAttrs);
+            return Add(new DotEdge(tailNodeId, headNodeId), init);
         }
 
         /// <summary>
