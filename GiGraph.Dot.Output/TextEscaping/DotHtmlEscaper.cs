@@ -2,6 +2,10 @@
 
 namespace GiGraph.Dot.Output.TextEscaping
 {
+    /// <summary>
+    /// Converts a string to an HTML-encoded string. Use for identifiers and attributes that support escaped text
+    /// when your visualization tool has issues processing national and special characters.
+    /// </summary>
     public class DotHtmlEscaper : IDotTextEscaper
     {
         public virtual string Escape(string value)
