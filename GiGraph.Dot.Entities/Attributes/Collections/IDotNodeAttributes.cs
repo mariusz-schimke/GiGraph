@@ -113,5 +113,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Gets or sets the font size used for text (in points; 72 points per inch). Default: 14.0, minimum: 1.0.
         /// </summary>
         double? FontSize { get; set; }
+        
+        /// <summary>
+        /// Comments are inserted into output. Device-dependent.
+        /// </summary>
+        string Comment { get; set; }
     }
 }
