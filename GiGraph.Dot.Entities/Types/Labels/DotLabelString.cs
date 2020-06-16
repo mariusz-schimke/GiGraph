@@ -57,9 +57,11 @@ namespace GiGraph.Dot.Entities.Types.Labels
         /// <summary>
         /// Creates a label initialized with escaped text. The text should be formatted according to the rules
         /// described in the documentation available at <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString"/>.
+        /// If the text represents a record, its format should follow the rules available at
+        /// <see href="http://www.graphviz.org/doc/info/shapes.html#record"/>.
         /// </summary>
         /// <param name="text">The escaped text to use as the label.</param>
-        public static DotLabelString FromEscapedText(string text)
+        public static DotLabelString FromFormattedText(string text)
         {
             return (DotEscapedString) text;
         }
