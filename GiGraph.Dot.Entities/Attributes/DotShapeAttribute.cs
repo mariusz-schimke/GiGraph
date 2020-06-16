@@ -11,15 +11,6 @@ namespace GiGraph.Dot.Entities.Attributes
     public class DotShapeAttribute : DotAttribute<DotShape>
     {
         /// <summary>
-        /// Creates a new instance of the attribute with a key of "shape".
-        /// </summary>
-        /// <param name="value">The value of the attribute.</param>
-        public DotShapeAttribute(DotShape value)
-            : base("shape", value)
-        {
-        }
-
-        /// <summary>
         /// Creates a new instance of the attribute.
         /// </summary>
         /// <param name="key">The key of the attribute.</param>
@@ -219,11 +210,6 @@ namespace GiGraph.Dot.Entities.Attributes
                 default:
                     throw new ArgumentOutOfRangeException(nameof(Value), $"The specified node shape '{Value}' is not supported.");
             }
-        }
-
-        public static implicit operator DotShapeAttribute(DotShape shape)
-        {
-            return new DotShapeAttribute(shape);
         }
     }
 }
