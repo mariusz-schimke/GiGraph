@@ -35,12 +35,12 @@ namespace GiGraph.Examples.Complex
                 edge.Attributes.LogicalHeadId = "Flow 1";
             });
 
-            graph.Edges.Add("Decision", "Cluster 2 Start", attrs =>
+            graph.Edges.Add("Decision", "Cluster 2 Start", edge =>
             {
-                attrs.Attributes.Label = "no";
+                edge.Attributes.Label = "no";
 
                 // attach the arrow to cluster border
-                attrs.Attributes.LogicalHeadId = "Flow 2";
+                edge.Attributes.LogicalHeadId = "Flow 2";
             });
 
             graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.LogicalTailId = "Flow 1";
