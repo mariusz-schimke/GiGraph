@@ -43,7 +43,7 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
                 key,
                 quoteKey: KeyRequiresQuoting(key),
                 value,
-                braceValue: true
+                writeInBrackets: true
             );
         }
     }
