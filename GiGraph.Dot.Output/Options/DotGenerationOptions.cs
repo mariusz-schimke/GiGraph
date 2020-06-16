@@ -45,6 +45,9 @@ namespace GiGraph.Dot.Output.Options
         /// </para>
         /// </summary>
         public virtual bool OrderElements { get; set; } = false;
+        
+        // TODO: add bool HtmlEscaping
+        // Use the options to generate text escaping pipeline dynamically, based on this property.
 
         protected DotGenerationOptions(AttributeOptions attributes, SubgraphOptions subgraphs, ClusterOptions clusters, ColorOptions colors)
         {

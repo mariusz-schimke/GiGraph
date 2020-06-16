@@ -32,23 +32,23 @@ namespace GiGraph.Examples.Basic
             graph.Subgraphs.Add(sg =>
             {
                 // a dotted edge
-                sg.Edges.Add("G", "H", attrs =>
+                sg.Edges.Add("G", "H", edge =>
                 {
-                    attrs.Label = "DOTTED";
-                    attrs.Style = DotStyle.Dotted;
+                    edge.Attributes.Label = "DOTTED";
+                    edge.Attributes.Style = DotStyle.Dotted;
                 });
             });
 
             graph.Subgraphs.Add(sg =>
             {
                 // edges rendered as parallel splines
-                sg.Edges.Add("E", "F", attrs =>
+                sg.Edges.Add("E", "F", edge =>
                 {
-                    attrs.Label = "PARALLEL SPLINES";
-                    attrs.ArrowDirection = DotArrowDirection.Both;
+                    edge.Attributes.Label = "PARALLEL SPLINES";
+                    edge.Attributes.ArrowDirection = DotArrowDirection.Both;
 
                     // this will render two parallel splines (but more of them can be added by adding further colors)
-                    attrs.Color = DotColorDefinition.Multi(Color.Turquoise, Color.RoyalBlue);
+                    edge.Attributes.Color = DotColorDefinition.Multi(Color.Turquoise, Color.RoyalBlue);
                 });
             });
 
@@ -58,13 +58,13 @@ namespace GiGraph.Examples.Basic
                 sg.Nodes.Add("C").Attributes.FillColor = DotColorDefinition.Double(Color.RoyalBlue, Color.Turquoise, weight2: 0.25);
                 sg.Nodes.Add("D").Attributes.FillColor = DotColorDefinition.Double(Color.Navy, Color.RoyalBlue, weight1: 0.25);
 
-                sg.Edges.Add("C", "D", attrs =>
+                sg.Edges.Add("C", "D", edge =>
                 {
-                    attrs.Label = "MULTICOLOR SERIES";
-                    attrs.ArrowDirection = DotArrowDirection.Both;
+                    edge.Attributes.Label = "MULTICOLOR SERIES";
+                    edge.Attributes.ArrowDirection = DotArrowDirection.Both;
 
                     // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
-                    attrs.Color = DotColorDefinition.Multi(
+                    edge.Attributes.Color = DotColorDefinition.Multi(
                         new DotWeightedColor(Color.Turquoise, 0.33),
                         new DotWeightedColor(Color.Gray, 0.33),
                         Color.Navy);

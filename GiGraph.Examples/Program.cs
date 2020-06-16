@@ -1,5 +1,5 @@
-﻿using GiGraph.Dot.Extensions; // Build(), SaveToFile()
-using System;
+﻿using System;
+using GiGraph.Dot.Extensions; // Build(), SaveToFile()
 using GiGraph.Examples.Basic;
 
 namespace GiGraph.Examples
@@ -8,15 +8,13 @@ namespace GiGraph.Examples
     {
         private static void Main(string[] args)
         {
-            var graph = WithCustomStyles.Generate();
+            var graph = HelloWorld.Generate();
 
             // build a graph as string
             Console.WriteLine(graph.Build());
 
             // or save it to a file (.gv and .dot are the default extensions)
-            graph.SaveToFile(@"example.gv");
-
-            Console.ReadLine();
+            graph.SaveToFile("example.gv");
         }
     }
 }

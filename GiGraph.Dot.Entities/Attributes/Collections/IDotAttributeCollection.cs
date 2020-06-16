@@ -141,18 +141,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotRankDirectionAttribute Set(string key, DotRankDirection value);
 
         /// <summary>
-        /// Sets an edge port, that is a point on a node where the edge is attached to.
+        /// Sets an endpoint port, that is a point on a node where an edge is attached to.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        DotEdgePortAttribute Set(string key, DotEdgePort value);
+        DotEndpointPortAttribute Set(string key, DotEndpointPort value);
 
         /// <summary>
-        /// Sets an edge compass point, that is a point on a node where the edge is attached to.
+        /// Sets an endpoint compass point, that is a point on a node where an edge is attached to.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        DotEdgePortAttribute Set(string key, DotCompassPoint value);
+        DotEndpointPortAttribute Set(string key, DotCompassPoint value);
 
         /// <summary>
         /// Checks if an attribute with the specified key exists in the collection, and returns it as the specified type.

@@ -141,23 +141,23 @@ namespace GiGraph.Examples
             graph.Subgraphs.Add(sg =>
             {
                 // a dotted edge
-                sg.Edges.Add("G", "H", attrs =>
+                sg.Edges.Add("G", "H", edge =>
                 {
-                    attrs.Label = "DOTTED";
-                    attrs.Style = DotStyle.Dotted;
+                    edge.Attributes.Label = "DOTTED";
+                    edge.Attributes.Style = DotStyle.Dotted;
                 });
             });
 
             graph.Subgraphs.Add(sg =>
             {
                 // edges rendered as parallel splines
-                sg.Edges.Add("E", "F", attrs =>
+                sg.Edges.Add("E", "F", edge =>
                 {
-                    attrs.Label = "PARALLEL SPLINES";
-                    attrs.ArrowDirection = DotArrowDirection.Both;
+                    edge.Attributes.Label = "PARALLEL SPLINES";
+                    edge.Attributes.ArrowDirection = DotArrowDirection.Both;
 
                     // this will render two parallel splines (but more of them can be added by adding further colors)
-                    attrs.Color = DotColorDefinition.Multi(Color.Turquoise, Color.RoyalBlue);
+                    edge.Attributes.Color = DotColorDefinition.Multi(Color.Turquoise, Color.RoyalBlue);
                 });
             });
 
@@ -167,13 +167,13 @@ namespace GiGraph.Examples
                 sg.Nodes.Add("C").Attributes.FillColor = DotColorDefinition.Double(Color.RoyalBlue, Color.Turquoise, weight2: 0.25);
                 sg.Nodes.Add("D").Attributes.FillColor = DotColorDefinition.Double(Color.Navy, Color.RoyalBlue, weight1: 0.25);
 
-                sg.Edges.Add("C", "D", attrs =>
+                sg.Edges.Add("C", "D", edge =>
                 {
-                    attrs.Label = "MULTICOLOR SERIES";
-                    attrs.ArrowDirection = DotArrowDirection.Both;
+                    edge.Attributes.Label = "MULTICOLOR SERIES";
+                    edge.Attributes.ArrowDirection = DotArrowDirection.Both;
 
                     // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
-                    attrs.Color = DotColorDefinition.Multi(
+                    edge.Attributes.Color = DotColorDefinition.Multi(
                         new DotWeightedColor(Color.Turquoise, 0.33),
                         new DotWeightedColor(Color.Gray, 0.33),
                         Color.Navy);
@@ -235,7 +235,7 @@ namespace GiGraph.Examples
             Console.WriteLine(graph.Build());
 
             // or save it to a file (.gv and .dot are the default extensions)
-            graph.SaveToFile(@"example.gv");
+            graph.SaveToFile("example.gv");
         }
     }
 }
@@ -325,20 +325,20 @@ namespace GiGraph.Examples
 
             // (!) Note that CROSS-DIAGRAM EDGES SHOULD BE DEFINED IN THE COMMON PARENT LEVEL GRAPH/SUBGRAPH
             // (which is the root graph in this case)
-            graph.Edges.Add("Decision", "Cluster 1 Start", attrs =>
+            graph.Edges.Add("Decision", "Cluster 1 Start", edge =>
             {
-                attrs.Label = "yes";
+                edge.Attributes.Label = "yes";
 
                 // attach the arrow to cluster border
-                attrs.LogicalHeadId = "Flow 1";
+                edge.Attributes.LogicalHeadId = "Flow 1";
             });
 
-            graph.Edges.Add("Decision", "Cluster 2 Start", attrs =>
+            graph.Edges.Add("Decision", "Cluster 2 Start", edge =>
             {
-                attrs.Label = "no";
+                edge.Attributes.Label = "no";
 
                 // attach the arrow to cluster border
-                attrs.LogicalHeadId = "Flow 2";
+                edge.Attributes.LogicalHeadId = "Flow 2";
             });
 
             graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.LogicalTailId = "Flow 1";
@@ -366,7 +366,6 @@ namespace GiGraph.Examples
 
                 cluster.Edges.AddSequence("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");
             });
-
 
             // build a graph as string
             Console.WriteLine(graph.Build());

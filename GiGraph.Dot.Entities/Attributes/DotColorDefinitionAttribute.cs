@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Entities.Attributes.Enums;
+﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Output.Options;
 
@@ -25,15 +24,11 @@ namespace GiGraph.Dot.Entities.Attributes
         public DotColorDefinitionAttribute(string key, DotColorDefinition colorDefinition)
             : base(key, colorDefinition)
         {
-            if (colorDefinition is null)
-            {
-                throw new ArgumentNullException(nameof(colorDefinition), "Color definition cannot be null.");
-            }
         }
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
-            return Value.GetDotEncodedColor(options);
+            return Value?.GetDotEncodedColor(options);
         }
     }
 }
