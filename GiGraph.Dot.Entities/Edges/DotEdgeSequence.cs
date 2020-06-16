@@ -21,6 +21,11 @@ namespace GiGraph.Dot.Entities.Edges
         protected DotEdgeSequence(DotEndpointDefinition[] endpoints, IDotEdgeAttributes attributes)
             : base(attributes)
         {
+            if (endpoints is null)
+            {
+                throw new ArgumentNullException(nameof(endpoints), "Endpoint collection cannot be null.");
+            }
+
             _endpoints = endpoints.Length > 1
                 ? endpoints
                 : throw new ArgumentException("At least a pair of endpoints has to be specified for an edge sequence.", nameof(endpoints));
@@ -52,7 +57,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
         public DotEdgeSequence(params string[] nodeIds)
-            : this((IEnumerable<string>)nodeIds)
+            : this((IEnumerable<string>) nodeIds)
         {
         }
 
@@ -68,9 +73,12 @@ namespace GiGraph.Dot.Entities.Edges
 
         protected override string GetOrderingKey()
         {
-            return string.Join(" ", Endpoints
-                .Cast<IDotOrderableEntity>()
-                .Select(endpoint => endpoint.OrderingKey));
+            return string.Join
+            (
+                " ",
+                Endpoints.Cast<IDotOrderableEntity>()
+                         .Select(endpoint => endpoint.OrderingKey)
+            );
         }
 
         /// <summary>
