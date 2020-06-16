@@ -3,7 +3,7 @@
 namespace GiGraph.Dot.Output.TextEscaping
 {
     /// <summary>
-    /// Escapes text.
+    /// Escapes text in multiple steps.
     /// </summary>
     public class TextEscapingPipeline : List<IDotTextEscaper>, IDotTextEscaper
     {
