@@ -5,12 +5,12 @@ namespace GiGraph.Dot.Output.TextEscaping
     /// <summary>
     /// Escapes text in multiple steps.
     /// </summary>
-    public class TextEscapingPipeline : List<IDotTextEscaper>, IDotTextEscaper
+    public class DotTextEscapingPipeline : List<IDotTextEscaper>, IDotTextEscaper
     {
         /// <summary>
         /// Creates an empty text escaping pipeline.
         /// </summary>
-        public TextEscapingPipeline()
+        public DotTextEscapingPipeline()
         {
         }
 
@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Output.TextEscaping
         /// Creates a text escaping pipeline initialized with the specified collection of text escapers.
         /// </summary>
         /// <param name="collection">The text escapers to initialize the pipeline with.</param>
-        public TextEscapingPipeline(IEnumerable<IDotTextEscaper> collection) : base(collection)
+        public DotTextEscapingPipeline(IEnumerable<IDotTextEscaper> collection) : base(collection)
         {
         }
 
@@ -36,25 +36,25 @@ namespace GiGraph.Dot.Output.TextEscaping
         /// Creates a new pipeline initialized with the specified text escapers.
         /// </summary>
         /// <param name="escaper">The text escapers to use.</param>
-        public virtual TextEscapingPipeline From(params IDotTextEscaper[] escaper)
+        public virtual DotTextEscapingPipeline From(params IDotTextEscaper[] escaper)
         {
-            return new TextEscapingPipeline(escaper);
+            return new DotTextEscapingPipeline(escaper);
         }
 
         /// <summary>
         /// Creates a new pipeline that does not modify the input string in any way.
         /// </summary>
-        public static TextEscapingPipeline None()
+        public static DotTextEscapingPipeline None()
         {
-            return new TextEscapingPipeline();
+            return new DotTextEscapingPipeline();
         }
 
         /// <summary>
         /// Creates a new pipeline to use for escaping strings (e.g. the value of the string attribute).
         /// </summary>
-        public static TextEscapingPipeline ForString()
+        public static DotTextEscapingPipeline ForString()
         {
-            return new TextEscapingPipeline
+            return new DotTextEscapingPipeline
             {
                 new DotHtmlEscaper(),
                 new DotBackslashEscaper(),
@@ -66,9 +66,23 @@ namespace GiGraph.Dot.Output.TextEscaping
         /// <summary>
         /// Creates a new pipeline to use for escaping identifiers.
         /// </summary>
-        public static TextEscapingPipeline ForIdentifier()
+        public static DotTextEscapingPipeline ForIdentifier()
         {
             return ForString();
+        }
+        
+        /// <summary>
+        /// Creates a new pipeline to use for escaping strings in record node fields.
+        /// </summary>
+        public static DotTextEscapingPipeline ForRecordNodeField()
+        {
+            return new DotTextEscapingPipeline(ForString())
+            {
+                new DotAngleBracketsEscaper(),
+                new DotCurlyBracketsEscaper(),
+                new DotVerticalBarEscaper(),
+                new DotSpaceEscaper()
+            };
         }
     }
 }
