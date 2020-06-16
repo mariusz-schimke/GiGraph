@@ -173,5 +173,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <see href="http://www.graphviz.org/doc/info/attrs.html#a:constraint"/>
         /// </summary>
         bool? Constraint { get; set; }
+
+        /// <summary>
+        /// Comments are inserted into output. Device-dependent.
+        /// </summary>
+        string Comment { get; set; }
     }
 }
