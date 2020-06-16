@@ -23,6 +23,11 @@ namespace GiGraph.Dot.Entities.Nodes
         protected DotNodeGroup(string[] nodeIds, IDotNodeAttributes attributes)
             : base(attributes)
         {
+            if (nodeIds is null)
+            {
+                throw new ArgumentNullException(nameof(nodeIds), "Node identifier collection cannot be null.");
+            }
+
             NodeIds = nodeIds.Any()
                 ? nodeIds
                 : throw new ArgumentException("At least one node identifier has to be specified for a node group.", nameof(nodeIds));

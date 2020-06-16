@@ -19,14 +19,15 @@ namespace GiGraph.Dot.Entities.Attributes
         public DotEndpointPortAttribute(string key, DotEndpointPort port)
             : base(key, port)
         {
-            if (port is null)
-            {
-                throw new ArgumentNullException(nameof(port), "Edge port cannot be null.");
-            }
         }
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options)
         {
+            if (Value is null)
+            {
+                return null;
+            }
+
             var result = new StringBuilder();
             var separator = string.Empty;
 
