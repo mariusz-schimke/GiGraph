@@ -20,12 +20,12 @@ namespace GiGraph.Dot.Entities.Types.Records
         {
             var result = new StringBuilder();
 
-            var braces = new[] { hasParent, Flip, true }.Where(x => x).Select(x => string.Empty);
+            var braces = new[] { hasParent, Flip }.Where(x => x).ToList();
             var fields = Fields.Select(field => field.GetDotEncoded(options, hasParent: true));
 
-            result.Append(string.Join("{ ", braces));
+            braces.ForEach(brace => result.Append("{ "));
             result.Append(string.Join(" | ", fields));
-            result.Append(string.Join(" }", braces));
+            braces.ForEach(brace => result.Append(" }"));
 
             return result.ToString();
         }

@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Gets or sets the label to display on the cluster.
         /// It can either be plain text, or HTML (<see cref="DotLabelHtml"/>).
         /// </summary>
-        DotLabelString Label { get; set; }
+        DotLabel Label { get; set; }
 
         /// <summary>
         /// Gets or sets the color of the cluster (default: <see cref="System.Drawing.Color.Black"/>).

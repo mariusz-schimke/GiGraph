@@ -6,14 +6,14 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     /// A label attribute. The value can either be a string (<see cref="DotLabelString"/>) or an HTML string (<see cref="DotLabelHtml"/>).
     /// </summary>
-    public class DotLabelAttribute : DotAttribute<DotLabelString>
+    public class DotLabelAttribute : DotAttribute<DotLabel>
     {
         /// <summary>
         /// Creates a new instance of a string attribute.
         /// </summary>
         /// <param name="key">The key of the attribute.</param>
         /// <param name="value">The value of the attribute.</param>
-        public DotLabelAttribute(string key, DotLabelString value)
+        public DotLabelAttribute(string key, DotLabel value)
             : base(key, value)
         {
         }
