@@ -1,6 +1,7 @@
 using System.Text;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges.Endpoints;
+using GiGraph.Dot.Entities.Types.Strings;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.TextEscaping;
 
@@ -12,25 +13,27 @@ namespace GiGraph.Dot.Entities.Types.Records
     /// </summary>
     public class DotRecordTextField : DotRecordField
     {
-        protected readonly IDotTextEscaper _textEscaper;
+        protected DotEscapableRecordFieldString _text;
+        protected DotEscapableRecordFieldString _portName;
 
         /// <summary>
         /// Gets or sets the text of the field.
         /// </summary>
-        public virtual string Text { get; set; }
+        public virtual string Text
+        {
+            get => _text;
+            set => _text = value;
+        }
 
         /// <summary>
         /// Gets or sets a port name, that is a name that can be referred to from an edge endpoint in order to attach
         /// the end of the edge to the current field. See <see cref="DotEndpoint.Port"/> or
         /// <see cref="IDotEdgeAttributes.TailPort"/> and <see cref="IDotEdgeAttributes.HeadPort"/>.
         /// </summary>
-        public virtual string PortName { get; set; }
-
-        protected DotRecordTextField(string text, string portName, IDotTextEscaper textEscaper)
+        public virtual string PortName
         {
-            _textEscaper = textEscaper;
-            Text = text;
-            PortName = portName;
+            get => _portName;
+            set => _portName = value;
         }
 
         /// <summary>
@@ -41,8 +44,9 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// in order to attach the end of the edge to the current field. See <see cref="DotEndpoint.Port"/> or
         /// <see cref="IDotEdgeAttributes.TailPort"/> and <see cref="IDotEdgeAttributes.HeadPort"/>.</param>
         public DotRecordTextField(string text, string portName = null)
-            : this(text, portName, DotTextEscapingPipeline.ForRecordNodeField())
         {
+            Text = text;
+            PortName = portName;
         }
 
         protected internal override string GetDotEncoded(DotGenerationOptions options, bool hasParent)
@@ -50,16 +54,19 @@ namespace GiGraph.Dot.Entities.Types.Records
             var result = new StringBuilder();
             var separator = string.Empty;
 
-            if (PortName is {})
+            if (_portName is {})
             {
                 result.Append("<");
-                result.Append(_textEscaper.Escape(PortName));
+                result.Append(_portName?.Escape());
                 result.Append(">");
                 separator = " ";
             }
 
-            result.Append(separator);
-            result.Append(_textEscaper.Escape(Text));
+            if (_text is {})
+            {
+                result.Append(separator);
+                result.Append(_text?.Escape());
+            }
 
             return result.ToString();
         }
