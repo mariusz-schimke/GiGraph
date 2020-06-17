@@ -43,14 +43,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotEscapeStringAttribute(key, value));
         }
 
-        public virtual DotLabelStringAttribute Set(string key, DotLabelString value)
+        public virtual DotLabelAttribute Set(string key, DotLabelString value)
         {
-            return Set(new DotLabelStringAttribute(key, value));
+            return Set(new DotLabelAttribute(key, value));
         }
 
-        public virtual DotLabelStringAttribute Set(string key, DotLabelHtml value)
+        public virtual DotLabelAttribute Set(string key, DotLabelHtml value)
         {
-            return Set(new DotLabelStringAttribute(key, value));
+            return Set(new DotLabelAttribute(key, value));
         }
 
         public virtual DotIntAttribute Set(string key, int value)
