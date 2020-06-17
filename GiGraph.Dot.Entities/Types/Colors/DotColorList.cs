@@ -84,7 +84,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// If both colors with and without weights are provided, the sum of the weighted ones should be below 1,
         /// as otherwise those without weights will be ignored by the visualization tool.</param>
         public DotColorList(IEnumerable<DotColor> colors)
-            : this(colors.ToArray())
+            : this(colors?.ToArray())
         {
         }
 
@@ -128,7 +128,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// </summary>
         /// <param name="colors">The colors to initialize the instance with.</param>
         public DotColorList(IEnumerable<Color> colors)
-            : this(colors.Select(c => new DotColor(c)))
+            : this(colors?.Select(c => new DotColor(c)))
         {
         }
 
