@@ -2,14 +2,26 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Records;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public interface IDotNodeAttributes : IDotAttributeCollection
     {
         /// <summary>
-        /// Gets or sets the label to display on the node.
-        /// It can be plain text, HTML (<see cref="DotLabelHtml"/>) or a record (TODO).
+        /// <para>
+        ///     Gets or sets the label to display on the node. It can be a string, an HTML (<see cref="DotLabelHtml"/>),
+        ///     or a record (<see cref="DotLabelRecord"/>) for a record-based node
+        ///     (<see cref="Shape"/> = <see cref="DotShape.Record"/> or <see cref="Shape"/> = <see cref="DotShape.MRecord"/>).
+        /// </para>
+        /// <para>
+        ///     When assigning a value to this property, an implicit conversion is performed.
+        ///     <list type="bullet">
+        ///         <item><see cref="Label"/> = "My label";</item>
+        ///         <item><see cref="Label"/> = (<see cref="DotLabelHtml"/>) "&lt;TABLE&gt;...&lt;/TABLE&gt;";</item>
+        ///         <item><see cref="Label"/> = new <see cref="DotRecord"/>("My field 1", "My field 2");</item>
+        ///     </list>
+        /// </para>
         /// </summary>
         DotLabel Label { get; set; }
 
@@ -113,7 +125,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Gets or sets the font size used for text (in points; 72 points per inch). Default: 14.0, minimum: 1.0.
         /// </summary>
         double? FontSize { get; set; }
-        
+
         /// <summary>
         /// Comments are inserted into output. Device-dependent.
         /// </summary>
