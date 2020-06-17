@@ -43,11 +43,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotEscapeStringAttribute(key, value));
         }
 
-        public virtual DotEscapeStringAttribute Set(string key, DotEscapableRecordFieldString value)
-        {
-            return Set(new DotEscapeStringAttribute(key, value));
-        }
-
         public virtual DotLabelAttribute Set(string key, DotLabelString value)
         {
             return Set(new DotLabelAttribute(key, value));
