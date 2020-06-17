@@ -8,19 +8,19 @@ using GiGraph.Dot.Output.Writers.AttributeWriters;
 
 namespace GiGraph.Dot.Output.Generators.AttributeGenerators
 {
-    public class DotLabelStringAttributeGenerator : DotAttributeGenerator<DotLabelStringAttribute>
+    public class DotLabelAttributeGenerator : DotAttributeGenerator<DotLabelAttribute>
     {
-        protected DotLabelStringAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
+        protected DotLabelAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
             : base(syntaxRules, options, entityGenerators, identifierEscaper)
         {
         }
 
-        public DotLabelStringAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotLabelAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        public override void Generate(DotLabelStringAttribute attribute, IDotAttributeWriter writer)
+        public override void Generate(DotLabelAttribute attribute, IDotAttributeWriter writer)
         {
             var value = ((IDotEncodableValue) attribute).GetDotEncodedValue(_options);
 

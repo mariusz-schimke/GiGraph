@@ -102,7 +102,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotLabelString Label
         {
             get => TryGetValueAsLabelString("label");
-            set => AddOrRemove("label", value, v => new DotLabelStringAttribute("label", v));
+            set => AddOrRemove("label", value, v => new DotLabelAttribute("label", v));
         }
 
         public virtual DotShape? Shape

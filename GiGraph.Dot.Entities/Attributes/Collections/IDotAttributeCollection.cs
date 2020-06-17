@@ -54,14 +54,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        DotLabelStringAttribute Set(string key, DotLabelString value);
+        DotLabelAttribute Set(string key, DotLabelString value);
 
         /// <summary>
         /// Adds or replaces the specified HTML label attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        DotLabelStringAttribute Set(string key, DotLabelHtml value);
+        DotLabelAttribute Set(string key, DotLabelHtml value);
 
         /// <summary>
         /// Adds or replaces the specified integer value attribute in the collection.
