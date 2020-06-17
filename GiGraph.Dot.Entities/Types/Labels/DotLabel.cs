@@ -1,8 +1,13 @@
+using GiGraph.Dot.Entities.Types.Records;
 using GiGraph.Dot.Entities.Types.Strings;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Labels
 {
+    /// <summary>
+    /// Represents label. It can either be a text label (<see cref="DotLabelString"/>), or an HTML label (<see cref="DotLabelHtml"/>).
+    /// <see cref="DotLabelRecord"/>, on the other hand, can be used for record-like nodes.
+    /// </summary>
     public abstract class DotLabel : IDotEncodableValue
     {
         protected internal abstract string GetDotEncodedString(DotGenerationOptions options);
@@ -39,19 +44,43 @@ namespace GiGraph.Dot.Entities.Types.Labels
             return html;
         }
 
-        public static implicit operator DotLabel(string value)
+        /// <summary>
+        /// Creates a label initialized with the specified record.
+        /// </summary>
+        /// <param name="record">The record to use as the label.</param>
+        public static DotLabelRecord FromRecord(DotRecord record)
         {
-            return (DotLabelString) value;
+            return record;
         }
 
-        public static implicit operator DotLabel(DotEscapableString value)
+        public static implicit operator DotLabel(string text)
         {
-            return (DotLabelString) value;
+            return (DotLabelString) text;
         }
 
-        public static implicit operator DotLabel(DotEscapedString value)
+        public static implicit operator DotLabel(DotEscapableString text)
         {
-            return (DotLabelString) value;
+            return (DotLabelString) text;
+        }
+
+        public static implicit operator DotLabel(DotEscapedString text)
+        {
+            return (DotLabelString) text;
+        }
+
+        public static implicit operator DotLabel(DotRecord record)
+        {
+            return (DotLabelRecord) record;
+        }
+
+        public static implicit operator DotLabel(DotRecordField[] value)
+        {
+            return (DotRecord) value;
+        }
+
+        public static implicit operator DotLabel(string[] value)
+        {
+            return (DotRecord) value;
         }
     }
 }

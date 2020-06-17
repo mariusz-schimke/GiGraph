@@ -56,7 +56,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// If, however, this attribute is <see cref="DotRankDirection.LeftToRight"/> or <see cref="DotRankDirection.RightToLeft"/>,
         /// corresponding to horizontal layouts, the top-level fields are displayed vertically. </param>
         public DotRecord(IEnumerable<DotRecordField> fields, bool flip = FlipDefault)
-            : this(fields.ToArray(), flip)
+            : this(fields?.ToArray(), flip)
         {
         }
 
@@ -80,7 +80,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// If, however, this attribute is <see cref="DotRankDirection.LeftToRight"/> or <see cref="DotRankDirection.RightToLeft"/>,
         /// corresponding to horizontal layouts, the top-level fields are displayed vertically. </param>
         public DotRecord(IEnumerable<string> fields, bool flip = FlipDefault)
-            : this(fields.Select(field => new DotRecordTextField(field)), flip)
+            : this(fields?.Select(field => new DotRecordTextField(field)), flip)
         {
         }
 
@@ -96,6 +96,16 @@ namespace GiGraph.Dot.Entities.Types.Records
             braces.ForEach(brace => result.Append(" }"));
 
             return result.ToString();
+        }
+
+        public static implicit operator DotRecord(DotRecordField[] value)
+        {
+            return value is {} ? new DotRecord(value) : null;
+        }
+
+        public static implicit operator DotRecord(string[] value)
+        {
+            return value is {} ? new DotRecord(value) : null;
         }
     }
 }
