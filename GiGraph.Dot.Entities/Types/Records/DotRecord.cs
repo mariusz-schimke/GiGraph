@@ -30,7 +30,17 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// </summary>
         public virtual bool Flip { get; set; } = FlipDefault;
 
-        protected DotRecord(DotRecordField[] fields, bool flip)
+        /// <summary>
+        /// Creates a new record instance.
+        /// </summary>
+        /// <param name="flip">Determines whether the orientation of the record should be changed from horizontal to vertical,
+        /// or the other way round. The initial orientation of a record node depends on the <see cref="IDotGraphAttributes.LayoutDirection"/>  attribute.
+        /// If this attribute is <see cref="DotRankDirection.TopToBottom"/> (the default) or <see cref="DotRankDirection.BottomToTop"/>,
+        /// corresponding to vertical layouts, the top-level fields in a record are displayed horizontally.
+        /// If, however, this attribute is <see cref="DotRankDirection.LeftToRight"/> or <see cref="DotRankDirection.RightToLeft"/>,
+        /// corresponding to horizontal layouts, the top-level fields are displayed vertically.</param>
+        /// <param name="fields">The fields to initialize the record with.</param>
+        public DotRecord(bool flip, params DotRecordField[] fields)
         {
             Fields = fields ?? throw new ArgumentNullException(nameof(fields), "Field collection cannot be null.");
             Flip = flip;
@@ -41,7 +51,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// </summary>
         /// <param name="fields">The fields to initialize the record with.</param>
         public DotRecord(params DotRecordField[] fields)
-            : this(fields, flip: FlipDefault)
+            : this(FlipDefault, fields)
         {
         }
 
@@ -54,9 +64,24 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// If this attribute is <see cref="DotRankDirection.TopToBottom"/> (the default) or <see cref="DotRankDirection.BottomToTop"/>,
         /// corresponding to vertical layouts, the top-level fields in a record are displayed horizontally.
         /// If, however, this attribute is <see cref="DotRankDirection.LeftToRight"/> or <see cref="DotRankDirection.RightToLeft"/>,
-        /// corresponding to horizontal layouts, the top-level fields are displayed vertically. </param>
+        /// corresponding to horizontal layouts, the top-level fields are displayed vertically.</param>
         public DotRecord(IEnumerable<DotRecordField> fields, bool flip = FlipDefault)
-            : this(fields?.ToArray(), flip)
+            : this(flip, fields?.ToArray())
+        {
+        }
+
+        /// <summary>
+        /// Creates a new record instance.
+        /// </summary>
+        /// <param name="flip">Determines whether the orientation of the record should be changed from horizontal to vertical,
+        /// or the other way round. The initial orientation of a record node depends on the <see cref="IDotGraphAttributes.LayoutDirection"/>  attribute.
+        /// If this attribute is <see cref="DotRankDirection.TopToBottom"/> (the default) or <see cref="DotRankDirection.BottomToTop"/>,
+        /// corresponding to vertical layouts, the top-level fields in a record are displayed horizontally.
+        /// If, however, this attribute is <see cref="DotRankDirection.LeftToRight"/> or <see cref="DotRankDirection.RightToLeft"/>,
+        /// corresponding to horizontal layouts, the top-level fields are displayed vertically.</param>
+        /// <param name="fields">The fields to initialize the record with.</param>
+        public DotRecord(bool flip, params string[] fields)
+            : this(fields, flip)
         {
         }
 
@@ -65,7 +90,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// </summary>
         /// <param name="fields">The fields to initialize the record with.</param>
         public DotRecord(params string[] fields)
-            : this(fields, flip: FlipDefault)
+            : this(FlipDefault, fields)
         {
         }
 
@@ -78,7 +103,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// If this attribute is <see cref="DotRankDirection.TopToBottom"/> (the default) or <see cref="DotRankDirection.BottomToTop"/>,
         /// corresponding to vertical layouts, the top-level fields in a record are displayed horizontally.
         /// If, however, this attribute is <see cref="DotRankDirection.LeftToRight"/> or <see cref="DotRankDirection.RightToLeft"/>,
-        /// corresponding to horizontal layouts, the top-level fields are displayed vertically. </param>
+        /// corresponding to horizontal layouts, the top-level fields are displayed vertically.</param>
         public DotRecord(IEnumerable<string> fields, bool flip = FlipDefault)
             : this(fields?.Select(field => new DotRecordTextField(field)), flip)
         {
