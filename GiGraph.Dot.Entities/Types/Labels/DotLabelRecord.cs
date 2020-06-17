@@ -21,5 +21,25 @@ namespace GiGraph.Dot.Entities.Types.Labels
         {
             return _record?.GetDotEncoded(options, hasParent: false);
         }
+
+        public static implicit operator DotLabelRecord(DotRecord value)
+        {
+            return value is {} ? new DotLabelRecord(value) : null;
+        }
+
+        public static implicit operator DotRecord(DotLabelRecord value)
+        {
+            return value?._record;
+        }
+
+        public static implicit operator DotLabelRecord(DotRecordField[] value)
+        {
+            return value is {} ? new DotRecord(value) : null;
+        }
+
+        public static implicit operator DotLabelRecord(string[] value)
+        {
+            return value is {} ? new DotRecord(value) : null;
+        }
     }
 }

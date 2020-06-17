@@ -14,7 +14,17 @@ namespace GiGraph.Dot.Entities.Types.Records
 
         public static implicit operator DotRecordField(string text)
         {
-            return new DotRecordTextField(text);
+            return (DotRecordTextField) text;
+        }
+
+        public static implicit operator DotRecordField(DotRecordField[] fields)
+        {
+            return (DotRecord) fields;
+        }
+
+        public static implicit operator DotRecordField(string[] fields)
+        {
+            return (DotRecord) fields;
         }
     }
 }
