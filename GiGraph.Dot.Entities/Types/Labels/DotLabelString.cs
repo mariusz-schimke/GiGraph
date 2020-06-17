@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
     ///     <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString"/>.
     /// </para>
     /// <para>
-    ///     When you want to generate an HTML-like label, use <see cref="DotLabelHtml"/>.
+    ///     When you want to generate an HTML-like label, use <see cref="DotLabelHtml"/> instead.
     /// </para>
     /// </summary>
     public class DotLabelString : DotLabel
