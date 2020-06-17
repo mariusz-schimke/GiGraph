@@ -17,6 +17,11 @@ namespace GiGraph.Dot.Entities.Types.Labels
             _record = record ?? throw new ArgumentNullException(nameof(record), "Record cannot be null.");
         }
 
+        public override string ToString()
+        {
+            return _record.GetDotEncoded(new DotGenerationOptions(), hasParent: false);
+        }
+
         protected internal override string GetDotEncodedString(DotGenerationOptions options)
         {
             return _record?.GetDotEncoded(options, hasParent: false);
