@@ -39,7 +39,6 @@ namespace GiGraph.Dot.Output.Options
 
             StringEscaper = IdentifierEscaper = new DotTextEscapingPipeline
             {
-                new DotHtmlEscaper(),
                 new DotBackslashEscaper(),
                 new DotQuotationMarkEscaper(),
                 new DotLineBreakEscaper()
