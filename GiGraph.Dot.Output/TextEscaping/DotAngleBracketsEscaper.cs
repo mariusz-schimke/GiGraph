@@ -5,11 +5,13 @@
     /// </summary>
     public class DotAngleBracketsEscaper : IDotTextEscaper
     {
-        public virtual string Escape(string value)
+        public static string Escape(string value)
         {
             return value
                  ?.Replace("<", @"\<")
                  ?.Replace(">", @"\>");
         }
+
+        string IDotTextEscaper.Escape(string value) => Escape(value);
     }
 }
