@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         }
 
         protected DotEscapableString(string value)
-            : this(value, TextEscapingPipeline.ForString())
+            : this(value, DotTextEscapingPipeline.ForString())
         {
         }
 

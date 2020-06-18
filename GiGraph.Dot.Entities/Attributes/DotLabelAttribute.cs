@@ -4,16 +4,17 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    /// A label attribute. The value can either be a string (<see cref="DotLabelString"/>) or an HTML string (<see cref="DotLabelHtml"/>).
+    /// A label attribute. The value can be a string (<see cref="DotLabelString"/>), an HTML string (<see cref="DotLabelHtml"/>),
+    /// or a record (<see cref="DotLabelRecord"/>).
     /// </summary>
-    public class DotLabelStringAttribute : DotAttribute<DotLabelString>
+    public class DotLabelAttribute : DotAttribute<DotLabel>
     {
         /// <summary>
         /// Creates a new instance of a string attribute.
         /// </summary>
         /// <param name="key">The key of the attribute.</param>
         /// <param name="value">The value of the attribute.</param>
-        public DotLabelStringAttribute(string key, DotLabelString value)
+        public DotLabelAttribute(string key, DotLabel value)
             : base(key, value)
         {
         }
