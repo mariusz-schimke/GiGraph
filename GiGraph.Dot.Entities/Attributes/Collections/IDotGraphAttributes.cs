@@ -8,10 +8,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     public interface IDotGraphAttributes : IDotAttributeCollection
     {
         /// <summary>
-        /// Gets or sets the label to display on the graph.
-        /// It can either be plain text, or HTML (<see cref="DotLabelHtml"/>).
+        /// <para>
+        ///     Gets or sets the label to display on the graph. It can be a string or an HTML (<see cref="DotLabelHtml"/>).
+        /// </para>
+        /// <para>
+        ///     When assigning a value to this property, an implicit conversion is performed.
+        ///     <list type="bullet">
+        ///         <item><see cref="Label"/> = "My label";</item>
+        ///         <item><see cref="Label"/> = (<see cref="DotLabelHtml"/>) "&lt;TABLE&gt;...&lt;/TABLE&gt;";</item>
+        ///     </list>
+        /// </para>
         /// </summary>
-        DotLabelString Label { get; set; }
+        DotLabel Label { get; set; }
 
         /// <summary>
         /// Gets or sets the color to use for clusters (default: <see cref="System.Drawing.Color.Black"/>).

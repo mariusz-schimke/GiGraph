@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         }
 
         protected DotEscapedString(string value)
-            : base(value, TextEscapingPipeline.None())
+            : base(value, DotTextEscapingPipeline.None())
         {
         }
         

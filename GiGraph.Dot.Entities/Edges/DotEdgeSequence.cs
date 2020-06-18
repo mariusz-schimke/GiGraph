@@ -47,7 +47,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="endpoints">The endpoints to initialize the instance with.</param>
         public DotEdgeSequence(IEnumerable<DotEndpointDefinition> endpoints)
-            : this(endpoints.ToArray())
+            : this(endpoints?.ToArray())
         {
         }
 
@@ -67,7 +67,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
         public DotEdgeSequence(IEnumerable<string> nodeIds)
-            : this(nodeIds.Select(nodeId => new DotEndpoint(nodeId)))
+            : this(nodeIds?.Select(nodeId => new DotEndpoint(nodeId)))
         {
         }
 

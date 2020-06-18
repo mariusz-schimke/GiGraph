@@ -112,12 +112,12 @@ namespace GiGraph.Dot.Output.Writers
             return Token("\"", linger);
         }
 
-        public virtual DotTokenWriter HtmlStartBrace(bool linger = false)
+        public virtual DotTokenWriter HtmlStartBracket(bool linger = false)
         {
             return Token("<", linger);
         }
 
-        public virtual DotTokenWriter HtmlEndBrace(bool linger = false)
+        public virtual DotTokenWriter HtmlEndBracket(bool linger = false)
         {
             return Token(">", linger);
         }
@@ -148,13 +148,13 @@ namespace GiGraph.Dot.Output.Writers
             return this;
         }
 
-        public virtual DotTokenWriter HtmlValue(string html, bool brace = true, bool linger = false)
+        public virtual DotTokenWriter HtmlValue(string html, bool writeInBrackets = true, bool linger = false)
         {
-            if (brace)
+            if (writeInBrackets)
             {
-                HtmlStartBrace(linger);
+                HtmlStartBracket(linger);
                 Token(html, linger);
-                HtmlEndBrace(linger);
+                HtmlEndBracket(linger);
             }
             else
             {

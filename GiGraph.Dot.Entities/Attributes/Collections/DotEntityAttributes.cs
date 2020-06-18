@@ -99,10 +99,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
         }
 
-        public virtual DotLabelString Label
+        public virtual DotLabel Label
         {
-            get => TryGetValueAsLabelString("label");
-            set => AddOrRemove("label", value, v => new DotLabelStringAttribute("label", v));
+            get => TryGetValueAsLabel("label");
+            set => AddOrRemove("label", value, v => new DotLabelAttribute("label", v));
         }
 
         public virtual DotShape? Shape
@@ -229,11 +229,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return TryGetValueAs<Color>(key, out var color) ? new DotColor(color) : null;
         }
 
-        protected virtual DotLabelString TryGetValueAsLabelString(string key)
+        protected virtual DotLabel TryGetValueAsLabel(string key)
         {
-            if (TryGetValueAs<DotLabelString>(key, out var dotLabelString))
+            if (TryGetValueAs<DotLabel>(key, out var label))
             {
-                return dotLabelString;
+                return label;
             }
 
             if (TryGetValueAs<DotEscapableString>(key, out var dotEscapableString))
