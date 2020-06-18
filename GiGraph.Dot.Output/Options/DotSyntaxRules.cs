@@ -10,14 +10,14 @@ namespace GiGraph.Dot.Output.Options
     /// </summary>
     public class DotSyntaxRules
     {
-        public virtual HashSet<string> Keywords { get; }
+        protected virtual HashSet<string> Keywords { get; }
 
-        public virtual string AlphabeticIdentifierPattern { get; }
-        public virtual string NumericIdentifierPattern { get; }
+        protected virtual string AlphabeticIdentifierPattern { get; }
+        protected virtual string NumericIdentifierPattern { get; }
 
-        public virtual IDotTextEscaper IdentifierEscaper { get; }
-        public virtual IDotTextEscaper StringEscaper { get; }
-        public virtual IDotTextEscaper RecordFieldEscaper { get; }
+        protected virtual IDotTextEscaper IdentifierEscaper { get; }
+        protected virtual IDotTextEscaper StringEscaper { get; }
+        protected virtual IDotTextEscaper RecordFieldEscaper { get; }
 
         /// <summary>
         /// Creates a default instance.
@@ -37,9 +37,21 @@ namespace GiGraph.Dot.Output.Options
             AlphabeticIdentifierPattern = @"^[_a-zA-Z\200-\377]+[_0-9a-zA-Z\200-\377]*$";
             NumericIdentifierPattern = @"^[-]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)$";
 
-            IdentifierEscaper = DotTextEscapingPipeline.ForIdentifier();
-            StringEscaper = DotTextEscapingPipeline.ForString();
-            RecordFieldEscaper = DotTextEscapingPipeline.ForRecordNodeField();
+            StringEscaper = IdentifierEscaper = new DotTextEscapingPipeline
+            {
+                new DotHtmlEscaper(),
+                new DotBackslashEscaper(),
+                new DotQuotationMarkEscaper(),
+                new DotLineBreakEscaper()
+            };
+
+            RecordFieldEscaper = new DotTextEscapingPipeline((IEnumerable<IDotTextEscaper>) StringEscaper)
+            {
+                new DotAngleBracketsEscaper(),
+                new DotCurlyBracketsEscaper(),
+                new DotVerticalBarEscaper(),
+                new DotSpaceHtmlEscaper()
+            };
         }
 
         /// <summary>

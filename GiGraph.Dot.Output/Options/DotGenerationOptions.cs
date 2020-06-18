@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Web;
 using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Options

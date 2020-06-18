@@ -3,7 +3,6 @@ using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
-using GiGraph.Dot.Output.TextEscaping;
 using GiGraph.Dot.Output.Writers.AttributeWriters;
 
 namespace GiGraph.Dot.Output.Generators.AttributeGenerators
@@ -11,11 +10,6 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
     public class DotAttributeGenerator<TAttribute> : DotEntityGenerator<TAttribute, IDotAttributeWriter>
         where TAttribute : DotAttribute, IDotEncodableValue
     {
-        protected DotAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
-            : base(syntaxRules, options, entityGenerators, identifierEscaper)
-        {
-        }
-
         public DotAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
@@ -26,15 +20,13 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
             WriteAttribute
             (
                 attribute.Key,
-                attribute.GetDotEncodedValue(_options),
+                attribute.GetDotEncodedValue(_options, _syntaxRules),
                 writer
             );
         }
 
         protected virtual void WriteAttribute(string key, string value, IDotAttributeWriter writer)
         {
-            key = EscapeIdentifier(key);
-
             writer.WriteAttribute
             (
                 key,

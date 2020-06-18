@@ -6,18 +6,12 @@ using GiGraph.Dot.Output.Writers.SubgraphWriters;
 using System.Linq;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
-using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Generators.SubgraphGenerators
 {
     public class DotCommonSubgraphCollectionGenerator<TSubgraph> : DotEntityGenerator<DotCommonSubgraphCollection<TSubgraph>, IDotSubgraphWriterRoot>
         where TSubgraph : DotCommonSubgraph
     {
-        protected DotCommonSubgraphCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
-            : base(syntaxRules, options, entityGenerators, identifierEscaper)
-        {
-        }
-
         public DotCommonSubgraphCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {

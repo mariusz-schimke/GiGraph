@@ -38,9 +38,9 @@ namespace GiGraph.Dot.Entities.Types.Labels
             return _text;
         }
 
-        protected internal override string GetDotEncodedString(DotGenerationOptions options)
+        protected internal override string GetDotEncodedString(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return _text?.GetDotEncodedString(options);
+            return _text?.GetDotEncodedString(options, syntaxRules);
         }
 
         public static implicit operator DotLabelString(string value)

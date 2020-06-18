@@ -1,4 +1,5 @@
-using GiGraph.Dot.Output.TextEscaping;
+using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Options.Extensions;
 
 namespace GiGraph.Dot.Entities.Types.Strings
 {
@@ -9,16 +10,16 @@ namespace GiGraph.Dot.Entities.Types.Strings
     /// </summary>
     public class DotEscapedString : DotEscapableString
     {
-        protected DotEscapedString(string value, IDotTextEscaper valueEscaper)
-            : base(value, valueEscaper)
+        protected DotEscapedString(string value)
+            : base(value)
         {
         }
 
-        protected DotEscapedString(string value)
-            : base(value, DotTextEscapingPipeline.None())
+        protected internal override string GetDotEncodedString(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
+            return options.FormatText(_value);
         }
-        
+
         public static implicit operator DotEscapedString(string value)
         {
             return value is {} ? new DotEscapedString(value) : null;

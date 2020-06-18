@@ -1,4 +1,3 @@
-using System;
 using System.Text;
 using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Edges;
@@ -21,7 +20,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
             if (Value is null)
             {
@@ -33,8 +32,7 @@ namespace GiGraph.Dot.Entities.Attributes
 
             if (Value.Name is { })
             {
-                // TODO: escape the name
-                result.Append(Value.Name);
+                result.Append(syntaxRules.EscapeIdentifier(Value.Name));
                 separator = ":";
             }
 

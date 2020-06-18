@@ -5,17 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Output.Generators.Providers;
-using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Generators.NodeGenerators
 {
     public class DotNodeGroupGenerator : DotNodeGenerator<DotNodeGroup>
     {
-        protected DotNodeGroupGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
-            : base(syntaxRules, options, entityGenerators, identifierEscaper)
-        {
-        }
-
         public DotNodeGroupGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {

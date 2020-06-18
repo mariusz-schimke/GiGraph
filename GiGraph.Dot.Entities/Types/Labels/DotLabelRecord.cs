@@ -19,12 +19,12 @@ namespace GiGraph.Dot.Entities.Types.Labels
 
         public override string ToString()
         {
-            return _record.GetDotEncoded(new DotGenerationOptions(), hasParent: false);
+            return _record.GetDotEncoded(new DotGenerationOptions(), new DotSyntaxRules(), hasParent: false);
         }
 
-        protected internal override string GetDotEncodedString(DotGenerationOptions options)
+        protected internal override string GetDotEncodedString(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return _record?.GetDotEncoded(options, hasParent: false);
+            return _record?.GetDotEncoded(options, syntaxRules, hasParent: false);
         }
 
         public static implicit operator DotLabelRecord(DotRecord value)
