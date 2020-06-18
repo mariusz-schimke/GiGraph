@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Web;
+using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Options
 {
@@ -7,22 +9,22 @@ namespace GiGraph.Dot.Output.Options
         /// <summary>
         /// Gets the generation options for attributes.
         /// </summary>
-        public virtual AttributeOptions Attributes { get; }
+        public virtual AttributeOptions Attributes { get; } = new AttributeOptions();
 
         /// <summary>
         /// Gets the generation options for subgraphs.
         /// </summary>
-        public virtual SubgraphOptions Subgraphs { get; }
+        public virtual SubgraphOptions Subgraphs { get; } = new SubgraphOptions();
 
         /// <summary>
         /// Gets the generation options for clusters.
         /// </summary>
-        public virtual ClusterOptions Clusters { get; }
+        public virtual ClusterOptions Clusters { get; } = new ClusterOptions();
 
         /// <summary>
         /// Gets the generation options for colors.
         /// </summary>
-        public virtual ColorOptions Colors { get; }
+        public virtual ColorOptions Colors { get; } = new ColorOptions();
 
         /// <summary>
         /// When set, identifiers will always be quoted, even if it is not required.
@@ -45,22 +47,13 @@ namespace GiGraph.Dot.Output.Options
         /// </para>
         /// </summary>
         public virtual bool OrderElements { get; set; } = false;
-        
-        // TODO: add bool HtmlEscaping
-        // Use the options to generate text escaping pipeline dynamically, based on this property.
 
-        protected DotGenerationOptions(AttributeOptions attributes, SubgraphOptions subgraphs, ClusterOptions clusters, ColorOptions colors)
-        {
-            Attributes = attributes;
-            Subgraphs = subgraphs;
-            Clusters = clusters;
-            Colors = colors;
-        }
-
-        public DotGenerationOptions()
-            : this(new AttributeOptions(), new SubgraphOptions(), new ClusterOptions(), new ColorOptions())
-        {
-        }
+        /// <summary>
+        /// An optional extra text formatter to use for identifiers and attributes. By default, the formatter is
+        /// <see cref="DotHtmlEscaper.Escape"/> because some visualization tools may have issues processing
+        /// special and national characters.  
+        /// </summary>
+        public virtual Func<string, string> TextFormatter { get; set; } = DotHtmlEscaper.Escape;
 
         public static DotGenerationOptions Custom(Action<DotGenerationOptions> init)
         {
