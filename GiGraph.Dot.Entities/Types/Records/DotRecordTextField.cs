@@ -57,7 +57,7 @@ namespace GiGraph.Dot.Entities.Types.Records
             if (_portName is {})
             {
                 result.Append("<");
-                result.Append(_portName?.Escape());
+                result.Append(_portName.Escape());
                 result.Append(">");
                 separator = " ";
             }
@@ -65,7 +65,7 @@ namespace GiGraph.Dot.Entities.Types.Records
             if (_text is {})
             {
                 result.Append(separator);
-                result.Append(_text?.Escape());
+                result.Append(_text.Escape());
             }
 
             return result.ToString();
