@@ -3,7 +3,6 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Types.Strings;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Types.Records
 {
@@ -45,8 +44,8 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// <see cref="IDotEdgeAttributes.TailPort"/> and <see cref="IDotEdgeAttributes.HeadPort"/>.</param>
         public DotRecordTextField(string text, string portName = null)
         {
-            Text = text;
-            PortName = portName;
+            _text = text;
+            _portName = portName;
         }
 
         protected internal override string GetDotEncoded(DotGenerationOptions options, bool hasParent)
