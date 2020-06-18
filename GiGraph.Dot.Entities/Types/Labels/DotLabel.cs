@@ -10,8 +10,8 @@ namespace GiGraph.Dot.Entities.Types.Labels
     /// </summary>
     public abstract class DotLabel : IDotEncodableValue
     {
-        protected internal abstract string GetDotEncodedString(DotGenerationOptions options);
-        string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options) => GetDotEncodedString(options);
+        protected internal abstract string GetDotEncodedString(DotGenerationOptions options, DotSyntaxRules syntaxRules);
+        string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedString(options, syntaxRules);
 
         /// <summary>
         /// Creates a label initialized with the specified text.

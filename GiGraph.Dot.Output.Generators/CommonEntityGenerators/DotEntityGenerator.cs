@@ -3,7 +3,7 @@ using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.CommonEntityWriters;
 using System;
 using GiGraph.Dot.Output.Generators.Providers;
-using GiGraph.Dot.Output.TextEscaping;
+using GiGraph.Dot.Output.Options.Extensions;
 
 namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 {
@@ -14,21 +14,14 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
         protected readonly DotSyntaxRules _syntaxRules;
         protected readonly DotGenerationOptions _options;
         protected readonly IDotEntityGeneratorsProvider _entityGenerators;
-        protected readonly IDotTextEscaper _identifierEscaper;
 
         public abstract void Generate(TEntity entity, TWriter writer);
 
-        protected DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
+        protected DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
         {
             _syntaxRules = syntaxRules;
             _options = options;
             _entityGenerators = entityGenerators;
-            _identifierEscaper = identifierEscaper ?? DotTextEscapingPipeline.ForIdentifier();
-        }
-
-        protected DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
-            : this(syntaxRules, options, entityGenerators, identifierEscaper: null)
-        {
         }
 
         public virtual bool Supports<TRequiredWriter>(Type entityType, out bool isExactEntityTypeMatch)
@@ -52,12 +45,13 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 
         protected virtual bool IdentifierRequiresQuoting(string id)
         {
-            return id is { } && (_options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id));
+            return _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);
         }
 
         protected virtual string EscapeIdentifier(string id)
         {
-            return _identifierEscaper.Escape(id);
+            return _syntaxRules.EscapeIdentifier(
+                _options.FormatText(id));
         }
 
         void IDotEntityGenerator.Generate(IDotEntity entity, IDotEntityWriter writer)

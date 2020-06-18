@@ -11,8 +11,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
     /// </summary>
     public abstract class DotColorDefinition : IDotEncodableValue
     {
-        protected internal abstract string GetDotEncodedColor(DotGenerationOptions options);
-        string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options) => GetDotEncodedColor(options);
+        protected internal abstract string GetDotEncodedColor(DotGenerationOptions options, DotSyntaxRules syntaxRules);
+        string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedColor(options, syntaxRules);
 
         /// <summary>
         /// Creates a new color instance initialized with a single color.

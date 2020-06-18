@@ -3,18 +3,12 @@ using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Generators.Providers;
-using GiGraph.Dot.Output.TextEscaping;
 using GiGraph.Dot.Output.Writers.AttributeWriters;
 
 namespace GiGraph.Dot.Output.Generators.AttributeGenerators
 {
     public class DotLabelAttributeGenerator : DotAttributeGenerator<DotLabelAttribute>
     {
-        protected DotLabelAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
-            : base(syntaxRules, options, entityGenerators, identifierEscaper)
-        {
-        }
-
         public DotLabelAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
@@ -22,7 +16,7 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
 
         public override void Generate(DotLabelAttribute attribute, IDotAttributeWriter writer)
         {
-            var value = ((IDotEncodableValue) attribute).GetDotEncodedValue(_options);
+            var value = ((IDotEncodableValue) attribute).GetDotEncodedValue(_options, _syntaxRules);
 
             if (attribute.Value is DotLabelHtml)
             {
@@ -36,8 +30,6 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
 
         protected virtual void WriteHtmlAttribute(string key, string value, IDotAttributeWriter writer)
         {
-            key = EscapeIdentifier(key);
-
             writer.WriteHtmlAttribute
             (
                 key,

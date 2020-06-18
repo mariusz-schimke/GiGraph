@@ -160,9 +160,9 @@ namespace GiGraph.Dot.Entities.Types.Colors
             return string.Join(", ", Colors.Select(color => color.ToString()));
         }
 
-        protected internal override string GetDotEncodedColor(DotGenerationOptions options)
+        protected internal override string GetDotEncodedColor(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            var colors = Colors.Select(color => color.GetDotEncodedColor(options));
+            var colors = Colors.Select(color => color.GetDotEncodedColor(options, syntaxRules));
             return string.Join(":", colors);
         }
     }

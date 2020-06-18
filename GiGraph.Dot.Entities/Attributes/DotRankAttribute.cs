@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
             switch (Value)
             {
