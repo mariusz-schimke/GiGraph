@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
 
         protected internal virtual double? GetWeight() => null;
 
-        protected internal override string GetDotEncodedColor(DotGenerationOptions options)
+        protected internal override string GetDotEncodedColor(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
             if (options.Colors.PreferName && Color.IsNamedColor)
             {

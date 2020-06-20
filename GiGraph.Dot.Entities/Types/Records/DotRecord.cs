@@ -109,12 +109,12 @@ namespace GiGraph.Dot.Entities.Types.Records
         {
         }
 
-        protected internal override string GetDotEncoded(DotGenerationOptions options, bool hasParent)
+        protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules, bool hasParent)
         {
             var result = new StringBuilder();
 
             var braces = new[] { hasParent, Flip }.Where(x => x).ToList();
-            var fields = Fields.Select(field => field.GetDotEncoded(options, hasParent: true));
+            var fields = Fields.Select(field => field.GetDotEncoded(options, syntaxRules, hasParent: true));
 
             braces.ForEach(brace => result.Append("{ "));
             result.Append(string.Join(" | ", fields));

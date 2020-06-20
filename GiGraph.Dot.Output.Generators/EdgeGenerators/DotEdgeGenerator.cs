@@ -9,17 +9,11 @@ using System.Linq;
 using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
-using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Generators.EdgeGenerators
 {
     public class DotEdgeGenerator : DotEntityWithAttributeListGenerator<DotEdgeDefinition, IDotEdgeWriter>
     {
-        protected DotEdgeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
-            : base(syntaxRules, options, entityGenerators, identifierEscaper)
-        {
-        }
-
         public DotEdgeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
@@ -64,13 +58,10 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
         protected virtual void WriteEndpoint(DotEndpoint endpoint, IDotEdgeWriter writer)
         {
             var nodeId = EscapeIdentifier(endpoint.NodeId);
-
-            var portName = endpoint.Port.Name is { }
-                ? EscapeIdentifier(endpoint.Port.Name)
-                : null;
+            var portName = EscapeIdentifier(endpoint.Port.Name);
 
             var compassPoint = endpoint.Port.CompassPoint.HasValue
-                ? EscapeIdentifier(DotCompassPointConverter.Convert(endpoint.Port.CompassPoint.Value))
+                ? DotCompassPointConverter.Convert(endpoint.Port.CompassPoint.Value)
                 : null;
 
             writer.WriteEndpoint

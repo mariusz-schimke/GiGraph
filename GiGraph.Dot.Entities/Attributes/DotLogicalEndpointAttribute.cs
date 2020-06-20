@@ -13,30 +13,20 @@ namespace GiGraph.Dot.Entities.Attributes
     /// </summary>
     public class DotLogicalEndpointAttribute : DotAttribute<string>
     {
-        protected readonly IDotTextEscaper _valueEscaper;
-
-        protected DotLogicalEndpointAttribute(string key, string value, IDotTextEscaper valueEscaper)
-            : base(key, value)
-        {
-            // use the same value escaping pipeline as the cluster generator uses for escaping cluster identifier
-            _valueEscaper = valueEscaper ?? DotTextEscapingPipeline.ForIdentifier();
-        }
-
         /// <summary>
         /// Creates a new attribute instance.
         /// </summary>
         /// <param name="key">The key of the attribute.</param>
         /// <param name="clusterId">The identifier of the cluster to use as a logical head or tail of the edge.</param>
         public DotLogicalEndpointAttribute(string key, string clusterId)
-            : this(key, clusterId, valueEscaper: null)
+            : base(key, clusterId)
         {
         }
 
-        protected internal override string GetDotEncodedValue(DotGenerationOptions options)
+        protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
             // keep this value coherent with the format the cluster generator uses to generate cluster identifier
-            return _valueEscaper.Escape(
-                DotClusterIdFormatter.Format(Value, options));
+            return syntaxRules.EscapeIdentifier(DotClusterIdFormatter.Format(Value, options));
         }
     }
 }

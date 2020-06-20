@@ -25,9 +25,16 @@ namespace GiGraph.Dot.Output.Options
         /// </summary>
         public virtual string LineBreak { get; set; } = Environment.NewLine;
 
+        /// <summary>
+        /// An optional text encoder to use when writing text to the output stream. May become useful when
+        /// the DOT visualization tool you use fails processing some special characters. In such case replacing them
+        /// with their HTML-code equivalents might help. 
+        /// </summary>
+        public virtual Func<string, string> TextEncoder { get; set; }
+
         public virtual DotFormattingOptions Clone()
         {
-            return (DotFormattingOptions)MemberwiseClone();
+            return (DotFormattingOptions) MemberwiseClone();
         }
     }
 }

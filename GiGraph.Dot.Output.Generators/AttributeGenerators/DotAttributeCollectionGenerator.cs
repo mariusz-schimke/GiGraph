@@ -5,7 +5,6 @@ using GiGraph.Dot.Output.Options;
 using System.Linq;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
-using GiGraph.Dot.Output.TextEscaping;
 using GiGraph.Dot.Output.Writers.CommonEntityWriters;
 
 namespace GiGraph.Dot.Output.Generators.AttributeGenerators
@@ -13,11 +12,6 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
     public abstract class DotAttributeCollectionGenerator<TWriter> : DotEntityGenerator<DotAttributeCollection, TWriter>
         where TWriter : IDotEntityWriter
     {
-        protected DotAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
-            : base(syntaxRules, options, entityGenerators, identifierEscaper)
-        {
-        }
-
         protected DotAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
