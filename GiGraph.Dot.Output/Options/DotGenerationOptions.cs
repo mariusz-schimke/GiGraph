@@ -1,5 +1,4 @@
 ﻿using System;
-using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Options
 {
@@ -46,13 +45,6 @@ namespace GiGraph.Dot.Output.Options
         /// </para>
         /// </summary>
         public virtual bool OrderElements { get; set; } = false;
-
-        /// <summary>
-        /// An optional extra text formatter to use for identifiers and attributes. By default, the formatter is
-        /// <see cref="DotHtmlEscaper.Escape"/> because some visualization tools may have issues processing
-        /// special and national characters.  
-        /// </summary>
-        public virtual Func<string, string> TextFormatter { get; set; } = DotHtmlEscaper.Escape;
 
         public static DotGenerationOptions Custom(Action<DotGenerationOptions> init)
         {
