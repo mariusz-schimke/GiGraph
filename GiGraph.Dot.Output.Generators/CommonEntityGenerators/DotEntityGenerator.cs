@@ -1,7 +1,7 @@
-﻿using GiGraph.Dot.Entities;
+﻿using System;
+using GiGraph.Dot.Entities;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.CommonEntityWriters;
-using System;
 using GiGraph.Dot.Output.Generators.Providers;
 
 namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
@@ -42,16 +42,6 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
             return typeof(TEntity).IsAssignableFrom(entityType);
         }
 
-        protected virtual bool IdentifierRequiresQuoting(string id)
-        {
-            return _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);
-        }
-
-        protected virtual string EscapeIdentifier(string id)
-        {
-            return _syntaxRules.EscapeIdentifier(id);
-        }
-
         void IDotEntityGenerator.Generate(IDotEntity entity, IDotEntityWriter writer)
         {
             if (entity is { } && !(entity is TEntity))
@@ -66,5 +56,8 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 
             Generate((TEntity) entity, (TWriter) writer);
         }
+
+        protected virtual string EscapeIdentifier(string id) => _syntaxRules.EscapeIdentifier(id);
+        protected virtual bool IdentifierRequiresQuoting(string id) => _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);
     }
 }

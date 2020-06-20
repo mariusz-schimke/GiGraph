@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
 
         protected internal virtual string GetDotEncodedString(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return syntaxRules.EscapeString(_value);
+            return syntaxRules.EscapeStringValue(_value);
         }
 
         string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedString(options, syntaxRules);
