@@ -1,6 +1,5 @@
 using System;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.Options.Extensions;
 
 namespace GiGraph.Dot.Entities.Types.Strings
 {
@@ -23,8 +22,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
 
         protected internal virtual string GetDotEncodedString(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return syntaxRules.EscapeString(
-                options.FormatText(_value));
+            return syntaxRules.EscapeString(_value);
         }
 
         string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedString(options, syntaxRules);

@@ -3,7 +3,6 @@ using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.CommonEntityWriters;
 using System;
 using GiGraph.Dot.Output.Generators.Providers;
-using GiGraph.Dot.Output.Options.Extensions;
 
 namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 {
@@ -50,8 +49,7 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 
         protected virtual string EscapeIdentifier(string id)
         {
-            return _syntaxRules.EscapeIdentifier(
-                _options.FormatText(id));
+            return _syntaxRules.EscapeIdentifier(id);
         }
 
         void IDotEntityGenerator.Generate(IDotEntity entity, IDotEntityWriter writer)

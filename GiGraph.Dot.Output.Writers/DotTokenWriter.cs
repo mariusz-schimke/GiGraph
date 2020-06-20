@@ -191,17 +191,22 @@ namespace GiGraph.Dot.Output.Writers
             else
             {
                 FlushLingerBuffer();
-                _writer.Write(value);
+                Write(value);
             }
 
             return this;
+        }
+
+        protected virtual void Write(string value)
+        {
+            _writer.Write(_options.TextEncoder?.Invoke(value) ?? value);
         }
 
         public virtual DotTokenWriter FlushLingerBuffer()
         {
             while (_lingerBuffer.Count > 0)
             {
-                _writer.Write(_lingerBuffer.Dequeue());
+                Write(_lingerBuffer.Dequeue());
             }
 
             return this;

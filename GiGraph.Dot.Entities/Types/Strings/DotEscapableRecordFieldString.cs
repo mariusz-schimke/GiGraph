@@ -1,5 +1,4 @@
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.Options.Extensions;
 
 namespace GiGraph.Dot.Entities.Types.Strings
 {
@@ -15,8 +14,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
 
         protected internal override string GetDotEncodedString(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return syntaxRules.EscapeRecordField(
-                options.FormatText(_value));
+            return syntaxRules.EscapeRecordField(_value);
         }
 
         /// <summary>
