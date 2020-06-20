@@ -8,6 +8,7 @@ namespace GiGraph.Dot.Entities
         /// Gets the value of the attribute in a format understood by DOT graph renderer.
         /// </summary>
         /// <param name="options">The DOT generation options to use.</param>
-        string GetDotEncodedValue(DotGenerationOptions options);
+        /// <param name="syntaxRules">The DOT syntax rules to use.</param>
+        string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules);
     }
 }

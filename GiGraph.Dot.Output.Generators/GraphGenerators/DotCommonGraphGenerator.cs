@@ -2,7 +2,6 @@
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
-using GiGraph.Dot.Output.TextEscaping;
 using GiGraph.Dot.Output.Writers.CommonEntityWriters;
 using GiGraph.Dot.Output.Writers.GraphWriters;
 
@@ -12,13 +11,8 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
         where TGraph : DotCommonGraph
         where TWriter : IDotEntityWriter
     {
-        protected DotCommonGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators, IDotTextEscaper identifierEscaper)
-            : base(syntaxRules, options, entityGenerators, identifierEscaper)
-        {
-        }
-
         protected DotCommonGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
-            : this(syntaxRules, options, entityGenerators, identifierEscaper: null)
+            : base(syntaxRules, options, entityGenerators)
         {
         }
 

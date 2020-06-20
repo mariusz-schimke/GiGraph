@@ -18,13 +18,14 @@ namespace GiGraph.Dot.Entities.Attributes
         /// Gets the value of the attribute in a format understood by DOT graph renderer.
         /// </summary>
         /// <param name="options">The DOT generation options to use.</param>
-        protected internal abstract string GetDotEncodedValue(DotGenerationOptions options);
+        /// <param name="syntaxRules">The DOT syntax rules to use.</param>
+        protected internal abstract string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules);
 
         protected DotAttribute(string key)
         {
             Key = key ?? throw new ArgumentNullException(nameof(key), "Attribute key cannot be null.");
         }
 
-        string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options) => GetDotEncodedValue(options);
+        string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
     }
 }

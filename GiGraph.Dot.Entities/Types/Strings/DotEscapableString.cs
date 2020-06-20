@@ -1,6 +1,5 @@
 using System;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Types.Strings
 {
@@ -10,17 +9,10 @@ namespace GiGraph.Dot.Entities.Types.Strings
     public class DotEscapableString : IDotEncodableValue
     {
         protected readonly string _value;
-        protected readonly IDotTextEscaper _valueEscaper;
-
-        protected DotEscapableString(string value, IDotTextEscaper valueEscaper)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value), "Value cannot be null.");
-            _valueEscaper = valueEscaper ?? throw new ArgumentNullException(nameof(valueEscaper), "Value escaper cannot be null.");
-        }
 
         protected DotEscapableString(string value)
-            : this(value, DotTextEscapingPipeline.ForString())
         {
+            _value = value ?? throw new ArgumentNullException(nameof(value), "Value cannot be null.");
         }
 
         public override string ToString()
@@ -28,20 +20,12 @@ namespace GiGraph.Dot.Entities.Types.Strings
             return _value;
         }
 
-        /// <summary>
-        /// Escapes the string to a DOT-compatible format.
-        /// </summary>
-        public virtual DotEscapedString Escape()
+        protected internal virtual string GetDotEncodedString(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return _valueEscaper.Escape(_value);
+            return syntaxRules.EscapeStringValue(_value);
         }
 
-        protected internal virtual string GetDotEncodedString(DotGenerationOptions options)
-        {
-            return Escape();
-        }
-
-        string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options) => GetDotEncodedString(options);
+        string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedString(options, syntaxRules);
 
         /// <summary>
         /// Creates a new instance initialized with the specified text. The text will be escaped on output DOT script generation
@@ -52,7 +36,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         {
             return value;
         }
-        
+
         /// <summary>
         /// Creates a new instance initialized with escaped string. The string will not be modified in any way
         /// on output DOT script generation, so it should follow the formatting rules described in the documentation

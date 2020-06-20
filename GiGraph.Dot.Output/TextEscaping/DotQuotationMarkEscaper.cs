@@ -5,9 +5,11 @@
     /// </summary>
     public class DotQuotationMarkEscaper : IDotTextEscaper
     {
-        public virtual string Escape(string value)
+        public static string Escape(string value)
         {
             return value?.Replace(@"""", @"\""");
         }
+
+        string IDotTextEscaper.Escape(string value) => Escape(value);
     }
 }

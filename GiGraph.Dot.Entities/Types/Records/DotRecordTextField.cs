@@ -3,7 +3,6 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Types.Strings;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Types.Records
 {
@@ -45,11 +44,11 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// <see cref="IDotEdgeAttributes.TailPort"/> and <see cref="IDotEdgeAttributes.HeadPort"/>.</param>
         public DotRecordTextField(string text, string portName = null)
         {
-            Text = text;
-            PortName = portName;
+            _text = text;
+            _portName = portName;
         }
 
-        protected internal override string GetDotEncoded(DotGenerationOptions options, bool hasParent)
+        protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules, bool hasParent)
         {
             var result = new StringBuilder();
             var separator = string.Empty;
@@ -57,7 +56,7 @@ namespace GiGraph.Dot.Entities.Types.Records
             if (_portName is {})
             {
                 result.Append("<");
-                result.Append(_portName.Escape());
+                result.Append(_portName.GetDotEncodedString(options, syntaxRules));
                 result.Append(">");
                 separator = " ";
             }
@@ -65,7 +64,7 @@ namespace GiGraph.Dot.Entities.Types.Records
             if (_text is {})
             {
                 result.Append(separator);
-                result.Append(_text.Escape());
+                result.Append(_text.GetDotEncodedString(options, syntaxRules));
             }
 
             return result.ToString();
