@@ -10,48 +10,56 @@ namespace GiGraph.Dot.Output.Options
     /// </summary>
     public class DotSyntaxRules
     {
-        protected virtual HashSet<string> Keywords { get; }
-
-        protected virtual string AlphabeticIdentifierPattern { get; }
-        protected virtual string NumericIdentifierPattern { get; }
-
-        protected virtual IDotTextEscaper IdentifierEscaper { get; }
-        protected virtual IDotTextEscaper StringEscaper { get; }
-        protected virtual IDotTextEscaper RecordFieldEscaper { get; }
+        protected static readonly IDotTextEscaper[] DefaultEscaper =
+        {
+            new DotBackslashEscaper(),
+            new DotQuotationMarkEscaper(),
+            new DotLineBreakEscaper()
+        };
 
         /// <summary>
-        /// Creates a default instance.
+        /// The collection of keywords that cannot be used as node identifiers unless quoted.
         /// </summary>
-        public DotSyntaxRules()
+        public virtual ICollection<string> Keywords { get; protected set; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
-            Keywords = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-            {
-                "node",
-                "edge",
-                "strict",
-                "graph",
-                "digraph",
-                "subgraph"
-            };
+            "node",
+            "edge",
+            "strict",
+            "graph",
+            "digraph",
+            "subgraph"
+        };
 
-            AlphabeticIdentifierPattern = @"^[_a-zA-Z\200-\377]+[_0-9a-zA-Z\200-\377]*$";
-            NumericIdentifierPattern = @"^[-]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)$";
+        /// <summary>
+        /// The regex pattern to use in order to determine if an alphabetic identifier or attribute value can be used without quoting. 
+        /// </summary>
+        public virtual string AlphabeticIdentifierPattern { get; protected set; } = @"^[_a-zA-Z\200-\377]+[_0-9a-zA-Z\200-\377]*$";
 
-            StringEscaper = IdentifierEscaper = new DotTextEscapingPipeline
-            {
-                new DotBackslashEscaper(),
-                new DotQuotationMarkEscaper(),
-                new DotLineBreakEscaper()
-            };
+        /// <summary>
+        /// The regex pattern to use in order to determine if a numeric identifier or attribute value can be used without quoting.
+        /// </summary>
+        public virtual string NumericIdentifierPattern { get; protected set; } = @"^[-]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)$";
 
-            RecordFieldEscaper = new DotTextEscapingPipeline((IEnumerable<IDotTextEscaper>) StringEscaper)
-            {
-                new DotAngleBracketsEscaper(),
-                new DotCurlyBracketsEscaper(),
-                new DotVerticalBarEscaper(),
-                new DotSpaceHtmlEscaper()
-            };
-        }
+        /// <summary>
+        /// A text escaper to use for identifiers.
+        /// </summary>
+        public virtual IDotTextEscaper IdentifierEscaper { get; protected set; } = new DotTextEscapingPipeline(DefaultEscaper);
+
+        /// <summary>
+        /// A text escaper to use for string values.
+        /// </summary>
+        public virtual IDotTextEscaper StringEscaper { get; protected set; } = new DotTextEscapingPipeline(DefaultEscaper);
+
+        /// <summary>
+        /// A text escaper to use for record node fields.
+        /// </summary>
+        public virtual IDotTextEscaper RecordFieldEscaper { get; protected set; } = new DotTextEscapingPipeline(DefaultEscaper)
+        {
+            new DotAngleBracketsEscaper(),
+            new DotCurlyBracketsEscaper(),
+            new DotVerticalBarEscaper(),
+            new DotSpaceHtmlEscaper()
+        };
 
         /// <summary>
         /// Determines if the specified word is a keyword.

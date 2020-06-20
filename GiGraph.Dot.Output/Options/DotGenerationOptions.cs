@@ -7,22 +7,22 @@ namespace GiGraph.Dot.Output.Options
         /// <summary>
         /// Gets the generation options for attributes.
         /// </summary>
-        public virtual AttributeOptions Attributes { get; } = new AttributeOptions();
+        public virtual AttributeOptions Attributes { get; protected set; } = new AttributeOptions();
 
         /// <summary>
         /// Gets the generation options for subgraphs.
         /// </summary>
-        public virtual SubgraphOptions Subgraphs { get; } = new SubgraphOptions();
+        public virtual SubgraphOptions Subgraphs { get; protected set; } = new SubgraphOptions();
 
         /// <summary>
         /// Gets the generation options for clusters.
         /// </summary>
-        public virtual ClusterOptions Clusters { get; } = new ClusterOptions();
+        public virtual ClusterOptions Clusters { get; protected set; } = new ClusterOptions();
 
         /// <summary>
         /// Gets the generation options for colors.
         /// </summary>
-        public virtual ColorOptions Colors { get; } = new ColorOptions();
+        public virtual ColorOptions Colors { get; protected set; } = new ColorOptions();
 
         /// <summary>
         /// When set, identifiers will always be quoted, even if it is not required.
