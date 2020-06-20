@@ -46,9 +46,14 @@ namespace GiGraph.Dot.Output.Options
         public virtual IDotTextEscaper IdentifierEscaper { get; protected set; } = new DotTextEscapingPipeline(DefaultEscaper);
 
         /// <summary>
+        /// A text escaper to use for attribute keys (no escaping is used by default).
+        /// </summary>
+        public virtual IDotTextEscaper KeyEscaper { get; protected set; } = DotTextEscapingPipeline.None();
+
+        /// <summary>
         /// A text escaper to use for string values.
         /// </summary>
-        public virtual IDotTextEscaper StringEscaper { get; protected set; } = new DotTextEscapingPipeline(DefaultEscaper);
+        public virtual IDotTextEscaper StringValueEscaper { get; protected set; } = new DotTextEscapingPipeline(DefaultEscaper);
 
         /// <summary>
         /// A text escaper to use for record node fields.
@@ -92,11 +97,19 @@ namespace GiGraph.Dot.Output.Options
         }
 
         /// <summary>
+        /// Escapes the specified string as an attribute key.
+        /// </summary>
+        public virtual string EscapeKey(string key)
+        {
+            return KeyEscaper.Escape(key);
+        }
+
+        /// <summary>
         /// Escapes the specified string as an attribute value.
         /// </summary>
-        public virtual string EscapeString(string value)
+        public virtual string EscapeStringValue(string value)
         {
-            return StringEscaper.Escape(value);
+            return StringValueEscaper.Escape(value);
         }
 
         /// <summary>
