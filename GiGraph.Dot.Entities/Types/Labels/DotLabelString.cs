@@ -43,29 +43,29 @@ namespace GiGraph.Dot.Entities.Types.Labels
             return _text?.GetDotEncodedString(options, syntaxRules);
         }
 
-        public static implicit operator DotLabelString(string value)
+        public static implicit operator DotLabelString(string text)
         {
-            return value is {} ? new DotLabelString(value) : null;
+            return text is {} ? new DotLabelString(text) : null;
         }
 
-        public static implicit operator DotLabelString(DotEscapableString value)
+        public static implicit operator DotLabelString(DotEscapableString text)
         {
-            return value is {} ? new DotLabelString(value) : null;
+            return text is {} ? new DotLabelString(text) : null;
         }
 
-        public static implicit operator DotLabelString(DotEscapedString value)
+        public static implicit operator DotLabelString(DotEscapedString text)
         {
-            return value is {} ? new DotLabelString(value) : null;
+            return text is {} ? new DotLabelString(text) : null;
         }
 
-        public static implicit operator string(DotLabelString labelString)
+        public static implicit operator string(DotLabelString label)
         {
-            return labelString?._text;
+            return label?._text;
         }
 
-        public static implicit operator DotEscapableString(DotLabelString labelString)
+        public static implicit operator DotEscapableString(DotLabelString label)
         {
-            return labelString?._text;
+            return label?._text;
         }
     }
 }
