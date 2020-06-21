@@ -167,14 +167,26 @@ namespace GiGraph.Dot.Output.Writers
         {
             var lines = _options.SplitMultilineText(comment);
 
-            for (int i = 0; i < lines.Length; i++)
+            if (_options.SingleLineOutput)
+            {
+                return BlockComment(lines, indentationLevel, linger);
+            }
+            else
+            {
+                return Comment(lines, indentationLevel, linger);
+            }
+        }
+
+        protected virtual DotTokenWriter Comment(string[] commentLines, int indentationLevel, bool linger)
+        {
+            for (int i = 0; i < commentLines.Length; i++)
             {
                 CommentStart(linger);
                 Space(linger);
 
-                Append(lines[i], linger);
+                Append(commentLines[i], linger);
 
-                if (i < lines.Length - 1)
+                if (i < commentLines.Length - 1)
                 {
                     LineBreak(linger);
                     Indentation(indentationLevel, linger);
@@ -187,15 +199,19 @@ namespace GiGraph.Dot.Output.Writers
         public virtual DotTokenWriter BlockComment(string comment, int indentationLevel, bool linger = false)
         {
             var lines = _options.SplitMultilineText(comment);
+            return BlockComment(lines, indentationLevel, linger);
+        }
 
+        protected virtual DotTokenWriter BlockComment(string[] commentLines, int indentationLevel, bool linger)
+        {
             BlockCommentStart(linger);
             Space(linger);
 
-            for (int i = 0; i < lines.Length; i++)
+            for (int i = 0; i < commentLines.Length; i++)
             {
-                Append(lines[i], linger);
+                Append(commentLines[i], linger);
 
-                if (i < lines.Length - 1)
+                if (i < commentLines.Length - 1)
                 {
                     LineBreak(linger);
                     Indentation(indentationLevel, linger);
