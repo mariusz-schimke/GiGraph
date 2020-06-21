@@ -12,6 +12,8 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         protected readonly Func<string, string, Predicate<DotEdgeDefinition>> _matchEdgePredicate;
         protected readonly Predicate<DotEdgeDefinition> _matchLoopPredicate;
 
+        public virtual string Notes { get; set; }
+        
         protected DotEdgeCollection(
             Func<string, string, Predicate<DotEdgeDefinition>> matchEdgePredicate,
             Predicate<DotEdgeDefinition> matchLoopPredicate)

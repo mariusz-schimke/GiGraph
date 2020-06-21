@@ -65,6 +65,8 @@ namespace GiGraph.Dot.Entities.Graphs
         /// </summary>
         public virtual DotClusterCollection Clusters { get; }
 
+        public virtual string Notes { get; set; }
+
         string IDotOrderableEntity.OrderingKey => Id;
 
         protected DotCommonGraph(

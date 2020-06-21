@@ -14,6 +14,8 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal abstract object GetValue();
 
+        public virtual string Notes { get; set; }
+
         /// <summary>
         /// Gets the value of the attribute in a format understood by DOT graph renderer.
         /// </summary>

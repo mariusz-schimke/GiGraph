@@ -23,12 +23,12 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
             _entityGenerators = entityGenerators;
         }
 
-        protected virtual void WriteComment(string comment, IDotEntityWriter writer)
+        protected virtual void WriteNotesComment(TEntity entity, TWriter writer)
         {
-            if (comment is {})
+            if (entity.Notes is {})
             {
-                var commentWriter = writer.BeginComment(comment, _options.PreferBlockComments);
-                commentWriter.Write(comment);
+                var commentWriter = writer.BeginComment(entity.Notes, _options.PreferBlockComments);
+                commentWriter.Write(entity.Notes);
                 writer.EndComment();
             }
         }
