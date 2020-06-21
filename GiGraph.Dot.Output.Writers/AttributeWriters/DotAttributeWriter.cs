@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
                         .Space()
                         .ValueAssignmentOperator()
                         .Space()
-                        .TextValue(value, quoteValue);
+                        .Identifier(value, quoteValue);
         }
 
         public virtual void WriteHtmlAttribute(string key, bool quoteKey, string value, bool writeInBrackets)
@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
                         .Space()
                         .ValueAssignmentOperator()
                         .Space()
-                        .HtmlValue(value, writeInBrackets);
+                        .Html(value, writeInBrackets);
         }
     }
 }

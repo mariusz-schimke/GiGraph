@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Options
+﻿using System;
+
+namespace GiGraph.Dot.Output.Options
 {
     public static class DotFormattingOptionsExtension
     {
@@ -19,6 +21,16 @@
             return options.SingleLineOutput
                 ? options.Space()
                 : options.LineBreak;
+        }
+
+        public static string[] SplitMultilineText(this DotFormattingOptions options, string text)
+        {
+            if (text is null)
+            {
+                return new string[0];
+            }
+
+            return text.Split(new[] { options.LineBreak }, StringSplitOptions.None);
         }
     }
 }
