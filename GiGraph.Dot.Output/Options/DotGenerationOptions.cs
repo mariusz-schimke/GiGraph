@@ -35,6 +35,12 @@ namespace GiGraph.Dot.Output.Options
         public virtual bool PreferStatementDelimiter { get; set; } = false;
 
         /// <summary>
+        /// When set, block comments are used (/* */) instead of single line comments (//).
+        /// When the output DOT script is written as a single line, block comments are used even if the property is not set.
+        /// </summary>
+        public virtual bool PreferBlockComments { get; set; } = false;
+
+        /// <summary>
         /// Gets or sets a value indicating if graph elements should be ordered alphabetically in the output DOT script.
         /// This setting affects attributes, nodes, edges, subgraphs, and clusters.
         /// If false, all elements will be rendered in the order they were added to individual graph element collections.
