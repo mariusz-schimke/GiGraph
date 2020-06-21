@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot", "GiGraph.Dot\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Output", "GiGraph.Dot.Output\GiGraph.Dot.Output.csproj", "{738795A3-54D5-443D-B827-E4E093BFE6F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Tests", "GiGraph.Dot.Tests\GiGraph.Dot.Tests.csproj", "{070671C7-38EB-4274-87F1-95FA02407CBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Entities.Tests", "GiGraph.Dot.Entities.Tests\GiGraph.Dot.Entities.Tests.csproj", "{070671C7-38EB-4274-87F1-95FA02407CBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Output.Generators.Tests", "GiGraph.Dot.Output.Generators.Tests\GiGraph.Dot.Output.Generators.Tests.csproj", "{DD020A1A-DCB7-44C1-A8D7-A4BE5C68F773}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{070671C7-38EB-4274-87F1-95FA02407CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{070671C7-38EB-4274-87F1-95FA02407CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{070671C7-38EB-4274-87F1-95FA02407CBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD020A1A-DCB7-44C1-A8D7-A4BE5C68F773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD020A1A-DCB7-44C1-A8D7-A4BE5C68F773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD020A1A-DCB7-44C1-A8D7-A4BE5C68F773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD020A1A-DCB7-44C1-A8D7-A4BE5C68F773}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

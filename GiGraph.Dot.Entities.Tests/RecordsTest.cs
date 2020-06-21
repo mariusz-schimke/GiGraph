@@ -17,6 +17,14 @@ namespace GiGraph.Dot.Tests
 
             Assert.Equal("field1 | field2", ((IDotEncodableValue) rec).GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
+        
+        [Fact]
+        public void record_with_ports_returns_ports_and_fields_as_dot_encoded_value()
+        {
+            DotRecord rec = new DotRecord(flip: false, new DotRecordTextField("field1", "port 1"), "field2");
+
+            Assert.Equal("<port&#32;1> field1 | field2", ((IDotEncodableValue) rec).GetDotEncodedValue(_generationOptions, _syntaxRules));
+        }
 
         [Fact]
         public void flipped_record_returns_fields_in_brackets_as_dot_encoded_value()
