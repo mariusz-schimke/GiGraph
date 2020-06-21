@@ -8,7 +8,7 @@ using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Options;
 using Xunit;
 
-namespace GiGraph.Dot.Tests
+namespace GiGraph.Dot.Output.Generators.Tests
 {
     public class AttributeGeneratorsTest
     {
