@@ -8,6 +8,8 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
 {
     public class DotNodeCollection : DotEntityWithIdCollection<DotNodeDefinition>, IDotEntity
     {
+        public virtual string Notes { get; set; }
+
         protected DotNodeCollection(Func<string, Predicate<DotNodeDefinition>> matchIdPredicate)
             : base(matchIdPredicate)
         {
@@ -98,15 +100,15 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         public virtual DotNode[] AddRange(IEnumerable<string> ids, Action<DotNode> initNode = null)
         {
             return ids.Select
-                (
-                    id =>
-                    {
-                        var node = Add(id);
-                        initNode?.Invoke(node);
-                        return node;
-                    }
-                )
-                .ToArray();
+                       (
+                           id =>
+                           {
+                               var node = Add(id);
+                               initNode?.Invoke(node);
+                               return node;
+                           }
+                       )
+                      .ToArray();
         }
 
         /// <summary>

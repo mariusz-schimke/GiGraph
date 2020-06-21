@@ -16,6 +16,8 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         public abstract IEnumerable<DotEndpointDefinition> Endpoints { get; }
 
+        public virtual string Notes { get; set; }
+        
         string IDotOrderableEntity.OrderingKey => GetOrderingKey();
 
         protected DotEdgeDefinition(IDotEdgeAttributes attributes)

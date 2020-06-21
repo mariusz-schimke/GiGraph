@@ -8,6 +8,8 @@ namespace GiGraph.Dot.Entities.Nodes
         /// The attributes of the node or node group.
         /// </summary>
         public virtual IDotNodeAttributes Attributes { get; }
+        
+        public virtual string Notes { get; set; }
 
         string IDotOrderableEntity.OrderingKey => GetOrderingKey();
 

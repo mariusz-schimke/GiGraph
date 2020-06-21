@@ -7,6 +7,8 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     /// </summary>
     public abstract class DotEndpointDefinition : IDotOrderableEntity
     {
+        public virtual string Notes { get; set; }
+
         string IDotOrderableEntity.OrderingKey => GetOrderingKey();
         protected abstract string GetOrderingKey();
 
