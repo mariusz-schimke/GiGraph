@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
         {
         }
 
-        public override void Generate(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
+        protected override void WriteEntity(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
         {
             // node and edge defaults have to appear first, so that they are applied to all elements that come later in the output script
             WriteGlobalAttributes(graphBody.Attributes, graphBody.NodeDefaults, graphBody.EdgeDefaults, writer);

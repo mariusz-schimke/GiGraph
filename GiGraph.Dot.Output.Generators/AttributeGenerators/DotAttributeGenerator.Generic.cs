@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
         {
         }
 
-        public override void Generate(TAttribute attribute, IDotAttributeWriter writer)
+        protected override void WriteEntity(TAttribute attribute, IDotAttributeWriter writer)
         {
             WriteAttribute
             (
