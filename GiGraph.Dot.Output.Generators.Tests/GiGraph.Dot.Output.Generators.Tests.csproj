@@ -13,4 +13,10 @@
         <PackageReference Include="coverlet.collector" Version="1.2.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\GiGraph.Dot.Output.Generators\GiGraph.Dot.Output.Generators.csproj" />
+      <ProjectReference Include="..\GiGraph.Dot.Output\GiGraph.Dot.Output.csproj" />
+      <ProjectReference Include="..\GiGraph.Dot\GiGraph.Dot.csproj" />
+    </ItemGroup>
+
 </Project>
