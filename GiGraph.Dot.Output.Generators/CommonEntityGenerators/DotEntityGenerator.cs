@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
         {
             if (entity.Notes is {})
             {
-                var commentWriter = writer.BeginComment(entity.Notes, _options.PreferBlockComments);
+                var commentWriter = writer.BeginComment(_options.PreferBlockComments);
                 commentWriter.Write(entity.Notes);
                 writer.EndComment();
             }

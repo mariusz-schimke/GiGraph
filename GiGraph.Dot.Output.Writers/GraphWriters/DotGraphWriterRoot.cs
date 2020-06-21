@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
         {
         }
 
-        IDotCommentWriter IDotEntityWriter.BeginComment(string comment, bool preferBlockComment)
+        IDotCommentWriter IDotEntityWriter.BeginComment(bool preferBlockComment)
         {
             return new DotNullCommentWriter();
         }
