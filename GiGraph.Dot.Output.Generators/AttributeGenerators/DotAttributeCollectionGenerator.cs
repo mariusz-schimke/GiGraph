@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
         {
         }
 
-        public override void Generate(DotAttributeCollection attributes, TWriter writer)
+        protected override void WriteEntity(DotAttributeCollection attributes, TWriter writer)
         {
             var orderedAttributes = _options.OrderElements
                 ? attributes.Values

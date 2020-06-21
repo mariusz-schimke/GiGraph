@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
         {
         }
 
-        public override void Generate(DotEdgeDefinition edge, IDotEdgeWriter writer)
+        protected override void WriteEntity(DotEdgeDefinition edge, IDotEdgeWriter writer)
         {
             WriteEdges(edge.Endpoints, writer);
             WriteAttributes(edge.Attributes, writer);

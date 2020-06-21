@@ -14,7 +14,13 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
         protected readonly DotGenerationOptions _options;
         protected readonly IDotEntityGeneratorsProvider _entityGenerators;
 
-        public abstract void Generate(TEntity entity, TWriter writer);
+        protected abstract void WriteEntity(TEntity entity, TWriter writer);
+
+        public void Generate(TEntity entity, TWriter writer)
+        {
+            WriteNotesComment(entity, writer);
+            WriteEntity(entity, writer);
+        }
 
         protected DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
         {

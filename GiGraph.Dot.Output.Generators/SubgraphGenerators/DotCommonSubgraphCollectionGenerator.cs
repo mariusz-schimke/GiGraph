@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Output.Generators.SubgraphGenerators
         {
         }
 
-        public override void Generate(DotCommonSubgraphCollection<TSubgraph> subgraphs, IDotSubgraphWriterRoot writer)
+        protected override void WriteEntity(DotCommonSubgraphCollection<TSubgraph> subgraphs, IDotSubgraphWriterRoot writer)
         {
             var orderedSubgraphs = _options.OrderElements
                 ? subgraphs.Cast<IDotOrderableEntity>()
