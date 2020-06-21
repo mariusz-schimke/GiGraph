@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
             _context = context;
         }
 
-        public virtual IDotCommentWriter BeginComment(string comment, bool preferBlockComment)
+        public virtual IDotCommentWriter BeginComment(bool preferBlockComment)
         {
             return new DotCommentWriter(_tokenWriter, _context, preferBlockComment);
         }
