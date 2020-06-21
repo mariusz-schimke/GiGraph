@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
     /// <summary>
     /// A string that will be escaped on output DOT script generation.
     /// </summary>
-    public class DotEscapableString : IDotEncodableValue
+    public class DotEscapableString : IDotEncodable
     {
         protected readonly string _value;
 
@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
             return syntaxRules.EscapeStringValue(_value);
         }
 
-        string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedString(options, syntaxRules);
+        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedString(options, syntaxRules);
 
         /// <summary>
         /// Creates a new instance initialized with the specified text. The text will be escaped on output DOT script generation

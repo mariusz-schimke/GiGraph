@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Tests
         {
             DotColorDefinition def = Color.Red;
 
-            Assert.Equal("red", ((IDotEncodableValue) def).GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal("red", ((IDotEncodable) def).GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
 
         [Fact]
@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Tests
         {
             DotColorDefinition def = Color.FromArgb(0xff, Color.Red);
 
-            Assert.Equal("#ff0000", ((IDotEncodableValue) def).GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal("#ff0000", ((IDotEncodable) def).GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Tests
         {
             DotColorDefinition def = Color.FromArgb(0x0f, Color.Red);
 
-            Assert.Equal("#ff00000f", ((IDotEncodableValue) def).GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal("#ff00000f", ((IDotEncodable) def).GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Tests
         {
             DotColorDefinition def = Color.Empty;
 
-            Assert.Equal(string.Empty, ((IDotEncodableValue) def).GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal(string.Empty, ((IDotEncodable) def).GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace GiGraph.Dot.Tests
         {
             DotColorDefinition def = new DotWeightedColor(Color.Blue, 0.8);
 
-            Assert.Equal("blue;0.8", ((IDotEncodableValue) def).GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal("blue;0.8", ((IDotEncodable) def).GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
         
         [Fact]
@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Tests
                 new DotWeightedColor(Color.Blue, 0.8),
                 Color.Green);
 
-            Assert.Equal("blue;0.8:green", ((IDotEncodableValue) def).GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal("blue;0.8:green", ((IDotEncodable) def).GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
     }
 }

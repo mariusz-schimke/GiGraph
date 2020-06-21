@@ -7,10 +7,10 @@ namespace GiGraph.Dot.Entities.Types.Records
     /// or another record (<see cref="DotRecord"/>).
     /// A record can be used as the label of a record-based node (<see href="http://www.graphviz.org/doc/info/shapes.html#record"/>). 
     /// </summary>
-    public abstract class DotRecordField : IDotEncodableValue
+    public abstract class DotRecordField : IDotEncodable
     {
         protected internal abstract string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules, bool hasParent);
-        string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncoded(options, syntaxRules, hasParent: false);
+        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncoded(options, syntaxRules, hasParent: false);
 
         public static implicit operator DotRecordField(string text)
         {

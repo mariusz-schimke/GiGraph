@@ -28,8 +28,8 @@ namespace GiGraph.Dot.Entities.Edges
     /// <typeparam name="TTail">The type of the tail endpoint.</typeparam>
     /// <typeparam name="THead">The type of the head endpoint.</typeparam>
     public class DotEdge<TTail, THead> : DotEdgeDefinition
-        where TTail : DotEndpointDefinition, IDotOrderableEntity
-        where THead : DotEndpointDefinition, IDotOrderableEntity
+        where TTail : DotEndpointDefinition, IDotOrderable
+        where THead : DotEndpointDefinition, IDotOrderable
     {
         /// <summary>
         /// Gets or sets the tail (source, left) endpoint.
