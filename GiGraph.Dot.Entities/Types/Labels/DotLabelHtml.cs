@@ -8,14 +8,14 @@ namespace GiGraph.Dot.Entities.Types.Labels
     /// </summary>
     public class DotLabelHtml : DotLabelString
     {
-        protected DotLabelHtml(string value)
-            : base((DotEscapedString) value)
+        protected DotLabelHtml(string html)
+            : base((DotEscapedString) html)
         {
         }
 
-        public static implicit operator DotLabelHtml(string value)
+        public static implicit operator DotLabelHtml(string html)
         {
-            return value is {} ? new DotLabelHtml(value) : null;
+            return html is {} ? new DotLabelHtml(html) : null;
         }
     }
 }
