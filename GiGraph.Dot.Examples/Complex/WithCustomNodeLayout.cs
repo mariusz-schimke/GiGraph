@@ -1,7 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 
-namespace GiGraph.Examples.Complex
+namespace GiGraph.Dot.Examples.Complex
 {
     public static class WithCustomNodeLayout
     {

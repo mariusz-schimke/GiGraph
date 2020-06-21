@@ -1,8 +1,8 @@
 ﻿using System;
+using GiGraph.Dot.Examples.Basic;
 using GiGraph.Dot.Extensions; // Build(), SaveToFile()
-using GiGraph.Examples.Basic;
 
-namespace GiGraph.Examples
+namespace GiGraph.Dot.Examples
 {
     internal class Program
     {

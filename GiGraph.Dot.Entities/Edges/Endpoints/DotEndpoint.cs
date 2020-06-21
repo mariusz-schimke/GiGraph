@@ -74,5 +74,10 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         {
             return NodeId;
         }
+        
+        public static implicit operator DotEndpoint(string nodeId)
+        {
+            return nodeId is {} ? new DotEndpoint(nodeId) : null;
+        }
     }
 }
