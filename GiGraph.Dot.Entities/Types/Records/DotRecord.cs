@@ -123,14 +123,14 @@ namespace GiGraph.Dot.Entities.Types.Records
             return result.ToString();
         }
 
-        public static implicit operator DotRecord(DotRecordField[] value)
+        public static implicit operator DotRecord(DotRecordField[] fields)
         {
-            return value is {} ? new DotRecord(value) : null;
+            return fields is {} ? new DotRecord(fields) : null;
         }
 
-        public static implicit operator DotRecord(string[] value)
+        public static implicit operator DotRecord(string[] fields)
         {
-            return value is {} ? new DotRecord(value) : null;
+            return fields is {} ? new DotRecord(fields) : null;
         }
     }
 }

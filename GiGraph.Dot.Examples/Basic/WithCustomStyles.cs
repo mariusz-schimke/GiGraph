@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Types.Colors;
 
-namespace GiGraph.Examples.Basic
+namespace GiGraph.Dot.Examples.Basic
 {
     public static class WithCustomStyles
     {

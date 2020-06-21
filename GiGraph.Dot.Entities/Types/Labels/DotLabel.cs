@@ -73,14 +73,14 @@ namespace GiGraph.Dot.Entities.Types.Labels
             return (DotLabelRecord) record;
         }
 
-        public static implicit operator DotLabel(DotRecordField[] value)
+        public static implicit operator DotLabel(DotRecordField[] recordFields)
         {
-            return (DotRecord) value;
+            return (DotRecord) recordFields;
         }
 
-        public static implicit operator DotLabel(string[] value)
+        public static implicit operator DotLabel(string[] recordFields)
         {
-            return (DotRecord) value;
+            return (DotRecord) recordFields;
         }
     }
 }
