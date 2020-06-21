@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
         {
             var orderedAttributes = _options.OrderElements
                 ? attributes.Values
-                            .Cast<IDotOrderableEntity>()
+                            .Cast<IDotOrderable>()
                             .OrderBy(attribute => attribute.OrderingKey)
                             .Cast<DotAttribute>()
                 : attributes.Values;

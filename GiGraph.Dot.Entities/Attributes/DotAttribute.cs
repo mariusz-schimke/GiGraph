@@ -3,14 +3,14 @@ using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
-    public abstract class DotAttribute : IDotEncodableValue, IDotOrderableEntity
+    public abstract class DotAttribute : IDotEntity, IDotEncodable, IDotOrderable
     {
         /// <summary>
         /// Gets the key of the attribute.
         /// </summary>
         public virtual string Key { get; }
 
-        string IDotOrderableEntity.OrderingKey => Key;
+        string IDotOrderable.OrderingKey => Key;
 
         protected internal abstract object GetValue();
 
@@ -28,6 +28,6 @@ namespace GiGraph.Dot.Entities.Attributes
             Key = key ?? throw new ArgumentNullException(nameof(key), "Attribute key cannot be null.");
         }
 
-        string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
+        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
     }
 }

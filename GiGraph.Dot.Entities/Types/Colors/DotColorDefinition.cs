@@ -9,10 +9,10 @@ namespace GiGraph.Dot.Entities.Types.Colors
     /// Represents a color definition as a single color (<see cref="DotColor"/>), as a gradient (<see cref="DotColorList"/>)
     /// or as multiple colors (<see cref="DotColorList"/>).
     /// </summary>
-    public abstract class DotColorDefinition : IDotEncodableValue
+    public abstract class DotColorDefinition : IDotEncodable
     {
         protected internal abstract string GetDotEncodedColor(DotGenerationOptions options, DotSyntaxRules syntaxRules);
-        string IDotEncodableValue.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedColor(options, syntaxRules);
+        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedColor(options, syntaxRules);
 
         /// <summary>
         /// Creates a new color instance initialized with a single color.

@@ -2,7 +2,7 @@
 
 namespace GiGraph.Dot.Entities
 {
-    public interface IDotEncodableValue
+    public interface IDotEncodable
     {
         /// <summary>
         /// Gets the value of the attribute in a format understood by DOT graph renderer.

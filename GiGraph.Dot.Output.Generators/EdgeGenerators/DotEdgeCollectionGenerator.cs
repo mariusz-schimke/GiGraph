@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
         protected override void WriteEntity(DotEdgeCollection edges, IDotEdgeStatementWriter writer)
         {
             var orderedEdges = _options.OrderElements
-                ? edges.Cast<IDotOrderableEntity>()
+                ? edges.Cast<IDotOrderable>()
                        .OrderBy(edge => edge.OrderingKey)
                        .Cast<DotEdgeDefinition>()
                 : edges;

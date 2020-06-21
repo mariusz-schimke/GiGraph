@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         {
             return string.Join(" ",
                 Subgraph.Nodes
-                        .Cast<IDotOrderableEntity>()
+                        .Cast<IDotOrderable>()
                         .Select(node => node.OrderingKey)
                         .OrderBy(key => key));
         }
