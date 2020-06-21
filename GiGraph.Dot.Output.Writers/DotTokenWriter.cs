@@ -122,33 +122,7 @@ namespace GiGraph.Dot.Output.Writers
             return Token(">", linger);
         }
 
-        public virtual DotTokenWriter Edge(bool directed = false, bool linger = false)
-        {
-            return directed ? DirectedEdge(linger) : Token("--", linger);
-        }
-
-        public virtual DotTokenWriter DirectedEdge(bool linger = false)
-        {
-            return Token("->", linger);
-        }
-
-        public virtual DotTokenWriter TextValue(string text, bool quote = true, bool linger = false)
-        {
-            if (quote)
-            {
-                QuotationStart(linger);
-                Token(text, linger);
-                QuotationEnd(linger);
-            }
-            else
-            {
-                Token(text, linger);
-            }
-
-            return this;
-        }
-
-        public virtual DotTokenWriter HtmlValue(string html, bool writeInBrackets = true, bool linger = false)
+        public virtual DotTokenWriter Html(string html, bool writeInBrackets = true, bool linger = false)
         {
             if (writeInBrackets)
             {
@@ -160,6 +134,76 @@ namespace GiGraph.Dot.Output.Writers
             {
                 Token(html, linger);
             }
+
+            return this;
+        }
+
+        public virtual DotTokenWriter Edge(bool directed = false, bool linger = false)
+        {
+            return directed ? DirectedEdge(linger) : Token("--", linger);
+        }
+
+        public virtual DotTokenWriter DirectedEdge(bool linger = false)
+        {
+            return Token("->", linger);
+        }
+
+        public virtual DotTokenWriter CommentStart(bool linger = false)
+        {
+            return Token("//", linger);
+        }
+
+        public virtual DotTokenWriter BlockCommentStart(bool linger = false)
+        {
+            return Token("/*", linger);
+        }
+
+        public virtual DotTokenWriter BlockCommentEnd(bool linger = false)
+        {
+            return Token("*/", linger);
+        }
+
+        public virtual DotTokenWriter Comment(string comment, int indentationLevel, bool linger = false)
+        {
+            var lines = _options.SplitMultilineText(comment);
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                CommentStart(linger);
+                Space(linger);
+
+                Append(lines[i], linger);
+
+                if (i < lines.Length - 1)
+                {
+                    LineBreak(linger);
+                    Indentation(indentationLevel, linger);
+                }
+            }
+
+            return this;
+        }
+
+        public virtual DotTokenWriter BlockComment(string comment, int indentationLevel, bool linger = false)
+        {
+            var lines = _options.SplitMultilineText(comment);
+
+            BlockCommentStart(linger);
+            Space(linger);
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                Append(lines[i], linger);
+
+                if (i < lines.Length - 1)
+                {
+                    LineBreak(linger);
+                    Indentation(indentationLevel, linger);
+                }
+            }
+
+            Space(linger);
+            BlockCommentEnd(linger);
 
             return this;
         }
