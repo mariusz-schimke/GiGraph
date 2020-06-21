@@ -12,5 +12,16 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
             _tokenWriter = tokenWriter;
             _context = context;
         }
+
+        public virtual IDotCommentWriter BeginComment(string comment, bool preferBlockComment)
+        {
+            return new DotCommentWriter(_tokenWriter, _context, preferBlockComment);
+        }
+
+        public virtual void EndComment()
+        {
+            _tokenWriter.LineBreak()
+                        .Indentation(_context.Level, linger: true);
+        }
     }
 }

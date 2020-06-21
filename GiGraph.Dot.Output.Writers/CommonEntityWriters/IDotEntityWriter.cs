@@ -2,5 +2,7 @@
 {
     public interface IDotEntityWriter
     {
+        IDotCommentWriter BeginComment(string comment, bool preferBlockComment);
+        void EndComment();
     }
 }
