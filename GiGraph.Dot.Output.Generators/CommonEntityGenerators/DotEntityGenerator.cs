@@ -23,6 +23,16 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
             _entityGenerators = entityGenerators;
         }
 
+        protected virtual void WriteComment(string comment, IDotEntityWriter writer)
+        {
+            if (comment is {})
+            {
+                var commentWriter = writer.BeginComment(comment, _options.PreferBlockComments);
+                commentWriter.Write(comment);
+                writer.EndComment();
+            }
+        }
+
         public virtual bool Supports<TRequiredWriter>(Type entityType, out bool isExactEntityTypeMatch)
             where TRequiredWriter : IDotEntityWriter
         {

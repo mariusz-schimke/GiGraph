@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Output.Writers.Contexts;
+﻿using GiGraph.Dot.Output.Writers.CommonEntityWriters;
+using GiGraph.Dot.Output.Writers.Contexts;
 
 namespace GiGraph.Dot.Output.Writers.GraphWriters
 {
@@ -20,6 +21,15 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
         }
 
         public void EndGraph()
+        {
+        }
+
+        IDotCommentWriter IDotEntityWriter.BeginComment(string comment, bool preferBlockComment)
+        {
+            return new DotNullCommentWriter();
+        }
+
+        void IDotEntityWriter.EndComment()
         {
         }
     }
