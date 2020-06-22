@@ -42,6 +42,7 @@ namespace GiGraph.Dot.Output.Generators.Providers
 
             provider.Register(new DotEdgeGenerator(syntaxRules, options, provider));
             provider.Register(new DotEdgeCollectionGenerator(syntaxRules, options, provider));
+            provider.Register(new DotEndpointGenerator(syntaxRules, options, provider));
 
             return provider;
         }
