@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
             }
 
             _tokenWriter.LineBreak()
-                        .Indentation(_context.Level, linger: true);
+                        .Indentation(linger: true);
         }
     }
 }

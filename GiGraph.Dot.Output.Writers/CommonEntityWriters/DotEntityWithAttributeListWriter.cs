@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
             _tokenWriter.AttributeListStart(linger: true)
                         .Space(linger: true);
 
-            return new DotAttributeListItemWriter(_tokenWriter, _context.NextLevel(), useAttributeSeparator);
+            return new DotAttributeListItemWriter(_tokenWriter.NextIndentationLevel(), _context, useAttributeSeparator);
         }
 
         public virtual void EndAttributeList()

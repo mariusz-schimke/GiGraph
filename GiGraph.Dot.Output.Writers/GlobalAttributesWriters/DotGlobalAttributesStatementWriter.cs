@@ -54,7 +54,7 @@ namespace GiGraph.Dot.Output.Writers.GlobalAttributesWriters
             }
 
             _tokenWriter.LineBreak()
-                        .Indentation(_context.Level, linger: true);
+                        .Indentation(linger: true);
         }
     }
 }

@@ -69,7 +69,7 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
         {
             _tokenWriter.ClearLingerBuffer()
                         .LineBreak(linger: true)
-                        .Indentation(_context.Level, linger: true);
+                        .Indentation(linger: true);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Output.Writers.EdgeWriters
 
         public override IDotCommentWriter BeginComment(bool preferBlockComment)
         {
-            return new DotCommentWriter(_tokenWriter, _context.Level, preferBlockComment: true);
+            return new DotCommentWriter(_tokenWriter, preferBlockComment: true);
         }
 
         public override void EndComment()

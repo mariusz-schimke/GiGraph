@@ -15,13 +15,13 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
 
         public virtual IDotCommentWriter BeginComment(bool preferBlockComment)
         {
-            return new DotCommentWriter(_tokenWriter, _context.Level, preferBlockComment);
+            return new DotCommentWriter(_tokenWriter, preferBlockComment);
         }
 
         public virtual void EndComment()
         {
             _tokenWriter.LineBreak()
-                        .Indentation(_context.Level, linger: true);
+                        .Indentation(linger: true);
         }
     }
 }
