@@ -26,5 +26,15 @@ namespace GiGraph.Dot.Output.Writers.EdgeWriters
                             .Identifier(compassPoint, quoteCompassPoint);
             }
         }
+
+        public override IDotCommentWriter BeginComment(bool preferBlockComment)
+        {
+            return new DotCommentWriter(_tokenWriter, _context.Level, preferBlockComment: true);
+        }
+
+        public override void EndComment()
+        {
+            _tokenWriter.Space();
+        }
     }
 }

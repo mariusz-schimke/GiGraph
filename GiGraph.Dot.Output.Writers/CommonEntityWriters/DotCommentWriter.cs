@@ -1,17 +1,15 @@
-﻿using GiGraph.Dot.Output.Writers.Contexts;
-
-namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
+﻿namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
 {
     public class DotCommentWriter : IDotCommentWriter
     {
         protected readonly DotTokenWriter _tokenWriter;
-        protected readonly DotEntityWriterContext _context;
+        protected readonly int _level;
         protected readonly bool _preferBlockComment;
 
-        public DotCommentWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool preferBlockComment)
+        public DotCommentWriter(DotTokenWriter tokenWriter, int level, bool preferBlockComment)
         {
             _tokenWriter = tokenWriter;
-            _context = context;
+            _level = level;
             _preferBlockComment = preferBlockComment;
         }
 
@@ -19,11 +17,11 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
         {
             if (_preferBlockComment)
             {
-                _tokenWriter.BlockComment(comment, _context.Level);
+                _tokenWriter.BlockComment(comment, _level);
             }
             else
             {
-                _tokenWriter.Comment(comment, _context.Level);
+                _tokenWriter.Comment(comment, _level);
             }
         }
     }

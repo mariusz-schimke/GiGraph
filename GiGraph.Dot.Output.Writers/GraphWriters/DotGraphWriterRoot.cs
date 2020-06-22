@@ -24,13 +24,15 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
         {
         }
 
-        IDotCommentWriter IDotEntityWriter.BeginComment(bool preferBlockComment)
+        public IDotCommentWriter BeginComment(bool preferBlockComment)
         {
-            return new DotNullCommentWriter();
+            return new DotCommentWriter(_tokenWriter, _level, preferBlockComment);
         }
 
-        void IDotEntityWriter.EndComment()
+        public void EndComment()
         {
+            _tokenWriter.LineBreak()
+                        .Indentation(_level, linger: true);
         }
     }
 }
