@@ -20,23 +20,13 @@ namespace GiGraph.Dot.Output.Writers.EdgeWriters
             return base.BeginAttributeList(useAttributeSeparator);
         }
 
-        public virtual void WriteEndpoint(string nodeId, bool quoteNodeId, string portName, bool quotePortName, string compassPoint, bool quoteCompassPoint)
+        public virtual IDotEndpointWriter BeginEndpoint()
         {
-            _tokenWriter.Identifier(nodeId, quoteNodeId);
+            return new DotEndpointWriter(_tokenWriter, _context);
+        }
 
-            if (portName is { })
-            {
-                _tokenWriter.NodePortDelimiter()
-                            .Identifier(portName, quotePortName);
-            }
-
-            if (compassPoint is { })
-            {
-                _tokenWriter.NodePortDelimiter()
-                            .Identifier(compassPoint, quoteCompassPoint);
-            }
-
-            WriteEdge();
+        public void EndEndpoint()
+        {
         }
 
         public IDotSubgraphWriter BeginSubgraph(bool preferExplicitKeyword)
@@ -47,10 +37,9 @@ namespace GiGraph.Dot.Output.Writers.EdgeWriters
         public void EndSubgraph()
         {
             _tokenWriter.ClearLingerBuffer();
-            WriteEdge();
         }
 
-        protected virtual void WriteEdge()
+        public virtual void WriteEdge()
         {
             // these will be removed by the parent writer if no further edges are written
             _tokenWriter.Space(linger: true)

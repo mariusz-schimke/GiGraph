@@ -35,6 +35,7 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
             foreach (var endpoint in endpoints)
             {
                 WriteEndpoint(endpoint, writer);
+                writer.WriteEdge();
             }
         }
 
@@ -57,22 +58,9 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
 
         protected virtual void WriteEndpoint(DotEndpoint endpoint, IDotEdgeWriter writer)
         {
-            var nodeId = EscapeIdentifier(endpoint.NodeId);
-            var portName = EscapeIdentifier(endpoint.Port.Name);
-
-            var compassPoint = endpoint.Port.CompassPoint.HasValue
-                ? DotCompassPointConverter.Convert(endpoint.Port.CompassPoint.Value)
-                : null;
-
-            writer.WriteEndpoint
-            (
-                nodeId,
-                IdentifierRequiresQuoting(nodeId),
-                portName,
-                IdentifierRequiresQuoting(portName),
-                compassPoint,
-                IdentifierRequiresQuoting(compassPoint)
-            );
+            var endpointWriter = writer.BeginEndpoint();
+            _entityGenerators.GetForEntity<IDotEndpointWriter>(endpoint).Generate(endpoint, endpointWriter);
+            writer.EndEndpoint();
         }
 
         protected virtual void WriteEndpointGroup(DotEndpointGroup endpointGroup, IDotEdgeWriter writer)
