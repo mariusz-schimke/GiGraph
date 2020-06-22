@@ -9,17 +9,19 @@ namespace GiGraph.Dot.Output.Writers
         protected readonly StreamWriter _writer;
         protected readonly Queue<string> _lingerBuffer;
 
+        protected readonly int _indentationLevel;
         protected readonly DotFormattingOptions _options;
 
-        protected DotTokenWriter(StreamWriter writer, DotFormattingOptions options, Queue<string> lingerBuffer)
+        protected DotTokenWriter(StreamWriter writer, DotFormattingOptions options, int indentationLevel, Queue<string> lingerBuffer)
         {
             _writer = writer;
             _options = options;
+            _indentationLevel = indentationLevel;
             _lingerBuffer = lingerBuffer;
         }
 
-        public DotTokenWriter(StreamWriter writer, DotFormattingOptions options)
-            : this(writer, options, new Queue<string>())
+        public DotTokenWriter(StreamWriter writer, DotFormattingOptions options, int indentationLevel = 0)
+            : this(writer, options, indentationLevel, new Queue<string>())
         {
         }
 
@@ -28,7 +30,12 @@ namespace GiGraph.Dot.Output.Writers
             var singleLineOutputOptions = _options.Clone();
             singleLineOutputOptions.SingleLineOutput = true;
 
-            return new DotTokenWriter(_writer, singleLineOutputOptions, _lingerBuffer);
+            return new DotTokenWriter(_writer, singleLineOutputOptions, _indentationLevel, _lingerBuffer);
+        }
+
+        public virtual DotTokenWriter NextIndentationLevel()
+        {
+            return new DotTokenWriter(_writer, _options, _indentationLevel + 1, _lingerBuffer);
         }
 
         public virtual DotTokenWriter Token(string token, bool linger = false)
@@ -163,21 +170,16 @@ namespace GiGraph.Dot.Output.Writers
             return Token("*/", linger);
         }
 
-        public virtual DotTokenWriter Comment(string comment, int indentationLevel, bool linger = false)
+        public virtual DotTokenWriter Comment(string comment, bool linger = false)
         {
             var lines = _options.SplitMultilineText(comment);
 
-            if (_options.SingleLineOutput)
-            {
-                return BlockComment(lines, indentationLevel, linger);
-            }
-            else
-            {
-                return Comment(lines, indentationLevel, linger);
-            }
+            return _options.SingleLineOutput
+                ? BlockComment(lines, linger)
+                : Comment(lines, linger);
         }
 
-        protected virtual DotTokenWriter Comment(string[] commentLines, int indentationLevel, bool linger)
+        protected virtual DotTokenWriter Comment(string[] commentLines, bool linger)
         {
             for (int i = 0; i < commentLines.Length; i++)
             {
@@ -189,20 +191,20 @@ namespace GiGraph.Dot.Output.Writers
                 if (i < commentLines.Length - 1)
                 {
                     LineBreak(linger);
-                    Indentation(indentationLevel, linger);
+                    Indentation(linger);
                 }
             }
 
             return this;
         }
 
-        public virtual DotTokenWriter BlockComment(string comment, int indentationLevel, bool linger = false)
+        public virtual DotTokenWriter BlockComment(string comment, bool linger = false)
         {
             var lines = _options.SplitMultilineText(comment);
-            return BlockComment(lines, indentationLevel, linger);
+            return BlockComment(lines, linger);
         }
 
-        protected virtual DotTokenWriter BlockComment(string[] commentLines, int indentationLevel, bool linger)
+        protected virtual DotTokenWriter BlockComment(string[] commentLines, bool linger)
         {
             BlockCommentStart(linger);
             Space(linger);
@@ -214,7 +216,7 @@ namespace GiGraph.Dot.Output.Writers
                 if (i < commentLines.Length - 1)
                 {
                     LineBreak(linger);
-                    Indentation(indentationLevel, linger);
+                    Indentation(linger);
                 }
             }
 
@@ -236,9 +238,9 @@ namespace GiGraph.Dot.Output.Writers
             return this;
         }
 
-        public virtual DotTokenWriter Indentation(int level, bool linger = false)
+        public virtual DotTokenWriter Indentation(bool linger = false)
         {
-            Append(_options.Indentation(level), linger);
+            Append(_options.Indentation(_indentationLevel), linger);
             return this;
         }
 

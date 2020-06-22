@@ -3,13 +3,11 @@
     public class DotCommentWriter : IDotCommentWriter
     {
         protected readonly DotTokenWriter _tokenWriter;
-        protected readonly int _level;
         protected readonly bool _preferBlockComment;
 
-        public DotCommentWriter(DotTokenWriter tokenWriter, int level, bool preferBlockComment)
+        public DotCommentWriter(DotTokenWriter tokenWriter, bool preferBlockComment)
         {
             _tokenWriter = tokenWriter;
-            _level = level;
             _preferBlockComment = preferBlockComment;
         }
 
@@ -17,11 +15,11 @@
         {
             if (_preferBlockComment)
             {
-                _tokenWriter.BlockComment(comment, _level);
+                _tokenWriter.BlockComment(comment);
             }
             else
             {
-                _tokenWriter.Comment(comment, _level);
+                _tokenWriter.Comment(comment);
             }
         }
     }

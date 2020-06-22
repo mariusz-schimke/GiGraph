@@ -6,18 +6,16 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
     public class DotGraphWriterRoot : IDotGraphWriterRoot
     {
         protected readonly DotTokenWriter _tokenWriter;
-        protected readonly int _level;
 
-        public DotGraphWriterRoot(DotTokenWriter tokenWriter, int level = 0)
+        public DotGraphWriterRoot(DotTokenWriter tokenWriter)
         {
             _tokenWriter = tokenWriter;
-            _level = level;
         }
 
         public virtual IDotGraphWriter BeginGraph(bool directed)
         {
-            _tokenWriter.Indentation(_level, linger: true);
-            return new DotGraphWriter(_tokenWriter, new DotEntityWriterContext(_level, directed));
+            _tokenWriter.Indentation(linger: true);
+            return new DotGraphWriter(_tokenWriter, new DotEntityWriterContext(directed));
         }
 
         public void EndGraph()
@@ -26,13 +24,13 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
 
         public IDotCommentWriter BeginComment(bool preferBlockComment)
         {
-            return new DotCommentWriter(_tokenWriter, _level, preferBlockComment);
+            return new DotCommentWriter(_tokenWriter, preferBlockComment);
         }
 
         public void EndComment()
         {
             _tokenWriter.LineBreak()
-                        .Indentation(_level, linger: true);
+                        .Indentation(linger: true);
         }
     }
 }

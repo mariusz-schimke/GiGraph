@@ -22,19 +22,19 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
             }
 
             _tokenWriter.LineBreak()
-                        .Indentation(_context.Level, linger: true);
+                        .Indentation(linger: true);
         }
 
         public override IDotCommentWriter BeginComment(bool preferBlockComment)
         {
-            return new DotCommentWriter(_tokenWriter, _context.Level, preferBlockComment: true);
+            return new DotCommentWriter(_tokenWriter, preferBlockComment: true);
         }
 
         public override void EndComment()
         {
             _tokenWriter.LineBreak()
                         .LineBreak(linger: true)
-                        .Indentation(_context.Level, linger: true);
+                        .Indentation(linger: true);
         }
     }
 }

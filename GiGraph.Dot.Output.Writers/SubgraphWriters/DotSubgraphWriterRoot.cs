@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Output.Writers.SubgraphWriters
 
             _tokenWriter.LineBreak()
                         .LineBreak(linger: true)
-                        .Indentation(_context.Level, linger: true);
+                        .Indentation(linger: true);
         }
     }
 }

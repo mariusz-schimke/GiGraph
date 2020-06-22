@@ -72,7 +72,7 @@ namespace GiGraph.Dot.Extensions
 
             var graphBuilder = graphGeneratorBuilder.Build(syntaxRules, generationOptions);
 
-            var tokenWriter = new DotTokenWriter(outputWriter, formattingOptions);
+            var tokenWriter = new DotTokenWriter(outputWriter, formattingOptions, indentationLevel: 0);
             var graphWriterRoot = new DotGraphWriterRoot(tokenWriter);
 
             graphBuilder.Generate(graph, graphWriterRoot);
