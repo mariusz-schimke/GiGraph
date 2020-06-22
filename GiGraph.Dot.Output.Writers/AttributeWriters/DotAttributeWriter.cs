@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
     public class DotAttributeWriter : DotEntityWriter, IDotAttributeWriter
     {
         public DotAttributeWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context)
+            : base(tokenWriter, context, enforceBlockComment: true)
         {
         }
 
@@ -26,11 +26,6 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
                         .ValueAssignmentOperator()
                         .Space()
                         .Html(value, writeInBrackets);
-        }
-
-        public override IDotCommentWriter BeginComment(bool preferBlockComment)
-        {
-            return new DotCommentWriter(_tokenWriter, preferBlockComment: true);
         }
 
         public override void EndComment()

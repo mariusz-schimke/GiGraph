@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
     public class DotGraphBodyWriter : DotEntityWriter, IDotGraphBodyWriter
     {
         public DotGraphBodyWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context)
+            : base(tokenWriter, context, enforceBlockComment: false)
         {
         }
 

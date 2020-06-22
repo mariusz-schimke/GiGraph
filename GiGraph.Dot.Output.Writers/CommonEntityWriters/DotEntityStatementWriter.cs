@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
         protected readonly bool _useStatementDelimiter;
 
         protected DotEntityStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
-            : base(tokenWriter, context)
+            : base(tokenWriter, context, enforceBlockComment: true)
         {
             _useStatementDelimiter = useStatementDelimiter;
         }
@@ -25,16 +25,9 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
                         .Indentation(linger: true);
         }
 
-        public override IDotCommentWriter BeginComment(bool preferBlockComment)
-        {
-            return new DotCommentWriter(_tokenWriter, preferBlockComment: true);
-        }
-
         public override void EndComment()
         {
-            _tokenWriter.LineBreak()
-                        .LineBreak(linger: true)
-                        .Indentation(linger: true);
+            EmptyLine();
         }
     }
 }
