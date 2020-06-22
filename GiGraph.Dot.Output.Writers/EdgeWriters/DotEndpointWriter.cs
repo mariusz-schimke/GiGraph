@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Output.Writers.EdgeWriters
     public class DotEndpointWriter : DotEntityWriter, IDotEndpointWriter
     {
         public DotEndpointWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context)
+            : base(tokenWriter, context, enforceBlockComment: true)
         {
         }
 
@@ -25,11 +25,6 @@ namespace GiGraph.Dot.Output.Writers.EdgeWriters
                 _tokenWriter.NodePortDelimiter()
                             .Identifier(compassPoint, quoteCompassPoint);
             }
-        }
-
-        public override IDotCommentWriter BeginComment(bool preferBlockComment)
-        {
-            return new DotCommentWriter(_tokenWriter, preferBlockComment: true);
         }
 
         public override void EndComment()

@@ -69,12 +69,12 @@ namespace GiGraph.Dot.Output.Writers
             return Token("=", linger);
         }
 
-        public virtual DotTokenWriter SectionStart(bool linger = false)
+        public virtual DotTokenWriter BlockStart(bool linger = false)
         {
             return Token("{", linger);
         }
 
-        public virtual DotTokenWriter SectionEnd(bool linger = false)
+        public virtual DotTokenWriter BlockEnd(bool linger = false)
         {
             return Token("}", linger);
         }
