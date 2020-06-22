@@ -27,5 +27,15 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
                         .Space()
                         .Html(value, writeInBrackets);
         }
+
+        public override IDotCommentWriter BeginComment(bool preferBlockComment)
+        {
+            return new DotCommentWriter(_tokenWriter, _context.Level, preferBlockComment: true);
+        }
+
+        public override void EndComment()
+        {
+            _tokenWriter.Space();
+        }
     }
 }

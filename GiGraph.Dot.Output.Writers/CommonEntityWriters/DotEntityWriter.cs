@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
 
         public virtual IDotCommentWriter BeginComment(bool preferBlockComment)
         {
-            return new DotCommentWriter(_tokenWriter, _context, preferBlockComment);
+            return new DotCommentWriter(_tokenWriter, _context.Level, preferBlockComment);
         }
 
         public virtual void EndComment()
