@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     /// of the same <see cref="DotEndpoint"/> class, or to multiple nodes represented by the <see cref="DotEndpointGroup"/> class.
     /// To make such connection, use <see cref="DotEdge{TTail, THead}"/> (or one of its more specific descendants), or <see cref="DotEdgeSequence"/>.
     /// </summary>
-    public class DotEndpoint : DotEndpointDefinition
+    public class DotEndpoint : DotEndpointDefinition, IDotEntity, IDotAnnotable
     {
         protected DotEndpointPort _port;
 
@@ -27,6 +27,8 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
             get => _port;
             set => _port = value ?? throw new ArgumentNullException(nameof(Port), "Port cannot be null.");
         }
+
+        public virtual string Annotation { get; set; }
 
         /// <summary>
         /// Creates a new instance of the class.
@@ -74,7 +76,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         {
             return NodeId;
         }
-        
+
         public static implicit operator DotEndpoint(string nodeId)
         {
             return nodeId is {} ? new DotEndpoint(nodeId) : null;

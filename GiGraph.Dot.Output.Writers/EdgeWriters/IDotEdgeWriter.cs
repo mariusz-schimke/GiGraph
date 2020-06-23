@@ -5,9 +5,12 @@ namespace GiGraph.Dot.Output.Writers.EdgeWriters
 {
     public interface IDotEdgeWriter : IDotEntityWithAttributeListWriter
     {
-        void WriteEndpoint(string nodeId, bool quoteNodeId, string portName, bool quotePortName, string compassPoint, bool quoteCompassPoint);
+        IDotEndpointWriter BeginEndpoint();
+        void EndEndpoint();
 
         IDotSubgraphWriter BeginSubgraph(bool preferExplicitKeyword);
         void EndSubgraph();
+
+        void WriteEdge();
     }
 }

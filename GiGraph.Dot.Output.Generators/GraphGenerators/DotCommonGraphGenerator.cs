@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
         protected virtual void WriteBody(DotCommonGraph graphBody, IDotCommonGraphWriter writer)
         {
             var bodyWriter = writer.BeginBody();
-            _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graphBody).Generate(graphBody, bodyWriter);
+            _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graphBody).Generate(graphBody, bodyWriter, annotate: false);
             writer.EndBody();
         }
     }

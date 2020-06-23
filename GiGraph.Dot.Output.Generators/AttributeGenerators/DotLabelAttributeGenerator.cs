@@ -14,9 +14,9 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
         {
         }
 
-        public override void Generate(DotLabelAttribute attribute, IDotAttributeWriter writer)
+        protected override void WriteEntity(DotLabelAttribute attribute, IDotAttributeWriter writer)
         {
-            var value = ((IDotEncodableValue) attribute).GetDotEncodedValue(_options, _syntaxRules);
+            var value = ((IDotEncodable) attribute).GetDotEncodedValue(_options, _syntaxRules);
 
             if (attribute.Value is DotLabelHtml)
             {

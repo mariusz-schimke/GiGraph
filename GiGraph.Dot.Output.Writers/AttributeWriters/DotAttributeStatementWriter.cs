@@ -8,14 +8,14 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
         protected readonly bool _useStatementDelimiter;
 
         public DotAttributeStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
-            : base(tokenWriter, context)
+            : base(tokenWriter, context, enforceBlockComment: true)
         {
             _useStatementDelimiter = useStatementDelimiter;
         }
 
         public virtual IDotAttributeWriter BeginAttribute()
         {
-            return new DotAttributeWriter(_tokenWriter, _context);
+            return new DotAttributeWriter(_tokenWriter, _context, enforceBlockComment: false);
         }
 
         public virtual void EndAttribute()
@@ -26,7 +26,12 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
             }
 
             _tokenWriter.LineBreak()
-                        .Indentation(_context.Level, linger: true);
+                        .Indentation(linger: true);
+        }
+
+        public override void EndComment()
+        {
+            EmptyLine();
         }
     }
 }

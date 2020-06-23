@@ -5,9 +5,9 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     /// <summary>
     /// Represents an endpoint of an edge.
     /// </summary>
-    public abstract class DotEndpointDefinition : IDotOrderableEntity
+    public abstract class DotEndpointDefinition : IDotOrderable
     {
-        string IDotOrderableEntity.OrderingKey => GetOrderingKey();
+        string IDotOrderable.OrderingKey => GetOrderingKey();
         protected abstract string GetOrderingKey();
 
         public static implicit operator DotEndpointDefinition(string nodeId)

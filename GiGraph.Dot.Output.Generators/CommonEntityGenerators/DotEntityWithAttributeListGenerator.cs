@@ -9,7 +9,7 @@ using GiGraph.Dot.Output.Generators.Providers;
 namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 {
     public abstract class DotEntityWithAttributeListGenerator<TEntity, TWriter> : DotEntityGenerator<TEntity, TWriter>
-        where TEntity : IDotEntity
+        where TEntity : IDotEntity, IDotAnnotable
         where TWriter : IDotEntityWithAttributeListWriter
     {
         protected DotEntityWithAttributeListGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
@@ -17,12 +17,12 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
         {
         }
 
-        protected virtual void WriteAttributes(IDotAttributeCollection attributes, IDotEntityWithAttributeListWriter writer)
+        protected virtual void WriteAttributes(IDotAttributeCollection attributes, IDotEntityWithAttributeListWriter writer, bool annotate = true)
         {
             if (attributes.Any())
             {
                 var attributesWriter = writer.BeginAttributeList(_options.Attributes.PreferExplicitSeparator);
-                _entityGenerators.GetForEntity<IDotAttributeListItemWriter>(attributes).Generate(attributes, attributesWriter);
+                _entityGenerators.GetForEntity<IDotAttributeListItemWriter>(attributes).Generate(attributes, attributesWriter, annotate);
                 writer.EndAttributeList();
             }
         }

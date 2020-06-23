@@ -8,14 +8,14 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
         protected readonly bool _useAttributeSeparator;
 
         public DotAttributeListItemWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useAttributeSeparator)
-            : base(tokenWriter, context)
+            : base(tokenWriter, context, enforceBlockComment: true)
         {
             _useAttributeSeparator = useAttributeSeparator;
         }
 
         public virtual IDotAttributeWriter BeginAttribute()
         {
-            return new DotAttributeWriter(_tokenWriter, _context);
+            return new DotAttributeWriter(_tokenWriter, _context, enforceBlockComment: true);
         }
 
         public virtual void EndAttribute()
@@ -26,6 +26,11 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
             }
 
             _tokenWriter.Space(linger: true);
+        }
+
+        public override void EndComment()
+        {
+            _tokenWriter.Space();
         }
     }
 }

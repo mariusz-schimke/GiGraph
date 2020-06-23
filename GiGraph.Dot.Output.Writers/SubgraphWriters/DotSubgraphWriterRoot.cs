@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Output.Writers.SubgraphWriters
     public class DotSubgraphWriterRoot : DotEntityWriter, IDotSubgraphWriterRoot
     {
         public DotSubgraphWriterRoot(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context)
+            : base(tokenWriter, context, enforceBlockComment: true)
         {
         }
 
@@ -18,10 +18,12 @@ namespace GiGraph.Dot.Output.Writers.SubgraphWriters
         public virtual void EndSubgraph()
         {
             _tokenWriter.ClearLingerBuffer();
+            EmptyLine();
+        }
 
-            _tokenWriter.LineBreak()
-                        .LineBreak(linger: true)
-                        .Indentation(_context.Level, linger: true);
+        public override void EndComment()
+        {
+            EmptyLine();
         }
     }
 }

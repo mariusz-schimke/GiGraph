@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
     public class DotGraphBodyWriter : DotEntityWriter, IDotGraphBodyWriter
     {
         public DotGraphBodyWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context)
+            : base(tokenWriter, context, enforceBlockComment: false)
         {
         }
 
@@ -69,7 +69,7 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
         {
             _tokenWriter.ClearLingerBuffer()
                         .LineBreak(linger: true)
-                        .Indentation(_context.Level, linger: true);
+                        .Indentation(linger: true);
         }
     }
 }

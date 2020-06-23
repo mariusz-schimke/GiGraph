@@ -25,6 +25,11 @@ namespace GiGraph.Dot.Output.Options
         public virtual ColorOptions Colors { get; protected set; } = new ColorOptions();
 
         /// <summary>
+        /// Gets the generation options for comments.
+        /// </summary>
+        public virtual CommentOptions Comments { get; protected set; } = new CommentOptions();
+
+        /// <summary>
         /// When set, identifiers will always be quoted, even if it is not required.
         /// </summary>
         public virtual bool PreferQuotedIdentifiers { get; set; } = false;
