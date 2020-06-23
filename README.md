@@ -770,46 +770,40 @@ Edges support customizing which side of the node (and/or cell, when record nodes
 
 ```c#
 // add an edge that joins MyNode1 with MyNode2
-var edge = graph.Edges.Add("MyNode1", "MyNode2", attrs =>
+graph.Edges.Add("MyNode1", "MyNode2", edge =>
 {
-    attrs.Label = "Foo";
-    attrs.Color = Color.Blue;
+    edge.Attributes.Label = "Foo";
+    edge.Attributes.Color = Color.Blue;
+
+    // the tail of the edge will be attached to the top of the node
+    edge.Tail.Port.CompassPoint = DotCompassPoint.North;
+
+    // the head of the edge will be attached to the bottom of the node
+    edge.Head.Port.CompassPoint = DotCompassPoint.South;
 });
-
-// the tail of the edge will be attached to the top of the node
-edge.Tail.CompassPoint = DotCompassPoint.North;
-
-// the head of the edge will be attached to the bottom of the node
-edge.Head.CompassPoint = DotCompassPoint.South;
 ```
 
-You can also manually instantiate an edge with endpoints, and add it to the collection:
+An edge may also be created and added to the collection explicitly:
 
 ```c#
-// create an edge that joins MyNode1 with MyNode2
+// create an edge that joins MyNode1 and MyNode2
 var edge = new DotEdge("MyNode1", "MyNode2");
 
-// and optionally set the compass points as in the previous example
-edge.Tail.CompassPoint = DotCompassPoint.North;
-edge.Head.CompassPoint = DotCompassPoint.South;
+// optionally set the compass points as in the previous example,
+// to change the points on the node where the edge should be attached
+edge.Tail.Port.CompassPoint = DotCompassPoint.North;
+edge.Head.Port.CompassPoint = DotCompassPoint.South;
 
-// or yet another way
+// or slightly easier
 edge = new DotEdge(
     new DotEndpoint("MyNodeId1", DotCompassPoint.North),
     new DotEndpoint("MyNodeId2", DotCompassPoint.South));
+
 
 edge.Attributes.Label = "Foo";
 edge.Attributes.Color = Color.Blue;
 
 graph.Edges.Add(edge);
-
-// or simply add the edge instance to the collection,
-// and initialize the attributes with a lambda expression
-graph.Edges.Add(edge, attrs =>
-{
-    attrs.Label = "Foo";
-    attrs.Color = Color.Blue;
-});
 ```
 
 
@@ -820,52 +814,50 @@ Edge groups join a single node with multiple nodes, multiple nodes with a single
 
 ```c#
 // join one node with multiple nodes
+graph.Edges.AddOneToMany("MyNode Src", "MyNode Dst 1", "MyNode Dst 2");
+
+// which is equivalent to
 var edgeGroup = new DotOneToManyEdgeGroup("MyNode Src", "MyNode Dst 1", "MyNode Dst 2");
 
-// or another way
+// and also equivalent to
 edgeGroup = new DotOneToManyEdgeGroup(
     new DotEndpoint("MyNode Src"),
     new DotEndpointGroup("MyNode Dst 1", "MyNode Dst 2"));
 
 graph.Edges.Add(edgeGroup);
-
-// which is equivalent to
-graph.Edges.AddOneToMany("MyNode Src", "MyNode Dst 1", "MyNode Dst 2");
 ```
 
 ```c#
 // join multiple nodes with one node
+graph.Edges.AddManyToOne("MyNode Dst", "MyNode Src 1", "MyNode Src 2");
+
+// which is equivalent to
 var edgeGroup = new DotManyToOneEdgeGroup("MyNode Dst", "MyNode Src 1", "MyNode Src 2");
 
-// or another way
+// and also equivalent to
 edgeGroup = new DotManyToOneEdgeGroup(
     new DotEndpointGroup("MyNode Dst 1", "MyNode Dst 2"),
     new DotEndpoint("MyNode Src"));
 
 graph.Edges.Add(edgeGroup);
-
-// which is equivalent to
-graph.Edges.AddManyToOne("MyNode Dst", "MyNode Src 1", "MyNode Src 2");
 ```
 
 ```c#
 // join multiple nodes with multiple nodes
+graph.Edges.AddManyToMany(
+    new DotEndpointGroup("MyNode Src 1", "MyNode Src 2"),
+    new DotEndpointGroup("MyNode Dst 1", "MyNode Dst 2"));
+
+// which is equivalent to
 var edgeGroup = new DotManyToManyEdgeGroup(
     new DotEndpointGroup("MyNode Src 1", "MyNode Src 2"),
     new DotEndpointGroup("MyNode Dst 1", "MyNode Dst 2"));
 
 graph.Edges.Add(edgeGroup);
-
-// which is equivalent to
-graph.Edges.AddManyToMany(
-    new DotEndpointGroup("MyNode Src 1", "MyNode Src 2"),
-    new DotEndpointGroup("MyNode Dst 1", "MyNode Dst 2"));
 ```
 
 
 Each group used in the above examples supports attributes. You can set them either directly on a group instance, or by using a lambda expression passed by an argument of the *AddOneToMany*, *AddManyToOne*, *AddManyToMany* methods, on the *Edges* collection.
-
-
 
 ### Edge sequence
 
@@ -899,8 +891,16 @@ graph.Edges.AddSequence(
     new DotEndpoint("MyNode5"));
 ```
 
-
 Sequences support attributes too. You can set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection.
+
+Note that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*. This might come in handy when you add multiple nodes to the sequence, and need specific initialization of only some of them.
+
+```c#
+graph.Edges.AddSequence(
+    "MyNode1",
+    new[] { "MyNode2", "MyNode3", "MyNode4" },
+    new DotEndpoint("MyNode5", DotCompassPoint.North));
+```
 
 
 
@@ -908,35 +908,41 @@ Sequences support attributes too. You can set them either directly on the attrib
 
 Every element of the graph, including the graph itself, may have **attributes**. These are for instance background color, style, node shape, arrow head shape and so on. An attribute is composed of a key and a value. The key is DOT language specific, and the value is dependent on the type of attribute (for example it may be a string, a boolean value, a node shape enumerable, etc.).
 
-Every element supports only attributes that are specific to it. For example arrow head can be specified only for edges, shape can be specified only for nodes, etc. Some of them, on the other hand, are supported by multiple types of elements.
+Every element supports only attributes that are specific to it. For example arrow head can be specified only for edges, shape can be specified only for nodes, etc. Some of them, on the other hand, are supported by multiple types of elements—for example *label*.
 
 ```c#
 node.Attributes.Label = "My node label";
+node.Attributes.Style = DotStyle.Filled;
+node.Attributes.FillColor = DotColorDefinition.Gradient(Color.Red, Color.Blue);
 ```
 
 ```c#
 edge.Attributes.Label = "My edge label";
+edge.Attributes.Color = Color.Red;
 ```
 
-You can set attributes as shown above, by assigning a value to a property, or by adding an attribute instance to the collection. The latter approach may be useful when an attribute is not supported directly by the library. In such case, however, you have to know what key to use, and what value format is valid for it ([see documentation](https://www.graphviz.org/doc/info/attrs.html)).
+You can set attributes as shown above, by assigning a value to a property—this is the easiest way. However, some properties supported by DOT graph visualization tools are not necessarily supported by the library, so they may not be exposed as properties. In such cases you may set them by specifying their key and an appropriately formatted value for it. You have to know exactly what key to use, and what value format is valid for it ([see documentation](https://www.graphviz.org/doc/info/attrs.html)). This approach should be used with care, and the value should always follow the DOT syntax rules. Otherwise the visualization tool you use may be unable to process it correctly.
 
 ```c#
-// this is equivalent to setting the Label property on the attributes collection
-var attribute = new DotStringAttribute("label", "My node label");
+// setting the fill color property (or any other property)
+var attribute = new DotStringAttribute("fillcolor", "red:blue");
 node.Attributes.Set(attribute);
 
-// you can achieve the same without creating an instance explicitly
-node.Attributes.Set("label", "My node label");
+// you can achieve the same without creating an attribute instance explicitly
+node.Attributes.Set("fillcolor", "red:blue");
 ```
 
-In such case consider also the **DotCustomAttribute** class. What is specific about it is that its value is rendered in the output DOT script directly, with **no special character escaping** (which is not the case for the above mentioned **DotStringAttribute**). Therefore, it should be used with care, and the value should always follow the DOT syntax rules. Otherwise the visualization tool you use may be unable to parse it. In most cases, hower, you won't need either of these, and if any, **DotStringAttribute** will most probably be the right choice.
+*DotStringAttribute* may be used for any type of property. Its *value* is rendered in the output DOT script exactly the way it is provided (without any further processing like escaping).
+
+If the value type you want to use is supported by the library, but the key you want to set has no property exposed, you can use the existing attribute types, that will convert the value to an appropriate format for you.
 
 ```c#
-var attribute = new DotCustomAttribute("fillcolor", "yellow:blue");
+// setting the same fill color property (or any other property)
+var attribute = new DotColorDefinitionAttribute("fillcolor", DotColorDefinition.Gradient(Color.Red, Color.Blue));
 node.Attributes.Set(attribute);
 
-// or without creating an instance explicitly
-node.Attributes.SetCustom("fillcolor", "yellow:blue");
+// or without creating an attribute instance explicitly
+node.Attributes.Set("fillcolor", DotColorDefinition.Gradient(Color.Red, Color.Blue));
 ```
 
 
