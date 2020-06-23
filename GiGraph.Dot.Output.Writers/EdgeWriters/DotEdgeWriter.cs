@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Output.Writers.EdgeWriters
 
         public virtual void WriteEdge()
         {
-            // these will be removed by the parent writer if no further edges are written
+            // these will be removed by the parent writer if no further endpoints are written
             _tokenWriter.Space(linger: true)
                         .Edge(_context.IsDirectedGraph, linger: true)
                         .Space(linger: true);
