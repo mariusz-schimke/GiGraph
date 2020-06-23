@@ -1,10 +1,9 @@
 using System.Drawing;
-using GiGraph.Dot.Entities;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Output.Options;
 using Xunit;
 
-namespace GiGraph.Dot.Tests
+namespace GiGraph.Dot.Entities.Tests
 {
     public class ColorsTest
     {
