@@ -5,8 +5,8 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
 {
     public class DotAttributeWriter : DotEntityWriter, IDotAttributeWriter
     {
-        public DotAttributeWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context, enforceBlockComment: true)
+        public DotAttributeWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool enforceBlockComment)
+            : base(tokenWriter, context, enforceBlockComment)
         {
         }
 
@@ -30,7 +30,14 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
 
         public override void EndComment()
         {
-            _tokenWriter.Space();
+            if (_enforceBlockComment)
+            {
+                _tokenWriter.Space();
+            }
+            else
+            {
+                base.EndComment();
+            }
         }
     }
 }
