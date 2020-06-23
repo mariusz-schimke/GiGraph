@@ -9,7 +9,7 @@ using GiGraph.Dot.Output.Generators.Providers;
 namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 {
     public abstract class DotEntityWithAttributeListGenerator<TEntity, TWriter> : DotEntityGenerator<TEntity, TWriter>
-        where TEntity : IDotEntity
+        where TEntity : IDotEntity, IDotCommentable
         where TWriter : IDotEntityWithAttributeListWriter
     {
         protected DotEntityWithAttributeListGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)

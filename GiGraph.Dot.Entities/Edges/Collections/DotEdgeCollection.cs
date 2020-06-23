@@ -7,13 +7,13 @@ namespace GiGraph.Dot.Entities.Edges.Collections
     /// <summary>
     /// A collection of edges.
     /// </summary>
-    public partial class DotEdgeCollection : List<DotEdgeDefinition>, IDotEntity
+    public partial class DotEdgeCollection : List<DotEdgeDefinition>, IDotEntity, IDotCommentable
     {
         protected readonly Func<string, string, Predicate<DotEdgeDefinition>> _matchEdgePredicate;
         protected readonly Predicate<DotEdgeDefinition> _matchLoopPredicate;
 
         public virtual string Notes { get; set; }
-        
+
         protected DotEdgeCollection(
             Func<string, string, Predicate<DotEdgeDefinition>> matchEdgePredicate,
             Predicate<DotEdgeDefinition> matchLoopPredicate)

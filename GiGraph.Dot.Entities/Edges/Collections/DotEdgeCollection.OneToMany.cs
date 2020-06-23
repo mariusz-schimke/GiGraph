@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Edges.Collections
 {
-    public partial class DotEdgeCollection : IDotEntity, ICollection<DotEdgeDefinition>
+    public partial class DotEdgeCollection
     {
         /// <summary>
         /// Adds a group of edges where the <paramref name="tailNodeId"/> as the tail node is connected

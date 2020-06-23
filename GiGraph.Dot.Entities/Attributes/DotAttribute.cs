@@ -3,7 +3,7 @@ using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
-    public abstract class DotAttribute : IDotEntity, IDotEncodable, IDotOrderable
+    public abstract class DotAttribute : IDotEntity, IDotCommentable, IDotEncodable, IDotOrderable
     {
         /// <summary>
         /// Gets the key of the attribute.

@@ -3,11 +3,11 @@ using System;
 
 namespace GiGraph.Dot.Entities.Subgraphs.Collections
 {
-    public class DotCommonSubgraphCollection<T> : DotEntityWithIdCollection<T>, IDotEntity
+    public class DotCommonSubgraphCollection<T> : DotEntityWithIdCollection<T>, IDotEntity, IDotCommentable
         where T : DotCommonSubgraph
     {
         public virtual string Notes { get; set; }
-        
+
         protected DotCommonSubgraphCollection(Func<string, Predicate<T>> matchIdPredicate)
             : base(matchIdPredicate)
         {

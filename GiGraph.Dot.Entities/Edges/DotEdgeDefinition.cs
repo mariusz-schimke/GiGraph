@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Edges
 {
-    public abstract class DotEdgeDefinition : IDotEntity, IDotOrderable
+    public abstract class DotEdgeDefinition : IDotEntity, IDotCommentable, IDotOrderable
     {
         /// <summary>
         /// Gets the attributes of the edge.
