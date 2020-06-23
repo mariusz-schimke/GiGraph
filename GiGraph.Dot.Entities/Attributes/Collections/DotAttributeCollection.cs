@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public class DotAttributeCollection : SortedList<string, DotAttribute>, IDotAttributeCollection
     {
-        public virtual string Notes { get; set; }
+        public virtual string Annotation { get; set; }
 
         public virtual T Set<T>(T attribute)
             where T : DotAttribute

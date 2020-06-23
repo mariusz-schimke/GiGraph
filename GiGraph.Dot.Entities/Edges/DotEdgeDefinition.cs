@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Edges
 {
-    public abstract class DotEdgeDefinition : IDotEntity, IDotCommentable, IDotOrderable
+    public abstract class DotEdgeDefinition : IDotEntity, IDotAnnotable, IDotOrderable
     {
         /// <summary>
         /// Gets the attributes of the edge.
@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         public abstract IEnumerable<DotEndpointDefinition> Endpoints { get; }
 
-        public virtual string Notes { get; set; }
+        public virtual string Annotation { get; set; }
 
         string IDotOrderable.OrderingKey => GetOrderingKey();
 
