@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
     public abstract class DotEntityWithAttributeListWriter : DotEntityWriter, IDotEntityWithAttributeListWriter
     {
         protected DotEntityWithAttributeListWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context)
+            : base(tokenWriter, context, enforceBlockComment: false)
         {
         }
 
@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
             _tokenWriter.AttributeListStart(linger: true)
                         .Space(linger: true);
 
-            return new DotAttributeListItemWriter(_tokenWriter, _context.NextLevel(), useAttributeSeparator);
+            return new DotAttributeListItemWriter(_tokenWriter.NextIndentationLevel(), _context, useAttributeSeparator);
         }
 
         public virtual void EndAttributeList()

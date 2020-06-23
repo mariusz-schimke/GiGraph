@@ -10,7 +10,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotAttributeCollection : IDotEntity, IDictionary<string, DotAttribute>
+    public interface IDotAttributeCollection : IDictionary<string, DotAttribute>, IDotEntity, IDotAnnotable
     {
         /// <summary>
         /// Adds or replaces the specified attribute in the collection.

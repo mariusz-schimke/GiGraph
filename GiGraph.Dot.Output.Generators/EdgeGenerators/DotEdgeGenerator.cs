@@ -6,7 +6,6 @@ using GiGraph.Dot.Output.Writers.SubgraphWriters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
 
@@ -19,7 +18,7 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
         {
         }
 
-        public override void Generate(DotEdgeDefinition edge, IDotEdgeWriter writer)
+        protected override void WriteEntity(DotEdgeDefinition edge, IDotEdgeWriter writer)
         {
             WriteEdges(edge.Endpoints, writer);
             WriteAttributes(edge.Attributes, writer);
@@ -35,6 +34,7 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
             foreach (var endpoint in endpoints)
             {
                 WriteEndpoint(endpoint, writer);
+                writer.WriteEdge();
             }
         }
 
@@ -57,22 +57,9 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
 
         protected virtual void WriteEndpoint(DotEndpoint endpoint, IDotEdgeWriter writer)
         {
-            var nodeId = EscapeIdentifier(endpoint.NodeId);
-            var portName = EscapeIdentifier(endpoint.Port.Name);
-
-            var compassPoint = endpoint.Port.CompassPoint.HasValue
-                ? DotCompassPointConverter.Convert(endpoint.Port.CompassPoint.Value)
-                : null;
-
-            writer.WriteEndpoint
-            (
-                nodeId,
-                IdentifierRequiresQuoting(nodeId),
-                portName,
-                IdentifierRequiresQuoting(portName),
-                compassPoint,
-                IdentifierRequiresQuoting(compassPoint)
-            );
+            var endpointWriter = writer.BeginEndpoint();
+            _entityGenerators.GetForEntity<IDotEndpointWriter>(endpoint).Generate(endpoint, endpointWriter);
+            writer.EndEndpoint();
         }
 
         protected virtual void WriteEndpointGroup(DotEndpointGroup endpointGroup, IDotEdgeWriter writer)

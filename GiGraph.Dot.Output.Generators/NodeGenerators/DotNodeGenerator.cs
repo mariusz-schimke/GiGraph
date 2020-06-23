@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Output.Generators.NodeGenerators
         {
         }
 
-        public override void Generate(DotNode node, IDotNodeWriter writer)
+        protected override void WriteEntity(DotNode node, IDotNodeWriter writer)
         {
             WriteIdentifier(node.Id, writer);
             WriteAttributes(node.Attributes, writer);

@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
         {
         }
 
-        public override void Generate(DotGraph graph, IDotGraphWriterRoot writerRoot)
+        protected override void WriteEntity(DotGraph graph, IDotGraphWriterRoot writerRoot)
         {
             var writer = writerRoot.BeginGraph(graph.IsDirected);
 

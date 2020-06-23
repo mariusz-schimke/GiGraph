@@ -5,8 +5,8 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
 {
     public class DotAttributeWriter : DotEntityWriter, IDotAttributeWriter
     {
-        public DotAttributeWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context)
+        public DotAttributeWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool enforceBlockComment)
+            : base(tokenWriter, context, enforceBlockComment)
         {
         }
 
@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
                         .Space()
                         .ValueAssignmentOperator()
                         .Space()
-                        .TextValue(value, quoteValue);
+                        .Identifier(value, quoteValue);
         }
 
         public virtual void WriteHtmlAttribute(string key, bool quoteKey, string value, bool writeInBrackets)
@@ -25,7 +25,19 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
                         .Space()
                         .ValueAssignmentOperator()
                         .Space()
-                        .HtmlValue(value, writeInBrackets);
+                        .Html(value, writeInBrackets);
+        }
+
+        public override void EndComment()
+        {
+            if (_enforceBlockComment)
+            {
+                _tokenWriter.Space();
+            }
+            else
+            {
+                base.EndComment();
+            }
         }
     }
 }

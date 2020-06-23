@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
             }
 
             _tokenWriter.LineBreak()
-                        .Indentation(_context.Level);
+                        .Indentation();
         }
     }
 }

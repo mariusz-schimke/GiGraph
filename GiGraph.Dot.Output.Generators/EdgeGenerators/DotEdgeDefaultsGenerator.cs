@@ -13,10 +13,10 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
         {
         }
 
-        public override void Generate(DotAttributeCollection defaults, IDotEdgeDefaultsWriter writer)
+        protected override void WriteEntity(DotAttributeCollection defaults, IDotEdgeDefaultsWriter writer)
         {
             WriteEdgeKeyword(writer);
-            WriteAttributes(defaults, writer);
+            WriteAttributes(defaults, writer, annotate: false);
         }
 
         protected virtual void WriteEdgeKeyword(IDotEdgeDefaultsWriter writer)

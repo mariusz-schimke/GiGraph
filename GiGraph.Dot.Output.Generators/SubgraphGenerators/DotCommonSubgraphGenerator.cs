@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Output.Generators.SubgraphGenerators
         {
         }
 
-        public override void Generate(TSubgraph subgraph, IDotSubgraphWriter writer)
+        protected override void WriteEntity(TSubgraph subgraph, IDotSubgraphWriter writer)
         {
             WriteDeclaration(subgraph.Id, writer);
             WriteBody(subgraph, writer);

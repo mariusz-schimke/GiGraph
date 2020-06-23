@@ -6,25 +6,26 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
     public abstract class DotGraphBlockWriter : DotEntityWriter
     {
         protected DotGraphBlockWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context)
+            : base(tokenWriter, context, enforceBlockComment: false)
         {
         }
 
         public virtual IDotGraphBodyWriter BeginBody()
         {
-            _tokenWriter.SectionStart()
-                        .LineBreak()
-                        .Indentation(_context.Level + 1, linger: true);
+            var tokenWriter = _tokenWriter.NextIndentationLevel();
+            tokenWriter.BlockStart()
+                       .LineBreak()
+                       .Indentation(linger: true);
 
-            return new DotGraphBodyWriter(_tokenWriter, _context.NextLevel());
+            return new DotGraphBodyWriter(tokenWriter, _context);
         }
 
         public virtual void EndBody()
         {
             _tokenWriter.ClearLingerBuffer();
-            _tokenWriter.Indentation(_context.Level);
+            _tokenWriter.Indentation();
 
-            _tokenWriter.SectionEnd();
+            _tokenWriter.BlockEnd();
         }
     }
 }

@@ -7,20 +7,40 @@ using GiGraph.Dot.Output.Generators.Providers;
 namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 {
     public abstract class DotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator<TEntity, TWriter>
-        where TEntity : IDotEntity
+        where TEntity : IDotEntity, IDotAnnotable
         where TWriter : IDotEntityWriter
     {
         protected readonly DotSyntaxRules _syntaxRules;
         protected readonly DotGenerationOptions _options;
         protected readonly IDotEntityGeneratorsProvider _entityGenerators;
 
-        public abstract void Generate(TEntity entity, TWriter writer);
+        protected abstract void WriteEntity(TEntity entity, TWriter writer);
+
+        public void Generate(TEntity entity, TWriter writer, bool annotate)
+        {
+            if (annotate)
+            {
+                WriteAnnotation(entity, writer);
+            }
+
+            WriteEntity(entity, writer);
+        }
 
         protected DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
         {
             _syntaxRules = syntaxRules;
             _options = options;
             _entityGenerators = entityGenerators;
+        }
+
+        protected virtual void WriteAnnotation(TEntity entity, TWriter writer)
+        {
+            if (_options.Comments.Enabled && entity.Annotation is {})
+            {
+                var commentWriter = writer.BeginComment(_options.Comments.PreferBlockComments);
+                commentWriter.Write(entity.Annotation);
+                writer.EndComment();
+            }
         }
 
         public virtual bool Supports<TRequiredWriter>(Type entityType, out bool isExactEntityTypeMatch)
@@ -42,7 +62,7 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
             return typeof(TEntity).IsAssignableFrom(entityType);
         }
 
-        void IDotEntityGenerator.Generate(IDotEntity entity, IDotEntityWriter writer)
+        void IDotEntityGenerator.Generate(IDotEntity entity, IDotEntityWriter writer, bool annotate)
         {
             if (entity is { } && !(entity is TEntity))
             {
@@ -54,7 +74,7 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
                 throw new ArgumentException($"The writer type {writer.GetType().FullName} is not valid for the {GetType().FullName} generator.", nameof(writer));
             }
 
-            Generate((TEntity) entity, (TWriter) writer);
+            Generate((TEntity) entity, (TWriter) writer, annotate);
         }
 
         protected virtual string EscapeIdentifier(string id) => _syntaxRules.EscapeIdentifier(id);

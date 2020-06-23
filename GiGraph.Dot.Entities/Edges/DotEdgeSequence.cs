@@ -76,7 +76,7 @@ namespace GiGraph.Dot.Entities.Edges
             return string.Join
             (
                 " ",
-                Endpoints.Cast<IDotOrderableEntity>()
+                Endpoints.Cast<IDotOrderable>()
                          .Select(endpoint => endpoint.OrderingKey)
             );
         }

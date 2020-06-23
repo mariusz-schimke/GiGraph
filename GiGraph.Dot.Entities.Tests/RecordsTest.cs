@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Tests
         {
             DotRecord rec = new DotRecord(flip: false, "field1", "field2");
 
-            Assert.Equal("field1 | field2", ((IDotEncodableValue) rec).GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal("field1 | field2", ((IDotEncodable) rec).GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
         
         [Fact]
@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Tests
         {
             DotRecord rec = new DotRecord(flip: false, new DotRecordTextField("field1", "port 1"), "field2");
 
-            Assert.Equal("<port&#32;1> field1 | field2", ((IDotEncodableValue) rec).GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal("<port&#32;1> field1 | field2", ((IDotEncodable) rec).GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Tests
         {
             DotRecord rec = new DotRecord(flip: true, "field1", "field2");
 
-            Assert.Equal("{ field1 | field2 }", ((IDotEncodableValue) rec).GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal("{ field1 | field2 }", ((IDotEncodable) rec).GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
 
         [Fact]
@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Tests
 
             Assert.Equal(
                 "{ root&#32;field1 | root&#32;field2 | { sub-field1 | sub-field2 } }",
-                ((IDotEncodableValue) rec).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEncodable) rec).GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
 
         [Fact]
@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Tests
 
             Assert.Equal(
                 "root&#32;field1 | root&#32;field2 | { { sub-field1 | sub-field2 } }",
-                ((IDotEncodableValue) rec).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEncodable) rec).GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
     }
 }
