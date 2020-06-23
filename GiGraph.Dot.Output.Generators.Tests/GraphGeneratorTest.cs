@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             var options = new DotFormattingOptions()
             {
-                SingleLineOutput = true
+                SingleLine = true
             };
 
             Assert.Equal(sb.ToString(), graph.Build(options, _generationOptions, _syntaxRules));

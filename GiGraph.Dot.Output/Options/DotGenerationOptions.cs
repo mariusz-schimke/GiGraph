@@ -25,6 +25,11 @@ namespace GiGraph.Dot.Output.Options
         public virtual ColorOptions Colors { get; protected set; } = new ColorOptions();
 
         /// <summary>
+        /// Gets the generation options for comments.
+        /// </summary>
+        public virtual CommentOptions Comments { get; protected set; } = new CommentOptions();
+
+        /// <summary>
         /// When set, identifiers will always be quoted, even if it is not required.
         /// </summary>
         public virtual bool PreferQuotedIdentifiers { get; set; } = false;
@@ -33,12 +38,6 @@ namespace GiGraph.Dot.Output.Options
         /// When set, all statements within the graph will be followed by a delimiter (;).
         /// </summary>
         public virtual bool PreferStatementDelimiter { get; set; } = false;
-
-        /// <summary>
-        /// When set, block comments are used (/* */) instead of single line comments (//).
-        /// When the output DOT script is written as a single line, block comments are used even if the property is not set.
-        /// </summary>
-        public virtual bool PreferBlockComments { get; set; } = false;
 
         /// <summary>
         /// Gets or sets a value indicating if graph elements should be ordered alphabetically in the output DOT script.

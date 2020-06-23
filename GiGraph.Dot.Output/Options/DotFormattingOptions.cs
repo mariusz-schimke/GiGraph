@@ -5,10 +5,9 @@ namespace GiGraph.Dot.Output.Options
     public class DotFormattingOptions
     {
         /// <summary>
-        /// Gets or sets the value indicating if the output should be generated as a single line of text.
-        /// In such case <see cref="LineBreak"/> sequences in identifiers and HTML labels will be replaced with white space.
+        /// Gets or sets the value indicating if the output should be generated without line breaks.
         /// </summary>
-        public virtual bool SingleLineOutput { get; set; } = false;
+        public virtual bool SingleLine { get; set; } = false;
 
         /// <summary>
         /// Determines what character to use for indentation (space by default).
@@ -27,8 +26,8 @@ namespace GiGraph.Dot.Output.Options
 
         /// <summary>
         /// An optional text encoder to use when writing text to the output stream. May become useful when
-        /// the DOT visualization tool you use fails processing some special characters. In such case replacing them
-        /// with their HTML-code equivalents might help. 
+        /// the DOT visualization tool you use fails processing some special or national characters.
+        /// In such case replacing them with their HTML-code equivalents might help.
         /// </summary>
         public virtual Func<string, string> TextEncoder { get; set; }
 
