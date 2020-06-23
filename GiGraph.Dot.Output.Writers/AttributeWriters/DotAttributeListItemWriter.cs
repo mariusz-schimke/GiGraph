@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
 
         public virtual IDotAttributeWriter BeginAttribute()
         {
-            return new DotAttributeWriter(_tokenWriter, _context);
+            return new DotAttributeWriter(_tokenWriter, _context, enforceBlockComment: true);
         }
 
         public virtual void EndAttribute()
