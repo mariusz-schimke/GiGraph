@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Output.Options
     {
         public static string Indentation(this DotFormattingOptions options, int level = 0)
         {
-            return options.SingleLineOutput
+            return options.SingleLine
                 ? string.Empty
                 : string.Empty.PadRight(options.Indentation * level, options.IndentChar);
         }
@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Output.Options
 
         public static string LineBreak(this DotFormattingOptions options)
         {
-            return options.SingleLineOutput
+            return options.SingleLine
                 ? options.Space()
                 : options.LineBreak;
         }

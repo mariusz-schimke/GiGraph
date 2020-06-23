@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Output.Writers
         public virtual DotTokenWriter SingleLine()
         {
             var singleLineOutputOptions = _options.Clone();
-            singleLineOutputOptions.SingleLineOutput = true;
+            singleLineOutputOptions.SingleLine = true;
 
             return new DotTokenWriter(_writer, singleLineOutputOptions, _indentationLevel, _lingerBuffer);
         }
@@ -174,7 +174,7 @@ namespace GiGraph.Dot.Output.Writers
         {
             var lines = _options.SplitMultilineText(comment);
 
-            return _options.SingleLineOutput
+            return _options.SingleLine
                 ? BlockComment(lines, linger)
                 : Comment(lines, linger);
         }

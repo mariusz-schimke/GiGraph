@@ -35,9 +35,9 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 
         protected virtual void WriteAnnotation(TEntity entity, TWriter writer)
         {
-            if (entity.Annotation is {})
+            if (_options.Comments.Enabled && entity.Annotation is {})
             {
-                var commentWriter = writer.BeginComment(_options.PreferBlockComments);
+                var commentWriter = writer.BeginComment(_options.Comments.PreferBlockComments);
                 commentWriter.Write(entity.Annotation);
                 writer.EndComment();
             }
