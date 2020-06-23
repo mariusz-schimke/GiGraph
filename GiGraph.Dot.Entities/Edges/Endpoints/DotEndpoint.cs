@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     /// of the same <see cref="DotEndpoint"/> class, or to multiple nodes represented by the <see cref="DotEndpointGroup"/> class.
     /// To make such connection, use <see cref="DotEdge{TTail, THead}"/> (or one of its more specific descendants), or <see cref="DotEdgeSequence"/>.
     /// </summary>
-    public class DotEndpoint : DotEndpointDefinition, IDotEntity
+    public class DotEndpoint : DotEndpointDefinition, IDotEntity, IDotCommentable
     {
         protected DotEndpointPort _port;
 

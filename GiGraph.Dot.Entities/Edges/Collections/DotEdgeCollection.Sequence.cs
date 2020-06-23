@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Edges.Collections
 {
-    public partial class DotEdgeCollection : IDotEntity, ICollection<DotEdgeDefinition>
+    public partial class DotEdgeCollection
     {
         /// <summary>
         /// Adds a sequence of edges that join specified nodes consecutively.
