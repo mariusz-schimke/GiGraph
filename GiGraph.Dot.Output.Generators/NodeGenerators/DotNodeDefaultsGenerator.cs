@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Output.Generators.NodeGenerators
         protected override void WriteEntity(DotAttributeCollection defaults, IDotNodeDefaultsWriter writer)
         {
             WriteNodeKeyword(writer);
-            WriteAttributes(defaults, writer);
+            WriteAttributes(defaults, writer, annotate: false);
         }
 
         protected virtual void WriteNodeKeyword(IDotNodeDefaultsWriter writer)

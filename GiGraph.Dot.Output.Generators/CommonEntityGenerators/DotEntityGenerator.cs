@@ -16,9 +16,13 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 
         protected abstract void WriteEntity(TEntity entity, TWriter writer);
 
-        public void Generate(TEntity entity, TWriter writer)
+        public void Generate(TEntity entity, TWriter writer, bool annotate)
         {
-            WriteNotesComment(entity, writer);
+            if (annotate)
+            {
+                WriteAnnotation(entity, writer);
+            }
+
             WriteEntity(entity, writer);
         }
 
@@ -29,7 +33,7 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
             _entityGenerators = entityGenerators;
         }
 
-        protected virtual void WriteNotesComment(TEntity entity, TWriter writer)
+        protected virtual void WriteAnnotation(TEntity entity, TWriter writer)
         {
             if (entity.Annotation is {})
             {
@@ -58,7 +62,7 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
             return typeof(TEntity).IsAssignableFrom(entityType);
         }
 
-        void IDotEntityGenerator.Generate(IDotEntity entity, IDotEntityWriter writer)
+        void IDotEntityGenerator.Generate(IDotEntity entity, IDotEntityWriter writer, bool annotate)
         {
             if (entity is { } && !(entity is TEntity))
             {
@@ -70,7 +74,7 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
                 throw new ArgumentException($"The writer type {writer.GetType().FullName} is not valid for the {GetType().FullName} generator.", nameof(writer));
             }
 
-            Generate((TEntity) entity, (TWriter) writer);
+            Generate((TEntity) entity, (TWriter) writer, annotate);
         }
 
         protected virtual string EscapeIdentifier(string id) => _syntaxRules.EscapeIdentifier(id);

@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
         protected override void WriteEntity(DotAttributeCollection defaults, IDotGraphAttributesWriter writer)
         {
             WriteGraphKeyword(writer);
-            WriteAttributes(defaults, writer);
+            WriteAttributes(defaults, writer, annotate: false);
         }
 
         protected virtual void WriteGraphKeyword(IDotGraphAttributesWriter writer)
