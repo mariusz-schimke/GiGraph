@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace GiGraph.Dot.Entities.Nodes.Collections
 {
-    public class DotNodeCollection : DotEntityWithIdCollection<DotNodeDefinition>, IDotEntity, IDotCommentable
+    public class DotNodeCollection : DotEntityWithIdCollection<DotNodeDefinition>, IDotEntity, IDotAnnotable
     {
-        public virtual string Notes { get; set; }
+        public virtual string Annotation { get; set; }
 
         protected DotNodeCollection(Func<string, Predicate<DotNodeDefinition>> matchIdPredicate)
             : base(matchIdPredicate)

@@ -7,7 +7,7 @@ using GiGraph.Dot.Output.Generators.Providers;
 namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 {
     public abstract class DotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator<TEntity, TWriter>
-        where TEntity : IDotEntity, IDotCommentable
+        where TEntity : IDotEntity, IDotAnnotable
         where TWriter : IDotEntityWriter
     {
         protected readonly DotSyntaxRules _syntaxRules;
@@ -31,10 +31,10 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 
         protected virtual void WriteNotesComment(TEntity entity, TWriter writer)
         {
-            if (entity.Notes is {})
+            if (entity.Annotation is {})
             {
                 var commentWriter = writer.BeginComment(_options.PreferBlockComments);
-                commentWriter.Write(entity.Notes);
+                commentWriter.Write(entity.Annotation);
                 writer.EndComment();
             }
         }
