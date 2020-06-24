@@ -3,7 +3,7 @@ using System;
 
 namespace GiGraph.Dot.Entities.Subgraphs.Collections
 {
-    public class DotCommonSubgraphCollection<T> : DotEntityWithIdCollection<T>, IDotEntity, IDotAnnotable
+    public class DotCommonSubgraphCollection<T> : DotEntityWithIdCollection<T>, IDotEntity, IDotAnnotatable
         where T : DotCommonSubgraph
     {
         public virtual string Annotation { get; set; }
