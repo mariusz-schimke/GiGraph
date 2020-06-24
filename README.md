@@ -916,11 +916,14 @@ graph.Edges.Add(edge);
 
 Edge groups join a single node with multiple nodes, multiple nodes with a single node, or multiple nodes with multiple nodes. The examples below present each of these use cases.
 
+
+
+#### Joining one node with multiple nodes
+
 ```c#
-// join one node with multiple nodes
 graph.Edges.AddOneToMany("Foo", "Bar", "Baz");
 
-// which is equivalent to
+// the line above is equivalent to
 var edgeGroup = new DotOneToManyEdgeGroup("Foo", "Bar", "Baz");
 
 // and also equivalent to
@@ -934,14 +937,22 @@ graph.Edges.Add(edgeGroup);
 <p align="left">
   <img src="./Assets/Examples/edge-one-to-many.svg">
 </p>
+```dot
+digraph
+{
+    { Foo } -> { Bar Baz }
+}
+```
 
+
+
+#### Joining multiple nodes with one node
 
 
 ```c#
-// join multiple nodes with one node
 graph.Edges.AddManyToOne("Baz", "Foo", "Bar");
 
-// which is equivalent to
+// the line above is equivalent to
 var edgeGroup = new DotManyToOneEdgeGroup("Baz", "Foo", "Bar");
 
 // and also equivalent to
@@ -955,16 +966,24 @@ graph.Edges.Add(edgeGroup);
 <p align="left">
   <img src="./Assets/Examples/edge-many-to-one.svg">
 </p>
+```dot
+digraph
+{
+    { Foo Bar } -> { Baz }
+}
+```
 
+
+
+#### Join multiple nodes with multiple nodes
 
 
 ```c#
-// join multiple nodes with multiple nodes
 graph.Edges.AddManyToMany(
     new DotEndpointGroup("Foo", "Bar"),
     new DotEndpointGroup("Baz", "Qux"));
 
-// which is equivalent to
+// the code above is equivalent to
 var edgeGroup = new DotManyToManyEdgeGroup(
     new DotEndpointGroup("Foo", "Bar"),
     new DotEndpointGroup("Baz", "Qux"));
@@ -975,53 +994,105 @@ graph.Edges.Add(edgeGroup);
 <p align="left">
   <img src="./Assets/Examples/edge-many-to-many.svg">
 </p>
+```dot
+digraph
+{
+    { Foo Bar } -> { Baz Qux }
+}
+```
 
 
 
 Each group used in the above examples supports attributes. You can set them either directly on a group instance, or by using a lambda expression passed by an argument of the *AddOneToMany*, *AddManyToOne*, *AddManyToMany* methods, on the *Edges* collection.
 
+
+
 ### Edge sequence
 
-An edge sequence lets you join a sequence of consecutive nodes an/or node groups represented by subgraphs. The examples below present two use cases:
+An edge sequence lets you join a sequence of consecutive nodes an/or node groups (the latter are represented by subgraphs). The examples below present two use cases:
 
-- when the sequence is composed of single nodes only (they will be joined with one another consecutively when visualized), 
-- when the sequence is composed of a mix of single nodes and groups of nodes (subgraphs). 
+- where the sequence is composed of single nodes only (they will be joined with one another consecutively when visualized), 
+- where the sequence is composed of a mix of single nodes and groups of nodes (subgraphs). 
+
+
+
+#### A sequence of consecutive nodes
 
 ```c#
-// join a sequence of consecutive nodes
-var edgeSequence = new DotEdgeSequence("MyNode1", "MyNode2", "MyNode3");
+var edgeSequence = new DotEdgeSequence("Foo", "Bar", "Baz");
 graph.Edges.Add(edgeSequence);
 
 // or simply
-graph.Edges.AddSequence("MyNode1", "MyNode2", "MyNode3");
+graph.Edges.AddSequence("Foo", "Bar", "Baz");
 ```
 
+```dot
+digraph
+{
+    Foo -> Bar -> Baz
+}
+```
+
+<p align="left">
+  <img src="./Assets/Examples/edge-sequence-of-three.svg">
+</p>
+
+
+
+#### A sequence of consecutive nodes and groups of nodes
+
 ```c#
-// join a sequence of consecutive nodes and groups of nodes
 var edgeSequence = new DotEdgeSequence(
-    new DotEndpoint("MyNode1"),
-    new DotEndpointGroup("MyNode2", "MyNode3", "MyNode4"),
-    new DotEndpoint("MyNode5"));
+    new DotEndpoint("Foo"),
+    new DotEndpointGroup("Bar", "Baz", "Qux"),
+    new DotEndpoint("Quux"));
 
 graph.Edges.Add(edgeSequence);
 
 // or simply
 graph.Edges.AddSequence(
-    new DotEndpoint("MyNode1"),
-    new DotEndpointGroup("MyNode2", "MyNode3", "MyNode4"),
-    new DotEndpoint("MyNode5"));
+    new DotEndpoint("Foo"),
+    new DotEndpointGroup("Bar", "Baz", "Qux"),
+    new DotEndpoint("Quux"));
 ```
 
-Sequences support attributes too. You can set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection.
+```dot
+digraph
+{
+    Foo -> { Bar Baz Qux } -> Quux
+}
+```
 
-Note that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*. This might come in handy when you add multiple nodes to the sequence, and need specific initialization of only some of them.
+<p align="left">
+  <img src="./Assets/Examples/edge-sequence-with-group.svg">
+</p>
+
+
+
+Sequences support attributes too. You can set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection.Note also that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*. This might come in handy when you add multiple nodes to the sequence, and need specific initialization of only some of them.
 
 ```c#
 graph.Edges.AddSequence(
-    "MyNode1",
-    new[] { "MyNode2", "MyNode3", "MyNode4" },
-    new DotEndpoint("MyNode5", DotCompassPoint.North));
+    edge =>
+    {
+        // set attributes (they affect all edges in the sequence)
+        edge.Attributes.Color = Color.Red;
+    },
+    "Foo",
+    new[] { "Bar", "Baz", "Qux" },
+    new DotEndpoint("Quux", DotCompassPoint.North));
 ```
+
+```dot
+digraph
+{
+    Foo -> { Bar Baz Qux } -> Quux:n [ color = red ]
+}
+```
+
+<p align="left">
+  <img src="./Assets/Examples/edge-sequence-with-group-and-attrs.svg">
+</p>
 
 
 
