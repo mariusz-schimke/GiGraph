@@ -710,7 +710,7 @@ Nodes are distinguished by their **identifiers**. The identifiers are used by ed
 
 ```c#
 // add the node to the nodes collection of the graph (or subgraph/cluster)
-graph.Nodes.Add("MyNodeId1", attrs =>
+graph.Nodes.Add("Foo", attrs =>
 {
     attrs.Label = "Hello World!";
     attrs.Shape = DotShape.Hexagon;
@@ -720,12 +720,25 @@ graph.Nodes.Add("MyNodeId1", attrs =>
 The code above is equivalent to:
 
 ```c#
-var node = new DotNode("MyNodeId1");
+var node = new DotNode("Foo");
 node.Attributes.Label = "Hello World!";
 node.Attributes.Shape = DotShape.Hexagon;
 
 graph.Nodes.Add(node);
 ```
+
+And renders:
+
+```dot
+digraph
+{
+    Foo [ label = "Hello World!", shape = hexagon ]
+}
+```
+
+<p align="left">
+  <img src="./Assets/Examples/node-hexagon-hello-world.svg">
+</p>
 
 
 
@@ -838,22 +851,37 @@ graph.Nodes.Add
 (
     attrs =>
     {
-        attrs.Color = Color.Red;
+        attrs.Color = Color.Orange;
         attrs.Shape = DotShape.Hexagon;
     },
-    "MyNodeId1", "MyNodeId2", "MyNodeId3"
+    "Foo", "Bar", "Baz"
 );
 ```
 
 You can also do it this way:
 
 ```c#
-var nodeGroup = new DotNodeGroup("MyNodeId1", "MyNodeId2", "MyNodeId3");
-nodeGroup.Attributes.Color = Color.Red;
+var nodeGroup = new DotNodeGroup("Foo", "Bar", "Baz");
+nodeGroup.Attributes.Color = Color.Orange;
 nodeGroup.Attributes.Shape = DotShape.Hexagon;
 
 graph.Nodes.Add(nodeGroup);
 ```
+
+And the code renders:
+
+```dot
+digraph
+{
+    Foo, Bar, Baz [ color = orange, shape = hexagon ]
+}
+```
+
+<p align="left">
+  <img src="./Assets/Examples/node-group-of-three.svg">
+</p>
+
+
 
 Note that there is also an ***AddRange*** method available on the node collection, and it differs from the mentioned *Add* overload in that it adds multiple nodes with individual lists of attributes for each.
 
@@ -869,7 +897,7 @@ Edges **join two nodes**: a tail node and a head node (this naming convention is
 Edges support customizing which side of the node (and/or cell, when record nodes are used) the head and/or tail of the edge is attached to.
 
 ```c#
-// add an edge that joins MyNode1 with MyNode2
+// add an edge that joins a Foo node with a Bar node
 graph.Edges.Add("Foo", "Bar", edge =>
 {
     edge.Attributes.Label = "Baz";
@@ -890,7 +918,7 @@ graph.Edges.Add("Foo", "Bar", edge =>
 An edge may also be created and added to the collection explicitly:
 
 ```c#
-// create an edge that joins MyNode1 and MyNode2
+// create an edge that joins a Foo node with a Bar node
 var edge = new DotEdge("Foo", "Bar");
 
 // optionally set the compass points as in the previous example,
@@ -1068,6 +1096,7 @@ digraph
 </p>
 
 
+#### Sequence attributes
 
 Sequences support attributes too. You can set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection.Note also that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*. This might come in handy when you add multiple nodes to the sequence, and need specific initialization of only some of them.
 
