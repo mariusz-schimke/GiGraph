@@ -2,7 +2,7 @@
 
 namespace GiGraph.Dot.Entities.Nodes
 {
-    public abstract class DotNodeDefinition : IDotEntity, IDotAnnotable, IDotOrderable
+    public abstract class DotNodeDefinition : IDotEntity, IDotAnnotatable, IDotOrderable
     {
         /// <summary>
         /// The attributes of the node or node group.

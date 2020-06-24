@@ -5,7 +5,7 @@ using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
-    public abstract class DotCommonGraph : IDotEntity, IDotAnnotable, IDotOrderable
+    public abstract class DotCommonGraph : IDotEntity, IDotAnnotatable, IDotOrderable
     {
         /// <summary>
         /// Gets or sets the identifier of the graph. Set null if no identifier should be used.
