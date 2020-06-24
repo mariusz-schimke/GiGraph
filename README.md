@@ -1032,7 +1032,26 @@ digraph
 
 
 
+#### Group attributes
+
 Each group used in the above examples supports attributes. You can set them either directly on a group instance, or by using a lambda expression passed by an argument of the *AddOneToMany*, *AddManyToOne*, *AddManyToMany* methods, on the *Edges* collection.
+
+```c#
+graph.Edges.AddManyToMany(
+    new DotEndpointGroup("Foo", "Bar"),
+    new DotEndpointGroup("Baz", "Qux"));
+```
+
+```dot
+digraph
+{
+    { Foo Bar } -> { Baz Qux } [ color = red ]
+}
+```
+
+<p align="left">
+  <img src="./Assets/Examples/edge-many-to-many-with-attrs.svg">
+</p>
 
 
 
