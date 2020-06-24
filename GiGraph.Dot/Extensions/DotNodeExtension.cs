@@ -119,7 +119,7 @@ namespace GiGraph.Dot.Extensions
 
         private static void ToRecord(DotNode node, DotRecord record, bool rounded)
         {
-            node.Attributes.Shape = rounded ? DotShape.MRecord : DotShape.Record;
+            node.Attributes.Shape = rounded ? DotShape.RoundedRecord : DotShape.Record;
             node.Attributes.Label = record;
         }
     }

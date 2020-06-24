@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Entities.Attributes.Enums
+﻿using GiGraph.Dot.Entities.Types.Labels;
+
+namespace GiGraph.Dot.Entities.Attributes.Enums
 {
     /// <summary>
     /// The node shape.
@@ -31,7 +33,7 @@
         Point,
 
         Circle,
-        MCircle,
+        ClippedCircle,
         DoubleCircle,
 
         Ellipse,
@@ -61,13 +63,13 @@
         Cylinder,
 
         Square,
-        MSquare,
+        ClippedSquare,
 
         Triangle,
         InvertedTriangle,
 
         Diamond,
-        MDiamond,
+        ClippedDiamond,
 
         Parallelogram,
 
@@ -99,17 +101,17 @@
 
         /// <summary>
         /// Visually, a record is a box, with fields represented by alternating rows of horizontal or vertical subboxes.
-        /// Use an HTML label to define its structure
+        /// Use a <see cref="DotLabelRecord"/> label to define the fields of the record
         /// (<see href="https://www.graphviz.org/doc/info/shapes.html#record">learn more</see>).
         /// </summary>
         Record,
 
         /// <summary>
         /// Visually, this type of record shape is a box with rounded corers, and fields represented by alternating rows
-        /// of horizontal or vertical subboxes. Use an HTML label to define its structure
+        /// of horizontal or vertical subboxes. Use a <see cref="DotLabelRecord"/> label to define the fields of the record
         /// (<see href="https://www.graphviz.org/doc/info/shapes.html#record">learn more</see>).
         /// </summary>
-        MRecord,
+        RoundedRecord,
 
 
         // --- SYNTHETIC BIOLOGY SHAPES ---
