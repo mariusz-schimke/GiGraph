@@ -960,15 +960,16 @@ edgeGroup = new DotOneToManyEdgeGroup(
 graph.Edges.Add(edgeGroup);
 ```
 
-<p align="left">
-  <img src="./Assets/Examples/edge-one-to-many.svg">
-</p>
 ```dot
 digraph
 {
     { Foo } -> { Bar Baz }
 }
 ```
+
+<p align="left">
+  <img src="./Assets/Examples/edge-one-to-many.svg">
+</p>
 
 
 
@@ -989,15 +990,16 @@ edgeGroup = new DotManyToOneEdgeGroup(
 graph.Edges.Add(edgeGroup);
 ```
 
-<p align="left">
-  <img src="./Assets/Examples/edge-many-to-one.svg">
-</p>
 ```dot
 digraph
 {
     { Foo Bar } -> { Baz }
 }
 ```
+
+<p align="left">
+  <img src="./Assets/Examples/edge-many-to-one.svg">
+</p>
 
 
 
@@ -1017,15 +1019,16 @@ var edgeGroup = new DotManyToManyEdgeGroup(
 graph.Edges.Add(edgeGroup);
 ```
 
-<p align="left">
-  <img src="./Assets/Examples/edge-many-to-many.svg">
-</p>
 ```dot
 digraph
 {
     { Foo Bar } -> { Baz Qux }
 }
 ```
+
+<p align="left">
+  <img src="./Assets/Examples/edge-many-to-many.svg">
+</p>
 
 
 
