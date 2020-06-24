@@ -1039,7 +1039,11 @@ Each group used in the above examples supports attributes. You can set them eith
 ```c#
 graph.Edges.AddManyToMany(
     new DotEndpointGroup("Foo", "Bar"),
-    new DotEndpointGroup("Baz", "Qux"));
+    new DotEndpointGroup("Baz", "Qux"),
+    edge =>
+    {
+        edge.Attributes.Color = Color.Red;
+    });
 ```
 
 ```dot
