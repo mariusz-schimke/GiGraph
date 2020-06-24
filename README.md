@@ -706,7 +706,9 @@ graph.Clusters.Add(cluster);
 
 ## Node
 
-Nodes are distinguished by their **identifiers**. The identifiers are used by edges to refer to a head and a tail node (endpoint) that they join. If you don't specify a **label** attribute for a node, the identifier will also be used as a label by default, when the node is visualized.
+Nodes are distinguished by their unique **identifiers**. The identifiers are used by edges to refer to a head and a tail node (endpoint) that they join. If you don't specify a **label** attribute for a node, the identifier will also be used as a label by default, when the node is visualized.
+
+A node does not necessarily have to be added to the nodes collection of the graph, subgraph or cluster if you are not going to set its attributes or its layout. As long as it is not an isolated node, which means that any edge uses it as an endpoint, it will be presented on the visualization.
 
 ```c#
 // add the node to the nodes collection of the graph (or subgraph/cluster)
@@ -882,11 +884,7 @@ digraph
 </p>
 
 
-
 Note that there is also an ***AddRange*** method available on the node collection, and it differs from the mentioned *Add* overload in that it adds multiple nodes with individual lists of attributes for each.
-
-
-Have in mind that **a node does not necessarily have to be added to the nodes collection** of the graph, subgraph or cluster if you are not going to set its attributes or its layout. As long as it is not an isolated node, which means that any edge uses it as an endpoint, it will be visualized.
 
 
 
@@ -942,7 +940,7 @@ graph.Edges.Add(edge);
 
 ### Edge group
 
-Edge groups join a single node with multiple nodes, multiple nodes with a single node, or multiple nodes with multiple nodes. The examples below present each of these use cases.
+Edge groups join a single node with multiple nodes, multiple nodes with a single node, or multiple nodes with multiple nodes. The examples below present each of these use cases. An edge group may be understood as a simpler approach to specifying multiple edges at once, with the same properties for all. You can as well add each of them individually to achieve the same effect.
 
 
 
@@ -1037,10 +1035,7 @@ Each group used in the above examples supports attributes. You can set them eith
 
 ### Edge sequence
 
-An edge sequence lets you join a sequence of consecutive nodes an/or node groups (the latter are represented by subgraphs). The examples below present two use cases:
-
-- where the sequence is composed of single nodes only (they will be joined with one another consecutively when visualized), 
-- where the sequence is composed of a mix of single nodes and groups of nodes (subgraphs). 
+An edge sequence lets you join a sequence of consecutive nodes an/or node groups (the latter are represented by subgraphs). Similarly to edge groups, a sequence may be understood as a simpler approach to specifying multiple edges at once, with the same properties for all. You can as well add each of them individually to achieve the same effect.
 
 
 
