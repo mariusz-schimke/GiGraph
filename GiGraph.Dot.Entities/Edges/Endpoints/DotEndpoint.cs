@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     /// of the same <see cref="DotEndpoint"/> class, or to multiple nodes represented by the <see cref="DotEndpointGroup"/> class.
     /// To make such connection, use <see cref="DotEdge{TTail, THead}"/> (or one of its more specific descendants), or <see cref="DotEdgeSequence"/>.
     /// </summary>
-    public class DotEndpoint : DotEndpointDefinition, IDotEntity, IDotAnnotable
+    public class DotEndpoint : DotEndpointDefinition, IDotEntity, IDotAnnotatable
     {
         protected DotEndpointPort _port;
 
@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// <param name="portName">
         /// Determines the edge placement to aim for the specified port. 
         /// If specified, the corresponding node, referred to by the <paramref name="nodeId"/> parameter,
-        /// must either have a record shape (<see cref="DotShape.Record"/>, <see cref="DotShape.MRecord"/>)
+        /// must either have a record shape (<see cref="DotShape.Record"/>, <see cref="DotShape.RoundedRecord"/>)
         /// with one of its fields having the given port name, or have an HTML-like label, one of whose components
         /// has a PORT attribute set to the specified port name.
         /// </param>

@@ -7,7 +7,7 @@ using GiGraph.Dot.Output.Generators.Providers;
 namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 {
     public abstract class DotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator<TEntity, TWriter>
-        where TEntity : IDotEntity, IDotAnnotable
+        where TEntity : IDotEntity, IDotAnnotatable
         where TWriter : IDotEntityWriter
     {
         protected readonly DotSyntaxRules _syntaxRules;
