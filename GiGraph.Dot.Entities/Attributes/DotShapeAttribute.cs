@@ -99,13 +99,13 @@ namespace GiGraph.Dot.Entities.Attributes
                 case DotShape.InvertedHouse:
                     return "invhouse";
 
-                case DotShape.MDiamond:
+                case DotShape.ClippedDiamond:
                     return "Mdiamond";
 
-                case DotShape.MSquare:
+                case DotShape.ClippedSquare:
                     return "Msquare";
 
-                case DotShape.MCircle:
+                case DotShape.ClippedCircle:
                     return "Mcircle";
 
                 case DotShape.Rect:
@@ -204,7 +204,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 case DotShape.Record:
                     return "record";
 
-                case DotShape.MRecord:
+                case DotShape.RoundedRecord:
                     return "Mrecord";
 
                 default:
