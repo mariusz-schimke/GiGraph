@@ -924,7 +924,7 @@ edge.Attributes.Color = Color.Red;
 You can set attributes as shown above, by assigning a value to a property—this is the easiest way. However, some properties supported by DOT graph visualization tools are not necessarily supported by the library, so they may not be exposed as properties. In such cases you may set them by specifying their key and an appropriately formatted value for it. You have to know exactly what key to use, and what value format is valid for it ([see documentation](https://www.graphviz.org/doc/info/attrs.html)). This approach should be used with care, and the value should always follow the DOT syntax rules. Otherwise the visualization tool you use may be unable to process it correctly.
 
 ```c#
-// setting the fill color property (or any other property)
+// setting the fill color (or any other attribute)
 var attribute = new DotStringAttribute("fillcolor", "red:blue");
 node.Attributes.Set(attribute);
 
@@ -934,10 +934,10 @@ node.Attributes.Set("fillcolor", "red:blue");
 
 *DotStringAttribute* may be used for any type of property. Its *value* is rendered in the output DOT script exactly the way it is provided (without any further processing like escaping).
 
-If the value type you want to use is supported by the library, but the key you want to set has no property exposed, you can use the existing attribute types, that will convert the value to an appropriate format for you.
+If the value type you want to use is supported by the library, but the key you want to set has no property exposed, you can use as well the existing attribute types, that will convert the value to an appropriate output format for you.
 
 ```c#
-// setting the same fill color property (or any other property)
+// setting the same fill color
 var attribute = new DotColorDefinitionAttribute("fillcolor", DotColorDefinition.Gradient(Color.Red, Color.Blue));
 node.Attributes.Set(attribute);
 
@@ -965,7 +965,7 @@ using GiGraph.Dot.Output.Options;
 
 var options = new DotFormattingOptions()
 {
-    SingleLineOutput = true
+    SingleLine = true
 };
 
 Console.WriteLine(graph.Build(options));
