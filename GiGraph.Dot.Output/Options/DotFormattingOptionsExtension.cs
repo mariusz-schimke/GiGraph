@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Output.Options
         {
             return options.SingleLine
                 ? string.Empty
-                : string.Empty.PadRight(options.Indentation * level, options.IndentChar);
+                : string.Empty.PadRight(options.Indentation * level, options.IndentationChar);
         }
 
         public static string Space(this DotFormattingOptions options)

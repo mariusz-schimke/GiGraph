@@ -1,6 +1,6 @@
 ﻿namespace GiGraph.Dot.Entities
 {
-    public interface IDotAnnotable
+    public interface IDotAnnotatable
     {
         /// <summary>
         /// The annotation to write next to the element in the output DOT script as a comment.

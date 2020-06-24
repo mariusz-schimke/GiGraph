@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace GiGraph.Dot.Entities.Nodes.Collections
 {
-    public class DotNodeCollection : DotEntityWithIdCollection<DotNodeDefinition>, IDotEntity, IDotAnnotable
+    public class DotNodeCollection : DotEntityWithIdCollection<DotNodeDefinition>, IDotEntity, IDotAnnotatable
     {
         public virtual string Annotation { get; set; }
 
