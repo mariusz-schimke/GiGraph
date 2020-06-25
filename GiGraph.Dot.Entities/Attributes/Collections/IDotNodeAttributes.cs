@@ -130,5 +130,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Comments are inserted into output. Device-dependent.
         /// </summary>
         string Comment { get; set; }
+
+        /// <summary>
+        /// If true, forces polygon to be regular, i.e., the vertices of the polygon will lie on a circle
+        /// whose center is the center of the node (default: false).
+        /// </summary>
+        bool? Regular { get; set; }
     }
 }
