@@ -42,7 +42,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual int? Peripheries
         {
             get => TryGetValueAs<int>("peripheries", out var result) ? result : (int?) null;
-            set => AddOrRemove("peripheries", value, v => new DotIntAttribute("peripheries", v.Value));
+            set
+            {
+                const string key = "peripheries";
+                AddOrRemove(key, value, v =>
+                {
+                    if (v.Value < 0)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(Peripheries), v.Value,
+                            "The number of peripheries must be greater than or equal to 0.");
+                    }
+
+                    return new DotIntAttribute(key, v.Value);
+                });
+            }
         }
 
         public virtual double? PenWidth
