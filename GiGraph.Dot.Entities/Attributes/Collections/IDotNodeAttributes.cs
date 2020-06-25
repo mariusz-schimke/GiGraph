@@ -138,7 +138,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         bool? Regular { get; set; }
 
         /// <summary>
-        /// Sets the number of peripheries used in polygonal shapes (<see cref="Shape"/>).
+        /// Sets the number of peripheries used in polygonal shapes (<see cref="Shape"/>). The default value is shape dependent, the minimum value is 0.
         /// Note that user-defined shapes (<see href="http://www.graphviz.org/doc/info/shapes.html#epsf"/> are treated
         /// as a form of box shape, so the default peripheries value is 1, and the user-defined shape will be drawn in a bounding rectangle.
         /// Setting peripheries to 0 will turn this off.

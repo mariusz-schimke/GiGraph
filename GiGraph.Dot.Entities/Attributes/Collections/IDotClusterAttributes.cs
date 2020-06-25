@@ -145,8 +145,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         double? FontSize { get; set; }
 
         /// <summary>
-        /// Sets the number of peripheries used in cluster boundaries (default: 1).
-        /// Setting peripheries to 0 will remove the boundaries. Also, 1 is the maximum value.
+        /// Sets the number of peripheries used in cluster boundaries (default: 1, minimum: 0, maximum: 1).
+        /// Setting peripheries to 0 will remove the boundaries.
         /// </summary>
         int? Peripheries { get; set; }
     }
