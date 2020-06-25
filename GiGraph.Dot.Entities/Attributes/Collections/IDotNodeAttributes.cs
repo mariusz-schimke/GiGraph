@@ -136,5 +136,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// whose center is the center of the node (default: false).
         /// </summary>
         bool? Regular { get; set; }
+
+        /// <summary>
+        /// Sets the number of peripheries used in polygonal shapes (<see cref="Shape"/>).
+        /// Note that user-defined shapes (<see href="http://www.graphviz.org/doc/info/shapes.html#epsf"/> are treated
+        /// as a form of box shape, so the default peripheries value is 1, and the user-defined shape will be drawn in a bounding rectangle.
+        /// Setting peripheries to 0 will turn this off.
+        /// </summary>
+        int? Peripheries { get; set; }
     }
 }
