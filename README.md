@@ -1299,3 +1299,27 @@ Using mentioned **DotGenerationOptions** and its *OrderElements* property you ma
 
 *Have in mind, however, that even though this feature does not affect the structure of the graph, it may affect the locations of some elements when the graph is visualized—but most probably it doesn't matter in the described case.*
 
+
+
+# Script annotation
+
+You can use script annotation (comments) by simply assigning text to the *Annotation* property of graph elements and collections. See an example code below.
+
+```c#
+graph.Annotation = "Graph comment";
+graph.Nodes.Add("Foo").Annotation = "The Foo node comment";
+graph.Edges.Add("Foo", "Bar").Annotation = "The Foo-Bar edge comment";
+```
+
+```dot
+// Graph comment
+digraph
+{
+    // The Foo node comment
+    Foo
+
+    // The Foo-Bar edge comment
+    Foo -> Bar
+}
+```
+
