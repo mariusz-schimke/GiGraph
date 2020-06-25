@@ -39,6 +39,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("gradientangle", value, v => new DotIntAttribute("gradientangle", v.Value));
         }
 
+        public virtual int? Peripheries
+        {
+            get => TryGetValueAs<int>("peripheries", out var result) ? result : (int?) null;
+            set => AddOrRemove("peripheries", value, v => new DotIntAttribute("peripheries", v.Value));
+        }
+
         public virtual double? PenWidth
         {
             get => TryGetValueAs<double>("penwidth", out var result) ? result : (double?) null;
@@ -218,7 +224,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetValueAs<string>("comment", out var result) ? result : null;
             set => AddOrRemove("comment", value, v => new DotStringAttribute("comment", v));
         }
-        
+
         public virtual bool? Regular
         {
             get => TryGetValueAs<bool>("regular", out var result) ? result : (bool?) null;
