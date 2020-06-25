@@ -1142,7 +1142,7 @@ digraph
 
 #### Sequence attributes
 
-Sequences support attributes too. You may set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection.Note also that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*. This might come in handy when you add multiple nodes to the sequence, and need specific initialization of only some of them.
+Sequences support attributes too. You may set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection. Note as well that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*. This might come in handy when you add multiple nodes to the sequence, and need specific initialization of only some of them.
 
 ```c#
 graph.Edges.AddSequence(
