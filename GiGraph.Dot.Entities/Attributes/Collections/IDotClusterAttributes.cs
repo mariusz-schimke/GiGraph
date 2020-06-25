@@ -143,5 +143,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Gets or sets the font size used for text (in points; 72 points per inch). Default: 14.0, minimum: 1.0.
         /// </summary>
         double? FontSize { get; set; }
+
+        /// <summary>
+        /// Sets the number of peripheries used in cluster boundaries (default: 1, minimum: 0, maximum: 1).
+        /// Setting peripheries to 0 will remove the boundaries.
+        /// </summary>
+        int? Peripheries { get; set; }
     }
 }
