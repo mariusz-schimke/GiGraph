@@ -20,6 +20,29 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
+        /// Adds a group of edges where all <paramref name="tailNodeIds"/> as tail nodes
+        /// are connected to all <paramref name="headNodeIds"/> as head nodes.
+        /// </summary>
+        /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes.</param>
+        /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes.</param>
+        public virtual DotManyToManyEdgeGroup AddManyToMany(IEnumerable<string> tailNodeIds, params string[] headNodeIds)
+        {
+            return Add(new DotManyToManyEdgeGroup(tailNodeIds, headNodeIds), init: null);
+        }
+
+        /// <summary>
+        /// Adds a group of edges where all <paramref name="tailNodeIds"/> as tail nodes
+        /// are connected to all <paramref name="headNodeIds"/> as head nodes.
+        /// </summary>
+        /// <param name="init">An optional initializer delegate to call for the created edge group.</param>
+        /// <param name="tailNodeIds">The identifiers of the tail (source, left) nodes.</param>
+        /// <param name="headNodeIds">The identifiers of the head (destination, right) nodes.</param>
+        public virtual DotManyToManyEdgeGroup AddManyToMany(Action<DotManyToManyEdgeGroup> init, IEnumerable<string> tailNodeIds, params string[] headNodeIds)
+        {
+            return Add(new DotManyToManyEdgeGroup(tailNodeIds, headNodeIds), init);
+        }
+
+        /// <summary>
         /// Adds a group of edges where all nodes in the specified tail endpoint group is connected to
         /// all nodes in the specified head endpoint group.
         /// </summary>
