@@ -218,6 +218,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetValueAs<string>("comment", out var result) ? result : null;
             set => AddOrRemove("comment", value, v => new DotStringAttribute("comment", v));
         }
+        
+        public virtual bool? Regular
+        {
+            get => TryGetValueAs<bool>("regular", out var result) ? result : (bool?) null;
+            set => AddOrRemove("regular", value, v => new DotBoolAttribute("regular", v.Value));
+        }
 
         protected virtual DotColorDefinition TryGetValueAsColorDefinition(string key)
         {
