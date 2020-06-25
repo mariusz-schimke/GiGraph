@@ -846,7 +846,7 @@ graph.Edges.Add("Foo", "Bar", edge =>
 
 ### Node group
 
-When adding nodes to a graph, subgraph or cluster, you can use a node group that has a single list of attributes for all the nodes within it. You can do it in a couple of ways, and one of them is an overload of the *Add* method, that accepts multiple node identifiers.
+When adding nodes to a graph, subgraph or cluster, you can use a node group that has a shared list of attributes for all the nodes within it. To do it, use one of the overloads of the *Add* method that accepts multiple node identifiers. Note that it is only a shorthand for adding multiple nodes at once (assuming that all of them should have the same attributes or no attributes).
 
 ```c#
 graph.Nodes.Add
@@ -884,7 +884,30 @@ digraph
 </p>
 
 
-Note that there is also an ***AddRange*** method available on the node collection, and it differs from the mentioned *Add* overload in that it adds multiple nodes with individual lists of attributes for each.
+Note that there is also an ***AddRange*** method available on the node collection, and it differs from the mentioned *Add* overload in that it adds multiple nodes with individual lists of attributes for each. The following script differs, but renders an identical visualization:
+
+```dot
+digraph
+{
+    Foo [ color = orange, shape = hexagon ]
+    Bar [ color = orange, shape = hexagon ]
+    Baz [ color = orange, shape = hexagon ]
+}
+```
+
+The code to generate it:
+
+```c#
+graph.Nodes.AddRange
+(
+    node =>
+    {
+        node.Attributes.Color = Color.Orange;
+        node.Attributes.Shape = DotShape.Hexagon;
+    },
+    "Foo", "Bar", "Baz"
+);
+```
 
 
 
@@ -940,7 +963,7 @@ graph.Edges.Add(edge);
 
 ### Edge group
 
-Edge groups join a single node with multiple nodes, multiple nodes with a single node, or multiple nodes with multiple nodes. The examples below present each of these use cases. An edge group may be understood as a simpler approach to specifying multiple edges at once, with the same properties for all. You can as well add each of them individually to achieve the same effect.
+Edge groups join a single node with multiple nodes, multiple nodes with a single node, or multiple nodes with multiple nodes. The examples below present each of these use cases. An edge group may be understood as a simpler approach to specifying multiple edges at once, with the same properties for all. You may as well add each of them individually to achieve the same effect.
 
 
 
@@ -1034,7 +1057,7 @@ digraph
 
 #### Group attributes
 
-Each group used in the above examples supports attributes. You can set them either directly on a group instance, or by using a lambda expression passed by an argument of the *AddOneToMany*, *AddManyToOne*, *AddManyToMany* methods, on the *Edges* collection.
+Each group used in the above examples supports attributes. You may set them either directly on a group instance, or by using a lambda expression passed by an argument of the *AddOneToMany*, *AddManyToOne*, *AddManyToMany* methods, on the *Edges* collection.
 
 ```c#
 graph.Edges.AddManyToMany(
@@ -1061,7 +1084,7 @@ digraph
 
 ### Edge sequence
 
-An edge sequence lets you join a sequence of consecutive nodes an/or node groups (the latter are represented by subgraphs). Similarly to edge groups, a sequence may be understood as a simpler approach to specifying multiple edges at once, with the same properties for all. You can as well add each of them individually to achieve the same effect.
+An edge sequence lets you join a sequence of consecutive nodes an/or node groups (the latter are represented by subgraphs). Similarly to edge groups, a sequence may be understood as a simpler approach to specifying multiple edges at once, with the same properties for all. You may as well add each of them individually to achieve the same effect.
 
 
 
@@ -1119,7 +1142,7 @@ digraph
 
 #### Sequence attributes
 
-Sequences support attributes too. You can set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection.Note also that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*. This might come in handy when you add multiple nodes to the sequence, and need specific initialization of only some of them.
+Sequences support attributes too. You may set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection.Note also that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*. This might come in handy when you add multiple nodes to the sequence, and need specific initialization of only some of them.
 
 ```c#
 graph.Edges.AddSequence(
@@ -1150,7 +1173,7 @@ digraph
 
 Every element of the graph, including the graph itself, may have **attributes**. These are for instance background color, style, node shape, arrow head shape and so on. An attribute is composed of a key and a value. The key is DOT language specific, and the value is dependent on the type of attribute (for example it may be a string, a boolean value, a node shape enumerable, etc.).
 
-Every element supports only attributes that are specific to it. For example arrow head can be specified only for edges, shape can be specified only for nodes, etc. Some of them, on the other hand, are supported by multiple types of elements—for example *label*.
+Every element supports only attributes that are specific to it. For example arrow head may be specified only for edges, shape may be specified only for nodes, etc. Some of them, on the other hand, are supported by multiple types of elements—for example *label*.
 
 ```c#
 node.Attributes.Label = "My node label";
@@ -1163,7 +1186,7 @@ edge.Attributes.Label = "My edge label";
 edge.Attributes.Color = Color.Red;
 ```
 
-You can set attributes as shown above, by assigning a value to a property—this is the easiest way. However, some properties supported by DOT graph visualization tools are not necessarily supported by the library, so they may not be exposed as properties. In such cases you may set them by specifying their key and an appropriately formatted value for it. You have to know exactly what key to use, and what value format is valid for it ([see documentation](https://www.graphviz.org/doc/info/attrs.html)). This approach should be used with care, and the value should always follow the DOT syntax rules. Otherwise the visualization tool you use may be unable to process it correctly.
+You may set attributes as shown above, by assigning a value to a property—this is the easiest way. However, some properties supported by DOT graph visualization tools are not necessarily supported by the library, so they may not be exposed as properties. In such cases you may set them by specifying their key and an appropriately formatted value for it. You have to know exactly what key to use, and what value format is valid for it ([see documentation](https://www.graphviz.org/doc/info/attrs.html)). This approach should be used with care, and the value should always follow the DOT syntax rules. Otherwise the visualization tool you use may be unable to process it correctly.
 
 ```c#
 // setting the fill color (or any other attribute)
