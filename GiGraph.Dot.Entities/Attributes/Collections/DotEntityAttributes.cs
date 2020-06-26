@@ -71,6 +71,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : new DotDoubleAttribute("distortion", v.Value));
         }
 
+        public virtual double? Orientation
+        {
+            get => TryGetValueAs<double>("orientation", out var result) ? result : (double?) null;
+            set => AddOrRemove("orientation", value, v => new DotDoubleAttribute("orientation", v.Value));
+        }
+
         public virtual double? PenWidth
         {
             get => TryGetValueAs<double>("penwidth", out var result) ? result : (double?) null;
