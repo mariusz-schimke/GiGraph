@@ -42,75 +42,41 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual int? Peripheries
         {
             get => TryGetValueAs<int>("peripheries", out var result) ? result : (int?) null;
-            set
-            {
-                const string key = "peripheries";
-                AddOrRemove(key, value, v =>
-                {
-                    if (v.Value < 0)
-                    {
-                        throw new ArgumentOutOfRangeException(nameof(Peripheries), v.Value,
-                            "The number of peripheries must be greater than or equal to 0.");
-                    }
-
-                    return new DotIntAttribute(key, v.Value);
-                });
-            }
+            set => AddOrRemove("peripheries", value, v => v.Value < 0
+                ? throw new ArgumentOutOfRangeException(nameof(Peripheries), v.Value, "The number of peripheries must be greater than or equal to 0.")
+                : new DotIntAttribute("peripheries", v.Value));
         }
 
         public virtual int? Sides
         {
             get => TryGetValueAs<int>("sides", out var result) ? result : (int?) null;
-            set
-            {
-                const string key = "sides";
-                AddOrRemove(key, value, v =>
-                {
-                    if (v.Value < 0)
-                    {
-                        throw new ArgumentOutOfRangeException(nameof(Sides), v.Value,
-                            "The number of sides must be greater than or equal to 0.");
-                    }
-
-                    return new DotIntAttribute(key, v.Value);
-                });
-            }
+            set => AddOrRemove("sides", value, v => v.Value < 0
+                ? throw new ArgumentOutOfRangeException(nameof(Sides), v.Value, "The number of sides must be greater than or equal to 0.")
+                : new DotIntAttribute("sides", v.Value));
         }
 
         public virtual double? Skew
         {
             get => TryGetValueAs<double>("skew", out var result) ? result : (double?) null;
-            set
-            {
-                const string key = "skew";
-                AddOrRemove(key, value, v =>
-                {
-                    if (v.Value < -100.0)
-                    {
-                        throw new ArgumentOutOfRangeException(nameof(Skew), v.Value, "Skew must be greater than or equal to -100.");
-                    }
+            set => AddOrRemove("skew", value, v => v.Value < -100.0
+                ? throw new ArgumentOutOfRangeException(nameof(Skew), v.Value, "Skew must be greater than or equal to -100.")
+                : new DotDoubleAttribute("skew", v.Value));
+        }
 
-                    return new DotDoubleAttribute(key, v.Value);
-                });
-            }
+        public virtual double? Distortion
+        {
+            get => TryGetValueAs<double>("distortion", out var result) ? result : (double?) null;
+            set => AddOrRemove("distortion", value, v => v.Value < -100.0
+                ? throw new ArgumentOutOfRangeException(nameof(Distortion), v.Value, "Distortion must be greater than or equal to -100.")
+                : new DotDoubleAttribute("distortion", v.Value));
         }
 
         public virtual double? PenWidth
         {
             get => TryGetValueAs<double>("penwidth", out var result) ? result : (double?) null;
-            set
-            {
-                const string key = "penwidth";
-                AddOrRemove(key, value, v =>
-                {
-                    if (v.Value < 0.0)
-                    {
-                        throw new ArgumentOutOfRangeException(nameof(PenWidth), v.Value, "Pen width must be greater than or equal to 0.");
-                    }
-
-                    return new DotDoubleAttribute(key, v.Value);
-                });
-            }
+            set => AddOrRemove("penwidth", value, v => v.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(PenWidth), v.Value, "Pen width must be greater than or equal to 0.")
+                : new DotDoubleAttribute("penwidth", v.Value));
         }
 
         public virtual Color? PenColor
@@ -140,19 +106,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual double? FontSize
         {
             get => TryGetValueAs<double>("fontsize", out var result) ? result : (double?) null;
-            set
-            {
-                const string key = "fontsize";
-                AddOrRemove(key, value, v =>
-                {
-                    if (v.Value < 1.0)
-                    {
-                        throw new ArgumentOutOfRangeException(nameof(FontSize), v.Value, "Font size must be greater than or equal to 1.");
-                    }
-
-                    return new DotDoubleAttribute(key, v.Value);
-                });
-            }
+            set => AddOrRemove("fontsize", value, v => v.Value < 1.0
+                ? throw new ArgumentOutOfRangeException(nameof(FontSize), v.Value, "Font size must be greater than or equal to 1.")
+                : new DotDoubleAttribute("fontsize", v.Value));
         }
 
         public virtual DotLabel Label
@@ -176,19 +132,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual double? ArrowSize
         {
             get => TryGetValueAs<double>("arrowsize", out var result) ? result : (double?) null;
-            set
-            {
-                const string key = "arrowsize";
-                AddOrRemove(key, value, v =>
-                {
-                    if (v.Value < 0.0)
-                    {
-                        throw new ArgumentOutOfRangeException(nameof(ArrowSize), v.Value, "Arrow size must be greater than or equal to 0.");
-                    }
-
-                    return new DotDoubleAttribute(key, v.Value);
-                });
-            }
+            set => AddOrRemove("arrowsize", value, v => v.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(ArrowSize), v.Value, "Arrow size must be greater than or equal to 0.")
+                : new DotDoubleAttribute("arrowsize", v.Value));
         }
 
         public virtual DotArrowType? ArrowHead
