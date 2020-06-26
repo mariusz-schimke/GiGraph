@@ -155,5 +155,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Positive values skew top of polygon to right; negative to left.
         /// </summary>
         double? Skew { get; set; }
+
+        /// <summary>
+        /// Distortion factor for <see cref="Shape"/> set to <see cref="DotShape.Polygon"/> (default: 0, minimum: -100).
+        /// Positive values cause top part to be larger than bottom; negative values do the opposite.
+        /// </summary>
+        double? Distortion { get; set; }
     }
 }
