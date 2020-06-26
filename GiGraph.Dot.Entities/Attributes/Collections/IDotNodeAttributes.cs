@@ -161,5 +161,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Positive values cause top part to be larger than bottom; negative values do the opposite.
         /// </summary>
         double? Distortion { get; set; }
+
+        /// <summary>
+        /// Angle, in degrees, used to rotate polygon node shapes (<see cref="Shape"/> = <see cref="DotShape.Polygon"/>).
+        /// For any number of polygon sides, 0 degrees rotation results in a flat base. Default: 0, maximum: 360.
+        /// </summary>
+        double? Orientation { get; set; }
     }
 }
