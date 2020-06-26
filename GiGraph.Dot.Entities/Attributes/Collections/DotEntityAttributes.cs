@@ -95,6 +95,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
         }
 
+        public virtual double? Distortion
+        {
+            get => TryGetValueAs<double>("distortion", out var result) ? result : (double?) null;
+            set => AddOrRemove("distortion", value, v => v.Value < -100.0
+                ? throw new ArgumentOutOfRangeException(nameof(Distortion), v.Value, "Distortion must be greater than or equal to -100.")
+                : new DotDoubleAttribute("distortion", v.Value));
+        }
+
         public virtual double? PenWidth
         {
             get => TryGetValueAs<double>("penwidth", out var result) ? result : (double?) null;
