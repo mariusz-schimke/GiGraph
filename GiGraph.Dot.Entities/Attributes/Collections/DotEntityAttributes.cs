@@ -77,6 +77,24 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
         }
 
+        public virtual double? Skew
+        {
+            get => TryGetValueAs<double>("skew", out var result) ? result : (double?) null;
+            set
+            {
+                const string key = "skew";
+                AddOrRemove(key, value, v =>
+                {
+                    if (v.Value < -100.0)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(Skew), v.Value, "Skew must be greater than or equal to -100.");
+                    }
+
+                    return new DotDoubleAttribute(key, v.Value);
+                });
+            }
+        }
+
         public virtual double? PenWidth
         {
             get => TryGetValueAs<double>("penwidth", out var result) ? result : (double?) null;
