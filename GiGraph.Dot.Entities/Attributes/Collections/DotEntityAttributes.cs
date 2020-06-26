@@ -58,6 +58,25 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
         }
 
+        public virtual int? Sides
+        {
+            get => TryGetValueAs<int>("sides", out var result) ? result : (int?) null;
+            set
+            {
+                const string key = "sides";
+                AddOrRemove(key, value, v =>
+                {
+                    if (v.Value < 0)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(Sides), v.Value,
+                            "The number of sides must be greater than or equal to 0.");
+                    }
+
+                    return new DotIntAttribute(key, v.Value);
+                });
+            }
+        }
+
         public virtual double? PenWidth
         {
             get => TryGetValueAs<double>("penwidth", out var result) ? result : (double?) null;
