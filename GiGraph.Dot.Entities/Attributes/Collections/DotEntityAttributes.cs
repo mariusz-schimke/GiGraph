@@ -58,17 +58,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual double? Skew
         {
             get => TryGetValueAs<double>("skew", out var result) ? result : (double?) null;
-            set => AddOrRemove("skew", value, v => v.Value < -100.0
-                ? throw new ArgumentOutOfRangeException(nameof(Skew), v.Value, "Skew must be greater than or equal to -100.")
-                : new DotDoubleAttribute("skew", v.Value));
+            set => AddOrRemove("skew", value, v => new DotDoubleAttribute("skew", v.Value));
         }
 
         public virtual double? Distortion
         {
             get => TryGetValueAs<double>("distortion", out var result) ? result : (double?) null;
-            set => AddOrRemove("distortion", value, v => v.Value < -100.0
-                ? throw new ArgumentOutOfRangeException(nameof(Distortion), v.Value, "Distortion must be greater than or equal to -100.")
-                : new DotDoubleAttribute("distortion", v.Value));
+            set => AddOrRemove("distortion", value, v => new DotDoubleAttribute("distortion", v.Value));
+        }
+
+        public virtual double? Orientation
+        {
+            get => TryGetValueAs<double>("orientation", out var result) ? result : (double?) null;
+            set => AddOrRemove("orientation", value, v => new DotDoubleAttribute("orientation", v.Value));
         }
 
         public virtual double? PenWidth
@@ -106,8 +108,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual double? FontSize
         {
             get => TryGetValueAs<double>("fontsize", out var result) ? result : (double?) null;
-            set => AddOrRemove("fontsize", value, v => v.Value < 1.0
-                ? throw new ArgumentOutOfRangeException(nameof(FontSize), v.Value, "Font size must be greater than or equal to 1.")
+            set => AddOrRemove("fontsize", value, v => v.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(FontSize), v.Value, "Font size must be greater than or equal to 0.")
                 : new DotDoubleAttribute("fontsize", v.Value));
         }
 
