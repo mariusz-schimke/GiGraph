@@ -144,5 +144,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Setting peripheries to 0 will turn this off.
         /// </summary>
         int? Peripheries { get; set; }
+
+        /// <summary>
+        /// Number of sides if <see cref="Shape"/> is set to <see cref="DotShape.Polygon"/> (default: 4, minimum: 0).
+        /// </summary>
+        int? Sides { get; set; }
     }
 }
