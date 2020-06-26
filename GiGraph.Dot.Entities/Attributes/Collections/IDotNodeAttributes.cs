@@ -149,5 +149,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Number of sides if <see cref="Shape"/> is set to <see cref="DotShape.Polygon"/> (default: 4, minimum: 0).
         /// </summary>
         int? Sides { get; set; }
+
+        /// <summary>
+        /// Skew factor for <see cref="Shape"/> set to <see cref="DotShape.Polygon"/> (default: 0, minimum: -100).
+        /// Positive values skew top of polygon to right; negative to left.
+        /// </summary>
+        double? Skew { get; set; }
     }
 }
