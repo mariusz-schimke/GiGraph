@@ -186,5 +186,49 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Comments are inserted into output. Device-dependent.
         /// </summary>
         string Comment { get; set; }
+
+        /// <summary>
+        /// <para>
+        /// Hyperlinks incorporated into device-dependent output. At present, used in PS2, CMAP, I*MAP and SVG formats.
+        /// For all these formats, URLs can be attached to nodes, edges and clusters.
+        /// URL attributes can also be attached to the root graph in PS2, CMAP and I*MAP formats.
+        /// This serves as the base URL for relative URLs in the former, and as the default image map file in the latter.
+        /// </para>
+        /// <para>
+        /// For edges, the active areas are small circles where the edge contacts its head and tail nodes. In addition,
+        /// for SVG, CMAPX and IMAP, the active area includes a thin polygon approximating the edge. The circles may overlap
+        /// the related node, and the edge URL dominates. If the edge has a label, this will also be active. Finally,
+        /// if the edge has a head or tail label, this will also be active.
+        /// </para>
+        /// <para>
+        /// Note that, for edges, the attributes <see cref="HeadUrl"/>, <see cref="TailUrl"/>, <see cref="LabelUrl"/>,
+        /// and <see cref="EdgeUrl"/> allow control of various parts of an edge. Also note that, if active areas of two edges overlap,
+        /// it is unspecified which area dominates.
+        /// </para>
+        /// </summary>
+        string Url { get; set; }
+
+        /// <summary>
+        /// If defined, it is output as part of the head label of the edge. Also, this value is used near the head node,
+        /// overriding any <see cref="Url"/> value.
+        /// </summary>
+        string HeadUrl { get; set; }
+
+        /// <summary>
+        /// If defined, it is output as part of the tail label of the edge. Also, this value is used near the tail node,
+        /// overriding any <see cref="Url"/> value.
+        /// </summary>
+        string TailUrl { get; set; }
+
+        /// <summary>
+        /// If defined, this is the link used for the label of an edge. This value overrides any <see cref="Url"/> defined for the edge.
+        /// </summary>
+        string LabelUrl { get; set; }
+
+        /// <summary>
+        /// If defined, this is the link used for the non-label parts of an edge. This value overrides any <see cref="Url"/> defined for the edge.
+        /// Also, this value is used near the head or tail node unless overridden by a <see cref="HeadUrl"/> or <see cref="TailUrl"/> value, respectively.
+        /// </summary>
+        string EdgeUrl { get; set; }
     }
 }
