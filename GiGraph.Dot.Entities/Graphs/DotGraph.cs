@@ -57,13 +57,13 @@ namespace GiGraph.Dot.Entities.Graphs
                 id,
                 isDirected,
                 isStrict,
-                new DotEntityAttributes(),
+                new DotGraphAttributes(),
                 new DotNodeCollection(),
                 new DotEdgeCollection(),
                 new DotSubgraphCollection(),
                 new DotClusterCollection(),
-                new DotEntityAttributes(),
-                new DotEntityAttributes()
+                new DotNodeAttributes(),
+                new DotEdgeAttributes()
             )
         {
         }
