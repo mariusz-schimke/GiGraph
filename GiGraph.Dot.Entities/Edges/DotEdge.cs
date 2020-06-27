@@ -66,7 +66,7 @@ namespace GiGraph.Dot.Entities.Edges
         public static bool Equals(DotEdgeDefinition edge, string tailNodeId, string headNodeId)
         {
             return edge is DotEdge<DotEndpoint, DotEndpoint> e &&
-                Equals(e, tailNodeId, headNodeId);
+                   Equals(e, tailNodeId, headNodeId);
         }
 
         /// <summary>
@@ -78,8 +78,8 @@ namespace GiGraph.Dot.Entities.Edges
         public static bool Equals(DotEdge<DotEndpoint, DotEndpoint> edge, string tailNodeId, string headNodeId)
         {
             return edge is { } &&
-                edge.Tail.NodeId == tailNodeId &&
-                edge.Head.NodeId == headNodeId;
+                   edge.Tail.NodeId == tailNodeId &&
+                   edge.Head.NodeId == headNodeId;
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace GiGraph.Dot.Entities.Edges
         public static bool IsLoopEdge(DotEdgeDefinition edge)
         {
             return edge is DotEdge<DotEndpoint, DotEndpoint> e &&
-                IsLoopEdge(e);
+                   IsLoopEdge(e);
         }
 
         /// <summary>

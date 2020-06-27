@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         /// The attributes of the cluster.
         /// </summary>
-        public new IDotClusterAttributes Attributes => (IDotClusterAttributes)base.Attributes;
+        public new IDotClusterAttributes Attributes => (IDotClusterAttributes) base.Attributes;
 
         protected DotCluster(string id,
             IDotClusterAttributes attributes,
@@ -42,16 +42,16 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <param name="id">The unique identifier of the cluster.</param>
         public DotCluster(string id)
             : this
-              (
-                  id,
-                  new DotEntityAttributes(),
-                  new DotNodeCollection(),
-                  new DotEdgeCollection(),
-                  new DotSubgraphCollection(),
-                  new DotClusterCollection(),
-                  new DotEntityAttributes(),
-                  new DotEntityAttributes()
-              )
+            (
+                id,
+                new DotClusterAttributes(),
+                new DotNodeCollection(),
+                new DotEdgeCollection(),
+                new DotSubgraphCollection(),
+                new DotClusterCollection(),
+                new DotNodeAttributes(),
+                new DotEdgeAttributes()
+            )
         {
         }
 
@@ -62,7 +62,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <param name="nodeIds">The identifiers of nodes to add to the subgraph.</param>
         public static DotCluster FromNodes(string id, params string[] nodeIds)
         {
-            return FromNodes(id, (IEnumerable<string>)nodeIds);
+            return FromNodes(id, (IEnumerable<string>) nodeIds);
         }
 
         /// <summary>

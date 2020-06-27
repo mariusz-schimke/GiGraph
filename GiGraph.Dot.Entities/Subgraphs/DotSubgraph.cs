@@ -48,13 +48,13 @@ namespace GiGraph.Dot.Entities.Subgraphs
             : this
             (
                 id: null,
-                new DotEntityAttributes(),
+                new DotSubgraphAttributes(),
                 new DotNodeCollection(),
                 new DotEdgeCollection(),
                 new DotSubgraphCollection(),
                 new DotClusterCollection(),
-                new DotEntityAttributes(),
-                new DotEntityAttributes()
+                new DotNodeAttributes(),
+                new DotEdgeAttributes()
             )
         {
         }

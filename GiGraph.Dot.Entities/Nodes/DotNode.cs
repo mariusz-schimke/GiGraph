@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// </summary>
         /// <param name="id"></param>
         public DotNode(string id)
-            : this(id, new DotEntityAttributes())
+            : this(id, new DotNodeAttributes())
         {
         }
 
