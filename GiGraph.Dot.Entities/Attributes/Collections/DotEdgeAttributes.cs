@@ -2,6 +2,7 @@ using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -69,49 +70,49 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("constraint", value, v => new DotBoolAttribute("constraint", v.Value));
         }
 
-        public virtual string HeadUrl
+        public virtual DotEscapableString HeadUrl
         {
             get => TryGetValueAsEscapableString("headURL");
             set => AddOrRemove("headURL", value, v => new DotEscapeStringAttribute("headURL", v));
         }
 
-        public virtual string HeadHref
+        public virtual DotEscapableString HeadHref
         {
             get => TryGetValueAsEscapableString("headhref");
             set => AddOrRemove("headhref", value, v => new DotEscapeStringAttribute("headhref", v));
         }
 
-        public virtual string TailUrl
+        public virtual DotEscapableString TailUrl
         {
             get => TryGetValueAsEscapableString("tailURL");
             set => AddOrRemove("tailURL", value, v => new DotEscapeStringAttribute("tailURL", v));
         }
 
-        public virtual string TailHref
+        public virtual DotEscapableString TailHref
         {
             get => TryGetValueAsEscapableString("tailhref");
             set => AddOrRemove("tailhref", value, v => new DotEscapeStringAttribute("tailhref", v));
         }
 
-        public virtual string LabelUrl
+        public virtual DotEscapableString LabelUrl
         {
             get => TryGetValueAsEscapableString("labelURL");
             set => AddOrRemove("labelURL", value, v => new DotEscapeStringAttribute("labelURL", v));
         }
 
-        public virtual string LabelHref
+        public virtual DotEscapableString LabelHref
         {
             get => TryGetValueAsEscapableString("labelhref");
             set => AddOrRemove("labelhref", value, v => new DotEscapeStringAttribute("labelhref", v));
         }
 
-        public virtual string EdgeUrl
+        public virtual DotEscapableString EdgeUrl
         {
             get => TryGetValueAsEscapableString("edgeURL");
             set => AddOrRemove("edgeURL", value, v => new DotEscapeStringAttribute("edgeURL", v));
         }
 
-        public virtual string EdgeHref
+        public virtual DotEscapableString EdgeHref
         {
             get => TryGetValueAsEscapableString("edgehref");
             set => AddOrRemove("edgehref", value, v => new DotEscapeStringAttribute("edgehref", v));
