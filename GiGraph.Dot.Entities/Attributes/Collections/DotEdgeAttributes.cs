@@ -75,10 +75,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("headURL", value, v => new DotEscapeStringAttribute("headURL", v));
         }
 
+        public virtual string HeadHref
+        {
+            get => TryGetValueAsEscapableString("headhref");
+            set => AddOrRemove("headhref", value, v => new DotEscapeStringAttribute("headhref", v));
+        }
+
         public virtual string TailUrl
         {
             get => TryGetValueAsEscapableString("tailURL");
             set => AddOrRemove("tailURL", value, v => new DotEscapeStringAttribute("tailURL", v));
+        }
+
+        public virtual string TailHref
+        {
+            get => TryGetValueAsEscapableString("tailhref");
+            set => AddOrRemove("tailhref", value, v => new DotEscapeStringAttribute("tailhref", v));
         }
 
         public virtual string LabelUrl
@@ -87,10 +99,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("labelURL", value, v => new DotEscapeStringAttribute("labelURL", v));
         }
 
+        public virtual string LabelHref
+        {
+            get => TryGetValueAsEscapableString("labelhref");
+            set => AddOrRemove("labelhref", value, v => new DotEscapeStringAttribute("labelhref", v));
+        }
+
         public virtual string EdgeUrl
         {
             get => TryGetValueAsEscapableString("edgeURL");
             set => AddOrRemove("edgeURL", value, v => new DotEscapeStringAttribute("edgeURL", v));
+        }
+
+        public virtual string EdgeHref
+        {
+            get => TryGetValueAsEscapableString("edgehref");
+            set => AddOrRemove("edgehref", value, v => new DotEscapeStringAttribute("edgehref", v));
         }
 
         public override void SetFilled(DotColorDefinition value) => FillColor = value;

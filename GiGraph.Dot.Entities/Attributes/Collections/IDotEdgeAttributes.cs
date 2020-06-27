@@ -209,10 +209,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         string Url { get; set; }
 
         /// <summary>
+        /// Synonym for <see cref="Url"/>.
+        /// </summary>
+        string Href { get; set; }
+
+        /// <summary>
         /// If defined, it is output as part of the head label of the edge. Also, this value is used near the head node,
         /// overriding any <see cref="Url"/> value.
         /// </summary>
         string HeadUrl { get; set; }
+
+        /// <summary>
+        /// Synonym for <see cref="HeadUrl"/>.
+        /// </summary>
+        string HeadHref { get; set; }
 
         /// <summary>
         /// If defined, it is output as part of the tail label of the edge. Also, this value is used near the tail node,
@@ -221,14 +231,29 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         string TailUrl { get; set; }
 
         /// <summary>
+        /// Synonym for <see cref="TailUrl"/>.
+        /// </summary>
+        string TailHref { get; set; }
+
+        /// <summary>
         /// If defined, this is the link used for the label of an edge. This value overrides any <see cref="Url"/> defined for the edge.
         /// </summary>
         string LabelUrl { get; set; }
+
+        /// <summary>
+        /// Synonym for <see cref="LabelUrl"/>.
+        /// </summary>
+        string LabelHref { get; set; }
 
         /// <summary>
         /// If defined, this is the link used for the non-label parts of an edge. This value overrides any <see cref="Url"/> defined for the edge.
         /// Also, this value is used near the head or tail node unless overridden by a <see cref="HeadUrl"/> or <see cref="TailUrl"/> value, respectively.
         /// </summary>
         string EdgeUrl { get; set; }
+
+        /// <summary>
+        /// Synonym for <see cref="EdgeUrl"/>.
+        /// </summary>
+        string EdgeHref { get; set; }
     }
 }
