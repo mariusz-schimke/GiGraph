@@ -29,6 +29,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("fontpath", value, v => new DotStringAttribute("fontpath", v));
         }
 
+        public virtual string Charset
+        {
+            get => TryGetValueAs<string>("charset", out var result) ? result : null;
+            set => AddOrRemove("charset", value, v => new DotStringAttribute("charset", v));
+        }
+
         public override void SetFilled(DotColorDefinition value) => BackgroundColor = value;
     }
 }
