@@ -99,6 +99,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("URL", value, v => new DotEscapeStringAttribute("URL", v));
         }
 
+        public virtual string Href
+        {
+            get => TryGetValueAsEscapableString("href");
+            set => AddOrRemove("href", value, v => new DotEscapeStringAttribute("href", v));
+        }
+
         protected virtual DotColorDefinition TryGetValueAsColorDefinition(string key)
         {
             if (TryGetValueAs<DotColorDefinition>(key, out var colorDefinition))
