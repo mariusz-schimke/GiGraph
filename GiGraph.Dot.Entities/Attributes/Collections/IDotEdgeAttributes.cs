@@ -246,7 +246,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <summary>
         /// Tooltip annotation attached to the head of an edge. This is used only if the edge has a <see cref="HeadUrl"/> attribute specified.
         /// </summary>
-        DotEscapableString HeadTooltip { get; set; }
+        DotEscapableString HeadUrlTooltip { get; set; }
 
         /// <summary>
         /// If defined, it is output as part of the tail label of the edge. Also, this value is used near the tail node,
@@ -269,7 +269,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <summary>
         /// Tooltip annotation attached to the tail of an edge. This is used only if the edge has a <see cref="TailUrl"/> attribute specified.
         /// </summary>
-        DotEscapableString TailTooltip { get; set; }
+        DotEscapableString TailUrlTooltip { get; set; }
 
         /// <summary>
         /// If defined, this is the link used for the label of an edge. This value overrides any <see cref="Url"/> defined for the edge.
@@ -291,7 +291,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <summary>
         /// Tooltip annotation attached to label of an edge. This is used only if the edge has a <see cref="Url"/> or <see cref="LabelUrl"/> attribute specified.
         /// </summary>
-        DotEscapableString LabelTooltip { get; set; }
+        DotEscapableString LabelUrlTooltip { get; set; }
 
         /// <summary>
         /// If defined, this is the link used for the non-label parts of an edge. This value overrides any <see cref="Url"/> defined for the edge.
@@ -316,6 +316,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Tooltip annotation attached to the non-label part of an edge. This is used only if the edge has a <see cref="Url"/>
         /// or <see cref="EdgeUrl"/> attribute specified.
         /// </summary>
-        DotEscapableString EdgeTooltip { get; set; }
+        DotEscapableString EdgeUrlTooltip { get; set; }
     }
 }
