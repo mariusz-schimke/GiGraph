@@ -1,14 +1,12 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Endpoints;
-using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Edges
 {
     /// <summary>
     /// Represents an edge (joins two nodes).
     /// </summary>
-    public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>, IDotFillable
+    public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     {
         /// <summary>
         /// Indicates if the current instance is a loop edge.
@@ -110,11 +108,6 @@ namespace GiGraph.Dot.Entities.Edges
         public static DotEdge Loop(string nodeId)
         {
             return new DotEdge(nodeId, nodeId);
-        }
-
-        void IDotFillable.Fill(DotColorDefinition value)
-        {
-            Attributes.FillColor = value;
         }
     }
 }

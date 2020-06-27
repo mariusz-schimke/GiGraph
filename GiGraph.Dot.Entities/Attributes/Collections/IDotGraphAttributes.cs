@@ -5,7 +5,7 @@ using GiGraph.Dot.Entities.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotGraphAttributes : IDotAttributeCollection
+    public interface IDotGraphAttributes : IDotAttributeCollection, IDotFillable
     {
         /// <summary>
         /// <para>

@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// </summary>
         /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
         public DotNodeGroup(params string[] nodeIds)
-            : this(nodeIds, new DotEntityAttributes())
+            : this(nodeIds, new DotNodeAttributes())
         {
         }
 
