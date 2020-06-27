@@ -27,6 +27,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotLabel Label { get; set; }
 
         /// <summary>
+        /// Tooltip annotation attached to the node. If unset, Graphviz will use the <see cref="Label"/> attribute if defined.
+        /// Note that if the label is a record specification or an HTML-like label, the resulting tooltip may be unhelpful.
+        /// In this case, if tooltips will be generated, the user should set a tooltip attribute explicitly.
+        /// </summary>
+        DotEscapableString Tooltip { get; set; }
+
+        /// <summary>
         /// Gets or sets the color of the node (default: <see cref="System.Drawing.Color.Black"/>).
         /// If <see cref="DotColorList"/> is used, with no weighted colors in its color collection (<see cref="DotColor"/> items only),
         /// and the <see cref="Style"/> is <see cref="DotStyle.Filled"/>, a linear gradient fill is done using the first two colors.

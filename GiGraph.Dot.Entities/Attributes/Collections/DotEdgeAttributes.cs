@@ -88,6 +88,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("headtarget", value, v => new DotEscapeStringAttribute("headtarget", v));
         }
 
+        public virtual DotEscapableString HeadUrlTooltip
+        {
+            get => TryGetValueAsEscapableString("headtooltip");
+            set => AddOrRemove("headtooltip", value, v => new DotEscapeStringAttribute("headtooltip", v));
+        }
+
         public virtual DotEscapableString TailUrl
         {
             get => TryGetValueAsEscapableString("tailURL");
@@ -106,6 +112,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("tailtarget", value, v => new DotEscapeStringAttribute("tailtarget", v));
         }
 
+        public virtual DotEscapableString TailUrlTooltip
+        {
+            get => TryGetValueAsEscapableString("tailtooltip");
+            set => AddOrRemove("tailtooltip", value, v => new DotEscapeStringAttribute("tailtooltip", v));
+        }
+        
         public virtual DotEscapableString LabelUrl
         {
             get => TryGetValueAsEscapableString("labelURL");
@@ -124,6 +136,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("labeltarget", value, v => new DotEscapeStringAttribute("labeltarget", v));
         }
 
+        public virtual DotEscapableString LabelUrlTooltip
+        {
+            get => TryGetValueAsEscapableString("labeltooltip");
+            set => AddOrRemove("labeltooltip", value, v => new DotEscapeStringAttribute("labeltooltip", v));
+        }
+
         public virtual DotEscapableString EdgeUrl
         {
             get => TryGetValueAsEscapableString("edgeURL");
@@ -140,6 +158,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetValueAsEscapableString("edgetarget");
             set => AddOrRemove("edgetarget", value, v => new DotEscapeStringAttribute("edgetarget", v));
+        }
+
+        public virtual DotEscapableString EdgeUrlTooltip
+        {
+            get => TryGetValueAsEscapableString("edgetooltip");
+            set => AddOrRemove("edgetooltip", value, v => new DotEscapeStringAttribute("edgetooltip", v));
         }
 
         public override void SetFilled(DotColorDefinition value) => FillColor = value;
