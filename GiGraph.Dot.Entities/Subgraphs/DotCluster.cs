@@ -4,6 +4,8 @@ using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
@@ -17,12 +19,12 @@ namespace GiGraph.Dot.Entities.Subgraphs
     ///     but they do support setting common style of nodes and edges within them.
     /// </para>
     /// </summary>
-    public class DotCluster : DotCommonSubgraph
+    public class DotCluster : DotCommonSubgraph, IDotFillable
     {
         /// <summary>
         /// The attributes of the cluster.
         /// </summary>
-        public new IDotClusterAttributes Attributes => (IDotClusterAttributes)base.Attributes;
+        public new IDotClusterAttributes Attributes => (IDotClusterAttributes) base.Attributes;
 
         protected DotCluster(string id,
             IDotClusterAttributes attributes,
@@ -42,16 +44,16 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <param name="id">The unique identifier of the cluster.</param>
         public DotCluster(string id)
             : this
-              (
-                  id,
-                  new DotEntityAttributes(),
-                  new DotNodeCollection(),
-                  new DotEdgeCollection(),
-                  new DotSubgraphCollection(),
-                  new DotClusterCollection(),
-                  new DotEntityAttributes(),
-                  new DotEntityAttributes()
-              )
+            (
+                id,
+                new DotEntityAttributes(),
+                new DotNodeCollection(),
+                new DotEdgeCollection(),
+                new DotSubgraphCollection(),
+                new DotClusterCollection(),
+                new DotEntityAttributes(),
+                new DotEntityAttributes()
+            )
         {
         }
 
@@ -62,7 +64,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <param name="nodeIds">The identifiers of nodes to add to the subgraph.</param>
         public static DotCluster FromNodes(string id, params string[] nodeIds)
         {
-            return FromNodes(id, (IEnumerable<string>)nodeIds);
+            return FromNodes(id, (IEnumerable<string>) nodeIds);
         }
 
         /// <summary>
@@ -80,6 +82,12 @@ namespace GiGraph.Dot.Entities.Subgraphs
             }
 
             return result;
+        }
+
+        void IDotFillable.Fill(DotColorDefinition value)
+        {
+            Attributes.Style = Attributes.Style.GetValueOrDefault(DotStyle.Filled) | DotStyle.Filled;
+            Attributes.FillColor = value;
         }
     }
 }

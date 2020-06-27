@@ -1,12 +1,14 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using System;
+using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Nodes
 {
     /// <summary>
     /// Represents a graph node.
     /// </summary>
-    public class DotNode : DotNodeDefinition
+    public class DotNode : DotNodeDefinition, IDotFillable
     {
         /// <summary>
         /// Gets or sets the unique identifier of the node.
@@ -36,6 +38,12 @@ namespace GiGraph.Dot.Entities.Nodes
         protected override string GetOrderingKey()
         {
             return Id;
+        }
+
+        void IDotFillable.Fill(DotColorDefinition value)
+        {
+            Attributes.Style = Attributes.Style.GetValueOrDefault(DotStyle.Filled) | DotStyle.Filled;
+            Attributes.FillColor = value;
         }
     }
 }

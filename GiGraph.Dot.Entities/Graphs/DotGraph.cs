@@ -1,14 +1,16 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
+using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
     /// <summary>
     /// Represents a graph (the root DOT graph).
     /// </summary>
-    public class DotGraph : DotCommonGraph
+    public class DotGraph : DotCommonGraph, IDotFillable
     {
         /// <summary>
         /// Gets or sets a value that determines if the graph is directed.
@@ -66,6 +68,11 @@ namespace GiGraph.Dot.Entities.Graphs
                 new DotEntityAttributes()
             )
         {
+        }
+
+        void IDotFillable.Fill(DotColorDefinition value)
+        {
+            Attributes.BackgroundColor = value;
         }
     }
 }
