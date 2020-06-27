@@ -167,5 +167,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// For any number of polygon sides, 0 degrees rotation results in a flat base. Default: 0, maximum: 360.
         /// </summary>
         double? Orientation { get; set; }
+
+        /// <summary>
+        /// <para>
+        /// Hyperlinks incorporated into device-dependent output. At present, used in PS2, CMAP, I*MAP and SVG formats.
+        /// For all these formats, URLs can be attached to nodes, edges and clusters.
+        /// URL attributes can also be attached to the root graph in PS2, CMAP and I*MAP formats.
+        /// This serves as the base URL for relative URLs in the former, and as the default image map file in the latter.
+        /// </para>
+        /// <para>
+        /// For SVG, CMAPX and IMAP output, the active area for a node is its visible image. For example, an unfilled node
+        /// with no drawn boundary will only be active on its label. For other output, the active area is its bounding box.
+        /// </para>
+        /// </summary>
+        string Url { get; set; }
     }
 }
