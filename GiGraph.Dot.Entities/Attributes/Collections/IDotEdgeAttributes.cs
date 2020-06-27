@@ -26,6 +26,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotLabel Label { get; set; }
 
         /// <summary>
+        /// Tooltip annotation attached to the edge. If unset, Graphviz will use the <see cref="Label"/> attribute if defined.
+        /// </summary>
+        DotEscapableString Tooltip { get; set; }
+
+        /// <summary>
         /// Gets or sets the color of the edge (default: <see cref="System.Drawing.Color.Black"/>).
         /// If <see cref="DotColorList"/> is used, with no weighted colors in its color collection (<see cref="DotColor"/> items only),
         /// the edge is drawn using parallel splines or lines, one for each color in the list, in the order given.
@@ -239,6 +244,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotEscapableString HeadUrlTarget { get; set; }
 
         /// <summary>
+        /// Tooltip annotation attached to the head of an edge. This is used only if the edge has a <see cref="HeadUrl"/> attribute specified.
+        /// </summary>
+        DotEscapableString HeadTooltip { get; set; }
+
+        /// <summary>
         /// If defined, it is output as part of the tail label of the edge. Also, this value is used near the tail node,
         /// overriding any <see cref="Url"/> value.
         /// </summary>
@@ -255,6 +265,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// If undefined, the value of the <see cref="UrlTarget"/> is used.
         /// </summary>
         DotEscapableString TailUrlTarget { get; set; }
+
+        /// <summary>
+        /// Tooltip annotation attached to the tail of an edge. This is used only if the edge has a <see cref="TailUrl"/> attribute specified.
+        /// </summary>
+        DotEscapableString TailTooltip { get; set; }
 
         /// <summary>
         /// If defined, this is the link used for the label of an edge. This value overrides any <see cref="Url"/> defined for the edge.
@@ -274,6 +289,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotEscapableString LabelUrlTarget { get; set; }
 
         /// <summary>
+        /// Tooltip annotation attached to label of an edge. This is used only if the edge has a <see cref="Url"/> or <see cref="LabelUrl"/> attribute specified.
+        /// </summary>
+        DotEscapableString LabelTooltip { get; set; }
+
+        /// <summary>
         /// If defined, this is the link used for the non-label parts of an edge. This value overrides any <see cref="Url"/> defined for the edge.
         /// Also, this value is used near the head or tail node unless overridden by a <see cref="HeadUrl"/> or <see cref="TailUrl"/> value, respectively.
         /// </summary>
@@ -291,5 +311,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// If undefined, the value of the <see cref="UrlTarget"/> is used.
         /// </summary>
         DotEscapableString EdgeUrlTarget { get; set; }
+
+        /// <summary>
+        /// Tooltip annotation attached to the non-label part of an edge. This is used only if the edge has a <see cref="Url"/>
+        /// or <see cref="EdgeUrl"/> attribute specified.
+        /// </summary>
+        DotEscapableString EdgeTooltip { get; set; }
     }
 }
