@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="tail">The tail (source, left) endpoint.</param>
         /// <param name="head">The head (destination, right) endpoint.</param>
         public DotEdge(TTail tail, THead head)
-            : this(tail, head, new DotEntityAttributes())
+            : this(tail, head, new DotEdgeAttributes())
         {
         }
 

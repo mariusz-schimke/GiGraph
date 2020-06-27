@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         /// <param name="endpoints">The endpoints to initialize the instance with.</param>
         public DotEdgeSequence(params DotEndpointDefinition[] endpoints)
-            : this(endpoints, new DotEntityAttributes())
+            : this(endpoints, new DotEdgeAttributes())
         {
         }
 

@@ -8,12 +8,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotEntityAttributes : DotAttributeCollection,
-        IDotGraphAttributes,
-        IDotSubgraphAttributes,
-        IDotClusterAttributes,
-        IDotNodeAttributes,
-        IDotEdgeAttributes
+    public abstract partial class DotEntityAttributes : DotAttributeCollection
     {
         public virtual DotColorDefinition Color
         {

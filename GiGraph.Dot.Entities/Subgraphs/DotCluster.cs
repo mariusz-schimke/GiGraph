@@ -4,8 +4,6 @@ using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
@@ -19,7 +17,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
     ///     but they do support setting common style of nodes and edges within them.
     /// </para>
     /// </summary>
-    public class DotCluster : DotCommonSubgraph, IDotFillable
+    public class DotCluster : DotCommonSubgraph
     {
         /// <summary>
         /// The attributes of the cluster.
@@ -46,13 +44,13 @@ namespace GiGraph.Dot.Entities.Subgraphs
             : this
             (
                 id,
-                new DotEntityAttributes(),
+                new DotClusterAttributes(),
                 new DotNodeCollection(),
                 new DotEdgeCollection(),
                 new DotSubgraphCollection(),
                 new DotClusterCollection(),
-                new DotEntityAttributes(),
-                new DotEntityAttributes()
+                new DotNodeAttributes(),
+                new DotEdgeAttributes()
             )
         {
         }
@@ -82,12 +80,6 @@ namespace GiGraph.Dot.Entities.Subgraphs
             }
 
             return result;
-        }
-
-        void IDotFillable.Fill(DotColorDefinition value)
-        {
-            Attributes.Style = Attributes.Style.GetValueOrDefault(DotStyle.Filled) | DotStyle.Filled;
-            Attributes.FillColor = value;
         }
     }
 }

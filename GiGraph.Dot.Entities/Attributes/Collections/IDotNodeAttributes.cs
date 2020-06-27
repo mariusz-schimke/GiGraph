@@ -6,7 +6,7 @@ using GiGraph.Dot.Entities.Types.Records;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotNodeAttributes : IDotAttributeCollection
+    public interface IDotNodeAttributes : IDotAttributeCollection, IDotFillable
     {
         /// <summary>
         /// <para>

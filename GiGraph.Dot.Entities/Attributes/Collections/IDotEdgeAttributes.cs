@@ -8,7 +8,7 @@ using GiGraph.Dot.Entities.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotEdgeAttributes : IDotAttributeCollection
+    public interface IDotEdgeAttributes : IDotAttributeCollection, IDotFillable
     {
         /// <summary>
         /// <para>
