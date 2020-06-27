@@ -198,5 +198,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// This serves as the base URL for relative URLs in the former, and as the default image map file in the latter.
         /// </summary>
         string Url { get; set; }
+
+        /// <summary>
+        /// Synonym for <see cref="Url"/>.
+        /// </summary>
+        string Href { get; set; }
     }
 }
