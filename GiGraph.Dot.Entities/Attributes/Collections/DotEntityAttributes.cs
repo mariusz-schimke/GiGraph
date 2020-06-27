@@ -89,13 +89,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual string Comment
         {
-            get => TryGetValueAs<string>("comment", out var result) ? result : null;
+            get => TryGetValueAsEscapableString("comment");
             set => AddOrRemove("comment", value, v => new DotStringAttribute("comment", v));
         }
 
         public virtual string Url
         {
-            get => TryGetValueAs<string>("URL", out var result) ? result : null;
+            get => TryGetValueAsEscapableString("URL");
             set => AddOrRemove("URL", value, v => new DotEscapeStringAttribute("URL", v));
         }
 
@@ -116,6 +116,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 return label;
             }
 
+            return TryGetValueAsEscapableString(key);
+        }
+
+        protected virtual DotEscapableString TryGetValueAsEscapableString(string key)
+        {
             if (TryGetValueAs<DotEscapableString>(key, out var dotEscapableString))
             {
                 return dotEscapableString;
