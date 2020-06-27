@@ -207,5 +207,28 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </para>
         /// </summary>
         string Url { get; set; }
+
+        /// <summary>
+        /// If defined, it is output as part of the head label of the edge. Also, this value is used near the head node,
+        /// overriding any <see cref="Url"/> value.
+        /// </summary>
+        string HeadUrl { get; set; }
+
+        /// <summary>
+        /// If defined, it is output as part of the tail label of the edge. Also, this value is used near the tail node,
+        /// overriding any <see cref="Url"/> value.
+        /// </summary>
+        string TailUrl { get; set; }
+
+        /// <summary>
+        /// If defined, this is the link used for the label of an edge. This value overrides any <see cref="Url"/> defined for the edge.
+        /// </summary>
+        string LabelUrl { get; set; }
+
+        /// <summary>
+        /// If defined, this is the link used for the non-label parts of an edge. This value overrides any <see cref="Url"/> defined for the edge.
+        /// Also, this value is used near the head or tail node unless overridden by a <see cref="HeadUrl"/> or <see cref="TailUrl"/> value, respectively.
+        /// </summary>
+        string EdgeUrl { get; set; }
     }
 }

@@ -69,6 +69,30 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("constraint", value, v => new DotBoolAttribute("constraint", v.Value));
         }
 
+        public virtual string HeadUrl
+        {
+            get => TryGetValueAsEscapableString("headURL");
+            set => AddOrRemove("headURL", value, v => new DotEscapeStringAttribute("headURL", v));
+        }
+
+        public virtual string TailUrl
+        {
+            get => TryGetValueAsEscapableString("tailURL");
+            set => AddOrRemove("tailURL", value, v => new DotEscapeStringAttribute("tailURL", v));
+        }
+
+        public virtual string LabelUrl
+        {
+            get => TryGetValueAsEscapableString("labelURL");
+            set => AddOrRemove("labelURL", value, v => new DotEscapeStringAttribute("labelURL", v));
+        }
+
+        public virtual string EdgeUrl
+        {
+            get => TryGetValueAsEscapableString("edgeURL");
+            set => AddOrRemove("edgeURL", value, v => new DotEscapeStringAttribute("edgeURL", v));
+        }
+
         public override void SetFilled(DotColorDefinition value) => FillColor = value;
     }
 }
