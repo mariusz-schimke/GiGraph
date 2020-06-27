@@ -215,6 +215,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotEscapableString Href { get; set; }
 
         /// <summary>
+        /// If the object has a <see cref="Url"/> specified, this attribute determines which window of the browser is used for the URL.
+        /// See W3C documentation (<see href="http://www.w3.org/TR/html401/present/frames.html#adef-target"/>).
+        /// </summary>
+        DotEscapableString UrlTarget { get; set; }
+
+        /// <summary>
         /// If defined, it is output as part of the head label of the edge. Also, this value is used near the head node,
         /// overriding any <see cref="Url"/> value.
         /// </summary>
@@ -224,6 +230,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Synonym for <see cref="HeadUrl"/>.
         /// </summary>
         DotEscapableString HeadHref { get; set; }
+
+        /// <summary>
+        /// If the edge has a <see cref="HeadUrl"/>, this attribute determines which window of the browser is used for the URL.
+        /// Setting it to "_graphviz" will open a new window if it doesn't already exist, or reuse it if it does.
+        /// If undefined, the value of the <see cref="UrlTarget"/> is used.
+        /// </summary>
+        DotEscapableString HeadUrlTarget { get; set; }
 
         /// <summary>
         /// If defined, it is output as part of the tail label of the edge. Also, this value is used near the tail node,
@@ -237,6 +250,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotEscapableString TailHref { get; set; }
 
         /// <summary>
+        /// If the edge has a <see cref="TailUrl"/>, this attribute determines which window of the browser is used for the URL.
+        /// Setting it to "_graphviz" will open a new window if it doesn't already exist, or reuse it if it does.
+        /// If undefined, the value of the <see cref="UrlTarget"/> is used.
+        /// </summary>
+        DotEscapableString TailUrlTarget { get; set; }
+
+        /// <summary>
         /// If defined, this is the link used for the label of an edge. This value overrides any <see cref="Url"/> defined for the edge.
         /// </summary>
         DotEscapableString LabelUrl { get; set; }
@@ -245,6 +265,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Synonym for <see cref="LabelUrl"/>.
         /// </summary>
         DotEscapableString LabelHref { get; set; }
+
+        /// <summary>
+        /// If the edge has a <see cref="Url"/> or <see cref="LabelUrl"/> attribute, this attribute determines which window
+        /// of the browser is used for the URL attached to the label. Setting it to "_graphviz" will open a new window
+        /// if it doesn't already exist, or reuse it if it does. If undefined, the value of the <see cref="UrlTarget"/> is used.
+        /// </summary>
+        DotEscapableString LabelUrlTarget { get; set; }
 
         /// <summary>
         /// If defined, this is the link used for the non-label parts of an edge. This value overrides any <see cref="Url"/> defined for the edge.
@@ -256,5 +283,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Synonym for <see cref="EdgeUrl"/>.
         /// </summary>
         DotEscapableString EdgeHref { get; set; }
+
+        /// <summary>
+        /// If the edge has a <see cref="Url"/> or <see cref="EdgeUrl"/> attribute, this attribute determines which window
+        /// of the browser is used for the URL attached to the non-label part of the edge. Setting it to "_graphviz"
+        /// will open a new window if it doesn't already exist, or reuse it if it does.
+        /// If undefined, the value of the <see cref="UrlTarget"/> is used.
+        /// </summary>
+        DotEscapableString EdgeUrlTarget { get; set; }
     }
 }

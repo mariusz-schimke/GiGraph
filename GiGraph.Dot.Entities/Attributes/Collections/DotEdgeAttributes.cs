@@ -82,6 +82,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("headhref", value, v => new DotEscapeStringAttribute("headhref", v));
         }
 
+        public virtual DotEscapableString HeadUrlTarget
+        {
+            get => TryGetValueAsEscapableString("headtarget");
+            set => AddOrRemove("headtarget", value, v => new DotEscapeStringAttribute("headtarget", v));
+        }
+
         public virtual DotEscapableString TailUrl
         {
             get => TryGetValueAsEscapableString("tailURL");
@@ -92,6 +98,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetValueAsEscapableString("tailhref");
             set => AddOrRemove("tailhref", value, v => new DotEscapeStringAttribute("tailhref", v));
+        }
+
+        public virtual DotEscapableString TailUrlTarget
+        {
+            get => TryGetValueAsEscapableString("tailtarget");
+            set => AddOrRemove("tailtarget", value, v => new DotEscapeStringAttribute("tailtarget", v));
         }
 
         public virtual DotEscapableString LabelUrl
@@ -106,6 +118,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("labelhref", value, v => new DotEscapeStringAttribute("labelhref", v));
         }
 
+        public virtual DotEscapableString LabelUrlTarget
+        {
+            get => TryGetValueAsEscapableString("labeltarget");
+            set => AddOrRemove("labeltarget", value, v => new DotEscapeStringAttribute("labeltarget", v));
+        }
+
         public virtual DotEscapableString EdgeUrl
         {
             get => TryGetValueAsEscapableString("edgeURL");
@@ -116,6 +134,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetValueAsEscapableString("edgehref");
             set => AddOrRemove("edgehref", value, v => new DotEscapeStringAttribute("edgehref", v));
+        }
+
+        public virtual DotEscapableString EdgeUrlTarget
+        {
+            get => TryGetValueAsEscapableString("edgetarget");
+            set => AddOrRemove("edgetarget", value, v => new DotEscapeStringAttribute("edgetarget", v));
         }
 
         public override void SetFilled(DotColorDefinition value) => FillColor = value;
