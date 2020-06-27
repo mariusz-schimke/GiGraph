@@ -5,6 +5,7 @@ using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -206,54 +207,54 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// it is unspecified which area dominates.
         /// </para>
         /// </summary>
-        string Url { get; set; }
+        DotEscapableString Url { get; set; }
 
         /// <summary>
         /// Synonym for <see cref="Url"/>.
         /// </summary>
-        string Href { get; set; }
+        DotEscapableString Href { get; set; }
 
         /// <summary>
         /// If defined, it is output as part of the head label of the edge. Also, this value is used near the head node,
         /// overriding any <see cref="Url"/> value.
         /// </summary>
-        string HeadUrl { get; set; }
+        DotEscapableString HeadUrl { get; set; }
 
         /// <summary>
         /// Synonym for <see cref="HeadUrl"/>.
         /// </summary>
-        string HeadHref { get; set; }
+        DotEscapableString HeadHref { get; set; }
 
         /// <summary>
         /// If defined, it is output as part of the tail label of the edge. Also, this value is used near the tail node,
         /// overriding any <see cref="Url"/> value.
         /// </summary>
-        string TailUrl { get; set; }
+        DotEscapableString TailUrl { get; set; }
 
         /// <summary>
         /// Synonym for <see cref="TailUrl"/>.
         /// </summary>
-        string TailHref { get; set; }
+        DotEscapableString TailHref { get; set; }
 
         /// <summary>
         /// If defined, this is the link used for the label of an edge. This value overrides any <see cref="Url"/> defined for the edge.
         /// </summary>
-        string LabelUrl { get; set; }
+        DotEscapableString LabelUrl { get; set; }
 
         /// <summary>
         /// Synonym for <see cref="LabelUrl"/>.
         /// </summary>
-        string LabelHref { get; set; }
+        DotEscapableString LabelHref { get; set; }
 
         /// <summary>
         /// If defined, this is the link used for the non-label parts of an edge. This value overrides any <see cref="Url"/> defined for the edge.
         /// Also, this value is used near the head or tail node unless overridden by a <see cref="HeadUrl"/> or <see cref="TailUrl"/> value, respectively.
         /// </summary>
-        string EdgeUrl { get; set; }
+        DotEscapableString EdgeUrl { get; set; }
 
         /// <summary>
         /// Synonym for <see cref="EdgeUrl"/>.
         /// </summary>
-        string EdgeHref { get; set; }
+        DotEscapableString EdgeHref { get; set; }
     }
 }
