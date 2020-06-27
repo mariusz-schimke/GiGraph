@@ -149,5 +149,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Setting peripheries to 0 will remove the boundaries.
         /// </summary>
         int? Peripheries { get; set; }
+
+        /// <summary>
+        /// <para>
+        /// Hyperlinks incorporated into device-dependent output. At present, used in PS2, CMAP, I*MAP and SVG formats.
+        /// For all these formats, URLs can be attached to nodes, edges and clusters.
+        /// URL attributes can also be attached to the root graph in PS2, CMAP and I*MAP formats.
+        /// This serves as the base URL for relative URLs in the former, and as the default image map file in the latter.
+        /// </para>
+        /// <para>
+        /// The active area for a cluster is its bounding box.
+        /// </para>
+        /// </summary>
+        string Url { get; set; }
     }
 }

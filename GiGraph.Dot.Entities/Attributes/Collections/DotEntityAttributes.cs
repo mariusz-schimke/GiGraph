@@ -93,6 +93,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("comment", value, v => new DotStringAttribute("comment", v));
         }
 
+        public virtual string Url
+        {
+            get => TryGetValueAs<string>("URL", out var result) ? result : null;
+            set => AddOrRemove("URL", value, v => new DotEscapeStringAttribute("URL", v));
+        }
+
         protected virtual DotColorDefinition TryGetValueAsColorDefinition(string key)
         {
             if (TryGetValueAs<DotColorDefinition>(key, out var colorDefinition))
