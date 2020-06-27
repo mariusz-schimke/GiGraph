@@ -162,5 +162,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </para>
         /// </summary>
         string Url { get; set; }
+
+        /// <summary>
+        /// Synonym for <see cref="Url"/>.
+        /// </summary>
+        string Href { get; set; }
     }
 }
