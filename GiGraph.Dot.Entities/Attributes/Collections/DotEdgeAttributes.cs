@@ -88,7 +88,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("headtarget", value, v => new DotEscapeStringAttribute("headtarget", v));
         }
 
-        public virtual DotEscapableString HeadTooltip
+        public virtual DotEscapableString HeadUrlTooltip
         {
             get => TryGetValueAsEscapableString("headtooltip");
             set => AddOrRemove("headtooltip", value, v => new DotEscapeStringAttribute("headtooltip", v));
@@ -112,7 +112,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("tailtarget", value, v => new DotEscapeStringAttribute("tailtarget", v));
         }
 
-        public virtual DotEscapableString TailTooltip
+        public virtual DotEscapableString TailUrlTooltip
         {
             get => TryGetValueAsEscapableString("tailtooltip");
             set => AddOrRemove("tailtooltip", value, v => new DotEscapeStringAttribute("tailtooltip", v));
@@ -136,7 +136,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("labeltarget", value, v => new DotEscapeStringAttribute("labeltarget", v));
         }
 
-        public virtual DotEscapableString LabelTooltip
+        public virtual DotEscapableString LabelUrlTooltip
         {
             get => TryGetValueAsEscapableString("labeltooltip");
             set => AddOrRemove("labeltooltip", value, v => new DotEscapeStringAttribute("labeltooltip", v));
@@ -160,7 +160,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("edgetarget", value, v => new DotEscapeStringAttribute("edgetarget", v));
         }
 
-        public virtual DotEscapableString EdgeTooltip
+        public virtual DotEscapableString EdgeUrlTooltip
         {
             get => TryGetValueAsEscapableString("edgetooltip");
             set => AddOrRemove("edgetooltip", value, v => new DotEscapeStringAttribute("edgetooltip", v));
