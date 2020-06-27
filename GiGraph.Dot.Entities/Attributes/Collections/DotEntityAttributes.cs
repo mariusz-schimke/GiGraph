@@ -93,16 +93,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("comment", value, v => new DotStringAttribute("comment", v));
         }
 
-        public virtual string Url
+        public virtual DotEscapableString Url
         {
             get => TryGetValueAsEscapableString("URL");
             set => AddOrRemove("URL", value, v => new DotEscapeStringAttribute("URL", v));
         }
 
-        public virtual string Href
+        public virtual DotEscapableString Href
         {
             get => TryGetValueAsEscapableString("href");
             set => AddOrRemove("href", value, v => new DotEscapeStringAttribute("href", v));
+        }
+
+        public virtual DotEscapableString UrlTarget
+        {
+            get => TryGetValueAsEscapableString("target");
+            set => AddOrRemove("target", value, v => new DotEscapeStringAttribute("target", v));
         }
 
         protected virtual DotColorDefinition TryGetValueAsColorDefinition(string key)

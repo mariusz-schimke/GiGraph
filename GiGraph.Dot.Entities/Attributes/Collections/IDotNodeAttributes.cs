@@ -3,6 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Records;
+using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -180,11 +181,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// with no drawn boundary will only be active on its label. For other output, the active area is its bounding box.
         /// </para>
         /// </summary>
-        string Url { get; set; }
+        DotEscapableString Url { get; set; }
 
         /// <summary>
         /// Synonym for <see cref="Url"/>.
         /// </summary>
-        string Href { get; set; }
+        DotEscapableString Href { get; set; }
+
+        /// <summary>
+        /// If the object has a <see cref="Url"/> specified, this attribute determines which window of the browser is used for the URL.
+        /// See W3C documentation (<see href="http://www.w3.org/TR/html401/present/frames.html#adef-target"/>).
+        /// </summary>
+        DotEscapableString UrlTarget { get; set; }
     }
 }
