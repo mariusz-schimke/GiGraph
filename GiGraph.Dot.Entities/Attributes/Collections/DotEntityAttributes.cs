@@ -89,7 +89,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual string Comment
         {
-            get => TryGetValueAsEscapableString("comment");
+            get => TryGetValueAs<string>("comment", out var result) ? result : null;
             set => AddOrRemove("comment", value, v => new DotStringAttribute("comment", v));
         }
 
