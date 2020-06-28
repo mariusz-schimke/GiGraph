@@ -11,8 +11,6 @@ namespace GiGraph.Dot.Examples.Basic
         {
             var graph = new DotGraph(isDirected: true);
 
-            graph.Nodes.Add("Foo");
-
             graph.Nodes.Add("Bar").ToHtml
             (
                 @"<TABLE BORDER=""0"" CELLBORDER=""1"" CELLSPACING=""0"" CELLPADDING=""4"">
@@ -33,7 +31,11 @@ namespace GiGraph.Dot.Examples.Basic
                 </TABLE>"
             );
 
+            // the following line is equivalent to the next one as far as visualization is concerned
             graph.Edges.Add("Foo", "Bar").Attributes.HeadPort = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
+
+            // an equivalent method of defining a port
+            graph.Edges.Add("Foo", "Bar").Head.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
 
             return graph;
         }
