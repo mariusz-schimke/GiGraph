@@ -27,6 +27,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotLabel Label { get; set; }
 
         /// <summary>
+        /// External label for the node. The label will be placed outside of the node but near it.
+        /// This can be useful in DOT to avoid the occasional problem when the use of edge labels distorts the layout.
+        /// For other layouts, this attribute can be viewed as a synonym for the <see cref="Label"/> attribute.
+        /// These labels are added after all nodes and edges have been placed. The labels will be placed so that they
+        /// do not overlap any node or label. This means it may not be possible to place all of them.
+        /// To force placing all of them, use the <see cref="IDotGraphAttributes.ForceExternalLabels"/> attribute on the graph.
+        /// </summary>
+        DotLabel ExternalLabel { get; set; }
+        
+        /// <summary>
         /// Tooltip annotation attached to the node. If unset, Graphviz will use the <see cref="Label"/> attribute if defined.
         /// Note that if the label is a record specification or an HTML-like label, the resulting tooltip may be unhelpful.
         /// In this case, if tooltips will be generated, the user should set a tooltip attribute explicitly.

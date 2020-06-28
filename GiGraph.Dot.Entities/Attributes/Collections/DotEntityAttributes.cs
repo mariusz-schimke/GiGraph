@@ -81,6 +81,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("label", value, v => new DotLabelAttribute("label", v));
         }
 
+        public virtual DotLabel ExternalLabel
+        {
+            get => TryGetValueAsLabel("xlabel");
+            set => AddOrRemove("xlabel", value, v => new DotLabelAttribute("xlabel", v));
+        }
+
         public virtual DotEscapableString Tooltip
         {
             get => TryGetValueAsEscapableString("tooltip");
