@@ -811,7 +811,7 @@ Note that *string* is implicitly convertible to *DotRecordTextField*, whereas *s
 
 ##### Customizing edge placement
 
-The fields of record nodes may have a **port** specified as well. The port may have an individual name that you may refer to when defining an edge (see the [edge](#edge) section). This way you may decide which field of the record an edge tail or head is attached to. In the following example the field labeled 'Bar' has a port assigned, named 'port1'. The edge that joins the two nodes refers to the port name to attach the tail to it.
+The fields of record nodes may have a **port** specified as well. The port may have an individual name that you may refer to when defining an edge (see the [edge](#edge) section). This way you may decide which field of the record an edge tail or head is attached to. In the following example the field labeled 'Fred' has a port assigned, named 'port1'. The edge that joins the two nodes refers to that port name to attach the tail to it.
 
 <p align="left">
   <img src="./Assets/Examples/record-node-subrecord-with-port.svg">
@@ -855,6 +855,8 @@ graph.Edges.Add("Foo", "Bar", edge =>
 
 Note that you can either use the *Port* property of edge *Tail* and *Head* for setting port parameters as in the example above, or you can use the *TailPort* and *HeadPort* attributes of the edge itself with the same effect.
 
+See also a similar example in the [HTML nodes](#html-nodes) section.
+
 
 
 #### HTML nodes
@@ -862,6 +864,9 @@ Note that you can either use the *Port* property of edge *Tail* and *Head* for s
 Nodes may have an HTML label assigned. This way you can handle more complex node content arrangement and styling scenarios than in a record node for instance. The HTML grammar is Graphviz specific, and is described in the <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">documentation</a>. In general, tables, text styles, and images are the main valid markups that may be used for an HTML node label.
 
 ```c#
+using GiGraph.Dot.Extensions; // ToRecord
+...
+
 graph.Nodes.Add("Bar").ToHtml
 (
     @"<TABLE BORDER=""0"" CELLBORDER=""1"" CELLSPACING=""0"" CELLPADDING=""4"">
@@ -924,7 +929,7 @@ digraph
 
 ##### Customizing edge placement
 
-Similarly to the record node case, you can specify *ports* within the HTML. As already mentioned, the port may have an individual name that you may refer to when defining an edge (see the [edge](#edge) section). This way you may decide which field of the HTML table an edge tail or head is attached to. In the example above the field labeled 'Fred' has a port assigned, named 'port1', so it can be referred to by its name from an edge. See the following example that extends the code above with an edge.
+Similarly to the record node case, you can specify *ports* within the HTML table. As already mentioned, the port may have an individual name that you may refer to when defining an edge (see the [edge](#edge) section). This way you may decide which field of the HTML table an edge tail or head is attached to. In the example above the field labeled 'Fred' has a port assigned, named 'port1', so it can be referred to by its name from an edge. See the following example that extends the code above with an edge.
 
 ```c#
 ...
@@ -956,6 +961,8 @@ digraph
 <p align="left">
   <img src="./Assets/Examples/html-node-with-port.svg">
 </p>
+See also a similar example in the [record nodes](#record-nodes) section.
+
 
 
 
