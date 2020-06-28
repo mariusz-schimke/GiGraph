@@ -47,7 +47,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual double? Width
         {
             get => TryGetValueAs<double>("width", out var result) ? result : (double?) null;
-            set => AddOrRemove("width", value, v => new DotDoubleAttribute("width", v.Value));
+            set => AddOrRemove("width", value, v => v.Value < 0
+                ? throw new ArgumentOutOfRangeException(nameof(Width), v.Value, "The width must be greater than or equal to 0.")
+                : new DotDoubleAttribute("width", v.Value));
         }
 
         public override void SetFilled(DotColorDefinition value)
