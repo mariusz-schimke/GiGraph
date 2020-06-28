@@ -23,6 +23,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("compound", value, v => new DotBoolAttribute("compound", v.Value));
         }
 
+        public virtual bool? ForceExternalLabels
+        {
+            get => TryGetValueAs<bool>("forcelabels", out var result) ? result : (bool?) null;
+            set => AddOrRemove("forcelabels", value, v => new DotBoolAttribute("forcelabels", v.Value));
+        }
+
         public virtual string FontPath
         {
             get => TryGetValueAs<string>("fontpath", out var result) ? result : null;
