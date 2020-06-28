@@ -820,25 +820,36 @@ The fields of record nodes may have a **port** specified as well. The port may h
 ```dot
 digraph
 {
-    Foo [ label = "Foo | { Bar | <port1> Baz | Qux } | Quux", shape = record ]
-    Bar [ label = "Foo | Bar", shape = record ]
+    Bar [ label = "Foo\nBar | { Baz | { Garply | Waldo | <port1> Fred } | Plugh } | Qux | Quux", shape = record ]
 
-    Foo:port1:w -> Bar:w
+    Foo -> Bar:port1:ne
 }
 ```
 
 And the code to generate it:
 
 ```c#
-graph.Nodes.Add("Foo").ToRecord("Foo", new[] { "Bar", new DotRecordTextField("Baz", portName: "port1"), "Qux" }, "Quux");
-graph.Nodes.Add("Bar").ToRecord("Foo", "Bar");
+graph.Nodes.Add("Bar").ToRecord
+(
+    $"Foo{Environment.NewLine}Bar",
+    new DotRecordField[]
+    {
+        "Baz",
+        new DotRecord
+        (
+            "Garply",
+            "Waldo",
+            new DotRecordTextField("Fred", portName: "port1")
+        ),
+        "Plugh",
+    },
+    "Qux",
+    "Quux");
 
 graph.Edges.Add("Foo", "Bar", edge =>
 {
-    edge.Tail.Port.Name = "port1";
-    edge.Tail.Port.CompassPoint = DotCompassPoint.West;
-    
-    edge.Head.Port.CompassPoint = DotCompassPoint.West;
+    edge.Head.Port.Name = "port1";
+    edge.Head.Port.CompassPoint = DotCompassPoint.NorthEast;
 });
 ```
 
