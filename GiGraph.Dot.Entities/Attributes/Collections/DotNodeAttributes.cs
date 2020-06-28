@@ -44,6 +44,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("orientation", value, v => new DotDoubleAttribute("orientation", v.Value));
         }
 
+        public virtual double? Width
+        {
+            get => TryGetValueAs<double>("width", out var result) ? result : (double?) null;
+            set => AddOrRemove("width", value, v => new DotDoubleAttribute("width", v.Value));
+        }
+
         public override void SetFilled(DotColorDefinition value)
         {
             Style = Style.GetValueOrDefault(DotStyle.Filled) | DotStyle.Filled;
