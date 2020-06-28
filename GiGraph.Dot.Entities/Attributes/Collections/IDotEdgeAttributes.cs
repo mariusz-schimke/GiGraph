@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// this attribute can be viewed as a synonym for the <see cref="Label"/> attribute.
         /// These labels are added after all nodes and edges have been placed. The labels will be placed so that they
         /// do not overlap any node or label. This means it may not be possible to place all of them.
-        /// To force placing all of them, use the <see cref="IDotGraphAttributes.ForceLabels"/> attribute on the graph.
+        /// To force placing all of them, use the <see cref="IDotGraphAttributes.ForceExternalLabels"/> attribute on the graph.
         /// </summary>
         DotLabel ExternalLabel { get; set; }
 
