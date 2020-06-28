@@ -52,6 +52,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : new DotDoubleAttribute("width", v.Value));
         }
 
+        public virtual double? Height
+        {
+            get => TryGetValueAs<double>("height", out var result) ? result : (double?) null;
+            set => AddOrRemove("height", value, v => v.Value < 0
+                ? throw new ArgumentOutOfRangeException(nameof(Height), v.Value, "The height must be greater than or equal to 0.")
+                : new DotDoubleAttribute("height", v.Value));
+        }
+
         public override void SetFilled(DotColorDefinition value)
         {
             Style = Style.GetValueOrDefault(DotStyle.Filled) | DotStyle.Filled;
