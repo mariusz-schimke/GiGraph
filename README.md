@@ -864,7 +864,7 @@ See also a similar example in the [HTML nodes](#html-nodes) section.
 Nodes may have an HTML label assigned. This way you can handle more complex node content arrangement and styling scenarios than in a record node for instance. The HTML grammar is Graphviz specific, and is described in the <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">documentation</a>. In general, tables, text styles, and images are the main valid markups that may be used for an HTML node label.
 
 ```c#
-using GiGraph.Dot.Extensions; // ToRecord
+using GiGraph.Dot.Extensions; // ToHtml
 ...
 
 graph.Nodes.Add("Bar").ToHtml
