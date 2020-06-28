@@ -60,6 +60,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : new DotDoubleAttribute("height", v.Value));
         }
 
+        public virtual DotFixedSize? FixedSize
+        {
+            get => TryGetValueAs<DotFixedSize>("fixedsize", out var result) ? result : (DotFixedSize?) null;
+            set => AddOrRemove("fixedsize", value, v => new DotFixedSizeAttribute("fixedsize", v.Value));
+        }
+
         public override void SetFilled(DotColorDefinition value)
         {
             Style = Style.GetValueOrDefault(DotStyle.Filled) | DotStyle.Filled;

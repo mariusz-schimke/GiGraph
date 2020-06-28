@@ -136,6 +136,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         double? Height { get; set; }
 
         /// <summary>
+        /// Gets or sets the value indicating how the size of the node is determined (default: <see cref="DotFixedSize.No"/>).
+        /// </summary>
+        DotFixedSize? FixedSize { get; set; }
+
+        /// <summary>
         /// Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black"/>).
         /// </summary>
         Color? FontColor { get; set; }
