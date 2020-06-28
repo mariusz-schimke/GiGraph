@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// To force placing all of them, use the <see cref="IDotGraphAttributes.ForceExternalLabels"/> attribute on the graph.
         /// </summary>
         DotLabel ExternalLabel { get; set; }
-        
+
         /// <summary>
         /// Tooltip annotation attached to the node. If unset, Graphviz will use the <see cref="Label"/> attribute if defined.
         /// Note that if the label is a record specification or an HTML-like label, the resulting tooltip may be unhelpful.
@@ -104,6 +104,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </para>
         /// </summary>
         DotStyle? Style { get; set; }
+
+        /// <summary>
+        /// <para>
+        /// Width of node, in inches (default: 0.75, minimum: 0.01). This is taken as the initial, minimum width of the node.
+        /// If <see cref="FixedSize"/> is true, this will be the final width of the node. Otherwise, if the node label requires
+        /// more width to fit, the node's width will be increased to contain the label. Note also that, if the output format is DOT,
+        /// the value given to width will be the final value.
+        /// </para>
+        /// <para>
+        /// If the node shape is regular, the width and height are made identical. In this case, if either the width or the height
+        /// is set explicitly, that value is used. In this case, if both the width or the height are set explicitly,
+        /// the maximum of the two values is used. If neither is set explicitly, the minimum of the two default values is used.
+        /// </para>
+        /// </summary>
+        double? Width { get; set; }
 
         /// <summary>
         /// Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black"/>).
