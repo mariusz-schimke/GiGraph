@@ -162,13 +162,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <summary>
         /// Indicates where on the head node to attach the head of the edge. In the default case,
         /// the edge is aimed towards the center of the node, and then clipped at the node boundary.
-        /// See also <see cref="DotEndpoint.Port"/> of the edge <see cref="DotEdge.Head"/> property.
+        /// See also <see cref="DotEndpoint.Port"/> of the edge <see cref="DotEdge{TTail,THead}.Head"/> property.
         /// </summary>
         DotEndpointPort HeadPort { get; set; }
 
         /// <summary>
         /// Indicates where on the tail node to attach the tail of the edge. See also <see cref="DotEndpoint.Port"/>
-        /// of the edge <see cref="DotEdge.Tail"/> property.
+        /// of the edge <see cref="DotEdge{TTail,THead}.Tail"/> property.
         /// </summary>
         DotEndpointPort TailPort { get; set; }
 
