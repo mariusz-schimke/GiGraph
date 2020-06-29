@@ -115,7 +115,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// Controls how, and if, edges are represented. By default, the attribute is unset. How this is interpreted depends on the layout.
         /// For DOT, the default is to draw edges as splines (<see cref="DotEdgeShape.Spline"/>). For all other layouts,
         /// the default is to draw edges as line segments (<see cref="DotEdgeShape.Line"/>). Note that for these latter layouts,
-        /// if <see cref="DotEdgeShape.Spline"/> is used, this requires non-overlapping nodes (cf. <see cref="Overlap"/>).
+        /// if <see cref="DotEdgeShape.Spline"/> is used, this requires non-overlapping nodes (cf. <see href="http://www.graphviz.org/doc/info/attrs.html#d:overlap">overlap</see>).
         /// If FDP is used for layout and <see cref="DotEdgeShape.Compound"/> is used, then the edges are drawn
         /// to avoid clusters as well as nodes.
         /// </summary>
