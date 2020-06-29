@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Attributes.FontName = "Helvetica";
 
             // set the defaults for all nodes of the graph
-            graph.NodeDefaults.Shape = DotShape.Rectangle;
+            graph.NodeDefaults.Shape = DotNodeShape.Rectangle;
             graph.NodeDefaults.Style = DotStyle.Filled;
             graph.NodeDefaults.FontName = graph.Attributes.FontName;
             graph.NodeDefaults.FillColor = DotColorDefinition.Gradient(Color.Turquoise, Color.RoyalBlue);
@@ -92,7 +92,7 @@ namespace GiGraph.Dot.Examples.Basic
                 // a circular node with a wedged fill
                 sg.Nodes.Add("WEDGED", attrs =>
                 {
-                    attrs.Shape = DotShape.Circle;
+                    attrs.Shape = DotNodeShape.Circle;
 
                     // set wedged style
                     attrs.Style = DotStyle.Filled | DotStyle.Wedged;
@@ -115,7 +115,7 @@ namespace GiGraph.Dot.Examples.Basic
             {
                 sg.NodeDefaults.Color = Color.RoyalBlue;
                 sg.NodeDefaults.FillColor = Color.Orange;
-                sg.NodeDefaults.Shape = DotShape.Circle;
+                sg.NodeDefaults.Shape = DotNodeShape.Circle;
 
                 sg.EdgeDefaults.Color = Color.RoyalBlue;
 

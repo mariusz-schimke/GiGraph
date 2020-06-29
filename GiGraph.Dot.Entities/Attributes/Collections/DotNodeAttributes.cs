@@ -6,10 +6,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public class DotNodeAttributes : DotEntityAttributes, IDotNodeAttributes
     {
-        public virtual DotShape? Shape
+        public virtual DotNodeShape? Shape
         {
-            get => TryGetValueAs<DotShape>("shape", out var result) ? result : (DotShape?) null;
-            set => AddOrRemove("shape", value, v => new DotShapeAttribute("shape", v.Value));
+            get => TryGetValueAs<DotNodeShape>("shape", out var result) ? result : (DotNodeShape?) null;
+            set => AddOrRemove("shape", value, v => new DotNodeShapeAttribute("shape", v.Value));
         }
 
         public virtual int? Sides
@@ -60,10 +60,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : new DotDoubleAttribute("height", v.Value));
         }
 
-        public virtual DotFixedSize? FixedSize
+        public virtual DotNodeSizing? Sizing
         {
-            get => TryGetValueAs<DotFixedSize>("fixedsize", out var result) ? result : (DotFixedSize?) null;
-            set => AddOrRemove("fixedsize", value, v => new DotFixedSizeAttribute("fixedsize", v.Value));
+            get => TryGetValueAs<DotNodeSizing>("fixedsize", out var result) ? result : (DotNodeSizing?) null;
+            set => AddOrRemove("fixedsize", value, v => new DotNodeFixedSizeAttribute("fixedsize", v.Value));
         }
 
         public override void SetFilled(DotColorDefinition value)

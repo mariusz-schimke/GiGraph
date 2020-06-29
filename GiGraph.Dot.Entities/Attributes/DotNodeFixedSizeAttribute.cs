@@ -7,14 +7,14 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     /// The fixed size attribute of a node.
     /// </summary>
-    public class DotFixedSizeAttribute : DotAttribute<DotFixedSize>
+    public class DotNodeFixedSizeAttribute : DotAttribute<DotNodeSizing>
     {
         /// <summary>
         /// Creates a new instance of the attribute.
         /// </summary>
         /// <param name="key">The key of the attribute.</param>
         /// <param name="value">The value of the attribute.</param>
-        public DotFixedSizeAttribute(string key, DotFixedSize value)
+        public DotNodeFixedSizeAttribute(string key, DotNodeSizing value)
             : base(key, value)
         {
         }
@@ -23,13 +23,13 @@ namespace GiGraph.Dot.Entities.Attributes
         {
             switch (Value)
             {
-                case DotFixedSize.Yes:
+                case DotNodeSizing.Fixed:
                     return "true";
 
-                case DotFixedSize.No:
+                case DotNodeSizing.Auto:
                     return "false";
 
-                case DotFixedSize.Shape:
+                case DotNodeSizing.Shape:
                     return "shape";
 
                 default:

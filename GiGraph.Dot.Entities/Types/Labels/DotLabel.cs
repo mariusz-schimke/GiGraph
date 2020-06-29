@@ -24,9 +24,9 @@ namespace GiGraph.Dot.Entities.Types.Labels
 
         /// <summary>
         /// Creates a label initialized with formatted text. The text should be formatted and escaped according to the rules
-        /// described in the documentation available at <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString"/>.
-        /// If the text represents a record, its format should follow the rules available at
-        /// <see href="http://www.graphviz.org/doc/info/shapes.html#record"/>.
+        /// described in the <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">escape string documentation</see>.
+        /// If the text represents a record, its format should follow the rules described in the
+        /// <see href="http://www.graphviz.org/doc/info/shapes.html#record">record node documentation</see>.
         /// </summary>
         /// <param name="text">The escaped text to use as the label.</param>
         public static DotLabelString FromFormattedText(string text)
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
 
         /// <summary>
         /// Creates an HTML label. The HTML should be generated according to the rules
-        /// described in the documentation available at <see href="http://www.graphviz.org/doc/info/shapes.html#html"/>
+        /// described in the <see href="http://www.graphviz.org/doc/info/shapes.html#html">documentation</see>.
         /// </summary>
         /// <param name="html">The HTML to use as the label.</param>
         public static DotLabelHtml FromHtml(string html)

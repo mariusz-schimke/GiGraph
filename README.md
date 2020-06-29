@@ -125,7 +125,7 @@ namespace GiGraph.Examples
             graph.Attributes.FontName = "Helvetica";
 
             // set the defaults for all nodes of the graph
-            graph.NodeDefaults.Shape = DotShape.Rectangle;
+            graph.NodeDefaults.Shape = DotNodeShape.Rectangle;
             graph.NodeDefaults.Style = DotStyle.Filled;
             graph.NodeDefaults.FontName = graph.Attributes.FontName;
             graph.NodeDefaults.FillColor = DotColorDefinition.Gradient(Color.Turquoise, Color.RoyalBlue);
@@ -201,7 +201,7 @@ namespace GiGraph.Examples
                 // a circular node with a wedged fill
                 sg.Nodes.Add("WEDGED", attrs =>
                 {
-                    attrs.Shape = DotShape.Circle;
+                    attrs.Shape = DotNodeShape.Circle;
 
                     // set wedged style
                     attrs.Style = DotStyle.Filled | DotStyle.Wedged;
@@ -224,7 +224,7 @@ namespace GiGraph.Examples
             {
                 sg.NodeDefaults.Color = Color.RoyalBlue;
                 sg.NodeDefaults.FillColor = Color.Orange;
-                sg.NodeDefaults.Shape = DotShape.Circle;
+                sg.NodeDefaults.Shape = DotNodeShape.Circle;
 
                 sg.EdgeDefaults.Color = Color.RoyalBlue;
 
@@ -314,9 +314,9 @@ namespace GiGraph.Examples
             graph.Attributes.Compound = true;
 
             // set individual node styles
-            graph.Nodes.Add("Start").Attributes.Shape = DotShape.Circle;
-            graph.Nodes.Add("Decision").Attributes.Shape = DotShape.Diamond;
-            graph.Nodes.Add("Exit").Attributes.Shape = DotShape.DoubleCircle;
+            graph.Nodes.Add("Start").Attributes.Shape = DotNodeShape.Circle;
+            graph.Nodes.Add("Decision").Attributes.Shape = DotNodeShape.Diamond;
+            graph.Nodes.Add("Exit").Attributes.Shape = DotNodeShape.DoubleCircle;
 
 
             // --- define edges ---
@@ -595,7 +595,7 @@ There are also attributes based on the type of the value they specify for a give
 
 - **DotStringAttribute** – a string value attribute,
 
-- **DotShapeAttribute** – a shape attribute (node shape),
+- **DotNodeShapeAttribute** – a node shape attribute,
 
 - **DotColorAttribute** – a color attribute,
 
@@ -666,7 +666,7 @@ subgraph.Nodes.Add("d", "e", "f");
 subgraph = DotSubgraph.FromNodes(DotRank.Same, "d", "e", "f");
 
 // style settings are accepted as well for the elements inside
-subgraph.NodeDefaults.Shape = DotShape.Box;
+subgraph.NodeDefaults.Shape = DotNodeShape.Box;
 
 graph.Subgraphs.Add(subgraph);
 ```
@@ -697,7 +697,7 @@ cluster.Nodes.Add("d", "e", "f");
 cluster = DotCluster.FromNodes("My cluster 2", "e", "d", "f");
 
 // style settings are accepted as well for the elements inside
-cluster.NodeDefaults.Shape = DotShape.Box;
+cluster.NodeDefaults.Shape = DotNodeShape.Box;
 
 graph.Clusters.Add(cluster);
 ```
@@ -715,7 +715,7 @@ A node does not necessarily have to be added to the nodes collection of the grap
 graph.Nodes.Add("Foo", attrs =>
 {
     attrs.Label = "Hello World!";
-    attrs.Shape = DotShape.Hexagon;
+    attrs.Shape = DotNodeShape.Hexagon;
 });
 ```
 
@@ -724,7 +724,7 @@ The code above is equivalent to:
 ```c#
 var node = new DotNode("Foo");
 node.Attributes.Label = "Hello World!";
-node.Attributes.Shape = DotShape.Hexagon;
+node.Attributes.Shape = DotNodeShape.Hexagon;
 
 graph.Nodes.Add(node);
 ```
@@ -746,7 +746,7 @@ digraph
 
 #### Record nodes
 
-The shape of a node is determined by the *Shape* attribute. By default it is a circle with a label, but you may change it to any other shape accepted by the DOT visualization tool. The standard shapes are available under the *DotShape* enumeration, and two of them represent the record shape: *DotShape.Record* and *DotShape.RoundedRecord*. When you use any of these as the *Shape* attribute, you may assign a record label (*DotRecord*) to the node.
+The shape of a node is determined by the *Shape* attribute. By default it is a circle with a label, but you may change it to any other shape accepted by the DOT visualization tool. The standard shapes are available under the *DotNodeShape* enumeration, and two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use any of these as the *Shape* attribute, you may assign a record label (*DotRecord*) to the node.
 
 A *DotRecord* may be composed of textual fields (*DotRecordTextField*), as well as record fields (*DotRecord*), when you want to embed a record inside a record. A record or a sub-record may also be flipped to change the orientation of its fields. By default sub-records have an orientation opposite to their parent record. The orientation of the root record, on the other hand, is dependent on the layout direction of the graph.
 
@@ -771,7 +771,7 @@ using GiGraph.Dot.Extensions; // ToRecord
 
 graph.Nodes.Add("Foo", attrs =>
 {
-    attrs.Shape = DotShape.Record;
+    attrs.Shape = DotNodeShape.Record;
     attrs.Label = new DotRecord("Hello", "World!");
 });
 
@@ -890,7 +890,7 @@ graph.Nodes.Add("Bar").ToHtml
 // the code above is equivalent to
 graph.Nodes.Add("Bar", attrs =>
 {
-    attrs.Shape = DotShape.Plain;
+    attrs.Shape = DotNodeShape.Plain;
     attrs.Label = (DotLabelHtml) @"<TABLE BORDER=""0"" CELLBORDER=""1"" CELLSPACING=""0"" CELLPADDING=""4"">
         ... ommitted ...
         </TABLE>";
@@ -977,7 +977,7 @@ graph.Nodes.Add
     attrs =>
     {
         attrs.Color = Color.Orange;
-        attrs.Shape = DotShape.Hexagon;
+        attrs.Shape = DotNodeShape.Hexagon;
     },
     "Foo", "Bar", "Baz"
 );
@@ -988,7 +988,7 @@ You may also do it this way:
 ```c#
 var nodeGroup = new DotNodeGroup("Foo", "Bar", "Baz");
 nodeGroup.Attributes.Color = Color.Orange;
-nodeGroup.Attributes.Shape = DotShape.Hexagon;
+nodeGroup.Attributes.Shape = DotNodeShape.Hexagon;
 
 graph.Nodes.Add(nodeGroup);
 ```
@@ -1026,7 +1026,7 @@ graph.Nodes.AddRange
     node =>
     {
         node.Attributes.Color = Color.Orange;
-        node.Attributes.Shape = DotShape.Hexagon;
+        node.Attributes.Shape = DotNodeShape.Hexagon;
     },
     "Foo", "Bar", "Baz"
 );
