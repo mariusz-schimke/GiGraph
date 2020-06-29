@@ -192,7 +192,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         /// Sets the number of peripheries used in polygonal shapes (<see cref="Shape"/>). The default value is shape dependent, the minimum value is 0.
-        /// Note that user-defined shapes (<see href="http://www.graphviz.org/doc/info/shapes.html#epsf"/> are treated
+        /// Note that user-defined shapes (see <see href="http://www.graphviz.org/doc/info/shapes.html#epsf">documentation</see>) are treated
         /// as a form of box shape, so the default peripheries value is 1, and the user-defined shape will be drawn in a bounding rectangle.
         /// Setting peripheries to 0 will turn this off.
         /// </summary>
@@ -242,7 +242,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         /// If the object has a <see cref="Url"/> specified, this attribute determines which window of the browser is used for the URL.
-        /// See W3C documentation (<see href="http://www.w3.org/TR/html401/present/frames.html#adef-target"/>).
+        /// See <see href="http://www.w3.org/TR/html401/present/frames.html#adef-target">W3C documentation</see>.
         /// </summary>
         DotEscapableString UrlTarget { get; set; }
     }

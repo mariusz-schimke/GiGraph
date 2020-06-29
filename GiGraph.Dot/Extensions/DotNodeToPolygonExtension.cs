@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Extensions
         /// whose center is the center of the node (default: false).</param>
         /// <param name="peripheries">Sets the number of peripheries used in polygonal shapes (<see cref="IDotNodeAttributes.Shape"/>).
         /// The default value is shape dependent, the minimum value is 0.
-        /// Note that user-defined shapes (<see href="http://www.graphviz.org/doc/info/shapes.html#epsf"/> are treated
+        /// Note that <see href="http://www.graphviz.org/doc/info/shapes.html#epsf">user-defined shapes</see> are treated
         /// as a form of box shape, so the default peripheries value is 1, and the user-defined shape will be drawn in a bounding rectangle.
         /// Setting peripheries to 0 will turn this off.</param>
         /// <param name="orientation">Angle, in degrees, used to rotate polygon node shapes (<see cref="IDotNodeAttributes.Shape"/> = <see cref="DotShape.Polygon"/>).

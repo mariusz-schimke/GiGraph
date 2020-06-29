@@ -11,7 +11,8 @@ namespace GiGraph.Dot.Extensions
     {
         /// <summary>
         /// Converts the current node to a HTML-like node by assigning it an HTML label.
-        /// See the documentation to learn what HTML grammar is supported (<see href="http://www.graphviz.org/doc/info/shapes.html#html"/>).
+        /// See the <see href="http://www.graphviz.org/doc/info/shapes.html#html">documentation</see>
+        /// to learn what HTML grammar is supported.
         /// </summary>
         /// <param name="node">The node whose HTML label to set.</param>
         /// <param name="html">The HTML to assign to the label.</param>

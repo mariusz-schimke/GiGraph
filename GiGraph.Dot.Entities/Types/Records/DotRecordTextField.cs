@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Types.Records
 {
     /// <summary>
     /// Represents a textual field of a record (<see cref="DotRecord"/>).
-    /// A record can be used as the label of a record-based node (<see href="http://www.graphviz.org/doc/info/shapes.html#record"/>). 
+    /// A record can be used as the label of a <see href="http://www.graphviz.org/doc/info/shapes.html#record">record-based node</see>. 
     /// </summary>
     public class DotRecordTextField : DotRecordField
     {
