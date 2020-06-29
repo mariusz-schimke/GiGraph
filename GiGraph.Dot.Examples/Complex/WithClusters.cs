@@ -16,9 +16,9 @@ namespace GiGraph.Dot.Examples.Complex
             graph.Attributes.Compound = true;
 
             // set individual node styles
-            graph.Nodes.Add("Start").Attributes.Shape = DotShape.Circle;
-            graph.Nodes.Add("Decision").Attributes.Shape = DotShape.Diamond;
-            graph.Nodes.Add("Exit").Attributes.Shape = DotShape.DoubleCircle;
+            graph.Nodes.Add("Start").Attributes.Shape = DotNodeShape.Circle;
+            graph.Nodes.Add("Decision").Attributes.Shape = DotNodeShape.Diamond;
+            graph.Nodes.Add("Exit").Attributes.Shape = DotNodeShape.DoubleCircle;
 
 
             // --- define edges ---

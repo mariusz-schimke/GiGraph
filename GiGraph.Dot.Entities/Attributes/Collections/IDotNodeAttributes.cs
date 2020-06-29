@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <para>
         ///     Gets or sets the label to display on the node. It can be a string, an HTML (<see cref="DotLabelHtml"/>),
         ///     or a record (<see cref="DotLabelRecord"/>) for a record-based node
-        ///     (<see cref="Shape"/> = <see cref="DotShape.Record"/> or <see cref="Shape"/> = <see cref="DotShape.RoundedRecord"/>).
+        ///     (<see cref="Shape"/> = <see cref="DotNodeShape.Record"/> or <see cref="Shape"/> = <see cref="DotNodeShape.RoundedRecord"/>).
         /// </para>
         /// <para>
         ///     When assigning a value to this property, an implicit conversion is performed.
@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <para>
         ///     Gets or sets the color used to fill the background of the node, assuming that <see cref="Style"/> is <see cref="DotStyle.Filled"/>.
         ///     If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used. 
-        ///     If it is not defined too, the default is used, except for <see cref="Shape"/> of <see cref="DotShape.Point"/>,
+        ///     If it is not defined too, the default is used, except for <see cref="Shape"/> of <see cref="DotNodeShape.Point"/>,
         ///     or when the output format is MIF, which use black by default.
         /// </para>
         /// <para>
@@ -87,9 +87,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         double? PenWidth { get; set; }
 
         /// <summary>
-        /// Gets or sets the shape of the node (default: <see cref="DotShape.Ellipse"/>).
+        /// Gets or sets the shape of the node (default: <see cref="DotNodeShape.Ellipse"/>).
         /// </summary>
-        DotShape? Shape { get; set; }
+        DotNodeShape? Shape { get; set; }
 
         /// <summary>
         /// <para>
@@ -199,24 +199,24 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         int? Peripheries { get; set; }
 
         /// <summary>
-        /// Number of sides if <see cref="Shape"/> is set to <see cref="DotShape.Polygon"/> (default: 4, minimum: 0).
+        /// Number of sides if <see cref="Shape"/> is set to <see cref="DotNodeShape.Polygon"/> (default: 4, minimum: 0).
         /// </summary>
         int? Sides { get; set; }
 
         /// <summary>
-        /// Skew factor for <see cref="Shape"/> set to <see cref="DotShape.Polygon"/> (default: 0, minimum: -100).
+        /// Skew factor for <see cref="Shape"/> set to <see cref="DotNodeShape.Polygon"/> (default: 0, minimum: -100).
         /// Positive values skew top of polygon to right; negative to left.
         /// </summary>
         double? Skew { get; set; }
 
         /// <summary>
-        /// Distortion factor for <see cref="Shape"/> set to <see cref="DotShape.Polygon"/> (default: 0, minimum: -100).
+        /// Distortion factor for <see cref="Shape"/> set to <see cref="DotNodeShape.Polygon"/> (default: 0, minimum: -100).
         /// Positive values cause top part to be larger than bottom; negative values do the opposite.
         /// </summary>
         double? Distortion { get; set; }
 
         /// <summary>
-        /// Angle, in degrees, used to rotate polygon node shapes (<see cref="Shape"/> = <see cref="DotShape.Polygon"/>).
+        /// Angle, in degrees, used to rotate polygon node shapes (<see cref="Shape"/> = <see cref="DotNodeShape.Polygon"/>).
         /// For any number of polygon sides, 0 degrees rotation results in a flat base. Default: 0, maximum: 360.
         /// </summary>
         double? Orientation { get; set; }

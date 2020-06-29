@@ -85,9 +85,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotColorDefinitionAttribute(key, value));
         }
 
-        public virtual DotShapeAttribute Set(string key, DotShape value)
+        public virtual DotNodeShapeAttribute Set(string key, DotNodeShape value)
         {
-            return Set(new DotShapeAttribute(key, value));
+            return Set(new DotNodeShapeAttribute(key, value));
         }
 
         public virtual DotEdgeShapeAttribute Set(string key, DotEdgeShape value)
