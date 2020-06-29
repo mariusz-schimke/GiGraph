@@ -3,22 +3,22 @@
 namespace GiGraph.Dot.Entities.Attributes.Enums
 {
     /// <summary>
-    /// The values valid for the <see cref="IDotNodeAttributes.FixedSize"/> node attribute.
+    /// The values valid for the <see cref="IDotNodeAttributes.Sizing"/> node attribute.
     /// </summary>
-    public enum DotFixedSize
+    public enum DotNodeSizing
     {
         /// <summary>
         /// The node size is specified by the values of the width and height attributes only and is not expanded to contain the text label.
         /// There will be a warning if the label (with margin) cannot fit within these limits.
         /// </summary>
-        Yes,
+        Fixed,
 
         /// <summary>
         /// The size of a node is determined by smallest width and height needed to contain its label and image, if any,
         /// with a margin specified by the margin attribute. The width and height must also be at least as large as the sizes
         /// specified by the width and height attributes, which specify the minimum values for these parameters.
         /// </summary>
-        No,
+        Automatic,
 
         /// <summary>
         /// The width and height attributes also determine the size of the node shape, but the label can be much larger.
