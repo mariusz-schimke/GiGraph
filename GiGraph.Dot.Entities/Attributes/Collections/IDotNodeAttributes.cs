@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <para>
         ///     Gets or sets the label to display on the node. It can be a string, an HTML (<see cref="DotLabelHtml"/>),
         ///     or a record (<see cref="DotLabelRecord"/>) for a record-based node
-        ///     (<see cref="Shape"/> = <see cref="DotShape.Record"/> or <see cref="Shape"/> = <see cref="DotShape.RoundedRecord"/>).
+        ///     (<see cref="Shape"/> = <see cref="DotNodeShape.Record"/> or <see cref="Shape"/> = <see cref="DotNodeShape.RoundedRecord"/>).
         /// </para>
         /// <para>
         ///     When assigning a value to this property, an implicit conversion is performed.
@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <para>
         ///     Gets or sets the color used to fill the background of the node, assuming that <see cref="Style"/> is <see cref="DotStyle.Filled"/>.
         ///     If <see cref="FillColor"/> is not defined, <see cref="Color"/> is used. 
-        ///     If it is not defined too, the default is used, except for <see cref="Shape"/> of <see cref="DotShape.Point"/>,
+        ///     If it is not defined too, the default is used, except for <see cref="Shape"/> of <see cref="DotNodeShape.Point"/>,
         ///     or when the output format is MIF, which use black by default.
         /// </para>
         /// <para>
@@ -87,9 +87,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         double? PenWidth { get; set; }
 
         /// <summary>
-        /// Gets or sets the shape of the node (default: <see cref="DotShape.Ellipse"/>).
+        /// Gets or sets the shape of the node (default: <see cref="DotNodeShape.Ellipse"/>).
         /// </summary>
-        DotShape? Shape { get; set; }
+        DotNodeShape? Shape { get; set; }
 
         /// <summary>
         /// <para>
@@ -108,9 +108,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <summary>
         /// <para>
         /// Width of node, in inches (default: 0.75, minimum: 0.01). This is taken as the initial, minimum width of the node.
-        /// If <see cref="FixedSize"/> is true, this will be the final width of the node. Otherwise, if the node label requires
-        /// more width to fit, the node's width will be increased to contain the label. Note also that, if the output format is DOT,
-        /// the value given to width will be the final value.
+        /// If <see cref="Sizing"/> is <see cref="DotNodeSizing.Fixed"/>, this will be the final width of the node. Otherwise,
+        /// if the node label requires more width to fit, the node's width will be increased to contain the label. Note also that,
+        /// if the output format is DOT, the value given to width will be the final value.
         /// </para>
         /// <para>
         /// If the node shape is regular, the width and height are made identical. In this case, if either the width or the height
@@ -123,9 +123,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <summary>
         /// <para>
         /// Height of node, in inches (default: 0.5, minimum: 0.02). This is taken as the initial, minimum height of the node.
-        /// If <see cref="FixedSize"/> is true, this will be the final height of the node. Otherwise, if the node label requires
-        /// more height to fit, the node's height will be increased to contain the label. Note also that, if the output format is DOT,
-        /// the value given to height will be the final value.
+        /// If <see cref="Sizing"/> is <see cref="DotNodeSizing.Fixed"/>, this will be the final height of the node. Otherwise,
+        /// if the node label requires more height to fit, the node's height will be increased to contain the label. Note also that,
+        /// if the output format is DOT, the value given to height will be the final value.
         /// </para>
         /// <para>
         /// If the node shape is regular, the width and height are made identical. In this case, if either the width or the height
@@ -136,9 +136,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         double? Height { get; set; }
 
         /// <summary>
-        /// Gets or sets the value indicating how the size of the node is determined (default: <see cref="DotFixedSize.No"/>).
+        /// Gets or sets the value indicating how the size of the node is determined (default: <see cref="DotNodeSizing.Auto"/>).
         /// </summary>
-        DotFixedSize? FixedSize { get; set; }
+        DotNodeSizing? Sizing { get; set; }
 
         /// <summary>
         /// Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black"/>).
@@ -192,31 +192,31 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         /// Sets the number of peripheries used in polygonal shapes (<see cref="Shape"/>). The default value is shape dependent, the minimum value is 0.
-        /// Note that user-defined shapes (<see href="http://www.graphviz.org/doc/info/shapes.html#epsf"/> are treated
+        /// Note that user-defined shapes (see <see href="http://www.graphviz.org/doc/info/shapes.html#epsf">documentation</see>) are treated
         /// as a form of box shape, so the default peripheries value is 1, and the user-defined shape will be drawn in a bounding rectangle.
         /// Setting peripheries to 0 will turn this off.
         /// </summary>
         int? Peripheries { get; set; }
 
         /// <summary>
-        /// Number of sides if <see cref="Shape"/> is set to <see cref="DotShape.Polygon"/> (default: 4, minimum: 0).
+        /// Number of sides if <see cref="Shape"/> is set to <see cref="DotNodeShape.Polygon"/> (default: 4, minimum: 0).
         /// </summary>
         int? Sides { get; set; }
 
         /// <summary>
-        /// Skew factor for <see cref="Shape"/> set to <see cref="DotShape.Polygon"/> (default: 0, minimum: -100).
+        /// Skew factor for <see cref="Shape"/> set to <see cref="DotNodeShape.Polygon"/> (default: 0, minimum: -100).
         /// Positive values skew top of polygon to right; negative to left.
         /// </summary>
         double? Skew { get; set; }
 
         /// <summary>
-        /// Distortion factor for <see cref="Shape"/> set to <see cref="DotShape.Polygon"/> (default: 0, minimum: -100).
+        /// Distortion factor for <see cref="Shape"/> set to <see cref="DotNodeShape.Polygon"/> (default: 0, minimum: -100).
         /// Positive values cause top part to be larger than bottom; negative values do the opposite.
         /// </summary>
         double? Distortion { get; set; }
 
         /// <summary>
-        /// Angle, in degrees, used to rotate polygon node shapes (<see cref="Shape"/> = <see cref="DotShape.Polygon"/>).
+        /// Angle, in degrees, used to rotate polygon node shapes (<see cref="Shape"/> = <see cref="DotNodeShape.Polygon"/>).
         /// For any number of polygon sides, 0 degrees rotation results in a flat base. Default: 0, maximum: 360.
         /// </summary>
         double? Orientation { get; set; }
@@ -242,7 +242,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         /// If the object has a <see cref="Url"/> specified, this attribute determines which window of the browser is used for the URL.
-        /// See W3C documentation (<see href="http://www.w3.org/TR/html401/present/frames.html#adef-target"/>).
+        /// See <see href="http://www.w3.org/TR/html401/present/frames.html#adef-target">W3C documentation</see>.
         /// </summary>
         DotEscapableString UrlTarget { get; set; }
     }
