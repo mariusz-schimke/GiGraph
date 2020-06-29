@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         /// with a margin specified by the margin attribute. The width and height must also be at least as large as the sizes
         /// specified by the width and height attributes, which specify the minimum values for these parameters.
         /// </summary>
-        Automatic,
+        Auto,
 
         /// <summary>
         /// The width and height attributes also determine the size of the node shape, but the label can be much larger.

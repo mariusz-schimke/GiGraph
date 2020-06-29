@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 case DotNodeSizing.Fixed:
                     return "true";
 
-                case DotNodeSizing.Automatic:
+                case DotNodeSizing.Auto:
                     return "false";
 
                 case DotNodeSizing.Shape:
