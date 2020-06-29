@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         Auto,
 
         /// <summary>
-        /// The width and height attributes also determine the size of the node shape, but the label can be much larger.
+        /// The width and height attributes determine the size of the node shape, but the label can be much larger.
         /// Both the label and shape sizes are used when avoiding node overlap, but all edges to the node ignore the label
         /// and only contact the node shape. No warning is given if the label is too large.
         /// </summary>
