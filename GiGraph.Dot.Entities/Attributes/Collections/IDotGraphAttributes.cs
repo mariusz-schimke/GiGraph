@@ -112,6 +112,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotRankDirection? LayoutDirection { get; set; }
 
         /// <summary>
+        /// Controls how, and if, edges are represented. By default, the attribute is unset. How this is interpreted depends on the layout.
+        /// For DOT, the default is to draw edges as splines (<see cref="DotEdgeShape.Spline"/>). For all other layouts,
+        /// the default is to draw edges as line segments (<see cref="DotEdgeShape.Line"/>). Note that for these latter layouts,
+        /// if <see cref="DotEdgeShape.Spline"/> is used, this requires non-overlapping nodes (cf. <see cref="Overlap"/>).
+        /// If FDP is used for layout and <see cref="DotEdgeShape.Compound"/> is used, then the edges are drawn
+        /// to avoid clusters as well as nodes.
+        /// </summary>
+        DotEdgeShape? EdgeShape { get; set; }
+
+        /// <summary>
         /// <para>
         ///     Sets the style of the graph (default: null). See the descriptions of individual <see cref="DotStyle"/> values
         ///     to learn which styles are applicable to this element type.

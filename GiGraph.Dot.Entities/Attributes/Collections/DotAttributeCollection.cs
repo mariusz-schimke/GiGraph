@@ -90,6 +90,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotShapeAttribute(key, value));
         }
 
+        public virtual DotEdgeShapeAttribute Set(string key, DotEdgeShape value)
+        {
+            return Set(new DotEdgeShapeAttribute(key, value));
+        }
+
         public virtual DotFixedSizeAttribute Set(string key, DotFixedSize value)
         {
             return Set(new DotFixedSizeAttribute(key, value));

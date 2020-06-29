@@ -11,6 +11,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("rankdir", value, v => new DotRankDirectionAttribute("rankdir", v.Value));
         }
 
+        public virtual DotEdgeShape? EdgeShape
+        {
+            get => TryGetValueAs<DotEdgeShape>("splines", out var result) ? result : (DotEdgeShape?) null;
+            set => AddOrRemove("splines", value, v => new DotEdgeShapeAttribute("splines", v.Value));
+        }
+
         public virtual bool? ConcentrateEdges
         {
             get => TryGetValueAs<bool>("concentrate", out var result) ? result : (bool?) null;
