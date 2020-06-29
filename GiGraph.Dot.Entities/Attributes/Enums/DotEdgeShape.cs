@@ -26,13 +26,18 @@
         Curved,
 
         /// <summary>
-        /// Edges are routed as polylines of axis-aligned segments.
+        /// Edges are routed as polylines of axis-aligned segments. Currently, the routing does not handle ports or, in DOT, edge labels.
         /// </summary>
         Ortho,
 
         /// <summary>
         /// Edges are drawn as splines routed around nodes.
         /// </summary>
-        Spline
+        Spline,
+
+        /// <summary>
+        /// Edges are drawn to avoid clusters as well as nodes.
+        /// </summary>
+        Compound
     }
 }
