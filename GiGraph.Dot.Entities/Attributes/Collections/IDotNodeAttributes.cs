@@ -136,7 +136,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         double? Height { get; set; }
 
         /// <summary>
-        /// Gets or sets the value indicating how the size of the node is determined (default: <see cref="DotNodeSizing.Automatic"/>).
+        /// Gets or sets the value indicating how the size of the node is determined (default: <see cref="DotNodeSizing.Auto"/>).
         /// </summary>
         DotNodeSizing? Sizing { get; set; }
 
