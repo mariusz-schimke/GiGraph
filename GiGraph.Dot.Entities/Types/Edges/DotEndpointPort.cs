@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Types.Edges
     {
         /// <summary>
         /// Gets or sets a value that modifies the edge placement to aim for the specified port. If specified,
-        /// the corresponding node must either have a record shape (<see cref="DotShape.Record"/> or <see cref="DotShape.RoundedRecord"/>)
+        /// the corresponding node must either have a record shape (<see cref="DotNodeShape.Record"/> or <see cref="DotNodeShape.RoundedRecord"/>)
         /// with one of its fields having the given port name, or have an HTML-like label, one of whose components
         /// has a PORT attribute set to the specified port name.
         /// </summary>
@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Entities.Types.Edges
         /// </summary>
         /// <param name="name">
         /// Determines the edge placement to aim for the specified port. The corresponding node
-        /// must either have record shape (<see cref="DotShape.Record"/>, <see cref="DotShape.RoundedRecord"/>)
+        /// must either have record shape (<see cref="DotNodeShape.Record"/>, <see cref="DotNodeShape.RoundedRecord"/>)
         /// with one of its fields having the given port name, or have an HTML-like label, one of whose components
         /// has a PORT attribute set to the specified port name.
         /// </param>
@@ -62,7 +62,7 @@ namespace GiGraph.Dot.Entities.Types.Edges
         /// </summary>
         /// <param name="name">
         /// Determines the edge placement to aim for the specified port. The corresponding node
-        /// must either have record shape (<see cref="DotShape.Record"/>, <see cref="DotShape.RoundedRecord"/>)
+        /// must either have record shape (<see cref="DotNodeShape.Record"/>, <see cref="DotNodeShape.RoundedRecord"/>)
         /// with one of its fields having the given port name, or have an HTML-like label, one of whose components
         /// has a PORT attribute set to the specified port name.
         /// </param>

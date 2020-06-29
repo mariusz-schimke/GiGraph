@@ -6,10 +6,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public class DotNodeAttributes : DotEntityAttributes, IDotNodeAttributes
     {
-        public virtual DotShape? Shape
+        public virtual DotNodeShape? Shape
         {
-            get => TryGetValueAs<DotShape>("shape", out var result) ? result : (DotShape?) null;
-            set => AddOrRemove("shape", value, v => new DotShapeAttribute("shape", v.Value));
+            get => TryGetValueAs<DotNodeShape>("shape", out var result) ? result : (DotNodeShape?) null;
+            set => AddOrRemove("shape", value, v => new DotNodeShapeAttribute("shape", v.Value));
         }
 
         public virtual int? Sides

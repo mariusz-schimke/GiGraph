@@ -109,7 +109,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>
         /// <param name="value">The value of the attribute to include in the collection.</param>
-        DotShapeAttribute Set(string key, DotShape value);
+        DotNodeShapeAttribute Set(string key, DotNodeShape value);
 
         /// <summary>
         /// Adds or replaces the specified edge shape attribute in the collection.

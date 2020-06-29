@@ -218,13 +218,13 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             graph.Nodes.Add("node3", attrs =>
             {
-                attrs.Shape = DotShape.Assembly;
+                attrs.Shape = DotNodeShape.Assembly;
                 attrs.Style = DotStyle.Bold;
             });
 
             graph.Nodes.Add(attrs =>
             {
-                attrs.Shape = DotShape.Box;
+                attrs.Shape = DotNodeShape.Box;
                 attrs.Style = DotStyle.Bold | DotStyle.Dashed;
             }, "node1", "node2");
 

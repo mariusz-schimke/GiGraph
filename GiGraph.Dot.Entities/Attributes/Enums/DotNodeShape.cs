@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
     /// The node shape.
     /// <see href="https://www.graphviz.org/doc/info/shapes.html">View how individual shapes are visualized</see>.
     /// </summary>
-    public enum DotShape
+    public enum DotNodeShape
     {
         /// <summary>
         /// No shape, just label. Synonymous to <see cref="PlainText"/>.
