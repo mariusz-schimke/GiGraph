@@ -9,7 +9,7 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Records
 {
     /// <summary>
-    /// Represents a record that can be used as the label of a record-based node (<see href="http://www.graphviz.org/doc/info/shapes.html#record"/>). 
+    /// Represents a record that can be used as the label of a <see href="http://www.graphviz.org/doc/info/shapes.html#record">record-based node</see>. 
     /// </summary>
     public class DotRecord : DotRecordField
     {
