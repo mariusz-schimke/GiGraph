@@ -60,6 +60,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotLabelAttribute(key, value));
         }
 
+        public virtual DotHorizontalLabelAlignmentAttribute Set(string key, DotHorizontalLabelAlignment value)
+        {
+            return Set(new DotHorizontalLabelAlignmentAttribute(key, value));
+        }
+
         public virtual DotIntAttribute Set(string key, int value)
         {
             return Set(new DotIntAttribute(key, value));

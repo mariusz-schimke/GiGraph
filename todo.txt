@@ -1,5 +1,5 @@
 Road map:
-1. Gradually add support for all available attributes.
+1. Gradually add support for all available attributes (headclip, tailclip, image, imagepath etc., rotate, truecolor, pack, packmode).
 2. Verify the validity of XML documentations.
 
 Other (always valid): 
