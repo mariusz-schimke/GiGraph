@@ -13,7 +13,7 @@
     <icon>content\icon.png</icon>
     
     <projectUrl>https://github.com/mariusz-schimke/GiGraph</projectUrl>
-    <repository type="git" url="https://github.com/mariusz-schimke/GiGraph.git" branch="master" commit="3d803d92febee4c1d99d6e4f269c6cdaec1b12d7" />
+    <repository type="git" url="https://github.com/mariusz-schimke/GiGraph.git" branch="master" commit="e9b9c9a9d5aad264694bf4534535fa79babbe972" />
 
     <license type="file">content\LICENSE.txt</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -22,10 +22,18 @@
     
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that can be visualized and/or converted to an image with external tools. A handy one is a plugin for Visual Studio Code, named Graphviz Preview. There are also online tools like www.webgraphviz.com, where you can paste the script to view your graph.</description>
     
-    <releaseNotes>- Color list attribute support added, which means that the root graph, nodes, and clusters may have a gradient or a multicolor fill now. It is also possible to generate multicolor edges as parallel splines or as multicolor series.
-- Added support for several other attributes: fontname, fontpath, fontsize, fontcolor, penwidth, pencolor, compound, lhead, ltail, headport, tailport, concentrate (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
-- New output generation options.
+    <releaseNotes>- Record and HTML nodes support added. Now you can create nodes composed of multiple fields (cells) or of HTML tables, by assigning them a record label or an HTML label.
+
+- Added support for HTML edge labels (as HTML tables).
+
+- Added support for attributes: charset, sides, orientation, skew, distortion, regular, width, height, fixedsize, peripheries, splines, nodesep, labeljust, labelloc, URL, headURL/headhref, headtarget, headtooltip, tailURL/tailhref, tailtarget, tailtooltip, labelURL/labelhref, labeltarget, labeltooltip, edgeURL/edgehref, edgetarget, edgetooltip, xlabel, forcelabels, comment (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
+
+- Added extension/helper methods for node: ToRecord, ToRoundedRecord, ToHtml, ToPolygon; SetFilled.
+
+- It is possible now to annotate any element (annotations are rendered in the output DOT script as comments next to the element).
+
 - Refactoring.
+
 
 See also https://github.com/mariusz-schimke/GiGraph/releases</releaseNotes>
   </metadata>
