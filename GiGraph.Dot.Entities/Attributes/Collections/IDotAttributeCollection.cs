@@ -77,6 +77,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotHorizontalLabelAlignmentAttribute Set(string key, DotHorizontalLabelAlignment value);
 
         /// <summary>
+        /// Adds or replaces the specified vertical label alignment attribute in the collection.
+        /// </summary>
+        /// <param name="key">The key of the attribute to include in the collection.</param>
+        /// <param name="value">The value of the attribute to include in the collection.</param>
+        DotVerticalLabelAlignmentAttribute Set(string key, DotVerticalLabelAlignment value);
+
+        /// <summary>
         /// Adds or replaces the specified integer value attribute in the collection.
         /// </summary>
         /// <param name="key">The key of the attribute to include in the collection.</param>

@@ -93,6 +93,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("labeljust", value, v => new DotHorizontalLabelAlignmentAttribute("labeljust", v.Value));
         }
 
+        public virtual DotVerticalLabelAlignment? VerticalLabelAlignment
+        {
+            get => TryGetValueAs<DotVerticalLabelAlignment>("labelloc", out var result) ? result : (DotVerticalLabelAlignment?) null;
+            set => AddOrRemove("labelloc", value, v => new DotVerticalLabelAlignmentAttribute("labelloc", v.Value));
+        }
+
         public virtual DotEscapableString Tooltip
         {
             get => TryGetValueAsEscapableString("tooltip");
