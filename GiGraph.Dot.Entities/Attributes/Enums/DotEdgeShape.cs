@@ -28,7 +28,7 @@
         /// <summary>
         /// Edges are routed as polylines of axis-aligned segments. Currently, the routing does not handle ports or, in DOT, edge labels.
         /// </summary>
-        Ortho,
+        Orthogonal,
 
         /// <summary>
         /// Edges are drawn as splines routed around nodes.
