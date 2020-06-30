@@ -30,6 +30,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotHorizontalLabelAlignment? HorizontalLabelAlignment { get; set; }
 
         /// <summary>
+        /// Vertical placement of the label (default: <see cref="DotVerticalLabelAlignment.Bottom"/>;
+        /// only <see cref="DotVerticalLabelAlignment.Top"/> and <see cref="DotVerticalLabelAlignment.Bottom"/> are allowed).
+        /// Note that a subgraph inherits attributes from its parent. Thus, if the root graph sets this attribute to
+        /// <see cref="DotVerticalLabelAlignment.Bottom"/>, the subgraph inherits this value.
+        /// </summary>
+        DotVerticalLabelAlignment? VerticalLabelAlignment { get; set; }
+
+        /// <summary>
         /// If true, all node <see cref="IDotNodeAttributes.ExternalLabel"/> and edge <see cref="IDotEdgeAttributes.ExternalLabel"/>
         /// attributes are placed, even if there is some overlap with nodes or other labels (default: true).
         /// </summary>
