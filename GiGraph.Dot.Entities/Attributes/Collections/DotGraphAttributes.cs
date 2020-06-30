@@ -1,3 +1,4 @@
+using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 
@@ -45,6 +46,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetValueAs<string>("charset", out var result) ? result : null;
             set => AddOrRemove("charset", value, v => new DotStringAttribute("charset", v));
+        }
+
+        public virtual double? NodeSpacing
+        {
+            get => TryGetValueAs<double>("nodesep", out var result) ? result : (double?) null;
+            set => AddOrRemove("nodesep", value, v => v.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(FontSize), v.Value, "Node spacing must be greater than or equal to 0.")
+                : new DotDoubleAttribute("nodesep", v.Value));
         }
 
         public override void SetFilled(DotColorDefinition value) => BackgroundColor = value;

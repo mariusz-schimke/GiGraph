@@ -226,5 +226,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// See <see href="http://www.w3.org/TR/html401/present/frames.html#adef-target">W3C documentation</see>.
         /// </summary>
         DotEscapableString UrlTarget { get; set; }
+
+        /// <summary>
+        /// <para>
+        /// In DOT, this specifies the minimum space between two adjacent nodes in the same rank, in inches.
+        /// </para>
+        /// <para>
+        /// For other layouts, this affects the spacing between loops on a single node, or multiedges between a pair of nodes.
+        /// </para>
+        /// <para>
+        /// Default: 0.25, minimum: 0.02.
+        /// </para>
+        /// </summary>
+        double? NodeSpacing { get; set; }
     }
 }
