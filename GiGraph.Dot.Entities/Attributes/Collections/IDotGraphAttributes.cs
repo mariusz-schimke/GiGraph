@@ -23,6 +23,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotLabel Label { get; set; }
 
         /// <summary>
+        /// Justification for graph and cluster labels. Note that a subgraph inherits attributes from its parent.
+        /// Thus, if the root graph sets this attribute to <see cref="DotHorizontalLabelAlignment.Left"/>,
+        /// the subgraph inherits this value. Default: <see cref="DotHorizontalLabelAlignment.Center"/>.
+        /// </summary>
+        DotHorizontalLabelAlignment? HorizontalLabelAlignment { get; set; }
+
+        /// <summary>
         /// If true, all node <see cref="IDotNodeAttributes.ExternalLabel"/> and edge <see cref="IDotEdgeAttributes.ExternalLabel"/>
         /// attributes are placed, even if there is some overlap with nodes or other labels (default: true).
         /// </summary>
