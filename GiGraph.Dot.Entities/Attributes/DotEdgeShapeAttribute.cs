@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 case DotEdgeShape.Curved:
                     return "curved";
 
-                case DotEdgeShape.Ortho:
+                case DotEdgeShape.Orthogonal:
                     return "ortho";
 
                 case DotEdgeShape.Spline:
