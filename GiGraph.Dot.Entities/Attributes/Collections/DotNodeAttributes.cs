@@ -1,6 +1,5 @@
 using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -64,12 +63,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetValueAs<DotNodeSizing>("fixedsize", out var result) ? result : (DotNodeSizing?) null;
             set => AddOrRemove("fixedsize", value, v => new DotNodeFixedSizeAttribute("fixedsize", v.Value));
-        }
-
-        public override void SetFilled(DotColorDefinition value)
-        {
-            Style = Style.GetValueOrDefault(DotStyle.Filled) | DotStyle.Filled;
-            FillColor = value;
         }
     }
 }
