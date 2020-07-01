@@ -1,6 +1,5 @@
 using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -55,7 +54,5 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 ? throw new ArgumentOutOfRangeException(nameof(FontSize), v.Value, "Node spacing must be greater than or equal to 0.")
                 : new DotDoubleAttribute("nodesep", v.Value));
         }
-
-        public override void SetFilled(DotColorDefinition value) => BackgroundColor = value;
     }
 }
