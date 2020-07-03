@@ -5,13 +5,16 @@
     /// </summary>
     public class DotCurlyBracketsEscaper : IDotTextEscaper
     {
+        string IDotTextEscaper.Escape(string value)
+        {
+            return Escape(value);
+        }
+
         public static string Escape(string value)
         {
             return value
                  ?.Replace("{", @"\{")
                  ?.Replace("}", @"\}");
         }
-
-        string IDotTextEscaper.Escape(string value) => Escape(value);
     }
 }

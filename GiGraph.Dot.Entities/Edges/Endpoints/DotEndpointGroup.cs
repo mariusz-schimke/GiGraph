@@ -1,7 +1,7 @@
-﻿using GiGraph.Dot.Entities.Subgraphs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Subgraphs;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
@@ -14,11 +14,6 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     /// </summary>
     public class DotEndpointGroup : DotEndpointDefinition
     {
-        /// <summary>
-        /// Gets the subgraph whose nodes represent the endpoints of multiple edges.
-        /// </summary>
-        public virtual DotSubgraph Subgraph { get; }
-
         /// <summary>
         /// Creates a new endpoint group initialized with a subgraph.
         /// </summary>
@@ -47,6 +42,11 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
             : this(DotSubgraph.FromNodes(nodeIds))
         {
         }
+
+        /// <summary>
+        /// Gets the subgraph whose nodes represent the endpoints of multiple edges.
+        /// </summary>
+        public virtual DotSubgraph Subgraph { get; }
 
         protected override string GetOrderingKey()
         {

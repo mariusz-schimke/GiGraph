@@ -9,19 +9,19 @@ namespace GiGraph.Dot.Entities
     public interface IDotFillable
     {
         /// <summary>
-        /// Sets the fill color of the current element.
+        /// Sets the fill color of the element.
         /// </summary>
         /// <param name="color">The color to set.</param>
         void SetFilled(Color color);
 
         /// <summary>
-        /// Sets the fill color of the current element.
+        /// Sets the fill color of the element.
         /// </summary>
         /// <param name="colorList">The color list to set.</param>
         void SetFilled(DotColorList colorList);
 
         /// <summary>
-        /// Sets the fill color of the current element.
+        /// Sets the fill color of the element.
         /// </summary>
         /// <param name="color">The color to set (<see cref="Color"/>, <see cref="DotColor"/>, or <see cref="DotColorList"/>).</param>
         void SetFilled(DotColorDefinition color);

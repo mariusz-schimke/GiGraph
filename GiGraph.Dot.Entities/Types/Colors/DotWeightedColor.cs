@@ -11,12 +11,6 @@ namespace GiGraph.Dot.Entities.Types.Colors
     public class DotWeightedColor : DotColor
     {
         /// <summary>
-        /// The weight of the color in the range 0 ≤ <see cref="Weight"/> ≤ 1.
-        /// Represents the proportion of the area covered with that color.
-        /// </summary>
-        public virtual double Weight { get; }
-
-        /// <summary>
         /// Creates a new instance initialized with a color and a weight.
         /// </summary>
         /// <param name="color">The color to initialize the instance with.</param>
@@ -30,7 +24,16 @@ namespace GiGraph.Dot.Entities.Types.Colors
                 : throw new ArgumentException($"The color weight has to be in the range 0 ≤ {nameof(weight)} ≤ 1.", nameof(weight));
         }
 
-        protected internal override double? GetWeight() => Weight;
+        /// <summary>
+        /// The weight of the color in the range 0 ≤ <see cref="Weight"/> ≤ 1.
+        /// Represents the proportion of the area covered with that color.
+        /// </summary>
+        public virtual double Weight { get; }
+
+        protected internal override double? GetWeight()
+        {
+            return Weight;
+        }
 
         public override string ToString()
         {

@@ -9,25 +9,6 @@ namespace GiGraph.Dot.Entities.Types.Edges
     public class DotEndpointPort
     {
         /// <summary>
-        /// Gets or sets a value that modifies the edge placement to aim for the specified port. If specified,
-        /// the corresponding node must either have a record shape (<see cref="DotNodeShape.Record"/> or <see cref="DotNodeShape.RoundedRecord"/>)
-        /// with one of its fields having the given port name, or have an HTML-like label, one of whose components
-        /// has a PORT attribute set to the specified port name.
-        /// </summary>
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// <para>
-        ///     Gets or sets a value that modifies the edge placement to aim for the specified compass point
-        ///     on the <see cref="Name"/> port if specified, or on the node itself otherwise.
-        /// </para>
-        /// <para>
-        ///     If no compass point is specified explicitly, the default value is <see cref="DotCompassPoint.Center"/>.
-        /// </para>
-        /// </summary>
-        public virtual DotCompassPoint? CompassPoint { get; set; }
-
-        /// <summary>
         /// Creates a new instance with no port properties specified.
         /// </summary>
         public DotEndpointPort()
@@ -73,6 +54,25 @@ namespace GiGraph.Dot.Entities.Types.Edges
         {
             CompassPoint = compassPoint;
         }
+
+        /// <summary>
+        /// Gets or sets a value that modifies the edge placement to aim for the specified port. If specified,
+        /// the corresponding node must either have a record shape (<see cref="DotNodeShape.Record"/> or <see cref="DotNodeShape.RoundedRecord"/>)
+        /// with one of its fields having the given port name, or have an HTML-like label, one of whose components
+        /// has a PORT attribute set to the specified port name.
+        /// </summary>
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// <para>
+        ///     Gets or sets a value that modifies the edge placement to aim for the specified compass point
+        ///     on the <see cref="Name"/> port if specified, or on the node itself otherwise.
+        /// </para>
+        /// <para>
+        ///     If no compass point is specified explicitly, the default value is <see cref="DotCompassPoint.Center"/>.
+        /// </para>
+        /// </summary>
+        public virtual DotCompassPoint? CompassPoint { get; set; }
 
         /// <summary>
         /// Creates a new endpoint port with no properties specified.

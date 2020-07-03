@@ -1,13 +1,11 @@
-﻿using GiGraph.Dot.Entities.Collections;
-using System;
+﻿using System;
+using GiGraph.Dot.Entities.Collections;
 
 namespace GiGraph.Dot.Entities.Subgraphs.Collections
 {
     public class DotCommonSubgraphCollection<T> : DotEntityWithIdCollection<T>, IDotEntity, IDotAnnotatable
         where T : DotCommonSubgraph
     {
-        public virtual string Annotation { get; set; }
-
         protected DotCommonSubgraphCollection(Func<string, Predicate<T>> matchIdPredicate)
             : base(matchIdPredicate)
         {
@@ -17,6 +15,8 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
             : base(matchIdPredicate: id => subgraph => subgraph.Id == id)
         {
         }
+
+        public virtual string Annotation { get; set; }
 
         /// <summary>
         /// Adds a subgraph to the collection and initializes it.

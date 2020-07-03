@@ -4,9 +4,9 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
 {
     public abstract class DotEntityWriter : IDotEntityWriter
     {
-        protected readonly DotTokenWriter _tokenWriter;
         protected readonly DotEntityWriterContext _context;
         protected readonly bool _enforceBlockComment;
+        protected readonly DotTokenWriter _tokenWriter;
 
         protected DotEntityWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool enforceBlockComment)
         {

@@ -15,6 +15,11 @@ namespace GiGraph.Dot.Entities.Types.Strings
             _value = value ?? throw new ArgumentNullException(nameof(value), "Value cannot be null.");
         }
 
+        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        {
+            return GetDotEncodedString(options, syntaxRules);
+        }
+
         public override string ToString()
         {
             return _value;
@@ -24,8 +29,6 @@ namespace GiGraph.Dot.Entities.Types.Strings
         {
             return syntaxRules.EscapeStringValue(_value);
         }
-
-        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedString(options, syntaxRules);
 
         /// <summary>
         /// Creates a new instance initialized with the specified text. The text will be escaped on output DOT script generation

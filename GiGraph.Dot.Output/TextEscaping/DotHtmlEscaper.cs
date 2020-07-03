@@ -8,11 +8,14 @@ namespace GiGraph.Dot.Output.TextEscaping
     /// </summary>
     public class DotHtmlEscaper : IDotTextEscaper
     {
+        string IDotTextEscaper.Escape(string value)
+        {
+            return Escape(value);
+        }
+
         public static string Escape(string value)
         {
             return value is { } ? HttpUtility.HtmlEncode(value) : value;
         }
-
-        string IDotTextEscaper.Escape(string value) => Escape(value);
     }
 }

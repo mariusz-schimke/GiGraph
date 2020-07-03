@@ -1,11 +1,11 @@
-﻿using GiGraph.Dot.Entities;
+﻿using System.Linq;
+using GiGraph.Dot.Entities;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
-using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.Writers.SubgraphWriters;
-using System.Linq;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
+using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Writers.SubgraphWriters;
 
 namespace GiGraph.Dot.Output.Generators.SubgraphGenerators
 {

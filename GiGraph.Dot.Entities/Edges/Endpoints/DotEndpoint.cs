@@ -1,5 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using System;
+﻿using System;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Edges;
 
@@ -13,22 +13,6 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     public class DotEndpoint : DotEndpointDefinition, IDotEntity, IDotAnnotatable
     {
         protected DotEndpointPort _port;
-
-        /// <summary>
-        /// Gets the node identifier.
-        /// </summary>
-        public virtual string NodeId { get; }
-
-        /// <summary>
-        /// Gets or sets the endpoint port, that is a point on a node where an edge is attached to.
-        /// </summary>
-        public virtual DotEndpointPort Port
-        {
-            get => _port;
-            set => _port = value ?? throw new ArgumentNullException(nameof(Port), "Port cannot be null.");
-        }
-
-        public virtual string Annotation { get; set; }
 
         /// <summary>
         /// Creates a new instance of the class.
@@ -57,7 +41,8 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// <param name="compassPoint">Determines the edge placement to aim for the specified compass point on the node.
         /// If no compass point is specified explicitly, the default value is <see cref="DotCompassPoint.Center"/>.</param>
         public DotEndpoint(string nodeId, DotCompassPoint? compassPoint = null)
-            : this(nodeId, new DotEndpointPort() { CompassPoint = compassPoint })
+            : this(nodeId, new DotEndpointPort
+                { CompassPoint = compassPoint })
         {
         }
 
@@ -71,6 +56,22 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
             NodeId = nodeId ?? throw new ArgumentNullException(nameof(nodeId), "Node identifier cannot be null.");
             _port = port ?? throw new ArgumentNullException(nameof(port), "Port cannot be null.");
         }
+
+        /// <summary>
+        /// Gets the node identifier.
+        /// </summary>
+        public virtual string NodeId { get; }
+
+        /// <summary>
+        /// Gets or sets the endpoint port, that is a point on a node where an edge is attached to.
+        /// </summary>
+        public virtual DotEndpointPort Port
+        {
+            get => _port;
+            set => _port = value ?? throw new ArgumentNullException(nameof(Port), "Port cannot be null.");
+        }
+
+        public virtual string Annotation { get; set; }
 
         protected override string GetOrderingKey()
         {

@@ -10,17 +10,17 @@
         /// Draws an edge with no arrows.
         /// </summary>
         None,
-        
+
         /// <summary>
         /// Draws an edge with one arrow pointing at the head node.
         /// </summary>
         Forward,
-        
+
         /// <summary>
         /// Draws an edge with one arrow pointing at the tail node.
         /// </summary>
         Backward,
-        
+
         /// <summary>
         /// Draws an edge with two arrows: one pointing at the tail node, and the other pointing at the head node.
         /// </summary>

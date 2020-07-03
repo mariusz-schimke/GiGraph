@@ -5,11 +5,14 @@
     /// </summary>
     public class DotSpaceHtmlEscaper : IDotTextEscaper
     {
+        string IDotTextEscaper.Escape(string value)
+        {
+            return Escape(value);
+        }
+
         public static string Escape(string value)
         {
             return value?.Replace(" ", "&#32;");
         }
-
-        string IDotTextEscaper.Escape(string value) => Escape(value);
     }
 }

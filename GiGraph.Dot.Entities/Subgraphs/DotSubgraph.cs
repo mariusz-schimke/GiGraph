@@ -1,10 +1,10 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using System.Collections.Generic;
+using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
@@ -23,11 +23,6 @@ namespace GiGraph.Dot.Entities.Subgraphs
     /// </summary>
     public class DotSubgraph : DotCommonSubgraph
     {
-        /// <summary>
-        /// The attributes of the subgraph. The only valid attribute for a non-cluster subgraph is rank.
-        /// </summary>
-        public new IDotSubgraphAttributes Attributes => (IDotSubgraphAttributes) base.Attributes;
-
         protected DotSubgraph(
             string id,
             IDotSubgraphAttributes attributes,
@@ -68,6 +63,11 @@ namespace GiGraph.Dot.Entities.Subgraphs
         {
             Attributes.Rank = rank;
         }
+
+        /// <summary>
+        /// The attributes of the subgraph. The only valid attribute for a non-cluster subgraph is rank.
+        /// </summary>
+        public new IDotSubgraphAttributes Attributes => (IDotSubgraphAttributes) base.Attributes;
 
         /// <summary>
         /// Creates a new subgraph with the specified nodes.

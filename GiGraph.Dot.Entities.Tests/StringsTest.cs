@@ -6,8 +6,8 @@ namespace GiGraph.Dot.Entities.Tests
 {
     public class StringsTest
     {
-        private DotGenerationOptions _generationOptions = new DotGenerationOptions();
-        private DotSyntaxRules _syntaxRules = new DotSyntaxRules();
+        private readonly DotGenerationOptions _generationOptions = new DotGenerationOptions();
+        private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
 
         [Fact]
         public void escapable_string_returns_escaped_string_as_dot_encoded_value()

@@ -1,6 +1,6 @@
-﻿using GiGraph.Dot.Entities.Edges.Endpoints;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using GiGraph.Dot.Entities.Edges.Endpoints;
 
 namespace GiGraph.Dot.Entities.Edges.Collections
 {

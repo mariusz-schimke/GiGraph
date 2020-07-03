@@ -2,8 +2,8 @@
 {
     public class DotCommentWriter : IDotCommentWriter
     {
-        protected readonly DotTokenWriter _tokenWriter;
         protected readonly bool _preferBlockComment;
+        protected readonly DotTokenWriter _tokenWriter;
 
         public DotCommentWriter(DotTokenWriter tokenWriter, bool preferBlockComment)
         {

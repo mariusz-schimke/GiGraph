@@ -117,7 +117,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetValueAsEscapableString("tailtooltip");
             set => AddOrRemove("tailtooltip", value, v => new DotEscapeStringAttribute("tailtooltip", v));
         }
-        
+
         public virtual DotEscapableString LabelUrl
         {
             get => TryGetValueAsEscapableString("labelURL");
@@ -166,6 +166,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("edgetooltip", value, v => new DotEscapeStringAttribute("edgetooltip", v));
         }
 
-        public override void SetFilled(DotColorDefinition value) => FillColor = value;
+        public override void SetFilled(DotColorDefinition value)
+        {
+            FillColor = value;
+        }
     }
 }

@@ -1,7 +1,7 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using System.Collections.Generic;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Subgraphs;
-using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Edges
 {

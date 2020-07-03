@@ -4,16 +4,16 @@ namespace GiGraph.Dot.Entities.Attributes
 {
     public abstract class DotAttribute<T> : DotAttribute
     {
-        /// <summary>
-        /// Gets or sets the value of the attribute.
-        /// </summary>
-        public virtual T Value { get; }
-
         protected DotAttribute(string key, T value)
             : base(key)
         {
             Value = value;
         }
+
+        /// <summary>
+        /// Gets or sets the value of the attribute.
+        /// </summary>
+        public virtual T Value { get; }
 
         /// <summary>
         /// Converts the value to string using the default converter (unless overriden in a descendant class).

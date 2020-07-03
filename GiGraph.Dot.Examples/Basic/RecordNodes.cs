@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Examples.Basic
                         "Waldo",
                         new DotRecordTextField("Fred", portName: "port1")
                     ),
-                    "Plugh",
+                    "Plugh"
                 },
                 "Qux",
                 "Quux");
