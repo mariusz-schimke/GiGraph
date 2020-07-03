@@ -6,15 +6,19 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    /// Style attribute. Individual styles are applicable to specific element types only.
+    ///     Style attribute. Individual styles are applicable to specific element types only.
     /// </summary>
     public class DotStyleAttribute : DotAttribute<DotStyle>
     {
         /// <summary>
-        /// Creates a new instance of the attribute.
+        ///     Creates a new instance of the attribute.
         /// </summary>
-        /// <param name="key">The key of the attribute.</param>
-        /// <param name="value">The value of the attribute.</param>
+        /// <param name="key">
+        ///     The key of the attribute.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute.
+        /// </param>
         public DotStyleAttribute(string key, DotStyle value)
             : base(key, value)
         {

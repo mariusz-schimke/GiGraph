@@ -5,16 +5,23 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    /// Arrow direction attribute. Assignable to edges only.
-    /// <see href="https://www.graphviz.org/doc/info/attrs.html#k:dirType">View how individual arrow directions are visualized</see>.
+    ///     Arrow direction attribute. Assignable to edges only.
+    ///     <see href="https://www.graphviz.org/doc/info/attrs.html#k:dirType">
+    ///         View how individual arrow directions are visualized
+    ///     </see>
+    ///     .
     /// </summary>
     public class DotArrowDirectionAttribute : DotAttribute<DotArrowDirection>
     {
         /// <summary>
-        /// Creates a new instance of the attribute.
+        ///     Creates a new instance of the attribute.
         /// </summary>
-        /// <param name="key">The key of the attribute.</param>
-        /// <param name="value">The value of the attribute.</param>
+        /// <param name="key">
+        ///     The key of the attribute.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute.
+        /// </param>
         public DotArrowDirectionAttribute(string key, DotArrowDirection value)
             : base(key, value)
         {

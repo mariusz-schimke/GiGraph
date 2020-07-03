@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Nodes
         }
 
         /// <summary>
-        /// The attributes of the node or node group.
+        ///     The attributes of the node or node group.
         /// </summary>
         public virtual IDotNodeAttributes Attributes { get; }
 

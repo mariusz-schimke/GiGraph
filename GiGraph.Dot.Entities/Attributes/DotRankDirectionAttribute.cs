@@ -5,15 +5,19 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    /// Graph layout direction attribute. Assignable to graphs only.
+    ///     Graph layout direction attribute. Assignable to graphs only.
     /// </summary>
     public class DotRankDirectionAttribute : DotAttribute<DotRankDirection>
     {
         /// <summary>
-        /// Creates a new instance of the attribute.
+        ///     Creates a new instance of the attribute.
         /// </summary>
-        /// <param name="key">The key of the attribute.</param>
-        /// <param name="value">The value of the attribute.</param>
+        /// <param name="key">
+        ///     The key of the attribute.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute.
+        /// </param>
         public DotRankDirectionAttribute(string key, DotRankDirection value)
             : base(key, value)
         {

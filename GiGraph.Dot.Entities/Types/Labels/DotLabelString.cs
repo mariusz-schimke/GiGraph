@@ -5,14 +5,17 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Labels
 {
     /// <summary>
-    /// <para>
-    ///     Represents a string label. The label can either be a plain text that will be escaped on output DOT script generation,
-    ///     or an escaped string (<see cref="DotEscapedString"/>) that follows the rules described in the
-    ///     <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">documentation</see>.
-    /// </para>
-    /// <para>
-    ///     When you want to generate an HTML-like label, use <see cref="DotLabelHtml"/> instead.
-    /// </para>
+    ///     <para>
+    ///         Represents a string label. The label can either be a plain text that will be escaped on output DOT script generation, or
+    ///         an escaped string (<see cref="DotEscapedString" />) that follows the rules described in the
+    ///         <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">
+    ///             documentation
+    ///         </see>
+    ///         .
+    ///     </para>
+    ///     <para>
+    ///         When you want to generate an HTML-like label, use <see cref="DotLabelHtml" /> instead.
+    ///     </para>
     /// </summary>
     public class DotLabelString : DotLabel
     {

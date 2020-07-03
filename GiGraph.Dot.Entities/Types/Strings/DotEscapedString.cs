@@ -3,9 +3,12 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Strings
 {
     /// <summary>
-    /// An escaped string that will be rendered as is on output DOT script generation.
-    /// It should follow the formatting rules described in the
-    /// <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">documentation</see>.
+    ///     An escaped string that will be rendered as is on output DOT script generation. It should follow the formatting rules
+    ///     described in the
+    ///     <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">
+    ///         documentation
+    ///     </see>
+    ///     .
     /// </summary>
     public class DotEscapedString : DotEscapableString
     {

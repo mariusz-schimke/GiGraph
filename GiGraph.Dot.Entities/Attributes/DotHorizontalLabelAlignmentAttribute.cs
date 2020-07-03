@@ -5,15 +5,19 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    /// Label justification attribute.
+    ///     Label justification attribute.
     /// </summary>
     public class DotHorizontalLabelAlignmentAttribute : DotAttribute<DotHorizontalLabelAlignment>
     {
         /// <summary>
-        /// Creates a new instance of the attribute.
+        ///     Creates a new instance of the attribute.
         /// </summary>
-        /// <param name="key">The key of the attribute.</param>
-        /// <param name="value">The value of the attribute.</param>
+        /// <param name="key">
+        ///     The key of the attribute.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute.
+        /// </param>
         public DotHorizontalLabelAlignmentAttribute(string key, DotHorizontalLabelAlignment value)
             : base(key, value)
         {

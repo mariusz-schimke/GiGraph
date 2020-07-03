@@ -11,10 +11,14 @@ namespace GiGraph.Dot.Output.Generators.Providers
     public class DotEntityGeneratorsProviderBuilder : IDotEntityGeneratorsProviderBuilder
     {
         /// <summary>
-        /// Builds a provider with all generators necessary to generate a graph.
+        ///     Builds a provider with all generators necessary to generate a graph.
         /// </summary>
-        /// <param name="syntaxRules">The syntax rules to follow.</param>
-        /// <param name="options">The DOT language generation options to use for graph generation and its components.</param>
+        /// <param name="syntaxRules">
+        ///     The syntax rules to follow.
+        /// </param>
+        /// <param name="options">
+        ///     The DOT language generation options to use for graph generation and its components.
+        /// </param>
         public virtual IDotEntityGeneratorsProvider Build(DotSyntaxRules syntaxRules, DotGenerationOptions options)
         {
             var provider = new DotEntityGeneratorsProvider();

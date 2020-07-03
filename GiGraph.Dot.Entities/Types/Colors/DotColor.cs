@@ -4,21 +4,23 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Colors
 {
     /// <summary>
-    /// Represents a single color.
+    ///     Represents a single color.
     /// </summary>
     public class DotColor : DotColorDefinition
     {
         /// <summary>
-        /// Creates a new instance initialized with a color.
+        ///     Creates a new instance initialized with a color.
         /// </summary>
-        /// <param name="color">The color to initialize the instance with.</param>
+        /// <param name="color">
+        ///     The color to initialize the instance with.
+        /// </param>
         public DotColor(Color color)
         {
             Color = color;
         }
 
         /// <summary>
-        /// Gets the color.
+        ///     Gets the color.
         /// </summary>
         public virtual Color Color { get; }
 

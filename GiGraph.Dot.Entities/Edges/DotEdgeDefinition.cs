@@ -12,12 +12,12 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        /// Gets the attributes of the edge.
+        ///     Gets the attributes of the edge.
         /// </summary>
         public virtual IDotEdgeAttributes Attributes { get; }
 
         /// <summary>
-        /// Gets the edge endpoints.
+        ///     Gets the edge endpoints.
         /// </summary>
         public abstract IEnumerable<DotEndpointDefinition> Endpoints { get; }
 

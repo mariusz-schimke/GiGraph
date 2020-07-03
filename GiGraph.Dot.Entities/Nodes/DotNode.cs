@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 namespace GiGraph.Dot.Entities.Nodes
 {
     /// <summary>
-    /// Represents a graph node.
+    ///     Represents a graph node.
     /// </summary>
     public class DotNode : DotNodeDefinition
     {
@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Nodes
         }
 
         /// <summary>
-        /// The unique identifier of the node.
+        ///     The unique identifier of the node.
         /// </summary>
         /// <param name="id"></param>
         public DotNode(string id)
@@ -24,12 +24,12 @@ namespace GiGraph.Dot.Entities.Nodes
         }
 
         /// <summary>
-        /// Gets or sets the unique identifier of the node.
+        ///     Gets or sets the unique identifier of the node.
         /// </summary>
         public virtual string Id { get; }
 
         /// <summary>
-        /// The attributes of the node.
+        ///     The attributes of the node.
         /// </summary>
         public override IDotNodeAttributes Attributes => base.Attributes;
 

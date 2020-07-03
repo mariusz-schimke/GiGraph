@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Attributes
         }
 
         /// <summary>
-        /// Gets the key of the attribute.
+        ///     Gets the key of the attribute.
         /// </summary>
         public virtual string Key { get; }
 
@@ -27,10 +27,14 @@ namespace GiGraph.Dot.Entities.Attributes
         protected internal abstract object GetValue();
 
         /// <summary>
-        /// Gets the value of the attribute in a format understood by DOT graph renderer.
+        ///     Gets the value of the attribute in a format understood by DOT graph renderer.
         /// </summary>
-        /// <param name="options">The DOT generation options to use.</param>
-        /// <param name="syntaxRules">The DOT syntax rules to use.</param>
+        /// <param name="options">
+        ///     The DOT generation options to use.
+        /// </param>
+        /// <param name="syntaxRules">
+        ///     The DOT syntax rules to use.
+        /// </param>
         protected internal abstract string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules);
     }
 }

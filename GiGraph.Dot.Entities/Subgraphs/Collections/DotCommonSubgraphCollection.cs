@@ -19,10 +19,14 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         public virtual string Annotation { get; set; }
 
         /// <summary>
-        /// Adds a subgraph to the collection and initializes it.
+        ///     Adds a subgraph to the collection and initializes it.
         /// </summary>
-        /// <param name="subgraph">The subgraph to add.</param>
-        /// <param name="init">An optional initializer delegate.</param>
+        /// <param name="subgraph">
+        ///     The subgraph to add.
+        /// </param>
+        /// <param name="init">
+        ///     An optional initializer delegate.
+        /// </param>
         public virtual T Add(T subgraph, Action<T> init)
         {
             Add(subgraph);
@@ -31,7 +35,7 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         }
 
         /// <summary>
-        /// Gets a subgraphs with the specified identifier from the collection.
+        ///     Gets a subgraphs with the specified identifier from the collection.
         /// </summary>
         public virtual T Get(string id)
         {

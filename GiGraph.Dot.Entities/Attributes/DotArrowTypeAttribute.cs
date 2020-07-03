@@ -5,16 +5,23 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    /// Arrow type attribute. Assignable to edges only.
-    /// <see href="https://www.graphviz.org/doc/info/attrs.html#k:arrowType">View how individual arrow types are visualized</see>.
+    ///     Arrow type attribute. Assignable to edges only.
+    ///     <see href="https://www.graphviz.org/doc/info/attrs.html#k:arrowType">
+    ///         View how individual arrow types are visualized
+    ///     </see>
+    ///     .
     /// </summary>
     public class DotArrowTypeAttribute : DotAttribute<DotArrowType>
     {
         /// <summary>
-        /// Creates a new instance of the attribute.
+        ///     Creates a new instance of the attribute.
         /// </summary>
-        /// <param name="key">The key of the attribute.</param>
-        /// <param name="value">The value of the attribute.</param>
+        /// <param name="key">
+        ///     The key of the attribute.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute.
+        /// </param>
         public DotArrowTypeAttribute(string key, DotArrowType value)
             : base(key, value)
         {
