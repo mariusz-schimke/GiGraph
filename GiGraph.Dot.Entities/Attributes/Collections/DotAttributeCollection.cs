@@ -1,8 +1,8 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
@@ -137,18 +137,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual DotEndpointPortAttribute Set(string key, DotEndpointPort value)
         {
-            return new DotEndpointPortAttribute(key, value);
+            return Set(new DotEndpointPortAttribute(key, value));
         }
 
         public virtual DotEndpointPortAttribute Set(string key, DotCompassPoint value)
         {
-            return new DotEndpointPortAttribute(key, new DotEndpointPort(value));
+            return Set(new DotEndpointPortAttribute(key, new DotEndpointPort(value)));
         }
 
         public virtual T GetAs<T>(string key)
             where T : DotAttribute
         {
-            if (base.TryGetValue(key, out var result))
+            if (TryGetValue(key, out var result))
             {
                 return (T) result;
             }
@@ -159,7 +159,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual bool TryGetAs<T>(string key, out T attribute)
             where T : DotAttribute
         {
-            if (base.TryGetValue(key, out var result))
+            if (TryGetValue(key, out var result))
             {
                 attribute = result as T;
                 return attribute is { };
@@ -171,7 +171,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual bool TryGetValueAs<T>(string key, out T value)
         {
-            if (base.TryGetValue(key, out var attribute) && attribute.GetValue() is T attributeValue)
+            if (TryGetValue(key, out var attribute) && attribute.GetValue() is T attributeValue)
             {
                 value = attributeValue;
                 return true;
@@ -194,6 +194,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return result;
         }
 
+        void IDictionary<string, DotAttribute>.Add(string key, DotAttribute attribute)
+        {
+            if (key != attribute.Key)
+            {
+                throw new ArgumentException($"The key specified (\"{key}\") has to match the attribute key (\"{attribute.Key}\").", nameof(key));
+            }
+
+            Add(key, attribute);
+        }
+
         protected virtual void AddOrRemove<T>(string key, T attribute)
             where T : DotAttribute
         {
@@ -211,16 +221,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             where TAttribute : DotAttribute
         {
             AddOrRemove(key, value is null ? null : attribute(value));
-        }
-
-        void IDictionary<string, DotAttribute>.Add(string key, DotAttribute attribute)
-        {
-            if (key != attribute.Key)
-            {
-                throw new ArgumentException($"The key specified (\"{key}\") has to match attribute key (\"{attribute.Key}\").", nameof(key));
-            }
-
-            Add(key, attribute);
         }
     }
 }

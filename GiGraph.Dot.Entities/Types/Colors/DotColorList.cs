@@ -13,11 +13,6 @@ namespace GiGraph.Dot.Entities.Types.Colors
     public class DotColorList : DotColorDefinition
     {
         /// <summary>
-        /// Gets the colors of the color list (<see cref="DotColor"/>, <see cref="DotWeightedColor"/>).
-        /// </summary>
-        public virtual DotColor[] Colors { get; }
-
-        /// <summary>
         /// <para>
         ///     Creates a new color list that will be rendered in a specific way depending on how many colors are specified,
         ///     whether they have weights, and what type of element the color list is applied to.
@@ -147,13 +142,14 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// If both weight parameters are specified, they must sum to at most 1.
         /// If only one of them is specified, it must be in the range 0 ≤ <paramref name="weight2"/> &lt; 1.</param>
         public DotColorList(Color color1, Color color2, double? weight1 = null, double? weight2 = null)
-            : this(new[]
-            {
-                Weighted(color1, weight1),
-                Weighted(color2, weight2)
-            })
+            : this(Weighted(color1, weight1), Weighted(color2, weight2))
         {
         }
+
+        /// <summary>
+        /// Gets the colors of the color list (<see cref="DotColor"/>, <see cref="DotWeightedColor"/>).
+        /// </summary>
+        public virtual DotColor[] Colors { get; }
 
         public override string ToString()
         {

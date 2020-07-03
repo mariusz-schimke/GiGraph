@@ -1,6 +1,6 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using System;
+﻿using System;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes

@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Subgraphs;
-using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Generators.Providers;
+using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.SubgraphWriters;
 
 namespace GiGraph.Dot.Output.Generators.SubgraphGenerators

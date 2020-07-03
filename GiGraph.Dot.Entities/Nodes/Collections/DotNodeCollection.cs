@@ -1,15 +1,13 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Collections;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Collections;
 
 namespace GiGraph.Dot.Entities.Nodes.Collections
 {
     public class DotNodeCollection : DotEntityWithIdCollection<DotNodeDefinition>, IDotEntity, IDotAnnotatable
     {
-        public virtual string Annotation { get; set; }
-
         protected DotNodeCollection(Func<string, Predicate<DotNodeDefinition>> matchIdPredicate)
             : base(matchIdPredicate)
         {
@@ -19,6 +17,8 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
             base(matchIdPredicate: id => nodeDefinition => nodeDefinition is DotNode node && node.Id == id)
         {
         }
+
+        public virtual string Annotation { get; set; }
 
         /// <summary>
         /// Adds a node to the collection and initializes its attributes.

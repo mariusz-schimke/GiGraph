@@ -1,6 +1,6 @@
-﻿using GiGraph.Dot.Entities.Graphs;
-using System;
+﻿using System;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Enums

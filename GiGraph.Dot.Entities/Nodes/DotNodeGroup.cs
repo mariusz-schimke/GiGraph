@@ -1,7 +1,7 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Collections;
 
 namespace GiGraph.Dot.Entities.Nodes
 {
@@ -10,16 +10,6 @@ namespace GiGraph.Dot.Entities.Nodes
     /// </summary>
     public class DotNodeGroup : DotNodeDefinition
     {
-        /// <summary>
-        /// Gets the identifiers of nodes in the group.
-        /// </summary>
-        public virtual string[] NodeIds { get; }
-
-        /// <summary>
-        /// The attributes of the node group.
-        /// </summary>
-        public override IDotNodeAttributes Attributes => base.Attributes;
-
         protected DotNodeGroup(string[] nodeIds, IDotNodeAttributes attributes)
             : base(attributes)
         {
@@ -52,6 +42,16 @@ namespace GiGraph.Dot.Entities.Nodes
             : this(nodeIds?.ToArray())
         {
         }
+
+        /// <summary>
+        /// Gets the identifiers of nodes in the group.
+        /// </summary>
+        public virtual string[] NodeIds { get; }
+
+        /// <summary>
+        /// The attributes of the node group.
+        /// </summary>
+        public override IDotNodeAttributes Attributes => base.Attributes;
 
         protected override string GetOrderingKey()
         {

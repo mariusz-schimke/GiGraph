@@ -9,11 +9,6 @@ namespace GiGraph.Dot.Entities.Types.Colors
     public class DotColor : DotColorDefinition
     {
         /// <summary>
-        /// Gets the color.
-        /// </summary>
-        public virtual Color Color { get; }
-
-        /// <summary>
         /// Creates a new instance initialized with a color.
         /// </summary>
         /// <param name="color">The color to initialize the instance with.</param>
@@ -22,7 +17,15 @@ namespace GiGraph.Dot.Entities.Types.Colors
             Color = color;
         }
 
-        protected internal virtual double? GetWeight() => null;
+        /// <summary>
+        /// Gets the color.
+        /// </summary>
+        public virtual Color Color { get; }
+
+        protected internal virtual double? GetWeight()
+        {
+            return null;
+        }
 
         protected internal override string GetDotEncodedColor(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {

@@ -1,5 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using System;
+﻿using System;
+using GiGraph.Dot.Entities.Attributes.Collections;
 
 namespace GiGraph.Dot.Entities.Nodes
 {
@@ -8,16 +8,6 @@ namespace GiGraph.Dot.Entities.Nodes
     /// </summary>
     public class DotNode : DotNodeDefinition
     {
-        /// <summary>
-        /// Gets or sets the unique identifier of the node.
-        /// </summary>
-        public virtual string Id { get; }
-
-        /// <summary>
-        /// The attributes of the node.
-        /// </summary>
-        public override IDotNodeAttributes Attributes => base.Attributes;
-
         protected DotNode(string id, IDotNodeAttributes attributes)
             : base(attributes)
         {
@@ -32,6 +22,16 @@ namespace GiGraph.Dot.Entities.Nodes
             : this(id, new DotNodeAttributes())
         {
         }
+
+        /// <summary>
+        /// Gets or sets the unique identifier of the node.
+        /// </summary>
+        public virtual string Id { get; }
+
+        /// <summary>
+        /// The attributes of the node.
+        /// </summary>
+        public override IDotNodeAttributes Attributes => base.Attributes;
 
         protected override string GetOrderingKey()
         {

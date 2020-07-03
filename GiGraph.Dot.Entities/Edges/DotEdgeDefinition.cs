@@ -1,11 +1,16 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using System.Collections.Generic;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges.Endpoints;
-using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Edges
 {
     public abstract class DotEdgeDefinition : IDotEntity, IDotAnnotatable, IDotOrderable
     {
+        protected DotEdgeDefinition(IDotEdgeAttributes attributes)
+        {
+            Attributes = attributes;
+        }
+
         /// <summary>
         /// Gets the attributes of the edge.
         /// </summary>
@@ -19,11 +24,6 @@ namespace GiGraph.Dot.Entities.Edges
         public virtual string Annotation { get; set; }
 
         string IDotOrderable.OrderingKey => GetOrderingKey();
-
-        protected DotEdgeDefinition(IDotEdgeAttributes attributes)
-        {
-            Attributes = attributes;
-        }
 
         protected abstract string GetOrderingKey();
     }

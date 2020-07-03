@@ -1,13 +1,13 @@
-﻿using GiGraph.Dot.Entities.Edges;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
+using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
+using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.EdgeWriters;
 using GiGraph.Dot.Output.Writers.SubgraphWriters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
-using GiGraph.Dot.Output.Generators.Providers;
 
 namespace GiGraph.Dot.Output.Generators.EdgeGenerators
 {

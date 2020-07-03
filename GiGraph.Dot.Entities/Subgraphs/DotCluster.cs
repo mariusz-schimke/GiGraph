@@ -1,9 +1,9 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using System.Collections.Generic;
+using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
@@ -19,11 +19,6 @@ namespace GiGraph.Dot.Entities.Subgraphs
     /// </summary>
     public class DotCluster : DotCommonSubgraph
     {
-        /// <summary>
-        /// The attributes of the cluster.
-        /// </summary>
-        public new IDotClusterAttributes Attributes => (IDotClusterAttributes) base.Attributes;
-
         protected DotCluster(string id,
             IDotClusterAttributes attributes,
             DotNodeCollection nodes,
@@ -54,6 +49,11 @@ namespace GiGraph.Dot.Entities.Subgraphs
             )
         {
         }
+
+        /// <summary>
+        /// The attributes of the cluster.
+        /// </summary>
+        public new IDotClusterAttributes Attributes => (IDotClusterAttributes) base.Attributes;
 
         /// <summary>
         /// Creates a new cluster with the specified nodes.

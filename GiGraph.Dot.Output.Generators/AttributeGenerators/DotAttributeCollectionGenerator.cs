@@ -1,10 +1,10 @@
-﻿using GiGraph.Dot.Entities;
+﻿using System.Linq;
+using GiGraph.Dot.Entities;
 using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Output.Options;
-using System.Linq;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
+using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.CommonEntityWriters;
 
 namespace GiGraph.Dot.Output.Generators.AttributeGenerators

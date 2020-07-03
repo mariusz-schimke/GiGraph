@@ -2,11 +2,11 @@
 {
     public class DotEntityWriterContext
     {
-        public virtual bool IsDirectedGraph { get; }
-
         public DotEntityWriterContext(bool isDirectedGraph)
         {
             IsDirectedGraph = isDirectedGraph;
         }
+
+        public virtual bool IsDirectedGraph { get; }
     }
 }

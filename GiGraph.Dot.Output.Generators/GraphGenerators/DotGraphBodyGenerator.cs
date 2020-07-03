@@ -1,19 +1,19 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
+using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
+using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.AttributeWriters;
 using GiGraph.Dot.Output.Writers.EdgeWriters;
+using GiGraph.Dot.Output.Writers.GlobalAttributesWriters;
 using GiGraph.Dot.Output.Writers.GraphWriters;
 using GiGraph.Dot.Output.Writers.NodeWriters;
 using GiGraph.Dot.Output.Writers.SubgraphWriters;
-using System.Linq;
-using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
-using GiGraph.Dot.Output.Generators.Providers;
-using GiGraph.Dot.Output.Writers.GlobalAttributesWriters;
 
 namespace GiGraph.Dot.Output.Generators.GraphGenerators
 {

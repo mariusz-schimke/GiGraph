@@ -4,6 +4,11 @@ namespace GiGraph.Dot.Entities.Nodes
 {
     public abstract class DotNodeDefinition : IDotEntity, IDotAnnotatable, IDotOrderable
     {
+        protected DotNodeDefinition(IDotNodeAttributes attributes)
+        {
+            Attributes = attributes;
+        }
+
         /// <summary>
         /// The attributes of the node or node group.
         /// </summary>
@@ -12,11 +17,6 @@ namespace GiGraph.Dot.Entities.Nodes
         public virtual string Annotation { get; set; }
 
         string IDotOrderable.OrderingKey => GetOrderingKey();
-
-        protected DotNodeDefinition(IDotNodeAttributes attributes)
-        {
-            Attributes = attributes;
-        }
 
         protected abstract string GetOrderingKey();
     }

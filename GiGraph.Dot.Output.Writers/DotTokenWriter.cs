@@ -6,11 +6,10 @@ namespace GiGraph.Dot.Output.Writers
 {
     public class DotTokenWriter
     {
-        protected readonly StreamWriter _writer;
-        protected readonly Queue<string> _lingerBuffer;
-
         protected readonly int _indentationLevel;
+        protected readonly Queue<string> _lingerBuffer;
         protected readonly DotFormattingOptions _options;
+        protected readonly StreamWriter _writer;
 
         protected DotTokenWriter(StreamWriter writer, DotFormattingOptions options, int indentationLevel, Queue<string> lingerBuffer)
         {
@@ -181,7 +180,7 @@ namespace GiGraph.Dot.Output.Writers
 
         protected virtual DotTokenWriter Comment(string[] commentLines, bool linger)
         {
-            for (int i = 0; i < commentLines.Length; i++)
+            for (var i = 0; i < commentLines.Length; i++)
             {
                 CommentStart(linger);
                 Space(linger);
@@ -209,7 +208,7 @@ namespace GiGraph.Dot.Output.Writers
             BlockCommentStart(linger);
             Space(linger);
 
-            for (int i = 0; i < commentLines.Length; i++)
+            for (var i = 0; i < commentLines.Length; i++)
             {
                 Append(commentLines[i], linger);
 

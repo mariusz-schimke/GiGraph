@@ -1,8 +1,8 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Edges.Endpoints;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Edges.Endpoints;
 
 namespace GiGraph.Dot.Entities.Edges
 {
@@ -12,11 +12,6 @@ namespace GiGraph.Dot.Entities.Edges
     public class DotEdgeSequence : DotEdgeDefinition
     {
         protected readonly DotEndpointDefinition[] _endpoints;
-
-        /// <summary>
-        /// Gets the sequence of endpoints.
-        /// </summary>
-        public override IEnumerable<DotEndpointDefinition> Endpoints => _endpoints;
 
         protected DotEdgeSequence(DotEndpointDefinition[] endpoints, IDotEdgeAttributes attributes)
             : base(attributes)
@@ -70,6 +65,11 @@ namespace GiGraph.Dot.Entities.Edges
             : this(nodeIds?.Select(nodeId => new DotEndpoint(nodeId)))
         {
         }
+
+        /// <summary>
+        /// Gets the sequence of endpoints.
+        /// </summary>
+        public override IEnumerable<DotEndpointDefinition> Endpoints => _endpoints;
 
         protected override string GetOrderingKey()
         {

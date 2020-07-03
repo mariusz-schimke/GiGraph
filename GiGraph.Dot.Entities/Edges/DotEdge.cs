@@ -8,11 +8,6 @@ namespace GiGraph.Dot.Entities.Edges
     /// </summary>
     public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     {
-        /// <summary>
-        /// Indicates if the current instance is a loop edge.
-        /// </summary>
-        public virtual bool IsLoop => IsLoopEdge(this);
-
         protected DotEdge(DotEndpoint tail, DotEndpoint head, IDotEdgeAttributes attributes)
             : base(tail, head, attributes)
         {
@@ -37,6 +32,11 @@ namespace GiGraph.Dot.Entities.Edges
             : this(new DotEndpoint(tailNodeId), new DotEndpoint(headNodeId))
         {
         }
+
+        /// <summary>
+        /// Indicates if the current instance is a loop edge.
+        /// </summary>
+        public virtual bool IsLoop => IsLoopEdge(this);
 
         /// <summary>
         /// Determines whether the current edge connects the specified node to itself.

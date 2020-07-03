@@ -6,16 +6,16 @@ namespace GiGraph.Dot.Entities.Tests
 {
     public class AttributesTest
     {
-        private DotGenerationOptions _generationOptions = new DotGenerationOptions();
-        private DotSyntaxRules _syntaxRules = new DotSyntaxRules();
+        private readonly DotGenerationOptions _generationOptions = new DotGenerationOptions();
+        private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
 
         [Fact]
-        public void string_attribute_returns_the_exact_same_encoded_value_as_attribute_value()
+        public void double_attribute_returns_invariant_culture_encoded_value()
         {
-            var value = "a bcd \" \\ \r\n \r \n h ij < > { } |";
-            IDotEncodable attr = new DotStringAttribute("key", value);
+            var value = 10.23455;
+            IDotEncodable attr = new DotDoubleAttribute("key", value);
 
-            Assert.Equal(value, attr.GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal("10.23455", attr.GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
 
         [Fact]
@@ -37,12 +37,12 @@ namespace GiGraph.Dot.Entities.Tests
         }
 
         [Fact]
-        public void double_attribute_returns_invariant_culture_encoded_value()
+        public void string_attribute_returns_the_exact_same_encoded_value_as_attribute_value()
         {
-            var value = 10.23455;
-            IDotEncodable attr = new DotDoubleAttribute("key", value);
+            var value = "a bcd \" \\ \r\n \r \n h ij < > { } |";
+            IDotEncodable attr = new DotStringAttribute("key", value);
 
-            Assert.Equal("10.23455", attr.GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal(value, attr.GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
     }
 }

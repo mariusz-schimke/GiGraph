@@ -8,7 +8,7 @@
             /// When set, keys will always be quoted, even if it is not required.
             /// </summary>
             public virtual bool PreferQuotedKey { get; set; } = false;
-            
+
             /// <summary>
             /// When set, attribute value will always be quoted, even if it is not required.
             /// </summary>
@@ -19,7 +19,7 @@
             /// When false, they will be separated with spaces.
             /// </summary>
             public virtual bool PreferExplicitSeparator { get; set; } = true;
-            
+
             /// <summary>
             /// When true, graph, subgraph, and cluster attributes will be written as separate statements.
             /// When false, the "graph [attr_list]" format will be used instead.

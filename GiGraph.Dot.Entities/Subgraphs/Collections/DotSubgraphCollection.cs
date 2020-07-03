@@ -1,7 +1,7 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Enums;
 
 namespace GiGraph.Dot.Entities.Subgraphs.Collections
 {

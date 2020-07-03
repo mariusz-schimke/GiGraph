@@ -1,7 +1,7 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;

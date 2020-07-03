@@ -12,8 +12,21 @@ namespace GiGraph.Dot.Entities.Types.Records
     /// </summary>
     public class DotRecordTextField : DotRecordField
     {
-        protected DotEscapableRecordFieldString _text;
         protected DotEscapableRecordFieldString _portName;
+        protected DotEscapableRecordFieldString _text;
+
+        /// <summary>
+        /// Creates a new text field instance.
+        /// </summary>
+        /// <param name="text">The text to initialize the field with.</param>
+        /// <param name="portName">The port name, that is a name that can be referred to from an edge endpoint
+        /// in order to attach the end of the edge to the current field. See <see cref="DotEndpoint.Port"/> or
+        /// <see cref="IDotEdgeAttributes.TailPort"/> and <see cref="IDotEdgeAttributes.HeadPort"/>.</param>
+        public DotRecordTextField(string text, string portName = null)
+        {
+            _text = text;
+            _portName = portName;
+        }
 
         /// <summary>
         /// Gets or sets the text of the field.
@@ -33,19 +46,6 @@ namespace GiGraph.Dot.Entities.Types.Records
         {
             get => _portName;
             set => _portName = value;
-        }
-
-        /// <summary>
-        /// Creates a new text field instance.
-        /// </summary>
-        /// <param name="text">The text to initialize the field with.</param>
-        /// <param name="portName">The port name, that is a name that can be referred to from an edge endpoint
-        /// in order to attach the end of the edge to the current field. See <see cref="DotEndpoint.Port"/> or
-        /// <see cref="IDotEdgeAttributes.TailPort"/> and <see cref="IDotEdgeAttributes.HeadPort"/>.</param>
-        public DotRecordTextField(string text, string portName = null)
-        {
-            _text = text;
-            _portName = portName;
         }
 
         protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules, bool hasParent)

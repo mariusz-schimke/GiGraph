@@ -1,8 +1,8 @@
 ﻿using System;
 using GiGraph.Dot.Entities;
+using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.CommonEntityWriters;
-using GiGraph.Dot.Output.Generators.Providers;
 
 namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 {
@@ -10,11 +10,16 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
         where TEntity : IDotEntity, IDotAnnotatable
         where TWriter : IDotEntityWriter
     {
-        protected readonly DotSyntaxRules _syntaxRules;
-        protected readonly DotGenerationOptions _options;
         protected readonly IDotEntityGeneratorsProvider _entityGenerators;
+        protected readonly DotGenerationOptions _options;
+        protected readonly DotSyntaxRules _syntaxRules;
 
-        protected abstract void WriteEntity(TEntity entity, TWriter writer);
+        protected DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        {
+            _syntaxRules = syntaxRules;
+            _options = options;
+            _entityGenerators = entityGenerators;
+        }
 
         public void Generate(TEntity entity, TWriter writer, bool annotate)
         {
@@ -24,23 +29,6 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
             }
 
             WriteEntity(entity, writer);
-        }
-
-        protected DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
-        {
-            _syntaxRules = syntaxRules;
-            _options = options;
-            _entityGenerators = entityGenerators;
-        }
-
-        protected virtual void WriteAnnotation(TEntity entity, TWriter writer)
-        {
-            if (_options.Comments.Enabled && entity.Annotation is {})
-            {
-                var commentWriter = writer.BeginComment(_options.Comments.PreferBlockComments);
-                commentWriter.Write(entity.Annotation);
-                writer.EndComment();
-            }
         }
 
         public virtual bool Supports<TRequiredWriter>(Type entityType, out bool isExactEntityTypeMatch)
@@ -77,7 +65,26 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
             Generate((TEntity) entity, (TWriter) writer, annotate);
         }
 
-        protected virtual string EscapeIdentifier(string id) => _syntaxRules.EscapeIdentifier(id);
-        protected virtual bool IdentifierRequiresQuoting(string id) => _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);
+        protected abstract void WriteEntity(TEntity entity, TWriter writer);
+
+        protected virtual void WriteAnnotation(TEntity entity, TWriter writer)
+        {
+            if (_options.Comments.Enabled && entity.Annotation is {})
+            {
+                var commentWriter = writer.BeginComment(_options.Comments.PreferBlockComments);
+                commentWriter.Write(entity.Annotation);
+                writer.EndComment();
+            }
+        }
+
+        protected virtual string EscapeIdentifier(string id)
+        {
+            return _syntaxRules.EscapeIdentifier(id);
+        }
+
+        protected virtual bool IdentifierRequiresQuoting(string id)
+        {
+            return _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);
+        }
     }
 }

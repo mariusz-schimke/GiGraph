@@ -9,8 +9,12 @@ namespace GiGraph.Dot.Entities.Types.Records
     /// </summary>
     public abstract class DotRecordField : IDotEncodable
     {
+        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        {
+            return GetDotEncoded(options, syntaxRules, hasParent: false);
+        }
+
         protected internal abstract string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules, bool hasParent);
-        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules) => GetDotEncoded(options, syntaxRules, hasParent: false);
 
         public static implicit operator DotRecordField(string text)
         {

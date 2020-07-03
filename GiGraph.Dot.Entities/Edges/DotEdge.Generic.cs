@@ -1,7 +1,7 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Edges.Endpoints;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Edges.Endpoints;
 
 namespace GiGraph.Dot.Entities.Edges
 {
@@ -31,21 +31,6 @@ namespace GiGraph.Dot.Entities.Edges
         where TTail : DotEndpointDefinition, IDotOrderable
         where THead : DotEndpointDefinition, IDotOrderable
     {
-        /// <summary>
-        /// Gets or sets the tail (source, left) endpoint.
-        /// </summary>
-        public virtual TTail Tail { get; }
-
-        /// <summary>
-        /// Gets or sets the head (destination, right) endpoint.
-        /// </summary>
-        public virtual THead Head { get; }
-
-        /// <summary>
-        /// Gets the endpoints of this edge.
-        /// </summary>
-        public override IEnumerable<DotEndpointDefinition> Endpoints => new DotEndpointDefinition[] { Tail, Head };
-
         protected DotEdge(TTail tail, THead head, IDotEdgeAttributes attributes)
             : base(attributes)
         {
@@ -62,6 +47,21 @@ namespace GiGraph.Dot.Entities.Edges
             : this(tail, head, new DotEdgeAttributes())
         {
         }
+
+        /// <summary>
+        /// Gets or sets the tail (source, left) endpoint.
+        /// </summary>
+        public virtual TTail Tail { get; }
+
+        /// <summary>
+        /// Gets or sets the head (destination, right) endpoint.
+        /// </summary>
+        public virtual THead Head { get; }
+
+        /// <summary>
+        /// Gets the endpoints of this edge.
+        /// </summary>
+        public override IEnumerable<DotEndpointDefinition> Endpoints => new DotEndpointDefinition[] { Tail, Head };
 
         protected override string GetOrderingKey()
         {

@@ -10,23 +10,6 @@ namespace GiGraph.Dot.Entities.Graphs
     /// </summary>
     public class DotGraph : DotCommonGraph
     {
-        /// <summary>
-        /// Gets or sets a value that determines if the graph is directed.
-        /// The edges of directed graphs are presented as arrows, whereas edges in undirected graphs are presented as lines.
-        /// </summary>
-        public virtual bool IsDirected { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value that determines if the graph is strict.
-        /// Strict graph forbids the creation of multi-edges, i.e., there may be at most one edge with a given tail node and head node in the directed case.
-        /// </summary>
-        public virtual bool IsStrict { get; set; }
-
-        /// <summary>
-        /// The attributes of the graph.
-        /// </summary>
-        public new IDotGraphAttributes Attributes => (IDotGraphAttributes) base.Attributes;
-
         protected DotGraph(string id,
             bool isDirected,
             bool isStrict,
@@ -67,5 +50,22 @@ namespace GiGraph.Dot.Entities.Graphs
             )
         {
         }
+
+        /// <summary>
+        /// Gets or sets a value that determines if the graph is directed.
+        /// The edges of directed graphs are presented as arrows, whereas edges in undirected graphs are presented as lines.
+        /// </summary>
+        public virtual bool IsDirected { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value that determines if the graph is strict.
+        /// Strict graph forbids the creation of multi-edges, i.e., there may be at most one edge with a given tail node and head node in the directed case.
+        /// </summary>
+        public virtual bool IsStrict { get; set; }
+
+        /// <summary>
+        /// The attributes of the graph.
+        /// </summary>
+        public new IDotGraphAttributes Attributes => (IDotGraphAttributes) base.Attributes;
     }
 }

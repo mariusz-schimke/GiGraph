@@ -12,8 +12,6 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         protected readonly Func<string, string, Predicate<DotEdgeDefinition>> _matchEdgePredicate;
         protected readonly Predicate<DotEdgeDefinition> _matchLoopPredicate;
 
-        public virtual string Annotation { get; set; }
-
         protected DotEdgeCollection(
             Func<string, string, Predicate<DotEdgeDefinition>> matchEdgePredicate,
             Predicate<DotEdgeDefinition> matchLoopPredicate)
@@ -27,6 +25,8 @@ namespace GiGraph.Dot.Entities.Edges.Collections
             _matchEdgePredicate = (tailNodeId, headNodeId) => edgeDefinition => DotEdge.Equals(edgeDefinition, tailNodeId, headNodeId);
             _matchLoopPredicate = edgeDefinition => DotEdge.IsLoopEdge(edgeDefinition);
         }
+
+        public virtual string Annotation { get; set; }
 
         /// <summary>
         /// Adds an edge to the collection and initializes its attributes.

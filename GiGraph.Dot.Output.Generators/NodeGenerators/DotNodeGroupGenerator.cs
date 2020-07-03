@@ -1,10 +1,10 @@
-﻿using GiGraph.Dot.Entities.Nodes;
-using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.Writers.NodeWriters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Output.Generators.Providers;
+using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Writers.NodeWriters;
 
 namespace GiGraph.Dot.Output.Generators.NodeGenerators
 {

@@ -1,6 +1,6 @@
-﻿using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
+﻿using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Output.Generators.GraphGenerators
 {

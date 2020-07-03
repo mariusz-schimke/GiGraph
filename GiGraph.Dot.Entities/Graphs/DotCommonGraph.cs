@@ -7,6 +7,26 @@ namespace GiGraph.Dot.Entities.Graphs
 {
     public abstract class DotCommonGraph : IDotEntity, IDotAnnotatable, IDotOrderable
     {
+        protected DotCommonGraph(
+            string id,
+            IDotAttributeCollection attributes,
+            DotNodeCollection nodes,
+            DotEdgeCollection edges,
+            DotSubgraphCollection subgraphs,
+            DotClusterCollection clusters,
+            IDotNodeAttributes defaultNodeAttributes,
+            IDotEdgeAttributes defaultEdgeAttributes)
+        {
+            Id = id;
+            Attributes = attributes;
+            Nodes = nodes;
+            Edges = edges;
+            Subgraphs = subgraphs;
+            Clusters = clusters;
+            NodeDefaults = defaultNodeAttributes;
+            EdgeDefaults = defaultEdgeAttributes;
+        }
+
         /// <summary>
         /// Gets or sets the identifier of the graph. Set null if no identifier should be used.
         /// </summary>
@@ -68,25 +88,5 @@ namespace GiGraph.Dot.Entities.Graphs
         public virtual string Annotation { get; set; }
 
         string IDotOrderable.OrderingKey => Id;
-
-        protected DotCommonGraph(
-            string id,
-            IDotAttributeCollection attributes,
-            DotNodeCollection nodes,
-            DotEdgeCollection edges,
-            DotSubgraphCollection subgraphs,
-            DotClusterCollection clusters,
-            IDotNodeAttributes defaultNodeAttributes,
-            IDotEdgeAttributes defaultEdgeAttributes)
-        {
-            Id = id;
-            Attributes = attributes;
-            Nodes = nodes;
-            Edges = edges;
-            Subgraphs = subgraphs;
-            Clusters = clusters;
-            NodeDefaults = defaultNodeAttributes;
-            EdgeDefaults = defaultEdgeAttributes;
-        }
     }
 }

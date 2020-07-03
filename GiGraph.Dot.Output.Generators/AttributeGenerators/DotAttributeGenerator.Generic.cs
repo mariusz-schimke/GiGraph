@@ -1,8 +1,8 @@
 ﻿using GiGraph.Dot.Entities;
 using GiGraph.Dot.Entities.Attributes;
-using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Generators.CommonEntityGenerators;
 using GiGraph.Dot.Output.Generators.Providers;
+using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.AttributeWriters;
 
 namespace GiGraph.Dot.Output.Generators.AttributeGenerators
@@ -38,9 +38,19 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
             );
         }
 
-        protected virtual string EscapeKey(string key) => _syntaxRules.EscapeKey(key);
+        protected virtual string EscapeKey(string key)
+        {
+            return _syntaxRules.EscapeKey(key);
+        }
 
-        protected virtual bool KeyRequiresQuoting(string key) => _options.Attributes.PreferQuotedKey || !_syntaxRules.IsValidIdentifier(key);
-        protected virtual bool ValueRequiresQuoting(string value) => _options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
+        protected virtual bool KeyRequiresQuoting(string key)
+        {
+            return _options.Attributes.PreferQuotedKey || !_syntaxRules.IsValidIdentifier(key);
+        }
+
+        protected virtual bool ValueRequiresQuoting(string value)
+        {
+            return _options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
+        }
     }
 }

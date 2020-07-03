@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Output.Writers.GlobalAttributesWriters
     {
         IDotGraphAttributesWriter BeginGraphAttributes();
         void EndGraphAttributes();
-        
+
         IDotNodeDefaultsWriter BeginNodeDefaults();
         void EndNodeDefaults();
 

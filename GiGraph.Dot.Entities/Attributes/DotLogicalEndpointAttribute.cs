@@ -1,7 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Attributes
 {

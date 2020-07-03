@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// the subgraph inherits this value. Default: <see cref="DotHorizontalLabelAlignment.Center"/>.
         /// </summary>
         DotHorizontalLabelAlignment? HorizontalLabelAlignment { get; set; }
-        
+
         /// <summary>
         /// Vertical placement of the label (default: <see cref="DotVerticalLabelAlignment.Top"/>;
         /// only <see cref="DotVerticalLabelAlignment.Top"/> and <see cref="DotVerticalLabelAlignment.Bottom"/> are allowed).
