@@ -14,10 +14,14 @@ namespace GiGraph.Dot.Output.Generators.GraphGenerators
         }
 
         /// <summary>
-        /// Builds a DOT graph generator initialized with entity generators provided to the current instance.
+        ///     Builds a DOT graph generator initialized with entity generators provided to the current instance.
         /// </summary>
-        /// <param name="syntaxRules">The syntax rules to follow.</param>
-        /// <param name="options">The DOT language generation options to use for graph generation and its components.</param>
+        /// <param name="syntaxRules">
+        ///     The syntax rules to follow.
+        /// </param>
+        /// <param name="options">
+        ///     The DOT language generation options to use for graph generation and its components.
+        /// </param>
         public virtual IDotEntityGenerator Build(DotSyntaxRules syntaxRules, DotGenerationOptions options)
         {
             var providers = _dotEntityGeneratorsProviderBuilder.Build(syntaxRules, options);

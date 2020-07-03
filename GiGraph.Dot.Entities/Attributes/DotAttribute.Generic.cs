@@ -11,12 +11,12 @@ namespace GiGraph.Dot.Entities.Attributes
         }
 
         /// <summary>
-        /// Gets or sets the value of the attribute.
+        ///     Gets or sets the value of the attribute.
         /// </summary>
         public virtual T Value { get; }
 
         /// <summary>
-        /// Converts the value to string using the default converter (unless overriden in a descendant class).
+        ///     Converts the value to string using the default converter (unless overriden in a descendant class).
         /// </summary>
         public override string ToString()
         {

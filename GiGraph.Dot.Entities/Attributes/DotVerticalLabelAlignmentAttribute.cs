@@ -5,15 +5,19 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    /// Vertical Label alignment attribute.
+    ///     Vertical Label alignment attribute.
     /// </summary>
     public class DotVerticalLabelAlignmentAttribute : DotAttribute<DotVerticalLabelAlignment>
     {
         /// <summary>
-        /// Creates a new instance of the attribute.
+        ///     Creates a new instance of the attribute.
         /// </summary>
-        /// <param name="key">The key of the attribute.</param>
-        /// <param name="value">The value of the attribute.</param>
+        /// <param name="key">
+        ///     The key of the attribute.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute.
+        /// </param>
         public DotVerticalLabelAlignmentAttribute(string key, DotVerticalLabelAlignment value)
             : base(key, value)
         {

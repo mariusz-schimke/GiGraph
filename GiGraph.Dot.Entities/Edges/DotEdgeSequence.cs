@@ -7,7 +7,7 @@ using GiGraph.Dot.Entities.Edges.Endpoints;
 namespace GiGraph.Dot.Entities.Edges
 {
     /// <summary>
-    /// Represents a sequence of edges that join a specified sequence of endpoints.
+    ///     Represents a sequence of edges that join a specified sequence of endpoints.
     /// </summary>
     public class DotEdgeSequence : DotEdgeDefinition
     {
@@ -27,47 +27,53 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        /// Creates a new edge sequence initialized with the specified endpoints.
-        /// At least a pair of endpoints has to be provided.
+        ///     Creates a new edge sequence initialized with the specified endpoints. At least a pair of endpoints has to be provided.
         /// </summary>
-        /// <param name="endpoints">The endpoints to initialize the instance with.</param>
+        /// <param name="endpoints">
+        ///     The endpoints to initialize the instance with.
+        /// </param>
         public DotEdgeSequence(params DotEndpointDefinition[] endpoints)
             : this(endpoints, new DotEdgeAttributes())
         {
         }
 
         /// <summary>
-        /// Creates a new edge sequence initialized with the specified endpoints.
-        /// At least a pair of endpoints has to be provided.
+        ///     Creates a new edge sequence initialized with the specified endpoints. At least a pair of endpoints has to be provided.
         /// </summary>
-        /// <param name="endpoints">The endpoints to initialize the instance with.</param>
+        /// <param name="endpoints">
+        ///     The endpoints to initialize the instance with.
+        /// </param>
         public DotEdgeSequence(IEnumerable<DotEndpointDefinition> endpoints)
             : this(endpoints?.ToArray())
         {
         }
 
         /// <summary>
-        /// Creates a new edge sequence initialized with the specified node identifiers.
-        /// At least a pair of identifiers has to be provided.
+        ///     Creates a new edge sequence initialized with the specified node identifiers. At least a pair of identifiers has to be
+        ///     provided.
         /// </summary>
-        /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
+        /// <param name="nodeIds">
+        ///     The node identifiers to initialize the instance with.
+        /// </param>
         public DotEdgeSequence(params string[] nodeIds)
             : this((IEnumerable<string>) nodeIds)
         {
         }
 
         /// <summary>
-        /// Creates a new edge sequence initialized with the specified node identifiers.
-        /// At least a pair of identifiers has to be provided.
+        ///     Creates a new edge sequence initialized with the specified node identifiers. At least a pair of identifiers has to be
+        ///     provided.
         /// </summary>
-        /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
+        /// <param name="nodeIds">
+        ///     The node identifiers to initialize the instance with.
+        /// </param>
         public DotEdgeSequence(IEnumerable<string> nodeIds)
             : this(nodeIds?.Select(nodeId => new DotEndpoint(nodeId)))
         {
         }
 
         /// <summary>
-        /// Gets the sequence of endpoints.
+        ///     Gets the sequence of endpoints.
         /// </summary>
         public override IEnumerable<DotEndpointDefinition> Endpoints => _endpoints;
 
@@ -82,22 +88,30 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        /// Creates a new edge sequence initialized with the specified node identifiers.
-        /// At least a pair of identifiers has to be provided.
+        ///     Creates a new edge sequence initialized with the specified node identifiers. At least a pair of identifiers has to be
+        ///     provided.
         /// </summary>
-        /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
-        /// <param name="initEndpoint">An optional endpoint initializer to call for each created endpoint.</param>
+        /// <param name="nodeIds">
+        ///     The node identifiers to initialize the instance with.
+        /// </param>
+        /// <param name="initEndpoint">
+        ///     An optional endpoint initializer to call for each created endpoint.
+        /// </param>
         public static DotEdgeSequence FromNodes(Action<DotEndpoint> initEndpoint, params string[] nodeIds)
         {
             return FromNodes(nodeIds, initEndpoint);
         }
 
         /// <summary>
-        /// Creates a new edge sequence initialized with the specified node identifiers.
-        /// At least a pair of identifiers has to be provided.
+        ///     Creates a new edge sequence initialized with the specified node identifiers. At least a pair of identifiers has to be
+        ///     provided.
         /// </summary>
-        /// <param name="nodeIds">The node identifiers to initialize the instance with.</param>
-        /// <param name="initEndpoint">An optional endpoint initializer to call for each created endpoint.</param>
+        /// <param name="nodeIds">
+        ///     The node identifiers to initialize the instance with.
+        /// </param>
+        /// <param name="initEndpoint">
+        ///     An optional endpoint initializer to call for each created endpoint.
+        /// </param>
         public static DotEdgeSequence FromNodes(IEnumerable<string> nodeIds, Action<DotEndpoint> initEndpoint = null)
         {
             return new DotEdgeSequence

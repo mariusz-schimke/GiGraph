@@ -1,8 +1,8 @@
 ﻿namespace GiGraph.Dot.Output.TextEscaping
 {
     /// <summary>
-    /// Escapes line break sequence (CRLF), and individual CR and LF characters.
-    /// Use for identifiers and attributes that support escaped text.
+    ///     Escapes line break sequence (CRLF), and individual CR and LF characters. Use for identifiers and attributes that support
+    ///     escaped text.
     /// </summary>
     public class DotLineBreakEscaper : IDotTextEscaper
     {

@@ -7,8 +7,11 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Records
 {
     /// <summary>
-    /// Represents a textual field of a record (<see cref="DotRecord"/>).
-    /// A record can be used as the label of a <see href="http://www.graphviz.org/doc/info/shapes.html#record">record-based node</see>. 
+    ///     Represents a textual field of a record (<see cref="DotRecord" />). A record can be used as the label of a
+    ///     <see href="http://www.graphviz.org/doc/info/shapes.html#record">
+    ///         record-based node
+    ///     </see>
+    ///     .
     /// </summary>
     public class DotRecordTextField : DotRecordField
     {
@@ -16,12 +19,16 @@ namespace GiGraph.Dot.Entities.Types.Records
         protected DotEscapableRecordFieldString _text;
 
         /// <summary>
-        /// Creates a new text field instance.
+        ///     Creates a new text field instance.
         /// </summary>
-        /// <param name="text">The text to initialize the field with.</param>
-        /// <param name="portName">The port name, that is a name that can be referred to from an edge endpoint
-        /// in order to attach the end of the edge to the current field. See <see cref="DotEndpoint.Port"/> or
-        /// <see cref="IDotEdgeAttributes.TailPort"/> and <see cref="IDotEdgeAttributes.HeadPort"/>.</param>
+        /// <param name="text">
+        ///     The text to initialize the field with.
+        /// </param>
+        /// <param name="portName">
+        ///     The port name, that is a name that can be referred to from an edge endpoint in order to attach the end of the edge to the
+        ///     current field. See <see cref="DotEndpoint.Port" /> or <see cref="IDotEdgeAttributes.TailPort" /> and
+        ///     <see cref="IDotEdgeAttributes.HeadPort" />.
+        /// </param>
         public DotRecordTextField(string text, string portName = null)
         {
             _text = text;
@@ -29,7 +36,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         }
 
         /// <summary>
-        /// Gets or sets the text of the field.
+        ///     Gets or sets the text of the field.
         /// </summary>
         public virtual string Text
         {
@@ -38,9 +45,9 @@ namespace GiGraph.Dot.Entities.Types.Records
         }
 
         /// <summary>
-        /// Gets or sets a port name, that is a name that can be referred to from an edge endpoint in order to attach
-        /// the end of the edge to the current field. See <see cref="DotEndpoint.Port"/> or
-        /// <see cref="IDotEdgeAttributes.TailPort"/> and <see cref="IDotEdgeAttributes.HeadPort"/>.
+        ///     Gets or sets a port name, that is a name that can be referred to from an edge endpoint in order to attach the end of the edge
+        ///     to the current field. See <see cref="DotEndpoint.Port" /> or <see cref="IDotEdgeAttributes.TailPort" /> and
+        ///     <see cref="IDotEdgeAttributes.HeadPort" />.
         /// </summary>
         public virtual string PortName
         {
