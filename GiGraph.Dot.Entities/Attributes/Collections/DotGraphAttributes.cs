@@ -1,5 +1,6 @@
 using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -51,8 +52,29 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetValueAs<double>("nodesep", out var result) ? result : (double?) null;
             set => AddOrRemove("nodesep", value, v => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(FontSize), v.Value, "Node spacing must be greater than or equal to 0.")
+                ? throw new ArgumentOutOfRangeException(nameof(NodeSpacing), v.Value, "Node spacing must be greater than or equal to 0.")
                 : new DotDoubleAttribute("nodesep", v.Value));
+        }
+
+        public virtual DotRankSeparationDefinition RankSeparation
+        {
+            get
+            {
+                const string key = "ranksep";
+
+                if (TryGetValueAs<DotRankSeparationDefinition>(key, out var definition))
+                {
+                    return definition;
+                }
+
+                if (TryGetValueAs<double>(key, out var value))
+                {
+                    return value;
+                }
+
+                return TryGetValueAs<double[]>(key, out var values) ? values : null;
+            }
+            set => AddOrRemove("ranksep", value, v => new DotRankSeparationAttribute("ranksep", v));
         }
     }
 }

@@ -7,6 +7,7 @@ using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -143,6 +144,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotRankDirectionAttribute Set(string key, DotRankDirection value)
         {
             return Set(new DotRankDirectionAttribute(key, value));
+        }
+
+        public virtual DotRankSeparationAttribute Set(string key, DotRankSeparationDefinition value)
+        {
+            return Set(new DotRankSeparationAttribute(key, value));
+        }
+
+        public virtual DotRankSeparationAttribute Set(string key, DotRankSeparation value)
+        {
+            return Set(new DotRankSeparationAttribute(key, value));
+        }
+
+        public virtual DotRankSeparationAttribute Set(string key, DotRankSeparationList value)
+        {
+            return Set(new DotRankSeparationAttribute(key, value));
         }
 
         public virtual DotEndpointPortAttribute Set(string key, DotEndpointPort value)
