@@ -11,159 +11,159 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual double? ArrowSize
         {
             get => TryGetValueAs<double>("arrowsize", out var result) ? result : (double?) null;
-            set => AddOrRemove("arrowsize", value, v => v.Value < 0.0
+            set => AddOrRemove("arrowsize", value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(ArrowSize), v.Value, "Arrow size must be greater than or equal to 0.")
-                : new DotDoubleAttribute("arrowsize", v.Value));
+                : new DotDoubleAttribute(k, v.Value));
         }
 
         public virtual DotArrowType? ArrowHead
         {
             get => TryGetValueAs<DotArrowType>("arrowhead", out var result) ? result : (DotArrowType?) null;
-            set => AddOrRemove("arrowhead", value, v => new DotArrowTypeAttribute("arrowhead", v.Value));
+            set => AddOrRemove("arrowhead", value, (k, v) => new DotArrowTypeAttribute(k, v.Value));
         }
 
         public virtual DotArrowType? ArrowTail
         {
             get => TryGetValueAs<DotArrowType>("arrowtail", out var result) ? result : (DotArrowType?) null;
-            set => AddOrRemove("arrowtail", value, v => new DotArrowTypeAttribute("arrowtail", v.Value));
+            set => AddOrRemove("arrowtail", value, (k, v) => new DotArrowTypeAttribute(k, v.Value));
         }
 
         public virtual DotArrowDirection? ArrowDirection
         {
             get => TryGetValueAs<DotArrowDirection>("dir", out var result) ? result : (DotArrowDirection?) null;
-            set => AddOrRemove("dir", value, v => new DotArrowDirectionAttribute("dir", v.Value));
+            set => AddOrRemove("dir", value, (k, v) => new DotArrowDirectionAttribute(k, v.Value));
         }
 
         public virtual DotEndpointPort HeadPort
         {
             get => TryGetValueAs<DotEndpointPort>("headport", out var result) ? result : null;
-            set => AddOrRemove("headport", value, v => new DotEndpointPortAttribute("headport", v));
+            set => AddOrRemove("headport", value, (k, v) => new DotEndpointPortAttribute(k, v));
         }
 
         public virtual DotEndpointPort TailPort
         {
             get => TryGetValueAs<DotEndpointPort>("tailport", out var result) ? result : null;
-            set => AddOrRemove("tailport", value, v => new DotEndpointPortAttribute("tailport", v));
+            set => AddOrRemove("tailport", value, (k, v) => new DotEndpointPortAttribute(k, v));
         }
 
         public virtual string LogicalHeadId
         {
             get => TryGetValueAs<string>("lhead", out var result) ? result : null;
-            set => AddOrRemove("lhead", value, v => new DotLogicalEndpointAttribute("lhead", v));
+            set => AddOrRemove("lhead", value, (k, v) => new DotLogicalEndpointAttribute(k, v));
         }
 
         public virtual string LogicalTailId
         {
             get => TryGetValueAs<string>("ltail", out var result) ? result : null;
-            set => AddOrRemove("ltail", value, v => new DotLogicalEndpointAttribute("ltail", v));
+            set => AddOrRemove("ltail", value, (k, v) => new DotLogicalEndpointAttribute(k, v));
         }
 
         public virtual bool? Decorate
         {
             get => TryGetValueAs<bool>("decorate", out var result) ? result : (bool?) null;
-            set => AddOrRemove("decorate", value, v => new DotBoolAttribute("decorate", v.Value));
+            set => AddOrRemove("decorate", value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         public virtual bool? Constraint
         {
             get => TryGetValueAs<bool>("constraint", out var result) ? result : (bool?) null;
-            set => AddOrRemove("constraint", value, v => new DotBoolAttribute("constraint", v.Value));
+            set => AddOrRemove("constraint", value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         public virtual DotEscapableString HeadUrl
         {
             get => TryGetValueAsEscapableString("headURL");
-            set => AddOrRemove("headURL", value, v => new DotEscapeStringAttribute("headURL", v));
+            set => AddOrRemove("headURL", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString HeadHref
         {
             get => TryGetValueAsEscapableString("headhref");
-            set => AddOrRemove("headhref", value, v => new DotEscapeStringAttribute("headhref", v));
+            set => AddOrRemove("headhref", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString HeadUrlTarget
         {
             get => TryGetValueAsEscapableString("headtarget");
-            set => AddOrRemove("headtarget", value, v => new DotEscapeStringAttribute("headtarget", v));
+            set => AddOrRemove("headtarget", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString HeadUrlTooltip
         {
             get => TryGetValueAsEscapableString("headtooltip");
-            set => AddOrRemove("headtooltip", value, v => new DotEscapeStringAttribute("headtooltip", v));
+            set => AddOrRemove("headtooltip", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString TailUrl
         {
             get => TryGetValueAsEscapableString("tailURL");
-            set => AddOrRemove("tailURL", value, v => new DotEscapeStringAttribute("tailURL", v));
+            set => AddOrRemove("tailURL", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString TailHref
         {
             get => TryGetValueAsEscapableString("tailhref");
-            set => AddOrRemove("tailhref", value, v => new DotEscapeStringAttribute("tailhref", v));
+            set => AddOrRemove("tailhref", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString TailUrlTarget
         {
             get => TryGetValueAsEscapableString("tailtarget");
-            set => AddOrRemove("tailtarget", value, v => new DotEscapeStringAttribute("tailtarget", v));
+            set => AddOrRemove("tailtarget", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString TailUrlTooltip
         {
             get => TryGetValueAsEscapableString("tailtooltip");
-            set => AddOrRemove("tailtooltip", value, v => new DotEscapeStringAttribute("tailtooltip", v));
+            set => AddOrRemove("tailtooltip", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString LabelUrl
         {
             get => TryGetValueAsEscapableString("labelURL");
-            set => AddOrRemove("labelURL", value, v => new DotEscapeStringAttribute("labelURL", v));
+            set => AddOrRemove("labelURL", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString LabelHref
         {
             get => TryGetValueAsEscapableString("labelhref");
-            set => AddOrRemove("labelhref", value, v => new DotEscapeStringAttribute("labelhref", v));
+            set => AddOrRemove("labelhref", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString LabelUrlTarget
         {
             get => TryGetValueAsEscapableString("labeltarget");
-            set => AddOrRemove("labeltarget", value, v => new DotEscapeStringAttribute("labeltarget", v));
+            set => AddOrRemove("labeltarget", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString LabelUrlTooltip
         {
             get => TryGetValueAsEscapableString("labeltooltip");
-            set => AddOrRemove("labeltooltip", value, v => new DotEscapeStringAttribute("labeltooltip", v));
+            set => AddOrRemove("labeltooltip", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString EdgeUrl
         {
             get => TryGetValueAsEscapableString("edgeURL");
-            set => AddOrRemove("edgeURL", value, v => new DotEscapeStringAttribute("edgeURL", v));
+            set => AddOrRemove("edgeURL", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString EdgeHref
         {
             get => TryGetValueAsEscapableString("edgehref");
-            set => AddOrRemove("edgehref", value, v => new DotEscapeStringAttribute("edgehref", v));
+            set => AddOrRemove("edgehref", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString EdgeUrlTarget
         {
             get => TryGetValueAsEscapableString("edgetarget");
-            set => AddOrRemove("edgetarget", value, v => new DotEscapeStringAttribute("edgetarget", v));
+            set => AddOrRemove("edgetarget", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString EdgeUrlTooltip
         {
             get => TryGetValueAsEscapableString("edgetooltip");
-            set => AddOrRemove("edgetooltip", value, v => new DotEscapeStringAttribute("edgetooltip", v));
+            set => AddOrRemove("edgetooltip", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public override void SetFilled(DotColorDefinition value)

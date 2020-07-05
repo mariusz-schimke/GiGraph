@@ -243,10 +243,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
         }
 
-        protected virtual void AddOrRemove<TAttribute, TValue>(string key, TValue value, Func<TValue, TAttribute> attribute)
+        protected virtual void AddOrRemove<TAttribute, TValue>(string key, TValue value, Func<string, TValue, TAttribute> newAttribute)
             where TAttribute : DotAttribute
         {
-            AddOrRemove(key, value is null ? null : attribute(value));
+            AddOrRemove(key, value is null ? null : newAttribute(key, value));
         }
     }
 }

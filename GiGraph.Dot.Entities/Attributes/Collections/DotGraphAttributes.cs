@@ -9,51 +9,51 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotRankDirection? LayoutDirection
         {
             get => TryGetValueAs<DotRankDirection>("rankdir", out var result) ? result : (DotRankDirection?) null;
-            set => AddOrRemove("rankdir", value, v => new DotRankDirectionAttribute("rankdir", v.Value));
+            set => AddOrRemove("rankdir", value, (k, v) => new DotRankDirectionAttribute(k, v.Value));
         }
 
         public virtual DotEdgeShape? EdgeShape
         {
             get => TryGetValueAs<DotEdgeShape>("splines", out var result) ? result : (DotEdgeShape?) null;
-            set => AddOrRemove("splines", value, v => new DotEdgeShapeAttribute("splines", v.Value));
+            set => AddOrRemove("splines", value, (k, v) => new DotEdgeShapeAttribute(k, v.Value));
         }
 
         public virtual bool? ConcentrateEdges
         {
             get => TryGetValueAs<bool>("concentrate", out var result) ? result : (bool?) null;
-            set => AddOrRemove("concentrate", value, v => new DotBoolAttribute("concentrate", v.Value));
+            set => AddOrRemove("concentrate", value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         public virtual bool? Compound
         {
             get => TryGetValueAs<bool>("compound", out var result) ? result : (bool?) null;
-            set => AddOrRemove("compound", value, v => new DotBoolAttribute("compound", v.Value));
+            set => AddOrRemove("compound", value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         public virtual bool? ForceExternalLabels
         {
             get => TryGetValueAs<bool>("forcelabels", out var result) ? result : (bool?) null;
-            set => AddOrRemove("forcelabels", value, v => new DotBoolAttribute("forcelabels", v.Value));
+            set => AddOrRemove("forcelabels", value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         public virtual string FontPath
         {
             get => TryGetValueAs<string>("fontpath", out var result) ? result : null;
-            set => AddOrRemove("fontpath", value, v => new DotStringAttribute("fontpath", v));
+            set => AddOrRemove("fontpath", value, (k, v) => new DotStringAttribute(k, v));
         }
 
         public virtual string Charset
         {
             get => TryGetValueAs<string>("charset", out var result) ? result : null;
-            set => AddOrRemove("charset", value, v => new DotStringAttribute("charset", v));
+            set => AddOrRemove("charset", value, (k, v) => new DotStringAttribute(k, v));
         }
 
         public virtual double? NodeSpacing
         {
             get => TryGetValueAs<double>("nodesep", out var result) ? result : (double?) null;
-            set => AddOrRemove("nodesep", value, v => v.Value < 0.0
+            set => AddOrRemove("nodesep", value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(NodeSpacing), v.Value, "Node spacing must be greater than or equal to 0.")
-                : new DotDoubleAttribute("nodesep", v.Value));
+                : new DotDoubleAttribute(k, v.Value));
         }
 
         public virtual DotRankSeparationDefinition RankSeparation
@@ -74,7 +74,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
                 return TryGetValueAs<double[]>(key, out var values) ? values : null;
             }
-            set => AddOrRemove("ranksep", value, v => new DotRankSeparationAttribute("ranksep", v));
+            set => AddOrRemove("ranksep", value, (k, v) => new DotRankSeparationAttribute(k, v));
         }
     }
 }
