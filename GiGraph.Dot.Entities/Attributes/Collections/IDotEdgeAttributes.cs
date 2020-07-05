@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotLabel Label { get; set; }
 
         /// <summary>
-        ///     External label for the edge. The label will be placed near the center of the edge. This can be useful in DOT to avoid the
+        ///     External label for the edge. The label will be placed near the center of the edge. This can be useful in dot to avoid the
         ///     occasional problem when the use of edge labels distorts the layout. For other layouts, this attribute can be viewed as a
         ///     synonym for the <see cref="Label" /> attribute. These labels are added after all nodes and edges have been placed. The labels
         ///     will be placed so that they do not overlap any node or label. This means it may not be possible to place all of them. To

@@ -130,7 +130,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Controls how, and if, edges are represented. By default, the attribute is unset. How this is interpreted depends on the
-        ///     layout. For DOT, the default is to draw edges as splines (<see cref="DotEdgeShape.Spline" />). For all other layouts, the
+        ///     layout. For dot, the default is to draw edges as splines (<see cref="DotEdgeShape.Spline" />). For all other layouts, the
         ///     default is to draw edges as line segments (<see cref="DotEdgeShape.Line" />). Note that for these latter layouts, if
         ///     <see cref="DotEdgeShape.Spline" /> is used, this requires non-overlapping nodes (cf.
         ///     <see href="http://www.graphviz.org/doc/info/attrs.html#d:overlap">
@@ -210,7 +210,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     If true, edge concentrators are used (default: false). This merges multiedges into a single edge, and causes partially
-        ///     parallel edges to share part of their paths. The latter feature is not yet available outside of DOT.
+        ///     parallel edges to share part of their paths. The latter feature is not yet available outside of dot.
         /// </summary>
         bool? ConcentrateEdges { get; set; }
 
@@ -250,16 +250,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     <para>
-        ///         In DOT, this specifies the minimum space between two adjacent nodes in the same rank, in inches.
+        ///         In dot, this specifies the minimum space between two adjacent nodes in the same rank, in inches (default: 0.25, minimum:
+        ///         0.02).
         ///     </para>
         ///     <para>
         ///         For other layouts, this affects the spacing between loops on a single node, or multiedges between a pair of nodes.
         ///     </para>
-        ///     <para>
-        ///         Default: 0.25, minimum: 0.02.
-        ///     </para>
         /// </summary>
-        double? NodeSpacing { get; set; }
+        double? NodeSeparation { get; set; }
 
         /// <summary>
         ///     <para>

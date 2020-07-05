@@ -48,11 +48,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("charset", value, (k, v) => new DotStringAttribute(k, v));
         }
 
-        public virtual double? NodeSpacing
+        public virtual double? NodeSeparation
         {
             get => TryGetValueAs<double>("nodesep", out var result) ? result : (double?) null;
             set => AddOrRemove("nodesep", value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(NodeSpacing), v.Value, "Node spacing must be greater than or equal to 0.")
+                ? throw new ArgumentOutOfRangeException(nameof(NodeSeparation), v.Value, "Node separation must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
         }
 
@@ -67,12 +67,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                     return definition;
                 }
 
-                if (TryGetValueAs<double>(key, out var value))
+                if (TryGetValueAs<double>(key, out var doubleValue))
                 {
-                    return value;
+                    return doubleValue;
                 }
 
-                return TryGetValueAs<double[]>(key, out var values) ? values : null;
+                return TryGetValueAs<double[]>(key, out var doubleList) ? doubleList : null;
             }
             set => AddOrRemove("ranksep", value, (k, v) => new DotRankSeparationAttribute(k, v));
         }

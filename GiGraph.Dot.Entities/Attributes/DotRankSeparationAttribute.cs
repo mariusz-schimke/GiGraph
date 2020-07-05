@@ -4,7 +4,7 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     In DOT, this attribute gives the desired rank separation, in inches (<see cref="DotRankSeparation" />). In twopi, this
+    ///     In dot, this attribute gives the desired rank separation, in inches (<see cref="DotRankSeparation" />). In twopi, this
     ///     attribute specifies the radial separation of concentric circles (<see cref="DotRankSeparationList" />).
     /// </summary>
     public class DotRankSeparationAttribute : DotAttribute<DotRankSeparationDefinition>

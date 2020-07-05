@@ -298,7 +298,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotRankSeparationAttribute Set(string key, DotRankSeparationDefinition value);
 
         /// <summary>
-        ///     Adds or replaces the specified rank separation attribute in the collection (for DOT).
+        ///     Adds or replaces the specified rank separation attribute in the collection (for dot).
         /// </summary>
         /// <param name="key">
         ///     The key of the attribute to include in the collection.
