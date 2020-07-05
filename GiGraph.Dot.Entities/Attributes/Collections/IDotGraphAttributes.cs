@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -129,7 +130,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Controls how, and if, edges are represented. By default, the attribute is unset. How this is interpreted depends on the
-        ///     layout. For DOT, the default is to draw edges as splines (<see cref="DotEdgeShape.Spline" />). For all other layouts, the
+        ///     layout. For dot, the default is to draw edges as splines (<see cref="DotEdgeShape.Spline" />). For all other layouts, the
         ///     default is to draw edges as line segments (<see cref="DotEdgeShape.Line" />). Note that for these latter layouts, if
         ///     <see cref="DotEdgeShape.Spline" /> is used, this requires non-overlapping nodes (cf.
         ///     <see href="http://www.graphviz.org/doc/info/attrs.html#d:overlap">
@@ -209,7 +210,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     If true, edge concentrators are used (default: false). This merges multiedges into a single edge, and causes partially
-        ///     parallel edges to share part of their paths. The latter feature is not yet available outside of DOT.
+        ///     parallel edges to share part of their paths. The latter feature is not yet available outside of dot.
         /// </summary>
         bool? ConcentrateEdges { get; set; }
 
@@ -249,15 +250,28 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     <para>
-        ///         In DOT, this specifies the minimum space between two adjacent nodes in the same rank, in inches.
+        ///         In dot, this specifies the minimum space between two adjacent nodes in the same rank, in inches (default: 0.25, minimum:
+        ///         0.02).
         ///     </para>
         ///     <para>
         ///         For other layouts, this affects the spacing between loops on a single node, or multiedges between a pair of nodes.
         ///     </para>
+        /// </summary>
+        double? NodeSeparation { get; set; }
+
+        /// <summary>
         ///     <para>
-        ///         Default: 0.25, minimum: 0.02.
+        ///         In dot, this gives the desired rank separation, in inches (<see cref="DotRankSeparation" />; default: 0.5, minimum:
+        ///         0.02). This is the minimum vertical distance between the bottom of the nodes in one rank and the tops of nodes in the
+        ///         next.
+        ///     </para>
+        ///     <para>
+        ///         In twopi, this attribute specifies the radial separation of concentric circles (default: 1, minimum: 0.02). For twopi,
+        ///         this can also be a list of doubles (<see cref="DotRankSeparationList" />). The first double specifies the radius of the
+        ///         inner circle; the second double specifies the increase in radius from the first circle to the second; etc. If there are
+        ///         more circles than numbers, the last number is used as the increment for the remainder.
         ///     </para>
         /// </summary>
-        double? NodeSpacing { get; set; }
+        DotRankSeparationDefinition RankSeparation { get; set; }
     }
 }

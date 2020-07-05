@@ -12,127 +12,127 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotColorDefinition Color
         {
             get => TryGetValueAsColorDefinition("color");
-            set => AddOrRemove("color", value, v => new DotColorDefinitionAttribute("color", v));
+            set => AddOrRemove("color", value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
         public virtual DotColorDefinition BackgroundColor
         {
             get => TryGetValueAsColorDefinition("bgcolor");
-            set => AddOrRemove("bgcolor", value, v => new DotColorDefinitionAttribute("bgcolor", v));
+            set => AddOrRemove("bgcolor", value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
         public virtual DotColorDefinition FillColor
         {
             get => TryGetValueAsColorDefinition("fillcolor");
-            set => AddOrRemove("fillcolor", value, v => new DotColorDefinitionAttribute("fillcolor", v));
+            set => AddOrRemove("fillcolor", value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
         public virtual int? GradientAngle
         {
             get => TryGetValueAs<int>("gradientangle", out var result) ? result : (int?) null;
-            set => AddOrRemove("gradientangle", value, v => new DotIntAttribute("gradientangle", v.Value));
+            set => AddOrRemove("gradientangle", value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
         public virtual int? Peripheries
         {
             get => TryGetValueAs<int>("peripheries", out var result) ? result : (int?) null;
-            set => AddOrRemove("peripheries", value, v => v.Value < 0
+            set => AddOrRemove("peripheries", value, (k, v) => v.Value < 0
                 ? throw new ArgumentOutOfRangeException(nameof(Peripheries), v.Value, "The number of peripheries must be greater than or equal to 0.")
-                : new DotIntAttribute("peripheries", v.Value));
+                : new DotIntAttribute(k, v.Value));
         }
 
         public virtual double? PenWidth
         {
             get => TryGetValueAs<double>("penwidth", out var result) ? result : (double?) null;
-            set => AddOrRemove("penwidth", value, v => v.Value < 0.0
+            set => AddOrRemove("penwidth", value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(PenWidth), v.Value, "Pen width must be greater than or equal to 0.")
-                : new DotDoubleAttribute("penwidth", v.Value));
+                : new DotDoubleAttribute(k, v.Value));
         }
 
         public virtual Color? PenColor
         {
             get => TryGetValueAs<Color>("pencolor", out var result) ? result : (Color?) null;
-            set => AddOrRemove("pencolor", value, v => new DotColorAttribute("pencolor", v.Value));
+            set => AddOrRemove("pencolor", value, (k, v) => new DotColorAttribute(k, v.Value));
         }
 
         public virtual Color? FontColor
         {
             get => TryGetValueAs<Color>("fontcolor", out var result) ? result : (Color?) null;
-            set => AddOrRemove("fontcolor", value, v => new DotColorAttribute("fontcolor", v.Value));
+            set => AddOrRemove("fontcolor", value, (k, v) => new DotColorAttribute(k, v.Value));
         }
 
         public virtual string FontName
         {
             get => TryGetValueAs<string>("fontname", out var result) ? result : null;
-            set => AddOrRemove("fontname", value, v => new DotStringAttribute("fontname", v));
+            set => AddOrRemove("fontname", value, (k, v) => new DotStringAttribute(k, v));
         }
 
         public virtual double? FontSize
         {
             get => TryGetValueAs<double>("fontsize", out var result) ? result : (double?) null;
-            set => AddOrRemove("fontsize", value, v => v.Value < 0.0
+            set => AddOrRemove("fontsize", value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(FontSize), v.Value, "Font size must be greater than or equal to 0.")
-                : new DotDoubleAttribute("fontsize", v.Value));
+                : new DotDoubleAttribute(k, v.Value));
         }
 
         public virtual DotLabel Label
         {
             get => TryGetValueAsLabel("label");
-            set => AddOrRemove("label", value, v => new DotLabelAttribute("label", v));
+            set => AddOrRemove("label", value, (k, v) => new DotLabelAttribute(k, v));
         }
 
         public virtual DotLabel ExternalLabel
         {
             get => TryGetValueAsLabel("xlabel");
-            set => AddOrRemove("xlabel", value, v => new DotLabelAttribute("xlabel", v));
+            set => AddOrRemove("xlabel", value, (k, v) => new DotLabelAttribute(k, v));
         }
 
         public virtual DotHorizontalLabelAlignment? HorizontalLabelAlignment
         {
             get => TryGetValueAs<DotHorizontalLabelAlignment>("labeljust", out var result) ? result : (DotHorizontalLabelAlignment?) null;
-            set => AddOrRemove("labeljust", value, v => new DotHorizontalLabelAlignmentAttribute("labeljust", v.Value));
+            set => AddOrRemove("labeljust", value, (k, v) => new DotHorizontalLabelAlignmentAttribute(k, v.Value));
         }
 
         public virtual DotVerticalLabelAlignment? VerticalLabelAlignment
         {
             get => TryGetValueAs<DotVerticalLabelAlignment>("labelloc", out var result) ? result : (DotVerticalLabelAlignment?) null;
-            set => AddOrRemove("labelloc", value, v => new DotVerticalLabelAlignmentAttribute("labelloc", v.Value));
+            set => AddOrRemove("labelloc", value, (k, v) => new DotVerticalLabelAlignmentAttribute(k, v.Value));
         }
 
         public virtual DotEscapableString Tooltip
         {
             get => TryGetValueAsEscapableString("tooltip");
-            set => AddOrRemove("tooltip", value, v => new DotEscapeStringAttribute("tooltip", v));
+            set => AddOrRemove("tooltip", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotStyle? Style
         {
             get => TryGetValueAs<DotStyle>("style", out var result) ? result : (DotStyle?) null;
-            set => AddOrRemove("style", value, v => new DotStyleAttribute("style", v.Value));
+            set => AddOrRemove("style", value, (k, v) => new DotStyleAttribute(k, v.Value));
         }
 
         public virtual string Comment
         {
             get => TryGetValueAs<string>("comment", out var result) ? result : null;
-            set => AddOrRemove("comment", value, v => new DotStringAttribute("comment", v));
+            set => AddOrRemove("comment", value, (k, v) => new DotStringAttribute(k, v));
         }
 
         public virtual DotEscapableString Url
         {
             get => TryGetValueAsEscapableString("URL");
-            set => AddOrRemove("URL", value, v => new DotEscapeStringAttribute("URL", v));
+            set => AddOrRemove("URL", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString Href
         {
             get => TryGetValueAsEscapableString("href");
-            set => AddOrRemove("href", value, v => new DotEscapeStringAttribute("href", v));
+            set => AddOrRemove("href", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         public virtual DotEscapableString UrlTarget
         {
             get => TryGetValueAsEscapableString("target");
-            set => AddOrRemove("target", value, v => new DotEscapeStringAttribute("target", v));
+            set => AddOrRemove("target", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         protected virtual DotColorDefinition TryGetValueAsColorDefinition(string key)

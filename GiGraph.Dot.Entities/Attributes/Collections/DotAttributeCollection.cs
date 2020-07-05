@@ -7,6 +7,7 @@ using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -80,6 +81,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotDoubleAttribute(key, value));
         }
 
+        public virtual DotDoubleListAttribute Set(string key, params double[] value)
+        {
+            return Set(new DotDoubleListAttribute(key, value));
+        }
+
+        public virtual DotDoubleListAttribute Set(string key, IEnumerable<double> value)
+        {
+            return Set(new DotDoubleListAttribute(key, value));
+        }
+
         public virtual DotBoolAttribute Set(string key, bool value)
         {
             return Set(new DotBoolAttribute(key, value));
@@ -133,6 +144,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotRankDirectionAttribute Set(string key, DotRankDirection value)
         {
             return Set(new DotRankDirectionAttribute(key, value));
+        }
+
+        public virtual DotRankSeparationAttribute Set(string key, DotRankSeparationDefinition value)
+        {
+            return Set(new DotRankSeparationAttribute(key, value));
+        }
+
+        public virtual DotRankSeparationAttribute Set(string key, DotRankSeparation value)
+        {
+            return Set(new DotRankSeparationAttribute(key, value));
+        }
+
+        public virtual DotRankSeparationAttribute Set(string key, DotRankSeparationList value)
+        {
+            return Set(new DotRankSeparationAttribute(key, value));
         }
 
         public virtual DotEndpointPortAttribute Set(string key, DotEndpointPort value)
@@ -217,10 +243,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
         }
 
-        protected virtual void AddOrRemove<TAttribute, TValue>(string key, TValue value, Func<TValue, TAttribute> attribute)
+        protected virtual void AddOrRemove<TAttribute, TValue>(string key, TValue value, Func<string, TValue, TAttribute> newAttribute)
             where TAttribute : DotAttribute
         {
-            AddOrRemove(key, value is null ? null : attribute(value));
+            AddOrRemove(key, value is null ? null : newAttribute(key, value));
         }
     }
 }

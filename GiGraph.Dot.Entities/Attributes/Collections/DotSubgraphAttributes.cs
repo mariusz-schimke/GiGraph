@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotRank? Rank
         {
             get => TryGetValueAs<DotRank>("rank", out var result) ? result : (DotRank?) null;
-            set => AddOrRemove("rank", value, v => new DotRankAttribute("rank", v.Value));
+            set => AddOrRemove("rank", value, (k, v) => new DotRankAttribute(k, v.Value));
         }
 
         public override void SetFilled(DotColorDefinition value)

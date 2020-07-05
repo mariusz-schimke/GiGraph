@@ -8,61 +8,61 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotNodeShape? Shape
         {
             get => TryGetValueAs<DotNodeShape>("shape", out var result) ? result : (DotNodeShape?) null;
-            set => AddOrRemove("shape", value, v => new DotNodeShapeAttribute("shape", v.Value));
+            set => AddOrRemove("shape", value, (k, v) => new DotNodeShapeAttribute(k, v.Value));
         }
 
         public virtual int? Sides
         {
             get => TryGetValueAs<int>("sides", out var result) ? result : (int?) null;
-            set => AddOrRemove("sides", value, v => v.Value < 0
+            set => AddOrRemove("sides", value, (k, v) => v.Value < 0
                 ? throw new ArgumentOutOfRangeException(nameof(Sides), v.Value, "The number of sides must be greater than or equal to 0.")
-                : new DotIntAttribute("sides", v.Value));
+                : new DotIntAttribute(k, v.Value));
         }
 
         public virtual bool? Regular
         {
             get => TryGetValueAs<bool>("regular", out var result) ? result : (bool?) null;
-            set => AddOrRemove("regular", value, v => new DotBoolAttribute("regular", v.Value));
+            set => AddOrRemove("regular", value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         public virtual double? Skew
         {
             get => TryGetValueAs<double>("skew", out var result) ? result : (double?) null;
-            set => AddOrRemove("skew", value, v => new DotDoubleAttribute("skew", v.Value));
+            set => AddOrRemove("skew", value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
         public virtual double? Distortion
         {
             get => TryGetValueAs<double>("distortion", out var result) ? result : (double?) null;
-            set => AddOrRemove("distortion", value, v => new DotDoubleAttribute("distortion", v.Value));
+            set => AddOrRemove("distortion", value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
         public virtual double? Orientation
         {
             get => TryGetValueAs<double>("orientation", out var result) ? result : (double?) null;
-            set => AddOrRemove("orientation", value, v => new DotDoubleAttribute("orientation", v.Value));
+            set => AddOrRemove("orientation", value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
         public virtual double? Width
         {
             get => TryGetValueAs<double>("width", out var result) ? result : (double?) null;
-            set => AddOrRemove("width", value, v => v.Value < 0
+            set => AddOrRemove("width", value, (k, v) => v.Value < 0
                 ? throw new ArgumentOutOfRangeException(nameof(Width), v.Value, "The width must be greater than or equal to 0.")
-                : new DotDoubleAttribute("width", v.Value));
+                : new DotDoubleAttribute(k, v.Value));
         }
 
         public virtual double? Height
         {
             get => TryGetValueAs<double>("height", out var result) ? result : (double?) null;
-            set => AddOrRemove("height", value, v => v.Value < 0
+            set => AddOrRemove("height", value, (k, v) => v.Value < 0
                 ? throw new ArgumentOutOfRangeException(nameof(Height), v.Value, "The height must be greater than or equal to 0.")
-                : new DotDoubleAttribute("height", v.Value));
+                : new DotDoubleAttribute(k, v.Value));
         }
 
         public virtual DotNodeSizing? Sizing
         {
             get => TryGetValueAs<DotNodeSizing>("fixedsize", out var result) ? result : (DotNodeSizing?) null;
-            set => AddOrRemove("fixedsize", value, v => new DotNodeFixedSizeAttribute("fixedsize", v.Value));
+            set => AddOrRemove("fixedsize", value, (k, v) => new DotNodeFixedSizeAttribute(k, v.Value));
         }
     }
 }
