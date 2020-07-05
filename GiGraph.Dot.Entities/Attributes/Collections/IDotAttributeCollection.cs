@@ -142,6 +142,28 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotDoubleAttribute Set(string key, double value);
 
         /// <summary>
+        ///     Adds or replaces the specified double list value attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotDoubleListAttribute Set(string key, params double[] value);
+
+        /// <summary>
+        ///     Adds or replaces the specified double list value attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotDoubleListAttribute Set(string key, IEnumerable<double> value);
+
+        /// <summary>
         ///     Adds or replaces the specified boolean value attribute in the collection.
         /// </summary>
         /// <param name="key">

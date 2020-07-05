@@ -80,6 +80,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotDoubleAttribute(key, value));
         }
 
+        public virtual DotDoubleListAttribute Set(string key, params double[] value)
+        {
+            return Set(new DotDoubleListAttribute(key, value));
+        }
+
+        public virtual DotDoubleListAttribute Set(string key, IEnumerable<double> value)
+        {
+            return Set(new DotDoubleListAttribute(key, value));
+        }
+
         public virtual DotBoolAttribute Set(string key, bool value)
         {
             return Set(new DotBoolAttribute(key, value));
