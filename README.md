@@ -14,6 +14,14 @@ For the complete documentation of the DOT language, and the visualization capabi
 
 
 
+Special thanks to [JetBrains](https://www.jetbrains.com/?from=GiGraphDot) for providing me with their fantastic IDE and tools!
+
+<p align="center">
+  <img src="./Assets/jetbrains-variant-4-grayscale.svg">
+</p>
+
+
+
 # Generating a graph
 
 For a basic case, create a new **DotGraph** instance, and just add an edge to its *Edges* collection, or a node to its *Nodes* collection. To generate the output DOT script, call the ***Build*** extension method on the graph.
