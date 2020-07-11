@@ -8,9 +8,18 @@
 
 For the complete documentation of the DOT language, and the visualization capabilities of the available software, please go to <a href="https://graphviz.gitlab.io/documentation" target="_blank">Graphviz - Graph Vizualization Software</a>.
 
-###### Built with [.NET Standard 2.0](https://docs.microsoft.com/en-US/dotnet/standard/net-standard#net-implementation-support) (compatible with *.NET Core 2.0* and above, *.NET Framework 4.6.1* and above).
+###### Built with <a href="https://docs.microsoft.com/en-US/dotnet/standard/net-standard#net-implementation-support" target="_blank">.NET Standard 2.0</a> (compatible with *.NET Core 2.0* and above, *.NET Framework 4.6.1* and above).
 
 ###### Available on NuGet: [![#](https://img.shields.io/nuget/v/GiGraph.Dot)](https://www.nuget.org/packages/GiGraph.Dot/)
+
+###### Special thanks to <a href="https://www.jetbrains.com/?from=GiGraphDot" target="_blank">JetBrains</a> for providing me free of charge with their fantastic Rider IDE and tools!
+
+
+
+<p align="center">
+  <img src="./Assets/jetbrains.svg" width="200px">
+</p>
+
 
 
 
