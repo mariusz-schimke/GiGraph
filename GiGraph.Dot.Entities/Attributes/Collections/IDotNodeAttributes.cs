@@ -82,6 +82,31 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         DotColorDefinition FillColor { get; set; }
 
+        // TODO: replace shapefile with a property reference
+        /// <summary>
+        ///     <para>
+        ///         Gives the name of a file containing an image to be displayed inside the node. The image file must be in one of the
+        ///         <see href="http://www.graphviz.org/doc/info/output.html#d:image_fmts">
+        ///             recognized formats
+        ///         </see>
+        ///         , typically JPEG, PNG, GIF, BMP, SVG or Postscript, and be able to be converted into the desired output format.
+        ///     </para>
+        ///     <para>
+        ///         The file must contain the image size information. This is usually trivially true for the bitmap formats. For PostScript,
+        ///         the file must contain a line starting with %%BoundingBox: followed by four integers specifying the lower left x and y
+        ///         coordinates and the upper right x and y coordinates of the bounding box for the image, the coordinates being in points.
+        ///         An SVG image file must contain width and height attributes, typically as part of the svg element. The values for these
+        ///         should have the form of a floating point number, followed by optional units, e.g., width="76pt". Recognized units are in,
+        ///         px, pc, pt, cm and mm for inches, pixels, picas, points, centimeters and millimeters, respectively. The default unit is
+        ///         points.
+        ///     </para>
+        ///     <para>
+        ///         Unlike with the shapefile attribute, the image is treated as node content rather than the entire node. In particular, an
+        ///         image can be contained in a node of any shape, not just a rectangle.
+        ///     </para>
+        /// </summary>
+        string ImagePath { get; set; }
+
         /// <summary>
         ///     If a gradient fill is being used, this determines the angle of the fill. For linear fills, the colors transform along a line
         ///     specified by the angle and the center of the object. For radial fills, a value of zero causes the colors to transform

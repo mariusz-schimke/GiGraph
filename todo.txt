@@ -1,5 +1,5 @@
 Road map:
-1. Gradually add support for all available attributes (image, imagepath etc., rotate, truecolor, pack, packmode).
+1. Gradually add support for all available attributes (imagepath, imagepos, inputscale, shapefile, truecolor, pad, pack, packmode).
 2. Verify the correctness of XML documentations.
 
 Other (always valid): 
