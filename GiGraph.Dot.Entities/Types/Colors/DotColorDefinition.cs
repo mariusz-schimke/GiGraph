@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <param name="color">
         ///     The color to initialize the instance with.
         /// </param>
-        public static DotColor Mono(Color color)
+        public static DotColor Plain(Color color)
         {
             return new DotColor(color);
         }

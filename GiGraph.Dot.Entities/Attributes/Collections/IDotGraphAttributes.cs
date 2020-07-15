@@ -109,7 +109,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         int? GradientAngle { get; set; }
 
         /// <summary>
-        ///     If 90, sets drawing orientation to landscape.
+        ///     If 90, sets drawing orientation to landscape (default: 0).
         /// </summary>
         int? RotateBy { get; set; }
 

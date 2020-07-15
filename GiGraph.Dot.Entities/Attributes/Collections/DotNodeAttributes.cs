@@ -64,5 +64,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetValueAs<DotNodeSizing>("fixedsize", out var result) ? result : (DotNodeSizing?) null;
             set => AddOrRemove("fixedsize", value, (k, v) => new DotNodeFixedSizeAttribute(k, v.Value));
         }
+
+        public virtual string ImagePath
+        {
+            get => TryGetValueAs<string>("image", out var result) ? result : null;
+            set => AddOrRemove("image", value, (k, v) => new DotStringAttribute(k, v));
+        }
     }
 }
