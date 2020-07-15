@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///         The returned color list will be rendered as a gradient fill when two colors with no weights (<see cref="DotColor" />) are
         ///         specified (refers to the root graph, nodes, and clusters), or as two parallel splines when applied to an edge. When a
         ///         weight is specified for either of the colors (<see cref="DotWeightedColor" />), the returned color list will be rendered
-        ///         as a two-color fill (refers to the root graph, nodes, and clusters), or as a two-segment spline, when applied to an edge
+        ///         as dual-color fill (refers to the root graph, nodes, and clusters), or as a two-segment spline, when applied to an edge
         ///         (with color proportions determined by the weight in both cases).
         ///     </para>
         ///     <para>
@@ -63,7 +63,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///         The returned color list will be rendered as a gradient fill when two colors with no weights (<see cref="DotColor" />) are
         ///         specified (refers to the root graph, nodes, and clusters), or as two parallel splines when applied to an edge. When a
         ///         weight is specified for either of the colors (<see cref="DotWeightedColor" />), the returned color list will be rendered
-        ///         as a two-color fill (refers to the root graph, nodes, and clusters), or as a two-segment spline, when applied to an edge
+        ///         as dual-color fill (refers to the root graph, nodes, and clusters), or as a two-segment spline, when applied to an edge
         ///         (with color proportions determined by the weight in both cases).
         ///     </para>
         ///     <para>
@@ -136,7 +136,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <summary>
         ///     Creates a new color list that will be rendered as a gradient fill when weights are not specified (refers to the root graph,
         ///     nodes, and clusters), or as two parallel splines when applied to an edge. When a weight is specified for either of the
-        ///     colors, the returned color list will be rendered as a two-color fill (refers to the root graph, nodes, and clusters), or as a
+        ///     colors, the returned color list will be rendered as dual-color fill (refers to the root graph, nodes, and clusters), or as a
         ///     two-segment spline, when applied to an edge.
         /// </summary>
         /// <param name="color1">
