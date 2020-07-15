@@ -173,8 +173,8 @@ namespace GiGraph.Examples
             graph.Subgraphs.Add(sg =>
             {
                 // nodes with a two-color fill; fill proportions specified by the weight parameter
-                sg.Nodes.Add("C").Attributes.FillColor = DotColorDefinition.Double(Color.RoyalBlue, Color.Turquoise, weight2: 0.25);
-                sg.Nodes.Add("D").Attributes.FillColor = DotColorDefinition.Double(Color.Navy, Color.RoyalBlue, weight1: 0.25);
+                sg.Nodes.Add("C").Attributes.FillColor = DotColorDefinition.Dual(Color.RoyalBlue, Color.Turquoise, weight2: 0.25);
+                sg.Nodes.Add("D").Attributes.FillColor = DotColorDefinition.Dual(Color.Navy, Color.RoyalBlue, weight1: 0.25);
 
                 sg.Edges.Add("C", "D", edge =>
                 {

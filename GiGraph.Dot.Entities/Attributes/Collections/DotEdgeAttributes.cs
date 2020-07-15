@@ -8,6 +8,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public class DotEdgeAttributes : DotEntityAttributes, IDotEdgeAttributes
     {
+        public virtual bool? ClipHead
+        {
+            get => TryGetValueAs<bool>("headclip", out var result) ? result : (bool?) null;
+            set => AddOrRemove("headclip", value, (k, v) => new DotBoolAttribute(k, v.Value));
+        }
+
+        public virtual bool? ClipTail
+        {
+            get => TryGetValueAs<bool>("tailclip", out var result) ? result : (bool?) null;
+            set => AddOrRemove("tailclip", value, (k, v) => new DotBoolAttribute(k, v.Value));
+        }
+
         public virtual double? ArrowSize
         {
             get => TryGetValueAs<double>("arrowsize", out var result) ? result : (double?) null;

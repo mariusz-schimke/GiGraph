@@ -196,6 +196,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         bool? Decorate { get; set; }
 
         /// <summary>
+        ///     If true (default), the head of the edge is clipped to the boundary of the head node; otherwise, the end of the edge goes to
+        ///     the center of the node, or the center of a port, if applicable.
+        /// </summary>
+        bool? ClipHead { get; set; }
+
+        /// <summary>
+        ///     If true (default), the tail of the edge is clipped to the boundary of the tail node; otherwise, the end of the edge goes to
+        ///     the center of the node, or the center of a port, if applicable.
+        /// </summary>
+        bool? ClipTail { get; set; }
+
+        /// <summary>
         ///     If false, the edge is not used in ranking the nodes. Default: true. See
         ///     <see href="http://www.graphviz.org/doc/info/attrs.html#a:constraint">
         ///         documentation
