@@ -109,6 +109,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         int? GradientAngle { get; set; }
 
         /// <summary>
+        ///     If 90, sets drawing orientation to landscape.
+        /// </summary>
+        int? RotateBy { get; set; }
+
+        /// <summary>
         ///     Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges and clusters. The
         ///     value is inherited by subclusters. It has no effect on text. Default: 1.0, minimum: 0.0.
         /// </summary>

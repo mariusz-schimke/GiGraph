@@ -76,5 +76,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
             set => AddOrRemove("ranksep", value, (k, v) => new DotRankSeparationAttribute(k, v));
         }
+
+        public virtual int? RotateBy
+        {
+            get => TryGetValueAs<int>("rotate", out var result) ? result : (int?) null;
+            set => AddOrRemove("rotate", value, (k, v) => new DotIntAttribute(k, v.Value));
+        }
     }
 }
