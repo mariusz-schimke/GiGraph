@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("forcelabels", value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
-        public virtual string FontPath
+        public virtual string FontDirectories
         {
             get => TryGetValueAs<string>("fontpath", out var result) ? result : null;
             set => AddOrRemove("fontpath", value, (k, v) => new DotStringAttribute(k, v));
