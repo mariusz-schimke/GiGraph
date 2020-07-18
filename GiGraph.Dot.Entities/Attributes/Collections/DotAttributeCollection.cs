@@ -230,6 +230,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             Add(key, attribute);
         }
 
+        public virtual DotAlignmentAttribute Set(string key, DotAlignment value)
+        {
+            return Set(new DotAlignmentAttribute(key, value));
+        }
+
         protected virtual void AddOrRemove<T>(string key, T attribute)
             where T : DotAttribute
         {

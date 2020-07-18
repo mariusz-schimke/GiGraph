@@ -121,6 +121,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotVerticalAlignmentAttribute Set(string key, DotVerticalAlignment value);
 
         /// <summary>
+        ///     Adds or replaces the specified image alignment attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotAlignmentAttribute Set(string key, DotAlignment value);
+
+        /// <summary>
         ///     Adds or replaces the specified integer value attribute in the collection.
         /// </summary>
         /// <param name="key">

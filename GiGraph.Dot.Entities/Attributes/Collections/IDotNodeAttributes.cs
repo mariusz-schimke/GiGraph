@@ -82,7 +82,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         DotColorDefinition FillColor { get; set; }
 
-        // TODO: replace shapefile with a property reference
         /// <summary>
         ///     <para>
         ///         Gives the name of a file containing an image to be displayed inside the node. The image file must be in one of the
