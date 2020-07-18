@@ -1,19 +1,18 @@
+using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
-using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Points
 {
     /// <summary>
     ///     Represents a point in a two-dimensional plain.
     /// </summary>
-    public class DotPoint : IDotEncodable
+    public class DotPoint : DotPointDefinition
     {
         public DotPoint(double x, double y, bool? isFixed = null)
+            : base(isFixed)
         {
             X = x;
             Y = y;
-            IsFixed = isFixed;
         }
 
         public DotPoint(double xy, bool? isFixed = null)
@@ -31,16 +30,7 @@ namespace GiGraph.Dot.Entities.Types.Points
         /// </summary>
         public virtual double Y { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the value indicating whether the node position (if applied to nodes) should not change (input-only).
-        /// </summary>
-        public virtual bool? IsFixed { get; set; }
-
-        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
-        {
-            var culture = CultureInfo.InvariantCulture;
-            return $"{X.ToString(culture)},{Y.ToString(culture)}{(true == IsFixed ? "!" : string.Empty)}";
-        }
+        public override IEnumerable<double> Coordinates => new[] { X, Y };
 
         public static implicit operator DotPoint(double? xy)
         {

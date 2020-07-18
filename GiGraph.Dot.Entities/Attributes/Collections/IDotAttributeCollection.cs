@@ -221,6 +221,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotPointAttribute Set(string key, DotPoint value);
 
         /// <summary>
+        ///     Adds or replaces the specified point attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotPointDefinitionAttribute Set(string key, DotPointDefinition value);
+
+        /// <summary>
         ///     Adds or replaces the specified node shape attribute in the collection.
         /// </summary>
         /// <param name="key">
