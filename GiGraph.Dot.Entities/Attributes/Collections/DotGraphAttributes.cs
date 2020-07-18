@@ -82,5 +82,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetValueAs<int>("rotate", out var result) ? result : (int?) null;
             set => AddOrRemove("rotate", value, (k, v) => new DotIntAttribute(k, v.Value));
         }
+
+        public virtual string ImageDirectories
+        {
+            get => TryGetValueAs<string>("imagepath", out var result) ? result : null;
+            set => AddOrRemove("imagepath", value, (k, v) => new DotStringAttribute(k, v));
+        }
     }
 }
