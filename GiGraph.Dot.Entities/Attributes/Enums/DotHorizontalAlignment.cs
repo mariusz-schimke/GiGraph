@@ -3,7 +3,7 @@
     /// <summary>
     ///     The justification options for labels.
     /// </summary>
-    public enum DotHorizontalLabelAlignment
+    public enum DotHorizontalAlignment
     {
         Left,
         Center,

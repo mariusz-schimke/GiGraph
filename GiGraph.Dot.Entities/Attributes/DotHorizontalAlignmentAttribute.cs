@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     ///     Label justification attribute.
     /// </summary>
-    public class DotHorizontalLabelAlignmentAttribute : DotAttribute<DotHorizontalLabelAlignment>
+    public class DotHorizontalAlignmentAttribute : DotAttribute<DotHorizontalAlignment>
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotHorizontalLabelAlignmentAttribute(string key, DotHorizontalLabelAlignment value)
+        public DotHorizontalAlignmentAttribute(string key, DotHorizontalAlignment value)
             : base(key, value)
         {
         }
@@ -27,13 +27,13 @@ namespace GiGraph.Dot.Entities.Attributes
         {
             switch (Value)
             {
-                case DotHorizontalLabelAlignment.Left:
+                case DotHorizontalAlignment.Left:
                     return "l";
 
-                case DotHorizontalLabelAlignment.Center:
+                case DotHorizontalAlignment.Center:
                     return "c";
 
-                case DotHorizontalLabelAlignment.Right:
+                case DotHorizontalAlignment.Right:
                     return "r";
 
                 default:

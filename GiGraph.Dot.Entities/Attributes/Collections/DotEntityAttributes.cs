@@ -87,10 +87,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("xlabel", value, (k, v) => new DotLabelAttribute(k, v));
         }
 
-        public virtual DotHorizontalLabelAlignment? HorizontalLabelAlignment
+        public virtual DotHorizontalAlignment? HorizontalLabelAlignment
         {
-            get => TryGetValueAs<DotHorizontalLabelAlignment>("labeljust", out var result) ? result : (DotHorizontalLabelAlignment?) null;
-            set => AddOrRemove("labeljust", value, (k, v) => new DotHorizontalLabelAlignmentAttribute(k, v.Value));
+            get => TryGetValueAs<DotHorizontalAlignment>("labeljust", out var result) ? result : (DotHorizontalAlignment?) null;
+            set => AddOrRemove("labeljust", value, (k, v) => new DotHorizontalAlignmentAttribute(k, v.Value));
         }
 
         public virtual DotVerticalLabelAlignment? VerticalLabelAlignment

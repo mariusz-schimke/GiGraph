@@ -29,10 +29,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Justification for graph and cluster labels. Note that a subgraph inherits attributes from its parent. Thus, if the root graph
-        ///     sets this attribute to <see cref="DotHorizontalLabelAlignment.Left" />, the subgraph inherits this value. Default:
-        ///     <see cref="DotHorizontalLabelAlignment.Center" />.
+        ///     sets this attribute to <see cref="DotHorizontalAlignment.Left" />, the subgraph inherits this value. Default:
+        ///     <see cref="DotHorizontalAlignment.Center" />.
         /// </summary>
-        DotHorizontalLabelAlignment? HorizontalLabelAlignment { get; set; }
+        DotHorizontalAlignment? HorizontalLabelAlignment { get; set; }
 
         /// <summary>
         ///     Vertical placement of the label (default: <see cref="DotVerticalLabelAlignment.Bottom" />; only
