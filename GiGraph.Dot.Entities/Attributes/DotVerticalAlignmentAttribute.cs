@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     ///     Vertical Label alignment attribute.
     /// </summary>
-    public class DotVerticalLabelAlignmentAttribute : DotAttribute<DotVerticalLabelAlignment>
+    public class DotVerticalAlignmentAttribute : DotAttribute<DotVerticalAlignment>
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotVerticalLabelAlignmentAttribute(string key, DotVerticalLabelAlignment value)
+        public DotVerticalAlignmentAttribute(string key, DotVerticalAlignment value)
             : base(key, value)
         {
         }
@@ -27,13 +27,13 @@ namespace GiGraph.Dot.Entities.Attributes
         {
             switch (Value)
             {
-                case DotVerticalLabelAlignment.Top:
+                case DotVerticalAlignment.Top:
                     return "t";
 
-                case DotVerticalLabelAlignment.Center:
+                case DotVerticalAlignment.Center:
                     return "c";
 
-                case DotVerticalLabelAlignment.Bottom:
+                case DotVerticalAlignment.Bottom:
                     return "b";
 
                 default:
