@@ -70,5 +70,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetValueAs<string>("image", out var result) ? result : null;
             set => AddOrRemove("image", value, (k, v) => new DotStringAttribute(k, v));
         }
+
+        public virtual DotAlignment? ImageAlignment
+        {
+            get => TryGetValueAs<DotAlignment>("imagepos", out var result) ? result : (DotAlignment?) null;
+            set => AddOrRemove("imagepos", value, (k, v) => new DotAlignmentAttribute(k, v.Value));
+        }
     }
 }
