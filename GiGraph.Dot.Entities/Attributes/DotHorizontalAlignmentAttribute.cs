@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Attributes
                     return "r";
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified horizontal label alignment '{Value}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified horizontal alignment '{Value}' is not supported.");
             }
         }
     }

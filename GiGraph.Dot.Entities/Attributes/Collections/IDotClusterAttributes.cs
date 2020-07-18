@@ -35,8 +35,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Vertical placement of the label (default: <see cref="DotVerticalAlignment.Top" />; only
-        ///     <see cref="DotVerticalAlignment.Top" /> and <see cref="DotVerticalAlignment.Bottom" /> are allowed). Note that a
-        ///     subgraph inherits attributes from its parent. Thus, if the root graph sets this attribute to
+        ///     <see cref="DotVerticalAlignment.Top" /> and <see cref="DotVerticalAlignment.Bottom" /> are allowed). Note that a subgraph
+        ///     inherits attributes from its parent. Thus, if the root graph sets this attribute to
         ///     <see cref="DotVerticalAlignment.Bottom" />, the subgraph inherits this value.
         /// </summary>
         DotVerticalAlignment? VerticalLabelAlignment { get; set; }

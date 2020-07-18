@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Attributes
                     return "b";
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified vertical label alignment '{Value}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified vertical alignment '{Value}' is not supported.");
             }
         }
     }
