@@ -5,9 +5,9 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     Vertical Label alignment attribute.
+    ///     Label justification attribute.
     /// </summary>
-    public class DotVerticalLabelAlignmentAttribute : DotAttribute<DotVerticalLabelAlignment>
+    public class DotHorizontalAlignmentAttribute : DotAttribute<DotHorizontalAlignment>
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotVerticalLabelAlignmentAttribute(string key, DotVerticalLabelAlignment value)
+        public DotHorizontalAlignmentAttribute(string key, DotHorizontalAlignment value)
             : base(key, value)
         {
         }
@@ -27,17 +27,17 @@ namespace GiGraph.Dot.Entities.Attributes
         {
             switch (Value)
             {
-                case DotVerticalLabelAlignment.Top:
-                    return "t";
+                case DotHorizontalAlignment.Left:
+                    return "l";
 
-                case DotVerticalLabelAlignment.Center:
+                case DotHorizontalAlignment.Center:
                     return "c";
 
-                case DotVerticalLabelAlignment.Bottom:
-                    return "b";
+                case DotHorizontalAlignment.Right:
+                    return "r";
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified vertical label alignment '{Value}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified horizontal alignment '{Value}' is not supported.");
             }
         }
     }

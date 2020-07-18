@@ -29,18 +29,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Justification for graph and cluster labels. Note that a subgraph inherits attributes from its parent. Thus, if the root graph
-        ///     sets this attribute to <see cref="DotHorizontalLabelAlignment.Left" />, the subgraph inherits this value. Default:
-        ///     <see cref="DotHorizontalLabelAlignment.Center" />.
+        ///     sets this attribute to <see cref="DotHorizontalAlignment.Left" />, the subgraph inherits this value. Default:
+        ///     <see cref="DotHorizontalAlignment.Center" />.
         /// </summary>
-        DotHorizontalLabelAlignment? HorizontalLabelAlignment { get; set; }
+        DotHorizontalAlignment? HorizontalLabelAlignment { get; set; }
 
         /// <summary>
-        ///     Vertical placement of the label (default: <see cref="DotVerticalLabelAlignment.Bottom" />; only
-        ///     <see cref="DotVerticalLabelAlignment.Top" /> and <see cref="DotVerticalLabelAlignment.Bottom" /> are allowed). Note that a
-        ///     subgraph inherits attributes from its parent. Thus, if the root graph sets this attribute to
-        ///     <see cref="DotVerticalLabelAlignment.Bottom" />, the subgraph inherits this value.
+        ///     Vertical placement of the label (default: <see cref="DotVerticalAlignment.Bottom" />; only
+        ///     <see cref="DotVerticalAlignment.Top" /> and <see cref="DotVerticalAlignment.Bottom" /> are allowed). Note that a subgraph
+        ///     inherits attributes from its parent. Thus, if the root graph sets this attribute to
+        ///     <see cref="DotVerticalAlignment.Bottom" />, the subgraph inherits this value.
         /// </summary>
-        DotVerticalLabelAlignment? VerticalLabelAlignment { get; set; }
+        DotVerticalAlignment? VerticalLabelAlignment { get; set; }
 
         /// <summary>
         ///     If true, all node <see cref="IDotNodeAttributes.ExternalLabel" /> and edge <see cref="IDotEdgeAttributes.ExternalLabel" />

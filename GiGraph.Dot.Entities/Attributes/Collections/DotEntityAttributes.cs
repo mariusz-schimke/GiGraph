@@ -87,16 +87,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("xlabel", value, (k, v) => new DotLabelAttribute(k, v));
         }
 
-        public virtual DotHorizontalLabelAlignment? HorizontalLabelAlignment
+        public virtual DotHorizontalAlignment? HorizontalLabelAlignment
         {
-            get => TryGetValueAs<DotHorizontalLabelAlignment>("labeljust", out var result) ? result : (DotHorizontalLabelAlignment?) null;
-            set => AddOrRemove("labeljust", value, (k, v) => new DotHorizontalLabelAlignmentAttribute(k, v.Value));
+            get => TryGetValueAs<DotHorizontalAlignment>("labeljust", out var result) ? result : (DotHorizontalAlignment?) null;
+            set => AddOrRemove("labeljust", value, (k, v) => new DotHorizontalAlignmentAttribute(k, v.Value));
         }
 
-        public virtual DotVerticalLabelAlignment? VerticalLabelAlignment
+        public virtual DotVerticalAlignment? VerticalLabelAlignment
         {
-            get => TryGetValueAs<DotVerticalLabelAlignment>("labelloc", out var result) ? result : (DotVerticalLabelAlignment?) null;
-            set => AddOrRemove("labelloc", value, (k, v) => new DotVerticalLabelAlignmentAttribute(k, v.Value));
+            get => TryGetValueAs<DotVerticalAlignment>("labelloc", out var result) ? result : (DotVerticalAlignment?) null;
+            set => AddOrRemove("labelloc", value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
         }
 
         public virtual DotEscapableString Tooltip

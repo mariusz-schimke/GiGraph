@@ -3,7 +3,7 @@
     /// <summary>
     ///     The vertical label alignment options.
     /// </summary>
-    public enum DotVerticalLabelAlignment
+    public enum DotVerticalAlignment
     {
         Top,
         Center,

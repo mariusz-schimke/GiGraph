@@ -42,10 +42,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotLabel ExternalLabel { get; set; }
 
         /// <summary>
-        ///     Vertical placement of the label (default: <see cref="DotVerticalLabelAlignment.Center" />). This attribute is used only when
-        ///     the height of the node is larger than the height of its label.
+        ///     Vertical placement of the label (default: <see cref="DotVerticalAlignment.Center" />). This attribute is used only when the
+        ///     height of the node is larger than the height of its label.
         /// </summary>
-        DotVerticalLabelAlignment? VerticalLabelAlignment { get; set; }
+        DotVerticalAlignment? VerticalLabelAlignment { get; set; }
 
         /// <summary>
         ///     Tooltip annotation attached to the node. If unset, Graphviz will use the <see cref="Label" /> attribute if defined. Note that
@@ -106,6 +106,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     </para>
         /// </summary>
         string ImagePath { get; set; }
+
+        /// <summary>
+        ///     Controls how an image is positioned within its containing node. This only has an effect when the image is smaller than the
+        ///     containing node. The default is to be centered both horizontally and vertically (<see cref="DotAlignment.MiddleCenter" />).
+        /// </summary>
+        DotAlignment? ImageAlignment { get; set; }
 
         /// <summary>
         ///     If a gradient fill is being used, this determines the angle of the fill. For linear fills, the colors transform along a line
