@@ -7,6 +7,7 @@ using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Strings;
 
@@ -233,6 +234,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotAlignmentAttribute Set(string key, DotAlignment value)
         {
             return Set(new DotAlignmentAttribute(key, value));
+        }
+
+        public virtual DotPointAttribute Set(string key, DotPoint value)
+        {
+            return Set(new DotPointAttribute(key, value));
         }
 
         protected virtual void AddOrRemove<T>(string key, T attribute)

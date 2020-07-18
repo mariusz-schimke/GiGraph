@@ -1,5 +1,6 @@
 using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -87,6 +88,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetValueAs<string>("imagepath", out var result) ? result : null;
             set => AddOrRemove("imagepath", value, (k, v) => new DotStringAttribute(k, v));
+        }
+
+        public virtual DotPoint Padding
+        {
+            get => TryGetValueAs<DotPoint>("pad", out var result) ? result : null;
+            set => AddOrRemove("pad", value, (k, v) => new DotPointAttribute(k, v));
         }
     }
 }
