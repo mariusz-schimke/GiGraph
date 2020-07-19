@@ -90,6 +90,34 @@ namespace GiGraph.Dot.Entities.Types.Points
         }
 
         /// <summary>
+        ///     Creates and initializes a new point in a two-dimensional plain.
+        /// </summary>
+        /// <param name="point">
+        ///     The <see cref="System.Drawing.Point" /> to initialize the instance with.
+        /// </param>
+        /// <param name="isFixed">
+        ///     Indicates whether the node position (if applied to nodes) should not change (input-only).
+        /// </param>
+        public DotPoint(Point point, bool? isFixed = null)
+            : this(isFixed, point.X, point.Y)
+        {
+        }
+
+        /// <summary>
+        ///     Creates and initializes a new point in a two-dimensional plain.
+        /// </summary>
+        /// <param name="point">
+        ///     The <see cref="System.Drawing.PointF" /> to initialize the instance with.
+        /// </param>
+        /// <param name="isFixed">
+        ///     Indicates whether the node position (if applied to nodes) should not change (input-only).
+        /// </param>
+        public DotPoint(PointF point, bool? isFixed = null)
+            : this(isFixed, point.X, point.Y)
+        {
+        }
+
+        /// <summary>
         ///     Gets the coordinates of the point.
         /// </summary>
         public virtual double[] Coordinates { get; }
@@ -117,12 +145,12 @@ namespace GiGraph.Dot.Entities.Types.Points
 
         public static implicit operator DotPoint(Point? point)
         {
-            return point.HasValue ? new DotPoint(point.Value.X, point.Value.Y) : null;
+            return point.HasValue ? new DotPoint(point.Value) : null;
         }
 
         public static implicit operator DotPoint(PointF? point)
         {
-            return point.HasValue ? new DotPoint(point.Value.X, point.Value.Y) : null;
+            return point.HasValue ? new DotPoint(point.Value) : null;
         }
 
         public static implicit operator DotPoint(double[] coordinates)
