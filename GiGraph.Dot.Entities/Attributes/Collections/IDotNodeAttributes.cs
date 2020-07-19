@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Records;
 using GiGraph.Dot.Entities.Types.Strings;
 
@@ -179,6 +180,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     Gets or sets the value indicating how the size of the node is determined (default: <see cref="DotNodeSizing.Auto" />).
         /// </summary>
         DotNodeSizing? Sizing { get; set; }
+
+        /// <summary>
+        ///     Specifies space left around the node's label. By default, the value is (0.11, 0.055).
+        /// </summary>
+        DotPoint Margin { get; set; }
 
         /// <summary>
         ///     Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black" />).

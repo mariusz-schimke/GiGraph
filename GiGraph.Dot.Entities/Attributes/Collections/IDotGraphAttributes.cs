@@ -304,5 +304,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     </para>
         /// </summary>
         DotPoint Padding { get; set; }
+
+        /// <summary>
+        ///     <para>
+        ///         Sets x and y margins of canvas, in inches. If the margin is a single double, both margins are set equal to the given
+        ///         value.
+        ///     </para>
+        ///     <para>
+        ///         Note that the margin is not part of the drawing but just empty space left around the drawing. It basically corresponds to
+        ///         a translation of drawing, as would be necessary to center a drawing on a page. Nothing is actually drawn in the margin.
+        ///         To actually extend the background of a drawing, see the <see cref="Padding" /> attribute.
+        ///     </para>
+        /// </summary>
+        DotPoint Margin { get; set; }
     }
 }
