@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Strings;
 
@@ -291,5 +292,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     </para>
         /// </summary>
         string ImageDirectories { get; set; }
+
+        /// <summary>
+        ///     <para>
+        ///         Specifies how much, in inches, to extend the drawing area around the minimal area needed to draw the graph. This area is
+        ///         part of the drawing, and will be filled with the background color, if appropriate. Default: 0.0555 (4 points).
+        ///     </para>
+        ///     <para>
+        ///         Normally, a small pad is used for aesthetic reasons, especially when a background color is used, to avoid having nodes
+        ///         and edges abutting the boundary of the drawn region.
+        ///     </para>
+        /// </summary>
+        DotPoint Padding { get; set; }
     }
 }

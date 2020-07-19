@@ -16,12 +16,12 @@ namespace GiGraph.Dot.Output.Writers.GlobalAttributesWriters
             _useStatementDelimiter = useStatementDelimiter;
         }
 
-        public IDotGraphAttributesWriter BeginGraphAttributes()
+        public virtual IDotGraphAttributesWriter BeginGraphAttributes()
         {
             return new DotGraphAttributesWriter(_tokenWriter, _context);
         }
 
-        public void EndGraphAttributes()
+        public virtual void EndGraphAttributes()
         {
             EndEntityDefaults();
         }

@@ -6,6 +6,7 @@ using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Strings;
 
@@ -121,6 +122,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotVerticalAlignmentAttribute Set(string key, DotVerticalAlignment value);
 
         /// <summary>
+        ///     Adds or replaces the specified image alignment attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotAlignmentAttribute Set(string key, DotAlignment value);
+
+        /// <summary>
         ///     Adds or replaces the specified integer value attribute in the collection.
         /// </summary>
         /// <param name="key">
@@ -196,6 +208,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The value of the attribute to include in the collection.
         /// </param>
         DotColorDefinitionAttribute Set(string key, DotColorDefinition value);
+
+        /// <summary>
+        ///     Adds or replaces the specified point attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotPointAttribute Set(string key, DotPoint value);
 
         /// <summary>
         ///     Adds or replaces the specified node shape attribute in the collection.

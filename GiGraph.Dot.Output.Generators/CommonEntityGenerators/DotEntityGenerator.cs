@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
             _entityGenerators = entityGenerators;
         }
 
-        public void Generate(TEntity entity, TWriter writer, bool annotate)
+        public virtual void Generate(TEntity entity, TWriter writer, bool annotate)
         {
             if (annotate)
             {

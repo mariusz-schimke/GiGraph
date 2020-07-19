@@ -1,12 +1,10 @@
 Road map:
-1. Gradually add support for all available attributes (inputscale, shapefile [update textual references in code; see todo list], truecolor, pad, pack, packmode).
+1. Gradually add support for all available attributes (margin, pack, packmode).
 2. Verify the correctness of XML documentations.
 
-Other (always valid): 
+Other:
 1. Check if methods are coherently marked as virtual.
-2. Check if interfaces should be extracted for any classes.
-3. Check if properties should or shouldn't have setters.
-4. Some attributes are settable only on specified types of elements, but it turns out that the documentation is not always right, and other elements support those attributes too.
+2. Some attributes are settable only on specified types of elements, but it turns out that the documentation is not always right, and other elements support those attributes too.
 
 Nice-to-haves:
 1. Implement predefined HTML nodes: https://www.graphviz.org/doc/info/shapes.html#polygon.
