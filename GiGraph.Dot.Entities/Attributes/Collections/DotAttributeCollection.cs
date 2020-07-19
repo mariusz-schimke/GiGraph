@@ -241,11 +241,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotPointAttribute(key, value));
         }
 
-        public virtual DotPointDefinitionAttribute Set(string key, DotPointDefinition value)
-        {
-            return Set(new DotPointDefinitionAttribute(key, value));
-        }
-
         protected virtual void AddOrRemove<T>(string key, T attribute)
             where T : DotAttribute
         {
