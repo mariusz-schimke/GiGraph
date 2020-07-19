@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -200,5 +201,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     .
         /// </summary>
         DotEscapableString UrlTarget { get; set; }
+
+        /// <summary>
+        ///     Specifies the space between the nodes in the cluster and the cluster bounding box. By default, this is 8 points.
+        /// </summary>
+        DotPoint Margin { get; set; }
     }
 }

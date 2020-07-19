@@ -3,6 +3,7 @@ using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -133,6 +134,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetValueAsEscapableString("target");
             set => AddOrRemove("target", value, (k, v) => new DotEscapeStringAttribute(k, v));
+        }
+
+        public virtual DotPoint Margin
+        {
+            get => TryGetValueAs<DotPoint>("margin", out var result) ? result : null;
+            set => AddOrRemove("margin", value, (k, v) => new DotPointAttribute(k, v));
         }
 
         protected virtual DotColorDefinition TryGetValueAsColorDefinition(string key)
