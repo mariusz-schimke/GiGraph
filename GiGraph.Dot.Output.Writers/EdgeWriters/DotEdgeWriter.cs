@@ -25,16 +25,16 @@ namespace GiGraph.Dot.Output.Writers.EdgeWriters
             return new DotEndpointWriter(_tokenWriter, _context);
         }
 
-        public void EndEndpoint()
+        public virtual void EndEndpoint()
         {
         }
 
-        public IDotSubgraphWriter BeginSubgraph(bool preferExplicitKeyword)
+        public virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitKeyword)
         {
             return new DotSubgraphWriter(_tokenWriter.SingleLine(), _context, preferExplicitKeyword);
         }
 
-        public void EndSubgraph()
+        public virtual void EndSubgraph()
         {
             _tokenWriter.ClearLingerBuffer();
         }

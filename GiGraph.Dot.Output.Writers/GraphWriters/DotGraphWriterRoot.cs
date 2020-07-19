@@ -18,16 +18,16 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
             return new DotGraphWriter(_tokenWriter, new DotEntityWriterContext(directed));
         }
 
-        public void EndGraph()
+        public virtual void EndGraph()
         {
         }
 
-        public IDotCommentWriter BeginComment(bool preferBlockComment)
+        public virtual IDotCommentWriter BeginComment(bool preferBlockComment)
         {
             return new DotCommentWriter(_tokenWriter, preferBlockComment);
         }
 
-        public void EndComment()
+        public virtual void EndComment()
         {
             _tokenWriter.LineBreak()
                         .Indentation(linger: true);
