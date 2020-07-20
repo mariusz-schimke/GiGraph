@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Output.Options;
@@ -13,7 +14,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
 
         protected internal DotConcatenatedEscapeString(IEnumerable<DotEscapeString> items)
         {
-            _items = items;
+            _items = items ?? throw new ArgumentNullException(nameof(items), "Escape string collection cannot be null.");
         }
 
         protected internal override string GetRawString()
