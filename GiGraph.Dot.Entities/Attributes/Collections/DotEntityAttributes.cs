@@ -164,9 +164,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         protected virtual DotEscapeString TryGetValueAsEscapeString(string key)
         {
-            if (TryGetValueAs<DotEscapeString>(key, out var dotEscapableString))
+            if (TryGetValueAs<DotEscapeString>(key, out var escapeString))
             {
-                return dotEscapableString;
+                return escapeString;
             }
 
             return TryGetValueAs<string>(key, out var value) ? (DotEscapedString) value : null;
