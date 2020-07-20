@@ -238,7 +238,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
 
         public override string ToString()
         {
-            return string.Join(string.Empty, _items.Select(item => item.ToString()));
+            return string.Join(string.Empty, _items.Select(item => item?.ToString()));
         }
 
         /// <summary>
