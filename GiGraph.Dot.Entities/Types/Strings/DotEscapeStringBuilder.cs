@@ -30,19 +30,14 @@ namespace GiGraph.Dot.Entities.Types.Strings
         }
 
         /// <summary>
-        ///     Creates a new instance initialized with escaped text (the text will not be processed further, so it should follow the
-        ///     escaping rules available in the
-        ///     <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">
-        ///         documentation
-        ///     </see>
-        ///     ).
+        ///     Creates a new instance initialized with text.
         /// </summary>
-        /// <param name="escapedText">
-        ///     The escaped text to initialize the instance with.
+        /// <param name="text">
+        ///     The text to initialize the instance with.
         /// </param>
-        public DotEscapeStringBuilder(DotEscapedString escapedText)
+        public DotEscapeStringBuilder(DotEscapeString text)
         {
-            AppendEscaped(escapedText);
+            Append(text);
         }
 
         /// <summary>
@@ -52,6 +47,17 @@ namespace GiGraph.Dot.Entities.Types.Strings
         ///     The text to append to the instance.
         /// </param>
         public virtual DotEscapeStringBuilder Append(string text)
+        {
+            return Append((DotEscapeString) text);
+        }
+
+        /// <summary>
+        ///     Appends the specified text to the instance.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to append to the instance.
+        /// </param>
+        public virtual DotEscapeStringBuilder Append(DotEscapeString text)
         {
             _items.Add(text);
             return this;
@@ -68,10 +74,9 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// <param name="escapedText">
         ///     The escaped text to append to the instance.
         /// </param>
-        public virtual DotEscapeStringBuilder AppendEscaped(DotEscapedString escapedText)
+        public virtual DotEscapeStringBuilder AppendEscaped(string escapedText)
         {
-            _items.Add(escapedText);
-            return this;
+            return Append((DotEscapeString) (DotEscapedString) escapedText);
         }
 
         /// <summary>
@@ -84,16 +89,75 @@ namespace GiGraph.Dot.Entities.Types.Strings
         }
 
         /// <summary>
-        ///     Appends the specified escaped line of text to the instance.
+        ///     Appends the specified line of text to the instance.
         /// </summary>
         /// <param name="line">
         ///     The line of text to append to the instance.
         /// </param>
         public virtual DotEscapeStringBuilder AppendLine(string line)
         {
+            return AppendLine((DotEscapeString) line);
+        }
+
+        /// <summary>
+        ///     Appends the specified line of text to the instance.
+        /// </summary>
+        /// <param name="line">
+        ///     The line of text to append to the instance.
+        /// </param>
+        public virtual DotEscapeStringBuilder AppendLine(DotEscapeString line)
+        {
             _items.Add(line);
             _items.Add(DotEscapeString.NewLine);
             return this;
+        }
+
+        /// <summary>
+        ///     Appends the specified line of text to the instance and marks it as left-justified (if the text contains line breaks,
+        ///     justification will be applied to the last line only on graph visualization).
+        /// </summary>
+        /// <param name="line">
+        ///     The line of text to append to the instance.
+        /// </param>
+        public virtual DotEscapeStringBuilder AppendLeftJustifiedLine(string line)
+        {
+            return Append(line).JustifyLeft();
+        }
+
+        /// <summary>
+        ///     Appends the specified line of text to the instance and marks it as left-justified (if the text contains line breaks,
+        ///     justification will be applied to the last line only on graph visualization).
+        /// </summary>
+        /// <param name="line">
+        ///     The line of text to append to the instance.
+        /// </param>
+        public virtual DotEscapeStringBuilder AppendLeftJustifiedLine(DotEscapeString line)
+        {
+            return Append(line).JustifyLeft();
+        }
+
+        /// <summary>
+        ///     Appends the specified line of text to the instance and marks it as right-justified (if the text contains line breaks,
+        ///     justification will be applied to the last line only on graph visualization).
+        /// </summary>
+        /// <param name="line">
+        ///     The line of text to append to the instance.
+        /// </param>
+        public virtual DotEscapeStringBuilder AppendRightJustifiedLine(string line)
+        {
+            return Append(line).JustifyRight();
+        }
+
+        /// <summary>
+        ///     Appends the specified line of text to the instance and marks it as right-justified (if the text contains line breaks,
+        ///     justification will be applied to the last line only on graph visualization).
+        /// </summary>
+        /// <param name="line">
+        ///     The line of text to append to the instance.
+        /// </param>
+        public virtual DotEscapeStringBuilder AppendRightJustifiedLine(DotEscapeString line)
+        {
+            return Append(line).JustifyRight();
         }
 
         /// <summary>
@@ -107,11 +171,9 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// <param name="escapedLine">
         ///     The escaped line of text to append to the instance.
         /// </param>
-        public virtual DotEscapeStringBuilder AppendEscapedLine(DotEscapedString escapedLine)
+        public virtual DotEscapeStringBuilder AppendEscapedLine(string escapedLine)
         {
-            _items.Add(escapedLine);
-            _items.Add(DotEscapeString.NewLine);
-            return this;
+            return AppendLine((DotEscapeString) (DotEscapedString) escapedLine);
         }
 
         /// <summary>
@@ -124,8 +186,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder JustifyLeft()
         {
-            _items.Add(DotEscapeString.JustifyLeft);
-            return this;
+            return Append((DotEscapeString) DotEscapeString.JustifyLeft);
         }
 
         /// <summary>
@@ -138,8 +199,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder JustifyRight()
         {
-            _items.Add(DotEscapeString.JustifyRight);
-            return this;
+            return Append((DotEscapeString) DotEscapeString.JustifyRight);
         }
 
         /// <summary>
@@ -147,8 +207,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder AppendLabel()
         {
-            _items.Add(DotEscapeString.Label);
-            return this;
+            return Append((DotEscapeString) DotEscapeString.Label);
         }
 
         /// <summary>
@@ -156,8 +215,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder AppendGraphId()
         {
-            _items.Add(DotEscapeString.GraphId);
-            return this;
+            return Append((DotEscapeString) DotEscapeString.GraphId);
         }
 
         /// <summary>
@@ -166,8 +224,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder AppendEdgeDefinition()
         {
-            _items.Add(DotEscapeString.EdgeDefinition);
-            return this;
+            return Append((DotEscapeString) DotEscapeString.EdgeDefinition);
         }
 
         /// <summary>
@@ -176,8 +233,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder AppendNodeId()
         {
-            _items.Add(DotEscapeString.NodeId);
-            return this;
+            return Append((DotEscapeString) DotEscapeString.NodeId);
         }
 
         public override string ToString()
