@@ -19,20 +19,20 @@ namespace GiGraph.Dot.Entities.Types.Labels
     /// </summary>
     public class DotLabelString : DotLabel
     {
-        protected readonly DotEscapableString _text;
+        protected readonly DotEscapeString _text;
 
-        protected DotLabelString(DotEscapableString text)
+        protected DotLabelString(DotEscapeString text)
         {
             _text = text ?? throw new ArgumentNullException(nameof(text), "Text cannot be null.");
         }
 
         protected DotLabelString(DotEscapedString text)
-            : this((DotEscapableString) text)
+            : this((DotEscapeString) text)
         {
         }
 
         protected DotLabelString(string text)
-            : this((DotEscapableString) text)
+            : this((DotEscapeString) text)
         {
         }
 
@@ -51,12 +51,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
             return text is {} ? new DotLabelString(text) : null;
         }
 
-        public static implicit operator DotLabelString(DotEscapableString text)
-        {
-            return text is {} ? new DotLabelString(text) : null;
-        }
-
-        public static implicit operator DotLabelString(DotEscapedString text)
+        public static implicit operator DotLabelString(DotEscapeString text)
         {
             return text is {} ? new DotLabelString(text) : null;
         }
@@ -66,7 +61,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
             return label?._text;
         }
 
-        public static implicit operator DotEscapableString(DotLabelString label)
+        public static implicit operator DotEscapeString(DotLabelString label)
         {
             return label?._text;
         }

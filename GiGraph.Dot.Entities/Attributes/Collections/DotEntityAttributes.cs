@@ -100,9 +100,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("labelloc", value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
         }
 
-        public virtual DotEscapableString Tooltip
+        public virtual DotEscapeString Tooltip
         {
-            get => TryGetValueAsEscapableString("tooltip");
+            get => TryGetValueAsEscapeString("tooltip");
             set => AddOrRemove("tooltip", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
@@ -118,21 +118,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("comment", value, (k, v) => new DotStringAttribute(k, v));
         }
 
-        public virtual DotEscapableString Url
+        public virtual DotEscapeString Url
         {
-            get => TryGetValueAsEscapableString("URL");
+            get => TryGetValueAsEscapeString("URL");
             set => AddOrRemove("URL", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
-        public virtual DotEscapableString Href
+        public virtual DotEscapeString Href
         {
-            get => TryGetValueAsEscapableString("href");
+            get => TryGetValueAsEscapeString("href");
             set => AddOrRemove("href", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
-        public virtual DotEscapableString UrlTarget
+        public virtual DotEscapeString UrlTarget
         {
-            get => TryGetValueAsEscapableString("target");
+            get => TryGetValueAsEscapeString("target");
             set => AddOrRemove("target", value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
@@ -159,12 +159,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 return label;
             }
 
-            return TryGetValueAsEscapableString(key);
+            return TryGetValueAsEscapeString(key);
         }
 
-        protected virtual DotEscapableString TryGetValueAsEscapableString(string key)
+        protected virtual DotEscapeString TryGetValueAsEscapeString(string key)
         {
-            if (TryGetValueAs<DotEscapableString>(key, out var dotEscapableString))
+            if (TryGetValueAs<DotEscapeString>(key, out var dotEscapableString))
             {
                 return dotEscapableString;
             }

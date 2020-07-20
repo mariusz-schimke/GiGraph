@@ -5,9 +5,9 @@ namespace GiGraph.Dot.Entities.Types.Strings
     /// <summary>
     ///     A string of a record node field that will be escaped on output DOT script generation.
     /// </summary>
-    public class DotEscapableRecordFieldString : DotEscapableString
+    public class DotUnescapedRecordFieldString : DotUnescapedString
     {
-        protected DotEscapableRecordFieldString(string value)
+        protected DotUnescapedRecordFieldString(string value)
             : base(value)
         {
         }
@@ -33,9 +33,9 @@ namespace GiGraph.Dot.Entities.Types.Strings
             return DotEscapedString.FromEscapedString(value);
         }
 
-        public static implicit operator DotEscapableRecordFieldString(string value)
+        public static implicit operator DotUnescapedRecordFieldString(string value)
         {
-            return value is {} ? new DotEscapableRecordFieldString(value) : null;
+            return value is {} ? new DotUnescapedRecordFieldString(value) : null;
         }
     }
 }

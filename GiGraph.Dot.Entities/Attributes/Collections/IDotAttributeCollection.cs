@@ -43,8 +43,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotStringAttribute Set(string key, string value);
 
         /// <summary>
-        ///     Adds or replaces the specified string attribute in the collection. The specified string will be escaped on DOT script
-        ///     generation.
+        ///     Adds or replaces the specified string attribute in the collection. generation.
         /// </summary>
         /// <param name="key">
         ///     The key of the attribute to include in the collection.
@@ -52,7 +51,29 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotEscapeStringAttribute Set(string key, DotEscapableString value);
+        DotEscapeStringAttribute Set(string key, DotEscapeString value);
+
+        /// <summary>
+        ///     Adds or replaces the specified string attribute in the collection. The string will be escaped on DOT script generation.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotEscapeStringAttribute Set(string key, DotUnescapedString value);
+
+        /// <summary>
+        ///     Adds or replaces the specified concatenated string attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotEscapeStringAttribute Set(string key, DotConcatenatedEscapeString value);
 
         /// <summary>
         ///     Adds or replaces the specified string attribute in the collection. It is assumed that the value is an escaped string (it will

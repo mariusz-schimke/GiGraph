@@ -15,8 +15,8 @@ namespace GiGraph.Dot.Entities.Types.Records
     /// </summary>
     public class DotRecordTextField : DotRecordField
     {
-        protected DotEscapableRecordFieldString _portName;
-        protected DotEscapableRecordFieldString _text;
+        protected DotUnescapedRecordFieldString _portName;
+        protected DotUnescapedRecordFieldString _text;
 
         /// <summary>
         ///     Creates a new text field instance.

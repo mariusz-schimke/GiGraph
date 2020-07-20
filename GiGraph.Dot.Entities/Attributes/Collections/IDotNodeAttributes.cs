@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     if the label is a record specification or an HTML-like label, the resulting tooltip may be unhelpful. In this case, if
         ///     tooltips will be generated, the user should set a tooltip attribute explicitly.
         /// </summary>
-        DotEscapableString Tooltip { get; set; }
+        DotEscapeString Tooltip { get; set; }
 
         /// <summary>
         ///     Gets or sets the color of the node (default: <see cref="System.Drawing.Color.Black" />). If <see cref="DotColorList" /> is
@@ -282,12 +282,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///         drawn boundary will only be active on its label. For other output, the active area is its bounding box.
         ///     </para>
         /// </summary>
-        DotEscapableString Url { get; set; }
+        DotEscapeString Url { get; set; }
 
         /// <summary>
         ///     Synonym for <see cref="Url" />.
         /// </summary>
-        DotEscapableString Href { get; set; }
+        DotEscapeString Href { get; set; }
 
         /// <summary>
         ///     If the object has a <see cref="Url" /> specified, this attribute determines which window of the browser is used for the URL.
@@ -297,6 +297,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     </see>
         ///     .
         /// </summary>
-        DotEscapableString UrlTarget { get; set; }
+        DotEscapeString UrlTarget { get; set; }
     }
 }

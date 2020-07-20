@@ -237,12 +237,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     CMAP and I*MAP formats. This serves as the base URL for relative URLs in the former, and as the default image map file in the
         ///     latter.
         /// </summary>
-        DotEscapableString Url { get; set; }
+        DotEscapeString Url { get; set; }
 
         /// <summary>
         ///     Synonym for <see cref="Url" />.
         /// </summary>
-        DotEscapableString Href { get; set; }
+        DotEscapeString Href { get; set; }
 
         /// <summary>
         ///     If the object has a <see cref="Url" /> specified, this attribute determines which window of the browser is used for the URL.
@@ -252,7 +252,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     </see>
         ///     .
         /// </summary>
-        DotEscapableString UrlTarget { get; set; }
+        DotEscapeString UrlTarget { get; set; }
 
         /// <summary>
         ///     <para>

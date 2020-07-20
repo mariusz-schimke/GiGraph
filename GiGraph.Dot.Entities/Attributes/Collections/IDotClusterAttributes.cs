@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <summary>
         ///     Tooltip annotation attached to the cluster. If unset, Graphviz will use the <see cref="Label" /> attribute if defined.
         /// </summary>
-        DotEscapableString Tooltip { get; set; }
+        DotEscapeString Tooltip { get; set; }
 
         /// <summary>
         ///     Gets or sets the color of the cluster (default: <see cref="System.Drawing.Color.Black" />). If <see cref="DotColorList" /> is
@@ -185,12 +185,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///         The active area for a cluster is its bounding box.
         ///     </para>
         /// </summary>
-        DotEscapableString Url { get; set; }
+        DotEscapeString Url { get; set; }
 
         /// <summary>
         ///     Synonym for <see cref="Url" />.
         /// </summary>
-        DotEscapableString Href { get; set; }
+        DotEscapeString Href { get; set; }
 
         /// <summary>
         ///     If the object has a <see cref="Url" /> specified, this attribute determines which window of the browser is used for the URL.
@@ -200,7 +200,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     </see>
         ///     .
         /// </summary>
-        DotEscapableString UrlTarget { get; set; }
+        DotEscapeString UrlTarget { get; set; }
 
         /// <summary>
         ///     Specifies the space between the nodes in the cluster and the cluster bounding box. By default, this is 8 points.
