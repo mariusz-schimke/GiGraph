@@ -228,6 +228,24 @@ namespace GiGraph.Dot.Entities.Types.Strings
         }
 
         /// <summary>
+        ///     Appends a placeholder that will be replaced with the identifier of the tail node of the edge when the graph is visualized.
+        ///     Applicable to edges only.
+        /// </summary>
+        public virtual DotEscapeStringBuilder AppendEdgeTailNodeId()
+        {
+            return Append((DotEscapeString) DotEscapeString.EdgeTailNodeId);
+        }
+
+        /// <summary>
+        ///     Appends a placeholder that will be replaced with the identifier of the head node of the edge when the graph is visualized.
+        ///     Applicable to edges only.
+        /// </summary>
+        public virtual DotEscapeStringBuilder AppendEdgeHeadNodeId()
+        {
+            return Append((DotEscapeString) DotEscapeString.EdgeHeadNodeId);
+        }
+
+        /// <summary>
         ///     Appends a placeholder that will be replaced with the identifier of the node when the graph is visualized. Applicable to nodes
         ///     only.
         /// </summary>

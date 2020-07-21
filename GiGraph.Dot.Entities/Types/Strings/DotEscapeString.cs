@@ -23,6 +23,16 @@ namespace GiGraph.Dot.Entities.Types.Strings
         public static DotEscapedString EdgeDefinition => "\\E";
 
         /// <summary>
+        ///     An escape sequence replaced with the identifier of the tail node of the current edge on graph visualization.
+        /// </summary>
+        public static DotEscapedString EdgeTailNodeId => "\\T";
+
+        /// <summary>
+        ///     An escape sequence replaced with the identifier of the head node of the current edge on graph visualization.
+        /// </summary>
+        public static DotEscapedString EdgeHeadNodeId => "\\H";
+
+        /// <summary>
         ///     An escape sequence replaced with the label of the current element on graph visualization.
         /// </summary>
         public static DotEscapedString Label => "\\L";
