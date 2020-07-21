@@ -8,7 +8,6 @@ Other:
 
 Nice-to-haves:
 1. Implement predefined HTML nodes: https://www.graphviz.org/doc/info/shapes.html#polygon.
-2. Text justification markers support (\l, \r) and others like \N, \E etc.
-4. Attribute types, even if not exposed as properties.
+2. Attribute types, even if not exposed as properties.
 
 Useful examples: https://www.graphviz.org/pdf/dotguide.pdf

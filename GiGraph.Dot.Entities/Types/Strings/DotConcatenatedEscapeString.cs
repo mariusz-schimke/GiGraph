@@ -40,9 +40,11 @@ namespace GiGraph.Dot.Entities.Types.Strings
         {
             var result = Enumerable.Empty<DotEscapeString>();
 
-            result = value1 is {}
-                ? result.Concat(value1._items) // flatten to prevent multiple recursion on concatenation
-                : result.Append(null);
+            if (value1 is {})
+            {
+                // flatten to prevent recursion on building the output string
+                result = result.Concat(value1._items);
+            }
 
             return result.Append(value2).ToArray();
         }
@@ -51,9 +53,11 @@ namespace GiGraph.Dot.Entities.Types.Strings
         {
             var result = Enumerable.Empty<DotEscapeString>().Append(value1);
 
-            result = value2 is {}
-                ? result.Concat(value2._items) // flatten to prevent multiple recursion on concatenation
-                : result.Append(null);
+            if (value2 is {})
+            {
+                // flatten to prevent recursion on building the output string
+                result = result.Concat(value2._items);
+            }
 
             return result.ToArray();
         }
