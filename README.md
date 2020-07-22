@@ -1348,7 +1348,7 @@ node.Attributes.Set("fillcolor", DotColorDefinition.Gradient(Color.Red, Color.Bl
 
 The text assigned to any [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type attribute (mainly label) may contain special escape sequences. On graph visualization they are replaced with, for example, the graph identifier, the identifier of the current node, the definition of the current edge etc. The library exposes the [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) DOT type as a class named *DotEscapeString*.
 
-There are two basic ways of formatting escape strings supported by the library: one of them is string concatenation with predefined escape sequences exposed by the *DotEscapeString* class, and the other is the *DotEscapeStringBuilder* class.
+There are two basic ways of formatting escape strings, supported by the library: one of them is string concatenation with predefined escape sequences exposed by the *DotEscapeString* class, and the other is the *DotEscapeStringBuilder* class.
 
 *Note that the escape sequences provided by the DotEscapeString class should not be used as parameters of the string.Format method or of an interpolated string. The result will not render a valid DOT escape string in such cases.*
 
