@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Examples.Complex
     {
         public static DotGraph Generate()
         {
-            var graph = new DotGraph(isDirected: true);
+            var graph = new DotGraph();
 
             // set graph attributes
             graph.Attributes.Label = "Example Flow";

@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Examples.Basic
     {
         public static DotGraph Generate()
         {
-            var graph = new DotGraph(isDirected: true);
+            var graph = new DotGraph();
 
             // set left to right layout direction of the graph using graph attributes
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
