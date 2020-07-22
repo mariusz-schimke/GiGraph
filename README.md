@@ -747,7 +747,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/node-hexagon-hello-world.svg">
 </p>
 
@@ -768,7 +768,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/record-node-hello-world.svg">
 </p>
 
@@ -799,7 +799,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/record-node-subrecord.svg">
 </p>
 
@@ -822,7 +822,7 @@ Note that *string* is implicitly convertible to *DotRecordTextField*, whereas *s
 
 The fields of record nodes may have a **port** specified as well. The port may have an individual name that you may refer to when defining an edge (see the [edge](#edge) section). This way you may decide which field of the record an edge tail or head is attached to. In the following example the field labeled 'Fred' has a port assigned, named 'port1'. The edge that joins the two nodes refers to that port name to attach the tail to it.
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/record-node-subrecord-with-port.svg">
 </p>
 
@@ -930,7 +930,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/html-node.svg">
 </p>
 
@@ -967,7 +967,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/html-node-with-port.svg">
 </p>
 
@@ -1011,7 +1011,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/node-group-of-three.svg">
 </p>
 
@@ -1062,7 +1062,7 @@ graph.Edges.Add("Foo", "Bar", edge =>
 });
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-compass-point.svg">
 </p>
 
@@ -1122,7 +1122,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-one-to-many.svg">
 </p>
 
@@ -1152,7 +1152,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-many-to-one.svg">
 </p>
 
@@ -1181,7 +1181,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-many-to-many.svg">
 </p>
 
@@ -1208,7 +1208,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-many-to-many-with-attrs.svg">
 </p>
 
@@ -1237,7 +1237,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-sequence-of-three.svg">
 </p>
 
@@ -1267,7 +1267,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-sequence-with-group.svg">
 </p>
 
@@ -1295,7 +1295,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-sequence-with-group-and-attrs.svg">
 </p>
 
@@ -1344,7 +1344,7 @@ node.Attributes.Set("fillcolor", DotColorDefinition.Gradient(Color.Red, Color.Bl
 
 
 
-### Label formatting and justification
+### Label parameters
 
 The text assigned to any [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type attribute (mainly label) may contain special escape sequences. On graph visualization they are replaced with, for example, the graph identifier, the identifier of the current node, the definition of the current edge etc. The library exposes the [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) DOT type as a class named *DotEscapeString*.
 
@@ -1355,6 +1355,8 @@ There are two basic ways of formatting escape strings supported by the library: 
 Below is an example presenting labels with element-specific escape sequences.
 
 ```c#
+var graph = new DotGraph("Label formatting");
+
 // escape string builder
 graph.Attributes.Label = new DotEscapeStringBuilder("Graph title: ")
                         .AppendGraphId() // graph ID escape sequence
@@ -1402,10 +1404,10 @@ digraph "Label formatting"
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/label-identifiers.svg">
 </p>
-
+### Label justification
 
 The [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) also supports escape sequences that left- or right-justify individual lines of text. Below is an example.
 
@@ -1436,7 +1438,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/label-justification.svg">
 </p>
 
