@@ -1352,7 +1352,9 @@ There are two basic ways of formatting escape strings supported by the library: 
 
 *Note that the escape sequences provided by the DotEscapeString class should not be used as parameters of the string.Format method or of an interpolated string. The result will not render a valid DOT escape string in such cases.*
 
-Below is an example presenting labels with element-specific escape sequences.
+#### Label placeholders
+
+Below is an example presenting labels with element-specific escape sequences replaced with the actual element identifiers on graph visualization.
 
 ```c#
 var graph = new DotGraph("Label formatting");
@@ -1409,9 +1411,9 @@ digraph "Label formatting"
 </p>
 
 
-### Label justification
+#### Label justification
 
-The [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) also supports escape sequences that left- or right-justify individual lines of text. Below is an example.
+The [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) also supports escape sequences that left- or right-justify individual lines of text. They should appear in the end of the lines to justify. Below is an example.
 
 ```c#
 graph.Nodes.Add("Foo", attrs =>
