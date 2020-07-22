@@ -16,7 +16,8 @@ namespace GiGraph.Dot.Examples.Basic
                 attrs.Shape = DotNodeShape.Box;
                 attrs.Width = 3;
 
-                attrs.Label = new DotEscapeStringBuilder("Centered line")
+                attrs.Label = new DotEscapeStringBuilder()
+                             .AppendLine("Centered line")
                              .AppendLeftJustifiedLine("Left-justified line")
                              .AppendRightJustifiedLine("Right-justified line")
                              .ToEscapeString();
