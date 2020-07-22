@@ -186,7 +186,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder JustifyLeft()
         {
-            return Append((DotEscapeString) DotEscapeString.JustifyLeft);
+            return Append(DotEscapeString.JustifyLeft);
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder JustifyRight()
         {
-            return Append((DotEscapeString) DotEscapeString.JustifyRight);
+            return Append(DotEscapeString.JustifyRight);
         }
 
         /// <summary>
@@ -207,7 +207,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder AppendLabel()
         {
-            return Append((DotEscapeString) DotEscapeString.Label);
+            return Append(DotEscapeString.Label);
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder AppendGraphId()
         {
-            return Append((DotEscapeString) DotEscapeString.GraphId);
+            return Append(DotEscapeString.GraphId);
         }
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder AppendEdgeDefinition()
         {
-            return Append((DotEscapeString) DotEscapeString.EdgeDefinition);
+            return Append(DotEscapeString.EdgeDefinition);
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder AppendEdgeTailNodeId()
         {
-            return Append((DotEscapeString) DotEscapeString.EdgeTailNodeId);
+            return Append(DotEscapeString.EdgeTailNodeId);
         }
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder AppendEdgeHeadNodeId()
         {
-            return Append((DotEscapeString) DotEscapeString.EdgeHeadNodeId);
+            return Append(DotEscapeString.EdgeHeadNodeId);
         }
 
         /// <summary>
@@ -251,7 +251,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder AppendNodeId()
         {
-            return Append((DotEscapeString) DotEscapeString.NodeId);
+            return Append(DotEscapeString.NodeId);
         }
 
         public override string ToString()
