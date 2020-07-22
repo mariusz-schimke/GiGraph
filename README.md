@@ -1407,6 +1407,8 @@ digraph "Label formatting"
 <p align="center">
   <img src="./Assets/Examples/label-identifiers.svg">
 </p>
+
+
 ### Label justification
 
 The [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) also supports escape sequences that left- or right-justify individual lines of text. Below is an example.
