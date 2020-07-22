@@ -1344,9 +1344,45 @@ node.Attributes.Set("fillcolor", DotColorDefinition.Gradient(Color.Red, Color.Bl
 
 
 
+### Label formatting
+
+The text assigned to any [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type attribute (in the library this DOT type is represented by the *DotEscapeString* class) may contain special escape sequences. On graph visualization they are replaced with, for example, graph identifier, the identifier of the current node, the identifier of the tail or the head node of the current edge etc. The libaray offers two ways of formatting escape strings: one of them is using string concatenation with predefined escape sequences (string interpolation is not supported), and the second one is using a builder.
+
+```c#
+graph.Nodes.Add("Foo", attrs =>
+{
+    // using escape string builder
+    attrs.Label = new DotEscapeStringBuilder("Node ")
+        .AppendNodeId()
+        .ToEscapeString();
+
+    // using string concatenation
+    attrs.Label = "Node " + DotEscapeString.NodeId;
+});
+```
+
+```dot
+digraph "Label formatting"
+{
+    label = "Graph title: \G"
+
+    Foo [ label = "Node \N" ]
+
+    Foo -> Bar [ label = "From \T to \H" ]
+}
+```
+
+<p align="left">
+  <img src="./Assets/Examples/label-identifiers.svg">
+</p>
+
+There are also escape sequences that let you justify the text left or right.
+
+
+
 # Custom output formatting
 
-The DOT generation engine supports setting some custom preferences for generating the output. These include **syntax preferences**, and **formatting preferences**. 
+The DOT generation engine supports setting custom preferences for generating the output. These include **syntax preferences**, and **formatting preferences**. 
 
 
 

@@ -9,37 +9,44 @@ namespace GiGraph.Dot.Examples.Basic
         {
             var graph = new DotGraph("Label formatting");
 
-            // graph label with the ID of the graph
+            // -- graph label example --
+
+            // using escape string builder
             graph.Attributes.Label = new DotEscapeStringBuilder("Graph title: ")
                                     .AppendGraphId()
                                     .ToEscapeString();
 
-            // or an alternative way
+            // using string concatenation
             graph.Attributes.Label = "Graph title: " + DotEscapeString.GraphId;
 
 
-            // node label with the ID of the node
+            // -- node label example --
+
             graph.Nodes.Add("Foo", attrs =>
             {
+                // using escape string builder
                 attrs.Label = new DotEscapeStringBuilder("Node ")
                              .AppendNodeId()
                              .ToEscapeString();
 
-                // or an alternative way
+                // using string concatenation
                 attrs.Label = "Node " + DotEscapeString.NodeId;
             });
 
 
+            // -- edge label example --
+
             // edge label with the IDs of the head and the tail nodes
             graph.Edges.Add("Foo", "Bar", edge =>
             {
+                // using escape string builder
                 edge.Attributes.Label = new DotEscapeStringBuilder("From ")
                                        .AppendEdgeTailNodeId()
                                        .Append(" to ")
                                        .AppendEdgeHeadNodeId()
                                        .ToEscapeString();
 
-                // or an alternative way
+                // using string concatenation
                 edge.Attributes.Label = "From " + DotEscapeString.EdgeTailNodeId +
                                         " to " + DotEscapeString.EdgeHeadNodeId;
             });
