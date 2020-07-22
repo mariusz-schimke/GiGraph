@@ -10,12 +10,12 @@ namespace GiGraph.Dot.Examples.Basic
             var graph = new DotGraph("Label formatting");
 
             // graph label with the ID of the graph
-            graph.Attributes.Label = new DotEscapeStringBuilder("Graph label: ")
+            graph.Attributes.Label = new DotEscapeStringBuilder("Graph title: ")
                                     .AppendGraphId()
                                     .ToEscapeString();
 
             // or an alternative way
-            graph.Attributes.Label = "Graph label: " + DotEscapeString.GraphId;
+            graph.Attributes.Label = "Graph title: " + DotEscapeString.GraphId;
 
 
             // node label with the ID of the node
