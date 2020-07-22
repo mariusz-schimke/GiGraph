@@ -1344,20 +1344,50 @@ node.Attributes.Set("fillcolor", DotColorDefinition.Gradient(Color.Red, Color.Bl
 
 
 
-### Label formatting
+### Label formatting and justification
 
-The text assigned to any [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type attribute (in the library this DOT type is represented by the *DotEscapeString* class) may contain special escape sequences. On graph visualization they are replaced with, for example, graph identifier, the identifier of the current node, the identifier of the tail or the head node of the current edge etc. The libaray offers two ways of formatting escape strings: one of them is using string concatenation with predefined escape sequences (string interpolation is not supported), and the second one is using a builder.
+The text assigned to any [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type attribute (mainly label) may contain special escape sequences. On graph visualization they are replaced with, for example, the graph identifier, the identifier of the current node, the definition of the current edge etc. The library exposes the [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) DOT type as a class named *DotEscapeString*.
+
+There are two basic ways of formatting escape strings supported by the library: one of them is string concatenation with predefined escape sequences exposed by the *DotEscapeString* class, and the other is the *DotEscapeStringBuilder* class.
+
+*Note that the escape sequences provided by the DotEscapeString class should not be used as parameters of the string.Format method or of an interpolated string. The result will not render a valid DOT escape string in such cases.*
+
+Below is an example presenting labels with element-specific escape sequences.
 
 ```c#
+// escape string builder
+graph.Attributes.Label = new DotEscapeStringBuilder("Graph title: ")
+                        .AppendGraphId() // graph ID escape sequence
+                        .ToEscapeString();
+
+// or string concatenation
+graph.Attributes.Label = "Graph title: " + DotEscapeString.GraphId;
+
+
 graph.Nodes.Add("Foo", attrs =>
 {
-    // using escape string builder
+    // escape string builder
     attrs.Label = new DotEscapeStringBuilder("Node ")
-        .AppendNodeId()
-        .ToEscapeString();
+                 .AppendNodeId() // node ID escape sequence
+                 .ToEscapeString();
 
-    // using string concatenation
+    // or string concatenation
     attrs.Label = "Node " + DotEscapeString.NodeId;
+});
+
+
+graph.Edges.Add("Foo", "Bar", edge =>
+{
+    // escape string builder
+    edge.Attributes.Label = new DotEscapeStringBuilder("From ")
+                           .AppendEdgeTailNodeId() // tail node ID escape sequence
+                           .Append(" to ")
+                           .AppendEdgeHeadNodeId() // head node ID escape sequence
+                           .ToEscapeString();
+
+    // or string concatenation
+    edge.Attributes.Label = "From " + DotEscapeString.EdgeTailNodeId +
+                            " to " + DotEscapeString.EdgeHeadNodeId;
 });
 ```
 
@@ -1376,7 +1406,39 @@ digraph "Label formatting"
   <img src="./Assets/Examples/label-identifiers.svg">
 </p>
 
-There are also escape sequences that let you justify the text left or right.
+
+The [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) also supports escape sequences that left- or right-justify individual lines of text. Below is an example.
+
+```c#
+graph.Nodes.Add("Foo", attrs =>
+{
+    attrs.Shape = DotNodeShape.Box;
+    attrs.Width = 3;
+
+    // escape string builder
+    attrs.Label = new DotEscapeStringBuilder()
+                 .AppendLine("Centered line")
+                 .AppendLeftJustifiedLine("Left-justified line")
+                 .AppendRightJustifiedLine("Right-justified line")
+                 .ToEscapeString();
+
+    // or string concatenation
+    attrs.Label = "Centered line" + DotEscapeString.NewLine +
+                  "Left-justified line" + DotEscapeString.JustifyLeft +
+                  "Right-justified line" + DotEscapeString.JustifyRight;
+});
+```
+
+```dot
+digraph
+{
+    Foo [ label = "Centered line\nLeft-justified line\lRight-justified line\r", shape = box, width = 3 ]
+}
+```
+
+<p align="left">
+  <img src="./Assets/Examples/label-justification.svg">
+</p>
 
 
 
