@@ -747,7 +747,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/node-hexagon-hello-world.svg">
 </p>
 
@@ -768,7 +768,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/record-node-hello-world.svg">
 </p>
 
@@ -799,7 +799,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/record-node-subrecord.svg">
 </p>
 
@@ -822,7 +822,7 @@ Note that *string* is implicitly convertible to *DotRecordTextField*, whereas *s
 
 The fields of record nodes may have a **port** specified as well. The port may have an individual name that you may refer to when defining an edge (see the [edge](#edge) section). This way you may decide which field of the record an edge tail or head is attached to. In the following example the field labeled 'Fred' has a port assigned, named 'port1'. The edge that joins the two nodes refers to that port name to attach the tail to it.
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/record-node-subrecord-with-port.svg">
 </p>
 
@@ -930,7 +930,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/html-node.svg">
 </p>
 
@@ -967,7 +967,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/html-node-with-port.svg">
 </p>
 
@@ -1011,7 +1011,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/node-group-of-three.svg">
 </p>
 
@@ -1062,7 +1062,7 @@ graph.Edges.Add("Foo", "Bar", edge =>
 });
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-compass-point.svg">
 </p>
 
@@ -1122,7 +1122,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-one-to-many.svg">
 </p>
 
@@ -1152,7 +1152,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-many-to-one.svg">
 </p>
 
@@ -1181,7 +1181,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-many-to-many.svg">
 </p>
 
@@ -1208,7 +1208,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-many-to-many-with-attrs.svg">
 </p>
 
@@ -1237,7 +1237,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-sequence-of-three.svg">
 </p>
 
@@ -1267,7 +1267,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-sequence-with-group.svg">
 </p>
 
@@ -1295,7 +1295,7 @@ digraph
 }
 ```
 
-<p align="left">
+<p align="center">
   <img src="./Assets/Examples/edge-sequence-with-group-and-attrs.svg">
 </p>
 
@@ -1344,9 +1344,113 @@ node.Attributes.Set("fillcolor", DotColorDefinition.Gradient(Color.Red, Color.Bl
 
 
 
+### Label parameters
+
+The text assigned to any [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type attribute (mainly label) may contain special escape sequences. On graph visualization they are replaced with, for example, the graph identifier, the identifier of the current node, the definition of the current edge etc.
+
+There are two basic ways of formatting escape strings, supported by the library: one of them is string concatenation with predefined escape sequences exposed by the *DotEscapeString* class, and the other is the *DotEscapeStringBuilder* class (the *DotEscapeString* class represents the [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) DOT type).
+
+*Note that the escape sequences provided by the DotEscapeString class should not be used as parameters of the string.Format method or of an interpolated string. The result will not render a valid DOT escape string in such cases.*
+
+#### Label placeholders
+
+Below is an example presenting labels with element-specific escape sequences replaced with actual element identifiers on graph visualization.
+
+```c#
+var graph = new DotGraph("Label formatting");
+
+// escape string builder
+graph.Attributes.Label = new DotEscapeStringBuilder("Graph title: ")
+                        .AppendGraphId() // graph ID escape sequence
+                        .ToEscapeString();
+
+// or string concatenation
+graph.Attributes.Label = "Graph title: " + DotEscapeString.GraphId;
+
+
+graph.Nodes.Add("Foo", attrs =>
+{
+    // escape string builder
+    attrs.Label = new DotEscapeStringBuilder("Node ")
+                 .AppendNodeId() // node ID escape sequence
+                 .ToEscapeString();
+
+    // or string concatenation
+    attrs.Label = "Node " + DotEscapeString.NodeId;
+});
+
+
+graph.Edges.Add("Foo", "Bar", edge =>
+{
+    // escape string builder
+    edge.Attributes.Label = new DotEscapeStringBuilder("From ")
+                           .AppendEdgeTailNodeId() // tail node ID escape sequence
+                           .Append(" to ")
+                           .AppendEdgeHeadNodeId() // head node ID escape sequence
+                           .ToEscapeString();
+
+    // or string concatenation
+    edge.Attributes.Label = "From " + DotEscapeString.EdgeTailNodeId +
+                            " to " + DotEscapeString.EdgeHeadNodeId;
+});
+```
+
+```dot
+digraph "Label formatting"
+{
+    label = "Graph title: \G"
+
+    Foo [ label = "Node \N" ]
+
+    Foo -> Bar [ label = "From \T to \H" ]
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/label-identifiers.svg">
+</p>
+
+
+#### Label justification
+
+The [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) also supports escape sequences that left- or right-justify individual lines of text. They appear in the end of the lines they justify. Below is an example.
+
+```c#
+graph.Nodes.Add("Foo", attrs =>
+{
+    attrs.Shape = DotNodeShape.Box;
+    attrs.Width = 3;
+
+    // escape string builder
+    attrs.Label = new DotEscapeStringBuilder()
+                 .AppendLine("Centered line")
+                 .AppendLeftJustifiedLine("Left-justified line")
+                 .AppendRightJustifiedLine("Right-justified line")
+                 .ToEscapeString();
+
+    // or string concatenation
+    attrs.Label = "Centered line" + DotEscapeString.NewLine +
+                  "Left-justified line" + DotEscapeString.JustifyLeft +
+                  "Right-justified line" + DotEscapeString.JustifyRight;
+});
+```
+
+```dot
+digraph
+{
+    Foo [ label = "Centered line\nLeft-justified line\lRight-justified line\r", shape = box, width = 3 ]
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/label-justification.svg">
+</p>
+
+
+
 # Custom output formatting
 
-The DOT generation engine supports setting some custom preferences for generating the output. These include **syntax preferences**, and **formatting preferences**. 
+The DOT generation engine supports setting custom preferences for generating the output. These include **syntax preferences**, and **formatting preferences**. 
 
 
 

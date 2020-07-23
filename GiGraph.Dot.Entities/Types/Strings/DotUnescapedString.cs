@@ -4,18 +4,13 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Strings
 {
     /// <summary>
-    ///     An escaped string to be rendered as is on output DOT script generation. It should follow the formatting rules described in
-    ///     the
-    ///     <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">
-    ///         documentation
-    ///     </see>
-    ///     .
+    ///     A string to be escaped on output DOT script generation.
     /// </summary>
-    public class DotEscapedString : DotEscapeString
+    public class DotUnescapedString : DotEscapeString
     {
         protected readonly string _value;
 
-        protected DotEscapedString(string value)
+        protected DotUnescapedString(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value), "Value cannot be null.");
         }
@@ -27,12 +22,12 @@ namespace GiGraph.Dot.Entities.Types.Strings
 
         protected internal override string GetDotEncodedString(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return _value;
+            return syntaxRules.EscapeStringValue(_value);
         }
 
-        public static implicit operator DotEscapedString(string value)
+        public static implicit operator DotUnescapedString(string value)
         {
-            return value is {} ? new DotEscapedString(value) : null;
+            return value is {} ? new DotUnescapedString(value) : null;
         }
     }
 }

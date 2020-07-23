@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Examples.Basic
     {
         public static DotGraph Generate()
         {
-            var graph = new DotGraph(isDirected: true);
+            var graph = new DotGraph();
 
             graph.Nodes.Add("Bar").ToHtml
             (

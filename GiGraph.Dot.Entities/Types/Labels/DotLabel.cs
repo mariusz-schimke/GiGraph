@@ -79,12 +79,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
             return (DotLabelString) text;
         }
 
-        public static implicit operator DotLabel(DotEscapableString text)
-        {
-            return (DotLabelString) text;
-        }
-
-        public static implicit operator DotLabel(DotEscapedString text)
+        public static implicit operator DotLabel(DotEscapeString text)
         {
             return (DotLabelString) text;
         }

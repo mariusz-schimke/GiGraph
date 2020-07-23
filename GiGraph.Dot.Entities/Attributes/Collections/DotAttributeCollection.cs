@@ -37,7 +37,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotStringAttribute(key, value));
         }
 
-        public virtual DotEscapeStringAttribute Set(string key, DotEscapableString value)
+        public virtual DotEscapeStringAttribute Set(string key, DotEscapeString value)
+        {
+            return Set(new DotEscapeStringAttribute(key, value));
+        }
+
+        public virtual DotEscapeStringAttribute Set(string key, DotUnescapedString value)
         {
             return Set(new DotEscapeStringAttribute(key, value));
         }
@@ -239,6 +244,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotPointAttribute Set(string key, DotPoint value)
         {
             return Set(new DotPointAttribute(key, value));
+        }
+
+        public virtual DotEscapeStringAttribute Set(string key, DotConcatenatedEscapeString value)
+        {
+            return Set(new DotEscapeStringAttribute(key, value));
         }
 
         protected virtual void AddOrRemove<T>(string key, T attribute)
