@@ -61,5 +61,24 @@ namespace GiGraph.Dot.Entities.Types.Strings
 
             return result.ToArray();
         }
+        
+        public static DotConcatenatedEscapeString operator +(DotConcatenatedEscapeString value1, DotConcatenatedEscapeString value2)
+        {
+            var result = Enumerable.Empty<DotEscapeString>();
+
+            if (value1 is {})
+            {
+                // flatten to prevent recursion on building the output string
+                result = result.Concat(value1._items);
+            }
+            
+            if (value2 is {})
+            {
+                // flatten to prevent recursion on building the output string
+                result = result.Concat(value2._items);
+            }
+
+            return result.ToArray();
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Tests
         private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
 
         [Fact]
-        public void escapable_string_returns_escaped_string_as_dot_encoded_value()
+        public void unescaped_string_returns_escaped_string_as_dot_encoded_value()
         {
             DotUnescapedString str = "a bcd \" \\ \r\n \r \n h ij < > { } |";
             Assert.Equal(
