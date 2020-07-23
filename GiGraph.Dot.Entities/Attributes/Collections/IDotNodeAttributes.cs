@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the node. It can be a string, an HTML (<see cref="DotHtmlLabel" />), or a record (
-        ///         <see cref="DotLabelRecord" />) for a record-based node (<see cref="Shape" /> = <see cref="DotNodeShape.Record" /> or
+        ///         <see cref="DotRecordLabel" />) for a record-based node (<see cref="Shape" /> = <see cref="DotNodeShape.Record" /> or
         ///         <see cref="Shape" /> = <see cref="DotNodeShape.RoundedRecord" />).
         ///     </para>
         ///     <para>

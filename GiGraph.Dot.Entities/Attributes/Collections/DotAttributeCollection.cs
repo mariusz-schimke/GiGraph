@@ -62,7 +62,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotLabelAttribute(key, value));
         }
 
-        public virtual DotLabelAttribute Set(string key, DotLabelRecord value)
+        public virtual DotLabelAttribute Set(string key, DotRecordLabel value)
         {
             return Set(new DotLabelAttribute(key, value));
         }

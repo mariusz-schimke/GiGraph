@@ -104,7 +104,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
 
         /// <summary>
         ///     Visually, a record is a box, with fields represented by alternating rows of horizontal or vertical subboxes. Use a
-        ///     <see cref="DotLabelRecord" /> label to define the fields of the record (
+        ///     <see cref="DotRecordLabel" /> label to define the fields of the record (
         ///     <see href="https://www.graphviz.org/doc/info/shapes.html#record">
         ///         learn more
         ///     </see>
@@ -114,7 +114,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
 
         /// <summary>
         ///     Visually, this type of record shape is a box with rounded corers, and fields represented by alternating rows of horizontal or
-        ///     vertical subboxes. Use a <see cref="DotLabelRecord" /> label to define the fields of the record (
+        ///     vertical subboxes. Use a <see cref="DotRecordLabel" /> label to define the fields of the record (
         ///     <see href="https://www.graphviz.org/doc/info/shapes.html#record">
         ///         learn more
         ///     </see>

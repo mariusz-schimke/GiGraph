@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
     ///     A label attribute. The value can be a string (<see cref="DotLabelString" />), an HTML string ( <see cref="DotHtmlLabel" />),
-    ///     or a record (<see cref="DotLabelRecord" />).
+    ///     or a record (<see cref="DotRecordLabel" />).
     /// </summary>
     public class DotLabelAttribute : DotAttribute<DotLabel>
     {

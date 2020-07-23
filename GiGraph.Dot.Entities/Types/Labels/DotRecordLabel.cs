@@ -11,11 +11,11 @@ namespace GiGraph.Dot.Entities.Types.Labels
     ///     </see>
     ///     .
     /// </summary>
-    public class DotLabelRecord : DotLabel
+    public class DotRecordLabel : DotLabel
     {
         protected readonly DotRecord _record;
 
-        protected DotLabelRecord(DotRecord record)
+        protected DotRecordLabel(DotRecord record)
         {
             _record = record ?? throw new ArgumentNullException(nameof(record), "Record cannot be null.");
         }
@@ -30,22 +30,22 @@ namespace GiGraph.Dot.Entities.Types.Labels
             return _record?.GetDotEncoded(options, syntaxRules, hasParent: false);
         }
 
-        public static implicit operator DotLabelRecord(DotRecord record)
+        public static implicit operator DotRecordLabel(DotRecord record)
         {
-            return record is {} ? new DotLabelRecord(record) : null;
+            return record is {} ? new DotRecordLabel(record) : null;
         }
 
-        public static implicit operator DotRecord(DotLabelRecord label)
+        public static implicit operator DotRecord(DotRecordLabel recordLabel)
         {
-            return label?._record;
+            return recordLabel?._record;
         }
 
-        public static implicit operator DotLabelRecord(DotRecordField[] fields)
+        public static implicit operator DotRecordLabel(DotRecordField[] fields)
         {
             return fields is {} ? new DotRecord(fields) : null;
         }
 
-        public static implicit operator DotLabelRecord(string[] fields)
+        public static implicit operator DotRecordLabel(string[] fields)
         {
             return fields is {} ? new DotRecord(fields) : null;
         }
