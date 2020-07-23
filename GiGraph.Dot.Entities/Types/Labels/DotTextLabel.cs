@@ -14,24 +14,24 @@ namespace GiGraph.Dot.Entities.Types.Labels
     ///         .
     ///     </para>
     ///     <para>
-    ///         When you want to generate an HTML-like label, use <see cref="DotLabelHtml" /> instead.
+    ///         When you want to generate an HTML-like label, use <see cref="DotHtmlLabel" /> instead.
     ///     </para>
     /// </summary>
-    public class DotLabelString : DotLabel
+    public class DotTextLabel : DotLabel
     {
         protected readonly DotEscapeString _text;
 
-        protected DotLabelString(DotEscapeString text)
+        protected DotTextLabel(DotEscapeString text)
         {
             _text = text ?? throw new ArgumentNullException(nameof(text), "Text cannot be null.");
         }
 
-        protected DotLabelString(DotEscapedString text)
+        protected DotTextLabel(DotEscapedString text)
             : this((DotEscapeString) text)
         {
         }
 
-        protected DotLabelString(string text)
+        protected DotTextLabel(string text)
             : this((DotEscapeString) text)
         {
         }
@@ -46,22 +46,22 @@ namespace GiGraph.Dot.Entities.Types.Labels
             return _text?.GetDotEncodedString(options, syntaxRules);
         }
 
-        public static implicit operator DotLabelString(string text)
+        public static implicit operator DotTextLabel(string text)
         {
-            return text is {} ? new DotLabelString(text) : null;
+            return text is {} ? new DotTextLabel(text) : null;
         }
 
-        public static implicit operator DotLabelString(DotEscapeString text)
+        public static implicit operator DotTextLabel(DotEscapeString text)
         {
-            return text is {} ? new DotLabelString(text) : null;
+            return text is {} ? new DotTextLabel(text) : null;
         }
 
-        public static implicit operator string(DotLabelString label)
+        public static implicit operator string(DotTextLabel label)
         {
             return label?._text;
         }
 
-        public static implicit operator DotEscapeString(DotLabelString label)
+        public static implicit operator DotEscapeString(DotTextLabel label)
         {
             return label?._text;
         }

@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Extensions
         public static void ToHtml(this DotNode node, string html)
         {
             node.Attributes.Shape = DotNodeShape.Plain;
-            node.Attributes.Label = (DotLabelHtml) html;
+            node.Attributes.Label = (DotHtmlLabel) html;
         }
     }
 }

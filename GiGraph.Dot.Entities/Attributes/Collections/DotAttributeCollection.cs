@@ -52,17 +52,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotEscapeStringAttribute(key, value));
         }
 
-        public virtual DotLabelAttribute Set(string key, DotLabelString value)
+        public virtual DotLabelAttribute Set(string key, DotTextLabel value)
         {
             return Set(new DotLabelAttribute(key, value));
         }
 
-        public virtual DotLabelAttribute Set(string key, DotLabelHtml value)
+        public virtual DotLabelAttribute Set(string key, DotHtmlLabel value)
         {
             return Set(new DotLabelAttribute(key, value));
         }
 
-        public virtual DotLabelAttribute Set(string key, DotLabelRecord value)
+        public virtual DotLabelAttribute Set(string key, DotRecordLabel value)
         {
             return Set(new DotLabelAttribute(key, value));
         }

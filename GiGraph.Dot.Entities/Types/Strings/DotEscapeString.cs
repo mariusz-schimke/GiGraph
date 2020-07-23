@@ -10,47 +10,47 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// <summary>
         ///     An escape sequence replaced with graph identifier on graph visualization.
         /// </summary>
-        public static DotEscapeString GraphId => (DotEscapedString)"\\G";
+        public static DotEscapeString GraphId => (DotEscapedString) "\\G";
 
         /// <summary>
         ///     An escape sequence replaced with the identifier of the current node on graph visualization.
         /// </summary>
-        public static DotEscapeString NodeId => (DotEscapedString)"\\N";
+        public static DotEscapeString NodeId => (DotEscapedString) "\\N";
 
         /// <summary>
         ///     An escape sequence replaced with the definition of the current edge on graph visualization.
         /// </summary>
-        public static DotEscapeString EdgeDefinition => (DotEscapedString)"\\E";
+        public static DotEscapeString EdgeDefinition => (DotEscapedString) "\\E";
 
         /// <summary>
         ///     An escape sequence replaced with the identifier of the tail node of the current edge on graph visualization.
         /// </summary>
-        public static DotEscapeString EdgeTailNodeId => (DotEscapedString)"\\T";
+        public static DotEscapeString EdgeTailNodeId => (DotEscapedString) "\\T";
 
         /// <summary>
         ///     An escape sequence replaced with the identifier of the head node of the current edge on graph visualization.
         /// </summary>
-        public static DotEscapeString EdgeHeadNodeId => (DotEscapedString)"\\H";
+        public static DotEscapeString EdgeHeadNodeId => (DotEscapedString) "\\H";
 
         /// <summary>
         ///     An escape sequence replaced with the label of the current element on graph visualization.
         /// </summary>
-        public static DotEscapeString Label => (DotEscapedString)"\\L";
+        public static DotEscapeString Label => (DotEscapedString) "\\L";
 
         /// <summary>
         ///     An escape sequence interpreted as a line break.
         /// </summary>
-        public static DotEscapeString NewLine => (DotEscapedString)"\\n";
+        public static DotEscapeString NewLine => (DotEscapedString) "\\n";
 
         /// <summary>
         ///     An escape sequence that causes the line of text that precedes it to be left-justified.
         /// </summary>
-        public static DotEscapeString JustifyLeft => (DotEscapedString)"\\l";
+        public static DotEscapeString JustifyLeft => (DotEscapedString) "\\l";
 
         /// <summary>
         ///     An escape sequence that causes the line of text that precedes it to be right-justified.
         /// </summary>
-        public static DotEscapeString JustifyRight => (DotEscapedString)"\\r";
+        public static DotEscapeString JustifyRight => (DotEscapedString) "\\r";
 
         string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {

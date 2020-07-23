@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Output.Generators.AttributeGenerators
         {
             var value = ((IDotEncodable) attribute).GetDotEncodedValue(_options, _syntaxRules);
 
-            if (attribute.Value is DotLabelHtml)
+            if (attribute.Value is DotHtmlLabel)
             {
                 WriteHtmlAttribute(attribute.Key, value, writer);
             }
