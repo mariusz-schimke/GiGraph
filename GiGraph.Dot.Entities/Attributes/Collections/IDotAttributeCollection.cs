@@ -96,7 +96,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotLabelAttribute Set(string key, DotLabelString value);
+        DotLabelAttribute Set(string key, DotTextLabel value);
 
         /// <summary>
         ///     Adds or replaces the specified HTML label attribute in the collection.

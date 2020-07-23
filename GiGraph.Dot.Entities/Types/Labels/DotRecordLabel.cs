@@ -35,9 +35,9 @@ namespace GiGraph.Dot.Entities.Types.Labels
             return record is {} ? new DotRecordLabel(record) : null;
         }
 
-        public static implicit operator DotRecord(DotRecordLabel recordLabel)
+        public static implicit operator DotRecord(DotRecordLabel label)
         {
-            return recordLabel?._record;
+            return label?._record;
         }
 
         public static implicit operator DotRecordLabel(DotRecordField[] fields)

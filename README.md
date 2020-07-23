@@ -900,7 +900,7 @@ graph.Nodes.Add("Bar").ToHtml
 graph.Nodes.Add("Bar", attrs =>
 {
     attrs.Shape = DotNodeShape.Plain;
-    attrs.Label = (DotLabelHtml) @"<TABLE BORDER=""0"" CELLBORDER=""1"" CELLSPACING=""0"" CELLPADDING=""4"">
+    attrs.Label = (DotHtmlLabel) @"<TABLE BORDER=""0"" CELLBORDER=""1"" CELLSPACING=""0"" CELLPADDING=""4"">
         ... ommitted ...
         </TABLE>";
 });

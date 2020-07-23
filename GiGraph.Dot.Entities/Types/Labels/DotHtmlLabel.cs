@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
     ///     </see>
     ///     .
     /// </summary>
-    public class DotHtmlLabel : DotLabelString
+    public class DotHtmlLabel : DotTextLabel
     {
         protected DotHtmlLabel(string html)
             : base((DotEscapedString) html)
