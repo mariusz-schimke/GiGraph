@@ -5,8 +5,8 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Labels
 {
     /// <summary>
-    ///     Represents label. It can either be a text label (<see cref="DotTextLabel" />), or an HTML label (
-    ///     <see cref="DotHtmlLabel" />). <see cref="DotRecordLabel" />, on the other hand, can be used for record-like nodes.
+    ///     Represents label. It can either be a text label (<see cref="DotTextLabel" />), or an HTML label (<see cref="DotHtmlLabel" />
+    ///     ). <see cref="DotRecordLabel" />, on the other hand, can be used for record-like nodes.
     /// </summary>
     public abstract class DotLabel : IDotEncodable
     {
