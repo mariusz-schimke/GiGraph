@@ -9,16 +9,16 @@ namespace GiGraph.Dot.Entities.Types.Labels
     ///     </see>
     ///     .
     /// </summary>
-    public class DotLabelHtml : DotLabelString
+    public class DotHtmlLabel : DotLabelString
     {
-        protected DotLabelHtml(string html)
+        protected DotHtmlLabel(string html)
             : base((DotEscapedString) html)
         {
         }
 
-        public static implicit operator DotLabelHtml(string html)
+        public static implicit operator DotHtmlLabel(string html)
         {
-            return html is {} ? new DotLabelHtml(html) : null;
+            return html is {} ? new DotHtmlLabel(html) : null;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
 {
     /// <summary>
     ///     Represents label. It can either be a text label (<see cref="DotLabelString" />), or an HTML label (
-    ///     <see cref="DotLabelHtml" />). <see cref="DotLabelRecord" />, on the other hand, can be used for record-like nodes.
+    ///     <see cref="DotHtmlLabel" />). <see cref="DotLabelRecord" />, on the other hand, can be used for record-like nodes.
     /// </summary>
     public abstract class DotLabel : IDotEncodable
     {
@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
         /// <param name="html">
         ///     The HTML to use as the label.
         /// </param>
-        public static DotLabelHtml FromHtml(string html)
+        public static DotHtmlLabel FromHtml(string html)
         {
             return html;
         }

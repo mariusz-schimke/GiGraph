@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     {
         /// <summary>
         ///     <para>
-        ///         Gets or sets the label to display on the node. It can be a string, an HTML (<see cref="DotLabelHtml" />), or a record (
+        ///         Gets or sets the label to display on the node. It can be a string, an HTML (<see cref="DotHtmlLabel" />), or a record (
         ///         <see cref="DotLabelRecord" />) for a record-based node (<see cref="Shape" /> = <see cref="DotNodeShape.Record" /> or
         ///         <see cref="Shape" /> = <see cref="DotNodeShape.RoundedRecord" />).
         ///     </para>
@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///                 <see cref="Label" /> = "My label";
         ///             </item>
         ///             <item>
-        ///                 <see cref="Label" /> = (<see cref="DotLabelHtml" />) "&lt;TABLE&gt;...&lt;/TABLE&gt;";
+        ///                 <see cref="Label" /> = (<see cref="DotHtmlLabel" />) "&lt;TABLE&gt;...&lt;/TABLE&gt;";
         ///             </item>
         ///             <item>
         ///                 <see cref="Label" /> = new <see cref="DotRecord" />("My field 1", "My field 2");
