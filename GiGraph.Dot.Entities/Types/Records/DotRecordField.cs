@@ -1,3 +1,4 @@
+using GiGraph.Dot.Entities.Types.Strings;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Records
@@ -24,12 +25,22 @@ namespace GiGraph.Dot.Entities.Types.Records
             return (DotRecordTextField) text;
         }
 
+        public static implicit operator DotRecordField(DotEscapeString text)
+        {
+            return (DotRecordTextField) text;
+        }
+
         public static implicit operator DotRecordField(DotRecordField[] fields)
         {
             return (DotRecord) fields;
         }
 
         public static implicit operator DotRecordField(string[] fields)
+        {
+            return (DotRecord) fields;
+        }
+
+        public static implicit operator DotRecordField(DotEscapeString[] fields)
         {
             return (DotRecord) fields;
         }

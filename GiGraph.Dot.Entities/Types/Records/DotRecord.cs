@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Strings;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Records
@@ -83,7 +84,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// <param name="fields">
         ///     The fields to initialize the record with.
         /// </param>
-        public DotRecord(bool flip, params string[] fields)
+        public DotRecord(bool flip, params DotEscapeString[] fields)
             : this(fields, flip)
         {
         }
@@ -94,7 +95,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// <param name="fields">
         ///     The fields to initialize the record with.
         /// </param>
-        public DotRecord(params string[] fields)
+        public DotRecord(params DotEscapeString[] fields)
             : this(FlipDefault, fields)
         {
         }
@@ -113,7 +114,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         ///     is <see cref="DotRankDirection.LeftToRight" /> or <see cref="DotRankDirection.RightToLeft" />, corresponding to horizontal
         ///     layouts, the top-level fields are displayed vertically.
         /// </param>
-        public DotRecord(IEnumerable<string> fields, bool flip = FlipDefault)
+        public DotRecord(IEnumerable<DotEscapeString> fields, bool flip = FlipDefault)
             : this(fields?.Select(field => new DotRecordTextField(field)), flip)
         {
         }
@@ -154,6 +155,11 @@ namespace GiGraph.Dot.Entities.Types.Records
         }
 
         public static implicit operator DotRecord(string[] fields)
+        {
+            return fields is {} ? new DotRecord(fields) : null;
+        }
+
+        public static implicit operator DotRecord(DotEscapeString[] fields)
         {
             return fields is {} ? new DotRecord(fields) : null;
         }

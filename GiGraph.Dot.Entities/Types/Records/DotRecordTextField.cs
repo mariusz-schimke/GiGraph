@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         ///     current field. See <see cref="DotEndpoint.Port" /> or <see cref="IDotEdgeAttributes.TailPort" /> and
         ///     <see cref="IDotEdgeAttributes.HeadPort" />.
         /// </param>
-        public DotRecordTextField(string text, string portName = null)
+        public DotRecordTextField(DotEscapeString text, string portName = null)
         {
             _text = text;
             _portName = portName;
@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// <summary>
         ///     Gets or sets the text of the field.
         /// </summary>
-        public virtual string Text
+        public virtual DotEscapeString Text
         {
             get => _text;
             set => _text = value;
@@ -78,6 +78,11 @@ namespace GiGraph.Dot.Entities.Types.Records
         }
 
         public static implicit operator DotRecordTextField(string text)
+        {
+            return new DotRecordTextField(text);
+        }
+
+        public static implicit operator DotRecordTextField(DotEscapeString text)
         {
             return new DotRecordTextField(text);
         }
