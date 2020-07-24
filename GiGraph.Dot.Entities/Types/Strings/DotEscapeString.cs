@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
     /// <summary>
     ///     Represents the DOT escape string (<see href="http://www.graphviz.org/doc/info/attrs.html#k:escString" />).
     /// </summary>
-    public abstract class DotEscapeString
+    public abstract class DotEscapeString : IDotEscapable
     {
         /// <summary>
         ///     An escape sequence replaced with graph identifier on graph visualization.
@@ -51,6 +51,11 @@ namespace GiGraph.Dot.Entities.Types.Strings
         ///     An escape sequence that causes the line of text that precedes it to be right-justified.
         /// </summary>
         public static DotEscapeString JustifyRight => (DotEscapedString) "\\r";
+
+        string IDotEscapable.GetEscaped(IDotTextEscaper textEscaper)
+        {
+            return GetEscapedString(textEscaper);
+        }
 
         protected internal abstract string GetRawString();
         protected internal abstract string GetEscapedString(IDotTextEscaper textEscaper);
