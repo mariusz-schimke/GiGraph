@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Types.Records;
+using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Extensions
 {
@@ -100,7 +101,7 @@ namespace GiGraph.Dot.Extensions
         /// <param name="fields">
         ///     The record fields to use.
         /// </param>
-        public static void ToRecord(this DotNode node, params string[] fields)
+        public static void ToRecord(this DotNode node, params DotEscapeString[] fields)
         {
             ToRecord(node, new DotRecord(fields));
         }
@@ -125,13 +126,27 @@ namespace GiGraph.Dot.Extensions
         /// <param name="node">
         ///     The current node.
         /// </param>
+        /// <param name="fields">
+        ///     The record fields to use.
+        /// </param>
+        public static void ToRecord(this DotNode node, IEnumerable<DotEscapeString> fields)
+        {
+            ToRecord(node, new DotRecord(fields));
+        }
+
+        /// <summary>
+        ///     Converts the current node to a record node composed of the specified fields.
+        /// </summary>
+        /// <param name="node">
+        ///     The current node.
+        /// </param>
         /// <param name="flip">
         ///     Determines whether to change orientation of the record.
         /// </param>
         /// <param name="fields">
         ///     The record fields to use.
         /// </param>
-        public static void ToRecord(this DotNode node, bool flip, params string[] fields)
+        public static void ToRecord(this DotNode node, bool flip, params DotEscapeString[] fields)
         {
             ToRecord(node, new DotRecord(flip, fields));
         }
@@ -149,6 +164,23 @@ namespace GiGraph.Dot.Extensions
         ///     The record fields to use.
         /// </param>
         public static void ToRecord(this DotNode node, bool flip, IEnumerable<string> fields)
+        {
+            ToRecord(node, new DotRecord(fields, flip));
+        }
+
+        /// <summary>
+        ///     Converts the current node to a record node composed of the specified fields.
+        /// </summary>
+        /// <param name="node">
+        ///     The current node.
+        /// </param>
+        /// <param name="flip">
+        ///     Determines whether to change orientation of the record.
+        /// </param>
+        /// <param name="fields">
+        ///     The record fields to use.
+        /// </param>
+        public static void ToRecord(this DotNode node, bool flip, IEnumerable<DotEscapeString> fields)
         {
             ToRecord(node, new DotRecord(fields, flip));
         }
