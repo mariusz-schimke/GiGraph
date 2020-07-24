@@ -1,11 +1,11 @@
-using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Types.Strings
 {
     /// <summary>
     ///     Represents the DOT escape string (<see href="http://www.graphviz.org/doc/info/attrs.html#k:escString" />).
     /// </summary>
-    public abstract class DotEscapeString : IDotEncodable
+    public abstract class DotEscapeString
     {
         /// <summary>
         ///     An escape sequence replaced with graph identifier on graph visualization.
@@ -52,13 +52,8 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public static DotEscapeString JustifyRight => (DotEscapedString) "\\r";
 
-        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
-        {
-            return GetDotEncodedString(options, syntaxRules);
-        }
-
         protected internal abstract string GetRawString();
-        protected internal abstract string GetDotEncodedString(DotGenerationOptions options, DotSyntaxRules syntaxRules);
+        protected internal abstract string GetEscapedString(IDotTextEscaper textEscaper);
 
         public override string ToString()
         {

@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Types.Strings
 {
@@ -21,9 +21,9 @@ namespace GiGraph.Dot.Entities.Types.Strings
             return string.Join(string.Empty, _items.Select(item => item?.GetRawString()));
         }
 
-        protected internal override string GetDotEncodedString(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetEscapedString(IDotTextEscaper textEscaper)
         {
-            return string.Join(string.Empty, _items.Select(item => item?.GetDotEncodedString(options, syntaxRules)));
+            return string.Join(string.Empty, _items.Select(item => item?.GetEscapedString(textEscaper)));
         }
 
         public static implicit operator DotConcatenatedEscapeString(DotEscapeString[] value)

@@ -15,8 +15,8 @@ namespace GiGraph.Dot.Entities.Types.Records
     /// </summary>
     public class DotRecordTextField : DotRecordField
     {
-        protected DotUnescapedRecordFieldString _portName;
-        protected DotUnescapedRecordFieldString _text;
+        protected DotEscapeString _portName;
+        protected DotEscapeString _text;
 
         /// <summary>
         ///     Creates a new text field instance.
@@ -63,7 +63,7 @@ namespace GiGraph.Dot.Entities.Types.Records
             if (_portName is {})
             {
                 result.Append("<");
-                result.Append(_portName.GetDotEncodedString(options, syntaxRules));
+                result.Append(_portName.GetEscapedString(syntaxRules.RecordFieldEscaper));
                 result.Append(">");
                 separator = " ";
             }
@@ -71,7 +71,7 @@ namespace GiGraph.Dot.Entities.Types.Records
             if (_text is {})
             {
                 result.Append(separator);
-                result.Append(_text.GetDotEncodedString(options, syntaxRules));
+                result.Append(_text.GetEscapedString(syntaxRules.RecordFieldEscaper));
             }
 
             return result.ToString();
