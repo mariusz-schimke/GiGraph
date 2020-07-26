@@ -321,6 +321,7 @@ namespace GiGraph.Examples
             graph.Attributes.Label = "Example Flow";
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
             graph.Attributes.Compound = true;
+            graph.Attributes.EdgeShape = DotEdgeShape.Orthogonal;
 
             // set individual node styles
             graph.Nodes.Add("Start").Attributes.Shape = DotNodeShape.Circle;
@@ -392,6 +393,7 @@ digraph
     compound = true
     label = "Example Flow"
     rankdir = LR
+    splines = ortho
 
     subgraph "cluster Flow 1"
     {

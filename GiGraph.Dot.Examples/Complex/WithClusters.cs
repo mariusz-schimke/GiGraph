@@ -14,6 +14,7 @@ namespace GiGraph.Dot.Examples.Complex
             graph.Attributes.Label = "Example Flow";
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
             graph.Attributes.Compound = true;
+            graph.Attributes.EdgeShape = DotEdgeShape.Orthogonal;
 
             // set individual node styles
             graph.Nodes.Add("Start").Attributes.Shape = DotNodeShape.Circle;
