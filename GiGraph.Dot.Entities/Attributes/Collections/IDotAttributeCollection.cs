@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotStringAttribute Set(string key, string value);
 
         /// <summary>
-        ///     Adds or replaces the specified string attribute in the collection. generation.
+        ///     Adds or replaces the specified escape string attribute in the collection.
         /// </summary>
         /// <param name="key">
         ///     The key of the attribute to include in the collection.
@@ -53,6 +53,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The value of the attribute to include in the collection.
         /// </param>
         DotEscapeStringAttribute Set(string key, DotEscapeString value);
+
+        /// <summary>
+        ///     Adds or replaces the specified escaped string attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotEscapeStringAttribute Set(string key, DotEscapedString value);
 
         /// <summary>
         ///     Adds or replaces the specified label attribute in the collection.
