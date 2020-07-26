@@ -15,8 +15,8 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Nodes.Add("Bar").ToRecord
             (
                 $"Foo{Environment.NewLine}Bar",
-                new DotRecordField[]
-                {
+                new DotRecord
+                (
                     "Baz",
                     new DotRecord
                     (
@@ -25,9 +25,10 @@ namespace GiGraph.Dot.Examples.Basic
                         new DotRecordTextField("Fred", portName: "port1")
                     ),
                     "Plugh"
-                },
+                ),
                 "Qux",
-                "Quux");
+                "Quux"
+            );
 
             graph.Edges.Add("Foo", "Bar", edge =>
             {

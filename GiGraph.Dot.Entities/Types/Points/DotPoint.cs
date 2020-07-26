@@ -152,15 +152,5 @@ namespace GiGraph.Dot.Entities.Types.Points
         {
             return point.HasValue ? new DotPoint(point.Value) : null;
         }
-
-        public static implicit operator DotPoint(double[] coordinates)
-        {
-            return coordinates is {} ? new DotPoint(coordinates) : null;
-        }
-
-        public static implicit operator DotPoint(int[] coordinates)
-        {
-            return coordinates is {} ? new DotPoint(coordinates.Select(c => (double) c)) : null;
-        }
     }
 }

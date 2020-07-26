@@ -88,20 +88,5 @@ namespace GiGraph.Dot.Entities.Types.Labels
         {
             return (DotRecordLabel) record;
         }
-
-        public static implicit operator DotLabel(DotRecordField[] recordFields)
-        {
-            return (DotRecord) recordFields;
-        }
-
-        public static implicit operator DotLabel(string[] recordFields)
-        {
-            return (DotRecord) recordFields;
-        }
-
-        public static implicit operator DotLabel(DotEscapeString[] recordFields)
-        {
-            return (DotRecord) recordFields;
-        }
     }
 }

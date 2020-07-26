@@ -61,15 +61,5 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
                         .Select(node => node.OrderingKey)
                         .OrderBy(key => key));
         }
-
-        public static implicit operator DotEndpointGroup(string[] nodeIds)
-        {
-            return nodeIds is {} ? new DotEndpointGroup(nodeIds) : null;
-        }
-
-        public static implicit operator DotEndpointGroup(DotSubgraph subgraph)
-        {
-            return subgraph is {} ? new DotEndpointGroup(subgraph) : null;
-        }
     }
 }

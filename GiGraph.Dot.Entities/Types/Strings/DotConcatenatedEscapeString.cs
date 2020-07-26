@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Output.TextEscaping;
 
@@ -11,9 +12,70 @@ namespace GiGraph.Dot.Entities.Types.Strings
     {
         protected readonly DotEscapeString[] _items;
 
-        protected internal DotConcatenatedEscapeString(DotEscapeString[] items)
+        /// <summary>
+        ///     Creates a new concatenated escape string instance.
+        /// </summary>
+        /// <param name="items">
+        ///     The escape strings to initialize the instance with.
+        /// </param>
+        public DotConcatenatedEscapeString(params DotEscapeString[] items)
         {
-            _items = items ?? throw new ArgumentNullException(nameof(items), "Escape string collection cannot be null.");
+            if (items is null)
+            {
+                throw new ArgumentNullException(nameof(items), "Escape string collection cannot be null.");
+            }
+
+            // flatten to prevent multiple recursion on building the output string
+            _items = items.SelectMany(item =>
+            {
+                if (item is DotConcatenatedEscapeString concatenated)
+                {
+                    return concatenated._items;
+                }
+
+                return Enumerable.Empty<DotEscapeString>().Append(item);
+            }).ToArray();
+        }
+
+        /// <summary>
+        ///     Creates a new concatenated escape string instance.
+        /// </summary>
+        /// <param name="items">
+        ///     The escape strings to initialize the instance with.
+        /// </param>
+        public DotConcatenatedEscapeString(IEnumerable<DotEscapeString> items)
+            : this(items?.ToArray())
+        {
+        }
+
+        /// <summary>
+        ///     Creates a new concatenated escape string instance.
+        /// </summary>
+        /// <param name="items">
+        ///     The escape strings to initialize the instance with.
+        /// </param>
+        public DotConcatenatedEscapeString(params string[] items)
+            : this(items?.Select(item => (DotEscapeString) item))
+        {
+        }
+
+        /// <summary>
+        ///     Creates a new concatenated escape string instance.
+        /// </summary>
+        /// <param name="items">
+        ///     The escape strings to initialize the instance with.
+        /// </param>
+        public DotConcatenatedEscapeString(IEnumerable<string> items)
+            : this(items?.Select(item => (DotEscapeString) item))
+        {
+        }
+
+        /// <summary>
+        ///     Returns the component escape strings of the current instance.
+        /// </summary>
+        public virtual DotEscapeString[] ToArray()
+        {
+            return _items.ToArray();
         }
 
         protected internal override string GetRawString()
@@ -24,61 +86,6 @@ namespace GiGraph.Dot.Entities.Types.Strings
         protected internal override string GetEscapedString(IDotTextEscaper textEscaper)
         {
             return string.Join(string.Empty, _items.Select(item => item?.GetEscapedString(textEscaper)));
-        }
-
-        public static implicit operator DotConcatenatedEscapeString(DotEscapeString[] value)
-        {
-            return value is {} ? new DotConcatenatedEscapeString(value) : null;
-        }
-
-        public static implicit operator DotEscapeString[](DotConcatenatedEscapeString value)
-        {
-            return value?._items?.ToArray();
-        }
-
-        public static DotConcatenatedEscapeString operator +(DotConcatenatedEscapeString value1, DotEscapeString value2)
-        {
-            var result = Enumerable.Empty<DotEscapeString>();
-
-            if (value1 is {})
-            {
-                // flatten to prevent recursion on building the output string
-                result = result.Concat(value1._items);
-            }
-
-            return result.Append(value2).ToArray();
-        }
-
-        public static DotConcatenatedEscapeString operator +(DotEscapeString value1, DotConcatenatedEscapeString value2)
-        {
-            var result = Enumerable.Empty<DotEscapeString>().Append(value1);
-
-            if (value2 is {})
-            {
-                // flatten to prevent recursion on building the output string
-                result = result.Concat(value2._items);
-            }
-
-            return result.ToArray();
-        }
-
-        public static DotConcatenatedEscapeString operator +(DotConcatenatedEscapeString value1, DotConcatenatedEscapeString value2)
-        {
-            var result = Enumerable.Empty<DotEscapeString>();
-
-            if (value1 is {})
-            {
-                // flatten to prevent recursion on building the output string
-                result = result.Concat(value1._items);
-            }
-
-            if (value2 is {})
-            {
-                // flatten to prevent recursion on building the output string
-                result = result.Concat(value2._items);
-            }
-
-            return result.ToArray();
         }
     }
 }

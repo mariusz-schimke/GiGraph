@@ -43,11 +43,6 @@ namespace GiGraph.Dot.Entities.Types.Ranks
         /// </summary>
         public double[] Values { get; }
 
-        public static implicit operator DotRankSeparationList(double[] value)
-        {
-            return value is {} ? new DotRankSeparationList(value) : null;
-        }
-
         protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
             return DotDoubleListConverter.Convert(Values);

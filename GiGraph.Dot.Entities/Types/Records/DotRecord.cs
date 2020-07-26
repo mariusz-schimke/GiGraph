@@ -167,20 +167,5 @@ namespace GiGraph.Dot.Entities.Types.Records
 
             return result.ToString();
         }
-
-        public static implicit operator DotRecord(DotRecordField[] fields)
-        {
-            return fields is {} ? new DotRecord(fields) : null;
-        }
-
-        public static implicit operator DotRecord(string[] fields)
-        {
-            return fields is {} ? new DotRecord(fields) : null;
-        }
-
-        public static implicit operator DotRecord(DotEscapeString[] fields)
-        {
-            return fields is {} ? new DotRecord(fields) : null;
-        }
     }
 }

@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Types.Ranks
 
         public static implicit operator DotRankSeparationDefinition(double[] value)
         {
-            return (DotRankSeparationList) value;
+            return value is {} ? new DotRankSeparationList(value) : null;
         }
     }
 }

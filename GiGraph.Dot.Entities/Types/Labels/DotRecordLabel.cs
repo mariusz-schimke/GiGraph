@@ -1,6 +1,5 @@
 using System;
 using GiGraph.Dot.Entities.Types.Records;
-using GiGraph.Dot.Entities.Types.Strings;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Labels
@@ -39,21 +38,6 @@ namespace GiGraph.Dot.Entities.Types.Labels
         public static implicit operator DotRecord(DotRecordLabel label)
         {
             return label?._record;
-        }
-
-        public static implicit operator DotRecordLabel(DotRecordField[] fields)
-        {
-            return fields is {} ? new DotRecord(fields) : null;
-        }
-
-        public static implicit operator DotRecordLabel(string[] fields)
-        {
-            return fields is {} ? new DotRecord(fields) : null;
-        }
-
-        public static implicit operator DotRecordLabel(DotEscapeString[] fields)
-        {
-            return fields is {} ? new DotRecord(fields) : null;
         }
     }
 }

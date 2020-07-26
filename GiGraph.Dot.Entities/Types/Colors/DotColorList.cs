@@ -175,15 +175,5 @@ namespace GiGraph.Dot.Entities.Types.Colors
             var colors = Colors.Select(color => color.GetDotEncodedColor(options, syntaxRules));
             return string.Join(":", colors);
         }
-
-        public static implicit operator DotColorList(Color[] colors)
-        {
-            return colors is {} ? new DotColorList(colors) : null;
-        }
-
-        public static implicit operator DotColorList(DotColor[] colors)
-        {
-            return colors is {} ? new DotColorList(colors) : null;
-        }
     }
 }

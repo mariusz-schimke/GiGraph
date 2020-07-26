@@ -101,7 +101,7 @@ Graph nodes and edges may by styled globally, locally, and individually.
 
 Apart from those, the graph itself, and a cluster, also have their own collections of attributes that you may set. These are for instance background color, style, label, etc.
 
-The example below presents how individual elements may be styled. At the beginning, the global node shape is set to rectangular, and the style to filled, so that their fill color may be set. The example nodes have set a plain color fill, a striped/wedged fill (with custom stripe/wedge proportions), a gradient fill, or a two-color fill with proportions. Edges, on the other hand, have the 'vee' shape set globally, and custom styles set individually: plain color, multicolor series or splines, and a dotted style.
+The example below presents how individual elements may be styled. At the beginning, the global node shape is set to rectangular, and the style to filled, so that the fill color may be set. The example nodes have set a plain color fill, a striped/wedged fill (with custom stripe/wedge proportions), a gradient fill, or a two-color fill with proportions. Edges, on the other hand, have the 'vee' shape set globally, and custom styles set individually: plain color, multicolor series or splines, and a dotted style.
 
 
 
@@ -809,12 +809,12 @@ And here is the code to achieve it:
 using GiGraph.Dot.Extensions; // ToRecord
 ...
 
-graph.Nodes.Add("Foo").ToRecord("Foo", new[] { "Bar", "Baz" }, "Qux");
+graph.Nodes.Add("Foo").ToRecord("Foo", new DotRecord("Bar", "Baz"), "Qux");
 ```
 
 
 
-Note that *string* is implicitly convertible to *DotRecordTextField*, whereas *string[]* is implicitly convertible to *DotRecord*, which simplifies record initialization.
+Note that *string* is implicitly convertible to *DotRecordTextField*.
 
 
 
@@ -841,8 +841,8 @@ And the code to generate it:
 graph.Nodes.Add("Bar").ToRecord
 (
     $"Foo{Environment.NewLine}Bar",
-    new DotRecordField[]
-    {
+    new DotRecord
+    (
         "Baz",
         new DotRecord
         (
@@ -850,10 +850,11 @@ graph.Nodes.Add("Bar").ToRecord
             "Waldo",
             new DotRecordTextField("Fred", portName: "port1")
         ),
-        "Plugh",
-    },
+        "Plugh"
+    ),
     "Qux",
-    "Quux");
+    "Quux"
+);
 
 graph.Edges.Add("Foo", "Bar", edge =>
 {
