@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Entities.Tests
 
             Assert.Equal(
                 @"\\a\G",
-                ((IDotEncodable) value).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEscapable) value).GetEscaped(_syntaxRules.TextValueEscaper));
         }
 
         [Fact]
@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Tests
 
             Assert.Equal(
                 @"\\a",
-                ((IDotEncodable) value).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEscapable) value).GetEscaped(_syntaxRules.TextValueEscaper));
         }
 
         [Fact]
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Tests
 
             Assert.Equal(
                 @"\\a",
-                ((IDotEncodable) value).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEscapable) value).GetEscaped(_syntaxRules.TextValueEscaper));
         }
 
         [Fact]
@@ -46,7 +46,7 @@ namespace GiGraph.Dot.Entities.Tests
 
             Assert.Equal(
                 string.Empty,
-                ((IDotEncodable) value).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEscapable) value).GetEscaped(_syntaxRules.TextValueEscaper));
         }
     }
 }
