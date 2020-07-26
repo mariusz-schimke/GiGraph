@@ -1,5 +1,6 @@
 using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 
@@ -68,12 +69,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                     return definition;
                 }
 
-                if (TryGetValueAs<double>(key, out var doubleValue))
+                if (TryGetValueAs<double>(key, out var number))
                 {
-                    return doubleValue;
+                    return number;
                 }
 
-                return TryGetValueAs<double[]>(key, out var doubleList) ? new DotRankSeparationList(doubleList) : null;
+                return TryGetValueAs<double[]>(key, out var array) ? array : null;
             }
             set => AddOrRemove("ranksep", value, (k, v) => new DotRankSeparationAttribute(k, v));
         }
@@ -100,6 +101,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => TryGetValueAs<DotPoint>("size", out var result) ? result : null;
             set => AddOrRemove("size", value, (k, v) => new DotPointAttribute(k, v));
+        }
+
+        public virtual DotAspectRatioDefinition AspectRatio
+        {
+            get
+            {
+                const string key = "ratio";
+
+                if (TryGetValueAs<DotAspectRatioDefinition>(key, out var definition))
+                {
+                    return definition;
+                }
+
+                return TryGetValueAs<double>(key, out var number) ? number : (double?) null;
+            }
+            set => AddOrRemove("ratio", value, (k, v) => new DotAspectRatioDefinitionAttribute(k, v));
         }
     }
 }

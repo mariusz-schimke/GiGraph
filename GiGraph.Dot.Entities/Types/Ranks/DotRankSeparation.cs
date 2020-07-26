@@ -38,12 +38,12 @@ namespace GiGraph.Dot.Entities.Types.Ranks
         ///     Gets or sets the minimum vertical distance in inches between the bottom of the nodes in one rank and the tops of nodes in the
         ///     next.
         /// </summary>
-        public double? Value { get; set; }
+        public virtual double? Value { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating if the centers of all ranks should be spaced equally apart.
         /// </summary>
-        public bool Equal { get; set; }
+        public virtual bool Equal { get; set; }
 
         public static implicit operator DotRankSeparation(double? value)
         {

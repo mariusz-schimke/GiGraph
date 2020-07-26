@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Enums;
+using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
@@ -173,6 +174,28 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The value of the attribute to include in the collection.
         /// </param>
         DotColorDefinitionAttribute Set(string key, DotColorDefinition value);
+
+        /// <summary>
+        ///     Adds or replaces the specified aspect ratio attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotAspectRatioAttribute Set(string key, DotAspectRatio value);
+
+        /// <summary>
+        ///     Adds or replaces the specified aspect ratio attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotAspectRatioDefinitionAttribute Set(string key, DotAspectRatioDefinition value);
 
         /// <summary>
         ///     Adds or replaces the specified point attribute in the collection.

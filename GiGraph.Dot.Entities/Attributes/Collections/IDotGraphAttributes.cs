@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
@@ -333,9 +334,26 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///         dimension in size.
         ///     </para>
         ///     <para>
-        ///         Note that there is some interaction between the <see cref="Size" /> and the <see cref="Ratio" /> attributes.
+        ///         Note that there is some interaction between the <see cref="Size" /> and the <see cref="AspectRatio" /> attributes.
         ///     </para>
         /// </summary>
         DotPoint Size { get; set; }
+
+        /// <summary>
+        ///     <para>
+        ///         Sets the aspect ratio (drawing height / drawing width) for the drawing. Note that this is adjusted before the
+        ///         <see cref="Size" /> attribute constraints are enforced. In addition, the calculations usually ignore the node sizes, so
+        ///         the final drawing size may only approximate what is desired.
+        ///     </para>
+        ///     <para>
+        ///         If ratio is numeric, it is taken as the desired aspect ratio. Then, if the actual aspect ratio is less than the desired
+        ///         ratio, the drawing height is scaled up to achieve the desired ratio; if the actual ratio is greater than that desired
+        ///         ratio, the drawing width is scaled up.
+        ///     </para>
+        ///     <para>
+        ///         See also <see cref="DotAspectRatio" /> for non-numeric options of the ratio.
+        ///     </para>
+        /// </summary>
+        DotAspectRatioDefinition AspectRatio { get; set; }
     }
 }
