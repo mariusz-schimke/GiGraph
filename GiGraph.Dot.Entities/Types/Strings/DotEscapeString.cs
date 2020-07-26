@@ -151,7 +151,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </param>
         public static DotEscapeString ConcatEscaped(params string[] items)
         {
-            return new DotConcatenatedEscapeString(items?.Select(FromEscapedString));
+            return ConcatEscaped((IEnumerable<string>) items);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </param>
         public static DotEscapeString ConcatEscaped(IEnumerable<string> items)
         {
-            return ConcatEscaped(items?.ToArray());
+            return new DotConcatenatedEscapeString(items?.Select(FromEscapedString));
         }
 
         public static implicit operator DotEscapeString(string value)

@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Types.Records
     /// </summary>
     public class DotRecordBuilder
     {
-        protected List<DotRecordField> _fields = new List<DotRecordField>();
+        protected readonly List<DotRecordField> _fields = new List<DotRecordField>();
 
         /// <summary>
         ///     Appends a field to the record being built.

@@ -38,12 +38,9 @@ namespace GiGraph.Dot.Entities.Types.Colors
 
         protected static DotColor Weighted(Color color, double? weight)
         {
-            if (weight.HasValue)
-            {
-                return new DotWeightedColor(color, weight.Value);
-            }
-
-            return new DotColor(color);
+            return weight.HasValue
+                ? new DotWeightedColor(color, weight.Value)
+                : new DotColor(color);
         }
     }
 }

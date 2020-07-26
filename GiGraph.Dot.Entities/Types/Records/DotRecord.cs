@@ -134,7 +134,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         ///     layouts, the top-level fields are displayed vertically.
         /// </param>
         public DotRecord(IEnumerable<string> fields, bool flip = FlipDefault)
-            : this(fields?.Select(field => (DotEscapeString) field), flip)
+            : this(fields?.Select(field => new DotRecordTextField(field)), flip)
         {
         }
 
