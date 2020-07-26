@@ -1,5 +1,5 @@
 Road map:
-1. Gradually add support for all available attributes (page, pack, packmode).
+1. Gradually add support for all available attributes (pack, packmode).
 2. Verify the correctness of XML documentations.
 
 Other:

@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
     public enum DotAspectRatio
     {
         /// <summary>
-        ///     The graph <see cref="IDotGraphAttributes.Page" /> attribute is set and the graph cannot be drawn on a single page, then
+        ///     If the graph page attribute is set and the graph cannot be drawn on a single page, then
         ///     <see cref="IDotGraphAttributes.Size" /> is set to an "ideal" value. In particular, the size in a given dimension will be the
         ///     smallest integral multiple of the page size in that dimension which is at least half the current size. The two dimensions are
         ///     then scaled independently to the new size. This feature only works in dot.
