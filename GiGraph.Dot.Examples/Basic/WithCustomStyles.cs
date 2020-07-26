@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Examples.Basic
             graph.NodeDefaults.Shape = DotNodeShape.Rectangle;
             graph.NodeDefaults.Style = DotStyle.Filled;
             graph.NodeDefaults.FontName = graph.Attributes.FontName;
-            graph.NodeDefaults.FillColor = DotColorDefinition.Gradient(Color.Turquoise, Color.RoyalBlue);
+            graph.NodeDefaults.FillColor = new DotGradientColor(Color.Turquoise, Color.RoyalBlue);
 
             // set the defaults for all edges of the graph
             graph.EdgeDefaults.ArrowHead = graph.EdgeDefaults.ArrowTail = DotArrowType.Vee;
@@ -48,15 +48,15 @@ namespace GiGraph.Dot.Examples.Basic
                     edge.Attributes.ArrowDirection = DotArrowDirection.Both;
 
                     // this will render two parallel splines (but more of them can be added by adding further colors)
-                    edge.Attributes.Color = DotColorDefinition.Multi(Color.Turquoise, Color.RoyalBlue);
+                    edge.Attributes.Color = new DotColorList(Color.Turquoise, Color.RoyalBlue);
                 });
             });
 
             graph.Subgraphs.Add(sg =>
             {
                 // nodes with dual-color fill; fill proportions specified by the weight parameter
-                sg.Nodes.Add("C").Attributes.FillColor = DotColorDefinition.Dual(Color.RoyalBlue, Color.Turquoise, weight2: 0.25);
-                sg.Nodes.Add("D").Attributes.FillColor = DotColorDefinition.Dual(Color.Navy, Color.RoyalBlue, weight1: 0.25);
+                sg.Nodes.Add("C").Attributes.FillColor = new DotDualColor(Color.RoyalBlue, Color.Turquoise, weight2: 0.25);
+                sg.Nodes.Add("D").Attributes.FillColor = new DotDualColor(Color.Navy, Color.RoyalBlue, weight1: 0.25);
 
                 sg.Edges.Add("C", "D", edge =>
                 {
@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Examples.Basic
                     edge.Attributes.ArrowDirection = DotArrowDirection.Both;
 
                     // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
-                    edge.Attributes.Color = DotColorDefinition.Multi(
+                    edge.Attributes.Color = new DotColorList(
                         new DotWeightedColor(Color.Turquoise, 0.33),
                         new DotWeightedColor(Color.Gray, 0.33),
                         Color.Navy);
@@ -82,7 +82,7 @@ namespace GiGraph.Dot.Examples.Basic
                     attrs.Color = Color.Transparent;
 
                     // set the colors of individual stripes and their proportions
-                    attrs.FillColor = DotColorDefinition.Multi(
+                    attrs.FillColor = new DotColorList(
                         new DotWeightedColor(Color.Navy, 0.1),
                         Color.RoyalBlue,
                         Color.Turquoise,
@@ -100,7 +100,7 @@ namespace GiGraph.Dot.Examples.Basic
                     attrs.Color = Color.Transparent;
 
                     // set the colors of individual wedges and their proportions
-                    attrs.FillColor = DotColorDefinition.Multi(
+                    attrs.FillColor = new DotColorList(
                         Color.Orange,
                         Color.RoyalBlue,
                         new DotWeightedColor(Color.Navy, 0.1),

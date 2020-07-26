@@ -14,8 +14,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
     {
         /// <summary>
         ///     <para>
-        ///         Creates a new color list that will be rendered in a specific way depending on how many colors are specified, whether they
-        ///         have weights, and what type of element the color list is applied to.
+        ///         Creates a new color list rendered in a specific way depending on how many colors are specified, whether they have
+        ///         weights, and what type of element the color list is applied to.
         ///     </para>
         ///     <para>
         ///         The returned color list will be rendered as a gradient fill when two colors with no weights (<see cref="DotColor" />) are
@@ -56,8 +56,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
 
         /// <summary>
         ///     <para>
-        ///         Creates a new color list that will be rendered in a specific way depending on how many colors are specified, whether they
-        ///         have weights, and what type of element the color list is applied to.
+        ///         Creates a new color list rendered in a specific way depending on how many colors are specified, whether they have
+        ///         weights, and what type of element the color list is applied to.
         ///     </para>
         ///     <para>
         ///         The returned color list will be rendered as a gradient fill when two colors with no weights (<see cref="DotColor" />) are
@@ -87,8 +87,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
 
         /// <summary>
         ///     <para>
-        ///         Creates a new color list that will be rendered in a specific way depending on how many colors are specified, and what
-        ///         type of element the color list is applied to.
+        ///         Creates a new color list rendered in a specific way depending on how many colors are specified, and what type of element
+        ///         the color list is applied to.
         ///     </para>
         ///     <para>
         ///         The returned color list will be rendered as a gradient fill when only two colors are specified (refers to the root graph,
@@ -111,8 +111,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
 
         /// <summary>
         ///     <para>
-        ///         Creates a new color list that will be rendered in a specific way depending on how many colors are specified, and what
-        ///         type of element the color list is applied to.
+        ///         Creates a new color list rendered in a specific way depending on how many colors are specified, and what type of element
+        ///         the color list is applied to.
         ///     </para>
         ///     <para>
         ///         The returned color list will be rendered as a gradient fill when only two colors are specified (refers to the root graph,
