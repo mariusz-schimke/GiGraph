@@ -63,7 +63,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder AppendLine()
         {
-            _items.Add(DotEscapeString.NewLine);
+            _items.Add(DotEscapeString.LineBreak);
             return this;
         }
 
@@ -153,7 +153,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder JustifyLeft()
         {
-            return Append(DotEscapeString.JustifyLeft);
+            return Append(DotEscapeString.LeftJustification);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public virtual DotEscapeStringBuilder JustifyRight()
         {
-            return Append(DotEscapeString.JustifyRight);
+            return Append(DotEscapeString.RightJustification);
         }
 
         /// <summary>

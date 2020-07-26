@@ -847,14 +847,14 @@ graph.Nodes.Add("Bar").ToRecord
     $"Foo{Environment.NewLine}Bar",
     new DotRecord
     (
-        "Baz" + DotEscapeString.JustifyLeft, // the text may be justified
+        DotEscapeString.JustifyLeft("Baz"), // the text may be justified
         new DotRecord
         (
             "Garply",
             "Waldo",
             new DotRecordTextField("Fred", portName: "port1")
         ),
-        "Plugh" + DotEscapeString.JustifyRight
+        DotEscapeString.JustifyRight("Plugh")
     ),
     "Qux",
     "Quux"
@@ -1434,9 +1434,9 @@ graph.Nodes.Add("Foo", attrs =>
                  .ToEscapeString();
 
     // or string concatenation
-    attrs.Label = "Centered line" + DotEscapeString.NewLine +
-                  "Left-justified line" + DotEscapeString.JustifyLeft +
-                  "Right-justified line" + DotEscapeString.JustifyRight;
+    attrs.Label = "Centered line" + DotEscapeString.LineBreak +
+                  DotEscapeString.JustifyLeft("Left-justified line") +
+                  DotEscapeString.JustifyRight("Right-justified line");
 });
 ```
 

@@ -42,21 +42,43 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// <summary>
         ///     An escape sequence interpreted as a line break.
         /// </summary>
-        public static DotEscapeString NewLine => (DotEscapedString) "\\n";
+        public static DotEscapeString LineBreak => (DotEscapedString) "\\n";
 
         /// <summary>
         ///     An escape sequence that causes the line of text that precedes it to be left-justified.
         /// </summary>
-        public static DotEscapeString JustifyLeft => (DotEscapedString) "\\l";
+        public static DotEscapeString LeftJustification => (DotEscapedString) "\\l";
 
         /// <summary>
         ///     An escape sequence that causes the line of text that precedes it to be right-justified.
         /// </summary>
-        public static DotEscapeString JustifyRight => (DotEscapedString) "\\r";
+        public static DotEscapeString RightJustification => (DotEscapedString) "\\r";
 
         string IDotEscapable.GetEscaped(IDotTextEscaper textEscaper)
         {
             return GetEscapedString(textEscaper);
+        }
+
+        /// <summary>
+        ///     Returns left-justified text.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to justify.
+        /// </param>
+        public static DotEscapeString JustifyLeft(DotEscapeString text)
+        {
+            return text + LeftJustification;
+        }
+
+        /// <summary>
+        ///     Returns right-justified text.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to justify.
+        /// </param>
+        public static DotEscapeString JustifyRight(DotEscapeString text)
+        {
+            return text + RightJustification;
         }
 
         protected internal abstract string GetRawString();
