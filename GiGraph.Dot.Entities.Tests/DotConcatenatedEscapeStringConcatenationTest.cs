@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Tests
         [Fact]
         public void concatenated_escape_string_concatenation_produces_a_valid_dot_encoded_value_when_both_sides_are_null_and_left_is_concatenated()
         {
-            var value = (DotConcatenatedEscapeString) null + (DotEscapeString) null;
+            var value = null + (DotEscapeString) null;
 
             Assert.Equal(
                 string.Empty,
@@ -54,7 +54,7 @@ namespace GiGraph.Dot.Entities.Tests
         [Fact]
         public void concatenated_escape_string_concatenation_produces_a_valid_dot_encoded_value_when_both_sides_are_null_and_right_is_concatenated()
         {
-            var value = (DotEscapeString) null + (DotConcatenatedEscapeString) null;
+            var value = null + (DotConcatenatedEscapeString) null;
 
             Assert.Equal(
                 string.Empty,

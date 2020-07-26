@@ -48,9 +48,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotEscapeString Tooltip { get; set; }
 
         /// <summary>
-        ///     Gets or sets the color of the cluster (default: <see cref="System.Drawing.Color.Black" />). If <see cref="DotMultiColor" /> is
-        ///     used, with no weighted colors in its color collection (<see cref="DotColor" /> items only), and the <see cref="Style" /> is
-        ///     <see cref="DotStyle.Filled" />, a linear gradient fill is done using the first two colors. If weighted colors are present
+        ///     Gets or sets the color of the cluster (default: <see cref="System.Drawing.Color.Black" />). If <see cref="DotMultiColor" />
+        ///     is used, with no weighted colors in its color collection (<see cref="DotColor" /> items only), and the <see cref="Style" />
+        ///     is <see cref="DotStyle.Filled" />, a linear gradient fill is done using the first two colors. If weighted colors are present
         ///     (see <see cref="DotWeightedColor" />), a degenerate linear gradient fill is done. This essentially does a fill using two
         ///     colors, with the <see cref="DotWeightedColor.Weight" /> specifying how much of region is filled with each color. If the
         ///     <see cref="Style" /> attribute contains the value <see cref="DotStyle.Radial" />, then a radial gradient fill is done. These

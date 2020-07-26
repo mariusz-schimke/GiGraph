@@ -54,17 +54,6 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// <param name="items">
         ///     The escape strings to initialize the instance with.
         /// </param>
-        public DotConcatenatedEscapeString(params string[] items)
-            : this(items?.Select(item => (DotEscapeString) item))
-        {
-        }
-
-        /// <summary>
-        ///     Creates a new concatenated escape string instance.
-        /// </summary>
-        /// <param name="items">
-        ///     The escape strings to initialize the instance with.
-        /// </param>
         public DotConcatenatedEscapeString(IEnumerable<string> items)
             : this(items?.Select(item => (DotEscapeString) item))
         {
