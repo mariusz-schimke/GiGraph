@@ -96,7 +96,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         ///     The fields to initialize the record with.
         /// </param>
         public DotRecord(params DotEscapeString[] fields)
-            : this(FlipDefault, fields)
+            : this(fields, FlipDefault)
         {
         }
 
