@@ -18,14 +18,14 @@ namespace GiGraph.Dot.Examples.Basic
                 $"Foo{Environment.NewLine}Bar",
                 new DotRecord
                 (
-                    "Baz" + DotEscapeString.JustifyLeft,
+                    DotEscapeString.JustifyLeft("Baz"),
                     new DotRecord
                     (
                         "Garply",
                         "Waldo",
                         new DotRecordTextField("Fred", portName: "port1")
                     ),
-                    "Plugh" + DotEscapeString.JustifyRight
+                    DotEscapeString.JustifyRight("Plugh")
                 ),
                 "Qux",
                 "Quux"
