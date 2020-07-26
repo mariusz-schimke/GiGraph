@@ -95,5 +95,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetValueAs<DotPoint>("pad", out var result) ? result : null;
             set => AddOrRemove("pad", value, (k, v) => new DotPointAttribute(k, v));
         }
+
+        public virtual DotPoint Size
+        {
+            get => TryGetValueAs<DotPoint>("size", out var result) ? result : null;
+            set => AddOrRemove("size", value, (k, v) => new DotPointAttribute(k, v));
+        }
     }
 }
