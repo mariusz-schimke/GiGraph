@@ -23,9 +23,7 @@ For the complete documentation of the DOT language, and the visualization capabi
 <p align="center">
   <img src="./Assets/jetbrains.svg" width="200px">
 </p>
-# Table of contents
 
-[TOC]
 
 # Generating a graph
 
