@@ -8,19 +8,21 @@
 
 For the complete documentation of the DOT language, and the visualization capabilities of the available software, please go to <a href="https://graphviz.gitlab.io/documentation" target="_blank">Graphviz - Graph Vizualization Software</a>.
 
-###### Built with <a href="https://docs.microsoft.com/en-US/dotnet/standard/net-standard#net-implementation-support" target="_blank">.NET Standard 2.0</a> (compatible with *.NET Core 2.0* and above, *.NET Framework 4.6.1* and above).
 
-###### Available on NuGet: [![#](https://img.shields.io/nuget/v/GiGraph.Dot)](https://www.nuget.org/packages/GiGraph.Dot/)
 
-###### Special thanks to <a href="https://www.jetbrains.com/?from=GiGraphDot" target="_blank">JetBrains</a> for providing me free of charge with their fantastic Rider IDE and tools!
+**Built with** <a href="https://docs.microsoft.com/en-US/dotnet/standard/net-standard#net-implementation-support" target="_blank">.NET Standard 2.0</a> (compatible with *.NET Core 2.0* and above, *.NET Framework 4.6.1* and above).
+
+**Available on NuGet**: [![#](https://img.shields.io/nuget/v/GiGraph.Dot)](https://www.nuget.org/packages/GiGraph.Dot/)
+
+
+
+**Special thanks** to <a href="https://www.jetbrains.com/?from=GiGraphDot" target="_blank">JetBrains</a> for providing me free of charge with their fantastic Rider IDE and tools!
 
 
 
 <p align="center">
   <img src="./Assets/jetbrains.svg" width="200px">
 </p>
-
-
 
 
 # Generating a graph
@@ -321,6 +323,7 @@ namespace GiGraph.Examples
             graph.Attributes.Label = "Example Flow";
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
             graph.Attributes.Compound = true;
+            graph.Attributes.EdgeShape = DotEdgeShape.Orthogonal;
 
             // set individual node styles
             graph.Nodes.Add("Start").Attributes.Shape = DotNodeShape.Circle;
@@ -392,6 +395,7 @@ digraph
     compound = true
     label = "Example Flow"
     rankdir = LR
+    splines = ortho
 
     subgraph "cluster Flow 1"
     {
@@ -753,7 +757,7 @@ digraph
 
 
 
-#### Record nodes
+### Record nodes
 
 The shape of a node is determined by the *Shape* attribute. By default it is a circle with a label, but you may change it to any other shape accepted by the DOT visualization tool. The standard shapes are available under the *DotNodeShape* enumeration, and two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use any of these as the *Shape* attribute, you may assign a record label (*DotRecord*) to the node.
 
@@ -818,7 +822,7 @@ Note that *string* is implicitly convertible to *DotRecordTextField*.
 
 
 
-##### Customizing edge placement
+#### Customizing edge placement
 
 The fields of record nodes may have a **port** specified as well. The port may have an individual name that you may refer to when defining an edge (see the [edge](#edge) section). This way you may decide which field of the record an edge tail or head is attached to. In the following example the field labeled 'Fred' has a port assigned, named 'port1'. The edge that joins the two nodes refers to that port name to attach the tail to it.
 
@@ -869,7 +873,7 @@ See also a similar example in the [HTML nodes](#html-nodes) section.
 
 
 
-#### HTML nodes
+### HTML nodes
 
 Nodes may have an HTML label assigned. This way you can handle more complex node content arrangement and styling scenarios than in a record node for instance. The HTML grammar is Graphviz specific, and is described in the <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">documentation</a>. In general, tables, text styles, and images are the main valid markups that may be used for an HTML node label.
 
@@ -937,7 +941,7 @@ digraph
 
 
 
-##### Customizing edge placement
+#### Customizing edge placement
 
 Similarly to the record node case, you can specify *ports* within the HTML table. As already mentioned, the port may have an individual name that you may refer to when defining an edge (see the [edge](#edge) section). This way you may decide which field of the HTML table an edge tail or head is attached to. In the example above the field labeled 'Fred' has a port assigned, named 'port1', so it can be referred to by its name from an edge. See the following example that extends the code above with an edge.
 
@@ -977,7 +981,7 @@ See also a similar example in the [record nodes](#record-nodes) section.
 
 
 
-### Node group
+### Node groups
 
 When adding nodes to a graph, subgraph or cluster, you may use a node group that has a shared list of attributes for all the nodes within it. To do it, use one of the overloads of the *Add* method that accepts multiple node identifiers. Note that it is only a shorthand for adding multiple nodes at once (assuming that all of them should have the same attributes or no attributes).
 
