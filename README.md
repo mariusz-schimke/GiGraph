@@ -829,7 +829,7 @@ The fields of record nodes may have a **port** specified as well. The port may h
 ```dot
 digraph
 {
-    Bar [ label = "Foo\nBar | { Baz | { Garply | Waldo | <port1> Fred } | Plugh } | Qux | Quux", shape = record ]
+    Bar [ label = "Foo\nBar | { Baz\l | { Garply | Waldo | <port1> Fred } | Plugh\r } | Qux | Quux", shape = record ]
 
     Foo -> Bar:port1:ne
 }
@@ -843,14 +843,14 @@ graph.Nodes.Add("Bar").ToRecord
     $"Foo{Environment.NewLine}Bar",
     new DotRecord
     (
-        "Baz",
+        "Baz" + DotEscapeString.JustifyLeft, // the text may be justified
         new DotRecord
         (
             "Garply",
             "Waldo",
             new DotRecordTextField("Fred", portName: "port1")
         ),
-        "Plugh"
+        "Plugh" + DotEscapeString.JustifyRight
     ),
     "Qux",
     "Quux"
