@@ -56,7 +56,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotEscapeString Tooltip { get; set; }
 
         /// <summary>
-        ///     Gets or sets the color of the node (default: <see cref="System.Drawing.Color.Black" />). If <see cref="DotColorList" /> is
+        ///     Gets or sets the color of the node (default: <see cref="System.Drawing.Color.Black" />). If <see cref="DotMultiColor" /> is
         ///     used, with no weighted colors in its color collection (<see cref="DotColor" /> items only), and the <see cref="Style" /> is
         ///     <see cref="DotStyle.Filled" />, a linear gradient fill is done using the first two colors. If weighted colors are present
         ///     (see <see cref="DotWeightedColor" />), a degenerate linear gradient fill is done. This essentially does a fill using two
@@ -75,7 +75,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///         output format is MIF, which use black by default.
         ///     </para>
         ///     <para>
-        ///         If <see cref="DotColorList" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
+        ///         If <see cref="DotMultiColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
         ///         <see cref="Style" /> to <see cref="DotStyle.Radial" /> will cause a radial fill. At present, only two colors are used. If
         ///         the second color is missing, the default color is used for it. See also the <see cref="GradientAngle" /> attribute for
         ///         setting the gradient angle.

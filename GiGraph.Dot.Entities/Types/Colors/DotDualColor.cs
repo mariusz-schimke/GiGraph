@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
     ///     colors (if no weights are present), or as a single spline with two segments in the specified colors if a weight is specified
     ///     for either of the colors.
     /// </summary>
-    public class DotDualColor : DotColorList
+    public class DotDualColor : DotMultiColor
     {
         /// <summary>
         ///     Creates a new color list rendered as dual-color fill (refers to the root graph, nodes, and clusters), or as a two-segment

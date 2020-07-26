@@ -48,7 +48,7 @@ namespace GiGraph.Dot.Examples.Basic
                     edge.Attributes.ArrowDirection = DotArrowDirection.Both;
 
                     // this will render two parallel splines (but more of them can be added by adding further colors)
-                    edge.Attributes.Color = new DotColorList(Color.Turquoise, Color.RoyalBlue);
+                    edge.Attributes.Color = new DotMultiColor(Color.Turquoise, Color.RoyalBlue);
                 });
             });
 
@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Examples.Basic
                     edge.Attributes.ArrowDirection = DotArrowDirection.Both;
 
                     // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
-                    edge.Attributes.Color = new DotColorList(
+                    edge.Attributes.Color = new DotMultiColor(
                         new DotWeightedColor(Color.Turquoise, 0.33),
                         new DotWeightedColor(Color.Gray, 0.33),
                         Color.Navy);
@@ -82,7 +82,7 @@ namespace GiGraph.Dot.Examples.Basic
                     attrs.Color = Color.Transparent;
 
                     // set the colors of individual stripes and their proportions
-                    attrs.FillColor = new DotColorList(
+                    attrs.FillColor = new DotMultiColor(
                         new DotWeightedColor(Color.Navy, 0.1),
                         Color.RoyalBlue,
                         Color.Turquoise,
@@ -100,7 +100,7 @@ namespace GiGraph.Dot.Examples.Basic
                     attrs.Color = Color.Transparent;
 
                     // set the colors of individual wedges and their proportions
-                    attrs.FillColor = new DotColorList(
+                    attrs.FillColor = new DotMultiColor(
                         Color.Orange,
                         Color.RoyalBlue,
                         new DotWeightedColor(Color.Navy, 0.1),

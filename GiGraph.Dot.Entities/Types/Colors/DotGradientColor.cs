@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
     /// <summary>
     ///     Represents a color definition rendered as gradient fill when applied to the root graph, node, or cluster.
     /// </summary>
-    public class DotGradientColor : DotColorList
+    public class DotGradientColor : DotMultiColor
     {
         /// <summary>
         ///     Creates a new color definition rendered as gradient fill when applied to the root graph, node, or cluster.

@@ -4,8 +4,8 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Colors
 {
     /// <summary>
-    ///     Represents a color definition as a single color (<see cref="DotColor" />), as a gradient (<see cref="DotColorList" />) or as
-    ///     multiple colors (<see cref="DotColorList" />).
+    ///     Represents a color definition as a single color (<see cref="DotColor" />), as a gradient (<see cref="DotMultiColor" />) or as
+    ///     multiple colors (<see cref="DotMultiColor" />).
     /// </summary>
     public abstract class DotColorDefinition : IDotEncodable
     {
@@ -23,12 +23,12 @@ namespace GiGraph.Dot.Entities.Types.Colors
 
         public static implicit operator DotColorDefinition(Color[] colors)
         {
-            return colors is {} ? new DotColorList(colors) : null;
+            return colors is {} ? new DotMultiColor(colors) : null;
         }
 
         public static implicit operator DotColorDefinition(DotColor[] colors)
         {
-            return colors is {} ? new DotColorList(colors) : null;
+            return colors is {} ? new DotMultiColor(colors) : null;
         }
     }
 }

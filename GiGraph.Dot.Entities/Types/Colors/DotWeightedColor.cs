@@ -6,7 +6,7 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Colors
 {
     /// <summary>
-    ///     Represents a weighted color for use in color lists only (<see cref="DotColorList" />).
+    ///     Represents a weighted color for use in color lists only (<see cref="DotMultiColor" />).
     /// </summary>
     public class DotWeightedColor : DotColor
     {

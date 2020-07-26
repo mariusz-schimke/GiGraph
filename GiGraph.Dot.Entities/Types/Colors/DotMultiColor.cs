@@ -8,9 +8,9 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Colors
 {
     /// <summary>
-    ///     Represents a list of colors that may be used to generate a gradient fill, multicolor stripes or wedges, or multicolor edges.
+    ///     Represents a list of colors that may be used to generate gradient fill, multicolor stripes or wedges, or multicolor edges.
     /// </summary>
-    public class DotColorList : DotColorDefinition
+    public class DotMultiColor : DotColorDefinition
     {
         /// <summary>
         ///     <para>
@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///         weights, and what type of element the color list is applied to.
         ///     </para>
         ///     <para>
-        ///         The returned color list will be rendered as a gradient fill when two colors with no weights (<see cref="DotColor" />) are
+        ///         The returned color list will be rendered as gradient fill when two colors with no weights (<see cref="DotColor" />) are
         ///         specified (refers to the root graph, nodes, and clusters), or as two parallel splines when applied to an edge. When a
         ///         weight is specified for either of the colors (<see cref="DotWeightedColor" />), the returned color list will be rendered
         ///         as dual-color fill (refers to the root graph, nodes, and clusters), or as a two-segment spline, when applied to an edge
@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     both colors with and without weights are provided, the sum of the weighted ones should be below 1, as otherwise those without
         ///     weights will be ignored by the visualization tool.
         /// </param>
-        public DotColorList(params DotColor[] colors)
+        public DotMultiColor(params DotColor[] colors)
         {
             if (colors is null)
             {
@@ -60,7 +60,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///         weights, and what type of element the color list is applied to.
         ///     </para>
         ///     <para>
-        ///         The returned color list will be rendered as a gradient fill when two colors with no weights (<see cref="DotColor" />) are
+        ///         The returned color list will be rendered as gradient fill when two colors with no weights (<see cref="DotColor" />) are
         ///         specified (refers to the root graph, nodes, and clusters), or as two parallel splines when applied to an edge. When a
         ///         weight is specified for either of the colors (<see cref="DotWeightedColor" />), the returned color list will be rendered
         ///         as dual-color fill (refers to the root graph, nodes, and clusters), or as a two-segment spline, when applied to an edge
@@ -80,7 +80,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     both colors with and without weights are provided, the sum of the weighted ones should be below 1, as otherwise those without
         ///     weights will be ignored by the visualization tool.
         /// </param>
-        public DotColorList(IEnumerable<DotColor> colors)
+        public DotMultiColor(IEnumerable<DotColor> colors)
             : this(colors?.ToArray())
         {
         }
@@ -91,7 +91,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///         the color list is applied to.
         ///     </para>
         ///     <para>
-        ///         The returned color list will be rendered as a gradient fill when only two colors are specified (refers to the root graph,
+        ///         The returned color list will be rendered as gradient fill when only two colors are specified (refers to the root graph,
         ///         nodes, and clusters), or as two parallel splines when applied to an edge.
         ///     </para>
         ///     <para>
@@ -104,7 +104,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <param name="colors">
         ///     The colors to initialize the instance with.
         /// </param>
-        public DotColorList(params Color[] colors)
+        public DotMultiColor(params Color[] colors)
             : this((IEnumerable<Color>) colors)
         {
         }
@@ -115,7 +115,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///         the color list is applied to.
         ///     </para>
         ///     <para>
-        ///         The returned color list will be rendered as a gradient fill when only two colors are specified (refers to the root graph,
+        ///         The returned color list will be rendered as gradient fill when only two colors are specified (refers to the root graph,
         ///         nodes, and clusters), or as two parallel splines when applied to an edge.
         ///     </para>
         ///     <para>
@@ -128,7 +128,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <param name="colors">
         ///     The colors to initialize the instance with.
         /// </param>
-        public DotColorList(IEnumerable<Color> colors)
+        public DotMultiColor(IEnumerable<Color> colors)
             : this(colors?.Select(c => new DotColor(c)))
         {
         }

@@ -19,16 +19,8 @@ namespace GiGraph.Dot.Entities
         /// <summary>
         ///     Sets the fill color of the element.
         /// </summary>
-        /// <param name="colorList">
-        ///     The color list to set.
-        /// </param>
-        void SetFilled(DotColorList colorList);
-
-        /// <summary>
-        ///     Sets the fill color of the element.
-        /// </summary>
         /// <param name="color">
-        ///     The color to set (<see cref="Color" />, <see cref="DotColor" />, or <see cref="DotColorList" />).
+        ///     The color to set (<see cref="Color" />, <see cref="DotColor" />, or <see cref="DotMultiColor" />).
         /// </param>
         void SetFilled(DotColorDefinition color);
     }
