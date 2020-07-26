@@ -915,7 +915,7 @@ digraph
     Bar [ label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
         <TR>
             <TD ROWSPAN="3">Foo<BR/>Bar</TD>
-            <TD COLSPAN="3">Baz</TD>
+            <TD COLSPAN="3" ALIGN="LEFT">Baz</TD>
             <TD ROWSPAN="3">Qux</TD>
             <TD ROWSPAN="3">Quux</TD>
         </TR>
@@ -925,7 +925,7 @@ digraph
             <TD PORT="port1">Fred</TD>
         </TR>
         <TR>
-            <TD COLSPAN="3">Plugh</TD>
+            <TD COLSPAN="3" ALIGN="RIGHT">Plugh</TD>
         </TR>
     </TABLE>>, shape = plain ]
 }
