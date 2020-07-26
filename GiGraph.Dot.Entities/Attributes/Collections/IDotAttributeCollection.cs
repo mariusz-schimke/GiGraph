@@ -54,40 +54,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotEscapeStringAttribute Set(string key, DotEscapeString value);
 
         /// <summary>
-        ///     Adds or replaces the specified string attribute in the collection. The string will be escaped on DOT script generation.
-        /// </summary>
-        /// <param name="key">
-        ///     The key of the attribute to include in the collection.
-        /// </param>
-        /// <param name="value">
-        ///     The value of the attribute to include in the collection.
-        /// </param>
-        DotEscapeStringAttribute Set(string key, DotUnescapedString value);
-
-        /// <summary>
-        ///     Adds or replaces the specified concatenated string attribute in the collection.
-        /// </summary>
-        /// <param name="key">
-        ///     The key of the attribute to include in the collection.
-        /// </param>
-        /// <param name="value">
-        ///     The value of the attribute to include in the collection.
-        /// </param>
-        DotEscapeStringAttribute Set(string key, DotConcatenatedEscapeString value);
-
-        /// <summary>
-        ///     Adds or replaces the specified string attribute in the collection. It is assumed that the value is an escaped string (it will
-        ///     be rendered as is on DOT script generation).
-        /// </summary>
-        /// <param name="key">
-        ///     The key of the attribute to include in the collection.
-        /// </param>
-        /// <param name="value">
-        ///     The value of the attribute to include in the collection.
-        /// </param>
-        DotEscapeStringAttribute Set(string key, DotEscapedString value);
-
-        /// <summary>
         ///     Adds or replaces the specified label attribute in the collection.
         /// </summary>
         /// <param name="key">
@@ -96,29 +62,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotLabelAttribute Set(string key, DotTextLabel value);
-
-        /// <summary>
-        ///     Adds or replaces the specified HTML label attribute in the collection.
-        /// </summary>
-        /// <param name="key">
-        ///     The key of the attribute to include in the collection.
-        /// </param>
-        /// <param name="value">
-        ///     The value of the attribute to include in the collection.
-        /// </param>
-        DotLabelAttribute Set(string key, DotHtmlLabel value);
-
-        /// <summary>
-        ///     Adds or replaces the specified record-based node label attribute in the collection.
-        /// </summary>
-        /// <param name="key">
-        ///     The key of the attribute to include in the collection.
-        /// </param>
-        /// <param name="value">
-        ///     The value of the attribute to include in the collection.
-        /// </param>
-        DotLabelAttribute Set(string key, DotRecordLabel value);
+        DotLabelAttribute Set(string key, DotLabel value);
 
         /// <summary>
         ///     Adds or replaces the specified label justification attribute in the collection.
@@ -340,28 +284,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The value of the attribute to include in the collection.
         /// </param>
         DotRankSeparationAttribute Set(string key, DotRankSeparationDefinition value);
-
-        /// <summary>
-        ///     Adds or replaces the specified rank separation attribute in the collection (for dot).
-        /// </summary>
-        /// <param name="key">
-        ///     The key of the attribute to include in the collection.
-        /// </param>
-        /// <param name="value">
-        ///     The value of the attribute to include in the collection.
-        /// </param>
-        DotRankSeparationAttribute Set(string key, DotRankSeparation value);
-
-        /// <summary>
-        ///     Adds or replaces the specified rank separation attribute in the collection (for twopi).
-        /// </summary>
-        /// <param name="key">
-        ///     The key of the attribute to include in the collection.
-        /// </param>
-        /// <param name="value">
-        ///     The value of the attribute to include in the collection.
-        /// </param>
-        DotRankSeparationAttribute Set(string key, DotRankSeparationList value);
 
         /// <summary>
         ///     Sets an endpoint port, that is a point on a node where an edge is attached to.
