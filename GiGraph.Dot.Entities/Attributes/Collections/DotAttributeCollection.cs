@@ -53,6 +53,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotLabelAttribute(key, value));
         }
 
+        public virtual DotLabelAttribute Set(string key, DotTextLabel value)
+        {
+            return Set(new DotLabelAttribute(key, value));
+        }
+
+        public virtual DotLabelAttribute Set(string key, DotHtmlLabel value)
+        {
+            return Set(new DotLabelAttribute(key, value));
+        }
+
+        public virtual DotLabelAttribute Set(string key, DotRecordLabel value)
+        {
+            return Set(new DotLabelAttribute(key, value));
+        }
+
         public virtual DotHorizontalAlignmentAttribute Set(string key, DotHorizontalAlignment value)
         {
             return Set(new DotHorizontalAlignmentAttribute(key, value));

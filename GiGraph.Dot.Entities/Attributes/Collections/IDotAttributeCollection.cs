@@ -77,6 +77,39 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotLabelAttribute Set(string key, DotLabel value);
 
         /// <summary>
+        ///     Adds or replaces the specified textual label attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotLabelAttribute Set(string key, DotTextLabel value);
+
+        /// <summary>
+        ///     Adds or replaces the specified HTML label attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotLabelAttribute Set(string key, DotHtmlLabel value);
+
+        /// <summary>
+        ///     Adds or replaces the specified record label attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotLabelAttribute Set(string key, DotRecordLabel value);
+
+        /// <summary>
         ///     Adds or replaces the specified label justification attribute in the collection.
         /// </summary>
         /// <param name="key">

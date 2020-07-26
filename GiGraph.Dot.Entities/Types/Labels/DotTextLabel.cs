@@ -21,17 +21,17 @@ namespace GiGraph.Dot.Entities.Types.Labels
     {
         protected readonly DotEscapeString _text;
 
-        protected DotTextLabel(DotEscapeString text)
+        public DotTextLabel(DotEscapeString text)
         {
             _text = text ?? throw new ArgumentNullException(nameof(text), "Text cannot be null.");
         }
 
-        protected DotTextLabel(DotEscapedString text)
+        public DotTextLabel(DotEscapedString text)
             : this((DotEscapeString) text)
         {
         }
 
-        protected DotTextLabel(string text)
+        public DotTextLabel(string text)
             : this((DotEscapeString) text)
         {
         }
