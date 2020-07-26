@@ -53,8 +53,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
 
         /// <summary>
         ///     <para>
-        ///         Creates a new color definition that will be rendered in a specific way depending on how many colors are specified,
-        ///         whether they have weights, and what type of element the color definition is applied to.
+        ///         Creates a new color definition rendered in a specific way depending on how many colors are specified, whether they have
+        ///         weights, and what type of element the color definition is applied to.
         ///     </para>
         ///     <para>
         ///         The returned definition will be rendered as a gradient fill when two colors with no weights (<see cref="DotColor" />) are
@@ -84,8 +84,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
 
         /// <summary>
         ///     <para>
-        ///         Creates a new color definition that will be rendered in a specific way depending on how many colors are specified,
-        ///         whether they have weights, and what type of element the color definition is applied to.
+        ///         Creates a new color definition rendered in a specific way depending on how many colors are specified, whether they have
+        ///         weights, and what type of element the color definition is applied to.
         ///     </para>
         ///     <para>
         ///         The returned definition will be rendered as a gradient fill when two colors with no weights (<see cref="DotColor" />) are
@@ -115,8 +115,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
 
         /// <summary>
         ///     <para>
-        ///         Creates a new color definition that will be rendered in a specific way depending on how many colors are specified, and
-        ///         what type of element the color definition is applied to.
+        ///         Creates a new color definition rendered in a specific way depending on how many colors are specified, and what type of
+        ///         element the color definition is applied to.
         ///     </para>
         ///     <para>
         ///         The returned definition will be rendered as a gradient fill when only two colors are specified (refers to the root graph,
@@ -139,8 +139,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
 
         /// <summary>
         ///     <para>
-        ///         Creates a new color definition that will be rendered in a specific way depending on how many colors are specified, and
-        ///         what type of element the color definition is applied to.
+        ///         Creates a new color definition rendered in a specific way depending on how many colors are specified, and what type of
+        ///         element the color definition is applied to.
         ///     </para>
         ///     <para>
         ///         The returned definition will be rendered as a gradient fill when only two colors are specified (refers to the root graph,
@@ -162,10 +162,10 @@ namespace GiGraph.Dot.Entities.Types.Colors
         }
 
         /// <summary>
-        ///     Creates a new color list that will be rendered as dual-color fill when applied to the root graph, node, or cluster, assuming
-        ///     that a weight is specified for either of the colors. When applied to an edge, it will be rendered as two parallel splines in
-        ///     the specified colors (if no weights are present), or as a single spline with two segments in the specified colors if a weight
-        ///     is specified for either of the colors.
+        ///     Creates a new color list rendered as dual-color fill when applied to the root graph, node, or cluster, assuming that a weight
+        ///     is specified for either of the colors. When applied to an edge, it is rendered as two parallel splines with the specified
+        ///     colors (if no weights are present), or as a single spline with two segments in the specified colors if a weight is specified
+        ///     for either of the colors.
         /// </summary>
         /// <param name="color1">
         ///     The first color to initialize the instance with.
@@ -183,13 +183,13 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     parameters are specified, they must sum to at most 1. If only one of them is specified, it must be in the range 0 ≤
         ///     <paramref name="weight2" /> &lt; 1.
         /// </param>
-        public static DotColorList Dual(Color color1, Color color2, double? weight1 = null, double? weight2 = null)
+        public static DotDualColor Dual(Color color1, Color color2, double? weight1 = null, double? weight2 = null)
         {
-            return new DotColorList(color1, color2, weight1, weight2);
+            return new DotDualColor(color1, color2, weight1, weight2);
         }
 
         /// <summary>
-        ///     Creates a new color definition that will be rendered as a gradient fill when applied to the root graph, node, or cluster.
+        ///     Creates a new color definition rendered as gradient fill when applied to the root graph, node, or cluster.
         /// </summary>
         /// <param name="startColor">
         ///     The start color of the gradient fill.
@@ -197,9 +197,9 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <param name="endColor">
         ///     The end color of the gradient fill.
         /// </param>
-        public static DotColorList Gradient(Color startColor, Color endColor)
+        public static DotGradientColor Gradient(Color startColor, Color endColor)
         {
-            return new DotColorList(startColor, endColor);
+            return new DotGradientColor(startColor, endColor);
         }
 
         public static implicit operator DotColorDefinition(Color? color)

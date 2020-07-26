@@ -134,33 +134,6 @@ namespace GiGraph.Dot.Entities.Types.Colors
         }
 
         /// <summary>
-        ///     Creates a new color list that will be rendered as a gradient fill when weights are not specified (refers to the root graph,
-        ///     nodes, and clusters), or as two parallel splines when applied to an edge. When a weight is specified for either of the
-        ///     colors, the returned color list will be rendered as dual-color fill (refers to the root graph, nodes, and clusters), or as a
-        ///     two-segment spline, when applied to an edge.
-        /// </summary>
-        /// <param name="color1">
-        ///     The first color to initialize the instance with.
-        /// </param>
-        /// <param name="color2">
-        ///     The second color to initialize the instance with.
-        /// </param>
-        /// <param name="weight1">
-        ///     The optional weight of the first color, that is the proportion of the area to cover with the color. If both weight parameters
-        ///     are specified, they must sum to at most 1. If only one of them is specified, it must be in the range 0 ≤
-        ///     <paramref name="weight1" /> &lt; 1.
-        /// </param>
-        /// <param name="weight2">
-        ///     The optional weight of the second color, that is the proportion of the area to cover with the color. If both weight
-        ///     parameters are specified, they must sum to at most 1. If only one of them is specified, it must be in the range 0 ≤
-        ///     <paramref name="weight2" /> &lt; 1.
-        /// </param>
-        public DotColorList(Color color1, Color color2, double? weight1 = null, double? weight2 = null)
-            : this(Weighted(color1, weight1), Weighted(color2, weight2))
-        {
-        }
-
-        /// <summary>
         ///     Gets the colors of the color list (<see cref="DotColor" />, <see cref="DotWeightedColor" />).
         /// </summary>
         public virtual DotColor[] Colors { get; }
