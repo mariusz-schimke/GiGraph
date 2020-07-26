@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
     {
         protected readonly DotRecord _record;
 
-        protected DotRecordLabel(DotRecord record)
+        public DotRecordLabel(DotRecord record)
         {
             _record = record ?? throw new ArgumentNullException(nameof(record), "Record cannot be null.");
         }

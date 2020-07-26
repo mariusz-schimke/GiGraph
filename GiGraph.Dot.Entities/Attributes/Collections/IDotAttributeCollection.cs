@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Enums;
+using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
@@ -43,7 +44,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotStringAttribute Set(string key, string value);
 
         /// <summary>
-        ///     Adds or replaces the specified string attribute in the collection. generation.
+        ///     Adds or replaces the specified escape string attribute in the collection.
         /// </summary>
         /// <param name="key">
         ///     The key of the attribute to include in the collection.
@@ -52,6 +53,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The value of the attribute to include in the collection.
         /// </param>
         DotEscapeStringAttribute Set(string key, DotEscapeString value);
+
+        /// <summary>
+        ///     Adds or replaces the specified escaped string attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotEscapeStringAttribute Set(string key, DotEscapedString value);
 
         /// <summary>
         ///     Adds or replaces the specified label attribute in the collection.
@@ -63,6 +75,39 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The value of the attribute to include in the collection.
         /// </param>
         DotLabelAttribute Set(string key, DotLabel value);
+
+        /// <summary>
+        ///     Adds or replaces the specified textual label attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotLabelAttribute Set(string key, DotTextLabel value);
+
+        /// <summary>
+        ///     Adds or replaces the specified HTML label attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotLabelAttribute Set(string key, DotHtmlLabel value);
+
+        /// <summary>
+        ///     Adds or replaces the specified record label attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotLabelAttribute Set(string key, DotRecordLabel value);
 
         /// <summary>
         ///     Adds or replaces the specified label justification attribute in the collection.
@@ -173,6 +218,28 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The value of the attribute to include in the collection.
         /// </param>
         DotColorDefinitionAttribute Set(string key, DotColorDefinition value);
+
+        /// <summary>
+        ///     Adds or replaces the specified aspect ratio attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotAspectRatioAttribute Set(string key, DotAspectRatio value);
+
+        /// <summary>
+        ///     Adds or replaces the specified aspect ratio attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotAspectRatioDefinitionAttribute Set(string key, DotAspectRatioDefinition value);
 
         /// <summary>
         ///     Adds or replaces the specified point attribute in the collection.

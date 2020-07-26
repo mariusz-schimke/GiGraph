@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Enums;
+using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
@@ -42,7 +43,27 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotEscapeStringAttribute(key, value));
         }
 
+        public virtual DotEscapeStringAttribute Set(string key, DotEscapedString value)
+        {
+            return Set(new DotEscapeStringAttribute(key, value));
+        }
+
         public virtual DotLabelAttribute Set(string key, DotLabel value)
+        {
+            return Set(new DotLabelAttribute(key, value));
+        }
+
+        public virtual DotLabelAttribute Set(string key, DotTextLabel value)
+        {
+            return Set(new DotLabelAttribute(key, value));
+        }
+
+        public virtual DotLabelAttribute Set(string key, DotHtmlLabel value)
+        {
+            return Set(new DotLabelAttribute(key, value));
+        }
+
+        public virtual DotLabelAttribute Set(string key, DotRecordLabel value)
         {
             return Set(new DotLabelAttribute(key, value));
         }
@@ -214,6 +235,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
 
             Add(key, attribute);
+        }
+
+        public virtual DotAspectRatioDefinitionAttribute Set(string key, DotAspectRatioDefinition value)
+        {
+            return Set(new DotAspectRatioDefinitionAttribute(key, value));
+        }
+
+        public virtual DotAspectRatioAttribute Set(string key, DotAspectRatio value)
+        {
+            return Set(new DotAspectRatioAttribute(key, value));
         }
 
         protected virtual void AddOrRemove<T>(string key, T attribute)
