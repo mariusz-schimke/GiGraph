@@ -317,5 +317,25 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     </para>
         /// </summary>
         DotPoint Margin { get; set; }
+
+        /// <summary>
+        ///     <para>
+        ///         The maximum width and height of drawing, in inches. If only a single number is given, this is used for both the width and
+        ///         the height.
+        ///     </para>
+        ///     <para>
+        ///         If defined and the drawing is larger than the given size, the drawing is uniformly scaled down so that it fits within the
+        ///         given size.
+        ///     </para>
+        ///     <para>
+        ///         If <see cref="DotPoint.IsFixed" /> is set, then the size specified is taken to be the desired size. In this case, if both
+        ///         dimensions of the drawing are less than size, the drawing is scaled up uniformly until at least one dimension equals its
+        ///         dimension in size.
+        ///     </para>
+        ///     <para>
+        ///         Note that there is some interaction between the <see cref="Size" /> and the <see cref="Ratio" /> attributes.
+        ///     </para>
+        /// </summary>
+        DotPoint Size { get; set; }
     }
 }
