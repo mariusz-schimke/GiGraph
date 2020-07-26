@@ -26,16 +26,6 @@ namespace GiGraph.Dot.Entities.Types.Labels
             _text = text ?? throw new ArgumentNullException(nameof(text), "Text cannot be null.");
         }
 
-        public DotTextLabel(DotEscapedString text)
-            : this((DotEscapeString) text)
-        {
-        }
-
-        public DotTextLabel(string text)
-            : this((DotEscapeString) text)
-        {
-        }
-
         public override string ToString()
         {
             return _text;

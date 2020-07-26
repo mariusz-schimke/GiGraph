@@ -65,31 +65,9 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// <param name="text">
         ///     The text to justify.
         /// </param>
-        public static DotEscapeString JustifyLeft(string text)
-        {
-            return text + LeftJustification;
-        }
-
-        /// <summary>
-        ///     Returns left-justified text.
-        /// </summary>
-        /// <param name="text">
-        ///     The text to justify.
-        /// </param>
         public static DotEscapeString JustifyLeft(DotEscapeString text)
         {
             return text + LeftJustification;
-        }
-
-        /// <summary>
-        ///     Returns right-justified text.
-        /// </summary>
-        /// <param name="text">
-        ///     The text to justify.
-        /// </param>
-        public static DotEscapeString JustifyRight(string text)
-        {
-            return text + RightJustification;
         }
 
         /// <summary>
