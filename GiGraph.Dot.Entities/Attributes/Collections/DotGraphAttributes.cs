@@ -73,7 +73,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                     return doubleValue;
                 }
 
-                return TryGetValueAs<double[]>(key, out var doubleList) ? doubleList : null;
+                return TryGetValueAs<double[]>(key, out var doubleList) ? new DotRankSeparationList(doubleList) : null;
             }
             set => AddOrRemove("ranksep", value, (k, v) => new DotRankSeparationAttribute(k, v));
         }

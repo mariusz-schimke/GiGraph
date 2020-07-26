@@ -39,15 +39,5 @@ namespace GiGraph.Dot.Entities.Types.Labels
         {
             return label?._record;
         }
-
-        public static implicit operator DotRecordLabel(DotRecordField[] fields)
-        {
-            return fields is {} ? new DotRecord(fields) : null;
-        }
-
-        public static implicit operator DotRecordLabel(string[] fields)
-        {
-            return fields is {} ? new DotRecord(fields) : null;
-        }
     }
 }

@@ -1,5 +1,5 @@
 using System;
-using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Types.Strings
 {
@@ -20,9 +20,9 @@ namespace GiGraph.Dot.Entities.Types.Strings
             return _value;
         }
 
-        protected internal override string GetDotEncodedString(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetEscapedString(IDotTextEscaper textEscaper)
         {
-            return syntaxRules.EscapeStringValue(_value);
+            return textEscaper.Escape(_value);
         }
 
         public static implicit operator DotUnescapedString(string value)

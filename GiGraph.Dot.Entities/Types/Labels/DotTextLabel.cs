@@ -43,7 +43,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
 
         protected internal override string GetDotEncodedString(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return _text?.GetDotEncodedString(options, syntaxRules);
+            return _text?.GetEscapedString(syntaxRules.TextValueEscaper);
         }
 
         public static implicit operator DotTextLabel(string text)

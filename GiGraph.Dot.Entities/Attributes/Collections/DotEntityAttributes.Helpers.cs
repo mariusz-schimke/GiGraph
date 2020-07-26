@@ -11,11 +11,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             SetFilled((DotColorDefinition) color);
         }
 
-        public virtual void SetFilled(DotColorList colorList)
-        {
-            SetFilled((DotColorDefinition) colorList);
-        }
-
         public virtual void SetFilled(DotColorDefinition value)
         {
             Style = Style.GetValueOrDefault(DotStyle.Filled) | DotStyle.Filled;

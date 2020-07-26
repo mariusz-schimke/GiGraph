@@ -15,19 +15,7 @@ namespace GiGraph.Dot.Entities.Tests
             var value = "a bcd \" \\ \r\n \r \n h ij < > { } |";
 
             DotEscapedString str = value;
-            Assert.Equal(value, ((IDotEncodable) str).GetDotEncodedValue(_generationOptions, _syntaxRules));
-        }
-
-        [Fact]
-        public void record_field_string_returns_escaped_string_as_dot_encoded_value()
-        {
-            var value = "a bcd \" \\ \r\n \r \n h ij < > { } |";
-
-            DotUnescapedRecordFieldString str = value;
-
-            Assert.Equal(
-                @"a&#32;bcd&#32;\""&#32;\\&#32;\n&#32;\n&#32;\n&#32;h&#32;ij&#32;\<&#32;\>&#32;\{&#32;\}&#32;\|",
-                ((IDotEncodable) str).GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal(value, ((IDotEscapable) str).GetEscaped(_syntaxRules.TextValueEscaper));
         }
 
         [Fact]
@@ -36,7 +24,7 @@ namespace GiGraph.Dot.Entities.Tests
             DotUnescapedString str = "a bcd \" \\ \r\n \r \n h ij < > { } |";
             Assert.Equal(
                 @"a bcd \"" \\ \n \n \n h ij < > { } |",
-                ((IDotEncodable) str).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEscapable) str).GetEscaped(_syntaxRules.TextValueEscaper));
         }
     }
 }

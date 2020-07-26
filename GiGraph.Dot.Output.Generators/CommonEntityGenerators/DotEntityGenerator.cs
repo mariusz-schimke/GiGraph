@@ -79,7 +79,7 @@ namespace GiGraph.Dot.Output.Generators.CommonEntityGenerators
 
         protected virtual string EscapeIdentifier(string id)
         {
-            return _syntaxRules.EscapeIdentifier(id);
+            return _syntaxRules.IdentifierEscaper.Escape(id);
         }
 
         protected virtual bool IdentifierRequiresQuoting(string id)

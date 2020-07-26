@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Tests
 
             Assert.Equal(
                 @"\\a\G ",
-                ((IDotEncodable) value).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEscapable) value).GetEscaped(_syntaxRules.TextValueEscaper));
         }
 
         [Fact]
@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Tests
 
             Assert.Equal(
                 @" \\a\G",
-                ((IDotEncodable) value).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEscapable) value).GetEscaped(_syntaxRules.TextValueEscaper));
         }
 
         [Fact]
@@ -38,27 +38,27 @@ namespace GiGraph.Dot.Entities.Tests
 
             Assert.Equal(
                 string.Empty,
-                ((IDotEncodable) value).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEscapable) value).GetEscaped(_syntaxRules.TextValueEscaper));
         }
 
         [Fact]
         public void concatenated_escape_string_concatenation_produces_a_valid_dot_encoded_value_when_both_sides_are_null_and_left_is_concatenated()
         {
-            var value = (DotConcatenatedEscapeString) null + (DotEscapeString) null;
+            var value = null + (DotEscapeString) null;
 
             Assert.Equal(
                 string.Empty,
-                ((IDotEncodable) value).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEscapable) value).GetEscaped(_syntaxRules.TextValueEscaper));
         }
 
         [Fact]
         public void concatenated_escape_string_concatenation_produces_a_valid_dot_encoded_value_when_both_sides_are_null_and_right_is_concatenated()
         {
-            var value = (DotEscapeString) null + (DotConcatenatedEscapeString) null;
+            var value = null + (DotConcatenatedEscapeString) null;
 
             Assert.Equal(
                 string.Empty,
-                ((IDotEncodable) value).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEscapable) value).GetEscaped(_syntaxRules.TextValueEscaper));
         }
 
         [Fact]
@@ -68,29 +68,29 @@ namespace GiGraph.Dot.Entities.Tests
 
             Assert.Equal(
                 @"\\a",
-                ((IDotEncodable) value).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEscapable) value).GetEscaped(_syntaxRules.TextValueEscaper));
         }
 
         [Fact]
         public void concatenated_escape_string_concatenation_produces_a_valid_dot_encoded_value_when_only_left_side_is_not_null_and_left_is_concatenated()
         {
             var concatenated = @"\a" + DotEscapeString.GraphId;
-            var value = concatenated + (DotEscapeString) null;
+            var value = concatenated + null;
 
             Assert.Equal(
                 @"\\a\G",
-                ((IDotEncodable) value).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEscapable) value).GetEscaped(_syntaxRules.TextValueEscaper));
         }
 
         [Fact]
         public void concatenated_escape_string_concatenation_produces_a_valid_dot_encoded_value_when_only_right_side_is_not_null_and_right_is_concatenated()
         {
             var concatenated = @"\a" + DotEscapeString.GraphId;
-            var value = (DotEscapeString) null + concatenated;
+            var value = null + concatenated;
 
             Assert.Equal(
                 @"\\a\G",
-                ((IDotEncodable) value).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEscapable) value).GetEscaped(_syntaxRules.TextValueEscaper));
         }
 
         [Fact]
@@ -100,7 +100,7 @@ namespace GiGraph.Dot.Entities.Tests
 
             Assert.Equal(
                 @"\\a",
-                ((IDotEncodable) value).GetDotEncodedValue(_generationOptions, _syntaxRules));
+                ((IDotEscapable) value).GetEscaped(_syntaxRules.TextValueEscaper));
         }
     }
 }

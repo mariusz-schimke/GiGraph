@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Attributes
 
             if (Value.Name is { })
             {
-                result.Append(syntaxRules.EscapeIdentifier(Value.Name));
+                result.Append(syntaxRules.IdentifierEscaper.Escape(Value.Name));
                 separator = ":";
             }
 

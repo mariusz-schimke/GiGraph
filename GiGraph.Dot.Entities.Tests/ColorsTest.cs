@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Tests
         [Fact]
         public void color_list_includes_colon_separated_colors_in_dot_encoded_value()
         {
-            DotColorDefinition def = DotColorDefinition.Multi(
+            DotColorDefinition def = new DotMultiColor(
                 new DotWeightedColor(Color.Blue, 0.8),
                 Color.Green);
 

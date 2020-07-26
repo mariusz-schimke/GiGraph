@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Output.Options
         /// <summary>
         ///     A text escaper to use for string values.
         /// </summary>
-        public virtual IDotTextEscaper StringValueEscaper { get; protected set; } = new DotTextEscapingPipeline(DefaultEscaper);
+        public virtual IDotTextEscaper TextValueEscaper { get; protected set; } = new DotTextEscapingPipeline(DefaultEscaper);
 
         /// <summary>
         ///     A text escaper to use for record node fields.
@@ -90,38 +90,6 @@ namespace GiGraph.Dot.Output.Options
                        Regex.Match(value, AlphabeticIdentifierPattern).Success ||
                        Regex.Match(value, NumericIdentifierPattern).Success
                    );
-        }
-
-        /// <summary>
-        ///     Escapes the specified identifier.
-        /// </summary>
-        public virtual string EscapeIdentifier(string value)
-        {
-            return IdentifierEscaper.Escape(value);
-        }
-
-        /// <summary>
-        ///     Escapes the specified string as an attribute key.
-        /// </summary>
-        public virtual string EscapeKey(string key)
-        {
-            return KeyEscaper.Escape(key);
-        }
-
-        /// <summary>
-        ///     Escapes the specified string as an attribute value.
-        /// </summary>
-        public virtual string EscapeStringValue(string value)
-        {
-            return StringValueEscaper.Escape(value);
-        }
-
-        /// <summary>
-        ///     Escapes the specified string as a record-based node label.
-        /// </summary>
-        public virtual string EscapeRecordField(string value)
-        {
-            return RecordFieldEscaper.Escape(value);
         }
     }
 }

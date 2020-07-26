@@ -1,11 +1,13 @@
-using GiGraph.Dot.Output.Options;
+using System.Collections.Generic;
+using System.Linq;
+using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Entities.Types.Strings
 {
     /// <summary>
     ///     Represents the DOT escape string (<see href="http://www.graphviz.org/doc/info/attrs.html#k:escString" />).
     /// </summary>
-    public abstract class DotEscapeString : IDotEncodable
+    public abstract class DotEscapeString : IDotEscapable
     {
         /// <summary>
         ///     An escape sequence replaced with graph identifier on graph visualization.
@@ -52,13 +54,13 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// </summary>
         public static DotEscapeString JustifyRight => (DotEscapedString) "\\r";
 
-        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        string IDotEscapable.GetEscaped(IDotTextEscaper textEscaper)
         {
-            return GetDotEncodedString(options, syntaxRules);
+            return GetEscapedString(textEscaper);
         }
 
         protected internal abstract string GetRawString();
-        protected internal abstract string GetDotEncodedString(DotGenerationOptions options, DotSyntaxRules syntaxRules);
+        protected internal abstract string GetEscapedString(IDotTextEscaper textEscaper);
 
         public override string ToString()
         {
@@ -71,14 +73,58 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// <param name="value">
         ///     The string to use.
         /// </param>
-        public static DotUnescapedString FromString(string value)
+        public static DotEscapeString FromString(string value)
         {
-            return value;
+            return (DotUnescapedString) value;
+        }
+
+        /// <summary>
+        ///     Concatenates the specified escape strings.
+        /// </summary>
+        /// <param name="items">
+        ///     The escape string items to concatenate.
+        /// </param>
+        public static DotEscapeString Concat(params DotEscapeString[] items)
+        {
+            return new DotConcatenatedEscapeString(items);
+        }
+
+        /// <summary>
+        ///     Concatenates the specified escape strings.
+        /// </summary>
+        /// <param name="items">
+        ///     The escape string items to concatenate.
+        /// </param>
+        public static DotEscapeString Concat(IEnumerable<DotEscapeString> items)
+        {
+            return new DotConcatenatedEscapeString(items);
+        }
+
+        /// <summary>
+        ///     Concatenates the specified escape strings.
+        /// </summary>
+        /// <param name="items">
+        ///     The escape string items to concatenate.
+        /// </param>
+        public static DotEscapeString Concat(params string[] items)
+        {
+            return new DotConcatenatedEscapeString(items);
+        }
+
+        /// <summary>
+        ///     Concatenates the specified escape strings.
+        /// </summary>
+        /// <param name="items">
+        ///     The escape string items to concatenate.
+        /// </param>
+        public static DotEscapeString Concat(IEnumerable<string> items)
+        {
+            return new DotConcatenatedEscapeString(items);
         }
 
         /// <summary>
         ///     Creates a new instance initialized with escaped string. The string will not be modified in any way on output DOT script
-        ///     generation, so it should follow the formatting rules described in the
+        ///     generation, so it must follow the formatting rules described in the
         ///     <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">
         ///         documentation
         ///     </see>
@@ -87,9 +133,41 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// <param name="value">
         ///     The string to use.
         /// </param>
-        public static DotEscapedString FromEscapedString(string value)
+        public static DotEscapeString FromEscapedString(string value)
         {
-            return value;
+            return (DotEscapedString) value;
+        }
+
+        /// <summary>
+        ///     Concatenates the specified escaped strings. The component strings will not be modified in any way on output DOT script
+        ///     generation, so they must follow the formatting rules described in the
+        ///     <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">
+        ///         documentation
+        ///     </see>
+        ///     .
+        /// </summary>
+        /// <param name="items">
+        ///     The string to use.
+        /// </param>
+        public static DotEscapeString ConcatEscaped(params string[] items)
+        {
+            return ConcatEscaped((IEnumerable<string>) items);
+        }
+
+        /// <summary>
+        ///     Concatenates the specified escaped strings. The component strings will not be modified in any way on output DOT script
+        ///     generation, so they must follow the formatting rules described in the
+        ///     <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">
+        ///         documentation
+        ///     </see>
+        ///     .
+        /// </summary>
+        /// <param name="items">
+        ///     The string to use.
+        /// </param>
+        public static DotEscapeString ConcatEscaped(IEnumerable<string> items)
+        {
+            return new DotConcatenatedEscapeString(items?.Select(FromEscapedString));
         }
 
         public static implicit operator DotEscapeString(string value)
@@ -102,9 +180,9 @@ namespace GiGraph.Dot.Entities.Types.Strings
             return value?.GetRawString();
         }
 
-        public static DotConcatenatedEscapeString operator +(DotEscapeString value1, DotEscapeString value2)
+        public static DotEscapeString operator +(DotEscapeString value1, DotEscapeString value2)
         {
-            return new[] { value1, value2 };
+            return new DotConcatenatedEscapeString(value1, value2);
         }
     }
 }

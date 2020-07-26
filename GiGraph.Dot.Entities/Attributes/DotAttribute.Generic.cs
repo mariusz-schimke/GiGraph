@@ -32,10 +32,5 @@ namespace GiGraph.Dot.Entities.Attributes
         {
             return Value?.ToString() ?? string.Empty;
         }
-
-        public static implicit operator T(DotAttribute<T> attribute)
-        {
-            return attribute is { } ? attribute.Value : default;
-        }
     }
 }

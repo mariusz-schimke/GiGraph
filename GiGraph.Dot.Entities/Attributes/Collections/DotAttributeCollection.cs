@@ -42,27 +42,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotEscapeStringAttribute(key, value));
         }
 
-        public virtual DotEscapeStringAttribute Set(string key, DotUnescapedString value)
-        {
-            return Set(new DotEscapeStringAttribute(key, value));
-        }
-
-        public virtual DotEscapeStringAttribute Set(string key, DotEscapedString value)
-        {
-            return Set(new DotEscapeStringAttribute(key, value));
-        }
-
-        public virtual DotLabelAttribute Set(string key, DotTextLabel value)
-        {
-            return Set(new DotLabelAttribute(key, value));
-        }
-
-        public virtual DotLabelAttribute Set(string key, DotHtmlLabel value)
-        {
-            return Set(new DotLabelAttribute(key, value));
-        }
-
-        public virtual DotLabelAttribute Set(string key, DotRecordLabel value)
+        public virtual DotLabelAttribute Set(string key, DotLabel value)
         {
             return Set(new DotLabelAttribute(key, value));
         }
@@ -157,16 +137,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotRankSeparationAttribute(key, value));
         }
 
-        public virtual DotRankSeparationAttribute Set(string key, DotRankSeparation value)
-        {
-            return Set(new DotRankSeparationAttribute(key, value));
-        }
-
-        public virtual DotRankSeparationAttribute Set(string key, DotRankSeparationList value)
-        {
-            return Set(new DotRankSeparationAttribute(key, value));
-        }
-
         public virtual DotEndpointPortAttribute Set(string key, DotEndpointPort value)
         {
             return Set(new DotEndpointPortAttribute(key, value));
@@ -226,16 +196,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return result;
         }
 
-        void IDictionary<string, DotAttribute>.Add(string key, DotAttribute attribute)
-        {
-            if (key != attribute.Key)
-            {
-                throw new ArgumentException($"The key specified (\"{key}\") has to match the attribute key (\"{attribute.Key}\").", nameof(key));
-            }
-
-            Add(key, attribute);
-        }
-
         public virtual DotAlignmentAttribute Set(string key, DotAlignment value)
         {
             return Set(new DotAlignmentAttribute(key, value));
@@ -246,9 +206,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotPointAttribute(key, value));
         }
 
-        public virtual DotEscapeStringAttribute Set(string key, DotConcatenatedEscapeString value)
+        void IDictionary<string, DotAttribute>.Add(string key, DotAttribute attribute)
         {
-            return Set(new DotEscapeStringAttribute(key, value));
+            if (key != attribute.Key)
+            {
+                throw new ArgumentException($"The key specified (\"{key}\") has to match the attribute key (\"{attribute.Key}\").", nameof(key));
+            }
+
+            Add(key, attribute);
         }
 
         protected virtual void AddOrRemove<T>(string key, T attribute)

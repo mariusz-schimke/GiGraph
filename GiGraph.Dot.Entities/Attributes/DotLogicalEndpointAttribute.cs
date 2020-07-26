@@ -28,7 +28,8 @@ namespace GiGraph.Dot.Entities.Attributes
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
             // keep this value coherent with the format the cluster generator uses to generate cluster identifier
-            return syntaxRules.EscapeIdentifier(DotClusterIdFormatter.Format(Value, options));
+            return syntaxRules.IdentifierEscaper.Escape(
+                DotClusterIdFormatter.Format(Value, options));
         }
     }
 }
