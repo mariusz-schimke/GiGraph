@@ -159,16 +159,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : new DotDoubleAttribute(k, v.Value));
         }
 
-        public virtual DotArrowEndDefinition ArrowHead
+        public virtual DotArrowheadDefinition ArrowHead
         {
             get => TryGetValueAsArrowEndDefinition("arrowhead");
-            set => AddOrRemove("arrowhead", value, (k, v) => new DotArrowEndDefinitionAttribute(k, v));
+            set => AddOrRemove("arrowhead", value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
         }
 
-        public virtual DotArrowEndDefinition ArrowTail
+        public virtual DotArrowheadDefinition ArrowTail
         {
             get => TryGetValueAsArrowEndDefinition("arrowtail");
-            set => AddOrRemove("arrowtail", value, (k, v) => new DotArrowEndDefinitionAttribute(k, v));
+            set => AddOrRemove("arrowtail", value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
         }
 
         public virtual DotArrowDirection? ArrowDirection
@@ -238,14 +238,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             FillColor = value;
         }
 
-        protected virtual DotArrowEndDefinition TryGetValueAsArrowEndDefinition(string key)
+        protected virtual DotArrowheadDefinition TryGetValueAsArrowEndDefinition(string key)
         {
-            if (TryGetValueAs<DotArrowEndDefinition>(key, out var definition))
+            if (TryGetValueAs<DotArrowheadDefinition>(key, out var definition))
             {
                 return definition;
             }
 
-            return TryGetValueAs<DotArrowShape>(key, out var shape) ? new DotArrowEnd(shape) : null;
+            return TryGetValueAs<DotArrowheadShape>(key, out var shape) ? new DotArrowhead(shape) : null;
         }
     }
 }

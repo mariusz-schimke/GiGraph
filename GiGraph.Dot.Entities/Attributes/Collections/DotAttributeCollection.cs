@@ -134,9 +134,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotStyleAttribute(key, value));
         }
 
-        public virtual DotArrowShapeAttribute Set(string key, DotArrowShape value)
+        public virtual DotArrowheadShapeAttribute Set(string key, DotArrowheadShape value)
         {
-            return Set(new DotArrowShapeAttribute(key, value));
+            return Set(new DotArrowheadShapeAttribute(key, value));
         }
 
         public virtual DotArrowDirectionAttribute Set(string key, DotArrowDirection value)
@@ -248,9 +248,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotAspectRatioAttribute(key, value));
         }
 
-        public virtual DotArrowEndDefinitionAttribute Set(string key, DotArrowEndDefinition value)
+        public virtual DotArrowheadDefinitionAttribute Set(string key, DotArrowheadDefinition value)
         {
-            return Set(new DotArrowEndDefinitionAttribute(key, value));
+            return Set(new DotArrowheadDefinitionAttribute(key, value));
         }
 
         protected virtual void AddOrRemove<T>(string key, T attribute)

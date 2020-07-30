@@ -1,17 +1,12 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Arrows;
+﻿using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     Arrow type attribute. Assignable to edges only.
-    ///     <see href="https://www.graphviz.org/doc/info/attrs.html#k:arrowType">
-    ///         View how individual arrow types are visualized
-    ///     </see>
-    ///     .
+    ///     Arrowhead definition attribute. Assignable to edges only.
     /// </summary>
-    public class DotArrowShapeAttribute : DotAttribute<DotArrowShape>
+    public class DotArrowheadDefinitionAttribute : DotAttribute<DotArrowheadDefinition>
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -22,14 +17,14 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotArrowShapeAttribute(string key, DotArrowShape value)
+        public DotArrowheadDefinitionAttribute(string key, DotArrowheadDefinition value)
             : base(key, value)
         {
         }
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return new DotArrowEnd(Value).GetDotEncoded(options, syntaxRules);
+            return Value?.GetDotEncoded(options, syntaxRules);
         }
     }
 }

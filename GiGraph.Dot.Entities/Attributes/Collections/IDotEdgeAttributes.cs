@@ -107,7 +107,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotColorDefinition Color { get; set; }
 
         /// <summary>
-        ///     Gets or sets the color used to fill the arrow head, assuming it has a filled style. If <see cref="FillColor" /> is not
+        ///     Gets or sets the color used to fill the arrowhead, assuming it has a filled style. If <see cref="FillColor" /> is not
         ///     defined, <see cref="Color" /> is used. If it is not defined too, the default is used, except when the output format is MIF,
         ///     which use black by default.
         /// </summary>
@@ -190,26 +190,26 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         double? ArrowSize { get; set; }
 
         /// <summary>
-        ///     Gets or sets the style of arrow head on the head node of an edge (default: <see cref="DotArrowShape.Normal" />). Appears only
-        ///     if the <see cref="ArrowDirection" /> attribute is <see cref="DotArrowDirection.Forward" /> or
+        ///     Gets or sets the style of arrowhead on the head node of an edge (default: <see cref="DotArrowheadShape.Normal" />). Appears
+        ///     only if the <see cref="ArrowDirection" /> attribute is <see cref="DotArrowDirection.Forward" /> or
         ///     <see cref="DotArrowDirection.Both" />.
         /// </summary>
-        DotArrowEndDefinition ArrowHead { get; set; }
+        DotArrowheadDefinition ArrowHead { get; set; }
 
         /// <summary>
-        ///     Gets or sets the style of arrow head on the tail node of an edge (default: <see cref="DotArrowShape.Normal" />). Appears only
-        ///     if the <see cref="ArrowDirection" /> attribute is <see cref="DotArrowDirection.Backward" /> or
+        ///     Gets or sets the style of arrowhead on the tail node of an edge (default: <see cref="DotArrowheadShape.Normal" />). Appears
+        ///     only if the <see cref="ArrowDirection" /> attribute is <see cref="DotArrowDirection.Backward" /> or
         ///     <see cref="DotArrowDirection.Both" />.
         /// </summary>
-        DotArrowEndDefinition ArrowTail { get; set; }
+        DotArrowheadDefinition ArrowTail { get; set; }
 
         /// <summary>
         ///     <para>
-        ///         Gets or sets edge type for drawing arrow heads. Default: <see cref="DotArrowDirection.Forward" /> (for directed graphs),
+        ///         Gets or sets edge type for drawing arrowheads. Default: <see cref="DotArrowDirection.Forward" /> (for directed graphs),
         ///         <see cref="DotArrowDirection.None" /> (for undirected graphs).
         ///     </para>
         ///     <para>
-        ///         Indicates which ends of the edge should be decorated with an arrow head. The actual style of the arrow head can be
+        ///         Indicates which ends of the edge should be decorated with an arrow head. The actual style of the arrowhead can be
         ///         specified using the <see cref="ArrowHead" /> and <see cref="ArrowTail" /> attributes.
         ///     </para>
         ///     <para>
