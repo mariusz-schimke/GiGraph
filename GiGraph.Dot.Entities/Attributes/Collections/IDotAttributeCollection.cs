@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Enums;
-using GiGraph.Dot.Entities.Types.ArrowShapes;
+using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;

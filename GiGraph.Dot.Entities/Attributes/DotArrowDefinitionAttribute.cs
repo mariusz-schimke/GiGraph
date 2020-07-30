@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Entities.Types.ArrowShapes;
+﻿using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes

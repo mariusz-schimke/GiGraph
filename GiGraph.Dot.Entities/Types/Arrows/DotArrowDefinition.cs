@@ -1,7 +1,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Entities.Types.ArrowShapes
+namespace GiGraph.Dot.Entities.Types.Arrows
 {
     public abstract class DotArrowDefinition : IDotEncodable
     {

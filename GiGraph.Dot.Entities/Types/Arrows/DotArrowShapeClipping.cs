@@ -1,4 +1,4 @@
-namespace GiGraph.Dot.Entities.Types.ArrowShapes
+namespace GiGraph.Dot.Entities.Types.Arrows
 {
     /// <summary>
     ///     Determines arrow shape clipping.
