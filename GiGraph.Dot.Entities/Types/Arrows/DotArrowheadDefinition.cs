@@ -4,7 +4,7 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Arrows
 {
     /// <summary>
-    ///     Represents an arrowhead as either a single shape (<see cref="DotArrowheadShape" />) or as a composition of multiple shapes (
+    ///     Represents an arrowhead as either a single shape (<see cref="DotArrowhead" />) or as a composition of multiple shapes (
     ///     <see cref="DotCompositeArrowhead" />).
     /// </summary>
     public abstract class DotArrowheadDefinition : IDotEncodable

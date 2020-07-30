@@ -1,7 +1,8 @@
 namespace GiGraph.Dot.Entities.Types.Arrows
 {
     /// <summary>
-    ///     Determines which side of an arrowhead to clip.
+    ///     Determines which side of an arrowhead to clip. Left and right are defined as those directions determined by looking from the
+    ///     edge towards the point where the arrow "touches" the node.
     /// </summary>
     public enum DotArrowheadClipping
     {

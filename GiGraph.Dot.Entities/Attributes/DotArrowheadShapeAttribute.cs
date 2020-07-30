@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
     ///     Arrowhead shape attribute. Assignable to edges only. See the
-    ///     <see href="https://www.graphviz.org/doc/info/attrs.html#k:arrowType">
+    ///     <see href="https://www.graphviz.org/doc/info/arrows.html">
     ///         documentation
     ///     </see>
     ///     to view how individual shapes are visualized.

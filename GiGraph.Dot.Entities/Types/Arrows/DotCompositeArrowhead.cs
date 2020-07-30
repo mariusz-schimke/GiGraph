@@ -16,7 +16,9 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         ///     Creates a new arrowhead definition and initializes it with a collection of arrowheads.
         /// </summary>
         /// <param name="arrowheads">
-        ///     The consecutive arrowheads to use.
+        ///     The consecutive arrowheads to use. Note that the first arrowhead specified occurs closest to the node. Subsequent shapes, if
+        ///     specified, occur further from the node. Also, a shape of <see cref="DotArrowheadShape.None" /> uses space, so it can be used
+        ///     as a separator between two consecutive shapes.
         /// </param>
         public DotCompositeArrowhead(params DotArrowhead[] arrowheads)
         {
@@ -27,7 +29,9 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         ///     Creates a new arrowhead definition and initializes it with a collection of arrowheads.
         /// </summary>
         /// <param name="arrowheads">
-        ///     The consecutive arrowheads to use.
+        ///     The consecutive arrowheads to use. Note that the first arrowhead specified occurs closest to the node. Subsequent shapes, if
+        ///     specified, occur further from the node. Also, a shape of <see cref="DotArrowheadShape.None" /> uses space, so it can be used
+        ///     as a separator between two consecutive shapes.
         /// </param>
         public DotCompositeArrowhead(IEnumerable<DotArrowhead> arrowheads)
             : this(arrowheads?.ToArray())
@@ -38,7 +42,9 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         ///     Creates a new arrowhead definition and initializes it with a collection of arrowheads with the specified shapes.
         /// </summary>
         /// <param name="shapes">
-        ///     The consecutive shapes of the arrowheads to use.
+        ///     The consecutive shapes of the arrowheads to use. Note that the first arrowhead specified occurs closest to the node.
+        ///     Subsequent shapes, if specified, occur further from the node. Also, a shape of <see cref="DotArrowheadShape.None" /> uses
+        ///     space, so it can be used as a separator between two consecutive shapes.
         /// </param>
         public DotCompositeArrowhead(params DotArrowheadShape[] shapes)
             : this((IEnumerable<DotArrowheadShape>) shapes)
@@ -49,7 +55,9 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         ///     Creates a new arrowhead definition and initializes it with a collection of arrowheads with the specified shapes.
         /// </summary>
         /// <param name="shapes">
-        ///     The consecutive shapes of the arrowheads to use.
+        ///     The consecutive shapes of the arrowheads to use. Note that the first arrowhead specified occurs closest to the node.
+        ///     Subsequent shapes, if specified, occur further from the node. Also, a shape of <see cref="DotArrowheadShape.None" /> uses
+        ///     space, so it can be used as a separator between two consecutive shapes.
         /// </param>
         public DotCompositeArrowhead(IEnumerable<DotArrowheadShape> shapes)
             : this(shapes?.Select(shape => new DotArrowhead(shape)).ToArray())

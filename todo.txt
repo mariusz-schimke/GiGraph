@@ -1,9 +1,11 @@
 Road map:
 1. Gradually add support for all available attributes (pack, packmode).
 2. Verify the correctness of XML documentations.
+3. Replace all array properties of elements (e.g. NodeIds[]) with List<>?
 
 Other:
 1. Check if methods are coherently marked as virtual.
+2. Check if all Set method overloads of the DotAttributeCollection are exposed by the IDotAttributeCollection interface.
 2. Some attributes are settable only on specified types of elements, but it turns out that the documentation is not always right, and other elements support those attributes too.
 
 Nice-to-haves:

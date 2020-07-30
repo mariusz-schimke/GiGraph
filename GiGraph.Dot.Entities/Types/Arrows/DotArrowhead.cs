@@ -6,7 +6,11 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Arrows
 {
     /// <summary>
-    ///     Defines an arrowhead shape.
+    ///     Defines an arrowhead shape. See the
+    ///     <see href="http://www.graphviz.org/doc/info/arrows.html">
+    ///         documentation
+    ///     </see>
+    ///     to view what shape configurations are supported.
     /// </summary>
     public class DotArrowhead : DotArrowheadDefinition
     {
