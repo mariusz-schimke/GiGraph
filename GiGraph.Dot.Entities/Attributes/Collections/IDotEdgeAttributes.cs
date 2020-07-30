@@ -30,6 +30,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotLabel Label { get; set; }
 
         /// <summary>
+        ///     The text label to be placed near the head of the edge.
+        /// </summary>
+        DotLabel HeadLabel { get; set; }
+
+        /// <summary>
+        ///     The text label to be placed near the tail of the edge.
+        /// </summary>
+        DotLabel TailLabel { get; set; }
+
+        /// <summary>
         ///     External label for the edge. The label will be placed near the center of the edge. This can be useful in dot to avoid the
         ///     occasional problem when the use of edge labels distorts the layout. For other layouts, this attribute can be viewed as a
         ///     synonym for the <see cref="Label" /> attribute. These labels are added after all nodes and edges have been placed. The labels
