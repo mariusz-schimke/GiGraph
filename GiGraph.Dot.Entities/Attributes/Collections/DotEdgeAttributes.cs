@@ -2,12 +2,19 @@ using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public class DotEdgeAttributes : DotEntityAttributes, IDotEdgeAttributes
     {
+        public virtual DotLabel HeadLabel
+        {
+            get => TryGetValueAsLabel("headlabel");
+            set => AddOrRemove("headlabel", value, (k, v) => new DotLabelAttribute(k, v));
+        }
+
         public virtual DotEscapeString HeadUrl
         {
             get => TryGetValueAsEscapeString("headURL");
@@ -171,7 +178,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetValueAs<bool>("decorate", out var result) ? result : (bool?) null;
             set => AddOrRemove("decorate", value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
-        
+
         public virtual bool? LabelFloat
         {
             get => TryGetValueAs<bool>("labelfloat", out var result) ? result : (bool?) null;
