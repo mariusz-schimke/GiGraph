@@ -171,6 +171,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetValueAs<bool>("decorate", out var result) ? result : (bool?) null;
             set => AddOrRemove("decorate", value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
+        
+        public virtual bool? LabelFloat
+        {
+            get => TryGetValueAs<bool>("labelfloat", out var result) ? result : (bool?) null;
+            set => AddOrRemove("labelfloat", value, (k, v) => new DotBoolAttribute(k, v.Value));
+        }
 
         public virtual bool? Constraint
         {

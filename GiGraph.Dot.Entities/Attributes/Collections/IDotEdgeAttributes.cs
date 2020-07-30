@@ -196,6 +196,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         bool? Decorate { get; set; }
 
         /// <summary>
+        ///     If true, allows edge labels to be less constrained in position. In particular, it may appear on top of other edges. Default:
+        ///     false.
+        /// </summary>
+        bool? LabelFloat { get; set; }
+
+        /// <summary>
         ///     If true (default), the head of the edge is clipped to the boundary of the head node; otherwise, the end of the edge goes to
         ///     the center of the node, or the center of a port, if applicable.
         /// </summary>
