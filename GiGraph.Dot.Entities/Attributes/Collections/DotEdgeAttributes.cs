@@ -199,6 +199,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : new DotDoubleAttribute(k, v.Value));
         }
 
+        public virtual double? LabelAngle
+        {
+            get => TryGetValueAs<double>("labelangle", out var result) ? result : (double?) null;
+            set => AddOrRemove("labelangle", value, (k, v) => new DotDoubleAttribute(k, v.Value));
+        }
+
         public virtual bool? Constraint
         {
             get => TryGetValueAs<bool>("constraint", out var result) ? result : (bool?) null;

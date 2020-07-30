@@ -56,9 +56,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Multiplicative scaling factor adjusting the distance that the <see cref="HeadLabel" />/<see cref="TailLabel" /> is from the
-        ///     head/tail node. The default distance is 10 points.
+        ///     head/tail node. The default distance is 10 points, the minimum is 0.0. See also <see cref="LabelAngle" />.
         /// </summary>
         double? LabelDistance { get; set; }
+
+        /// <summary>
+        ///     <para>
+        ///         This, along with <see cref="LabelDistance" />, determine where the <see cref="HeadLabel" />/<see cref="TailLabel" /> are
+        ///         placed with respect to the head/tail in polar coordinates. The origin in the coordinate system is the point where the
+        ///         edge touches the node. The ray of 0 degrees goes from the origin back along the edge, parallel to the edge at the origin.
+        ///     </para>
+        ///     <para>
+        ///         The angle, in degrees, specifies the rotation from the 0 degree ray, with positive angles moving counterclockwise and
+        ///         negative angles moving clockwise. The default value is -25.0, the minimum: -180.0.
+        ///     </para>
+        /// </summary>
+        double? LabelAngle { get; set; }
 
         /// <summary>
         ///     Tooltip annotation attached to the edge. If unset, Graphviz will use the <see cref="Label" /> attribute if defined.
