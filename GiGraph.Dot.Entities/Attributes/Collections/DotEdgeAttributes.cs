@@ -191,6 +191,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("labelfloat", value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
+        public virtual double? LabelDistance
+        {
+            get => TryGetValueAs<double>("labeldistance", out var result) ? result : (double?) null;
+            set => AddOrRemove("labeldistance", value, (k, v) => v.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(LabelDistance), v.Value, "Label distance must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v.Value));
+        }
+
+        public virtual double? LabelAngle
+        {
+            get => TryGetValueAs<double>("labelangle", out var result) ? result : (double?) null;
+            set => AddOrRemove("labelangle", value, (k, v) => new DotDoubleAttribute(k, v.Value));
+        }
+
         public virtual bool? Constraint
         {
             get => TryGetValueAs<bool>("constraint", out var result) ? result : (bool?) null;

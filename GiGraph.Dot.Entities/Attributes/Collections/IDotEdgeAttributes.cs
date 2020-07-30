@@ -46,7 +46,32 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     will be placed so that they do not overlap any node or label. This means it may not be possible to place all of them. To
         ///     force placing all of them, use the <see cref="IDotGraphAttributes.ForceExternalLabels" /> attribute on the graph.
         /// </summary>
-        DotLabel ExternalLabel { get; set; }
+        DotLabel ExternalLabel { set; get; }
+
+        /// <summary>
+        ///     If true, allows edge labels to be less constrained in position. In particular, it may appear on top of other edges. Default:
+        ///     false.
+        /// </summary>
+        bool? LabelFloat { get; set; }
+
+        /// <summary>
+        ///     Multiplicative scaling factor adjusting the distance that the <see cref="HeadLabel" />/<see cref="TailLabel" /> is from the
+        ///     head/tail node. The default distance is 10 points, the minimum is 0.0. See also <see cref="LabelAngle" />.
+        /// </summary>
+        double? LabelDistance { get; set; }
+
+        /// <summary>
+        ///     <para>
+        ///         This, along with <see cref="LabelDistance" />, determine where the <see cref="HeadLabel" />/<see cref="TailLabel" /> are
+        ///         placed with respect to the head/tail in polar coordinates. The origin in the coordinate system is the point where the
+        ///         edge touches the node. The ray of 0 degrees goes from the origin back along the edge, parallel to the edge at the origin.
+        ///     </para>
+        ///     <para>
+        ///         The angle, in degrees, specifies the rotation from the 0 degree ray, with positive angles moving counterclockwise and
+        ///         negative angles moving clockwise. The default value is -25.0, the minimum: -180.0.
+        ///     </para>
+        /// </summary>
+        double? LabelAngle { get; set; }
 
         /// <summary>
         ///     Tooltip annotation attached to the edge. If unset, Graphviz will use the <see cref="Label" /> attribute if defined.
@@ -204,12 +229,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     spline. Default: false.
         /// </summary>
         bool? Decorate { get; set; }
-
-        /// <summary>
-        ///     If true, allows edge labels to be less constrained in position. In particular, it may appear on top of other edges. Default:
-        ///     false.
-        /// </summary>
-        bool? LabelFloat { get; set; }
 
         /// <summary>
         ///     If true (default), the head of the edge is clipped to the boundary of the head node; otherwise, the end of the edge goes to
