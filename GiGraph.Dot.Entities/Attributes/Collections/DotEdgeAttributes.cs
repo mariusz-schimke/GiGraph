@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
@@ -9,6 +10,26 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public class DotEdgeAttributes : DotEntityAttributes, IDotEdgeAttributes
     {
+        public virtual string LabelFontName
+        {
+            get => TryGetValueAs<string>("labelfontname", out var result) ? result : null;
+            set => AddOrRemove("labelfontname", value, (k, v) => new DotStringAttribute(k, v));
+        }
+
+        public virtual Color? LabelFontColor
+        {
+            get => TryGetValueAs<Color>("labelfontcolor", out var result) ? result : (Color?) null;
+            set => AddOrRemove("labelfontcolor", value, (k, v) => new DotColorAttribute(k, v.Value));
+        }
+
+        public virtual double? LabelFontSize
+        {
+            get => TryGetValueAs<double>("labelfontsize", out var result) ? result : (double?) null;
+            set => AddOrRemove("labelfontsize", value, (k, v) => v.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(LabelFontSize), v.Value, "Label font size must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v.Value));
+        }
+
         public virtual DotLabel TailLabel
         {
             get => TryGetValueAsLabel("taillabel");
