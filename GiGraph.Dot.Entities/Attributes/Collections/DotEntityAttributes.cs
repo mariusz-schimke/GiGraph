@@ -16,6 +16,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("color", value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
+        public virtual string ColorScheme
+        {
+            get => TryGetValueAs<string>("colorscheme", out var result) ? result : null;
+            set => AddOrRemove("colorscheme", value, (k, v) => new DotStringAttribute(k, v));
+        }
+
         public virtual DotColorDefinition BackgroundColor
         {
             get => TryGetValueAsColorDefinition("bgcolor");
