@@ -11,12 +11,12 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         None,
 
         /// <summary>
-        ///     Clip the shape, leaving only the part to the left of the edge.
+        ///     Clip the left side of the shape so that only the right half is visible.
         /// </summary>
         Left,
 
         /// <summary>
-        ///     Clip the shape, leaving only the part to the right of the edge.
+        ///     Clip the right side of the shape so that only the left half is visible.
         /// </summary>
         Right
     }

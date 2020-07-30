@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
+using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
@@ -193,14 +194,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     if the <see cref="ArrowDirection" /> attribute is <see cref="DotArrowDirection.Forward" /> or
         ///     <see cref="DotArrowDirection.Both" />.
         /// </summary>
-        DotArrowShape? ArrowHead { get; set; }
+        DotArrowDefinition ArrowHead { get; set; }
 
         /// <summary>
         ///     Gets or sets the style of arrow head on the tail node of an edge (default: <see cref="DotArrowShape.Normal" />). Appears only
         ///     if the <see cref="ArrowDirection" /> attribute is <see cref="DotArrowDirection.Backward" /> or
         ///     <see cref="DotArrowDirection.Both" />.
         /// </summary>
-        DotArrowShape? ArrowTail { get; set; }
+        DotArrowDefinition ArrowTail { get; set; }
 
         /// <summary>
         ///     <para>

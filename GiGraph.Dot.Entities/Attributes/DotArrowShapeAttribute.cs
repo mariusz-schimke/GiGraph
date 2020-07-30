@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return new DotArrow(Value, fill: true, clip: DotArrowShapeClipping.None).GetDotEncoded(options, syntaxRules);
+            return new DotArrow(Value).GetDotEncoded(options, syntaxRules);
         }
     }
 }

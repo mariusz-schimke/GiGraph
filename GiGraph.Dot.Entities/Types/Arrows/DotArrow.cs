@@ -56,11 +56,13 @@ namespace GiGraph.Dot.Entities.Types.Arrows
             switch (Clip)
             {
                 case DotArrowShapeClipping.Left:
-                    result.Append("l");
+                    // clips the shape, leaving only the part to the right of the edge
+                    result.Append("r");
                     break;
 
                 case DotArrowShapeClipping.Right:
-                    result.Append("r");
+                    // clips the shape, leaving only the part to the left of the edge
+                    result.Append("l");
                     break;
             }
 

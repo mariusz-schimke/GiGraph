@@ -1,6 +1,7 @@
 using System;
 using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
@@ -158,16 +159,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : new DotDoubleAttribute(k, v.Value));
         }
 
-        public virtual DotArrowShape? ArrowHead
+        public virtual DotArrowDefinition ArrowHead
         {
-            get => TryGetValueAs<DotArrowShape>("arrowhead", out var result) ? result : (DotArrowShape?) null;
-            set => AddOrRemove("arrowhead", value, (k, v) => new DotArrowShapeAttribute(k, v.Value));
+            get => TryGetValueAsArrowDefinition("arrowhead");
+            set => AddOrRemove("arrowhead", value, (k, v) => new DotArrowDefinitionAttribute(k, v));
         }
 
-        public virtual DotArrowShape? ArrowTail
+        public virtual DotArrowDefinition ArrowTail
         {
-            get => TryGetValueAs<DotArrowShape>("arrowtail", out var result) ? result : (DotArrowShape?) null;
-            set => AddOrRemove("arrowtail", value, (k, v) => new DotArrowShapeAttribute(k, v.Value));
+            get => TryGetValueAsArrowDefinition("arrowtail");
+            set => AddOrRemove("arrowtail", value, (k, v) => new DotArrowDefinitionAttribute(k, v));
         }
 
         public virtual DotArrowDirection? ArrowDirection
@@ -235,6 +236,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public override void SetFilled(DotColorDefinition value)
         {
             FillColor = value;
+        }
+
+        protected virtual DotArrowDefinition TryGetValueAsArrowDefinition(string key)
+        {
+            if (TryGetValueAs<DotArrowDefinition>(key, out var definition))
+            {
+                return definition;
+            }
+
+            return TryGetValueAs<DotArrowShape>(key, out var shape) ? new DotArrow(shape) : null;
         }
     }
 }
