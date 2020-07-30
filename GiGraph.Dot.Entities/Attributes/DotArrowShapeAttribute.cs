@@ -1,5 +1,5 @@
-﻿using System;
-using GiGraph.Dot.Entities.Attributes.Enums;
+﻿using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.ArrowShapes;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
@@ -29,44 +29,7 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (Value)
-            {
-                case DotArrowShape.None:
-                    return "none";
-
-                case DotArrowShape.Normal:
-                    return "normal";
-
-                case DotArrowShape.InvertedNormal:
-                    return "inv";
-
-                case DotArrowShape.Box:
-                    return "box";
-
-                case DotArrowShape.Crow:
-                    return "crow";
-
-                case DotArrowShape.Curve:
-                    return "curve";
-
-                case DotArrowShape.InvertedCurve:
-                    return "icurve";
-
-                case DotArrowShape.Diamond:
-                    return "diamond";
-
-                case DotArrowShape.Dot:
-                    return "dot";
-
-                case DotArrowShape.Tee:
-                    return "tee";
-
-                case DotArrowShape.Vee:
-                    return "vee";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified arrow type '{Value}' is not supported.");
-            }
+            return new DotArrow(Value, fill: true, clip: DotArrowShapeClipping.None).GetDotEncoded(options, syntaxRules);
         }
     }
 }
