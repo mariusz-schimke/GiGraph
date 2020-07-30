@@ -10,6 +10,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public class DotEdgeAttributes : DotEntityAttributes, IDotEdgeAttributes
     {
+        public virtual string LabelFontName
+        {
+            get => TryGetValueAs<string>("labelfontname", out var result) ? result : null;
+            set => AddOrRemove("labelfontname", value, (k, v) => new DotStringAttribute(k, v));
+        }
+
         public virtual Color? LabelFontColor
         {
             get => TryGetValueAs<Color>("labelfontcolor", out var result) ? result : (Color?) null;
