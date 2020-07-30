@@ -248,9 +248,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotAspectRatioAttribute(key, value));
         }
 
-        public virtual DotArrowDefinitionAttribute Set(string key, DotArrowDefinition value)
+        public virtual DotArrowEndDefinitionAttribute Set(string key, DotArrowEndDefinition value)
         {
-            return Set(new DotArrowDefinitionAttribute(key, value));
+            return Set(new DotArrowEndDefinitionAttribute(key, value));
         }
 
         protected virtual void AddOrRemove<T>(string key, T attribute)

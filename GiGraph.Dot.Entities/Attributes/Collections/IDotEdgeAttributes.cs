@@ -194,14 +194,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     if the <see cref="ArrowDirection" /> attribute is <see cref="DotArrowDirection.Forward" /> or
         ///     <see cref="DotArrowDirection.Both" />.
         /// </summary>
-        DotArrowDefinition ArrowHead { get; set; }
+        DotArrowEndDefinition ArrowHead { get; set; }
 
         /// <summary>
         ///     Gets or sets the style of arrow head on the tail node of an edge (default: <see cref="DotArrowShape.Normal" />). Appears only
         ///     if the <see cref="ArrowDirection" /> attribute is <see cref="DotArrowDirection.Backward" /> or
         ///     <see cref="DotArrowDirection.Both" />.
         /// </summary>
-        DotArrowDefinition ArrowTail { get; set; }
+        DotArrowEndDefinition ArrowTail { get; set; }
 
         /// <summary>
         ///     <para>

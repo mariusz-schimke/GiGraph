@@ -4,13 +4,9 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     Arrow type attribute. Assignable to edges only.
-    ///     <see href="https://www.graphviz.org/doc/info/attrs.html#k:arrowType">
-    ///         View how individual arrow types are visualized
-    ///     </see>
-    ///     .
+    ///     Arrow end definition attribute. Assignable to edges only.
     /// </summary>
-    public class DotArrowDefinitionAttribute : DotAttribute<DotArrowDefinition>
+    public class DotArrowEndDefinitionAttribute : DotAttribute<DotArrowEndDefinition>
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -21,7 +17,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotArrowDefinitionAttribute(string key, DotArrowDefinition value)
+        public DotArrowEndDefinitionAttribute(string key, DotArrowEndDefinition value)
             : base(key, value)
         {
         }

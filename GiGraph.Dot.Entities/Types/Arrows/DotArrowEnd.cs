@@ -6,9 +6,9 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Arrows
 {
     /// <summary>
-    ///     The arrow shape definition.
+    ///     Defines an arrow end shape.
     /// </summary>
-    public class DotArrow : DotArrowDefinition
+    public class DotArrowEnd : DotArrowEndDefinition
     {
         /// <summary>
         ///     Creates and initializes a new arrow definition instance.
@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// <param name="clip">
         ///     Determines whether to clip the shape, leaving only the part to the left or to the right of the edge.
         /// </param>
-        public DotArrow(DotArrowShape shape, bool fill = true, DotArrowShapeClipping clip = DotArrowShapeClipping.None)
+        public DotArrowEnd(DotArrowShape shape, bool fill = true, DotArrowEndClipping clip = DotArrowEndClipping.None)
         {
             Shape = shape;
             Fill = fill;
@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// <summary>
         ///     Gets or sets a value indicating whether to clip the shape, leaving only the part to the left or to the right of the edge.
         /// </summary>
-        public virtual DotArrowShapeClipping Clip { get; set; }
+        public virtual DotArrowEndClipping Clip { get; set; }
 
         protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
@@ -55,12 +55,12 @@ namespace GiGraph.Dot.Entities.Types.Arrows
 
             switch (Clip)
             {
-                case DotArrowShapeClipping.Left:
+                case DotArrowEndClipping.Left:
                     // clips the shape, leaving only the part to the right of the edge
                     result.Append("r");
                     break;
 
-                case DotArrowShapeClipping.Right:
+                case DotArrowEndClipping.Right:
                     // clips the shape, leaving only the part to the left of the edge
                     result.Append("l");
                     break;
@@ -113,9 +113,9 @@ namespace GiGraph.Dot.Entities.Types.Arrows
             }
         }
 
-        public static implicit operator DotArrow(DotArrowShape? shape)
+        public static implicit operator DotArrowEnd(DotArrowShape? shape)
         {
-            return shape.HasValue ? new DotArrow(shape.Value) : null;
+            return shape.HasValue ? new DotArrowEnd(shape.Value) : null;
         }
     }
 }

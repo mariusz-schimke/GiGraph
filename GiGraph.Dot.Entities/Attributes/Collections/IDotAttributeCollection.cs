@@ -317,7 +317,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotArrowDefinitionAttribute Set(string key, DotArrowDefinition value);
+        DotArrowEndDefinitionAttribute Set(string key, DotArrowEndDefinition value);
 
         /// <summary>
         ///     Adds or replaces the specified arrow direction attribute in the collection.
