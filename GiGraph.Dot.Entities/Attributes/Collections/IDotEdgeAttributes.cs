@@ -46,7 +46,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     will be placed so that they do not overlap any node or label. This means it may not be possible to place all of them. To
         ///     force placing all of them, use the <see cref="IDotGraphAttributes.ForceExternalLabels" /> attribute on the graph.
         /// </summary>
-        DotLabel ExternalLabel { get; set; }
+        DotLabel ExternalLabel { set; get; }
+
+        /// <summary>
+        ///     If true, allows edge labels to be less constrained in position. In particular, it may appear on top of other edges. Default:
+        ///     false.
+        /// </summary>
+        bool? LabelFloat { get; set; }
+
+        /// <summary>
+        ///     Multiplicative scaling factor adjusting the distance that the <see cref="HeadLabel" />/<see cref="TailLabel" /> is from the
+        ///     head/tail node. The default distance is 10 points.
+        /// </summary>
+        double? LabelDistance { get; set; }
 
         /// <summary>
         ///     Tooltip annotation attached to the edge. If unset, Graphviz will use the <see cref="Label" /> attribute if defined.
@@ -204,12 +216,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     spline. Default: false.
         /// </summary>
         bool? Decorate { get; set; }
-
-        /// <summary>
-        ///     If true, allows edge labels to be less constrained in position. In particular, it may appear on top of other edges. Default:
-        ///     false.
-        /// </summary>
-        bool? LabelFloat { get; set; }
 
         /// <summary>
         ///     If true (default), the head of the edge is clipped to the boundary of the head node; otherwise, the end of the edge goes to
