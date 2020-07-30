@@ -10,30 +10,15 @@
     public enum DotArrowShape
     {
         None,
-
         Normal,
-        Empty,
-        Open,
-        HalfOpen,
-        Vee,
-
-        Diamond,
-        EmptyDiamond,
-        OpenDiamond,
-
-        Dot,
-        OpenDot,
-        InvertedDot,
-        InvertedOpenDot,
-
+        InvertedNormal,
         Box,
-        OpenBox,
-
-        Inverted,
-        InvertedEmpty,
-
         Crow,
-
-        Tee
+        Curve,
+        InvertedCurve,
+        Diamond,
+        Dot,
+        Tee,
+        Vee
     }
 }

@@ -37,56 +37,32 @@ namespace GiGraph.Dot.Entities.Attributes
                 case DotArrowShape.Normal:
                     return "normal";
 
-                case DotArrowShape.Dot:
-                    return "dot";
-
-                case DotArrowShape.OpenDot:
-                    return "odot";
-
-                case DotArrowShape.Empty:
-                    return "empty";
-
-                case DotArrowShape.Diamond:
-                    return "diamond";
-
-                case DotArrowShape.EmptyDiamond:
-                    return "ediamond";
+                case DotArrowShape.InvertedNormal:
+                    return "inv";
 
                 case DotArrowShape.Box:
                     return "box";
 
-                case DotArrowShape.Open:
-                    return "open";
+                case DotArrowShape.Crow:
+                    return "crow";
 
-                case DotArrowShape.Vee:
-                    return "vee";
+                case DotArrowShape.Curve:
+                    return "curve";
 
-                case DotArrowShape.Inverted:
-                    return "inv";
+                case DotArrowShape.InvertedCurve:
+                    return "icurve";
 
-                case DotArrowShape.InvertedDot:
-                    return "invdot";
+                case DotArrowShape.Diamond:
+                    return "diamond";
 
-                case DotArrowShape.InvertedOpenDot:
-                    return "invodot";
+                case DotArrowShape.Dot:
+                    return "dot";
 
                 case DotArrowShape.Tee:
                     return "tee";
 
-                case DotArrowShape.InvertedEmpty:
-                    return "invempty";
-
-                case DotArrowShape.OpenDiamond:
-                    return "odiamond";
-
-                case DotArrowShape.Crow:
-                    return "crow";
-
-                case DotArrowShape.OpenBox:
-                    return "obox";
-
-                case DotArrowShape.HalfOpen:
-                    return "halfopen";
+                case DotArrowShape.Vee:
+                    return "vee";
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(Value), $"The specified arrow type '{Value}' is not supported.");
