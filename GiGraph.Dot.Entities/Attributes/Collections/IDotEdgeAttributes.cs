@@ -74,6 +74,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         double? LabelAngle { get; set; }
 
         /// <summary>
+        ///     Color used for <see cref="HeadLabel" /> and <see cref="TailLabel" />. If not set, defaults to edge's fontcolor.
+        /// </summary>
+        Color? LabelFontColor { get; set; }
+
+        /// <summary>
         ///     Tooltip annotation attached to the edge. If unset, Graphviz will use the <see cref="Label" /> attribute if defined.
         /// </summary>
         DotEscapeString Tooltip { get; set; }

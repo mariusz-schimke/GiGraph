@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
@@ -9,6 +10,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public class DotEdgeAttributes : DotEntityAttributes, IDotEdgeAttributes
     {
+        public virtual Color? LabelFontColor
+        {
+            get => TryGetValueAs<Color>("labelfontcolor", out var result) ? result : (Color?) null;
+            set => AddOrRemove("labelfontcolor", value, (k, v) => new DotColorAttribute(k, v.Value));
+        }
+
         public virtual DotLabel TailLabel
         {
             get => TryGetValueAsLabel("taillabel");
