@@ -22,6 +22,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("labelfontcolor", value, (k, v) => new DotColorAttribute(k, v.Value));
         }
 
+        public virtual double? LabelFontSize
+        {
+            get => TryGetValueAs<double>("labelfontsize", out var result) ? result : (double?) null;
+            set => AddOrRemove("labelfontsize", value, (k, v) => v.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(LabelFontSize), v.Value, "Label font size must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v.Value));
+        }
+
         public virtual DotLabel TailLabel
         {
             get => TryGetValueAsLabel("taillabel");

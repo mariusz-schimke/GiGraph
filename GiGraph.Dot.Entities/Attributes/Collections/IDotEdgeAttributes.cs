@@ -85,6 +85,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         string LabelFontName { get; set; }
 
         /// <summary>
+        ///     Font size, in points, used for <see cref="HeadLabel" /> and <see cref="TailLabel" />. If not set, defaults to edge's
+        ///     <see cref="FontSize" />.
+        /// </summary>
+        double? LabelFontSize { get; set; }
+
+        /// <summary>
         ///     Tooltip annotation attached to the edge. If unset, Graphviz will use the <see cref="Label" /> attribute if defined.
         /// </summary>
         DotEscapeString Tooltip { get; set; }
