@@ -16,5 +16,15 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         {
             return (DotArrow) shape;
         }
+
+        public static implicit operator DotArrowDefinition(DotArrowShape[] shapes)
+        {
+            return shapes is {} ? new DotMultiArrow(shapes) : null;
+        }
+
+        public static implicit operator DotArrowDefinition(DotArrow[] arrows)
+        {
+            return arrows is {} ? new DotMultiArrow(arrows) : null;
+        }
     }
 }
