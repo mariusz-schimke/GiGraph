@@ -103,6 +103,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotColorDefinition FillColor { get; set; }
 
         /// <summary>
+        ///     Specifies a color scheme namespace. If defined, it specifies the context for interpreting color names. In particular, if a
+        ///     color value has form "xxx" or "//xxx", then the color xxx will be evaluated according to the current color scheme. If no
+        ///     color scheme is set, the standard X11 naming is used. For example, if "bugn9" color scheme is used, then a color named "7",
+        ///     e.g.
+        ///     <c>
+        ///         Color.FromName("7")
+        ///     </c>
+        ///     , is interpreted as "/bugn9/7".
+        /// </summary>
+        string ColorScheme { get; set; }
+
+        /// <summary>
         ///     If a gradient fill is being used, this determines the angle of the fill. For linear fills, the colors transform along a line
         ///     specified by the angle and the center of the object. For radial fills, a value of zero causes the colors to transform
         ///     radially from the center; for non-zero values, the colors transform from a point near the object's periphery as specified by
@@ -155,9 +167,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     </para>
         ///     <para>
         ///         Multiple styles can be used at once, for example:
-        ///         <code>
-        ///         <see cref="Style" /> = <see cref="DotStyle.Rounded" /> | <see cref="DotStyle.Bold" />;
-        ///     </code>
+        ///         <c>
+        ///             <see cref="Style" /> = <see cref="DotStyle.Rounded" /> | <see cref="DotStyle.Bold" />;
+        ///         </c>
         ///     </para>
         /// </summary>
         DotStyle? Style { get; set; }

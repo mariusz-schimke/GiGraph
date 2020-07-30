@@ -113,15 +113,27 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotColorDefinition FillColor { get; set; }
 
         /// <summary>
+        ///     Specifies a color scheme namespace. If defined, it specifies the context for interpreting color names. In particular, if a
+        ///     color value has form "xxx" or "//xxx", then the color xxx will be evaluated according to the current color scheme. If no
+        ///     color scheme is set, the standard X11 naming is used. For example, if "bugn9" color scheme is used, then a color named "7",
+        ///     e.g.
+        ///     <c>
+        ///         Color.FromName("7")
+        ///     </c>
+        ///     , is interpreted as "/bugn9/7".
+        /// </summary>
+        string ColorScheme { get; set; }
+
+        /// <summary>
         ///     <para>
         ///         Sets the style of the edge (default: null). See the descriptions of individual <see cref="DotStyle" /> values to learn
         ///         which styles are applicable to this element type.
         ///     </para>
         ///     <para>
         ///         Multiple styles can be used at once, for example:
-        ///         <code>
-        ///         <see cref="Style" /> = <see cref="DotStyle.Solid" /> | <see cref="DotStyle.Bold" />;
-        ///     </code>
+        ///         <c>
+        ///             <see cref="Style" /> = <see cref="DotStyle.Solid" /> | <see cref="DotStyle.Bold" />;
+        ///         </c>
         ///     </para>
         /// </summary>
         DotStyle? Style { get; set; }
