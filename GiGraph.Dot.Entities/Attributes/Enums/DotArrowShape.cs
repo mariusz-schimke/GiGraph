@@ -1,13 +1,13 @@
 ﻿namespace GiGraph.Dot.Entities.Attributes.Enums
 {
     /// <summary>
-    ///     The arrow type.
+    ///     The arrow shape.
     ///     <see href="https://www.graphviz.org/doc/info/attrs.html#k:arrowType">
-    ///         View how individual arrow types are visualized
+    ///         View how individual arrow shapes are visualized
     ///     </see>
     ///     .
     /// </summary>
-    public enum DotArrowType
+    public enum DotArrowShape
     {
         None,
 

@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Examples.Basic
             graph.NodeDefaults.FillColor = new DotGradientColor(Color.Turquoise, Color.RoyalBlue);
 
             // set the defaults for all edges of the graph
-            graph.EdgeDefaults.ArrowHead = graph.EdgeDefaults.ArrowTail = DotArrowType.Vee;
+            graph.EdgeDefaults.ArrowHead = graph.EdgeDefaults.ArrowTail = DotArrowShape.Vee;
             graph.EdgeDefaults.FontName = graph.Attributes.FontName;
             graph.EdgeDefaults.FontSize = 10;
 

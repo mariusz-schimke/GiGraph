@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Attributes
     ///     </see>
     ///     .
     /// </summary>
-    public class DotArrowTypeAttribute : DotAttribute<DotArrowType>
+    public class DotArrowShapeAttribute : DotAttribute<DotArrowShape>
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotArrowTypeAttribute(string key, DotArrowType value)
+        public DotArrowShapeAttribute(string key, DotArrowShape value)
             : base(key, value)
         {
         }
@@ -31,61 +31,61 @@ namespace GiGraph.Dot.Entities.Attributes
         {
             switch (Value)
             {
-                case DotArrowType.None:
+                case DotArrowShape.None:
                     return "none";
 
-                case DotArrowType.Normal:
+                case DotArrowShape.Normal:
                     return "normal";
 
-                case DotArrowType.Dot:
+                case DotArrowShape.Dot:
                     return "dot";
 
-                case DotArrowType.OpenDot:
+                case DotArrowShape.OpenDot:
                     return "odot";
 
-                case DotArrowType.Empty:
+                case DotArrowShape.Empty:
                     return "empty";
 
-                case DotArrowType.Diamond:
+                case DotArrowShape.Diamond:
                     return "diamond";
 
-                case DotArrowType.EmptyDiamond:
+                case DotArrowShape.EmptyDiamond:
                     return "ediamond";
 
-                case DotArrowType.Box:
+                case DotArrowShape.Box:
                     return "box";
 
-                case DotArrowType.Open:
+                case DotArrowShape.Open:
                     return "open";
 
-                case DotArrowType.Vee:
+                case DotArrowShape.Vee:
                     return "vee";
 
-                case DotArrowType.Inverted:
+                case DotArrowShape.Inverted:
                     return "inv";
 
-                case DotArrowType.InvertedDot:
+                case DotArrowShape.InvertedDot:
                     return "invdot";
 
-                case DotArrowType.InvertedOpenDot:
+                case DotArrowShape.InvertedOpenDot:
                     return "invodot";
 
-                case DotArrowType.Tee:
+                case DotArrowShape.Tee:
                     return "tee";
 
-                case DotArrowType.InvertedEmpty:
+                case DotArrowShape.InvertedEmpty:
                     return "invempty";
 
-                case DotArrowType.OpenDiamond:
+                case DotArrowShape.OpenDiamond:
                     return "odiamond";
 
-                case DotArrowType.Crow:
+                case DotArrowShape.Crow:
                     return "crow";
 
-                case DotArrowType.OpenBox:
+                case DotArrowShape.OpenBox:
                     return "obox";
 
-                case DotArrowType.HalfOpen:
+                case DotArrowShape.HalfOpen:
                     return "halfopen";
 
                 default:

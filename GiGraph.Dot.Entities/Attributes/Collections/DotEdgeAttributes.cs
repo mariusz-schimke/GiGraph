@@ -158,16 +158,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : new DotDoubleAttribute(k, v.Value));
         }
 
-        public virtual DotArrowType? ArrowHead
+        public virtual DotArrowShape? ArrowHead
         {
-            get => TryGetValueAs<DotArrowType>("arrowhead", out var result) ? result : (DotArrowType?) null;
-            set => AddOrRemove("arrowhead", value, (k, v) => new DotArrowTypeAttribute(k, v.Value));
+            get => TryGetValueAs<DotArrowShape>("arrowhead", out var result) ? result : (DotArrowShape?) null;
+            set => AddOrRemove("arrowhead", value, (k, v) => new DotArrowShapeAttribute(k, v.Value));
         }
 
-        public virtual DotArrowType? ArrowTail
+        public virtual DotArrowShape? ArrowTail
         {
-            get => TryGetValueAs<DotArrowType>("arrowtail", out var result) ? result : (DotArrowType?) null;
-            set => AddOrRemove("arrowtail", value, (k, v) => new DotArrowTypeAttribute(k, v.Value));
+            get => TryGetValueAs<DotArrowShape>("arrowtail", out var result) ? result : (DotArrowShape?) null;
+            set => AddOrRemove("arrowtail", value, (k, v) => new DotArrowShapeAttribute(k, v.Value));
         }
 
         public virtual DotArrowDirection? ArrowDirection

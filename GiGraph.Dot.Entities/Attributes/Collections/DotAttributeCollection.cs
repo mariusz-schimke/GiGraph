@@ -133,9 +133,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotStyleAttribute(key, value));
         }
 
-        public virtual DotArrowTypeAttribute Set(string key, DotArrowType value)
+        public virtual DotArrowShapeAttribute Set(string key, DotArrowShape value)
         {
-            return Set(new DotArrowTypeAttribute(key, value));
+            return Set(new DotArrowShapeAttribute(key, value));
         }
 
         public virtual DotArrowDirectionAttribute Set(string key, DotArrowDirection value)
