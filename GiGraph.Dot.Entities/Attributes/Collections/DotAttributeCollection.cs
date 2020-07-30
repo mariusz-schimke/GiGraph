@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Enums;
+using GiGraph.Dot.Entities.Types.ArrowShapes;
 using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
@@ -245,6 +246,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotAspectRatioAttribute Set(string key, DotAspectRatio value)
         {
             return Set(new DotAspectRatioAttribute(key, value));
+        }
+
+        public virtual DotArrowDefinitionAttribute Set(string key, DotArrowDefinition value)
+        {
+            return Set(new DotArrowDefinitionAttribute(key, value));
         }
 
         protected virtual void AddOrRemove<T>(string key, T attribute)

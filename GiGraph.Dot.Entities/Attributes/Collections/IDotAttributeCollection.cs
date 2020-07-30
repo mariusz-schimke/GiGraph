@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Enums;
+using GiGraph.Dot.Entities.Types.ArrowShapes;
 using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
@@ -306,6 +307,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The value of the attribute to include in the collection.
         /// </param>
         DotArrowShapeAttribute Set(string key, DotArrowShape value);
+
+        /// <summary>
+        ///     Adds or replaces the specified arrow definition attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotArrowDefinitionAttribute Set(string key, DotArrowDefinition value);
 
         /// <summary>
         ///     Adds or replaces the specified arrow direction attribute in the collection.
