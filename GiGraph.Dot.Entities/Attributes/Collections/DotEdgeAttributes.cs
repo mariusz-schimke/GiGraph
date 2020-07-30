@@ -9,6 +9,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public class DotEdgeAttributes : DotEntityAttributes, IDotEdgeAttributes
     {
+        public virtual DotLabel TailLabel
+        {
+            get => TryGetValueAsLabel("taillabel");
+            set => AddOrRemove("taillabel", value, (k, v) => new DotLabelAttribute(k, v));
+        }
+
         public virtual DotLabel HeadLabel
         {
             get => TryGetValueAsLabel("headlabel");
