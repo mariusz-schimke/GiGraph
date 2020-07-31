@@ -364,6 +364,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotRankDirectionAttribute Set(string key, DotRankDirection value);
 
         /// <summary>
+        ///     Adds or replaces the specified edge ordering mode attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotEdgeOrderingModeAttribute Set(string key, DotEdgeOrderingMode value);
+
+        /// <summary>
         ///     Adds or replaces the specified rank separation attribute in the collection (<see cref="DotRankSeparation" /> or
         ///     <see cref="DotRankSeparationList" />).
         /// </summary>

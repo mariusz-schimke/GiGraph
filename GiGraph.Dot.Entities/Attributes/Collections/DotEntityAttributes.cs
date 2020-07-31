@@ -106,6 +106,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("labelloc", value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
         }
 
+        public virtual DotEdgeOrderingMode? EdgeOrderingMode
+        {
+            get => TryGetValueAs<DotEdgeOrderingMode>("ordering", out var result) ? result : (DotEdgeOrderingMode?) null;
+            set => AddOrRemove("ordering", value, (k, v) => new DotEdgeOrderingModeAttribute(k, v.Value));
+        }
+
         public virtual DotEscapeString Tooltip
         {
             get => TryGetValueAsEscapeString("tooltip");
