@@ -161,13 +161,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual DotArrowheadDefinition ArrowHead
         {
-            get => TryGetValueAsArrowEndDefinition("arrowhead");
+            get => TryGetValueAsArrowheadDefinition("arrowhead");
             set => AddOrRemove("arrowhead", value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
         }
 
         public virtual DotArrowheadDefinition ArrowTail
         {
-            get => TryGetValueAsArrowEndDefinition("arrowtail");
+            get => TryGetValueAsArrowheadDefinition("arrowtail");
             set => AddOrRemove("arrowtail", value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
         }
 
@@ -238,7 +238,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             FillColor = value;
         }
 
-        protected virtual DotArrowheadDefinition TryGetValueAsArrowEndDefinition(string key)
+        protected virtual DotArrowheadDefinition TryGetValueAsArrowheadDefinition(string key)
         {
             if (TryGetValueAs<DotArrowheadDefinition>(key, out var definition))
             {
