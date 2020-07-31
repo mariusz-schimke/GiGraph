@@ -103,7 +103,7 @@ Graph nodes and edges may by styled globally, locally, and individually.
 
 Apart from those, the graph itself, and a cluster, also have their own collections of attributes that you may set. These are for instance background color, style, label, etc.
 
-The example below presents how individual elements may be styled. At the beginning, the global node shape is set to rectangular, and the style to filled, so that the fill color may be set. The example nodes have set plain color fill, striped/wedged fill (with custom stripe/wedge proportions), gradient fill, or two-color fill with proportions. Edges, on the other hand, have the 'vee' shape set globally, and custom styles set individually: plain color, multicolor series or splines, and a dotted style.
+The example below presents how individual elements may be styled. At the beginning, the global node shape is set to rectangular, and the style to filled, so that the fill color may be set. The example nodes have set plain color fill, striped/wedged fill (with custom stripe/wedge proportions), gradient fill, or dual color fill with proportions. Edges, on the other hand, have the 'vee' shape set globally, and custom styles set individually: plain color, multicolor series or splines, and a dotted style.
 
 
 
@@ -174,7 +174,7 @@ namespace GiGraph.Dot.Examples
 
             graph.Subgraphs.Add(sg =>
             {
-                // nodes with two-color fill; fill proportions specified by the weight parameter
+                // nodes with dual color fill; fill proportions specified by the weight parameter
                 sg.Nodes.Add("C").Attributes.FillColor = new DotDualColor(Color.RoyalBlue, Color.Turquoise, weight2: 0.25);
                 sg.Nodes.Add("D").Attributes.FillColor = new DotDualColor(Color.Navy, Color.RoyalBlue, weight1: 0.25);
 

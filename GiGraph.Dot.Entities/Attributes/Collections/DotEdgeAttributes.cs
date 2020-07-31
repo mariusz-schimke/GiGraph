@@ -11,6 +11,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public class DotEdgeAttributes : DotEntityAttributes, IDotEdgeAttributes
     {
+        public virtual int? MinLength
+        {
+            get => TryGetValueAs<int>("minlen", out var result) ? result : (int?) null;
+            set => AddOrRemove("minlen", value, (k, v) => v.Value < 0
+                ? throw new ArgumentOutOfRangeException(nameof(MinLength), v.Value, "Minimum length must be greater than or equal to 0.")
+                : new DotIntAttribute(k, v.Value));
+        }
+
         public virtual string LabelFontName
         {
             get => TryGetValueAs<string>("labelfontname", out var result) ? result : null;

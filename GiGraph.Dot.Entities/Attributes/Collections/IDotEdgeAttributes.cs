@@ -75,6 +75,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         double? LabelAngle { get; set; }
 
         /// <summary>
+        ///     Minimum edge length (rank difference between head and tail). Default: 1, minimum: 0.
+        /// </summary>
+        int? MinLength { get; set; }
+
+        /// <summary>
         ///     Color used for <see cref="HeadLabel" /> and <see cref="TailLabel" />. If not set, defaults to edge's <see cref="FontColor" />
         ///     .
         /// </summary>
