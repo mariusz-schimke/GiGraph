@@ -181,7 +181,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// </param>
         public static DotArrowhead Filled(DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
         {
-            return new DotArrowhead(shape, visibleParts);
+            return new DotArrowhead(shape, isFilled: true, visibleParts);
         }
 
         /// <summary>
@@ -190,9 +190,9 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// <param name="visibleParts">
         ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
         /// </param>
-        public static DotArrowhead Open(DotArrowheadParts visibleParts = DotArrowheadParts.Both)
+        public static DotArrowhead Empty(DotArrowheadParts visibleParts = DotArrowheadParts.Both)
         {
-            return Open(DotArrowheadShape.Normal, visibleParts);
+            return Empty(DotArrowheadShape.Normal, visibleParts);
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// <param name="visibleParts">
         ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
         /// </param>
-        public static DotArrowhead Open(DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
+        public static DotArrowhead Empty(DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
         {
             return new DotArrowhead(shape, isFilled: false, visibleParts);
         }

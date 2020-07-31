@@ -1330,8 +1330,8 @@ graph.Edges.Add("Foo", "Bar", edge =>
 });
 
 // some basic arrowhead combinations 
-graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Open();
-graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Open(DotArrowheadParts.Right);
+graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Empty();
+graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Empty(DotArrowheadParts.Right);
 graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Filled(DotArrowheadParts.Left);
 
 // a composition of multiple arrowheads
@@ -1339,7 +1339,7 @@ graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = new DotCompositeArrowhead
 (
     DotArrowheadShape.Tee,
     DotArrowheadShape.None, // may be used as a separator
-    DotArrowhead.Open(DotArrowheadShape.Diamond, DotArrowheadParts.Left)
+    DotArrowhead.Empty(DotArrowheadShape.Diamond, DotArrowheadParts.Left)
 );
 ```
 
