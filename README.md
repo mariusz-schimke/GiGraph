@@ -36,7 +36,7 @@ using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions; // Build(), SaveToFile()
 using System;
 
-namespace GiGraph.Examples
+namespace GiGraph.Dot.Examples
 {
     internal class Program
     {
@@ -123,7 +123,7 @@ using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Extensions; // Build(), SaveToFile()
 
-namespace GiGraph.Examples
+namespace GiGraph.Dot.Examples
 {
     internal class Program
     {
@@ -311,7 +311,7 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions; // Build(), SaveToFile()
 
-namespace GiGraph.Examples
+namespace GiGraph.Dot.Examples
 {
     internal class Program
     {
@@ -454,7 +454,7 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions; // Build(), SaveToFile()
 
-namespace GiGraph.Examples
+namespace GiGraph.Dot.Examples
 {
     internal class Program
     {
@@ -1277,6 +1277,35 @@ digraph
 </p>
 
 
+#### Sequence attributes
+
+Sequences support attributes too. You may set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection. Note as well that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*. This might come in handy when you add multiple nodes to the sequence, and need specific initialization of only some of them.
+
+```c#
+graph.Edges.AddSequence(
+    edge =>
+    {
+        // set attributes (they affect all edges in the sequence)
+        edge.Attributes.Color = Color.Red;
+    },
+    "Foo",
+    new[] { "Bar", "Baz", "Qux" },
+    new DotEndpoint("Quux", DotCompassPoint.North));
+```
+
+```dot
+digraph
+{
+    Foo -> { Bar Baz Qux } -> Quux:n [ color = red ]
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/edge-sequence-with-group-and-attrs.svg">
+</p>
+
+
+
 ### Arrowhead shapes
 
 An edge may have an arrowhead next to its head and/or tail node. By default, in a directed graph, an arrowhead appears only near the head node, but this behavior may be modified by setting the *ArrowDirection* property on an edge, or in the edge defaults on the graph level. By setting this property, you may choose whether the arrowhead appears next to the head node, next to the tail node, on both sides of the edge, or not at all.
@@ -1327,35 +1356,6 @@ digraph
 
 <p align="center">
   <img src="./Assets/Examples/arrowheads.svg">
-</p>
-
-
-
-#### Sequence attributes
-
-Sequences support attributes too. You may set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection. Note as well that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*. This might come in handy when you add multiple nodes to the sequence, and need specific initialization of only some of them.
-
-```c#
-graph.Edges.AddSequence(
-    edge =>
-    {
-        // set attributes (they affect all edges in the sequence)
-        edge.Attributes.Color = Color.Red;
-    },
-    "Foo",
-    new[] { "Bar", "Baz", "Qux" },
-    new DotEndpoint("Quux", DotCompassPoint.North));
-```
-
-```dot
-digraph
-{
-    Foo -> { Bar Baz Qux } -> Quux:n [ color = red ]
-}
-```
-
-<p align="center">
-  <img src="./Assets/Examples/edge-sequence-with-group-and-attrs.svg">
 </p>
 
 
