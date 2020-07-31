@@ -441,5 +441,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     This has no effect on loops. Each node may have at most 5 unique <see cref="HeadGroupName" /> values.
         /// </summary>
         string HeadGroupName { get; set; }
+
+        /// <summary>
+        ///     Edges with the same tail and the same <see cref="TailGroupName" /> value are aimed at the same point on the tail (dot only).
+        ///     This has no effect on loops. Each node may have at most 5 unique <see cref="TailGroupName" /> values.
+        /// </summary>
+        string TailGroupName { get; set; }
     }
 }
