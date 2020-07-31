@@ -11,6 +11,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public class DotEdgeAttributes : DotEntityAttributes, IDotEdgeAttributes
     {
+        public virtual double? Weight
+        {
+            get => TryGetValueAs<double>("weight", out var result) ? result : (double?) null;
+            set => AddOrRemove("weight", value, (k, v) => v.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(Weight), v.Value, "Weight must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v.Value));
+        }
+
         public virtual double? Length
         {
             get => TryGetValueAs<double>("len", out var result) ? result : (double?) null;

@@ -85,6 +85,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         double? Length { get; set; }
 
         /// <summary>
+        ///     Weight of the edge. In dot, the heavier the weight, the shorter, straighter and more vertical the edge is. Note that weights
+        ///     in dot must be integers. For twopi, a weight of 0 indicates the edge should not be used in constructing a spanning tree from
+        ///     the root. For other layouts, a larger weight encourages the layout to make the edge length closer to that specified by the
+        ///     <see cref="Length" /> attribute. Default: 1, minimum: 0 (dot, twopi), 1 (neato, fdp).
+        /// </summary>
+        double? Weight { get; set; }
+
+        /// <summary>
         ///     Color used for <see cref="HeadLabel" /> and <see cref="TailLabel" />. If not set, defaults to edge's <see cref="FontColor" />
         ///     .
         /// </summary>
