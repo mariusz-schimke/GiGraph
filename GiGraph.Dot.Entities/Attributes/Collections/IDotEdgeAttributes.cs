@@ -80,6 +80,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         int? MinLength { get; set; }
 
         /// <summary>
+        ///     Preferred edge length, in inches (fdp, neato only). Default: 1.0 (neato), 0.3 (fdp).
+        /// </summary>
+        double? Length { get; set; }
+
+        /// <summary>
         ///     Color used for <see cref="HeadLabel" /> and <see cref="TailLabel" />. If not set, defaults to edge's <see cref="FontColor" />
         ///     .
         /// </summary>
