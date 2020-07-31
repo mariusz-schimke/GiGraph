@@ -173,6 +173,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("tailclip", value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
+        public virtual string HeadGroupName
+        {
+            get => TryGetValueAs<string>("samehead", out var result) ? result : null;
+            set => AddOrRemove("samehead", value, (k, v) => new DotStringAttribute(k, v));
+        }
+
         public virtual double? ArrowSize
         {
             get => TryGetValueAs<double>("arrowsize", out var result) ? result : (double?) null;
