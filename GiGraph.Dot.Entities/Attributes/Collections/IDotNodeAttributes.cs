@@ -319,8 +319,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
 
         /// <summary>
-        ///     If the endpoints of an edge belong to the same group (have the same group name assigned), parameters are set to avoid
-        ///     crossings and keep the edges straight (dot only).
+        ///     The name of the group the node belongs to. If the endpoints of an edge belong to the same group (have the same group name
+        ///     assigned), parameters are set to avoid crossings and keep the edges straight (dot only).
         /// </summary>
         string GroupName { get; set; }
     }
