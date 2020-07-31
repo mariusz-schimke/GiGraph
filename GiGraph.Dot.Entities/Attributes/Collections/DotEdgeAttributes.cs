@@ -11,6 +11,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public class DotEdgeAttributes : DotEntityAttributes, IDotEdgeAttributes
     {
+        public virtual double? Length
+        {
+            get => TryGetValueAs<double>("len", out var result) ? result : (double?) null;
+            set => AddOrRemove("len", value, (k, v) => new DotDoubleAttribute(k, v.Value));
+        }
+
         public virtual int? MinLength
         {
             get => TryGetValueAs<int>("minlen", out var result) ? result : (int?) null;
