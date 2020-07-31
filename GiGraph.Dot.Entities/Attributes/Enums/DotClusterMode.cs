@@ -7,13 +7,13 @@
     {
         /// <summary>
         ///     At present, the modes <see cref="Global" /> and <see cref="None" /> appear to be identical, both turning off the special
-        ///     cluster processing.
+        ///     cluster processing, specific to the <see cref="Local" /> mode.
         /// </summary>
         None,
 
         /// <summary>
         ///     At present, the modes <see cref="Global" /> and <see cref="None" /> appear to be identical, both turning off the special
-        ///     cluster processing.
+        ///     cluster processing, specific to the <see cref="Local" /> mode.
         /// </summary>
         Global,
 

@@ -294,6 +294,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotRankSeparationDefinition RankSeparation { get; set; }
 
         /// <summary>
+        ///     Mode used for handling clusters (dot only; default: <see cref="DotClusterMode.Local" />).
+        /// </summary>
+        DotClusterMode? ClusterRank { get; set; }
+
+        /// <summary>
         ///     <para>
         ///         Specifies a list of directories in which to look for image files as specified by the image attribute of nodes (
         ///         <see cref="IDotNodeAttributes.ImagePath" />) or using the IMG element in HTML-like labels. The string should be a list of

@@ -20,6 +20,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("splines", value, (k, v) => new DotEdgeShapeAttribute(k, v.Value));
         }
 
+        public virtual DotClusterMode? ClusterRank
+        {
+            get => TryGetValueAs<DotClusterMode>("clusterrank", out var result) ? result : (DotClusterMode?) null;
+            set => AddOrRemove("clusterrank", value, (k, v) => new DotClusterModeAttribute(k, v.Value));
+        }
+
         public virtual bool? ConcentrateEdges
         {
             get => TryGetValueAs<bool>("concentrate", out var result) ? result : (bool?) null;
