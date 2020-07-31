@@ -435,5 +435,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     <see cref="EdgeUrl" /> attribute specified.
         /// </summary>
         DotEscapeString EdgeUrlTooltip { get; set; }
+
+        /// <summary>
+        ///     Edges with the same head and the same <see cref="HeadGroupName" /> value are aimed at the same point on the head (dot only).
+        ///     This has no effect on loops. Each node may have at most 5 unique <see cref="HeadGroupName" /> values.
+        /// </summary>
+        string HeadGroupName { get; set; }
     }
 }
