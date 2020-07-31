@@ -1,6 +1,7 @@
 using System;
 using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
@@ -158,16 +159,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : new DotDoubleAttribute(k, v.Value));
         }
 
-        public virtual DotArrowType? ArrowHead
+        public virtual DotArrowheadDefinition ArrowHead
         {
-            get => TryGetValueAs<DotArrowType>("arrowhead", out var result) ? result : (DotArrowType?) null;
-            set => AddOrRemove("arrowhead", value, (k, v) => new DotArrowTypeAttribute(k, v.Value));
+            get => TryGetValueAsArrowheadDefinition("arrowhead");
+            set => AddOrRemove("arrowhead", value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
         }
 
-        public virtual DotArrowType? ArrowTail
+        public virtual DotArrowheadDefinition ArrowTail
         {
-            get => TryGetValueAs<DotArrowType>("arrowtail", out var result) ? result : (DotArrowType?) null;
-            set => AddOrRemove("arrowtail", value, (k, v) => new DotArrowTypeAttribute(k, v.Value));
+            get => TryGetValueAsArrowheadDefinition("arrowtail");
+            set => AddOrRemove("arrowtail", value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
         }
 
         public virtual DotArrowDirection? ArrowDirection
@@ -235,6 +236,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public override void SetFilled(DotColorDefinition value)
         {
             FillColor = value;
+        }
+
+        protected virtual DotArrowheadDefinition TryGetValueAsArrowheadDefinition(string key)
+        {
+            if (TryGetValueAs<DotArrowheadDefinition>(key, out var definition))
+            {
+                return definition;
+            }
+
+            return TryGetValueAs<DotArrowheadShape>(key, out var shape) ? new DotArrowhead(shape) : null;
         }
     }
 }

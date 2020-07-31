@@ -5,11 +5,11 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     Arrow direction attribute. Assignable to edges only.
+    ///     Arrow direction attribute. Assignable to edges only. See the
     ///     <see href="https://www.graphviz.org/doc/info/attrs.html#k:dirType">
-    ///         View how individual arrow directions are visualized
+    ///         documentation
     ///     </see>
-    ///     .
+    ///     to view how individual arrow directions are visualized.
     /// </summary>
     public class DotArrowDirectionAttribute : DotAttribute<DotArrowDirection>
     {

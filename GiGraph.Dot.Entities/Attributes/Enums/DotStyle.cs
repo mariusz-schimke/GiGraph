@@ -88,7 +88,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///     <see cref="IDotEdgeAttributes.ArrowDirection" /> attribute is not explicitly set, the default for the graph type is used.
         ///     Arrow heads and arrow tails are also drawn, based on the value of <see cref="IDotEdgeAttributes.ArrowDirection" /> attribute;
         ///     to avoid this, set the <see cref="IDotEdgeAttributes.ArrowHead" /> and/or <see cref="IDotEdgeAttributes.ArrowTail" />
-        ///     attributes to <see cref="DotArrowType.None" />.
+        ///     attributes to <see cref="DotArrowheadShape.None" />.
         /// </summary>
         Tapered = 1 << 10,
 

@@ -142,7 +142,7 @@ namespace GiGraph.Examples
             graph.NodeDefaults.FillColor = new DotGradientColor(Color.Turquoise, Color.RoyalBlue);
 
             // set the defaults for all edges of the graph
-            graph.EdgeDefaults.ArrowHead = graph.EdgeDefaults.ArrowTail = DotArrowType.Vee;
+            graph.EdgeDefaults.ArrowHead = graph.EdgeDefaults.ArrowTail = DotArrowheadShape.Vee;
             graph.EdgeDefaults.FontName = graph.Attributes.FontName;
             graph.EdgeDefaults.FontSize = 10;
 
@@ -1275,6 +1275,60 @@ digraph
 <p align="center">
   <img src="./Assets/Examples/edge-sequence-with-group.svg">
 </p>
+
+
+### Arrowhead shapes
+
+An edge may have an arrowhead next to its head and/or tail node. By default, in a directed graph, an arrowhead appears only near the head node, but this behavior may be modified by setting the *ArrowDirection* property on an edge, or in the edge defaults on the graph level. By setting this property, you may choose whether the arrowhead appears next to the head node, next to the tail node, on both sides of the edge, or not at all.
+
+The shape of the arrowhead may be [customized](http://www.graphviz.org/doc/info/arrows.html), and there are 42 possible combinations of shapes, based on the set of 11 basic shapes. The combinations include:
+
+- a filled and and open (non-filled) version of a shape,
+- side clipping, that leaves only the part to the left or to the right of the edge visible.
+
+What's more, the end of an edge may be composed of multiple arrowheads, each customized independently.
+
+The example code below presents a few possible combinations of arrowheads:
+
+```c#
+// an edge with arrowheads on both sides
+graph.Edges.Add("Foo", "Bar", edge =>
+{
+    edge.Attributes.ArrowDirection = DotArrowDirection.Both;
+
+    edge.Attributes.ArrowTail = DotArrowheadShape.Diamond;
+    edge.Attributes.ArrowHead = DotArrowheadShape.Crow;
+});
+
+// some basic arrowhead combinations 
+graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Open();
+graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Open(DotArrowheadParts.Right);
+graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Filled(DotArrowheadParts.Left);
+
+// a composition of multiple arrowheads
+graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = new DotCompositeArrowhead
+(
+    DotArrowheadShape.Tee,
+    DotArrowheadShape.None, // may be used as a separator
+    DotArrowhead.Open(DotArrowheadShape.Diamond, DotArrowheadParts.Left)
+);
+```
+
+```dot
+digraph
+{
+    Foo -> Bar [ arrowhead = crow, arrowtail = diamond, dir = both ]
+    Foo -> Bar [ arrowhead = onormal ]
+    Foo -> Bar [ arrowhead = ornormal ]
+    Foo -> Bar [ arrowhead = lnormal ]
+    Foo -> Bar [ arrowhead = teenoneoldiamond ]
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/arrowheads.svg">
+</p>
+
 
 
 #### Sequence attributes
