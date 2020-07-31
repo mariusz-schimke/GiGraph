@@ -1279,7 +1279,7 @@ digraph
 
 ### Arrowhead shapes
 
-An edge may have an arrowhead next to its head and/or tail node. By default, in a directed graph, an arrowhead appears only near the head node, but this behavior may be modified by setting the *ArrowDirection* property of an edge, or in edge defaults on the graph level. By setting it, you may choose whether the arrowhead appears next to the head node, next to the tail node, on both sides of the edge, or not at all.
+An edge may have an arrowhead next to its head and/or tail node. By default, in a directed graph, an arrowhead appears only near the head node, but this behavior may be modified by setting the *ArrowDirection* property on an edge, or in the edge defaults on the graph level. By setting this property, you may choose whether the arrowhead appears next to the head node, next to the tail node, on both sides of the edge, or not at all.
 
 The shape of the arrowhead may be [customized](http://www.graphviz.org/doc/info/arrows.html), and there are 42 possible combinations of shapes, based on the set of 11 basic shapes. The combinations include:
 
