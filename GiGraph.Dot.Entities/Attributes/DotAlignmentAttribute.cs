@@ -56,7 +56,6 @@ namespace GiGraph.Dot.Entities.Attributes
                 case DotAlignment.BottomRight:
                     return "br";
 
-
                 default:
                     throw new ArgumentOutOfRangeException(nameof(Value), $"The specified alignment '{Value}' is not supported.");
             }

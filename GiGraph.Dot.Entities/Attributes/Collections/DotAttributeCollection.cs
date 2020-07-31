@@ -154,6 +154,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotRankDirectionAttribute(key, value));
         }
 
+        public virtual DotClusterModeAttribute Set(string key, DotClusterMode value)
+        {
+            return Set(new DotClusterModeAttribute(key, value));
+        }
+
         public virtual DotRankSeparationAttribute Set(string key, DotRankSeparationDefinition value)
         {
             return Set(new DotRankSeparationAttribute(key, value));
