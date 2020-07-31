@@ -179,6 +179,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove("samehead", value, (k, v) => new DotStringAttribute(k, v));
         }
 
+        public virtual string TailGroupName
+        {
+            get => TryGetValueAs<string>("sametail", out var result) ? result : null;
+            set => AddOrRemove("sametail", value, (k, v) => new DotStringAttribute(k, v));
+        }
+
         public virtual double? ArrowSize
         {
             get => TryGetValueAs<double>("arrowsize", out var result) ? result : (double?) null;
