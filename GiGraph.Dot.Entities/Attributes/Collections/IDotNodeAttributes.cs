@@ -317,5 +317,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     nodes in the graph or subgraph. Note that the graph attribute takes precedence over the node attribute.
         /// </summary>
         DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
+
+        /// <summary>
+        ///     The name of the group the node belongs to. If the endpoints of an edge belong to the same group (have the same group name
+        ///     assigned), parameters are set to avoid crossings and keep the edges straight (dot only).
+        /// </summary>
+        string GroupName { get; set; }
     }
 }
