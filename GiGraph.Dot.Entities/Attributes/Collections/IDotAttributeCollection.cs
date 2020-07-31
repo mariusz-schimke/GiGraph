@@ -309,6 +309,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotArrowheadShapeAttribute Set(string key, DotArrowheadShape value);
 
         /// <summary>
+        ///     Adds or replaces the specified cluster mode attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotClusterModeAttribute Set(string key, DotClusterMode value);
+
+        /// <summary>
         ///     Adds or replaces the specified arrow definition attribute in the collection.
         /// </summary>
         /// <param name="key">
