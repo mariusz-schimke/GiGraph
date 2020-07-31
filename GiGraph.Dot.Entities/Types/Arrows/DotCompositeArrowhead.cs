@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Output.Options;
 
@@ -71,14 +70,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
 
         protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            var result = new StringBuilder();
-
-            foreach (var arrowhead in Arrowheads)
-            {
-                result.Append(arrowhead.GetDotEncoded(options, syntaxRules));
-            }
-
-            return result.ToString();
+            return string.Join(string.Empty, Arrowheads.Select(arrowhead => arrowhead.GetDotEncoded(options, syntaxRules)));
         }
     }
 }
