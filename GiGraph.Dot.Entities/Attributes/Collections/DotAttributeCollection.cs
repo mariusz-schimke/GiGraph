@@ -159,6 +159,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotClusterModeAttribute(key, value));
         }
 
+        public virtual DotEdgeOrderingModeAttribute Set(string key, DotEdgeOrderingMode value)
+        {
+            return Set(new DotEdgeOrderingModeAttribute(key, value));
+        }
+
         public virtual DotRankSeparationAttribute Set(string key, DotRankSeparationDefinition value)
         {
             return Set(new DotRankSeparationAttribute(key, value));
