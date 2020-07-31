@@ -1290,6 +1290,49 @@ What's more, the end of an edge may be composed of multiple arrowheads, each cus
 
 
 
+The example code below presents a few possible combinations of arrowheads:
+
+```c#
+// an edge with arrowheads on both sides
+graph.Edges.Add("Foo", "Bar", edge =>
+{
+    edge.Attributes.ArrowDirection = DotArrowDirection.Both;
+
+    edge.Attributes.ArrowTail = DotArrowheadShape.Diamond;
+    edge.Attributes.ArrowHead = DotArrowheadShape.Crow;
+});
+
+// some basic arrowhead combinations 
+graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Open();
+graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Open(DotArrowheadParts.Right);
+graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Filled(DotArrowheadParts.Left);
+
+// a composition of multiple arrowheads
+graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = new DotCompositeArrowhead
+(
+    DotArrowheadShape.Tee,
+    DotArrowheadShape.None, // may be used as a separator
+    DotArrowhead.Open(DotArrowheadShape.Diamond, DotArrowheadParts.Left)
+);
+```
+
+```dot
+digraph
+{
+    Foo -> Bar [ arrowhead = crow, arrowtail = diamond, dir = both ]
+    Foo -> Bar [ arrowhead = onormal ]
+    Foo -> Bar [ arrowhead = ornormal ]
+    Foo -> Bar [ arrowhead = lnormal ]
+    Foo -> Bar [ arrowhead = teenoneoldiamond ]
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/arrowheads.svg">
+</p>
+
+
+
 #### Sequence attributes
 
 Sequences support attributes too. You may set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection. Note as well that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*. This might come in handy when you add multiple nodes to the sequence, and need specific initialization of only some of them.
