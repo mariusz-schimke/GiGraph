@@ -299,6 +299,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotClusterMode? ClusterRank { get; set; }
 
         /// <summary>
+        ///     Determines how inedges and outedges, that is, edges with a node as their head or tail node respectively, are ordered (dot
+        ///     only; default: <see cref="DotEdgeOrderingMode.None" />). If defined on a graph or subgraph level, the value is applied to all
+        ///     nodes in the graph or subgraph. Note that the graph attribute takes precedence over the node attribute.
+        /// </summary>
+        DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
+
+        /// <summary>
         ///     <para>
         ///         Specifies a list of directories in which to look for image files as specified by the image attribute of nodes (
         ///         <see cref="IDotNodeAttributes.ImagePath" />) or using the IMG element in HTML-like labels. The string should be a list of
