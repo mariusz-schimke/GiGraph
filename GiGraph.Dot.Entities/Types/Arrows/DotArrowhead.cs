@@ -159,6 +159,56 @@ namespace GiGraph.Dot.Entities.Types.Arrows
             }
         }
 
+        /// <summary>
+        ///     Creates a new filled arrowhead with the <see cref="DotArrowheadShape.Normal" /> shape.
+        /// </summary>
+        /// <param name="visibleParts">
+        ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
+        /// </param>
+        public static DotArrowhead Filled(DotArrowheadParts visibleParts = DotArrowheadParts.Both)
+        {
+            return Filled(DotArrowheadShape.Normal, visibleParts);
+        }
+
+        /// <summary>
+        ///     Creates a new filled arrowhead with the specified shape.
+        /// </summary>
+        /// <param name="shape">
+        ///     Determines the shape of the arrowhead to use.
+        /// </param>
+        /// <param name="visibleParts">
+        ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
+        /// </param>
+        public static DotArrowhead Filled(DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
+        {
+            return new DotArrowhead(shape, visibleParts);
+        }
+
+        /// <summary>
+        ///     Creates a new non-filled arrowhead with the <see cref="DotArrowheadShape.Normal" /> shape.
+        /// </summary>
+        /// <param name="visibleParts">
+        ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
+        /// </param>
+        public static DotArrowhead Open(DotArrowheadParts visibleParts = DotArrowheadParts.Both)
+        {
+            return Open(DotArrowheadShape.Normal, visibleParts);
+        }
+
+        /// <summary>
+        ///     Creates a new non-filled arrowhead with the specified shape.
+        /// </summary>
+        /// <param name="shape">
+        ///     Determines the shape of the arrowhead to use.
+        /// </param>
+        /// <param name="visibleParts">
+        ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
+        /// </param>
+        public static DotArrowhead Open(DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
+        {
+            return new DotArrowhead(shape, isFilled: false, visibleParts);
+        }
+
         public static implicit operator DotArrowhead(DotArrowheadShape? shape)
         {
             return shape.HasValue ? new DotArrowhead(shape.Value) : null;

@@ -1277,6 +1277,19 @@ digraph
 </p>
 
 
+### Arrowhead shapes
+
+An edge may have an arrowhead next to its head and/or tail node. By default, in a directed graph, an arrowhead appears only near the head node, but this behavior may be modified by setting the *ArrowDirection* property. By setting it appropriately, you may choose whether the arrowhead appears only next to the head node, next to the tail node, on both sides of the edge, or not at all.
+
+The shape of the arrowhead may be [customized](http://www.graphviz.org/doc/info/arrows.html), and there are 42 combinations of shapes possible based on the set of 11 basic shapes. The combinations include:
+
+- a filled and and open (non-filled) version of the shape,
+- side clipping, that leaves only the part to the left or to the right of the edge visible.
+
+What's more, the end of an edge may be composed of multiple arrowheads, each customized independently.
+
+
+
 #### Sequence attributes
 
 Sequences support attributes too. You may set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection. Note as well that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*. This might come in handy when you add multiple nodes to the sequence, and need specific initialization of only some of them.
