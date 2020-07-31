@@ -14,21 +14,22 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Edges.Add("Foo", "Bar", edge =>
             {
                 edge.Attributes.ArrowDirection = DotArrowDirection.Both;
+
                 edge.Attributes.ArrowTail = DotArrowheadShape.Diamond;
                 edge.Attributes.ArrowHead = DotArrowheadShape.Crow;
             });
 
-            // some arrowhead combinations 
-            graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = new DotArrowhead(DotArrowheadShape.Normal, isFilled: false);
-            graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = new DotArrowhead(DotArrowheadShape.Normal, DotArrowheadParts.Left);
-            graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = new DotArrowhead(DotArrowheadShape.Normal, isFilled: false, DotArrowheadParts.Right);
+            // some basic arrowhead combinations 
+            graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Open();
+            graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Open(DotArrowheadParts.Right);
+            graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Filled(DotArrowheadParts.Left);
 
-            // an arrowhead composed of multiple arrowheads
+            // a composition of multiple arrowheads
             graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = new DotCompositeArrowhead
             (
                 DotArrowheadShape.Tee,
                 DotArrowheadShape.None, // may be used as a separator
-                new DotArrowhead(DotArrowheadShape.Diamond, isFilled: false, DotArrowheadParts.Left)
+                DotArrowhead.Open(DotArrowheadShape.Diamond, DotArrowheadParts.Left)
             );
 
             return graph;

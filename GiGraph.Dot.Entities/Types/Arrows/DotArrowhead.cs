@@ -160,7 +160,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         }
 
         /// <summary>
-        ///     Creates a new filled arrowhead with the <see cref="DotArrowheadShape.Normal" /> shape.
+        ///     Creates a filled arrowhead with the <see cref="DotArrowheadShape.Normal" /> shape.
         /// </summary>
         /// <param name="visibleParts">
         ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
@@ -171,7 +171,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         }
 
         /// <summary>
-        ///     Creates a new filled arrowhead with the specified shape.
+        ///     Creates a filled arrowhead with the specified shape.
         /// </summary>
         /// <param name="shape">
         ///     Determines the shape of the arrowhead to use.
@@ -185,7 +185,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         }
 
         /// <summary>
-        ///     Creates a new non-filled arrowhead with the <see cref="DotArrowheadShape.Normal" /> shape.
+        ///     Creates a non-filled arrowhead with the <see cref="DotArrowheadShape.Normal" /> shape.
         /// </summary>
         /// <param name="visibleParts">
         ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
@@ -196,7 +196,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         }
 
         /// <summary>
-        ///     Creates a new non-filled arrowhead with the specified shape.
+        ///     Creates a non-filled arrowhead with the specified shape.
         /// </summary>
         /// <param name="shape">
         ///     Determines the shape of the arrowhead to use.
