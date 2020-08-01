@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
@@ -10,148 +12,171 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public abstract partial class DotEntityAttributeCollection<TExposedEntityAttributes> : DotAttributeCollection, IDotEntityAttributeCollection<TExposedEntityAttributes>
     {
+        [DotAttributeKey("color")]
         public virtual DotColorDefinition Color
         {
-            get => TryGetValueAsColorDefinition("color");
-            set => AddOrRemove("color", value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            get => TryGetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
+        [DotAttributeKey("colorscheme")]
         public virtual string ColorScheme
         {
-            get => TryGetValueAs<string>("colorscheme", out var result) ? result : null;
-            set => AddOrRemove("colorscheme", value, (k, v) => new DotStringAttribute(k, v));
+            get => TryGetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
+        [DotAttributeKey("bgcolor")]
         public virtual DotColorDefinition BackgroundColor
         {
-            get => TryGetValueAsColorDefinition("bgcolor");
-            set => AddOrRemove("bgcolor", value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            get => TryGetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
+        [DotAttributeKey("fillcolor")]
         public virtual DotColorDefinition FillColor
         {
-            get => TryGetValueAsColorDefinition("fillcolor");
-            set => AddOrRemove("fillcolor", value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            get => TryGetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
+        [DotAttributeKey("gradientangle")]
         public virtual int? GradientAngle
         {
-            get => TryGetValueAs<int>("gradientangle", out var result) ? result : (int?) null;
-            set => AddOrRemove("gradientangle", value, (k, v) => new DotIntAttribute(k, v.Value));
+            get => TryGetValueAs<int>(MethodBase.GetCurrentMethod(), out var result) ? result : (int?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
+        [DotAttributeKey("peripheries")]
         public virtual int? Peripheries
         {
-            get => TryGetValueAs<int>("peripheries", out var result) ? result : (int?) null;
-            set => AddOrRemove("peripheries", value, (k, v) => v.Value < 0
+            get => TryGetValueAs<int>(MethodBase.GetCurrentMethod(), out var result) ? result : (int?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
                 ? throw new ArgumentOutOfRangeException(nameof(Peripheries), v.Value, "The number of peripheries must be greater than or equal to 0.")
                 : new DotIntAttribute(k, v.Value));
         }
 
+        [DotAttributeKey("penwidth")]
         public virtual double? PenWidth
         {
-            get => TryGetValueAs<double>("penwidth", out var result) ? result : (double?) null;
-            set => AddOrRemove("penwidth", value, (k, v) => v.Value < 0.0
+            get => TryGetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(PenWidth), v.Value, "Pen width must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
         }
 
+        [DotAttributeKey("pencolor")]
         public virtual Color? PenColor
         {
-            get => TryGetValueAs<Color>("pencolor", out var result) ? result : (Color?) null;
-            set => AddOrRemove("pencolor", value, (k, v) => new DotColorAttribute(k, v.Value));
+            get => TryGetValueAs<Color>(MethodBase.GetCurrentMethod(), out var result) ? result : (Color?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorAttribute(k, v.Value));
         }
 
+        [DotAttributeKey("fontcolor")]
         public virtual Color? FontColor
         {
-            get => TryGetValueAs<Color>("fontcolor", out var result) ? result : (Color?) null;
-            set => AddOrRemove("fontcolor", value, (k, v) => new DotColorAttribute(k, v.Value));
+            get => TryGetValueAs<Color>(MethodBase.GetCurrentMethod(), out var result) ? result : (Color?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorAttribute(k, v.Value));
         }
 
+        [DotAttributeKey("fontname")]
         public virtual string FontName
         {
-            get => TryGetValueAs<string>("fontname", out var result) ? result : null;
-            set => AddOrRemove("fontname", value, (k, v) => new DotStringAttribute(k, v));
+            get => TryGetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
+        [DotAttributeKey("fontsize")]
         public virtual double? FontSize
         {
-            get => TryGetValueAs<double>("fontsize", out var result) ? result : (double?) null;
-            set => AddOrRemove("fontsize", value, (k, v) => v.Value < 0.0
+            get => TryGetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(FontSize), v.Value, "Font size must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
         }
 
+        [DotAttributeKey("label")]
         public virtual DotLabel Label
         {
-            get => TryGetValueAsLabel("label");
-            set => AddOrRemove("label", value, (k, v) => new DotLabelAttribute(k, v));
+            get => TryGetValueAsLabel(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
         }
 
+        [DotAttributeKey("xlabel")]
         public virtual DotLabel ExternalLabel
         {
-            get => TryGetValueAsLabel("xlabel");
-            set => AddOrRemove("xlabel", value, (k, v) => new DotLabelAttribute(k, v));
+            get => TryGetValueAsLabel(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
         }
 
+        [DotAttributeKey("labeljust")]
         public virtual DotHorizontalAlignment? HorizontalLabelAlignment
         {
-            get => TryGetValueAs<DotHorizontalAlignment>("labeljust", out var result) ? result : (DotHorizontalAlignment?) null;
-            set => AddOrRemove("labeljust", value, (k, v) => new DotHorizontalAlignmentAttribute(k, v.Value));
+            get => TryGetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotHorizontalAlignment?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotHorizontalAlignmentAttribute(k, v.Value));
         }
 
+        [DotAttributeKey("labelloc")]
         public virtual DotVerticalAlignment? VerticalLabelAlignment
         {
-            get => TryGetValueAs<DotVerticalAlignment>("labelloc", out var result) ? result : (DotVerticalAlignment?) null;
-            set => AddOrRemove("labelloc", value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
+            get => TryGetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotVerticalAlignment?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
         }
 
+        [DotAttributeKey("ordering")]
         public virtual DotEdgeOrderingMode? EdgeOrderingMode
         {
-            get => TryGetValueAs<DotEdgeOrderingMode>("ordering", out var result) ? result : (DotEdgeOrderingMode?) null;
-            set => AddOrRemove("ordering", value, (k, v) => new DotEdgeOrderingModeAttribute(k, v.Value));
+            get => TryGetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotEdgeOrderingMode?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeOrderingModeAttribute(k, v.Value));
         }
 
+        [DotAttributeKey("tooltip")]
         public virtual DotEscapeString Tooltip
         {
-            get => TryGetValueAsEscapeString("tooltip");
-            set => AddOrRemove("tooltip", value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
+        [DotAttributeKey("style")]
         public virtual DotStyle? Style
         {
-            get => TryGetValueAs<DotStyle>("style", out var result) ? result : (DotStyle?) null;
-            set => AddOrRemove("style", value, (k, v) => new DotStyleAttribute(k, v.Value));
+            get => TryGetValueAs<DotStyle>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyle?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
         }
 
+        [DotAttributeKey("comment")]
         public virtual string Comment
         {
-            get => TryGetValueAs<string>("comment", out var result) ? result : null;
-            set => AddOrRemove("comment", value, (k, v) => new DotStringAttribute(k, v));
+            get => TryGetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
+        [DotAttributeKey("URL")]
         public virtual DotEscapeString Url
         {
-            get => TryGetValueAsEscapeString("URL");
-            set => AddOrRemove("URL", value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
+        [DotAttributeKey("href")]
         public virtual DotEscapeString Href
         {
-            get => TryGetValueAsEscapeString("href");
-            set => AddOrRemove("href", value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
+        [DotAttributeKey("target")]
         public virtual DotEscapeString UrlTarget
         {
-            get => TryGetValueAsEscapeString("target");
-            set => AddOrRemove("target", value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
+        [DotAttributeKey("margin")]
         public virtual DotPoint Margin
         {
-            get => TryGetValueAs<DotPoint>("margin", out var result) ? result : null;
-            set => AddOrRemove("margin", value, (k, v) => new DotPointAttribute(k, v));
+            get => TryGetValueAs<DotPoint>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
     }
 }
