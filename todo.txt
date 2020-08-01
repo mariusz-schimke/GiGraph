@@ -2,6 +2,8 @@ Road map:
 1. Gradually add support for all available attributes (pack, packmode).
 2. Verify the correctness of XML documentations.
 3. Replace all array properties of elements (e.g. NodeIds[]) with List<>?
+4. An option to restore the default value of any attribute (e.g. write an empty string).
+5. Support for sections of the graph with separate node/edge defaults.
 
 Other:
 1. Check if methods are coherently marked as virtual.
