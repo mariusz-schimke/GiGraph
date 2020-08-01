@@ -15,8 +15,8 @@ namespace GiGraph.Dot.Entities.Subgraphs
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
-            IDotNodeAttributes defaultNodeAttributes,
-            IDotEdgeAttributes defaultEdgeAttributes)
+            IDotNodeAttributeCollection defaultNodeAttributes,
+            IDotEdgeAttributeCollection defaultEdgeAttributes)
             : base(id, attributes, nodes, edges, subgraphs, clusters, defaultNodeAttributes, defaultEdgeAttributes)
         {
         }

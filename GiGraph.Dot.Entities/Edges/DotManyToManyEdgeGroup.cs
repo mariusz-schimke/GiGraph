@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Edges
     /// </summary>
     public class DotManyToManyEdgeGroup : DotEdge<DotEndpointGroup, DotEndpointGroup>
     {
-        protected DotManyToManyEdgeGroup(DotEndpointGroup tail, DotEndpointGroup head, IDotEdgeAttributes attributes)
+        protected DotManyToManyEdgeGroup(DotEndpointGroup tail, DotEndpointGroup head, IDotEdgeAttributeCollection attributes)
             : base(tail, head, attributes)
         {
         }

@@ -12,7 +12,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributes<TExposedEntityAttributes>
+    public abstract partial class DotEntityAttributeCollection<TExposedEntityAttributes>
     {
         public virtual string GetAttributeKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
         {

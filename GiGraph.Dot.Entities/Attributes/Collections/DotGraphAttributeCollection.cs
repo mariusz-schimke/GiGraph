@@ -1,4 +1,5 @@
 using System;
+using GiGraph.Dot.Entities.Attributes.Entities;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Points;
@@ -6,7 +7,7 @@ using GiGraph.Dot.Entities.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotGraphAttributes : DotEntityAttributes<IDotGraphAttributes>, IDotGraphAttributes
+    public class DotGraphAttributeCollection : DotEntityAttributeCollection<IDotGraphAttributes>, IDotGraphAttributeCollection
     {
         public virtual DotRankDirection? LayoutDirection
         {

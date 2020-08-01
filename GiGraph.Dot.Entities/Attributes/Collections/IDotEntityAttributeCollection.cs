@@ -1,10 +1,9 @@
 using System;
 using System.Linq.Expressions;
 
-namespace GiGraph.Dot.Entities.Attributes.Entities
+namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotEntityAttributes<TExposedEntityAttributes>
-        where TExposedEntityAttributes : IDotEntityAttributes<TExposedEntityAttributes>
+    public interface IDotEntityAttributeCollection<TExposedEntityAttributes>
     {
         /// <summary>
         ///     Gets the DOT key of the attribute the specified property provides access to.

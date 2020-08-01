@@ -29,13 +29,13 @@ namespace GiGraph.Dot.Entities.Subgraphs
     {
         protected DotSubgraph(
             string id,
-            IDotSubgraphAttributes attributes,
+            IDotSubgraphAttributeCollection attributes,
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
-            IDotNodeAttributes defaultNodeAttributes,
-            IDotEdgeAttributes defaultEdgeAttributes)
+            IDotNodeAttributeCollection defaultNodeAttributes,
+            IDotEdgeAttributeCollection defaultEdgeAttributes)
             : base(id, attributes, nodes, edges, subgraphs, clusters, defaultNodeAttributes, defaultEdgeAttributes)
         {
         }
@@ -47,13 +47,13 @@ namespace GiGraph.Dot.Entities.Subgraphs
             : this
             (
                 id: null,
-                new DotSubgraphAttributes(),
+                new DotSubgraphAttributeCollection(),
                 new DotNodeCollection(),
                 new DotEdgeCollection(),
                 new DotSubgraphCollection(),
                 new DotClusterCollection(),
-                new DotNodeAttributes(),
-                new DotEdgeAttributes()
+                new DotNodeAttributeCollection(),
+                new DotEdgeAttributeCollection()
             )
         {
         }
@@ -73,7 +73,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         ///     The attributes of the subgraph. The only valid attribute for a non-cluster subgraph is rank.
         /// </summary>
-        public new IDotSubgraphAttributes Attributes => (IDotSubgraphAttributes) base.Attributes;
+        public new IDotSubgraphAttributeCollection Attributes => (IDotSubgraphAttributeCollection) base.Attributes;
 
         /// <summary>
         ///     Creates a new subgraph with the specified nodes.

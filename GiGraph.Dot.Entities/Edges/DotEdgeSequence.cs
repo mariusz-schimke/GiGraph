@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Edges
     {
         protected readonly DotEndpointDefinition[] _endpoints;
 
-        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, IDotEdgeAttributes attributes)
+        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, IDotEdgeAttributeCollection attributes)
             : base(attributes)
         {
             if (endpoints is null)
@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Edges
         ///     The endpoints to initialize the instance with.
         /// </param>
         public DotEdgeSequence(params DotEndpointDefinition[] endpoints)
-            : this(endpoints, new DotEdgeAttributes())
+            : this(endpoints, new DotEdgeAttributeCollection())
         {
         }
 

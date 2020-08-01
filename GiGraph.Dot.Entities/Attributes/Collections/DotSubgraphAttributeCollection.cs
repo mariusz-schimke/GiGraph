@@ -1,9 +1,10 @@
+using GiGraph.Dot.Entities.Attributes.Entities;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotSubgraphAttributes : DotEntityAttributes<IDotSubgraphAttributes>, IDotSubgraphAttributes
+    public class DotSubgraphAttributeCollection : DotEntityAttributeCollection<IDotSubgraphAttributes>, IDotSubgraphAttributeCollection
     {
         public virtual DotRank? Rank
         {

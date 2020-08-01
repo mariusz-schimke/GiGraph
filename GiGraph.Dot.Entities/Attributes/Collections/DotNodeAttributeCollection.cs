@@ -1,9 +1,10 @@
 using System;
+using GiGraph.Dot.Entities.Attributes.Entities;
 using GiGraph.Dot.Entities.Attributes.Enums;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotNodeAttributes : DotEntityAttributes<IDotNodeAttributes>, IDotNodeAttributes
+    public class DotNodeAttributeCollection : DotEntityAttributeCollection<IDotNodeAttributes>, IDotNodeAttributeCollection
     {
         public virtual DotNodeShape? Shape
         {
