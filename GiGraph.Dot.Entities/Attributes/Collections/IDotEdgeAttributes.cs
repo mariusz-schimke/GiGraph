@@ -10,7 +10,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotEdgeAttributes : IDotAttributeCollection, IDotFillable
+    public interface IDotEdgeAttributes : IDotEntityAttributes<IDotEdgeAttributes>, IDotFillable
     {
         /// <summary>
         ///     <para>

@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotNodeAttributes : DotEntityAttributes, IDotNodeAttributes
+    public class DotNodeAttributes : DotEntityAttributes<IDotNodeAttributes>, IDotNodeAttributes
     {
         public virtual DotNodeShape? Shape
         {

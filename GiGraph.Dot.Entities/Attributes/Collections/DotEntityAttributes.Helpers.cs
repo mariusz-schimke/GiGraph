@@ -12,8 +12,59 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributes
+    public abstract partial class DotEntityAttributes<TExposedEntityAttributes>
     {
+        public virtual string GetAttributeKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        {
+            var memberExpression = property.Body as MemberExpression;
+            var propertyInfo = memberExpression?.Member as PropertyInfo ??
+                               throw new ArgumentException("Property expression expected.", nameof(property));
+
+            if (propertyInfo.DeclaringType != typeof(TExposedEntityAttributes))
+            {
+                throw new ArgumentException("Invalid property expression.", nameof(property));
+            }
+
+            var currentType = GetType();
+
+            if (!propertyInfo.DeclaringType.IsAssignableFrom(currentType))
+            {
+                throw new TypeAccessException($"The current object has to implement or be a descendant of {propertyInfo.DeclaringType.FullName}.");
+            }
+
+            var propertyMethod = propertyInfo.GetSetMethod() ?? propertyInfo.GetGetMethod();
+
+            if (propertyInfo.DeclaringType.IsInterface)
+            {
+                var interfaceMap = currentType.GetInterfaceMap(propertyInfo.DeclaringType);
+                var interfaceMethodIndex = Array.IndexOf(interfaceMap.InterfaceMethods, propertyMethod);
+                var targetMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
+
+                return GetAttributeKey(targetMethod);
+            }
+
+            return GetAttributeKey(propertyMethod);
+        }
+
+        public virtual bool Remove<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        {
+            var key = GetAttributeKey(property);
+
+            if (ContainsKey(key))
+            {
+                Remove(key);
+                return true;
+            }
+
+            return false;
+        }
+
+        public virtual bool ContainsKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        {
+            var key = GetAttributeKey(property);
+            return ContainsKey(key);
+        }
+
         public virtual void SetFilled(Color color)
         {
             SetFilled((DotColorDefinition) color);
@@ -90,60 +141,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
             return property?.GetCustomAttribute<DotAttributeKeyAttribute>()?.Key ??
                    throw new KeyNotFoundException("The property has no DOT attribute key assigned.");
-        }
-
-        protected virtual string GetAttributeKey<TIAttributeCollection, TProperty>(Expression<Func<TIAttributeCollection, TProperty>> property)
-            where TIAttributeCollection : IDotAttributeCollection
-        {
-            var memberExpression = property.Body as MemberExpression;
-            var propertyInfo = memberExpression?.Member as PropertyInfo ??
-                               throw new ArgumentException("Property expression expected.", nameof(property));
-
-            if (propertyInfo.DeclaringType != typeof(TIAttributeCollection))
-            {
-                throw new ArgumentException("Invalid property expression.", nameof(property));
-            }
-
-            var currentType = GetType();
-
-            if (!propertyInfo.DeclaringType.IsAssignableFrom(currentType))
-            {
-                throw new TypeAccessException($"The current object has to implement or be a descendant of {propertyInfo.DeclaringType.FullName}.");
-            }
-
-            var propertyMethod = propertyInfo.GetSetMethod() ?? propertyInfo.GetGetMethod();
-
-            if (propertyInfo.DeclaringType.IsInterface)
-            {
-                var interfaceMap = currentType.GetInterfaceMap(propertyInfo.DeclaringType);
-                var interfaceMethodIndex = Array.IndexOf(interfaceMap.InterfaceMethods, propertyMethod);
-                var targetMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
-
-                return GetAttributeKey(targetMethod);
-            }
-
-            return GetAttributeKey(propertyMethod);
-        }
-
-        protected virtual bool Remove<TIAttributeCollection, TProperty>(Expression<Func<TIAttributeCollection, TProperty>> property)
-            where TIAttributeCollection : IDotAttributeCollection
-        {
-            var key = GetAttributeKey(property);
-
-            if (ContainsKey(key))
-            {
-                Remove(key);
-                return true;
-            }
-
-            return false;
-        }
-
-        protected virtual bool ContainsKey<TIAttributeCollection, TProperty>(Expression<Func<TIAttributeCollection, TProperty>> property)
-            where TIAttributeCollection : IDotAttributeCollection
-        {
-            var key = GetAttributeKey(property);
-            return ContainsKey(key);
         }
     }
 }

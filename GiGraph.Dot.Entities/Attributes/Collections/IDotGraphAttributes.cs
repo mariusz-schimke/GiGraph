@@ -9,7 +9,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotGraphAttributes : IDotAttributeCollection, IDotFillable
+    public interface IDotGraphAttributes : IDotEntityAttributes<IDotGraphAttributes>, IDotFillable
     {
         /// <summary>
         ///     <para>

@@ -2,7 +2,7 @@
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotSubgraphAttributes : IDotAttributeCollection
+    public interface IDotSubgraphAttributes : IDotEntityAttributes<IDotSubgraphAttributes>
     {
         /// <summary>
         ///     <para>

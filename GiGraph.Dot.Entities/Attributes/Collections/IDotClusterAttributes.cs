@@ -7,7 +7,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotClusterAttributes : IDotAttributeCollection, IDotFillable
+    public interface IDotClusterAttributes : IDotEntityAttributes<IDotClusterAttributes>, IDotFillable
     {
         /// <summary>
         ///     <para>

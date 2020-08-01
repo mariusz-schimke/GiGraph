@@ -11,7 +11,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotEdgeAttributes : DotEntityAttributes, IDotEdgeAttributes
+    public class DotEdgeAttributes : DotEntityAttributes<IDotEdgeAttributes>, IDotEdgeAttributes
     {
         [DotAttributeKey("weight")]
         public virtual double? Weight

@@ -6,7 +6,7 @@ using GiGraph.Dot.Entities.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotGraphAttributes : DotEntityAttributes, IDotGraphAttributes
+    public class DotGraphAttributes : DotEntityAttributes<IDotGraphAttributes>, IDotGraphAttributes
     {
         public virtual DotRankDirection? LayoutDirection
         {

@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotSubgraphAttributes : DotEntityAttributes, IDotSubgraphAttributes
+    public class DotSubgraphAttributes : DotEntityAttributes<IDotSubgraphAttributes>, IDotSubgraphAttributes
     {
         public virtual DotRank? Rank
         {
