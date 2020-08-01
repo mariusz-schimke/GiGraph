@@ -153,35 +153,5 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => TryGetValueAs<DotPoint>("margin", out var result) ? result : null;
             set => AddOrRemove("margin", value, (k, v) => new DotPointAttribute(k, v));
         }
-
-        protected virtual DotColorDefinition TryGetValueAsColorDefinition(string key)
-        {
-            if (TryGetValueAs<DotColorDefinition>(key, out var colorDefinition))
-            {
-                return colorDefinition;
-            }
-
-            return TryGetValueAs<Color>(key, out var color) ? new DotColor(color) : null;
-        }
-
-        protected virtual DotLabel TryGetValueAsLabel(string key)
-        {
-            if (TryGetValueAs<DotLabel>(key, out var label))
-            {
-                return label;
-            }
-
-            return TryGetValueAsEscapeString(key);
-        }
-
-        protected virtual DotEscapeString TryGetValueAsEscapeString(string key)
-        {
-            if (TryGetValueAs<DotEscapeString>(key, out var escapeString))
-            {
-                return escapeString;
-            }
-
-            return TryGetValueAs<string>(key, out var value) ? (DotEscapedString) value : null;
-        }
     }
 }
