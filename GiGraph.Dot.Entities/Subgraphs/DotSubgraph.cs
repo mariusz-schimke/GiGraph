@@ -9,10 +9,12 @@ using GiGraph.Dot.Entities.Subgraphs.Collections;
 namespace GiGraph.Dot.Entities.Subgraphs
 {
     /// <summary>
-    ///     Represents a subgraph as a collection of nodes constrained with a rank attribute, that determines their layout. Use a
-    ///     subgraph (<see cref="DotSubgraph" />) when you want to have more granular control on the layout and style of specific nodes.
-    ///     However, when you want the nodes to be displayed together in a bounding box, use a cluster (<see cref="DotCluster" />)
-    ///     instead.
+    ///     <para>
+    ///         Represents a subgraph as a collection of nodes constrained with a rank attribute, that determines their layout. Use a
+    ///         subgraph (<see cref="DotSubgraph" />) when you want to have more granular control on the layout and style of specific
+    ///         nodes. However, when you want the nodes to be displayed together in a bounding box, use a cluster (
+    ///         <see cref="DotCluster" />) instead.
+    ///     </para>
     ///     <para>
     ///         Subgraph (<see cref="DotSubgraph" />) does not have any border or fill, as opposed to cluster subgraph (
     ///         <see cref="DotCluster" />), which supports them. However, it supports setting common style of nodes and edges within it,
