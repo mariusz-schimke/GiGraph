@@ -29,34 +29,27 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
             if (!propertyInfo.DeclaringType.IsAssignableFrom(currentType))
             {
-                throw new TypeAccessException($"The current object has to implement or be a descendant of {propertyInfo.DeclaringType.FullName}.");
+                throw new TypeAccessException($"The current instance type has to be assignable to {propertyInfo.DeclaringType.FullName}.");
             }
-
-            var propertyMethod = propertyInfo.GetSetMethod() ?? propertyInfo.GetGetMethod();
 
             if (propertyInfo.DeclaringType.IsInterface)
             {
+                var propertyMethod = propertyInfo.GetSetMethod(nonPublic: true) ?? propertyInfo.GetGetMethod(nonPublic: true);
+
                 var interfaceMap = currentType.GetInterfaceMap(propertyInfo.DeclaringType);
                 var interfaceMethodIndex = Array.IndexOf(interfaceMap.InterfaceMethods, propertyMethod);
                 var targetMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
 
-                return GetAttributeKey(targetMethod);
+                return GetAttributeKey(targetMethod, currentType);
             }
 
-            return GetAttributeKey(propertyMethod);
+            return GetAttributeKey(propertyInfo);
         }
 
         public virtual bool Remove<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
         {
             var key = GetAttributeKey(property);
-
-            if (ContainsKey(key))
-            {
-                Remove(key);
-                return true;
-            }
-
-            return false;
+            return Remove(key);
         }
 
         public virtual bool ContainsKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
@@ -74,6 +67,43 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             Style = Style.GetValueOrDefault(DotStyle.Filled) | DotStyle.Filled;
             FillColor = value;
+        }
+
+        protected virtual void AddOrRemove<TAttribute, TValue>(MethodBase propertyMethod, TValue value, Func<string, TValue, TAttribute> newAttribute)
+            where TAttribute : DotAttribute
+        {
+            AddOrRemove(GetAttributeKey(propertyMethod), value, newAttribute);
+        }
+
+        protected virtual string GetAttributeKey(MethodBase propertyMethod)
+        {
+            return GetAttributeKey(propertyMethod, propertyMethod.DeclaringType);
+        }
+
+        protected virtual string GetAttributeKey(MethodBase propertyMethod, Type declaringType)
+        {
+            var property = declaringType
+              ?.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+              ?.FirstOrDefault(propertyInfo => propertyInfo.GetGetMethod(nonPublic: true) == propertyMethod ||
+                                               propertyInfo.GetSetMethod(nonPublic: true) == propertyMethod);
+
+            if (property is null)
+            {
+                throw new ArgumentException("The specified method must be a property setter or getter.", nameof(propertyMethod));
+            }
+
+            return GetAttributeKey(property);
+        }
+
+        protected virtual string GetAttributeKey(PropertyInfo property)
+        {
+            return property.GetCustomAttribute<DotAttributeKeyAttribute>()?.Key ??
+                   throw new KeyNotFoundException("The specified property has no DOT attribute key assigned.");
+        }
+
+        protected virtual bool TryGetValueAs<T>(MethodBase propertyMethod, out T value)
+        {
+            return TryGetValueAs(GetAttributeKey(propertyMethod), out value);
         }
 
         protected virtual DotColorDefinition TryGetValueAsColorDefinition(string key)
@@ -119,28 +149,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         protected virtual DotEscapeString TryGetValueAsEscapeString(MethodBase propertyMethod)
         {
             return TryGetValueAsEscapeString(GetAttributeKey(propertyMethod));
-        }
-
-        protected virtual bool TryGetValueAs<T>(MethodBase propertyMethod, out T value)
-        {
-            return TryGetValueAs(GetAttributeKey(propertyMethod), out value);
-        }
-
-        protected virtual void AddOrRemove<TAttribute, TValue>(MethodBase propertyMethod, TValue value, Func<string, TValue, TAttribute> newAttribute)
-            where TAttribute : DotAttribute
-        {
-            AddOrRemove(GetAttributeKey(propertyMethod), value, newAttribute);
-        }
-
-        protected virtual string GetAttributeKey(MethodBase propertyMethod)
-        {
-            var property = propertyMethod?.DeclaringType
-              ?.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-              ?.FirstOrDefault(propertyInfo => propertyInfo.GetGetMethod(true) == propertyMethod ||
-                                               propertyInfo.GetSetMethod(true) == propertyMethod);
-
-            return property?.GetCustomAttribute<DotAttributeKeyAttribute>()?.Key ??
-                   throw new KeyNotFoundException("The property has no DOT attribute key assigned.");
         }
     }
 }
