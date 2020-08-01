@@ -1,9 +1,9 @@
 using System;
 using System.Linq.Expressions;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections
+namespace GiGraph.Dot.Entities.Attributes.Entities
 {
-    public interface IDotEntityAttributes<TExposedEntityAttributes> : IDotAttributeCollection
+    public interface IDotEntityAttributes<TExposedEntityAttributes>
         where TExposedEntityAttributes : IDotEntityAttributes<TExposedEntityAttributes>
     {
         /// <summary>

@@ -6,7 +6,7 @@ using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Records;
 using GiGraph.Dot.Entities.Types.Strings;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections
+namespace GiGraph.Dot.Entities.Attributes.Entities
 {
     public interface IDotNodeAttributes : IDotEntityAttributes<IDotNodeAttributes>, IDotFillable
     {

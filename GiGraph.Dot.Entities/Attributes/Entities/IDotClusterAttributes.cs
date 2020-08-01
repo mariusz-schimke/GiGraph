@@ -5,7 +5,7 @@ using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections
+namespace GiGraph.Dot.Entities.Attributes.Entities
 {
     public interface IDotClusterAttributes : IDotEntityAttributes<IDotClusterAttributes>, IDotFillable
     {
