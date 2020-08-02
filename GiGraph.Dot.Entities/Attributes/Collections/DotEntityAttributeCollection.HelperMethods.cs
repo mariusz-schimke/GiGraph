@@ -16,28 +16,25 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     {
         public virtual string GetAttributeKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
         {
-            var memberExpression = property.Body as MemberExpression;
-            var propertyInfo = memberExpression?.Member as PropertyInfo ??
+            var propertyInfo = (property.Body as MemberExpression)?.Member as PropertyInfo ??
                                throw new ArgumentException("Property expression expected.", nameof(property));
-
-            if (propertyInfo.DeclaringType != typeof(TExposedEntityAttributes))
-            {
-                throw new ArgumentException("Invalid property expression.", nameof(property));
-            }
 
             var currentType = GetType();
 
+            // make sure the property expression refers to current instance type, to any of its base classes, or to an interface it implements
             if (!propertyInfo.DeclaringType.IsAssignableFrom(currentType))
             {
-                throw new TypeAccessException($"The current instance type has to be assignable to {propertyInfo.DeclaringType.FullName}.");
+                throw new ArgumentException("The property expression must refer to a member of the current instance.", nameof(property));
             }
 
             if (propertyInfo.DeclaringType.IsInterface)
             {
-                var propertyMethod = propertyInfo.GetSetMethod(nonPublic: true) ?? propertyInfo.GetGetMethod(nonPublic: true);
+                // get the get method (property expression is impossible for write-only properties)
+                // include non-public methods (interface may be implemented explicitly)
+                var propertyMethod = propertyInfo.GetGetMethod(nonPublic: true);
 
                 var interfaceMap = currentType.GetInterfaceMap(propertyInfo.DeclaringType);
-                var interfaceMethodIndex = Array.IndexOf(interfaceMap.InterfaceMethods, propertyMethod);
+                var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(propertyMethod));
                 var targetMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
 
                 return GetAttributeKey(targetMethod, currentType);
@@ -52,7 +49,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Remove(key);
         }
 
-        public virtual bool ContainsKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        public virtual bool Contains<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
         {
             var key = GetAttributeKey(property);
             return ContainsKey(key);
@@ -84,8 +81,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             var property = declaringType
               ?.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-              ?.FirstOrDefault(propertyInfo => propertyInfo.GetGetMethod(nonPublic: true) == propertyMethod ||
-                                               propertyInfo.GetSetMethod(nonPublic: true) == propertyMethod);
+              ?.FirstOrDefault(propertyInfo => propertyInfo.GetSetMethod(nonPublic: true) == propertyMethod ||
+                                               propertyInfo.GetGetMethod(nonPublic: true) == propertyMethod);
 
             if (property is null)
             {

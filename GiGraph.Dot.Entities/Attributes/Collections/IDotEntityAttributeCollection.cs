@@ -11,10 +11,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="property">
         ///     The property to get the DOT attribute key for.
         /// </param>
-        /// <typeparam name="T">
+        /// <typeparam name="TProperty">
         ///     The type that provides access to the property.
         /// </typeparam>
-        string GetAttributeKey<T>(Expression<Func<TExposedEntityAttributes, T>> property);
+        string GetAttributeKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
 
         /// <summary>
         ///     Checks whether the collection contains a DOT key of the attribute the specified property provides access to.
@@ -22,10 +22,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="property">
         ///     The property to check the key for.
         /// </param>
-        /// <typeparam name="T">
+        /// <typeparam name="TProperty">
         ///     The type that provides access to the property.
         /// </typeparam>
-        bool ContainsKey<T>(Expression<Func<TExposedEntityAttributes, T>> property);
+        bool Contains<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
 
         /// <summary>
         ///     Removes the attribute the specified property provides access to.
@@ -33,9 +33,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="property">
         ///     The property to get the DOT attribute key for.
         /// </param>
-        /// <typeparam name="T">
+        /// <typeparam name="TProperty">
         ///     The type that provides access to the property.
         /// </typeparam>
-        bool Remove<T>(Expression<Func<TExposedEntityAttributes, T>> property);
+        bool Remove<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
     }
 }
