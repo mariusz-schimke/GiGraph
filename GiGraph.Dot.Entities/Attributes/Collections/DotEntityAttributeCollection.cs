@@ -178,5 +178,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
+
+        public virtual void SetFilled(Color color)
+        {
+            SetFilled((DotColorDefinition) color);
+        }
+
+        public virtual void SetFilled(DotColorDefinition value)
+        {
+            Style = Style.GetValueOrDefault(DotStyle.Filled) | DotStyle.Filled;
+            FillColor = value;
+        }
+
+        protected virtual void AddOrRemove<TAttribute, TValue>(MethodBase propertyMethod, TValue value, Func<string, TValue, TAttribute> newAttribute)
+            where TAttribute : DotAttribute
+        {
+            AddOrRemove(GetKey(propertyMethod), value, newAttribute);
+        }
     }
 }
