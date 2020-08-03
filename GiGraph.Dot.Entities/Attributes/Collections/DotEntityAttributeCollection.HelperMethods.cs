@@ -12,7 +12,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributeCollection<TExposedEntityAttributes>
+    public abstract partial class DotEntityAttributeCollection<TExposedEntityAttributes> : IDotEntityAttributeCollection<TExposedEntityAttributes>
     {
         public virtual string GetKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
         {
@@ -41,6 +41,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
 
             return GetKey(propertyInfo);
+        }
+
+        public virtual DotNullAttribute SetNull<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        {
+            var key = GetKey(property);
+            return SetNull(key);
         }
 
         public virtual DotAttribute Get<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)

@@ -10,7 +10,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributeCollection<TExposedEntityAttributes> : DotAttributeCollection, IDotEntityAttributeCollection<TExposedEntityAttributes>
+    public abstract partial class DotEntityAttributeCollection<TExposedEntityAttributes> : DotAttributeCollection
     {
         [DotAttributeKey("color")]
         public virtual DotColorDefinition Color
