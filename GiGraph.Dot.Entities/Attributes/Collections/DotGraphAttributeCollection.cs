@@ -128,14 +128,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get
             {
-                var key = GetKey(MethodBase.GetCurrentMethod());
-
-                if (TryGetValueAs<DotAspectRatioDefinition>(key, out var definition))
-                {
-                    return definition;
-                }
-
-                return TryGetValueAs<double>(key, out var number) ? number : (double?) null;
+                return GetValueAs<DotAspectRatioDefinition>
+                (
+                    GetKey(MethodBase.GetCurrentMethod()),
+                    out var value,
+                    v => v is int i ? (true, new DotAspectRatioQuotient(i)) : (false, default),
+                    v => v is double d ? (true, new DotAspectRatioQuotient(d)) : (false, default),
+                    v => v is DotAspectRatio ar ? (true, new DotAspectRatioOption(ar)) : (false, default)
+                )
+                    ? value
+                    : null;
             }
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotAspectRatioDefinitionAttribute(k, v));
         }
