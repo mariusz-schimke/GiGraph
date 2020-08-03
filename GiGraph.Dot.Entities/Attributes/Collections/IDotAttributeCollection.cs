@@ -451,6 +451,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         bool TryGetValueAs<T>(string key, out T value);
 
         /// <summary>
+        ///     Checks if an attribute with the specified key exists in the collection, and returns its value as the specified type. If the
+        ///     attribute is found, but its value cannot be cast as the specified type, an exception is thrown.
+        /// </summary>
+        /// <typeparam name="T">
+        ///     The type to return the attribute value as.
+        /// </typeparam>
+        /// <param name="key">
+        ///     The key of the attribute to get.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute if found and valid, or null if not found.
+        /// </param>
+        bool GetValueAs<T>(string key, out T value);
+
+        /// <summary>
         ///     Removes all attributes matching the specified criteria from the collection.
         /// </summary>
         /// <param name="match">

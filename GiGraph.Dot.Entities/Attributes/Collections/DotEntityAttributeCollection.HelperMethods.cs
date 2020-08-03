@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public abstract partial class DotEntityAttributeCollection<TExposedEntityAttributes>
     {
-        public virtual string GetAttributeKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        public virtual string GetKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
         {
             var propertyInfo = (property.Body as MemberExpression)?.Member as PropertyInfo ??
                                throw new ArgumentException("Property expression expected.", nameof(property));
@@ -37,21 +37,27 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(propertyMethod));
                 var targetMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
 
-                return GetAttributeKey(targetMethod, currentType);
+                return GetKey(targetMethod, currentType);
             }
 
-            return GetAttributeKey(propertyInfo);
+            return GetKey(propertyInfo);
+        }
+
+        public virtual DotAttribute Get<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        {
+            var key = GetKey(property);
+            return TryGetValue(key, out var result) ? result : null;
         }
 
         public virtual bool Remove<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
         {
-            var key = GetAttributeKey(property);
+            var key = GetKey(property);
             return Remove(key);
         }
 
         public virtual bool Contains<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
         {
-            var key = GetAttributeKey(property);
+            var key = GetKey(property);
             return ContainsKey(key);
         }
 
@@ -69,15 +75,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         protected virtual void AddOrRemove<TAttribute, TValue>(MethodBase propertyMethod, TValue value, Func<string, TValue, TAttribute> newAttribute)
             where TAttribute : DotAttribute
         {
-            AddOrRemove(GetAttributeKey(propertyMethod), value, newAttribute);
+            AddOrRemove(GetKey(propertyMethod), value, newAttribute);
         }
 
-        protected virtual string GetAttributeKey(MethodBase propertyMethod)
+        protected virtual string GetKey(MethodBase propertyMethod)
         {
-            return GetAttributeKey(propertyMethod, propertyMethod.DeclaringType);
+            return GetKey(propertyMethod, propertyMethod.DeclaringType);
         }
 
-        protected virtual string GetAttributeKey(MethodBase propertyMethod, Type declaringType)
+        protected virtual string GetKey(MethodBase propertyMethod, Type declaringType)
         {
             var property = declaringType
               ?.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
@@ -89,10 +95,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 throw new ArgumentException("The specified method must be a property setter or getter.", nameof(propertyMethod));
             }
 
-            return GetAttributeKey(property);
+            return GetKey(property);
         }
 
-        protected virtual string GetAttributeKey(PropertyInfo property)
+        protected virtual string GetKey(PropertyInfo property)
         {
             return property.GetCustomAttribute<DotAttributeKeyAttribute>()?.Key ??
                    throw new KeyNotFoundException("The specified property has no DOT attribute key assigned.");
@@ -100,7 +106,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         protected virtual bool TryGetValueAs<T>(MethodBase propertyMethod, out T value)
         {
-            return TryGetValueAs(GetAttributeKey(propertyMethod), out value);
+            return TryGetValueAs(GetKey(propertyMethod), out value);
         }
 
         protected virtual DotColorDefinition TryGetValueAsColorDefinition(string key)
@@ -115,7 +121,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         protected virtual DotColorDefinition TryGetValueAsColorDefinition(MethodBase propertyMethod)
         {
-            return TryGetValueAsColorDefinition(GetAttributeKey(propertyMethod));
+            return TryGetValueAsColorDefinition(GetKey(propertyMethod));
         }
 
         protected virtual DotLabel TryGetValueAsLabel(string key)
@@ -130,7 +136,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         protected virtual DotLabel TryGetValueAsLabel(MethodBase propertyMethod)
         {
-            return TryGetValueAsLabel(GetAttributeKey(propertyMethod));
+            return TryGetValueAsLabel(GetKey(propertyMethod));
         }
 
         protected virtual DotEscapeString TryGetValueAsEscapeString(string key)
@@ -145,7 +151,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         protected virtual DotEscapeString TryGetValueAsEscapeString(MethodBase propertyMethod)
         {
-            return TryGetValueAsEscapeString(GetAttributeKey(propertyMethod));
+            return TryGetValueAsEscapeString(GetKey(propertyMethod));
         }
     }
 }

@@ -328,7 +328,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         protected virtual DotArrowheadDefinition TryGetValueAsArrowheadDefinition(MethodBase propertyMethod)
         {
-            return TryGetValueAsArrowheadDefinition(GetAttributeKey(propertyMethod));
+            return TryGetValueAsArrowheadDefinition(GetKey(propertyMethod));
         }
     }
 }

@@ -6,15 +6,26 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     public interface IDotEntityAttributeCollection<TExposedEntityAttributes>
     {
         /// <summary>
+        ///     Gets the DOT attribute the specified property provides access to.
+        /// </summary>
+        /// <param name="property">
+        ///     The property to get the DOT attribute key for.
+        /// </param>
+        /// <typeparam name="TProperty">
+        ///     The type returned by the property.
+        /// </typeparam>
+        DotAttribute Get<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
+
+        /// <summary>
         ///     Gets the DOT key of the attribute the specified property provides access to.
         /// </summary>
         /// <param name="property">
         ///     The property to get the DOT attribute key for.
         /// </param>
         /// <typeparam name="TProperty">
-        ///     The type that provides access to the property.
+        ///     The type returned by the property.
         /// </typeparam>
-        string GetAttributeKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
+        string GetKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
 
         /// <summary>
         ///     Checks whether the collection contains a DOT key of the attribute the specified property provides access to.
@@ -23,7 +34,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The property to check the key for.
         /// </param>
         /// <typeparam name="TProperty">
-        ///     The type that provides access to the property.
+        ///     The type returned by the property.
         /// </typeparam>
         bool Contains<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
 
@@ -34,7 +45,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The property to get the DOT attribute key for.
         /// </param>
         /// <typeparam name="TProperty">
-        ///     The type that provides access to the property.
+        ///     The type returned by the property.
         /// </typeparam>
         bool Remove<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
     }

@@ -81,7 +81,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get
             {
-                var key = GetAttributeKey(MethodBase.GetCurrentMethod());
+                var key = GetKey(MethodBase.GetCurrentMethod());
 
                 if (TryGetValueAs<DotRankSeparationDefinition>(key, out var definition))
                 {
@@ -131,7 +131,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get
             {
-                var key = GetAttributeKey(MethodBase.GetCurrentMethod());
+                var key = GetKey(MethodBase.GetCurrentMethod());
 
                 if (TryGetValueAs<DotAspectRatioDefinition>(key, out var definition))
                 {

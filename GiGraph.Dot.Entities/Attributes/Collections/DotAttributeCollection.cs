@@ -203,6 +203,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return false;
         }
 
+        public virtual bool GetValueAs<T>(string key, out T value)
+        {
+            if (TryGetValue(key, out var attribute))
+            {
+                value = (T) attribute.GetValue();
+                return true;
+            }
+
+            value = default;
+            return false;
+        }
+
         public virtual bool TryGetValueAs<T>(string key, out T value)
         {
             if (TryGetValue(key, out var attribute) && attribute.GetValue() is T attributeValue)
