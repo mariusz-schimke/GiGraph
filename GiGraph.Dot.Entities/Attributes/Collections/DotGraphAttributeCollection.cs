@@ -101,7 +101,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("rotate")]
         public virtual int? RotateBy
         {
-            get => GetValueAs<int>(MethodBase.GetCurrentMethod(), out var result) ? result : (int?) null;
+            get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 

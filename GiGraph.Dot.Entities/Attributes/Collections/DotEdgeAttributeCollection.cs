@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("minlen")]
         public virtual int? MinLength
         {
-            get => GetValueAs<int>(MethodBase.GetCurrentMethod(), out var result) ? result : (int?) null;
+            get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
                 ? throw new ArgumentOutOfRangeException(nameof(MinLength), v.Value, "Minimum length must be greater than or equal to 0.")
                 : new DotIntAttribute(k, v.Value));

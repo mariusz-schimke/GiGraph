@@ -33,6 +33,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return GetValueAs(GetKey(propertyMethod), out value);
         }
 
+        protected virtual int? GetValueAsInt(MethodBase propertyMethod)
+        {
+            return GetValueAsInt(GetKey(propertyMethod));
+        }
+
         protected virtual double? GetValueAsDouble(MethodBase propertyMethod)
         {
             return GetValueAsDouble(GetKey(propertyMethod));

@@ -43,14 +43,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("gradientangle")]
         public virtual int? GradientAngle
         {
-            get => GetValueAs<int>(MethodBase.GetCurrentMethod(), out var result) ? result : (int?) null;
+            get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
         [DotAttributeKey("peripheries")]
         public virtual int? Peripheries
         {
-            get => GetValueAs<int>(MethodBase.GetCurrentMethod(), out var result) ? result : (int?) null;
+            get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
                 ? throw new ArgumentOutOfRangeException(nameof(Peripheries), v.Value, "The number of peripheries must be greater than or equal to 0.")
                 : new DotIntAttribute(k, v.Value));
