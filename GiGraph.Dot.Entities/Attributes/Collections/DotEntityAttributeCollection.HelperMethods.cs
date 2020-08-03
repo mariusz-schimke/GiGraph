@@ -110,9 +110,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                    throw new KeyNotFoundException("The specified property has no DOT attribute key assigned.");
         }
 
-        protected virtual bool TryGetValueAs<T>(MethodBase propertyMethod, out T value)
+        protected virtual bool GetValueAs<T>(MethodBase propertyMethod, out T value)
         {
-            return TryGetValueAs(GetKey(propertyMethod), out value);
+            return GetValueAs(GetKey(propertyMethod), out value);
         }
 
         protected virtual DotColorDefinition TryGetValueAsColorDefinition(string key)

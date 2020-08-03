@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("colorscheme")]
         public virtual string ColorScheme
         {
-            get => TryGetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
@@ -43,14 +43,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("gradientangle")]
         public virtual int? GradientAngle
         {
-            get => TryGetValueAs<int>(MethodBase.GetCurrentMethod(), out var result) ? result : (int?) null;
+            get => GetValueAs<int>(MethodBase.GetCurrentMethod(), out var result) ? result : (int?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
         [DotAttributeKey("peripheries")]
         public virtual int? Peripheries
         {
-            get => TryGetValueAs<int>(MethodBase.GetCurrentMethod(), out var result) ? result : (int?) null;
+            get => GetValueAs<int>(MethodBase.GetCurrentMethod(), out var result) ? result : (int?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
                 ? throw new ArgumentOutOfRangeException(nameof(Peripheries), v.Value, "The number of peripheries must be greater than or equal to 0.")
                 : new DotIntAttribute(k, v.Value));
@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("penwidth")]
         public virtual double? PenWidth
         {
-            get => TryGetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(PenWidth), v.Value, "Pen width must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
@@ -68,28 +68,28 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("pencolor")]
         public virtual Color? PenColor
         {
-            get => TryGetValueAs<Color>(MethodBase.GetCurrentMethod(), out var result) ? result : (Color?) null;
+            get => GetValueAs<Color>(MethodBase.GetCurrentMethod(), out var result) ? result : (Color?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorAttribute(k, v.Value));
         }
 
         [DotAttributeKey("fontcolor")]
         public virtual Color? FontColor
         {
-            get => TryGetValueAs<Color>(MethodBase.GetCurrentMethod(), out var result) ? result : (Color?) null;
+            get => GetValueAs<Color>(MethodBase.GetCurrentMethod(), out var result) ? result : (Color?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorAttribute(k, v.Value));
         }
 
         [DotAttributeKey("fontname")]
         public virtual string FontName
         {
-            get => TryGetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
         [DotAttributeKey("fontsize")]
         public virtual double? FontSize
         {
-            get => TryGetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(FontSize), v.Value, "Font size must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
@@ -112,21 +112,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("labeljust")]
         public virtual DotHorizontalAlignment? HorizontalLabelAlignment
         {
-            get => TryGetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotHorizontalAlignment?) null;
+            get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotHorizontalAlignment?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotHorizontalAlignmentAttribute(k, v.Value));
         }
 
         [DotAttributeKey("labelloc")]
         public virtual DotVerticalAlignment? VerticalLabelAlignment
         {
-            get => TryGetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotVerticalAlignment?) null;
+            get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotVerticalAlignment?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
         }
 
         [DotAttributeKey("ordering")]
         public virtual DotEdgeOrderingMode? EdgeOrderingMode
         {
-            get => TryGetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotEdgeOrderingMode?) null;
+            get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotEdgeOrderingMode?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeOrderingModeAttribute(k, v.Value));
         }
 
@@ -140,14 +140,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("style")]
         public virtual DotStyle? Style
         {
-            get => TryGetValueAs<DotStyle>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyle?) null;
+            get => GetValueAs<DotStyle>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyle?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
         }
 
         [DotAttributeKey("comment")]
         public virtual string Comment
         {
-            get => TryGetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
@@ -175,7 +175,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("margin")]
         public virtual DotPoint Margin
         {
-            get => TryGetValueAs<DotPoint>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAs<DotPoint>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
     }

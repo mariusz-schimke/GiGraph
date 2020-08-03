@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("rank")]
         public virtual DotRank? Rank
         {
-            get => TryGetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotRank?) null;
+            get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotRank?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankAttribute(k, v.Value));
         }
 

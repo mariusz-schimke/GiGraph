@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("weight")]
         public virtual double? Weight
         {
-            get => TryGetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(Weight), v.Value, "Weight must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
@@ -26,14 +26,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("len")]
         public virtual double? Length
         {
-            get => TryGetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
         [DotAttributeKey("minlen")]
         public virtual int? MinLength
         {
-            get => TryGetValueAs<int>(MethodBase.GetCurrentMethod(), out var result) ? result : (int?) null;
+            get => GetValueAs<int>(MethodBase.GetCurrentMethod(), out var result) ? result : (int?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
                 ? throw new ArgumentOutOfRangeException(nameof(MinLength), v.Value, "Minimum length must be greater than or equal to 0.")
                 : new DotIntAttribute(k, v.Value));
@@ -42,21 +42,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("labelfontname")]
         public virtual string LabelFontName
         {
-            get => TryGetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
         [DotAttributeKey("labelfontcolor")]
         public virtual Color? LabelFontColor
         {
-            get => TryGetValueAs<Color>(MethodBase.GetCurrentMethod(), out var result) ? result : (Color?) null;
+            get => GetValueAs<Color>(MethodBase.GetCurrentMethod(), out var result) ? result : (Color?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorAttribute(k, v.Value));
         }
 
         [DotAttributeKey("labelfontsize")]
         public virtual double? LabelFontSize
         {
-            get => TryGetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(LabelFontSize), v.Value, "Label font size must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
@@ -191,35 +191,35 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("headclip")]
         public virtual bool? ClipHead
         {
-            get => TryGetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
+            get => GetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         [DotAttributeKey("tailclip")]
         public virtual bool? ClipTail
         {
-            get => TryGetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
+            get => GetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         [DotAttributeKey("samehead")]
         public virtual string HeadGroupName
         {
-            get => TryGetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
         [DotAttributeKey("sametail")]
         public virtual string TailGroupName
         {
-            get => TryGetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
         [DotAttributeKey("arrowsize")]
         public virtual double? ArrowSize
         {
-            get => TryGetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(ArrowSize), v.Value, "Arrow size must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
@@ -242,56 +242,56 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("dir")]
         public virtual DotArrowDirection? ArrowDirection
         {
-            get => TryGetValueAs<DotArrowDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotArrowDirection?) null;
+            get => GetValueAs<DotArrowDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotArrowDirection?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowDirectionAttribute(k, v.Value));
         }
 
         [DotAttributeKey("headport")]
         public virtual DotEndpointPort HeadPort
         {
-            get => TryGetValueAs<DotEndpointPort>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAs<DotEndpointPort>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEndpointPortAttribute(k, v));
         }
 
         [DotAttributeKey("tailport")]
         public virtual DotEndpointPort TailPort
         {
-            get => TryGetValueAs<DotEndpointPort>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAs<DotEndpointPort>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEndpointPortAttribute(k, v));
         }
 
         [DotAttributeKey("lhead")]
         public virtual string LogicalHeadId
         {
-            get => TryGetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLogicalEndpointAttribute(k, v));
         }
 
         [DotAttributeKey("ltail")]
         public virtual string LogicalTailId
         {
-            get => TryGetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLogicalEndpointAttribute(k, v));
         }
 
         [DotAttributeKey("decorate")]
         public virtual bool? Decorate
         {
-            get => TryGetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
+            get => GetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         [DotAttributeKey("labelfloat")]
         public virtual bool? LabelFloat
         {
-            get => TryGetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
+            get => GetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         [DotAttributeKey("labeldistance")]
         public virtual double? LabelDistance
         {
-            get => TryGetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(LabelDistance), v.Value, "Label distance must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
@@ -300,14 +300,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("labelangle")]
         public virtual double? LabelAngle
         {
-            get => TryGetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
         [DotAttributeKey("constraint")]
         public virtual bool? Constraint
         {
-            get => TryGetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
+            get => GetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
