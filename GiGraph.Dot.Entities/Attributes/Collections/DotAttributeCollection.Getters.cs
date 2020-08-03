@@ -2,8 +2,10 @@
 using System.Drawing;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
@@ -168,6 +170,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 key,
                 out var value,
                 v => v is DotArrowheadShape s ? (true, new DotArrowhead(s)) : (false, default)
+            )
+                ? value
+                : null;
+        }
+
+        protected virtual DotEndpointPort GetValueAsEndpointPort(string key)
+        {
+            return GetValueAs
+            (
+                key,
+                out var value,
+                v => v is DotCompassPoint cp ? (true, new DotEndpointPort(cp)) : (false, default),
+                v => v is string s ? (true, new DotEndpointPort(s)) : (false, default)
             )
                 ? value
                 : null;

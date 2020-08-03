@@ -249,14 +249,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("headport")]
         public virtual DotEndpointPort HeadPort
         {
-            get => GetValueAs<DotEndpointPort>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEndpointPortAttribute(k, v));
         }
 
         [DotAttributeKey("tailport")]
         public virtual DotEndpointPort TailPort
         {
-            get => GetValueAs<DotEndpointPort>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEndpointPortAttribute(k, v));
         }
 
