@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
@@ -66,6 +67,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         protected virtual DotEscapeString GetValueAsEscapeString(MethodBase propertyMethod)
         {
             return GetValueAsEscapeString(GetKey(propertyMethod));
+        }
+
+        protected virtual DotArrowheadDefinition GetValueAsArrowheadDefinition(MethodBase propertyMethod)
+        {
+            return GetValueAsArrowheadDefinition(GetKey(propertyMethod));
         }
     }
 }

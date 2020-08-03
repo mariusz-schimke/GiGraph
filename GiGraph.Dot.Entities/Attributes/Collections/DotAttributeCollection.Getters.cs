@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
@@ -144,6 +146,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 out var value,
                 v => v is DotEscapeString s ? (true, s) : (false, null),
                 v => v is string s ? (true, (DotEscapedString) s) : (false, null)
+            )
+                ? value
+                : null;
+        }
+
+        protected virtual DotArrowheadDefinition GetValueAsArrowheadDefinition(string key)
+        {
+            return GetValueAs<DotArrowheadDefinition>
+            (
+                key,
+                out var value,
+                v => v is DotArrowheadShape s ? (true, new DotArrowhead(s)) : (false, default)
             )
                 ? value
                 : null;

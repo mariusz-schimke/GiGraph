@@ -228,14 +228,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("arrowhead")]
         public virtual DotArrowheadDefinition ArrowHead
         {
-            get => TryGetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
+            get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
         }
 
         [DotAttributeKey("arrowtail")]
         public virtual DotArrowheadDefinition ArrowTail
         {
-            get => TryGetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
+            get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
         }
 
@@ -314,21 +314,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public override void SetFilled(DotColorDefinition value)
         {
             FillColor = value;
-        }
-
-        protected virtual DotArrowheadDefinition TryGetValueAsArrowheadDefinition(string key)
-        {
-            if (TryGetValueAs<DotArrowheadDefinition>(key, out var definition))
-            {
-                return definition;
-            }
-
-            return TryGetValueAs<DotArrowheadShape>(key, out var shape) ? new DotArrowhead(shape) : null;
-        }
-
-        protected virtual DotArrowheadDefinition TryGetValueAsArrowheadDefinition(MethodBase propertyMethod)
-        {
-            return TryGetValueAsArrowheadDefinition(GetKey(propertyMethod));
         }
     }
 }
