@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Linq;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -92,6 +93,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         protected virtual DotColorDefinition GetValueAsColorDefinition(string key)
         {
             return GetValueAs<DotColorDefinition>(key, out var value, v => v is Color c ? (true, new DotColor(c)) : (false, null))
+                ? value
+                : null;
+        }
+
+        protected virtual DotEscapeString GetValueAsEscapeString(string key)
+        {
+            return GetValueAs<DotEscapeString>(key, out var value, v => v is string s ? (true, (DotEscapedString) s) : (false, null))
                 ? value
                 : null;
         }

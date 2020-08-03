@@ -79,112 +79,112 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("headURL")]
         public virtual DotEscapeString HeadUrl
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("headhref")]
         public virtual DotEscapeString HeadHref
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("headtarget")]
         public virtual DotEscapeString HeadUrlTarget
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("headtooltip")]
         public virtual DotEscapeString HeadUrlTooltip
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("tailURL")]
         public virtual DotEscapeString TailUrl
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("tailhref")]
         public virtual DotEscapeString TailHref
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("tailtarget")]
         public virtual DotEscapeString TailUrlTarget
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("tailtooltip")]
         public virtual DotEscapeString TailUrlTooltip
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("labelURL")]
         public virtual DotEscapeString LabelUrl
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("labelhref")]
         public virtual DotEscapeString LabelHref
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("labeltarget")]
         public virtual DotEscapeString LabelUrlTarget
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("labeltooltip")]
         public virtual DotEscapeString LabelUrlTooltip
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("edgeURL")]
         public virtual DotEscapeString EdgeUrl
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("edgehref")]
         public virtual DotEscapeString EdgeHref
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("edgetarget")]
         public virtual DotEscapeString EdgeUrlTarget
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("edgetooltip")]
         public virtual DotEscapeString EdgeUrlTooltip
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 

@@ -49,7 +49,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 return label;
             }
 
-            return TryGetValueAsEscapeString(key);
+            return GetValueAsEscapeString(key);
         }
 
         protected virtual DotLabel TryGetValueAsLabel(MethodBase propertyMethod)
@@ -57,19 +57,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return TryGetValueAsLabel(GetKey(propertyMethod));
         }
 
-        protected virtual DotEscapeString TryGetValueAsEscapeString(string key)
+        protected virtual DotEscapeString GetValueAsEscapeString(MethodBase propertyMethod)
         {
-            if (TryGetValueAs<DotEscapeString>(key, out var escapeString))
-            {
-                return escapeString;
-            }
-
-            return TryGetValueAs<string>(key, out var value) ? (DotEscapedString) value : null;
-        }
-
-        protected virtual DotEscapeString TryGetValueAsEscapeString(MethodBase propertyMethod)
-        {
-            return TryGetValueAsEscapeString(GetKey(propertyMethod));
+            return GetValueAsEscapeString(GetKey(propertyMethod));
         }
     }
 }

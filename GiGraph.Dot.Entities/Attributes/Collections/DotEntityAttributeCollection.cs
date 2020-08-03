@@ -133,7 +133,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("tooltip")]
         public virtual DotEscapeString Tooltip
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
@@ -154,21 +154,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("URL")]
         public virtual DotEscapeString Url
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("href")]
         public virtual DotEscapeString Href
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("target")]
         public virtual DotEscapeString UrlTarget
         {
-            get => TryGetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
