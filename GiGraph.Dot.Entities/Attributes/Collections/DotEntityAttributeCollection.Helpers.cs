@@ -43,6 +43,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             return GetValueAsDouble(GetKey(propertyMethod));
         }
+        
+        protected virtual bool? GetValueAsBool(MethodBase propertyMethod)
+        {
+            return GetValueAsBool(GetKey(propertyMethod));
+        }
 
         protected virtual DotPoint GetValueAsPoint(MethodBase propertyMethod)
         {

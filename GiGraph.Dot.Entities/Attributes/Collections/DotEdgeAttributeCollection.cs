@@ -191,14 +191,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("headclip")]
         public virtual bool? ClipHead
         {
-            get => GetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         [DotAttributeKey("tailclip")]
         public virtual bool? ClipTail
         {
-            get => GetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
@@ -277,14 +277,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("decorate")]
         public virtual bool? Decorate
         {
-            get => GetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         [DotAttributeKey("labelfloat")]
         public virtual bool? LabelFloat
         {
-            get => GetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
@@ -307,7 +307,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("constraint")]
         public virtual bool? Constraint
         {
-            get => GetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 

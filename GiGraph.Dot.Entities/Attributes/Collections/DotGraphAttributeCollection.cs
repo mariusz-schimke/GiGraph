@@ -35,21 +35,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("concentrate")]
         public virtual bool? ConcentrateEdges
         {
-            get => GetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         [DotAttributeKey("compound")]
         public virtual bool? Compound
         {
-            get => GetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         [DotAttributeKey("forcelabels")]
         public virtual bool? ForceExternalLabels
         {
-            get => GetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 

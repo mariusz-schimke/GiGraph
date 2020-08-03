@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("regular")]
         public virtual bool? Regular
         {
-            get => GetValueAs<bool>(MethodBase.GetCurrentMethod(), out var result) ? result : (bool?) null;
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
