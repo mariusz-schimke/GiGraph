@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("labelfontname")]
         public virtual string LabelFontName
         {
-            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
@@ -205,14 +205,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("samehead")]
         public virtual string HeadGroupName
         {
-            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
         [DotAttributeKey("sametail")]
         public virtual string TailGroupName
         {
-            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
@@ -263,14 +263,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("lhead")]
         public virtual string LogicalHeadId
         {
-            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLogicalEndpointAttribute(k, v));
         }
 
         [DotAttributeKey("ltail")]
         public virtual string LogicalTailId
         {
-            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLogicalEndpointAttribute(k, v));
         }
 

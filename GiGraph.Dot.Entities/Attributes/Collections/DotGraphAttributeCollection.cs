@@ -56,14 +56,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("fontpath")]
         public virtual string FontDirectories
         {
-            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
         [DotAttributeKey("charset")]
         public virtual string Charset
         {
-            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
@@ -108,7 +108,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("imagepath")]
         public virtual string ImageDirectories
         {
-            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 

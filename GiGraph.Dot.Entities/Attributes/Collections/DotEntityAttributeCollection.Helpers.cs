@@ -53,6 +53,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return GetValueAsLabel(GetKey(propertyMethod));
         }
 
+        protected virtual string GetValueAsString(MethodBase propertyMethod)
+        {
+            return GetValueAsString(GetKey(propertyMethod));
+        }
+
         protected virtual DotEscapeString GetValueAsEscapeString(MethodBase propertyMethod)
         {
             return GetValueAsEscapeString(GetKey(propertyMethod));

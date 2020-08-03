@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("colorscheme")]
         public virtual string ColorScheme
         {
-            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
@@ -82,7 +82,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("fontname")]
         public virtual string FontName
         {
-            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
@@ -147,7 +147,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("comment")]
         public virtual string Comment
         {
-            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 

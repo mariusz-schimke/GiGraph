@@ -80,14 +80,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("image")]
         public virtual string ImagePath
         {
-            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
         [DotAttributeKey("group")]
         public virtual string GroupName
         {
-            get => GetValueAs<string>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 

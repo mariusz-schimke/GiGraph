@@ -114,6 +114,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : null;
         }
 
+        protected virtual string GetValueAsString(string key)
+        {
+            return GetValueAs<string>(key, out var result) ? result : null;
+        }
+
         protected virtual DotEscapeString GetValueAsEscapeString(string key)
         {
             return GetValueAs<DotEscapeString>
