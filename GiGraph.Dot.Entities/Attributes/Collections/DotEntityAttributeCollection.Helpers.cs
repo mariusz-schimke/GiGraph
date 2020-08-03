@@ -32,13 +32,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return GetValueAs(GetKey(propertyMethod), out value);
         }
 
-        protected virtual double? GetValueAsDouble(string key)
-        {
-            return GetValueAs(key, out var value, v => v is int i ? (true, i) : (false, default))
-                ? value
-                : (double?) null;
-        }
-
         protected virtual double? GetValueAsDouble(MethodBase propertyMethod)
         {
             return GetValueAsDouble(GetKey(propertyMethod));

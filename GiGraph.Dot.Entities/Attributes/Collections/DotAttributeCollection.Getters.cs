@@ -79,5 +79,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
             throw new InvalidCastException($"The '{key}' attribute value of type {attributeValue.GetType().FullName} cannot be accessed as {typeof(T).FullName}.");
         }
+
+        protected virtual double? GetValueAsDouble(string key)
+        {
+            return GetValueAs(key, out var value, v => v is int i ? (true, i) : (false, default))
+                ? value
+                : (double?) null;
+        }
     }
 }
