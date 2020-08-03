@@ -81,19 +81,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get
             {
-                var key = GetKey(MethodBase.GetCurrentMethod());
-
-                if (TryGetValueAs<DotRankSeparationDefinition>(key, out var definition))
-                {
-                    return definition;
-                }
-
-                if (TryGetValueAs<double>(key, out var number))
-                {
-                    return number;
-                }
-
-                return TryGetValueAs<double[]>(key, out var array) ? array : null;
+                return GetValueAs<DotRankSeparationDefinition>
+                (
+                    GetKey(MethodBase.GetCurrentMethod()),
+                    out var value,
+                    v => v is int i ? (true, new DotRankSeparation(i)) : (false, default),
+                    v => v is double d ? (true, new DotRankSeparation(d)) : (false, default),
+                    v => v is double[] da ? (true, new DotRankSeparationList(da)) : (false, default)
+                )
+                    ? value
+                    : null;
             }
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankSeparationAttribute(k, v));
         }
