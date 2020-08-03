@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected internal override object GetValue()
+        public override object GetValue()
         {
             return null;
         }

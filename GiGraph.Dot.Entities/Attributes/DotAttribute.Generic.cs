@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Attributes
             return Value?.ToString();
         }
 
-        protected internal override object GetValue()
+        public override object GetValue()
         {
             return Value;
         }
