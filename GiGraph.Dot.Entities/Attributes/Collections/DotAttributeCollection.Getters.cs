@@ -94,7 +94,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         protected virtual double? GetValueAsDouble(string key)
         {
-            return GetValueAs
+            return GetValueAs<double>
             (
                 key,
                 out var value,
