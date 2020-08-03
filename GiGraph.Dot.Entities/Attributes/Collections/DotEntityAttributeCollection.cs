@@ -175,7 +175,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("margin")]
         public virtual DotPoint Margin
         {
-            get => GetValueAs<DotPoint>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsPoint(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
     }

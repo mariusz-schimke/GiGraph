@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Linq;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -94,6 +95,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             )
                 ? value
                 : (double?) null;
+        }
+
+        protected virtual DotPoint GetValueAsPoint(string key)
+        {
+            return GetValueAs<DotPoint>(key, out var result) ? result : null;
         }
 
         protected virtual DotColorDefinition GetValueAsColorDefinition(string key)

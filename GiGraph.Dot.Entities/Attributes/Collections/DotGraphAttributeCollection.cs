@@ -115,14 +115,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("pad")]
         public virtual DotPoint Padding
         {
-            get => GetValueAs<DotPoint>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsPoint(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
 
         [DotAttributeKey("size")]
         public virtual DotPoint Size
         {
-            get => GetValueAs<DotPoint>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAsPoint(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
 

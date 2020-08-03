@@ -4,6 +4,7 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -35,6 +36,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         protected virtual double? GetValueAsDouble(MethodBase propertyMethod)
         {
             return GetValueAsDouble(GetKey(propertyMethod));
+        }
+
+        protected virtual DotPoint GetValueAsPoint(MethodBase propertyMethod)
+        {
+            return GetValueAsPoint(GetKey(propertyMethod));
         }
 
         protected virtual DotColorDefinition GetValueAsColorDefinition(MethodBase propertyMethod)
