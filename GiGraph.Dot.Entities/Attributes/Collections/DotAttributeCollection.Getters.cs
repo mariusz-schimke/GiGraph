@@ -109,6 +109,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return GetValueAs<bool>(key, out var result) ? result : (bool?) null;
         }
 
+        protected virtual Color? GetValueAsColor(string key)
+        {
+            return GetValueAs<Color>(key, out var result) ? result : (Color?) null;
+        }
+
         protected virtual DotPoint GetValueAsPoint(string key)
         {
             return GetValueAs<DotPoint>(key, out var result) ? result : null;

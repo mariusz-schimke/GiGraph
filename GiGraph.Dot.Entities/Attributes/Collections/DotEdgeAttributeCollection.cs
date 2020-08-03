@@ -49,7 +49,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("labelfontcolor")]
         public virtual Color? LabelFontColor
         {
-            get => GetValueAs<Color>(MethodBase.GetCurrentMethod(), out var result) ? result : (Color?) null;
+            get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorAttribute(k, v.Value));
         }
 

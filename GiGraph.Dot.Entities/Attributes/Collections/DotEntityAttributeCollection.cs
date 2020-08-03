@@ -68,14 +68,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("pencolor")]
         public virtual Color? PenColor
         {
-            get => GetValueAs<Color>(MethodBase.GetCurrentMethod(), out var result) ? result : (Color?) null;
+            get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorAttribute(k, v.Value));
         }
 
         [DotAttributeKey("fontcolor")]
         public virtual Color? FontColor
         {
-            get => GetValueAs<Color>(MethodBase.GetCurrentMethod(), out var result) ? result : (Color?) null;
+            get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorAttribute(k, v.Value));
         }
 
