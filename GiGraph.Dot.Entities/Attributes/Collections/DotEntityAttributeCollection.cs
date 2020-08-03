@@ -98,14 +98,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("label")]
         public virtual DotLabel Label
         {
-            get => TryGetValueAsLabel(MethodBase.GetCurrentMethod());
+            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
         }
 
         [DotAttributeKey("xlabel")]
         public virtual DotLabel ExternalLabel
         {
-            get => TryGetValueAsLabel(MethodBase.GetCurrentMethod());
+            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
         }
 

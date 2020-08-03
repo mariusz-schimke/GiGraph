@@ -42,19 +42,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return GetValueAsColorDefinition(GetKey(propertyMethod));
         }
 
-        protected virtual DotLabel TryGetValueAsLabel(string key)
+        protected virtual DotLabel GetValueAsLabel(MethodBase propertyMethod)
         {
-            if (TryGetValueAs<DotLabel>(key, out var label))
-            {
-                return label;
-            }
-
-            return GetValueAsEscapeString(key);
-        }
-
-        protected virtual DotLabel TryGetValueAsLabel(MethodBase propertyMethod)
-        {
-            return TryGetValueAsLabel(GetKey(propertyMethod));
+            return GetValueAsLabel(GetKey(propertyMethod));
         }
 
         protected virtual DotEscapeString GetValueAsEscapeString(MethodBase propertyMethod)

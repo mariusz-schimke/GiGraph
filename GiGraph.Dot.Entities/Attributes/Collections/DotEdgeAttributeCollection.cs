@@ -65,14 +65,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("taillabel")]
         public virtual DotLabel TailLabel
         {
-            get => TryGetValueAsLabel(MethodBase.GetCurrentMethod());
+            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
         }
 
         [DotAttributeKey("headlabel")]
         public virtual DotLabel HeadLabel
         {
-            get => TryGetValueAsLabel(MethodBase.GetCurrentMethod());
+            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
         }
 
