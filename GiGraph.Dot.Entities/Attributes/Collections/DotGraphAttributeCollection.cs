@@ -70,7 +70,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("nodesep")]
         public virtual double? NodeSeparation
         {
-            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(NodeSeparation), v.Value, "Node separation must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));

@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("weight")]
         public virtual double? Weight
         {
-            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(Weight), v.Value, "Weight must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("len")]
         public virtual double? Length
         {
-            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
@@ -56,7 +56,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("labelfontsize")]
         public virtual double? LabelFontSize
         {
-            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(LabelFontSize), v.Value, "Label font size must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
@@ -219,7 +219,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("arrowsize")]
         public virtual double? ArrowSize
         {
-            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(ArrowSize), v.Value, "Arrow size must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
@@ -291,7 +291,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("labeldistance")]
         public virtual double? LabelDistance
         {
-            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(LabelDistance), v.Value, "Label distance must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
@@ -300,7 +300,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("labelangle")]
         public virtual double? LabelAngle
         {
-            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 

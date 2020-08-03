@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("penwidth")]
         public virtual double? PenWidth
         {
-            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(PenWidth), v.Value, "Pen width must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
@@ -89,7 +89,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("fontsize")]
         public virtual double? FontSize
         {
-            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(FontSize), v.Value, "Font size must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));

@@ -34,28 +34,28 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("skew")]
         public virtual double? Skew
         {
-            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
         [DotAttributeKey("distortion")]
         public virtual double? Distortion
         {
-            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
         [DotAttributeKey("orientation")]
         public virtual double? Orientation
         {
-            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
         [DotAttributeKey("width")]
         public virtual double? Width
         {
-            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
                 ? throw new ArgumentOutOfRangeException(nameof(Width), v.Value, "The width must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("height")]
         public virtual double? Height
         {
-            get => GetValueAs<double>(MethodBase.GetCurrentMethod(), out var result) ? result : (double?) null;
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
                 ? throw new ArgumentOutOfRangeException(nameof(Height), v.Value, "The height must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
