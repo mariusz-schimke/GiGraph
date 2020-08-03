@@ -8,20 +8,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual T GetAs<T>(string key)
             where T : DotAttribute
         {
-            if (TryGetValue(key, out var result))
+            if (!TryGetValue(key, out var attribute) || attribute is null)
             {
-                return (T) result;
+                return null;
             }
 
-            return null;
+            return attribute is T output
+                ? output
+                : throw new InvalidCastException($"The '{key}' attribute of type {attribute.GetType().FullName} cannot be accessed as {typeof(T).FullName}.");
         }
 
         public virtual bool TryGetAs<T>(string key, out T attribute)
             where T : DotAttribute
         {
-            if (TryGetValue(key, out var result))
+            if (TryGetValue(key, out var output))
             {
-                attribute = result as T;
+                attribute = output as T;
                 return attribute is { };
             }
 
@@ -48,8 +50,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         protected virtual bool GetValueAs<T>(string key, out T value, params Func<object, (bool IsValid, T Result)>[] converters)
         {
-            if (!TryGetValue(key, out var attribute) ||
-                !(attribute.GetValue() is {} attributeValue))
+            if (!TryGetValue(key, out var attribute) || !(attribute.GetValue() is {} attributeValue))
             {
                 value = default;
                 return false;
@@ -66,8 +67,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             if (true == converters?.Any())
             {
                 var converted = converters
-                   .Select(c => c(attributeValue))
-                   .FirstOrDefault(c => c.IsValid);
+                   .Select(convert => convert(attributeValue))
+                   .FirstOrDefault(result => result.IsValid);
 
                 if (converted.IsValid)
                 {
@@ -76,7 +77,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 }
             }
 
-            throw new InvalidCastException($"The '{key}' attribute of type {attributeValue.GetType().FullName} cannot be accessed as {typeof(T).FullName}.");
+            throw new InvalidCastException($"The '{key}' attribute value of type {attributeValue.GetType().FullName} cannot be accessed as {typeof(T).FullName}.");
         }
     }
 }
