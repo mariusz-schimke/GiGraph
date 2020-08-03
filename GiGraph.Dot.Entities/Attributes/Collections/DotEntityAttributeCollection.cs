@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("color")]
         public virtual DotColorDefinition Color
         {
-            get => TryGetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
@@ -29,14 +29,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         [DotAttributeKey("bgcolor")]
         public virtual DotColorDefinition BackgroundColor
         {
-            get => TryGetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
         [DotAttributeKey("fillcolor")]
         public virtual DotColorDefinition FillColor
         {
-            get => TryGetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 

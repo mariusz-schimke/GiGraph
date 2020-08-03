@@ -37,19 +37,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return GetValueAsDouble(GetKey(propertyMethod));
         }
 
-        protected virtual DotColorDefinition TryGetValueAsColorDefinition(string key)
+        protected virtual DotColorDefinition GetValueAsColorDefinition(MethodBase propertyMethod)
         {
-            if (TryGetValueAs<DotColorDefinition>(key, out var colorDefinition))
-            {
-                return colorDefinition;
-            }
-
-            return TryGetValueAs<Color>(key, out var color) ? new DotColor(color) : null;
-        }
-
-        protected virtual DotColorDefinition TryGetValueAsColorDefinition(MethodBase propertyMethod)
-        {
-            return TryGetValueAsColorDefinition(GetKey(propertyMethod));
+            return GetValueAsColorDefinition(GetKey(propertyMethod));
         }
 
         protected virtual DotLabel TryGetValueAsLabel(string key)
