@@ -210,21 +210,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual bool GetValueAs<T>(string key, out T value)
         {
-            if (TryGetValue(key, out var attribute))
-            {
-                value = (T) attribute.GetValue();
-                return true;
-            }
-
-            value = default;
-            return false;
+            return GetValueAs(key, out value, converters: null);
         }
 
         public virtual bool TryGetValueAs<T>(string key, out T value)
         {
-            if (TryGetValue(key, out var attribute) && attribute.GetValue() is T attributeValue)
+            if (TryGetValue(key, out var attribute) && attribute.GetValue() is T output)
             {
-                value = attributeValue;
+                value = output;
                 return true;
             }
 
@@ -278,6 +271,39 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotArrowheadDefinitionAttribute Set(string key, DotArrowheadDefinition value)
         {
             return Set(new DotArrowheadDefinitionAttribute(key, value));
+        }
+
+        protected virtual bool GetValueAs<T>(string key, out T value, params Func<object, (bool IsValid, T Result)>[] converters)
+        {
+            if (!TryGetValue(key, out var attribute) ||
+                !(attribute.GetValue() is {} attributeValue))
+            {
+                value = default;
+                return false;
+            }
+
+            // if not null and of a matching type, return it
+            if (attributeValue is T output)
+            {
+                value = output;
+                return true;
+            }
+
+            // otherwise try to convert it
+            if (true == converters?.Any())
+            {
+                var converted = converters
+                   .Select(c => c(attributeValue))
+                   .FirstOrDefault(c => c.IsValid);
+
+                if (converted.IsValid)
+                {
+                    value = converted.Result;
+                    return true;
+                }
+            }
+
+            throw new InvalidCastException($"The '{key}' attribute of type {attributeValue.GetType().FullName} cannot be accessed as {typeof(T).FullName}.");
         }
 
         protected virtual void AddOrRemove<T>(string key, T attribute)
