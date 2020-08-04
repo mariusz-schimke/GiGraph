@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Examples.Basic
                      .AppendRecord
                       (
                           r2 => r2
-                               .AppendField(f => f.AppendLeftJustifiedLine("Baz"))
+                               .AppendField(f => f.AppendLineLeftJustified("Baz"))
                                .AppendRecord
                                 (
                                     r3 => r3
@@ -47,7 +47,7 @@ namespace GiGraph.Dot.Examples.Basic
                                          .AppendField("Waldo")
                                          .AppendField("Fred", "port1")
                                 )
-                               .AppendField(f => f.AppendRightJustifiedLine("Plugh"))
+                               .AppendField(f => f.AppendLineRightJustified("Plugh"))
                       )
                      .AppendField("Qux")
                      .AppendField("Quux")

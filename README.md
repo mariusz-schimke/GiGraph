@@ -1483,8 +1483,8 @@ graph.Nodes.Add("Foo", attrs =>
     // use text formatter
     attrs.Label = new DotTextFormatter()
                  .AppendLine("Centered line")
-                 .AppendLeftJustifiedLine("Left-justified line")
-                 .AppendRightJustifiedLine("Right-justified line")
+                 .AppendLineLeftJustified("Left-justified line")
+                 .AppendLineRightJustified("Right-justified line")
                  .ToFormattedText();
 
     // or string concatenation

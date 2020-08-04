@@ -103,7 +103,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// <param name="line">
         ///     The line of text to append to the instance.
         /// </param>
-        public virtual DotTextFormatter AppendLeftJustifiedLine(DotEscapeString line)
+        public virtual DotTextFormatter AppendLineLeftJustified(DotEscapeString line)
         {
             return Append(line).JustifyLeft();
         }
@@ -115,7 +115,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// <param name="line">
         ///     The line of text to append to the instance.
         /// </param>
-        protected virtual DotTextFormatter AppendEscapedLeftJustifiedLine(string line)
+        public virtual DotTextFormatter AppendEscapedLineLeftJustified(string line)
         {
             return AppendEscaped(line).JustifyLeft();
         }
@@ -127,7 +127,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// <param name="line">
         ///     The line of text to append to the instance.
         /// </param>
-        public virtual DotTextFormatter AppendRightJustifiedLine(DotEscapeString line)
+        public virtual DotTextFormatter AppendLineRightJustified(DotEscapeString line)
         {
             return Append(line).JustifyRight();
         }
@@ -139,7 +139,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         /// <param name="line">
         ///     The line of text to append to the instance.
         /// </param>
-        public virtual DotTextFormatter AppendEscapedRightJustifiedLine(string line)
+        public virtual DotTextFormatter AppendEscapedLineRightJustified(string line)
         {
             return AppendEscaped(line).JustifyRight();
         }
