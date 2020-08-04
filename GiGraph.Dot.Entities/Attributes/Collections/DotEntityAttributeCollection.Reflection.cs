@@ -62,6 +62,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return ContainsKey(key);
         }
 
+        public virtual bool IsNullified<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        {
+            var key = GetKey(property);
+            return IsNullified(key);
+        }
+
         protected virtual string GetKey(MethodBase propertyMethod)
         {
             return GetKey(propertyMethod, propertyMethod.DeclaringType);

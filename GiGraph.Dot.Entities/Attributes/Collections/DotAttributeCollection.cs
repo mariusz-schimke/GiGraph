@@ -31,6 +31,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             Add(key, attribute);
         }
 
+        public virtual bool IsNullified(string key)
+        {
+            return TryGetValue(key, out var result) && result.GetValue() is null;
+        }
+
         protected virtual void AddOrRemove<T>(string key, T attribute)
             where T : DotAttribute
         {

@@ -41,6 +41,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotNullAttribute SetNull(string key);
 
         /// <summary>
+        ///     Determines whether the collection contains an attribute with the specified key, whose value is null.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute whose value to check.
+        /// </param>
+        bool IsNullified(string key);
+
+        /// <summary>
         ///     Adds or replaces the specified attribute in the collection. The value can be any string understood by the DOT visualization
         ///     tool for the specified attribute key.
         /// </summary>

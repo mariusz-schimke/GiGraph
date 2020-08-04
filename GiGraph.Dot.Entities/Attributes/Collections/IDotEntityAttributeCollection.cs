@@ -17,6 +17,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotNullAttribute SetNull<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
 
         /// <summary>
+        ///     Determines whether the collection contains an attribute with the specified key, whose value is null.
+        /// </summary>
+        /// <param name="property">
+        ///     The property by which to get the DOT key of the attribute whose value to check.
+        /// </param>
+        /// <typeparam name="TProperty">
+        ///     The type returned by the property to check.
+        /// </typeparam>
+        bool IsNullified<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
+
+        /// <summary>
         ///     Gets the DOT attribute the specified property provides access to.
         /// </summary>
         /// <param name="property">
