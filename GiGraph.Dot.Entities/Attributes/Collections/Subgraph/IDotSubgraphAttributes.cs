@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 
-namespace GiGraph.Dot.Entities.Attributes.Entities
+namespace GiGraph.Dot.Entities.Attributes.Collections.Subgraph
 {
     public interface IDotSubgraphAttributes
     {

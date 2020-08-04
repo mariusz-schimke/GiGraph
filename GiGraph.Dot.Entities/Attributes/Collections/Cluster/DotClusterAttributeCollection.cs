@@ -1,6 +1,4 @@
-using GiGraph.Dot.Entities.Attributes.Entities;
-
-namespace GiGraph.Dot.Entities.Attributes.Collections
+namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
     public class DotClusterAttributeCollection : DotEntityAttributeCollection<IDotClusterAttributes>, IDotClusterAttributeCollection
     {
