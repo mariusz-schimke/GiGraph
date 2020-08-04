@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     public interface IDotEntityAttributeCollection<TExposedEntityAttributes>
     {
         /// <summary>
-        ///     Sets an empty value for the specified attribute key.
+        ///     Sets a null value for the specified attribute key.
         /// </summary>
         /// <param name="property">
         ///     The property by which to get the DOT attribute key to set a value for.

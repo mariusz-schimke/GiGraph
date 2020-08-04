@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         void SetRange(IEnumerable<DotAttribute> attributes);
 
         /// <summary>
-        ///     Sets an empty value for the specified attribute key.
+        ///     Sets a null value for the specified attribute key.
         /// </summary>
         /// <param name="key">
         ///     The key of the attribute whose value to set.

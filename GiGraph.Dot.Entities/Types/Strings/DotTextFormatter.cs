@@ -228,7 +228,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         }
 
         /// <summary>
-        ///     Returns the formatted content of the current instance.
+        ///     Returns the formatted text content of the current instance.
         /// </summary>
         public virtual DotEscapeString ToFormattedText()
         {

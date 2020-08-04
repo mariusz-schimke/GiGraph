@@ -77,8 +77,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             var property = declaringType
               ?.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-              ?.FirstOrDefault(propertyInfo => propertyInfo.GetSetMethod(nonPublic: true) == propertyMethod ||
-                                               propertyInfo.GetGetMethod(nonPublic: true) == propertyMethod);
+              ?.FirstOrDefault(propertyInfo => propertyMethod.Equals(propertyInfo.GetSetMethod(nonPublic: true)) ||
+                                               propertyMethod.Equals(propertyInfo.GetGetMethod(nonPublic: true)));
 
             if (property is null)
             {
