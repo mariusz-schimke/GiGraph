@@ -1,12 +1,14 @@
+using System.Text;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Enums;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Edges
 {
     /// <summary>
     ///     Represents the endpoint port, that is a point on a node an edge is attached to.
     /// </summary>
-    public class DotEndpointPort
+    public class DotEndpointPort : IDotEncodable
     {
         /// <summary>
         ///     Creates a new instance with no port properties specified.
@@ -75,6 +77,11 @@ namespace GiGraph.Dot.Entities.Types.Edges
         /// </summary>
         public virtual DotCompassPoint? CompassPoint { get; set; }
 
+        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        {
+            return GetDotEncoded(options, syntaxRules);
+        }
+
         /// <summary>
         ///     Creates a new endpoint port with no properties specified.
         /// </summary>
@@ -91,6 +98,26 @@ namespace GiGraph.Dot.Entities.Types.Edges
         public static implicit operator DotEndpointPort(DotCompassPoint? compassPoint)
         {
             return compassPoint.HasValue ? new DotEndpointPort(compassPoint.Value) : null;
+        }
+
+        protected internal virtual string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        {
+            var result = new StringBuilder();
+            var separator = string.Empty;
+
+            if (Name is { })
+            {
+                result.Append(syntaxRules.IdentifierEscaper.Escape(Name));
+                separator = ":";
+            }
+
+            if (CompassPoint.HasValue)
+            {
+                result.Append(separator);
+                result.Append(DotCompassPointConverter.Convert(CompassPoint.Value));
+            }
+
+            return result.ToString();
         }
     }
 }

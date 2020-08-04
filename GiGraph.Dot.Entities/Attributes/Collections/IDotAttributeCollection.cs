@@ -414,7 +414,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotEndpointPortAttribute Set(string key, DotCompassPoint value);
+        DotCompassPointAttribute Set(string key, DotCompassPoint value);
 
         /// <summary>
         ///     Checks if an attribute with the specified key exists in the collection, and returns it as the specified type. If the

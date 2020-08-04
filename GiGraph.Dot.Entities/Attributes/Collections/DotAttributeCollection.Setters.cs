@@ -175,9 +175,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotEndpointPortAttribute(key, value));
         }
 
-        public virtual DotEndpointPortAttribute Set(string key, DotCompassPoint value)
+        public virtual DotCompassPointAttribute Set(string key, DotCompassPoint value)
         {
-            return Set(new DotEndpointPortAttribute(key, new DotEndpointPort(value)));
+            return Set(new DotCompassPointAttribute(key, value));
         }
 
         public virtual DotAlignmentAttribute Set(string key, DotAlignment value)

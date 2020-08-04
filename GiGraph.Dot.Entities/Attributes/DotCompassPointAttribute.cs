@@ -1,3 +1,4 @@
+using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Output.Options;
 
@@ -6,7 +7,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     ///     Represents an endpoint port, that is a point on a node where an edge is attached to.
     /// </summary>
-    public class DotEndpointPortAttribute : DotAttribute<DotEndpointPort>
+    public class DotCompassPointAttribute : DotAttribute<DotCompassPoint>
     {
         /// <summary>
         ///     Creates a new endpoint port attribute instance.
@@ -17,14 +18,14 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="port">
         ///     The endpoint port to use as the value of the attribute.
         /// </param>
-        public DotEndpointPortAttribute(string key, DotEndpointPort port)
+        public DotCompassPointAttribute(string key, DotCompassPoint port)
             : base(key, port)
         {
         }
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return Value?.GetDotEncoded(options, syntaxRules);
+            return new DotEndpointPort(Value).GetDotEncoded(options, syntaxRules);
         }
     }
 }
