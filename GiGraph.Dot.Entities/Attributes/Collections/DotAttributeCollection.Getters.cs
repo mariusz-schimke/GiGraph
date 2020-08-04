@@ -127,7 +127,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is Color c ? (true, new DotColor(c)) : (false, null)
+                v => v is Color c ? (true, new DotColor(c)) : (false, default)
             )
                 ? value
                 : null;
@@ -144,7 +144,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is string s ? (true, (DotEscapedString) s) : (false, null)
+                v => v is string s ? (true, (DotEscapedString) s) : (false, default)
             )
                 ? value
                 : null;
@@ -156,8 +156,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is DotEscapeString s ? (true, s) : (false, null),
-                v => v is string s ? (true, (DotEscapedString) s) : (false, null)
+                v => v is DotEscapeString s ? (true, s) : (false, default),
+                v => v is string s ? (true, (DotEscapedString) s) : (false, default)
             )
                 ? value
                 : null;
