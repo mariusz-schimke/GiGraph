@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Collections.Node;
 
 namespace GiGraph.Dot.Entities.Nodes
 {
@@ -10,7 +11,7 @@ namespace GiGraph.Dot.Entities.Nodes
     /// </summary>
     public class DotNodeGroup : DotNodeDefinition
     {
-        protected DotNodeGroup(string[] nodeIds, IDotNodeAttributes attributes)
+        protected DotNodeGroup(string[] nodeIds, IDotNodeAttributeCollection attributes)
             : base(attributes)
         {
             if (nodeIds is null)
@@ -30,7 +31,7 @@ namespace GiGraph.Dot.Entities.Nodes
         ///     The node identifiers to initialize the instance with.
         /// </param>
         public DotNodeGroup(params string[] nodeIds)
-            : this(nodeIds, new DotNodeAttributes())
+            : this(nodeIds, new DotNodeAttributeCollection())
         {
         }
 
@@ -53,7 +54,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// <summary>
         ///     The attributes of the node group.
         /// </summary>
-        public override IDotNodeAttributes Attributes => base.Attributes;
+        public override IDotNodeAttributeCollection Attributes => base.Attributes;
 
         protected override string GetOrderingKey()
         {

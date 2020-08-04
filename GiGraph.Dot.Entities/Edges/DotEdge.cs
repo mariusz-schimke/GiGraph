@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 
 namespace GiGraph.Dot.Entities.Edges
@@ -8,7 +9,7 @@ namespace GiGraph.Dot.Entities.Edges
     /// </summary>
     public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     {
-        protected DotEdge(DotEndpoint tail, DotEndpoint head, IDotEdgeAttributes attributes)
+        protected DotEdge(DotEndpoint tail, DotEndpoint head, IDotEdgeAttributeCollection attributes)
             : base(tail, head, attributes)
         {
         }

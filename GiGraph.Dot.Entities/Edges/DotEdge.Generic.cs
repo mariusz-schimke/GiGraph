@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 
 namespace GiGraph.Dot.Entities.Edges
@@ -36,7 +37,7 @@ namespace GiGraph.Dot.Entities.Edges
         where TTail : DotEndpointDefinition, IDotOrderable
         where THead : DotEndpointDefinition, IDotOrderable
     {
-        protected DotEdge(TTail tail, THead head, IDotEdgeAttributes attributes)
+        protected DotEdge(TTail tail, THead head, IDotEdgeAttributeCollection attributes)
             : base(attributes)
         {
             Tail = tail ?? throw new ArgumentNullException(nameof(tail), "Edge tail cannot be null.");
@@ -53,7 +54,7 @@ namespace GiGraph.Dot.Entities.Edges
         ///     The head (destination, right) endpoint.
         /// </param>
         public DotEdge(TTail tail, THead head)
-            : this(tail, head, new DotEdgeAttributes())
+            : this(tail, head, new DotEdgeAttributeCollection())
         {
         }
 

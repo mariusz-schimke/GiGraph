@@ -17,9 +17,9 @@
         public static string Escape(string value)
         {
             return value
-                 ?.Replace($"{CR}{LF}", @"\n")
-                 ?.Replace($"{CR}", @"\n")
-                 ?.Replace($"{LF}", @"\n");
+              ?.Replace($"{CR}{LF}", @"\n")
+              ?.Replace($"{CR}", @"\n")
+              ?.Replace($"{LF}", @"\n");
         }
     }
 }

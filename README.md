@@ -1407,21 +1407,21 @@ node.Attributes.Set("fillcolor", DotColorDefinition.Gradient(Color.Red, Color.Bl
 
 The text assigned to any [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type attribute (mainly label) may contain special escape sequences. On graph visualization they are replaced with, for example, the graph identifier, the identifier of the current node, the definition of the current edge etc.
 
-There are two basic ways of formatting escape strings, supported by the library: one of them is string concatenation with predefined escape sequences exposed by the *DotEscapeString* class, and the other is the *DotEscapeStringBuilder* class (the *DotEscapeString* class represents the [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) DOT type).
+There are two basic ways of formatting text, supported by the library: one of them is string concatenation with predefined escape sequences exposed by the *DotEscapeString* class, and the other is the *DotTextFormatter* class (the *DotEscapeString* class represents the [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type of the DOT language).
 
-*Note that the escape sequences provided by the DotEscapeString class should not be used as parameters of the string.Format method or of an interpolated string. The result will not render a valid DOT escape string in such cases.*
+*Note that the escape sequences provided by the DotEscapeString class should not be used as parameters of the string.Format method or of an interpolated string. The result text will be invalid in such cases.*
 
 #### Label placeholders
 
-Below is an example presenting labels with element-specific escape sequences replaced with actual element identifiers on graph visualization.
+Below is an example presenting labels with element-specific escape sequences embedded, replaced with actual element identifiers on graph visualization.
 
 ```c#
 var graph = new DotGraph("Label formatting");
 
-// escape string builder
-graph.Attributes.Label = new DotEscapeStringBuilder("Graph title: ")
+// use text formatter
+graph.Attributes.Label = new DotTextFormatter("Graph title: ")
                         .AppendGraphId() // graph ID escape sequence
-                        .ToEscapeString();
+                        .ToFormattedText();
 
 // or string concatenation
 graph.Attributes.Label = "Graph title: " + DotEscapeString.GraphId;
@@ -1429,10 +1429,10 @@ graph.Attributes.Label = "Graph title: " + DotEscapeString.GraphId;
 
 graph.Nodes.Add("Foo", attrs =>
 {
-    // escape string builder
-    attrs.Label = new DotEscapeStringBuilder("Node ")
+    // use text formatter
+    attrs.Label = new DotTextFormatter("Node ")
                  .AppendNodeId() // node ID escape sequence
-                 .ToEscapeString();
+                 .ToFormattedText();
 
     // or string concatenation
     attrs.Label = "Node " + DotEscapeString.NodeId;
@@ -1441,12 +1441,12 @@ graph.Nodes.Add("Foo", attrs =>
 
 graph.Edges.Add("Foo", "Bar", edge =>
 {
-    // escape string builder
-    edge.Attributes.Label = new DotEscapeStringBuilder("From ")
+    // use text formatter
+    edge.Attributes.Label = new DotTextFormatter("From ")
                            .AppendEdgeTailNodeId() // tail node ID escape sequence
                            .Append(" to ")
                            .AppendEdgeHeadNodeId() // head node ID escape sequence
-                           .ToEscapeString();
+                           .ToFormattedText();
 
     // or string concatenation
     edge.Attributes.Label = "From " + DotEscapeString.EdgeTailNodeId +
@@ -1472,7 +1472,7 @@ digraph "Label formatting"
 
 #### Label justification
 
-The [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) also supports escape sequences that left- or right-justify individual lines of text. They appear in the end of the lines they justify. Below is an example.
+The DOT [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type also supports escape sequences that left- or right-justify individual lines of text. They appear in the end of the lines they justify. Below is an example how to format text using them implicitly (by *DotTextFormatter*) or explicitly (by string concatenation).
 
 ```c#
 graph.Nodes.Add("Foo", attrs =>
@@ -1480,12 +1480,12 @@ graph.Nodes.Add("Foo", attrs =>
     attrs.Shape = DotNodeShape.Box;
     attrs.Width = 3;
 
-    // escape string builder
-    attrs.Label = new DotEscapeStringBuilder()
+    // use text formatter
+    attrs.Label = new DotTextFormatter()
                  .AppendLine("Centered line")
-                 .AppendLeftJustifiedLine("Left-justified line")
-                 .AppendRightJustifiedLine("Right-justified line")
-                 .ToEscapeString();
+                 .AppendLineLeftJustified("Left-justified line")
+                 .AppendLineRightJustified("Right-justified line")
+                 .ToFormattedText();
 
     // or string concatenation
     attrs.Label = "Centered line" + DotEscapeString.LineBreak +

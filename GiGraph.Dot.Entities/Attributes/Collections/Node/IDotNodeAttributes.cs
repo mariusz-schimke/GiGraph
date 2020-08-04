@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
@@ -6,9 +7,9 @@ using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Records;
 using GiGraph.Dot.Entities.Types.Strings;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections
+namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
-    public interface IDotNodeAttributes : IDotAttributeCollection, IDotFillable
+    public interface IDotNodeAttributes
     {
         /// <summary>
         ///     <para>

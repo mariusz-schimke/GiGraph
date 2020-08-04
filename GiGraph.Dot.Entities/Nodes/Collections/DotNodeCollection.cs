@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Collections;
 
 namespace GiGraph.Dot.Entities.Nodes.Collections
@@ -32,7 +33,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="initAttrs">
         ///     An optional node attributes initializer delegate.
         /// </param>
-        public virtual T Add<T>(T node, Action<IDotNodeAttributes> initAttrs)
+        public virtual T Add<T>(T node, Action<IDotNodeAttributeCollection> initAttrs)
             where T : DotNodeDefinition
         {
             Add(node);
@@ -49,7 +50,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="initAttrs">
         ///     An optional initializer delegate to call for the attributes of the created node.
         /// </param>
-        public virtual DotNode Add(string id, Action<IDotNodeAttributes> initAttrs = null)
+        public virtual DotNode Add(string id, Action<IDotNodeAttributeCollection> initAttrs = null)
         {
             return Add(new DotNode(id), initAttrs);
         }
@@ -74,7 +75,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="ids">
         ///     The identifiers of the nodes to add.
         /// </param>
-        public virtual DotNodeGroup Add(Action<IDotNodeAttributes> initGroupAttrs, params string[] ids)
+        public virtual DotNodeGroup Add(Action<IDotNodeAttributeCollection> initGroupAttrs, params string[] ids)
         {
             return Add(ids, initGroupAttrs);
         }
@@ -88,7 +89,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="initGroupAttrs">
         ///     An optional initializer delegate to call for the attributes of the created group.
         /// </param>
-        public virtual DotNodeGroup Add(IEnumerable<string> ids, Action<IDotNodeAttributes> initGroupAttrs = null)
+        public virtual DotNodeGroup Add(IEnumerable<string> ids, Action<IDotNodeAttributeCollection> initGroupAttrs = null)
         {
             return Add(new DotNodeGroup(ids), initGroupAttrs);
         }
@@ -130,15 +131,15 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         public virtual DotNode[] AddRange(IEnumerable<string> ids, Action<DotNode> initNode = null)
         {
             return ids.Select
-                       (
-                           id =>
-                           {
-                               var node = Add(id);
-                               initNode?.Invoke(node);
-                               return node;
-                           }
-                       )
-                      .ToArray();
+                (
+                    id =>
+                    {
+                        var node = Add(id);
+                        initNode?.Invoke(node);
+                        return node;
+                    }
+                )
+               .ToArray();
         }
 
         /// <summary>
@@ -161,7 +162,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         public virtual IEnumerable<DotNode> GetAll(string id)
         {
             return this.OfType<DotNode>()
-                       .Where(node => node.Id == id);
+               .Where(node => node.Id == id);
         }
     }
 }

@@ -33,6 +33,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         void SetRange(IEnumerable<DotAttribute> attributes);
 
         /// <summary>
+        ///     Sets a null value for the specified attribute key.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute whose value to set.
+        /// </param>
+        DotNullAttribute SetNull(string key);
+
+        /// <summary>
+        ///     Determines whether the collection contains an attribute with the specified key, whose value is null.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute whose value to check.
+        /// </param>
+        bool IsNullified(string key);
+
+        /// <summary>
         ///     Adds or replaces the specified attribute in the collection. The value can be any string understood by the DOT visualization
         ///     tool for the specified attribute key.
         /// </summary>
@@ -406,7 +422,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotEndpointPortAttribute Set(string key, DotCompassPoint value);
+        DotCompassPointAttribute Set(string key, DotCompassPoint value);
 
         /// <summary>
         ///     Checks if an attribute with the specified key exists in the collection, and returns it as the specified type. If the
@@ -449,6 +465,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The value of the attribute if found and valid, or null otherwise.
         /// </param>
         bool TryGetValueAs<T>(string key, out T value);
+
+        /// <summary>
+        ///     Checks if an attribute with the specified key exists in the collection, and returns its value as the specified type. If the
+        ///     attribute is found, but its value cannot be cast as the specified type, an exception is thrown.
+        /// </summary>
+        /// <typeparam name="T">
+        ///     The type to return the attribute value as.
+        /// </typeparam>
+        /// <param name="key">
+        ///     The key of the attribute to get.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute if found and valid, or null if not found.
+        /// </param>
+        bool GetValueAs<T>(string key, out T value);
 
         /// <summary>
         ///     Removes all attributes matching the specified criteria from the collection.

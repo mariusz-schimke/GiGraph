@@ -1,4 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Collections.Edge;
+using GiGraph.Dot.Entities.Attributes.Collections.Graph;
+using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
@@ -13,13 +16,13 @@ namespace GiGraph.Dot.Entities.Graphs
         protected DotGraph(string id,
             bool isDirected,
             bool isStrict,
-            IDotGraphAttributes attributes,
+            IDotGraphAttributeCollection attributes,
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
-            IDotNodeAttributes defaultNodeAttributes,
-            IDotEdgeAttributes defaultEdgeAttributes)
+            IDotNodeAttributeCollection defaultNodeAttributes,
+            IDotEdgeAttributeCollection defaultEdgeAttributes)
             : base(id, attributes, nodes, edges, subgraphs, clusters, defaultNodeAttributes, defaultEdgeAttributes)
         {
             IsDirected = isDirected;
@@ -46,13 +49,13 @@ namespace GiGraph.Dot.Entities.Graphs
                 id,
                 isDirected,
                 isStrict,
-                new DotGraphAttributes(),
+                new DotGraphAttributeCollection(),
                 new DotNodeCollection(),
                 new DotEdgeCollection(),
                 new DotSubgraphCollection(),
                 new DotClusterCollection(),
-                new DotNodeAttributes(),
-                new DotEdgeAttributes()
+                new DotNodeAttributeCollection(),
+                new DotEdgeAttributeCollection()
             )
         {
         }
@@ -72,6 +75,6 @@ namespace GiGraph.Dot.Entities.Graphs
         /// <summary>
         ///     The attributes of the graph.
         /// </summary>
-        public new IDotGraphAttributes Attributes => (IDotGraphAttributes) base.Attributes;
+        public new IDotGraphAttributeCollection Attributes => (IDotGraphAttributeCollection) base.Attributes;
     }
 }

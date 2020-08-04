@@ -1,5 +1,6 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Collections.Node;
 
 namespace GiGraph.Dot.Entities.Nodes
 {
@@ -8,7 +9,7 @@ namespace GiGraph.Dot.Entities.Nodes
     /// </summary>
     public class DotNode : DotNodeDefinition
     {
-        protected DotNode(string id, IDotNodeAttributes attributes)
+        protected DotNode(string id, IDotNodeAttributeCollection attributes)
             : base(attributes)
         {
             Id = id ?? throw new ArgumentNullException(nameof(id), "Node identifier cannot be null.");
@@ -19,7 +20,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// </summary>
         /// <param name="id"></param>
         public DotNode(string id)
-            : this(id, new DotNodeAttributes())
+            : this(id, new DotNodeAttributeCollection())
         {
         }
 
@@ -31,7 +32,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// <summary>
         ///     The attributes of the node.
         /// </summary>
-        public override IDotNodeAttributes Attributes => base.Attributes;
+        public override IDotNodeAttributeCollection Attributes => base.Attributes;
 
         protected override string GetOrderingKey()
         {

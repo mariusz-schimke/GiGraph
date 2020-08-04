@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 
 namespace GiGraph.Dot.Entities.Edges
@@ -13,7 +14,7 @@ namespace GiGraph.Dot.Entities.Edges
     {
         protected readonly DotEndpointDefinition[] _endpoints;
 
-        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, IDotEdgeAttributes attributes)
+        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, IDotEdgeAttributeCollection attributes)
             : base(attributes)
         {
             if (endpoints is null)
@@ -33,7 +34,7 @@ namespace GiGraph.Dot.Entities.Edges
         ///     The endpoints to initialize the instance with.
         /// </param>
         public DotEdgeSequence(params DotEndpointDefinition[] endpoints)
-            : this(endpoints, new DotEdgeAttributes())
+            : this(endpoints, new DotEdgeAttributeCollection())
         {
         }
 
@@ -83,7 +84,7 @@ namespace GiGraph.Dot.Entities.Edges
             (
                 " ",
                 Endpoints.Cast<IDotOrderable>()
-                         .Select(endpoint => endpoint.OrderingKey)
+                   .Select(endpoint => endpoint.OrderingKey)
             );
         }
 

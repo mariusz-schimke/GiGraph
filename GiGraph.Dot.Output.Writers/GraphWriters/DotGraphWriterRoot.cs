@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
         public virtual void EndComment()
         {
             _tokenWriter.LineBreak()
-                        .Indentation(linger: true);
+               .Indentation(linger: true);
         }
     }
 }

@@ -30,19 +30,19 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// <summary>
         ///     Appends a field to the record being built.
         /// </summary>
-        /// <param name="buildText">
-        ///     The method delegate to build an escape string using the specified escape string builder.
+        /// <param name="formatText">
+        ///     The method delegate to generate formatted text for the field, using the specified text formatter.
         /// </param>
         /// <param name="portName">
         ///     The port name, that is a name that can be referred to from an edge endpoint in order to attach the end of the edge to the
         ///     appended field.
         /// </param>
-        public virtual DotRecordBuilder AppendField(Action<DotEscapeStringBuilder> buildText, string portName = null)
+        public virtual DotRecordBuilder AppendField(Action<DotTextFormatter> formatText, string portName = null)
         {
-            var builder = new DotEscapeStringBuilder();
-            buildText(builder);
+            var formatter = new DotTextFormatter();
+            formatText(formatter);
 
-            return AppendField(builder.ToEscapeString(), portName);
+            return AppendField(formatter.ToFormattedText(), portName);
         }
 
         /// <summary>

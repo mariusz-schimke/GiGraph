@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Output.Writers.NodeWriters
         public virtual void WriteNodeKeyword()
         {
             _tokenWriter.Keyword("node")
-                        .Space();
+               .Space();
         }
     }
 }

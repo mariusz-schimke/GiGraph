@@ -1,4 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Collections.Edge;
+using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
@@ -14,8 +16,8 @@ namespace GiGraph.Dot.Entities.Graphs
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
-            IDotNodeAttributes defaultNodeAttributes,
-            IDotEdgeAttributes defaultEdgeAttributes)
+            IDotNodeAttributeCollection defaultNodeAttributes,
+            IDotEdgeAttributeCollection defaultEdgeAttributes)
         {
             Id = id;
             Attributes = attributes;
@@ -46,10 +48,12 @@ namespace GiGraph.Dot.Entities.Graphs
         ///     The attributes to be used as default for all nodes in this graph when not specified explicitly for individual nodes in the
         ///     <see cref="Nodes" /> collection.
         /// </summary>
-        public virtual IDotNodeAttributes NodeDefaults { get; }
+        public virtual IDotNodeAttributeCollection NodeDefaults { get; }
 
         /// <summary>
-        ///     Gets the collection of edges.
+        ///     <para>
+        ///         Gets the collection of edges.
+        ///     </para>
         ///     <para>
         ///         (!) When an edge connects two elements belonging to two different subgraphs (or where one belongs to the root graph, and
         ///         the other belongs to a subgraph), then it should be added to the common upper level graph or subgraph, not to the current
@@ -62,11 +66,13 @@ namespace GiGraph.Dot.Entities.Graphs
         ///     The attributes to be used as default for all edges in this graph when not specified explicitly for individual edges in the
         ///     <see cref="Edges" /> collection.
         /// </summary>
-        public virtual IDotEdgeAttributes EdgeDefaults { get; }
+        public virtual IDotEdgeAttributeCollection EdgeDefaults { get; }
 
         /// <summary>
-        ///     Gets the collection of subgraphs. A subgraph is interpreted as a collection of nodes constrained with a rank attribute that
-        ///     determines their layout.
+        ///     <para>
+        ///         Gets the collection of subgraphs. A subgraph is interpreted as a collection of nodes constrained with a rank attribute
+        ///         that determines their layout.
+        ///     </para>
         ///     <para>
         ///         Use a subgraph when you want to have more granular control on the layout of a specific group of nodes. However, when you
         ///         want the nodes to be drawn together in a bounding rectangle, that has a custom color and fill, use a cluster instead (
@@ -77,7 +83,9 @@ namespace GiGraph.Dot.Entities.Graphs
         public virtual DotSubgraphCollection Subgraphs { get; }
 
         /// <summary>
-        ///     Gets the collection of clusters. A cluster is interpreted as a collection of nodes drawn within a bounding rectangle.
+        ///     <para>
+        ///         Gets the collection of clusters. A cluster is interpreted as a collection of nodes drawn within a bounding rectangle.
+        ///     </para>
         ///     <para>
         ///         Use a cluster when you want the nodes within it to be drawn together in a bounding rectangle, that has a custom color and
         ///         fill. However, when you want to have more granular control on the layout of a specific group of nodes, use a subgraph

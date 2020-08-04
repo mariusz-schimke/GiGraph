@@ -45,11 +45,6 @@ namespace GiGraph.Dot.Entities.Types.Ranks
         /// </summary>
         public virtual bool Equal { get; set; }
 
-        public static implicit operator DotRankSeparation(double? value)
-        {
-            return value.HasValue ? new DotRankSeparation(value.Value) : null;
-        }
-
         protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
             const string equally = "equally";

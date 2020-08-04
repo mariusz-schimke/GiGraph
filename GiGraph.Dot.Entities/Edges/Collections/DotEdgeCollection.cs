@@ -91,7 +91,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         public virtual IEnumerable<DotEdge> GetAll(string tailNodeId, string headNodeId)
         {
             return this.OfType<DotEdge>()
-                       .Where(edge => edge.Equals(tailNodeId, headNodeId));
+               .Where(edge => edge.Equals(tailNodeId, headNodeId));
         }
 
         /// <summary>

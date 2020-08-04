@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Subgraphs;
 
@@ -10,7 +11,7 @@ namespace GiGraph.Dot.Entities.Edges
     /// </summary>
     public class DotManyToOneEdgeGroup : DotEdge<DotEndpointGroup, DotEndpoint>
     {
-        protected DotManyToOneEdgeGroup(DotEndpointGroup tail, DotEndpoint head, IDotEdgeAttributes attributes)
+        protected DotManyToOneEdgeGroup(DotEndpointGroup tail, DotEndpoint head, IDotEdgeAttributeCollection attributes)
             : base(tail, head, attributes)
         {
         }

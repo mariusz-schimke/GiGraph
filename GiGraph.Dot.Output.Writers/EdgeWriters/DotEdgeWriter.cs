@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Output.Writers.EdgeWriters
         public override IDotAttributeListItemWriter BeginAttributeList(bool useAttributeSeparator)
         {
             _tokenWriter.ClearLingerBuffer()
-                        .Space(linger: true);
+               .Space(linger: true);
 
             return base.BeginAttributeList(useAttributeSeparator);
         }
@@ -43,8 +43,8 @@ namespace GiGraph.Dot.Output.Writers.EdgeWriters
         {
             // these will be removed by the parent writer if no further endpoints are written
             _tokenWriter.Space(linger: true)
-                        .Edge(_context.IsDirectedGraph, linger: true)
-                        .Space(linger: true);
+               .Edge(_context.IsDirectedGraph, linger: true)
+               .Space(linger: true);
         }
     }
 }

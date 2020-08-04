@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
+using GiGraph.Dot.Entities.Attributes.Collections.Edge;
+using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
@@ -21,13 +24,13 @@ namespace GiGraph.Dot.Entities.Subgraphs
     public class DotCluster : DotCommonSubgraph
     {
         protected DotCluster(string id,
-            IDotClusterAttributes attributes,
+            IDotClusterAttributeCollection attributes,
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
-            IDotNodeAttributes defaultNodeAttributes,
-            IDotEdgeAttributes defaultEdgeAttributes)
+            IDotNodeAttributeCollection defaultNodeAttributes,
+            IDotEdgeAttributeCollection defaultEdgeAttributes)
             : base(id, attributes, nodes, edges, subgraphs, clusters, defaultNodeAttributes, defaultEdgeAttributes)
         {
         }
@@ -42,13 +45,13 @@ namespace GiGraph.Dot.Entities.Subgraphs
             : this
             (
                 id,
-                new DotClusterAttributes(),
+                new DotClusterAttributeCollection(),
                 new DotNodeCollection(),
                 new DotEdgeCollection(),
                 new DotSubgraphCollection(),
                 new DotClusterCollection(),
-                new DotNodeAttributes(),
-                new DotEdgeAttributes()
+                new DotNodeAttributeCollection(),
+                new DotEdgeAttributeCollection()
             )
         {
         }
@@ -56,7 +59,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         ///     The attributes of the cluster.
         /// </summary>
-        public new IDotClusterAttributes Attributes => (IDotClusterAttributes) base.Attributes;
+        public new IDotClusterAttributeCollection Attributes => (IDotClusterAttributeCollection) base.Attributes;
 
         /// <summary>
         ///     Creates a new cluster with the specified nodes.

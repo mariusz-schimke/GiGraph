@@ -22,15 +22,17 @@
     
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that can be visualized and/or converted to an image with external tools. A handy one is a plugin for Visual Studio Code, named Graphviz Preview. There are also online tools like www.webgraphviz.com, where you can paste the script to view your graph.</description>
     
-    <releaseNotes>- Record and HTML nodes support added. Now you can create nodes composed of multiple fields (cells) or of HTML tables, by assigning them a record label or an HTML label.
+    <releaseNotes>- Added support for all available edge arrowheads with the filled, empty, and half-clipped variants. See https://github.com/mariusz-schimke/GiGraph/blob/1.2.0/README.md#arrowhead-shapes.
 
-- Added support for HTML edge labels (as HTML tables).
+- Added support for multiple edge arrowheads. See https://github.com/mariusz-schimke/GiGraph/blob/1.2.0/README.md#arrowhead-shapes.
 
-- Added support for attributes: charset, sides, orientation, skew, distortion, regular, width, height, fixedsize, peripheries, splines, nodesep, labeljust, labelloc, URL, headURL/headhref, headtarget, headtooltip, tailURL/tailhref, tailtarget, tailtooltip, labelURL/labelhref, labeltarget, labeltooltip, edgeURL/edgehref, edgetarget, edgetooltip, xlabel, forcelabels, comment (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
+- Added support for label justification (individual lines may be centered, left- or right-justified). See https://github.com/mariusz-schimke/GiGraph/blob/1.2.0/README.md#label-justification.
 
-- Added extension/helper methods for node: ToRecord, ToRoundedRecord, ToHtml, ToPolygon; SetFilled.
+- Added support for label placeholders (element-specific escape sequences replaced with identifiers on graph visualization). See https://github.com/mariusz-schimke/GiGraph/blob/1.2.0/README.md#label-placeholders.
 
-- It is possible now to annotate any element (annotations are rendered in the output DOT script as comments next to the element).
+- Added support for attributes: headlabel, taillabel, image, imagepos, imagepath, group, ranksep, headclip, tailclip, colorscheme, rotate, pad, margin, size, ratio, labelfloat, labeldistance, labelangle, labelfontcolor, labelfontname, labelfontsize, minlen, len, weight, clusterrank, ordering, samehead, sametail (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
+
+- Added separate classes to represent color combinations: DotDualColor, DotGradientColor, DotMultiColor.
 
 - Refactoring.
 

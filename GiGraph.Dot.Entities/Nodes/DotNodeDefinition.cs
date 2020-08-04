@@ -1,10 +1,11 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Collections.Node;
 
 namespace GiGraph.Dot.Entities.Nodes
 {
     public abstract class DotNodeDefinition : IDotEntity, IDotAnnotatable, IDotOrderable
     {
-        protected DotNodeDefinition(IDotNodeAttributes attributes)
+        protected DotNodeDefinition(IDotNodeAttributeCollection attributes)
         {
             Attributes = attributes;
         }
@@ -12,7 +13,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// <summary>
         ///     The attributes of the node or node group.
         /// </summary>
-        public virtual IDotNodeAttributes Attributes { get; }
+        public virtual IDotNodeAttributeCollection Attributes { get; }
 
         public virtual string Annotation { get; set; }
 
