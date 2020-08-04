@@ -13,8 +13,8 @@ namespace GiGraph.Dot.Examples.Basic
 
             // using text formatter
             graph.Attributes.Label = new DotTextFormatter("Graph title: ")
-                                    .AppendGraphId()
-                                    .ToFormattedText();
+               .AppendGraphId()
+               .ToFormattedText();
 
             // using string concatenation
             graph.Attributes.Label = "Graph title: " + DotEscapeString.GraphId;
@@ -26,8 +26,8 @@ namespace GiGraph.Dot.Examples.Basic
             {
                 // using text formatter
                 attrs.Label = new DotTextFormatter("Node ")
-                             .AppendNodeId()
-                             .ToFormattedText();
+                   .AppendNodeId()
+                   .ToFormattedText();
 
                 // using string concatenation
                 attrs.Label = "Node " + DotEscapeString.NodeId;
@@ -41,10 +41,10 @@ namespace GiGraph.Dot.Examples.Basic
             {
                 // using text formatter
                 edge.Attributes.Label = new DotTextFormatter("From ")
-                                       .AppendEdgeTailNodeId()
-                                       .Append(" to ")
-                                       .AppendEdgeHeadNodeId()
-                                       .ToFormattedText();
+                   .AppendEdgeTailNodeId()
+                   .Append(" to ")
+                   .AppendEdgeHeadNodeId()
+                   .ToFormattedText();
 
                 // using string concatenation
                 edge.Attributes.Label = "From " + DotEscapeString.EdgeTailNodeId +

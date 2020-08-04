@@ -130,15 +130,15 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         public virtual DotNode[] AddRange(IEnumerable<string> ids, Action<DotNode> initNode = null)
         {
             return ids.Select
-                       (
-                           id =>
-                           {
-                               var node = Add(id);
-                               initNode?.Invoke(node);
-                               return node;
-                           }
-                       )
-                      .ToArray();
+                (
+                    id =>
+                    {
+                        var node = Add(id);
+                        initNode?.Invoke(node);
+                        return node;
+                    }
+                )
+               .ToArray();
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         public virtual IEnumerable<DotNode> GetAll(string id)
         {
             return this.OfType<DotNode>()
-                       .Where(node => node.Id == id);
+               .Where(node => node.Id == id);
         }
     }
 }

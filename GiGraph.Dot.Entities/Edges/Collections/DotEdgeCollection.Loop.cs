@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         public virtual IEnumerable<DotEdge> GetAllLoops()
         {
             return this.OfType<DotEdge>()
-                       .Where(edge => edge.IsLoop);
+               .Where(edge => edge.IsLoop);
         }
 
         /// <summary>

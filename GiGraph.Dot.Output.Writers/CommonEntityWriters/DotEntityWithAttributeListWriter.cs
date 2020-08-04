@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
         public virtual IDotAttributeListItemWriter BeginAttributeList(bool useAttributeSeparator)
         {
             _tokenWriter.AttributeListStart(linger: true)
-                        .Space(linger: true);
+               .Space(linger: true);
 
             return new DotAttributeListItemWriter(_tokenWriter.NextIndentationLevel(), _context, useAttributeSeparator);
         }
@@ -21,8 +21,8 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
         public virtual void EndAttributeList()
         {
             _tokenWriter.ClearLingerBuffer()
-                        .Space()
-                        .AttributeListEnd();
+               .Space()
+               .AttributeListEnd();
         }
     }
 }

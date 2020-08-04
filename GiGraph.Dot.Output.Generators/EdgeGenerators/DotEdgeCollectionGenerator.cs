@@ -20,8 +20,8 @@ namespace GiGraph.Dot.Output.Generators.EdgeGenerators
         {
             var orderedEdges = _options.OrderElements
                 ? edges.Cast<IDotOrderable>()
-                       .OrderBy(edge => edge.OrderingKey)
-                       .Cast<DotEdgeDefinition>()
+                   .OrderBy(edge => edge.OrderingKey)
+                   .Cast<DotEdgeDefinition>()
                 : edges;
 
             foreach (var edge in orderedEdges.Where(edge => edge.Endpoints.Any()))

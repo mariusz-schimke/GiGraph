@@ -1,6 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Examples.Basic
@@ -19,10 +18,10 @@ namespace GiGraph.Dot.Examples.Basic
 
                 // using text formatter
                 attrs.Label = new DotTextFormatter()
-                             .AppendLine("Centered line")
-                             .AppendLineLeftJustified("Left-justified line")
-                             .AppendLineRightJustified("Right-justified line")
-                             .ToFormattedText();
+                   .AppendLine("Centered line")
+                   .AppendLineLeftJustified("Left-justified line")
+                   .AppendLineRightJustified("Right-justified line")
+                   .ToFormattedText();
 
                 // using string concatenation
                 attrs.Label = "Centered line" + DotEscapeString.LineBreak +

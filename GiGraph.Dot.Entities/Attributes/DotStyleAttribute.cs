@@ -27,10 +27,10 @@ namespace GiGraph.Dot.Entities.Attributes
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
             var styles = Enum.GetValues(typeof(DotStyle))
-                             .Cast<DotStyle>()
-                             .Where(style => style != DotStyle.Default)
-                             .Where(style => Value.HasFlag(style))
-                             .Select(style => GetDotEncodedStyleItemValue(style, syntaxRules));
+               .Cast<DotStyle>()
+               .Where(style => style != DotStyle.Default)
+               .Where(style => Value.HasFlag(style))
+               .Select(style => GetDotEncodedStyleItemValue(style, syntaxRules));
 
             const string separator = ", ";
             return options.OrderElements

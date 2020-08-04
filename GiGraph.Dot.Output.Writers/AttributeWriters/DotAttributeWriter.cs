@@ -13,19 +13,19 @@ namespace GiGraph.Dot.Output.Writers.AttributeWriters
         public virtual void WriteAttribute(string key, bool quoteKey, string value, bool quoteValue)
         {
             _tokenWriter.Identifier(key, quoteKey)
-                        .Space()
-                        .ValueAssignmentOperator()
-                        .Space()
-                        .Identifier(value, quoteValue);
+               .Space()
+               .ValueAssignmentOperator()
+               .Space()
+               .Identifier(value, quoteValue);
         }
 
         public virtual void WriteHtmlAttribute(string key, bool quoteKey, string value, bool writeInBrackets)
         {
             _tokenWriter.Identifier(key, quoteKey)
-                        .Space()
-                        .ValueAssignmentOperator()
-                        .Space()
-                        .Html(value, writeInBrackets);
+               .Space()
+               .ValueAssignmentOperator()
+               .Space()
+               .Html(value, writeInBrackets);
         }
 
         public override void EndComment()

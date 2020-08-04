@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Output.Writers.SubgraphWriters
             if (separate)
             {
                 _tokenWriter.LineBreak()
-                            .Indentation();
+                   .Indentation();
             }
         }
     }

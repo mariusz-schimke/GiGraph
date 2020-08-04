@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
             }
 
             _tokenWriter.LineBreak()
-                        .Indentation(linger: true);
+               .Indentation(linger: true);
         }
 
         public override void EndComment()

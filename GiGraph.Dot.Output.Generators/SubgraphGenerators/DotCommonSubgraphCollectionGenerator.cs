@@ -21,8 +21,8 @@ namespace GiGraph.Dot.Output.Generators.SubgraphGenerators
         {
             var orderedSubgraphs = _options.OrderElements
                 ? subgraphs.Cast<IDotOrderable>()
-                           .OrderBy(subgraph => subgraph.OrderingKey)
-                           .Cast<DotCommonSubgraph>()
+                   .OrderBy(subgraph => subgraph.OrderingKey)
+                   .Cast<DotCommonSubgraph>()
                 : subgraphs;
 
             foreach (var subgraph in orderedSubgraphs)

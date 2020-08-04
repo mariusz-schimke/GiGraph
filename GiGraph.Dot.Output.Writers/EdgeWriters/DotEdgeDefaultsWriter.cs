@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Output.Writers.EdgeWriters
         public virtual void WriteEdgeKeyword()
         {
             _tokenWriter.Keyword("edge")
-                        .Space();
+               .Space();
         }
     }
 }

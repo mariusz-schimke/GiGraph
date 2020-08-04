@@ -17,13 +17,13 @@ namespace GiGraph.Dot.Output.Writers.EdgeWriters
             if (portName is { })
             {
                 _tokenWriter.NodePortDelimiter()
-                            .Identifier(portName, quotePortName);
+                   .Identifier(portName, quotePortName);
             }
 
             if (compassPoint is { })
             {
                 _tokenWriter.NodePortDelimiter()
-                            .Identifier(compassPoint, quoteCompassPoint);
+                   .Identifier(compassPoint, quoteCompassPoint);
             }
         }
 

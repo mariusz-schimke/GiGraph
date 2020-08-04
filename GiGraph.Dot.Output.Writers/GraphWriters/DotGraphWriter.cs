@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
             if (strict)
             {
                 _tokenWriter.Keyword("strict")
-                            .Space();
+                   .Space();
             }
 
             if (_context.IsDirectedGraph)
@@ -29,11 +29,11 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
             if (id != null)
             {
                 _tokenWriter.Space()
-                            .Identifier(id, quoteId);
+                   .Identifier(id, quoteId);
             }
 
             _tokenWriter.LineBreak()
-                        .Indentation();
+               .Indentation();
         }
     }
 }

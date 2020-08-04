@@ -83,7 +83,7 @@ namespace GiGraph.Dot.Entities.Edges
             (
                 " ",
                 Endpoints.Cast<IDotOrderable>()
-                         .Select(endpoint => endpoint.OrderingKey)
+                   .Select(endpoint => endpoint.OrderingKey)
             );
         }
 

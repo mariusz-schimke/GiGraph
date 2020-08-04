@@ -23,14 +23,14 @@ namespace GiGraph.Dot.Output.Writers.CommonEntityWriters
         public virtual void EndComment()
         {
             _tokenWriter.LineBreak()
-                        .Indentation(linger: true);
+               .Indentation(linger: true);
         }
 
         protected virtual void EmptyLine()
         {
             _tokenWriter.LineBreak()
-                        .LineBreak(linger: true)
-                        .Indentation(linger: true);
+               .LineBreak(linger: true)
+               .Indentation(linger: true);
         }
     }
 }

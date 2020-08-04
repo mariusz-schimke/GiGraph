@@ -20,8 +20,8 @@ namespace GiGraph.Dot.Output.Generators.NodeGenerators
         {
             var orderedNodes = _options.OrderElements
                 ? nodes.Cast<IDotOrderable>()
-                       .OrderBy(node => node.OrderingKey)
-                       .Cast<DotNodeDefinition>()
+                   .OrderBy(node => node.OrderingKey)
+                   .Cast<DotNodeDefinition>()
                 : nodes;
 
             foreach (var node in orderedNodes)

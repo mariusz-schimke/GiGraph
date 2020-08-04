@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Output.Writers.GraphWriters
         public virtual void WriteGraphKeyword()
         {
             _tokenWriter.Keyword("graph")
-                        .Space();
+               .Space();
         }
     }
 }

@@ -57,9 +57,9 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         {
             return string.Join(" ",
                 Subgraph.Nodes
-                        .Cast<IDotOrderable>()
-                        .Select(node => node.OrderingKey)
-                        .OrderBy(key => key));
+                   .Cast<IDotOrderable>()
+                   .Select(node => node.OrderingKey)
+                   .OrderBy(key => key));
         }
     }
 }

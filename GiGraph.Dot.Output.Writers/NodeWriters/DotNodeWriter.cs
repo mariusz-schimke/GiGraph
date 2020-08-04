@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Output.Writers.NodeWriters
         public override IDotAttributeListItemWriter BeginAttributeList(bool useAttributeSeparator)
         {
             _tokenWriter.ClearLingerBuffer()
-                        .Space(linger: true);
+               .Space(linger: true);
 
             return base.BeginAttributeList(useAttributeSeparator);
         }
@@ -22,9 +22,9 @@ namespace GiGraph.Dot.Output.Writers.NodeWriters
         public virtual void WriteNodeIdentifier(string id, bool quote)
         {
             _tokenWriter.Identifier(id, quote)
-                         // these will be removed by a parent node statement writer or before writing attributes
-                        .NodeSeparator(linger: true)
-                        .Space(linger: true);
+                // these will be removed by a parent node statement writer or before writing attributes
+               .NodeSeparator(linger: true)
+               .Space(linger: true);
         }
     }
 }

@@ -35,22 +35,22 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Nodes.Add("Baz").ToRecord
             (
                 r1 => r1
-                     .AppendField(f => f.AppendLine("Foo").Append("Bar"))
-                     .AppendRecord
-                      (
-                          r2 => r2
-                               .AppendField(f => f.AppendLineLeftJustified("Baz"))
-                               .AppendRecord
-                                (
-                                    r3 => r3
-                                         .AppendField("Garply")
-                                         .AppendField("Waldo")
-                                         .AppendField("Fred", "port1")
-                                )
-                               .AppendField(f => f.AppendLineRightJustified("Plugh"))
-                      )
-                     .AppendField("Qux")
-                     .AppendField("Quux")
+                   .AppendField(f => f.AppendLine("Foo").Append("Bar"))
+                   .AppendRecord
+                    (
+                        r2 => r2
+                           .AppendField(f => f.AppendLineLeftJustified("Baz"))
+                           .AppendRecord
+                            (
+                                r3 => r3
+                                   .AppendField("Garply")
+                                   .AppendField("Waldo")
+                                   .AppendField("Fred", "port1")
+                            )
+                           .AppendField(f => f.AppendLineRightJustified("Plugh"))
+                    )
+                   .AppendField("Qux")
+                   .AppendField("Quux")
             );
 
             graph.Edges.Add("Foo", "Bar", edge =>
