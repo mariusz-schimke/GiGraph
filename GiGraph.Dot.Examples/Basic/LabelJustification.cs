@@ -16,12 +16,12 @@ namespace GiGraph.Dot.Examples.Basic
                 attrs.Shape = DotNodeShape.Box;
                 attrs.Width = 3;
 
-                // using escape string builder
-                attrs.Label = new DotEscapeStringBuilder()
+                // using text formatter
+                attrs.Label = new DotTextFormatter()
                              .AppendLine("Centered line")
                              .AppendLeftJustifiedLine("Left-justified line")
                              .AppendRightJustifiedLine("Right-justified line")
-                             .ToEscapeString();
+                             .ToFormattedText();
 
                 // using string concatenation
                 attrs.Label = "Centered line" + DotEscapeString.LineBreak +

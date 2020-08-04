@@ -11,10 +11,10 @@ namespace GiGraph.Dot.Examples.Basic
 
             // -- graph label example --
 
-            // using escape string builder
-            graph.Attributes.Label = new DotEscapeStringBuilder("Graph title: ")
+            // using text formatter
+            graph.Attributes.Label = new DotTextFormatter("Graph title: ")
                                     .AppendGraphId()
-                                    .ToEscapeString();
+                                    .ToFormattedText();
 
             // using string concatenation
             graph.Attributes.Label = "Graph title: " + DotEscapeString.GraphId;
@@ -24,10 +24,10 @@ namespace GiGraph.Dot.Examples.Basic
 
             graph.Nodes.Add("Foo", attrs =>
             {
-                // using escape string builder
-                attrs.Label = new DotEscapeStringBuilder("Node ")
+                // using text formatter
+                attrs.Label = new DotTextFormatter("Node ")
                              .AppendNodeId()
-                             .ToEscapeString();
+                             .ToFormattedText();
 
                 // using string concatenation
                 attrs.Label = "Node " + DotEscapeString.NodeId;
@@ -39,12 +39,12 @@ namespace GiGraph.Dot.Examples.Basic
             // edge label with the IDs of the head and the tail nodes
             graph.Edges.Add("Foo", "Bar", edge =>
             {
-                // using escape string builder
-                edge.Attributes.Label = new DotEscapeStringBuilder("From ")
+                // using text formatter
+                edge.Attributes.Label = new DotTextFormatter("From ")
                                        .AppendEdgeTailNodeId()
                                        .Append(" to ")
                                        .AppendEdgeHeadNodeId()
-                                       .ToEscapeString();
+                                       .ToFormattedText();
 
                 // using string concatenation
                 edge.Attributes.Label = "From " + DotEscapeString.EdgeTailNodeId +

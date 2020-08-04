@@ -37,12 +37,12 @@ namespace GiGraph.Dot.Entities.Types.Records
         ///     The port name, that is a name that can be referred to from an edge endpoint in order to attach the end of the edge to the
         ///     appended field.
         /// </param>
-        public virtual DotRecordBuilder AppendField(Action<DotEscapeStringBuilder> buildText, string portName = null)
+        public virtual DotRecordBuilder AppendField(Action<DotTextFormatter> buildText, string portName = null)
         {
-            var builder = new DotEscapeStringBuilder();
+            var builder = new DotTextFormatter();
             buildText(builder);
 
-            return AppendField(builder.ToEscapeString(), portName);
+            return AppendField(builder.ToFormattedText(), portName);
         }
 
         /// <summary>
