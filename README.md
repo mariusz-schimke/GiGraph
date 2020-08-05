@@ -680,7 +680,7 @@ graph.Nodes.Add("restored", attrs =>
     attrs.SetNull("color");
   
     // or by specifying a lambda expression (recommended)
-    attrs.SetNull(attrs => attrs.Color);
+    attrs.SetNull(a => a.Color);
 
     // the following won't do the trick because it removes the attribute from the collection, so it won't appear in the output DOT script
     // attrs.Color = null;
