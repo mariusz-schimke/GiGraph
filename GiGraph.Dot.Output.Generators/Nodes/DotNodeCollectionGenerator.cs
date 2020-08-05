@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.Writers.NodeWriters;
+using GiGraph.Dot.Output.Writers.Nodes;
 
 namespace GiGraph.Dot.Output.Generators.Nodes
 {

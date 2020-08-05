@@ -2,7 +2,7 @@
 using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.Writers.EdgeWriters;
+using GiGraph.Dot.Output.Writers.Edges;
 
 namespace GiGraph.Dot.Output.Generators.Edges
 {

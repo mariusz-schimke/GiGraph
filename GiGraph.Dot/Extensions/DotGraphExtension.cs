@@ -5,7 +5,7 @@ using GiGraph.Dot.Output.Generators.Graphs;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers;
-using GiGraph.Dot.Output.Writers.GraphWriters;
+using GiGraph.Dot.Output.Writers.Graphs;
 
 namespace GiGraph.Dot.Extensions
 {

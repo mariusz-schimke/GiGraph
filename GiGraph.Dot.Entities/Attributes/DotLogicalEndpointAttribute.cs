@@ -1,5 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Collections.Graph;
+﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Output.Options;
 

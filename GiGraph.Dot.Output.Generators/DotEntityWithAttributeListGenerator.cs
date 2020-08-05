@@ -3,8 +3,8 @@ using GiGraph.Dot.Entities;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.Writers.AttributeWriters;
-using GiGraph.Dot.Output.Writers.CommonEntityWriters;
+using GiGraph.Dot.Output.Writers;
+using GiGraph.Dot.Output.Writers.Attributes;
 
 namespace GiGraph.Dot.Output.Generators
 {

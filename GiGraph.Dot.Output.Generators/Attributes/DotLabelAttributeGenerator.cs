@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.Writers.AttributeWriters;
+using GiGraph.Dot.Output.Writers.Attributes;
 
 namespace GiGraph.Dot.Output.Generators.Attributes
 {

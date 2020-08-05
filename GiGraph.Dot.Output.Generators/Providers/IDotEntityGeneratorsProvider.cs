@@ -1,6 +1,6 @@
 ﻿using System;
 using GiGraph.Dot.Entities;
-using GiGraph.Dot.Output.Writers.CommonEntityWriters;
+using GiGraph.Dot.Output.Writers;
 
 namespace GiGraph.Dot.Output.Generators.Providers
 {

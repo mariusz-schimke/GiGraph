@@ -2,7 +2,7 @@
 using GiGraph.Dot.Entities;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.Writers.CommonEntityWriters;
+using GiGraph.Dot.Output.Writers;
 
 namespace GiGraph.Dot.Output.Generators
 {

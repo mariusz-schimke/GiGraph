@@ -2,7 +2,7 @@
 using GiGraph.Dot.Output.Generators.Graphs;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.Writers.SubgraphWriters;
+using GiGraph.Dot.Output.Writers.Subgraphs;
 
 namespace GiGraph.Dot.Output.Generators.Subgraphs
 {
