@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Output.Generators.Providers
             provider.Register(new DotGraphGenerator(syntaxRules, options, provider));
             provider.Register(new DotGraphBodyGenerator(syntaxRules, options, provider));
 
-            provider.Register(new DotGlobalGraphAttributeStatementsGenerator(syntaxRules, options, provider));
+            provider.Register(new DotGlobalGraphAttributeCollectionGenerator(syntaxRules, options, provider));
             provider.Register(new DotGlobalGraphAttributesGenerator(syntaxRules, options, provider));
             provider.Register(new DotGlobalNodeAttributesGenerator(syntaxRules, options, provider));
             provider.Register(new DotGlobalEdgeAttributesGenerator(syntaxRules, options, provider));
