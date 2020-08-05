@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Output.Options
         };
 
         /// <summary>
-        ///     The collection of keywords that cannot be used as node identifiers unless quoted.
+        ///     The collection of reserved words that cannot be used as identifiers/keys unless quoted.
         /// </summary>
         public virtual ICollection<string> Keywords { get; protected set; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
