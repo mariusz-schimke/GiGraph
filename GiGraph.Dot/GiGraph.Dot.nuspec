@@ -24,15 +24,17 @@
     
     <releaseNotes>- Added support for all available edge arrowheads with the filled, empty, and half-clipped variants. See https://github.com/mariusz-schimke/GiGraph/blob/1.2.0/README.md#arrowhead-shapes.
 
-- Added support for multiple edge arrowheads. See https://github.com/mariusz-schimke/GiGraph/blob/1.2.0/README.md#arrowhead-shapes.
+- Added support for edges with multiple arrowheads. See https://github.com/mariusz-schimke/GiGraph/blob/1.2.0/README.md#arrowhead-shapes.
 
 - Added support for label justification (individual lines may be centered, left- or right-justified). See https://github.com/mariusz-schimke/GiGraph/blob/1.2.0/README.md#label-justification.
 
-- Added support for label placeholders (element-specific escape sequences replaced with identifiers on graph visualization). See https://github.com/mariusz-schimke/GiGraph/blob/1.2.0/README.md#label-placeholders.
+- Added support for label placeholders (element-specific escape sequences replaced with corresponding identifiers on graph visualization). See https://github.com/mariusz-schimke/GiGraph/blob/1.2.0/README.md#label-placeholders.
 
 - Added support for attributes: headlabel, taillabel, image, imagepos, imagepath, group, ranksep, headclip, tailclip, colorscheme, rotate, pad, margin, size, ratio, labelfloat, labeldistance, labelangle, labelfontcolor, labelfontname, labelfontsize, minlen, len, weight, clusterrank, ordering, samehead, sametail (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
 
 - Added separate classes to represent color combinations: DotDualColor, DotGradientColor, DotMultiColor.
+
+- It is possible now to nullify attribute values (for some attributes it restores their original default value). See https://github.com/mariusz-schimke/GiGraph/blob/1.2.0/README.md#default-attributes.
 
 - Refactoring.
 
