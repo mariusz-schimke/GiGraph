@@ -645,17 +645,61 @@ graph.Attributes.BackgroundColor = Color.LightGray;
 
 ### Default attributes
 
-A graph, a subgraph, and a cluster may have node and edge defaults specified. When you set them, they affect all nodes and/or edges encompassed by the graph, subgraph, or cluster respectively. They may be overridden by attributes set on individual graph elements.
+A graph, a subgraph, and a cluster may have node and edge defaults specified. When you set them, they affect (by the library design) all nodes and/or edges encompassed by the graph, subgraph, or cluster respectively. They may be overridden, however, by attributes set on individual graph elements.
 
 ```c#
-graph.NodeDefaults.Color = Color.Yellow;
+graph.NodeDefaults.Color = Color.Orange;
 ```
 
 ```c#
 graph.EdgeDefaults.Color = Color.Red;
 ```
 
+```dot
+digraph
+{
+    node [ color = "orange" ]
+    edge [ color = "red" ]
+}
+```
 
+In some cases you will want to restore an attribute of an individual element to its original default value used by the visualization engine. Some attributes support that, and it may be achieved by assigning them an empty value in the DOT script. You may do that by calling the *SetNull* method that has two overloads:
+
+* one requires a DOT key of the attribute to nullify,
+* the other requires a lambda expression that points to a property to nullify (recommended).
+
+Consider the following example:
+
+```c#
+graph.NodeDefaults.Color = Color.Orange;
+
+graph.Nodes.Add("orange");
+graph.Nodes.Add("restored", attrs =>
+{
+    // nullify the color attribute by specifying its DOT key explicitly
+    attrs.SetNull("color");
+  
+    // or by specifying a lambda expression (recommended)
+    attrs.SetNull(attrs => attrs.Color);
+
+    // the following won't do the trick because it removes the attribute from the collection, so it won't appear in the output DOT script
+    // attrs.Color = null;
+});
+```
+
+```dot
+digraph
+{
+    node [ color = orange ]
+
+    orange
+    restored [ color = "" ]
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/default-attributes.svg">
+</p>
 
 ## Subgraph
 
