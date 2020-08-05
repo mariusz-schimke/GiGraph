@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Output.Writers.Attributes;
+using GiGraph.Dot.Output.Writers.Attributes.Graph;
 using GiGraph.Dot.Output.Writers.Edges;
 using GiGraph.Dot.Output.Writers.Nodes;
 using GiGraph.Dot.Output.Writers.Subgraphs;
@@ -12,22 +13,22 @@ namespace GiGraph.Dot.Output.Writers.Graphs
         {
         }
 
-        public virtual IDotAttributeStatementWriter BeginAttributesSection(bool useStatementDelimiter)
+        public virtual IDotGlobalGraphAttributeStatementWriter BeginGlobalGraphAttributesSection(bool useStatementDelimiter)
         {
-            return new DotAttributeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
+            return new DotGlobalGraphAttributeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
 
-        public virtual void EndAttributesSection()
+        public virtual void EndGlobalGraphAttributesSection()
         {
             EndSection();
         }
 
-        public virtual IDotGlobalAttributesStatementWriter BeginGlobalAttributesSection(bool useStatementDelimiter)
+        public virtual IDotGlobalEntityAttributesStatementWriter BeginGlobalEntityAttributesSection(bool useStatementDelimiter)
         {
-            return new DotGlobalAttributesStatementWriter(_tokenWriter, _context, useStatementDelimiter);
+            return new DotGlobalEntityAttributesStatementWriter(_tokenWriter, _context, useStatementDelimiter);
         }
 
-        public virtual void EndGlobalAttributesSection()
+        public virtual void EndGlobalEntityAttributesSection()
         {
             EndSection();
         }

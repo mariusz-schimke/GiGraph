@@ -2,7 +2,7 @@
 {
     public interface IDotEdgeStatementWriter : IDotEntityWriter
     {
-        IDotEdgeWriter BeginSequence();
-        void EndSequence();
+        IDotEdgeWriter BeginEdgeStatement();
+        void EndEdgeStatement();
     }
 }

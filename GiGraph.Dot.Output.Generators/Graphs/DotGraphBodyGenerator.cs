@@ -10,6 +10,9 @@ using GiGraph.Dot.Entities.Subgraphs.Collections;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Attributes;
+using GiGraph.Dot.Output.Writers.Attributes.Edge;
+using GiGraph.Dot.Output.Writers.Attributes.Graph;
+using GiGraph.Dot.Output.Writers.Attributes.Node;
 using GiGraph.Dot.Output.Writers.Edges;
 using GiGraph.Dot.Output.Writers.Graphs;
 using GiGraph.Dot.Output.Writers.Nodes;
@@ -40,73 +43,73 @@ namespace GiGraph.Dot.Output.Generators.Graphs
             WriteEdges(graphBody.Edges, writer);
         }
 
-        protected virtual void WriteGlobalAttributes(IDotAttributeCollection graphAttributes, IDotNodeAttributeCollection nodeDefaults, IDotEdgeAttributeCollection edgeDefaults, IDotGraphBodyWriter writer)
+        protected virtual void WriteGlobalAttributes(IDotAttributeCollection graphAttributes, IDotNodeAttributeCollection nodeAttributes, IDotEdgeAttributeCollection edgeAttributes, IDotGraphBodyWriter writer)
         {
             var writeGraphAttributes = graphAttributes.Any();
 
             // write graph attributes as a list of individual statements
             if (_options.Attributes.PreferGraphAttributesAsStatements)
             {
-                WriteGraphAttributesAsStatementList(graphAttributes, writer);
+                WriteGlobalGraphAttributesAsStatementList(graphAttributes, writer);
                 writeGraphAttributes = false;
             }
 
-            if (!nodeDefaults.Any() && !edgeDefaults.Any() && !writeGraphAttributes)
+            if (!nodeAttributes.Any() && !edgeAttributes.Any() && !writeGraphAttributes)
             {
                 return;
             }
 
-            var globalAttributesWriter = writer.BeginGlobalAttributesSection(_options.PreferStatementDelimiter);
+            var globalAttributesWriter = writer.BeginGlobalEntityAttributesSection(_options.PreferStatementDelimiter);
 
             if (writeGraphAttributes)
             {
                 // write graph attributes as a "graph [attr_list]" clause
-                WriteGraphAttributesAsClause(graphAttributes, globalAttributesWriter);
+                WriteGlobalGraphAttributesAsClause(graphAttributes, globalAttributesWriter);
             }
 
-            WriteNodeDefaults(nodeDefaults, globalAttributesWriter);
-            WriteEdgeDefaults(edgeDefaults, globalAttributesWriter);
+            WriteGlobalNodeAttributes(nodeAttributes, globalAttributesWriter);
+            WriteGlobalEdgeAttributes(edgeAttributes, globalAttributesWriter);
 
-            writer.EndGlobalAttributesSection();
+            writer.EndGlobalEntityAttributesSection();
         }
 
-        protected virtual void WriteGraphAttributesAsStatementList(IDotAttributeCollection attributes, IDotGraphBodyWriter writer)
+        protected virtual void WriteGlobalGraphAttributesAsStatementList(IDotAttributeCollection attributes, IDotGraphBodyWriter writer)
         {
             if (attributes.Any())
             {
-                var attributesWriter = writer.BeginAttributesSection(_options.PreferStatementDelimiter);
-                _entityGenerators.GetForEntity<IDotAttributeStatementWriter>(attributes).Generate(attributes, attributesWriter);
-                writer.EndAttributesSection();
+                var attributesStatementWriter = writer.BeginGlobalGraphAttributesSection(_options.PreferStatementDelimiter);
+                _entityGenerators.GetForEntity<IDotGlobalGraphAttributeStatementWriter>(attributes).Generate(attributes, attributesStatementWriter);
+                writer.EndGlobalGraphAttributesSection();
             }
         }
 
-        protected virtual void WriteGraphAttributesAsClause(IDotAttributeCollection attributes, IDotGlobalAttributesStatementWriter writer)
+        protected virtual void WriteGlobalGraphAttributesAsClause(IDotAttributeCollection attributes, IDotGlobalEntityAttributesStatementWriter writer)
         {
             if (attributes.Any())
             {
-                var attributesWriter = writer.BeginGraphAttributes();
-                _entityGenerators.GetForEntity<IDotGraphAttributesWriter>(attributes).Generate(attributes, attributesWriter);
-                writer.EndGraphAttributes();
+                var graphAttributesWriter = writer.BeginGraphAttributesStatement();
+                _entityGenerators.GetForEntity<IDotGlobalGraphAttributesWriter>(attributes).Generate(attributes, graphAttributesWriter);
+                writer.EndGraphAttributesStatement();
             }
         }
 
-        protected virtual void WriteNodeDefaults(IDotNodeAttributeCollection nodeDefaults, IDotGlobalAttributesStatementWriter writer)
+        protected virtual void WriteGlobalNodeAttributes(IDotNodeAttributeCollection attributes, IDotGlobalEntityAttributesStatementWriter writer)
         {
-            if (nodeDefaults.Any())
+            if (attributes.Any())
             {
-                var nodeDefaultsWriter = writer.BeginNodeDefaults();
-                _entityGenerators.GetForEntity<IDotNodeDefaultsWriter>(nodeDefaults).Generate(nodeDefaults, nodeDefaultsWriter);
-                writer.EndNodeDefaults();
+                var nodeAttributesWriter = writer.BeginNodeAttributesStatement();
+                _entityGenerators.GetForEntity<IDotGlobalNodeAttributesWriter>(attributes).Generate(attributes, nodeAttributesWriter);
+                writer.EndNodeAttributesStatement();
             }
         }
 
-        protected virtual void WriteEdgeDefaults(IDotEdgeAttributeCollection edgeDefaults, IDotGlobalAttributesStatementWriter writer)
+        protected virtual void WriteGlobalEdgeAttributes(IDotEdgeAttributeCollection attributes, IDotGlobalEntityAttributesStatementWriter writer)
         {
-            if (edgeDefaults.Any())
+            if (attributes.Any())
             {
-                var edgeDefaultsWriter = writer.BeginEdgeDefaults();
-                _entityGenerators.GetForEntity<IDotEdgeDefaultsWriter>(edgeDefaults).Generate(edgeDefaults, edgeDefaultsWriter);
-                writer.EndEdgeDefaults();
+                var edgeAttributesWriter = writer.BeginEdgeAttributesStatement();
+                _entityGenerators.GetForEntity<IDotGlobalEdgeAttributesWriter>(attributes).Generate(attributes, edgeAttributesWriter);
+                writer.EndEdgeAttributesStatement();
             }
         }
 
