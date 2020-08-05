@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Output.Generators.GraphGenerators;
+using GiGraph.Dot.Output.Generators.Graphs;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers;

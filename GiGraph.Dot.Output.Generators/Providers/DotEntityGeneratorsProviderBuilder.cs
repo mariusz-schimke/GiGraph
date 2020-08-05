@@ -1,9 +1,10 @@
 ﻿using GiGraph.Dot.Entities.Subgraphs;
-using GiGraph.Dot.Output.Generators.AttributeGenerators;
-using GiGraph.Dot.Output.Generators.EdgeGenerators;
-using GiGraph.Dot.Output.Generators.GraphGenerators;
-using GiGraph.Dot.Output.Generators.NodeGenerators;
-using GiGraph.Dot.Output.Generators.SubgraphGenerators;
+using GiGraph.Dot.Output.Generators.Attributes;
+using GiGraph.Dot.Output.Generators.Clusters;
+using GiGraph.Dot.Output.Generators.Edges;
+using GiGraph.Dot.Output.Generators.Graphs;
+using GiGraph.Dot.Output.Generators.Nodes;
+using GiGraph.Dot.Output.Generators.Subgraphs;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Output.Generators.Providers
