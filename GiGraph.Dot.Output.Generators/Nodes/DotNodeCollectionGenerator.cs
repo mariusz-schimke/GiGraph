@@ -31,9 +31,9 @@ namespace GiGraph.Dot.Output.Generators.Nodes
 
         protected virtual void WriteNode(DotNodeDefinition node, IDotNodeStatementWriter writer)
         {
-            var nodeWriter = writer.BeginNode();
+            var nodeWriter = writer.BeginNodeStatement();
             _entityGenerators.GetForEntity<IDotNodeWriter>(node).Generate(node, nodeWriter);
-            writer.EndNode();
+            writer.EndNodeStatement();
         }
     }
 }

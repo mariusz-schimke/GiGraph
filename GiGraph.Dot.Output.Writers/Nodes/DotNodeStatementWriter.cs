@@ -7,12 +7,12 @@
         {
         }
 
-        public virtual IDotNodeWriter BeginNode()
+        public virtual IDotNodeWriter BeginNodeStatement()
         {
             return new DotNodeWriter(_tokenWriter, _context);
         }
 
-        public virtual void EndNode()
+        public virtual void EndNodeStatement()
         {
             EndStatement();
         }

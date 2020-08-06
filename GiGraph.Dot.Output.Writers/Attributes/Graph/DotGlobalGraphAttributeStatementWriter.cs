@@ -1,21 +1,21 @@
-﻿namespace GiGraph.Dot.Output.Writers.Attributes
+﻿namespace GiGraph.Dot.Output.Writers.Attributes.Graph
 {
-    public class DotAttributeStatementWriter : DotEntityWriter, IDotAttributeStatementWriter
+    public class DotGlobalGraphAttributeStatementWriter : DotEntityWriter, IDotGlobalGraphAttributeStatementWriter
     {
         protected readonly bool _useStatementDelimiter;
 
-        public DotAttributeStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
+        public DotGlobalGraphAttributeStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
             : base(tokenWriter, context, enforceBlockComment: true)
         {
             _useStatementDelimiter = useStatementDelimiter;
         }
 
-        public virtual IDotAttributeWriter BeginAttribute()
+        public virtual IDotAttributeWriter BeginAttributeStatement()
         {
             return new DotAttributeWriter(_tokenWriter, _context, enforceBlockComment: false);
         }
 
-        public virtual void EndAttribute()
+        public virtual void EndAttributeStatement()
         {
             if (_useStatementDelimiter)
             {

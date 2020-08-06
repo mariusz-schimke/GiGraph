@@ -1,5 +1,8 @@
 ﻿using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Output.Generators.Attributes;
+using GiGraph.Dot.Output.Generators.Attributes.Edge;
+using GiGraph.Dot.Output.Generators.Attributes.Graph;
+using GiGraph.Dot.Output.Generators.Attributes.Node;
 using GiGraph.Dot.Output.Generators.Clusters;
 using GiGraph.Dot.Output.Generators.Edges;
 using GiGraph.Dot.Output.Generators.Graphs;
@@ -27,9 +30,10 @@ namespace GiGraph.Dot.Output.Generators.Providers
             provider.Register(new DotGraphGenerator(syntaxRules, options, provider));
             provider.Register(new DotGraphBodyGenerator(syntaxRules, options, provider));
 
-            provider.Register(new DotGraphAttributesGenerator(syntaxRules, options, provider));
-            provider.Register(new DotNodeDefaultsGenerator(syntaxRules, options, provider));
-            provider.Register(new DotEdgeDefaultsGenerator(syntaxRules, options, provider));
+            provider.Register(new DotGlobalGraphAttributeCollectionGenerator(syntaxRules, options, provider));
+            provider.Register(new DotGlobalGraphAttributesGenerator(syntaxRules, options, provider));
+            provider.Register(new DotGlobalNodeAttributesGenerator(syntaxRules, options, provider));
+            provider.Register(new DotGlobalEdgeAttributesGenerator(syntaxRules, options, provider));
 
             provider.Register(new DotClusterGenerator(syntaxRules, options, provider));
             provider.Register(new DotCommonSubgraphGenerator<DotSubgraph>(syntaxRules, options, provider));
@@ -39,7 +43,6 @@ namespace GiGraph.Dot.Output.Generators.Providers
             provider.Register(new DotAttributeGenerator(syntaxRules, options, provider));
             provider.Register(new DotLabelAttributeGenerator(syntaxRules, options, provider));
             provider.Register(new DotAttributeListGenerator(syntaxRules, options, provider));
-            provider.Register(new DotAttributeStatementListGenerator(syntaxRules, options, provider));
 
             provider.Register(new DotNodeGenerator(syntaxRules, options, provider));
             provider.Register(new DotNodeGroupGenerator(syntaxRules, options, provider));

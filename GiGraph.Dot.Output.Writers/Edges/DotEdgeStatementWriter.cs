@@ -7,12 +7,12 @@
         {
         }
 
-        public virtual IDotEdgeWriter BeginSequence()
+        public virtual IDotEdgeWriter BeginEdgeStatement()
         {
             return new DotEdgeWriter(_tokenWriter, _context);
         }
 
-        public virtual void EndSequence()
+        public virtual void EndEdgeStatement()
         {
             EndStatement();
         }
