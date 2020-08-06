@@ -16,8 +16,8 @@ namespace GiGraph.Dot.Entities.Graphs
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
-            IDotNodeAttributeCollection defaultNodeAttributes,
-            IDotEdgeAttributeCollection defaultEdgeAttributes)
+            IDotNodeAttributeCollection nodeDefaults,
+            IDotEdgeAttributeCollection edgeDefaults)
         {
             Id = id;
             Attributes = attributes;
@@ -25,8 +25,8 @@ namespace GiGraph.Dot.Entities.Graphs
             Edges = edges;
             Subgraphs = subgraphs;
             Clusters = clusters;
-            NodeDefaults = defaultNodeAttributes;
-            EdgeDefaults = defaultEdgeAttributes;
+            NodeDefaults = nodeDefaults;
+            EdgeDefaults = edgeDefaults;
         }
 
         /// <summary>
