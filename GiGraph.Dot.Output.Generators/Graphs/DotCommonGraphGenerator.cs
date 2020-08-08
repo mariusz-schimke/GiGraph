@@ -20,7 +20,15 @@ namespace GiGraph.Dot.Output.Generators.Graphs
         protected virtual void WriteBody(DotCommonGraph<TGraphAttributes> graphBody, IDotCommonGraphWriter writer)
         {
             var bodyWriter = writer.BeginBody();
+
+            // the annotation of the root section is written above graph/subgraph/cluster declaration by another generator
             _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graphBody).Generate(graphBody, bodyWriter, annotate: false);
+
+            foreach (var subsection in graphBody.Subsections)
+            {
+                _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graphBody).Generate(subsection, bodyWriter);
+            }
+
             writer.EndBody();
         }
     }

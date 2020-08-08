@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
     public class DotGraphBodyWriter : DotEntityWriter, IDotGraphBodyWriter
     {
         public DotGraphBodyWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context, enforceBlockComment: false)
+            : base(tokenWriter, context, enforceBlockComment: true)
         {
         }
 
@@ -61,6 +61,11 @@ namespace GiGraph.Dot.Output.Writers.Graphs
         public virtual void EndSubgraphsSection()
         {
             EndSection();
+        }
+
+        public override void EndComment()
+        {
+            EmptyLine();
         }
 
         protected virtual void EndSection()

@@ -21,29 +21,28 @@ using GiGraph.Dot.Output.Writers.Subgraphs;
 
 namespace GiGraph.Dot.Output.Generators.Graphs
 {
-    public class DotGraphBodyGenerator<TGraph, TGraphAttributes> : DotEntityGenerator<TGraph, IDotGraphBodyWriter>
-        where TGraph : DotCommonGraph<TGraphAttributes>
-        where TGraphAttributes : IDotAttributeCollection
+    public class DotGraphSectionGenerator<TAttributes> : DotEntityGenerator<DotCommonGraphSection<TAttributes>, IDotGraphBodyWriter>
+        where TAttributes : IDotAttributeCollection
     {
-        public DotGraphBodyGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotGraphSectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        protected override void WriteEntity(TGraph graphBody, IDotGraphBodyWriter writer)
+        protected override void WriteEntity(DotCommonGraphSection<TAttributes> graphSection, IDotGraphBodyWriter writer)
         {
             // node and edge defaults have to appear first, so that they are applied to all elements that come later in the output script
-            WriteGlobalAttributes(graphBody.Attributes, graphBody.NodeDefaults, graphBody.EdgeDefaults, writer);
+            WriteGlobalAttributes(graphSection.Attributes, graphSection.NodeDefaults, graphSection.EdgeDefaults, writer);
 
             // subgraphs and clusters may also specify node defaults, and these are applied only
             // if the nodes they contain do not appear earlier in the parent graph or subgraph
-            WriteSubgraphs(graphBody.Subgraphs, writer);
-            WriteClusters(graphBody.Clusters, writer);
+            WriteSubgraphs(graphSection.Subgraphs, writer);
+            WriteClusters(graphSection.Clusters, writer);
 
             // as already mentioned, nodes should not appear before subgraphs and clusters
-            WriteNodes(graphBody.Nodes, writer);
+            WriteNodes(graphSection.Nodes, writer);
 
-            WriteEdges(graphBody.Edges, writer);
+            WriteEdges(graphSection.Edges, writer);
         }
 
         protected virtual void WriteGlobalAttributes(IDotAttributeCollection graphAttributes, IDotNodeAttributeCollection nodeAttributes, IDotEdgeAttributeCollection edgeAttributes, IDotGraphBodyWriter writer)
