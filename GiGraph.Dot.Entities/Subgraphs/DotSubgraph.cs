@@ -8,6 +8,7 @@ using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 
@@ -40,8 +41,17 @@ namespace GiGraph.Dot.Entities.Subgraphs
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
             IDotNodeAttributeCollection nodeDefaults,
-            IDotEdgeAttributeCollection edgeDefaults)
-            : base(id, attributes, nodes, edges, subgraphs, clusters, nodeDefaults, edgeDefaults)
+            IDotEdgeAttributeCollection edgeDefaults,
+            DotGraphSectionCollection<IDotSubgraphAttributeCollection> subsections)
+            : base(id, attributes, nodes, edges, subgraphs, clusters, nodeDefaults, edgeDefaults, subsections)
+        {
+        }
+
+        protected DotSubgraph(
+            string id,
+            DotCommonGraphSection<IDotSubgraphAttributeCollection> section,
+            DotGraphSectionCollection<IDotSubgraphAttributeCollection> subsections)
+            : base(id, section.Attributes, section.Nodes, section.Edges, section.Subgraphs, section.Clusters, section.NodeDefaults, section.EdgeDefaults, subsections)
         {
         }
 
@@ -49,17 +59,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         ///     Creates a new subgraph.
         /// </summary>
         public DotSubgraph()
-            : this
-            (
-                id: null,
-                new DotSubgraphAttributeCollection(),
-                new DotNodeCollection(),
-                new DotEdgeCollection(),
-                new DotSubgraphCollection(),
-                new DotClusterCollection(),
-                new DotNodeAttributeCollection(),
-                new DotEdgeAttributeCollection()
-            )
+            : this(id: null, CreateSection(), new DotGraphSectionCollection<IDotSubgraphAttributeCollection>(CreateSection))
         {
         }
 
@@ -121,6 +121,11 @@ namespace GiGraph.Dot.Entities.Subgraphs
             }
 
             return result;
+        }
+
+        protected static DotCommonGraphSection<IDotSubgraphAttributeCollection> CreateSection()
+        {
+            return Create(() => new DotSubgraphAttributeCollection());
         }
     }
 }
