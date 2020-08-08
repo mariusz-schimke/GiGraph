@@ -7,7 +7,7 @@ using GiGraph.Dot.Output.Writers.Subgraphs;
 
 namespace GiGraph.Dot.Output.Generators.Clusters
 {
-    public class DotClusterGenerator : DotCommonSubgraphGenerator<DotCluster>
+    public class DotClusterGenerator : DotSubgraphGenerator<DotCluster>
     {
         public DotClusterGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)

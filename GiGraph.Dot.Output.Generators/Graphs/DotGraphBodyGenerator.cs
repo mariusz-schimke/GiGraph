@@ -5,8 +5,8 @@ using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
-using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
@@ -144,8 +144,8 @@ namespace GiGraph.Dot.Output.Generators.Graphs
             WriteCommonSubgraphs(clusters, writer);
         }
 
-        protected virtual void WriteCommonSubgraphs<T>(DotCommonSubgraphCollection<T> subgraphs, IDotGraphBodyWriter writer)
-            where T : DotCommonSubgraph
+        protected virtual void WriteCommonSubgraphs<T>(DotCommonGraphCollection<T> subgraphs, IDotGraphBodyWriter writer)
+            where T : DotCommonGraph
         {
             if (subgraphs.Any())
             {

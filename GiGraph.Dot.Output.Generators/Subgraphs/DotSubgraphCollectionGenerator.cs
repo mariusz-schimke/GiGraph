@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using GiGraph.Dot.Entities;
+using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 using GiGraph.Dot.Output.Generators.Providers;
@@ -8,20 +10,20 @@ using GiGraph.Dot.Output.Writers.Subgraphs;
 
 namespace GiGraph.Dot.Output.Generators.Subgraphs
 {
-    public class DotCommonSubgraphCollectionGenerator<TSubgraph> : DotEntityGenerator<DotCommonSubgraphCollection<TSubgraph>, IDotSubgraphWriterRoot>
-        where TSubgraph : DotCommonSubgraph
+    public class DotSubgraphCollectionGenerator<TSubgraph> : DotEntityGenerator<DotCommonGraphCollection<TSubgraph>, IDotSubgraphWriterRoot>
+        where TSubgraph : DotCommonGraph
     {
-        public DotCommonSubgraphCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotSubgraphCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        protected override void WriteEntity(DotCommonSubgraphCollection<TSubgraph> subgraphs, IDotSubgraphWriterRoot writer)
+        protected override void WriteEntity(DotCommonGraphCollection<TSubgraph> subgraphs, IDotSubgraphWriterRoot writer)
         {
             var orderedSubgraphs = _options.OrderElements
                 ? subgraphs.Cast<IDotOrderable>()
                    .OrderBy(subgraph => subgraph.OrderingKey)
-                   .Cast<DotCommonSubgraph>()
+                   .Cast<TSubgraph>()
                 : subgraphs;
 
             foreach (var subgraph in orderedSubgraphs)
@@ -30,7 +32,7 @@ namespace GiGraph.Dot.Output.Generators.Subgraphs
             }
         }
 
-        protected virtual void WriteSubgraph(DotCommonSubgraph subgraph, IDotSubgraphWriterRoot writer)
+        protected virtual void WriteSubgraph(TSubgraph subgraph, IDotSubgraphWriterRoot writer)
         {
             var subgraphWriter = writer.BeginSubgraph(_options.Subgraphs.PreferExplicitKeyword);
             _entityGenerators.GetForEntity<IDotSubgraphWriter>(subgraph).Generate(subgraph, subgraphWriter);

@@ -37,9 +37,9 @@ namespace GiGraph.Dot.Output.Generators.Providers
             provider.Register(new DotGlobalEdgeAttributesGenerator(syntaxRules, options, provider));
 
             provider.Register(new DotClusterGenerator(syntaxRules, options, provider));
-            provider.Register(new DotCommonSubgraphGenerator<DotSubgraph>(syntaxRules, options, provider));
-            provider.Register(new DotCommonSubgraphCollectionGenerator<DotSubgraph>(syntaxRules, options, provider));
-            provider.Register(new DotCommonSubgraphCollectionGenerator<DotCluster>(syntaxRules, options, provider));
+            provider.Register(new DotSubgraphGenerator<DotSubgraph>(syntaxRules, options, provider));
+            provider.Register(new DotSubgraphCollectionGenerator<DotSubgraph>(syntaxRules, options, provider));
+            provider.Register(new DotSubgraphCollectionGenerator<DotCluster>(syntaxRules, options, provider));
 
             provider.Register(new DotAttributeGenerator(syntaxRules, options, provider));
             provider.Register(new DotLabelAttributeGenerator(syntaxRules, options, provider));

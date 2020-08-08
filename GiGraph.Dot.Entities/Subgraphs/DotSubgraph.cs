@@ -7,6 +7,7 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
+using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 
@@ -29,7 +30,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
     ///         are connected to the other side of the edge.
     ///     </para>
     /// </summary>
-    public class DotSubgraph : DotCommonSubgraph
+    public class DotSubgraph : DotCommonGraph
     {
         protected DotSubgraph(
             string id,

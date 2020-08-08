@@ -5,6 +5,7 @@ using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
+using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
@@ -22,7 +23,7 @@ namespace GiGraph.Dot.Entities.Clusters
     ///         <see cref="DotSubgraph" />) do, but they do support setting common style of nodes and edges within them.
     ///     </para>
     /// </summary>
-    public class DotCluster : DotCommonSubgraph
+    public class DotCluster : DotCommonGraph
     {
         protected DotCluster(string id,
             IDotClusterAttributeCollection attributes,

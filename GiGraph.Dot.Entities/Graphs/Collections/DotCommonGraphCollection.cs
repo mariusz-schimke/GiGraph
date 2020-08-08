@@ -1,17 +1,17 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Collections;
 
-namespace GiGraph.Dot.Entities.Subgraphs.Collections
+namespace GiGraph.Dot.Entities.Graphs.Collections
 {
-    public class DotCommonSubgraphCollection<T> : DotEntityWithIdCollection<T>, IDotEntity, IDotAnnotatable
-        where T : DotCommonSubgraph
+    public class DotCommonGraphCollection<T> : DotEntityWithIdCollection<T>, IDotEntity, IDotAnnotatable
+        where T : DotCommonGraph
     {
-        protected DotCommonSubgraphCollection(Func<string, Predicate<T>> matchIdPredicate)
+        protected DotCommonGraphCollection(Func<string, Predicate<T>> matchIdPredicate)
             : base(matchIdPredicate)
         {
         }
 
-        public DotCommonSubgraphCollection()
+        public DotCommonGraphCollection()
             : base(matchIdPredicate: id => subgraph => subgraph.Id == id)
         {
         }
