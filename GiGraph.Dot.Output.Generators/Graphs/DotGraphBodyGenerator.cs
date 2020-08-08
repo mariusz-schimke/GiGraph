@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using GiGraph.Dot.Entities;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Collections.Node;
@@ -31,7 +32,7 @@ namespace GiGraph.Dot.Output.Generators.Graphs
         protected override void WriteEntity(DotCommonGraph graphBody, IDotGraphBodyWriter writer)
         {
             // node and edge defaults have to appear first, so that they are applied to all elements that come later in the output script
-            WriteGlobalAttributes(graphBody.Attributes, graphBody.NodeDefaults, graphBody.EdgeDefaults, writer);
+            WriteGlobalAttributes(((IDotHasAttributes) graphBody).Attributes, graphBody.NodeDefaults, graphBody.EdgeDefaults, writer);
 
             // subgraphs and clusters may also specify node defaults, and these are applied only
             // if the nodes they contain do not appear earlier in the parent graph or subgraph

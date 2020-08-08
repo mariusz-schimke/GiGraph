@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
     ///         are connected to the other side of the edge.
     ///     </para>
     /// </summary>
-    public class DotSubgraph : DotCommonGraph
+    public class DotSubgraph : DotCommonGraph<IDotSubgraphAttributeCollection>
     {
         protected DotSubgraph(
             string id,
@@ -74,11 +74,6 @@ namespace GiGraph.Dot.Entities.Subgraphs
         {
             Attributes.Rank = rank;
         }
-
-        /// <summary>
-        ///     The attributes of the subgraph. The only valid attribute for a non-cluster subgraph is rank.
-        /// </summary>
-        public new IDotSubgraphAttributeCollection Attributes => (IDotSubgraphAttributeCollection) base.Attributes;
 
         /// <summary>
         ///     Creates a new subgraph with the specified nodes.

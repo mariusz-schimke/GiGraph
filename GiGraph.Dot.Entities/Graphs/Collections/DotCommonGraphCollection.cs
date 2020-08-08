@@ -12,30 +12,30 @@ namespace GiGraph.Dot.Entities.Graphs.Collections
         }
 
         public DotCommonGraphCollection()
-            : base(matchIdPredicate: id => subgraph => subgraph.Id == id)
+            : base(matchIdPredicate: id => graph => graph.Id == id)
         {
         }
 
         public virtual string Annotation { get; set; }
 
         /// <summary>
-        ///     Adds a subgraph to the collection and initializes it.
+        ///     Adds a graph to the collection and initializes it.
         /// </summary>
-        /// <param name="subgraph">
-        ///     The subgraph to add.
+        /// <param name="graph">
+        ///     The graph to add.
         /// </param>
         /// <param name="init">
-        ///     An optional initializer delegate.
+        ///     An optional graph initializer delegate.
         /// </param>
-        public virtual T Add(T subgraph, Action<T> init)
+        public virtual T Add(T graph, Action<T> init)
         {
-            Add(subgraph);
-            init?.Invoke(subgraph);
-            return subgraph;
+            Add(graph);
+            init?.Invoke(graph);
+            return graph;
         }
 
         /// <summary>
-        ///     Gets a subgraphs with the specified identifier from the collection.
+        ///     Gets a graph with the specified identifier from the collection.
         /// </summary>
         public virtual T Get(string id)
         {

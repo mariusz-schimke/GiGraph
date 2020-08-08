@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Clusters
     ///         <see cref="DotSubgraph" />) do, but they do support setting common style of nodes and edges within them.
     ///     </para>
     /// </summary>
-    public class DotCluster : DotCommonGraph
+    public class DotCluster : DotCommonGraph<IDotClusterAttributeCollection>
     {
         protected DotCluster(string id,
             IDotClusterAttributeCollection attributes,
@@ -57,11 +57,6 @@ namespace GiGraph.Dot.Entities.Clusters
             )
         {
         }
-
-        /// <summary>
-        ///     The attributes of the cluster.
-        /// </summary>
-        public new IDotClusterAttributeCollection Attributes => (IDotClusterAttributeCollection) base.Attributes;
 
         /// <summary>
         ///     Creates a new cluster with the specified nodes.

@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Graphs
     /// <summary>
     ///     Represents a graph (the root DOT graph).
     /// </summary>
-    public class DotGraph : DotCommonGraph
+    public class DotGraph : DotCommonGraph<IDotGraphAttributeCollection>
     {
         protected DotGraph(string id,
             bool isDirected,
@@ -71,10 +71,5 @@ namespace GiGraph.Dot.Entities.Graphs
         ///     may be at most one edge with a given tail node and head node in the directed case.
         /// </summary>
         public virtual bool IsStrict { get; set; }
-
-        /// <summary>
-        ///     The attributes of the graph.
-        /// </summary>
-        public new IDotGraphAttributeCollection Attributes => (IDotGraphAttributeCollection) base.Attributes;
     }
 }
