@@ -1,6 +1,6 @@
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Entities.Subgraphs
+namespace GiGraph.Dot.Entities.Clusters
 {
     public static class DotClusterIdFormatter
     {

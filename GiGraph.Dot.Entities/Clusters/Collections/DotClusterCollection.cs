@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Subgraphs.Collections;
 
-namespace GiGraph.Dot.Entities.Subgraphs.Collections
+namespace GiGraph.Dot.Entities.Clusters.Collections
 {
     public class DotClusterCollection : DotCommonSubgraphCollection<DotCluster>
     {

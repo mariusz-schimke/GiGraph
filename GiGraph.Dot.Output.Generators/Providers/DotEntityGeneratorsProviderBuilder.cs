@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Subgraphs;
+﻿using GiGraph.Dot.Entities.Clusters;
+using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Output.Generators.Attributes;
 using GiGraph.Dot.Output.Generators.Attributes.Edge;
 using GiGraph.Dot.Output.Generators.Attributes.Graph;

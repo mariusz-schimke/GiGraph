@@ -3,11 +3,13 @@ using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Collections.Node;
+using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
+using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 
-namespace GiGraph.Dot.Entities.Subgraphs
+namespace GiGraph.Dot.Entities.Clusters
 {
     /// <summary>
     ///     Represents a cluster subgraph. A cluster subgraph is a special type of subgraph whose appearance can be customized (as
