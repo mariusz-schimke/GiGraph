@@ -1,4 +1,8 @@
-﻿using GiGraph.Dot.Entities.Clusters;
+﻿using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
+using GiGraph.Dot.Entities.Attributes.Collections.Graph;
+using GiGraph.Dot.Entities.Attributes.Collections.Subgraph;
+using GiGraph.Dot.Entities.Clusters;
+using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Output.Generators.Attributes;
 using GiGraph.Dot.Output.Generators.Attributes.Edge;
@@ -29,17 +33,20 @@ namespace GiGraph.Dot.Output.Generators.Providers
             var provider = new DotEntityGeneratorsProvider();
 
             provider.Register(new DotGraphGenerator(syntaxRules, options, provider));
-            provider.Register(new DotGraphBodyGenerator(syntaxRules, options, provider));
+            provider.Register(new DotGraphBodyGenerator<DotGraph, IDotGraphAttributeCollection>(syntaxRules, options, provider));
 
             provider.Register(new DotGlobalGraphAttributeCollectionGenerator(syntaxRules, options, provider));
             provider.Register(new DotGlobalGraphAttributesGenerator(syntaxRules, options, provider));
             provider.Register(new DotGlobalNodeAttributesGenerator(syntaxRules, options, provider));
             provider.Register(new DotGlobalEdgeAttributesGenerator(syntaxRules, options, provider));
 
+            provider.Register(new DotSubgraphGenerator(syntaxRules, options, provider));
+            provider.Register(new DotGraphBodyGenerator<DotSubgraph, IDotSubgraphAttributeCollection>(syntaxRules, options, provider));
+            provider.Register(new DotSubgraphCollectionGenerator<DotSubgraph, IDotSubgraphAttributeCollection>(syntaxRules, options, provider));
+
             provider.Register(new DotClusterGenerator(syntaxRules, options, provider));
-            provider.Register(new DotSubgraphGenerator<DotSubgraph>(syntaxRules, options, provider));
-            provider.Register(new DotSubgraphCollectionGenerator<DotSubgraph>(syntaxRules, options, provider));
-            provider.Register(new DotSubgraphCollectionGenerator<DotCluster>(syntaxRules, options, provider));
+            provider.Register(new DotGraphBodyGenerator<DotCluster, IDotClusterAttributeCollection>(syntaxRules, options, provider));
+            provider.Register(new DotSubgraphCollectionGenerator<DotCluster, IDotClusterAttributeCollection>(syntaxRules, options, provider));
 
             provider.Register(new DotAttributeGenerator(syntaxRules, options, provider));
             provider.Register(new DotLabelAttributeGenerator(syntaxRules, options, provider));

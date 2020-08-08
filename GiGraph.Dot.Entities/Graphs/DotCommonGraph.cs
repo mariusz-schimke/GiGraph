@@ -8,13 +8,12 @@ using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
-    public abstract class DotCommonGraph : IDotEntity, IDotAnnotatable, IDotOrderable, IDotHasAttributes
+    public abstract class DotCommonGraph<TAttributes> : IDotEntity, IDotAnnotatable, IDotOrderable
+        where TAttributes : IDotAttributeCollection
     {
-        protected readonly IDotAttributeCollection _attributes;
-
         protected DotCommonGraph(
             string id,
-            IDotAttributeCollection attributes,
+            TAttributes attributes,
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
@@ -22,8 +21,8 @@ namespace GiGraph.Dot.Entities.Graphs
             IDotNodeAttributeCollection nodeDefaults,
             IDotEdgeAttributeCollection edgeDefaults)
         {
-            _attributes = attributes;
             Id = id;
+            Attributes = attributes;
             Nodes = nodes;
             Edges = edges;
             Subgraphs = subgraphs;
@@ -36,6 +35,11 @@ namespace GiGraph.Dot.Entities.Graphs
         ///     Gets or sets the identifier of the graph. Set null if no identifier should be used.
         /// </summary>
         public virtual string Id { get; set; }
+
+        /// <summary>
+        ///     The attributes of the element.
+        /// </summary>
+        public virtual TAttributes Attributes { get; }
 
         /// <summary>
         ///     Gets the collection of nodes.
@@ -94,8 +98,6 @@ namespace GiGraph.Dot.Entities.Graphs
         public virtual DotClusterCollection Clusters { get; }
 
         public virtual string Annotation { get; set; }
-
-        IDotAttributeCollection IDotHasAttributes.Attributes => _attributes;
 
         string IDotOrderable.OrderingKey => Id;
     }

@@ -1,17 +1,19 @@
 ﻿using System;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs.Collections
 {
-    public class DotCommonGraphCollection<T> : DotEntityWithIdCollection<T>, IDotEntity, IDotAnnotatable
-        where T : DotCommonGraph
+    public class DotGraphCollection<TGraph, TAttributes> : DotEntityWithIdCollection<TGraph>, IDotEntity, IDotAnnotatable
+        where TGraph : DotCommonGraph<TAttributes>
+        where TAttributes : IDotAttributeCollection
     {
-        protected DotCommonGraphCollection(Func<string, Predicate<T>> matchIdPredicate)
+        protected DotGraphCollection(Func<string, Predicate<TGraph>> matchIdPredicate)
             : base(matchIdPredicate)
         {
         }
 
-        public DotCommonGraphCollection()
+        public DotGraphCollection()
             : base(matchIdPredicate: id => graph => graph.Id == id)
         {
         }
@@ -27,7 +29,7 @@ namespace GiGraph.Dot.Entities.Graphs.Collections
         /// <param name="init">
         ///     An optional graph initializer delegate.
         /// </param>
-        public virtual T Add(T graph, Action<T> init)
+        public virtual TGraph Add(TGraph graph, Action<TGraph> init)
         {
             Add(graph);
             init?.Invoke(graph);
@@ -37,7 +39,7 @@ namespace GiGraph.Dot.Entities.Graphs.Collections
         /// <summary>
         ///     Gets a graph with the specified identifier from the collection.
         /// </summary>
-        public virtual T Get(string id)
+        public virtual TGraph Get(string id)
         {
             return Find(_matchIdPredicate(id));
         }
