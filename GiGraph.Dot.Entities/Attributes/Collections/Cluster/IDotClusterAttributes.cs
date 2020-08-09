@@ -219,5 +219,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     Specifies the space between the nodes in the cluster and the cluster bounding box. By default, this is 8 points.
         /// </summary>
         DotPoint Margin { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the sorting index of the element. If <see cref="PackMode" /> indicates an array packing, this attribute
+        ///     specifies an insertion order among the components, with smaller values inserted first.
+        /// </summary>
+        int? SortIndex { get; set; }
     }
 }
