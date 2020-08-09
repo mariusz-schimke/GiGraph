@@ -73,6 +73,46 @@ namespace GiGraph.Dot.Output.Generators.Tests
             return graph;
         }
 
+        private static DotGraph GetSectionedGraph(bool directed)
+        {
+            var graph = new DotGraph("graph1", directed);
+
+            graph.Annotation = "graph comment";
+
+            graph.Attributes.Compound = true;
+            graph.NodeDefaults.Label = "node label";
+            graph.EdgeDefaults.Label = "edge label";
+
+            graph.Nodes.Add("node1");
+            graph.Edges.Add("node1", "node2");
+
+            graph.Subgraphs.Add(sg =>
+            {
+                sg.Annotation = "subgraph comment";
+                sg.Attributes.Rank = DotRank.Min;
+
+                sg.Subsections.Add(ss =>
+                {
+                    ss.Annotation = "subgraph subsection comment";
+                    ss.Attributes.Rank = DotRank.Max;
+                });
+            });
+
+            graph.Clusters.Add("cluster1", c =>
+            {
+                c.Annotation = "cluster comment";
+                c.Attributes.Color = Color.Blue;
+
+                c.Subsections.Add(ss =>
+                {
+                    ss.Annotation = "cluster subsection comment";
+                    ss.Attributes.Color = Color.Magenta;
+                });
+            });
+
+            return graph;
+        }
+
         [Fact]
         public void graph_with_all_possible_elements_is_rendered_according_to_default_rules_and_options()
         {
@@ -257,6 +297,54 @@ namespace GiGraph.Dot.Output.Generators.Tests
             };
 
             Assert.Equal(sb.ToString(), graph.Build(options, _generationOptions, _syntaxRules));
+        }
+
+        [Fact]
+        public void renders_graph_subgraph_and_cluster_subsections()
+        {
+            var graph = GetSectionedGraph(directed: true);
+
+            var sb = new StringBuilder();
+            sb.AppendLine("// graph comment");
+            sb.AppendLine("digraph graph1");
+            sb.AppendLine("{");
+
+            sb.AppendLine("    compound = true");
+            sb.AppendLine();
+
+            sb.AppendLine("    node [ label = \"node label\" ]");
+            sb.AppendLine("    edge [ label = \"edge label\" ]");
+            sb.AppendLine();
+
+            sb.AppendLine("    // subgraph comment");
+            sb.AppendLine("    {");
+            sb.AppendLine("        rank = min");
+            sb.AppendLine();
+            sb.AppendLine("        /* subgraph subsection comment */");
+            sb.AppendLine();
+            sb.AppendLine("        rank = max");
+            sb.AppendLine("    }");
+            sb.AppendLine();
+
+            sb.AppendLine("    // cluster comment");
+            sb.AppendLine("    subgraph \"cluster cluster1\"");
+            sb.AppendLine("    {");
+            sb.AppendLine("        color = blue");
+            sb.AppendLine();
+            sb.AppendLine("        /* cluster subsection comment */");
+            sb.AppendLine();
+            sb.AppendLine("        color = magenta");
+            sb.AppendLine("    }");
+            sb.AppendLine();
+
+            sb.AppendLine("    node1");
+            sb.AppendLine();
+
+            sb.AppendLine("    node1 -> node2");
+
+            sb.Append("}");
+
+            Assert.Equal(sb.ToString(), graph.Build());
         }
     }
 }
