@@ -704,21 +704,9 @@ digraph
 
 ### Subsections
 
-The root graph, subgraphs, and clusters may contain subsections. A subsection is understood as a separate section of any graph elements within the graph/subgraph/cluster. The library always renders elements in a section in the following order:
+The root graph, subgraphs, and clusters may contain subsections. A subsection is understood as a group of graph elements. Sections are rendered in the output script consecutively, so when you set global graph, node and/or edge attributes in the root section or in any subsection, they impact not only the section where they are set, but also the sections that follow it.
 
-* global graph attributes,
-* global node attributes (the so called *node defaults*),
-* global edge attributes (the so called *edge defaults*),
-* subgraphs,
-* clusters,
-* nodes,
-* edges.
-
-Subsections let you change the global attributes for sections of the graph, and also, as a side feature, control the order the elements are rendered in the output DOT script.
-
-Sections are rendered consecutively in the output script, so when you set global attributes in the root section or in any subsection, they impact not only the section where they are set, but also the sections that follow it. Therefore, when you want to set global attributes of a specific group of elements, you will probably prefer [subgraphs](subgraph), as they give you more granular control over how the elements are visualized, without affecting elements outside the subgraph.
-
-Consider the following example to see how the root section and the subsections are rendered in the output script, and how their attributes impact visualization:
+Consider the following example to see how the root section and subsections are rendered in the output DOT script, and how their attributes impact visualization.
 
 ```c#
 // the root section
@@ -772,6 +760,24 @@ digraph
 <p align="center">
   <img src="./Assets/Examples/subsections.svg">
 </p>
+
+
+The library always renders elements of a section in the following order:
+
+* global graph attributes,
+* global node attributes (*node defaults*),
+* global edge attributes (*edge defaults*),
+* subgraphs,
+* clusters,
+* nodes,
+* edges.
+
+When necessary, by using subsections you may customize the order graph elements appear in the script (in those cases when the order actually impacts visualization).
+
+
+
+*Note that when you want to set global attributes of a specific group of elements, you will probably prefer [subgraphs](subgraph), as they give you more granular control over the elements inside a subgraph, without affecting other graph elements.*
+
 
 
 
