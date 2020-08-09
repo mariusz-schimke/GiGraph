@@ -643,7 +643,7 @@ graph.Attributes.BackgroundColor = Color.LightGray;
 
 
 
-### Default attributes
+### Default (global) attributes
 
 A graph, a subgraph, and a cluster may have node and edge defaults specified. When you set them, they affect (by the library design) all nodes and/or edges encompassed by the graph, subgraph, or cluster respectively. They may be overridden, however, by attributes set on individual graph elements.
 
@@ -700,6 +700,84 @@ digraph
 <p align="center">
   <img src="./Assets/Examples/default-attributes.svg">
 </p>
+
+
+### Subsections
+
+The root graph, subgraphs, and clusters may contain subsections. A subsection is understood as a group of graph elements and/or global attributes. Sections are rendered in the output script consecutively, so when you set global graph, node and/or edge attributes in the root section or in any subsection, they impact not only the section where they are set, but also the sections that follow it.
+
+*Note that when you want to set global attributes of a specific group of elements, you will probably prefer [subgraphs](#subgraph), as they give you more granular control over the elements inside a subgraph, without affecting other graph elements.*
+
+Consider the following example to see how the root section and subsections are rendered in the output DOT script, and how their attributes impact visualization.
+
+```c#
+// the root section
+graph.Annotation = "the example graph (the root section)";
+
+graph.NodeDefaults.Annotation = "set default node color and style";
+graph.NodeDefaults.Color = Color.Orange;
+graph.NodeDefaults.Style = DotStyle.Filled;
+
+graph.Edges.Add("foo", "bar");
+
+// the subsections
+graph.Subsections.Add(subsection =>
+{
+    subsection.Annotation = "subsection 1 - override node color";
+    subsection.NodeDefaults.Color = Color.Turquoise;
+    subsection.Edges.Add("baz", "qux");
+});
+
+graph.Subsections.Add(subsection =>
+{
+    subsection.Annotation = "subsection 2 - set default edge style";
+    subsection.EdgeDefaults.Style = DotStyle.Dashed;
+    subsection.Edges.Add("quux", "fred");
+});
+```
+
+```dot
+// the example graph (the root section)
+digraph
+{
+    // set default node color and style
+    node [ color = orange, style = filled ]
+
+    foo -> bar
+
+    /* subsection 1 - override node color */
+
+    node [ color = turquoise ]
+
+    baz -> qux
+
+    /* subsection 2 - set default edge style */
+
+    edge [ style = dashed ]
+
+    quux -> fred
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/subsections.svg">
+</p>
+
+
+The library always renders elements of a section in the following order:
+
+* global graph attributes,
+* global node attributes (*node defaults*),
+* global edge attributes (*edge defaults*),
+* subgraphs,
+* clusters,
+* nodes,
+* edges.
+
+When necessary, by using subsections you may customize the order graph elements appear in the script (in all those cases when the order actually impacts visualization).
+
+
+
 
 ## Subgraph
 

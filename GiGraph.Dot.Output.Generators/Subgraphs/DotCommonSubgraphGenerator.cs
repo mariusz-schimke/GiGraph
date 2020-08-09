@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Subgraphs;
+﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Output.Generators.Graphs;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
@@ -6,8 +7,9 @@ using GiGraph.Dot.Output.Writers.Subgraphs;
 
 namespace GiGraph.Dot.Output.Generators.Subgraphs
 {
-    public class DotCommonSubgraphGenerator<TSubgraph> : DotCommonGraphGenerator<TSubgraph, IDotSubgraphWriter>
-        where TSubgraph : DotCommonSubgraph
+    public abstract class DotCommonSubgraphGenerator<TSubgraph, TSubgraphAttributes> : DotCommonGraphGenerator<TSubgraph, TSubgraphAttributes, IDotSubgraphWriter>
+        where TSubgraph : DotCommonGraph<TSubgraphAttributes>
+        where TSubgraphAttributes : IDotAttributeCollection
     {
         public DotCommonSubgraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
@@ -20,10 +22,6 @@ namespace GiGraph.Dot.Output.Generators.Subgraphs
             WriteBody(subgraph, writer);
         }
 
-        protected virtual void WriteDeclaration(string id, IDotSubgraphWriter writer)
-        {
-            id = EscapeIdentifier(id);
-            writer.WriteSubgraphDeclaration(id, IdentifierRequiresQuoting(id));
-        }
+        protected abstract void WriteDeclaration(string id, IDotSubgraphWriter writer);
     }
 }

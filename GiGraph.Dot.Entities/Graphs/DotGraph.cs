@@ -1,7 +1,9 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Attributes.Collections.Node;
+using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
+using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 
@@ -10,9 +12,10 @@ namespace GiGraph.Dot.Entities.Graphs
     /// <summary>
     ///     Represents a graph (the root DOT graph).
     /// </summary>
-    public class DotGraph : DotCommonGraph
+    public class DotGraph : DotCommonGraph<IDotGraphAttributeCollection>
     {
-        protected DotGraph(string id,
+        protected DotGraph(
+            string id,
             bool isDirected,
             bool isStrict,
             IDotGraphAttributeCollection attributes,
@@ -21,11 +24,22 @@ namespace GiGraph.Dot.Entities.Graphs
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
             IDotNodeAttributeCollection nodeDefaults,
-            IDotEdgeAttributeCollection edgeDefaults)
-            : base(id, attributes, nodes, edges, subgraphs, clusters, nodeDefaults, edgeDefaults)
+            IDotEdgeAttributeCollection edgeDefaults,
+            DotGraphSectionCollection<IDotGraphAttributeCollection> subsections)
+            : base(id, attributes, nodes, edges, subgraphs, clusters, nodeDefaults, edgeDefaults, subsections)
         {
             IsDirected = isDirected;
             IsStrict = isStrict;
+        }
+
+        protected DotGraph(
+            string id,
+            bool isDirected,
+            bool isStrict,
+            DotGraphSection<IDotGraphAttributeCollection> rootSection,
+            DotGraphSectionCollection<IDotGraphAttributeCollection> subsections)
+            : this(id, isDirected, isStrict, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, rootSection.NodeDefaults, rootSection.EdgeDefaults, subsections)
+        {
         }
 
         /// <summary>
@@ -43,19 +57,7 @@ namespace GiGraph.Dot.Entities.Graphs
         ///     a given tail node and head node in the directed case.
         /// </param>
         public DotGraph(string id = null, bool isDirected = true, bool isStrict = false)
-            : this
-            (
-                id,
-                isDirected,
-                isStrict,
-                new DotGraphAttributeCollection(),
-                new DotNodeCollection(),
-                new DotEdgeCollection(),
-                new DotSubgraphCollection(),
-                new DotClusterCollection(),
-                new DotNodeAttributeCollection(),
-                new DotEdgeAttributeCollection()
-            )
+            : this(id, isDirected, isStrict, CreateSection(), new DotGraphSectionCollection<IDotGraphAttributeCollection>(CreateSection))
         {
         }
 
@@ -71,9 +73,9 @@ namespace GiGraph.Dot.Entities.Graphs
         /// </summary>
         public virtual bool IsStrict { get; set; }
 
-        /// <summary>
-        ///     The attributes of the graph.
-        /// </summary>
-        public new IDotGraphAttributeCollection Attributes => (IDotGraphAttributeCollection) base.Attributes;
+        protected static DotGraphSection<IDotGraphAttributeCollection> CreateSection()
+        {
+            return Create(new DotGraphAttributeCollection());
+        }
     }
 }

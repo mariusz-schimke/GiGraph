@@ -4,7 +4,11 @@ using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Attributes.Collections.Subgraph;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Clusters;
+using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
+using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 
@@ -27,7 +31,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
     ///         are connected to the other side of the edge.
     ///     </para>
     /// </summary>
-    public class DotSubgraph : DotCommonSubgraph
+    public class DotSubgraph : DotCommonGraph<IDotSubgraphAttributeCollection>
     {
         protected DotSubgraph(
             string id,
@@ -37,8 +41,17 @@ namespace GiGraph.Dot.Entities.Subgraphs
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
             IDotNodeAttributeCollection nodeDefaults,
-            IDotEdgeAttributeCollection edgeDefaults)
-            : base(id, attributes, nodes, edges, subgraphs, clusters, nodeDefaults, edgeDefaults)
+            IDotEdgeAttributeCollection edgeDefaults,
+            DotGraphSectionCollection<IDotSubgraphAttributeCollection> subsections)
+            : base(id, attributes, nodes, edges, subgraphs, clusters, nodeDefaults, edgeDefaults, subsections)
+        {
+        }
+
+        protected DotSubgraph(
+            string id,
+            DotGraphSection<IDotSubgraphAttributeCollection> rootSection,
+            DotGraphSectionCollection<IDotSubgraphAttributeCollection> subsections)
+            : base(id, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, rootSection.NodeDefaults, rootSection.EdgeDefaults, subsections)
         {
         }
 
@@ -46,17 +59,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         ///     Creates a new subgraph.
         /// </summary>
         public DotSubgraph()
-            : this
-            (
-                id: null,
-                new DotSubgraphAttributeCollection(),
-                new DotNodeCollection(),
-                new DotEdgeCollection(),
-                new DotSubgraphCollection(),
-                new DotClusterCollection(),
-                new DotNodeAttributeCollection(),
-                new DotEdgeAttributeCollection()
-            )
+            : this(id: null, CreateSection(), new DotGraphSectionCollection<IDotSubgraphAttributeCollection>(CreateSection))
         {
         }
 
@@ -71,11 +74,6 @@ namespace GiGraph.Dot.Entities.Subgraphs
         {
             Attributes.Rank = rank;
         }
-
-        /// <summary>
-        ///     The attributes of the subgraph. The only valid attribute for a non-cluster subgraph is rank.
-        /// </summary>
-        public new IDotSubgraphAttributeCollection Attributes => (IDotSubgraphAttributeCollection) base.Attributes;
 
         /// <summary>
         ///     Creates a new subgraph with the specified nodes.
@@ -123,6 +121,11 @@ namespace GiGraph.Dot.Entities.Subgraphs
             }
 
             return result;
+        }
+
+        protected static DotGraphSection<IDotSubgraphAttributeCollection> CreateSection()
+        {
+            return Create(new DotSubgraphAttributeCollection());
         }
     }
 }

@@ -3,11 +3,15 @@ using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Collections.Node;
+using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
+using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
+using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 
-namespace GiGraph.Dot.Entities.Subgraphs
+namespace GiGraph.Dot.Entities.Clusters
 {
     /// <summary>
     ///     Represents a cluster subgraph. A cluster subgraph is a special type of subgraph whose appearance can be customized (as
@@ -20,17 +24,27 @@ namespace GiGraph.Dot.Entities.Subgraphs
     ///         <see cref="DotSubgraph" />) do, but they do support setting common style of nodes and edges within them.
     ///     </para>
     /// </summary>
-    public class DotCluster : DotCommonSubgraph
+    public class DotCluster : DotCommonGraph<IDotClusterAttributeCollection>
     {
-        protected DotCluster(string id,
+        protected DotCluster(
+            string id,
             IDotClusterAttributeCollection attributes,
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
             IDotNodeAttributeCollection nodeDefaults,
-            IDotEdgeAttributeCollection edgeDefaults)
-            : base(id, attributes, nodes, edges, subgraphs, clusters, nodeDefaults, edgeDefaults)
+            IDotEdgeAttributeCollection edgeDefaults,
+            DotGraphSectionCollection<IDotClusterAttributeCollection> subsections)
+            : base(id, attributes, nodes, edges, subgraphs, clusters, nodeDefaults, edgeDefaults, subsections)
+        {
+        }
+
+        protected DotCluster(
+            string id,
+            DotGraphSection<IDotClusterAttributeCollection> rootSection,
+            DotGraphSectionCollection<IDotClusterAttributeCollection> subsections)
+            : base(id, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, rootSection.NodeDefaults, rootSection.EdgeDefaults, subsections)
         {
         }
 
@@ -41,24 +55,9 @@ namespace GiGraph.Dot.Entities.Subgraphs
         ///     The unique identifier of the cluster.
         /// </param>
         public DotCluster(string id)
-            : this
-            (
-                id,
-                new DotClusterAttributeCollection(),
-                new DotNodeCollection(),
-                new DotEdgeCollection(),
-                new DotSubgraphCollection(),
-                new DotClusterCollection(),
-                new DotNodeAttributeCollection(),
-                new DotEdgeAttributeCollection()
-            )
+            : this(id, CreateSection(), new DotGraphSectionCollection<IDotClusterAttributeCollection>(CreateSection))
         {
         }
-
-        /// <summary>
-        ///     The attributes of the cluster.
-        /// </summary>
-        public new IDotClusterAttributeCollection Attributes => (IDotClusterAttributeCollection) base.Attributes;
 
         /// <summary>
         ///     Creates a new cluster with the specified nodes.
@@ -93,6 +92,11 @@ namespace GiGraph.Dot.Entities.Subgraphs
             }
 
             return result;
+        }
+
+        protected static DotGraphSection<IDotClusterAttributeCollection> CreateSection()
+        {
+            return Create(new DotClusterAttributeCollection());
         }
     }
 }

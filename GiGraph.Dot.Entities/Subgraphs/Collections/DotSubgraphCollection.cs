@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Collections.Subgraph;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Graphs.Collections;
 
 namespace GiGraph.Dot.Entities.Subgraphs.Collections
 {
-    public class DotSubgraphCollection : DotCommonSubgraphCollection<DotSubgraph>
+    public class DotSubgraphCollection : DotGraphCollection<DotSubgraph, IDotSubgraphAttributeCollection>
     {
         /// <summary>
         ///     Adds a new subgraph to the collection, and returns it.

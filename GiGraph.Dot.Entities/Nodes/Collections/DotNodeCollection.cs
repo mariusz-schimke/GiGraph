@@ -13,8 +13,8 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         {
         }
 
-        public DotNodeCollection() :
-            base(matchIdPredicate: id => nodeDefinition => nodeDefinition is DotNode node && node.Id == id)
+        public DotNodeCollection()
+            : base(matchIdPredicate: id => nodeDefinition => nodeDefinition is DotNode node && node.Id == id)
         {
         }
 
