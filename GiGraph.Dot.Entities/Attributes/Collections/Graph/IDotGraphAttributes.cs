@@ -368,7 +368,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 
         /// <summary>
         ///     <para>
-        ///         Sets the aspect ratio (drawing height / drawing width) for the drawing. Note that this is adjusted before the
+        ///         Gets or sets the aspect ratio (drawing height / drawing width) for the drawing. Note that this is adjusted before the
         ///         <see cref="Size" /> attribute constraints are enforced. In addition, the calculations usually ignore the node sizes, so
         ///         the final drawing size may only approximate what is desired.
         ///     </para>
@@ -382,5 +382,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     </para>
         /// </summary>
         DotAspectRatioDefinition AspectRatio { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the sorting index of the element. If <see cref="PackMode" /> indicates an array packing, this attribute
+        ///     specifies an insertion order among the components, with smaller values inserted first.
+        /// </summary>
+        int? SortIndex { get; set; }
     }
 }

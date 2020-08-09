@@ -324,5 +324,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     assigned), parameters are set to avoid crossings and keep the edges straight (dot only).
         /// </summary>
         string GroupName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the sorting index of the element. If <see cref="PackMode" /> indicates an array packing, this attribute
+        ///     specifies an insertion order among the components, with smaller values inserted first.
+        /// </summary>
+        int? SortIndex { get; set; }
     }
 }

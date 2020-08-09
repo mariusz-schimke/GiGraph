@@ -179,6 +179,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
 
+        [DotAttributeKey("sortv")]
+        public virtual int? SortIndex
+        {
+            get => GetValueAsInt(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
+        }
+
         public virtual void SetFilled(Color color)
         {
             SetFilled((DotColorDefinition) color);
