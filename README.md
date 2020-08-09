@@ -706,7 +706,7 @@ digraph
 
 The root graph, subgraphs, and clusters may contain subsections. A subsection is understood as a group of graph elements and/or global attributes. Sections are rendered in the output script consecutively, so when you set global graph, node and/or edge attributes in the root section or in any subsection, they impact not only the section where they are set, but also the sections that follow it.
 
-*Note that when you want to set global attributes of a specific group of elements, you will probably prefer [subgraphs](subgraph), as they give you more granular control over the elements inside a subgraph, without affecting other graph elements.*
+*Note that when you want to set global attributes of a specific group of elements, you will probably prefer [subgraphs](#subgraph), as they give you more granular control over the elements inside a subgraph, without affecting other graph elements.*
 
 Consider the following example to see how the root section and subsections are rendered in the output DOT script, and how their attributes impact visualization.
 
@@ -774,7 +774,7 @@ The library always renders elements of a section in the following order:
 * nodes,
 * edges.
 
-When necessary, by using subsections you may customize the order graph elements appear in the script (in those cases when the order actually impacts visualization).
+When necessary, by using subsections you may customize the order graph elements appear in the script (in all those cases when the order actually impacts visualization).
 
 
 
