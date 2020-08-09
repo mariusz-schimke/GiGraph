@@ -21,7 +21,7 @@ using GiGraph.Dot.Output.Writers.Subgraphs;
 
 namespace GiGraph.Dot.Output.Generators.Graphs
 {
-    public class DotGraphSectionGenerator<TAttributes> : DotEntityGenerator<DotCommonGraphSection<TAttributes>, IDotGraphBodyWriter>
+    public class DotGraphSectionGenerator<TAttributes> : DotEntityGenerator<DotGraphSection<TAttributes>, IDotGraphBodyWriter>
         where TAttributes : IDotAttributeCollection
     {
         public DotGraphSectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Output.Generators.Graphs
         {
         }
 
-        protected override void WriteEntity(DotCommonGraphSection<TAttributes> graphSection, IDotGraphBodyWriter writer)
+        protected override void WriteEntity(DotGraphSection<TAttributes> graphSection, IDotGraphBodyWriter writer)
         {
             // node and edge defaults have to appear first, so that they are applied to all elements that come later in the output script
             WriteGlobalAttributes(graphSection.Attributes, graphSection.NodeDefaults, graphSection.EdgeDefaults, writer);

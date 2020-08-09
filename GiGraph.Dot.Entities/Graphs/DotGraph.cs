@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Graphs
             string id,
             bool isDirected,
             bool isStrict,
-            DotCommonGraphSection<IDotGraphAttributeCollection> section,
+            DotGraphSection<IDotGraphAttributeCollection> section,
             DotGraphSectionCollection<IDotGraphAttributeCollection> subsections)
             : this(id, isDirected, isStrict, section.Attributes, section.Nodes, section.Edges, section.Subgraphs, section.Clusters, section.NodeDefaults, section.EdgeDefaults, subsections)
         {
@@ -73,9 +73,9 @@ namespace GiGraph.Dot.Entities.Graphs
         /// </summary>
         public virtual bool IsStrict { get; set; }
 
-        protected static DotCommonGraphSection<IDotGraphAttributeCollection> CreateSection()
+        protected static DotGraphSection<IDotGraphAttributeCollection> CreateSection()
         {
-            return Create(() => new DotGraphAttributeCollection());
+            return Create(new DotGraphAttributeCollection());
         }
     }
 }

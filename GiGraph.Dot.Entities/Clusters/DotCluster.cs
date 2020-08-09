@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Entities.Clusters
 
         protected DotCluster(
             string id,
-            DotCommonGraphSection<IDotClusterAttributeCollection> section,
+            DotGraphSection<IDotClusterAttributeCollection> section,
             DotGraphSectionCollection<IDotClusterAttributeCollection> subsections)
             : base(id, section.Attributes, section.Nodes, section.Edges, section.Subgraphs, section.Clusters, section.NodeDefaults, section.EdgeDefaults, subsections)
         {
@@ -94,9 +94,9 @@ namespace GiGraph.Dot.Entities.Clusters
             return result;
         }
 
-        protected static DotCommonGraphSection<IDotClusterAttributeCollection> CreateSection()
+        protected static DotGraphSection<IDotClusterAttributeCollection> CreateSection()
         {
-            return Create(() => new DotClusterAttributeCollection());
+            return Create(new DotClusterAttributeCollection());
         }
     }
 }

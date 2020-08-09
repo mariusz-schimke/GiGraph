@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Clusters.Collections;
@@ -9,10 +8,10 @@ using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
-    public class DotCommonGraphSection<TAttributes> : IDotEntity, IDotAnnotatable
+    public class DotGraphSection<TAttributes> : IDotEntity, IDotAnnotatable
         where TAttributes : IDotAttributeCollection
     {
-        public DotCommonGraphSection(
+        public DotGraphSection(
             TAttributes attributes,
             DotNodeCollection nodes,
             DotEdgeCollection edges,
@@ -93,10 +92,10 @@ namespace GiGraph.Dot.Entities.Graphs
 
         public virtual string Annotation { get; set; }
 
-        public static DotCommonGraphSection<TAttributes> Create(Func<TAttributes> createAttributes)
+        public static DotGraphSection<TAttributes> Create(TAttributes attributes)
         {
-            return new DotCommonGraphSection<TAttributes>(
-                createAttributes(),
+            return new DotGraphSection<TAttributes>(
+                attributes,
                 new DotNodeCollection(),
                 new DotEdgeCollection(),
                 new DotSubgraphCollection(),

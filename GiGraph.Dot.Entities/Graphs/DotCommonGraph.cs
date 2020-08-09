@@ -9,7 +9,7 @@ using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
-    public abstract class DotCommonGraph<TAttributes> : DotCommonGraphSection<TAttributes>, IDotOrderable
+    public abstract class DotCommonGraph<TAttributes> : DotGraphSection<TAttributes>, IDotOrderable
         where TAttributes : IDotAttributeCollection
     {
         protected DotCommonGraph(
@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Graphs
 
         protected DotCommonGraph(
             string id,
-            DotCommonGraphSection<TAttributes> section,
+            DotGraphSection<TAttributes> section,
             DotGraphSectionCollection<TAttributes> subsections)
             : this(id, section.Attributes, section.Nodes, section.Edges, section.Subgraphs, section.Clusters, section.NodeDefaults, section.EdgeDefaults, subsections)
         {

@@ -49,7 +49,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
 
         protected DotSubgraph(
             string id,
-            DotCommonGraphSection<IDotSubgraphAttributeCollection> section,
+            DotGraphSection<IDotSubgraphAttributeCollection> section,
             DotGraphSectionCollection<IDotSubgraphAttributeCollection> subsections)
             : base(id, section.Attributes, section.Nodes, section.Edges, section.Subgraphs, section.Clusters, section.NodeDefaults, section.EdgeDefaults, subsections)
         {
@@ -123,9 +123,9 @@ namespace GiGraph.Dot.Entities.Subgraphs
             return result;
         }
 
-        protected static DotCommonGraphSection<IDotSubgraphAttributeCollection> CreateSection()
+        protected static DotGraphSection<IDotSubgraphAttributeCollection> CreateSection()
         {
-            return Create(() => new DotSubgraphAttributeCollection());
+            return Create(new DotSubgraphAttributeCollection());
         }
     }
 }
