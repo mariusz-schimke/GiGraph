@@ -8,6 +8,7 @@ using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Strings;
@@ -257,6 +258,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The value of the attribute to include in the collection.
         /// </param>
         DotAspectRatioDefinitionAttribute Set(string key, DotAspectRatioDefinition value);
+
+        /// <summary>
+        ///     Adds or replaces the specified packing definition attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotPackingDefinitionAttribute Set(string key, DotPackingDefinition value);
 
         /// <summary>
         ///     Adds or replaces the specified point attribute in the collection.

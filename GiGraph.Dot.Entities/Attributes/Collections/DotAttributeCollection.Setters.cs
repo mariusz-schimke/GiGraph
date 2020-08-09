@@ -7,6 +7,7 @@ using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Strings;
@@ -193,6 +194,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotAspectRatioDefinitionAttribute Set(string key, DotAspectRatioDefinition value)
         {
             return Set(new DotAspectRatioDefinitionAttribute(key, value));
+        }
+
+        public virtual DotPackingDefinitionAttribute Set(string key, DotPackingDefinition value)
+        {
+            return Set(new DotPackingDefinitionAttribute(key, value));
         }
 
         public virtual DotAspectRatioAttribute Set(string key, DotAspectRatio value)

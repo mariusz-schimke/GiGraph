@@ -3,6 +3,7 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 
@@ -139,6 +140,24 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                     : null;
             }
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotAspectRatioDefinitionAttribute(k, v));
+        }
+
+        [DotAttributeKey("pack")]
+        public virtual DotPackingDefinition Pack
+        {
+            get
+            {
+                return GetValueAs<DotPackingDefinition>
+                (
+                    GetKey(MethodBase.GetCurrentMethod()),
+                    out var value,
+                    v => v is int i ? (true, new DotPackingMargin(i)) : (false, default),
+                    v => v is bool b ? (true, new DotPackingEnabled(b)) : (false, default)
+                )
+                    ? value
+                    : null;
+            }
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPackingDefinitionAttribute(k, v));
         }
     }
 }
