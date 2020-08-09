@@ -36,9 +36,9 @@ namespace GiGraph.Dot.Entities.Graphs
             string id,
             bool isDirected,
             bool isStrict,
-            DotGraphSection<IDotGraphAttributeCollection> section,
+            DotGraphSection<IDotGraphAttributeCollection> rootSection,
             DotGraphSectionCollection<IDotGraphAttributeCollection> subsections)
-            : this(id, isDirected, isStrict, section.Attributes, section.Nodes, section.Edges, section.Subgraphs, section.Clusters, section.NodeDefaults, section.EdgeDefaults, subsections)
+            : this(id, isDirected, isStrict, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, rootSection.NodeDefaults, rootSection.EdgeDefaults, subsections)
         {
         }
 

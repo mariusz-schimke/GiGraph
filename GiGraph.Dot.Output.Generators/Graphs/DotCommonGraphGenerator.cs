@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Output.Generators.Graphs
         {
         }
 
-        protected virtual void WriteBody(DotCommonGraph<TGraphAttributes> graphBody, IDotCommonGraphWriter writer)
+        protected virtual void WriteBody(TGraph graphBody, IDotCommonGraphWriter writer)
         {
             var bodyWriter = writer.BeginBody();
 

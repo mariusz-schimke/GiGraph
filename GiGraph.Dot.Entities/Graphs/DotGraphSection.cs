@@ -8,11 +8,11 @@ using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
-    public class DotGraphSection<TAttributes> : IDotEntity, IDotAnnotatable
-        where TAttributes : IDotAttributeCollection
+    public class DotGraphSection<TGraphAttributes> : IDotEntity, IDotAnnotatable
+        where TGraphAttributes : IDotAttributeCollection
     {
         public DotGraphSection(
-            TAttributes attributes,
+            TGraphAttributes attributes,
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Graphs
         /// <summary>
         ///     The attributes of the element.
         /// </summary>
-        public virtual TAttributes Attributes { get; }
+        public virtual TGraphAttributes Attributes { get; }
 
         /// <summary>
         ///     Gets the collection of nodes.
@@ -92,9 +92,9 @@ namespace GiGraph.Dot.Entities.Graphs
 
         public virtual string Annotation { get; set; }
 
-        public static DotGraphSection<TAttributes> Create(TAttributes attributes)
+        public static DotGraphSection<TGraphAttributes> Create(TGraphAttributes attributes)
         {
-            return new DotGraphSection<TAttributes>(
+            return new DotGraphSection<TGraphAttributes>(
                 attributes,
                 new DotNodeCollection(),
                 new DotEdgeCollection(),

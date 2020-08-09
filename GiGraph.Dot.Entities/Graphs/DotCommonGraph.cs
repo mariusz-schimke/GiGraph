@@ -9,19 +9,19 @@ using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
-    public abstract class DotCommonGraph<TAttributes> : DotGraphSection<TAttributes>, IDotOrderable
-        where TAttributes : IDotAttributeCollection
+    public abstract class DotCommonGraph<TGraphAttributes> : DotGraphSection<TGraphAttributes>, IDotOrderable
+        where TGraphAttributes : IDotAttributeCollection
     {
         protected DotCommonGraph(
             string id,
-            TAttributes attributes,
+            TGraphAttributes attributes,
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
             IDotNodeAttributeCollection nodeDefaults,
             IDotEdgeAttributeCollection edgeDefaults,
-            DotGraphSectionCollection<TAttributes> subsections)
+            DotGraphSectionCollection<TGraphAttributes> subsections)
             : base(attributes, nodes, edges, subgraphs, clusters, nodeDefaults, edgeDefaults)
         {
             Id = id;
@@ -30,9 +30,9 @@ namespace GiGraph.Dot.Entities.Graphs
 
         protected DotCommonGraph(
             string id,
-            DotGraphSection<TAttributes> section,
-            DotGraphSectionCollection<TAttributes> subsections)
-            : this(id, section.Attributes, section.Nodes, section.Edges, section.Subgraphs, section.Clusters, section.NodeDefaults, section.EdgeDefaults, subsections)
+            DotGraphSection<TGraphAttributes> rootSection,
+            DotGraphSectionCollection<TGraphAttributes> subsections)
+            : this(id, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, rootSection.NodeDefaults, rootSection.EdgeDefaults, subsections)
         {
         }
 
@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Entities.Graphs
         ///         be the cleaner and preferable way to achieve the effect.
         ///     </para>
         /// </summary>
-        public virtual DotGraphSectionCollection<TAttributes> Subsections { get; }
+        public virtual DotGraphSectionCollection<TGraphAttributes> Subsections { get; }
 
         string IDotOrderable.OrderingKey => Id;
     }

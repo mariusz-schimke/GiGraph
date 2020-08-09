@@ -49,9 +49,9 @@ namespace GiGraph.Dot.Entities.Subgraphs
 
         protected DotSubgraph(
             string id,
-            DotGraphSection<IDotSubgraphAttributeCollection> section,
+            DotGraphSection<IDotSubgraphAttributeCollection> rootSection,
             DotGraphSectionCollection<IDotSubgraphAttributeCollection> subsections)
-            : base(id, section.Attributes, section.Nodes, section.Edges, section.Subgraphs, section.Clusters, section.NodeDefaults, section.EdgeDefaults, subsections)
+            : base(id, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, rootSection.NodeDefaults, rootSection.EdgeDefaults, subsections)
         {
         }
 

@@ -4,12 +4,12 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs.Collections
 {
-    public class DotGraphSectionCollection<TAttributes> : List<DotGraphSection<TAttributes>>
-        where TAttributes : IDotAttributeCollection
+    public class DotGraphSectionCollection<TGraphAttributes> : List<DotGraphSection<TGraphAttributes>>
+        where TGraphAttributes : IDotAttributeCollection
     {
-        protected readonly Func<DotGraphSection<TAttributes>> _createSection;
+        protected readonly Func<DotGraphSection<TGraphAttributes>> _createSection;
 
-        public DotGraphSectionCollection(Func<DotGraphSection<TAttributes>> createSection)
+        public DotGraphSectionCollection(Func<DotGraphSection<TGraphAttributes>> createSection)
         {
             _createSection = createSection;
         }
@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Graphs.Collections
         /// <param name="init">
         ///     An optional section initializer delegate.
         /// </param>
-        protected virtual DotGraphSection<TAttributes> Add(DotGraphSection<TAttributes> section, Action<DotGraphSection<TAttributes>> init)
+        public virtual DotGraphSection<TGraphAttributes> Add(DotGraphSection<TGraphAttributes> section, Action<DotGraphSection<TGraphAttributes>> init)
         {
             Add(section);
             init?.Invoke(section);
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Graphs.Collections
         /// <param name="init">
         ///     An optional section initializer delegate.
         /// </param>
-        public virtual DotGraphSection<TAttributes> Add(Action<DotGraphSection<TAttributes>> init = null)
+        public virtual DotGraphSection<TGraphAttributes> Add(Action<DotGraphSection<TGraphAttributes>> init = null)
         {
             return Add(_createSection(), init);
         }

@@ -21,15 +21,15 @@ using GiGraph.Dot.Output.Writers.Subgraphs;
 
 namespace GiGraph.Dot.Output.Generators.Graphs
 {
-    public class DotGraphSectionGenerator<TAttributes> : DotEntityGenerator<DotGraphSection<TAttributes>, IDotGraphBodyWriter>
-        where TAttributes : IDotAttributeCollection
+    public class DotGraphSectionGenerator<TGraphAttributes> : DotEntityGenerator<DotGraphSection<TGraphAttributes>, IDotGraphBodyWriter>
+        where TGraphAttributes : IDotAttributeCollection
     {
         public DotGraphSectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        protected override void WriteEntity(DotGraphSection<TAttributes> graphSection, IDotGraphBodyWriter writer)
+        protected override void WriteEntity(DotGraphSection<TGraphAttributes> graphSection, IDotGraphBodyWriter writer)
         {
             // node and edge defaults have to appear first, so that they are applied to all elements that come later in the output script
             WriteGlobalAttributes(graphSection.Attributes, graphSection.NodeDefaults, graphSection.EdgeDefaults, writer);

@@ -4,9 +4,9 @@ using GiGraph.Dot.Entities.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs.Collections
 {
-    public class DotGraphCollection<TGraph, TAttributes> : DotEntityWithIdCollection<TGraph>, IDotEntity, IDotAnnotatable
-        where TGraph : DotCommonGraph<TAttributes>
-        where TAttributes : IDotAttributeCollection
+    public class DotGraphCollection<TGraph, TGraphAttributes> : DotEntityWithIdCollection<TGraph>, IDotEntity, IDotAnnotatable
+        where TGraph : DotCommonGraph<TGraphAttributes>
+        where TGraphAttributes : IDotAttributeCollection
     {
         protected DotGraphCollection(Func<string, Predicate<TGraph>> matchIdPredicate)
             : base(matchIdPredicate)
