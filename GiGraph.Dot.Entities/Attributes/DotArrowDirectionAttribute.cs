@@ -29,23 +29,14 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (Value)
+            return Value switch
             {
-                case DotArrowDirection.None:
-                    return "none";
-
-                case DotArrowDirection.Forward:
-                    return "forward";
-
-                case DotArrowDirection.Backward:
-                    return "back";
-
-                case DotArrowDirection.Both:
-                    return "both";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified arrow direction '{Value}' is not supported.");
-            }
+                DotArrowDirection.None => "none",
+                DotArrowDirection.Forward => "forward",
+                DotArrowDirection.Backward => "back",
+                DotArrowDirection.Both => "both",
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified arrow direction '{Value}' is not supported.")
+            };
         }
     }
 }

@@ -25,23 +25,14 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (Value)
+            return Value switch
             {
-                case DotRankDirection.TopToBottom:
-                    return "TB";
-
-                case DotRankDirection.LeftToRight:
-                    return "LR";
-
-                case DotRankDirection.BottomToTop:
-                    return "BT";
-
-                case DotRankDirection.RightToLeft:
-                    return "RL";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified graph layout direction '{Value}' is not supported.");
-            }
+                DotRankDirection.TopToBottom => "TB",
+                DotRankDirection.LeftToRight => "LR",
+                DotRankDirection.BottomToTop => "BT",
+                DotRankDirection.RightToLeft => "RL",
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified graph layout direction '{Value}' is not supported.")
+            };
         }
     }
 }

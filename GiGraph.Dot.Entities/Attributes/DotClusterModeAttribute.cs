@@ -25,20 +25,13 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (Value)
+            return Value switch
             {
-                case DotClusterMode.None:
-                    return "none";
-
-                case DotClusterMode.Global:
-                    return "global";
-
-                case DotClusterMode.Local:
-                    return "local";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified cluster mode '{Value}' is not supported.");
-            }
+                DotClusterMode.None => "none",
+                DotClusterMode.Global => "global",
+                DotClusterMode.Local => "local",
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified cluster mode '{Value}' is not supported.")
+            };
         }
     }
 }
