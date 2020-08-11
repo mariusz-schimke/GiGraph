@@ -84,6 +84,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotEscapeStringAttribute Set(string key, DotEscapedString value);
 
         /// <summary>
+        ///     Adds or replaces the specified unescaped string attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotEscapeStringAttribute Set(string key, DotUnescapedString value);
+
+        /// <summary>
         ///     Adds or replaces the specified label attribute in the collection.
         /// </summary>
         /// <param name="key">
