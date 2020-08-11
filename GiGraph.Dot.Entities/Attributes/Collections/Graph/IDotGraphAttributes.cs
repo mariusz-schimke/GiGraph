@@ -404,16 +404,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         Default: disabled (see <see cref="DotPackingState" />).
         ///     </para>
         /// </summary>
-        DotPackingDefinition Pack { get; set; }
+        DotPackingDefinition Packing { get; set; }
 
         /// <summary>
-        ///     Indicates how connected components should be packed (default: <see cref="DotPackingGranularity.Node"/>). Note that specifying a value for this property will automatically turn
-        ///     on packing as though one had set <see cref="Pack" /> = true.
+        ///     Indicates how connected components should be packed (default: <see cref="DotPackingGranularity.Node" />). Note that
+        ///     specifying a value for this property will automatically turn on packing as though one had set <see cref="Packing" /> = true.
         /// </summary>
         DotPackingModeDefinition PackingMode { get; set; }
 
         /// <summary>
-        ///     Gets or sets the sorting index of the element (default: 0). If <see cref="PackingMode" /> indicates an array packing, this
+        ///     Gets or sets the sorting index of the graph (default: 0). If <see cref="PackingMode" /> indicates an array packing, this
         ///     attribute specifies an insertion order among the components, with smaller values inserted first.
         /// </summary>
         int? SortIndex { get; set; }

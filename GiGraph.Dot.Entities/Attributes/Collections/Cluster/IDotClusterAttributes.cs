@@ -221,7 +221,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         DotPoint Margin { get; set; }
 
         /// <summary>
-        ///     Gets or sets the sorting index of the element (default: 0). If <see cref="IDotGraphAttributes.PackingMode" /> indicates an
+        ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="IDotGraphAttributes.PackingMode" /> indicates an
         ///     array packing, this attribute specifies an insertion order among the components, with smaller values inserted first.
         /// </summary>
         int? SortIndex { get; set; }

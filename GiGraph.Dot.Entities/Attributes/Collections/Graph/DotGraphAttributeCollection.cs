@@ -143,7 +143,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         }
 
         [DotAttributeKey("pack")]
-        public virtual DotPackingDefinition Pack
+        public virtual DotPackingDefinition Packing
         {
             get
             {
