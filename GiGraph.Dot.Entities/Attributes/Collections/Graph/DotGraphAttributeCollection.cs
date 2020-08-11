@@ -169,9 +169,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 (
                     GetKey(MethodBase.GetCurrentMethod()),
                     out var value,
-                    v => v is DotPackingGranularity i ? (true, new DotGranularPackingMode(i)) : (false, default),
-                    v => v is DotArrayPackingOption b ? (true, new DotArrayPackingMode(b)) : (false, default),
-                    v => v is int i ? (true, new DotArrayPackingMode(i)) : (false, default)
+                    v => v is DotPackingGranularity i ? (true, new DotGranularPackingMode(i)) : (false, default)
                 )
                     ? value
                     : null;
