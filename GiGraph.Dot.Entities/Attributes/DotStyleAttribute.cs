@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes
                .Cast<DotStyle>()
                .Where(style => style != DotStyle.Default)
                .Where(style => Value.HasFlag(style))
-               .Select(style => GetDotEncodedStyleItemValue(style, syntaxRules));
+               .Select(style => GetDotEncodedStyleItemValue(style, options, syntaxRules));
 
             const string separator = ", ";
             return options.OrderElements
@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 : string.Join(separator, styles);
         }
 
-        protected virtual string GetDotEncodedStyleItemValue(DotStyle item, DotSyntaxRules syntaxRules)
+        protected virtual string GetDotEncodedStyleItemValue(DotStyle item, DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
             switch (item)
             {

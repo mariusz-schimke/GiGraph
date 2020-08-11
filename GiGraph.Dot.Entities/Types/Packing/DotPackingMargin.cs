@@ -14,22 +14,30 @@ namespace GiGraph.Dot.Entities.Types.Packing
         /// <summary>
         ///     Creates a new instance initialized with margin size.
         /// </summary>
-        /// <param name="value">
-        ///     The size of the margin.
+        /// <param name="size">
+        ///     The size, in
+        ///     <see href="http://www.graphviz.org/doc/info/attrs.html#points">
+        ///         points
+        ///     </see>
+        ///     , of a margin around each graph part being packed.
         /// </param>
-        public DotPackingMargin(int value)
+        public DotPackingMargin(int size)
         {
-            Value = value;
+            Size = size;
         }
 
         /// <summary>
-        ///     Gets or sets the size of the margin.
+        ///     Gets or sets the size, in
+        ///     <see href="http://www.graphviz.org/doc/info/attrs.html#points">
+        ///         points
+        ///     </see>
+        ///     , of a margin around each graph part being packed.
         /// </summary>
-        public virtual int Value { get; set; }
+        public virtual int Size { get; set; }
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return Value.ToString();
+            return Size.ToString();
         }
     }
 }

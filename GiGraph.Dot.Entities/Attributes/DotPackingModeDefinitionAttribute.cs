@@ -4,13 +4,13 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     Determines whether packing is enabled (see <see cref="DotPackingState" />) or specifies a margin around each laid out
-    ///     component (see <see cref="DotPackingMargin" />).
+    ///     Packing mode definition with two supported options: packing with specified granularity (see
+    ///     <see cref="DotGranularPackingMode" />) or array packing (see <see cref="DotArrayPackingMode" />).
     /// </summary>
-    public class DotPackingDefinitionAttribute : DotAttribute<DotPackingDefinition>
+    public class DotPackingModeDefinitionAttribute : DotAttribute<DotPackingModeDefinition>
     {
         /// <summary>
-        ///     Creates a new packing definition attribute.
+        ///     Creates a new packing mode definition attribute.
         /// </summary>
         /// <param name="key">
         ///     The key of the attribute.
@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotPackingDefinitionAttribute(string key, DotPackingDefinition value)
+        public DotPackingModeDefinitionAttribute(string key, DotPackingModeDefinition value)
             : base(key, value)
         {
         }

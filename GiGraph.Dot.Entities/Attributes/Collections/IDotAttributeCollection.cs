@@ -84,6 +84,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotEscapeStringAttribute Set(string key, DotEscapedString value);
 
         /// <summary>
+        ///     Adds or replaces the specified unescaped string attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotEscapeStringAttribute Set(string key, DotUnescapedString value);
+
+        /// <summary>
         ///     Adds or replaces the specified label attribute in the collection.
         /// </summary>
         /// <param name="key">
@@ -435,6 +446,29 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The value of the attribute to include in the collection.
         /// </param>
         DotCompassPointAttribute Set(string key, DotCompassPoint value);
+
+        /// <summary>
+        ///     Adds or replaces the specified packing granularity attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotPackingGranularityAttribute Set(string key, DotPackingGranularity value);
+
+        /// <summary>
+        ///     Adds or replaces the specified packing mode attribute in the collection (<see cref="DotGranularPackingMode" /> or
+        ///     <see cref="DotArrayPackingMode" />).
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotPackingModeDefinitionAttribute Set(string key, DotPackingModeDefinition value);
 
         /// <summary>
         ///     Checks if an attribute with the specified key exists in the collection, and returns it as the specified type. If the

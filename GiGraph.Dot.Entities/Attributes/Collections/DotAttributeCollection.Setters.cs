@@ -51,6 +51,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotEscapeStringAttribute(key, value));
         }
 
+        public virtual DotEscapeStringAttribute Set(string key, DotUnescapedString value)
+        {
+            return Set(new DotEscapeStringAttribute(key, value));
+        }
+
         public virtual DotLabelAttribute Set(string key, DotLabel value)
         {
             return Set(new DotLabelAttribute(key, value));
@@ -209,6 +214,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotArrowheadDefinitionAttribute Set(string key, DotArrowheadDefinition value)
         {
             return Set(new DotArrowheadDefinitionAttribute(key, value));
+        }
+
+        public virtual DotPackingGranularityAttribute Set(string key, DotPackingGranularity value)
+        {
+            return Set(new DotPackingGranularityAttribute(key, value));
+        }
+
+        public virtual DotPackingModeDefinitionAttribute Set(string key, DotPackingModeDefinition value)
+        {
+            return Set(new DotPackingModeDefinitionAttribute(key, value));
         }
     }
 }

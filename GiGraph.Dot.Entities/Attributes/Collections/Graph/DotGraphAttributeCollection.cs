@@ -143,7 +143,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         }
 
         [DotAttributeKey("pack")]
-        public virtual DotPackingDefinition Pack
+        public virtual DotPackingDefinition Packing
         {
             get
             {
@@ -152,12 +152,29 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                     GetKey(MethodBase.GetCurrentMethod()),
                     out var value,
                     v => v is int i ? (true, new DotPackingMargin(i)) : (false, default),
-                    v => v is bool b ? (true, new DotPackingEnabled(b)) : (false, default)
+                    v => v is bool b ? (true, new DotPackingState(b)) : (false, default)
                 )
                     ? value
                     : null;
             }
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPackingDefinitionAttribute(k, v));
+        }
+
+        [DotAttributeKey("packmode")]
+        public virtual DotPackingModeDefinition PackingMode
+        {
+            get
+            {
+                return GetValueAs<DotPackingModeDefinition>
+                (
+                    GetKey(MethodBase.GetCurrentMethod()),
+                    out var value,
+                    v => v is DotPackingGranularity i ? (true, new DotGranularPackingMode(i)) : (false, default)
+                )
+                    ? value
+                    : null;
+            }
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPackingModeDefinitionAttribute(k, v));
         }
     }
 }

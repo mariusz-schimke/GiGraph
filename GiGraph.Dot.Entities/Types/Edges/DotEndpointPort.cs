@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Types.Edges
         /// <param name="compassPoint">
         ///     Determines the edge placement to aim for the specified compass point on a node.
         /// </param>
-        public DotEndpointPort(DotCompassPoint compassPoint)
+        public DotEndpointPort(DotCompassPoint? compassPoint)
         {
             CompassPoint = compassPoint;
         }
@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Entities.Types.Edges
         /// <param name="compassPoint">
         ///     Determines the edge placement to aim for the specified compass point on the <paramref name="name" /> port.
         /// </param>
-        public DotEndpointPort(string name, DotCompassPoint compassPoint)
+        public DotEndpointPort(string name, DotCompassPoint? compassPoint)
             : this(name)
         {
             CompassPoint = compassPoint;
