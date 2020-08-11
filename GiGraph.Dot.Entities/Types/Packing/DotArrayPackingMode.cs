@@ -92,29 +92,16 @@ namespace GiGraph.Dot.Entities.Types.Packing
 
         protected virtual string GetDotEncodedOption(DotArrayPackingOption option, DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (option)
+            return option switch
             {
-                case DotArrayPackingOption.ColumnMajorOrder:
-                    return "c";
-
-                case DotArrayPackingOption.AlignTop:
-                    return "t";
-
-                case DotArrayPackingOption.AlignBottom:
-                    return "b";
-
-                case DotArrayPackingOption.AlignLeft:
-                    return "l";
-
-                case DotArrayPackingOption.AlignRight:
-                    return "r";
-
-                case DotArrayPackingOption.SortByIndex:
-                    return "u";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(option), $"The specified array packing option '{option}' is not supported.");
-            }
+                DotArrayPackingOption.ColumnMajorOrder => "c",
+                DotArrayPackingOption.AlignTop => "t",
+                DotArrayPackingOption.AlignBottom => "b",
+                DotArrayPackingOption.AlignLeft => "l",
+                DotArrayPackingOption.AlignRight => "r",
+                DotArrayPackingOption.SortByIndex => "u",
+                _ => throw new ArgumentOutOfRangeException(nameof(option), $"The specified array packing option '{option}' is not supported.")
+            };
         }
     }
 }

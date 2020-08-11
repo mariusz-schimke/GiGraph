@@ -27,23 +27,14 @@ namespace GiGraph.Dot.Entities.Types.AspectRatio
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (Option)
+            return Option switch
             {
-                case DotAspectRatio.Auto:
-                    return "auto";
-
-                case DotAspectRatio.Compress:
-                    return "compress";
-
-                case DotAspectRatio.Expand:
-                    return "expand";
-
-                case DotAspectRatio.Fill:
-                    return "fill";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(Option), $"The specified aspect ratio '{Option}' is not supported.");
-            }
+                DotAspectRatio.Auto => "auto",
+                DotAspectRatio.Compress => "compress",
+                DotAspectRatio.Expand => "expand",
+                DotAspectRatio.Fill => "fill",
+                _ => throw new ArgumentOutOfRangeException(nameof(Option), $"The specified aspect ratio '{Option}' is not supported.")
+            };
         }
     }
 }

@@ -27,23 +27,14 @@ namespace GiGraph.Dot.Entities.Types.Packing
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (Granularity)
+            return Granularity switch
             {
-                case DotPackingGranularity.Node:
-                    return "node";
-
-                case DotPackingGranularity.Cluster:
-                    return "clust";
-
-                case DotPackingGranularity.Graph:
-                    return "graph";
-
-                case DotPackingGranularity.Array:
-                    return "array";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(Granularity), $"The specified packing granularity option '{Granularity}' is not supported.");
-            }
+                DotPackingGranularity.Node => "node",
+                DotPackingGranularity.Cluster => "clust",
+                DotPackingGranularity.Graph => "graph",
+                DotPackingGranularity.Array => "array",
+                _ => throw new ArgumentOutOfRangeException(nameof(Granularity), $"The specified packing granularity option '{Granularity}' is not supported.")
+            };
         }
     }
 }

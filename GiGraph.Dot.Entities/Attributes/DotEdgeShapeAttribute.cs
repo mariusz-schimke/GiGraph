@@ -29,32 +29,17 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (Value)
+            return Value switch
             {
-                case DotEdgeShape.None:
-                    return "none";
-
-                case DotEdgeShape.Line:
-                    return "line";
-
-                case DotEdgeShape.Polyline:
-                    return "polyline";
-
-                case DotEdgeShape.Curved:
-                    return "curved";
-
-                case DotEdgeShape.Orthogonal:
-                    return "ortho";
-
-                case DotEdgeShape.Spline:
-                    return "spline";
-
-                case DotEdgeShape.Compound:
-                    return "compound";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified edge shape '{Value}' is not supported.");
-            }
+                DotEdgeShape.None => "none",
+                DotEdgeShape.Line => "line",
+                DotEdgeShape.Polyline => "polyline",
+                DotEdgeShape.Curved => "curved",
+                DotEdgeShape.Orthogonal => "ortho",
+                DotEdgeShape.Spline => "spline",
+                DotEdgeShape.Compound => "compound",
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified edge shape '{Value}' is not supported.")
+            };
         }
     }
 }

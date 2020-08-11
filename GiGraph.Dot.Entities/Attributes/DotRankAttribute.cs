@@ -25,26 +25,15 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (Value)
+            return Value switch
             {
-                case DotRank.Same:
-                    return "same";
-
-                case DotRank.Min:
-                    return "min";
-
-                case DotRank.Max:
-                    return "max";
-
-                case DotRank.Source:
-                    return "source";
-
-                case DotRank.Sink:
-                    return "sink";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified rank '{Value}' is not supported.");
-            }
+                DotRank.Same => "same",
+                DotRank.Min => "min",
+                DotRank.Max => "max",
+                DotRank.Source => "source",
+                DotRank.Sink => "sink",
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified rank '{Value}' is not supported.")
+            };
         }
     }
 }

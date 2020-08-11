@@ -25,20 +25,13 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (Value)
+            return Value switch
             {
-                case DotVerticalAlignment.Top:
-                    return "t";
-
-                case DotVerticalAlignment.Center:
-                    return "c";
-
-                case DotVerticalAlignment.Bottom:
-                    return "b";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified vertical alignment '{Value}' is not supported.");
-            }
+                DotVerticalAlignment.Top => "t",
+                DotVerticalAlignment.Center => "c",
+                DotVerticalAlignment.Bottom => "b",
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified vertical alignment '{Value}' is not supported.")
+            };
         }
     }
 }

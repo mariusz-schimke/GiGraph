@@ -25,20 +25,13 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (Value)
+            return Value switch
             {
-                case DotEdgeOrderingMode.None:
-                    return string.Empty;
-
-                case DotEdgeOrderingMode.Outedge:
-                    return "out";
-
-                case DotEdgeOrderingMode.Inedge:
-                    return "in";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified edge ordering mode '{Value}' is not supported.");
-            }
+                DotEdgeOrderingMode.None => string.Empty,
+                DotEdgeOrderingMode.Outedge => "out",
+                DotEdgeOrderingMode.Inedge => "in",
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified edge ordering mode '{Value}' is not supported.")
+            };
         }
     }
 }

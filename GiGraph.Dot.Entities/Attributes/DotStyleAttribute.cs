@@ -40,50 +40,23 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected virtual string GetDotEncodedStyleItemValue(DotStyle item, DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (item)
+            return item switch
             {
-                case DotStyle.Default:
-                    return null;
-
-                case DotStyle.Solid:
-                    return "solid";
-
-                case DotStyle.Dashed:
-                    return "dashed";
-
-                case DotStyle.Dotted:
-                    return "dotted";
-
-                case DotStyle.Bold:
-                    return "bold";
-
-                case DotStyle.Rounded:
-                    return "rounded";
-
-                case DotStyle.Diagonals:
-                    return "diagonals";
-
-                case DotStyle.Filled:
-                    return "filled";
-
-                case DotStyle.Striped:
-                    return "striped";
-
-                case DotStyle.Wedged:
-                    return "wedged";
-
-                case DotStyle.Radial:
-                    return "radial";
-
-                case DotStyle.Tapered:
-                    return "tapered";
-
-                case DotStyle.Invisible:
-                    return "invis";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified element style '{Value}' is not supported.");
-            }
+                DotStyle.Default => null,
+                DotStyle.Solid => "solid",
+                DotStyle.Dashed => "dashed",
+                DotStyle.Dotted => "dotted",
+                DotStyle.Bold => "bold",
+                DotStyle.Rounded => "rounded",
+                DotStyle.Diagonals => "diagonals",
+                DotStyle.Filled => "filled",
+                DotStyle.Striped => "striped",
+                DotStyle.Wedged => "wedged",
+                DotStyle.Radial => "radial",
+                DotStyle.Tapered => "tapered",
+                DotStyle.Invisible => "invis",
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified element style '{Value}' is not supported.")
+            };
         }
     }
 }

@@ -25,40 +25,19 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (Value)
+            return Value switch
             {
-                case DotAlignment.TopLeft:
-                    return "tl";
-
-                case DotAlignment.TopCenter:
-                    return "tc";
-
-                case DotAlignment.TopRight:
-                    return "tr";
-
-
-                case DotAlignment.MiddleLeft:
-                    return "ml";
-
-                case DotAlignment.MiddleCenter:
-                    return "mc";
-
-                case DotAlignment.MiddleRight:
-                    return "mr";
-
-
-                case DotAlignment.BottomLeft:
-                    return "bl";
-
-                case DotAlignment.BottomCenter:
-                    return "bc";
-
-                case DotAlignment.BottomRight:
-                    return "br";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified alignment '{Value}' is not supported.");
-            }
+                DotAlignment.TopLeft => "tl",
+                DotAlignment.TopCenter => "tc",
+                DotAlignment.TopRight => "tr",
+                DotAlignment.MiddleLeft => "ml",
+                DotAlignment.MiddleCenter => "mc",
+                DotAlignment.MiddleRight => "mr",
+                DotAlignment.BottomLeft => "bl",
+                DotAlignment.BottomCenter => "bc",
+                DotAlignment.BottomRight => "br",
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified alignment '{Value}' is not supported.")
+            };
         }
     }
 }

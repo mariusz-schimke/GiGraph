@@ -119,44 +119,21 @@ namespace GiGraph.Dot.Entities.Types.Arrows
 
         protected virtual string GetDotEncodedShape(DotArrowheadShape shape)
         {
-            switch (shape)
+            return shape switch
             {
-                case DotArrowheadShape.None:
-                    return "none";
-
-                case DotArrowheadShape.Normal:
-                    return "normal";
-
-                case DotArrowheadShape.InvertedNormal:
-                    return "inv";
-
-                case DotArrowheadShape.Box:
-                    return "box";
-
-                case DotArrowheadShape.Crow:
-                    return "crow";
-
-                case DotArrowheadShape.Curve:
-                    return "curve";
-
-                case DotArrowheadShape.InvertedCurve:
-                    return "icurve";
-
-                case DotArrowheadShape.Diamond:
-                    return "diamond";
-
-                case DotArrowheadShape.Dot:
-                    return "dot";
-
-                case DotArrowheadShape.Tee:
-                    return "tee";
-
-                case DotArrowheadShape.Vee:
-                    return "vee";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(shape), $"The specified arrowhead shape '{shape}' is not supported.");
-            }
+                DotArrowheadShape.None => "none",
+                DotArrowheadShape.Normal => "normal",
+                DotArrowheadShape.InvertedNormal => "inv",
+                DotArrowheadShape.Box => "box",
+                DotArrowheadShape.Crow => "crow",
+                DotArrowheadShape.Curve => "curve",
+                DotArrowheadShape.InvertedCurve => "icurve",
+                DotArrowheadShape.Diamond => "diamond",
+                DotArrowheadShape.Dot => "dot",
+                DotArrowheadShape.Tee => "tee",
+                DotArrowheadShape.Vee => "vee",
+                _ => throw new ArgumentOutOfRangeException(nameof(shape), $"The specified arrowhead shape '{shape}' is not supported.")
+            };
         }
 
         /// <summary>

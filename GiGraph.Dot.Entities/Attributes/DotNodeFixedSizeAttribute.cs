@@ -25,20 +25,13 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (Value)
+            return Value switch
             {
-                case DotNodeSizing.Fixed:
-                    return "true";
-
-                case DotNodeSizing.Auto:
-                    return "false";
-
-                case DotNodeSizing.Shape:
-                    return "shape";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified fixed size attribute value '{Value}' is not supported.");
-            }
+                DotNodeSizing.Fixed => "true",
+                DotNodeSizing.Auto => "false",
+                DotNodeSizing.Shape => "shape",
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified fixed size attribute value '{Value}' is not supported.")
+            };
         }
     }
 }
