@@ -76,7 +76,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
                 var flags = Enum.GetValues(typeof(DotArrayPackingOption))
                    .Cast<DotArrayPackingOption>()
                    .Where(flag => Options.Value.HasFlag(flag))
-                   .Select(flag => GetDotEncodedFlag(flag, syntaxRules));
+                   .Select(flag => GetDotEncodedOption(flag, options, syntaxRules));
 
                 result.Append("_");
                 result.Append(string.Join(string.Empty, flags));
@@ -90,9 +90,9 @@ namespace GiGraph.Dot.Entities.Types.Packing
             return result.ToString();
         }
 
-        protected virtual string GetDotEncodedFlag(DotArrayPackingOption flag, DotSyntaxRules syntaxRules)
+        protected virtual string GetDotEncodedOption(DotArrayPackingOption option, DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (Options)
+            switch (option)
             {
                 case DotArrayPackingOption.ColumnMajorOrder:
                     return "c";
@@ -113,7 +113,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
                     return "u";
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(Options), $"The specified array packing option '{Options}' is not supported.");
+                    throw new ArgumentOutOfRangeException(nameof(option), $"The specified array packing option '{option}' is not supported.");
             }
         }
     }

@@ -386,7 +386,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 
         /// <summary>
         ///     <para>
-        ///         If true (see <see cref="DotPackingState" />), each connected component of the graph is laid out separately, and then
+        ///         If enabled (see <see cref="DotPackingState" />), each connected component of the graph is laid out separately, and then
         ///         the graphs are packed together.
         ///     </para>
         ///     <para>
@@ -397,14 +397,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         , of a margin around each part; otherwise, a default margin of 8 is used.
         ///     </para>
         ///     <para>
-        ///         If false (see <see cref="DotPackingState" />), the entire graph is laid out together. The granularity and method of
+        ///         If disabled (see <see cref="DotPackingState" />), the entire graph is laid out together. The granularity and method of
         ///         packing is influenced by the <see cref="PackingMode" /> attribute.
         ///     </para>
         ///     <para>
-        ///         Default: false (see <see cref="DotPackingState" />).
+        ///         Default: disabled (see <see cref="DotPackingState" />).
         ///     </para>
         /// </summary>
         DotPackingDefinition Pack { get; set; }
+
+        /// <summary>
+        ///     Indicates how connected components should be packed. Note that specifying a value for this property will automatically turn
+        ///     on packing as though one had set <see cref="Pack" /> = true.
+        /// </summary>
+        DotPackingModeDefinition PackingMode { get; set; }
 
         /// <summary>
         ///     Gets or sets the sorting index of the element. If <see cref="PackingMode" /> indicates an array packing, this attribute

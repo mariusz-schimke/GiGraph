@@ -210,5 +210,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             return Set(new DotArrowheadDefinitionAttribute(key, value));
         }
+
+        public virtual DotPackingGranularityAttribute Set(string key, DotPackingGranularity value)
+        {
+            return Set(new DotPackingGranularityAttribute(key, value));
+        }
+
+        public virtual DotPackingModeDefinitionAttribute Set(string key, DotPackingModeDefinition value)
+        {
+            return Set(new DotPackingModeDefinitionAttribute(key, value));
+        }
     }
 }

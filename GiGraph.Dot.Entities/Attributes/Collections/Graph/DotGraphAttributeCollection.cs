@@ -159,5 +159,24 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             }
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPackingDefinitionAttribute(k, v));
         }
+
+        [DotAttributeKey("packmode")]
+        public virtual DotPackingModeDefinition PackingMode
+        {
+            get
+            {
+                return GetValueAs<DotPackingModeDefinition>
+                (
+                    GetKey(MethodBase.GetCurrentMethod()),
+                    out var value,
+                    v => v is DotPackingGranularity i ? (true, new DotGranularPackingMode(i)) : (false, default),
+                    v => v is DotArrayPackingOption b ? (true, new DotArrayPackingMode(b)) : (false, default),
+                    v => v is int i ? (true, new DotArrayPackingMode(i)) : (false, default)
+                )
+                    ? value
+                    : null;
+            }
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPackingModeDefinitionAttribute(k, v));
+        }
     }
 }
