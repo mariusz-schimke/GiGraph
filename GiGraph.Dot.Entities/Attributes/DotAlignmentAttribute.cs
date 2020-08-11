@@ -30,12 +30,15 @@ namespace GiGraph.Dot.Entities.Attributes
                 DotAlignment.TopLeft => "tl",
                 DotAlignment.TopCenter => "tc",
                 DotAlignment.TopRight => "tr",
+
                 DotAlignment.MiddleLeft => "ml",
                 DotAlignment.MiddleCenter => "mc",
                 DotAlignment.MiddleRight => "mr",
+
                 DotAlignment.BottomLeft => "bl",
                 DotAlignment.BottomCenter => "bc",
                 DotAlignment.BottomRight => "br",
+
                 _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified alignment '{Value}' is not supported.")
             };
         }
