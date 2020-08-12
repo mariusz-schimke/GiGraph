@@ -73,7 +73,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotNodeSizing? Sizing
         {
             get => GetValueAs<DotNodeSizing>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotNodeSizing?) null;
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeFixedSizeAttribute(k, v.Value));
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeSizingAttribute(k, v.Value));
         }
 
         [DotAttributeKey("image")]

@@ -4,7 +4,7 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     Determines whether packing is enabled (see <see cref="DotPackingState" />) or specifies a margin around each laid out
+    ///     Determines whether packing is enabled (see <see cref="DotPackingToggle" />) or specifies a margin around each laid out
     ///     component (see <see cref="DotPackingMargin" />).
     /// </summary>
     public class DotPackingDefinitionAttribute : DotAttribute<DotPackingDefinition>

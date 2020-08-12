@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Text;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Packing

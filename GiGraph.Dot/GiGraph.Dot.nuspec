@@ -30,13 +30,13 @@
 
 - Added support for label placeholders (element-specific escape sequences replaced with corresponding identifiers on graph visualization). See https://github.com/mariusz-schimke/GiGraph/blob/1.5.0/README.md#label-placeholders.
 
-- Added support for attributes: headlabel, taillabel, image, imagepos, imagepath, group, ranksep, headclip, tailclip, colorscheme, rotate, pad, margin, size, ratio, labelfloat, labeldistance, labelangle, labelfontcolor, labelfontname, labelfontsize, minlen, len, weight, clusterrank, ordering, samehead, sametail, pack, packmode, sortv (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
-
-- Added separate classes to represent color combinations: DotDualColor, DotGradientColor, DotMultiColor.
-
 - Added support for multiple graph/subgraph/cluster sections to support of the DOT grammar fully. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.0/README.md#subsections.
 
+- Added support for attributes: headlabel, taillabel, image, imagepos, imagepath, group, ranksep, headclip, tailclip, colorscheme, rotate, pad, margin, size, ratio, labelfloat, labeldistance, labelangle, labelfontcolor, labelfontname, labelfontsize, minlen, len, weight, clusterrank, ordering, samehead, sametail, pack, packmode, sortv (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
+
 - It is possible now to nullify attribute values (for some attributes it restores their original default value). See https://github.com/mariusz-schimke/GiGraph/blob/1.5.0/README.md#default-attributes.
+
+- Added separate classes to represent color combinations: DotDualColor, DotGradientColor, DotMultiColor.
 
 - Refactoring.
 
