@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Types.Attributes
         public string Value { get; }
 
         public static bool TryGetValue<TEnum>(TEnum value, out string dotValue)
-            where TEnum : struct
+            where TEnum : Enum
         {
             var enumMember = typeof(TEnum).GetMember(value.ToString()).First();
 
