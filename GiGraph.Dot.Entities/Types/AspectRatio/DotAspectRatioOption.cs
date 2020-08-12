@@ -1,5 +1,6 @@
 using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.AspectRatio
@@ -27,14 +28,9 @@ namespace GiGraph.Dot.Entities.Types.AspectRatio
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return Option switch
-            {
-                DotAspectRatio.Auto => "auto",
-                DotAspectRatio.Compress => "compress",
-                DotAspectRatio.Expand => "expand",
-                DotAspectRatio.Fill => "fill",
-                _ => throw new ArgumentOutOfRangeException(nameof(Option), $"The specified aspect ratio option '{Option}' is invalid.")
-            };
+            return DotAttributeValueAttribute.TryGetValue(Option, out var result)
+                ? result
+                : throw new ArgumentOutOfRangeException(nameof(Option), $"The specified aspect ratio option '{Option}' is invalid.");
         }
     }
 }

@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Types.Attributes
     public class DotAttributeKeyAttribute : Attribute
     {
         /// <summary>
-        ///     Creates a new instance.
+        ///     Creates a new attribute instance.
         /// </summary>
         /// <param name="key">
         ///     The key of the DOT attribute.

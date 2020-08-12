@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
+using GiGraph.Dot.Entities.Types.Attributes;
 
 namespace GiGraph.Dot.Entities.Attributes.Enums
 {
@@ -13,6 +14,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///     smallest integral multiple of the page size in that dimension which is at least half the current size. The two dimensions are
         ///     then scaled independently to the new size. This feature only works in dot.
         /// </summary>
+        [DotAttributeValue("auto")]
         Auto,
 
         /// <summary>
@@ -25,6 +27,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///     cause nodes and text to shrink as well. This may not be what the user wants, but it avoids the hard problem of how to
         ///     reposition the nodes in an acceptable fashion to reduce the drawing size.
         /// </summary>
+        [DotAttributeValue("fill")]
         Fill,
 
         /// <summary>
@@ -32,6 +35,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///     fit in the given size. This achieves a tighter packing of nodes but reduces the balance and symmetry. This feature only works
         ///     in dot.
         /// </summary>
+        [DotAttributeValue("compress")]
         Compress,
 
         /// <summary>
@@ -41,6 +45,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///     <see cref="IDotGraphAttributes.Size" /> as the desired size, as here the drawing is expanded before edges are generated and
         ///     all node and text sizes remain unchanged.
         /// </summary>
+        [DotAttributeValue("expand")]
         Expand
     }
 }

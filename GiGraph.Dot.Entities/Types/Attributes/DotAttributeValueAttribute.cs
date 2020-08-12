@@ -5,13 +5,13 @@ using System.Reflection;
 namespace GiGraph.Dot.Entities.Types.Attributes
 {
     /// <summary>
-    ///     Assigns a DOT attribute key to an enumeration value.
+    ///     Assigns a DOT attribute value to an enumeration value.
     /// </summary>
     [AttributeUsage(AttributeTargets.Field)]
     public class DotAttributeValueAttribute : Attribute
     {
         /// <summary>
-        ///     Creates a new instance.
+        ///     Creates a new attribute instance.
         /// </summary>
         /// <param name="value">
         ///     The value of the DOT attribute.
