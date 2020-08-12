@@ -29,9 +29,9 @@ namespace GiGraph.Dot.Entities.Types.Attributes
         public static bool TryGetValue<TEnum>(TEnum value, out string dotValue)
             where TEnum : Enum
         {
-            var enumMember = typeof(TEnum).GetMember(value.ToString()).First();
+            var enumMember = typeof(TEnum).GetMember(value.ToString()).FirstOrDefault();
 
-            if (enumMember.GetCustomAttribute<DotAttributeValueAttribute>() is {} attribute)
+            if (enumMember?.GetCustomAttribute<DotAttributeValueAttribute>() is {} attribute)
             {
                 dotValue = attribute.Value;
                 return true;
