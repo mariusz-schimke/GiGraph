@@ -1,5 +1,6 @@
 using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Packing
@@ -27,14 +28,9 @@ namespace GiGraph.Dot.Entities.Types.Packing
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return Granularity switch
-            {
-                DotPackingGranularity.Node => "node",
-                DotPackingGranularity.Cluster => "clust",
-                DotPackingGranularity.Graph => "graph",
-                DotPackingGranularity.Array => "array",
-                _ => throw new ArgumentOutOfRangeException(nameof(Granularity), $"The specified packing granularity option '{Granularity}' is invalid.")
-            };
+            return DotAttributeValueAttribute.TryGetValue(Granularity, out var result)
+                ? result
+                : throw new ArgumentOutOfRangeException(nameof(Granularity), $"The specified packing granularity option '{Granularity}' is invalid.");
         }
     }
 }
