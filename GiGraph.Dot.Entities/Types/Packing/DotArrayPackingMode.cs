@@ -1,8 +1,7 @@
 using System;
 using System.Linq;
 using System.Text;
-using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Ranks;
+using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Packing
@@ -93,16 +92,9 @@ namespace GiGraph.Dot.Entities.Types.Packing
 
         protected virtual string GetDotEncodedOption(DotArrayPackingOption option, DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return option switch
-            {
-                DotArrayPackingOption.ColumnMajorOrder => "c",
-                DotArrayPackingOption.AlignTop => "t",
-                DotArrayPackingOption.AlignBottom => "b",
-                DotArrayPackingOption.AlignLeft => "l",
-                DotArrayPackingOption.AlignRight => "r",
-                DotArrayPackingOption.SortByIndex => "u",
-                _ => throw new ArgumentOutOfRangeException(nameof(option), $"The specified array packing option '{option}' is not supported.")
-            };
+            return DotAttributeValueAttribute.TryGetValue(option, out var result)
+                ? result
+                : throw new ArgumentOutOfRangeException(nameof(option), $"The specified array packing option '{option}' is invalid.");
         }
     }
 }

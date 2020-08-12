@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Entities.Attributes.Enums
+﻿using GiGraph.Dot.Entities.Types.Attributes;
+
+namespace GiGraph.Dot.Entities.Attributes.Enums
 {
     /// <summary>
     ///     The arrowhead shape. See the
@@ -9,16 +11,37 @@
     /// </summary>
     public enum DotArrowheadShape
     {
+        [DotAttributeValue("none")]
         None,
+        
+        [DotAttributeValue("normal")]
         Normal,
+        
+        [DotAttributeValue("inv")]
         InvertedNormal,
+        
+        [DotAttributeValue("box")]
         Box,
+        
+        [DotAttributeValue("crow")]
         Crow,
+        
+        [DotAttributeValue("curve")]
         Curve,
+        
+        [DotAttributeValue("icurve")]
         InvertedCurve,
+        
+        [DotAttributeValue("diamond")]
         Diamond,
+        
+        [DotAttributeValue("dot")]
         Dot,
+        
+        [DotAttributeValue("tee")]
         Tee,
+        
+        [DotAttributeValue("vee")]
         Vee
     }
 }

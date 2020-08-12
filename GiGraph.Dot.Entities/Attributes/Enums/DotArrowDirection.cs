@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Entities.Attributes.Enums
+﻿using GiGraph.Dot.Entities.Types.Attributes;
+
+namespace GiGraph.Dot.Entities.Attributes.Enums
 {
     /// <summary>
     ///     The arrow direction.
@@ -12,21 +14,25 @@
         /// <summary>
         ///     Draws an edge with no arrows.
         /// </summary>
+        [DotAttributeValue("none")]
         None,
 
         /// <summary>
         ///     Draws an edge with one arrow pointing at the head node.
         /// </summary>
+        [DotAttributeValue("forward")]
         Forward,
 
         /// <summary>
         ///     Draws an edge with one arrow pointing at the tail node.
         /// </summary>
+        [DotAttributeValue("back")]
         Backward,
 
         /// <summary>
         ///     Draws an edge with two arrows: one pointing at the tail node, and the other pointing at the head node.
         /// </summary>
+        [DotAttributeValue("both")]
         Both
     }
 }

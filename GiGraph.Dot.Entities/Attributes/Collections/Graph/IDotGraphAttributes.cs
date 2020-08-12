@@ -304,8 +304,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 
         /// <summary>
         ///     Determines how inedges and outedges, that is, edges with a node as their head or tail node respectively, are ordered (dot
-        ///     only; default: <see cref="DotEdgeOrderingMode.None" />). If defined on a graph or subgraph level, the value is applied to all
-        ///     nodes in the graph or subgraph. Note that the graph attribute takes precedence over the node attribute.
+        ///     only). If defined on a graph or subgraph level, the value is applied to all nodes in the graph or subgraph. Note that the
+        ///     graph attribute takes precedence over the node attribute.
         /// </summary>
         DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
 

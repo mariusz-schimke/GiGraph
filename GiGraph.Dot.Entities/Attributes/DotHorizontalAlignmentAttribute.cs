@@ -1,5 +1,6 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
@@ -25,13 +26,9 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return Value switch
-            {
-                DotHorizontalAlignment.Left => "l",
-                DotHorizontalAlignment.Center => "c",
-                DotHorizontalAlignment.Right => "r",
-                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified horizontal alignment option '{Value}' is not supported.")
-            };
+            return DotAttributeValueAttribute.TryGetValue(Value, out var result)
+                ? result
+                : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified horizontal alignment option '{Value}' is invalid.");
         }
     }
 }

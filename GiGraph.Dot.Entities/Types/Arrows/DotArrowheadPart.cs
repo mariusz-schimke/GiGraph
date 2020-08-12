@@ -1,24 +1,31 @@
+using System;
+using GiGraph.Dot.Entities.Types.Attributes;
+
 namespace GiGraph.Dot.Entities.Types.Arrows
 {
     /// <summary>
     ///     Determines the parts of an arrowhead. Left and right are defined as those directions determined by looking from the edge
     ///     towards the point where the arrow "touches" the node.
     /// </summary>
-    public enum DotArrowheadParts
+    [Flags]
+    public enum DotArrowheadPart
     {
         /// <summary>
         ///     Both parts of the arrowhead.
         /// </summary>
-        Both,
+        [DotAttributeValue(null)]
+        Both = Left | Right,
 
         /// <summary>
         ///     The left part of the arrowhead.
         /// </summary>
-        Left,
+        [DotAttributeValue("l")]
+        Left = 1 << 0,
 
         /// <summary>
         ///     The right part of the arrowhead.
         /// </summary>
-        Right
+        [DotAttributeValue("r")]
+        Right = 1 << 1
     }
 }
