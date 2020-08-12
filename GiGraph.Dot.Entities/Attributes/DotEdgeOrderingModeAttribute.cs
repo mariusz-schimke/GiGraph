@@ -1,5 +1,6 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
@@ -25,13 +26,9 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return Value switch
-            {
-                DotEdgeOrderingMode.None => string.Empty,
-                DotEdgeOrderingMode.Outedge => "out",
-                DotEdgeOrderingMode.Inedge => "in",
-                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified edge ordering mode '{Value}' is invalid.")
-            };
+            return DotAttributeValueAttribute.TryGetValue(Value, out var result)
+                ? result
+                : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified edge ordering mode '{Value}' is invalid.");
         }
     }
 }
