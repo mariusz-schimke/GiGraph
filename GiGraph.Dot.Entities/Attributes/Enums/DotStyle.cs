@@ -1,6 +1,7 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Enums
@@ -17,41 +18,49 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///     element on a graph or a subgraph level, using <see cref="DotGraphSection{TGraphAttributes}.EdgeDefaults" /> or
         ///     <see cref="DotGraphSection{TAttributes}.NodeDefaults" />.
         /// </summary>
+        [DotAttributeValue(null)]
         Default = 0,
 
         /// <summary>
         ///     Applicable to nodes, edges, and clusters.
         /// </summary>
+        [DotAttributeValue("solid")]
         Solid = 1 << 0,
 
         /// <summary>
         ///     Applicable to nodes, edges, and clusters.
         /// </summary>
+        [DotAttributeValue("dashed")]
         Dashed = 1 << 1,
 
         /// <summary>
         ///     Applicable to nodes, edges, and clusters.
         /// </summary>
+        [DotAttributeValue("dotted")]
         Dotted = 1 << 2,
 
         /// <summary>
         ///     Applicable to nodes, edges, and clusters.
         /// </summary>
+        [DotAttributeValue("bold")]
         Bold = 1 << 3,
 
         /// <summary>
         ///     Applicable to nodes and clusters.
         /// </summary>
+        [DotAttributeValue("rounded")]
         Rounded = 1 << 4,
 
         /// <summary>
         ///     Applicable to nodes.
         /// </summary>
+        [DotAttributeValue("diagonals")]
         Diagonals = 1 << 5,
 
         /// <summary>
         ///     Applicable to nodes and clusters.
         /// </summary>
+        [DotAttributeValue("filled")]
         Filled = 1 << 6,
 
         /// <summary>
@@ -60,6 +69,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///     weights can be specified to indicate the proportional widths of the bars. If the sum of the weights is less than 1, the
         ///     remainder is divided evenly among the colors with no weight.
         /// </summary>
+        [DotAttributeValue("striped")]
         Striped = 1 << 7,
 
         /// <summary>
@@ -68,12 +78,14 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///     can be specified to indicate the proportional widths of the bars. If the sum of the weights is less than 1, the remainder is
         ///     divided evenly among the colors with no weight.
         /// </summary>
+        [DotAttributeValue("wedged")]
         Wedged = 1 << 8,
 
         /// <summary>
         ///     Applicable to nodes, clusters, and graphs. Indicates a radial-style gradient fill when colors are specified via a color list
         ///     (see <see cref="DotMultiColor" />).
         /// </summary>
+        [DotAttributeValue("radial")]
         Radial = 1 << 9,
 
         /// <summary>
@@ -90,11 +102,13 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///     to avoid this, set the <see cref="IDotEdgeAttributes.ArrowHead" /> and/or <see cref="IDotEdgeAttributes.ArrowTail" />
         ///     attributes to <see cref="DotArrowheadShape.None" />.
         /// </summary>
+        [DotAttributeValue("tapered")]
         Tapered = 1 << 10,
 
         /// <summary>
         ///     Applicable to nodes and edges.
         /// </summary>
+        [DotAttributeValue("invis")]
         Invisible = 1 << 11
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
@@ -30,7 +31,7 @@ namespace GiGraph.Dot.Entities.Attributes
                .Cast<DotStyle>()
                .Where(style => style != DotStyle.Default)
                .Where(style => Value.HasFlag(style))
-               .Select(style => GetDotEncodedStyleItemValue(style, options, syntaxRules));
+               .Select(style => GetDotEncodedStyle(style, options, syntaxRules));
 
             const string separator = ", ";
             return options.OrderElements
@@ -38,25 +39,11 @@ namespace GiGraph.Dot.Entities.Attributes
                 : string.Join(separator, styles);
         }
 
-        protected virtual string GetDotEncodedStyleItemValue(DotStyle item, DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected virtual string GetDotEncodedStyle(DotStyle style, DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return item switch
-            {
-                DotStyle.Default => null,
-                DotStyle.Solid => "solid",
-                DotStyle.Dashed => "dashed",
-                DotStyle.Dotted => "dotted",
-                DotStyle.Bold => "bold",
-                DotStyle.Rounded => "rounded",
-                DotStyle.Diagonals => "diagonals",
-                DotStyle.Filled => "filled",
-                DotStyle.Striped => "striped",
-                DotStyle.Wedged => "wedged",
-                DotStyle.Radial => "radial",
-                DotStyle.Tapered => "tapered",
-                DotStyle.Invisible => "invis",
-                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified element style '{Value}' is invalid.")
-            };
+            return DotAttributeValueAttribute.TryGetValue(style, out var result)
+                ? result
+                : throw new ArgumentOutOfRangeException(nameof(style), $"The specified style '{style}' is invalid.");
         }
     }
 }
