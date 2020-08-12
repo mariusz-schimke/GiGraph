@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Types.AspectRatio
                 DotAspectRatio.Compress => "compress",
                 DotAspectRatio.Expand => "expand",
                 DotAspectRatio.Fill => "fill",
-                _ => throw new ArgumentOutOfRangeException(nameof(Option), $"The specified aspect ratio option '{Option}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(Option), $"The specified aspect ratio option '{Option}' is invalid.")
             };
         }
     }

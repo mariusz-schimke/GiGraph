@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 DotRank.Max => "max",
                 DotRank.Source => "source",
                 DotRank.Sink => "sink",
-                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified rank '{Value}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified rank '{Value}' is invalid.")
             };
         }
     }

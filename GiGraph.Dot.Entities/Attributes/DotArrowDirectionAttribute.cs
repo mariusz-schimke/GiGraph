@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 DotArrowDirection.Forward => "forward",
                 DotArrowDirection.Backward => "back",
                 DotArrowDirection.Both => "both",
-                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified arrow direction '{Value}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified arrow direction '{Value}' is invalid.")
             };
         }
     }

@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 DotVerticalAlignment.Top => "t",
                 DotVerticalAlignment.Center => "c",
                 DotVerticalAlignment.Bottom => "b",
-                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified vertical alignment option '{Value}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified vertical alignment option '{Value}' is invalid.")
             };
         }
     }

@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 DotNodeSizing.Fixed => "true",
                 DotNodeSizing.Auto => "false",
                 DotNodeSizing.Shape => "shape",
-                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified node sizing option '{Value}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified node sizing option '{Value}' is invalid.")
             };
         }
     }

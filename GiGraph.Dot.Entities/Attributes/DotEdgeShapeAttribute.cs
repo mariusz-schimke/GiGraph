@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 DotEdgeShape.Orthogonal => "ortho",
                 DotEdgeShape.Spline => "spline",
                 DotEdgeShape.Compound => "compound",
-                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified edge shape '{Value}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified edge shape '{Value}' is invalid.")
             };
         }
     }

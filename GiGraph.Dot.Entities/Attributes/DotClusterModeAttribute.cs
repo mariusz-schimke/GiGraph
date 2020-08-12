@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 DotClusterMode.None => "none",
                 DotClusterMode.Global => "global",
                 DotClusterMode.Local => "local",
-                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified cluster mode '{Value}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified cluster mode '{Value}' is invalid.")
             };
         }
     }

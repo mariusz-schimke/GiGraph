@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Edges.Enums
                 DotCompassPoint.West => "w",
                 DotCompassPoint.NorthWest => "nw",
 
-                _ => throw new ArgumentOutOfRangeException(nameof(compassPoint), $"The specified compass point '{compassPoint}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(compassPoint), $"The specified compass point '{compassPoint}' is invalid.")
             };
         }
     }

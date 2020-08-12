@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
             return DotAttributeValueAttribute.TryGetValue(Value, out var result)
                 ? result
-                : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified alignment option '{Value}' is not supported.");
+                : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified alignment option '{Value}' is invalid.");
         }
     }
 }

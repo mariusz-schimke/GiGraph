@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 DotEdgeOrderingMode.None => string.Empty,
                 DotEdgeOrderingMode.Outedge => "out",
                 DotEdgeOrderingMode.Inedge => "in",
-                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified edge ordering mode '{Value}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified edge ordering mode '{Value}' is invalid.")
             };
         }
     }

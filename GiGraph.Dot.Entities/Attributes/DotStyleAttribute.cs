@@ -55,7 +55,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 DotStyle.Radial => "radial",
                 DotStyle.Tapered => "tapered",
                 DotStyle.Invisible => "invis",
-                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified element style '{Value}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified element style '{Value}' is invalid.")
             };
         }
     }

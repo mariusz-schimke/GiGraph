@@ -101,7 +101,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
                 DotArrayPackingOption.AlignLeft => "l",
                 DotArrayPackingOption.AlignRight => "r",
                 DotArrayPackingOption.SortByIndex => "u",
-                _ => throw new ArgumentOutOfRangeException(nameof(option), $"The specified array packing option '{option}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(option), $"The specified array packing option '{option}' is invalid.")
             };
         }
     }

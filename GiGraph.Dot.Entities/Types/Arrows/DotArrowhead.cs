@@ -132,7 +132,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
                 DotArrowheadShape.Dot => "dot",
                 DotArrowheadShape.Tee => "tee",
                 DotArrowheadShape.Vee => "vee",
-                _ => throw new ArgumentOutOfRangeException(nameof(shape), $"The specified arrowhead shape '{shape}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(shape), $"The specified arrowhead shape '{shape}' is invalid.")
             };
         }
 

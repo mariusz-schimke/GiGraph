@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
                 DotPackingGranularity.Cluster => "clust",
                 DotPackingGranularity.Graph => "graph",
                 DotPackingGranularity.Array => "array",
-                _ => throw new ArgumentOutOfRangeException(nameof(Granularity), $"The specified packing granularity option '{Granularity}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(Granularity), $"The specified packing granularity option '{Granularity}' is invalid.")
             };
         }
     }

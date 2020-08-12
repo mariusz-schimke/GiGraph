@@ -92,7 +92,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 DotNodeShape.LeftPromoter => "lpromoter",
                 DotNodeShape.Record => "record",
                 DotNodeShape.RoundedRecord => "Mrecord",
-                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified node shape '{Value}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified node shape '{Value}' is invalid.")
             };
         }
     }

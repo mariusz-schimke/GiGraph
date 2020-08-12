@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 DotRankDirection.LeftToRight => "LR",
                 DotRankDirection.BottomToTop => "BT",
                 DotRankDirection.RightToLeft => "RL",
-                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified graph layout direction '{Value}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified graph layout direction '{Value}' is invalid.")
             };
         }
     }
