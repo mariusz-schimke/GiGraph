@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
 using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Attributes.Collections.Node;
 
-namespace GiGraph.Dot.Entities.Attributes.Enums
+namespace GiGraph.Dot.Entities.Types.Packing
 {
     /// <summary>
     ///     The flags used for customizing component distribution in the array packing mode.
@@ -18,22 +18,22 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ColumnMajorOrder = 1 << 0,
 
         /// <summary>
-        ///     Aligns the graphs along the top of the cells they occupy.
+        ///     Aligns graphs next to the top of the cells they occupy.
         /// </summary>
         AlignTop = 1 << 1,
 
         /// <summary>
-        ///     Aligns the graphs along the left side of the cells they occupy.
+        ///     Aligns graphs next to the bottom of the cells they occupy.
         /// </summary>
-        AlignLeft = 1 << 2,
+        AlignBottom = 1 << 2,
 
         /// <summary>
-        ///     Aligns the graphs along the top of the cells they occupy.
+        ///     Aligns graphs next to the left side of the cells they occupy.
         /// </summary>
-        AlignBottom = 1 << 3,
+        AlignLeft = 1 << 3,
 
         /// <summary>
-        ///     Aligns the graphs along the right side of the cells they occupy.
+        ///     Aligns graphs next to the right side of the cells they occupy.
         /// </summary>
         AlignRight = 1 << 4,
 

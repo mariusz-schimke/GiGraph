@@ -152,7 +152,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                     GetKey(MethodBase.GetCurrentMethod()),
                     out var value,
                     v => v is int i ? (true, new DotPackingMargin(i)) : (false, default),
-                    v => v is bool b ? (true, new DotPackingState(b)) : (false, default)
+                    v => v is bool b ? (true, new DotPackingToggle(b)) : (false, default)
                 )
                     ? value
                     : null;

@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 DotHorizontalAlignment.Left => "l",
                 DotHorizontalAlignment.Center => "c",
                 DotHorizontalAlignment.Right => "r",
-                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified horizontal alignment '{Value}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified horizontal alignment option '{Value}' is not supported.")
             };
         }
     }

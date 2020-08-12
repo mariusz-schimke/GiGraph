@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 DotAlignment.BottomCenter => "bc",
                 DotAlignment.BottomRight => "br",
 
-                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified alignment '{Value}' is not supported.")
+                _ => throw new ArgumentOutOfRangeException(nameof(Value), $"The specified alignment option '{Value}' is not supported.")
             };
         }
     }

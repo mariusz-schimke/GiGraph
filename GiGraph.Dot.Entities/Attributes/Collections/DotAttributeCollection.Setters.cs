@@ -131,9 +131,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotEdgeShapeAttribute(key, value));
         }
 
-        public virtual DotNodeFixedSizeAttribute Set(string key, DotNodeSizing value)
+        public virtual DotNodeSizingAttribute Set(string key, DotNodeSizing value)
         {
-            return Set(new DotNodeFixedSizeAttribute(key, value));
+            return Set(new DotNodeSizingAttribute(key, value));
         }
 
         public virtual DotStyleAttribute Set(string key, DotStyle value)

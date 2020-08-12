@@ -3,9 +3,9 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Packing
 {
     /// <summary>
-    ///     Determines whether graph packing is enabled.
+    ///     Determines whether graph packing is enabled or disabled.
     /// </summary>
-    public class DotPackingState : DotPackingDefinition
+    public class DotPackingToggle : DotPackingDefinition
     {
         /// <summary>
         ///     Creates a new instance.
@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
         ///     If true, each connected component of the graph is laid out separately, and then the graphs are packed together. If false, the
         ///     entire graph is laid out together.
         /// </param>
-        public DotPackingState(bool enabled)
+        public DotPackingToggle(bool enabled)
         {
             Enabled = enabled;
         }

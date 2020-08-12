@@ -323,7 +323,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotNodeFixedSizeAttribute Set(string key, DotNodeSizing value);
+        DotNodeSizingAttribute Set(string key, DotNodeSizing value);
 
         /// <summary>
         ///     Adds or replaces the specified element style attribute in the collection.
