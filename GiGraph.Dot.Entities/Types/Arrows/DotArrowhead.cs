@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Arrows
@@ -119,21 +120,9 @@ namespace GiGraph.Dot.Entities.Types.Arrows
 
         protected virtual string GetDotEncodedShape(DotArrowheadShape shape)
         {
-            return shape switch
-            {
-                DotArrowheadShape.None => "none",
-                DotArrowheadShape.Normal => "normal",
-                DotArrowheadShape.InvertedNormal => "inv",
-                DotArrowheadShape.Box => "box",
-                DotArrowheadShape.Crow => "crow",
-                DotArrowheadShape.Curve => "curve",
-                DotArrowheadShape.InvertedCurve => "icurve",
-                DotArrowheadShape.Diamond => "diamond",
-                DotArrowheadShape.Dot => "dot",
-                DotArrowheadShape.Tee => "tee",
-                DotArrowheadShape.Vee => "vee",
-                _ => throw new ArgumentOutOfRangeException(nameof(shape), $"The specified arrowhead shape '{shape}' is invalid.")
-            };
+            return DotAttributeValueAttribute.TryGetValue(shape, out var result)
+                ? result
+                : throw new ArgumentOutOfRangeException(nameof(shape), $"The specified arrowhead shape '{shape}' is invalid.");
         }
 
         /// <summary>
