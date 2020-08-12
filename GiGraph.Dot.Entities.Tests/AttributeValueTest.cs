@@ -34,7 +34,7 @@ namespace GiGraph.Dot.Entities.Tests
         [InlineData(typeof(DotVerticalAlignment))]
         [InlineData(typeof(DotArrayPackingOption))]
         [InlineData(typeof(DotCompassPoint))]
-        [InlineData(typeof(DotArrowheadParts))]
+        [InlineData(typeof(DotArrowheadPart))]
         public void all_enum_properties_have_a_non_empty_attribute_value_assigned(Type enumType)
         {
             foreach (var value in Enum.GetValues(enumType))
@@ -43,7 +43,9 @@ namespace GiGraph.Dot.Entities.Tests
 
                 var attribute = enumMember?.GetCustomAttribute<DotAttributeValueAttribute>();
                 Assert.NotNull(attribute);
-                Assert.NotEmpty(attribute.Value);
+
+                // null is allowed, but an empty string is considered to be a mistake
+                Assert.True(attribute.Value is null || attribute.Value.Length > 0);
             }
         }
     }
