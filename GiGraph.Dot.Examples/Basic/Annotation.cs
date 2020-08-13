@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Graphs;
 
 namespace GiGraph.Dot.Examples.Basic
 {
-    public static class ElementAnnotation
+    public static class Annotation
     {
         public static DotGraph Generate()
         {
@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Examples.Basic
             // node defaults
             graph.NodeDefaults.Annotation = "global node attributes";
             graph.NodeDefaults.Shape = DotNodeShape.Rectangle;
-            
+
             // nodes
             graph.Nodes.Annotation = "nodes";
             graph.Nodes.Add("foo", attrs =>
@@ -30,14 +30,14 @@ namespace GiGraph.Dot.Examples.Basic
             // edge defaults
             graph.EdgeDefaults.Annotation = "global edge attributes";
             graph.EdgeDefaults.ArrowHead = DotArrowheadShape.Curve;
-            
+
             // edges
             graph.Edges.Annotation = "edges";
-            graph.Edges.Add("foo", "bar",edge =>
+            graph.Edges.Add("foo", "bar", edge =>
             {
                 edge.Head.Annotation = "head";
                 edge.Tail.Annotation = "tail";
-                
+
                 edge.Attributes.Annotation = "edge attributes";
                 edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
             }).Annotation = "edge comment";

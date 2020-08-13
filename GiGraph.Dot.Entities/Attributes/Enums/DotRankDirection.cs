@@ -9,13 +9,13 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
     {
         [DotAttributeValue("TB")]
         TopToBottom,
-        
+
         [DotAttributeValue("BT")]
         BottomToTop,
-        
+
         [DotAttributeValue("LR")]
         LeftToRight,
-        
+
         [DotAttributeValue("RL")]
         RightToLeft
     }
