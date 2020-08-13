@@ -1724,18 +1724,18 @@ You can use script annotation (comments) by simply assigning text to the *Annota
 
 ```c#
 graph.Annotation = "Graph comment";
-graph.Nodes.Add("Foo").Annotation = "The Foo node comment";
-graph.Edges.Add("Foo", "Bar").Annotation = "The Foo-Bar edge comment";
+graph.Nodes.Add("Foo").Annotation = "Foo node comment";
+graph.Edges.Add("Foo", "Bar").Annotation = "Foo-Bar edge comment";
 ```
 
 ```dot
 // Graph comment
 digraph
 {
-    // The Foo node comment
+    // Foo node comment
     Foo
 
-    // The Foo-Bar edge comment
+    // Foo-Bar edge comment
     Foo -> Bar
 }
 ```

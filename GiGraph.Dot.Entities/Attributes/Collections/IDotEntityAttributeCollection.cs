@@ -17,6 +17,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotNullAttribute SetNull<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
 
         /// <summary>
+        ///     Assigns a value to the specified property, and returns the actual attribute added to the collection.
+        /// </summary>
+        /// <param name="property">
+        ///     The property by which to get the DOT attribute key to set a value for.
+        /// </param>
+        /// <param name="value">
+        ///     The value to assign to the property.
+        /// </param>
+        /// <typeparam name="TProperty">
+        ///     The type returned by the property.
+        /// </typeparam>
+        DotAttribute Set<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property, TProperty value);
+
+        /// <summary>
         ///     Determines whether the collection contains an attribute with the specified key, whose value is null.
         /// </summary>
         /// <param name="property">

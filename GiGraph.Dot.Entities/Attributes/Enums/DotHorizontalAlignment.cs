@@ -9,10 +9,10 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
     {
         [DotAttributeValue("l")]
         Left,
-        
+
         [DotAttributeValue("c")]
         Center,
-        
+
         [DotAttributeValue("r")]
         Right
     }
