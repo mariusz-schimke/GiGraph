@@ -13,7 +13,7 @@
     <icon>content\icon.png</icon>
     
     <projectUrl>https://github.com/mariusz-schimke/GiGraph</projectUrl>
-    <repository type="git" url="https://github.com/mariusz-schimke/GiGraph.git" branch="master" commit="e9b9c9a9d5aad264694bf4534535fa79babbe972" />
+    <repository type="git" url="https://github.com/mariusz-schimke/GiGraph.git" branch="master" commit="58a1f8afabe70f24ca67c743aa1e0d51ba1cfc04" />
 
     <license type="file">content\LICENSE.txt</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
