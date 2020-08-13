@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 
 namespace GiGraph.Dot.Examples.Basic
@@ -14,6 +15,10 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Attributes.Annotation = "graph attributes";
             graph.Attributes.Set(a => a.Label, "Foo Graph").Annotation = "label";
 
+            // node defaults
+            graph.NodeDefaults.Annotation = "global node attributes";
+            graph.NodeDefaults.Shape = DotNodeShape.Rectangle;
+            
             // nodes
             graph.Nodes.Annotation = "nodes";
             graph.Nodes.Add("foo", attrs =>
@@ -22,10 +27,17 @@ namespace GiGraph.Dot.Examples.Basic
                 attrs.Set(a => a.Label, "foo").Annotation = "label";
             }).Annotation = "node comment";
 
+            // edge defaults
+            graph.EdgeDefaults.Annotation = "global edge attributes";
+            graph.EdgeDefaults.ArrowHead = DotArrowheadShape.Curve;
+            
             // edges
             graph.Edges.Annotation = "edges";
             graph.Edges.Add("foo", "bar",edge =>
             {
+                edge.Head.Annotation = "head";
+                edge.Tail.Annotation = "tail";
+                
                 edge.Attributes.Annotation = "edge attributes";
                 edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
             }).Annotation = "edge comment";
