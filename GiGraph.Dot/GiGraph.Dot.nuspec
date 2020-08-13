@@ -13,7 +13,7 @@
     <icon>content\icon.png</icon>
     
     <projectUrl>https://github.com/mariusz-schimke/GiGraph</projectUrl>
-    <repository type="git" url="https://github.com/mariusz-schimke/GiGraph.git" branch="master" commit="e9b9c9a9d5aad264694bf4534535fa79babbe972" />
+    <repository type="git" url="https://github.com/mariusz-schimke/GiGraph.git" branch="master" commit="58a1f8afabe70f24ca67c743aa1e0d51ba1cfc04" />
 
     <license type="file">content\LICENSE.txt</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -34,7 +34,7 @@
 
 - Added support for attributes: headlabel, taillabel, image, imagepos, imagepath, group, ranksep, headclip, tailclip, colorscheme, rotate, pad, margin, size, ratio, labelfloat, labeldistance, labelangle, labelfontcolor, labelfontname, labelfontsize, minlen, len, weight, clusterrank, ordering, samehead, sametail, pack, packmode, sortv (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
 
-- It is possible now to nullify attribute values (for some attributes it restores their original default value). See https://github.com/mariusz-schimke/GiGraph/blob/1.5.0/README.md#default-attributes.
+- It is possible now to nullify attribute values (for some attributes it restores their original default value). See https://github.com/mariusz-schimke/GiGraph/blob/1.5.0/README.md#default-global-attributes.
 
 - Added separate classes to represent color combinations: DotDualColor, DotGradientColor, DotMultiColor.
 
