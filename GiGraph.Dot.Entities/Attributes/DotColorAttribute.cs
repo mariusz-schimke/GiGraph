@@ -5,15 +5,19 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    /// Represents a single color.
+    ///     Represents a single color.
     /// </summary>
     public class DotColorAttribute : DotAttribute<Color>
     {
         /// <summary>
-        /// Creates a new color attribute.
+        ///     Creates a new color attribute.
         /// </summary>
-        /// <param name="key">The key of the attribute, for example "color", "bgcolor", or "fillcolor".</param>
-        /// <param name="color">The value of the attribute as a color.</param>
+        /// <param name="key">
+        ///     The key of the attribute, for example "color", "bgcolor", or "fillcolor".
+        /// </param>
+        /// <param name="color">
+        ///     The value of the attribute as a color.
+        /// </param>
         public DotColorAttribute(string key, Color color)
             : base(key, color)
         {

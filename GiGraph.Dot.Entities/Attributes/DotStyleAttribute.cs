@@ -1,20 +1,25 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using System;
+﻿using System;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    /// Style attribute. Individual styles are applicable to specific element types only.
+    ///     Style attribute. Individual styles are applicable to specific element types only.
     /// </summary>
     public class DotStyleAttribute : DotAttribute<DotStyle>
     {
         /// <summary>
-        /// Creates a new instance of the attribute.
+        ///     Creates a new instance of the attribute.
         /// </summary>
-        /// <param name="key">The key of the attribute.</param>
-        /// <param name="value">The value of the attribute.</param>
+        /// <param name="key">
+        ///     The key of the attribute.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute.
+        /// </param>
         public DotStyleAttribute(string key, DotStyle value)
             : base(key, value)
         {
@@ -23,10 +28,10 @@ namespace GiGraph.Dot.Entities.Attributes
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
             var styles = Enum.GetValues(typeof(DotStyle))
-                             .Cast<DotStyle>()
-                             .Where(style => style != DotStyle.Default)
-                             .Where(style => Value.HasFlag(style))
-                             .Select(style => GetDotEncodedStyleItemValue(style, syntaxRules));
+               .Cast<DotStyle>()
+               .Where(style => style != DotStyle.Default)
+               .Where(style => Value.HasFlag(style))
+               .Select(style => GetDotEncodedStyle(style, options, syntaxRules));
 
             const string separator = ", ";
             return options.OrderElements
@@ -34,52 +39,11 @@ namespace GiGraph.Dot.Entities.Attributes
                 : string.Join(separator, styles);
         }
 
-        protected virtual string GetDotEncodedStyleItemValue(DotStyle item, DotSyntaxRules syntaxRules)
+        protected virtual string GetDotEncodedStyle(DotStyle style, DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            switch (item)
-            {
-                case DotStyle.Default:
-                    return null;
-
-                case DotStyle.Solid:
-                    return "solid";
-
-                case DotStyle.Dashed:
-                    return "dashed";
-
-                case DotStyle.Dotted:
-                    return "dotted";
-
-                case DotStyle.Bold:
-                    return "bold";
-
-                case DotStyle.Rounded:
-                    return "rounded";
-
-                case DotStyle.Diagonals:
-                    return "diagonals";
-
-                case DotStyle.Filled:
-                    return "filled";
-
-                case DotStyle.Striped:
-                    return "striped";
-
-                case DotStyle.Wedged:
-                    return "wedged";
-
-                case DotStyle.Radial:
-                    return "radial";
-
-                case DotStyle.Tapered:
-                    return "tapered";
-
-                case DotStyle.Invisible:
-                    return "invis";
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(Value), $"The specified element style '{Value}' is not supported.");
-            }
+            return DotAttributeValueAttribute.TryGetValue(style, out var result)
+                ? result
+                : throw new ArgumentOutOfRangeException(nameof(style), $"The specified style '{style}' is invalid.");
         }
     }
 }

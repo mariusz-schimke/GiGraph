@@ -1,3 +1,5 @@
+using System.Globalization;
+using System.Threading;
 using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Output.Options;
 using Xunit;
@@ -6,16 +8,31 @@ namespace GiGraph.Dot.Entities.Tests
 {
     public class AttributesTest
     {
-        private DotGenerationOptions _generationOptions = new DotGenerationOptions();
-        private DotSyntaxRules _syntaxRules = new DotSyntaxRules();
+        private readonly DotGenerationOptions _generationOptions = new DotGenerationOptions();
+        private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
 
         [Fact]
-        public void string_attribute_returns_the_exact_same_encoded_value_as_attribute_value()
+        public void double_attribute_returns_invariant_culture_encoded_value()
         {
-            var value = "a bcd \" \\ \r\n \r \n h ij < > { } |";
-            IDotEncodable attr = new DotStringAttribute("key", value);
+            var value = 10.23455;
+            IDotEncodable attr = new DotDoubleAttribute("key", value);
 
-            Assert.Equal(value, attr.GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("PL");
+            Assert.Equal("0,5", 0.5.ToString());
+
+            Assert.Equal("10.23455", attr.GetDotEncodedValue(_generationOptions, _syntaxRules));
+        }
+
+        [Fact]
+        public void double_list_attribute_returns_invariant_culture_encoded_value()
+        {
+            var values = new[] { 10.23455, 0.5, 1.345 };
+            IDotEncodable attr = new DotDoubleListAttribute("key", values);
+
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("PL");
+            Assert.Equal("0,5", 0.5.ToString());
+
+            Assert.Equal("10.23455:0.5:1.345", attr.GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
 
         [Fact]
@@ -37,12 +54,12 @@ namespace GiGraph.Dot.Entities.Tests
         }
 
         [Fact]
-        public void double_attribute_returns_invariant_culture_encoded_value()
+        public void string_attribute_returns_the_exact_same_encoded_value_as_attribute_value()
         {
-            var value = 10.23455;
-            IDotEncodable attr = new DotDoubleAttribute("key", value);
+            var value = "a bcd \" \\ \r\n \r \n h ij < > { } |";
+            IDotEncodable attr = new DotStringAttribute("key", value);
 
-            Assert.Equal("10.23455", attr.GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal(value, attr.GetDotEncodedValue(_generationOptions, _syntaxRules));
         }
     }
 }

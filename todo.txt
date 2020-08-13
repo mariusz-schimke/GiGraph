@@ -1,16 +1,14 @@
 Road map:
-1. Gradually add support for all available attributes (headclip, tailclip, image, imagepath etc., rotate, truecolor, pack, packmode).
-2. Verify the validity of XML documentations.
+1. Gradually add support for all available attributes.
+2. Verify the correctness of XML documentations.
 
-Other (always valid): 
+Other:
 1. Check if methods are coherently marked as virtual.
-2. Check if interfaces should be extracted for any classes.
-3. Check if properties should or shouldn't have setters.
-4. Some attributes are settable only on specified elements, but it turns out that the documentation is not always right.
+2. Check if all Set method overloads of the DotAttributeCollection are exposed by the IDotAttributeCollection interface.
+2. Some attributes are settable only on specified types of elements, but it turns out that the documentation is not always precise, and other elements support those attributes too.
 
 Nice-to-haves:
 1. Implement predefined HTML nodes: https://www.graphviz.org/doc/info/shapes.html#polygon.
-2. Text justification markers support (\l, \r) and others like \N, \E etc.
-4. Double list (doubleList) attribute type (and other types, even if not supported directly).
+2. Attribute types, even if not exposed as properties.
 
 Useful examples: https://www.graphviz.org/pdf/dotguide.pdf

@@ -1,6 +1,6 @@
 ﻿using System;
 using GiGraph.Dot.Examples.Basic;
-using GiGraph.Dot.Extensions; // Build(), SaveToFile()
+using GiGraph.Dot.Extensions;
 
 namespace GiGraph.Dot.Examples
 {

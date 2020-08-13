@@ -3,7 +3,7 @@
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
     /// <summary>
-    /// Represents an endpoint of an edge.
+    ///     Represents an endpoint of an edge.
     /// </summary>
     public abstract class DotEndpointDefinition : IDotOrderable
     {
@@ -17,12 +17,12 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
 
         public static implicit operator DotEndpointDefinition(string[] nodeIds)
         {
-            return (DotEndpointGroup) nodeIds;
+            return nodeIds is {} ? new DotEndpointGroup(nodeIds) : null;
         }
 
         public static implicit operator DotEndpointDefinition(DotSubgraph subgraph)
         {
-            return (DotEndpointGroup) subgraph;
+            return subgraph is {} ? new DotEndpointGroup(subgraph) : null;
         }
     }
 }

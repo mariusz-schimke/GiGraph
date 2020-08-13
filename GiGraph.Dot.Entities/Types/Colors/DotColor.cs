@@ -4,25 +4,30 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Colors
 {
     /// <summary>
-    /// Represents a single color.
+    ///     Represents a single color.
     /// </summary>
     public class DotColor : DotColorDefinition
     {
         /// <summary>
-        /// Gets the color.
+        ///     Creates a new instance initialized with a color.
         /// </summary>
-        public virtual Color Color { get; }
-
-        /// <summary>
-        /// Creates a new instance initialized with a color.
-        /// </summary>
-        /// <param name="color">The color to initialize the instance with.</param>
+        /// <param name="color">
+        ///     The color to initialize the instance with.
+        /// </param>
         public DotColor(Color color)
         {
             Color = color;
         }
 
-        protected internal virtual double? GetWeight() => null;
+        /// <summary>
+        ///     Gets the color.
+        /// </summary>
+        public virtual Color Color { get; }
+
+        protected internal virtual double? GetWeight()
+        {
+            return null;
+        }
 
         protected internal override string GetDotEncodedColor(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
