@@ -11,30 +11,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     {
         public virtual string GetKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
         {
-            var propertyInfo = (property.Body as MemberExpression)?.Member as PropertyInfo ??
-                               throw new ArgumentException("Property expression expected.", nameof(property));
-
-            var currentType = GetType();
-
-            // make sure the property expression refers to current instance type, to any of its base classes, or to an interface it implements
-            if (!propertyInfo.DeclaringType.IsAssignableFrom(currentType))
-            {
-                throw new ArgumentException("The property expression must refer to a member of the current instance.", nameof(property));
-            }
-
-            if (propertyInfo.DeclaringType.IsInterface)
-            {
-                // get the get method (property expression is impossible for write-only properties)
-                // include non-public methods (interface may be implemented explicitly)
-                var propertyMethod = propertyInfo.GetGetMethod(nonPublic: true);
-
-                var interfaceMap = currentType.GetInterfaceMap(propertyInfo.DeclaringType);
-                var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(propertyMethod));
-                var targetMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
-
-                return GetKey(targetMethod, currentType);
-            }
-
+            var propertyInfo = GetPropertyInfo(property);
             return GetKey(propertyInfo);
         }
 
@@ -68,12 +45,63 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return IsNullified(key);
         }
 
+        public virtual DotAttribute Set<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property, TProperty value)
+        {
+            var propertyInfo = GetPropertyInfo(property);
+            var key = GetKey(propertyInfo);
+
+            propertyInfo.SetValue(this, value);
+
+            return TryGetValue(key, out var attribute) ? attribute : null;
+        }
+
         protected virtual string GetKey(MethodBase propertyMethod)
         {
             return GetKey(propertyMethod, propertyMethod.DeclaringType);
         }
 
         protected virtual string GetKey(MethodBase propertyMethod, Type declaringType)
+        {
+            var property = GetPropertyInfo(propertyMethod, declaringType);
+            return GetKey(property);
+        }
+
+        protected virtual string GetKey(PropertyInfo property)
+        {
+            return property.GetCustomAttribute<DotAttributeKeyAttribute>()?.Key ??
+                   throw new KeyNotFoundException("The specified property has no DOT attribute key assigned.");
+        }
+
+        protected virtual PropertyInfo GetPropertyInfo<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        {
+            var propertyInfo = (property.Body as MemberExpression)?.Member as PropertyInfo ??
+                               throw new ArgumentException("Property expression expected.", nameof(property));
+
+            var currentType = GetType();
+
+            // make sure the property expression refers to current instance type, to any of its base classes, or to an interface it implements
+            if (!propertyInfo.DeclaringType.IsAssignableFrom(currentType))
+            {
+                throw new ArgumentException("The property expression must refer to a member of the current instance.", nameof(property));
+            }
+
+            if (propertyInfo.DeclaringType.IsInterface)
+            {
+                // get the get method (property expression is impossible for write-only properties)
+                // include non-public methods (interface may be implemented explicitly)
+                var propertyMethod = propertyInfo.GetGetMethod(nonPublic: true);
+
+                var interfaceMap = currentType.GetInterfaceMap(propertyInfo.DeclaringType);
+                var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(propertyMethod));
+                var targetMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
+
+                return GetPropertyInfo(targetMethod, currentType);
+            }
+
+            return propertyInfo;
+        }
+
+        protected virtual PropertyInfo GetPropertyInfo(MethodBase propertyMethod, Type declaringType)
         {
             var property = declaringType
               ?.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
@@ -85,13 +113,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 throw new ArgumentException("The specified method must be a property setter or getter.", nameof(propertyMethod));
             }
 
-            return GetKey(property);
-        }
-
-        protected virtual string GetKey(PropertyInfo property)
-        {
-            return property.GetCustomAttribute<DotAttributeKeyAttribute>()?.Key ??
-                   throw new KeyNotFoundException("The specified property has no DOT attribute key assigned.");
+            return property;
         }
     }
 }
