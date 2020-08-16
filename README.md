@@ -1491,7 +1491,7 @@ Every element supports only attributes that are specific to it. For example arro
 ```c#
 node.Attributes.Label = "My node label";
 node.Attributes.Style = DotStyle.Filled;
-node.Attributes.FillColor = DotColorDefinition.Gradient(Color.Red, Color.Blue);
+node.Attributes.FillColor = new DotGradientColor(Color.Red, Color.Blue);
 ```
 
 ```c#
@@ -1516,11 +1516,11 @@ If the value type you want to use is supported by the library, but the key you w
 
 ```c#
 // setting the same fill color
-var attribute = new DotColorDefinitionAttribute("fillcolor", DotColorDefinition.Gradient(Color.Red, Color.Blue));
+var attribute = new DotColorDefinitionAttribute("fillcolor", new DotGradientColor(Color.Red, Color.Blue));
 node.Attributes.Set(attribute);
 
 // or without creating an attribute instance explicitly
-node.Attributes.Set("fillcolor", DotColorDefinition.Gradient(Color.Red, Color.Blue));
+node.Attributes.Set("fillcolor", new DotGradientColor(Color.Red, Color.Blue));
 ```
 
 
