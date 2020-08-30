@@ -70,10 +70,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         }
 
         [DotAttributeKey("fixedsize")]
-        public virtual DotNodeSizingMode? SizingMode
+        public virtual DotNodeSizing? Sizing
         {
-            get => GetValueAs<DotNodeSizingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotNodeSizingMode?) null;
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeSizingModeAttribute(k, v.Value));
+            get => GetValueAs<DotNodeSizing>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotNodeSizing?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeSizingAttribute(k, v.Value));
         }
 
         [DotAttributeKey("image")]

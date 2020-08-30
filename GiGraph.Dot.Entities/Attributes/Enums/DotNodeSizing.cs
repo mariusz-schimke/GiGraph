@@ -4,9 +4,9 @@ using GiGraph.Dot.Entities.Types.Attributes;
 namespace GiGraph.Dot.Entities.Attributes.Enums
 {
     /// <summary>
-    ///     The node sizing mode values for the <see cref="IDotNodeAttributes.SizingMode" /> node attribute.
+    ///     The node sizing mode values for the <see cref="IDotNodeAttributes.Sizing" /> node attribute.
     /// </summary>
-    public enum DotNodeSizingMode
+    public enum DotNodeSizing
     {
         /// <summary>
         ///     The node size is specified by the values of the width and height attributes only and is not expanded to contain the text

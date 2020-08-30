@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Tests
         [InlineData(typeof(DotEdgeShape))]
         [InlineData(typeof(DotHorizontalAlignment))]
         [InlineData(typeof(DotNodeShape))]
-        [InlineData(typeof(DotNodeSizingMode))]
+        [InlineData(typeof(DotNodeSizing))]
         [InlineData(typeof(DotPackingGranularity))]
         [InlineData(typeof(DotRank))]
         [InlineData(typeof(DotRankDirection))]

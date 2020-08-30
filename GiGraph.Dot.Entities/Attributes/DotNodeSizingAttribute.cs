@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     ///     The fixedsize attribute of node.
     /// </summary>
-    public class DotNodeSizingModeAttribute : DotAttribute<DotNodeSizingMode>
+    public class DotNodeSizingAttribute : DotAttribute<DotNodeSizing>
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotNodeSizingModeAttribute(string key, DotNodeSizingMode value)
+        public DotNodeSizingAttribute(string key, DotNodeSizing value)
             : base(key, value)
         {
         }
@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
             return DotAttributeValueAttribute.TryGetValue(Value, out var result)
                 ? result
-                : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified node sizing mode '{Value}' is invalid.");
+                : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified node sizing option '{Value}' is invalid.");
         }
     }
 }
