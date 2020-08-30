@@ -6,9 +6,9 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     A double list attribute.
+    ///     A double array attribute.
     /// </summary>
-    public class DotDoubleListAttribute : DotAttribute<double[]>
+    public class DotDoubleArrayAttribute : DotAttribute<double[]>
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotDoubleListAttribute(string key, double[] value)
+        public DotDoubleArrayAttribute(string key, double[] value)
             : base(key, value)
         {
         }
@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotDoubleListAttribute(string key, IEnumerable<double> value)
+        public DotDoubleArrayAttribute(string key, IEnumerable<double> value)
             : base(key, value?.ToArray())
         {
         }

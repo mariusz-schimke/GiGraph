@@ -322,7 +322,7 @@ namespace GiGraph.Dot.Examples
             // set graph attributes
             graph.Attributes.Label = "Example Flow";
             graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
-            graph.Attributes.Compound = true;
+            graph.Attributes.EdgesBetweenClusters = true;
             graph.Attributes.EdgeShape = DotEdgeShape.Orthogonal;
 
             // set individual node styles
@@ -342,7 +342,7 @@ namespace GiGraph.Dot.Examples
                 edge.Attributes.Label = "yes";
 
                 // attach the arrow to cluster border
-                edge.Attributes.LogicalHeadId = "Flow 1";
+                edge.Attributes.HeadClusterId = "Flow 1";
             });
 
             graph.Edges.Add("Decision", "Cluster 2 Start", edge =>
@@ -350,11 +350,11 @@ namespace GiGraph.Dot.Examples
                 edge.Attributes.Label = "no";
 
                 // attach the arrow to cluster border
-                edge.Attributes.LogicalHeadId = "Flow 2";
+                edge.Attributes.HeadClusterId = "Flow 2";
             });
 
-            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.LogicalTailId = "Flow 1";
-            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.LogicalTailId = "Flow 2";
+            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.TailClusterId = "Flow 1";
+            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.TailClusterId = "Flow 2";
 
 
             // --- add clusters ---

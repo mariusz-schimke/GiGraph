@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
         {
             var graph = new DotGraph("graph1", directed);
 
-            graph.Attributes.Compound = true;
+            graph.Attributes.EdgesBetweenClusters = true;
             graph.Attributes.FillColor = Color.Brown;
             graph.Attributes.Comment = "graph_comment";
 
@@ -54,7 +54,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             graph.Edges.AddSequence(edge =>
             {
-                edge.Attributes.Constraint = true;
+                edge.Attributes.Constrain = true;
                 edge.Attributes.Style = DotStyle.Solid;
             }, "node4", DotSubgraph.FromNodes("snode1", "snode2"), "node5");
 
@@ -79,7 +79,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             graph.Annotation = "graph comment";
 
-            graph.Attributes.Compound = true;
+            graph.Attributes.EdgesBetweenClusters = true;
             graph.NodeDefaults.Label = "node label";
             graph.EdgeDefaults.Label = "edge label";
 

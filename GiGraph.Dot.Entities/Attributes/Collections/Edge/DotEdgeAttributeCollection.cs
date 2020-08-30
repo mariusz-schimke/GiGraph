@@ -260,17 +260,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         [DotAttributeKey("lhead")]
-        public virtual string LogicalHeadId
+        public virtual string HeadClusterId
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLogicalEndpointAttribute(k, v));
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotClusterIdAttribute(k, v));
         }
 
         [DotAttributeKey("ltail")]
-        public virtual string LogicalTailId
+        public virtual string TailClusterId
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLogicalEndpointAttribute(k, v));
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotClusterIdAttribute(k, v));
         }
 
         [DotAttributeKey("decorate")]
@@ -304,7 +304,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         [DotAttributeKey("constraint")]
-        public virtual bool? Constraint
+        public virtual bool? Constrain
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));

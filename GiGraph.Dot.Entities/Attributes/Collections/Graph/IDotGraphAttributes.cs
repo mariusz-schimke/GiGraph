@@ -3,12 +3,12 @@ using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
+using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
@@ -238,10 +238,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         bool? ConcentrateEdges { get; set; }
 
         /// <summary>
-        ///     If true, allows edges between clusters (default: false). See also the <see cref="IDotEdgeAttributes.LogicalHeadId" /> and
-        ///     <see cref="IDotEdgeAttributes.LogicalTailId" /> attributes of the edge.
+        ///     If true, allows edges between clusters (default: false). Use the <see cref="IDotEdgeAttributes.HeadClusterId" /> or
+        ///     <see cref="IDotEdgeAttributes.TailClusterId" /> edge attributes to attach an edge head or tail to a cluster.
         /// </summary>
-        bool? Compound { get; set; }
+        bool? EdgesBetweenClusters { get; set; }
 
         /// <summary>
         ///     Comments are inserted into output. Device-dependent.
@@ -290,7 +290,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     </para>
         ///     <para>
         ///         In twopi, this attribute specifies the radial separation of concentric circles (default: 1, minimum: 0.02). For twopi,
-        ///         this can also be a list of doubles (<see cref="DotRankSeparationList" />). The first double specifies the radius of the
+        ///         this can also be a list of doubles (<see cref="DotRadialRankSeparation" />). The first double specifies the radius of the
         ///         inner circle; the second double specifies the increase in radius from the first circle to the second; etc. If there are
         ///         more circles than numbers, the last number is used as the increment for the remainder.
         ///     </para>
@@ -298,9 +298,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         DotRankSeparationDefinition RankSeparation { get; set; }
 
         /// <summary>
-        ///     Mode used for handling clusters (dot only; default: <see cref="DotClusterMode.Local" />).
+        ///     Mode used for handling clusters (dot only; default: <see cref="DotClusterMode.Bounded" />).
         /// </summary>
-        DotClusterMode? ClusterRank { get; set; }
+        DotClusterMode? ClusterMode { get; set; }
 
         /// <summary>
         ///     Determines how inedges and outedges, that is, edges with a node as their head or tail node respectively, are ordered (dot
@@ -362,7 +362,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         dimension in size.
         ///     </para>
         ///     <para>
-        ///         Note that there is some interaction between the <see cref="Size" /> and the <see cref="AspectRatio" /> attributes.
+        ///         Note that there is some interaction between the <see cref="Size" /> and the <see cref="Scaling" /> attributes.
         ///     </para>
         /// </summary>
         DotPoint Size { get; set; }
@@ -379,10 +379,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         ratio, the drawing width is scaled up.
         ///     </para>
         ///     <para>
-        ///         See also <see cref="DotAspectRatio" /> for non-numeric options of the ratio.
+        ///         See also <see cref="DotGraphScaling" /> for non-numeric options of the ratio.
         ///     </para>
         /// </summary>
-        DotAspectRatioDefinition AspectRatio { get; set; }
+        DotGraphScalingDefinition Scaling { get; set; }
 
         /// <summary>
         ///     <para>

@@ -6,9 +6,9 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     The fixed size attribute of a node.
+    ///     The fixedsize attribute of node.
     /// </summary>
-    public class DotNodeSizingAttribute : DotAttribute<DotNodeSizing>
+    public class DotNodeSizingModeAttribute : DotAttribute<DotNodeSizingMode>
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotNodeSizingAttribute(string key, DotNodeSizing value)
+        public DotNodeSizingModeAttribute(string key, DotNodeSizingMode value)
             : base(key, value)
         {
         }
@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
             return DotAttributeValueAttribute.TryGetValue(Value, out var result)
                 ? result
-                : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified node sizing option '{Value}' is invalid.");
+                : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified node sizing mode '{Value}' is invalid.");
         }
     }
 }

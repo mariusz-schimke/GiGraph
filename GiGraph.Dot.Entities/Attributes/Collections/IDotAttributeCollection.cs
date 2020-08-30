@@ -4,13 +4,13 @@ using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Arrows;
-using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
+using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -202,7 +202,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotDoubleListAttribute Set(string key, params double[] value);
+        DotDoubleArrayAttribute Set(string key, params double[] value);
 
         /// <summary>
         ///     Adds or replaces the specified double list value attribute in the collection.
@@ -213,7 +213,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotDoubleListAttribute Set(string key, IEnumerable<double> value);
+        DotDoubleArrayAttribute Set(string key, IEnumerable<double> value);
 
         /// <summary>
         ///     Adds or replaces the specified boolean value attribute in the collection.
@@ -257,7 +257,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotAspectRatioAttribute Set(string key, DotAspectRatio value);
+        DotGraphScalingAttribute Set(string key, DotGraphScaling value);
 
         /// <summary>
         ///     Adds or replaces the specified aspect ratio attribute in the collection.
@@ -268,7 +268,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotAspectRatioDefinitionAttribute Set(string key, DotAspectRatioDefinition value);
+        DotGraphScalingDefinitionAttribute Set(string key, DotGraphScalingDefinition value);
 
         /// <summary>
         ///     Adds or replaces the specified packing definition attribute in the collection.
@@ -323,7 +323,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotNodeSizingAttribute Set(string key, DotNodeSizing value);
+        DotNodeSizingModeAttribute Set(string key, DotNodeSizingMode value);
 
         /// <summary>
         ///     Adds or replaces the specified element style attribute in the collection.
@@ -415,7 +415,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Adds or replaces the specified rank separation attribute in the collection (<see cref="DotRankSeparation" /> or
-        ///     <see cref="DotRankSeparationList" />).
+        ///     <see cref="DotRadialRankSeparation" />).
         /// </summary>
         /// <param name="key">
         ///     The key of the attribute to include in the collection.
@@ -423,7 +423,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotRankSeparationAttribute Set(string key, DotRankSeparationDefinition value);
+        DotRankSeparationDefinitionAttribute Set(string key, DotRankSeparationDefinition value);
 
         /// <summary>
         ///     Sets an endpoint port, that is a point on a node where an edge is attached to.

@@ -274,18 +274,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotEndpointPort TailPort { get; set; }
 
         /// <summary>
-        ///     Logical head of an edge. When the <see cref="IDotGraphAttributes.Compound" /> property of the graph is true, if the current
-        ///     property is defined and is the identifier of a cluster containing the real head node, the edge is clipped to the boundary of
-        ///     the cluster.
+        ///     Logical head of an edge. When the <see cref="IDotGraphAttributes.EdgesBetweenClusters" /> property of the graph is true, if
+        ///     the current property is defined and is the identifier of a cluster containing the real head node, the edge is clipped to the
+        ///     boundary of the cluster.
         /// </summary>
-        string LogicalHeadId { get; set; }
+        string HeadClusterId { get; set; }
 
         /// <summary>
-        ///     Logical tail of an edge. When the <see cref="IDotGraphAttributes.Compound" /> property of the graph is true, if the current
-        ///     property is defined and is the identifier of a cluster containing the real tail node, the edge is clipped to the boundary of
-        ///     the cluster.
+        ///     Logical tail of an edge. When the <see cref="IDotGraphAttributes.EdgesBetweenClusters" /> property of the graph is true, if
+        ///     the current property is defined and is the identifier of a cluster containing the real tail node, the edge is clipped to the
+        ///     boundary of the cluster.
         /// </summary>
-        string LogicalTailId { get; set; }
+        string TailClusterId { get; set; }
 
         /// <summary>
         ///     If true, attaches edge label to edge by a 2-segment polyline, underlining the label, then going to the closest point of
@@ -306,13 +306,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         bool? ClipTail { get; set; }
 
         /// <summary>
-        ///     If false, the edge is not used in ranking the nodes. Default: true. See
+        ///     If false, the edge is not used in ranking the nodes (default: true). See
         ///     <see href="http://www.graphviz.org/doc/info/attrs.html#a:constraint">
         ///         documentation
         ///     </see>
-        ///     .
+        ///     for more details.
         /// </summary>
-        bool? Constraint { get; set; }
+        bool? Constrain { get; set; }
 
         /// <summary>
         ///     Comments are inserted into output. Device-dependent.

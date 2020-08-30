@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Tests
         public void double_list_attribute_returns_invariant_culture_encoded_value()
         {
             var values = new[] { 10.23455, 0.5, 1.345 };
-            IDotEncodable attr = new DotDoubleListAttribute("key", values);
+            IDotEncodable attr = new DotDoubleArrayAttribute("key", values);
 
             Thread.CurrentThread.CurrentCulture = new CultureInfo("PL");
             Assert.Equal("0,5", 0.5.ToString());
