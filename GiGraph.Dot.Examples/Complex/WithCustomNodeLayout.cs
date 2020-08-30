@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Examples.Complex
             var graph = new DotGraph(isDirected: false);
 
             // see also how this attribute affects the layout of the nodes
-            graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
+            graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
 
             graph.Edges.Add("e", "h");
             graph.Edges.Add("g", "k");

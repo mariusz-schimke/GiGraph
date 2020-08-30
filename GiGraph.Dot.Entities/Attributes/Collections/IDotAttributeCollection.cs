@@ -400,7 +400,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotRankDirectionAttribute Set(string key, DotRankDirection value);
+        DotLayoutDirectionAttribute Set(string key, DotLayoutDirection value);
 
         /// <summary>
         ///     Adds or replaces the specified edge ordering mode attribute in the collection.

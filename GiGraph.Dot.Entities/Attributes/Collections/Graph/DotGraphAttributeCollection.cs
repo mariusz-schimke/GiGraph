@@ -12,10 +12,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
     public class DotGraphAttributeCollection : DotEntityAttributeCollection<IDotGraphAttributes>, IDotGraphAttributeCollection
     {
         [DotAttributeKey("rankdir")]
-        public virtual DotRankDirection? LayoutDirection
+        public virtual DotLayoutDirection? LayoutDirection
         {
-            get => GetValueAs<DotRankDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotRankDirection?) null;
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankDirectionAttribute(k, v.Value));
+            get => GetValueAs<DotLayoutDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotLayoutDirection?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLayoutDirectionAttribute(k, v.Value));
         }
 
         [DotAttributeKey("splines")]

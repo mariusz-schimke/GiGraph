@@ -156,9 +156,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotRankAttribute(key, value));
         }
 
-        public virtual DotRankDirectionAttribute Set(string key, DotRankDirection value)
+        public virtual DotLayoutDirectionAttribute Set(string key, DotLayoutDirection value)
         {
-            return Set(new DotRankDirectionAttribute(key, value));
+            return Set(new DotLayoutDirectionAttribute(key, value));
         }
 
         public virtual DotClusterModeAttribute Set(string key, DotClusterMode value)

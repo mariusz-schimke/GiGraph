@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Tests
         [InlineData(typeof(DotNodeSizing))]
         [InlineData(typeof(DotPackingGranularity))]
         [InlineData(typeof(DotRank))]
-        [InlineData(typeof(DotRankDirection))]
+        [InlineData(typeof(DotLayoutDirection))]
         [InlineData(typeof(DotStyles))]
         [InlineData(typeof(DotVerticalAlignment))]
         [InlineData(typeof(DotArrayPackingOptions))]

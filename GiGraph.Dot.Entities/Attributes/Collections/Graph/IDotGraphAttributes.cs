@@ -57,8 +57,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     Gets or sets the color to use for clusters (default: <see cref="System.Drawing.Color.Black" />). If
         ///     <see cref="DotMultiColor" /> is used, with no weighted colors in its color collection (<see cref="DotColor" /> items only),
-        ///     and the <see cref="Style" /> is <see cref="DotStyles.Filled" />, a linear gradient fill is done using the first two colors. If
-        ///     weighted colors are present (see <see cref="DotWeightedColor" />), a degenerate linear gradient fill is done. This
+        ///     and the <see cref="Style" /> is <see cref="DotStyles.Filled" />, a linear gradient fill is done using the first two colors.
+        ///     If weighted colors are present (see <see cref="DotWeightedColor" />), a degenerate linear gradient fill is done. This
         ///     essentially does a fill using two colors, with the <see cref="DotWeightedColor.Weight" /> specifying how much of region is
         ///     filled with each color. If the <see cref="Style" /> attribute contains the value <see cref="DotStyles.Radial" />, then a
         ///     radial gradient fill is done. These fills work with any shape. For certain shapes, the <see cref="Style" /> attribute can be
@@ -72,8 +72,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     </para>
         ///     <para>
         ///         When <see cref="DotMultiColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
-        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. At present, only two colors are used. If
-        ///         the second color is <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
+        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. At present, only two colors are used.
+        ///         If the second color is <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
         ///         <see cref="GradientAngle" /> attribute for setting the gradient angle.
         ///     </para>
         ///     <para>
@@ -90,15 +90,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     <para>
         ///         Gets or sets the color used to fill the background of clusters, assuming that their
-        ///         <see cref="IDotClusterAttributes.Style" /> is <see cref="DotStyles.Filled" />. If <see cref="FillColor" /> is not defined,
-        ///         <see cref="Color" /> is used. If <see cref="Color" /> is not defined,
+        ///         <see cref="IDotClusterAttributes.Style" /> is <see cref="DotStyles.Filled" />. If <see cref="FillColor" /> is not
+        ///         defined, <see cref="Color" /> is used. If <see cref="Color" /> is not defined,
         ///         <see cref="IDotClusterAttributes.BackgroundColor" /> is used. If it is not defined too, the default is used, except when
         ///         the output format is MIF, which use black by default.
         ///     </para>
         ///     <para>
         ///         When <see cref="DotMultiColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
-        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. At present, only two colors are used. If
-        ///         the second color is missing, the default color is used for it. See also the <see cref="GradientAngle" /> attribute for
+        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. At present, only two colors are used.
+        ///         If the second color is missing, the default color is used for it. See also the <see cref="GradientAngle" /> attribute for
         ///         setting the gradient angle. Note that a cluster inherits the root graph's attributes if defined. Thus, if the root graph
         ///         has defined a fill color, this will override a <see cref="IDotClusterAttributes.Color" /> or
         ///         <see cref="IDotClusterAttributes.BackgroundColor" /> attribute set for the cluster.
@@ -147,9 +147,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         Color? PenColor { get; set; }
 
         /// <summary>
-        ///     Gets or sets the direction of graph layout (default: <see cref="DotRankDirection.TopToBottom" />).
+        ///     Gets or sets the direction of graph layout (default: <see cref="DotLayoutDirection.TopToBottom" />).
         /// </summary>
-        DotRankDirection? LayoutDirection { get; set; }
+        DotLayoutDirection? LayoutDirection { get; set; }
 
         /// <summary>
         ///     Controls how, and if, edges are represented. By default, the attribute is unset. How this is interpreted depends on the

@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Examples.Basic
             var graph = new DotGraph();
 
             // set left to right layout direction of the graph using graph attributes
-            graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
+            graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
             graph.Attributes.FontName = "Helvetica";
 
             // set the defaults for all nodes of the graph

@@ -132,7 +132,7 @@ namespace GiGraph.Dot.Examples
             var graph = new DotGraph(isDirected: true);
 
             // set left to right layout direction of the graph using graph attributes
-            graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
+            graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
             graph.Attributes.FontName = "Helvetica";
 
             // set the defaults for all nodes of the graph
@@ -321,7 +321,7 @@ namespace GiGraph.Dot.Examples
 
             // set graph attributes
             graph.Attributes.Label = "Example Flow";
-            graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
+            graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
             graph.Attributes.EdgesBetweenClusters = true;
             graph.Attributes.EdgeShape = DotEdgeShape.Orthogonal;
 
@@ -463,7 +463,7 @@ namespace GiGraph.Dot.Examples
             var graph = new DotGraph(isDirected: false);
 
             // see also how this attribute affects the layout of the nodes
-            graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
+            graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
 
             graph.Edges.Add("e", "h");
             graph.Edges.Add("g", "k");
@@ -637,7 +637,7 @@ var graph = new DotGraph(isStrict: true);
 Graph has its own attributes, which you may set by using its *Attributes* property.
 
 ```c#
-graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
+graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
 graph.Attributes.BackgroundColor = Color.LightGray;
 ```
 
