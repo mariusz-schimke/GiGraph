@@ -22,9 +22,9 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Nodes.Attributes.FillColor = new DotGradientColor(Color.Turquoise, Color.RoyalBlue);
 
             // set the defaults for all edges of the graph
-            graph.EdgeDefaults.ArrowHead = graph.EdgeDefaults.ArrowTail = DotArrowheadShape.Vee;
-            graph.EdgeDefaults.FontName = graph.Attributes.FontName;
-            graph.EdgeDefaults.FontSize = 10;
+            graph.Edges.Attributes.ArrowHead = graph.Edges.Attributes.ArrowTail = DotArrowheadShape.Vee;
+            graph.Edges.Attributes.FontName = graph.Attributes.FontName;
+            graph.Edges.Attributes.FontSize = 10;
 
 
             // -- (subgraphs are used here only to control the order the elements are visualized, and may be removed) --
@@ -117,7 +117,7 @@ namespace GiGraph.Dot.Examples.Basic
                 sg.Nodes.Attributes.FillColor = Color.Orange;
                 sg.Nodes.Attributes.Shape = DotNodeShape.Circle;
 
-                sg.EdgeDefaults.Color = Color.RoyalBlue;
+                sg.Edges.Attributes.Color = Color.RoyalBlue;
 
                 sg.Edges.Add("A", "B").Attributes.Label = "PLAIN COLOR";
             });

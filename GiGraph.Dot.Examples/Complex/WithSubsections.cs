@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Examples.Complex
             graph.Subsections.Add(subsection =>
             {
                 subsection.Annotation = "subsection 2 - set default edge style";
-                subsection.EdgeDefaults.Style = DotStyles.Dashed;
+                subsection.Edges.Attributes.Style = DotStyles.Dashed;
                 subsection.Edges.Add("quux", "fred");
             });
 

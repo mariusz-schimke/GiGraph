@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
-using GiGraph.Dot.Entities.Attributes.Collections.Edge;
-using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs;
@@ -33,9 +31,8 @@ namespace GiGraph.Dot.Entities.Clusters
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
-            IDotEdgeAttributeCollection edgeDefaults,
             DotGraphSectionCollection<IDotClusterAttributeCollection> subsections)
-            : base(id, attributes, nodes, edges, subgraphs, clusters, edgeDefaults, subsections)
+            : base(id, attributes, nodes, edges, subgraphs, clusters, subsections)
         {
         }
 
@@ -43,7 +40,7 @@ namespace GiGraph.Dot.Entities.Clusters
             string id,
             DotGraphSection<IDotClusterAttributeCollection> rootSection,
             DotGraphSectionCollection<IDotClusterAttributeCollection> subsections)
-            : base(id, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, rootSection.EdgeDefaults, subsections)
+            : base(id, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, subsections)
         {
         }
 

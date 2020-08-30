@@ -1,17 +1,9 @@
 ﻿using System.Drawing;
-using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
-using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Packing;
-using GiGraph.Dot.Entities.Types.Points;
-using GiGraph.Dot.Entities.Types.Ranks;
-using GiGraph.Dot.Entities.Types.Scaling;
-using GiGraph.Dot.Entities.Types.Strings;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
+namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
     public interface IDotGraphLevelClusterAttributes
     {
@@ -60,7 +52,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     for the cluster.
         /// </summary>
         Color? PenColor { get; set; }
-        
+
         /// <summary>
         ///     If true, allows edges between clusters (default: false). Use the <see cref="IDotEdgeAttributes.HeadClusterId" /> or
         ///     <see cref="IDotEdgeAttributes.TailClusterId" /> edge attributes to attach an edge head or tail to a cluster.
@@ -71,11 +63,5 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     Mode used for handling clusters (dot only; default: <see cref="DotClusterMode.Bounded" />).
         /// </summary>
         DotClusterMode? ClusterMode { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the sorting index of the graph (default: 0). If <see cref="PackingMode" /> indicates an array packing, this
-        ///     attribute specifies an insertion order among the components, with smaller values inserted first.
-        /// </summary>
-        int? SortIndex { get; set; }
     }
 }

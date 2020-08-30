@@ -16,15 +16,13 @@ namespace GiGraph.Dot.Entities.Graphs
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
-            DotClusterCollection clusters,
-            IDotEdgeAttributeCollection edgeDefaults)
+            DotClusterCollection clusters)
         {
             Attributes = attributes;
             Nodes = nodes;
             Edges = edges;
             Subgraphs = subgraphs;
             Clusters = clusters;
-            EdgeDefaults = edgeDefaults;
         }
 
         /// <summary>
@@ -48,12 +46,6 @@ namespace GiGraph.Dot.Entities.Graphs
         ///     </para>
         /// </summary>
         public virtual DotEdgeCollection Edges { get; }
-
-        /// <summary>
-        ///     The attributes to be used as default for all edges in this graph when not specified explicitly for individual edges in the
-        ///     <see cref="Edges" /> collection.
-        /// </summary>
-        public virtual IDotEdgeAttributeCollection EdgeDefaults { get; }
 
         /// <summary>
         ///     <para>
@@ -89,10 +81,9 @@ namespace GiGraph.Dot.Entities.Graphs
             return new DotGraphSection<TGraphAttributes>(
                 attributes,
                 new DotNodeCollection(new DotNodeAttributeCollection()),
-                new DotEdgeCollection(),
+                new DotEdgeCollection(new DotEdgeAttributeCollection()),
                 new DotSubgraphCollection(),
-                new DotClusterCollection(),
-                new DotEdgeAttributeCollection());
+                new DotClusterCollection());
         }
     }
 }

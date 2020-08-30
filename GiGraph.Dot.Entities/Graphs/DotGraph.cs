@@ -1,5 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections.Edge;
-using GiGraph.Dot.Entities.Attributes.Collections.Graph;
+﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs.Collections;
@@ -22,9 +21,8 @@ namespace GiGraph.Dot.Entities.Graphs
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
-            IDotEdgeAttributeCollection edgeDefaults,
             DotGraphSectionCollection<IDotGraphAttributeCollection> subsections)
-            : base(id, attributes, nodes, edges, subgraphs, clusters, edgeDefaults, subsections)
+            : base(id, attributes, nodes, edges, subgraphs, clusters, subsections)
         {
             IsDirected = isDirected;
             IsStrict = isStrict;
@@ -36,7 +34,7 @@ namespace GiGraph.Dot.Entities.Graphs
             bool isStrict,
             DotGraphSection<IDotGraphAttributeCollection> rootSection,
             DotGraphSectionCollection<IDotGraphAttributeCollection> subsections)
-            : this(id, isDirected, isStrict, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, rootSection.EdgeDefaults, subsections)
+            : this(id, isDirected, isStrict, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, subsections)
         {
         }
 
