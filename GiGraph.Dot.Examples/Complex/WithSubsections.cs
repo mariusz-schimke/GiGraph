@@ -13,9 +13,9 @@ namespace GiGraph.Dot.Examples.Complex
             // the root section
             graph.Annotation = "the example graph (the root section)";
 
-            graph.NodeDefaults.Annotation = "set default node color and style";
-            graph.NodeDefaults.Color = Color.Orange;
-            graph.NodeDefaults.Style = DotStyles.Filled;
+            graph.Nodes.Attributes.Annotation = "set default node color and style";
+            graph.Nodes.Attributes.Color = Color.Orange;
+            graph.Nodes.Attributes.Style = DotStyles.Filled;
 
             graph.Edges.Add("foo", "bar");
 
@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Examples.Complex
             graph.Subsections.Add(subsection =>
             {
                 subsection.Annotation = "subsection 1 - override node color";
-                subsection.NodeDefaults.Color = Color.Turquoise;
+                subsection.Nodes.Attributes.Color = Color.Turquoise;
                 subsection.Edges.Add("baz", "qux");
             });
 

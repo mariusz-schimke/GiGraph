@@ -1,6 +1,7 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
 
@@ -15,8 +16,9 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         /// <summary>
         ///     Indicates that the normal default style should be assigned to the current element. This setting can be used in order to
         ///     restore the style of the element to the normal default value when a custom default style has been set for this type of
-        ///     element on a graph or a subgraph level, using <see cref="DotGraphSection{TGraphAttributes}.EdgeDefaults" /> or
-        ///     <see cref="DotGraphSection{TAttributes}.NodeDefaults" />.
+        ///     element on a graph or a subgraph level, using the edge default attributes ( see
+        ///     <see cref="DotGraphSection{TGraphAttributes}.EdgeDefaults" />) or node default attributes ( see
+        ///     <see cref="DotNodeCollection.Attributes" />).
         /// </summary>
         [DotAttributeValue(null)]
         Default = 0,

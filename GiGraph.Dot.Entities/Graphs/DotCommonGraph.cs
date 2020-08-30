@@ -1,6 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
-using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs.Collections;
@@ -19,10 +18,9 @@ namespace GiGraph.Dot.Entities.Graphs
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
-            IDotNodeAttributeCollection nodeDefaults,
             IDotEdgeAttributeCollection edgeDefaults,
             DotGraphSectionCollection<TGraphAttributes> subsections)
-            : base(attributes, nodes, edges, subgraphs, clusters, nodeDefaults, edgeDefaults)
+            : base(attributes, nodes, edges, subgraphs, clusters, edgeDefaults)
         {
             Id = id;
             Subsections = subsections;
@@ -32,7 +30,7 @@ namespace GiGraph.Dot.Entities.Graphs
             string id,
             DotGraphSection<TGraphAttributes> rootSection,
             DotGraphSectionCollection<TGraphAttributes> subsections)
-            : this(id, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, rootSection.NodeDefaults, rootSection.EdgeDefaults, subsections)
+            : this(id, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, rootSection.EdgeDefaults, subsections)
         {
         }
 

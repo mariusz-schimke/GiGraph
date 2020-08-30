@@ -33,10 +33,9 @@ namespace GiGraph.Dot.Entities.Clusters
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
-            IDotNodeAttributeCollection nodeDefaults,
             IDotEdgeAttributeCollection edgeDefaults,
             DotGraphSectionCollection<IDotClusterAttributeCollection> subsections)
-            : base(id, attributes, nodes, edges, subgraphs, clusters, nodeDefaults, edgeDefaults, subsections)
+            : base(id, attributes, nodes, edges, subgraphs, clusters, edgeDefaults, subsections)
         {
         }
 
@@ -44,7 +43,7 @@ namespace GiGraph.Dot.Entities.Clusters
             string id,
             DotGraphSection<IDotClusterAttributeCollection> rootSection,
             DotGraphSectionCollection<IDotClusterAttributeCollection> subsections)
-            : base(id, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, rootSection.NodeDefaults, rootSection.EdgeDefaults, subsections)
+            : base(id, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, rootSection.EdgeDefaults, subsections)
         {
         }
 

@@ -16,10 +16,10 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Attributes.FontName = "Helvetica";
 
             // set the defaults for all nodes of the graph
-            graph.NodeDefaults.Shape = DotNodeShape.Rectangle;
-            graph.NodeDefaults.Style = DotStyles.Filled;
-            graph.NodeDefaults.FontName = graph.Attributes.FontName;
-            graph.NodeDefaults.FillColor = new DotGradientColor(Color.Turquoise, Color.RoyalBlue);
+            graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
+            graph.Nodes.Attributes.Style = DotStyles.Filled;
+            graph.Nodes.Attributes.FontName = graph.Attributes.FontName;
+            graph.Nodes.Attributes.FillColor = new DotGradientColor(Color.Turquoise, Color.RoyalBlue);
 
             // set the defaults for all edges of the graph
             graph.EdgeDefaults.ArrowHead = graph.EdgeDefaults.ArrowTail = DotArrowheadShape.Vee;
@@ -113,9 +113,9 @@ namespace GiGraph.Dot.Examples.Basic
             // a subgraph example – to override the default attributes for a group of nodes and/or edges
             graph.Subgraphs.Add(sg =>
             {
-                sg.NodeDefaults.Color = Color.RoyalBlue;
-                sg.NodeDefaults.FillColor = Color.Orange;
-                sg.NodeDefaults.Shape = DotNodeShape.Circle;
+                sg.Nodes.Attributes.Color = Color.RoyalBlue;
+                sg.Nodes.Attributes.FillColor = Color.Orange;
+                sg.Nodes.Attributes.Shape = DotNodeShape.Circle;
 
                 sg.EdgeDefaults.Color = Color.RoyalBlue;
 
