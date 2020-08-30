@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Examples.Basic
 
             // set the defaults for all nodes of the graph
             graph.NodeDefaults.Shape = DotNodeShape.Rectangle;
-            graph.NodeDefaults.Style = DotStyle.Filled;
+            graph.NodeDefaults.Style = DotStyles.Filled;
             graph.NodeDefaults.FontName = graph.Attributes.FontName;
             graph.NodeDefaults.FillColor = new DotGradientColor(Color.Turquoise, Color.RoyalBlue);
 
@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Examples.Basic
                 sg.Edges.Add("G", "H", edge =>
                 {
                     edge.Attributes.Label = "DOTTED";
-                    edge.Attributes.Style = DotStyle.Dotted;
+                    edge.Attributes.Style = DotStyles.Dotted;
                 });
             });
 
@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Examples.Basic
                 sg.Edges.Add("E", "F", edge =>
                 {
                     edge.Attributes.Label = "PARALLEL SPLINES";
-                    edge.Attributes.ArrowDirection = DotArrowDirection.Both;
+                    edge.Attributes.ArrowDirections = DotArrowDirections.Both;
 
                     // this will render two parallel splines (but more of them can be added by adding further colors)
                     edge.Attributes.Color = new DotMultiColor(Color.Turquoise, Color.RoyalBlue);
@@ -61,7 +61,7 @@ namespace GiGraph.Dot.Examples.Basic
                 sg.Edges.Add("C", "D", edge =>
                 {
                     edge.Attributes.Label = "MULTICOLOR SERIES";
-                    edge.Attributes.ArrowDirection = DotArrowDirection.Both;
+                    edge.Attributes.ArrowDirections = DotArrowDirections.Both;
 
                     // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
                     edge.Attributes.Color = new DotMultiColor(
@@ -77,7 +77,7 @@ namespace GiGraph.Dot.Examples.Basic
                 sg.Nodes.Add("STRIPED", attrs =>
                 {
                     // set style to striped
-                    attrs.Style = DotStyle.Filled | DotStyle.Striped;
+                    attrs.Style = DotStyles.Filled | DotStyles.Striped;
 
                     attrs.Color = Color.Transparent;
 
@@ -95,7 +95,7 @@ namespace GiGraph.Dot.Examples.Basic
                     attrs.Shape = DotNodeShape.Circle;
 
                     // set wedged style
-                    attrs.Style = DotStyle.Filled | DotStyle.Wedged;
+                    attrs.Style = DotStyles.Filled | DotStyles.Wedged;
 
                     attrs.Color = Color.Transparent;
 

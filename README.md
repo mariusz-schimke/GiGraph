@@ -165,7 +165,7 @@ namespace GiGraph.Dot.Examples
                 sg.Edges.Add("E", "F", edge =>
                 {
                     edge.Attributes.Label = "PARALLEL SPLINES";
-                    edge.Attributes.ArrowDirection = DotArrowDirection.Both;
+                    edge.Attributes.ArrowDirections = DotArrowDirections.Both;
 
                     // this will render two parallel splines (but more of them may be added by adding further colors)
                     edge.Attributes.Color = new DotMultiColor(Color.Turquoise, Color.RoyalBlue);
@@ -181,7 +181,7 @@ namespace GiGraph.Dot.Examples
                 sg.Edges.Add("C", "D", edge =>
                 {
                     edge.Attributes.Label = "MULTICOLOR SERIES";
-                    edge.Attributes.ArrowDirection = DotArrowDirection.Both;
+                    edge.Attributes.ArrowDirections = DotArrowDirections.Both;
 
                     // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
                     edge.Attributes.Color = new DotMultiColor(
@@ -1445,7 +1445,7 @@ The example code below presents a few possible combinations of arrowheads:
 // an edge with arrowheads on both sides
 graph.Edges.Add("Foo", "Bar", edge =>
 {
-    edge.Attributes.ArrowDirection = DotArrowDirection.Both;
+    edge.Attributes.ArrowDirections = DotArrowDirections.Both;
 
     edge.Attributes.ArrowTail = DotArrowheadShape.Diamond;
     edge.Attributes.ArrowHead = DotArrowheadShape.Crow;

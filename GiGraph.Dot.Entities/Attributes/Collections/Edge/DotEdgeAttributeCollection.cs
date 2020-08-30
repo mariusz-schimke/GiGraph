@@ -239,10 +239,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         [DotAttributeKey("dir")]
-        public virtual DotArrowDirection? ArrowDirection
+        public virtual DotArrowDirections? ArrowDirections
         {
-            get => GetValueAs<DotArrowDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotArrowDirection?) null;
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowDirectionAttribute(k, v.Value));
+            get => GetValueAs<DotArrowDirections>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotArrowDirections?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowDirectionsAttribute(k, v.Value));
         }
 
         [DotAttributeKey("headport")]

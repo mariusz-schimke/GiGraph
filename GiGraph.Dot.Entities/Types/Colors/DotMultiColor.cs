@@ -27,9 +27,9 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     <para>
         ///         When more than two colors are specified, they will be rendered as parallel splines if used for edges (when no weights are
         ///         present), or as multicolor segments (when at least one weighted color is present). When used for rectangularly-shaped
-        ///         nodes or clusters with the <see cref="DotStyle.Striped" /> style, the returned color list will be rendered as a striped
+        ///         nodes or clusters with the <see cref="DotStyles.Striped" /> style, the returned color list will be rendered as a striped
         ///         multicolor fill, or as a wedged multicolor fill, when used for elliptically-shaped nodes with the
-        ///         <see cref="DotStyle.Wedged" /> style.
+        ///         <see cref="DotStyles.Wedged" /> style.
         ///     </para>
         /// </summary>
         /// <param name="colors">
@@ -69,9 +69,9 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     <para>
         ///         When more than two colors are specified, they will be rendered as parallel splines if used for edges (when no weights are
         ///         present), or as multicolor segments (when at least one weighted color is present). When used for rectangularly-shaped
-        ///         nodes or clusters with the <see cref="DotStyle.Striped" /> style, the returned color list will be rendered as a striped
+        ///         nodes or clusters with the <see cref="DotStyles.Striped" /> style, the returned color list will be rendered as a striped
         ///         multicolor fill, or as a wedged multicolor fill, when used for elliptically-shaped nodes with the
-        ///         <see cref="DotStyle.Wedged" /> style.
+        ///         <see cref="DotStyles.Wedged" /> style.
         ///     </para>
         /// </summary>
         /// <param name="colors">
@@ -96,9 +96,9 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     </para>
         ///     <para>
         ///         When more than two colors are specified, they will be rendered as parallel splines, if used for edges; when used for
-        ///         rectangularly-shaped nodes or clusters with the <see cref="DotStyle.Striped" /> style, the returned color list will be
+        ///         rectangularly-shaped nodes or clusters with the <see cref="DotStyles.Striped" /> style, the returned color list will be
         ///         rendered as a striped multicolor fill, or as a wedged multicolor fill, when used for elliptically-shaped nodes with the
-        ///         <see cref="DotStyle.Wedged" /> style.
+        ///         <see cref="DotStyles.Wedged" /> style.
         ///     </para>
         /// </summary>
         /// <param name="colors">
@@ -120,9 +120,9 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     </para>
         ///     <para>
         ///         When more than two colors are specified, they will be rendered as parallel splines, if used for edges; when used for
-        ///         rectangularly-shaped nodes or clusters with the <see cref="DotStyle.Striped" /> style, the returned color list will be
+        ///         rectangularly-shaped nodes or clusters with the <see cref="DotStyles.Striped" /> style, the returned color list will be
         ///         rendered as a striped multicolor fill, or as a wedged multicolor fill, when used for elliptically-shaped nodes with the
-        ///         <see cref="DotStyle.Wedged" /> style.
+        ///         <see cref="DotStyles.Wedged" /> style.
         ///     </para>
         /// </summary>
         /// <param name="colors">

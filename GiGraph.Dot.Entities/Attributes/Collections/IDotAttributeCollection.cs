@@ -334,7 +334,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotStyleAttribute Set(string key, DotStyle value);
+        DotStyleAttribute Set(string key, DotStyles value);
 
         /// <summary>
         ///     Adds or replaces the specified arrow type attribute in the collection.
@@ -378,7 +378,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotArrowDirectionAttribute Set(string key, DotArrowDirection value);
+        DotArrowDirectionsAttribute Set(string key, DotArrowDirections value);
 
         /// <summary>
         ///     Adds or replaces the specified rank constraint attribute in the collection.

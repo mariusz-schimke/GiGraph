@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
     ///     towards the point where the arrow "touches" the node.
     /// </summary>
     [Flags]
-    public enum DotArrowheadPart
+    public enum DotArrowheadParts
     {
         /// <summary>
         ///     The left part of the arrowhead.
