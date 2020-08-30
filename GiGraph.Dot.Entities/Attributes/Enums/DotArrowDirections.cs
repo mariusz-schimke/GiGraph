@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
     ///     .
     /// </summary>
     [Flags]
-    public enum DotArrowDirection
+    public enum DotArrowDirections
     {
         /// <summary>
         ///     Draws an edge with no arrows.

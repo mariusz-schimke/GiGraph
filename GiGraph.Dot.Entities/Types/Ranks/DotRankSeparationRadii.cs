@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Types.Ranks
     /// <summary>
     ///     Radial separation of concentric circles in twopi.
     /// </summary>
-    public class DotRankSeparationList : DotRankSeparationDefinition
+    public class DotRadialRankSeparation : DotRankSeparationDefinition
     {
         /// <summary>
         ///     Creates a new rank separation instance.
@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Types.Ranks
         ///     circle to the second; etc. If there are more circles than numbers, the last number is used as the increment for the
         ///     remainder.
         /// </param>
-        public DotRankSeparationList(params double[] values)
+        public DotRadialRankSeparation(params double[] values)
         {
             Values = values ?? throw new ArgumentNullException(nameof(values), "Value collection cannot be null.");
         }
@@ -32,14 +32,15 @@ namespace GiGraph.Dot.Entities.Types.Ranks
         ///     circle to the second; etc. If there are more circles than numbers, the last number is used as the increment for the
         ///     remainder.
         /// </param>
-        public DotRankSeparationList(IEnumerable<double> value)
+        public DotRadialRankSeparation(IEnumerable<double> value)
             : this(value?.ToArray())
         {
         }
 
         /// <summary>
-        ///     Gets or sets the minimum vertical distance in inches between the bottom of the nodes in one rank and the tops of nodes in the
-        ///     next.
+        ///     The first double specifies the radius of the inner circle; the second double specifies the increase in radius from the first
+        ///     circle to the second; etc. If there are more circles than numbers, the last number is used as the increment for the
+        ///     remainder.
         /// </summary>
         public double[] Values { get; }
 

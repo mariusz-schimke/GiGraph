@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
         {
             var graph = new DotGraph("graph1", directed);
 
-            graph.Attributes.Compound = true;
+            graph.Attributes.EdgesBetweenClusters = true;
             graph.Attributes.FillColor = Color.Brown;
             graph.Attributes.Comment = "graph_comment";
 
@@ -33,13 +33,13 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Nodes.Add("node3", attrs =>
             {
                 attrs.Shape = DotNodeShape.Assembly;
-                attrs.Style = DotStyle.Bold;
+                attrs.Style = DotStyles.Bold;
             });
 
             graph.Nodes.Add(attrs =>
             {
                 attrs.Shape = DotNodeShape.Box;
-                attrs.Style = DotStyle.Bold | DotStyle.Dashed;
+                attrs.Style = DotStyles.Bold | DotStyles.Dashed;
             }, "node1", "node2");
 
 
@@ -49,19 +49,19 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 edge.Tail.Port.CompassPoint = DotCompassPoint.East;
 
                 edge.Attributes.Color = Color.Gold;
-                edge.Attributes.Style = DotStyle.Dotted;
+                edge.Attributes.Style = DotStyles.Dotted;
             });
 
             graph.Edges.AddSequence(edge =>
             {
-                edge.Attributes.Constraint = true;
-                edge.Attributes.Style = DotStyle.Solid;
+                edge.Attributes.Constrain = true;
+                edge.Attributes.Style = DotStyles.Solid;
             }, "node4", DotSubgraph.FromNodes("snode1", "snode2"), "node5");
 
             graph.Edges.AddSequence(edge =>
             {
                 edge.Attributes.Color = Color.Beige;
-                edge.Attributes.Style = DotStyle.Invisible;
+                edge.Attributes.Style = DotStyles.Invisible;
             }, "node1", "node2", "node3");
 
             graph.Subgraphs.Add().Id = "Subgraph2";
@@ -79,7 +79,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             graph.Annotation = "graph comment";
 
-            graph.Attributes.Compound = true;
+            graph.Attributes.EdgesBetweenClusters = true;
             graph.NodeDefaults.Label = "node label";
             graph.EdgeDefaults.Label = "edge label";
 

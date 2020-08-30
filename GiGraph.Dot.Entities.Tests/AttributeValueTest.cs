@@ -18,9 +18,9 @@ namespace GiGraph.Dot.Entities.Tests
 
         [Theory]
         [InlineData(typeof(DotAlignment))]
-        [InlineData(typeof(DotArrowDirection))]
+        [InlineData(typeof(DotArrowDirections))]
         [InlineData(typeof(DotArrowheadShape))]
-        [InlineData(typeof(DotAspectRatio))]
+        [InlineData(typeof(DotGraphScaling))]
         [InlineData(typeof(DotClusterMode))]
         [InlineData(typeof(DotEdgeOrderingMode))]
         [InlineData(typeof(DotEdgeShape))]
@@ -29,12 +29,12 @@ namespace GiGraph.Dot.Entities.Tests
         [InlineData(typeof(DotNodeSizing))]
         [InlineData(typeof(DotPackingGranularity))]
         [InlineData(typeof(DotRank))]
-        [InlineData(typeof(DotRankDirection))]
-        [InlineData(typeof(DotStyle))]
+        [InlineData(typeof(DotLayoutDirection))]
+        [InlineData(typeof(DotStyles))]
         [InlineData(typeof(DotVerticalAlignment))]
-        [InlineData(typeof(DotArrayPackingOption))]
+        [InlineData(typeof(DotArrayPackingOptions))]
         [InlineData(typeof(DotCompassPoint))]
-        [InlineData(typeof(DotArrowheadPart))]
+        [InlineData(typeof(DotArrowheadParts))]
         public void all_enum_properties_have_a_non_empty_attribute_value_assigned(Type enumType)
         {
             foreach (var value in Enum.GetValues(enumType))

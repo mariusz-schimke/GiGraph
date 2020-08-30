@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
         /// <param name="options">
         ///     The options to initialize the instance with.
         /// </param>
-        public DotArrayPackingMode(DotArrayPackingOption? options)
+        public DotArrayPackingMode(DotArrayPackingOptions? options)
         {
             Options = options;
         }
@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
         /// <param name="rankCount">
         ///     Specifies the number of columns for row-major component ordering or the number of rows for column-major component ordering.
         /// </param>
-        public DotArrayPackingMode(DotArrayPackingOption? options, int? rankCount)
+        public DotArrayPackingMode(DotArrayPackingOptions? options, int? rankCount)
             : this(rankCount)
         {
             Options = options;
@@ -53,11 +53,11 @@ namespace GiGraph.Dot.Entities.Types.Packing
         /// <summary>
         ///     Gets or sets the granularity option.
         /// </summary>
-        public virtual DotArrayPackingOption? Options { get; set; }
+        public virtual DotArrayPackingOptions? Options { get; set; }
 
         /// <summary>
         ///     Gets or sets the number of columns for row-major component ordering or the number of rows for column-major component ordering
-        ///     (see <see cref="DotArrayPackingOption.ColumnMajorOrder" />).
+        ///     (see <see cref="DotArrayPackingOptions.ColumnMajorOrder" />).
         /// </summary>
         public virtual int? RankCount
         {
@@ -73,8 +73,8 @@ namespace GiGraph.Dot.Entities.Types.Packing
 
             if (Options.HasValue)
             {
-                var flags = Enum.GetValues(typeof(DotArrayPackingOption))
-                   .Cast<DotArrayPackingOption>()
+                var flags = Enum.GetValues(typeof(DotArrayPackingOptions))
+                   .Cast<DotArrayPackingOptions>()
                    .Where(flag => Options.Value.HasFlag(flag))
                    .Select(flag => GetDotEncodedOption(flag, options, syntaxRules));
 
@@ -90,7 +90,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
             return result.ToString();
         }
 
-        protected virtual string GetDotEncodedOption(DotArrayPackingOption option, DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected virtual string GetDotEncodedOption(DotArrayPackingOptions option, DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
             return DotAttributeValueAttribute.TryGetValue(option, out var result)
                 ? result

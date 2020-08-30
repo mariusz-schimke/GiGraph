@@ -6,7 +6,7 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     The fixed size attribute of a node.
+    ///     The fixedsize attribute of node.
     /// </summary>
     public class DotNodeSizingAttribute : DotAttribute<DotNodeSizing>
     {

@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Types.Attributes;
 namespace GiGraph.Dot.Entities.Attributes.Enums
 {
     /// <summary>
-    ///     The values valid for the <see cref="IDotNodeAttributes.Sizing" /> node attribute.
+    ///     The node sizing mode values for the <see cref="IDotNodeAttributes.Sizing" /> node attribute.
     /// </summary>
     public enum DotNodeSizing
     {

@@ -59,26 +59,26 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <summary>
         ///     Gets or sets the color of the node (default: <see cref="System.Drawing.Color.Black" />). If <see cref="DotMultiColor" /> is
         ///     used, with no weighted colors in its color collection (<see cref="DotColor" /> items only), and the <see cref="Style" /> is
-        ///     <see cref="DotStyle.Filled" />, a linear gradient fill is done using the first two colors. If weighted colors are present
+        ///     <see cref="DotStyles.Filled" />, a linear gradient fill is done using the first two colors. If weighted colors are present
         ///     (see <see cref="DotWeightedColor" />), a degenerate linear gradient fill is done. This essentially does a fill using two
         ///     colors, with the <see cref="DotWeightedColor.Weight" /> specifying how much of region is filled with each color. If the
-        ///     <see cref="Style" /> attribute contains the value <see cref="DotStyle.Radial" />, then a radial gradient fill is done. These
+        ///     <see cref="Style" /> attribute contains the value <see cref="DotStyles.Radial" />, then a radial gradient fill is done. These
         ///     fills work with any shape. For certain shapes, the <see cref="Style" /> attribute can be set to do fills using more than 2
-        ///     colors (see <see cref="DotStyle.Striped" /> and <see cref="DotStyle.Wedged" />).
+        ///     colors (see <see cref="DotStyles.Striped" /> and <see cref="DotStyles.Wedged" />).
         /// </summary>
         DotColorDefinition Color { get; set; }
 
         /// <summary>
         ///     <para>
         ///         Gets or sets the color used to fill the background of the node, assuming that <see cref="Style" /> is
-        ///         <see cref="DotStyle.Filled" />. If <see cref="FillColor" /> is not defined, <see cref="Color" /> is used. If it is not
+        ///         <see cref="DotStyles.Filled" />. If <see cref="FillColor" /> is not defined, <see cref="Color" /> is used. If it is not
         ///         defined too, the default is used, except for <see cref="Shape" /> of <see cref="DotNodeShape.Point" />, or when the
         ///         output format is MIF, which use black by default.
         ///     </para>
         ///     <para>
         ///         If <see cref="DotMultiColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
-        ///         <see cref="Style" /> to <see cref="DotStyle.Radial" /> will cause a radial fill. At present, only two colors are used. If
-        ///         the second color is missing, the default color is used for it. See also the <see cref="GradientAngle" /> attribute for
+        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. At present, only two colors are used.
+        ///         If the second color is missing, the default color is used for it. See also the <see cref="GradientAngle" /> attribute for
         ///         setting the gradient angle.
         ///     </para>
         /// </summary>
@@ -147,17 +147,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 
         /// <summary>
         ///     <para>
-        ///         Sets the style of the node (default: null). See the descriptions of individual <see cref="DotStyle" /> values to learn
+        ///         Sets the style of the node (default: null). See the descriptions of individual <see cref="DotStyles" /> values to learn
         ///         which styles are applicable to this element type.
         ///     </para>
         ///     <para>
         ///         Multiple styles can be used at once, for example:
         ///         <c>
-        ///             <see cref="Style" /> = <see cref="DotStyle.Solid" /> | <see cref="DotStyle.Bold" />;
+        ///             <see cref="Style" /> = <see cref="DotStyles.Solid" /> | <see cref="DotStyles.Bold" />;
         ///         </c>
         ///     </para>
         /// </summary>
-        DotStyle? Style { get; set; }
+        DotStyles? Style { get; set; }
 
         /// <summary>
         ///     <para>

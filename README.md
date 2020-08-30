@@ -132,7 +132,7 @@ namespace GiGraph.Dot.Examples
             var graph = new DotGraph(isDirected: true);
 
             // set left to right layout direction of the graph using graph attributes
-            graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
+            graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
             graph.Attributes.FontName = "Helvetica";
 
             // set the defaults for all nodes of the graph
@@ -165,7 +165,7 @@ namespace GiGraph.Dot.Examples
                 sg.Edges.Add("E", "F", edge =>
                 {
                     edge.Attributes.Label = "PARALLEL SPLINES";
-                    edge.Attributes.ArrowDirection = DotArrowDirection.Both;
+                    edge.Attributes.ArrowDirections = DotArrowDirections.Both;
 
                     // this will render two parallel splines (but more of them may be added by adding further colors)
                     edge.Attributes.Color = new DotMultiColor(Color.Turquoise, Color.RoyalBlue);
@@ -181,7 +181,7 @@ namespace GiGraph.Dot.Examples
                 sg.Edges.Add("C", "D", edge =>
                 {
                     edge.Attributes.Label = "MULTICOLOR SERIES";
-                    edge.Attributes.ArrowDirection = DotArrowDirection.Both;
+                    edge.Attributes.ArrowDirections = DotArrowDirections.Both;
 
                     // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
                     edge.Attributes.Color = new DotMultiColor(
@@ -321,8 +321,8 @@ namespace GiGraph.Dot.Examples
 
             // set graph attributes
             graph.Attributes.Label = "Example Flow";
-            graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
-            graph.Attributes.Compound = true;
+            graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
+            graph.Attributes.EdgesBetweenClusters = true;
             graph.Attributes.EdgeShape = DotEdgeShape.Orthogonal;
 
             // set individual node styles
@@ -342,7 +342,7 @@ namespace GiGraph.Dot.Examples
                 edge.Attributes.Label = "yes";
 
                 // attach the arrow to cluster border
-                edge.Attributes.LogicalHeadId = "Flow 1";
+                edge.Attributes.HeadClusterId = "Flow 1";
             });
 
             graph.Edges.Add("Decision", "Cluster 2 Start", edge =>
@@ -350,11 +350,11 @@ namespace GiGraph.Dot.Examples
                 edge.Attributes.Label = "no";
 
                 // attach the arrow to cluster border
-                edge.Attributes.LogicalHeadId = "Flow 2";
+                edge.Attributes.HeadClusterId = "Flow 2";
             });
 
-            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.LogicalTailId = "Flow 1";
-            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.LogicalTailId = "Flow 2";
+            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.TailClusterId = "Flow 1";
+            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.TailClusterId = "Flow 2";
 
 
             // --- add clusters ---
@@ -463,7 +463,7 @@ namespace GiGraph.Dot.Examples
             var graph = new DotGraph(isDirected: false);
 
             // see also how this attribute affects the layout of the nodes
-            graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
+            graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
 
             graph.Edges.Add("e", "h");
             graph.Edges.Add("g", "k");
@@ -637,7 +637,7 @@ var graph = new DotGraph(isStrict: true);
 Graph has its own attributes, which you may set by using its *Attributes* property.
 
 ```c#
-graph.Attributes.LayoutDirection = DotRankDirection.LeftToRight;
+graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
 graph.Attributes.BackgroundColor = Color.LightGray;
 ```
 
@@ -1445,7 +1445,7 @@ The example code below presents a few possible combinations of arrowheads:
 // an edge with arrowheads on both sides
 graph.Edges.Add("Foo", "Bar", edge =>
 {
-    edge.Attributes.ArrowDirection = DotArrowDirection.Both;
+    edge.Attributes.ArrowDirections = DotArrowDirections.Both;
 
     edge.Attributes.ArrowTail = DotArrowheadShape.Diamond;
     edge.Attributes.ArrowHead = DotArrowheadShape.Crow;
@@ -1453,15 +1453,15 @@ graph.Edges.Add("Foo", "Bar", edge =>
 
 // some basic arrowhead combinations 
 graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Empty();
-graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Empty(DotArrowheadPart.Right);
-graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Filled(DotArrowheadPart.Left);
+graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Empty(DotArrowheadParts.Right);
+graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Filled(DotArrowheadParts.Left);
 
 // a composition of multiple arrowheads
 graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = new DotCompositeArrowhead
 (
     DotArrowheadShape.Tee,
     DotArrowheadShape.None, // may be used as a separator
-    DotArrowhead.Empty(DotArrowheadShape.Diamond, DotArrowheadPart.Left)
+    DotArrowhead.Empty(DotArrowheadShape.Diamond, DotArrowheadParts.Left)
 );
 ```
 

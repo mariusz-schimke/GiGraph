@@ -4,9 +4,9 @@ using GiGraph.Dot.Entities.Types.Attributes;
 namespace GiGraph.Dot.Entities.Attributes.Enums
 {
     /// <summary>
-    ///     The graph aspect ratio (drawing height/drawing width) for the drawing.
+    ///     Graph scaling options for the drawing.
     /// </summary>
-    public enum DotAspectRatio
+    public enum DotGraphScaling
     {
         /// <summary>
         ///     If the graph page attribute is set and the graph cannot be drawn on a single page, then

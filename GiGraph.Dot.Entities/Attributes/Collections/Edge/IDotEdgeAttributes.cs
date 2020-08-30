@@ -146,17 +146,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     <para>
-        ///         Sets the style of the edge (default: null). See the descriptions of individual <see cref="DotStyle" /> values to learn
+        ///         Sets the style of the edge (default: null). See the descriptions of individual <see cref="DotStyles" /> values to learn
         ///         which styles are applicable to this element type.
         ///     </para>
         ///     <para>
         ///         Multiple styles can be used at once, for example:
         ///         <c>
-        ///             <see cref="Style" /> = <see cref="DotStyle.Solid" /> | <see cref="DotStyle.Bold" />;
+        ///             <see cref="Style" /> = <see cref="DotStyles.Solid" /> | <see cref="DotStyles.Bold" />;
         ///         </c>
         ///     </para>
         /// </summary>
-        DotStyle? Style { get; set; }
+        DotStyles? Style { get; set; }
 
         /// <summary>
         ///     Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black" />).
@@ -211,8 +211,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     <para>
         ///         Gets or sets the style of arrowhead on the head node of an edge (default: <see cref="DotArrowheadShape.Normal" />).
-        ///         Appears only if the <see cref="ArrowDirection" /> attribute is <see cref="DotArrowDirection.Forward" /> or
-        ///         <see cref="DotArrowDirection.Both" />.
+        ///         Appears only if the <see cref="ArrowDirections" /> attribute is <see cref="DotArrowDirections.Forward" /> or
+        ///         <see cref="DotArrowDirections.Both" />.
         ///     </para>
         ///     <para>
         ///         For basic shapes assign a value of the <see cref="DotArrowheadShape" /> enumerable to this property (it will be converted
@@ -225,8 +225,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     <para>
         ///         Gets or sets the style of arrowhead on the tail node of an edge (default: <see cref="DotArrowheadShape.Normal" />).
-        ///         Appears only if the <see cref="ArrowDirection" /> attribute is <see cref="DotArrowDirection.Backward" /> or
-        ///         <see cref="DotArrowDirection.Both" />.
+        ///         Appears only if the <see cref="ArrowDirections" /> attribute is <see cref="DotArrowDirections.Backward" /> or
+        ///         <see cref="DotArrowDirections.Both" />.
         ///     </para>
         ///     <para>
         ///         For basic shapes assign a value of the <see cref="DotArrowheadShape" /> enumerable to this property (it will be converted
@@ -238,8 +238,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     <para>
-        ///         Gets or sets edge type for drawing arrowheads. Default: <see cref="DotArrowDirection.Forward" /> (for directed graphs),
-        ///         <see cref="DotArrowDirection.None" /> (for undirected graphs).
+        ///         Gets or sets edge type for drawing arrowheads. Default: <see cref="DotArrowDirections.Forward" /> (for directed graphs),
+        ///         <see cref="DotArrowDirections.None" /> (for undirected graphs).
         ///     </para>
         ///     <para>
         ///         Indicates which ends of the edge should be decorated with an arrow head. The actual style of the arrowhead can be
@@ -247,18 +247,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     </para>
         ///     <para>
         ///         A glyph is drawn at the head end of an edge if and only if the arrow direction is
-        ///         <see cref="DotArrowDirection.Forward" /> or <see cref="DotArrowDirection.Both" />.
+        ///         <see cref="DotArrowDirections.Forward" /> or <see cref="DotArrowDirections.Both" />.
         ///     </para>
         ///     <para>
-        ///         A glyph is drawn at the tail end of an edge if and only if the direction is <see cref="DotArrowDirection.Backward" /> or
-        ///         <see cref="DotArrowDirection.Both" />.
+        ///         A glyph is drawn at the tail end of an edge if and only if the direction is <see cref="DotArrowDirections.Backward" /> or
+        ///         <see cref="DotArrowDirections.Both" />.
         ///     </para>
         ///     <para>
         ///         For undirected edges T -- H, one of the nodes, usually the right hand one, is treated as the head for the purpose of
-        ///         interpreting <see cref="DotArrowDirection.Forward" /> and <see cref="DotArrowDirection.Backward" />.
+        ///         interpreting <see cref="DotArrowDirections.Forward" /> and <see cref="DotArrowDirections.Backward" />.
         ///     </para>
         /// </summary>
-        DotArrowDirection? ArrowDirection { get; set; }
+        DotArrowDirections? ArrowDirections { get; set; }
 
         /// <summary>
         ///     Indicates where on the head node to attach the head of the edge. In the default case, the edge is aimed towards the center of
@@ -274,18 +274,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotEndpointPort TailPort { get; set; }
 
         /// <summary>
-        ///     Logical head of an edge. When the <see cref="IDotGraphAttributes.Compound" /> property of the graph is true, if the current
-        ///     property is defined and is the identifier of a cluster containing the real head node, the edge is clipped to the boundary of
-        ///     the cluster.
+        ///     Logical head of an edge. When the <see cref="IDotGraphAttributes.EdgesBetweenClusters" /> property of the graph is true, if
+        ///     the current property is defined and is the identifier of a cluster containing the real head node, the edge is clipped to the
+        ///     boundary of the cluster.
         /// </summary>
-        string LogicalHeadId { get; set; }
+        string HeadClusterId { get; set; }
 
         /// <summary>
-        ///     Logical tail of an edge. When the <see cref="IDotGraphAttributes.Compound" /> property of the graph is true, if the current
-        ///     property is defined and is the identifier of a cluster containing the real tail node, the edge is clipped to the boundary of
-        ///     the cluster.
+        ///     Logical tail of an edge. When the <see cref="IDotGraphAttributes.EdgesBetweenClusters" /> property of the graph is true, if
+        ///     the current property is defined and is the identifier of a cluster containing the real tail node, the edge is clipped to the
+        ///     boundary of the cluster.
         /// </summary>
-        string LogicalTailId { get; set; }
+        string TailClusterId { get; set; }
 
         /// <summary>
         ///     If true, attaches edge label to edge by a 2-segment polyline, underlining the label, then going to the closest point of
@@ -306,13 +306,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         bool? ClipTail { get; set; }
 
         /// <summary>
-        ///     If false, the edge is not used in ranking the nodes. Default: true. See
+        ///     If false, the edge is not used in ranking the nodes (default: true). See
         ///     <see href="http://www.graphviz.org/doc/info/attrs.html#a:constraint">
         ///         documentation
         ///     </see>
-        ///     .
+        ///     for more details.
         /// </summary>
-        bool? Constraint { get; set; }
+        bool? Constrain { get; set; }
 
         /// <summary>
         ///     Comments are inserted into output. Device-dependent.

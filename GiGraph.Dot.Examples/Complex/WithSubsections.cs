@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Examples.Complex
 
             graph.NodeDefaults.Annotation = "set default node color and style";
             graph.NodeDefaults.Color = Color.Orange;
-            graph.NodeDefaults.Style = DotStyle.Filled;
+            graph.NodeDefaults.Style = DotStyles.Filled;
 
             graph.Edges.Add("foo", "bar");
 
@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Examples.Complex
             graph.Subsections.Add(subsection =>
             {
                 subsection.Annotation = "subsection 2 - set default edge style";
-                subsection.EdgeDefaults.Style = DotStyle.Dashed;
+                subsection.EdgeDefaults.Style = DotStyles.Dashed;
                 subsection.Edges.Add("quux", "fred");
             });
 

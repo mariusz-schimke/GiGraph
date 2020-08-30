@@ -3,7 +3,7 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Types.Ranks
 {
     /// <summary>
-    ///     Rank separation (see <see cref="DotRankSeparation" /> and <see cref="DotRankSeparationList" />).
+    ///     Rank separation (see <see cref="DotRankSeparation" /> and <see cref="DotRadialRankSeparation" />).
     /// </summary>
     public abstract class DotRankSeparationDefinition : IDotEncodable
     {
@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Types.Ranks
 
         public static implicit operator DotRankSeparationDefinition(double[] value)
         {
-            return value is {} ? new DotRankSeparationList(value) : null;
+            return value is {} ? new DotRadialRankSeparation(value) : null;
         }
     }
 }

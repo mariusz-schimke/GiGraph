@@ -5,9 +5,9 @@ namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
     ///     In dot, this attribute gives the desired rank separation, in inches (<see cref="DotRankSeparation" />). In twopi, this
-    ///     attribute specifies the radial separation of concentric circles (<see cref="DotRankSeparationList" />).
+    ///     attribute specifies the radial separation of concentric circles (<see cref="DotRadialRankSeparation" />).
     /// </summary>
-    public class DotRankSeparationAttribute : DotAttribute<DotRankSeparationDefinition>
+    public class DotRankSeparationDefinitionAttribute : DotAttribute<DotRankSeparationDefinition>
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotRankSeparationAttribute(string key, DotRankSeparationDefinition value)
+        public DotRankSeparationDefinitionAttribute(string key, DotRankSeparationDefinition value)
             : base(key, value)
         {
         }
@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotRankSeparationAttribute(string key, DotRankSeparation value)
+        public DotRankSeparationDefinitionAttribute(string key, DotRankSeparation value)
             : base(key, value)
         {
         }
@@ -46,7 +46,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotRankSeparationAttribute(string key, DotRankSeparationList value)
+        public DotRankSeparationDefinitionAttribute(string key, DotRadialRankSeparation value)
             : base(key, value)
         {
         }

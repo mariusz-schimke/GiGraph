@@ -239,10 +239,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         [DotAttributeKey("dir")]
-        public virtual DotArrowDirection? ArrowDirection
+        public virtual DotArrowDirections? ArrowDirections
         {
-            get => GetValueAs<DotArrowDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotArrowDirection?) null;
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowDirectionAttribute(k, v.Value));
+            get => GetValueAs<DotArrowDirections>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotArrowDirections?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowDirectionsAttribute(k, v.Value));
         }
 
         [DotAttributeKey("headport")]
@@ -260,17 +260,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         [DotAttributeKey("lhead")]
-        public virtual string LogicalHeadId
+        public virtual string HeadClusterId
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLogicalEndpointAttribute(k, v));
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotClusterIdAttribute(k, v));
         }
 
         [DotAttributeKey("ltail")]
-        public virtual string LogicalTailId
+        public virtual string TailClusterId
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLogicalEndpointAttribute(k, v));
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotClusterIdAttribute(k, v));
         }
 
         [DotAttributeKey("decorate")]
@@ -304,7 +304,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         [DotAttributeKey("constraint")]
-        public virtual bool? Constraint
+        public virtual bool? Constrain
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));

@@ -1,21 +1,21 @@
 using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
+using GiGraph.Dot.Entities.Types.Scaling;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
     public class DotGraphAttributeCollection : DotEntityAttributeCollection<IDotGraphAttributes>, IDotGraphAttributeCollection
     {
         [DotAttributeKey("rankdir")]
-        public virtual DotRankDirection? LayoutDirection
+        public virtual DotLayoutDirection? LayoutDirection
         {
-            get => GetValueAs<DotRankDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotRankDirection?) null;
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankDirectionAttribute(k, v.Value));
+            get => GetValueAs<DotLayoutDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotLayoutDirection?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLayoutDirectionAttribute(k, v.Value));
         }
 
         [DotAttributeKey("splines")]
@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         }
 
         [DotAttributeKey("clusterrank")]
-        public virtual DotClusterMode? ClusterRank
+        public virtual DotClusterMode? ClusterMode
         {
             get => GetValueAs<DotClusterMode>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotClusterMode?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotClusterModeAttribute(k, v.Value));
@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         }
 
         [DotAttributeKey("compound")]
-        public virtual bool? Compound
+        public virtual bool? EdgesBetweenClusters
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
@@ -87,12 +87,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                     out var value,
                     v => v is int i ? (true, new DotRankSeparation(i)) : (false, default),
                     v => v is double d ? (true, new DotRankSeparation(d)) : (false, default),
-                    v => v is double[] da ? (true, new DotRankSeparationList(da)) : (false, default)
+                    v => v is double[] da ? (true, new DotRadialRankSeparation(da)) : (false, default)
                 )
                     ? value
                     : null;
             }
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankSeparationAttribute(k, v));
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankSeparationDefinitionAttribute(k, v));
         }
 
         [DotAttributeKey("rotate")]
@@ -124,22 +124,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         }
 
         [DotAttributeKey("ratio")]
-        public virtual DotAspectRatioDefinition AspectRatio
+        public virtual DotGraphScalingDefinition Scaling
         {
             get
             {
-                return GetValueAs<DotAspectRatioDefinition>
+                return GetValueAs<DotGraphScalingDefinition>
                 (
                     GetKey(MethodBase.GetCurrentMethod()),
                     out var value,
-                    v => v is int i ? (true, new DotAspectRatioQuotient(i)) : (false, default),
-                    v => v is double d ? (true, new DotAspectRatioQuotient(d)) : (false, default),
-                    v => v is DotAspectRatio ar ? (true, new DotAspectRatioOption(ar)) : (false, default)
+                    v => v is int i ? (true, new DotGraphScalingAspectRatio(i)) : (false, default),
+                    v => v is double d ? (true, new DotGraphScalingAspectRatio(d)) : (false, default),
+                    v => v is DotGraphScaling s ? (true, new DotGraphScalingOption(s)) : (false, default)
                 )
                     ? value
                     : null;
             }
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotAspectRatioDefinitionAttribute(k, v));
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotGraphScalingDefinitionAttribute(k, v));
         }
 
         [DotAttributeKey("pack")]
@@ -169,7 +169,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 (
                     GetKey(MethodBase.GetCurrentMethod()),
                     out var value,
-                    v => v is DotPackingGranularity i ? (true, new DotGranularPackingMode(i)) : (false, default)
+                    v => v is DotPackingGranularity g ? (true, new DotGranularPackingMode(g)) : (false, default)
                 )
                     ? value
                     : null;
