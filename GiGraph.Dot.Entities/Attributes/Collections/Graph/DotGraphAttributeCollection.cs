@@ -134,7 +134,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                     out var value,
                     v => v is int i ? (true, new DotGraphScalingAspectRatio(i)) : (false, default),
                     v => v is double d ? (true, new DotGraphScalingAspectRatio(d)) : (false, default),
-                    v => v is DotGraphScaling ar ? (true, new DotGraphScalingOption(ar)) : (false, default)
+                    v => v is DotGraphScaling s ? (true, new DotGraphScalingOption(s)) : (false, default)
                 )
                     ? value
                     : null;
@@ -169,7 +169,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 (
                     GetKey(MethodBase.GetCurrentMethod()),
                     out var value,
-                    v => v is DotPackingGranularity i ? (true, new DotGranularPackingMode(i)) : (false, default)
+                    v => v is DotPackingGranularity g ? (true, new DotGranularPackingMode(g)) : (false, default)
                 )
                     ? value
                     : null;
