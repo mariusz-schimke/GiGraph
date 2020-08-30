@@ -76,7 +76,7 @@ namespace GiGraph.Dot.Entities.Graphs
 
         public virtual string Annotation { get; set; }
 
-        public static DotGraphSection<TGraphAttributes> Create(TGraphAttributes attributes)
+        protected static DotGraphSection<TGraphAttributes> Create(TGraphAttributes attributes)
         {
             return new DotGraphSection<TGraphAttributes>(
                 attributes,

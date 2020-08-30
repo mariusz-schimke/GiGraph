@@ -69,7 +69,7 @@ namespace GiGraph.Dot.Entities.Graphs
         /// </summary>
         public virtual bool IsStrict { get; set; }
 
-        protected static DotGraphSection<IDotGraphAttributeCollection> CreateSection()
+        public static DotGraphSection<IDotGraphAttributeCollection> CreateSection()
         {
             return Create(new DotGraphAttributeCollection());
         }

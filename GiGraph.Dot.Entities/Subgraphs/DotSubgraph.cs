@@ -119,7 +119,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
             return result;
         }
 
-        protected static DotGraphSection<IDotSubgraphAttributeCollection> CreateSection()
+        public static DotGraphSection<IDotSubgraphAttributeCollection> CreateSection()
         {
             return Create(new DotSubgraphAttributeCollection());
         }

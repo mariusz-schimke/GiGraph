@@ -90,7 +90,7 @@ namespace GiGraph.Dot.Entities.Clusters
             return result;
         }
 
-        protected static DotGraphSection<IDotClusterAttributeCollection> CreateSection()
+        public static DotGraphSection<IDotClusterAttributeCollection> CreateSection()
         {
             return Create(new DotClusterAttributeCollection());
         }
