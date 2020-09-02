@@ -839,7 +839,7 @@ graph.Clusters.Add(cluster);
 
 
 
-## Node
+## Nodes
 
 Nodes are distinguished by their unique **identifiers**. The identifiers are used by edges to refer to a head and a tail node (endpoint) that they join. If you don't specify a **label** attribute for a node, the identifier will also be used as a label by default, when the node is visualized.
 
@@ -1170,7 +1170,7 @@ graph.Nodes.AddRange
 
 
 
-## Edge
+## Edges
 
 Edges **join two nodes**: a tail node and a head node (this naming convention is used in the library even though a graph may be undirected, in which case these terms are not relevant). Edges refer to nodes by their identifiers (note that the nodes do not necessarily have to exist in the nodes collection of a graph, subgraph or cluster).
 
@@ -1220,7 +1220,7 @@ graph.Edges.Add(edge);
 
 
 
-### Edge group
+### Edge groups
 
 Edge groups join a single node with multiple nodes, multiple nodes with a single node, or multiple nodes with multiple nodes. The examples below present each of these use cases. An edge group may be understood as a simpler approach to specifying multiple edges at once, with the same properties for all. You may as well add each of them individually to achieve the same effect.
 
@@ -1341,7 +1341,7 @@ digraph
 
 
 
-### Edge sequence
+### Edge sequences
 
 An edge sequence lets you join a sequence of consecutive nodes an/or node groups (the latter are represented by subgraphs). Similarly to edge groups, a sequence may be understood as a simpler approach to specifying multiple edges at once, with the same properties for all. You may as well add each of them individually to achieve the same effect.
 
@@ -1482,11 +1482,9 @@ digraph
 
 
 
-## Attribute
+## Attributes
 
-Every element of the graph, including the graph itself, may have **attributes**. These are for instance background color, style, node shape, arrow head shape and so on. An attribute is composed of a key and a value. The key is DOT language specific, and the value is dependent on the type of attribute (for example it may be a string, a boolean value, a node shape enumerable, etc.).
-
-Every element supports only attributes that are specific to it. For example arrow head may be specified only for edges, shape may be specified only for nodes, etc. Some of them, on the other hand, are supported by multiple types of elements—for example *label*.
+Every element of the graph, including the graph itself, may have **attributes** set. These are for instance background color, style, node shape, arrow head shape and so on.
 
 ```c#
 node.Attributes.Label = "My node label";
@@ -1499,7 +1497,7 @@ edge.Attributes.Label = "My edge label";
 edge.Attributes.Color = Color.Red;
 ```
 
-You may set attributes as shown above, by assigning a value to a property—this is the easiest way. However, some properties supported by DOT graph visualization tools are not necessarily supported by the library, so they may not be exposed as properties. In such cases you may set them by specifying their key and an appropriately formatted value for it. You have to know exactly what key to use, and what value format is valid for it ([see documentation](https://www.graphviz.org/doc/info/attrs.html)). This approach should be used with care, and the value should always follow the DOT syntax rules. Otherwise the visualization tool you use may be unable to process it correctly.
+You may set attributes as shown above, by assigning a value to a property—this is the easiest way. However, some properties supported by DOT graph visualization tools are not necessarily supported by the library, so they may not be exposed as properties. In such cases you may set them by specifying their key and an appropriately formatted value for it. You have to know exactly what key to use, and what value is valid for it ([see documentation](https://www.graphviz.org/doc/info/attrs.html)). This approach should be used with care, and the value should always follow the DOT syntax rules. Otherwise the visualization tool you use may be unable to process it correctly.
 
 ```c#
 // setting the fill color (or any other attribute)
@@ -1512,28 +1510,15 @@ node.Attributes.Set("fillcolor", "red:blue");
 
 *DotStringAttribute* may be used for any type of property. Its *value* is rendered in the output DOT script exactly the way it is provided (without any further processing like escaping).
 
-If the value type you want to use is supported by the library, but the key you want to set has no property exposed, you may use as well the existing attribute types, that will convert the value to an appropriate output format for you.
+### Label
 
-```c#
-// setting the same fill color
-var attribute = new DotColorDefinitionAttribute("fillcolor", new DotGradientColor(Color.Red, Color.Blue));
-node.Attributes.Set(attribute);
+Label is a textual attribute you may assign to the root graph and clusters (as a title), to nodes (as the text displayed within them), and to edges (as the text displayed next to them). It may either be plain text, or formatted text; you may also justify its individual lines.
 
-// or without creating an attribute instance explicitly
-node.Attributes.Set("fillcolor", new DotGradientColor(Color.Red, Color.Blue));
-```
+#### Label formatting
 
+The text assigned to any [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type attribute (mainly label) may contain special escape sequences. On graph visualization they are replaced with, for example, the graph identifier, the identifier of the current node, the definition of the current edge etc. You may use them in text by concatenating fragments of the text with predefined escape sequences exposed by the *DotEscapeString* class, or simply use the *DotTextFormatter* class to build your text.
 
-
-### Label parameters
-
-The text assigned to any [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type attribute (mainly label) may contain special escape sequences. On graph visualization they are replaced with, for example, the graph identifier, the identifier of the current node, the definition of the current edge etc.
-
-There are two basic ways of formatting text, supported by the library: one of them is string concatenation with predefined escape sequences exposed by the *DotEscapeString* class, and the other is the *DotTextFormatter* class (the *DotEscapeString* class represents the [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type of the DOT language).
-
-*Note that the escape sequences provided by the DotEscapeString class should not be used as parameters of the string.Format method or of an interpolated string. The result text will be invalid in such cases.*
-
-#### Label placeholders
+*Note that if you prefer string concatenation, the escape sequences provided by the DotEscapeString class should not be used as parameters of the string.Format method or of an interpolated string. The result text will be invalid in such cases.*
 
 Below is an example presenting labels with element-specific escape sequences embedded, replaced with actual element identifiers on graph visualization.
 
@@ -1594,7 +1579,7 @@ digraph "Label formatting"
 
 #### Label justification
 
-The DOT [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type also supports escape sequences that left- or right-justify individual lines of text. They appear in the end of the lines they justify. Below is an example how to format text using them implicitly (by *DotTextFormatter*) or explicitly (by string concatenation).
+The DOT [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type also supports escape sequences that left- or right-justify individual lines of label text. Below is an example how to format text using them implicitly (by *DotTextFormatter*) or explicitly (by string concatenation).
 
 ```c#
 graph.Nodes.Add("Foo", attrs =>
