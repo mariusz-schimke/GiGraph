@@ -29,7 +29,7 @@ For the complete documentation of the DOT language, and the visualization capabi
 
 For a basic case, create a new **DotGraph** instance, and use its *Edges* collection to define connections between nodes. In order to generate the output DOT script, call the ***Build*** extension method on the graph instance.
 
-*There is also a Nodes collection on the graph, but you don't have to add any nodes there unless you need to customize them.*
+*There is also a Nodes collection on the graph, but you don't have to add any nodes there unless they are isolated or unless you need to customize them.*
 
 Here's a simple *Hello World!* graph example with two nodes joined by an edge.
 
@@ -156,19 +156,33 @@ graph.Attributes.BackgroundColor = Color.LightGray;
 
 ### Subsections
 
-The root graph, subgraphs, and clusters may be composed of subsections in the DOT language. A subsection is understood as a group of graph elements and/or graph/node/edge attributes, where the global attributes specified in any section have impact on the elements in sections that follow it. This is because these groups are rendered consecutively on the output script.
+By design, the library generates the output DOT script with elements written in the following order:
 
-*In most cases you won't probably need to use subsections. They only give you the flexibility to control the order individual elements or groups of elements are rendered in the output script, but it isn't usually necessary. When you want to set attributes for specific groups of elements of the graph, you will probably prefer using [subgraphs](#subgraph), as they give you more granular control over the elements, without affecting others.*
+* global graph attributes,
+* global node attributes,
+* global edge attributes,
+* subgraphs,
+* clusters,
+* nodes,
+* edges.
 
-Consider the following example to see how the root section and subsections are rendered in the output DOT script, and how their attributes impact graph visualization.
+The DOT grammar, however, lets you place individual elements in the script in any order. It may have impact on the way the graph is laid out, or what attributes are actually applied to specific elements on visualization.
+
+The subsections, as they are called in the library, are separate groups of elements. They are written consecutively, one group after another, in the order they are added to the collection of subsections on the graph instance level. The elements in each such section, on the other hand, are written in the order mentioned earlier.
+
+By using subsections you may split the DOT script into multiple sections, and, for instance, set different global attributes in any of them. Remember, however, that attributes set in one section have impact on the elements that follow them in the output script. So as long as sections are written consecutively, setting attributes in any of them has impact not only on the elements in that specific section, but also on elements in the sections that follow.
+
+*Note that in most cases you won't probably need to split the DOT script into sections. They give you the flexibility to control the order individual elements or groups of elements are written, but it isn't usually necessary. When you want to specify attributes for specific groups of elements of the graph, you will probably prefer using [subgraphs](#subgraph), as they give you more granular control over the elements they contain, without affecting others.*
+
+Consider the following example to see how the primary section (on the graph instance level), and subsections, are rendered in the output DOT script, and how their attributes impact graph visualization.
 
 ```c#
-// the primary section
+// the primary section (on the graph instance level)
 graph.Annotation = "the example graph (the primary section)";
 
-graph.NodeDefaults.Annotation = "set default node color and style";
-graph.NodeDefaults.Color = Color.Orange;
-graph.NodeDefaults.Style = DotStyle.Filled;
+graph.Nodes.Attributes.Annotation = "set default node color and style";
+graph.Nodes.Attributes.Color = Color.Orange;
+graph.Nodes.Attributes.Style = DotStyle.Filled;
 
 graph.Edges.Add("foo", "bar");
 
@@ -176,14 +190,14 @@ graph.Edges.Add("foo", "bar");
 graph.Subsections.Add(subsection =>
 {
     subsection.Annotation = "subsection 1 - override node color";
-    subsection.NodeDefaults.Color = Color.Turquoise;
+    subsection.Nodes.Attributes.Color = Color.Turquoise;
     subsection.Edges.Add("baz", "qux");
 });
 
 graph.Subsections.Add(subsection =>
 {
     subsection.Annotation = "subsection 2 - set default edge style";
-    subsection.EdgeDefaults.Style = DotStyle.Dashed;
+    subsection.Edges.Attributes.Style = DotStyle.Dashed;
     subsection.Edges.Add("quux", "fred");
 });
 ```
@@ -216,20 +230,6 @@ digraph
 </p>
 
 
-The library always renders elements of a section in the following order:
-
-* global graph attributes,
-* global node attributes (*node defaults*),
-* global edge attributes (*edge defaults*),
-* subgraphs,
-* clusters,
-* nodes,
-* edges.
-
-When necessary, by using subsections you may customize the order graph elements appear in the script, in all those cases when the order is actually meaningful.
-
-
-
 
 ## Subgraph
 
@@ -253,7 +253,7 @@ subgraph.Nodes.Add("d", "e", "f");
 subgraph = DotSubgraph.FromNodes(DotRank.Same, "d", "e", "f");
 
 // style settings are accepted as well for the elements inside
-subgraph.NodeDefaults.Shape = DotNodeShape.Box;
+subgraph.Nodes.Attributes.Shape = DotNodeShape.Box;
 
 graph.Subgraphs.Add(subgraph);
 ```
@@ -284,7 +284,7 @@ cluster.Nodes.Add("d", "e", "f");
 cluster = DotCluster.FromNodes("My cluster 2", "e", "d", "f");
 
 // style settings are accepted as well for the elements inside
-cluster.NodeDefaults.Shape = DotNodeShape.Box;
+cluster.Nodes.Attributes.Shape = DotNodeShape.Box;
 
 graph.Clusters.Add(cluster);
 ```
@@ -967,11 +967,11 @@ node.Attributes.Set("fillcolor", "red:blue");
 A graph, a subgraph, and a cluster may have node and edge defaults specified. When you set them, they affect (by the library design) all nodes and/or edges encompassed by the graph, subgraph, or cluster respectively. They may be overridden, however, by attributes set on individual graph elements.
 
 ```c#
-graph.NodeDefaults.Color = Color.Orange;
+graph.Nodes.Attributes.Color = Color.Orange;
 ```
 
 ```c#
-graph.EdgeDefaults.Color = Color.Red;
+graph.Edges.Attributes.Color = Color.Red;
 ```
 
 ```dot
@@ -990,7 +990,7 @@ In some cases you will want to restore an attribute of an individual element to 
 Consider the following example:
 
 ```c#
-graph.NodeDefaults.Color = Color.Orange;
+graph.Nodes.Attributes.Color = Color.Orange;
 
 graph.Nodes.Add("orange");
 graph.Nodes.Add("restored", attrs =>
@@ -1169,15 +1169,15 @@ namespace GiGraph.Dot.Examples
             graph.Attributes.FontName = "Helvetica";
 
             // set the defaults for all nodes of the graph
-            graph.NodeDefaults.Shape = DotNodeShape.Rectangle;
-            graph.NodeDefaults.Style = DotStyle.Filled;
-            graph.NodeDefaults.FontName = graph.Attributes.FontName;
-            graph.NodeDefaults.FillColor = new DotGradientColor(Color.Turquoise, Color.RoyalBlue);
+            graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
+            graph.Nodes.Attributes.Style = DotStyle.Filled;
+            graph.Nodes.Attributes.FontName = graph.Attributes.FontName;
+            graph.Nodes.Attributes.FillColor = new DotGradientColor(Color.Turquoise, Color.RoyalBlue);
 
             // set the defaults for all edges of the graph
-            graph.EdgeDefaults.ArrowHead = graph.EdgeDefaults.ArrowTail = DotArrowheadShape.Vee;
-            graph.EdgeDefaults.FontName = graph.Attributes.FontName;
-            graph.EdgeDefaults.FontSize = 10;
+            graph.Edges.Attributes.ArrowHead = graph.Edges.Attributes.ArrowTail = DotArrowheadShape.Vee;
+            graph.Edges.Attributes.FontName = graph.Attributes.FontName;
+            graph.Edges.Attributes.FontSize = 10;
 
 
             // -- (subgraphs are used here only to control the order the elements are visualized, and may be removed) --
@@ -1266,11 +1266,11 @@ namespace GiGraph.Dot.Examples
             // a subgraph example – to override the default attributes for a group of nodes and/or edges
             graph.Subgraphs.Add(sg =>
             {
-                sg.NodeDefaults.Color = Color.RoyalBlue;
-                sg.NodeDefaults.FillColor = Color.Orange;
-                sg.NodeDefaults.Shape = DotNodeShape.Circle;
+                sg.Nodes.Attributes.Color = Color.RoyalBlue;
+                sg.Nodes.Attributes.FillColor = Color.Orange;
+                sg.Nodes.Attributes.Shape = DotNodeShape.Circle;
 
-                sg.EdgeDefaults.Color = Color.RoyalBlue;
+                sg.Edges.Attributes.Color = Color.RoyalBlue;
 
                 sg.Edges.Add("A", "B").Attributes.Label = "PLAIN COLOR";
             });
