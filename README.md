@@ -360,7 +360,9 @@ using GiGraph.Dot.Extensions; // ToRecord
 graph.Nodes.Add("Foo").ToRecord("Foo", new DotRecord("Bar", "Baz"), "Qux");
 ```
 
-Note that *string* is implicitly convertible to *DotRecordTextField*.
+
+
+❕Note that *string* is implicitly convertible to *DotRecordTextField*.
 
 
 
@@ -409,7 +411,9 @@ graph.Edges.Add("Foo", "Bar", edge =>
 });
 ```
 
-Note that you can either use the *Port* property of edge *Tail* and *Head* for setting port parameters as in the example above, or you can use the *TailPort* and *HeadPort* attributes of the edge itself with the same effect.
+
+
+❕ Note that you can either use the *Port* property of edge *Tail* and *Head* for setting port parameters as in the example above, or you can use the *TailPort* and *HeadPort* attributes of the edge itself with the same effect.
 
 See also a similar example in the [HTML nodes](#html-nodes) section.
 
@@ -718,7 +722,7 @@ Label is a textual attribute you may assign to the root graph and clusters (as a
 
 The text assigned to any [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type attribute (mainly label) may contain special escape sequences. On graph visualization they are replaced with, for example, the graph identifier, the identifier of the current node, the definition of the current edge etc. You may use them in text by concatenating fragments of the text with predefined escape sequences exposed by the *DotEscapeString* class, or simply use the *DotTextFormatter* class to build your text.
 
-*Note that if you prefer using string concatenation, the escape sequences provided by the DotEscapeString class should not be used as parameters of the string.Format method or of an interpolated string. The result text will be invalid in such cases.*
+*⚠️ Note that if you prefer using string concatenation, the escape sequences provided by the DotEscapeString class should not be used as parameters of the string.Format method or of an interpolated string. The result text will be invalid in such cases.*
 
 Below is an example presenting labels with element-specific escape sequences embedded, replaced with actual element identifiers on graph visualization.
 
@@ -819,7 +823,9 @@ digraph
 
 Edge groups join a single node with multiple nodes, multiple nodes with a single node, or multiple nodes with multiple nodes. The examples below present each of these use cases. An edge group may be understood as a simpler approach to specifying multiple edges, with the assumption that all of them share one list of attributes. The other way is adding individual edges to an edge collection separately, with the head or tail node repeated multiple times.
 
-Note that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*.
+
+
+❕ Note that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*.
 
 
 
@@ -1078,7 +1084,7 @@ A cluster is represented by the **DotCluster** class. It is a special type of [s
 
 *⚠️ Note that cluster subgraphs are not part of the DOT language, but solely a syntactic convention adhered to by certain of the layout engines.*
 
-*❗️ When using clusters, make sure the ClusterMode attribute on graph level is DotClusterMode.Bounded (this is the default value, and does not have to be set explicitly).*
+*❕ When using clusters, make sure the ClusterMode attribute on graph level is DotClusterMode.Bounded (this is the default value, and does not have to be set explicitly).*
 
 Cluster subgraphs do not support setting custom node layout the way normal subgraphs do, but they do support setting common style of nodes and edges within them.
 
