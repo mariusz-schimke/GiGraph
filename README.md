@@ -29,7 +29,7 @@ For the complete documentation of the DOT language, and the visualization capabi
 
 For a basic case, create a new **DotGraph** instance, and use its *Edges* collection to define connections between nodes. In order to generate the output DOT script, call the ***Build*** extension method on the graph instance.
 
-*There is also a Nodes collection on the graph, but you don't have to add any nodes there unless they are isolated or unless you need to customize them.*
+*There is also a node collection on the graph, but you don't have to add any nodes there unless they are isolated or unless you need to customize them.*
 
 Here's a simple *Hello World!* graph example with two nodes joined by an edge.
 
@@ -195,7 +195,7 @@ node.Attributes.Set(attribute);
 
 ### Global attributes
 
-Graph, node, and edge attributes may be specified on graph, subgraph, or cluster level. This way the attributes (by the library desing), apply to all elements on that level, and you don't have to specify them individually, per element. This approach comes in handy when you want to apply certain styling, for instance, to all elements at once. Still, you may set attributes directly on individual elements, to override or extend the global ones.
+Graph, node, and edge attributes may be specified on graph, subgraph, or cluster level. This way the attributes (by the library desing), apply to all elements on that level, and you don't have to specify them individually, per element. This approach comes in handy when you want to apply certain styling, for instance, to all elements at once. Still, however, you may set attributes directly on individual elements, to override or extend the global ones.
 
 ```c#
 // node attributes on graph level (they apply to all nodes of the graph)
@@ -215,12 +215,12 @@ digraph
 }
 ```
 
-In some cases you will want to restore attributes on specific elements to their *default* values used by the visualization engine. It may be achieved for some attributes by assigning them a blank value, but the library does not render attributes with *null* values assigned to their corresponding properties. There is a workaround, however: you may use the *SetNull* method on a collection of attributes, and specify the attribute to nullify, either by a lambda expression (recommended), or by its key.
+In some cases, when setting global attributes, you will want to restore the attributes of specific elements to their *default* values used by the visualization engine. It may be achieved for some types of attributes by assigning them a blank value. The libraray, however, is designed in such a way that it does not render attributes with *null* values assigned to their corresponding properties. But there is a workaround: you may use the *SetNull* method on a collection of attributes, and specify the attribute to nullify either by a lambda expression (recommended), or by its key.
 
 Consider the following example:
 
 ```c#
-// node color set on graph level
+// global node color set on graph level
 graph.Nodes.Attributes.Color = Color.Orange;
 
 // this node will have the globally set color
@@ -235,7 +235,7 @@ graph.Nodes.Add("restored", attrs =>
     // or by specifying its key explicitly
     attrs.SetNull("color");
 
-    // the following won't do the trick because it removes the attribute from the collection, so it won't appear in the output DOT script
+    // the following wouldn't do the trick because it removes the attribute from the collection, so it wouldn't appear in the output DOT script
     // attrs.Color = null;
 });
 ```
@@ -256,75 +256,14 @@ digraph
 
 
 
-
-## Subgraph
-
-A subgraph, represented by the **DotSubgraph** class, is a collection of nodes constrained with a rank attribute, that determines their layout. Use a subgraph when you want to have more granular control on the **layout** of specific groups of nodes, and/or the **style** of specific groups of nodes and edges.
-
-**Subgraph does not have any border or fill**, as opposed to cluster subgraph, represented by the **DotCluster** class, which supports them.
-
-As mentioned, subgraph supports setting a common style of nodes and edges within it, as well as the layout of the nodes. The layout may be adjusted by using the **rank attribute**. To see an example how it works, jump to the [customizing node layout](#customizing-node-layout) section.
-
-There are several ways you may add a subgraph to a graph, and the code below presents some of them.
-
-```c#
-// add a subgraph with any number of nodes
-graph.Subgraphs.Add(DotRank.Same, "a", "b", "c");
-
-// you may also create a new instance, and initialize it manually
-var subgraph = new DotSubgraph(DotRank.Same);
-subgraph.Nodes.Add("d", "e", "f");
-
-// or use a factory method to add nodes more easily
-subgraph = DotSubgraph.FromNodes(DotRank.Same, "d", "e", "f");
-
-// style settings are accepted as well for the elements inside
-subgraph.Nodes.Attributes.Shape = DotNodeShape.Box;
-
-graph.Subgraphs.Add(subgraph);
-```
-
-A subgraph may also be used as a group of endpoints to facilitate adding multiple edges at once. For details refer to [edge groups](#edge-group) and [edge sequences](#edge-sequence).
-
-
-
-## Cluster
-
-A cluster is represented by the **DotCluster** class. It is a special type of subgraph whose appearance may be customized (as opposed to the subgraph represented by the **DotSubgraph** class). If supported, the layout engine used to render a cluster subgraph, will do the layout so that the nodes belonging to the cluster are drawn together, with the entire drawing of the cluster contained within a bounding rectangle. To see an example, go to [grouping nodes visually](#grouping-nodes-visually).
-
-*Note that cluster subgraphs are not part of the DOT language, but solely a syntactic convention adhered to by certain of the layout engines.*
-
-Cluster subgraphs do not support setting custom node layout the way normal subgraphs do, but they do support setting common style of nodes and edges within them.
-
-There are several ways you may add a cluster to a graph, and the code below presents some of them.
-
-```c#
-// add a cluster with any number of nodes
-graph.Clusters.Add("My cluster 1", "a", "b", "c");
-
-// you may also create a new instance, and initialize it manually
-var cluster = new DotCluster("My cluster 2");
-cluster.Nodes.Add("d", "e", "f");
-
-// or use a factory method to add nodes more easily
-cluster = DotCluster.FromNodes("My cluster 2", "e", "d", "f");
-
-// style settings are accepted as well for the elements inside
-cluster.Nodes.Attributes.Shape = DotNodeShape.Box;
-
-graph.Clusters.Add(cluster);
-```
-
-
-
 ## Nodes
 
-Nodes are distinguished by their unique **identifiers**. The identifiers are used by edges to refer to a head and a tail node (endpoint) that they join. If you don't specify a **label** attribute for a node, the identifier will also be used as a label by default, when the node is visualized.
+Nodes are distinguished by their **identifiers**. The identifiers are used by edges to refer to them as the endpoints they join. Node identifier is also used as a label by default if you don't specify a *label* attribute explicitly.
 
-A node does not necessarily have to be added to the nodes collection of the graph, subgraph or cluster if you are not going to set its attributes or its layout. As long as it is not an isolated node, which means that any edge uses it as an endpoint, it will be presented on the visualization.
+A node may be added to the node collection of the root graph, of a subgraph, or of a cluster, but does not have to. It is necessary when you want to set its attributes or when the node is an isolated node (not used as an endpoint of any edge). When an edge referes to a node that is not present in any node collection, the node will still be visualized, with its default and/or global attributes applied.
 
 ```c#
-// add the node to the nodes collection of the graph (or subgraph/cluster)
+// adding a node to the node collection of the graph
 graph.Nodes.Add("Foo", attrs =>
 {
     attrs.Label = "Hello World!";
@@ -650,7 +589,7 @@ graph.Nodes.AddRange
 
 ## Edges
 
-Edges **join two nodes**: a tail node and a head node (this naming convention is used in the library even though a graph may be undirected, in which case these terms are not relevant). Edges refer to nodes by their identifiers (note that the nodes do not necessarily have to exist in the nodes collection of a graph, subgraph or cluster).
+Edges **join two nodes**: a tail node and a head node (this naming convention is used in the library even though a graph may be undirected, in which case these terms are not relevant). Edges refer to nodes by their identifiers (note that the nodes do not necessarily have to exist in the node collection of a graph, subgraph or cluster).
 
 Edges support customizing which side of the node (and/or cell, when record nodes are used) the head and/or tail of the edge is attached to.
 
@@ -1061,6 +1000,66 @@ digraph
 <p align="center">
   <img src="./Assets/Examples/label-justification.svg">
 </p>
+
+
+## Subgraphs
+
+A subgraph, represented by the **DotSubgraph** class, is a collection of nodes constrained with a rank attribute, that determines their layout. Use a subgraph when you want to have more granular control on the **layout** of specific groups of nodes, and/or the **style** of specific groups of nodes and edges.
+
+**Subgraph does not have any border or fill**, as opposed to cluster subgraph, represented by the **DotCluster** class, which supports them.
+
+As mentioned, subgraph supports setting a common style of nodes and edges within it, as well as the layout of the nodes. The layout may be adjusted by using the **rank attribute**. To see an example how it works, jump to the [customizing node layout](#customizing-node-layout) section.
+
+There are several ways you may add a subgraph to a graph, and the code below presents some of them.
+
+```c#
+// add a subgraph with any number of nodes
+graph.Subgraphs.Add(DotRank.Same, "a", "b", "c");
+
+// you may also create a new instance, and initialize it manually
+var subgraph = new DotSubgraph(DotRank.Same);
+subgraph.Nodes.Add("d", "e", "f");
+
+// or use a factory method to add nodes more easily
+subgraph = DotSubgraph.FromNodes(DotRank.Same, "d", "e", "f");
+
+// style settings are accepted as well for the elements inside
+subgraph.Nodes.Attributes.Shape = DotNodeShape.Box;
+
+graph.Subgraphs.Add(subgraph);
+```
+
+A subgraph may also be used as a group of endpoints to facilitate adding multiple edges at once. For details refer to [edge groups](#edge-group) and [edge sequences](#edge-sequence).
+
+
+
+## Clusters
+
+A cluster is represented by the **DotCluster** class. It is a special type of subgraph whose appearance may be customized (as opposed to the subgraph represented by the **DotSubgraph** class). If supported, the layout engine used to render a cluster subgraph, will do the layout so that the nodes belonging to the cluster are drawn together, with the entire drawing of the cluster contained within a bounding rectangle. To see an example, go to [grouping nodes visually](#grouping-nodes-visually).
+
+*Note that cluster subgraphs are not part of the DOT language, but solely a syntactic convention adhered to by certain of the layout engines.*
+
+Cluster subgraphs do not support setting custom node layout the way normal subgraphs do, but they do support setting common style of nodes and edges within them.
+
+There are several ways you may add a cluster to a graph, and the code below presents some of them.
+
+```c#
+// add a cluster with any number of nodes
+graph.Clusters.Add("My cluster 1", "a", "b", "c");
+
+// you may also create a new instance, and initialize it manually
+var cluster = new DotCluster("My cluster 2");
+cluster.Nodes.Add("d", "e", "f");
+
+// or use a factory method to add nodes more easily
+cluster = DotCluster.FromNodes("My cluster 2", "e", "d", "f");
+
+// style settings are accepted as well for the elements inside
+cluster.Nodes.Attributes.Shape = DotNodeShape.Box;
+
+graph.Clusters.Add(cluster);
+```
+
 
 
 # Examples
