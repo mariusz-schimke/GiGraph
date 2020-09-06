@@ -1026,7 +1026,7 @@ digraph
 
 A subgraph, represented by the **DotSubgraph** class, is a collection of nodes constrained with a rank attribute, that determines their layout. Use a subgraph when you want to have more granular control on the **layout** of specific groups of nodes, and/or the **style** of specific groups of nodes and edges.
 
-**Subgraph does not have any border or fill**, as opposed to cluster subgraph, represented by the **DotCluster** class, which supports them.
+**Subgraph does not have any border or fill**, as opposed to [cluster subgraph](#clusters) represented by the **DotCluster** class, which supports them.
 
 As mentioned, subgraph supports setting a common style of nodes and edges within it, as well as the layout of the nodes. The layout may be adjusted by using the **rank attribute**. To see an example how it works, jump to the [customizing node layout](#customizing-node-layout) section.
 
@@ -1049,15 +1049,34 @@ subgraph.Nodes.Attributes.Shape = DotNodeShape.Box;
 graph.Subgraphs.Add(subgraph);
 ```
 
-A subgraph may also be used as a group of endpoints to facilitate adding multiple edges at once. For details refer to [edge groups](#edge-group) and [edge sequences](#edge-sequence).
+```dot
+digraph
+{
+    {
+        rank = same
+
+        a
+        b
+        c
+    }
+}
+```
+
+
+
+A subgraph may also be used as a group of endpoints (for details refer to [edge groups](#edge-groups) and [edge sequences](#edge-sequences)).
 
 
 
 ## Clusters
 
-A cluster is represented by the **DotCluster** class. It is a special type of subgraph whose appearance may be customized (as opposed to the subgraph represented by the **DotSubgraph** class). If supported, the layout engine used to render a cluster subgraph, will do the layout so that the nodes belonging to the cluster are drawn together, with the entire drawing of the cluster contained within a bounding rectangle. To see an example, go to [grouping nodes visually](#grouping-nodes-visually).
+A cluster is represented by the **DotCluster** class. It is a special type of [subgraph](#subgraphs), whose appearance may be customized (as opposed to subgraph represented by the **DotSubgraph** class). If supported, the layout engine used to render a cluster subgraph, will do the layout so that the nodes belonging to the cluster are drawn together, with the entire drawing of the cluster contained within a bounding rectangle. To see an example, go to [grouping nodes visually](#grouping-nodes-visually).
 
 *Note that cluster subgraphs are not part of the DOT language, but solely a syntactic convention adhered to by certain of the layout engines.*
+
+*When using clusters, make sure the ClusterMode attribute on graph level is DotClusterMode.Bounded (this is the default value, and does not have to be set explicitly).*
+
+
 
 Cluster subgraphs do not support setting custom node layout the way normal subgraphs do, but they do support setting common style of nodes and edges within them.
 
@@ -1080,11 +1099,23 @@ cluster.Nodes.Attributes.Shape = DotNodeShape.Box;
 graph.Clusters.Add(cluster);
 ```
 
+```dot
+digraph
+{
+    subgraph "cluster My cluster 1"
+    {
+        a
+        b
+        c
+    }
+}
+```
+
 
 
 # Examples
 
-The following chapters present examples of styling, grouping nodes in clusters and customizing graph layout.
+This chapter presents examples of styling, grouping nodes in clusters, and customizing graph layout.
 
 
 
