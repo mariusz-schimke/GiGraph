@@ -714,7 +714,7 @@ Label is a textual attribute you may assign to the root graph and clusters (as a
 
 The text assigned to any [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type attribute (mainly label) may contain special escape sequences. On graph visualization they are replaced with, for example, the graph identifier, the identifier of the current node, the definition of the current edge etc. You may use them in text by concatenating fragments of the text with predefined escape sequences exposed by the *DotEscapeString* class, or simply use the *DotTextFormatter* class to build your text.
 
-*Note that if you prefer string concatenation, the escape sequences provided by the DotEscapeString class should not be used as parameters of the string.Format method or of an interpolated string. The result text will be invalid in such cases.*
+*Note that if you prefer using string concatenation, the escape sequences provided by the DotEscapeString class should not be used as parameters of the string.Format method or of an interpolated string. The result text will be invalid in such cases.*
 
 Below is an example presenting labels with element-specific escape sequences embedded, replaced with actual element identifiers on graph visualization.
 
@@ -723,8 +723,8 @@ var graph = new DotGraph("Label formatting");
 
 // use text formatter
 graph.Attributes.Label = new DotTextFormatter("Graph title: ")
-                        .AppendGraphId() // graph ID escape sequence
-                        .ToFormattedText();
+    .AppendGraphId() // graph ID escape sequence
+    .ToFormattedText();
 
 // or string concatenation
 graph.Attributes.Label = "Graph title: " + DotEscapeString.GraphId;
@@ -734,8 +734,8 @@ graph.Nodes.Add("Foo", attrs =>
 {
     // use text formatter
     attrs.Label = new DotTextFormatter("Node ")
-                 .AppendNodeId() // node ID escape sequence
-                 .ToFormattedText();
+        .AppendNodeId() // node ID escape sequence
+        .ToFormattedText();
 
     // or string concatenation
     attrs.Label = "Node " + DotEscapeString.NodeId;
@@ -746,14 +746,14 @@ graph.Edges.Add("Foo", "Bar", edge =>
 {
     // use text formatter
     edge.Attributes.Label = new DotTextFormatter("From ")
-                           .AppendEdgeTailNodeId() // tail node ID escape sequence
-                           .Append(" to ")
-                           .AppendEdgeHeadNodeId() // head node ID escape sequence
-                           .ToFormattedText();
+        .AppendEdgeTailNodeId() // tail node ID escape sequence
+        .Append(" to ")
+        .AppendEdgeHeadNodeId() // head node ID escape sequence
+        .ToFormattedText();
 
     // or string concatenation
     edge.Attributes.Label = "From " + DotEscapeString.EdgeTailNodeId +
-                            " to " + DotEscapeString.EdgeHeadNodeId;
+        " to " + DotEscapeString.EdgeHeadNodeId;
 });
 ```
 
@@ -786,15 +786,15 @@ graph.Nodes.Add("Foo", attrs =>
 
     // use text formatter
     attrs.Label = new DotTextFormatter()
-                 .AppendLine("Centered line")
-                 .AppendLineLeftJustified("Left-justified line")
-                 .AppendLineRightJustified("Right-justified line")
-                 .ToFormattedText();
+        .AppendLine("Centered line")
+        .AppendLineLeftJustified("Left-justified line")
+        .AppendLineRightJustified("Right-justified line")
+        .ToFormattedText();
 
     // or string concatenation
     attrs.Label = "Centered line" + DotEscapeString.LineBreak +
-                  DotEscapeString.JustifyLeft("Left-justified line") +
-                  DotEscapeString.JustifyRight("Right-justified line");
+        DotEscapeString.JustifyLeft("Left-justified line") +
+        DotEscapeString.JustifyRight("Right-justified line");
 });
 ```
 
