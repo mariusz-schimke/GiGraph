@@ -130,7 +130,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     If true, the drawing is centered in the output canvas (default: false).
         /// </summary>
         bool? Center { get; set; }
-        
+
         /// <summary>
         ///     If 90, sets drawing orientation to landscape (default: 0).
         /// </summary>
@@ -422,5 +422,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     attribute specifies an insertion order among the components, with smaller values inserted first.
         /// </summary>
         int? SortIndex { get; set; }
+
+        /// <summary>
+        ///     Specifies the expected number of pixels per inch on a display device (svg, bitmap output only; default: 96.0, 0.0). For
+        ///     bitmap output, this guarantees that text rendering will be done more accurately, both in size and in placement. For SVG
+        ///     output, it is used to guarantee that the dimensions in the output correspond to the correct number of points or inches.
+        /// </summary>
+        double? Resolution { get; set; }
     }
 }
