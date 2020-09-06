@@ -132,7 +132,7 @@ There are also attributes based on the type of the value they specify for a give
 
 ## Graph
 
-The complete graph is represented by the **DotGraph** class. There are two types of graphs:
+The graph is represented by the **DotGraph** class. There are two types of graphs:
 
 - **directed** (the edges are presented as arrows),
 - **undirected** (the edges are presented as lines).
@@ -151,7 +151,7 @@ var graph = new DotGraph(isStrict: true);
 
 ## Attributes
 
-Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrow head shape and so on. When you don't specify attributes explicitly, their default values depend on the graph visualization engine you use.
+Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrow head shape and so on. When you don't specify attributes explicitly, their default values depend on the graph visualization engine you use (see [documentation](http://www.graphviz.org/doc/info/attrs.html)).
 
 ```c#
 graph.Attributes.Label = "My graph";
@@ -176,13 +176,13 @@ graph.Edges.Add("Foo", "Bar", edge =>
 });
 ```
 
-There are dozens attributes that may be set on different graph elements, but the library supports only a subset of them. By exposing properties on the attributes collections (as in the examples above), the libary ensures that the strongly-typed value you provide is correctly converted to string in a format understood by visualization engines. However, you may also set any attribute by providing its key and value directly, as string (see the example below). This approach should be used with care, and the value should always follow the DOT syntax rules specific to the attribute you set (see [documentation](https://www.graphviz.org/doc/info/attrs.html)). Otherwise the visualization tool you use may be unable to process it correctly.
+There are dozens attributes that may be set on different graph elements, but the library supports only a subset of them. By exposing properties on the attribute collections of elements (as in the examples above), the libary ensures that the strongly-typed value you provide is correctly converted to string in a format understood by visualization engines. However, you may also set any attribute by providing its key and value directly, as string (see the example below). This approach should be used with care, and the value should always follow the DOT syntax rules specific to the attribute you set (see [documentation](https://www.graphviz.org/doc/info/attrs.html)). Otherwise the visualization tool you use may be unable to process it correctly.
 
 ```c#
 node.Attributes.Set("fillcolor", "red:blue");
 ```
 
-Under the hood, this overload of the *Set* method adds a *DotStringAttribute* instance to the collection of attributes:
+Under the hood, the overload of the *Set* method in above example adds a *DotStringAttribute* instance to the collection of attributes:
 
 ```c#
 var attribute = new DotStringAttribute("fillcolor", "red:blue");
@@ -998,7 +998,7 @@ digraph
 
 #### Sequence attributes
 
-Sequences support attributes too. You may set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection.
+Sequences support attributes too. You may set them either directly on the attribute collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection.
 
 ```c#
 graph.Edges.AddSequence
