@@ -1464,7 +1464,7 @@ By using subgraphs with a **rank attribute**, you may change the way individual 
 </p>
 
 
-The nodes embedded in subgraphs with the *DotRank.Same* rank are visualized in the same columns. The nodes *o*, *p*, and *t* in the subgraph with a rank *DotRank.Max* are pushed together towards the rightmost border.
+The nodes embedded in subgraphs with the *DotRank.Same* rank are visualized in the same columns. The nodes *o*, *p*, and *t* in the subgraph with a rank *DotRank.Max* are pushed together towards the rightmost border.
 
 *The groups are vertical in these examples because the graph layout direction is left-to-right. When you change it to the default top-to-bottom setting, the groups will be oriented horizontally.*
 
@@ -1691,6 +1691,83 @@ digraph
 Using mentioned **DotGenerationOptions** and its *OrderElements* property you may enable sorting elements of the output script alphabetically. This comes in handy when the graph is built based on input elements the order of which changes each time you generate the graph. Sometimes you need to compare the output to its other versions, and in such cases you want to see only the actual differences, not the lines that only moved from one place of the file to another, without actually changing. When you enable this setting, all attribute lists, the lists of edges, nodes, subgraphs, and clusters, will always be ordered alphabetically. This way you should get more consistent outputs on every build.
 
 *Have in mind, however, that even though this feature does not affect the structure of the graph, it may affect the layout in some cases, but it won't probably matter for you in the described case.*
+
+
+
+# Script subsections
+
+By design, the library generates the output DOT script with elements written in the following order:
+
+* global graph attributes,
+* global node attributes,
+* global edge attributes,
+* subgraphs,
+* clusters,
+* nodes,
+* edges.
+
+The DOT grammar, however, lets you place individual elements in the script in any order. It may have impact on the way the graph is laid out, or what attributes are actually applied to specific elements on visualization.
+
+The subsections, as they are called in the library, are separate groups of elements. They are written consecutively, one section after another, in the order they are added to the collection of subsections on the graph instance level. The elements in each such section, on the other hand, are written in the order mentioned earlier.
+
+By using subsections you may split the DOT script into multiple sections, and, for instance, set different global attributes in any of them. Remember, however, that attributes set in one section have impact on the elements that follow them in the output script. So as long as sections are written consecutively, setting attributes in any of them has impact not only on the elements in that specific section, but also on elements in the sections that follow.
+
+*Note that in most cases you won't probably need to split the DOT script into sections. They give you the flexibility to control the order individual elements or groups of elements are written, but it isn't usually necessary. When you want to specify attributes for specific groups of elements of the graph, you will probably prefer using [subgraphs](#subgraphs), as they give you more granular control over the elements they contain, without affecting others.*
+
+Consider the following example to see how the primary section (on the graph instance level), and subsections, are rendered in the output DOT script, and how their attributes impact graph visualization.
+
+```c#
+// the primary section (on the graph instance level)
+graph.Annotation = "the example graph (the primary section)";
+
+graph.Nodes.Attributes.Annotation = "set node color and style globally";
+graph.Nodes.Attributes.Color = Color.Orange;
+graph.Nodes.Attributes.Style = DotStyle.Filled;
+
+graph.Edges.Add("foo", "bar");
+
+// the extra sections that will appear next
+graph.Subsections.Add(subsection =>
+{
+    subsection.Annotation = "subsection 1 - override node color";
+    subsection.Nodes.Attributes.Color = Color.Turquoise;
+    subsection.Edges.Add("baz", "qux");
+});
+
+graph.Subsections.Add(subsection =>
+{
+    subsection.Annotation = "subsection 2 - set default edge style";
+    subsection.Edges.Attributes.Style = DotStyle.Dashed;
+    subsection.Edges.Add("quux", "fred");
+});
+```
+
+```dot
+// the example graph (the primary section)
+digraph
+{
+    // set default node color and style
+    node [ color = orange, style = filled ]
+
+    foo -> bar
+
+    /* subsection 1 - override node color */
+
+    node [ color = turquoise ]
+
+    baz -> qux
+
+    /* subsection 2 - set default edge style */
+
+    edge [ style = dashed ]
+
+    quux -> fred
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/subsections.svg">
+</p>
 
 
 
