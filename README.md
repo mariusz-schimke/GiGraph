@@ -298,7 +298,7 @@ digraph
 
 ### Record nodes
 
-The shape of a node is determined by the *Shape* attribute. By default it is a circle with a label, but you may change it to any other shape accepted by the DOT visualization tool. The standard shapes are available under the *DotNodeShape* enumeration, and two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use any of these as the *Shape* attribute, you may assign a record label (*DotRecord*) to the node.
+The shape of a node is determined by the *Shape* attribute. By default it is an ellipse with a label, but you may change it to any other shape accepted by your DOT visualization tool. The standard shapes are available under the *DotNodeShape* enumeration, and two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use any of these as the *Shape* attribute, you may assign a record label (*DotRecord*) to the node.
 
 A *DotRecord* may be composed of textual fields (*DotRecordTextField*), as well as record fields (*DotRecord*), when you want to embed a record inside a record. A record or a sub-record may also be flipped to change the orientation of its fields. By default sub-records have an orientation opposite to their parent record. The orientation of the root record, on the other hand, is dependent on the layout direction of the graph.
 
@@ -321,14 +321,15 @@ And here is the code to generate it:
 using GiGraph.Dot.Extensions; // ToRecord
 ...
 
+// use the ToRecord extension method on a node
+graph.Nodes.Add("Foo").ToRecord("Hello", "World!");
+
+// it is equivalent to
 graph.Nodes.Add("Foo", attrs =>
 {
     attrs.Shape = DotNodeShape.Record;
     attrs.Label = new DotRecord("Hello", "World!");
 });
-
-// or simply
-graph.Nodes.Add("Foo").ToRecord("Hello", "World!");
 ```
 
 
@@ -355,15 +356,13 @@ using GiGraph.Dot.Extensions; // ToRecord
 graph.Nodes.Add("Foo").ToRecord("Foo", new DotRecord("Bar", "Baz"), "Qux");
 ```
 
-
-
 Note that *string* is implicitly convertible to *DotRecordTextField*.
 
 
 
 #### Customizing edge placement
 
-The fields of record nodes may have a **port** specified as well. The port may have an individual name that you may refer to when defining an edge (see the [edge](#edge) section). This way you may decide which field of the record an edge tail or head is attached to. In the following example the field labeled 'Fred' has a port assigned, named 'port1'. The edge that joins the two nodes refers to that port name to attach the tail to it.
+The fields of record nodes may have a **port** specified as well. The port may have an individual name that you may refer to when defining an edge (see the [edge](#edges) section). This way you may decide which field of the record an edge tail or head is attached to. In the following example the field labeled 'Fred' has a port assigned, named 'port1'. The edge that joins the two nodes refers to that port name to attach the tail to it.
 
 <p align="center">
   <img src="./Assets/Examples/record-node-subrecord-with-port.svg">
@@ -420,6 +419,7 @@ Nodes may have an HTML label assigned. This way you can handle more complex node
 using GiGraph.Dot.Extensions; // ToHtml
 ...
 
+// use the ToHtml extension method on a node
 graph.Nodes.Add("Bar").ToHtml
 (
     @"<TABLE BORDER=""0"" CELLBORDER=""1"" CELLSPACING=""0"" CELLPADDING=""4"">
@@ -482,7 +482,7 @@ digraph
 
 #### Customizing edge placement
 
-Similarly to the record node case, you can specify *ports* within the HTML table. As already mentioned, the port may have an individual name that you may refer to when defining an edge (see the [edge](#edge) section). This way you may decide which field of the HTML table an edge tail or head is attached to. In the example above the field labeled 'Fred' has a port assigned, named 'port1', so it can be referred to by its name from an edge. See the following example that extends the code above with an edge.
+Similarly to the record node case, you can specify *ports* within the HTML table. As already mentioned, the port may have an individual name that you may refer to when defining an edge (see the [edge](#edges) section). This way you may decide which field of the HTML table an edge tail or head is attached to. In the example above the field labeled 'Fred' has a port assigned, named 'port1', so it can be referred to by its name from an edge. See the following example that extends the code above with an edge.
 
 ```c#
 ...
@@ -515,14 +515,11 @@ digraph
   <img src="./Assets/Examples/html-node-with-port.svg">
 </p>
 
-See also a similar example in the [record nodes](#record-nodes) section.
-
-
 
 
 ### Node groups
 
-When adding nodes to a graph, subgraph or cluster, you may use a node group that has a shared list of attributes for all the nodes within it. To do it, use one of the overloads of the *Add* method that accepts multiple node identifiers. Note that it is only a shorthand for adding multiple nodes at once (assuming that all of them should have the same attributes or no attributes).
+When adding nodes to a graph, subgraph or cluster, you may use a node group that has a shared list of attributes for all the nodes within it. To do it, use one of the overloads of the *Add* method that accepts multiple node identifiers. Note that it is only a shorthand for adding multiple nodes that share one list of attributes.
 
 ```c#
 graph.Nodes.Add
@@ -589,12 +586,17 @@ graph.Nodes.AddRange
 
 ## Edges
 
-Edges **join two nodes**: a tail node and a head node (this naming convention is used in the library even though a graph may be undirected, in which case these terms are not relevant). Edges refer to nodes by their identifiers (note that the nodes do not necessarily have to exist in the node collection of a graph, subgraph or cluster).
-
-Edges support customizing which side of the node (and/or cell, when record nodes are used) the head and/or tail of the edge is attached to.
+Edges **join two nodes**: a tail node and a head node (this naming convention is used in the library even though a graph may be undirected, in which case these terms are not relevant). Edges refer to nodes by their identifiers (note that the nodes do not necessarily have to exist in the node collection of a graph, subgraph or cluster, and they will still be visualized).
 
 ```c#
-// add an edge that joins a Foo node with a Bar node
+graph.Edges.Add("Foo", "Bar");
+```
+
+Edges have attributes, and *label* is probably one of those that you will use most often. Edges support customizing which side of a node (and/or cell, when record nodes are used) the head and/or tail of the edge is attached to. This can be done in two ways: by using attributes, or by using the *Port* properties on edge tail or head. The difference is that the attributes may be set globally, as opposed to the *Port* properties on individual endpoints.
+
+The code below applies attributes to an edge, and also specifies on which sides of its endpoints it should be attached to.
+
+```c#
 graph.Edges.Add("Foo", "Bar", edge =>
 {
     edge.Attributes.Label = "Baz";
@@ -603,7 +605,18 @@ graph.Edges.Add("Foo", "Bar", edge =>
     // the tail and the head of the edge will be attached to the left side of the nodes
     edge.Tail.Port.CompassPoint = DotCompassPoint.West;
     edge.Head.Port.CompassPoint = DotCompassPoint.West;
+
+    // it may as well be done by using attributes
+    edge.Attributes.TailPort = DotCompassPoint.West;
+    edge.Attributes.HeadPort = DotCompassPoint.West;
 });
+```
+
+```dot
+digraph
+{
+    Foo:w -> Bar:w [ color = blue, headport = w, label = Baz, tailport = w ]
+}
 ```
 
 <p align="center">
@@ -612,10 +625,11 @@ graph.Edges.Add("Foo", "Bar", edge =>
 
 
 
-An edge may also be created and added to the collection explicitly:
+
+An edge may as well be created and added to an edge collection explicitly:
 
 ```c#
-// create an edge that joins a Foo node with a Bar node
+// create an edge
 var edge = new DotEdge("Foo", "Bar");
 
 // optionally set the compass points as in the previous example,
@@ -639,7 +653,9 @@ graph.Edges.Add(edge);
 
 ### Edge groups
 
-Edge groups join a single node with multiple nodes, multiple nodes with a single node, or multiple nodes with multiple nodes. The examples below present each of these use cases. An edge group may be understood as a simpler approach to specifying multiple edges at once, with the same properties for all. You may as well add each of them individually to achieve the same effect.
+Edge groups join a single node with multiple nodes, multiple nodes with a single node, or multiple nodes with multiple nodes. The examples below present each of these use cases. An edge group may be understood as a simpler approach to specifying multiple edges, with the assumption that all of them share one list of attributes. The other way is adding individual edges to an edge collection separately, with the head or tail node repeated multiple times.
+
+Note that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*.
 
 
 
@@ -653,8 +669,8 @@ var edgeGroup = new DotOneToManyEdgeGroup("Foo", "Bar", "Baz");
 
 // and also equivalent to
 edgeGroup = new DotOneToManyEdgeGroup(
-    new DotEndpoint("Foo"),
-    new DotEndpointGroup("Bar", "Baz"));
+    new DotEndpoint("Foo"), // or just "Foo" (implicitly convertible to DotEndpoint)
+    new DotEndpointGroup("Bar", "Baz")); // or new [] { "Foo", "Bar" } (implicitly convertible to DotEndpointGroup)
 
 graph.Edges.Add(edgeGroup);
 ```
@@ -760,18 +776,18 @@ digraph
 
 ### Edge sequences
 
-An edge sequence lets you join a sequence of consecutive nodes an/or node groups (the latter are represented by subgraphs). Similarly to edge groups, a sequence may be understood as a simpler approach to specifying multiple edges at once, with the same properties for all. You may as well add each of them individually to achieve the same effect.
+An edge sequence lets you join a sequence of consecutive nodes an/or node groups (the latter are represented by subgraphs). Similarly to edge groups, a sequence may be understood as a simpler approach to specifying multiple edges at once, with a shared list of attributes. The other way is adding consecutive edges to an edge collection separately.
 
 
 
 #### A sequence of consecutive nodes
 
 ```c#
+graph.Edges.AddSequence("Foo", "Bar", "Baz");
+
+// the code above is equivalent to
 var edgeSequence = new DotEdgeSequence("Foo", "Bar", "Baz");
 graph.Edges.Add(edgeSequence);
-
-// or simply
-graph.Edges.AddSequence("Foo", "Bar", "Baz");
 ```
 
 ```dot
@@ -790,18 +806,18 @@ digraph
 #### A sequence of consecutive nodes and groups of nodes
 
 ```c#
+graph.Edges.AddSequence(
+    new DotEndpoint("Foo"),
+    new DotEndpointGroup("Bar", "Baz", "Qux"),
+    new DotEndpoint("Quux"));
+
+// the code above is equivalent to
 var edgeSequence = new DotEdgeSequence(
     new DotEndpoint("Foo"),
     new DotEndpointGroup("Bar", "Baz", "Qux"),
     new DotEndpoint("Quux"));
 
 graph.Edges.Add(edgeSequence);
-
-// or simply
-graph.Edges.AddSequence(
-    new DotEndpoint("Foo"),
-    new DotEndpointGroup("Bar", "Baz", "Qux"),
-    new DotEndpoint("Quux"));
 ```
 
 ```dot
@@ -818,18 +834,20 @@ digraph
 
 #### Sequence attributes
 
-Sequences support attributes too. You may set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection. Note as well that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*. This might come in handy when you add multiple nodes to the sequence, and need specific initialization of only some of them.
+Sequences support attributes too. You may set them either directly on the attributes collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection.
 
 ```c#
-graph.Edges.AddSequence(
+graph.Edges.AddSequence
+(
     edge =>
     {
         // set attributes (they affect all edges in the sequence)
         edge.Attributes.Color = Color.Red;
     },
     "Foo",
-    new[] { "Bar", "Baz", "Qux" },
-    new DotEndpoint("Quux", DotCompassPoint.North));
+    new DotEndpointGroup("Bar", "Baz", "Qux"),
+    new DotEndpoint("Quux", DotCompassPoint.North)
+);
 ```
 
 ```dot
