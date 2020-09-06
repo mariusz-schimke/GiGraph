@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Types.Colors;
 
-namespace GiGraph.Dot.Examples.Basic
+namespace GiGraph.Dot.Examples.Complex
 {
     public static class WithCustomStyles
     {
@@ -15,13 +15,12 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
             graph.Attributes.FontName = "Helvetica";
 
-            // set the defaults for all nodes of the graph
+            // set global node attributes (for all nodes of the graph)
             graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
-            graph.Nodes.Attributes.Style = DotStyles.Filled;
+            graph.Nodes.Attributes.SetFilled(new DotGradientColor(Color.Turquoise, Color.RoyalBlue));
             graph.Nodes.Attributes.FontName = graph.Attributes.FontName;
-            graph.Nodes.Attributes.FillColor = new DotGradientColor(Color.Turquoise, Color.RoyalBlue);
 
-            // set the defaults for all edges of the graph
+            // set global edge attributes (for all edges of the graph)
             graph.Edges.Attributes.ArrowHead = graph.Edges.Attributes.ArrowTail = DotArrowheadShape.Vee;
             graph.Edges.Attributes.FontName = graph.Attributes.FontName;
             graph.Edges.Attributes.FontSize = 10;
@@ -110,7 +109,7 @@ namespace GiGraph.Dot.Examples.Basic
                 sg.Edges.Add("STRIPED", "WEDGED");
             });
 
-            // a subgraph example – to override the default attributes for a group of nodes and/or edges
+            // a subgraph example – to override global attributes for a group of nodes and/or edges
             graph.Subgraphs.Add(sg =>
             {
                 sg.Nodes.Attributes.Color = Color.RoyalBlue;
