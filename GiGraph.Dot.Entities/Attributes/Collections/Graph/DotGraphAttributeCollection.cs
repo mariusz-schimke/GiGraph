@@ -101,6 +101,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
+        
+        [DotAttributeKey("center")]
+        public virtual bool? Center
+        {
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+        }
 
         [DotAttributeKey("imagepath")]
         public virtual string ImageDirectories

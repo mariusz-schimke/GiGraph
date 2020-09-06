@@ -22,7 +22,9 @@
     
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that can be visualized and/or converted to an image with external tools. A handy one is a plugin for Visual Studio Code, named Graphviz Preview. There are also online tools like www.webgraphviz.com, where you can paste the script to view your graph.</description>
     
-    <releaseNotes>- NodeDefaults and EdgeDefaults properties moved to the Nodes and Edges collections. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.5/README.md#global-attributes.
+    <releaseNotes>- NodeDefaults and EdgeDefaults properties moved to the Nodes and Edges collections. See https://github.com/mariusz-schimke/GiGraph/blob/1.6/README.md#global-attributes.
+
+- Added support for attributes: center (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
 
 - Refactoring.
 
