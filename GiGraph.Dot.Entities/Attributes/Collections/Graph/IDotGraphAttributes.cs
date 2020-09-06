@@ -127,6 +127,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         int? GradientAngle { get; set; }
 
         /// <summary>
+        ///     If true, the drawing is centered in the output canvas (default: false).
+        /// </summary>
+        bool? Center { get; set; }
+        
+        /// <summary>
         ///     If 90, sets drawing orientation to landscape (default: 0).
         /// </summary>
         int? RotateBy { get; set; }
