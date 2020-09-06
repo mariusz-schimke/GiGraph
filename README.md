@@ -25,6 +25,10 @@ For the complete documentation of the DOT language, and the visualization capabi
 </p>
 
 
+**If you have any suggestions or comments, feel free to create an issue.**
+
+
+
 # Generating a graph
 
 For a basic case, create a new **DotGraph** instance, and use its *Edges* collection to define connections between nodes. In order to generate the output DOT script, call the ***Build*** extension method on the graph instance.
