@@ -144,90 +144,116 @@ var graph = new DotGraph(isStrict: true);
 ```
 
 
-Graph has its own attributes, which you may set by using its *Attributes* property.
+
+## Attributes
+
+Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrow head shape and so on. When you don't specify attributes explicitly, their default values depend on the graph visualization engine you use.
 
 ```c#
-graph.Attributes.Label = "My awesome graph";
+graph.Attributes.Label = "My graph";
 graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
 graph.Attributes.BackgroundColor = Color.LightGray;
 ```
 
-
-
-### Subsections
-
-By design, the library generates the output DOT script with elements written in the following order:
-
-* global graph attributes,
-* global node attributes,
-* global edge attributes,
-* subgraphs,
-* clusters,
-* nodes,
-* edges.
-
-The DOT grammar, however, lets you place individual elements in the script in any order. It may have impact on the way the graph is laid out, or what attributes are actually applied to specific elements on visualization.
-
-The subsections, as they are called in the library, are separate groups of elements. They are written consecutively, one group after another, in the order they are added to the collection of subsections on the graph instance level. The elements in each such section, on the other hand, are written in the order mentioned earlier.
-
-By using subsections you may split the DOT script into multiple sections, and, for instance, set different global attributes in any of them. Remember, however, that attributes set in one section have impact on the elements that follow them in the output script. So as long as sections are written consecutively, setting attributes in any of them has impact not only on the elements in that specific section, but also on elements in the sections that follow.
-
-*Note that in most cases you won't probably need to split the DOT script into sections. They give you the flexibility to control the order individual elements or groups of elements are written, but it isn't usually necessary. When you want to specify attributes for specific groups of elements of the graph, you will probably prefer using [subgraphs](#subgraph), as they give you more granular control over the elements they contain, without affecting others.*
-
-Consider the following example to see how the primary section (on the graph instance level), and subsections, are rendered in the output DOT script, and how their attributes impact graph visualization.
+```c#
+graph.Nodes.Add("Foo", attrs =>
+{
+    attrs.Label = "My Foo node";
+    attrs.Style = DotStyles.Filled;
+    attrs.FillColor = Color.Blue;
+});
+```
 
 ```c#
-// the primary section (on the graph instance level)
-graph.Annotation = "the example graph (the primary section)";
-
-graph.Nodes.Attributes.Annotation = "set default node color and style";
-graph.Nodes.Attributes.Color = Color.Orange;
-graph.Nodes.Attributes.Style = DotStyle.Filled;
-
-graph.Edges.Add("foo", "bar");
-
-// the extra sections that will appear next
-graph.Subsections.Add(subsection =>
+graph.Edges.Add("Foo", "Bar", edge =>
 {
-    subsection.Annotation = "subsection 1 - override node color";
-    subsection.Nodes.Attributes.Color = Color.Turquoise;
-    subsection.Edges.Add("baz", "qux");
+    edge.Attributes.Label = "My Foo-Bar edge";
+    edge.Attributes.Color = Color.Red;
 });
+```
 
-graph.Subsections.Add(subsection =>
+There are dozens attributes that may be set on different graph elements, but the library supports only a subset of them. By exposing properties on the attributes collections (as in the examples above), the libary ensures that the strongly-typed value you provide is correctly converted to string in a format understood by visualization engines. However, you may also set any attribute by providing its key and value directly, as string (see the example below). This approach should be used with care, and the value should always follow the DOT syntax rules specific to the attribute you set (see [documentation](https://www.graphviz.org/doc/info/attrs.html)). Otherwise the visualization tool you use may be unable to process it correctly.
+
+```c#
+node.Attributes.Set("fillcolor", "red:blue");
+```
+
+Under the hood, this overload of the *Set* method adds a *DotStringAttribute* instance to the collection of attributes:
+
+```c#
+var attribute = new DotStringAttribute("fillcolor", "red:blue");
+node.Attributes.Set(attribute);
+```
+
+*DotStringAttribute* may be used for any type of property. Its *value* is rendered in the output DOT script exactly the way it is provided (without any further processing like escaping).
+
+
+
+***If you come across an attribute that is not exposed as a property, and you find it necessary for your use case, please let me know by opening an issue!***
+
+
+
+### Global attributes
+
+Graph, node, and edge attributes may be specified on graph, subgraph, or cluster level. This way the attributes (by the library desing), apply to all elements on that level, and you don't have to specify them individually, per element. This approach comes in handy when you want to apply certain styling, for instance, to all elements at once. Still, you may set attributes directly on individual elements, to override or extend the global ones.
+
+```c#
+// node attributes on graph level (they apply to all nodes of the graph)
+graph.Nodes.Attributes.Color = Color.Orange;
+```
+
+```c#
+// edge attributes on graph level (they apply to all edges of the graph)
+graph.Edges.Attributes.Color = Color.Red;
+```
+
+```dot
+digraph
 {
-    subsection.Annotation = "subsection 2 - set default edge style";
-    subsection.Edges.Attributes.Style = DotStyle.Dashed;
-    subsection.Edges.Add("quux", "fred");
+    node [ color = "orange" ]
+    edge [ color = "red" ]
+}
+```
+
+In some cases you will want to restore an attribute on some elements to its *default* value used by the visualization engine. For some attributes it may be achieved by assigning them a blank value, but the library does not render attributes with *null* values assigned to their corresponding properties. There is a workaround, however: you may use the *SetNull* method on a collection of attributes, and specify the attribute to nullify either by a lambda expression (recommended), or by its key.
+
+Consider the following example:
+
+```c#
+// node color set on graph level
+graph.Nodes.Attributes.Color = Color.Orange;
+
+// this node will have the globally set color
+graph.Nodes.Add("orange");
+
+// and this node will have a blank color value assigned so that the visualization engine assigns it the default color
+graph.Nodes.Add("restored", attrs =>
+{
+    // assign null to the color attribute of the node by specifying a lambda expression (recommended)
+    attrs.SetNull(a => a.Color);
+  
+    // or by specifying its DOT key explicitly
+    attrs.SetNull("color");
+
+    // the following won't do the trick because it removes the attribute from the collection, so it won't appear in the output DOT script
+    // attrs.Color = null;
 });
 ```
 
 ```dot
-// the example graph (the primary section)
 digraph
 {
-    // set default node color and style
-    node [ color = orange, style = filled ]
+    node [ color = orange ]
 
-    foo -> bar
-
-    /* subsection 1 - override node color */
-
-    node [ color = turquoise ]
-
-    baz -> qux
-
-    /* subsection 2 - set default edge style */
-
-    edge [ style = dashed ]
-
-    quux -> fred
+    orange
+    restored [ color = "" ]
 }
 ```
 
 <p align="center">
-  <img src="./Assets/Examples/subsections.svg">
+  <img src="./Assets/Examples/default-attributes.svg">
 </p>
+
 
 
 
@@ -934,94 +960,6 @@ digraph
 
 
 
-## Attributes
-
-Every element of the graph, including the graph itself, may have **attributes** set. These are for instance background color, style, node shape, arrow head shape and so on.
-
-```c#
-node.Attributes.Label = "My node label";
-node.Attributes.Style = DotStyle.Filled;
-node.Attributes.FillColor = new DotGradientColor(Color.Red, Color.Blue);
-```
-
-```c#
-edge.Attributes.Label = "My edge label";
-edge.Attributes.Color = Color.Red;
-```
-
-You may set attributes as shown above, by assigning a value to a property—this is the easiest way. However, some properties supported by DOT graph visualization tools are not necessarily supported by the library, so they may not be exposed as properties. In such cases you may set them by specifying their key and an appropriately formatted value for it. You have to know exactly what key to use, and what value is valid for it ([see documentation](https://www.graphviz.org/doc/info/attrs.html)). This approach should be used with care, and the value should always follow the DOT syntax rules. Otherwise the visualization tool you use may be unable to process it correctly.
-
-```c#
-// setting the fill color (or any other attribute)
-var attribute = new DotStringAttribute("fillcolor", "red:blue");
-node.Attributes.Set(attribute);
-
-// you may achieve the same without creating an attribute instance explicitly
-node.Attributes.Set("fillcolor", "red:blue");
-```
-
-*DotStringAttribute* may be used for any type of property. Its *value* is rendered in the output DOT script exactly the way it is provided (without any further processing like escaping).
-
-### Default (global) attributes
-
-A graph, a subgraph, and a cluster may have node and edge defaults specified. When you set them, they affect (by the library design) all nodes and/or edges encompassed by the graph, subgraph, or cluster respectively. They may be overridden, however, by attributes set on individual graph elements.
-
-```c#
-graph.Nodes.Attributes.Color = Color.Orange;
-```
-
-```c#
-graph.Edges.Attributes.Color = Color.Red;
-```
-
-```dot
-digraph
-{
-    node [ color = "orange" ]
-    edge [ color = "red" ]
-}
-```
-
-In some cases you will want to restore an attribute of an individual element to its original default value used by the visualization engine. Some attributes support that, and it may be achieved by assigning them an empty value in the DOT script. You may do that by calling the *SetNull* method that has two overloads:
-
-* one requires a DOT key of the attribute to nullify,
-* the other requires a lambda expression that points to a property to nullify (recommended).
-
-Consider the following example:
-
-```c#
-graph.Nodes.Attributes.Color = Color.Orange;
-
-graph.Nodes.Add("orange");
-graph.Nodes.Add("restored", attrs =>
-{
-    // nullify the color attribute by specifying its DOT key explicitly
-    attrs.SetNull("color");
-  
-    // or by specifying a lambda expression (recommended)
-    attrs.SetNull(a => a.Color);
-
-    // the following won't do the trick because it removes the attribute from the collection, so it won't appear in the output DOT script
-    // attrs.Color = null;
-});
-```
-
-```dot
-digraph
-{
-    node [ color = orange ]
-
-    orange
-    restored [ color = "" ]
-}
-```
-
-<p align="center">
-  <img src="./Assets/Examples/default-attributes.svg">
-</p>
-
-
-
 ### Label
 
 Label is a textual attribute you may assign to the root graph and clusters (as a title), to nodes (as the text displayed within them), and to edges (as the text displayed next to them). It may either be plain text, or formatted text; you may also justify its individual lines.
@@ -1125,6 +1063,12 @@ digraph
 </p>
 
 
+# Examples
+
+The following chapters present examples of styling, grouping nodes in clusters and customizing graph layout.
+
+
+
 ## Customizing styles
 
 Graph nodes and edges may by styled globally, locally, and individually, using [attributes](#attributes).
@@ -1170,7 +1114,7 @@ namespace GiGraph.Dot.Examples
 
             // set the defaults for all nodes of the graph
             graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
-            graph.Nodes.Attributes.Style = DotStyle.Filled;
+            graph.Nodes.Attributes.Style = DotStyles.Filled;
             graph.Nodes.Attributes.FontName = graph.Attributes.FontName;
             graph.Nodes.Attributes.FillColor = new DotGradientColor(Color.Turquoise, Color.RoyalBlue);
 
@@ -1188,7 +1132,7 @@ namespace GiGraph.Dot.Examples
                 sg.Edges.Add("G", "H", edge =>
                 {
                     edge.Attributes.Label = "DOTTED";
-                    edge.Attributes.Style = DotStyle.Dotted;
+                    edge.Attributes.Style = DotStyles.Dotted;
                 });
             });
 
@@ -1230,7 +1174,7 @@ namespace GiGraph.Dot.Examples
                 sg.Nodes.Add("STRIPED", attrs =>
                 {
                     // set style to striped
-                    attrs.Style = DotStyle.Filled | DotStyle.Striped;
+                    attrs.Style = DotStyles.Filled | DotStyles.Striped;
 
                     attrs.Color = Color.Transparent;
 
@@ -1248,7 +1192,7 @@ namespace GiGraph.Dot.Examples
                     attrs.Shape = DotNodeShape.Circle;
 
                     // set wedged style
-                    attrs.Style = DotStyle.Filled | DotStyle.Wedged;
+                    attrs.Style = DotStyles.Filled | DotStyles.Wedged;
 
                     attrs.Color = Color.Transparent;
 
