@@ -195,7 +195,7 @@ node.Attributes.Set(attribute);
 
 ### Global attributes
 
-Graph, node, and edge attributes may be specified on graph, subgraph, or cluster level. This way the attributes (by the library desing), apply to all elements on that level, and you don't have to specify them individually, per element. This approach comes in handy when you want to apply certain styling, for instance, to all elements at once. Still, however, you may set attributes directly on individual elements, to override or extend the global ones.
+Node and edge attributes may be specified on graph, subgraph, or cluster level. This way the attributes (by the library desing), apply to all elements on that level, and you don't have to specify them individually, per element. This approach comes in handy when you want to apply certain styling, for instance, to all elements of the graph or subgraph/cluster at once. Attributes may be set directly on individual elements at the same time to override or extend the attributes set globally.
 
 ```c#
 // node attributes on graph level (they apply to all nodes of the graph)
@@ -1121,15 +1121,7 @@ This chapter presents examples of styling, grouping nodes in clusters, and custo
 
 ## Customizing styles
 
-Graph nodes and edges may by styled globally, locally, and individually, using [attributes](#attributes).
-
-- To set their attributes globally, for the whole graph, use *NodeDefaults* and *EdgeDefaults* on the graph instance.
-- To set them locally, for a group of nodes and edges, use a subgraph or a cluster, and set above properties on the subgraph/cluster instance (see the [subgraph](#subgraph) and the [cluster](#cluster) sections to learn when to use which).
-- To set them individually, use the *Attributes* property on the edge and/or node instances directly.
-
-Apart from those, the graph itself, and a cluster, also have their own collections of attributes that you may set. These are for instance background color, style, label, etc.
-
-The example below presents how individual elements may be styled. At the beginning, the global node shape is set to rectangular, and the style to filled, so that the fill color may be set. The example nodes have set plain color fill, striped/wedged fill (with custom stripe/wedge proportions), gradient fill, or dual color fill with proportions. Edges, on the other hand, have the 'vee' shape set globally, and custom styles set individually: plain color, multicolor series or splines, and a dotted style.
+The example below presents how individual graph elements may be customized. The initial lines of the source code set global node shape to rectangular, and its style to filled, so that a fill color may be applied. The nodes have: plain color fill, striped/wedged fill (with custom stripe/wedge proportions), gradient fill, and also dual color fill with custom area proportions. Edges, on the other hand, have the 'vee' shape set globally, and custom styles set individually: plain color, multicolor series or splines, and a dotted style.
 
 
 
@@ -1138,8 +1130,7 @@ The example below presents how individual elements may be styled. At the beginni
 </p>
 
 
-
-*In the example, groups of elements are embedded in subgraphs only to control the order they are visualized (for clarity). In one case, a subgraph is used as an example of setting style locally, for a group of elements.*
+*In the example, groups of elements are embedded in subgraphs only to control the order they are visualized (for clarity). One of the subgraphs, however, is actually meaningful, and is used as an example of setting style for a custom group of elements.*
 
 
 ```c#
@@ -1164,9 +1155,8 @@ namespace GiGraph.Dot.Examples
 
             // set the defaults for all nodes of the graph
             graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
-            graph.Nodes.Attributes.Style = DotStyles.Filled;
+            graph.Nodes.Attributes.SetFilled(new DotGradientColor(Color.Turquoise, Color.RoyalBlue));
             graph.Nodes.Attributes.FontName = graph.Attributes.FontName;
-            graph.Nodes.Attributes.FillColor = new DotGradientColor(Color.Turquoise, Color.RoyalBlue);
 
             // set the defaults for all edges of the graph
             graph.Edges.Attributes.ArrowHead = graph.Edges.Attributes.ArrowTail = DotArrowheadShape.Vee;
@@ -1174,7 +1164,7 @@ namespace GiGraph.Dot.Examples
             graph.Edges.Attributes.FontSize = 10;
 
 
-            // -- (subgraphs are used here only to control the order the elements are visualized, and may be removed) --
+            // -- (subgraphs are used here only to control the order the elements are visualized in the example, and do not actually have to be used) --
 
             graph.Subgraphs.Add(sg =>
             {
