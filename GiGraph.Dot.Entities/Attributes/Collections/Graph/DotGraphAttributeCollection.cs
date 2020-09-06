@@ -183,5 +183,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             }
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPackingModeDefinitionAttribute(k, v));
         }
+        
+        [DotAttributeKey("dpi")]
+        public virtual double? Resolution
+        {
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(Resolution), v.Value, "Resolution must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v.Value));
+        }
     }
 }

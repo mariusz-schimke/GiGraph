@@ -24,7 +24,7 @@
     
     <releaseNotes>- NodeDefaults and EdgeDefaults properties moved to the Nodes and Edges collections. See https://github.com/mariusz-schimke/GiGraph/blob/1.6/README.md#global-attributes.
 
-- Added support for attributes: center (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
+- Added support for attributes: center, dpi (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
 
 - Refactoring.
 
