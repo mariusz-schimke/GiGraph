@@ -23,11 +23,11 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Attributes.FillColor = Color.Brown;
             graph.Attributes.Comment = "graph_comment";
 
-            graph.NodeDefaults.Color = Color.Red;
-            graph.NodeDefaults.Label = "node_label";
+            graph.Nodes.Attributes.Color = Color.Red;
+            graph.Nodes.Attributes.Label = "node_label";
 
-            graph.EdgeDefaults.Color = Color.Blue;
-            graph.EdgeDefaults.Label = "edge_label";
+            graph.Edges.Attributes.Color = Color.Blue;
+            graph.Edges.Attributes.Label = "edge_label";
 
 
             graph.Nodes.Add("node3", attrs =>
@@ -80,8 +80,8 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Annotation = "graph comment";
 
             graph.Attributes.EdgesBetweenClusters = true;
-            graph.NodeDefaults.Label = "node label";
-            graph.EdgeDefaults.Label = "edge label";
+            graph.Nodes.Attributes.Label = "node label";
+            graph.Edges.Attributes.Label = "edge label";
 
             graph.Nodes.Add("node1");
             graph.Edges.Add("node1", "node2");

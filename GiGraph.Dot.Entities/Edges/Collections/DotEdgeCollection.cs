@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 
 namespace GiGraph.Dot.Entities.Edges.Collections
 {
@@ -14,17 +15,28 @@ namespace GiGraph.Dot.Entities.Edges.Collections
 
         protected DotEdgeCollection(
             Func<string, string, Predicate<DotEdgeDefinition>> matchEdgePredicate,
-            Predicate<DotEdgeDefinition> matchLoopPredicate)
+            Predicate<DotEdgeDefinition> matchLoopPredicate,
+            IDotEdgeAttributeCollection attributes)
         {
+            Attributes = attributes;
             _matchEdgePredicate = matchEdgePredicate;
             _matchLoopPredicate = matchLoopPredicate;
         }
 
-        public DotEdgeCollection()
+        public DotEdgeCollection(IDotEdgeAttributeCollection attributes)
+            : this
+            (
+                (tailNodeId, headNodeId) => edgeDefinition => DotEdge.Equals(edgeDefinition, tailNodeId, headNodeId),
+                edgeDefinition => DotEdge.IsLoopEdge(edgeDefinition),
+                attributes
+            )
         {
-            _matchEdgePredicate = (tailNodeId, headNodeId) => edgeDefinition => DotEdge.Equals(edgeDefinition, tailNodeId, headNodeId);
-            _matchLoopPredicate = edgeDefinition => DotEdge.IsLoopEdge(edgeDefinition);
         }
+
+        /// <summary>
+        ///     Gets the attributes to apply by default to all edges of the graph.
+        /// </summary>
+        public virtual IDotEdgeAttributeCollection Attributes { get; }
 
         public virtual string Annotation { get; set; }
 

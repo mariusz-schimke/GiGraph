@@ -16,17 +16,13 @@ namespace GiGraph.Dot.Entities.Graphs
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
-            DotClusterCollection clusters,
-            IDotNodeAttributeCollection nodeDefaults,
-            IDotEdgeAttributeCollection edgeDefaults)
+            DotClusterCollection clusters)
         {
             Attributes = attributes;
             Nodes = nodes;
             Edges = edges;
             Subgraphs = subgraphs;
             Clusters = clusters;
-            NodeDefaults = nodeDefaults;
-            EdgeDefaults = edgeDefaults;
         }
 
         /// <summary>
@@ -40,12 +36,6 @@ namespace GiGraph.Dot.Entities.Graphs
         public virtual DotNodeCollection Nodes { get; }
 
         /// <summary>
-        ///     The attributes to be used as default for all nodes in this graph when not specified explicitly for individual nodes in the
-        ///     <see cref="Nodes" /> collection.
-        /// </summary>
-        public virtual IDotNodeAttributeCollection NodeDefaults { get; }
-
-        /// <summary>
         ///     <para>
         ///         Gets the collection of edges.
         ///     </para>
@@ -56,12 +46,6 @@ namespace GiGraph.Dot.Entities.Graphs
         ///     </para>
         /// </summary>
         public virtual DotEdgeCollection Edges { get; }
-
-        /// <summary>
-        ///     The attributes to be used as default for all edges in this graph when not specified explicitly for individual edges in the
-        ///     <see cref="Edges" /> collection.
-        /// </summary>
-        public virtual IDotEdgeAttributeCollection EdgeDefaults { get; }
 
         /// <summary>
         ///     <para>
@@ -92,16 +76,14 @@ namespace GiGraph.Dot.Entities.Graphs
 
         public virtual string Annotation { get; set; }
 
-        public static DotGraphSection<TGraphAttributes> Create(TGraphAttributes attributes)
+        protected static DotGraphSection<TGraphAttributes> Create(TGraphAttributes attributes)
         {
             return new DotGraphSection<TGraphAttributes>(
                 attributes,
-                new DotNodeCollection(),
-                new DotEdgeCollection(),
+                new DotNodeCollection(new DotNodeAttributeCollection()),
+                new DotEdgeCollection(new DotEdgeAttributeCollection()),
                 new DotSubgraphCollection(),
-                new DotClusterCollection(),
-                new DotNodeAttributeCollection(),
-                new DotEdgeAttributeCollection());
+                new DotClusterCollection());
         }
     }
 }
