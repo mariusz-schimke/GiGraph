@@ -333,7 +333,7 @@ digraph
 
 #### Sub-records
 
-A *DotRecord* may be composed of textual fields (*DotRecordTextField*), as well as record fields (*DotRecord*), when you want to embed a sub-record inside a record. A record or a sub-record may also be flipped to change the orientation of its fields. By default sub-records have an orientation opposite to their parent record. The orientation of the root record, on the other hand, is dependent on the layout direction of the graph.
+A *DotRecord* may be composed of textual fields (*DotRecordTextField*), as well as record fields (*DotRecord*), when you want to embed a sub-record inside a record. A record or a sub-record may also be flipped to change the orientation of its fields. By default, sub-records have an orientation opposite to the orientation of their parent record. The orientation of the root record, on the other hand, is dependent on the layout direction of the graph.
 
 ```c#
 using GiGraph.Dot.Extensions; // ToRecord
@@ -355,7 +355,7 @@ digraph
 </p>
 #### Record builder
 
-The *DotRecordBuilder* class provides a simpler approach to building complex record nodes. To give you an idea how to use it, consider the following examples that generate the same output script as the [previous example](#sub-records).
+The *DotRecordBuilder* class facilitates building complex record nodes. To give you an idea how to use it, consider the following examples that generate the same output script as the [previous example](#sub-records).
 
 ```c#
 var builder = new DotRecordBuilder()
