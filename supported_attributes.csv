@@ -166,10 +166,10 @@ resolution,G,double,"96.0
 root,GN,"string
 bool","<none>(graphs)
 false(nodes)",,"circo, twopi only",
-rotate,G,int,0,,,
+rotate,G,int,0,,,yes
 rotation,G,double,0,,sfdp only,
-samehead,E,string,"""""",,dot only,
-sametail,E,string,"""""",,dot only,
+samehead,E,string,"""""",,dot only,yes
+sametail,E,string,"""""",,dot only,yes
 samplepoints,N,int,"8(output)
 20(overlap and image maps)",,,
 scale,G,"double
@@ -177,41 +177,41 @@ point",,,not dot,
 searchsize,G,int,30,,dot only,
 sep,G,"addDouble 
 addPoint",+4,,not dot,
-shape,N,shape,ellipse,,,
+shape,N,shape,ellipse,,,yes
 shapefile,N,string,"""""",,,
 showboxes,ENG,int,0,0,dot only,
-sides,N,int,4,0,,
+sides,N,int,4,0,,yes
 size,G,"double
-point",,,,
-skew,N,double,0.0,-100.0,,
+point",,,,yes
+skew,N,double,0.0,-100.0,,yes
 smoothing,G,smoothType,"""none""",,sfdp only,
-sortv,GCN,int,0,0,,
+sortv,GCN,int,0,0,,yes
 splines,G,"bool 
-string",,,,
+string",,,,yes
 start,G,startType,"""""",,"fdp, neato only",
-style,ENCG,style,"""""",,,
+style,ENCG,style,"""""",,,yes
 stylesheet,G,string,"""""",,svg only,
-tailURL,E,escString,"""""",,"svg, map only",
+tailURL,E,escString,"""""",,"svg, map only",yes
 tail_lp,E,point,,,write only,
-tailclip,E,bool,true,,,
-tailhref,E,escString,"""""",,"svg, map only",
-taillabel,E,lblString,"""""",,,
-tailport,E,portPos,center,,,
-tailtarget,E,escString,<none>,,"svg, map only",
-tailtooltip,E,escString,"""""",,"svg, cmap only",
+tailclip,E,bool,true,,,yes
+tailhref,E,escString,"""""",,"svg, map only",yes
+taillabel,E,lblString,"""""",,,yes
+tailport,E,portPos,center,,,yes
+tailtarget,E,escString,<none>,,"svg, map only",yes
+tailtooltip,E,escString,"""""",,"svg, cmap only",yes
 target,ENGC,"escString 
-string",<none>,,"svg, map only",
-tooltip,NEC,escString,"""""",,"svg, cmap only",
+string",<none>,,"svg, map only",yes
+tooltip,NEC,escString,"""""",,"svg, cmap only",yes
 truecolor,G,bool,,,bitmap output only,
 vertices,N,pointList,,,write only,
 viewport,G,viewPort,"""""",,,
 voro_margin,G,double,0.05,0.0,not dot,
 weight,E,"int
 double",1,"0(dot,twopi)
-1(neato,fdp)",,
-width,N,double,0.75,0.01,,
+1(neato,fdp)",,yes
+width,N,double,0.75,0.01,,yes
 xdotversion,G,string,,,xdot only,
-xlabel,EN,lblString,"""""",,,
+xlabel,EN,lblString,"""""",,,yes
 xlp,NE,point,,,write only,
 z,N,double,0.0,"-MAXFLOAT
 -1000",,
