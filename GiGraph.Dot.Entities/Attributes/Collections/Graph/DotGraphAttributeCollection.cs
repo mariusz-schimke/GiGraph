@@ -185,6 +185,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         }
 
         [DotAttributeKey("dpi")]
+        public virtual double? Dpi
+        {
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(Dpi), v.Value, "DPI must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v.Value));
+        }
+
+        [DotAttributeKey("resolution")]
         public virtual double? Resolution
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());

@@ -1,0 +1,217 @@
+Name,Used By,Type,Default,Minimum,Notes,Supported
+Damping,G,double,0.99,0.0,neato only,
+K,GC,double,0.3,0,"sfdp, fdp only",
+URL,ENGC,escString,<none>,,"svg, postscript, map only",yes
+_background,G,string,<none>,,,
+area,NC,double,1.0,>0,patchwork only,
+arrowhead,E,arrowType,normal,,,yes
+arrowsize,E,double,1.0,0.0,,yes
+arrowtail,E,arrowType,normal,,,yes
+bb,G,rect,,,write only,
+bgcolor,GC,"color 
+colorList",<none>,,,yes
+center,G,bool,false,,,yes
+charset,G,string,"""UTF-8""",,,yes
+class,ENCG,string,"""""",,svg only,
+clusterrank,G,clusterMode,local,,dot only,yes
+color,ENC,"color 
+colorList",black,,,yes
+colorscheme,ENCG,string,"""""",,,yes
+comment,ENG,string,"""""",,,yes
+compound,G,bool,false,,dot only,yes
+concentrate,G,bool,false,,,yes
+constraint,E,bool,true,,dot only,yes
+decorate,E,bool,false,,,yes
+defaultdist,G,double,1+(avg. len)*sqrt(|V|),epsilon,neato only,
+dim,G,int,2,2,"sfdp, fdp, neato only",
+dimen,G,int,2,2,"sfdp, fdp, neato only",
+dir,E,dirType,"forward(directed)
+none(undirected)",,,yes
+diredgeconstraints,G,"string
+bool",false,,neato only,
+distortion,N,double,0.0,-100.0,,yes
+dpi,G,double,"96.0
+0.0",,"svg, bitmap output only",yes
+edgeURL,E,escString,"""""",,"svg, map only",yes
+edgehref,E,escString,"""""",,"svg, map only",yes
+edgetarget,E,escString,<none>,,"svg, map only",yes
+edgetooltip,E,escString,"""""",,"svg, cmap only",yes
+epsilon,G,double,".0001 * # nodes(mode == KK)
+.0001(mode == major)
+.01(mode == sgd)",,neato only,
+esep,G,"addDouble 
+addPoint",+3,,not dot,
+fillcolor,NEC,"color 
+colorList","lightgrey(nodes)
+black(clusters)",,,yes
+fixedsize,N,"bool 
+string",false,,,yes
+fontcolor,ENGC,color,black,,,yes
+fontname,ENGC,string,"""Times-Roman""",,,yes
+fontnames,G,string,"""""",,svg only,
+fontpath,G,string,system-dependent,,,yes
+fontsize,ENGC,double,14.0,1.0,,yes
+forcelabels,G,bool,true,,,yes
+gradientangle,NCG,int,"""""",,,yes
+group,N,string,"""""",,dot only,yes
+headURL,E,escString,"""""",,"svg, map only",yes
+head_lp,E,point,,,write only,
+headclip,E,bool,true,,,yes
+headhref,E,escString,"""""",,"svg, map only",yes
+headlabel,E,lblString,"""""",,,yes
+headport,E,portPos,center,,,yes
+headtarget,E,escString,<none>,,"svg, map only",yes
+headtooltip,E,escString,"""""",,"svg, cmap only",yes
+height,N,double,0.5,0.02,,yes
+href,GCNE,escString,"""""",,"svg, postscript, map only",yes
+id,GCNE,escString,"""""",,"svg, postscript, map only",yes
+image,N,string,"""""",,,yes
+imagepath,G,string,"""""",,,yes
+imagepos,N,string,"""mc""",,,yes
+imagescale,N,"bool 
+string",false,,,
+inputscale,G,double,<none>,,"fdp, neato only",
+label,ENGC,lblString,"""\N"" (nodes)
+"""" (otherwise)",,,yes
+labelURL,E,escString,"""""",,"svg, map only",yes
+label_scheme,G,int,0,0,sfdp only,
+labelangle,E,double,-25.0,-180.0,,yes
+labeldistance,E,double,1.0,0.0,,yes
+labelfloat,E,bool,false,,,yes
+labelfontcolor,E,color,black,,,yes
+labelfontname,E,string,"""Times-Roman""",,,yes
+labelfontsize,E,double,14.0,1.0,,yes
+labelhref,E,escString,"""""",,"svg, map only",yes
+labeljust,GC,string,"""c""",,,yes
+labelloc,NGC,string,"""t""(clusters)
+""b""(root graphs)
+""c""(nodes)",,,yes
+labeltarget,E,escString,<none>,,"svg, map only",yes
+labeltooltip,E,escString,"""""",,"svg, cmap only",yes
+landscape,G,bool,false,,,
+layer,ENC,layerRange,"""""",,,
+layerlistsep,G,string,""",""",,,
+layers,G,layerList,"""""",,,
+layerselect,G,layerRange,"""""",,,
+layersep,G,string,""" :\t""",,,
+layout,G,string,"""""",,,
+len,E,double,"1.0(neato)
+0.3(fdp)",,"fdp, neato only",yes
+levels,G,int,MAXINT,0.0,sfdp only,
+levelsgap,G,double,0.0,,neato only,
+lhead,E,string,"""""",,dot only,yes
+lheight,GC,double,,,write only,
+lp,EGC,point,,,write only,
+ltail,E,string,"""""",,dot only,yes
+lwidth,GC,double,,,write only,
+margin,NCG,"double
+point",<device-dependent>,,,yes
+maxiter,G,int,"100 * # nodes(mode == KK)
+200(mode == major)
+30(mode == sgd)
+600(fdp)",,"fdp, neato only",
+mclimit,G,double,1.0,,dot only,
+mindist,G,double,1.0,0.0,circo only,
+minlen,E,int,1,0,dot only,yes
+mode,G,string,major,,neato only,
+model,G,string,shortpath,,neato only,
+mosek,G,bool,false,,neato only,
+newrank,G,bool,false,,dot only,
+nodesep,G,double,0.25,0.02,,yes
+nojustify,GCNE,bool,false,,,
+normalize,G,"double
+bool",false,,not dot,
+notranslate,G,bool,false,,neato only,
+"nslimit 
+nslimit1",G,double,,,dot only,
+ordering,GN,string,"""""",,dot only,yes
+orientation,N,double,0.0,360.0,,yes
+orientation,G,string,"""""",,,
+outputorder,G,outputMode,breadthfirst,,,
+overlap,G,"string
+bool",true,,not dot,
+overlap_scaling,G,double,-4,-1.0e10,prism only,
+overlap_shrink,G,bool,true,,prism only,
+pack,G,"bool 
+int",false,,,yes
+packmode,G,packMode,node,,,yes
+pad,G,"double
+point",0.0555 (4 points),,,yes
+page,G,"double
+point",,,,
+pagedir,G,pagedir,BL,,,
+pencolor,C,color,black,,,yes
+penwidth,CNE,double,1.0,0.0,,yes
+peripheries,NC,int,"shape default(nodes)
+1(clusters)",0,,yes
+pin,N,bool,false,,"fdp, neato only",
+pos,EN,"point 
+splineType",,,,
+quadtree,G,"quadType 
+bool",normal,,sfdp only,
+quantum,G,double,0.0,0.0,,
+rank,S,rankType,,,dot only,yes
+rankdir,G,rankdir,TB,,dot only,yes
+ranksep,G,"double
+doubleList","0.5(dot)
+1.0(twopi)",0.02,"twopi, dot only",yes
+ratio,G,"double
+string",,,,yes
+rects,N,rect,,,write only,
+regular,N,bool,false,,,yes
+remincross,G,bool,true,,dot only,
+repulsiveforce,G,double,1.0,0.0,sfdp only,
+resolution,G,double,"96.0
+0.0",,"svg, bitmap output only",yes
+root,GN,"string
+bool","<none>(graphs)
+false(nodes)",,"circo, twopi only",
+rotate,G,int,0,,,yes
+rotation,G,double,0,,sfdp only,
+samehead,E,string,"""""",,dot only,yes
+sametail,E,string,"""""",,dot only,yes
+samplepoints,N,int,"8(output)
+20(overlap and image maps)",,,
+scale,G,"double
+point",,,not dot,
+searchsize,G,int,30,,dot only,
+sep,G,"addDouble 
+addPoint",+4,,not dot,
+shape,N,shape,ellipse,,,yes
+shapefile,N,string,"""""",,,
+showboxes,ENG,int,0,0,dot only,
+sides,N,int,4,0,,yes
+size,G,"double
+point",,,,yes
+skew,N,double,0.0,-100.0,,yes
+smoothing,G,smoothType,"""none""",,sfdp only,
+sortv,GCN,int,0,0,,yes
+splines,G,"bool 
+string",,,,yes
+start,G,startType,"""""",,"fdp, neato only",
+style,ENCG,style,"""""",,,yes
+stylesheet,G,string,"""""",,svg only,
+tailURL,E,escString,"""""",,"svg, map only",yes
+tail_lp,E,point,,,write only,
+tailclip,E,bool,true,,,yes
+tailhref,E,escString,"""""",,"svg, map only",yes
+taillabel,E,lblString,"""""",,,yes
+tailport,E,portPos,center,,,yes
+tailtarget,E,escString,<none>,,"svg, map only",yes
+tailtooltip,E,escString,"""""",,"svg, cmap only",yes
+target,ENGC,"escString 
+string",<none>,,"svg, map only",yes
+tooltip,NEC,escString,"""""",,"svg, cmap only",yes
+truecolor,G,bool,,,bitmap output only,
+vertices,N,pointList,,,write only,
+viewport,G,viewPort,"""""",,,
+voro_margin,G,double,0.05,0.0,not dot,
+weight,E,"int
+double",1,"0(dot,twopi)
+1(neato,fdp)",,yes
+width,N,double,0.75,0.01,,yes
+xdotversion,G,string,,,xdot only,
+xlabel,EN,lblString,"""""",,,yes
+xlp,NE,point,,,write only,
+z,N,double,0.0,"-MAXFLOAT
+-1000",,
