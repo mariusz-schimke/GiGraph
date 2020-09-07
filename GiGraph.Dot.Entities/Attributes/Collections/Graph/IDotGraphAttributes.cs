@@ -428,6 +428,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     bitmap output, this guarantees that text rendering will be done more accurately, both in size and in placement. For SVG
         ///     output, it is used to guarantee that the dimensions in the output correspond to the correct number of points or inches.
         /// </summary>
+        double? Dpi { get; set; }
+
+        /// <summary>
+        ///     This is a synonym for the <see cref="Dpi" /> attribute (svg, bitmap output only; default: 96.0, 0.0).
+        /// </summary>
         double? Resolution { get; set; }
     }
 }
