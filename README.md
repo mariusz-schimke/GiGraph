@@ -353,6 +353,8 @@ digraph
 <p align="center">
   <img src="./Assets/Examples/record-node-subrecord.svg">
 </p>
+
+
 #### Record builder
 
 The *DotRecordBuilder* class facilitates building complex record nodes. To give you an idea how to use it, consider the following examples that generate the same output script as the [previous example](#sub-records).
