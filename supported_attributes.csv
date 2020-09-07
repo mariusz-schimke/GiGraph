@@ -6,36 +6,36 @@ _background,G,string,<none>,,,
 area,NC,double,1.0,>0,patchwork only,
 arrowhead,E,arrowType,normal,,,yes
 arrowsize,E,double,1.0,0.0,,yes
-arrowtail,E,arrowType,normal,,,
+arrowtail,E,arrowType,normal,,,yes
 bb,G,rect,,,write only,
 bgcolor,GC,"color 
-colorList",<none>,,,
-center,G,bool,false,,,
-charset,G,string,"""UTF-8""",,,
+colorList",<none>,,,yes
+center,G,bool,false,,,yes
+charset,G,string,"""UTF-8""",,,yes
 class,ENCG,string,"""""",,svg only,
-clusterrank,G,clusterMode,local,,dot only,
+clusterrank,G,clusterMode,local,,dot only,yes
 color,ENC,"color 
-colorList",black,,,
-colorscheme,ENCG,string,"""""",,,
-comment,ENG,string,"""""",,,
-compound,G,bool,false,,dot only,
-concentrate,G,bool,false,,,
-constraint,E,bool,true,,dot only,
-decorate,E,bool,false,,,
+colorList",black,,,yes
+colorscheme,ENCG,string,"""""",,,yes
+comment,ENG,string,"""""",,,yes
+compound,G,bool,false,,dot only,yes
+concentrate,G,bool,false,,,yes
+constraint,E,bool,true,,dot only,yes
+decorate,E,bool,false,,,yes
 defaultdist,G,double,1+(avg. len)*sqrt(|V|),epsilon,neato only,
 dim,G,int,2,2,"sfdp, fdp, neato only",
 dimen,G,int,2,2,"sfdp, fdp, neato only",
 dir,E,dirType,"forward(directed)
-none(undirected)",,,
+none(undirected)",,,yes
 diredgeconstraints,G,"string
 bool",false,,neato only,
-distortion,N,double,0.0,-100.0,,
+distortion,N,double,0.0,-100.0,,yes
 dpi,G,double,"96.0
-0.0",,"svg, bitmap output only",
-edgeURL,E,escString,"""""",,"svg, map only",
-edgehref,E,escString,"""""",,"svg, map only",
-edgetarget,E,escString,<none>,,"svg, map only",
-edgetooltip,E,escString,"""""",,"svg, cmap only",
+0.0",,"svg, bitmap output only",yes
+edgeURL,E,escString,"""""",,"svg, map only",yes
+edgehref,E,escString,"""""",,"svg, map only",yes
+edgetarget,E,escString,<none>,,"svg, map only",yes
+edgetooltip,E,escString,"""""",,"svg, cmap only",yes
 epsilon,G,double,".0001 * # nodes(mode == KK)
 .0001(mode == major)
 .01(mode == sgd)",,neato only,
@@ -43,16 +43,16 @@ esep,G,"addDouble
 addPoint",+3,,not dot,
 fillcolor,NEC,"color 
 colorList","lightgrey(nodes)
-black(clusters)",,,
+black(clusters)",,,yes
 fixedsize,N,"bool 
-string",false,,,
-fontcolor,ENGC,color,black,,,
-fontname,ENGC,string,"""Times-Roman""",,,
+string",false,,,yes
+fontcolor,ENGC,color,black,,,yes
+fontname,ENGC,string,"""Times-Roman""",,,yes
 fontnames,G,string,"""""",,svg only,
-fontpath,G,string,system-dependent,,,
-fontsize,ENGC,double,14.0,1.0,,
-forcelabels,G,bool,true,,,
-gradientangle,NCG,int,"""""",,,
+fontpath,G,string,system-dependent,,,yes
+fontsize,ENGC,double,14.0,1.0,,yes
+forcelabels,G,bool,true,,,yes
+gradientangle,NCG,int,"""""",,,yes
 group,N,string,"""""",,dot only,
 headURL,E,escString,"""""",,"svg, map only",
 head_lp,E,point,,,write only,
