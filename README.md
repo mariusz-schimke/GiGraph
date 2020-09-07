@@ -688,7 +688,7 @@ graph.Edges.Add("Foo", "Bar", edge =>
     edge.Attributes.ArrowHead = DotArrowheadShape.Crow;
 });
 
-// some basic arrowhead combinations 
+// some basic arrowhead variants 
 graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Empty();
 graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Empty(DotArrowheadParts.Right);
 graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Filled(DotArrowheadParts.Left);
