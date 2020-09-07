@@ -53,35 +53,35 @@ fontpath,G,string,system-dependent,,,yes
 fontsize,ENGC,double,14.0,1.0,,yes
 forcelabels,G,bool,true,,,yes
 gradientangle,NCG,int,"""""",,,yes
-group,N,string,"""""",,dot only,
-headURL,E,escString,"""""",,"svg, map only",
+group,N,string,"""""",,dot only,yes
+headURL,E,escString,"""""",,"svg, map only",yes
 head_lp,E,point,,,write only,
-headclip,E,bool,true,,,
-headhref,E,escString,"""""",,"svg, map only",
-headlabel,E,lblString,"""""",,,
-headport,E,portPos,center,,,
-headtarget,E,escString,<none>,,"svg, map only",
-headtooltip,E,escString,"""""",,"svg, cmap only",
-height,N,double,0.5,0.02,,
-href,GCNE,escString,"""""",,"svg, postscript, map only",
-id,GCNE,escString,"""""",,"svg, postscript, map only",
-image,N,string,"""""",,,
-imagepath,G,string,"""""",,,
-imagepos,N,string,"""mc""",,,
+headclip,E,bool,true,,,yes
+headhref,E,escString,"""""",,"svg, map only",yes
+headlabel,E,lblString,"""""",,,yes
+headport,E,portPos,center,,,yes
+headtarget,E,escString,<none>,,"svg, map only",yes
+headtooltip,E,escString,"""""",,"svg, cmap only",yes
+height,N,double,0.5,0.02,,yes
+href,GCNE,escString,"""""",,"svg, postscript, map only",yes
+id,GCNE,escString,"""""",,"svg, postscript, map only",yes
+image,N,string,"""""",,,yes
+imagepath,G,string,"""""",,,yes
+imagepos,N,string,"""mc""",,,yes
 imagescale,N,"bool 
 string",false,,,
 inputscale,G,double,<none>,,"fdp, neato only",
 label,ENGC,lblString,"""\N"" (nodes)
-"""" (otherwise)",,,
-labelURL,E,escString,"""""",,"svg, map only",
+"""" (otherwise)",,,yes
+labelURL,E,escString,"""""",,"svg, map only",yes
 label_scheme,G,int,0,0,sfdp only,
-labelangle,E,double,-25.0,-180.0,,
-labeldistance,E,double,1.0,0.0,,
-labelfloat,E,bool,false,,,
-labelfontcolor,E,color,black,,,
-labelfontname,E,string,"""Times-Roman""",,,
-labelfontsize,E,double,14.0,1.0,,
-labelhref,E,escString,"""""",,"svg, map only",
+labelangle,E,double,-25.0,-180.0,,yes
+labeldistance,E,double,1.0,0.0,,yes
+labelfloat,E,bool,false,,,yes
+labelfontcolor,E,color,black,,,yes
+labelfontname,E,string,"""Times-Roman""",,,yes
+labelfontsize,E,double,14.0,1.0,,yes
+labelhref,E,escString,"""""",,"svg, map only",yes
 labeljust,GC,string,"""c""",,,
 labelloc,NGC,string,"""t""(clusters)
 ""b""(root graphs)
