@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Types.Records
@@ -15,7 +16,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         ///     Appends a field to the record being built.
         /// </summary>
         /// <param name="text">
-        ///     The record to append.
+        ///     The text of the field to append.
         /// </param>
         /// <param name="portName">
         ///     The port name, that is a name that can be referred to from an edge endpoint in order to attach the end of the edge to the
@@ -24,6 +25,30 @@ namespace GiGraph.Dot.Entities.Types.Records
         public virtual DotRecordBuilder AppendField(DotEscapeString text, string portName = null)
         {
             _fields.Add(new DotRecordTextField(text, portName));
+            return this;
+        }
+        
+        /// <summary>
+        ///     Appends fields to the record being built.
+        /// </summary>
+        /// <param name="fields">
+        ///     The text to append as individual fields.
+        /// </param>
+        public virtual DotRecordBuilder AppendFields(params DotEscapeString[] fields)
+        {
+            AppendFields((IEnumerable<DotEscapeString>)fields);
+            return this;
+        }
+        
+        /// <summary>
+        ///     Appends fields to the record being built.
+        /// </summary>
+        /// <param name="fields">
+        ///     The text to append as individual fields.
+        /// </param>
+        public virtual DotRecordBuilder AppendFields(IEnumerable<DotEscapeString> fields)
+        {
+            _fields.AddRange(fields.Select(field => new DotRecordTextField(field)));
             return this;
         }
 
