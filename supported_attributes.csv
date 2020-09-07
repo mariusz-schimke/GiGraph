@@ -125,7 +125,7 @@ notranslate,G,bool,false,,neato only,
 "nslimit 
 nslimit1",G,double,,,dot only,
 ordering,GN,string,"""""",,dot only,yes
-orientation,N,double,0.0,360.0,,
+orientation,N,double,0.0,360.0,,yes
 orientation,G,string,"""""",,,
 outputorder,G,outputMode,breadthfirst,,,
 overlap,G,"string
@@ -133,36 +133,36 @@ bool",true,,not dot,
 overlap_scaling,G,double,-4,-1.0e10,prism only,
 overlap_shrink,G,bool,true,,prism only,
 pack,G,"bool 
-int",false,,,
-packmode,G,packMode,node,,,
+int",false,,,yes
+packmode,G,packMode,node,,,yes
 pad,G,"double
-point",0.0555 (4 points),,,
+point",0.0555 (4 points),,,yes
 page,G,"double
 point",,,,
 pagedir,G,pagedir,BL,,,
-pencolor,C,color,black,,,
-penwidth,CNE,double,1.0,0.0,,
+pencolor,C,color,black,,,yes
+penwidth,CNE,double,1.0,0.0,,yes
 peripheries,NC,int,"shape default(nodes)
-1(clusters)",0,,
+1(clusters)",0,,yes
 pin,N,bool,false,,"fdp, neato only",
 pos,EN,"point 
 splineType",,,,
 quadtree,G,"quadType 
 bool",normal,,sfdp only,
 quantum,G,double,0.0,0.0,,
-rank,S,rankType,,,dot only,
-rankdir,G,rankdir,TB,,dot only,
+rank,S,rankType,,,dot only,yes
+rankdir,G,rankdir,TB,,dot only,yes
 ranksep,G,"double
 doubleList","0.5(dot)
-1.0(twopi)",0.02,"twopi, dot only",
+1.0(twopi)",0.02,"twopi, dot only",yes
 ratio,G,"double
-string",,,,
+string",,,,yes
 rects,N,rect,,,write only,
-regular,N,bool,false,,,
+regular,N,bool,false,,,yes
 remincross,G,bool,true,,dot only,
 repulsiveforce,G,double,1.0,0.0,sfdp only,
 resolution,G,double,"96.0
-0.0",,"svg, bitmap output only",
+0.0",,"svg, bitmap output only",yes
 root,GN,"string
 bool","<none>(graphs)
 false(nodes)",,"circo, twopi only",
