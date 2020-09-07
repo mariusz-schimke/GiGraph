@@ -82,12 +82,12 @@ labelfontcolor,E,color,black,,,yes
 labelfontname,E,string,"""Times-Roman""",,,yes
 labelfontsize,E,double,14.0,1.0,,yes
 labelhref,E,escString,"""""",,"svg, map only",yes
-labeljust,GC,string,"""c""",,,
+labeljust,GC,string,"""c""",,,yes
 labelloc,NGC,string,"""t""(clusters)
 ""b""(root graphs)
-""c""(nodes)",,,
-labeltarget,E,escString,<none>,,"svg, map only",
-labeltooltip,E,escString,"""""",,"svg, cmap only",
+""c""(nodes)",,,yes
+labeltarget,E,escString,<none>,,"svg, map only",yes
+labeltooltip,E,escString,"""""",,"svg, cmap only",yes
 landscape,G,bool,false,,,
 layer,ENC,layerRange,"""""",,,
 layerlistsep,G,string,""",""",,,
@@ -96,35 +96,35 @@ layerselect,G,layerRange,"""""",,,
 layersep,G,string,""" :\t""",,,
 layout,G,string,"""""",,,
 len,E,double,"1.0(neato)
-0.3(fdp)",,"fdp, neato only",
+0.3(fdp)",,"fdp, neato only",yes
 levels,G,int,MAXINT,0.0,sfdp only,
 levelsgap,G,double,0.0,,neato only,
-lhead,E,string,"""""",,dot only,
+lhead,E,string,"""""",,dot only,yes
 lheight,GC,double,,,write only,
 lp,EGC,point,,,write only,
-ltail,E,string,"""""",,dot only,
+ltail,E,string,"""""",,dot only,yes
 lwidth,GC,double,,,write only,
 margin,NCG,"double
-point",<device-dependent>,,,
+point",<device-dependent>,,,yes
 maxiter,G,int,"100 * # nodes(mode == KK)
 200(mode == major)
 30(mode == sgd)
 600(fdp)",,"fdp, neato only",
 mclimit,G,double,1.0,,dot only,
 mindist,G,double,1.0,0.0,circo only,
-minlen,E,int,1,0,dot only,
+minlen,E,int,1,0,dot only,yes
 mode,G,string,major,,neato only,
 model,G,string,shortpath,,neato only,
 mosek,G,bool,false,,neato only,
 newrank,G,bool,false,,dot only,
-nodesep,G,double,0.25,0.02,,
+nodesep,G,double,0.25,0.02,,yes
 nojustify,GCNE,bool,false,,,
 normalize,G,"double
 bool",false,,not dot,
 notranslate,G,bool,false,,neato only,
 "nslimit 
 nslimit1",G,double,,,dot only,
-ordering,GN,string,"""""",,dot only,
+ordering,GN,string,"""""",,dot only,yes
 orientation,N,double,0.0,360.0,,
 orientation,G,string,"""""",,,
 outputorder,G,outputMode,breadthfirst,,,
