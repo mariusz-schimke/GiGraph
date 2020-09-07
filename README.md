@@ -308,7 +308,7 @@ The shape of a node is determined by the *Shape* attribute. By default it is an 
 using GiGraph.Dot.Extensions; // ToRecord
 ...
 
-// use the ToRecord extension method on a node
+// use the ToRecord or ToRoundedRecord extension method on a node
 graph.Nodes.Add("Foo").ToRecord("Hello", "World!");
 
 // or set shape and label explicitly
@@ -331,7 +331,7 @@ digraph
 </p>
 
 
-#### Embedded records
+#### Sub-records
 
 A *DotRecord* may be composed of textual fields (*DotRecordTextField*), as well as record fields (*DotRecord*), when you want to embed a sub-record inside a record. A record or a sub-record may also be flipped to change the orientation of its fields. By default sub-records have an orientation opposite to their parent record. The orientation of the root record, on the other hand, is dependent on the layout direction of the graph.
 
@@ -339,7 +339,7 @@ A *DotRecord* may be composed of textual fields (*DotRecordTextField*), as well 
 using GiGraph.Dot.Extensions; // ToRecord
 ...
 
-// note that string is implicitly convertible to DotRecordTextField
+// note that string is implicitly converted to DotRecordTextField here
 graph.Nodes.Add("Foo").ToRecord("Foo", new DotRecord("Bar", "Baz"), "Qux");
 ```
 
@@ -355,27 +355,23 @@ digraph
 </p>
 #### Record builder
 
-The *DotRecordBuilder* class provides a simpler approach to building complex record nodes. To give you an idea how to use it, consider the following examples that generate the same output script as the [previous example](#embedded-records).
+The *DotRecordBuilder* class provides a simpler approach to building complex record nodes. To give you an idea how to use it, consider the following examples that generate the same output script as the [previous example](#sub-records).
 
 ```c#
 var builder = new DotRecordBuilder()
    .AppendField("Foo")
-   .AppendRecord(rb => rb
-       .AppendFields("Bar", "Baz")
-    )
+   .AppendRecord("Bar", "Baz")
    .AppendField("Qux");
 
 graph.Nodes.Add("Bar").ToRecord(builder.ToRecord());
 ```
 
 ```c#
-graph.Nodes.Add("Bar").ToRecord(rb1 =>
+graph.Nodes.Add("Bar").ToRecord(rb =>
 {
-    rb1.AppendField("Foo")
-       .AppendRecord(rb2 => rb2
-           .AppendFields("Bar", "Baz")
-       )
-       .AppendField("Qux");
+    rb.AppendField("Foo")
+      .AppendRecord("Bar", "Baz")
+      .AppendField("Qux");
 });
 ```
 
@@ -383,7 +379,7 @@ graph.Nodes.Add("Bar").ToRecord(rb1 =>
 
 #### Customizing edge placement
 
-The fields of record nodes may have a **port** specified as well. The port may have an individual name that you may refer to when defining an edge (see the [edge](#edges) section). This way you may decide which field of the record an edge tail or head is attached to. In the following example the field labeled 'Fred' has a port assigned, named 'port1'. The edge that joins the two nodes refers to that port name to attach the tail to it.
+The fields of record nodes may have a **port** specified as well. The port may have an individual name that you may refer to when defining an edge (see the [edges](#edges) section). This way you may decide which field of the record an edge tail or head is attached to. In the following example the field labeled 'Fred' has a port assigned, named 'port1'. The edge that joins the two nodes refers to that port name to attach the tail to it.
 
 <p align="center">
   <img src="./Assets/Examples/record-node-subrecord-with-port.svg">
@@ -401,22 +397,17 @@ digraph
 And the code to generate it:
 
 ```c#
-graph.Nodes.Add("Bar").ToRecord
-(
-    $"Foo{Environment.NewLine}Bar",
-    new DotRecord
-    (
-        DotEscapeString.JustifyLeft("Baz"), // the text may be justified
-        new DotRecord
-        (
-            "Garply",
-            "Waldo",
-            new DotRecordTextField("Fred", portName: "port1")
-        ),
-        DotEscapeString.JustifyRight("Plugh")
-    ),
-    "Qux",
-    "Quux"
+graph.Nodes.Add("Baz").ToRecord(rb1 => rb1
+   .AppendField($"Foo{Environment.NewLine}Bar")
+   .AppendRecord(rb2 => rb2
+       .AppendField(tf => tf.AppendLineLeftJustified("Baz"))
+       .AppendRecord(rb3 => rb3
+           .AppendFields("Garply", "Waldo")
+           .AppendField("Fred", "port1")
+        )
+       .AppendField(tf => tf.AppendLineRightJustified("Plugh"))
+    )
+   .AppendFields("Qux", "Quux")
 );
 
 graph.Edges.Add("Foo", "Bar", edge =>
@@ -428,7 +419,7 @@ graph.Edges.Add("Foo", "Bar", edge =>
 
 
 
-❕ Note that you can either use the *Port* property of edge *Tail* and *Head* for setting port parameters as in the example above, or you can use the *TailPort* and *HeadPort* attributes of the edge itself with the same effect.
+❕ Note that you can either use the *Port* property of edge *Tail* and *Head* for setting port parameters as in the example above, or the *TailPort* and *HeadPort* attributes of the edge itself, with the same effect.
 
 See also a similar example in the [HTML nodes](#html-nodes) section.
 
