@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         ///     Appends fields to the record being built.
         /// </summary>
         /// <param name="fields">
-        ///     The text to append as individual fields.
+        ///     The textual fields to append.
         /// </param>
         public virtual DotRecordBuilder AppendFields(params DotEscapeString[] fields)
         {
@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         ///     Appends fields to the record being built.
         /// </summary>
         /// <param name="fields">
-        ///     The text to append as individual fields.
+        ///     The textual fields to append.
         /// </param>
         public virtual DotRecordBuilder AppendFields(IEnumerable<DotEscapeString> fields)
         {
@@ -57,21 +57,33 @@ namespace GiGraph.Dot.Entities.Types.Records
         ///     Appends fields to the record being built.
         /// </summary>
         /// <param name="fields">
-        ///     The text to append as individual fields.
+        ///     The textual fields to append.
         /// </param>
         public virtual DotRecordBuilder AppendFields(IEnumerable<string> fields)
         {
             _fields.AddRange(fields.Select(field => new DotRecordTextField(field)));
             return this;
         }
-        
+
         /// <summary>
         ///     Appends fields to the record being built.
         /// </summary>
         /// <param name="fields">
-        ///     The fields to append (<see cref="DotRecordTextField"/>, <see cref="DotRecord"/>).
+        ///     The fields to append (<see cref="DotRecordTextField" />, <see cref="DotRecord" />).
         /// </param>
         public virtual DotRecordBuilder AppendFields(IEnumerable<DotRecordField> fields)
+        {
+            _fields.AddRange(fields);
+            return this;
+        }
+
+        /// <summary>
+        ///     Appends fields to the record being built.
+        /// </summary>
+        /// <param name="fields">
+        ///     The fields to append (<see cref="DotRecordTextField" />, <see cref="DotRecord" />).
+        /// </param>
+        public virtual DotRecordBuilder AppendFields(params DotRecordField[] fields)
         {
             _fields.AddRange(fields);
             return this;
@@ -111,7 +123,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         ///     Appends a sub-record to the record being built.
         /// </summary>
         /// <param name="fields">
-        ///     The text to append as individual fields.
+        ///     The textual fields to append.
         /// </param>
         public virtual DotRecordBuilder AppendRecord(params DotEscapeString[] fields)
         {
@@ -122,6 +134,9 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// <summary>
         ///     Appends sub-record to the record being built, with an orientation opposite to the orientation of its parent record.
         /// </summary>
+        /// <param name="fields">
+        ///     The textual fields to append.
+        /// </param>
         public virtual DotRecordBuilder AppendFlippedRecord(params DotEscapeString[] fields)
         {
             _fields.Add(new DotRecord(fields, flip: true));
@@ -132,7 +147,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         ///     Appends a sub-record to the record being built.
         /// </summary>
         /// <param name="fields">
-        ///     The text to append as individual fields.
+        ///     The textual fields to append.
         /// </param>
         /// <param name="flip">
         ///     Determines whether the the sub-record should be flipped. By default, a sub-record is oriented opposite to the orientation of
@@ -148,7 +163,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         ///     Appends a sub-record to the record being built.
         /// </summary>
         /// <param name="fields">
-        ///     The text to append as individual fields.
+        ///     The textual fields to append.
         /// </param>
         /// <param name="flip">
         ///     Determines whether the the sub-record should be flipped. By default, a sub-record is oriented opposite to the orientation of
@@ -164,7 +179,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         ///     Appends a sub-record to the record being built.
         /// </summary>
         /// <param name="fields">
-        ///     The fields of the record to append (<see cref="DotRecordTextField"/>, <see cref="DotRecord"/>).
+        ///     The fields of the record to append (<see cref="DotRecordTextField" />, <see cref="DotRecord" />).
         /// </param>
         /// <param name="flip">
         ///     Determines whether the the sub-record should be flipped. By default, a sub-record is oriented opposite to the orientation of
@@ -173,6 +188,30 @@ namespace GiGraph.Dot.Entities.Types.Records
         public virtual DotRecordBuilder AppendRecord(IEnumerable<DotRecordField> fields, bool flip = FlipDefault)
         {
             _fields.Add(new DotRecord(fields, flip));
+            return this;
+        }
+
+        /// <summary>
+        ///     Appends sub-record to the record being built.
+        /// </summary>
+        /// <param name="fields">
+        ///     The fields of the record to append (<see cref="DotRecordTextField" />, <see cref="DotRecord" />).
+        /// </param>
+        public virtual DotRecordBuilder AppendRecord(params DotRecordField[] fields)
+        {
+            _fields.Add(new DotRecord(fields));
+            return this;
+        }
+
+        /// <summary>
+        ///     Appends sub-record to the record being built, with an orientation opposite to the orientation of its parent record.
+        /// </summary>
+        /// <param name="fields">
+        ///     The fields of the record to append (<see cref="DotRecordTextField" />, <see cref="DotRecord" />).
+        /// </param>
+        public virtual DotRecordBuilder AppendFlippedRecord(params DotRecordField[] fields)
+        {
+            _fields.Add(new DotRecord(fields, flip: true));
             return this;
         }
 
