@@ -225,5 +225,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             return Set(new DotPackingModeDefinitionAttribute(key, value));
         }
+
+        public virtual DotImageScalingAttribute Set(string key, DotImageScaling value)
+        {
+            return Set(new DotImageScalingAttribute(key, value));
+        }
     }
 }

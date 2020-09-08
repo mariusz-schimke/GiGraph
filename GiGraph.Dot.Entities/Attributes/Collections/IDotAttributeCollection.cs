@@ -326,6 +326,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotNodeSizingAttribute Set(string key, DotNodeSizing value);
 
         /// <summary>
+        ///     Adds or replaces the specified image scaling option attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        DotImageScalingAttribute Set(string key, DotImageScaling value);
+
+        /// <summary>
         ///     Adds or replaces the specified element style attribute in the collection.
         /// </summary>
         /// <param name="key">

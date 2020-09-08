@@ -21,6 +21,7 @@ namespace GiGraph.Dot.Entities.Tests
         [InlineData(typeof(DotArrowDirections))]
         [InlineData(typeof(DotArrowheadShape))]
         [InlineData(typeof(DotGraphScaling))]
+        [InlineData(typeof(DotImageScaling))]
         [InlineData(typeof(DotClusterMode))]
         [InlineData(typeof(DotEdgeOrderingMode))]
         [InlineData(typeof(DotEdgeShape))]

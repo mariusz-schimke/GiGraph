@@ -69,7 +69,7 @@ image,N,string,"""""",,,yes
 imagepath,G,string,"""""",,,yes
 imagepos,N,string,"""mc""",,,yes
 imagescale,N,"bool 
-string",false,,,
+string",false,,,yes
 inputscale,G,double,<none>,,"fdp, neato only",
 label,ENGC,lblString,"""\N"" (nodes)
 """" (otherwise)",,,yes
