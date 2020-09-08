@@ -96,5 +96,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             get => GetValueAs<DotAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotAlignment?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotAlignmentAttribute(k, v.Value));
         }
+
+        [DotAttributeKey("imagescale")]
+        public virtual DotImageScaling? ImageScaling
+        {
+            get => GetValueAs<DotImageScaling>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotImageScaling?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotImageScalingAttribute(k, v.Value));
+        }
     }
 }

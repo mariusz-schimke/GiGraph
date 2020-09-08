@@ -127,6 +127,31 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         DotAlignment? ImageAlignment { get; set; }
 
         /// <summary>
+        ///     <para>
+        ///         Attribute controlling how an image fills its containing node. In general, the image is given its natural size, (compare
+        ///         the <see cref="IDotGraphAttributes.Dpi" /> graph attribute), and the node size is made large enough to contain its image,
+        ///         its label, its margin, and its peripheries. Its width and height will also be at least as large as its minimum width and
+        ///         height. If, however, <see cref="Sizing" /> = <see cref="DotNodeSizing.Fixed" />, the <see cref="Width" /> and
+        ///         <see cref="Height" /> attributes specify the exact size of the node.
+        ///     </para>
+        ///     <para>
+        ///         During rendering, in the default case (<see cref="ImageScaling" /> = <see cref="DotImageScaling.None" />), the image
+        ///         retains its natural size. If <see cref="ImageScaling" /> = <see cref="DotImageScaling.Uniform" />, the image is uniformly
+        ///         scaled (i.e., its aspect ratio is preserved) to fit inside the node. At least one dimension of the image will be as large
+        ///         as possible given the size of the node. When <see cref="ImageScaling" /> = <see cref="DotImageScaling.FillWidth" />, the
+        ///         width of the image is scaled to fill the node width. The corresponding property holds when <see cref="ImageScaling" /> =
+        ///         <see cref="DotImageScaling.FillHeight" />. When <see cref="ImageScaling" /> = <see cref="DotImageScaling.FillBoth" />,
+        ///         both the height and the width are scaled separately to fill the node.
+        ///     </para>
+        ///     <para>
+        ///         In all cases, if a dimension of the image is larger than the corresponding dimension of the node, that dimension of the
+        ///         image is scaled down to fit the node. As with the case of expansion, if <see cref="ImageScaling" /> =
+        ///         <see cref="DotImageScaling.Uniform" />, width and height are scaled uniformly.
+        ///     </para>
+        /// </summary>
+        DotImageScaling? ImageScaling { get; set; }
+
+        /// <summary>
         ///     If a gradient fill is being used, this determines the angle of the fill. For linear fills, the colors transform along a line
         ///     specified by the angle and the center of the object. For radial fills, a value of zero causes the colors to transform
         ///     radially from the center; for non-zero values, the colors transform from a point near the object's periphery as specified by

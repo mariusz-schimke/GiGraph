@@ -5,7 +5,7 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     Represents graph scaling option.
+    ///     Represents graph scaling options.
     /// </summary>
     public class DotGraphScalingAttribute : DotAttribute<DotGraphScaling>
     {
