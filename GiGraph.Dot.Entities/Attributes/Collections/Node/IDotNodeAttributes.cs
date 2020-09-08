@@ -138,10 +138,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///         During rendering, in the default case (<see cref="ImageScaling" /> = <see cref="DotImageScaling.None" />), the image
         ///         retains its natural size. If <see cref="ImageScaling" /> = <see cref="DotImageScaling.Uniform" />, the image is uniformly
         ///         scaled (i.e., its aspect ratio is preserved) to fit inside the node. At least one dimension of the image will be as large
-        ///         as possible given the size of the node. When <see cref="ImageScaling" /> = <see cref="DotImageScaling.FitWidth" />, the
+        ///         as possible given the size of the node. When <see cref="ImageScaling" /> = <see cref="DotImageScaling.FillWidth" />, the
         ///         width of the image is scaled to fill the node width. The corresponding property holds when <see cref="ImageScaling" /> =
-        ///         <see cref="DotImageScaling.FitHeight" />. When <see cref="ImageScaling" /> = <see cref="DotImageScaling.Fill" />, both
-        ///         the height and the width are scaled separately to fill the node.
+        ///         <see cref="DotImageScaling.FillHeight" />. When <see cref="ImageScaling" /> = <see cref="DotImageScaling.FillBoth" />,
+        ///         both the height and the width are scaled separately to fill the node.
         ///     </para>
         ///     <para>
         ///         In all cases, if a dimension of the image is larger than the corresponding dimension of the node, that dimension of the

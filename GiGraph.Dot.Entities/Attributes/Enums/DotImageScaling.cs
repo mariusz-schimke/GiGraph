@@ -24,18 +24,18 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///     The width of the image is scaled to fill the node width.
         /// </summary>
         [DotAttributeValue("width")]
-        FitWidth,
+        FillWidth,
 
         /// <summary>
         ///     The height of the image is scaled to fill the node height.
         /// </summary>
         [DotAttributeValue("height")]
-        FitHeight,
+        FillHeight,
 
         /// <summary>
         ///     Both the height and the width are scaled separately to fill the node.
         /// </summary>
         [DotAttributeValue("both")]
-        Fill
+        FillBoth
     }
 }
