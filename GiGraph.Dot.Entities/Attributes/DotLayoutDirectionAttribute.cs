@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     ///     Graph layout direction attribute. Assignable to graphs only.
     /// </summary>
-    public class DotRankDirectionAttribute : DotAttribute<DotRankDirection>
+    public class DotLayoutDirectionAttribute : DotAttribute<DotLayoutDirection>
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotRankDirectionAttribute(string key, DotRankDirection value)
+        public DotLayoutDirectionAttribute(string key, DotLayoutDirection value)
             : base(key, value)
         {
         }
@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
             return DotAttributeValueAttribute.TryGetValue(Value, out var result)
                 ? result
-                : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified graph layout direction '{Value}' is invalid.");
+                : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified layout direction '{Value}' is invalid.");
         }
     }
 }

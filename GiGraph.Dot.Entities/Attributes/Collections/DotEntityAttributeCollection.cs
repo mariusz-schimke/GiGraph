@@ -66,17 +66,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         [DotAttributeKey("pencolor")]
-        public virtual Color? PenColor
+        public virtual DotColor PenColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorAttribute(k, v.Value));
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
         [DotAttributeKey("fontcolor")]
-        public virtual Color? FontColor
+        public virtual DotColor FontColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorAttribute(k, v.Value));
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
         [DotAttributeKey("fontname")]
@@ -138,9 +138,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         [DotAttributeKey("style")]
-        public virtual DotStyle? Style
+        public virtual DotStyles? Style
         {
-            get => GetValueAs<DotStyle>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyle?) null;
+            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
         }
 
@@ -193,7 +193,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual void SetFilled(DotColorDefinition value)
         {
-            Style = Style.GetValueOrDefault(DotStyle.Filled) | DotStyle.Filled;
+            Style = Style.GetValueOrDefault(DotStyles.Filled) | DotStyles.Filled;
             FillColor = value;
         }
 

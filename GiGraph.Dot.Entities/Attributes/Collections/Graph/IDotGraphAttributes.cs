@@ -1,14 +1,13 @@
-﻿using System.Drawing;
-using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
+﻿using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
+using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
@@ -57,12 +56,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     Gets or sets the color to use for clusters (default: <see cref="System.Drawing.Color.Black" />). If
         ///     <see cref="DotMultiColor" /> is used, with no weighted colors in its color collection (<see cref="DotColor" /> items only),
-        ///     and the <see cref="Style" /> is <see cref="DotStyle.Filled" />, a linear gradient fill is done using the first two colors. If
-        ///     weighted colors are present (see <see cref="DotWeightedColor" />), a degenerate linear gradient fill is done. This
+        ///     and the <see cref="Style" /> is <see cref="DotStyles.Filled" />, a linear gradient fill is done using the first two colors.
+        ///     If weighted colors are present (see <see cref="DotWeightedColor" />), a degenerate linear gradient fill is done. This
         ///     essentially does a fill using two colors, with the <see cref="DotWeightedColor.Weight" /> specifying how much of region is
-        ///     filled with each color. If the <see cref="Style" /> attribute contains the value <see cref="DotStyle.Radial" />, then a
+        ///     filled with each color. If the <see cref="Style" /> attribute contains the value <see cref="DotStyles.Radial" />, then a
         ///     radial gradient fill is done. These fills work with any shape. For certain shapes, the <see cref="Style" /> attribute can be
-        ///     set to do fills using more than 2 colors (see <see cref="DotStyle.Striped" />).
+        ///     set to do fills using more than 2 colors (see <see cref="DotStyles.Striped" />).
         /// </summary>
         DotColorDefinition Color { get; set; }
 
@@ -72,8 +71,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     </para>
         ///     <para>
         ///         When <see cref="DotMultiColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
-        ///         <see cref="Style" /> to <see cref="DotStyle.Radial" /> will cause a radial fill. At present, only two colors are used. If
-        ///         the second color is <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
+        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. At present, only two colors are used.
+        ///         If the second color is <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
         ///         <see cref="GradientAngle" /> attribute for setting the gradient angle.
         ///     </para>
         ///     <para>
@@ -90,15 +89,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     <para>
         ///         Gets or sets the color used to fill the background of clusters, assuming that their
-        ///         <see cref="IDotClusterAttributes.Style" /> is <see cref="DotStyle.Filled" />. If <see cref="FillColor" /> is not defined,
-        ///         <see cref="Color" /> is used. If <see cref="Color" /> is not defined,
+        ///         <see cref="IDotClusterAttributes.Style" /> is <see cref="DotStyles.Filled" />. If <see cref="FillColor" /> is not
+        ///         defined, <see cref="Color" /> is used. If <see cref="Color" /> is not defined,
         ///         <see cref="IDotClusterAttributes.BackgroundColor" /> is used. If it is not defined too, the default is used, except when
         ///         the output format is MIF, which use black by default.
         ///     </para>
         ///     <para>
         ///         When <see cref="DotMultiColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
-        ///         <see cref="Style" /> to <see cref="DotStyle.Radial" /> will cause a radial fill. At present, only two colors are used. If
-        ///         the second color is missing, the default color is used for it. See also the <see cref="GradientAngle" /> attribute for
+        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. At present, only two colors are used.
+        ///         If the second color is missing, the default color is used for it. See also the <see cref="GradientAngle" /> attribute for
         ///         setting the gradient angle. Note that a cluster inherits the root graph's attributes if defined. Thus, if the root graph
         ///         has defined a fill color, this will override a <see cref="IDotClusterAttributes.Color" /> or
         ///         <see cref="IDotClusterAttributes.BackgroundColor" /> attribute set for the cluster.
@@ -107,14 +106,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         DotColorDefinition FillColor { get; set; }
 
         /// <summary>
-        ///     Specifies a color scheme namespace. If defined, it specifies the context for interpreting color names. In particular, if a
-        ///     color value has form "xxx" or "//xxx", then the color xxx will be evaluated according to the current color scheme. If no
-        ///     color scheme is set, the standard X11 naming is used. For example, if "bugn9" color scheme is used, then a color named "7",
-        ///     e.g.
-        ///     <c>
-        ///         Color.FromName("7")
-        ///     </c>
-        ///     , is interpreted as "/bugn9/7".
+        ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
+        ///     is set, the standard <see cref="DotColorSchemes.X11" /> naming is used. For example, if
+        ///     <see cref="DotColorSchemes.DotBrewerColorSchemes.BuGn9" /> Brewer color scheme is used, then a color named "7", e.g.
+        ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes" /> for
+        ///     supported scheme names.
         /// </summary>
         string ColorScheme { get; set; }
 
@@ -125,6 +121,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     the value. If unset, the default angle is 0.
         /// </summary>
         int? GradientAngle { get; set; }
+
+        /// <summary>
+        ///     If true, the drawing is centered in the output canvas (default: false).
+        /// </summary>
+        bool? Center { get; set; }
 
         /// <summary>
         ///     If 90, sets drawing orientation to landscape (default: 0).
@@ -144,12 +145,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     override a <see cref="IDotClusterAttributes.Color" /> or <see cref="IDotClusterAttributes.BackgroundColor" /> attribute set
         ///     for the cluster.
         /// </summary>
-        Color? PenColor { get; set; }
+        DotColor PenColor { get; set; }
 
         /// <summary>
-        ///     Gets or sets the direction of graph layout (default: <see cref="DotRankDirection.TopToBottom" />).
+        ///     Gets or sets the direction of graph layout (default: <see cref="DotLayoutDirection.TopToBottom" />).
         /// </summary>
-        DotRankDirection? LayoutDirection { get; set; }
+        DotLayoutDirection? LayoutDirection { get; set; }
 
         /// <summary>
         ///     Controls how, and if, edges are represented. By default, the attribute is unset. How this is interpreted depends on the
@@ -166,22 +167,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 
         /// <summary>
         ///     <para>
-        ///         Sets the style of the graph (default: null). See the descriptions of individual <see cref="DotStyle" /> values to learn
+        ///         Sets the style of the graph (default: null). See the descriptions of individual <see cref="DotStyles" /> values to learn
         ///         which styles are applicable to this element type.
         ///     </para>
         ///     <para>
         ///         Multiple styles can be used at once, for example:
         ///         <c>
-        ///             <see cref="Style" /> = <see cref="DotStyle.Rounded" /> | <see cref="DotStyle.Bold" />;
+        ///             <see cref="Style" /> = <see cref="DotStyles.Rounded" /> | <see cref="DotStyles.Bold" />;
         ///         </c>
         ///     </para>
         /// </summary>
-        DotStyle? Style { get; set; }
+        DotStyles? Style { get; set; }
 
         /// <summary>
         ///     Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black" />).
         /// </summary>
-        Color? FontColor { get; set; }
+        DotColor FontColor { get; set; }
 
         /// <summary>
         ///     <para>
@@ -238,10 +239,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         bool? ConcentrateEdges { get; set; }
 
         /// <summary>
-        ///     If true, allows edges between clusters (default: false). See also the <see cref="IDotEdgeAttributes.LogicalHeadId" /> and
-        ///     <see cref="IDotEdgeAttributes.LogicalTailId" /> attributes of the edge.
+        ///     If true, allows edges between clusters (default: false). Use the <see cref="IDotEdgeAttributes.HeadClusterId" /> or
+        ///     <see cref="IDotEdgeAttributes.TailClusterId" /> edge attributes to attach an edge head or tail to a cluster.
         /// </summary>
-        bool? Compound { get; set; }
+        bool? EdgesBetweenClusters { get; set; }
 
         /// <summary>
         ///     Comments are inserted into output. Device-dependent.
@@ -290,7 +291,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     </para>
         ///     <para>
         ///         In twopi, this attribute specifies the radial separation of concentric circles (default: 1, minimum: 0.02). For twopi,
-        ///         this can also be a list of doubles (<see cref="DotRankSeparationList" />). The first double specifies the radius of the
+        ///         this can also be a list of doubles (<see cref="DotRadialRankSeparation" />). The first double specifies the radius of the
         ///         inner circle; the second double specifies the increase in radius from the first circle to the second; etc. If there are
         ///         more circles than numbers, the last number is used as the increment for the remainder.
         ///     </para>
@@ -298,9 +299,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         DotRankSeparationDefinition RankSeparation { get; set; }
 
         /// <summary>
-        ///     Mode used for handling clusters (dot only; default: <see cref="DotClusterMode.Local" />).
+        ///     Mode used for handling clusters (dot only; default: <see cref="DotClusterMode.Bounded" />).
         /// </summary>
-        DotClusterMode? ClusterRank { get; set; }
+        DotClusterMode? ClusterMode { get; set; }
 
         /// <summary>
         ///     Determines how inedges and outedges, that is, edges with a node as their head or tail node respectively, are ordered (dot
@@ -362,7 +363,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         dimension in size.
         ///     </para>
         ///     <para>
-        ///         Note that there is some interaction between the <see cref="Size" /> and the <see cref="AspectRatio" /> attributes.
+        ///         Note that there is some interaction between the <see cref="Size" /> and the <see cref="Scaling" /> attributes.
         ///     </para>
         /// </summary>
         DotPoint Size { get; set; }
@@ -379,10 +380,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         ratio, the drawing width is scaled up.
         ///     </para>
         ///     <para>
-        ///         See also <see cref="DotAspectRatio" /> for non-numeric options of the ratio.
+        ///         See also <see cref="DotGraphScaling" /> for non-numeric options of the ratio.
         ///     </para>
         /// </summary>
-        DotAspectRatioDefinition AspectRatio { get; set; }
+        DotGraphScalingDefinition Scaling { get; set; }
 
         /// <summary>
         ///     <para>
@@ -417,5 +418,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     attribute specifies an insertion order among the components, with smaller values inserted first.
         /// </summary>
         int? SortIndex { get; set; }
+
+        /// <summary>
+        ///     Specifies the expected number of pixels per inch on a display device (svg, bitmap output only; default: 96.0, 0.0). For
+        ///     bitmap output, this guarantees that text rendering will be done more accurately, both in size and in placement. For SVG
+        ///     output, it is used to guarantee that the dimensions in the output correspond to the correct number of points or inches.
+        /// </summary>
+        double? Dpi { get; set; }
+
+        /// <summary>
+        ///     This is a synonym for the <see cref="Dpi" /> attribute (svg, bitmap output only; default: 96.0, 0.0).
+        /// </summary>
+        double? Resolution { get; set; }
     }
 }

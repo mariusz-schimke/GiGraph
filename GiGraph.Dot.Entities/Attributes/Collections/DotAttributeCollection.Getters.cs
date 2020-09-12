@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Enums;
@@ -111,14 +111,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return GetValueAs<bool>(key, out var result) ? result : (bool?) null;
         }
 
-        protected virtual Color? GetValueAsColor(string key)
-        {
-            return GetValueAs<Color>(key, out var result) ? result : (Color?) null;
-        }
-
         protected virtual DotPoint GetValueAsPoint(string key)
         {
             return GetValueAs<DotPoint>(key, out var result) ? result : null;
+        }
+
+        protected virtual DotColor GetValueAsColor(string key)
+        {
+            return GetValueAs
+            (
+                key,
+                out var value,
+                v => v is Color c ? (true, new DotColor(c)) : (false, default)
+            )
+                ? value
+                : null;
         }
 
         protected virtual DotColorDefinition GetValueAsColorDefinition(string key)

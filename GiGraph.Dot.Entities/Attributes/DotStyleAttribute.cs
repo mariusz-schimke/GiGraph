@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     ///     Style attribute. Individual styles are applicable to specific element types only.
     /// </summary>
-    public class DotStyleAttribute : DotAttribute<DotStyle>
+    public class DotStyleAttribute : DotAttribute<DotStyles>
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -20,16 +20,16 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotStyleAttribute(string key, DotStyle value)
+        public DotStyleAttribute(string key, DotStyles value)
             : base(key, value)
         {
         }
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            var styles = Enum.GetValues(typeof(DotStyle))
-               .Cast<DotStyle>()
-               .Where(style => style != DotStyle.Default)
+            var styles = Enum.GetValues(typeof(DotStyles))
+               .Cast<DotStyles>()
+               .Where(style => style != DotStyles.Default)
                .Where(style => Value.HasFlag(style))
                .Select(style => GetDotEncodedStyle(style, options, syntaxRules));
 
@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Entities.Attributes
                 : string.Join(separator, styles);
         }
 
-        protected virtual string GetDotEncodedStyle(DotStyle style, DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected virtual string GetDotEncodedStyle(DotStyles style, DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
             return DotAttributeValueAttribute.TryGetValue(style, out var result)
                 ? result

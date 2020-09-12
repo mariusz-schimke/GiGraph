@@ -16,8 +16,8 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Attributes.Set(a => a.Label, "Foo Graph").Annotation = "label";
 
             // node defaults
-            graph.NodeDefaults.Annotation = "global node attributes";
-            graph.NodeDefaults.Shape = DotNodeShape.Rectangle;
+            graph.Nodes.Attributes.Annotation = "global node attributes";
+            graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
 
             // nodes
             graph.Nodes.Annotation = "nodes";
@@ -28,8 +28,8 @@ namespace GiGraph.Dot.Examples.Basic
             }).Annotation = "node comment";
 
             // edge defaults
-            graph.EdgeDefaults.Annotation = "global edge attributes";
-            graph.EdgeDefaults.ArrowHead = DotArrowheadShape.Curve;
+            graph.Edges.Attributes.Annotation = "global edge attributes";
+            graph.Edges.Attributes.ArrowHead = DotArrowheadShape.Curve;
 
             // edges
             graph.Edges.Annotation = "edges";

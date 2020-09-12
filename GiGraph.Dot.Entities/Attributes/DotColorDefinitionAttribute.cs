@@ -7,10 +7,10 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     ///     Represents a simple (<see cref="DotColor" />) or a complex (<see cref="DotMultiColor" />) color definition. If the value
     ///     specifies multiple colors, with no weights (<see cref="DotMultiColor" /> with <see cref="DotColor" /> items), and a
-    ///     <see cref="DotStyle.Filled" /> style is specified, a linear gradient fill is done using the first two colors. If weights are
+    ///     <see cref="DotStyles.Filled" /> style is specified, a linear gradient fill is done using the first two colors. If weights are
     ///     present (<see cref="DotMultiColor" /> with <see cref="DotWeightedColor" /> items), a degenerate linear gradient fill is done.
     ///     This essentially does a fill using two colors, with the weights specifying how much of region is filled with each color. If
-    ///     the style attribute of the element contains the value <see cref="DotStyle.Radial" />, then a radial gradient fill is done.
+    ///     the style attribute of the element contains the value <see cref="DotStyles.Radial" />, then a radial gradient fill is done.
     ///     These fills work with any shape.
     /// </summary>
     public class DotColorDefinitionAttribute : DotAttribute<DotColorDefinition>

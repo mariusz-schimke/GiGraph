@@ -1,34 +1,34 @@
 using System.Globalization;
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Entities.Types.AspectRatio
+namespace GiGraph.Dot.Entities.Types.Scaling
 {
     /// <summary>
-    ///     A numeric aspect ratio of the graph. If ratio = x where x is a floating point number, then the drawing is scaled up in one
+    ///     The aspect ratio of the graph. If ratio = x where x is a floating point number, then the drawing is scaled up in one
     ///     dimension to achieve the requested ratio expressed as drawing height/width. For example, ratio = 2.0 makes the drawing twice
     ///     as high as it is wide.
     /// </summary>
-    public class DotAspectRatioQuotient : DotAspectRatioDefinition
+    public class DotGraphScalingAspectRatio : DotGraphScalingDefinition
     {
         /// <summary>
         ///     Creates a new numeric aspect ratio instance.
         /// </summary>
-        /// <param name="value">
-        ///     The value to initialize the instance with.
+        /// <param name="ratio">
+        ///     The aspect ratio to initialize the instance with.
         /// </param>
-        public DotAspectRatioQuotient(double value)
+        public DotGraphScalingAspectRatio(double ratio)
         {
-            Value = value;
+            Ratio = ratio;
         }
 
         /// <summary>
         ///     Gets or sets the aspect ratio.
         /// </summary>
-        public virtual double Value { get; set; }
+        public virtual double Ratio { get; set; }
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return Value.ToString(CultureInfo.InvariantCulture);
+            return Ratio.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

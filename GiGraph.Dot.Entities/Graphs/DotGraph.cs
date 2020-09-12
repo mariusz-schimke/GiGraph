@@ -1,6 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections.Edge;
-using GiGraph.Dot.Entities.Attributes.Collections.Graph;
-using GiGraph.Dot.Entities.Attributes.Collections.Node;
+﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs.Collections;
@@ -23,10 +21,8 @@ namespace GiGraph.Dot.Entities.Graphs
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
-            IDotNodeAttributeCollection nodeDefaults,
-            IDotEdgeAttributeCollection edgeDefaults,
             DotGraphSectionCollection<IDotGraphAttributeCollection> subsections)
-            : base(id, attributes, nodes, edges, subgraphs, clusters, nodeDefaults, edgeDefaults, subsections)
+            : base(id, attributes, nodes, edges, subgraphs, clusters, subsections)
         {
             IsDirected = isDirected;
             IsStrict = isStrict;
@@ -38,7 +34,7 @@ namespace GiGraph.Dot.Entities.Graphs
             bool isStrict,
             DotGraphSection<IDotGraphAttributeCollection> rootSection,
             DotGraphSectionCollection<IDotGraphAttributeCollection> subsections)
-            : this(id, isDirected, isStrict, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, rootSection.NodeDefaults, rootSection.EdgeDefaults, subsections)
+            : this(id, isDirected, isStrict, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, subsections)
         {
         }
 
@@ -73,7 +69,7 @@ namespace GiGraph.Dot.Entities.Graphs
         /// </summary>
         public virtual bool IsStrict { get; set; }
 
-        protected static DotGraphSection<IDotGraphAttributeCollection> CreateSection()
+        public static DotGraphSection<IDotGraphAttributeCollection> CreateSection()
         {
             return Create(new DotGraphAttributeCollection());
         }

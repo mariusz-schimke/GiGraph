@@ -1,15 +1,16 @@
-﻿using GiGraph.Dot.Entities.Types.AspectRatio;
+﻿using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     Represents graph aspect ratio.
+    ///     Represents graph scaling options.
     /// </summary>
-    public class DotAspectRatioDefinitionAttribute : DotAttribute<DotAspectRatioDefinition>
+    public class DotGraphScalingAttribute : DotAttribute<DotGraphScaling>
     {
         /// <summary>
-        ///     Creates a new aspect ratio attribute.
+        ///     Creates a new graph scaling option attribute.
         /// </summary>
         /// <param name="key">
         ///     The key of the attribute.
@@ -17,14 +18,14 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotAspectRatioDefinitionAttribute(string key, DotAspectRatioDefinition value)
+        public DotGraphScalingAttribute(string key, DotGraphScaling value)
             : base(key, value)
         {
         }
 
         protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
-            return Value?.GetDotEncodedValue(options, syntaxRules);
+            return new DotGraphScalingOption(Value).GetDotEncodedValue(options, syntaxRules);
         }
     }
 }

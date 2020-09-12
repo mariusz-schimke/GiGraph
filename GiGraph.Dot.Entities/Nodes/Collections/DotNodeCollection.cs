@@ -8,15 +8,21 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
 {
     public class DotNodeCollection : DotEntityWithIdCollection<DotNodeDefinition>, IDotEntity, IDotAnnotatable
     {
-        protected DotNodeCollection(Func<string, Predicate<DotNodeDefinition>> matchIdPredicate)
+        protected DotNodeCollection(Func<string, Predicate<DotNodeDefinition>> matchIdPredicate, IDotNodeAttributeCollection attributes)
             : base(matchIdPredicate)
+        {
+            Attributes = attributes;
+        }
+
+        public DotNodeCollection(IDotNodeAttributeCollection attributes)
+            : this(matchIdPredicate: id => nodeDefinition => nodeDefinition is DotNode node && node.Id == id, attributes)
         {
         }
 
-        public DotNodeCollection()
-            : base(matchIdPredicate: id => nodeDefinition => nodeDefinition is DotNode node && node.Id == id)
-        {
-        }
+        /// <summary>
+        ///     Gets the attributes to apply by default to all nodes of the graph.
+        /// </summary>
+        public virtual IDotNodeAttributeCollection Attributes { get; }
 
         public virtual string Annotation { get; set; }
 

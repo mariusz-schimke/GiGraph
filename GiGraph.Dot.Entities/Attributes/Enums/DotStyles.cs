@@ -1,6 +1,7 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
-using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Edges.Collections;
+using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
 
@@ -10,13 +11,13 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
     ///     The styles of an element.
     /// </summary>
     [Flags]
-    public enum DotStyle
+    public enum DotStyles
     {
         /// <summary>
         ///     Indicates that the normal default style should be assigned to the current element. This setting can be used in order to
-        ///     restore the style of the element to the normal default value when a custom default style has been set for this type of
-        ///     element on a graph or a subgraph level, using <see cref="DotGraphSection{TGraphAttributes}.EdgeDefaults" /> or
-        ///     <see cref="DotGraphSection{TAttributes}.NodeDefaults" />.
+        ///     restore the style of the element to the default value when a custom style has been set globally for this type of element on a
+        ///     graph or a subgraph level, using global edge attributes (see <see cref="DotEdgeCollection.Attributes" />) or global node
+        ///     attributes (see <see cref="DotNodeCollection.Attributes" />).
         /// </summary>
         [DotAttributeValue(null)]
         Default = 0,
@@ -90,17 +91,18 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
 
         /// <summary>
         ///     Applicable to edges. The effect depends on the <see cref="IDotEdgeAttributes.PenWidth" />,
-        ///     <see cref="IDotEdgeAttributes.ArrowDirection" />, <see cref="IDotEdgeAttributes.ArrowHead" />, and
+        ///     <see cref="IDotEdgeAttributes.ArrowDirections" />, <see cref="IDotEdgeAttributes.ArrowHead" />, and
         ///     <see cref="IDotEdgeAttributes.ArrowTail" /> attributes. The edge starts with width <see cref="IDotEdgeAttributes.PenWidth" />
-        ///     , and tapers to width 1, in points. The <see cref="IDotEdgeAttributes.ArrowDirection" /> attribute determines whether the
-        ///     tapering goes from tail to head (<see cref="IDotEdgeAttributes.ArrowDirection" /> = <see cref="DotArrowDirection.Forward" />
-        ///     ), from head to tail (<see cref="IDotEdgeAttributes.ArrowDirection" /> = <see cref="DotArrowDirection.Backward" />), from the
-        ///     middle to both the head and tail (<see cref="IDotEdgeAttributes.ArrowDirection" /> = <see cref="DotArrowDirection.Both" />),
-        ///     or no tapering at all (<see cref="IDotEdgeAttributes.ArrowDirection" /> = <see cref="DotArrowDirection.None" />). If the
-        ///     <see cref="IDotEdgeAttributes.ArrowDirection" /> attribute is not explicitly set, the default for the graph type is used.
-        ///     Arrow heads and arrow tails are also drawn, based on the value of <see cref="IDotEdgeAttributes.ArrowDirection" /> attribute;
-        ///     to avoid this, set the <see cref="IDotEdgeAttributes.ArrowHead" /> and/or <see cref="IDotEdgeAttributes.ArrowTail" />
-        ///     attributes to <see cref="DotArrowheadShape.None" />.
+        ///     , and tapers to width 1, in points. The <see cref="IDotEdgeAttributes.ArrowDirections" /> attribute determines whether the
+        ///     tapering goes from tail to head (<see cref="IDotEdgeAttributes.ArrowDirections" /> =
+        ///     <see cref="DotArrowDirections.Forward" /> ), from head to tail (<see cref="IDotEdgeAttributes.ArrowDirections" /> =
+        ///     <see cref="DotArrowDirections.Backward" />), from the middle to both the head and tail (
+        ///     <see cref="IDotEdgeAttributes.ArrowDirections" /> = <see cref="DotArrowDirections.Both" />), or no tapering at all (
+        ///     <see cref="IDotEdgeAttributes.ArrowDirections" /> = <see cref="DotArrowDirections.None" />). If the
+        ///     <see cref="IDotEdgeAttributes.ArrowDirections" /> attribute is not explicitly set, the default for the graph type is used.
+        ///     Arrow heads and arrow tails are also drawn, based on the value of <see cref="IDotEdgeAttributes.ArrowDirections" />
+        ///     attribute; to avoid this, set the <see cref="IDotEdgeAttributes.ArrowHead" /> and/or
+        ///     <see cref="IDotEdgeAttributes.ArrowTail" /> attributes to <see cref="DotArrowheadShape.None" />.
         /// </summary>
         [DotAttributeValue("tapered")]
         Tapered = 1 << 10,

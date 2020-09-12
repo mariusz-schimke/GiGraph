@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using GiGraph.Dot.Entities.Attributes.Collections.Graph;
+﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
@@ -59,40 +58,37 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <summary>
         ///     Gets or sets the color of the node (default: <see cref="System.Drawing.Color.Black" />). If <see cref="DotMultiColor" /> is
         ///     used, with no weighted colors in its color collection (<see cref="DotColor" /> items only), and the <see cref="Style" /> is
-        ///     <see cref="DotStyle.Filled" />, a linear gradient fill is done using the first two colors. If weighted colors are present
+        ///     <see cref="DotStyles.Filled" />, a linear gradient fill is done using the first two colors. If weighted colors are present
         ///     (see <see cref="DotWeightedColor" />), a degenerate linear gradient fill is done. This essentially does a fill using two
         ///     colors, with the <see cref="DotWeightedColor.Weight" /> specifying how much of region is filled with each color. If the
-        ///     <see cref="Style" /> attribute contains the value <see cref="DotStyle.Radial" />, then a radial gradient fill is done. These
+        ///     <see cref="Style" /> attribute contains the value <see cref="DotStyles.Radial" />, then a radial gradient fill is done. These
         ///     fills work with any shape. For certain shapes, the <see cref="Style" /> attribute can be set to do fills using more than 2
-        ///     colors (see <see cref="DotStyle.Striped" /> and <see cref="DotStyle.Wedged" />).
+        ///     colors (see <see cref="DotStyles.Striped" /> and <see cref="DotStyles.Wedged" />).
         /// </summary>
         DotColorDefinition Color { get; set; }
 
         /// <summary>
         ///     <para>
         ///         Gets or sets the color used to fill the background of the node, assuming that <see cref="Style" /> is
-        ///         <see cref="DotStyle.Filled" />. If <see cref="FillColor" /> is not defined, <see cref="Color" /> is used. If it is not
+        ///         <see cref="DotStyles.Filled" />. If <see cref="FillColor" /> is not defined, <see cref="Color" /> is used. If it is not
         ///         defined too, the default is used, except for <see cref="Shape" /> of <see cref="DotNodeShape.Point" />, or when the
         ///         output format is MIF, which use black by default.
         ///     </para>
         ///     <para>
         ///         If <see cref="DotMultiColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
-        ///         <see cref="Style" /> to <see cref="DotStyle.Radial" /> will cause a radial fill. At present, only two colors are used. If
-        ///         the second color is missing, the default color is used for it. See also the <see cref="GradientAngle" /> attribute for
+        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. At present, only two colors are used.
+        ///         If the second color is missing, the default color is used for it. See also the <see cref="GradientAngle" /> attribute for
         ///         setting the gradient angle.
         ///     </para>
         /// </summary>
         DotColorDefinition FillColor { get; set; }
 
         /// <summary>
-        ///     Specifies a color scheme namespace. If defined, it specifies the context for interpreting color names. In particular, if a
-        ///     color value has form "xxx" or "//xxx", then the color xxx will be evaluated according to the current color scheme. If no
-        ///     color scheme is set, the standard X11 naming is used. For example, if "bugn9" color scheme is used, then a color named "7",
-        ///     e.g.
-        ///     <c>
-        ///         Color.FromName("7")
-        ///     </c>
-        ///     , is interpreted as "/bugn9/7".
+        ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
+        ///     is set, the standard <see cref="DotColorSchemes.X11" /> naming is used. For example, if
+        ///     <see cref="DotColorSchemes.DotBrewerColorSchemes.BuGn9" /> Brewer color scheme is used, then a color named "7", e.g.
+        ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes" /> for
+        ///     supported scheme names.
         /// </summary>
         string ColorScheme { get; set; }
 
@@ -127,6 +123,31 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         DotAlignment? ImageAlignment { get; set; }
 
         /// <summary>
+        ///     <para>
+        ///         Attribute controlling how an image fills its containing node. In general, the image is given its natural size, (compare
+        ///         the <see cref="IDotGraphAttributes.Dpi" /> graph attribute), and the node size is made large enough to contain its image,
+        ///         its label, its margin, and its peripheries. Its width and height will also be at least as large as its minimum width and
+        ///         height. If, however, <see cref="Sizing" /> = <see cref="DotNodeSizing.Fixed" />, the <see cref="Width" /> and
+        ///         <see cref="Height" /> attributes specify the exact size of the node.
+        ///     </para>
+        ///     <para>
+        ///         During rendering, in the default case (<see cref="ImageScaling" /> = <see cref="DotImageScaling.None" />), the image
+        ///         retains its natural size. If <see cref="ImageScaling" /> = <see cref="DotImageScaling.Uniform" />, the image is uniformly
+        ///         scaled (i.e., its aspect ratio is preserved) to fit inside the node. At least one dimension of the image will be as large
+        ///         as possible given the size of the node. When <see cref="ImageScaling" /> = <see cref="DotImageScaling.FillWidth" />, the
+        ///         width of the image is scaled to fill the node width. The corresponding property holds when <see cref="ImageScaling" /> =
+        ///         <see cref="DotImageScaling.FillHeight" />. When <see cref="ImageScaling" /> = <see cref="DotImageScaling.FillBoth" />,
+        ///         both the height and the width are scaled separately to fill the node.
+        ///     </para>
+        ///     <para>
+        ///         In all cases, if a dimension of the image is larger than the corresponding dimension of the node, that dimension of the
+        ///         image is scaled down to fit the node. As with the case of expansion, if <see cref="ImageScaling" /> =
+        ///         <see cref="DotImageScaling.Uniform" />, width and height are scaled uniformly.
+        ///     </para>
+        /// </summary>
+        DotImageScaling? ImageScaling { get; set; }
+
+        /// <summary>
         ///     If a gradient fill is being used, this determines the angle of the fill. For linear fills, the colors transform along a line
         ///     specified by the angle and the center of the object. For radial fills, a value of zero causes the colors to transform
         ///     radially from the center; for non-zero values, the colors transform from a point near the object's periphery as specified by
@@ -147,17 +168,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 
         /// <summary>
         ///     <para>
-        ///         Sets the style of the node (default: null). See the descriptions of individual <see cref="DotStyle" /> values to learn
+        ///         Sets the style of the node (default: null). See the descriptions of individual <see cref="DotStyles" /> values to learn
         ///         which styles are applicable to this element type.
         ///     </para>
         ///     <para>
         ///         Multiple styles can be used at once, for example:
         ///         <c>
-        ///             <see cref="Style" /> = <see cref="DotStyle.Solid" /> | <see cref="DotStyle.Bold" />;
+        ///             <see cref="Style" /> = <see cref="DotStyles.Solid" /> | <see cref="DotStyles.Bold" />;
         ///         </c>
         ///     </para>
         /// </summary>
-        DotStyle? Style { get; set; }
+        DotStyles? Style { get; set; }
 
         /// <summary>
         ///     <para>
@@ -202,7 +223,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <summary>
         ///     Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black" />).
         /// </summary>
-        Color? FontColor { get; set; }
+        DotColor FontColor { get; set; }
 
         /// <summary>
         ///     <para>

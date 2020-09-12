@@ -31,10 +31,10 @@ namespace GiGraph.Dot.Output.Generators.Graphs
 
         protected override void WriteEntity(DotGraphSection<TGraphAttributes> graphSection, IDotGraphBodyWriter writer)
         {
-            // node and edge defaults have to appear first, so that they are applied to all elements that come later in the output script
-            WriteGlobalAttributes(graphSection.Attributes, graphSection.NodeDefaults, graphSection.EdgeDefaults, writer);
+            // global node and edge attributes have to appear first, so that they are applied to all elements that come later in the output script
+            WriteGlobalAttributes(graphSection.Attributes, graphSection.Nodes.Attributes, graphSection.Edges.Attributes, writer);
 
-            // subgraphs and clusters may also specify node defaults, and these are applied only
+            // subgraphs and clusters may also specify global node attributes, and these are applied only
             // if the nodes they contain do not appear earlier in the parent graph or subgraph
             WriteSubgraphs(graphSection.Subgraphs, writer);
             WriteClusters(graphSection.Clusters, writer);

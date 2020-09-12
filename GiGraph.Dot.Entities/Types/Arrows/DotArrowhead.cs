@@ -50,7 +50,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// <param name="visibleParts">
         ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
         /// </param>
-        public DotArrowhead(DotArrowheadShape shape, DotArrowheadPart visibleParts)
+        public DotArrowhead(DotArrowheadShape shape, DotArrowheadParts visibleParts)
             : this(shape)
         {
             VisibleParts = visibleParts;
@@ -68,7 +68,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// <param name="visibleParts">
         ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
         /// </param>
-        public DotArrowhead(DotArrowheadShape shape, bool isFilled, DotArrowheadPart visibleParts)
+        public DotArrowhead(DotArrowheadShape shape, bool isFilled, DotArrowheadParts visibleParts)
             : this(shape)
         {
             IsFilled = isFilled;
@@ -89,7 +89,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         ///     Gets or sets a value indicating whether and how to clip the shape, leaving visible only the part to the left or to the right
         ///     of the edge.
         /// </summary>
-        public virtual DotArrowheadPart VisibleParts { get; set; } = DotArrowheadPart.Both;
+        public virtual DotArrowheadParts VisibleParts { get; set; } = DotArrowheadParts.Both;
 
         protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules)
         {
@@ -115,7 +115,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
                 : throw new ArgumentOutOfRangeException(nameof(shape), $"The specified arrowhead shape '{shape}' is invalid.");
         }
 
-        protected virtual string GetDotEncodedArrowheadPart(DotArrowheadPart visibleParts)
+        protected virtual string GetDotEncodedArrowheadPart(DotArrowheadParts visibleParts)
         {
             return DotAttributeValueAttribute.TryGetValue(visibleParts, out var result)
                 ? result
@@ -128,7 +128,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// <param name="visibleParts">
         ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
         /// </param>
-        public static DotArrowhead Filled(DotArrowheadPart visibleParts = DotArrowheadPart.Both)
+        public static DotArrowhead Filled(DotArrowheadParts visibleParts = DotArrowheadParts.Both)
         {
             return Filled(DotArrowheadShape.Normal, visibleParts);
         }
@@ -142,7 +142,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// <param name="visibleParts">
         ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
         /// </param>
-        public static DotArrowhead Filled(DotArrowheadShape shape, DotArrowheadPart visibleParts = DotArrowheadPart.Both)
+        public static DotArrowhead Filled(DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
         {
             return new DotArrowhead(shape, isFilled: true, visibleParts);
         }
@@ -153,7 +153,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// <param name="visibleParts">
         ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
         /// </param>
-        public static DotArrowhead Empty(DotArrowheadPart visibleParts = DotArrowheadPart.Both)
+        public static DotArrowhead Empty(DotArrowheadParts visibleParts = DotArrowheadParts.Both)
         {
             return Empty(DotArrowheadShape.Normal, visibleParts);
         }
@@ -167,7 +167,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// <param name="visibleParts">
         ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
         /// </param>
-        public static DotArrowhead Empty(DotArrowheadShape shape, DotArrowheadPart visibleParts = DotArrowheadPart.Both)
+        public static DotArrowhead Empty(DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
         {
             return new DotArrowhead(shape, isFilled: false, visibleParts);
         }

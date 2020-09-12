@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
     ///     The flags used for customizing component distribution in the array packing mode.
     /// </summary>
     [Flags]
-    public enum DotArrayPackingOption
+    public enum DotArrayPackingOptions
     {
         /// <summary>
         ///     Components are packed in column-major order. When not specified, they are in row-major order, with the number of columns

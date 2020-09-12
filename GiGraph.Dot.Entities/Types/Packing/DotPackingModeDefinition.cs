@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
             return value.HasValue ? new DotGranularPackingMode(value.Value) : null;
         }
 
-        public static implicit operator DotPackingModeDefinition(DotArrayPackingOption? value)
+        public static implicit operator DotPackingModeDefinition(DotArrayPackingOptions? value)
         {
             return value.HasValue ? new DotArrayPackingMode(value.Value) : null;
         }

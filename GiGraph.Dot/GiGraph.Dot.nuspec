@@ -22,23 +22,19 @@
     
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that can be visualized and/or converted to an image with external tools. A handy one is a plugin for Visual Studio Code, named Graphviz Preview. There are also online tools like www.webgraphviz.com, where you can paste the script to view your graph.</description>
     
-    <releaseNotes>- Added support for all available edge arrowheads with the filled, empty, and half-clipped variants. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.0/README.md#arrowhead-shapes.
+    <releaseNotes>- Added support for attributes: center, dpi, resolution, imagescale (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
 
-- Added support for edges with multiple arrowheads. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.0/README.md#arrowhead-shapes.
+- Record node builder (DotRecordBuilder) extended with several method overloads.
 
-- Added support for label justification (individual lines may be centered, left- or right-justified). See https://github.com/mariusz-schimke/GiGraph/blob/1.5.0/README.md#label-justification.
+- ToParallelSplines() and ToMulticolorSegments() extension methods added for DotEdge to simplify customizing their style and colors. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.1/README.md#multicolor-edges.
 
-- Added support for label placeholders (element-specific escape sequences replaced with corresponding identifiers on graph visualization). See https://github.com/mariusz-schimke/GiGraph/blob/1.5.0/README.md#label-placeholders.
+- Scheme support added to DotColor so that color names may be evaluated using a specific scheme.
 
-- Added support for multiple graph/subgraph/cluster sections to support of the DOT grammar fully. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.0/README.md#subsections.
+- NodeDefaults and EdgeDefaults properties moved to the Nodes and Edges collections. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.1/README.md#global-attributes.
 
-- Added support for attributes: headlabel, taillabel, image, imagepos, imagepath, group, ranksep, headclip, tailclip, colorscheme, rotate, pad, margin, size, ratio, labelfloat, labeldistance, labelangle, labelfontcolor, labelfontname, labelfontsize, minlen, len, weight, clusterrank, ordering, samehead, sametail, pack, packmode, sortv (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
+- DotDualColor type removed (use DotMultiColor instead or one of its static DotMultiColor.Dual() factory methods).
 
-- It is possible now to nullify attribute values (for some attributes it restores their original default value). See https://github.com/mariusz-schimke/GiGraph/blob/1.5.0/README.md#default-global-attributes.
-
-- Added separate classes to represent color combinations: DotDualColor, DotGradientColor, DotMultiColor.
-
-- Refactoring.
+- Minor refactoring (naming convention cleanup).
 
 
 See also https://github.com/mariusz-schimke/GiGraph/releases</releaseNotes>

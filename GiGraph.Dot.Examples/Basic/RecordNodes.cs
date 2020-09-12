@@ -32,25 +32,17 @@ namespace GiGraph.Dot.Examples.Basic
             );
 
             // you can achieve the same effect using a record builder
-            graph.Nodes.Add("Baz").ToRecord
-            (
-                r1 => r1
-                   .AppendField(f => f.AppendLine("Foo").Append("Bar"))
-                   .AppendRecord
-                    (
-                        r2 => r2
-                           .AppendField(f => f.AppendLineLeftJustified("Baz"))
-                           .AppendRecord
-                            (
-                                r3 => r3
-                                   .AppendField("Garply")
-                                   .AppendField("Waldo")
-                                   .AppendField("Fred", "port1")
-                            )
-                           .AppendField(f => f.AppendLineRightJustified("Plugh"))
+            graph.Nodes.Add("Baz").ToRecord(rb1 => rb1
+               .AppendField($"Foo{Environment.NewLine}Bar")
+               .AppendRecord(rb2 => rb2
+                   .AppendField(tf => tf.AppendLineLeftJustified("Baz"))
+                   .AppendRecord(rb3 => rb3
+                       .AppendFields("Garply", "Waldo")
+                       .AppendField("Fred", "port1")
                     )
-                   .AppendField("Qux")
-                   .AppendField("Quux")
+                   .AppendField(tf => tf.AppendLineRightJustified("Plugh"))
+                )
+               .AppendFields("Qux", "Quux")
             );
 
             graph.Edges.Add("Foo", "Bar", edge =>

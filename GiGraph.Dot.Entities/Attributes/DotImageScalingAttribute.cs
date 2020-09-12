@@ -6,12 +6,12 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     The fixedsize attribute of node.
+    ///     Represents image scaling options.
     /// </summary>
-    public class DotNodeSizingAttribute : DotAttribute<DotNodeSizing>
+    public class DotImageScalingAttribute : DotAttribute<DotImageScaling>
     {
         /// <summary>
-        ///     Creates a new instance of the attribute.
+        ///     Creates a new image scaling option attribute.
         /// </summary>
         /// <param name="key">
         ///     The key of the attribute.
@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotNodeSizingAttribute(string key, DotNodeSizing value)
+        public DotImageScalingAttribute(string key, DotImageScaling value)
             : base(key, value)
         {
         }
@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
             return DotAttributeValueAttribute.TryGetValue(Value, out var result)
                 ? result
-                : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified node sizing option '{Value}' is invalid.");
+                : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified image scaling option '{Value}' is invalid.");
         }
     }
 }

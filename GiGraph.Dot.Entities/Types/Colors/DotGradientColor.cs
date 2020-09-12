@@ -1,5 +1,3 @@
-using System.Drawing;
-
 namespace GiGraph.Dot.Entities.Types.Colors
 {
     /// <summary>
@@ -16,7 +14,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <param name="endColor">
         ///     The end color of the gradient fill.
         /// </param>
-        public DotGradientColor(Color startColor, Color endColor)
+        public DotGradientColor(DotColor startColor, DotColor endColor)
             : base(startColor, endColor)
         {
         }

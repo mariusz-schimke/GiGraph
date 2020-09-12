@@ -3,13 +3,13 @@ using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Arrows;
-using GiGraph.Dot.Entities.Types.AspectRatio;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
+using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -96,14 +96,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotDoubleAttribute(key, value));
         }
 
-        public virtual DotDoubleListAttribute Set(string key, params double[] value)
+        public virtual DotDoubleArrayAttribute Set(string key, params double[] value)
         {
-            return Set(new DotDoubleListAttribute(key, value));
+            return Set(new DotDoubleArrayAttribute(key, value));
         }
 
-        public virtual DotDoubleListAttribute Set(string key, IEnumerable<double> value)
+        public virtual DotDoubleArrayAttribute Set(string key, IEnumerable<double> value)
         {
-            return Set(new DotDoubleListAttribute(key, value));
+            return Set(new DotDoubleArrayAttribute(key, value));
         }
 
         public virtual DotBoolAttribute Set(string key, bool value)
@@ -136,7 +136,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotNodeSizingAttribute(key, value));
         }
 
-        public virtual DotStyleAttribute Set(string key, DotStyle value)
+        public virtual DotStyleAttribute Set(string key, DotStyles value)
         {
             return Set(new DotStyleAttribute(key, value));
         }
@@ -146,9 +146,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotArrowheadShapeAttribute(key, value));
         }
 
-        public virtual DotArrowDirectionAttribute Set(string key, DotArrowDirection value)
+        public virtual DotArrowDirectionsAttribute Set(string key, DotArrowDirections value)
         {
-            return Set(new DotArrowDirectionAttribute(key, value));
+            return Set(new DotArrowDirectionsAttribute(key, value));
         }
 
         public virtual DotRankAttribute Set(string key, DotRank value)
@@ -156,9 +156,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotRankAttribute(key, value));
         }
 
-        public virtual DotRankDirectionAttribute Set(string key, DotRankDirection value)
+        public virtual DotLayoutDirectionAttribute Set(string key, DotLayoutDirection value)
         {
-            return Set(new DotRankDirectionAttribute(key, value));
+            return Set(new DotLayoutDirectionAttribute(key, value));
         }
 
         public virtual DotClusterModeAttribute Set(string key, DotClusterMode value)
@@ -171,9 +171,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotEdgeOrderingModeAttribute(key, value));
         }
 
-        public virtual DotRankSeparationAttribute Set(string key, DotRankSeparationDefinition value)
+        public virtual DotRankSeparationDefinitionAttribute Set(string key, DotRankSeparationDefinition value)
         {
-            return Set(new DotRankSeparationAttribute(key, value));
+            return Set(new DotRankSeparationDefinitionAttribute(key, value));
         }
 
         public virtual DotEndpointPortAttribute Set(string key, DotEndpointPort value)
@@ -196,9 +196,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotPointAttribute(key, value));
         }
 
-        public virtual DotAspectRatioDefinitionAttribute Set(string key, DotAspectRatioDefinition value)
+        public virtual DotGraphScalingDefinitionAttribute Set(string key, DotGraphScalingDefinition value)
         {
-            return Set(new DotAspectRatioDefinitionAttribute(key, value));
+            return Set(new DotGraphScalingDefinitionAttribute(key, value));
         }
 
         public virtual DotPackingDefinitionAttribute Set(string key, DotPackingDefinition value)
@@ -206,9 +206,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotPackingDefinitionAttribute(key, value));
         }
 
-        public virtual DotAspectRatioAttribute Set(string key, DotAspectRatio value)
+        public virtual DotGraphScalingAttribute Set(string key, DotGraphScaling value)
         {
-            return Set(new DotAspectRatioAttribute(key, value));
+            return Set(new DotGraphScalingAttribute(key, value));
         }
 
         public virtual DotArrowheadDefinitionAttribute Set(string key, DotArrowheadDefinition value)
@@ -224,6 +224,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotPackingModeDefinitionAttribute Set(string key, DotPackingModeDefinition value)
         {
             return Set(new DotPackingModeDefinitionAttribute(key, value));
+        }
+
+        public virtual DotImageScalingAttribute Set(string key, DotImageScaling value)
+        {
+            return Set(new DotImageScalingAttribute(key, value));
         }
     }
 }

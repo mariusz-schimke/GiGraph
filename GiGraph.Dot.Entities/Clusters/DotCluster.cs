@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
-using GiGraph.Dot.Entities.Attributes.Collections.Edge;
-using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs;
@@ -33,10 +31,8 @@ namespace GiGraph.Dot.Entities.Clusters
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
             DotClusterCollection clusters,
-            IDotNodeAttributeCollection nodeDefaults,
-            IDotEdgeAttributeCollection edgeDefaults,
             DotGraphSectionCollection<IDotClusterAttributeCollection> subsections)
-            : base(id, attributes, nodes, edges, subgraphs, clusters, nodeDefaults, edgeDefaults, subsections)
+            : base(id, attributes, nodes, edges, subgraphs, clusters, subsections)
         {
         }
 
@@ -44,7 +40,7 @@ namespace GiGraph.Dot.Entities.Clusters
             string id,
             DotGraphSection<IDotClusterAttributeCollection> rootSection,
             DotGraphSectionCollection<IDotClusterAttributeCollection> subsections)
-            : base(id, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, rootSection.NodeDefaults, rootSection.EdgeDefaults, subsections)
+            : base(id, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, subsections)
         {
         }
 
@@ -94,7 +90,7 @@ namespace GiGraph.Dot.Entities.Clusters
             return result;
         }
 
-        protected static DotGraphSection<IDotClusterAttributeCollection> CreateSection()
+        public static DotGraphSection<IDotClusterAttributeCollection> CreateSection()
         {
             return Create(new DotClusterAttributeCollection());
         }

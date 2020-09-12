@@ -8,14 +8,8 @@ namespace GiGraph.Dot.Entities.Types.Arrows
     ///     towards the point where the arrow "touches" the node.
     /// </summary>
     [Flags]
-    public enum DotArrowheadPart
+    public enum DotArrowheadParts
     {
-        /// <summary>
-        ///     Both parts of the arrowhead.
-        /// </summary>
-        [DotAttributeValue(null)]
-        Both = Left | Right,
-
         /// <summary>
         ///     The left part of the arrowhead.
         /// </summary>
@@ -26,6 +20,12 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         ///     The right part of the arrowhead.
         /// </summary>
         [DotAttributeValue("r")]
-        Right = 1 << 1
+        Right = 1 << 1,
+
+        /// <summary>
+        ///     Both parts of the arrowhead.
+        /// </summary>
+        [DotAttributeValue(null)]
+        Both = Left | Right
     }
 }
