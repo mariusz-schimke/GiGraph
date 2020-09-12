@@ -830,8 +830,8 @@ digraph
 
 By default an edge is visualized as a single spline in one color. There are two other variants available, however:
 
-- a single spline with segments in different colors,
-- multiple parallel splines in individually specified colors.
+- a single spline with segments in specified colors,
+- multiple parallel splines in specified colors.
 
 Consider the following example.
 
@@ -846,7 +846,7 @@ graph.Edges.Add("Foo", "Bar").ToMulticolorSegments(
 graph.Edges.Add("Foo", "Bar").ToParallelSplines(Color.RoyalBlue, Color.Turquoise);
 ```
 
-Note that in the case of multicolor segments, at least one color has to have a weight specified. The weight is interpreted as a length proportion of that segment in relation to other segments. The other colors may be provided without a weight, in which case the lengths of their segments will be calculated proportionally within the remaining length.
+Note that in the case of multicolor segments, at least one color has to have a weight specified. The weight is interpreted as a length proportion of that segment in relation to other segments. Other colors may be provided without weights, in which case the lengths of their segments are distributed proportionally within the remaining part of an edge.
 
 ```dot
 digraph
