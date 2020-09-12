@@ -32,6 +32,8 @@
 
 - NodeDefaults and EdgeDefaults properties moved to the Nodes and Edges collections. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.1/README.md#global-attributes.
 
+- DotDualColor type removed (use DotMultiColor instead or one of its static DotMultiColor.Dual() factory methods).
+
 - Minor refactoring (naming convention cleanup).
 
 
