@@ -13,7 +13,7 @@
     <icon>content\icon.png</icon>
     
     <projectUrl>https://github.com/mariusz-schimke/GiGraph</projectUrl>
-    <repository type="git" url="https://github.com/mariusz-schimke/GiGraph.git" branch="master" commit="58a1f8afabe70f24ca67c743aa1e0d51ba1cfc04" />
+    <repository type="git" url="https://github.com/mariusz-schimke/GiGraph.git" branch="master" commit="1dda51dd4bd068cf536c69f7edab404bbf79cd91" />
 
     <license type="file">content\LICENSE.txt</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -24,7 +24,7 @@
     
     <releaseNotes>- Added support for attributes: center, dpi, resolution, imagescale (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
 
-- Record node builder (DotRecordBuilder) extended with several method overloads.
+- Record node builder (DotRecordBuilder) extended with several method overloads to simplify building records.
 
 - ToParallelSplines() and ToMulticolorSegments() extension methods added for DotEdge to simplify customizing their style and colors. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.1/README.md#multicolor-edges.
 
@@ -32,9 +32,7 @@
 
 - NodeDefaults and EdgeDefaults properties moved to the Nodes and Edges collections. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.1/README.md#global-attributes.
 
-- DotDualColor type removed (use DotMultiColor instead or one of its static DotMultiColor.Dual() factory methods).
-
-- Minor refactoring (naming convention cleanup).
+- Refactoring (property and type naming cleanup).
 
 
 See also https://github.com/mariusz-schimke/GiGraph/releases</releaseNotes>
