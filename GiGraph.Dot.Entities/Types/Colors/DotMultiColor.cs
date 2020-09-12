@@ -104,8 +104,18 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <param name="colors">
         ///     The colors to initialize the instance with.
         /// </param>
-        public DotMultiColor(IEnumerable<Color> colors)
-            : this(colors?.Select(c => new DotColor(c)))
+        /// <param name="scheme">
+        ///     <para>
+        ///         The color scheme to evaluate named colors with if any such are specified. See <see cref="DotColorSchemes" /> for
+        ///         supported scheme names.
+        ///     </para>
+        ///     <para>
+        ///         Pass null to use the color scheme set on the current element, or to use the default scheme if none was set. Pass
+        ///         <see cref="DotColorSchemes.Default" /> to make named colors be evaluated using the default X11 naming.
+        ///     </para>
+        /// </param>
+        public DotMultiColor(IEnumerable<Color> colors, string scheme = null)
+            : this(colors?.Select(c => new DotColor(c, scheme)))
         {
         }
 

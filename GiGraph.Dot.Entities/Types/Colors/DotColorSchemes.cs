@@ -3,7 +3,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
     /// <summary>
     ///     Provides a list of supported color schemes.
     /// </summary>
-    public class DotColorSchemes
+    public static class DotColorSchemes
     {
         /// <summary>
         ///     Uses the default color scheme for the associated color if a color scheme attribute has been set for the current element.
@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         public static string Svg => "svg";
 
         /// <summary>
-        ///     The X11 color scheme (<see href="http://www.graphviz.org/doc/info/colors.html#brewer" />).
+        ///     The Brewer color schemes (<see href="http://www.graphviz.org/doc/info/colors.html#brewer" />).
         /// </summary>
         public static DotBrewerColorSchemes Brewer { get; } = new DotBrewerColorSchemes();
 

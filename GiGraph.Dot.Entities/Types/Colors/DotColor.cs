@@ -31,6 +31,29 @@ namespace GiGraph.Dot.Entities.Types.Colors
         }
 
         /// <summary>
+        ///     Creates a new instance initialized with a named color.
+        /// </summary>
+        /// <param name="name">
+        ///     The color name to initialize the instance with. The name will be evaluated in the context of the <paramref name="scheme" />
+        ///     if specified, in the context of the scheme applied to the current element if any, or in the context of the default X11 scheme
+        ///     otherwise.
+        /// </param>
+        /// <param name="scheme">
+        ///     <para>
+        ///         The color scheme to evaluate the current color with if a named color is specified. See <see cref="DotColorSchemes" /> for
+        ///         supported scheme names.
+        ///     </para>
+        ///     <para>
+        ///         Pass null to use the color scheme set on the element, or to use the default scheme if none was set. Pass
+        ///         <see cref="DotColorSchemes.Default" /> to make the color be evaluated using the default X11 naming.
+        ///     </para>
+        /// </param>
+        public DotColor(string name, string scheme = null)
+            : this(Color.FromName(name), scheme)
+        {
+        }
+
+        /// <summary>
         ///     Gets the color.
         /// </summary>
         public virtual Color Color { get; }
