@@ -54,9 +54,9 @@ namespace GiGraph.Dot.Examples.Complex
 
             graph.Subgraphs.Add(sg =>
             {
-                // nodes with dual-color fill; fill proportions specified by the weight parameter
-                sg.Nodes.Add("C").Attributes.FillColor = new DotDualWeightedColor(Color.RoyalBlue, Color.Turquoise, weight2: 0.25);
-                sg.Nodes.Add("D").Attributes.FillColor = new DotDualWeightedColor(Color.Navy, weight1: 0.25, Color.RoyalBlue);
+                // nodes with dual-color fill; fill proportions specified by the weight properties
+                sg.Nodes.Add("C").Attributes.FillColor = new DotMultiColor(Color.RoyalBlue, new DotWeightedColor(Color.Turquoise, 0.25));
+                sg.Nodes.Add("D").Attributes.FillColor = new DotMultiColor(new DotWeightedColor(Color.Navy, 0.25), Color.RoyalBlue);
 
                 sg.Edges.Add("C", "D", edge =>
                 {
