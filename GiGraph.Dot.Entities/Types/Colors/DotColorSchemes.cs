@@ -45,8 +45,6 @@ namespace GiGraph.Dot.Entities.Types.Colors
             public string Blues8 => "blues8";
             public string Blues9 => "blues9";
 
-            public string BrBg10 => "brbg10";
-            public string BrBg11 => "brbg11";
             public string BrBg3 => "brbg3";
             public string BrBg4 => "brbg4";
             public string BrBg5 => "brbg5";
@@ -54,6 +52,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
             public string BrBg7 => "brbg7";
             public string BrBg8 => "brbg8";
             public string BrBg9 => "brbg9";
+            public string BrBg10 => "brbg10";
+            public string BrBg11 => "brbg11";
 
             public string BuGn3 => "bugn3";
             public string BuGn4 => "bugn4";
