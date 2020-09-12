@@ -824,6 +824,8 @@ digraph
 <p align="center">
   <img src="./Assets/Examples/arrowheads.svg">
 </p>
+
+
 ### Multicolor edges
 
 By default an edge is visualized as a single spline in one color. There are two other variants available, however:
