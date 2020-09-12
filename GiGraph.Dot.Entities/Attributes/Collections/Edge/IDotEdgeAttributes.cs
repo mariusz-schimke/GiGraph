@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using GiGraph.Dot.Entities.Attributes.Collections.Graph;
+﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;

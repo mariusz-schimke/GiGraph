@@ -1,5 +1,4 @@
 using System;
-using System.Drawing;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Arrows;
