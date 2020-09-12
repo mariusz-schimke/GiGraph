@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return GetValueAsBool(GetKey(propertyMethod));
         }
 
-        protected virtual Color? GetValueAsColor(MethodBase propertyMethod)
+        protected virtual DotColor GetValueAsColor(MethodBase propertyMethod)
         {
             return GetValueAsColor(GetKey(propertyMethod));
         }

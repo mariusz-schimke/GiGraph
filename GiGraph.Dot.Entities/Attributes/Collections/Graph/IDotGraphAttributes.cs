@@ -146,7 +146,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     override a <see cref="IDotClusterAttributes.Color" /> or <see cref="IDotClusterAttributes.BackgroundColor" /> attribute set
         ///     for the cluster.
         /// </summary>
-        Color? PenColor { get; set; }
+        DotColor PenColor { get; set; }
 
         /// <summary>
         ///     Gets or sets the direction of graph layout (default: <see cref="DotLayoutDirection.TopToBottom" />).
@@ -183,7 +183,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black" />).
         /// </summary>
-        Color? FontColor { get; set; }
+        DotColor FontColor { get; set; }
 
         /// <summary>
         ///     <para>

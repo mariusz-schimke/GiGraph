@@ -123,7 +123,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     <see cref="IDotGraphAttributes.PenColor" />), this will override a <see cref="Color" /> or <see cref="BackgroundColor" />
         ///     attribute set for the cluster.
         /// </summary>
-        Color? PenColor { get; set; }
+        DotColor PenColor { get; set; }
 
         /// <summary>
         ///     <para>
@@ -142,7 +142,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// <summary>
         ///     Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black" />).
         /// </summary>
-        Color? FontColor { get; set; }
+        DotColor FontColor { get; set; }
 
         /// <summary>
         ///     <para>

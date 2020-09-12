@@ -97,7 +97,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Color used for <see cref="HeadLabel" /> and <see cref="TailLabel" />. If not set, defaults to edge's <see cref="FontColor" />
         ///     .
         /// </summary>
-        Color? LabelFontColor { get; set; }
+        DotColor LabelFontColor { get; set; }
 
         /// <summary>
         ///     Font used for <see cref="HeadLabel" /> and <see cref="TailLabel" />. If not set, defaults to edge's <see cref="FontName" />.
@@ -158,7 +158,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black" />).
         /// </summary>
-        Color? FontColor { get; set; }
+        DotColor FontColor { get; set; }
 
         /// <summary>
         ///     <para>

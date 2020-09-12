@@ -224,7 +224,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <summary>
         ///     Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black" />).
         /// </summary>
-        Color? FontColor { get; set; }
+        DotColor FontColor { get; set; }
 
         /// <summary>
         ///     <para>
