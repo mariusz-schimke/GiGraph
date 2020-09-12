@@ -824,6 +824,39 @@ digraph
 <p align="center">
   <img src="./Assets/Examples/arrowheads.svg">
 </p>
+### Multicolor edges
+
+By default an edge is visualized as a single spline in one color. There are two other variants available, however:
+
+- a single spline with segments in different colors,
+- multiple parallel splines in individually specified colors.
+
+Consider the following example.
+
+```c#
+using GiGraph.Dot.Extensions;
+...
+
+graph.Edges.Add("Foo", "Bar").ToMulticolorSegments(
+    new DotWeightedColor(Color.RoyalBlue, 0.5),
+    Color.Turquoise);
+
+graph.Edges.Add("Foo", "Bar").ToParallelSplines(Color.RoyalBlue, Color.Turquoise);
+```
+
+Note that in the case of multicolor segments, at least one color has to have a weight specified. The weight is interpreted as a length proportion of that segment in relation to other segments. The other colors may be provided without a weight, in which case the lengths of their segments will be calculated proportionally within the remaining length.
+
+```dot
+digraph
+{
+    Foo -> Bar [ color = "royalblue:turquoise" ]
+    Foo -> Bar [ color = "royalblue;0.5:turquoise" ]
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/multicolor-edges.svg">
+</p>
 
 
 

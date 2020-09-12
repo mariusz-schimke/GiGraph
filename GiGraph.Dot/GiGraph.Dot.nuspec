@@ -26,7 +26,7 @@
 
 - Record node builder (DotRecordBuilder) extended with several method overloads.
 
-- ToParallelSplines() and ToMulticolorSegments() extension methods added for DotEdge to simplify customizing their style and colors. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.1/README.md#customizing-styles.
+- ToParallelSplines() and ToMulticolorSegments() extension methods added for DotEdge to simplify customizing their style and colors. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.1/README.md#multicolor-edges.
 
 - Scheme support added to DotColor so that color names may be evaluated using a specific scheme.
 
