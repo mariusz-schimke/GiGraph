@@ -1,5 +1,4 @@
 using System;
-using System.Drawing;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Arrows;
@@ -46,10 +45,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         [DotAttributeKey("labelfontcolor")]
-        public virtual Color? LabelFontColor
+        public virtual DotColor LabelFontColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorAttribute(k, v.Value));
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
         [DotAttributeKey("labelfontsize")]

@@ -20,12 +20,64 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     The weight of the color in the range 0 ≤ <paramref name="weight" /> ≤ 1. Represents the proportion of the area covered with
         ///     the specified color.
         /// </param>
-        public DotWeightedColor(Color color, double weight)
-            : base(color)
+        /// <param name="scheme">
+        ///     <para>
+        ///         The color scheme to evaluate the current color with if a named color is specified. See <see cref="DotColorSchemes" /> for
+        ///         supported scheme names.
+        ///     </para>
+        ///     <para>
+        ///         Pass null to use the color scheme set on the element, or to use the default scheme if none was set. Pass
+        ///         <see cref="DotColorSchemes.Default" /> to make the color be evaluated using the default X11 naming.
+        ///     </para>
+        /// </param>
+        public DotWeightedColor(Color color, double weight, string scheme = null)
+            : base(color, scheme)
         {
             Weight = weight >= 0 && weight <= 1
                 ? weight
                 : throw new ArgumentException($"The color weight has to be in the range 0 ≤ {nameof(weight)} ≤ 1.", nameof(weight));
+        }
+
+        /// <summary>
+        ///     Creates a new instance initialized with a named color.
+        /// </summary>
+        /// <param name="name">
+        ///     The color name to initialize the instance with. The name will be evaluated in the context of the <paramref name="scheme" />
+        ///     if specified, in the context of the scheme applied to the current element if any, or in the context of the default X11 scheme
+        ///     otherwise.
+        /// </param>
+        /// <param name="weight">
+        ///     The weight of the color in the range 0 ≤ <paramref name="weight" /> ≤ 1. Represents the proportion of the area covered with
+        ///     the specified color.
+        /// </param>
+        /// <param name="scheme">
+        ///     <para>
+        ///         The color scheme to evaluate the current color with if a named color is specified. See <see cref="DotColorSchemes" /> for
+        ///         supported scheme names.
+        ///     </para>
+        ///     <para>
+        ///         Pass null to use the color scheme set on the element, or to use the default scheme if none was set. Pass
+        ///         <see cref="DotColorSchemes.Default" /> to make the color be evaluated using the default X11 naming.
+        ///     </para>
+        /// </param>
+        public DotWeightedColor(string name, double weight, string scheme = null)
+            : this(Color.FromName(name), weight, scheme)
+        {
+        }
+
+        /// <summary>
+        ///     Creates a new instance initialized with a color and a weight.
+        /// </summary>
+        /// <param name="color">
+        ///     The color to initialize the instance with.
+        /// </param>
+        /// <param name="weight">
+        ///     The weight of the color in the range 0 ≤ <paramref name="weight" /> ≤ 1. Represents the proportion of the area covered with
+        ///     the specified color.
+        /// </param>
+        public DotWeightedColor(DotColor color, double weight)
+            : this(color.Color, weight, color.Scheme)
+        {
         }
 
         /// <summary>

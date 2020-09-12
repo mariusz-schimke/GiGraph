@@ -10,7 +10,7 @@ using GiGraph.Dot.Output.Writers.Graphs;
 namespace GiGraph.Dot.Extensions
 {
     /// <summary>
-    ///     Provides helper methods for <see cref="DotGraph" />.
+    ///     Provides extension methods for <see cref="DotGraph" />.
     /// </summary>
     public static class DotGraphExtension
     {

@@ -826,6 +826,41 @@ digraph
 </p>
 
 
+### Multicolor edges
+
+By default an edge is visualized as a single spline in one color. There are two other variants available, however:
+
+- a single spline with segments in specified colors,
+- multiple parallel splines in specified colors.
+
+Consider the following example.
+
+```c#
+using GiGraph.Dot.Extensions;
+...
+
+graph.Edges.Add("Foo", "Bar").ToMulticolorSegments(
+    new DotWeightedColor(Color.RoyalBlue, 0.5),
+    Color.Turquoise);
+
+graph.Edges.Add("Foo", "Bar").ToParallelSplines(Color.RoyalBlue, Color.Turquoise);
+```
+
+Note that in the case of multicolor segments, at least one color has to have a weight specified. The weight is interpreted as a length proportion of that segment in relation to other segments. Other colors may be provided without weights, in which case the lengths of their segments are distributed proportionally within the remaining part of an edge.
+
+```dot
+digraph
+{
+    Foo -> Bar [ color = "royalblue:turquoise" ]
+    Foo -> Bar [ color = "royalblue;0.5:turquoise" ]
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/multicolor-edges.svg">
+</p>
+
+
 
 ### Edge groups
 
@@ -1200,16 +1235,16 @@ namespace GiGraph.Dot.Examples
                     edge.Attributes.Label = "PARALLEL SPLINES";
                     edge.Attributes.ArrowDirections = DotArrowDirections.Both;
 
-                    // this will render two parallel splines (but more of them may be added by adding further colors)
-                    edge.Attributes.Color = new DotMultiColor(Color.Turquoise, Color.RoyalBlue);
+                    // this will render two parallel splines (but more of them may be specified)
+                    edge.ToParallelSplines(Color.Turquoise, Color.RoyalBlue);
                 });
             });
 
             graph.Subgraphs.Add(sg =>
             {
-                // nodes with dual color fill; fill proportions specified by the weight parameter
-                sg.Nodes.Add("C").Attributes.FillColor = new DotDualColor(Color.RoyalBlue, Color.Turquoise, weight2: 0.25);
-                sg.Nodes.Add("D").Attributes.FillColor = new DotDualColor(Color.Navy, Color.RoyalBlue, weight1: 0.25);
+                // nodes with dual-color fill; fill proportions specified by the weight properties
+                sg.Nodes.Add("C").Attributes.FillColor = new DotMultiColor(Color.RoyalBlue, new DotWeightedColor(Color.Turquoise, 0.25));
+                sg.Nodes.Add("D").Attributes.FillColor = new DotMultiColor(new DotWeightedColor(Color.Navy, 0.25), Color.RoyalBlue);
 
                 sg.Edges.Add("C", "D", edge =>
                 {
@@ -1217,7 +1252,7 @@ namespace GiGraph.Dot.Examples
                     edge.Attributes.ArrowDirections = DotArrowDirections.Both;
 
                     // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
-                    edge.Attributes.Color = new DotMultiColor(
+                    edge.ToMulticolorSegments(
                         new DotWeightedColor(Color.Turquoise, 0.33),
                         new DotWeightedColor(Color.Gray, 0.33),
                         Color.Navy);

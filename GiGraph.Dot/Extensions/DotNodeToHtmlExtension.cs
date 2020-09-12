@@ -5,7 +5,7 @@ using GiGraph.Dot.Entities.Types.Labels;
 namespace GiGraph.Dot.Extensions
 {
     /// <summary>
-    ///     Provides helper methods for <see cref="DotNode" />.
+    ///     Provides extension methods for <see cref="DotNode" />.
     /// </summary>
     public static class DotNodeToHtmlExtension
     {

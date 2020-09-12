@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
+﻿using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Attributes.Enums;
@@ -107,14 +106,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         DotColorDefinition FillColor { get; set; }
 
         /// <summary>
-        ///     Specifies a color scheme namespace. If defined, it specifies the context for interpreting color names. In particular, if a
-        ///     color value has form "xxx" or "//xxx", then the color xxx will be evaluated according to the current color scheme. If no
-        ///     color scheme is set, the standard X11 naming is used. For example, if "bugn9" color scheme is used, then a color named "7",
-        ///     e.g.
-        ///     <c>
-        ///         Color.FromName("7")
-        ///     </c>
-        ///     , is interpreted as "/bugn9/7".
+        ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
+        ///     is set, the standard <see cref="DotColorSchemes.X11" /> naming is used. For example, if
+        ///     <see cref="DotColorSchemes.DotBrewerColorSchemes.BuGn9" /> Brewer color scheme is used, then a color named "7", e.g.
+        ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes" /> for
+        ///     supported scheme names.
         /// </summary>
         string ColorScheme { get; set; }
 
@@ -149,7 +145,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     override a <see cref="IDotClusterAttributes.Color" /> or <see cref="IDotClusterAttributes.BackgroundColor" /> attribute set
         ///     for the cluster.
         /// </summary>
-        Color? PenColor { get; set; }
+        DotColor PenColor { get; set; }
 
         /// <summary>
         ///     Gets or sets the direction of graph layout (default: <see cref="DotLayoutDirection.TopToBottom" />).
@@ -186,7 +182,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black" />).
         /// </summary>
-        Color? FontColor { get; set; }
+        DotColor FontColor { get; set; }
 
         /// <summary>
         ///     <para>
