@@ -21,9 +21,14 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     the specified color.
         /// </param>
         /// <param name="scheme">
-        ///     The color scheme to use (or to override one if set on the element as an attribute). See <see cref="DotColorSchemes" /> for
-        ///     supported scheme names. Pass null to use the color scheme set on the element, or to use the default scheme if none was set.
-        ///     Pass <see cref="DotColorSchemes.Default" /> to make the color be evaluated using the default X11 naming.
+        ///     <para>
+        ///         The color scheme to evaluate the current color with if a named color is specified. See <see cref="DotColorSchemes" /> for
+        ///         supported scheme names.
+        ///     </para>
+        ///     <para>
+        ///         Pass null to use the color scheme set on the element, or to use the default scheme if none was set. Pass
+        ///         <see cref="DotColorSchemes.Default" /> to make the color be evaluated using the default X11 naming.
+        ///     </para>
         /// </param>
         public DotWeightedColor(Color color, double weight, string scheme = null)
             : base(color, scheme)
