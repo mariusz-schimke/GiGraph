@@ -1200,8 +1200,8 @@ namespace GiGraph.Dot.Examples
                     edge.Attributes.Label = "PARALLEL SPLINES";
                     edge.Attributes.ArrowDirections = DotArrowDirections.Both;
 
-                    // this will render two parallel splines (but more of them may be added by adding further colors)
-                    edge.Attributes.Color = new DotMultiColor(Color.Turquoise, Color.RoyalBlue);
+                    // this will render two parallel splines (but more of them may be specified)
+                    edge.ToParallelSplines(Color.Turquoise, Color.RoyalBlue);
                 });
             });
 
@@ -1217,7 +1217,7 @@ namespace GiGraph.Dot.Examples
                     edge.Attributes.ArrowDirections = DotArrowDirections.Both;
 
                     // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
-                    edge.Attributes.Color = new DotMultiColor(
+                    edge.ToMulticolorSegments(
                         new DotWeightedColor(Color.Turquoise, 0.33),
                         new DotWeightedColor(Color.Gray, 0.33),
                         Color.Navy);

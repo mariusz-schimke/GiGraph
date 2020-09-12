@@ -5,7 +5,7 @@ using GiGraph.Dot.Entities.Nodes;
 namespace GiGraph.Dot.Extensions
 {
     /// <summary>
-    ///     Provides helper methods for <see cref="DotNode" />.
+    ///     Provides extension methods for <see cref="DotNode" />.
     /// </summary>
     public static class DotNodeToPolygonExtension
     {
