@@ -14,15 +14,26 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <param name="color">
         ///     The color to initialize the instance with.
         /// </param>
-        public DotColor(Color color)
+        /// <param name="scheme">
+        ///     The color scheme to use (or to override one if set on the element as an attribute). See <see cref="DotColorSchemes" /> for
+        ///     supported scheme names. Pass null to use the color scheme set on the element, or to use the default scheme if none was set.
+        ///     Pass <see cref="DotColorSchemes.Default" /> to make the color be evaluated using the default X11 naming.
+        /// </param>
+        public DotColor(Color color, string scheme = null)
         {
             Color = color;
+            Scheme = scheme;
         }
 
         /// <summary>
         ///     Gets the color.
         /// </summary>
         public virtual Color Color { get; }
+
+        /// <summary>
+        ///     Gets the color scheme (see <see cref="DotColorSchemes" />).
+        /// </summary>
+        public virtual string Scheme { get; }
 
         protected internal virtual double? GetWeight()
         {
@@ -33,7 +44,13 @@ namespace GiGraph.Dot.Entities.Types.Colors
         {
             if (options.Colors.PreferName && Color.IsNamedColor)
             {
-                return Color.Name.ToLowerInvariant();
+                var scheme = Scheme is null
+                    ? null
+                    : Scheme == DotColorSchemes.Default
+                        ? DotColorSchemes.Default
+                        : $"/{Scheme}/";
+
+                return $"{scheme}{Color.Name.ToLowerInvariant()}";
             }
 
             if (Color.IsEmpty)
@@ -49,9 +66,11 @@ namespace GiGraph.Dot.Entities.Types.Colors
 
         public override string ToString()
         {
+            var scheme = Scheme is {} ? $"{Scheme}:" : null;
+
             if (Color.IsNamedColor)
             {
-                return Color.Name;
+                return $"{scheme}{Color.Name}";
             }
 
             if (Color.IsEmpty)

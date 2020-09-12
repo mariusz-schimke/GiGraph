@@ -104,30 +104,6 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <param name="colors">
         ///     The colors to initialize the instance with.
         /// </param>
-        public DotMultiColor(params Color[] colors)
-            : this((IEnumerable<Color>) colors)
-        {
-        }
-
-        /// <summary>
-        ///     <para>
-        ///         Creates a new color list rendered in a specific way depending on how many colors are specified, and what type of element
-        ///         the color list is applied to.
-        ///     </para>
-        ///     <para>
-        ///         The returned color list will be rendered as gradient fill when only two colors are specified (refers to the root graph,
-        ///         nodes, and clusters), or as two parallel splines when applied to an edge.
-        ///     </para>
-        ///     <para>
-        ///         When more than two colors are specified, they will be rendered as parallel splines, if used for edges; when used for
-        ///         rectangularly-shaped nodes or clusters with the <see cref="DotStyles.Striped" /> style, the returned color list will be
-        ///         rendered as a striped multicolor fill, or as a wedged multicolor fill, when used for elliptically-shaped nodes with the
-        ///         <see cref="DotStyles.Wedged" /> style.
-        ///     </para>
-        /// </summary>
-        /// <param name="colors">
-        ///     The colors to initialize the instance with.
-        /// </param>
         public DotMultiColor(IEnumerable<Color> colors)
             : this(colors?.Select(c => new DotColor(c)))
         {
