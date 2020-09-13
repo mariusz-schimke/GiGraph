@@ -80,7 +80,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
                         ? DotColorSchemes.Default
                         : $"/{Scheme}/";
 
-                return $"{scheme}{Color.Name.ToLowerInvariant()}";
+                return $"{scheme?.ToLowerInvariant()}{Color.Name.ToLowerInvariant()}";
             }
 
             if (Color.IsEmpty)
