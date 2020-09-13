@@ -12,21 +12,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the cluster. It may be plain text (<see cref="string" />) or HTML (
-        ///         <see cref="DotHtmlLabel" />).
+        ///         <see cref="DotHtmlLabel" />). See also <see cref="DotTextFormatter" /> for plain text label formatting if needed.
         ///     </para>
         ///     <para>
         ///         Examples:
         ///         <list type="bullet">
         ///             <item>
-        ///                 <see cref="Label" /> = "My label";
+        ///                 <description>
+        ///                     <see cref="Label" /> = "My label";
+        ///                 </description>
         ///             </item>
         ///             <item>
-        ///                 <see cref="Label" /> = new <see cref="DotHtmlLabel" />("&lt;TABLE&gt;...&lt;/TABLE&gt;");
+        ///                 <description>
+        ///                     <see cref="Label" /> = new <see cref="DotHtmlLabel" />("&lt;TABLE&gt;...&lt;/TABLE&gt;");
+        ///                 </description>
         ///             </item>
         ///         </list>
-        ///     </para>
-        ///     <para>
-        ///         See also <see cref="DotTextFormatter" /> for plain text label formatting.
         ///     </para>
         /// </summary>
         DotLabel Label { get; set; }

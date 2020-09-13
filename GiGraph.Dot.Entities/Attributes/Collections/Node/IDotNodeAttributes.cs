@@ -13,26 +13,33 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the node. It may be plain text (<see cref="string" />), HTML (
-        ///         <see cref="DotHtmlLabel" />), or a record (<see cref="DotRecordLabel" />) for a record-based node (<see cref="Shape" /> =
-        ///         <see cref="DotNodeShape.Record" /> or <see cref="Shape" /> = <see cref="DotNodeShape.RoundedRecord" />).
+        ///         <see cref="DotHtmlLabel" />), or a record (<see cref="DotRecordLabel" />) for a record-based node (when
+        ///         <see cref="Shape" /> = <see cref="DotNodeShape.Record" /> or <see cref="Shape" /> =
+        ///         <see cref="DotNodeShape.RoundedRecord" />).
+        ///     </para>
+        ///     <para>
+        ///         See also <see cref="DotTextFormatter" /> for plain text label formatting if needed, and <see cref="DotRecordBuilder" />
+        ///         for building records.
         ///     </para>
         ///     <para>
         ///         Examples:
         ///         <list type="bullet">
         ///             <item>
-        ///                 <see cref="Label" /> = "My label";
+        ///                 <description>
+        ///                     <see cref="Label" /> = "My label";
+        ///                 </description>
         ///             </item>
         ///             <item>
-        ///                 <see cref="Label" /> = new <see cref="DotHtmlLabel" />("&lt;TABLE&gt;...&lt;/TABLE&gt;");
+        ///                 <description>
+        ///                     <see cref="Label" /> = new <see cref="DotHtmlLabel" />("&lt;TABLE&gt;...&lt;/TABLE&gt;");
+        ///                 </description>
         ///             </item>
         ///             <item>
-        ///                 <see cref="Label" /> = new <see cref="DotRecord" />("My field 1", "My field 2");
+        ///                 <description>
+        ///                     <see cref="Label" /> = new <see cref="DotRecord" />("My field 1", "My field 2");
+        ///                 </description>
         ///             </item>
         ///         </list>
-        ///     </para>
-        ///     <para>
-        ///         See also <see cref="DotTextFormatter" /> for plain text label formatting, and <see cref="DotRecordBuilder" /> for
-        ///         building records.
         ///     </para>
         /// </summary>
         DotLabel Label { get; set; }
