@@ -60,14 +60,27 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         DotEscapeString Tooltip { get; set; }
 
         /// <summary>
-        ///     Gets or sets the color of the node (default: <see cref="System.Drawing.Color.Black" />). If <see cref="DotMultiColor" /> is
-        ///     used, with no weighted colors in its color collection (<see cref="DotColor" /> items only), and the <see cref="Style" /> is
-        ///     <see cref="DotStyles.Filled" />, a linear gradient fill is done using the first two colors. If weighted colors are present
-        ///     (see <see cref="DotWeightedColor" />), a degenerate linear gradient fill is done. This essentially does a fill using two
-        ///     colors, with the <see cref="DotWeightedColor.Weight" /> specifying how much of region is filled with each color. If the
-        ///     <see cref="Style" /> attribute contains the value <see cref="DotStyles.Radial" />, then a radial gradient fill is done. These
-        ///     fills work with any shape. For certain shapes, the <see cref="Style" /> attribute can be set to do fills using more than 2
-        ///     colors (see <see cref="DotStyles.Striped" /> and <see cref="DotStyles.Wedged" />).
+        ///     <para>
+        ///         Gets or sets the color to use for the node (default: <see cref="System.Drawing.Color.Black" />).
+        ///     </para>
+        ///     <para>
+        ///         If <see cref="DotGradientColor" /> is used, with no weighted colors in its parameters (<see cref="DotColor" /> items
+        ///         only), and the <see cref="Style" /> is <see cref="DotStyles.Filled" />, a linear gradient fill is done.
+        ///     </para>
+        ///     <para>
+        ///         If <see cref="DotGradientColor" /> is used with weighted colors (see <see cref="DotWeightedColor" />), a degenerate
+        ///         linear gradient fill is done. This essentially does a fill using two colors, with the
+        ///         <see cref="DotWeightedColor.Weight" /> specifying how much of region is filled with each color.
+        ///     </para>
+        ///     <para>
+        ///         If the <see cref="Style" /> attribute contains the value <see cref="DotStyles.Radial" />, then a radial gradient fill is
+        ///         done. See also the <see cref="GradientAngle" /> attribute for setting the gradient angle.
+        ///     </para>
+        ///     <para>
+        ///         These fills work with any shape. For certain shapes, the <see cref="Style" /> attribute can be set to do fills using more
+        ///         than 2 colors (set the <see cref="DotStyles.Striped" /> or <see cref="DotStyles.Wedged" /> shape, and use
+        ///         <see cref="DotMultiColor" /> as a color list definition).
+        ///     </para>
         /// </summary>
         DotColorDefinition Color { get; set; }
 
@@ -79,10 +92,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///         output format is MIF, which use black by default.
         ///     </para>
         ///     <para>
-        ///         If <see cref="DotMultiColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
-        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. At present, only two colors are used.
-        ///         If the second color is missing, the default color is used for it. See also the <see cref="GradientAngle" /> attribute for
-        ///         setting the gradient angle.
+        ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
+        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. If the second color is
+        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
+        ///         attribute for setting the gradient angle.
         ///     </para>
         /// </summary>
         DotColorDefinition FillColor { get; set; }
