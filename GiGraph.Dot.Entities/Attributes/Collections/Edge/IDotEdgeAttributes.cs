@@ -62,13 +62,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     Multiplicative scaling factor adjusting the distance that the <see cref="HeadLabel" />/<see cref="TailLabel" /> is from the
-        ///     head/tail node. The default distance is 10 points, the minimum is 0.0. See also <see cref="LabelAngle" />.
+        ///     head/tail node. The default distance is 10 points, the minimum is 0.0. See also <see cref="EndpointLabelAngle" />.
         /// </summary>
-        double? LabelDistance { get; set; }
+        double? EndpointLabelDistance { get; set; }
 
         /// <summary>
         ///     <para>
-        ///         This, along with <see cref="LabelDistance" />, determine where the <see cref="HeadLabel" />/<see cref="TailLabel" /> are
+        ///         This, along with <see cref="EndpointLabelDistance" />, determine where the <see cref="HeadLabel" />/<see cref="TailLabel" /> are
         ///         placed with respect to the head/tail in polar coordinates. The origin in the coordinate system is the point where the
         ///         edge touches the node. The ray of 0 degrees goes from the origin back along the edge, parallel to the edge at the origin.
         ///     </para>
@@ -77,7 +77,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///         negative angles moving clockwise. The default value is -25.0, the minimum: -180.0.
         ///     </para>
         /// </summary>
-        double? LabelAngle { get; set; }
+        double? EndpointLabelAngle { get; set; }
 
         /// <summary>
         ///     Minimum edge length (rank difference between head and tail). Default: 1, minimum: 0.
@@ -101,18 +101,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Color used for <see cref="HeadLabel" /> and <see cref="TailLabel" />. If not set, defaults to edge's <see cref="FontColor" />
         ///     .
         /// </summary>
-        DotColor LabelFontColor { get; set; }
+        DotColor EndpointLabelFontColor { get; set; }
 
         /// <summary>
         ///     Font used for <see cref="HeadLabel" /> and <see cref="TailLabel" />. If not set, defaults to edge's <see cref="FontName" />.
         /// </summary>
-        string LabelFontName { get; set; }
+        string EndpointLabelFontName { get; set; }
 
         /// <summary>
         ///     Font size, in points, used for <see cref="HeadLabel" /> and <see cref="TailLabel" />. If not set, defaults to edge's
         ///     <see cref="FontSize" />.
         /// </summary>
-        double? LabelFontSize { get; set; }
+        double? EndpointLabelFontSize { get; set; }
 
         /// <summary>
         ///     Tooltip annotation attached to the edge. If unset, Graphviz will use the <see cref="Label" /> attribute if defined.

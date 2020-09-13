@@ -38,25 +38,25 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         [DotAttributeKey("labelfontname")]
-        public virtual string LabelFontName
+        public virtual string EndpointLabelFontName
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
         [DotAttributeKey("labelfontcolor")]
-        public virtual DotColor LabelFontColor
+        public virtual DotColor EndpointLabelFontColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
         [DotAttributeKey("labelfontsize")]
-        public virtual double? LabelFontSize
+        public virtual double? EndpointLabelFontSize
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(LabelFontSize), v.Value, "Label font size must be greater than or equal to 0.")
+                ? throw new ArgumentOutOfRangeException(nameof(EndpointLabelFontSize), v.Value, "Endpoint label font size must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
         }
 
@@ -287,16 +287,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         [DotAttributeKey("labeldistance")]
-        public virtual double? LabelDistance
+        public virtual double? EndpointLabelDistance
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(LabelDistance), v.Value, "Label distance must be greater than or equal to 0.")
+                ? throw new ArgumentOutOfRangeException(nameof(EndpointLabelDistance), v.Value, "Endpoint label distance must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
         }
 
         [DotAttributeKey("labelangle")]
-        public virtual double? LabelAngle
+        public virtual double? EndpointLabelAngle
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
