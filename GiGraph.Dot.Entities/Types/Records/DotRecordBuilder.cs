@@ -11,7 +11,26 @@ namespace GiGraph.Dot.Entities.Types.Records
     public class DotRecordBuilder
     {
         protected const bool FlipDefault = false;
-        protected readonly List<DotRecordField> _fields = new List<DotRecordField>();
+        protected readonly List<DotRecordField> _fields;
+
+        /// <summary>
+        ///     Creates a new record builder instance.
+        /// </summary>
+        public DotRecordBuilder()
+        {
+            _fields = new List<DotRecordField>();
+        }
+
+        /// <summary>
+        ///     Creates a new record builder instance initialized with a list of fields.
+        /// </summary>
+        /// <param name="fields">
+        ///     The record fields to initialize the instance with.
+        /// </param>
+        public DotRecordBuilder(IEnumerable<DotRecordField> fields)
+        {
+            _fields = new List<DotRecordField>(fields);
+        }
 
         /// <summary>
         ///     Appends a field to the record being built.

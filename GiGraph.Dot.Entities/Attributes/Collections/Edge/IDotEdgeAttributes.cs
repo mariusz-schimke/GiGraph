@@ -220,7 +220,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     <para>
-        ///         Gets or sets the style of arrowhead on the head node of an edge (default: <see cref="DotArrowheadShape.Normal" />).
+        ///         Gets or sets the style of arrowhead on the head node of the edge (default: <see cref="DotArrowheadShape.Normal" />).
         ///         Appears only if the <see cref="ArrowDirections" /> attribute is <see cref="DotArrowDirections.Forward" /> or
         ///         <see cref="DotArrowDirections.Both" />.
         ///     </para>
@@ -234,7 +234,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     <para>
-        ///         Gets or sets the style of arrowhead on the tail node of an edge (default: <see cref="DotArrowheadShape.Normal" />).
+        ///         Gets or sets the style of arrowhead on the tail node of the edge (default: <see cref="DotArrowheadShape.Normal" />).
         ///         Appears only if the <see cref="ArrowDirections" /> attribute is <see cref="DotArrowDirections.Backward" /> or
         ///         <see cref="DotArrowDirections.Both" />.
         ///     </para>
@@ -256,12 +256,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///         specified using the <see cref="ArrowHead" /> and <see cref="ArrowTail" /> attributes.
         ///     </para>
         ///     <para>
-        ///         A glyph is drawn at the head end of an edge if and only if the arrow direction is
+        ///         A glyph is drawn at the head end of the edge if and only if the arrow direction is
         ///         <see cref="DotArrowDirections.Forward" /> or <see cref="DotArrowDirections.Both" />.
         ///     </para>
         ///     <para>
-        ///         A glyph is drawn at the tail end of an edge if and only if the direction is <see cref="DotArrowDirections.Backward" /> or
-        ///         <see cref="DotArrowDirections.Both" />.
+        ///         A glyph is drawn at the tail end of the edge if and only if the direction is <see cref="DotArrowDirections.Backward" />
+        ///         or <see cref="DotArrowDirections.Both" />.
         ///     </para>
         ///     <para>
         ///         For undirected edges T -- H, one of the nodes, usually the right hand one, is treated as the head for the purpose of
@@ -284,14 +284,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotEndpointPort TailPort { get; set; }
 
         /// <summary>
-        ///     Logical head of an edge. When the <see cref="IDotGraphAttributes.EdgesBetweenClusters" /> property of the graph is true, if
+        ///     Logical head of the edge. When the <see cref="IDotGraphAttributes.EdgesBetweenClusters" /> property of the graph is true, if
         ///     the current property is defined and is the identifier of a cluster containing the real head node, the edge is clipped to the
         ///     boundary of the cluster.
         /// </summary>
         string HeadClusterId { get; set; }
 
         /// <summary>
-        ///     Logical tail of an edge. When the <see cref="IDotGraphAttributes.EdgesBetweenClusters" /> property of the graph is true, if
+        ///     Logical tail of the edge. When the <see cref="IDotGraphAttributes.EdgesBetweenClusters" /> property of the graph is true, if
         ///     the current property is defined and is the identifier of a cluster containing the real tail node, the edge is clipped to the
         ///     boundary of the cluster.
         /// </summary>
@@ -344,7 +344,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     </para>
         ///     <para>
         ///         Note that, for edges, the attributes <see cref="HeadUrl" />, <see cref="TailUrl" />, <see cref="LabelUrl" />, and
-        ///         <see cref="EdgeUrl" /> allow control of various parts of an edge. Also note that, if active areas of two edges overlap,
+        ///         <see cref="EdgeUrl" /> allow control of various parts of the edge. Also note that, if active areas of two edges overlap,
         ///         it is unspecified which area dominates.
         ///     </para>
         /// </summary>
@@ -384,7 +384,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotEscapeString HeadUrlTarget { get; set; }
 
         /// <summary>
-        ///     Tooltip annotation attached to the head of an edge. This is used only if the edge has a <see cref="HeadUrl" /> attribute
+        ///     Tooltip annotation attached to the head of the edge. This is used only if the edge has a <see cref="HeadUrl" /> attribute
         ///     specified.
         /// </summary>
         DotEscapeString HeadUrlTooltip { get; set; }
@@ -408,13 +408,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotEscapeString TailUrlTarget { get; set; }
 
         /// <summary>
-        ///     Tooltip annotation attached to the tail of an edge. This is used only if the edge has a <see cref="TailUrl" /> attribute
+        ///     Tooltip annotation attached to the tail of the edge. This is used only if the edge has a <see cref="TailUrl" /> attribute
         ///     specified.
         /// </summary>
         DotEscapeString TailUrlTooltip { get; set; }
 
         /// <summary>
-        ///     If defined, this is the link used for the label of an edge. This value overrides any <see cref="Url" /> defined for the edge.
+        ///     If defined, this is the link used for the label of the edge. This value overrides any <see cref="Url" /> defined for the
+        ///     edge.
         /// </summary>
         DotEscapeString LabelUrl { get; set; }
 
@@ -431,14 +432,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotEscapeString LabelUrlTarget { get; set; }
 
         /// <summary>
-        ///     Tooltip annotation attached to label of an edge. This is used only if the edge has a <see cref="Url" /> or
+        ///     Tooltip annotation attached to label of the edge. This is used only if the edge has a <see cref="Url" /> or
         ///     <see cref="LabelUrl" /> attribute specified.
         /// </summary>
         DotEscapeString LabelUrlTooltip { get; set; }
 
         /// <summary>
-        ///     If defined, this is the link used for the non-label parts of an edge. This value overrides any <see cref="Url" /> defined for
-        ///     the edge. Also, this value is used near the head or tail node unless overridden by a <see cref="HeadUrl" /> or
+        ///     If defined, this is the link used for the non-label parts of the edge. This value overrides any <see cref="Url" /> defined
+        ///     for the edge. Also, this value is used near the head or tail node unless overridden by a <see cref="HeadUrl" /> or
         ///     <see cref="TailUrl" /> value, respectively.
         /// </summary>
         DotEscapeString EdgeUrl { get; set; }
@@ -456,7 +457,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotEscapeString EdgeUrlTarget { get; set; }
 
         /// <summary>
-        ///     Tooltip annotation attached to the non-label part of an edge. This is used only if the edge has a <see cref="Url" /> or
+        ///     Tooltip annotation attached to the non-label part of the edge. This is used only if the edge has a <see cref="Url" /> or
         ///     <see cref="EdgeUrl" /> attribute specified.
         /// </summary>
         DotEscapeString EdgeUrlTooltip { get; set; }
