@@ -14,18 +14,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
     {
         /// <summary>
         ///     <para>
-        ///         Gets or sets the label to display on the edge. It can be a string or an HTML (<see cref="DotHtmlLabel" />).
+        ///         Gets or sets the label to display on the edge. It may be plain text (<see cref="string" />) or HTML (
+        ///         <see cref="DotHtmlLabel" />).
         ///     </para>
         ///     <para>
-        ///         When assigning a value to this property, an implicit conversion is performed.
+        ///         Examples:
         ///         <list type="bullet">
         ///             <item>
         ///                 <see cref="Label" /> = "My label";
         ///             </item>
         ///             <item>
-        ///                 <see cref="Label" /> = (<see cref="DotHtmlLabel" />) "&lt;TABLE&gt;...&lt;/TABLE&gt;";
+        ///                 <see cref="Label" /> = new <see cref="DotHtmlLabel" />("&lt;TABLE&gt;...&lt;/TABLE&gt;");
         ///             </item>
         ///         </list>
+        ///     </para>
+        ///     <para>
+        ///         See also <see cref="DotTextFormatter" /> for plain text label formatting.
         ///     </para>
         /// </summary>
         DotLabel Label { get; set; }

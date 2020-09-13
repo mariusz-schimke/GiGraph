@@ -12,23 +12,27 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
     {
         /// <summary>
         ///     <para>
-        ///         Gets or sets the label to display on the node. It can be a string, an HTML (<see cref="DotHtmlLabel" />), or a record (
-        ///         <see cref="DotRecordLabel" />) for a record-based node (<see cref="Shape" /> = <see cref="DotNodeShape.Record" /> or
-        ///         <see cref="Shape" /> = <see cref="DotNodeShape.RoundedRecord" />).
+        ///         Gets or sets the label to display on the node. It may be plain text (<see cref="string" />), HTML (
+        ///         <see cref="DotHtmlLabel" />), or a record (<see cref="DotRecordLabel" />) for a record-based node (<see cref="Shape" /> =
+        ///         <see cref="DotNodeShape.Record" /> or <see cref="Shape" /> = <see cref="DotNodeShape.RoundedRecord" />).
         ///     </para>
         ///     <para>
-        ///         When assigning a value to this property, an implicit conversion is performed.
+        ///         Examples:
         ///         <list type="bullet">
         ///             <item>
         ///                 <see cref="Label" /> = "My label";
         ///             </item>
         ///             <item>
-        ///                 <see cref="Label" /> = (<see cref="DotHtmlLabel" />) "&lt;TABLE&gt;...&lt;/TABLE&gt;";
+        ///                 <see cref="Label" /> = new <see cref="DotHtmlLabel" />("&lt;TABLE&gt;...&lt;/TABLE&gt;");
         ///             </item>
         ///             <item>
         ///                 <see cref="Label" /> = new <see cref="DotRecord" />("My field 1", "My field 2");
         ///             </item>
         ///         </list>
+        ///     </para>
+        ///     <para>
+        ///         See also <see cref="DotTextFormatter" /> for plain text label formatting, and <see cref="DotRecordBuilder" /> for
+        ///         building records.
         ///     </para>
         /// </summary>
         DotLabel Label { get; set; }
