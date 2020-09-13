@@ -154,7 +154,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     <para>
-        ///         Sets the style of the edge (default: null). See the descriptions of individual <see cref="DotStyles" /> values to learn
+        ///         Sets the style of the edge (default: unset). See the descriptions of individual <see cref="DotStyles" /> values to learn
         ///         which styles are applicable to this element type.
         ///     </para>
         ///     <para>

@@ -66,7 +66,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         [DotAttributeKey("pencolor")]
-        public virtual DotColor PenColor
+        public virtual DotColor BoundingBoxColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));

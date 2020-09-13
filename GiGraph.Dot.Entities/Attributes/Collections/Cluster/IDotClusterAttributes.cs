@@ -137,16 +137,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 
         /// <summary>
         ///     Color used to draw the bounding box around the cluster (default: <see cref="System.Drawing.Color.Black" />). If
-        ///     <see cref="PenColor" /> is not defined, <see cref="Color" /> is used. If this is not defined, the default is used. Note that
-        ///     a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a pen color (
-        ///     <see cref="IDotGraphAttributes.PenColor" />), this will override a <see cref="Color" /> or <see cref="BackgroundColor" />
-        ///     attribute set for the cluster.
+        ///     <see cref="BoundingBoxColor" /> is not defined, <see cref="Color" /> is used. If this is not defined, the default is used.
+        ///     Note that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a
+        ///     <see cref="IDotGraphAttributes.BoundingBoxColor" />, this will override a <see cref="Color" /> or
+        ///     <see cref="BackgroundColor" /> attribute set for the cluster.
         /// </summary>
-        DotColor PenColor { get; set; }
+        DotColor BoundingBoxColor { get; set; }
 
         /// <summary>
         ///     <para>
-        ///         Sets the style of the cluster (default: null). See the descriptions of individual <see cref="DotStyles" /> values to
+        ///         Sets the style of the cluster (default: unset). See the descriptions of individual <see cref="DotStyles" /> values to
         ///         learn which styles are applicable to this element type.
         ///     </para>
         ///     <para>
