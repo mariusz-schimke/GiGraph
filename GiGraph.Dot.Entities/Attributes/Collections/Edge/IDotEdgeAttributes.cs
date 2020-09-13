@@ -215,7 +215,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     Gets or sets the multiplicative scale factor for arrowheads (default: 1.0, minimum: 0.0).
         /// </summary>
-        double? ArrowSize { get; set; }
+        double? ArrowheadScale { get; set; }
 
         /// <summary>
         ///     <para>
