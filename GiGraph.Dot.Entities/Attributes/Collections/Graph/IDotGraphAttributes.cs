@@ -334,11 +334,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     <para>
         ///         Specifies a list of directories in which to look for image files as specified by the image attribute of nodes (
         ///         <see cref="IDotNodeAttributes.ImagePath" />) or using the IMG element in HTML-like labels. The string should be a list of
-        ///         (absolute or relative) pathnames, each separated by a semicolon (for Windows) or a colon (all other OS). The first
+        ///         (absolute or relative) path names, each separated by a semicolon (for Windows) or a colon (all other OS). The first
         ///         directory in which a file of the given name is found will be used to load the image.
         ///     </para>
         ///     <para>
-        ///         If not set, relative pathnames for image files will be interpreted with respect to the current working directory.
+        ///         If not set, relative path names for image files will be interpreted with respect to the current working directory.
         ///     </para>
         /// </summary>
         string ImageDirectories { get; set; }
