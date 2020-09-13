@@ -68,9 +68,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     <para>
-        ///         This, along with <see cref="EndpointLabelDistance" />, determine where the <see cref="HeadLabel" />/<see cref="TailLabel" /> are
-        ///         placed with respect to the head/tail in polar coordinates. The origin in the coordinate system is the point where the
-        ///         edge touches the node. The ray of 0 degrees goes from the origin back along the edge, parallel to the edge at the origin.
+        ///         This, along with <see cref="EndpointLabelDistance" />, determine where the <see cref="HeadLabel" />/
+        ///         <see cref="TailLabel" /> are placed with respect to the head/tail in polar coordinates. The origin in the coordinate
+        ///         system is the point where the edge touches the node. The ray of 0 degrees goes from the origin back along the edge,
+        ///         parallel to the edge at the origin.
         ///     </para>
         ///     <para>
         ///         The angle, in degrees, specifies the rotation from the 0 degree ray, with positive angles moving counterclockwise and
@@ -300,7 +301,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     If true, attaches edge label to edge by a 2-segment polyline, underlining the label, then going to the closest point of
         ///     spline. Default: false.
         /// </summary>
-        bool? Decorate { get; set; }
+        bool? ConnectLabel { get; set; }
 
         /// <summary>
         ///     If true (default), the head of the edge is clipped to the boundary of the head node; otherwise, the end of the edge goes to

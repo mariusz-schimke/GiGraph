@@ -273,7 +273,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         [DotAttributeKey("decorate")]
-        public virtual bool? Decorate
+        public virtual bool? ConnectLabel
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
