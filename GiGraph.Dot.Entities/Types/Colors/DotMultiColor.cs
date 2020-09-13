@@ -111,7 +111,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     </para>
         ///     <para>
         ///         Pass null to use the color scheme set on the current element, or to use the default scheme if none was set. Pass
-        ///         <see cref="DotColorSchemes.Default" /> to make named colors be evaluated using the default X11 naming.
+        ///         <see cref="DotColorSchemes.Default" /> to make named colors be evaluated using the default
+        ///         <see cref="DotColorSchemes.X11" /> naming.
         ///     </para>
         /// </param>
         public DotMultiColor(IEnumerable<Color> colors, string scheme = null)
@@ -136,8 +137,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
         }
 
         /// <summary>
-        ///     Creates a new color list rendered as dual-color fill (refers to the root graph, nodes, and clusters), or as a two-segment
-        ///     spline, when applied to an edge. In both cases the proportions of the colors are determined by their weights.
+        ///     Creates a new color definition visualized as a dual-color fill (refers to the root graph, nodes, and clusters), or as a
+        ///     two-segment spline, when applied to an edge. In both cases the proportions of the colors are determined by their weights.
         /// </summary>
         /// <param name="color1">
         ///     The first color to initialize the instance with.
@@ -159,8 +160,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
         }
 
         /// <summary>
-        ///     Creates a new color list rendered as dual-color fill (refers to the root graph, nodes, and clusters), or as a two-segment
-        ///     spline, when applied to an edge. In both cases the proportions of the colors are determined by their weights.
+        ///     Creates a new color definition visualized as a dual-color fill (refers to the root graph, nodes, and clusters), or as a
+        ///     two-segment spline, when applied to an edge. In both cases the proportions of the colors are determined by their weights.
         /// </summary>
         /// <param name="color1">
         ///     The first color to initialize the instance with.
@@ -177,8 +178,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
         }
 
         /// <summary>
-        ///     Creates a new color list rendered as dual-color fill (refers to the root graph, nodes, and clusters), or as a two-segment
-        ///     spline, when applied to an edge. In both cases the proportions of the colors are determined by their weights.
+        ///     Creates a new color definition visualized as a dual-color fill (refers to the root graph, nodes, and clusters), or as a
+        ///     two-segment spline, when applied to an edge. In both cases the proportions of the colors are determined by their weights.
         /// </summary>
         /// <param name="color1">
         ///     The first color to initialize the instance with.

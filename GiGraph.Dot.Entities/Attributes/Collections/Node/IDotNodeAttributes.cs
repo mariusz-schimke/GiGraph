@@ -12,21 +12,32 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
     {
         /// <summary>
         ///     <para>
-        ///         Gets or sets the label to display on the node. It can be a string, an HTML (<see cref="DotHtmlLabel" />), or a record (
-        ///         <see cref="DotRecordLabel" />) for a record-based node (<see cref="Shape" /> = <see cref="DotNodeShape.Record" /> or
-        ///         <see cref="Shape" /> = <see cref="DotNodeShape.RoundedRecord" />).
+        ///         Gets or sets the label to display on the node. It may be plain text (<see cref="string" />), HTML (
+        ///         <see cref="DotHtmlLabel" />), or a record (<see cref="DotRecordLabel" />) for a record-based node (when
+        ///         <see cref="Shape" /> = <see cref="DotNodeShape.Record" /> or <see cref="Shape" /> =
+        ///         <see cref="DotNodeShape.RoundedRecord" />).
         ///     </para>
         ///     <para>
-        ///         When assigning a value to this property, an implicit conversion is performed.
+        ///         See also <see cref="DotTextFormatter" /> for plain text label formatting if needed, and <see cref="DotRecordBuilder" />
+        ///         for building records.
+        ///     </para>
+        ///     <para>
+        ///         Examples:
         ///         <list type="bullet">
         ///             <item>
-        ///                 <see cref="Label" /> = "My label";
+        ///                 <description>
+        ///                     <see cref="Label" /> = "My label";
+        ///                 </description>
         ///             </item>
         ///             <item>
-        ///                 <see cref="Label" /> = (<see cref="DotHtmlLabel" />) "&lt;TABLE&gt;...&lt;/TABLE&gt;";
+        ///                 <description>
+        ///                     <see cref="Label" /> = new <see cref="DotHtmlLabel" />("&lt;TABLE&gt;...&lt;/TABLE&gt;");
+        ///                 </description>
         ///             </item>
         ///             <item>
-        ///                 <see cref="Label" /> = new <see cref="DotRecord" />("My field 1", "My field 2");
+        ///                 <description>
+        ///                     <see cref="Label" /> = new <see cref="DotRecord" />("My field 1", "My field 2");
+        ///                 </description>
         ///             </item>
         ///         </list>
         ///     </para>
@@ -56,14 +67,27 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         DotEscapeString Tooltip { get; set; }
 
         /// <summary>
-        ///     Gets or sets the color of the node (default: <see cref="System.Drawing.Color.Black" />). If <see cref="DotMultiColor" /> is
-        ///     used, with no weighted colors in its color collection (<see cref="DotColor" /> items only), and the <see cref="Style" /> is
-        ///     <see cref="DotStyles.Filled" />, a linear gradient fill is done using the first two colors. If weighted colors are present
-        ///     (see <see cref="DotWeightedColor" />), a degenerate linear gradient fill is done. This essentially does a fill using two
-        ///     colors, with the <see cref="DotWeightedColor.Weight" /> specifying how much of region is filled with each color. If the
-        ///     <see cref="Style" /> attribute contains the value <see cref="DotStyles.Radial" />, then a radial gradient fill is done. These
-        ///     fills work with any shape. For certain shapes, the <see cref="Style" /> attribute can be set to do fills using more than 2
-        ///     colors (see <see cref="DotStyles.Striped" /> and <see cref="DotStyles.Wedged" />).
+        ///     <para>
+        ///         Gets or sets the color to use for the node (default: <see cref="System.Drawing.Color.Black" />).
+        ///     </para>
+        ///     <para>
+        ///         If <see cref="DotGradientColor" /> is used, with no weighted colors in its parameters (<see cref="DotColor" /> items
+        ///         only), and the <see cref="Style" /> is <see cref="DotStyles.Filled" />, a linear gradient fill is done.
+        ///     </para>
+        ///     <para>
+        ///         If <see cref="DotGradientColor" /> is used with weighted colors (see <see cref="DotWeightedColor" />), a degenerate
+        ///         linear gradient fill is done. This essentially does a fill using two colors, with the
+        ///         <see cref="DotWeightedColor.Weight" /> specifying how much of region is filled with each color.
+        ///     </para>
+        ///     <para>
+        ///         If the <see cref="Style" /> attribute contains the value <see cref="DotStyles.Radial" />, then a radial gradient fill is
+        ///         done. See also the <see cref="GradientAngle" /> attribute for setting the gradient angle.
+        ///     </para>
+        ///     <para>
+        ///         These fills work with any shape. For certain shapes, the <see cref="Style" /> attribute can be set to do fills using more
+        ///         than 2 colors (set the <see cref="DotStyles.Striped" /> or <see cref="DotStyles.Wedged" /> shape, and use
+        ///         <see cref="DotMultiColor" /> as a color list definition).
+        ///     </para>
         /// </summary>
         DotColorDefinition Color { get; set; }
 
@@ -75,10 +99,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///         output format is MIF, which use black by default.
         ///     </para>
         ///     <para>
-        ///         If <see cref="DotMultiColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
-        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. At present, only two colors are used.
-        ///         If the second color is missing, the default color is used for it. See also the <see cref="GradientAngle" /> attribute for
-        ///         setting the gradient angle.
+        ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
+        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. If the second color is
+        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
+        ///         attribute for setting the gradient angle.
         ///     </para>
         /// </summary>
         DotColorDefinition FillColor { get; set; }
@@ -168,7 +192,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 
         /// <summary>
         ///     <para>
-        ///         Sets the style of the node (default: null). See the descriptions of individual <see cref="DotStyles" /> values to learn
+        ///         Sets the style of the node (default: unset). See the descriptions of individual <see cref="DotStyles" /> values to learn
         ///         which styles are applicable to this element type.
         ///     </para>
         ///     <para>

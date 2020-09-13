@@ -1,5 +1,6 @@
 using System;
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -84,5 +85,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The type returned by the property.
         /// </typeparam>
         bool Remove<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
+
+        /// <summary>
+        ///     Gets property by attribute key. Useful when you are looking for a property counterpart of a DOT attribute, or want to check
+        ///     if an attribute is exposed as a property.
+        /// </summary>
+        /// <param name="key">
+        ///     The DOT attribute key to search.
+        /// </param>
+        PropertyInfo GetPropertyByKey(string key);
     }
 }

@@ -22,17 +22,9 @@
     
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that can be visualized and/or converted to an image with external tools. A handy one is a plugin for Visual Studio Code, named Graphviz Preview. There are also online tools like www.webgraphviz.com, where you can paste the script to view your graph.</description>
     
-    <releaseNotes>- Added support for attributes: center, dpi, resolution, imagescale (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
+    <releaseNotes>- Added support for attributes:  (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
 
-- Record node builder (DotRecordBuilder) extended with several method overloads to simplify building records.
-
-- ToParallelSplines() and ToMulticolorSegments() extension methods added for DotEdge to simplify customizing their style and colors. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.1/README.md#multicolor-edges.
-
-- Scheme support added to DotColor so that color names may be evaluated using a specific scheme.
-
-- NodeDefaults and EdgeDefaults properties moved to the Nodes and Edges collections. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.1/README.md#global-attributes.
-
-- Refactoring (property and type naming cleanup).
+- Refactoring (property and type naming improvements).
 
 
 See also https://github.com/mariusz-schimke/GiGraph/releases</releaseNotes>

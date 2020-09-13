@@ -12,13 +12,13 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///     they are defined in the input.
         /// </summary>
         [DotAttributeValue("out")]
-        Outedge,
+        OutgoingEdges,
 
         /// <summary>
         ///     The inedges of a node, that is, edges with the node as their head node, must appear left-to-right in the same order in which
         ///     they are defined in the input.
         /// </summary>
         [DotAttributeValue("in")]
-        Inedge
+        IncomingEdges
     }
 }

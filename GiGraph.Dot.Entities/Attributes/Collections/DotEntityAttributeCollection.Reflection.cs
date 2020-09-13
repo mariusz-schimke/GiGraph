@@ -9,6 +9,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public abstract partial class DotEntityAttributeCollection<TExposedEntityAttributes>
     {
+        protected const BindingFlags PropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+
         public virtual string GetKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
         {
             var propertyInfo = GetPropertyInfo(property);
@@ -53,6 +55,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             propertyInfo.SetValue(this, value);
 
             return TryGetValue(key, out var attribute) ? attribute : null;
+        }
+
+        public virtual PropertyInfo GetPropertyByKey(string key)
+        {
+            return GetType()
+               .GetProperties(PropertyBindingFlags)
+               .FirstOrDefault(property => property.GetCustomAttribute<DotAttributeKeyAttribute>()?.Key is {} propertyKey && propertyKey == key);
         }
 
         protected virtual string GetKey(MethodBase propertyMethod)
@@ -104,7 +113,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         protected virtual PropertyInfo GetPropertyInfo(MethodBase propertyMethod, Type declaringType)
         {
             var property = declaringType
-              ?.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+              ?.GetProperties(PropertyBindingFlags)
               ?.FirstOrDefault(propertyInfo => propertyMethod.Equals(propertyInfo.GetSetMethod(nonPublic: true)) ||
                                                propertyMethod.Equals(propertyInfo.GetGetMethod(nonPublic: true)));
 

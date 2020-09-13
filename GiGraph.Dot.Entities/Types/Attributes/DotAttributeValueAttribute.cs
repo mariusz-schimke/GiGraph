@@ -26,6 +26,18 @@ namespace GiGraph.Dot.Entities.Types.Attributes
         /// </summary>
         public string Value { get; }
 
+        /// <summary>
+        ///     Gets a DOT attribute value associated with the specified enumeration value.
+        /// </summary>
+        /// <param name="value">
+        ///     The enumeration value whose associated DOT value to return.
+        /// </param>
+        /// <param name="dotValue">
+        ///     The returned DOT attribute value if available.
+        /// </param>
+        /// <typeparam name="TEnum">
+        ///     The type of the enumeration whose attribute value to search.
+        /// </typeparam>
         public static bool TryGetValue<TEnum>(TEnum value, out string dotValue)
             where TEnum : Enum
         {
@@ -38,6 +50,35 @@ namespace GiGraph.Dot.Entities.Types.Attributes
             }
 
             dotValue = null;
+            return false;
+        }
+
+        /// <summary>
+        ///     Gets an enumeration value associated with the specified DOT attribute value.
+        /// </summary>
+        /// <param name="value">
+        ///     The returned enumeration value if found.
+        /// </param>
+        /// <param name="dotValue">
+        ///     The DOT attribute value whose associated enumeration value to return.
+        /// </param>
+        /// <typeparam name="TEnum">
+        ///     The type of the enumeration whose value to search.
+        /// </typeparam>
+        public static bool TryGetValue<TEnum>(string dotValue, out TEnum value)
+            where TEnum : Enum
+        {
+            var match = typeof(TEnum)
+               .GetFields(BindingFlags.Static | BindingFlags.Public)
+               .FirstOrDefault(field => field.GetCustomAttribute<DotAttributeValueAttribute>()?.Value is {} fieldDotValue && fieldDotValue == dotValue);
+
+            if (match is {})
+            {
+                value = (TEnum) match.GetValue(null);
+                return true;
+            }
+
+            value = default;
             return false;
         }
     }
