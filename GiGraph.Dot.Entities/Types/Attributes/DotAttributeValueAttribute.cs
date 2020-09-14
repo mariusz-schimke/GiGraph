@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -10,6 +11,8 @@ namespace GiGraph.Dot.Entities.Types.Attributes
     [AttributeUsage(AttributeTargets.Field)]
     public class DotAttributeValueAttribute : Attribute
     {
+        protected const BindingFlags FieldBindingFlags = BindingFlags.Static | BindingFlags.Public;
+
         /// <summary>
         ///     Creates a new attribute instance.
         /// </summary>
@@ -69,7 +72,7 @@ namespace GiGraph.Dot.Entities.Types.Attributes
             where TEnum : Enum
         {
             var match = typeof(TEnum)
-               .GetFields(BindingFlags.Static | BindingFlags.Public)
+               .GetFields(FieldBindingFlags)
                .FirstOrDefault(field => field.GetCustomAttribute<DotAttributeValueAttribute>()?.Value is {} fieldDotValue && fieldDotValue == dotValue);
 
             if (match is {})
@@ -80,6 +83,29 @@ namespace GiGraph.Dot.Entities.Types.Attributes
 
             value = default;
             return false;
+        }
+
+        /// <summary>
+        ///     Gets a dictionary where the key is an enumeration value, and the value is a corresponding DOT attribute value.
+        /// </summary>
+        /// <typeparam name="TEnum">
+        ///     The type of the enumeration whose value mapping to get.
+        /// </typeparam>
+        public static Dictionary<TEnum, string> GetValueMapping<TEnum>()
+            where TEnum : Enum
+        {
+            return typeof(TEnum)
+               .GetFields(FieldBindingFlags)
+               .Select(field => new
+                {
+                    Attribute = field.GetCustomAttribute<DotAttributeValueAttribute>(),
+                    Field = field
+                })
+               .Where(result => result.Attribute is {})
+               .ToDictionary(
+                    key => (TEnum) key.Field.GetValue(null),
+                    value => value.Attribute.Value
+                );
         }
     }
 }
