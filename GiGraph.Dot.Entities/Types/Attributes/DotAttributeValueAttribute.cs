@@ -86,12 +86,12 @@ namespace GiGraph.Dot.Entities.Types.Attributes
         }
 
         /// <summary>
-        ///     Gets a dictionary where the key is an enumeration value, and the value is a corresponding DOT attribute value.
+        ///     Gets a dictionary where the key is a DOT attribute value, and the value is a corresponding enumeration value.
         /// </summary>
         /// <typeparam name="TEnum">
         ///     The type of the enumeration whose value mapping to get.
         /// </typeparam>
-        public static Dictionary<TEnum, string> GetValueMapping<TEnum>()
+        public static Dictionary<string, TEnum> GetValueMapping<TEnum>()
             where TEnum : Enum
         {
             return typeof(TEnum)
@@ -102,9 +102,10 @@ namespace GiGraph.Dot.Entities.Types.Attributes
                     Field = field
                 })
                .Where(result => result.Attribute is {})
+               .Where(result => result.Attribute.Value is {})
                .ToDictionary(
-                    key => (TEnum) key.Field.GetValue(null),
-                    value => value.Attribute.Value
+                    key => key.Attribute.Value,
+                    value => (TEnum) value.Field.GetValue(null)
                 );
         }
     }
