@@ -10,6 +10,8 @@ namespace GiGraph.Dot.Examples
         {
             var graph = HelloWorld.Generate();
 
+            var mapping = graph.Nodes.Attributes.GetPropertyKeyMapping();
+
             // build a graph as string
             Console.WriteLine(graph.Build());
 

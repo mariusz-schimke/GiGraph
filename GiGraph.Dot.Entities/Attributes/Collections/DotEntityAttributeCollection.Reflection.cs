@@ -59,9 +59,34 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual PropertyInfo GetPropertyByKey(string key)
         {
-            return GetType()
-               .GetProperties(PropertyBindingFlags)
-               .FirstOrDefault(property => property.GetCustomAttribute<DotAttributeKeyAttribute>()?.Key is {} propertyKey && propertyKey == key);
+            return GetPropertyKeyMapping().TryGetValue(key, out var property)
+                ? property
+                : null;
+        }
+
+        public virtual Dictionary<string, PropertyInfo> GetPropertyKeyMapping()
+        {
+            return GetExposedProperties()
+               .Select(property => new
+                {
+                    Attribute = property.GetCustomAttribute<DotAttributeKeyAttribute>(),
+                    Property = property
+                })
+               .Where(result => result.Attribute is {})
+               .ToDictionary(
+                    key => key.Attribute.Key,
+                    value => value.Property
+                );
+        }
+
+        protected virtual IEnumerable<PropertyInfo> GetExposedProperties()
+        {
+            var currentType = GetType();
+            var interfaceMap = currentType.GetInterfaceMap(typeof(TExposedEntityAttributes));
+
+            return interfaceMap.TargetMethods
+               .Select(method => GetPropertyInfo(method, currentType))
+               .Distinct();
         }
 
         protected virtual string GetKey(MethodBase propertyMethod)
