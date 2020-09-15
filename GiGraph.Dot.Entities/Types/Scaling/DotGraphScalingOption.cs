@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Types.Scaling
     public class DotGraphScalingOption : DotGraphScalingDefinition
     {
         /// <summary>
-        ///     Creates a new enumerable aspect ratio instance.
+        ///     Creates a new attribute instance.
         /// </summary>
         /// <param name="option">
         ///     The scaling option to initialize the instance with.
