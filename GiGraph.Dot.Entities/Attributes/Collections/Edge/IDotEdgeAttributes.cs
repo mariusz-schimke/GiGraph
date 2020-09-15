@@ -225,9 +225,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///         <see cref="DotArrowDirections.Both" />.
         ///     </para>
         ///     <para>
-        ///         For basic shapes assign a value of the <see cref="DotArrowheadShape" /> enumerable to this property (it will be converted
-        ///         implicitly). For variants of the basic shapes use <see cref="DotArrowhead" />. To generate a multi-shape arrowhead use
-        ///         <see cref="DotCompositeArrowhead" />.
+        ///         For basic shapes assign a value of the <see cref="DotArrowheadShape" /> enumeration to this property (it will be
+        ///         converted implicitly). For variants of the basic shapes (filled/empty, normal/clipped) use <see cref="DotArrowhead" />.
+        ///         To generate an arrow composed of multiple arrowheads use <see cref="DotCompositeArrowhead" />.
         ///     </para>
         /// </summary>
         DotArrowheadDefinition ArrowHead { get; set; }
@@ -239,9 +239,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///         <see cref="DotArrowDirections.Both" />.
         ///     </para>
         ///     <para>
-        ///         For basic shapes assign a value of the <see cref="DotArrowheadShape" /> enumerable to this property (it will be converted
-        ///         implicitly). For variants of the basic shapes use <see cref="DotArrowhead" />. To generate a multi-shape arrowhead use
-        ///         <see cref="DotCompositeArrowhead" />.
+        ///         For basic shapes assign a value of the <see cref="DotArrowheadShape" /> enumeration to this property (it will be
+        ///         converted implicitly). For variants of the basic shapes (filled/empty, normal/clipped) use <see cref="DotArrowhead" />.
+        ///         To generate an arrow composed of multiple arrowheads use <see cref="DotCompositeArrowhead" />.
         ///     </para>
         /// </summary>
         DotArrowheadDefinition ArrowTail { get; set; }

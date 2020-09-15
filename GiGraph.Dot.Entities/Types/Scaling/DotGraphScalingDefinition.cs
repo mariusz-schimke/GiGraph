@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Types.Scaling
 {
     /// <summary>
     ///     Represents the scaling mode of the graph. Accepts either a numeric value (<see cref="DotGraphScalingAspectRatio" />), or an
-    ///     enumerable value (<see cref="DotGraphScaling" />).
+    ///     enumeration value (<see cref="DotGraphScaling" />).
     /// </summary>
     public abstract class DotGraphScalingDefinition : IDotEncodable
     {
