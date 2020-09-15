@@ -26,6 +26,8 @@
 
 - Refactoring (property and type naming improvements).
 
+- Added a GetPropertyKeyMapping() method on attribute collections so it is possible to learn what properties specific DOT attributes are exposed as. The static DotAttributeValueAttribute.GetValueMapping() method on the other hand, may be used to get key-value mappings of enumerations.
+
 
 See also https://github.com/mariusz-schimke/GiGraph/releases</releaseNotes>
   </metadata>
