@@ -459,8 +459,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         DotOrientation? Orientation { get; set; }
 
         /// <summary>
-        ///     If true, the graph is rendered in landscape mode. Synonymous with <see cref="RotateBy" /> = 90 or <see cref="Orientation" />
-        ///     = <see cref="DotOrientation.Landscape" />.
+        ///     If true, the graph is rendered in landscape mode (default: false). Synonymous with <see cref="RotateBy" /> = 90 or
+        ///     <see cref="Orientation" /> = <see cref="DotOrientation.Landscape" />.
         /// </summary>
         bool? LandscapeOrientation { get; set; }
     }
