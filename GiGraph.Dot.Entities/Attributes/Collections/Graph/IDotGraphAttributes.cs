@@ -453,8 +453,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         double? Resolution { get; set; }
 
         /// <summary>
-        ///     Sets graph orientation to landscape or portrait (default). Used only if <see cref="RotateBy" /> is not defined.
+        ///     Sets graph orientation to landscape or portrait (default). Used only if <see cref="RotateBy" /> is not defined. See also
+        ///     <see cref="LandscapeOrientation" />.
         /// </summary>
         DotOrientation? Orientation { get; set; }
+
+        /// <summary>
+        ///     If true, the graph is rendered in landscape mode. Synonymous with <see cref="RotateBy" /> = 90 or <see cref="Orientation" />
+        ///     = <see cref="DotOrientation.Landscape" />.
+        /// </summary>
+        bool? LandscapeOrientation { get; set; }
     }
 }

@@ -208,5 +208,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 ? throw new ArgumentOutOfRangeException(nameof(Resolution), v.Value, "Resolution must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
         }
+
+        [DotAttributeKey("landscape")]
+        public virtual bool? LandscapeOrientation
+        {
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+        }
     }
 }
