@@ -88,7 +88,7 @@ labelloc,NGC,string,"""t""(clusters)
 ""c""(nodes)",,,yes
 labeltarget,E,escString,<none>,,"svg, map only",yes
 labeltooltip,E,escString,"""""",,"svg, cmap only",yes
-landscape,G,bool,false,,,
+landscape,G,bool,false,,,yes
 layer,ENC,layerRange,"""""",,,
 layerlistsep,G,string,""",""",,,
 layers,G,layerList,"""""",,,
