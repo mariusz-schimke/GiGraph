@@ -126,7 +126,7 @@ notranslate,G,bool,false,,neato only,
 nslimit1",G,double,,,dot only,
 ordering,GN,string,"""""",,dot only,yes
 orientation,N,double,0.0,360.0,,yes
-orientation,G,string,"""""",,,
+orientation,G,string,"""""",,,yes
 outputorder,G,outputMode,breadthfirst,,,
 overlap,G,"string
 bool",true,,not dot,
