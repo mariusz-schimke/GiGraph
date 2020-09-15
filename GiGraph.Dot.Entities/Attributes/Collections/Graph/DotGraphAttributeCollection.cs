@@ -11,6 +11,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
     public class DotGraphAttributeCollection : DotEntityAttributeCollection<IDotGraphAttributes>, IDotGraphAttributeCollection
     {
+        [DotAttributeKey("orientation")]
+        public virtual DotOrientation? Orientation
+        {
+            get => GetValueAs<DotOrientation>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotOrientation?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotOrientationAttribute(k, v.Value));
+        }
+
         [DotAttributeKey("rankdir")]
         public virtual DotLayoutDirection? LayoutDirection
         {

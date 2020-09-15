@@ -22,7 +22,7 @@
     
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that can be visualized and/or converted to an image with external tools. A handy one is a plugin for Visual Studio Code, named Graphviz Preview. There are also online tools like www.webgraphviz.com, where you can paste the script to view your graph.</description>
     
-    <releaseNotes>- Added support for attributes:  (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
+    <releaseNotes>- Added support for attributes: orientation (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
 
 - Refactoring (property and type naming improvements).
 

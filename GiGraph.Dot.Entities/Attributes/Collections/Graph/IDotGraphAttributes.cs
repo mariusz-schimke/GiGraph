@@ -451,5 +451,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     This is a synonym for the <see cref="Dpi" /> attribute (svg, bitmap output only; default: 96.0, 0.0).
         /// </summary>
         double? Resolution { get; set; }
+
+        /// <summary>
+        ///     Sets graph orientation to landscape or portrait (default). Used only if <see cref="RotateBy" /> is not defined.
+        /// </summary>
+        DotOrientation? Orientation { get; set; }
     }
 }

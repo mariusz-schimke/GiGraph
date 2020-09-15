@@ -36,6 +36,7 @@ namespace GiGraph.Dot.Entities.Tests
                 new object[] { typeof(DotLayoutDirection) },
                 new object[] { typeof(DotNodeShape) },
                 new object[] { typeof(DotNodeSizing) },
+                new object[] { typeof(DotOrientation) },
                 new object[] { typeof(DotPackingGranularity) },
                 new object[] { typeof(DotRank) },
                 new object[] { typeof(DotStyles) },
