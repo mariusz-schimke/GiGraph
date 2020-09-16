@@ -13,6 +13,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
     public interface IDotEdgeAttributes
     {
         /// <summary>
+        ///     The attributes of the head of the edge.
+        /// </summary>
+        public IDotEdgeHeadAttributes Head { get; }
+
+        /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the edge. It may be plain text (<see cref="string" />) or HTML (
         ///         <see cref="DotHtmlLabel" />). See also <see cref="DotTextFormatter" /> for plain text label formatting if needed.
@@ -34,11 +39,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     </para>
         /// </summary>
         DotLabel Label { get; set; }
-
-        /// <summary>
-        ///     The text label to be placed near the head of the edge.
-        /// </summary>
-        DotLabel HeadLabel { get; set; }
 
         /// <summary>
         ///     The text label to be placed near the tail of the edge.
@@ -271,28 +271,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotArrowDirections? ArrowDirections { get; set; }
 
         /// <summary>
-        ///     Indicates where on the head node to attach the head of the edge. In the default case, the edge is aimed towards the center of
-        ///     the node, and then clipped at the node boundary. See also <see cref="DotEndpoint.Port" /> of the edge
-        ///     <see cref="DotEdge{TTail,THead}.Head" /> property.
-        /// </summary>
-        DotEndpointPort HeadPort { get; set; }
-
-        /// <summary>
         ///     Indicates where on the tail node to attach the tail of the edge. See also <see cref="DotEndpoint.Port" /> of the edge
         ///     <see cref="DotEdge{TTail,THead}.Tail" /> property.
         /// </summary>
         DotEndpointPort TailPort { get; set; }
 
         /// <summary>
-        ///     Logical head of the edge. When the <see cref="IDotGraphAttributes.EdgesBetweenClusters" /> property of the graph is true, if
-        ///     the current property is defined and is the identifier of a cluster containing the real head node, the edge is clipped to the
-        ///     boundary of the cluster.
-        /// </summary>
-        string HeadClusterId { get; set; }
-
-        /// <summary>
         ///     Logical tail of the edge. When the <see cref="IDotGraphAttributes.EdgesBetweenClusters" /> property of the graph is true, if
-        ///     the current property is defined and is the identifier of a cluster containing the real tail node, the edge is clipped to the
+        ///     the current property is defined, and is the identifier of a cluster containing the real tail node, the edge is clipped to the
         ///     boundary of the cluster.
         /// </summary>
         string TailClusterId { get; set; }
@@ -304,16 +290,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         bool? AttachLabel { get; set; }
 
         /// <summary>
-        ///     If true (default), the head of the edge is clipped to the boundary of the head node; otherwise, the end of the edge goes to
-        ///     the center of the node, or the center of a port, if applicable.
-        /// </summary>
-        bool? ClipHead { get; set; }
-
-        /// <summary>
         ///     If true (default), the tail of the edge is clipped to the boundary of the tail node; otherwise, the end of the edge goes to
         ///     the center of the node, or the center of a port, if applicable.
         /// </summary>
-        bool? ClipTail { get; set; }
+        bool? ClipTailToNodeBoundary { get; set; }
 
         /// <summary>
         ///     If false, the edge is not used in ranking the nodes (default: true). See
@@ -364,30 +344,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     .
         /// </summary>
         DotEscapeString UrlTarget { get; set; }
-
-        /// <summary>
-        ///     If defined, it is output as part of the head label of the edge. Also, this value is used near the head node, overriding any
-        ///     <see cref="Url" /> value.
-        /// </summary>
-        DotEscapeString HeadUrl { get; set; }
-
-        /// <summary>
-        ///     Synonym for <see cref="HeadUrl" />.
-        /// </summary>
-        DotEscapeString HeadHref { get; set; }
-
-        /// <summary>
-        ///     If the edge has a <see cref="HeadUrl" />, this attribute determines which window of the browser is used for the URL. Setting
-        ///     it to "_graphviz" will open a new window if it doesn't already exist, or reuse it if it does. If undefined, the value of the
-        ///     <see cref="UrlTarget" /> is used.
-        /// </summary>
-        DotEscapeString HeadUrlTarget { get; set; }
-
-        /// <summary>
-        ///     Tooltip annotation attached to the head of the edge. This is used only if the edge has a <see cref="HeadUrl" /> attribute
-        ///     specified.
-        /// </summary>
-        DotEscapeString HeadUrlTooltip { get; set; }
 
         /// <summary>
         ///     If defined, it is output as part of the tail label of the edge. Also, this value is used near the tail node, overriding any
@@ -461,12 +417,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     <see cref="EdgeUrl" /> attribute specified.
         /// </summary>
         DotEscapeString EdgeUrlTooltip { get; set; }
-
-        /// <summary>
-        ///     Edges with the same head and the same <see cref="HeadGroupName" /> value are aimed at the same point on the head (dot only).
-        ///     This has no effect on loops. Each node may have at most 5 unique <see cref="HeadGroupName" /> values.
-        /// </summary>
-        string HeadGroupName { get; set; }
 
         /// <summary>
         ///     Edges with the same tail and the same <see cref="TailGroupName" /> value are aimed at the same point on the tail (dot only).

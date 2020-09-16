@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Examples.Complex
                 edge.Attributes.Label = "yes";
 
                 // attach the arrow to cluster border
-                edge.Attributes.HeadClusterId = "Flow 1";
+                edge.Attributes.Head.ClusterId = "Flow 1";
             });
 
             graph.Edges.Add("Decision", "Cluster 2 Start", edge =>
@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Examples.Complex
                 edge.Attributes.Label = "no";
 
                 // attach the arrow to cluster border
-                edge.Attributes.HeadClusterId = "Flow 2";
+                edge.Attributes.Head.ClusterId = "Flow 2";
             });
 
             graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.TailClusterId = "Flow 1";
