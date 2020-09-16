@@ -301,7 +301,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     If true, attaches edge label to edge by a 2-segment polyline, underlining the label, then going to the closest point of
         ///     spline. Default: false.
         /// </summary>
-        bool? ConnectLabel { get; set; }
+        bool? AttachLabel { get; set; }
 
         /// <summary>
         ///     If true (default), the head of the edge is clipped to the boundary of the head node; otherwise, the end of the edge goes to
