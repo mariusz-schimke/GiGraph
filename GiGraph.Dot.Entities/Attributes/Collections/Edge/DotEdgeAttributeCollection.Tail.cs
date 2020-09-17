@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         [DotAttributeKey("sametail")]
-        string IDotEdgeTailAttributes.TailGroupName
+        string IDotEdgeTailAttributes.GroupName
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));

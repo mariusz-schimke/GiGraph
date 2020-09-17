@@ -58,9 +58,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotEscapeString UrlTooltip { get; set; }
 
         /// <summary>
-        ///     Edges with the same tail and the same <see cref="TailGroupName" /> value are aimed at the same point on the tail (dot only).
-        ///     This has no effect on loops. Each node may have at most 5 unique <see cref="TailGroupName" /> values.
+        ///     Edges with the same tail and the same <see cref="GroupName" /> value are aimed at the same point on the tail (dot only).
+        ///     This has no effect on loops. Each node may have at most 5 unique <see cref="GroupName" /> values.
         /// </summary>
-        string TailGroupName { get; set; }
+        string GroupName { get; set; }
     }
 }

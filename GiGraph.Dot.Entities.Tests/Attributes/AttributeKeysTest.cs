@@ -16,9 +16,9 @@ using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Output.Options;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests
+namespace GiGraph.Dot.Entities.Tests.Attributes
 {
-    public class AttributeKeysTest
+    public class AttributeKeysTest : AttributesTestBase
     {
         private readonly DotGenerationOptions _generationOptions = new DotGenerationOptions();
         private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
@@ -31,34 +31,23 @@ namespace GiGraph.Dot.Entities.Tests
         [InlineData(typeof(IDotSubgraphAttributes), typeof(DotSubgraphAttributeCollection))]
         public void all_entity_properties_have_a_non_empty_and_unique_attribute_key_assigned(Type entityAttributesInterface, Type entityAttributesImplementation)
         {
-            const bool nonPublic = true;
-            const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-
             var repeatedKeys = new Dictionary<string, PropertyInfo>();
 
             // get all setters and getters of the interface
-            var interfaceProps = entityAttributesInterface.GetProperties(flags);
-            var interfacePropMethods = interfaceProps
-               .ToDictionary(p => p, p => p.GetGetMethod(nonPublic))
-               .Concat
-                (
-                    interfaceProps.ToDictionary(p => p, p => p.GetSetMethod(nonPublic))
-                )
-               .Where(p => p.Value is {});
-
+            var interfacePropertyMethodPairs = GetInterfacePropertyMethodPairs(entityAttributesInterface);
             var interfaceMap = entityAttributesImplementation.GetInterfaceMap(entityAttributesInterface);
 
-            foreach (var interfacePropMethod in interfacePropMethods)
+            foreach (var interfacePropMethod in interfacePropertyMethodPairs)
             {
                 // get an equivalent method from the implementation
-                var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(interfacePropMethod.Value));
+                var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(interfacePropMethod.Method));
                 var implementationMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
 
                 // find the property the implementing method is associated with
                 var implementationProperty = entityAttributesImplementation
-                  ?.GetProperties(flags)
-                  ?.Single(propertyInfo => implementationMethod.Equals(propertyInfo.GetGetMethod(nonPublic)) ||
-                                           implementationMethod.Equals(propertyInfo.GetSetMethod(nonPublic)));
+                  ?.GetProperties(Flags)
+                  ?.Single(propertyInfo => implementationMethod.Equals(propertyInfo.GetGetMethod(NonPublic)) ||
+                                           implementationMethod.Equals(propertyInfo.GetSetMethod(NonPublic)));
 
                 // get the attribute key attribute
                 var attribute = implementationProperty.GetCustomAttribute<DotAttributeKeyAttribute>();
@@ -69,11 +58,11 @@ namespace GiGraph.Dot.Entities.Tests
                 if (repeatedKeys.TryGetValue(attribute.Key, out var prop))
                 {
                     // if already added, assert it is the same property
-                    Assert.Equal(interfacePropMethod.Key, prop);
+                    Assert.Equal(interfacePropMethod.Property, prop);
                 }
                 else
                 {
-                    repeatedKeys.Add(attribute.Key, interfacePropMethod.Key);
+                    repeatedKeys.Add(attribute.Key, interfacePropMethod.Property);
                 }
             }
         }
