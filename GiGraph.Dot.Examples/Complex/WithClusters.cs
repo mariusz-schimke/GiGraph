@@ -44,8 +44,8 @@ namespace GiGraph.Dot.Examples.Complex
                 edge.Attributes.Head.ClusterId = "Flow 2";
             });
 
-            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.TailClusterId = "Flow 1";
-            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.TailClusterId = "Flow 2";
+            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.Tail.ClusterId = "Flow 1";
+            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.Tail.ClusterId = "Flow 2";
 
 
             // --- add clusters ---

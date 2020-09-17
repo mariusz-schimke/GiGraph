@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     If defined, it is output as part of the head label of the edge. Also, this value is used near the head node, overriding any
-        ///     <see cref="Url" /> value.
+        ///     primary <see cref="IDotEdgeAttributes.Url" /> set on the edge.
         /// </summary>
         DotEscapeString Url { get; set; }
 
@@ -46,15 +46,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotEscapeString Href { get; set; }
 
         /// <summary>
-        ///     If the edge has a <see cref="Url" />, this attribute determines which window of the browser is used for the URL. Setting it
-        ///     to "_graphviz" will open a new window if it doesn't already exist, or reuse it if it does. If undefined, the value of the
-        ///     <see cref="UrlTarget" /> is used.
+        ///     If the edge has a <see cref="Url" /> specified for its head, this attribute determines which window of the browser is used
+        ///     for the URL. Setting it to "_graphviz" will open a new window if it doesn't already exist, or reuse it if it does. If
+        ///     undefined, the value of the primary <see cref="IDotEdgeAttributes.UrlTarget" /> attribute of the edge is used.
         /// </summary>
         DotEscapeString UrlTarget { get; set; }
 
         /// <summary>
         ///     Tooltip annotation attached to the head of the edge. This is used only if the edge has a <see cref="Url" /> attribute
-        ///     specified.
+        ///     specified for its head.
         /// </summary>
         DotEscapeString UrlTooltip { get; set; }
 
