@@ -58,17 +58,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         bool? LabelFloat { get; set; }
 
         /// <summary>
-        ///     Multiplicative scaling factor adjusting the distance that the <see cref="HeadLabel" />/<see cref="TailLabel" /> is from the
-        ///     head/tail node. The default distance is 10 points, the minimum is 0.0. See also <see cref="EndpointLabelAngle" />.
+        ///     Multiplicative scaling factor adjusting the distance that the the head <see cref="IDotEdgeHeadAttributes.Label" /> and the
+        ///     tail <see cref="IDotEdgeTailAttributes.Label" /> are from the head/tail nodes. The default distance is 10 points, the minimum
+        ///     is 0.0. See also <see cref="EndpointLabelAngle" />.
         /// </summary>
         double? EndpointLabelDistance { get; set; }
 
         /// <summary>
         ///     <para>
-        ///         This, along with <see cref="EndpointLabelDistance" />, determine where the <see cref="HeadLabel" />/
-        ///         <see cref="TailLabel" /> are placed with respect to the head/tail in polar coordinates. The origin in the coordinate
-        ///         system is the point where the edge touches the node. The ray of 0 degrees goes from the origin back along the edge,
-        ///         parallel to the edge at the origin.
+        ///         This, along with <see cref="EndpointLabelDistance" />, determine where the the head
+        ///         <see cref="IDotEdgeHeadAttributes.Label" /> and the tail <see cref="IDotEdgeTailAttributes.Label" /> are placed with
+        ///         respect to the head/tail in polar coordinates. The origin in the coordinate system is the point where the edge touches
+        ///         the node. The ray of 0 degrees goes from the origin back along the edge, parallel to the edge at the origin.
         ///     </para>
         ///     <para>
         ///         The angle, in degrees, specifies the rotation from the 0 degree ray, with positive angles moving counterclockwise and
@@ -96,19 +97,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         double? Weight { get; set; }
 
         /// <summary>
-        ///     Color used for <see cref="HeadLabel" /> and <see cref="TailLabel" />. If not set, defaults to edge's <see cref="FontColor" />
-        ///     .
+        ///     Color used for the head <see cref="IDotEdgeHeadAttributes.Label" /> and the tail <see cref="IDotEdgeTailAttributes.Label" />.
+        ///     If not set, defaults to the edge's <see cref="FontColor" /> .
         /// </summary>
         DotColor EndpointLabelFontColor { get; set; }
 
         /// <summary>
-        ///     Font used for <see cref="HeadLabel" /> and <see cref="TailLabel" />. If not set, defaults to edge's <see cref="FontName" />.
+        ///     Font used for the head <see cref="IDotEdgeHeadAttributes.Label" /> and the tail <see cref="IDotEdgeTailAttributes.Label" />.
+        ///     If not set, defaults to the edge's <see cref="FontName" />.
         /// </summary>
         string EndpointLabelFontName { get; set; }
 
         /// <summary>
-        ///     Font size, in points, used for <see cref="HeadLabel" /> and <see cref="TailLabel" />. If not set, defaults to edge's
-        ///     <see cref="FontSize" />.
+        ///     Font size, in points, used for the head <see cref="IDotEdgeHeadAttributes.Label" /> and the tail
+        ///     <see cref="IDotEdgeTailAttributes.Label" />. If not set, defaults to the edge's <see cref="FontSize" />.
         /// </summary>
         double? EndpointLabelFontSize { get; set; }
 
@@ -301,9 +303,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///         label, this will also be active.
         ///     </para>
         ///     <para>
-        ///         Note that, for edges, the attributes <see cref="HeadUrl" />, <see cref="TailUrl" />, <see cref="LabelUrl" />, and
-        ///         <see cref="EdgeUrl" /> allow control of various parts of the edge. Also note that, if active areas of two edges overlap,
-        ///         it is unspecified which area dominates.
+        ///         Note that, for edges, the head <see cref="IDotEdgeHeadAttributes.Url" />, the tail
+        ///         <see cref="IDotEdgeTailAttributes.Url" />, the <see cref="LabelUrl" />, and the <see cref="EdgeUrl" /> properties allow
+        ///         control of various parts of the edge. Also note that, if active areas of two edges overlap, it is unspecified which area
+        ///         dominates.
         ///     </para>
         /// </summary>
         DotEscapeString Url { get; set; }
@@ -348,9 +351,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotEscapeString LabelUrlTooltip { get; set; }
 
         /// <summary>
-        ///     If defined, this is the link used for the non-label parts of the edge. This value overrides any <see cref="Url" /> defined
-        ///     for the edge. Also, this value is used near the head or tail node unless overridden by a <see cref="HeadUrl" /> or
-        ///     <see cref="TailUrl" /> value, respectively.
+        ///     If defined, this is the link used for the non-label parts of the edge. This value overrides any primary <see cref="Url" />
+        ///     defined for the edge. Also, this value is used near the head or tail node unless overridden by its head
+        ///     <see cref="IDotEdgeHeadAttributes.Url" /> or tail <see cref="IDotEdgeTailAttributes.Url" />, respectively.
         /// </summary>
         DotEscapeString EdgeUrl { get; set; }
 
