@@ -261,8 +261,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         bool? ConcentrateEdges { get; set; }
 
         /// <summary>
-        ///     If true, allows edges between clusters (default: false). Use the <see cref="IDotEdgeAttributes.HeadClusterId" /> or
-        ///     <see cref="IDotEdgeAttributes.TailClusterId" /> edge attributes to attach an edge head or tail to a cluster.
+        ///     If true, allows edges between clusters (default: false). Use an edge's head <see cref="IDotEdgeHeadAttributes.ClusterId" />
+        ///     or tail <see cref="IDotEdgeTailAttributes.ClusterId" /> attribute to attach an edge head or tail to a cluster.
         /// </summary>
         bool? EdgesBetweenClusters { get; set; }
 

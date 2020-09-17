@@ -4,13 +4,14 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Edges;
-using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
-    public class DotEdgeAttributeCollection : DotEntityAttributeCollection<IDotEdgeAttributes>, IDotEdgeAttributeCollection
+    public partial class DotEdgeAttributeCollection : DotEntityAttributeCollection<IDotEdgeAttributes>,
+        IDotEdgeAttributeCollection,
+        IDotEdgeHeadAttributes,
+        IDotEdgeTailAttributes
     {
         [DotAttributeKey("weight")]
         public virtual double? Weight
@@ -58,76 +59,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(EndpointLabelFontSize), v.Value, "Endpoint label font size must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("taillabel")]
-        public virtual DotLabel TailLabel
-        {
-            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
-        }
-
-        [DotAttributeKey("headlabel")]
-        public virtual DotLabel HeadLabel
-        {
-            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
-        }
-
-        [DotAttributeKey("headURL")]
-        public virtual DotEscapeString HeadUrl
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("headhref")]
-        public virtual DotEscapeString HeadHref
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("headtarget")]
-        public virtual DotEscapeString HeadUrlTarget
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("headtooltip")]
-        public virtual DotEscapeString HeadUrlTooltip
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("tailURL")]
-        public virtual DotEscapeString TailUrl
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("tailhref")]
-        public virtual DotEscapeString TailHref
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("tailtarget")]
-        public virtual DotEscapeString TailUrlTarget
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("tailtooltip")]
-        public virtual DotEscapeString TailUrlTooltip
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("labelURL")]
@@ -186,34 +117,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
-        [DotAttributeKey("headclip")]
-        public virtual bool? ClipHead
-        {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("tailclip")]
-        public virtual bool? ClipTail
-        {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("samehead")]
-        public virtual string HeadGroupName
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("sametail")]
-        public virtual string TailGroupName
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
-        }
-
         [DotAttributeKey("arrowsize")]
         public virtual double? ArrowheadScale
         {
@@ -244,36 +147,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowDirectionsAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("headport")]
-        public virtual DotEndpointPort HeadPort
-        {
-            get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEndpointPortAttribute(k, v));
-        }
-
-        [DotAttributeKey("tailport")]
-        public virtual DotEndpointPort TailPort
-        {
-            get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEndpointPortAttribute(k, v));
-        }
-
-        [DotAttributeKey("lhead")]
-        public virtual string HeadClusterId
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotClusterIdAttribute(k, v));
-        }
-
-        [DotAttributeKey("ltail")]
-        public virtual string TailClusterId
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotClusterIdAttribute(k, v));
-        }
-
         [DotAttributeKey("decorate")]
-        public virtual bool? ConnectLabel
+        public virtual bool? AttachLabel
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
