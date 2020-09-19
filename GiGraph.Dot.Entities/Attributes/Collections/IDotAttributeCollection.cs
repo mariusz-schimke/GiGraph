@@ -367,7 +367,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotClusterModeAttribute Set(string key, DotClusterMode value);
+        DotClusterVisualizationModeAttribute Set(string key, DotClusterVisualizationMode value);
 
         /// <summary>
         ///     Adds or replaces the specified arrow definition attribute in the collection.

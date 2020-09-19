@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Output.Options;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests
+namespace GiGraph.Dot.Entities.Tests.Attributes
 {
     public class AttributesTest
     {

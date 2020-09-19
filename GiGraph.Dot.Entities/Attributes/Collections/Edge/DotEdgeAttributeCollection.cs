@@ -1,7 +1,6 @@
 using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Strings;
@@ -124,20 +123,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(ArrowheadScale), v.Value, "Arrowhead scale must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("arrowhead")]
-        public virtual DotArrowheadDefinition ArrowHead
-        {
-            get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
-        }
-
-        [DotAttributeKey("arrowtail")]
-        public virtual DotArrowheadDefinition ArrowTail
-        {
-            get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
         }
 
         [DotAttributeKey("dir")]

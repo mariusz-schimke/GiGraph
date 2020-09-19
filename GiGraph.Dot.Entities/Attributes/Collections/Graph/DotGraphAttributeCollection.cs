@@ -9,8 +9,12 @@ using GiGraph.Dot.Entities.Types.Scaling;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
-    public class DotGraphAttributeCollection : DotEntityAttributeCollection<IDotGraphAttributes>, IDotGraphAttributeCollection
+    public class DotGraphAttributeCollection : DotEntityAttributeCollection<IDotGraphAttributes>,
+        IDotGraphAttributeCollection,
+        IDotGraphClusterAttributes
     {
+        public virtual IDotGraphClusterAttributes Clusters => this;
+
         [DotAttributeKey("orientation")]
         public virtual DotOrientation? Orientation
         {
@@ -32,22 +36,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeShapeAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("clusterrank")]
-        public virtual DotClusterMode? ClusterMode
-        {
-            get => GetValueAs<DotClusterMode>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotClusterMode?) null;
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotClusterModeAttribute(k, v.Value));
-        }
-
         [DotAttributeKey("concentrate")]
         public virtual bool? ConcentrateEdges
-        {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("compound")]
-        public virtual bool? EdgesBetweenClusters
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
@@ -211,6 +201,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 
         [DotAttributeKey("landscape")]
         public virtual bool? LandscapeOrientation
+        {
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+        }
+
+        [DotAttributeKey("clusterrank")]
+        public virtual DotClusterVisualizationMode? VisualizationMode
+        {
+            get => GetValueAs<DotClusterVisualizationMode>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotClusterVisualizationMode?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotClusterVisualizationModeAttribute(k, v.Value));
+        }
+
+        [DotAttributeKey("compound")]
+        public virtual bool? AllowEdgeClipping
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));

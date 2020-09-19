@@ -1,4 +1,5 @@
 using System.Reflection;
+using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
@@ -8,7 +9,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
     public partial class DotEdgeAttributeCollection
     {
-        public IDotEdgeHeadAttributes Head => this;
+        public virtual IDotEdgeHeadAttributes Head => this;
 
         [DotAttributeKey("headlabel")]
         DotLabel IDotEdgeHeadAttributes.Label
@@ -71,6 +72,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotClusterIdAttribute(k, v));
+        }
+
+        [DotAttributeKey("arrowhead")]
+        DotArrowheadDefinition IDotEdgeHeadAttributes.Arrow
+        {
+            get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
         }
     }
 }

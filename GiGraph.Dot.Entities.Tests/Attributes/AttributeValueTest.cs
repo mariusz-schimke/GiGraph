@@ -11,7 +11,7 @@ using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Output.Options;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests
+namespace GiGraph.Dot.Entities.Tests.Attributes
 {
     public class AttributeValueTest
     {
@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Tests
                 new object[] { typeof(DotArrowDirections) },
                 new object[] { typeof(DotArrowheadParts) },
                 new object[] { typeof(DotArrowheadShape) },
-                new object[] { typeof(DotClusterMode) },
+                new object[] { typeof(DotClusterVisualizationMode) },
                 new object[] { typeof(DotCompassPoint) },
                 new object[] { typeof(DotEdgeOrderingMode) },
                 new object[] { typeof(DotEdgeShape) },

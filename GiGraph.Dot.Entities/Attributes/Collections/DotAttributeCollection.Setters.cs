@@ -161,9 +161,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotLayoutDirectionAttribute(key, value));
         }
 
-        public virtual DotClusterModeAttribute Set(string key, DotClusterMode value)
+        public virtual DotClusterVisualizationModeAttribute Set(string key, DotClusterVisualizationMode value)
         {
-            return Set(new DotClusterModeAttribute(key, value));
+            return Set(new DotClusterVisualizationModeAttribute(key, value));
         }
 
         public virtual DotEdgeOrderingModeAttribute Set(string key, DotEdgeOrderingMode value)

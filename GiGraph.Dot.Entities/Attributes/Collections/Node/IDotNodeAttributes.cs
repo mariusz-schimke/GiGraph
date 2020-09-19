@@ -72,7 +72,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     </para>
         ///     <para>
         ///         If <see cref="DotGradientColor" /> is used, with no weighted colors in its parameters (<see cref="DotColor" /> items
-        ///         only), and the <see cref="Style" /> is <see cref="DotStyles.Filled" />, a linear gradient fill is done.
+        ///         only), and the <see cref="Style" /> contains <see cref="DotStyles.Filled" />, a linear gradient fill is done.
         ///     </para>
         ///     <para>
         ///         If <see cref="DotGradientColor" /> is used with weighted colors (see <see cref="DotWeightedColor" />), a degenerate
@@ -81,7 +81,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     </para>
         ///     <para>
         ///         If the <see cref="Style" /> attribute contains the value <see cref="DotStyles.Radial" />, then a radial gradient fill is
-        ///         done. See also the <see cref="GradientAngle" /> attribute for setting the gradient angle.
+        ///         done. See also the <see cref="GradientAngle" /> attribute for setting a gradient angle.
         ///     </para>
         ///     <para>
         ///         These fills work with any shape. For certain shapes, the <see cref="Style" /> attribute can be set to do fills using more
@@ -102,7 +102,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
         ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. If the second color is
         ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
-        ///         attribute for setting the gradient angle.
+        ///         attribute for setting a gradient angle.
         ///     </para>
         /// </summary>
         DotColorDefinition FillColor { get; set; }
