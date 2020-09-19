@@ -126,20 +126,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
                 : new DotDoubleAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("arrowhead")]
-        public virtual DotArrowheadDefinition ArrowHead
-        {
-            get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
-        }
-
-        [DotAttributeKey("arrowtail")]
-        public virtual DotArrowheadDefinition ArrowTail
-        {
-            get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
-        }
-
         [DotAttributeKey("dir")]
         public virtual DotArrowDirections? ArrowDirections
         {
@@ -187,6 +173,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public override void SetFilled(DotColorDefinition value)
         {
             FillColor = value;
+        }
+
+        [DotAttributeKey("arrowhead")]
+        DotArrowheadDefinition IDotEdgeHeadAttributes.Arrow
+        {
+            get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
+        }
+
+        [DotAttributeKey("arrowtail")]
+        DotArrowheadDefinition IDotEdgeTailAttributes.Arrow
+        {
+            get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
         }
     }
 }

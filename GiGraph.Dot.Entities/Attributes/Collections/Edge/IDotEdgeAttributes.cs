@@ -1,6 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Strings;
@@ -219,40 +218,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     <para>
-        ///         Gets or sets the style of arrowhead on the head node of the edge (default: <see cref="DotArrowheadShape.Normal" />).
-        ///         Appears only if the <see cref="ArrowDirections" /> attribute is <see cref="DotArrowDirections.Forward" /> or
-        ///         <see cref="DotArrowDirections.Both" />.
-        ///     </para>
-        ///     <para>
-        ///         For basic shapes assign a value of the <see cref="DotArrowheadShape" /> enumeration to this property (it will be
-        ///         converted implicitly). For variants of the basic shapes (filled/empty, normal/clipped) use <see cref="DotArrowhead" />.
-        ///         To generate an arrow composed of multiple arrowheads use <see cref="DotCompositeArrowhead" />.
-        ///     </para>
-        /// </summary>
-        DotArrowheadDefinition ArrowHead { get; set; }
-
-        /// <summary>
-        ///     <para>
-        ///         Gets or sets the style of arrowhead on the tail node of the edge (default: <see cref="DotArrowheadShape.Normal" />).
-        ///         Appears only if the <see cref="ArrowDirections" /> attribute is <see cref="DotArrowDirections.Backward" /> or
-        ///         <see cref="DotArrowDirections.Both" />.
-        ///     </para>
-        ///     <para>
-        ///         For basic shapes assign a value of the <see cref="DotArrowheadShape" /> enumeration to this property (it will be
-        ///         converted implicitly). For variants of the basic shapes (filled/empty, normal/clipped) use <see cref="DotArrowhead" />.
-        ///         To generate an arrow composed of multiple arrowheads use <see cref="DotCompositeArrowhead" />.
-        ///     </para>
-        /// </summary>
-        DotArrowheadDefinition ArrowTail { get; set; }
-
-        /// <summary>
-        ///     <para>
         ///         Gets or sets edge type for drawing arrowheads. Default: <see cref="DotArrowDirections.Forward" /> (for directed graphs),
         ///         <see cref="DotArrowDirections.None" /> (for undirected graphs).
         ///     </para>
         ///     <para>
         ///         Indicates which ends of the edge should be decorated with an arrow head. The actual style of the arrowhead can be
-        ///         specified using the <see cref="ArrowHead" /> and <see cref="ArrowTail" /> attributes.
+        ///         specified using the <see cref="IDotEdgeHeadAttributes.Arrow" /> attribute on the head of the edge, and the
+        ///         corresponding <see cref="IDotEdgeTailAttributes.Arrow" /> attribute on the tail of the edge.
         ///     </para>
         ///     <para>
         ///         A glyph is drawn at the head end of the edge if and only if the arrow direction is

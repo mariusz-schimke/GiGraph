@@ -1,6 +1,8 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
+using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Strings;
@@ -63,5 +65,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     has no effect on loops. Each node may have at most 5 unique <see cref="GroupName" /> values.
         /// </summary>
         string GroupName { get; set; }
+
+        /// <summary>
+        ///     <para>
+        ///         Gets or sets the style of arrowhead on the head node of the edge (default: <see cref="DotArrowheadShape.Normal" />).
+        ///         Appears only if the <see cref="IDotEdgeAttributes.ArrowDirections" /> attribute on the edge is
+        ///         <see cref="DotArrowDirections.Forward" /> or <see cref="DotArrowDirections.Both" />.
+        ///     </para>
+        ///     <para>
+        ///         For basic shapes assign a value of the <see cref="DotArrowheadShape" /> enumeration to this property (it will be
+        ///         converted implicitly). For variants of the basic shapes (filled/empty, normal/clipped) use <see cref="DotArrowhead" />.
+        ///         To generate an arrow composed of multiple arrowheads use <see cref="DotCompositeArrowhead" />.
+        ///     </para>
+        /// </summary>
+        DotArrowheadDefinition Arrow { get; set; }
     }
 }
