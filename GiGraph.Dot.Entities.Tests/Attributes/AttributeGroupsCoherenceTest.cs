@@ -11,8 +11,8 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         [InlineData(typeof(IDotEdgeHeadAttributes), typeof(IDotEdgeTailAttributes))]
         public void interfaces_contain_equivalent_members(Type interface1, Type interface2)
         {
-            var interface1PropMethodPairs = GetInterfacePropertyMethodPairs(interface1);
-            var interface2PropMethodPairs = GetInterfacePropertyMethodPairs(interface2);
+            var interface1PropMethodPairs = GetInterfacePropertyAndAccessorPairs(interface1);
+            var interface2PropMethodPairs = GetInterfacePropertyAndAccessorPairs(interface2);
 
             Assert.Equal(interface1PropMethodPairs.Length, interface2PropMethodPairs.Length);
 

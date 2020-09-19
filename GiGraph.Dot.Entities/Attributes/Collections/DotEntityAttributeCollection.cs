@@ -201,10 +201,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             FillColor = value;
         }
 
-        protected virtual void AddOrRemove<TAttribute, TValue>(MethodBase propertyMethod, TValue value, Func<string, TValue, TAttribute> newAttribute)
+        protected virtual void AddOrRemove<TAttribute, TValue>(MethodBase propertyAccessor, TValue value, Func<string, TValue, TAttribute> newAttribute)
             where TAttribute : DotAttribute
         {
-            AddOrRemove(GetKey(propertyMethod), value, newAttribute);
+            AddOrRemove(GetKey(propertyAccessor), value, newAttribute);
         }
     }
 }

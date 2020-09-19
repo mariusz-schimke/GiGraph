@@ -89,9 +89,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             var interfaceMap = implementationType.GetInterfaceMap(interfaceType);
 
             return interfaceMap.TargetMethods
-               .SelectMany(method =>
+               .SelectMany(implementationMethod =>
                 {
-                    var property = GetPropertyByAccessor(method, implementationType);
+                    var property = GetPropertyByAccessor(implementationMethod, implementationType);
 
                     // attribute grouping properties are exposed as interfaces
                     return property.PropertyType.IsInterface
@@ -102,14 +102,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                .ToArray();
         }
 
-        protected virtual string GetKey(MethodBase propertyMethod)
+        protected virtual string GetKey(MethodBase propertyAccessor)
         {
-            return GetKey(propertyMethod, propertyMethod.DeclaringType);
+            return GetKey(propertyAccessor, propertyAccessor.DeclaringType);
         }
 
-        protected virtual string GetKey(MethodBase propertyMethod, Type declaringType)
+        protected virtual string GetKey(MethodBase propertyAccessor, Type declaringType)
         {
-            var property = GetPropertyByAccessor(propertyMethod, declaringType);
+            var property = GetPropertyByAccessor(propertyAccessor, declaringType);
             return GetKey(property);
         }
 
@@ -135,22 +135,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return GetImplementationProperty(propertyInfo, currentType);
         }
 
-        protected virtual PropertyInfo GetImplementationProperty(PropertyInfo propertyInfo, Type implementationType)
+        protected virtual PropertyInfo GetImplementationProperty(PropertyInfo property, Type implementationType)
         {
-            if (propertyInfo.DeclaringType.IsInterface)
+            if (property.DeclaringType.IsInterface)
             {
                 // get the get method (property expression is impossible for write-only properties)
                 // include non-public methods (interface may be implemented explicitly)
-                var propertyGetter = propertyInfo.GetMethod;
+                var propertyGetter = property.GetMethod;
 
-                var interfaceMap = implementationType.GetInterfaceMap(propertyInfo.DeclaringType);
+                var interfaceMap = implementationType.GetInterfaceMap(property.DeclaringType);
                 var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(propertyGetter));
-                var targetMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
+                var implementationMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
 
-                return GetPropertyByAccessor(targetMethod, implementationType);
+                return GetPropertyByAccessor(implementationMethod, implementationType);
             }
 
-            return propertyInfo;
+            return property;
         }
 
         protected virtual PropertyInfo GetPropertyByAccessor(MethodBase propertyAccessor, Type declaringType)
@@ -162,7 +162,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
             if (property is null)
             {
-                throw new ArgumentException("The specified method must be a property setter or getter.", nameof(propertyAccessor));
+                throw new ArgumentException($"The specified method must be a property setter or getter implemented by the {declaringType.FullName} type.",
+                    nameof(propertyAccessor));
             }
 
             return property;

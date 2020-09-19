@@ -10,64 +10,64 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public abstract partial class DotEntityAttributeCollection<TExposedEntityAttributes>
     {
-        protected virtual bool GetValueAs<T>(MethodBase propertyMethod, out T value)
+        protected virtual bool GetValueAs<T>(MethodBase propertyAccessor, out T value)
         {
-            return GetValueAs(GetKey(propertyMethod), out value);
+            return GetValueAs(GetKey(propertyAccessor), out value);
         }
 
-        protected virtual int? GetValueAsInt(MethodBase propertyMethod)
+        protected virtual int? GetValueAsInt(MethodBase propertyAccessor)
         {
-            return GetValueAsInt(GetKey(propertyMethod));
+            return GetValueAsInt(GetKey(propertyAccessor));
         }
 
-        protected virtual double? GetValueAsDouble(MethodBase propertyMethod)
+        protected virtual double? GetValueAsDouble(MethodBase propertyAccessor)
         {
-            return GetValueAsDouble(GetKey(propertyMethod));
+            return GetValueAsDouble(GetKey(propertyAccessor));
         }
 
-        protected virtual bool? GetValueAsBool(MethodBase propertyMethod)
+        protected virtual bool? GetValueAsBool(MethodBase propertyAccessor)
         {
-            return GetValueAsBool(GetKey(propertyMethod));
+            return GetValueAsBool(GetKey(propertyAccessor));
         }
 
-        protected virtual DotColor GetValueAsColor(MethodBase propertyMethod)
+        protected virtual DotColor GetValueAsColor(MethodBase propertyAccessor)
         {
-            return GetValueAsColor(GetKey(propertyMethod));
+            return GetValueAsColor(GetKey(propertyAccessor));
         }
 
-        protected virtual DotPoint GetValueAsPoint(MethodBase propertyMethod)
+        protected virtual DotPoint GetValueAsPoint(MethodBase propertyAccessor)
         {
-            return GetValueAsPoint(GetKey(propertyMethod));
+            return GetValueAsPoint(GetKey(propertyAccessor));
         }
 
-        protected virtual DotColorDefinition GetValueAsColorDefinition(MethodBase propertyMethod)
+        protected virtual DotColorDefinition GetValueAsColorDefinition(MethodBase propertyAccessor)
         {
-            return GetValueAsColorDefinition(GetKey(propertyMethod));
+            return GetValueAsColorDefinition(GetKey(propertyAccessor));
         }
 
-        protected virtual DotLabel GetValueAsLabel(MethodBase propertyMethod)
+        protected virtual DotLabel GetValueAsLabel(MethodBase propertyAccessor)
         {
-            return GetValueAsLabel(GetKey(propertyMethod));
+            return GetValueAsLabel(GetKey(propertyAccessor));
         }
 
-        protected virtual string GetValueAsString(MethodBase propertyMethod)
+        protected virtual string GetValueAsString(MethodBase propertyAccessor)
         {
-            return GetValueAsString(GetKey(propertyMethod));
+            return GetValueAsString(GetKey(propertyAccessor));
         }
 
-        protected virtual DotEscapeString GetValueAsEscapeString(MethodBase propertyMethod)
+        protected virtual DotEscapeString GetValueAsEscapeString(MethodBase propertyAccessor)
         {
-            return GetValueAsEscapeString(GetKey(propertyMethod));
+            return GetValueAsEscapeString(GetKey(propertyAccessor));
         }
 
-        protected virtual DotArrowheadDefinition GetValueAsArrowheadDefinition(MethodBase propertyMethod)
+        protected virtual DotArrowheadDefinition GetValueAsArrowheadDefinition(MethodBase propertyAccessor)
         {
-            return GetValueAsArrowheadDefinition(GetKey(propertyMethod));
+            return GetValueAsArrowheadDefinition(GetKey(propertyAccessor));
         }
 
-        protected virtual DotEndpointPort GetValueAsEndpointPort(MethodBase propertyMethod)
+        protected virtual DotEndpointPort GetValueAsEndpointPort(MethodBase propertyAccessor)
         {
-            return GetValueAsEndpointPort(GetKey(propertyMethod));
+            return GetValueAsEndpointPort(GetKey(propertyAccessor));
         }
     }
 }
