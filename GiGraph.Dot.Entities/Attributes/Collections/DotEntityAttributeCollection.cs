@@ -10,8 +10,12 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributeCollection<TExposedEntityAttributes> : DotAttributeCollection, IDotEntityAttributeCollection<TExposedEntityAttributes>
+    public abstract partial class DotEntityAttributeCollection<TExposedEntityAttributes> : DotAttributeCollection,
+        IDotEntityAttributeCollection<TExposedEntityAttributes>,
+        IDotEntityFontAttributes
     {
+        public virtual IDotEntityFontAttributes Font => this;
+
         [DotAttributeKey("color")]
         public virtual DotColorDefinition Color
         {
@@ -70,29 +74,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
-        }
-
-        [DotAttributeKey("fontcolor")]
-        public virtual DotColor FontColor
-        {
-            get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
-        }
-
-        [DotAttributeKey("fontname")]
-        public virtual string FontName
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("fontsize")]
-        public virtual double? FontSize
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(FontSize), v.Value, "Font size must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
         }
 
         [DotAttributeKey("label")]
@@ -184,6 +165,29 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
+        }
+
+        [DotAttributeKey("fontcolor")]
+        DotColor IDotEntityFontAttributes.Color
+        {
+            get => GetValueAsColor(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+        }
+
+        [DotAttributeKey("fontname")]
+        string IDotEntityFontAttributes.Name
+        {
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+        }
+
+        [DotAttributeKey("fontsize")]
+        double? IDotEntityFontAttributes.Size
+        {
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(IDotEntityFontAttributes.Size), v.Value, "Font size must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v.Value));
         }
 
         public virtual void SetFilled(Color color)
