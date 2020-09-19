@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual string GetKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
         {
-            var propertyInfo = GetPropertyInfo(property);
+            var propertyInfo = GetImplementationProperty(property);
             return GetKey(propertyInfo);
         }
 
@@ -49,7 +49,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual DotAttribute Set<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property, TProperty value)
         {
-            var propertyInfo = GetPropertyInfo(property);
+            var propertyInfo = GetImplementationProperty(property);
             var key = GetKey(propertyInfo);
 
             propertyInfo.SetValue(this, value);
@@ -85,7 +85,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             var interfaceMap = currentType.GetInterfaceMap(typeof(TExposedEntityAttributes));
 
             return interfaceMap.TargetMethods
-               .Select(method => GetPropertyInfo(method, currentType))
+               .Select(method => GetPropertyByAccessor(method, currentType))
                .Distinct();
         }
 
@@ -96,7 +96,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         protected virtual string GetKey(MethodBase propertyMethod, Type declaringType)
         {
-            var property = GetPropertyInfo(propertyMethod, declaringType);
+            var property = GetPropertyByAccessor(propertyMethod, declaringType);
             return GetKey(property);
         }
 
@@ -106,18 +106,23 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                    throw new KeyNotFoundException("The specified property has no DOT attribute key assigned.");
         }
 
-        protected virtual PropertyInfo GetPropertyInfo<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        protected virtual PropertyInfo GetImplementationProperty<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
         {
             var propertyInfo = (property.Body as MemberExpression)?.Member as PropertyInfo ??
                                throw new ArgumentException("Property expression expected.", nameof(property));
 
-            var currentType = GetType();
-
             // make sure the property expression refers to current instance type, to any of its base classes, or to an interface it implements
-            if (!propertyInfo.DeclaringType.IsAssignableFrom(currentType))
+            if (!propertyInfo.DeclaringType.IsAssignableFrom(GetType()))
             {
                 throw new ArgumentException("The property expression must refer to a member of the current instance.", nameof(property));
             }
+
+            return GetImplementationProperty(propertyInfo);
+        }
+
+        protected virtual PropertyInfo GetImplementationProperty(PropertyInfo propertyInfo)
+        {
+            var currentType = GetType();
 
             if (propertyInfo.DeclaringType.IsInterface)
             {
@@ -129,22 +134,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(propertyMethod));
                 var targetMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
 
-                return GetPropertyInfo(targetMethod, currentType);
+                return GetPropertyByAccessor(targetMethod, currentType);
             }
 
             return propertyInfo;
         }
 
-        protected virtual PropertyInfo GetPropertyInfo(MethodBase propertyMethod, Type declaringType)
+        protected virtual PropertyInfo GetPropertyByAccessor(MethodBase propertyAccessor, Type declaringType)
         {
             var property = declaringType
               ?.GetProperties(PropertyBindingFlags)
-              ?.FirstOrDefault(propertyInfo => propertyMethod.Equals(propertyInfo.GetSetMethod(nonPublic: true)) ||
-                                               propertyMethod.Equals(propertyInfo.GetGetMethod(nonPublic: true)));
+              ?.FirstOrDefault(propertyInfo => propertyAccessor.Equals(propertyInfo.GetSetMethod(nonPublic: true)) ||
+                                               propertyAccessor.Equals(propertyInfo.GetGetMethod(nonPublic: true)));
 
             if (property is null)
             {
-                throw new ArgumentException("The specified method must be a property setter or getter.", nameof(propertyMethod));
+                throw new ArgumentException("The specified method must be a property setter or getter.", nameof(propertyAccessor));
             }
 
             return property;
