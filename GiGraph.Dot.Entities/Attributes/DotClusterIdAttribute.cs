@@ -5,9 +5,9 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     Represents a logical head or tail of an edge. When the <see cref="IDotGraphAttributes.EdgesBetweenClusters" /> property of
-    ///     the graph is true, if the current attribute is defined and is the identifier of a cluster containing the real head/tail, the
-    ///     edge is clipped to the boundary of the cluster.
+    ///     Represents a logical head or tail of an edge. When the <see cref="IDotGraphClusterAttributes.AllowEdgeClipping" /> attribute
+    ///     for clusters (on the graph level) is true, if the current attribute is defined and is the identifier of a cluster containing
+    ///     the real head/tail, the edge is clipped to the boundary of the cluster.
     /// </summary>
     public class DotClusterIdAttribute : DotAttribute<string>
     {

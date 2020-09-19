@@ -23,9 +23,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotEndpointPort Port { get; set; }
 
         /// <summary>
-        ///     Logical tail of the edge. When the <see cref="IDotGraphAttributes.EdgesBetweenClusters" /> property of the graph is true, if
-        ///     the current property is defined, and is the identifier of a cluster containing the real tail node, the edge is clipped to the
-        ///     boundary of the cluster.
+        ///     Logical tail of the edge. When the <see cref="IDotGraphClusterAttributes.AllowEdgeClipping" /> attribute for clusters (on the
+        ///     graph level) is true, if the current property is defined, and is the identifier of a cluster containing the real tail node,
+        ///     the edge is clipped to the boundary of the cluster.
         /// </summary>
         string ClusterId { get; set; }
 

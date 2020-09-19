@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
     /// <summary>
     ///     The mode used for handling clusters.
     /// </summary>
-    public enum DotClusterMode
+    public enum DotClusterVisualizationMode
     {
         /// <summary>
         ///     At present, the modes <see cref="Normal" /> and <see cref="None" /> appear to be identical, both turning off the special

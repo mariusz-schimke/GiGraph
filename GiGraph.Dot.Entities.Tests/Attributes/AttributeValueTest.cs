@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                 new object[] { typeof(DotArrowDirections) },
                 new object[] { typeof(DotArrowheadParts) },
                 new object[] { typeof(DotArrowheadShape) },
-                new object[] { typeof(DotClusterMode) },
+                new object[] { typeof(DotClusterVisualizationMode) },
                 new object[] { typeof(DotCompassPoint) },
                 new object[] { typeof(DotEdgeOrderingMode) },
                 new object[] { typeof(DotEdgeShape) },

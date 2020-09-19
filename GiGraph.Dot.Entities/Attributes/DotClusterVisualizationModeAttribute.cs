@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     ///     Specifies the mode used for handling clusters.
     /// </summary>
-    public class DotClusterModeAttribute : DotAttribute<DotClusterMode>
+    public class DotClusterVisualizationModeAttribute : DotAttribute<DotClusterVisualizationMode>
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotClusterModeAttribute(string key, DotClusterMode value)
+        public DotClusterVisualizationModeAttribute(string key, DotClusterVisualizationMode value)
             : base(key, value)
         {
         }

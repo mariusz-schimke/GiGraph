@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     </para>
         ///     <para>
         ///         If <see cref="DotGradientColor" /> is used, with no weighted colors in its parameters (<see cref="DotColor" /> items
-        ///         only), and the <see cref="Style" /> is <see cref="DotStyles.Filled" />, a linear gradient fill is done.
+        ///         only), and the <see cref="Style" /> contains <see cref="DotStyles.Filled" />, a linear gradient fill is done.
         ///     </para>
         ///     <para>
         ///         If <see cref="DotGradientColor" /> is used with weighted colors (see <see cref="DotWeightedColor" />), a degenerate
@@ -67,7 +67,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     </para>
         ///     <para>
         ///         If the <see cref="Style" /> attribute contains the value <see cref="DotStyles.Radial" />, then a radial gradient fill is
-        ///         done. See also the <see cref="GradientAngle" /> attribute for setting the gradient angle.
+        ///         done. See also the <see cref="GradientAngle" /> attribute for setting a gradient angle.
         ///     </para>
         ///     <para>
         ///         These fills work with any shape. For certain shapes, the <see cref="Style" /> attribute can be set to do fills using more
@@ -87,7 +87,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
         ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. If the second color is
         ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
-        ///         attribute for setting the gradient angle.
+        ///         attribute for setting a gradient angle.
         ///     </para>
         /// </summary>
         DotColorDefinition BackgroundColor { get; set; }
@@ -103,12 +103,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
         ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. If the second color is
         ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
-        ///         attribute for setting the gradient angle.
+        ///         attribute for setting a gradient angle.
         ///     </para>
         ///     <para>
         ///         Note that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a
-        ///         <see cref="IDotGraphAttributes.FillColor" />, this will override a <see cref="Color" /> or <see cref="BackgroundColor" />
-        ///         attribute set for the cluster.
+        ///         <see cref="IDotGraphClusterAttributes.FillColor" /> for clusters, this will override a <see cref="Color" /> or
+        ///         <see cref="BackgroundColor" /> attribute set for the cluster.
         ///     </para>
         /// </summary>
         DotColorDefinition FillColor { get; set; }
@@ -140,7 +140,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     Color used to draw the bounding box around the cluster (default: <see cref="System.Drawing.Color.Black" />). If
         ///     <see cref="BoundingBoxColor" /> is not defined, <see cref="Color" /> is used. If this is not defined, the default is used.
         ///     Note that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a
-        ///     <see cref="IDotGraphAttributes.BoundingBoxColor" />, this will override a <see cref="Color" /> or
+        ///     <see cref="IDotGraphClusterAttributes.BoundingBoxColor" /> for clusters, this will override a <see cref="Color" /> or
         ///     <see cref="BackgroundColor" /> attribute set for the cluster.
         /// </summary>
         DotColor BoundingBoxColor { get; set; }
