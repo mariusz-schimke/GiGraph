@@ -158,10 +158,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///         which styles are applicable to this element type.
         ///     </para>
         ///     <para>
-        ///         Multiple styles can be used at once, for example:
-        ///         <c>
-        ///             <see cref="Style" /> = <see cref="DotStyles.Solid" /> | <see cref="DotStyles.Bold" />;
-        ///         </c>
+        ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Solid" /> |
+        ///         <see cref="DotStyles.Bold" />;
         ///     </para>
         /// </summary>
         DotStyles? Style { get; set; }
@@ -223,8 +221,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     </para>
         ///     <para>
         ///         Indicates which ends of the edge should be decorated with an arrow head. The actual style of the arrowhead can be
-        ///         specified using the <see cref="IDotEdgeHeadAttributes.Arrow" /> attribute on the head of the edge, and the
-        ///         corresponding <see cref="IDotEdgeTailAttributes.Arrow" /> attribute on the tail of the edge.
+        ///         specified using the <see cref="IDotEdgeHeadAttributes.Arrow" /> attribute on the head of the edge, and the corresponding
+        ///         <see cref="IDotEdgeTailAttributes.Arrow" /> attribute on the tail of the edge.
         ///     </para>
         ///     <para>
         ///         A glyph is drawn at the head end of the edge if and only if the arrow direction is

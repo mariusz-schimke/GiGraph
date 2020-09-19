@@ -151,10 +151,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///         learn which styles are applicable to this element type.
         ///     </para>
         ///     <para>
-        ///         Multiple styles can be used at once, for example:
-        ///         <c>
-        ///             <see cref="Style" /> = <see cref="DotStyles.Rounded" /> | <see cref="DotStyles.Bold" />;
-        ///         </c>
+        ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Rounded" /> |
+        ///         <see cref="DotStyles.Bold" />;
         ///     </para>
         /// </summary>
         DotStyles? Style { get; set; }
