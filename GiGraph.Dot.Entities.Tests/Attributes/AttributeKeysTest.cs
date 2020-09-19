@@ -53,8 +53,8 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                 // find the property the implementing method is associated with
                 var implementationProperty = entityAttributesImplementation
                   ?.GetProperties(Flags)
-                  ?.Single(propertyInfo => implementationMethod.Equals(propertyInfo.GetGetMethod(NonPublic)) ||
-                                           implementationMethod.Equals(propertyInfo.GetSetMethod(NonPublic)));
+                  ?.Single(propertyInfo => implementationMethod.Equals(propertyInfo.GetMethod) ||
+                                           implementationMethod.Equals(propertyInfo.SetMethod));
 
                 // get the attribute key attribute
                 var attribute = implementationProperty.GetCustomAttribute<DotAttributeKeyAttribute>();

@@ -79,14 +79,27 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 );
         }
 
-        protected virtual IEnumerable<PropertyInfo> GetExposedProperties()
+        protected virtual PropertyInfo[] GetExposedProperties()
         {
-            var currentType = GetType();
-            var interfaceMap = currentType.GetInterfaceMap(typeof(TExposedEntityAttributes));
+            return GetExposedProperties(typeof(TExposedEntityAttributes), GetType());
+        }
+
+        protected virtual PropertyInfo[] GetExposedProperties(Type interfaceType, Type implementationType)
+        {
+            var interfaceMap = implementationType.GetInterfaceMap(interfaceType);
 
             return interfaceMap.TargetMethods
-               .Select(method => GetPropertyByAccessor(method, currentType))
-               .Distinct();
+               .SelectMany(method =>
+                {
+                    var property = GetPropertyByAccessor(method, implementationType);
+
+                    // attribute grouping properties are exposed as interfaces
+                    return property.PropertyType.IsInterface
+                        ? GetExposedProperties(property.PropertyType, implementationType)
+                        : new[] { property };
+                })
+               .Distinct()
+               .ToArray();
         }
 
         protected virtual string GetKey(MethodBase propertyMethod)
@@ -128,10 +141,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             {
                 // get the get method (property expression is impossible for write-only properties)
                 // include non-public methods (interface may be implemented explicitly)
-                var propertyMethod = propertyInfo.GetGetMethod(nonPublic: true);
+                var propertyGetter = propertyInfo.GetMethod;
 
                 var interfaceMap = implementationType.GetInterfaceMap(propertyInfo.DeclaringType);
-                var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(propertyMethod));
+                var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(propertyGetter));
                 var targetMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
 
                 return GetPropertyByAccessor(targetMethod, implementationType);
@@ -144,8 +157,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             var property = declaringType
               ?.GetProperties(PropertyBindingFlags)
-              ?.FirstOrDefault(propertyInfo => propertyAccessor.Equals(propertyInfo.GetSetMethod(nonPublic: true)) ||
-                                               propertyAccessor.Equals(propertyInfo.GetGetMethod(nonPublic: true)));
+              ?.FirstOrDefault(propertyInfo => propertyAccessor.Equals(propertyInfo.SetMethod) ||
+                                               propertyAccessor.Equals(propertyInfo.GetMethod));
 
             if (property is null)
             {

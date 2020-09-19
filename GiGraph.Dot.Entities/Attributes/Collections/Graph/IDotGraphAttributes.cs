@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     The graph-level attributes applied to clusters.
         /// </summary>
-        public IDotGraphClusterAttributes Clusters { get; }
+        IDotGraphClusterAttributes Clusters { get; }
 
         /// <summary>
         ///     <para>

@@ -11,12 +11,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     The attributes of the head of the edge.
         /// </summary>
-        public IDotEdgeHeadAttributes Head { get; }
+        IDotEdgeHeadAttributes Head { get; }
 
         /// <summary>
         ///     The attributes of the tail of the edge.
         /// </summary>
-        public IDotEdgeTailAttributes Tail { get; }
+        IDotEdgeTailAttributes Tail { get; }
 
         /// <summary>
         ///     Font properties.

@@ -7,7 +7,6 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
     public abstract class AttributesTestBase
     {
         protected const BindingFlags Flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-        protected const bool NonPublic = true;
 
         protected (MethodInfo Method, PropertyInfo Property)[] GetInterfacePropertyMethodPairs(Type @interface)
         {
@@ -15,10 +14,10 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             var interfaceProps = @interface.GetProperties(Flags);
 
             return interfaceProps
-               .Select(prop => (Method: prop.GetGetMethod(NonPublic), Property: prop))
+               .Select(prop => (Method: prop.GetMethod, Property: prop))
                .Concat
                 (
-                    interfaceProps.Select(prop => (Method: prop.GetSetMethod(NonPublic), Property: prop))
+                    interfaceProps.Select(prop => (Method: prop.SetMethod, Property: prop))
                 )
                .Where(p => p.Method is {})
                .ToArray();
