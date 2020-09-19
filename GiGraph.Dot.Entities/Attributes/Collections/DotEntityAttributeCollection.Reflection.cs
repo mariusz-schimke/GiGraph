@@ -111,30 +111,30 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             var propertyInfo = (property.Body as MemberExpression)?.Member as PropertyInfo ??
                                throw new ArgumentException("Property expression expected.", nameof(property));
 
+            var currentType = GetType();
+
             // make sure the property expression refers to current instance type, to any of its base classes, or to an interface it implements
-            if (!propertyInfo.DeclaringType.IsAssignableFrom(GetType()))
+            if (!propertyInfo.DeclaringType.IsAssignableFrom(currentType))
             {
                 throw new ArgumentException("The property expression must refer to a member of the current instance.", nameof(property));
             }
 
-            return GetImplementationProperty(propertyInfo);
+            return GetImplementationProperty(propertyInfo, currentType);
         }
 
-        protected virtual PropertyInfo GetImplementationProperty(PropertyInfo propertyInfo)
+        protected virtual PropertyInfo GetImplementationProperty(PropertyInfo propertyInfo, Type implementationType)
         {
-            var currentType = GetType();
-
             if (propertyInfo.DeclaringType.IsInterface)
             {
                 // get the get method (property expression is impossible for write-only properties)
                 // include non-public methods (interface may be implemented explicitly)
                 var propertyMethod = propertyInfo.GetGetMethod(nonPublic: true);
 
-                var interfaceMap = currentType.GetInterfaceMap(propertyInfo.DeclaringType);
+                var interfaceMap = implementationType.GetInterfaceMap(propertyInfo.DeclaringType);
                 var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(propertyMethod));
                 var targetMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
 
-                return GetPropertyByAccessor(targetMethod, currentType);
+                return GetPropertyByAccessor(targetMethod, implementationType);
             }
 
             return propertyInfo;
