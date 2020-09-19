@@ -37,10 +37,17 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             var interfacePropertyMethodPairs = GetInterfacePropertyMethodPairs(entityAttributesInterface);
             var interfaceMap = entityAttributesImplementation.GetInterfaceMap(entityAttributesInterface);
 
-            foreach (var interfacePropMethod in interfacePropertyMethodPairs)
+            foreach (var interfacePropertyMethodPair in interfacePropertyMethodPairs)
             {
+                if (interfacePropertyMethodPair.Property.PropertyType.IsInterface)
+                {
+                    // this is a group of attributes exposed as a separate interface on the same collection instance
+                    all_entity_properties_have_a_non_empty_and_unique_attribute_key_assigned(interfacePropertyMethodPair.Property.PropertyType, entityAttributesImplementation);
+                    continue;
+                }
+
                 // get an equivalent method from the implementation
-                var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(interfacePropMethod.Method));
+                var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(interfacePropertyMethodPair.Method));
                 var implementationMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
 
                 // find the property the implementing method is associated with
@@ -58,11 +65,11 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                 if (repeatedKeys.TryGetValue(attribute.Key, out var prop))
                 {
                     // if already added, assert it is the same property
-                    Assert.Equal(interfacePropMethod.Property, prop);
+                    Assert.Equal(interfacePropertyMethodPair.Property, prop);
                 }
                 else
                 {
-                    repeatedKeys.Add(attribute.Key, interfacePropMethod.Property);
+                    repeatedKeys.Add(attribute.Key, interfacePropertyMethodPair.Property);
                 }
             }
         }
