@@ -7,6 +7,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
     public class DotNodeAttributeCollection : DotEntityAttributeCollection<IDotNodeAttributes>, IDotNodeAttributeCollection
     {
+        static DotNodeAttributeCollection()
+        {
+            CacheAttributeKeys(typeof(DotNodeAttributeCollection));
+        }
+        
         [DotAttributeKey("shape")]
         public virtual DotNodeShape? Shape
         {

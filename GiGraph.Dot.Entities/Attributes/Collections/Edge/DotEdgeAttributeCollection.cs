@@ -12,6 +12,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         IDotEdgeHeadAttributes,
         IDotEdgeTailAttributes
     {
+        static DotEdgeAttributeCollection()
+        {
+            CacheAttributeKeys(typeof(DotEdgeAttributeCollection));
+        }
+        
         [DotAttributeKey("weight")]
         public virtual double? Weight
         {

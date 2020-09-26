@@ -9,11 +9,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public abstract partial class DotEntityAttributeCollection<TExposedEntityAttributes>
     {
-        protected const BindingFlags PropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+        protected static Dictionary<MethodBase, string> _attributeKeyCache = new Dictionary<MethodBase, string>();
+        protected static object _attributeKeyCacheReplacementLock = new object();
+
+        static DotEntityAttributeCollection()
+        {
+            CacheAttributeKeys(typeof(DotEntityAttributeCollection<>));
+        }
 
         public virtual string GetKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
         {
-            var propertyInfo = GetImplementationProperty(property);
+            var propertyInfo = GetProperty(property);
             return GetKey(propertyInfo);
         }
 
@@ -49,11 +55,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual DotAttribute Set<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property, TProperty value)
         {
-            var propertyInfo = GetImplementationProperty(property);
-            var key = GetKey(propertyInfo);
-
+            var propertyInfo = GetProperty(property);
             propertyInfo.SetValue(this, value);
 
+            var key = GetKey(propertyInfo);
             return TryGetValue(key, out var attribute) ? attribute : null;
         }
 
@@ -86,87 +91,107 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         protected virtual PropertyInfo[] GetExposedProperties(Type interfaceType, Type implementationType)
         {
-            var interfaceMap = implementationType.GetInterfaceMap(interfaceType);
-
-            return interfaceMap.TargetMethods
-               .SelectMany(implementationMethod =>
-                {
-                    var property = GetPropertyByAccessor(implementationMethod, implementationType);
-
-                    // attribute grouping properties are exposed as interfaces
-                    return property.PropertyType.IsInterface
-                        ? GetExposedProperties(property.PropertyType, implementationType)
-                        : new[] { property };
-                })
-               .Distinct()
-               .ToArray();
+            // var interfaceMap = implementationType.GetInterfaceMap(interfaceType);
+            //
+            // return interfaceMap.TargetMethods
+            //    .SelectMany(implementationMethod =>
+            //     {
+            //         var property = GetPropertyByAccessor(implementationMethod, implementationType);
+            //
+            //         // attribute grouping properties are exposed as interfaces
+            //         return property.PropertyType.IsInterface
+            //             ? GetExposedProperties(property.PropertyType, implementationType)
+            //             : new[] { property };
+            //     })
+            //    .Distinct()
+            //    .ToArray();
+            return null;
         }
 
-        protected virtual string GetKey(MethodBase propertyAccessor)
+        protected virtual string GetKey(MethodBase accessor)
         {
-            return GetKey(propertyAccessor, propertyAccessor.DeclaringType);
-        }
-
-        protected virtual string GetKey(MethodBase propertyAccessor, Type declaringType)
-        {
-            var property = GetPropertyByAccessor(propertyAccessor, declaringType);
-            return GetKey(property);
+            return _attributeKeyCache.TryGetValue(accessor, out var key)
+                ? key
+                : throw new ArgumentException(
+                    $"The specified {accessor.Name} method must be a property setter or getter implemented by the {GetType().FullName} type.",
+                    nameof(accessor)
+                );
         }
 
         protected virtual string GetKey(PropertyInfo property)
         {
-            return property.GetCustomAttribute<DotAttributeKeyAttribute>()?.Key ??
-                   throw new KeyNotFoundException("The specified property has no DOT attribute key assigned.");
+            if (!property.DeclaringType.IsInterface)
+            {
+                return property.GetCustomAttribute<DotAttributeKeyAttribute>()?.Key ??
+                       throw new KeyNotFoundException("The specified property has no DOT attribute key assigned.");
+            }
+
+            // get the get method (property expression is impossible for write-only properties)
+            var propertyGetter = property.GetMethod;
+
+            var interfaceMap = GetType().GetInterfaceMap(property.DeclaringType);
+            var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(propertyGetter));
+            var implementationMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
+
+            return GetKey(implementationMethod);
         }
 
-        protected virtual PropertyInfo GetImplementationProperty<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        protected virtual PropertyInfo GetProperty<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
         {
             var propertyInfo = (property.Body as MemberExpression)?.Member as PropertyInfo ??
                                throw new ArgumentException("Property expression expected.", nameof(property));
 
-            var currentType = GetType();
-
             // make sure the property expression refers to current instance type, to any of its base classes, or to an interface it implements
-            if (!propertyInfo.DeclaringType.IsAssignableFrom(currentType))
+            if (!propertyInfo.DeclaringType.IsAssignableFrom(GetType()))
             {
                 throw new ArgumentException("The property expression must refer to a member of the current instance.", nameof(property));
             }
 
-            return GetImplementationProperty(propertyInfo, currentType);
+            return propertyInfo;
         }
 
-        protected virtual PropertyInfo GetImplementationProperty(PropertyInfo property, Type implementationType)
+        protected static void CacheAttributeKeys(Type attributeCollectionType)
         {
-            if (property.DeclaringType.IsInterface)
+            const BindingFlags propertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+
+            var attributeKeyCache = new Dictionary<MethodBase, DotAttributeKeyAttribute>();
+            var properties = attributeCollectionType.GetProperties(propertyBindingFlags);
+
+            foreach (var property in properties)
             {
-                // get the get method (property expression is impossible for write-only properties)
-                // include non-public methods (interface may be implemented explicitly)
-                var propertyGetter = property.GetMethod;
+                var attribute = property.GetCustomAttribute<DotAttributeKeyAttribute>();
+                if (attribute is null)
+                {
+                    continue;
+                }
 
-                var interfaceMap = implementationType.GetInterfaceMap(property.DeclaringType);
-                var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(propertyGetter));
-                var implementationMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
+                if (property.GetMethod is {} getter)
+                {
+                    attributeKeyCache[getter] = attribute;
+                }
 
-                return GetPropertyByAccessor(implementationMethod, implementationType);
+                if (property.SetMethod is {} setter)
+                {
+                    attributeKeyCache[setter] = attribute;
+                }
             }
 
-            return property;
+            ReplaceAttributeKeyCache(attributeKeyCache);
         }
 
-        protected virtual PropertyInfo GetPropertyByAccessor(MethodBase propertyAccessor, Type declaringType)
+        protected static void ReplaceAttributeKeyCache(Dictionary<MethodBase, DotAttributeKeyAttribute> attributeKeyCache)
         {
-            var property = declaringType
-              ?.GetProperties(PropertyBindingFlags)
-              ?.FirstOrDefault(propertyInfo => propertyAccessor.Equals(propertyInfo.SetMethod) ||
-                                               propertyAccessor.Equals(propertyInfo.GetMethod));
-
-            if (property is null)
+            lock (_attributeKeyCacheReplacementLock)
             {
-                throw new ArgumentException($"The specified method must be a property setter or getter implemented by the {declaringType.FullName} type.",
-                    nameof(propertyAccessor));
-            }
+                var attributeKeyCacheCopy = new Dictionary<MethodBase, string>(_attributeKeyCache);
 
-            return property;
+                foreach (var cacheItem in attributeKeyCache)
+                {
+                    attributeKeyCacheCopy[cacheItem.Key] = cacheItem.Value.Key;
+                }
+
+                _attributeKeyCache = attributeKeyCacheCopy;
+            }
         }
     }
 }

@@ -13,6 +13,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         IDotGraphAttributeCollection,
         IDotGraphClusterAttributes
     {
+        static DotGraphAttributeCollection()
+        {
+            CacheAttributeKeys(typeof(DotGraphAttributeCollection));
+        }
+
         public virtual IDotGraphClusterAttributes Clusters => this;
 
         [DotAttributeKey("orientation")]

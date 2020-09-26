@@ -7,6 +7,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Subgraph
 {
     public class DotSubgraphAttributeCollection : DotEntityAttributeCollection<IDotSubgraphAttributes>, IDotSubgraphAttributeCollection
     {
+        static DotSubgraphAttributeCollection()
+        {
+            CacheAttributeKeys(typeof(DotSubgraphAttributeCollection));
+        }
+
         [DotAttributeKey("rank")]
         public virtual DotRank? Rank
         {

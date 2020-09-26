@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
             foreach (var interface1PropMethodPair in interface1PropMethodPairs)
             {
-                Assert.NotNull(interface1PropMethodPair.Method);
+                Assert.NotNull(interface1PropMethodPair.Accessor);
                 Assert.Contains(interface2PropMethodPairs, x =>
                     interface1PropMethodPair.Property.Name.Equals(x.Property.Name)&&
                     interface1PropMethodPair.Property.PropertyType == x.Property.PropertyType);
