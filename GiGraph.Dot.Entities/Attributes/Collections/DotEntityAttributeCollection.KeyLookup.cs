@@ -62,13 +62,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         protected static DotMemberAttributeKeyLookup CreateAttributeKeyLookupForExposedEntityAttributesOf(Type attributeCollectionType)
         {
             var result = new DotMemberAttributeKeyLookup();
-
-            var exposedAttributesInterfaceType = typeof(TIExposedEntityAttributes);
-
-            if (IsAttributeGroupingInterface(exposedAttributesInterfaceType, attributeCollectionType))
-            {
-                CreateAttributeKeyLookupForExposedEntityAttributesOf(result, attributeCollectionType, exposedAttributesInterfaceType);
-            }
+            CreateAttributeKeyLookupForExposedEntityAttributesOf(result, attributeCollectionType, typeof(TIExposedEntityAttributes));
 
             return result;
         }
@@ -80,15 +74,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             var interfaceProperties = exposedAttributesInterfaceType.GetProperties(PropertyBindingFlags);
 
             var getters = interfaceProperties
-               .Where(property => property.GetMethod is {})
-               .ToDictionary(key => key.GetMethod);
+               .Select(property => (Property: property, Accessor: property.GetMethod));
 
             var setters = interfaceProperties
-               .Where(property => property.SetMethod is {})
-               .ToDictionary(key => key.SetMethod);
+               .Select(property => (Property: property, Accessor: property.SetMethod));
 
             var interfaceAccessors = getters.Concat(setters)
-               .ToDictionary(key => key.Key, value => value.Value);
+               .Where(property => property.Accessor is {})
+               .ToDictionary(key => key.Accessor, value => value.Property);
 
             var interfaceMap = attributeCollectionType.GetInterfaceMap(exposedAttributesInterfaceType);
 
