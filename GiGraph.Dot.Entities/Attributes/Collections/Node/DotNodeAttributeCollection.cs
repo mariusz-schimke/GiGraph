@@ -1,6 +1,6 @@
 using System;
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections.Lookup;
+using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
 

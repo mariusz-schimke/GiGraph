@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections.Lookup;
+using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Types.Attributes;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -37,7 +37,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             var result = new DotMemberAttributeKeyLookup();
 
             var properties = attributeCollectionType.GetProperties(PropertyBindingFlags);
-
             foreach (var property in properties)
             {
                 if (!(property.GetCustomAttribute<DotAttributeKeyAttribute>() is {} attribute))
@@ -72,39 +71,32 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         )
         {
             var interfaceProperties = exposedAttributesInterfaceType.GetProperties(PropertyBindingFlags);
-
-            var getters = interfaceProperties
-               .Select(property => (Property: property, Accessor: property.GetMethod));
-
-            var setters = interfaceProperties
-               .Select(property => (Property: property, Accessor: property.SetMethod));
-
-            var interfaceAccessors = getters.Concat(setters)
-               .Where(property => property.Accessor is {})
-               .ToDictionary(key => key.Accessor, value => value.Property);
-
             var interfaceMap = attributeCollectionType.GetInterfaceMap(exposedAttributesInterfaceType);
 
             for (var index = 0; index < interfaceMap.InterfaceMethods.Length; index++)
             {
-                var interfaceAccessor = interfaceMap.InterfaceMethods[index];
-                var implementationAccessor = interfaceMap.TargetMethods[index];
+                var interfacePropertyAccessor = interfaceMap.InterfaceMethods[index];
+                var implementationPropertyAccessor = interfaceMap.TargetMethods[index];
 
-                var interfaceProperty = interfaceAccessors[interfaceAccessor];
+                var interfaceProperty = interfaceProperties.First(property =>
+                    interfacePropertyAccessor.Equals(property.GetMethod) || interfacePropertyAccessor.Equals(property.SetMethod)
+                );
 
-                if (IsAttributeGroupingInterface(interfaceProperty.PropertyType, attributeCollectionType))
+                if (IsAttributeGroupingProperty(interfaceProperty, attributeCollectionType))
                 {
                     CreateAttributeKeyLookupForExposedEntityAttributesOf(result, attributeCollectionType, interfaceProperty.PropertyType);
                 }
 
                 // it is assumed that the attribute collection accessor is already present in the lookup
-                else if (_propertyAccessorsAttributeKeyLookup.TryGetKey(implementationAccessor, out var key))
+                else if (_propertyAccessorsAttributeKeyLookup.TryGetKey(implementationPropertyAccessor, out var key))
                 {
                     result.Update(interfaceProperty, key);
                 }
                 else
                 {
-                    throw new KeyNotFoundException($"The attribute key lookup collection does not contain a key for the '{implementationAccessor}' member of the {implementationAccessor.DeclaringType} type.");
+                    throw new KeyNotFoundException(
+                        $"The attribute key lookup collection does not contain a key for the '{implementationPropertyAccessor}' member of the {implementationPropertyAccessor.DeclaringType} type."
+                    );
                 }
             }
         }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections.Lookup
+namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
 {
     public class DotMemberAttributeKeyLookup
     {

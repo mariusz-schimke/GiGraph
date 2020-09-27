@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections.Lookup;
+using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;

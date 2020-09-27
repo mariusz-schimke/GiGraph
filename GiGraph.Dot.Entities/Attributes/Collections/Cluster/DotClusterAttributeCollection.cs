@@ -1,4 +1,4 @@
-using GiGraph.Dot.Entities.Attributes.Collections.Lookup;
+using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {

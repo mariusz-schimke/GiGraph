@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using GiGraph.Dot.Entities.Types.Attributes;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -64,7 +63,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual Dictionary<string, string> GetPropertyKeyMapping()
         {
             var properties = GetExposedAttributePropertyPaths();
-            
+
             return properties
                .Select(path => new
                 {
@@ -105,7 +104,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
             return propertyInfo;
         }
-        
+
         protected virtual PropertyInfo[][] GetExposedAttributePropertyPaths()
         {
             var result = new List<PropertyInfo[]>();
@@ -122,7 +121,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             {
                 var currentPath = path.Append(property).ToArray();
 
-                if (IsAttributeGroupingInterface(property.PropertyType, attributeCollectionType))
+                if (IsAttributeGroupingProperty(property, attributeCollectionType))
                 {
                     GetExposedAttributePropertyPaths(property.PropertyType, attributeCollectionType, result, currentPath);
                 }
@@ -133,10 +132,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
         }
 
-        protected static bool IsAttributeGroupingInterface(Type exposedAttributesInterfaceType, Type attributeCollectionType)
+        protected static bool IsAttributeGroupingProperty(PropertyInfo property, Type attributeCollectionType)
         {
-            return exposedAttributesInterfaceType.IsInterface &&
-                   exposedAttributesInterfaceType.IsAssignableFrom(attributeCollectionType);
+            return property.PropertyType.IsInterface &&
+                   property.PropertyType.IsAssignableFrom(attributeCollectionType);
         }
     }
 }
