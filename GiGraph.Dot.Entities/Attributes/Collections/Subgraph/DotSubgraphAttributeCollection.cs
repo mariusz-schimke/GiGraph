@@ -1,4 +1,5 @@
 using System.Reflection;
+using GiGraph.Dot.Entities.Attributes.Collections.Lookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
@@ -7,9 +8,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Subgraph
 {
     public class DotSubgraphAttributeCollection : DotEntityAttributeCollection<IDotSubgraphAttributes>, IDotSubgraphAttributeCollection
     {
+        private static readonly DotMemberAttributeKeyLookup ExposedEntityAttributesKeyLookup;
+
         static DotSubgraphAttributeCollection()
         {
-            CacheAttributeKeys(typeof(DotSubgraphAttributeCollection));
+            var type = typeof(DotSubgraphAttributeCollection);
+            UpdatePropertyAccessorsAttributeKeyLookupFor(type);
+            ExposedEntityAttributesKeyLookup = CreateAttributeKeyLookupForExposedEntityAttributesOf(type);
+        }
+
+        public DotSubgraphAttributeCollection()
+            : base(ExposedEntityAttributesKeyLookup)
+        {
         }
 
         [DotAttributeKey("rank")]

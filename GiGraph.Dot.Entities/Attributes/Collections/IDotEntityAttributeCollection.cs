@@ -88,17 +88,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         bool Remove<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
 
         /// <summary>
-        ///     Gets property by attribute key. Useful when you are looking for a property that exposes a specific DOT attribute, or want to
-        ///     check if a DOT attribute is exposed as a property.
+        ///     Gets property path by attribute key. Useful when you are not sure which property exposes a specific DOT attribute, or want to
+        ///     check if a DOT attribute is actually exposed as a property.
         /// </summary>
         /// <param name="key">
         ///     The DOT attribute key to search.
         /// </param>
-        PropertyInfo GetPropertyByKey(string key);
+        string GetPropertyPathByKey(string key);
 
         /// <summary>
-        ///     Gets a dictionary where the key is a DOT attribute, and the value is a property that exposes it.
+        ///     Gets a dictionary where the key is a DOT attribute, and the value is a path to a property that exposes it.
         /// </summary>
-        Dictionary<string, PropertyInfo> GetPropertyKeyMapping();
+        Dictionary<string, string> GetPropertyKeyMapping();
     }
 }

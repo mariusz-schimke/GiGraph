@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using GiGraph.Dot.Entities.Attributes.Collections.Lookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
@@ -12,11 +13,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         IDotEdgeHeadAttributes,
         IDotEdgeTailAttributes
     {
+        private static readonly DotMemberAttributeKeyLookup ExposedEntityAttributesKeyLookup;
+
         static DotEdgeAttributeCollection()
         {
-            CacheAttributeKeys(typeof(DotEdgeAttributeCollection));
+            var type = typeof(DotEdgeAttributeCollection);
+            UpdatePropertyAccessorsAttributeKeyLookupFor(type);
+            ExposedEntityAttributesKeyLookup = CreateAttributeKeyLookupForExposedEntityAttributesOf(type);
         }
-        
+
+        public DotEdgeAttributeCollection()
+            : base(ExposedEntityAttributesKeyLookup)
+        {
+        }
+
         [DotAttributeKey("weight")]
         public virtual double? Weight
         {

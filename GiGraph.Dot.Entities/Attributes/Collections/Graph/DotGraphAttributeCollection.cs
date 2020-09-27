@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using GiGraph.Dot.Entities.Attributes.Collections.Lookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Packing;
@@ -13,9 +14,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         IDotGraphAttributeCollection,
         IDotGraphClusterAttributes
     {
+        private static readonly DotMemberAttributeKeyLookup ExposedEntityAttributesKeyLookup;
+
         static DotGraphAttributeCollection()
         {
-            CacheAttributeKeys(typeof(DotGraphAttributeCollection));
+            var type = typeof(DotGraphAttributeCollection);
+            UpdatePropertyAccessorsAttributeKeyLookupFor(type);
+            ExposedEntityAttributesKeyLookup = CreateAttributeKeyLookupForExposedEntityAttributesOf(type);
+        }
+
+        public DotGraphAttributeCollection()
+            : base(ExposedEntityAttributesKeyLookup)
+        {
         }
 
         public virtual IDotGraphClusterAttributes Clusters => this;

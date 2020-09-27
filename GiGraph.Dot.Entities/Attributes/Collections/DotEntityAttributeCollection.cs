@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Reflection;
+using GiGraph.Dot.Entities.Attributes.Collections.Lookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
@@ -10,10 +11,20 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributeCollection<TExposedEntityAttributes> : DotAttributeCollection,
-        IDotEntityAttributeCollection<TExposedEntityAttributes>,
+    public abstract partial class DotEntityAttributeCollection<TIExposedEntityAttributes> : DotAttributeCollection,
+        IDotEntityAttributeCollection<TIExposedEntityAttributes>,
         IDotEntityFontAttributes
     {
+        static DotEntityAttributeCollection()
+        {
+            UpdatePropertyAccessorsAttributeKeyLookupFor(typeof(DotEntityAttributeCollection<>));
+        }
+
+        protected DotEntityAttributeCollection(DotMemberAttributeKeyLookup exposedEntityAttributesKeyLookup)
+        {
+            _exposedEntityAttributesKeyLookup = exposedEntityAttributesKeyLookup;
+        }
+
         public virtual IDotEntityFontAttributes Font => this;
 
         [DotAttributeKey("color")]
