@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
             }
         }
 
-        public virtual void Update(MemberInfo member, string key)
+        public virtual void Set(MemberInfo member, string key)
         {
             var module = GetOrAddModule(member.Module);
 
@@ -27,7 +27,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
             module[member.MetadataToken] = key;
         }
 
-        public virtual void UpdateFrom(DotMemberAttributeKeyLookup source)
+        public virtual bool TryGetKey(MemberInfo member, out string key)
+        {
+            key = null;
+            return _lookup.TryGetValue(member.Module, out var module) &&
+                   module.TryGetValue(member.MetadataToken, out key);
+        }
+
+        public virtual void MergeFrom(DotMemberAttributeKeyLookup source)
         {
             foreach (var sourceModule in source._lookup)
             {
@@ -46,17 +53,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
             if (!_lookup.TryGetValue(module, out var result))
             {
                 // metadata token uniquely identifies a member within a module
-                result = _lookup[module] = new Dictionary<int, string>();
+                return _lookup[module] = new Dictionary<int, string>();
             }
 
             return result;
-        }
-
-        public virtual bool TryGetKey(MemberInfo member, out string key)
-        {
-            key = null;
-            return _lookup.TryGetValue(member.Module, out var module) &&
-                   module.TryGetValue(member.MetadataToken, out key);
         }
     }
 }

@@ -22,12 +22,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             UpdatePropertyAccessorsAttributeKeyLookupFrom(lookup);
         }
 
-        private static void UpdatePropertyAccessorsAttributeKeyLookupFrom(DotMemberAttributeKeyLookup source)
+        protected static void UpdatePropertyAccessorsAttributeKeyLookupFrom(DotMemberAttributeKeyLookup source)
         {
             lock (_propertyAccessorsAttributeKeyLookupLock)
             {
                 var clone = new DotMemberAttributeKeyLookup(_propertyAccessorsAttributeKeyLookup);
-                clone.UpdateFrom(source);
+                clone.MergeFrom(source);
                 _propertyAccessorsAttributeKeyLookup = clone;
             }
         }
@@ -46,12 +46,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
                 if (property.GetMethod is {} getter)
                 {
-                    result.Update(getter, attribute.Key);
+                    result.Set(getter, attribute.Key);
                 }
 
                 if (property.SetMethod is {} setter)
                 {
-                    result.Update(setter, attribute.Key);
+                    result.Set(setter, attribute.Key);
                 }
             }
 
@@ -67,11 +67,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         private static void CreateAttributeKeyLookupForExposedEntityAttributesOf(
-            DotMemberAttributeKeyLookup result, Type attributeCollectionType, Type exposedAttributesInterfaceType
+            DotMemberAttributeKeyLookup result, Type attributeCollectionType, Type exposedEntityAttributesInterfaceType
         )
         {
-            var interfaceProperties = exposedAttributesInterfaceType.GetProperties(PropertyBindingFlags);
-            var interfaceMap = attributeCollectionType.GetInterfaceMap(exposedAttributesInterfaceType);
+            var interfaceProperties = exposedEntityAttributesInterfaceType.GetProperties(PropertyBindingFlags);
+            var interfaceMap = attributeCollectionType.GetInterfaceMap(exposedEntityAttributesInterfaceType);
 
             for (var index = 0; index < interfaceMap.InterfaceMethods.Length; index++)
             {
@@ -90,7 +90,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 // it is assumed that the attribute collection accessor is already present in the lookup
                 else if (_propertyAccessorsAttributeKeyLookup.TryGetKey(implementationPropertyAccessor, out var key))
                 {
-                    result.Update(interfaceProperty, key);
+                    result.Set(interfaceProperty, key);
                 }
                 else
                 {
