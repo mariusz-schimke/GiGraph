@@ -8,13 +8,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Subgraph
 {
     public class DotSubgraphAttributeCollection : DotEntityAttributeCollection<IDotSubgraphAttributes>, IDotSubgraphAttributeCollection
     {
-        private static readonly DotMemberAttributeKeyLookup ExposedEntityAttributesKeyLookup;
+        protected static readonly DotMemberAttributeKeyLookup ExposedEntityAttributesKeyLookup;
 
         static DotSubgraphAttributeCollection()
         {
             var type = typeof(DotSubgraphAttributeCollection);
             UpdatePropertyAccessorsAttributeKeyLookupFor(type);
-            ExposedEntityAttributesKeyLookup = CreateAttributeKeyLookupForExposedEntityAttributesOf(type);
+            ExposedEntityAttributesKeyLookup = CreateAttributeKeyLookupForExposedEntityAttributesOf(type).ToReadOnly();
+        }
+
+        protected DotSubgraphAttributeCollection(DotMemberAttributeKeyLookup exposedEntityAttributesKeyLookup)
+            : base(exposedEntityAttributesKeyLookup)
+        {
         }
 
         public DotSubgraphAttributeCollection()

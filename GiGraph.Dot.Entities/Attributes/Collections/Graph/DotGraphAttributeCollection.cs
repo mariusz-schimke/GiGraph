@@ -14,13 +14,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         IDotGraphAttributeCollection,
         IDotGraphClusterAttributes
     {
-        private static readonly DotMemberAttributeKeyLookup ExposedEntityAttributesKeyLookup;
+        protected static readonly DotMemberAttributeKeyLookup ExposedEntityAttributesKeyLookup;
 
         static DotGraphAttributeCollection()
         {
             var type = typeof(DotGraphAttributeCollection);
             UpdatePropertyAccessorsAttributeKeyLookupFor(type);
-            ExposedEntityAttributesKeyLookup = CreateAttributeKeyLookupForExposedEntityAttributesOf(type);
+            ExposedEntityAttributesKeyLookup = CreateAttributeKeyLookupForExposedEntityAttributesOf(type).ToReadOnly();
+        }
+
+        protected DotGraphAttributeCollection(DotMemberAttributeKeyLookup exposedEntityAttributesKeyLookup)
+            : base(exposedEntityAttributesKeyLookup)
+        {
         }
 
         public DotGraphAttributeCollection()

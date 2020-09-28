@@ -1,23 +1,34 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Reflection;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
 {
     public class DotMemberAttributeKeyLookup
     {
-        protected readonly Dictionary<Module, Dictionary<int, string>> _lookup = new Dictionary<Module, Dictionary<int, string>>();
+        protected readonly IDictionary<Module, IDictionary<int, string>> _lookup;
+
+        protected DotMemberAttributeKeyLookup(IDictionary<Module, IDictionary<int, string>> lookup)
+        {
+            _lookup = lookup;
+        }
 
         public DotMemberAttributeKeyLookup()
+            : this(new Dictionary<Module, IDictionary<int, string>>())
         {
         }
 
         public DotMemberAttributeKeyLookup(DotMemberAttributeKeyLookup source)
+            : this()
         {
             foreach (var item in source._lookup)
             {
                 _lookup.Add(item.Key, new Dictionary<int, string>(item.Value));
             }
         }
+
+        public virtual int Count => _lookup.Sum(module => module.Value.Count);
 
         public virtual void Set(MemberInfo member, string key)
         {
@@ -48,7 +59,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
             }
         }
 
-        protected virtual Dictionary<int, string> GetOrAddModule(Module module)
+        public virtual DotMemberAttributeKeyLookup ToReadOnly()
+        {
+            var result = new Dictionary<Module, IDictionary<int, string>>();
+            foreach (var item in _lookup)
+            {
+                result.Add(item.Key, new ReadOnlyDictionary<int, string>(item.Value));
+            }
+
+            return new DotMemberAttributeKeyLookup(
+                new ReadOnlyDictionary<Module, IDictionary<int, string>>(result)
+            );
+        }
+
+        protected virtual IDictionary<int, string> GetOrAddModule(Module module)
         {
             if (!_lookup.TryGetValue(module, out var result))
             {
@@ -57,6 +81,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
             }
 
             return result;
+        }
+
+        public static DotMemberAttributeKeyLookup Merge(DotMemberAttributeKeyLookup source, DotMemberAttributeKeyLookup other)
+        {
+            var clone = new DotMemberAttributeKeyLookup(source);
+            clone.MergeFrom(other);
+            return clone;
         }
     }
 }

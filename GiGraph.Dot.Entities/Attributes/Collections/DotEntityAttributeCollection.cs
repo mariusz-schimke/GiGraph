@@ -17,7 +17,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     {
         static DotEntityAttributeCollection()
         {
-            UpdatePropertyAccessorsAttributeKeyLookupFor(typeof(DotEntityAttributeCollection<>));
+            // this constructor is called once for every distinct variant of the generic class parameter
+            UpdatePropertyAccessorsAttributeKeyLookupFor(typeof(DotEntityAttributeCollection<TIExposedEntityAttributes>));
         }
 
         protected DotEntityAttributeCollection(DotMemberAttributeKeyLookup exposedEntityAttributesKeyLookup)
