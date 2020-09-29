@@ -4,22 +4,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
     public class DotClusterAttributeCollection : DotEntityAttributeCollection<IDotClusterAttributes>, IDotClusterAttributeCollection
     {
-        protected static readonly DotMemberAttributeKeyLookup ExposedEntityAttributesKeyLookup;
+        protected static readonly DotMemberAttributeKeyLookup EntityAttributePropertiesInterfaceKeyLookup;
 
         static DotClusterAttributeCollection()
         {
             var type = typeof(DotClusterAttributeCollection);
-            UpdatePropertyAccessorsAttributeKeyLookupFor(type);
-            ExposedEntityAttributesKeyLookup = CreateAttributeKeyLookupForExposedEntityAttributesOf(type).ToReadOnly();
+            UpdateAttributeKeyLookupForDeclaredPropertyAccessorsOf(type);
+            EntityAttributePropertiesInterfaceKeyLookup = CreateAttributeKeyLookupForEntityAttributePropertiesOf(type).ToReadOnly();
         }
 
-        protected DotClusterAttributeCollection(DotMemberAttributeKeyLookup exposedEntityAttributesKeyLookup)
-            : base(exposedEntityAttributesKeyLookup)
+        protected DotClusterAttributeCollection(DotMemberAttributeKeyLookup entityAttributePropertiesInterfaceKeyLookup)
+            : base(entityAttributePropertiesInterfaceKeyLookup)
         {
         }
 
         public DotClusterAttributeCollection()
-            : base(ExposedEntityAttributesKeyLookup)
+            : base(EntityAttributePropertiesInterfaceKeyLookup)
         {
         }
     }

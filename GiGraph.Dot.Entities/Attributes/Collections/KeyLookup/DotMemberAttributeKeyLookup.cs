@@ -5,6 +5,9 @@ using System.Reflection;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
 {
+    /// <summary>
+    ///     Provides access to attribute keys assigned to class members.
+    /// </summary>
     public class DotMemberAttributeKeyLookup
     {
         protected readonly IDictionary<Module, IDictionary<int, string>> _lookup;
@@ -14,11 +17,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
             _lookup = lookup;
         }
 
+        /// <summary>
+        ///     Creates a new lookup instance.
+        /// </summary>
         public DotMemberAttributeKeyLookup()
             : this(new Dictionary<Module, IDictionary<int, string>>())
         {
         }
 
+        /// <summary>
+        ///     Creates a new lookup initialized with content copied from another instance.
+        /// </summary>
         public DotMemberAttributeKeyLookup(DotMemberAttributeKeyLookup source)
             : this()
         {
@@ -28,8 +37,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
             }
         }
 
+        /// <summary>
+        ///     Returns the total number of mapped member keys.
+        /// </summary>
         public virtual int Count => _lookup.Sum(module => module.Value.Count);
 
+        /// <summary>
+        ///     Adds or replaces a key for the specified member.
+        /// </summary>
+        /// <param name="member">
+        ///     The member whose attribute key to set.
+        /// </param>
+        /// <param name="key">
+        ///     The attribute key to assign to the specified member.
+        /// </param>
         public virtual void Set(MemberInfo member, string key)
         {
             var module = GetOrAddModule(member.Module);
@@ -38,6 +59,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
             module[member.MetadataToken] = key;
         }
 
+        /// <summary>
+        ///     Tries to get an attribute key for the specified member.
+        /// </summary>
+        /// <param name="member">
+        ///     The member whose attribute key to get.
+        /// </param>
+        /// <param name="key">
+        ///     The output attribute key if found.
+        /// </param>
         public virtual bool TryGetKey(MemberInfo member, out string key)
         {
             key = null;
@@ -45,6 +75,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
                    module.TryGetValue(member.MetadataToken, out key);
         }
 
+        /// <summary>
+        ///     Adds and updates (overwrites) the content of the current instance with the content of the specified instance.
+        /// </summary>
+        /// <param name="source">
+        ///     The source lookup whose content to copy.
+        /// </param>
         public virtual void MergeFrom(DotMemberAttributeKeyLookup source)
         {
             foreach (var sourceModule in source._lookup)
@@ -59,6 +95,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
             }
         }
 
+        /// <summary>
+        ///     Returns a copy of the current instance as a read only lookup.
+        /// </summary>
         public virtual DotMemberAttributeKeyLookup ToReadOnly()
         {
             var result = new Dictionary<Module, IDictionary<int, string>>();
@@ -83,10 +122,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
             return result;
         }
 
-        public static DotMemberAttributeKeyLookup Merge(DotMemberAttributeKeyLookup source, DotMemberAttributeKeyLookup other)
+        /// <summary>
+        ///     Merges two lookup instances.
+        /// </summary>
+        /// <param name="base">
+        ///     The initial instance to use as a base lookup.
+        /// </param>
+        /// <param name="source">
+        ///     The source lookup whose content to copy to the base instance. Overwrites all matching items of the base instance.
+        /// </param>
+        public static DotMemberAttributeKeyLookup Merge(DotMemberAttributeKeyLookup @base, DotMemberAttributeKeyLookup source)
         {
-            var clone = new DotMemberAttributeKeyLookup(source);
-            clone.MergeFrom(other);
+            var clone = new DotMemberAttributeKeyLookup(@base);
+            clone.MergeFrom(source);
             return clone;
         }
     }

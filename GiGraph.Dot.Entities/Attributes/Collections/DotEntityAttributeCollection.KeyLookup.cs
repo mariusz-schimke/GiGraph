@@ -7,35 +7,37 @@ using GiGraph.Dot.Entities.Types.Attributes;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributeCollection<TIExposedEntityAttributes>
+    public abstract partial class DotEntityAttributeCollection<TIEntityAttributeProperties>
     {
-        private const BindingFlags PropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+        protected const BindingFlags AttributeKeyPropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+        protected const BindingFlags AttributeKeyDeclaredOnlyPropertyBindingFlags = BindingFlags.DeclaredOnly | AttributeKeyPropertyBindingFlags;
 
         private static DotMemberAttributeKeyLookup _propertyAccessorsAttributeKeyLookup = new DotMemberAttributeKeyLookup();
-        private static readonly object PropertyAccessorsAttributeKeyLookupLock = new object();
+        private static readonly object AttributeKeyLookupUpdateLock = new object();
 
-        protected readonly DotMemberAttributeKeyLookup _exposedEntityAttributesKeyLookup;
+        protected readonly DotMemberAttributeKeyLookup _entityAttributePropertiesInterfaceKeyLookup;
 
-        protected static void UpdatePropertyAccessorsAttributeKeyLookupFor(Type attributeCollectionType)
+        protected static void UpdateAttributeKeyLookupForDeclaredPropertyAccessorsOf(Type attributeCollectionType)
         {
-            var lookup = CreateAttributeKeyLookupForPropertyAccessorsOf(attributeCollectionType);
-            UpdatePropertyAccessorsAttributeKeyLookupFrom(lookup);
+            var lookup = CreateAttributeKeyLookupForDeclaredPropertyAccessorsOf(attributeCollectionType);
+            UpdateAttributeKeyLookupForPropertyAccessorsFrom(lookup);
         }
 
-        protected static void UpdatePropertyAccessorsAttributeKeyLookupFrom(DotMemberAttributeKeyLookup source)
+        protected static void UpdateAttributeKeyLookupForPropertyAccessorsFrom(DotMemberAttributeKeyLookup source)
         {
-            lock (PropertyAccessorsAttributeKeyLookupLock)
+            lock (AttributeKeyLookupUpdateLock)
             {
                 var merged = DotMemberAttributeKeyLookup.Merge(_propertyAccessorsAttributeKeyLookup, source);
                 _propertyAccessorsAttributeKeyLookup = merged.ToReadOnly();
             }
         }
 
-        protected static DotMemberAttributeKeyLookup CreateAttributeKeyLookupForPropertyAccessorsOf(Type attributeCollectionType)
+        protected static DotMemberAttributeKeyLookup CreateAttributeKeyLookupForDeclaredPropertyAccessorsOf(Type attributeCollectionType)
         {
             var result = new DotMemberAttributeKeyLookup();
 
-            var properties = attributeCollectionType.GetProperties(PropertyBindingFlags);
+            var properties = attributeCollectionType.GetProperties(AttributeKeyDeclaredOnlyPropertyBindingFlags);
+            
             foreach (var property in properties)
             {
                 if (!(property.GetCustomAttribute<DotAttributeKeyAttribute>() is {} attribute))
@@ -57,29 +59,29 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return result;
         }
 
-        protected static DotMemberAttributeKeyLookup CreateAttributeKeyLookupForExposedEntityAttributesOf(Type attributeCollectionType)
+        protected static DotMemberAttributeKeyLookup CreateAttributeKeyLookupForEntityAttributePropertiesOf(Type attributeCollectionType)
         {
             var result = new DotMemberAttributeKeyLookup();
 
-            CreateAttributeKeyLookupForExposedEntityAttributesOf(
+            CreateAttributeKeyLookupForEntityAttributePropertiesOf(
                 result,
                 _propertyAccessorsAttributeKeyLookup,
                 attributeCollectionType,
-                typeof(TIExposedEntityAttributes)
+                typeof(TIEntityAttributeProperties)
             );
 
             return result;
         }
 
-        protected static void CreateAttributeKeyLookupForExposedEntityAttributesOf(
+        protected static void CreateAttributeKeyLookupForEntityAttributePropertiesOf(
             DotMemberAttributeKeyLookup result,
             DotMemberAttributeKeyLookup propertyAccessorsAttributeKeyLookup,
             Type attributeCollectionType,
-            Type exposedEntityAttributesInterfaceType
+            Type entityAttributePropertiesInterfaceType
         )
         {
-            var interfaceProperties = exposedEntityAttributesInterfaceType.GetProperties(PropertyBindingFlags);
-            var interfaceMap = attributeCollectionType.GetInterfaceMap(exposedEntityAttributesInterfaceType);
+            var interfaceProperties = entityAttributePropertiesInterfaceType.GetProperties(AttributeKeyPropertyBindingFlags);
+            var interfaceMap = attributeCollectionType.GetInterfaceMap(entityAttributePropertiesInterfaceType);
 
             for (var index = 0; index < interfaceMap.InterfaceMethods.Length; index++)
             {
@@ -92,7 +94,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
                 if (IsAttributeGroupingProperty(interfaceProperty, attributeCollectionType))
                 {
-                    CreateAttributeKeyLookupForExposedEntityAttributesOf(
+                    CreateAttributeKeyLookupForEntityAttributePropertiesOf(
                         result,
                         propertyAccessorsAttributeKeyLookup,
                         attributeCollectionType,

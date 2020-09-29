@@ -8,22 +8,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
     public class DotNodeAttributeCollection : DotEntityAttributeCollection<IDotNodeAttributes>, IDotNodeAttributeCollection
     {
-        protected static readonly DotMemberAttributeKeyLookup ExposedEntityAttributesKeyLookup;
+        protected static readonly DotMemberAttributeKeyLookup EntityAttributePropertiesInterfaceKeyLookup;
 
         static DotNodeAttributeCollection()
         {
             var type = typeof(DotNodeAttributeCollection);
-            UpdatePropertyAccessorsAttributeKeyLookupFor(type);
-            ExposedEntityAttributesKeyLookup = CreateAttributeKeyLookupForExposedEntityAttributesOf(type).ToReadOnly();
+            UpdateAttributeKeyLookupForDeclaredPropertyAccessorsOf(type);
+            EntityAttributePropertiesInterfaceKeyLookup = CreateAttributeKeyLookupForEntityAttributePropertiesOf(type).ToReadOnly();
         }
 
-        protected DotNodeAttributeCollection(DotMemberAttributeKeyLookup exposedEntityAttributesKeyLookup)
-            : base(exposedEntityAttributesKeyLookup)
+        protected DotNodeAttributeCollection(DotMemberAttributeKeyLookup entityAttributePropertiesInterfaceKeyLookup)
+            : base(entityAttributePropertiesInterfaceKeyLookup)
         {
         }
 
         public DotNodeAttributeCollection()
-            : base(ExposedEntityAttributesKeyLookup)
+            : base(EntityAttributePropertiesInterfaceKeyLookup)
         {
         }
 

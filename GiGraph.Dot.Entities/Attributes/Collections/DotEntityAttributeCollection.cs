@@ -11,19 +11,19 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributeCollection<TIExposedEntityAttributes> : DotAttributeCollection,
-        IDotEntityAttributeCollection<TIExposedEntityAttributes>,
+    public abstract partial class DotEntityAttributeCollection<TIEntityAttributeProperties> : DotAttributeCollection,
+        IDotEntityAttributeCollection<TIEntityAttributeProperties>,
         IDotEntityFontAttributes
     {
         static DotEntityAttributeCollection()
         {
             // this constructor is called once for every distinct variant of the generic class parameter
-            UpdatePropertyAccessorsAttributeKeyLookupFor(typeof(DotEntityAttributeCollection<TIExposedEntityAttributes>));
+            UpdateAttributeKeyLookupForDeclaredPropertyAccessorsOf(typeof(DotEntityAttributeCollection<TIEntityAttributeProperties>));
         }
 
-        protected DotEntityAttributeCollection(DotMemberAttributeKeyLookup exposedEntityAttributesKeyLookup)
+        protected DotEntityAttributeCollection(DotMemberAttributeKeyLookup entityAttributePropertiesInterfaceKeyLookup)
         {
-            _exposedEntityAttributesKeyLookup = exposedEntityAttributesKeyLookup;
+            _entityAttributePropertiesInterfaceKeyLookup = entityAttributePropertiesInterfaceKeyLookup;
         }
 
         public virtual IDotEntityFontAttributes Font => this;

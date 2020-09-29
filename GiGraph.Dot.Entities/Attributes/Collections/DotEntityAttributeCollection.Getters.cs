@@ -8,7 +8,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributeCollection<TIExposedEntityAttributes>
+    public abstract partial class DotEntityAttributeCollection<TIEntityAttributeProperties>
     {
         protected virtual bool GetValueAs<T>(MethodBase propertyAccessor, out T value)
         {

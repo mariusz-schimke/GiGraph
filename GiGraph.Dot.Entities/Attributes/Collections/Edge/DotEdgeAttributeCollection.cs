@@ -13,22 +13,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         IDotEdgeHeadAttributes,
         IDotEdgeTailAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup ExposedEntityAttributesKeyLookup;
+        protected static readonly DotMemberAttributeKeyLookup EntityAttributePropertiesInterfaceKeyLookup;
 
         static DotEdgeAttributeCollection()
         {
             var type = typeof(DotEdgeAttributeCollection);
-            UpdatePropertyAccessorsAttributeKeyLookupFor(type);
-            ExposedEntityAttributesKeyLookup = CreateAttributeKeyLookupForExposedEntityAttributesOf(type).ToReadOnly();
+            UpdateAttributeKeyLookupForDeclaredPropertyAccessorsOf(type);
+            EntityAttributePropertiesInterfaceKeyLookup = CreateAttributeKeyLookupForEntityAttributePropertiesOf(type).ToReadOnly();
         }
 
-        protected DotEdgeAttributeCollection(DotMemberAttributeKeyLookup exposedEntityAttributesKeyLookup)
-            : base(exposedEntityAttributesKeyLookup)
+        protected DotEdgeAttributeCollection(DotMemberAttributeKeyLookup entityAttributePropertiesInterfaceKeyLookup)
+            : base(entityAttributePropertiesInterfaceKeyLookup)
         {
         }
 
         public DotEdgeAttributeCollection()
-            : base(ExposedEntityAttributesKeyLookup)
+            : base(EntityAttributePropertiesInterfaceKeyLookup)
         {
         }
 
