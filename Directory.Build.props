@@ -3,6 +3,20 @@
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
         <NoWarn>1701;1702;1591</NoWarn>
+        <ApplicationIcon>..\Assets\icon.ico</ApplicationIcon>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <Configurations>Debug;Release;Publish</Configurations>
+        <Platforms>AnyCPU</Platforms>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Publish' ">
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>..\Solution Items\GiGraph.snk</AssemblyOriginatorKeyFile>
+        <Optimize>true</Optimize>
     </PropertyGroup>
 
 </Project>
