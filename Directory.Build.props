@@ -1,0 +1,8 @@
+<Project>
+
+	<PropertyGroup>
+		<LangVersion>latest</LangVersion>
+		<NoWarn>1701;1702;1591</NoWarn>
+	</PropertyGroup>
+
+</Project>
