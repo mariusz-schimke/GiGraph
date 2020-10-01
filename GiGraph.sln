@@ -13,11 +13,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot.Output.Writers"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot", "GiGraph.Dot\GiGraph.Dot.csproj", "{BAC8EB9A-B449-4697-AC51-9A34FEDD0EC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Output", "GiGraph.Dot.Output\GiGraph.Dot.Output.csproj", "{738795A3-54D5-443D-B827-E4E093BFE6F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot.Output", "GiGraph.Dot.Output\GiGraph.Dot.Output.csproj", "{738795A3-54D5-443D-B827-E4E093BFE6F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Entities.Tests", "GiGraph.Dot.Entities.Tests\GiGraph.Dot.Entities.Tests.csproj", "{070671C7-38EB-4274-87F1-95FA02407CBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot.Entities.Tests", "GiGraph.Dot.Entities.Tests\GiGraph.Dot.Entities.Tests.csproj", "{070671C7-38EB-4274-87F1-95FA02407CBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Output.Generators.Tests", "GiGraph.Dot.Output.Generators.Tests\GiGraph.Dot.Output.Generators.Tests.csproj", "{DD020A1A-DCB7-44C1-A8D7-A4BE5C68F773}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot.Output.Generators.Tests", "GiGraph.Dot.Output.Generators.Tests\GiGraph.Dot.Output.Generators.Tests.csproj", "{DD020A1A-DCB7-44C1-A8D7-A4BE5C68F773}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{870A48CC-9D48-45B6-ADC8-E22586C6EF93}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
