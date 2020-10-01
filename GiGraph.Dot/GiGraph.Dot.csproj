@@ -10,11 +10,6 @@
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-        <SignAssembly>true</SignAssembly>
-        <AssemblyOriginatorKeyFile>..\Solution Items\GiGraph.snk</AssemblyOriginatorKeyFile>
-    </PropertyGroup>
-
     <ItemGroup>
         <Compile Include="..\Solution Items\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs"/>
     </ItemGroup>
