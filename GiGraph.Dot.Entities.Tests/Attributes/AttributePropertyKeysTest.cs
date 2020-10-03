@@ -27,14 +27,15 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         [InlineData(typeof(IDotSubgraphAttributes), typeof(DotSubgraphAttributeCollection))]
         public void all_entity_properties_have_a_non_empty_and_unique_attribute_key_assigned(Type entityAttributesInterface, Type entityAttributesImplementation)
         {
-            var declaredPropertyAccessorsLookup = CreateAttributeKeyLookupForPropertyAccessorsOf(entityAttributesImplementation);
+            var interfaceProperties = GetEntityAttributePropertiesOf(entityAttributesImplementation, entityAttributesInterface);
 
-            // will throw an exception if an interface property does not have an attribute key on a corresponding implementation property
-            CreateAttributeKeyLookupForEntityAttributePropertiesOf(
-                entityAttributesImplementation,
-                entityAttributesInterface,
-                declaredPropertyAccessorsLookup
-            );
+            foreach (var interfaceProperty in interfaceProperties)
+            {
+                dynamic collection = Activator.CreateInstance(entityAttributesImplementation);
+                var key = collection.GetKey(interfaceProperty);
+                
+                Assert.NotEmpty(key);
+            }
         }
 
         [Fact]

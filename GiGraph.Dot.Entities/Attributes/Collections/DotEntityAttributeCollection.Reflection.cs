@@ -84,7 +84,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : throw new ArgumentException($"No attribute key is defined for the '{accessor}' property accessor of the {accessor.DeclaringType} type.", nameof(accessor));
         }
 
-        protected virtual string GetKey(PropertyInfo property)
+        public virtual string GetKey(PropertyInfo property)
         {
             return _entityAttributePropertiesInterfaceKeyLookup.TryGetKey(property, out var key)
                 ? key
