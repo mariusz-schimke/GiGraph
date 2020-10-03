@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Collections.Graph;
@@ -12,7 +9,6 @@ using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Subgraphs;
-using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Output.Options;
 using Xunit;
 
@@ -31,47 +27,14 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         [InlineData(typeof(IDotSubgraphAttributes), typeof(DotSubgraphAttributeCollection))]
         public void all_entity_properties_have_a_non_empty_and_unique_attribute_key_assigned(Type entityAttributesInterface, Type entityAttributesImplementation)
         {
-            var repeatedKeys = new Dictionary<string, PropertyInfo>();
+            var declaredPropertyAccessorsLookup = CreateAttributeKeyLookupForPropertyAccessorsOf(entityAttributesImplementation);
 
-            // get all setters and getters of the interface
-            var interfacePropertyAndAccessorPairs = GetInterfacePropertyAndAccessorPairs(entityAttributesInterface);
-            var interfaceMap = entityAttributesImplementation.GetInterfaceMap(entityAttributesInterface);
-
-            foreach (var interfacePropertyAndAccessorPair in interfacePropertyAndAccessorPairs)
-            {
-                if (interfacePropertyAndAccessorPair.Property.PropertyType.IsInterface)
-                {
-                    // this is a group of attributes exposed as a separate interface on the same collection instance
-                    all_entity_properties_have_a_non_empty_and_unique_attribute_key_assigned(interfacePropertyAndAccessorPair.Property.PropertyType, entityAttributesImplementation);
-                    continue;
-                }
-
-                // get an equivalent method from the implementation
-                var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(interfacePropertyAndAccessorPair.Accessor));
-                var implementationMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
-
-                // find the property the implementing method is associated with
-                var implementationProperty = entityAttributesImplementation
-                  ?.GetProperties(Flags)
-                  ?.Single(propertyInfo => implementationMethod.Equals(propertyInfo.GetMethod) ||
-                                           implementationMethod.Equals(propertyInfo.SetMethod));
-
-                // get the attribute key attribute
-                var attribute = implementationProperty.GetCustomAttribute<DotAttributeKeyAttribute>();
-
-                Assert.NotNull(attribute);
-                Assert.NotEmpty(attribute.Key);
-
-                if (repeatedKeys.TryGetValue(attribute.Key, out var prop))
-                {
-                    // if already added, assert it is the same property
-                    Assert.Equal(interfacePropertyAndAccessorPair.Property, prop);
-                }
-                else
-                {
-                    repeatedKeys.Add(attribute.Key, interfacePropertyAndAccessorPair.Property);
-                }
-            }
+            // will throw an exception if an interface property does not have an attribute key on a corresponding implementation property
+            CreateAttributeKeyLookupForEntityAttributePropertiesOf(
+                entityAttributesImplementation,
+                entityAttributesInterface,
+                declaredPropertyAccessorsLookup
+            );
         }
 
         [Fact]
