@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             return result.Distinct().ToArray();
         }
 
-        private static void AddEntityAttributePropertiesOf(List<PropertyInfo> result, Type attributeCollectionType, Type entityAttributePropertiesInterfaceType)
+        protected static void AddEntityAttributePropertiesOf(List<PropertyInfo> result, Type attributeCollectionType, Type entityAttributePropertiesInterfaceType)
         {
             var interfaceProperties = entityAttributePropertiesInterfaceType.GetProperties(AttributePropertyFlags);
             var interfaceMap = attributeCollectionType.GetInterfaceMap(entityAttributePropertiesInterfaceType);
@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             }
         }
 
-        private static bool IsAttributeGroupingProperty(PropertyInfo property, Type attributeCollectionType)
+        protected static bool IsAttributeGroupingProperty(PropertyInfo property, Type attributeCollectionType)
         {
             return property.PropertyType.IsInterface &&
                    property.PropertyType.IsAssignableFrom(attributeCollectionType);

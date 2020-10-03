@@ -50,10 +50,13 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             {
                 var collection = Activator.CreateInstance<TCollection>();
 
-                // exception expected if there is no key available for the specified property
+                // exception expected if there is no key available for the specified interface property in the internal lookup
                 var key = collection.GetKey(interfaceProperty);
-
                 Assert.NotEmpty(key);
+
+                // exception expected if there is no key available for a property getter or setter
+                interfaceProperty.GetValue(collection);
+                interfaceProperty.SetValue(collection, null);
             }
         }
 

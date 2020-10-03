@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             var result = new DotMemberAttributeKeyLookup();
 
             var properties = attributeCollectionType.GetProperties(AttributeKeyDeclaredOnlyPropertyBindingFlags);
-            
+
             foreach (var property in properties)
             {
                 if (!(property.GetCustomAttribute<DotAttributeKeyAttribute>() is {} attribute))

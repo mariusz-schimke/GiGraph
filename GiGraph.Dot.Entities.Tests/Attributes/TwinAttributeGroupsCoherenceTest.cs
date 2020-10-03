@@ -4,7 +4,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes
 {
-    public class AttributeGroupsCoherenceTest : AttributesTestBase
+    public class TwinAttributeGroupsCoherenceTest : AttributesTestBase
     {
         [Theory]
         [InlineData(typeof(IDotEdgeHeadAttributes), typeof(IDotEdgeTailAttributes))]

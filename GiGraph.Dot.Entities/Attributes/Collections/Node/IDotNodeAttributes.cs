@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     Font properties.
         /// </summary>
         IDotEntityFontAttributes Font { get; }
-        
+
         /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the node. It may be plain text (<see cref="string" />), HTML (

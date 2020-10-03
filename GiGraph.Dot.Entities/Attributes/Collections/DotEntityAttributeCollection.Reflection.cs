@@ -62,7 +62,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         public virtual Dictionary<string, string> GetPropertyKeyMapping()
         {
-            var properties = GetExposedAttributePropertyPaths();
+            var properties = GetPathsOfEntityAttributeProperties();
 
             return properties
                .Select(path => new
@@ -81,14 +81,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             return _propertyAccessorsAttributeKeyLookup.TryGetKey(accessor, out var key)
                 ? key
-                : throw new ArgumentException($"No attribute key is defined for the '{accessor}' property accessor of the {accessor.DeclaringType} type.", nameof(accessor));
+                : throw new KeyNotFoundException($"No attribute key is defined for the '{accessor}' property accessor of the {accessor.DeclaringType} type.");
         }
 
         public virtual string GetKey(PropertyInfo property)
         {
             return _entityAttributePropertiesInterfaceKeyLookup.TryGetKey(property, out var key)
                 ? key
-                : throw new ArgumentException($"No attribute key is defined for the '{property}' property of the {property.DeclaringType} type.", nameof(property));
+                : throw new KeyNotFoundException($"No attribute key is defined for the '{property}' property of the {property.DeclaringType} type.");
         }
 
         protected virtual PropertyInfo GetProperty<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
@@ -105,17 +105,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return propertyInfo;
         }
 
-        protected virtual PropertyInfo[][] GetExposedAttributePropertyPaths()
+        protected virtual PropertyInfo[][] GetPathsOfEntityAttributeProperties()
         {
             var result = new List<PropertyInfo[]>();
-            GetExposedAttributePropertyPaths(typeof(TIEntityAttributeProperties), GetType(), result, new PropertyInfo[0]);
-
+            GetPathsOfEntityAttributeProperties(typeof(TIEntityAttributeProperties), GetType(), result, new PropertyInfo[0]);
             return result.ToArray();
         }
 
-        protected virtual void GetExposedAttributePropertyPaths(Type exposedAttributesInterfaceType, Type attributeCollectionType, List<PropertyInfo[]> result, PropertyInfo[] path)
+        protected virtual void GetPathsOfEntityAttributeProperties(Type entityAttributesInterfaceType, Type attributeCollectionType, List<PropertyInfo[]> result, PropertyInfo[] path)
         {
-            var properties = exposedAttributesInterfaceType.GetProperties(AttributeKeyPropertyBindingFlags);
+            var properties = entityAttributesInterfaceType.GetProperties(AttributeKeyPropertyBindingFlags);
 
             foreach (var property in properties)
             {
@@ -123,7 +122,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
                 if (IsAttributeGroupingProperty(property, attributeCollectionType))
                 {
-                    GetExposedAttributePropertyPaths(property.PropertyType, attributeCollectionType, result, currentPath);
+                    GetPathsOfEntityAttributeProperties(property.PropertyType, attributeCollectionType, result, currentPath);
                 }
                 else
                 {

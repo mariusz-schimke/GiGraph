@@ -47,17 +47,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         DotLabel Label { get; set; }
 
         /// <summary>
-        ///     Justification for graph and cluster labels. Note that a subgraph inherits attributes from its parent. Thus, if the root graph
-        ///     sets this attribute to <see cref="DotHorizontalAlignment.Left" />, the subgraph inherits this value. Default:
+        ///     Justification for graph and cluster labels. Note that a cluster inherits attributes from its parent. Thus, if the root graph
+        ///     sets this attribute to <see cref="DotHorizontalAlignment.Left" />, the cluster inherits this value. Default:
         ///     <see cref="DotHorizontalAlignment.Center" />.
         /// </summary>
         DotHorizontalAlignment? HorizontalLabelAlignment { get; set; }
 
         /// <summary>
-        ///     Vertical placement of the label (default: <see cref="DotVerticalAlignment.Bottom" />; only
-        ///     <see cref="DotVerticalAlignment.Top" /> and <see cref="DotVerticalAlignment.Bottom" /> are allowed). Note that a subgraph
+        ///     Vertical placement of graph and cluster labels (default: <see cref="DotVerticalAlignment.Bottom" />; only
+        ///     <see cref="DotVerticalAlignment.Top" /> and <see cref="DotVerticalAlignment.Bottom" /> are allowed). Note that a cluster
         ///     inherits attributes from its parent. Thus, if the root graph sets this attribute to
-        ///     <see cref="DotVerticalAlignment.Bottom" />, the subgraph inherits this value.
+        ///     <see cref="DotVerticalAlignment.Bottom" />, the cluster inherits this value.
         /// </summary>
         DotVerticalAlignment? VerticalLabelAlignment { get; set; }
 

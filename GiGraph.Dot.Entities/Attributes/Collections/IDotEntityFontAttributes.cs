@@ -24,16 +24,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     </para>
         ///     <para>
         ///         Note that various font attributes, such as weight and slant, can be built into the font name. Unfortunately, the syntax
-        ///         varies depending on which font system is dominant. Thus, using <see cref="Name" /> = "times bold italic" will produce
-        ///         a bold, slanted Times font using Pango, the usual main font library. Alternatively, <see cref="Name" /> =
-        ///         "times:italic" will produce a slanted Times font from fontconfig, while <see cref="Name" /> = "times-bold" will
-        ///         resolve to a bold Times using Quartz. You will need to ascertain which package is used by your Graphviz system and refer
-        ///         to the relevant documentation.
+        ///         varies depending on which font system is dominant. Thus, using <see cref="Name" /> = "times bold italic" will produce a
+        ///         bold, slanted Times font using Pango, the usual main font library. Alternatively, <see cref="Name" /> = "times:italic"
+        ///         will produce a slanted Times font from fontconfig, while <see cref="Name" /> = "times-bold" will resolve to a bold Times
+        ///         using Quartz. You will need to ascertain which package is used by your Graphviz system and refer to the relevant
+        ///         documentation.
         ///     </para>
         ///     <para>
-        ///         If Graphviz is not built with a high-level font library, <see cref="Name" /> will be considered the name of a Type 1
-        ///         or True Type font file. If you specify <see cref="Name" /> = "schlbk", the tool will look for a file named schlbk.ttf
-        ///         or schlbk.pfa or schlbk.pfb in one of the directories specified by the <see cref="IDotGraphAttributes.FontDirectories" />
+        ///         If Graphviz is not built with a high-level font library, <see cref="Name" /> will be considered the name of a Type 1 or
+        ///         True Type font file. If you specify <see cref="Name" /> = "schlbk", the tool will look for a file named schlbk.ttf or
+        ///         schlbk.pfa or schlbk.pfb in one of the directories specified by the <see cref="IDotGraphAttributes.FontDirectories" />
         ///         graph attribute. The lookup does support various aliases for the common fonts.
         ///     </para>
         /// </summary>
