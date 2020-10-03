@@ -1,4 +1,7 @@
 using System;
+using System.Linq;
+using System.Reflection;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Collections.Graph;
@@ -27,13 +30,29 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         [InlineData(typeof(IDotSubgraphAttributes), typeof(DotSubgraphAttributeCollection))]
         public void all_entity_properties_have_a_non_empty_and_unique_attribute_key_assigned(Type entityAttributesInterface, Type entityAttributesImplementation)
         {
-            var interfaceProperties = GetEntityAttributePropertiesOf(entityAttributesImplementation, entityAttributesInterface);
+            var method = GetType()
+               .GetRuntimeMethods()
+               .Single(m => m.Name == nameof(ensure_all_entity_properties_have_a_non_empty_and_unique_attribute_key_assigned));
+
+            method.MakeGenericMethod(entityAttributesImplementation, entityAttributesInterface)
+               .Invoke(this, null);
+        }
+
+        private void ensure_all_entity_properties_have_a_non_empty_and_unique_attribute_key_assigned<TCollection, TIEntityAttributeProperties>()
+            where TCollection : DotEntityAttributeCollection<TIEntityAttributeProperties>
+        {
+            var interfaceProperties = GetEntityAttributePropertiesOf(
+                attributeCollectionType: typeof(TCollection),
+                entityAttributePropertiesInterfaceType: typeof(TIEntityAttributeProperties)
+            );
 
             foreach (var interfaceProperty in interfaceProperties)
             {
-                dynamic collection = Activator.CreateInstance(entityAttributesImplementation);
+                var collection = Activator.CreateInstance<TCollection>();
+
+                // exception expected if there is no key available for the specified property
                 var key = collection.GetKey(interfaceProperty);
-                
+
                 Assert.NotEmpty(key);
             }
         }
