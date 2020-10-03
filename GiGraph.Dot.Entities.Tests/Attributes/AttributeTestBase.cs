@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -6,22 +7,44 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 {
     public abstract class AttributesTestBase
     {
-        protected const BindingFlags Flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-        protected const bool NonPublic = true;
+        protected const BindingFlags AttributePropertyFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
 
-        protected (MethodInfo Method, PropertyInfo Property)[] GetInterfacePropertyMethodPairs(Type @interface)
+        protected static PropertyInfo[] GetEntityAttributePropertiesOf(Type attributeCollectionType, Type entityAttributePropertiesInterfaceType)
         {
-            // get all setters and getters of the interface
-            var interfaceProps = @interface.GetProperties(Flags);
+            var result = new List<PropertyInfo>();
+            AddEntityAttributePropertiesOf(result, attributeCollectionType, entityAttributePropertiesInterfaceType);
+            return result.Distinct().ToArray();
+        }
 
-            return interfaceProps
-               .Select(prop => (Method: prop.GetGetMethod(NonPublic), Property: prop))
-               .Concat
-                (
-                    interfaceProps.Select(prop => (Method: prop.GetSetMethod(NonPublic), Property: prop))
-                )
-               .Where(p => p.Method is {})
-               .ToArray();
+        protected static void AddEntityAttributePropertiesOf(List<PropertyInfo> result, Type attributeCollectionType, Type entityAttributePropertiesInterfaceType)
+        {
+            var interfaceProperties = entityAttributePropertiesInterfaceType.GetProperties(AttributePropertyFlags);
+            var interfaceMap = attributeCollectionType.GetInterfaceMap(entityAttributePropertiesInterfaceType);
+
+            for (var index = 0; index < interfaceMap.InterfaceMethods.Length; index++)
+            {
+                var interfacePropertyAccessor = interfaceMap.InterfaceMethods[index];
+
+                var interfaceProperty = interfaceProperties.First(property =>
+                    interfacePropertyAccessor.Equals(property.GetMethod) ||
+                    interfacePropertyAccessor.Equals(property.SetMethod)
+                );
+
+                if (IsAttributeGroupingProperty(interfaceProperty, attributeCollectionType))
+                {
+                    AddEntityAttributePropertiesOf(result, attributeCollectionType, interfaceProperty.PropertyType);
+                }
+                else
+                {
+                    result.Add(interfaceProperty);
+                }
+            }
+        }
+
+        protected static bool IsAttributeGroupingProperty(PropertyInfo property, Type attributeCollectionType)
+        {
+            return property.PropertyType.IsInterface &&
+                   property.PropertyType.IsAssignableFrom(attributeCollectionType);
         }
     }
 }

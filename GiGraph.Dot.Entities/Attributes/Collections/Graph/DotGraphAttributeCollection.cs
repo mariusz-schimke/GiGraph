@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Packing;
@@ -13,6 +14,25 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         IDotGraphAttributeCollection,
         IDotGraphClusterAttributes
     {
+        protected static readonly DotMemberAttributeKeyLookup EntityAttributePropertiesInterfaceKeyLookup;
+
+        static DotGraphAttributeCollection()
+        {
+            var type = typeof(DotGraphAttributeCollection);
+            UpdateAttributeKeyLookupForDeclaredPropertyAccessorsOf(type);
+            EntityAttributePropertiesInterfaceKeyLookup = CreateAttributeKeyLookupForEntityAttributePropertiesOf(type).ToReadOnly();
+        }
+
+        protected DotGraphAttributeCollection(DotMemberAttributeKeyLookup entityAttributePropertiesInterfaceKeyLookup)
+            : base(entityAttributePropertiesInterfaceKeyLookup)
+        {
+        }
+
+        public DotGraphAttributeCollection()
+            : base(EntityAttributePropertiesInterfaceKeyLookup)
+        {
+        }
+
         public virtual IDotGraphClusterAttributes Clusters => this;
 
         [DotAttributeKey("orientation")]

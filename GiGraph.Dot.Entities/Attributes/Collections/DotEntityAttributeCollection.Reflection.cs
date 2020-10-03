@@ -3,110 +3,95 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using GiGraph.Dot.Entities.Types.Attributes;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributeCollection<TExposedEntityAttributes>
+    public abstract partial class DotEntityAttributeCollection<TIEntityAttributeProperties>
     {
-        protected const BindingFlags PropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-
-        public virtual string GetKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        public virtual string GetKey<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
-            var propertyInfo = GetImplementationProperty(property);
+            var propertyInfo = GetProperty(property);
             return GetKey(propertyInfo);
         }
 
-        public virtual DotNullAttribute SetNull<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        public virtual DotNullAttribute SetNull<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var key = GetKey(property);
             return SetNull(key);
         }
 
-        public virtual DotAttribute Get<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        public virtual DotAttribute Get<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var key = GetKey(property);
             return TryGetValue(key, out var result) ? result : null;
         }
 
-        public virtual bool Remove<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        public virtual DotAttribute Set<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value)
+        {
+            var propertyInfo = GetProperty(property);
+            propertyInfo.SetValue(this, value);
+
+            var key = GetKey(propertyInfo);
+            return TryGetValue(key, out var attribute) ? attribute : null;
+        }
+
+        public virtual bool Remove<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var key = GetKey(property);
             return Remove(key);
         }
 
-        public virtual bool Contains<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        public virtual bool Contains<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var key = GetKey(property);
             return ContainsKey(key);
         }
 
-        public virtual bool IsNullified<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        public virtual bool IsNullified<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var key = GetKey(property);
             return IsNullified(key);
         }
 
-        public virtual DotAttribute Set<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property, TProperty value)
-        {
-            var propertyInfo = GetImplementationProperty(property);
-            var key = GetKey(propertyInfo);
-
-            propertyInfo.SetValue(this, value);
-
-            return TryGetValue(key, out var attribute) ? attribute : null;
-        }
-
-        public virtual PropertyInfo GetPropertyByKey(string key)
+        public virtual string GetPropertyPathByKey(string key)
         {
             return GetPropertyKeyMapping().TryGetValue(key, out var property)
                 ? property
                 : null;
         }
 
-        public virtual Dictionary<string, PropertyInfo> GetPropertyKeyMapping()
+        public virtual Dictionary<string, string> GetPropertyKeyMapping()
         {
-            return GetExposedProperties()
-               .Select(property => new
+            var properties = GetPathsOfEntityAttributeProperties();
+
+            return properties
+               .Select(path => new
                 {
-                    Attribute = property.GetCustomAttribute<DotAttributeKeyAttribute>(),
-                    Property = property
+                    Key = _entityAttributePropertiesInterfaceKeyLookup.TryGetKey(path.Last(), out var key) ? key : null,
+                    Path = string.Join(".", path.Select(property => property.Name))
                 })
-               .Where(result => result.Attribute is {})
+               .Where(result => result.Key is {})
                .ToDictionary(
-                    key => key.Attribute.Key,
-                    value => value.Property
+                    key => key.Key,
+                    value => value.Path
                 );
         }
 
-        protected virtual IEnumerable<PropertyInfo> GetExposedProperties()
+        protected virtual string GetKey(MethodBase accessor)
         {
-            var currentType = GetType();
-            var interfaceMap = currentType.GetInterfaceMap(typeof(TExposedEntityAttributes));
-
-            return interfaceMap.TargetMethods
-               .Select(method => GetPropertyByAccessor(method, currentType))
-               .Distinct();
+            return _propertyAccessorsAttributeKeyLookup.TryGetKey(accessor, out var key)
+                ? key
+                : throw new KeyNotFoundException($"No attribute key is defined for the '{accessor}' property accessor of the {accessor.DeclaringType} type.");
         }
 
-        protected virtual string GetKey(MethodBase propertyMethod)
+        public virtual string GetKey(PropertyInfo property)
         {
-            return GetKey(propertyMethod, propertyMethod.DeclaringType);
+            return _entityAttributePropertiesInterfaceKeyLookup.TryGetKey(property, out var key)
+                ? key
+                : throw new KeyNotFoundException($"No attribute key is defined for the '{property}' property of the {property.DeclaringType} type.");
         }
 
-        protected virtual string GetKey(MethodBase propertyMethod, Type declaringType)
-        {
-            var property = GetPropertyByAccessor(propertyMethod, declaringType);
-            return GetKey(property);
-        }
-
-        protected virtual string GetKey(PropertyInfo property)
-        {
-            return property.GetCustomAttribute<DotAttributeKeyAttribute>()?.Key ??
-                   throw new KeyNotFoundException("The specified property has no DOT attribute key assigned.");
-        }
-
-        protected virtual PropertyInfo GetImplementationProperty<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property)
+        protected virtual PropertyInfo GetProperty<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var propertyInfo = (property.Body as MemberExpression)?.Member as PropertyInfo ??
                                throw new ArgumentException("Property expression expected.", nameof(property));
@@ -117,42 +102,39 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 throw new ArgumentException("The property expression must refer to a member of the current instance.", nameof(property));
             }
 
-            return GetImplementationProperty(propertyInfo);
-        }
-
-        protected virtual PropertyInfo GetImplementationProperty(PropertyInfo propertyInfo)
-        {
-            var currentType = GetType();
-
-            if (propertyInfo.DeclaringType.IsInterface)
-            {
-                // get the get method (property expression is impossible for write-only properties)
-                // include non-public methods (interface may be implemented explicitly)
-                var propertyMethod = propertyInfo.GetGetMethod(nonPublic: true);
-
-                var interfaceMap = currentType.GetInterfaceMap(propertyInfo.DeclaringType);
-                var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(propertyMethod));
-                var targetMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
-
-                return GetPropertyByAccessor(targetMethod, currentType);
-            }
-
             return propertyInfo;
         }
 
-        protected virtual PropertyInfo GetPropertyByAccessor(MethodBase propertyAccessor, Type declaringType)
+        protected virtual PropertyInfo[][] GetPathsOfEntityAttributeProperties()
         {
-            var property = declaringType
-              ?.GetProperties(PropertyBindingFlags)
-              ?.FirstOrDefault(propertyInfo => propertyAccessor.Equals(propertyInfo.GetSetMethod(nonPublic: true)) ||
-                                               propertyAccessor.Equals(propertyInfo.GetGetMethod(nonPublic: true)));
+            var result = new List<PropertyInfo[]>();
+            GetPathsOfEntityAttributeProperties(typeof(TIEntityAttributeProperties), GetType(), result, new PropertyInfo[0]);
+            return result.ToArray();
+        }
 
-            if (property is null)
+        protected virtual void GetPathsOfEntityAttributeProperties(Type entityAttributesInterfaceType, Type attributeCollectionType, List<PropertyInfo[]> result, PropertyInfo[] path)
+        {
+            var properties = entityAttributesInterfaceType.GetProperties(AttributeKeyPropertyBindingFlags);
+
+            foreach (var property in properties)
             {
-                throw new ArgumentException("The specified method must be a property setter or getter.", nameof(propertyAccessor));
-            }
+                var currentPath = path.Append(property).ToArray();
 
-            return property;
+                if (IsAttributeGroupingProperty(property, attributeCollectionType))
+                {
+                    GetPathsOfEntityAttributeProperties(property.PropertyType, attributeCollectionType, result, currentPath);
+                }
+                else
+                {
+                    result.Add(currentPath);
+                }
+            }
+        }
+
+        protected static bool IsAttributeGroupingProperty(PropertyInfo property, Type attributeCollectionType)
+        {
+            return property.PropertyType.IsInterface &&
+                   property.PropertyType.IsAssignableFrom(attributeCollectionType);
         }
     }
 }

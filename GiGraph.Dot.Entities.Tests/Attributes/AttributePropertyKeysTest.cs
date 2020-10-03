@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Collections.Graph;
@@ -12,7 +12,6 @@ using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Subgraphs;
-using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Output.Options;
 using Xunit;
 
@@ -31,46 +30,33 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         [InlineData(typeof(IDotSubgraphAttributes), typeof(DotSubgraphAttributeCollection))]
         public void all_entity_properties_have_a_non_empty_and_unique_attribute_key_assigned(Type entityAttributesInterface, Type entityAttributesImplementation)
         {
-            var repeatedKeys = new Dictionary<string, PropertyInfo>();
+            var method = GetType()
+               .GetRuntimeMethods()
+               .Single(m => m.Name == nameof(ensure_all_entity_properties_have_a_non_empty_and_unique_attribute_key_assigned));
 
-            // get all setters and getters of the interface
-            var interfacePropertyMethodPairs = GetInterfacePropertyMethodPairs(entityAttributesInterface);
-            var interfaceMap = entityAttributesImplementation.GetInterfaceMap(entityAttributesInterface);
+            method.MakeGenericMethod(entityAttributesImplementation, entityAttributesInterface)
+               .Invoke(this, null);
+        }
 
-            foreach (var interfacePropertyMethodPair in interfacePropertyMethodPairs)
+        private void ensure_all_entity_properties_have_a_non_empty_and_unique_attribute_key_assigned<TCollection, TIEntityAttributeProperties>()
+            where TCollection : DotEntityAttributeCollection<TIEntityAttributeProperties>
+        {
+            var interfaceProperties = GetEntityAttributePropertiesOf(
+                attributeCollectionType: typeof(TCollection),
+                entityAttributePropertiesInterfaceType: typeof(TIEntityAttributeProperties)
+            );
+
+            foreach (var interfaceProperty in interfaceProperties)
             {
-                if (interfacePropertyMethodPair.Property.PropertyType.IsInterface)
-                {
-                    // this is a group of attributes exposed as a separate interface on the same collection instance
-                    all_entity_properties_have_a_non_empty_and_unique_attribute_key_assigned(interfacePropertyMethodPair.Property.PropertyType, entityAttributesImplementation);
-                    continue;
-                }
+                var collection = Activator.CreateInstance<TCollection>();
 
-                // get an equivalent method from the implementation
-                var interfaceMethodIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(interfacePropertyMethodPair.Method));
-                var implementationMethod = interfaceMap.TargetMethods[interfaceMethodIndex];
+                // exception expected if there is no key available for the specified interface property in the internal lookup
+                var key = collection.GetKey(interfaceProperty);
+                Assert.NotEmpty(key);
 
-                // find the property the implementing method is associated with
-                var implementationProperty = entityAttributesImplementation
-                  ?.GetProperties(Flags)
-                  ?.Single(propertyInfo => implementationMethod.Equals(propertyInfo.GetGetMethod(NonPublic)) ||
-                                           implementationMethod.Equals(propertyInfo.GetSetMethod(NonPublic)));
-
-                // get the attribute key attribute
-                var attribute = implementationProperty.GetCustomAttribute<DotAttributeKeyAttribute>();
-
-                Assert.NotNull(attribute);
-                Assert.NotEmpty(attribute.Key);
-
-                if (repeatedKeys.TryGetValue(attribute.Key, out var prop))
-                {
-                    // if already added, assert it is the same property
-                    Assert.Equal(interfacePropertyMethodPair.Property, prop);
-                }
-                else
-                {
-                    repeatedKeys.Add(attribute.Key, interfacePropertyMethodPair.Property);
-                }
+                // exception expected if there is no key available for a property getter or setter
+                interfaceProperty.GetValue(collection);
+                interfaceProperty.SetValue(collection, null);
             }
         }
 

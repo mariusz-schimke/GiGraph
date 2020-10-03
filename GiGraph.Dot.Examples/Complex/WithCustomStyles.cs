@@ -14,17 +14,17 @@ namespace GiGraph.Dot.Examples.Complex
 
             // set left to right layout direction of the graph using graph attributes
             graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
-            graph.Attributes.FontName = "Helvetica";
+            graph.Attributes.Font.Name = "Helvetica";
 
             // set global node attributes (for all nodes of the graph)
             graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
             graph.Nodes.Attributes.SetFilled(new DotGradientColor(Color.Turquoise, Color.RoyalBlue));
-            graph.Nodes.Attributes.FontName = graph.Attributes.FontName;
+            graph.Nodes.Attributes.Font.Name = graph.Attributes.Font.Name;
 
             // set global edge attributes (for all edges of the graph)
             graph.Edges.Attributes.Head.Arrow = graph.Edges.Attributes.Tail.Arrow = DotArrowheadShape.Vee;
-            graph.Edges.Attributes.FontName = graph.Attributes.FontName;
-            graph.Edges.Attributes.FontSize = 10;
+            graph.Edges.Attributes.Font.Name = graph.Attributes.Font.Name;
+            graph.Edges.Attributes.Font.Size = 10;
 
 
             // -- (subgraphs are used here only to control the order the elements are visualized, and may be removed) --

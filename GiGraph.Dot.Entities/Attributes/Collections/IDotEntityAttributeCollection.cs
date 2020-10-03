@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Reflection;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotEntityAttributeCollection<TExposedEntityAttributes>
+    public interface IDotEntityAttributeCollection<TIEntityAttributeProperties>
     {
         /// <summary>
         ///     Sets a null value for the specified attribute key.
@@ -16,7 +15,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        DotNullAttribute SetNull<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
+        DotNullAttribute SetNull<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
 
         /// <summary>
         ///     Assigns a value to the specified property, and returns the actual attribute added to the collection.
@@ -30,7 +29,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        DotAttribute Set<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property, TProperty value);
+        DotAttribute Set<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value);
 
         /// <summary>
         ///     Determines whether the collection contains an attribute with the specified key, whose value is null.
@@ -41,7 +40,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <typeparam name="TProperty">
         ///     The type returned by the property to check.
         /// </typeparam>
-        bool IsNullified<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
+        bool IsNullified<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
 
         /// <summary>
         ///     Gets the DOT attribute the specified property provides access to.
@@ -52,7 +51,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        DotAttribute Get<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
+        DotAttribute Get<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
 
         /// <summary>
         ///     Gets the DOT key of the attribute the specified property provides access to.
@@ -63,7 +62,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        string GetKey<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
+        string GetKey<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
 
         /// <summary>
         ///     Checks whether the collection contains a DOT key of the attribute the specified property provides access to.
@@ -74,7 +73,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        bool Contains<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
+        bool Contains<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
 
         /// <summary>
         ///     Removes the attribute the specified property provides access to.
@@ -85,20 +84,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        bool Remove<TProperty>(Expression<Func<TExposedEntityAttributes, TProperty>> property);
+        bool Remove<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
 
         /// <summary>
-        ///     Gets property by attribute key. Useful when you are looking for a property that exposes a specific DOT attribute, or want to
-        ///     check if a DOT attribute is exposed as a property.
+        ///     Gets property path by attribute key. Useful when you are not sure which property exposes a specific DOT attribute, or want to
+        ///     check if a DOT attribute is actually exposed as a property.
         /// </summary>
         /// <param name="key">
         ///     The DOT attribute key to search.
         /// </param>
-        PropertyInfo GetPropertyByKey(string key);
+        string GetPropertyPathByKey(string key);
 
         /// <summary>
-        ///     Gets a dictionary where the key is a DOT attribute, and the value is a property that exposes it.
+        ///     Gets a dictionary where the key is a DOT attribute, and the value is a path to a property that exposes it.
         /// </summary>
-        Dictionary<string, PropertyInfo> GetPropertyKeyMapping();
+        Dictionary<string, string> GetPropertyKeyMapping();
     }
 }

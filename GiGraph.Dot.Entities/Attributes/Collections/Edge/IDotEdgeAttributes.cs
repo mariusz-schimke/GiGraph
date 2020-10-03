@@ -11,12 +11,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     The attributes of the head of the edge.
         /// </summary>
-        public IDotEdgeHeadAttributes Head { get; }
+        IDotEdgeHeadAttributes Head { get; }
 
         /// <summary>
         ///     The attributes of the tail of the edge.
         /// </summary>
-        public IDotEdgeTailAttributes Tail { get; }
+        IDotEdgeTailAttributes Tail { get; }
+
+        /// <summary>
+        ///     Font properties.
+        /// </summary>
+        IDotEntityFontAttributes Font { get; }
 
         /// <summary>
         ///     <para>
@@ -97,19 +102,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     Color used for the head <see cref="IDotEdgeHeadAttributes.Label" /> and the tail <see cref="IDotEdgeTailAttributes.Label" />.
-        ///     If not set, defaults to the edge's <see cref="FontColor" /> .
+        ///     If not set, defaults to the edge's font color (<see cref="IDotEntityFontAttributes.Color" />).
         /// </summary>
         DotColor EndpointLabelFontColor { get; set; }
 
         /// <summary>
         ///     Font used for the head <see cref="IDotEdgeHeadAttributes.Label" /> and the tail <see cref="IDotEdgeTailAttributes.Label" />.
-        ///     If not set, defaults to the edge's <see cref="FontName" />.
+        ///     If not set, defaults to the edge's font name (<see cref="IDotEntityFontAttributes.Name" />).
         /// </summary>
         string EndpointLabelFontName { get; set; }
 
         /// <summary>
         ///     Font size, in points, used for the head <see cref="IDotEdgeHeadAttributes.Label" /> and the tail
-        ///     <see cref="IDotEdgeTailAttributes.Label" />. If not set, defaults to the edge's <see cref="FontSize" />.
+        ///     <see cref="IDotEdgeTailAttributes.Label" />. If not set, defaults to the edge's font size (
+        ///     <see cref="IDotEntityFontAttributes.Size" />).
         /// </summary>
         double? EndpointLabelFontSize { get; set; }
 
@@ -158,52 +164,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///         which styles are applicable to this element type.
         ///     </para>
         ///     <para>
-        ///         Multiple styles can be used at once, for example:
-        ///         <c>
-        ///             <see cref="Style" /> = <see cref="DotStyles.Solid" /> | <see cref="DotStyles.Bold" />;
-        ///         </c>
+        ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Solid" /> |
+        ///         <see cref="DotStyles.Bold" />;
         ///     </para>
         /// </summary>
         DotStyles? Style { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black" />).
-        /// </summary>
-        DotColor FontColor { get; set; }
-
-        /// <summary>
-        ///     <para>
-        ///         Gets or sets the font used for text (default: "Times-Roman"). This very much depends on the output format and, for
-        ///         non-bitmap output such as PostScript or SVG, the availability of the font when the graph is displayed or printed. As
-        ///         such, it is best to rely on font faces that are generally available, such as Times-Roman, Helvetica or Courier.
-        ///     </para>
-        ///     <para>
-        ///         How font names are resolved also depends on the underlying library that handles font name resolution. If Graphviz was
-        ///         built using the fontconfig library, the latter library will be used to search for the font. See the commands fc-list,
-        ///         fc-match and the other fontconfig commands for how names are resolved and which fonts are available. Other systems may
-        ///         provide their own font package, such as Quartz for OS X.
-        ///     </para>
-        ///     <para>
-        ///         Note that various font attributes, such as weight and slant, can be built into the font name. Unfortunately, the syntax
-        ///         varies depending on which font system is dominant. Thus, using <see cref="FontName" /> = "times bold italic" will produce
-        ///         a bold, slanted Times font using Pango, the usual main font library. Alternatively, <see cref="FontName" /> =
-        ///         "times:italic" will produce a slanted Times font from fontconfig, while <see cref="FontName" /> = "times-bold" will
-        ///         resolve to a bold Times using Quartz. You will need to ascertain which package is used by your Graphviz system and refer
-        ///         to the relevant documentation.
-        ///     </para>
-        ///     <para>
-        ///         If Graphviz is not built with a high-level font library, <see cref="FontName" /> will be considered the name of a Type 1
-        ///         or True Type font file. If you specify <see cref="FontName" /> = "schlbk", the tool will look for a file named schlbk.ttf
-        ///         or schlbk.pfa or schlbk.pfb in one of the directories specified by the <see cref="IDotGraphAttributes.FontDirectories" />
-        ///         attribute. The lookup does support various aliases for the common fonts.
-        ///     </para>
-        /// </summary>
-        string FontName { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the font size used for text (in points; 72 points per inch). Default: 14.0, minimum: 1.0.
-        /// </summary>
-        double? FontSize { get; set; }
 
         /// <summary>
         ///     Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges. The value has no
@@ -223,8 +188,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     </para>
         ///     <para>
         ///         Indicates which ends of the edge should be decorated with an arrow head. The actual style of the arrowhead can be
-        ///         specified using the <see cref="IDotEdgeHeadAttributes.Arrow" /> attribute on the head of the edge, and the
-        ///         corresponding <see cref="IDotEdgeTailAttributes.Arrow" /> attribute on the tail of the edge.
+        ///         specified using the <see cref="IDotEdgeHeadAttributes.Arrow" /> attribute on the head of the edge, and the corresponding
+        ///         <see cref="IDotEdgeTailAttributes.Arrow" /> attribute on the tail of the edge.
         ///     </para>
         ///     <para>
         ///         A glyph is drawn at the head end of the edge if and only if the arrow direction is

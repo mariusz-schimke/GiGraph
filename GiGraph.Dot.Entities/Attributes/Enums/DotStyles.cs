@@ -92,9 +92,9 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         /// <summary>
         ///     <para>
         ///         Applicable to edges. The effect depends on the <see cref="IDotEdgeAttributes.PenWidth" /> attribute of the edge, on the
-        ///         <see cref="IDotEdgeAttributes.ArrowDirections" /> attribute, on the <see cref="IDotEdgeHeadAttributes.Arrow" />
-        ///         attribute on the head of the edge, and on the corresponding <see cref="IDotEdgeTailAttributes.Arrow" /> attribute on
-        ///         the tail of the edge.
+        ///         <see cref="IDotEdgeAttributes.ArrowDirections" /> attribute, on the <see cref="IDotEdgeHeadAttributes.Arrow" /> attribute
+        ///         on the head of the edge, and on the corresponding <see cref="IDotEdgeTailAttributes.Arrow" /> attribute on the tail of
+        ///         the edge.
         ///     </para>
         ///     <para>
         ///         The edge starts with width <see cref="IDotEdgeAttributes.PenWidth" />, and tapers to width 1, in points. The
@@ -108,8 +108,8 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///     </para>
         ///     <para>
         ///         Arrow heads and arrow tails are also drawn, based on the value of <see cref="IDotEdgeAttributes.ArrowDirections" />
-        ///         attribute; to avoid this, set the <see cref="IDotEdgeHeadAttributes.Arrow" /> attribute on the head of the edge,
-        ///         and/or the corresponding <see cref="IDotEdgeTailAttributes.Arrow" /> attribute on the tail of the edge to
+        ///         attribute; to avoid this, set the <see cref="IDotEdgeHeadAttributes.Arrow" /> attribute on the head of the edge, and/or
+        ///         the corresponding <see cref="IDotEdgeTailAttributes.Arrow" /> attribute on the tail of the edge to
         ///         <see cref="DotArrowheadShape.None" />.
         ///     </para>
         /// </summary>

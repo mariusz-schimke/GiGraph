@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
 
@@ -7,6 +8,25 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
     public class DotNodeAttributeCollection : DotEntityAttributeCollection<IDotNodeAttributes>, IDotNodeAttributeCollection
     {
+        protected static readonly DotMemberAttributeKeyLookup EntityAttributePropertiesInterfaceKeyLookup;
+
+        static DotNodeAttributeCollection()
+        {
+            var type = typeof(DotNodeAttributeCollection);
+            UpdateAttributeKeyLookupForDeclaredPropertyAccessorsOf(type);
+            EntityAttributePropertiesInterfaceKeyLookup = CreateAttributeKeyLookupForEntityAttributePropertiesOf(type).ToReadOnly();
+        }
+
+        protected DotNodeAttributeCollection(DotMemberAttributeKeyLookup entityAttributePropertiesInterfaceKeyLookup)
+            : base(entityAttributePropertiesInterfaceKeyLookup)
+        {
+        }
+
+        public DotNodeAttributeCollection()
+            : base(EntityAttributePropertiesInterfaceKeyLookup)
+        {
+        }
+
         [DotAttributeKey("shape")]
         public virtual DotNodeShape? Shape
         {
