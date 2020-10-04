@@ -6,11 +6,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     public interface IDotEntityFontAttributes
     {
         /// <summary>
-        ///     Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black" />).
-        /// </summary>
-        DotColor Color { get; set; }
-
-        /// <summary>
         ///     <para>
         ///         Gets or sets the font used for text (default: "Times-Roman"). This very much depends on the output format and, for
         ///         non-bitmap output such as PostScript or SVG, the availability of the font when the graph is displayed or printed. As
@@ -43,5 +38,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     Gets or sets the font size used for text (in points; 72 points per inch). Default: 14.0, minimum: 1.0.
         /// </summary>
         double? Size { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black" />).
+        /// </summary>
+        DotColor Color { get; set; }
     }
 }

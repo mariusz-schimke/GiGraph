@@ -1,4 +1,5 @@
 using System;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using Xunit;
 
@@ -7,6 +8,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
     public class TwinAttributeGroupsCoherenceTest : AttributesTestBase
     {
         [Theory]
+        [InlineData(typeof(IDotEntityFontAttributes), typeof(IDotEdgeEndpointLabelFontAttributes))]
         [InlineData(typeof(IDotEdgeHeadAttributes), typeof(IDotEdgeTailAttributes))]
         public void interfaces_contain_equivalent_members(Type interface1, Type interface2)
         {
