@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     If true, allows edge labels to be less constrained in position. In particular, it may appear on top of other edges. Default:
         ///     false.
         /// </summary>
-        bool? LabelFloat { get; set; }
+        bool? AllowLabelFloat { get; set; }
 
         /// <summary>
         ///     Minimum edge length (rank difference between head and tail). Default: 1, minimum: 0.
