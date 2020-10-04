@@ -89,12 +89,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             throw new InvalidCastException($"The '{key}' attribute value of type {attributeValue.GetType().FullName} cannot be accessed as {typeof(T).FullName}.");
         }
 
-        protected virtual int? GetValueAsInt(string key)
+        public virtual int? GetValueAsInt(string key)
         {
             return GetValueAs<int>(key, out var value) ? value : (int?) null;
         }
 
-        protected virtual double? GetValueAsDouble(string key)
+        public virtual double? GetValueAsDouble(string key)
         {
             return GetValueAs<double>
             (
@@ -106,17 +106,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : (double?) null;
         }
 
-        protected virtual bool? GetValueAsBool(string key)
+        public virtual bool? GetValueAsBool(string key)
         {
             return GetValueAs<bool>(key, out var result) ? result : (bool?) null;
         }
 
-        protected virtual DotPoint GetValueAsPoint(string key)
+        public virtual DotPoint GetValueAsPoint(string key)
         {
             return GetValueAs<DotPoint>(key, out var result) ? result : null;
         }
 
-        protected virtual DotColor GetValueAsColor(string key)
+        public virtual DotColor GetValueAsColor(string key)
         {
             return GetValueAs
             (
@@ -128,7 +128,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : null;
         }
 
-        protected virtual DotColorDefinition GetValueAsColorDefinition(string key)
+        public virtual DotColorDefinition GetValueAsColorDefinition(string key)
         {
             return GetValueAs<DotColorDefinition>
             (
@@ -140,12 +140,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : null;
         }
 
-        protected virtual string GetValueAsString(string key)
+        public virtual string GetValueAsString(string key)
         {
             return GetValueAs<string>(key, out var result) ? result : null;
         }
 
-        protected virtual DotEscapeString GetValueAsEscapeString(string key)
+        public virtual DotEscapeString GetValueAsEscapeString(string key)
         {
             return GetValueAs<DotEscapeString>
             (
@@ -157,7 +157,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : null;
         }
 
-        protected virtual DotLabel GetValueAsLabel(string key)
+        public virtual DotLabel GetValueAsLabel(string key)
         {
             return GetValueAs<DotLabel>
             (
@@ -170,7 +170,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : null;
         }
 
-        protected virtual DotArrowheadDefinition GetValueAsArrowheadDefinition(string key)
+        public virtual DotArrowheadDefinition GetValueAsArrowheadDefinition(string key)
         {
             return GetValueAs<DotArrowheadDefinition>
             (
@@ -182,7 +182,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : null;
         }
 
-        protected virtual DotEndpointPort GetValueAsEndpointPort(string key)
+        public virtual DotEndpointPort GetValueAsEndpointPort(string key)
         {
             return GetValueAs
             (
