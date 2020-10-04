@@ -207,7 +207,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotArrowDirections? ArrowDirections { get; set; }
 
         /// <summary>
-        ///     If true, attaches edge label to edge by a 2-segment polyline, underlining the label, then going to the closest point of
+        ///     If true, attaches label to the edge by a 2-segment polyline, underlining the label, then going to the closest point of
         ///     spline. Default: false.
         /// </summary>
         bool? AttachLabel { get; set; }
