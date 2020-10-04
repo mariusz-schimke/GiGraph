@@ -8,10 +8,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
-    public partial class DotEdgeAttributeCollection : DotEntityAttributeCollection<IDotEdgeAttributes>,
-        IDotEdgeAttributeCollection,
-        IDotEdgeHeadAttributes,
-        IDotEdgeTailAttributes
+    public partial class DotEdgeAttributeCollection : DotEntityAttributeCollection<IDotEdgeAttributes>, IDotEdgeAttributeCollection
     {
         protected static readonly DotMemberAttributeKeyLookup EntityAttributePropertiesInterfaceKeyLookup;
 
@@ -55,29 +52,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
                 ? throw new ArgumentOutOfRangeException(nameof(MinLength), v.Value, "Minimum length must be greater than or equal to 0.")
                 : new DotIntAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("labelfontname")]
-        public virtual string EndpointLabelFontName
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("labelfontcolor")]
-        public virtual DotColor EndpointLabelFontColor
-        {
-            get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
-        }
-
-        [DotAttributeKey("labelfontsize")]
-        public virtual double? EndpointLabelFontSize
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(EndpointLabelFontSize), v.Value, "Endpoint label font size must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
         }
 
         [DotAttributeKey("labelURL")]
@@ -164,22 +138,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("labeldistance")]
-        public virtual double? EndpointLabelDistance
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(EndpointLabelDistance), v.Value, "Endpoint label distance must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("labelangle")]
-        public virtual double? EndpointLabelAngle
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
         [DotAttributeKey("constraint")]

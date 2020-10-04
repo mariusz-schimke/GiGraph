@@ -7,7 +7,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
-    public partial class DotEdgeAttributeCollection
+    public partial class DotEdgeAttributeCollection : IDotEdgeHeadAttributes
     {
         public virtual IDotEdgeHeadAttributes Head => this;
 

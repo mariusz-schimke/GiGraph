@@ -24,6 +24,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         IDotEntityFontAttributes Font { get; }
 
         /// <summary>
+        ///     Label properties of the head and the tail of the edge.
+        /// </summary>
+        IDotEdgeEndpointLabelAttributes EndpointLabels { get; }
+
+        /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the edge. It may be plain text (<see cref="string" />) or HTML (
         ///         <see cref="DotHtmlLabel" />). See also <see cref="DotTextFormatter" /> for plain text label formatting if needed.
@@ -62,27 +67,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         bool? LabelFloat { get; set; }
 
         /// <summary>
-        ///     Multiplicative scaling factor adjusting the distance that the the head <see cref="IDotEdgeHeadAttributes.Label" /> and the
-        ///     tail <see cref="IDotEdgeTailAttributes.Label" /> are from the head/tail nodes. The default distance is 10 points, the minimum
-        ///     is 0.0. See also <see cref="EndpointLabelAngle" />.
-        /// </summary>
-        double? EndpointLabelDistance { get; set; }
-
-        /// <summary>
-        ///     <para>
-        ///         This, along with <see cref="EndpointLabelDistance" />, determine where the the head
-        ///         <see cref="IDotEdgeHeadAttributes.Label" /> and the tail <see cref="IDotEdgeTailAttributes.Label" /> are placed with
-        ///         respect to the head/tail in polar coordinates. The origin in the coordinate system is the point where the edge touches
-        ///         the node. The ray of 0 degrees goes from the origin back along the edge, parallel to the edge at the origin.
-        ///     </para>
-        ///     <para>
-        ///         The angle, in degrees, specifies the rotation from the 0 degree ray, with positive angles moving counterclockwise and
-        ///         negative angles moving clockwise. The default value is -25.0, the minimum: -180.0.
-        ///     </para>
-        /// </summary>
-        double? EndpointLabelAngle { get; set; }
-
-        /// <summary>
         ///     Minimum edge length (rank difference between head and tail). Default: 1, minimum: 0.
         /// </summary>
         int? MinLength { get; set; }
@@ -99,25 +83,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     <see cref="Length" /> attribute. Default: 1, minimum: 0 (dot, twopi), 1 (neato, fdp).
         /// </summary>
         double? Weight { get; set; }
-
-        /// <summary>
-        ///     Color used for the head <see cref="IDotEdgeHeadAttributes.Label" /> and the tail <see cref="IDotEdgeTailAttributes.Label" />.
-        ///     If not set, defaults to the edge's font color (<see cref="IDotEntityFontAttributes.Color" />).
-        /// </summary>
-        DotColor EndpointLabelFontColor { get; set; }
-
-        /// <summary>
-        ///     Font used for the head <see cref="IDotEdgeHeadAttributes.Label" /> and the tail <see cref="IDotEdgeTailAttributes.Label" />.
-        ///     If not set, defaults to the edge's font name (<see cref="IDotEntityFontAttributes.Name" />).
-        /// </summary>
-        string EndpointLabelFontName { get; set; }
-
-        /// <summary>
-        ///     Font size, in points, used for the head <see cref="IDotEdgeHeadAttributes.Label" /> and the tail
-        ///     <see cref="IDotEdgeTailAttributes.Label" />. If not set, defaults to the edge's font size (
-        ///     <see cref="IDotEntityFontAttributes.Size" />).
-        /// </summary>
-        double? EndpointLabelFontSize { get; set; }
 
         /// <summary>
         ///     Tooltip annotation attached to the edge. If unset, Graphviz will use the <see cref="Label" /> attribute if defined.
