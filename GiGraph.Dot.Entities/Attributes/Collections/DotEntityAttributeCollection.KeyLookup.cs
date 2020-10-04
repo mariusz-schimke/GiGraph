@@ -83,14 +83,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             var interfaceProperties = entityAttributePropertiesInterfaceType.GetProperties(AttributeKeyPropertyBindingFlags);
             var interfaceMap = attributeCollectionType.GetInterfaceMap(entityAttributePropertiesInterfaceType);
 
-            for (var index = 0; index < interfaceMap.InterfaceMethods.Length; index++)
+            foreach (var interfaceProperty in interfaceProperties)
             {
-                var interfacePropertyAccessor = interfaceMap.InterfaceMethods[index];
-                var implementationPropertyAccessor = interfaceMap.TargetMethods[index];
-
-                var interfaceProperty = interfaceProperties.First(property =>
-                    interfacePropertyAccessor.Equals(property.GetMethod) || interfacePropertyAccessor.Equals(property.SetMethod)
-                );
+                var interfacePropertyAccessor = interfaceProperty.GetMethod ?? interfaceProperty.SetMethod;
+                var interfacePropertyAccessorIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(interfacePropertyAccessor));
+                var implementationPropertyAccessor = interfaceMap.TargetMethods[interfacePropertyAccessorIndex];
 
                 if (IsAttributeGroupingProperty(interfaceProperty, attributeCollectionType))
                 {
