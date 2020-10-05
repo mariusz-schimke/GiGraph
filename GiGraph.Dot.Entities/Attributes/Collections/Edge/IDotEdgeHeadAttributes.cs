@@ -78,6 +78,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///         To generate an arrow composed of multiple arrowheads use <see cref="DotCompositeArrowhead" />.
         ///     </para>
         /// </summary>
-        DotArrowheadDefinition Arrow { get; set; }
+        DotArrowheadDefinition Arrowhead { get; set; }
     }
 }

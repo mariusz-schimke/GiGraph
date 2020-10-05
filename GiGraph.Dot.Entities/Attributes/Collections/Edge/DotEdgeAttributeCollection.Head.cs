@@ -75,7 +75,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         [DotAttributeKey("arrowhead")]
-        DotArrowheadDefinition IDotEdgeHeadAttributes.Arrow
+        DotArrowheadDefinition IDotEdgeHeadAttributes.Arrowhead
         {
             get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
