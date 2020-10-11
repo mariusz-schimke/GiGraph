@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             }
         }
 
-        public virtual DotNullAttribute SetNull(string key)
+        public virtual DotNullAttribute Nullify(string key)
         {
             return Set(new DotNullAttribute(key));
         }

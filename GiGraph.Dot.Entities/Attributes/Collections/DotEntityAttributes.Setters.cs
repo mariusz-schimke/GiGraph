@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotNullAttribute Nullify<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var key = GetAttributeKey(property);
-            return _attributes.SetNull(key);
+            return _attributes.Nullify(key);
         }
 
         // TODO: zrobić metody set i nazwać je analogicznie do getów, np. SetValueAsString()

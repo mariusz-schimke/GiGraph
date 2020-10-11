@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="key">
         ///     The key of the attribute whose value to set.
         /// </param>
-        DotNullAttribute SetNull(string key);
+        DotNullAttribute Nullify(string key);
 
         /// <summary>
         ///     Determines whether the collection contains an attribute with the specified key, whose value is null.

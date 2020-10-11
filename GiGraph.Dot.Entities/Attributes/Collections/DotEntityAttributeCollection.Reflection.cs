@@ -14,10 +14,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return GetKey(propertyInfo);
         }
 
-        public virtual DotNullAttribute SetNull<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        public virtual DotNullAttribute Nullify<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var key = GetKey(property);
-            return SetNull(key);
+            return Nullify(key);
         }
 
         public virtual DotAttribute Get<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
