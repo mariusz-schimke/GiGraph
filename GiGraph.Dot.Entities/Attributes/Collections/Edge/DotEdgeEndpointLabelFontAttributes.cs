@@ -1,17 +1,20 @@
-﻿using System;
-using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
+﻿using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
-    public class DotEdgeEndpointLabelFontAttributes : DotEntityAttributes<IDotEdgeEndpointLabelFontAttributes>, IDotEdgeEndpointLabelFontAttributes
+    public class DotEdgeEndpointLabelFontAttributes : DotEntityFontAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup MemberAttributeKeyLookup = CreateMemberAttributeKeyLookupFor(typeof(DotEdgeEndpointLabelFontAttributes));
+        protected static readonly DotMemberAttributeKeyLookup EdgeEndpointLabelFontAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEdgeEndpointLabelFontAttributes));
+
+        protected DotEdgeEndpointLabelFontAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup propertyAttributeKeyLookup)
+            : base(attributes, propertyAttributeKeyLookup)
+        {
+        }
 
         public DotEdgeEndpointLabelFontAttributes(DotAttributeCollection attributes)
-            : base(attributes, MemberAttributeKeyLookup)
+            : base(attributes, EdgeEndpointLabelFontAttributesKeyLookup)
         {
         }
 
@@ -20,10 +23,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     of the edge. If not set, defaults to the edge's font name (<see cref="IDotEntityFontAttributes.Name" />).
         /// </summary>
         [DotAttributeKey("labelfontname")]
-        public virtual string Name
+        public override string Name
         {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            get => base.Name;
+            set => base.Name = value;
         }
 
         /// <summary>
@@ -31,10 +34,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     of the edge. If not set, defaults to the edge's font color (<see cref="IDotEntityFontAttributes.Color" />).
         /// </summary>
         [DotAttributeKey("labelfontcolor")]
-        public virtual DotColor Color
+        public override DotColor Color
         {
-            get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            get => base.Color;
+            set => base.Color = value;
         }
 
         /// <summary>
@@ -43,12 +46,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     <see cref="IDotEntityFontAttributes.Size" />).
         /// </summary>
         [DotAttributeKey("labelfontsize")]
-        public virtual double? Size
+        public override double? Size
         {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(IDotEdgeEndpointLabelFontAttributes.Size), v.Value, "Endpoint label font size must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
+            get => base.Size;
+            set => base.Size = value;
         }
     }
 }
