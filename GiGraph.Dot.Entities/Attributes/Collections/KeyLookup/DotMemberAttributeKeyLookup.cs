@@ -76,6 +76,24 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
         }
 
         /// <summary>
+        ///     Gets an attribute key for the specified member.
+        /// </summary>
+        /// <param name="member">
+        ///     The member whose attribute key to get.
+        /// </param>
+        /// <exception cref="KeyNotFoundException">
+        ///     Thrown when the collection does not contain a key for the specified member.
+        /// </exception>
+        public virtual string GetKey(MemberInfo member)
+        {
+            return TryGetKey(member, out var key)
+                ? key
+                : throw new KeyNotFoundException(
+                    $"The attribute key lookup collection does not contain a key for the '{member}' member of the {member.DeclaringType} type."
+                );
+        }
+
+        /// <summary>
         ///     Adds and updates (overwrites) the content of the current instance with the content of the specified instance.
         /// </summary>
         /// <param name="source">

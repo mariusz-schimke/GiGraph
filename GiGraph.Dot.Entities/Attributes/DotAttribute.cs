@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <summary>
         ///     Gets the key of the attribute.
         /// </summary>
-        public virtual string Key { get; }
+        public string Key { get; }
 
         public virtual string Annotation { get; set; }
 

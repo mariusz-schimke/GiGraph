@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
@@ -20,7 +21,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         protected virtual string GetAttributeKey(MethodBase accessor)
         {
-            return _propertyAttributeKeyLookup.TryGetKey(accessor, out var key)
+            var method = (MethodInfo) accessor;
+
+            return _propertyAttributeKeyLookup.TryGetKey(method.GetRuntimeBaseDefinition(), out var key)
                 ? key
                 : throw new KeyNotFoundException($"No attribute key is defined for the '{accessor}' property accessor of the {accessor.DeclaringType} type.");
         }
@@ -46,29 +49,49 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return propertyInfo;
         }
 
-        protected static DotMemberAttributeKeyLookup CreateMemberAttributeKeyLookupFor(Type entityAttributesType, bool readOnly = true)
+        protected static DotMemberAttributeKeyLookup CreateAttributeKeyLookupForMembersOf(Type entityAttributesType, bool readOnly = true)
         {
             var lookup = new DotMemberAttributeKeyLookup();
-            UpdateAttributeKeyLookupWithPropertyAccessorsOf(lookup, entityAttributesType);
-            UpdateAttributeKeyLookupWithInterfacePropertiesFor(lookup, lookup, entityAttributesType);
-
+            UpdateAttributeKeyLookupForMembersOf(lookup, entityAttributesType);
             return readOnly ? lookup.ToReadOnly() : lookup;
         }
 
-        protected static void UpdateAttributeKeyLookupWithPropertyAccessorsOf(DotMemberAttributeKeyLookup lookup, Type entityAttributesType)
+        protected static void UpdateAttributeKeyLookupForMembersOf(DotMemberAttributeKeyLookup output, Type entityAttributesType)
         {
-            var type = entityAttributesType;
-            do
+            UpdateAttributeKeyLookupForMembersOf(output, entityAttributesType, typeof(TIEntityAttributeProperties));
+        }
+
+        protected static void UpdateAttributeKeyLookupForMembersOf(DotMemberAttributeKeyLookup output, Type entityAttributesType, Type entityAttributePropertiesInterfaceType)
+        {
+            var interfaceProperties = entityAttributePropertiesInterfaceType.GetProperties(AttributeKeyPropertyBindingFlags);
+            var interfaceMap = entityAttributesType.GetInterfaceMap(entityAttributePropertiesInterfaceType);
+
+            var propertiesDeclaringTypes = interfaceMap
+               .TargetMethods
+               .Select(accessor => accessor.DeclaringType)
+               .Distinct();
+
+            var propertiesDeclaringTypesLookup = new DotMemberAttributeKeyLookup();
+            foreach (var propertyDeclaringType in propertiesDeclaringTypes)
             {
-                UpdateAttributeKeyLookupWithDeclaredPropertyAccessorsOf(lookup, type);
+                UpdateAttributeKeyLookupWithDeclaredPropertyAccessorsOf(propertiesDeclaringTypesLookup, propertyDeclaringType);
+            }
 
-                if (type == typeof(DotEntityAttributes<TIEntityAttributeProperties>))
-                {
-                    break;
-                }
+            foreach (var targetMethod in interfaceMap.TargetMethods)
+            {
+                var key = propertiesDeclaringTypesLookup.GetKey(targetMethod);
+                output.Set(targetMethod.GetRuntimeBaseDefinition(), key);
+            }
 
-                type = type.BaseType;
-            } while (type is {});
+            foreach (var interfaceProperty in interfaceProperties)
+            {
+                var interfacePropertyAccessor = interfaceProperty.GetMethod ?? interfaceProperty.SetMethod;
+                var interfacePropertyAccessorIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(interfacePropertyAccessor));
+                var implementationPropertyAccessor = interfaceMap.TargetMethods[interfacePropertyAccessorIndex];
+
+                var key = propertiesDeclaringTypesLookup.GetKey(implementationPropertyAccessor);
+                output.Set(interfaceProperty, key);
+            }
         }
 
         protected static void UpdateAttributeKeyLookupWithDeclaredPropertyAccessorsOf(DotMemberAttributeKeyLookup lookup, Type entityAttributesType)
@@ -90,50 +113,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 if (property.SetMethod is {} setter)
                 {
                     lookup.Set(setter, attribute.Key);
-                }
-            }
-        }
-
-        protected static void UpdateAttributeKeyLookupWithInterfacePropertiesFor(
-            DotMemberAttributeKeyLookup output,
-            DotMemberAttributeKeyLookup propertyAccessorsAttributeKeyLookup,
-            Type entityAttributesType
-        )
-        {
-            UpdateAttributeKeyLookupWithInterfacePropertiesFor(
-                output,
-                propertyAccessorsAttributeKeyLookup,
-                entityAttributesType,
-                typeof(TIEntityAttributeProperties)
-            );
-        }
-
-        protected static void UpdateAttributeKeyLookupWithInterfacePropertiesFor(
-            DotMemberAttributeKeyLookup output,
-            DotMemberAttributeKeyLookup propertyAccessorsAttributeKeyLookup,
-            Type entityAttributesType,
-            Type entityAttributePropertiesInterfaceType
-        )
-        {
-            var interfaceProperties = entityAttributePropertiesInterfaceType.GetProperties(AttributeKeyPropertyBindingFlags);
-            var interfaceMap = entityAttributesType.GetInterfaceMap(entityAttributePropertiesInterfaceType);
-
-            foreach (var interfaceProperty in interfaceProperties)
-            {
-                var interfacePropertyAccessor = interfaceProperty.GetMethod ?? interfaceProperty.SetMethod;
-                var interfacePropertyAccessorIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(interfacePropertyAccessor));
-                var implementationPropertyAccessor = interfaceMap.TargetMethods[interfacePropertyAccessorIndex];
-
-                // it is assumed that the attribute collection accessor is already present in the lookup
-                if (propertyAccessorsAttributeKeyLookup.TryGetKey(implementationPropertyAccessor, out var key))
-                {
-                    output.Set(interfaceProperty, key);
-                }
-                else
-                {
-                    throw new KeyNotFoundException(
-                        $"The attribute key lookup collection does not contain a key for the '{implementationPropertyAccessor}' member of the {implementationPropertyAccessor.DeclaringType} type."
-                    );
                 }
             }
         }

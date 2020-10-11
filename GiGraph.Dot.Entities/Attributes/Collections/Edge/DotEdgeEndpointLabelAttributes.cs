@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
     public class DotEdgeEndpointLabelAttributes : DotEntityAttributes<IDotEdgeEndpointLabelAttributes>, IDotEdgeEndpointLabelAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup MemberAttributeKeyLookup = CreateMemberAttributeKeyLookupFor(typeof(DotEdgeEndpointLabelAttributes));
+        protected static readonly DotMemberAttributeKeyLookup MemberAttributeKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEdgeEndpointLabelAttributes));
 
         protected DotEdgeEndpointLabelAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup propertyAttributeKeyLookup, DotEdgeEndpointLabelFontAttributes fontAttributes)
             : base(attributes, propertyAttributeKeyLookup)

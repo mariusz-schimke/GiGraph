@@ -12,6 +12,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return _attributes.SetNull(key);
         }
 
+        // TODO: zrobić metody set i nazwać je analogicznie do getów, np. SetValueAsString()
         protected virtual void AddOrRemove<TAttribute, TValue>(MethodBase propertyAccessor, TValue value, Func<string, TValue, TAttribute> newAttribute)
             where TAttribute : DotAttribute
         {
