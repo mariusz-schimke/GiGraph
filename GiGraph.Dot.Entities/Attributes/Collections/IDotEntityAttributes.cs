@@ -8,9 +8,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     {
         DotAttribute GetAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
         DotAttribute SetAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value);
+        bool RemoveAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
+
+        DotNullAttribute Nullify<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
+
         bool HasAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
         bool HasNullified<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
-        DotNullAttribute Nullify<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
+
         string GetAttributeKey<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
         Dictionary<string, string> GetAttributeKeyMapping();
     }

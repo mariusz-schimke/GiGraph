@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     <see cref="IDotEdgeAttributes.Font" />).
         /// </summary>
         public virtual DotEdgeEndpointLabelFontAttributes Font { get; }
-
+        
         [DotAttributeKey("labeldistance")]
         public virtual double? Distance
         {

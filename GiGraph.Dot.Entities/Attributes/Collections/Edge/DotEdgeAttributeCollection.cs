@@ -1,150 +1,128 @@
-using System;
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
-    public partial class DotEdgeAttributeCollection : DotEntityAttributeCollection<IDotEdgeAttributes>, IDotEdgeAttributeCollection
+    public class DotEdgeAttributeCollection : DotEntityAttributeCollection<IDotEdgeAttributes>,
+        IDotEntityAttributes<IDotEdgeAttributes>,
+        IDotEdgeAttributeCollection
     {
-        protected static readonly DotMemberAttributeKeyLookup EntityAttributePropertiesInterfaceKeyLookup;
+        protected readonly DotEdgeAttributes _attributes;
 
-        static DotEdgeAttributeCollection()
-        {
-            var type = typeof(DotEdgeAttributeCollection);
-            UpdateAttributeKeyLookupForDeclaredPropertyAccessorsOf(type);
-            EntityAttributePropertiesInterfaceKeyLookup = CreateAttributeKeyLookupForEntityAttributePropertiesOf(type).ToReadOnly();
-        }
-
-        protected DotEdgeAttributeCollection(DotMemberAttributeKeyLookup entityAttributePropertiesInterfaceKeyLookup)
+        public DotEdgeAttributeCollection(DotMemberAttributeKeyLookup entityAttributePropertiesInterfaceKeyLookup)
             : base(entityAttributePropertiesInterfaceKeyLookup)
         {
         }
 
-        public DotEdgeAttributeCollection()
-            : base(EntityAttributePropertiesInterfaceKeyLookup)
-        {
-        }
+        // TODO: provide a font instance (through _attributes?)
 
-        [DotAttributeKey("weight")]
+        /// <summary>
+        ///     Font properties.
+        /// </summary>
+        public virtual DotEntityFontAttributes Font => _attributes.Font;
+
+        // TODO: comments
+        public virtual DotEdgeHeadAttributes Head => _attributes.Head;
+        public virtual DotEdgeTailAttributes Tail => _attributes.Tail;
+
+        public virtual DotEdgeEndpointLabelAttributes EndpointLabels => _attributes.EndpointLabels;
+
         public virtual double? Weight
         {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(Weight), v.Value, "Weight must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
+            get => _attributes.Weight;
+            set => _attributes.Weight = value;
         }
 
-        [DotAttributeKey("len")]
         public virtual double? Length
         {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
+            get => _attributes.Length;
+            set => _attributes.Length = value;
         }
 
-        [DotAttributeKey("minlen")]
         public virtual int? MinLength
         {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
-                ? throw new ArgumentOutOfRangeException(nameof(MinLength), v.Value, "Minimum length must be greater than or equal to 0.")
-                : new DotIntAttribute(k, v.Value));
+            get => _attributes.MinLength;
+            set => _attributes.MinLength = value;
         }
 
-        [DotAttributeKey("labelURL")]
         public virtual DotEscapeString LabelUrl
         {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => _attributes.LabelUrl;
+            set => _attributes.LabelUrl = value;
         }
 
-        [DotAttributeKey("labelhref")]
         public virtual DotEscapeString LabelHref
         {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => _attributes.LabelHref;
+            set => _attributes.LabelHref = value;
         }
 
-        [DotAttributeKey("labeltarget")]
         public virtual DotEscapeString LabelUrlTarget
         {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => _attributes.LabelUrlTarget;
+            set => _attributes.LabelUrlTarget = value;
         }
 
-        [DotAttributeKey("labeltooltip")]
         public virtual DotEscapeString LabelUrlTooltip
         {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => _attributes.LabelUrlTooltip;
+            set => _attributes.LabelUrlTooltip = value;
         }
 
-        [DotAttributeKey("edgeURL")]
         public virtual DotEscapeString EdgeUrl
         {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => _attributes.EdgeUrl;
+            set => _attributes.EdgeUrl = value;
         }
 
-        [DotAttributeKey("edgehref")]
         public virtual DotEscapeString EdgeHref
         {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => _attributes.EdgeHref;
+            set => _attributes.EdgeHref = value;
         }
 
-        [DotAttributeKey("edgetarget")]
         public virtual DotEscapeString EdgeUrlTarget
         {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => _attributes.EdgeUrlTarget;
+            set => _attributes.EdgeUrlTarget = value;
         }
 
-        [DotAttributeKey("edgetooltip")]
         public virtual DotEscapeString EdgeUrlTooltip
         {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => _attributes.EdgeUrlTooltip;
+            set => _attributes.EdgeUrlTooltip = value;
         }
 
-        [DotAttributeKey("arrowsize")]
         public virtual double? ArrowheadScale
         {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(ArrowheadScale), v.Value, "Arrowhead scale must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
+            get => _attributes.ArrowheadScale;
+            set => _attributes.ArrowheadScale = value;
         }
 
-        [DotAttributeKey("dir")]
         public virtual DotArrowDirections? ArrowDirections
         {
-            get => GetValueAs<DotArrowDirections>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotArrowDirections?) null;
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowDirectionsAttribute(k, v.Value));
+            get => _attributes.ArrowDirections;
+            set => _attributes.ArrowDirections = value;
         }
 
-        [DotAttributeKey("decorate")]
         public virtual bool? AttachLabel
         {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            get => _attributes.AttachLabel;
+            set => _attributes.AttachLabel = value;
         }
 
-        [DotAttributeKey("labelfloat")]
         public virtual bool? AllowLabelFloat
         {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            get => _attributes.AllowLabelFloat;
+            set => _attributes.AllowLabelFloat = value;
         }
 
-        [DotAttributeKey("constraint")]
         public virtual bool? Constrain
         {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            get => _attributes.Constrain;
+            set => _attributes.Constrain = value;
         }
 
         public override void SetFilled(DotColorDefinition value)

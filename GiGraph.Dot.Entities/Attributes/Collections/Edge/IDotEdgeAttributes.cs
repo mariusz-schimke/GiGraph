@@ -9,26 +9,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
     public interface IDotEdgeAttributes
     {
         /// <summary>
-        ///     The attributes of the head of the edge.
-        /// </summary>
-        IDotEdgeHeadAttributes Head { get; }
-
-        /// <summary>
-        ///     The attributes of the tail of the edge.
-        /// </summary>
-        IDotEdgeTailAttributes Tail { get; }
-
-        /// <summary>
-        ///     Font properties.
-        /// </summary>
-        IDotEntityFontAttributes Font { get; }
-
-        /// <summary>
-        ///     Label properties of the head and the tail of the edge.
-        /// </summary>
-        IDotEdgeEndpointLabelAttributes EndpointLabels { get; }
-
-        /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the edge. It may be plain text (<see cref="string" />) or HTML (
         ///         <see cref="DotHtmlLabel" />). See also <see cref="DotTextFormatter" /> for plain text label formatting if needed.

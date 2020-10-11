@@ -3,13 +3,6 @@
     public interface IDotEdgeEndpointLabelAttributes
     {
         /// <summary>
-        ///     Font properties used for the head <see cref="IDotEdgeHeadAttributes.Label" /> and the tail
-        ///     <see cref="IDotEdgeTailAttributes.Label" /> of the edge. If not set, defaults to the edge's font properties (
-        ///     <see cref="IDotEdgeAttributes.Font" />).
-        /// </summary>
-        IDotEdgeEndpointLabelFontAttributes Font { get; }
-
-        /// <summary>
         ///     Multiplicative scaling factor adjusting the distance that the the head <see cref="IDotEdgeHeadAttributes.Label" /> and the
         ///     tail <see cref="IDotEdgeTailAttributes.Label" /> are from the head/tail nodes. The default distance is 10 points, the minimum
         ///     is 0.0. See also <see cref="Angle" />.

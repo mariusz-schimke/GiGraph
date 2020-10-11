@@ -13,13 +13,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             _attributes = attributes;
             _propertyAttributeKeyLookup = propertyAttributeKeyLookup;
         }
-        
+
         public virtual DotAttribute GetAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var key = GetAttributeKey(property);
             return _attributes.TryGetValue(key, out var result) ? result : null;
         }
-        
+
         public virtual DotAttribute SetAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value)
         {
             var propertyInfo = GetProperty(property);
@@ -34,7 +34,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             var key = GetAttributeKey(property);
             return _attributes.Remove(key);
         }
-        
+
         public virtual bool HasAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var key = GetAttributeKey(property);
