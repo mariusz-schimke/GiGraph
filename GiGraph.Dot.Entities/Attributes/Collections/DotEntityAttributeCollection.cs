@@ -15,6 +15,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         IDotEntityAttributeCollection<TIEntityAttributeProperties>,
         IDotEntityFontAttributes
     {
+        protected readonly DotEntityAttributes<TIEntityAttributeProperties> _attributes;
+        
         static DotEntityAttributeCollection()
         {
             // this constructor is called once for every distinct variant of the generic class parameter

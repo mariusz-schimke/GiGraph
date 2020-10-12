@@ -5,124 +5,122 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
-    public class DotEdgeAttributeCollection : DotEntityAttributeCollection<IDotEdgeAttributes>,
-        IDotEntityAttributes<IDotEdgeAttributes>,
-        IDotEdgeAttributeCollection
+    public class DotEdgeAttributeCollection : DotEntityAttributeCollection<IDotEdgeAttributes>, IDotEdgeAttributeCollection
     {
-        protected readonly DotEdgeAttributes _attributes;
-
         public DotEdgeAttributeCollection(DotMemberAttributeKeyLookup entityAttributePropertiesInterfaceKeyLookup)
             : base(entityAttributePropertiesInterfaceKeyLookup)
         {
         }
+
+        protected virtual DotEdgeAttributes Attributes => (DotEdgeAttributes) _attributes;
 
         // TODO: provide a font instance (through _attributes?)
 
         /// <summary>
         ///     Font properties.
         /// </summary>
-        public virtual DotEntityFontAttributes Font => _attributes.Font;
+        public virtual DotEntityFontAttributes Font => Attributes.Font;
 
         // TODO: comments
-        public virtual DotEdgeHeadAttributes Head => _attributes.Head;
-        public virtual DotEdgeTailAttributes Tail => _attributes.Tail;
+        public virtual DotEdgeHeadAttributes Head => Attributes.Head;
+        public virtual DotEdgeTailAttributes Tail => Attributes.Tail;
 
-        public virtual DotEdgeEndpointLabelAttributes EndpointLabels => _attributes.EndpointLabels;
+        public virtual DotEdgeEndpointLabelAttributes EndpointLabels => Attributes.EndpointLabels;
 
         public virtual double? Weight
         {
-            get => _attributes.Weight;
-            set => _attributes.Weight = value;
+            get => Attributes.Weight;
+            set => Attributes.Weight = value;
         }
 
         public virtual double? Length
         {
-            get => _attributes.Length;
-            set => _attributes.Length = value;
+            get => Attributes.Length;
+            set => Attributes.Length = value;
         }
 
         public virtual int? MinLength
         {
-            get => _attributes.MinLength;
-            set => _attributes.MinLength = value;
+            get => Attributes.MinLength;
+            set => Attributes.MinLength = value;
         }
 
         public virtual DotEscapeString LabelUrl
         {
-            get => _attributes.LabelUrl;
-            set => _attributes.LabelUrl = value;
+            get => Attributes.LabelUrl;
+            set => Attributes.LabelUrl = value;
         }
 
         public virtual DotEscapeString LabelHref
         {
-            get => _attributes.LabelHref;
-            set => _attributes.LabelHref = value;
+            get => Attributes.LabelHref;
+            set => Attributes.LabelHref = value;
         }
 
         public virtual DotEscapeString LabelUrlTarget
         {
-            get => _attributes.LabelUrlTarget;
-            set => _attributes.LabelUrlTarget = value;
+            get => Attributes.LabelUrlTarget;
+            set => Attributes.LabelUrlTarget = value;
         }
 
         public virtual DotEscapeString LabelUrlTooltip
         {
-            get => _attributes.LabelUrlTooltip;
-            set => _attributes.LabelUrlTooltip = value;
+            get => Attributes.LabelUrlTooltip;
+            set => Attributes.LabelUrlTooltip = value;
         }
 
         public virtual DotEscapeString EdgeUrl
         {
-            get => _attributes.EdgeUrl;
-            set => _attributes.EdgeUrl = value;
+            get => Attributes.EdgeUrl;
+            set => Attributes.EdgeUrl = value;
         }
 
         public virtual DotEscapeString EdgeHref
         {
-            get => _attributes.EdgeHref;
-            set => _attributes.EdgeHref = value;
+            get => Attributes.EdgeHref;
+            set => Attributes.EdgeHref = value;
         }
 
         public virtual DotEscapeString EdgeUrlTarget
         {
-            get => _attributes.EdgeUrlTarget;
-            set => _attributes.EdgeUrlTarget = value;
+            get => Attributes.EdgeUrlTarget;
+            set => Attributes.EdgeUrlTarget = value;
         }
 
         public virtual DotEscapeString EdgeUrlTooltip
         {
-            get => _attributes.EdgeUrlTooltip;
-            set => _attributes.EdgeUrlTooltip = value;
+            get => Attributes.EdgeUrlTooltip;
+            set => Attributes.EdgeUrlTooltip = value;
         }
 
         public virtual double? ArrowheadScale
         {
-            get => _attributes.ArrowheadScale;
-            set => _attributes.ArrowheadScale = value;
+            get => Attributes.ArrowheadScale;
+            set => Attributes.ArrowheadScale = value;
         }
 
         public virtual DotArrowDirections? ArrowDirections
         {
-            get => _attributes.ArrowDirections;
-            set => _attributes.ArrowDirections = value;
+            get => Attributes.ArrowDirections;
+            set => Attributes.ArrowDirections = value;
         }
 
         public virtual bool? AttachLabel
         {
-            get => _attributes.AttachLabel;
-            set => _attributes.AttachLabel = value;
+            get => Attributes.AttachLabel;
+            set => Attributes.AttachLabel = value;
         }
 
         public virtual bool? AllowLabelFloat
         {
-            get => _attributes.AllowLabelFloat;
-            set => _attributes.AllowLabelFloat = value;
+            get => Attributes.AllowLabelFloat;
+            set => Attributes.AllowLabelFloat = value;
         }
 
         public virtual bool? Constrain
         {
-            get => _attributes.Constrain;
-            set => _attributes.Constrain = value;
+            get => Attributes.Constrain;
+            set => Attributes.Constrain = value;
         }
 
         public override void SetFilled(DotColorDefinition value)

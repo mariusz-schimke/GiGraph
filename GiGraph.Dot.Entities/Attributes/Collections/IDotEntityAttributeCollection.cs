@@ -4,18 +4,19 @@ using System.Linq.Expressions;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
+    // TODO: remove interface
     public interface IDotEntityAttributeCollection<TIEntityAttributeProperties>
     {
         /// <summary>
-        ///     Sets a null value for the specified attribute key.
+        ///     Gets the DOT attribute the specified property provides access to.
         /// </summary>
         /// <param name="property">
-        ///     The property by which to get the DOT attribute key to set a value for.
+        ///     The property to get the DOT attribute key for.
         /// </param>
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        DotNullAttribute SetNull<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
+        DotAttribute Get<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
 
         /// <summary>
         ///     Assigns a value to the specified property, and returns the actual attribute added to the collection.
@@ -32,6 +33,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotAttribute Set<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value);
 
         /// <summary>
+        ///     Sets a null value for the specified attribute key.
+        /// </summary>
+        /// <param name="property">
+        ///     The property by which to get the DOT attribute key to set a value for.
+        /// </param>
+        /// <typeparam name="TProperty">
+        ///     The type returned by the property.
+        /// </typeparam>
+        DotNullAttribute Nullify<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
+
+        /// <summary>
         ///     Determines whether the collection contains an attribute with the specified key, whose value is null.
         /// </summary>
         /// <param name="property">
@@ -41,17 +53,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The type returned by the property to check.
         /// </typeparam>
         bool IsNullified<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
-
-        /// <summary>
-        ///     Gets the DOT attribute the specified property provides access to.
-        /// </summary>
-        /// <param name="property">
-        ///     The property to get the DOT attribute key for.
-        /// </param>
-        /// <typeparam name="TProperty">
-        ///     The type returned by the property.
-        /// </typeparam>
-        DotAttribute Get<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property);
 
         /// <summary>
         ///     Gets the DOT key of the attribute the specified property provides access to.

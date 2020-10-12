@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributes<TIEntityAttributeProperties> : IDotEntityAttributes<TIEntityAttributeProperties>
+    public abstract partial class DotEntityAttributes<TIEntityAttributeProperties>
     {
         protected readonly DotAttributeCollection _attributes;
 

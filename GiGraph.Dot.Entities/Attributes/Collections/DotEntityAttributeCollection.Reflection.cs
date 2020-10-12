@@ -10,47 +10,37 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     {
         public virtual string GetKey<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
-            var propertyInfo = GetProperty(property);
-            return GetKey(propertyInfo);
+            return _attributes.GetAttributeKey(property);
         }
 
         public virtual DotNullAttribute Nullify<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
-            var key = GetKey(property);
-            return Nullify(key);
+            return _attributes.Nullify(property);
         }
 
         public virtual DotAttribute Get<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
-            var key = GetKey(property);
-            return TryGetValue(key, out var result) ? result : null;
+            return _attributes.GetAttribute(property);
         }
 
         public virtual DotAttribute Set<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value)
         {
-            var propertyInfo = GetProperty(property);
-            propertyInfo.SetValue(this, value);
-
-            var key = GetKey(propertyInfo);
-            return TryGetValue(key, out var attribute) ? attribute : null;
+            return _attributes.SetAttribute(property, value);
         }
 
         public virtual bool Remove<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
-            var key = GetKey(property);
-            return Remove(key);
+            return _attributes.RemoveAttribute(property);
         }
 
         public virtual bool Contains<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
-            var key = GetKey(property);
-            return ContainsKey(key);
+            return _attributes.HasAttribute(property);
         }
 
         public virtual bool IsNullified<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
-            var key = GetKey(property);
-            return IsNullified(key);
+            return _attributes.HasNullified(property);
         }
 
         public virtual string GetPropertyPathByKey(string key)
@@ -89,20 +79,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return _entityAttributePropertiesInterfaceKeyLookup.TryGetKey(property, out var key)
                 ? key
                 : throw new KeyNotFoundException($"No attribute key is defined for the '{property}' property of the {property.DeclaringType} type.");
-        }
-
-        protected virtual PropertyInfo GetProperty<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
-        {
-            var propertyInfo = (property.Body as MemberExpression)?.Member as PropertyInfo ??
-                               throw new ArgumentException("Property expression expected.", nameof(property));
-
-            // make sure the property expression refers to current instance type, to any of its base classes, or to an interface it implements
-            if (!propertyInfo.DeclaringType.IsAssignableFrom(GetType()))
-            {
-                throw new ArgumentException("The property expression must refer to a member of the current instance.", nameof(property));
-            }
-
-            return propertyInfo;
         }
 
         protected virtual PropertyInfo[][] GetPathsOfEntityAttributeProperties()
