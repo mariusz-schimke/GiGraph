@@ -6,6 +6,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public partial class DotAttributeCollection : SortedList<string, DotAttribute>, IDotAttributeCollection
     {
+        // todo: implement explicitly
         public virtual string Annotation { get; set; }
 
         public virtual int RemoveAll(Predicate<DotAttribute> match)
