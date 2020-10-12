@@ -17,6 +17,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
         }
 
+        public virtual DotAttributeCollection Custom => _attributes;
+
+        // TODO: set value
+        public virtual DotEntityLinkAttributes Link { get; }
+
         [DotAttributeKey("color")]
         public virtual DotColorDefinition Color
         {
@@ -131,27 +136,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("URL")]
-        public virtual DotEscapeString Url
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("href")]
-        public virtual DotEscapeString Href
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("target")]
-        public virtual DotEscapeString UrlTarget
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("margin")]
