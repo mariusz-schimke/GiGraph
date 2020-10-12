@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
         [Theory]
         [InlineData(typeof(IDotClusterAttributes), typeof(DotClusterAttributeCollection))]
-        [InlineData(typeof(IDotEdgeAttributes), typeof(DotEdgeAttributeCollection))]
+        [InlineData(typeof(IDotEdgeBaseAttributes), typeof(DotEdgeAttributeCollection))]
         [InlineData(typeof(IDotGraphAttributes), typeof(DotGraphAttributeCollection))]
         [InlineData(typeof(IDotNodeAttributes), typeof(DotNodeAttributeCollection))]
         [InlineData(typeof(IDotSubgraphAttributes), typeof(DotSubgraphAttributeCollection))]

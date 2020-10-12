@@ -2,8 +2,7 @@
 {
     public interface IDotEdgeAttributeCollection :
         IDotAttributeCollection,
-        IDotEdgeAttributes,
-        IDotEntityAttributeCollection<IDotEdgeAttributes>,
+        IDotEdgeBaseAttributes,
         IDotFillable
     {
     }

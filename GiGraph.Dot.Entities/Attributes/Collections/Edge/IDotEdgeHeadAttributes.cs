@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     If defined, it is output as part of the head label of the edge. Also, this value is used near the head node, overriding any
-        ///     primary <see cref="IDotEdgeAttributes.Url" /> set on the edge.
+        ///     primary <see cref="IDotEdgeBaseAttributes.Url" /> set on the edge.
         /// </summary>
         DotEscapeString Url { get; set; }
 
@@ -50,7 +50,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     If the edge has a <see cref="Url" /> specified for its head, this attribute determines which window of the browser is used
         ///     for the URL. Setting it to "_graphviz" will open a new window if it doesn't already exist, or reuse it if it does. If
-        ///     undefined, the value of the primary <see cref="IDotEdgeAttributes.UrlTarget" /> attribute of the edge is used.
+        ///     undefined, the value of the primary <see cref="IDotEdgeBaseAttributes.UrlTarget" /> attribute of the edge is used.
         /// </summary>
         DotEscapeString UrlTarget { get; set; }
 
@@ -69,7 +69,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     <para>
         ///         Gets or sets the style of arrowhead on the head node of the edge (default: <see cref="DotArrowheadShape.Normal" />).
-        ///         Appears only if the <see cref="IDotEdgeAttributes.ArrowDirections" /> attribute on the edge is
+        ///         Appears only if the <see cref="IDotEdgeBaseAttributes.ArrowDirections" /> attribute on the edge is
         ///         <see cref="DotArrowDirections.Forward" /> or <see cref="DotArrowDirections.Both" />.
         ///     </para>
         ///     <para>
