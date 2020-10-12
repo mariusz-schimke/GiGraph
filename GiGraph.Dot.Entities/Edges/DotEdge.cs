@@ -42,6 +42,17 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
+        ///     Creates a new loop edge.
+        /// </summary>
+        /// <param name="nodeId">
+        ///     The identifier of the node.
+        /// </param>
+        public DotEdge(string nodeId)
+            : this(nodeId, nodeId)
+        {
+        }
+
+        /// <summary>
         ///     Indicates if the current instance is a loop edge.
         /// </summary>
         public virtual bool IsLoop => IsLoopEdge(this);
@@ -129,17 +140,6 @@ namespace GiGraph.Dot.Entities.Edges
         public static bool IsLoopEdge(DotEdge<DotEndpoint, DotEndpoint> edge)
         {
             return edge.Tail.NodeId == edge.Head.NodeId;
-        }
-
-        /// <summary>
-        ///     Creates a new loop edge instance.
-        /// </summary>
-        /// <param name="nodeId">
-        ///     The identifier of the node the edge should connect to itself.
-        /// </param>
-        public static DotEdge Loop(string nodeId)
-        {
-            return new DotEdge(nodeId, nodeId);
         }
     }
 }
