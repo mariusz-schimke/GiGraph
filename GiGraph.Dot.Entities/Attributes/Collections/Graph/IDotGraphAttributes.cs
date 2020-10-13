@@ -62,7 +62,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         DotVerticalAlignment? VerticalLabelAlignment { get; set; }
 
         /// <summary>
-        ///     If true, all node <see cref="IDotNodeAttributes.ExternalLabel" /> and edge <see cref="IDotEdgeBaseAttributes.ExternalLabel" />
+        ///     If true, all node <see cref="IDotNodeAttributes.ExternalLabel" /> and edge <see cref="IDotEdgeAttributes.ExternalLabel" />
         ///     attributes are placed, even if there is some overlap with nodes or other labels (default: true).
         /// </summary>
         bool? ForceExternalLabels { get; set; }

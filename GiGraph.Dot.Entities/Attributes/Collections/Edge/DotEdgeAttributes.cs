@@ -3,6 +3,8 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
@@ -16,8 +18,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         {
         }
 
-        public DotEdgeAttributes(DotAttributeCollection attributes)
-            : base(attributes, EdgeAttributesKeyLookup)
+        public DotEdgeAttributes()
+            : base(new DotAttributeCollection(), EdgeAttributesKeyLookup)
         {
         }
 
@@ -26,10 +28,49 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// </summary>
         public virtual DotEntityFontAttributes Font { get; }
 
+        public virtual DotEntityLinkAttributes Link { get; }
+
         public virtual DotEdgeHeadAttributes Head { get; }
         public virtual DotEdgeTailAttributes Tail { get; }
 
         public virtual DotEdgeEndpointLabelAttributes EndpointLabels { get; }
+
+        [DotAttributeKey("tooltip")]
+        public virtual DotEscapeString Tooltip
+        {
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+        }
+
+        [DotAttributeKey("color")]
+        public virtual DotColorDefinition Color
+        {
+            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+        }
+
+        [DotAttributeKey("fillcolor")]
+        public virtual DotColorDefinition FillColor
+        {
+            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+        }
+
+        [DotAttributeKey("xlabel")]
+        public virtual DotLabel ExternalLabel
+        {
+            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
+        }
+
+        [DotAttributeKey("penwidth")]
+        public virtual double? PenWidth
+        {
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(PenWidth), v.Value, "Pen width must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v.Value));
+        }
 
         [DotAttributeKey("weight")]
         public virtual double? Weight

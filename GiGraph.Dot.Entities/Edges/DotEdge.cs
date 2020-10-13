@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Edges
     /// </summary>
     public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     {
-        protected DotEdge(DotEndpoint tail, DotEndpoint head, IDotEdgeAttributeCollection attributes)
+        protected DotEdge(DotEndpoint tail, DotEndpoint head, DotEdgeAttributes attributes)
             : base(tail, head, attributes)
         {
         }

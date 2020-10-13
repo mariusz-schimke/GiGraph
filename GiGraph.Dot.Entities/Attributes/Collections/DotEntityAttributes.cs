@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributes<TIEntityAttributeProperties>
+    public abstract partial class DotEntityAttributes<TIEntityAttributeProperties> : IDotAnnotatable
     {
         protected readonly DotAttributeCollection _attributes;
 
@@ -12,6 +12,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             _attributes = attributes;
             _propertyAttributeKeyLookup = propertyAttributeKeyLookup;
+        }
+
+        public virtual DotAttributeCollection Collection => _attributes;
+
+        public virtual string Annotation
+        {
+            get => _attributes.Annotation;
+            set => _attributes.Annotation = value;
         }
 
         public virtual DotAttribute GetAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)

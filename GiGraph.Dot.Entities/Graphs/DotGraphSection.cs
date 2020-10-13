@@ -81,7 +81,7 @@ namespace GiGraph.Dot.Entities.Graphs
             return new DotGraphSection<TGraphAttributes>(
                 attributes,
                 new DotNodeCollection(new DotNodeAttributeCollection()),
-                new DotEdgeCollection(new DotEdgeAttributeCollection()),
+                new DotEdgeCollection(new DotEdgeAttributes()),
                 new DotSubgraphCollection(),
                 new DotClusterCollection());
         }

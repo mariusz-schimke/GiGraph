@@ -1,4 +1,3 @@
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Attributes;
@@ -8,7 +7,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
-    public class DotEdgeTailAttributes : DotEntityAttributes<IDotEdgeTailAttributes>, IDotEdgeTailAttributes
+    public class DotEdgeTailAttributes : DotEdgeEndpointAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup EdgeTailAttributesLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEdgeTailAttributes));
 
@@ -23,73 +22,73 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         [DotAttributeKey("taillabel")]
-        public virtual DotLabel Label
+        public override DotLabel Label
         {
-            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
+            get => base.Label;
+            set => base.Label = value;
         }
 
         [DotAttributeKey("tailURL")]
-        public virtual DotEscapeString Url
+        public override DotEscapeString Url
         {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => base.Url;
+            set => base.Url = value;
         }
 
         [DotAttributeKey("tailhref")]
-        public virtual DotEscapeString Href
+        public override DotEscapeString Href
         {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => base.Href;
+            set => base.Href = value;
         }
 
         [DotAttributeKey("tailtarget")]
-        public virtual DotEscapeString UrlTarget
+        public override DotEscapeString UrlTarget
         {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => base.UrlTarget;
+            set => base.UrlTarget = value;
         }
 
         [DotAttributeKey("tailtooltip")]
-        public virtual DotEscapeString UrlTooltip
+        public override DotEscapeString UrlTooltip
         {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            get => base.UrlTooltip;
+            set => base.UrlTooltip = value;
         }
 
         [DotAttributeKey("tailclip")]
-        public virtual bool? ClipToNodeBoundary
+        public override bool? ClipToNodeBoundary
         {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            get => base.ClipToNodeBoundary;
+            set => base.ClipToNodeBoundary = value;
         }
 
         [DotAttributeKey("sametail")]
-        public virtual string GroupName
+        public override string GroupName
         {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            get => base.GroupName;
+            set => base.GroupName = value;
         }
 
         [DotAttributeKey("tailport")]
-        public virtual DotEndpointPort Port
+        public override DotEndpointPort Port
         {
-            get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEndpointPortAttribute(k, v));
+            get => base.Port;
+            set => base.Port = value;
         }
 
         [DotAttributeKey("ltail")]
-        public virtual string ClusterId
+        public override string ClusterId
         {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotClusterIdAttribute(k, v));
+            get => base.ClusterId;
+            set => base.ClusterId = value;
         }
 
         [DotAttributeKey("arrowtail")]
-        public virtual DotArrowheadDefinition Arrowhead
+        public override DotArrowheadDefinition Arrowhead
         {
-            get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
+            get => base.Arrowhead;
+            set => base.Arrowhead = value;
         }
     }
 }

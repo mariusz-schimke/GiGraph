@@ -15,6 +15,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
+    // TODO: move comments to implementation and remove interface
     public interface IDotAttributeCollection : IDictionary<string, DotAttribute>, IDotEntity, IDotAnnotatable
     {
         /// <summary>

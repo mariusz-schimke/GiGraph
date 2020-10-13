@@ -133,8 +133,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     </para>
         ///     <para>
         ///         Indicates which ends of the edge should be decorated with an arrow head. The actual style of the arrowhead can be
-        ///         specified using the <see cref="IDotEdgeHeadAttributes.Arrowhead" /> attribute on the head of the edge, and the corresponding
-        ///         <see cref="IDotEdgeTailAttributes.Arrowhead" /> attribute on the tail of the edge.
+        ///         specified using the <see cref="IDotEdgeHeadAttributes.Arrowhead" /> attribute on the head of the edge, and the
+        ///         corresponding <see cref="IDotEdgeTailAttributes.Arrowhead" /> attribute on the tail of the edge.
         ///     </para>
         ///     <para>
         ///         A glyph is drawn at the head end of the edge if and only if the arrow direction is
@@ -170,43 +170,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Comments are inserted into output. Device-dependent.
         /// </summary>
         string Comment { get; set; }
-
-        /// <summary>
-        ///     <para>
-        ///         Hyperlinks incorporated into device-dependent output. At present, used in PS2, CMAP, I*MAP and SVG formats. For all these
-        ///         formats, URLs can be attached to nodes, edges and clusters. URL attributes can also be attached to the root graph in PS2,
-        ///         CMAP and I*MAP formats. This serves as the base URL for relative URLs in the former, and as the default image map file in
-        ///         the latter.
-        ///     </para>
-        ///     <para>
-        ///         For edges, the active areas are small circles where the edge contacts its head and tail nodes. In addition, for SVG,
-        ///         CMAPX and IMAP, the active area includes a thin polygon approximating the edge. The circles may overlap the related node,
-        ///         and the edge URL dominates. If the edge has a label, this will also be active. Finally, if the edge has a head or tail
-        ///         label, this will also be active.
-        ///     </para>
-        ///     <para>
-        ///         Note that, for edges, the head <see cref="IDotEdgeHeadAttributes.Url" />, the tail
-        ///         <see cref="IDotEdgeTailAttributes.Url" />, the <see cref="LabelUrl" />, and the <see cref="EdgeUrl" /> properties allow
-        ///         control of various parts of the edge. Also note that, if active areas of two edges overlap, it is unspecified which area
-        ///         dominates.
-        ///     </para>
-        /// </summary>
-        DotEscapeString Url { get; set; }
-
-        /// <summary>
-        ///     Synonym for <see cref="Url" />.
-        /// </summary>
-        DotEscapeString Href { get; set; }
-
-        /// <summary>
-        ///     If the object has a <see cref="Url" /> specified, this attribute determines which window of the browser is used for the URL.
-        ///     See
-        ///     <see href="http://www.w3.org/TR/html401/present/frames.html#adef-target">
-        ///         W3C documentation
-        ///     </see>
-        ///     .
-        /// </summary>
-        DotEscapeString UrlTarget { get; set; }
 
         /// <summary>
         ///     If defined, this is the link used for the label of the edge. This value overrides any <see cref="Url" /> defined for the

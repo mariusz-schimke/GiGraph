@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Output.Generators.Edges
         protected override void WriteEntity(DotEdgeDefinition edge, IDotEdgeWriter writer)
         {
             WriteEdges(edge.Endpoints, writer);
-            WriteAttributes(edge.Attributes, writer);
+            WriteAttributes(edge.Attributes.Collection, writer);
         }
 
         protected virtual void WriteEdges(IEnumerable<DotEndpointDefinition> endpoints, IDotEdgeWriter writer)
