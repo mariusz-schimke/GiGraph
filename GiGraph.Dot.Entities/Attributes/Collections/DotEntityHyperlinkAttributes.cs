@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="href">
         ///     Equivalent to <paramref name="url" />.
         /// </param>
-        public virtual void Set(DotEscapeString url, DotEscapeString target, DotEscapeString href = null)
+        public virtual void Set(DotEscapeString url, DotEscapeString target = null, DotEscapeString href = null)
         {
             Url = url;
             Target = target;
