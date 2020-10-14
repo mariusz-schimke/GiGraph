@@ -1,9 +1,9 @@
 namespace GiGraph.Dot.Entities.Types.Hyperlinks
 {
     /// <summary>
-    ///     Provides URL targets for hyperlink attributes.
+    ///     Specifies where to open linked documents.
     /// </summary>
-    public class DotUrlTargets
+    public class DotHyperlinkTargets
     {
         /// <summary>
         ///     Opens a new window if it doesn't already exist, or reuses it if it does.

@@ -50,7 +50,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     If the edge has a <see cref="Url" /> specified for the endpoint, this attribute determines which window of the browser is
-        ///     used for the URL. Setting it to <see cref="DotUrlTargets.NewWindow"/> will open a new window if it doesn't already exist, or reuse it if it does. If
+        ///     used for the URL. Setting it to <see cref="DotHyperlinkTargets.NewWindow"/> will open a new window if it doesn't already exist, or reuse it if it does. If
         ///     undefined, the value of the <see cref="IDotEdgeAttributes.UrlTarget" /> attribute of the edge is used.
         /// </summary>
         DotEscapeString UrlTarget { get; set; }

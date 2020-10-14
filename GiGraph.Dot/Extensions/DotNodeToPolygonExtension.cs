@@ -56,35 +56,12 @@ namespace GiGraph.Dot.Extensions
         {
             node.Attributes.Shape = DotNodeShape.Polygon;
 
-            if (sides.HasValue)
-            {
-                node.Attributes.Sides = sides;
-            }
-
-            if (regular.HasValue)
-            {
-                node.Attributes.Regular = regular;
-            }
-
-            if (peripheries.HasValue)
-            {
-                node.Attributes.Peripheries = peripheries;
-            }
-
-            if (orientation.HasValue)
-            {
-                node.Attributes.Orientation = orientation;
-            }
-
-            if (skew.HasValue)
-            {
-                node.Attributes.Skew = skew;
-            }
-
-            if (distortion.HasValue)
-            {
-                node.Attributes.Distortion = distortion;
-            }
+            node.Attributes.Sides = sides;
+            node.Attributes.Regular = regular;
+            node.Attributes.Peripheries = peripheries;
+            node.Attributes.Orientation = orientation;
+            node.Attributes.Skew = skew;
+            node.Attributes.Distortion = distortion;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Types.Hyperlinks;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -40,8 +41,23 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
-        public void Set(DotEscapeString url, DotEscapeString target, DotEscapeString href = null)
+        /// <summary>
+        ///     Specifies hyperlink attributes.
+        /// </summary>
+        /// <param name="url">
+        ///     The URL of the hyperlink.
+        /// </param>
+        /// <param name="target">
+        ///     The target of the hyperlink. See <see cref="DotHyperlinkTargets" /> for accepted values.
+        /// </param>
+        /// <param name="href">
+        ///     Equivalent to <paramref name="url" />.
+        /// </param>
+        public virtual void Set(DotEscapeString url, DotEscapeString target, DotEscapeString href = null)
         {
+            Url = url;
+            Target = target;
+            Href = href;
         }
     }
 }

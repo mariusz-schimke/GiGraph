@@ -185,7 +185,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     If the edge has a <see cref="Url" /> or <see cref="LabelUrl" /> attribute, this attribute determines which window of the
-        ///     browser is used for the URL attached to the label. Setting it to <see cref="DotUrlTargets.NewWindow" /> will open a new
+        ///     browser is used for the URL attached to the label. Setting it to <see cref="DotHyperlinkTargets.NewWindow" /> will open a new
         ///     window if it doesn't already exist, or reuse it if it does. If undefined, the value of the <see cref="UrlTarget" /> is used.
         /// </summary>
         DotEscapeString LabelUrlTarget { get; set; }
@@ -210,7 +210,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     If the edge has a <see cref="Url" /> or <see cref="EdgeUrl" /> attribute, this attribute determines which window of the
-        ///     browser is used for the URL attached to the non-label part of the edge. Setting it to <see cref="DotUrlTargets.NewWindow" />
+        ///     browser is used for the URL attached to the non-label part of the edge. Setting it to <see cref="DotHyperlinkTargets.NewWindow" />
         ///     will open a new window if it doesn't already exist, or reuse it if it does. If undefined, the value of the
         ///     <see cref="UrlTarget" /> is used.
         /// </summary>
