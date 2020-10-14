@@ -9,8 +9,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
     public abstract class DotEdgeEndpointAttributes : DotEntityAttributes<IDotEdgeEndpointAttributes>, IDotEdgeEndpointAttributes
     {
-        protected DotEdgeEndpointAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup propertyAttributeKeyLookup)
-            : base(attributes, propertyAttributeKeyLookup)
+        protected DotEdgeEndpointAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

@@ -13,26 +13,59 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
     {
         protected static readonly DotMemberAttributeKeyLookup EdgeAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEdgeAttributes));
 
-        protected DotEdgeAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup propertyAttributeKeyLookup)
-            : base(attributes, propertyAttributeKeyLookup)
+        protected DotEdgeAttributes(
+            DotAttributeCollection attributes,
+            DotMemberAttributeKeyLookup attributeKeyLookup,
+            DotEdgeHeadAttributes headAttributes,
+            DotEdgeTailAttributes tailAttributes,
+            DotEntityFontAttributes fontAttributes,
+            DotEntityHyperlinkAttributes hyperlinkAttributes,
+            DotEdgeEndpointLabelAttributes endpointLabelAttributes
+        )
+            : base(attributes, attributeKeyLookup, hyperlinkAttributes)
+        {
+            Head = headAttributes;
+            Tail = tailAttributes;
+            Font = fontAttributes;
+            EndpointLabels = endpointLabelAttributes;
+        }
+
+        public DotEdgeAttributes(DotAttributeCollection attributes)
+            : this(
+                attributes,
+                EdgeAttributesKeyLookup,
+                new DotEdgeHeadAttributes(attributes),
+                new DotEdgeTailAttributes(attributes),
+                new DotEntityFontAttributes(attributes),
+                new DotEntityHyperlinkAttributes(attributes),
+                new DotEdgeEndpointLabelAttributes(attributes)
+            )
         {
         }
 
         public DotEdgeAttributes()
-            : base(new DotAttributeCollection(), EdgeAttributesKeyLookup)
+            : this(new DotAttributeCollection())
         {
         }
 
         /// <summary>
-        ///     Font properties.
+        ///     Attributes applied to the head of the edge.
+        /// </summary>
+        public virtual DotEdgeHeadAttributes Head { get; }
+
+        /// <summary>
+        ///     Attributes applied to the tail of the edge.
+        /// </summary>
+        public virtual DotEdgeTailAttributes Tail { get; }
+
+        /// <summary>
+        ///     Font attributes.
         /// </summary>
         public virtual DotEntityFontAttributes Font { get; }
 
-        public virtual DotEntityLinkAttributes Link { get; }
-
-        public virtual DotEdgeHeadAttributes Head { get; }
-        public virtual DotEdgeTailAttributes Tail { get; }
-
+        /// <summary>
+        ///     Attributes applied to labels specified for the <see cref="Head" /> and/or the <see cref="Tail" /> of the edge.
+        /// </summary>
         public virtual DotEdgeEndpointLabelAttributes EndpointLabels { get; }
 
         [DotAttributeKey("tooltip")]

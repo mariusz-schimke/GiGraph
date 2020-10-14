@@ -11,8 +11,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
     {
         protected static readonly DotMemberAttributeKeyLookup EdgeTailAttributesLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEdgeTailAttributes));
 
-        protected DotEdgeTailAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup propertyAttributeKeyLookup)
-            : base(attributes, propertyAttributeKeyLookup)
+        protected DotEdgeTailAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

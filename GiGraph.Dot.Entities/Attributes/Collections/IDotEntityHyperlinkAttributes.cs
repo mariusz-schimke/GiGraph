@@ -2,7 +2,7 @@
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public interface IDotEntityLinkAttributes
+    public interface IDotEntityHyperlinkAttributes
     {
         /// <summary>
         ///     Hyperlinks incorporated into device-dependent output. At present, used in PS2, CMAP, I*MAP and SVG formats. For all these
@@ -25,6 +25,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     </see>
         ///     .
         /// </summary>
-        DotEscapeString UrlTarget { get; set; }
+        DotEscapeString Target { get; set; }
     }
 }

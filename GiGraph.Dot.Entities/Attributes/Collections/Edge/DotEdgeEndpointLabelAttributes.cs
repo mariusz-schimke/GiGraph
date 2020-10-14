@@ -9,8 +9,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
     {
         protected static readonly DotMemberAttributeKeyLookup MemberAttributeKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEdgeEndpointLabelAttributes));
 
-        protected DotEdgeEndpointLabelAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup propertyAttributeKeyLookup, DotEdgeEndpointLabelFontAttributes fontAttributes)
-            : base(attributes, propertyAttributeKeyLookup)
+        protected DotEdgeEndpointLabelAttributes(
+            DotAttributeCollection attributes,
+            DotMemberAttributeKeyLookup attributeKeyLookup,
+            DotEdgeEndpointLabelFontAttributes fontAttributes
+        )
+            : base(attributes, attributeKeyLookup)
         {
             Font = fontAttributes;
         }
@@ -20,14 +24,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         {
         }
 
-        // todo: adjust 'see' references in comment
         /// <summary>
-        ///     Font properties used for the head <see cref="IDotEdgeHeadAttributes.Label" /> and the tail
-        ///     <see cref="IDotEdgeTailAttributes.Label" /> of the edge. If not set, defaults to the edge's font properties (
-        ///     <see cref="IDotEdgeAttributes.Font" />).
+        ///     Font properties used for the head and the tail of the edge. If not set, default to the font properties specified for the
+        ///     edge.
         /// </summary>
         public virtual DotEdgeEndpointLabelFontAttributes Font { get; }
-        
+
         [DotAttributeKey("labeldistance")]
         public virtual double? Distance
         {

@@ -6,15 +6,27 @@ using GiGraph.Dot.Entities.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotEntityCommonAttributes<TIEntityAttributeProperties> : DotEntityAttributes<TIEntityAttributeProperties>
+    public abstract class DotEntityCommonAttributes<TIEntityAttributeProperties> : DotEntityTopLevelAttributes<TIEntityAttributeProperties>
     {
-        protected DotEntityCommonAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup propertyAttributeKeyLookup)
-            : base(attributes, propertyAttributeKeyLookup)
+        protected DotEntityCommonAttributes(
+            DotAttributeCollection attributes,
+            DotMemberAttributeKeyLookup attributeKeyLookup,
+            DotEntityHyperlinkAttributes hyperlinkAttributes
+        )
+            : base(attributes, attributeKeyLookup)
+        {
+            Hyperlink = hyperlinkAttributes;
+        }
+
+        protected DotEntityCommonAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+            : this(attributes, attributeKeyLookup, new DotEntityHyperlinkAttributes(attributes))
         {
         }
 
-        // TODO: set value
-        public virtual DotEntityLinkAttributes Link { get; }
+        /// <summary>
+        ///     Hyperlink attributes.
+        /// </summary>
+        public virtual DotEntityHyperlinkAttributes Hyperlink { get; }
 
         [DotAttributeKey("label")]
         public virtual DotLabel Label

@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return properties
                .Select(path => new
                 {
-                    Key = _propertyAttributeKeyLookup.TryGetKey(path.Last(), out var key) ? key : null,
+                    Key = _attributeKeyLookup.TryGetKey(path.Last(), out var key) ? key : null,
                     Path = string.Join(".", path.Select(property => property.Name))
                 })
                .Where(result => result.Key is {})

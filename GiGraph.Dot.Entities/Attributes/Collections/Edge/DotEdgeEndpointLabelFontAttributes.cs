@@ -8,8 +8,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
     {
         protected static readonly DotMemberAttributeKeyLookup EdgeEndpointLabelFontAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEdgeEndpointLabelFontAttributes));
 
-        protected DotEdgeEndpointLabelFontAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup propertyAttributeKeyLookup)
-            : base(attributes, propertyAttributeKeyLookup)
+        protected DotEdgeEndpointLabelFontAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 
@@ -19,8 +19,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Font used for the head <see cref="IDotEdgeHeadAttributes.Label" /> and the tail <see cref="IDotEdgeTailAttributes.Label" />
-        ///     of the edge. If not set, defaults to the edge's font name (<see cref="IDotEntityFontAttributes.Name" />).
+        ///     Font used for labels specified for the head and the tail of the edge. If not set, defaults to the font name specified for the
+        ///     edge.
         /// </summary>
         [DotAttributeKey("labelfontname")]
         public override string Name
@@ -30,8 +30,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Color used for the head <see cref="IDotEdgeHeadAttributes.Label" /> and the tail <see cref="IDotEdgeTailAttributes.Label" />
-        ///     of the edge. If not set, defaults to the edge's font color (<see cref="IDotEntityFontAttributes.Color" />).
+        ///     Color used for labels specified for the head and the tail of the edge. If not set, defaults to the font color specified for
+        ///     the edge.
         /// </summary>
         [DotAttributeKey("labelfontcolor")]
         public override DotColor Color
@@ -41,9 +41,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Font size, in points, used for the head <see cref="IDotEdgeHeadAttributes.Label" /> and the tail
-        ///     <see cref="IDotEdgeTailAttributes.Label" /> of the edge. If not set, defaults to the edge's font size (
-        ///     <see cref="IDotEntityFontAttributes.Size" />).
+        ///     Font size, in points, used for labels specified for the head and the tail of the edge. If not set, defaults to the font size
+        ///     specified for the edge.
         /// </summary>
         [DotAttributeKey("labelfontsize")]
         public override double? Size

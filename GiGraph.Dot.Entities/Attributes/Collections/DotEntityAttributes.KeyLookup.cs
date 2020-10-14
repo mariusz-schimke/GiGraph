@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     public abstract partial class DotEntityAttributes<TIEntityAttributeProperties>
     {
         protected const BindingFlags AttributeKeyPropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-        protected readonly DotMemberAttributeKeyLookup _propertyAttributeKeyLookup;
+        protected readonly DotMemberAttributeKeyLookup _attributeKeyLookup;
 
         public virtual string GetAttributeKey<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
@@ -23,14 +23,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             var method = (MethodInfo) accessor;
 
-            return _propertyAttributeKeyLookup.TryGetKey(method.GetRuntimeBaseDefinition(), out var key)
+            return _attributeKeyLookup.TryGetKey(method.GetRuntimeBaseDefinition(), out var key)
                 ? key
                 : throw new KeyNotFoundException($"No attribute key is defined for the '{accessor}' property accessor of the {accessor.DeclaringType} type.");
         }
 
         protected virtual string GetAttributeKey(PropertyInfo property)
         {
-            return _propertyAttributeKeyLookup.TryGetKey(property, out var key)
+            return _attributeKeyLookup.TryGetKey(property, out var key)
                 ? key
                 : throw new KeyNotFoundException($"No attribute key is defined for the '{property}' property of the {property.DeclaringType} type.");
         }

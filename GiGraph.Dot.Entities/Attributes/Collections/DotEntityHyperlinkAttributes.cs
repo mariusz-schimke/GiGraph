@@ -5,16 +5,16 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotEntityLinkAttributes : DotEntityAttributes<IDotEntityLinkAttributes>, IDotEntityLinkAttributes
+    public class DotEntityHyperlinkAttributes : DotEntityAttributes<IDotEntityHyperlinkAttributes>, IDotEntityHyperlinkAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EntityLinkAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEntityLinkAttributes));
+        protected static readonly DotMemberAttributeKeyLookup EntityLinkAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEntityHyperlinkAttributes));
 
-        protected DotEntityLinkAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup propertyAttributeKeyLookup)
-            : base(attributes, propertyAttributeKeyLookup)
+        protected DotEntityHyperlinkAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 
-        public DotEntityLinkAttributes(DotAttributeCollection attributes)
+        public DotEntityHyperlinkAttributes(DotAttributeCollection attributes)
             : base(attributes, EntityLinkAttributesKeyLookup)
         {
         }
@@ -34,10 +34,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         [DotAttributeKey("target")]
-        public virtual DotEscapeString UrlTarget
+        public virtual DotEscapeString Target
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+        }
+
+        public void Set(DotEscapeString url, DotEscapeString target, DotEscapeString href = null)
+        {
         }
     }
 }

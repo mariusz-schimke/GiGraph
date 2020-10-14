@@ -1,6 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Hyperlinks;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Strings;
 
@@ -184,8 +185,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     If the edge has a <see cref="Url" /> or <see cref="LabelUrl" /> attribute, this attribute determines which window of the
-        ///     browser is used for the URL attached to the label. Setting it to "_graphviz" will open a new window if it doesn't already
-        ///     exist, or reuse it if it does. If undefined, the value of the <see cref="UrlTarget" /> is used.
+        ///     browser is used for the URL attached to the label. Setting it to <see cref="DotUrlTargets.NewWindow" /> will open a new
+        ///     window if it doesn't already exist, or reuse it if it does. If undefined, the value of the <see cref="UrlTarget" /> is used.
         /// </summary>
         DotEscapeString LabelUrlTarget { get; set; }
 
@@ -209,8 +210,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     If the edge has a <see cref="Url" /> or <see cref="EdgeUrl" /> attribute, this attribute determines which window of the
-        ///     browser is used for the URL attached to the non-label part of the edge. Setting it to "_graphviz" will open a new window if
-        ///     it doesn't already exist, or reuse it if it does. If undefined, the value of the <see cref="UrlTarget" /> is used.
+        ///     browser is used for the URL attached to the non-label part of the edge. Setting it to <see cref="DotUrlTargets.NewWindow" />
+        ///     will open a new window if it doesn't already exist, or reuse it if it does. If undefined, the value of the
+        ///     <see cref="UrlTarget" /> is used.
         /// </summary>
         DotEscapeString EdgeUrlTarget { get; set; }
 
