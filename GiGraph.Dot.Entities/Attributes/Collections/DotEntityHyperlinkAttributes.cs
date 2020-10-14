@@ -1,14 +1,10 @@
-﻿using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Attributes;
-using GiGraph.Dot.Entities.Types.Hyperlinks;
-using GiGraph.Dot.Entities.Types.Strings;
+﻿using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public class DotEntityHyperlinkAttributes : DotEntityAttributes<IDotEntityHyperlinkAttributes>, IDotEntityHyperlinkAttributes
+    public class DotEntityHyperlinkAttributes : DotEntityHyperlinkAttributes<IDotEntityHyperlinkAttributes>
     {
-        protected static readonly DotMemberAttributeKeyLookup EntityLinkAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEntityHyperlinkAttributes));
+        protected static readonly DotMemberAttributeKeyLookup EntityHyperlinkAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEntityHyperlinkAttributes));
 
         protected DotEntityHyperlinkAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
@@ -16,48 +12,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         public DotEntityHyperlinkAttributes(DotAttributeCollection attributes)
-            : base(attributes, EntityLinkAttributesKeyLookup)
+            : base(attributes, EntityHyperlinkAttributesKeyLookup)
         {
-        }
-
-        [DotAttributeKey("URL")]
-        public virtual DotEscapeString Url
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("href")]
-        public virtual DotEscapeString Href
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("target")]
-        public virtual DotEscapeString Target
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        /// <summary>
-        ///     Specifies hyperlink attributes.
-        /// </summary>
-        /// <param name="url">
-        ///     The URL of the hyperlink.
-        /// </param>
-        /// <param name="target">
-        ///     The target of the hyperlink. See <see cref="DotHyperlinkTargets" /> for accepted values.
-        /// </param>
-        /// <param name="href">
-        ///     Equivalent to <paramref name="url" />.
-        /// </param>
-        public virtual void Set(DotEscapeString url, DotEscapeString target = null, DotEscapeString href = null)
-        {
-            Url = url;
-            Target = target;
-            Href = href;
         }
     }
 }

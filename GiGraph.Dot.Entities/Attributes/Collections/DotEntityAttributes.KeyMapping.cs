@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public abstract partial class DotEntityAttributes<TIEntityAttributeProperties>
     {
+        // TODO: move to top-level attributes only
         public virtual Dictionary<string, string> GetAttributeKeyMapping()
         {
             var properties = GetPathsOfEntityAttributeProperties();

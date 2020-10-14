@@ -3,7 +3,6 @@ using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
@@ -11,13 +10,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
     {
         protected static readonly DotMemberAttributeKeyLookup EdgeHeadAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEdgeHeadAttributes));
 
-        protected DotEdgeHeadAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        protected DotEdgeHeadAttributes(
+            DotAttributeCollection attributes,
+            DotMemberAttributeKeyLookup attributeKeyLookup,
+            DotEdgeHeadHyperlinkAttributes edgeHeadHyperlinkAttributes
+        )
+            : base(attributes, attributeKeyLookup, edgeHeadHyperlinkAttributes)
         {
         }
 
         public DotEdgeHeadAttributes(DotAttributeCollection attributes)
-            : base(attributes, EdgeHeadAttributesKeyLookup)
+            : this(attributes, EdgeHeadAttributesKeyLookup, new DotEdgeHeadHyperlinkAttributes(attributes))
         {
         }
 
@@ -26,34 +29,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         {
             get => base.Label;
             set => base.Label = value;
-        }
-
-        [DotAttributeKey("headURL")]
-        public override DotEscapeString Url
-        {
-            get => base.Url;
-            set => base.Url = value;
-        }
-
-        [DotAttributeKey("headhref")]
-        public override DotEscapeString Href
-        {
-            get => base.Href;
-            set => base.Href = value;
-        }
-
-        [DotAttributeKey("headtarget")]
-        public override DotEscapeString UrlTarget
-        {
-            get => base.UrlTarget;
-            set => base.UrlTarget = value;
-        }
-
-        [DotAttributeKey("headtooltip")]
-        public override DotEscapeString UrlTooltip
-        {
-            get => base.UrlTooltip;
-            set => base.UrlTooltip = value;
         }
 
         [DotAttributeKey("headclip")]

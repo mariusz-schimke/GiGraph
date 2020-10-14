@@ -4,9 +4,7 @@ using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Edges;
-using GiGraph.Dot.Entities.Types.Hyperlinks;
 using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
@@ -36,30 +34,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     node, or the center of a port, if applicable.
         /// </summary>
         bool? ClipToNodeBoundary { get; set; }
-
-        /// <summary>
-        ///     If defined, it is output as part of the endpoint label of the edge (<see cref="Label" />). Also, this value is used near the
-        ///     endpoint, overriding any <see cref="IDotEdgeAttributes.Url" /> set on the edge.
-        /// </summary>
-        DotEscapeString Url { get; set; }
-
-        /// <summary>
-        ///     Synonym for <see cref="Url" />.
-        /// </summary>
-        DotEscapeString Href { get; set; }
-
-        /// <summary>
-        ///     If the edge has a <see cref="Url" /> specified for the endpoint, this attribute determines which window of the browser is
-        ///     used for the URL. Setting it to <see cref="DotHyperlinkTargets.NewWindow"/> will open a new window if it doesn't already exist, or reuse it if it does. If
-        ///     undefined, the value of the <see cref="IDotEdgeAttributes.UrlTarget" /> attribute of the edge is used.
-        /// </summary>
-        DotEscapeString UrlTarget { get; set; }
-
-        /// <summary>
-        ///     Tooltip annotation attached to the endpoint of the edge. Used only if the edge has a <see cref="Url" /> attribute specified
-        ///     for the endpoint.
-        /// </summary>
-        DotEscapeString UrlTooltip { get; set; }
 
         /// <summary>
         ///     When specified, edges with the same endpoint and the same group name are aimed at the same point on that endpoint (dot only).
