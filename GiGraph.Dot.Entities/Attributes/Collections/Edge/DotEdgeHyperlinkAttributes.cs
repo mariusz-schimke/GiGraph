@@ -5,9 +5,9 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
-    public abstract class DotEdgeEndpointHyperlinkAttributes : DotEntityHyperlinkAttributes<IDotEdgeEndpointHyperlinkAttributes>
+    public abstract class DotEdgeHyperlinkAttributes : DotEntityHyperlinkAttributes<IDotEdgeHyperlinkAttributes>
     {
-        protected DotEdgeEndpointHyperlinkAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotEdgeHyperlinkAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }

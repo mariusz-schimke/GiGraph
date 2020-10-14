@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
-    public class DotEdgeHeadHyperlinkAttributes : DotEdgeEndpointHyperlinkAttributes
+    public class DotEdgeHeadHyperlinkAttributes : DotEdgeHyperlinkAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup EdgeHeadHyperlinkAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEdgeHeadHyperlinkAttributes));
 
