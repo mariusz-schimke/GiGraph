@@ -171,31 +171,5 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Comments are inserted into output. Device-dependent.
         /// </summary>
         string Comment { get; set; }
-
-        /// <summary>
-        ///     If defined, this is the link used for the non-label parts of the edge. This value overrides any primary <see cref="Url" />
-        ///     defined for the edge. Also, this value is used near the head or tail node unless overridden by its head
-        ///     <see cref="IDotEdgeHeadAttributes.Url" /> or tail <see cref="IDotEdgeTailAttributes.Url" />, respectively.
-        /// </summary>
-        DotEscapeString EdgeUrl { get; set; }
-
-        /// <summary>
-        ///     Synonym for <see cref="EdgeUrl" />.
-        /// </summary>
-        DotEscapeString EdgeHref { get; set; }
-
-        /// <summary>
-        ///     If the edge has a <see cref="Url" /> or <see cref="EdgeUrl" /> attribute, this attribute determines which window of the
-        ///     browser is used for the URL attached to the non-label part of the edge. Setting it to <see cref="DotHyperlinkTargets.NewWindow" />
-        ///     will open a new window if it doesn't already exist, or reuse it if it does. If undefined, the value of the
-        ///     <see cref="UrlTarget" /> is used.
-        /// </summary>
-        DotEscapeString EdgeUrlTarget { get; set; }
-
-        /// <summary>
-        ///     Tooltip annotation attached to the non-label part of the edge. This is used only if the edge has a <see cref="Url" /> or
-        ///     <see cref="EdgeUrl" /> attribute specified.
-        /// </summary>
-        DotEscapeString EdgeUrlTooltip { get; set; }
     }
 }
