@@ -20,7 +20,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             DotEdgeTailAttributes tailAttributes,
             DotEntityFontAttributes fontAttributes,
             DotEntityHyperlinkAttributes hyperlinkAttributes,
-            DotEdgeEndpointLabelAttributes endpointLabelAttributes
+            DotEdgeEndpointLabelAttributes endpointLabelAttributes,
+            DotEdgeLabelHyperlinkAttributes labelHyperlinkAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
@@ -28,6 +29,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             Tail = tailAttributes;
             Font = fontAttributes;
             EndpointLabels = endpointLabelAttributes;
+            LabelHyperlink = labelHyperlinkAttributes;
         }
 
         public DotEdgeAttributes(DotAttributeCollection attributes)
@@ -38,7 +40,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
                 new DotEdgeTailAttributes(attributes),
                 new DotEntityFontAttributes(attributes),
                 new DotEntityHyperlinkAttributes(attributes),
-                new DotEdgeEndpointLabelAttributes(attributes)
+                new DotEdgeEndpointLabelAttributes(attributes),
+                new DotEdgeLabelHyperlinkAttributes(attributes)
             )
         {
         }
@@ -67,6 +70,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Attributes applied to labels specified for the <see cref="Head" /> and/or the <see cref="Tail" /> of the edge.
         /// </summary>
         public virtual DotEdgeEndpointLabelAttributes EndpointLabels { get; }
+
+        /// <summary>
+        ///     Hyperlink attributes applied to the label of the edge.
+        /// </summary>
+        public virtual DotEdgeLabelHyperlinkAttributes LabelHyperlink { get; }
 
         [DotAttributeKey("tooltip")]
         public virtual DotEscapeString Tooltip
@@ -128,34 +136,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
                 ? throw new ArgumentOutOfRangeException(nameof(MinLength), v.Value, "Minimum length must be greater than or equal to 0.")
                 : new DotIntAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("labelURL")]
-        public virtual DotEscapeString LabelUrl
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("labelhref")]
-        public virtual DotEscapeString LabelHref
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("labeltarget")]
-        public virtual DotEscapeString LabelUrlTarget
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("labeltooltip")]
-        public virtual DotEscapeString LabelUrlTooltip
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey("edgeURL")]
