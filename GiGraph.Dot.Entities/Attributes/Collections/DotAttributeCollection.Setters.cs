@@ -146,9 +146,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Set(new DotArrowheadShapeAttribute(key, value));
         }
 
-        public virtual DotArrowDirectionsAttribute Set(string key, DotArrowDirections value)
+        public virtual DotEdgeDirectionsAttribute Set(string key, DotEdgeDirections value)
         {
-            return Set(new DotArrowDirectionsAttribute(key, value));
+            return Set(new DotEdgeDirectionsAttribute(key, value));
         }
 
         public virtual DotRankAttribute Set(string key, DotRank value)

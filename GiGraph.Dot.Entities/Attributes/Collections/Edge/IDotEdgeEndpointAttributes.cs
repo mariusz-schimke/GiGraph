@@ -44,10 +44,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     <para>
         ///         Gets or sets the style of arrowhead at the end of the edge (default: <see cref="DotArrowheadShape.Normal" />). Appears
-        ///         only if the <see cref="IDotEdgeAttributes.ArrowDirections" /> attribute on the edge is
-        ///         <see cref="DotArrowDirections.Forward" /> (when specifying an arrowhead for the head endpoint),
-        ///         <see cref="DotArrowDirections.Backward" /> (when specifying an arrowhead for the tail endpoint), or
-        ///         <see cref="DotArrowDirections.Both" />.
+        ///         only if the <see cref="IDotEdgeAttributes.Directions" /> attribute on the edge is
+        ///         <see cref="DotEdgeDirections.Forward" /> (when specifying an arrowhead for the head endpoint),
+        ///         <see cref="DotEdgeDirections.Backward" /> (when specifying an arrowhead for the tail endpoint), or
+        ///         <see cref="DotEdgeDirections.Both" />.
         ///     </para>
         ///     <para>
         ///         For basic shapes, assign a value of the <see cref="DotArrowheadShape" /> enumeration to this property (it will be

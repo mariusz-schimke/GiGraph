@@ -390,7 +390,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        DotArrowDirectionsAttribute Set(string key, DotArrowDirections value);
+        DotEdgeDirectionsAttribute Set(string key, DotEdgeDirections value);
 
         /// <summary>
         ///     Adds or replaces the specified rank constraint attribute in the collection.

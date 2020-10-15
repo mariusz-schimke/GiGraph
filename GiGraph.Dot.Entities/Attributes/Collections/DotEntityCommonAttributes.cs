@@ -6,6 +6,7 @@ using GiGraph.Dot.Entities.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
+    // TODO: the properties of this class don't inherit documentation comments. Add them manually.
     public abstract class DotEntityCommonAttributes<TIEntityAttributeProperties> : DotEntityTopLevelAttributes<TIEntityAttributeProperties>
     {
         protected DotEntityCommonAttributes(

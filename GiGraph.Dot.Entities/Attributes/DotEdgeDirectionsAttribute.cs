@@ -6,13 +6,13 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     Arrow directions attribute. Assignable to edges only. See the
+    ///     Edge directions attribute. Assignable to edges only. See the
     ///     <see href="https://www.graphviz.org/doc/info/attrs.html#k:dirType">
     ///         documentation
     ///     </see>
-    ///     to view how individual arrow directions are visualized.
+    ///     to view how individual directions are visualized.
     /// </summary>
-    public class DotArrowDirectionsAttribute : DotAttribute<DotArrowDirections>
+    public class DotEdgeDirectionsAttribute : DotAttribute<DotEdgeDirections>
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotArrowDirectionsAttribute(string key, DotArrowDirections value)
+        public DotEdgeDirectionsAttribute(string key, DotEdgeDirections value)
             : base(key, value)
         {
         }
@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
             return DotAttributeValueAttribute.TryGetValue(Value, out var result)
                 ? result
-                : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified arrow direction '{Value}' is invalid.");
+                : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified edge directions option '{Value}' is invalid.");
         }
     }
 }

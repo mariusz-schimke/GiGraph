@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Examples.Basic
             // an edge with arrowheads on both sides
             graph.Edges.Add("Foo", "Bar", edge =>
             {
-                edge.Attributes.ArrowDirections = DotArrowDirections.Both;
+                edge.Attributes.Directions = DotEdgeDirections.Both;
 
                 edge.Attributes.Tail.Arrowhead = DotArrowheadShape.Diamond;
                 edge.Attributes.Head.Arrowhead = DotArrowheadShape.Crow;

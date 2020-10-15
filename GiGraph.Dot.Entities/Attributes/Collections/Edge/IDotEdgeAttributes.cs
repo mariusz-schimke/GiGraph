@@ -1,7 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Hyperlinks;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Strings;
 
@@ -33,11 +32,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotLabel Label { get; set; }
 
         /// <summary>
-        ///     External label for the edge. The label will be placed near the center of the edge. This can be useful in dot to avoid the
-        ///     occasional problem when the use of edge labels distorts the layout. For other layouts, this attribute can be viewed as a
-        ///     synonym for the <see cref="Label" /> attribute. These labels are added after all nodes and edges have been placed. The labels
-        ///     will be placed so that they do not overlap any node or label. This means it may not be possible to place all of them. To
-        ///     force placing all of them, use the <see cref="IDotGraphAttributes.ForceExternalLabels" /> attribute on the graph.
+        ///     <para>
+        ///         External label for the edge. The label will be placed near the center of the edge. This can be useful in dot to avoid the
+        ///         occasional problem when the use of edge labels distorts the layout. For other layouts, this attribute can be viewed as a
+        ///         synonym for the <see cref="Label" /> attribute.
+        ///     </para>
+        ///     <para>
+        ///         These labels are added after all nodes and edges have been placed. The labels will be placed so that they do not overlap
+        ///         any node or label. This means it may not be possible to place all of them. To force placing all of them, use the
+        ///         <see cref="IDotGraphAttributes.ForceExternalLabels" /> attribute on the graph.
+        ///     </para>
         /// </summary>
         DotLabel ExternalLabel { set; get; }
 
@@ -129,28 +133,28 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     <para>
-        ///         Gets or sets edge type for drawing arrowheads. Default: <see cref="DotArrowDirections.Forward" /> (for directed graphs),
-        ///         <see cref="DotArrowDirections.None" /> (for undirected graphs).
+        ///         Gets or sets edge type for drawing arrowheads. Default: <see cref="DotEdgeDirections.Forward" /> (for directed graphs),
+        ///         <see cref="DotEdgeDirections.None" /> (for undirected graphs).
         ///     </para>
         ///     <para>
-        ///         Indicates which ends of the edge should be decorated with an arrow head. The actual style of the arrowhead can be
+        ///         Indicates which ends of the edge should be decorated with an arrowhead. The actual style of the arrowhead can be
         ///         specified using the <see cref="IDotEdgeHeadAttributes.Arrowhead" /> attribute on the head of the edge, and the
         ///         corresponding <see cref="IDotEdgeTailAttributes.Arrowhead" /> attribute on the tail of the edge.
         ///     </para>
         ///     <para>
-        ///         A glyph is drawn at the head end of the edge if and only if the arrow direction is
-        ///         <see cref="DotArrowDirections.Forward" /> or <see cref="DotArrowDirections.Both" />.
+        ///         A glyph is drawn at the head end of the edge if and only if the direction is <see cref="DotEdgeDirections.Forward" /> or
+        ///         <see cref="DotEdgeDirections.Both" />.
         ///     </para>
         ///     <para>
-        ///         A glyph is drawn at the tail end of the edge if and only if the direction is <see cref="DotArrowDirections.Backward" />
-        ///         or <see cref="DotArrowDirections.Both" />.
+        ///         A glyph is drawn at the tail end of the edge if and only if the direction is <see cref="DotEdgeDirections.Backward" /> or
+        ///         <see cref="DotEdgeDirections.Both" />.
         ///     </para>
         ///     <para>
         ///         For undirected edges T -- H, one of the nodes, usually the right hand one, is treated as the head for the purpose of
-        ///         interpreting <see cref="DotArrowDirections.Forward" /> and <see cref="DotArrowDirections.Backward" />.
+        ///         interpreting <see cref="DotEdgeDirections.Forward" /> and <see cref="DotEdgeDirections.Backward" />.
         ///     </para>
         /// </summary>
-        DotArrowDirections? ArrowDirections { get; set; }
+        DotEdgeDirections? Directions { get; set; }
 
         /// <summary>
         ///     If true, attaches label to the edge by a 2-segment polyline, underlining the label, then going to the closest point of

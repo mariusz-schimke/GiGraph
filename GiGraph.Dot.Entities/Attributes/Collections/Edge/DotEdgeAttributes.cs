@@ -70,7 +70,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual DotEntityFontAttributes Font { get; }
 
         /// <summary>
-        ///     Properties applied to labels specified for the <see cref="Head" /> and/or the <see cref="Tail" /> of the edge.
+        ///     Properties applied to labels specified for the <see cref="Head" /> and the <see cref="Tail" /> of the edge.
         /// </summary>
         public virtual DotEdgeEndpointLabelAttributes EndpointLabels { get; }
 
@@ -156,10 +156,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         [DotAttributeKey("dir")]
-        public virtual DotArrowDirections? ArrowDirections
+        public virtual DotEdgeDirections? Directions
         {
-            get => GetValueAs<DotArrowDirections>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotArrowDirections?) null;
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowDirectionsAttribute(k, v.Value));
+            get => GetValueAs<DotEdgeDirections>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotEdgeDirections?) null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeDirectionsAttribute(k, v.Value));
         }
 
         [DotAttributeKey("decorate")]
