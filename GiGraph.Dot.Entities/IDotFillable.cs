@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities
 {
-    // TODO: remove interface
+    // TODO: implement missing SetFilled methods and remove interface
     
     /// <summary>
     ///     Makes an element fillable with a color or a color list.
