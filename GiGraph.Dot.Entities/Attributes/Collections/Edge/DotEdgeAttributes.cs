@@ -21,8 +21,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             DotEntityFontAttributes fontAttributes,
             DotEntityHyperlinkAttributes hyperlinkAttributes,
             DotEdgeEndpointLabelAttributes endpointLabelAttributes,
-            DotEdgeHyperlinkAttributes edgeHyperlinkAttributes,
-            DotEdgeLabelHyperlinkAttributes labelHyperlinkAttributes
+            DotEdgeLabelHyperlinkAttributes labelHyperlinkAttributes,
+            DotEdgeHyperlinkAttributes edgeHyperlinkAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
@@ -43,8 +43,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
                 new DotEntityFontAttributes(attributes),
                 new DotEntityHyperlinkAttributes(attributes),
                 new DotEdgeEndpointLabelAttributes(attributes),
-                new DotEdgeHyperlinkAttributes(attributes),
-                new DotEdgeLabelHyperlinkAttributes(attributes)
+                new DotEdgeLabelHyperlinkAttributes(attributes),
+                new DotEdgeHyperlinkAttributes(attributes)
             )
         {
         }
