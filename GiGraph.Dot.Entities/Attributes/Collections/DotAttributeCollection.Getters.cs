@@ -57,7 +57,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return false;
         }
 
-        protected virtual bool GetValueAs<T>(string key, out T value, params Func<object, (bool IsValid, T Result)>[] converters)
+        public virtual bool GetValueAs<T>(string key, out T value, params Func<object, (bool IsValid, T Result)>[] converters)
         {
             if (!TryGetValue(key, out var attribute) || !(attribute.GetValue() is {} attributeValue))
             {

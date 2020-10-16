@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
@@ -13,6 +14,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         protected virtual bool GetValueAs<T>(MethodBase propertyAccessor, out T value)
         {
             return _attributes.GetValueAs(GetAttributeKey(propertyAccessor), out value);
+        }
+
+        protected virtual bool GetValueAs<T>(MethodBase propertyAccessor, out T value, params Func<object, (bool IsValid, T Result)>[] converters)
+        {
+            return _attributes.GetValueAs(GetAttributeKey(propertyAccessor), out value, converters);
         }
 
         protected virtual int? GetValueAsInt(MethodBase propertyAccessor)
