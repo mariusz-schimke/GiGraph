@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(IDotEdgeEndpointLabelAttributes.Distance), v.Value, "Endpoint label distance must be greater than or equal to 0.")
+                ? throw new ArgumentOutOfRangeException(nameof(Distance), v.Value, "Endpoint label distance must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
         }
 

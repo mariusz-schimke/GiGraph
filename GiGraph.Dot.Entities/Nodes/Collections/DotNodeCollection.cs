@@ -8,13 +8,13 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
 {
     public class DotNodeCollection : DotEntityWithIdCollection<DotNodeDefinition>, IDotEntity, IDotAnnotatable
     {
-        protected DotNodeCollection(Func<string, Predicate<DotNodeDefinition>> matchIdPredicate, IDotNodeAttributeCollection attributes)
+        protected DotNodeCollection(Func<string, Predicate<DotNodeDefinition>> matchIdPredicate, DotNodeAttributes attributes)
             : base(matchIdPredicate)
         {
             Attributes = attributes;
         }
 
-        public DotNodeCollection(IDotNodeAttributeCollection attributes)
+        public DotNodeCollection(DotNodeAttributes attributes)
             : this(matchIdPredicate: id => nodeDefinition => nodeDefinition is DotNode node && node.Id == id, attributes)
         {
         }
@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <summary>
         ///     Gets the attributes to apply by default to all nodes of the graph.
         /// </summary>
-        public virtual IDotNodeAttributeCollection Attributes { get; }
+        public virtual DotNodeAttributes Attributes { get; }
 
         public virtual string Annotation { get; set; }
 
@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="initAttrs">
         ///     An optional node attributes initializer delegate.
         /// </param>
-        public virtual T Add<T>(T node, Action<IDotNodeAttributeCollection> initAttrs)
+        public virtual T Add<T>(T node, Action<DotNodeAttributes> initAttrs)
             where T : DotNodeDefinition
         {
             Add(node);
@@ -55,7 +55,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="initAttrs">
         ///     An optional initializer delegate to call for the attributes of the created node.
         /// </param>
-        public virtual DotNode Add(string id, Action<IDotNodeAttributeCollection> initAttrs = null)
+        public virtual DotNode Add(string id, Action<DotNodeAttributes> initAttrs = null)
         {
             return Add(new DotNode(id), initAttrs);
         }
@@ -80,7 +80,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="ids">
         ///     The identifiers of the nodes to add.
         /// </param>
-        public virtual DotNodeGroup Add(Action<IDotNodeAttributeCollection> initGroupAttrs, params string[] ids)
+        public virtual DotNodeGroup Add(Action<DotNodeAttributes> initGroupAttrs, params string[] ids)
         {
             return Add(ids, initGroupAttrs);
         }
@@ -94,7 +94,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="initGroupAttrs">
         ///     An optional initializer delegate to call for the attributes of the created group.
         /// </param>
-        public virtual DotNodeGroup Add(IEnumerable<string> ids, Action<IDotNodeAttributeCollection> initGroupAttrs = null)
+        public virtual DotNodeGroup Add(IEnumerable<string> ids, Action<DotNodeAttributes> initGroupAttrs = null)
         {
             return Add(new DotNodeGroup(ids), initGroupAttrs);
         }
