@@ -39,5 +39,24 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             get => GetValueAs<DotImageScaling>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotImageScaling?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotImageScalingAttribute(k, v.Value));
         }
+
+        /// <summary>
+        ///     Specifies image attributes.
+        /// </summary>
+        /// <param name="path">
+        ///     The path to an image.
+        /// </param>
+        /// <param name="alignment">
+        ///     The alignment of the image.
+        /// </param>
+        /// <param name="scaling">
+        ///     The scaling option to apply to the image.
+        /// </param>
+        public virtual void Set(string path, DotAlignment? alignment = null, DotImageScaling? scaling = null)
+        {
+            Path = path;
+            Alignment = alignment;
+            Scaling = scaling;
+        }
     }
 }
