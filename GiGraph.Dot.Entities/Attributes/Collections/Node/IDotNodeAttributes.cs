@@ -117,61 +117,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         string ColorScheme { get; set; }
 
         /// <summary>
-        ///     <para>
-        ///         Gives the name of a file containing an image to be displayed inside the node. The image file must be in one of the
-        ///         <see href="http://www.graphviz.org/doc/info/output.html#d:image_fmts">
-        ///             recognized formats
-        ///         </see>
-        ///         , typically JPEG, PNG, GIF, BMP, SVG or Postscript, and be able to be converted into the desired output format.
-        ///     </para>
-        ///     <para>
-        ///         The file must contain the image size information. This is usually trivially true for the bitmap formats. For PostScript,
-        ///         the file must contain a line starting with %%BoundingBox: followed by four integers specifying the lower left x and y
-        ///         coordinates and the upper right x and y coordinates of the bounding box for the image, the coordinates being in points.
-        ///         An SVG image file must contain width and height attributes, typically as part of the svg element. The values for these
-        ///         should have the form of a floating point number, followed by optional units, e.g., width="76pt". Recognized units are in,
-        ///         px, pc, pt, cm and mm for inches, pixels, picas, points, centimeters and millimeters, respectively. The default unit is
-        ///         points.
-        ///     </para>
-        ///     <para>
-        ///         Unlike with the shapefile attribute, the image is treated as node content rather than the entire node. In particular, an
-        ///         image can be contained in a node of any shape, not just a rectangle.
-        ///     </para>
-        /// </summary>
-        string ImagePath { get; set; }
-
-        /// <summary>
-        ///     Controls how an image is positioned within its containing node. This only has an effect when the image is smaller than the
-        ///     containing node. The default is to be centered both horizontally and vertically (<see cref="DotAlignment.MiddleCenter" />).
-        /// </summary>
-        DotAlignment? ImageAlignment { get; set; }
-
-        /// <summary>
-        ///     <para>
-        ///         Attribute controlling how an image fills its containing node. In general, the image is given its natural size, (compare
-        ///         the <see cref="IDotGraphAttributes.Dpi" /> graph attribute), and the node size is made large enough to contain its image,
-        ///         its label, its margin, and its peripheries. Its width and height will also be at least as large as its minimum width and
-        ///         height. If, however, <see cref="Sizing" /> = <see cref="DotNodeSizing.Fixed" />, the <see cref="Width" /> and
-        ///         <see cref="Height" /> attributes specify the exact size of the node.
-        ///     </para>
-        ///     <para>
-        ///         During rendering, in the default case (<see cref="ImageScaling" /> = <see cref="DotImageScaling.None" />), the image
-        ///         retains its natural size. If <see cref="ImageScaling" /> = <see cref="DotImageScaling.Uniform" />, the image is uniformly
-        ///         scaled (i.e., its aspect ratio is preserved) to fit inside the node. At least one dimension of the image will be as large
-        ///         as possible given the size of the node. When <see cref="ImageScaling" /> = <see cref="DotImageScaling.FillWidth" />, the
-        ///         width of the image is scaled to fill the node width. The corresponding property holds when <see cref="ImageScaling" /> =
-        ///         <see cref="DotImageScaling.FillHeight" />. When <see cref="ImageScaling" /> = <see cref="DotImageScaling.FillBoth" />,
-        ///         both the height and the width are scaled separately to fill the node.
-        ///     </para>
-        ///     <para>
-        ///         In all cases, if a dimension of the image is larger than the corresponding dimension of the node, that dimension of the
-        ///         image is scaled down to fit the node. As with the case of expansion, if <see cref="ImageScaling" /> =
-        ///         <see cref="DotImageScaling.Uniform" />, width and height are scaled uniformly.
-        ///     </para>
-        /// </summary>
-        DotImageScaling? ImageScaling { get; set; }
-
-        /// <summary>
         ///     If a gradient fill is being used, this determines the angle of the fill. For linear fills, the colors transform along a line
         ///     specified by the angle and the center of the object. For radial fills, a value of zero causes the colors to transform
         ///     radially from the center; for non-zero values, the colors transform from a point near the object's periphery as specified by

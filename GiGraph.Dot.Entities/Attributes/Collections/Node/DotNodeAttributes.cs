@@ -19,11 +19,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEntityHyperlinkAttributes hyperlinkAttributes,
-            DotEntityFontAttributes fontAttributes
+            DotEntityFontAttributes fontAttributes,
+            DotNodeImageAttributes imageAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
             Font = fontAttributes;
+            Image = imageAttributes;
         }
 
         public DotNodeAttributes(DotAttributeCollection attributes)
@@ -31,7 +33,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
                 attributes,
                 NodeAttributesKeyLookup,
                 new DotEntityHyperlinkAttributes(attributes),
-                new DotEntityFontAttributes(attributes)
+                new DotEntityFontAttributes(attributes),
+                new DotNodeImageAttributes(attributes)
             )
         {
         }
@@ -45,6 +48,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     Font properties.
         /// </summary>
         public virtual DotEntityFontAttributes Font { get; }
+
+        /// <summary>
+        ///     Node image properties.
+        /// </summary>
+        public virtual DotNodeImageAttributes Image { get; }
 
         [DotAttributeKey("color")]
         public virtual DotColorDefinition Color
@@ -196,32 +204,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeSizingAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("image")]
-        public virtual string ImagePath
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
-        }
-
         [DotAttributeKey("group")]
         public virtual string GroupName
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
-        }
-
-        [DotAttributeKey("imagepos")]
-        public virtual DotAlignment? ImageAlignment
-        {
-            get => GetValueAs<DotAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotAlignment?) null;
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotAlignmentAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("imagescale")]
-        public virtual DotImageScaling? ImageScaling
-        {
-            get => GetValueAs<DotImageScaling>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotImageScaling?) null;
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotImageScalingAttribute(k, v.Value));
         }
     }
 }
