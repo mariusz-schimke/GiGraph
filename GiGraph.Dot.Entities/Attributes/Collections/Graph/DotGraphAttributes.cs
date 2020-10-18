@@ -297,5 +297,45 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
+
+        // applied both to graph background and to cluster fill
+        public virtual DotStyles? SetGradientFillStyleRadial(bool radial = true)
+        {
+            return base.SetStyle(radial: radial);
+        }
+
+        public virtual DotStyles? SetClustersStyle(
+            bool? filled = null,
+            bool? solid = null,
+            bool? dashed = null,
+            bool? dotted = null,
+            bool? bold = null,
+            bool? rounded = null,
+            bool? striped = null,
+            bool? invisible = null
+        )
+        {
+            return base.SetStyle(
+                filled: filled,
+                solid: solid,
+                dashed: dashed,
+                dotted: dotted,
+                bold: bold,
+                rounded: rounded,
+                striped: striped,
+                invisible: invisible
+            );
+        }
+
+        public virtual void SetClustersInvisible()
+        {
+            ApplyStyleOptions(DotStyles.Invisible);
+        }
+
+        // TODO: dopisać komentarze do metod związanych z ustawianiem styli
+        // TODO: dodać zamiast SetFilled() metody SetGradientFill(DotGradientColor color, bool radial)
+        // TODO: oraz SetStriped(DotMultiColor color) -- uwzględnić wagi
+        // TODO: oraz SetWedged(DotMultiColor color) -- uwzględnić wagi
+        // TODO: oraz SetFilled(DotColorDefinition/DotColor color)
     }
 }

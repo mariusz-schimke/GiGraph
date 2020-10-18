@@ -131,5 +131,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
+        
+        public virtual void SetInvisible()
+        {
+            ApplyStyleOptions(DotStyles.Invisible);
+        }
     }
 }

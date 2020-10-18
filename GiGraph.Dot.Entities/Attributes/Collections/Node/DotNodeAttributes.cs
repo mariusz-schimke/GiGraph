@@ -209,5 +209,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
+        
+        public virtual void SetInvisible()
+        {
+            ApplyStyleOptions(DotStyles.Invisible);
+        }
     }
 }

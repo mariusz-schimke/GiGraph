@@ -116,7 +116,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         Tapered = 1 << 10,
 
         /// <summary>
-        ///     Applicable to nodes and edges.
+        ///     Applicable to nodes, edges, and clusters.
         /// </summary>
         [DotAttributeValue("invis")]
         Invisible = 1 << 11

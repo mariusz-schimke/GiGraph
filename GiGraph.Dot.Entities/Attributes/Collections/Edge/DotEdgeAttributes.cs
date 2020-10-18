@@ -182,5 +182,31 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
+
+        public virtual DotStyles? SetStyle(
+            bool? solid = null,
+            bool? dashed = null,
+            bool? dotted = null,
+            bool? bold = null,
+            bool? tapered = null,
+            bool? invisible = null
+        )
+        {
+            return base.SetStyle(
+                solid: solid,
+                dashed: dashed,
+                dotted: dotted,
+                bold: bold,
+                tapered: tapered,
+                invisible: invisible
+            );
+        }
+
+        public virtual void SetInvisible()
+        {
+            ApplyStyleOptions(DotStyles.Invisible);
+        }
+        
+        // todo: dodać metodę Taper(double penWidth)
     }
 }

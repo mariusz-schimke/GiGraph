@@ -55,5 +55,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             Color = color;
             Name = name;
         }
+        
+        // TODO: dodać tutaj i do analogicznych klas jak Hyperlink metody Set(TIEntityAttributes) - kopiowanie z podanego źródła
     }
 }
