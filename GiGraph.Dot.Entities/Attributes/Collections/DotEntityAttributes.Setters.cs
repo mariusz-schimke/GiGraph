@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public  abstract partial class DotEntityAttributes<TIEntityAttributeProperties> 
+    public abstract partial class DotEntityAttributes<TIEntityAttributeProperties>
     {
         public virtual DotNullAttribute Nullify<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {

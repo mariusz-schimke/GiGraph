@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEntityHyperlinkAttributes hyperlinkAttributes,
-            DotEntityFontAttributes fontAttributes,
+            DotGraphFontAttributes fontAttributes,
             DotGraphClusterAttributes clusterAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 attributes,
                 GraphAttributesKeyLookup,
                 new DotEntityHyperlinkAttributes(attributes),
-                new DotEntityFontAttributes(attributes),
+                new DotGraphFontAttributes(attributes),
                 new DotGraphClusterAttributes(attributes)
             )
         {
@@ -47,21 +47,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     Font properties.
         /// </summary>
-        public virtual DotEntityFontAttributes Font { get; }
+        public virtual DotGraphFontAttributes Font { get; }
 
         /// <summary>
         ///     The graph-level attributes applied to clusters.
         /// </summary>
         public virtual DotGraphClusterAttributes Clusters { get; }
-
-        [DotAttributeKey("peripheries")]
-        public virtual int? Peripheries
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
-                ? throw new ArgumentOutOfRangeException(nameof(Peripheries), v.Value, "The number of peripheries must be greater than or equal to 0.")
-                : new DotIntAttribute(k, v.Value));
-        }
 
         [DotAttributeKey("bgcolor")]
         public virtual DotColorDefinition BackgroundColor
@@ -77,6 +68,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
+        // TODO: ten atrybut i kilka innych powtarza się między klasami.
+        // Zrobić metodę SetPenWidth, która obsłuży warunek walidacji?
         [DotAttributeKey("penwidth")]
         public virtual double? PenWidth
         {
@@ -154,13 +147,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("fontpath")]
-        public virtual string FontDirectories
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
         [DotAttributeKey("charset")]

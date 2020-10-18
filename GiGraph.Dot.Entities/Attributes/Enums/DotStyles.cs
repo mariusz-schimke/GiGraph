@@ -93,23 +93,22 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///     <para>
         ///         Applicable to edges. The effect depends on the <see cref="IDotEdgeAttributes.PenWidth" /> attribute of the edge, on the
         ///         <see cref="IDotEdgeAttributes.Directions" /> attribute, on the <see cref="IDotEdgeHeadAttributes.Arrowhead" /> attribute
-        ///         on the head of the edge, and on the corresponding <see cref="IDotEdgeTailAttributes.Arrowhead" /> attribute on the tail of
-        ///         the edge.
+        ///         on the head of the edge, and on the corresponding <see cref="IDotEdgeTailAttributes.Arrowhead" /> attribute on the tail
+        ///         of the edge.
         ///     </para>
         ///     <para>
         ///         The edge starts with width <see cref="IDotEdgeAttributes.PenWidth" />, and tapers to width 1, in points. The
         ///         <see cref="IDotEdgeAttributes.Directions" /> attribute determines whether the tapering goes from tail to head (
         ///         <see cref="IDotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Forward" /> ), from head to tail (
-        ///         <see cref="IDotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Backward" />), from the middle to both
-        ///         the head and tail ( <see cref="IDotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Both" />), or no
-        ///         tapering at all ( <see cref="IDotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.None" />). If the
-        ///         <see cref="IDotEdgeAttributes.Directions" /> attribute is not explicitly set, the default for the graph type is
-        ///         used.
+        ///         <see cref="IDotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Backward" />), from the middle to both the
+        ///         head and tail ( <see cref="IDotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Both" />), or no tapering at
+        ///         all ( <see cref="IDotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.None" />). If the
+        ///         <see cref="IDotEdgeAttributes.Directions" /> attribute is not explicitly set, the default for the graph type is used.
         ///     </para>
         ///     <para>
-        ///         Arrowheads and arrow tails are also drawn, based on the value of <see cref="IDotEdgeAttributes.Directions" />
-        ///         attribute; to avoid this, set the <see cref="IDotEdgeHeadAttributes.Arrowhead" /> attribute on the head of the edge, and/or
-        ///         the corresponding <see cref="IDotEdgeTailAttributes.Arrowhead" /> attribute on the tail of the edge to
+        ///         Arrowheads and arrow tails are also drawn, based on the value of <see cref="IDotEdgeAttributes.Directions" /> attribute;
+        ///         to avoid this, set the <see cref="IDotEdgeHeadAttributes.Arrowhead" /> attribute on the head of the edge, and/or the
+        ///         corresponding <see cref="IDotEdgeTailAttributes.Arrowhead" /> attribute on the tail of the edge to
         ///         <see cref="DotArrowheadShape.None" />.
         ///     </para>
         /// </summary>

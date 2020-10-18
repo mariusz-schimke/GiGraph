@@ -2,6 +2,7 @@
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
+    //TODO: implement IDictionary<string, DotAttribute>?
     public abstract class DotEntityTopLevelAttributes<TIEntityAttributeProperties> : DotEntityAttributes<TIEntityAttributeProperties>, IDotAnnotatable
     {
         protected DotEntityTopLevelAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)

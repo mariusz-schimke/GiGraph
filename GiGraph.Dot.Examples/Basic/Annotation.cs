@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Examples.Basic
             // graph
             graph.Annotation = "graph";
             graph.Attributes.Annotation = "graph attributes";
-            graph.Attributes.Set(a => a.Label, "Foo Graph").Annotation = "label";
+            graph.Attributes.SetAttribute(a => a.Label, "Foo Graph").Annotation = "label";
 
             // node defaults
             graph.Nodes.Attributes.Annotation = "global node attributes";
@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Nodes.Add("foo", attrs =>
             {
                 attrs.Annotation = "node attributes";
-                attrs.Set(a => a.Label, "foo").Annotation = "label";
+                attrs.SetAttribute(a => a.Label, "foo").Annotation = "label";
             }).Annotation = "node comment";
 
             // edge defaults

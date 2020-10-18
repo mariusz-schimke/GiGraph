@@ -6,7 +6,7 @@ using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
-    public class DotGraphClusterAttributes : DotEntityCommonAttributes<IDotGraphClusterAttributes>, IDotGraphClusterAttributes
+    public class DotGraphClusterAttributes : DotEntityAttributes<IDotGraphClusterAttributes>, IDotGraphClusterAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup GraphClusterAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotGraphClusterAttributes));
 

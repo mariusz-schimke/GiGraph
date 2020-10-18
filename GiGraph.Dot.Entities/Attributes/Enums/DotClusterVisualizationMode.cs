@@ -25,10 +25,9 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
 
         /// <summary>
         ///     When set, a subgraph whose name begins with "cluster" (see <see cref="DotCluster" />) is given special treatment (refers to
-        ///     clusters added to the <see cref="DotGraphSection{TGraphAttributes}.Clusters" /> collection of the root graph). The subgraph
-        ///     is laid out separately, and then integrated as a unit into its parent graph, with a bounding rectangle drawn about it. If the
-        ///     cluster has a label parameter, this label is displayed within the rectangle. Note also that there can be clusters within
-        ///     clusters.
+        ///     clusters added to the <see cref="DotCommonGraphSection.Clusters" /> collection of the root graph). The subgraph is laid out
+        ///     separately, and then integrated as a unit into its parent graph, with a bounding rectangle drawn about it. If the cluster has
+        ///     a label parameter, this label is displayed within the rectangle. Note also that there can be clusters within clusters.
         /// </summary>
         [DotAttributeValue("local")]
         Bounded

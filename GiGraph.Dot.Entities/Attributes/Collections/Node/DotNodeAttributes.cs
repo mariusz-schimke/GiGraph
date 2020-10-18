@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
@@ -13,7 +12,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
     public class DotNodeAttributes : DotEntityCommonAttributes<IDotNodeAttributes>, IDotNodeAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup NodeAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotGraphAttributes));
+        protected static readonly DotMemberAttributeKeyLookup NodeAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotNodeAttributes));
 
         protected DotNodeAttributes(
             DotAttributeCollection attributes,

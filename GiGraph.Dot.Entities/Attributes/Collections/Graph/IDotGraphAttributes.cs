@@ -143,13 +143,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         DotStyles? Style { get; set; }
 
         /// <summary>
-        ///     Gets or sets the directory list used by libgd to search for bitmap fonts if Graphviz was not built with the fontconfig
-        ///     library. If <see cref="FontDirectories" /> is not set, the environment variable DOTFONTPATH is checked. If that is not set,
-        ///     GDFONTPATH is checked. If not set, libgd uses its compiled-in font path. The default path is system dependent.
-        /// </summary>
-        string FontDirectories { get; set; }
-
-        /// <summary>
         ///     Specifies the character encoding used when interpreting string input as a text label. The default value is "UTF-8". The other
         ///     legal value is "iso-8859-1" or, equivalently, "Latin1". The charset attribute is case-insensitive. Note that if the character
         ///     encoding used in the input does not match the charset value, the resulting output may be very strange.

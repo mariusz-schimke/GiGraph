@@ -58,7 +58,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         protected static void UpdateAttributeKeyLookupForMembersOf(DotMemberAttributeKeyLookup output, Type entityAttributesType)
         {
-            UpdateAttributeKeyLookupForMembersOf(output, entityAttributesType, typeof(TIEntityAttributeProperties));
+            var entityAttributePropertiesInterfaceTypes = typeof(TIEntityAttributeProperties).GetInterfaces()
+               .Concat(new[] { typeof(TIEntityAttributeProperties) });
+
+            foreach (var interfaceType in entityAttributePropertiesInterfaceTypes)
+            {
+                UpdateAttributeKeyLookupForMembersOf(output, entityAttributesType, interfaceType);
+            }
         }
 
         protected static void UpdateAttributeKeyLookupForMembersOf(DotMemberAttributeKeyLookup output, Type entityAttributesType, Type entityAttributePropertiesInterfaceType)

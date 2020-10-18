@@ -6,9 +6,9 @@ using GiGraph.Dot.Output.Writers.Attributes.Graph;
 
 namespace GiGraph.Dot.Output.Generators.Attributes.Graph
 {
-    public class DotGlobalGraphAttributeCollectionGenerator : DotAttributeCollectionGenerator<IDotGlobalGraphAttributeStatementWriter>
+    public class DotGlobalGraphAttributeStatementsGenerator : DotAttributeCollectionGenerator<IDotGlobalGraphAttributeStatementWriter>
     {
-        public DotGlobalGraphAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotGlobalGraphAttributeStatementsGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

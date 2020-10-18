@@ -4,13 +4,21 @@ using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributes<TIEntityAttributeProperties>
+    public abstract class DotEntityAttributes
     {
         protected readonly DotAttributeCollection _attributes;
 
-        public DotEntityAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        public DotEntityAttributes(DotAttributeCollection attributes)
         {
             _attributes = attributes;
+        }
+    }
+
+    public abstract partial class DotEntityAttributes<TIEntityAttributeProperties> : DotEntityAttributes
+    {
+        public DotEntityAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+            : base(attributes)
+        {
             _attributeKeyLookup = attributeKeyLookup;
         }
 

@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
         protected override void WriteEntity(DotNode node, IDotNodeWriter writer)
         {
             WriteIdentifier(node.Id, writer);
-            WriteAttributes(node.Attributes, writer);
+            WriteAttributes(node.Attributes.Collection, writer);
         }
     }
 }

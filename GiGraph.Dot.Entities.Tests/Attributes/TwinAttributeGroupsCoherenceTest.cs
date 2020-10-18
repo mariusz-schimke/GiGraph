@@ -1,8 +1,3 @@
-using System;
-using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Collections.Edge;
-using Xunit;
-
 namespace GiGraph.Dot.Entities.Tests.Attributes
 {
     // TODO: napisać testy jednostkowe weryfikujące, czy właściwości posiadające te same klucze posiadają te same nazwy w różnych interfejsach

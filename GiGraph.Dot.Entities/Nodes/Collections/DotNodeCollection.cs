@@ -14,8 +14,8 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
             Attributes = attributes;
         }
 
-        public DotNodeCollection(DotNodeAttributes attributes)
-            : this(matchIdPredicate: id => nodeDefinition => nodeDefinition is DotNode node && node.Id == id, attributes)
+        public DotNodeCollection()
+            : this(matchIdPredicate: id => nodeDefinition => nodeDefinition is DotNode node && node.Id == id, new DotNodeAttributes())
         {
         }
 

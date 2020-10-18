@@ -23,12 +23,12 @@ namespace GiGraph.Dot.Entities.Edges.Collections
             _matchLoopPredicate = matchLoopPredicate;
         }
 
-        public DotEdgeCollection(DotEdgeAttributes attributes)
+        public DotEdgeCollection()
             : this
             (
                 (tailNodeId, headNodeId) => edgeDefinition => DotEdge.Equals(edgeDefinition, tailNodeId, headNodeId),
                 edgeDefinition => DotEdge.IsLoopEdge(edgeDefinition),
-                attributes
+                new DotEdgeAttributes()
             )
         {
         }

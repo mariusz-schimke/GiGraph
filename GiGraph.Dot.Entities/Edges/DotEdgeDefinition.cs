@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Edges
         public virtual DotEdgeAttributes Attributes { get; }
 
         /// <summary>
-        ///     Gets the edge endpoints.
+        ///     Gets the endpoints of the edge.
         /// </summary>
         public abstract IEnumerable<DotEndpointDefinition> Endpoints { get; }
 

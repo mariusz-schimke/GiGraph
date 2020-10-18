@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Output.Generators
         {
         }
 
-        protected virtual void WriteAttributes(IDotAttributeCollection attributes, IDotEntityWithAttributeListWriter writer, bool annotate = true)
+        protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotEntityWithAttributeListWriter writer, bool annotate = true)
         {
             if (attributes.Any())
             {

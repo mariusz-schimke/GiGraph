@@ -1,19 +1,17 @@
 ﻿using System;
-using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs.Collections
 {
-    public class DotGraphCollection<TGraph, TGraphAttributes> : DotEntityWithIdCollection<TGraph>, IDotEntity, IDotAnnotatable
-        where TGraph : DotCommonGraph<TGraphAttributes>
-        where TGraphAttributes : IDotAttributeCollection
+    public class DotCommonGraphCollection<TGraph> : DotEntityWithIdCollection<TGraph>, IDotEntity, IDotAnnotatable
+        where TGraph : IDotCommonGraph
     {
-        protected DotGraphCollection(Func<string, Predicate<TGraph>> matchIdPredicate)
+        protected DotCommonGraphCollection(Func<string, Predicate<TGraph>> matchIdPredicate)
             : base(matchIdPredicate)
         {
         }
 
-        public DotGraphCollection()
+        public DotCommonGraphCollection()
             : base(matchIdPredicate: id => graph => graph.Id == id)
         {
         }

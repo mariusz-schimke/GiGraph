@@ -1,19 +1,4 @@
-using System;
-using System.Linq;
-using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
-using GiGraph.Dot.Entities.Attributes.Collections.Edge;
-using GiGraph.Dot.Entities.Attributes.Collections.Graph;
-using GiGraph.Dot.Entities.Attributes.Collections.Node;
-using GiGraph.Dot.Entities.Attributes.Collections.Subgraph;
-using GiGraph.Dot.Entities.Clusters;
-using GiGraph.Dot.Entities.Edges;
-using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Nodes;
-using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Output.Options;
-using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes
 {

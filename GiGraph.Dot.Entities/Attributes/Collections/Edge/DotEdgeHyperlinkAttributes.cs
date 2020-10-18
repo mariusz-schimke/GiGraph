@@ -6,7 +6,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
-    public class DotEdgeHyperlinkAttributes : DotEntityHyperlinkAttributes<IDotEdgeHyperlinkAttributes>
+    public class DotEdgeHyperlinkAttributes : DotEntityHyperlinkAttributes<IDotEdgeHyperlinkAttributes>, IDotEdgeHyperlinkAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup EdgeHyperlinkAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEdgeHyperlinkAttributes));
 
