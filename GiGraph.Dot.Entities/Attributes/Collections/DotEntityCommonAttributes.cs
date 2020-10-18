@@ -114,11 +114,23 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             Style = DotStyles.Default;
         }
 
+        /// <summary>
+        ///     Applies the specified style options to the <see cref="Style" /> attribute.
+        /// </summary>
+        /// <param name="options">
+        ///     The options to apply.
+        /// </param>
         public virtual void ApplyStyleOptions(DotStyles options)
         {
             Style = Style.GetValueOrDefault(options) | options;
         }
 
+        /// <summary>
+        ///     Removes the specified style options from the <see cref="Style" /> attribute.
+        /// </summary>
+        /// <param name="options">
+        ///     The options to remove.
+        /// </param>
         public virtual void RemoveStyleOptions(DotStyles options)
         {
             if (Style.HasValue)

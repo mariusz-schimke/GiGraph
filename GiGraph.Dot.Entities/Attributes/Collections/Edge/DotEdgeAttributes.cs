@@ -183,6 +183,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
+        /// <summary>
+        ///     Applies the specified style options to the <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" />
+        ///     attribute.
+        /// </summary>
+        /// TODO: describe arguments
         public virtual DotStyles? SetStyle(
             bool? solid = null,
             bool? dashed = null,
@@ -202,11 +207,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             );
         }
 
+        /// <summary>
+        ///     Applies the <see cref="DotStyles.Invisible" /> style option to the
+        ///     <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" /> attribute.
+        /// </summary>
         public virtual void SetInvisible()
         {
             ApplyStyleOptions(DotStyles.Invisible);
         }
-        
+
         // todo: dodać metodę Taper(double penWidth)
     }
 }
