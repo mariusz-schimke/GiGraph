@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Extensions
         ///     are treated as a form of box shape, so the default peripheries value is 1, and the user-defined shape will be drawn in a
         ///     bounding rectangle. Setting peripheries to 0 will turn this off.
         /// </param>
-        /// <param name="orientation">
+        /// <param name="rotationAngle">
         ///     Angle, in degrees, used to rotate polygon node shapes (<see cref="IDotNodeAttributes.Shape" /> =
         ///     <see cref="DotNodeShape.Polygon" />). For any number of polygon sides, 0 degrees rotation results in a flat base. Default: 0,
         ///     maximum: 360.
@@ -50,7 +50,7 @@ namespace GiGraph.Dot.Extensions
             int? sides = null,
             bool? regular = null,
             int? peripheries = null,
-            double? orientation = null,
+            double? rotationAngle = null,
             double? skew = null,
             double? distortion = null)
         {
@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Extensions
             node.Attributes.Sides = sides;
             node.Attributes.Regular = regular;
             node.Attributes.Peripheries = peripheries;
-            node.Attributes.Orientation = orientation;
+            node.Attributes.RotationAngle = rotationAngle;
             node.Attributes.Skew = skew;
             node.Attributes.Distortion = distortion;
         }

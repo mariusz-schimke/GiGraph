@@ -172,7 +172,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         }
 
         [DotAttributeKey("orientation")]
-        public virtual double? Orientation
+        public virtual double? RotationAngle
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));

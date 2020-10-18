@@ -230,7 +230,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     Angle, in degrees, used to rotate polygon node shapes (<see cref="Shape" /> = <see cref="DotNodeShape.Polygon" />). For any
         ///     number of polygon sides, 0 degrees rotation results in a flat base. Default: 0, maximum: 360.
         /// </summary>
-        double? Orientation { get; set; }
+        double? RotationAngle { get; set; }
 
         /// <summary>
         ///     Determines how inedges and outedges, that is, edges with the node as their head or tail node respectively, are ordered (dot
