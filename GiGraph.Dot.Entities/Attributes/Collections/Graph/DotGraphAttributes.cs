@@ -332,6 +332,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             ApplyStyleOptions(DotStyles.Invisible);
         }
 
+        // TODO: rozważyć, czy te metody Set...() nie powinny być extension methods podobnie jak ToPolygon i inne
         // TODO: dopisać komentarze do metod związanych z ustawianiem styli
         // TODO: dodać zamiast SetFilled() metody SetGradientFill(DotGradientColor color, bool radial)
         // TODO: oraz SetStriped(DotMultiColor color) -- uwzględnić wagi

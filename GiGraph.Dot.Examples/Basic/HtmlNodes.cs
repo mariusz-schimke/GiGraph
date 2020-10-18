@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Examples.Basic
         {
             var graph = new DotGraph();
 
-            graph.Nodes.Add("Bar").ToHtml
+            graph.Nodes.Add("Bar").SetHtml
             (
                 @"<TABLE BORDER=""0"" CELLBORDER=""1"" CELLSPACING=""0"" CELLPADDING=""4"">
                     <TR>
