@@ -9,7 +9,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributes<TIEntityAttributeProperties>
+    public abstract partial class DotEntityAttributes
     {
         protected virtual bool GetValueAs<T>(MethodBase propertyAccessor, out T value)
         {
@@ -75,5 +75,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             return _attributes.GetValueAsEndpointPort(GetAttributeKey(propertyAccessor));
         }
+
+        // TODO: zrobić metody set i nazwać je analogicznie do getów, np. SetValueAsString()
     }
 }

@@ -54,6 +54,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// </summary>
         public virtual DotNodeImageAttributes Image { get; }
 
+        [DotAttributeKey("comment")]
+        public virtual string Comment
+        {
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+        }
+
         [DotAttributeKey("color")]
         public virtual DotColorDefinition Color
         {

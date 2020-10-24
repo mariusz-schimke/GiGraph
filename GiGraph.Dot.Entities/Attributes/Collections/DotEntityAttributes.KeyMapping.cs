@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using GiGraph.Dot.Entities.Types.Attributes;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributes<TIEntityAttributeProperties>
+    public abstract partial class DotEntityAttributes
     {
         // TODO: move to top-level attributes only
         public virtual Dictionary<string, string> GetAttributeKeyMapping()
@@ -13,47 +14,54 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             var properties = GetPathsOfEntityAttributeProperties();
 
             return properties
-               .Select(path => new
+               .Select(path =>
                 {
-                    Key = _attributeKeyLookup.TryGetKey(path.Last(), out var key) ? key : null,
-                    Path = string.Join(".", path.Select(property => property.Name))
+                    var actual = path.Last();
+                    return new
+                    {
+                        Key = actual.EntityAttributes.GetAttributeKey(actual.Property),
+                        Path = string.Join(".", path.Select(item => item.Property.Name))
+                    };
                 })
-               .Where(result => result.Key is {})
                .ToDictionary(
                     key => key.Key,
                     value => value.Path
                 );
         }
 
-        protected virtual PropertyInfo[][] GetPathsOfEntityAttributeProperties()
+        protected virtual (DotEntityAttributes EntityAttributes, PropertyInfo Property)[][] GetPathsOfEntityAttributeProperties()
         {
-            var result = new List<PropertyInfo[]>();
-            GetPathsOfEntityAttributeProperties(GetType(), result, new PropertyInfo[0]);
-            return result.ToArray();
+            var result = new List<Tuple<DotEntityAttributes, PropertyInfo>[]>();
+            GetPathsOfEntityAttributePropertiesRecursively(result, new Tuple<DotEntityAttributes, PropertyInfo>[0]);
+
+            return result.Select(item =>
+                item.Select(x => x.ToValueTuple()).ToArray()
+            ).ToArray();
         }
 
-        protected virtual void GetPathsOfEntityAttributeProperties(Type attributeCollectionType, List<PropertyInfo[]> result, PropertyInfo[] path)
+        protected virtual void GetPathsOfEntityAttributePropertiesRecursively(
+            List<Tuple<DotEntityAttributes, PropertyInfo>[]> result,
+            Tuple<DotEntityAttributes, PropertyInfo>[] basePath
+        )
         {
-            var properties = attributeCollectionType.GetProperties(AttributeKeyPropertyBindingFlags);
+            var properties = GetType().GetProperties(AttributeKeyPropertyBindingFlags);
 
             foreach (var property in properties)
             {
-                var currentPath = path.Append(property).ToArray();
+                var currentPath = basePath
+                   .Append(new Tuple<DotEntityAttributes, PropertyInfo>(this, property))
+                   .ToArray();
 
-                if (IsAttributeGroupingProperty(property, attributeCollectionType))
+                if (typeof(DotEntityAttributes).IsAssignableFrom(property.PropertyType))
                 {
-                    //GetPathsOfEntityAttributeProperties(property.PropertyType, attributeCollectionType, result, currentPath);
+                    var next = (DotEntityAttributes) property.GetValue(this);
+                    next.GetPathsOfEntityAttributePropertiesRecursively(result, currentPath);
                 }
-                else
+                else if (property.GetCustomAttribute<DotAttributeKeyAttribute>() is {})
                 {
                     result.Add(currentPath);
                 }
             }
-        }
-
-        protected static bool IsAttributeGroupingProperty(PropertyInfo property, Type attributeCollectionType)
-        {
-            return property.PropertyType == typeof(DotEntityAttributes<>).GetGenericTypeDefinition();
         }
     }
 }

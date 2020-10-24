@@ -85,6 +85,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// </summary>
         public virtual DotEdgeLabelHyperlinkAttributes LabelHyperlink { get; }
 
+        [DotAttributeKey("comment")]
+        public virtual string Comment
+        {
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+        }
+        
         [DotAttributeKey("tooltip")]
         public virtual DotEscapeString Tooltip
         {

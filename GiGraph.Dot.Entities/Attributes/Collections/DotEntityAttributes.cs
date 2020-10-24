@@ -1,58 +1,69 @@
-﻿using System;
-using System.Linq.Expressions;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract class DotEntityAttributes
+    public abstract partial class DotEntityAttributes
     {
+        protected static readonly BindingFlags AttributeKeyPropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+
+        protected readonly DotMemberAttributeKeyLookup _attributeKeyLookup;
         protected readonly DotAttributeCollection _attributes;
 
-        public DotEntityAttributes(DotAttributeCollection attributes)
+        protected DotEntityAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
         {
             _attributes = attributes;
-        }
-    }
-
-    public abstract partial class DotEntityAttributes<TIEntityAttributeProperties> : DotEntityAttributes
-    {
-        public DotEntityAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
-            : base(attributes)
-        {
             _attributeKeyLookup = attributeKeyLookup;
         }
 
-        public virtual DotAttribute GetAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        protected virtual string GetAttributeKey(MethodBase accessor)
         {
-            var key = GetAttributeKey(property);
-            return _attributes.TryGetValue(key, out var result) ? result : null;
+            var method = (MethodInfo) accessor;
+
+            return TryGetAttributeKey(method, out var key)
+                ? key
+                : throw new KeyNotFoundException($"No attribute key is defined for the '{accessor}' property accessor of the {accessor.DeclaringType} type.");
         }
 
-        public virtual DotAttribute SetAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value)
+        protected virtual bool TryGetAttributeKey(MethodInfo accessor, out string key)
         {
-            var propertyInfo = GetProperty(property);
-            propertyInfo.SetValue(this, value);
-
-            var key = GetAttributeKey(propertyInfo);
-            return _attributes.TryGetValue(key, out var attribute) ? attribute : null;
+            return _attributeKeyLookup.TryGetKey(accessor.GetRuntimeBaseDefinition(), out key);
         }
 
-        public virtual bool RemoveAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        protected virtual string GetAttributeKey(PropertyInfo property)
         {
-            var key = GetAttributeKey(property);
-            return _attributes.Remove(key);
+            return _attributeKeyLookup.TryGetKey(property, out var key) ||
+                   TryGetAttributeKey(property.GetMethod, out key) ||
+                   TryGetAttributeKey(property.SetMethod, out key)
+                ? key
+                : throw new KeyNotFoundException($"No attribute key is defined for the '{property}' property of the {property.DeclaringType} type.");
         }
 
-        public virtual bool HasAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        protected virtual void AddOrRemove<TAttribute, TValue>(MethodBase propertyAccessor, TValue value, Func<string, TValue, TAttribute> newAttribute)
+            where TAttribute : DotAttribute
         {
-            var key = GetAttributeKey(property);
-            return _attributes.ContainsKey(key);
+            AddOrRemove(GetAttributeKey(propertyAccessor), value, newAttribute);
         }
 
-        public virtual bool HasNullified<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        protected virtual void AddOrRemove<TAttribute, TValue>(string key, TValue value, Func<string, TValue, TAttribute> newAttribute)
+            where TAttribute : DotAttribute
         {
-            var key = GetAttributeKey(property);
-            return _attributes.IsNullified(key);
+            AddOrRemove(key, value is null ? null : newAttribute(key, value));
+        }
+
+        protected virtual void AddOrRemove<T>(string key, T attribute)
+            where T : DotAttribute
+        {
+            if (attribute is null)
+            {
+                _attributes.Remove(key);
+            }
+            else
+            {
+                _attributes.Set(attribute);
+            }
         }
     }
 }

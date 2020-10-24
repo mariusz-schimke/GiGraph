@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -10,31 +9,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public abstract partial class DotEntityAttributes<TIEntityAttributeProperties>
     {
-        protected const BindingFlags AttributeKeyPropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-        protected readonly DotMemberAttributeKeyLookup _attributeKeyLookup;
-
         // TODO: czy metody na poziomie bazowym powinny mieć te same nazwy co w kontekście grupy attrybutów, np. Font?
-        
+
         public virtual string GetAttributeKey<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var propertyInfo = GetProperty(property);
             return GetAttributeKey(propertyInfo);
-        }
-
-        protected virtual string GetAttributeKey(MethodBase accessor)
-        {
-            var method = (MethodInfo) accessor;
-
-            return _attributeKeyLookup.TryGetKey(method.GetRuntimeBaseDefinition(), out var key)
-                ? key
-                : throw new KeyNotFoundException($"No attribute key is defined for the '{accessor}' property accessor of the {accessor.DeclaringType} type.");
-        }
-
-        protected virtual string GetAttributeKey(PropertyInfo property)
-        {
-            return _attributeKeyLookup.TryGetKey(property, out var key)
-                ? key
-                : throw new KeyNotFoundException($"No attribute key is defined for the '{property}' property of the {property.DeclaringType} type.");
         }
 
         protected virtual PropertyInfo GetProperty<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)

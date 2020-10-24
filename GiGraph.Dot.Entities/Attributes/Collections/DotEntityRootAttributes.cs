@@ -1,11 +1,15 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     //TODO: implement IDictionary<string, DotAttribute>?
-    public abstract class DotEntityTopLevelAttributes<TIEntityAttributeProperties> : DotEntityAttributes<TIEntityAttributeProperties>, IDotAnnotatable
+    public abstract class DotEntityRootAttributes<TIEntityAttributeProperties> : DotEntityAttributes<TIEntityAttributeProperties>, IDotAnnotatable
     {
-        protected DotEntityTopLevelAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotEntityRootAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }

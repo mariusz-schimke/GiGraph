@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     // TODO: the properties of this class don't inherit documentation comments. Add them manually.
     // TODO: spróbować zrobić coś, żeby atrybuty w klasach potomnych nie powtarzały się między klasami,
     // a jeśli już, to zapewnić spójność nazw za pomocą jakiegoś wspólnego interfejsu?
-    public abstract class DotEntityCommonAttributes<TIEntityAttributeProperties> : DotEntityTopLevelAttributes<TIEntityAttributeProperties>
+    public abstract class DotEntityCommonAttributes<TIEntityAttributeProperties> : DotEntityRootAttributes<TIEntityAttributeProperties>
     {
         protected DotEntityCommonAttributes(
             DotAttributeCollection attributes,
@@ -51,13 +51,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("comment")]
-        public virtual string Comment
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
         protected internal virtual void SetStyle(DotStyleOptions options)

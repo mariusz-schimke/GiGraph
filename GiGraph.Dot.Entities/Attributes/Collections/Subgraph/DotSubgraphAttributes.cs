@@ -5,7 +5,7 @@ using GiGraph.Dot.Entities.Types.Attributes;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Subgraph
 {
-    public class DotSubgraphAttributes : DotEntityTopLevelAttributes<IDotSubgraphAttributes>, IDotSubgraphAttributes
+    public class DotSubgraphAttributes : DotEntityRootAttributes<IDotSubgraphAttributes>, IDotSubgraphAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup SubgraphAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotSubgraphAttributes));
 

@@ -55,6 +55,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// </summary>
         public virtual DotGraphClusterAttributes Clusters { get; }
 
+        [DotAttributeKey("comment")]
+        public virtual string Comment
+        {
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+        }
+        
         [DotAttributeKey("bgcolor")]
         public virtual DotColorDefinition BackgroundColor
         {
