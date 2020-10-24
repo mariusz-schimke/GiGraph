@@ -213,9 +213,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// </summary>
         public virtual void SetInvisible()
         {
-            ApplyStyleOptions(DotStyles.Invisible);
+            ApplyStyleOption(DotStyles.Invisible);
         }
 
-        // todo: dodać metodę Taper(double penWidth)
+        /// <summary>
+        ///     Applies the <see cref="DotStyles.Tapered" /> style to the edge. The edge starts with width <paramref name="penWidth" />, and
+        ///     tapers to width 1, in points.
+        /// </summary>
+        /// <param name="penWidth">
+        ///     The pen width to start with (applied to the <see cref="PenWidth" /> attribute).
+        /// </param>
+        public virtual void Taper(double penWidth)
+        {
+            PenWidth = penWidth;
+            ApplyStyleOption(DotStyles.Tapered);
+        }
     }
 }

@@ -134,7 +134,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         
         public virtual void SetInvisible()
         {
-            ApplyStyleOptions(DotStyles.Invisible);
+            ApplyStyleOption(DotStyles.Invisible);
         }
     }
 }

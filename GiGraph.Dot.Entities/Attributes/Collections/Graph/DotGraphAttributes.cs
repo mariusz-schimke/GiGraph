@@ -329,7 +329,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 
         public virtual void SetClustersInvisible()
         {
-            ApplyStyleOptions(DotStyles.Invisible);
+            ApplyStyleOption(DotStyles.Invisible);
         }
 
         // TODO: rozważyć, czy te metody Set...() nie powinny być extension methods podobnie jak ToPolygon i inne
