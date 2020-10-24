@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        ///     Specifies hyperlink attributes.
+        ///     Specifies hyperlink properties.
         /// </summary>
         /// <param name="url">
         ///     The URL of the hyperlink.
@@ -48,6 +48,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             Url = url;
             Target = target;
+        }
+
+        /// <summary>
+        ///     Specifies hyperlink properties.
+        /// </summary>
+        /// <param name="attributes">
+        ///     The properties to set.
+        /// </param>
+        public virtual void Set(IDotEntityHyperlinkAttributes attributes)
+        {
+            Set(attributes.Url, attributes.Target);
         }
     }
 }

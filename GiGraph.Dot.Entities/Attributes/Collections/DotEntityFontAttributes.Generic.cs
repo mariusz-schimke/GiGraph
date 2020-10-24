@@ -55,7 +55,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             Color = color;
             Name = name;
         }
-        
-        // TODO: dodać tutaj i do analogicznych klas jak Hyperlink metody Set(TIEntityAttributes) - kopiowanie z podanego źródła
+
+        /// <summary>
+        ///     Sets font properties.
+        /// </summary>
+        /// <param name="attributes">
+        ///     The properties to set.
+        /// </param>
+        public virtual void Set(IDotEntityFontAttributes attributes)
+        {
+            Set(attributes.Size, attributes.Color, attributes.Name);
+        }
     }
 }
