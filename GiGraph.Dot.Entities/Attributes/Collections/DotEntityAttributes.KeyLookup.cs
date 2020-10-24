@@ -13,6 +13,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         protected const BindingFlags AttributeKeyPropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
         protected readonly DotMemberAttributeKeyLookup _attributeKeyLookup;
 
+        // TODO: czy metody na poziomie bazowym powinny mieć te same nazwy co w kontekście grupy attrybutów, np. Font?
+        
         public virtual string GetAttributeKey<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var propertyInfo = GetProperty(property);

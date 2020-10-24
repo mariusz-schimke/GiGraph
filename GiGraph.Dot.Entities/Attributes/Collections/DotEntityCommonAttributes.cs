@@ -8,6 +8,8 @@ using GiGraph.Dot.Entities.Types.Styles;
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     // TODO: the properties of this class don't inherit documentation comments. Add them manually.
+    // TODO: spróbować zrobić coś, żeby atrybuty w klasach potomnych nie powtarzały się między klasami,
+    // a jeśli już, to zapewnić spójność nazw za pomocą jakiegoś wspólnego interfejsu?
     public abstract class DotEntityCommonAttributes<TIEntityAttributeProperties> : DotEntityTopLevelAttributes<TIEntityAttributeProperties>
     {
         protected DotEntityCommonAttributes(
