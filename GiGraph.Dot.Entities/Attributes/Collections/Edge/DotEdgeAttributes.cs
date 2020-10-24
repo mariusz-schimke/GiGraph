@@ -6,6 +6,7 @@ using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
@@ -187,29 +188,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Applies the specified style options to the <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" />
         ///     attribute.
         /// </summary>
-        /// TODO: describe arguments
-        public virtual DotStyles? SetStyle(
-            bool? solid = null,
-            bool? dashed = null,
-            bool? dotted = null,
-            bool? bold = null,
-            bool? tapered = null,
-            bool? invisible = null
-        )
+        public virtual void SetStyle(DotEdgeStyleOptions options)
         {
-            return base.SetStyle(
-                solid: solid,
-                dashed: dashed,
-                dotted: dotted,
-                bold: bold,
-                tapered: tapered,
-                invisible: invisible
-            );
+            base.SetStyle(options);
         }
 
         /// <summary>
         ///     Applies the <see cref="DotStyles.Invisible" /> style option to the
-        ///     <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" /> attribute.
+        ///     <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" /> attribute, making the edge invisible.
         /// </summary>
         public virtual void SetInvisible()
         {

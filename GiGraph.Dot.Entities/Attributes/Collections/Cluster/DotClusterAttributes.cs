@@ -6,6 +6,7 @@ using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
@@ -131,7 +132,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
-        
+
+        /// <summary>
+        ///     Applies the specified style options to the <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" />
+        ///     attribute.
+        /// </summary>
+        public virtual void SetStyle(DotClusterStyleOptions options)
+        {
+            base.SetStyle(options);
+        }
+
+        /// <summary>
+        ///     Applies the <see cref="DotStyles.Invisible" /> style option to the
+        ///     <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" /> attribute, making the border and background of
+        ///     the cluster invisible.
+        /// </summary>
         public virtual void SetInvisible()
         {
             ApplyStyleOption(DotStyles.Invisible);

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -58,55 +58,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
-        protected internal virtual DotStyles? SetStyle(
-            bool? filled = null,
-            bool? solid = null,
-            bool? dashed = null,
-            bool? dotted = null,
-            bool? bold = null,
-            bool? rounded = null,
-            bool? diagonals = null,
-            bool? striped = null,
-            bool? wedged = null,
-            bool? radial = null,
-            bool? tapered = null,
-            bool? invisible = null
-        )
+        protected internal virtual void SetStyle(DotStyleOptions options)
         {
-            var result = Style.GetValueOrDefault(DotStyles.Default);
-
-            var setOption = new Action<DotStyles, bool?>((option, set) =>
-            {
-                if (set == true)
-                {
-                    result |= option;
-                }
-                else if (set == false)
-                {
-                    result &= ~option;
-                }
-            });
-
-            setOption(DotStyles.Filled, filled);
-            setOption(DotStyles.Solid, solid);
-            setOption(DotStyles.Dashed, dashed);
-            setOption(DotStyles.Dotted, dotted);
-            setOption(DotStyles.Bold, bold);
-            setOption(DotStyles.Rounded, rounded);
-            setOption(DotStyles.Diagonals, diagonals);
-            setOption(DotStyles.Striped, striped);
-            setOption(DotStyles.Wedged, wedged);
-            setOption(DotStyles.Radial, radial);
-            setOption(DotStyles.Tapered, tapered);
-            setOption(DotStyles.Invisible, invisible);
-
-            if (result == DotStyles.Default)
-            {
-                // restore to default style if any style was set, or leave null otherwise
-                return Style = Style.HasValue ? result : Style;
-            }
-
-            return Style = result;
+            Style = options.ApplyTo(Style);
         }
 
         public virtual void SetDefaultStyle()

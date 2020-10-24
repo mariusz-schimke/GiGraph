@@ -8,6 +8,7 @@ using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Scaling;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
@@ -298,35 +299,29 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
-        // applied both to graph background and to cluster fill
-        public virtual DotStyles? SetGradientFillStyleRadial(bool radial = true)
+        /// <summary>
+        ///     Applies the specified graph style options to the <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" />
+        ///     attribute.
+        /// </summary>
+        public virtual void SetStyle(DotGraphStyleOptions options)
         {
-            return base.SetStyle(radial: radial);
+            base.SetStyle(options);
         }
 
-        public virtual DotStyles? SetClustersStyle(
-            bool? filled = null,
-            bool? solid = null,
-            bool? dashed = null,
-            bool? dotted = null,
-            bool? bold = null,
-            bool? rounded = null,
-            bool? striped = null,
-            bool? invisible = null
-        )
+        /// <summary>
+        ///     Applies the specified clusters style options to the
+        ///     <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" /> attribute.
+        /// </summary>
+        public virtual void SetClustersStyle(DotClusterStyleOptions options)
         {
-            return base.SetStyle(
-                filled: filled,
-                solid: solid,
-                dashed: dashed,
-                dotted: dotted,
-                bold: bold,
-                rounded: rounded,
-                striped: striped,
-                invisible: invisible
-            );
+            base.SetStyle(options);
         }
 
+        /// <summary>
+        ///     Applies the <see cref="DotStyles.Invisible" /> style option to the
+        ///     <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" /> attribute, making the border and background of
+        ///     clusters invisible.
+        /// </summary>
         public virtual void SetClustersInvisible()
         {
             ApplyStyleOption(DotStyles.Invisible);
