@@ -60,5 +60,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             Set(attributes.Url, attributes.Target);
         }
+        
+        // TODO: add separate types for font and url parameters
     }
 }
