@@ -59,18 +59,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                .Select(accessor => accessor.DeclaringType)
                .Distinct();
 
+            // build a temporary lookup for all types the implemented properties are declared by
             var propertiesDeclaringTypesLookup = new DotMemberAttributeKeyLookup();
             foreach (var propertyDeclaringType in propertiesDeclaringTypes)
             {
                 UpdateAttributeKeyLookupWithDeclaredPropertyAccessorsOf(propertiesDeclaringTypesLookup, propertyDeclaringType);
             }
 
+            // based on the previously created lookup, include base definitions of all implemented property accessors
             foreach (var targetMethod in interfaceMap.TargetMethods)
             {
                 var key = propertiesDeclaringTypesLookup.GetKey(targetMethod);
                 output.Set(targetMethod.GetRuntimeBaseDefinition(), key);
             }
 
+            // include interface properties
             foreach (var interfaceProperty in interfaceProperties)
             {
                 var interfacePropertyAccessor = interfaceProperty.GetMethod ?? interfaceProperty.SetMethod;

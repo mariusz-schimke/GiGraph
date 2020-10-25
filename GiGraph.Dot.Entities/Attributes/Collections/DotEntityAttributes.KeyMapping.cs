@@ -8,39 +8,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public abstract partial class DotEntityAttributes
     {
-        // TODO: move to top-level attributes only
-        public virtual Dictionary<string, string> GetAttributeKeyMapping()
-        {
-            var properties = GetPathsOfEntityAttributeProperties();
-
-            return properties
-               .Select(path =>
-                {
-                    var actual = path.Last();
-                    return new
-                    {
-                        Key = actual.EntityAttributes.GetAttributeKey(actual.Property),
-                        Path = string.Join(".", path.Select(item => item.Property.Name))
-                    };
-                })
-               .ToDictionary(
-                    key => key.Key,
-                    value => value.Path
-                );
-        }
-
         protected virtual (DotEntityAttributes EntityAttributes, PropertyInfo Property)[][] GetPathsOfEntityAttributeProperties()
         {
             var result = new List<Tuple<DotEntityAttributes, PropertyInfo>[]>();
-            GetPathsOfEntityAttributePropertiesRecursively(result, new Tuple<DotEntityAttributes, PropertyInfo>[0]);
+            GetPathsOfEntityAttributeProperties(result, new Tuple<DotEntityAttributes, PropertyInfo>[0]);
 
             return result.Select(item =>
                 item.Select(x => x.ToValueTuple()).ToArray()
             ).ToArray();
         }
 
-        protected virtual void GetPathsOfEntityAttributePropertiesRecursively(
-            List<Tuple<DotEntityAttributes, PropertyInfo>[]> result,
+        protected virtual void GetPathsOfEntityAttributeProperties(
+            List<Tuple<DotEntityAttributes, PropertyInfo>[]> output,
             Tuple<DotEntityAttributes, PropertyInfo>[] basePath
         )
         {
@@ -55,11 +34,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 if (typeof(DotEntityAttributes).IsAssignableFrom(property.PropertyType))
                 {
                     var next = (DotEntityAttributes) property.GetValue(this);
-                    next.GetPathsOfEntityAttributePropertiesRecursively(result, currentPath);
+                    next.GetPathsOfEntityAttributeProperties(output, currentPath);
                 }
                 else if (property.GetCustomAttribute<DotAttributeKeyAttribute>() is {})
                 {
-                    result.Add(currentPath);
+                    output.Add(currentPath);
                 }
             }
         }

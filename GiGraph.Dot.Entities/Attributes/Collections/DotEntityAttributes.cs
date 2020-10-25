@@ -32,9 +32,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return _attributeKeyLookup.TryGetKey(accessor.GetRuntimeBaseDefinition(), out key);
         }
 
-        protected virtual string GetAttributeKey(PropertyInfo property)
+        protected internal virtual string GetAttributeKey(PropertyInfo property)
         {
+            // the lookup contains only interface properties and property accessors of implementing classes
             return _attributeKeyLookup.TryGetKey(property, out var key) ||
+                   // the following calls are used only when retrieving a complete attribute key mapping, not for the base functionality of the library,
+                   // so including properties of implementing classes in the lookup (to optimize this use case) seems redundant
                    TryGetAttributeKey(property.GetMethod, out key) ||
                    TryGetAttributeKey(property.SetMethod, out key)
                 ? key

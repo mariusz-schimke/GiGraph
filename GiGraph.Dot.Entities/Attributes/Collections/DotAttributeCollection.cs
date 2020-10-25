@@ -41,24 +41,5 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             return TryGetValue(key, out var result) && result.GetValue() is null;
         }
-
-        protected virtual void AddOrRemove<T>(string key, T attribute)
-            where T : DotAttribute
-        {
-            if (attribute is null)
-            {
-                Remove(key);
-            }
-            else
-            {
-                Set(attribute);
-            }
-        }
-
-        protected virtual void AddOrRemove<TAttribute, TValue>(string key, TValue value, Func<string, TValue, TAttribute> newAttribute)
-            where TAttribute : DotAttribute
-        {
-            AddOrRemove(key, value is null ? null : newAttribute(key, value));
-        }
     }
 }
