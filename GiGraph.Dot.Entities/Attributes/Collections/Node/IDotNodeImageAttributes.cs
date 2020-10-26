@@ -1,3 +1,4 @@
+using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Attributes.Enums;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
@@ -37,10 +38,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <summary>
         ///     <para>
         ///         Attribute controlling how an image fills its containing node. In general, the image is given its natural size, (compare
-        ///         the <see cref="IDotGraphAttributes.Dpi" /> graph attribute), and the node size is made large enough to contain its image,
+        ///         the <see cref="DotGraphAttributes.Dpi" /> graph attribute), and the node size is made large enough to contain its image,
         ///         its label, its margin, and its peripheries. Its width and height will also be at least as large as its minimum width and
-        ///         height. If, however, <see cref="Sizing" /> = <see cref="DotNodeSizing.Fixed" />, the <see cref="Width" /> and
-        ///         <see cref="Height" /> attributes specify the exact size of the node.
+        ///         height. If, however, the node's <see cref="DotNodeAttributes.Sizing" /> is <see cref="DotNodeSizing.Fixed" />, the
+        ///         <see cref="DotNodeAttributes.Width" /> and <see cref="DotNodeAttributes.Height" /> attributes specify the exact size of
+        ///         the node.
         ///     </para>
         ///     <para>
         ///         During rendering, in the default case (<see cref="ImageScaling" /> = <see cref="DotImageScaling.None" />), the image

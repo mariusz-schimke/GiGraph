@@ -137,9 +137,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///         <see cref="DotEdgeDirections.None" /> (for undirected graphs).
         ///     </para>
         ///     <para>
-        ///         Indicates which ends of the edge should be decorated with an arrowhead. The actual style of the arrowhead can be
-        ///         specified using the <see cref="IDotEdgeHeadAttributes.Arrowhead" /> attribute on the head of the edge, and the
-        ///         corresponding <see cref="IDotEdgeTailAttributes.Arrowhead" /> attribute on the tail of the edge.
+        ///         Indicates which ends of the edge should be decorated with an arrowhead. The actual style of the arrowhead may be
+        ///         specified using the <see cref="DotEdgeEndpointAttributes.Arrowhead" /> attribute on the
+        ///         <see cref="DotEdgeAttributes.Head" /> or <see cref="DotEdgeAttributes.Tail" /> of the edge.
         ///     </para>
         ///     <para>
         ///         A glyph is drawn at the head end of the edge if and only if the direction is <see cref="DotEdgeDirections.Forward" /> or

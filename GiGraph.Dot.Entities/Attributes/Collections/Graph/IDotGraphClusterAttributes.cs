@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
+using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 
@@ -69,9 +70,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         DotColor BoundingBoxColor { get; set; }
 
         /// <summary>
-        ///     If true, allows edges between clusters (default: false). Specify an edge's head
-        ///     <see cref="IDotEdgeHeadAttributes.ClusterId" /> or tail <see cref="IDotEdgeTailAttributes.ClusterId" /> to attach the edge
-        ///     head or tail to a cluster referred to by the identifier.
+        ///     If true, allows edges between clusters (default: false). Specify a <see cref="DotEdgeEndpointAttributes.ClusterId" /> for an
+        ///     edge's <see cref="DotEdgeAttributes.Head" /> or <see cref="DotEdgeAttributes.Tail" /> to attach it to the border of the
+        ///     cluster with that identifier.
         /// </summary>
         bool? AllowEdgeClipping { get; set; }
 

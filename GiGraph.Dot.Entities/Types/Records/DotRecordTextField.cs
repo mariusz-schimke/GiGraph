@@ -1,4 +1,5 @@
 using System.Text;
+using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Types.Strings;
@@ -25,11 +26,11 @@ namespace GiGraph.Dot.Entities.Types.Records
         ///     The text to initialize the field with.
         /// </param>
         /// <param name="portName">
-        ///     The port name, that is a name that can be referred to from an edge endpoint in order to attach the end of the edge to the
-        ///     current field. You can use the <see cref="DotEndpoint.Port" /> property on a <see cref="DotEdge{TTail,THead}.Tail" /> or
-        ///     <see cref="DotEdge{TTail,THead}.Head" /> endpoint of a <see cref="DotEdge" />, or, alternatively, the
-        ///     <see cref="IDotEdgeTailAttributes.Port" /> property on its tail attributes, or the <see cref="IDotEdgeHeadAttributes.Port" />
-        ///     property on its head attributes.
+        ///     The port name, that is a name that can be referred to from an edge's endpoint in order to attach the end of the edge to the
+        ///     current field. You can use the <see cref="DotEndpoint.Port" /> property on the <see cref="DotEdge{TTail,THead}.Tail" /> or
+        ///     the <see cref="DotEdge{TTail,THead}.Head" /> endpoint of a <see cref="DotEdge" />, or, alternatively, the
+        ///     <see cref="DotEdgeEndpointAttributes.Port" /> property on its <see cref="DotEdgeAttributes.Head" /> or
+        ///     <see cref="DotEdgeAttributes.Tail" /> attributes.
         /// </param>
         public DotRecordTextField(DotEscapeString text, string portName = null)
         {
@@ -47,11 +48,11 @@ namespace GiGraph.Dot.Entities.Types.Records
         }
 
         /// <summary>
-        ///     Gets or sets a port name, that is a name that can be referred to from an edge endpoint in order to attach the end of the edge
-        ///     to the current field. You can use the <see cref="DotEndpoint.Port" /> property on a <see cref="DotEdge{TTail,THead}.Tail" />
-        ///     or <see cref="DotEdge{TTail,THead}.Head" /> endpoint of a <see cref="DotEdge" />, or, alternatively, the
-        ///     <see cref="IDotEdgeTailAttributes.Port" /> property on its tail attributes, or the <see cref="IDotEdgeHeadAttributes.Port" />
-        ///     property on its head attributes.
+        ///     Gets or sets a port name, that is a name that can be referred to from an edge's endpoint in order to attach the end of the
+        ///     edge to the current field. You can use the <see cref="DotEndpoint.Port" /> property on the
+        ///     <see cref="DotEdge{TTail,THead}.Tail" /> or the <see cref="DotEdge{TTail,THead}.Head" /> endpoint of a <see cref="DotEdge" />
+        ///     , or, alternatively, the <see cref="DotEdgeEndpointAttributes.Port" /> property on its <see cref="DotEdgeAttributes.Head" />
+        ///     or <see cref="DotEdgeAttributes.Tail" /> attributes.
         /// </summary>
         public virtual string PortName
         {
