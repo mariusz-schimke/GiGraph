@@ -4,12 +4,14 @@ using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
 using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
+    // todo: sprawdzić, czy w VS pojawiają się opisy atrybutów z interfejsu
     public class DotClusterAttributes : DotEntityCommonAttributes<IDotClusterAttributes>, IDotClusterAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup ClusterAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotClusterAttributes));
@@ -45,6 +47,27 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// </summary>
         public virtual DotEntityFontAttributes Font { get; }
 
+        // overridden to inherit comment from interface
+        public override DotLabel Label
+        {
+            get => base.Label;
+            set => base.Label = value;
+        }
+
+        // overridden to inherit comment from interface
+        public override string ColorScheme
+        {
+            get => base.ColorScheme;
+            set => base.ColorScheme = value;
+        }
+
+        // overridden to inherit comment from interface
+        public override DotStyles? Style
+        {
+            get => base.Style;
+            set => base.Style = value;
+        }
+        
         [DotAttributeKey("color")]
         public virtual DotColorDefinition Color
         {

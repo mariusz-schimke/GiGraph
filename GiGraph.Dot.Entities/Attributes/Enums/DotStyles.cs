@@ -91,10 +91,10 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
 
         /// <summary>
         ///     <para>
-        ///         Applicable to edges. The effect depends on the <see cref="IDotEdgeAttributes.PenWidth" /> attribute of the edge, on the
-        ///         <see cref="IDotEdgeAttributes.Directions" /> attribute, on the <see cref="IDotEdgeHeadAttributes.Arrowhead" /> attribute
-        ///         on the head of the edge, and on the corresponding <see cref="IDotEdgeTailAttributes.Arrowhead" /> attribute on the tail
-        ///         of the edge.
+        ///         Applicable to edges. The effect depends on the <see cref="IDotEdgeAttributes.PenWidth" /> attribute of an edge, its
+        ///         <see cref="IDotEdgeAttributes.Directions" /> attribute, the <see cref="DotEdgeHeadAttributes.Arrowhead" /> attribute of
+        ///         its <see cref="DotEdgeAttributes.Head" />, and on the corresponding <see cref="DotEdgeTailAttributes.Arrowhead" />
+        ///         attribute of its <see cref="DotEdgeAttributes.Tail" />.
         ///     </para>
         ///     <para>
         ///         The edge starts with width <see cref="IDotEdgeAttributes.PenWidth" />, and tapers to width 1, in points. The
@@ -106,10 +106,10 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///         <see cref="IDotEdgeAttributes.Directions" /> attribute is not explicitly set, the default for the graph type is used.
         ///     </para>
         ///     <para>
-        ///         Arrowheads and arrow tails are also drawn, based on the value of <see cref="IDotEdgeAttributes.Directions" /> attribute;
-        ///         to avoid this, set the <see cref="IDotEdgeHeadAttributes.Arrowhead" /> attribute on the head of the edge, and/or the
-        ///         corresponding <see cref="IDotEdgeTailAttributes.Arrowhead" /> attribute on the tail of the edge to
-        ///         <see cref="DotArrowheadShape.None" />.
+        ///         Arrowheads and arrow tails are also drawn, based on the value of the <see cref="DotEdgeAttributes.Directions" /> attribute.
+        ///         To avoid this, set the <see cref="DotEdgeHeadAttributes.Arrowhead" /> attribute of <see cref="DotEdgeAttributes.Head" />,
+        ///         and/or the corresponding <see cref="DotEdgeTailAttributes.Arrowhead" /> attribute of
+        ///         <see cref="DotEdgeAttributes.Tail" /> to <see cref="DotArrowheadShape.None" />.
         ///     </para>
         /// </summary>
         [DotAttributeValue("tapered")]

@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Types.Strings;
+﻿using GiGraph.Dot.Entities.Attributes.Collections.Edge;
+using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -25,9 +26,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///         label, this will also be active.
         ///     </para>
         ///     <para>
-        ///         Note that, for edges, the attributes <see cref="HeadUrl" />, <see cref="TailUrl" />, <see cref="LabelUrl" />, and
-        ///         <see cref="EdgeUrl" /> allow control of various parts of an edge. Also note that, if active areas of two edges overlap,
-        ///         it is unspecified which area dominates.
+        ///         Note that, for edges, the <see cref="DotEdgeHeadHyperlinkAttributes.Url" /> attribute of
+        ///         <see cref="DotEdgeAttributes.Head" />, the <see cref="DotEdgeTailHyperlinkAttributes.Url" /> attribute of
+        ///         <see cref="DotEdgeAttributes.Tail" />, the <see cref="DotEdgeLabelHyperlinkAttributes.Url" /> attribute of
+        ///         <see cref="DotEdgeAttributes.LabelHyperlink" />, and the <see cref="DotEdgeHyperlinkAttributes.Url" /> attribute of
+        ///         <see cref="DotEdgeAttributes.EdgeHyperlink" />, allow control of various parts of an edge. Also note that, if active
+        ///         areas of two edges overlap, it is unspecified which area dominates.
         ///     </para>
         /// </summary>
         DotEscapeString Url { get; set; }

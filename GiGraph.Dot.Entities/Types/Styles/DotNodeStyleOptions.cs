@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Rounded" /> state option state.
+        ///     Gets or sets the <see cref="DotStyles.Rounded" /> style option state.
         /// </summary>
         public virtual bool? Rounded
         {
@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Diagonals" /> state option state.
+        ///     Gets or sets the <see cref="DotStyles.Diagonals" /> style option state.
         /// </summary>
         public virtual bool? Diagonals
         {
@@ -54,7 +54,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Filled" /> state option state.
+        ///     Gets or sets the <see cref="DotStyles.Filled" /> style option state.
         /// </summary>
         public virtual bool? Filled
         {
@@ -63,7 +63,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Striped" /> state option state.
+        ///     Gets or sets the <see cref="DotStyles.Striped" /> style option state.
         /// </summary>
         public virtual bool? Striped
         {
@@ -72,7 +72,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Wedged" /> state option state.
+        ///     Gets or sets the <see cref="DotStyles.Wedged" /> style option state.
         /// </summary>
         public virtual bool? Wedged
         {
@@ -81,7 +81,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Radial" /> state option state.
+        ///     Gets or sets the <see cref="DotStyles.Radial" /> style option state.
         /// </summary>
         public virtual bool? Radial
         {

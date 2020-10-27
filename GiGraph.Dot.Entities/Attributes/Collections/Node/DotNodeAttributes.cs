@@ -54,6 +54,27 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// </summary>
         public virtual DotNodeImageAttributes Image { get; }
 
+        // overridden to inherit comment from interface
+        public override DotLabel Label
+        {
+            get => base.Label;
+            set => base.Label = value;
+        }
+
+        // overridden to inherit comment from interface
+        public override string ColorScheme
+        {
+            get => base.ColorScheme;
+            set => base.ColorScheme = value;
+        }
+
+        // overridden to inherit comment from interface
+        public override DotStyles? Style
+        {
+            get => base.Style;
+            set => base.Style = value;
+        }
+        
         [DotAttributeKey("comment")]
         public virtual string Comment
         {

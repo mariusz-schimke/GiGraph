@@ -4,6 +4,7 @@ using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
@@ -55,6 +56,27 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// </summary>
         public virtual DotGraphClusterAttributes Clusters { get; }
 
+        // overridden to inherit comment from interface
+        public override DotLabel Label
+        {
+            get => base.Label;
+            set => base.Label = value;
+        }
+
+        // overridden to inherit comment from interface
+        public override string ColorScheme
+        {
+            get => base.ColorScheme;
+            set => base.ColorScheme = value;
+        }
+
+        // overridden to inherit comment from interface
+        public override DotStyles? Style
+        {
+            get => base.Style;
+            set => base.Style = value;
+        }
+        
         [DotAttributeKey("comment")]
         public virtual string Comment
         {
@@ -335,7 +357,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         }
 
         // TODO: rozważyć, czy te metody Set...() nie powinny być extension methods podobnie jak ToPolygon i inne
-        // TODO: dopisać komentarze do metod związanych z ustawianiem styli
         // TODO: dodać zamiast SetFilled() metody SetGradientFill(DotGradientColor color, bool radial)
         // TODO: oraz SetStriped(DotMultiColor color) -- uwzględnić wagi
         // TODO: oraz SetWedged(DotMultiColor color) -- uwzględnić wagi

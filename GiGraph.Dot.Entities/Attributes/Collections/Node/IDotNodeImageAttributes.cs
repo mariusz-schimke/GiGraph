@@ -45,17 +45,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///         the node.
         ///     </para>
         ///     <para>
-        ///         During rendering, in the default case (<see cref="ImageScaling" /> = <see cref="DotImageScaling.None" />), the image
-        ///         retains its natural size. If <see cref="ImageScaling" /> = <see cref="DotImageScaling.Uniform" />, the image is uniformly
+        ///         During rendering, in the default case (<see cref="Scaling" /> = <see cref="DotImageScaling.None" />), the image
+        ///         retains its natural size. If <see cref="Scaling" /> = <see cref="DotImageScaling.Uniform" />, the image is uniformly
         ///         scaled (i.e., its aspect ratio is preserved) to fit inside the node. At least one dimension of the image will be as large
-        ///         as possible given the size of the node. When <see cref="ImageScaling" /> = <see cref="DotImageScaling.FillWidth" />, the
-        ///         width of the image is scaled to fill the node width. The corresponding property holds when <see cref="ImageScaling" /> =
-        ///         <see cref="DotImageScaling.FillHeight" />. When <see cref="ImageScaling" /> = <see cref="DotImageScaling.FillBoth" />,
+        ///         as possible given the size of the node. When <see cref="Scaling" /> = <see cref="DotImageScaling.FillWidth" />, the
+        ///         width of the image is scaled to fill the node width. The corresponding property holds when <see cref="Scaling" /> =
+        ///         <see cref="DotImageScaling.FillHeight" />. When <see cref="Scaling" /> = <see cref="DotImageScaling.FillBoth" />,
         ///         both the height and the width are scaled separately to fill the node.
         ///     </para>
         ///     <para>
         ///         In all cases, if a dimension of the image is larger than the corresponding dimension of the node, that dimension of the
-        ///         image is scaled down to fit the node. As with the case of expansion, if <see cref="ImageScaling" /> =
+        ///         image is scaled down to fit the node. As with the case of expansion, if <see cref="Scaling" /> =
         ///         <see cref="DotImageScaling.Uniform" />, width and height are scaled uniformly.
         ///     </para>
         /// </summary>

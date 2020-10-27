@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Radial" /> state option state. This option is applied to graph, and is inherited by
+        ///     Gets or sets the <see cref="DotStyles.Radial" /> style option state. This option is applied to graph, and is inherited by
         ///     clusters.
         /// </summary>
         public virtual bool? Radial

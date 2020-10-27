@@ -7,9 +7,10 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    // TODO: the properties of this class don't inherit documentation comments. Add them manually.
     // TODO: spróbować zrobić coś, żeby atrybuty w klasach potomnych nie powtarzały się między klasami,
     // a jeśli już, to zapewnić spójność nazw za pomocą jakiegoś wspólnego interfejsu?
+    // TODO: porównać mapę właściwości wszystkich elementów do tego, co było w poprzedniej wersji, żeby upewnić się,
+    // że nie zostały pominięte/dodane jakieś atrybuty
     public abstract class DotEntityCommonAttributes<TIEntityAttributeProperties> : DotEntityRootAttributes<TIEntityAttributeProperties>
     {
         protected DotEntityCommonAttributes(
@@ -58,13 +59,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             Style = options.ApplyTo(Style);
         }
 
+        /// <summary>
+        ///     Sets the style to <see cref="DotStyles.Default" />.
+        /// </summary>
         public virtual void SetDefaultStyle()
         {
             Style = DotStyles.Default;
         }
 
         /// <summary>
-        ///     Applies the specified style option(s) to the <see cref="Style" /> attribute.
+        ///     Applies the specified style option(s) to the <see cref="Style" /> attribute, preserving those that are already set.
         /// </summary>
         /// <param name="option">
         ///     The options to apply.

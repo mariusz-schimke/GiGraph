@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Solid" /> state option state.
+        ///     Gets or sets the <see cref="DotStyles.Solid" /> style option state.
         /// </summary>
         public virtual bool? Solid
         {
@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Dashed" /> state option state.
+        ///     Gets or sets the <see cref="DotStyles.Dashed" /> style option state.
         /// </summary>
         public virtual bool? Dashed
         {
@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Dotted" /> state option state.
+        ///     Gets or sets the <see cref="DotStyles.Dotted" /> style option state.
         /// </summary>
         public virtual bool? Dotted
         {
@@ -49,7 +49,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Bold" /> state option state.
+        ///     Gets or sets the <see cref="DotStyles.Bold" /> style option state.
         /// </summary>
         public virtual bool? Bold
         {
@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Invisible" /> state option state.
+        ///     Gets or sets the <see cref="DotStyles.Invisible" /> style option state.
         /// </summary>
         public virtual bool? Invisible
         {

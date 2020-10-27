@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Tapered" /> state option state.
+        ///     Gets or sets the <see cref="DotStyles.Tapered" /> style option state.
         /// </summary>
         public virtual bool? Tapered
         {
