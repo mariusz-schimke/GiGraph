@@ -60,9 +60,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        ///     Sets the style to <see cref="DotStyles.Default" />.
+        ///     Sets the style to <see cref="DotStyles.Default" />. Useful when the style of this type of element is set globally, and you
+        ///     want to restore it to the default one.
         /// </summary>
-        public virtual void SetDefaultStyle()
+        public virtual void RestoreDefaultStyle()
         {
             Style = DotStyles.Default;
         }

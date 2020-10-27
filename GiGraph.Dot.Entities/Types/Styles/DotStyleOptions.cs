@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         /// <summary>
         ///     Sets the style to <see cref="DotStyles.Default" />.
         /// </summary>
-        public virtual void SetDefaultStyle()
+        public virtual void SetDefault()
         {
             Style = DotStyles.Default;
         }
