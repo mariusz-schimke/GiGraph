@@ -57,17 +57,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         DotColorDefinition FillColor { get; set; }
 
         /// <summary>
+        ///     Specifies the width of the pen, in points, used to draw the bounding box around clusters. Default: 1.0, minimum: 0.0.
+        /// </summary>
+        double? BorderWidth { get; set; }
+
+        /// <summary>
         ///     <para>
         ///         Color used to draw the bounding box around clusters (default: <see cref="System.Drawing.Color.Black" />). If not defined,
         ///         <see cref="Color" /> is used. If this is not defined, the default is used.
         ///     </para>
         ///     <para>
-        ///         Note that a cluster inherits the root graph's attributes if defined. Thus, if <see cref="BoundingBoxColor" /> is set, it
+        ///         Note that a cluster inherits the root graph's attributes if defined. Thus, if <see cref="BorderColor" /> is set, it
         ///         will override a <see cref="IDotClusterAttributes.Color" /> or <see cref="IDotClusterAttributes.BackgroundColor" />
         ///         attribute set for the cluster.
         ///     </para>
         /// </summary>
-        DotColor BoundingBoxColor { get; set; }
+        DotColor BorderColor { get; set; }
 
         /// <summary>
         ///     If true, allows edges between clusters (default: false). Specify a <see cref="DotEdgeEndpointAttributes.ClusterId" /> for an

@@ -106,16 +106,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         }
 
         [DotAttributeKey("penwidth")]
-        public virtual double? PenWidth
+        public virtual double? BorderWidth
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(PenWidth), v.Value, "Pen width must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
+            set => AddOrRemoveBorderWidth(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("pencolor")]
-        public virtual DotColor BoundingBoxColor
+        public virtual DotColor BorderColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));

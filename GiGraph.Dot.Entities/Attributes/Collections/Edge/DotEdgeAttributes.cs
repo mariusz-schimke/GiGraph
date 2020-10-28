@@ -105,14 +105,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             get => base.Style;
             set => base.Style = value;
         }
-        
+
         [DotAttributeKey("comment")]
         public virtual string Comment
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
-        
+
         [DotAttributeKey("tooltip")]
         public virtual DotEscapeString Tooltip
         {
@@ -142,11 +142,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         [DotAttributeKey("penwidth")]
-        public virtual double? PenWidth
+        public virtual double? Width
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(PenWidth), v.Value, "Pen width must be greater than or equal to 0.")
+                ? throw new ArgumentOutOfRangeException(nameof(Width), v.Value, "Width must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
         }
 
@@ -231,15 +231,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Applies the <see cref="DotStyles.Tapered" /> style to the edge. The edge starts with width <paramref name="penWidth" />, and
+        ///     Applies the <see cref="DotStyles.Tapered" /> style to the edge. The edge starts with the specified width, and
         ///     tapers to width 1, in points.
         /// </summary>
-        /// <param name="penWidth">
-        ///     The pen width to start with (applied to the <see cref="PenWidth" /> attribute).
+        /// <param name="width">
+        ///     The width to start with (applied to the <see cref="Width" /> attribute).
         /// </param>
-        public virtual void Taper(double penWidth)
+        public virtual void Taper(double width)
         {
-            PenWidth = penWidth;
+            Width = width;
             ApplyStyleOption(DotStyles.Tapered);
         }
     }

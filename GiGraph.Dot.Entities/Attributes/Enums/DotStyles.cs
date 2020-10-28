@@ -91,13 +91,13 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
 
         /// <summary>
         ///     <para>
-        ///         Applicable to edges. The effect depends on the <see cref="IDotEdgeAttributes.PenWidth" /> attribute of an edge, its
+        ///         Applicable to edges. The effect depends on the <see cref="IDotEdgeAttributes.Width" /> attribute of an edge, its
         ///         <see cref="IDotEdgeAttributes.Directions" /> attribute, the <see cref="DotEdgeHeadAttributes.Arrowhead" /> attribute of
         ///         its <see cref="DotEdgeAttributes.Head" />, and on the corresponding <see cref="DotEdgeTailAttributes.Arrowhead" />
         ///         attribute of its <see cref="DotEdgeAttributes.Tail" />.
         ///     </para>
         ///     <para>
-        ///         The edge starts with width <see cref="IDotEdgeAttributes.PenWidth" />, and tapers to width 1, in points. The
+        ///         The edge starts with width <see cref="IDotEdgeAttributes.Width" />, and tapers to width 1, in points. The
         ///         <see cref="IDotEdgeAttributes.Directions" /> attribute determines whether the tapering goes from tail to head (
         ///         <see cref="IDotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Forward" /> ), from head to tail (
         ///         <see cref="IDotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Backward" />), from the middle to both the

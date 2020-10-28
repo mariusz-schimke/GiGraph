@@ -113,12 +113,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         }
 
         [DotAttributeKey("penwidth")]
-        public virtual double? PenWidth
+        public virtual double? BorderWidth
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(PenWidth), v.Value, "Pen width must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
+            set => AddOrRemoveBorderWidth(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("xlabel")]

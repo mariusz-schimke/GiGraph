@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
@@ -27,8 +28,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
+        [DotAttributeKey("penwidth")]
+        public virtual double? BorderWidth
+        {
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
+            set => AddOrRemoveBorderWidth(MethodBase.GetCurrentMethod(), value);
+        }
+
         [DotAttributeKey("pencolor")]
-        public virtual DotColor BoundingBoxColor
+        public virtual DotColor BorderColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));

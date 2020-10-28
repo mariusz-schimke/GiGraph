@@ -124,7 +124,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges. The value has no
         ///     effect on text. Default: 1.0, minimum: 0.0.
         /// </summary>
-        double? PenWidth { get; set; }
+        double? Width { get; set; }
 
         /// <summary>
         ///     Gets or sets the multiplicative scale factor for arrowheads (default: 1.0, minimum: 0.0).

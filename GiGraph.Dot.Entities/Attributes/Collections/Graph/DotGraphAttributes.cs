@@ -98,17 +98,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
-        // TODO: ten atrybut i kilka innych powtarza się między klasami.
-        // Zrobić metodę SetPenWidth, która obsłuży warunek walidacji?
-        [DotAttributeKey("penwidth")]
-        public virtual double? PenWidth
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(PenWidth), v.Value, "Pen width must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
-        }
-
+        // TODO: niektóre atrybuty powtarzają się między klasami.
+        // Zrobić metody analogiczne do AddOrRemovePenWidth, które obsłużą warunki walidacji?
+        
         [DotAttributeKey("labeljust")]
         public virtual DotHorizontalAlignment? HorizontalLabelAlignment
         {

@@ -128,7 +128,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     Specifies the width of the pen, in points, used to draw lines and curves. The value has no effect on text. Default: 1.0,
         ///     minimum: 0.0.
         /// </summary>
-        double? PenWidth { get; set; }
+        double? BorderWidth { get; set; }
 
         /// <summary>
         ///     Gets or sets the shape of the node (default: <see cref="DotNodeShape.Ellipse" />).

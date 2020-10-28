@@ -1,0 +1,18 @@
+﻿using System;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+
+namespace GiGraph.Dot.Entities.Attributes.Collections
+{
+    // TODO: sprawdzić, czy podmieniłem propertyAccessor w miejsce GetMethod()
+    public abstract partial class DotEntityAttributes
+    {
+        protected void AddOrRemoveBorderWidth(MethodBase propertyAccessor, double? value, [CallerMemberName] string propertyName = null)
+        {
+            AddOrRemove(propertyAccessor, value, (k, v) => v.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(propertyName, v.Value, "Border width must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v.Value)
+            );
+        }
+    }
+}

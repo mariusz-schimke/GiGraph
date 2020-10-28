@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         DotEscapeString Href { get; set; }
 
         /// <summary>
-        ///     If the object has a <see cref="Url" /> specified, this attribute determines which window of the browser is used for the URL.
+        ///     If a <see cref="Url" /> is specified, this attribute determines which window of the browser is used for the URL.
         ///     See
         ///     <see href="http://www.w3.org/TR/html401/present/frames.html#adef-target">
         ///         W3C documentation

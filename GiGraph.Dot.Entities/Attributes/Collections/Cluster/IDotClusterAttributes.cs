@@ -7,6 +7,8 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
+    // TODO: ten interfejs i IDotGraphClusterAttributes mają niektóre właściwości takie same - należy zapewnić, żeby ich nazwy były zgodne
+    // (np. BorderWidth, BorderColor)
     public interface IDotClusterAttributes
     {
         /// <summary>
@@ -131,19 +133,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         int? GradientAngle { get; set; }
 
         /// <summary>
-        ///     Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges and clusters. The
-        ///     value is inherited by subclusters. It has no effect on text. Default: 1.0, minimum: 0.0.
+        ///     Specifies the width of the pen, in points, used to draw the bounding box around clusters. The value is inherited by
+        ///     subclusters. It has no effect on text. Default: 1.0, minimum: 0.0.
         /// </summary>
-        double? PenWidth { get; set; }
+        double? BorderWidth { get; set; }
 
         /// <summary>
         ///     Color used to draw the bounding box around the cluster (default: <see cref="System.Drawing.Color.Black" />). If
-        ///     <see cref="BoundingBoxColor" /> is not defined, <see cref="Color" /> is used. If this is not defined, the default is used.
-        ///     Note that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a
-        ///     <see cref="IDotGraphClusterAttributes.BoundingBoxColor" /> for clusters, this will override a <see cref="Color" /> or
+        ///     <see cref="BorderColor" /> is not defined, <see cref="Color" /> is used. If this is not defined, the default is used. Note
+        ///     that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a
+        ///     <see cref="IDotGraphClusterAttributes.BorderColor" /> for clusters, this will override a <see cref="Color" /> or
         ///     <see cref="BackgroundColor" /> attribute set for the cluster.
         /// </summary>
-        DotColor BoundingBoxColor { get; set; }
+        DotColor BorderColor { get; set; }
 
         /// <summary>
         ///     <para>

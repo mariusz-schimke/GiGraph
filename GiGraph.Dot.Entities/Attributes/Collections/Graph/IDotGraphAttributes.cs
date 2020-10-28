@@ -107,12 +107,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         int? RotationAngle { get; set; }
 
         /// <summary>
-        ///     Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges and clusters. The
-        ///     value is inherited by subclusters. It has no effect on text. Default: 1.0, minimum: 0.0.
-        /// </summary>
-        double? PenWidth { get; set; }
-
-        /// <summary>
         ///     Gets or sets the direction of graph layout (default: <see cref="DotLayoutDirection.TopToBottom" />).
         /// </summary>
         DotLayoutDirection? LayoutDirection { get; set; }
