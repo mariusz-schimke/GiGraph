@@ -75,7 +75,5 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             return _attributes.GetValueAsEndpointPort(GetAttributeKey(propertyAccessor));
         }
-
-        // TODO: zrobić metody set i nazwać je analogicznie do getów, np. SetValueAsString()
     }
 }
