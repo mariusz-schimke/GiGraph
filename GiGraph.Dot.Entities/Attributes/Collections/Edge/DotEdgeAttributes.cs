@@ -234,12 +234,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Applies the <see cref="DotStyles.Tapered" /> style to the edge. The edge starts with the specified width, and
         ///     tapers to width 1, in points.
         /// </summary>
-        /// <param name="width">
+        /// <param name="startWidth">
         ///     The width to start with (applied to the <see cref="Width" /> attribute).
         /// </param>
-        public virtual void Taper(double width)
+        public virtual void Taper(double startWidth)
         {
-            Width = width;
+            Width = startWidth;
             ApplyStyleOption(DotStyles.Tapered);
         }
     }

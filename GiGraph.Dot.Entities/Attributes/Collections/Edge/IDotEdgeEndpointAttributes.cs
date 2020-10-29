@@ -23,15 +23,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotEndpointPort Port { get; set; }
 
         /// <summary>
-        ///     Logical endpoint of the edge. When the <see cref="IDotGraphClusterAttributes.AllowEdgeClipping" /> attribute for clusters (on
-        ///     the graph level) is true, if the current property is defined, and is the identifier of a cluster containing the real endpoint
-        ///     node, the edge is clipped to the boundary of the cluster.
+        ///     Logical endpoint of the edge. When the <see cref="IDotGraphClusterAttributes.AllowEdgeClipping" /> attribute is true (see
+        ///     <see cref="DotGraphAttributes.Clusters" /> on graph attributes), if the current property is defined, and is the identifier
+        ///     of a cluster containing the real endpoint node, the edge is clipped to the boundary of the cluster.
         /// </summary>
         string ClusterId { get; set; }
 
         /// <summary>
-        ///     If true (default), the end of the edge is clipped to node boundary; otherwise, the end of the edge goes to the center of the
-        ///     node, or the center of a port, if applicable.
+        ///     If true (default), the end of the edge is clipped to node boundary; otherwise, it goes to the center of the node, or the
+        ///     center of a port, if applicable.
         /// </summary>
         bool? ClipToNodeBoundary { get; set; }
 

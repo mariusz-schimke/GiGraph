@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Hyperlink properties of the endpoint. If defined, the hyperlink is output as part of the endpoint <see cref="Label" />. Also,
+        ///     Hyperlink properties of the endpoint. If defined, the hyperlink is output as part of the endpoint's <see cref="Label" />. Also,
         ///     this value is used near the endpoint, overriding hyperlink properties set on the edge.
         /// </summary>
         public virtual DotEdgeHyperlinkAttributes Hyperlink { get; }

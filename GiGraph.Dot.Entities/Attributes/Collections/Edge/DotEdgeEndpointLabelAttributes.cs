@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Font properties used for the head and the tail of the edge. If not set, default to the font properties specified for the
+        ///     Font properties used for labels of the head and of the tail of the edge. If not set, default to the font properties specified for the
         ///     edge.
         /// </summary>
         public virtual DotEdgeEndpointLabelFontAttributes Font { get; }

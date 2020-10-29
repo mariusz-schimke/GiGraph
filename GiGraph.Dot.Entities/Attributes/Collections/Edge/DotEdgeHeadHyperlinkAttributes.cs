@@ -4,6 +4,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
+    // TODO: właściwości tej klasy wymagają ustawienia komentarzy, bo dziedziczą niewłaściwe z klasy bazowej
     public class DotEdgeHeadHyperlinkAttributes : DotEdgeHyperlinkAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup EdgeHeadHyperlinkAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEdgeHeadHyperlinkAttributes));
