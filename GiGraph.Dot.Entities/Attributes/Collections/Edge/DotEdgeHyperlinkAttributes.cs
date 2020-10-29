@@ -89,9 +89,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <param name="attributes">
         ///     The properties to set.
         /// </param>
-        public virtual void Set(IDotEdgeHyperlinkAttributes attributes)
+        public virtual void Set(DotEdgeHyperlink attributes)
         {
-            Set(attributes.Url, attributes.Target, attributes.Tooltip);
+            Tooltip = attributes.Tooltip;
+            base.Set(attributes);
         }
     }
 }

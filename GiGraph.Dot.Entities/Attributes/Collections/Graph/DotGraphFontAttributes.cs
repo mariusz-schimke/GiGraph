@@ -2,6 +2,7 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
@@ -45,6 +46,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             Directories = directories;
             base.Set(size, color, name);
+        }
+
+        /// <summary>
+        ///     Sets font properties.
+        /// </summary>
+        /// <param name="attributes">
+        ///     The properties to set.
+        /// </param>
+        public virtual void Set(DotGraphFont attributes)
+        {
+            Directories = attributes.Directories;
+            base.Set(attributes);
         }
     }
 }

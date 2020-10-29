@@ -3,6 +3,7 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -62,7 +63,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="attributes">
         ///     The properties to set.
         /// </param>
-        public virtual void Set(IDotEntityFontAttributes attributes)
+        public virtual void Set(DotFont attributes)
         {
             Set(attributes.Size, attributes.Color, attributes.Name);
         }

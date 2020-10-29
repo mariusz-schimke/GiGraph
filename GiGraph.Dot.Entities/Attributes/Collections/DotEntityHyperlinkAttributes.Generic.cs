@@ -56,11 +56,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="attributes">
         ///     The properties to set.
         /// </param>
-        public virtual void Set(IDotEntityHyperlinkAttributes attributes)
+        public virtual void Set(DotHyperlink attributes)
         {
+            Href = attributes.Href;
             Set(attributes.Url, attributes.Target);
         }
-        
-        // TODO: add separate types for font and url parameters
     }
 }

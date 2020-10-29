@@ -12,9 +12,13 @@ namespace GiGraph.Dot.Entities.Types.Styles
         /// <summary>
         ///     Creates and initializes a new builder instance.
         /// </summary>
-        public DotGraphStyleOptions()
+        /// <param name="radial">
+        ///     The <see cref="DotStyles.Radial" /> style option state. This option is applied to graph, and is inherited by clusters.
+        /// </param>
+        public DotGraphStyleOptions(bool? radial = null)
             : base(GraphStylesMask)
         {
+            Radial = radial;
         }
 
         /// <summary>
