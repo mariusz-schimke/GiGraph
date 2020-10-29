@@ -12,17 +12,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        ///     Gets the DOT attribute the specified property provides access to.
+        ///     Gets the specified attribute from the collection. If it is not defined, returns null.
         /// </summary>
         /// <param name="property">
-        ///     The property to get the DOT attribute key for.
+        ///     The property to get an attribute for.
         /// </param>
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        public virtual DotAttribute GetAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        public virtual DotAttribute Get<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
-            var key = GetAttributeKey(property);
+            var key = GetKey(property);
             return _attributes.TryGetValue(key, out var result) ? result : null;
         }
 
@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     Assigns a value to the specified property, and returns the actual attribute added to the collection.
         /// </summary>
         /// <param name="property">
-        ///     The property by which to get the DOT attribute key to set a value for.
+        ///     The property whose value to set.
         /// </param>
         /// <param name="value">
         ///     The value to assign to the property.
@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        public virtual DotAttribute SetAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value)
+        public virtual DotAttribute Set<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value)
         {
             var propertyInfo = GetProperty(property);
             propertyInfo.SetValue(this, value);
@@ -48,62 +48,62 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        ///     Removes the attribute the specified property provides access to.
+        ///     Removes the specified attribute from the collection.
         /// </summary>
         /// <param name="property">
-        ///     The property to get the DOT attribute key for.
+        ///     The property by which to remove an associated attribute from the collection.
         /// </param>
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        public virtual bool RemoveAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        public virtual bool Remove<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
-            var key = GetAttributeKey(property);
+            var key = GetKey(property);
             return _attributes.Remove(key);
         }
 
         /// <summary>
-        ///     Checks whether the collection contains a DOT key of the attribute the specified property provides access to.
+        ///     Determines whether the collection contains the specified attribute.
         /// </summary>
         /// <param name="property">
-        ///     The property to check the key for.
+        ///     The property to check.
         /// </param>
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        public virtual bool HasAttribute<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        public virtual bool IsSet<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
-            var key = GetAttributeKey(property);
+            var key = GetKey(property);
             return _attributes.ContainsKey(key);
         }
 
         /// <summary>
-        ///     Determines whether the collection contains an attribute with the specified key, whose value is null.
+        ///     Determines whether the collection contains the specified attribute with a null value assigned.
         /// </summary>
         /// <param name="property">
-        ///     The property by which to get the DOT key of the attribute whose value to check.
+        ///     The property to check.
         /// </param>
         /// <typeparam name="TProperty">
         ///     The type returned by the property to check.
         /// </typeparam>
-        public virtual bool HasNullified<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        public virtual bool IsNullified<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
-            var key = GetAttributeKey(property);
+            var key = GetKey(property);
             return _attributes.IsNullified(key);
         }
 
         /// <summary>
-        ///     Sets a null value for the specified attribute key.
+        ///     Adds an attribute with a null value to the collection.
         /// </summary>
         /// <param name="property">
-        ///     The property by which to get the DOT attribute key to set a value for.
+        ///     The property to add a null value attribute for.
         /// </param>
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
         public virtual DotNullAttribute Nullify<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
-            var key = GetAttributeKey(property);
+            var key = GetKey(property);
             return _attributes.Nullify(key);
         }
     }

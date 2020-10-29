@@ -7,10 +7,14 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    // TODO: spróbować zrobić coś, żeby atrybuty w klasach potomnych nie powtarzały się między klasami,
-    // a jeśli już, to zapewnić spójność nazw za pomocą jakiegoś wspólnego interfejsu?
     // TODO: porównać mapę właściwości wszystkich elementów do tego, co było w poprzedniej wersji, żeby upewnić się,
     // że nie zostały pominięte/dodane jakieś atrybuty
+    
+    // TODO: spróbować zastąpić Style konkretną klasą, tylko trzeba uważać, bo zmiana flagi w tej klasie nie spowoduje aktualizacji kolekcji
+    // więc może klasy powinny być read only
+    
+    // TODO: czy istnieją klasy, które są stosowane jako value w atrybutach, a których właściwości można zmieniać? Jeśli pobierze się z kolekcji
+    // atrybut, który został skonwertowany z innego typu, to zmiana właściwości na tym typie nie wpłynie na kolekcję
     public abstract class DotEntityCommonAttributes<TIEntityAttributeProperties> : DotEntityRootAttributes<TIEntityAttributeProperties>
     {
         protected DotEntityCommonAttributes(

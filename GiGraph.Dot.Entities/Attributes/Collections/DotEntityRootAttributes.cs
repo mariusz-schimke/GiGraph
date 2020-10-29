@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <summary>
         ///     Gets a dictionary where the key is a DOT attribute, and the value is a path to a property that exposes it.
         /// </summary>
-        public virtual Dictionary<string, string> GetAttributeKeyMapping()
+        public virtual Dictionary<string, string> GetKeyMapping()
         {
             var properties = GetPathsOfEntityAttributeProperties();
 

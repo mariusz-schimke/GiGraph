@@ -9,8 +9,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public abstract partial class DotEntityAttributes<TIEntityAttributeProperties>
     {
-        // TODO: czy metody na poziomie bazowym powinny mieć te same nazwy co w kontekście grupy attrybutów, np. Font?
-
         /// <summary>
         ///     Gets the DOT key of the attribute the specified property provides access to.
         /// </summary>
@@ -20,7 +18,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        public virtual string GetAttributeKey<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        public virtual string GetKey<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var propertyInfo = GetProperty(property);
             return GetAttributeKey(propertyInfo);
