@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
@@ -66,7 +65,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             get => base.Style;
             set => base.Style = value;
         }
-        
+
         [DotAttributeKey("color")]
         public virtual DotColorDefinition Color
         {

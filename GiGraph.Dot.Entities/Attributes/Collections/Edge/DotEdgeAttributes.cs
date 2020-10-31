@@ -242,7 +242,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             Width = startWidth;
             ApplyStyleOption(DotStyles.Tapered);
         }
-        
+
         // TODO: taper też przenieść do extensions
     }
 }

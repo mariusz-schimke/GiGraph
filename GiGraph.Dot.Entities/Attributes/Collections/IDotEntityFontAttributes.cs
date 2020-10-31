@@ -3,8 +3,6 @@ using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    // TODO: dla współdzielonych interfejsów jak ten, upewnić się, że opisy odnoszą się do wszystkich elementów, które
-    // korzystają z tego atrybutu i że implementacje mają własne, niezależne komentarze.
     public interface IDotEntityFontAttributes
     {
         /// <summary>

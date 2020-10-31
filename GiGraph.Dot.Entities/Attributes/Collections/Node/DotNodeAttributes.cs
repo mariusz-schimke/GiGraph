@@ -74,7 +74,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             get => base.Style;
             set => base.Style = value;
         }
-        
+
         [DotAttributeKey("comment")]
         public virtual string Comment
         {
@@ -252,7 +252,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
             ApplyStyleOption(DotStyles.Invisible);
         }
-        
+
         // TODO: te pomocnicze metody wynieść do extension methods (SetInvisible może się wtedy nazywać Hide())
     }
 }

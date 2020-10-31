@@ -106,10 +106,10 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///         <see cref="DotEdgeAttributes.Directions" /> attribute is not explicitly set, the default for the graph type is used.
         ///     </para>
         ///     <para>
-        ///         Arrowheads and arrow tails are also drawn, based on the value of the <see cref="DotEdgeAttributes.Directions" /> attribute.
-        ///         To avoid this, set the <see cref="DotEdgeHeadAttributes.Arrowhead" /> attribute of <see cref="DotEdgeAttributes.Head" />,
-        ///         and/or the corresponding <see cref="DotEdgeTailAttributes.Arrowhead" /> attribute of
-        ///         <see cref="DotEdgeAttributes.Tail" /> to <see cref="DotArrowheadShape.None" />.
+        ///         Arrowheads and arrow tails are also drawn, based on the value of the <see cref="DotEdgeAttributes.Directions" />
+        ///         attribute. To avoid this, set the <see cref="DotEdgeHeadAttributes.Arrowhead" /> attribute of
+        ///         <see cref="DotEdgeAttributes.Head" />, and/or the corresponding <see cref="DotEdgeTailAttributes.Arrowhead" /> attribute
+        ///         of <see cref="DotEdgeAttributes.Tail" /> to <see cref="DotArrowheadShape.None" />.
         ///     </para>
         /// </summary>
         [DotAttributeValue("tapered")]

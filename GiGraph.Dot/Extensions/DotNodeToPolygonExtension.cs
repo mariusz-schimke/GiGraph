@@ -42,8 +42,8 @@ namespace GiGraph.Dot.Extensions
         ///     -100). Positive values skew top of polygon to right; negative to left.
         /// </param>
         /// <param name="distortion">
-        ///     Distortion factor for <see cref="DotNodeAttributes.Shape" /> set to <see cref="DotNodeShape.Polygon" /> (default: 0,
-        ///     minimum: -100). Positive values cause top part to be larger than bottom; negative values do the opposite.
+        ///     Distortion factor for <see cref="DotNodeAttributes.Shape" /> set to <see cref="DotNodeShape.Polygon" /> (default: 0, minimum:
+        ///     -100). Positive values cause top part to be larger than bottom; negative values do the opposite.
         /// </param>
         public static void ToPolygon(
             this DotNode node,

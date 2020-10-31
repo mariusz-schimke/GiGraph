@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 ? throw new ArgumentOutOfRangeException(propertyName, v.Value, "Border width must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
         }
-        
+
         protected void AddOrRemovePeripheries(MethodBase propertyAccessor, int? value, [CallerMemberName] string propertyName = null)
         {
             AddOrRemove(propertyAccessor, value, (k, v) => v.Value < 0
