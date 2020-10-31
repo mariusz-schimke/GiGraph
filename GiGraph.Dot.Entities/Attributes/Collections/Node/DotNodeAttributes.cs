@@ -21,13 +21,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             DotEntityHyperlinkAttributes hyperlinkAttributes,
             DotEntityFontAttributes fontAttributes,
             DotNodeImageAttributes imageAttributes,
-            DotNodeGeometryAttributes geometry
+            DotNodeGeometryAttributes geometryAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
             Font = fontAttributes;
             Image = imageAttributes;
-            Geometry = geometry;
+            Geometry = geometryAttributes;
         }
 
         public DotNodeAttributes(DotAttributeCollection attributes)
