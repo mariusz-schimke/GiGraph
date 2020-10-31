@@ -49,19 +49,17 @@ namespace GiGraph.Dot.Extensions
             this DotNode node,
             int? sides = null,
             bool? regular = null,
-            int? peripheries = null,
             double? rotationAngle = null,
             double? skew = null,
             double? distortion = null)
         {
             node.Attributes.Shape = DotNodeShape.Polygon;
 
-            node.Attributes.Sides = sides;
-            node.Attributes.Regular = regular;
-            node.Attributes.Peripheries = peripheries;
-            node.Attributes.RotationAngle = rotationAngle;
-            node.Attributes.Skew = skew;
-            node.Attributes.Distortion = distortion;
+            node.Attributes.Geometry.Sides = sides;
+            node.Attributes.Geometry.Regular = regular;
+            node.Attributes.Geometry.RotationAngle = rotationAngle;
+            node.Attributes.Geometry.Skew = skew;
+            node.Attributes.Geometry.Distortion = distortion;
         }
     }
 }
