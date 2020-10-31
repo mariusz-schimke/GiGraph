@@ -98,9 +98,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
-        // TODO: niektóre atrybuty powtarzają się między klasami.
-        // Zrobić metody analogiczne do AddOrRemovePenWidth, które obsłużą warunki walidacji?
-        
         [DotAttributeKey("labeljust")]
         public virtual DotHorizontalAlignment? HorizontalLabelAlignment
         {
@@ -348,7 +345,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             ApplyStyleOption(DotStyles.Invisible);
         }
 
-        // TODO: rozważyć, czy te metody Set...() nie powinny być extension methods podobnie jak ToPolygon i inne
+        // TODO: rozważyć, czy te metody Set...() nie powinny być extension methods podobnie jak ToPolygon i inne (z weryfikacją poprawności rodzaju przekazanej listy kolorów)
         // TODO: dodać zamiast SetFilled() metody SetGradientFill(DotGradientColor color, bool radial)
         // TODO: oraz SetStriped(DotMultiColor color) -- uwzględnić wagi
         // TODO: oraz SetWedged(DotMultiColor color) -- uwzględnić wagi

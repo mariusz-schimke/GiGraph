@@ -11,7 +11,6 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
-    // todo: sprawdzić, czy w VS pojawiają się opisy atrybutów z interfejsu
     public class DotClusterAttributes : DotEntityCommonAttributes<IDotClusterAttributes>, IDotClusterAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup ClusterAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterAttributes, IDotClusterAttributes>().Build();
