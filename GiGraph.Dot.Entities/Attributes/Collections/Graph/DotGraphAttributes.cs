@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotGraphFontAttributes Font { get; }
 
         /// <summary>
-        ///     The graph-level attributes applied to clusters.
+        ///     The graph attributes applied to clusters.
         /// </summary>
         public virtual DotGraphClusterAttributes Clusters { get; }
 
@@ -76,14 +76,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             get => base.Style;
             set => base.Style = value;
         }
-        
+
         [DotAttributeKey("comment")]
         public virtual string Comment
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
-        
+
         [DotAttributeKey("bgcolor")]
         public virtual DotColorDefinition BackgroundColor
         {

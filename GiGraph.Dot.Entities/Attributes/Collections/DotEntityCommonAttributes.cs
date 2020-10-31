@@ -7,6 +7,9 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
+    // TODO: stworzyć klasę ze stałymi w postaci kluczy DOT i użyć tych stałych w atrybutach właściwości.
+    // Można ją rozbudować tak, aby zawierała wszystkie atrybuty. Wtedy będzie wiadomo, co pozostało niezaimplementowane.
+    
     // TODO: porównać mapę właściwości wszystkich elementów do tego, co było w poprzedniej wersji, żeby upewnić się,
     // że nie zostały pominięte/dodane jakieś atrybuty
     

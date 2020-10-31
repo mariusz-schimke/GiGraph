@@ -67,9 +67,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         <see cref="Color" /> is used. If this is not defined, the default is used.
         ///     </para>
         ///     <para>
-        ///         Note that a cluster inherits the root graph's attributes if defined. Thus, if <see cref="BorderColor" /> is set, it
-        ///         will override a <see cref="IDotClusterAttributes.Color" /> or <see cref="IDotClusterAttributes.BackgroundColor" />
-        ///         attribute set for the cluster.
+        ///         Note that a cluster inherits the root graph's attributes if defined. Thus, if <see cref="BorderColor" /> is set, it will
+        ///         override a <see cref="IDotClusterAttributes.Color" /> or <see cref="IDotClusterAttributes.BackgroundColor" /> set for the
+        ///         cluster.
         ///     </para>
         /// </summary>
         DotColor BorderColor { get; set; }

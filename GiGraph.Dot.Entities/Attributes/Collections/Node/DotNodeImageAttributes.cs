@@ -2,6 +2,7 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Types.Images;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
@@ -57,6 +58,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             Path = path;
             Alignment = alignment;
             Scaling = scaling;
+        }
+
+        /// <summary>
+        ///     Specifies image attributes.
+        /// </summary>
+        /// <param name="attributes">
+        ///     The image attributes to set.
+        /// </param>
+        public virtual void Set(DotImage attributes)
+        {
+            Set(attributes.Path, attributes.Alignment, attributes.Scaling);
         }
     }
 }

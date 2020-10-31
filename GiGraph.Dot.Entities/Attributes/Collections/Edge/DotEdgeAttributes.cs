@@ -56,32 +56,32 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Properties applied to the head of the edge.
+        ///     Attributes applied to the head of the edge.
         /// </summary>
         public virtual DotEdgeHeadAttributes Head { get; }
 
         /// <summary>
-        ///     Properties applied to the tail of the edge.
+        ///     Attributes applied to the tail of the edge.
         /// </summary>
         public virtual DotEdgeTailAttributes Tail { get; }
 
         /// <summary>
-        ///     Font properties.
+        ///     Font attributes.
         /// </summary>
         public virtual DotEntityFontAttributes Font { get; }
 
         /// <summary>
-        ///     Properties applied to labels specified for the <see cref="Head" /> and the <see cref="Tail" /> of the edge.
+        ///     Attributes applied to labels specified for the <see cref="Head" /> and the <see cref="Tail" /> of the edge.
         /// </summary>
         public virtual DotEdgeEndpointLabelAttributes EndpointLabels { get; }
 
         /// <summary>
-        ///     Hyperlink properties applied to the non-label parts of the edge.
+        ///     Hyperlink attributes applied to the non-label parts of the edge.
         /// </summary>
         public virtual DotEdgeHyperlinkAttributes EdgeHyperlink { get; }
 
         /// <summary>
-        ///     Hyperlink properties applied to the label of the edge.
+        ///     Hyperlink attributes applied to the label of the edge.
         /// </summary>
         public virtual DotEdgeLabelHyperlinkAttributes LabelHyperlink { get; }
 
@@ -242,5 +242,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             Width = startWidth;
             ApplyStyleOption(DotStyles.Tapered);
         }
+        
+        // TODO: taper też przenieść do extensions
     }
 }
