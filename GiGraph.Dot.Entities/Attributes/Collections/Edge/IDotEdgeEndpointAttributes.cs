@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotEndpointPort Port { get; set; }
 
         /// <summary>
-        ///     Logical endpoint of the edge. When the <see cref="IDotGraphClusterAttributes.AllowEdgeClipping" /> attribute is true (see
+        ///     Logical endpoint of the edge. When the <see cref="DotGraphClusterAttributes.AllowEdgeClipping" /> attribute is true (see
         ///     <see cref="DotGraphAttributes.Clusters" /> on graph attributes), if the current property is defined, and is the identifier
         ///     of a cluster containing the real endpoint node, the edge is clipped to the boundary of the cluster.
         /// </summary>
@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     <para>
         ///         Gets or sets the style of arrowhead at the end of the edge (default: <see cref="DotArrowheadShape.Normal" />). Appears
-        ///         only if the <see cref="IDotEdgeAttributes.Directions" /> attribute on the edge is
+        ///         only if the <see cref="DotEdgeAttributes.Directions" /> attribute on the edge is
         ///         <see cref="DotEdgeDirections.Forward" /> (when specifying an arrowhead for the head endpoint),
         ///         <see cref="DotEdgeDirections.Backward" /> (when specifying an arrowhead for the tail endpoint), or
         ///         <see cref="DotEdgeDirections.Both" />.

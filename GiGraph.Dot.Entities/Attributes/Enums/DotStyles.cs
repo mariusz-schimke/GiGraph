@@ -91,19 +91,19 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
 
         /// <summary>
         ///     <para>
-        ///         Applicable to edges. The effect depends on the <see cref="IDotEdgeAttributes.Width" /> attribute of an edge, its
-        ///         <see cref="IDotEdgeAttributes.Directions" /> attribute, the <see cref="DotEdgeHeadAttributes.Arrowhead" /> attribute of
+        ///         Applicable to edges. The effect depends on the <see cref="DotEdgeAttributes.Width" /> attribute of an edge, its
+        ///         <see cref="DotEdgeAttributes.Directions" /> attribute, the <see cref="DotEdgeHeadAttributes.Arrowhead" /> attribute of
         ///         its <see cref="DotEdgeAttributes.Head" />, and on the corresponding <see cref="DotEdgeTailAttributes.Arrowhead" />
         ///         attribute of its <see cref="DotEdgeAttributes.Tail" />.
         ///     </para>
         ///     <para>
-        ///         The edge starts with width <see cref="IDotEdgeAttributes.Width" />, and tapers to width 1, in points. The
-        ///         <see cref="IDotEdgeAttributes.Directions" /> attribute determines whether the tapering goes from tail to head (
-        ///         <see cref="IDotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Forward" /> ), from head to tail (
-        ///         <see cref="IDotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Backward" />), from the middle to both the
-        ///         head and tail ( <see cref="IDotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Both" />), or no tapering at
-        ///         all ( <see cref="IDotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.None" />). If the
-        ///         <see cref="IDotEdgeAttributes.Directions" /> attribute is not explicitly set, the default for the graph type is used.
+        ///         The edge starts with width <see cref="DotEdgeAttributes.Width" />, and tapers to width 1, in points. The
+        ///         <see cref="DotEdgeAttributes.Directions" /> attribute determines whether the tapering goes from tail to head (
+        ///         <see cref="DotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Forward" /> ), from head to tail (
+        ///         <see cref="DotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Backward" />), from the middle to both the
+        ///         head and tail ( <see cref="DotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Both" />), or no tapering at
+        ///         all ( <see cref="DotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.None" />). If the
+        ///         <see cref="DotEdgeAttributes.Directions" /> attribute is not explicitly set, the default for the graph type is used.
         ///     </para>
         ///     <para>
         ///         Arrowheads and arrow tails are also drawn, based on the value of the <see cref="DotEdgeAttributes.Directions" /> attribute.

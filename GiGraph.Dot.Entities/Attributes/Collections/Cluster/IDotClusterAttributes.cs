@@ -109,7 +109,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     </para>
         ///     <para>
         ///         Note that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a
-        ///         <see cref="IDotGraphClusterAttributes.FillColor" /> for clusters, this will override a <see cref="Color" /> or
+        ///         <see cref="DotGraphClusterAttributes.FillColor" /> for clusters, this will override a <see cref="Color" /> or
         ///         <see cref="BackgroundColor" /> attribute set for the cluster.
         ///     </para>
         /// </summary>
@@ -142,7 +142,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     Color used to draw the bounding box around the cluster (default: <see cref="System.Drawing.Color.Black" />). If
         ///     <see cref="BorderColor" /> is not defined, <see cref="Color" /> is used. If this is not defined, the default is used. Note
         ///     that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a
-        ///     <see cref="IDotGraphClusterAttributes.BorderColor" /> for clusters, this will override a <see cref="Color" /> or
+        ///     <see cref="DotGraphClusterAttributes.BorderColor" /> for clusters, this will override a <see cref="Color" /> or
         ///     <see cref="BackgroundColor" /> attribute set for the cluster.
         /// </summary>
         DotColor BorderColor { get; set; }
@@ -171,7 +171,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         DotPoint Margin { get; set; }
 
         /// <summary>
-        ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="IDotGraphAttributes.PackingMode" /> indicates an
+        ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="DotGraphAttributes.PackingMode" /> indicates an
         ///     array packing, this attribute specifies an insertion order among the components, with smaller values inserted first.
         /// </summary>
         int? SortIndex { get; set; }
