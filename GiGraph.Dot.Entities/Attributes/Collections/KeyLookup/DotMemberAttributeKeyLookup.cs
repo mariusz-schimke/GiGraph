@@ -89,7 +89,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
             return TryGetKey(member, out var key)
                 ? key
                 : throw new KeyNotFoundException(
-                    $"The attribute key lookup collection does not contain a key for the '{member}' member of the {member.DeclaringType} type."
+                    $"The attribute key lookup does not contain a key for the '{member}' member of the {member.DeclaringType} type."
                 );
         }
 

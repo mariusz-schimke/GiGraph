@@ -22,6 +22,6 @@ namespace GiGraph.Dot.Entities.Types.Attributes
         /// <summary>
         ///     Gets the key of the DOT attribute.
         /// </summary>
-        public string Key { get; }
+        public virtual string Key { get; }
     }
 }
