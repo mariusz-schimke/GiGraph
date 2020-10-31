@@ -13,67 +13,67 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     {
         protected virtual bool GetValueAs<T>(MethodBase propertyAccessor, out T value)
         {
-            return _attributes.GetValueAs(GetAttributeKey(propertyAccessor), out value);
+            return _attributes.GetValueAs(GetKey(propertyAccessor), out value);
         }
 
         protected virtual bool GetValueAs<T>(MethodBase propertyAccessor, out T value, params Func<object, (bool IsValid, T Result)>[] converters)
         {
-            return _attributes.GetValueAs(GetAttributeKey(propertyAccessor), out value, converters);
+            return _attributes.GetValueAs(GetKey(propertyAccessor), out value, converters);
         }
 
         protected virtual int? GetValueAsInt(MethodBase propertyAccessor)
         {
-            return _attributes.GetValueAsInt(GetAttributeKey(propertyAccessor));
+            return _attributes.GetValueAsInt(GetKey(propertyAccessor));
         }
 
         protected virtual double? GetValueAsDouble(MethodBase propertyAccessor)
         {
-            return _attributes.GetValueAsDouble(GetAttributeKey(propertyAccessor));
+            return _attributes.GetValueAsDouble(GetKey(propertyAccessor));
         }
 
         protected virtual bool? GetValueAsBool(MethodBase propertyAccessor)
         {
-            return _attributes.GetValueAsBool(GetAttributeKey(propertyAccessor));
+            return _attributes.GetValueAsBool(GetKey(propertyAccessor));
         }
 
         protected virtual DotColor GetValueAsColor(MethodBase propertyAccessor)
         {
-            return _attributes.GetValueAsColor(GetAttributeKey(propertyAccessor));
+            return _attributes.GetValueAsColor(GetKey(propertyAccessor));
         }
 
         protected virtual DotPoint GetValueAsPoint(MethodBase propertyAccessor)
         {
-            return _attributes.GetValueAsPoint(GetAttributeKey(propertyAccessor));
+            return _attributes.GetValueAsPoint(GetKey(propertyAccessor));
         }
 
         protected virtual DotColorDefinition GetValueAsColorDefinition(MethodBase propertyAccessor)
         {
-            return _attributes.GetValueAsColorDefinition(GetAttributeKey(propertyAccessor));
+            return _attributes.GetValueAsColorDefinition(GetKey(propertyAccessor));
         }
 
         protected virtual DotLabel GetValueAsLabel(MethodBase propertyAccessor)
         {
-            return _attributes.GetValueAsLabel(GetAttributeKey(propertyAccessor));
+            return _attributes.GetValueAsLabel(GetKey(propertyAccessor));
         }
 
         protected virtual string GetValueAsString(MethodBase propertyAccessor)
         {
-            return _attributes.GetValueAsString(GetAttributeKey(propertyAccessor));
+            return _attributes.GetValueAsString(GetKey(propertyAccessor));
         }
 
         protected virtual DotEscapeString GetValueAsEscapeString(MethodBase propertyAccessor)
         {
-            return _attributes.GetValueAsEscapeString(GetAttributeKey(propertyAccessor));
+            return _attributes.GetValueAsEscapeString(GetKey(propertyAccessor));
         }
 
         protected virtual DotArrowheadDefinition GetValueAsArrowheadDefinition(MethodBase propertyAccessor)
         {
-            return _attributes.GetValueAsArrowheadDefinition(GetAttributeKey(propertyAccessor));
+            return _attributes.GetValueAsArrowheadDefinition(GetKey(propertyAccessor));
         }
 
         protected virtual DotEndpointPort GetValueAsEndpointPort(MethodBase propertyAccessor)
         {
-            return _attributes.GetValueAsEndpointPort(GetAttributeKey(propertyAccessor));
+            return _attributes.GetValueAsEndpointPort(GetKey(propertyAccessor));
         }
     }
 }

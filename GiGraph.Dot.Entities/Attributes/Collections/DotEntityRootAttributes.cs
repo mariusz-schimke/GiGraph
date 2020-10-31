@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                     var actual = path.Last();
                     return new
                     {
-                        Key = actual.EntityAttributes.GetAttributeKey(actual.Property),
+                        Key = actual.EntityAttributes.GetKey(actual.Property),
                         Path = string.Join(".", path.Select(item => item.Property.Name))
                     };
                 })
