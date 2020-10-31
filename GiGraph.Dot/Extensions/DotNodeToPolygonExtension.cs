@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Extensions
         ///     The node whose shape to set to polygon.
         /// </param>
         /// <param name="sides">
-        ///     The number of sides if <see cref="IDotNodeAttributes.Shape" /> is set to <see cref="DotNodeShape.Polygon" /> (default: 4,
+        ///     The number of sides if <see cref="DotNodeAttributes.Shape" /> is set to <see cref="DotNodeShape.Polygon" /> (default: 4,
         ///     minimum: 0).
         /// </param>
         /// <param name="regular">
@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Extensions
         ///     the node (default: false).
         /// </param>
         /// <param name="peripheries">
-        ///     Sets the number of peripheries used in polygonal shapes (<see cref="IDotNodeAttributes.Shape" />). The default value is shape
+        ///     Sets the number of peripheries used in polygonal shapes (<see cref="DotNodeAttributes.Shape" />). The default value is shape
         ///     dependent, the minimum value is 0. Note that
         ///     <see href="http://www.graphviz.org/doc/info/shapes.html#epsf">
         ///         user-defined shapes
@@ -32,59 +32,36 @@ namespace GiGraph.Dot.Extensions
         ///     are treated as a form of box shape, so the default peripheries value is 1, and the user-defined shape will be drawn in a
         ///     bounding rectangle. Setting peripheries to 0 will turn this off.
         /// </param>
-        /// <param name="orientation">
-        ///     Angle, in degrees, used to rotate polygon node shapes (<see cref="IDotNodeAttributes.Shape" /> =
+        /// <param name="rotationAngle">
+        ///     Angle, in degrees, used to rotate polygon node shapes (<see cref="DotNodeAttributes.Shape" /> =
         ///     <see cref="DotNodeShape.Polygon" />). For any number of polygon sides, 0 degrees rotation results in a flat base. Default: 0,
         ///     maximum: 360.
         /// </param>
         /// <param name="skew">
-        ///     Skew factor for <see cref="IDotNodeAttributes.Shape" /> set to <see cref="DotNodeShape.Polygon" /> (default: 0, minimum:
+        ///     Skew factor for <see cref="DotNodeAttributes.Shape" /> set to <see cref="DotNodeShape.Polygon" /> (default: 0, minimum:
         ///     -100). Positive values skew top of polygon to right; negative to left.
         /// </param>
         /// <param name="distortion">
-        ///     Distortion factor for <see cref="IDotNodeAttributes.Shape" /> set to <see cref="DotNodeShape.Polygon" /> (default: 0,
-        ///     minimum: -100). Positive values cause top part to be larger than bottom; negative values do the opposite.
+        ///     Distortion factor for <see cref="DotNodeAttributes.Shape" /> set to <see cref="DotNodeShape.Polygon" /> (default: 0, minimum:
+        ///     -100). Positive values cause top part to be larger than bottom; negative values do the opposite.
         /// </param>
         public static void ToPolygon(
             this DotNode node,
             int? sides = null,
             bool? regular = null,
             int? peripheries = null,
-            double? orientation = null,
+            double? rotationAngle = null,
             double? skew = null,
             double? distortion = null)
         {
             node.Attributes.Shape = DotNodeShape.Polygon;
 
-            if (sides.HasValue)
-            {
-                node.Attributes.Sides = sides;
-            }
-
-            if (regular.HasValue)
-            {
-                node.Attributes.Regular = regular;
-            }
-
-            if (peripheries.HasValue)
-            {
-                node.Attributes.Peripheries = peripheries;
-            }
-
-            if (orientation.HasValue)
-            {
-                node.Attributes.Orientation = orientation;
-            }
-
-            if (skew.HasValue)
-            {
-                node.Attributes.Skew = skew;
-            }
-
-            if (distortion.HasValue)
-            {
-                node.Attributes.Distortion = distortion;
-            }
+            node.Attributes.Sides = sides;
+            node.Attributes.Regular = regular;
+            node.Attributes.Peripheries = peripheries;
+            node.Attributes.RotationAngle = rotationAngle;
+            node.Attributes.Skew = skew;
+            node.Attributes.Distortion = distortion;
         }
     }
 }

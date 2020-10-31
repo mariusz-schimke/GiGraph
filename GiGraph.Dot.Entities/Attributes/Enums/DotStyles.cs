@@ -91,33 +91,32 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
 
         /// <summary>
         ///     <para>
-        ///         Applicable to edges. The effect depends on the <see cref="IDotEdgeAttributes.PenWidth" /> attribute of the edge, on the
-        ///         <see cref="IDotEdgeAttributes.ArrowDirections" /> attribute, on the <see cref="IDotEdgeHeadAttributes.Arrow" /> attribute
-        ///         on the head of the edge, and on the corresponding <see cref="IDotEdgeTailAttributes.Arrow" /> attribute on the tail of
-        ///         the edge.
+        ///         Applicable to edges. The effect depends on the <see cref="DotEdgeAttributes.Width" /> attribute of an edge, its
+        ///         <see cref="DotEdgeAttributes.Directions" /> attribute, the <see cref="DotEdgeHeadAttributes.Arrowhead" /> attribute of
+        ///         its <see cref="DotEdgeAttributes.Head" />, and on the corresponding <see cref="DotEdgeTailAttributes.Arrowhead" />
+        ///         attribute of its <see cref="DotEdgeAttributes.Tail" />.
         ///     </para>
         ///     <para>
-        ///         The edge starts with width <see cref="IDotEdgeAttributes.PenWidth" />, and tapers to width 1, in points. The
-        ///         <see cref="IDotEdgeAttributes.ArrowDirections" /> attribute determines whether the tapering goes from tail to head (
-        ///         <see cref="IDotEdgeAttributes.ArrowDirections" /> = <see cref="DotArrowDirections.Forward" /> ), from head to tail (
-        ///         <see cref="IDotEdgeAttributes.ArrowDirections" /> = <see cref="DotArrowDirections.Backward" />), from the middle to both
-        ///         the head and tail ( <see cref="IDotEdgeAttributes.ArrowDirections" /> = <see cref="DotArrowDirections.Both" />), or no
-        ///         tapering at all ( <see cref="IDotEdgeAttributes.ArrowDirections" /> = <see cref="DotArrowDirections.None" />). If the
-        ///         <see cref="IDotEdgeAttributes.ArrowDirections" /> attribute is not explicitly set, the default for the graph type is
-        ///         used.
+        ///         The edge starts with width <see cref="DotEdgeAttributes.Width" />, and tapers to width 1, in points. The
+        ///         <see cref="DotEdgeAttributes.Directions" /> attribute determines whether the tapering goes from tail to head (
+        ///         <see cref="DotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Forward" /> ), from head to tail (
+        ///         <see cref="DotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Backward" />), from the middle to both the
+        ///         head and tail ( <see cref="DotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.Both" />), or no tapering at
+        ///         all ( <see cref="DotEdgeAttributes.Directions" /> = <see cref="DotEdgeDirections.None" />). If the
+        ///         <see cref="DotEdgeAttributes.Directions" /> attribute is not explicitly set, the default for the graph type is used.
         ///     </para>
         ///     <para>
-        ///         Arrow heads and arrow tails are also drawn, based on the value of <see cref="IDotEdgeAttributes.ArrowDirections" />
-        ///         attribute; to avoid this, set the <see cref="IDotEdgeHeadAttributes.Arrow" /> attribute on the head of the edge, and/or
-        ///         the corresponding <see cref="IDotEdgeTailAttributes.Arrow" /> attribute on the tail of the edge to
-        ///         <see cref="DotArrowheadShape.None" />.
+        ///         Arrowheads and arrow tails are also drawn, based on the value of the <see cref="DotEdgeAttributes.Directions" />
+        ///         attribute. To avoid this, set the <see cref="DotEdgeHeadAttributes.Arrowhead" /> attribute of
+        ///         <see cref="DotEdgeAttributes.Head" />, and/or the corresponding <see cref="DotEdgeTailAttributes.Arrowhead" /> attribute
+        ///         of <see cref="DotEdgeAttributes.Tail" /> to <see cref="DotArrowheadShape.None" />.
         ///     </para>
         /// </summary>
         [DotAttributeValue("tapered")]
         Tapered = 1 << 10,
 
         /// <summary>
-        ///     Applicable to nodes and edges.
+        ///     Applicable to nodes, edges, and clusters.
         /// </summary>
         [DotAttributeValue("invis")]
         Invisible = 1 << 11

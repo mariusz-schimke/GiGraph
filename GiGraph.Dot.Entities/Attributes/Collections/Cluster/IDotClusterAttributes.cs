@@ -7,13 +7,10 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
+    // TODO: ten interfejs i IDotGraphClusterAttributes mają niektóre właściwości takie same - należy zapewnić, żeby ich nazwy były zgodne
+    // (np. BorderWidth, BorderColor)
     public interface IDotClusterAttributes
     {
-        /// <summary>
-        ///     Font properties.
-        /// </summary>
-        IDotEntityFontAttributes Font { get; }
-
         /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the cluster. It may be plain text (<see cref="string" />) or HTML (
@@ -112,7 +109,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     </para>
         ///     <para>
         ///         Note that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a
-        ///         <see cref="IDotGraphClusterAttributes.FillColor" /> for clusters, this will override a <see cref="Color" /> or
+        ///         <see cref="DotGraphClusterAttributes.FillColor" /> for clusters, this will override a <see cref="Color" /> or
         ///         <see cref="BackgroundColor" /> attribute set for the cluster.
         ///     </para>
         /// </summary>
@@ -136,19 +133,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         int? GradientAngle { get; set; }
 
         /// <summary>
-        ///     Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges and clusters. The
-        ///     value is inherited by subclusters. It has no effect on text. Default: 1.0, minimum: 0.0.
+        ///     Specifies the width of the pen, in points, used to draw the bounding box around clusters. The value is inherited by
+        ///     subclusters. It has no effect on text. Default: 1.0, minimum: 0.0.
         /// </summary>
-        double? PenWidth { get; set; }
+        double? BorderWidth { get; set; }
 
         /// <summary>
         ///     Color used to draw the bounding box around the cluster (default: <see cref="System.Drawing.Color.Black" />). If
-        ///     <see cref="BoundingBoxColor" /> is not defined, <see cref="Color" /> is used. If this is not defined, the default is used.
-        ///     Note that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a
-        ///     <see cref="IDotGraphClusterAttributes.BoundingBoxColor" /> for clusters, this will override a <see cref="Color" /> or
+        ///     <see cref="BorderColor" /> is not defined, <see cref="Color" /> is used. If this is not defined, the default is used. Note
+        ///     that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a
+        ///     <see cref="DotGraphClusterAttributes.BorderColor" /> for clusters, this will override a <see cref="Color" /> or
         ///     <see cref="BackgroundColor" /> attribute set for the cluster.
         /// </summary>
-        DotColor BoundingBoxColor { get; set; }
+        DotColor BorderColor { get; set; }
 
         /// <summary>
         ///     <para>
@@ -169,40 +166,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         int? Peripheries { get; set; }
 
         /// <summary>
-        ///     <para>
-        ///         Hyperlinks incorporated into device-dependent output. At present, used in PS2, CMAP, I*MAP and SVG formats. For all these
-        ///         formats, URLs can be attached to nodes, edges and clusters. URL attributes can also be attached to the root graph in PS2,
-        ///         CMAP and I*MAP formats. This serves as the base URL for relative URLs in the former, and as the default image map file in
-        ///         the latter.
-        ///     </para>
-        ///     <para>
-        ///         The active area for a cluster is its bounding box.
-        ///     </para>
-        /// </summary>
-        DotEscapeString Url { get; set; }
-
-        /// <summary>
-        ///     Synonym for <see cref="Url" />.
-        /// </summary>
-        DotEscapeString Href { get; set; }
-
-        /// <summary>
-        ///     If the object has a <see cref="Url" /> specified, this attribute determines which window of the browser is used for the URL.
-        ///     See
-        ///     <see href="http://www.w3.org/TR/html401/present/frames.html#adef-target">
-        ///         W3C documentation
-        ///     </see>
-        ///     .
-        /// </summary>
-        DotEscapeString UrlTarget { get; set; }
-
-        /// <summary>
         ///     Specifies the space between the nodes in the cluster and the cluster bounding box. By default, this is 8 points.
         /// </summary>
         DotPoint Margin { get; set; }
 
         /// <summary>
-        ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="IDotGraphAttributes.PackingMode" /> indicates an
+        ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="DotGraphAttributes.PackingMode" /> indicates an
         ///     array packing, this attribute specifies an insertion order among the components, with smaller values inserted first.
         /// </summary>
         int? SortIndex { get; set; }

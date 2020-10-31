@@ -1,13 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
-using GiGraph.Dot.Entities.Clusters.Collections;
-using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Graphs.Collections;
-using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs;
-using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Clusters
 {
@@ -22,26 +17,13 @@ namespace GiGraph.Dot.Entities.Clusters
     ///         <see cref="DotSubgraph" />) do, but they do support setting common style of nodes and edges within them.
     ///     </para>
     /// </summary>
-    public class DotCluster : DotCommonGraph<IDotClusterAttributeCollection>
+    public class DotCluster : DotClusterSection, IDotCommonGraph, IDotOrderable
     {
-        protected DotCluster(
-            string id,
-            IDotClusterAttributeCollection attributes,
-            DotNodeCollection nodes,
-            DotEdgeCollection edges,
-            DotSubgraphCollection subgraphs,
-            DotClusterCollection clusters,
-            DotGraphSectionCollection<IDotClusterAttributeCollection> subsections)
-            : base(id, attributes, nodes, edges, subgraphs, clusters, subsections)
+        protected DotCluster(string id, DotClusterSection rootSection, DotGraphSectionCollection<DotClusterSection> subsections)
+            : base(rootSection)
         {
-        }
-
-        protected DotCluster(
-            string id,
-            DotGraphSection<IDotClusterAttributeCollection> rootSection,
-            DotGraphSectionCollection<IDotClusterAttributeCollection> subsections)
-            : base(id, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, subsections)
-        {
+            Id = id;
+            Subsections = subsections;
         }
 
         /// <summary>
@@ -51,9 +33,37 @@ namespace GiGraph.Dot.Entities.Clusters
         ///     The unique identifier of the cluster.
         /// </param>
         public DotCluster(string id)
-            : this(id, CreateSection(), new DotGraphSectionCollection<IDotClusterAttributeCollection>(CreateSection))
+            : this(id, new DotClusterSection(), new DotGraphSectionCollection<DotClusterSection>())
         {
         }
+
+        /// <summary>
+        ///     <para>
+        ///         The subsections of the graph. They appear consecutively in the output DOT script, and inherit the graph attributes, and
+        ///         the global node and/or edge attributes of their predecessors. When overridden in any subsection, the new graph attributes
+        ///         and global node/edge attributes apply to the elements the section itself contains, and also to those that belong to the
+        ///         sections that follow it (if any).
+        ///     </para>
+        ///     <para>
+        ///         Note that each subsection is dependent on the graph attributes and the global node and edge attributes specified by the
+        ///         sections that precede it (including those of the root section represented by the current element). Note also that some
+        ///         graph attributes cannot be overriden, and apply to the whole graph no matter in which section they are set.
+        ///     </para>
+        ///     <para>
+        ///         As far as setting global node and/or edge attributes for a specific group of elements is concerned,
+        ///         <see cref="Subgraphs" /> may be the cleaner and preferable way to achieve the effect.
+        ///     </para>
+        /// </summary>
+        public virtual DotGraphSectionCollection<DotClusterSection> Subsections { get; }
+
+        IEnumerable<DotCommonGraphSection> IDotCommonGraph.Subsections => Subsections;
+
+        /// <summary>
+        ///     Gets or sets the identifier of the cluster (optional).
+        /// </summary>
+        public virtual string Id { get; set; }
+
+        string IDotOrderable.OrderingKey => Id;
 
         /// <summary>
         ///     Creates a new cluster with the specified nodes.
@@ -88,11 +98,6 @@ namespace GiGraph.Dot.Entities.Clusters
             }
 
             return result;
-        }
-
-        public static DotGraphSection<IDotClusterAttributeCollection> CreateSection()
-        {
-            return Create(new DotClusterAttributeCollection());
         }
     }
 }

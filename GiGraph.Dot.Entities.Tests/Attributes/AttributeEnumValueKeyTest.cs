@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             {
                 new object[] { typeof(DotAlignment) },
                 new object[] { typeof(DotArrayPackingOptions) },
-                new object[] { typeof(DotArrowDirections) },
+                new object[] { typeof(DotEdgeDirections) },
                 new object[] { typeof(DotArrowheadParts) },
                 new object[] { typeof(DotArrowheadShape) },
                 new object[] { typeof(DotClusterVisualizationMode) },

@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Types.Attributes
         /// <summary>
         ///     Gets the value of the DOT attribute.
         /// </summary>
-        public string Value { get; }
+        public virtual string Value { get; }
 
         /// <summary>
         ///     Gets a DOT attribute value associated with the specified enumeration value.

@@ -260,7 +260,12 @@ namespace GiGraph.Dot.Output.Writers
 
         protected virtual void Write(string value)
         {
-            _writer.Write(_options.TextEncoder?.Invoke(value) ?? value);
+            if (_options.TextEncoder is {} encode)
+            {
+                value = encode(value);
+            }
+
+            _writer.Write(value);
         }
 
         public virtual DotTokenWriter FlushLingerBuffer()

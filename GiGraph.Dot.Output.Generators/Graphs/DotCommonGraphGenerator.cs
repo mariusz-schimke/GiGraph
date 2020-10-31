@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using GiGraph.Dot.Entities;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
@@ -7,9 +7,8 @@ using GiGraph.Dot.Output.Writers.Graphs;
 
 namespace GiGraph.Dot.Output.Generators.Graphs
 {
-    public abstract class DotCommonGraphGenerator<TGraph, TGraphAttributes, TWriter> : DotEntityGenerator<TGraph, TWriter>
-        where TGraph : DotCommonGraph<TGraphAttributes>
-        where TGraphAttributes : IDotAttributeCollection
+    public abstract class DotCommonGraphGenerator<TGraph, TWriter> : DotEntityGenerator<TGraph, TWriter>
+        where TGraph : IDotCommonGraph, IDotAnnotatable
         where TWriter : IDotEntityWriter
     {
         protected DotCommonGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)

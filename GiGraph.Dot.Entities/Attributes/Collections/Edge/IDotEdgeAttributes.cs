@@ -9,26 +9,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
     public interface IDotEdgeAttributes
     {
         /// <summary>
-        ///     The attributes of the head of the edge.
-        /// </summary>
-        IDotEdgeHeadAttributes Head { get; }
-
-        /// <summary>
-        ///     The attributes of the tail of the edge.
-        /// </summary>
-        IDotEdgeTailAttributes Tail { get; }
-
-        /// <summary>
-        ///     Font properties.
-        /// </summary>
-        IDotEntityFontAttributes Font { get; }
-
-        /// <summary>
-        ///     Label properties of the head and the tail of the edge.
-        /// </summary>
-        IDotEdgeEndpointLabelAttributes EndpointLabels { get; }
-
-        /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the edge. It may be plain text (<see cref="string" />) or HTML (
         ///         <see cref="DotHtmlLabel" />). See also <see cref="DotTextFormatter" /> for plain text label formatting if needed.
@@ -52,11 +32,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotLabel Label { get; set; }
 
         /// <summary>
-        ///     External label for the edge. The label will be placed near the center of the edge. This can be useful in dot to avoid the
-        ///     occasional problem when the use of edge labels distorts the layout. For other layouts, this attribute can be viewed as a
-        ///     synonym for the <see cref="Label" /> attribute. These labels are added after all nodes and edges have been placed. The labels
-        ///     will be placed so that they do not overlap any node or label. This means it may not be possible to place all of them. To
-        ///     force placing all of them, use the <see cref="IDotGraphAttributes.ForceExternalLabels" /> attribute on the graph.
+        ///     <para>
+        ///         External label for the edge. The label will be placed near the center of the edge. This can be useful in dot to avoid the
+        ///         occasional problem when the use of edge labels distorts the layout. For other layouts, this attribute can be viewed as a
+        ///         synonym for the <see cref="Label" /> attribute.
+        ///     </para>
+        ///     <para>
+        ///         These labels are added after all nodes and edges have been placed. The labels will be placed so that they do not overlap
+        ///         any node or label. This means it may not be possible to place all of them. To force placing all of them, use the
+        ///         <see cref="DotGraphAttributes.ForceExternalLabels" /> attribute on the graph.
+        ///     </para>
         /// </summary>
         DotLabel ExternalLabel { set; get; }
 
@@ -64,7 +49,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     If true, allows edge labels to be less constrained in position. In particular, it may appear on top of other edges. Default:
         ///     false.
         /// </summary>
-        bool? LabelFloat { get; set; }
+        bool? AllowLabelFloat { get; set; }
 
         /// <summary>
         ///     Minimum edge length (rank difference between head and tail). Default: 1, minimum: 0.
@@ -139,7 +124,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges. The value has no
         ///     effect on text. Default: 1.0, minimum: 0.0.
         /// </summary>
-        double? PenWidth { get; set; }
+        double? Width { get; set; }
 
         /// <summary>
         ///     Gets or sets the multiplicative scale factor for arrowheads (default: 1.0, minimum: 0.0).
@@ -148,28 +133,28 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     <para>
-        ///         Gets or sets edge type for drawing arrowheads. Default: <see cref="DotArrowDirections.Forward" /> (for directed graphs),
-        ///         <see cref="DotArrowDirections.None" /> (for undirected graphs).
+        ///         Gets or sets edge type for drawing arrowheads. Default: <see cref="DotEdgeDirections.Forward" /> (for directed graphs),
+        ///         <see cref="DotEdgeDirections.None" /> (for undirected graphs).
         ///     </para>
         ///     <para>
-        ///         Indicates which ends of the edge should be decorated with an arrow head. The actual style of the arrowhead can be
-        ///         specified using the <see cref="IDotEdgeHeadAttributes.Arrow" /> attribute on the head of the edge, and the corresponding
-        ///         <see cref="IDotEdgeTailAttributes.Arrow" /> attribute on the tail of the edge.
+        ///         Indicates which ends of the edge should be decorated with an arrowhead. The actual style of the arrowhead may be
+        ///         specified using the <see cref="DotEdgeEndpointAttributes.Arrowhead" /> attribute on the
+        ///         <see cref="DotEdgeAttributes.Head" /> or <see cref="DotEdgeAttributes.Tail" /> of the edge.
         ///     </para>
         ///     <para>
-        ///         A glyph is drawn at the head end of the edge if and only if the arrow direction is
-        ///         <see cref="DotArrowDirections.Forward" /> or <see cref="DotArrowDirections.Both" />.
+        ///         A glyph is drawn at the head end of the edge if and only if the direction is <see cref="DotEdgeDirections.Forward" /> or
+        ///         <see cref="DotEdgeDirections.Both" />.
         ///     </para>
         ///     <para>
-        ///         A glyph is drawn at the tail end of the edge if and only if the direction is <see cref="DotArrowDirections.Backward" />
-        ///         or <see cref="DotArrowDirections.Both" />.
+        ///         A glyph is drawn at the tail end of the edge if and only if the direction is <see cref="DotEdgeDirections.Backward" /> or
+        ///         <see cref="DotEdgeDirections.Both" />.
         ///     </para>
         ///     <para>
         ///         For undirected edges T -- H, one of the nodes, usually the right hand one, is treated as the head for the purpose of
-        ///         interpreting <see cref="DotArrowDirections.Forward" /> and <see cref="DotArrowDirections.Backward" />.
+        ///         interpreting <see cref="DotEdgeDirections.Forward" /> and <see cref="DotEdgeDirections.Backward" />.
         ///     </para>
         /// </summary>
-        DotArrowDirections? ArrowDirections { get; set; }
+        DotEdgeDirections? Directions { get; set; }
 
         /// <summary>
         ///     If true, attaches label to the edge by a 2-segment polyline, underlining the label, then going to the closest point of
@@ -190,91 +175,5 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Comments are inserted into output. Device-dependent.
         /// </summary>
         string Comment { get; set; }
-
-        /// <summary>
-        ///     <para>
-        ///         Hyperlinks incorporated into device-dependent output. At present, used in PS2, CMAP, I*MAP and SVG formats. For all these
-        ///         formats, URLs can be attached to nodes, edges and clusters. URL attributes can also be attached to the root graph in PS2,
-        ///         CMAP and I*MAP formats. This serves as the base URL for relative URLs in the former, and as the default image map file in
-        ///         the latter.
-        ///     </para>
-        ///     <para>
-        ///         For edges, the active areas are small circles where the edge contacts its head and tail nodes. In addition, for SVG,
-        ///         CMAPX and IMAP, the active area includes a thin polygon approximating the edge. The circles may overlap the related node,
-        ///         and the edge URL dominates. If the edge has a label, this will also be active. Finally, if the edge has a head or tail
-        ///         label, this will also be active.
-        ///     </para>
-        ///     <para>
-        ///         Note that, for edges, the head <see cref="IDotEdgeHeadAttributes.Url" />, the tail
-        ///         <see cref="IDotEdgeTailAttributes.Url" />, the <see cref="LabelUrl" />, and the <see cref="EdgeUrl" /> properties allow
-        ///         control of various parts of the edge. Also note that, if active areas of two edges overlap, it is unspecified which area
-        ///         dominates.
-        ///     </para>
-        /// </summary>
-        DotEscapeString Url { get; set; }
-
-        /// <summary>
-        ///     Synonym for <see cref="Url" />.
-        /// </summary>
-        DotEscapeString Href { get; set; }
-
-        /// <summary>
-        ///     If the object has a <see cref="Url" /> specified, this attribute determines which window of the browser is used for the URL.
-        ///     See
-        ///     <see href="http://www.w3.org/TR/html401/present/frames.html#adef-target">
-        ///         W3C documentation
-        ///     </see>
-        ///     .
-        /// </summary>
-        DotEscapeString UrlTarget { get; set; }
-
-        /// <summary>
-        ///     If defined, this is the link used for the label of the edge. This value overrides any <see cref="Url" /> defined for the
-        ///     edge.
-        /// </summary>
-        DotEscapeString LabelUrl { get; set; }
-
-        /// <summary>
-        ///     Synonym for <see cref="LabelUrl" />.
-        /// </summary>
-        DotEscapeString LabelHref { get; set; }
-
-        /// <summary>
-        ///     If the edge has a <see cref="Url" /> or <see cref="LabelUrl" /> attribute, this attribute determines which window of the
-        ///     browser is used for the URL attached to the label. Setting it to "_graphviz" will open a new window if it doesn't already
-        ///     exist, or reuse it if it does. If undefined, the value of the <see cref="UrlTarget" /> is used.
-        /// </summary>
-        DotEscapeString LabelUrlTarget { get; set; }
-
-        /// <summary>
-        ///     Tooltip annotation attached to label of the edge. This is used only if the edge has a <see cref="Url" /> or
-        ///     <see cref="LabelUrl" /> attribute specified.
-        /// </summary>
-        DotEscapeString LabelUrlTooltip { get; set; }
-
-        /// <summary>
-        ///     If defined, this is the link used for the non-label parts of the edge. This value overrides any primary <see cref="Url" />
-        ///     defined for the edge. Also, this value is used near the head or tail node unless overridden by its head
-        ///     <see cref="IDotEdgeHeadAttributes.Url" /> or tail <see cref="IDotEdgeTailAttributes.Url" />, respectively.
-        /// </summary>
-        DotEscapeString EdgeUrl { get; set; }
-
-        /// <summary>
-        ///     Synonym for <see cref="EdgeUrl" />.
-        /// </summary>
-        DotEscapeString EdgeHref { get; set; }
-
-        /// <summary>
-        ///     If the edge has a <see cref="Url" /> or <see cref="EdgeUrl" /> attribute, this attribute determines which window of the
-        ///     browser is used for the URL attached to the non-label part of the edge. Setting it to "_graphviz" will open a new window if
-        ///     it doesn't already exist, or reuse it if it does. If undefined, the value of the <see cref="UrlTarget" /> is used.
-        /// </summary>
-        DotEscapeString EdgeUrlTarget { get; set; }
-
-        /// <summary>
-        ///     Tooltip annotation attached to the non-label part of the edge. This is used only if the edge has a <see cref="Url" /> or
-        ///     <see cref="EdgeUrl" /> attribute specified.
-        /// </summary>
-        DotEscapeString EdgeUrlTooltip { get; set; }
     }
 }

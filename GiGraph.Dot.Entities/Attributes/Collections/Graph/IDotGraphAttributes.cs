@@ -14,16 +14,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
     public interface IDotGraphAttributes
     {
         /// <summary>
-        ///     Font properties.
-        /// </summary>
-        IDotEntityFontAttributes Font { get; }
-
-        /// <summary>
-        ///     The graph-level attributes applied to clusters.
-        /// </summary>
-        IDotGraphClusterAttributes Clusters { get; }
-
-        /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the graph. It may be plain text (<see cref="string" />) or HTML (
         ///         <see cref="DotHtmlLabel" />). See also <see cref="DotTextFormatter" /> for plain text label formatting if needed.
@@ -62,7 +52,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         DotVerticalAlignment? VerticalLabelAlignment { get; set; }
 
         /// <summary>
-        ///     If true, all node <see cref="IDotNodeAttributes.ExternalLabel" /> and edge <see cref="IDotEdgeAttributes.ExternalLabel" />
+        ///     If true, all node <see cref="DotNodeAttributes.ExternalLabel" /> and edge <see cref="DotEdgeAttributes.ExternalLabel" />
         ///     attributes are placed, even if there is some overlap with nodes or other labels (default: true).
         /// </summary>
         bool? ForceExternalLabels { get; set; }
@@ -117,12 +107,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         int? RotationAngle { get; set; }
 
         /// <summary>
-        ///     Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges and clusters. The
-        ///     value is inherited by subclusters. It has no effect on text. Default: 1.0, minimum: 0.0.
-        /// </summary>
-        double? PenWidth { get; set; }
-
-        /// <summary>
         ///     Gets or sets the direction of graph layout (default: <see cref="DotLayoutDirection.TopToBottom" />).
         /// </summary>
         DotLayoutDirection? LayoutDirection { get; set; }
@@ -153,13 +137,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         DotStyles? Style { get; set; }
 
         /// <summary>
-        ///     Gets or sets the directory list used by libgd to search for bitmap fonts if Graphviz was not built with the fontconfig
-        ///     library. If <see cref="FontDirectories" /> is not set, the environment variable DOTFONTPATH is checked. If that is not set,
-        ///     GDFONTPATH is checked. If not set, libgd uses its compiled-in font path. The default path is system dependent.
-        /// </summary>
-        string FontDirectories { get; set; }
-
-        /// <summary>
         ///     Specifies the character encoding used when interpreting string input as a text label. The default value is "UTF-8". The other
         ///     legal value is "iso-8859-1" or, equivalently, "Latin1". The charset attribute is case-insensitive. Note that if the character
         ///     encoding used in the input does not match the charset value, the resulting output may be very strange.
@@ -176,29 +153,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     Comments are inserted into output. Device-dependent.
         /// </summary>
         string Comment { get; set; }
-
-        /// <summary>
-        ///     Hyperlinks incorporated into device-dependent output. At present, used in PS2, CMAP, I*MAP and SVG formats. For all these
-        ///     formats, URLs can be attached to nodes, edges and clusters. URL attributes can also be attached to the root graph in PS2,
-        ///     CMAP and I*MAP formats. This serves as the base URL for relative URLs in the former, and as the default image map file in the
-        ///     latter.
-        /// </summary>
-        DotEscapeString Url { get; set; }
-
-        /// <summary>
-        ///     Synonym for <see cref="Url" />.
-        /// </summary>
-        DotEscapeString Href { get; set; }
-
-        /// <summary>
-        ///     If the object has a <see cref="Url" /> specified, this attribute determines which window of the browser is used for the URL.
-        ///     See
-        ///     <see href="http://www.w3.org/TR/html401/present/frames.html#adef-target">
-        ///         W3C documentation
-        ///     </see>
-        ///     .
-        /// </summary>
-        DotEscapeString UrlTarget { get; set; }
 
         /// <summary>
         ///     <para>
@@ -235,10 +189,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 
         /// <summary>
         ///     <para>
-        ///         Specifies a list of directories in which to look for image files as specified by the image attribute of nodes (
-        ///         <see cref="IDotNodeAttributes.ImagePath" />) or using the IMG element in HTML-like labels. The string should be a list of
-        ///         (absolute or relative) path names, each separated by a semicolon (for Windows) or a colon (all other OS). The first
-        ///         directory in which a file of the given name is found will be used to load the image.
+        ///         Specifies a list of directories in which to look for image files used by nodes, referenced either by the
+        ///         <see cref="DotNodeImageAttributes.Path" /> of their <see cref="DotNodeAttributes.Image" /> attributes, or from the IMG
+        ///         element in HTML-like labels. The string should be a list of (absolute or relative) path names, each separated by a
+        ///         semicolon (for Windows) or a colon (all other OS). The first directory in which a file of the given name is found will be
+        ///         used to load the image.
         ///     </para>
         ///     <para>
         ///         If not set, relative path names for image files will be interpreted with respect to the current working directory.

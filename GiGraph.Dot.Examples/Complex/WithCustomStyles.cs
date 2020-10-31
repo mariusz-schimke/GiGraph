@@ -18,11 +18,12 @@ namespace GiGraph.Dot.Examples.Complex
 
             // set global node attributes (for all nodes of the graph)
             graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
-            graph.Nodes.Attributes.SetFilled(new DotGradientColor(Color.Turquoise, Color.RoyalBlue));
+            // TODO: restore SetFilled
+            // graph.Nodes.Attributes.SetFilled(new DotGradientColor(Color.Turquoise, Color.RoyalBlue));
             graph.Nodes.Attributes.Font.Name = graph.Attributes.Font.Name;
 
             // set global edge attributes (for all edges of the graph)
-            graph.Edges.Attributes.Head.Arrow = graph.Edges.Attributes.Tail.Arrow = DotArrowheadShape.Vee;
+            graph.Edges.Attributes.Head.Arrowhead = graph.Edges.Attributes.Tail.Arrowhead = DotArrowheadShape.Vee;
             graph.Edges.Attributes.Font.Name = graph.Attributes.Font.Name;
             graph.Edges.Attributes.Font.Size = 10;
 
@@ -45,7 +46,7 @@ namespace GiGraph.Dot.Examples.Complex
                 sg.Edges.Add("E", "F", edge =>
                 {
                     edge.Attributes.Label = "PARALLEL SPLINES";
-                    edge.Attributes.ArrowDirections = DotArrowDirections.Both;
+                    edge.Attributes.Directions = DotEdgeDirections.Both;
 
                     // this will render two parallel splines (but more of them may be specified)
                     edge.ToParallelSplines(Color.Turquoise, Color.RoyalBlue);
@@ -61,7 +62,7 @@ namespace GiGraph.Dot.Examples.Complex
                 sg.Edges.Add("C", "D", edge =>
                 {
                     edge.Attributes.Label = "MULTICOLOR SERIES";
-                    edge.Attributes.ArrowDirections = DotArrowDirections.Both;
+                    edge.Attributes.Directions = DotEdgeDirections.Both;
 
                     // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
                     edge.ToMulticolorSegments(

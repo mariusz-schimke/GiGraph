@@ -16,19 +16,19 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         protected DotEdgeCollection(
             Func<string, string, Predicate<DotEdgeDefinition>> matchEdgePredicate,
             Predicate<DotEdgeDefinition> matchLoopPredicate,
-            IDotEdgeAttributeCollection attributes)
+            DotEdgeAttributes attributes)
         {
             Attributes = attributes;
             _matchEdgePredicate = matchEdgePredicate;
             _matchLoopPredicate = matchLoopPredicate;
         }
 
-        public DotEdgeCollection(IDotEdgeAttributeCollection attributes)
+        public DotEdgeCollection()
             : this
             (
                 (tailNodeId, headNodeId) => edgeDefinition => DotEdge.Equals(edgeDefinition, tailNodeId, headNodeId),
                 edgeDefinition => DotEdge.IsLoopEdge(edgeDefinition),
-                attributes
+                new DotEdgeAttributes()
             )
         {
         }
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <summary>
         ///     Gets the attributes to apply by default to all edges of the graph.
         /// </summary>
-        public virtual IDotEdgeAttributeCollection Attributes { get; }
+        public virtual DotEdgeAttributes Attributes { get; }
 
         public virtual string Annotation { get; set; }
 

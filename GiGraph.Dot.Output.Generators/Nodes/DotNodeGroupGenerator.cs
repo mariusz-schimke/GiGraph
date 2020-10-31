@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
         protected override void WriteEntity(DotNodeGroup nodeGroup, IDotNodeWriter writer)
         {
             WriteIdentifiers(nodeGroup.NodeIds, writer);
-            WriteAttributes(nodeGroup.Attributes, writer);
+            WriteAttributes(nodeGroup.Attributes.Collection, writer);
         }
 
         protected virtual void WriteIdentifiers(IEnumerable<string> nodeIds, IDotNodeWriter writer)

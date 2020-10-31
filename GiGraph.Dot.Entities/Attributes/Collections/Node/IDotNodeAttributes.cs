@@ -11,11 +11,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
     public interface IDotNodeAttributes
     {
         /// <summary>
-        ///     Font properties.
-        /// </summary>
-        IDotEntityFontAttributes Font { get; }
-
-        /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the node. It may be plain text (<see cref="string" />), HTML (
         ///         <see cref="DotHtmlLabel" />), or a record (<see cref="DotRecordLabel" />) for a record-based node (when
@@ -54,7 +49,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     occasional problem when the use of edge labels distorts the layout. For other layouts, this attribute can be viewed as a
         ///     synonym for the <see cref="Label" /> attribute. These labels are added after all nodes and edges have been placed. The labels
         ///     will be placed so that they do not overlap any node or label. This means it may not be possible to place all of them. To
-        ///     force placing all of them, use the <see cref="IDotGraphAttributes.ForceExternalLabels" /> attribute on the graph.
+        ///     force placing all of them, use the <see cref="DotGraphAttributes.ForceExternalLabels" /> attribute on the graph.
         /// </summary>
         DotLabel ExternalLabel { get; set; }
 
@@ -122,61 +117,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         string ColorScheme { get; set; }
 
         /// <summary>
-        ///     <para>
-        ///         Gives the name of a file containing an image to be displayed inside the node. The image file must be in one of the
-        ///         <see href="http://www.graphviz.org/doc/info/output.html#d:image_fmts">
-        ///             recognized formats
-        ///         </see>
-        ///         , typically JPEG, PNG, GIF, BMP, SVG or Postscript, and be able to be converted into the desired output format.
-        ///     </para>
-        ///     <para>
-        ///         The file must contain the image size information. This is usually trivially true for the bitmap formats. For PostScript,
-        ///         the file must contain a line starting with %%BoundingBox: followed by four integers specifying the lower left x and y
-        ///         coordinates and the upper right x and y coordinates of the bounding box for the image, the coordinates being in points.
-        ///         An SVG image file must contain width and height attributes, typically as part of the svg element. The values for these
-        ///         should have the form of a floating point number, followed by optional units, e.g., width="76pt". Recognized units are in,
-        ///         px, pc, pt, cm and mm for inches, pixels, picas, points, centimeters and millimeters, respectively. The default unit is
-        ///         points.
-        ///     </para>
-        ///     <para>
-        ///         Unlike with the shapefile attribute, the image is treated as node content rather than the entire node. In particular, an
-        ///         image can be contained in a node of any shape, not just a rectangle.
-        ///     </para>
-        /// </summary>
-        string ImagePath { get; set; }
-
-        /// <summary>
-        ///     Controls how an image is positioned within its containing node. This only has an effect when the image is smaller than the
-        ///     containing node. The default is to be centered both horizontally and vertically (<see cref="DotAlignment.MiddleCenter" />).
-        /// </summary>
-        DotAlignment? ImageAlignment { get; set; }
-
-        /// <summary>
-        ///     <para>
-        ///         Attribute controlling how an image fills its containing node. In general, the image is given its natural size, (compare
-        ///         the <see cref="IDotGraphAttributes.Dpi" /> graph attribute), and the node size is made large enough to contain its image,
-        ///         its label, its margin, and its peripheries. Its width and height will also be at least as large as its minimum width and
-        ///         height. If, however, <see cref="Sizing" /> = <see cref="DotNodeSizing.Fixed" />, the <see cref="Width" /> and
-        ///         <see cref="Height" /> attributes specify the exact size of the node.
-        ///     </para>
-        ///     <para>
-        ///         During rendering, in the default case (<see cref="ImageScaling" /> = <see cref="DotImageScaling.None" />), the image
-        ///         retains its natural size. If <see cref="ImageScaling" /> = <see cref="DotImageScaling.Uniform" />, the image is uniformly
-        ///         scaled (i.e., its aspect ratio is preserved) to fit inside the node. At least one dimension of the image will be as large
-        ///         as possible given the size of the node. When <see cref="ImageScaling" /> = <see cref="DotImageScaling.FillWidth" />, the
-        ///         width of the image is scaled to fill the node width. The corresponding property holds when <see cref="ImageScaling" /> =
-        ///         <see cref="DotImageScaling.FillHeight" />. When <see cref="ImageScaling" /> = <see cref="DotImageScaling.FillBoth" />,
-        ///         both the height and the width are scaled separately to fill the node.
-        ///     </para>
-        ///     <para>
-        ///         In all cases, if a dimension of the image is larger than the corresponding dimension of the node, that dimension of the
-        ///         image is scaled down to fit the node. As with the case of expansion, if <see cref="ImageScaling" /> =
-        ///         <see cref="DotImageScaling.Uniform" />, width and height are scaled uniformly.
-        ///     </para>
-        /// </summary>
-        DotImageScaling? ImageScaling { get; set; }
-
-        /// <summary>
         ///     If a gradient fill is being used, this determines the angle of the fill. For linear fills, the colors transform along a line
         ///     specified by the angle and the center of the object. For radial fills, a value of zero causes the colors to transform
         ///     radially from the center; for non-zero values, the colors transform from a point near the object's periphery as specified by
@@ -188,7 +128,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     Specifies the width of the pen, in points, used to draw lines and curves. The value has no effect on text. Default: 1.0,
         ///     minimum: 0.0.
         /// </summary>
-        double? PenWidth { get; set; }
+        double? BorderWidth { get; set; }
 
         /// <summary>
         ///     Gets or sets the shape of the node (default: <see cref="DotNodeShape.Ellipse" />).
@@ -290,36 +230,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     Angle, in degrees, used to rotate polygon node shapes (<see cref="Shape" /> = <see cref="DotNodeShape.Polygon" />). For any
         ///     number of polygon sides, 0 degrees rotation results in a flat base. Default: 0, maximum: 360.
         /// </summary>
-        double? Orientation { get; set; }
-
-        /// <summary>
-        ///     <para>
-        ///         Hyperlinks incorporated into device-dependent output. At present, used in PS2, CMAP, I*MAP and SVG formats. For all these
-        ///         formats, URLs can be attached to nodes, edges and clusters. URL attributes can also be attached to the root graph in PS2,
-        ///         CMAP and I*MAP formats. This serves as the base URL for relative URLs in the former, and as the default image map file in
-        ///         the latter.
-        ///     </para>
-        ///     <para>
-        ///         For SVG, CMAPX and IMAP output, the active area for a node is its visible image. For example, an unfilled node with no
-        ///         drawn boundary will only be active on its label. For other output, the active area is its bounding box.
-        ///     </para>
-        /// </summary>
-        DotEscapeString Url { get; set; }
-
-        /// <summary>
-        ///     Synonym for <see cref="Url" />.
-        /// </summary>
-        DotEscapeString Href { get; set; }
-
-        /// <summary>
-        ///     If the object has a <see cref="Url" /> specified, this attribute determines which window of the browser is used for the URL.
-        ///     See
-        ///     <see href="http://www.w3.org/TR/html401/present/frames.html#adef-target">
-        ///         W3C documentation
-        ///     </see>
-        ///     .
-        /// </summary>
-        DotEscapeString UrlTarget { get; set; }
+        double? RotationAngle { get; set; }
 
         /// <summary>
         ///     Determines how inedges and outedges, that is, edges with the node as their head or tail node respectively, are ordered (dot
@@ -335,7 +246,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         string GroupName { get; set; }
 
         /// <summary>
-        ///     Gets or sets the sorting index of the node (default: 0). If <see cref="IDotGraphAttributes.PackingMode" /> indicates an array
+        ///     Gets or sets the sorting index of the node (default: 0). If <see cref="DotGraphAttributes.PackingMode" /> indicates an array
         ///     packing, this attribute specifies an insertion order among the components, with smaller values inserted first.
         /// </summary>
         int? SortIndex { get; set; }

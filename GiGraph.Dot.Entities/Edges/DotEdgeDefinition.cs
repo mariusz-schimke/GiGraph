@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Edges
 {
     public abstract class DotEdgeDefinition : IDotEntity, IDotAnnotatable, IDotOrderable
     {
-        protected DotEdgeDefinition(IDotEdgeAttributeCollection attributes)
+        protected DotEdgeDefinition(DotEdgeAttributes attributes)
         {
             Attributes = attributes;
         }
@@ -14,10 +14,10 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         ///     Gets the attributes of the edge.
         /// </summary>
-        public virtual IDotEdgeAttributeCollection Attributes { get; }
+        public virtual DotEdgeAttributes Attributes { get; }
 
         /// <summary>
-        ///     Gets the edge endpoints.
+        ///     Gets the endpoints of the edge.
         /// </summary>
         public abstract IEnumerable<DotEndpointDefinition> Endpoints { get; }
 
