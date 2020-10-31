@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Types.Geometry;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
@@ -54,6 +55,44 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
+        }
+
+        /// <summary>
+        ///     Sets polygon geometry attributes.
+        /// </summary>
+        /// <param name="sides">
+        ///     The number of sides.
+        /// </param>
+        /// <param name="regular">
+        ///     Determines whether the shape should be regular.
+        /// </param>
+        /// <param name="skew">
+        ///     The skew factor.
+        /// </param>
+        /// <param name="distortion">
+        ///     The distortion factor.
+        /// </param>
+        /// <param name="rotation">
+        ///     The rotation angle.
+        /// </param>
+        public virtual void Set(int? sides, bool? regular, double? skew, double? distortion, double? rotation)
+        {
+            Sides = sides;
+            Regular = regular;
+            Skew = skew;
+            Distortion = distortion;
+            Rotation = rotation;
+        }
+
+        /// <summary>
+        ///     Sets polygon geometry attributes.
+        /// </summary>
+        /// <param name="attributes">
+        ///     The attributes to set.
+        /// </param>
+        public virtual void Set(DotPolygon attributes)
+        {
+            Set(attributes.Sides, attributes.Regular, attributes.Skew, attributes.Distortion, attributes.Rotation);
         }
     }
 }
