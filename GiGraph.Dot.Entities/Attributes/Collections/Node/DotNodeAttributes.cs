@@ -20,12 +20,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEntityHyperlinkAttributes hyperlinkAttributes,
             DotEntityFontAttributes fontAttributes,
-            DotNodeImageAttributes imageAttributes
+            DotNodeImageAttributes imageAttributes,
+            DotNodeGeometryAttributes geometryAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
             Font = fontAttributes;
             Image = imageAttributes;
+            Geometry = geometryAttributes;
         }
 
         public DotNodeAttributes(DotAttributeCollection attributes)
@@ -34,7 +36,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
                 NodeAttributesKeyLookup,
                 new DotEntityHyperlinkAttributes(attributes),
                 new DotEntityFontAttributes(attributes),
-                new DotNodeImageAttributes(attributes)
+                new DotNodeImageAttributes(attributes),
+                new DotNodeGeometryAttributes(attributes)
             )
         {
         }
@@ -53,6 +56,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     Node image properties.
         /// </summary>
         public virtual DotNodeImageAttributes Image { get; }
+
+        /// <summary>
+        ///     Node geometry properties applicable if <see cref="Shape" /> is set to <see cref="DotNodeShape.Polygon" />.
+        /// </summary>
+        public virtual DotNodeGeometryAttributes Geometry { get; }
 
         // overridden to inherit comment from interface
         public override DotLabel Label
@@ -101,13 +109,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("peripheries")]
-        public virtual int? Peripheries
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => AddOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("penwidth")]
@@ -164,43 +165,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
             get => GetValueAs<DotNodeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotNodeShape?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeShapeAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("sides")]
-        public virtual int? Sides
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
-                ? throw new ArgumentOutOfRangeException(nameof(Sides), v.Value, "The number of sides must be greater than or equal to 0.")
-                : new DotIntAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("regular")]
-        public virtual bool? Regular
-        {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("skew")]
-        public virtual double? Skew
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("distortion")]
-        public virtual double? Distortion
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey("orientation")]
-        public virtual double? RotationAngle
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
         [DotAttributeKey("width")]

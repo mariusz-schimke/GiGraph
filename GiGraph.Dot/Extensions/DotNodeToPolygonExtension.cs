@@ -1,6 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Nodes;
+using GiGraph.Dot.Entities.Types.Geometry;
 
 namespace GiGraph.Dot.Extensions
 {
@@ -32,7 +33,7 @@ namespace GiGraph.Dot.Extensions
         ///     are treated as a form of box shape, so the default peripheries value is 1, and the user-defined shape will be drawn in a
         ///     bounding rectangle. Setting peripheries to 0 will turn this off.
         /// </param>
-        /// <param name="rotationAngle">
+        /// <param name="rotation">
         ///     Angle, in degrees, used to rotate polygon node shapes (<see cref="DotNodeAttributes.Shape" /> =
         ///     <see cref="DotNodeShape.Polygon" />). For any number of polygon sides, 0 degrees rotation results in a flat base. Default: 0,
         ///     maximum: 360.
@@ -50,18 +51,27 @@ namespace GiGraph.Dot.Extensions
             int? sides = null,
             bool? regular = null,
             int? peripheries = null,
-            double? rotationAngle = null,
+            double? rotation = null,
             double? skew = null,
             double? distortion = null)
         {
             node.Attributes.Shape = DotNodeShape.Polygon;
+            node.Attributes.Geometry.Set(sides, regular, peripheries, rotation, skew, distortion);
+        }
 
-            node.Attributes.Sides = sides;
-            node.Attributes.Regular = regular;
-            node.Attributes.Peripheries = peripheries;
-            node.Attributes.RotationAngle = rotationAngle;
-            node.Attributes.Skew = skew;
-            node.Attributes.Distortion = distortion;
+        /// <summary>
+        ///     Converts the current node to a polygon shape.
+        /// </summary>
+        /// <param name="node">
+        ///     The node whose shape to set to polygon.
+        /// </param>
+        /// <param name="attributes">
+        ///     The polygon attributes to set.
+        /// </param>
+        public static void ToPolygon(this DotNode node, DotPolygon attributes)
+        {
+            node.Attributes.Shape = DotNodeShape.Polygon;
+            node.Attributes.Geometry.Set(attributes);
         }
     }
 }
