@@ -33,6 +33,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     <see cref="DotNodeShape.Polygon" />). For any number of polygon sides, 0 degrees rotation results in a flat base. Default: 0,
         ///     maximum: 360.
         /// </summary>
-        double? RotationAngle { get; set; }
+        double? Rotation { get; set; }
     }
 }
