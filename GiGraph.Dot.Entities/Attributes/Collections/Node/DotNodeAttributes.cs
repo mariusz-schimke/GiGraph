@@ -107,9 +107,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual int? Peripheries
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
-                ? throw new ArgumentOutOfRangeException(nameof(Peripheries), v.Value, "The number of peripheries must be greater than or equal to 0.")
-                : new DotIntAttribute(k, v.Value));
+            set => AddOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("penwidth")]
