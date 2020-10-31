@@ -21,8 +21,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     If defined, this is the link used for the non-label parts of the edge. This value overrides any URL specified for the edge.
-        ///     Also, this value is used near the head or the tail node, unless overridden by their own head or tail URL attributes.
+        ///     If defined, this is the link used for the non-label parts of the edge. Used near the head or the tail node, unless overridden
+        ///     by the <see cref="DotEdgeEndpointAttributes.Hyperlink" /> <see cref="DotEdgeHyperlinkAttributes.Url" /> on the
+        ///     <see cref="DotEdgeAttributes.Head" /> or on the <see cref="DotEdgeAttributes.Tail" /> attributes of the edge. This value
+        ///     overrides any <see cref="DotEntityHyperlinkAttributes.Url" /> specified for the edge's
+        ///     <see cref="DotEdgeAttributes.Hyperlink" />.
         /// </summary>
         [DotAttributeKey("edgeURL")]
         public override DotEscapeString Url
@@ -42,11 +45,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     If <see cref="Url" /> is specified, or if the edge has a hyperlink
+        ///     If <see cref="Url" /> is specified, or if the edge has a
+        ///     <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />
         ///     <see cref="DotEntityHyperlinkAttributes{TIEntityHyperlinkAttributes}.Url" /> attribute specified, determines which window of
         ///     the browser is used for the URL attached to the non-label part of the edge. Setting it to
         ///     <see cref="DotHyperlinkTargets.NewWindow" /> will open a new window if it doesn't already exist, or reuse it if it does. If
-        ///     undefined, the value of the edge's hyperlink target is used.
+        ///     undefined, the value of the edge's <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />
+        ///     <see cref="DotEntityHyperlinkAttributes.Target" /> is used.
         /// </summary>
         [DotAttributeKey("edgetarget")]
         public override DotEscapeString Target
@@ -57,7 +62,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     Tooltip annotation attached to the non-label part of the edge. This is used only if <see cref="Url" /> is specified, or if
-        ///     the edge has a hyperlink <see cref="DotEntityHyperlinkAttributes{IDotEntityHyperlinkAttributes}.Url" /> attribute specified.
+        ///     the edge has a <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />
+        ///     <see cref="DotEntityHyperlinkAttributes{IDotEntityHyperlinkAttributes}.Url" /> specified.
         /// </summary>
         [DotAttributeKey("edgetooltip")]
         public virtual DotEscapeString Tooltip
