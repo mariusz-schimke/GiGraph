@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
     public class DotEdgeHeadAttributes : DotEdgeEndpointAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EdgeHeadAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEdgeHeadAttributes));
+        protected static readonly DotMemberAttributeKeyLookup EdgeHeadAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadAttributes, IDotEdgeEndpointAttributes>().Build();
 
         protected DotEdgeHeadAttributes(
             DotAttributeCollection attributes,

@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             Tuple<DotEntityAttributes, PropertyInfo>[] basePath
         )
         {
-            var properties = GetType().GetProperties(AttributeKeyPropertyBindingFlags);
+            var properties = GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
 
             foreach (var property in properties)
             {

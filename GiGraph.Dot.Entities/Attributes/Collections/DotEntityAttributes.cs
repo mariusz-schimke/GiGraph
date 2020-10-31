@@ -7,8 +7,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public abstract partial class DotEntityAttributes
     {
-        protected static readonly BindingFlags AttributeKeyPropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-
         protected readonly DotMemberAttributeKeyLookup _attributeKeyLookup;
         protected readonly DotAttributeCollection _attributes;
 

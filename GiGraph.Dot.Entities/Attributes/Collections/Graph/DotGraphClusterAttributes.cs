@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
     public class DotGraphClusterAttributes : DotEntityAttributes<IDotGraphClusterAttributes>, IDotGraphClusterAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup GraphClusterAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotGraphClusterAttributes));
+        protected static readonly DotMemberAttributeKeyLookup GraphClusterAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClusterAttributes, IDotGraphClusterAttributes>().Build();
 
         protected DotGraphClusterAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)

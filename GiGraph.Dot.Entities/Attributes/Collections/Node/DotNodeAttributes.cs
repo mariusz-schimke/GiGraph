@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
     public class DotNodeAttributes : DotEntityCommonAttributes<IDotNodeAttributes>, IDotNodeAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup NodeAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotNodeAttributes));
+        protected static readonly DotMemberAttributeKeyLookup NodeAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeAttributes, IDotNodeAttributes>().Build();
 
         protected DotNodeAttributes(
             DotAttributeCollection attributes,

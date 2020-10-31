@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
     public class DotEdgeTailHyperlinkAttributes : DotEdgeHyperlinkAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EdgeTailHyperlinkAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEdgeTailHyperlinkAttributes));
+        protected static readonly DotMemberAttributeKeyLookup EdgeTailHyperlinkAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeTailHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().Build();
 
         protected DotEdgeTailHyperlinkAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)

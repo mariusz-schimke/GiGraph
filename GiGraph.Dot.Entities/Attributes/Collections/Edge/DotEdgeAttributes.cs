@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
     public class DotEdgeAttributes : DotEntityCommonAttributes<IDotEdgeAttributes>, IDotEdgeAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EdgeAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEdgeAttributes));
+        protected static readonly DotMemberAttributeKeyLookup EdgeAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeAttributes, IDotEdgeAttributes>().Build();
 
         protected DotEdgeAttributes(
             DotAttributeCollection attributes,
@@ -231,8 +231,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Applies the <see cref="DotStyles.Tapered" /> style to the edge. The edge starts with the specified width, and
-        ///     tapers to width 1, in points.
+        ///     Applies the <see cref="DotStyles.Tapered" /> style to the edge. The edge starts with the specified width, and tapers to width
+        ///     1, in points.
         /// </summary>
         /// <param name="startWidth">
         ///     The width to start with (applied to the <see cref="Width" /> attribute).

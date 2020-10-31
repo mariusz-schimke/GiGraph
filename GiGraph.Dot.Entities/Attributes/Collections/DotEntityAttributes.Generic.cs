@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq.Expressions;
+using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract partial class DotEntityAttributes<TIEntityAttributeProperties> : DotEntityAttributes
+    public abstract class DotEntityAttributes<TIEntityAttributeProperties> : DotEntityAttributes
     {
         protected DotEntityAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
@@ -105,6 +106,35 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             var key = GetKey(property);
             return _attributes.Nullify(key);
+        }
+
+        /// <summary>
+        ///     Gets the DOT key of the attribute the specified property provides access to.
+        /// </summary>
+        /// <param name="property">
+        ///     The property to get the DOT attribute key for.
+        /// </param>
+        /// <typeparam name="TProperty">
+        ///     The type returned by the property.
+        /// </typeparam>
+        public virtual string GetKey<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        {
+            var propertyInfo = GetProperty(property);
+            return GetAttributeKey(propertyInfo);
+        }
+
+        protected virtual PropertyInfo GetProperty<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        {
+            var propertyInfo = (property.Body as MemberExpression)?.Member as PropertyInfo ??
+                               throw new ArgumentException("Property expression expected.", nameof(property));
+
+            // make sure the property expression refers to current instance type, to any of its base classes, or to an interface it implements
+            if (!propertyInfo.DeclaringType.IsAssignableFrom(GetType()))
+            {
+                throw new ArgumentException("The property expression must refer to a member of the current instance.", nameof(property));
+            }
+
+            return propertyInfo;
         }
     }
 }

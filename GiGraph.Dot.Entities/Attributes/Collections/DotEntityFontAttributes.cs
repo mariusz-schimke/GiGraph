@@ -4,7 +4,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public class DotEntityFontAttributes : DotEntityFontAttributes<IDotEntityFontAttributes>
     {
-        protected static readonly DotMemberAttributeKeyLookup EntityFontAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEntityFontAttributes));
+        protected static readonly DotMemberAttributeKeyLookup EntityFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEntityFontAttributes, IDotEntityFontAttributes>().Build();
 
         protected DotEntityFontAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)

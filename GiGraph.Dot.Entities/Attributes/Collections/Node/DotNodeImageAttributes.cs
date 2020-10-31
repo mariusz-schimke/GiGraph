@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
     public class DotNodeImageAttributes : DotEntityAttributes<IDotNodeImageAttributes>, IDotNodeImageAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup NodeImageAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotNodeImageAttributes));
+        protected static readonly DotMemberAttributeKeyLookup NodeImageAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeImageAttributes, IDotNodeImageAttributes>().Build();
 
         protected DotNodeImageAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)

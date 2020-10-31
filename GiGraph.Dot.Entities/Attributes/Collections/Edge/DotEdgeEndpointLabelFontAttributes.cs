@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
     public class DotEdgeEndpointLabelFontAttributes : DotEntityFontAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EdgeEndpointLabelFontAttributesKeyLookup = CreateAttributeKeyLookupForMembersOf(typeof(DotEdgeEndpointLabelFontAttributes));
+        protected static readonly DotMemberAttributeKeyLookup EdgeEndpointLabelFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeEndpointLabelFontAttributes, IDotEntityFontAttributes>().Build();
 
         protected DotEdgeEndpointLabelFontAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
