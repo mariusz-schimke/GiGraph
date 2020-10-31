@@ -1,6 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Nodes;
+using GiGraph.Dot.Entities.Types.Geometry;
 
 namespace GiGraph.Dot.Extensions
 {
@@ -49,17 +50,28 @@ namespace GiGraph.Dot.Extensions
             this DotNode node,
             int? sides = null,
             bool? regular = null,
+            int? peripheries = null,
             double? rotation = null,
             double? skew = null,
             double? distortion = null)
         {
             node.Attributes.Shape = DotNodeShape.Polygon;
+            node.Attributes.Geometry.Set(sides, regular, peripheries, rotation, skew, distortion);
+        }
 
-            node.Attributes.Geometry.Sides = sides;
-            node.Attributes.Geometry.Regular = regular;
-            node.Attributes.Geometry.Rotation = rotation;
-            node.Attributes.Geometry.Skew = skew;
-            node.Attributes.Geometry.Distortion = distortion;
+        /// <summary>
+        ///     Converts the current node to a polygon shape.
+        /// </summary>
+        /// <param name="node">
+        ///     The node whose shape to set to polygon.
+        /// </param>
+        /// <param name="attributes">
+        ///     The polygon attributes to set.
+        /// </param>
+        public static void ToPolygon(this DotNode node, DotPolygon attributes)
+        {
+            node.Attributes.Shape = DotNodeShape.Polygon;
+            node.Attributes.Geometry.Set(attributes);
         }
     }
 }

@@ -148,17 +148,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         DotStyles? Style { get; set; }
 
         /// <summary>
-        ///     Sets the number of peripheries used in polygonal shapes (<see cref="Shape" />). The default value is shape dependent, the
-        ///     minimum value is 0. Note that user-defined shapes (see
-        ///     <see href="http://www.graphviz.org/doc/info/shapes.html#epsf">
-        ///         documentation
-        ///     </see>
-        ///     ) are treated as a form of box shape, so the default peripheries value is 1, and the user-defined shape will be drawn in a
-        ///     bounding rectangle. Setting peripheries to 0 will turn this off.
-        /// </summary>
-        int? Peripheries { get; set; }
-
-        /// <summary>
         ///     <para>
         ///         Width of node, in inches (default: 0.75, minimum: 0.01). This is taken as the initial, minimum width of the node. If
         ///         <see cref="Sizing" /> is <see cref="DotNodeSizing.Fixed" />, this will be the final width of the node. Otherwise, if the

@@ -167,13 +167,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeShapeAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("peripheries")]
-        public virtual int? Peripheries
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => AddOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
-        }
-
         [DotAttributeKey("width")]
         public virtual double? Width
         {

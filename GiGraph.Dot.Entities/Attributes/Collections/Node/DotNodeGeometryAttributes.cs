@@ -36,6 +36,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
+        [DotAttributeKey("peripheries")]
+        public virtual int? Peripheries
+        {
+            get => GetValueAsInt(MethodBase.GetCurrentMethod());
+            set => AddOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey("orientation")]
+        public virtual double? Rotation
+        {
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
+        }
+
         [DotAttributeKey("skew")]
         public virtual double? Skew
         {
@@ -50,13 +64,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("orientation")]
-        public virtual double? Rotation
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
-        }
-
         /// <summary>
         ///     Sets polygon geometry attributes.
         /// </summary>
@@ -66,22 +73,26 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <param name="regular">
         ///     Determines whether the shape should be regular.
         /// </param>
+        /// <param name="peripheries">
+        ///     The number of peripheries.
+        /// </param>
+        /// <param name="rotation">
+        ///     The rotation angle.
+        /// </param>
         /// <param name="skew">
         ///     The skew factor.
         /// </param>
         /// <param name="distortion">
         ///     The distortion factor.
         /// </param>
-        /// <param name="rotation">
-        ///     The rotation angle.
-        /// </param>
-        public virtual void Set(int? sides, bool? regular, double? skew, double? distortion, double? rotation)
+        public virtual void Set(int? sides = null, bool? regular = null, int? peripheries = null, double? rotation = null, double? skew = null, double? distortion = null)
         {
             Sides = sides;
             Regular = regular;
+            Peripheries = peripheries;
+            Rotation = rotation;
             Skew = skew;
             Distortion = distortion;
-            Rotation = rotation;
         }
 
         /// <summary>
@@ -92,7 +103,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// </param>
         public virtual void Set(DotPolygon attributes)
         {
-            Set(attributes.Sides, attributes.Regular, attributes.Skew, attributes.Distortion, attributes.Rotation);
+            Set(attributes.Sides, attributes.Regular, attributes.Peripheries, attributes.Rotation, attributes.Skew, attributes.Distortion);
         }
     }
 }

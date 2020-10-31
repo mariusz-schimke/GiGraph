@@ -29,5 +29,10 @@ namespace GiGraph.Dot.Entities.Types.Geometry
         ///     Gets or sets rotation angle.
         /// </summary>
         public virtual double? Rotation { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the number of peripheries.
+        /// </summary>
+        public virtual int? Peripheries { get; set; }
     }
 }
