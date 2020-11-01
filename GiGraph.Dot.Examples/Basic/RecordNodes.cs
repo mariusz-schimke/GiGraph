@@ -13,8 +13,7 @@ namespace GiGraph.Dot.Examples.Basic
         {
             var graph = new DotGraph();
 
-            graph.Nodes.Add("Bar").ToRecord
-            (
+            graph.Nodes.Add("Bar").ToRecordNode(new DotRecord(
                 $"Foo{Environment.NewLine}Bar",
                 new DotRecord
                 (
@@ -29,10 +28,10 @@ namespace GiGraph.Dot.Examples.Basic
                 ),
                 "Qux",
                 "Quux"
-            );
+            ));
 
             // you can achieve the same effect using a record builder
-            graph.Nodes.Add("Baz").ToRecord(rb1 => rb1
+            graph.Nodes.Add("Baz").ToRecordNode(rb1 => rb1
                .AppendField($"Foo{Environment.NewLine}Bar")
                .AppendRecord(rb2 => rb2
                    .AppendField(tf => tf.AppendLineLeftJustified("Baz"))

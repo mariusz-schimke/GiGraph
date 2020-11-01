@@ -1,21 +1,32 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Types.Geometry;
+using GiGraph.Dot.Entities.Types.Styles;
 
-namespace GiGraph.Dot.Extensions
+namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
-    /// <summary>
-    ///     Provides extension methods for <see cref="DotNode" />.
-    /// </summary>
-    public static class DotNodeToPolygonExtension
+    public partial class DotNodeAttributes
     {
+        /// <summary>
+        ///     Applies the specified graph style options to the <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" />
+        ///     attribute.
+        /// </summary>
+        public virtual void SetStyle(DotNodeStyleOptions options)
+        {
+            base.SetStyle(options);
+        }
+
+        /// <summary>
+        ///     Applies the <see cref="DotStyles.Invisible" /> style option to the
+        ///     <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" /> attribute, making the node invisible.
+        /// </summary>
+        public virtual void SetInvisible()
+        {
+            ApplyStyleOption(DotStyles.Invisible);
+        }
+
         /// <summary>
         ///     Converts the current node to a polygon shape.
         /// </summary>
-        /// <param name="node">
-        ///     The node whose shape to set to polygon.
-        /// </param>
         /// <param name="sides">
         ///     The number of sides if <see cref="DotNodeAttributes.Shape" /> is set to <see cref="DotNodeShape.Polygon" /> (default: 4,
         ///     minimum: 0).
@@ -46,8 +57,7 @@ namespace GiGraph.Dot.Extensions
         ///     Distortion factor for <see cref="DotNodeAttributes.Shape" /> set to <see cref="DotNodeShape.Polygon" /> (default: 0, minimum:
         ///     -100). Positive values cause top part to be larger than bottom; negative values do the opposite.
         /// </param>
-        public static void ToPolygon(
-            this DotNode node,
+        public virtual void SetPolygonal(
             int? sides = null,
             bool? regular = null,
             int? peripheries = null,
@@ -55,23 +65,20 @@ namespace GiGraph.Dot.Extensions
             double? skew = null,
             double? distortion = null)
         {
-            node.Attributes.Shape = DotNodeShape.Polygon;
-            node.Attributes.Geometry.Set(sides, regular, peripheries, rotation, skew, distortion);
+            Shape = DotNodeShape.Polygon;
+            Geometry.Set(sides, regular, peripheries, rotation, skew, distortion);
         }
 
         /// <summary>
         ///     Converts the current node to a polygon shape.
         /// </summary>
-        /// <param name="node">
-        ///     The node whose shape to set to polygon.
-        /// </param>
         /// <param name="attributes">
         ///     The polygon attributes to set.
         /// </param>
-        public static void ToPolygon(this DotNode node, DotPolygon attributes)
+        public virtual void SetPolygonal(DotPolygon attributes)
         {
-            node.Attributes.Shape = DotNodeShape.Polygon;
-            node.Attributes.Geometry.Set(attributes);
+            Shape = DotNodeShape.Polygon;
+            Geometry.Set(attributes);
         }
     }
 }

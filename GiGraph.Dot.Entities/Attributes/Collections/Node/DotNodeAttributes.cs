@@ -7,11 +7,10 @@ using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
-using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
-    public class DotNodeAttributes : DotEntityCommonAttributes<IDotNodeAttributes>, IDotNodeAttributes
+    public partial class DotNodeAttributes : DotEntityCommonAttributes<IDotNodeAttributes>, IDotNodeAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup NodeAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeAttributes, IDotNodeAttributes>().Build();
 
@@ -198,25 +197,5 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
-
-        /// <summary>
-        ///     Applies the specified graph style options to the <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" />
-        ///     attribute.
-        /// </summary>
-        public virtual void SetStyle(DotNodeStyleOptions options)
-        {
-            base.SetStyle(options);
-        }
-
-        /// <summary>
-        ///     Applies the <see cref="DotStyles.Invisible" /> style option to the
-        ///     <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" /> attribute, making the node invisible.
-        /// </summary>
-        public virtual void SetInvisible()
-        {
-            ApplyStyleOption(DotStyles.Invisible);
-        }
-
-        // TODO: te pomocnicze metody wynieść do extension methods (SetInvisible może się wtedy nazywać Hide())
     }
 }
