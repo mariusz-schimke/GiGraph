@@ -237,7 +237,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <param name="startWidth">
         ///     The width to start with (applied to the <see cref="Width" /> attribute).
         /// </param>
-        public virtual void Taper(double startWidth)
+        public virtual void SetTapered(double startWidth)
         {
             Width = startWidth;
             ApplyStyleOption(DotStyles.Tapered);

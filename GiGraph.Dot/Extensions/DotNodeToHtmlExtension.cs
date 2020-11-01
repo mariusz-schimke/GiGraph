@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Extensions
         /// <param name="html">
         ///     The HTML text to assign to node label.
         /// </param>
-        public static void SetHtml(this DotNode node, string html)
+        public static void ToHtmlNode(this DotNode node, string html)
         {
             node.Attributes.Shape = DotNodeShape.Plain;
             node.Attributes.Label = (DotHtmlLabel) html;
