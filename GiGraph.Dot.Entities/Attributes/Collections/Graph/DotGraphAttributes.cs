@@ -77,105 +77,105 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => base.Style = value;
         }
 
-        [DotAttributeKey("comment")]
+        [DotAttributeKey(DotAttributeKeys.Comment)]
         public virtual string Comment
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
-        [DotAttributeKey("bgcolor")]
+        [DotAttributeKey(DotAttributeKeys.BgColor)]
         public virtual DotColorDefinition BackgroundColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
-        [DotAttributeKey("gradientangle")]
+        [DotAttributeKey(DotAttributeKeys.GradientAngle)]
         public virtual int? GradientAngle
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("labeljust")]
+        [DotAttributeKey(DotAttributeKeys.LabelJust)]
         public virtual DotHorizontalAlignment? HorizontalLabelAlignment
         {
             get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotHorizontalAlignment?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotHorizontalAlignmentAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("labelloc")]
+        [DotAttributeKey(DotAttributeKeys.LabelLoc)]
         public virtual DotVerticalAlignment? VerticalLabelAlignment
         {
             get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotVerticalAlignment?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("ordering")]
+        [DotAttributeKey(DotAttributeKeys.Ordering)]
         public virtual DotEdgeOrderingMode? EdgeOrderingMode
         {
             get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotEdgeOrderingMode?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeOrderingModeAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("margin")]
+        [DotAttributeKey(DotAttributeKeys.Margin)]
         public virtual DotPoint Margin
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
 
-        [DotAttributeKey("sortv")]
+        [DotAttributeKey(DotAttributeKeys.SortV)]
         public virtual int? SortIndex
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("orientation")]
+        [DotAttributeKey(DotAttributeKeys.Orientation)]
         public virtual DotOrientation? Orientation
         {
             get => GetValueAs<DotOrientation>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotOrientation?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotOrientationAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("rankdir")]
+        [DotAttributeKey(DotAttributeKeys.RankDir)]
         public virtual DotLayoutDirection? LayoutDirection
         {
             get => GetValueAs<DotLayoutDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotLayoutDirection?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLayoutDirectionAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("splines")]
+        [DotAttributeKey(DotAttributeKeys.Splines)]
         public virtual DotEdgeShape? EdgeShape
         {
             get => GetValueAs<DotEdgeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotEdgeShape?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeShapeAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("concentrate")]
+        [DotAttributeKey(DotAttributeKeys.Concentrate)]
         public virtual bool? ConcentrateEdges
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("forcelabels")]
+        [DotAttributeKey(DotAttributeKeys.ForceLabels)]
         public virtual bool? ForceExternalLabels
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("charset")]
+        [DotAttributeKey(DotAttributeKeys.Charset)]
         public virtual string Charset
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
-        [DotAttributeKey("nodesep")]
+        [DotAttributeKey(DotAttributeKeys.NodeSep)]
         public virtual double? NodeSeparation
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
@@ -184,7 +184,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 : new DotDoubleAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("ranksep")]
+        [DotAttributeKey(DotAttributeKeys.RankSep)]
         public virtual DotRankSeparationDefinition RankSeparation
         {
             get
@@ -203,42 +203,42 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankSeparationDefinitionAttribute(k, v));
         }
 
-        [DotAttributeKey("rotate")]
+        [DotAttributeKey(DotAttributeKeys.Rotate)]
         public virtual int? Rotation
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("center")]
+        [DotAttributeKey(DotAttributeKeys.Center)]
         public virtual bool? Center
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("imagepath")]
+        [DotAttributeKey(DotAttributeKeys.ImagePath)]
         public virtual string ImageDirectories
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
-        [DotAttributeKey("pad")]
+        [DotAttributeKey(DotAttributeKeys.Pad)]
         public virtual DotPoint Padding
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
 
-        [DotAttributeKey("size")]
+        [DotAttributeKey(DotAttributeKeys.Size)]
         public virtual DotPoint Size
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
 
-        [DotAttributeKey("ratio")]
+        [DotAttributeKey(DotAttributeKeys.Ratio)]
         public virtual DotGraphScalingDefinition Scaling
         {
             get
@@ -257,7 +257,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotGraphScalingDefinitionAttribute(k, v));
         }
 
-        [DotAttributeKey("pack")]
+        [DotAttributeKey(DotAttributeKeys.Pack)]
         public virtual DotPackingDefinition Packing
         {
             get
@@ -275,7 +275,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPackingDefinitionAttribute(k, v));
         }
 
-        [DotAttributeKey("packmode")]
+        [DotAttributeKey(DotAttributeKeys.PackMode)]
         public virtual DotPackingModeDefinition PackingMode
         {
             get
@@ -292,7 +292,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPackingModeDefinitionAttribute(k, v));
         }
 
-        [DotAttributeKey("dpi")]
+        [DotAttributeKey(DotAttributeKeys.Dpi)]
         public virtual double? Dpi
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
@@ -301,7 +301,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 : new DotDoubleAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("resolution")]
+        [DotAttributeKey(DotAttributeKeys.Resolution)]
         public virtual double? Resolution
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
@@ -310,7 +310,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 : new DotDoubleAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("landscape")]
+        [DotAttributeKey(DotAttributeKeys.Landscape)]
         public virtual bool? LandscapeOrientation
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());

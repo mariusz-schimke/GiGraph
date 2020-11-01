@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />
         ///     <see cref="DotEntityHyperlinkAttributes{TIEntityHyperlinkAttributes}.Url" /> set for the edge.
         /// </summary>
-        [DotAttributeKey("headURL")]
+        [DotAttributeKey(DotAttributeKeys.HeadUrl)]
         public override DotEscapeString Url
         {
             get => base.Url;
@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     Synonym for <see cref="Url" />.
         /// </summary>
-        [DotAttributeKey("headhref")]
+        [DotAttributeKey(DotAttributeKeys.HeadHref)]
         public override DotEscapeString Href
         {
             get => base.Href;
@@ -48,7 +48,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     undefined, the value of the edge's <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />
         ///     <see cref="DotEntityHyperlinkAttributes{TIEntityHyperlinkAttributes}.Target" /> is used.
         /// </summary>
-        [DotAttributeKey("headtarget")]
+        [DotAttributeKey(DotAttributeKeys.HeadTarget)]
         public override DotEscapeString Target
         {
             get => base.Target;
@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     Tooltip annotation attached to the head of an edge. This is used only if <see cref="Url" /> is specified.
         /// </summary>
-        [DotAttributeKey("headtooltip")]
+        [DotAttributeKey(DotAttributeKeys.HeadTooltip)]
         public override DotEscapeString Tooltip
         {
             get => base.Tooltip;

@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     overrides any <see cref="DotEntityHyperlinkAttributes{IDotEntityHyperlinkAttributes}.Url" /> specified for the edge's
         ///     <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />.
         /// </summary>
-        [DotAttributeKey("edgeURL")]
+        [DotAttributeKey(DotAttributeKeys.EdgeUrl)]
         public override DotEscapeString Url
         {
             get => base.Url;
@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     Synonym for <see cref="Url" />.
         /// </summary>
-        [DotAttributeKey("edgehref")]
+        [DotAttributeKey(DotAttributeKeys.EdgeHref)]
         public override DotEscapeString Href
         {
             get => base.Href;
@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     undefined, the value of the edge's <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />
         ///     <see cref="DotEntityHyperlinkAttributes{IDotEntityHyperlinkAttributes}.Target" /> is used.
         /// </summary>
-        [DotAttributeKey("edgetarget")]
+        [DotAttributeKey(DotAttributeKeys.EdgeTarget)]
         public override DotEscapeString Target
         {
             get => base.Target;
@@ -65,7 +65,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     the edge has a <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />
         ///     <see cref="DotEntityHyperlinkAttributes{IDotEntityHyperlinkAttributes}.Url" /> specified.
         /// </summary>
-        [DotAttributeKey("edgetooltip")]
+        [DotAttributeKey(DotAttributeKeys.EdgeTooltip)]
         public virtual DotEscapeString Tooltip
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());

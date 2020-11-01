@@ -106,42 +106,42 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => base.Style = value;
         }
 
-        [DotAttributeKey("comment")]
+        [DotAttributeKey(DotAttributeKeys.Comment)]
         public virtual string Comment
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
-        [DotAttributeKey("tooltip")]
+        [DotAttributeKey(DotAttributeKeys.Tooltip)]
         public virtual DotEscapeString Tooltip
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
-        [DotAttributeKey("color")]
+        [DotAttributeKey(DotAttributeKeys.Color)]
         public virtual DotColorDefinition Color
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
-        [DotAttributeKey("fillcolor")]
+        [DotAttributeKey(DotAttributeKeys.FillColor)]
         public virtual DotColorDefinition FillColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
-        [DotAttributeKey("xlabel")]
+        [DotAttributeKey(DotAttributeKeys.XLabel)]
         public virtual DotLabel ExternalLabel
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
         }
 
-        [DotAttributeKey("penwidth")]
+        [DotAttributeKey(DotAttributeKeys.PenWidth)]
         public virtual double? Width
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
@@ -150,7 +150,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
                 : new DotDoubleAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("weight")]
+        [DotAttributeKey(DotAttributeKeys.Weight)]
         public virtual double? Weight
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
@@ -159,14 +159,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
                 : new DotDoubleAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("len")]
+        [DotAttributeKey(DotAttributeKeys.Len)]
         public virtual double? Length
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("minlen")]
+        [DotAttributeKey(DotAttributeKeys.MinLen)]
         public virtual int? MinLength
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
@@ -175,7 +175,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
                 : new DotIntAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("arrowsize")]
+        [DotAttributeKey(DotAttributeKeys.ArrowSize)]
         public virtual double? ArrowheadScale
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
@@ -184,28 +184,28 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
                 : new DotDoubleAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("dir")]
+        [DotAttributeKey(DotAttributeKeys.Dir)]
         public virtual DotEdgeDirections? Directions
         {
             get => GetValueAs<DotEdgeDirections>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotEdgeDirections?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeDirectionsAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("decorate")]
+        [DotAttributeKey(DotAttributeKeys.Decorate)]
         public virtual bool? AttachLabel
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("labelfloat")]
+        [DotAttributeKey(DotAttributeKeys.LabelFloat)]
         public virtual bool? AllowLabelFloat
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("constraint")]
+        [DotAttributeKey(DotAttributeKeys.Constraint)]
         public virtual bool? Constrain
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());

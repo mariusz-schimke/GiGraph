@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
         }
 
-        [DotAttributeKey("sides")]
+        [DotAttributeKey(DotAttributeKeys.Sides)]
         public virtual int? Sides
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
@@ -29,35 +29,35 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
                 : new DotIntAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("regular")]
+        [DotAttributeKey(DotAttributeKeys.Regular)]
         public virtual bool? Regular
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("peripheries")]
+        [DotAttributeKey(DotAttributeKeys.Peripheries)]
         public virtual int? Peripheries
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => AddOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
         }
 
-        [DotAttributeKey("orientation")]
+        [DotAttributeKey(DotAttributeKeys.Orientation)]
         public virtual double? Rotation
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("skew")]
+        [DotAttributeKey(DotAttributeKeys.Skew)]
         public virtual double? Skew
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("distortion")]
+        [DotAttributeKey(DotAttributeKeys.Distortion)]
         public virtual double? Distortion
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
