@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Examples.Complex
                 sg.Edges.Add("G", "H", edge =>
                 {
                     edge.Attributes.Label = "DOTTED";
-                    edge.Attributes.Style = DotStyles.Dotted;
+                    edge.Attributes.Style.Dotted = true;
                 });
             });
 
@@ -77,7 +77,7 @@ namespace GiGraph.Dot.Examples.Complex
                 sg.Nodes.Add("STRIPED", attrs =>
                 {
                     // set style to striped
-                    attrs.Style = DotStyles.Filled | DotStyles.Striped;
+                    attrs.Style.SetOptions(DotStyles.Filled | DotStyles.Striped);
 
                     attrs.Color = Color.Transparent;
 
@@ -95,7 +95,7 @@ namespace GiGraph.Dot.Examples.Complex
                     attrs.Shape = DotNodeShape.Circle;
 
                     // set wedged style
-                    attrs.Style = DotStyles.Filled | DotStyles.Wedged;
+                    attrs.Style.SetOptions(DotStyles.Filled | DotStyles.Wedged);
 
                     attrs.Color = Color.Transparent;
 

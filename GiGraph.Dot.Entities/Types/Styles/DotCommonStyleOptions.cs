@@ -4,66 +4,55 @@ namespace GiGraph.Dot.Entities.Types.Styles
 {
     public abstract class DotCommonStyleOptions : DotStyleOptions
     {
-        protected static readonly DotStyles CommonStylesMask =
-            DotStyles.Solid |
-            DotStyles.Dashed |
-            DotStyles.Dotted |
-            DotStyles.Bold |
-            DotStyles.Invisible;
-
-        protected DotCommonStyleOptions(DotStyles mask)
-            : base(mask)
+        protected DotCommonStyleOptions(DotStyles style)
         {
         }
 
-        protected DotCommonStyleOptions(DotStyles style, DotStyles mask)
-            : base(style, mask)
+        protected DotCommonStyleOptions()
         {
         }
 
         /// <summary>
         ///     Gets or sets the <see cref="DotStyles.Solid" /> style option state.
         /// </summary>
-        public virtual bool? Solid
-        {
-            get => GetOption(DotStyles.Solid);
-            set => SetOption(DotStyles.Solid, value);
-        }
+        public virtual bool? Solid { get; set; }
 
         /// <summary>
         ///     Gets or sets the <see cref="DotStyles.Dashed" /> style option state.
         /// </summary>
-        public virtual bool? Dashed
-        {
-            get => GetOption(DotStyles.Dashed);
-            set => SetOption(DotStyles.Dashed, value);
-        }
+        public virtual bool? Dashed { get; set; }
 
         /// <summary>
         ///     Gets or sets the <see cref="DotStyles.Dotted" /> style option state.
         /// </summary>
-        public virtual bool? Dotted
-        {
-            get => GetOption(DotStyles.Dotted);
-            set => SetOption(DotStyles.Dotted, value);
-        }
+        public virtual bool? Dotted { get; set; }
 
         /// <summary>
         ///     Gets or sets the <see cref="DotStyles.Bold" /> style option state.
         /// </summary>
-        public virtual bool? Bold
-        {
-            get => GetOption(DotStyles.Bold);
-            set => SetOption(DotStyles.Bold, value);
-        }
+        public virtual bool? Bold { get; set; }
 
         /// <summary>
         ///     Gets or sets the <see cref="DotStyles.Invisible" /> style option state.
         /// </summary>
-        public virtual bool? Invisible
+        public virtual bool? Invisible { get; set; }
+
+        protected override void ReadOptions(DotStyles style)
         {
-            get => GetOption(DotStyles.Invisible);
-            set => SetOption(DotStyles.Invisible, value);
+            Solid = style.HasFlag(DotStyles.Solid);
+            Dashed = style.HasFlag(DotStyles.Dashed);
+            Dotted = style.HasFlag(DotStyles.Dotted);
+            Bold = style.HasFlag(DotStyles.Bold);
+            Invisible = style.HasFlag(DotStyles.Invisible);
+        }
+
+        protected override void WriteOptions(ref DotStyles? style)
+        {
+            WriteOption(ref style, DotStyles.Solid, Solid);
+            WriteOption(ref style, DotStyles.Dashed, Dashed);
+            WriteOption(ref style, DotStyles.Dotted, Dotted);
+            WriteOption(ref style, DotStyles.Bold, Bold);
+            WriteOption(ref style, DotStyles.Invisible, Invisible);
         }
     }
 }

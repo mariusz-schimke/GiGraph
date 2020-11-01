@@ -3,70 +3,66 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 namespace GiGraph.Dot.Entities.Types.Styles
 {
     /// <summary>
-    ///     Builds cluster style based on options.
+    ///     Cluster style options.
     /// </summary>
     public class DotClusterStyleOptions : DotCommonStyleOptions
     {
-        protected static readonly DotStyles ClusterStylesMask =
-            CommonStylesMask |
-            DotStyles.Rounded |
-            DotStyles.Filled |
-            DotStyles.Striped |
-            DotStyles.Radial;
-
         /// <summary>
-        ///     Creates and initializes a new builder instance.
+        ///     Creates and initializes a new instance.
         /// </summary>
         public DotClusterStyleOptions()
-            : base(ClusterStylesMask)
         {
         }
 
         /// <summary>
-        ///     Creates and initializes a new builder instance.
+        ///     Creates and initializes a new instance.
         /// </summary>
         /// <param name="style">
         ///     The initial style.
         /// </param>
         public DotClusterStyleOptions(DotStyles style)
-            : base(style, ClusterStylesMask)
+            : base(style)
         {
         }
 
         /// <summary>
         ///     Gets or sets the <see cref="DotStyles.Rounded" /> style option state.
         /// </summary>
-        public virtual bool? Rounded
-        {
-            get => GetOption(DotStyles.Rounded);
-            set => SetOption(DotStyles.Rounded, value);
-        }
+        public virtual bool? Rounded { get; set; }
 
         /// <summary>
         ///     Gets or sets the <see cref="DotStyles.Filled" /> style option state.
         /// </summary>
-        public virtual bool? Filled
-        {
-            get => GetOption(DotStyles.Filled);
-            set => SetOption(DotStyles.Filled, value);
-        }
+        public virtual bool? Filled { get; set; }
 
         /// <summary>
         ///     Gets or sets the <see cref="DotStyles.Striped" /> style option state.
         /// </summary>
-        public virtual bool? Striped
-        {
-            get => GetOption(DotStyles.Striped);
-            set => SetOption(DotStyles.Striped, value);
-        }
+        public virtual bool? Striped { get; set; }
 
         /// <summary>
         ///     Gets or sets the <see cref="DotStyles.Radial" /> style option state.
         /// </summary>
-        public virtual bool? Radial
+        public virtual bool? Radial { get; set; }
+
+        protected override void ReadOptions(DotStyles style)
         {
-            get => GetOption(DotStyles.Radial);
-            set => SetOption(DotStyles.Radial, value);
+            base.ReadOptions(style);
+
+            Rounded = style.HasFlag(DotStyles.Rounded);
+            Filled = style.HasFlag(DotStyles.Filled);
+            Striped = style.HasFlag(DotStyles.Striped);
+            Radial = style.HasFlag(DotStyles.Radial);
+        }
+
+        protected override void WriteOptions(ref DotStyles? style)
+        {
+            base.WriteOptions(ref style);
+
+            WriteOption(ref style, DotStyles.Rounded, Rounded);
+            WriteOption(ref style, DotStyles.Filled, Filled);
+            WriteOption(ref style, DotStyles.Striped, Striped);
+            WriteOption(ref style, DotStyles.Radial, Radial);
         }
     }
 }

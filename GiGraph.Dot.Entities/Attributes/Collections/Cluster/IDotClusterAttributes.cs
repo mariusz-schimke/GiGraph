@@ -148,18 +148,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         DotColor BorderColor { get; set; }
 
         /// <summary>
-        ///     <para>
-        ///         Sets the style of the cluster (default: unset). See the descriptions of individual <see cref="DotStyles" /> values to
-        ///         learn which styles are applicable to this element type.
-        ///     </para>
-        ///     <para>
-        ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Rounded" /> |
-        ///         <see cref="DotStyles.Bold" />;
-        ///     </para>
-        /// </summary>
-        DotStyles? Style { get; set; }
-
-        /// <summary>
         ///     Sets the number of peripheries used in cluster boundaries (default: 1, minimum: 0, maximum: 1). Setting peripheries to 0 will
         ///     remove the boundaries.
         /// </summary>

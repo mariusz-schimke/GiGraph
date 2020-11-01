@@ -137,18 +137,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 
         /// <summary>
         ///     <para>
-        ///         Sets the style of the node (default: unset). See the descriptions of individual <see cref="DotStyles" /> values to learn
-        ///         which styles are applicable to this element type.
-        ///     </para>
-        ///     <para>
-        ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Solid" /> |
-        ///         <see cref="DotStyles.Bold" />;
-        ///     </para>
-        /// </summary>
-        DotStyles? Style { get; set; }
-
-        /// <summary>
-        ///     <para>
         ///         Width of node, in inches (default: 0.75, minimum: 0.01). This is taken as the initial, minimum width of the node. If
         ///         <see cref="Sizing" /> is <see cref="DotNodeSizing.Fixed" />, this will be the final width of the node. Otherwise, if the
         ///         node label requires more width to fit, the node's width will be increased to contain the label. Note also that, if the

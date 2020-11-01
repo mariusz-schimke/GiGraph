@@ -1,4 +1,5 @@
 using System.Reflection;
+using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
@@ -6,19 +7,33 @@ using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
-    public class DotGraphClusterAttributes : DotEntityAttributes<IDotGraphClusterAttributes>, IDotGraphClusterAttributes
+    public partial class DotGraphClusterAttributes : DotEntityAttributes<IDotGraphClusterAttributes>, IDotGraphClusterAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup GraphClusterAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClusterAttributes, IDotGraphClusterAttributes>().Build();
 
-        protected DotGraphClusterAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotGraphClusterAttributes(
+            DotAttributeCollection attributes,
+            DotMemberAttributeKeyLookup attributeKeyLookup,
+            DotClusterStyleAttributes styleAttributes
+        )
             : base(attributes, attributeKeyLookup)
         {
+            Style = styleAttributes;
         }
 
         public DotGraphClusterAttributes(DotAttributeCollection attributes)
-            : base(attributes, GraphClusterAttributesKeyLookup)
+            : this(
+                attributes,
+                GraphClusterAttributesKeyLookup,
+                new DotClusterStyleAttributes(attributes)
+            )
         {
         }
+
+        /// <summary>
+        ///     Style options. Note that the options are shared with those of the parent graph.
+        /// </summary>
+        public virtual DotClusterStyleAttributes Style { get; }
 
         [DotAttributeKey(DotAttributeKeys.Color)]
         public virtual DotColorDefinition Color

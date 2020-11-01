@@ -125,18 +125,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         DotEdgeShape? EdgeShape { get; set; }
 
         /// <summary>
-        ///     <para>
-        ///         Sets the style of the graph (default: unset). See the descriptions of individual <see cref="DotStyles" /> values to learn
-        ///         which styles are applicable to this element type.
-        ///     </para>
-        ///     <para>
-        ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Rounded" /> |
-        ///         <see cref="DotStyles.Bold" />;
-        ///     </para>
-        /// </summary>
-        DotStyles? Style { get; set; }
-
-        /// <summary>
         ///     Specifies the character encoding used when interpreting string input as a text label. The default value is "UTF-8". The other
         ///     legal value is "iso-8859-1" or, equivalently, "Latin1". The charset attribute is case-insensitive. Note that if the character
         ///     encoding used in the input does not match the charset value, the resulting output may be very strange.

@@ -19,12 +19,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEntityHyperlinkAttributes hyperlinkAttributes,
             DotEntityFontAttributes fontAttributes,
+            DotNodeStyleAttributes styleAttributes,
             DotNodeImageAttributes imageAttributes,
             DotNodeGeometryAttributes geometryAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
             Font = fontAttributes;
+            Style = styleAttributes;
             Image = imageAttributes;
             Geometry = geometryAttributes;
         }
@@ -35,6 +37,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
                 NodeAttributesKeyLookup,
                 new DotEntityHyperlinkAttributes(attributes),
                 new DotEntityFontAttributes(attributes),
+                new DotNodeStyleAttributes(attributes),
                 new DotNodeImageAttributes(attributes),
                 new DotNodeGeometryAttributes(attributes)
             )
@@ -50,6 +53,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     Font properties.
         /// </summary>
         public virtual DotEntityFontAttributes Font { get; }
+
+        /// <summary>
+        ///     Style options.
+        /// </summary>
+        public virtual DotNodeStyleAttributes Style { get; }
 
         /// <summary>
         ///     Node image properties.
@@ -73,13 +81,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
             get => base.ColorScheme;
             set => base.ColorScheme = value;
-        }
-
-        // overridden to inherit comment from interface
-        public override DotStyles? Style
-        {
-            get => base.Style;
-            set => base.Style = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.Comment)]

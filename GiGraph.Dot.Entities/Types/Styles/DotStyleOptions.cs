@@ -4,35 +4,13 @@ namespace GiGraph.Dot.Entities.Types.Styles
 {
     public abstract class DotStyleOptions
     {
-        protected readonly DotStyles _mask;
-
-        protected DotStyleOptions(DotStyles mask)
+        protected DotStyleOptions(DotStyles style)
         {
-            _mask = mask;
+            ReadOptions(style);
         }
 
-        protected DotStyleOptions(DotStyles style, DotStyles mask)
-            : this(mask)
+        protected DotStyleOptions()
         {
-            Style = style;
-        }
-
-        /// <summary>
-        ///     Gets or sets the final style.
-        /// </summary>
-        public virtual DotStyles? Style { get; set; }
-
-        /// <summary>
-        ///     Sets the style to <see cref="DotStyles.Default" />.
-        /// </summary>
-        public virtual void SetDefault()
-        {
-            Style = DotStyles.Default;
-        }
-
-        protected virtual bool GetOption(DotStyles option)
-        {
-            return Style.HasValue && Style.Value.HasFlag(option);
         }
 
         /// <summary>
@@ -43,25 +21,35 @@ namespace GiGraph.Dot.Entities.Types.Styles
         /// </param>
         public virtual DotStyles? ApplyTo(DotStyles? style)
         {
-            return Style.HasValue
-                ? ((style ?? DotStyles.Default) & ~_mask) | (Style & _mask)
-                : style;
+            WriteOptions(ref style);
+            return style;
         }
 
-        protected virtual void SetOption(DotStyles option, bool? set)
+        /// <summary>
+        ///     Returns the options as style flags.
+        /// </summary>
+        public virtual DotStyles? ToStyle()
+        {
+            return ApplyTo(null);
+        }
+
+        protected abstract void ReadOptions(DotStyles style);
+        protected abstract void WriteOptions(ref DotStyles? style);
+
+        protected virtual void WriteOption(ref DotStyles? style, DotStyles option, bool? set)
         {
             if (set.HasValue)
             {
-                Style ??= DotStyles.Default;
+                style ??= DotStyles.Default;
             }
 
             if (set == true)
             {
-                Style |= option;
+                style |= option;
             }
             else if (set == false)
             {
-                Style &= ~option;
+                style &= ~option;
             }
         }
     }
