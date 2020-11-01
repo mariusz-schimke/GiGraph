@@ -24,42 +24,42 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         {
         }
 
-        [DotAttributeKey("taillabel")]
+        [DotAttributeKey(DotAttributeKeys.TailLabel)]
         public override DotLabel Label
         {
             get => base.Label;
             set => base.Label = value;
         }
 
-        [DotAttributeKey("tailclip")]
+        [DotAttributeKey(DotAttributeKeys.TailClip)]
         public override bool? ClipToNodeBoundary
         {
             get => base.ClipToNodeBoundary;
             set => base.ClipToNodeBoundary = value;
         }
 
-        [DotAttributeKey("sametail")]
+        [DotAttributeKey(DotAttributeKeys.SameTail)]
         public override string GroupName
         {
             get => base.GroupName;
             set => base.GroupName = value;
         }
 
-        [DotAttributeKey("tailport")]
+        [DotAttributeKey(DotAttributeKeys.TailPort)]
         public override DotEndpointPort Port
         {
             get => base.Port;
             set => base.Port = value;
         }
 
-        [DotAttributeKey("ltail")]
+        [DotAttributeKey(DotAttributeKeys.LTail)]
         public override string ClusterId
         {
             get => base.ClusterId;
             set => base.ClusterId = value;
         }
 
-        [DotAttributeKey("arrowtail")]
+        [DotAttributeKey(DotAttributeKeys.ArrowTail)]
         public override DotArrowheadDefinition Arrowhead
         {
             get => base.Arrowhead;

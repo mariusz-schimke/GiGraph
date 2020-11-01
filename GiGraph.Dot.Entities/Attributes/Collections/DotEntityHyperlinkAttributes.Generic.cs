@@ -14,21 +14,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
         }
 
-        [DotAttributeKey("URL")]
+        [DotAttributeKey(DotAttributeKeys.Url)]
         public virtual DotEscapeString Url
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
-        [DotAttributeKey("href")]
+        [DotAttributeKey(DotAttributeKeys.Href)]
         public virtual DotEscapeString Href
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
-        [DotAttributeKey("target")]
+        [DotAttributeKey(DotAttributeKeys.Target)]
         public virtual DotEscapeString Target
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());

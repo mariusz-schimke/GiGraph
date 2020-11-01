@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Subgraph
         {
         }
 
-        [DotAttributeKey("rank")]
+        [DotAttributeKey(DotAttributeKeys.Rank)]
         public virtual DotRank? Rank
         {
             get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotRank?) null;

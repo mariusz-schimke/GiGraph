@@ -41,21 +41,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         public virtual DotEntityHyperlinkAttributes Hyperlink { get; }
 
-        [DotAttributeKey("label")]
+        [DotAttributeKey(DotAttributeKeys.Label)]
         public virtual DotLabel Label
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
         }
 
-        [DotAttributeKey("colorscheme")]
+        [DotAttributeKey(DotAttributeKeys.ColorScheme)]
         public virtual string ColorScheme
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
-        [DotAttributeKey("style")]
+        [DotAttributeKey(DotAttributeKeys.Style)]
         public virtual DotStyles? Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;

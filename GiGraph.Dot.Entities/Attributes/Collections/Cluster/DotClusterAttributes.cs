@@ -66,84 +66,84 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => base.Style = value;
         }
 
-        [DotAttributeKey("color")]
+        [DotAttributeKey(DotAttributeKeys.Color)]
         public virtual DotColorDefinition Color
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
-        [DotAttributeKey("bgcolor")]
+        [DotAttributeKey(DotAttributeKeys.BgColor)]
         public virtual DotColorDefinition BackgroundColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
-        [DotAttributeKey("fillcolor")]
+        [DotAttributeKey(DotAttributeKeys.FillColor)]
         public virtual DotColorDefinition FillColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
-        [DotAttributeKey("gradientangle")]
+        [DotAttributeKey(DotAttributeKeys.GradientAngle)]
         public virtual int? GradientAngle
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("peripheries")]
+        [DotAttributeKey(DotAttributeKeys.Peripheries)]
         public virtual int? Peripheries
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => AddOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
         }
 
-        [DotAttributeKey("penwidth")]
+        [DotAttributeKey(DotAttributeKeys.PenWidth)]
         public virtual double? BorderWidth
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => AddOrRemoveBorderWidth(MethodBase.GetCurrentMethod(), value);
         }
 
-        [DotAttributeKey("pencolor")]
+        [DotAttributeKey(DotAttributeKeys.PenColor)]
         public virtual DotColor BorderColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
-        [DotAttributeKey("labeljust")]
+        [DotAttributeKey(DotAttributeKeys.LabelJust)]
         public virtual DotHorizontalAlignment? HorizontalLabelAlignment
         {
             get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotHorizontalAlignment?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotHorizontalAlignmentAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("labelloc")]
+        [DotAttributeKey(DotAttributeKeys.LabelLoc)]
         public virtual DotVerticalAlignment? VerticalLabelAlignment
         {
             get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotVerticalAlignment?) null;
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("tooltip")]
+        [DotAttributeKey(DotAttributeKeys.Tooltip)]
         public virtual DotEscapeString Tooltip
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
-        [DotAttributeKey("margin")]
+        [DotAttributeKey(DotAttributeKeys.Margin)]
         public virtual DotPoint Margin
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
 
-        [DotAttributeKey("sortv")]
+        [DotAttributeKey(DotAttributeKeys.SortV)]
         public virtual int? SortIndex
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());

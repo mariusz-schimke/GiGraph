@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
         }
 
-        [DotAttributeKey("fontpath")]
+        [DotAttributeKey(DotAttributeKeys.FontPath)]
         public virtual string Directories
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());

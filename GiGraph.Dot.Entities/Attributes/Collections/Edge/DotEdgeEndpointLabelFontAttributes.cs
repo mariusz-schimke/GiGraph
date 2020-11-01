@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Font used for labels specified for the head and the tail of the edge. If not set, defaults to font name specified for the
         ///     edge.
         /// </summary>
-        [DotAttributeKey("labelfontname")]
+        [DotAttributeKey(DotAttributeKeys.LabelFontName)]
         public override string Name
         {
             get => base.Name;
@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Color used for labels specified for the head and the tail of the edge. If not set, defaults to font color specified for the
         ///     edge.
         /// </summary>
-        [DotAttributeKey("labelfontcolor")]
+        [DotAttributeKey(DotAttributeKeys.LabelFontColor)]
         public override DotColor Color
         {
             get => base.Color;
@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Font size, in points, used for labels specified for the head and the tail of the edge. If not set, defaults to font size
         ///     specified for the edge.
         /// </summary>
-        [DotAttributeKey("labelfontsize")]
+        [DotAttributeKey(DotAttributeKeys.LabelFontSize)]
         public override double? Size
         {
             get => base.Size;

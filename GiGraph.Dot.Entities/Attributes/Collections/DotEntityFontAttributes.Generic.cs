@@ -15,14 +15,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
         }
 
-        [DotAttributeKey("fontname")]
+        [DotAttributeKey(DotAttributeKeys.FontName)]
         public virtual string Name
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
-        [DotAttributeKey("fontsize")]
+        [DotAttributeKey(DotAttributeKeys.FontSize)]
         public virtual double? Size
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 : new DotDoubleAttribute(k, v.Value));
         }
 
-        [DotAttributeKey("fontcolor")]
+        [DotAttributeKey(DotAttributeKeys.FontColor)]
         public virtual DotColor Color
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
