@@ -8,6 +8,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public abstract partial class DotEntityAttributes
     {
+        /// <summary>
+        ///     The binding flags describing the properties of the class that may have a DOT attribute key assigned by the
+        ///     <see cref="DotAttributeKeyAttribute" /> property attribute.
+        /// </summary>
+        public static readonly BindingFlags AttributeKeyPropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+
         protected virtual (DotEntityAttributes EntityAttributes, PropertyInfo Property)[][] GetPathsOfEntityAttributeProperties()
         {
             var result = new List<Tuple<DotEntityAttributes, PropertyInfo>[]>();
@@ -23,7 +29,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             Tuple<DotEntityAttributes, PropertyInfo>[] basePath
         )
         {
-            var properties = GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
+            var properties = GetType().GetProperties(AttributeKeyPropertyBindingFlags);
 
             foreach (var property in properties)
             {

@@ -31,9 +31,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <param name="options">
         ///     The options to apply.
         /// </param>
-        public virtual void SetOptions(DotEdgeStyleOptions options)
+        public virtual void Apply(DotEdgeStyleOptions options)
         {
-            base.SetOptions(options);
+            base.Apply(options);
         }
     }
 }

@@ -33,9 +33,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <param name="options">
         ///     The options to apply.
         /// </param>
-        public virtual void SetOptions(DotGraphStyleOptions options)
+        public virtual void Apply(DotGraphStyleOptions options)
         {
-            base.SetOptions(options);
+            base.Apply(options);
         }
     }
 }

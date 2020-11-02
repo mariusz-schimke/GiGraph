@@ -77,7 +77,7 @@ namespace GiGraph.Dot.Examples.Complex
                 sg.Nodes.Add("STRIPED", attrs =>
                 {
                     // set style to striped
-                    attrs.Style.SetOptions(DotStyles.Filled | DotStyles.Striped);
+                    attrs.Style.Apply(DotStyles.Filled | DotStyles.Striped);
 
                     attrs.Color = Color.Transparent;
 
@@ -95,7 +95,7 @@ namespace GiGraph.Dot.Examples.Complex
                     attrs.Shape = DotNodeShape.Circle;
 
                     // set wedged style
-                    attrs.Style.SetOptions(DotStyles.Filled | DotStyles.Wedged);
+                    attrs.Style.Apply(DotStyles.Filled | DotStyles.Wedged);
 
                     attrs.Color = Color.Transparent;
 

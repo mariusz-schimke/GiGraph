@@ -20,13 +20,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
         }
 
-        /// <summary>
-        ///     Gets style options of the element.
-        /// </summary>
-        public virtual DotStyles? Options
+        protected virtual DotStyles? Options
         {
             get => ((IDotEntityStyleAttributes) this).Options;
-            protected set => ((IDotEntityStyleAttributes) this).Options = value;
+            set => ((IDotEntityStyleAttributes) this).Options = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.Style)]
@@ -37,16 +34,34 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        ///     Sets style to <see cref="DotStyles.Default" />. Useful when the style of elements of the current type is set globally, and it
-        ///     needs to be restored to the default value for the current element.
+        ///     Applies the specified style option(s) to the element, without removing those that are already set.
         /// </summary>
-        public virtual void RestoreDefault()
+        /// <param name="options">
+        ///     The options to apply.
+        /// </param>
+        public virtual void Apply(DotStyles options)
         {
-            Options = DotStyles.Default;
+            Options = Options.GetValueOrDefault(options) | options;
+        }
+
+        protected virtual void Apply(DotStyleOptions options)
+        {
+            Options = options.ApplyTo(Options);
         }
 
         /// <summary>
-        ///     Removes style options from the current element.
+        ///     Applies the specified style to the element.
+        /// </summary>
+        /// <param name="options">
+        ///     The style to apply.
+        /// </param>
+        public virtual void Set(DotStyles? options)
+        {
+            Options = options;
+        }
+
+        /// <summary>
+        ///     Removes style from the current element.
         /// </summary>
         public virtual void Remove()
         {
@@ -54,33 +69,23 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        ///     Applies the specified style option(s) to the element.
-        /// </summary>
-        /// <param name="options">
-        ///     The options to apply.
-        /// </param>
-        public virtual void SetOptions(DotStyles options)
-        {
-            Options = Options.GetValueOrDefault(options) | options;
-        }
-
-        protected virtual void SetOptions(DotStyleOptions options)
-        {
-            Options = options.ApplyTo(Options);
-        }
-
-        /// <summary>
-        ///     Removes the specified style option(s) from the <see cref="Options" /> attribute.
+        ///     Removes the specified style option(s) from the element.
         /// </summary>
         /// <param name="options">
         ///     The options to remove.
         /// </param>
-        public virtual void RemoveOptions(DotStyles options)
+        public virtual void Remove(DotStyles options)
         {
-            if (Options.HasValue)
-            {
-                Options &= ~options;
-            }
+            Options &= ~options;
+        }
+
+        /// <summary>
+        ///     Sets the style to <see cref="DotStyles.Default" />. Useful when the style of elements of the current type is set globally,
+        ///     and needs to be restored to the default value for the current element.
+        /// </summary>
+        public virtual void Restore()
+        {
+            Options = DotStyles.Default;
         }
 
         /// <summary>
@@ -94,15 +99,23 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return Options.HasValue && Options.Value.HasFlag(options);
         }
 
+        /// <summary>
+        ///     Gets style of the element as <see cref="DotStyles" /> enumeration flags.
+        /// </summary>
+        public virtual DotStyles? ToStyle()
+        {
+            return Options;
+        }
+
         protected virtual void ApplyOption(DotStyles option, bool set)
         {
             if (set)
             {
-                SetOptions(option);
+                Apply(option);
             }
             else
             {
-                RemoveOptions(option);
+                Remove(option);
             }
         }
     }

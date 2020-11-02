@@ -58,9 +58,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// <param name="options">
         ///     The options to apply.
         /// </param>
-        public virtual void SetOptions(DotClusterStyleOptions options)
+        public virtual void Apply(DotClusterStyleOptions options)
         {
-            base.SetOptions(options);
+            base.Apply(options);
         }
     }
 }

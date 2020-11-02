@@ -18,8 +18,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
     public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttributeProperties>
         where TEntityAttributes : DotEntityAttributes<TIEntityAttributeProperties>
     {
-        protected readonly BindingFlags AttributeKeyPropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-
         /// <summary>
         ///     Builds a lookup for properties and property accessors.
         /// </summary>
@@ -43,7 +41,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
 
         protected void UpdateByInterfaceMembers(DotMemberAttributeKeyLookup output, Type entityAttributePropertiesInterfaceType)
         {
-            var interfaceProperties = entityAttributePropertiesInterfaceType.GetProperties(AttributeKeyPropertyBindingFlags);
+            var interfaceProperties = entityAttributePropertiesInterfaceType.GetProperties(DotEntityAttributes.AttributeKeyPropertyBindingFlags);
             var interfaceMap = typeof(TEntityAttributes).GetInterfaceMap(entityAttributePropertiesInterfaceType);
 
             // build a temporary lookup for all types the implemented properties are declared by
@@ -84,7 +82,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
 
         protected void UpdateWithDeclaredPropertyAccessorsOf(DotMemberAttributeKeyLookup lookup, Type entityAttributesType)
         {
-            var properties = entityAttributesType.GetProperties(BindingFlags.DeclaredOnly | AttributeKeyPropertyBindingFlags);
+            var properties = entityAttributesType.GetProperties(BindingFlags.DeclaredOnly | DotEntityAttributes.AttributeKeyPropertyBindingFlags);
 
             foreach (var property in properties)
             {

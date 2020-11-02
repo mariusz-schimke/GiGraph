@@ -76,9 +76,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <param name="options">
         ///     The options to apply.
         /// </param>
-        public virtual void SetOptions(DotNodeStyleOptions options)
+        public virtual void Apply(DotNodeStyleOptions options)
         {
-            base.SetOptions(options);
+            base.Apply(options);
         }
     }
 }

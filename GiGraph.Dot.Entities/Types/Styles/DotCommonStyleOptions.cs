@@ -5,6 +5,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
     public abstract class DotCommonStyleOptions : DotStyleOptions
     {
         protected DotCommonStyleOptions(DotStyles style)
+            : base(style)
         {
         }
 
