@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
+using GiGraph.Dot.Entities.Types.Attributes;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -25,8 +26,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <summary>
         ///     Gets a dictionary where the key is a DOT attribute, and the value is a path to a property that exposes it.
         /// </summary>
-        public virtual Dictionary<string, string> GetKeyMapping()
+        public virtual ILookup<string, string> GetKeyMapping()
         {
+            // TODO: write a unit test to ensure that no key has more than one property assigned (apart from graph style and graph clusters style)
+
             var properties = GetPathsOfEntityAttributeProperties();
 
             return properties
@@ -35,11 +38,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                     var actual = path.Last();
                     return new
                     {
-                        Key = actual.EntityAttributes.GetKey(actual.Property),
+                        actual.Property.GetCustomAttribute<DotAttributeKeyAttribute>().Key,
                         Path = string.Join(".", path.Select(item => item.Property.Name))
                     };
                 })
-               .ToDictionary(
+               .ToLookup(
                     key => key.Key,
                     value => value.Path
                 );

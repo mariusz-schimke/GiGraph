@@ -29,7 +29,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             Tuple<DotEntityAttributes, PropertyInfo>[] basePath
         )
         {
-            var properties = GetType().GetProperties(AttributeKeyPropertyBindingFlags);
+            // don't include private properties (private properties with a DOT key assigned may be hidden purposefully; see the Style properties for instance)
+            var properties = GetType().GetProperties(AttributeKeyPropertyBindingFlags & ~BindingFlags.NonPublic);
 
             foreach (var property in properties)
             {
@@ -37,14 +38,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                    .Append(new Tuple<DotEntityAttributes, PropertyInfo>(this, property))
                    .ToArray();
 
+                if (property.GetCustomAttribute<DotAttributeKeyAttribute>() is {})
+                {
+                    output.Add(currentPath);
+                }
+
                 if (typeof(DotEntityAttributes).IsAssignableFrom(property.PropertyType))
                 {
                     var next = (DotEntityAttributes) property.GetValue(this);
                     next.GetPathsOfEntityAttributeProperties(output, currentPath);
-                }
-                else if (property.GetCustomAttribute<DotAttributeKeyAttribute>() is {})
-                {
-                    output.Add(currentPath);
                 }
             }
         }

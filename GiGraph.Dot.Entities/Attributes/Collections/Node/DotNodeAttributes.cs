@@ -57,6 +57,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <summary>
         ///     Style options.
         /// </summary>
+        [DotAttributeKey(DotAttributeKeys.Style)]
         public virtual DotNodeStyleAttributes Style { get; }
 
         /// <summary>
