@@ -1,6 +1,6 @@
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
-    public partial class DotGraphClusterAttributes
+    public partial class DotGraphAttributes
     {
         /// <summary>
         ///     Makes the border and background of clusters invisible.

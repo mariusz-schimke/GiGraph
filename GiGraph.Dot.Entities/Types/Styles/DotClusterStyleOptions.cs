@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         ///     Creates and initializes a new instance.
         /// </summary>
         /// <param name="style">
-        ///     The initial style. 
+        ///     The initial style.
         /// </param>
         public DotClusterStyleOptions(DotStyles style)
             : base(style)
@@ -28,41 +28,37 @@ namespace GiGraph.Dot.Entities.Types.Styles
         /// <summary>
         ///     Gets or sets the <see cref="DotStyles.Rounded" /> style option state.
         /// </summary>
-        public virtual bool? Rounded { get; set; }
+        public virtual bool Rounded
+        {
+            get => _style.HasFlag(DotStyles.Rounded);
+            set => SetOption(DotStyles.Rounded, value);
+        }
 
         /// <summary>
         ///     Gets or sets the <see cref="DotStyles.Filled" /> style option state.
         /// </summary>
-        public virtual bool? Filled { get; set; }
+        public virtual bool Filled
+        {
+            get => _style.HasFlag(DotStyles.Filled);
+            set => SetOption(DotStyles.Filled, value);
+        }
 
         /// <summary>
         ///     Gets or sets the <see cref="DotStyles.Striped" /> style option state.
         /// </summary>
-        public virtual bool? Striped { get; set; }
+        public virtual bool Striped
+        {
+            get => _style.HasFlag(DotStyles.Striped);
+            set => SetOption(DotStyles.Striped, value);
+        }
 
         /// <summary>
         ///     Gets or sets the <see cref="DotStyles.Radial" /> style option state.
         /// </summary>
-        public virtual bool? Radial { get; set; }
-
-        protected override void ReadOptions(DotStyles style)
+        public virtual bool Radial
         {
-            base.ReadOptions(style);
-
-            Rounded = style.HasFlag(DotStyles.Rounded);
-            Filled = style.HasFlag(DotStyles.Filled);
-            Striped = style.HasFlag(DotStyles.Striped);
-            Radial = style.HasFlag(DotStyles.Radial);
-        }
-
-        protected override void WriteOptions(ref DotStyles? style)
-        {
-            base.WriteOptions(ref style);
-
-            WriteOption(ref style, DotStyles.Rounded, Rounded);
-            WriteOption(ref style, DotStyles.Filled, Filled);
-            WriteOption(ref style, DotStyles.Striped, Striped);
-            WriteOption(ref style, DotStyles.Radial, Radial);
+            get => _style.HasFlag(DotStyles.Radial);
+            set => SetOption(DotStyles.Radial, value);
         }
     }
 }

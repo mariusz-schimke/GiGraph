@@ -3,6 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
@@ -50,6 +51,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     false.
         /// </summary>
         bool? AllowLabelFloat { get; set; }
+
+        /// <summary>
+        ///     Gets or sets style options for the edge (default: unset).
+        /// </summary>
+        DotEdgeStyleOptions Style { get; set; }
 
         /// <summary>
         ///     Minimum edge length (rank difference between head and tail). Default: 1, minimum: 0.

@@ -8,6 +8,7 @@ using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
@@ -56,6 +57,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     attributes are placed, even if there is some overlap with nodes or other labels (default: true).
         /// </summary>
         bool? ForceExternalLabels { get; set; }
+        
+        /// <summary>
+        ///     Gets or sets style options for the graph (default: unset).
+        /// </summary>
+        DotGraphStyleOptions Style { get; set; }
 
         /// <summary>
         ///     <para>

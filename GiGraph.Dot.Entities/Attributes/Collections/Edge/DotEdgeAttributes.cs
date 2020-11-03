@@ -6,6 +6,7 @@ using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
@@ -22,15 +23,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             DotEntityHyperlinkAttributes hyperlinkAttributes,
             DotEdgeEndpointLabelAttributes endpointLabelAttributes,
             DotEdgeLabelHyperlinkAttributes labelHyperlinkAttributes,
-            DotEdgeHyperlinkAttributes edgeHyperlinkAttributes,
-            DotEdgeStyleAttributes edgeStyleAttributes
+            DotEdgeHyperlinkAttributes edgeHyperlinkAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
             Head = headAttributes;
             Tail = tailAttributes;
             Font = fontAttributes;
-            Style = edgeStyleAttributes;
             EndpointLabels = endpointLabelAttributes;
             EdgeHyperlink = edgeHyperlinkAttributes;
             LabelHyperlink = labelHyperlinkAttributes;
@@ -46,8 +45,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
                 new DotEntityHyperlinkAttributes(attributes),
                 new DotEdgeEndpointLabelAttributes(attributes),
                 new DotEdgeLabelHyperlinkAttributes(attributes),
-                new DotEdgeHyperlinkAttributes(attributes),
-                new DotEdgeStyleAttributes(attributes)
+                new DotEdgeHyperlinkAttributes(attributes)
             )
         {
         }
@@ -71,11 +69,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Font properties.
         /// </summary>
         public virtual DotEntityFontAttributes Font { get; }
-
-        /// <summary>
-        ///     Style options.
-        /// </summary>
-        public virtual DotEdgeStyleAttributes Style { get; }
 
         /// <summary>
         ///     Properties applied to labels specified for the <see cref="Head" /> and the <see cref="Tail" /> of the edge.
@@ -104,6 +97,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         {
             get => base.ColorScheme;
             set => base.ColorScheme = value;
+        }
+
+        [DotAttributeKey(DotAttributeKeys.Style)]
+        public virtual DotEdgeStyleOptions Style
+        {
+            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? new DotEdgeStyleOptions(result) : null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.ToStyle()));
         }
 
         [DotAttributeKey(DotAttributeKeys.Comment)]

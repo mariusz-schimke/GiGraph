@@ -5,6 +5,7 @@ using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Records;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
@@ -65,6 +66,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     tooltips will be generated, the user should set a tooltip attribute explicitly.
         /// </summary>
         DotEscapeString Tooltip { get; set; }
+
+        /// <summary>
+        ///     Gets or sets style options for the edge (default: unset).
+        /// </summary>
+        DotNodeStyleOptions Style { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the shape of the node (default: <see cref="DotNodeShape.Ellipse" />).
+        /// </summary>
+        DotNodeShape? Shape { get; set; }
 
         /// <summary>
         ///     <para>
@@ -129,11 +140,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     minimum: 0.0.
         /// </summary>
         double? BorderWidth { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the shape of the node (default: <see cref="DotNodeShape.Ellipse" />).
-        /// </summary>
-        DotNodeShape? Shape { get; set; }
 
         /// <summary>
         ///     <para>

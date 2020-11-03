@@ -4,6 +4,7 @@ using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
@@ -53,6 +54,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     Tooltip annotation attached to the cluster. If unset, Graphviz will use the <see cref="Label" /> attribute if defined.
         /// </summary>
         DotEscapeString Tooltip { get; set; }
+
+        /// <summary>
+        ///     Gets or sets style options for the cluster (default: unset).
+        /// </summary>
+        DotClusterStyleOptions Style { get; set; }
 
         /// <summary>
         ///     <para>

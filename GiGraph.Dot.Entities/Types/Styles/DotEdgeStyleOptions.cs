@@ -28,18 +28,10 @@ namespace GiGraph.Dot.Entities.Types.Styles
         /// <summary>
         ///     Gets or sets the <see cref="DotStyles.Tapered" /> style option state.
         /// </summary>
-        public virtual bool? Tapered { get; set; }
-
-        protected override void ReadOptions(DotStyles style)
+        public virtual bool Tapered
         {
-            base.ReadOptions(style);
-            Tapered = style.HasFlag(DotStyles.Tapered);
-        }
-
-        protected override void WriteOptions(ref DotStyles? style)
-        {
-            base.WriteOptions(ref style);
-            WriteOption(ref style, DotStyles.Tapered, Tapered);
+            get => _style.HasFlag(DotStyles.Tapered);
+            set => SetOption(DotStyles.Tapered, value);
         }
     }
 }

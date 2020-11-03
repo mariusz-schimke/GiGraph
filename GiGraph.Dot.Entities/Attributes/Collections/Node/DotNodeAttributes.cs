@@ -7,6 +7,7 @@ using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
@@ -19,14 +20,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEntityHyperlinkAttributes hyperlinkAttributes,
             DotEntityFontAttributes fontAttributes,
-            DotNodeStyleAttributes styleAttributes,
             DotNodeImageAttributes imageAttributes,
             DotNodeGeometryAttributes geometryAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
             Font = fontAttributes;
-            Style = styleAttributes;
             Image = imageAttributes;
             Geometry = geometryAttributes;
         }
@@ -37,7 +36,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
                 NodeAttributesKeyLookup,
                 new DotEntityHyperlinkAttributes(attributes),
                 new DotEntityFontAttributes(attributes),
-                new DotNodeStyleAttributes(attributes),
                 new DotNodeImageAttributes(attributes),
                 new DotNodeGeometryAttributes(attributes)
             )
@@ -53,11 +51,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     Font properties.
         /// </summary>
         public virtual DotEntityFontAttributes Font { get; }
-
-        /// <summary>
-        ///     Style options.
-        /// </summary>
-        public virtual DotNodeStyleAttributes Style { get; }
 
         /// <summary>
         ///     Node image properties.
@@ -81,6 +74,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
             get => base.ColorScheme;
             set => base.ColorScheme = value;
+        }
+
+        [DotAttributeKey(DotAttributeKeys.Style)]
+        public virtual DotNodeStyleOptions Style
+        {
+            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? new DotNodeStyleOptions(result) : null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.ToStyle()));
         }
 
         [DotAttributeKey(DotAttributeKeys.Comment)]

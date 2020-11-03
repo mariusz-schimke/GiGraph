@@ -6,6 +6,7 @@ using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
@@ -17,13 +18,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEntityHyperlinkAttributes hyperlinkAttributes,
-            DotEntityFontAttributes fontAttributes,
-            DotClusterStyleAttributes styleAttributes
+            DotEntityFontAttributes fontAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
             Font = fontAttributes;
-            Style = styleAttributes;
         }
 
         public DotClusterAttributes(DotAttributeCollection attributes)
@@ -31,8 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
                 attributes,
                 ClusterAttributesKeyLookup,
                 new DotEntityHyperlinkAttributes(attributes),
-                new DotEntityFontAttributes(attributes),
-                new DotClusterStyleAttributes(attributes)
+                new DotEntityFontAttributes(attributes)
             )
         {
         }
@@ -47,11 +45,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// </summary>
         public virtual DotEntityFontAttributes Font { get; }
 
-        /// <summary>
-        ///     Style options.
-        /// </summary>
-        public virtual DotClusterStyleAttributes Style { get; }
-
         // overridden to inherit comment from interface
         public override DotLabel Label
         {
@@ -64,6 +57,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         {
             get => base.ColorScheme;
             set => base.ColorScheme = value;
+        }
+        
+        [DotAttributeKey(DotAttributeKeys.Style)]
+        public virtual DotClusterStyleOptions Style
+        {
+            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? new DotClusterStyleOptions(result) : null;
+            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.ToStyle()));
         }
 
         [DotAttributeKey(DotAttributeKeys.Color)]
