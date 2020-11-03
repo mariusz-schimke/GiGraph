@@ -1,9 +1,11 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract class DotEntityCommonStyleAttributes : DotEntityStyleAttributes
+    public abstract class DotEntityCommonStyleAttributes<TStyleOptions> : DotEntityStyleAttributes<TStyleOptions>
+        where TStyleOptions : DotCommonStyleOptions
     {
         protected DotEntityCommonStyleAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)

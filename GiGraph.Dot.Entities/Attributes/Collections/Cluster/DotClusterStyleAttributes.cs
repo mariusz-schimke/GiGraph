@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
-    public class DotClusterStyleAttributes : DotEntityCommonStyleAttributes
+    public class DotClusterStyleAttributes : DotEntityCommonStyleAttributes<DotClusterStyleOptions>
     {
         protected DotClusterStyleAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
@@ -50,17 +50,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         {
             get => HasOptions(DotStyles.Radial);
             set => ApplyOption(DotStyles.Radial, value);
-        }
-
-        /// <summary>
-        ///     Applies the specified style options to the cluster.
-        /// </summary>
-        /// <param name="options">
-        ///     The options to apply.
-        /// </param>
-        public virtual void Apply(DotClusterStyleOptions options)
-        {
-            base.Apply(options);
         }
     }
 }

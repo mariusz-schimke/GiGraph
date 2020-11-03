@@ -8,14 +8,15 @@ namespace GiGraph.Dot.Entities.Types.Styles
     public class DotEdgeStyleOptions : DotCommonStyleOptions
     {
         /// <summary>
-        ///     Creates and initializes a new instance.
+        ///     Creates a new instance with no options specified.
         /// </summary>
         public DotEdgeStyleOptions()
         {
         }
 
         /// <summary>
-        ///     Creates and initializes a new instance.
+        ///     Creates a new instance with options initialized based on the specified style flags. If you want to create an instance with
+        ///     all options set to false, use <see cref="DotStyles.Default" />.
         /// </summary>
         /// <param name="style">
         ///     The initial style.

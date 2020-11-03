@@ -75,7 +75,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     Style options.
         /// </summary>
-        [DotAttributeKey(DotAttributeKeys.Style)]
         public virtual DotEdgeStyleAttributes Style { get; }
 
         /// <summary>

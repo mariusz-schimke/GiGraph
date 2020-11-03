@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
     ///     The interface that exposes entity-specific attributes of the <typeparamref name="TEntityAttributes" /> type.
     /// </typeparam>
     public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttributeProperties>
-        where TEntityAttributes : DotEntityAttributes<TIEntityAttributeProperties>
+        where TEntityAttributes : DotEntityAttributes, TIEntityAttributeProperties
     {
         /// <summary>
         ///     Builds a lookup for properties and property accessors.

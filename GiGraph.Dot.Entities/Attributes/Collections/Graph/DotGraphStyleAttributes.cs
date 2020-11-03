@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
-    public class DotGraphStyleAttributes : DotEntityStyleAttributes
+    public class DotGraphStyleAttributes : DotEntityStyleAttributes<DotGraphStyleOptions>
     {
         protected DotGraphStyleAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <param name="options">
         ///     The options to apply.
         /// </param>
-        public virtual void Apply(DotGraphStyleOptions options)
+        public override void Apply(DotGraphStyleOptions options)
         {
             base.Apply(options);
         }

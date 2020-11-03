@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
-    public class DotEdgeStyleAttributes : DotEntityCommonStyleAttributes
+    public class DotEdgeStyleAttributes : DotEntityCommonStyleAttributes<DotEdgeStyleOptions>
     {
         protected DotEdgeStyleAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
@@ -23,17 +23,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         {
             get => HasOptions(DotStyles.Tapered);
             set => ApplyOption(DotStyles.Tapered, value);
-        }
-
-        /// <summary>
-        ///     Applies the specified style options to the edge.
-        /// </summary>
-        /// <param name="options">
-        ///     The options to apply.
-        /// </param>
-        public virtual void Apply(DotEdgeStyleOptions options)
-        {
-            base.Apply(options);
         }
     }
 }

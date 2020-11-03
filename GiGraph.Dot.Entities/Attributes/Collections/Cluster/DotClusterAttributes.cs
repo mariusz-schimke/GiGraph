@@ -50,7 +50,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// <summary>
         ///     Style options.
         /// </summary>
-        [DotAttributeKey(DotAttributeKeys.Style)]
         public virtual DotClusterStyleAttributes Style { get; }
 
         // overridden to inherit comment from interface

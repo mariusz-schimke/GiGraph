@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
-    public class DotNodeStyleAttributes : DotEntityCommonStyleAttributes
+    public class DotNodeStyleAttributes : DotEntityCommonStyleAttributes<DotNodeStyleOptions>
     {
         protected DotNodeStyleAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
@@ -68,17 +68,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
             get => HasOptions(DotStyles.Radial);
             set => ApplyOption(DotStyles.Radial, value);
-        }
-
-        /// <summary>
-        ///     Applies the specified style options to the node.
-        /// </summary>
-        /// <param name="options">
-        ///     The options to apply.
-        /// </param>
-        public virtual void Apply(DotNodeStyleOptions options)
-        {
-            base.Apply(options);
         }
     }
 }
