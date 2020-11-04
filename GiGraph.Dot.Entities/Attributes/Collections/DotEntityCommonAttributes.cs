@@ -8,9 +8,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     // TODO: porównać mapę właściwości wszystkich elementów do tego, co było w poprzedniej wersji, żeby upewnić się,
     // że nie zostały pominięte/dodane jakieś atrybuty
 
-    // TODO: spróbować zastąpić Style konkretną klasą, tylko trzeba uważać, bo zmiana flagi w tej klasie nie spowoduje aktualizacji kolekcji
-    // więc może klasy powinny być read only
-
     // TODO: czy istnieją klasy, które są stosowane jako value w atrybutach, a których właściwości można zmieniać? Jeśli pobierze się z kolekcji
     // atrybut, który został skonwertowany z innego typu, to zmiana właściwości na tym typie nie wpłynie na kolekcję
     // (może to, czy klasa powinna mieć właściwości write'able powinno zależeć tylko od kontekstu wykorzystania?)
