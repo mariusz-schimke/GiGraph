@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Tapered" /> style option state.
+        ///     Gets or sets the <see cref="DotStyles.Tapered" /> style option state (default: false).
         /// </summary>
         public virtual bool Tapered
         {

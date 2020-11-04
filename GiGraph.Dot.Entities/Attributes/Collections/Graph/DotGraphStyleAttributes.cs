@@ -17,8 +17,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Radial" /> style option state. Note that the option applies not only to the graph, but
-        ///     also to clusters.
+        ///     Gets or sets the <see cref="DotStyles.Radial" /> style option state (default: false). Note that the option applies not only
+        ///     to the graph, but also to clusters.
         /// </summary>
         public virtual bool Radial
         {

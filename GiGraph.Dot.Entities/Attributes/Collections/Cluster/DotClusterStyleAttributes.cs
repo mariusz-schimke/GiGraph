@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Rounded" /> style option state.
+        ///     Gets or sets the <see cref="DotStyles.Rounded" /> style option state (default: false).
         /// </summary>
         public virtual bool Rounded
         {
@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Filled" /> style option state.
+        ///     Gets or sets the <see cref="DotStyles.Filled" /> style option state (default: false).
         /// </summary>
         public virtual bool Filled
         {
@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Striped" /> style option state.
+        ///     Gets or sets the <see cref="DotStyles.Striped" /> style option state (default: false).
         /// </summary>
         public virtual bool Striped
         {
@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Radial" /> style option state.
+        ///     Gets or sets the <see cref="DotStyles.Radial" /> style option state (default: false).
         /// </summary>
         public virtual bool Radial
         {

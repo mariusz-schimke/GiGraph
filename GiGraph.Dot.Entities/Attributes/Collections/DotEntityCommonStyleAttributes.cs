@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Solid" /> style option state.
+        ///     Gets or sets the <see cref="DotStyles.Solid" /> style option state (default: false).
         /// </summary>
         public virtual bool Solid
         {
@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Dashed" /> style option state.
+        ///     Gets or sets the <see cref="DotStyles.Dashed" /> style option state (default: false).
         /// </summary>
         public virtual bool Dashed
         {
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Dotted" /> style option state.
+        ///     Gets or sets the <see cref="DotStyles.Dotted" /> style option state (default: false).
         /// </summary>
         public virtual bool Dotted
         {
@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Bold" /> style option state.
+        ///     Gets or sets the <see cref="DotStyles.Bold" /> style option state (default: false).
         /// </summary>
         public virtual bool Bold
         {
@@ -54,7 +54,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Invisible" /> style option state.
+        ///     Gets or sets the <see cref="DotStyles.Invisible" /> style option state (default: false).
         /// </summary>
         public virtual bool Invisible
         {
