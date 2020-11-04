@@ -34,7 +34,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         ///     clusters.
         /// </summary>
         public virtual bool? Radial { get; set; }
-        
+
         protected override void ReadOptions(DotStyles style)
         {
             Radial = style.HasFlag(DotStyles.Radial);

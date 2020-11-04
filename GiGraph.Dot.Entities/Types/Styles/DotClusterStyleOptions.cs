@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Types.Styles
         ///     Creates and initializes a new instance.
         /// </summary>
         /// <param name="style">
-        ///     The initial style. 
+        ///     The initial style.
         /// </param>
         public DotClusterStyleOptions(DotStyles style)
             : base(style)

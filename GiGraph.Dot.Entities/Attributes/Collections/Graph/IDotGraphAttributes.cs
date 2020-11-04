@@ -62,10 +62,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         Gets or sets the background color of the graph (default: none). Used as the background for entire canvas.
         ///     </para>
         ///     <para>
-        ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
-        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. If the second color is
-        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
-        ///         attribute for setting a gradient angle.
+        ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
+        ///         the <see cref="DotStyles.Radial" /> option to <see cref="DotGraphAttributes.Style" /> will cause a radial fill. If the
+        ///         second color is <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
+        ///         <see cref="GradientAngle" /> attribute for setting a gradient angle.
         ///     </para>
         ///     <para>
         ///         For certain output formats, such as PostScript, no fill is done for the root graph unless background color is explicitly
