@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Output.Generators.Attributes
 
         protected override void WriteEntity(DotAttributeCollection attributes, TWriter writer)
         {
-            var orderedAttributes = _options.OrderElements
+            var orderedAttributes = _options.SortElements
                 ? attributes.Values
                    .Cast<IDotOrderable>()
                    .OrderBy(attribute => attribute.OrderingKey)

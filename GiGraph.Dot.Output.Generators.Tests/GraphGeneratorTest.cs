@@ -213,7 +213,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             sb.Append("}");
 
-            var options = DotGenerationOptions.Custom(o => o.OrderElements = true);
+            var options = DotGenerationOptions.Custom(o => o.SortElements = true);
             Assert.Equal(sb.ToString(), graph.Build(generationOptions: options, syntaxRules: _syntaxRules));
         }
 

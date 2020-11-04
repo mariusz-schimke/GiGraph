@@ -7,9 +7,9 @@
         {
         }
 
-        public virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitSubgraphKeyword)
+        public virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration)
         {
-            return new DotSubgraphWriter(_tokenWriter, _context, preferExplicitSubgraphKeyword);
+            return new DotSubgraphWriter(_tokenWriter, _context, preferExplicitDeclaration);
         }
 
         public virtual void EndSubgraph()

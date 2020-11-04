@@ -33,10 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes
                .Where(style => Value.HasFlag(style))
                .Select(style => GetDotEncodedStyle(style, options, syntaxRules));
 
-            const string separator = ", ";
-            return options.OrderElements
-                ? string.Join(separator, styles.OrderBy(style => style))
-                : string.Join(separator, styles);
+            return string.Join(", ", styles.OrderBy(style => style));
         }
 
         protected virtual string GetDotEncodedStyle(DotStyles style, DotGenerationOptions options, DotSyntaxRules syntaxRules)
