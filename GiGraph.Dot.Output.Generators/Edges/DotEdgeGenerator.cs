@@ -63,7 +63,7 @@ namespace GiGraph.Dot.Output.Generators.Edges
 
         protected virtual void WriteEndpointGroup(DotEndpointGroup endpointGroup, IDotEdgeWriter writer)
         {
-            var subgraphWriter = writer.BeginSubgraph(_options.Subgraphs.PreferExplicitKeyword);
+            var subgraphWriter = writer.BeginSubgraph(_options.Subgraphs.PreferExplicitDeclaration);
             _entityGenerators.GetForEntity<IDotSubgraphWriter>(endpointGroup.Subgraph).Generate(endpointGroup.Subgraph, subgraphWriter);
             writer.EndSubgraph();
         }

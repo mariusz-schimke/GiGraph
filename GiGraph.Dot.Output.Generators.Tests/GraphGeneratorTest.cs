@@ -33,13 +33,14 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Nodes.Add("node3", attrs =>
             {
                 attrs.Shape = DotNodeShape.Assembly;
-                attrs.Style = DotStyles.Bold;
+                attrs.Style.Bold = true;
             });
 
             graph.Nodes.Add(attrs =>
             {
                 attrs.Shape = DotNodeShape.Box;
-                attrs.Style = DotStyles.Bold | DotStyles.Dashed;
+                attrs.Style.Bold = true;
+                attrs.Style.Dashed = true;
             }, "node1", "node2");
 
 
@@ -49,19 +50,19 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 edge.Tail.Port.CompassPoint = DotCompassPoint.East;
 
                 edge.Attributes.Color = Color.Gold;
-                edge.Attributes.Style = DotStyles.Dotted;
+                edge.Attributes.Style.Dotted = true;
             });
 
             graph.Edges.AddSequence(edge =>
             {
                 edge.Attributes.Constrain = true;
-                edge.Attributes.Style = DotStyles.Solid;
+                edge.Attributes.Style.Solid = true;
             }, "node4", DotSubgraph.FromNodes("snode1", "snode2"), "node5");
 
             graph.Edges.AddSequence(edge =>
             {
                 edge.Attributes.Color = Color.Beige;
-                edge.Attributes.Style = DotStyles.Invisible;
+                edge.Attributes.Style.Invisible = true;
             }, "node1", "node2", "node3");
 
             graph.Subgraphs.Add().Id = "Subgraph2";
@@ -212,7 +213,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             sb.Append("}");
 
-            var options = DotGenerationOptions.Custom(o => o.OrderElements = true);
+            var options = DotGenerationOptions.Custom(o => o.SortElements = true);
             Assert.Equal(sb.ToString(), graph.Build(generationOptions: options, syntaxRules: _syntaxRules));
         }
 

@@ -60,7 +60,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     </para>
         ///     <para>
         ///         If <see cref="DotGradientColor" /> is used, with no weighted colors in its parameters (<see cref="DotColor" /> items
-        ///         only), and the <see cref="Style" /> contains <see cref="DotStyles.Filled" />, a linear gradient fill is done.
+        ///         only), and the <see cref="DotClusterAttributes.Style" /> contains <see cref="DotStyles.Filled" />, a linear gradient fill
+        ///         is done.
         ///     </para>
         ///     <para>
         ///         If <see cref="DotGradientColor" /> is used with weighted colors (see <see cref="DotWeightedColor" />), a degenerate
@@ -68,13 +69,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///         <see cref="DotWeightedColor.Weight" /> specifying how much of region is filled with each color.
         ///     </para>
         ///     <para>
-        ///         If the <see cref="Style" /> attribute contains the value <see cref="DotStyles.Radial" />, then a radial gradient fill is
-        ///         done. See also the <see cref="GradientAngle" /> attribute for setting a gradient angle.
+        ///         If the <see cref="DotClusterAttributes.Style" /> attribute contains the value <see cref="DotStyles.Radial" />, then a
+        ///         radial gradient fill is done. See also the <see cref="GradientAngle" /> attribute for setting a gradient angle.
         ///     </para>
         ///     <para>
-        ///         These fills work with any shape. For certain shapes, the <see cref="Style" /> attribute can be set to do fills using more
-        ///         than 2 colors (set the <see cref="DotStyles.Striped" /> shape, and use <see cref="DotMultiColor" /> as a color list
-        ///         definition).
+        ///         These fills work with any shape. For certain shapes, the <see cref="DotClusterAttributes.Style" /> attribute can be set
+        ///         to do fills using more than 2 colors (set the <see cref="DotStyles.Striped" /> shape, and use
+        ///         <see cref="DotMultiColor" /> as a color list definition).
         ///     </para>
         /// </summary>
         DotColorDefinition Color { get; set; }
@@ -82,30 +83,30 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// <summary>
         ///     <para>
         ///         Gets or sets the background color of the cluster (default: none). Used as the initial background for the cluster. If the
-        ///         <see cref="Style" /> attribute of the cluster contains the <see cref="DotStyles.Filled" /> style, the cluster's
-        ///         <see cref="FillColor" /> will overlay the background color.
+        ///         <see cref="DotClusterAttributes.Style" /> attribute of the cluster contains the <see cref="DotStyles.Filled" /> style,
+        ///         the cluster's <see cref="FillColor" /> will overlay the background color.
         ///     </para>
         ///     <para>
-        ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
-        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. If the second color is
-        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
-        ///         attribute for setting a gradient angle.
+        ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
+        ///         the <see cref="DotStyles.Radial" /> option to <see cref="DotClusterAttributes.Style" /> will cause a radial fill. If the
+        ///         second color is <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
+        ///         <see cref="GradientAngle" /> attribute for setting a gradient angle.
         ///     </para>
         /// </summary>
         DotColorDefinition BackgroundColor { get; set; }
 
         /// <summary>
         ///     <para>
-        ///         Gets or sets the color used to fill the background of the cluster, assuming that <see cref="Style" /> is
-        ///         <see cref="DotStyles.Filled" />. If <see cref="FillColor" /> is not defined, <see cref="Color" /> is used. If
-        ///         <see cref="Color" /> is not defined, <see cref="BackgroundColor" /> is used. If it is not defined too, the default is
-        ///         used, except when the output format is MIF, which use black by default.
+        ///         Gets or sets the color used to fill the background of the cluster, assuming that
+        ///         <see cref="DotClusterAttributes.Style" /> contains <see cref="DotStyles.Filled" />. If <see cref="FillColor" /> is not
+        ///         defined, <see cref="Color" /> is used. If <see cref="Color" /> is not defined, <see cref="BackgroundColor" /> is used. If
+        ///         it is not defined too, the default is used, except when the output format is MIF, which use black by default.
         ///     </para>
         ///     <para>
-        ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
-        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. If the second color is
-        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
-        ///         attribute for setting a gradient angle.
+        ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
+        ///         the <see cref="DotStyles.Radial" /> option to <see cref="DotClusterAttributes.Style" /> will cause a radial fill. If the
+        ///         second color is <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
+        ///         <see cref="GradientAngle" /> attribute for setting a gradient angle.
         ///     </para>
         ///     <para>
         ///         Note that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a
@@ -146,18 +147,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     <see cref="BackgroundColor" /> attribute set for the cluster.
         /// </summary>
         DotColor BorderColor { get; set; }
-
-        /// <summary>
-        ///     <para>
-        ///         Sets the style of the cluster (default: unset). See the descriptions of individual <see cref="DotStyles" /> values to
-        ///         learn which styles are applicable to this element type.
-        ///     </para>
-        ///     <para>
-        ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Rounded" /> |
-        ///         <see cref="DotStyles.Bold" />;
-        ///     </para>
-        /// </summary>
-        DotStyles? Style { get; set; }
 
         /// <summary>
         ///     Sets the number of peripheries used in cluster boundaries (default: 1, minimum: 0, maximum: 1). Setting peripheries to 0 will

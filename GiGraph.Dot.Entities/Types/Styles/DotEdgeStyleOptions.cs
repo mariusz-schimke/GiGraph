@@ -3,38 +3,44 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 namespace GiGraph.Dot.Entities.Types.Styles
 {
     /// <summary>
-    ///     Builds edge style based on options.
+    ///     Edge style options.
     /// </summary>
     public class DotEdgeStyleOptions : DotCommonStyleOptions
     {
-        protected static readonly DotStyles EdgeStylesMask = CommonStylesMask | DotStyles.Tapered;
-
         /// <summary>
-        ///     Creates and initializes a new builder instance.
+        ///     Creates a new instance with no options specified.
         /// </summary>
         public DotEdgeStyleOptions()
-            : base(EdgeStylesMask)
         {
         }
 
         /// <summary>
-        ///     Creates and initializes a new builder instance.
+        ///     Creates a new instance with options initialized based on the specified style flags. If you want to create an instance with
+        ///     all options set to false, use <see cref="DotStyles.Default" />.
         /// </summary>
         /// <param name="style">
         ///     The initial style.
         /// </param>
         public DotEdgeStyleOptions(DotStyles style)
-            : base(style, EdgeStylesMask)
+            : base(style)
         {
         }
 
         /// <summary>
         ///     Gets or sets the <see cref="DotStyles.Tapered" /> style option state.
         /// </summary>
-        public virtual bool? Tapered
+        public virtual bool? Tapered { get; set; }
+
+        protected override void ReadOptions(DotStyles style)
         {
-            get => GetOption(DotStyles.Tapered);
-            set => SetOption(DotStyles.Tapered, value);
+            base.ReadOptions(style);
+            Tapered = style.HasFlag(DotStyles.Tapered);
+        }
+
+        protected override void WriteOptions(ref DotStyles? style)
+        {
+            base.WriteOptions(ref style);
+            WriteOption(ref style, DotStyles.Tapered, Tapered);
         }
     }
 }

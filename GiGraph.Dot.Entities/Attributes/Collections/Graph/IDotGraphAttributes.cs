@@ -62,10 +62,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         Gets or sets the background color of the graph (default: none). Used as the background for entire canvas.
         ///     </para>
         ///     <para>
-        ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
-        ///         <see cref="Style" /> to <see cref="DotStyles.Radial" /> will cause a radial fill. If the second color is
-        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
-        ///         attribute for setting a gradient angle.
+        ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
+        ///         the <see cref="DotStyles.Radial" /> option to <see cref="DotGraphAttributes.Style" /> will cause a radial fill. If the
+        ///         second color is <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
+        ///         <see cref="GradientAngle" /> attribute for setting a gradient angle.
         ///     </para>
         ///     <para>
         ///         For certain output formats, such as PostScript, no fill is done for the root graph unless background color is explicitly
@@ -123,18 +123,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     well as nodes.
         /// </summary>
         DotEdgeShape? EdgeShape { get; set; }
-
-        /// <summary>
-        ///     <para>
-        ///         Sets the style of the graph (default: unset). See the descriptions of individual <see cref="DotStyles" /> values to learn
-        ///         which styles are applicable to this element type.
-        ///     </para>
-        ///     <para>
-        ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Rounded" /> |
-        ///         <see cref="DotStyles.Bold" />;
-        ///     </para>
-        /// </summary>
-        DotStyles? Style { get; set; }
 
         /// <summary>
         ///     Specifies the character encoding used when interpreting string input as a text label. The default value is "UTF-8". The other

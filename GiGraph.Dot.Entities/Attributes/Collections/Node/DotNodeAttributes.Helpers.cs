@@ -1,27 +1,16 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Geometry;
-using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
     public partial class DotNodeAttributes
     {
         /// <summary>
-        ///     Applies the specified graph style options to the <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" />
-        ///     attribute.
-        /// </summary>
-        public virtual void SetStyle(DotNodeStyleOptions options)
-        {
-            base.SetStyle(options);
-        }
-
-        /// <summary>
-        ///     Applies the <see cref="DotStyles.Invisible" /> style option to the
-        ///     <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" /> attribute, making the node invisible.
+        ///     Makes the node invisible.
         /// </summary>
         public virtual void SetInvisible()
         {
-            ApplyStyleOption(DotStyles.Invisible);
+            Style.Invisible = true;
         }
 
         /// <summary>

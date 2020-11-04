@@ -8,6 +8,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public abstract partial class DotEntityAttributes
     {
+        /// <summary>
+        ///     The binding flags describing the properties of the class that may have a DOT attribute key assigned by the
+        ///     <see cref="DotAttributeKeyAttribute" /> property attribute.
+        /// </summary>
+        public static readonly BindingFlags AttributeKeyPropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+
         protected virtual (DotEntityAttributes EntityAttributes, PropertyInfo Property)[][] GetPathsOfEntityAttributeProperties()
         {
             var result = new List<Tuple<DotEntityAttributes, PropertyInfo>[]>();
@@ -23,7 +29,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             Tuple<DotEntityAttributes, PropertyInfo>[] basePath
         )
         {
-            var properties = GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
+            // don't include private properties (private properties with a DOT key assigned may be hidden purposefully; see the Style properties for instance)
+            var properties = GetType().GetProperties(AttributeKeyPropertyBindingFlags & ~BindingFlags.NonPublic);
 
             foreach (var property in properties)
             {
@@ -31,14 +38,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                    .Append(new Tuple<DotEntityAttributes, PropertyInfo>(this, property))
                    .ToArray();
 
+                if (property.GetCustomAttribute<DotAttributeKeyAttribute>() is {})
+                {
+                    output.Add(currentPath);
+                }
+
                 if (typeof(DotEntityAttributes).IsAssignableFrom(property.PropertyType))
                 {
                     var next = (DotEntityAttributes) property.GetValue(this);
                     next.GetPathsOfEntityAttributeProperties(output, currentPath);
-                }
-                else if (property.GetCustomAttribute<DotAttributeKeyAttribute>() is {})
-                {
-                    output.Add(currentPath);
                 }
             }
         }

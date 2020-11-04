@@ -12,7 +12,7 @@ using GiGraph.Dot.Entities.Types.Scaling;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
-    public partial class DotGraphAttributes : DotEntityCommonAttributes<IDotGraphAttributes>, IDotGraphAttributes
+    public class DotGraphAttributes : DotEntityCommonAttributes<IDotGraphAttributes>, IDotGraphAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup GraphAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphAttributes, IDotGraphAttributes>().Build();
 
@@ -21,11 +21,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEntityHyperlinkAttributes hyperlinkAttributes,
             DotGraphFontAttributes fontAttributes,
+            DotGraphStyleAttributes styleAttributes,
             DotGraphClusterAttributes clusterAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
             Font = fontAttributes;
+            Style = styleAttributes;
             Clusters = clusterAttributes;
         }
 
@@ -35,6 +37,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 GraphAttributesKeyLookup,
                 new DotEntityHyperlinkAttributes(attributes),
                 new DotGraphFontAttributes(attributes),
+                new DotGraphStyleAttributes(attributes),
                 new DotGraphClusterAttributes(attributes)
             )
         {
@@ -49,6 +52,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     Font properties.
         /// </summary>
         public virtual DotGraphFontAttributes Font { get; }
+
+        /// <summary>
+        ///     Style options. Note that the options are shared with those specified for <see cref="Clusters" />.
+        /// </summary>
+        public virtual DotGraphStyleAttributes Style { get; }
 
         /// <summary>
         ///     The graph attributes applied to clusters.
@@ -67,13 +75,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             get => base.ColorScheme;
             set => base.ColorScheme = value;
-        }
-
-        // overridden to inherit comment from interface
-        public override DotStyles? Style
-        {
-            get => base.Style;
-            set => base.Style = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.Comment)]

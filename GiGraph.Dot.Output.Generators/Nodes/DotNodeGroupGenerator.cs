@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
                 throw new ArgumentException("At least one node identifier has to be specified for a node group.", nameof(nodeIds));
             }
 
-            var orderedNodeIds = _options.OrderElements
+            var orderedNodeIds = _options.SortElements
                 ? nodeIds.OrderBy(nodeId => nodeId)
                 : nodeIds;
 

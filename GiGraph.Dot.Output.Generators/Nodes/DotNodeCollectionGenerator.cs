@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
 
         protected override void WriteEntity(DotNodeCollection nodes, IDotNodeStatementWriter writer)
         {
-            var orderedNodes = _options.OrderElements
+            var orderedNodes = _options.SortElements
                 ? nodes.Cast<IDotOrderable>()
                    .OrderBy(node => node.OrderingKey)
                    .Cast<DotNodeDefinition>()

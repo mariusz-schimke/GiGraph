@@ -17,11 +17,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEntityHyperlinkAttributes hyperlinkAttributes,
-            DotEntityFontAttributes fontAttributes
+            DotEntityFontAttributes fontAttributes,
+            DotClusterStyleAttributes styleAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
             Font = fontAttributes;
+            Style = styleAttributes;
         }
 
         public DotClusterAttributes(DotAttributeCollection attributes)
@@ -29,7 +31,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
                 attributes,
                 ClusterAttributesKeyLookup,
                 new DotEntityHyperlinkAttributes(attributes),
-                new DotEntityFontAttributes(attributes)
+                new DotEntityFontAttributes(attributes),
+                new DotClusterStyleAttributes(attributes)
             )
         {
         }
@@ -44,6 +47,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// </summary>
         public virtual DotEntityFontAttributes Font { get; }
 
+        /// <summary>
+        ///     Style options.
+        /// </summary>
+        public virtual DotClusterStyleAttributes Style { get; }
+
         // overridden to inherit comment from interface
         public override DotLabel Label
         {
@@ -56,13 +64,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         {
             get => base.ColorScheme;
             set => base.ColorScheme = value;
-        }
-
-        // overridden to inherit comment from interface
-        public override DotStyles? Style
-        {
-            get => base.Style;
-            set => base.Style = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.Color)]

@@ -2,28 +2,17 @@ using System;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
     public partial class DotEdgeAttributes
     {
         /// <summary>
-        ///     Applies the specified style options to the <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" />
-        ///     attribute.
-        /// </summary>
-        public virtual void SetStyle(DotEdgeStyleOptions options)
-        {
-            base.SetStyle(options);
-        }
-
-        /// <summary>
-        ///     Applies the <see cref="DotStyles.Invisible" /> style option to the
-        ///     <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Style" /> attribute, making the edge invisible.
+        ///     Makes the edge invisible.
         /// </summary>
         public virtual void SetInvisible()
         {
-            ApplyStyleOption(DotStyles.Invisible);
+            Style.Invisible = true;
         }
 
         /// <summary>
@@ -36,7 +25,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual void SetTapered(double startWidth)
         {
             Width = startWidth;
-            ApplyStyleOption(DotStyles.Tapered);
+            Style.Tapered = true;
         }
 
         /// <summary>
@@ -81,7 +70,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     The number of parallel splines to compose the edge of.
         /// </param>
         /// <param name="color">
-        ///     The color to assign to the splines the edge will be composed of. If not specified, <see cref="System.Drawing.Color.Black" /> is used.
+        ///     The color to assign to the splines the edge will be composed of. If not specified, <see cref="System.Drawing.Color.Black" />
+        ///     is used.
         /// </param>
         public virtual void SetMultiline(int splineCount, DotColor color = null)
         {

@@ -109,18 +109,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         string ColorScheme { get; set; }
 
         /// <summary>
-        ///     <para>
-        ///         Sets the style of the edge (default: unset). See the descriptions of individual <see cref="DotStyles" /> values to learn
-        ///         which styles are applicable to this element type.
-        ///     </para>
-        ///     <para>
-        ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Solid" /> |
-        ///         <see cref="DotStyles.Bold" />;
-        ///     </para>
-        /// </summary>
-        DotStyles? Style { get; set; }
-
-        /// <summary>
         ///     Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges. The value has no
         ///     effect on text. Default: 1.0, minimum: 0.0.
         /// </summary>

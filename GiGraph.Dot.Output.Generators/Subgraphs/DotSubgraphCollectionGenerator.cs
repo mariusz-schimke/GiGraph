@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Output.Generators.Subgraphs
 
         protected override void WriteEntity(DotCommonGraphCollection<TSubgraph> subgraphs, IDotSubgraphWriterRoot writer)
         {
-            var orderedSubgraphs = _options.OrderElements
+            var orderedSubgraphs = _options.SortElements
                 ? subgraphs.Cast<IDotOrderable>()
                    .OrderBy(subgraph => subgraph.OrderingKey)
                    .Cast<TSubgraph>()
@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Output.Generators.Subgraphs
 
         protected virtual void WriteSubgraph(TSubgraph subgraph, IDotSubgraphWriterRoot writer)
         {
-            var subgraphWriter = writer.BeginSubgraph(_options.Subgraphs.PreferExplicitKeyword);
+            var subgraphWriter = writer.BeginSubgraph(_options.Subgraphs.PreferExplicitDeclaration);
             _entityGenerators.GetForEntity<IDotSubgraphWriter>(subgraph).Generate(subgraph, subgraphWriter);
             writer.EndSubgraph();
         }

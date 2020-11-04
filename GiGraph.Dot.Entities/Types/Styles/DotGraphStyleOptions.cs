@@ -3,32 +3,29 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 namespace GiGraph.Dot.Entities.Types.Styles
 {
     /// <summary>
-    ///     Builds graph style based on options.
+    ///     Graph style options.
     /// </summary>
     public class DotGraphStyleOptions : DotStyleOptions
     {
-        protected static readonly DotStyles GraphStylesMask = DotStyles.Radial;
-
         /// <summary>
-        ///     Creates and initializes a new builder instance.
+        ///     Creates and initializes a new instance.
         /// </summary>
         /// <param name="radial">
         ///     The <see cref="DotStyles.Radial" /> style option state. This option is applied to graph, and is inherited by clusters.
         /// </param>
         public DotGraphStyleOptions(bool? radial = null)
-            : base(GraphStylesMask)
         {
             Radial = radial;
         }
 
         /// <summary>
-        ///     Creates and initializes a new builder instance.
+        ///     Creates and initializes a new instance.
         /// </summary>
         /// <param name="style">
         ///     The initial style.
         /// </param>
         public DotGraphStyleOptions(DotStyles style)
-            : base(style, GraphStylesMask)
+            : base(style)
         {
         }
 
@@ -36,10 +33,16 @@ namespace GiGraph.Dot.Entities.Types.Styles
         ///     Gets or sets the <see cref="DotStyles.Radial" /> style option state. This option is applied to graph, and is inherited by
         ///     clusters.
         /// </summary>
-        public virtual bool? Radial
+        public virtual bool? Radial { get; set; }
+
+        protected override void ReadOptions(DotStyles style)
         {
-            get => GetOption(DotStyles.Radial);
-            set => SetOption(DotStyles.Radial, value);
+            Radial = style.HasFlag(DotStyles.Radial);
+        }
+
+        protected override void WriteOptions(ref DotStyles? style)
+        {
+            WriteOption(ref style, DotStyles.Radial, Radial);
         }
     }
 }
