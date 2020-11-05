@@ -21,14 +21,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEntityHyperlinkAttributes hyperlinkAttributes,
             DotGraphFontAttributes fontAttributes,
-            DotGraphStyleAttributes styleAttributes,
-            DotGraphClusterAttributes clusterAttributes
+            DotGraphStyleAttributes styleAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
             Font = fontAttributes;
             Style = styleAttributes;
-            Clusters = clusterAttributes;
         }
 
         public DotGraphAttributes(DotAttributeCollection attributes)
@@ -37,8 +35,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 GraphAttributesKeyLookup,
                 new DotEntityHyperlinkAttributes(attributes),
                 new DotGraphFontAttributes(attributes),
-                new DotGraphStyleAttributes(attributes),
-                new DotGraphClusterAttributes(attributes)
+                new DotGraphStyleAttributes(attributes)
             )
         {
         }
@@ -57,11 +54,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     Style options. Note that the options are shared with those specified for <see cref="Clusters" />.
         /// </summary>
         public virtual DotGraphStyleAttributes Style { get; }
-
-        /// <summary>
-        ///     The graph attributes applied to clusters.
-        /// </summary>
-        public virtual DotGraphClusterAttributes Clusters { get; }
 
         // overridden to inherit comment from interface
         public override DotLabel Label

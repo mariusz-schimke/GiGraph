@@ -14,19 +14,24 @@ namespace GiGraph.Dot.Entities.Graphs
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
-            DotClusterCollection clusters
+            DotGraphClusterCollection clusters
         )
             : base(attributes, nodes, edges, subgraphs, clusters)
         {
         }
 
-        protected DotGraphSection(DotGraphSection section)
-            : base(section)
+        protected DotGraphSection(DotGraphSection source)
+            : base(source)
+        {
+        }
+
+        private DotGraphSection(DotGraphAttributes attributes)
+            : base(attributes, new DotGraphClusterCollection(new DotGraphClusterAttributes(attributes.Collection)))
         {
         }
 
         public DotGraphSection()
-            : base(new DotGraphAttributes())
+            : this(new DotGraphAttributes())
         {
         }
 
@@ -36,5 +41,8 @@ namespace GiGraph.Dot.Entities.Graphs
         ///     The attributes of the graph.
         /// </summary>
         public virtual DotGraphAttributes Attributes => (DotGraphAttributes) _attributes;
+
+        /// <inheritdoc cref="DotCommonGraphSection.Clusters" />
+        public new DotGraphClusterCollection Clusters => (DotGraphClusterCollection) base.Clusters;
     }
 }

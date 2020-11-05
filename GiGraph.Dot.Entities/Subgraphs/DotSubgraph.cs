@@ -36,19 +36,25 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         ///     Creates a new subgraph.
         /// </summary>
-        public DotSubgraph()
-            : this(id: null, new DotSubgraphSection(), new DotGraphSectionCollection<DotSubgraphSection>())
+        /// <param name="id">
+        ///     The optional identifier to assign to the subgraph.
+        /// </param>
+        public DotSubgraph(string id = null)
+            : this(id, new DotSubgraphSection(), new DotGraphSectionCollection<DotSubgraphSection>())
         {
         }
 
         /// <summary>
         ///     Creates a new subgraph.
         /// </summary>
+        /// <param name="id">
+        ///     The optional identifier to assign to the subgraph.
+        /// </param>
         /// <param name="rank">
         ///     The rank attribute to assign to the subgraph.
         /// </param>
-        public DotSubgraph(DotRank rank)
-            : this()
+        public DotSubgraph(DotRank rank, string id = null)
+            : this(id)
         {
             Attributes.Rank = rank;
         }

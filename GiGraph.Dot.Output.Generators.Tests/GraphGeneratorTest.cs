@@ -19,9 +19,9 @@ namespace GiGraph.Dot.Output.Generators.Tests
         {
             var graph = new DotGraph("graph1", directed);
 
-            graph.Attributes.Clusters.AllowEdgeClipping = true;
-            graph.Attributes.Clusters.FillColor = Color.Brown;
             graph.Attributes.Comment = "graph_comment";
+            graph.Clusters.Attributes.AllowEdgeClipping = true;
+            graph.Clusters.Attributes.FillColor = Color.Brown;
 
             graph.Nodes.Attributes.Color = Color.Red;
             graph.Nodes.Attributes.Label = "node_label";
@@ -80,9 +80,9 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             graph.Annotation = "graph comment";
 
-            graph.Attributes.Clusters.AllowEdgeClipping = true;
             graph.Nodes.Attributes.Label = "node label";
             graph.Edges.Attributes.Label = "edge label";
+            graph.Clusters.Attributes.AllowEdgeClipping = true;
 
             graph.Nodes.Add("node1");
             graph.Edges.Add("node1", "node2");

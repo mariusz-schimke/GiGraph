@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
+using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
@@ -23,9 +24,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotEndpointPort Port { get; set; }
 
         /// <summary>
-        ///     Logical endpoint of the edge. When the <see cref="DotGraphClusterAttributes.AllowEdgeClipping" /> attribute is true (see
-        ///     <see cref="DotGraphAttributes.Clusters" /> on graph attributes), if the current property is defined, and is the identifier of
-        ///     a cluster containing the real endpoint node, the edge is clipped to the boundary of the cluster.
+        ///     Logical endpoint of the edge. When <see cref="DotGraphClusterAttributes.AllowEdgeClipping" /> is true (see attributes on the
+        ///     graph's <see cref="DotCommonGraphSection.Clusters" /> collection), if the current property is defined, and is the identifier
+        ///     of a cluster containing the real endpoint node, the edge is clipped to the boundary of the cluster.
         /// </summary>
         string ClusterId { get; set; }
 

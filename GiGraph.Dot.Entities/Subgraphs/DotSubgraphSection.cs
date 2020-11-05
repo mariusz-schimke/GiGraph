@@ -21,8 +21,8 @@ namespace GiGraph.Dot.Entities.Subgraphs
         {
         }
 
-        protected DotSubgraphSection(DotSubgraphSection section)
-            : base(section)
+        protected DotSubgraphSection(DotSubgraphSection source)
+            : base(source)
         {
         }
 
