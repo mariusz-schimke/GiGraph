@@ -21,8 +21,8 @@ namespace GiGraph.Dot.Entities.Clusters
         {
         }
 
-        protected DotClusterSection(DotClusterSection section)
-            : base(section)
+        protected DotClusterSection(DotClusterSection source)
+            : base(source)
         {
         }
 

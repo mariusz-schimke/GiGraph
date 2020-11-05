@@ -24,19 +24,24 @@ namespace GiGraph.Dot.Entities.Graphs
             Clusters = clusters;
         }
 
-        protected DotCommonGraphSection(DotCommonGraphSection section)
-            : this(section._attributes, section.Nodes, section.Edges, section.Subgraphs, section.Clusters)
+        protected DotCommonGraphSection(DotCommonGraphSection source)
+            : this(source._attributes, source.Nodes, source.Edges, source.Subgraphs, source.Clusters)
         {
         }
 
-        protected DotCommonGraphSection(DotEntityAttributes attributes)
+        protected DotCommonGraphSection(DotEntityAttributes attributes, DotClusterCollection clusters)
             : this(
                 attributes,
                 new DotNodeCollection(),
                 new DotEdgeCollection(),
                 new DotSubgraphCollection(),
-                new DotClusterCollection()
+                clusters
             )
+        {
+        }
+
+        protected DotCommonGraphSection(DotEntityAttributes attributes)
+            : this(attributes, new DotClusterCollection())
         {
         }
 
