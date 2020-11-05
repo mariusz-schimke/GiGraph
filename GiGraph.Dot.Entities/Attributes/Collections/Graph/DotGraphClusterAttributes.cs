@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         }
 
         /// <summary>
-        ///     Style options. Note that the options are shared with those of the parent graph.
+        ///     Style options. Note that the options are shared with those of the graph.
         /// </summary>
         public virtual DotClusterStyleAttributes Style { get; }
 
