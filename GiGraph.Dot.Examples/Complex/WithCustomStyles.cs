@@ -17,8 +17,7 @@ namespace GiGraph.Dot.Examples.Complex
 
             // set global node attributes (for all nodes of the graph)
             graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
-            // TODO: restore SetFilled
-            // graph.Nodes.Attributes.SetFilled(new DotGradientColor(Color.Turquoise, Color.RoyalBlue));
+            graph.Nodes.Attributes.SetFilled(new DotGradientColor(Color.Turquoise, Color.RoyalBlue));
             graph.Nodes.Attributes.Font.Name = graph.Attributes.Font.Name;
 
             // set global edge attributes (for all edges of the graph)
@@ -76,35 +75,30 @@ namespace GiGraph.Dot.Examples.Complex
                 // a rectangular node with a striped fill
                 sg.Nodes.Add("STRIPED", attrs =>
                 {
-                    // set style to striped
-                    attrs.Style.Apply(DotStyles.Filled | DotStyles.Striped);
-
                     attrs.Color = Color.Transparent;
 
-                    // set the colors of individual stripes and their proportions
-                    attrs.FillColor = new DotMultiColor(
+                    // set style to striped
+                    attrs.SetStriped(new DotMultiColor(
                         new DotWeightedColor(Color.Navy, 0.1),
                         Color.RoyalBlue,
                         Color.Turquoise,
-                        Color.Orange);
+                        Color.Orange)
+                    );
                 });
 
                 // a circular node with a wedged fill
                 sg.Nodes.Add("WEDGED", attrs =>
                 {
                     attrs.Shape = DotNodeShape.Circle;
-
-                    // set wedged style
-                    attrs.Style.Apply(DotStyles.Filled | DotStyles.Wedged);
-
                     attrs.Color = Color.Transparent;
 
-                    // set the colors of individual wedges and their proportions
-                    attrs.FillColor = new DotMultiColor(
+                    // set wedged style
+                    attrs.SetWedged(new DotMultiColor(
                         Color.Orange,
                         Color.RoyalBlue,
                         new DotWeightedColor(Color.Navy, 0.1),
-                        Color.Turquoise);
+                        Color.Turquoise)
+                    );
                 });
 
                 sg.Edges.Add("STRIPED", "WEDGED");

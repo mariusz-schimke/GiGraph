@@ -1345,8 +1345,8 @@ digraph
     }
 
     {
-        STRIPED [ color = transparent, fillcolor = "navy;0.1:royalblue:turquoise:orange", style = "filled, striped" ]
-        WEDGED [ color = transparent, fillcolor = "orange:royalblue:navy;0.1:turquoise", shape = circle, style = "filled, wedged" ]
+        STRIPED [ color = transparent, fillcolor = "navy;0.1:royalblue:turquoise:orange", style = striped ]
+        WEDGED [ color = transparent, fillcolor = "orange:royalblue:navy;0.1:turquoise", shape = circle, style = wedged ]
 
         STRIPED -> WEDGED
     }
