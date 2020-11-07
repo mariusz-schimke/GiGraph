@@ -8,14 +8,14 @@ namespace GiGraph.Dot.Output.Writers.Graphs
 {
     public class DotGraphBodyWriter : DotEntityWriter, IDotGraphBodyWriter
     {
-        public DotGraphBodyWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context, enforceBlockComment: true)
+        public DotGraphBodyWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
+            : base(tokenWriter, configuration, enforceBlockComment: true)
         {
         }
 
         public virtual IDotGlobalGraphAttributeStatementWriter BeginGlobalGraphAttributesSection(bool useStatementDelimiter)
         {
-            return new DotGlobalGraphAttributeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
+            return new DotGlobalGraphAttributeStatementWriter(_tokenWriter, _configuration, useStatementDelimiter);
         }
 
         public virtual void EndGlobalGraphAttributesSection()
@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
 
         public virtual IDotGlobalEntityAttributesStatementWriter BeginGlobalEntityAttributesSection(bool useStatementDelimiter)
         {
-            return new DotGlobalEntityAttributesStatementWriter(_tokenWriter, _context, useStatementDelimiter);
+            return new DotGlobalEntityAttributesStatementWriter(_tokenWriter, _configuration, useStatementDelimiter);
         }
 
         public virtual void EndGlobalEntityAttributesSection()
@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
 
         public virtual IDotNodeStatementWriter BeginNodesSection(bool useStatementDelimiter)
         {
-            return new DotNodeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
+            return new DotNodeStatementWriter(_tokenWriter, _configuration, useStatementDelimiter);
         }
 
         public virtual void EndNodesSection()
@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
 
         public virtual IDotEdgeStatementWriter BeginEdgesSection(bool useStatementDelimiter)
         {
-            return new DotEdgeStatementWriter(_tokenWriter, _context, useStatementDelimiter);
+            return new DotEdgeStatementWriter(_tokenWriter, _configuration, useStatementDelimiter);
         }
 
         public virtual void EndEdgesSection()
@@ -55,7 +55,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
 
         public virtual IDotSubgraphWriterRoot BeginSubgraphsSection()
         {
-            return new DotSubgraphWriterRoot(_tokenWriter, _context);
+            return new DotSubgraphWriterRoot(_tokenWriter, _configuration);
         }
 
         public virtual void EndSubgraphsSection()

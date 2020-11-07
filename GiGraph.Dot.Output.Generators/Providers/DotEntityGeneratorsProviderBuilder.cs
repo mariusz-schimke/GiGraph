@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Output.Generators.Providers
         /// <param name="options">
         ///     The DOT language generation options to use for graph generation and its components.
         /// </param>
-        public virtual IDotEntityGeneratorsProvider Build(DotSyntaxRules syntaxRules, DotGenerationOptions options)
+        public virtual IDotEntityGeneratorsProvider Build(DotSyntaxRules syntaxRules, DotSyntaxOptions options)
         {
             var provider = new DotEntityGeneratorsProvider();
 

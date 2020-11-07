@@ -4,7 +4,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 {
     public class AttributeKeysTest : AttributesTestBase
     {
-        private readonly DotGenerationOptions _generationOptions = new DotGenerationOptions();
+        private readonly DotSyntaxOptions _syntaxOptions = new DotSyntaxOptions();
         private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
 
         // [Theory]

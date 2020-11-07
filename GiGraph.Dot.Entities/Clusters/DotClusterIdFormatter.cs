@@ -4,7 +4,7 @@ namespace GiGraph.Dot.Entities.Clusters
 {
     public static class DotClusterIdFormatter
     {
-        public static string Format(string id, DotGenerationOptions options)
+        public static string Format(string id, DotSyntaxOptions options)
         {
             const string cluster = "cluster";
 

@@ -70,7 +70,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
             return null;
         }
 
-        protected internal override string GetDotEncodedColor(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncodedColor(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             if (options.Colors.PreferName && Color.IsNamedColor)
             {

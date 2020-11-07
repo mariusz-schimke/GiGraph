@@ -91,7 +91,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// </summary>
         public virtual DotArrowheadParts VisibleParts { get; set; } = DotArrowheadParts.Both;
 
-        protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var result = new StringBuilder();
 

@@ -154,7 +154,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// </summary>
         public virtual bool Flip { get; set; } = FlipDefault;
 
-        protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules, bool hasParent)
+        protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules, bool hasParent)
         {
             var result = new StringBuilder();
 

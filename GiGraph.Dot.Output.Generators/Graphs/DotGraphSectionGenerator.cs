@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Output.Generators.Graphs
     public class DotGraphSectionGenerator<TSection> : DotEntityGenerator<TSection, IDotGraphBodyWriter>
         where TSection : DotCommonGraphSection, IDotCommonGraphSection
     {
-        public DotGraphSectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotGraphSectionGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

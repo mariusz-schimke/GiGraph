@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
     public abstract class DotNodeGenerator<TEntity> : DotEntityWithAttributeListGenerator<TEntity, IDotNodeWriter>
         where TEntity : DotNodeDefinition
     {
-        protected DotNodeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        protected DotNodeGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

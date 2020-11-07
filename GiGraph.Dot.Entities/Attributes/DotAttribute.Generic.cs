@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Attributes
             return Value;
         }
 
-        protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return Value?.ToString() ?? string.Empty;
         }

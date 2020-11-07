@@ -9,12 +9,12 @@ namespace GiGraph.Dot.Entities.Types.Colors
     /// </summary>
     public abstract class DotColorDefinition : IDotEncodable
     {
-        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncodedColor(options, syntaxRules);
         }
 
-        protected internal abstract string GetDotEncodedColor(DotGenerationOptions options, DotSyntaxRules syntaxRules);
+        protected internal abstract string GetDotEncodedColor(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 
         public static implicit operator DotColorDefinition(Color? color)
         {

@@ -127,12 +127,12 @@ namespace GiGraph.Dot.Entities.Types.Points
         /// </summary>
         public virtual bool? IsFixed { get; set; }
 
-        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncodedValue(options, syntaxRules);
         }
 
-        protected internal virtual string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var fix = true == IsFixed ? "!" : string.Empty;
             return $"{string.Join(",", Coordinates.Select(c => c.ToString(CultureInfo.InvariantCulture)))}{fix}";

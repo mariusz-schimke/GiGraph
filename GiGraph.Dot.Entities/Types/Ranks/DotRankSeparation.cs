@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Types.Ranks
         /// </summary>
         public virtual bool Equal { get; set; }
 
-        protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             const string equally = "equally";
             var result = Value?.ToString(CultureInfo.InvariantCulture);

@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Output.Generators.Graphs
         where TGraph : IDotCommonGraph, IDotAnnotatable
         where TWriter : IDotEntityWriter
     {
-        protected DotCommonGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        protected DotCommonGraphGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var styles = Enum.GetValues(typeof(DotStyles))
                .Cast<DotStyles>()
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Attributes
             return string.Join(", ", styles.OrderBy(style => style));
         }
 
-        protected virtual string GetDotEncodedStyle(DotStyles style, DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected virtual string GetDotEncodedStyle(DotStyles style, DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return DotAttributeValueAttribute.TryGetValue(style, out var result)
                 ? result

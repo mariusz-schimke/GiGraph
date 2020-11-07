@@ -1,6 +1,6 @@
 ﻿namespace GiGraph.Dot.Output.Options
 {
-    public partial class DotGenerationOptions
+    public partial class DotSyntaxOptions
     {
         public class AttributeOptions
         {

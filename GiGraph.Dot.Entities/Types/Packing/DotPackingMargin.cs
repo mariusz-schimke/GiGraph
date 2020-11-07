@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
         /// </summary>
         public virtual int Size { get; set; }
 
-        protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return Size.ToString();
         }

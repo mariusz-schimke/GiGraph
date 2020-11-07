@@ -2,8 +2,8 @@
 {
     public class DotEndpointWriter : DotEntityWriter, IDotEndpointWriter
     {
-        public DotEndpointWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context, enforceBlockComment: true)
+        public DotEndpointWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
+            : base(tokenWriter, configuration, enforceBlockComment: true)
         {
         }
 

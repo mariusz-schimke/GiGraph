@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 {
     public class AttributesTest
     {
-        private readonly DotGenerationOptions _generationOptions = new DotGenerationOptions();
+        private readonly DotSyntaxOptions _syntaxOptions = new DotSyntaxOptions();
         private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
 
         [Fact]
@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             Thread.CurrentThread.CurrentCulture = new CultureInfo("PL");
             Assert.Equal("0,5", 0.5.ToString());
 
-            Assert.Equal("10.23455", attr.GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal("10.23455", attr.GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             Thread.CurrentThread.CurrentCulture = new CultureInfo("PL");
             Assert.Equal("0,5", 0.5.ToString());
 
-            Assert.Equal("10.23455:0.5:1.345", attr.GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal("10.23455:0.5:1.345", attr.GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             var value = "a bcd \" \\ \r\n \r \n h ij < > { } |";
             IDotEncodable attr = new DotEscapeStringAttribute("key", value);
 
-            Assert.Equal(@"a bcd \"" \\ \n \n \n h ij < > { } |", attr.GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal(@"a bcd \"" \\ \n \n \n h ij < > { } |", attr.GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }
 
         [Fact]
@@ -50,7 +50,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             var value = "a bcd \" \\ \r\n \r \n h ij < > { } |";
             IDotEncodable attr = new DotLabelAttribute("key", value);
 
-            Assert.Equal(@"a bcd \"" \\ \n \n \n h ij < > { } |", attr.GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal(@"a bcd \"" \\ \n \n \n h ij < > { } |", attr.GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }
 
         [Fact]
@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             var value = "a bcd \" \\ \r\n \r \n h ij < > { } |";
             IDotEncodable attr = new DotStringAttribute("key", value);
 
-            Assert.Equal(value, attr.GetDotEncodedValue(_generationOptions, _syntaxRules));
+            Assert.Equal(value, attr.GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }
     }
 }
