@@ -40,7 +40,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// </param>
         public virtual DotClusterAttributes SetFilled(DotGradientColor color, int? angle = null, bool radial = false)
         {
-            Style.Filled = true;
             Style.Radial = radial;
 
             FillColor = color;

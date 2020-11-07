@@ -18,8 +18,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     Sets the fill color of the arrowhead(s), assuming that they have a filled style. See the
-        ///     <see cref="DotEdgeEndpointAttributes.Arrowhead" /> attribute of <see cref="Head" /> and/or <see cref="Tail" /> to set an
-        ///     arrowhead shape if required.
+        ///     <see cref="DotEdgeEndpointAttributes.Arrowhead" /> attribute of <see cref="Head" /> and/or <see cref="Tail" /> to set a
+        ///     filled arrowhead shape if required.
         /// </summary>
         /// <param name="color">
         ///     The color to use.
@@ -39,8 +39,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// </param>
         public virtual DotEdgeAttributes SetTapered(double startWidth)
         {
-            Width = startWidth;
             Style.Tapered = true;
+            Width = startWidth;
             return this;
         }
 

@@ -1,4 +1,5 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Geometry;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
@@ -11,6 +12,71 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotNodeAttributes SetInvisible()
         {
             Style.Invisible = true;
+            return this;
+        }
+
+        /// <summary>
+        ///     Sets a fill color.
+        /// </summary>
+        /// <param name="color">
+        ///     The color to use.
+        /// </param>
+        public virtual DotNodeAttributes SetFilled(DotColor color)
+        {
+            Style.Filled = true;
+            FillColor = color;
+            return this;
+        }
+
+        /// <summary>
+        ///     Sets a gradient fill.
+        /// </summary>
+        /// <param name="color">
+        ///     The gradient color definition to use.
+        /// </param>
+        /// <param name="angle">
+        ///     The angle of the fill.
+        /// </param>
+        /// <param name="radial">
+        ///     Determines whether to use a radial-style gradient fill.
+        /// </param>
+        public virtual DotNodeAttributes SetFilled(DotGradientColor color, int? angle = null, bool radial = false)
+        {
+            Style.Radial = radial;
+
+            FillColor = color;
+            GradientAngle = angle;
+
+            return this;
+        }
+
+        /// <summary>
+        ///     Sets a wedged fill, assuming that the node has an elliptical shape (see <see cref="DotNodeAttributes.Shape" />).
+        /// </summary>
+        /// <param name="colors">
+        ///     The colors to use for consecutive wedges. Proportions for individual wedges may be specified optionally by using a
+        ///     <see cref="DotWeightedColor" /> for them.
+        /// </param>
+        public virtual DotNodeAttributes SetWedged(DotMultiColor colors)
+        {
+            Style.Wedged = true;
+            FillColor = colors;
+
+            return this;
+        }
+
+        /// <summary>
+        ///     Sets a striped fill, assuming that the node has a rectangular shape (see <see cref="DotNodeAttributes.Shape" />).
+        /// </summary>
+        /// <param name="colors">
+        ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
+        ///     <see cref="DotWeightedColor" /> for them.
+        /// </param>
+        public virtual DotNodeAttributes SetStriped(DotMultiColor colors)
+        {
+            Style.Striped = true;
+            FillColor = colors;
+
             return this;
         }
 
