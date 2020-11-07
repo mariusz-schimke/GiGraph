@@ -2,14 +2,14 @@
 {
     public class DotSubgraphWriterRoot : DotEntityWriter, IDotSubgraphWriterRoot
     {
-        public DotSubgraphWriterRoot(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context, enforceBlockComment: true)
+        public DotSubgraphWriterRoot(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
+            : base(tokenWriter, configuration, enforceBlockComment: true)
         {
         }
 
         public virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration)
         {
-            return new DotSubgraphWriter(_tokenWriter, _context, preferExplicitDeclaration);
+            return new DotSubgraphWriter(_tokenWriter, _configuration, preferExplicitDeclaration);
         }
 
         public virtual void EndSubgraph()

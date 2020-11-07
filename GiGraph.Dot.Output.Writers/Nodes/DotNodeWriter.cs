@@ -4,8 +4,8 @@ namespace GiGraph.Dot.Output.Writers.Nodes
 {
     public class DotNodeWriter : DotEntityWithAttributeListWriter, IDotNodeWriter
     {
-        public DotNodeWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context)
+        public DotNodeWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
+            : base(tokenWriter, configuration)
         {
         }
 

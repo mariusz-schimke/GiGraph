@@ -6,6 +6,7 @@ using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers;
 using GiGraph.Dot.Output.Writers.Graphs;
+using GiGraph.Dot.Output.Writers.Options;
 
 namespace GiGraph.Dot.Extensions
 {
@@ -99,14 +100,22 @@ namespace GiGraph.Dot.Extensions
             DotFormattingOptions formattingOptions = null, DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null)
         {
             syntaxRules ??= new DotSyntaxRules();
-            formattingOptions ??= new DotFormattingOptions();
             syntaxOptions ??= new DotSyntaxOptions();
+            formattingOptions ??= new DotFormattingOptions();
+
+            var tokenWriterOptions = new DotTokenWriterOptions(
+                formattingOptions.IndentationLevel,
+                formattingOptions.IndentationSize,
+                formattingOptions.IndentationChar,
+                formattingOptions.LineBreak,
+                formattingOptions.SingleLine,
+                formattingOptions.TextEncoder
+            );
+
+            var tokenWriter = new DotTokenWriter(outputWriter, tokenWriterOptions);
+            var graphWriterRoot = new DotGraphWriterRoot(tokenWriter, formattingOptions);
 
             var graphBuilder = graphGeneratorBuilder.Build(syntaxRules, syntaxOptions);
-
-            var tokenWriter = new DotTokenWriter(outputWriter, formattingOptions, indentationLevel: 0);
-            var graphWriterRoot = new DotGraphWriterRoot(tokenWriter);
-
             graphBuilder.Generate(graph, graphWriterRoot);
         }
 

@@ -2,8 +2,8 @@
 {
     public class DotAttributeWriter : DotEntityWriter, IDotAttributeWriter
     {
-        public DotAttributeWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool enforceBlockComment)
-            : base(tokenWriter, context, enforceBlockComment)
+        public DotAttributeWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool enforceBlockComment)
+            : base(tokenWriter, configuration, enforceBlockComment)
         {
         }
 

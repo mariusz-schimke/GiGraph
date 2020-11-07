@@ -54,6 +54,12 @@ namespace GiGraph.Dot.Output.Options
         /// </summary>
         public virtual bool SortElements { get; set; } = false;
 
+        /// <summary>
+        ///     Creates a new instance with custom options.
+        /// </summary>
+        /// <param name="init">
+        ///     The options initializer to use.
+        /// </param>
         public static DotSyntaxOptions Custom(Action<DotSyntaxOptions> init)
         {
             var result = new DotSyntaxOptions();

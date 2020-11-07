@@ -8,15 +8,15 @@ namespace GiGraph.Dot.Output.Writers.Attributes
     {
         protected readonly bool _useStatementDelimiter;
 
-        public DotGlobalEntityAttributesStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
-            : base(tokenWriter, context, enforceBlockComment: true)
+        public DotGlobalEntityAttributesStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool useStatementDelimiter)
+            : base(tokenWriter, configuration, enforceBlockComment: true)
         {
             _useStatementDelimiter = useStatementDelimiter;
         }
 
         public virtual IDotGlobalGraphAttributesWriter BeginGraphAttributesStatement()
         {
-            return new DotGlobalGraphAttributesWriter(_tokenWriter, _context);
+            return new DotGlobalGraphAttributesWriter(_tokenWriter, _configuration);
         }
 
         public virtual void EndGraphAttributesStatement()
@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Output.Writers.Attributes
 
         public virtual IDotGlobalNodeAttributesWriter BeginNodeAttributesStatement()
         {
-            return new DotGlobalNodeAttributesWriter(_tokenWriter, _context);
+            return new DotGlobalNodeAttributesWriter(_tokenWriter, _configuration);
         }
 
         public virtual void EndNodeAttributesStatement()
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Output.Writers.Attributes
 
         public virtual IDotGlobalEdgeAttributesWriter BeginEdgeAttributesStatement()
         {
-            return new DotGlobalEdgeAttributesWriter(_tokenWriter, _context);
+            return new DotGlobalEdgeAttributesWriter(_tokenWriter, _configuration);
         }
 
         public virtual void EndEdgeAttributesStatement()

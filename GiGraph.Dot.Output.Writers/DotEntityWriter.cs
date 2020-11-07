@@ -4,14 +4,14 @@ namespace GiGraph.Dot.Output.Writers
 {
     public abstract class DotEntityWriter : IDotEntityWriter
     {
-        protected readonly DotEntityWriterContext _context;
+        protected readonly DotEntityWriterConfiguration _configuration;
         protected readonly bool _enforceBlockComment;
         protected readonly DotTokenWriter _tokenWriter;
 
-        protected DotEntityWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool enforceBlockComment)
+        protected DotEntityWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool enforceBlockComment)
         {
             _tokenWriter = tokenWriter;
-            _context = context;
+            _configuration = configuration;
             _enforceBlockComment = enforceBlockComment;
         }
 
