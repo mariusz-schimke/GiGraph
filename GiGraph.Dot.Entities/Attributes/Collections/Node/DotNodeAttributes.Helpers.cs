@@ -42,6 +42,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// </param>
         public virtual DotNodeAttributes SetFilled(DotGradientColor color, int? angle = null, bool radial = false)
         {
+            Style.Filled = !radial;
             Style.Radial = radial;
 
             FillColor = color;
