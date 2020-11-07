@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Output.Writers.Edges
 
         public virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration)
         {
-            return new DotSubgraphWriter(_tokenWriter.SingleLine(), _context, preferExplicitDeclaration);
+            return new DotSubgraphWriter(_tokenWriter, _context, preferExplicitDeclaration);
         }
 
         public virtual void EndSubgraph()

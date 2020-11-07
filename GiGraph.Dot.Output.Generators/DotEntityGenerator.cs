@@ -11,10 +11,10 @@ namespace GiGraph.Dot.Output.Generators
         where TWriter : IDotEntityWriter
     {
         protected readonly IDotEntityGeneratorsProvider _entityGenerators;
-        protected readonly DotGenerationOptions _options;
+        protected readonly DotSyntaxOptions _options;
         protected readonly DotSyntaxRules _syntaxRules;
 
-        protected DotEntityGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        protected DotEntityGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
         {
             _syntaxRules = syntaxRules;
             _options = options;

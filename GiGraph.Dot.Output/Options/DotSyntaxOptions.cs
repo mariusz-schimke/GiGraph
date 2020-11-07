@@ -2,7 +2,10 @@
 
 namespace GiGraph.Dot.Output.Options
 {
-    public partial class DotGenerationOptions
+    /// <summary>
+    ///     Specifies syntax-related options for generating the output DOT script.
+    /// </summary>
+    public partial class DotSyntaxOptions
     {
         /// <summary>
         ///     Gets the generation options for attributes.
@@ -51,9 +54,9 @@ namespace GiGraph.Dot.Output.Options
         /// </summary>
         public virtual bool SortElements { get; set; } = false;
 
-        public static DotGenerationOptions Custom(Action<DotGenerationOptions> init)
+        public static DotSyntaxOptions Custom(Action<DotSyntaxOptions> init)
         {
-            var result = new DotGenerationOptions();
+            var result = new DotSyntaxOptions();
             init?.Invoke(result);
             return result;
         }

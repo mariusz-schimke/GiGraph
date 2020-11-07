@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Types.Scaling
         /// </summary>
         public virtual double Ratio { get; set; }
 
-        protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return Ratio.ToString(CultureInfo.InvariantCulture);
         }

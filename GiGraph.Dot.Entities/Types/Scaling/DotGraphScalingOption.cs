@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Types.Scaling
         /// </summary>
         public virtual DotGraphScaling Option { get; set; }
 
-        protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return DotAttributeValueAttribute.TryGetValue(Option, out var result)
                 ? result

@@ -2,6 +2,9 @@
 
 namespace GiGraph.Dot.Output.Options
 {
+    /// <summary>
+    ///     Customizes output DOT script formatting.
+    /// </summary>
     public class DotFormattingOptions
     {
         /// <summary>

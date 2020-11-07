@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
 {
     public class DotNodeGroupGenerator : DotNodeGenerator<DotNodeGroup>
     {
-        public DotNodeGroupGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotNodeGroupGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

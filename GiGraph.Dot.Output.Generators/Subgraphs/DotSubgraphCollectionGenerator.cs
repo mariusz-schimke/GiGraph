@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Output.Generators.Subgraphs
     public class DotSubgraphCollectionGenerator<TSubgraph> : DotEntityGenerator<DotCommonGraphCollection<TSubgraph>, IDotSubgraphWriterRoot>
         where TSubgraph : IDotCommonGraph, IDotAnnotatable
     {
-        public DotSubgraphCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotSubgraphCollectionGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

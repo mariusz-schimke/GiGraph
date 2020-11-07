@@ -68,7 +68,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// </summary>
         public virtual DotArrowhead[] Arrowheads { get; }
 
-        protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return string.Join(string.Empty, Arrowheads.Select(arrowhead => arrowhead.GetDotEncoded(options, syntaxRules)));
         }

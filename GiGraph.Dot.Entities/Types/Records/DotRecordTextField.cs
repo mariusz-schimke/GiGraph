@@ -60,7 +60,7 @@ namespace GiGraph.Dot.Entities.Types.Records
             set => _portName = value;
         }
 
-        protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules, bool hasParent)
+        protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules, bool hasParent)
         {
             var result = new StringBuilder();
             var separator = string.Empty;

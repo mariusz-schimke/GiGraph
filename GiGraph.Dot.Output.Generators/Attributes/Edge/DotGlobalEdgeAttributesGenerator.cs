@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Output.Generators.Attributes.Edge
 {
     public class DotGlobalEdgeAttributesGenerator : DotEntityWithAttributeListGenerator<DotAttributeCollection, IDotGlobalEdgeAttributesWriter>
     {
-        public DotGlobalEdgeAttributesGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotGlobalEdgeAttributesGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

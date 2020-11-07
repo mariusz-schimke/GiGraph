@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return new DotEndpointPort(Value).GetDotEncoded(options, syntaxRules);
         }

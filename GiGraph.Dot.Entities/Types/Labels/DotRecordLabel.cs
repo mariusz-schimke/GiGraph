@@ -22,10 +22,10 @@ namespace GiGraph.Dot.Entities.Types.Labels
 
         public override string ToString()
         {
-            return _record.GetDotEncoded(new DotGenerationOptions(), new DotSyntaxRules(), hasParent: false);
+            return _record.GetDotEncoded(new DotSyntaxOptions(), new DotSyntaxRules(), hasParent: false);
         }
 
-        protected internal override string GetDotEncodedString(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return _record?.GetDotEncoded(options, syntaxRules, hasParent: false);
         }

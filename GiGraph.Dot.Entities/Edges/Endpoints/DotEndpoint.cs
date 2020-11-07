@@ -48,8 +48,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         ///     explicitly, the default value is <see cref="DotCompassPoint.Center" />.
         /// </param>
         public DotEndpoint(string nodeId, DotCompassPoint? compassPoint = null)
-            : this(nodeId, new DotEndpointPort
-                { CompassPoint = compassPoint })
+            : this(nodeId, new DotEndpointPort { CompassPoint = compassPoint })
         {
         }
 

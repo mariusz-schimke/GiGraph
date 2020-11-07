@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 {
     public class AttributeGeneratorsTest
     {
-        private readonly DotGenerationOptions _generationOptions = new DotGenerationOptions();
+        private readonly DotSyntaxOptions _syntaxOptions = new DotSyntaxOptions();
         private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
 
         private static DotGraph GetCompleteGraph(bool directed)
@@ -162,7 +162,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             sb.Append("}");
 
-            Assert.Equal(sb.ToString(), graph.Build(generationOptions: _generationOptions, syntaxRules: _syntaxRules));
+            Assert.Equal(sb.ToString(), graph.Build(syntaxOptions: _syntaxOptions, syntaxRules: _syntaxRules));
         }
 
         [Fact]
@@ -213,8 +213,8 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             sb.Append("}");
 
-            var options = DotGenerationOptions.Custom(o => o.SortElements = true);
-            Assert.Equal(sb.ToString(), graph.Build(generationOptions: options, syntaxRules: _syntaxRules));
+            var options = DotSyntaxOptions.Custom(o => o.SortElements = true);
+            Assert.Equal(sb.ToString(), graph.Build(syntaxOptions: options, syntaxRules: _syntaxRules));
         }
 
         [Fact]
@@ -265,8 +265,8 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             sb.Append("}");
 
-            var options = DotGenerationOptions.Custom(o => o.PreferQuotedIdentifiers = true);
-            Assert.Equal(sb.ToString(), graph.Build(generationOptions: options, syntaxRules: _syntaxRules));
+            var options = DotSyntaxOptions.Custom(o => o.PreferQuotedIdentifiers = true);
+            Assert.Equal(sb.ToString(), graph.Build(syntaxOptions: options, syntaxRules: _syntaxRules));
         }
 
         [Fact]
@@ -281,7 +281,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             Assert.Equal(
                 sb.ToString(),
-                graph.Build(generationOptions: _generationOptions, syntaxRules: _syntaxRules));
+                graph.Build(syntaxOptions: _syntaxOptions, syntaxRules: _syntaxRules));
         }
 
         [Fact]
@@ -297,7 +297,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 SingleLine = true
             };
 
-            Assert.Equal(sb.ToString(), graph.Build(options, _generationOptions, _syntaxRules));
+            Assert.Equal(sb.ToString(), graph.Build(options, _syntaxOptions, _syntaxRules));
         }
 
         [Fact]

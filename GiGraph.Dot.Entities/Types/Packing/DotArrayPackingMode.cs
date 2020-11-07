@@ -67,7 +67,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
                 : throw new ArgumentOutOfRangeException(nameof(RankCount), RankCount, "The number of ranks must be greater than or equal to 0.");
         }
 
-        protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var result = new StringBuilder("array");
 
@@ -90,7 +90,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
             return result.ToString();
         }
 
-        protected virtual string GetDotEncodedOption(DotArrayPackingOptions option, DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected virtual string GetDotEncodedOption(DotArrayPackingOptions option, DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return DotAttributeValueAttribute.TryGetValue(option, out var result)
                 ? result

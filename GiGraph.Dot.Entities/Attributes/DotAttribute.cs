@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Attributes
 
         public virtual string Annotation { get; set; }
 
-        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncodedValue(options, syntaxRules);
         }
@@ -38,6 +38,6 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="syntaxRules">
         ///     The DOT syntax rules to use.
         /// </param>
-        protected internal abstract string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules);
+        protected internal abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
     }
 }

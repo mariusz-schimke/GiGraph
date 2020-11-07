@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Output.Generators
         where TEntity : IDotEntity, IDotAnnotatable
         where TWriter : IDotEntityWithAttributeListWriter
     {
-        protected DotEntityWithAttributeListGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        protected DotEntityWithAttributeListGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
