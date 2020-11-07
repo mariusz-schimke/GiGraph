@@ -5,6 +5,11 @@ using GiGraph.Dot.Entities.Types.Styles;
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     // TODO: uzupełnić opisy właściwości na podstawie DotStyles
+    // TODO: style dotyczą kształtu (rounded, tapered), obwódki (dotted, dashed), wypełnienia (filled, radial, wedged, striped) -
+    //       może trzeba coś z tym zrobić, żeby dało się to ustawiać tak, aby pozostałe atrybuty się resetowały.
+    //       Dodatkowo, aby jasne było, która opcja czego dotyczy (kształtu/obwódki/wypełnienia).
+    // TODO: metody SetFilled ustawiają jedną opcję, ale nie resetują pozostałych z tego samego kontekstu. 
+    //       Może tak jest ok, ale można rozważyć zmianę.
 
     public abstract class DotEntityCommonStyleAttributes<TStyleOptions> : DotEntityStyleAttributes<TStyleOptions>
         where TStyleOptions : DotCommonStyleOptions
