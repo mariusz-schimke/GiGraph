@@ -47,5 +47,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 
             return this;
         }
+
+        /// <summary>
+        ///     Sets a striped fill.
+        /// </summary>
+        /// <param name="colors">
+        ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
+        ///     <see cref="DotWeightedColor" /> for them.
+        /// </param>
+        public virtual DotClusterAttributes SetStriped(DotMultiColor colors)
+        {
+            Style.Striped = true;
+            FillColor = colors;
+            return this;
+        }
     }
 }

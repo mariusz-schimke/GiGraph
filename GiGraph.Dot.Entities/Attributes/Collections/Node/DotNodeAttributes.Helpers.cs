@@ -61,7 +61,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
             Style.Wedged = true;
             FillColor = colors;
-
             return this;
         }
 
@@ -76,7 +75,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
             Style.Striped = true;
             FillColor = colors;
-
             return this;
         }
 

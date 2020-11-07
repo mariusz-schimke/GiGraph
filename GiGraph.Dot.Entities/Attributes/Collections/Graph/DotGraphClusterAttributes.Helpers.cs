@@ -50,9 +50,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             return this;
         }
 
-        // TODO: dodać zamiast SetFilled() metody SetGradientFill(DotGradientColor color, bool radial, int angle)
-        // TODO: oraz SetStriped(DotMultiColor color) -- uwzględnić wagi
-        // TODO: oraz SetWedged(DotMultiColor color) -- uwzględnić wagi
-        // TODO: oraz SetFilled(DotColorDefinition/DotColor color)
+        /// <summary>
+        ///     Sets a striped fill.
+        /// </summary>
+        /// <param name="colors">
+        ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
+        ///     <see cref="DotWeightedColor" /> for them.
+        /// </param>
+        public virtual DotGraphClusterAttributes SetStriped(DotMultiColor colors)
+        {
+            Style.Striped = true;
+            FillColor = colors;
+            return this;
+        }
     }
 }
