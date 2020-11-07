@@ -4,6 +4,8 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
+    // TODO: uzupełnić opisy właściwości na podstawie DotStyles
+
     public abstract class DotEntityCommonStyleAttributes<TStyleOptions> : DotEntityStyleAttributes<TStyleOptions>
         where TStyleOptions : DotCommonStyleOptions
     {

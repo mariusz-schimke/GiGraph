@@ -8,9 +8,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <summary>
         ///     Makes the node invisible.
         /// </summary>
-        public virtual void SetInvisible()
+        public virtual DotNodeAttributes SetInvisible()
         {
             Style.Invisible = true;
+            return this;
         }
 
         /// <summary>
@@ -46,7 +47,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     Distortion factor for <see cref="DotNodeAttributes.Shape" /> set to <see cref="DotNodeShape.Polygon" /> (default: 0, minimum:
         ///     -100). Positive values cause top part to be larger than bottom; negative values do the opposite.
         /// </param>
-        public virtual void SetPolygonal(
+        public virtual DotNodeAttributes SetPolygonal(
             int? sides = null,
             bool? regular = null,
             int? peripheries = null,
@@ -56,6 +57,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
             Shape = DotNodeShape.Polygon;
             Geometry.Set(sides, regular, peripheries, rotation, skew, distortion);
+            return this;
         }
 
         /// <summary>
@@ -64,10 +66,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <param name="attributes">
         ///     The polygon attributes to set.
         /// </param>
-        public virtual void SetPolygonal(DotPolygon attributes)
+        public virtual DotNodeAttributes SetPolygonal(DotPolygon attributes)
         {
             Shape = DotNodeShape.Polygon;
             Geometry.Set(attributes);
+            return this;
         }
     }
 }
