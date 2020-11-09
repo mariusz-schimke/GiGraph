@@ -37,14 +37,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotLabel Label
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
         }
 
         [DotAttributeKey(DotAttributeKeys.ColorScheme)]
         public virtual string ColorScheme
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
     }
 }

@@ -1,4 +1,5 @@
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
@@ -26,13 +27,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     The angle of the fill. Note that this attribute also applies to clusters.
         /// </param>
         /// <param name="radial">
-        ///     Determines whether to use a radial-style gradient fill. Note that this attribute also applies to clusters.
+        ///     Determines whether to use a radial-style gradient fill. Note that this attribute also applies to clusters. Pass null if you
+        ///     don't want to modify the current fill style if set.
         /// </param>
         public virtual DotGraphAttributes SetBackground(DotGradientColor color, int? angle = null, bool? radial = null)
         {
-            if (Style.IsSet() || radial.HasValue)
+            // the style may also be set from the Clusters collection on graph, and radial is the only attribute
+            // that applies to graph background and to cluster fill
+            if (true == radial)
             {
-                Style.Radial = radial.GetValueOrDefault(false);
+                Style.Fill = DotClusterFillStyle.Radial;
+            }
+            else if (false == radial && Style.Fill == DotClusterFillStyle.Radial)
+            {
+                Style.Fill = DotClusterFillStyle.None;
             }
 
             BackgroundColor = color;

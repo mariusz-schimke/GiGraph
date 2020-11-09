@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Enums;
@@ -27,6 +28,25 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             this[attribute.Key] = attribute;
             return attribute;
+        }
+
+        protected internal virtual void SetOrRemove<TAttribute, TValue>(string key, TValue value, Func<string, TValue, TAttribute> newAttribute)
+            where TAttribute : DotAttribute
+        {
+            SetOrRemove(key, value is null ? null : newAttribute(key, value));
+        }
+
+        protected virtual void SetOrRemove<T>(string key, T attribute)
+            where T : DotAttribute
+        {
+            if (attribute is null)
+            {
+                Remove(key);
+            }
+            else
+            {
+                Set(attribute);
+            }
         }
 
         /// <summary>

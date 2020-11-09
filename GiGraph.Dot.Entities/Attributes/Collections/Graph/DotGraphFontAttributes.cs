@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual string Directories
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
         /// <summary>

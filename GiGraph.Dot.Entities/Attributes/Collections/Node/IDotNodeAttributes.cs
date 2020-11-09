@@ -12,6 +12,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
     {
         /// <summary>
         ///     <para>
+        ///         Gets or sets the style of the cluster (default: unset). See the descriptions of individual <see cref="DotStyles" />
+        ///         values to learn which styles are applicable to this type of element.
+        ///     </para>
+        ///     <para>
+        ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Rounded" /> |
+        ///         <see cref="DotStyles.Bold" />;
+        ///     </para>
+        /// </summary>
+        DotStyles? Style { get; set; }
+        
+        /// <summary>
+        ///     <para>
         ///         Gets or sets the label to display on the node. It may be plain text (<see cref="string" />), HTML (
         ///         <see cref="DotHtmlLabel" />), or a record (<see cref="DotRecordLabel" />) for a record-based node (when
         ///         <see cref="Shape" /> = <see cref="DotNodeShape.Record" /> or <see cref="Shape" /> =

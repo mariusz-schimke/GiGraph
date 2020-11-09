@@ -1,41 +1,44 @@
-using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
-    public class DotGraphStyleAttributes : DotEntityStyleAttributes<DotGraphStyleOptions>
+    public class DotGraphStyleAttributes : DotEntityStyleAttributes
     {
-        protected DotGraphStyleAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
-        {
-        }
-
         public DotGraphStyleAttributes(DotAttributeCollection attributes)
             : base(attributes)
         {
         }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Radial" /> style option state (default: false). Note that the option applies not only
-        ///     to the graph, but also to clusters.
+        ///     Gets or sets a fill style of the graph. Note that the style is shared with clusters, and that the only option applicable to
+        ///     the root graph is <see cref="DotClusterFillStyle.Radial" />.
         /// </summary>
-        public virtual bool Radial
+        public virtual DotClusterFillStyle Fill
         {
-            get => HasOptions(DotStyles.Radial);
-            set => ApplyOption(DotStyles.Radial, value);
+            get => GetPart<DotClusterFillStyle>();
+            set => SetPart(value);
         }
 
         /// <summary>
-        ///     Applies the specified style options to the graph. Note that the <see cref="DotClusterStyleOptions.Radial" /> option applies
-        ///     not only to the graph, but also to clusters.
+        ///     Applies the specified style options to the graph and clusters.
         /// </summary>
         /// <param name="options">
         ///     The options to apply.
         /// </param>
-        public override void Apply(DotGraphStyleOptions options)
+        public virtual void Set(DotGraphStyleOptions options)
         {
-            base.Apply(options);
+            Set(options.Fill);
+        }
+
+        /// <summary>
+        ///     Applies the specified style options to the graph and clusters.
+        /// </summary>
+        /// <param name="fill">
+        ///     The fill options to apply.
+        /// </param>
+        public virtual void Set(DotClusterFillStyle fill = DotClusterFillStyle.None)
+        {
+            Fill = fill;
         }
     }
 }

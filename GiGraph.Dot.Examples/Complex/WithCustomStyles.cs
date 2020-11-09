@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Examples.Complex
 {
@@ -34,7 +35,7 @@ namespace GiGraph.Dot.Examples.Complex
                 sg.Edges.Add("G", "H", edge =>
                 {
                     edge.Attributes.Label = "DOTTED";
-                    edge.Attributes.Style.Dotted = true;
+                    edge.Attributes.Style.Line = DotEdgeStyle.Dotted;
                 });
             });
 

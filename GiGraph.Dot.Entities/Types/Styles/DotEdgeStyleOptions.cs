@@ -1,5 +1,3 @@
-using GiGraph.Dot.Entities.Attributes.Enums;
-
 namespace GiGraph.Dot.Entities.Types.Styles
 {
     /// <summary>
@@ -8,39 +6,13 @@ namespace GiGraph.Dot.Entities.Types.Styles
     public class DotEdgeStyleOptions : DotCommonStyleOptions
     {
         /// <summary>
-        ///     Creates a new instance with no options specified.
+        ///     Gets or sets a line style for the edge.
         /// </summary>
-        public DotEdgeStyleOptions()
-        {
-        }
+        public virtual DotEdgeStyle Line { get; set; }
 
         /// <summary>
-        ///     Creates a new instance with options initialized based on the specified style flags. If you want to create an instance with
-        ///     all options set to false, use <see cref="DotStyles.Default" />.
+        ///     Gets or sets the line weight of the edge.
         /// </summary>
-        /// <param name="style">
-        ///     The initial style.
-        /// </param>
-        public DotEdgeStyleOptions(DotStyles style)
-            : base(style)
-        {
-        }
-
-        /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Tapered" /> style option state.
-        /// </summary>
-        public virtual bool? Tapered { get; set; }
-
-        protected override void ReadOptions(DotStyles style)
-        {
-            base.ReadOptions(style);
-            Tapered = style.HasFlag(DotStyles.Tapered);
-        }
-
-        protected override void WriteOptions(ref DotStyles? style)
-        {
-            base.WriteOptions(ref style);
-            WriteOption(ref style, DotStyles.Tapered, Tapered);
-        }
+        public virtual DotEdgeWeight Weight { get; set; }
     }
 }

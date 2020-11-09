@@ -19,14 +19,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual string Name
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
         [DotAttributeKey(DotAttributeKeys.FontSize)]
         public virtual double? Size
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
                 ? throw new ArgumentOutOfRangeException(nameof(Size), v.Value, "Font size must be greater than or equal to 0.")
                 : new DotDoubleAttribute(k, v.Value));
         }
@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotColor Color
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
         /// <summary>

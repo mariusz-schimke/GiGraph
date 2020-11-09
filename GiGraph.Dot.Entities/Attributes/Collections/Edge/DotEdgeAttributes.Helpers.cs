@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
@@ -39,7 +40,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// </param>
         public virtual DotEdgeAttributes SetTapered(double startWidth)
         {
-            Style.Tapered = true;
+            Style.Line = DotEdgeStyle.Tapered;
             Width = startWidth;
             return this;
         }

@@ -1,51 +1,24 @@
-﻿using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
+﻿using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Types.Helpers;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public abstract class DotEntityStyleAttributes : DotEntityAttributes, IDotEntityStyleAttributes
+    public abstract class DotEntityStyleAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EntityStyleAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEntityStyleAttributes, IDotEntityStyleAttributes>().Build();
-
-        protected DotEntityStyleAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
-        {
-        }
+        protected const string StyleKey = DotAttributeKeys.Style;
+        protected readonly DotAttributeCollection _attributes;
 
         public DotEntityStyleAttributes(DotAttributeCollection attributes)
-            : base(attributes, EntityStyleAttributesKeyLookup)
         {
+            _attributes = attributes;
         }
 
-        [DotAttributeKey(DotAttributeKeys.Style)]
-        public virtual DotStyles? Value
+        protected virtual DotStyles? Style
         {
-            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
-        }
-
-        /// <summary>
-        ///     Applies the specified style option(s) to the element, without removing those that are already set.
-        /// </summary>
-        /// <param name="options">
-        ///     The options to apply.
-        /// </param>
-        public virtual void Apply(DotStyles options)
-        {
-            Value = Value.GetValueOrDefault(options) | options;
-        }
-
-        /// <summary>
-        ///     Assigns the specified style to the element.
-        /// </summary>
-        /// <param name="options">
-        ///     The style to apply.
-        /// </param>
-        public virtual void Set(DotStyles? options)
-        {
-            Value = options;
+            get => _attributes.GetValueAs<DotStyles>(StyleKey, out var result) ? result : (DotStyles?) null;
+            set => _attributes.SetOrRemove(StyleKey, value, (k, v) => new DotStyleAttribute(k, v.Value));
         }
 
         /// <summary>
@@ -53,54 +26,53 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         public virtual bool IsSet()
         {
-            return Value.HasValue;
+            return Style.HasValue;
         }
 
         /// <summary>
-        ///     Removes style from the current element.
-        /// </summary>
-        public virtual void Remove()
-        {
-            Value = null;
-        }
-
-        /// <summary>
-        ///     Removes the specified style option(s) from the element.
-        /// </summary>
-        /// <param name="options">
-        ///     The options to remove.
-        /// </param>
-        public virtual void Remove(DotStyles options)
-        {
-            Value &= ~options;
-        }
-
-        /// <summary>
-        ///     Sets the style to <see cref="DotStyles.Default" />. Useful when the style of elements of the current type is set globally,
-        ///     and needs to be restored to the default value for the current element.
-        /// </summary>
-        public virtual void SetDefault()
-        {
-            Value = DotStyles.Default;
-        }
-
-        /// <summary>
-        ///     Determines if the default style (<see cref="DotStyles.Default" />) is assigned to the element.
+        ///     Determines if the default style is assigned to the element.
         /// </summary>
         public virtual bool IsDefault()
         {
-            return Value == DotStyles.Default;
+            return Style == DotStyles.Default;
+        }
+
+        // TODO: jak temu atrybutowi ustawić annotation, jeśli nie ma metod pobrania go?
+        // Może wystawic prywatnie Style jako DotStyle w interfejsach klas nadrzędnych i wtedy z ich poziomu
+        // będzie się dało ustawiac ten atrybut?
+        // Czy wtedy interfejs IDotEntityStyleAttributes można usunąć, a do atrybutu odnosić się po stałej?
+
+        /// <summary>
+        ///     Removes style from the element.
+        /// </summary>
+        public virtual void Remove()
+        {
+            Style = null;
         }
 
         /// <summary>
-        ///     Checks whether the style has the specified option(s) set.
+        ///     Assigns the default style to the element. Useful when the style of elements of the current type is set globally, and needs to
+        ///     be restored to the default value for the current element.
         /// </summary>
-        /// <param name="options">
-        ///     The option(s) to check.
-        /// </param>
-        public virtual bool HasOptions(DotStyles options)
+        public virtual void SetDefault()
         {
-            return Value.HasValue && Value.Value.HasFlag(options);
+            SetValue(DotStyles.Default);
+        }
+
+        protected virtual void Apply(DotStyles options)
+        {
+            var value = Style.GetValueOrDefault(options) | options;
+            SetValue(value);
+        }
+
+        protected virtual void Remove(DotStyles options)
+        {
+            Style = Style & ~options;
+        }
+
+        protected virtual bool HasOptions(DotStyles options)
+        {
+            return Style.GetValueOrDefault(DotStyles.Default).HasFlag(options);
         }
 
         protected virtual void ApplyOption(DotStyles option, bool set)
@@ -113,6 +85,23 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             {
                 Remove(option);
             }
+        }
+
+        protected virtual void SetValue(DotStyles value)
+        {
+            _attributes.Set(StyleKey, value);
+        }
+
+        protected virtual void SetPart<TPart>(TPart style)
+            where TPart : Enum
+        {
+            Style = DotPartialEnumMapper.ToComplete(style, Style.GetValueOrDefault(DotStyles.Default));
+        }
+
+        protected virtual TPart GetPart<TPart>()
+            where TPart : Enum
+        {
+            return DotPartialEnumMapper.ToPartial<DotStyles, TPart>(Style.GetValueOrDefault(DotStyles.Default));
         }
     }
 }
