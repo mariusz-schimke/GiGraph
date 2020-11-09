@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     Gets or sets a fill style of the graph. Note that the style is shared with clusters, and that the only option applicable to
         ///     the root graph is <see cref="DotClusterFillStyle.Radial" />.
         /// </summary>
-        public virtual DotClusterFillStyle Fill
+        public virtual DotClusterFillStyle FillStyle
         {
             get => GetPart<DotClusterFillStyle>();
             set => SetPart(value);
@@ -27,18 +27,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// </param>
         public virtual void Set(DotGraphStyleOptions options)
         {
-            Set(options.Fill);
+            Set(options.FillStyle);
         }
 
         /// <summary>
         ///     Applies the specified style options to the graph and clusters.
         /// </summary>
-        /// <param name="fill">
+        /// <param name="fillStyle">
         ///     The fill options to apply.
         /// </param>
-        public virtual void Set(DotClusterFillStyle fill = DotClusterFillStyle.None)
+        public virtual void Set(DotClusterFillStyle fillStyle = default)
         {
-            Fill = fill;
+            FillStyle = fillStyle;
         }
     }
 }

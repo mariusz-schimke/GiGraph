@@ -2,9 +2,9 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 
 namespace GiGraph.Dot.Entities.Types.Styles
 {
-    public enum DotEdgeStyle
+    public enum DotLineStyle
     {
-        Default = 0,
+        Normal = 0,
         Solid = DotStyles.Solid,
         Dashed = DotStyles.Dashed,
         Dotted = DotStyles.Dotted,

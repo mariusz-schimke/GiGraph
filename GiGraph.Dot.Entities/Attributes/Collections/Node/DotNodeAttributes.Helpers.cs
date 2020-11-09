@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// </param>
         public virtual DotNodeAttributes SetFilled(DotColor color)
         {
-            Style.Fill = DotNodeFillStyle.Normal;
+            Style.FillStyle = DotNodeFillStyle.Normal;
             FillColor = color;
             return this;
         }
@@ -43,8 +43,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// </param>
         public virtual DotNodeAttributes SetFilled(DotGradientColor color, int? angle = null, bool radial = false)
         {
-            Style.Fill = radial ? DotNodeFillStyle.Radial : DotNodeFillStyle.Normal;
-
+            Style.FillStyle = radial ? DotNodeFillStyle.Radial : DotNodeFillStyle.Normal;
             FillColor = color;
             GradientAngle = angle;
 
@@ -60,7 +59,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// </param>
         public virtual DotNodeAttributes SetWedged(DotMultiColor colors)
         {
-            Style.Fill = DotNodeFillStyle.Wedged;
+            Style.FillStyle = DotNodeFillStyle.Wedged;
             FillColor = colors;
             return this;
         }
@@ -74,7 +73,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// </param>
         public virtual DotNodeAttributes SetStriped(DotMultiColor colors)
         {
-            Style.Fill = DotNodeFillStyle.Striped;
+            Style.FillStyle = DotNodeFillStyle.Striped;
             FillColor = colors;
             return this;
         }

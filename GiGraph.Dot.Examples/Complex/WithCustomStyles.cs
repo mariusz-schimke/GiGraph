@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Examples.Complex
                 sg.Edges.Add("G", "H", edge =>
                 {
                     edge.Attributes.Label = "DOTTED";
-                    edge.Attributes.Style.Line = DotEdgeStyle.Dotted;
+                    edge.Attributes.Style.LineStyle = DotLineStyle.Dotted;
                 });
             });
 

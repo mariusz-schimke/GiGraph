@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using GiGraph.Dot.Entities.Graphs.Collections;
 
+
+// TODO: clean up namespaces, eg. when you type new DotGraph..., DotGraphSection is displayed too (with many others), but you don't need to access them.
+// maybe some Common sub-namespace
 namespace GiGraph.Dot.Entities.Graphs
 {
     /// <summary>

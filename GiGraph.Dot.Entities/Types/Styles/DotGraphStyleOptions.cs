@@ -8,19 +8,19 @@ namespace GiGraph.Dot.Entities.Types.Styles
         /// <summary>
         ///     Creates and initializes a new instance.
         /// </summary>
-        /// <param name="fill">
+        /// <param name="fillStyle">
         ///     The fill style for graph and clusters. The only option applicable to the root graph is
         ///     <see cref="DotClusterFillStyle.Radial" />.
         /// </param>
-        public DotGraphStyleOptions(DotClusterFillStyle fill = DotClusterFillStyle.None)
+        public DotGraphStyleOptions(DotClusterFillStyle fillStyle = DotClusterFillStyle.None)
         {
-            Fill = fill;
+            FillStyle = fillStyle;
         }
 
         /// <summary>
         ///     Gets or sets a fill style for graph and clusters. The only option applicable to the root graph is
         ///     <see cref="DotClusterFillStyle.Radial" />.
         /// </summary>
-        public virtual DotClusterFillStyle Fill { get; set; }
+        public virtual DotClusterFillStyle FillStyle { get; set; }
     }
 }

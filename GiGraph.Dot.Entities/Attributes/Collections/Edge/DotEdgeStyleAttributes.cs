@@ -1,8 +1,9 @@
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
-    public class DotEdgeStyleAttributes : DotEntityCommonStyleAttributes
+    public class DotEdgeStyleAttributes : DotEntityStyleAttributes
     {
         public DotEdgeStyleAttributes(DotAttributeCollection attributes)
             : base(attributes)
@@ -10,21 +11,30 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Gets or sets a line style for the edge (default: <see cref="DotEdgeStyle.Default" />).
+        ///     Gets or sets a line style for the edge (default: <see cref="DotLineStyle.Normal" />).
         /// </summary>
-        public virtual DotEdgeStyle Line
+        public virtual DotLineStyle LineStyle
         {
-            get => GetPart<DotEdgeStyle>();
+            get => GetPart<DotLineStyle>();
             set => SetPart(value);
         }
 
         /// <summary>
-        ///     Gets or sets a line weight for the edge (default: <see cref="DotEdgeWeight.Normal" />).
+        ///     Gets or sets a line weight for the edge (default: <see cref="DotLineWeight.Normal" />).
         /// </summary>
-        public virtual DotEdgeWeight Weight
+        public virtual DotLineWeight LineWeight
         {
-            get => GetPart<DotEdgeWeight>();
+            get => GetPart<DotLineWeight>();
             set => SetPart(value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating if the edge is invisible.
+        /// </summary>
+        public virtual bool Invisible
+        {
+            get => HasOptions(DotStyles.Invisible);
+            set => ApplyOption(DotStyles.Invisible, value);
         }
 
         /// <summary>
@@ -35,25 +45,25 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// </param>
         public virtual void Set(DotEdgeStyleOptions options)
         {
-            Set(options.Line, options.Weight, options.Invisible);
+            Set(options.LineStyle, options.LineWeight, options.Invisible);
         }
 
         /// <summary>
         ///     Applies the specified style options to the edge.
         /// </summary>
-        /// <param name="line">
+        /// <param name="lineStyle">
         ///     The line style to set.
         /// </param>
-        /// <param name="weight">
+        /// <param name="lineWeight">
         ///     The line weight to set.
         /// </param>
         /// <param name="invisible">
         ///     Determines whether the edge should be invisible.
         /// </param>
-        public virtual void Set(DotEdgeStyle line = DotEdgeStyle.Default, DotEdgeWeight weight = DotEdgeWeight.Normal, bool invisible = false)
+        public virtual void Set(DotLineStyle lineStyle = default, DotLineWeight lineWeight = default, bool invisible = false)
         {
-            Line = line;
-            Weight = weight;
+            LineStyle = lineStyle;
+            LineWeight = lineWeight;
             Invisible = invisible;
         }
     }

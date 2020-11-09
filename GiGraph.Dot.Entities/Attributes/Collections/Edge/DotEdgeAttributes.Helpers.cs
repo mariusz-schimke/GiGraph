@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// </param>
         public virtual DotEdgeAttributes SetTapered(double startWidth)
         {
-            Style.Line = DotEdgeStyle.Tapered;
+            Style.LineStyle = DotLineStyle.Tapered;
             Width = startWidth;
             return this;
         }

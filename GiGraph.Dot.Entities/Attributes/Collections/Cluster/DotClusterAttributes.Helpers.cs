@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// </param>
         public virtual DotClusterAttributes SetFilled(DotColor color)
         {
-            Style.Fill = DotClusterFillStyle.Normal;
+            Style.FillStyle = DotClusterFillStyle.Normal;
             FillColor = color;
             return this;
         }
@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// </param>
         public virtual DotClusterAttributes SetFilled(DotGradientColor color, int? angle = null, bool radial = false)
         {
-            Style.Fill = radial ? DotClusterFillStyle.Radial : DotClusterFillStyle.Normal;
+            Style.FillStyle = radial ? DotClusterFillStyle.Radial : DotClusterFillStyle.Normal;
             FillColor = color;
             GradientAngle = angle;
 
@@ -57,7 +57,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// </param>
         public virtual DotClusterAttributes SetStriped(DotMultiColor colors)
         {
-            Style.Fill = DotClusterFillStyle.Striped;
+            Style.FillStyle = DotClusterFillStyle.Striped;
             FillColor = colors;
             return this;
         }

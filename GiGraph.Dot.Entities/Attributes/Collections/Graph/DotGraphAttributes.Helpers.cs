@@ -36,11 +36,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             // that applies to graph background and to cluster fill
             if (true == radial)
             {
-                Style.Fill = DotClusterFillStyle.Radial;
+                Style.FillStyle = DotClusterFillStyle.Radial;
             }
-            else if (false == radial && Style.Fill == DotClusterFillStyle.Radial)
+            else if (false == radial && Style.FillStyle == DotClusterFillStyle.Radial)
             {
-                Style.Fill = DotClusterFillStyle.None;
+                Style.FillStyle = DotClusterFillStyle.None;
             }
 
             BackgroundColor = color;

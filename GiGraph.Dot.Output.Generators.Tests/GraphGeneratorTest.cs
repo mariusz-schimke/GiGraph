@@ -34,14 +34,14 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Nodes.Add("node3", attrs =>
             {
                 attrs.Shape = DotNodeShape.Assembly;
-                attrs.Style.Weight = DotBorderWeight.Bold;
+                attrs.Style.BorderWeight = DotBorderWeight.Bold;
             });
 
             graph.Nodes.Add(attrs =>
             {
                 attrs.Shape = DotNodeShape.Box;
-                attrs.Style.Weight = DotBorderWeight.Bold;
-                attrs.Style.Border = DotBorderStyle.Dashed;
+                attrs.Style.BorderWeight = DotBorderWeight.Bold;
+                attrs.Style.BorderStyle = DotBorderStyle.Dashed;
             }, "node1", "node2");
 
 
@@ -51,13 +51,13 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 edge.Tail.Port.CompassPoint = DotCompassPoint.East;
 
                 edge.Attributes.Color = Color.Gold;
-                edge.Attributes.Style.Line = DotEdgeStyle.Dotted;
+                edge.Attributes.Style.LineStyle = DotLineStyle.Dotted;
             });
 
             graph.Edges.AddSequence(edge =>
             {
                 edge.Attributes.Constrain = true;
-                edge.Attributes.Style.Line = DotEdgeStyle.Solid;
+                edge.Attributes.Style.LineStyle = DotLineStyle.Solid;
             }, "node4", DotSubgraph.FromNodes("snode1", "snode2"), "node5");
 
             graph.Edges.AddSequence(edge =>
