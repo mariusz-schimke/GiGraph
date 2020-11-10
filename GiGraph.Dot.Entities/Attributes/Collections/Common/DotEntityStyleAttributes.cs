@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Helpers;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections
+namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
     public abstract class DotEntityStyleAttributes
     {

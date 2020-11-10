@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections
+namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
     public class DotEntityFontAttributes : DotEntityFontAttributes<IDotEntityFontAttributes>
     {

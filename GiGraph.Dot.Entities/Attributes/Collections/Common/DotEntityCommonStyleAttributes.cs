@@ -2,7 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Styles;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections
+namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
     public abstract class DotEntityCommonStyleAttributes<TFillStyle, TFillStyleOptions> : DotEntityStyleAttributes
         where TFillStyle : Enum

@@ -1,4 +1,5 @@
 using System.Reflection;
+using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
@@ -9,7 +10,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
-    public partial class DotClusterAttributes : DotEntityCommonAttributes<IDotClusterAttributes>, IDotClusterAttributes
+    public partial class DotClusterAttributes : DotClusterNodeCommonAttributes<IDotClusterAttributes>, IDotClusterAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup ClusterAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterAttributes, IDotClusterAttributes>().Build();
 
@@ -74,10 +75,66 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => base.ColorScheme = value;
         }
 
-        [DotAttributeKey(DotAttributeKeys.Color)]
-        public virtual DotColorDefinition Color
+        // overridden to inherit comment from interface
+        public override DotColorDefinition Color
         {
-            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+            get => base.Color;
+            set => base.Color = value;
+        }
+
+        // overridden to inherit comment from interface
+        public override DotColorDefinition FillColor
+        {
+            get => base.FillColor;
+            set => base.FillColor = value;
+        }
+
+        // overridden to inherit comment from interface
+        public override int? GradientAngle
+        {
+            get => base.GradientAngle;
+            set => base.GradientAngle = value;
+        }
+
+        // overridden to inherit comment from interface
+        public override DotVerticalAlignment? VerticalLabelAlignment
+        {
+            get => base.VerticalLabelAlignment;
+            set => base.VerticalLabelAlignment = value;
+        }
+
+        // overridden to inherit comment from interface
+        public override DotEscapeString Tooltip
+        {
+            get => base.Tooltip;
+            set => base.Tooltip = value;
+        }
+
+        // overridden to inherit comment from interface
+        public override DotPoint Margin
+        {
+            get => base.Margin;
+            set => base.Margin = value;
+        }
+
+        // overridden to inherit comment from interface
+        public override double? BorderWidth
+        {
+            get => base.BorderWidth;
+            set => base.BorderWidth = value;
+        }
+
+        // overridden to inherit comment from interface
+        public override int? SortIndex
+        {
+            get => base.SortIndex;
+            set => base.SortIndex = value;
+        }
+
+        [DotAttributeKey(DotAttributeKeys.PenColor)]
+        public virtual DotColor BorderColor
+        {
+            get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
@@ -88,20 +145,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
-        [DotAttributeKey(DotAttributeKeys.FillColor)]
-        public virtual DotColorDefinition FillColor
-        {
-            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
-        }
-
-        [DotAttributeKey(DotAttributeKeys.GradientAngle)]
-        public virtual int? GradientAngle
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
-        }
-
         [DotAttributeKey(DotAttributeKeys.Peripheries)]
         public virtual int? Peripheries
         {
@@ -109,53 +152,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => SetOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
         }
 
-        [DotAttributeKey(DotAttributeKeys.PenWidth)]
-        public virtual double? BorderWidth
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveBorderWidth(MethodBase.GetCurrentMethod(), value);
-        }
-
-        [DotAttributeKey(DotAttributeKeys.PenColor)]
-        public virtual DotColor BorderColor
-        {
-            get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
-        }
-
         [DotAttributeKey(DotAttributeKeys.LabelJust)]
         public virtual DotHorizontalAlignment? HorizontalLabelAlignment
         {
             get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotHorizontalAlignment?) null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotHorizontalAlignmentAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey(DotAttributeKeys.LabelLoc)]
-        public virtual DotVerticalAlignment? VerticalLabelAlignment
-        {
-            get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotVerticalAlignment?) null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey(DotAttributeKeys.Tooltip)]
-        public virtual DotEscapeString Tooltip
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey(DotAttributeKeys.Margin)]
-        public virtual DotPoint Margin
-        {
-            get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
-        }
-
-        [DotAttributeKey(DotAttributeKeys.SortV)]
-        public virtual int? SortIndex
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
     }
 }

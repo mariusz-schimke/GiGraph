@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Hyperlinks;
 using GiGraph.Dot.Entities.Types.Strings;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections
+namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
     public abstract class DotEntityHyperlinkAttributes<TIEntityHyperlinkAttributes> : DotEntityAttributes<TIEntityHyperlinkAttributes>, IDotEntityHyperlinkAttributes
         where TIEntityHyperlinkAttributes : IDotEntityHyperlinkAttributes

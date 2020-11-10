@@ -4,7 +4,7 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Types.Attributes;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections
+namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
     public abstract class DotEntityMappableAttributes<TIEntityAttributeProperties> : DotEntityAttributes<TIEntityAttributeProperties>
     {

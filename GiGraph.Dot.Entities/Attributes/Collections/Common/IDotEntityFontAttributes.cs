@@ -1,7 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Types.Colors;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections
+namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
     public interface IDotEntityFontAttributes
     {

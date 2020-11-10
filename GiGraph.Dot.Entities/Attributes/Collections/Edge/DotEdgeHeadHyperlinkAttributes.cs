@@ -1,3 +1,4 @@
+using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Hyperlinks;
@@ -22,7 +23,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     If defined, it is output as part of the <see cref="DotEdgeAttributes.Head" /> <see cref="DotEdgeHeadAttributes.Label" /> of
         ///     the edge (svg, map only). Also, this value is used near the head node, overriding any
-        ///     <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />
+        ///     <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Hyperlink" />
         ///     <see cref="DotEntityHyperlinkAttributes{TIEntityHyperlinkAttributes}.Url" /> set for the edge.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.HeadUrl)]

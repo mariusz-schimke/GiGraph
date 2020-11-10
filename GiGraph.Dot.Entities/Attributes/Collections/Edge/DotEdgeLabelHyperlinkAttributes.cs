@@ -1,3 +1,4 @@
+using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Hyperlinks;
@@ -21,7 +22,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     If defined, this is the link used for the label of the edge. This value overrides any
-        ///     <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />
+        ///     <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Hyperlink" />
         ///     <see cref="DotEntityHyperlinkAttributes{IDotEntityHyperlinkAttributes}.Url" /> defined for the edge.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.LabelUrl)]
