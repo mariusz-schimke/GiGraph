@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Styles;
 
@@ -9,8 +8,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
     public partial class DotEdgeAttributes
     {
         /// <summary>
-        ///     Applies the <see cref="DotStyles.Tapered" /> style to the edge. The edge starts with the specified width, and tapers to width
-        ///     1, in points.
+        ///     Applies the <see cref="DotLineStyle.Tapered" /> style to the edge. The edge starts with the specified width, and tapers to
+        ///     width 1, in points.
         /// </summary>
         /// <param name="startWidth">
         ///     The width to start with (applied to the <see cref="Width" /> attribute).

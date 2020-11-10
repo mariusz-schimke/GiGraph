@@ -84,7 +84,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
 
         /// <summary>
         ///     Applicable to nodes, clusters, and graphs. Indicates a radial-style gradient fill when colors are specified via a color list
-        ///     (see <see cref="DotMultiColor" />).
+        ///     (see <see cref="DotGradientColor" />).
         /// </summary>
         [DotAttributeValue("radial")]
         Radial = 1 << 9,

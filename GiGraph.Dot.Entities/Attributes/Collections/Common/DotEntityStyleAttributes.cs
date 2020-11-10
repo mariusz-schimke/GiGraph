@@ -37,11 +37,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
             return Style == DotStyles.Default;
         }
 
-        // TODO: jak temu atrybutowi ustawić annotation, jeśli nie ma metod pobrania go?
-        // Może wystawic prywatnie Style jako DotStyle w interfejsach klas nadrzędnych i wtedy z ich poziomu
-        // będzie się dało ustawiac ten atrybut?
-        // Czy wtedy interfejs IDotEntityStyleAttributes można usunąć, a do atrybutu odnosić się po stałej?
-
         /// <summary>
         ///     Removes style from the element.
         /// </summary>

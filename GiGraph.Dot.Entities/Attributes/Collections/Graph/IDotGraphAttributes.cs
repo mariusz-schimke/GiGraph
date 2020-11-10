@@ -8,6 +8,7 @@ using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
@@ -75,9 +76,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     </para>
         ///     <para>
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
-        ///         the <see cref="DotStyles.Radial" /> option to <see cref="DotGraphAttributes.Style" /> will cause a radial fill. If the
-        ///         second color is <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
-        ///         <see cref="GradientAngle" /> attribute for setting a gradient angle.
+        ///         the <see cref="DotClusterFillStyle.Radial" /> fill style to the graph will cause a radial fill. If the second color is
+        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
+        ///         attribute for setting a gradient angle.
         ///     </para>
         ///     <para>
         ///         For certain output formats, such as PostScript, no fill is done for the root graph unless background color is explicitly
