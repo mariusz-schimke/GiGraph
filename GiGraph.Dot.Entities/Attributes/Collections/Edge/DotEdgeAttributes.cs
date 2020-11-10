@@ -78,14 +78,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// </summary>
         public virtual DotEdgeStyleAttributes Style { get; }
 
-        // accessible only through the interface
-        [DotAttributeKey(DotAttributeKeys.Style)]
-        DotStyles? IDotEdgeAttributes.Style
-        {
-            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
-        }
-        
         /// <summary>
         ///     Properties applied to labels specified for the <see cref="Head" /> and the <see cref="Tail" /> of the edge.
         /// </summary>
@@ -100,6 +92,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Hyperlink properties applied to the label of the edge.
         /// </summary>
         public virtual DotEdgeLabelHyperlinkAttributes LabelHyperlink { get; }
+
+        // accessible only through the interface
+        [DotAttributeKey(DotAttributeKeys.Style)]
+        DotStyles? IDotEdgeAttributes.Style
+        {
+            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
+        }
 
         // overridden to inherit comment from interface
         public override DotLabel Label

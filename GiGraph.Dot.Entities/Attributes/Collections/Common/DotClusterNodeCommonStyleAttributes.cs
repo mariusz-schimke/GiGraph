@@ -4,11 +4,11 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
-    public abstract class DotEntityCommonStyleAttributes<TFillStyle, TFillStyleOptions> : DotEntityStyleAttributes
+    public abstract class DotClusterNodeCommonStyleAttributes<TFillStyle, TFillStyleOptions> : DotEntityStyleAttributes
         where TFillStyle : Enum
-        where TFillStyleOptions : DotCommonStyleOptions<TFillStyle>
+        where TFillStyleOptions : DotClusterNodeCommonStyleOptions<TFillStyle>
     {
-        protected DotEntityCommonStyleAttributes(DotAttributeCollection attributes)
+        protected DotClusterNodeCommonStyleAttributes(DotAttributeCollection attributes)
             : base(attributes)
         {
         }

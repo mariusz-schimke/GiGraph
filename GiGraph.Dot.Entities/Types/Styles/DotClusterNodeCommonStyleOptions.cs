@@ -2,7 +2,7 @@ using System;
 
 namespace GiGraph.Dot.Entities.Types.Styles
 {
-    public abstract class DotCommonStyleOptions<TFillStyle>
+    public abstract class DotClusterNodeCommonStyleOptions<TFillStyle>
         where TFillStyle : Enum
     {
         /// <summary>

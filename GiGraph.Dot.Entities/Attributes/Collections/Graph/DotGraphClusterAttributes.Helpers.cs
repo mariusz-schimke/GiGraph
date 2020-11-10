@@ -6,25 +6,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
     public partial class DotGraphClusterAttributes
     {
         /// <summary>
-        ///     Makes the border and background of clusters invisible.
-        /// </summary>
-        public virtual DotGraphClusterAttributes SetInvisible()
-        {
-            Style.Invisible = true;
-            return this;
-        }
-
-        /// <summary>
         ///     Sets the fill color of clusters.
         /// </summary>
         /// <param name="color">
         ///     The color to use.
         /// </param>
-        public virtual DotGraphClusterAttributes SetFilled(DotColor color)
+        public virtual void SetFilled(DotColor color)
         {
             Style.FillStyle = DotClusterFillStyle.Normal;
             FillColor = color;
-            return this;
         }
 
         /// <summary>
@@ -41,13 +31,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     Determines whether to use a radial-style gradient fill. Note that this attribute is shared with the parent graph (see
         ///     <see cref="DotGraphAttributes.Style" />), and will overwrite its current value if already set there.
         /// </param>
-        public virtual DotGraphClusterAttributes SetFilled(DotGradientColor color, int? angle = null, bool radial = false)
+        public virtual void SetFilled(DotGradientColor color, int? angle = null, bool radial = false)
         {
             Style.FillStyle = radial ? DotClusterFillStyle.Radial : DotClusterFillStyle.Normal;
             FillColor = color;
             _graphGraphAttributes.GradientAngle = angle;
-
-            return this;
         }
 
         /// <summary>
@@ -57,11 +45,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
-        public virtual DotGraphClusterAttributes SetStriped(DotMultiColor colors)
+        public virtual void SetStriped(DotMultiColor colors)
         {
             Style.FillStyle = DotClusterFillStyle.Striped;
             FillColor = colors;
-            return this;
         }
     }
 }

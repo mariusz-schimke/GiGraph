@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     </para>
         /// </summary>
         DotStyles? Style { get; set; }
-        
+
         /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the node. It may be plain text (<see cref="string" />), HTML (
@@ -195,8 +195,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 
         /// <summary>
         ///     Determines how inedges and outedges, that is, edges with the node as their head or tail node respectively, are ordered (dot
-        ///     only). If defined on a graph or subgraph, the value is applied to all nodes in the graph or subgraph. Note that the
-        ///     graph attribute takes precedence over the node attribute.
+        ///     only). If defined on a graph or subgraph, the value is applied to all nodes in the graph or subgraph. Note that the graph
+        ///     attribute takes precedence over the node attribute.
         /// </summary>
         DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
 

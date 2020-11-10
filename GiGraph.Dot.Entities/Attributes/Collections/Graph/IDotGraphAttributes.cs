@@ -15,8 +15,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
     {
         /// <summary>
         ///     <para>
-        ///         Gets or sets the style of the graph (default: unset). See the descriptions of individual <see cref="DotStyles" />
-        ///         values to learn which styles are applicable to this type of element.
+        ///         Gets or sets the style of the graph (default: unset). See the descriptions of individual <see cref="DotStyles" /> values
+        ///         to learn which styles are applicable to this type of element.
         ///     </para>
         ///     <para>
         ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Rounded" /> |
@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     </para>
         /// </summary>
         DotStyles? Style { get; set; }
-        
+
         /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the graph. It may be plain text (<see cref="string" />) or HTML (
@@ -182,8 +182,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 
         /// <summary>
         ///     Determines how inedges and outedges, that is, edges with a node as their head or tail node respectively, are ordered (dot
-        ///     only). If defined on a graph or subgraph, the value is applied to all nodes in the graph or subgraph. Note that the
-        ///     graph attribute takes precedence over the node attribute.
+        ///     only). If defined on a graph or subgraph, the value is applied to all nodes in the graph or subgraph. Note that the graph
+        ///     attribute takes precedence over the node attribute.
         /// </summary>
         DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
 

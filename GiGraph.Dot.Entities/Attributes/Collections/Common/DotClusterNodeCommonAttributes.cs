@@ -8,7 +8,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
-    public abstract class DotClusterNodeCommonAttributes<TIEntityAttributeProperties> : DotEntityCommonAttributes<TIEntityAttributeProperties>
+    public abstract partial class DotClusterNodeCommonAttributes<TIEntityAttributeProperties> : DotEntityCommonAttributes<TIEntityAttributeProperties>
     {
         protected DotClusterNodeCommonAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup, DotEntityHyperlinkAttributes hyperlinkAttributes)
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
@@ -63,12 +63,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
-        
+
         [DotAttributeKey(DotAttributeKeys.SortV)]
         public virtual int? SortIndex
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
+
+        protected abstract void SetFillStyle(DotStyles fillStyle);
     }
 }

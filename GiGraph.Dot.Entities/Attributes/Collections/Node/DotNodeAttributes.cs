@@ -8,6 +8,7 @@ using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
@@ -207,6 +208,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+        }
+
+        protected override void SetFillStyle(DotStyles fillStyle)
+        {
+            Style.FillStyle = (DotNodeFillStyle) fillStyle;
         }
     }
 }

@@ -1,30 +1,20 @@
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Styles;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
+namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
-    public partial class DotClusterAttributes
+    public partial class DotClusterNodeCommonAttributes<TIEntityAttributeProperties>
     {
-        /// <summary>
-        ///     Makes the border and background of the cluster invisible.
-        /// </summary>
-        public virtual DotClusterAttributes SetInvisible()
-        {
-            Style.Invisible = true;
-            return this;
-        }
-
         /// <summary>
         ///     Sets a fill color.
         /// </summary>
         /// <param name="color">
         ///     The color to use.
         /// </param>
-        public virtual DotClusterAttributes SetFilled(DotColor color)
+        public virtual void SetFilled(DotColor color)
         {
-            Style.FillStyle = DotClusterFillStyle.Normal;
+            SetFillStyle(DotStyles.Filled);
             FillColor = color;
-            return this;
         }
 
         /// <summary>
@@ -39,13 +29,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// <param name="radial">
         ///     Determines whether to use a radial-style gradient fill.
         /// </param>
-        public virtual DotClusterAttributes SetFilled(DotGradientColor color, int? angle = null, bool radial = false)
+        public virtual void SetFilled(DotGradientColor color, int? angle = null, bool radial = false)
         {
-            Style.FillStyle = radial ? DotClusterFillStyle.Radial : DotClusterFillStyle.Normal;
+            SetFillStyle(radial ? DotStyles.Radial : DotStyles.Filled);
             FillColor = color;
             GradientAngle = angle;
-
-            return this;
         }
 
         /// <summary>
@@ -55,11 +43,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
-        public virtual DotClusterAttributes SetStriped(DotMultiColor colors)
+        public virtual void SetStriped(DotMultiColor colors)
         {
-            Style.FillStyle = DotClusterFillStyle.Striped;
+            SetFillStyle(DotStyles.Striped);
             FillColor = colors;
-            return this;
         }
     }
 }
