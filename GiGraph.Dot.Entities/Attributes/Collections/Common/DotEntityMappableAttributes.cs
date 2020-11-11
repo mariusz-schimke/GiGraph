@@ -18,8 +18,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         /// </summary>
         public virtual Dictionary<string, string> GetKeyMapping()
         {
-            // TODO: write a unit test to ensure that no key has more than one property assigned (apart from graph style and graph clusters style)
-
             var properties = GetPathsOfEntityAttributeProperties();
 
             return properties
