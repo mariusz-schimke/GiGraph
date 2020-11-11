@@ -1,10 +1,11 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
+using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Enums;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
-    public interface IDotGraphClusterAttributes : IDotClusterGlobalAttributes
+    public interface IDotGraphClusterAttributes : IDotGraphClusterCommonAttributes
     {
         /// <summary>
         ///     If true, allows edges between clusters (default: false). Specify a <see cref="DotEdgeEndpointAttributes.ClusterId" /> for an

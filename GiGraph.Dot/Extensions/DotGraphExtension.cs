@@ -8,8 +8,6 @@ using GiGraph.Dot.Output.Writers;
 using GiGraph.Dot.Output.Writers.Graphs;
 using GiGraph.Dot.Output.Writers.Options;
 
-// TODO: rozważyć przeniesienie wszystkich extension methods wprost do klas. Potem usunąć nadmiarowe assembly i przemianować odpowiednio inne.
-
 namespace GiGraph.Dot.Extensions
 {
     /// <summary>

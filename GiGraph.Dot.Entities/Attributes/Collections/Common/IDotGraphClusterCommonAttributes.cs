@@ -1,10 +1,11 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
+﻿using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
+using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Styles;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
+namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
-    public interface IDotClusterGlobalAttributes
+    public interface IDotGraphClusterCommonAttributes
     {
         /// <summary>
         ///     <para>

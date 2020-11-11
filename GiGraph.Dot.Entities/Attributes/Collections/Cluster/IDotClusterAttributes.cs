@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
+﻿using GiGraph.Dot.Entities.Attributes.Collections.Common;
+using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
@@ -8,7 +9,7 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
-    public interface IDotClusterAttributes : IDotClusterGlobalAttributes
+    public interface IDotClusterAttributes : IDotGraphClusterCommonAttributes
     {
         /// <summary>
         ///     <para>
@@ -69,7 +70,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     <para>
         ///         Gets or sets the background color of the cluster (default: none). Used as the initial background for the cluster. If the
         ///         <see cref="DotClusterFillStyle.Normal" /> fill style is used for the cluster, its
-        ///         <see cref="IDotClusterGlobalAttributes.FillColor" /> will overlay the background color.
+        ///         <see cref="IDotGraphClusterCommonAttributes.FillColor" /> will overlay the background color.
         ///     </para>
         ///     <para>
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
