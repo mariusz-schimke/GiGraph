@@ -16,8 +16,8 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         /// <summary>
         ///     Indicates that the normal default style should be assigned to the current element. This setting can be used in order to
         ///     restore the style of the element to the default value when a custom style has been set globally for this type of element on a
-        ///     graph or a subgraph level, using global edge attributes (see <see cref="DotEdgeCollection.Attributes" />) or global node
-        ///     attributes (see <see cref="DotNodeCollection.Attributes" />).
+        ///     graph or a subgraph, using global edge attributes (see <see cref="DotEdgeCollection.Attributes" />) or global node attributes
+        ///     (see <see cref="DotNodeCollection.Attributes" />).
         /// </summary>
         [DotAttributeValue(null)]
         Default = 0,
@@ -84,7 +84,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
 
         /// <summary>
         ///     Applicable to nodes, clusters, and graphs. Indicates a radial-style gradient fill when colors are specified via a color list
-        ///     (see <see cref="DotMultiColor" />).
+        ///     (see <see cref="DotGradientColor" />).
         /// </summary>
         [DotAttributeValue("radial")]
         Radial = 1 << 9,

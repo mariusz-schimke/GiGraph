@@ -1,16 +1,23 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Geometry;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
     public partial class DotNodeAttributes
     {
         /// <summary>
-        ///     Makes the node invisible.
+        ///     Sets a wedged fill, assuming that the node has an elliptical shape (see <see cref="DotNodeAttributes.Shape" />).
         /// </summary>
-        public virtual void SetInvisible()
+        /// <param name="colors">
+        ///     The colors to use for consecutive wedges. Proportions for individual wedges may be specified optionally by using a
+        ///     <see cref="DotWeightedColor" /> for them.
+        /// </param>
+        public virtual void SetWedged(DotMultiColor colors)
         {
-            Style.Invisible = true;
+            Style.FillStyle = DotNodeFillStyle.Wedged;
+            FillColor = colors;
         }
 
         /// <summary>

@@ -1,36 +1,28 @@
 using System;
 using System.Linq;
-using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
     public partial class DotEdgeAttributes
     {
         /// <summary>
-        ///     Makes the edge invisible.
-        /// </summary>
-        public virtual void SetInvisible()
-        {
-            Style.Invisible = true;
-        }
-
-        /// <summary>
-        ///     Applies the <see cref="DotStyles.Tapered" /> style to the edge. The edge starts with the specified width, and tapers to width
-        ///     1, in points.
+        ///     Applies the <see cref="DotLineStyle.Tapered" /> style to the edge. The edge starts with the specified width, and tapers to
+        ///     width 1, in points.
         /// </summary>
         /// <param name="startWidth">
         ///     The width to start with (applied to the <see cref="Width" /> attribute).
         /// </param>
         public virtual void SetTapered(double startWidth)
         {
+            Style.LineStyle = DotLineStyle.Tapered;
             Width = startWidth;
-            Style.Tapered = true;
         }
 
         /// <summary>
-        ///     Converts the current edge to a segmented line with the specified colors. At least one of the colors has to have a weight
-        ///     specified (use <see cref="DotWeightedColor" />).
+        ///     Converts the current edge to a segmented line with the specified colors by setting its <see cref="Color" /> attribute. At
+        ///     least one of the colors has to have a weight specified (use <see cref="DotWeightedColor" />).
         /// </summary>
         /// <param name="segments">
         ///     The colors to assign to consecutive segments of the edge. At least one of the colors has to have a weight specified (use
@@ -44,8 +36,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Converts the current edge to a segmented line with the specified colors. At least one of the colors has to have a weight
-        ///     specified (use <see cref="DotWeightedColor" />).
+        ///     Converts the current edge to a segmented line with the specified colors by setting its <see cref="Color" /> attribute. At
+        ///     least one of the colors has to have a weight specified (use <see cref="DotWeightedColor" />).
         /// </summary>
         /// <param name="segments">
         ///     The colors to assign to consecutive segments of the edge. At least one of the colors has to have a weight specified (use
@@ -64,7 +56,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Converts the current edge to multiple parallel splines with the specified colors.
+        ///     Converts the current edge to multiple parallel splines by setting its <see cref="Color" /> attribute.
         /// </summary>
         /// <param name="splineCount">
         ///     The number of parallel splines to compose the edge of.
@@ -83,7 +75,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Converts the current edge to multiple parallel splines with the specified colors.
+        ///     Converts the current edge to multiple parallel splines by setting its <see cref="Color" /> attribute.
         /// </summary>
         /// <param name="splines">
         ///     The colors to assign to individual splines the edge will be composed of. Note that weighted colors (
@@ -95,7 +87,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Converts the current edge to multiple parallel splines with the specified colors.
+        ///     Converts the current edge to multiple parallel splines with the specified colors by setting its <see cref="Color" />
+        ///     attribute.
         /// </summary>
         /// <param name="splines">
         ///     The colors to assign to individual splines the edge will be composed of. Note that weighted colors (

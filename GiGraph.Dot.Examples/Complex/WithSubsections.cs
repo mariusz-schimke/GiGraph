@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Examples.Complex
 {
@@ -14,7 +15,7 @@ namespace GiGraph.Dot.Examples.Complex
 
             graph.Nodes.Attributes.Annotation = "set default node color and style";
             graph.Nodes.Attributes.Color = Color.Orange;
-            graph.Nodes.Attributes.Style.Filled = true;
+            graph.Nodes.Attributes.Style.FillStyle = DotNodeFillStyle.Normal;
 
             graph.Edges.Add("foo", "bar");
 
@@ -29,7 +30,7 @@ namespace GiGraph.Dot.Examples.Complex
             graph.Subsections.Add(subsection =>
             {
                 subsection.Annotation = "subsection 2 - set default edge style";
-                subsection.Edges.Attributes.Style.Dashed = true;
+                subsection.Edges.Attributes.Style.LineStyle = DotLineStyle.Dashed;
                 subsection.Edges.Add("quux", "fred");
             });
 

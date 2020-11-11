@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Graphs
         }
 
         private DotGraphSection(DotGraphAttributes attributes)
-            : base(attributes, new DotGraphClusterCollection(new DotGraphClusterAttributes(attributes.Collection)))
+            : base(attributes, new DotGraphClusterCollection(new DotGraphClusterAttributes(attributes)))
         {
         }
 

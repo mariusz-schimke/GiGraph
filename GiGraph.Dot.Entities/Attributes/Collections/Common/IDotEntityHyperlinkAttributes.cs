@@ -1,7 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Types.Strings;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections
+namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
     public interface IDotEntityHyperlinkAttributes
     {

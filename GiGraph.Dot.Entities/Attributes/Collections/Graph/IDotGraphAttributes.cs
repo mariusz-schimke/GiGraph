@@ -8,11 +8,24 @@ using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
     public interface IDotGraphAttributes
     {
+        /// <summary>
+        ///     <para>
+        ///         Gets or sets the style of the graph (default: unset). See the descriptions of individual <see cref="DotStyles" /> values
+        ///         to learn which styles are applicable to this type of element.
+        ///     </para>
+        ///     <para>
+        ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Rounded" /> |
+        ///         <see cref="DotStyles.Bold" />;
+        ///     </para>
+        /// </summary>
+        DotStyles? Style { get; set; }
+
         /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the graph. It may be plain text (<see cref="string" />) or HTML (
@@ -63,9 +76,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     </para>
         ///     <para>
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
-        ///         the <see cref="DotStyles.Radial" /> option to <see cref="DotGraphAttributes.Style" /> will cause a radial fill. If the
-        ///         second color is <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
-        ///         <see cref="GradientAngle" /> attribute for setting a gradient angle.
+        ///         the <see cref="DotClusterFillStyle.Radial" /> fill style to the graph will cause a radial fill. If the second color is
+        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
+        ///         attribute for setting a gradient angle.
         ///     </para>
         ///     <para>
         ///         For certain output formats, such as PostScript, no fill is done for the root graph unless background color is explicitly
@@ -170,8 +183,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 
         /// <summary>
         ///     Determines how inedges and outedges, that is, edges with a node as their head or tail node respectively, are ordered (dot
-        ///     only). If defined on a graph or subgraph level, the value is applied to all nodes in the graph or subgraph. Note that the
-        ///     graph attribute takes precedence over the node attribute.
+        ///     only). If defined on a graph or subgraph, the value is applied to all nodes in the graph or subgraph. Note that the graph
+        ///     attribute takes precedence over the node attribute.
         /// </summary>
         DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
 

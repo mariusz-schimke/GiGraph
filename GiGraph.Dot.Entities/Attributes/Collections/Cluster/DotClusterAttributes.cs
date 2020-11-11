@@ -1,4 +1,5 @@
 using System.Reflection;
+using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Attributes;
@@ -6,10 +7,11 @@ using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
-    public partial class DotClusterAttributes : DotEntityCommonAttributes<IDotClusterAttributes>, IDotClusterAttributes
+    public class DotClusterAttributes : DotClusterNodeCommonAttributes<IDotClusterAttributes>, IDotClusterAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup ClusterAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterAttributes, IDotClusterAttributes>().Build();
 
@@ -52,6 +54,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// </summary>
         public virtual DotClusterStyleAttributes Style { get; }
 
+        // accessible only through the interface
+        [DotAttributeKey(DotAttributeKeys.Style)]
+        DotStyles? IDotClusterAttributes.Style
+        {
+            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
+        }
+
         // overridden to inherit comment from interface
         public override DotLabel Label
         {
@@ -66,88 +76,93 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => base.ColorScheme = value;
         }
 
-        [DotAttributeKey(DotAttributeKeys.Color)]
-        public virtual DotColorDefinition Color
+        // overridden to inherit comment from interface
+        public override DotColorDefinition Color
         {
-            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            get => base.Color;
+            set => base.Color = value;
         }
 
-        [DotAttributeKey(DotAttributeKeys.BgColor)]
-        public virtual DotColorDefinition BackgroundColor
+        // overridden to inherit comment from interface
+        public override DotColorDefinition FillColor
         {
-            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            get => base.FillColor;
+            set => base.FillColor = value;
         }
 
-        [DotAttributeKey(DotAttributeKeys.FillColor)]
-        public virtual DotColorDefinition FillColor
+        // overridden to inherit comment from interface
+        public override int? GradientAngle
         {
-            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            get => base.GradientAngle;
+            set => base.GradientAngle = value;
         }
 
-        [DotAttributeKey(DotAttributeKeys.GradientAngle)]
-        public virtual int? GradientAngle
+        // overridden to inherit comment from interface
+        public override DotVerticalAlignment? VerticalLabelAlignment
         {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
+            get => base.VerticalLabelAlignment;
+            set => base.VerticalLabelAlignment = value;
         }
 
-        [DotAttributeKey(DotAttributeKeys.Peripheries)]
-        public virtual int? Peripheries
+        // overridden to inherit comment from interface
+        public override DotEscapeString Tooltip
         {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => AddOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
+            get => base.Tooltip;
+            set => base.Tooltip = value;
         }
 
-        [DotAttributeKey(DotAttributeKeys.PenWidth)]
-        public virtual double? BorderWidth
+        // overridden to inherit comment from interface
+        public override DotPoint Margin
         {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemoveBorderWidth(MethodBase.GetCurrentMethod(), value);
+            get => base.Margin;
+            set => base.Margin = value;
+        }
+
+        // overridden to inherit comment from interface
+        public override double? BorderWidth
+        {
+            get => base.BorderWidth;
+            set => base.BorderWidth = value;
+        }
+
+        // overridden to inherit comment from interface
+        public override int? SortIndex
+        {
+            get => base.SortIndex;
+            set => base.SortIndex = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.PenColor)]
         public virtual DotColor BorderColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+        }
+
+        [DotAttributeKey(DotAttributeKeys.BgColor)]
+        public virtual DotColorDefinition BackgroundColor
+        {
+            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+        }
+
+        [DotAttributeKey(DotAttributeKeys.Peripheries)]
+        public virtual int? Peripheries
+        {
+            get => GetValueAsInt(MethodBase.GetCurrentMethod());
+            set => SetOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.LabelJust)]
         public virtual DotHorizontalAlignment? HorizontalLabelAlignment
         {
             get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotHorizontalAlignment?) null;
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotHorizontalAlignmentAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotHorizontalAlignmentAttribute(k, v.Value));
         }
 
-        [DotAttributeKey(DotAttributeKeys.LabelLoc)]
-        public virtual DotVerticalAlignment? VerticalLabelAlignment
+        protected override void SetFillStyle(DotStyles fillStyle)
         {
-            get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotVerticalAlignment?) null;
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
-        }
-
-        [DotAttributeKey(DotAttributeKeys.Tooltip)]
-        public virtual DotEscapeString Tooltip
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
-        }
-
-        [DotAttributeKey(DotAttributeKeys.Margin)]
-        public virtual DotPoint Margin
-        {
-            get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
-        }
-
-        [DotAttributeKey(DotAttributeKeys.SortV)]
-        public virtual int? SortIndex
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
+            Style.FillStyle = (DotClusterFillStyle) fillStyle;
         }
     }
 }

@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Labels;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections
+namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
     // TODO: porównać mapę właściwości wszystkich elementów do tego, co było w poprzedniej wersji, żeby upewnić się,
     // że nie zostały pominięte/dodane jakieś atrybuty
@@ -13,19 +13,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     // (może to, czy klasa powinna mieć właściwości write'able powinno zależeć tylko od kontekstu wykorzystania?)
     public abstract class DotEntityCommonAttributes<TIEntityAttributeProperties> : DotEntityRootAttributes<TIEntityAttributeProperties>
     {
-        protected DotEntityCommonAttributes(
-            DotAttributeCollection attributes,
-            DotMemberAttributeKeyLookup attributeKeyLookup,
-            DotEntityHyperlinkAttributes hyperlinkAttributes
-        )
+        protected DotEntityCommonAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup, DotEntityHyperlinkAttributes hyperlinkAttributes)
             : base(attributes, attributeKeyLookup)
         {
             Hyperlink = hyperlinkAttributes;
-        }
-
-        protected DotEntityCommonAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
-            : this(attributes, attributeKeyLookup, new DotEntityHyperlinkAttributes(attributes))
-        {
         }
 
         /// <summary>
@@ -37,14 +28,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotLabel Label
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
         }
 
         [DotAttributeKey(DotAttributeKeys.ColorScheme)]
         public virtual string ColorScheme
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
     }
 }

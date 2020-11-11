@@ -10,6 +10,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
     {
         /// <summary>
         ///     <para>
+        ///         Gets or sets the style of the edge (default: unset). See the descriptions of individual <see cref="DotStyles" /> values
+        ///         to learn which styles are applicable to this type of element.
+        ///     </para>
+        ///     <para>
+        ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Rounded" /> |
+        ///         <see cref="DotStyles.Bold" />;
+        ///     </para>
+        /// </summary>
+        DotStyles? Style { get; set; }
+
+        /// <summary>
+        ///     <para>
         ///         Gets or sets the label to display on the edge. It may be plain text (<see cref="string" />) or HTML (
         ///         <see cref="DotHtmlLabel" />). See also <see cref="DotTextFormatter" /> for plain text label formatting if needed.
         ///     </para>
@@ -65,7 +77,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Weight of the edge. In dot, the heavier the weight, the shorter, straighter and more vertical the edge is. Note that weights
         ///     in dot must be integers. For twopi, a weight of 0 indicates the edge should not be used in constructing a spanning tree from
         ///     the root. For other layouts, a larger weight encourages the layout to make the edge length closer to that specified by the
-        ///     <see cref="Length" /> attribute. Default: 1, minimum: 0 (dot, twopi), 1 (neato, fdp).
+        ///     <see cref="Length" /> attribute. Default: 1. Minimum: 0 [int] (dot, twopi), 1 [double] (neato, fdp).
         /// </summary>
         double? Weight { get; set; }
 

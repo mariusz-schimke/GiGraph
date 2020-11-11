@@ -1,48 +1,26 @@
-using GiGraph.Dot.Entities.Attributes.Enums;
-
 namespace GiGraph.Dot.Entities.Types.Styles
 {
     /// <summary>
     ///     Graph style options.
     /// </summary>
-    public class DotGraphStyleOptions : DotStyleOptions
+    public class DotGraphStyleOptions
     {
         /// <summary>
         ///     Creates and initializes a new instance.
         /// </summary>
-        /// <param name="radial">
-        ///     The <see cref="DotStyles.Radial" /> style option state. This option is applied to graph, and is inherited by clusters.
+        /// <param name="fillStyle">
+        ///     The fill style for graph and clusters. The only option applicable to the root graph is
+        ///     <see cref="DotClusterFillStyle.Radial" />.
         /// </param>
-        public DotGraphStyleOptions(bool? radial = null)
+        public DotGraphStyleOptions(DotClusterFillStyle fillStyle = DotClusterFillStyle.None)
         {
-            Radial = radial;
+            FillStyle = fillStyle;
         }
 
         /// <summary>
-        ///     Creates and initializes a new instance.
+        ///     Gets or sets a fill style for graph and clusters. The only option applicable to the root graph is
+        ///     <see cref="DotClusterFillStyle.Radial" />.
         /// </summary>
-        /// <param name="style">
-        ///     The initial style.
-        /// </param>
-        public DotGraphStyleOptions(DotStyles style)
-            : base(style)
-        {
-        }
-
-        /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Radial" /> style option state. This option is applied to graph, and is inherited by
-        ///     clusters.
-        /// </summary>
-        public virtual bool? Radial { get; set; }
-
-        protected override void ReadOptions(DotStyles style)
-        {
-            Radial = style.HasFlag(DotStyles.Radial);
-        }
-
-        protected override void WriteOptions(ref DotStyles? style)
-        {
-            WriteOption(ref style, DotStyles.Radial, Radial);
-        }
+        public virtual DotClusterFillStyle FillStyle { get; set; }
     }
 }

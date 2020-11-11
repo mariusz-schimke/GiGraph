@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Hyperlinks;
 using GiGraph.Dot.Entities.Types.Strings;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections
+namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
     public abstract class DotEntityHyperlinkAttributes<TIEntityHyperlinkAttributes> : DotEntityAttributes<TIEntityHyperlinkAttributes>, IDotEntityHyperlinkAttributes
         where TIEntityHyperlinkAttributes : IDotEntityHyperlinkAttributes
@@ -18,21 +18,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotEscapeString Url
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey(DotAttributeKeys.Href)]
         public virtual DotEscapeString Href
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         [DotAttributeKey(DotAttributeKeys.Target)]
         public virtual DotEscapeString Target
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         /// <summary>

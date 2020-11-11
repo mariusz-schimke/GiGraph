@@ -1,46 +1,23 @@
-using GiGraph.Dot.Entities.Attributes.Enums;
-
 namespace GiGraph.Dot.Entities.Types.Styles
 {
     /// <summary>
     ///     Edge style options.
     /// </summary>
-    public class DotEdgeStyleOptions : DotCommonStyleOptions
+    public class DotEdgeStyleOptions
     {
         /// <summary>
-        ///     Creates a new instance with no options specified.
+        ///     Gets or sets a line style for the edge.
         /// </summary>
-        public DotEdgeStyleOptions()
-        {
-        }
+        public virtual DotLineStyle LineStyle { get; set; }
 
         /// <summary>
-        ///     Creates a new instance with options initialized based on the specified style flags. If you want to create an instance with
-        ///     all options set to false, use <see cref="DotStyles.Default" />.
+        ///     Gets or sets the line weight of the edge.
         /// </summary>
-        /// <param name="style">
-        ///     The initial style.
-        /// </param>
-        public DotEdgeStyleOptions(DotStyles style)
-            : base(style)
-        {
-        }
+        public virtual DotLineWeight LineWeight { get; set; }
 
         /// <summary>
-        ///     Gets or sets the <see cref="DotStyles.Tapered" /> style option state.
+        ///     Gets or sets a value indicating whether the element is invisible.
         /// </summary>
-        public virtual bool? Tapered { get; set; }
-
-        protected override void ReadOptions(DotStyles style)
-        {
-            base.ReadOptions(style);
-            Tapered = style.HasFlag(DotStyles.Tapered);
-        }
-
-        protected override void WriteOptions(ref DotStyles? style)
-        {
-            base.WriteOptions(ref style);
-            WriteOption(ref style, DotStyles.Tapered, Tapered);
-        }
+        public virtual bool Invisible { get; set; }
     }
 }

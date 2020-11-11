@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual int? Sides
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
                 ? throw new ArgumentOutOfRangeException(nameof(Sides), v.Value, "The number of sides must be greater than or equal to 0.")
                 : new DotIntAttribute(k, v.Value));
         }
@@ -33,35 +33,35 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual bool? Regular
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         [DotAttributeKey(DotAttributeKeys.Peripheries)]
         public virtual int? Peripheries
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => AddOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Orientation)]
         public virtual double? Rotation
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
         [DotAttributeKey(DotAttributeKeys.Skew)]
         public virtual double? Skew
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
         [DotAttributeKey(DotAttributeKeys.Distortion)]
         public virtual double? Distortion
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => AddOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
         /// <summary>

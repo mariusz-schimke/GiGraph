@@ -1,41 +1,39 @@
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Styles;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
+namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
-    public partial class DotGraphClusterAttributes
+    public partial class DotClusterNodeCommonAttributes<TIEntityAttributeProperties>
     {
         /// <summary>
-        ///     Sets the fill color of clusters.
+        ///     Sets a fill color.
         /// </summary>
         /// <param name="color">
         ///     The color to use.
         /// </param>
         public virtual void SetFilled(DotColor color)
         {
-            Style.FillStyle = DotClusterFillStyle.Normal;
+            SetFillStyle(DotStyles.Filled);
             FillColor = color;
         }
 
         /// <summary>
-        ///     Sets a gradient fill for clusters.
+        ///     Sets a gradient fill.
         /// </summary>
         /// <param name="color">
         ///     The gradient color definition to use.
         /// </param>
         /// <param name="angle">
-        ///     The angle of the fill. Note that this attribute is shared with the parent graph (see
-        ///     <see cref="DotGraphAttributes.GradientAngle" />), and will overwrite its current value if already set there.
+        ///     The angle of the fill.
         /// </param>
         /// <param name="radial">
-        ///     Determines whether to use a radial-style gradient fill. Note that this attribute is shared with the parent graph (see
-        ///     <see cref="DotGraphAttributes.Style" />), and will overwrite its current value if already set there.
+        ///     Determines whether to use a radial-style gradient fill.
         /// </param>
         public virtual void SetFilled(DotGradientColor color, int? angle = null, bool radial = false)
         {
-            Style.FillStyle = radial ? DotClusterFillStyle.Radial : DotClusterFillStyle.Normal;
+            SetFillStyle(radial ? DotStyles.Radial : DotStyles.Filled);
             FillColor = color;
-            _graphGraphAttributes.GradientAngle = angle;
+            GradientAngle = angle;
         }
 
         /// <summary>
@@ -47,7 +45,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// </param>
         public virtual void SetStriped(DotMultiColor colors)
         {
-            Style.FillStyle = DotClusterFillStyle.Striped;
+            SetFillStyle(DotStyles.Striped);
             FillColor = colors;
         }
     }
