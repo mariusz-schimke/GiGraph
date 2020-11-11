@@ -14,9 +14,9 @@ namespace GiGraph.Dot.Output.Generators.Graphs
 
         protected override void WriteEntity(DotGraph graph, IDotGraphWriterRoot writerRoot)
         {
-            var writer = writerRoot.BeginGraph(graph.IsDirected);
+            var writer = writerRoot.BeginGraph(graph.Directed);
 
-            WriteDeclaration(graph.Id, graph.IsStrict, writer);
+            WriteDeclaration(graph.Id, graph.Strict, writer);
             WriteBody(graph, writer);
 
             writerRoot.EndGraph();

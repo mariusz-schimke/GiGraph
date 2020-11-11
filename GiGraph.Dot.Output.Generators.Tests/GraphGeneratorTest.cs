@@ -287,7 +287,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
         [Fact]
         public void renders_undirected_edges()
         {
-            var graph = new DotGraph(isDirected: false);
+            var graph = new DotGraph(directed: false);
             graph.Edges.AddLoop("a");
 
             var dot = graph.Build();

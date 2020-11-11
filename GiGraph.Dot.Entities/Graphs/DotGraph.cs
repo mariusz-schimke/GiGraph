@@ -11,12 +11,12 @@ namespace GiGraph.Dot.Entities.Graphs
     /// </summary>
     public class DotGraph : DotGraphSection, IDotCommonGraph, IDotOrderable
     {
-        protected DotGraph(string id, bool isDirected, bool isStrict, DotGraphSection rootSection, DotGraphSectionCollection<DotGraphSection> subsections)
+        protected DotGraph(string id, bool directed, bool strict, DotGraphSection rootSection, DotGraphSectionCollection<DotGraphSection> subsections)
             : base(rootSection)
         {
             Id = id;
-            IsDirected = isDirected;
-            IsStrict = isStrict;
+            Directed = directed;
+            Strict = strict;
             Subsections = subsections;
         }
 
@@ -26,30 +26,30 @@ namespace GiGraph.Dot.Entities.Graphs
         /// <param name="id">
         ///     The identifier of the graph. Pass null if no identifier should be used.
         /// </param>
-        /// <param name="isDirected">
+        /// <param name="directed">
         ///     Determines if the graph should be directed. The edges of directed graphs are presented as arrows, whereas edges in undirected
         ///     graphs are presented as lines.
         /// </param>
-        /// <param name="isStrict">
+        /// <param name="strict">
         ///     Determines if the graph is strict. Strict graph forbids the creation of multi-edges, i.e., there may be at most one edge with
         ///     a given tail node and head node in the directed case.
         /// </param>
-        public DotGraph(string id = null, bool isDirected = true, bool isStrict = false)
-            : this(id, isDirected, isStrict, new DotGraphSection(), new DotGraphSectionCollection<DotGraphSection>())
+        public DotGraph(string id = null, bool directed = true, bool strict = false)
+            : this(id, directed, strict, new DotGraphSection(), new DotGraphSectionCollection<DotGraphSection>())
         {
         }
 
         /// <summary>
-        ///     Gets or sets a value that determines if the graph is directed. The edges of directed graphs are presented as arrows, whereas
+        ///     Gets or sets a value that indicates if the graph is directed. The edges of directed graphs are presented as arrows, whereas
         ///     edges in undirected graphs are presented as lines.
         /// </summary>
-        public virtual bool IsDirected { get; set; }
+        public virtual bool Directed { get; set; }
 
         /// <summary>
-        ///     Gets or sets a value that determines if the graph is strict. Strict graph forbids the creation of multi-edges, i.e., there
-        ///     may be at most one edge with a given tail node and head node in the directed case.
+        ///     Gets or sets a value that indicates if the graph is strict. Strict graph forbids the creation of multi-edges, i.e., there may
+        ///     be at most one edge with a given tail node and head node in the directed case.
         /// </summary>
-        public virtual bool IsStrict { get; set; }
+        public virtual bool Strict { get; set; }
 
         /// <summary>
         ///     <para>
