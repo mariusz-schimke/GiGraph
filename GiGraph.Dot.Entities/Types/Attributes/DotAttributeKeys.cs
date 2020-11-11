@@ -42,7 +42,8 @@ namespace GiGraph.Dot.Entities.Types.Attributes
         [DotAttributeSupport(DotEntityTypes.Graph)]
         public const string ClusterRank = "clusterrank";
 
-        [DotAttributeSupport(DotEntityTypes.Cluster | DotEntityTypes.Node | DotEntityTypes.Edge)]
+        // based on the documentation, the attribute is not supported by the root graph, but when set, it is inherited by clusters
+        [DotAttributeSupport(DotEntityTypes.Graph | DotEntityTypes.Cluster | DotEntityTypes.Node | DotEntityTypes.Edge)]
         public const string Color = "color";
 
         [DotAttributeSupport(DotEntityTypes.Graph | DotEntityTypes.Cluster | DotEntityTypes.Node | DotEntityTypes.Edge)]
@@ -105,7 +106,8 @@ namespace GiGraph.Dot.Entities.Types.Attributes
         [DotAttributeSupport(DotEntityTypes.Graph)]
         public const string Epsilon = "epsilon";
 
-        [DotAttributeSupport(DotEntityTypes.Cluster | DotEntityTypes.Node | DotEntityTypes.Edge)]
+        // based on the documentation, the attribute is not supported by the root graph, but when set, it is inherited by clusters
+        [DotAttributeSupport(DotEntityTypes.Graph | DotEntityTypes.Cluster | DotEntityTypes.Node | DotEntityTypes.Edge)]
         public const string FillColor = "fillcolor";
 
         [DotAttributeSupport(DotEntityTypes.Node)]
@@ -351,10 +353,12 @@ namespace GiGraph.Dot.Entities.Types.Attributes
         [DotAttributeSupport(DotEntityTypes.Graph)]
         public const string PageDir = "pagedir";
 
-        [DotAttributeSupport(DotEntityTypes.Cluster)]
+        // based on the documentation, the attribute is not supported by the root graph, but when set, it is inherited by clusters
+        [DotAttributeSupport(DotEntityTypes.Graph | DotEntityTypes.Cluster)]
         public const string PenColor = "pencolor";
 
-        [DotAttributeSupport(DotEntityTypes.Cluster | DotEntityTypes.Node | DotEntityTypes.Edge)]
+        // based on the documentation, the attribute is not supported by the root graph, but when set, it is inherited by clusters
+        [DotAttributeSupport(DotEntityTypes.Graph | DotEntityTypes.Cluster | DotEntityTypes.Node | DotEntityTypes.Edge)]
         public const string PenWidth = "penwidth";
 
         [DotAttributeSupport(DotEntityTypes.Cluster | DotEntityTypes.Node)]
