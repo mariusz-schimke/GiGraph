@@ -1,4 +1,12 @@
+using System.Collections.Generic;
+using GiGraph.Dot.Entities.Clusters;
+using GiGraph.Dot.Entities.Edges;
+using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Nodes;
+using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Output.Options;
+using Snapshooter.Xunit;
+using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes
 {
@@ -45,25 +53,25 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         //     }
         // }
 
-        // [Fact]
-        // public void property_key_mappings_have_unique_keys_for_all_attribute_collection_types()
-        // {
-        //     // it is assumed that if a key repeats, an exception will be thrown by the mapping method on dictionary creation
-        //
-        //     var graphAttributes = new DotGraph().Attributes.GetPropertyKeyMapping();
-        //     Assert.NotEmpty(graphAttributes);
-        //
-        //     var nodeAttributes = new DotNode("").Attributes.GetPropertyKeyMapping();
-        //     Assert.NotEmpty(nodeAttributes);
-        //
-        //     var edgeAttributes = new DotEdge("", "").Attributes.GetPropertyKeyMapping();
-        //     Assert.NotEmpty(edgeAttributes);
-        //
-        //     var subgraphAttributes = new DotSubgraph().Attributes.GetPropertyKeyMapping();
-        //     Assert.NotEmpty(subgraphAttributes);
-        //
-        //     var clusterAttributes = new DotCluster("").Attributes.GetPropertyKeyMapping();
-        //     Assert.NotEmpty(clusterAttributes);
-        // }
+        [Fact]
+        public void property_key_mappings_have_unique_keys_for_all_attribute_collection_types()
+        {
+            // it is assumed that if a key repeats, an exception will be thrown by the mapping method on dictionary creation
+
+            var graphAttributes = new DotGraph().Attributes.GetKeyMapping();
+            Snapshot.Match(new SortedDictionary<string, string>(graphAttributes), "graph_attribute_key_map");
+
+            var nodeAttributes = new DotNode("").Attributes.GetKeyMapping();
+            Snapshot.Match(new SortedDictionary<string, string>(nodeAttributes), "node_attribute_key_map");
+
+            var edgeAttributes = new DotEdge("", "").Attributes.GetKeyMapping();
+            Snapshot.Match(new SortedDictionary<string, string>(edgeAttributes), "edge_attribute_key_map");
+
+            var subgraphAttributes = new DotSubgraph().Attributes.GetKeyMapping();
+            Snapshot.Match(new SortedDictionary<string, string>(subgraphAttributes), "subgraph_attribute_key_map");
+
+            var clusterAttributes = new DotCluster("").Attributes.GetKeyMapping();
+            Snapshot.Match(new SortedDictionary<string, string>(clusterAttributes), "cluster_attribute_key_map");
+        }
     }
 }
