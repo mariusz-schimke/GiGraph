@@ -1,0 +1,357 @@
+﻿{
+  "arrowhead": [
+    "Head.Arrowhead"
+  ],
+  "arrowsize": [
+    "ArrowheadScale"
+  ],
+  "arrowtail": [
+    "Tail.Arrowhead"
+  ],
+  "bgcolor": [
+    "BackgroundColor",
+    "BackgroundColor"
+  ],
+  "center": [
+    "Center"
+  ],
+  "charset": [
+    "Charset"
+  ],
+  "clusterrank": [
+    "VisualizationMode"
+  ],
+  "color": [
+    "Color",
+    "Color",
+    "Color",
+    "Color"
+  ],
+  "colorscheme": [
+    "ColorScheme",
+    "ColorScheme",
+    "ColorScheme",
+    "ColorScheme"
+  ],
+  "comment": [
+    "Comment",
+    "Comment",
+    "Comment"
+  ],
+  "compound": [
+    "AllowEdgeClipping"
+  ],
+  "concentrate": [
+    "ConcentrateEdges"
+  ],
+  "constraint": [
+    "Constrain"
+  ],
+  "decorate": [
+    "AttachLabel"
+  ],
+  "dir": [
+    "Directions"
+  ],
+  "distortion": [
+    "Geometry.Distortion"
+  ],
+  "dpi": [
+    "Dpi"
+  ],
+  "edgehref": [
+    "EdgeHyperlink.Href"
+  ],
+  "edgetarget": [
+    "EdgeHyperlink.Target"
+  ],
+  "edgetooltip": [
+    "EdgeHyperlink.Tooltip"
+  ],
+  "edgeURL": [
+    "EdgeHyperlink.Url"
+  ],
+  "fillcolor": [
+    "FillColor",
+    "FillColor",
+    "FillColor",
+    "FillColor"
+  ],
+  "fixedsize": [
+    "Sizing"
+  ],
+  "fontcolor": [
+    "Font.Color",
+    "Font.Color",
+    "Font.Color",
+    "Font.Color"
+  ],
+  "fontname": [
+    "Font.Name",
+    "Font.Name",
+    "Font.Name",
+    "Font.Name"
+  ],
+  "fontpath": [
+    "Font.Directories"
+  ],
+  "fontsize": [
+    "Font.Size",
+    "Font.Size",
+    "Font.Size",
+    "Font.Size"
+  ],
+  "forcelabels": [
+    "ForceExternalLabels"
+  ],
+  "gradientangle": [
+    "GradientAngle",
+    "GradientAngle",
+    "GradientAngle"
+  ],
+  "group": [
+    "GroupName"
+  ],
+  "headclip": [
+    "Head.ClipToNodeBoundary"
+  ],
+  "headhref": [
+    "Head.Hyperlink.Href"
+  ],
+  "headlabel": [
+    "Head.Label"
+  ],
+  "headport": [
+    "Head.Port"
+  ],
+  "headtarget": [
+    "Head.Hyperlink.Target"
+  ],
+  "headtooltip": [
+    "Head.Hyperlink.Tooltip"
+  ],
+  "headURL": [
+    "Head.Hyperlink.Url"
+  ],
+  "height": [
+    "Height"
+  ],
+  "href": [
+    "Hyperlink.Href",
+    "Hyperlink.Href",
+    "Hyperlink.Href",
+    "Hyperlink.Href"
+  ],
+  "image": [
+    "Image.Path"
+  ],
+  "imagepath": [
+    "ImageDirectories"
+  ],
+  "imagepos": [
+    "Image.Alignment"
+  ],
+  "imagescale": [
+    "Image.Scaling"
+  ],
+  "label": [
+    "Label",
+    "Label",
+    "Label",
+    "Label"
+  ],
+  "labelangle": [
+    "EndpointLabels.Angle"
+  ],
+  "labeldistance": [
+    "EndpointLabels.Distance"
+  ],
+  "labelfloat": [
+    "AllowLabelFloat"
+  ],
+  "labelfontcolor": [
+    "EndpointLabels.Font.Color"
+  ],
+  "labelfontname": [
+    "EndpointLabels.Font.Name"
+  ],
+  "labelfontsize": [
+    "EndpointLabels.Font.Size"
+  ],
+  "labelhref": [
+    "LabelHyperlink.Href"
+  ],
+  "labeljust": [
+    "HorizontalLabelAlignment",
+    "HorizontalLabelAlignment"
+  ],
+  "labelloc": [
+    "VerticalLabelAlignment",
+    "VerticalLabelAlignment",
+    "VerticalLabelAlignment"
+  ],
+  "labeltarget": [
+    "LabelHyperlink.Target"
+  ],
+  "labeltooltip": [
+    "LabelHyperlink.Tooltip"
+  ],
+  "labelURL": [
+    "LabelHyperlink.Url"
+  ],
+  "landscape": [
+    "LandscapeOrientation"
+  ],
+  "len": [
+    "Length"
+  ],
+  "lhead": [
+    "Head.ClusterId"
+  ],
+  "ltail": [
+    "Tail.ClusterId"
+  ],
+  "margin": [
+    "Margin",
+    "Margin",
+    "Margin"
+  ],
+  "minlen": [
+    "MinLength"
+  ],
+  "nodesep": [
+    "NodeSeparation"
+  ],
+  "ordering": [
+    "EdgeOrderingMode",
+    "EdgeOrderingMode"
+  ],
+  "orientation": [
+    "Orientation",
+    "Geometry.Rotation"
+  ],
+  "pack": [
+    "Packing"
+  ],
+  "packmode": [
+    "PackingMode"
+  ],
+  "pad": [
+    "Padding"
+  ],
+  "pencolor": [
+    "BorderColor",
+    "BorderColor"
+  ],
+  "penwidth": [
+    "BorderWidth",
+    "BorderWidth",
+    "BorderWidth",
+    "Width"
+  ],
+  "peripheries": [
+    "Peripheries",
+    "Geometry.Peripheries"
+  ],
+  "rank": [
+    "Rank"
+  ],
+  "rankdir": [
+    "LayoutDirection"
+  ],
+  "ranksep": [
+    "RankSeparation"
+  ],
+  "ratio": [
+    "Scaling"
+  ],
+  "regular": [
+    "Geometry.Regular"
+  ],
+  "resolution": [
+    "Resolution"
+  ],
+  "rotate": [
+    "Rotation"
+  ],
+  "samehead": [
+    "Head.GroupName"
+  ],
+  "sametail": [
+    "Tail.GroupName"
+  ],
+  "shape": [
+    "Shape"
+  ],
+  "sides": [
+    "Geometry.Sides"
+  ],
+  "size": [
+    "Size"
+  ],
+  "skew": [
+    "Geometry.Skew"
+  ],
+  "sortv": [
+    "SortIndex",
+    "SortIndex",
+    "SortIndex"
+  ],
+  "splines": [
+    "EdgeShape"
+  ],
+  "style": [
+    "Style",
+    "Style",
+    "Style",
+    "Style"
+  ],
+  "tailclip": [
+    "Tail.ClipToNodeBoundary"
+  ],
+  "tailhref": [
+    "Tail.Hyperlink.Href"
+  ],
+  "taillabel": [
+    "Tail.Label"
+  ],
+  "tailport": [
+    "Tail.Port"
+  ],
+  "tailtarget": [
+    "Tail.Hyperlink.Target"
+  ],
+  "tailtooltip": [
+    "Tail.Hyperlink.Tooltip"
+  ],
+  "tailURL": [
+    "Tail.Hyperlink.Url"
+  ],
+  "target": [
+    "Hyperlink.Target",
+    "Hyperlink.Target",
+    "Hyperlink.Target",
+    "Hyperlink.Target"
+  ],
+  "tooltip": [
+    "Tooltip",
+    "Tooltip",
+    "Tooltip"
+  ],
+  "URL": [
+    "Hyperlink.Url",
+    "Hyperlink.Url",
+    "Hyperlink.Url",
+    "Hyperlink.Url"
+  ],
+  "weight": [
+    "Weight"
+  ],
+  "width": [
+    "Width"
+  ],
+  "xlabel": [
+    "ExternalLabel",
+    "ExternalLabel"
+  ]
+}
