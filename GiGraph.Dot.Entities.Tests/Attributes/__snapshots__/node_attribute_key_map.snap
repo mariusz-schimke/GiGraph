@@ -27,6 +27,7 @@
   "sides": "Geometry.Sides",
   "skew": "Geometry.Skew",
   "sortv": "SortIndex",
+  "style": "Style",
   "target": "Hyperlink.Target",
   "tooltip": "Tooltip",
   "URL": "Hyperlink.Url",

@@ -16,6 +16,7 @@
   "penwidth": "BorderWidth",
   "peripheries": "Peripheries",
   "sortv": "SortIndex",
+  "style": "Style",
   "target": "Hyperlink.Target",
   "tooltip": "Tooltip",
   "URL": "Hyperlink.Url"

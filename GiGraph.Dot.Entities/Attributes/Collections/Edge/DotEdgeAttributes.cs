@@ -74,11 +74,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual DotEntityFontAttributes Font { get; }
 
         /// <summary>
-        ///     Style options.
-        /// </summary>
-        public virtual DotEdgeStyleAttributes Style { get; }
-
-        /// <summary>
         ///     Properties applied to labels specified for the <see cref="Head" /> and the <see cref="Tail" /> of the edge.
         /// </summary>
         public virtual DotEdgeEndpointLabelAttributes EndpointLabels { get; }
@@ -93,8 +88,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// </summary>
         public virtual DotEdgeLabelHyperlinkAttributes LabelHyperlink { get; }
 
+        /// <summary>
+        ///     Style options.
+        /// </summary>
+        // the attribute key is added here redundantly so it appears in attribute key mapping
+        [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
+        public virtual DotEdgeStyleAttributes Style { get; }
+
         // accessible only through the interface
-        [DotAttributeKey(DotAttributeKeys.Style)]
+        [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
         DotStyles? IDotEdgeAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;

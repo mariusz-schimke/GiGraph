@@ -57,11 +57,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotEntityFontAttributes Font { get; }
 
         /// <summary>
-        ///     Style options.
-        /// </summary>
-        public virtual DotNodeStyleAttributes Style { get; }
-
-        /// <summary>
         ///     Node image properties.
         /// </summary>
         public virtual DotNodeImageAttributes Image { get; }
@@ -71,8 +66,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// </summary>
         public virtual DotNodeGeometryAttributes Geometry { get; }
 
+        /// <summary>
+        ///     Style options.
+        /// </summary>
+        // the attribute key is added here redundantly so it appears in attribute key mapping
+        [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
+        public virtual DotNodeStyleAttributes Style { get; }
+
         // accessible only through the interface
-        [DotAttributeKey(DotAttributeKeys.Style)]
+        [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
         DotStyles? IDotNodeAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;

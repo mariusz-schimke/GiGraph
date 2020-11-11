@@ -33,6 +33,7 @@
   "size": "Size",
   "sortv": "SortIndex",
   "splines": "EdgeShape",
+  "style": "Style",
   "target": "Hyperlink.Target",
   "URL": "Hyperlink.Url"
 }

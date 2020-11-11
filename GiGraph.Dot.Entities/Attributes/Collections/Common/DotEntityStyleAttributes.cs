@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
     public abstract class DotEntityStyleAttributes
     {
-        protected const string StyleKey = DotAttributeKeys.Style;
+        public const string StyleKey = DotAttributeKeys.Style;
         protected readonly DotAttributeCollection _attributes;
 
         public DotEntityStyleAttributes(DotAttributeCollection attributes)

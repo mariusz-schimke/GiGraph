@@ -42,6 +42,7 @@
   "penwidth": "Width",
   "samehead": "Head.GroupName",
   "sametail": "Tail.GroupName",
+  "style": "Style",
   "tailclip": "Tail.ClipToNodeBoundary",
   "tailhref": "Tail.Hyperlink.Href",
   "taillabel": "Tail.Label",
