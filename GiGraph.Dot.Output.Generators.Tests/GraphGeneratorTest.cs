@@ -273,5 +273,25 @@ namespace GiGraph.Dot.Output.Generators.Tests
             var dot = graph.Build(syntaxOptions: options);
             Snapshot.Match(dot, "annotated_graph_block_comments.gv");
         }
+
+        [Fact]
+        public void renders_directed_edges()
+        {
+            var graph = new DotGraph();
+            graph.Edges.AddLoop("a");
+
+            var dot = graph.Build();
+            Snapshot.Match(dot, "directed_graph_edge.gv");
+        }
+
+        [Fact]
+        public void renders_undirected_edges()
+        {
+            var graph = new DotGraph(isDirected: false);
+            graph.Edges.AddLoop("a");
+
+            var dot = graph.Build();
+            Snapshot.Match(dot, "undirected_graph_edge.gv");
+        }
     }
 }
