@@ -13,9 +13,6 @@ namespace GiGraph.Dot.Output.Generators.Tests
 {
     public class AttributeGeneratorsTest
     {
-        private readonly DotSyntaxOptions _syntaxOptions = new DotSyntaxOptions();
-        private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
-
         private static DotGraph GetCompleteGraph(bool directed)
         {
             var graph = new DotGraph("graph1", directed);
@@ -115,11 +112,64 @@ namespace GiGraph.Dot.Output.Generators.Tests
             return graph;
         }
 
+        private static DotGraph GetAnnotatedGraph()
+        {
+            var graph = new DotGraph();
+
+            // graph
+            graph.Annotation = "graph";
+            graph.Attributes.Annotation = "graph attributes";
+            graph.Attributes.Set(a => a.Label, "Foo Graph").Annotation = "label";
+
+            // node defaults
+            graph.Nodes.Attributes.Annotation = "global node attributes";
+            graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
+
+            // nodes
+            graph.Nodes.Annotation = "nodes";
+            graph.Nodes.Add("foo", attrs =>
+            {
+                attrs.Annotation = "node attributes";
+                attrs.Set(a => a.Label, "foo").Annotation = "label";
+            }).Annotation = "node comment";
+
+            // edge defaults
+            graph.Edges.Attributes.Annotation = "global edge attributes";
+            graph.Edges.Attributes.Head.Arrowhead = DotArrowheadShape.Curve;
+
+            // edges
+            graph.Edges.Annotation = "edges";
+            graph.Edges.Add("foo", "bar", edge =>
+            {
+                edge.Head.Annotation = "head";
+                edge.Tail.Annotation = "tail";
+
+                edge.Attributes.Annotation = "edge attributes";
+                edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
+            }).Annotation = "edge comment";
+
+            // subsections
+            graph.Subsections.Add(sub =>
+            {
+                sub.Annotation = "subsection 1";
+
+                // clusters
+                sub.Clusters.Annotation = "clusters";
+                sub.Clusters.Add("cluster 1").Annotation = "cluster";
+
+                // subgraphs
+                sub.Subgraphs.Annotation = "subgraphs";
+                sub.Subgraphs.Add().Annotation = "subgraph";
+            });
+
+            return graph;
+        }
+
         [Fact]
         public void graph_with_all_possible_elements_is_rendered_according_to_default_rules_and_options()
         {
             var graph = GetCompleteGraph(directed: true);
-            var dot = graph.Build(syntaxOptions: _syntaxOptions, syntaxRules: _syntaxRules);
+            var dot = graph.Build();
 
             Snapshot.Match(dot, "directed_graph_default_options.gv");
         }
@@ -129,8 +179,11 @@ namespace GiGraph.Dot.Output.Generators.Tests
         {
             var graph = GetCompleteGraph(directed: true);
 
-            var options = DotSyntaxOptions.Custom(o => o.SortElements = true);
-            var dot = graph.Build(syntaxOptions: options, syntaxRules: _syntaxRules);
+            var options = new DotSyntaxOptions
+            {
+                SortElements = true
+            };
+            var dot = graph.Build(syntaxOptions: options);
 
             Snapshot.Match(dot, "directed_graph_sorted.gv");
         }
@@ -140,8 +193,11 @@ namespace GiGraph.Dot.Output.Generators.Tests
         {
             var graph = GetCompleteGraph(directed: true);
 
-            var options = DotSyntaxOptions.Custom(o => o.PreferQuotedIdentifiers = true);
-            var dot = graph.Build(syntaxOptions: options, syntaxRules: _syntaxRules);
+            var options = new DotSyntaxOptions
+            {
+                PreferQuotedIdentifiers = true
+            };
+            var dot = graph.Build(syntaxOptions: options);
 
             Snapshot.Match(dot, "directed_graph_quoted_identifiers.gv");
         }
@@ -150,7 +206,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
         public void renders_empty_graph_in_expected_format()
         {
             var graph = new DotGraph();
-            var dot = graph.Build(syntaxOptions: _syntaxOptions, syntaxRules: _syntaxRules);
+            var dot = graph.Build();
 
             Snapshot.Match(dot, "directed_empty_graph_default_options.gv");
         }
@@ -165,7 +221,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 SingleLine = true
             };
 
-            var dot = graph.Build(options, _syntaxOptions, _syntaxRules);
+            var dot = graph.Build(options);
             Snapshot.Match(dot, "directed_empty_graph_single_line.gv");
         }
 
@@ -176,6 +232,46 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             var dot = graph.Build();
             Snapshot.Match(dot, "directed_sectioned_graph_default_options.gv");
+        }
+
+        [Fact]
+        public void renders_graph_with_correct_default_format_annotation()
+        {
+            var graph = GetAnnotatedGraph();
+
+            var dot = graph.Build();
+            Snapshot.Match(dot, "annotated_graph_default_options.gv");
+        }
+
+        [Fact]
+        public void renders_single_line_graph_with_correct_default_format_annotation()
+        {
+            var graph = GetAnnotatedGraph();
+
+            var options = new DotFormattingOptions
+            {
+                SingleLine = true
+            };
+            var dot = graph.Build(options);
+
+            Snapshot.Match(dot, "annotated_graph_default_options_single_line.gv");
+        }
+
+        [Fact]
+        public void renders_graph_with_correct_block_annotation()
+        {
+            var graph = GetAnnotatedGraph();
+
+            var options = new DotSyntaxOptions
+            {
+                Comments =
+                {
+                    PreferBlockComments = true
+                }
+            };
+
+            var dot = graph.Build(syntaxOptions: options);
+            Snapshot.Match(dot, "annotated_graph_block_comments.gv");
         }
     }
 }

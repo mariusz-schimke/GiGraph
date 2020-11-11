@@ -43,18 +43,5 @@ namespace GiGraph.Dot.Output.Options
         ///     help.
         /// </summary>
         public virtual Func<string, string> TextEncoder { get; set; }
-
-        /// <summary>
-        ///     Creates a new instance with custom options.
-        /// </summary>
-        /// <param name="init">
-        ///     The options initializer to use.
-        /// </param>
-        public static DotFormattingOptions Custom(Action<DotFormattingOptions> init)
-        {
-            var result = new DotFormattingOptions();
-            init?.Invoke(result);
-            return result;
-        }
     }
 }
