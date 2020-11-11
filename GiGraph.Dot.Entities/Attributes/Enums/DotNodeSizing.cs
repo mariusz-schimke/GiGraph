@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Node;
-using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Metadata;
 
 namespace GiGraph.Dot.Entities.Attributes.Enums
 {

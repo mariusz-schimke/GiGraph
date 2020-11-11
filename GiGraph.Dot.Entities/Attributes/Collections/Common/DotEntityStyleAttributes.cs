@@ -1,6 +1,6 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Metadata;
 using GiGraph.Dot.Entities.Types.Helpers;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common

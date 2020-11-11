@@ -1,6 +1,6 @@
 using System;
 
-namespace GiGraph.Dot.Entities.Types.Attributes
+namespace GiGraph.Dot.Entities.Metadata
 {
     /// <summary>
     ///     Assigns a value indicating what elements an attribute key is supported by.

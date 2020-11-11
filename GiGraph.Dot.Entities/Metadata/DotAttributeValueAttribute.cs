@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace GiGraph.Dot.Entities.Types.Attributes
+namespace GiGraph.Dot.Entities.Metadata
 {
     /// <summary>
     ///     Assigns a DOT attribute value to an enumeration value.

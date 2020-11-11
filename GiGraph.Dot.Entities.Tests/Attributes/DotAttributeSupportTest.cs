@@ -4,9 +4,9 @@ using System.Linq;
 using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Metadata;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Subgraphs;
-using GiGraph.Dot.Entities.Types.Attributes;
 using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes

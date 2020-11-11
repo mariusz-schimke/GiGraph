@@ -1,6 +1,6 @@
 using System;
 
-namespace GiGraph.Dot.Entities.Types.Attributes
+namespace GiGraph.Dot.Entities.Metadata
 {
     [Flags]
     public enum DotEntityTypes
