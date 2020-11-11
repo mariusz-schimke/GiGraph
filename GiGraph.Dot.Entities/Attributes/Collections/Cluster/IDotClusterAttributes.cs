@@ -8,9 +8,7 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
-    // TODO: ten interfejs i IDotGraphClusterAttributes mają niektóre właściwości takie same - należy zapewnić, żeby ich nazwy były zgodne
-    // (np. BorderWidth, BorderColor)
-    public interface IDotClusterAttributes
+    public interface IDotClusterAttributes : IDotClusterGlobalAttributes
     {
         /// <summary>
         ///     <para>
@@ -69,35 +67,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 
         /// <summary>
         ///     <para>
-        ///         Gets or sets the color to use for the cluster (default: <see cref="System.Drawing.Color.Black" />).
-        ///     </para>
-        ///     <para>
-        ///         If <see cref="DotGradientColor" /> is used, with no weighted colors in its parameters (<see cref="DotColor" /> items
-        ///         only), and the <see cref="DotClusterFillStyle.Normal" /> fill style is used for the cluster, a linear gradient fill is
-        ///         done.
-        ///     </para>
-        ///     <para>
-        ///         If <see cref="DotGradientColor" /> is used with weighted colors (see <see cref="DotWeightedColor" />), a degenerate
-        ///         linear gradient fill is done. This essentially does a fill using two colors, with the
-        ///         <see cref="DotWeightedColor.Weight" /> specifying how much of region is filled with each color.
-        ///     </para>
-        ///     <para>
-        ///         If the <see cref="DotClusterFillStyle.Radial" /> fill style is used for the cluster, then a radial gradient fill is done.
-        ///         See also the <see cref="GradientAngle" /> attribute for setting a gradient angle.
-        ///     </para>
-        ///     <para>
-        ///         These fills work with any shape. For certain shapes, the fill style can be set to do fills using more than 2 colors (set
-        ///         the fill style of the cluster to <see cref="DotClusterFillStyle.Striped" />, and use <see cref="DotMultiColor" /> as a
-        ///         color list definition).
-        ///     </para>
-        /// </summary>
-        DotColorDefinition Color { get; set; }
-
-        /// <summary>
-        ///     <para>
         ///         Gets or sets the background color of the cluster (default: none). Used as the initial background for the cluster. If the
-        ///         <see cref="DotClusterFillStyle.Normal" /> fill style is used for the cluster, its <see cref="FillColor" /> will overlay
-        ///         the background color.
+        ///         <see cref="DotClusterFillStyle.Normal" /> fill style is used for the cluster, its
+        ///         <see cref="IDotClusterGlobalAttributes.FillColor" /> will overlay the background color.
         ///     </para>
         ///     <para>
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
@@ -107,27 +79,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     </para>
         /// </summary>
         DotColorDefinition BackgroundColor { get; set; }
-
-        /// <summary>
-        ///     <para>
-        ///         Gets or sets the color used to fill the background of the cluster, assuming that the
-        ///         <see cref="DotClusterFillStyle.Normal" /> fill style is used for the cluster. If <see cref="FillColor" /> is not defined,
-        ///         <see cref="Color" /> is used. If <see cref="Color" /> is not defined, <see cref="BackgroundColor" /> is used. If it is
-        ///         not defined too, the default is used, except when the output format is MIF, which use black by default.
-        ///     </para>
-        ///     <para>
-        ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
-        ///         the <see cref="DotClusterFillStyle.Radial" /> fill style to the cluster will cause a radial fill. If the second color is
-        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
-        ///         attribute for setting a gradient angle.
-        ///     </para>
-        ///     <para>
-        ///         Note that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a
-        ///         <see cref="DotGraphClusterAttributes.FillColor" /> for clusters, this will override a <see cref="Color" /> or
-        ///         <see cref="BackgroundColor" /> attribute set for the cluster.
-        ///     </para>
-        /// </summary>
-        DotColorDefinition FillColor { get; set; }
 
         /// <summary>
         ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
@@ -145,21 +96,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     the value. If unset, the default angle is 0.
         /// </summary>
         int? GradientAngle { get; set; }
-
-        /// <summary>
-        ///     Specifies the width of the pen, in points, used to draw the bounding box around clusters. The value is inherited by
-        ///     subclusters. It has no effect on text. Default: 1.0, minimum: 0.0.
-        /// </summary>
-        double? BorderWidth { get; set; }
-
-        /// <summary>
-        ///     Color used to draw the bounding box around the cluster (default: <see cref="System.Drawing.Color.Black" />). If
-        ///     <see cref="BorderColor" /> is not defined, <see cref="Color" /> is used. If this is not defined, the default is used. Note
-        ///     that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a
-        ///     <see cref="DotGraphClusterAttributes.BorderColor" /> for clusters, this will override a <see cref="Color" /> or
-        ///     <see cref="BackgroundColor" /> attribute set for the cluster.
-        /// </summary>
-        DotColor BorderColor { get; set; }
 
         /// <summary>
         ///     Sets the number of peripheries used in cluster boundaries (default: 1, minimum: 0, maximum: 1). Setting peripheries to 0 will
