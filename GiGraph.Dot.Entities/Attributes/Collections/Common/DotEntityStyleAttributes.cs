@@ -51,13 +51,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         /// </summary>
         public virtual void SetDefault()
         {
-            SetValue(DotStyles.Default);
+            Style = DotStyles.Default;
         }
 
         protected virtual void Apply(DotStyles options)
         {
-            var value = Style.GetValueOrDefault(options) | options;
-            SetValue(value);
+            Style = Style.GetValueOrDefault(options) | options;
         }
 
         protected virtual void Remove(DotStyles options)
@@ -80,11 +79,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
             {
                 Remove(option);
             }
-        }
-
-        protected virtual void SetValue(DotStyles value)
-        {
-            _attributes.Set(StyleKey, value);
         }
 
         protected virtual void SetPart<TPart>(TPart style)
