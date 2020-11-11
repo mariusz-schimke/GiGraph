@@ -40,6 +40,43 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             }
         }
 
+        [Fact]
+        public void attribute_key_is_supported_by_all_required_or_by_none()
+        {
+            // get all supported keys per entity type
+            var entityKeys = EntityAttributeKeyMappings
+               .GroupBy(
+                    x => (DotEntityTypes) x[0],
+                    x => ((Dictionary<string, string>) x[1]).Keys.Select(key => key).ToArray()
+                )
+               .ToLookup(
+                    key => key.Key,
+                    values => values.SelectMany(x => x).ToArray()
+                );
+
+            // for all valid keys check if any of them is supported by any entity, and if so,
+            // then it must be supported by all entities that the mapping indicates 
+            foreach (var attribute in DotAttributeKeys.GetSupportMapping())
+            {
+                var supportedByOtherEntities = false;
+
+                foreach (var entityType in Enum.GetValues(typeof(DotEntityTypes)).Cast<DotEntityTypes>())
+                {
+                    if (attribute.Value.HasFlag(entityType))
+                    {
+                        if (entityKeys[entityType].First().Contains(attribute.Key))
+                        {
+                            supportedByOtherEntities = true;
+                        }
+                        else if (supportedByOtherEntities)
+                        {
+                            throw new Exception($"The '{attribute.Key}' attribute is not supported by {entityType} (expected support by: {attribute.Value})");
+                        }
+                    }
+                }
+            }
+        }
+
         private static string[] GetSupportedKeysFor(DotEntityTypes entityType)
         {
             return DotAttributeKeys.GetSupportMapping()
