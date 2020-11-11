@@ -2,7 +2,7 @@ using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes
 {
-    public class AttributeKeysTest : AttributesTestBase
+    public class DotAttributePropertyKeysTest : DotAttributeTestBase
     {
         private readonly DotSyntaxOptions _syntaxOptions = new DotSyntaxOptions();
         private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();

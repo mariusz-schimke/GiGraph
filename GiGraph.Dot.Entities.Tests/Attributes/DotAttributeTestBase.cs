@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes
 {
-    public abstract class AttributesTestBase
+    public abstract class DotAttributeTestBase
     {
         protected const BindingFlags AttributePropertyFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
 

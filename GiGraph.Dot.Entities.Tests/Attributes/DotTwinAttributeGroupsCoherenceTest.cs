@@ -2,7 +2,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 {
     // TODO: napisać testy jednostkowe weryfikujące, czy właściwości posiadające te same klucze posiadają te same nazwy w różnych interfejsach
 
-    public class TwinAttributeGroupsCoherenceTest : AttributesTestBase
+    public class DotTwinAttributeGroupsCoherenceTest : DotAttributeTestBase
     {
         // [Theory]
         // [InlineData(typeof(IDotEdgeHeadAttributes), typeof(IDotEdgeTailAttributes))]

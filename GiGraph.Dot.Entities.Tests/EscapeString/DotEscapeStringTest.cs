@@ -4,7 +4,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.EscapeString
 {
-    public class EscapeStringTest
+    public class DotEscapeStringTest
     {
         private readonly DotSyntaxOptions _syntaxOptions = new DotSyntaxOptions();
         private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();

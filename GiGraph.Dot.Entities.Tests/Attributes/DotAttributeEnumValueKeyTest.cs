@@ -13,7 +13,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes
 {
-    public class AttributeValueTest
+    public class DotAttributeEnumValueKeyTest
     {
         private readonly DotSyntaxOptions _syntaxOptions = new DotSyntaxOptions();
         private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
@@ -23,11 +23,11 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             {
                 new object[] { typeof(DotAlignment) },
                 new object[] { typeof(DotArrayPackingOptions) },
-                new object[] { typeof(DotEdgeDirections) },
                 new object[] { typeof(DotArrowheadParts) },
                 new object[] { typeof(DotArrowheadShape) },
                 new object[] { typeof(DotClusterVisualizationMode) },
                 new object[] { typeof(DotCompassPoint) },
+                new object[] { typeof(DotEdgeDirections) },
                 new object[] { typeof(DotEdgeOrderingMode) },
                 new object[] { typeof(DotEdgeShape) },
                 new object[] { typeof(DotGraphScaling) },
