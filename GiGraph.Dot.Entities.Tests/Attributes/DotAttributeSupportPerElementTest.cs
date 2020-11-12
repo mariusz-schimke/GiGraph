@@ -80,7 +80,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                         }
                         else if (supportedByOtherEntities)
                         {
-                            throw new Exception($"The '{attribute.Key}' attribute is not supported by {entityType} (expected support by: {attribute.Value})");
+                            throw new Exception($"The '{attribute.Key}' attribute is not supported by {entityType} (expected support by: {attribute.Value.ElementSupport})");
                         }
                     }
                 }
