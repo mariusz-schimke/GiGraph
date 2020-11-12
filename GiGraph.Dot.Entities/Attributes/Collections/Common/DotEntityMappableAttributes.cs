@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Metadata;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
@@ -14,27 +14,31 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         }
 
         /// <summary>
-        ///     Gets a dictionary where the key is a DOT attribute, and the value is a path to a property that exposes it.
+        ///     Gets a dictionary where the key is a DOT attribute, and the value is attribute metadata in the context of the current
+        ///     element.
         /// </summary>
-        public virtual Dictionary<string, string> GetKeyMapping()
+        public virtual Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary()
         {
-            // TODO: write a unit test to ensure that no key has more than one property assigned (apart from graph style and graph clusters style)
-
             var properties = GetPathsOfEntityAttributeProperties();
 
             return properties
                .Select(path =>
                 {
-                    var actual = path.Last();
-                    return new
-                    {
-                        actual.Property.GetCustomAttribute<DotAttributeKeyAttribute>().Key,
-                        Path = string.Join(".", path.Select(item => item.Property.Name))
-                    };
+                    var property = path.Last();
+                    var key = property.Property.GetCustomAttribute<DotAttributeKeyAttribute>().Key;
+                    var metadata = DotAttributeKeys.MetadataDictionary[key];
+
+                    return new DotAttributePropertyMetadata(
+                        key,
+                        metadata.ElementSupport,
+                        metadata.LayoutEngineSupport,
+                        metadata.OutputFormatSupport,
+                        path.Select(item => item.Property).ToArray()
+                    );
                 })
                .ToDictionary(
                     key => key.Key,
-                    value => value.Path
+                    element => element
                 );
         }
     }

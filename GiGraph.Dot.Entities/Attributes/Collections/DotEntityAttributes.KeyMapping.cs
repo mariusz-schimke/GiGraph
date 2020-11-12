@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Metadata;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {

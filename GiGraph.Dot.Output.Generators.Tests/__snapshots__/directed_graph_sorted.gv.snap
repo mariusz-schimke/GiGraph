@@ -1,0 +1,32 @@
+﻿digraph graph1
+{
+    comment = graph_comment
+    compound = true
+    fillcolor = brown
+
+    node [ color = red, label = node_label ]
+    edge [ color = blue, label = edge_label ]
+
+    subgraph Subgraph1
+    {
+    }
+
+    subgraph Subgraph2
+    {
+    }
+
+    subgraph "cluster Cluster1"
+    {
+    }
+
+    subgraph "cluster Cluster2"
+    {
+    }
+
+    node1, node2 [ shape = box, style = "bold, dashed" ]
+    node3 [ shape = assembly, style = bold ]
+
+    node1 -> node2 -> node3 [ color = beige, style = invis ]
+    node4 -> { snode1 snode2 } -> node5 [ constraint = true, style = solid ]
+    node6:port6:e -> node7 [ color = gold, style = dotted ]
+}

@@ -1,12 +1,11 @@
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
+using GiGraph.Dot.Entities.Metadata;
 using GiGraph.Dot.Entities.Types.Arrows;
-using GiGraph.Dot.Entities.Types.Attributes;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
-    // TODO: upewnić się, że w VS właściwości przesłonięte mają komentarze (podobnie te z interfejsów)
     public class DotEdgeHeadAttributes : DotEdgeEndpointAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup EdgeHeadAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadAttributes, IDotEdgeEndpointAttributes>().Build();

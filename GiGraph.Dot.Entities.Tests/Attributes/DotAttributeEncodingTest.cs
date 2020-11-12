@@ -6,7 +6,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes
 {
-    public class AttributesTest
+    public class DotAttributeEncodingTest
     {
         private readonly DotSyntaxOptions _syntaxOptions = new DotSyntaxOptions();
         private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();

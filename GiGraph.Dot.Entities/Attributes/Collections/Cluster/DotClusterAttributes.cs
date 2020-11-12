@@ -2,7 +2,7 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Metadata;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
@@ -52,10 +52,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// <summary>
         ///     Style options.
         /// </summary>
+        // the attribute key is added here redundantly so it appears in attribute key mapping
+        [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
         public virtual DotClusterStyleAttributes Style { get; }
 
         // accessible only through the interface
-        [DotAttributeKey(DotAttributeKeys.Style)]
+        [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
         DotStyles? IDotClusterAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;

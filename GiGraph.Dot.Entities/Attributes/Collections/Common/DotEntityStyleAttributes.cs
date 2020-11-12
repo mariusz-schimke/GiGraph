@@ -1,13 +1,13 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Metadata;
 using GiGraph.Dot.Entities.Types.Helpers;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
     public abstract class DotEntityStyleAttributes
     {
-        protected const string StyleKey = DotAttributeKeys.Style;
+        public const string StyleKey = DotAttributeKeys.Style;
         protected readonly DotAttributeCollection _attributes;
 
         public DotEntityStyleAttributes(DotAttributeCollection attributes)

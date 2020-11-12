@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GiGraph.Dot.Output.Options
+﻿namespace GiGraph.Dot.Output.Options
 {
     /// <summary>
     ///     Specifies syntax-related options for generating the output DOT script.
@@ -53,18 +51,5 @@ namespace GiGraph.Dot.Output.Options
         ///     </para>
         /// </summary>
         public virtual bool SortElements { get; set; } = false;
-
-        /// <summary>
-        ///     Creates a new instance with custom options.
-        /// </summary>
-        /// <param name="init">
-        ///     The options initializer to use.
-        /// </param>
-        public static DotSyntaxOptions Custom(Action<DotSyntaxOptions> init)
-        {
-            var result = new DotSyntaxOptions();
-            init?.Invoke(result);
-            return result;
-        }
     }
 }

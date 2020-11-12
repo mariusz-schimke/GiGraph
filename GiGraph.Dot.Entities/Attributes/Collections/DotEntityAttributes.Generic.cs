@@ -2,6 +2,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
+using GiGraph.Dot.Entities.Metadata;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -121,6 +122,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             var propertyInfo = GetProperty(property);
             return GetKey(propertyInfo);
+        }
+
+        /// <summary>
+        ///     Gets metadata of the DOT attribute the specified property provides access to.
+        /// </summary>
+        /// <param name="property">
+        ///     The property to get attribute metadata for.
+        /// </param>
+        /// <typeparam name="TProperty">
+        ///     The type returned by the property.
+        /// </typeparam>
+        public virtual DotAttributeMetadata GetMetadata<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        {
+            var key = GetKey(property);
+            return DotAttributeKeys.MetadataDictionary[key];
         }
 
         protected virtual PropertyInfo GetProperty<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)

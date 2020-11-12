@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Examples.Complex
     {
         public static DotGraph Generate()
         {
-            var graph = new DotGraph(isDirected: false);
+            var graph = new DotGraph(directed: false);
 
             // see also how this attribute affects the layout of the nodes
             graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;

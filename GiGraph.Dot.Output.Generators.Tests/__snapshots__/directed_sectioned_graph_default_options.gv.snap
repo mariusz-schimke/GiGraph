@@ -1,0 +1,31 @@
+﻿// graph comment
+digraph graph1
+{
+    compound = true
+
+    node [ label = "node label" ]
+    edge [ label = "edge label" ]
+
+    // subgraph comment
+    {
+        rank = min
+
+        /* subgraph subsection comment */
+
+        rank = max
+    }
+
+    // cluster comment
+    subgraph "cluster cluster1"
+    {
+        color = blue
+
+        /* cluster subsection comment */
+
+        color = magenta
+    }
+
+    node1
+
+    node1 -> node2
+}
