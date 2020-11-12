@@ -38,9 +38,9 @@ For a basic case, create a new **DotGraph** instance, and use its *Edges* collec
 Here's a simple *Hello World!* graph example with two nodes joined by an edge.
 
 ```c#
-using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Extensions; // Build(), SaveToFile()
 using System;
+using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Extensions;
 
 namespace GiGraph.Dot.Examples
 {
@@ -49,8 +49,8 @@ namespace GiGraph.Dot.Examples
         private static void Main(string[] args)
         {
             // create a new graph (directed or undirected)
-            var graph = new DotGraph(isDirected: true);
-            
+            var graph = new DotGraph(directed: true);
+
             // add an edge that joins the two specified nodes
             // (you don't have to add the nodes to the node collection of the graph
             // unless you need to specify some attributes for them)
@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Examples
 
             // write it to console as string
             Console.WriteLine(graph.Build());
-            
+
             // or save it to a file (.gv and .dot are the default extensions)
             graph.SaveToFile("example.gv");
         }
@@ -83,7 +83,7 @@ Here's how the script is visualized:
 And here's an example of an undirected version of the same graph:
 
 ```c#
-var graph = new DotGraph(isDirected: false);
+var graph = new DotGraph(directed: false);
 ```
 
 ```dot
@@ -138,13 +138,13 @@ The graph is represented by the **DotGraph** class. There are two types of graph
 - **undirected** (the edges are presented as lines).
 
 ```c#
-var graph = new DotGraph(isDirected: false);
+var graph = new DotGraph(directed: false);
 ```
 
 A graph may also be *strict*. Strict graph forbids the creation of multi-edges. For example, there may be at most one edge with a given tail node and head node in the directed case.
 
 ```c#
-var graph = new DotGraph(isStrict: true);
+var graph = new DotGraph(strict: true);
 ```
 
 
@@ -163,7 +163,7 @@ graph.Attributes.BackgroundColor = Color.LightGray;
 graph.Nodes.Add("Foo", attrs =>
 {
     attrs.Label = "My Foo node";
-    attrs.Style = DotStyles.Filled;
+    attrs.Style.FillStyle = DotNodeFillStyle.Normal;
     attrs.FillColor = Color.Blue;
 });
 ```
@@ -179,14 +179,14 @@ graph.Edges.Add("Foo", "Bar", edge =>
 There are dozens attributes that may be set on different graph elements, but the library supports only a subset of them. By exposing properties on the attribute collections of elements (as in the examples above), the libary ensures that the strongly-typed value you provide is correctly converted to string in a format understood by visualization engines. However, you may also set any attribute by providing its key and value directly, as string (see the example below). This approach should be used with care, and the value should always follow the DOT syntax rules specific to the attribute you set (see [documentation](https://www.graphviz.org/doc/info/attrs.html)). Otherwise the visualization tool you use may be unable to process it correctly.
 
 ```c#
-node.Attributes.Set("fillcolor", "red:blue");
+node.Attributes.Collection.Set("fillcolor", "red:blue");
 ```
 
 Under the hood, the overload of the *Set* method in above example adds a *DotStringAttribute* instance to the collection of attributes:
 
 ```c#
 var attribute = new DotStringAttribute("fillcolor", "red:blue");
-node.Attributes.Set(attribute);
+node.Attributes.Collection.Set(attribute);
 ```
 
 *DotStringAttribute* may be used for any type of property. Its *value* is rendered in the output DOT script exactly the way it is provided (without any further processing like escaping).
@@ -234,10 +234,10 @@ graph.Nodes.Add("orange");
 graph.Nodes.Add("restored", attrs =>
 {
     // assign null to the attribute by using a lambda expression (recommended)
-    attrs.SetNull(a => a.Color);
+    attrs.Nullify(a => a.Color);
   
     // or by specifying its key explicitly
-    attrs.SetNull("color");
+    attrs.Collection.Nullify("color");
 
     // the following wouldn't do the trick because it removes the attribute from the collection, so it wouldn't appear in the output DOT script
     // attrs.Color = null;
@@ -411,11 +411,11 @@ digraph
 The shape of a node is determined by the *Shape* attribute. By default it is an ellipse with a label, but you may change it to any other shape accepted by your DOT visualization tool. The standard shapes are available under the *DotNodeShape* enumeration, and two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use either of these as the *Shape* attribute, you may assign a record type label (*DotRecord*) to the node.
 
 ```c#
-using GiGraph.Dot.Extensions; // ToRecord
+using GiGraph.Dot.Extensions; // ToRecordNode
 ...
 
-// use the ToRecord or ToRoundedRecord extension method on a node
-graph.Nodes.Add("Foo").ToRecord("Hello", "World!");
+// use the ToRecordNode or ToRoundedRecordNode extension method on a node
+graph.Nodes.Add("Foo").ToRecordNode(new DotRecord("Hello", "World!"));
 
 // or set shape and label explicitly
 graph.Nodes.Add("Foo", attrs =>
@@ -446,7 +446,9 @@ using GiGraph.Dot.Extensions; // ToRecord
 ...
 
 // note that string is implicitly converted to DotRecordTextField here
-graph.Nodes.Add("Foo").ToRecord("Foo", new DotRecord("Bar", "Baz"), "Qux");
+graph.Nodes.Add("Foo").ToRecordNode(
+    new DotRecord("Foo", new DotRecord("Bar", "Baz"), "Qux")
+);
 ```
 
 ```dot
@@ -471,11 +473,11 @@ var builder = new DotRecordBuilder()
    .AppendRecord("Bar", "Baz")
    .AppendField("Qux");
 
-graph.Nodes.Add("Bar").ToRecord(builder.ToRecord());
+graph.Nodes.Add("Bar").ToRecordNode(builder.ToRecord());
 ```
 
 ```c#
-graph.Nodes.Add("Bar").ToRecord(rb =>
+graph.Nodes.Add("Bar").ToRecordNode(rb =>
 {
     rb.AppendField("Foo")
       .AppendRecord("Bar", "Baz")
@@ -505,7 +507,7 @@ digraph
 And the code to generate it:
 
 ```c#
-graph.Nodes.Add("Baz").ToRecord(rb1 => rb1
+graph.Nodes.Add("Baz").ToRecordNode(rb1 => rb1
    .AppendField($"Foo{Environment.NewLine}Bar")
    .AppendRecord(rb2 => rb2
        .AppendField(tf => tf.AppendLineLeftJustified("Baz"))
@@ -542,7 +544,7 @@ using GiGraph.Dot.Extensions; // ToHtml
 ...
 
 // use the ToHtml extension method on a node
-graph.Nodes.Add("Bar").ToHtml
+graph.Nodes.Add("Bar").ToHtmlNode
 (
     @"<TABLE BORDER=""0"" CELLBORDER=""1"" CELLSPACING=""0"" CELLPADDING=""4"">
         <TR>
@@ -610,7 +612,7 @@ Similarly to the record node case, you can specify *ports* within the HTML table
 ...
 
 // add an edge whose head is attached to the port1 port
-graph.Edges.Add("Foo", "Bar").Attributes.HeadPort = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
+graph.Edges.Add("Foo", "Bar").Attributes.Head.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
 
 // you can also set the port this way, achieving a slightly different output, but the same visualization
 graph.Edges.Add("Foo", "Bar").Head.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
@@ -729,8 +731,8 @@ graph.Edges.Add("Foo", "Bar", edge =>
     edge.Head.Port.CompassPoint = DotCompassPoint.West;
 
     // it may as well be done by using attributes
-    edge.Attributes.TailPort = DotCompassPoint.West;
-    edge.Attributes.HeadPort = DotCompassPoint.West;
+    edge.Attributes.Tail.Port = DotCompassPoint.West;
+    edge.Attributes.Head.Port = DotCompassPoint.West;
 });
 ```
 
@@ -762,7 +764,8 @@ edge.Head.Port.CompassPoint = DotCompassPoint.West;
 // or slightly easier
 edge = new DotEdge(
     new DotEndpoint("Foo", DotCompassPoint.North),
-    new DotEndpoint("Bar", DotCompassPoint.South));
+    new DotEndpoint("Bar", DotCompassPoint.South)
+);
 
 
 edge.Attributes.Label = "Baz";
@@ -790,19 +793,19 @@ The example code below presents a few possible combinations of arrowheads:
 // an edge with arrowheads on both sides
 graph.Edges.Add("Foo", "Bar", edge =>
 {
-    edge.Attributes.ArrowDirections = DotArrowDirections.Both;
+    edge.Attributes.Directions = DotEdgeDirections.Both;
 
-    edge.Attributes.ArrowTail = DotArrowheadShape.Diamond;
-    edge.Attributes.ArrowHead = DotArrowheadShape.Crow;
+    edge.Attributes.Tail.Arrowhead = DotArrowheadShape.Diamond;
+    edge.Attributes.Head.Arrowhead = DotArrowheadShape.Crow;
 });
 
 // some basic arrowhead variants 
-graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Empty();
-graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Empty(DotArrowheadParts.Right);
-graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = DotArrowhead.Filled(DotArrowheadParts.Left);
+graph.Edges.Add("Foo", "Bar").Attributes.Head.Arrowhead = DotArrowhead.Empty();
+graph.Edges.Add("Foo", "Bar").Attributes.Head.Arrowhead = DotArrowhead.Empty(DotArrowheadParts.Right);
+graph.Edges.Add("Foo", "Bar").Attributes.Head.Arrowhead = DotArrowhead.Filled(DotArrowheadParts.Left);
 
 // a composition of multiple arrowheads
-graph.Edges.Add("Foo", "Bar").Attributes.ArrowHead = new DotCompositeArrowhead
+graph.Edges.Add("Foo", "Bar").Attributes.Head.Arrowhead = new DotCompositeArrowhead
 (
     DotArrowheadShape.Tee,
     DotArrowheadShape.None, // may be used as a separator
@@ -836,14 +839,15 @@ By default an edge is visualized as a single spline in one color. There are two 
 Consider the following example.
 
 ```c#
-using GiGraph.Dot.Extensions;
-...
+graph.Edges.Add("Foo", "Bar", edge =>
+{
+    edge.Attributes.SetSegmented(new DotWeightedColor(Color.RoyalBlue, 0.5), Color.Turquoise);
+});
 
-graph.Edges.Add("Foo", "Bar").ToMulticolorSegments(
-    new DotWeightedColor(Color.RoyalBlue, 0.5),
-    Color.Turquoise);
-
-graph.Edges.Add("Foo", "Bar").ToParallelSplines(Color.RoyalBlue, Color.Turquoise);
+graph.Edges.Add("Foo", "Bar", edge =>
+{
+    edge.Attributes.SetMultiline(Color.RoyalBlue, Color.Turquoise);
+});
 ```
 
 Note that in the case of multicolor segments, at least one color has to have a weight specified. The weight is interpreted as a length proportion of that segment in relation to other segments. Other colors may be provided without weights, in which case the lengths of their segments are distributed proportionally within the remaining part of an edge.
@@ -851,8 +855,8 @@ Note that in the case of multicolor segments, at least one color has to have a w
 ```dot
 digraph
 {
-    Foo -> Bar [ color = "royalblue:turquoise" ]
     Foo -> Bar [ color = "royalblue;0.5:turquoise" ]
+    Foo -> Bar [ color = "royalblue:turquoise" ]
 }
 ```
 
@@ -1077,7 +1081,7 @@ digraph
 
 ## Subgraphs
 
-A subgraph, represented by the **DotSubgraph** class, is a collection of nodes constrained with a rank attribute, that determines their layout. Use a subgraph when you want to have more granular control on the **layout** of specific groups of nodes, and/or the **style** of specific groups of nodes and edges.
+A subgraph, represented by the **DotSubgraph** class, is a collection of nodes constrained with a rank attribute, that determines their layout. Use a subgraph when you want to have more granular control on the **layout** of specific groups of nodes (refers to the ***dot*** layout engine only), and/or the **style** of specific groups of nodes and edges.
 
 **Subgraph does not have any border or fill**, as opposed to [cluster subgraph](#clusters) represented by the **DotCluster** class, which supports them.
 
@@ -1190,7 +1194,8 @@ using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Extensions; // Build(), SaveToFile()
+using GiGraph.Dot.Entities.Types.Styles;
+using GiGraph.Dot.Extensions;
 
 namespace GiGraph.Dot.Examples
 {
@@ -1198,24 +1203,24 @@ namespace GiGraph.Dot.Examples
     {
         private static void Main(string[] args)
         {
-            var graph = new DotGraph(isDirected: true);
+            var graph = new DotGraph();
 
             // set left to right layout direction of the graph using graph attributes
             graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
-            graph.Attributes.FontName = "Helvetica";
+            graph.Attributes.Font.Name = "Helvetica";
 
             // set global node attributes (for all nodes of the graph)
             graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
             graph.Nodes.Attributes.SetFilled(new DotGradientColor(Color.Turquoise, Color.RoyalBlue));
-            graph.Nodes.Attributes.FontName = graph.Attributes.FontName;
+            graph.Nodes.Attributes.Font.Name = graph.Attributes.Font.Name;
 
             // set global edge attributes (for all edges of the graph)
-            graph.Edges.Attributes.ArrowHead = graph.Edges.Attributes.ArrowTail = DotArrowheadShape.Vee;
-            graph.Edges.Attributes.FontName = graph.Attributes.FontName;
-            graph.Edges.Attributes.FontSize = 10;
+            graph.Edges.Attributes.Head.Arrowhead = graph.Edges.Attributes.Tail.Arrowhead = DotArrowheadShape.Vee;
+            graph.Edges.Attributes.Font.Name = graph.Attributes.Font.Name;
+            graph.Edges.Attributes.Font.Size = 10;
 
 
-            // -- (subgraphs are used here only to control the order the elements are visualized in the example, and do not actually have to be used) --
+            // -- (subgraphs are used here only to control the order the elements are visualized, and may be removed) --
 
             graph.Subgraphs.Add(sg =>
             {
@@ -1223,7 +1228,7 @@ namespace GiGraph.Dot.Examples
                 sg.Edges.Add("G", "H", edge =>
                 {
                     edge.Attributes.Label = "DOTTED";
-                    edge.Attributes.Style = DotStyles.Dotted;
+                    edge.Attributes.Style.LineStyle = DotLineStyle.Dotted;
                 });
             });
 
@@ -1233,10 +1238,10 @@ namespace GiGraph.Dot.Examples
                 sg.Edges.Add("E", "F", edge =>
                 {
                     edge.Attributes.Label = "PARALLEL SPLINES";
-                    edge.Attributes.ArrowDirections = DotArrowDirections.Both;
+                    edge.Attributes.Directions = DotEdgeDirections.Both;
 
                     // this will render two parallel splines (but more of them may be specified)
-                    edge.ToParallelSplines(Color.Turquoise, Color.RoyalBlue);
+                    edge.Attributes.SetMultiline(Color.Turquoise, Color.RoyalBlue);
                 });
             });
 
@@ -1249,10 +1254,10 @@ namespace GiGraph.Dot.Examples
                 sg.Edges.Add("C", "D", edge =>
                 {
                     edge.Attributes.Label = "MULTICOLOR SERIES";
-                    edge.Attributes.ArrowDirections = DotArrowDirections.Both;
+                    edge.Attributes.Directions = DotEdgeDirections.Both;
 
                     // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
-                    edge.ToMulticolorSegments(
+                    edge.Attributes.SetSegmented(
                         new DotWeightedColor(Color.Turquoise, 0.33),
                         new DotWeightedColor(Color.Gray, 0.33),
                         Color.Navy);
@@ -1264,35 +1269,30 @@ namespace GiGraph.Dot.Examples
                 // a rectangular node with a striped fill
                 sg.Nodes.Add("STRIPED", attrs =>
                 {
-                    // set style to striped
-                    attrs.Style = DotStyles.Filled | DotStyles.Striped;
-
                     attrs.Color = Color.Transparent;
 
-                    // set the colors of individual stripes and their proportions
-                    attrs.FillColor = new DotMultiColor(
+                    // set style to striped
+                    attrs.SetStriped(new DotMultiColor(
                         new DotWeightedColor(Color.Navy, 0.1),
                         Color.RoyalBlue,
                         Color.Turquoise,
-                        Color.Orange);
+                        Color.Orange)
+                    );
                 });
 
                 // a circular node with a wedged fill
                 sg.Nodes.Add("WEDGED", attrs =>
                 {
                     attrs.Shape = DotNodeShape.Circle;
-
-                    // set wedged style
-                    attrs.Style = DotStyles.Filled | DotStyles.Wedged;
-
                     attrs.Color = Color.Transparent;
 
-                    // set the colors of individual wedges and their proportions
-                    attrs.FillColor = new DotMultiColor(
+                    // set wedged style
+                    attrs.SetWedged(new DotMultiColor(
                         Color.Orange,
                         Color.RoyalBlue,
                         new DotWeightedColor(Color.Navy, 0.1),
-                        Color.Turquoise);
+                        Color.Turquoise)
+                    );
                 });
 
                 sg.Edges.Add("STRIPED", "WEDGED");
@@ -1386,7 +1386,7 @@ namespace GiGraph.Dot.Examples
     {
         private static void Main(string[] args)
         {
-            var graph = new DotGraph(isDirected: true);
+            var graph = new DotGraph(directed: true);
 
             // set graph attributes
             graph.Attributes.Label = "Example Flow";

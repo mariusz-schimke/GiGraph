@@ -6,27 +6,27 @@
     public partial class DotSyntaxOptions
     {
         /// <summary>
-        ///     Gets the generation options for attributes.
+        ///     Attribute options.
         /// </summary>
         public virtual AttributeOptions Attributes { get; protected set; } = new AttributeOptions();
 
         /// <summary>
-        ///     Gets the generation options for subgraphs.
+        ///     Subgraph options.
         /// </summary>
         public virtual SubgraphOptions Subgraphs { get; protected set; } = new SubgraphOptions();
 
         /// <summary>
-        ///     Gets the generation options for clusters.
+        ///     Cluster options.
         /// </summary>
         public virtual ClusterOptions Clusters { get; protected set; } = new ClusterOptions();
 
         /// <summary>
-        ///     Gets the generation options for colors.
+        ///     Color options.
         /// </summary>
         public virtual ColorOptions Colors { get; protected set; } = new ColorOptions();
 
         /// <summary>
-        ///     Gets the generation options for comments.
+        ///     Comment options.
         /// </summary>
         public virtual CommentOptions Comments { get; protected set; } = new CommentOptions();
 
