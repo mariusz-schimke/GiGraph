@@ -2,9 +2,9 @@ name: .NET Core
 
 on:
   push:
-    branches: [ master ]
+    branches: [ ]
   pull_request:
-    branches: [ master ]
+    branches: [ publish]
 
 jobs:
   build:
@@ -23,6 +23,11 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-    - name: Publish
-      run: dotnet build --configuration Publish
+    - shell: pwsh
+      env:
+        SNK: ${{ secrets.Snk }}
+      run: |
+        get-content env:SNK > "..\Solution Items\GiGraph.snk"
+    - name: Build NuGet Package
+      run: nuget pack GiGraph.Dot.csproj -Build -Symbols -Properties Configuration=Publish -IncludeReferencedProjects -SymbolPackageFormat snupkg
       
