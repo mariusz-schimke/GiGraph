@@ -25,12 +25,12 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         {
             return new List<(DotElementSupport, Dictionary<string, DotAttributePropertyMetadata>)>
             {
-                (DotElementSupport.Graph, new DotGraph().Attributes.GetKeyMapping()),
-                (DotElementSupport.Graph, new DotGraph().Clusters.Attributes.GetKeyMapping()),
-                (DotElementSupport.Cluster, new DotCluster("").Attributes.GetKeyMapping()),
-                (DotElementSupport.Subgraph, new DotSubgraph().Attributes.GetKeyMapping()),
-                (DotElementSupport.Node, new DotNode("").Attributes.GetKeyMapping()),
-                (DotElementSupport.Edge, new DotEdge("").Attributes.GetKeyMapping())
+                (DotElementSupport.Graph, new DotGraph().Attributes.GetMetadataDictionary()),
+                (DotElementSupport.Graph, new DotGraph().Clusters.Attributes.GetMetadataDictionary()),
+                (DotElementSupport.Cluster, new DotCluster("").Attributes.GetMetadataDictionary()),
+                (DotElementSupport.Subgraph, new DotSubgraph().Attributes.GetMetadataDictionary()),
+                (DotElementSupport.Node, new DotNode("").Attributes.GetMetadataDictionary()),
+                (DotElementSupport.Edge, new DotEdge("").Attributes.GetMetadataDictionary())
             };
         }
 

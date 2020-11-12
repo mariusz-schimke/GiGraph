@@ -14,9 +14,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         }
 
         /// <summary>
-        ///     Gets a dictionary where the key is a DOT attribute, and the value is attribute metadata.
+        ///     Gets a dictionary where the key is a DOT attribute, and the value is attribute metadata in the context of the current
+        ///     element.
         /// </summary>
-        public virtual Dictionary<string, DotAttributePropertyMetadata> GetKeyMapping()
+        public virtual Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary()
         {
             var attributesMetadata = DotAttributeKeys.GetMetadataDictionary();
             var properties = GetPathsOfEntityAttributeProperties();
