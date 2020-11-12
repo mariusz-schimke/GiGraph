@@ -1,5 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
-using GiGraph.Dot.Entities.Attributes.Collections.Common;
+﻿using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Enums;
 

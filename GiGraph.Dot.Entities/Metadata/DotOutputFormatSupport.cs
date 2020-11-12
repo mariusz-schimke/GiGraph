@@ -3,7 +3,7 @@ using System;
 namespace GiGraph.Dot.Entities.Metadata
 {
     /// <summary>
-    ///     Output format.
+    ///     Output formats.
     /// </summary>
     [Flags]
     public enum DotOutputFormatSupport
@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Metadata
         Svg = 1 << 2,
 
         /// <summary>
-        ///     Client-side imagemap (deprecated)
+        ///     Client-side imagemap (deprecated).
         /// </summary>
         Cmap = 1 << 3,
 

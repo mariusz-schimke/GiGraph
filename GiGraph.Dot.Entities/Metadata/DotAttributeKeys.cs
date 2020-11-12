@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-// TODO: add info to all property comments what engine/format is supported by
-
 namespace GiGraph.Dot.Entities.Metadata
 {
     /// <summary>
