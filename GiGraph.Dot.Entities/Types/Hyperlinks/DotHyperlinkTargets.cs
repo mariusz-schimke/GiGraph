@@ -8,6 +8,6 @@ namespace GiGraph.Dot.Entities.Types.Hyperlinks
         /// <summary>
         ///     Opens a new window if it doesn't already exist, or reuses it if it does.
         /// </summary>
-        public static string NewWindow => "_graphviz";
+        public const string NewWindow = "_graphviz";
     }
 }

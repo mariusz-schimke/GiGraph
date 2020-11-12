@@ -8,6 +8,25 @@ namespace GiGraph.Dot.Entities.Types.Hyperlinks
     public class DotHyperlink
     {
         /// <summary>
+        ///     Creates and initializes a new instance.
+        /// </summary>
+        /// <param name="url">
+        ///     The URL.
+        /// </param>
+        /// <param name="target">
+        ///     Determines which window of the browser is used for the URL. See <see cref="DotHyperlinkTargets" />.
+        /// </param>
+        /// <param name="href">
+        ///     Synonym for <paramref name="url" />.
+        /// </param>
+        public DotHyperlink(DotEscapeString url = null, DotEscapeString target = null, DotEscapeString href = null)
+        {
+            Url = url;
+            Target = target;
+            Href = href;
+        }
+
+        /// <summary>
         ///     The URL.
         /// </summary>
         public DotEscapeString Url { get; set; }

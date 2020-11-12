@@ -8,6 +8,25 @@ namespace GiGraph.Dot.Entities.Types.Fonts
     public class DotFont
     {
         /// <summary>
+        ///     Creates and initializes a new instance.
+        /// </summary>
+        /// <param name="name">
+        ///     Font name.
+        /// </param>
+        /// <param name="size">
+        ///     Font size.
+        /// </param>
+        /// <param name="color">
+        ///     Font color.
+        /// </param>
+        public DotFont(string name = null, double? size = null, DotColor color = null)
+        {
+            Name = name;
+            Size = size;
+            Color = color;
+        }
+
+        /// <summary>
         ///     Gets or sets font name.
         /// </summary>
         public string Name { get; set; }

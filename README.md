@@ -1216,8 +1216,7 @@ namespace GiGraph.Dot.Examples
 
             // set global edge attributes (for all edges of the graph)
             graph.Edges.Attributes.Head.Arrowhead = graph.Edges.Attributes.Tail.Arrowhead = DotArrowheadShape.Vee;
-            graph.Edges.Attributes.Font.Name = graph.Attributes.Font.Name;
-            graph.Edges.Attributes.Font.Size = 10;
+            graph.Edges.Attributes.Font.Set(graph.Attributes.Font.Name, 10);
 
 
             // -- (subgraphs are used here only to control the order the elements are visualized, and may be removed) --

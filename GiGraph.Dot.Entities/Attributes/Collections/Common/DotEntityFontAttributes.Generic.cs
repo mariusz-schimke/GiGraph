@@ -41,16 +41,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         /// <summary>
         ///     Sets font properties.
         /// </summary>
+        /// <param name="name">
+        ///     Font name.
+        /// </param>
         /// <param name="size">
         ///     Font size.
         /// </param>
         /// <param name="color">
         ///     Font color.
         /// </param>
-        /// <param name="name">
-        ///     Font name.
-        /// </param>
-        public virtual void Set(double? size = null, DotColor color = null, string name = null)
+        public virtual void Set(string name = null, double? size = null, DotColor color = null)
         {
             Size = size;
             Color = color;
@@ -65,7 +65,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         /// </param>
         public virtual void Set(DotFont attributes)
         {
-            Set(attributes.Size, attributes.Color, attributes.Name);
+            Set(attributes.Name, attributes.Size, attributes.Color);
         }
     }
 }

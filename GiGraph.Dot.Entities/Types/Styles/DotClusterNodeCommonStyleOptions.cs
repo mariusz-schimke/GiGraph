@@ -5,6 +5,15 @@ namespace GiGraph.Dot.Entities.Types.Styles
     public abstract class DotClusterNodeCommonStyleOptions<TFillStyle>
         where TFillStyle : Enum
     {
+        protected DotClusterNodeCommonStyleOptions(TFillStyle fillStyle, DotBorderStyle borderStyle, DotBorderWeight borderWeight, DotCornerStyle cornerStyle, bool invisible)
+        {
+            FillStyle = fillStyle;
+            BorderStyle = borderStyle;
+            BorderWeight = borderWeight;
+            CornerStyle = cornerStyle;
+            Invisible = invisible;
+        }
+
         /// <summary>
         ///     Gets or sets a fill style for the element.
         /// </summary>

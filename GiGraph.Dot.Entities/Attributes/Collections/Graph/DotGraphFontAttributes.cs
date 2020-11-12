@@ -31,22 +31,22 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     Sets font properties.
         /// </summary>
+        /// <param name="name">
+        ///     Font name.
+        /// </param>
         /// <param name="size">
         ///     Font size.
         /// </param>
         /// <param name="color">
         ///     Font color.
         /// </param>
-        /// <param name="name">
-        ///     Font name.
-        /// </param>
         /// <param name="directories">
         ///     The directory to search for fonts.
         /// </param>
-        public virtual void Set(double? size = null, DotColor color = null, string name = null, string directories = null)
+        public virtual void Set(string name = null, double? size = null, DotColor color = null, string directories = null)
         {
+            base.Set(name, size, color);
             Directories = directories;
-            base.Set(size, color, name);
         }
 
         /// <summary>
@@ -57,8 +57,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// </param>
         public virtual void Set(DotGraphFont attributes)
         {
-            Directories = attributes.Directories;
             base.Set(attributes);
+            Directories = attributes.Directories;
         }
     }
 }
