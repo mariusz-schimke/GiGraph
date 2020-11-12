@@ -2,9 +2,9 @@ name: .NET Core
 
 on:
   push:
-    branches: [ ]
+    branches: [ publish ]
   pull_request:
-    branches: [ publish]
+    branches: [ publish ]
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
       env:
         SNK: ${{ secrets.Snk }}
       run: |
-        get-content env:SNK > "..\Solution Items\GiGraph.snk"
+        get-content env:SNK > &("..\Solution Items\GiGraph.snk")
     - name: Build NuGet Package
       run: nuget pack GiGraph.Dot.csproj -Build -Symbols -Properties Configuration=Publish -IncludeReferencedProjects -SymbolPackageFormat snupkg
       
