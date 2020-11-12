@@ -22,5 +22,8 @@ namespace GiGraph.Dot.Output.Writers.Graphs
 
         IDotSubgraphWriterRoot BeginSubgraphsSection();
         void EndSubgraphsSection();
+        
+        IDotSubgraphWriterRoot BeginClustersSection();
+        void EndClustersSection();
     }
 }

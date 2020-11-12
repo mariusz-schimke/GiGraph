@@ -9,20 +9,33 @@
 
         public virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration)
         {
+            return BeginSubgraph(preferExplicitDeclaration, _configuration.Formatting.Subgraphs.SingleLine);
+        }
+
+        public virtual void EndSubgraph()
+        {
+            EndSubgraph(_configuration.Formatting.Subgraphs.SingleLine);
+        }
+
+        public override void EndComment()
+        {
+            EmptyLine();
+        }
+
+        protected virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration, bool singleLine)
+        {
             return new DotSubgraphWriter(
-                _configuration.Formatting.Subgraphs.SingleLine
-                    ? _tokenWriter.SingleLine()
-                    : _tokenWriter,
+                singleLine ? _tokenWriter.SingleLine() : _tokenWriter,
                 _configuration,
                 preferExplicitDeclaration
             );
         }
 
-        public virtual void EndSubgraph()
+        protected virtual void EndSubgraph(bool singleLine)
         {
             _tokenWriter.ClearLingerBuffer();
 
-            if (_configuration.Formatting.Subgraphs.SingleLine)
+            if (singleLine)
             {
                 LineBreak();
             }
@@ -30,11 +43,6 @@
             {
                 EmptyLine();
             }
-        }
-
-        public override void EndComment()
-        {
-            EmptyLine();
         }
     }
 }

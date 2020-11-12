@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Output.Writers.Attributes;
 using GiGraph.Dot.Output.Writers.Attributes.Graph;
+using GiGraph.Dot.Output.Writers.Clusters;
 using GiGraph.Dot.Output.Writers.Edges;
 using GiGraph.Dot.Output.Writers.Nodes;
 using GiGraph.Dot.Output.Writers.Subgraphs;
@@ -59,6 +60,16 @@ namespace GiGraph.Dot.Output.Writers.Graphs
         }
 
         public virtual void EndSubgraphsSection()
+        {
+            EndSection();
+        }
+
+        public virtual IDotSubgraphWriterRoot BeginClustersSection()
+        {
+            return new DotClusterWriterRoot(_tokenWriter, _configuration);
+        }
+
+        public virtual void EndClustersSection()
         {
             EndSection();
         }
