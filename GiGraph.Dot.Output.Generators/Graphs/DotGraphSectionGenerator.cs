@@ -5,7 +5,6 @@ using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 using GiGraph.Dot.Output.Generators.Providers;
@@ -143,22 +142,21 @@ namespace GiGraph.Dot.Output.Generators.Graphs
 
         protected virtual void WriteSubgraphs(DotSubgraphCollection subgraphs, IDotGraphBodyWriter writer)
         {
-            WriteCommonSubgraphs(subgraphs, writer);
-        }
-
-        protected virtual void WriteClusters(DotClusterCollection clusters, IDotGraphBodyWriter writer)
-        {
-            WriteCommonSubgraphs(clusters, writer);
-        }
-
-        protected virtual void WriteCommonSubgraphs<TSubgraph>(DotCommonGraphCollection<TSubgraph> subgraphs, IDotGraphBodyWriter writer)
-            where TSubgraph : IDotCommonGraph
-        {
             if (subgraphs.Any())
             {
                 var subgraphWriterRoot = writer.BeginSubgraphsSection();
                 _entityGenerators.GetForEntity<IDotSubgraphWriterRoot>(subgraphs).Generate(subgraphs, subgraphWriterRoot);
                 writer.EndSubgraphsSection();
+            }
+        }
+
+        protected virtual void WriteClusters(DotClusterCollection clusters, IDotGraphBodyWriter writer)
+        {
+            if (clusters.Any())
+            {
+                var subgraphWriterRoot = writer.BeginClustersSection();
+                _entityGenerators.GetForEntity<IDotSubgraphWriterRoot>(clusters).Generate(clusters, subgraphWriterRoot);
+                writer.EndClustersSection();
             }
         }
     }
