@@ -1377,7 +1377,7 @@ using System;
 using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Extensions; // Build(), SaveToFile()
+using GiGraph.Dot.Extensions;
 
 namespace GiGraph.Dot.Examples
 {
@@ -1390,8 +1390,9 @@ namespace GiGraph.Dot.Examples
             // set graph attributes
             graph.Attributes.Label = "Example Flow";
             graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
-            graph.Attributes.EdgesBetweenClusters = true;
             graph.Attributes.EdgeShape = DotEdgeShape.Orthogonal;
+
+            graph.Clusters.Attributes.AllowEdgeClipping = true;
 
             // set individual node styles
             graph.Nodes.Add("Start").Attributes.Shape = DotNodeShape.Circle;
@@ -1410,7 +1411,7 @@ namespace GiGraph.Dot.Examples
                 edge.Attributes.Label = "yes";
 
                 // attach the arrow to cluster border
-                edge.Attributes.HeadClusterId = "Flow 1";
+                edge.Attributes.Head.ClusterId = "Flow 1";
             });
 
             graph.Edges.Add("Decision", "Cluster 2 Start", edge =>
@@ -1418,11 +1419,11 @@ namespace GiGraph.Dot.Examples
                 edge.Attributes.Label = "no";
 
                 // attach the arrow to cluster border
-                edge.Attributes.HeadClusterId = "Flow 2";
+                edge.Attributes.Head.ClusterId = "Flow 2";
             });
 
-            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.TailClusterId = "Flow 1";
-            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.TailClusterId = "Flow 2";
+            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.Tail.ClusterId = "Flow 1";
+            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.Tail.ClusterId = "Flow 2";
 
 
             // --- add clusters ---
@@ -1632,13 +1633,14 @@ using GiGraph.Dot.Output.Options;
 
 ...
 
-var options = new DotFormattingOptions()
+var options = new DotFormattingOptions
 {
-    SingleLine = true
+    IndentationChar = '\t',
+    IndentationSize = 1,
+    Subgraphs = { SingleLine = true }
 };
 
 Console.WriteLine(graph.Build(options));
-
 graph.SaveToFile("example.gv", options);
 ```
 
@@ -1652,7 +1654,7 @@ digraph { Hello -> "World!" }
 
 ## Syntax preferences
 
-Syntax preferences, on the other hand, may be modified using the **DotGenerationOptions** class. You may, for example, force statement delimiters (*;*) at the end of lines, or require identifiers to be quoted, even when it is not required.
+Syntax preferences, on the other hand, may be modified using the **DotSyntaxOptions** class. You may, for example, force statement delimiters (*;*) at the end of lines, or require identifiers to be quoted, even when it is not required.
 
 ```c#
 ...
@@ -1660,17 +1662,15 @@ using GiGraph.Dot.Output.Options;
 
 ...
 
-var options = DotGenerationOptions.Custom(o =>
+var options = new DotSyntaxOptions
 {
-    o.PreferQuotedIdentifiers = true;
-    o.PreferStatementDelimiter = true;
+    PreferQuotedIdentifiers = true,
+    PreferStatementDelimiter = true,
+    Attributes = { PreferQuotedValue = true }
+};
 
-    o.Attributes.PreferQuotedValue = true;
-});
-
-Console.WriteLine(graph.Build(generationOptions: options));
-
-graph.SaveToFile("example.gv", generationOptions: options);
+Console.WriteLine(graph.Build(syntaxOptions: options));
+graph.SaveToFile("example.gv", syntaxOptions: options);
 ```
 
 An example graph output based on the code above would be: 
@@ -1699,7 +1699,7 @@ digraph
 
 ### Sorting elements of the DOT script
 
-Using mentioned **DotGenerationOptions** and its *SortElements* property you may enable sorting elements of the output script alphabetically. This comes in handy when the graph is built based on input elements the order of which changes each time you generate the graph. Sometimes you need to compare the output to its other versions, and in such cases you want to see only the actual differences, not the lines that only moved from one place of the file to another, without actually changing. When you enable this setting, all attribute lists, the lists of edges, nodes, subgraphs, and clusters, will always be ordered alphabetically. This way you should get more consistent outputs on every build.
+Using mentioned **DotSyntaxOptions** and its *SortElements* property you may enable sorting elements of the output script alphabetically. This comes in handy when the graph is built based on input elements the order of which changes each time you generate the graph. Sometimes you need to compare the output to its other versions, and in such cases you want to see only the actual differences, not the lines that only moved from one place of the file to another, without actually changing. When you enable this setting, all attribute lists, the lists of edges, nodes, subgraphs, and clusters, will always be ordered alphabetically. This way you should get more consistent outputs on every build.
 
 *❕ Have in mind, however, that even though this feature does not affect the structure of the graph, it may affect the layout in some cases, but it won't probably matter for you in the described case.*
 
@@ -1732,8 +1732,7 @@ Consider the following example to see how the primary section (on the graph inst
 graph.Annotation = "the example graph (the primary section)";
 
 graph.Nodes.Attributes.Annotation = "set node color and style globally";
-graph.Nodes.Attributes.Color = Color.Orange;
-graph.Nodes.Attributes.Style = DotStyle.Filled;
+graph.Nodes.Attributes.SetFilled(Color.Orange);
 
 graph.Edges.Add("foo", "bar");
 
@@ -1748,7 +1747,7 @@ graph.Subsections.Add(subsection =>
 graph.Subsections.Add(subsection =>
 {
     subsection.Annotation = "subsection 2 - set default edge style";
-    subsection.Edges.Attributes.Style = DotStyle.Dashed;
+    subsection.Edges.Attributes.Style.LineStyle = DotLineStyle.Dashed;
     subsection.Edges.Add("quux", "fred");
 });
 ```
@@ -1806,7 +1805,7 @@ graph.Nodes.Add("foo", attrs =>
 
 // edge defaults
 graph.Edges.Attributes.Annotation = "global edge attributes";
-graph.Edges.Attributes.ArrowHead = DotArrowheadShape.Curve;
+graph.Edges.Attributes.Head.Arrowhead = DotArrowheadShape.Curve;
 
 // edges
 graph.Edges.Annotation = "edges";
