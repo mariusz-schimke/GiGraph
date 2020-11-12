@@ -56,13 +56,13 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
             // for all valid keys check if any of them is supported by any entity, and if so,
             // then it must be supported by all entities that the mapping indicates 
-            foreach (var attribute in DotAttributeKeys.GetSupportMapping())
+            foreach (var attribute in DotAttributeKeys.GetMetadataDictionary())
             {
                 var supportedByOtherEntities = false;
 
                 foreach (var entityType in Enum.GetValues(typeof(DotElementSupport)).Cast<DotElementSupport>())
                 {
-                    if (attribute.Value.HasFlag(entityType))
+                    if (attribute.Value.ElementSupport.HasFlag(entityType))
                     {
                         if (entityKeys[entityType].First().Contains(attribute.Key))
                         {
@@ -79,8 +79,8 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
         private static string[] GetSupportedKeysFor(DotElementSupport elementSupport)
         {
-            return DotAttributeKeys.GetSupportMapping()
-               .Where(item => item.Value.HasFlag(elementSupport))
+            return DotAttributeKeys.GetMetadataDictionary()
+               .Where(item => item.Value.ElementSupport.HasFlag(elementSupport))
                .Select(item => item.Key)
                .ToArray();
         }

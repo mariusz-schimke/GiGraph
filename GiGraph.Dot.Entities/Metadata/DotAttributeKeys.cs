@@ -534,21 +534,26 @@ namespace GiGraph.Dot.Entities.Metadata
         // można do GetKeyMapping() dodać zwracania ścieżki do właściwości oraz od razu metadanych właściwości
 
         /// <summary>
-        ///     Gets a dictionary where the key is an attribute key, and the value is a flags enumeration indicating what DOT elements the
-        ///     key is supported by.
+        ///     Gets a dictionary where the key is an attribute key, and the value is its metadata (what elements, layout engines, and output
+        ///     formats it is supported by).
         /// </summary>
-        public static Dictionary<string, DotElementSupport> GetSupportMapping()
+        public static Dictionary<string, DotAttributeMetadata> GetMetadataDictionary()
         {
             return typeof(DotAttributeKeys)
                .GetFields(BindingFlags.Static | BindingFlags.Public)
                .Select(property => new
                 {
                     Key = (string) property.GetValue(null),
-                    Entities = property.GetCustomAttribute<DotAttributeSupportAttribute>().Elements
+                    Metadata = property.GetCustomAttribute<DotAttributeSupportAttribute>()
                 })
                .ToDictionary(
                     key => key.Key,
-                    value => value.Entities
+                    value => new DotAttributeMetadata(
+                        value.Key,
+                        value.Metadata.Elements,
+                        value.Metadata.LayoutEngines,
+                        value.Metadata.OutputFormats
+                    )
                 );
         }
     }
