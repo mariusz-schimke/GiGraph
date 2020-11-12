@@ -33,9 +33,9 @@ jobs:
     - shell: pwsh
       name: Create SNK File
       env:
-        SNK: ${{ secrets.Snk }}
+        SNK_BASE64: ${{ secrets.Snk }}
       run: |
-        [Text.Encoding]::Utf8.GetString([Convert]::FromBase64String("$env:SNK")) > "Solution Items\GiGraph.snk"
+        [Text.Encoding]::Utf8.GetString([Convert]::FromBase64String("$env:SNK_BASE64")) > "Solution Items\GiGraph.snk"
     - name: Build NuGet Package
       run: nuget pack "GiGraph.Dot\GiGraph.Dot.csproj" -Build -Symbols -Properties Configuration=Publish -IncludeReferencedProjects -SymbolPackageFormat snupkg
       
