@@ -890,7 +890,7 @@
   "start": {
     "Key": "start",
     "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Fdp",
+    "LayoutEngineSupport": "Neato, Fdp",
     "OutputFormatSupport": "Any"
   },
   "style": {
