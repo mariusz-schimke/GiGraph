@@ -16,19 +16,19 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         public static IEnumerable<object[]> EntityAttributeKeyMappings =>
             new List<object[]>
             {
-                new object[] { DotEntityTypes.Graph, new DotGraph().Attributes.GetKeyMapping() },
-                new object[] { DotEntityTypes.Graph, new DotGraph().Clusters.Attributes.GetKeyMapping() },
-                new object[] { DotEntityTypes.Cluster, new DotCluster("").Attributes.GetKeyMapping() },
-                new object[] { DotEntityTypes.Subgraph, new DotSubgraph().Attributes.GetKeyMapping() },
-                new object[] { DotEntityTypes.Node, new DotNode("").Attributes.GetKeyMapping() },
-                new object[] { DotEntityTypes.Edge, new DotEdge("").Attributes.GetKeyMapping() }
+                new object[] { DotElementSupport.Graph, new DotGraph().Attributes.GetKeyMapping() },
+                new object[] { DotElementSupport.Graph, new DotGraph().Clusters.Attributes.GetKeyMapping() },
+                new object[] { DotElementSupport.Cluster, new DotCluster("").Attributes.GetKeyMapping() },
+                new object[] { DotElementSupport.Subgraph, new DotSubgraph().Attributes.GetKeyMapping() },
+                new object[] { DotElementSupport.Node, new DotNode("").Attributes.GetKeyMapping() },
+                new object[] { DotElementSupport.Edge, new DotEdge("").Attributes.GetKeyMapping() }
             };
 
         [Theory]
         [MemberData(nameof(EntityAttributeKeyMappings))]
-        public void entity_supports_correct_attribute_keys(DotEntityTypes entityType, Dictionary<string, string> entityKeyMapping)
+        public void entity_supports_correct_attribute_keys(DotElementSupport elementSupport, Dictionary<string, string> entityKeyMapping)
         {
-            var validKeys = GetSupportedKeysFor(entityType);
+            var validKeys = GetSupportedKeysFor(elementSupport);
 
             var result = entityKeyMapping.Keys
                .Except(validKeys.Intersect(entityKeyMapping.Keys))
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
             if (result.Any())
             {
-                throw new Exception($"Incorrect attributes supported by {entityType}: {string.Join(", ", result)}");
+                throw new Exception($"Incorrect attributes supported by {elementSupport}: {string.Join(", ", result)}");
             }
         }
 
@@ -46,7 +46,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             // get all supported keys per entity type
             var entityKeys = EntityAttributeKeyMappings
                .GroupBy(
-                    x => (DotEntityTypes) x[0],
+                    x => (DotElementSupport) x[0],
                     x => ((Dictionary<string, string>) x[1]).Keys.Select(key => key).ToArray()
                 )
                .ToLookup(
@@ -60,7 +60,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             {
                 var supportedByOtherEntities = false;
 
-                foreach (var entityType in Enum.GetValues(typeof(DotEntityTypes)).Cast<DotEntityTypes>())
+                foreach (var entityType in Enum.GetValues(typeof(DotElementSupport)).Cast<DotElementSupport>())
                 {
                     if (attribute.Value.HasFlag(entityType))
                     {
@@ -77,10 +77,10 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             }
         }
 
-        private static string[] GetSupportedKeysFor(DotEntityTypes entityType)
+        private static string[] GetSupportedKeysFor(DotElementSupport elementSupport)
         {
             return DotAttributeKeys.GetSupportMapping()
-               .Where(item => item.Value.HasFlag(entityType))
+               .Where(item => item.Value.HasFlag(elementSupport))
                .Select(item => item.Key)
                .ToArray();
         }

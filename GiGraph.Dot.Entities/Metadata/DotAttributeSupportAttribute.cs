@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Metadata
         /// <summary>
         ///     Creates a new attribute instance.
         /// </summary>
-        /// <param name="entities">
+        /// <param name="elements">
         ///     The entities the current attribute key is supported by.
         /// </param>
         /// <param name="layoutEngines">
@@ -21,12 +21,12 @@ namespace GiGraph.Dot.Entities.Metadata
         ///     The output formats the attribute key is supported by.
         /// </param>
         public DotAttributeSupportAttribute(
-            DotEntityTypes entities,
+            DotElementSupport elements,
             DotLayoutEngineSupport layoutEngines = DotLayoutEngineSupport.Any,
             DotOutputFormatSupport outputFormats = DotOutputFormatSupport.Any
         )
         {
-            Entities = entities;
+            Elements = elements;
             LayoutEngines = layoutEngines;
             OutputFormats = outputFormats;
         }
@@ -34,7 +34,7 @@ namespace GiGraph.Dot.Entities.Metadata
         /// <summary>
         ///     Gets the entities the current attribute key is supported by.
         /// </summary>
-        public virtual DotEntityTypes Entities { get; }
+        public virtual DotElementSupport Elements { get; }
 
         /// <summary>
         ///     Gets the layout engines the attribute key is supported by.
