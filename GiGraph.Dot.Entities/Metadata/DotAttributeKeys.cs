@@ -458,7 +458,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Graph)]
         public const string Splines = "splines";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Fdp)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato | DotLayoutEngineSupport.Fdp)]
         public const string Start = "start";
 
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge)]

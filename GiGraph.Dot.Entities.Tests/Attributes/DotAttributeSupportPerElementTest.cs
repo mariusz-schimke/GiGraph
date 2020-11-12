@@ -1,12 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Entities.Clusters;
-using GiGraph.Dot.Entities.Edges;
-using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Metadata;
-using GiGraph.Dot.Entities.Nodes;
-using GiGraph.Dot.Entities.Subgraphs;
 using Snapshooter.Xunit;
 using Xunit;
 
@@ -15,24 +10,11 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
     public class DotAttributeSupportPerElementTest
     {
         public static IEnumerable<object[]> ElementAttributesMetadata =>
-            CreateElementAttributesMetadata().Select(x => new object[]
+            DotElementAttributesMetadataFactory.Create().Select(x => new object[]
             {
                 x.Element,
                 x.Attributes
             });
-
-        public static IEnumerable<(DotElementSupport Element, Dictionary<string, DotAttributePropertyMetadata> Attributes)> CreateElementAttributesMetadata()
-        {
-            return new List<(DotElementSupport, Dictionary<string, DotAttributePropertyMetadata>)>
-            {
-                (DotElementSupport.Graph, new DotGraph().Attributes.GetMetadataDictionary()),
-                (DotElementSupport.Graph, new DotGraph().Clusters.Attributes.GetMetadataDictionary()),
-                (DotElementSupport.Cluster, new DotCluster("").Attributes.GetMetadataDictionary()),
-                (DotElementSupport.Subgraph, new DotSubgraph().Attributes.GetMetadataDictionary()),
-                (DotElementSupport.Node, new DotNode("").Attributes.GetMetadataDictionary()),
-                (DotElementSupport.Edge, new DotEdge("").Attributes.GetMetadataDictionary())
-            };
-        }
 
         [Theory]
         [MemberData(nameof(ElementAttributesMetadata))]
@@ -54,7 +36,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         public void attribute_key_is_supported_by_all_required_elements_or_by_none()
         {
             // get all supported keys per entity type
-            var entityKeys = CreateElementAttributesMetadata()
+            var entityKeys = DotElementAttributesMetadataFactory.Create()
                .GroupBy(
                     key => key.Element,
                     element => element.Attributes.Keys.Select(key => key).ToArray()
@@ -90,7 +72,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         [Fact]
         public void property_key_mappings_are_compliant_with_the_documentation()
         {
-            var attributesMetadata = CreateElementAttributesMetadata();
+            var attributesMetadata = DotElementAttributesMetadataFactory.Create();
 
             var keyLookup = attributesMetadata
                .SelectMany(metadata => metadata.Attributes.Select(attribute => new

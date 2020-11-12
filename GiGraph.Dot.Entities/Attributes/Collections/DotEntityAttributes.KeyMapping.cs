@@ -29,8 +29,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             Tuple<DotEntityAttributes, PropertyInfo>[] basePath
         )
         {
-            // don't include private properties (private properties with a DOT key assigned may be hidden purposefully; see the Style properties for instance)
-            var properties = GetType().GetProperties(AttributeKeyPropertyBindingFlags & ~BindingFlags.NonPublic);
+            var properties = GetType().GetProperties(AttributeKeyPropertyBindingFlags);
 
             foreach (var property in properties)
             {
