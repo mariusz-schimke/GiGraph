@@ -22,14 +22,19 @@ namespace GiGraph.Dot.Output.Writers
 
         public virtual void EndComment()
         {
-            _tokenWriter.LineBreak()
-               .Indentation(linger: true);
+            LineBreak();
         }
 
         protected virtual void EmptyLine()
         {
             _tokenWriter.LineBreak()
                .LineBreak(linger: true)
+               .Indentation(linger: true);
+        }
+        
+        protected virtual void LineBreak()
+        {
+            _tokenWriter.LineBreak()
                .Indentation(linger: true);
         }
     }

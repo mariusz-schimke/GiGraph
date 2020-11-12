@@ -19,8 +19,7 @@
                 _tokenWriter.StatementEnd();
             }
 
-            _tokenWriter.LineBreak()
-               .Indentation(linger: true);
+            LineBreak();
         }
 
         public override void EndComment()

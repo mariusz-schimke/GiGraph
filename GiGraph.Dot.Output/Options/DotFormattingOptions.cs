@@ -38,6 +38,11 @@ namespace GiGraph.Dot.Output.Options
         public virtual EdgeOptions Edges { get; } = new EdgeOptions();
 
         /// <summary>
+        ///     Gets subgraph formatting options.
+        /// </summary>
+        public virtual SubgraphOptions Subgraphs { get; } = new SubgraphOptions();
+
+        /// <summary>
         ///     An optional text encoder to use when writing text to the output stream. May become useful when the DOT visualization tool you
         ///     use fails processing some special or national characters. In such case replacing them with their HTML-code equivalents might
         ///     help.

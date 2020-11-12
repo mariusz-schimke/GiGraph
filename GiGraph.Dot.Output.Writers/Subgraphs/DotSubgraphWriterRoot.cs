@@ -9,13 +9,27 @@
 
         public virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration)
         {
-            return new DotSubgraphWriter(_tokenWriter, _configuration, preferExplicitDeclaration);
+            return new DotSubgraphWriter(
+                _configuration.Formatting.Subgraphs.SingleLine
+                    ? _tokenWriter.SingleLine()
+                    : _tokenWriter,
+                _configuration,
+                preferExplicitDeclaration
+            );
         }
 
         public virtual void EndSubgraph()
         {
             _tokenWriter.ClearLingerBuffer();
-            EmptyLine();
+
+            if (_configuration.Formatting.Subgraphs.SingleLine)
+            {
+                LineBreak();
+            }
+            else
+            {
+                EmptyLine();
+            }
         }
 
         public override void EndComment()
