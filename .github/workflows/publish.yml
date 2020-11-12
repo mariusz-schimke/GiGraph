@@ -37,5 +37,5 @@ jobs:
       run: |
         echo %SNK% > "Solution Items\GiGraph.snk"
     - name: Build NuGet Package
-      run: nuget pack GiGraph.Dot.csproj -Build -Symbols -Properties Configuration=Publish -IncludeReferencedProjects -SymbolPackageFormat snupkg
+      run: nuget pack "GiGraph.Dot\GiGraph.Dot.csproj" -Build -Symbols -Properties Configuration=Publish -IncludeReferencedProjects -SymbolPackageFormat snupkg
       
