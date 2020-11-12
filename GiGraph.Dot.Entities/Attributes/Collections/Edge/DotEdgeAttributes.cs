@@ -101,14 +101,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotEdgeAttributes.Label" />
         public override DotLabel Label
         {
             get => base.Label;
             set => base.Label = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotEdgeAttributes.ColorScheme" />
         public override string ColorScheme
         {
             get => base.ColorScheme;

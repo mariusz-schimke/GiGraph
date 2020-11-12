@@ -79,70 +79,70 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotNodeAttributes.Label" />
         public override DotLabel Label
         {
             get => base.Label;
             set => base.Label = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotNodeAttributes.ColorScheme" />
         public override string ColorScheme
         {
             get => base.ColorScheme;
             set => base.ColorScheme = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotNodeAttributes.Color" />
         public override DotColorDefinition Color
         {
             get => base.Color;
             set => base.Color = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotNodeAttributes.FillColor" />
         public override DotColorDefinition FillColor
         {
             get => base.FillColor;
             set => base.FillColor = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotNodeAttributes.GradientAngle" />
         public override int? GradientAngle
         {
             get => base.GradientAngle;
             set => base.GradientAngle = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotNodeAttributes.VerticalLabelAlignment" />
         public override DotVerticalAlignment? VerticalLabelAlignment
         {
             get => base.VerticalLabelAlignment;
             set => base.VerticalLabelAlignment = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotNodeAttributes.Tooltip" />
         public override DotEscapeString Tooltip
         {
             get => base.Tooltip;
             set => base.Tooltip = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotNodeAttributes.Margin" />
         public override DotPoint Margin
         {
             get => base.Margin;
             set => base.Margin = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotNodeAttributes.BorderWidth" />
         public override double? BorderWidth
         {
             get => base.BorderWidth;
             set => base.BorderWidth = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotNodeAttributes.SortIndex" />
         public override int? SortIndex
         {
             get => base.SortIndex;

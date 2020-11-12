@@ -62,70 +62,70 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotClusterAttributes.Label" />
         public override DotLabel Label
         {
             get => base.Label;
             set => base.Label = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotClusterAttributes.ColorScheme" />
         public override string ColorScheme
         {
             get => base.ColorScheme;
             set => base.ColorScheme = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotClusterAttributes.Color" />
         public override DotColorDefinition Color
         {
             get => base.Color;
             set => base.Color = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotClusterAttributes.FillColor" />
         public override DotColorDefinition FillColor
         {
             get => base.FillColor;
             set => base.FillColor = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotClusterAttributes.GradientAngle" />
         public override int? GradientAngle
         {
             get => base.GradientAngle;
             set => base.GradientAngle = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotClusterAttributes.VerticalLabelAlignment" />
         public override DotVerticalAlignment? VerticalLabelAlignment
         {
             get => base.VerticalLabelAlignment;
             set => base.VerticalLabelAlignment = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotClusterAttributes.Tooltip" />
         public override DotEscapeString Tooltip
         {
             get => base.Tooltip;
             set => base.Tooltip = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotClusterAttributes.Margin" />
         public override DotPoint Margin
         {
             get => base.Margin;
             set => base.Margin = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotClusterAttributes.BorderWidth" />
         public override double? BorderWidth
         {
             get => base.BorderWidth;
             set => base.BorderWidth = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotClusterAttributes.SortIndex" />
         public override int? SortIndex
         {
             get => base.SortIndex;

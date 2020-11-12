@@ -64,14 +64,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotGraphAttributes.Label" />
         public override DotLabel Label
         {
             get => base.Label;
             set => base.Label = value;
         }
 
-        // overridden to inherit comment from interface
+        /// <inheritdoc cref="IDotGraphAttributes.ColorScheme" />
         public override string ColorScheme
         {
             get => base.ColorScheme;
