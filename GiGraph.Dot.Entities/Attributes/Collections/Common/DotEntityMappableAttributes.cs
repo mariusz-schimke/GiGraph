@@ -19,7 +19,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         /// </summary>
         public virtual Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary()
         {
-            var attributesMetadata = DotAttributeKeys.GetMetadataDictionary();
             var properties = GetPathsOfEntityAttributeProperties();
 
             return properties
@@ -27,7 +26,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
                 {
                     var property = path.Last();
                     var key = property.Property.GetCustomAttribute<DotAttributeKeyAttribute>().Key;
-                    var metadata = attributesMetadata[key];
+                    var metadata = DotAttributeKeys.MetadataDictionary[key];
 
                     return new DotAttributePropertyMetadata(
                         key,

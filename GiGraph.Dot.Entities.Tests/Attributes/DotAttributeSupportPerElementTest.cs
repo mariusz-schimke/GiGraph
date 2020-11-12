@@ -14,14 +14,14 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 {
     public class DotAttributeSupportPerElementTest
     {
-        public static IEnumerable<object[]> EntityAttributesMetadata =>
-            CreateEntityAttributesMetadata().Select(x => new object[]
+        public static IEnumerable<object[]> ElementAttributesMetadata =>
+            CreateElementAttributesMetadata().Select(x => new object[]
             {
                 x.Element,
                 x.Attributes
             });
 
-        public static IEnumerable<(DotElementSupport Element, Dictionary<string, DotAttributePropertyMetadata> Attributes)> CreateEntityAttributesMetadata()
+        public static IEnumerable<(DotElementSupport Element, Dictionary<string, DotAttributePropertyMetadata> Attributes)> CreateElementAttributesMetadata()
         {
             return new List<(DotElementSupport, Dictionary<string, DotAttributePropertyMetadata>)>
             {
@@ -35,13 +35,13 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         }
 
         [Theory]
-        [MemberData(nameof(EntityAttributesMetadata))]
-        public void element_supports_correct_attribute_keys(DotElementSupport element, Dictionary<string, DotAttributePropertyMetadata> entityKeyMapping)
+        [MemberData(nameof(ElementAttributesMetadata))]
+        public void element_supports_correct_attribute_keys(DotElementSupport element, Dictionary<string, DotAttributePropertyMetadata> elementAttributesMetadata)
         {
             var validKeys = GetSupportedKeysFor(element);
 
-            var result = entityKeyMapping.Keys
-               .Except(validKeys.Intersect(entityKeyMapping.Keys))
+            var result = elementAttributesMetadata.Keys
+               .Except(validKeys.Intersect(elementAttributesMetadata.Keys))
                .ToArray();
 
             if (result.Any())
@@ -54,7 +54,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         public void attribute_key_is_supported_by_all_required_elements_or_by_none()
         {
             // get all supported keys per entity type
-            var entityKeys = CreateEntityAttributesMetadata()
+            var entityKeys = CreateElementAttributesMetadata()
                .GroupBy(
                     key => key.Element,
                     element => element.Attributes.Keys.Select(key => key).ToArray()
@@ -66,7 +66,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
             // for all valid keys check if any of them is supported by any entity, and if so,
             // then it must be supported by all entities that the mapping indicates 
-            foreach (var attribute in DotAttributeKeys.GetMetadataDictionary())
+            foreach (var attribute in DotAttributeKeys.MetadataDictionary)
             {
                 var supportedByOtherEntities = false;
 
@@ -90,7 +90,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         [Fact]
         public void property_key_mappings_are_compliant_with_the_documentation()
         {
-            var attributesMetadata = CreateEntityAttributesMetadata();
+            var attributesMetadata = CreateElementAttributesMetadata();
 
             var keyLookup = attributesMetadata
                .SelectMany(metadata => metadata.Attributes.Select(attribute => new
@@ -122,7 +122,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
         private static string[] GetSupportedKeysFor(DotElementSupport elementSupport)
         {
-            return DotAttributeKeys.GetMetadataDictionary()
+            return DotAttributeKeys.MetadataDictionary
                .Where(item => item.Value.ElementSupport.HasFlag(elementSupport))
                .Select(item => item.Key)
                .ToArray();

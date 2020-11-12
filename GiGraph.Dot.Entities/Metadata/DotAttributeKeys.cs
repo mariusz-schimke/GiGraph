@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+
+// TODO: add info to all property comments what engine/format is supported by
 
 namespace GiGraph.Dot.Entities.Metadata
 {
@@ -529,15 +532,15 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Node)]
         public const string Z = "z";
 
-        // TODO: można dodać wtedy do GetKeyMapping() parametr określający engine
-        // można też dodać metodę z lambdą na kolekcji atrybutów, która pobiera metadane dla atrybutu
-        // można do GetKeyMapping() dodać zwracania ścieżki do właściwości oraz od razu metadanych właściwości
+        private static readonly Lazy<Dictionary<string, DotAttributeMetadata>> _metadata = new Lazy<Dictionary<string, DotAttributeMetadata>>(BuildMetadataDictionary);
 
         /// <summary>
         ///     Gets a dictionary where the key is an attribute key, and the value is its metadata (what elements, layout engines, and output
         ///     formats it is supported by).
         /// </summary>
-        public static Dictionary<string, DotAttributeMetadata> GetMetadataDictionary()
+        public static Dictionary<string, DotAttributeMetadata> MetadataDictionary => _metadata.Value;
+
+        private static Dictionary<string, DotAttributeMetadata> BuildMetadataDictionary()
         {
             return typeof(DotAttributeKeys)
                .GetFields(BindingFlags.Static | BindingFlags.Public)
