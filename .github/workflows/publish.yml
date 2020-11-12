@@ -23,7 +23,7 @@ jobs:
         nuget-api-key: ${{ secrets.NuGetApiKey }}
         nuget-version: 'latest'
     - name: Show NuGet Version
-      run: nuget --version
+      run: nuget help
     - name: Install dependencies
       run: dotnet restore
     - name: Build
