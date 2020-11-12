@@ -20,14 +20,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             var method = (MethodInfo) accessor;
 
-            return TryGetKey(method, out var key)
+            return _attributeKeyLookup.TryGetKey(method.GetRuntimeBaseDefinition(), out var key)
                 ? key
                 : throw new KeyNotFoundException($"No attribute key is defined for the '{accessor}' property accessor of the {accessor.DeclaringType} type.");
-        }
-
-        protected virtual bool TryGetKey(MethodInfo accessor, out string key)
-        {
-            return _attributeKeyLookup.TryGetKey(accessor.GetRuntimeBaseDefinition(), out key);
         }
 
         protected internal virtual string GetKey(PropertyInfo property)

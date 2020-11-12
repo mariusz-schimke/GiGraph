@@ -1,5 +1,7 @@
 using System;
 using System.Linq;
+using System.Reflection;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Graphs;
@@ -50,28 +52,56 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                     target = property.GetValue(target);
                 }
 
-                try
-                {
-                    if (targetProperty.GetGetMethod(nonPublic: true) is {})
-                    {
-                        targetProperty.GetValue(target);
-                    }
-                }
-                catch (Exception e)
-                {
-                    throw new Exception($"Error reading property {targetProperty.Name}", e);
-                }
+                InvokeGetterValid(target, targetProperty);
+                InvokeSetterValid(target, targetProperty);
 
-                try
+                EnsureInterfacePropertiesHaveAttributeKeysAssigned(target, targetProperty);
+            }
+        }
+
+        private static void InvokeSetterValid(object target, PropertyInfo targetProperty)
+        {
+            try
+            {
+                if (targetProperty.GetSetMethod(nonPublic: true) is {})
                 {
-                    if (targetProperty.GetSetMethod(nonPublic: true) is {})
-                    {
-                        targetProperty.SetValue(target, null);
-                    }
+                    targetProperty.SetValue(target, null);
                 }
-                catch (Exception e)
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Error writing property {targetProperty.Name}", e);
+            }
+        }
+
+        private static void InvokeGetterValid(object target, PropertyInfo targetProperty)
+        {
+            try
+            {
+                if (targetProperty.GetGetMethod(nonPublic: true) is {})
                 {
-                    throw new Exception($"Error writing property {targetProperty.Name}", e);
+                    targetProperty.GetValue(target);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Error reading property {targetProperty.Name}", e);
+            }
+        }
+
+        private static void EnsureInterfacePropertiesHaveAttributeKeysAssigned(object target, PropertyInfo targetProperty)
+        {
+            var ignore = new[] { typeof(IDotAnnotatable) };
+
+            foreach (var @interface in targetProperty.ReflectedType.GetInterfaces().Where(i => !ignore.Contains(i)))
+            {
+                foreach (var property in @interface.GetProperties(DotEntityAttributes.AttributeKeyPropertyBindingFlags))
+                {
+                    var getKey = (Func<PropertyInfo, string>) Delegate.CreateDelegate(typeof(Func<PropertyInfo, string>), target, "GetKey");
+
+                    // should throw an exception if no key is available for a property
+                    var key = getKey(property);
+                    Assert.NotEmpty(key);
                 }
             }
         }
