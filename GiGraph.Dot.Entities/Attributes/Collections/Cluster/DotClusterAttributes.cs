@@ -52,8 +52,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// <summary>
         ///     Style options.
         /// </summary>
-        // the attribute key is added here redundantly so it appears in attribute key mapping
-        [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
         public virtual DotClusterStyleAttributes Style { get; }
 
         // accessible only through the interface

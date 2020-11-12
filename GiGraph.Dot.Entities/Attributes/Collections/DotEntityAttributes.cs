@@ -33,11 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         protected internal virtual string GetKey(PropertyInfo property)
         {
             // the lookup contains only interface properties and property accessors of implementing classes
-            return _attributeKeyLookup.TryGetKey(property, out var key) ||
-                   // the following calls are used only when retrieving a complete attribute key mapping, not for the base functionality of the library,
-                   // so including properties of implementing classes in the lookup (to optimize this use case) seems redundant
-                   TryGetKey(property.GetMethod, out key) ||
-                   TryGetKey(property.SetMethod, out key)
+            return _attributeKeyLookup.TryGetKey(property, out var key)
                 ? key
                 : throw new KeyNotFoundException($"No attribute key is defined for the '{property}' property of the {property.DeclaringType} type.");
         }

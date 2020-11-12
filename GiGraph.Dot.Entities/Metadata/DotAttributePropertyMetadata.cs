@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Metadata
             : base(key, elementSupport, layoutEngineSupport, outputFormatSupport)
         {
             _propertyPath = propertyPath;
-            PropertyPath = string.Join(".", propertyPath.Select(property => property.Name));
+            PropertyPath = string.Join(".", propertyPath.Select(property => property.Name.Split('.').Last()));
         }
 
         /// <summary>
