@@ -1,8 +1,0 @@
-﻿{
-  "clusterrank": "VisualizationMode",
-  "color": "Color",
-  "compound": "AllowEdgeClipping",
-  "fillcolor": "FillColor",
-  "pencolor": "BorderColor",
-  "penwidth": "BorderWidth"
-}

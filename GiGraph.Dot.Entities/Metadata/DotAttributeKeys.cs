@@ -548,11 +548,11 @@ namespace GiGraph.Dot.Entities.Metadata
                 })
                .ToDictionary(
                     key => key.Key,
-                    value => new DotAttributeMetadata(
-                        value.Key,
-                        value.Metadata.Elements,
-                        value.Metadata.LayoutEngines,
-                        value.Metadata.OutputFormats
+                    element => new DotAttributeMetadata(
+                        element.Key,
+                        element.Metadata.Elements,
+                        element.Metadata.LayoutEngines,
+                        element.Metadata.OutputFormats
                     )
                 );
         }

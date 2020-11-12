@@ -105,7 +105,7 @@ namespace GiGraph.Dot.Entities.Metadata
                .Where(result => result.Attribute.Value is {})
                .ToDictionary(
                     key => key.Attribute.Value,
-                    value => (TEnum) value.Field.GetValue(null)
+                    element => (TEnum) element.Field.GetValue(null)
                 );
         }
     }
