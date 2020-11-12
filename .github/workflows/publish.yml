@@ -29,13 +29,13 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test --no-restore
     - shell: pwsh
       name: Create SNK File
       env:
         SNK: ${{ secrets.Snk }}
       run: |
-        echo %SNK% > "Solution Items\GiGraph.snk"
+        [Text.Encoding]::Utf8.GetString([Convert]::FromBase64String("$env:SNK")) > "Solution Items\GiGraph.snk"
     - name: Build NuGet Package
       run: nuget pack "GiGraph.Dot\GiGraph.Dot.csproj" -Build -Symbols -Properties Configuration=Publish -IncludeReferencedProjects -SymbolPackageFormat snupkg
       
