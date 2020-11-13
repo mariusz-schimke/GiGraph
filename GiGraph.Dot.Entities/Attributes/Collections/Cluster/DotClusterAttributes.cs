@@ -76,14 +76,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => base.ColorScheme = value;
         }
 
-        /// <inheritdoc cref="IDotClusterAttributes.Color" />
+        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.Color" />
         public override DotColorDefinition Color
         {
             get => base.Color;
             set => base.Color = value;
         }
 
-        /// <inheritdoc cref="IDotClusterAttributes.FillColor" />
+        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.FillColor" />
         public override DotColorDefinition FillColor
         {
             get => base.FillColor;
@@ -118,7 +118,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => base.Margin = value;
         }
 
-        /// <inheritdoc cref="IDotClusterAttributes.BorderWidth" />
+        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderWidth" />
         public override double? BorderWidth
         {
             get => base.BorderWidth;
