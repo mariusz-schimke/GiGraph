@@ -4,7 +4,7 @@ on:
   push:
     branches: [ ]
   pull_request:
-    branches: [ publish]
+    branches: [ publish ]
 
 jobs:
   build:
@@ -17,17 +17,27 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.301
+    - name: Setup NuGet.exe
+      uses: nuget/setup-nuget@v1
+      with:
+        nuget-api-key: ${{ secrets.NuGetApiKey }}
+        nuget-version: 'latest'
     - name: Install dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test --no-restore
     - shell: pwsh
+      name: Create SNK File
       env:
         SNK: ${{ secrets.Snk }}
       run: |
-        get-content env:SNK > "..\Solution Items\GiGraph.snk"
+        $snk = [Convert]::FromBase64String("$env:SNK")
+        Set-Content "Solution Items\GiGraph.snk" -Value $snk -AsByteStream
     - name: Build NuGet Package
-      run: nuget pack GiGraph.Dot.csproj -Build -Symbols -Properties Configuration=Publish -IncludeReferencedProjects -SymbolPackageFormat snupkg
-      
+      run: |
+        nuget pack "GiGraph.Dot\GiGraph.Dot.csproj" -Build -Symbols -Properties Configuration=Publish -IncludeReferencedProjects -SymbolPackageFormat snupkg -OutputFileNamesWithoutVersion
+    - name: Publish NuGet Package
+      run: |
+        nuget push GiGraph.Dot.nupkg -Source https://api.nuget.org/v3/index.json
