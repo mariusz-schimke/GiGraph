@@ -9,20 +9,28 @@ namespace GiGraph.Dot.Entities.Edges
     ///     Represents:
     ///     <list type="bullet">
     ///         <item>
-    ///             an edge that joins two nodes, when <typeparamref name="TTail" /> and <typeparamref name="THead" /> are both
-    ///             <see cref="DotEndpoint" />,
+    ///             <description>
+    ///                 an edge that joins two nodes, when <typeparamref name="TTail" /> and <typeparamref name="THead" /> are both of
+    ///                 <see cref="DotEndpoint" /> type,
+    ///             </description>
     ///         </item>
     ///         <item>
-    ///             a group of edges that join one <typeparamref name="TTail" /> <see cref="DotEndpoint" /> node to multiple
-    ///             <typeparamref name="THead" /> <see cref="DotEndpointGroup" /> nodes,
+    ///             <description>
+    ///                 a group of edges that join one <typeparamref name="TTail" /> <see cref="DotEndpoint" /> node to multiple
+    ///                 <typeparamref name="THead" /> <see cref="DotEndpointGroup" /> nodes,
+    ///             </description>
     ///         </item>
     ///         <item>
-    ///             a group of edges that join multiple <typeparamref name="TTail" /> <see cref="DotEndpointGroup" /> nodes to one
-    ///             <typeparamref name="THead" /> <see cref="DotEndpoint" /> node,
+    ///             <description>
+    ///                 a group of edges that join multiple <typeparamref name="TTail" /> <see cref="DotEndpointGroup" /> nodes to one
+    ///                 <typeparamref name="THead" /> <see cref="DotEndpoint" /> node,
+    ///             </description>
     ///         </item>
     ///         <item>
-    ///             a group of edges that join multiple <typeparamref name="TTail" /> <see cref="DotEndpointGroup" /> nodes to multiple
-    ///             <typeparamref name="THead" /> <see cref="DotEndpointGroup" /> nodes.
+    ///             <description>
+    ///                 a group of edges that join multiple <typeparamref name="TTail" /> <see cref="DotEndpointGroup" /> nodes to
+    ///                 multiple <typeparamref name="THead" /> <see cref="DotEndpointGroup" /> nodes.
+    ///             </description>
     ///         </item>
     ///     </list>
     /// </summary>
@@ -36,7 +44,7 @@ namespace GiGraph.Dot.Entities.Edges
         where TTail : DotEndpointDefinition, IDotOrderable
         where THead : DotEndpointDefinition, IDotOrderable
     {
-        protected DotEdge(TTail tail, THead head, IDotEdgeAttributeCollection attributes)
+        protected DotEdge(TTail tail, THead head, DotEdgeAttributes attributes)
             : base(attributes)
         {
             Tail = tail ?? throw new ArgumentNullException(nameof(tail), "Edge tail cannot be null.");
@@ -53,7 +61,7 @@ namespace GiGraph.Dot.Entities.Edges
         ///     The head (destination, right) endpoint.
         /// </param>
         public DotEdge(TTail tail, THead head)
-            : this(tail, head, new DotEdgeAttributeCollection())
+            : this(tail, head, new DotEdgeAttributes())
         {
         }
 

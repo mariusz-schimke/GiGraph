@@ -6,8 +6,8 @@ namespace GiGraph.Dot.Output.Writers.Subgraphs
     {
         protected readonly bool _preferExplicitSubgraphKeyword;
 
-        public DotSubgraphWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool preferExplicitSubgraphKeyword)
-            : base(tokenWriter, context)
+        public DotSubgraphWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool preferExplicitSubgraphKeyword)
+            : base(tokenWriter, configuration)
         {
             _preferExplicitSubgraphKeyword = preferExplicitSubgraphKeyword;
         }

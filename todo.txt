@@ -1,14 +1,9 @@
-Road map:
+To do:
 1. Gradually add support for all available attributes.
-2. Verify the correctness of XML documentations.
-
-Other:
-1. Check if methods are coherently marked as virtual.
-2. Check if all Set method overloads of the DotAttributeCollection are exposed by the IDotAttributeCollection interface.
-2. Some attributes are settable only on specified types of elements, but it turns out that the documentation is not always precise, and other elements support those attributes too.
+2. Add info to all property comments that determines what engine/format a given property is supported by, and also their default values.
+3. Verify the correctness of XML documentations.
+4. Check if methods and properties are coherently marked as virtual (or remove the virtual specifier from everywhere where not useful internally?).
 
 Nice-to-haves:
-1. Implement predefined HTML nodes: https://www.graphviz.org/doc/info/shapes.html#polygon.
-2. Attribute types, even if not exposed as properties.
-
-Useful examples: https://www.graphviz.org/pdf/dotguide.pdf
+1. Implement predefined HTML nodes: https://www.graphviz.org/doc/info/shapes.html#html.
+2. Add attribute type implementations, even if not exposed as properties.

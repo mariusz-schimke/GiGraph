@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
 {
     public class DotNodeGroupGenerator : DotNodeGenerator<DotNodeGroup>
     {
-        public DotNodeGroupGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotNodeGroupGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
         protected override void WriteEntity(DotNodeGroup nodeGroup, IDotNodeWriter writer)
         {
             WriteIdentifiers(nodeGroup.NodeIds, writer);
-            WriteAttributes(nodeGroup.Attributes, writer);
+            WriteAttributes(nodeGroup.Attributes.Collection, writer);
         }
 
         protected virtual void WriteIdentifiers(IEnumerable<string> nodeIds, IDotNodeWriter writer)
@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
                 throw new ArgumentException("At least one node identifier has to be specified for a node group.", nameof(nodeIds));
             }
 
-            var orderedNodeIds = _options.OrderElements
+            var orderedNodeIds = _options.SortElements
                 ? nodeIds.OrderBy(nodeId => nodeId)
                 : nodeIds;
 

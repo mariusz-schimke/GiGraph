@@ -11,14 +11,14 @@ namespace GiGraph.Dot.Output.Generators.Attributes
     public abstract class DotAttributeCollectionGenerator<TWriter> : DotEntityGenerator<DotAttributeCollection, TWriter>
         where TWriter : IDotEntityWriter
     {
-        protected DotAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        protected DotAttributeCollectionGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
         protected override void WriteEntity(DotAttributeCollection attributes, TWriter writer)
         {
-            var orderedAttributes = _options.OrderElements
+            var orderedAttributes = _options.SortElements
                 ? attributes.Values
                    .Cast<IDotOrderable>()
                    .OrderBy(attribute => attribute.OrderingKey)

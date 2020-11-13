@@ -27,7 +27,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     </para>
         ///     <para>
         ///         Pass null to use the color scheme set on the element, or to use the default scheme if none was set. Pass
-        ///         <see cref="DotColorSchemes.Default" /> to make the color be evaluated using the default X11 naming.
+        ///         <see cref="DotColorSchemes.Default" /> to make the color be evaluated using the default
+        ///         <see cref="DotColorSchemes.X11" /> naming.
         ///     </para>
         /// </param>
         public DotWeightedColor(Color color, double weight, string scheme = null)
@@ -43,8 +44,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// </summary>
         /// <param name="name">
         ///     The color name to initialize the instance with. The name will be evaluated in the context of the <paramref name="scheme" />
-        ///     if specified, in the context of the scheme applied to the current element if any, or in the context of the default X11 scheme
-        ///     otherwise.
+        ///     if specified, in the context of the scheme applied to the current element if any, or in the context of the default
+        ///     <see cref="DotColorSchemes.X11" /> scheme otherwise.
         /// </param>
         /// <param name="weight">
         ///     The weight of the color in the range 0 ≤ <paramref name="weight" /> ≤ 1. Represents the proportion of the area covered with
@@ -57,7 +58,8 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     </para>
         ///     <para>
         ///         Pass null to use the color scheme set on the element, or to use the default scheme if none was set. Pass
-        ///         <see cref="DotColorSchemes.Default" /> to make the color be evaluated using the default X11 naming.
+        ///         <see cref="DotColorSchemes.Default" /> to make the color be evaluated using the default
+        ///         <see cref="DotColorSchemes.X11" /> naming.
         ///     </para>
         /// </param>
         public DotWeightedColor(string name, double weight, string scheme = null)
@@ -96,7 +98,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
             return $"{base.ToString()}/{Weight.ToString(CultureInfo.InvariantCulture)}";
         }
 
-        protected internal override string GetDotEncodedColor(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncodedColor(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var color = base.GetDotEncodedColor(options, syntaxRules);
             return $"{color};{Weight.ToString(CultureInfo.InvariantCulture)}";

@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Output.Generators.Attributes.Node
 {
     public class DotGlobalNodeAttributesGenerator : DotEntityWithAttributeListGenerator<DotAttributeCollection, IDotGlobalNodeAttributesWriter>
     {
-        public DotGlobalNodeAttributesGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotGlobalNodeAttributesGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

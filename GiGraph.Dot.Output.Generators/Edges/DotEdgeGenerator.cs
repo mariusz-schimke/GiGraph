@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Output.Generators.Edges
 {
     public class DotEdgeGenerator : DotEntityWithAttributeListGenerator<DotEdgeDefinition, IDotEdgeWriter>
     {
-        public DotEdgeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotEdgeGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Output.Generators.Edges
         protected override void WriteEntity(DotEdgeDefinition edge, IDotEdgeWriter writer)
         {
             WriteEdges(edge.Endpoints, writer);
-            WriteAttributes(edge.Attributes, writer);
+            WriteAttributes(edge.Attributes.Collection, writer);
         }
 
         protected virtual void WriteEdges(IEnumerable<DotEndpointDefinition> endpoints, IDotEdgeWriter writer)
@@ -63,7 +63,7 @@ namespace GiGraph.Dot.Output.Generators.Edges
 
         protected virtual void WriteEndpointGroup(DotEndpointGroup endpointGroup, IDotEdgeWriter writer)
         {
-            var subgraphWriter = writer.BeginSubgraph(_options.Subgraphs.PreferExplicitKeyword);
+            var subgraphWriter = writer.BeginSubgraph(_options.Subgraphs.PreferExplicitDeclaration);
             _entityGenerators.GetForEntity<IDotSubgraphWriter>(endpointGroup.Subgraph).Generate(endpointGroup.Subgraph, subgraphWriter);
             writer.EndSubgraph();
         }

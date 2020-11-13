@@ -4,6 +4,6 @@ namespace GiGraph.Dot.Output.Generators.Providers
 {
     public interface IDotEntityGeneratorsProviderBuilder
     {
-        IDotEntityGeneratorsProvider Build(DotSyntaxRules syntaxRules, DotGenerationOptions options);
+        IDotEntityGeneratorsProvider Build(DotSyntaxRules syntaxRules, DotSyntaxOptions options);
     }
 }

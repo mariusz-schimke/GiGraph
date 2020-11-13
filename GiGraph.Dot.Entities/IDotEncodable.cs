@@ -13,6 +13,6 @@ namespace GiGraph.Dot.Entities
         /// <param name="syntaxRules">
         ///     The DOT syntax rules to use.
         /// </param>
-        string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules);
+        string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
     }
 }

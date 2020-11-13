@@ -12,29 +12,33 @@
     
     <icon>content\icon.png</icon>
     
-    <projectUrl>https://github.com/mariusz-schimke/GiGraph</projectUrl>
-    <repository type="git" url="https://github.com/mariusz-schimke/GiGraph.git" branch="master" commit="1dda51dd4bd068cf536c69f7edab404bbf79cd91" />
+    <projectUrl>https://github.com/$repository$</projectUrl>
+    <repository type="git" url="https://github.com/$repository$.git" branch="$branch$" commit="$commit$" />
 
     <license type="file">content\LICENSE.txt</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     
     <summary>Simple yet versatile library for generating graphs in the DOT language.</summary>
     
-    <description>A simple solution for generating graphs in the DOT language. The output is a textual script that can be visualized and/or converted to an image with external tools. A handy one is a plugin for Visual Studio Code, named Graphviz Preview. There are also online tools like www.webgraphviz.com, where you can paste the script to view your graph.</description>
+    <description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code, or online tools like viz-js.com or www.webgraphviz.com, where you paste a script to view its visualization.</description>
     
-    <releaseNotes>- Added support for attributes: center, dpi, resolution, imagescale (attribute specifications available at http://www.graphviz.org/doc/info/attrs.html).
+    <releaseNotes>-Properties on attribute collections of graph elements have been grouped to provide better clarity of the contexts they refer to. For instance, the Peripheries, Sides, Skew, Distortion, Rotation, and Regular properties of a node's attribute collection are accessible now by an upper-level property named Geometry.
 
-- Record node builder (DotRecordBuilder) extended with several method overloads to simplify building records.
+- Graph attributes applicable globally to clusters have been moved to the Clusters collection of the root graph.
 
-- ToParallelSplines() and ToMulticolorSegments() extension methods added for DotEdge to simplify customizing their style and colors. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.1/README.md#multicolor-edges.
+- The Style of elements is more intuitive to specify now.
 
-- Scheme support added to DotColor so that color names may be evaluated using a specific scheme.
+- Added a GetMetadataDictionary() method on attribute collections to provide a mapping between DOT attribute keys and the properties they are exposed as.
 
-- NodeDefaults and EdgeDefaults properties moved to the Nodes and Edges collections. See https://github.com/mariusz-schimke/GiGraph/blob/1.5.1/README.md#global-attributes.
+- Added a static DotAttributeValueAttribute.GetValueMapping() method to provide a mapping between DOT attribute values and the values they are exposed as by enumeration types.
 
-- Refactoring (property and type naming cleanup).
+- Added a static DotAttributeKeys class for providing attribute key consts and metadata (DotAttributeKeys.MetadataDictionary). The metadata includes information what elements a given attribute can be applied to, and also what layout engine and output format supports it according to the documentation.
+
+- Added support for attributes: landscape, orientation (attribute specifications are available at http://www.graphviz.org/doc/info/attrs.html).
+
+- Refactoring.
 
 
-See also https://github.com/mariusz-schimke/GiGraph/releases</releaseNotes>
+See also https://github.com/$repository$/releases</releaseNotes>
   </metadata>
 </package>

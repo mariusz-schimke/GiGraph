@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Metadata;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var styles = Enum.GetValues(typeof(DotStyles))
                .Cast<DotStyles>()
@@ -33,13 +33,10 @@ namespace GiGraph.Dot.Entities.Attributes
                .Where(style => Value.HasFlag(style))
                .Select(style => GetDotEncodedStyle(style, options, syntaxRules));
 
-            const string separator = ", ";
-            return options.OrderElements
-                ? string.Join(separator, styles.OrderBy(style => style))
-                : string.Join(separator, styles);
+            return string.Join(", ", styles.OrderBy(style => style));
         }
 
-        protected virtual string GetDotEncodedStyle(DotStyles style, DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected virtual string GetDotEncodedStyle(DotStyles style, DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return DotAttributeValueAttribute.TryGetValue(style, out var result)
                 ? result

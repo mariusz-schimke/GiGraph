@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Output.Generators.Attributes
 {
     public class DotLabelAttributeGenerator : DotAttributeGenerator<DotLabelAttribute>
     {
-        public DotLabelAttributeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotLabelAttributeGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

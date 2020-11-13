@@ -1,19 +1,11 @@
 using System;
 using System.Collections.Generic;
-using GiGraph.Dot.Entities.Attributes.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs.Collections
 {
-    public class DotGraphSectionCollection<TGraphAttributes> : List<DotGraphSection<TGraphAttributes>>
-        where TGraphAttributes : IDotAttributeCollection
+    public class DotGraphSectionCollection<TSection> : List<TSection>
+        where TSection : DotCommonGraphSection, new()
     {
-        protected readonly Func<DotGraphSection<TGraphAttributes>> _createSection;
-
-        public DotGraphSectionCollection(Func<DotGraphSection<TGraphAttributes>> createSection)
-        {
-            _createSection = createSection;
-        }
-
         /// <summary>
         ///     Adds the specified graph section to the collection and optionally initializes its content.
         /// </summary>
@@ -23,7 +15,7 @@ namespace GiGraph.Dot.Entities.Graphs.Collections
         /// <param name="init">
         ///     An optional section initializer delegate.
         /// </param>
-        public virtual DotGraphSection<TGraphAttributes> Add(DotGraphSection<TGraphAttributes> section, Action<DotGraphSection<TGraphAttributes>> init)
+        public virtual TSection Add(TSection section, Action<TSection> init)
         {
             Add(section);
             init?.Invoke(section);
@@ -36,9 +28,9 @@ namespace GiGraph.Dot.Entities.Graphs.Collections
         /// <param name="init">
         ///     An optional section initializer delegate.
         /// </param>
-        public virtual DotGraphSection<TGraphAttributes> Add(Action<DotGraphSection<TGraphAttributes>> init = null)
+        public virtual TSection Add(Action<TSection> init = null)
         {
-            return Add(_createSection(), init);
+            return Add(new TSection(), init);
         }
     }
 }

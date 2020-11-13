@@ -23,16 +23,16 @@
 <!-- Foo&#45;&gt;Bar -->
 <g id="edge1" class="edge">
 <title>Foo&#45;&gt;Bar</title>
-<path fill="none" stroke="royalblue" d="M20.17,-72.52C19.3,-64.53 19.05,-54.88 19.41,-45.89"/>
-<path fill="none" stroke="turquoise" d="M22.15,-72.3C21.3,-64.48 21.05,-54.83 21.41,-45.98"/>
-<polygon fill="royalblue" stroke="royalblue" points="23.9,-46.18 21.12,-35.96 16.92,-45.68 23.9,-46.18"/>
+<path fill="none" stroke="royalblue" d="M21.16,-72.41C20.73,-68.46 20.45,-64.07 20.33,-59.55"/>
+<path fill="none" stroke="turquoise" d="M20.33,-59.55C20.2,-55.04 20.23,-50.39 20.41,-45.94"/>
+<polygon fill="turquoise" stroke="turquoise" points="23.9,-46.18 21.12,-35.96 16.92,-45.68 23.9,-46.18"/>
 </g>
 <!-- Foo&#45;&gt;Bar -->
 <g id="edge2" class="edge">
 <title>Foo&#45;&gt;Bar</title>
-<path fill="none" stroke="royalblue" d="M32.84,-72.41C33.27,-68.46 33.55,-64.07 33.67,-59.55"/>
-<path fill="none" stroke="turquoise" d="M33.67,-59.55C33.8,-55.04 33.77,-50.39 33.59,-45.94"/>
-<polygon fill="turquoise" stroke="turquoise" points="37.08,-45.68 32.88,-35.96 30.1,-46.18 37.08,-45.68"/>
+<path fill="none" stroke="royalblue" d="M31.85,-72.3C32.7,-64.48 32.95,-54.83 32.59,-45.98"/>
+<path fill="none" stroke="turquoise" d="M33.83,-72.52C34.7,-64.53 34.95,-54.88 34.59,-45.89"/>
+<polygon fill="royalblue" stroke="royalblue" points="37.08,-45.68 32.88,-35.96 30.1,-46.18 37.08,-45.68"/>
 </g>
 </g>
 </svg>

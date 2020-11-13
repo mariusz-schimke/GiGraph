@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Metadata;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Arrows
@@ -91,7 +91,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// </summary>
         public virtual DotArrowheadParts VisibleParts { get; set; } = DotArrowheadParts.Both;
 
-        protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var result = new StringBuilder();
 

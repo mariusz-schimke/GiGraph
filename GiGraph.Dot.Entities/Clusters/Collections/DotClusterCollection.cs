@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
 using GiGraph.Dot.Entities.Graphs.Collections;
 
 namespace GiGraph.Dot.Entities.Clusters.Collections
 {
-    public class DotClusterCollection : DotGraphCollection<DotCluster, IDotClusterAttributeCollection>
+    public class DotClusterCollection : DotCommonGraphCollection<DotCluster>
     {
         /// <summary>
         ///     Adds a new cluster subgraph with the specified identifier to the collection.

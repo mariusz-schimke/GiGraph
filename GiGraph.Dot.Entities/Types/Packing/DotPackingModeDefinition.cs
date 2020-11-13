@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
     /// </summary>
     public abstract class DotPackingModeDefinition : IDotEncodable
     {
-        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncodedValue(options, syntaxRules);
         }
@@ -29,6 +29,6 @@ namespace GiGraph.Dot.Entities.Types.Packing
             return value.HasValue ? new DotArrayPackingMode(value.Value) : null;
         }
 
-        protected internal abstract string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules);
+        protected internal abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
     }
 }

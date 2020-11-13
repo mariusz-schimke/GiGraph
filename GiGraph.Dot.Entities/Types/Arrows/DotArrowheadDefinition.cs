@@ -9,12 +9,12 @@ namespace GiGraph.Dot.Entities.Types.Arrows
     /// </summary>
     public abstract class DotArrowheadDefinition : IDotEncodable
     {
-        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncoded(options, syntaxRules);
         }
 
-        protected internal abstract string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules);
+        protected internal abstract string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 
         public static implicit operator DotArrowheadDefinition(DotArrowheadShape? shape)
         {

@@ -1,5 +1,6 @@
 using System.Text;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
+using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Types.Strings;
 using GiGraph.Dot.Output.Options;
@@ -25,9 +26,11 @@ namespace GiGraph.Dot.Entities.Types.Records
         ///     The text to initialize the field with.
         /// </param>
         /// <param name="portName">
-        ///     The port name, that is a name that can be referred to from an edge endpoint in order to attach the end of the edge to the
-        ///     current field. See <see cref="DotEndpoint.Port" /> or <see cref="IDotEdgeAttributes.TailPort" /> and
-        ///     <see cref="IDotEdgeAttributes.HeadPort" />.
+        ///     The port name, that is a name that can be referred to from an edge's endpoint in order to attach the end of the edge to the
+        ///     current field. You can use the <see cref="DotEndpoint.Port" /> property on the <see cref="DotEdge{TTail,THead}.Tail" /> or
+        ///     the <see cref="DotEdge{TTail,THead}.Head" /> endpoint of a <see cref="DotEdge" />, or, alternatively, the
+        ///     <see cref="DotEdgeEndpointAttributes.Port" /> property on its <see cref="DotEdgeAttributes.Head" /> or
+        ///     <see cref="DotEdgeAttributes.Tail" /> attributes.
         /// </param>
         public DotRecordTextField(DotEscapeString text, string portName = null)
         {
@@ -45,9 +48,11 @@ namespace GiGraph.Dot.Entities.Types.Records
         }
 
         /// <summary>
-        ///     Gets or sets a port name, that is a name that can be referred to from an edge endpoint in order to attach the end of the edge
-        ///     to the current field. See <see cref="DotEndpoint.Port" /> or <see cref="IDotEdgeAttributes.TailPort" /> and
-        ///     <see cref="IDotEdgeAttributes.HeadPort" />.
+        ///     Gets or sets a port name, that is a name that can be referred to from an edge's endpoint in order to attach the end of the
+        ///     edge to the current field. You can use the <see cref="DotEndpoint.Port" /> property on the
+        ///     <see cref="DotEdge{TTail,THead}.Tail" /> or the <see cref="DotEdge{TTail,THead}.Head" /> endpoint of a <see cref="DotEdge" />
+        ///     , or, alternatively, the <see cref="DotEdgeEndpointAttributes.Port" /> property on its <see cref="DotEdgeAttributes.Head" />
+        ///     or <see cref="DotEdgeAttributes.Tail" /> attributes.
         /// </summary>
         public virtual string PortName
         {
@@ -55,7 +60,7 @@ namespace GiGraph.Dot.Entities.Types.Records
             set => _portName = value;
         }
 
-        protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules, bool hasParent)
+        protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules, bool hasParent)
         {
             var result = new StringBuilder();
             var separator = string.Empty;

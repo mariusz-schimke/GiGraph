@@ -5,12 +5,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="..\Solution Items\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs"/>
+        <Compile Include="..\Solution Items\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="..\Assets\icon.png" Link="icon.png"/>
-        <Content Include="..\LICENSE.txt" Link="LICENSE.txt"/>
+        <Content Include="..\Assets\icon.png" Link="icon.png" />
+        <Content Include="..\LICENSE.txt" Link="LICENSE.txt" />
     </ItemGroup>
 
     <ItemGroup>

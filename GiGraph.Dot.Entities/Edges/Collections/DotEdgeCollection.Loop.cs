@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// </param>
         public virtual DotEdge AddLoop(string nodeId, Action<DotEdge> init = null)
         {
-            return Add(DotEdge.Loop(nodeId), init);
+            return Add(new DotEdge(nodeId), init);
         }
 
         /// <summary>

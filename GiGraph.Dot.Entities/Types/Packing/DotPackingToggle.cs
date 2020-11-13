@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
         /// </summary>
         public virtual bool Enabled { get; set; }
 
-        protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return Enabled ? "true" : "false";
         }

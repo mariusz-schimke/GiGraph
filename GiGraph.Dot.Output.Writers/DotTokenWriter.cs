@@ -1,40 +1,35 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Writers.Options;
 
 namespace GiGraph.Dot.Output.Writers
 {
     public class DotTokenWriter
     {
-        protected readonly int _indentationLevel;
         protected readonly Queue<string> _lingerBuffer;
-        protected readonly DotFormattingOptions _options;
+        protected readonly DotTokenWriterOptions _options;
         protected readonly StreamWriter _writer;
 
-        protected DotTokenWriter(StreamWriter writer, DotFormattingOptions options, int indentationLevel, Queue<string> lingerBuffer)
+        protected DotTokenWriter(StreamWriter writer, DotTokenWriterOptions options, Queue<string> lingerBuffer)
         {
             _writer = writer;
             _options = options;
-            _indentationLevel = indentationLevel;
             _lingerBuffer = lingerBuffer;
         }
 
-        public DotTokenWriter(StreamWriter writer, DotFormattingOptions options, int indentationLevel = 0)
-            : this(writer, options, indentationLevel, new Queue<string>())
+        public DotTokenWriter(StreamWriter writer, DotTokenWriterOptions options)
+            : this(writer, options, new Queue<string>())
         {
         }
 
         public virtual DotTokenWriter SingleLine()
         {
-            var singleLineOutputOptions = _options.Clone();
-            singleLineOutputOptions.SingleLine = true;
-
-            return new DotTokenWriter(_writer, singleLineOutputOptions, _indentationLevel, _lingerBuffer);
+            return new DotTokenWriter(_writer, _options.ToSingleLine(), _lingerBuffer);
         }
 
         public virtual DotTokenWriter NextIndentationLevel()
         {
-            return new DotTokenWriter(_writer, _options, _indentationLevel + 1, _lingerBuffer);
+            return new DotTokenWriter(_writer, _options.IncreaseIndentation(), _lingerBuffer);
         }
 
         public virtual DotTokenWriter Token(string token, bool linger = false)
@@ -239,7 +234,7 @@ namespace GiGraph.Dot.Output.Writers
 
         public virtual DotTokenWriter Indentation(bool linger = false)
         {
-            Append(_options.Indentation(_indentationLevel), linger);
+            Append(_options.Indentation(), linger);
             return this;
         }
 
@@ -260,7 +255,12 @@ namespace GiGraph.Dot.Output.Writers
 
         protected virtual void Write(string value)
         {
-            _writer.Write(_options.TextEncoder?.Invoke(value) ?? value);
+            if (_options.TextEncoder is {} encode)
+            {
+                value = encode(value);
+            }
+
+            _writer.Write(value);
         }
 
         public virtual DotTokenWriter FlushLingerBuffer()

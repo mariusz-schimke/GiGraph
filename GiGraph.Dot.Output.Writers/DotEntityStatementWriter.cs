@@ -4,8 +4,8 @@
     {
         protected readonly bool _useStatementDelimiter;
 
-        protected DotEntityStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
-            : base(tokenWriter, context, enforceBlockComment: true)
+        protected DotEntityStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool useStatementDelimiter)
+            : base(tokenWriter, configuration, enforceBlockComment: true)
         {
             _useStatementDelimiter = useStatementDelimiter;
         }
@@ -19,8 +19,7 @@
                 _tokenWriter.StatementEnd();
             }
 
-            _tokenWriter.LineBreak()
-               .Indentation(linger: true);
+            LineBreak();
         }
 
         public override void EndComment()

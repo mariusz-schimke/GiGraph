@@ -4,14 +4,14 @@ namespace GiGraph.Dot.Output.Writers
 {
     public abstract class DotEntityWriter : IDotEntityWriter
     {
-        protected readonly DotEntityWriterContext _context;
+        protected readonly DotEntityWriterConfiguration _configuration;
         protected readonly bool _enforceBlockComment;
         protected readonly DotTokenWriter _tokenWriter;
 
-        protected DotEntityWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool enforceBlockComment)
+        protected DotEntityWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool enforceBlockComment)
         {
             _tokenWriter = tokenWriter;
-            _context = context;
+            _configuration = configuration;
             _enforceBlockComment = enforceBlockComment;
         }
 
@@ -22,14 +22,19 @@ namespace GiGraph.Dot.Output.Writers
 
         public virtual void EndComment()
         {
-            _tokenWriter.LineBreak()
-               .Indentation(linger: true);
+            LineBreak();
         }
 
         protected virtual void EmptyLine()
         {
             _tokenWriter.LineBreak()
                .LineBreak(linger: true)
+               .Indentation(linger: true);
+        }
+        
+        protected virtual void LineBreak()
+        {
+            _tokenWriter.LineBreak()
                .Indentation(linger: true);
         }
     }

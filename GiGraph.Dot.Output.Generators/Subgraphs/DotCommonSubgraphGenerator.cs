@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using GiGraph.Dot.Entities;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Output.Generators.Graphs;
 using GiGraph.Dot.Output.Generators.Providers;
@@ -7,11 +7,10 @@ using GiGraph.Dot.Output.Writers.Subgraphs;
 
 namespace GiGraph.Dot.Output.Generators.Subgraphs
 {
-    public abstract class DotCommonSubgraphGenerator<TSubgraph, TSubgraphAttributes> : DotCommonGraphGenerator<TSubgraph, TSubgraphAttributes, IDotSubgraphWriter>
-        where TSubgraph : DotCommonGraph<TSubgraphAttributes>
-        where TSubgraphAttributes : IDotAttributeCollection
+    public abstract class DotCommonSubgraphGenerator<TSubgraph> : DotCommonGraphGenerator<TSubgraph, IDotSubgraphWriter>
+        where TSubgraph : IDotCommonGraph, IDotAnnotatable
     {
-        public DotCommonSubgraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotCommonSubgraphGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

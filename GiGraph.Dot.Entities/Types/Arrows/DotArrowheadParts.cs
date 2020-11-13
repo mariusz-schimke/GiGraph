@@ -1,5 +1,5 @@
 using System;
-using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Metadata;
 
 namespace GiGraph.Dot.Entities.Types.Arrows
 {

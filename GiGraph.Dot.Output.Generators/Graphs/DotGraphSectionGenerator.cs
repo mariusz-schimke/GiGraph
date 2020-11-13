@@ -5,7 +5,6 @@ using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 using GiGraph.Dot.Output.Generators.Providers;
@@ -21,15 +20,15 @@ using GiGraph.Dot.Output.Writers.Subgraphs;
 
 namespace GiGraph.Dot.Output.Generators.Graphs
 {
-    public class DotGraphSectionGenerator<TGraphAttributes> : DotEntityGenerator<DotGraphSection<TGraphAttributes>, IDotGraphBodyWriter>
-        where TGraphAttributes : IDotAttributeCollection
+    public class DotGraphSectionGenerator<TSection> : DotEntityGenerator<TSection, IDotGraphBodyWriter>
+        where TSection : DotCommonGraphSection, IDotCommonGraphSection
     {
-        public DotGraphSectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotGraphSectionGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        protected override void WriteEntity(DotGraphSection<TGraphAttributes> graphSection, IDotGraphBodyWriter writer)
+        protected override void WriteEntity(TSection graphSection, IDotGraphBodyWriter writer)
         {
             // global node and edge attributes have to appear first, so that they are applied to all elements that come later in the output script
             WriteGlobalAttributes(graphSection.Attributes, graphSection.Nodes.Attributes, graphSection.Edges.Attributes, writer);
@@ -45,7 +44,7 @@ namespace GiGraph.Dot.Output.Generators.Graphs
             WriteEdges(graphSection.Edges, writer);
         }
 
-        protected virtual void WriteGlobalAttributes(TGraphAttributes graphAttributes, IDotNodeAttributeCollection nodeAttributes, IDotEdgeAttributeCollection edgeAttributes, IDotGraphBodyWriter writer)
+        protected virtual void WriteGlobalAttributes(DotAttributeCollection graphAttributes, DotNodeAttributes nodeAttributes, DotEdgeAttributes edgeAttributes, IDotGraphBodyWriter writer)
         {
             var writeGraphAttributes = graphAttributes.Any();
 
@@ -56,7 +55,7 @@ namespace GiGraph.Dot.Output.Generators.Graphs
                 writeGraphAttributes = false;
             }
 
-            if (!nodeAttributes.Any() && !edgeAttributes.Any() && !writeGraphAttributes)
+            if (!nodeAttributes.Collection.Any() && !edgeAttributes.Collection.Any() && !writeGraphAttributes)
             {
                 return;
             }
@@ -75,7 +74,7 @@ namespace GiGraph.Dot.Output.Generators.Graphs
             writer.EndGlobalEntityAttributesSection();
         }
 
-        protected virtual void WriteGlobalGraphAttributesAsStatementList(TGraphAttributes attributes, IDotGraphBodyWriter writer)
+        protected virtual void WriteGlobalGraphAttributesAsStatementList(DotAttributeCollection attributes, IDotGraphBodyWriter writer)
         {
             if (attributes.Any())
             {
@@ -85,7 +84,7 @@ namespace GiGraph.Dot.Output.Generators.Graphs
             }
         }
 
-        protected virtual void WriteGlobalGraphAttributesAsClause(TGraphAttributes attributes, IDotGlobalEntityAttributesStatementWriter writer)
+        protected virtual void WriteGlobalGraphAttributesAsClause(DotAttributeCollection attributes, IDotGlobalEntityAttributesStatementWriter writer)
         {
             if (attributes.Any())
             {
@@ -95,22 +94,28 @@ namespace GiGraph.Dot.Output.Generators.Graphs
             }
         }
 
-        protected virtual void WriteGlobalNodeAttributes(IDotNodeAttributeCollection attributes, IDotGlobalEntityAttributesStatementWriter writer)
+        protected virtual void WriteGlobalNodeAttributes(DotNodeAttributes attributes, IDotGlobalEntityAttributesStatementWriter writer)
         {
-            if (attributes.Any())
+            var collection = attributes.Collection;
+
+            if (collection.Any())
             {
                 var nodeAttributesWriter = writer.BeginNodeAttributesStatement();
-                _entityGenerators.GetForEntity<IDotGlobalNodeAttributesWriter>(attributes).Generate(attributes, nodeAttributesWriter);
+                _entityGenerators.GetForEntity<IDotGlobalNodeAttributesWriter>(collection)
+                   .Generate(collection, nodeAttributesWriter);
                 writer.EndNodeAttributesStatement();
             }
         }
 
-        protected virtual void WriteGlobalEdgeAttributes(IDotEdgeAttributeCollection attributes, IDotGlobalEntityAttributesStatementWriter writer)
+        protected virtual void WriteGlobalEdgeAttributes(DotEdgeAttributes attributes, IDotGlobalEntityAttributesStatementWriter writer)
         {
-            if (attributes.Any())
+            var collection = attributes.Collection;
+
+            if (collection.Any())
             {
                 var edgeAttributesWriter = writer.BeginEdgeAttributesStatement();
-                _entityGenerators.GetForEntity<IDotGlobalEdgeAttributesWriter>(attributes).Generate(attributes, edgeAttributesWriter);
+                _entityGenerators.GetForEntity<IDotGlobalEdgeAttributesWriter>(collection)
+                   .Generate(collection, edgeAttributesWriter);
                 writer.EndEdgeAttributesStatement();
             }
         }
@@ -137,23 +142,21 @@ namespace GiGraph.Dot.Output.Generators.Graphs
 
         protected virtual void WriteSubgraphs(DotSubgraphCollection subgraphs, IDotGraphBodyWriter writer)
         {
-            WriteCommonSubgraphs(subgraphs, writer);
-        }
-
-        protected virtual void WriteClusters(DotClusterCollection clusters, IDotGraphBodyWriter writer)
-        {
-            WriteCommonSubgraphs(clusters, writer);
-        }
-
-        protected virtual void WriteCommonSubgraphs<TSubgraph, TSubgraphAttributes>(DotGraphCollection<TSubgraph, TSubgraphAttributes> subgraphs, IDotGraphBodyWriter writer)
-            where TSubgraph : DotCommonGraph<TSubgraphAttributes>
-            where TSubgraphAttributes : IDotAttributeCollection
-        {
             if (subgraphs.Any())
             {
                 var subgraphWriterRoot = writer.BeginSubgraphsSection();
                 _entityGenerators.GetForEntity<IDotSubgraphWriterRoot>(subgraphs).Generate(subgraphs, subgraphWriterRoot);
                 writer.EndSubgraphsSection();
+            }
+        }
+
+        protected virtual void WriteClusters(DotClusterCollection clusters, IDotGraphBodyWriter writer)
+        {
+            if (clusters.Any())
+            {
+                var subgraphWriterRoot = writer.BeginClustersSection();
+                _entityGenerators.GetForEntity<IDotSubgraphWriterRoot>(clusters).Generate(clusters, subgraphWriterRoot);
+                writer.EndClustersSection();
             }
         }
     }

@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Output.Generators.Edges
 {
     public class DotEndpointGenerator : DotEntityGenerator<DotEndpoint, IDotEndpointWriter>
     {
-        public DotEndpointGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotEndpointGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }

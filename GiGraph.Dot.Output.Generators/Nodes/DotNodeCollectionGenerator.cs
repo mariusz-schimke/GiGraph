@@ -10,14 +10,14 @@ namespace GiGraph.Dot.Output.Generators.Nodes
 {
     public class DotNodeCollectionGenerator : DotEntityGenerator<DotNodeCollection, IDotNodeStatementWriter>
     {
-        public DotNodeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotNodeCollectionGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
         protected override void WriteEntity(DotNodeCollection nodes, IDotNodeStatementWriter writer)
         {
-            var orderedNodes = _options.OrderElements
+            var orderedNodes = _options.SortElements
                 ? nodes.Cast<IDotOrderable>()
                    .OrderBy(node => node.OrderingKey)
                    .Cast<DotNodeDefinition>()

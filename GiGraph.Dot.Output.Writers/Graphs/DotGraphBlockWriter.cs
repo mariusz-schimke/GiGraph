@@ -2,8 +2,8 @@
 {
     public abstract class DotGraphBlockWriter : DotEntityWriter
     {
-        protected DotGraphBlockWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context, enforceBlockComment: false)
+        protected DotGraphBlockWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
+            : base(tokenWriter, configuration, enforceBlockComment: false)
         {
         }
 
@@ -14,7 +14,7 @@
                .LineBreak()
                .Indentation(linger: true);
 
-            return new DotGraphBodyWriter(tokenWriter, _context);
+            return new DotGraphBodyWriter(tokenWriter, _configuration);
         }
 
         public virtual void EndBody()

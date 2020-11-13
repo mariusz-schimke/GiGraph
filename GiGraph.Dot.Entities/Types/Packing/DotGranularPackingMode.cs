@@ -1,6 +1,6 @@
 using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Attributes;
+using GiGraph.Dot.Entities.Metadata;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Packing
@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
         /// </summary>
         public virtual DotPackingGranularity Granularity { get; set; }
 
-        protected internal override string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return DotAttributeValueAttribute.TryGetValue(Granularity, out var result)
                 ? result
