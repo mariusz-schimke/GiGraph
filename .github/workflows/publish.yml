@@ -1,4 +1,4 @@
-name: .NET Core
+name: Publish a NuGet Package
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-
+    if: github.ref == 'refs/heads/publish'
     runs-on: windows-latest
 
     steps:
