@@ -8,9 +8,8 @@ on:
 
 jobs:
   build:
-
-    runs-on: windows-latest
     if: github.ref == 'refs/heads/publish'
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
