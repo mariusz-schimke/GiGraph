@@ -36,7 +36,7 @@ jobs:
         SNK: ${{ secrets.Snk }}
       run: |
         $snk = [Text.Encoding]::Utf8.GetString([Convert]::FromBase64String("$env:SNK"))
-        Set-Content "Solution Items\GiGraph.snk" -Value $snk -Encoding Byte
+        Set-Content "Solution Items\GiGraph.snk" -Value $snk -AsByteStream
     - name: Build NuGet Package
       run: nuget pack "GiGraph.Dot\GiGraph.Dot.csproj" -Build -Symbols -Properties Configuration=Publish -IncludeReferencedProjects -SymbolPackageFormat snupkg
       
