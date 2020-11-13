@@ -5,11 +5,11 @@ on:
   pull_request:
     branches: [ master, develop ]
 
-env:
-  BRANCH: master
-
 jobs:
   build:
+    env:
+      BRANCH: master
+
     if: github.ref == 'refs/heads/${{ env.BRANCH }}'
     runs-on: windows-latest
 
