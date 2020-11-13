@@ -22,8 +22,6 @@ jobs:
       with:
         nuget-api-key: ${{ secrets.NuGetApiKey }}
         nuget-version: 'latest'
-    - name: Show NuGet Version
-      run: nuget help
     - name: Install dependencies
       run: dotnet restore
     - name: Build
@@ -35,7 +33,7 @@ jobs:
       env:
         SNK: ${{ secrets.Snk }}
       run: |
-        $snk = [Text.Encoding]::Utf8.GetString([Convert]::FromBase64String("$env:SNK"))
+        $snk = [Convert]::FromBase64String("$env:SNK")
         Set-Content "Solution Items\GiGraph.snk" -Value $snk -AsByteStream
     - name: Build NuGet Package
       run: nuget pack "GiGraph.Dot\GiGraph.Dot.csproj" -Build -Symbols -Properties Configuration=Publish -IncludeReferencedProjects -SymbolPackageFormat snupkg
