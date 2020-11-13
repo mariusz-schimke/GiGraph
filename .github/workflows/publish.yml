@@ -2,14 +2,13 @@ name: Publish a NuGet Package
 
 on:
   release:
-    types: [ created ]
+    types: [ published ]
 
 env:
   BRANCH: master
 
 jobs:
   build:
-    if: github.ref == 'refs/heads/master'
     runs-on: windows-latest
 
     steps:
