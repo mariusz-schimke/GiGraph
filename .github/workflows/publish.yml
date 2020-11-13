@@ -37,7 +37,7 @@ jobs:
         Set-Content "Solution Items\GiGraph.snk" -Value $snk -AsByteStream
     - name: Build NuGet Package
       run: |
-        nuget pack "GiGraph.Dot\GiGraph.Dot.csproj" -Build -Symbols -Properties Configuration=Publish -IncludeReferencedProjects -SymbolPackageFormat snupkg -OutputFileNamesWithoutVersion -Verbosity normal
+        nuget pack "GiGraph.Dot\GiGraph.Dot.csproj" -Build -Symbols -Properties Configuration=Publish -IncludeReferencedProjects -SymbolPackageFormat snupkg -OutputFileNamesWithoutVersion -Verbosity quiet
+    - name: Publish NuGet Package
+      run: |
         nuget push GiGraph.Dot.nupkg -Source https://api.nuget.org/v3/index.json
-      
-      
