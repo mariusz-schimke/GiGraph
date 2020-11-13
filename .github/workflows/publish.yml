@@ -1,14 +1,15 @@
 name: Publish a NuGet Package
 
 on:
-  push:
-    branches: [ ]
-  pull_request:
-    branches: [ publish ]
+  release:
+    types: [ published ]
+
+env:
+  BRANCH: master
 
 jobs:
   build:
-    if: github.ref == 'refs/heads/publish'
+    if: github.ref == 'refs/heads/master'
     runs-on: windows-latest
 
     steps:
@@ -37,7 +38,7 @@ jobs:
         Set-Content "Solution Items\GiGraph.snk" -Value $snk -AsByteStream
     - name: Build NuGet Package
       run: |
-        nuget pack "GiGraph.Dot\GiGraph.Dot.csproj" -Build -Symbols -Properties Configuration=Publish -IncludeReferencedProjects -SymbolPackageFormat snupkg -OutputFileNamesWithoutVersion
+        nuget pack "GiGraph.Dot\GiGraph.Dot.csproj" -Build -Symbols -Properties "Configuration=Publish;repository=${{ github.repository }};branch=${{ env.BRANCH }};commit=${{ github.sha }}" -IncludeReferencedProjects -SymbolPackageFormat snupkg -OutputFileNamesWithoutVersion
     - name: Publish NuGet Package
       run: |
         nuget push GiGraph.Dot.nupkg -Source https://api.nuget.org/v3/index.json
