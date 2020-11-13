@@ -2,13 +2,12 @@ name: Publish a NuGet Package
 
 on:
   push:
-    branches: [ ]
-  pull_request:
-    branches: [ publish ]
+    tags:
+      - '*'
 
 jobs:
   build:
-    if: github.ref == 'refs/heads/publish'
+    if: github.ref == 'refs/heads/master'
     runs-on: windows-latest
 
     steps:
