@@ -21,6 +21,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
         }
 
+        /// <inheritdoc cref="IDotGraphFontAttributes.Directories" />
         [DotAttributeKey(DotAttributeKeys.FontPath)]
         public virtual string Directories
         {
@@ -41,7 +42,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     Font color.
         /// </param>
         /// <param name="directories">
-        ///     The directory to search for fonts.
+        ///     The directories to search for fonts.
         /// </param>
         public virtual void Set(string name = null, double? size = null, DotColor color = null, string directories = null)
         {

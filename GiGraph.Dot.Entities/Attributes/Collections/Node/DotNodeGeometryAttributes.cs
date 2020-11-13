@@ -20,6 +20,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
         }
 
+        /// <inheritdoc cref="IDotNodeGeometryAttributes.Sides" />
         [DotAttributeKey(DotAttributeKeys.Sides)]
         public virtual int? Sides
         {
@@ -29,6 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
                 : new DotIntAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotNodeGeometryAttributes.Regular" />
         [DotAttributeKey(DotAttributeKeys.Regular)]
         public virtual bool? Regular
         {
@@ -36,6 +38,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotNodeGeometryAttributes.Peripheries" />
         [DotAttributeKey(DotAttributeKeys.Peripheries)]
         public virtual int? Peripheries
         {
@@ -43,6 +46,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
         }
 
+        /// <inheritdoc cref="IDotNodeGeometryAttributes.Rotation" />
         [DotAttributeKey(DotAttributeKeys.Orientation)]
         public virtual double? Rotation
         {
@@ -50,6 +54,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotNodeGeometryAttributes.Skew" />
         [DotAttributeKey(DotAttributeKeys.Skew)]
         public virtual double? Skew
         {
@@ -57,6 +62,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotNodeGeometryAttributes.Distortion" />
         [DotAttributeKey(DotAttributeKeys.Distortion)]
         public virtual double? Distortion
         {

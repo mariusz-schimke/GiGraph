@@ -149,6 +149,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => base.SortIndex = value;
         }
 
+        /// <inheritdoc cref="IDotNodeAttributes.Comment" />
         [DotAttributeKey(DotAttributeKeys.Comment)]
         public virtual string Comment
         {
@@ -156,6 +157,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotNodeAttributes.ExternalLabel" />
         [DotAttributeKey(DotAttributeKeys.XLabel)]
         public virtual DotLabel ExternalLabel
         {
@@ -164,6 +166,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         }
 
 
+        /// <inheritdoc cref="IDotNodeAttributes.EdgeOrderingMode" />
         [DotAttributeKey(DotAttributeKeys.Ordering)]
         public virtual DotEdgeOrderingMode? EdgeOrderingMode
         {
@@ -171,6 +174,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeOrderingModeAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotNodeAttributes.Shape" />
         [DotAttributeKey(DotAttributeKeys.Shape)]
         public virtual DotNodeShape? Shape
         {
@@ -178,6 +182,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeShapeAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotNodeAttributes.Width" />
         [DotAttributeKey(DotAttributeKeys.Width)]
         public virtual double? Width
         {
@@ -187,6 +192,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
                 : new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotNodeAttributes.Height" />
         [DotAttributeKey(DotAttributeKeys.Height)]
         public virtual double? Height
         {
@@ -196,6 +202,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
                 : new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotNodeAttributes.Sizing" />
         [DotAttributeKey(DotAttributeKeys.FixedSize)]
         public virtual DotNodeSizing? Sizing
         {
@@ -203,6 +210,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeSizingAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotNodeAttributes.GroupName" />
         [DotAttributeKey(DotAttributeKeys.Group)]
         public virtual string GroupName
         {

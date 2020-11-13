@@ -38,6 +38,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// </summary>
         public virtual DotClusterStyleAttributes Style { get; }
 
+        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.Color" />
         [DotAttributeKey(DotAttributeKeys.Color)]
         public virtual DotColorDefinition Color
         {
@@ -45,6 +46,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderWidth" />
         [DotAttributeKey(DotAttributeKeys.PenWidth)]
         public virtual double? BorderWidth
         {
@@ -52,6 +54,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemoveBorderWidth(MethodBase.GetCurrentMethod(), value);
         }
 
+        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor" />
         [DotAttributeKey(DotAttributeKeys.PenColor)]
         public virtual DotColor BorderColor
         {
@@ -59,6 +62,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.FillColor" />
         [DotAttributeKey(DotAttributeKeys.FillColor)]
         public virtual DotColorDefinition FillColor
         {
@@ -66,6 +70,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphClusterAttributes.AllowEdgeClipping" />
         [DotAttributeKey(DotAttributeKeys.Compound)]
         public virtual bool? AllowEdgeClipping
         {
@@ -73,6 +78,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphClusterAttributes.VisualizationMode" />
         [DotAttributeKey(DotAttributeKeys.ClusterRank)]
         public virtual DotClusterVisualizationMode? VisualizationMode
         {
