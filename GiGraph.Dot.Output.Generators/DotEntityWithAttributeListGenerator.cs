@@ -12,12 +12,12 @@ namespace GiGraph.Dot.Output.Generators
         where TEntity : IDotEntity, IDotAnnotatable
         where TWriter : IDotEntityWithAttributeListWriter
     {
-        protected DotEntityWithAttributeListGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        protected DotEntityWithAttributeListGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        protected virtual void WriteAttributes(IDotAttributeCollection attributes, IDotEntityWithAttributeListWriter writer, bool annotate = true)
+        protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotEntityWithAttributeListWriter writer, bool annotate = true)
         {
             if (attributes.Any())
             {

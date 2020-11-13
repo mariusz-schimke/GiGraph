@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Types.Ranks
         /// </summary>
         public double[] Values { get; }
 
-        protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return DotDoubleListConverter.Convert(Values);
         }

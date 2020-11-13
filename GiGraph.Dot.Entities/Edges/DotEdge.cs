@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Edges
     /// </summary>
     public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     {
-        protected DotEdge(DotEndpoint tail, DotEndpoint head, IDotEdgeAttributeCollection attributes)
+        protected DotEdge(DotEndpoint tail, DotEndpoint head, DotEdgeAttributes attributes)
             : base(tail, head, attributes)
         {
         }
@@ -38,6 +38,17 @@ namespace GiGraph.Dot.Entities.Edges
         /// </param>
         public DotEdge(string tailNodeId, string headNodeId)
             : this(new DotEndpoint(tailNodeId), new DotEndpoint(headNodeId))
+        {
+        }
+
+        /// <summary>
+        ///     Creates a new loop edge.
+        /// </summary>
+        /// <param name="nodeId">
+        ///     The identifier of the node.
+        /// </param>
+        public DotEdge(string nodeId)
+            : this(nodeId, nodeId)
         {
         }
 
@@ -129,17 +140,6 @@ namespace GiGraph.Dot.Entities.Edges
         public static bool IsLoopEdge(DotEdge<DotEndpoint, DotEndpoint> edge)
         {
             return edge.Tail.NodeId == edge.Head.NodeId;
-        }
-
-        /// <summary>
-        ///     Creates a new loop edge instance.
-        /// </summary>
-        /// <param name="nodeId">
-        ///     The identifier of the node the edge should connect to itself.
-        /// </param>
-        public static DotEdge Loop(string nodeId)
-        {
-            return new DotEdge(nodeId, nodeId);
         }
     }
 }

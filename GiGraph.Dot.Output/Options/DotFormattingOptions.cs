@@ -2,17 +2,25 @@
 
 namespace GiGraph.Dot.Output.Options
 {
-    public class DotFormattingOptions
+    /// <summary>
+    ///     Customizes output DOT script formatting.
+    /// </summary>
+    public partial class DotFormattingOptions
     {
         /// <summary>
-        ///     Gets or sets the value indicating if the output should be generated without line breaks.
+        ///     Indicates if the output should be generated without line breaks.
         /// </summary>
         public virtual bool SingleLine { get; set; } = false;
 
         /// <summary>
-        ///     The default indentation to apply to the DOT output.
+        ///     The base indentation level for the DOT output.
         /// </summary>
-        public virtual int Indentation { get; set; } = 4;
+        public virtual int IndentationLevel { get; set; } = 0;
+
+        /// <summary>
+        ///     The indentation size.
+        /// </summary>
+        public virtual int IndentationSize { get; set; } = 4;
 
         /// <summary>
         ///     Determines what character to use for indentation (space by default).
@@ -25,15 +33,25 @@ namespace GiGraph.Dot.Output.Options
         public virtual string LineBreak { get; set; } = Environment.NewLine;
 
         /// <summary>
+        ///     Gets subgraph formatting options.
+        /// </summary>
+        public virtual SubgraphOptions Subgraphs { get; } = new SubgraphOptions();
+
+        /// <summary>
+        ///     Gets cluster formatting options.
+        /// </summary>
+        public virtual ClusterOptions Clusters { get; } = new ClusterOptions();
+
+        /// <summary>
+        ///     Gets edge formatting options.
+        /// </summary>
+        public virtual EdgeOptions Edges { get; } = new EdgeOptions();
+
+        /// <summary>
         ///     An optional text encoder to use when writing text to the output stream. May become useful when the DOT visualization tool you
         ///     use fails processing some special or national characters. In such case replacing them with their HTML-code equivalents might
         ///     help.
         /// </summary>
         public virtual Func<string, string> TextEncoder { get; set; }
-
-        public virtual DotFormattingOptions Clone()
-        {
-            return (DotFormattingOptions) MemberwiseClone();
-        }
     }
 }

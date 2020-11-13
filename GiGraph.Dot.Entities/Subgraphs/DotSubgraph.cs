@@ -1,14 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Entities.Attributes.Collections.Subgraph;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Clusters;
-using GiGraph.Dot.Entities.Clusters.Collections;
-using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Graphs.Collections;
-using GiGraph.Dot.Entities.Nodes.Collections;
-using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
@@ -29,47 +24,68 @@ namespace GiGraph.Dot.Entities.Subgraphs
     ///         are connected to the other side of the edge.
     ///     </para>
     /// </summary>
-    public class DotSubgraph : DotCommonGraph<IDotSubgraphAttributeCollection>
+    public class DotSubgraph : DotSubgraphSection, IDotCommonGraph, IDotOrderable
     {
-        protected DotSubgraph(
-            string id,
-            IDotSubgraphAttributeCollection attributes,
-            DotNodeCollection nodes,
-            DotEdgeCollection edges,
-            DotSubgraphCollection subgraphs,
-            DotClusterCollection clusters,
-            DotGraphSectionCollection<IDotSubgraphAttributeCollection> subsections)
-            : base(id, attributes, nodes, edges, subgraphs, clusters, subsections)
+        protected DotSubgraph(string id, DotSubgraphSection rootSection, DotGraphSectionCollection<DotSubgraphSection> subsections)
+            : base(rootSection)
         {
+            Id = id;
+            Subsections = subsections;
         }
 
-        protected DotSubgraph(
-            string id,
-            DotGraphSection<IDotSubgraphAttributeCollection> rootSection,
-            DotGraphSectionCollection<IDotSubgraphAttributeCollection> subsections)
-            : base(id, rootSection.Attributes, rootSection.Nodes, rootSection.Edges, rootSection.Subgraphs, rootSection.Clusters, subsections)
+        /// <summary>
+        ///     Creates a new subgraph.
+        /// </summary>
+        /// <param name="id">
+        ///     The optional identifier to assign to the subgraph.
+        /// </param>
+        public DotSubgraph(string id = null)
+            : this(id, new DotSubgraphSection(), new DotGraphSectionCollection<DotSubgraphSection>())
         {
         }
 
         /// <summary>
         ///     Creates a new subgraph.
         /// </summary>
-        public DotSubgraph()
-            : this(id: null, CreateSection(), new DotGraphSectionCollection<IDotSubgraphAttributeCollection>(CreateSection))
-        {
-        }
-
-        /// <summary>
-        ///     Creates a new subgraph.
-        /// </summary>
+        /// <param name="id">
+        ///     The optional identifier to assign to the subgraph.
+        /// </param>
         /// <param name="rank">
         ///     The rank attribute to assign to the subgraph.
         /// </param>
-        public DotSubgraph(DotRank rank)
-            : this()
+        public DotSubgraph(DotRank rank, string id = null)
+            : this(id)
         {
             Attributes.Rank = rank;
         }
+
+        /// <summary>
+        ///     <para>
+        ///         The subsections of the graph. They appear consecutively in the output DOT script, and inherit the graph attributes, and
+        ///         the global node and/or edge attributes of their predecessors. When overridden in any subsection, the new graph attributes
+        ///         and global node/edge attributes apply to the elements the section itself contains, and also to those that belong to the
+        ///         sections that follow it (if any).
+        ///     </para>
+        ///     <para>
+        ///         Note that each subsection is dependent on the graph attributes and the global node and edge attributes specified by the
+        ///         sections that precede it (including those of the root section represented by the current element). Note also that some
+        ///         graph attributes cannot be overriden, and apply to the whole graph no matter in which section they are set.
+        ///     </para>
+        ///     <para>
+        ///         As far as setting global node and/or edge attributes for a specific group of elements is concerned,
+        ///         <see cref="Subgraphs" /> may be the cleaner and preferable way to achieve the effect.
+        ///     </para>
+        /// </summary>
+        public virtual DotGraphSectionCollection<DotSubgraphSection> Subsections { get; }
+
+        IEnumerable<DotCommonGraphSection> IDotCommonGraph.Subsections => Subsections;
+
+        /// <summary>
+        ///     Gets or sets the identifier of the subgraph (optional).
+        /// </summary>
+        public virtual string Id { get; set; }
+
+        string IDotOrderable.OrderingKey => Id;
 
         /// <summary>
         ///     Creates a new subgraph with the specified nodes.
@@ -117,11 +133,6 @@ namespace GiGraph.Dot.Entities.Subgraphs
             }
 
             return result;
-        }
-
-        public static DotGraphSection<IDotSubgraphAttributeCollection> CreateSection()
-        {
-            return Create(new DotSubgraphAttributeCollection());
         }
     }
 }

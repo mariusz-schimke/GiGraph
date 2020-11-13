@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Types.Scaling
     /// </summary>
     public abstract class DotGraphScalingDefinition : IDotEncodable
     {
-        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncodedValue(options, syntaxRules);
         }
@@ -24,6 +24,6 @@ namespace GiGraph.Dot.Entities.Types.Scaling
             return value.HasValue ? new DotGraphScalingOption(value.Value) : null;
         }
 
-        protected internal abstract string GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules);
+        protected internal abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
     }
 }

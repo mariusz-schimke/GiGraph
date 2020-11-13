@@ -77,7 +77,7 @@ namespace GiGraph.Dot.Entities.Types.Edges
         /// </summary>
         public virtual DotCompassPoint? CompassPoint { get; set; }
 
-        string IDotEncodable.GetDotEncodedValue(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncoded(options, syntaxRules);
         }
@@ -100,7 +100,7 @@ namespace GiGraph.Dot.Entities.Types.Edges
             return compassPoint.HasValue ? new DotEndpointPort(compassPoint.Value) : null;
         }
 
-        protected internal virtual string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules)
+        protected internal virtual string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var result = new StringBuilder();
             var separator = string.Empty;

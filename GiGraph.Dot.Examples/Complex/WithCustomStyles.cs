@@ -2,7 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Extensions;
+using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Examples.Complex
 {
@@ -14,17 +14,16 @@ namespace GiGraph.Dot.Examples.Complex
 
             // set left to right layout direction of the graph using graph attributes
             graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
-            graph.Attributes.FontName = "Helvetica";
+            graph.Attributes.Font.Name = "Helvetica";
 
             // set global node attributes (for all nodes of the graph)
             graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
             graph.Nodes.Attributes.SetFilled(new DotGradientColor(Color.Turquoise, Color.RoyalBlue));
-            graph.Nodes.Attributes.FontName = graph.Attributes.FontName;
+            graph.Nodes.Attributes.Font.Name = graph.Attributes.Font.Name;
 
             // set global edge attributes (for all edges of the graph)
-            graph.Edges.Attributes.ArrowHead = graph.Edges.Attributes.ArrowTail = DotArrowheadShape.Vee;
-            graph.Edges.Attributes.FontName = graph.Attributes.FontName;
-            graph.Edges.Attributes.FontSize = 10;
+            graph.Edges.Attributes.Head.Arrowhead = graph.Edges.Attributes.Tail.Arrowhead = DotArrowheadShape.Vee;
+            graph.Edges.Attributes.Font.Set(graph.Attributes.Font.Name, 10);
 
 
             // -- (subgraphs are used here only to control the order the elements are visualized, and may be removed) --
@@ -35,7 +34,7 @@ namespace GiGraph.Dot.Examples.Complex
                 sg.Edges.Add("G", "H", edge =>
                 {
                     edge.Attributes.Label = "DOTTED";
-                    edge.Attributes.Style = DotStyles.Dotted;
+                    edge.Attributes.Style.LineStyle = DotLineStyle.Dotted;
                 });
             });
 
@@ -45,10 +44,10 @@ namespace GiGraph.Dot.Examples.Complex
                 sg.Edges.Add("E", "F", edge =>
                 {
                     edge.Attributes.Label = "PARALLEL SPLINES";
-                    edge.Attributes.ArrowDirections = DotArrowDirections.Both;
+                    edge.Attributes.Directions = DotEdgeDirections.Both;
 
                     // this will render two parallel splines (but more of them may be specified)
-                    edge.ToParallelSplines(Color.Turquoise, Color.RoyalBlue);
+                    edge.Attributes.SetMultiline(Color.Turquoise, Color.RoyalBlue);
                 });
             });
 
@@ -61,10 +60,10 @@ namespace GiGraph.Dot.Examples.Complex
                 sg.Edges.Add("C", "D", edge =>
                 {
                     edge.Attributes.Label = "MULTICOLOR SERIES";
-                    edge.Attributes.ArrowDirections = DotArrowDirections.Both;
+                    edge.Attributes.Directions = DotEdgeDirections.Both;
 
                     // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
-                    edge.ToMulticolorSegments(
+                    edge.Attributes.SetSegmented(
                         new DotWeightedColor(Color.Turquoise, 0.33),
                         new DotWeightedColor(Color.Gray, 0.33),
                         Color.Navy);
@@ -76,35 +75,30 @@ namespace GiGraph.Dot.Examples.Complex
                 // a rectangular node with a striped fill
                 sg.Nodes.Add("STRIPED", attrs =>
                 {
-                    // set style to striped
-                    attrs.Style = DotStyles.Filled | DotStyles.Striped;
-
                     attrs.Color = Color.Transparent;
 
-                    // set the colors of individual stripes and their proportions
-                    attrs.FillColor = new DotMultiColor(
+                    // set style to striped
+                    attrs.SetStriped(new DotMultiColor(
                         new DotWeightedColor(Color.Navy, 0.1),
                         Color.RoyalBlue,
                         Color.Turquoise,
-                        Color.Orange);
+                        Color.Orange)
+                    );
                 });
 
                 // a circular node with a wedged fill
                 sg.Nodes.Add("WEDGED", attrs =>
                 {
                     attrs.Shape = DotNodeShape.Circle;
-
-                    // set wedged style
-                    attrs.Style = DotStyles.Filled | DotStyles.Wedged;
-
                     attrs.Color = Color.Transparent;
 
-                    // set the colors of individual wedges and their proportions
-                    attrs.FillColor = new DotMultiColor(
+                    // set wedged style
+                    attrs.SetWedged(new DotMultiColor(
                         Color.Orange,
                         Color.RoyalBlue,
                         new DotWeightedColor(Color.Navy, 0.1),
-                        Color.Turquoise);
+                        Color.Turquoise)
+                    );
                 });
 
                 sg.Edges.Add("STRIPED", "WEDGED");

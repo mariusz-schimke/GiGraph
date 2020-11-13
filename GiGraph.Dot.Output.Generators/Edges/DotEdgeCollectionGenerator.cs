@@ -10,14 +10,14 @@ namespace GiGraph.Dot.Output.Generators.Edges
 {
     public class DotEdgeCollectionGenerator : DotEntityGenerator<DotEdgeCollection, IDotEdgeStatementWriter>
     {
-        public DotEdgeCollectionGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotEdgeCollectionGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
         protected override void WriteEntity(DotEdgeCollection edges, IDotEdgeStatementWriter writer)
         {
-            var orderedEdges = _options.OrderElements
+            var orderedEdges = _options.SortElements
                 ? edges.Cast<IDotOrderable>()
                    .OrderBy(edge => edge.OrderingKey)
                    .Cast<DotEdgeDefinition>()

@@ -4,15 +4,15 @@
     {
         protected readonly bool _useStatementDelimiter;
 
-        public DotGlobalGraphAttributeStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
-            : base(tokenWriter, context, enforceBlockComment: true)
+        public DotGlobalGraphAttributeStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool useStatementDelimiter)
+            : base(tokenWriter, configuration, enforceBlockComment: true)
         {
             _useStatementDelimiter = useStatementDelimiter;
         }
 
         public virtual IDotAttributeWriter BeginAttributeStatement()
         {
-            return new DotAttributeWriter(_tokenWriter, _context, enforceBlockComment: false);
+            return new DotAttributeWriter(_tokenWriter, _configuration, enforceBlockComment: false);
         }
 
         public virtual void EndAttributeStatement()
@@ -22,8 +22,7 @@
                 _tokenWriter.StatementEnd();
             }
 
-            _tokenWriter.LineBreak()
-               .Indentation(linger: true);
+            LineBreak();
         }
 
         public override void EndComment()

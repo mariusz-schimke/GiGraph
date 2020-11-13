@@ -1,23 +1,22 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
-using GiGraph.Dot.Entities.Graphs;
+﻿using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Graphs;
 
 namespace GiGraph.Dot.Output.Generators.Graphs
 {
-    public class DotGraphGenerator : DotCommonGraphGenerator<DotGraph, IDotGraphAttributeCollection, IDotGraphWriterRoot>
+    public class DotGraphGenerator : DotCommonGraphGenerator<DotGraph, IDotGraphWriterRoot>
     {
-        public DotGraphGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotGraphGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
         protected override void WriteEntity(DotGraph graph, IDotGraphWriterRoot writerRoot)
         {
-            var writer = writerRoot.BeginGraph(graph.IsDirected);
+            var writer = writerRoot.BeginGraph(graph.Directed);
 
-            WriteDeclaration(graph.Id, graph.IsStrict, writer);
+            WriteDeclaration(graph.Id, graph.Strict, writer);
             WriteBody(graph, writer);
 
             writerRoot.EndGraph();

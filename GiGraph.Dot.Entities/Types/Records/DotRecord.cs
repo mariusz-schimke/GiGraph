@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// </summary>
         /// <param name="flip">
         ///     Determines whether the orientation of the record should be changed from horizontal to vertical, or the other way round. The
-        ///     initial orientation of a record node depends on the <see cref="IDotGraphAttributes.LayoutDirection" /> attribute. If this
+        ///     initial orientation of a record node depends on the <see cref="DotGraphAttributes.LayoutDirection" /> attribute. If this
         ///     attribute is <see cref="DotLayoutDirection.TopToBottom" /> (the default) or <see cref="DotLayoutDirection.BottomToTop" />,
         ///     corresponding to vertical layouts, the top-level fields in a record are displayed horizontally. If, however, this attribute
         ///     is <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to
@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// </param>
         /// <param name="flip">
         ///     Determines whether the orientation of the record should be changed from horizontal to vertical, or the other way round. The
-        ///     initial orientation of a record node depends on the <see cref="IDotGraphAttributes.LayoutDirection" /> attribute. If this
+        ///     initial orientation of a record node depends on the <see cref="DotGraphAttributes.LayoutDirection" /> attribute. If this
         ///     attribute is <see cref="DotLayoutDirection.TopToBottom" /> (the default) or <see cref="DotLayoutDirection.BottomToTop" />,
         ///     corresponding to vertical layouts, the top-level fields in a record are displayed horizontally. If, however, this attribute
         ///     is <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to
@@ -75,7 +75,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// </summary>
         /// <param name="flip">
         ///     Determines whether the orientation of the record should be changed from horizontal to vertical, or the other way round. The
-        ///     initial orientation of a record node depends on the <see cref="IDotGraphAttributes.LayoutDirection" /> attribute. If this
+        ///     initial orientation of a record node depends on the <see cref="DotGraphAttributes.LayoutDirection" /> attribute. If this
         ///     attribute is <see cref="DotLayoutDirection.TopToBottom" /> (the default) or <see cref="DotLayoutDirection.BottomToTop" />,
         ///     corresponding to vertical layouts, the top-level fields in a record are displayed horizontally. If, however, this attribute
         ///     is <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to
@@ -108,7 +108,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// </param>
         /// <param name="flip">
         ///     Determines whether the orientation of the record should be changed from horizontal to vertical, or the other way round. The
-        ///     initial orientation of a record node depends on the <see cref="IDotGraphAttributes.LayoutDirection" /> attribute. If this
+        ///     initial orientation of a record node depends on the <see cref="DotGraphAttributes.LayoutDirection" /> attribute. If this
         ///     attribute is <see cref="DotLayoutDirection.TopToBottom" /> (the default) or <see cref="DotLayoutDirection.BottomToTop" />,
         ///     corresponding to vertical layouts, the top-level fields in a record are displayed horizontally. If, however, this attribute
         ///     is <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to
@@ -127,7 +127,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// </param>
         /// <param name="flip">
         ///     Determines whether the orientation of the record should be changed from horizontal to vertical, or the other way round. The
-        ///     initial orientation of a record node depends on the <see cref="IDotGraphAttributes.LayoutDirection" /> attribute. If this
+        ///     initial orientation of a record node depends on the <see cref="DotGraphAttributes.LayoutDirection" /> attribute. If this
         ///     attribute is <see cref="DotLayoutDirection.TopToBottom" /> (the default) or <see cref="DotLayoutDirection.BottomToTop" />,
         ///     corresponding to vertical layouts, the top-level fields in a record are displayed horizontally. If, however, this attribute
         ///     is <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to
@@ -145,7 +145,7 @@ namespace GiGraph.Dot.Entities.Types.Records
 
         /// <summary>
         ///     Gets or sets the value indicating whether the orientation of the record should be changed from horizontal to vertical, or the
-        ///     other way round. The initial orientation of a record node depends on the <see cref="IDotGraphAttributes.LayoutDirection" />
+        ///     other way round. The initial orientation of a record node depends on the <see cref="DotGraphAttributes.LayoutDirection" />
         ///     attribute. If this attribute is <see cref="DotLayoutDirection.TopToBottom" /> (the default) or
         ///     <see cref="DotLayoutDirection.BottomToTop" />, corresponding to vertical layouts, the top-level fields in a record are
         ///     displayed horizontally. If, however, this attribute is <see cref="DotLayoutDirection.LeftToRight" /> or
@@ -154,7 +154,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// </summary>
         public virtual bool Flip { get; set; } = FlipDefault;
 
-        protected internal override string GetDotEncoded(DotGenerationOptions options, DotSyntaxRules syntaxRules, bool hasParent)
+        protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules, bool hasParent)
         {
             var result = new StringBuilder();
 

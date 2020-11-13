@@ -2,14 +2,14 @@
 {
     public class DotEdgeStatementWriter : DotEntityStatementWriter, IDotEdgeStatementWriter
     {
-        public DotEdgeStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useStatementDelimiter)
-            : base(tokenWriter, context, useStatementDelimiter)
+        public DotEdgeStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool useStatementDelimiter)
+            : base(tokenWriter, configuration, useStatementDelimiter)
         {
         }
 
         public virtual IDotEdgeWriter BeginEdgeStatement()
         {
-            return new DotEdgeWriter(_tokenWriter, _context);
+            return new DotEdgeWriter(_tokenWriter, _configuration);
         }
 
         public virtual void EndEdgeStatement()

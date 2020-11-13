@@ -2,8 +2,8 @@
 {
     public class DotGlobalEdgeAttributesWriter : DotEntityWithAttributeListWriter, IDotGlobalEdgeAttributesWriter
     {
-        public DotGlobalEdgeAttributesWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context)
+        public DotGlobalEdgeAttributesWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
+            : base(tokenWriter, configuration)
         {
         }
 

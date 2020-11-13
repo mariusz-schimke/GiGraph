@@ -6,6 +6,7 @@ using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers;
 using GiGraph.Dot.Output.Writers.Graphs;
+using GiGraph.Dot.Output.Writers.Options;
 
 namespace GiGraph.Dot.Extensions
 {
@@ -23,7 +24,7 @@ namespace GiGraph.Dot.Extensions
         /// <param name="formattingOptions">
         ///     The formatting options to use.
         /// </param>
-        /// <param name="generationOptions">
+        /// <param name="syntaxOptions">
         ///     The generation options to use.
         /// </param>
         /// <param name="syntaxRules">
@@ -33,7 +34,7 @@ namespace GiGraph.Dot.Extensions
         ///     The encoding to use for the output text.
         /// </param>
         public static string Build(this DotGraph graph, DotFormattingOptions formattingOptions = null,
-            DotGenerationOptions generationOptions = null, DotSyntaxRules syntaxRules = null, Encoding encoding = null)
+            DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null, Encoding encoding = null)
         {
             var output = new MemoryStream();
 
@@ -41,7 +42,7 @@ namespace GiGraph.Dot.Extensions
                 ? new StreamWriter(output, encoding)
                 : new StreamWriter(output);
 
-            graph.Build(outputWriter, formattingOptions, generationOptions, syntaxRules);
+            graph.Build(outputWriter, formattingOptions, syntaxOptions, syntaxRules);
 
             outputWriter.Flush();
             return outputWriter.Encoding.GetString(output.ToArray());
@@ -59,19 +60,19 @@ namespace GiGraph.Dot.Extensions
         /// <param name="formattingOptions">
         ///     The formatting options to use.
         /// </param>
-        /// <param name="generationOptions">
+        /// <param name="syntaxOptions">
         ///     The generation options to use.
         /// </param>
         /// <param name="syntaxRules">
         ///     The syntax rules to use.
         /// </param>
         public static void Build(this DotGraph graph, StreamWriter outputWriter, DotFormattingOptions formattingOptions = null,
-            DotGenerationOptions generationOptions = null, DotSyntaxRules syntaxRules = null)
+            DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null)
         {
             var generatorsProviderBuilder = new DotEntityGeneratorsProviderBuilder();
             var graphGeneratorBuilder = new DotGraphGeneratorBuilder(generatorsProviderBuilder);
 
-            graph.Build(outputWriter, graphGeneratorBuilder, formattingOptions, generationOptions, syntaxRules);
+            graph.Build(outputWriter, graphGeneratorBuilder, formattingOptions, syntaxOptions, syntaxRules);
         }
 
         /// <summary>
@@ -86,7 +87,7 @@ namespace GiGraph.Dot.Extensions
         /// <param name="formattingOptions">
         ///     The formatting options to use.
         /// </param>
-        /// <param name="generationOptions">
+        /// <param name="syntaxOptions">
         ///     The generation options to use.
         /// </param>
         /// <param name="syntaxRules">
@@ -96,17 +97,25 @@ namespace GiGraph.Dot.Extensions
         ///     The graph generator builder to use in order to get the graph builder to generate the DOT output with.
         /// </param>
         public static void Build(this DotGraph graph, StreamWriter outputWriter, IDotGraphGeneratorBuilder graphGeneratorBuilder,
-            DotFormattingOptions formattingOptions = null, DotGenerationOptions generationOptions = null, DotSyntaxRules syntaxRules = null)
+            DotFormattingOptions formattingOptions = null, DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null)
         {
             syntaxRules ??= new DotSyntaxRules();
+            syntaxOptions ??= new DotSyntaxOptions();
             formattingOptions ??= new DotFormattingOptions();
-            generationOptions ??= new DotGenerationOptions();
 
-            var graphBuilder = graphGeneratorBuilder.Build(syntaxRules, generationOptions);
+            var tokenWriterOptions = new DotTokenWriterOptions(
+                formattingOptions.IndentationLevel,
+                formattingOptions.IndentationSize,
+                formattingOptions.IndentationChar,
+                formattingOptions.LineBreak,
+                formattingOptions.SingleLine,
+                formattingOptions.TextEncoder
+            );
 
-            var tokenWriter = new DotTokenWriter(outputWriter, formattingOptions, indentationLevel: 0);
-            var graphWriterRoot = new DotGraphWriterRoot(tokenWriter);
+            var tokenWriter = new DotTokenWriter(outputWriter, tokenWriterOptions);
+            var graphWriterRoot = new DotGraphWriterRoot(tokenWriter, formattingOptions);
 
+            var graphBuilder = graphGeneratorBuilder.Build(syntaxRules, syntaxOptions);
             graphBuilder.Generate(graph, graphWriterRoot);
         }
 
@@ -123,7 +132,7 @@ namespace GiGraph.Dot.Extensions
         /// <param name="formattingOptions">
         ///     The formatting options to use.
         /// </param>
-        /// <param name="generationOptions">
+        /// <param name="syntaxOptions">
         ///     The generation options to use.
         /// </param>
         /// <param name="syntaxRules">
@@ -133,13 +142,13 @@ namespace GiGraph.Dot.Extensions
         ///     The encoding to use for the output text.
         /// </param>
         public static void SaveToFile(this DotGraph graph, string filePath, DotFormattingOptions formattingOptions = null,
-            DotGenerationOptions generationOptions = null, DotSyntaxRules syntaxRules = null, Encoding encoding = null)
+            DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null, Encoding encoding = null)
         {
             using var streamWriter = encoding is { }
                 ? new StreamWriter(filePath, append: false, encoding)
                 : new StreamWriter(filePath, append: false);
 
-            graph.Build(streamWriter, formattingOptions, generationOptions, syntaxRules);
+            graph.Build(streamWriter, formattingOptions, syntaxOptions, syntaxRules);
         }
     }
 }

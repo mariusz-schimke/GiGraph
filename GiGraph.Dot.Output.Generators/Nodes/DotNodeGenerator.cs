@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
 {
     public class DotNodeGenerator : DotNodeGenerator<DotNode>
     {
-        public DotNodeGenerator(DotSyntaxRules syntaxRules, DotGenerationOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        public DotNodeGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
         protected override void WriteEntity(DotNode node, IDotNodeWriter writer)
         {
             WriteIdentifier(node.Id, writer);
-            WriteAttributes(node.Attributes, writer);
+            WriteAttributes(node.Attributes.Collection, writer);
         }
     }
 }

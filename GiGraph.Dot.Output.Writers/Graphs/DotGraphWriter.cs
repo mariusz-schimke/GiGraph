@@ -2,8 +2,8 @@
 {
     public class DotGraphWriter : DotGraphBlockWriter, IDotGraphWriter
     {
-        public DotGraphWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context)
-            : base(tokenWriter, context)
+        public DotGraphWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
+            : base(tokenWriter, configuration)
         {
         }
 
@@ -15,7 +15,7 @@
                    .Space();
             }
 
-            if (_context.IsDirectedGraph)
+            if (_configuration.IsDirectedGraph)
             {
                 _tokenWriter.Keyword("digraph");
             }

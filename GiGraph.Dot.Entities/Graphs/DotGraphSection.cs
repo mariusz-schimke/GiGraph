@@ -1,6 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Collections.Edge;
-using GiGraph.Dot.Entities.Attributes.Collections.Node;
+using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
@@ -8,82 +7,42 @@ using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
-    public class DotGraphSection<TGraphAttributes> : IDotEntity, IDotAnnotatable
-        where TGraphAttributes : IDotAttributeCollection
+    public class DotGraphSection : DotCommonGraphSection
     {
-        public DotGraphSection(
-            TGraphAttributes attributes,
+        protected DotGraphSection(
+            DotGraphAttributes attributes,
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
-            DotClusterCollection clusters)
+            DotGraphClusterCollection clusters
+        )
+            : base(attributes, nodes, edges, subgraphs, clusters)
         {
-            Attributes = attributes;
-            Nodes = nodes;
-            Edges = edges;
-            Subgraphs = subgraphs;
-            Clusters = clusters;
         }
 
-        /// <summary>
-        ///     The attributes of the element.
-        /// </summary>
-        public virtual TGraphAttributes Attributes { get; }
-
-        /// <summary>
-        ///     Gets the collection of nodes.
-        /// </summary>
-        public virtual DotNodeCollection Nodes { get; }
-
-        /// <summary>
-        ///     <para>
-        ///         Gets the collection of edges.
-        ///     </para>
-        ///     <para>
-        ///         (!) When an edge connects two elements belonging to two different subgraphs (or where one belongs to the root graph, and
-        ///         the other belongs to a subgraph), then it should be added to the common upper level graph or subgraph, not to the current
-        ///         graph.
-        ///     </para>
-        /// </summary>
-        public virtual DotEdgeCollection Edges { get; }
-
-        /// <summary>
-        ///     <para>
-        ///         Gets the collection of subgraphs. A subgraph is interpreted as a collection of nodes constrained with a rank attribute
-        ///         that determines their layout.
-        ///     </para>
-        ///     <para>
-        ///         Use a subgraph when you want to have more granular control on the layout of a specific group of nodes. However, when you
-        ///         want the nodes to be drawn together in a bounding rectangle, that has a custom color and fill, use a cluster instead (
-        ///         <see cref="Clusters" />). You can use either of these types to set a common style of nodes and edges within them, but you
-        ///         cannot control the layout of nodes within a cluster.
-        ///     </para>
-        /// </summary>
-        public virtual DotSubgraphCollection Subgraphs { get; }
-
-        /// <summary>
-        ///     <para>
-        ///         Gets the collection of clusters. A cluster is interpreted as a collection of nodes drawn within a bounding rectangle.
-        ///     </para>
-        ///     <para>
-        ///         Use a cluster when you want the nodes within it to be drawn together in a bounding rectangle, that has a custom color and
-        ///         fill. However, when you want to have more granular control on the layout of a specific group of nodes, use a subgraph
-        ///         instead (<see cref="Subgraphs" />). You can use either of these types to set a common style of nodes and edges within
-        ///         them, but you cannot control the layout of nodes within a cluster.
-        ///     </para>
-        /// </summary>
-        public virtual DotClusterCollection Clusters { get; }
-
-        public virtual string Annotation { get; set; }
-
-        protected static DotGraphSection<TGraphAttributes> Create(TGraphAttributes attributes)
+        protected DotGraphSection(DotGraphSection source)
+            : base(source)
         {
-            return new DotGraphSection<TGraphAttributes>(
-                attributes,
-                new DotNodeCollection(new DotNodeAttributeCollection()),
-                new DotEdgeCollection(new DotEdgeAttributeCollection()),
-                new DotSubgraphCollection(),
-                new DotClusterCollection());
         }
+
+        private DotGraphSection(DotGraphAttributes attributes)
+            : base(attributes, new DotGraphClusterCollection(new DotGraphClusterAttributes(attributes)))
+        {
+        }
+
+        public DotGraphSection()
+            : this(new DotGraphAttributes())
+        {
+        }
+
+        protected override DotAttributeCollection AttributeCollection => Attributes.Collection;
+
+        /// <summary>
+        ///     The attributes of the graph.
+        /// </summary>
+        public virtual DotGraphAttributes Attributes => (DotGraphAttributes) _attributes;
+
+        /// <inheritdoc cref="DotCommonGraphSection.Clusters" />
+        public new DotGraphClusterCollection Clusters => (DotGraphClusterCollection) base.Clusters;
     }
 }

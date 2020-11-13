@@ -4,15 +4,15 @@
     {
         protected readonly bool _useAttributeSeparator;
 
-        public DotAttributeListItemWriter(DotTokenWriter tokenWriter, DotEntityWriterContext context, bool useAttributeSeparator)
-            : base(tokenWriter, context, enforceBlockComment: true)
+        public DotAttributeListItemWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool useAttributeSeparator)
+            : base(tokenWriter, configuration, enforceBlockComment: true)
         {
             _useAttributeSeparator = useAttributeSeparator;
         }
 
         public virtual IDotAttributeWriter BeginAttribute()
         {
-            return new DotAttributeWriter(_tokenWriter, _context, enforceBlockComment: true);
+            return new DotAttributeWriter(_tokenWriter, _configuration, enforceBlockComment: true);
         }
 
         public virtual void EndAttribute()
