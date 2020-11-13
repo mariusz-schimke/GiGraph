@@ -2,7 +2,7 @@ name: Publish a NuGet Package
 
 on:
   release:
-    types: [ published ]
+    types: [ created ]
 
 env:
   BRANCH: master
