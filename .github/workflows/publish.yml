@@ -20,7 +20,7 @@ jobs:
     - name: Setup NuGet.exe
       uses: nuget/setup-nuget@v1
       with:
-        nuget-api-key: ${{ secrets.NuGetApiKey }}
+        nuget-api-key: ${{ secrets.nuget_api_key }}
         nuget-version: 'latest'
     - name: Install dependencies
       run: dotnet restore
@@ -31,7 +31,7 @@ jobs:
     - shell: pwsh
       name: Create SNK File
       env:
-        SNK: ${{ secrets.Snk }}
+        SNK: ${{ secrets.snk }}
       run: |
         $snk = [Convert]::FromBase64String("$env:SNK")
         Set-Content "Solution Items\GiGraph.snk" -Value $snk -AsByteStream
