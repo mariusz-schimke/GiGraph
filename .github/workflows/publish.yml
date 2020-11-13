@@ -1,16 +1,17 @@
 name: Publish a NuGet Package
+
 on:
   push:
-    branches: [ master, develop ]
+    branches: [ master ]
   pull_request:
-    branches: [ master, develop ]
+    branches: [ master ]
+
+env:
+  BRANCH: master
 
 jobs:
   build:
-    env:
-      BRANCH: master
-
-    if: github.ref == 'refs/heads/${{ env.BRANCH }}'
+    if: github.ref == 'refs/heads/master'
     runs-on: windows-latest
 
     steps:
