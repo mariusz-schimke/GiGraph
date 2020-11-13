@@ -1,12 +1,11 @@
 To do:
 
-1. Fix comments! They are not inherited from interfaces implicitly.
-2. Add CopyFrom methods to property groups (to be able to copy props from another instance).
-3. Add info to all property comments that determines what engine/format a given property is supported by, and also their default values.
+1. Add CopyFrom methods to property groups (to be able to copy props from another instance).
+2. Add info to all property comments that determines what engine/format a given property is supported by, and also their default values.
 
-4. Gradually add support for all available attributes.
-5. Verify the correctness of XML documentations.
-6. Check if methods and properties are coherently marked as virtual (or remove the virtual specifier from everywhere where not useful internally?).
+3. Gradually add support for all available attributes.
+4. Verify the correctness of XML documentations.
+5. Check if methods and properties are coherently marked as virtual (or remove the virtual specifier from everywhere where not useful internally?).
 
 
 Nice-to-haves:
