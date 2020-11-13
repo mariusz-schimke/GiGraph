@@ -10,9 +10,9 @@ jobs:
   build:
 
     runs-on: windows-latest
+    if: github.ref == 'refs/heads/publish'
 
     steps:
-    - if: github.ref == 'refs/heads/publish'
     - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
