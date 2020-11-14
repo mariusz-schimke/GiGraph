@@ -31,6 +31,7 @@ namespace GiGraph.Dot.Output.Generators
             WriteEntity(entity, writer);
         }
 
+        /// <inheritdoc cref="IDotEntityGenerator.Supports{TWriter}"/>
         public virtual bool Supports<TRequiredWriter>(Type entityType, out bool isExactEntityTypeMatch)
             where TRequiredWriter : IDotEntityWriter
         {
@@ -50,6 +51,7 @@ namespace GiGraph.Dot.Output.Generators
             return typeof(TEntity).IsAssignableFrom(entityType);
         }
 
+        /// <inheritdoc cref="IDotEntityGenerator.Generate"/>
         void IDotEntityGenerator.Generate(IDotEntity entity, IDotEntityWriter writer, bool annotate)
         {
             if (entity is { } && !(entity is TEntity))
