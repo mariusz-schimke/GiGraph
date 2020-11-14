@@ -163,7 +163,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         bool? AttachLabel { get; set; }
 
         /// <summary>
-        ///     If false, the edge is not used in ranking the nodes (default: true). See
+        ///     If false, the edge is not used in ranking the nodes (dot only, default: true). See
         ///     <see href="http://www.graphviz.org/doc/info/attrs.html#a:constraint">
         ///         documentation
         ///     </see>

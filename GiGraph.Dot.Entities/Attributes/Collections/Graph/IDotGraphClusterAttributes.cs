@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
     public interface IDotGraphClusterAttributes : IDotGraphClusterCommonAttributes
     {
         /// <summary>
-        ///     If true, allows edges between clusters (default: false). Specify a <see cref="DotEdgeEndpointAttributes.ClusterId" /> for an
+        ///     If true, allows edges between clusters (dot only, default: false). Specify a <see cref="DotEdgeEndpointAttributes.ClusterId" /> for an
         ///     edge's <see cref="DotEdgeAttributes.Head" /> or <see cref="DotEdgeAttributes.Tail" /> to attach it to the border of the
         ///     cluster with that identifier.
         /// </summary>
