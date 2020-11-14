@@ -24,6 +24,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         {
         }
 
+        /// <inheritdoc />
         [DotAttributeKey(DotAttributeKeys.HeadLabel)]
         public override DotLabel Label
         {
@@ -31,6 +32,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => base.Label = value;
         }
 
+        /// <inheritdoc />
         [DotAttributeKey(DotAttributeKeys.HeadClip)]
         public override bool? ClipToNodeBoundary
         {
@@ -38,6 +40,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => base.ClipToNodeBoundary = value;
         }
 
+        /// <inheritdoc />
         [DotAttributeKey(DotAttributeKeys.SameHead)]
         public override string GroupName
         {
@@ -45,6 +48,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => base.GroupName = value;
         }
 
+        /// <inheritdoc />
         [DotAttributeKey(DotAttributeKeys.HeadPort)]
         public override DotEndpointPort Port
         {
@@ -52,6 +56,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => base.Port = value;
         }
 
+        /// <inheritdoc />
         [DotAttributeKey(DotAttributeKeys.LHead)]
         public override string ClusterId
         {
@@ -59,6 +64,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => base.ClusterId = value;
         }
 
+        /// <inheritdoc />
         [DotAttributeKey(DotAttributeKeys.Arrowhead)]
         public override DotArrowheadDefinition Arrowhead
         {
