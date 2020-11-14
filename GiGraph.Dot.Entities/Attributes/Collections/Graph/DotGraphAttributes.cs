@@ -78,6 +78,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => base.ColorScheme = value;
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.Comment" />
         [DotAttributeKey(DotAttributeKeys.Comment)]
         public virtual string Comment
         {
@@ -85,6 +86,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.BackgroundColor" />
         [DotAttributeKey(DotAttributeKeys.BgColor)]
         public virtual DotColorDefinition BackgroundColor
         {
@@ -92,6 +94,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.GradientAngle" />
         [DotAttributeKey(DotAttributeKeys.GradientAngle)]
         public virtual int? GradientAngle
         {
@@ -99,6 +102,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.HorizontalLabelAlignment" />
         [DotAttributeKey(DotAttributeKeys.LabelJust)]
         public virtual DotHorizontalAlignment? HorizontalLabelAlignment
         {
@@ -106,6 +110,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotHorizontalAlignmentAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.VerticalLabelAlignment" />
         [DotAttributeKey(DotAttributeKeys.LabelLoc)]
         public virtual DotVerticalAlignment? VerticalLabelAlignment
         {
@@ -113,6 +118,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.EdgeOrderingMode" />
         [DotAttributeKey(DotAttributeKeys.Ordering)]
         public virtual DotEdgeOrderingMode? EdgeOrderingMode
         {
@@ -120,6 +126,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeOrderingModeAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.Margin" />
         [DotAttributeKey(DotAttributeKeys.Margin)]
         public virtual DotPoint Margin
         {
@@ -127,6 +134,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.SortIndex" />
         [DotAttributeKey(DotAttributeKeys.SortV)]
         public virtual int? SortIndex
         {
@@ -134,6 +142,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.Orientation" />
         [DotAttributeKey(DotAttributeKeys.Orientation)]
         public virtual DotOrientation? Orientation
         {
@@ -141,6 +150,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotOrientationAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.LayoutDirection" />
         [DotAttributeKey(DotAttributeKeys.RankDir)]
         public virtual DotLayoutDirection? LayoutDirection
         {
@@ -148,6 +158,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLayoutDirectionAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.EdgeShape" />
         [DotAttributeKey(DotAttributeKeys.Splines)]
         public virtual DotEdgeShape? EdgeShape
         {
@@ -155,6 +166,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeShapeAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.ConcentrateEdges" />
         [DotAttributeKey(DotAttributeKeys.Concentrate)]
         public virtual bool? ConcentrateEdges
         {
@@ -162,6 +174,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.ForceExternalLabels" />
         [DotAttributeKey(DotAttributeKeys.ForceLabels)]
         public virtual bool? ForceExternalLabels
         {
@@ -169,6 +182,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.Charset" />
         [DotAttributeKey(DotAttributeKeys.Charset)]
         public virtual string Charset
         {
@@ -176,6 +190,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.NodeSeparation" />
         [DotAttributeKey(DotAttributeKeys.NodeSep)]
         public virtual double? NodeSeparation
         {
@@ -185,6 +200,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 : new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.RankSeparation" />
         [DotAttributeKey(DotAttributeKeys.RankSep)]
         public virtual DotRankSeparationDefinition RankSeparation
         {
@@ -204,6 +220,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankSeparationDefinitionAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.Rotation" />
         [DotAttributeKey(DotAttributeKeys.Rotate)]
         public virtual int? Rotation
         {
@@ -211,6 +228,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.Center" />
         [DotAttributeKey(DotAttributeKeys.Center)]
         public virtual bool? Center
         {
@@ -218,6 +236,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.ImageDirectories" />
         [DotAttributeKey(DotAttributeKeys.ImagePath)]
         public virtual string ImageDirectories
         {
@@ -225,6 +244,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.Padding" />
         [DotAttributeKey(DotAttributeKeys.Pad)]
         public virtual DotPoint Padding
         {
@@ -232,6 +252,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.Size" />
         [DotAttributeKey(DotAttributeKeys.Size)]
         public virtual DotPoint Size
         {
@@ -239,6 +260,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.Scaling" />
         [DotAttributeKey(DotAttributeKeys.Ratio)]
         public virtual DotGraphScalingDefinition Scaling
         {
@@ -258,6 +280,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotGraphScalingDefinitionAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.Packing" />
         [DotAttributeKey(DotAttributeKeys.Pack)]
         public virtual DotPackingDefinition Packing
         {
@@ -276,6 +299,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPackingDefinitionAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.PackingMode" />
         [DotAttributeKey(DotAttributeKeys.PackMode)]
         public virtual DotPackingModeDefinition PackingMode
         {
@@ -293,6 +317,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPackingModeDefinitionAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.Dpi" />
         [DotAttributeKey(DotAttributeKeys.Dpi)]
         public virtual double? Dpi
         {
@@ -302,6 +327,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 : new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.Resolution" />
         [DotAttributeKey(DotAttributeKeys.Resolution)]
         public virtual double? Resolution
         {
@@ -311,6 +337,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 : new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.LandscapeOrientation" />
         [DotAttributeKey(DotAttributeKeys.Landscape)]
         public virtual bool? LandscapeOrientation
         {

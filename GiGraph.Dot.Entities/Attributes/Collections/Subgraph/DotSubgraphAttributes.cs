@@ -25,6 +25,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Subgraph
         {
         }
 
+        /// <inheritdoc cref="IDotSubgraphAttributes.Rank" />
         [DotAttributeKey(DotAttributeKeys.Rank)]
         public virtual DotRank? Rank
         {

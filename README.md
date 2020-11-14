@@ -10,10 +10,9 @@ For a complete documentation of the DOT language and visualization capabilities 
 
 
 
+**Available on NuGet**: [![NuGet](https://buildstats.info/nuget/GiGraph.Dot)](https://www.nuget.org/packages/GiGraph.Dot/)
+
 **Built with** <a href="https://docs.microsoft.com/en-US/dotnet/standard/net-standard#net-implementation-support" target="_blank">.NET Standard 2.0</a> (compatible with *.NET Core 2.0* and above, *.NET Framework 4.6.1* and above).
-
-**Available on NuGet**: [![#](https://img.shields.io/nuget/v/GiGraph.Dot)](https://www.nuget.org/packages/GiGraph.Dot/)
-
 
 
 **Special thanks** to <a href="https://www.jetbrains.com/?from=GiGraphDot" target="_blank">JetBrains</a> for providing me free of charge with their fantastic Rider IDE and tools!

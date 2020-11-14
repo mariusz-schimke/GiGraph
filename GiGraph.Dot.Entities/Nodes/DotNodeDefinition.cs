@@ -14,6 +14,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// </summary>
         public virtual DotNodeAttributes Attributes { get; }
 
+        /// <inheritdoc cref="IDotAnnotatable.Annotation"/>
         public virtual string Annotation { get; set; }
 
         string IDotOrderable.OrderingKey => GetOrderingKey();

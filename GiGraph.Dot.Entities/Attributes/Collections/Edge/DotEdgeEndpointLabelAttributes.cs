@@ -30,6 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// </summary>
         public virtual DotEdgeEndpointLabelFontAttributes Font { get; }
 
+        /// <inheritdoc cref="IDotEdgeEndpointLabelAttributes.Distance" />
         [DotAttributeKey(DotAttributeKeys.LabelDistance)]
         public virtual double? Distance
         {
@@ -39,6 +40,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
                 : new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotEdgeEndpointLabelAttributes.Angle" />
         [DotAttributeKey(DotAttributeKeys.LabelAngle)]
         public virtual double? Angle
         {

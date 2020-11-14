@@ -15,6 +15,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         {
         }
 
+        /// <inheritdoc cref="IDotEntityFontAttributes.Name" />
         [DotAttributeKey(DotAttributeKeys.FontName)]
         public virtual string Name
         {
@@ -22,6 +23,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotEntityFontAttributes.Size" />
         [DotAttributeKey(DotAttributeKeys.FontSize)]
         public virtual double? Size
         {
@@ -31,6 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
                 : new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotEntityFontAttributes.Color" />
         [DotAttributeKey(DotAttributeKeys.FontColor)]
         public virtual DotColor Color
         {
