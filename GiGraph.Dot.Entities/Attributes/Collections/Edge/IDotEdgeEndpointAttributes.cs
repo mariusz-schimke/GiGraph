@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
+using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Edges;
@@ -17,9 +18,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotLabel Label { get; set; }
 
         /// <summary>
-        ///     Indicates where on the node to attach the end of the edge. In the default case, the edge is aimed towards the center of the
-        ///     node, and then clipped at the node boundary. See also the <see cref="DotEndpoint.Port" /> property of the edge's
-        ///     <see cref="DotEdge{TTail,THead}.Head" /> or <see cref="DotEdge{TTail,THead}.Tail" />.
+        ///     Indicates where on the node to attach the end of the edge. In the default case (<see cref="DotCompassPoint.Center" />), the
+        ///     edge is aimed towards the center of the node, and then clipped at the node boundary. See also the
+        ///     <see cref="DotEndpoint.Port" /> property of the edge's <see cref="DotEdge{TTail,THead}.Head" /> or
+        ///     <see cref="DotEdge{TTail,THead}.Tail" />.
         /// </summary>
         DotEndpointPort Port { get; set; }
 

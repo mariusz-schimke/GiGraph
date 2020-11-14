@@ -218,8 +218,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 
         /// <summary>
         ///     <para>
-        ///         Sets x and y margins of canvas, in inches. If the margin is a single double, both margins are set equal to the given
-        ///         value.
+        ///         Sets x and y margins of canvas, in inches (default: device-dependent). If the margin is a single double, both margins are
+        ///         set equal to the given value.
         ///     </para>
         ///     <para>
         ///         Note that the margin is not part of the drawing but just empty space left around the drawing. It basically corresponds to

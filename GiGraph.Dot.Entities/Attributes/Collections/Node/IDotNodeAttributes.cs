@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///         Gets or sets the label to display on the node. It may be plain text (<see cref="string" />), HTML (
         ///         <see cref="DotHtmlLabel" />), or a record (<see cref="DotRecordLabel" />) for a record-based node (when
         ///         <see cref="Shape" /> = <see cref="DotNodeShape.Record" /> or <see cref="Shape" /> =
-        ///         <see cref="DotNodeShape.RoundedRecord" />).
+        ///         <see cref="DotNodeShape.RoundedRecord" />). When not specified, node identifier is used.
         ///     </para>
         ///     <para>
         ///         See also <see cref="DotTextFormatter" /> for plain text label formatting if needed, and <see cref="DotRecordBuilder" />
@@ -107,9 +107,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <summary>
         ///     <para>
         ///         Gets or sets the color used to fill the background of the node, assuming that the fill style of the node is
-        ///         <see cref="DotNodeFillStyle.Normal" />. If <see cref="FillColor" /> is not defined, <see cref="Color" /> is used. If it
-        ///         is not defined too, the default is used, except for <see cref="Shape" /> of <see cref="DotNodeShape.Point" />, or when
-        ///         the output format is MIF, which use black by default.
+        ///         <see cref="DotNodeFillStyle.Normal" /> (default: <see cref="System.Drawing.Color.LightGray" />). If
+        ///         <see cref="FillColor" /> is not defined, <see cref="Color" /> is used. If it is not defined too, the default is used,
+        ///         except for <see cref="Shape" /> of <see cref="DotNodeShape.Point" />, or when the output format is MIF, which use black
+        ///         by default.
         ///     </para>
         ///     <para>
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
