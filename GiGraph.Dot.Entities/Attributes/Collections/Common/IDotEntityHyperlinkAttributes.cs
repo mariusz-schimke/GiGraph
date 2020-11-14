@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         DotEscapeString Url { get; set; }
 
         /// <summary>
-        ///     Synonym for <see cref="Url" />.
+        ///     Synonym for <see cref="Url" /> (svg, postscript, map only).
         /// </summary>
         DotEscapeString Href { get; set; }
 
