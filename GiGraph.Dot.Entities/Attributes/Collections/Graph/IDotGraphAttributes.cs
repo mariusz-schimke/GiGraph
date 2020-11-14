@@ -120,7 +120,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         int? Rotation { get; set; }
 
         /// <summary>
-        ///     Gets or sets the direction of graph layout (default: <see cref="DotLayoutDirection.TopToBottom" />).
+        ///     Gets or sets the direction of graph layout (dot only, default: <see cref="DotLayoutDirection.TopToBottom" />).
         /// </summary>
         DotLayoutDirection? LayoutDirection { get; set; }
 
@@ -168,15 +168,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 
         /// <summary>
         ///     <para>
-        ///         In dot, this gives the desired rank separation, in inches (<see cref="DotRankSeparation" />; default: 0.5, minimum:
-        ///         0.02). This is the minimum vertical distance between the bottom of the nodes in one rank and the tops of nodes in the
-        ///         next.
+        ///         In dot, this gives the desired rank separation, in inches (<see cref="DotRankSeparation" />; default: 0.5, minimum: 0.02.
+        ///         This is the minimum vertical distance between the bottom of the nodes in one rank and the tops of nodes in the next.
         ///     </para>
         ///     <para>
         ///         In twopi, this attribute specifies the radial separation of concentric circles (default: 1, minimum: 0.02). For twopi,
         ///         this can also be a list of doubles (<see cref="DotRadialRankSeparation" />). The first double specifies the radius of the
         ///         inner circle; the second double specifies the increase in radius from the first circle to the second; etc. If there are
         ///         more circles than numbers, the last number is used as the increment for the remainder.
+        ///     </para>
+        ///     <para>
+        ///         Twopi, dot only.
         ///     </para>
         /// </summary>
         DotRankSeparationDefinition RankSeparation { get; set; }

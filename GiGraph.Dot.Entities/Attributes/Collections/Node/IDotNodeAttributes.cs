@@ -73,9 +73,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         DotVerticalAlignment? VerticalLabelAlignment { get; set; }
 
         /// <summary>
-        ///     Tooltip annotation attached to the node. If unset, Graphviz will use the <see cref="Label" /> attribute if defined. Note that
-        ///     if the label is a record specification or an HTML-like label, the resulting tooltip may be unhelpful. In this case, if
-        ///     tooltips will be generated, the user should set a tooltip attribute explicitly.
+        ///     Tooltip annotation attached to the node (svg, cmap only). If unset, Graphviz will use the <see cref="Label" /> attribute if
+        ///     defined. Note that if the label is a record specification or an HTML-like label, the resulting tooltip may be unhelpful. In
+        ///     this case, if tooltips will be generated, the user should set a tooltip attribute explicitly.
         /// </summary>
         DotEscapeString Tooltip { get; set; }
 

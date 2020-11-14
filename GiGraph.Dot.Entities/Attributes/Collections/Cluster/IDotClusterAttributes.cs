@@ -62,7 +62,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         DotVerticalAlignment? VerticalLabelAlignment { get; set; }
 
         /// <summary>
-        ///     Tooltip annotation attached to the cluster. If unset, Graphviz will use the <see cref="Label" /> attribute if defined.
+        ///     Tooltip annotation attached to the cluster (svg, cmap only). If unset, Graphviz will use the <see cref="Label" /> attribute
+        ///     if defined.
         /// </summary>
         DotEscapeString Tooltip { get; set; }
 

@@ -34,7 +34,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Synonym for <see cref="Url" />.
+        ///     Synonym for <see cref="Url" /> (svg, map only).
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.TailHref)]
         public override DotEscapeString Href
@@ -44,9 +44,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     If <see cref="Url" /> is specified, this attribute determines which window of the browser is used for the URL. Setting it to
-        ///     <see cref="DotHyperlinkTargets.NewWindow" /> will open a new window if it doesn't already exist, or reuse it if it does. If
-        ///     undefined, the value of the edge's <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />
+        ///     If <see cref="Url" /> is specified, this attribute determines which window of the browser is used for the URL (svg, map
+        ///     only). Setting it to <see cref="DotHyperlinkTargets.NewWindow" /> will open a new window if it doesn't already exist, or
+        ///     reuse it if it does. If undefined, the value of the edge's
+        ///     <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />
         ///     <see cref="DotEntityHyperlinkAttributes{TIEntityHyperlinkAttributes}.Target" /> is used.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.TailTarget)]
@@ -57,7 +58,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Tooltip annotation attached to the tail of an edge. This is used only if <see cref="Url" /> is specified.
+        ///     Tooltip annotation attached to the tail of an edge (svg, cmap only). This is used only if <see cref="Url" /> is specified.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.TailTooltip)]
         public override DotEscapeString Tooltip
