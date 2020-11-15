@@ -128,11 +128,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => base.Tooltip = value;
         }
 
-        /// <inheritdoc cref="IDotNodeAttributes.Margin" />
-        public override DotPoint Margin
+        /// <inheritdoc cref="IDotNodeAttributes.Padding" />
+        public override DotPoint Padding
         {
-            get => base.Margin;
-            set => base.Margin = value;
+            get => base.Padding;
+            set => base.Padding = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.BorderWidth" />

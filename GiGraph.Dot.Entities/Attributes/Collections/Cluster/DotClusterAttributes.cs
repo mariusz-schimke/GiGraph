@@ -112,11 +112,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => base.Tooltip = value;
         }
 
-        /// <inheritdoc cref="IDotClusterAttributes.Margin" />
-        public override DotPoint Margin
+        /// <inheritdoc cref="IDotClusterAttributes.Padding" />
+        public override DotPoint Padding
         {
-            get => base.Margin;
-            set => base.Margin = value;
+            get => base.Padding;
+            set => base.Padding = value;
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderWidth" />

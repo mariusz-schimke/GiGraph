@@ -187,7 +187,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <summary>
         ///     Specifies space left around the node's label. By default, the value is (0.11, 0.055).
         /// </summary>
-        DotPoint Margin { get; set; }
+        DotPoint Padding { get; set; }
 
         /// <summary>
         ///     Comments are inserted into output. Device-dependent.

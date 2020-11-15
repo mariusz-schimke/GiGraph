@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         }
 
         [DotAttributeKey(DotAttributeKeys.Margin)]
-        public virtual DotPoint Margin
+        public virtual DotPoint Padding
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
