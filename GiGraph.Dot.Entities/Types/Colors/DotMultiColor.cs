@@ -125,11 +125,6 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// </summary>
         public virtual DotColor[] Colors { get; }
 
-        public override string ToString()
-        {
-            return string.Join(", ", Colors.Select(color => color.ToString()));
-        }
-
         protected internal override string GetDotEncodedColor(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var colors = Colors.Select(color => color.GetDotEncodedColor(options, syntaxRules));

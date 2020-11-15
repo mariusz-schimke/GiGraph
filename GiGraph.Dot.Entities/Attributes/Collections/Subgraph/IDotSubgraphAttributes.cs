@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Subgraph
     {
         /// <summary>
         ///     <para>
-        ///         Gets or sets the rank constraints on the nodes in the subgraph.
+        ///         Gets or sets the rank constraints on the nodes in the subgraph (dot only).
         ///     </para>
         ///     <para>
         ///         If rank is <see cref="DotRank.Same" />, all nodes are placed on the same rank.

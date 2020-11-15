@@ -120,7 +120,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         int? Rotation { get; set; }
 
         /// <summary>
-        ///     Gets or sets the direction of graph layout (default: <see cref="DotLayoutDirection.TopToBottom" />).
+        ///     Gets or sets the direction of graph layout (dot only, default: <see cref="DotLayoutDirection.TopToBottom" />).
         /// </summary>
         DotLayoutDirection? LayoutDirection { get; set; }
 
@@ -168,9 +168,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 
         /// <summary>
         ///     <para>
-        ///         In dot, this gives the desired rank separation, in inches (<see cref="DotRankSeparation" />; default: 0.5, minimum:
-        ///         0.02). This is the minimum vertical distance between the bottom of the nodes in one rank and the tops of nodes in the
-        ///         next.
+        ///         In dot, this gives the desired rank separation, in inches (<see cref="DotRankSeparation" />; default: 0.5, minimum: 0.02.
+        ///         This is the minimum vertical distance between the bottom of the nodes in one rank and the tops of nodes in the next.
         ///     </para>
         ///     <para>
         ///         In twopi, this attribute specifies the radial separation of concentric circles (default: 1, minimum: 0.02). For twopi,
@@ -178,13 +177,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         inner circle; the second double specifies the increase in radius from the first circle to the second; etc. If there are
         ///         more circles than numbers, the last number is used as the increment for the remainder.
         ///     </para>
+        ///     <para>
+        ///         Twopi, dot only.
+        ///     </para>
         /// </summary>
         DotRankSeparationDefinition RankSeparation { get; set; }
 
         /// <summary>
         ///     Determines how inedges and outedges, that is, edges with a node as their head or tail node respectively, are ordered (dot
         ///     only). If defined on a graph or subgraph, the value is applied to all nodes in the graph or subgraph. Note that the graph
-        ///     attribute takes precedence over the node attribute.
+        ///     attribute takes precedence over the corresponding node attribute.
         /// </summary>
         DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
 
@@ -216,8 +218,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 
         /// <summary>
         ///     <para>
-        ///         Sets x and y margins of canvas, in inches. If the margin is a single double, both margins are set equal to the given
-        ///         value.
+        ///         Sets x and y margins of canvas, in inches (default: device-dependent). If the margin is a single double, both margins are
+        ///         set equal to the given value.
         ///     </para>
         ///     <para>
         ///         Note that the margin is not part of the drawing but just empty space left around the drawing. It basically corresponds to
@@ -254,9 +256,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         the final drawing size may only approximate what is desired.
         ///     </para>
         ///     <para>
-        ///         If ratio is numeric, it is taken as the desired aspect ratio. Then, if the actual aspect ratio is less than the desired
-        ///         ratio, the drawing height is scaled up to achieve the desired ratio; if the actual ratio is greater than that desired
-        ///         ratio, the drawing width is scaled up.
+        ///         If ratio is numeric (<see cref="DotGraphScalingAspectRatio" />), it is taken as the desired aspect ratio. Then, if the
+        ///         actual aspect ratio is less than the desired ratio, the drawing height is scaled up to achieve the desired ratio; if the
+        ///         actual ratio is greater than that desired ratio, the drawing width is scaled up.
         ///     </para>
         ///     <para>
         ///         See also <see cref="DotGraphScaling" /> for non-numeric options of the ratio.

@@ -8,6 +8,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
     public abstract class DotEdgeEndpointAttributes : DotEntityAttributes<IDotEdgeEndpointAttributes>, IDotEdgeEndpointAttributes
     {
+        protected readonly DotEdgeHyperlinkAttributes _hyperlink;
+
         protected DotEdgeEndpointAttributes(
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
@@ -15,14 +17,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         )
             : base(attributes, attributeKeyLookup)
         {
-            Hyperlink = hyperlink;
+            _hyperlink = hyperlink;
         }
-
-        /// <summary>
-        ///     Hyperlink properties of the endpoint. If defined, the hyperlink is output as part of the endpoint's <see cref="Label" />.
-        ///     Also, this value is used near the endpoint, overriding hyperlink properties set on the edge.
-        /// </summary>
-        public virtual DotEdgeHyperlinkAttributes Hyperlink { get; }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Label" />
         public virtual DotLabel Label

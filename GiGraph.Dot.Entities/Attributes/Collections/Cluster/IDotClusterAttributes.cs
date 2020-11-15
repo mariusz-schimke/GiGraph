@@ -62,7 +62,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         DotVerticalAlignment? VerticalLabelAlignment { get; set; }
 
         /// <summary>
-        ///     Tooltip annotation attached to the cluster. If unset, Graphviz will use the <see cref="Label" /> attribute if defined.
+        ///     Tooltip annotation attached to the cluster (svg, cmap only). If unset, Graphviz will use the <see cref="Label" /> attribute
+        ///     if defined.
         /// </summary>
         DotEscapeString Tooltip { get; set; }
 
@@ -105,9 +106,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         int? Peripheries { get; set; }
 
         /// <summary>
-        ///     Specifies the space between the nodes in the cluster and the cluster bounding box. By default, this is 8 points.
+        ///     Specifies the space between the nodes in the cluster and bounding box of the cluster. By default, this is 8 points.
         /// </summary>
-        DotPoint Margin { get; set; }
+        DotPoint Padding { get; set; }
 
         /// <summary>
         ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="DotGraphAttributes.PackingMode" /> indicates an

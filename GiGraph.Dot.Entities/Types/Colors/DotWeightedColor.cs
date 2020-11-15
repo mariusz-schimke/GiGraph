@@ -93,11 +93,6 @@ namespace GiGraph.Dot.Entities.Types.Colors
             return Weight;
         }
 
-        public override string ToString()
-        {
-            return $"{base.ToString()}/{Weight.ToString(CultureInfo.InvariantCulture)}";
-        }
-
         protected internal override string GetDotEncodedColor(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var color = base.GetDotEncodedColor(options, syntaxRules);

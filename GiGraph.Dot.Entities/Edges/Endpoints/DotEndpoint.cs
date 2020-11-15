@@ -81,7 +81,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
             set => _port = value ?? throw new ArgumentNullException(nameof(Port), "Port cannot be null.");
         }
 
-        /// <inheritdoc cref="IDotAnnotatable.Annotation"/>
+        /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }
 
         protected override string GetOrderingKey()

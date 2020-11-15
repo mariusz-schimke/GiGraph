@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// </summary>
         public virtual string Key { get; }
 
-        /// <inheritdoc cref="IDotAnnotatable.Annotation"/>
+        /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }
 
         string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)

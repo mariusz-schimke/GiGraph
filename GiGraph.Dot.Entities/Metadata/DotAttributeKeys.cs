@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Graph)]
         public const string Background = "_background";
 
-        [DotAttributeSupport(DotElementSupport.Graph, outputFormats: DotOutputFormatSupport.Output)]
+        [DotAttributeSupport(DotElementSupport.Graph, outputFormats: DotOutputFormatSupport.WriteOnly)]
         public const string Bb = "bb";
 
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster)]
@@ -147,7 +147,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Edge)]
         public const string HeadLabel = "headlabel";
 
-        [DotAttributeSupport(DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.Output)]
+        [DotAttributeSupport(DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.WriteOnly)]
         public const string HeadLp = "head_lp";
 
         [DotAttributeSupport(DotElementSupport.Edge)]
@@ -192,13 +192,13 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Edge, DotLayoutEngineSupport.Dot)]
         public const string LHead = "lhead";
 
-        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster, outputFormats: DotOutputFormatSupport.Output)]
+        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster, outputFormats: DotOutputFormatSupport.WriteOnly)]
         public const string LHeight = "lheight";
 
         [DotAttributeSupport(DotElementSupport.Edge, DotLayoutEngineSupport.Dot)]
         public const string LTail = "ltail";
 
-        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster, outputFormats: DotOutputFormatSupport.Output)]
+        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster, outputFormats: DotOutputFormatSupport.WriteOnly)]
         public const string LWidth = "lwidth";
 
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge)]
@@ -273,7 +273,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato)]
         public const string LevelsGap = "levelsgap";
 
-        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.Output)]
+        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.WriteOnly)]
         public const string Lp = "lp";
 
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node)]
@@ -392,7 +392,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Dot)]
         public const string ReMinCross = "remincross";
 
-        [DotAttributeSupport(DotElementSupport.Node, outputFormats: DotOutputFormatSupport.Output)]
+        [DotAttributeSupport(DotElementSupport.Node, outputFormats: DotOutputFormatSupport.WriteOnly)]
         public const string Rects = "rects";
 
         [DotAttributeSupport(DotElementSupport.Node)]
@@ -476,7 +476,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Edge)]
         public const string TailLabel = "taillabel";
 
-        [DotAttributeSupport(DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.Output)]
+        [DotAttributeSupport(DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.WriteOnly)]
         public const string TailLp = "tail_lp";
 
         [DotAttributeSupport(DotElementSupport.Edge)]
@@ -503,7 +503,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.Svg | DotOutputFormatSupport.PostScript | DotOutputFormatSupport.Map)]
         public const string Url = "URL";
 
-        [DotAttributeSupport(DotElementSupport.Node, outputFormats: DotOutputFormatSupport.Output)]
+        [DotAttributeSupport(DotElementSupport.Node, outputFormats: DotOutputFormatSupport.WriteOnly)]
         public const string Vertices = "vertices";
 
         [DotAttributeSupport(DotElementSupport.Graph)]
@@ -524,7 +524,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Node | DotElementSupport.Edge)]
         public const string XLabel = "xlabel";
 
-        [DotAttributeSupport(DotElementSupport.Node | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.Output)]
+        [DotAttributeSupport(DotElementSupport.Node | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.WriteOnly)]
         public const string Xlp = "xlp";
 
         [DotAttributeSupport(DotElementSupport.Node)]

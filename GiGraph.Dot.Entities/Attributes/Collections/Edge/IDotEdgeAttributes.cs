@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         bool? AllowLabelFloat { get; set; }
 
         /// <summary>
-        ///     Minimum edge length (rank difference between head and tail). Default: 1, minimum: 0.
+        ///     Minimum edge length (rank difference between head and tail). Dot only, default: 1, minimum: 0.
         /// </summary>
         int? MinLength { get; set; }
 
@@ -82,7 +82,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         double? Weight { get; set; }
 
         /// <summary>
-        ///     Tooltip annotation attached to the edge. If unset, Graphviz will use the <see cref="Label" /> attribute if defined.
+        ///     Tooltip annotation attached to the edge (svg, cmap only). If unset, Graphviz will use the <see cref="Label" /> attribute if
+        ///     defined.
         /// </summary>
         DotEscapeString Tooltip { get; set; }
 
@@ -163,7 +164,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         bool? AttachLabel { get; set; }
 
         /// <summary>
-        ///     If false, the edge is not used in ranking the nodes (default: true). See
+        ///     If false, the edge is not used in ranking the nodes (dot only, default: true). See
         ///     <see href="http://www.graphviz.org/doc/info/attrs.html#a:constraint">
         ///         documentation
         ///     </see>

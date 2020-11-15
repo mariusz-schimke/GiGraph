@@ -42,8 +42,8 @@ namespace GiGraph.Dot.Entities.Metadata
         PostScript = 1 << 5,
 
         /// <summary>
-        ///     Indicates that an attribute is used for output, and is not used or read by any layout program.
+        ///     Indicates that an attribute is used for output only, and is not used or read by any layout program.
         /// </summary>
-        Output = 1 << 6
+        WriteOnly = 1 << 6
     }
 }

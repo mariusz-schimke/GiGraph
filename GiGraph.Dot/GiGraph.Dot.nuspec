@@ -22,19 +22,9 @@
     
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code, or online tools like viz-js.com or www.webgraphviz.com, where you paste a script to view its visualization.</description>
     
-    <releaseNotes>- Properties on attribute collections of graph elements have been grouped to provide better clarity of the contexts they refer to. For instance, the Peripheries, Sides, Skew, Distortion, Rotation, and Regular properties of a node's attribute collection are accessible now by an upper-level property named Geometry.
+    <releaseNotes>- Restored missing property comments with the help of SauceControl.InheritDoc (https://www.nuget.org/packages/SauceControl.InheritDoc).
 
-- Graph attributes applicable globally to clusters have been moved to the Clusters collection of the root graph.
-
-- The Style of elements is more intuitive to specify now. There are separate properties for fill style, border/edge style and weight, corner style, and invisibility. 
-
-- Added a GetMetadataDictionary() method on attribute collections to provide a mapping between DOT attribute keys and the properties they are exposed as.
-
-- Added a static DotAttributeValueAttribute.GetValueMapping() method to provide a mapping between DOT attribute values and the values they are exposed as by enumeration types.
-
-- Added a static DotAttributeKeys class for providing attribute key consts and metadata (DotAttributeKeys.MetadataDictionary). The metadata includes information what elements a given attribute can be applied to, and also what layout engine and output format supports it according to the documentation.
-
-- Added support for attributes: landscape, orientation (attribute specifications are available at http://www.graphviz.org/doc/info/attrs.html).
+- Property comments now include the information what layout engine and output format they are supported by (based on the notes column of the documentation: http://www.graphviz.org/doc/info/attrs.html).
 
 - Refactoring.
 

@@ -180,7 +180,8 @@
     "Tail.ClusterId [Edge]"
   ],
   "margin": [
-    "Margin [Graph, Cluster, Node]"
+    "Margin [Graph]",
+    "Padding [Cluster, Node]"
   ],
   "minlen": [
     "MinLength [Edge]"
