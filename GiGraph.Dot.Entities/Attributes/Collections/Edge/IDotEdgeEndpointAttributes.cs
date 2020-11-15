@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     Indicates where on the node to attach the end of the edge. In the default case (<see cref="DotCompassPoint.Center" />), the
-        ///     edge is aimed towards the center of the node, and then clipped at the node boundary. See also the
+        ///     edge is aimed towards the center of the node, and then clipped at the node boundary. See also the corresponding
         ///     <see cref="DotEndpoint.Port" /> property of the edge's <see cref="DotEdge{TTail,THead}.Head" /> or
         ///     <see cref="DotEdge{TTail,THead}.Tail" />.
         /// </summary>

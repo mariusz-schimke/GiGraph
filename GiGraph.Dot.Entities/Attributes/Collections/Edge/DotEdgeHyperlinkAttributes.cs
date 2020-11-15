@@ -23,9 +23,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <summary>
         ///     If defined, this is the link used for the non-label parts of the edge (svg, map only). Used near the head or the tail node,
-        ///     unless overridden by the <see cref="DotEdgeEndpointAttributes.Hyperlink" /> <see cref="DotEdgeHyperlinkAttributes.Url" /> on
-        ///     the <see cref="DotEdgeAttributes.Head" /> or on the <see cref="DotEdgeAttributes.Tail" /> attributes of the edge. This value
-        ///     overrides any <see cref="DotEntityHyperlinkAttributes{IDotEntityHyperlinkAttributes}.Url" /> specified for the edge's
+        ///     unless overridden by the <see cref="DotEdgeHyperlinkAttributes.Url" /> on the <see cref="DotEdgeAttributes.Head" />
+        ///     <see cref="DotEdgeHeadAttributes.Hyperlink" /> attributes, or on the <see cref="DotEdgeAttributes.Tail" />
+        ///     <see cref="DotEdgeTailAttributes.Hyperlink" /> attributes of the edge. This value overrides any
+        ///     <see cref="DotEntityHyperlinkAttributes{IDotEntityHyperlinkAttributes}.Url" /> specified for the edge's
         ///     <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.EdgeUrl)]
