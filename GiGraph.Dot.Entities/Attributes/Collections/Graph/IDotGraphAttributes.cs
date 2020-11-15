@@ -256,9 +256,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         the final drawing size may only approximate what is desired.
         ///     </para>
         ///     <para>
-        ///         If ratio is numeric, it is taken as the desired aspect ratio. Then, if the actual aspect ratio is less than the desired
-        ///         ratio, the drawing height is scaled up to achieve the desired ratio; if the actual ratio is greater than that desired
-        ///         ratio, the drawing width is scaled up.
+        ///         If ratio is numeric (<see cref="DotGraphScalingAspectRatio" />), it is taken as the desired aspect ratio. Then, if the
+        ///         actual aspect ratio is less than the desired ratio, the drawing height is scaled up to achieve the desired ratio; if the
+        ///         actual ratio is greater than that desired ratio, the drawing width is scaled up.
         ///     </para>
         ///     <para>
         ///         See also <see cref="DotGraphScaling" /> for non-numeric options of the ratio.

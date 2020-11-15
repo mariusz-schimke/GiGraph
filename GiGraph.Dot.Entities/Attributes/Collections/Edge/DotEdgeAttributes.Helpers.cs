@@ -56,52 +56,52 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Converts the current edge to multiple parallel splines by setting its <see cref="Color" /> attribute.
+        ///     Converts the current edge to multiple parallel splines or lines by setting its <see cref="Color" /> attribute.
         /// </summary>
-        /// <param name="splineCount">
-        ///     The number of parallel splines to compose the edge of.
+        /// <param name="lineCount">
+        ///     The number of parallel splines/lines to compose the edge of.
         /// </param>
         /// <param name="color">
-        ///     The color to assign to the splines the edge will be composed of. If not specified, <see cref="System.Drawing.Color.Black" />
-        ///     is used.
+        ///     The color to assign to the splines/lines the edge will be composed of. If not specified,
+        ///     <see cref="System.Drawing.Color.Black" /> is used.
         /// </param>
-        public virtual void SetMultiline(int splineCount, DotColor color = null)
+        public virtual void SetMultiline(int lineCount, DotColor color = null)
         {
             color ??= System.Drawing.Color.Black;
-            var colors = Enumerable.Range(0, splineCount)
+            var colors = Enumerable.Range(0, lineCount)
                .Select(i => new DotColor(color.Color, color.Scheme));
 
             SetMultiline(colors.ToArray());
         }
 
         /// <summary>
-        ///     Converts the current edge to multiple parallel splines by setting its <see cref="Color" /> attribute.
+        ///     Converts the current edge to multiple parallel splines or lines by setting its <see cref="Color" /> attribute.
         /// </summary>
-        /// <param name="splines">
-        ///     The colors to assign to individual splines the edge will be composed of. Note that weighted colors (
+        /// <param name="lines">
+        ///     The colors to assign to individual splines/lines the edge will be composed of. Note that weighted colors (
         ///     <see cref="DotWeightedColor" />) should not be used among the colors.
         /// </param>
-        public virtual void SetMultiline(params DotColor[] splines)
+        public virtual void SetMultiline(params DotColor[] lines)
         {
-            SetMultiline(new DotMultiColor(splines));
+            SetMultiline(new DotMultiColor(lines));
         }
 
         /// <summary>
-        ///     Converts the current edge to multiple parallel splines with the specified colors by setting its <see cref="Color" />
+        ///     Converts the current edge to multiple parallel splines or lines with the specified colors by setting its <see cref="Color" />
         ///     attribute.
         /// </summary>
-        /// <param name="splines">
-        ///     The colors to assign to individual splines the edge will be composed of. Note that weighted colors (
+        /// <param name="lines">
+        ///     The colors to assign to individual splines/lines the edge will be composed of. Note that weighted colors (
         ///     <see cref="DotWeightedColor" />) should not be used among the colors.
         /// </param>
-        public virtual void SetMultiline(DotMultiColor splines)
+        public virtual void SetMultiline(DotMultiColor lines)
         {
-            if (splines.Colors.Any(color => color is DotWeightedColor))
+            if (lines.Colors.Any(color => color is DotWeightedColor))
             {
-                throw new ArgumentException("Weighted colors cannot be applied to parallel edge splines.", nameof(splines));
+                throw new ArgumentException("Weighted colors cannot be applied to parallel edge splines.", nameof(lines));
             }
 
-            Color = splines;
+            Color = lines;
         }
     }
 }
