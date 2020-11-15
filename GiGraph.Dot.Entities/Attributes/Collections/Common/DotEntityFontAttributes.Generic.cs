@@ -15,6 +15,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         {
         }
 
+        /// <inheritdoc cref="IDotEntityFontAttributes.Name" />
         [DotAttributeKey(DotAttributeKeys.FontName)]
         public virtual string Name
         {
@@ -22,6 +23,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotEntityFontAttributes.Size" />
         [DotAttributeKey(DotAttributeKeys.FontSize)]
         public virtual double? Size
         {
@@ -31,6 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
                 : new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotEntityFontAttributes.Color" />
         [DotAttributeKey(DotAttributeKeys.FontColor)]
         public virtual DotColor Color
         {
@@ -66,6 +69,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         public virtual void Set(DotFont attributes)
         {
             Set(attributes.Name, attributes.Size, attributes.Color);
+        }
+
+        /// <summary>
+        ///     Copies font properties from the specified instance.
+        /// </summary>
+        /// <param name="source">
+        ///     The instance to copy the properties from.
+        /// </param>
+        public virtual void CopyFrom(IDotEntityFontAttributes source)
+        {
+            Set(source.Name, source.Size, source.Color);
         }
     }
 }

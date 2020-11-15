@@ -18,6 +18,7 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
+        /// <inheritdoc />
         public override object GetValue()
         {
             return null;

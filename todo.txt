@@ -1,9 +1,11 @@
 To do:
+
 1. Gradually add support for all available attributes.
-2. Add info to all property comments that determines what engine/format a given property is supported by, and also their default values.
-3. Verify the correctness of XML documentations.
-4. Check if methods and properties are coherently marked as virtual (or remove the virtual specifier from everywhere where not useful internally?).
+2. Verify the correctness of XML documentations (esp. embedded properties like hyperlink and font in different contexts where they are used).
+3. Check if methods and properties are coherently marked as virtual (or remove the virtual specifier from everywhere where not useful internally?).
+
 
 Nice-to-haves:
+
 1. Implement predefined HTML nodes: https://www.graphviz.org/doc/info/shapes.html#html.
 2. Add attribute type implementations, even if not exposed as properties.

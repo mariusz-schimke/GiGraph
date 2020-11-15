@@ -20,6 +20,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
         }
 
+        /// <inheritdoc cref="IDotNodeImageAttributes.Path" />
         [DotAttributeKey(DotAttributeKeys.Image)]
         public virtual string Path
         {
@@ -27,6 +28,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotNodeImageAttributes.Alignment" />
         [DotAttributeKey(DotAttributeKeys.ImagePos)]
         public virtual DotAlignment? Alignment
         {
@@ -34,6 +36,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotAlignmentAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotNodeImageAttributes.Scaling" />
         [DotAttributeKey(DotAttributeKeys.ImageScale)]
         public virtual DotImageScaling? Scaling
         {
@@ -69,6 +72,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual void Set(DotImage attributes)
         {
             Set(attributes.Path, attributes.Alignment, attributes.Scaling);
+        }
+
+        /// <summary>
+        ///     Copies image properties from the specified instance.
+        /// </summary>
+        /// <param name="source">
+        ///     The instance to copy the properties from.
+        /// </param>
+        public virtual void CopyFrom(IDotNodeImageAttributes source)
+        {
+            Set(source.Path, source.Alignment, source.Scaling);
         }
     }
 }

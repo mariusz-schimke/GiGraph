@@ -14,6 +14,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         {
         }
 
+        /// <inheritdoc cref="IDotEntityHyperlinkAttributes.Url" />
         [DotAttributeKey(DotAttributeKeys.Url)]
         public virtual DotEscapeString Url
         {
@@ -21,6 +22,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotEntityHyperlinkAttributes.Href" />
         [DotAttributeKey(DotAttributeKeys.Href)]
         public virtual DotEscapeString Href
         {
@@ -28,6 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotEntityHyperlinkAttributes.Target" />
         [DotAttributeKey(DotAttributeKeys.Target)]
         public virtual DotEscapeString Target
         {
@@ -50,6 +53,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
             Target = target;
         }
 
+        protected virtual void SetAll(DotEscapeString url, DotEscapeString target, DotEscapeString href)
+        {
+            Href = href;
+            Set(url, target);
+        }
+
         /// <summary>
         ///     Specifies hyperlink properties.
         /// </summary>
@@ -58,8 +67,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         /// </param>
         public virtual void Set(DotHyperlink attributes)
         {
-            Href = attributes.Href;
-            Set(attributes.Url, attributes.Target);
+            SetAll(attributes.Url, attributes.Target, attributes.Href);
+        }
+
+        /// <summary>
+        ///     Copies hyperlink properties from the specified instance.
+        /// </summary>
+        /// <param name="source">
+        ///     The instance to copy the properties from.
+        /// </param>
+        public virtual void CopyFrom(IDotEntityHyperlinkAttributes source)
+        {
+            SetAll(source.Url, source.Target, source.Href);
         }
     }
 }

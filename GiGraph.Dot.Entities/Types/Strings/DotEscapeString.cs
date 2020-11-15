@@ -84,6 +84,9 @@ namespace GiGraph.Dot.Entities.Types.Strings
         protected internal abstract string GetRawString();
         protected internal abstract string GetEscapedString(IDotTextEscaper textEscaper);
 
+        /// <summary>
+        ///     Returns the underlying string.
+        /// </summary>
         public override string ToString()
         {
             return GetRawString();

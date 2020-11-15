@@ -33,7 +33,7 @@
     "Key": "bb",
     "ElementSupport": "Graph",
     "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Output"
+    "OutputFormatSupport": "WriteOnly"
   },
   "bgcolor": {
     "Key": "bgcolor",
@@ -255,7 +255,7 @@
     "Key": "head_lp",
     "ElementSupport": "Edge",
     "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Output"
+    "OutputFormatSupport": "WriteOnly"
   },
   "headclip": {
     "Key": "headclip",
@@ -507,13 +507,13 @@
     "Key": "lheight",
     "ElementSupport": "Graph, Cluster",
     "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Output"
+    "OutputFormatSupport": "WriteOnly"
   },
   "lp": {
     "Key": "lp",
     "ElementSupport": "Graph, Cluster, Edge",
     "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Output"
+    "OutputFormatSupport": "WriteOnly"
   },
   "ltail": {
     "Key": "ltail",
@@ -525,7 +525,7 @@
     "Key": "lwidth",
     "ElementSupport": "Graph, Cluster",
     "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Output"
+    "OutputFormatSupport": "WriteOnly"
   },
   "margin": {
     "Key": "margin",
@@ -753,7 +753,7 @@
     "Key": "rects",
     "ElementSupport": "Node",
     "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Output"
+    "OutputFormatSupport": "WriteOnly"
   },
   "regular": {
     "Key": "regular",
@@ -909,7 +909,7 @@
     "Key": "tail_lp",
     "ElementSupport": "Edge",
     "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Output"
+    "OutputFormatSupport": "WriteOnly"
   },
   "tailclip": {
     "Key": "tailclip",
@@ -981,7 +981,7 @@
     "Key": "vertices",
     "ElementSupport": "Node",
     "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Output"
+    "OutputFormatSupport": "WriteOnly"
   },
   "viewport": {
     "Key": "viewport",
@@ -1023,7 +1023,7 @@
     "Key": "xlp",
     "ElementSupport": "Node, Edge",
     "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Output"
+    "OutputFormatSupport": "WriteOnly"
   },
   "z": {
     "Key": "z",

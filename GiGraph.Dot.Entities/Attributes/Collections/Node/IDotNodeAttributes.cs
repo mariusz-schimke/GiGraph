@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///         Gets or sets the label to display on the node. It may be plain text (<see cref="string" />), HTML (
         ///         <see cref="DotHtmlLabel" />), or a record (<see cref="DotRecordLabel" />) for a record-based node (when
         ///         <see cref="Shape" /> = <see cref="DotNodeShape.Record" /> or <see cref="Shape" /> =
-        ///         <see cref="DotNodeShape.RoundedRecord" />).
+        ///         <see cref="DotNodeShape.RoundedRecord" />). When not specified, node identifier is used.
         ///     </para>
         ///     <para>
         ///         See also <see cref="DotTextFormatter" /> for plain text label formatting if needed, and <see cref="DotRecordBuilder" />
@@ -73,9 +73,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         DotVerticalAlignment? VerticalLabelAlignment { get; set; }
 
         /// <summary>
-        ///     Tooltip annotation attached to the node. If unset, Graphviz will use the <see cref="Label" /> attribute if defined. Note that
-        ///     if the label is a record specification or an HTML-like label, the resulting tooltip may be unhelpful. In this case, if
-        ///     tooltips will be generated, the user should set a tooltip attribute explicitly.
+        ///     Tooltip annotation attached to the node (svg, cmap only). If unset, Graphviz will use the <see cref="Label" /> attribute if
+        ///     defined. Note that if the label is a record specification or an HTML-like label, the resulting tooltip may be unhelpful. In
+        ///     this case, if tooltips will be generated, the user should set a tooltip attribute explicitly.
         /// </summary>
         DotEscapeString Tooltip { get; set; }
 
@@ -107,9 +107,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <summary>
         ///     <para>
         ///         Gets or sets the color used to fill the background of the node, assuming that the fill style of the node is
-        ///         <see cref="DotNodeFillStyle.Normal" />. If <see cref="FillColor" /> is not defined, <see cref="Color" /> is used. If it
-        ///         is not defined too, the default is used, except for <see cref="Shape" /> of <see cref="DotNodeShape.Point" />, or when
-        ///         the output format is MIF, which use black by default.
+        ///         <see cref="DotNodeFillStyle.Normal" /> (default: <see cref="System.Drawing.Color.LightGray" />). If
+        ///         <see cref="FillColor" /> is not defined, <see cref="Color" /> is used. If it is not defined too, the default is used,
+        ///         except for <see cref="Shape" /> of <see cref="DotNodeShape.Point" />, or when the output format is MIF, which use black
+        ///         by default.
         ///     </para>
         ///     <para>
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
@@ -186,7 +187,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <summary>
         ///     Specifies space left around the node's label. By default, the value is (0.11, 0.055).
         /// </summary>
-        DotPoint Margin { get; set; }
+        DotPoint Padding { get; set; }
 
         /// <summary>
         ///     Comments are inserted into output. Device-dependent.
@@ -195,14 +196,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 
         /// <summary>
         ///     Determines how inedges and outedges, that is, edges with the node as their head or tail node respectively, are ordered (dot
-        ///     only). If defined on a graph or subgraph, the value is applied to all nodes in the graph or subgraph. Note that the graph
-        ///     attribute takes precedence over the node attribute.
+        ///     only). If defined on a graph or subgraph, the value is applied to all nodes in the graph or subgraph. Note that the
+        ///     corresponding graph attribute takes precedence over the node attribute.
         /// </summary>
         DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
 
         /// <summary>
-        ///     The name of the group the node belongs to. If the endpoints of an edge belong to the same group (have the same group name
-        ///     assigned), parameters are set to avoid crossings and keep the edges straight (dot only).
+        ///     The name of the group the node belongs to (dot only). If the endpoints of an edge belong to the same group (have the same
+        ///     group name assigned), parameters are set to avoid crossings and keep the edges straight (dot only).
         /// </summary>
         string GroupName { get; set; }
 

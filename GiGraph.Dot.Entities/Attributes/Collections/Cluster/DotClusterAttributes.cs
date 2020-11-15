@@ -55,6 +55,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         public virtual DotClusterStyleAttributes Style { get; }
 
         // accessible only through the interface
+        /// <inheritdoc cref="IDotClusterAttributes.Style" />
         [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
         DotStyles? IDotClusterAttributes.Style
         {
@@ -111,11 +112,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => base.Tooltip = value;
         }
 
-        /// <inheritdoc cref="IDotClusterAttributes.Margin" />
-        public override DotPoint Margin
+        /// <inheritdoc cref="IDotClusterAttributes.Padding" />
+        public override DotPoint Padding
         {
-            get => base.Margin;
-            set => base.Margin = value;
+            get => base.Padding;
+            set => base.Padding = value;
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderWidth" />
@@ -132,6 +133,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => base.SortIndex = value;
         }
 
+        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor" />
         [DotAttributeKey(DotAttributeKeys.PenColor)]
         public virtual DotColor BorderColor
         {
@@ -139,6 +141,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotClusterAttributes.BackgroundColor" />
         [DotAttributeKey(DotAttributeKeys.BgColor)]
         public virtual DotColorDefinition BackgroundColor
         {
@@ -146,6 +149,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotClusterAttributes.Peripheries" />
         [DotAttributeKey(DotAttributeKeys.Peripheries)]
         public virtual int? Peripheries
         {
@@ -153,6 +157,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => SetOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
         }
 
+        /// <inheritdoc cref="IDotClusterAttributes.HorizontalLabelAlignment" />
         [DotAttributeKey(DotAttributeKeys.LabelJust)]
         public virtual DotHorizontalAlignment? HorizontalLabelAlignment
         {

@@ -24,6 +24,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         {
         }
 
+        /// <summary>
+        ///     Hyperlink properties of the tail of the edge. If defined, the hyperlink is output as part of the tail's <see cref="Label" />.
+        ///     Also, this value is used near the tail, overriding hyperlink properties set on the edge.
+        /// </summary>
+        public virtual DotEdgeTailHyperlinkAttributes Hyperlink => (DotEdgeTailHyperlinkAttributes) _hyperlink;
+
+        /// <inheritdoc />
         [DotAttributeKey(DotAttributeKeys.TailLabel)]
         public override DotLabel Label
         {
@@ -31,6 +38,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => base.Label = value;
         }
 
+        /// <inheritdoc />
         [DotAttributeKey(DotAttributeKeys.TailClip)]
         public override bool? ClipToNodeBoundary
         {
@@ -38,6 +46,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => base.ClipToNodeBoundary = value;
         }
 
+        /// <inheritdoc />
         [DotAttributeKey(DotAttributeKeys.SameTail)]
         public override string GroupName
         {
@@ -45,6 +54,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => base.GroupName = value;
         }
 
+        /// <inheritdoc />
         [DotAttributeKey(DotAttributeKeys.TailPort)]
         public override DotEndpointPort Port
         {
@@ -52,6 +62,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => base.Port = value;
         }
 
+        /// <inheritdoc />
         [DotAttributeKey(DotAttributeKeys.LTail)]
         public override string ClusterId
         {
@@ -59,6 +70,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => base.ClusterId = value;
         }
 
+        /// <inheritdoc />
         [DotAttributeKey(DotAttributeKeys.ArrowTail)]
         public override DotArrowheadDefinition Arrowhead
         {

@@ -222,13 +222,16 @@ namespace GiGraph.Dot.Entities.Types.Strings
             return Append(DotEscapeString.NodeId);
         }
 
+        /// <summary>
+        ///     Returns content as a concatenated string.
+        /// </summary>
         public override string ToString()
         {
             return string.Join(string.Empty, _items.Select(item => item?.ToString()));
         }
 
         /// <summary>
-        ///     Returns the formatted text content of the current instance.
+        ///     Returns content as formatted text that can be used as a label of an element.
         /// </summary>
         public virtual DotEscapeString ToFormattedText()
         {

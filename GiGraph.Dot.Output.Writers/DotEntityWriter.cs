@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Output.Writers
                .LineBreak(linger: true)
                .Indentation(linger: true);
         }
-        
+
         protected virtual void LineBreak()
         {
             _tokenWriter.LineBreak()

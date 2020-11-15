@@ -115,6 +115,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => base.ColorScheme = value;
         }
 
+        /// <inheritdoc cref="IDotEdgeAttributes.Comment" />
         [DotAttributeKey(DotAttributeKeys.Comment)]
         public virtual string Comment
         {
@@ -122,6 +123,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotEdgeAttributes.Tooltip" />
         [DotAttributeKey(DotAttributeKeys.Tooltip)]
         public virtual DotEscapeString Tooltip
         {
@@ -129,6 +131,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotEdgeAttributes.Color" />
         [DotAttributeKey(DotAttributeKeys.Color)]
         public virtual DotColorDefinition Color
         {
@@ -136,6 +139,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotEdgeAttributes.FillColor" />
         [DotAttributeKey(DotAttributeKeys.FillColor)]
         public virtual DotColorDefinition FillColor
         {
@@ -143,6 +147,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotEdgeAttributes.ExternalLabel" />
         [DotAttributeKey(DotAttributeKeys.XLabel)]
         public virtual DotLabel ExternalLabel
         {
@@ -150,6 +155,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotEdgeAttributes.Width" />
         [DotAttributeKey(DotAttributeKeys.PenWidth)]
         public virtual double? Width
         {
@@ -159,6 +165,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
                 : new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotEdgeAttributes.Weight" />
         [DotAttributeKey(DotAttributeKeys.Weight)]
         public virtual double? Weight
         {
@@ -168,6 +175,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
                 : new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotEdgeAttributes.Length" />
         [DotAttributeKey(DotAttributeKeys.Len)]
         public virtual double? Length
         {
@@ -175,6 +183,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotEdgeAttributes.MinLength" />
         [DotAttributeKey(DotAttributeKeys.MinLen)]
         public virtual int? MinLength
         {
@@ -184,6 +193,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
                 : new DotIntAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotEdgeAttributes.ArrowheadScale" />
         [DotAttributeKey(DotAttributeKeys.ArrowSize)]
         public virtual double? ArrowheadScale
         {
@@ -193,6 +203,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
                 : new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotEdgeAttributes.Directions" />
         [DotAttributeKey(DotAttributeKeys.Dir)]
         public virtual DotEdgeDirections? Directions
         {
@@ -200,6 +211,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeDirectionsAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotEdgeAttributes.AttachLabel" />
         [DotAttributeKey(DotAttributeKeys.Decorate)]
         public virtual bool? AttachLabel
         {
@@ -207,6 +219,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotEdgeAttributes.AllowLabelFloat" />
         [DotAttributeKey(DotAttributeKeys.LabelFloat)]
         public virtual bool? AllowLabelFloat
         {
@@ -214,6 +227,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotEdgeAttributes.Constrain" />
         [DotAttributeKey(DotAttributeKeys.Constraint)]
         public virtual bool? Constrain
         {

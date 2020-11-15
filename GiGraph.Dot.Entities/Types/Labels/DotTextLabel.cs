@@ -26,6 +26,9 @@ namespace GiGraph.Dot.Entities.Types.Labels
             _text = text ?? throw new ArgumentNullException(nameof(text), "Text cannot be null.");
         }
 
+        /// <summary>
+        ///     Returns the label as string.
+        /// </summary>
         public override string ToString()
         {
             return _text;

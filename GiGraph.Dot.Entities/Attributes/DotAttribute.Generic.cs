@@ -15,14 +15,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// </summary>
         public virtual T Value { get; }
 
-        /// <summary>
-        ///     Converts the value to string using the default converter (unless overriden in a descendant class).
-        /// </summary>
-        public override string ToString()
-        {
-            return Value?.ToString();
-        }
-
+        /// <inheritdoc />
         public override object GetValue()
         {
             return Value;

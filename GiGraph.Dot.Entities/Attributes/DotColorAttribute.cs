@@ -23,11 +23,6 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        public override string ToString()
-        {
-            return new DotColor(Value).ToString();
-        }
-
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return new DotColor(Value).GetDotEncodedColor(options, syntaxRules);

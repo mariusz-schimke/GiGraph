@@ -45,25 +45,27 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
             var interfaceMap = typeof(TEntityAttributes).GetInterfaceMap(entityAttributePropertiesInterfaceType);
 
             // build a temporary lookup for all types the implemented properties are declared by
-            var propertiesDeclaringTypesLookup = BuildWithDeclaredPropertyAccessorsOf(
+            var tempLookup = BuildWithDeclaredPropertyAccessorsOf(
                 interfaceMap.TargetMethods.Select(accessor => accessor.DeclaringType)
             );
 
             // based on the previously created lookup, include base definitions of all implemented property accessors
-            foreach (var targetMethod in interfaceMap.TargetMethods)
+            for (var index = 0; index < interfaceMap.TargetMethods.Length; index++)
             {
-                var key = propertiesDeclaringTypesLookup.GetKey(targetMethod);
+                var interfaceMethod = interfaceMap.InterfaceMethods[index];
+                var targetMethod = interfaceMap.TargetMethods[index];
+
+                var key = tempLookup.GetKey(targetMethod);
                 output.Set(targetMethod.GetRuntimeBaseDefinition(), key);
+
+                tempLookup.Set(interfaceMethod, key);
             }
 
             // include interface properties
             foreach (var interfaceProperty in interfaceProperties)
             {
                 var interfacePropertyAccessor = interfaceProperty.GetMethod ?? interfaceProperty.SetMethod;
-                var interfacePropertyAccessorIndex = Array.FindIndex(interfaceMap.InterfaceMethods, method => method.Equals(interfacePropertyAccessor));
-                var implementationPropertyAccessor = interfaceMap.TargetMethods[interfacePropertyAccessorIndex];
-
-                var key = propertiesDeclaringTypesLookup.GetKey(implementationPropertyAccessor);
+                var key = tempLookup.GetKey(interfacePropertyAccessor);
                 output.Set(interfaceProperty, key);
             }
         }

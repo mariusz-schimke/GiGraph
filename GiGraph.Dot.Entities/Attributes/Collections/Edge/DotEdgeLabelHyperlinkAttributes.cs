@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     If defined, this is the link used for the label of the edge. This value overrides any
+        ///     If defined, this is the link used for the label of the edge (svg, map only). This value overrides any
         ///     <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Hyperlink" />
         ///     <see cref="DotEntityHyperlinkAttributes{IDotEntityHyperlinkAttributes}.Url" /> defined for the edge.
         /// </summary>
@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <summary>
-        ///     Synonym for <see cref="Url" />.
+        ///     Synonym for <see cref="Url" /> (svg, map only).
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.LabelHref)]
         public override DotEscapeString Href
@@ -46,9 +46,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     If <see cref="Url" /> is specified, or if the edge has a
         ///     <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />
         ///     <see cref="DotEntityHyperlinkAttributes{IDotEntityHyperlinkAttributes}.Url" /> specified, this attribute determines which
-        ///     window of the browser is used for the URL attached to the label. Setting it to <see cref="DotHyperlinkTargets.NewWindow" />
-        ///     will open a new window if it doesn't already exist, or reuse it if it does. If undefined, the value of the edge's
-        ///     <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />
+        ///     window of the browser is used for the URL attached to the label (svg, map only). Setting it to
+        ///     <see cref="DotHyperlinkTargets.NewWindow" /> will open a new window if it doesn't already exist, or reuse it if it does. If
+        ///     undefined, the value of the edge's <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />
         ///     <see cref="DotEntityHyperlinkAttributes{IDotEntityHyperlinkAttributes}.Target" /> is used.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.LabelTarget)]

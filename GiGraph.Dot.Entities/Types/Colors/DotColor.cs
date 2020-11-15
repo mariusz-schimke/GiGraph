@@ -94,23 +94,6 @@ namespace GiGraph.Dot.Entities.Types.Colors
             return $"#{Color.R:x2}{Color.G:x2}{Color.B:x2}{alpha}";
         }
 
-        public override string ToString()
-        {
-            var scheme = Scheme is {} ? $"{Scheme}:" : null;
-
-            if (Color.IsNamedColor)
-            {
-                return $"{scheme}{Color.Name}";
-            }
-
-            if (Color.IsEmpty)
-            {
-                return string.Empty;
-            }
-
-            return $"#{Color.ToArgb():x8}";
-        }
-
         public static implicit operator DotColor(Color? color)
         {
             return color.HasValue ? new DotColor(color.Value) : null;

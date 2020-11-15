@@ -91,6 +91,7 @@ namespace GiGraph.Dot.Entities.Graphs
 
         protected abstract DotAttributeCollection AttributeCollection { get; }
 
+        /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }
 
         DotAttributeCollection IDotCommonGraphSection.Attributes => AttributeCollection;

@@ -20,6 +20,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
         }
 
+        /// <inheritdoc cref="IDotNodeGeometryAttributes.Sides" />
         [DotAttributeKey(DotAttributeKeys.Sides)]
         public virtual int? Sides
         {
@@ -29,6 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
                 : new DotIntAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotNodeGeometryAttributes.Regular" />
         [DotAttributeKey(DotAttributeKeys.Regular)]
         public virtual bool? Regular
         {
@@ -36,6 +38,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotNodeGeometryAttributes.Peripheries" />
         [DotAttributeKey(DotAttributeKeys.Peripheries)]
         public virtual int? Peripheries
         {
@@ -43,6 +46,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
         }
 
+        /// <inheritdoc cref="IDotNodeGeometryAttributes.Rotation" />
         [DotAttributeKey(DotAttributeKeys.Orientation)]
         public virtual double? Rotation
         {
@@ -50,6 +54,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotNodeGeometryAttributes.Skew" />
         [DotAttributeKey(DotAttributeKeys.Skew)]
         public virtual double? Skew
         {
@@ -57,6 +62,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotNodeGeometryAttributes.Distortion" />
         [DotAttributeKey(DotAttributeKeys.Distortion)]
         public virtual double? Distortion
         {
@@ -104,6 +110,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual void Set(DotPolygon attributes)
         {
             Set(attributes.Sides, attributes.Regular, attributes.Peripheries, attributes.Rotation, attributes.Skew, attributes.Distortion);
+        }
+
+        /// <summary>
+        ///     Copies geometry properties from the specified instance.
+        /// </summary>
+        /// <param name="source">
+        ///     The instance to copy the properties from.
+        /// </param>
+        public virtual void CopyFrom(IDotNodeGeometryAttributes source)
+        {
+            Set(source.Sides, source.Regular, source.Peripheries, source.Rotation, source.Skew, source.Distortion);
         }
     }
 }
