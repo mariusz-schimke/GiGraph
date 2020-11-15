@@ -61,5 +61,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             base.Set(attributes);
             Directories = attributes.Directories;
         }
+        
+        /// <summary>
+        ///     Copies font properties from the specified instance.
+        /// </summary>
+        /// <param name="source">
+        ///     The instance to copy the properties from.
+        /// </param>
+        public virtual void CopyFrom(IDotGraphFontAttributes source)
+        {
+            Set(source.Name, source.Size, source.Color, source.Directories);
+        }
     }
 }
