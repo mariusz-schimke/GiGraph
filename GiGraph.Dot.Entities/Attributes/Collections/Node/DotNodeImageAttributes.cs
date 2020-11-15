@@ -73,5 +73,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         {
             Set(attributes.Path, attributes.Alignment, attributes.Scaling);
         }
+
+        /// <summary>
+        ///     Copies image properties from the specified instance.
+        /// </summary>
+        /// <param name="source">
+        ///     The instance to copy the properties from.
+        /// </param>
+        public virtual void CopyFrom(IDotNodeImageAttributes source)
+        {
+            Set(source.Path, source.Alignment, source.Scaling);
+        }
     }
 }
