@@ -26,6 +26,8 @@
 
 - Property comments now include the information what layout engine and output format they are supported by (based on the notes column of the documentation: http://www.graphviz.org/doc/info/attrs.html).
 
+- Added CopyFrom() helper methods to property groups of elements (font, hyperlink, style, geometry).
+
 - Refactoring.
 
 
