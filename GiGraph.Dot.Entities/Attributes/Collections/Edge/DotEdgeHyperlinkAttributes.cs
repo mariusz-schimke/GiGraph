@@ -92,6 +92,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             base.Set(url, target);
         }
 
+        protected virtual void SetAll(DotEscapeString url, DotEscapeString target, DotEscapeString href, DotEscapeString tooltip)
+        {
+            Tooltip = tooltip;
+            base.SetAll(url, target, href);
+        }
+
         /// <summary>
         ///     Specifies hyperlink properties.
         /// </summary>
@@ -102,6 +108,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         {
             Tooltip = attributes.Tooltip;
             base.Set(attributes);
+        }
+
+        /// <summary>
+        ///     Copies hyperlink properties from the specified instance.
+        /// </summary>
+        /// <param name="source">
+        ///     The instance to copy the properties from.
+        /// </param>
+        public virtual void CopyFrom(IDotEdgeHyperlinkAttributes source)
+        {
+            SetAll(source.Url, source.Target, source.Href, source.Tooltip);
         }
     }
 }
