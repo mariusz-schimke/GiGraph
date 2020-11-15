@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Entities.Graphs.Collections
         {
         }
 
-        /// <inheritdoc cref="IDotAnnotatable.Annotation"/>
+        /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }
 
         /// <summary>

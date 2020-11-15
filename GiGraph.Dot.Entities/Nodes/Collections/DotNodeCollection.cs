@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// </summary>
         public virtual DotNodeAttributes Attributes { get; }
 
-        /// <inheritdoc cref="IDotAnnotatable.Annotation"/>
+        /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }
 
         /// <summary>

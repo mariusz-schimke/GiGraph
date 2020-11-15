@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// </summary>
         public virtual DotEdgeAttributes Attributes { get; }
 
-        /// <inheritdoc cref="IDotAnnotatable.Annotation"/>
+        /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }
 
         /// <summary>

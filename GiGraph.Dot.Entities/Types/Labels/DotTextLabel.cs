@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
         }
 
         /// <summary>
-        /// Returns the label as string.
+        ///     Returns the label as string.
         /// </summary>
         public override string ToString()
         {

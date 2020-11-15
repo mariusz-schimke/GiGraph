@@ -20,8 +20,8 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
 
         /// <summary>
         ///     No shape, just label. Similar to <see cref="PlainText" /> and <see cref="None" />, except that it also enforces a zero width,
-        ///     height, and padding, which guarantees that the actual size of the node is entirely determined by the label. This is
-        ///     useful, for example, when using HTML-like labels.
+        ///     height, and padding, which guarantees that the actual size of the node is entirely determined by the label. This is useful,
+        ///     for example, when using HTML-like labels.
         /// </summary>
         [DotAttributeValue("plain")]
         Plain,

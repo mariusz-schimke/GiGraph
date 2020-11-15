@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         public abstract IEnumerable<DotEndpointDefinition> Endpoints { get; }
 
-        /// <inheritdoc cref="IDotAnnotatable.Annotation"/>
+        /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }
 
         string IDotOrderable.OrderingKey => GetOrderingKey();
