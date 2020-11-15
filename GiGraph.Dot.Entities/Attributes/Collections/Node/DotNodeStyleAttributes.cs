@@ -9,5 +9,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             : base(attributes)
         {
         }
+
+        /// <inheritdoc cref="DotClusterNodeCommonStyleAttributes{TFillStyle,TFillStyleOptions}.CopyFrom" />
+        public virtual void CopyFrom(DotNodeStyleAttributes source)
+        {
+            base.CopyFrom(source);
+        }
     }
 }

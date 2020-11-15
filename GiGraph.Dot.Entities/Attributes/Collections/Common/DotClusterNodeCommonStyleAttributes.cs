@@ -95,5 +95,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
             CornerStyle = cornerStyle;
             Invisible = invisible;
         }
+
+        /// <summary>
+        ///     Copies style properties from the specified instance.
+        /// </summary>
+        /// <param name="source">
+        ///     The instance to copy the properties from.
+        /// </param>
+        protected virtual void CopyFrom(DotClusterNodeCommonStyleAttributes<TFillStyle, TFillStyleOptions> source)
+        {
+            Set(source.FillStyle, source.BorderStyle, source.BorderWeight, source.CornerStyle, source.Invisible);
+        }
     }
 }

@@ -67,5 +67,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             LineWeight = lineWeight;
             Invisible = invisible;
         }
+
+        /// <summary>
+        ///     Copies style properties from the specified instance.
+        /// </summary>
+        /// <param name="source">
+        ///     The instance to copy the properties from.
+        /// </param>
+        public virtual void CopyFrom(DotEdgeStyleAttributes source)
+        {
+            Set(source.LineStyle, source.LineWeight, source.Invisible);
+        }
     }
 }

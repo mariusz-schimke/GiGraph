@@ -41,5 +41,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             FillStyle = fillStyle;
         }
+
+        /// <summary>
+        ///     Copies style properties from the specified instance.
+        /// </summary>
+        /// <param name="source">
+        ///     The instance to copy the properties from.
+        /// </param>
+        public virtual void CopyFrom(DotGraphStyleAttributes source)
+        {
+            Set(source.FillStyle);
+        }
     }
 }
