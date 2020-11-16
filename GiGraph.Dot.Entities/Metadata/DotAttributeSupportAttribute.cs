@@ -20,15 +20,20 @@ namespace GiGraph.Dot.Entities.Metadata
         /// <param name="outputFormats">
         ///     The output formats the attribute key is supported by.
         /// </param>
+        /// <param name="isImplemented">
+        ///     Indicates if the attribute is supported by the library.
+        /// </param>
         public DotAttributeSupportAttribute(
             DotElementSupport elements,
             DotLayoutEngineSupport layoutEngines = DotLayoutEngineSupport.Any,
-            DotOutputFormatSupport outputFormats = DotOutputFormatSupport.Any
+            DotOutputFormatSupport outputFormats = DotOutputFormatSupport.Any,
+            bool isImplemented = true
         )
         {
             Elements = elements;
             LayoutEngines = layoutEngines;
             OutputFormats = outputFormats;
+            IsImplemented = isImplemented;
         }
 
         /// <summary>
@@ -45,5 +50,10 @@ namespace GiGraph.Dot.Entities.Metadata
         ///     Gets the output formats the attribute key is supported by.
         /// </summary>
         public virtual DotOutputFormatSupport OutputFormats { get; }
+
+        /// <summary>
+        ///     Gets a value indicating if the attribute is supported by the library.
+        /// </summary>
+        public virtual bool IsImplemented { get; }
     }
 }

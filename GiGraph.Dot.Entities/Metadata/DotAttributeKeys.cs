@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Metadata
     /// </summary>
     public static class DotAttributeKeys
     {
-        [DotAttributeSupport(DotElementSupport.Node | DotElementSupport.Cluster, DotLayoutEngineSupport.Patchwork)]
+        [DotAttributeSupport(DotElementSupport.Node | DotElementSupport.Cluster, DotLayoutEngineSupport.Patchwork, isImplemented: false)]
         public const string Area = "area";
 
         [DotAttributeSupport(DotElementSupport.Edge)]
@@ -22,10 +22,10 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Edge)]
         public const string Arrowhead = "arrowhead";
 
-        [DotAttributeSupport(DotElementSupport.Graph)]
+        [DotAttributeSupport(DotElementSupport.Graph, isImplemented: false)]
         public const string Background = "_background";
 
-        [DotAttributeSupport(DotElementSupport.Graph, outputFormats: DotOutputFormatSupport.WriteOnly)]
+        [DotAttributeSupport(DotElementSupport.Graph, outputFormats: DotOutputFormatSupport.WriteOnly, isImplemented: false)]
         public const string Bb = "bb";
 
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster)]
@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Graph)]
         public const string Charset = "charset";
 
-        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.Svg)]
+        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.Svg, isImplemented: false)]
         public const string Class = "class";
 
         [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Dot)]
@@ -62,25 +62,25 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Edge, DotLayoutEngineSupport.Dot)]
         public const string Constraint = "constraint";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato, isImplemented: false)]
         public const string Damping = "Damping";
 
         [DotAttributeSupport(DotElementSupport.Edge)]
         public const string Decorate = "decorate";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato, isImplemented: false)]
         public const string DefaultDist = "defaultdist";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato | DotLayoutEngineSupport.Fdp | DotLayoutEngineSupport.Sfdp)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato | DotLayoutEngineSupport.Fdp | DotLayoutEngineSupport.Sfdp, isImplemented: false)]
         public const string Dim = "dim";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato | DotLayoutEngineSupport.Fdp | DotLayoutEngineSupport.Sfdp)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato | DotLayoutEngineSupport.Fdp | DotLayoutEngineSupport.Sfdp, isImplemented: false)]
         public const string Dimen = "dimen";
 
         [DotAttributeSupport(DotElementSupport.Edge)]
         public const string Dir = "dir";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato, isImplemented: false)]
         public const string DirEdgeConstraints = "diredgeconstraints";
 
         [DotAttributeSupport(DotElementSupport.Node)]
@@ -89,7 +89,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Graph, outputFormats: DotOutputFormatSupport.Bitmap | DotOutputFormatSupport.Svg)]
         public const string Dpi = "dpi";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.NotDot)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.NotDot, isImplemented: false)]
         public const string ESep = "esep";
 
         [DotAttributeSupport(DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.Svg | DotOutputFormatSupport.Map)]
@@ -104,7 +104,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.Svg | DotOutputFormatSupport.Map)]
         public const string EdgeUrl = "edgeURL";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato, isImplemented: false)]
         public const string Epsilon = "epsilon";
 
         // based on the documentation, the attribute is not supported by the root graph, but when set, it is inherited by clusters
@@ -120,7 +120,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge)]
         public const string FontName = "fontname";
 
-        [DotAttributeSupport(DotElementSupport.Graph, outputFormats: DotOutputFormatSupport.Svg)]
+        [DotAttributeSupport(DotElementSupport.Graph, outputFormats: DotOutputFormatSupport.Svg, isImplemented: false)]
         public const string FontNames = "fontnames";
 
         [DotAttributeSupport(DotElementSupport.Graph)]
@@ -147,7 +147,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Edge)]
         public const string HeadLabel = "headlabel";
 
-        [DotAttributeSupport(DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.WriteOnly)]
+        [DotAttributeSupport(DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.WriteOnly, isImplemented: false)]
         public const string HeadLp = "head_lp";
 
         [DotAttributeSupport(DotElementSupport.Edge)]
@@ -168,7 +168,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.Svg | DotOutputFormatSupport.PostScript | DotOutputFormatSupport.Map)]
         public const string Href = "href";
 
-        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.Svg | DotOutputFormatSupport.PostScript | DotOutputFormatSupport.Map)]
+        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.Svg | DotOutputFormatSupport.PostScript | DotOutputFormatSupport.Map, isImplemented: false)]
         public const string Id = "id";
 
         [DotAttributeSupport(DotElementSupport.Node)]
@@ -183,22 +183,22 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Node)]
         public const string ImageScale = "imagescale";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato | DotLayoutEngineSupport.Fdp)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato | DotLayoutEngineSupport.Fdp, isImplemented: false)]
         public const string InputScale = "inputscale";
 
-        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster, DotLayoutEngineSupport.Fdp | DotLayoutEngineSupport.Sfdp)]
+        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster, DotLayoutEngineSupport.Fdp | DotLayoutEngineSupport.Sfdp, isImplemented: false)]
         public const string K = "K";
 
         [DotAttributeSupport(DotElementSupport.Edge, DotLayoutEngineSupport.Dot)]
         public const string LHead = "lhead";
 
-        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster, outputFormats: DotOutputFormatSupport.WriteOnly)]
+        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster, outputFormats: DotOutputFormatSupport.WriteOnly, isImplemented: false)]
         public const string LHeight = "lheight";
 
         [DotAttributeSupport(DotElementSupport.Edge, DotLayoutEngineSupport.Dot)]
         public const string LTail = "ltail";
 
-        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster, outputFormats: DotOutputFormatSupport.WriteOnly)]
+        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster, outputFormats: DotOutputFormatSupport.WriteOnly, isImplemented: false)]
         public const string LWidth = "lwidth";
 
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge)]
@@ -231,7 +231,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node)]
         public const string LabelLoc = "labelloc";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Sfdp)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Sfdp, isImplemented: false)]
         public const string LabelScheme = "label_scheme";
 
         [DotAttributeSupport(DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.Svg | DotOutputFormatSupport.Map)]
@@ -246,79 +246,79 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Graph)]
         public const string Landscape = "landscape";
 
-        [DotAttributeSupport(DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge)]
+        [DotAttributeSupport(DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge, isImplemented: false)]
         public const string Layer = "layer";
 
-        [DotAttributeSupport(DotElementSupport.Graph)]
+        [DotAttributeSupport(DotElementSupport.Graph, isImplemented: false)]
         public const string LayerListSep = "layerlistsep";
 
-        [DotAttributeSupport(DotElementSupport.Graph)]
+        [DotAttributeSupport(DotElementSupport.Graph, isImplemented: false)]
         public const string LayerSelect = "layerselect";
 
-        [DotAttributeSupport(DotElementSupport.Graph)]
+        [DotAttributeSupport(DotElementSupport.Graph, isImplemented: false)]
         public const string LayerSep = "layersep";
 
-        [DotAttributeSupport(DotElementSupport.Graph)]
+        [DotAttributeSupport(DotElementSupport.Graph, isImplemented: false)]
         public const string Layers = "layers";
 
-        [DotAttributeSupport(DotElementSupport.Graph)]
+        [DotAttributeSupport(DotElementSupport.Graph, isImplemented: false)]
         public const string Layout = "layout";
 
         [DotAttributeSupport(DotElementSupport.Edge, DotLayoutEngineSupport.Neato | DotLayoutEngineSupport.Fdp)]
         public const string Len = "len";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Sfdp)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Sfdp, isImplemented: false)]
         public const string Levels = "levels";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato, isImplemented: false)]
         public const string LevelsGap = "levelsgap";
 
-        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.WriteOnly)]
+        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.WriteOnly, isImplemented: false)]
         public const string Lp = "lp";
 
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node)]
         public const string Margin = "margin";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato | DotLayoutEngineSupport.Fdp)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato | DotLayoutEngineSupport.Fdp, isImplemented: false)]
         public const string MaxIter = "maxiter";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Dot)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Dot, isImplemented: false)]
         public const string McLimit = "mclimit";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Circo)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Circo, isImplemented: false)]
         public const string MinDist = "mindist";
 
         [DotAttributeSupport(DotElementSupport.Edge, DotLayoutEngineSupport.Dot)]
         public const string MinLen = "minlen";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato, isImplemented: false)]
         public const string Mode = "mode";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato, isImplemented: false)]
         public const string Model = "model";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato, isImplemented: false)]
         public const string Mosek = "mosek";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Dot)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Dot, isImplemented: false)]
         public const string NewRank = "newrank";
 
-        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge)]
+        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge, isImplemented: false)]
         public const string NoJustify = "nojustify";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato, isImplemented: false)]
         public const string NoTranslate = "notranslate";
 
         [DotAttributeSupport(DotElementSupport.Graph)]
         public const string NodeSep = "nodesep";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.NotDot)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.NotDot, isImplemented: false)]
         public const string Normalize = "normalize";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Dot)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Dot, isImplemented: false)]
         public const string NsLimit = "nslimit";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Dot)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Dot, isImplemented: false)]
         public const string NsLimit1 = "nslimit1";
 
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Node, DotLayoutEngineSupport.Dot)]
@@ -327,16 +327,16 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Node)]
         public const string Orientation = "orientation";
 
-        [DotAttributeSupport(DotElementSupport.Graph)]
+        [DotAttributeSupport(DotElementSupport.Graph, isImplemented: false)]
         public const string OutputOrder = "outputorder";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.NotDot)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.NotDot, isImplemented: false)]
         public const string Overlap = "overlap";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Prism)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Prism, isImplemented: false)]
         public const string OverlapScaling = "overlap_scaling";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Prism)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Prism, isImplemented: false)]
         public const string OverlapShrink = "overlap_shrink";
 
         [DotAttributeSupport(DotElementSupport.Graph)]
@@ -348,10 +348,10 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Graph)]
         public const string Pad = "pad";
 
-        [DotAttributeSupport(DotElementSupport.Graph)]
+        [DotAttributeSupport(DotElementSupport.Graph, isImplemented: false)]
         public const string Page = "page";
 
-        [DotAttributeSupport(DotElementSupport.Graph)]
+        [DotAttributeSupport(DotElementSupport.Graph, isImplemented: false)]
         public const string PageDir = "pagedir";
 
         // based on the documentation, the attribute is not supported by the root graph, but when set, it is inherited by clusters
@@ -365,16 +365,16 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Cluster | DotElementSupport.Node)]
         public const string Peripheries = "peripheries";
 
-        [DotAttributeSupport(DotElementSupport.Node, DotLayoutEngineSupport.Neato | DotLayoutEngineSupport.Fdp)]
+        [DotAttributeSupport(DotElementSupport.Node, DotLayoutEngineSupport.Neato | DotLayoutEngineSupport.Fdp, isImplemented: false)]
         public const string Pin = "pin";
 
-        [DotAttributeSupport(DotElementSupport.Node | DotElementSupport.Edge)]
+        [DotAttributeSupport(DotElementSupport.Node | DotElementSupport.Edge, isImplemented: false)]
         public const string Pos = "pos";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Sfdp)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Sfdp, isImplemented: false)]
         public const string Quadtree = "quadtree";
 
-        [DotAttributeSupport(DotElementSupport.Graph)]
+        [DotAttributeSupport(DotElementSupport.Graph, isImplemented: false)]
         public const string Quantum = "quantum";
 
         [DotAttributeSupport(DotElementSupport.Subgraph, DotLayoutEngineSupport.Dot)]
@@ -389,28 +389,28 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Graph)]
         public const string Ratio = "ratio";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Dot)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Dot, isImplemented: false)]
         public const string ReMinCross = "remincross";
 
-        [DotAttributeSupport(DotElementSupport.Node, outputFormats: DotOutputFormatSupport.WriteOnly)]
+        [DotAttributeSupport(DotElementSupport.Node, outputFormats: DotOutputFormatSupport.WriteOnly, isImplemented: false)]
         public const string Rects = "rects";
 
         [DotAttributeSupport(DotElementSupport.Node)]
         public const string Regular = "regular";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Sfdp)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Sfdp, isImplemented: false)]
         public const string RepulsiveForce = "repulsiveforce";
 
         [DotAttributeSupport(DotElementSupport.Graph, outputFormats: DotOutputFormatSupport.Bitmap | DotOutputFormatSupport.Svg)]
         public const string Resolution = "resolution";
 
-        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Node, DotLayoutEngineSupport.Circo | DotLayoutEngineSupport.Twopi)]
+        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Node, DotLayoutEngineSupport.Circo | DotLayoutEngineSupport.Twopi, isImplemented: false)]
         public const string Root = "root";
 
         [DotAttributeSupport(DotElementSupport.Graph)]
         public const string Rotate = "rotate";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Sfdp)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Sfdp, isImplemented: false)]
         public const string Rotation = "rotation";
 
         [DotAttributeSupport(DotElementSupport.Edge, DotLayoutEngineSupport.Dot)]
@@ -419,25 +419,25 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Edge, DotLayoutEngineSupport.Dot)]
         public const string SameTail = "sametail";
 
-        [DotAttributeSupport(DotElementSupport.Node)]
+        [DotAttributeSupport(DotElementSupport.Node, isImplemented: false)]
         public const string SamplePoints = "samplepoints";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.NotDot)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.NotDot, isImplemented: false)]
         public const string Scale = "scale";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Dot)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Dot, isImplemented: false)]
         public const string SearchSize = "searchsize";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.NotDot)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.NotDot, isImplemented: false)]
         public const string Sep = "sep";
 
         [DotAttributeSupport(DotElementSupport.Node)]
         public const string Shape = "shape";
 
-        [DotAttributeSupport(DotElementSupport.Node)]
+        [DotAttributeSupport(DotElementSupport.Node, isImplemented: false)]
         public const string ShapeFile = "shapefile";
 
-        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Node | DotElementSupport.Edge, DotLayoutEngineSupport.Dot)]
+        [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Node | DotElementSupport.Edge, DotLayoutEngineSupport.Dot, isImplemented: false)]
         public const string ShowBoxes = "showboxes";
 
         [DotAttributeSupport(DotElementSupport.Node)]
@@ -449,7 +449,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Node)]
         public const string Skew = "skew";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Sfdp)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Sfdp, isImplemented: false)]
         public const string Smoothing = "smoothing";
 
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node)]
@@ -458,13 +458,13 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Graph)]
         public const string Splines = "splines";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato | DotLayoutEngineSupport.Fdp)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.Neato | DotLayoutEngineSupport.Fdp, isImplemented: false)]
         public const string Start = "start";
 
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge)]
         public const string Style = "style";
 
-        [DotAttributeSupport(DotElementSupport.Graph, outputFormats: DotOutputFormatSupport.Svg)]
+        [DotAttributeSupport(DotElementSupport.Graph, outputFormats: DotOutputFormatSupport.Svg, isImplemented: false)]
         public const string StyleSheet = "stylesheet";
 
         [DotAttributeSupport(DotElementSupport.Edge)]
@@ -476,7 +476,7 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Edge)]
         public const string TailLabel = "taillabel";
 
-        [DotAttributeSupport(DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.WriteOnly)]
+        [DotAttributeSupport(DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.WriteOnly, isImplemented: false)]
         public const string TailLp = "tail_lp";
 
         [DotAttributeSupport(DotElementSupport.Edge)]
@@ -497,19 +497,19 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.Svg | DotOutputFormatSupport.Cmap)]
         public const string Tooltip = "tooltip";
 
-        [DotAttributeSupport(DotElementSupport.Graph, outputFormats: DotOutputFormatSupport.Bitmap)]
+        [DotAttributeSupport(DotElementSupport.Graph, outputFormats: DotOutputFormatSupport.Bitmap, isImplemented: false)]
         public const string TrueColor = "truecolor";
 
         [DotAttributeSupport(DotElementSupport.Graph | DotElementSupport.Cluster | DotElementSupport.Node | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.Svg | DotOutputFormatSupport.PostScript | DotOutputFormatSupport.Map)]
         public const string Url = "URL";
 
-        [DotAttributeSupport(DotElementSupport.Node, outputFormats: DotOutputFormatSupport.WriteOnly)]
+        [DotAttributeSupport(DotElementSupport.Node, outputFormats: DotOutputFormatSupport.WriteOnly, isImplemented: false)]
         public const string Vertices = "vertices";
 
-        [DotAttributeSupport(DotElementSupport.Graph)]
+        [DotAttributeSupport(DotElementSupport.Graph, isImplemented: false)]
         public const string Viewport = "viewport";
 
-        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.NotDot)]
+        [DotAttributeSupport(DotElementSupport.Graph, DotLayoutEngineSupport.NotDot, isImplemented: false)]
         public const string VoroMargin = "voro_margin";
 
         [DotAttributeSupport(DotElementSupport.Edge)]
@@ -518,16 +518,16 @@ namespace GiGraph.Dot.Entities.Metadata
         [DotAttributeSupport(DotElementSupport.Node)]
         public const string Width = "width";
 
-        [DotAttributeSupport(DotElementSupport.Graph, outputFormats: DotOutputFormatSupport.Xdot)]
+        [DotAttributeSupport(DotElementSupport.Graph, outputFormats: DotOutputFormatSupport.Xdot, isImplemented: false)]
         public const string XDotVersion = "xdotversion";
 
         [DotAttributeSupport(DotElementSupport.Node | DotElementSupport.Edge)]
         public const string XLabel = "xlabel";
 
-        [DotAttributeSupport(DotElementSupport.Node | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.WriteOnly)]
+        [DotAttributeSupport(DotElementSupport.Node | DotElementSupport.Edge, outputFormats: DotOutputFormatSupport.WriteOnly, isImplemented: false)]
         public const string Xlp = "xlp";
 
-        [DotAttributeSupport(DotElementSupport.Node)]
+        [DotAttributeSupport(DotElementSupport.Node, isImplemented: false)]
         public const string Z = "z";
 
         private static readonly Lazy<Dictionary<string, DotAttributeMetadata>> _metadata = new Lazy<Dictionary<string, DotAttributeMetadata>>(BuildMetadataDictionary);
