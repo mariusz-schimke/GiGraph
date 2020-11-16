@@ -1507,14 +1507,14 @@ Consider the following graph with no layout customizations applied:
 
 
 
-As an example, let's place certain groups of nodes in the same ranks (columns in this case). To achieve that, the nodes have to be grouped within subgraphs, and an appropriate **rank** has to be specified for them. Consider the following example.
+As an example, let's place certain groups of nodes in the same ranks (columns in this case). To achieve that, the nodes have to be placed in subgraphs, and each of the subgraphs has to have an adequate **rank** specified. Consider the following example.
 
 <p align="center">
   <img src="./Assets/Examples/complex-graph-with-subgraphs.svg">
 </p>
 
 
-The nodes embedded in subgraphs with the *DotRank.Same* rank are visualized in the same columns. The nodes *o*, *p*, and *t* in the subgraph with a rank *DotRank.Max*, on the other hand, are pushed together towards the rightmost border.
+The nodes embedded in subgraphs with the *DotRank.Same* rank are arranged in the same columns. Apart from those, the nodes *o*, *p*, and *t* in a subgraph with a rank *DotRank.Max*, are pushed together towards the rightmost border.
 
 *❕ The ranks are vertical in these examples because the layout direction of the graph is left-to-right. When you change it to the default top-to-bottom orientation, the ranks will be oriented horizontally.*
 
