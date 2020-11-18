@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace GiGraph.Dot.Entities.Metadata
+namespace GiGraph.Dot.Entities.Attributes.Metadata
 {
     /// <summary>
     ///     The list of DOT attribute keys.

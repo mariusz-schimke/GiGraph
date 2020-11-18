@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Metadata;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes

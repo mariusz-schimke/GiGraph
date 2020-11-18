@@ -17,7 +17,9 @@ namespace GiGraph.Dot.Entities.Nodes
         /// <summary>
         ///     The unique identifier of the node.
         /// </summary>
-        /// <param name="id">The unique identifier of the node.</param>
+        /// <param name="id">
+        ///     The unique identifier of the node.
+        /// </param>
         public DotNode(string id)
             : this(id, new DotNodeAttributes())
         {

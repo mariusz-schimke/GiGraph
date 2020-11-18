@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Metadata;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Subgraphs;
 

@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace GiGraph.Dot.Entities.Metadata
+namespace GiGraph.Dot.Entities.Attributes.Metadata
 {
     /// <summary>
     ///     Attribute property metadata.

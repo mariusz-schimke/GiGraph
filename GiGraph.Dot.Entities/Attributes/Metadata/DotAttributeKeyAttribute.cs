@@ -1,6 +1,6 @@
 using System;
 
-namespace GiGraph.Dot.Entities.Metadata
+namespace GiGraph.Dot.Entities.Attributes.Metadata
 {
     /// <summary>
     ///     Assigns a DOT attribute key to a property.

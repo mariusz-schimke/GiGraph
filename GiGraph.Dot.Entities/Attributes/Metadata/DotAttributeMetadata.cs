@@ -1,4 +1,4 @@
-namespace GiGraph.Dot.Entities.Metadata
+namespace GiGraph.Dot.Entities.Attributes.Metadata
 {
     /// <summary>
     ///     Attribute metadata.

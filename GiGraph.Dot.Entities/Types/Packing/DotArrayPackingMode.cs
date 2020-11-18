@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Text;
-using GiGraph.Dot.Entities.Metadata;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Packing
