@@ -3,15 +3,15 @@ using System;
 namespace GiGraph.Dot.Entities.Attributes.Metadata
 {
     /// <summary>
-    ///     Output formats.
+    ///     Determines outputs that an attribute is used by.
     /// </summary>
     [Flags]
-    public enum DotOutputFormatSupport
+    public enum DotCompatibleOutputs
     {
         /// <summary>
-        ///     Any format.
+        ///     The attribute is used by any output.
         /// </summary>
-        Any = 0,
+        Any = -1,
 
         /// <summary>
         ///     The xdot format extends the dot format by providing much more detailed information about how graph components are drawn. It
@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         Xdot = 1 << 0,
 
         /// <summary>
-        ///     Windows Bitmap Format.
+        ///     Windows Bitmap format.
         /// </summary>
         Bitmap = 1 << 1,
 
@@ -39,11 +39,6 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         /// <summary>
         ///     The PostScript format.
         /// </summary>
-        PostScript = 1 << 5,
-
-        /// <summary>
-        ///     Indicates that an attribute is used for output only, and is not used or read by any layout program.
-        /// </summary>
-        WriteOnly = 1 << 6
+        PostScript = 1 << 5
     }
 }

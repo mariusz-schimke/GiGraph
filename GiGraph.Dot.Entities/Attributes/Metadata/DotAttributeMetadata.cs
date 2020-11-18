@@ -11,21 +11,21 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         /// <param name="key">
         ///     The key of the attribute.
         /// </param>
-        /// <param name="elementSupport">
+        /// <param name="compatibleElements">
         ///     Determines what elements the attribute may be applied to.
         /// </param>
-        /// <param name="layoutEngineSupport">
+        /// <param name="compatibleLayoutEngines">
         ///     Determines what layout engines the attribute is supported by.
         /// </param>
-        /// <param name="outputFormatSupport">
+        /// <param name="compatibleOutputs">
         ///     Determines what output formats the attribute is supported by.
         /// </param>
-        public DotAttributeMetadata(string key, DotElementSupport elementSupport, DotLayoutEngineSupport layoutEngineSupport, DotOutputFormatSupport outputFormatSupport)
+        public DotAttributeMetadata(string key, DotCompatibleElements compatibleElements, DotCompatibleLayoutEngines compatibleLayoutEngines, DotCompatibleOutputs compatibleOutputs)
         {
             Key = key;
-            ElementSupport = elementSupport;
-            LayoutEngineSupport = layoutEngineSupport;
-            OutputFormatSupport = outputFormatSupport;
+            CompatibleElements = compatibleElements;
+            CompatibleLayoutEngines = compatibleLayoutEngines;
+            CompatibleOutputs = compatibleOutputs;
         }
 
         /// <summary>
@@ -36,16 +36,16 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         /// <summary>
         ///     Indicates what elements the attribute may be applied to.
         /// </summary>
-        public DotElementSupport ElementSupport { get; }
+        public DotCompatibleElements CompatibleElements { get; }
 
         /// <summary>
         ///     Indicates what layout engines the attribute is supported by.
         /// </summary>
-        public DotLayoutEngineSupport LayoutEngineSupport { get; }
+        public DotCompatibleLayoutEngines CompatibleLayoutEngines { get; }
 
         /// <summary>
         ///     Indicates what output formats the attribute is supported by.
         /// </summary>
-        public DotOutputFormatSupport OutputFormatSupport { get; }
+        public DotCompatibleOutputs CompatibleOutputs { get; }
     }
 }
