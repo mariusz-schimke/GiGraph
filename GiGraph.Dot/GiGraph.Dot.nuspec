@@ -22,11 +22,7 @@
     
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code, or online tools like viz-js.com or www.webgraphviz.com, where you paste a script to view its visualization.</description>
     
-    <releaseNotes>- Restored missing property comments with the help of SauceControl.InheritDoc (https://www.nuget.org/packages/SauceControl.InheritDoc).
-
-- Property comments now include a note about what layout engine and output format they are supported by (based on the notes column of the documentation: http://www.graphviz.org/doc/info/attrs.html).
-
-- Added CopyFrom() helper methods to property groups of elements (font, hyperlink, style, node geometry and image).
+    <releaseNotes>- Added support for attributes: root (attribute specifications are available at http://www.graphviz.org/doc/info/attrs.html).
 
 - Refactoring.
 

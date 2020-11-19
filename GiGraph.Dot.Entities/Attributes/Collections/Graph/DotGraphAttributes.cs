@@ -344,5 +344,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
+
+        /// <inheritdoc cref="IDotGraphAttributes.RootNodeId" />
+        [DotAttributeKey(DotAttributeKeys.Root)]
+        public virtual string RootNodeId
+        {
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+        }
     }
 }

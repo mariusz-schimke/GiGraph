@@ -404,7 +404,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         [DotAttributeMetadata(DotCompatibleElements.Graph, compatibleOutputs: DotCompatibleOutputs.Bitmap | DotCompatibleOutputs.Svg)]
         public const string Resolution = "resolution";
 
-        [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Node, DotCompatibleLayoutEngines.Circo | DotCompatibleLayoutEngines.Twopi, isImplemented: false)]
+        [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Node, DotCompatibleLayoutEngines.Circo | DotCompatibleLayoutEngines.Twopi)]
         public const string Root = "root";
 
         [DotAttributeMetadata(DotCompatibleElements.Graph)]
