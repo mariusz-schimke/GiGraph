@@ -3,53 +3,53 @@ using System;
 namespace GiGraph.Dot.Entities.Attributes.Metadata
 {
     /// <summary>
-    ///     Assigns a value indicating what elements, layout engines, and output formats an attribute key is supported by.
+    ///     Assigns a value indicating what elements, layout engines, and output formats an attribute key is applicable to.
     /// </summary>
     [AttributeUsage(AttributeTargets.Field)]
-    public class DotAttributeSupportAttribute : Attribute
+    public class DotAttributeMetadataAttribute : Attribute
     {
         /// <summary>
         ///     Creates a new attribute instance.
         /// </summary>
-        /// <param name="elements">
+        /// <param name="compatibleElements">
         ///     The entities the current attribute key is supported by.
         /// </param>
-        /// <param name="layoutEngines">
+        /// <param name="compatibleLayoutEngines">
         ///     The layout engines the attribute key is supported by.
         /// </param>
-        /// <param name="outputFormats">
+        /// <param name="compatibleOutputs">
         ///     The output formats the attribute key is supported by.
         /// </param>
         /// <param name="isImplemented">
         ///     Indicates if the attribute is supported by the library.
         /// </param>
-        public DotAttributeSupportAttribute(
-            DotElementSupport elements,
-            DotLayoutEngineSupport layoutEngines = DotLayoutEngineSupport.Any,
-            DotOutputFormatSupport outputFormats = DotOutputFormatSupport.Any,
+        public DotAttributeMetadataAttribute(
+            DotCompatibleElements compatibleElements,
+            DotCompatibleLayoutEngines compatibleLayoutEngines = DotCompatibleLayoutEngines.Any,
+            DotCompatibleOutputs compatibleOutputs = DotCompatibleOutputs.Any,
             bool isImplemented = true
         )
         {
-            Elements = elements;
-            LayoutEngines = layoutEngines;
-            OutputFormats = outputFormats;
+            CompatibleElements = compatibleElements;
+            CompatibleLayoutEngines = compatibleLayoutEngines;
+            CompatibleOutputs = compatibleOutputs;
             IsImplemented = isImplemented;
         }
 
         /// <summary>
         ///     Gets the entities the current attribute key is supported by.
         /// </summary>
-        public virtual DotElementSupport Elements { get; }
+        public virtual DotCompatibleElements CompatibleElements { get; }
 
         /// <summary>
         ///     Gets the layout engines the attribute key is supported by.
         /// </summary>
-        public virtual DotLayoutEngineSupport LayoutEngines { get; }
+        public virtual DotCompatibleLayoutEngines CompatibleLayoutEngines { get; }
 
         /// <summary>
         ///     Gets the output formats the attribute key is supported by.
         /// </summary>
-        public virtual DotOutputFormatSupport OutputFormats { get; }
+        public virtual DotCompatibleOutputs CompatibleOutputs { get; }
 
         /// <summary>
         ///     Gets a value indicating if the attribute is supported by the library.

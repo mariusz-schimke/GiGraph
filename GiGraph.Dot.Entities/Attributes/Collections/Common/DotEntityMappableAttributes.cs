@@ -30,9 +30,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 
                     return new DotAttributePropertyMetadata(
                         key,
-                        metadata.ElementSupport,
-                        metadata.LayoutEngineSupport,
-                        metadata.OutputFormatSupport,
+                        metadata.CompatibleElements,
+                        metadata.CompatibleLayoutEngines,
+                        metadata.CompatibleOutputs,
                         path.Select(item => item.Property).ToArray()
                     );
                 })

@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return DotAttributeValueAttribute.TryGetValue(Value, out var result)
+            return DotAttributeValue.TryGet(Value, out var result)
                 ? result
                 : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified alignment option '{Value}' is invalid.");
         }

@@ -16,13 +16,13 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         /// <param name="key">
         ///     The key of the attribute.
         /// </param>
-        /// <param name="elementSupport">
+        /// <param name="compatibleElements">
         ///     Determines what elements the attribute may be applied to.
         /// </param>
-        /// <param name="layoutEngineSupport">
+        /// <param name="compatibleLayoutEngines">
         ///     Determines what layout engines the attribute is supported by.
         /// </param>
-        /// <param name="outputFormatSupport">
+        /// <param name="compatibleOutputs">
         ///     Determines what output formats the attribute is supported by.
         /// </param>
         /// <param name="propertyPath">
@@ -30,12 +30,12 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         /// </param>
         public DotAttributePropertyMetadata(
             string key,
-            DotElementSupport elementSupport,
-            DotLayoutEngineSupport layoutEngineSupport,
-            DotOutputFormatSupport outputFormatSupport,
+            DotCompatibleElements compatibleElements,
+            DotCompatibleLayoutEngines compatibleLayoutEngines,
+            DotCompatibleOutputs compatibleOutputs,
             PropertyInfo[] propertyPath
         )
-            : base(key, elementSupport, layoutEngineSupport, outputFormatSupport)
+            : base(key, compatibleElements, compatibleLayoutEngines, compatibleOutputs)
         {
             _propertyPath = propertyPath;
             PropertyPath = string.Join(".", propertyPath.Select(property => property.Name.Split('.').Last()));

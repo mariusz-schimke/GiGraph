@@ -19,9 +19,9 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
         [Theory]
         [MemberData(nameof(ElementAttributesMetadata))]
-        public void element_supports_correct_attribute_keys(DotElementSupport element, Dictionary<string, DotAttributePropertyMetadata> elementAttributesMetadata)
+        public void element_supports_correct_attribute_keys(DotCompatibleElements element, Dictionary<string, DotAttributePropertyMetadata> elementAttributesMetadata)
         {
-            var validKeys = GetSupportedKeysFor(element);
+            var validKeys = GetCompatibleKeysFor(element);
 
             var result = elementAttributesMetadata.Keys
                .Except(validKeys.Intersect(elementAttributesMetadata.Keys))
@@ -35,9 +35,9 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
         [Theory]
         [MemberData(nameof(ElementAttributesMetadata))]
-        public void element_supports_all_required_attribute_keys(DotElementSupport element, Dictionary<string, DotAttributePropertyMetadata> elementAttributesMetadata)
+        public void element_supports_all_required_attribute_keys(DotCompatibleElements element, Dictionary<string, DotAttributePropertyMetadata> elementAttributesMetadata)
         {
-            var validKeys = GetSupportedKeysFor(element);
+            var validKeys = GetCompatibleKeysFor(element);
 
             var result = validKeys
                .Except(elementAttributesMetadata.Keys.Intersect(validKeys))
@@ -82,16 +82,16 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             Snapshot.Match(new SortedDictionary<string, string[]>(keyLookup), "attribute_property_key_map");
         }
 
-        private static string[] GetSupportedKeysFor(DotElementSupport elementSupport)
+        private static string[] GetCompatibleKeysFor(DotCompatibleElements compatibleElements)
         {
             return typeof(DotAttributeKeys)
                .GetFields(BindingFlags.Static | BindingFlags.Public)
                .Select(property => new
                 {
                     Key = (string) property.GetValue(null),
-                    Metadata = property.GetCustomAttribute<DotAttributeSupportAttribute>()
+                    Metadata = property.GetCustomAttribute<DotAttributeMetadataAttribute>()
                 })
-               .Where(item => item.Metadata.Elements.HasFlag(elementSupport))
+               .Where(item => item.Metadata.CompatibleElements.HasFlag(compatibleElements))
                .Where(item => item.Metadata.IsImplemented)
                .Select(item => item.Key)
                .ToArray();
