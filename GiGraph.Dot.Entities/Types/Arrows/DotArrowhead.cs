@@ -110,14 +110,14 @@ namespace GiGraph.Dot.Entities.Types.Arrows
 
         protected virtual string GetDotEncodedShape(DotArrowheadShape shape)
         {
-            return DotAttributeValueAttribute.TryGetValue(shape, out var result)
+            return DotAttributeValue.TryGet(shape, out var result)
                 ? result
                 : throw new ArgumentOutOfRangeException(nameof(shape), $"The specified arrowhead shape '{shape}' is invalid.");
         }
 
         protected virtual string GetDotEncodedArrowheadPart(DotArrowheadParts visibleParts)
         {
-            return DotAttributeValueAttribute.TryGetValue(visibleParts, out var result)
+            return DotAttributeValue.TryGet(visibleParts, out var result)
                 ? result
                 : throw new ArgumentOutOfRangeException(nameof(visibleParts), $"The specified arrowhead part '{visibleParts}' is invalid.");
         }

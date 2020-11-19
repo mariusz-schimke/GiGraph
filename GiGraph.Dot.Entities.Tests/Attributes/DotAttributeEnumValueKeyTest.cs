@@ -59,8 +59,8 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
 
                 // it is assumed that if a key repeats, an exception will be thrown by the mapping method on dictionary creation
-                var mapping = (IEnumerable) typeof(DotAttributeValueAttribute).GetMethod(
-                        nameof(DotAttributeValueAttribute.GetValueMapping)
+                var mapping = (IEnumerable) typeof(DotAttributeValue).GetMethod(
+                        nameof(DotAttributeValue.GetMapping)
                     )
                    .MakeGenericMethod(enumType).Invoke(null, null);
 

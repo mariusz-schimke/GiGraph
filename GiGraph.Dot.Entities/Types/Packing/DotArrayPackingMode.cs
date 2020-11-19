@@ -92,7 +92,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
 
         protected virtual string GetDotEncodedOption(DotArrayPackingOptions option, DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return DotAttributeValueAttribute.TryGetValue(option, out var result)
+            return DotAttributeValue.TryGet(option, out var result)
                 ? result
                 : throw new ArgumentOutOfRangeException(nameof(option), $"The specified array packing option '{option}' is invalid.");
         }
