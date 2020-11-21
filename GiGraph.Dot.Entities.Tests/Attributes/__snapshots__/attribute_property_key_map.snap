@@ -236,7 +236,7 @@
   ],
   "root": [
     "RootNodeId [Graph]",
-    "Root [Node]"
+    "IsRoot [Node]"
   ],
   "rotate": [
     "Rotation [Graph]"
