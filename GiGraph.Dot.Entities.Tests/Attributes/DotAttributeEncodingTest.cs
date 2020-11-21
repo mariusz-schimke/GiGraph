@@ -36,6 +36,15 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         }
 
         [Fact]
+        public void string_attribute_returns_encoded_value_with_only_quotation_marks_and_backslashes_escaped_as_attribute_value()
+        {
+            var value = "a bcd \" \\ \r\n \r \n h ij < > { } |";
+            IDotEncodable attr = new DotStringAttribute("key", value);
+
+            Assert.Equal("a bcd \\\" \\\\ \r\n \r \n h ij < > { } |", attr.GetDotEncodedValue(_syntaxOptions, _syntaxRules));
+        }
+
+        [Fact]
         public void escape_string_attribute_returns_escaped_encoded_value()
         {
             var value = "a bcd \" \\ \r\n \r \n h ij < > { } |";
@@ -60,15 +69,6 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             IDotEncodable attr = new DotCustomAttribute("key", value);
 
             Assert.Equal(value, attr.GetDotEncodedValue(_syntaxOptions, _syntaxRules));
-        }
-
-        [Fact]
-        public void string_attribute_returns_encoded_value_with_only_quotation_marks_escaped_as_attribute_value()
-        {
-            var value = "a bcd \" \\ \r\n \r \n h ij < > { } |";
-            IDotEncodable attr = new DotStringAttribute("key", value);
-
-            Assert.Equal("a bcd \\\" \\ \r\n \r \n h ij < > { } |", attr.GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }
     }
 }
