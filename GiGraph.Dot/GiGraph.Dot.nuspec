@@ -24,6 +24,8 @@
     
     <releaseNotes>- Added support for attributes: root (attribute specifications are available at http://www.graphviz.org/doc/info/attrs.html).
 
+- Minor improvements in text escaping.
+
 - Refactoring.
 
 
