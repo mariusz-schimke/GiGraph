@@ -10,6 +10,7 @@ using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Scaling;
+using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
@@ -76,6 +77,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             get => base.ColorScheme;
             set => base.ColorScheme = value;
+        }
+
+        /// <inheritdoc cref="IDotGraphAttributes.Id" />
+        public override DotEscapeString Id
+        {
+            get => base.Id;
+            set => base.Id = value;
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Comment" />

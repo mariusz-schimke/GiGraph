@@ -133,6 +133,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => base.SortIndex = value;
         }
 
+        /// <inheritdoc cref="IDotClusterAttributes.Id" />
+        public override DotEscapeString Id
+        {
+            get => base.Id;
+            set => base.Id = value;
+        }
+
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor" />
         [DotAttributeKey(DotAttributeKeys.PenColor)]
         public virtual DotColor BorderColor

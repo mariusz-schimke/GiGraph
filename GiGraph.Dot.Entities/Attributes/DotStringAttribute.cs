@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Attributes
             : base(key, value)
         {
         }
-        
+
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return syntaxRules.Attributes.StringValueEscaper.Escape(Value);

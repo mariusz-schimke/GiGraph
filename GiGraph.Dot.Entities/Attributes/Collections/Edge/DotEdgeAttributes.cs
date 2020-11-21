@@ -115,6 +115,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => base.ColorScheme = value;
         }
 
+        /// <inheritdoc cref="IDotEdgeAttributes.Id" />
+        public override DotEscapeString Id
+        {
+            get => base.Id;
+            set => base.Id = value;
+        }
+
         /// <inheritdoc cref="IDotEdgeAttributes.Comment" />
         [DotAttributeKey(DotAttributeKeys.Comment)]
         public virtual string Comment
