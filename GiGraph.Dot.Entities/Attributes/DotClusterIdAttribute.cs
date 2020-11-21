@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Attributes
     ///     for clusters is true, if the current attribute is defined and is the identifier of a cluster containing the real head/tail,
     ///     the edge is clipped to the boundary of the cluster.
     /// </summary>
-    public class DotClusterIdAttribute : DotAttribute<string>
+    public class DotClusterIdAttribute : DotIdAttribute
     {
         /// <summary>
         ///     Creates a new attribute instance.
@@ -25,10 +25,10 @@ namespace GiGraph.Dot.Entities.Attributes
         {
         }
 
-        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected override string GetId(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             // keep this value coherent with the format the cluster generator uses to generate cluster identifier
-            return syntaxRules.IdentifierEscaper.Escape(DotClusterIdFormatter.Format(Value, options));
+            return DotClusterIdFormatter.Format(Value, options);
         }
     }
 }

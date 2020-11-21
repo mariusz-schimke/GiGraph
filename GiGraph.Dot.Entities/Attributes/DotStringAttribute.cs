@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Entities.Attributes
+﻿using GiGraph.Dot.Output.Options;
+
+namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
     ///     A string attribute. The value is rendered as is in the output DOT script, so the attribute can be used for any type of value,
@@ -18,6 +20,11 @@
         public DotStringAttribute(string key, string value)
             : base(key, value)
         {
+        }
+        
+        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        {
+            return syntaxRules.Attributes.StringValueEscaper.Escape(Value);
         }
     }
 }

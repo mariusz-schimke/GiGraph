@@ -218,6 +218,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotNodeAttributes.IsRoot" />
+        [DotAttributeKey(DotAttributeKeys.Root)]
+        public virtual bool? IsRoot
+        {
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+        }
+
         protected override void SetFillStyle(DotStyles fillStyle)
         {
             Style.FillStyle = (DotNodeFillStyle) fillStyle;

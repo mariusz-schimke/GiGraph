@@ -212,5 +212,25 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     packing, this attribute specifies an insertion order among the components, with smaller values inserted first.
         /// </summary>
         int? SortIndex { get; set; }
+
+        /// <summary>
+        ///     <para>
+        ///         Specifies whether the node should be used as the center of the layout and the root of the generated spanning tree
+        ///         (default: false; circo, twopi only).
+        ///     </para>
+        ///     <para>
+        ///         In twopi, root will actually be the central node. In circo, the block containing the node will be central in the drawing
+        ///         of its connected component. If not defined, twopi will pick a most central node, and circo will pick a random node.
+        ///     </para>
+        ///     <para>
+        ///         If the <see cref="DotGraphAttributes.RootNodeId" /> attribute on the graph is defined as the empty string, twopi will
+        ///         reset it to name of the node picked as the root node.
+        ///     </para>
+        ///     <para>
+        ///         For twopi, it is possible to have multiple roots, presumably one for each component. If more than one node in a component
+        ///         is marked as the root, twopi will pick one.
+        ///     </para>
+        /// </summary>
+        bool? IsRoot { get; set; }
     }
 }

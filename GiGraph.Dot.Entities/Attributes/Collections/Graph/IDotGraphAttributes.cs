@@ -323,5 +323,24 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     <see cref="Orientation" /> = <see cref="DotOrientation.Landscape" />.
         /// </summary>
         bool? LandscapeOrientation { get; set; }
+
+        /// <summary>
+        ///     <para>
+        ///         The identifier of a node that should be used as the center of the layout and the root of the generated spanning tree
+        ///         (circo, twopi only).
+        ///     </para>
+        ///     <para>
+        ///         In twopi, root will actually be the central node. In circo, the block containing the node will be central in the drawing
+        ///         of its connected component. If not defined, twopi will pick a most central node, and circo will pick a random node.
+        ///     </para>
+        ///     <para>
+        ///         If the attribute is defined as the empty string, twopi will reset it to name of the node picked as the root node.
+        ///     </para>
+        ///     <para>
+        ///         For twopi, it is possible to have multiple roots, presumably one for each component. If more than one node in a component
+        ///         is marked as the root, twopi will pick one (see the <see cref="DotNodeAttributes.IsRoot"/> attribute on a node).
+        ///     </para>
+        /// </summary>
+        string RootNodeId { get; set; }
     }
 }

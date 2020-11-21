@@ -150,7 +150,7 @@ var graph = new DotGraph(strict: true);
 
 ## Attributes
 
-Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrow head shape and so on. When you don't specify attributes explicitly, their default values depend on the graph visualization engine you use (see [documentation](http://www.graphviz.org/doc/info/attrs.html)).
+Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrow head shape and so on. When you don't specify attributes explicitly, their default values depend on the graph layout engine you use for visualization (see [documentation](http://www.graphviz.org/doc/info/attrs.html)).
 
 ```c#
 graph.Attributes.Label = "My graph";
@@ -175,20 +175,24 @@ graph.Edges.Add("Foo", "Bar", edge =>
 });
 ```
 
-There are dozens attributes that may be set on different graph elements, but the library supports only a subset of them. By exposing properties on the attribute collections of elements (as in the examples above), the libary ensures that the strongly-typed value you provide is correctly converted to string in a format understood by visualization engines. However, you may also set any attribute by providing its key and value directly, as string (see the example below). This approach should be used with care, and the value should always follow the DOT syntax rules specific to the attribute you set (see [documentation](https://www.graphviz.org/doc/info/attrs.html)). Otherwise the visualization tool you use may be unable to process it correctly.
+There are dozens attributes that may be set on different graph elements. By exposing properties on attribute collections of elements (as in the examples above), the libary ensures that the strongly-typed value you set is correctly converted to a format understood by visualization engines. The library supports this way most of the attributes listed in the documentation. For those that it doesn't, you may provide a key and a value directly, as strings. This approach should be used with care, however, and the value should always follow the DOT syntax rules specific to the attribute you set (see [documentation](https://www.graphviz.org/doc/info/attrs.html)). Consider the following example:
 
 ```c#
-node.Attributes.Collection.Set("fillcolor", "red:blue");
+node.Attributes.Collection.SetCustom("fillcolor", "red:blue");
 ```
 
-Under the hood, the overload of the *Set* method in above example adds a *DotStringAttribute* instance to the collection of attributes:
+Under the hood, the *SetCustom* method adds a *DotCustomAttribute* instance to the collection of attributes:
 
 ```c#
-var attribute = new DotStringAttribute("fillcolor", "red:blue");
+var attribute = new DotCustomAttribute("fillcolor", "red:blue");
 node.Attributes.Collection.Set(attribute);
 ```
 
-*DotStringAttribute* may be used for any type of property. Its *value* is rendered in the output DOT script exactly the way it is provided (without any further processing like escaping).
+The *DotCustomAttribute* may be used for any type of attribute. Its *value* is rendered in the output DOT script exactly the way it is provided. Therefore, you have to take care of escaping it whenever necessary, as otherwise it may cause the output DOT script to be syntactically incorrect. Also, before choosing this approach, make sure there is no appropriate *Set* method overload on the attribute collection, that can be used instead:
+
+```dot
+node.Attributes.Collection.Set("fillcolor", new DotGradientColor(Color.Red, Color.Blue));
+```
 
 
 

@@ -234,6 +234,10 @@
   "resolution": [
     "Resolution [Graph]"
   ],
+  "root": [
+    "RootNodeId [Graph]",
+    "IsRoot [Node]"
+  ],
   "rotate": [
     "Rotation [Graph]"
   ],
