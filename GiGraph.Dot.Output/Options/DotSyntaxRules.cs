@@ -8,14 +8,15 @@ namespace GiGraph.Dot.Output.Options
     /// <summary>
     ///     The syntax rules used on DOT output generation.
     /// </summary>
-    public class DotSyntaxRules
+    public partial class DotSyntaxRules
     {
-        protected static readonly IDotTextEscaper[] DefaultEscaper =
-        {
+        protected static readonly IDotTextEscaper DefaultStringEscaper = new DotTextEscapingPipeline
+        (
+            // backslash is an escape character, and has to be escaped to be interpreted as a backslash
             new DotBackslashEscaper(),
-            new DotQuotationMarkEscaper(),
-            new DotLineBreakEscaper()
-        };
+            // quotation mark would make a quoted string invalid, so has to be escaped
+            new DotQuotationMarkEscaper()
+        );
 
         /// <summary>
         ///     The collection of reserved words that cannot be used as identifiers/keys unless quoted.
@@ -41,30 +42,14 @@ namespace GiGraph.Dot.Output.Options
         public virtual string NumericIdentifierPattern { get; protected set; } = @"^[-]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)$";
 
         /// <summary>
-        ///     A text escaper to use for identifiers.
+        ///     A text escaper to use for identifiers (only quotation marks and backslashes are escaped by default).
         /// </summary>
-        public virtual IDotTextEscaper IdentifierEscaper { get; protected set; } = new DotTextEscapingPipeline(DefaultEscaper);
+        public virtual IDotTextEscaper IdentifierEscaper { get; protected set; } = DefaultStringEscaper;
 
         /// <summary>
-        ///     A text escaper to use for attribute keys (no escaping is used by default).
+        ///     Attribute-related syntax rules.
         /// </summary>
-        public virtual IDotTextEscaper KeyEscaper { get; protected set; } = DotTextEscapingPipeline.None();
-
-        /// <summary>
-        ///     A text escaper to use for string values.
-        /// </summary>
-        public virtual IDotTextEscaper TextValueEscaper { get; protected set; } = new DotTextEscapingPipeline(DefaultEscaper);
-
-        /// <summary>
-        ///     A text escaper to use for record node fields.
-        /// </summary>
-        public virtual IDotTextEscaper RecordFieldEscaper { get; protected set; } = new DotTextEscapingPipeline(DefaultEscaper)
-        {
-            new DotAngleBracketsEscaper(),
-            new DotCurlyBracketsEscaper(),
-            new DotVerticalBarEscaper(),
-            new DotSpaceHtmlEscaper()
-        };
+        public virtual AttributeRules Attributes { get; } = new AttributeRules();
 
         /// <summary>
         ///     Determines if the specified word is a keyword.

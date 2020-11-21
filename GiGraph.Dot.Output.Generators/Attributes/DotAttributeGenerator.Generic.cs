@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Output.Generators.Attributes
 
         protected virtual string EscapeKey(string key)
         {
-            return _syntaxRules.KeyEscaper.Escape(key);
+            return _syntaxRules.Attributes.KeyEscaper.Escape(key);
         }
 
         protected virtual bool KeyRequiresQuoting(string key)
