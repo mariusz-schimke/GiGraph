@@ -10,9 +10,11 @@ namespace GiGraph.Dot.Output.Options
     /// </summary>
     public partial class DotSyntaxRules
     {
-        protected static readonly IDotTextEscaper DefaultStringEscaper = new DotTextEscapingPipeline
+        public static readonly IDotTextEscaper DefaultStringEscaper = new DotTextEscapingPipeline
         (
-            // backslash is an escape character, and has to be escaped to be interpreted as a backslash
+            // When a single backslash is quoted ("\"), it is misinterpreted as an escape character for the closing quotation mark,
+            // so it has to be escaped ("\\"). Escaping backslashes seems to be redundant apart from that specific case
+            // (unless this is an escString type attribute).
             new DotBackslashEscaper(),
             // quotation mark would make a quoted string invalid, so has to be escaped
             new DotQuotationMarkEscaper()
@@ -21,30 +23,30 @@ namespace GiGraph.Dot.Output.Options
         /// <summary>
         ///     The collection of reserved words that cannot be used as identifiers/keys unless quoted.
         /// </summary>
-        public virtual ICollection<string> Keywords { get; protected set; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        public virtual ICollection<string> Keywords { get; set; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
+            "graph",
             "node",
             "edge",
+            "subgraph",
             "strict",
-            "graph",
-            "digraph",
-            "subgraph"
+            "digraph"
         };
 
         /// <summary>
         ///     The regex pattern to use in order to determine if an alphabetic identifier or attribute value can be used without quoting.
         /// </summary>
-        public virtual string AlphabeticIdentifierPattern { get; protected set; } = @"^[_a-zA-Z\200-\377]+[_0-9a-zA-Z\200-\377]*$";
+        public virtual string AlphabeticIdentifierPattern { get; set; } = @"^[_a-zA-Z\200-\377]+[_0-9a-zA-Z\200-\377]*$";
 
         /// <summary>
         ///     The regex pattern to use in order to determine if a numeric identifier or attribute value can be used without quoting.
         /// </summary>
-        public virtual string NumericIdentifierPattern { get; protected set; } = @"^[-]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)$";
+        public virtual string NumericIdentifierPattern { get; set; } = @"^[-]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)$";
 
         /// <summary>
         ///     A text escaper to use for identifiers (only quotation marks and backslashes are escaped by default).
         /// </summary>
-        public virtual IDotTextEscaper IdentifierEscaper { get; protected set; } = DefaultStringEscaper;
+        public virtual IDotTextEscaper IdentifierEscaper { get; set; } = DefaultStringEscaper;
 
         /// <summary>
         ///     Attribute-related syntax rules.
