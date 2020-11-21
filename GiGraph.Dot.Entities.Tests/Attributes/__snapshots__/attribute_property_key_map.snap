@@ -116,6 +116,9 @@
   "href": [
     "Hyperlink.Href [Graph, Cluster, Node, Edge]"
   ],
+  "id": [
+    "Id [Graph, Cluster, Node, Edge]"
+  ],
   "image": [
     "Image.Path [Node]"
   ],

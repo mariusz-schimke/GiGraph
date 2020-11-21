@@ -176,5 +176,26 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     Comments are inserted into output. Device-dependent.
         /// </summary>
         string Comment { get; set; }
+
+        /// <summary>
+        ///     <para>
+        ///         Allows the graph author to provide an identifier for graph objects which is to be included in the output (svg,
+        ///         postscript, map only).
+        ///     </para>
+        ///     <para>
+        ///         Normal <see cref="DotEscapeString.NodeId" />, <see cref="DotEscapeString.EdgeDefinition" />,
+        ///         <see cref="DotEscapeString.GraphId" /> substitutions can be applied (see <see cref="DotTextFormatter" />). Note, however,
+        ///         that <see cref="DotEscapeString.EdgeDefinition" /> does not provide a unique ID for multi-edges.
+        ///     </para>
+        ///     <para>
+        ///         If provided, it is the responsibility of the provider to keep ID values unique for its intended downstream use. If no ID
+        ///         attribute is provided, then a unique internal ID is used. However, this value is unpredictable by the graph writer.
+        ///     </para>
+        ///     <para>
+        ///         If the graph provides an ID attribute, this will be used as a prefix for internally generated attributes. By making
+        ///         internally-used attributes distinct, the user can include multiple image maps in the same document.
+        ///     </para>
+        /// </summary>
+        DotEscapeString Id { get; set; }
     }
 }

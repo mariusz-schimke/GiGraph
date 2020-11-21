@@ -69,7 +69,7 @@ namespace GiGraph.Dot.Entities.Tests
 
             // CR LF are not replaced in port
             var port = @$"<\ a\ \""\ \\\ {"\r\n"}\ {'\r'}\ {'\n'}\ \<\ \>\ \{{\ \}}\ \|\ >";
-            
+
             // CR LF are replaced with \n in field
             var field = @"\ a\ \""\ \\\ \n\ \n\ \n\ \<\ \>\ \{\ \}\ \|\ ";
 

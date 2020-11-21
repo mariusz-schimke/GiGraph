@@ -149,6 +149,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => base.SortIndex = value;
         }
 
+        /// <inheritdoc cref="IDotNodeAttributes.Id" />
+        public override DotEscapeString Id
+        {
+            get => base.Id;
+            set => base.Id = value;
+        }
+
         /// <inheritdoc cref="IDotNodeAttributes.Comment" />
         [DotAttributeKey(DotAttributeKeys.Comment)]
         public virtual string Comment
