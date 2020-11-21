@@ -652,5 +652,33 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             return Set(new DotCustomAttribute(key, value));
         }
+
+        /// <summary>
+        ///     Adds or replaces the specified attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotClusterIdAttribute SetClusterId(string key, string value)
+        {
+            return Set(new DotClusterIdAttribute(key, value));
+        }
+
+        /// <summary>
+        ///     Adds or replaces the specified attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotNodeIdAttribute SetNodeId(string key, string value)
+        {
+            return Set(new DotNodeIdAttribute(key, value));
+        }
     }
 }
