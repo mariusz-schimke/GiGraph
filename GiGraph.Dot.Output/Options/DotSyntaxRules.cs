@@ -10,16 +10,6 @@ namespace GiGraph.Dot.Output.Options
     /// </summary>
     public partial class DotSyntaxRules
     {
-        public static readonly IDotTextEscaper DefaultStringEscaper = new DotTextEscapingPipeline
-        (
-            // When a single backslash is quoted ("\"), it is misinterpreted as an escape character for the closing quotation mark,
-            // so it has to be escaped ("\\"). Escaping backslashes seems to be redundant apart from that specific case
-            // (unless this is an escString type attribute).
-            new DotBackslashEscaper(),
-            // quotation mark would make a quoted string invalid, so has to be escaped
-            new DotQuotationMarkEscaper()
-        );
-
         /// <summary>
         ///     The collection of reserved words that cannot be used as identifiers/keys unless quoted.
         /// </summary>
@@ -46,7 +36,7 @@ namespace GiGraph.Dot.Output.Options
         /// <summary>
         ///     A text escaper to use for identifiers (only quotation marks and backslashes are escaped by default).
         /// </summary>
-        public virtual IDotTextEscaper IdentifierEscaper { get; set; } = DefaultStringEscaper;
+        public virtual IDotTextEscaper IdentifierEscaper { get; set; } = DotTextEscapingPipeline.ForString();
 
         /// <summary>
         ///     Attribute-related syntax rules.

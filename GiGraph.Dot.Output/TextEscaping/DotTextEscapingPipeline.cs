@@ -53,5 +53,67 @@ namespace GiGraph.Dot.Output.TextEscaping
         {
             return new DotTextEscapingPipeline();
         }
+
+        /// <summary>
+        ///     Creates a new pipeline that escapes backslashes and quotation marks.
+        /// </summary>
+        public static DotTextEscapingPipeline ForString()
+        {
+            return new DotTextEscapingPipeline
+            (
+                // When a single backslash is quoted ("\"), it is misinterpreted as an escape character for the closing quotation mark,
+                // so it has to be escaped ("\\"). Escaping backslashes seems to be redundant apart from that specific case
+                // (unless this is an escString type attribute).
+                new DotBackslashEscaper(),
+                // quotation mark would make a quoted string invalid, so has to be escaped
+                new DotQuotationMarkEscaper()
+            );
+        }
+
+        /// <summary>
+        ///     Creates a new pipeline that escapes backslashes, quotation marks, and line breaks.
+        /// </summary>
+        public static DotTextEscapingPipeline ForEscapeString()
+        {
+            return new DotTextEscapingPipeline(
+                ForString(),
+                new DotLineBreakEscaper()
+            );
+        }
+
+        /// <summary>
+        ///     Creates a new pipeline that escapes fields of record labels (backslashes, quotation marks, line breaks; angle and curly
+        ///     brackets, vertical bars, and spaces).
+        /// </summary>
+        public static DotTextEscapingPipeline ForRecordLabelField()
+        {
+            return new DotTextEscapingPipeline(
+                ForEscapeString(),
+                CommonForRecordLabel()
+            );
+        }
+
+        /// <summary>
+        ///     Creates a new pipeline that escapes ports of record labels (backslashes, quotation marks; angle and curly brackets, vertical
+        ///     bars, and spaces).
+        /// </summary>
+        public static DotTextEscapingPipeline ForRecordLabelPort()
+        {
+            return new DotTextEscapingPipeline(
+                ForString(),
+                CommonForRecordLabel()
+            );
+        }
+
+        private static IDotTextEscaper CommonForRecordLabel()
+        {
+            return new DotTextEscapingPipeline
+            (
+                new DotAngleBracketsEscaper(),
+                new DotCurlyBracketsEscaper(),
+                new DotVerticalBarEscaper(),
+                new DotSpaceEscaper()
+            );
+        }
     }
 }
