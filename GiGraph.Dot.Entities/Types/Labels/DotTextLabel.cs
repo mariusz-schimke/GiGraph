@@ -21,6 +21,12 @@ namespace GiGraph.Dot.Entities.Types.Labels
     {
         protected readonly DotEscapeString _text;
 
+        /// <summary>
+        ///     Creates a new textual label.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to use.
+        /// </param>
         public DotTextLabel(DotEscapeString text)
         {
             _text = text ?? throw new ArgumentNullException(nameof(text), "Text cannot be null.");

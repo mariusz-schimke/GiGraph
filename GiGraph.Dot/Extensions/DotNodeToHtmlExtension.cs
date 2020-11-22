@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Nodes;
-using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Extensions
 {
@@ -21,12 +21,13 @@ namespace GiGraph.Dot.Extensions
         ///     The node to convert.
         /// </param>
         /// <param name="html">
-        ///     The HTML text to assign to node label.
+        ///     The HTML text to assign to node label. Pass <see cref="string" /> to convert it implicitly to the required
+        ///     <see cref="DotHtml" /> type.
         /// </param>
-        public static void ToHtmlNode(this DotNode node, string html)
+        public static void ToHtmlNode(this DotNode node, DotHtml html)
         {
             node.Attributes.Shape = DotNodeShape.Plain;
-            node.Attributes.Label = (DotHtmlLabel) html;
+            node.Attributes.Label = html;
         }
     }
 }
