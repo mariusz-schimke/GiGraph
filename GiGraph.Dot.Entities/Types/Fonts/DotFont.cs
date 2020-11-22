@@ -29,16 +29,16 @@ namespace GiGraph.Dot.Entities.Types.Fonts
         /// <summary>
         ///     Gets or sets font name.
         /// </summary>
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         /// <summary>
         ///     Gets or sets font size.
         /// </summary>
-        public double? Size { get; set; }
+        public virtual double? Size { get; set; }
 
         /// <summary>
         ///     Gets or sets font color.
         /// </summary>
-        public DotColor Color { get; set; }
+        public virtual DotColor Color { get; set; }
     }
 }

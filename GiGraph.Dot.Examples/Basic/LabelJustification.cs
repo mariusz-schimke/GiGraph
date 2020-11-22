@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Nodes.Add("Foo", attrs =>
             {
                 attrs.Shape = DotNodeShape.Box;
-                attrs.Width = 3;
+                attrs.Size.Width = 3;
 
                 // using text formatter
                 attrs.Label = new DotTextFormatter()
