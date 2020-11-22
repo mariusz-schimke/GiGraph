@@ -31,6 +31,6 @@ namespace GiGraph.Dot.Entities.Types.Fonts
         /// <summary>
         ///     Gets or sets the directory list to search for fonts.
         /// </summary>
-        public string Directories { get; set; }
+        public virtual string Directories { get; set; }
     }
 }

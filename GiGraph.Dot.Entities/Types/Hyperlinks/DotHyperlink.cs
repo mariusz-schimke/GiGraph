@@ -29,16 +29,16 @@ namespace GiGraph.Dot.Entities.Types.Hyperlinks
         /// <summary>
         ///     The URL.
         /// </summary>
-        public DotEscapeString Url { get; set; }
+        public virtual DotEscapeString Url { get; set; }
 
         /// <summary>
         ///     Synonym for <see cref="Url" />.
         /// </summary>
-        public DotEscapeString Href { get; set; }
+        public virtual DotEscapeString Href { get; set; }
 
         /// <summary>
         ///     Determines which window of the browser is used for the URL. See <see cref="DotHyperlinkTargets" />.
         /// </summary>
-        public DotEscapeString Target { get; set; }
+        public virtual DotEscapeString Target { get; set; }
     }
 }

@@ -66,7 +66,7 @@
     "FillColor [Graph, Cluster, Node, Edge]"
   ],
   "fixedsize": [
-    "Sizing [Node]"
+    "Size.Mode [Node]"
   ],
   "fontcolor": [
     "Font.Color [Graph, Cluster, Node, Edge]"
@@ -111,7 +111,7 @@
     "Head.Hyperlink.Url [Edge]"
   ],
   "height": [
-    "Height [Node]"
+    "Size.Height [Node]"
   ],
   "href": [
     "Hyperlink.Href [Graph, Cluster, Node, Edge]"
@@ -305,7 +305,7 @@
     "Weight [Edge]"
   ],
   "width": [
-    "Width [Node]"
+    "Size.Width [Node]"
   ],
   "xlabel": [
     "ExternalLabel [Node, Edge]"
