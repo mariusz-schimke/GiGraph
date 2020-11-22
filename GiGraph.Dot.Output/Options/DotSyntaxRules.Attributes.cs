@@ -6,20 +6,6 @@ namespace GiGraph.Dot.Output.Options
     {
         public class AttributeRules
         {
-            public static readonly IDotTextEscaper DefaultEscapeStringEscaper = new DotTextEscapingPipeline
-            (
-                DefaultStringEscaper,
-                new DotLineBreakEscaper()
-            );
-
-            public static readonly IDotTextEscaper DefaultRecordLabelBaseEscaper = new DotTextEscapingPipeline
-            (
-                new DotAngleBracketsEscaper(),
-                new DotCurlyBracketsEscaper(),
-                new DotVerticalBarEscaper(),
-                new DotSpaceEscaper()
-            );
-
             /// <summary>
             ///     A text escaper to use for attribute keys (no escaping is used by default).
             /// </summary>
@@ -28,22 +14,22 @@ namespace GiGraph.Dot.Output.Options
             /// <summary>
             ///     A text escaper to use for string values (only quotation marks and backslashes are escaped by default).
             /// </summary>
-            public virtual IDotTextEscaper StringValueEscaper { get; set; } = DefaultStringEscaper;
+            public virtual IDotTextEscaper StringValueEscaper { get; set; } = DotTextEscapingPipeline.ForString();
 
             /// <summary>
             ///     A text escaper to use for escape string values.
             /// </summary>
-            public virtual IDotTextEscaper EscapeStringValueEscaper { get; set; } = DefaultEscapeStringEscaper;
+            public virtual IDotTextEscaper EscapeStringValueEscaper { get; set; } = DotTextEscapingPipeline.ForEscapeString();
 
             /// <summary>
             ///     A text escaper to use for fields of record node labels.
             /// </summary>
-            public virtual IDotTextEscaper RecordLabelValueFieldEscaper { get; set; } = new DotTextEscapingPipeline(DefaultEscapeStringEscaper, DefaultRecordLabelBaseEscaper);
+            public virtual IDotTextEscaper RecordLabelValueFieldEscaper { get; set; } = DotTextEscapingPipeline.ForRecordLabelField();
 
             /// <summary>
             ///     A text escaper to use for ports of record node labels.
             /// </summary>
-            public virtual IDotTextEscaper RecordLabelValuePortEscaper { get; set; } = new DotTextEscapingPipeline(DefaultStringEscaper, DefaultRecordLabelBaseEscaper);
+            public virtual IDotTextEscaper RecordLabelValuePortEscaper { get; set; } = DotTextEscapingPipeline.ForRecordLabelPort();
         }
     }
 }
