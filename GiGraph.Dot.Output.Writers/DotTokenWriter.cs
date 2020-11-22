@@ -63,6 +63,11 @@ namespace GiGraph.Dot.Output.Writers
             return Token("=", linger);
         }
 
+        public virtual DotTokenWriter StringConcatenationOperator(bool linger = false)
+        {
+            return Token("+", linger);
+        }
+
         public virtual DotTokenWriter BlockStart(bool linger = false)
         {
             return Token("{", linger);
@@ -223,6 +228,13 @@ namespace GiGraph.Dot.Output.Writers
         public virtual DotTokenWriter LineBreak(bool linger = false)
         {
             Append(_options.LineBreak(), linger);
+            return this;
+        }
+
+        public virtual DotTokenWriter NewLine(bool linger = false)
+        {
+            LineBreak(linger);
+            Indentation(linger);
             return this;
         }
 
