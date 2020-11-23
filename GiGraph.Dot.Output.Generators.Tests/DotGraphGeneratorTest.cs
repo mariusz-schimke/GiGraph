@@ -62,5 +62,15 @@ namespace GiGraph.Dot.Output.Generators.Tests
             var dot = graph.Build();
             Snapshot.Match(dot, "undirected_graph_edge.gv");
         }
+
+        [Fact]
+        public void renders_graph_with_html_attribute_value_in_angle_brackets()
+        {
+            var graph = new DotGraph();
+            graph.Nodes.Attributes.Label = "<TABLE></TABLE>".AsHtml();
+
+            var dot = graph.Build();
+            Snapshot.Match(dot, "graph_with_html_attribute.gv");
+        }
     }
 }

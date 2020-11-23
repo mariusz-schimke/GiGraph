@@ -138,11 +138,15 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             var options = new DotFormattingOptions
             {
-                TextEncoder = s => s.ToUpper() 
+                TextEncoder = (value, token) => value.ToUpper()
             };
 
             var dot = graph.Build(options);
             Snapshot.Match(dot, "graph_with_custom_text_encoder.gv");
+
+            options.TextEncoder = (s, type) => $"{type}\n";
+            dot = graph.Build(options);
+            Snapshot.Match(dot, "graph_with_custom_text_encoder_tokens.gv");
         }
     }
 }
