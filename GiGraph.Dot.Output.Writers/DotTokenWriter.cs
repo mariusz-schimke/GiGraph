@@ -147,7 +147,12 @@ namespace GiGraph.Dot.Output.Writers
 
         public virtual DotTokenWriter Edge(bool directed = false, bool linger = false)
         {
-            return directed ? DirectedEdge(linger) : Token("--", linger);
+            return directed ? DirectedEdge(linger) : UndirectedEdge(linger);
+        }
+
+        public virtual DotTokenWriter UndirectedEdge(bool linger = false)
+        {
+            return Token("--", linger);
         }
 
         public virtual DotTokenWriter DirectedEdge(bool linger = false)
