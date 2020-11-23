@@ -1,0 +1,38 @@
+﻿// GRAPH
+DIGRAPH GRAPH1
+{
+    /* GRAPH ATTRIBUTES */
+
+    // LABEL
+    LABEL = "FOO GRAPH"
+
+    // GLOBAL NODE ATTRIBUTES
+    NODE [ SHAPE = RECTANGLE ]
+    // GLOBAL EDGE ATTRIBUTES
+    EDGE [ ARROWHEAD = CURVE ]
+
+    /* NODES */
+
+    // NODE COMMENT
+    FOO [ /* NODE ATTRIBUTES */ /* LABEL */ LABEL = FOO ]
+
+    /* EDGES */
+
+    // EDGE COMMENT
+    /* TAIL */ FOO -> /* HEAD */ BAR [ /* EDGE ATTRIBUTES */ /* COLOR */ COLOR = RED ]
+
+    /* SUBSECTION 1 */
+
+    /* SUBGRAPHS */
+
+    // SUBGRAPH
+    {
+    }
+
+    /* CLUSTERS */
+
+    // CLUSTER
+    SUBGRAPH "CLUSTER CLUSTER 1"
+    {
+    }
+}

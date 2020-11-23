@@ -129,5 +129,20 @@ namespace GiGraph.Dot.Output.Generators.Tests
             var dot = graph.Build(options);
             Snapshot.Match(dot, "graph_with_multiline_edge_subgraphs.gv");
         }
+
+        [Fact]
+        public void renders_graph_with_custom_text_encoder()
+        {
+            var graph = DotGraphFactory.CreateAnnotatedGraph();
+            graph.Id = "graph1";
+
+            var options = new DotFormattingOptions
+            {
+                TextEncoder = s => s.ToUpper() 
+            };
+
+            var dot = graph.Build(options);
+            Snapshot.Match(dot, "graph_with_custom_text_encoder.gv");
+        }
     }
 }
