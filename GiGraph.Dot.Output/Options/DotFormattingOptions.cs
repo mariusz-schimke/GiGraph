@@ -52,6 +52,6 @@ namespace GiGraph.Dot.Output.Options
         ///     use fails processing some special or national characters. In such case replacing them with their HTML-code equivalents might
         ///     help.
         /// </summary>
-        public virtual Func<string, string> TextEncoder { get; set; }
+        public virtual Func<string, DotTokenType, string> TextEncoder { get; set; }
     }
 }

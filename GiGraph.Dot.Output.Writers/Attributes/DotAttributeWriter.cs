@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Output.Writers.Attributes
         public virtual void WriteAttribute(string key, bool quoteKey, string value, bool quoteValue)
         {
             InitializeAttribute(key, quoteKey);
-            _tokenWriter.Identifier(value, quoteValue);
+            _tokenWriter.Value(value, quoteValue);
         }
 
         public virtual void WriteHtmlAttribute(string key, bool quoteKey, string value, bool writeInBrackets)
@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Output.Writers.Attributes
             // As HTML strings can contain newline characters, which are used solely for formatting, the language does not allow
             // escaped newlines or concatenation operators to be used within them.
             // https://graphviz.org/doc/info/lang.html
-            _tokenWriter.Html(value, writeInBrackets);
+            _tokenWriter.HtmlValue(value, writeInBrackets);
         }
 
         public override void EndComment()
@@ -61,7 +61,7 @@ namespace GiGraph.Dot.Output.Writers.Attributes
                 tokenWriter.Space(linger: true)
                    .StringConcatenationOperator(linger: true)
                    .NewLine(linger: true)
-                   .Identifier(valuePart, quoteValue);
+                   .Value(valuePart, quoteValue);
             }
         }
 
