@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Edges.Attributes.Color = Color.Blue;
             graph.Edges.Attributes.Label = "edge_label";
 
-
+            graph.Nodes.Add("no_attributes");
             graph.Nodes.Add("node3", attrs =>
             {
                 attrs.Shape = DotNodeShape.Assembly;
@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 attrs.Style.BorderStyle = DotBorderStyle.Dashed;
             }, "node1", "node2");
 
-
+            graph.Edges.AddLoop("no_attributes");
             graph.Edges.Add("node6", "node7", edge =>
             {
                 edge.Tail.Port.Name = "port6";
@@ -105,6 +105,14 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 });
             });
 
+            graph.Subsections.Add(ss =>
+            {
+                ss.Annotation = "graph section comment";
+                ss.Attributes.BackgroundColor = Color.Blue;
+                ss.Nodes.Add("section 1 node");
+                ss.Edges.AddLoop("section 1 node");
+            });
+            
             return graph;
         }
 

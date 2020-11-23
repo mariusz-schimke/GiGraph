@@ -1,0 +1,28 @@
+﻿digraph
+{
+    a -> {
+        b
+        c
+    }
+    d -> subgraph subgraph1
+    {
+        e
+        f
+    }
+    subgraph tail
+    {
+        g
+        h
+    } -> subgraph head
+    {
+        i
+        j
+    }
+    {
+        k
+        l
+    } -> {
+        m
+        n
+    }
+}

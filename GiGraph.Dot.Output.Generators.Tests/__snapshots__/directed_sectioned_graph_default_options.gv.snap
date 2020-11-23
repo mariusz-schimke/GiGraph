@@ -28,4 +28,12 @@ digraph graph1
     node1
 
     node1 -> node2
+
+    /* graph section comment */
+
+    bgcolor = blue
+
+    "section 1 node"
+
+    "section 1 node" -> "section 1 node"
 }
