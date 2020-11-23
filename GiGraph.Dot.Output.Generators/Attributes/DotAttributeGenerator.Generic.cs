@@ -51,5 +51,10 @@ namespace GiGraph.Dot.Output.Generators.Attributes
         {
             return _options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
         }
+
+        protected virtual bool ValueRequiresQuoting(string[] valueParts)
+        {
+            return ValueRequiresQuoting(string.Join(string.Empty, valueParts));
+        }
     }
 }

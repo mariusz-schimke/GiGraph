@@ -39,11 +39,25 @@ namespace GiGraph.Dot.Output.Writers.Attributes
 
         public virtual void WriteAttribute(string key, bool quoteKey, string[] valueParts, bool quoteValue)
         {
+            if (_tokenWriter.Options.SingleLine)
+            {
+                var value = string.Join(string.Empty, valueParts);
+                WriteAttribute(key, quoteKey, value, quoteValue);
+                return;
+            }
+
+            WriteConcatenatedValueAttribute(key, quoteKey, valueParts, quoteValue);
+        }
+
+        protected virtual void WriteConcatenatedValueAttribute(string key, bool quoteKey, string[] valueParts, bool quoteValue)
+        {
+            quoteValue |= valueParts.Length > 1;
             WriteAttribute(key, quoteKey, valueParts.FirstOrDefault(), quoteValue);
 
-            var tokenWriter = _tokenWriter.NextIndentationLevel();
+            DotTokenWriter tokenWriter = null;
             foreach (var valuePart in valueParts.Skip(1))
             {
+                tokenWriter ??= _tokenWriter.NextIndentationLevel();
                 tokenWriter.Space(linger: true)
                    .StringConcatenationOperator(linger: true)
                    .NewLine(linger: true)
