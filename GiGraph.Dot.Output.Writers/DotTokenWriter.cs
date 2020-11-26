@@ -1,58 +1,70 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Options;
 
 namespace GiGraph.Dot.Output.Writers
 {
     public class DotTokenWriter
     {
-        protected readonly Queue<string> _lingerBuffer;
-        protected readonly DotTokenWriterOptions _options;
+        protected readonly Queue<(string Token, DotTokenType Type)> _lingerBuffer;
         protected readonly StreamWriter _writer;
 
-        protected DotTokenWriter(StreamWriter writer, DotTokenWriterOptions options, Queue<string> lingerBuffer)
+        protected DotTokenWriter(StreamWriter writer, Queue<(string, DotTokenType)> lingerBuffer, DotTokenWriterOptions options)
         {
             _writer = writer;
-            _options = options;
             _lingerBuffer = lingerBuffer;
+            Options = options;
         }
 
         public DotTokenWriter(StreamWriter writer, DotTokenWriterOptions options)
-            : this(writer, options, new Queue<string>())
+            : this(writer, new Queue<(string, DotTokenType)>(), options)
         {
         }
 
+        public DotTokenWriterOptions Options { get; }
+
         public virtual DotTokenWriter SingleLine()
         {
-            return new DotTokenWriter(_writer, _options.ToSingleLine(), _lingerBuffer);
+            return new DotTokenWriter(_writer, _lingerBuffer, Options.ToSingleLine());
         }
 
         public virtual DotTokenWriter NextIndentationLevel()
         {
-            return new DotTokenWriter(_writer, _options.IncreaseIndentation(), _lingerBuffer);
+            return new DotTokenWriter(_writer, _lingerBuffer, Options.IncreaseIndentation());
         }
 
-        public virtual DotTokenWriter Token(string token, bool linger = false)
+        public virtual DotTokenWriter Token(string token, DotTokenType type, bool linger = false)
         {
-            return Append(token, linger);
+            return Append(token, type, linger);
         }
 
         public virtual DotTokenWriter Keyword(string keyword, bool linger = false)
         {
-            return Token(keyword, linger);
+            return Token(keyword, DotTokenType.Keyword, linger);
         }
 
-        public virtual DotTokenWriter Identifier(string id, bool quote = false, bool linger = false)
+        public virtual DotTokenWriter Identifier(string id, bool quote, bool linger = false)
+        {
+            return Identifier(id, DotTokenType.Identifier, quote, linger);
+        }
+
+        public virtual DotTokenWriter Value(string value, bool quote, bool linger = false)
+        {
+            return Identifier(value, DotTokenType.Value, quote, linger);
+        }
+
+        protected virtual DotTokenWriter Identifier(string id, DotTokenType tokenType, bool quote, bool linger)
         {
             if (quote)
             {
                 QuotationStart(linger);
-                Token(id, linger);
+                Token(id, tokenType, linger);
                 QuotationEnd(linger);
             }
             else
             {
-                Token(id, linger);
+                Token(id, tokenType, linger);
             }
 
             return this;
@@ -60,80 +72,85 @@ namespace GiGraph.Dot.Output.Writers
 
         public virtual DotTokenWriter ValueAssignmentOperator(bool linger = false)
         {
-            return Token("=", linger);
+            return Token("=", DotTokenType.ValueAssignmentOperator, linger);
+        }
+
+        public virtual DotTokenWriter StringConcatenationOperator(bool linger = false)
+        {
+            return Token("+", DotTokenType.StringConcatenationOperator, linger);
         }
 
         public virtual DotTokenWriter BlockStart(bool linger = false)
         {
-            return Token("{", linger);
+            return Token("{", DotTokenType.BlockStart, linger);
         }
 
         public virtual DotTokenWriter BlockEnd(bool linger = false)
         {
-            return Token("}", linger);
+            return Token("}", DotTokenType.BlockEnd, linger);
         }
 
         public virtual DotTokenWriter AttributeListStart(bool linger = false)
         {
-            return Token("[", linger);
+            return Token("[", DotTokenType.AttributeListStart, linger);
         }
 
         public virtual DotTokenWriter AttributeListEnd(bool linger = false)
         {
-            return Token("]", linger);
+            return Token("]", DotTokenType.AttributeListEnd, linger);
         }
 
         public virtual DotTokenWriter AttributeSeparator(bool linger = false)
         {
-            return Token(",", linger);
+            return Token(",", DotTokenType.AttributeSeparator, linger);
         }
 
         public virtual DotTokenWriter NodeSeparator(bool linger = false)
         {
-            return Token(",", linger);
+            return Token(",", DotTokenType.NodeSeparator, linger);
         }
 
-        public virtual DotTokenWriter NodePortDelimiter(bool linger = false)
+        public virtual DotTokenWriter NodePortSeparator(bool linger = false)
         {
-            return Token(":", linger);
+            return Token(":", DotTokenType.NodePortSeparator, linger);
         }
 
-        public virtual DotTokenWriter StatementEnd(bool linger = false)
+        public virtual DotTokenWriter StatementDelimiter(bool linger = false)
         {
-            return Token(";", linger);
+            return Token(";", DotTokenType.StatementDelimiter, linger);
         }
 
         public virtual DotTokenWriter QuotationStart(bool linger = false)
         {
-            return Token("\"", linger);
+            return Token("\"", DotTokenType.QuotationStart, linger);
         }
 
         public virtual DotTokenWriter QuotationEnd(bool linger = false)
         {
-            return Token("\"", linger);
+            return Token("\"", DotTokenType.QuotationEnd, linger);
         }
 
-        public virtual DotTokenWriter HtmlStartBracket(bool linger = false)
+        public virtual DotTokenWriter HtmlValueStart(bool linger = false)
         {
-            return Token("<", linger);
+            return Token("<", DotTokenType.HtmlValueStart, linger);
         }
 
-        public virtual DotTokenWriter HtmlEndBracket(bool linger = false)
+        public virtual DotTokenWriter HtmlValueEnd(bool linger = false)
         {
-            return Token(">", linger);
+            return Token(">", DotTokenType.HtmlValueEnd, linger);
         }
 
-        public virtual DotTokenWriter Html(string html, bool writeInBrackets = true, bool linger = false)
+        public virtual DotTokenWriter HtmlValue(string html, bool writeInBrackets = true, bool linger = false)
         {
             if (writeInBrackets)
             {
-                HtmlStartBracket(linger);
-                Token(html, linger);
-                HtmlEndBracket(linger);
+                HtmlValueStart(linger);
+                Token(html, DotTokenType.HtmlValue, linger);
+                HtmlValueEnd(linger);
             }
             else
             {
-                Token(html, linger);
+                Token(html, DotTokenType.HtmlValue, linger);
             }
 
             return this;
@@ -141,34 +158,39 @@ namespace GiGraph.Dot.Output.Writers
 
         public virtual DotTokenWriter Edge(bool directed = false, bool linger = false)
         {
-            return directed ? DirectedEdge(linger) : Token("--", linger);
+            return directed ? DirectedEdge(linger) : UndirectedEdge(linger);
+        }
+
+        public virtual DotTokenWriter UndirectedEdge(bool linger = false)
+        {
+            return Token("--", DotTokenType.UndirectedEdge, linger);
         }
 
         public virtual DotTokenWriter DirectedEdge(bool linger = false)
         {
-            return Token("->", linger);
+            return Token("->", DotTokenType.DirectedEdge, linger);
         }
 
         public virtual DotTokenWriter CommentStart(bool linger = false)
         {
-            return Token("//", linger);
+            return Token("//", DotTokenType.CommentStart, linger);
         }
 
         public virtual DotTokenWriter BlockCommentStart(bool linger = false)
         {
-            return Token("/*", linger);
+            return Token("/*", DotTokenType.BlockCommentStart, linger);
         }
 
         public virtual DotTokenWriter BlockCommentEnd(bool linger = false)
         {
-            return Token("*/", linger);
+            return Token("*/", DotTokenType.BlockCommentEnd, linger);
         }
 
         public virtual DotTokenWriter Comment(string comment, bool linger = false)
         {
-            var lines = _options.SplitMultilineText(comment);
+            var lines = Options.SplitMultilineText(comment);
 
-            return _options.SingleLine
+            return Options.SingleLine
                 ? BlockComment(lines, linger)
                 : Comment(lines, linger);
         }
@@ -180,7 +202,7 @@ namespace GiGraph.Dot.Output.Writers
                 CommentStart(linger);
                 Space(linger);
 
-                Append(commentLines[i], linger);
+                Append(commentLines[i], DotTokenType.CommentText, linger);
 
                 if (i < commentLines.Length - 1)
                 {
@@ -194,7 +216,7 @@ namespace GiGraph.Dot.Output.Writers
 
         public virtual DotTokenWriter BlockComment(string comment, bool linger = false)
         {
-            var lines = _options.SplitMultilineText(comment);
+            var lines = Options.SplitMultilineText(comment);
             return BlockComment(lines, linger);
         }
 
@@ -205,7 +227,7 @@ namespace GiGraph.Dot.Output.Writers
 
             for (var i = 0; i < commentLines.Length; i++)
             {
-                Append(commentLines[i], linger);
+                Append(commentLines[i], DotTokenType.BlockCommentText, linger);
 
                 if (i < commentLines.Length - 1)
                 {
@@ -222,52 +244,60 @@ namespace GiGraph.Dot.Output.Writers
 
         public virtual DotTokenWriter LineBreak(bool linger = false)
         {
-            Append(_options.LineBreak(), linger);
+            Append(Options.LineBreak(), DotTokenType.LineBreak, linger);
+            return this;
+        }
+
+        public virtual DotTokenWriter NewLine(bool linger = false)
+        {
+            LineBreak(linger);
+            Indentation(linger);
             return this;
         }
 
         public virtual DotTokenWriter Space(bool linger = false)
         {
-            Append(_options.Space(), linger);
+            Append(Options.Space(), DotTokenType.Space, linger);
             return this;
         }
 
         public virtual DotTokenWriter Indentation(bool linger = false)
         {
-            Append(_options.Indentation(), linger);
+            Append(Options.Indentation(), DotTokenType.Indentation, linger);
             return this;
         }
 
-        protected virtual DotTokenWriter Append(string value, bool linger = false)
+        protected virtual DotTokenWriter Append(string token, DotTokenType tokenType, bool linger = false)
         {
             if (linger)
             {
-                _lingerBuffer.Enqueue(value);
+                _lingerBuffer.Enqueue((token, tokenType));
             }
             else
             {
                 FlushLingerBuffer();
-                Write(value);
+                Write(token, tokenType);
             }
 
             return this;
         }
 
-        protected virtual void Write(string value)
+        protected virtual void Write(string token, DotTokenType type)
         {
-            if (_options.TextEncoder is {} encode)
+            if (Options.TextEncoder is {} encode)
             {
-                value = encode(value);
+                token = encode(token, type);
             }
 
-            _writer.Write(value);
+            _writer.Write(token);
         }
 
         public virtual DotTokenWriter FlushLingerBuffer()
         {
             while (_lingerBuffer.Count > 0)
             {
-                Write(_lingerBuffer.Dequeue());
+                var item = _lingerBuffer.Dequeue();
+                Write(item.Token, item.Type);
             }
 
             return this;

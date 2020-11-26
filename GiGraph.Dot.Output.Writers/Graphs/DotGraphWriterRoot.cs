@@ -7,6 +7,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
     {
         protected readonly DotFormattingOptions _formattingOptions;
         protected readonly DotTokenWriter _tokenWriter;
+        private bool _initializeIndentation = true;
 
         public DotGraphWriterRoot(DotTokenWriter tokenWriter, DotFormattingOptions formattingOptions)
         {
@@ -16,7 +17,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
 
         public virtual IDotGraphWriter BeginGraph(bool directed)
         {
-            _tokenWriter.Indentation(linger: true);
+            InitializeIndentation();
             return new DotGraphWriter(_tokenWriter, new DotEntityWriterConfiguration(directed, _formattingOptions));
         }
 
@@ -26,6 +27,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
 
         public virtual IDotCommentWriter BeginComment(bool preferBlockComment)
         {
+            InitializeIndentation();
             return new DotCommentWriter(_tokenWriter, preferBlockComment);
         }
 
@@ -33,6 +35,15 @@ namespace GiGraph.Dot.Output.Writers.Graphs
         {
             _tokenWriter.LineBreak()
                .Indentation(linger: true);
+        }
+
+        protected virtual void InitializeIndentation()
+        {
+            if (_initializeIndentation)
+            {
+                _tokenWriter.Indentation(linger: true);
+                _initializeIndentation = false;
+            }
         }
     }
 }

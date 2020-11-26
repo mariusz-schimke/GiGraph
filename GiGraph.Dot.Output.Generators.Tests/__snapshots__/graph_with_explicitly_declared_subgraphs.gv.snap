@@ -1,0 +1,8 @@
+﻿digraph
+{
+    subgraph
+    {
+    }
+
+    a -> subgraph { b c }
+}

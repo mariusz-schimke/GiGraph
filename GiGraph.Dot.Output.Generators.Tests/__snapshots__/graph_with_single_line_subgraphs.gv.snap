@@ -1,0 +1,4 @@
+﻿digraph
+{
+    { rank = max  "node" [ comment = comment ]  "node" -> "node" [ dir = back ] }
+}
