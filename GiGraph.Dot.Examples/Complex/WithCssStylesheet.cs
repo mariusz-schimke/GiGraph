@@ -9,9 +9,9 @@ namespace GiGraph.Dot.Examples.Complex
         {
             var graph = new DotGraph();
 
-            graph.Attributes.Collection.Set("stylesheet", Path.GetFullPath("stylesheet.css"));
+            graph.Attributes.StyleSheet.Url = Path.GetFullPath("stylesheet.css");
 
-            graph.Nodes.Add("foo").Attributes.Collection.Set("class", "foo_node");
+            graph.Nodes.Add("foo").Attributes.StyleSheet.Class = "foo_node";
             graph.Edges.Add("foo", "bar");
 
             return graph;

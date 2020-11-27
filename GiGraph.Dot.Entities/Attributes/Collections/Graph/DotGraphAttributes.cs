@@ -23,12 +23,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEntityHyperlinkAttributes hyperlinkAttributes,
             DotGraphFontAttributes fontAttributes,
-            DotGraphStyleAttributes styleAttributes
+            DotGraphStyleAttributes styleAttributes,
+            DotGraphStyleSheetAttributes styleSheetAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
             Font = fontAttributes;
             Style = styleAttributes;
+            StyleSheet = styleSheetAttributes;
         }
 
         public DotGraphAttributes(DotAttributeCollection attributes)
@@ -37,7 +39,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 GraphAttributesKeyLookup,
                 new DotEntityHyperlinkAttributes(attributes),
                 new DotGraphFontAttributes(attributes),
-                new DotGraphStyleAttributes(attributes)
+                new DotGraphStyleAttributes(attributes),
+                new DotGraphStyleSheetAttributes(attributes)
             )
         {
         }
@@ -56,6 +59,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     Style options. Note that the options are shared with those specified for <see cref="Clusters" />.
         /// </summary>
         public virtual DotGraphStyleAttributes Style { get; }
+
+        /// <summary>
+        ///     Style sheet attributes used for SVG output.
+        /// </summary>
+        public virtual DotGraphStyleSheetAttributes StyleSheet { get; }
 
         // accessible only through the interface
         [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
