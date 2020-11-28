@@ -80,6 +80,100 @@ namespace GiGraph.Dot.Output.Generators.Tests
         }
 
         [Fact]
+        public void renders_graph_with_multiline_global_graph_attribute_list()
+        {
+            var graph = DotGraphFactory.CreateAnnotatedGraph();
+
+            var formatting = new DotFormattingOptions
+            {
+                GlobalAttributes = { SingleLineAttributes = false }
+            };
+
+            var syntax = new DotSyntaxOptions
+            {
+                Attributes = { PreferGraphAttributesAsStatements = false }
+            };
+
+            var dot = graph.Build(formatting, syntax);
+            Snapshot.Match(dot, "graph_with_multiline_global_graph_attribute_list.gv");
+        }
+
+        [Fact]
+        public void renders_graph_with_multiline_global_node_attribute_list()
+        {
+            var graph = DotGraphFactory.CreateAnnotatedGraph();
+
+            var options = new DotFormattingOptions
+            {
+                GlobalAttributes = { SingleLineNodeAttributes = false }
+            };
+
+            var dot = graph.Build(options);
+            Snapshot.Match(dot, "graph_with_multiline_global_node_attribute_list.gv");
+        }
+
+        [Fact]
+        public void renders_graph_with_multiline_node_attribute_list()
+        {
+            var graph = DotGraphFactory.CreateAnnotatedGraph();
+
+            var options = new DotFormattingOptions
+            {
+                Nodes = { SingleLineAttributes = false }
+            };
+
+            var dot = graph.Build(options);
+            Snapshot.Match(dot, "graph_with_multiline_node_attribute_list.gv");
+        }
+
+        [Fact]
+        public void renders_graph_with_multiline_global_edge_attribute_list()
+        {
+            var graph = DotGraphFactory.CreateAnnotatedGraph();
+
+            var options = new DotFormattingOptions
+            {
+                GlobalAttributes = { SingleLineEdgeAttributes = false }
+            };
+
+            var dot = graph.Build(options);
+            Snapshot.Match(dot, "graph_with_multiline_global_edge_attribute_list.gv");
+        }
+
+        [Fact]
+        public void renders_graph_with_multiline_edge_attribute_list()
+        {
+            var graph = DotGraphFactory.CreateAnnotatedGraph();
+
+            var options = new DotFormattingOptions
+            {
+                Edges = { SingleLineAttributes = false }
+            };
+
+            var dot = graph.Build(options);
+            Snapshot.Match(dot, "graph_with_multiline_edge_attribute_list.gv");
+        }
+
+        [Fact]
+        public void renders_graph_with_multiline_global_attribute_lists()
+        {
+            var graph = DotGraphFactory.CreateAnnotatedGraph();
+
+            var formatting = new DotFormattingOptions
+            {
+                GlobalAttributes = { SingleLineAttributes = false }
+            };
+
+            var syntax = new DotSyntaxOptions
+            {
+                Attributes = { PreferGraphAttributesAsStatements = false }
+            };
+
+            var dot = graph.Build(formatting, syntax);
+            Snapshot.Match(dot, "graph_with_multiline_global_attribute_lists.gv");
+        }
+
+        [Fact]
         public void renders_graph_with_single_line_subgraphs()
         {
             var graph = new DotGraph();

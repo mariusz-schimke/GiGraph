@@ -1,0 +1,45 @@
+﻿// graph
+digraph
+{
+    // graph attributes
+    graph
+    [
+        // label
+        label = "Foo Graph"
+    ]
+    // global node attributes
+    node
+    [
+        shape = rectangle
+    ]
+    // global edge attributes
+    edge
+    [
+        arrowhead = curve
+    ]
+
+    /* nodes */
+
+    // node comment
+    foo [ /* node attributes */  /* label */ label = foo ]
+
+    /* edges */
+
+    // edge comment
+    /* tail */ foo -> /* head */ bar [ /* edge attributes */  /* color */ color = red ]
+
+    /* subsection 1 */
+
+    /* subgraphs */
+
+    // subgraph
+    {
+    }
+
+    /* clusters */
+
+    // cluster
+    subgraph "cluster cluster 1"
+    {
+    }
+}
