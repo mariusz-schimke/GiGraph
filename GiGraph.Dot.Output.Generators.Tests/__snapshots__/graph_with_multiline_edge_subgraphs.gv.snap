@@ -18,11 +18,22 @@
         i
         j
     }
+    // tail subgraph comment
+    subgraph tail
     {
         k
         l
-    } -> {
+    } -> // head subgraph comment
+    subgraph head
+    {
         m
         n
+    }
+    {
+        o
+        p
+    } -> {
+        q
+        r
     }
 }

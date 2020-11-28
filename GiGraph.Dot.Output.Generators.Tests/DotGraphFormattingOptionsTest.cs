@@ -115,8 +115,17 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 e.Head.Subgraph.Id = "head";
                 e.Tail.Subgraph.Id = "tail";
             });
+            
+            graph.Edges.AddManyToMany(new[] { "k", "l" }, new[] { "m", "n" }, e =>
+            {
+                e.Head.Subgraph.Annotation = "head subgraph comment";
+                e.Tail.Subgraph.Annotation = "tail subgraph comment";
+                
+                e.Head.Subgraph.Id = "head";
+                e.Tail.Subgraph.Id = "tail";
+            });
 
-            graph.Edges.AddManyToMany(new[] { "k", "l" }, "m", "n");
+            graph.Edges.AddManyToMany(new[] { "o", "p" }, "q", "r");
 
             var options = new DotFormattingOptions
             {
