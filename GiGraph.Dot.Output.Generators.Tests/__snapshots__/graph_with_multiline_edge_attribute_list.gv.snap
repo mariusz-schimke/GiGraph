@@ -30,6 +30,14 @@ digraph
         // color
         color = red
     ]
+    // edge sequence comment
+    /* endpoint 1 */ foo -> /* endpoint 2 */ bar -> /* endpoint 3 */ baz
+    [
+        /* edge sequence attributes */
+
+        // color
+        color = red
+    ]
 
     /* subsection 1 */
 

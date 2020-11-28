@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     ///     connection, use <see cref="DotEdge{TTail, THead}" /> (or one of its more specific descendants), or
     ///     <see cref="DotEdgeSequence" />.
     /// </summary>
-    public class DotEndpoint : DotEndpointDefinition, IDotEntity, IDotAnnotatable
+    public class DotEndpoint : DotEndpointDefinition, IDotEntity
     {
         protected DotEndpointPort _port;
 
@@ -80,9 +80,6 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
             get => _port;
             set => _port = value ?? throw new ArgumentNullException(nameof(Port), "Port cannot be null.");
         }
-
-        /// <inheritdoc cref="IDotAnnotatable.Annotation" />
-        public virtual string Annotation { get; set; }
 
         protected override string GetOrderingKey()
         {

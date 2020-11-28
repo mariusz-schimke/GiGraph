@@ -160,6 +160,18 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
             }).Annotation = "edge comment";
 
+            graph.Edges.AddSequence(new[] { "foo", "bar", "baz" }, edge =>
+            {
+                var i = 1;
+                foreach (var endpoint in edge.Endpoints)
+                {
+                    endpoint.Annotation = $"endpoint {i++}";
+                }
+
+                edge.Attributes.Annotation = "edge sequence attributes";
+                edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
+            }).Annotation = "edge sequence comment";
+
             // subsections
             graph.Subsections.Add(sub =>
             {
