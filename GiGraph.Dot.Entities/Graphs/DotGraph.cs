@@ -12,8 +12,8 @@ namespace GiGraph.Dot.Entities.Graphs
             : base(rootSection)
         {
             Id = id;
-            Directed = directed;
-            Strict = strict;
+            IsDirected = directed;
+            IsStrict = strict;
             Subsections = subsections;
         }
 
@@ -40,13 +40,13 @@ namespace GiGraph.Dot.Entities.Graphs
         ///     Gets or sets a value that indicates if the graph is directed. The edges of directed graphs are presented as arrows, whereas
         ///     edges in undirected graphs are presented as lines.
         /// </summary>
-        public virtual bool Directed { get; set; }
+        public virtual bool IsDirected { get; set; }
 
         /// <summary>
         ///     Gets or sets a value that indicates if the graph is strict. Strict graph forbids the creation of multi-edges, i.e., there may
         ///     be at most one edge with a given tail node and head node in the directed case.
         /// </summary>
-        public virtual bool Strict { get; set; }
+        public virtual bool IsStrict { get; set; }
 
         /// <summary>
         ///     <para>

@@ -32,13 +32,13 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// <param name="shape">
         ///     Determines the shape of the arrowhead to use.
         /// </param>
-        /// <param name="isFilled">
+        /// <param name="filled">
         ///     Determines whether to use a filled version of the shape.
         /// </param>
-        public DotArrowhead(DotArrowheadShape shape, bool isFilled)
+        public DotArrowhead(DotArrowheadShape shape, bool filled)
             : this(shape)
         {
-            IsFilled = isFilled;
+            IsFilled = filled;
         }
 
         /// <summary>
@@ -62,16 +62,16 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// <param name="shape">
         ///     Determines the shape of the arrowhead to use.
         /// </param>
-        /// <param name="isFilled">
+        /// <param name="filled">
         ///     Determines whether to use a filled version of the shape.
         /// </param>
         /// <param name="visibleParts">
         ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
         /// </param>
-        public DotArrowhead(DotArrowheadShape shape, bool isFilled, DotArrowheadParts visibleParts)
+        public DotArrowhead(DotArrowheadShape shape, bool filled, DotArrowheadParts visibleParts)
             : this(shape)
         {
-            IsFilled = isFilled;
+            IsFilled = filled;
             VisibleParts = visibleParts;
         }
 
@@ -144,7 +144,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// </param>
         public static DotArrowhead Filled(DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
         {
-            return new DotArrowhead(shape, isFilled: true, visibleParts);
+            return new DotArrowhead(shape, filled: true, visibleParts);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// </param>
         public static DotArrowhead Empty(DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
         {
-            return new DotArrowhead(shape, isFilled: false, visibleParts);
+            return new DotArrowhead(shape, filled: false, visibleParts);
         }
 
         public static implicit operator DotArrowhead(DotArrowheadShape? shape)
