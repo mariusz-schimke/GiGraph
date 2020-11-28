@@ -64,6 +64,14 @@ namespace GiGraph.Dot.Output.Generators.Tests
         }
 
         [Fact]
+        public void renders_strict_directed_graph()
+        {
+            var graph = new DotGraph(strict: true);
+            var dot = graph.Build();
+            Snapshot.Match(dot, "strict_directed_graph.gv");
+        }
+
+        [Fact]
         public void renders_graph_with_html_attribute_value_in_angle_brackets()
         {
             var graph = new DotGraph();
