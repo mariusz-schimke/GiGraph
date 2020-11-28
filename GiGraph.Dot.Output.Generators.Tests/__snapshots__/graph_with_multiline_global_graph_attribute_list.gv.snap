@@ -4,12 +4,15 @@ digraph
     // graph attributes
     graph
     [
+        // comment
+        comment = comment,
         // label
         label = "Foo Graph"
     ]
     // global node attributes
     node
     [
+        distortion = 2,
         shape = rectangle
     ]
     // global edge attributes
@@ -22,6 +25,8 @@ digraph
 
     // node comment
     foo [ /* node attributes */  /* label */ label = foo ]
+    // node group comment
+    foo, bar, baz [ /* node group attributes */  /* label */ label = foo ]
 
     /* edges */
 

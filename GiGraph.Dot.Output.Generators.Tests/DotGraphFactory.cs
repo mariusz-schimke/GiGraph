@@ -124,10 +124,12 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Annotation = "graph";
             graph.Attributes.Annotation = "graph attributes";
             graph.Attributes.Set(a => a.Label, "Foo Graph").Annotation = "label";
+            graph.Attributes.Set(a => a.Comment, "comment").Annotation = "comment";
 
             // node defaults
             graph.Nodes.Attributes.Annotation = "global node attributes";
             graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
+            graph.Nodes.Attributes.Geometry.Distortion = 2;
 
             // nodes
             graph.Nodes.Annotation = "nodes";
@@ -136,6 +138,12 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 attrs.Annotation = "node attributes";
                 attrs.Set(a => a.Label, "foo").Annotation = "label";
             }).Annotation = "node comment";
+
+            graph.Nodes.Add(new[] { "foo", "bar", "baz" }, node =>
+            {
+                node.Annotation = "node group attributes";
+                node.Set(a => a.Label, "foo").Annotation = "label";
+            }).Annotation = "node group comment";
 
             // edge defaults
             graph.Edges.Attributes.Annotation = "global edge attributes";

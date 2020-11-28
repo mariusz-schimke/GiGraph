@@ -3,11 +3,13 @@ digraph
 {
     /* graph attributes */
 
+    // comment
+    comment = comment
     // label
     label = "Foo Graph"
 
     // global node attributes
-    node [ shape = rectangle ]
+    node [ distortion = 2, shape = rectangle ]
     // global edge attributes
     edge [ arrowhead = curve ]
 
@@ -17,6 +19,14 @@ digraph
     foo
     [
         /* node attributes */
+
+        // label
+        label = foo
+    ]
+    // node group comment
+    foo, bar, baz
+    [
+        /* node group attributes */
 
         // label
         label = foo
