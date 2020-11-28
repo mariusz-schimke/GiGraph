@@ -12,4 +12,11 @@
     <ProjectReference Include="..\GiGraph.Dot\GiGraph.Dot.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Complex\stylesheet.css" />
+    <Content Include="Complex\stylesheet.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

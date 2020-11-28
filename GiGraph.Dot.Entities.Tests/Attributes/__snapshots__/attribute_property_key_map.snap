@@ -17,6 +17,9 @@
   "charset": [
     "Charset [Graph]"
   ],
+  "class": [
+    "StyleSheet.Class [Graph, Cluster, Node, Edge]"
+  ],
   "clusterrank": [
     "VisualizationMode [Graph]"
   ],
@@ -270,6 +273,9 @@
   ],
   "style": [
     "Style [Graph, Cluster, Node, Edge]"
+  ],
+  "stylesheet": [
+    "StyleSheet.Url [Graph]"
   ],
   "tailclip": [
     "Tail.ClipToNodeBoundary [Edge]"

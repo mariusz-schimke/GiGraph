@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         [DotAttributeMetadata(DotCompatibleElements.Graph)]
         public const string Charset = "charset";
 
-        [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg, isImplemented: false)]
+        [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg)]
         public const string Class = "class";
 
         [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot)]
@@ -464,7 +464,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge)]
         public const string Style = "style";
 
-        [DotAttributeMetadata(DotCompatibleElements.Graph, compatibleOutputs: DotCompatibleOutputs.Svg, isImplemented: false)]
+        [DotAttributeMetadata(DotCompatibleElements.Graph, compatibleOutputs: DotCompatibleOutputs.Svg)]
         public const string StyleSheet = "stylesheet";
 
         [DotAttributeMetadata(DotCompatibleElements.Edge)]
