@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using GiGraph.Dot.Examples.Basic;
 using GiGraph.Dot.Extensions;
 
@@ -6,7 +7,7 @@ namespace GiGraph.Dot.Examples
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
             var graph = HelloWorld.Generate();
 
@@ -14,7 +15,7 @@ namespace GiGraph.Dot.Examples
             Console.WriteLine(graph.Build());
 
             // or save it to a file (.gv and .dot are the default extensions)
-            graph.SaveToFile("example.gv");
+            await graph.SaveToFileAsync("example.gv");
         }
     }
 }
