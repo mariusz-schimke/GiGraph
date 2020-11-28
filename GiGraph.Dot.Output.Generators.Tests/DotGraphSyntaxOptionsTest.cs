@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             var dot = graph.Build(syntaxOptions: options);
             Snapshot.Match(dot, "annotated_graph_block_comments.gv");
         }
-        
+
         [Fact]
         public void renders_graph_with_correctly_with_custom_attribute_options()
         {
@@ -73,7 +73,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             var dot = graph.Build(syntaxOptions: options);
             Snapshot.Match(dot, "directed_graph_attributes_separator_quoted_key_quoted_value_graph_attributes_single_statement.gv");
         }
-        
+
         [Fact]
         public void renders_graph_with_correctly_with_custom_cluster_id_separator()
         {
@@ -91,7 +91,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             var dot = graph.Build(syntaxOptions: options);
             Snapshot.Match(dot, "undirected_graph_custom_cluster_id_separator.gv");
         }
-        
+
         [Fact]
         public void renders_graph_with_correctly_with_colors_as_hex()
         {
@@ -109,7 +109,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             var dot = graph.Build(syntaxOptions: options);
             Snapshot.Match(dot, "graph_with_colors_as_hex.gv");
         }
-        
+
         [Fact]
         public void renders_graph_with_explicitly_declared_subgraphs()
         {
@@ -119,16 +119,14 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             var options = new DotSyntaxOptions
             {
-                Subgraphs =
-                {
-                    PreferExplicitDeclaration = true
-                }
+                Subgraphs = { PreferExplicitDeclaration = true },
+                Edges = { PreferExplicitSubgraphDeclaration = true }
             };
 
             var dot = graph.Build(syntaxOptions: options);
             Snapshot.Match(dot, "graph_with_explicitly_declared_subgraphs.gv");
         }
-        
+
         [Fact]
         public void renders_graph_with_statement_delimiters()
         {
