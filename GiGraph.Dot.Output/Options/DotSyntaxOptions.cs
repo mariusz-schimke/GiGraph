@@ -21,6 +21,11 @@
         public virtual ClusterOptions Clusters { get; protected set; } = new ClusterOptions();
 
         /// <summary>
+        ///     Edge options.
+        /// </summary>
+        public virtual EdgeOptions Edges { get; protected set; } = new EdgeOptions();
+
+        /// <summary>
         ///     Color options.
         /// </summary>
         public virtual ColorOptions Colors { get; protected set; } = new ColorOptions();
