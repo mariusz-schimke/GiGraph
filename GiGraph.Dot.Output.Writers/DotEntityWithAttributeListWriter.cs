@@ -4,24 +4,42 @@ namespace GiGraph.Dot.Output.Writers
 {
     public abstract class DotEntityWithAttributeListWriter : DotEntityWriter, IDotEntityWithAttributeListWriter
     {
-        protected DotEntityWithAttributeListWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
+        protected readonly bool _singleLineAttributeList;
+
+        protected DotEntityWithAttributeListWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool singleLineAttributeList)
             : base(tokenWriter, configuration, enforceBlockComment: false)
         {
+            _singleLineAttributeList = singleLineAttributeList;
         }
 
         public virtual IDotAttributeListItemWriter BeginAttributeList(bool useAttributeSeparator)
         {
-            _tokenWriter.AttributeListStart(linger: true)
-               .Space(linger: true);
+            var tokenWriter = PrepareTokenWriter()
+               .NewLine()
+               .AttributeListStart()
+               .NextIndentationLevel()
+               .NewLine(linger: true);
 
-            return new DotAttributeListItemWriter(_tokenWriter.NextIndentationLevel(), _configuration, useAttributeSeparator);
+            return new DotAttributeListItemWriter(tokenWriter, _configuration, useAttributeSeparator);
         }
 
         public virtual void EndAttributeList()
         {
-            _tokenWriter.ClearLingerBuffer()
-               .Space()
+            PrepareTokenWriter()
+               .NewLine()
                .AttributeListEnd();
+        }
+
+        protected virtual DotTokenWriter PrepareTokenWriter()
+        {
+            var tokenWriter = _tokenWriter.ClearLingerBuffer();
+
+            if (_singleLineAttributeList)
+            {
+                tokenWriter = tokenWriter.SingleLine();
+            }
+
+            return tokenWriter;
         }
     }
 }

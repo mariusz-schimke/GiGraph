@@ -4,8 +4,8 @@ namespace GiGraph.Dot.Output.Writers.Attributes
 {
     public class DotAttributeWriter : DotEntityWriter, IDotAttributeWriter
     {
-        public DotAttributeWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool enforceBlockComment)
-            : base(tokenWriter, configuration, enforceBlockComment)
+        public DotAttributeWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
+            : base(tokenWriter, configuration, enforceBlockComment: false)
         {
         }
 
@@ -23,18 +23,6 @@ namespace GiGraph.Dot.Output.Writers.Attributes
             // escaped newlines or concatenation operators to be used within them.
             // https://graphviz.org/doc/info/lang.html
             _tokenWriter.HtmlValue(value, writeInBrackets);
-        }
-
-        public override void EndComment()
-        {
-            if (_enforceBlockComment)
-            {
-                _tokenWriter.Space();
-            }
-            else
-            {
-                base.EndComment();
-            }
         }
 
         public virtual void WriteAttribute(string key, bool quoteKey, string[] valueParts, bool quoteValue)

@@ -9,7 +9,7 @@
 
         public virtual IDotAttributeWriter BeginAttributeStatement()
         {
-            return new DotAttributeWriter(_tokenWriter, _configuration, enforceBlockComment: false);
+            return new DotAttributeWriter(_tokenWriter, _configuration);
         }
 
         public virtual void EndAttributeStatement()

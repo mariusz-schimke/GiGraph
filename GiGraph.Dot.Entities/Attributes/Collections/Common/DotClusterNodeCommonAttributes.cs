@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEntityHyperlinkAttributes hyperlinkAttributes,
             DotEntityStyleSheetAttributes styleSheetAttributes
-            )
+        )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
             StyleSheet = styleSheetAttributes;

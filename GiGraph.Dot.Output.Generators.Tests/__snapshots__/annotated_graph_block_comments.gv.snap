@@ -14,12 +14,12 @@ digraph
     /* nodes */
 
     /* node comment */
-    foo [ /* node attributes */ /* label */ label = foo ]
+    foo [ /* node attributes */  /* label */ label = foo ]
 
     /* edges */
 
     /* edge comment */
-    /* tail */ foo -> /* head */ bar [ /* edge attributes */ /* color */ color = red ]
+    /* tail */ foo -> /* head */ bar [ /* edge attributes */  /* color */ color = red ]
 
     /* subsection 1 */
 

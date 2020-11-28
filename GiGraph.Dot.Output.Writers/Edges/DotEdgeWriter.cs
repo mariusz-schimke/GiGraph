@@ -1,21 +1,12 @@
-﻿using GiGraph.Dot.Output.Writers.Attributes;
-using GiGraph.Dot.Output.Writers.Subgraphs;
+﻿using GiGraph.Dot.Output.Writers.Subgraphs;
 
 namespace GiGraph.Dot.Output.Writers.Edges
 {
     public class DotEdgeWriter : DotEntityWithAttributeListWriter, IDotEdgeWriter
     {
         public DotEdgeWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
-            : base(tokenWriter, configuration)
+            : base(tokenWriter, configuration, configuration.Formatting.Edges.SingleLineAttributes)
         {
-        }
-
-        public override IDotAttributeListItemWriter BeginAttributeList(bool useAttributeSeparator)
-        {
-            _tokenWriter.ClearLingerBuffer()
-               .Space(linger: true);
-
-            return base.BeginAttributeList(useAttributeSeparator);
         }
 
         public virtual IDotEndpointWriter BeginEndpoint()

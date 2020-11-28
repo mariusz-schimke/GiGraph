@@ -112,7 +112,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 ss.Nodes.Add("section 1 node");
                 ss.Edges.AddLoop("section 1 node");
             });
-            
+
             return graph;
         }
 

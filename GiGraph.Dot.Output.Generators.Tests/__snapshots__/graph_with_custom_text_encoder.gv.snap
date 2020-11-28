@@ -14,12 +14,12 @@ DIGRAPH GRAPH1
     /* NODES */
 
     // NODE COMMENT
-    FOO [ /* NODE ATTRIBUTES */ /* LABEL */ LABEL = FOO ]
+    FOO [ /* NODE ATTRIBUTES */  /* LABEL */ LABEL = FOO ]
 
     /* EDGES */
 
     // EDGE COMMENT
-    /* TAIL */ FOO -> /* HEAD */ BAR [ /* EDGE ATTRIBUTES */ /* COLOR */ COLOR = RED ]
+    /* TAIL */ FOO -> /* HEAD */ BAR [ /* EDGE ATTRIBUTES */  /* COLOR */ COLOR = RED ]
 
     /* SUBSECTION 1 */
 

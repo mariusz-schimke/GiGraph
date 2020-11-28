@@ -1,20 +1,10 @@
-﻿using GiGraph.Dot.Output.Writers.Attributes;
-
-namespace GiGraph.Dot.Output.Writers.Nodes
+﻿namespace GiGraph.Dot.Output.Writers.Nodes
 {
     public class DotNodeWriter : DotEntityWithAttributeListWriter, IDotNodeWriter
     {
         public DotNodeWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
-            : base(tokenWriter, configuration)
+            : base(tokenWriter, configuration, configuration.Formatting.Nodes.SingleLineAttributes)
         {
-        }
-
-        public override IDotAttributeListItemWriter BeginAttributeList(bool useAttributeSeparator)
-        {
-            _tokenWriter.ClearLingerBuffer()
-               .Space(linger: true);
-
-            return base.BeginAttributeList(useAttributeSeparator);
         }
 
         public virtual void WriteNodeIdentifier(string id, bool quote)
