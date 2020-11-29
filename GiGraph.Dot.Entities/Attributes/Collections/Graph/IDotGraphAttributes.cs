@@ -126,6 +126,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         int? OrientationAngle { get; set; }
 
         /// <summary>
+        ///     Rotates the final layout counter-clockwise by the specified number of degrees (sfdp only; default: 0).
+        /// </summary>
+        double? Rotation { get; set; }
+
+        /// <summary>
         ///     Gets or sets the direction of graph layout (dot only, default: <see cref="DotLayoutDirection.TopToBottom" />).
         /// </summary>
         DotLayoutDirection? LayoutDirection { get; set; }

@@ -353,6 +353,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeIdAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphAttributes.Rotation" />
+        [DotAttributeKey(DotAttributeKeys.Rotation)]
+        public virtual double? Rotation
+        {
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
+        }
+
         // implemented explicitly not to cause confusion (there two other synonymous attributes)
         /// <inheritdoc cref="IDotGraphAttributes.OrientationAngle" />
         [DotAttributeKey(DotAttributeKeys.Rotate)]

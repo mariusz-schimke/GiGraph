@@ -410,7 +410,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         [DotAttributeMetadata(DotCompatibleElements.Graph)]
         public const string Rotate = "rotate";
 
-        [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Sfdp, isImplemented: false)]
+        [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Sfdp)]
         public const string Rotation = "rotation";
 
         [DotAttributeMetadata(DotCompatibleElements.Edge, DotCompatibleLayoutEngines.Dot)]
