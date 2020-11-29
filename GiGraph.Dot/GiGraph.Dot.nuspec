@@ -30,6 +30,8 @@
 
 - The Width, Height, and Sizing node attributes have been grouped under a Size property.
 
+- Added several new output formatting options.
+
 - Refactoring.
 
 
