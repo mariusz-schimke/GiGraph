@@ -1,3 +1,4 @@
+using System;
 using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Enums;
@@ -121,8 +122,8 @@ namespace GiGraph.Dot.Output.Generators.Tests
             var graph = new DotGraph();
 
             // graph
-            graph.Annotation = "graph";
-            graph.Attributes.Annotation = "graph attributes";
+            graph.Annotation = $"graph{Environment.NewLine}comment";
+            graph.Attributes.Annotation = $"graph attributes{Environment.NewLine}comment";
             graph.Attributes.Set(a => a.Label, "Foo Graph").Annotation = "label";
             graph.Attributes.Set(a => a.Comment, "comment").Annotation = "comment";
 
@@ -184,6 +185,11 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 // subgraphs
                 sub.Subgraphs.Annotation = "subgraphs";
                 sub.Subgraphs.Add().Annotation = "subgraph";
+            });
+
+            graph.Subsections.Add(sub =>
+            {
+                sub.Annotation = string.Empty;
             });
 
             return graph;

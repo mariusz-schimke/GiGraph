@@ -4,6 +4,11 @@ Space
 CommentText
 LineBreak
 Indentation
+CommentStart
+Space
+CommentText
+LineBreak
+Indentation
 Keyword
 Space
 Identifier
@@ -13,6 +18,10 @@ BlockStart
 LineBreak
 Indentation
 BlockCommentStart
+Space
+BlockCommentText
+LineBreak
+Indentation
 Space
 BlockCommentText
 Space
@@ -360,6 +369,13 @@ BlockStart
 LineBreak
 Indentation
 BlockEnd
+LineBreak
+LineBreak
+Indentation
+BlockCommentStart
+BlockCommentText
+Space
+BlockCommentEnd
 LineBreak
 Indentation
 BlockEnd

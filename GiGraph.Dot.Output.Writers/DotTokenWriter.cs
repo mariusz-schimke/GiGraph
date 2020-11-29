@@ -206,8 +206,7 @@ namespace GiGraph.Dot.Output.Writers
 
                 if (i < commentLines.Length - 1)
                 {
-                    LineBreak(linger);
-                    Indentation(linger);
+                    NewLine(linger);
                 }
             }
 
@@ -223,16 +222,30 @@ namespace GiGraph.Dot.Output.Writers
         protected virtual DotTokenWriter BlockComment(string[] commentLines, bool linger)
         {
             BlockCommentStart(linger);
-            Space(linger);
 
             for (var i = 0; i < commentLines.Length; i++)
             {
-                Append(commentLines[i], DotTokenType.BlockCommentText, linger);
+                var line = commentLines[i];
+                var isLastLine = i == commentLines.Length - 1;
 
-                if (i < commentLines.Length - 1)
+                if (!isLastLine || !string.IsNullOrEmpty(line))
                 {
-                    LineBreak(linger);
-                    Indentation(linger);
+                    if (i == 0)
+                    {
+                        Space(linger);
+                    }
+                    else
+                    {
+                        // alignment is not written in single-line mode (as opposed to space)
+                        Alignment(width: 3, linger);
+                    }
+                }
+
+                Append(line, DotTokenType.BlockCommentText, linger);
+
+                if (!isLastLine)
+                {
+                    NewLine(linger);
                 }
             }
 
@@ -244,8 +257,7 @@ namespace GiGraph.Dot.Output.Writers
 
         public virtual DotTokenWriter LineBreak(bool linger = false)
         {
-            Append(Options.LineBreak(), DotTokenType.LineBreak, linger);
-            return this;
+            return Append(Options.LineBreak(), DotTokenType.LineBreak, linger);
         }
 
         public virtual DotTokenWriter NewLine(bool linger = false)
@@ -257,14 +269,17 @@ namespace GiGraph.Dot.Output.Writers
 
         public virtual DotTokenWriter Space(bool linger = false)
         {
-            Append(Options.Space(), DotTokenType.Space, linger);
-            return this;
+            return Append(Options.Space(), DotTokenType.Space, linger);
         }
 
         public virtual DotTokenWriter Indentation(bool linger = false)
         {
-            Append(Options.Indentation(), DotTokenType.Indentation, linger);
-            return this;
+            return Append(Options.Indentation(), DotTokenType.Indentation, linger);
+        }
+
+        protected virtual DotTokenWriter Alignment(int width, bool linger = false)
+        {
+            return Append(Options.Alignment(width), DotTokenType.Space, linger);
         }
 
         protected virtual DotTokenWriter Append(string token, DotTokenType tokenType, bool linger = false)

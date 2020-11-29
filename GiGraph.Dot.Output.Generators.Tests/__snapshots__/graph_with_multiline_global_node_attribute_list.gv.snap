@@ -1,7 +1,9 @@
 ﻿// graph
+// comment
 digraph
 {
-    /* graph attributes */
+    /* graph attributes
+       comment */
 
     // comment
     comment = comment
@@ -45,4 +47,6 @@ digraph
     subgraph "cluster cluster 1"
     {
     }
+
+    /* */
 }

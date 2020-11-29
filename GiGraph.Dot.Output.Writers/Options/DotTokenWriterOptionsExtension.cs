@@ -11,9 +11,21 @@ namespace GiGraph.Dot.Output.Writers.Options
                 : string.Empty.PadRight(options.IndentationSize * options.IndentationLevel, options.IndentationChar);
         }
 
+        public static string Alignment(this DotTokenWriterOptions options, int width)
+        {
+            return options.SingleLine
+                ? string.Empty
+                : options.Space(width);
+        }
+
         public static string Space(this DotTokenWriterOptions options)
         {
-            return string.Empty.PadRight(1);
+            return options.Space(1);
+        }
+
+        private static string Space(this DotTokenWriterOptions options, int count)
+        {
+            return string.Empty.PadRight(count);
         }
 
         public static string LineBreak(this DotTokenWriterOptions options)
