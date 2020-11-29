@@ -12,7 +12,7 @@
 
         public virtual IDotAttributeWriter BeginAttribute()
         {
-            return new DotAttributeWriter(_tokenWriter, _configuration, enforceBlockComment: true);
+            return new DotAttributeWriter(_tokenWriter, _configuration);
         }
 
         public virtual void EndAttribute()
@@ -22,12 +22,12 @@
                 _tokenWriter.AttributeSeparator(linger: true);
             }
 
-            _tokenWriter.Space(linger: true);
+            _tokenWriter.NewLine(linger: true);
         }
 
         public override void EndComment()
         {
-            _tokenWriter.Space();
+            EmptyLine();
         }
     }
 }

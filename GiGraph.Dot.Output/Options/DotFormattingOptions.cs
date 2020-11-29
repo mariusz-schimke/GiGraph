@@ -33,6 +33,11 @@ namespace GiGraph.Dot.Output.Options
         public virtual string LineBreak { get; set; } = Environment.NewLine;
 
         /// <summary>
+        ///     Gets global attribute formatting options.
+        /// </summary>
+        public virtual GlobalAttributesOptions GlobalAttributes { get; } = new GlobalAttributesOptions();
+
+        /// <summary>
         ///     Gets subgraph formatting options.
         /// </summary>
         public virtual SubgraphOptions Subgraphs { get; } = new SubgraphOptions();
@@ -46,6 +51,11 @@ namespace GiGraph.Dot.Output.Options
         ///     Gets edge formatting options.
         /// </summary>
         public virtual EdgeOptions Edges { get; } = new EdgeOptions();
+
+        /// <summary>
+        ///     Gets node formatting options.
+        /// </summary>
+        public virtual NodeOptions Nodes { get; } = new NodeOptions();
 
         /// <summary>
         ///     An optional text encoder to use when writing text to the output stream. May become useful when the DOT visualization tool you

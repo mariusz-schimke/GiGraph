@@ -3,14 +3,14 @@
     public class DotGlobalEdgeAttributesWriter : DotEntityWithAttributeListWriter, IDotGlobalEdgeAttributesWriter
     {
         public DotGlobalEdgeAttributesWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
-            : base(tokenWriter, configuration)
+            : base(tokenWriter, configuration, configuration.Formatting.GlobalAttributes.SingleLineEdgeAttributes)
         {
         }
 
         public virtual void WriteEdgeKeyword()
         {
             _tokenWriter.Keyword("edge")
-               .Space();
+               .Space(linger: true);
         }
     }
 }

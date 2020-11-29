@@ -5,8 +5,11 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     /// <summary>
     ///     Represents an endpoint of an edge.
     /// </summary>
-    public abstract class DotEndpointDefinition : IDotOrderable
+    public abstract class DotEndpointDefinition : IDotOrderable, IDotAnnotatable
     {
+        /// <inheritdoc cref="IDotAnnotatable.Annotation" />
+        public virtual string Annotation { get; set; }
+
         string IDotOrderable.OrderingKey => GetOrderingKey();
         protected abstract string GetOrderingKey();
 

@@ -88,7 +88,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
         {
             return (DotRecordLabel) record;
         }
-        
+
         public static implicit operator DotLabel(DotHtml record)
         {
             return (DotHtmlLabel) record;

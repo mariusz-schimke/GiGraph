@@ -16,9 +16,21 @@ digraph
     /* nodes */
 
     // node comment
-    foo [ /* node attributes */  /* label */ label = foo ]
+    foo
+    [
+        /* node attributes */
+
+        // label
+        label = foo
+    ]
     // node group comment
-    foo, bar, baz [ /* node group attributes */  /* label */ label = foo ]
+    foo, bar, baz
+    [
+        /* node group attributes */
+
+        // label
+        label = foo
+    ]
 
     /* edges */
 
