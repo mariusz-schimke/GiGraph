@@ -245,6 +245,9 @@
     "IsRoot [Node]"
   ],
   "rotate": [
+    "OrientationAngle [Graph]"
+  ],
+  "rotation": [
     "Rotation [Graph]"
   ],
   "samehead": [

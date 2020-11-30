@@ -114,10 +114,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         bool? Center { get; set; }
 
         /// <summary>
+        ///     Sets graph orientation to landscape or portrait (default). Used only if <see cref="OrientationAngle" /> is not defined. See
+        ///     also <see cref="LandscapeOrientation" />.
+        /// </summary>
+        DotOrientation? Orientation { get; set; }
+
+        /// <summary>
         ///     If 90, sets drawing orientation to landscape (default: 0). See also <see cref="Orientation" /> and
         ///     <see cref="LandscapeOrientation" />.
         /// </summary>
-        int? Rotation { get; set; }
+        int? OrientationAngle { get; set; }
+
+        /// <summary>
+        ///     Rotates the final layout counter-clockwise by the specified number of degrees (sfdp only; default: 0).
+        /// </summary>
+        double? Rotation { get; set; }
 
         /// <summary>
         ///     Gets or sets the direction of graph layout (dot only, default: <see cref="DotLayoutDirection.TopToBottom" />).
@@ -313,13 +324,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         double? Resolution { get; set; }
 
         /// <summary>
-        ///     Sets graph orientation to landscape or portrait (default). Used only if <see cref="Rotation" /> is not defined. See also
-        ///     <see cref="LandscapeOrientation" />.
-        /// </summary>
-        DotOrientation? Orientation { get; set; }
-
-        /// <summary>
-        ///     If true, the graph is rendered in landscape mode (default: false). Synonymous with <see cref="Rotation" /> = 90 or
+        ///     If true, the graph is rendered in landscape mode (default: false). Synonymous with <see cref="OrientationAngle" /> = 90 or
         ///     <see cref="Orientation" /> = <see cref="DotOrientation.Landscape" />.
         /// </summary>
         bool? LandscapeOrientation { get; set; }
