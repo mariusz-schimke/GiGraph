@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Metadata;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected virtual string GetDotEncodedStyle(DotStyles style, DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return DotAttributeValueAttribute.TryGetValue(style, out var result)
+            return DotAttributeValue.TryGet(style, out var result)
                 ? result
                 : throw new ArgumentOutOfRangeException(nameof(style), $"The specified style '{style}' is invalid.");
         }

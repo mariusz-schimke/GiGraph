@@ -1,9 +1,8 @@
-using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Metadata;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
@@ -23,14 +22,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             DotEntityFontAttributes fontAttributes,
             DotNodeStyleAttributes styleAttributes,
             DotNodeImageAttributes imageAttributes,
-            DotNodeGeometryAttributes geometryAttributes
+            DotNodeGeometryAttributes geometryAttributes,
+            DotNodeSizeAttributes sizeAttributes,
+            DotEntityStyleSheetAttributes styleSheetAttributes
         )
-            : base(attributes, attributeKeyLookup, hyperlinkAttributes)
+            : base(attributes, attributeKeyLookup, hyperlinkAttributes, styleSheetAttributes)
         {
             Font = fontAttributes;
             Style = styleAttributes;
             Image = imageAttributes;
             Geometry = geometryAttributes;
+            Size = sizeAttributes;
         }
 
         public DotNodeAttributes(DotAttributeCollection attributes)
@@ -41,7 +43,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
                 new DotEntityFontAttributes(attributes),
                 new DotNodeStyleAttributes(attributes),
                 new DotNodeImageAttributes(attributes),
-                new DotNodeGeometryAttributes(attributes)
+                new DotNodeGeometryAttributes(attributes),
+                new DotNodeSizeAttributes(attributes),
+                new DotEntityStyleSheetAttributes(attributes)
             )
         {
         }
@@ -65,6 +69,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     Node geometry properties applicable if <see cref="Shape" /> is set to <see cref="DotNodeShape.Polygon" />.
         /// </summary>
         public virtual DotNodeGeometryAttributes Geometry { get; }
+
+        /// <summary>
+        ///     Node size properties.
+        /// </summary>
+        public virtual DotNodeSizeAttributes Size { get; }
 
         /// <summary>
         ///     Style options.
@@ -149,6 +158,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => base.SortIndex = value;
         }
 
+        /// <inheritdoc cref="IDotNodeAttributes.Id" />
+        public override DotEscapeString Id
+        {
+            get => base.Id;
+            set => base.Id = value;
+        }
+
         /// <inheritdoc cref="IDotNodeAttributes.Comment" />
         [DotAttributeKey(DotAttributeKeys.Comment)]
         public virtual string Comment
@@ -182,40 +198,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeShapeAttribute(k, v.Value));
         }
 
-        /// <inheritdoc cref="IDotNodeAttributes.Width" />
-        [DotAttributeKey(DotAttributeKeys.Width)]
-        public virtual double? Width
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
-                ? throw new ArgumentOutOfRangeException(nameof(Width), v.Value, "The width must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotNodeAttributes.Height" />
-        [DotAttributeKey(DotAttributeKeys.Height)]
-        public virtual double? Height
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
-                ? throw new ArgumentOutOfRangeException(nameof(Height), v.Value, "The height must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotNodeAttributes.Sizing" />
-        [DotAttributeKey(DotAttributeKeys.FixedSize)]
-        public virtual DotNodeSizing? Sizing
-        {
-            get => GetValueAs<DotNodeSizing>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotNodeSizing?) null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeSizingAttribute(k, v.Value));
-        }
-
         /// <inheritdoc cref="IDotNodeAttributes.GroupName" />
         [DotAttributeKey(DotAttributeKeys.Group)]
         public virtual string GroupName
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+        }
+
+        /// <inheritdoc cref="IDotNodeAttributes.IsRoot" />
+        [DotAttributeKey(DotAttributeKeys.Root)]
+        public virtual bool? IsRoot
+        {
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
         protected override void SetFillStyle(DotStyles fillStyle)

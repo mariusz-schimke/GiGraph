@@ -1,7 +1,7 @@
 ﻿namespace GiGraph.Dot.Output.TextEscaping
 {
     /// <summary>
-    ///     Escapes backslash. Use for identifiers and attributes that support escaped text.
+    ///     Escapes backslashes.
     /// </summary>
     public class DotBackslashEscaper : IDotTextEscaper
     {
@@ -12,7 +12,7 @@
 
         public static string Escape(string value)
         {
-            return value?.Replace(@"\", @"\\");
+            return value?.Replace("\\", "\\\\");
         }
     }
 }

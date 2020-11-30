@@ -1,7 +1,7 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Edges.Collections;
-using GiGraph.Dot.Entities.Metadata;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Types.Colors;
 

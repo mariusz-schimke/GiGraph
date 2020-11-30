@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Entities.Metadata;
+﻿using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Attributes.Enums

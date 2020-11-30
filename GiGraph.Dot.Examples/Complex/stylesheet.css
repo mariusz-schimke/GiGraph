@@ -1,0 +1,14 @@
+.foo_node 
+{
+    fill: red;
+}
+
+ellipse 
+{
+    fill: turquoise;
+}
+
+path 
+{
+    stroke: royalblue;
+}

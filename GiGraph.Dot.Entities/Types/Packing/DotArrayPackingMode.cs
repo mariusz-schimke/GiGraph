@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Text;
-using GiGraph.Dot.Entities.Metadata;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Packing
@@ -92,7 +92,7 @@ namespace GiGraph.Dot.Entities.Types.Packing
 
         protected virtual string GetDotEncodedOption(DotArrayPackingOptions option, DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return DotAttributeValueAttribute.TryGetValue(option, out var result)
+            return DotAttributeValue.TryGet(option, out var result)
                 ? result
                 : throw new ArgumentOutOfRangeException(nameof(option), $"The specified array packing option '{option}' is invalid.");
         }

@@ -17,6 +17,9 @@
   "charset": [
     "Charset [Graph]"
   ],
+  "class": [
+    "StyleSheet.Class [Graph, Cluster, Node, Edge]"
+  ],
   "clusterrank": [
     "VisualizationMode [Graph]"
   ],
@@ -66,7 +69,7 @@
     "FillColor [Graph, Cluster, Node, Edge]"
   ],
   "fixedsize": [
-    "Sizing [Node]"
+    "Size.Mode [Node]"
   ],
   "fontcolor": [
     "Font.Color [Graph, Cluster, Node, Edge]"
@@ -111,10 +114,13 @@
     "Head.Hyperlink.Url [Edge]"
   ],
   "height": [
-    "Height [Node]"
+    "Size.Height [Node]"
   ],
   "href": [
     "Hyperlink.Href [Graph, Cluster, Node, Edge]"
+  ],
+  "id": [
+    "Id [Graph, Cluster, Node, Edge]"
   ],
   "image": [
     "Image.Path [Node]"
@@ -234,7 +240,14 @@
   "resolution": [
     "Resolution [Graph]"
   ],
+  "root": [
+    "RootNodeId [Graph]",
+    "IsRoot [Node]"
+  ],
   "rotate": [
+    "OrientationAngle [Graph]"
+  ],
+  "rotation": [
     "Rotation [Graph]"
   ],
   "samehead": [
@@ -263,6 +276,9 @@
   ],
   "style": [
     "Style [Graph, Cluster, Node, Edge]"
+  ],
+  "stylesheet": [
+    "StyleSheet.Url [Graph]"
   ],
   "tailclip": [
     "Tail.ClipToNodeBoundary [Edge]"
@@ -298,7 +314,7 @@
     "Weight [Edge]"
   ],
   "width": [
-    "Width [Node]"
+    "Size.Width [Node]"
   ],
   "xlabel": [
     "ExternalLabel [Node, Edge]"

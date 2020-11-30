@@ -75,8 +75,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        ///     Adds or replaces the specified attribute in the collection. The value can be any string understood by the DOT visualization
-        ///     tool for the specified attribute key.
+        ///     Adds or replaces the specified attribute in the collection.
         /// </summary>
         /// <param name="key">
         ///     The key of the attribute to include in the collection.
@@ -127,6 +126,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The value of the attribute to include in the collection.
         /// </param>
         public virtual DotEscapeStringAttribute Set(string key, DotUnescapedString value)
+        {
+            return Set(new DotEscapeStringAttribute(key, value));
+        }
+
+        /// <summary>
+        ///     Adds or replaces the specified HTML text attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotEscapeStringAttribute Set(string key, DotHtml value)
         {
             return Set(new DotEscapeStringAttribute(key, value));
         }
@@ -635,6 +648,51 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotImageScalingAttribute Set(string key, DotImageScaling value)
         {
             return Set(new DotImageScalingAttribute(key, value));
+        }
+
+        /// <summary>
+        ///     Adds or replaces the specified attribute in the collection. The value is rendered AS IS in the output DOT script, so the
+        ///     attribute can be used for any type of value, not only for strings. Make sure, however, that the value is escaped when
+        ///     necessary, following the DOT syntax rules ( <see href="https://graphviz.org/doc/info/lang.html" />). If, for instance, it
+        ///     contains an unescaped quotation mark, the output script will be syntactically incorrect.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotCustomAttribute SetCustom(string key, string value)
+        {
+            return Set(new DotCustomAttribute(key, value));
+        }
+
+        /// <summary>
+        ///     Adds or replaces the specified attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotClusterIdAttribute SetClusterId(string key, string value)
+        {
+            return Set(new DotClusterIdAttribute(key, value));
+        }
+
+        /// <summary>
+        ///     Adds or replaces the specified attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotNodeIdAttribute SetNodeId(string key, string value)
+        {
+            return Set(new DotNodeIdAttribute(key, value));
         }
     }
 }

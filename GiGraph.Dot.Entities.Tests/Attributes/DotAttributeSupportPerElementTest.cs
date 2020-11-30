@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Entities.Metadata;
+using System.Reflection;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 using Snapshooter.Xunit;
 using Xunit;
 
@@ -18,9 +19,9 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
         [Theory]
         [MemberData(nameof(ElementAttributesMetadata))]
-        public void element_supports_correct_attribute_keys(DotElementSupport element, Dictionary<string, DotAttributePropertyMetadata> elementAttributesMetadata)
+        public void element_supports_correct_attribute_keys(DotCompatibleElements element, Dictionary<string, DotAttributePropertyMetadata> elementAttributesMetadata)
         {
-            var validKeys = GetSupportedKeysFor(element);
+            var validKeys = GetCompatibleKeysFor(element);
 
             var result = elementAttributesMetadata.Keys
                .Except(validKeys.Intersect(elementAttributesMetadata.Keys))
@@ -28,44 +29,23 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
             if (result.Any())
             {
-                throw new Exception($"Incorrect attributes supported by {element}: {string.Join(", ", result)}");
+                throw new Exception($"The following attributes are not supposed to be supported by [{element}] or are marked as unimplemented: {string.Join(", ", result)}");
             }
         }
 
-        [Fact]
-        public void attribute_key_is_supported_by_all_required_elements_or_by_none()
+        [Theory]
+        [MemberData(nameof(ElementAttributesMetadata))]
+        public void element_supports_all_required_attribute_keys(DotCompatibleElements element, Dictionary<string, DotAttributePropertyMetadata> elementAttributesMetadata)
         {
-            // get all supported keys per entity type
-            var entityKeys = DotElementAttributesMetadataFactory.Create()
-               .GroupBy(
-                    key => key.Element,
-                    element => element.Attributes.Keys.Select(key => key).ToArray()
-                )
-               .ToLookup(
-                    key => key.Key,
-                    element => element.SelectMany(x => x).ToArray()
-                );
+            var validKeys = GetCompatibleKeysFor(element);
 
-            // for all valid keys check if any of them is supported by any entity, and if so,
-            // then it must be supported by all entities that the mapping indicates 
-            foreach (var attribute in DotAttributeKeys.MetadataDictionary)
+            var result = validKeys
+               .Except(elementAttributesMetadata.Keys.Intersect(validKeys))
+               .ToArray();
+
+            if (result.Any())
             {
-                var supportedByOtherEntities = false;
-
-                foreach (var entityType in Enum.GetValues(typeof(DotElementSupport)).Cast<DotElementSupport>())
-                {
-                    if (attribute.Value.ElementSupport.HasFlag(entityType))
-                    {
-                        if (entityKeys[entityType].First().Contains(attribute.Key))
-                        {
-                            supportedByOtherEntities = true;
-                        }
-                        else if (supportedByOtherEntities)
-                        {
-                            throw new Exception($"The '{attribute.Key}' attribute is not supported by {entityType} (expected support by: {attribute.Value.ElementSupport})");
-                        }
-                    }
-                }
+                throw new Exception($"The following attributes must be supported by [{element}]: {string.Join(", ", result)}");
             }
         }
 
@@ -102,10 +82,17 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             Snapshot.Match(new SortedDictionary<string, string[]>(keyLookup), "attribute_property_key_map");
         }
 
-        private static string[] GetSupportedKeysFor(DotElementSupport elementSupport)
+        private static string[] GetCompatibleKeysFor(DotCompatibleElements compatibleElements)
         {
-            return DotAttributeKeys.MetadataDictionary
-               .Where(item => item.Value.ElementSupport.HasFlag(elementSupport))
+            return typeof(DotAttributeKeys)
+               .GetFields(BindingFlags.Static | BindingFlags.Public)
+               .Select(property => new
+                {
+                    Key = (string) property.GetValue(null),
+                    Metadata = property.GetCustomAttribute<DotAttributeMetadataAttribute>()
+                })
+               .Where(item => item.Metadata.CompatibleElements.HasFlag(compatibleElements))
+               .Where(item => item.Metadata.IsImplemented)
                .Select(item => item.Key)
                .ToArray();
         }

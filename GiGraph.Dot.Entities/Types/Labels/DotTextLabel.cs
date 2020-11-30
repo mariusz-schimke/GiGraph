@@ -21,6 +21,12 @@ namespace GiGraph.Dot.Entities.Types.Labels
     {
         protected readonly DotEscapeString _text;
 
+        /// <summary>
+        ///     Creates a new textual label.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to use.
+        /// </param>
         public DotTextLabel(DotEscapeString text)
         {
             _text = text ?? throw new ArgumentNullException(nameof(text), "Text cannot be null.");
@@ -36,7 +42,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
 
         protected internal override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return _text?.GetEscapedString(syntaxRules.TextValueEscaper);
+            return _text?.GetEscapedString(syntaxRules.Attributes.EscapeStringValueEscaper);
         }
 
         public static implicit operator DotTextLabel(string text)

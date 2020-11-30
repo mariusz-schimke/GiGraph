@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Edges.Enums;
-using GiGraph.Dot.Entities.Metadata;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Output.Options;
@@ -59,8 +59,8 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
 
                 // it is assumed that if a key repeats, an exception will be thrown by the mapping method on dictionary creation
-                var mapping = (IEnumerable) typeof(DotAttributeValueAttribute).GetMethod(
-                        nameof(DotAttributeValueAttribute.GetValueMapping)
+                var mapping = (IEnumerable) typeof(DotAttributeValue).GetMethod(
+                        nameof(DotAttributeValue.GetMapping)
                     )
                    .MakeGenericMethod(enumType).Invoke(null, null);
 

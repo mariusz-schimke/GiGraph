@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Metadata;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -47,6 +47,26 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
             var key = GetKey(propertyInfo);
             return _attributes.TryGetValue(key, out var attribute) ? attribute : null;
+        }
+
+        /// <summary>
+        ///     Assigns a custom value to the specified property, and returns the actual attribute added to the collection. The value is
+        ///     rendered AS IS in the output DOT script, so it has to escaped appropriately when necessary (see
+        ///     <see href="https://graphviz.org/doc/info/lang.html" />).
+        /// </summary>
+        /// <param name="property">
+        ///     The property whose value to set.
+        /// </param>
+        /// <param name="value">
+        ///     The value to assign to the property.
+        /// </param>
+        /// <typeparam name="TProperty">
+        ///     The type returned by the property.
+        /// </typeparam>
+        public virtual DotCustomAttribute SetCustom<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
+        {
+            var key = GetKey(property);
+            return _attributes.SetCustom(key, value);
         }
 
         /// <summary>

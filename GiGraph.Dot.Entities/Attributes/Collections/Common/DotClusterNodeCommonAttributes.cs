@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Metadata;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
@@ -10,10 +10,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
     public abstract partial class DotClusterNodeCommonAttributes<TIEntityAttributeProperties> : DotEntityCommonAttributes<TIEntityAttributeProperties>
     {
-        protected DotClusterNodeCommonAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup, DotEntityHyperlinkAttributes hyperlinkAttributes)
+        protected DotClusterNodeCommonAttributes(
+            DotAttributeCollection attributes,
+            DotMemberAttributeKeyLookup attributeKeyLookup,
+            DotEntityHyperlinkAttributes hyperlinkAttributes,
+            DotEntityStyleSheetAttributes styleSheetAttributes
+        )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
+            StyleSheet = styleSheetAttributes;
         }
+
+        /// <summary>
+        ///     Style sheet attributes used for SVG output.
+        /// </summary>
+        public virtual DotEntityStyleSheetAttributes StyleSheet { get; }
 
         [DotAttributeKey(DotAttributeKeys.Color)]
         public virtual DotColorDefinition Color

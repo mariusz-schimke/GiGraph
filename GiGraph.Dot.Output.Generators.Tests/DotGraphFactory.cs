@@ -1,3 +1,4 @@
+using System;
 using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Enums;
@@ -23,7 +24,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Edges.Attributes.Color = Color.Blue;
             graph.Edges.Attributes.Label = "edge_label";
 
-
+            graph.Nodes.Add("no_attributes");
             graph.Nodes.Add("node3", attrs =>
             {
                 attrs.Shape = DotNodeShape.Assembly;
@@ -37,7 +38,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 attrs.Style.BorderStyle = DotBorderStyle.Dashed;
             }, "node1", "node2");
 
-
+            graph.Edges.AddLoop("no_attributes");
             graph.Edges.Add("node6", "node7", edge =>
             {
                 edge.Tail.Port.Name = "port6";
@@ -105,6 +106,14 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 });
             });
 
+            graph.Subsections.Add(ss =>
+            {
+                ss.Annotation = "graph section comment";
+                ss.Attributes.BackgroundColor = Color.Blue;
+                ss.Nodes.Add("section 1 node");
+                ss.Edges.AddLoop("section 1 node");
+            });
+
             return graph;
         }
 
@@ -113,13 +122,15 @@ namespace GiGraph.Dot.Output.Generators.Tests
             var graph = new DotGraph();
 
             // graph
-            graph.Annotation = "graph";
-            graph.Attributes.Annotation = "graph attributes";
+            graph.Annotation = $"graph{Environment.NewLine}comment";
+            graph.Attributes.Annotation = $"graph attributes{Environment.NewLine}comment";
             graph.Attributes.Set(a => a.Label, "Foo Graph").Annotation = "label";
+            graph.Attributes.Set(a => a.Comment, "comment").Annotation = "comment";
 
             // node defaults
             graph.Nodes.Attributes.Annotation = "global node attributes";
             graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
+            graph.Nodes.Attributes.Geometry.Distortion = 2;
 
             // nodes
             graph.Nodes.Annotation = "nodes";
@@ -128,6 +139,12 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 attrs.Annotation = "node attributes";
                 attrs.Set(a => a.Label, "foo").Annotation = "label";
             }).Annotation = "node comment";
+
+            graph.Nodes.Add(new[] { "foo", "bar", "baz" }, node =>
+            {
+                node.Annotation = "node group attributes";
+                node.Set(a => a.Label, "foo").Annotation = "label";
+            }).Annotation = "node group comment";
 
             // edge defaults
             graph.Edges.Attributes.Annotation = "global edge attributes";
@@ -144,6 +161,18 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
             }).Annotation = "edge comment";
 
+            graph.Edges.AddSequence(new[] { "foo", "bar", "baz" }, edge =>
+            {
+                var i = 1;
+                foreach (var endpoint in edge.Endpoints)
+                {
+                    endpoint.Annotation = $"endpoint {i++}";
+                }
+
+                edge.Attributes.Annotation = "edge sequence attributes";
+                edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
+            }).Annotation = "edge sequence comment";
+
             // subsections
             graph.Subsections.Add(sub =>
             {
@@ -156,6 +185,11 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 // subgraphs
                 sub.Subgraphs.Annotation = "subgraphs";
                 sub.Subgraphs.Add().Annotation = "subgraph";
+            });
+
+            graph.Subsections.Add(sub =>
+            {
+                sub.Annotation = string.Empty;
             });
 
             return graph;

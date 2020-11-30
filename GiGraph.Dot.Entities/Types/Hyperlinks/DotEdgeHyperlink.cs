@@ -31,6 +31,6 @@ namespace GiGraph.Dot.Entities.Types.Hyperlinks
         /// <summary>
         ///     The tooltip annotation.
         /// </summary>
-        public DotEscapeString Tooltip { get; set; }
+        public virtual DotEscapeString Tooltip { get; set; }
     }
 }

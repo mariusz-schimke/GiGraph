@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Metadata;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
@@ -30,9 +30,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 
                     return new DotAttributePropertyMetadata(
                         key,
-                        metadata.ElementSupport,
-                        metadata.LayoutEngineSupport,
-                        metadata.OutputFormatSupport,
+                        metadata.CompatibleElements,
+                        metadata.CompatibleLayoutEngines,
+                        metadata.CompatibleOutputs,
                         path.Select(item => item.Property).ToArray()
                     );
                 })

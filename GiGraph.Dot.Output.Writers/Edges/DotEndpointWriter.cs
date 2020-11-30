@@ -13,13 +13,13 @@
 
             if (portName is { })
             {
-                _tokenWriter.NodePortDelimiter()
+                _tokenWriter.NodePortSeparator()
                    .Identifier(portName, quotePortName);
             }
 
             if (compassPoint is { })
             {
-                _tokenWriter.NodePortDelimiter()
+                _tokenWriter.NodePortSeparator()
                    .Identifier(compassPoint, quoteCompassPoint);
             }
         }

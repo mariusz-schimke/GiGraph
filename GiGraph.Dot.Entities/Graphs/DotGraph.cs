@@ -8,17 +8,20 @@ namespace GiGraph.Dot.Entities.Graphs
     /// </summary>
     public class DotGraph : DotGraphSection, IDotCommonGraph, IDotOrderable
     {
+        protected const bool DirectedDefault = true;
+        protected const bool StrictDefault = false;
+
         protected DotGraph(string id, bool directed, bool strict, DotGraphSection rootSection, DotGraphSectionCollection<DotGraphSection> subsections)
             : base(rootSection)
         {
             Id = id;
-            Directed = directed;
-            Strict = strict;
+            IsDirected = directed;
+            IsStrict = strict;
             Subsections = subsections;
         }
 
         /// <summary>
-        ///     Creates a new graph instance.
+        ///     Creates and initializes a graph instance.
         /// </summary>
         /// <param name="id">
         ///     The identifier of the graph. Pass null if no identifier should be used.
@@ -31,8 +34,24 @@ namespace GiGraph.Dot.Entities.Graphs
         ///     Determines if the graph is strict. Strict graph forbids the creation of multi-edges, i.e., there may be at most one edge with
         ///     a given tail node and head node in the directed case.
         /// </param>
-        public DotGraph(string id = null, bool directed = true, bool strict = false)
+        public DotGraph(string id, bool directed = DirectedDefault, bool strict = StrictDefault)
             : this(id, directed, strict, new DotGraphSection(), new DotGraphSectionCollection<DotGraphSection>())
+        {
+        }
+
+        /// <summary>
+        ///     Creates and initializes a graph instance.
+        /// </summary>
+        /// <param name="directed">
+        ///     Determines if the graph should be directed. The edges of directed graphs are presented as arrows, whereas edges in undirected
+        ///     graphs are presented as lines.
+        /// </param>
+        /// <param name="strict">
+        ///     Determines if the graph is strict. Strict graph forbids the creation of multi-edges, i.e., there may be at most one edge with
+        ///     a given tail node and head node in the directed case.
+        /// </param>
+        public DotGraph(bool directed = DirectedDefault, bool strict = StrictDefault)
+            : this(id: null, directed, strict)
         {
         }
 
@@ -40,13 +59,13 @@ namespace GiGraph.Dot.Entities.Graphs
         ///     Gets or sets a value that indicates if the graph is directed. The edges of directed graphs are presented as arrows, whereas
         ///     edges in undirected graphs are presented as lines.
         /// </summary>
-        public virtual bool Directed { get; set; }
+        public virtual bool IsDirected { get; set; }
 
         /// <summary>
         ///     Gets or sets a value that indicates if the graph is strict. Strict graph forbids the creation of multi-edges, i.e., there may
         ///     be at most one edge with a given tail node and head node in the directed case.
         /// </summary>
-        public virtual bool Strict { get; set; }
+        public virtual bool IsStrict { get; set; }
 
         /// <summary>
         ///     <para>

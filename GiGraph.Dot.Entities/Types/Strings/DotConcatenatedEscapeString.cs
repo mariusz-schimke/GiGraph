@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Output.TextEscaping;
@@ -8,7 +9,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
     /// <summary>
     ///     Represents a collection of escape string instances.
     /// </summary>
-    public class DotConcatenatedEscapeString : DotEscapeString
+    public class DotConcatenatedEscapeString : DotEscapeString, IEnumerable<DotEscapeString>
     {
         protected readonly DotEscapeString[] _items;
 
@@ -26,15 +27,13 @@ namespace GiGraph.Dot.Entities.Types.Strings
             }
 
             // flatten to prevent multiple recursion on building the output string
-            _items = items.SelectMany(item =>
-            {
-                if (item is DotConcatenatedEscapeString concatenated)
-                {
-                    return concatenated._items;
-                }
-
-                return Enumerable.Empty<DotEscapeString>().Append(item);
-            }).ToArray();
+            _items = items.SelectMany
+                (
+                    item => item is IEnumerable<DotEscapeString> concatenated
+                        ? concatenated
+                        : Enumerable.Empty<DotEscapeString>().Append(item)
+                )
+               .ToArray();
         }
 
         /// <summary>
@@ -59,12 +58,15 @@ namespace GiGraph.Dot.Entities.Types.Strings
         {
         }
 
-        /// <summary>
-        ///     Returns the component escape strings of the current instance.
-        /// </summary>
-        public virtual DotEscapeString[] ToArray()
+        /// <inheritdoc cref="IEnumerable{T}.GetEnumerator" />
+        public IEnumerator<DotEscapeString> GetEnumerator()
         {
-            return _items.ToArray();
+            return ((IEnumerable<DotEscapeString>) _items).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _items.GetEnumerator();
         }
 
         protected internal override string GetRawString()

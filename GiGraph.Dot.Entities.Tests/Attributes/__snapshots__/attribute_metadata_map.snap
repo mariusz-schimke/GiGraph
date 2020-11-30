@@ -1,1034 +1,1034 @@
 ﻿{
   "_background": {
     "Key": "_background",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "area": {
     "Key": "area",
-    "ElementSupport": "Cluster, Node",
-    "LayoutEngineSupport": "Patchwork",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Cluster, Node",
+    "CompatibleLayoutEngines": "Patchwork",
+    "CompatibleOutputs": "Any"
   },
   "arrowhead": {
     "Key": "arrowhead",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "arrowsize": {
     "Key": "arrowsize",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "arrowtail": {
     "Key": "arrowtail",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "bb": {
     "Key": "bb",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "WriteOnly"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "None",
+    "CompatibleOutputs": "Any"
   },
   "bgcolor": {
     "Key": "bgcolor",
-    "ElementSupport": "Graph, Cluster",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "center": {
     "Key": "center",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "charset": {
     "Key": "charset",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "class": {
     "Key": "class",
-    "ElementSupport": "Graph, Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg"
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg"
   },
   "clusterrank": {
     "Key": "clusterrank",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "color": {
     "Key": "color",
-    "ElementSupport": "Graph, Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "colorscheme": {
     "Key": "colorscheme",
-    "ElementSupport": "Graph, Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "comment": {
     "Key": "comment",
-    "ElementSupport": "Graph, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "compound": {
     "Key": "compound",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "concentrate": {
     "Key": "concentrate",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "constraint": {
     "Key": "constraint",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "Damping": {
     "Key": "Damping",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Neato",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Neato",
+    "CompatibleOutputs": "Any"
   },
   "decorate": {
     "Key": "decorate",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "defaultdist": {
     "Key": "defaultdist",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Neato",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Neato",
+    "CompatibleOutputs": "Any"
   },
   "dim": {
     "Key": "dim",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Neato, Fdp, Sfdp",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Neato, Fdp, Sfdp",
+    "CompatibleOutputs": "Any"
   },
   "dimen": {
     "Key": "dimen",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Neato, Fdp, Sfdp",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Neato, Fdp, Sfdp",
+    "CompatibleOutputs": "Any"
   },
   "dir": {
     "Key": "dir",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "diredgeconstraints": {
     "Key": "diredgeconstraints",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Neato",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Neato",
+    "CompatibleOutputs": "Any"
   },
   "distortion": {
     "Key": "distortion",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "dpi": {
     "Key": "dpi",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Bitmap, Svg"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Bitmap, Svg"
   },
   "edgehref": {
     "Key": "edgehref",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map"
   },
   "edgetarget": {
     "Key": "edgetarget",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map"
   },
   "edgetooltip": {
     "Key": "edgetooltip",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Cmap"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Cmap"
   },
   "edgeURL": {
     "Key": "edgeURL",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map"
   },
   "epsilon": {
     "Key": "epsilon",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Neato",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Neato",
+    "CompatibleOutputs": "Any"
   },
   "esep": {
     "Key": "esep",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "NotDot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "NotDot",
+    "CompatibleOutputs": "Any"
   },
   "fillcolor": {
     "Key": "fillcolor",
-    "ElementSupport": "Graph, Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "fixedsize": {
     "Key": "fixedsize",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "fontcolor": {
     "Key": "fontcolor",
-    "ElementSupport": "Graph, Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "fontname": {
     "Key": "fontname",
-    "ElementSupport": "Graph, Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "fontnames": {
     "Key": "fontnames",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg"
   },
   "fontpath": {
     "Key": "fontpath",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "fontsize": {
     "Key": "fontsize",
-    "ElementSupport": "Graph, Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "forcelabels": {
     "Key": "forcelabels",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "gradientangle": {
     "Key": "gradientangle",
-    "ElementSupport": "Graph, Cluster, Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster, Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "group": {
     "Key": "group",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "head_lp": {
     "Key": "head_lp",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "WriteOnly"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "None",
+    "CompatibleOutputs": "Any"
   },
   "headclip": {
     "Key": "headclip",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "headhref": {
     "Key": "headhref",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map"
   },
   "headlabel": {
     "Key": "headlabel",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "headport": {
     "Key": "headport",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "headtarget": {
     "Key": "headtarget",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map"
   },
   "headtooltip": {
     "Key": "headtooltip",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Cmap"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Cmap"
   },
   "headURL": {
     "Key": "headURL",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map"
   },
   "height": {
     "Key": "height",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "href": {
     "Key": "href",
-    "ElementSupport": "Graph, Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map, PostScript"
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map, PostScript"
   },
   "id": {
     "Key": "id",
-    "ElementSupport": "Graph, Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map, PostScript"
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map, PostScript"
   },
   "image": {
     "Key": "image",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "imagepath": {
     "Key": "imagepath",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "imagepos": {
     "Key": "imagepos",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "imagescale": {
     "Key": "imagescale",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "inputscale": {
     "Key": "inputscale",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Neato, Fdp",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Neato, Fdp",
+    "CompatibleOutputs": "Any"
   },
   "K": {
     "Key": "K",
-    "ElementSupport": "Graph, Cluster",
-    "LayoutEngineSupport": "Fdp, Sfdp",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster",
+    "CompatibleLayoutEngines": "Fdp, Sfdp",
+    "CompatibleOutputs": "Any"
   },
   "label": {
     "Key": "label",
-    "ElementSupport": "Graph, Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "label_scheme": {
     "Key": "label_scheme",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Sfdp",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Sfdp",
+    "CompatibleOutputs": "Any"
   },
   "labelangle": {
     "Key": "labelangle",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "labeldistance": {
     "Key": "labeldistance",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "labelfloat": {
     "Key": "labelfloat",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "labelfontcolor": {
     "Key": "labelfontcolor",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "labelfontname": {
     "Key": "labelfontname",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "labelfontsize": {
     "Key": "labelfontsize",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "labelhref": {
     "Key": "labelhref",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map"
   },
   "labeljust": {
     "Key": "labeljust",
-    "ElementSupport": "Graph, Cluster",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "labelloc": {
     "Key": "labelloc",
-    "ElementSupport": "Graph, Cluster, Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster, Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "labeltarget": {
     "Key": "labeltarget",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map"
   },
   "labeltooltip": {
     "Key": "labeltooltip",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Cmap"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Cmap"
   },
   "labelURL": {
     "Key": "labelURL",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map"
   },
   "landscape": {
     "Key": "landscape",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "layer": {
     "Key": "layer",
-    "ElementSupport": "Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "layerlistsep": {
     "Key": "layerlistsep",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "layers": {
     "Key": "layers",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "layerselect": {
     "Key": "layerselect",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "layersep": {
     "Key": "layersep",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "layout": {
     "Key": "layout",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "len": {
     "Key": "len",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Neato, Fdp",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Neato, Fdp",
+    "CompatibleOutputs": "Any"
   },
   "levels": {
     "Key": "levels",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Sfdp",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Sfdp",
+    "CompatibleOutputs": "Any"
   },
   "levelsgap": {
     "Key": "levelsgap",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Neato",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Neato",
+    "CompatibleOutputs": "Any"
   },
   "lhead": {
     "Key": "lhead",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "lheight": {
     "Key": "lheight",
-    "ElementSupport": "Graph, Cluster",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "WriteOnly"
+    "CompatibleElements": "Graph, Cluster",
+    "CompatibleLayoutEngines": "None",
+    "CompatibleOutputs": "Any"
   },
   "lp": {
     "Key": "lp",
-    "ElementSupport": "Graph, Cluster, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "WriteOnly"
+    "CompatibleElements": "Graph, Cluster, Edge",
+    "CompatibleLayoutEngines": "None",
+    "CompatibleOutputs": "Any"
   },
   "ltail": {
     "Key": "ltail",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "lwidth": {
     "Key": "lwidth",
-    "ElementSupport": "Graph, Cluster",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "WriteOnly"
+    "CompatibleElements": "Graph, Cluster",
+    "CompatibleLayoutEngines": "None",
+    "CompatibleOutputs": "Any"
   },
   "margin": {
     "Key": "margin",
-    "ElementSupport": "Graph, Cluster, Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster, Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "maxiter": {
     "Key": "maxiter",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Neato, Fdp",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Neato, Fdp",
+    "CompatibleOutputs": "Any"
   },
   "mclimit": {
     "Key": "mclimit",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "mindist": {
     "Key": "mindist",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Circo",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Circo",
+    "CompatibleOutputs": "Any"
   },
   "minlen": {
     "Key": "minlen",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "mode": {
     "Key": "mode",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Neato",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Neato",
+    "CompatibleOutputs": "Any"
   },
   "model": {
     "Key": "model",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Neato",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Neato",
+    "CompatibleOutputs": "Any"
   },
   "mosek": {
     "Key": "mosek",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Neato",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Neato",
+    "CompatibleOutputs": "Any"
   },
   "newrank": {
     "Key": "newrank",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "nodesep": {
     "Key": "nodesep",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "nojustify": {
     "Key": "nojustify",
-    "ElementSupport": "Graph, Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "normalize": {
     "Key": "normalize",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "NotDot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "NotDot",
+    "CompatibleOutputs": "Any"
   },
   "notranslate": {
     "Key": "notranslate",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Neato",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Neato",
+    "CompatibleOutputs": "Any"
   },
   "nslimit": {
     "Key": "nslimit",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "nslimit1": {
     "Key": "nslimit1",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "ordering": {
     "Key": "ordering",
-    "ElementSupport": "Graph, Node",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Node",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "orientation": {
     "Key": "orientation",
-    "ElementSupport": "Graph, Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "outputorder": {
     "Key": "outputorder",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "overlap": {
     "Key": "overlap",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "NotDot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "NotDot",
+    "CompatibleOutputs": "Any"
   },
   "overlap_scaling": {
     "Key": "overlap_scaling",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Prism",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Prism",
+    "CompatibleOutputs": "Any"
   },
   "overlap_shrink": {
     "Key": "overlap_shrink",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Prism",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Prism",
+    "CompatibleOutputs": "Any"
   },
   "pack": {
     "Key": "pack",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "packmode": {
     "Key": "packmode",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "pad": {
     "Key": "pad",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "page": {
     "Key": "page",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "pagedir": {
     "Key": "pagedir",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "pencolor": {
     "Key": "pencolor",
-    "ElementSupport": "Graph, Cluster",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "penwidth": {
     "Key": "penwidth",
-    "ElementSupport": "Graph, Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "peripheries": {
     "Key": "peripheries",
-    "ElementSupport": "Cluster, Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Cluster, Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "pin": {
     "Key": "pin",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Neato, Fdp",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Neato, Fdp",
+    "CompatibleOutputs": "Any"
   },
   "pos": {
     "Key": "pos",
-    "ElementSupport": "Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "quadtree": {
     "Key": "quadtree",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Sfdp",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Sfdp",
+    "CompatibleOutputs": "Any"
   },
   "quantum": {
     "Key": "quantum",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "rank": {
     "Key": "rank",
-    "ElementSupport": "Subgraph",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Subgraph",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "rankdir": {
     "Key": "rankdir",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "ranksep": {
     "Key": "ranksep",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Dot, Twopi",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Dot, Twopi",
+    "CompatibleOutputs": "Any"
   },
   "ratio": {
     "Key": "ratio",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "rects": {
     "Key": "rects",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "WriteOnly"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "None",
+    "CompatibleOutputs": "Any"
   },
   "regular": {
     "Key": "regular",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "remincross": {
     "Key": "remincross",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "repulsiveforce": {
     "Key": "repulsiveforce",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Sfdp",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Sfdp",
+    "CompatibleOutputs": "Any"
   },
   "resolution": {
     "Key": "resolution",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Bitmap, Svg"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Bitmap, Svg"
   },
   "root": {
     "Key": "root",
-    "ElementSupport": "Graph, Node",
-    "LayoutEngineSupport": "Circo, Twopi",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Node",
+    "CompatibleLayoutEngines": "Circo, Twopi",
+    "CompatibleOutputs": "Any"
   },
   "rotate": {
     "Key": "rotate",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "rotation": {
     "Key": "rotation",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Sfdp",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Sfdp",
+    "CompatibleOutputs": "Any"
   },
   "samehead": {
     "Key": "samehead",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "sametail": {
     "Key": "sametail",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "samplepoints": {
     "Key": "samplepoints",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "scale": {
     "Key": "scale",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "NotDot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "NotDot",
+    "CompatibleOutputs": "Any"
   },
   "searchsize": {
     "Key": "searchsize",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "sep": {
     "Key": "sep",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "NotDot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "NotDot",
+    "CompatibleOutputs": "Any"
   },
   "shape": {
     "Key": "shape",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "shapefile": {
     "Key": "shapefile",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "showboxes": {
     "Key": "showboxes",
-    "ElementSupport": "Graph, Node, Edge",
-    "LayoutEngineSupport": "Dot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Node, Edge",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "sides": {
     "Key": "sides",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "size": {
     "Key": "size",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "skew": {
     "Key": "skew",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "smoothing": {
     "Key": "smoothing",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Sfdp",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Sfdp",
+    "CompatibleOutputs": "Any"
   },
   "sortv": {
     "Key": "sortv",
-    "ElementSupport": "Graph, Cluster, Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster, Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "splines": {
     "Key": "splines",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "start": {
     "Key": "start",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Neato, Fdp",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Neato, Fdp",
+    "CompatibleOutputs": "Any"
   },
   "style": {
     "Key": "style",
-    "ElementSupport": "Graph, Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "stylesheet": {
     "Key": "stylesheet",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg"
   },
   "tail_lp": {
     "Key": "tail_lp",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "WriteOnly"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "None",
+    "CompatibleOutputs": "Any"
   },
   "tailclip": {
     "Key": "tailclip",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "tailhref": {
     "Key": "tailhref",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map"
   },
   "taillabel": {
     "Key": "taillabel",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "tailport": {
     "Key": "tailport",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "tailtarget": {
     "Key": "tailtarget",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map"
   },
   "tailtooltip": {
     "Key": "tailtooltip",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Cmap"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Cmap"
   },
   "tailURL": {
     "Key": "tailURL",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map"
   },
   "target": {
     "Key": "target",
-    "ElementSupport": "Graph, Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map"
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map"
   },
   "tooltip": {
     "Key": "tooltip",
-    "ElementSupport": "Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Cmap"
+    "CompatibleElements": "Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Cmap"
   },
   "truecolor": {
     "Key": "truecolor",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Bitmap"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Bitmap"
   },
   "URL": {
     "Key": "URL",
-    "ElementSupport": "Graph, Cluster, Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Svg, Map, PostScript"
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Svg, Map, PostScript"
   },
   "vertices": {
     "Key": "vertices",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "WriteOnly"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "None",
+    "CompatibleOutputs": "Any"
   },
   "viewport": {
     "Key": "viewport",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "voro_margin": {
     "Key": "voro_margin",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "NotDot",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "NotDot",
+    "CompatibleOutputs": "Any"
   },
   "weight": {
     "Key": "weight",
-    "ElementSupport": "Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "width": {
     "Key": "width",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "xdotversion": {
     "Key": "xdotversion",
-    "ElementSupport": "Graph",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Xdot"
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Xdot"
   },
   "xlabel": {
     "Key": "xlabel",
-    "ElementSupport": "Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node, Edge",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "xlp": {
     "Key": "xlp",
-    "ElementSupport": "Node, Edge",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "WriteOnly"
+    "CompatibleElements": "Node, Edge",
+    "CompatibleLayoutEngines": "None",
+    "CompatibleOutputs": "Any"
   },
   "z": {
     "Key": "z",
-    "ElementSupport": "Node",
-    "LayoutEngineSupport": "Any",
-    "OutputFormatSupport": "Any"
+    "CompatibleElements": "Node",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   }
 }

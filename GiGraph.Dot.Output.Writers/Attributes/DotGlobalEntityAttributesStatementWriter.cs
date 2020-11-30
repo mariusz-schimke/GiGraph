@@ -4,14 +4,11 @@ using GiGraph.Dot.Output.Writers.Attributes.Node;
 
 namespace GiGraph.Dot.Output.Writers.Attributes
 {
-    public class DotGlobalEntityAttributesStatementWriter : DotEntityWriter, IDotGlobalEntityAttributesStatementWriter
+    public class DotGlobalEntityAttributesStatementWriter : DotEntityStatementWriter, IDotGlobalEntityAttributesStatementWriter
     {
-        protected readonly bool _useStatementDelimiter;
-
         public DotGlobalEntityAttributesStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool useStatementDelimiter)
-            : base(tokenWriter, configuration, enforceBlockComment: true)
+            : base(tokenWriter, configuration, useStatementDelimiter)
         {
-            _useStatementDelimiter = useStatementDelimiter;
         }
 
         public virtual IDotGlobalGraphAttributesWriter BeginGraphAttributesStatement()
@@ -46,12 +43,7 @@ namespace GiGraph.Dot.Output.Writers.Attributes
 
         protected virtual void EndEntityAttributesStatement()
         {
-            if (_useStatementDelimiter)
-            {
-                _tokenWriter.StatementEnd();
-            }
-
-            LineBreak();
+            EndStatement();
         }
 
         public override void EndComment()

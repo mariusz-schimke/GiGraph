@@ -13,8 +13,8 @@
         public static string Escape(string value)
         {
             return value
-              ?.Replace("<", @"\<")
-              ?.Replace(">", @"\>");
+              ?.Replace("<", "\\<")
+              ?.Replace(">", "\\>");
         }
     }
 }

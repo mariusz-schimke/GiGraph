@@ -3,13 +3,14 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Metadata;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Scaling;
+using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
@@ -22,12 +23,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEntityHyperlinkAttributes hyperlinkAttributes,
             DotGraphFontAttributes fontAttributes,
-            DotGraphStyleAttributes styleAttributes
+            DotGraphStyleAttributes styleAttributes,
+            DotGraphStyleSheetAttributes styleSheetAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
             Font = fontAttributes;
             Style = styleAttributes;
+            StyleSheet = styleSheetAttributes;
         }
 
         public DotGraphAttributes(DotAttributeCollection attributes)
@@ -36,7 +39,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 GraphAttributesKeyLookup,
                 new DotEntityHyperlinkAttributes(attributes),
                 new DotGraphFontAttributes(attributes),
-                new DotGraphStyleAttributes(attributes)
+                new DotGraphStyleAttributes(attributes),
+                new DotGraphStyleSheetAttributes(attributes)
             )
         {
         }
@@ -55,6 +59,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     Style options. Note that the options are shared with those specified for <see cref="Clusters" />.
         /// </summary>
         public virtual DotGraphStyleAttributes Style { get; }
+
+        /// <summary>
+        ///     Style sheet attributes used for SVG output.
+        /// </summary>
+        public virtual DotGraphStyleSheetAttributes StyleSheet { get; }
 
         // accessible only through the interface
         [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
@@ -76,6 +85,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             get => base.ColorScheme;
             set => base.ColorScheme = value;
+        }
+
+        /// <inheritdoc cref="IDotGraphAttributes.Id" />
+        public override DotEscapeString Id
+        {
+            get => base.Id;
+            set => base.Id = value;
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Comment" />
@@ -150,6 +166,24 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotOrientationAttribute(k, v.Value));
         }
 
+        // implemented explicitly not to cause confusion (there two other synonymous attributes)
+        /// <inheritdoc cref="IDotGraphAttributes.OrientationAngle" />
+        [DotAttributeKey(DotAttributeKeys.Rotate)]
+        public virtual int? OrientationAngle
+        {
+            get => GetValueAsInt(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
+        }
+
+        // implemented explicitly not to cause confusion (there two other synonymous attributes)
+        /// <inheritdoc cref="IDotGraphAttributes.LandscapeOrientation" />
+        [DotAttributeKey(DotAttributeKeys.Landscape)]
+        public virtual bool? LandscapeOrientation
+        {
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+        }
+
         /// <inheritdoc cref="IDotGraphAttributes.LayoutDirection" />
         [DotAttributeKey(DotAttributeKeys.RankDir)]
         public virtual DotLayoutDirection? LayoutDirection
@@ -218,14 +252,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                     : null;
             }
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankSeparationDefinitionAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.Rotation" />
-        [DotAttributeKey(DotAttributeKeys.Rotate)]
-        public virtual int? Rotation
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Center" />
@@ -337,12 +363,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 : new DotDoubleAttribute(k, v.Value));
         }
 
-        /// <inheritdoc cref="IDotGraphAttributes.LandscapeOrientation" />
-        [DotAttributeKey(DotAttributeKeys.Landscape)]
-        public virtual bool? LandscapeOrientation
+        /// <inheritdoc cref="IDotGraphAttributes.RootNodeId" />
+        [DotAttributeKey(DotAttributeKeys.Root)]
+        public virtual string RootNodeId
         {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeIdAttribute(k, v));
+        }
+
+        /// <inheritdoc cref="IDotGraphAttributes.Rotation" />
+        [DotAttributeKey(DotAttributeKeys.Rotation)]
+        public virtual double? Rotation
+        {
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
     }
 }

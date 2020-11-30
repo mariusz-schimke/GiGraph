@@ -16,7 +16,7 @@
 
             if (_useStatementDelimiter)
             {
-                _tokenWriter.StatementEnd();
+                _tokenWriter.StatementDelimiter();
             }
 
             LineBreak();

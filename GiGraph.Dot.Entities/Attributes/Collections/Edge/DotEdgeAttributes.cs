@@ -3,7 +3,7 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Metadata;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Strings;
@@ -24,7 +24,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             DotEdgeEndpointLabelAttributes endpointLabelAttributes,
             DotEdgeLabelHyperlinkAttributes labelHyperlinkAttributes,
             DotEdgeHyperlinkAttributes edgeHyperlinkAttributes,
-            DotEdgeStyleAttributes edgeStyleAttributes
+            DotEdgeStyleAttributes edgeStyleAttributes,
+            DotEntityStyleSheetAttributes styleSheetAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
@@ -32,6 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             Tail = tailAttributes;
             Font = fontAttributes;
             Style = edgeStyleAttributes;
+            StyleSheet = styleSheetAttributes;
             EndpointLabels = endpointLabelAttributes;
             EdgeHyperlink = edgeHyperlinkAttributes;
             LabelHyperlink = labelHyperlinkAttributes;
@@ -48,7 +50,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
                 new DotEdgeEndpointLabelAttributes(attributes),
                 new DotEdgeLabelHyperlinkAttributes(attributes),
                 new DotEdgeHyperlinkAttributes(attributes),
-                new DotEdgeStyleAttributes(attributes)
+                new DotEdgeStyleAttributes(attributes),
+                new DotEntityStyleSheetAttributes(attributes)
             )
         {
         }
@@ -93,6 +96,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// </summary>
         public virtual DotEdgeStyleAttributes Style { get; }
 
+        /// <summary>
+        ///     Style sheet attributes used for SVG output.
+        /// </summary>
+        public virtual DotEntityStyleSheetAttributes StyleSheet { get; }
+
         // accessible only through the interface
         [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
         DotStyles? IDotEdgeAttributes.Style
@@ -113,6 +121,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         {
             get => base.ColorScheme;
             set => base.ColorScheme = value;
+        }
+
+        /// <inheritdoc cref="IDotEdgeAttributes.Id" />
+        public override DotEscapeString Id
+        {
+            get => base.Id;
+            set => base.Id = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Comment" />

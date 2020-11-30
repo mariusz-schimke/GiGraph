@@ -1,10 +1,11 @@
 ﻿using System;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Output.Writers.Options
 {
     public class DotTokenWriterOptions
     {
-        public DotTokenWriterOptions(int indentationLevel, int indentationSize, char indentationChar, string lineBreak, bool singleLine, Func<string, string> textEncoder)
+        public DotTokenWriterOptions(int indentationLevel, int indentationSize, char indentationChar, string lineBreak, bool singleLine, Func<string, DotTokenType, string> textEncoder)
         {
             IndentationLevel = indentationLevel;
             IndentationSize = indentationSize;
@@ -25,7 +26,7 @@ namespace GiGraph.Dot.Output.Writers.Options
         public virtual string LineBreak { get; protected set; }
         public virtual bool SingleLine { get; protected set; }
 
-        public virtual Func<string, string> TextEncoder { get; protected set; }
+        public virtual Func<string, DotTokenType, string> TextEncoder { get; protected set; }
 
         public virtual DotTokenWriterOptions ToSingleLine()
         {

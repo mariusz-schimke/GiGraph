@@ -1,6 +1,6 @@
 using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Metadata;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Scaling
@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Types.Scaling
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return DotAttributeValueAttribute.TryGetValue(Option, out var result)
+            return DotAttributeValue.TryGet(Option, out var result)
                 ? result
                 : throw new ArgumentOutOfRangeException(nameof(Option), $"The specified graph scaling option '{Option}' is invalid.");
         }

@@ -33,6 +33,11 @@ namespace GiGraph.Dot.Output.Options
         public virtual string LineBreak { get; set; } = Environment.NewLine;
 
         /// <summary>
+        ///     Gets global attribute formatting options.
+        /// </summary>
+        public virtual GlobalAttributesOptions GlobalAttributes { get; } = new GlobalAttributesOptions();
+
+        /// <summary>
         ///     Gets subgraph formatting options.
         /// </summary>
         public virtual SubgraphOptions Subgraphs { get; } = new SubgraphOptions();
@@ -48,10 +53,39 @@ namespace GiGraph.Dot.Output.Options
         public virtual EdgeOptions Edges { get; } = new EdgeOptions();
 
         /// <summary>
+        ///     Gets node formatting options.
+        /// </summary>
+        public virtual NodeOptions Nodes { get; } = new NodeOptions();
+
+        /// <summary>
         ///     An optional text encoder to use when writing text to the output stream. May become useful when the DOT visualization tool you
         ///     use fails processing some special or national characters. In such case replacing them with their HTML-code equivalents might
         ///     help.
         /// </summary>
-        public virtual Func<string, string> TextEncoder { get; set; }
+        public virtual Func<string, DotTokenType, string> TextEncoder { get; set; }
+
+        /// <summary>
+        ///     Causes attributes of all types of elements to be written in single lines.
+        /// </summary>
+        public virtual DotFormattingOptions SingleLineAttributes()
+        {
+            return SingleLineAttributes(true);
+        }
+
+        /// <summary>
+        ///     Causes attributes of all types of elements to be written in multiple lines (one per line).
+        /// </summary>
+        public virtual DotFormattingOptions MultilineAttributes()
+        {
+            return SingleLineAttributes(false);
+        }
+
+        protected virtual DotFormattingOptions SingleLineAttributes(bool value)
+        {
+            GlobalAttributes.SingleLineAttributes = value;
+            Nodes.SingleLineAttributes = value;
+            Edges.SingleLineAttributes = value;
+            return this;
+        }
     }
 }

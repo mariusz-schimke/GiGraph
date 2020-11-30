@@ -2,7 +2,7 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Metadata;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
@@ -20,9 +20,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEntityHyperlinkAttributes hyperlinkAttributes,
             DotEntityFontAttributes fontAttributes,
-            DotClusterStyleAttributes styleAttributes
+            DotClusterStyleAttributes styleAttributes,
+            DotEntityStyleSheetAttributes styleSheetAttributes
         )
-            : base(attributes, attributeKeyLookup, hyperlinkAttributes)
+            : base(attributes, attributeKeyLookup, hyperlinkAttributes, styleSheetAttributes)
         {
             Font = fontAttributes;
             Style = styleAttributes;
@@ -34,7 +35,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
                 ClusterAttributesKeyLookup,
                 new DotEntityHyperlinkAttributes(attributes),
                 new DotEntityFontAttributes(attributes),
-                new DotClusterStyleAttributes(attributes)
+                new DotClusterStyleAttributes(attributes),
+                new DotEntityStyleSheetAttributes(attributes)
             )
         {
         }
@@ -131,6 +133,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         {
             get => base.SortIndex;
             set => base.SortIndex = value;
+        }
+
+        /// <inheritdoc cref="IDotClusterAttributes.Id" />
+        public override DotEscapeString Id
+        {
+            get => base.Id;
+            set => base.Id = value;
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor" />

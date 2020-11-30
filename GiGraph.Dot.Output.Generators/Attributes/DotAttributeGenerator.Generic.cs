@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Output.Generators.Attributes
 
         protected virtual string EscapeKey(string key)
         {
-            return _syntaxRules.KeyEscaper.Escape(key);
+            return _syntaxRules.Attributes.KeyEscaper.Escape(key);
         }
 
         protected virtual bool KeyRequiresQuoting(string key)
@@ -50,6 +50,11 @@ namespace GiGraph.Dot.Output.Generators.Attributes
         protected virtual bool ValueRequiresQuoting(string value)
         {
             return _options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
+        }
+
+        protected virtual bool ValueRequiresQuoting(string[] valueParts)
+        {
+            return ValueRequiresQuoting(string.Join(string.Empty, valueParts));
         }
     }
 }

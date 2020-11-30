@@ -1,7 +1,7 @@
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Metadata;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Fonts;
 
@@ -61,7 +61,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             base.Set(attributes);
             Directories = attributes.Directories;
         }
-        
+
         /// <summary>
         ///     Copies font properties from the specified instance.
         /// </summary>

@@ -48,6 +48,12 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         {
         }
 
+        public override string Annotation
+        {
+            get => Subgraph.Annotation;
+            set => Subgraph.Annotation = value;
+        }
+
         /// <summary>
         ///     Gets the subgraph whose nodes represent the endpoints of multiple edges.
         /// </summary>

@@ -114,10 +114,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         bool? Center { get; set; }
 
         /// <summary>
+        ///     Sets graph orientation to landscape or portrait (default). Used only if <see cref="OrientationAngle" /> is not defined. See
+        ///     also <see cref="LandscapeOrientation" />.
+        /// </summary>
+        DotOrientation? Orientation { get; set; }
+
+        /// <summary>
         ///     If 90, sets drawing orientation to landscape (default: 0). See also <see cref="Orientation" /> and
         ///     <see cref="LandscapeOrientation" />.
         /// </summary>
-        int? Rotation { get; set; }
+        int? OrientationAngle { get; set; }
+
+        /// <summary>
+        ///     Rotates the final layout counter-clockwise by the specified number of degrees (sfdp only; default: 0).
+        /// </summary>
+        double? Rotation { get; set; }
 
         /// <summary>
         ///     Gets or sets the direction of graph layout (dot only, default: <see cref="DotLayoutDirection.TopToBottom" />).
@@ -313,15 +324,49 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         double? Resolution { get; set; }
 
         /// <summary>
-        ///     Sets graph orientation to landscape or portrait (default). Used only if <see cref="Rotation" /> is not defined. See also
-        ///     <see cref="LandscapeOrientation" />.
-        /// </summary>
-        DotOrientation? Orientation { get; set; }
-
-        /// <summary>
-        ///     If true, the graph is rendered in landscape mode (default: false). Synonymous with <see cref="Rotation" /> = 90 or
+        ///     If true, the graph is rendered in landscape mode (default: false). Synonymous with <see cref="OrientationAngle" /> = 90 or
         ///     <see cref="Orientation" /> = <see cref="DotOrientation.Landscape" />.
         /// </summary>
         bool? LandscapeOrientation { get; set; }
+
+        /// <summary>
+        ///     <para>
+        ///         The identifier of a node that should be used as the center of the layout and the root of the generated spanning tree
+        ///         (circo, twopi only).
+        ///     </para>
+        ///     <para>
+        ///         In twopi, root will actually be the central node. In circo, the block containing the node will be central in the drawing
+        ///         of its connected component. If not defined, twopi will pick a most central node, and circo will pick a random node.
+        ///     </para>
+        ///     <para>
+        ///         If the attribute is defined as the empty string, twopi will reset it to name of the node picked as the root node.
+        ///     </para>
+        ///     <para>
+        ///         For twopi, it is possible to have multiple roots, presumably one for each component. If more than one node in a component
+        ///         is marked as the root, twopi will pick one (see the <see cref="DotNodeAttributes.IsRoot" /> attribute on a node).
+        ///     </para>
+        /// </summary>
+        string RootNodeId { get; set; }
+
+        /// <summary>
+        ///     <para>
+        ///         Allows the graph author to provide an identifier for graph objects which is to be included in the output (svg,
+        ///         postscript, map only).
+        ///     </para>
+        ///     <para>
+        ///         Normal <see cref="DotEscapeString.NodeId" />, <see cref="DotEscapeString.EdgeDefinition" />,
+        ///         <see cref="DotEscapeString.GraphId" /> substitutions can be applied (see <see cref="DotTextFormatter" />). Note, however,
+        ///         that <see cref="DotEscapeString.EdgeDefinition" /> does not provide a unique ID for multi-edges.
+        ///     </para>
+        ///     <para>
+        ///         If provided, it is the responsibility of the provider to keep ID values unique for its intended downstream use. If no ID
+        ///         attribute is provided, then a unique internal ID is used. However, this value is unpredictable by the graph writer.
+        ///     </para>
+        ///     <para>
+        ///         If the graph provides an ID attribute, this will be used as a prefix for internally generated attributes. By making
+        ///         internally-used attributes distinct, the user can include multiple image maps in the same document.
+        ///     </para>
+        /// </summary>
+        DotEscapeString Id { get; set; }
     }
 }

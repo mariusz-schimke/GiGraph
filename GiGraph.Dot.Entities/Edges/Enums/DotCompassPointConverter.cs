@@ -1,5 +1,5 @@
 ﻿using System;
-using GiGraph.Dot.Entities.Metadata;
+using GiGraph.Dot.Entities.Attributes.Metadata;
 
 namespace GiGraph.Dot.Entities.Edges.Enums
 {
@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Edges.Enums
     {
         public static string Convert(DotCompassPoint compassPoint)
         {
-            return DotAttributeValueAttribute.TryGetValue(compassPoint, out var result)
+            return DotAttributeValue.TryGet(compassPoint, out var result)
                 ? result
                 : throw new ArgumentOutOfRangeException(nameof(compassPoint), $"The specified compass point '{compassPoint}' is invalid.");
         }

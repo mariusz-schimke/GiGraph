@@ -14,15 +14,15 @@ namespace GiGraph.Dot.Output.Generators.Graphs
 
         protected override void WriteEntity(DotGraph graph, IDotGraphWriterRoot writerRoot)
         {
-            var writer = writerRoot.BeginGraph(graph.Directed);
+            var writer = writerRoot.BeginGraph(graph.IsDirected);
 
-            WriteDeclaration(graph.Id, graph.Strict, writer);
+            WriteDeclaration(graph.Id, graph.IsStrict, writer);
             WriteBody(graph, writer);
 
             writerRoot.EndGraph();
         }
 
-        protected virtual void WriteDeclaration(string id, bool isStrict, IDotGraphWriter writer)
+        protected virtual void WriteDeclaration(string id, bool strict, IDotGraphWriter writer)
         {
             id = EscapeIdentifier(id);
 
@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Output.Generators.Graphs
             writer.WriteGraphDeclaration
             (
                 id,
-                isStrict,
+                strict,
                 quoteId: IdentifierRequiresQuoting(id)
             );
         }

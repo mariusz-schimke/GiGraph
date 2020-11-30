@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Entities.Metadata;
+﻿using GiGraph.Dot.Entities.Attributes.Metadata;
 
 namespace GiGraph.Dot.Entities.Attributes.Enums
 {

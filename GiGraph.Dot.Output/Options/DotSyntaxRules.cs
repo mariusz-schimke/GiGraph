@@ -8,63 +8,40 @@ namespace GiGraph.Dot.Output.Options
     /// <summary>
     ///     The syntax rules used on DOT output generation.
     /// </summary>
-    public class DotSyntaxRules
+    public partial class DotSyntaxRules
     {
-        protected static readonly IDotTextEscaper[] DefaultEscaper =
-        {
-            new DotBackslashEscaper(),
-            new DotQuotationMarkEscaper(),
-            new DotLineBreakEscaper()
-        };
-
         /// <summary>
         ///     The collection of reserved words that cannot be used as identifiers/keys unless quoted.
         /// </summary>
-        public virtual ICollection<string> Keywords { get; protected set; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        public virtual ICollection<string> Keywords { get; set; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
+            "graph",
             "node",
             "edge",
+            "subgraph",
             "strict",
-            "graph",
-            "digraph",
-            "subgraph"
+            "digraph"
         };
 
         /// <summary>
         ///     The regex pattern to use in order to determine if an alphabetic identifier or attribute value can be used without quoting.
         /// </summary>
-        public virtual string AlphabeticIdentifierPattern { get; protected set; } = @"^[_a-zA-Z\200-\377]+[_0-9a-zA-Z\200-\377]*$";
+        public virtual string AlphabeticIdentifierPattern { get; set; } = @"^[_a-zA-Z\200-\377]+[_0-9a-zA-Z\200-\377]*$";
 
         /// <summary>
         ///     The regex pattern to use in order to determine if a numeric identifier or attribute value can be used without quoting.
         /// </summary>
-        public virtual string NumericIdentifierPattern { get; protected set; } = @"^[-]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)$";
+        public virtual string NumericIdentifierPattern { get; set; } = @"^[-]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)$";
 
         /// <summary>
-        ///     A text escaper to use for identifiers.
+        ///     A text escaper to use for identifiers (only quotation marks and trailing backslashes are escaped by default).
         /// </summary>
-        public virtual IDotTextEscaper IdentifierEscaper { get; protected set; } = new DotTextEscapingPipeline(DefaultEscaper);
+        public virtual IDotTextEscaper IdentifierEscaper { get; set; } = DotTextEscapingPipeline.ForString();
 
         /// <summary>
-        ///     A text escaper to use for attribute keys (no escaping is used by default).
+        ///     Attribute-related syntax rules.
         /// </summary>
-        public virtual IDotTextEscaper KeyEscaper { get; protected set; } = DotTextEscapingPipeline.None();
-
-        /// <summary>
-        ///     A text escaper to use for string values.
-        /// </summary>
-        public virtual IDotTextEscaper TextValueEscaper { get; protected set; } = new DotTextEscapingPipeline(DefaultEscaper);
-
-        /// <summary>
-        ///     A text escaper to use for record node fields.
-        /// </summary>
-        public virtual IDotTextEscaper RecordFieldEscaper { get; protected set; } = new DotTextEscapingPipeline(DefaultEscaper)
-        {
-            new DotAngleBracketsEscaper(),
-            new DotCurlyBracketsEscaper(),
-            new DotVerticalBarEscaper(),
-            new DotSpaceHtmlEscaper()
-        };
+        public virtual AttributeRules Attributes { get; } = new AttributeRules();
 
         /// <summary>
         ///     Determines if the specified word is a keyword.
