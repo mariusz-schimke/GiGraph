@@ -166,6 +166,24 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotOrientationAttribute(k, v.Value));
         }
 
+        // implemented explicitly not to cause confusion (there two other synonymous attributes)
+        /// <inheritdoc cref="IDotGraphAttributes.OrientationAngle" />
+        [DotAttributeKey(DotAttributeKeys.Rotate)]
+        public virtual int? OrientationAngle
+        {
+            get => GetValueAsInt(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
+        }
+
+        // implemented explicitly not to cause confusion (there two other synonymous attributes)
+        /// <inheritdoc cref="IDotGraphAttributes.LandscapeOrientation" />
+        [DotAttributeKey(DotAttributeKeys.Landscape)]
+        public virtual bool? LandscapeOrientation
+        {
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+        }
+
         /// <inheritdoc cref="IDotGraphAttributes.LayoutDirection" />
         [DotAttributeKey(DotAttributeKeys.RankDir)]
         public virtual DotLayoutDirection? LayoutDirection
@@ -359,24 +377,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
-        }
-
-        // implemented explicitly not to cause confusion (there two other synonymous attributes)
-        /// <inheritdoc cref="IDotGraphAttributes.OrientationAngle" />
-        [DotAttributeKey(DotAttributeKeys.Rotate)]
-        int? IDotGraphAttributes.OrientationAngle
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
-        }
-
-        // implemented explicitly not to cause confusion (there two other synonymous attributes)
-        /// <inheritdoc cref="IDotGraphAttributes.LandscapeOrientation" />
-        [DotAttributeKey(DotAttributeKeys.Landscape)]
-        bool? IDotGraphAttributes.LandscapeOrientation
-        {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
     }
 }
