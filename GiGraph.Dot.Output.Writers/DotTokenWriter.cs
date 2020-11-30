@@ -176,6 +176,14 @@ namespace GiGraph.Dot.Output.Writers
             return Token("//", DotTokenType.CommentStart, linger);
         }
 
+        public virtual DotTokenWriter LineDiscardOperator(bool linger = false)
+        {
+            // based on https://graphviz.org/doc/info/lang.html
+            // The language supports C++-style comments: /* */ and //. In addition, a line beginning with a '#' character
+            // is considered a line output from a C preprocessor (e.g., # 34 to indicate line 34 ) and discarded
+            return Token("#", DotTokenType.LineDiscardOperator, linger);
+        }
+
         public virtual DotTokenWriter BlockCommentStart(bool linger = false)
         {
             return Token("/*", DotTokenType.BlockCommentStart, linger);

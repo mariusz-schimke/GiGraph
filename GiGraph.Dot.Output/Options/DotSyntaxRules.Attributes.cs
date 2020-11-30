@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Output.Options
             public virtual IDotTextEscaper KeyEscaper { get; set; } = DotTextEscapingPipeline.None();
 
             /// <summary>
-            ///     A text escaper to use for string values (only quotation marks and backslashes are escaped by default).
+            ///     A text escaper to use for string values (only quotation marks and trailing backslashes are escaped by default).
             /// </summary>
             public virtual IDotTextEscaper StringValueEscaper { get; set; } = DotTextEscapingPipeline.ForString();
 

@@ -1,7 +1,7 @@
 ﻿namespace GiGraph.Dot.Output.TextEscaping
 {
     /// <summary>
-    ///     Escapes spaces ( ). Use for escaping text of record node fields.
+    ///     Escapes spaces.
     /// </summary>
     public class DotSpaceEscaper : IDotTextEscaper
     {
@@ -12,7 +12,7 @@
 
         public static string Escape(string value)
         {
-            return value?.Replace(" ", @"\ ");
+            return value?.Replace(" ", "\\ ");
         }
     }
 }

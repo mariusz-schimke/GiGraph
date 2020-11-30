@@ -1,9 +1,9 @@
 ﻿namespace GiGraph.Dot.Output.TextEscaping
 {
     /// <summary>
-    ///     Escapes backslashes.
+    ///     Escapes trailing backslash with the &#92; HTML code.
     /// </summary>
-    public class DotBackslashEscaper : IDotTextEscaper
+    public class DotTrailingBackslashHtmlEscaper : IDotTextEscaper
     {
         string IDotTextEscaper.Escape(string value)
         {
@@ -12,7 +12,9 @@
 
         public static string Escape(string value)
         {
-            return value?.Replace("\\", "\\\\");
+            return true == value?.EndsWith("\\")
+                ? $"{value.Remove(value.Length - 1)}&#92;"
+                : value;
         }
     }
 }

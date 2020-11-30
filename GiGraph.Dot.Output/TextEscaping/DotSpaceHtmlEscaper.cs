@@ -1,7 +1,7 @@
 ﻿namespace GiGraph.Dot.Output.TextEscaping
 {
     /// <summary>
-    ///     Escapes spaces ( ) with a &#32; HTML code. Use for escaping text of record node fields.
+    ///     Escapes spaces with the &#32; HTML code.
     /// </summary>
     public class DotSpaceHtmlEscaper : IDotTextEscaper
     {

@@ -64,14 +64,14 @@ namespace GiGraph.Dot.Entities.Tests
         [Fact]
         public void record_port_and_field_return_escaped_dot_encoded_value()
         {
-            var value = " a \" \\ \r\n \r \n < > { } | ";
+            var value = " a \" \\ \r\n \r \n < > { } | \\";
             var rec = new DotRecord(new DotRecordTextField(value, value));
 
-            // CR LF are not replaced in port
-            var port = @$"<\ a\ \""\ \\\ {"\r\n"}\ {'\r'}\ {'\n'}\ \<\ \>\ \{{\ \}}\ \|\ >";
+            // line breaks and backslashes are not escaped in port (only the trailing backslash has to)
+            var port = @$"<\ a\ \""\ \\ {"\r\n"}\ {'\r'}\ {'\n'}\ \<\ \>\ \{{\ \}}\ \|\ &#92;>";
 
-            // CR LF are replaced with \n in field
-            var field = @"\ a\ \""\ \\\ \n\ \n\ \n\ \<\ \>\ \{\ \}\ \|\ ";
+            // line breaks and backslashes are escaped in field
+            var field = @"\ a\ \""\ \\\ \n\ \n\ \n\ \<\ \>\ \{\ \}\ \|\ \\";
 
             Assert.Equal($"{port} {field}", ((IDotEncodable) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }

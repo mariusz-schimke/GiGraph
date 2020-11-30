@@ -61,11 +61,13 @@ namespace GiGraph.Dot.Output.TextEscaping
         {
             return new DotTextEscapingPipeline
             (
-                // When a single backslash is quoted ("\"), it is misinterpreted as an escape character for the closing quotation mark,
-                // so it has to be escaped ("\\"). Escaping backslashes seems to be redundant apart from that specific case
-                // (unless this is an escString type attribute).
-                new DotBackslashEscaper(),
-                // quotation mark would make a quoted string invalid, so has to be escaped
+                // When a string ends with a backslash ("...\"), the closing quotation mark is interpreted as a content character,
+                // so the backslash has to be escaped.
+
+                // In quoted strings in DOT, the only escaped character is double-quote ("). That is, in quoted strings, the dyad \" is converted to ";
+                // all other characters are left unchanged. In particular, \\ remains \\. Layout engines may apply additional escape sequences.
+                // https://graphviz.org/doc/info/lang.html
+                new DotTrailingBackslashHtmlEscaper(),
                 new DotQuotationMarkEscaper()
             );
         }
@@ -76,8 +78,11 @@ namespace GiGraph.Dot.Output.TextEscaping
         public static DotTextEscapingPipeline ForEscapeString()
         {
             return new DotTextEscapingPipeline(
-                ForString(),
-                new DotLineBreakEscaper()
+                new DotBackslashEscaper(),
+                new DotQuotationMarkEscaper(),
+                new DotCarriageReturnLineFeedEscaper(),
+                new DotCarriageReturnEscaper(),
+                new DotLineFeedEscaper()
             );
         }
 
@@ -100,6 +105,8 @@ namespace GiGraph.Dot.Output.TextEscaping
         public static DotTextEscapingPipeline ForRecordLabelPort()
         {
             return new DotTextEscapingPipeline(
+                // when a port string ends with a backslash (<...\>), the closing angle bracket is interpreted as a content character,
+                // so the backslash has to be escaped
                 ForString(),
                 CommonForRecordLabel()
             );

@@ -26,7 +26,7 @@
 
 - Added AsHtml() and AsEscapedString() extension methods for string.
 
-- Text escaping added to DotStringAttribute (used by properties of type string on attribute collections).
+- Quotation mark and trailing backslash escaping added to attributes of type string.
 
 - The Width, Height, and Sizing node attributes have been grouped under a Size property.
 

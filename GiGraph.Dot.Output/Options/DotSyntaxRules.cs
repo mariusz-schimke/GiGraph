@@ -34,7 +34,7 @@ namespace GiGraph.Dot.Output.Options
         public virtual string NumericIdentifierPattern { get; set; } = @"^[-]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)$";
 
         /// <summary>
-        ///     A text escaper to use for identifiers (only quotation marks and backslashes are escaped by default).
+        ///     A text escaper to use for identifiers (only quotation marks and trailing backslashes are escaped by default).
         /// </summary>
         public virtual IDotTextEscaper IdentifierEscaper { get; set; } = DotTextEscapingPipeline.ForString();
 
