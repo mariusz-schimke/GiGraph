@@ -12,7 +12,7 @@
 
         public static string Escape(string value)
         {
-            return value?.Replace("|", @"\|");
+            return value?.Replace("|", "\\|");
         }
     }
 }

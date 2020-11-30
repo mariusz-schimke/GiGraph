@@ -1,9 +1,9 @@
 ﻿namespace GiGraph.Dot.Output.TextEscaping
 {
     /// <summary>
-    ///     Escapes backslashes.
+    ///     Escapes carriage return characters (CR == \x000D == \r).
     /// </summary>
-    public class DotBackslashEscaper : IDotTextEscaper
+    public class DotCarriageReturnEscaper : IDotTextEscaper
     {
         string IDotTextEscaper.Escape(string value)
         {
@@ -12,7 +12,7 @@
 
         public static string Escape(string value)
         {
-            return value?.Replace("\\", "\\\\");
+            return value?.Replace("\r", "\\n");
         }
     }
 }
