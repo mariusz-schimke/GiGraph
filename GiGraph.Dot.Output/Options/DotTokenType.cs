@@ -25,6 +25,7 @@ namespace GiGraph.Dot.Output.Options
         UndirectedEdge,
         NodeSeparator,
         NodePortSeparator,
+        LineDiscardOperator,
         CommentStart,
         CommentText,
         BlockCommentStart,
