@@ -63,5 +63,29 @@ namespace GiGraph.Dot.Output.Options
         ///     help.
         /// </summary>
         public virtual Func<string, DotTokenType, string> TextEncoder { get; set; }
+
+        /// <summary>
+        ///     Causes attributes of all types of elements to be written in single lines.
+        /// </summary>
+        public virtual DotFormattingOptions SingleLineAttributes()
+        {
+            return SingleLineAttributes(true);
+        }
+
+        /// <summary>
+        ///     Causes attributes of all types of elements to be written in multiple lines (one per line).
+        /// </summary>
+        public virtual DotFormattingOptions MultilineAttributes()
+        {
+            return SingleLineAttributes(false);
+        }
+
+        protected virtual DotFormattingOptions SingleLineAttributes(bool value)
+        {
+            GlobalAttributes.SingleLineAttributes = value;
+            Nodes.SingleLineAttributes = value;
+            Edges.SingleLineAttributes = value;
+            return this;
+        }
     }
 }
