@@ -80,5 +80,20 @@ namespace GiGraph.Dot.Output.Generators.Tests
             var dot = graph.Build();
             Snapshot.Match(dot, "graph_with_html_attribute.gv");
         }
+        
+        [Fact]
+        public void renders_graph_with_appropriately_escaped_identifiers()
+        {
+            var id = "a bcd \" \\ \r\n \r \n h ij < > { } | \\";
+            var graph = new DotGraph(id);
+
+            graph.Nodes.Add(id);
+            graph.Edges.AddLoop(id);
+            graph.Subgraphs.Add().Id = id;
+            graph.Clusters.Add(id);
+
+            var dot = graph.Build();
+            Snapshot.Match(dot, "graph_with_escaped_identifiers.gv");
+        }
     }
 }
