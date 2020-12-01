@@ -3,7 +3,7 @@
     public class DotNodeWriter : DotEntityWithAttributeListWriter, IDotNodeWriter
     {
         public DotNodeWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
-            : base(tokenWriter, configuration, configuration.Formatting.Nodes.SingleLineAttributes)
+            : base(tokenWriter, configuration, configuration.Formatting.Nodes.SingleLineAttributeLists)
         {
         }
 

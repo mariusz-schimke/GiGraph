@@ -3,7 +3,7 @@
     public class DotGlobalNodeAttributesWriter : DotEntityWithAttributeListWriter, IDotGlobalNodeAttributesWriter
     {
         public DotGlobalNodeAttributesWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
-            : base(tokenWriter, configuration, configuration.Formatting.GlobalAttributes.SingleLineNodeAttributes)
+            : base(tokenWriter, configuration, configuration.Formatting.GlobalAttributes.SingleLineNodeAttributeList)
         {
         }
 

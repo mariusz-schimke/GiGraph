@@ -80,7 +80,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             var dot = graph.Build();
             Snapshot.Match(dot, "graph_with_html_attribute.gv");
         }
-        
+
         [Fact]
         public void renders_graph_with_appropriately_escaped_identifiers()
         {

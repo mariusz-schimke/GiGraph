@@ -12,7 +12,7 @@
             /// <summary>
             ///     Gets or sets a value indicating if edge attributes should be written in a single line.
             /// </summary>
-            public virtual bool SingleLineAttributes { get; set; } = true;
+            public virtual bool SingleLineAttributeLists { get; set; } = true;
         }
     }
 }
