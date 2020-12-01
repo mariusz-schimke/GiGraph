@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Output.Writers.Edges
     public class DotEdgeWriter : DotEntityWithAttributeListWriter, IDotEdgeWriter
     {
         public DotEdgeWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
-            : base(tokenWriter, configuration, configuration.Formatting.Edges.SingleLineAttributes)
+            : base(tokenWriter, configuration, configuration.Formatting.Edges.SingleLineAttributeLists)
         {
         }
 
