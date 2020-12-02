@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
         }
 
         /// <summary>
-        ///     The global graph attributes applied to clusters.
+        ///     Global graph attributes applied to clusters.
         /// </summary>
         public virtual DotGraphClusterAttributes Attributes { get; }
     }

@@ -27,11 +27,12 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                 {
                     DotCompatibleElements.Graph => new DotGraph().Attributes,
                     DotCompatibleElements.Graph | DotCompatibleElements.Cluster => new DotGraph().Clusters.Attributes,
+                    DotCompatibleElements.Graph | DotCompatibleElements.Subgraph => new DotGraph().Subgraphs.Attributes,
                     DotCompatibleElements.Subgraph => new DotSubgraph().Attributes,
                     DotCompatibleElements.Cluster => new DotCluster("").Attributes,
                     DotCompatibleElements.Node => new DotNode("").Attributes,
                     DotCompatibleElements.Edge => new DotEdge("").Attributes,
-                    _ => throw new NotSupportedException($"Unsupported element type {elementMetadata.Element}")
+                    _ => throw new NotSupportedException($"Unsupported element type '{elementMetadata.Element}'")
                 };
 
                 ReadAndWriteAttributeProperties(result, elementMetadata.Attributes.Values.ToArray());
