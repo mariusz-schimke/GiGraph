@@ -29,19 +29,23 @@ namespace GiGraph.Dot.Entities.Graphs
         {
         }
 
-        protected DotCommonGraphSection(DotEntityAttributes attributes, DotClusterCollection clusters)
+        protected DotCommonGraphSection(DotEntityAttributes attributes, DotSubgraphCollection subgraphs, DotClusterCollection clusters)
             : this(
                 attributes,
                 new DotNodeCollection(),
                 new DotEdgeCollection(),
-                new DotSubgraphCollection(),
+                subgraphs,
                 clusters
             )
         {
         }
 
         protected DotCommonGraphSection(DotEntityAttributes attributes)
-            : this(attributes, new DotClusterCollection())
+            : this(
+                attributes,
+                new DotSubgraphCollection(),
+                new DotClusterCollection()
+            )
         {
         }
 

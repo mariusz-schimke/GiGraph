@@ -43,7 +43,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot)]
         public const string ClusterRank = "clusterrank";
 
-        // based on the documentation, the attribute is not supported by the root graph, but when set, it is inherited by clusters
+        // based on the documentation, the attribute is not supported by the root graph, but when set, it is actually inherited by clusters
         [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge)]
         public const string Color = "color";
 
@@ -107,7 +107,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Neato, isImplemented: false)]
         public const string Epsilon = "epsilon";
 
-        // based on the documentation, the attribute is not supported by the root graph, but when set, it is inherited by clusters
+        // based on the documentation, the attribute is not supported by the root graph, but when set, it is actually inherited by clusters
         [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge)]
         public const string FillColor = "fillcolor";
 
@@ -354,11 +354,11 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         [DotAttributeMetadata(DotCompatibleElements.Graph, isImplemented: false)]
         public const string PageDir = "pagedir";
 
-        // based on the documentation, the attribute is not supported by the root graph, but when set, it is inherited by clusters
+        // based on the documentation, the attribute is not supported by the root graph, but when set, it is actually inherited by clusters
         [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster)]
         public const string PenColor = "pencolor";
 
-        // based on the documentation, the attribute is not supported by the root graph, but when set, it is inherited by clusters
+        // based on the documentation, the attribute is not supported by the root graph, but when set, it is actually inherited by clusters
         [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge)]
         public const string PenWidth = "penwidth";
 
@@ -377,7 +377,8 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         [DotAttributeMetadata(DotCompatibleElements.Graph, isImplemented: false)]
         public const string Quantum = "quantum";
 
-        [DotAttributeMetadata(DotCompatibleElements.Subgraph, DotCompatibleLayoutEngines.Dot)]
+        // based on the documentation, the attribute is not supported by the root graph, but when set, it is actually inherited by subgraphs
+        [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Subgraph, DotCompatibleLayoutEngines.Dot)]
         public const string Rank = "rank";
 
         [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot)]

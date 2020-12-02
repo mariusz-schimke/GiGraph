@@ -22,15 +22,9 @@
     
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code, or online tools like viz-js.com or www.webgraphviz.com, where you paste a script to view its visualization.</description>
     
-    <releaseNotes>- Added support for attributes: root, id, stylesheet, class, rotation (attribute specifications are available at http://www.graphviz.org/doc/info/attrs.html).
+    <releaseNotes>- Added support for attributes: (attribute specifications are available at http://www.graphviz.org/doc/info/attrs.html).
 
-- Added AsHtml() and AsEscapedString() extension methods for string.
-
-- Quotation mark and trailing backslash escaping added to attributes of type string.
-
-- The Width, Height, and Sizing node attributes have been grouped under a Size property.
-
-- Added several new output formatting options.
+- The rank attribute may now be set globally for subgraphs.
 
 - Refactoring.
 
