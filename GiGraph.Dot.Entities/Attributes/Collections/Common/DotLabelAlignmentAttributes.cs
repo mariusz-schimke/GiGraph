@@ -1,8 +1,8 @@
-using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Attributes.Metadata;
+using GiGraph.Dot.Entities.Types.Helpers;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
@@ -59,56 +59,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         /// </param>
         public virtual void Set(DotAlignment alignment)
         {
-            switch (alignment)
-            {
-                case DotAlignment.TopLeft:
-                    Vertical = DotVerticalAlignment.Top;
-                    Horizontal = DotHorizontalAlignment.Left;
-                    break;
-
-                case DotAlignment.TopCenter:
-                    Vertical = DotVerticalAlignment.Top;
-                    Horizontal = DotHorizontalAlignment.Center;
-                    break;
-
-                case DotAlignment.TopRight:
-                    Vertical = DotVerticalAlignment.Top;
-                    Horizontal = DotHorizontalAlignment.Right;
-                    break;
-
-                case DotAlignment.MiddleLeft:
-                    Vertical = DotVerticalAlignment.Center;
-                    Horizontal = DotHorizontalAlignment.Left;
-                    break;
-
-                case DotAlignment.MiddleCenter:
-                    Vertical = DotVerticalAlignment.Center;
-                    Horizontal = DotHorizontalAlignment.Center;
-                    break;
-
-                case DotAlignment.MiddleRight:
-                    Vertical = DotVerticalAlignment.Center;
-                    Horizontal = DotHorizontalAlignment.Right;
-                    break;
-
-                case DotAlignment.BottomLeft:
-                    Vertical = DotVerticalAlignment.Bottom;
-                    Horizontal = DotHorizontalAlignment.Left;
-                    break;
-
-                case DotAlignment.BottomCenter:
-                    Vertical = DotVerticalAlignment.Bottom;
-                    Horizontal = DotHorizontalAlignment.Center;
-                    break;
-
-                case DotAlignment.BottomRight:
-                    Vertical = DotVerticalAlignment.Bottom;
-                    Horizontal = DotHorizontalAlignment.Right;
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(alignment), $"The specified alignment option '{alignment}' is invalid.");
-            }
+            Vertical = DotPartialEnumMapper.ToPartial<DotAlignment, DotVerticalAlignment>(alignment);
+            Horizontal = DotPartialEnumMapper.ToPartial<DotAlignment, DotHorizontalAlignment>(alignment);
         }
 
         /// <summary>
