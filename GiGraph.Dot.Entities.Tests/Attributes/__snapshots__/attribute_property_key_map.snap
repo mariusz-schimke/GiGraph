@@ -176,6 +176,9 @@
   "landscape": [
     "LandscapeOrientation [Graph]"
   ],
+  "layout": [
+    "Layout.Engine [Graph]"
+  ],
   "len": [
     "Length [Edge]"
   ],
@@ -226,7 +229,7 @@
     "Rank [Graph, Subgraph]"
   ],
   "rankdir": [
-    "LayoutDirection [Graph]"
+    "Layout.Direction [Graph]"
   ],
   "ranksep": [
     "RankSeparation [Graph]"

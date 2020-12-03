@@ -261,7 +261,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         [DotAttributeMetadata(DotCompatibleElements.Graph, isImplemented: false)]
         public const string Layers = "layers";
 
-        [DotAttributeMetadata(DotCompatibleElements.Graph, isImplemented: false)]
+        [DotAttributeMetadata(DotCompatibleElements.Graph)]
         public const string Layout = "layout";
 
         [DotAttributeMetadata(DotCompatibleElements.Edge, DotCompatibleLayoutEngines.Neato | DotCompatibleLayoutEngines.Fdp)]
