@@ -37,8 +37,8 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         Neato = 1 << 2,
 
         /// <summary>
-        ///     The attribute is used by the fdp layout engine that draws “spring model” layouts similar to those of neato, but does this by
-        ///     reducing forces rather than working with energy.
+        ///     The attribute is used by the fdp layout engine that draws “spring model” layouts similar to those of <see cref="Neato" />,
+        ///     but does this by reducing forces rather than working with energy.
         /// </summary>
         Fdp = 1 << 3,
 
