@@ -378,5 +378,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
+
+        /// <inheritdoc cref="IDotGraphAttributes.LayoutEngine" />
+        [DotAttributeKey(DotAttributeKeys.Layout)]
+        public virtual string LayoutEngine
+        {
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+        }
     }
 }
