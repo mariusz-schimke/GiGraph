@@ -54,13 +54,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
             set => SetOrRemoveBorderWidth(MethodBase.GetCurrentMethod(), value);
         }
 
-        [DotAttributeKey(DotAttributeKeys.LabelLoc)]
-        public virtual DotVerticalAlignment? VerticalLabelAlignment
-        {
-            get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotVerticalAlignment?) null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
-        }
-
         [DotAttributeKey(DotAttributeKeys.Tooltip)]
         public virtual DotEscapeString Tooltip
         {

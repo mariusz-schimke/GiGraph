@@ -47,21 +47,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         DotLabel Label { get; set; }
 
         /// <summary>
-        ///     Justification for the label. Note that a cluster inherits attributes from its parent. Thus, if the root graph sets this
-        ///     attribute to <see cref="DotHorizontalAlignment.Left" />, the cluster inherits this value. Default:
-        ///     <see cref="DotHorizontalAlignment.Center" />.
-        /// </summary>
-        DotHorizontalAlignment? HorizontalLabelAlignment { get; set; }
-
-        /// <summary>
-        ///     Vertical placement of the label (default: <see cref="DotVerticalAlignment.Top" />; only
-        ///     <see cref="DotVerticalAlignment.Top" /> and <see cref="DotVerticalAlignment.Bottom" /> are allowed). Note that a cluster
-        ///     inherits attributes from its parent. Thus, if the root graph sets this attribute to
-        ///     <see cref="DotVerticalAlignment.Bottom" />, the cluster inherits this value.
-        /// </summary>
-        DotVerticalAlignment? VerticalLabelAlignment { get; set; }
-
-        /// <summary>
         ///     Tooltip annotation attached to the cluster (svg, cmap only). If unset, Graphviz will use the <see cref="Label" /> attribute
         ///     if defined.
         /// </summary>

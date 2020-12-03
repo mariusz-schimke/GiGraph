@@ -25,7 +25,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             DotGraphFontAttributes fontAttributes,
             DotGraphStyleAttributes styleAttributes,
             DotGraphStyleSheetAttributes styleSheetAttributes,
-            DotGraphLayoutAttributes layoutAttributes
+            DotGraphLayoutAttributes layoutAttributes,
+            DotLabelAlignmentAttributes labelAlignmentAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
@@ -33,6 +34,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             Style = styleAttributes;
             StyleSheet = styleSheetAttributes;
             Layout = layoutAttributes;
+            LabelAlignment = labelAlignmentAttributes;
         }
 
         public DotGraphAttributes(DotAttributeCollection attributes)
@@ -43,7 +45,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 new DotGraphFontAttributes(attributes),
                 new DotGraphStyleAttributes(attributes),
                 new DotGraphStyleSheetAttributes(attributes),
-                new DotGraphLayoutAttributes(attributes)
+                new DotGraphLayoutAttributes(attributes),
+                new DotLabelAlignmentAttributes(attributes)
             )
         {
         }
@@ -72,6 +75,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     Graph layout options.
         /// </summary>
         public virtual DotGraphLayoutAttributes Layout { get; }
+
+        /// <summary>
+        ///     Horizontal and vertical label alignment options.
+        /// </summary>
+        public virtual DotLabelAlignmentAttributes LabelAlignment { get; }
 
         // accessible only through the interface
         [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
@@ -124,22 +132,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.HorizontalLabelAlignment" />
-        [DotAttributeKey(DotAttributeKeys.LabelJust)]
-        public virtual DotHorizontalAlignment? HorizontalLabelAlignment
-        {
-            get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotHorizontalAlignment?) null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotHorizontalAlignmentAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.VerticalLabelAlignment" />
-        [DotAttributeKey(DotAttributeKeys.LabelLoc)]
-        public virtual DotVerticalAlignment? VerticalLabelAlignment
-        {
-            get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotVerticalAlignment?) null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.EdgeOrderingMode" />

@@ -21,12 +21,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             DotEntityHyperlinkAttributes hyperlinkAttributes,
             DotEntityFontAttributes fontAttributes,
             DotClusterStyleAttributes styleAttributes,
-            DotEntityStyleSheetAttributes styleSheetAttributes
+            DotEntityStyleSheetAttributes styleSheetAttributes,
+            DotLabelAlignmentAttributes labelAlignmentAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes, styleSheetAttributes)
         {
             Font = fontAttributes;
             Style = styleAttributes;
+            LabelAlignment = labelAlignmentAttributes;
         }
 
         public DotClusterAttributes(DotAttributeCollection attributes)
@@ -36,7 +38,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
                 new DotEntityHyperlinkAttributes(attributes),
                 new DotEntityFontAttributes(attributes),
                 new DotClusterStyleAttributes(attributes),
-                new DotEntityStyleSheetAttributes(attributes)
+                new DotEntityStyleSheetAttributes(attributes),
+                new DotLabelAlignmentAttributes(attributes)
             )
         {
         }
@@ -55,6 +58,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     Style options.
         /// </summary>
         public virtual DotClusterStyleAttributes Style { get; }
+
+        /// <summary>
+        ///     Horizontal and vertical label alignment options.
+        /// </summary>
+        public virtual DotLabelAlignmentAttributes LabelAlignment { get; }
 
         // accessible only through the interface
         /// <inheritdoc cref="IDotClusterAttributes.Style" />
@@ -98,13 +106,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         {
             get => base.GradientAngle;
             set => base.GradientAngle = value;
-        }
-
-        /// <inheritdoc cref="IDotClusterAttributes.VerticalLabelAlignment" />
-        public override DotVerticalAlignment? VerticalLabelAlignment
-        {
-            get => base.VerticalLabelAlignment;
-            set => base.VerticalLabelAlignment = value;
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.Tooltip" />
@@ -164,14 +165,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
-        }
-
-        /// <inheritdoc cref="IDotClusterAttributes.HorizontalLabelAlignment" />
-        [DotAttributeKey(DotAttributeKeys.LabelJust)]
-        public virtual DotHorizontalAlignment? HorizontalLabelAlignment
-        {
-            get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotHorizontalAlignment?) null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotHorizontalAlignmentAttribute(k, v.Value));
         }
 
         protected override void SetFillStyle(DotStyles fillStyle)

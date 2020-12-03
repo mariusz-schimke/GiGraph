@@ -159,10 +159,11 @@
     "LabelHyperlink.Href [Edge]"
   ],
   "labeljust": [
-    "HorizontalLabelAlignment [Graph, Cluster]"
+    "LabelAlignment.Horizontal [Graph, Cluster]"
   ],
   "labelloc": [
-    "VerticalLabelAlignment [Graph, Cluster, Node]"
+    "LabelAlignment.Vertical [Graph, Cluster]",
+    "VerticalLabelAlignment [Node]"
   ],
   "labeltarget": [
     "LabelHyperlink.Target [Edge]"
