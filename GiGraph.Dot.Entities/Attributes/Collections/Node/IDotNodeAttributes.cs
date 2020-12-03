@@ -70,7 +70,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     Vertical placement of the label (default: <see cref="DotVerticalAlignment.Center" />). This attribute is used only when the
         ///     height of the node is larger than the height of its label.
         /// </summary>
-        DotVerticalAlignment? VerticalLabelAlignment { get; set; }
+        DotVerticalAlignment? LabelAlignment { get; set; }
 
         /// <summary>
         ///     Tooltip annotation attached to the node (svg, cmap only). If unset, Graphviz will use the <see cref="Label" /> attribute if
