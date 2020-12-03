@@ -131,11 +131,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         double? Rotation { get; set; }
 
         /// <summary>
-        ///     Gets or sets the direction of graph layout (dot only, default: <see cref="DotLayoutDirection.TopToBottom" />).
-        /// </summary>
-        DotLayoutDirection? LayoutDirection { get; set; }
-
-        /// <summary>
         ///     Controls how, and if, edges are represented. By default, the attribute is unset. How this is interpreted depends on the
         ///     layout. For dot, the default is to draw edges as splines (<see cref="DotEdgeShape.Spline" />). For all other layouts, the
         ///     default is to draw edges as line segments (<see cref="DotEdgeShape.Line" />). Note that for these latter layouts, if

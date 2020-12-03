@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
     public class DotGraphSubgraphAttributes : DotEntityMappableAttributes<IDotSubgraphAttributes>, IDotSubgraphAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup GraphClusterAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphSubgraphAttributes, IDotSubgraphAttributes>().Build();
+        protected static readonly DotMemberAttributeKeyLookup GraphSubgraphAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphSubgraphAttributes, IDotSubgraphAttributes>().Build();
 
         protected DotGraphSubgraphAttributes(DotGraphAttributes graphAttributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(graphAttributes.Collection, attributeKeyLookup)
@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         }
 
         public DotGraphSubgraphAttributes(DotGraphAttributes graphAttributes)
-            : this(graphAttributes, GraphClusterAttributesKeyLookup)
+            : this(graphAttributes, GraphSubgraphAttributesKeyLookup)
         {
         }
 

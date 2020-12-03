@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Examples.Complex
 
             // set graph attributes
             graph.Attributes.Label = "Example Flow";
-            graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
+            graph.Attributes.Layout.Direction = DotLayoutDirection.LeftToRight;
             graph.Attributes.EdgeShape = DotEdgeShape.Orthogonal;
 
             // set attributes for clusters

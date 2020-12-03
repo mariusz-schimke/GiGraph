@@ -24,13 +24,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             DotEntityHyperlinkAttributes hyperlinkAttributes,
             DotGraphFontAttributes fontAttributes,
             DotGraphStyleAttributes styleAttributes,
-            DotGraphStyleSheetAttributes styleSheetAttributes
+            DotGraphStyleSheetAttributes styleSheetAttributes,
+            DotGraphLayoutAttributes layoutAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
             Font = fontAttributes;
             Style = styleAttributes;
             StyleSheet = styleSheetAttributes;
+            Layout = layoutAttributes;
         }
 
         public DotGraphAttributes(DotAttributeCollection attributes)
@@ -40,7 +42,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 new DotEntityHyperlinkAttributes(attributes),
                 new DotGraphFontAttributes(attributes),
                 new DotGraphStyleAttributes(attributes),
-                new DotGraphStyleSheetAttributes(attributes)
+                new DotGraphStyleSheetAttributes(attributes),
+                new DotGraphLayoutAttributes(attributes)
             )
         {
         }
@@ -64,6 +67,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     Style sheet attributes used for SVG output.
         /// </summary>
         public virtual DotGraphStyleSheetAttributes StyleSheet { get; }
+
+        /// <summary>
+        ///     Graph layout options.
+        /// </summary>
+        public virtual DotGraphLayoutAttributes Layout { get; }
 
         // accessible only through the interface
         [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
@@ -182,14 +190,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.LayoutDirection" />
-        [DotAttributeKey(DotAttributeKeys.RankDir)]
-        public virtual DotLayoutDirection? LayoutDirection
-        {
-            get => GetValueAs<DotLayoutDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotLayoutDirection?) null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLayoutDirectionAttribute(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.EdgeShape" />

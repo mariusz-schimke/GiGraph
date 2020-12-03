@@ -154,7 +154,7 @@ Every element of the graph, including the graph itself, has **attributes**. Thes
 
 ```c#
 graph.Attributes.Label = "My graph";
-graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
+graph.Attributes.Layout.Direction = DotLayoutDirection.LeftToRight;
 graph.Attributes.BackgroundColor = Color.LightGray;
 ```
 
@@ -1209,7 +1209,7 @@ namespace GiGraph.Dot.Examples
             var graph = new DotGraph();
 
             // set left to right layout direction of the graph using graph attributes
-            graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
+            graph.Attributes.Layout.Direction = DotLayoutDirection.LeftToRight;
             graph.Attributes.Font.Name = "Helvetica";
 
             // set global node attributes (for all nodes of the graph)
@@ -1392,7 +1392,7 @@ namespace GiGraph.Dot.Examples
 
             // set graph attributes
             graph.Attributes.Label = "Example Flow";
-            graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
+            graph.Attributes.Layout.Direction = DotLayoutDirection.LeftToRight;
             graph.Attributes.EdgeShape = DotEdgeShape.Orthogonal;
 
             graph.Clusters.Attributes.AllowEdgeClipping = true;
@@ -1538,7 +1538,7 @@ namespace GiGraph.Dot.Examples
         private static void Main(string[] args)
         {
             var graph = new DotGraph(directed: false);
-            graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
+            graph.Attributes.Layout.Direction = DotLayoutDirection.LeftToRight;
 
             graph.Edges.Add("e", "h");
             graph.Edges.Add("g", "k");
