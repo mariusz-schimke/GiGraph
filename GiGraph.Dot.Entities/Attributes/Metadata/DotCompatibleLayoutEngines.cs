@@ -67,7 +67,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         Patchwork = 1 << 7,
 
         /// <summary>
-        ///     The attribute is used by the PRoxImity Stress Model layout engine.
+        ///     The attribute is valid only when the PRoxImity Stress Model algorithm is in use.
         /// </summary>
         Prism = 1 << 8
     }
