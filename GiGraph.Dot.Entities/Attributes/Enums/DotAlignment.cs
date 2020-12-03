@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Metadata;
 namespace GiGraph.Dot.Entities.Attributes.Enums
 {
     /// <summary>
-    ///     Determines how an image is positioned within its containing element.
+    ///     Determines how an element is positioned within its containing element.
     /// </summary>
     public enum DotAlignment
     {

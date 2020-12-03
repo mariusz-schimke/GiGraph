@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
@@ -36,7 +37,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         }
 
         /// <summary>
-        ///     Sets layout properties.
+        ///     Sets label alignment options.
         /// </summary>
         /// <param name="horizontal">
         ///     The horizontal label alignment to set.
@@ -48,6 +49,66 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         {
             Horizontal = horizontal;
             Vertical = vertical;
+        }
+
+        /// <summary>
+        ///     Sets label alignment.
+        /// </summary>
+        /// <param name="alignment">
+        ///     The alignment to set.
+        /// </param>
+        public virtual void Set(DotAlignment alignment)
+        {
+            switch (alignment)
+            {
+                case DotAlignment.TopLeft:
+                    Vertical = DotVerticalAlignment.Top;
+                    Horizontal = DotHorizontalAlignment.Left;
+                    break;
+
+                case DotAlignment.TopCenter:
+                    Vertical = DotVerticalAlignment.Top;
+                    Horizontal = DotHorizontalAlignment.Center;
+                    break;
+
+                case DotAlignment.TopRight:
+                    Vertical = DotVerticalAlignment.Top;
+                    Horizontal = DotHorizontalAlignment.Right;
+                    break;
+
+                case DotAlignment.MiddleLeft:
+                    Vertical = DotVerticalAlignment.Center;
+                    Horizontal = DotHorizontalAlignment.Left;
+                    break;
+
+                case DotAlignment.MiddleCenter:
+                    Vertical = DotVerticalAlignment.Center;
+                    Horizontal = DotHorizontalAlignment.Center;
+                    break;
+
+                case DotAlignment.MiddleRight:
+                    Vertical = DotVerticalAlignment.Center;
+                    Horizontal = DotHorizontalAlignment.Right;
+                    break;
+
+                case DotAlignment.BottomLeft:
+                    Vertical = DotVerticalAlignment.Bottom;
+                    Horizontal = DotHorizontalAlignment.Left;
+                    break;
+
+                case DotAlignment.BottomCenter:
+                    Vertical = DotVerticalAlignment.Bottom;
+                    Horizontal = DotHorizontalAlignment.Center;
+                    break;
+
+                case DotAlignment.BottomRight:
+                    Vertical = DotVerticalAlignment.Bottom;
+                    Horizontal = DotHorizontalAlignment.Right;
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(alignment), $"The specified alignment option '{alignment}' is invalid.");
+            }
         }
 
         /// <summary>
