@@ -110,6 +110,7 @@ namespace GiGraph.Dot.Extensions
                 formattingOptions.IndentationChar,
                 formattingOptions.LineBreak,
                 formattingOptions.SingleLine,
+                syntaxOptions.Comments.PreferHashForSingleLineComments,
                 formattingOptions.TextEncoder
             );
 
@@ -176,7 +177,7 @@ namespace GiGraph.Dot.Extensions
         {
             var output = graph.Build(formattingOptions, syntaxOptions, syntaxRules);
 
-            // it would be better to build the graph directly to stream, but the solution has not been prepared for async writing 
+            // it would be better to build the graph directly to stream, but the solution does not support async building 
             using var streamWriter = CreateFileStreamWriter(filePath, encoding);
             await streamWriter.WriteAsync(output);
             await streamWriter.FlushAsync();
