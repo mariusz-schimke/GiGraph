@@ -163,7 +163,7 @@
   ],
   "labelloc": [
     "LabelAlignment.Vertical [Graph, Cluster]",
-    "VerticalLabelAlignment [Node]"
+    "LabelAlignment [Node]"
   ],
   "labeltarget": [
     "LabelHyperlink.Target [Edge]"
