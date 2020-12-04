@@ -2,7 +2,7 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Attributes.Metadata;
-using GiGraph.Dot.Entities.Types.Helpers;
+using GiGraph.Dot.Entities.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
@@ -59,8 +59,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         /// </param>
         public virtual void Set(DotAlignment alignment)
         {
-            Vertical = DotPartialEnumMapper.ToPartial<DotAlignment, DotVerticalAlignment>(alignment);
-            Horizontal = DotPartialEnumMapper.ToPartial<DotAlignment, DotHorizontalAlignment>(alignment);
+            Set(new DotLabelAlignment(alignment));
+        }
+
+        /// <summary>
+        ///     Sets label alignment.
+        /// </summary>
+        /// <param name="alignment">
+        ///     The alignment to set.
+        /// </param>
+        public virtual void Set(DotLabelAlignment alignment)
+        {
+            Set(alignment.Horizontal, alignment.Vertical);
         }
 
         /// <summary>
