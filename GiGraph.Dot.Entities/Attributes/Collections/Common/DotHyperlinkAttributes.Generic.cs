@@ -6,15 +6,15 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
-    public abstract class DotEntityHyperlinkAttributes<TIEntityHyperlinkAttributes> : DotEntityAttributes<TIEntityHyperlinkAttributes>, IDotEntityHyperlinkAttributes
-        where TIEntityHyperlinkAttributes : IDotEntityHyperlinkAttributes
+    public abstract class DotHyperlinkAttributes<TIEntityHyperlinkAttributes> : DotEntityAttributes<TIEntityHyperlinkAttributes>, IDotHyperlinkAttributes
+        where TIEntityHyperlinkAttributes : IDotHyperlinkAttributes
     {
-        protected DotEntityHyperlinkAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotHyperlinkAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }
 
-        /// <inheritdoc cref="IDotEntityHyperlinkAttributes.Url" />
+        /// <inheritdoc cref="IDotHyperlinkAttributes.Url" />
         [DotAttributeKey(DotAttributeKeys.Url)]
         public virtual DotEscapeString Url
         {
@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
-        /// <inheritdoc cref="IDotEntityHyperlinkAttributes.Href" />
+        /// <inheritdoc cref="IDotHyperlinkAttributes.Href" />
         [DotAttributeKey(DotAttributeKeys.Href)]
         public virtual DotEscapeString Href
         {
@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
-        /// <inheritdoc cref="IDotEntityHyperlinkAttributes.Target" />
+        /// <inheritdoc cref="IDotHyperlinkAttributes.Target" />
         [DotAttributeKey(DotAttributeKeys.Target)]
         public virtual DotEscapeString Target
         {
@@ -76,7 +76,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         /// <param name="source">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void CopyFrom(IDotEntityHyperlinkAttributes source)
+        public virtual void CopyFrom(IDotHyperlinkAttributes source)
         {
             SetAll(source.Url, source.Target, source.Href);
         }

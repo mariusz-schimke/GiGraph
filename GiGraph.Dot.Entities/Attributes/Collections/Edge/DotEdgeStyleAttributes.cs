@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
-    public class DotEdgeStyleAttributes : DotEntityStyleAttributes
+    public class DotEdgeStyleAttributes : DotStyleAttributes
     {
         public DotEdgeStyleAttributes(DotAttributeCollection attributes)
             : base(attributes)

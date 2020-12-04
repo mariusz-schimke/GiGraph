@@ -5,12 +5,12 @@ using GiGraph.Dot.Entities.Types.Helpers;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
-    public abstract class DotEntityStyleAttributes
+    public abstract class DotStyleAttributes
     {
         public const string StyleKey = DotAttributeKeys.Style;
         protected readonly DotAttributeCollection _attributes;
 
-        public DotEntityStyleAttributes(DotAttributeCollection attributes)
+        public DotStyleAttributes(DotAttributeCollection attributes)
         {
             _attributes = attributes;
         }

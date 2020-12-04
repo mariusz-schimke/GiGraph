@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
-    public interface IDotEntityHyperlinkAttributes
+    public interface IDotHyperlinkAttributes
     {
         /// <summary>
         ///     <para>

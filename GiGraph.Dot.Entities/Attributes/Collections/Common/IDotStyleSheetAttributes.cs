@@ -2,7 +2,7 @@
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
-    public interface IDotEntityStyleSheetAttributes
+    public interface IDotStyleSheetAttributes
     {
         /// <summary>
         ///     Classnames to attach to the element in SVG output. Specify a style sheet <see cref="IDotGraphStyleSheetAttributes.Url" /> on

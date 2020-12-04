@@ -18,10 +18,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         protected DotClusterAttributes(
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
-            DotEntityHyperlinkAttributes hyperlinkAttributes,
-            DotEntityFontAttributes fontAttributes,
+            DotHyperlinkAttributes hyperlinkAttributes,
+            DotFontAttributes fontAttributes,
             DotClusterStyleAttributes styleAttributes,
-            DotEntityStyleSheetAttributes styleSheetAttributes,
+            DotStyleSheetAttributes styleSheetAttributes,
             DotLabelAlignmentAttributes labelAlignmentAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes, styleSheetAttributes)
@@ -35,10 +35,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             : this(
                 attributes,
                 ClusterAttributesKeyLookup,
-                new DotEntityHyperlinkAttributes(attributes),
-                new DotEntityFontAttributes(attributes),
+                new DotHyperlinkAttributes(attributes),
+                new DotFontAttributes(attributes),
                 new DotClusterStyleAttributes(attributes),
-                new DotEntityStyleSheetAttributes(attributes),
+                new DotStyleSheetAttributes(attributes),
                 new DotLabelAlignmentAttributes(attributes)
             )
         {
@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// <summary>
         ///     Font properties.
         /// </summary>
-        public virtual DotEntityFontAttributes Font { get; }
+        public virtual DotFontAttributes Font { get; }
 
         /// <summary>
         ///     Style options.
@@ -66,7 +66,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 
         // accessible only through the interface
         /// <inheritdoc cref="IDotClusterAttributes.Style" />
-        [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
+        [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotClusterAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;

@@ -8,13 +8,13 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
-    public abstract partial class DotClusterNodeCommonAttributes<TIEntityAttributeProperties> : DotEntityCommonAttributes<TIEntityAttributeProperties>
+    public abstract partial class DotClusterNodeCommonAttributes<TIEntityAttributeProperties> : DotEntityRootCommonAttributes<TIEntityAttributeProperties>
     {
         protected DotClusterNodeCommonAttributes(
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
-            DotEntityHyperlinkAttributes hyperlinkAttributes,
-            DotEntityStyleSheetAttributes styleSheetAttributes
+            DotHyperlinkAttributes hyperlinkAttributes,
+            DotStyleSheetAttributes styleSheetAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         /// <summary>
         ///     Style sheet attributes used for SVG output.
         /// </summary>
-        public virtual DotEntityStyleSheetAttributes StyleSheet { get; }
+        public virtual DotStyleSheetAttributes StyleSheet { get; }
 
         [DotAttributeKey(DotAttributeKeys.Color)]
         public virtual DotColorDefinition Color
