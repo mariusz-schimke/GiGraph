@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
     public partial class DotEdgeCollection
     {
         /// <summary>
-        ///     Adds a loop edge that connects the specified node to itself.
+        ///     Adds a loop edge that joins the specified node to itself.
         /// </summary>
         /// <param name="nodeId">
         ///     The node identifier.
@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Gets the first matching loop edge that connects the specified node to itself.
+        ///     Gets the first matching loop edge that joins the specified node to itself.
         /// </summary>
         /// <param name="nodeId">
         ///     The node identifier.
@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Gets loop edges that connect the specified node to itself.
+        ///     Gets loop edges that join the specified node to itself.
         /// </summary>
         /// <param name="nodeId">
         ///     The node identifier.
@@ -60,7 +60,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Determines whether the collection contains any loop edge that connects the specified node to itself.
+        ///     Determines whether the collection contains any loop edge that joins the specified node to itself.
         /// </summary>
         /// <param name="nodeId">
         ///     The node identifier to locate.
@@ -71,7 +71,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Removes the first matching loop edge that connects the specified node to itself.
+        ///     Removes the first matching loop edge that joins the specified node to itself.
         /// </summary>
         /// <param name="nodeId">
         ///     The node identifier of the loop edge to remove.
@@ -90,7 +90,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Removes all loop edges that connect the specified node to itself.
+        ///     Removes all loop edges that join the specified node to itself.
         /// </summary>
         /// <param name="nodeId">
         ///     The node identifier of the loop edges to remove.

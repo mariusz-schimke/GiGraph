@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
+using GiGraph.Dot.Entities.Edges.Endpoints;
 
 namespace GiGraph.Dot.Entities.Edges.Collections
 {
@@ -62,7 +63,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Adds an edge that joins two nodes with the specified identifiers.
+        ///     Adds an edge that joins the two specified nodes.
         /// </summary>
         /// <param name="tailNodeId">
         ///     The tail (source, left) node identifier.
@@ -79,7 +80,26 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Gets the first matching edge that connects two nodes with the specified identifiers.
+        ///     Adds an edge that joins the two specified endpoints.
+        /// </summary>
+        /// <param name="tail">
+        ///     The tail (source, left) node identifier. Use <see cref="DotClusterEndpoint" /> to specify a cluster as an endpoint (if the
+        ///     layout engine in use supports it).
+        /// </param>
+        /// <param name="head">
+        ///     The head (destination, right) node identifier. Use <see cref="DotClusterEndpoint" /> to specify a cluster as an endpoint (if
+        ///     the layout engine is use supports it).
+        /// </param>
+        /// <param name="init">
+        ///     An optional edge initializer delegate.
+        /// </param>
+        public virtual DotEdge Add(DotEndpoint tail, DotEndpoint head, Action<DotEdge> init = null)
+        {
+            return Add(new DotEdge(tail, head), init);
+        }
+
+        /// <summary>
+        ///     Gets the first matching edge that joins the two specified nodes.
         /// </summary>
         /// <param name="tailNodeId">
         ///     The tail (source, left) node identifier.
@@ -93,7 +113,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Gets edges that connect two nodes with the specified identifiers.
+        ///     Gets edges that join the two specified nodes.
         /// </summary>
         /// <param name="tailNodeId">
         ///     The tail (source, left) node identifier.
@@ -122,7 +142,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Removes the first matching edge that connects two nodes with the specified identifiers.
+        ///     Removes the first matching edge that joins the two specified nodes.
         /// </summary>
         /// <param name="tailNodeId">
         ///     The tail (source, left) node identifier.
@@ -144,7 +164,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Removes all edges that connect two nodes with the specified identifiers.
+        ///     Removes all edges that join the two specified nodes.
         /// </summary>
         /// <param name="tailNodeId">
         ///     The tail (source, left) node identifier.

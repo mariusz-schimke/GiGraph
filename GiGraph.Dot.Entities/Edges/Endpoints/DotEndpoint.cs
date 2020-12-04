@@ -63,14 +63,14 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// </param>
         public DotEndpoint(string nodeId, DotEndpointPort port)
         {
-            NodeId = nodeId ?? throw new ArgumentNullException(nameof(nodeId), "Node identifier cannot be null.");
-            _port = port ?? throw new ArgumentNullException(nameof(port), "Port cannot be null.");
+            SetId(nodeId);
+            SetPort(port);
         }
 
         /// <summary>
         ///     Gets the node identifier.
         /// </summary>
-        public virtual string NodeId { get; }
+        public virtual string Id { get; protected set; }
 
         /// <summary>
         ///     Gets or sets the endpoint port, that is a point on a node where an edge is attached to.
@@ -78,12 +78,22 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         public virtual DotEndpointPort Port
         {
             get => _port;
-            set => _port = value ?? throw new ArgumentNullException(nameof(Port), "Port cannot be null.");
+            set => SetPort(value);
+        }
+
+        protected virtual void SetId(string id)
+        {
+            Id = id ?? throw new ArgumentNullException(nameof(id), "Node identifier cannot be null.");
+        }
+
+        protected virtual void SetPort(DotEndpointPort port)
+        {
+            _port = port ?? throw new ArgumentNullException(nameof(Port), "Port cannot be null.");
         }
 
         protected override string GetOrderingKey()
         {
-            return NodeId;
+            return Id;
         }
 
         public static implicit operator DotEndpoint(string nodeId)

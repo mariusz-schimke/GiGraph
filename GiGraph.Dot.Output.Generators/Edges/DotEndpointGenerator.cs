@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Output.Generators.Edges
 
         protected override void WriteEntity(DotEndpoint endpoint, IDotEndpointWriter writer)
         {
-            var nodeId = EscapeIdentifier(endpoint.NodeId);
+            var id = EscapeIdentifier(endpoint.Id);
             var portName = EscapeIdentifier(endpoint.Port.Name);
 
             var compassPoint = endpoint.Port.CompassPoint.HasValue
@@ -24,8 +24,8 @@ namespace GiGraph.Dot.Output.Generators.Edges
 
             writer.WriteEndpoint
             (
-                nodeId,
-                IdentifierRequiresQuoting(nodeId),
+                id,
+                IdentifierRequiresQuoting(id),
                 portName,
                 IdentifierRequiresQuoting(portName),
                 compassPoint,

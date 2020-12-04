@@ -62,7 +62,8 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         ///     Adds a group of edges where the tail endpoint is connected to all nodes in the specified head endpoint group.
         /// </summary>
         /// <param name="tail">
-        ///     The tail (source, left) node.
+        ///     The tail (source, left) node. Use <see cref="DotClusterEndpoint" /> to specify a cluster as an endpoint (if the layout engine
+        ///     in use supports it).
         /// </param>
         /// <param name="head">
         ///     The group whose nodes (as the head endpoints) the <paramref name="tail" /> node should be connected to.
