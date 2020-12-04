@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
     {
         // NOTE! THE VALUES ARE USED BY THE DotAlignment ENUM AS FLAGS
         // THE VALUES CONTINUE FROM DotVerticalAlignment
-        
+
         /// <summary>
         ///     Places the label at the left side of the element.
         /// </summary>

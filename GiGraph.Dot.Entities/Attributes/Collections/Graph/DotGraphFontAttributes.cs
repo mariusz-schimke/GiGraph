@@ -7,7 +7,7 @@ using GiGraph.Dot.Entities.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
-    public class DotGraphFontAttributes : DotEntityFontAttributes<IDotGraphFontAttributes>, IDotGraphFontAttributes
+    public class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAttributes>, IDotGraphFontAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup GraphFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphFontAttributes, IDotGraphFontAttributes>().Build();
 

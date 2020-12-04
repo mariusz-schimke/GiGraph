@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
-    public interface IDotEntityFontAttributes
+    public interface IDotFontAttributes
     {
         /// <summary>
         ///     <para>

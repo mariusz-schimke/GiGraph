@@ -14,14 +14,14 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
-    public partial class DotGraphAttributes : DotEntityCommonAttributes<IDotGraphAttributes>, IDotGraphAttributes
+    public partial class DotGraphAttributes : DotEntityRootCommonAttributes<IDotGraphAttributes>, IDotGraphAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup GraphAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphAttributes, IDotGraphAttributes>().Build();
 
         protected DotGraphAttributes(
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
-            DotEntityHyperlinkAttributes hyperlinkAttributes,
+            DotHyperlinkAttributes hyperlinkAttributes,
             DotGraphFontAttributes fontAttributes,
             DotGraphStyleAttributes styleAttributes,
             DotGraphStyleSheetAttributes styleSheetAttributes,
@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             : this(
                 attributes,
                 GraphAttributesKeyLookup,
-                new DotEntityHyperlinkAttributes(attributes),
+                new DotHyperlinkAttributes(attributes),
                 new DotGraphFontAttributes(attributes),
                 new DotGraphStyleAttributes(attributes),
                 new DotGraphStyleSheetAttributes(attributes),
@@ -82,7 +82,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotLabelAlignmentAttributes LabelAlignment { get; }
 
         // accessible only through the interface
-        [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
+        [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotGraphAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;

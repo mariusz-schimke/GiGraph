@@ -2,7 +2,7 @@
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
-    public interface IDotGraphFontAttributes : IDotEntityFontAttributes
+    public interface IDotGraphFontAttributes : IDotFontAttributes
     {
         /// <summary>
         ///     Gets or sets the directory list used by libgd to search for bitmap fonts if Graphviz was not built with the fontconfig

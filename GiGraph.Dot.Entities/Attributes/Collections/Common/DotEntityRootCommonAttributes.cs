@@ -12,9 +12,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
     /// <remarks>
     ///     When adding new properties, override them in all descendant classes to set adequate XML documentation comments.
     /// </remarks>
-    public abstract class DotEntityCommonAttributes<TIEntityAttributeProperties> : DotEntityRootAttributes<TIEntityAttributeProperties>
+    public abstract class DotEntityRootCommonAttributes<TIEntityAttributeProperties> : DotEntityRootAttributes<TIEntityAttributeProperties>
     {
-        protected DotEntityCommonAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup, DotEntityHyperlinkAttributes hyperlinkAttributes)
+        protected DotEntityRootCommonAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup, DotHyperlinkAttributes hyperlinkAttributes)
             : base(attributes, attributeKeyLookup)
         {
             Hyperlink = hyperlinkAttributes;
@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         /// <summary>
         ///     Hyperlink attributes.
         /// </summary>
-        public virtual DotEntityHyperlinkAttributes Hyperlink { get; }
+        public virtual DotHyperlinkAttributes Hyperlink { get; }
 
         [DotAttributeKey(DotAttributeKeys.Label)]
         public virtual DotLabel Label

@@ -7,15 +7,15 @@ using GiGraph.Dot.Entities.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
-    public abstract class DotEntityFontAttributes<TIEntityFontAttributes> : DotEntityAttributes<TIEntityFontAttributes>, IDotEntityFontAttributes
-        where TIEntityFontAttributes : IDotEntityFontAttributes
+    public abstract class DotFontAttributes<TIEntityFontAttributes> : DotEntityAttributes<TIEntityFontAttributes>, IDotFontAttributes
+        where TIEntityFontAttributes : IDotFontAttributes
     {
-        protected DotEntityFontAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotFontAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }
 
-        /// <inheritdoc cref="IDotEntityFontAttributes.Name" />
+        /// <inheritdoc cref="IDotFontAttributes.Name" />
         [DotAttributeKey(DotAttributeKeys.FontName)]
         public virtual string Name
         {
@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
-        /// <inheritdoc cref="IDotEntityFontAttributes.Size" />
+        /// <inheritdoc cref="IDotFontAttributes.Size" />
         [DotAttributeKey(DotAttributeKeys.FontSize)]
         public virtual double? Size
         {
@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
                 : new DotDoubleAttribute(k, v.Value));
         }
 
-        /// <inheritdoc cref="IDotEntityFontAttributes.Color" />
+        /// <inheritdoc cref="IDotFontAttributes.Color" />
         [DotAttributeKey(DotAttributeKeys.FontColor)]
         public virtual DotColor Color
         {
@@ -77,7 +77,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         /// <param name="source">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void CopyFrom(IDotEntityFontAttributes source)
+        public virtual void CopyFrom(IDotFontAttributes source)
         {
             Set(source.Name, source.Size, source.Color);
         }

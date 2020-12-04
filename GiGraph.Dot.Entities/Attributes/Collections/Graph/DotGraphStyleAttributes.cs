@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
-    public class DotGraphStyleAttributes : DotEntityStyleAttributes
+    public class DotGraphStyleAttributes : DotStyleAttributes
     {
         public DotGraphStyleAttributes(DotAttributeCollection attributes)
             : base(attributes)

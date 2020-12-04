@@ -18,13 +18,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         protected DotNodeAttributes(
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
-            DotEntityHyperlinkAttributes hyperlinkAttributes,
-            DotEntityFontAttributes fontAttributes,
+            DotHyperlinkAttributes hyperlinkAttributes,
+            DotFontAttributes fontAttributes,
             DotNodeStyleAttributes styleAttributes,
             DotNodeImageAttributes imageAttributes,
             DotNodeGeometryAttributes geometryAttributes,
             DotNodeSizeAttributes sizeAttributes,
-            DotEntityStyleSheetAttributes styleSheetAttributes
+            DotStyleSheetAttributes styleSheetAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes, styleSheetAttributes)
         {
@@ -39,13 +39,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             : this(
                 attributes,
                 NodeAttributesKeyLookup,
-                new DotEntityHyperlinkAttributes(attributes),
-                new DotEntityFontAttributes(attributes),
+                new DotHyperlinkAttributes(attributes),
+                new DotFontAttributes(attributes),
                 new DotNodeStyleAttributes(attributes),
                 new DotNodeImageAttributes(attributes),
                 new DotNodeGeometryAttributes(attributes),
                 new DotNodeSizeAttributes(attributes),
-                new DotEntityStyleSheetAttributes(attributes)
+                new DotStyleSheetAttributes(attributes)
             )
         {
         }
@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <summary>
         ///     Font properties.
         /// </summary>
-        public virtual DotEntityFontAttributes Font { get; }
+        public virtual DotFontAttributes Font { get; }
 
         /// <summary>
         ///     Node image properties.
@@ -81,7 +81,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotNodeStyleAttributes Style { get; }
 
         // accessible only through the interface
-        [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
+        [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotNodeAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;

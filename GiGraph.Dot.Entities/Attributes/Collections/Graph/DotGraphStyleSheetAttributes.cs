@@ -5,7 +5,7 @@ using GiGraph.Dot.Entities.Attributes.Metadata;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
-    public class DotGraphStyleSheetAttributes : DotEntityStyleSheetAttributes<IDotGraphStyleSheetAttributes>, IDotGraphStyleSheetAttributes
+    public class DotGraphStyleSheetAttributes : DotStyleSheetAttributes<IDotGraphStyleSheetAttributes>, IDotGraphStyleSheetAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup EntityStyleSheetAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphStyleSheetAttributes, IDotGraphStyleSheetAttributes>().Build();
 
