@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <param name="engine">
         ///     The layout engine to use.
         /// </param>
-        public virtual void Set(DotLayoutDirection? direction, string engine = null)
+        public virtual void Set(DotLayoutDirection? direction, string engine)
         {
             Engine = engine;
             Direction = direction;

@@ -123,13 +123,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => base.GradientAngle = value;
         }
 
-        /// <inheritdoc cref="IDotNodeAttributes.VerticalLabelAlignment" />
-        public override DotVerticalAlignment? VerticalLabelAlignment
-        {
-            get => base.VerticalLabelAlignment;
-            set => base.VerticalLabelAlignment = value;
-        }
-
         /// <inheritdoc cref="IDotNodeAttributes.Tooltip" />
         public override DotEscapeString Tooltip
         {
@@ -181,6 +174,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotNodeAttributes.LabelAlignment" />
+        [DotAttributeKey(DotAttributeKeys.LabelLoc)]
+        public virtual DotVerticalAlignment? LabelAlignment
+        {
+            get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotVerticalAlignment?) null;
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
+        }
 
         /// <inheritdoc cref="IDotNodeAttributes.EdgeOrderingMode" />
         [DotAttributeKey(DotAttributeKeys.Ordering)]
