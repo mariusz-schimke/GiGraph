@@ -868,11 +868,9 @@ digraph
 
 ### Edge groups
 
-Edge groups join a single node with multiple nodes, multiple nodes with a single node, or multiple nodes with multiple nodes. The examples below present each of these use cases. An edge group may be understood as a simpler approach to specifying multiple edges, with the assumption that all of them share one list of attributes. The other way is adding individual edges to an edge collection separately, with the head or tail node repeated multiple times.
+Edge groups join a single node to multiple nodes, multiple nodes to a single node, or multiple nodes to multiple nodes. The examples below present each of these use cases. An edge group may be understood as a simpler way to specifying multiple edges, with the assumption that all of them share one list of attributes. The other way is adding individual edges to an edge collection separately, with the head or tail node repeated multiple times.
 
-
-
-❕ Note that *DotEndpoint* is implicitly convertible from *string*.
+There are two types that represent edge groups: *DotEndpointGroup* and *DotSubgraphEndpoint*. They may be used interchangibly, but the former enables specifying a port for any endpoint, which is not possible when *DotSubgraphEndpoint* is used.
 
 
 
@@ -882,12 +880,9 @@ Edge groups join a single node with multiple nodes, multiple nodes with a single
 graph.Edges.AddOneToMany("Foo", "Bar", "Baz");
 
 // the line above is equivalent to
-var edgeGroup = new DotOneToManyEdgeGroup("Foo", "Bar", "Baz");
-
-// and also equivalent to
-edgeGroup = new DotOneToManyEdgeGroup(
-    new DotEndpoint("Foo"), // or just "Foo" (implicitly convertible to DotEndpoint)
-    new DotEndpointGroup("Bar", "Baz")); // or new [] { "Foo", "Bar" } (implicitly convertible to DotEndpointGroup)
+var edgeGroup = new DotEdge<DotEndpoint, DotSubgraphEndpoint>(
+    new DotEndpoint("Foo"),
+    new DotSubgraphEndpoint("Bar", "Baz"));
 
 graph.Edges.Add(edgeGroup);
 ```
@@ -895,7 +890,7 @@ graph.Edges.Add(edgeGroup);
 ```dot
 digraph
 {
-    { Foo } -> { Bar Baz }
+    Foo -> { Bar Baz }
 }
 ```
 
@@ -912,11 +907,8 @@ digraph
 graph.Edges.AddManyToOne("Baz", "Foo", "Bar");
 
 // the line above is equivalent to
-var edgeGroup = new DotManyToOneEdgeGroup("Baz", "Foo", "Bar");
-
-// and also equivalent to
-edgeGroup = new DotManyToOneEdgeGroup(
-    new DotEndpointGroup("Foo", "Bar"),
+var edgeGroup = new DotEdge<DotSubgraphEndpoint, DotEndpoint>(
+    new DotSubgraphEndpoint("Foo", "Bar"),
     new DotEndpoint("Baz"));
 
 graph.Edges.Add(edgeGroup);
@@ -925,7 +917,7 @@ graph.Edges.Add(edgeGroup);
 ```dot
 digraph
 {
-    { Foo Bar } -> { Baz }
+    { Foo Bar } -> Baz
 }
 ```
 
@@ -940,13 +932,13 @@ digraph
 
 ```c#
 graph.Edges.AddManyToMany(
-    new DotEndpointGroup("Foo", "Bar"),
-    new DotEndpointGroup("Baz", "Qux"));
+    new DotSubgraphEndpoint("Foo", "Bar"),
+    new DotSubgraphEndpoint("Baz", "Qux"));
 
-// the code above is equivalent to
-var edgeGroup = new DotManyToManyEdgeGroup(
-    new DotEndpointGroup("Foo", "Bar"),
-    new DotEndpointGroup("Baz", "Qux"));
+// the line above is equivalent to
+var edgeGroup = new DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>(
+    new DotSubgraphEndpoint("Foo", "Bar"),
+    new DotSubgraphEndpoint("Baz", "Qux"));
 
 graph.Edges.Add(edgeGroup);
 ```
@@ -970,8 +962,8 @@ Each group used in the above examples supports attributes. You may set them eith
 
 ```c#
 graph.Edges.AddManyToMany(
-    new DotEndpointGroup("Foo", "Bar"),
-    new DotEndpointGroup("Baz", "Qux"),
+    new DotSubgraphEndpoint("Foo", "Bar"),
+    new DotSubgraphEndpoint("Baz", "Qux"),
     edge =>
     {
         edge.Attributes.Color = Color.Red;
@@ -990,10 +982,14 @@ digraph
 </p>
 
 
+❕ Note that *DotEndpoint* is implicitly convertible from *string*.
+
+
+
 
 ### Edge sequences
 
-An edge sequence lets you join a sequence of consecutive nodes an/or node groups (the latter are represented by subgraphs). Similarly to edge groups, a sequence may be understood as a simpler approach to specifying multiple edges at once, with a shared list of attributes. The other way is adding consecutive edges to an edge collection separately.
+An edge sequence lets you join a sequence of consecutive nodes and/or node groups. Similarly to edge groups, a sequence may be understood as a simpler approach to specifying multiple edges at once, with a shared list of attributes. The other way is adding consecutive edges to an edge collection separately.
 
 
 
@@ -1025,13 +1021,13 @@ digraph
 ```c#
 graph.Edges.AddSequence(
     new DotEndpoint("Foo"),
-    new DotEndpointGroup("Bar", "Baz", "Qux"),
+    new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
     new DotEndpoint("Quux"));
 
 // the code above is equivalent to
 var edgeSequence = new DotEdgeSequence(
     new DotEndpoint("Foo"),
-    new DotEndpointGroup("Bar", "Baz", "Qux"),
+    new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
     new DotEndpoint("Quux"));
 
 graph.Edges.Add(edgeSequence);
@@ -1062,7 +1058,7 @@ graph.Edges.AddSequence
         edge.Attributes.Color = Color.Red;
     },
     "Foo",
-    new DotEndpointGroup("Bar", "Baz", "Qux"),
+    new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
     new DotEndpoint("Quux", DotCompassPoint.North)
 );
 ```
