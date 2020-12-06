@@ -111,11 +111,8 @@ There are five basic types that are the building blocks of a graph in this libra
 Auxiliary types:
 
 - **DotNodeGroup** – a group of nodes that share a common list of attributes. Useful when you want to set attributes for multiple nodes at once. It is rendered as a single DOT script statement—a list of nodes followed by a list of attributes if specified.
-- **DotEdge<*TTail*, *THead*>** – a custom edge (or a group of edges), where *TTail* and *THead* may either be single nodes (**DotEndpoint**) or multiple nodes of a subgraph (**DotEndpointGroup**).
-- **DotEdgeSequence** – a sequence of edges composed of **DotEndpoint** and/or **DotEndpointGroup** instances. Used to join consecutive nodes and/or groups of nodes with one another. All edges in the sequence share a common list of attributes, and are rendered as a single DOT script statement with a list of nodes and/or subgraphs joined by edges, and followed by a list of attributes if specified.
-- **DotOneToManyEdgeGroup** – a group of edges that join a single node with nodes of a subgraph (it is actually a descendant of **DotEdge<DotEndpoint, DotEndpointGroup>**).
-- **DotManyToOneEdgeGroup** – a group of edges that join nodes of a subgraph with a single node (it is actually a descendant of **DotEdge<DotEndpointGroup, DotEndpoint>**).
-- **DotManyToManyEdgeGroup** – a group of edges that join nodes of a subgraph with nodes of another subgraph (it is actually a descendant of **DotEdge<DotEndpointGroup, DotEndpointGroup>**).
+- **DotEdge<*TTail*, *THead*>** – a custom edge, where *TTail* and *THead* may represent a single node (**DotEndpoint**), a cluster (**DotClusterEndpoint**), multiple nodes where each may have a custom port specified (**DotEndpointGroup**), or nodes of a subgraph (**DotSubgraphEndpoint**).
+- **DotEdgeSequence** – a sequence of edges composed of **DotEndpoint**, **DotClusterEndpoint**, **DotEndpointGroup** and/or **DotSubgraphEndpoint** instances. Used to join consecutive nodes and/or groups of nodes to one another. All edges in the sequence share a common list of attributes, and are rendered as a single DOT script statement with a list of nodes and/or subgraphs joined by edges, and followed by a list of attributes if specified.
 
 
 There are also attributes based on the type of the value they specify for a given key. There are quite a lot of them, but just to mention a few basic ones:
@@ -875,7 +872,7 @@ Edge groups join a single node with multiple nodes, multiple nodes with a single
 
 
 
-❕ Note that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*.
+❕ Note that *DotEndpoint* is implicitly convertible from *string*.
 
 
 
