@@ -1190,6 +1190,78 @@ digraph
 
 
 
+### Clusters as endpoints
+
+Clusters may be used as endpoints. In such case the edge is clipped to cluster border instead of being connected to a node inside the cluster. To achieve that effect, define an edge that joins a node outside the cluster with a node inside the cluster. Then, for the external endpoint of the edge, assign the identifier of the cluster to the *ClusterId* attribute. Also, enable clipping edges to cluster borders by setting the *AllowEdgeClipping* attribute on the graph.  The following example presents the complete idea.
+
+```c#
+var graph = new DotGraph();
+
+graph.Clusters.Attributes.AllowEdgeClipping = true;
+
+graph.Clusters.Add("Cluster1", cluster =>
+{
+    cluster.Nodes.Add("Bar");
+});
+
+graph.Edges.Add("Foo", "Bar", edge =>
+{
+    edge.Attributes.Head.ClusterId = "Cluster1";
+});
+```
+
+```dot
+digraph
+{
+    compound = true
+
+    subgraph "cluster Cluster1"
+    {
+        Bar
+    }
+
+    Foo -> Bar [ lhead = "cluster Cluster1" ]
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/cluster-edge-clipping.svg">
+</p>
+
+
+
+Note that for some layout engines (see *fdp*) cluster ID has to be specified directly as the endpoint identifier for an edge. To do that, use the *DotClusterEndpoint* class with an identifier of a cluster to be used as the endpoint. Se the example below.
+
+```c#
+var graph = new DotGraph();
+
+// (optional if the layout engine is specified externally)
+graph.Attributes.Layout.Engine = DotLayoutEngines.Fdp;
+
+graph.Clusters.Add("Cluster1", cluster =>
+{
+    cluster.Nodes.Add("Bar");
+});
+
+graph.Edges.Add("Foo", new DotClusterEndpoint("Cluster1"));
+```
+
+```dot
+digraph
+{
+    layout = fdp
+
+    subgraph "cluster Cluster1"
+    {
+        Bar
+    }
+
+    Foo -> "cluster Cluster1"
+}
+```
+
+
+
 # Examples
 
 This chapter presents examples of styling, grouping nodes in clusters, and customizing graph layout.
