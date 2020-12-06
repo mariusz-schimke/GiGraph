@@ -17,9 +17,9 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="headNodeIds">
         ///     The identifiers of the head nodes.
         /// </param>
-        public virtual DotOneToManyEdgeGroup AddOneToMany(string tailNodeId, params string[] headNodeIds)
+        public virtual DotEdge<DotEndpoint, DotSubgraphEndpoint> AddOneToMany(string tailNodeId, params string[] headNodeIds)
         {
-            return Add(new DotOneToManyEdgeGroup(tailNodeId, headNodeIds), init: null);
+            return AddOneToMany(tailNodeId, DotSubgraph.FromNodes(headNodeIds), init: null);
         }
 
         /// <summary>
@@ -35,9 +35,9 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="headNodeIds">
         ///     The identifiers of the head nodes.
         /// </param>
-        public virtual DotOneToManyEdgeGroup AddOneToMany(Action<DotOneToManyEdgeGroup> init, string tailNodeId, params string[] headNodeIds)
+        public virtual DotEdge<DotEndpoint, DotSubgraphEndpoint> AddOneToMany(Action<DotEdge<DotEndpoint, DotSubgraphEndpoint>> init, string tailNodeId, params string[] headNodeIds)
         {
-            return Add(new DotOneToManyEdgeGroup(tailNodeId, headNodeIds), init);
+            return AddOneToMany(tailNodeId, headNodeIds, init);
         }
 
         /// <summary>
@@ -53,9 +53,11 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="init">
         ///     An optional initializer delegate to call for the created edge group.
         /// </param>
-        public virtual DotOneToManyEdgeGroup AddOneToMany(string tailNodeId, IEnumerable<string> headNodeIds, Action<DotOneToManyEdgeGroup> init = null)
+        public virtual DotEdge<DotEndpoint, DotSubgraphEndpoint> AddOneToMany(
+            string tailNodeId, IEnumerable<string> headNodeIds,
+            Action<DotEdge<DotEndpoint, DotSubgraphEndpoint>> init = null)
         {
-            return Add(new DotOneToManyEdgeGroup(tailNodeId, headNodeIds), init);
+            return AddOneToMany(tailNodeId, DotSubgraph.FromNodes(headNodeIds), init);
         }
 
         /// <summary>
@@ -70,7 +72,9 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="init">
         ///     An optional initializer delegate to call for the created edge group.
         /// </param>
-        public virtual DotEdge<DotEndpoint, DotEndpointGroup> AddOneToMany(DotEndpoint tail, DotEndpointGroup heads, Action<DotEdge<DotEndpoint, DotEndpointGroup>> init = null)
+        public virtual DotEdge<DotEndpoint, DotEndpointGroup> AddOneToMany(
+            DotEndpoint tail, DotEndpointGroup heads,
+            Action<DotEdge<DotEndpoint, DotEndpointGroup>> init = null)
         {
             return Add(tail, heads, init);
         }
@@ -87,9 +91,11 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="init">
         ///     An optional initializer delegate to call for the created edge group.
         /// </param>
-        public virtual DotOneToManyEdgeGroup AddOneToMany(DotEndpoint tail, DotSubgraphEndpoint heads, Action<DotOneToManyEdgeGroup> init = null)
+        public virtual DotEdge<DotEndpoint, DotSubgraphEndpoint> AddOneToMany(
+            DotEndpoint tail, DotSubgraphEndpoint heads,
+            Action<DotEdge<DotEndpoint, DotSubgraphEndpoint>> init = null)
         {
-            return Add(new DotOneToManyEdgeGroup(tail, heads), init);
+            return Add(tail, heads, init);
         }
 
         /// <summary>
@@ -104,9 +110,11 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="init">
         ///     An optional initializer delegate to call for the created edge group.
         /// </param>
-        public virtual DotOneToManyEdgeGroup AddOneToMany(string tailNodeId, DotSubgraph heads, Action<DotOneToManyEdgeGroup> init = null)
+        public virtual DotEdge<DotEndpoint, DotSubgraphEndpoint> AddOneToMany(
+            string tailNodeId, DotSubgraph heads,
+            Action<DotEdge<DotEndpoint, DotSubgraphEndpoint>> init = null)
         {
-            return Add(new DotOneToManyEdgeGroup(tailNodeId, heads), init);
+            return Add(new DotEndpoint(tailNodeId), new DotSubgraphEndpoint(heads), init);
         }
     }
 }

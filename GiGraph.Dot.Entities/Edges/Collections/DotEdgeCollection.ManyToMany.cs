@@ -55,7 +55,9 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="headNodeIds">
         ///     The identifiers of the head nodes.
         /// </param>
-        public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>> init, IEnumerable<string> tailNodeIds, params string[] headNodeIds)
+        public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(
+            Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>> init,
+            IEnumerable<string> tailNodeIds, params string[] headNodeIds)
         {
             return AddManyToMany(DotSubgraph.FromNodes(tailNodeIds), DotSubgraph.FromNodes(headNodeIds), init);
         }
