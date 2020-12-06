@@ -895,7 +895,33 @@ digraph
 ```
 
 <p align="center">
-  <img src="./Assets/Examples/edge-one-to-many.svg">
+  <img src="./Assets/Examples/edge-one-to-many-subgraph.svg">
+</p>
+
+
+
+The example above uses the *DotSubgraphEndpoint* to represent a group of endpoints. In the DOT script they are represented by a subgraph. A similar effect may be achieved by using a *DotEndpointGroup*, which is rendered as a comma-separated list of node identifiers. With that approach, it is possible to specify ports for any endpoint in the group.
+
+```c#
+var edgeGroup = new DotEdge<DotEndpoint, DotEndpointGroup>(
+    "Foo", // converted implicitly to DotEndpoint
+    new DotEndpointGroup(
+        new DotEndpoint("Bar", DotCompassPoint.NorthWest),
+        new DotEndpoint("Baz", DotCompassPoint.NorthEast)
+    ));
+
+graph.Edges.Add(edgeGroup);
+```
+
+```dot
+digraph
+{
+    Foo -> Bar:nw, Baz:ne
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/edge-one-to-many-group.svg">
 </p>
 
 
