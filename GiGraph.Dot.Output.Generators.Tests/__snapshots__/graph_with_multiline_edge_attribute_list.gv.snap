@@ -40,6 +40,7 @@ digraph
         // color
         color = red
     ]
+    /* endpoint group */  /* node1 */ node1, /* cluster1 */ "cluster cluster1" -> /* subgraph endpoint */ { node3 node4 }
 
     /* subsection 1 */
 

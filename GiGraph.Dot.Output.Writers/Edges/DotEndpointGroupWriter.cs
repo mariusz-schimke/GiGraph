@@ -20,7 +20,7 @@
 
         public override void EndComment()
         {
-            _tokenWriter.Space();
+            _tokenWriter.Space().Space();
         }
     }
 }
