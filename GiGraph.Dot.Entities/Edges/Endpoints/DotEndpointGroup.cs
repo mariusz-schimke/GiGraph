@@ -39,7 +39,14 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// </param>
         public DotEndpointGroup(params DotEndpoint[] endpoints)
         {
-            Endpoints = endpoints ?? throw new ArgumentNullException(nameof(endpoints), "Endpoints cannot be null.");
+            if (endpoints is null)
+            {
+                throw new ArgumentNullException(nameof(endpoints), "Endpoint collection cannot be null.");
+            }
+
+            Endpoints = endpoints.Any()
+                ? endpoints
+                : throw new ArgumentException("At least one endpoint has to be specified for an endpoint group.", nameof(endpoints));
         }
 
         /// <summary>
