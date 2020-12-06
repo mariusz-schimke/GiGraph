@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Edges.Enums;
+﻿using GiGraph.Dot.Entities.Clusters;
+using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
@@ -39,13 +40,18 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
 
         protected override void SetId(string id)
         {
-            // allow null (it will generate an id of 'cluster')
+            // allow null (it will generate an ID of 'cluster')
             Id = id;
         }
 
         public static implicit operator DotClusterEndpoint(string clusterId)
         {
             return clusterId is {} ? new DotClusterEndpoint(clusterId) : null;
+        }
+
+        public static implicit operator DotClusterEndpoint(DotCluster cluster)
+        {
+            return cluster is {} ? new DotClusterEndpoint(cluster.Id) : null;
         }
     }
 }

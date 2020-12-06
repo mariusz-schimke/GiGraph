@@ -83,12 +83,12 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         ///     Adds an edge that joins the two specified endpoints.
         /// </summary>
         /// <param name="tail">
-        ///     The tail (source, left) node identifier. Use <see cref="DotClusterEndpoint" /> to specify a cluster as an endpoint (if the
-        ///     layout engine in use supports it).
+        ///     The tail (source, left) node identifier. Note that if you want to specify a cluster as a tail, use
+        ///     <see cref="DotClusterEndpoint" />.
         /// </param>
         /// <param name="head">
-        ///     The head (destination, right) node identifier. Use <see cref="DotClusterEndpoint" /> to specify a cluster as an endpoint (if
-        ///     the layout engine is use supports it).
+        ///     The head (destination, right) node identifier. Note that if you want to specify a cluster as a head, use
+        ///     <see cref="DotClusterEndpoint" />.
         /// </param>
         /// <param name="init">
         ///     An optional edge initializer delegate.
@@ -96,6 +96,27 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         public virtual DotEdge Add(DotEndpoint tail, DotEndpoint head, Action<DotEdge> init = null)
         {
             return Add(new DotEdge(tail, head), init);
+        }
+
+        /// <summary>
+        ///     Adds an edge that joins the specified endpoints.
+        /// </summary>
+        /// <param name="tail">
+        ///     The tail (source, left) node identifier. Use <see cref="DotEndpoint" /> for a node as a tail,
+        ///     <see cref="DotClusterEndpoint" /> for a cluster as a tail, or <see cref="DotEndpointGroup" /> for a group of nodes as tails.
+        /// </param>
+        /// <param name="head">
+        ///     The head (destination, right) node identifier. Use <see cref="DotEndpoint" /> for a node as a head,
+        ///     <see cref="DotClusterEndpoint" /> for a cluster as a head, or <see cref="DotEndpointGroup" /> for a group of nodes as heads.
+        /// </param>
+        /// <param name="init">
+        ///     An optional edge initializer delegate.
+        /// </param>
+        public virtual DotEdge<DotEndpointDefinition, DotEndpointDefinition> Add(
+            DotEndpointDefinition tail, DotEndpointDefinition head,
+            Action<DotEdge<DotEndpointDefinition, DotEndpointDefinition>> init = null)
+        {
+            return Add(new DotEdge<DotEndpointDefinition, DotEndpointDefinition>(tail, head), init);
         }
 
         /// <summary>
