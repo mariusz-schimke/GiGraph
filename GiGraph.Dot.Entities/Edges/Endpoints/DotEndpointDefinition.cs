@@ -1,4 +1,6 @@
-﻿using GiGraph.Dot.Entities.Subgraphs;
+﻿using GiGraph.Dot.Entities.Clusters;
+using GiGraph.Dot.Entities.Nodes;
+using GiGraph.Dot.Entities.Subgraphs;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
@@ -16,6 +18,16 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         public static implicit operator DotEndpointDefinition(string nodeId)
         {
             return (DotEndpoint) nodeId;
+        }
+
+        public static implicit operator DotEndpointDefinition(DotNode node)
+        {
+            return (DotEndpoint) node;
+        }
+
+        public static implicit operator DotEndpointDefinition(DotCluster cluster)
+        {
+            return (DotClusterEndpoint) cluster;
         }
 
         public static implicit operator DotEndpointDefinition(DotSubgraph subgraph)
