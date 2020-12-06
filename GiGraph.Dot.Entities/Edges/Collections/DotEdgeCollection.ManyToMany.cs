@@ -20,9 +20,11 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="init">
         ///     An optional initializer delegate to call for the created edge group.
         /// </param>
-        public virtual DotManyToManyEdgeGroup AddManyToMany(IEnumerable<string> tailNodeIds, IEnumerable<string> headNodeIds, Action<DotManyToManyEdgeGroup> init = null)
+        public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(
+            IEnumerable<string> tailNodeIds, IEnumerable<string> headNodeIds,
+            Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>> init = null)
         {
-            return Add(new DotManyToManyEdgeGroup(tailNodeIds, headNodeIds), init);
+            return AddManyToMany(DotSubgraph.FromNodes(tailNodeIds), DotSubgraph.FromNodes(headNodeIds), init);
         }
 
         /// <summary>
@@ -35,9 +37,9 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="headNodeIds">
         ///     The identifiers of the head nodes.
         /// </param>
-        public virtual DotManyToManyEdgeGroup AddManyToMany(IEnumerable<string> tailNodeIds, params string[] headNodeIds)
+        public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(IEnumerable<string> tailNodeIds, params string[] headNodeIds)
         {
-            return Add(new DotManyToManyEdgeGroup(tailNodeIds, headNodeIds), init: null);
+            return AddManyToMany(DotSubgraph.FromNodes(tailNodeIds), DotSubgraph.FromNodes(headNodeIds), init: null);
         }
 
         /// <summary>
@@ -53,9 +55,9 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="headNodeIds">
         ///     The identifiers of the head nodes.
         /// </param>
-        public virtual DotManyToManyEdgeGroup AddManyToMany(Action<DotManyToManyEdgeGroup> init, IEnumerable<string> tailNodeIds, params string[] headNodeIds)
+        public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>> init, IEnumerable<string> tailNodeIds, params string[] headNodeIds)
         {
-            return Add(new DotManyToManyEdgeGroup(tailNodeIds, headNodeIds), init);
+            return AddManyToMany(DotSubgraph.FromNodes(tailNodeIds), DotSubgraph.FromNodes(headNodeIds), init);
         }
 
         /// <summary>
@@ -71,7 +73,9 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="init">
         ///     An optional initializer delegate to call for the created edge group.
         /// </param>
-        public virtual DotEdge<DotEndpointGroup, DotEndpointGroup> AddManyToMany(DotEndpointGroup tails, DotEndpointGroup heads, Action<DotEdge<DotEndpointGroup, DotEndpointGroup>> init = null)
+        public virtual DotEdge<DotEndpointGroup, DotEndpointGroup> AddManyToMany(
+            DotEndpointGroup tails, DotEndpointGroup heads,
+            Action<DotEdge<DotEndpointGroup, DotEndpointGroup>> init = null)
         {
             return Add(tails, heads, init);
         }
@@ -88,9 +92,11 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="init">
         ///     An optional initializer delegate to call for the created edge group.
         /// </param>
-        public virtual DotManyToManyEdgeGroup AddManyToMany(DotSubgraphEndpoint tails, DotSubgraphEndpoint heads, Action<DotManyToManyEdgeGroup> init = null)
+        public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(
+            DotSubgraphEndpoint tails, DotSubgraphEndpoint heads,
+            Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>> init = null)
         {
-            return Add(new DotManyToManyEdgeGroup(tails, heads), init);
+            return Add(tails, heads, init);
         }
 
         /// <summary>
@@ -105,9 +111,11 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="init">
         ///     An optional initializer delegate to call for the created edge group.
         /// </param>
-        public virtual DotManyToManyEdgeGroup AddManyToMany(DotSubgraph tails, DotSubgraph heads, Action<DotManyToManyEdgeGroup> init = null)
+        public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(
+            DotSubgraph tails, DotSubgraph heads,
+            Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>> init = null)
         {
-            return Add(new DotManyToManyEdgeGroup(tails, heads), init);
+            return Add(new DotSubgraphEndpoint(tails), new DotSubgraphEndpoint(heads), init);
         }
     }
 }
