@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     /// <summary>
     ///     Represents a node as an endpoint.
     /// </summary>
-    public class DotEndpoint : DotEndpointDefinition, IDotEntity
+    public class DotEndpoint : DotEndpointDefinition
     {
         protected DotEndpointPort _port;
 
