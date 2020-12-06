@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output.Generators.Providers;
@@ -49,6 +50,10 @@ namespace GiGraph.Dot.Output.Generators.Edges
                     WriteEndpointGroup(endpointGroup, writer);
                     break;
 
+                case DotSubgraphEndpoint subgraph:
+                    WriteSubgraph(subgraph, writer);
+                    break;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(endpointDefinition), $"The specified endpoint type '{endpointDefinition.GetType().FullName}' is not supported.");
             }
@@ -63,8 +68,23 @@ namespace GiGraph.Dot.Output.Generators.Edges
 
         protected virtual void WriteEndpointGroup(DotEndpointGroup endpointGroup, IDotEdgeWriter writer)
         {
+            var orderedEndpoints = _options.SortElements
+                ? endpointGroup.Endpoints
+                   .Cast<IDotOrderable>()
+                   .OrderBy(endpoint => endpoint.OrderingKey)
+                   .Cast<DotEndpoint>()
+                : endpointGroup.Endpoints;
+
+            foreach (var endpoint in orderedEndpoints)
+            {
+                WriteEndpoint(endpoint, writer);
+            }
+        }
+
+        protected virtual void WriteSubgraph(DotSubgraphEndpoint endpoint, IDotEdgeWriter writer)
+        {
             var subgraphWriter = writer.BeginSubgraph(_options.Edges.PreferExplicitSubgraphDeclaration);
-            _entityGenerators.GetForEntity<IDotSubgraphWriter>(endpointGroup.Subgraph).Generate(endpointGroup.Subgraph, subgraphWriter);
+            _entityGenerators.GetForEntity<IDotSubgraphWriter>(endpoint.Subgraph).Generate(endpoint.Subgraph, subgraphWriter);
             writer.EndSubgraph();
         }
     }

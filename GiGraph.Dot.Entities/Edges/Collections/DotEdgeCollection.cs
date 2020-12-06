@@ -83,12 +83,12 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         ///     Adds an edge that joins the two specified endpoints.
         /// </summary>
         /// <param name="tail">
-        ///     The tail (source, left) node identifier. Note that if you want to specify a cluster as a tail, use
-        ///     <see cref="DotClusterEndpoint" />.
+        ///     The tail (source, left) node identifier (note that if you want to specify a cluster as a tail, use
+        ///     <see cref="DotClusterEndpoint" />).
         /// </param>
         /// <param name="head">
-        ///     The head (destination, right) node identifier. Note that if you want to specify a cluster as a head, use
-        ///     <see cref="DotClusterEndpoint" />.
+        ///     The head (destination, right) node identifier (note that if you want to specify a cluster as a head, use
+        ///     <see cref="DotClusterEndpoint" />).
         /// </param>
         /// <param name="init">
         ///     An optional edge initializer delegate.
@@ -99,24 +99,32 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Adds an edge that joins the specified endpoints.
+        ///     Adds an edge that joins the specified endpoints or groups of endpoints.
         /// </summary>
         /// <param name="tail">
         ///     The tail (source, left) node identifier. Use <see cref="DotEndpoint" /> for a node as a tail,
-        ///     <see cref="DotClusterEndpoint" /> for a cluster as a tail, or <see cref="DotEndpointGroup" /> for a group of nodes as tails.
+        ///     <see cref="DotClusterEndpoint" /> for a cluster as a tail, <see cref="DotEndpointGroup" /> for a group of nodes as tails, or
+        ///     <see cref="DotSubgraphEndpoint" /> for a subgraph whose nodes will be used as tails.
         /// </param>
         /// <param name="head">
         ///     The head (destination, right) node identifier. Use <see cref="DotEndpoint" /> for a node as a head,
-        ///     <see cref="DotClusterEndpoint" /> for a cluster as a head, or <see cref="DotEndpointGroup" /> for a group of nodes as heads.
+        ///     <see cref="DotClusterEndpoint" /> for a cluster as a head, <see cref="DotEndpointGroup" /> for a group of nodes as heads, or
+        ///     <see cref="DotSubgraphEndpoint" /> for a subgraph whose nodes will be used as heads.
         /// </param>
         /// <param name="init">
         ///     An optional edge initializer delegate.
         /// </param>
-        public virtual DotEdge<DotEndpointDefinition, DotEndpointDefinition> Add(
-            DotEndpointDefinition tail, DotEndpointDefinition head,
-            Action<DotEdge<DotEndpointDefinition, DotEndpointDefinition>> init = null)
+        /// <typeparam name="TTail">
+        ///     The type of the tail endpoint.
+        /// </typeparam>
+        /// <typeparam name="THead">
+        ///     The type of the head endpoint.
+        /// </typeparam>
+        public virtual DotEdge<TTail, THead> Add<TTail, THead>(TTail tail, THead head, Action<DotEdge<TTail, THead>> init = null)
+            where THead : DotEndpointDefinition
+            where TTail : DotEndpointDefinition
         {
-            return Add(new DotEdge<DotEndpointDefinition, DotEndpointDefinition>(tail, head), init);
+            return Add(new DotEdge<TTail, THead>(tail, head), init);
         }
 
         /// <summary>

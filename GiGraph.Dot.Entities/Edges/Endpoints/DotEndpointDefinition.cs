@@ -18,14 +18,9 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
             return (DotEndpoint) nodeId;
         }
 
-        public static implicit operator DotEndpointDefinition(string[] nodeIds)
-        {
-            return nodeIds is {} ? new DotEndpointGroup(nodeIds) : null;
-        }
-
         public static implicit operator DotEndpointDefinition(DotSubgraph subgraph)
         {
-            return subgraph is {} ? new DotEndpointGroup(subgraph) : null;
+            return (DotSubgraphEndpoint) subgraph;
         }
     }
 }

@@ -16,6 +16,8 @@ namespace GiGraph.Dot.Output.Writers.Edges
 
         public virtual void EndEndpoint()
         {
+            _tokenWriter.NodeSeparator(linger: true)
+               .Space(linger: true);
         }
 
         public virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration)
@@ -36,6 +38,8 @@ namespace GiGraph.Dot.Output.Writers.Edges
 
         public virtual void WriteEdge()
         {
+            _tokenWriter.ClearLingerBuffer();
+
             // these will be removed by the parent writer if no further endpoints are written
             _tokenWriter.Space(linger: true)
                .Edge(_configuration.IsDirectedGraph, linger: true)

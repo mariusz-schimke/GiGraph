@@ -8,14 +8,14 @@ namespace GiGraph.Dot.Entities.Edges.Collections
     public partial class DotEdgeCollection
     {
         /// <summary>
-        ///     Adds a group of edges where the <paramref name="tailNodeId" /> as the tail node is connected to all
+        ///     Adds a group of edges where the <paramref name="tailNodeId" /> as the tail node is joined to all
         ///     <paramref name="headNodeIds" /> as the head nodes.
         /// </summary>
         /// <param name="tailNodeId">
-        ///     The identifier of the tail (source, left) node.
+        ///     The identifier of the tail node.
         /// </param>
         /// <param name="headNodeIds">
-        ///     The identifiers of the head (destination, right) nodes to connect the tail node to.
+        ///     The identifiers of the head nodes.
         /// </param>
         public virtual DotOneToManyEdgeGroup AddOneToMany(string tailNodeId, params string[] headNodeIds)
         {
@@ -23,17 +23,17 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Adds a group of edges where the <paramref name="tailNodeId" /> as the tail node is connected to all
+        ///     Adds a group of edges where the <paramref name="tailNodeId" /> as the tail node is joined to all
         ///     <paramref name="headNodeIds" /> as the head nodes.
         /// </summary>
         /// <param name="init">
         ///     An optional initializer delegate to call for the created edge group.
         /// </param>
         /// <param name="tailNodeId">
-        ///     The identifier of the tail (source, left) node.
+        ///     The identifier of the tail node.
         /// </param>
         /// <param name="headNodeIds">
-        ///     The identifiers of the head (destination, right) nodes to connect the tail node to.
+        ///     The identifiers of the head nodes.
         /// </param>
         public virtual DotOneToManyEdgeGroup AddOneToMany(Action<DotOneToManyEdgeGroup> init, string tailNodeId, params string[] headNodeIds)
         {
@@ -41,14 +41,14 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Adds a group of edges where the <paramref name="tailNodeId" /> as the tail node is connected to all
+        ///     Adds a group of edges where the <paramref name="tailNodeId" /> as the tail node is joined to all
         ///     <paramref name="headNodeIds" /> as the head nodes.
         /// </summary>
         /// <param name="tailNodeId">
-        ///     The identifier of the tail (source, left) node.
+        ///     The identifier of the tail node.
         /// </param>
         /// <param name="headNodeIds">
-        ///     The identifiers of the head (destination, right) nodes to connect the tail node to.
+        ///     The identifiers of the head nodes.
         /// </param>
         /// <param name="init">
         ///     An optional initializer delegate to call for the created edge group.
@@ -59,37 +59,54 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Adds a group of edges where the tail endpoint is connected to all nodes in the specified head endpoint group.
+        ///     Adds a group of edges where the tail endpoint is joined to all nodes in the specified head endpoint group.
         /// </summary>
         /// <param name="tail">
-        ///     The tail (source, left) node. Note that if you want to specify a cluster as a tail, use <see cref="DotClusterEndpoint" />.
+        ///     The tail node (note that if you want to specify a cluster as a tail, use <see cref="DotClusterEndpoint" />).
         /// </param>
-        /// <param name="head">
-        ///     The group whose nodes (as the head endpoints) the <paramref name="tail" /> node should be connected to.
+        /// <param name="heads">
+        ///     The group whose endpoints to use as heads.
         /// </param>
         /// <param name="init">
         ///     An optional initializer delegate to call for the created edge group.
         /// </param>
-        public virtual DotOneToManyEdgeGroup AddOneToMany(DotEndpoint tail, DotEndpointGroup head, Action<DotOneToManyEdgeGroup> init = null)
+        public virtual DotEdge<DotEndpoint, DotEndpointGroup> AddOneToMany(DotEndpoint tail, DotEndpointGroup heads, Action<DotEdge<DotEndpoint, DotEndpointGroup>> init = null)
         {
-            return Add(new DotOneToManyEdgeGroup(tail, head), init);
+            return Add(tail, heads, init);
         }
 
         /// <summary>
-        ///     Adds a group of edges where the tail endpoint is connected to all nodes in the specified head subgraph.
+        ///     Adds a group of edges where the tail endpoint is joined to all nodes in the specified head subgraph.
         /// </summary>
-        /// <param name="tailNodeId">
-        ///     The identifier of the tail (source, left) node.
+        /// <param name="tail">
+        ///     The tail node (note that if you want to specify a cluster as a tail, use <see cref="DotClusterEndpoint" />).
         /// </param>
-        /// <param name="head">
-        ///     The subgraph whose nodes (as the head endpoints) the <paramref name="tailNodeId" /> node should be connected to.
+        /// <param name="heads">
+        ///     The subgraph whose nodes to use as head endpoints.
         /// </param>
         /// <param name="init">
         ///     An optional initializer delegate to call for the created edge group.
         /// </param>
-        public virtual DotOneToManyEdgeGroup AddOneToMany(string tailNodeId, DotSubgraph head, Action<DotOneToManyEdgeGroup> init = null)
+        public virtual DotOneToManyEdgeGroup AddOneToMany(DotEndpoint tail, DotSubgraphEndpoint heads, Action<DotOneToManyEdgeGroup> init = null)
         {
-            return Add(new DotOneToManyEdgeGroup(tailNodeId, head), init);
+            return Add(new DotOneToManyEdgeGroup(tail, heads), init);
+        }
+
+        /// <summary>
+        ///     Adds a group of edges where the tail endpoint is joined to all nodes in the specified head subgraph.
+        /// </summary>
+        /// <param name="tailNodeId">
+        ///     The identifier of the tail node.
+        /// </param>
+        /// <param name="heads">
+        ///     The subgraph whose nodes to use as head endpoints.
+        /// </param>
+        /// <param name="init">
+        ///     An optional initializer delegate to call for the created edge group.
+        /// </param>
+        public virtual DotOneToManyEdgeGroup AddOneToMany(string tailNodeId, DotSubgraph heads, Action<DotOneToManyEdgeGroup> init = null)
+        {
+            return Add(new DotOneToManyEdgeGroup(tailNodeId, heads), init);
         }
     }
 }

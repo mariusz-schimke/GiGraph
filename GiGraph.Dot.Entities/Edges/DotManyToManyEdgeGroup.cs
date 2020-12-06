@@ -8,9 +8,9 @@ namespace GiGraph.Dot.Entities.Edges
     /// <summary>
     ///     Represents a group of edges that join all nodes in a subgraph to all nodes in another subgraph.
     /// </summary>
-    public class DotManyToManyEdgeGroup : DotEdge<DotEndpointGroup, DotEndpointGroup>
+    public class DotManyToManyEdgeGroup : DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>
     {
-        protected DotManyToManyEdgeGroup(DotEndpointGroup tail, DotEndpointGroup head, DotEdgeAttributes attributes)
+        protected DotManyToManyEdgeGroup(DotSubgraphEndpoint tail, DotSubgraphEndpoint head, DotEdgeAttributes attributes)
             : base(tail, head, attributes)
         {
         }
@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <param name="head">
         ///     The group whose nodes (as the head endpoints) the <paramref name="tail" /> nodes should be connected to.
         /// </param>
-        public DotManyToManyEdgeGroup(DotEndpointGroup tail, DotEndpointGroup head)
+        public DotManyToManyEdgeGroup(DotSubgraphEndpoint tail, DotSubgraphEndpoint head)
             : base(tail, head)
         {
         }
@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Entities.Edges
         ///     The subgraph whose nodes (as the head endpoints) the <paramref name="tail" /> nodes should be connected to.
         /// </param>
         public DotManyToManyEdgeGroup(DotSubgraph tail, DotSubgraph head)
-            : this(new DotEndpointGroup(tail), new DotEndpointGroup(head))
+            : this(new DotSubgraphEndpoint(tail), new DotSubgraphEndpoint(head))
         {
         }
 
@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Entities.Edges
         ///     The identifiers of the head (destination, right) nodes the <paramref name="tailNodeIds" /> nodes should be connected to.
         /// </param>
         public DotManyToManyEdgeGroup(IEnumerable<string> tailNodeIds, IEnumerable<string> headNodeIds)
-            : this(new DotEndpointGroup(tailNodeIds), new DotEndpointGroup(headNodeIds))
+            : this(new DotSubgraphEndpoint(tailNodeIds), new DotSubgraphEndpoint(headNodeIds))
         {
         }
     }

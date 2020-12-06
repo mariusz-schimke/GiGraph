@@ -17,19 +17,19 @@ namespace GiGraph.Dot.Entities.Edges
     ///         <item>
     ///             <description>
     ///                 a group of edges that join one <typeparamref name="TTail" /> <see cref="DotEndpoint" /> node to multiple
-    ///                 <typeparamref name="THead" /> <see cref="DotEndpointGroup" /> nodes,
+    ///                 <typeparamref name="THead" /> <see cref="DotSubgraphEndpoint" /> nodes,
     ///             </description>
     ///         </item>
     ///         <item>
     ///             <description>
-    ///                 a group of edges that join multiple <typeparamref name="TTail" /> <see cref="DotEndpointGroup" /> nodes to one
+    ///                 a group of edges that join multiple <typeparamref name="TTail" /> <see cref="DotSubgraphEndpoint" /> nodes to one
     ///                 <typeparamref name="THead" /> <see cref="DotEndpoint" /> node,
     ///             </description>
     ///         </item>
     ///         <item>
     ///             <description>
-    ///                 a group of edges that join multiple <typeparamref name="TTail" /> <see cref="DotEndpointGroup" /> nodes to
-    ///                 multiple <typeparamref name="THead" /> <see cref="DotEndpointGroup" /> nodes.
+    ///                 a group of edges that join multiple <typeparamref name="TTail" /> <see cref="DotSubgraphEndpoint" /> nodes to
+    ///                 multiple <typeparamref name="THead" /> <see cref="DotSubgraphEndpoint" /> nodes.
     ///             </description>
     ///         </item>
     ///     </list>
