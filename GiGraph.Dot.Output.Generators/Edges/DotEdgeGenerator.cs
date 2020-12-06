@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Entities;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output.Generators.Providers;
@@ -68,17 +67,9 @@ namespace GiGraph.Dot.Output.Generators.Edges
 
         protected virtual void WriteEndpointGroup(DotEndpointGroup endpointGroup, IDotEdgeWriter writer)
         {
-            var orderedEndpoints = _options.SortElements
-                ? endpointGroup.Endpoints
-                   .Cast<IDotOrderable>()
-                   .OrderBy(endpoint => endpoint.OrderingKey)
-                   .Cast<DotEndpoint>()
-                : endpointGroup.Endpoints;
-
-            foreach (var endpoint in orderedEndpoints)
-            {
-                WriteEndpoint(endpoint, writer);
-            }
+            var endpointGroupWriter = writer.BeginEndpointGroup();
+            _entityGenerators.GetForEntity<IDotEndpointGroupWriter>(endpointGroup).Generate(endpointGroup, endpointGroupWriter);
+            writer.EndEndpointGroup();
         }
 
         protected virtual void WriteSubgraph(DotSubgraphEndpoint endpoint, IDotEdgeWriter writer)

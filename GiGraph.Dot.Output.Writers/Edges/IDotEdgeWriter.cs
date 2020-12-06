@@ -7,6 +7,9 @@ namespace GiGraph.Dot.Output.Writers.Edges
         IDotEndpointWriter BeginEndpoint();
         void EndEndpoint();
 
+        IDotEndpointGroupWriter BeginEndpointGroup();
+        void EndEndpointGroup();
+
         IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration);
         void EndSubgraph();
 
