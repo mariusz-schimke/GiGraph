@@ -312,11 +312,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="string" />,
-        ///     assuming that it may be of type <see cref="DotId" />. If the attribute is found, but its value cannot be cast nor converted
-        ///     to the returned type, an exception is thrown.
+        ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotId" />. If the
+        ///     attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
         /// </summary>
-        public virtual string GetValueAsId(string key)
+        public virtual DotId GetValueAsId(string key)
         {
             return GetValueAs
             (
@@ -324,7 +323,23 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 out var value,
                 v => v is string s ? (true, new DotId(s)) : (false, default)
             )
-                ? value.ToString()
+                ? value
+                : null;
+        }
+
+        /// <summary>
+        ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotClusterId" />.
+        ///     If the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
+        /// </summary>
+        public virtual DotClusterId GetValueAsClusterId(string key)
+        {
+            return GetValueAs
+            (
+                key,
+                out var value,
+                v => v is string s ? (true, new DotClusterId(s)) : (false, default)
+            )
+                ? value
                 : null;
         }
     }

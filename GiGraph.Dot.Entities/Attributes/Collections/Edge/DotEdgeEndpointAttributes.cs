@@ -50,10 +50,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClusterId" />
-        public virtual string ClusterId
+        public virtual DotClusterId ClusterId
         {
-            get => GetValueAsId(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIdAttribute(k, new DotClusterId(v)));
+            get => GetValueAsClusterId(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIdAttribute(k, v));
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Arrowhead" />

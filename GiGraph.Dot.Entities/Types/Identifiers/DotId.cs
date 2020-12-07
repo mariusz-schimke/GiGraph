@@ -40,5 +40,15 @@ namespace GiGraph.Dot.Entities.Types.Identifiers
         {
             return _id;
         }
+
+        public static implicit operator string(DotId id)
+        {
+            return id?._id;
+        }
+
+        public static implicit operator DotId(string id)
+        {
+            return id is {} ? new DotId(id) : null;
+        }
     }
 }

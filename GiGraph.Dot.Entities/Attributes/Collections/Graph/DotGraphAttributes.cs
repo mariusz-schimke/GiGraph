@@ -358,10 +358,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 
         /// <inheritdoc cref="IDotGraphAttributes.RootNodeId" />
         [DotAttributeKey(DotAttributeKeys.Root)]
-        public virtual string RootNodeId
+        public virtual DotId RootNodeId
         {
             get => GetValueAsId(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIdAttribute(k, new DotId(v)));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIdAttribute(k, v));
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Rotation" />

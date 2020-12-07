@@ -3,6 +3,7 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
@@ -76,9 +77,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             return _attributes.GetValueAsEndpointPort(GetKey(propertyAccessor));
         }
 
-        protected virtual string GetValueAsId(MethodBase propertyAccessor)
+        protected virtual DotId GetValueAsId(MethodBase propertyAccessor)
         {
             return _attributes.GetValueAsId(GetKey(propertyAccessor));
+        }
+
+        protected virtual DotClusterId GetValueAsClusterId(MethodBase propertyAccessor)
+        {
+            return _attributes.GetValueAsClusterId(GetKey(propertyAccessor));
         }
     }
 }

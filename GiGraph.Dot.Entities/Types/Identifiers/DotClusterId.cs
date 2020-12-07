@@ -26,5 +26,10 @@ namespace GiGraph.Dot.Entities.Types.Identifiers
                 ? $"{cluster}{options.Clusters.ClusterIdSeparator}{_id}"
                 : cluster;
         }
+
+        public static implicit operator DotClusterId(string id)
+        {
+            return id is {} ? new DotClusterId(id) : null;
+        }
     }
 }
