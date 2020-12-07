@@ -6,7 +6,6 @@ using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Edges;
-using GiGraph.Dot.Output.Writers.Subgraphs;
 
 namespace GiGraph.Dot.Output.Generators.Edges
 {
@@ -37,46 +36,9 @@ namespace GiGraph.Dot.Output.Generators.Edges
             }
         }
 
-        protected virtual void WriteEndpoint(DotEndpointDefinition endpointDefinition, IDotEdgeWriter writer)
+        protected virtual void WriteEndpoint(DotEndpointDefinition endpoint, IDotEdgeWriter writer)
         {
-            switch (endpointDefinition)
-            {
-                case DotEndpoint endpoint:
-                    WriteEndpoint(endpoint, writer);
-                    break;
-
-                case DotEndpointGroup endpointGroup:
-                    WriteEndpointGroup(endpointGroup, writer);
-                    break;
-
-                case DotSubgraphEndpoint subgraph:
-                    WriteSubgraph(subgraph, writer);
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(endpointDefinition), $"The specified endpoint type '{endpointDefinition.GetType().FullName}' is not supported.");
-            }
-        }
-
-        protected virtual void WriteEndpoint(DotEndpoint endpoint, IDotEdgeWriter writer)
-        {
-            var endpointWriter = writer.BeginEndpoint();
-            _entityGenerators.GetForEntity<IDotEndpointWriter>(endpoint).Generate(endpoint, endpointWriter);
-            writer.EndEndpoint();
-        }
-
-        protected virtual void WriteEndpointGroup(DotEndpointGroup endpointGroup, IDotEdgeWriter writer)
-        {
-            var endpointGroupWriter = writer.BeginEndpointGroup();
-            _entityGenerators.GetForEntity<IDotEndpointGroupWriter>(endpointGroup).Generate(endpointGroup, endpointGroupWriter);
-            writer.EndEndpointGroup();
-        }
-
-        protected virtual void WriteSubgraph(DotSubgraphEndpoint endpoint, IDotEdgeWriter writer)
-        {
-            var subgraphWriter = writer.BeginSubgraph(_options.Edges.PreferExplicitSubgraphDeclaration);
-            _entityGenerators.GetForEntity<IDotSubgraphWriter>(endpoint.Subgraph).Generate(endpoint.Subgraph, subgraphWriter);
-            writer.EndSubgraph();
+            _entityGenerators.GetForEntity<IDotEdgeWriter>(endpoint).Generate(endpoint, writer, annotate: false);
         }
     }
 }
