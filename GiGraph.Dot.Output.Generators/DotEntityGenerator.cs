@@ -6,7 +6,7 @@ using GiGraph.Dot.Output.Writers;
 
 namespace GiGraph.Dot.Output.Generators
 {
-    public abstract class DotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator<TEntity, TWriter>
+    public abstract class DotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator<TWriter>
         where TEntity : IDotEntity, IDotAnnotatable
         where TWriter : IDotEntityWriter
     {
@@ -19,16 +19,6 @@ namespace GiGraph.Dot.Output.Generators
             _syntaxRules = syntaxRules;
             _options = options;
             _entityGenerators = entityGenerators;
-        }
-
-        public virtual void Generate(TEntity entity, TWriter writer, bool annotate)
-        {
-            if (annotate)
-            {
-                WriteAnnotation(entity, writer);
-            }
-
-            WriteEntity(entity, writer);
         }
 
         /// <inheritdoc cref="IDotEntityGenerator.Supports{TWriter}" />
@@ -51,20 +41,25 @@ namespace GiGraph.Dot.Output.Generators
             return typeof(TEntity).IsAssignableFrom(entityType);
         }
 
-        /// <inheritdoc cref="IDotEntityGenerator.Generate" />
-        void IDotEntityGenerator.Generate(IDotEntity entity, IDotEntityWriter writer, bool annotate)
+        /// <inheritdoc cref="IDotEntityGenerator{TWriter}.Generate" />
+        public void Generate(IDotEntity entity, TWriter writer, bool annotate)
         {
-            if (entity is { } && !(entity is TEntity))
+            if (entity is null)
+            {
+                throw new ArgumentNullException(nameof(entity), "Entity must not be null.");
+            }
+
+            if (!(entity is TEntity actualEntity))
             {
                 throw new ArgumentException($"The entity type {entity.GetType().FullName} is not supported by the {GetType().FullName} generator.", nameof(entity));
             }
 
-            if (!(writer is TWriter))
+            if (annotate)
             {
-                throw new ArgumentException($"The writer type {writer.GetType().FullName} is not valid for the {GetType().FullName} generator.", nameof(writer));
+                WriteAnnotation(actualEntity, writer);
             }
 
-            Generate((TEntity) entity, (TWriter) writer, annotate);
+            WriteEntity(actualEntity, writer);
         }
 
         protected abstract void WriteEntity(TEntity entity, TWriter writer);
