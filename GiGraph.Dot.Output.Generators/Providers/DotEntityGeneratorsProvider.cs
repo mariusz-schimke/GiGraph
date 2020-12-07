@@ -33,6 +33,11 @@ namespace GiGraph.Dot.Output.Generators.Providers
         public virtual IDotEntityGenerator<TRequiredWriter> GetForEntity<TRequiredWriter>(IDotEntity entity)
             where TRequiredWriter : IDotEntityWriter
         {
+            if (entity is null)
+            {
+                throw new ArgumentNullException(nameof(entity), "Entity must not be null.");
+            }
+
             var lastExactMatch = _generators.LastOrDefault(g => g.Supports<TRequiredWriter>(entity, out var isExactEntityTypeMatch) && isExactEntityTypeMatch);
             var lastCompatibleMatch = _generators.LastOrDefault(g => g.Supports<TRequiredWriter>(entity, out var isExactEntityTypeMatch) && !isExactEntityTypeMatch);
 
