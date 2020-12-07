@@ -31,4 +31,5 @@
     "node6":"port6":"e" -> "node7" [ color = gold, style = dotted ]
     "node4" -> { "snode1" "snode2" } -> "node5" [ constraint = true, style = solid ]
     "node1" -> "node2" -> "node3" [ color = beige, style = invis ]
+    "node1", "cluster cluster1", "cluster" -> { "node3" "node4" }
 }

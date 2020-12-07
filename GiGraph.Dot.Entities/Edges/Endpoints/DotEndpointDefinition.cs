@@ -1,11 +1,13 @@
-﻿using GiGraph.Dot.Entities.Subgraphs;
+﻿using GiGraph.Dot.Entities.Clusters;
+using GiGraph.Dot.Entities.Nodes;
+using GiGraph.Dot.Entities.Subgraphs;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
     /// <summary>
     ///     Represents an endpoint of an edge.
     /// </summary>
-    public abstract class DotEndpointDefinition : IDotOrderable, IDotAnnotatable
+    public abstract class DotEndpointDefinition : IDotEntity, IDotOrderable, IDotAnnotatable
     {
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }
@@ -18,14 +20,19 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
             return (DotEndpoint) nodeId;
         }
 
-        public static implicit operator DotEndpointDefinition(string[] nodeIds)
+        public static implicit operator DotEndpointDefinition(DotNode node)
         {
-            return nodeIds is {} ? new DotEndpointGroup(nodeIds) : null;
+            return (DotEndpoint) node;
+        }
+
+        public static implicit operator DotEndpointDefinition(DotCluster cluster)
+        {
+            return (DotClusterEndpoint) cluster;
         }
 
         public static implicit operator DotEndpointDefinition(DotSubgraph subgraph)
         {
-            return subgraph is {} ? new DotEndpointGroup(subgraph) : null;
+            return (DotSubgraphEndpoint) subgraph;
         }
     }
 }

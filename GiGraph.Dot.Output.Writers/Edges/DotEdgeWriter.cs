@@ -18,6 +18,16 @@ namespace GiGraph.Dot.Output.Writers.Edges
         {
         }
 
+        public virtual IDotEndpointGroupWriter BeginEndpointGroup()
+        {
+            return new DotEndpointGroupWriter(_tokenWriter.SingleLine(), _configuration);
+        }
+
+        public virtual void EndEndpointGroup()
+        {
+            _tokenWriter.ClearLingerBuffer();
+        }
+
         public virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration)
         {
             return new DotSubgraphWriter(

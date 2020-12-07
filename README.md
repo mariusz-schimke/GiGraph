@@ -111,11 +111,8 @@ There are five basic types that are the building blocks of a graph in this libra
 Auxiliary types:
 
 - **DotNodeGroup** – a group of nodes that share a common list of attributes. Useful when you want to set attributes for multiple nodes at once. It is rendered as a single DOT script statement—a list of nodes followed by a list of attributes if specified.
-- **DotEdge<*TTail*, *THead*>** – a custom edge (or a group of edges), where *TTail* and *THead* may either be single nodes (**DotEndpoint**) or multiple nodes of a subgraph (**DotEndpointGroup**).
-- **DotEdgeSequence** – a sequence of edges composed of **DotEndpoint** and/or **DotEndpointGroup** instances. Used to join consecutive nodes and/or groups of nodes with one another. All edges in the sequence share a common list of attributes, and are rendered as a single DOT script statement with a list of nodes and/or subgraphs joined by edges, and followed by a list of attributes if specified.
-- **DotOneToManyEdgeGroup** – a group of edges that join a single node with nodes of a subgraph (it is actually a descendant of **DotEdge<DotEndpoint, DotEndpointGroup>**).
-- **DotManyToOneEdgeGroup** – a group of edges that join nodes of a subgraph with a single node (it is actually a descendant of **DotEdge<DotEndpointGroup, DotEndpoint>**).
-- **DotManyToManyEdgeGroup** – a group of edges that join nodes of a subgraph with nodes of another subgraph (it is actually a descendant of **DotEdge<DotEndpointGroup, DotEndpointGroup>**).
+- **DotEdge<*TTail*, *THead*>** – a custom edge, where *TTail* and *THead* may represent a single node (**DotEndpoint**), a cluster (**DotClusterEndpoint**), multiple nodes where each may have a custom port specified (**DotEndpointGroup**), or nodes of a subgraph (**DotSubgraphEndpoint**).
+- **DotEdgeSequence** – a sequence of edges composed of **DotEndpoint**, **DotClusterEndpoint**, **DotEndpointGroup** and/or **DotSubgraphEndpoint** instances. Used to join consecutive nodes and/or groups of nodes to one another. All edges in the sequence share a common list of attributes, and are rendered as a single DOT script statement with a list of nodes and/or subgraphs joined by edges, and followed by a list of attributes if specified.
 
 
 There are also attributes based on the type of the value they specify for a given key. There are quite a lot of them, but just to mention a few basic ones:
@@ -871,11 +868,9 @@ digraph
 
 ### Edge groups
 
-Edge groups join a single node with multiple nodes, multiple nodes with a single node, or multiple nodes with multiple nodes. The examples below present each of these use cases. An edge group may be understood as a simpler approach to specifying multiple edges, with the assumption that all of them share one list of attributes. The other way is adding individual edges to an edge collection separately, with the head or tail node repeated multiple times.
+Edge groups join a single node to multiple nodes, multiple nodes to a single node, or multiple nodes to multiple nodes. The examples below present each of these use cases. An edge group may be understood as a simpler way to specifying multiple edges, with the assumption that all of them share one list of attributes. The other way is adding individual edges to an edge collection separately, with the head or tail node repeated multiple times.
 
-
-
-❕ Note that *DotEndpoint* is implicitly convertible from *string*, whereas *DotEndpointGroup* is implicitly convertible from *string[]*.
+There are two types that represent edge groups: *DotEndpointGroup* and *DotSubgraphEndpoint*. They may be used interchangibly, but the former enables specifying a port for any endpoint, which is not possible when *DotSubgraphEndpoint* is used.
 
 
 
@@ -885,12 +880,9 @@ Edge groups join a single node with multiple nodes, multiple nodes with a single
 graph.Edges.AddOneToMany("Foo", "Bar", "Baz");
 
 // the line above is equivalent to
-var edgeGroup = new DotOneToManyEdgeGroup("Foo", "Bar", "Baz");
-
-// and also equivalent to
-edgeGroup = new DotOneToManyEdgeGroup(
-    new DotEndpoint("Foo"), // or just "Foo" (implicitly convertible to DotEndpoint)
-    new DotEndpointGroup("Bar", "Baz")); // or new [] { "Foo", "Bar" } (implicitly convertible to DotEndpointGroup)
+var edgeGroup = new DotEdge<DotEndpoint, DotSubgraphEndpoint>(
+    new DotEndpoint("Foo"),
+    new DotSubgraphEndpoint("Bar", "Baz"));
 
 graph.Edges.Add(edgeGroup);
 ```
@@ -898,12 +890,38 @@ graph.Edges.Add(edgeGroup);
 ```dot
 digraph
 {
-    { Foo } -> { Bar Baz }
+    Foo -> { Bar Baz }
 }
 ```
 
 <p align="center">
-  <img src="./Assets/Examples/edge-one-to-many.svg">
+  <img src="./Assets/Examples/edge-one-to-many-subgraph.svg">
+</p>
+
+
+
+The example above uses the *DotSubgraphEndpoint* to represent a group of endpoints. In the DOT script they are represented by a subgraph. A similar effect may be achieved by using a *DotEndpointGroup*, which is rendered as a comma-separated list of node identifiers. With that approach, it is possible to specify ports for any endpoint in the group.
+
+```c#
+var edgeGroup = new DotEdge<DotEndpoint, DotEndpointGroup>(
+    "Foo", // converted implicitly to DotEndpoint
+    new DotEndpointGroup(
+        new DotEndpoint("Bar", DotCompassPoint.NorthWest),
+        new DotEndpoint("Baz", DotCompassPoint.NorthEast)
+    ));
+
+graph.Edges.Add(edgeGroup);
+```
+
+```dot
+digraph
+{
+    Foo -> Bar:nw, Baz:ne
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/edge-one-to-many-group.svg">
 </p>
 
 
@@ -915,11 +933,8 @@ digraph
 graph.Edges.AddManyToOne("Baz", "Foo", "Bar");
 
 // the line above is equivalent to
-var edgeGroup = new DotManyToOneEdgeGroup("Baz", "Foo", "Bar");
-
-// and also equivalent to
-edgeGroup = new DotManyToOneEdgeGroup(
-    new DotEndpointGroup("Foo", "Bar"),
+var edgeGroup = new DotEdge<DotSubgraphEndpoint, DotEndpoint>(
+    new DotSubgraphEndpoint("Foo", "Bar"),
     new DotEndpoint("Baz"));
 
 graph.Edges.Add(edgeGroup);
@@ -928,7 +943,7 @@ graph.Edges.Add(edgeGroup);
 ```dot
 digraph
 {
-    { Foo Bar } -> { Baz }
+    { Foo Bar } -> Baz
 }
 ```
 
@@ -943,13 +958,13 @@ digraph
 
 ```c#
 graph.Edges.AddManyToMany(
-    new DotEndpointGroup("Foo", "Bar"),
-    new DotEndpointGroup("Baz", "Qux"));
+    new DotSubgraphEndpoint("Foo", "Bar"),
+    new DotSubgraphEndpoint("Baz", "Qux"));
 
-// the code above is equivalent to
-var edgeGroup = new DotManyToManyEdgeGroup(
-    new DotEndpointGroup("Foo", "Bar"),
-    new DotEndpointGroup("Baz", "Qux"));
+// the line above is equivalent to
+var edgeGroup = new DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>(
+    new DotSubgraphEndpoint("Foo", "Bar"),
+    new DotSubgraphEndpoint("Baz", "Qux"));
 
 graph.Edges.Add(edgeGroup);
 ```
@@ -973,8 +988,8 @@ Each group used in the above examples supports attributes. You may set them eith
 
 ```c#
 graph.Edges.AddManyToMany(
-    new DotEndpointGroup("Foo", "Bar"),
-    new DotEndpointGroup("Baz", "Qux"),
+    new DotSubgraphEndpoint("Foo", "Bar"),
+    new DotSubgraphEndpoint("Baz", "Qux"),
     edge =>
     {
         edge.Attributes.Color = Color.Red;
@@ -993,10 +1008,14 @@ digraph
 </p>
 
 
+❕ Note that *DotEndpoint* is implicitly convertible from *string*.
+
+
+
 
 ### Edge sequences
 
-An edge sequence lets you join a sequence of consecutive nodes an/or node groups (the latter are represented by subgraphs). Similarly to edge groups, a sequence may be understood as a simpler approach to specifying multiple edges at once, with a shared list of attributes. The other way is adding consecutive edges to an edge collection separately.
+An edge sequence lets you join a sequence of consecutive nodes and/or node groups. Similarly to edge groups, a sequence may be understood as a simpler approach to specifying multiple edges at once, with a shared list of attributes. The other way is adding consecutive edges to an edge collection separately.
 
 
 
@@ -1028,13 +1047,13 @@ digraph
 ```c#
 graph.Edges.AddSequence(
     new DotEndpoint("Foo"),
-    new DotEndpointGroup("Bar", "Baz", "Qux"),
+    new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
     new DotEndpoint("Quux"));
 
 // the code above is equivalent to
 var edgeSequence = new DotEdgeSequence(
     new DotEndpoint("Foo"),
-    new DotEndpointGroup("Bar", "Baz", "Qux"),
+    new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
     new DotEndpoint("Quux"));
 
 graph.Edges.Add(edgeSequence);
@@ -1065,7 +1084,7 @@ graph.Edges.AddSequence
         edge.Attributes.Color = Color.Red;
     },
     "Foo",
-    new DotEndpointGroup("Bar", "Baz", "Qux"),
+    new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
     new DotEndpoint("Quux", DotCompassPoint.North)
 );
 ```
@@ -1166,6 +1185,78 @@ digraph
         b
         c
     }
+}
+```
+
+
+
+### Clusters as endpoints
+
+Clusters may be used as endpoints. In such case the edge is clipped to cluster border instead of being connected to a node inside the cluster. To achieve that effect, define an edge that joins a node outside the cluster with a node inside the cluster. Then, for the external endpoint of the edge, assign the identifier of the cluster to the *ClusterId* attribute. Also, enable clipping edges to cluster borders by setting the *AllowEdgeClipping* attribute on the graph.  The following example presents the complete idea.
+
+```c#
+var graph = new DotGraph();
+
+graph.Clusters.Attributes.AllowEdgeClipping = true;
+
+graph.Clusters.Add("Cluster1", cluster =>
+{
+    cluster.Nodes.Add("Bar");
+});
+
+graph.Edges.Add("Foo", "Bar", edge =>
+{
+    edge.Attributes.Head.ClusterId = "Cluster1";
+});
+```
+
+```dot
+digraph
+{
+    compound = true
+
+    subgraph "cluster Cluster1"
+    {
+        Bar
+    }
+
+    Foo -> Bar [ lhead = "cluster Cluster1" ]
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/cluster-edge-clipping.svg">
+</p>
+
+
+
+Note that for some layout engines (see *fdp*) cluster ID has to be specified directly as the endpoint identifier for an edge. To do that, use the *DotClusterEndpoint* class with an identifier of a cluster to be used as the endpoint. Se the example below.
+
+```c#
+var graph = new DotGraph();
+
+// (optional if the layout engine is specified externally)
+graph.Attributes.Layout.Engine = DotLayoutEngines.Fdp;
+
+graph.Clusters.Add("Cluster1", cluster =>
+{
+    cluster.Nodes.Add("Bar");
+});
+
+graph.Edges.Add("Foo", new DotClusterEndpoint("Cluster1"));
+```
+
+```dot
+digraph
+{
+    layout = fdp
+
+    subgraph "cluster Cluster1"
+    {
+        Bar
+    }
+
+    Foo -> "cluster Cluster1"
 }
 ```
 

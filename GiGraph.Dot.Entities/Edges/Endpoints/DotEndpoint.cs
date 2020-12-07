@@ -1,17 +1,16 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Edges.Enums;
+using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
     /// <summary>
-    ///     Represents a node as an edge endpoint. The node may be connected to another node represented by a second instance of the same
-    ///     <see cref="DotEndpoint" /> class, or to multiple nodes represented by the <see cref="DotEndpointGroup" /> class. To make such
-    ///     connection, use <see cref="DotEdge{TTail, THead}" /> (or one of its more specific descendants), or
-    ///     <see cref="DotEdgeSequence" />.
+    ///     Represents a node as an endpoint.
     /// </summary>
-    public class DotEndpoint : DotEndpointDefinition, IDotEntity
+    public class DotEndpoint : DotEndpointDefinition
     {
         protected DotEndpointPort _port;
 
@@ -63,14 +62,14 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// </param>
         public DotEndpoint(string nodeId, DotEndpointPort port)
         {
-            NodeId = nodeId ?? throw new ArgumentNullException(nameof(nodeId), "Node identifier cannot be null.");
-            _port = port ?? throw new ArgumentNullException(nameof(port), "Port cannot be null.");
+            SetId(nodeId);
+            SetPort(port);
         }
 
         /// <summary>
         ///     Gets the node identifier.
         /// </summary>
-        public virtual string NodeId { get; }
+        public virtual string Id { get; protected set; }
 
         /// <summary>
         ///     Gets or sets the endpoint port, that is a point on a node where an edge is attached to.
@@ -78,17 +77,40 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         public virtual DotEndpointPort Port
         {
             get => _port;
-            set => _port = value ?? throw new ArgumentNullException(nameof(Port), "Port cannot be null.");
+            set => SetPort(value);
+        }
+
+        protected virtual void SetId(string id)
+        {
+            Id = id ?? throw new ArgumentNullException(nameof(id), "Node identifier cannot be null.");
+        }
+
+        protected virtual void SetPort(DotEndpointPort port)
+        {
+            _port = port ?? throw new ArgumentNullException(nameof(Port), "Port cannot be null.");
         }
 
         protected override string GetOrderingKey()
         {
-            return NodeId;
+            return $"{Id}:{Port.Name}:{Port.CompassPoint}";
         }
 
+        // the type of endpoint may be specified explicitly as a generic param, in which case this implicit conversion may be useful
+        // (e.g. graph.Edges.Add<DotClusterEndpoint, DotEndpoint>("cluster 1", "node1"))
         public static implicit operator DotEndpoint(string nodeId)
         {
             return nodeId is {} ? new DotEndpoint(nodeId) : null;
+        }
+
+        public static implicit operator DotEndpoint(DotNode node)
+        {
+            return node is {} ? new DotEndpoint(node.Id) : null;
+        }
+
+        // this way a cluster may be used directly for DotEndpoint parameters as well
+        public static implicit operator DotEndpoint(DotCluster cluster)
+        {
+            return (DotClusterEndpoint) cluster;
         }
     }
 }

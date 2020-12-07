@@ -6,16 +6,17 @@ using GiGraph.Dot.Output.Writers.Edges;
 
 namespace GiGraph.Dot.Output.Generators.Edges
 {
-    public class DotEndpointGenerator : DotEntityGenerator<DotEndpoint, IDotEndpointWriter>
+    public class DotEndpointGenerator<TEndpoint> : DotEntityGenerator<TEndpoint, IDotEndpointWriter>
+        where TEndpoint : DotEndpoint
     {
         public DotEndpointGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
         {
         }
 
-        protected override void WriteEntity(DotEndpoint endpoint, IDotEndpointWriter writer)
+        protected override void WriteEntity(TEndpoint endpoint, IDotEndpointWriter writer)
         {
-            var nodeId = EscapeIdentifier(endpoint.NodeId);
+            var id = EscapeEndpointIdentifier(endpoint.Id);
             var portName = EscapeIdentifier(endpoint.Port.Name);
 
             var compassPoint = endpoint.Port.CompassPoint.HasValue
@@ -24,13 +25,18 @@ namespace GiGraph.Dot.Output.Generators.Edges
 
             writer.WriteEndpoint
             (
-                nodeId,
-                IdentifierRequiresQuoting(nodeId),
+                id,
+                IdentifierRequiresQuoting(id),
                 portName,
                 IdentifierRequiresQuoting(portName),
                 compassPoint,
                 IdentifierRequiresQuoting(compassPoint)
             );
+        }
+
+        protected virtual string EscapeEndpointIdentifier(string endpointId)
+        {
+            return EscapeIdentifier(endpointId);
         }
     }
 }
