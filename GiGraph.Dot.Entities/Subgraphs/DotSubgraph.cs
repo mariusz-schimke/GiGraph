@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Graphs;
@@ -127,11 +126,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
                 ? new DotSubgraph(rank.Value)
                 : new DotSubgraph();
 
-            if (nodeIds.Any())
-            {
-                result.Nodes.AddRange(nodeIds);
-            }
-
+            result.Nodes.AddRange(nodeIds);
             return result;
         }
     }
