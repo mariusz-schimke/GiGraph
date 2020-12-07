@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Entities.Types.Points;
@@ -326,7 +327,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         is marked as the root, twopi will pick one (see the <see cref="DotNodeAttributes.IsRoot" /> attribute on a node).
         ///     </para>
         /// </summary>
-        string RootNodeId { get; set; }
+        DotId RootNodeId { get; set; }
 
         /// <summary>
         ///     <para>

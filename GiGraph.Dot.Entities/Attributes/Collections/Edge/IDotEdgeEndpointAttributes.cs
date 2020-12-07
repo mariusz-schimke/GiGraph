@@ -6,6 +6,7 @@ using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Entities.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
@@ -30,7 +31,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     attributes on the graph's <see cref="DotCommonGraphSection.Clusters" /> collection), if the current property is defined, and
         ///     is the identifier of a cluster containing the real endpoint node, the edge is clipped to the boundary of the cluster.
         /// </summary>
-        string ClusterId { get; set; }
+        DotClusterId ClusterId { get; set; }
 
         /// <summary>
         ///     If true (default), the end of the edge is clipped to node boundary; otherwise, it goes to the center of the node, or the

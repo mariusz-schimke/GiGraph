@@ -1,5 +1,6 @@
 ﻿using System;
 using GiGraph.Dot.Entities;
+using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers;
@@ -79,9 +80,15 @@ namespace GiGraph.Dot.Output.Generators
             }
         }
 
-        protected virtual string EscapeIdentifier(string id)
+        protected virtual string EncodeIdentifier<TId>(TId id)
+            where TId : DotId, IDotEncodable
         {
-            return _syntaxRules.IdentifierEscaper.Escape(id);
+            return id.GetDotEncodedValue(_options, _syntaxRules);
+        }
+
+        protected virtual string EncodeIdentifier(string id)
+        {
+            return EncodeIdentifier(new DotId(id));
         }
 
         protected virtual bool IdentifierRequiresQuoting(string id)

@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
 
         protected virtual void WriteIdentifier(string id, IDotNodeWriter writer)
         {
-            id = EscapeIdentifier(id);
+            id = EncodeIdentifier(id);
             writer.WriteNodeIdentifier(id, IdentifierRequiresQuoting(id));
         }
     }

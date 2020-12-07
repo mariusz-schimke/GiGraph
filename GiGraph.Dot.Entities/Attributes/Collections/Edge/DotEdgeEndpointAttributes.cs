@@ -2,6 +2,7 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Entities.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
@@ -49,10 +50,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClusterId" />
-        public virtual string ClusterId
+        public virtual DotClusterId ClusterId
         {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotClusterIdAttribute(k, v));
+            get => GetValueAsClusterId(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIdAttribute(k, v));
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Arrowhead" />

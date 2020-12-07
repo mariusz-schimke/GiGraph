@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Clusters;
+using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Generators.Subgraphs;
 using GiGraph.Dot.Output.Options;
@@ -17,7 +18,7 @@ namespace GiGraph.Dot.Output.Generators.Clusters
         {
             // keep this value coherent with the format the logical endpoint attribute uses to generate cluster identifier,
             // and use the same identifier escaping pipeline
-            id = EscapeIdentifier(DotClusterIdFormatter.Format(id, _options));
+            id = EncodeIdentifier(new DotClusterId(id));
             writer.WriteSubgraphDeclaration(id, IdentifierRequiresQuoting(id));
         }
     }
