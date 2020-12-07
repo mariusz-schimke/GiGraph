@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Types.Arrows
         /// </param>
         public DotCompositeArrowhead(params DotArrowhead[] arrowheads)
         {
-            Arrowheads = arrowheads ?? throw new ArgumentNullException(nameof(arrowheads), "Arrowhead collection cannot be null.");
+            Arrowheads = arrowheads ?? throw new ArgumentNullException(nameof(arrowheads), "Arrowhead collection must not be null.");
         }
 
         /// <summary>

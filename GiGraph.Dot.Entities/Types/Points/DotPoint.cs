@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Types.Points
         public DotPoint(bool? isFixed, params double[] coordinates)
         {
             IsFixed = isFixed;
-            Coordinates = coordinates ?? throw new ArgumentNullException(nameof(coordinates), "Coordinate collection cannot be null.");
+            Coordinates = coordinates ?? throw new ArgumentNullException(nameof(coordinates), "Coordinate collection must not be null.");
 
             if (!coordinates.Any())
             {

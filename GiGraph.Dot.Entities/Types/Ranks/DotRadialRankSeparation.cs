@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Types.Ranks
         /// </param>
         public DotRadialRankSeparation(params double[] values)
         {
-            Values = values ?? throw new ArgumentNullException(nameof(values), "Value collection cannot be null.");
+            Values = values ?? throw new ArgumentNullException(nameof(values), "Value collection must not be null.");
         }
 
         /// <summary>

@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Attributes
     {
         protected DotAttribute(string key)
         {
-            Key = key ?? throw new ArgumentNullException(nameof(key), "Attribute key cannot be null.");
+            Key = key ?? throw new ArgumentNullException(nameof(key), "Attribute key must not be null.");
         }
 
         /// <summary>

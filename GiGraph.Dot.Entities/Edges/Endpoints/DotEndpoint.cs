@@ -82,12 +82,12 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
 
         protected virtual void SetId(string id)
         {
-            Id = id ?? throw new ArgumentNullException(nameof(id), "Node identifier cannot be null.");
+            Id = id ?? throw new ArgumentNullException(nameof(id), "Node identifier must not be null.");
         }
 
         protected virtual void SetPort(DotEndpointPort port)
         {
-            _port = port ?? throw new ArgumentNullException(nameof(Port), "Port cannot be null.");
+            _port = port ?? throw new ArgumentNullException(nameof(Port), "Port must not be null.");
         }
 
         protected override string GetOrderingKey()

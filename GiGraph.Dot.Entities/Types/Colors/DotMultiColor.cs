@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         {
             if (colors is null)
             {
-                throw new ArgumentNullException(nameof(colors), "Color collection cannot be null.");
+                throw new ArgumentNullException(nameof(colors), "Color collection must not be null.");
             }
 
             var totalWeight = colors.Sum(c => c.GetWeight().GetValueOrDefault(0));

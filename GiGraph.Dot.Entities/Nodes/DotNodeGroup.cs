@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Nodes
         {
             if (nodeIds is null)
             {
-                throw new ArgumentNullException(nameof(nodeIds), "Node identifier collection cannot be null.");
+                throw new ArgumentNullException(nameof(nodeIds), "Node identifier collection must not be null.");
             }
 
             NodeIds = nodeIds.Any()

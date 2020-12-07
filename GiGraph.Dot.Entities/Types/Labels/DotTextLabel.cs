@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
         /// </param>
         public DotTextLabel(DotEscapeString text)
         {
-            _text = text ?? throw new ArgumentNullException(nameof(text), "Text cannot be null.");
+            _text = text ?? throw new ArgumentNullException(nameof(text), "Text must not be null.");
         }
 
         /// <summary>
