@@ -47,8 +47,8 @@ namespace GiGraph.Dot.Output.Generators.Providers
             provider.Register(new DotSubgraphCollectionGenerator<DotCluster>(syntaxRules, options, provider));
 
             provider.Register(new DotAttributeGenerator(syntaxRules, options, provider));
-            provider.Register(new DotLabelAttributeGenerator(syntaxRules, options, provider));
             provider.Register(new DotAttributeListGenerator(syntaxRules, options, provider));
+            provider.Register(new DotHtmlLabelAttributeGenerator(syntaxRules, options, provider));
 
             provider.Register(new DotNodeGenerator(syntaxRules, options, provider));
             provider.Register(new DotNodeGroupGenerator(syntaxRules, options, provider));
@@ -56,6 +56,10 @@ namespace GiGraph.Dot.Output.Generators.Providers
 
             provider.Register(new DotEdgeGenerator(syntaxRules, options, provider));
             provider.Register(new DotEdgeCollectionGenerator(syntaxRules, options, provider));
+            provider.Register(new DotEdgeEndpointGenerator(syntaxRules, options, provider));
+            provider.Register(new DotEdgeEndpointGroupGenerator(syntaxRules, options, provider));
+            provider.Register(new DotEdgeSubgraphEndpointGenerator(syntaxRules, options, provider));
+
             provider.Register(new DotEndpointGenerator<DotEndpoint>(syntaxRules, options, provider));
             provider.Register(new DotClusterEndpointGenerator(syntaxRules, options, provider));
             provider.Register(new DotEndpointGroupGenerator(syntaxRules, options, provider));

@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
         {
             if (items is null)
             {
-                throw new ArgumentNullException(nameof(items), "Escape string collection cannot be null.");
+                throw new ArgumentNullException(nameof(items), "Escape string collection must not be null.");
             }
 
             // flatten to prevent multiple recursion on building the output string

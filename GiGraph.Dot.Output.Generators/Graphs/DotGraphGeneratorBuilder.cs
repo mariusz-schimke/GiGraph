@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Writers.Graphs;
 
 namespace GiGraph.Dot.Output.Generators.Graphs
 {
@@ -21,7 +22,7 @@ namespace GiGraph.Dot.Output.Generators.Graphs
         /// <param name="options">
         ///     The DOT language generation options to use for graph generation and its components.
         /// </param>
-        public virtual IDotEntityGenerator Build(DotSyntaxRules syntaxRules, DotSyntaxOptions options)
+        public virtual IDotEntityGenerator<IDotGraphWriterRoot> Build(DotSyntaxRules syntaxRules, DotSyntaxOptions options)
         {
             var providers = _dotEntityGeneratorsProviderBuilder.Build(syntaxRules, options);
             return providers.Get<DotGraphGenerator>();

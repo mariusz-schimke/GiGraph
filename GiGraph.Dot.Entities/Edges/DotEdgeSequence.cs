@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Edges
         {
             if (endpoints is null)
             {
-                throw new ArgumentNullException(nameof(endpoints), "Endpoint collection cannot be null.");
+                throw new ArgumentNullException(nameof(endpoints), "Endpoint collection must not be null.");
             }
 
             _endpoints = endpoints.Length > 1

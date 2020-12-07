@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Types.Records
         /// </param>
         public DotRecord(bool flip, params DotRecordField[] fields)
         {
-            Fields = fields ?? throw new ArgumentNullException(nameof(fields), "Field collection cannot be null.");
+            Fields = fields ?? throw new ArgumentNullException(nameof(fields), "Field collection must not be null.");
             Flip = flip;
         }
 

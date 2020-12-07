@@ -48,8 +48,8 @@ namespace GiGraph.Dot.Entities.Edges
         protected DotEdge(TTail tail, THead head, DotEdgeAttributes attributes)
             : base(attributes)
         {
-            Tail = tail ?? throw new ArgumentNullException(nameof(tail), "Edge tail cannot be null.");
-            Head = head ?? throw new ArgumentNullException(nameof(head), "Edge head cannot be null.");
+            Tail = tail ?? throw new ArgumentNullException(nameof(tail), "Edge tail must not be null.");
+            Head = head ?? throw new ArgumentNullException(nameof(head), "Edge head must not be null.");
         }
 
         /// <summary>

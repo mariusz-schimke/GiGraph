@@ -6,7 +6,7 @@ using GiGraph.Dot.Output.Writers;
 
 namespace GiGraph.Dot.Output.Generators
 {
-    public abstract class DotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator<TEntity, TWriter>
+    public abstract class DotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator<TWriter>
         where TEntity : IDotEntity, IDotAnnotatable
         where TWriter : IDotEntityWriter
     {
@@ -21,18 +21,8 @@ namespace GiGraph.Dot.Output.Generators
             _entityGenerators = entityGenerators;
         }
 
-        public virtual void Generate(TEntity entity, TWriter writer, bool annotate)
-        {
-            if (annotate)
-            {
-                WriteAnnotation(entity, writer);
-            }
-
-            WriteEntity(entity, writer);
-        }
-
         /// <inheritdoc cref="IDotEntityGenerator.Supports{TWriter}" />
-        public virtual bool Supports<TRequiredWriter>(Type entityType, out bool isExactEntityTypeMatch)
+        public virtual bool Supports<TRequiredWriter>(IDotEntity entity, out bool isExactEntityTypeMatch)
             where TRequiredWriter : IDotEntityWriter
         {
             isExactEntityTypeMatch = false;
@@ -42,29 +32,39 @@ namespace GiGraph.Dot.Output.Generators
                 return false;
             }
 
-            if (entityType == typeof(TEntity))
+            if (!(entity is TEntity requiredEntityType))
             {
-                isExactEntityTypeMatch = true;
-                return true;
+                return false;
             }
 
-            return typeof(TEntity).IsAssignableFrom(entityType);
+            isExactEntityTypeMatch = entity.GetType() == typeof(TEntity);
+            return Supports(requiredEntityType);
         }
 
-        /// <inheritdoc cref="IDotEntityGenerator.Generate" />
-        void IDotEntityGenerator.Generate(IDotEntity entity, IDotEntityWriter writer, bool annotate)
+        /// <inheritdoc cref="IDotEntityGenerator{TWriter}.Generate" />
+        public void Generate(IDotEntity entity, TWriter writer, bool annotate)
         {
-            if (entity is { } && !(entity is TEntity))
+            if (entity is null)
+            {
+                throw new ArgumentNullException(nameof(entity), "Entity must not be null.");
+            }
+
+            if (!(entity is TEntity actualEntity))
             {
                 throw new ArgumentException($"The entity type {entity.GetType().FullName} is not supported by the {GetType().FullName} generator.", nameof(entity));
             }
 
-            if (!(writer is TWriter))
+            if (annotate)
             {
-                throw new ArgumentException($"The writer type {writer.GetType().FullName} is not valid for the {GetType().FullName} generator.", nameof(writer));
+                WriteAnnotation(actualEntity, writer);
             }
 
-            Generate((TEntity) entity, (TWriter) writer, annotate);
+            WriteEntity(actualEntity, writer);
+        }
+
+        protected virtual bool Supports(TEntity entity)
+        {
+            return true;
         }
 
         protected abstract void WriteEntity(TEntity entity, TWriter writer);

@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// </param>
         public DotSubgraphEndpoint(DotSubgraph subgraph)
         {
-            Subgraph = subgraph ?? throw new ArgumentNullException(nameof(subgraph), "Subgraph cannot be null.");
+            Subgraph = subgraph ?? throw new ArgumentNullException(nameof(subgraph), "Subgraph must not be null.");
         }
 
         /// <summary>
