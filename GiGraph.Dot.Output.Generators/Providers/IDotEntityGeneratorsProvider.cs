@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Entities;
+﻿using GiGraph.Dot.Entities;
 using GiGraph.Dot.Output.Writers;
 
 namespace GiGraph.Dot.Output.Generators.Providers
@@ -13,9 +12,6 @@ namespace GiGraph.Dot.Output.Generators.Providers
             where TGenerator : IDotEntityGenerator;
 
         IDotEntityGenerator<TRequiredWriter> GetForEntity<TRequiredWriter>(IDotEntity entity)
-            where TRequiredWriter : IDotEntityWriter;
-
-        IDotEntityGenerator<TRequiredWriter> GetForEntity<TRequiredWriter>(Type entityType)
             where TRequiredWriter : IDotEntityWriter;
     }
 }

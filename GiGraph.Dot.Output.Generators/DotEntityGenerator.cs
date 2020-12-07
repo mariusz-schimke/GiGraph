@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Output.Generators
         }
 
         /// <inheritdoc cref="IDotEntityGenerator.Supports{TWriter}" />
-        public virtual bool Supports<TRequiredWriter>(Type entityType, out bool isExactEntityTypeMatch)
+        public virtual bool Supports<TRequiredWriter>(IDotEntity entity, out bool isExactEntityTypeMatch)
             where TRequiredWriter : IDotEntityWriter
         {
             isExactEntityTypeMatch = false;
@@ -32,13 +32,13 @@ namespace GiGraph.Dot.Output.Generators
                 return false;
             }
 
-            if (entityType == typeof(TEntity))
+            if (!(entity is TEntity requiredEntityType))
             {
-                isExactEntityTypeMatch = true;
-                return true;
+                return false;
             }
 
-            return typeof(TEntity).IsAssignableFrom(entityType);
+            isExactEntityTypeMatch = entity.GetType() == typeof(TEntity);
+            return Supports(requiredEntityType);
         }
 
         /// <inheritdoc cref="IDotEntityGenerator{TWriter}.Generate" />
@@ -60,6 +60,11 @@ namespace GiGraph.Dot.Output.Generators
             }
 
             WriteEntity(actualEntity, writer);
+        }
+
+        protected virtual bool Supports(TEntity entity)
+        {
+            return true;
         }
 
         protected abstract void WriteEntity(TEntity entity, TWriter writer);
