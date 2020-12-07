@@ -1,5 +1,5 @@
-﻿using GiGraph.Dot.Entities.Clusters;
-using GiGraph.Dot.Entities.Edges.Endpoints;
+﻿using GiGraph.Dot.Entities.Edges.Endpoints;
+using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 
@@ -12,9 +12,9 @@ namespace GiGraph.Dot.Output.Generators.Edges
         {
         }
 
-        protected override string EscapeEndpointIdentifier(string endpointId)
+        protected override string EncodeEndpointIdentifier(string endpointId)
         {
-            return _syntaxRules.IdentifierEscaper.Escape(DotClusterIdFormatter.Format(endpointId, _options));
+            return EncodeIdentifier(new DotClusterId(endpointId));
         }
     }
 }

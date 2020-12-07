@@ -16,8 +16,8 @@ namespace GiGraph.Dot.Output.Generators.Edges
 
         protected override void WriteEntity(TEndpoint endpoint, IDotEndpointWriter writer)
         {
-            var id = EscapeEndpointIdentifier(endpoint.Id);
-            var portName = EscapeIdentifier(endpoint.Port.Name);
+            var id = EncodeEndpointIdentifier(endpoint.Id);
+            var portName = EncodeIdentifier(endpoint.Port.Name);
 
             var compassPoint = endpoint.Port.CompassPoint.HasValue
                 ? DotCompassPointConverter.Convert(endpoint.Port.CompassPoint.Value)
@@ -34,9 +34,9 @@ namespace GiGraph.Dot.Output.Generators.Edges
             );
         }
 
-        protected virtual string EscapeEndpointIdentifier(string endpointId)
+        protected virtual string EncodeEndpointIdentifier(string endpointId)
         {
-            return EscapeIdentifier(endpointId);
+            return EncodeIdentifier(endpointId);
         }
     }
 }

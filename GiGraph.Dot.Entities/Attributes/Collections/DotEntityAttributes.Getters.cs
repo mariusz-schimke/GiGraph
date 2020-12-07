@@ -75,5 +75,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             return _attributes.GetValueAsEndpointPort(GetKey(propertyAccessor));
         }
+
+        protected virtual string GetValueAsId(MethodBase propertyAccessor)
+        {
+            return _attributes.GetValueAsId(GetKey(propertyAccessor));
+        }
     }
 }

@@ -5,6 +5,7 @@ using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Entities.Types.Points;
@@ -359,8 +360,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         [DotAttributeKey(DotAttributeKeys.Root)]
         public virtual string RootNodeId
         {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeIdAttribute(k, v));
+            get => GetValueAsId(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIdAttribute(k, new DotId(v)));
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Rotation" />
