@@ -879,7 +879,7 @@ There are two types that represent edge groups: *DotEndpointGroup* and *DotSubgr
 ```c#
 graph.Edges.AddOneToMany("Foo", "Bar", "Baz");
 
-// the line above is equivalent to
+// the code above is equivalent to
 var edgeGroup = new DotEdge<DotEndpoint, DotSubgraphEndpoint>(
     new DotEndpoint("Foo"),
     new DotSubgraphEndpoint("Bar", "Baz"));
@@ -903,6 +903,14 @@ digraph
 The example above uses the *DotSubgraphEndpoint* to represent a group of endpoints. In the DOT script they are represented by a subgraph. A similar effect may be achieved by using a *DotEndpointGroup*, which is rendered as a comma-separated list of node identifiers. With that approach, it is possible to specify ports for any endpoint in the group.
 
 ```c#
+graph.Edges.Add(
+    new DotEndpoint("Foo"),
+    new DotEndpointGroup(
+        new DotEndpoint("Bar", DotCompassPoint.NorthWest),
+        new DotEndpoint("Baz", DotCompassPoint.NorthEast)
+    ));
+
+// the code above is equivalent to
 var edgeGroup = new DotEdge<DotEndpoint, DotEndpointGroup>(
     "Foo", // converted implicitly to DotEndpoint
     new DotEndpointGroup(
