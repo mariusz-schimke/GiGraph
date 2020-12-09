@@ -10,8 +10,7 @@ namespace GiGraph.Dot.Entities.Tests.Endpoints
         {
             var id1 = new DotEndpoint("1");
             var id2 = new DotEndpoint("1");
-            Assert.Equal(id1, id2);
-            Assert.Equal(id1.GetHashCode(), id2.GetHashCode());
+            Assert.True(id1.IsSameEndpoint(id2));
         }
 
         [Fact]
@@ -19,8 +18,7 @@ namespace GiGraph.Dot.Entities.Tests.Endpoints
         {
             var id1 = new DotEndpoint("1");
             var id2 = new DotEndpoint("2");
-            Assert.NotEqual(id1, id2);
-            Assert.NotEqual(id1.GetHashCode(), id2.GetHashCode());
+            Assert.False(id1.IsSameEndpoint(id2));
         }
 
         [Fact]
@@ -28,8 +26,7 @@ namespace GiGraph.Dot.Entities.Tests.Endpoints
         {
             var id1 = new DotEndpoint("1");
             var id2 = new DotClusterEndpoint("1");
-            Assert.NotEqual(id1, id2);
-            Assert.NotEqual(id1.GetHashCode(), id2.GetHashCode());
+            Assert.False(id1.IsSameEndpoint(id2));
         }
     }
 }
