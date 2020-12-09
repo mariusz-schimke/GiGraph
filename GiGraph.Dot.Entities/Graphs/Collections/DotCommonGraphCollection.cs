@@ -1,21 +1,11 @@
 ﻿using System;
-using GiGraph.Dot.Entities.Collections;
+using System.Collections.Generic;
 
 namespace GiGraph.Dot.Entities.Graphs.Collections
 {
-    public class DotCommonGraphCollection<TGraph> : DotEntityWithIdCollection<TGraph>, IDotEntity, IDotAnnotatable
+    public class DotCommonGraphCollection<TGraph> : List<TGraph>, IDotEntity, IDotAnnotatable
         where TGraph : IDotCommonGraph
     {
-        protected DotCommonGraphCollection(Func<string, Predicate<TGraph>> matchIdPredicate)
-            : base(matchIdPredicate)
-        {
-        }
-
-        public DotCommonGraphCollection()
-            : base(matchIdPredicate: id => graph => graph.Id == id)
-        {
-        }
-
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }
 
@@ -33,14 +23,6 @@ namespace GiGraph.Dot.Entities.Graphs.Collections
             Add(graph);
             init?.Invoke(graph);
             return graph;
-        }
-
-        /// <summary>
-        ///     Gets a graph with the specified identifier from the collection.
-        /// </summary>
-        public virtual TGraph Get(string id)
-        {
-            return Find(_matchIdPredicate(id));
         }
     }
 }
