@@ -96,16 +96,17 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
             return $"{Id}:{Port.Name}:{Port.CompassPoint}";
         }
 
-        public override bool Equals(object obj)
+        /// <summary>
+        ///     Determines the equality of endpoint identifiers ignoring port.
+        /// </summary>
+        /// <param name="endpoint">
+        ///     The endpoint to compare.
+        /// </param>
+        public virtual bool IsSameEndpoint(DotEndpoint endpoint)
         {
-            return obj is DotEndpoint id &&
-                   id.Id == Id &&
-                   id.GetType() == GetType();
-        }
-
-        public override int GetHashCode()
-        {
-            return Tuple.Create(Id, GetType()).GetHashCode();
+            return endpoint is {} &&
+                   endpoint.Id == Id &&
+                   endpoint.GetType() == GetType();
         }
 
         // the type of endpoint may be specified explicitly as a generic param, in which case this implicit conversion may be useful
