@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections.Edge;
+﻿using System;
+using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 
 namespace GiGraph.Dot.Entities.Edges
@@ -14,13 +15,13 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        ///     Creates a new edge instance.
+        ///     Creates a new edge.
         /// </summary>
         /// <param name="tail">
-        ///     The tail (source, left) node.
+        ///     The tail endpoint.
         /// </param>
         /// <param name="head">
-        ///     The head (destination, right) node.
+        ///     The head endpoint.
         /// </param>
         public DotEdge(DotEndpoint tail, DotEndpoint head)
             : base(tail, head)
@@ -28,13 +29,13 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        ///     Creates a new edge instance.
+        ///     Creates a new edge.
         /// </summary>
         /// <param name="tailNodeId">
-        ///     The identifier of the tail (source, left) node.
+        ///     The identifier of the tail node.
         /// </param>
         /// <param name="headNodeId">
-        ///     The identifier of the head (destination, right) node.
+        ///     The identifier of the head node.
         /// </param>
         public DotEdge(string tailNodeId, string headNodeId)
             : this(new DotEndpoint(tailNodeId), new DotEndpoint(headNodeId))
@@ -53,6 +54,17 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
+        ///     Creates a new loop edge.
+        /// </summary>
+        /// <param name="endpoint">
+        ///     The identifier of the endpoint.
+        /// </param>
+        public DotEdge(DotEndpoint endpoint)
+            : base(endpoint, endpoint)
+        {
+        }
+
+        /// <summary>
         ///     Indicates if the current instance is a loop edge.
         /// </summary>
         public virtual bool IsLoop => IsLoopEdge(this);
@@ -65,17 +77,19 @@ namespace GiGraph.Dot.Entities.Edges
         /// </param>
         public virtual bool Loops(string nodeId)
         {
-            return Equals(nodeId, nodeId);
+            // IsLoop is checked here because the endpoints may be of different types
+            // (e.g. cluster ID and node ID), in which case the edge should not be considered a loop
+            return IsLoop && Equals(nodeId, nodeId);
         }
 
         /// <summary>
         ///     Determines whether the current edge joins the specified nodes.
         /// </summary>
         /// <param name="tailNodeId">
-        ///     The identifier of the tail (source, left) node to check.
+        ///     The identifier of the tail node to check.
         /// </param>
         /// <param name="headNodeId">
-        ///     The identifier of the head (destination, right) node to check.
+        ///     The identifier of the head node to check.
         /// </param>
         public virtual bool Equals(string tailNodeId, string headNodeId)
         {
@@ -89,15 +103,17 @@ namespace GiGraph.Dot.Entities.Edges
         ///     The edge whose endpoints to check.
         /// </param>
         /// <param name="tailId">
-        ///     The identifier of the tail (source, left) endpoint to check.
+        ///     The identifier of the tail endpoint to check.
         /// </param>
         /// <param name="headId">
-        ///     The identifier of the head (destination, right) endpoint to check.
+        ///     The identifier of the head endpoint to check.
         /// </param>
         public static bool Equals(DotEdgeDefinition edge, string tailId, string headId)
         {
-            return edge is DotEdge<DotEndpoint, DotEndpoint> e &&
-                   Equals(e, tailId, headId);
+            return edge is { } &&
+                   edge.Endpoints.Length == 2 &&
+                   edge.Endpoints[0] is DotEndpoint tail && tail.Id == tailId &&
+                   edge.Endpoints[1] is DotEndpoint head && head.Id == headId;
         }
 
         /// <summary>
@@ -107,10 +123,10 @@ namespace GiGraph.Dot.Entities.Edges
         ///     The edge whose endpoints to check.
         /// </param>
         /// <param name="tailId">
-        ///     The identifier of the tail (source, left) node to check.
+        ///     The identifier of the tail node to check.
         /// </param>
         /// <param name="headId">
-        ///     The identifier of the head (destination, right) node to check.
+        ///     The identifier of the head node to check.
         /// </param>
         public static bool Equals<TTail, THead>(DotEdge<TTail, THead> edge, string tailId, string headId)
             where TTail : DotEndpoint
@@ -129,8 +145,29 @@ namespace GiGraph.Dot.Entities.Edges
         /// </param>
         public static bool IsLoopEdge(DotEdgeDefinition edge)
         {
-            return edge is DotEdge<DotEndpoint, DotEndpoint> e &&
-                   IsLoopEdge(e);
+            if (edge is null)
+            {
+                return false;
+            }
+
+            for (var i = 0; i < edge.Endpoints.Length - 1; i++)
+            {
+                if (edge.Endpoints[i] is DotEndpoint ep1)
+                {
+                    var index = Array.FindIndex(
+                        edge.Endpoints,
+                        i + 1,
+                        ep => ep is DotEndpoint ep2 && ep1.Equals(ep2)
+                    );
+
+                    if (index >= 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -143,7 +180,8 @@ namespace GiGraph.Dot.Entities.Edges
             where TTail : DotEndpoint
             where THead : DotEndpoint
         {
-            return edge.Tail.Id == edge.Head.Id;
+            return edge is { } &&
+                   edge.Tail.Equals(edge.Head);
         }
     }
 }

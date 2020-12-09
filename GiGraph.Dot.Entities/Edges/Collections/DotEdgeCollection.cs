@@ -25,8 +25,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         public DotEdgeCollection()
-            : this
-            (
+            : this(
                 (tailNodeId, headNodeId) => edgeDefinition => DotEdge.Equals(edgeDefinition, tailNodeId, headNodeId),
                 edgeDefinition => DotEdge.IsLoopEdge(edgeDefinition),
                 new DotEdgeAttributes()
@@ -66,10 +65,10 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         ///     Adds an edge that joins the two specified nodes.
         /// </summary>
         /// <param name="tailNodeId">
-        ///     The tail (source, left) node identifier.
+        ///     The tail node identifier.
         /// </param>
         /// <param name="headNodeId">
-        ///     The head (destination, right) node identifier.
+        ///     The head node identifier.
         /// </param>
         /// <param name="init">
         ///     An optional edge initializer delegate.
@@ -83,11 +82,11 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         ///     Adds an edge that joins the two specified endpoints.
         /// </summary>
         /// <param name="tail">
-        ///     The tail (source, left) node identifier (note that if you want to specify a cluster as a tail, use
+        ///     The tail node identifier (note that if you want to specify a cluster as a tail, use
         ///     <see cref="DotClusterEndpoint" />).
         /// </param>
         /// <param name="head">
-        ///     The head (destination, right) node identifier (note that if you want to specify a cluster as a head, use
+        ///     The head node identifier (note that if you want to specify a cluster as a head, use
         ///     <see cref="DotClusterEndpoint" />).
         /// </param>
         /// <param name="init">
@@ -102,12 +101,12 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         ///     Adds an edge that joins the specified endpoints or groups of endpoints.
         /// </summary>
         /// <param name="tail">
-        ///     The tail (source, left) node identifier. Use <see cref="DotEndpoint" /> for a node as a tail,
+        ///     The tail node identifier. Use <see cref="DotEndpoint" /> for a node as a tail,
         ///     <see cref="DotClusterEndpoint" /> for a cluster as a tail, <see cref="DotEndpointGroup" /> for a group of nodes as tails, or
         ///     <see cref="DotSubgraphEndpoint" /> for a subgraph whose nodes will be used as tails.
         /// </param>
         /// <param name="head">
-        ///     The head (destination, right) node identifier. Use <see cref="DotEndpoint" /> for a node as a head,
+        ///     The head node identifier. Use <see cref="DotEndpoint" /> for a node as a head,
         ///     <see cref="DotClusterEndpoint" /> for a cluster as a head, <see cref="DotEndpointGroup" /> for a group of nodes as heads, or
         ///     <see cref="DotSubgraphEndpoint" /> for a subgraph whose nodes will be used as heads.
         /// </param>
@@ -131,10 +130,10 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         ///     Gets the first matching edge that joins the two specified nodes.
         /// </summary>
         /// <param name="tailNodeId">
-        ///     The tail (source, left) node identifier.
+        ///     The tail node identifier.
         /// </param>
         /// <param name="headNodeId">
-        ///     The head (destination, right) node identifier.
+        ///     The head node identifier.
         /// </param>
         public virtual DotEdge Get(string tailNodeId, string headNodeId)
         {
@@ -145,10 +144,10 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         ///     Gets edges that join the two specified nodes.
         /// </summary>
         /// <param name="tailNodeId">
-        ///     The tail (source, left) node identifier.
+        ///     The tail node identifier.
         /// </param>
         /// <param name="headNodeId">
-        ///     The head (destination, right) node identifier.
+        ///     The head node identifier.
         /// </param>
         public virtual IEnumerable<DotEdge> GetAll(string tailNodeId, string headNodeId)
         {
@@ -160,10 +159,10 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         ///     Determines whether the specified edge is in the collection.
         /// </summary>
         /// <param name="tailNodeId">
-        ///     The tail (source, left) node identifier to locate.
+        ///     The tail node identifier to locate.
         /// </param>
         /// <param name="headNodeId">
-        ///     The head (destination, right) node identifier to locate.
+        ///     The head node identifier to locate.
         /// </param>
         public virtual bool Contains(string tailNodeId, string headNodeId)
         {
@@ -174,10 +173,10 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         ///     Removes the first matching edge that joins the two specified nodes.
         /// </summary>
         /// <param name="tailNodeId">
-        ///     The tail (source, left) node identifier.
+        ///     The tail node identifier.
         /// </param>
         /// <param name="headNodeId">
-        ///     The head (destination, right) node identifier.
+        ///     The head node identifier.
         /// </param>
         public virtual bool Remove(string tailNodeId, string headNodeId)
         {
@@ -196,10 +195,10 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         ///     Removes all edges that join the two specified nodes.
         /// </summary>
         /// <param name="tailNodeId">
-        ///     The tail (source, left) node identifier.
+        ///     The tail node identifier.
         /// </param>
         /// <param name="headNodeId">
-        ///     The head (destination, right) node identifier.
+        ///     The head node identifier.
         /// </param>
         public virtual int RemoveAll(string tailNodeId, string headNodeId)
         {

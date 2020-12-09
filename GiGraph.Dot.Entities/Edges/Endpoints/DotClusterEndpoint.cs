@@ -1,6 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Identifiers;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
@@ -54,6 +55,11 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         public static implicit operator DotClusterEndpoint(DotCluster cluster)
         {
             return cluster is {} ? new DotClusterEndpoint(cluster.Id) : null;
+        }
+
+        public static implicit operator DotClusterEndpoint(DotClusterId clusterId)
+        {
+            return clusterId is {} ? new DotClusterEndpoint(clusterId) : null;
         }
     }
 }

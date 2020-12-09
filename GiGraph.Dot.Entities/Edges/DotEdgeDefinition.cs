@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         ///     Gets the endpoints of the edge.
         /// </summary>
-        public abstract IEnumerable<DotEndpointDefinition> Endpoints { get; }
+        public abstract DotEndpointDefinition[] Endpoints { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

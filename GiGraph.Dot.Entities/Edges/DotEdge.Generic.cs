@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 
@@ -56,10 +55,10 @@ namespace GiGraph.Dot.Entities.Edges
         ///     Creates a new edge instance.
         /// </summary>
         /// <param name="tail">
-        ///     The tail (source, left) endpoint.
+        ///     The tail endpoint.
         /// </param>
         /// <param name="head">
-        ///     The head (destination, right) endpoint.
+        ///     The head endpoint.
         /// </param>
         public DotEdge(TTail tail, THead head)
             : this(tail, head, new DotEdgeAttributes())
@@ -67,19 +66,19 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        ///     Gets or sets the tail (source, left) endpoint.
+        ///     Gets or sets the tail endpoint.
         /// </summary>
         public virtual TTail Tail { get; }
 
         /// <summary>
-        ///     Gets or sets the head (destination, right) endpoint.
+        ///     Gets or sets the head endpoint.
         /// </summary>
         public virtual THead Head { get; }
 
         /// <summary>
         ///     Gets the endpoints of this edge.
         /// </summary>
-        public override IEnumerable<DotEndpointDefinition> Endpoints => new DotEndpointDefinition[] { Tail, Head };
+        public override DotEndpointDefinition[] Endpoints => new DotEndpointDefinition[] { Tail, Head };
 
         protected override string GetOrderingKey()
         {
