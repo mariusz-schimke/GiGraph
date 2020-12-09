@@ -97,10 +97,10 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         }
 
         /// <summary>
-        ///     Determines the equality of endpoint identifiers ignoring port.
+        ///     Determines the equality of endpoint identifiers (ignores port). Ensures that the endpoints are of the same type.
         /// </summary>
         /// <param name="endpoint">
-        ///     The endpoint to compare.
+        ///     The endpoint to check.
         /// </param>
         public virtual bool IsSameEndpoint(DotEndpoint endpoint)
         {
