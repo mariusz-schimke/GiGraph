@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Tests.Ids
             Assert.Equal(id1, id2);
             Assert.Equal(id1.GetHashCode(), id2.GetHashCode());
         }
-        
+
         [Fact]
         public void ids_are_not_equal()
         {
@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Tests.Ids
             Assert.NotEqual(id1, id2);
             Assert.NotEqual(id1.GetHashCode(), id2.GetHashCode());
         }
-        
+
         [Fact]
         public void id_and_cluster_id_are_not_equal()
         {
