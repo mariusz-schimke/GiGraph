@@ -377,5 +377,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
+
+        /// <inheritdoc cref="IDotGraphAttributes.GlobalRanking" />
+        [DotAttributeKey(DotAttributeKeys.NewRank)]
+        public virtual bool? GlobalRanking
+        {
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+        }
     }
 }
