@@ -26,9 +26,9 @@
 
 - The rank attribute may now be set globally for subgraphs.
 
-- Cluster may now be used as an endpoint also with the fdp layout engine (see https://github.com/$repository$/tree/$version$#clusters-as-endpoints).
+- Cluster may now be used as an endpoint also with the fdp layout engine (see https://github.com/$repository$/tree/$version$/README.md#clusters-as-endpoints).
 
-- It is possible now to specify ports for nodes in an endpoint group (see https://github.com/$repository$/tree/$version$#edge-groups).
+- It is possible now to specify ports for nodes in an endpoint group (see https://github.com/$repository$/tree/$version$/README.md#edge-groups).
 
 - Refactoring.
 
