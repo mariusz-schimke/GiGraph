@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections.Node;
-using GiGraph.Dot.Entities.Collections;
 
 namespace GiGraph.Dot.Entities.Nodes.Collections
 {
-    public class DotNodeCollection : DotEntityWithIdCollection<DotNodeDefinition>, IDotEntity, IDotAnnotatable
+    public class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, IDotAnnotatable
     {
-        protected DotNodeCollection(Func<string, Predicate<DotNodeDefinition>> matchIdPredicate, DotNodeAttributes attributes)
-            : base(matchIdPredicate)
+        protected DotNodeCollection(DotNodeAttributes attributes)
         {
             Attributes = attributes;
         }
 
         public DotNodeCollection()
-            : this(matchIdPredicate: id => nodeDefinition => nodeDefinition is DotNode node && node.Id == id, new DotNodeAttributes())
+            : this(new DotNodeAttributes())
         {
         }
 
@@ -146,29 +144,6 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
                     }
                 )
                .ToArray();
-        }
-
-        /// <summary>
-        ///     Gets a node with the specified identifier from the collection.
-        /// </summary>
-        /// <param name="id">
-        ///     The identifier of the node to get.
-        /// </param>
-        public virtual DotNode Get(string id)
-        {
-            return GetAll(id).FirstOrDefault();
-        }
-
-        /// <summary>
-        ///     Gets all nodes with the specified identifier from the collection.
-        /// </summary>
-        /// <param name="id">
-        ///     The identifier of the nodes to get.
-        /// </param>
-        public virtual IEnumerable<DotNode> GetAll(string id)
-        {
-            return this.OfType<DotNode>()
-               .Where(node => node.Id == id);
         }
     }
 }

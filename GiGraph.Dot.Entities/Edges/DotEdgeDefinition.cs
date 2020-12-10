@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using GiGraph.Dot.Entities.Attributes.Collections.Edge;
+﻿using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 
 namespace GiGraph.Dot.Entities.Edges
@@ -19,7 +18,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         ///     Gets the endpoints of the edge.
         /// </summary>
-        public abstract IEnumerable<DotEndpointDefinition> Endpoints { get; }
+        public abstract DotEndpointDefinition[] Endpoints { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

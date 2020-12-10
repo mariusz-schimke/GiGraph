@@ -75,7 +75,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         ///     Gets the sequence of endpoints.
         /// </summary>
-        public override IEnumerable<DotEndpointDefinition> Endpoints => _endpoints;
+        public override DotEndpointDefinition[] Endpoints => _endpoints;
 
         protected override string GetOrderingKey()
         {

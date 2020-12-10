@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Edges.Endpoints;
 namespace GiGraph.Dot.Entities.Edges
 {
     /// <summary>
-    ///     Represents an edge (joins two nodes).
+    ///     Represents an edge (joins two endpoints).
     /// </summary>
     public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     {
@@ -14,13 +14,13 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        ///     Creates a new edge instance.
+        ///     Creates a new edge.
         /// </summary>
         /// <param name="tail">
-        ///     The tail (source, left) node.
+        ///     The tail endpoint.
         /// </param>
         /// <param name="head">
-        ///     The head (destination, right) node.
+        ///     The head endpoint.
         /// </param>
         public DotEdge(DotEndpoint tail, DotEndpoint head)
             : base(tail, head)
@@ -28,13 +28,13 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        ///     Creates a new edge instance.
+        ///     Creates a new edge.
         /// </summary>
         /// <param name="tailNodeId">
-        ///     The identifier of the tail (source, left) node.
+        ///     The identifier of the tail node.
         /// </param>
         /// <param name="headNodeId">
-        ///     The identifier of the head (destination, right) node.
+        ///     The identifier of the head node.
         /// </param>
         public DotEdge(string tailNodeId, string headNodeId)
             : this(new DotEndpoint(tailNodeId), new DotEndpoint(headNodeId))
@@ -53,97 +53,74 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        ///     Indicates if the current instance is a loop edge.
+        ///     Creates a new loop edge.
         /// </summary>
-        public virtual bool IsLoop => IsLoopEdge(this);
-
-        /// <summary>
-        ///     Determines whether the current edge joins the specified node to itself.
-        /// </summary>
-        /// <param name="nodeId">
-        ///     The identifier of the node to check.
+        /// <param name="endpoint">
+        ///     The endpoint (note that if you want to specify a cluster as an endpoint, use <see cref="DotClusterEndpoint" />).
         /// </param>
-        public virtual bool Loops(string nodeId)
+        public DotEdge(DotEndpoint endpoint)
+            : base(endpoint, endpoint)
         {
-            return Equals(nodeId, nodeId);
         }
 
         /// <summary>
-        ///     Determines whether the current edge joins the specified nodes.
+        ///     Indicates if the edge is a loop.
         /// </summary>
-        /// <param name="tailNodeId">
-        ///     The identifier of the tail (source, left) node to check.
+        public virtual bool IsLoop => Tail.IsSameEndpoint(Head);
+
+        /// <summary>
+        ///     Determines whether the edge joins the specified endpoint to itself.
+        /// </summary>
+        /// <param name="endpointId">
+        ///     The identifier of the endpoint to check.
         /// </param>
-        /// <param name="headNodeId">
-        ///     The identifier of the head (destination, right) node to check.
-        /// </param>
-        public virtual bool Equals(string tailNodeId, string headNodeId)
+        public virtual bool Loops(string endpointId)
         {
-            return Equals(this, tailNodeId, headNodeId);
+            // IsLoop is checked here to make sure that both the endpoints are of the same type
+            // (they may represent a node ID or a cluster ID)
+            return Equals(endpointId, endpointId) && IsLoop;
         }
 
         /// <summary>
-        ///     Determines whether the specified edge joins the specified nodes.
+        ///     Determines whether the edge joins the specified endpoint to itself.
         /// </summary>
-        /// <param name="edge">
-        ///     The edge whose endpoints to check.
+        /// <param name="endpoint">
+        ///     The endpoint to check (note that if you want to check a cluster as an endpoint, use <see cref="DotClusterEndpoint" />).
         /// </param>
+        public virtual bool Loops(DotEndpoint endpoint)
+        {
+            return Tail.IsSameEndpoint(endpoint) &&
+                   Head.IsSameEndpoint(endpoint);
+        }
+
+        /// <summary>
+        ///     Determines whether the edge joins the specified endpoints.
+        /// </summary>
         /// <param name="tailId">
-        ///     The identifier of the tail (source, left) endpoint to check.
+        ///     The identifier of the tail endpoint to check.
         /// </param>
         /// <param name="headId">
-        ///     The identifier of the head (destination, right) endpoint to check.
+        ///     The identifier of the head endpoint to check.
         /// </param>
-        public static bool Equals(DotEdgeDefinition edge, string tailId, string headId)
+        public virtual bool Equals(string tailId, string headId)
         {
-            return edge is DotEdge<DotEndpoint, DotEndpoint> e &&
-                   Equals(e, tailId, headId);
+            return Tail.Id == tailId &&
+                   Head.Id == headId;
         }
 
         /// <summary>
-        ///     Determines whether the specified edge joins the specified nodes.
+        ///     Determines whether the edge joins the specified endpoints.
         /// </summary>
-        /// <param name="edge">
-        ///     The edge whose endpoints to check.
+        /// <param name="tail">
+        ///     The identifier of the tail endpoint to check.
         /// </param>
-        /// <param name="tailId">
-        ///     The identifier of the tail (source, left) node to check.
+        /// <param name="head">
+        ///     The identifier of the head endpoint to check.
         /// </param>
-        /// <param name="headId">
-        ///     The identifier of the head (destination, right) node to check.
-        /// </param>
-        public static bool Equals<TTail, THead>(DotEdge<TTail, THead> edge, string tailId, string headId)
-            where TTail : DotEndpoint
-            where THead : DotEndpoint
+        public virtual bool Equals(DotEndpoint tail, DotEndpoint head)
         {
-            return edge is { } &&
-                   edge.Tail.Id == tailId &&
-                   edge.Head.Id == headId;
-        }
-
-        /// <summary>
-        ///     Determines whether the specified edge is a loop edge.
-        /// </summary>
-        /// <param name="edge">
-        ///     The edge to check.
-        /// </param>
-        public static bool IsLoopEdge(DotEdgeDefinition edge)
-        {
-            return edge is DotEdge<DotEndpoint, DotEndpoint> e &&
-                   IsLoopEdge(e);
-        }
-
-        /// <summary>
-        ///     Determines whether the specified edge is a loop edge.
-        /// </summary>
-        /// <param name="edge">
-        ///     The edge to check.
-        /// </param>
-        public static bool IsLoopEdge<TTail, THead>(DotEdge<TTail, THead> edge)
-            where TTail : DotEndpoint
-            where THead : DotEndpoint
-        {
-            return edge.Tail.Id == edge.Head.Id;
+            return Tail.IsSameEndpoint(tail) &&
+                   Head.IsSameEndpoint(head);
         }
     }
 }

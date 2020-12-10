@@ -1,3 +1,4 @@
+using System;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Identifiers
@@ -49,6 +50,18 @@ namespace GiGraph.Dot.Entities.Types.Identifiers
         public static implicit operator DotId(string id)
         {
             return id is {} ? new DotId(id) : null;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is DotId id &&
+                   id._id == _id &&
+                   id.GetType() == GetType();
+        }
+
+        public override int GetHashCode()
+        {
+            return Tuple.Create(_id, GetType()).GetHashCode();
         }
     }
 }

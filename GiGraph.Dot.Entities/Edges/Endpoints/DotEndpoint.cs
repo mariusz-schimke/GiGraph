@@ -4,6 +4,7 @@ using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Identifiers;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
@@ -95,6 +96,19 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
             return $"{Id}:{Port.Name}:{Port.CompassPoint}";
         }
 
+        /// <summary>
+        ///     Determines the equality of endpoint identifiers (ignores port). Ensures that the endpoints are of the same type.
+        /// </summary>
+        /// <param name="endpoint">
+        ///     The endpoint to check.
+        /// </param>
+        public virtual bool IsSameEndpoint(DotEndpoint endpoint)
+        {
+            return endpoint is {} &&
+                   endpoint.Id == Id &&
+                   endpoint.GetType() == GetType();
+        }
+
         // the type of endpoint may be specified explicitly as a generic param, in which case this implicit conversion may be useful
         // (e.g. graph.Edges.Add<DotClusterEndpoint, DotEndpoint>("cluster 1", "node1"))
         public static implicit operator DotEndpoint(string nodeId)
@@ -111,6 +125,16 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         public static implicit operator DotEndpoint(DotCluster cluster)
         {
             return (DotClusterEndpoint) cluster;
+        }
+
+        public static implicit operator DotEndpoint(DotId id)
+        {
+            return id is {} ? new DotEndpoint(id) : null;
+        }
+
+        public static implicit operator DotEndpoint(DotClusterId clusterId)
+        {
+            return (DotClusterEndpoint) clusterId;
         }
     }
 }
