@@ -22,13 +22,13 @@
     
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code, or online tools like viz-js.com or www.webgraphviz.com, where you paste a script to view its visualization.</description>
     
-    <releaseNotes>- Added support for attributes: layout (attribute specifications are available at http://www.graphviz.org/doc/info/attrs.html).
+    <releaseNotes>- Added support for attributes: layout, remincross (attribute specifications are available at http://www.graphviz.org/doc/info/attrs.html).
 
 - The rank attribute may now be set globally for subgraphs.
 
-- Cluster may now be used as an endpoint also with the fdp layout engine (see https://github.com/$repository$/tree/$version$#clusters-as-endpoints).
+- Cluster may now be used as an endpoint also with the fdp layout engine (see https://github.com/$repository$/tree/$version$/README.md#clusters-as-endpoints).
 
-- It is possible now to specify ports for nodes in an endpoint group (see https://github.com/$repository$/tree/$version$#edge-groups).
+- It is possible now to specify ports for nodes in an endpoint group (see https://github.com/$repository$/tree/$version$/README.md#edge-groups).
 
 - Refactoring.
 

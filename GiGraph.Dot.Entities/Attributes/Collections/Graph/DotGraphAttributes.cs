@@ -167,7 +167,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotOrientationAttribute(k, v.Value));
         }
 
-        // implemented explicitly not to cause confusion (there two other synonymous attributes)
         /// <inheritdoc cref="IDotGraphAttributes.OrientationAngle" />
         [DotAttributeKey(DotAttributeKeys.Rotate)]
         public virtual int? OrientationAngle
@@ -176,7 +175,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
-        // implemented explicitly not to cause confusion (there two other synonymous attributes)
         /// <inheritdoc cref="IDotGraphAttributes.LandscapeOrientation" />
         [DotAttributeKey(DotAttributeKeys.Landscape)]
         public virtual bool? LandscapeOrientation
@@ -370,6 +368,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
+        }
+
+        /// <inheritdoc cref="IDotGraphAttributes.DoubleCrossingMinimization" />
+        [DotAttributeKey(DotAttributeKeys.ReMinCross)]
+        public virtual bool? DoubleCrossingMinimization
+        {
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
     }
 }

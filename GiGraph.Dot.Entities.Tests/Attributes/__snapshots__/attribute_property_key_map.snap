@@ -241,6 +241,9 @@
   "regular": [
     "Geometry.Regular [Node]"
   ],
+  "remincross": [
+    "DoubleCrossingMinimization [Graph]"
+  ],
   "resolution": [
     "Resolution [Graph]"
   ],

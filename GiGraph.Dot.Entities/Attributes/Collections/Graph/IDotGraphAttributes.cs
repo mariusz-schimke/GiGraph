@@ -349,5 +349,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     </para>
         /// </summary>
         DotEscapeString Id { get; set; }
+
+        /// <summary>
+        ///     If true and there are multiple clusters, runs crossing minimization a second time (dot only, default: true).
+        /// </summary>
+        bool? DoubleCrossingMinimization { get; set; }
     }
 }
