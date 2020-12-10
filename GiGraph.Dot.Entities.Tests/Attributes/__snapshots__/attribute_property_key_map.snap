@@ -196,6 +196,9 @@
   "minlen": [
     "MinLength [Edge]"
   ],
+  "newrank": [
+    "GlobalRanking [Graph]"
+  ],
   "nodesep": [
     "NodeSeparation [Graph]"
   ],

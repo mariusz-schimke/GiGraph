@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Collections.Node;
+using GiGraph.Dot.Entities.Attributes.Collections.Subgraph;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Identifiers;
@@ -354,5 +355,23 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     If true and there are multiple clusters, runs crossing minimization a second time (dot only, default: true).
         /// </summary>
         bool? DoubleCrossingMinimization { get; set; }
+
+        /// <summary>
+        ///     <para>
+        ///         Determines whether to use a single global ranking, ignoring clusters (dot only, default: false).
+        ///     </para>
+        ///     <para>
+        ///         The original ranking algorithm in dot is recursive on clusters. This can produce fewer ranks and a more compact layout,
+        ///         but sometimes at the cost of a head node being placed on a higher rank than the tail node. It also assumes that a node is
+        ///         not constrained in separate, incompatible subgraphs. For example, a node cannot be in a cluster and also be constrained
+        ///         by a rank of <see cref="DotRank.Same" /> with a node not in the cluster (see <see cref="DotSubgraphAttributes.Rank" /> on
+        ///         subgraph attributes).
+        ///     </para>
+        ///     <para>
+        ///         This allows nodes to be subject to multiple constraints. Rank constraints will usually take precedence over edge
+        ///         constraints.
+        ///     </para>
+        /// </summary>
+        bool? GlobalRanking { get; set; }
     }
 }
