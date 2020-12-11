@@ -80,9 +80,9 @@ namespace GiGraph.Dot.Output.TextEscaping
             return new DotTextEscapingPipeline(
                 new DotBackslashEscaper(),
                 new DotQuotationMarkEscaper(),
-                new DotCarriageReturnLineFeedEscaper(),
+                new DotWindowsNewLineEscaper(),
                 new DotCarriageReturnEscaper(),
-                new DotLineFeedEscaper()
+                new DotUnixNewLineEscaper()
             );
         }
 

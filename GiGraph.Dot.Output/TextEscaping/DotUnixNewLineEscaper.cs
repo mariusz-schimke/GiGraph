@@ -1,9 +1,9 @@
 ﻿namespace GiGraph.Dot.Output.TextEscaping
 {
     /// <summary>
-    ///     Escapes the carriage return + line feed character sequence (CRLF == \x000D\x000A == \r\n).
+    ///     Escapes line feed characters (LF == \x000A == \n).
     /// </summary>
-    public class DotCarriageReturnLineFeedEscaper : IDotTextEscaper
+    public class DotUnixNewLineEscaper : IDotTextEscaper
     {
         string IDotTextEscaper.Escape(string value)
         {
@@ -12,7 +12,7 @@
 
         public static string Escape(string value)
         {
-            return value?.Replace("\r\n", "\\n");
+            return value?.Replace(DotNewLine.Unix, "\\n");
         }
     }
 }

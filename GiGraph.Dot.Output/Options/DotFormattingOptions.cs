@@ -1,4 +1,5 @@
 ﻿using System;
+using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Options
 {
@@ -28,9 +29,10 @@ namespace GiGraph.Dot.Output.Options
         public virtual char IndentationChar { get; set; } = ' ';
 
         /// <summary>
-        ///     The line break sequence to use in the DOT output (<see cref="Environment.NewLine" /> by default).
+        ///     The line break sequence to use in the DOT output (a system-dependent line break sequence is used by default; see also
+        ///     <see cref="DotNewLine" />).
         /// </summary>
-        public virtual string LineBreak { get; set; } = Environment.NewLine;
+        public virtual string LineBreak { get; set; } = DotNewLine.SystemDefault;
 
         /// <summary>
         ///     Gets global attribute formatting options.

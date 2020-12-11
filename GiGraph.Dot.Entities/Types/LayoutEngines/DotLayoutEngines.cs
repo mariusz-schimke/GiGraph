@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Types.LayoutEngines
         ///     </see>
         ///     .
         /// </summary>
-        public static string Dot => "dot";
+        public const string Dot = "dot";
 
         /// <summary>
         ///     Draws “spring model” layouts. This is the default tool to use if the graph is not too large (about 100 nodes) and you don't
@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Types.LayoutEngines
         ///     </see>
         ///     .
         /// </summary>
-        public static string Neato => "neato";
+        public const string Neato = "neato";
 
         /// <summary>
         ///     Draws clustered graphs. See
@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Types.LayoutEngines
         ///     </see>
         ///     .
         /// </summary>
-        public static string Osage => "osage";
+        public const string Osage = "osage";
 
         /// <summary>
         ///     Draws “spring model” layouts similar to those of <see cref="Neato" />, but does this by reducing forces rather than working
@@ -43,7 +43,7 @@ namespace GiGraph.Dot.Entities.Types.LayoutEngines
         ///     </see>
         ///     .
         /// </summary>
-        public static string Fdp => "fdp";
+        public const string Fdp = "fdp";
 
         /// <summary>
         ///     A multiscale version of <see cref="Fdp" /> for the layout of large graphs. See
@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Entities.Types.LayoutEngines
         ///     </see>
         ///     .
         /// </summary>
-        public static string Sfdp => "sfdp";
+        public const string Sfdp = "sfdp";
 
         /// <summary>
         ///     Draws circular layouts. This is suitable for certain diagrams of multiple cyclic structures, such as certain
@@ -62,7 +62,7 @@ namespace GiGraph.Dot.Entities.Types.LayoutEngines
         ///     </see>
         ///     .
         /// </summary>
-        public static string Circo => "circo";
+        public const string Circo = "circo";
 
         /// <summary>
         ///     Draws radial layouts. Nodes are placed on concentric circles depending their distance from a given root node. See
@@ -71,7 +71,7 @@ namespace GiGraph.Dot.Entities.Types.LayoutEngines
         ///     </see>
         ///     .
         /// </summary>
-        public static string Twopi => "twopi";
+        public const string Twopi = "twopi";
 
         /// <summary>
         ///     Draws the graph as a squarified treemap. The clusters of the graph are used to specify the tree. See
@@ -80,6 +80,6 @@ namespace GiGraph.Dot.Entities.Types.LayoutEngines
         ///     </see>
         ///     .
         /// </summary>
-        public static string Patchwork => "patchwork";
+        public const string Patchwork = "patchwork";
     }
 }
