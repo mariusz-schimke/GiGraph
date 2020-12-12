@@ -9,7 +9,8 @@
     "Tail.Arrowhead [Edge]"
   ],
   "bgcolor": [
-    "BackgroundColor [Graph, Cluster]"
+    "Canvas.BackgroundColor [Graph]",
+    "BackgroundColor [Cluster]"
   ],
   "center": [
     "Canvas.CenterDrawing [Graph]"
@@ -51,7 +52,7 @@
     "Geometry.Distortion [Node]"
   ],
   "dpi": [
-    "Dpi [Graph]"
+    "Canvas.Dpi [Graph]"
   ],
   "edgehref": [
     "EdgeHyperlink.Href [Edge]"
@@ -87,7 +88,8 @@
     "Layout.ForceExternalLabels [Graph]"
   ],
   "gradientangle": [
-    "GradientAngle [Graph, Cluster, Node]"
+    "Canvas.GradientAngle [Graph]",
+    "GradientAngle [Cluster, Node]"
   ],
   "group": [
     "GroupName [Node]"
@@ -190,7 +192,7 @@
     "Tail.ClusterId [Edge]"
   ],
   "margin": [
-    "Margin [Graph]",
+    "Canvas.Margin [Graph]",
     "Padding [Cluster, Node]"
   ],
   "minlen": [
@@ -217,7 +219,7 @@
     "Layout.PackingMode [Graph]"
   ],
   "pad": [
-    "Padding [Graph]"
+    "Canvas.Padding [Graph]"
   ],
   "pencolor": [
     "BorderColor [Graph, Cluster]"
@@ -240,7 +242,7 @@
     "Layout.RankSeparation [Graph]"
   ],
   "ratio": [
-    "Scaling [Graph]"
+    "Canvas.Scaling [Graph]"
   ],
   "regular": [
     "Geometry.Regular [Node]"
@@ -249,7 +251,7 @@
     "Layout.DoubleCrossingMinimization [Graph]"
   ],
   "resolution": [
-    "Resolution [Graph]"
+    "Canvas.Resolution [Graph]"
   ],
   "root": [
     "RootNodeId [Graph]",
@@ -274,7 +276,7 @@
     "Geometry.Sides [Node]"
   ],
   "size": [
-    "Size [Graph]"
+    "Canvas.Size [Graph]"
   ],
   "skew": [
     "Geometry.Skew [Node]"

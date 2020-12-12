@@ -22,8 +22,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         ///     </para>
         ///     <para>
         ///         If the fill style used is <see cref="DotClusterFillStyle.Radial" />, then a radial gradient fill is done. See also the
-        ///         graph's <see cref="DotGraphAttributes.GradientAngle" /> attribute for setting a gradient angle globally, or its
-        ///         <see cref="DotClusterAttributes.GradientAngle" /> counterpart on individual clusters.
+        ///         <see cref="DotGraphCanvasAttributes.GradientAngle" /> attribute of graph <see cref="DotGraphAttributes.Canvas" /> for
+        ///         setting a gradient angle globally, or its <see cref="DotClusterAttributes.GradientAngle" /> counterpart on individual
+        ///         clusters.
         ///     </para>
         ///     <para>
         ///         The fill style can also be set to do fills using more than 2 colors (set fill style to
@@ -43,9 +44,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         ///     <para>
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
         ///         fill style to <see cref="DotClusterFillStyle.Radial" /> will cause a radial fill. If the second color is
-        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the graph's
-        ///         <see cref="DotGraphAttributes.GradientAngle" /> attribute for setting a gradient angle globally, or its
-        ///         <see cref="DotClusterAttributes.GradientAngle" /> counterpart on individual clusters.
+        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
+        ///         <see cref="DotGraphCanvasAttributes.GradientAngle" /> attribute on graph <see cref="DotGraphAttributes.Canvas" /> for
+        ///         setting a gradient angle globally, or its <see cref="DotClusterAttributes.GradientAngle" /> counterpart on individual
+        ///         clusters.
         ///     </para>
         ///     <para>
         ///         Note that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a

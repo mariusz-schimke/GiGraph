@@ -1,14 +1,10 @@
-using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Attributes.Metadata;
-using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Points;
-using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
@@ -116,7 +112,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             get => base.Id;
             set => base.Id = value;
         }
-        
+
         /// <inheritdoc cref="IDotGraphAttributes.EdgeShape" />
         [DotAttributeKey(DotAttributeKeys.Splines)]
         public virtual DotEdgeShape? EdgeShape
@@ -131,22 +127,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.BackgroundColor" />
-        [DotAttributeKey(DotAttributeKeys.BgColor)]
-        public virtual DotColorDefinition BackgroundColor
-        {
-            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.GradientAngle" />
-        [DotAttributeKey(DotAttributeKeys.GradientAngle)]
-        public virtual int? GradientAngle
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Charset" />
@@ -165,77 +145,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
-        /// <inheritdoc cref="IDotGraphAttributes.Dpi" />
-        [DotAttributeKey(DotAttributeKeys.Dpi)]
-        public virtual double? Dpi
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(Dpi), v.Value, "DPI must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.Resolution" />
-        [DotAttributeKey(DotAttributeKeys.Resolution)]
-        public virtual double? Resolution
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(Resolution), v.Value, "Resolution must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
-        }
-
         /// <inheritdoc cref="IDotGraphAttributes.RootNodeId" />
         [DotAttributeKey(DotAttributeKeys.Root)]
         public virtual DotId RootNodeId
         {
             get => GetValueAsId(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIdAttribute(k, v));
-        }
-
-
-        /// <inheritdoc cref="IDotGraphAttributes.Margin" />
-        [DotAttributeKey(DotAttributeKeys.Margin)]
-        public virtual DotPoint Margin
-        {
-            get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.Padding" />
-        [DotAttributeKey(DotAttributeKeys.Pad)]
-        public virtual DotPoint Padding
-        {
-            get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.Size" />
-        [DotAttributeKey(DotAttributeKeys.Size)]
-        public virtual DotPoint Size
-        {
-            get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.Scaling" />
-        [DotAttributeKey(DotAttributeKeys.Ratio)]
-        public virtual DotGraphScalingDefinition Scaling
-        {
-            get
-            {
-                return GetValueAs<DotGraphScalingDefinition>
-                (
-                    MethodBase.GetCurrentMethod(),
-                    out var value,
-                    v => v is int i ? (true, new DotGraphScalingAspectRatio(i)) : (false, default),
-                    v => v is double d ? (true, new DotGraphScalingAspectRatio(d)) : (false, default),
-                    v => v is DotGraphScaling s ? (true, new DotGraphScalingOption(s)) : (false, default)
-                )
-                    ? value
-                    : null;
-            }
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotGraphScalingDefinitionAttribute(k, v));
         }
     }
 }

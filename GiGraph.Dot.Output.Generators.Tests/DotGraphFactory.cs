@@ -119,7 +119,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Subsections.Add(ss =>
             {
                 ss.Annotation = "graph section comment";
-                ss.Attributes.BackgroundColor = Color.Blue;
+                ss.Attributes.Canvas.BackgroundColor = Color.Blue;
                 ss.Nodes.Add("section 1 node");
                 ss.Edges.AddLoop("section 1 node");
             });
