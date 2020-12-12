@@ -1,16 +1,10 @@
-using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Attributes.Metadata;
-using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Packing;
-using GiGraph.Dot.Entities.Types.Points;
-using GiGraph.Dot.Entities.Types.Ranks;
-using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
@@ -27,6 +21,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             DotGraphStyleAttributes styleAttributes,
             DotGraphStyleSheetAttributes styleSheetAttributes,
             DotGraphLayoutAttributes layoutAttributes,
+            DotGraphCanvasAttributes canvasAttributes,
             DotLabelAlignmentAttributes labelAlignmentAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
@@ -35,6 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             Style = styleAttributes;
             StyleSheet = styleSheetAttributes;
             Layout = layoutAttributes;
+            Canvas = canvasAttributes;
             LabelAlignment = labelAlignmentAttributes;
         }
 
@@ -47,6 +43,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 new DotGraphStyleAttributes(attributes),
                 new DotGraphStyleSheetAttributes(attributes),
                 new DotGraphLayoutAttributes(attributes),
+                new DotGraphCanvasAttributes(attributes),
                 new DotLabelAlignmentAttributes(attributes)
             )
         {
@@ -76,6 +73,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     Graph layout options.
         /// </summary>
         public virtual DotGraphLayoutAttributes Layout { get; }
+
+        /// <summary>
+        ///     Graph canvas properties.
+        /// </summary>
+        public virtual DotGraphCanvasAttributes Canvas { get; }
 
         /// <summary>
         ///     Horizontal and vertical label alignment options.
@@ -111,78 +113,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => base.Id = value;
         }
 
-        /// <inheritdoc cref="IDotGraphAttributes.Comment" />
-        [DotAttributeKey(DotAttributeKeys.Comment)]
-        public virtual string Comment
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.BackgroundColor" />
-        [DotAttributeKey(DotAttributeKeys.BgColor)]
-        public virtual DotColorDefinition BackgroundColor
-        {
-            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.GradientAngle" />
-        [DotAttributeKey(DotAttributeKeys.GradientAngle)]
-        public virtual int? GradientAngle
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.EdgeOrderingMode" />
-        [DotAttributeKey(DotAttributeKeys.Ordering)]
-        public virtual DotEdgeOrderingMode? EdgeOrderingMode
-        {
-            get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotEdgeOrderingMode?) null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeOrderingModeAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.Margin" />
-        [DotAttributeKey(DotAttributeKeys.Margin)]
-        public virtual DotPoint Margin
-        {
-            get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.SortIndex" />
-        [DotAttributeKey(DotAttributeKeys.SortV)]
-        public virtual int? SortIndex
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.Orientation" />
-        [DotAttributeKey(DotAttributeKeys.Orientation)]
-        public virtual DotOrientation? Orientation
-        {
-            get => GetValueAs<DotOrientation>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotOrientation?) null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotOrientationAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.OrientationAngle" />
-        [DotAttributeKey(DotAttributeKeys.Rotate)]
-        public virtual int? OrientationAngle
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.LandscapeOrientation" />
-        [DotAttributeKey(DotAttributeKeys.Landscape)]
-        public virtual bool? LandscapeOrientation
-        {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
-        }
-
         /// <inheritdoc cref="IDotGraphAttributes.EdgeShape" />
         [DotAttributeKey(DotAttributeKeys.Splines)]
         public virtual DotEdgeShape? EdgeShape
@@ -191,20 +121,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeShapeAttribute(k, v.Value));
         }
 
-        /// <inheritdoc cref="IDotGraphAttributes.ConcentrateEdges" />
-        [DotAttributeKey(DotAttributeKeys.Concentrate)]
-        public virtual bool? ConcentrateEdges
+        /// <inheritdoc cref="IDotGraphAttributes.Comment" />
+        [DotAttributeKey(DotAttributeKeys.Comment)]
+        public virtual string Comment
         {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.ForceExternalLabels" />
-        [DotAttributeKey(DotAttributeKeys.ForceLabels)]
-        public virtual bool? ForceExternalLabels
-        {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Charset" />
@@ -215,44 +137,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
-        /// <inheritdoc cref="IDotGraphAttributes.NodeSeparation" />
-        [DotAttributeKey(DotAttributeKeys.NodeSep)]
-        public virtual double? NodeSeparation
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(NodeSeparation), v.Value, "Node separation must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.RankSeparation" />
-        [DotAttributeKey(DotAttributeKeys.RankSep)]
-        public virtual DotRankSeparationDefinition RankSeparation
-        {
-            get
-            {
-                return GetValueAs<DotRankSeparationDefinition>
-                (
-                    MethodBase.GetCurrentMethod(),
-                    out var value,
-                    v => v is int i ? (true, new DotRankSeparation(i)) : (false, default),
-                    v => v is double d ? (true, new DotRankSeparation(d)) : (false, default),
-                    v => v is double[] da ? (true, new DotRadialRankSeparation(da)) : (false, default)
-                )
-                    ? value
-                    : null;
-            }
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankSeparationDefinitionAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.Center" />
-        [DotAttributeKey(DotAttributeKeys.Center)]
-        public virtual bool? Center
-        {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
-        }
-
         /// <inheritdoc cref="IDotGraphAttributes.ImageDirectories" />
         [DotAttributeKey(DotAttributeKeys.ImagePath)]
         public virtual string ImageDirectories
@@ -261,129 +145,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
-        /// <inheritdoc cref="IDotGraphAttributes.Padding" />
-        [DotAttributeKey(DotAttributeKeys.Pad)]
-        public virtual DotPoint Padding
-        {
-            get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.Size" />
-        [DotAttributeKey(DotAttributeKeys.Size)]
-        public virtual DotPoint Size
-        {
-            get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.Scaling" />
-        [DotAttributeKey(DotAttributeKeys.Ratio)]
-        public virtual DotGraphScalingDefinition Scaling
-        {
-            get
-            {
-                return GetValueAs<DotGraphScalingDefinition>
-                (
-                    MethodBase.GetCurrentMethod(),
-                    out var value,
-                    v => v is int i ? (true, new DotGraphScalingAspectRatio(i)) : (false, default),
-                    v => v is double d ? (true, new DotGraphScalingAspectRatio(d)) : (false, default),
-                    v => v is DotGraphScaling s ? (true, new DotGraphScalingOption(s)) : (false, default)
-                )
-                    ? value
-                    : null;
-            }
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotGraphScalingDefinitionAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.Packing" />
-        [DotAttributeKey(DotAttributeKeys.Pack)]
-        public virtual DotPackingDefinition Packing
-        {
-            get
-            {
-                return GetValueAs<DotPackingDefinition>
-                (
-                    MethodBase.GetCurrentMethod(),
-                    out var value,
-                    v => v is int i ? (true, new DotPackingMargin(i)) : (false, default),
-                    v => v is bool b ? (true, new DotPackingToggle(b)) : (false, default)
-                )
-                    ? value
-                    : null;
-            }
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPackingDefinitionAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.PackingMode" />
-        [DotAttributeKey(DotAttributeKeys.PackMode)]
-        public virtual DotPackingModeDefinition PackingMode
-        {
-            get
-            {
-                return GetValueAs<DotPackingModeDefinition>
-                (
-                    MethodBase.GetCurrentMethod(),
-                    out var value,
-                    v => v is DotPackingGranularity g ? (true, new DotGranularPackingMode(g)) : (false, default)
-                )
-                    ? value
-                    : null;
-            }
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPackingModeDefinitionAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.Dpi" />
-        [DotAttributeKey(DotAttributeKeys.Dpi)]
-        public virtual double? Dpi
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(Dpi), v.Value, "DPI must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.Resolution" />
-        [DotAttributeKey(DotAttributeKeys.Resolution)]
-        public virtual double? Resolution
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(Resolution), v.Value, "Resolution must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
-        }
-
         /// <inheritdoc cref="IDotGraphAttributes.RootNodeId" />
         [DotAttributeKey(DotAttributeKeys.Root)]
         public virtual DotId RootNodeId
         {
             get => GetValueAsId(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIdAttribute(k, v));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.Rotation" />
-        [DotAttributeKey(DotAttributeKeys.Rotation)]
-        public virtual double? Rotation
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.DoubleCrossingMinimization" />
-        [DotAttributeKey(DotAttributeKeys.ReMinCross)]
-        public virtual bool? DoubleCrossingMinimization
-        {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.GlobalRanking" />
-        [DotAttributeKey(DotAttributeKeys.NewRank)]
-        public virtual bool? GlobalRanking
-        {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
     }
 }

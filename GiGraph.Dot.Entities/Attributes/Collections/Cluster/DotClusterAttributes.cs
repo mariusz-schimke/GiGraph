@@ -101,11 +101,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => base.FillColor = value;
         }
 
-        /// <inheritdoc cref="IDotClusterAttributes.GradientAngle" />
-        public override int? GradientAngle
+        /// <inheritdoc cref="IDotClusterAttributes.GradientFillAngle" />
+        public override int? GradientFillAngle
         {
-            get => base.GradientAngle;
-            set => base.GradientAngle = value;
+            get => base.GradientFillAngle;
+            set => base.GradientFillAngle = value;
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.Tooltip" />

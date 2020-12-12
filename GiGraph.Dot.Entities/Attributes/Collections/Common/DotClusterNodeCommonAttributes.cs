@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         }
 
         [DotAttributeKey(DotAttributeKeys.GradientAngle)]
-        public virtual int? GradientAngle
+        public virtual int? GradientFillAngle
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));

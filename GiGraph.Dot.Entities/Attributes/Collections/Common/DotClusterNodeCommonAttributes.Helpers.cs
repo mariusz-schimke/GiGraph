@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         {
             SetFillStyle(radial ? DotStyles.Radial : DotStyles.Filled);
             FillColor = color;
-            GradientAngle = angle;
+            GradientFillAngle = angle;
         }
 
         /// <summary>

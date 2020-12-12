@@ -9,10 +9,11 @@
     "Tail.Arrowhead [Edge]"
   ],
   "bgcolor": [
-    "BackgroundColor [Graph, Cluster]"
+    "Canvas.BackgroundColor [Graph]",
+    "BackgroundColor [Cluster]"
   ],
   "center": [
-    "Center [Graph]"
+    "Canvas.CenterDrawing [Graph]"
   ],
   "charset": [
     "Charset [Graph]"
@@ -36,7 +37,7 @@
     "AllowEdgeClipping [Graph]"
   ],
   "concentrate": [
-    "ConcentrateEdges [Graph]"
+    "Layout.ConcentrateEdges [Graph]"
   ],
   "constraint": [
     "Constrain [Edge]"
@@ -51,7 +52,7 @@
     "Geometry.Distortion [Node]"
   ],
   "dpi": [
-    "Dpi [Graph]"
+    "Canvas.Dpi [Graph]"
   ],
   "edgehref": [
     "EdgeHyperlink.Href [Edge]"
@@ -84,10 +85,11 @@
     "Font.Size [Graph, Cluster, Node, Edge]"
   ],
   "forcelabels": [
-    "ForceExternalLabels [Graph]"
+    "Layout.ForceExternalLabels [Graph]"
   ],
   "gradientangle": [
-    "GradientAngle [Graph, Cluster, Node]"
+    "Canvas.GradientFillAngle [Graph]",
+    "GradientFillAngle [Cluster, Node]"
   ],
   "group": [
     "GroupName [Node]"
@@ -175,7 +177,7 @@
     "LabelHyperlink.Url [Edge]"
   ],
   "landscape": [
-    "LandscapeOrientation [Graph]"
+    "Canvas.Landscape [Graph]"
   ],
   "layout": [
     "Layout.Engine [Graph]"
@@ -190,33 +192,34 @@
     "Tail.ClusterId [Edge]"
   ],
   "margin": [
-    "Margin [Graph]",
+    "Canvas.Margin [Graph]",
     "Padding [Cluster, Node]"
   ],
   "minlen": [
     "MinLength [Edge]"
   ],
   "newrank": [
-    "GlobalRanking [Graph]"
+    "Layout.GlobalRanking [Graph]"
   ],
   "nodesep": [
-    "NodeSeparation [Graph]"
+    "Layout.NodeSeparation [Graph]"
   ],
   "ordering": [
-    "EdgeOrderingMode [Graph, Node]"
+    "Layout.EdgeOrderingMode [Graph]",
+    "EdgeOrderingMode [Node]"
   ],
   "orientation": [
-    "Orientation [Graph]",
+    "Canvas.Orientation [Graph]",
     "Geometry.Rotation [Node]"
   ],
   "pack": [
-    "Packing [Graph]"
+    "Layout.Packing [Graph]"
   ],
   "packmode": [
-    "PackingMode [Graph]"
+    "Layout.PackingMode [Graph]"
   ],
   "pad": [
-    "Padding [Graph]"
+    "Canvas.Padding [Graph]"
   ],
   "pencolor": [
     "BorderColor [Graph, Cluster]"
@@ -236,29 +239,29 @@
     "Layout.Direction [Graph]"
   ],
   "ranksep": [
-    "RankSeparation [Graph]"
+    "Layout.RankSeparation [Graph]"
   ],
   "ratio": [
-    "Scaling [Graph]"
+    "Canvas.Scaling [Graph]"
   ],
   "regular": [
     "Geometry.Regular [Node]"
   ],
   "remincross": [
-    "DoubleCrossingMinimization [Graph]"
+    "Layout.DoubleCrossingMinimization [Graph]"
   ],
   "resolution": [
-    "Resolution [Graph]"
+    "Canvas.Resolution [Graph]"
   ],
   "root": [
     "RootNodeId [Graph]",
     "IsRoot [Node]"
   ],
   "rotate": [
-    "OrientationAngle [Graph]"
+    "Canvas.OrientationAngle [Graph]"
   ],
   "rotation": [
-    "Rotation [Graph]"
+    "Layout.Rotation [Graph]"
   ],
   "samehead": [
     "Head.GroupName [Edge]"
@@ -273,13 +276,14 @@
     "Geometry.Sides [Node]"
   ],
   "size": [
-    "Size [Graph]"
+    "Canvas.Size [Graph]"
   ],
   "skew": [
     "Geometry.Skew [Node]"
   ],
   "sortv": [
-    "SortIndex [Graph, Cluster, Node]"
+    "Layout.SortIndex [Graph]",
+    "SortIndex [Cluster, Node]"
   ],
   "splines": [
     "EdgeShape [Graph]"

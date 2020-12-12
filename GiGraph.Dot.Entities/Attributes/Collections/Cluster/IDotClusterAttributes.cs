@@ -61,8 +61,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     <para>
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
         ///         the <see cref="DotClusterFillStyle.Radial" /> fill style to the cluster will cause a radial fill. If the second color is
-        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
-        ///         attribute for setting a gradient angle.
+        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
+        ///         <see cref="GradientFillAngle" /> attribute for setting a gradient angle.
         ///     </para>
         /// </summary>
         DotColorDefinition BackgroundColor { get; set; }
@@ -82,7 +82,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     radially from the center; for non-zero values, the colors transform from a point near the object's periphery as specified by
         ///     the value. If unset, the default angle is 0.
         /// </summary>
-        int? GradientAngle { get; set; }
+        int? GradientFillAngle { get; set; }
 
         /// <summary>
         ///     Sets the number of peripheries used in cluster boundaries (default: 1, minimum: 0, maximum: 1). Setting peripheries to 0 will
@@ -96,8 +96,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         DotPoint Padding { get; set; }
 
         /// <summary>
-        ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="DotGraphAttributes.PackingMode" /> indicates an
-        ///     array packing, this attribute specifies an insertion order among the components, with smaller values inserted first.
+        ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="DotGraphLayoutAttributes.PackingMode" /> indicates
+        ///     an array packing, this attribute specifies an insertion order among the components, with smaller values inserted first.
         /// </summary>
         int? SortIndex { get; set; }
 
