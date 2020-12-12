@@ -96,7 +96,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         DotPoint Padding { get; set; }
 
         /// <summary>
-        ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="DotGraphAttributes.PackingMode" /> indicates an
+        ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="DotGraphLayoutAttributes.PackingMode" /> indicates an
         ///     array packing, this attribute specifies an insertion order among the components, with smaller values inserted first.
         /// </summary>
         int? SortIndex { get; set; }
