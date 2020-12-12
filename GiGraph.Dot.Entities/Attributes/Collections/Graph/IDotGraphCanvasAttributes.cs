@@ -15,8 +15,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     <para>
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
         ///         the <see cref="DotClusterFillStyle.Radial" /> fill style to the graph will cause a radial fill. If the second color is
-        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
-        ///         attribute for setting a gradient angle.
+        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
+        ///         <see cref="GradientFillAngle" /> attribute for setting a gradient angle.
         ///     </para>
         ///     <para>
         ///         For certain output formats, such as PostScript, no fill is done for the root graph unless background color is explicitly
@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     radially from the center; for non-zero values, the colors transform from a point near the object's periphery as specified by
         ///     the value. If unset, the default angle is 0.
         /// </summary>
-        int? GradientAngle { get; set; }
+        int? GradientFillAngle { get; set; }
 
         /// <summary>
         ///     If true, the drawing is centered in the output canvas (default: false).

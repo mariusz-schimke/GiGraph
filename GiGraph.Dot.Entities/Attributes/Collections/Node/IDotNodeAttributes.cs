@@ -95,7 +95,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     </para>
         ///     <para>
         ///         If a <see cref="DotNodeFillStyle.Radial" /> fill style is specified for the node, then a radial gradient fill is done.
-        ///         See also the <see cref="GradientAngle" /> attribute for setting a gradient angle.
+        ///         See also the <see cref="GradientFillAngle" /> attribute for setting a gradient angle.
         ///     </para>
         ///     <para>
         ///         These fills work with any shape. For certain shapes, fill style can be set to do fills using more than 2 colors (set the
@@ -116,8 +116,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     <para>
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
         ///         the <see cref="DotNodeFillStyle.Radial" /> fill style to the node will cause a radial fill. If the second color is
-        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
-        ///         attribute for setting a gradient angle.
+        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
+        ///         <see cref="GradientFillAngle" /> attribute for setting a gradient angle.
         ///     </para>
         /// </summary>
         DotColorDefinition FillColor { get; set; }
@@ -137,7 +137,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     radially from the center; for non-zero values, the colors transform from a point near the object's periphery as specified by
         ///     the value. If unset, the default angle is 0.
         /// </summary>
-        int? GradientAngle { get; set; }
+        int? GradientFillAngle { get; set; }
 
         /// <summary>
         ///     Specifies the width of the pen, in points, used to draw lines and curves. The value has no effect on text. Default: 1.0,

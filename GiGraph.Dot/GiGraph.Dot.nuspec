@@ -30,6 +30,8 @@
 
 - It is possible now to specify ports for nodes in an endpoint group (see https://github.com/$repository$/tree/$version$/README.md#edge-groups).
 
+- Certain graph attributes have been grouped under the Layout and Canvas properties.
+
 - Refactoring.
 
 

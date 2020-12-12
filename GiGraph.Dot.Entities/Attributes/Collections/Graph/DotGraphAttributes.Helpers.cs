@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             }
 
             Canvas.BackgroundColor = color;
-            Canvas.GradientAngle = angle;
+            Canvas.GradientFillAngle = angle;
 
             return this;
         }

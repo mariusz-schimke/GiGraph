@@ -31,9 +31,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
         }
 
-        /// <inheritdoc cref="IDotGraphCanvasAttributes.GradientAngle" />
+        /// <inheritdoc cref="IDotGraphCanvasAttributes.GradientFillAngle" />
         [DotAttributeKey(DotAttributeKeys.GradientAngle)]
-        public virtual int? GradientAngle
+        public virtual int? GradientFillAngle
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
@@ -146,7 +146,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             BackgroundColor = source.BackgroundColor;
             CenterDrawing = source.CenterDrawing;
             Dpi = source.Dpi;
-            GradientAngle = source.GradientAngle;
+            GradientFillAngle = source.GradientFillAngle;
             Landscape = source.Landscape;
             Margin = source.Margin;
             Orientation = source.Orientation;

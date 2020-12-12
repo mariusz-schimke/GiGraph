@@ -22,8 +22,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         ///     </para>
         ///     <para>
         ///         If the fill style used is <see cref="DotClusterFillStyle.Radial" />, then a radial gradient fill is done. See also the
-        ///         <see cref="DotGraphCanvasAttributes.GradientAngle" /> attribute of graph <see cref="DotGraphAttributes.Canvas" /> for
-        ///         setting a gradient angle globally, or its <see cref="DotClusterAttributes.GradientAngle" /> counterpart on individual
+        ///         <see cref="DotGraphCanvasAttributes.GradientFillAngle" /> attribute of graph <see cref="DotGraphAttributes.Canvas" /> for
+        ///         setting a gradient angle globally, or its <see cref="DotClusterAttributes.GradientFillAngle" /> counterpart on individual
         ///         clusters.
         ///     </para>
         ///     <para>
@@ -45,8 +45,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
         ///         fill style to <see cref="DotClusterFillStyle.Radial" /> will cause a radial fill. If the second color is
         ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
-        ///         <see cref="DotGraphCanvasAttributes.GradientAngle" /> attribute on graph <see cref="DotGraphAttributes.Canvas" /> for
-        ///         setting a gradient angle globally, or its <see cref="DotClusterAttributes.GradientAngle" /> counterpart on individual
+        ///         <see cref="DotGraphCanvasAttributes.GradientFillAngle" /> attribute on graph <see cref="DotGraphAttributes.Canvas" /> for
+        ///         setting a gradient angle globally, or its <see cref="DotClusterAttributes.GradientFillAngle" /> counterpart on individual
         ///         clusters.
         ///     </para>
         ///     <para>

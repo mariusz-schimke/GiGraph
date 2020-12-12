@@ -88,8 +88,8 @@
     "Layout.ForceExternalLabels [Graph]"
   ],
   "gradientangle": [
-    "Canvas.GradientAngle [Graph]",
-    "GradientAngle [Cluster, Node]"
+    "Canvas.GradientFillAngle [Graph]",
+    "GradientFillAngle [Cluster, Node]"
   ],
   "group": [
     "GroupName [Node]"
