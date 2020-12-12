@@ -12,7 +12,7 @@
     "BackgroundColor [Graph, Cluster]"
   ],
   "center": [
-    "Center [Graph]"
+    "Canvas.CenterDrawing [Graph]"
   ],
   "charset": [
     "Charset [Graph]"
@@ -36,7 +36,7 @@
     "AllowEdgeClipping [Graph]"
   ],
   "concentrate": [
-    "ConcentrateEdges [Graph]"
+    "Layout.ConcentrateEdges [Graph]"
   ],
   "constraint": [
     "Constrain [Edge]"
@@ -84,7 +84,7 @@
     "Font.Size [Graph, Cluster, Node, Edge]"
   ],
   "forcelabels": [
-    "ForceExternalLabels [Graph]"
+    "Layout.ForceExternalLabels [Graph]"
   ],
   "gradientangle": [
     "GradientAngle [Graph, Cluster, Node]"
@@ -175,7 +175,7 @@
     "LabelHyperlink.Url [Edge]"
   ],
   "landscape": [
-    "LandscapeOrientation [Graph]"
+    "Canvas.Landscape [Graph]"
   ],
   "layout": [
     "Layout.Engine [Graph]"
@@ -197,23 +197,24 @@
     "MinLength [Edge]"
   ],
   "newrank": [
-    "GlobalRanking [Graph]"
+    "Layout.GlobalRanking [Graph]"
   ],
   "nodesep": [
-    "NodeSeparation [Graph]"
+    "Layout.NodeSeparation [Graph]"
   ],
   "ordering": [
-    "EdgeOrderingMode [Graph, Node]"
+    "Layout.EdgeOrderingMode [Graph]",
+    "EdgeOrderingMode [Node]"
   ],
   "orientation": [
-    "Orientation [Graph]",
+    "Canvas.Orientation [Graph]",
     "Geometry.Rotation [Node]"
   ],
   "pack": [
-    "Packing [Graph]"
+    "Layout.Packing [Graph]"
   ],
   "packmode": [
-    "PackingMode [Graph]"
+    "Layout.PackingMode [Graph]"
   ],
   "pad": [
     "Padding [Graph]"
@@ -236,7 +237,7 @@
     "Layout.Direction [Graph]"
   ],
   "ranksep": [
-    "RankSeparation [Graph]"
+    "Layout.RankSeparation [Graph]"
   ],
   "ratio": [
     "Scaling [Graph]"
@@ -245,7 +246,7 @@
     "Geometry.Regular [Node]"
   ],
   "remincross": [
-    "DoubleCrossingMinimization [Graph]"
+    "Layout.DoubleCrossingMinimization [Graph]"
   ],
   "resolution": [
     "Resolution [Graph]"
@@ -255,10 +256,10 @@
     "IsRoot [Node]"
   ],
   "rotate": [
-    "OrientationAngle [Graph]"
+    "Canvas.OrientationAngle [Graph]"
   ],
   "rotation": [
-    "Rotation [Graph]"
+    "Layout.Rotation [Graph]"
   ],
   "samehead": [
     "Head.GroupName [Edge]"
@@ -279,7 +280,8 @@
     "Geometry.Skew [Node]"
   ],
   "sortv": [
-    "SortIndex [Graph, Cluster, Node]"
+    "Layout.SortIndex [Graph]",
+    "SortIndex [Cluster, Node]"
   ],
   "splines": [
     "EdgeShape [Graph]"
