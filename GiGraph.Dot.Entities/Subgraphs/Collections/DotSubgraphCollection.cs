@@ -20,17 +20,17 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         }
 
         /// <summary>
-        ///     Adds a new subgraph with the specified rank to the collection, and returns it.
+        ///     Adds a new subgraph with the specified identifier to the collection, and returns it.
         /// </summary>
-        /// <param name="rank">
-        ///     The rank attribute to assign to the subgraph.
+        /// <param name="id">
+        ///     The identifier to assign to the subgraph.
         /// </param>
         /// <param name="init">
         ///     An optional subgraph initializer delegate.
         /// </param>
-        public virtual DotSubgraph Add(DotRank? rank, Action<DotSubgraph> init = null)
+        public virtual DotSubgraph Add(string id, Action<DotSubgraph> init = null)
         {
-            return AddSubgraph(nodeIds: Enumerable.Empty<string>(), rank: rank, init: init);
+            return AddSubgraph(nodeIds: Enumerable.Empty<string>(), id, init: init);
         }
 
         /// <summary>
@@ -51,18 +51,17 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         }
 
         /// <summary>
-        ///     Adds a new subgraph with the specified identifier to the collection, and returns it.
+        ///     Adds a new subgraph with the specified rank to the collection, and returns it.
         /// </summary>
-        /// <param name="id">
-        ///     The identifier to assign to the subgraph.
+        /// <param name="rank">
+        ///     The rank attribute to assign to the subgraph.
         /// </param>
         /// <param name="init">
         ///     An optional subgraph initializer delegate.
         /// </param>
-        // THE init PARAMETER IS NOT OPTIONAL HERE TO PREVENT A MISTAKEN CALL OF THE OVERLOAD WITH A STRING PARAM ARRAY
-        public virtual DotSubgraph Add(string id, Action<DotSubgraph> init)
+        public virtual DotSubgraph Add(DotRank? rank, Action<DotSubgraph> init = null)
         {
-            return AddSubgraph(nodeIds: Enumerable.Empty<string>(), id, init: init);
+            return AddSubgraph(nodeIds: Enumerable.Empty<string>(), rank: rank, init: init);
         }
 
         /// <summary>
@@ -71,7 +70,7 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         /// <param name="nodeIds">
         ///     Optional node identifiers to populate the subgraph with.
         /// </param>
-        public virtual DotSubgraph Add(params string[] nodeIds)
+        public virtual DotSubgraph AddWithNodes(params string[] nodeIds)
         {
             return AddSubgraph(nodeIds);
         }
@@ -85,7 +84,7 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         /// <param name="nodeIds">
         ///     Optional node identifiers to populate the subgraph with.
         /// </param>
-        public virtual DotSubgraph Add(DotRank? rank, params string[] nodeIds)
+        public virtual DotSubgraph AddWithNodes(DotRank? rank, params string[] nodeIds)
         {
             return AddSubgraph(nodeIds, rank: rank);
         }
@@ -102,7 +101,7 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         /// <param name="nodeIds">
         ///     Optional node identifiers to populate the subgraph with.
         /// </param>
-        public virtual DotSubgraph Add(string id, DotRank? rank, params string[] nodeIds)
+        public virtual DotSubgraph AddWithNodes(string id, DotRank? rank, params string[] nodeIds)
         {
             return AddSubgraph(nodeIds, id, rank);
         }
@@ -113,7 +112,7 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         /// <param name="nodeIds">
         ///     A node identifier collection to populate the subgraph with.
         /// </param>
-        public virtual DotSubgraph Add(IEnumerable<string> nodeIds)
+        public virtual DotSubgraph AddWithNodes(IEnumerable<string> nodeIds)
         {
             return AddSubgraph(nodeIds);
         }
@@ -127,7 +126,7 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         /// <param name="nodeIds">
         ///     A node identifier collection to populate the subgraph with.
         /// </param>
-        public virtual DotSubgraph Add(DotRank? rank, IEnumerable<string> nodeIds)
+        public virtual DotSubgraph AddWithNodes(DotRank? rank, IEnumerable<string> nodeIds)
         {
             return AddSubgraph(nodeIds, rank: rank);
         }
@@ -144,7 +143,7 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         /// <param name="nodeIds">
         ///     A node identifier collection to populate the subgraph with.
         /// </param>
-        public virtual DotSubgraph Add(string id, DotRank? rank, IEnumerable<string> nodeIds)
+        public virtual DotSubgraph AddWithNodes(string id, DotRank? rank, IEnumerable<string> nodeIds)
         {
             return AddSubgraph(nodeIds, id, rank);
         }
@@ -158,7 +157,7 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         /// <param name="nodeIds">
         ///     A node identifier collection to populate the subgraph with.
         /// </param>
-        public virtual DotSubgraph Add(string id, IEnumerable<string> nodeIds)
+        public virtual DotSubgraph AddWithNodes(string id, IEnumerable<string> nodeIds)
         {
             return AddSubgraph(nodeIds, id);
         }
