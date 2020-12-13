@@ -138,23 +138,23 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     Copies canvas properties from the specified instance.
         /// </summary>
-        /// <param name="source">
+        /// <param name="attributes">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void CopyFrom(IDotGraphCanvasAttributes source)
+        public virtual void Set(IDotGraphCanvasAttributes attributes)
         {
-            BackgroundColor = source.BackgroundColor;
-            CenterDrawing = source.CenterDrawing;
-            Dpi = source.Dpi;
-            GradientFillAngle = source.GradientFillAngle;
-            Landscape = source.Landscape;
-            Margin = source.Margin;
-            Orientation = source.Orientation;
-            OrientationAngle = source.OrientationAngle;
-            Padding = source.Padding;
-            Resolution = source.Resolution;
-            Scaling = source.Scaling;
-            Size = source.Size;
+            BackgroundColor = attributes.BackgroundColor;
+            CenterDrawing = attributes.CenterDrawing;
+            Dpi = attributes.Dpi;
+            GradientFillAngle = attributes.GradientFillAngle;
+            Landscape = attributes.Landscape;
+            Margin = attributes.Margin;
+            Orientation = attributes.Orientation;
+            OrientationAngle = attributes.OrientationAngle;
+            Padding = attributes.Padding;
+            Resolution = attributes.Resolution;
+            Scaling = attributes.Scaling;
+            Size = attributes.Size;
         }
     }
 }

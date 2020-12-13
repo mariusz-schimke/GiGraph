@@ -45,12 +45,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     Copies style sheet properties from the specified instance.
         /// </summary>
-        /// <param name="source">
+        /// <param name="attributes">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void CopyFrom(IDotGraphStyleSheetAttributes source)
+        public virtual void Set(IDotGraphStyleSheetAttributes attributes)
         {
-            Set(source.Url, source.Class);
+            Set(attributes.Url, attributes.Class);
         }
     }
 }

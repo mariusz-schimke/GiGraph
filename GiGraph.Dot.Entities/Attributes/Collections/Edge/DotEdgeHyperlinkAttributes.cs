@@ -113,12 +113,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     Copies hyperlink properties from the specified instance.
         /// </summary>
-        /// <param name="source">
+        /// <param name="attributes">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void CopyFrom(IDotEdgeHyperlinkAttributes source)
+        public virtual void Set(IDotEdgeHyperlinkAttributes attributes)
         {
-            SetAll(source.Url, source.Target, source.Href, source.Tooltip);
+            SetAll(attributes.Url, attributes.Target, attributes.Href, attributes.Tooltip);
         }
     }
 }

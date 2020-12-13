@@ -78,6 +78,9 @@
   "fontname": [
     "Font.Name [Graph, Cluster, Node, Edge]"
   ],
+  "fontnames": [
+    "Font.Convention [Graph]"
+  ],
   "fontpath": [
     "Font.Directories [Graph]"
   ],

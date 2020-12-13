@@ -1,6 +1,7 @@
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Fonts;
@@ -29,6 +30,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphFontAttributes.Convention" />
+        [DotAttributeKey(DotAttributeKeys.FontNames)]
+        public DotFontConvention? Convention
+        {
+            get => GetValueAs<DotFontConvention>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotFontConvention?) null;
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotFontConventionAttribute(k, v.Value));
+        }
+
         /// <summary>
         ///     Sets font properties.
         /// </summary>
@@ -44,10 +53,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <param name="directories">
         ///     The directories to search for fonts.
         /// </param>
-        public virtual void Set(string name = null, double? size = null, DotColor color = null, string directories = null)
+        /// <param name="convention">
+        ///     The font convention to use.
+        /// </param>
+        public virtual void Set(string name = null, double? size = null, DotColor color = null, string directories = null, DotFontConvention? convention = null)
         {
             base.Set(name, size, color);
             Directories = directories;
+            Convention = convention;
         }
 
         /// <summary>
@@ -60,17 +73,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             base.Set(attributes);
             Directories = attributes.Directories;
+            Convention = attributes.Convention;
         }
 
         /// <summary>
         ///     Copies font properties from the specified instance.
         /// </summary>
-        /// <param name="source">
+        /// <param name="attributes">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void CopyFrom(IDotGraphFontAttributes source)
+        public virtual void Set(IDotGraphFontAttributes attributes)
         {
-            Set(source.Name, source.Size, source.Color, source.Directories);
+            Set(attributes.Name, attributes.Size, attributes.Color, attributes.Directories);
         }
     }
 }

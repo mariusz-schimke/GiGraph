@@ -1,3 +1,4 @@
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Types.Fonts
@@ -22,15 +23,24 @@ namespace GiGraph.Dot.Entities.Types.Fonts
         /// <param name="directories">
         ///     The directory list to search for fonts.
         /// </param>
-        public DotGraphFont(string name = null, double? size = null, DotColor color = null, string directories = null)
+        /// <param name="convention">
+        ///     The font convention to use.
+        /// </param>
+        public DotGraphFont(string name = null, double? size = null, DotColor color = null, string directories = null, DotFontConvention? convention = null)
             : base(name, size, color)
         {
             Directories = directories;
+            Convention = convention;
         }
 
         /// <summary>
         ///     Gets or sets the directory list to search for fonts.
         /// </summary>
         public virtual string Directories { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the font convention to use.
+        /// </summary>
+        public virtual DotFontConvention? Convention { get; set; }
     }
 }

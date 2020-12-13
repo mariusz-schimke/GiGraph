@@ -107,12 +107,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <summary>
         ///     Copies size properties from the specified instance.
         /// </summary>
-        /// <param name="source">
+        /// <param name="attributes">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void CopyFrom(IDotNodeSizeAttributes source)
+        public virtual void Set(IDotNodeSizeAttributes attributes)
         {
-            Set(source.Width, source.Height, source.Mode);
+            Set(attributes.Width, attributes.Height, attributes.Mode);
         }
     }
 }
