@@ -71,12 +71,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     Copies style properties from the specified instance.
         /// </summary>
-        /// <param name="source">
+        /// <param name="attributes">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void CopyFrom(DotEdgeStyleAttributes source)
+        public virtual void CopyFrom(DotEdgeStyleAttributes attributes)
         {
-            Set(source.LineStyle, source.LineWeight, source.Invisible);
+            Set(attributes.LineStyle, attributes.LineWeight, attributes.Invisible);
         }
     }
 }

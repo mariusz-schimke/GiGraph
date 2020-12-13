@@ -79,12 +79,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     Copies font properties from the specified instance.
         /// </summary>
-        /// <param name="source">
+        /// <param name="attributes">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void Set(IDotGraphFontAttributes source)
+        public virtual void Set(IDotGraphFontAttributes attributes)
         {
-            Set(source.Name, source.Size, source.Color, source.Directories);
+            Set(attributes.Name, attributes.Size, attributes.Color, attributes.Directories);
         }
     }
 }

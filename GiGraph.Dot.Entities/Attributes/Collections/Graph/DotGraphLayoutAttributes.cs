@@ -164,24 +164,24 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     Copies layout properties from the specified instance.
         /// </summary>
-        /// <param name="source">
+        /// <param name="attributes">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void Set(IDotGraphLayoutAttributes source)
+        public virtual void Set(IDotGraphLayoutAttributes attributes)
         {
-            ConcentrateEdges = source.ConcentrateEdges;
-            Direction = source.Direction;
-            DoubleCrossingMinimization = source.DoubleCrossingMinimization;
-            EdgeOrderingMode = source.EdgeOrderingMode;
-            Engine = source.Engine;
-            ForceExternalLabels = source.ForceExternalLabels;
-            GlobalRanking = source.GlobalRanking;
-            NodeSeparation = source.NodeSeparation;
-            Packing = source.Packing;
-            PackingMode = source.PackingMode;
-            RankSeparation = source.RankSeparation;
-            Rotation = source.Rotation;
-            SortIndex = source.SortIndex;
+            ConcentrateEdges = attributes.ConcentrateEdges;
+            Direction = attributes.Direction;
+            DoubleCrossingMinimization = attributes.DoubleCrossingMinimization;
+            EdgeOrderingMode = attributes.EdgeOrderingMode;
+            Engine = attributes.Engine;
+            ForceExternalLabels = attributes.ForceExternalLabels;
+            GlobalRanking = attributes.GlobalRanking;
+            NodeSeparation = attributes.NodeSeparation;
+            Packing = attributes.Packing;
+            PackingMode = attributes.PackingMode;
+            RankSeparation = attributes.RankSeparation;
+            Rotation = attributes.Rotation;
+            SortIndex = attributes.SortIndex;
         }
     }
 }
