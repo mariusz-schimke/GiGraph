@@ -167,7 +167,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <param name="source">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void CopyFrom(IDotGraphLayoutAttributes source)
+        public virtual void Set(IDotGraphLayoutAttributes source)
         {
             ConcentrateEdges = source.ConcentrateEdges;
             Direction = source.Direction;

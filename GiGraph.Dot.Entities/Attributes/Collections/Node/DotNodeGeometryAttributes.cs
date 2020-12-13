@@ -118,7 +118,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <param name="source">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void CopyFrom(IDotNodeGeometryAttributes source)
+        public virtual void Set(IDotNodeGeometryAttributes source)
         {
             Set(source.Sides, source.Regular, source.Peripheries, source.Rotation, source.Skew, source.Distortion);
         }

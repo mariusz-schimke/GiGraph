@@ -141,7 +141,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <param name="source">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void CopyFrom(IDotGraphCanvasAttributes source)
+        public virtual void Set(IDotGraphCanvasAttributes source)
         {
             BackgroundColor = source.BackgroundColor;
             CenterDrawing = source.CenterDrawing;

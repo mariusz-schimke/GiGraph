@@ -77,7 +77,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         /// <param name="source">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void CopyFrom(IDotFontAttributes source)
+        public virtual void Set(IDotFontAttributes source)
         {
             Set(source.Name, source.Size, source.Color);
         }
