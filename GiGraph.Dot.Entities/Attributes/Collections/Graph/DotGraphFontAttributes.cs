@@ -53,10 +53,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <param name="directories">
         ///     The directories to search for fonts.
         /// </param>
-        public virtual void Set(string name = null, double? size = null, DotColor color = null, string directories = null)
+        /// <param name="convention">
+        ///     The font convention to use.
+        /// </param>
+        public virtual void Set(string name = null, double? size = null, DotColor color = null, string directories = null, DotFontConvention? convention = null)
         {
             base.Set(name, size, color);
             Directories = directories;
+            Convention = convention;
         }
 
         /// <summary>
@@ -69,6 +73,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             base.Set(attributes);
             Directories = attributes.Directories;
+            Convention = attributes.Convention;
         }
 
         /// <summary>
