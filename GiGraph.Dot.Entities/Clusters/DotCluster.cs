@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Entities.Subgraphs;
@@ -91,12 +90,7 @@ namespace GiGraph.Dot.Entities.Clusters
         public static DotCluster FromNodes(string id, IEnumerable<string> nodeIds)
         {
             var result = new DotCluster(id);
-
-            if (nodeIds.Any())
-            {
-                result.Nodes.AddRange(nodeIds);
-            }
-
+            result.Nodes.AddRange(nodeIds);
             return result;
         }
     }
