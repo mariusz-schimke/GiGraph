@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         ///     Creates a new subgraph.
         /// </summary>
         /// <param name="id">
-        ///     The optional identifier to assign to the subgraph.
+        ///     The identifier to assign to the subgraph.
         /// </param>
         public DotSubgraph(string id = null)
             : this(id, new DotSubgraphSection(), new DotGraphSectionCollection<DotSubgraphSection>())
@@ -47,15 +47,26 @@ namespace GiGraph.Dot.Entities.Subgraphs
         ///     Creates a new subgraph.
         /// </summary>
         /// <param name="id">
-        ///     The optional identifier to assign to the subgraph.
+        ///     The identifier to assign to the subgraph.
         /// </param>
         /// <param name="rank">
         ///     The rank attribute to assign to the subgraph.
         /// </param>
-        public DotSubgraph(DotRank rank, string id = null)
+        public DotSubgraph(string id, DotRank? rank)
             : this(id)
         {
             Attributes.Rank = rank;
+        }
+
+        /// <summary>
+        ///     Creates a new subgraph.
+        /// </summary>
+        /// <param name="rank">
+        ///     The rank attribute to assign to the subgraph.
+        /// </param>
+        public DotSubgraph(DotRank? rank)
+            : this(id: null, rank)
+        {
         }
 
         /// <summary>
@@ -87,10 +98,10 @@ namespace GiGraph.Dot.Entities.Subgraphs
         string IDotOrderable.OrderingKey => Id;
 
         /// <summary>
-        ///     Creates a new subgraph with the specified nodes.
+        ///     Creates a new subgraph, and populates it with the specified nodes.
         /// </summary>
         /// <param name="nodeIds">
-        ///     The identifiers of nodes to add to the subgraph.
+        ///     The identifiers of nodes to populate the subgraph with.
         /// </param>
         public static DotSubgraph FromNodes(params string[] nodeIds)
         {
@@ -98,34 +109,51 @@ namespace GiGraph.Dot.Entities.Subgraphs
         }
 
         /// <summary>
-        ///     Creates a new subgraph with the specified nodes.
+        ///     Creates a new subgraph, and populates it with the specified nodes.
+        /// </summary>
+        /// <param name="id">
+        ///     The identifier to assign to the subgraph.
+        /// </param>
+        /// <param name="rank">
+        ///     The rank attribute to assign to the subgraph.
+        /// </param>
+        /// <param name="nodeIds">
+        ///     The identifiers of nodes to populate the subgraph with.
+        /// </param>
+        public static DotSubgraph FromNodes(string id, DotRank? rank, params string[] nodeIds)
+        {
+            return FromNodes(nodeIds, rank, id);
+        }
+
+        /// <summary>
+        ///     Creates a new subgraph, and populates it with the specified nodes.
         /// </summary>
         /// <param name="rank">
         ///     The rank attribute to assign to the subgraph.
         /// </param>
         /// <param name="nodeIds">
-        ///     The identifiers of nodes to add to the subgraph.
+        ///     The identifiers of nodes to populate the subgraph with.
         /// </param>
-        public static DotSubgraph FromNodes(DotRank rank, params string[] nodeIds)
+        public static DotSubgraph FromNodes(DotRank? rank, params string[] nodeIds)
         {
             return FromNodes(nodeIds, rank);
         }
 
         /// <summary>
-        ///     Creates a new subgraph with the specified nodes.
+        ///     Creates a new subgraph, and populates it with the specified nodes.
         /// </summary>
         /// <param name="nodeIds">
-        ///     The identifiers of nodes to add to the subgraph.
+        ///     The identifiers of nodes to populate the subgraph with.
         /// </param>
         /// <param name="rank">
         ///     The rank attribute to assign to the subgraph.
         /// </param>
-        public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, DotRank? rank = null)
+        /// <param name="id">
+        ///     The identifier to assign to the subgraph.
+        /// </param>
+        public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, DotRank? rank = null, string id = null)
         {
-            var result = rank.HasValue
-                ? new DotSubgraph(rank.Value)
-                : new DotSubgraph();
-
+            var result = new DotSubgraph(id, rank);
             result.Nodes.AddRange(nodeIds);
             return result;
         }
