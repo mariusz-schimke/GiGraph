@@ -120,7 +120,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge)]
         public const string FontName = "fontname";
 
-        [DotAttributeMetadata(DotCompatibleElements.Graph, compatibleOutputs: DotCompatibleOutputs.Svg, isImplemented: false)]
+        [DotAttributeMetadata(DotCompatibleElements.Graph, compatibleOutputs: DotCompatibleOutputs.Svg)]
         public const string FontNames = "fontnames";
 
         [DotAttributeMetadata(DotCompatibleElements.Graph)]

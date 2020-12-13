@@ -1,6 +1,7 @@
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
+using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Fonts;
@@ -27,6 +28,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+        }
+
+        /// <inheritdoc cref="IDotGraphFontAttributes.Convention" />
+        [DotAttributeKey(DotAttributeKeys.FontNames)]
+        public DotFontConvention? Convention
+        {
+            get => GetValueAs<DotFontConvention>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotFontConvention?) null;
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotFontConventionAttribute(k, v.Value));
         }
 
         /// <summary>
