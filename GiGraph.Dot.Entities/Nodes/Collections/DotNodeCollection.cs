@@ -65,9 +65,9 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="ids">
         ///     The identifiers of the nodes to add.
         /// </param>
-        public virtual DotNodeGroup Add(params string[] ids)
+        public virtual DotNodeGroup AddGroup(params string[] ids)
         {
-            return Add(ids, initAttributes: null);
+            return AddGroup(ids, initAttributes: null);
         }
 
         /// <summary>
@@ -79,9 +79,9 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="ids">
         ///     The identifiers of the nodes to add.
         /// </param>
-        public virtual DotNodeGroup Add(Action<DotNodeAttributes> initAttributes, params string[] ids)
+        public virtual DotNodeGroup AddGroup(Action<DotNodeAttributes> initAttributes, params string[] ids)
         {
-            return Add(ids, initAttributes);
+            return AddGroup(ids, initAttributes);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <param name="initAttributes">
         ///     An optional initializer delegate to call for the attributes of the created group.
         /// </param>
-        public virtual DotNodeGroup Add(IEnumerable<string> ids, Action<DotNodeAttributes> initAttributes = null)
+        public virtual DotNodeGroup AddGroup(IEnumerable<string> ids, Action<DotNodeAttributes> initAttributes = null)
         {
             return Add(new DotNodeGroup(ids), initAttributes);
         }

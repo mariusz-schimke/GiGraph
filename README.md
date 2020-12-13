@@ -646,7 +646,7 @@ digraph
 When adding nodes to a graph, subgraph or cluster, you may use a node group that has a shared list of attributes for all the nodes within it. To do it, use one of the overloads of the *Add* method that accepts multiple node identifiers. Note that it is only a shorthand for adding multiple nodes that share one list of attributes.
 
 ```c#
-graph.Nodes.Add
+graph.Nodes.AddGroup
 (
     attrs =>
     {
@@ -1125,10 +1125,10 @@ graph.Subgraphs.AddWithNodes(DotRank.Same, "a", "b", "c");
 
 // you may also create a new instance, and initialize it manually
 var subgraph = new DotSubgraph(DotRank.Same);
-subgraph.Nodes.Add("d", "e", "f");
+subgraph.Nodes.AddRange("a", "b", "c");
 
 // or use a factory method to add nodes more easily
-subgraph = DotSubgraph.FromNodes(DotRank.Same, "d", "e", "f");
+subgraph = DotSubgraph.FromNodes(DotRank.Same, "a", "b", "c");
 
 // style settings are accepted as well for the elements inside
 subgraph.Nodes.Attributes.Shape = DotNodeShape.Box;
@@ -1169,14 +1169,14 @@ There are several ways you may add a cluster to a graph, and the code below pres
 
 ```c#
 // add a cluster with any number of nodes
-graph.Clusters.Add("My cluster 1", "a", "b", "c");
+graph.Clusters.AddWithNodes("My cluster 1", "a", "b", "c");
 
 // you may also create a new instance, and initialize it manually
 var cluster = new DotCluster("My cluster 2");
-cluster.Nodes.Add("d", "e", "f");
+cluster.Nodes.AddRange("a", "b", "c");
 
 // or use a factory method to add nodes more easily
-cluster = DotCluster.FromNodes("My cluster 2", "e", "d", "f");
+cluster = DotCluster.FromNodes("My cluster 2", "a", "b", "c");
 
 // style settings are accepted as well for the elements inside
 cluster.Nodes.Attributes.Shape = DotNodeShape.Box;
