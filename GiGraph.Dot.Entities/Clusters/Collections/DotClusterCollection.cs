@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
         ///     will be treated as one cluster when visualized.
         /// </param>
         /// <param name="init">
-        ///     An optional cluster initialization delegate.
+        ///     An optional cluster initializer delegate.
         /// </param>
         public virtual DotCluster Add(string id, Action<DotCluster> init = null)
         {
@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
         }
 
         /// <summary>
-        ///     Adds a new cluster subgraph with the specified identifier and nodes to the collection.
+        ///     Adds a new cluster subgraph with the specified identifier to the collection, and populates it with the specified nodes.
         /// </summary>
         /// <param name="id">
         ///     The unique identifier of the cluster. If no identifier or the same identifier is specified for multiple clusters added, they
@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
         }
 
         /// <summary>
-        ///     Adds a new cluster subgraph with the specified identifier and nodes to the collection.
+        ///     Adds a new cluster subgraph with the specified identifier to the collection, and populates it with the specified nodes.
         /// </summary>
         /// <param name="id">
         ///     The unique identifier of the cluster. If no identifier or the same identifier is specified for multiple clusters added, they

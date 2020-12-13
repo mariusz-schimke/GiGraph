@@ -12,11 +12,57 @@ namespace GiGraph.Dot.Entities.Subgraphs.Collections
         ///     Adds a new subgraph to the collection, and returns it.
         /// </summary>
         /// <param name="init">
-        ///     An optional subgraph initialization delegate.
+        ///     An optional subgraph initializer delegate.
         /// </param>
         public virtual DotSubgraph Add(Action<DotSubgraph> init = null)
         {
             return AddSubgraph(nodeIds: Enumerable.Empty<string>(), init: init);
+        }
+
+        /// <summary>
+        ///     Adds a new subgraph with the specified rank to the collection, and returns it.
+        /// </summary>
+        /// <param name="rank">
+        ///     The rank attribute to assign to the subgraph.
+        /// </param>
+        /// <param name="init">
+        ///     An optional subgraph initializer delegate.
+        /// </param>
+        public virtual DotSubgraph Add(DotRank? rank, Action<DotSubgraph> init = null)
+        {
+            return AddSubgraph(nodeIds: Enumerable.Empty<string>(), rank: rank, init: init);
+        }
+
+        /// <summary>
+        ///     Adds a new subgraph with the specified identifier and rank to the collection, and returns it.
+        /// </summary>
+        /// <param name="id">
+        ///     The identifier to assign to the subgraph.
+        /// </param>
+        /// <param name="rank">
+        ///     The rank attribute to assign to the subgraph.
+        /// </param>
+        /// <param name="init">
+        ///     An optional subgraph initializer delegate.
+        /// </param>
+        public virtual DotSubgraph Add(string id, DotRank? rank, Action<DotSubgraph> init = null)
+        {
+            return AddSubgraph(nodeIds: Enumerable.Empty<string>(), id, rank, init);
+        }
+
+        /// <summary>
+        ///     Adds a new subgraph with the specified identifier to the collection, and returns it.
+        /// </summary>
+        /// <param name="id">
+        ///     The identifier to assign to the subgraph.
+        /// </param>
+        /// <param name="init">
+        ///     An optional subgraph initializer delegate.
+        /// </param>
+        // THE init PARAMETER IS NOT OPTIONAL HERE TO PREVENT A MISTAKEN CALL OF THE OVERLOAD WITH A STRING PARAM ARRAY
+        public virtual DotSubgraph Add(string id, Action<DotSubgraph> init)
+        {
+            return AddSubgraph(nodeIds: Enumerable.Empty<string>(), id, init: init);
         }
 
         /// <summary>
