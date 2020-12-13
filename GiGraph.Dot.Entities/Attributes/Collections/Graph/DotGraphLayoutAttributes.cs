@@ -30,17 +30,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
-        /// <inheritdoc cref="IDotGraphLayoutAttributes.DoubleCrossingMinimization" />
+        /// <inheritdoc cref="IDotGraphLayoutAttributes.RepeatCrossingMinimization" />
         [DotAttributeKey(DotAttributeKeys.ReMinCross)]
-        public virtual bool? DoubleCrossingMinimization
+        public virtual bool? RepeatCrossingMinimization
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
-        /// <inheritdoc cref="IDotGraphLayoutAttributes.GlobalRanking" />
+        /// <inheritdoc cref="IDotGraphLayoutAttributes.UseGlobalRanking" />
         [DotAttributeKey(DotAttributeKeys.NewRank)]
-        public virtual bool? GlobalRanking
+        public virtual bool? UseGlobalRanking
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
@@ -171,11 +171,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             ConcentrateEdges = attributes.ConcentrateEdges;
             Direction = attributes.Direction;
-            DoubleCrossingMinimization = attributes.DoubleCrossingMinimization;
+            RepeatCrossingMinimization = attributes.RepeatCrossingMinimization;
             EdgeOrderingMode = attributes.EdgeOrderingMode;
             Engine = attributes.Engine;
             ForceExternalLabels = attributes.ForceExternalLabels;
-            GlobalRanking = attributes.GlobalRanking;
+            UseGlobalRanking = attributes.UseGlobalRanking;
             NodeSeparation = attributes.NodeSeparation;
             Packing = attributes.Packing;
             PackingMode = attributes.PackingMode;

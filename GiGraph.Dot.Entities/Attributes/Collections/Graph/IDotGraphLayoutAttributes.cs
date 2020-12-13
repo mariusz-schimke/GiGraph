@@ -112,7 +112,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     If true and there are multiple clusters, runs crossing minimization a second time (dot only, default: true).
         /// </summary>
-        bool? DoubleCrossingMinimization { get; set; }
+        bool? RepeatCrossingMinimization { get; set; }
 
         /// <summary>
         ///     <para>
@@ -130,7 +130,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         constraints.
         ///     </para>
         /// </summary>
-        bool? GlobalRanking { get; set; }
+        bool? UseGlobalRanking { get; set; }
 
         /// <summary>
         ///     Gets or sets the sorting index of the graph (default: 0). If <see cref="PackingMode" /> indicates an array packing, this
