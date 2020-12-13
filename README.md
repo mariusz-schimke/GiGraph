@@ -1121,7 +1121,7 @@ There are several ways you may add a subgraph to a graph, and the code below pre
 
 ```c#
 // add a subgraph with any number of nodes
-graph.Subgraphs.Add(DotRank.Same, "a", "b", "c");
+graph.Subgraphs.AddWithNodes(DotRank.Same, "a", "b", "c");
 
 // you may also create a new instance, and initialize it manually
 var subgraph = new DotSubgraph(DotRank.Same);
@@ -1660,14 +1660,14 @@ namespace GiGraph.Dot.Examples
             graph.Edges.AddOneToMany("q", "t", "r");
 
             // place the following groups of nodes in the same ranks
-            graph.Subgraphs.Add(DotRank.Same, "b", "c", "d");
-            graph.Subgraphs.Add(DotRank.Same, "e", "f", "g");
-            graph.Subgraphs.Add(DotRank.Same, "h", "i", "j", "k");
-            graph.Subgraphs.Add(DotRank.Same, "l", "m", "n");
-            graph.Subgraphs.Add(DotRank.Same, "q", "r");
+            graph.Subgraphs.AddWithNodes(DotRank.Same, "b", "c", "d");
+            graph.Subgraphs.AddWithNodes(DotRank.Same, "e", "f", "g");
+            graph.Subgraphs.AddWithNodes(DotRank.Same, "h", "i", "j", "k");
+            graph.Subgraphs.AddWithNodes(DotRank.Same, "l", "m", "n");
+            graph.Subgraphs.AddWithNodes(DotRank.Same, "q", "r");
 
             // place the three nodes in the maximum rank (rightmost in this case)
-            graph.Subgraphs.Add(DotRank.Max, "o", "s", "p");
+            graph.Subgraphs.AddWithNodes(DotRank.Max, "o", "s", "p");
 
 
             var options = new DotFormattingOptions
