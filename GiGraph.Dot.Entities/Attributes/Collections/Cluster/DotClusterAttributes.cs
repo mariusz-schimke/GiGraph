@@ -143,6 +143,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => base.ObjectId = value;
         }
 
+        /// <inheritdoc cref="IDotClusterAttributes.Rank" />
+        [DotAttributeKey(DotAttributeKeys.Rank)]
+        public virtual DotRank? Rank
+        {
+            get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotRank?) null;
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankAttribute(k, v.Value));
+        }
+
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor" />
         [DotAttributeKey(DotAttributeKeys.PenColor)]
         public virtual DotColor BorderColor

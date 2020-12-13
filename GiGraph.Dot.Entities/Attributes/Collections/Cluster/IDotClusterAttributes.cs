@@ -121,5 +121,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     </para>
         /// </summary>
         DotEscapeString ObjectId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the rank constraints on the nodes in the cluster (dot only).
+        /// </summary>
+        DotRank? Rank { get; set; }
     }
 }

@@ -378,7 +378,8 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         public const string Quantum = "quantum";
 
         // based on the documentation, the attribute is not supported by the root graph, but when set, it is actually inherited by subgraphs
-        [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Subgraph, DotCompatibleLayoutEngines.Dot)]
+        // (also, it is not stated directly in the documentation, but cluster subgraphs seem to support it too)
+        [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Subgraph | DotCompatibleElements.Cluster, DotCompatibleLayoutEngines.Dot)]
         public const string Rank = "rank";
 
         [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot)]

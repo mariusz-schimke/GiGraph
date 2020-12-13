@@ -727,7 +727,7 @@
   },
   "rank": {
     "Key": "rank",
-    "CompatibleElements": "Graph, Subgraph",
+    "CompatibleElements": "Graph, Subgraph, Cluster",
     "CompatibleLayoutEngines": "Dot",
     "CompatibleOutputs": "Any"
   },
