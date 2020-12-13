@@ -120,6 +120,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///         internally-used attributes distinct, the user can include multiple image maps in the same document.
         ///     </para>
         /// </summary>
-        DotEscapeString Id { get; set; }
+        DotEscapeString ObjectId { get; set; }
     }
 }

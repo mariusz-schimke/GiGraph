@@ -136,11 +136,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => base.SortIndex = value;
         }
 
-        /// <inheritdoc cref="IDotClusterAttributes.Id" />
-        public override DotEscapeString Id
+        /// <inheritdoc cref="IDotClusterAttributes.ObjectId" />
+        public override DotEscapeString ObjectId
         {
-            get => base.Id;
-            set => base.Id = value;
+            get => base.ObjectId;
+            set => base.ObjectId = value;
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor" />

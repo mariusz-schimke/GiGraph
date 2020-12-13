@@ -151,11 +151,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => base.SortIndex = value;
         }
 
-        /// <inheritdoc cref="IDotNodeAttributes.Id" />
-        public override DotEscapeString Id
+        /// <inheritdoc cref="IDotNodeAttributes.ObjectId" />
+        public override DotEscapeString ObjectId
         {
-            get => base.Id;
-            set => base.Id = value;
+            get => base.ObjectId;
+            set => base.ObjectId = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Comment" />
