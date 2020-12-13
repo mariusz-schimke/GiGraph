@@ -46,6 +46,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
+        /// <inheritdoc cref="IDotGraphLayoutAttributes.Rank" />
+        [DotAttributeKey(DotAttributeKeys.Rank)]
+        public virtual DotRank? Rank
+        {
+            get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotRank?) null;
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankAttribute(k, v.Value));
+        }
+
         /// <inheritdoc cref="IDotGraphLayoutAttributes.Packing" />
         [DotAttributeKey(DotAttributeKeys.Pack)]
         public virtual DotPackingDefinition Packing

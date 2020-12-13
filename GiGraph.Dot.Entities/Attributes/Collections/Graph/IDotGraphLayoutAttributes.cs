@@ -127,10 +127,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     </para>
         ///     <para>
         ///         This allows nodes to be subject to multiple constraints. Rank constraints will usually take precedence over edge
-        ///         constraints.
+        ///         constraints. See also <see cref="Rank" />.
         ///     </para>
         /// </summary>
         bool? UseGlobalRanking { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the rank constraints on the nodes in the graph (dot only). See also <see cref="UseGlobalRanking" />.
+        /// </summary>
+        DotRank? Rank { get; set; }
 
         /// <summary>
         ///     Gets or sets the sorting index of the graph (default: 0). If <see cref="PackingMode" /> indicates an array packing, this

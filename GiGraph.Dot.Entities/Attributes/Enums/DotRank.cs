@@ -3,7 +3,7 @@
 namespace GiGraph.Dot.Entities.Attributes.Enums
 {
     /// <summary>
-    ///     Rank constraints for the nodes in a subgraph.
+    ///     Rank constraints for the nodes in a graph, subgraph or cluster.
     /// </summary>
     public enum DotRank
     {

@@ -236,7 +236,8 @@
     "Geometry.Peripheries [Node]"
   ],
   "rank": [
-    "Rank [Graph, Subgraph, Cluster]"
+    "Layout.Rank [Graph]",
+    "Rank [Subgraph, Cluster]"
   ],
   "rankdir": [
     "Layout.Direction [Graph]"
