@@ -7,6 +7,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Subgraph
         /// <summary>
         ///     Gets or sets the rank constraints on the nodes in the subgraph (dot only).
         /// </summary>
-        DotRank? Rank { get; set; }
+        DotRank? NodeRank { get; set; }
     }
 }

@@ -125,6 +125,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         /// <summary>
         ///     Gets or sets the rank constraints on the nodes in the cluster (dot only).
         /// </summary>
-        DotRank? Rank { get; set; }
+        DotRank? NodeRank { get; set; }
     }
 }

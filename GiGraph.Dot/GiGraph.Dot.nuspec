@@ -24,7 +24,7 @@
     
     <releaseNotes>- Added support for attributes: layout, remincross, newrank, fontnames (attribute specifications are available at http://www.graphviz.org/doc/info/attrs.html).
 
-- The rank attribute may now be set globally for subgraphs.
+- The rank attribute may now be set globally, and also on clusters (previously it could only be set on subgraphs).
 
 - Cluster may now be used as an endpoint also with the fdp layout engine (see https://github.com/$repository$/tree/$version$/README.md#clusters-as-endpoints).
 

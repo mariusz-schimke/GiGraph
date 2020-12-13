@@ -95,12 +95,12 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Subgraphs.Add(sg =>
             {
                 sg.Annotation = "subgraph comment";
-                sg.Attributes.Rank = DotRank.Min;
+                sg.Attributes.NodeRank = DotRank.Min;
 
                 sg.Subsections.Add(ss =>
                 {
                     ss.Annotation = "subgraph subsection comment";
-                    ss.Attributes.Rank = DotRank.Max;
+                    ss.Attributes.NodeRank = DotRank.Max;
                 });
             });
 

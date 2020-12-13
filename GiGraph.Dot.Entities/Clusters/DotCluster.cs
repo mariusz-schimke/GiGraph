@@ -1,20 +1,14 @@
 ﻿using System.Collections.Generic;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Graphs.Collections;
-using GiGraph.Dot.Entities.Subgraphs;
 
 namespace GiGraph.Dot.Entities.Clusters
 {
     /// <summary>
-    ///     Represents a cluster subgraph. A cluster subgraph is a special type of subgraph whose appearance can be customized (as
-    ///     opposed to <see cref="DotSubgraph" />). If supported, the layout engine used to render it, will do the layout so that the
-    ///     nodes belonging to the cluster are drawn together, with the entire drawing of the cluster contained within a bounding
-    ///     rectangle. Note that cluster subgraphs are not part of the DOT language, but solely a syntactic convention adhered to by
-    ///     certain of the layout engines.
-    ///     <para>
-    ///         Cluster subgraphs (<see cref="DotCluster" />) do not support setting custom node layout the way normal subgraphs (
-    ///         <see cref="DotSubgraph" />) do, but they do support setting common style of nodes and edges within them.
-    ///     </para>
+    ///     Represents a cluster subgraph. A cluster subgraph is a special type of subgraph whose appearance can be customized. If
+    ///     supported, the layout engine used to render it, will do the layout so that the nodes belonging to the cluster are drawn
+    ///     together, with the entire drawing of the cluster contained within a bounding rectangle. Note that cluster subgraphs are not
+    ///     part of the DOT language, but solely a syntactic convention adhered to by certain of the layout engines.
     /// </summary>
     public class DotCluster : DotClusterSection, IDotCommonGraph, IDotOrderable
     {

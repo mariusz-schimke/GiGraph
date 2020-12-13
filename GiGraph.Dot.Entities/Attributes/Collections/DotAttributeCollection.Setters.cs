@@ -412,7 +412,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        ///     Adds or replaces the specified rank constraint attribute in the collection.
+        ///     Adds or replaces the specified rank constraints attribute in the collection.
         /// </summary>
         /// <param name="key">
         ///     The key of the attribute to include in the collection.
