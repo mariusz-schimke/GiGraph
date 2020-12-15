@@ -65,6 +65,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         double? NodeSeparation { get; set; }
 
         /// <summary>
+        ///     Gets or sets the rank constraints on the nodes in the graph (dot only). See also <see cref="UseGlobalRanking" />.
+        /// </summary>
+        DotRank? NodeRank { get; set; }
+
+        /// <summary>
         ///     <para>
         ///         In dot, this gives the desired rank separation, in inches (<see cref="DotRankSeparation" />; default: 0.5, minimum: 0.02.
         ///         This is the minimum vertical distance between the bottom of the nodes in one rank and the tops of nodes in the next.
@@ -131,11 +136,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     </para>
         /// </summary>
         bool? UseGlobalRanking { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the rank constraints on the nodes in the graph (dot only). See also <see cref="UseGlobalRanking" />.
-        /// </summary>
-        DotRank? NodeRank { get; set; }
 
         /// <summary>
         ///     Gets or sets the sorting index of the graph (default: 0). If <see cref="PackingMode" /> indicates an array packing, this

@@ -179,17 +179,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             ConcentrateEdges = attributes.ConcentrateEdges;
             Direction = attributes.Direction;
-            RepeatCrossingMinimization = attributes.RepeatCrossingMinimization;
             EdgeOrderingMode = attributes.EdgeOrderingMode;
             Engine = attributes.Engine;
             ForceExternalLabels = attributes.ForceExternalLabels;
-            UseGlobalRanking = attributes.UseGlobalRanking;
+            NodeRank = attributes.NodeRank;
             NodeSeparation = attributes.NodeSeparation;
             Packing = attributes.Packing;
             PackingMode = attributes.PackingMode;
             RankSeparation = attributes.RankSeparation;
+            RepeatCrossingMinimization = attributes.RepeatCrossingMinimization;
             Rotation = attributes.Rotation;
             SortIndex = attributes.SortIndex;
+            UseGlobalRanking = attributes.UseGlobalRanking;
         }
     }
 }
