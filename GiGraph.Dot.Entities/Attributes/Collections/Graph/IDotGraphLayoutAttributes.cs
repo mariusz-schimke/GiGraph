@@ -65,6 +65,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         double? NodeSeparation { get; set; }
 
         /// <summary>
+        ///     Gets or sets the rank constraints on the nodes in the graph (dot only). See also <see cref="UseGlobalRanking" />.
+        /// </summary>
+        DotRank? NodeRank { get; set; }
+
+        /// <summary>
         ///     <para>
         ///         In dot, this gives the desired rank separation, in inches (<see cref="DotRankSeparation" />; default: 0.5, minimum: 0.02.
         ///         This is the minimum vertical distance between the bottom of the nodes in one rank and the tops of nodes in the next.
@@ -112,7 +117,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     If true and there are multiple clusters, runs crossing minimization a second time (dot only, default: true).
         /// </summary>
-        bool? DoubleCrossingMinimization { get; set; }
+        bool? RepeatCrossingMinimization { get; set; }
 
         /// <summary>
         ///     <para>
@@ -122,15 +127,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         The original ranking algorithm in dot is recursive on clusters. This can produce fewer ranks and a more compact layout,
         ///         but sometimes at the cost of a head node being placed on a higher rank than the tail node. It also assumes that a node is
         ///         not constrained in separate, incompatible subgraphs. For example, a node cannot be in a cluster and also be constrained
-        ///         by a rank of <see cref="DotRank.Same" /> with a node not in the cluster (see <see cref="DotSubgraphAttributes.Rank" /> on
+        ///         by a rank of <see cref="DotRank.Same" /> with a node not in the cluster (see <see cref="DotSubgraphAttributes.NodeRank" /> on
         ///         subgraph attributes).
         ///     </para>
         ///     <para>
         ///         This allows nodes to be subject to multiple constraints. Rank constraints will usually take precedence over edge
-        ///         constraints.
+        ///         constraints. See also <see cref="NodeRank" />.
         ///     </para>
         /// </summary>
-        bool? GlobalRanking { get; set; }
+        bool? UseGlobalRanking { get; set; }
 
         /// <summary>
         ///     Gets or sets the sorting index of the graph (default: 0). If <see cref="PackingMode" /> indicates an array packing, this

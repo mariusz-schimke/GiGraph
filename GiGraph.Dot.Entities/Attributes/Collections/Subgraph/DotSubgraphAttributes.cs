@@ -25,9 +25,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Subgraph
         {
         }
 
-        /// <inheritdoc cref="IDotSubgraphAttributes.Rank" />
+        /// <inheritdoc cref="IDotSubgraphAttributes.NodeRank" />
         [DotAttributeKey(DotAttributeKeys.Rank)]
-        public virtual DotRank? Rank
+        public virtual DotRank? NodeRank
         {
             get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotRank?) null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankAttribute(k, v.Value));

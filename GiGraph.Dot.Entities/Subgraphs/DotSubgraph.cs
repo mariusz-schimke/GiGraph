@@ -8,15 +8,13 @@ namespace GiGraph.Dot.Entities.Subgraphs
 {
     /// <summary>
     ///     <para>
-    ///         Represents a subgraph as a collection of nodes constrained with a rank attribute, that determines their layout. Use a
-    ///         subgraph (<see cref="DotSubgraph" />) when you want to have more granular control on the layout and style of specific
-    ///         nodes. However, when you want the nodes to be displayed together in a bounding box, use a cluster (
-    ///         <see cref="DotCluster" />) instead.
+    ///         Represents a subgraph as a collection of nodes that may be constrained within one rank (see <see cref="DotRank" />). Use
+    ///         a subgraph when you want to have more granular control on the layout or style of the nodes it contains. However, when you
+    ///         want the nodes to be displayed together in a bounding box, use a cluster subgraph instead (<see cref="DotCluster" /> ).
     ///     </para>
     ///     <para>
-    ///         Subgraph (<see cref="DotSubgraph" />) does not have any border or fill, as opposed to cluster subgraph (
-    ///         <see cref="DotCluster" />), which supports them. However, it supports setting common style of nodes and edges within it,
-    ///         as well as the layout of nodes (by the rank attribute).
+    ///         Subgraph does not have any border or fill, as opposed to a cluster subgraph (<see cref="DotCluster" />). However, it
+    ///         supports applying a common style to nodes and edges within it, as well as constraining the nodes within one rank.
     ///     </para>
     ///     <para>
     ///         Subgraph (<see cref="DotSubgraph" />) can also be used as a head or tail of an edge, in which case all nodes within them
@@ -49,23 +47,23 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <param name="id">
         ///     The identifier to assign to the subgraph.
         /// </param>
-        /// <param name="rank">
-        ///     The rank attribute to assign to the subgraph.
+        /// <param name="nodeRank">
+        ///     The rank constraints to apply to the nodes in the subgraph.
         /// </param>
-        public DotSubgraph(string id, DotRank? rank)
+        public DotSubgraph(string id, DotRank? nodeRank)
             : this(id)
         {
-            Attributes.Rank = rank;
+            Attributes.NodeRank = nodeRank;
         }
 
         /// <summary>
         ///     Creates a new subgraph.
         /// </summary>
-        /// <param name="rank">
-        ///     The rank attribute to assign to the subgraph.
+        /// <param name="nodeRank">
+        ///     The rank constraints to apply to the nodes in the subgraph.
         /// </param>
-        public DotSubgraph(DotRank? rank)
-            : this(id: null, rank)
+        public DotSubgraph(DotRank? nodeRank)
+            : this(id: null, nodeRank)
         {
         }
 
@@ -105,7 +103,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// </param>
         public static DotSubgraph FromNodes(params string[] nodeIds)
         {
-            return FromNodes(nodeIds, rank: null);
+            return FromNodes(nodeIds, nodeRank: null);
         }
 
         /// <summary>
@@ -114,29 +112,29 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <param name="id">
         ///     The identifier to assign to the subgraph.
         /// </param>
-        /// <param name="rank">
-        ///     The rank attribute to assign to the subgraph.
+        /// <param name="nodeRank">
+        ///     The rank constraints to apply to the nodes in the subgraph.
         /// </param>
         /// <param name="nodeIds">
         ///     The identifiers of nodes to populate the subgraph with.
         /// </param>
-        public static DotSubgraph FromNodes(string id, DotRank? rank, params string[] nodeIds)
+        public static DotSubgraph FromNodes(string id, DotRank? nodeRank, params string[] nodeIds)
         {
-            return FromNodes(nodeIds, rank, id);
+            return FromNodes(nodeIds, nodeRank, id);
         }
 
         /// <summary>
         ///     Creates a new subgraph, and populates it with the specified nodes.
         /// </summary>
-        /// <param name="rank">
-        ///     The rank attribute to assign to the subgraph.
+        /// <param name="nodeRank">
+        ///     The rank constraints to apply to the nodes in the subgraph.
         /// </param>
         /// <param name="nodeIds">
         ///     The identifiers of nodes to populate the subgraph with.
         /// </param>
-        public static DotSubgraph FromNodes(DotRank? rank, params string[] nodeIds)
+        public static DotSubgraph FromNodes(DotRank? nodeRank, params string[] nodeIds)
         {
-            return FromNodes(nodeIds, rank);
+            return FromNodes(nodeIds, nodeRank);
         }
 
         /// <summary>
@@ -145,15 +143,15 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <param name="nodeIds">
         ///     The identifiers of nodes to populate the subgraph with.
         /// </param>
-        /// <param name="rank">
-        ///     The rank attribute to assign to the subgraph.
+        /// <param name="nodeRank">
+        ///     The rank constraints to apply to the nodes in the subgraph.
         /// </param>
         /// <param name="id">
         ///     The identifier to assign to the subgraph.
         /// </param>
-        public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, DotRank? rank = null, string id = null)
+        public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, DotRank? nodeRank = null, string id = null)
         {
-            var result = new DotSubgraph(id, rank);
+            var result = new DotSubgraph(id, nodeRank);
             result.Nodes.AddRange(nodeIds);
             return result;
         }

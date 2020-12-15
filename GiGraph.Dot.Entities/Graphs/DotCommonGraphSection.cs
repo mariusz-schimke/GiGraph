@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Collections.Subgraph;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
@@ -68,27 +69,25 @@ namespace GiGraph.Dot.Entities.Graphs
 
         /// <summary>
         ///     <para>
-        ///         Gets the collection of subgraphs. A subgraph is interpreted as a collection of nodes constrained with a rank attribute
-        ///         that determines their layout.
+        ///         Gets the collection of subgraphs.
         ///     </para>
         ///     <para>
-        ///         Use a subgraph when you want to have more granular control on the layout of a specific group of nodes. However, when you
-        ///         want the nodes to be drawn together in a bounding rectangle, that has a custom color and fill, use a cluster instead (
-        ///         <see cref="Clusters" />). You can use either of these types to set a common style of nodes and edges within them, but you
-        ///         cannot control the layout of nodes within a cluster.
+        ///         Use a subgraph when you want to have more granular control on the layout of the nodes it contains by constraining them
+        ///         within a rank (see the subgraph's <see cref="DotSubgraphAttributes.NodeRank" /> attribute). However, when you want
+        ///         the nodes to be drawn together in a bounding rectangle, that has a custom color and fill, use a cluster instead (
+        ///         <see cref="Clusters" />). You can use either of these types to set a common style of nodes and edges within them.
         ///     </para>
         /// </summary>
         public virtual DotSubgraphCollection Subgraphs { get; }
 
         /// <summary>
         ///     <para>
-        ///         Gets the collection of clusters. A cluster is interpreted as a collection of nodes drawn within a bounding rectangle.
+        ///         Gets the collection of clusters. A cluster is a collection of nodes drawn within a bounding rectangle.
         ///     </para>
         ///     <para>
         ///         Use a cluster when you want the nodes within it to be drawn together in a bounding rectangle, that has a custom color and
-        ///         fill. However, when you want to have more granular control on the layout of a specific group of nodes, use a subgraph
-        ///         instead (<see cref="Subgraphs" />). You can use either of these types to set a common style of nodes and edges within
-        ///         them, but you cannot control the layout of nodes within a cluster.
+        ///         fill. However, when you want to have more granular control on the layout of selected nodes, use a subgraph instead (
+        ///         <see cref="Subgraphs" />). You can use either of these types to set a common style of nodes and edges within them.
         ///     </para>
         /// </summary>
         public virtual DotClusterCollection Clusters { get; }

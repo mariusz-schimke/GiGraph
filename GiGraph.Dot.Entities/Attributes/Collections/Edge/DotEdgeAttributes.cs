@@ -123,11 +123,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => base.ColorScheme = value;
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.Id" />
-        public override DotEscapeString Id
+        /// <inheritdoc cref="IDotEdgeAttributes.ObjectId" />
+        public override DotEscapeString ObjectId
         {
-            get => base.Id;
-            set => base.Id = value;
+            get => base.ObjectId;
+            set => base.ObjectId = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Comment" />

@@ -646,7 +646,7 @@ digraph
 When adding nodes to a graph, subgraph or cluster, you may use a node group that has a shared list of attributes for all the nodes within it. To do it, use one of the overloads of the *Add* method that accepts multiple node identifiers. Note that it is only a shorthand for adding multiple nodes that share one list of attributes.
 
 ```c#
-graph.Nodes.Add
+graph.Nodes.AddGroup
 (
     attrs =>
     {
@@ -1111,24 +1111,30 @@ digraph
 
 ## Subgraphs
 
-A subgraph, represented by the **DotSubgraph** class, is a collection of nodes constrained with a rank attribute, that determines their layout. Use a subgraph when you want to have more granular control on the **layout** of specific groups of nodes (refers to the ***dot*** layout engine only), and/or the **style** of specific groups of nodes and edges.
+A subgraph, represented by the **DotSubgraph** class, is a collection of nodes you may use when want to have more granular control on the **style** of the nodes and edges it contains, or on the **layout** of the those nodes (valid for the ***dot*** layout engine only).
 
 **Subgraph does not have any border or fill**, as opposed to [cluster subgraph](#clusters) represented by the **DotCluster** class, which supports them.
 
-As mentioned, subgraph supports setting a common style of nodes and edges within it, as well as the layout of the nodes. The layout may be adjusted by using the **rank attribute**. To see an example how it works, jump to the [customizing node layout](#customizing-node-layout) section.
+Subgraph supports applying a common style to nodes and edges within it, as well as controlling the layout of those nodes against nodes outside it. The style may be customized by setting global node or edge attributes in the subgraph, whereas the layout may be adjusted by specifying a rank on the subgraph. To see an example, jump to the [customizing node layout](#customizing-node-layout) section.
 
 There are several ways you may add a subgraph to a graph, and the code below presents some of them.
 
 ```c#
-// add a subgraph with any number of nodes
-graph.Subgraphs.Add(DotRank.Same, "a", "b", "c");
+// add a subgraph with a custom content initialization
+graph.Subgraphs.Add(DotRank.Same, subgraph =>
+{
+    subgraph.Nodes.AddRange("a", "b", "c");
+});
+
+// or simply (if only nodes are going to be specified)
+graph.Subgraphs.AddWithNodes(DotRank.Same, "a", "b", "c");
 
 // you may also create a new instance, and initialize it manually
 var subgraph = new DotSubgraph(DotRank.Same);
-subgraph.Nodes.Add("d", "e", "f");
+subgraph.Nodes.AddRange("a", "b", "c");
 
-// or use a factory method to add nodes more easily
-subgraph = DotSubgraph.FromNodes(DotRank.Same, "d", "e", "f");
+// or use a factory method to add nodes conveniently
+subgraph = DotSubgraph.FromNodes(DotRank.Same, "a", "b", "c");
 
 // style settings are accepted as well for the elements inside
 subgraph.Nodes.Attributes.Shape = DotNodeShape.Box;
@@ -1157,26 +1163,30 @@ A subgraph may also be used as a group of endpoints (for details refer to [edge 
 
 ## Clusters
 
-A cluster is represented by the **DotCluster** class. It is a special type of [subgraph](#subgraphs), whose appearance may be customized (as opposed to subgraph represented by the **DotSubgraph** class). If supported, the layout engine used to render a cluster subgraph, will do the layout so that the nodes belonging to the cluster are drawn together, with the entire drawing of the cluster contained within a bounding rectangle. To see an example, go to [grouping nodes visually](#grouping-nodes-visually).
+A cluster is represented by the **DotCluster** class. It is a special type of [subgraph](#subgraphs), whose appearance may be customized. If supported, the layout engine used to render a cluster subgraph, will do the layout so that the nodes belonging to the cluster are drawn together, with the entire drawing of the cluster contained within a bounding rectangle. To see an example, go to [grouping nodes visually](#grouping-nodes-visually).
 
 *⚠️ Note that cluster subgraphs are not part of the DOT language, but solely a syntactic convention adhered to by certain of the layout engines.*
 
-*❕ When using clusters, make sure the ClusterMode attribute on graph level is DotClusterMode.Bounded (this is the default value, and does not have to be set explicitly).*
-
-Cluster subgraphs do not support setting custom node layout the way normal subgraphs do, but they do support setting common style of nodes and edges within them.
+*❕ When using clusters, make sure the visualization mode for clusters on the graph is DotClusterVisualizationMode.Bounded (this is the default value, and does not have to be set explicitly).*
 
 There are several ways you may add a cluster to a graph, and the code below presents some of them.
 
 ```c#
-// add a cluster with any number of nodes
-graph.Clusters.Add("My cluster 1", "a", "b", "c");
+// add a cluster with a custom content initialization
+graph.Clusters.Add("My cluster 1", cluster =>
+{
+    cluster.Nodes.AddRange("a", "b", "c");
+});
+
+// or simply (if only nodes are going to be specified)
+graph.Clusters.AddWithNodes("My cluster 1", "a", "b", "c");
 
 // you may also create a new instance, and initialize it manually
-var cluster = new DotCluster("My cluster 2");
-cluster.Nodes.Add("d", "e", "f");
+var cluster = new DotCluster("My cluster 1");
+cluster.Nodes.AddRange("a", "b", "c");
 
-// or use a factory method to add nodes more easily
-cluster = DotCluster.FromNodes("My cluster 2", "e", "d", "f");
+// or use a factory method to add nodes conveniently
+cluster = DotCluster.FromNodes("My cluster 1", "a", "b", "c");
 
 // style settings are accepted as well for the elements inside
 cluster.Nodes.Attributes.Shape = DotNodeShape.Box;
@@ -1200,7 +1210,7 @@ digraph
 
 ### Clusters as endpoints
 
-Clusters may be used as endpoints. In such case the edge is clipped to cluster border instead of being connected to a node inside the cluster. To achieve that effect, define an edge that joins a node outside the cluster with a node inside the cluster. Then, for the external endpoint of the edge, assign the identifier of the cluster to the *ClusterId* attribute. Also, enable clipping edges to cluster borders by setting the *AllowEdgeClipping* attribute on the graph.  The following example presents the complete idea.
+Clusters may be used as endpoints. In such case the edge is clipped to cluster border instead of being connected to a node inside the cluster. To achieve that effect, define an edge that joins a node outside the cluster with a node inside the cluster. Then, for the external endpoint of the edge, assign the identifier of the cluster to the *ClusterId* attribute. Also, enable clipping edges to cluster borders by setting the *AllowEdgeClipping* attribute for clusters on the graph.  The following example presents the complete idea.
 
 ```c#
 var graph = new DotGraph();
@@ -1610,14 +1620,14 @@ Consider the following graph with no layout customizations applied:
 
 
 
-As an example, let's place certain groups of nodes in the same ranks (columns in this case). To achieve that, the nodes have to be placed in subgraphs, and each of the subgraphs has to have an adequate **rank** specified. Consider the following example.
+As an example, let's place certain groups of nodes in the same ranks (columns in this case). To achieve that, the nodes have to be placed in subgraphs, and each of the subgraphs has to have an adequate **rank** attribute specified. Consider the following example.
 
 <p align="center">
   <img src="./Assets/Examples/complex-graph-with-subgraphs.svg">
 </p>
 
 
-The nodes embedded in subgraphs with the *DotRank.Same* rank are arranged in the same columns. Apart from those, the nodes *o*, *p*, and *t* in a subgraph with a rank *DotRank.Max*, are pushed together towards the rightmost border.
+The nodes embedded in subgraphs with the *DotRank.Same* rank constraint are arranged in the same columns. Apart from those, the nodes *o*, *p*, and *t* in a subgraph with a rank *DotRank.Max*, are pushed together towards the rightmost border.
 
 *❕ The ranks are vertical in these examples because the layout direction of the graph is left-to-right. When you change it to the default top-to-bottom orientation, the ranks will be oriented horizontally.*
 
@@ -1660,14 +1670,14 @@ namespace GiGraph.Dot.Examples
             graph.Edges.AddOneToMany("q", "t", "r");
 
             // place the following groups of nodes in the same ranks
-            graph.Subgraphs.Add(DotRank.Same, "b", "c", "d");
-            graph.Subgraphs.Add(DotRank.Same, "e", "f", "g");
-            graph.Subgraphs.Add(DotRank.Same, "h", "i", "j", "k");
-            graph.Subgraphs.Add(DotRank.Same, "l", "m", "n");
-            graph.Subgraphs.Add(DotRank.Same, "q", "r");
+            graph.Subgraphs.AddWithNodes(DotRank.Same, "b", "c", "d");
+            graph.Subgraphs.AddWithNodes(DotRank.Same, "e", "f", "g");
+            graph.Subgraphs.AddWithNodes(DotRank.Same, "h", "i", "j", "k");
+            graph.Subgraphs.AddWithNodes(DotRank.Same, "l", "m", "n");
+            graph.Subgraphs.AddWithNodes(DotRank.Same, "q", "r");
 
             // place the three nodes in the maximum rank (rightmost in this case)
-            graph.Subgraphs.Add(DotRank.Max, "o", "s", "p");
+            graph.Subgraphs.AddWithNodes(DotRank.Max, "o", "s", "p");
 
 
             var options = new DotFormattingOptions

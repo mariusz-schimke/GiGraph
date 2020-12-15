@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 attrs.Style.BorderWeight = DotBorderWeight.Bold;
             });
 
-            graph.Nodes.Add(attrs =>
+            graph.Nodes.AddGroup(attrs =>
             {
                 attrs.Shape = DotNodeShape.Box;
                 attrs.Style.BorderWeight = DotBorderWeight.Bold;
@@ -95,12 +95,12 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Subgraphs.Add(sg =>
             {
                 sg.Annotation = "subgraph comment";
-                sg.Attributes.Rank = DotRank.Min;
+                sg.Attributes.NodeRank = DotRank.Min;
 
                 sg.Subsections.Add(ss =>
                 {
                     ss.Annotation = "subgraph subsection comment";
-                    ss.Attributes.Rank = DotRank.Max;
+                    ss.Attributes.NodeRank = DotRank.Max;
                 });
             });
 
@@ -150,7 +150,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 attrs.Set(a => a.Label, "foo").Annotation = "label";
             }).Annotation = "node comment";
 
-            graph.Nodes.Add(new[] { "foo", "bar", "baz" }, node =>
+            graph.Nodes.AddGroup(new[] { "foo", "bar", "baz" }, node =>
             {
                 node.Annotation = "node group attributes";
                 node.Set(a => a.Label, "foo").Annotation = "label";

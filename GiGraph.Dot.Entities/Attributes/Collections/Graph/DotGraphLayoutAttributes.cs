@@ -30,20 +30,28 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
         }
 
-        /// <inheritdoc cref="IDotGraphLayoutAttributes.DoubleCrossingMinimization" />
+        /// <inheritdoc cref="IDotGraphLayoutAttributes.RepeatCrossingMinimization" />
         [DotAttributeKey(DotAttributeKeys.ReMinCross)]
-        public virtual bool? DoubleCrossingMinimization
+        public virtual bool? RepeatCrossingMinimization
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
         }
 
-        /// <inheritdoc cref="IDotGraphLayoutAttributes.GlobalRanking" />
+        /// <inheritdoc cref="IDotGraphLayoutAttributes.UseGlobalRanking" />
         [DotAttributeKey(DotAttributeKeys.NewRank)]
-        public virtual bool? GlobalRanking
+        public virtual bool? UseGlobalRanking
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+        }
+
+        /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeRank" />
+        [DotAttributeKey(DotAttributeKeys.Rank)]
+        public virtual DotRank? NodeRank
+        {
+            get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotRank?) null;
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankAttribute(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.Packing" />
@@ -171,17 +179,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         {
             ConcentrateEdges = attributes.ConcentrateEdges;
             Direction = attributes.Direction;
-            DoubleCrossingMinimization = attributes.DoubleCrossingMinimization;
             EdgeOrderingMode = attributes.EdgeOrderingMode;
             Engine = attributes.Engine;
             ForceExternalLabels = attributes.ForceExternalLabels;
-            GlobalRanking = attributes.GlobalRanking;
+            NodeRank = attributes.NodeRank;
             NodeSeparation = attributes.NodeSeparation;
             Packing = attributes.Packing;
             PackingMode = attributes.PackingMode;
             RankSeparation = attributes.RankSeparation;
+            RepeatCrossingMinimization = attributes.RepeatCrossingMinimization;
             Rotation = attributes.Rotation;
             SortIndex = attributes.SortIndex;
+            UseGlobalRanking = attributes.UseGlobalRanking;
         }
     }
 }

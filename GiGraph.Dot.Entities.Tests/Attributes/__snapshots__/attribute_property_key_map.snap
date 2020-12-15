@@ -125,7 +125,7 @@
     "Hyperlink.Href [Graph, Cluster, Node, Edge]"
   ],
   "id": [
-    "Id [Graph, Cluster, Node, Edge]"
+    "ObjectId [Graph, Cluster, Node, Edge]"
   ],
   "image": [
     "Image.Path [Node]"
@@ -202,7 +202,7 @@
     "MinLength [Edge]"
   ],
   "newrank": [
-    "Layout.GlobalRanking [Graph]"
+    "Layout.UseGlobalRanking [Graph]"
   ],
   "nodesep": [
     "Layout.NodeSeparation [Graph]"
@@ -236,7 +236,8 @@
     "Geometry.Peripheries [Node]"
   ],
   "rank": [
-    "Rank [Graph, Subgraph]"
+    "Layout.NodeRank [Graph]",
+    "NodeRank [Subgraph, Cluster]"
   ],
   "rankdir": [
     "Layout.Direction [Graph]"
@@ -251,7 +252,7 @@
     "Geometry.Regular [Node]"
   ],
   "remincross": [
-    "Layout.DoubleCrossingMinimization [Graph]"
+    "Layout.RepeatCrossingMinimization [Graph]"
   ],
   "resolution": [
     "Canvas.Resolution [Graph]"

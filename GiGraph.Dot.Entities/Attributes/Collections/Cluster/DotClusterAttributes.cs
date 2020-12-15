@@ -136,11 +136,19 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
             set => base.SortIndex = value;
         }
 
-        /// <inheritdoc cref="IDotClusterAttributes.Id" />
-        public override DotEscapeString Id
+        /// <inheritdoc cref="IDotClusterAttributes.ObjectId" />
+        public override DotEscapeString ObjectId
         {
-            get => base.Id;
-            set => base.Id = value;
+            get => base.ObjectId;
+            set => base.ObjectId = value;
+        }
+
+        /// <inheritdoc cref="IDotClusterAttributes.NodeRank" />
+        [DotAttributeKey(DotAttributeKeys.Rank)]
+        public virtual DotRank? NodeRank
+        {
+            get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotRank?) null;
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankAttribute(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor" />

@@ -8,14 +8,31 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
     public class DotClusterCollection : DotCommonGraphCollection<DotCluster>
     {
         /// <summary>
+        ///     <para>
+        ///         Adds a new cluster subgraph to the collection.
+        ///     </para>
+        ///     <para>
+        ///         Note that an identifier should be specified for the cluster. If no identifier or the same identifier is specified for
+        ///         multiple clusters having the same parent, they are treated as one and the same cluster when visualized.
+        ///     </para>
+        /// </summary>
+        /// <param name="init">
+        ///     An optional cluster initializer delegate.
+        /// </param>
+        public virtual DotCluster Add(Action<DotCluster> init = null)
+        {
+            return AddCluster(id: null, nodeIds: Enumerable.Empty<string>(), init);
+        }
+
+        /// <summary>
         ///     Adds a new cluster subgraph with the specified identifier to the collection.
         /// </summary>
         /// <param name="id">
-        ///     The unique identifier of the cluster. If no identifier or the same identifier is specified for multiple clusters added, they
-        ///     will be treated as one cluster when visualized.
+        ///     A unique identifier of the cluster. If no identifier or the same identifier is specified for multiple clusters having the
+        ///     same parent, they are treated as one and the same cluster when visualized.
         /// </param>
         /// <param name="init">
-        ///     An optional cluster initialization delegate.
+        ///     An optional cluster initializer delegate.
         /// </param>
         public virtual DotCluster Add(string id, Action<DotCluster> init = null)
         {
@@ -23,57 +40,36 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
         }
 
         /// <summary>
-        ///     Adds a new cluster subgraph with the specified identifier and nodes to the collection.
+        ///     Adds a new cluster subgraph with the specified identifier to the collection, and populates it with the specified nodes.
         /// </summary>
         /// <param name="id">
-        ///     The unique identifier of the cluster. If no identifier or the same identifier is specified for multiple clusters added, they
-        ///     will be treated as one cluster when visualized.
+        ///     A unique identifier of the cluster. If no identifier or the same identifier is specified for multiple clusters having the
+        ///     same parent, they are treated as one and the same cluster when visualized.
         /// </param>
         /// <param name="nodeIds">
-        ///     Optional node identifiers to initialize the cluster with.
+        ///     Optional node identifiers to populate the cluster with.
         /// </param>
-        public virtual DotCluster Add(string id, params string[] nodeIds)
+        public virtual DotCluster AddWithNodes(string id, params string[] nodeIds)
         {
-            return AddCluster(id, nodeIds, init: null);
+            return AddCluster(id, nodeIds);
         }
 
         /// <summary>
-        ///     Adds a new cluster subgraph with the specified identifier and nodes to the collection.
+        ///     Adds a new cluster subgraph with the specified identifier to the collection, and populates it with the specified nodes.
         /// </summary>
         /// <param name="id">
-        ///     The unique identifier of the cluster. If no identifier or the same identifier is specified for multiple clusters added, they
-        ///     will be treated as one cluster when visualized.
+        ///     The unique identifier of the cluster. If no identifier or the same identifier is specified for multiple clusters having the
+        ///     same parent, they are treated as one and the same cluster when visualized.
         /// </param>
         /// <param name="nodeIds">
-        ///     Optional node identifiers to initialize the cluster with.
+        ///     A node identifier collection to populate the cluster with.
         /// </param>
-        /// <param name="init">
-        ///     An optional cluster initialization delegate.
-        /// </param>
-        public virtual DotCluster Add(string id, Action<DotCluster> init, params string[] nodeIds)
+        public virtual DotCluster AddWithNodes(string id, IEnumerable<string> nodeIds)
         {
-            return AddCluster(id, nodeIds, init);
+            return AddCluster(id, nodeIds);
         }
 
-        /// <summary>
-        ///     Adds a new cluster subgraph with the specified identifier and nodes to the collection.
-        /// </summary>
-        /// <param name="id">
-        ///     The unique identifier of the cluster. If no identifier or the same identifier is specified for multiple clusters added, they
-        ///     will be treated as one cluster when visualized.
-        /// </param>
-        /// <param name="nodeIds">
-        ///     A node identifier collection to initialize the cluster with.
-        /// </param>
-        /// <param name="init">
-        ///     An optional cluster initialization delegate.
-        /// </param>
-        public virtual DotCluster Add(string id, IEnumerable<string> nodeIds, Action<DotCluster> init = null)
-        {
-            return AddCluster(id, nodeIds, init);
-        }
-
-        protected virtual DotCluster AddCluster(string id, IEnumerable<string> nodeIds, Action<DotCluster> init)
+        protected virtual DotCluster AddCluster(string id, IEnumerable<string> nodeIds, Action<DotCluster> init = null)
         {
             return Add(DotCluster.FromNodes(id, nodeIds), init);
         }

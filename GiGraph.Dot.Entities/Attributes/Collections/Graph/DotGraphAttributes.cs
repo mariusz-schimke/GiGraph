@@ -106,11 +106,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => base.ColorScheme = value;
         }
 
-        /// <inheritdoc cref="IDotGraphAttributes.Id" />
-        public override DotEscapeString Id
+        /// <inheritdoc cref="IDotGraphAttributes.ObjectId" />
+        public override DotEscapeString ObjectId
         {
-            get => base.Id;
-            set => base.Id = value;
+            get => base.ObjectId;
+            set => base.ObjectId = value;
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.EdgeShape" />
