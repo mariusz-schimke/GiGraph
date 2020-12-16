@@ -119,6 +119,7 @@ namespace GiGraph.Dot.Output.TextEscaping
                 new DotAngleBracketsEscaper(),
                 new DotCurlyBracketsEscaper(),
                 new DotVerticalBarEscaper(),
+                new DotSpacePaddingEscaper(),
                 new DotSpaceEscaper()
             );
         }
