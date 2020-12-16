@@ -63,9 +63,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
         }
 
-        /// <inheritdoc cref="IDotGraphCanvasAttributes.Landscape" />
+        /// <inheritdoc cref="IDotGraphCanvasAttributes.LandscapeOrientation" />
         [DotAttributeKey(DotAttributeKeys.Landscape)]
-        public virtual bool? Landscape
+        public virtual bool? LandscapeOrientation
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
@@ -147,7 +147,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             CenterDrawing = attributes.CenterDrawing;
             Dpi = attributes.Dpi;
             GradientFillAngle = attributes.GradientFillAngle;
-            Landscape = attributes.Landscape;
+            LandscapeOrientation = attributes.LandscapeOrientation;
             Margin = attributes.Margin;
             Orientation = attributes.Orientation;
             OrientationAngle = attributes.OrientationAngle;

@@ -180,7 +180,7 @@
     "LabelHyperlink.Url [Edge]"
   ],
   "landscape": [
-    "Canvas.Landscape [Graph]"
+    "Canvas.LandscapeOrientation [Graph]"
   ],
   "layout": [
     "Layout.Engine [Graph]"
