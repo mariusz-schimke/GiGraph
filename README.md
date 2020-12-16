@@ -1383,12 +1383,11 @@ namespace GiGraph.Dot.Examples
                     attrs.Color = Color.Transparent;
 
                     // set style to striped
-                    attrs.SetStriped(new DotMultiColor(
+                    attrs.SetStriped(
                         new DotWeightedColor(Color.Navy, 0.1),
                         Color.RoyalBlue,
                         Color.Turquoise,
-                        Color.Orange)
-                    );
+                        Color.Orange);
                 });
 
                 // a circular node with a wedged fill
@@ -1398,12 +1397,11 @@ namespace GiGraph.Dot.Examples
                     attrs.Color = Color.Transparent;
 
                     // set wedged style
-                    attrs.SetWedged(new DotMultiColor(
+                    attrs.SetWedged(
                         Color.Orange,
                         Color.RoyalBlue,
                         new DotWeightedColor(Color.Navy, 0.1),
-                        Color.Turquoise)
-                    );
+                        Color.Turquoise);
                 });
 
                 sg.Edges.Add("STRIPED", "WEDGED");

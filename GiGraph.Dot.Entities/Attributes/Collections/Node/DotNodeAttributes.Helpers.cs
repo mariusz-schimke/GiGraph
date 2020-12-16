@@ -21,6 +21,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         }
 
         /// <summary>
+        ///     Sets a wedged fill, assuming that the node has an elliptical shape (see <see cref="DotNodeAttributes.Shape" />).
+        /// </summary>
+        /// <param name="colors">
+        ///     The colors to use for consecutive wedges. Proportions for individual wedges may be specified optionally by using a
+        ///     <see cref="DotWeightedColor" /> for them.
+        /// </param>
+        public virtual void SetWedged(params DotColor[] colors)
+        {
+            SetWedged(new DotMultiColor(colors));
+        }
+
+        /// <summary>
         ///     Converts the current node to a polygon shape.
         /// </summary>
         /// <param name="sides">

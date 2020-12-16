@@ -48,5 +48,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
             SetFillStyle(DotStyles.Striped);
             FillColor = colors;
         }
+
+        /// <summary>
+        ///     Sets a striped fill.
+        /// </summary>
+        /// <param name="colors">
+        ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
+        ///     <see cref="DotWeightedColor" /> for them.
+        /// </param>
+        public virtual void SetStriped(params DotColor[] colors)
+        {
+            SetStriped(new DotMultiColor(colors));
+        }
     }
 }
