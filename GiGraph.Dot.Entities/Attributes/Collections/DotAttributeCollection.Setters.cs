@@ -13,6 +13,7 @@ using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Viewport;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -677,6 +678,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotIdAttribute Set(string key, DotClusterId value)
         {
             return Set(new DotIdAttribute(key, value));
+        }
+
+        /// <summary>
+        ///     Adds or replaces the specified viewport attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotViewportAttribute Set(string key, DotViewport value)
+        {
+            return Set(new DotViewportAttribute(key, value));
         }
 
         /// <summary>
