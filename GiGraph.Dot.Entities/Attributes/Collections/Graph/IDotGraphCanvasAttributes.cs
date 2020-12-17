@@ -3,6 +3,7 @@ using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Entities.Types.Styles;
+using GiGraph.Dot.Entities.Types.Viewport;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
@@ -49,7 +50,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         DotOrientation? Orientation { get; set; }
 
         /// <summary>
-        ///     If 90, sets drawing orientation to landscape (default: 0). See also <see cref="Orientation" /> and <see cref="LandscapeOrientation" />.
+        ///     If 90, sets drawing orientation to landscape (default: 0). See also <see cref="Orientation" /> and
+        ///     <see cref="LandscapeOrientation" />.
         /// </summary>
         int? OrientationAngle { get; set; }
 
@@ -132,5 +134,18 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     </para>
         /// </summary>
         DotGraphScalingDefinition Scaling { get; set; }
+
+        /// <summary>
+        ///     <para>
+        ///         Gets or sets the clipping window on final drawing. Supersedes any <see cref="Size" /> attribute. The width and height of
+        ///         the viewport specify precisely the final size of the output.
+        ///     </para>
+        ///     <para>
+        ///         To specify width, height, and zoom of the final drawing, use <see cref="DotViewport" />. To also specify a central point
+        ///         of the drawing, use <see cref="DotPointCenteredViewport" />, or, to specify a node as a central point, use
+        ///         <see cref="DotNodeCenteredViewport" />.
+        ///     </para>
+        /// </summary>
+        DotViewport Viewport { get; set; }
     }
 }

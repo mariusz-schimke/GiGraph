@@ -46,7 +46,7 @@ namespace GiGraph.Dot.Entities.Types.Ranks
 
         protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return DotDoubleListConverter.Convert(Values);
+            return DotDoubleListEncoder.Convert(Values);
         }
     }
 }

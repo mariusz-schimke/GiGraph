@@ -6,6 +6,7 @@ using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Scaling;
+using GiGraph.Dot.Entities.Types.Viewport;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
@@ -99,6 +100,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphCanvasAttributes.Viewport" />
+        [DotAttributeKey(DotAttributeKeys.Viewport)]
+        public virtual DotViewport Viewport
+        {
+            get => GetValueAs<DotViewport>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotViewportAttribute(k, v));
+        }
+
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Scaling" />
         [DotAttributeKey(DotAttributeKeys.Ratio)]
         public virtual DotGraphScalingDefinition Scaling
@@ -155,6 +164,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             Resolution = attributes.Resolution;
             Scaling = attributes.Scaling;
             Size = attributes.Size;
+            Viewport = attributes.Viewport;
         }
     }
 }
