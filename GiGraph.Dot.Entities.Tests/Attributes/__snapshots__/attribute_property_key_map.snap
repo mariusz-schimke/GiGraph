@@ -328,6 +328,9 @@
   "URL": [
     "Hyperlink.Url [Graph, Cluster, Node, Edge]"
   ],
+  "viewport": [
+    "Canvas.Viewport [Graph]"
+  ],
   "weight": [
     "Weight [Edge]"
   ],

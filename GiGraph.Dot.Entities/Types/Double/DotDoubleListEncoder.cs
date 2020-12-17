@@ -4,9 +4,9 @@ using System.Linq;
 namespace GiGraph.Dot.Entities.Types.Double
 {
     /// <summary>
-    ///     A double list converter.
+    ///     A double list DOT encoder.
     /// </summary>
-    public class DotDoubleListConverter
+    public class DotDoubleListEncoder
     {
         public static string Convert(double[] values)
         {

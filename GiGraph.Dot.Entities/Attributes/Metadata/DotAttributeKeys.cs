@@ -508,7 +508,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         [DotAttributeMetadata(DotCompatibleElements.Node, DotCompatibleLayoutEngines.None, isImplemented: false)]
         public const string Vertices = "vertices";
 
-        [DotAttributeMetadata(DotCompatibleElements.Graph, isImplemented: false)]
+        [DotAttributeMetadata(DotCompatibleElements.Graph)]
         public const string Viewport = "viewport";
 
         [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.NotDot, isImplemented: false)]
