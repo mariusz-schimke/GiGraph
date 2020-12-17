@@ -75,7 +75,7 @@ namespace GiGraph.Dot.Entities.Tests
 
             Assert.Equal($"{port} {field}", ((IDotEncodable) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }
-        
+
         [Fact]
         public void record_port_and_field_return_dot_encoded_value_with_html_escaped_padding_spaces()
         {

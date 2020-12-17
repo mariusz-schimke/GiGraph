@@ -315,7 +315,7 @@ namespace GiGraph.Dot.Output.Writers
 
         protected virtual void Write(string token, DotTokenType type)
         {
-            if (Options.TextEncoder is {} encode)
+            if (Options.TextEncoder is { } encode)
             {
                 token = encode(token, type);
             }

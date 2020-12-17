@@ -127,7 +127,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual bool GetValueAs<T>(string key, out T value, params Func<object, (bool IsValid, T Result)>[] converters)
         {
-            if (!TryGetValue(key, out var attribute) || !(attribute.GetValue() is {} attributeValue))
+            if (!TryGetValue(key, out var attribute) || !(attribute.GetValue() is { } attributeValue))
             {
                 value = default;
                 return false;

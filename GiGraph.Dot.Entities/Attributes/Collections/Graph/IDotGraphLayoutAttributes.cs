@@ -127,8 +127,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///         The original ranking algorithm in dot is recursive on clusters. This can produce fewer ranks and a more compact layout,
         ///         but sometimes at the cost of a head node being placed on a higher rank than the tail node. It also assumes that a node is
         ///         not constrained in separate, incompatible subgraphs. For example, a node cannot be in a cluster and also be constrained
-        ///         by a rank of <see cref="DotRank.Same" /> with a node not in the cluster (see <see cref="DotSubgraphAttributes.NodeRank" /> on
-        ///         subgraph attributes).
+        ///         by a rank of <see cref="DotRank.Same" /> with a node not in the cluster (see
+        ///         <see cref="DotSubgraphAttributes.NodeRank" /> on subgraph attributes).
         ///     </para>
         ///     <para>
         ///         This allows nodes to be subject to multiple constraints. Rank constraints will usually take precedence over edge

@@ -28,12 +28,12 @@ namespace GiGraph.Dot.Entities.Types.Labels
 
         public static implicit operator DotHtmlLabel(string html)
         {
-            return html is {} ? new DotHtmlLabel(html) : null;
+            return html is { } ? new DotHtmlLabel(html) : null;
         }
 
         public static implicit operator DotHtmlLabel(DotHtml html)
         {
-            return html is {} ? new DotHtmlLabel(html) : null;
+            return html is { } ? new DotHtmlLabel(html) : null;
         }
     }
 }

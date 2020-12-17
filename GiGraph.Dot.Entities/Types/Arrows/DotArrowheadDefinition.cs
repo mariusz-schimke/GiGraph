@@ -23,12 +23,12 @@ namespace GiGraph.Dot.Entities.Types.Arrows
 
         public static implicit operator DotArrowheadDefinition(DotArrowheadShape[] shapes)
         {
-            return shapes is {} ? new DotCompositeArrowhead(shapes) : null;
+            return shapes is { } ? new DotCompositeArrowhead(shapes) : null;
         }
 
         public static implicit operator DotArrowheadDefinition(DotArrowhead[] arrows)
         {
-            return arrows is {} ? new DotCompositeArrowhead(arrows) : null;
+            return arrows is { } ? new DotCompositeArrowhead(arrows) : null;
         }
     }
 }

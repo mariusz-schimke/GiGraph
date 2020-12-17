@@ -65,7 +65,7 @@ namespace GiGraph.Dot.Entities.Types.Records
             var result = new StringBuilder();
             var separator = string.Empty;
 
-            if (_portName is {})
+            if (_portName is { })
             {
                 result.Append("<");
                 result.Append(_portName.GetEscapedString(syntaxRules.Attributes.RecordLabelValuePortEscaper));
@@ -73,7 +73,7 @@ namespace GiGraph.Dot.Entities.Types.Records
                 separator = " ";
             }
 
-            if (_text is {})
+            if (_text is { })
             {
                 result.Append(separator);
                 result.Append(_text.GetEscapedString(syntaxRules.Attributes.RecordLabelValueFieldEscaper));

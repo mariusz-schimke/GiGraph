@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Types.Viewport
         /// <summary>
         ///     Gets the identifier of a node whose center should be used as the focus.
         /// </summary>
-        public virtual string NodeId { get; }
+        public virtual string NodeId { get; set; }
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {

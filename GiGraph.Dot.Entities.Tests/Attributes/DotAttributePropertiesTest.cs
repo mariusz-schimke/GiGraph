@@ -63,7 +63,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         {
             try
             {
-                if (targetProperty.GetSetMethod(nonPublic: true) is {})
+                if (targetProperty.GetSetMethod(nonPublic: true) is { })
                 {
                     targetProperty.SetValue(target, null);
                 }
@@ -78,7 +78,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         {
             try
             {
-                if (targetProperty.GetGetMethod(nonPublic: true) is {})
+                if (targetProperty.GetGetMethod(nonPublic: true) is { })
                 {
                     targetProperty.GetValue(target);
                 }

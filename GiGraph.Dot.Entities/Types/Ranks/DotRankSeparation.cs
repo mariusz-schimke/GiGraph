@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Entities.Types.Ranks
 
             if (Equal)
             {
-                return result is {} ? $"{result} {equally}" : equally;
+                return result is { } ? $"{result} {equally}" : equally;
             }
 
             return result;

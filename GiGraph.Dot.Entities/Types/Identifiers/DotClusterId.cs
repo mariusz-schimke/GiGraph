@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Types.Identifiers
 
         public static implicit operator DotClusterId(string id)
         {
-            return id is {} ? new DotClusterId(id) : null;
+            return id is { } ? new DotClusterId(id) : null;
         }
     }
 }

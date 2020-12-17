@@ -38,12 +38,12 @@ namespace GiGraph.Dot.Entities.Types.Viewport
         /// <summary>
         ///     Gets the x coordinate of the center of the viewport.
         /// </summary>
-        public virtual double X { get; }
+        public virtual double X { get; set; }
 
         /// <summary>
         ///     Gets the y coordinate of the center of the viewport.
         /// </summary>
-        public virtual double Y { get; }
+        public virtual double Y { get; set; }
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {

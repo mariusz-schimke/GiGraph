@@ -34,18 +34,18 @@ namespace GiGraph.Dot.Entities.Types.Viewport
         /// <summary>
         ///     Gets the width of the final image, in points.
         /// </summary>
-        public virtual double Width { get; }
+        public virtual double Width { get; set; }
 
         /// <summary>
         ///     Gets the height of the final image, in points.
         /// </summary>
-        public virtual double Height { get; }
+        public virtual double Height { get; set; }
 
         /// <summary>
         ///     Gets the zoom factor. The image in the original layout will be <see cref="Width" /> / <see cref="Zoom" /> by
         ///     <see cref="Height" /> / <see cref="Zoom" /> points in size. By default, the zoom factor is 1.
         /// </summary>
-        public virtual double Zoom { get; }
+        public virtual double Zoom { get; set; }
 
         string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {

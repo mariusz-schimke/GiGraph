@@ -49,17 +49,17 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         // (e.g. graph.Edges.Add<DotClusterEndpoint, DotEndpoint>("cluster 1", "node1"))
         public static implicit operator DotClusterEndpoint(string clusterId)
         {
-            return clusterId is {} ? new DotClusterEndpoint(clusterId) : null;
+            return clusterId is { } ? new DotClusterEndpoint(clusterId) : null;
         }
 
         public static implicit operator DotClusterEndpoint(DotCluster cluster)
         {
-            return cluster is {} ? new DotClusterEndpoint(cluster.Id) : null;
+            return cluster is { } ? new DotClusterEndpoint(cluster.Id) : null;
         }
 
         public static implicit operator DotClusterEndpoint(DotClusterId clusterId)
         {
-            return clusterId is {} ? new DotClusterEndpoint(clusterId) : null;
+            return clusterId is { } ? new DotClusterEndpoint(clusterId) : null;
         }
     }
 }
