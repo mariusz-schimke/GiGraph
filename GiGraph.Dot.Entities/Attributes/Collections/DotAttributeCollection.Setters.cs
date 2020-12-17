@@ -695,6 +695,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
+        ///     Adds or replaces the specified font convention attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotFontConventionAttribute Set(string key, DotFontConvention value)
+        {
+            return Set(new DotFontConventionAttribute(key, value));
+        }
+
+        /// <summary>
         ///     Adds or replaces the specified attribute in the collection. The value is rendered AS IS in the output DOT script, so the
         ///     attribute can be used for any type of value, not only for strings. Make sure, however, that the value is escaped when
         ///     necessary, following the DOT syntax rules ( <see href="https://graphviz.org/doc/info/lang.html" />). If, for instance, it
