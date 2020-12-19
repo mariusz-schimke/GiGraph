@@ -28,7 +28,7 @@
 
 - Cluster may now be used as an endpoint also with the fdp layout engine (see https://github.com/$repository$/blob/$version$/README.md#clusters-as-endpoints).
 
-- It is possible now to specify ports for nodes in an endpoint group (see https://github.com/$repository$/blob/$version$/README.md#edge-groups).
+- It is possible now to specify ports for nodes in an endpoint group (see https://github.com/$repository$/blob/$version$/README.md#endpoint-groups).
 
 - Certain graph attributes have been grouped under the Layout and Canvas properties.
 

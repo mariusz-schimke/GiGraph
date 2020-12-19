@@ -49,7 +49,7 @@ For a complete documentation of the DOT language and visualization capabilities 
   * [Edges](#edges)
     + [Arrowhead shapes](#arrowhead-shapes)
     + [Multicolor and multiline edges](#multicolor-and-multiline-edges)
-    + [Edge groups](#edge-groups)
+    + [Endpoint groups](#endpoint-groups)
       - [Joining one node to multiple nodes](#joining-one-node-to-multiple-nodes)
       - [Joining multiple nodes to one node](#joining-multiple-nodes-to-one-node)
       - [Joining multiple nodes to multiple nodes](#joining-multiple-nodes-to-multiple-nodes)
@@ -941,11 +941,11 @@ digraph
 
 
 
-### Edge groups
+### Endpoint groups
 
-Edge groups join a single node to multiple nodes, multiple nodes to a single node, or multiple nodes to multiple nodes. The examples below present each of these use cases. An edge group may be understood as a simpler way to specify multiple edges with the assumption that all of them share one list of attributes. The other way is adding individual edges to an edge collection separately, with the head or tail node repeated multiple times.
+And edge joins two endpoints (nodes), however, in some cases you may want to join one endpoint to multiple endpoints or multiple endpoints to multiple endpoints. To achieve that, you may either specify multiple edges having the same node identifier as their head or tail endpoint, or simply use an endpoint group as the head and/or tail instead of a single node identifier. This single edge definition will actually render multiple edges. Note, however, that all these edges share one list of attributes, so when you set them, they will be applied to all these edges.
 
-There are two types that represent edge groups: *DotEndpointGroup* and *DotSubgraphEndpoint*. They may be used interchangeably, but the former enables specifying a port for any endpoint, which is not possible when *DotSubgraphEndpoint* is used.
+There are two types that represent endpoint groups: *DotEndpointGroup* and *DotSubgraphEndpoint*. They may be used interchangeably, but the former enables you to specify a port for any endpoint in the group, which is not possible when *DotSubgraphEndpoint* is used.
 
 
 
@@ -1232,7 +1232,7 @@ digraph
 
 
 
-A subgraph may also be used as a group of endpoints (for details refer to [edge groups](#edge-groups) and [edge sequences](#edge-sequences)).
+A subgraph may also be used as a group of endpoints (for details refer to [endpoint groups](#endpoint-groups) and [edge sequences](#edge-sequences)).
 
 
 
