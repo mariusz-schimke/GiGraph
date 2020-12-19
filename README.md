@@ -943,7 +943,7 @@ digraph
 
 ### Endpoint groups
 
-And edge joins two endpoints (nodes), however, in some cases you may want to join one endpoint to multiple endpoints or multiple endpoints to multiple endpoints. To achieve that, you may either specify multiple edges having the same node identifier as their head or tail endpoint, or simply use an endpoint group as the head and/or tail instead of a single node identifier. Such single edge definition actually renders multiple edges. Note, however, that all these edges share one list of attributes, so when you set them, they will be applied to all these edges.
+And edge joins two endpoints (nodes), however, in some cases you may want to join one endpoint to multiple endpoints or multiple endpoints to multiple endpoints. To achieve that, you may either specify multiple edges having the same node identifier as their head or tail endpoint, or simply use an endpoint group as the head and/or tail instead of a single node identifier. Such single edge definition actually renders multiple edges. Note, however, that the edge definition still has only one list of attributes, so when you set them, they will be applied to all edges rendered based on it.
 
 There are two types that represent endpoint groups: *DotEndpointGroup* and *DotSubgraphEndpoint*. They may be used interchangeably, but the former enables you to specify a port for any endpoint in the group, which is not possible when *DotSubgraphEndpoint* is used.
 
@@ -1091,14 +1091,14 @@ digraph
 </p>
 
 
-❕ Note that *DotEndpoint* is implicitly convertible from *string*.
+❕ Note that *DotEndpoint* is implicitly convertible from *string* for convenience.
 
 
 
 
 ### Edge sequences
 
-An edge sequence lets you join a sequence of consecutive nodes and/or node groups. Similarly to edge groups, a sequence may be understood as a simpler approach to specifying multiple edges at once, with a shared list of attributes. The other way is adding consecutive edges to an edge collection separately.
+An edge sequence lets you join endpoints and/or endpoint groups in such a way that they join one another consecutively. Similarly to [endpoint groups](#endpoint-groups), a sequence may be understood as a simpler way to specify multiple edges at once, without having to define them separately for each consecutive connection. The edges, however, share one list of attributes, so when you set them for the sequence, they will be applied to all edges rendered based on it.
 
 
 
@@ -1156,7 +1156,7 @@ digraph
 
 #### Sequence attributes
 
-Sequences support attributes too. You may set them either directly on the attribute collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection.
+Attributes for a sequence may be set either directly on its attribute collection, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection of an element.
 
 ```c#
 graph.Edges.AddSequence
@@ -1170,6 +1170,17 @@ graph.Edges.AddSequence
     new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
     new DotEndpoint("Quux", DotCompassPoint.North)
 );
+
+// the code above is equivalent to
+var edgeSequence = new DotEdgeSequence(
+    "Foo",
+    new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
+    new DotEndpoint("Quux", DotCompassPoint.North));
+
+// set attributes (they affect all edges in the sequence)
+edgeSequence.Attributes.Color = Color.Red;
+
+graph.Edges.Add(edgeSequence);
 ```
 
 ```dot
