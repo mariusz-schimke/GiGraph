@@ -22,7 +22,7 @@
     
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code, or online tools like viz-js.com or www.webgraphviz.com, where you paste a script to view its visualization.</description>
     
-    <releaseNotes>- Added support for attributes: layout, remincross, newrank, fontnames, viewport, bb (attribute specifications are available at http://www.graphviz.org/doc/info/attrs.html; to learn which properties specific DOT attributes are set by on the graph or on its elements, see the following text file: https://github.com/$repository$/blob/$version$/GiGraph.Dot.Entities.Tests/Attributes/__snapshots__/attribute_property_key_map.snap).
+    <releaseNotes>- Added support for attributes: layout, remincross, newrank, fontnames, viewport, bb (attribute specifications are available at http://www.graphviz.org/doc/info/attrs.html; to learn which properties specific attributes are set by on the graph or on its elements, see the following text file: https://github.com/$repository$/blob/$version$/GiGraph.Dot.Entities.Tests/Attributes/__snapshots__/attribute_property_key_map.snap).
 
 - The rank attribute may now be set globally (on the graph), and also on clusters (previously it could only be set on subgraphs).
 
