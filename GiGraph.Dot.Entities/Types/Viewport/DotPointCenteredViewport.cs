@@ -48,7 +48,7 @@ namespace GiGraph.Dot.Entities.Types.Viewport
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var whz = base.GetDotEncodedValue(options, syntaxRules);
-            var xy = string.Join(",", new[] { X, Y }.Select(v => v.ToString(CultureInfo.InvariantCulture)));
+            var xy = string.Join(",", new[] { X, Y }.Select(v => v.ToString(syntaxRules.Culture)));
             return $"{whz},{xy}";
         }
     }

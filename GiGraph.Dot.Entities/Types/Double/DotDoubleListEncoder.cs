@@ -1,5 +1,5 @@
-using System.Globalization;
 using System.Linq;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Double
 {
@@ -8,9 +8,9 @@ namespace GiGraph.Dot.Entities.Types.Double
     /// </summary>
     public class DotDoubleListEncoder
     {
-        public static string Convert(double[] values)
+        public static string Convert(double[] values, DotSyntaxRules syntaxRules)
         {
-            return string.Join(":", values.Select(v => v.ToString(CultureInfo.InvariantCulture)));
+            return string.Join(":", values.Select(v => v.ToString(syntaxRules.Culture)));
         }
     }
 }

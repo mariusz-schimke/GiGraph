@@ -56,7 +56,7 @@ namespace GiGraph.Dot.Entities.Types.Viewport
         {
             return string.Join(
                 ",",
-                new[] { Width, Height, Zoom }.Select(v => v.ToString(CultureInfo.InvariantCulture))
+                new[] { Width, Height, Zoom }.Select(v => v.ToString(syntaxRules.Culture))
             );
         }
     }

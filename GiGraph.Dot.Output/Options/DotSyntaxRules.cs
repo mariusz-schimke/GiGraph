@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using GiGraph.Dot.Output.TextEscaping;
 
@@ -37,6 +38,11 @@ namespace GiGraph.Dot.Output.Options
         ///     A text escaper to use for identifiers (only quotation marks and trailing backslashes are escaped by default).
         /// </summary>
         public virtual IDotTextEscaper IdentifierEscaper { get; set; } = DotTextEscapingPipeline.ForString();
+
+        /// <summary>
+        ///     The culture info to use for writing numbers, especially floating-point numbers.
+        /// </summary>
+        public virtual CultureInfo Culture { get; set; } = CultureInfo.InvariantCulture;
 
         /// <summary>
         ///     Attribute-related syntax rules.

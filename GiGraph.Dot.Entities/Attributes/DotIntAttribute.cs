@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return Value.ToString(CultureInfo.InvariantCulture);
+            return Value.ToString(syntaxRules.Culture);
         }
     }
 }

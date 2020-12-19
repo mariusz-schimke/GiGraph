@@ -96,7 +96,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         protected internal override string GetDotEncodedColor(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var color = base.GetDotEncodedColor(options, syntaxRules);
-            return $"{color};{Weight.ToString(CultureInfo.InvariantCulture)}";
+            return $"{color};{Weight.ToString(syntaxRules.Culture)}";
         }
     }
 }

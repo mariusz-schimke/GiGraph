@@ -135,7 +135,7 @@ namespace GiGraph.Dot.Entities.Types.Points
         protected internal virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var fix = true == IsFixed ? "!" : string.Empty;
-            return $"{string.Join(",", Coordinates.Select(c => c.ToString(CultureInfo.InvariantCulture)))}{fix}";
+            return $"{string.Join(",", Coordinates.Select(c => c.ToString(syntaxRules.Culture)))}{fix}";
         }
 
         public static implicit operator DotPoint(double? value)
