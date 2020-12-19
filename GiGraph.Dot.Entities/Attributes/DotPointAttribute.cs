@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Entities.Types.Points;
+﻿using GiGraph.Dot.Entities.Types.Geometry;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
