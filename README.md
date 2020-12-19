@@ -48,7 +48,7 @@ For a complete documentation of the DOT language and visualization capabilities 
     + [Node groups](#node-groups)
   * [Edges](#edges)
     + [Arrowhead shapes](#arrowhead-shapes)
-    + [Multicolor edges](#multicolor-edges)
+    + [Multicolor and multiline edges](#multicolor-and-multiline-edges)
     + [Edge groups](#edge-groups)
       - [Joining one node to multiple nodes](#joining-one-node-to-multiple-nodes)
       - [Joining multiple nodes to one node](#joining-multiple-nodes-to-one-node)
@@ -904,7 +904,7 @@ digraph
 </p>
 
 
-### Multicolor edges
+### Multicolor and multiline edges
 
 By default, an edge is visualized as a single spline in one color. There are two other variants available, however:
 
