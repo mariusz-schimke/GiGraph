@@ -28,6 +28,51 @@ For a complete documentation of the DOT language and visualization capabilities 
 
 
 
+# Table of contents
+
+- [Generating a graph](#generating-a-graph)
+- [Graph building blocks](#graph-building-blocks)
+  * [Graph](#graph)
+  * [Attributes](#attributes)
+    + [Global attributes](#global-attributes)
+    + [Label](#label)
+      - [Label formatting](#label-formatting)
+      - [Label justification](#label-justification)
+  * [Nodes](#nodes)
+    + [Record nodes](#record-nodes)
+      - [Sub-records](#sub-records)
+      - [Record builder](#record-builder)
+      - [Customizing edge placement](#customizing-edge-placement)
+    + [HTML nodes](#html-nodes)
+      - [Customizing edge placement](#customizing-edge-placement-1)
+    + [Node groups](#node-groups)
+  * [Edges](#edges)
+    + [Arrowhead shapes](#arrowhead-shapes)
+    + [Multicolor and multiline edges](#multicolor-and-multiline-edges)
+    + [Edge groups](#edge-groups)
+      - [Joining one node to multiple nodes](#joining-one-node-to-multiple-nodes)
+      - [Joining multiple nodes to one node](#joining-multiple-nodes-to-one-node)
+      - [Joining multiple nodes to multiple nodes](#joining-multiple-nodes-to-multiple-nodes)
+      - [Group attributes](#group-attributes)
+    + [Edge sequences](#edge-sequences)
+      - [A sequence of consecutive nodes](#a-sequence-of-consecutive-nodes)
+      - [A sequence of consecutive nodes and groups of nodes](#a-sequence-of-consecutive-nodes-and-groups-of-nodes)
+      - [Sequence attributes](#sequence-attributes)
+  * [Subgraphs](#subgraphs)
+  * [Clusters](#clusters)
+    + [Clusters as endpoints](#clusters-as-endpoints)
+- [Examples](#examples)
+  * [Customizing styles](#customizing-styles)
+  * [Grouping nodes visually](#grouping-nodes-visually)
+  * [Customizing node layout](#customizing-node-layout)
+- [Custom output script formatting](#custom-output-script-formatting)
+  * [Formatting preferences](#formatting-preferences)
+  * [Syntax preferences](#syntax-preferences)
+    + [Sorting elements](#sorting-elements)
+- [Script subsections](#script-subsections)
+- [Script annotation](#script-annotation)
+
+
 # Generating a graph
 
 For a basic case, create a new **DotGraph** instance, and use its *Edges* collection to define connections between nodes. In order to generate the output DOT script, call the ***Build*** extension method on the graph instance. And that's mostly it.
@@ -144,7 +189,7 @@ var graph = new DotGraph(strict: true);
 
 ## Attributes
 
-Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrow head shape and so on. When you don't specify attributes explicitly, their default values may depend on the graph layout engine you use for visualization (see [documentation](http://www.graphviz.org/doc/info/attrs.html)).
+Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrow head shape, and so on. When you don't specify attributes explicitly, their default values depend on the graph layout engine you use for visualization (see [documentation](http://www.graphviz.org/doc/info/attrs.html)).
 
 ```c#
 graph.Attributes.Label = "My graph";
@@ -169,7 +214,7 @@ graph.Edges.Add("Foo", "Bar", edge =>
 });
 ```
 
-There over 170 different DOT attributes listed in the DOT documentation, that may be set on a graph or on its elements. The library let's you set most of them conveniently by using properties on attribute collections available on the graph and on its elements. However, if there is no property available for a DOT attribute you would like to set, you may still provide a key and a value for it manually, as strings. Consider the following example:
+There over 170 different attributes listed in the Graphviz documentation, that may be set on a graph or on its elements. The library let's you set most of them conveniently by using properties on attribute collections available on the graph and on its elements. However, if there is no property available for an attribute you would like to set, you may still provide a key and a value for it manually, as strings. Consider the following example:
 
 ```c#
 node.Attributes.Collection.Set("fillcolor", "red:blue");
@@ -203,7 +248,7 @@ node.Attributes.Collection.Set(attribute);
 
 
 
-❕ Note that when you can't find a property for the DOT attribute you would like to set, you may use the attribute metadata dictionary on the graph or on any other element that has an attribute collection. The metadata includes, among others, a property path for a DOT attribute key:
+❕ Note, however, that when you can't find a property for the attribute you would like to set, you may use attribute metadata dictionary on the graph or on any other element that has an attribute collection. The metadata includes, among others, a property path for an attribute key:
 
 ```c#
 var dict = graph.Attributes.GetMetadataDictionary();
@@ -360,7 +405,7 @@ digraph "Label formatting"
 
 #### Label justification
 
-The DOT [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type also supports escape sequences that left- or right-justify individual lines of label text. Below is an example how to format text using them implicitly (by *DotTextFormatter*) or explicitly (by string concatenation).
+The Graphviz [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type also supports escape sequences that left- or right-justify individual lines of label text. Below is an example how to format text using them implicitly (by *DotTextFormatter*) or explicitly (by string concatenation).
 
 ```c#
 graph.Nodes.Add("Foo", attrs =>
@@ -438,7 +483,7 @@ digraph
 
 ### Record nodes
 
-The shape of a node is determined by the *Shape* attribute. By default it is an ellipse with a label, but you may change it to any other shape accepted by your DOT visualization tool. The standard shapes are available under the *DotNodeShape* enumeration, and two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use either of these as the *Shape* attribute, you may assign a record type label (*DotRecord*) to the node.
+The shape of a node is determined by the *Shape* attribute. By default it is an ellipse with a label, but you may change it to any other shape accepted by your visualization tool. The standard shapes are available under the *DotNodeShape* enumeration, and two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use either of these as the *Shape* attribute, you may assign a record type label (*DotRecord*) to the node.
 
 ```c#
 using GiGraph.Dot.Extensions; // ToRecordNode
@@ -859,7 +904,7 @@ digraph
 </p>
 
 
-### Multicolor edges
+### Multicolor and multiline edges
 
 By default, an edge is visualized as a single spline in one color. There are two other variants available, however:
 
@@ -904,7 +949,7 @@ There are two types that represent edge groups: *DotEndpointGroup* and *DotSubgr
 
 
 
-#### Joining one node with multiple nodes
+#### Joining one node to multiple nodes
 
 ```c#
 graph.Edges.AddOneToMany("Foo", "Bar", "Baz");
@@ -964,7 +1009,7 @@ digraph
 
 
 
-#### Joining multiple nodes with one node
+#### Joining multiple nodes to one node
 
 
 ```c#
@@ -991,7 +1036,7 @@ digraph
 
 
 
-#### Joining multiple nodes with multiple nodes
+#### Joining multiple nodes to multiple nodes
 
 
 ```c#
@@ -1761,7 +1806,7 @@ graph
 
 # Custom output script formatting
 
-The DOT generation engine supports setting custom preferences for generating the output. These include **syntax preferences** and **formatting preferences**.
+The DOT generation engine of the library supports setting custom preferences for generating the output. These include **syntax preferences** and **formatting preferences**.
 
 
 
@@ -1839,7 +1884,7 @@ digraph
 
 
 
-### Sorting elements of the DOT script
+### Sorting elements
 
 Using mentioned **DotSyntaxOptions** and its *SortElements* property you may enable sorting elements of the output script alphabetically. This comes in handy when the graph is built based on input elements the order of which changes each time you generate the graph. Sometimes you need to compare the output to its other versions, and in such cases you want to see only the actual differences, not the lines that only moved from one place of the file to another, without actually changing semantics. When you enable this setting, all attribute lists, the lists of edges, nodes, subgraphs, and clusters, will always be ordered alphabetically. This way you should get more consistent outputs on every build.
 
