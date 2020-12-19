@@ -50,9 +50,9 @@ For a complete documentation of the DOT language and visualization capabilities 
     + [Arrowhead shapes](#arrowhead-shapes)
     + [Multicolor edges](#multicolor-edges)
     + [Edge groups](#edge-groups)
-      - [Joining one node with multiple nodes](#joining-one-node-with-multiple-nodes)
-      - [Joining multiple nodes with one node](#joining-multiple-nodes-with-one-node)
-      - [Joining multiple nodes with multiple nodes](#joining-multiple-nodes-with-multiple-nodes)
+      - [Joining one node to multiple nodes](#joining-one-node-to-multiple-nodes)
+      - [Joining multiple nodes to one node](#joining-multiple-nodes-to-one-node)
+      - [Joining multiple nodes to multiple nodes](#joining-multiple-nodes-to-multiple-nodes)
       - [Group attributes](#group-attributes)
     + [Edge sequences](#edge-sequences)
       - [A sequence of consecutive nodes](#a-sequence-of-consecutive-nodes)
@@ -68,10 +68,9 @@ For a complete documentation of the DOT language and visualization capabilities 
 - [Custom output script formatting](#custom-output-script-formatting)
   * [Formatting preferences](#formatting-preferences)
   * [Syntax preferences](#syntax-preferences)
-    + [Sorting elements of the DOT script](#sorting-elements-of-the-dot-script)
+    + [Sorting elements](#sorting-elements)
 - [Script subsections](#script-subsections)
 - [Script annotation](#script-annotation)
-
 
 
 # Generating a graph
@@ -950,7 +949,7 @@ There are two types that represent edge groups: *DotEndpointGroup* and *DotSubgr
 
 
 
-#### Joining one node with multiple nodes
+#### Joining one node to multiple nodes
 
 ```c#
 graph.Edges.AddOneToMany("Foo", "Bar", "Baz");
@@ -1010,7 +1009,7 @@ digraph
 
 
 
-#### Joining multiple nodes with one node
+#### Joining multiple nodes to one node
 
 
 ```c#
@@ -1037,7 +1036,7 @@ digraph
 
 
 
-#### Joining multiple nodes with multiple nodes
+#### Joining multiple nodes to multiple nodes
 
 
 ```c#
@@ -1885,7 +1884,7 @@ digraph
 
 
 
-### Sorting elements of the DOT script
+### Sorting elements
 
 Using mentioned **DotSyntaxOptions** and its *SortElements* property you may enable sorting elements of the output script alphabetically. This comes in handy when the graph is built based on input elements the order of which changes each time you generate the graph. Sometimes you need to compare the output to its other versions, and in such cases you want to see only the actual differences, not the lines that only moved from one place of the file to another, without actually changing semantics. When you enable this setting, all attribute lists, the lists of edges, nodes, subgraphs, and clusters, will always be ordered alphabetically. This way you should get more consistent outputs on every build.
 
