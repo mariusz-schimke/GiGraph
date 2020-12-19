@@ -943,9 +943,9 @@ digraph
 
 ### Endpoint groups
 
-And edge joins two endpoints (nodes), however, in some cases you may want to join one endpoint to multiple endpoints or multiple endpoints to multiple endpoints. To achieve that, you may either specify multiple edges having the same node identifier as their head or tail endpoint, or simply use an endpoint group as the head and/or tail instead of a single node identifier. Such single edge definition actually renders multiple edges. Note, however, that the edge definition still has only one list of attributes, so when you set them, they will be applied to all edges rendered based on it.
+And edge joins two endpoints (nodes), however, in some cases you may want to join one endpoint to multiple endpoints or multiple endpoints to multiple endpoints. To achieve that, you may either specify multiple edges having the same node identifier as their head or tail endpoint, or simply use an endpoint group as the head and/or tail instead of a single node identifier. Such single edge definition actually renders multiple edges. Note, however, that it still has only one list of attributes, so when you set them, they will be applied to all edges rendered based on it.
 
-There are two types that represent endpoint groups: *DotEndpointGroup* and *DotSubgraphEndpoint*. They may be used interchangeably, but the former enables you to specify a port for any endpoint in the group, which is not possible when *DotSubgraphEndpoint* is used.
+There are two types that represent endpoint groups: *DotEndpointGroup* and *DotSubgraphEndpoint*. For basic purposes, they may be used interchangeably, but the former enables you to specify a port for any endpoint in the group, which is not possible when *DotSubgraphEndpoint* is used.
 
 
 
@@ -1015,7 +1015,7 @@ digraph
 ```c#
 graph.Edges.AddManyToOne("Baz", "Foo", "Bar");
 
-// the line above is equivalent to
+// the code above is equivalent to
 var edge = new DotEdge<DotSubgraphEndpoint, DotEndpoint>(
     new DotSubgraphEndpoint("Foo", "Bar"),
     new DotEndpoint("Baz"));
@@ -1044,7 +1044,7 @@ graph.Edges.AddManyToMany(
     new DotSubgraphEndpoint("Foo", "Bar"),
     new DotSubgraphEndpoint("Baz", "Qux"));
 
-// the line above is equivalent to
+// the code above is equivalent to
 var edge = new DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>(
     new DotSubgraphEndpoint("Foo", "Bar"),
     new DotSubgraphEndpoint("Baz", "Qux"));
@@ -1075,8 +1075,18 @@ graph.Edges.AddManyToMany(
     new DotSubgraphEndpoint("Baz", "Qux"),
     edge =>
     {
+        // set attributes (they affect all edges rendered based on this definition)
         edge.Attributes.Color = Color.Red;
     });
+
+// the code above is equivalent to
+var edge = new DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>(
+    new DotSubgraphEndpoint("Foo", "Bar"),
+    new DotSubgraphEndpoint("Baz", "Qux"));
+
+edge.Attributes.Color = Color.Red;
+
+graph.Edges.Add(edge);
 ```
 
 ```dot
@@ -1163,7 +1173,7 @@ graph.Edges.AddSequence
 (
     edge =>
     {
-        // set attributes (they affect all edges in the sequence)
+        // set attributes (they affect all edges of this sequence)
         edge.Attributes.Color = Color.Red;
     },
     "Foo",
@@ -1177,7 +1187,6 @@ var edgeSequence = new DotEdgeSequence(
     new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
     new DotEndpoint("Quux", DotCompassPoint.North));
 
-// set attributes (they affect all edges in the sequence)
 edgeSequence.Attributes.Color = Color.Red;
 
 graph.Edges.Add(edgeSequence);
