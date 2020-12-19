@@ -49,7 +49,7 @@ For a complete documentation of the DOT language and visualization capabilities 
   * [Edges](#edges)
     + [Arrowhead shapes](#arrowhead-shapes)
     + [Multicolor and multiline edges](#multicolor-and-multiline-edges)
-    + [Edge groups](#edge-groups)
+    + [Endpoint groups](#endpoint-groups)
       - [Joining one node to multiple nodes](#joining-one-node-to-multiple-nodes)
       - [Joining multiple nodes to one node](#joining-multiple-nodes-to-one-node)
       - [Joining multiple nodes to multiple nodes](#joining-multiple-nodes-to-multiple-nodes)
@@ -941,11 +941,11 @@ digraph
 
 
 
-### Edge groups
+### Endpoint groups
 
-Edge groups join a single node to multiple nodes, multiple nodes to a single node, or multiple nodes to multiple nodes. The examples below present each of these use cases. An edge group may be understood as a simpler way to specify multiple edges with the assumption that all of them share one list of attributes. The other way is adding individual edges to an edge collection separately, with the head or tail node repeated multiple times.
+And edge joins two endpoints (nodes), however, in some cases you may want to join one endpoint to multiple endpoints or multiple endpoints to multiple endpoints. To achieve that, you may either specify multiple edges having the same node identifier as their head or tail endpoint, or simply use an endpoint group as the head and/or tail instead of a single node identifier. Such single edge definition actually renders multiple edges. Note, however, that it still has only one list of attributes, so when you set them, they will be applied to all edges rendered based on it.
 
-There are two types that represent edge groups: *DotEndpointGroup* and *DotSubgraphEndpoint*. They may be used interchangeably, but the former enables specifying a port for any endpoint, which is not possible when *DotSubgraphEndpoint* is used.
+There are two types that represent endpoint groups: *DotEndpointGroup* and *DotSubgraphEndpoint*. For basic purposes, they may be used interchangeably, but the former enables you to specify a port for any endpoint in the group, which is not possible when *DotSubgraphEndpoint* is used.
 
 
 
@@ -955,11 +955,11 @@ There are two types that represent edge groups: *DotEndpointGroup* and *DotSubgr
 graph.Edges.AddOneToMany("Foo", "Bar", "Baz");
 
 // the code above is equivalent to
-var edgeGroup = new DotEdge<DotEndpoint, DotSubgraphEndpoint>(
+var edge = new DotEdge<DotEndpoint, DotSubgraphEndpoint>(
     new DotEndpoint("Foo"),
     new DotSubgraphEndpoint("Bar", "Baz"));
 
-graph.Edges.Add(edgeGroup);
+graph.Edges.Add(edge);
 ```
 
 ```dot
@@ -986,14 +986,14 @@ graph.Edges.Add(
     ));
 
 // the code above is equivalent to
-var edgeGroup = new DotEdge<DotEndpoint, DotEndpointGroup>(
+var edge = new DotEdge<DotEndpoint, DotEndpointGroup>(
     "Foo", // converted implicitly to DotEndpoint
     new DotEndpointGroup(
         new DotEndpoint("Bar", DotCompassPoint.NorthWest),
         new DotEndpoint("Baz", DotCompassPoint.NorthEast)
     ));
 
-graph.Edges.Add(edgeGroup);
+graph.Edges.Add(edge);
 ```
 
 ```dot
@@ -1015,12 +1015,12 @@ digraph
 ```c#
 graph.Edges.AddManyToOne("Baz", "Foo", "Bar");
 
-// the line above is equivalent to
-var edgeGroup = new DotEdge<DotSubgraphEndpoint, DotEndpoint>(
+// the code above is equivalent to
+var edge = new DotEdge<DotSubgraphEndpoint, DotEndpoint>(
     new DotSubgraphEndpoint("Foo", "Bar"),
     new DotEndpoint("Baz"));
 
-graph.Edges.Add(edgeGroup);
+graph.Edges.Add(edge);
 ```
 
 ```dot
@@ -1044,12 +1044,12 @@ graph.Edges.AddManyToMany(
     new DotSubgraphEndpoint("Foo", "Bar"),
     new DotSubgraphEndpoint("Baz", "Qux"));
 
-// the line above is equivalent to
-var edgeGroup = new DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>(
+// the code above is equivalent to
+var edge = new DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>(
     new DotSubgraphEndpoint("Foo", "Bar"),
     new DotSubgraphEndpoint("Baz", "Qux"));
 
-graph.Edges.Add(edgeGroup);
+graph.Edges.Add(edge);
 ```
 
 ```dot
@@ -1067,7 +1067,7 @@ digraph
 
 #### Group attributes
 
-Each group used in the above examples supports attributes. You may set them either directly on a group instance, or by using a lambda expression passed by an argument of the *AddOneToMany*, *AddManyToOne*, *AddManyToMany* methods on the *Edges* collection.
+Attributes for an edge definition may be set either directly on its attribute collection, or by using a lambda expression passed by an argument of the *AddOneToMany*, *AddManyToOne*, *AddManyToMany* methods on an *Edges* collection.
 
 ```c#
 graph.Edges.AddManyToMany(
@@ -1075,8 +1075,18 @@ graph.Edges.AddManyToMany(
     new DotSubgraphEndpoint("Baz", "Qux"),
     edge =>
     {
+        // set attributes (they affect all edges rendered based on this definition)
         edge.Attributes.Color = Color.Red;
     });
+
+// the code above is equivalent to
+var edge = new DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>(
+    new DotSubgraphEndpoint("Foo", "Bar"),
+    new DotSubgraphEndpoint("Baz", "Qux"));
+
+edge.Attributes.Color = Color.Red;
+
+graph.Edges.Add(edge);
 ```
 
 ```dot
@@ -1091,14 +1101,14 @@ digraph
 </p>
 
 
-❕ Note that *DotEndpoint* is implicitly convertible from *string*.
+❕ Note that *DotEndpoint* is implicitly convertible from *string* (for convenience).
 
 
 
 
 ### Edge sequences
 
-An edge sequence lets you join a sequence of consecutive nodes and/or node groups. Similarly to edge groups, a sequence may be understood as a simpler approach to specifying multiple edges at once, with a shared list of attributes. The other way is adding consecutive edges to an edge collection separately.
+An edge sequence represented by the *DotEdgeSequence* class lets you define endpoints and/or endpoint groups in such a way that they join one another consecutively. This approach may be used as a simpler way to define a sequence of edges all at once, without having to specify a separate edge for each connection between consecutive endpoints or endpoint groups. An edge sequence, however, has one list of attributes, so when you set them for the sequence, they will be applied to all edges rendered based on it.
 
 
 
@@ -1156,20 +1166,30 @@ digraph
 
 #### Sequence attributes
 
-Sequences support attributes too. You may set them either directly on the attribute collection of a sequence instance, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection.
+Attributes for a sequence may be set either directly on its attribute collection, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection of an element.
 
 ```c#
 graph.Edges.AddSequence
 (
     edge =>
     {
-        // set attributes (they affect all edges in the sequence)
+        // set attributes (they affect all edges of this sequence)
         edge.Attributes.Color = Color.Red;
     },
     "Foo",
     new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
     new DotEndpoint("Quux", DotCompassPoint.North)
 );
+
+// the code above is equivalent to
+var edgeSequence = new DotEdgeSequence(
+    "Foo",
+    new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
+    new DotEndpoint("Quux", DotCompassPoint.North));
+
+edgeSequence.Attributes.Color = Color.Red;
+
+graph.Edges.Add(edgeSequence);
 ```
 
 ```dot
@@ -1232,7 +1252,7 @@ digraph
 
 
 
-A subgraph may also be used as a group of endpoints (for details refer to [edge groups](#edge-groups) and [edge sequences](#edge-sequences)).
+A subgraph may also be used as a group of endpoints (for details refer to [endpoint groups](#endpoint-groups) and [edge sequences](#edge-sequences)).
 
 
 
