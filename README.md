@@ -28,6 +28,52 @@ For a complete documentation of the DOT language and visualization capabilities 
 
 
 
+# Table of contents
+
+- [Generating a graph](#generating-a-graph)
+- [Graph building blocks](#graph-building-blocks)
+  * [Graph](#graph)
+  * [Attributes](#attributes)
+    + [Global attributes](#global-attributes)
+    + [Label](#label)
+      - [Label formatting](#label-formatting)
+      - [Label justification](#label-justification)
+  * [Nodes](#nodes)
+    + [Record nodes](#record-nodes)
+      - [Sub-records](#sub-records)
+      - [Record builder](#record-builder)
+      - [Customizing edge placement](#customizing-edge-placement)
+    + [HTML nodes](#html-nodes)
+      - [Customizing edge placement](#customizing-edge-placement-1)
+    + [Node groups](#node-groups)
+  * [Edges](#edges)
+    + [Arrowhead shapes](#arrowhead-shapes)
+    + [Multicolor edges](#multicolor-edges)
+    + [Edge groups](#edge-groups)
+      - [Joining one node with multiple nodes](#joining-one-node-with-multiple-nodes)
+      - [Joining multiple nodes with one node](#joining-multiple-nodes-with-one-node)
+      - [Joining multiple nodes with multiple nodes](#joining-multiple-nodes-with-multiple-nodes)
+      - [Group attributes](#group-attributes)
+    + [Edge sequences](#edge-sequences)
+      - [A sequence of consecutive nodes](#a-sequence-of-consecutive-nodes)
+      - [A sequence of consecutive nodes and groups of nodes](#a-sequence-of-consecutive-nodes-and-groups-of-nodes)
+      - [Sequence attributes](#sequence-attributes)
+  * [Subgraphs](#subgraphs)
+  * [Clusters](#clusters)
+    + [Clusters as endpoints](#clusters-as-endpoints)
+- [Examples](#examples)
+  * [Customizing styles](#customizing-styles)
+  * [Grouping nodes visually](#grouping-nodes-visually)
+  * [Customizing node layout](#customizing-node-layout)
+- [Custom output script formatting](#custom-output-script-formatting)
+  * [Formatting preferences](#formatting-preferences)
+  * [Syntax preferences](#syntax-preferences)
+    + [Sorting elements of the DOT script](#sorting-elements-of-the-dot-script)
+- [Script subsections](#script-subsections)
+- [Script annotation](#script-annotation)
+
+
+
 # Generating a graph
 
 For a basic case, create a new **DotGraph** instance, and use its *Edges* collection to define connections between nodes. In order to generate the output DOT script, call the ***Build*** extension method on the graph instance. And that's mostly it.
