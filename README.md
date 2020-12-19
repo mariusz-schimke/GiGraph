@@ -65,7 +65,7 @@ For a complete documentation of the DOT language and visualization capabilities 
   * [Customizing styles](#customizing-styles)
   * [Grouping nodes visually](#grouping-nodes-visually)
   * [Customizing node layout](#customizing-node-layout)
-- [Custom output script formatting](#custom-output-script-formatting)
+- [Script preferences](#script-preferences)
   * [Formatting preferences](#formatting-preferences)
   * [Syntax preferences](#syntax-preferences)
     + [Sorting elements](#sorting-elements)
@@ -1804,7 +1804,7 @@ graph
 
 
 
-# Custom output script formatting
+# Script preferences
 
 The DOT generation engine of the library supports setting custom preferences for generating the output. These include **syntax preferences** and **formatting preferences**.
 
