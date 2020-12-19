@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         {
             var enumMember = typeof(TEnum).GetMember(value.ToString()).FirstOrDefault();
 
-            if (enumMember?.GetCustomAttribute<DotAttributeValueAttribute>() is {} attribute)
+            if (enumMember?.GetCustomAttribute<DotAttributeValueAttribute>() is { } attribute)
             {
                 dotValue = attribute.Value;
                 return true;
@@ -73,9 +73,9 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         {
             var match = typeof(TEnum)
                .GetFields(FieldBindingFlags)
-               .FirstOrDefault(field => field.GetCustomAttribute<DotAttributeValueAttribute>()?.Value is {} fieldDotValue && fieldDotValue == dotValue);
+               .FirstOrDefault(field => field.GetCustomAttribute<DotAttributeValueAttribute>()?.Value is { } fieldDotValue && fieldDotValue == dotValue);
 
-            if (match is {})
+            if (match is { })
             {
                 value = (TEnum) match.GetValue(null);
                 return true;
@@ -118,8 +118,8 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
                     Attribute = field.GetCustomAttribute<DotAttributeValueAttribute>(),
                     Field = field
                 })
-               .Where(result => result.Attribute is {})
-               .Where(result => result.Attribute.Value is {})
+               .Where(result => result.Attribute is { })
+               .Where(result => result.Attribute.Value is { })
                .ToDictionary(
                     key => key.Attribute.Value,
                     element => (TEnum) element.Field.GetValue(null)

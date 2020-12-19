@@ -2,8 +2,8 @@
 using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Geometry;
 using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
 using GiGraph.Dot.Entities.Types.Styles;
 
@@ -47,21 +47,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         DotLabel Label { get; set; }
 
         /// <summary>
-        ///     Justification for the label. Note that a cluster inherits attributes from its parent. Thus, if the root graph sets this
-        ///     attribute to <see cref="DotHorizontalAlignment.Left" />, the cluster inherits this value. Default:
-        ///     <see cref="DotHorizontalAlignment.Center" />.
-        /// </summary>
-        DotHorizontalAlignment? HorizontalLabelAlignment { get; set; }
-
-        /// <summary>
-        ///     Vertical placement of the label (default: <see cref="DotVerticalAlignment.Top" />; only
-        ///     <see cref="DotVerticalAlignment.Top" /> and <see cref="DotVerticalAlignment.Bottom" /> are allowed). Note that a cluster
-        ///     inherits attributes from its parent. Thus, if the root graph sets this attribute to
-        ///     <see cref="DotVerticalAlignment.Bottom" />, the cluster inherits this value.
-        /// </summary>
-        DotVerticalAlignment? VerticalLabelAlignment { get; set; }
-
-        /// <summary>
         ///     Tooltip annotation attached to the cluster (svg, cmap only). If unset, Graphviz will use the <see cref="Label" /> attribute
         ///     if defined.
         /// </summary>
@@ -76,8 +61,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     <para>
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
         ///         the <see cref="DotClusterFillStyle.Radial" /> fill style to the cluster will cause a radial fill. If the second color is
-        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
-        ///         attribute for setting a gradient angle.
+        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
+        ///         <see cref="GradientFillAngle" /> attribute for setting a gradient angle.
         ///     </para>
         /// </summary>
         DotColorDefinition BackgroundColor { get; set; }
@@ -97,7 +82,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///     radially from the center; for non-zero values, the colors transform from a point near the object's periphery as specified by
         ///     the value. If unset, the default angle is 0.
         /// </summary>
-        int? GradientAngle { get; set; }
+        int? GradientFillAngle { get; set; }
 
         /// <summary>
         ///     Sets the number of peripheries used in cluster boundaries (default: 1, minimum: 0, maximum: 1). Setting peripheries to 0 will
@@ -111,8 +96,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         DotPoint Padding { get; set; }
 
         /// <summary>
-        ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="DotGraphAttributes.PackingMode" /> indicates an
-        ///     array packing, this attribute specifies an insertion order among the components, with smaller values inserted first.
+        ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="DotGraphLayoutAttributes.PackingMode" /> indicates
+        ///     an array packing, this attribute specifies an insertion order among the components, with smaller values inserted first.
         /// </summary>
         int? SortIndex { get; set; }
 
@@ -135,6 +120,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         ///         internally-used attributes distinct, the user can include multiple image maps in the same document.
         ///     </para>
         /// </summary>
-        DotEscapeString Id { get; set; }
+        DotEscapeString ObjectId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the rank constraints on the nodes in the cluster (dot only).
+        /// </summary>
+        DotRank? NodeRank { get; set; }
     }
 }

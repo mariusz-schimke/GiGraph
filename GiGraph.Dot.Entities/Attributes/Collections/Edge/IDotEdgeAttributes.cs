@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     <para>
         ///         These labels are added after all nodes and edges have been placed. The labels will be placed so that they do not overlap
         ///         any node or label. This means it may not be possible to place all of them. To force placing all of them, use the
-        ///         <see cref="DotGraphAttributes.ForceExternalLabels" /> attribute on the graph.
+        ///         <see cref="DotGraphLayoutAttributes.ForceExternalLabels" /> attribute on the graph.
         ///     </para>
         /// </summary>
         DotLabel ExternalLabel { set; get; }
@@ -196,6 +196,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///         internally-used attributes distinct, the user can include multiple image maps in the same document.
         ///     </para>
         /// </summary>
-        DotEscapeString Id { get; set; }
+        DotEscapeString ObjectId { get; set; }
     }
 }

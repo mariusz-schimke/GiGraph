@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
 
         protected DotUnescapedString(string value)
         {
-            _value = value ?? throw new ArgumentNullException(nameof(value), "Value cannot be null.");
+            _value = value ?? throw new ArgumentNullException(nameof(value), "Value must not be null.");
         }
 
         protected internal override string GetRawString()
@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
 
         public static implicit operator DotUnescapedString(string value)
         {
-            return value is {} ? new DotUnescapedString(value) : null;
+            return value is { } ? new DotUnescapedString(value) : null;
         }
     }
 }

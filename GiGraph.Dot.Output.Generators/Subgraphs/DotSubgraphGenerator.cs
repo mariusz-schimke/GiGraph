@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Output.Generators.Subgraphs
 
         protected override void WriteDeclaration(string id, IDotSubgraphWriter writer)
         {
-            id = EscapeIdentifier(id);
+            id = EncodeIdentifier(id);
             writer.WriteSubgraphDeclaration(id, IdentifierRequiresQuoting(id));
         }
     }

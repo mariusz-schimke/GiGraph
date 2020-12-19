@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
         /// </param>
         public DotTextLabel(DotEscapeString text)
         {
-            _text = text ?? throw new ArgumentNullException(nameof(text), "Text cannot be null.");
+            _text = text ?? throw new ArgumentNullException(nameof(text), "Text must not be null.");
         }
 
         /// <summary>
@@ -47,12 +47,12 @@ namespace GiGraph.Dot.Entities.Types.Labels
 
         public static implicit operator DotTextLabel(string text)
         {
-            return text is {} ? new DotTextLabel(text) : null;
+            return text is { } ? new DotTextLabel(text) : null;
         }
 
         public static implicit operator DotTextLabel(DotEscapeString text)
         {
-            return text is {} ? new DotTextLabel(text) : null;
+            return text is { } ? new DotTextLabel(text) : null;
         }
 
         public static implicit operator string(DotTextLabel label)

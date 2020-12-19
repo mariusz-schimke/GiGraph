@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
-    public class DotGraphStyleAttributes : DotEntityStyleAttributes
+    public class DotGraphStyleAttributes : DotStyleAttributes
     {
         public DotGraphStyleAttributes(DotAttributeCollection attributes)
             : base(attributes)
@@ -45,12 +45,12 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// <summary>
         ///     Copies style properties from the specified instance.
         /// </summary>
-        /// <param name="source">
+        /// <param name="attributes">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void CopyFrom(DotGraphStyleAttributes source)
+        public virtual void CopyFrom(DotGraphStyleAttributes attributes)
         {
-            Set(source.FillStyle);
+            Set(attributes.FillStyle);
         }
     }
 }

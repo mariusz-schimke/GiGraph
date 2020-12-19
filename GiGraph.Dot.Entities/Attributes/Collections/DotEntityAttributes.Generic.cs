@@ -63,7 +63,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        public virtual DotCustomAttribute SetCustom<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
+        public virtual DotCustomAttribute SetCustomValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
         {
             var key = GetKey(property);
             return _attributes.SetCustom(key, value);

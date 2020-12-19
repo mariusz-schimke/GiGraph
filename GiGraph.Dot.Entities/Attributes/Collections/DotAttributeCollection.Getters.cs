@@ -6,8 +6,9 @@ using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Geometry;
+using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
@@ -126,7 +127,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual bool GetValueAs<T>(string key, out T value, params Func<object, (bool IsValid, T Result)>[] converters)
         {
-            if (!TryGetValue(key, out var attribute) || !(attribute.GetValue() is {} attributeValue))
+            if (!TryGetValue(key, out var attribute) || !(attribute.GetValue() is { } attributeValue))
             {
                 value = default;
                 return false;
@@ -167,7 +168,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="double" />. If
-        ///     the attribute is found, but its value cannot be cast nor converted to the specified type, an exception is thrown.
+        ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
         /// </summary>
         public virtual double? GetValueAsDouble(string key)
         {
@@ -183,7 +184,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="bool" />. If the
-        ///     attribute is found, but its value cannot be cast nor converted to the specified type, an exception is thrown.
+        ///     attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
         /// </summary>
         public virtual bool? GetValueAsBool(string key)
         {
@@ -192,7 +193,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotPoint" />. If
-        ///     the attribute is found, but its value cannot be cast nor converted to the specified type, an exception is thrown.
+        ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
         /// </summary>
         public virtual DotPoint GetValueAsPoint(string key)
         {
@@ -201,7 +202,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotColor" />. If
-        ///     the attribute is found, but its value cannot be cast nor converted to the specified type, an exception is thrown.
+        ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
         /// </summary>
         public virtual DotColor GetValueAsColor(string key)
         {
@@ -217,7 +218,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Checks if an attribute with the specified key exists in the collection, and returns its value as
-        ///     <see cref="DotColorDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the specified
+        ///     <see cref="DotColorDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the returned
         ///     type, an exception is thrown.
         /// </summary>
         public virtual DotColorDefinition GetValueAsColorDefinition(string key)
@@ -234,7 +235,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="string" />. If
-        ///     the attribute is found, but its value cannot be cast nor converted to the specified type, an exception is thrown.
+        ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
         /// </summary>
         public virtual string GetValueAsString(string key)
         {
@@ -243,7 +244,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Checks if an attribute with the specified key exists in the collection, and returns its value as
-        ///     <see cref="DotEscapeString" />. If the attribute is found, but its value cannot be cast nor converted to the specified type,
+        ///     <see cref="DotEscapeString" />. If the attribute is found, but its value cannot be cast nor converted to the returned type,
         ///     an exception is thrown.
         /// </summary>
         public virtual DotEscapeString GetValueAsEscapeString(string key)
@@ -260,7 +261,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotLabel" />. If
-        ///     the attribute is found, but its value cannot be cast nor converted to the specified type, an exception is thrown.
+        ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
         /// </summary>
         public virtual DotLabel GetValueAsLabel(string key)
         {
@@ -277,7 +278,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Checks if an attribute with the specified key exists in the collection, and returns its value as
-        ///     <see cref="DotArrowheadDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the specified
+        ///     <see cref="DotArrowheadDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the returned
         ///     type, an exception is thrown.
         /// </summary>
         public virtual DotArrowheadDefinition GetValueAsArrowheadDefinition(string key)
@@ -294,7 +295,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
         /// <summary>
         ///     Checks if an attribute with the specified key exists in the collection, and returns its value as
-        ///     <see cref="DotEndpointPort" />. If the attribute is found, but its value cannot be cast nor converted to the specified type,
+        ///     <see cref="DotEndpointPort" />. If the attribute is found, but its value cannot be cast nor converted to the returned type,
         ///     an exception is thrown.
         /// </summary>
         public virtual DotEndpointPort GetValueAsEndpointPort(string key)
@@ -305,6 +306,38 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 out var value,
                 v => v is DotCompassPoint cp ? (true, new DotEndpointPort(cp)) : (false, default),
                 v => v is string s ? (true, new DotEndpointPort(s)) : (false, default)
+            )
+                ? value
+                : null;
+        }
+
+        /// <summary>
+        ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotId" />. If the
+        ///     attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
+        /// </summary>
+        public virtual DotId GetValueAsId(string key)
+        {
+            return GetValueAs
+            (
+                key,
+                out var value,
+                v => v is string s ? (true, new DotId(s)) : (false, default)
+            )
+                ? value
+                : null;
+        }
+
+        /// <summary>
+        ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotClusterId" />.
+        ///     If the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
+        /// </summary>
+        public virtual DotClusterId GetValueAsClusterId(string key)
+        {
+            return GetValueAs
+            (
+                key,
+                out var value,
+                v => v is string s ? (true, new DotClusterId(s)) : (false, default)
             )
                 ? value
                 : null;

@@ -8,17 +8,17 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <summary>
         ///     Uses the default color scheme for the associated color if a color scheme attribute has been set for the current element.
         /// </summary>
-        public static string Default => "/";
+        public const string Default = "/";
 
         /// <summary>
         ///     The X11 color scheme (<see href="http://www.graphviz.org/doc/info/colors.html#x11" />).
         /// </summary>
-        public static string X11 => "x11";
+        public const string X11 = "x11";
 
         /// <summary>
         ///     The SVG color scheme (<see href="http://www.graphviz.org/doc/info/colors.html#svg" />).
         /// </summary>
-        public static string Svg => "svg";
+        public const string Svg = "svg";
 
         /// <summary>
         ///     The Brewer color schemes (<see href="http://www.graphviz.org/doc/info/colors.html#brewer" />).

@@ -176,12 +176,12 @@ namespace GiGraph.Dot.Output.Writers
             return Token("//", DotTokenType.CommentStart, linger);
         }
 
-        public virtual DotTokenWriter LineDiscardOperator(bool linger = false)
+        public virtual DotTokenWriter DiscardedLineStart(bool linger = false)
         {
             // based on https://graphviz.org/doc/info/lang.html
             // The language supports C++-style comments: /* */ and //. In addition, a line beginning with a '#' character
             // is considered a line output from a C preprocessor (e.g., # 34 to indicate line 34 ) and discarded
-            return Token("#", DotTokenType.LineDiscardOperator, linger);
+            return Token("#", DotTokenType.DiscardedLineStart, linger);
         }
 
         public virtual DotTokenWriter BlockCommentStart(bool linger = false)
@@ -207,7 +207,15 @@ namespace GiGraph.Dot.Output.Writers
         {
             for (var i = 0; i < commentLines.Length; i++)
             {
-                CommentStart(linger);
+                if (Options.HashForSingleLineComments)
+                {
+                    DiscardedLineStart(linger);
+                }
+                else
+                {
+                    CommentStart(linger);
+                }
+
                 Space(linger);
 
                 Append(commentLines[i], DotTokenType.CommentText, linger);
@@ -307,7 +315,7 @@ namespace GiGraph.Dot.Output.Writers
 
         protected virtual void Write(string token, DotTokenType type)
         {
-            if (Options.TextEncoder is {} encode)
+            if (Options.TextEncoder is { } encode)
             {
                 token = encode(token, type);
             }

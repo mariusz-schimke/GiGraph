@@ -1,8 +1,9 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Common;
+using GiGraph.Dot.Entities.Attributes.Enums;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
-    public interface IDotGraphFontAttributes : IDotEntityFontAttributes
+    public interface IDotGraphFontAttributes : IDotFontAttributes
     {
         /// <summary>
         ///     Gets or sets the directory list used by libgd to search for bitmap fonts if Graphviz was not built with the fontconfig
@@ -10,5 +11,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     GDFONTPATH is checked. If not set, libgd uses its compiled-in font path. The default path is system dependent.
         /// </summary>
         string Directories { get; set; }
+
+        /// <summary>
+        ///     Allows user control of how basic font names are represented in SVG output (svg only; default:
+        ///     <see cref="DotFontConvention.Svg" />).
+        /// </summary>
+        DotFontConvention? Convention { get; set; }
     }
 }

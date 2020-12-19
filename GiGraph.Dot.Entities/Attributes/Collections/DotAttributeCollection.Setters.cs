@@ -6,12 +6,14 @@ using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Geometry;
+using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Packing;
-using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Viewport;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
@@ -411,7 +413,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
-        ///     Adds or replaces the specified rank constraint attribute in the collection.
+        ///     Adds or replaces the specified rank constraints attribute in the collection.
         /// </summary>
         /// <param name="key">
         ///     The key of the attribute to include in the collection.
@@ -552,6 +554,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
+        ///     Adds or replaces the specified rectangle attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotRectangleAttribute Set(string key, DotRectangle value)
+        {
+            return Set(new DotRectangleAttribute(key, value));
+        }
+
+        /// <summary>
         ///     Adds or replaces the specified aspect ratio attribute in the collection.
         /// </summary>
         /// <param name="key">
@@ -651,6 +667,62 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
+        ///     Adds or replaces the specified element identifier attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotIdAttribute Set(string key, DotId value)
+        {
+            return Set(new DotIdAttribute(key, value));
+        }
+
+        /// <summary>
+        ///     Adds or replaces the specified cluster identifier attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotIdAttribute Set(string key, DotClusterId value)
+        {
+            return Set(new DotIdAttribute(key, value));
+        }
+
+        /// <summary>
+        ///     Adds or replaces the specified viewport attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotViewportAttribute Set(string key, DotViewport value)
+        {
+            return Set(new DotViewportAttribute(key, value));
+        }
+
+        /// <summary>
+        ///     Adds or replaces the specified font convention attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotFontConventionAttribute Set(string key, DotFontConvention value)
+        {
+            return Set(new DotFontConventionAttribute(key, value));
+        }
+
+        /// <summary>
         ///     Adds or replaces the specified attribute in the collection. The value is rendered AS IS in the output DOT script, so the
         ///     attribute can be used for any type of value, not only for strings. Make sure, however, that the value is escaped when
         ///     necessary, following the DOT syntax rules ( <see href="https://graphviz.org/doc/info/lang.html" />). If, for instance, it
@@ -665,34 +737,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotCustomAttribute SetCustom(string key, string value)
         {
             return Set(new DotCustomAttribute(key, value));
-        }
-
-        /// <summary>
-        ///     Adds or replaces the specified attribute in the collection.
-        /// </summary>
-        /// <param name="key">
-        ///     The key of the attribute to include in the collection.
-        /// </param>
-        /// <param name="value">
-        ///     The value of the attribute to include in the collection.
-        /// </param>
-        public virtual DotClusterIdAttribute SetClusterId(string key, string value)
-        {
-            return Set(new DotClusterIdAttribute(key, value));
-        }
-
-        /// <summary>
-        ///     Adds or replaces the specified attribute in the collection.
-        /// </summary>
-        /// <param name="key">
-        ///     The key of the attribute to include in the collection.
-        /// </param>
-        /// <param name="value">
-        ///     The value of the attribute to include in the collection.
-        /// </param>
-        public virtual DotNodeIdAttribute SetNodeId(string key, string value)
-        {
-            return Set(new DotNodeIdAttribute(key, value));
         }
     }
 }

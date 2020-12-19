@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 
@@ -17,19 +16,20 @@ namespace GiGraph.Dot.Entities.Edges
     ///         <item>
     ///             <description>
     ///                 a group of edges that join one <typeparamref name="TTail" /> <see cref="DotEndpoint" /> node to multiple
-    ///                 <typeparamref name="THead" /> <see cref="DotEndpointGroup" /> nodes,
+    ///                 <typeparamref name="THead" /> <see cref="DotSubgraphEndpoint" /> or <see cref="DotEndpointGroup" /> nodes,
     ///             </description>
     ///         </item>
     ///         <item>
     ///             <description>
-    ///                 a group of edges that join multiple <typeparamref name="TTail" /> <see cref="DotEndpointGroup" /> nodes to one
-    ///                 <typeparamref name="THead" /> <see cref="DotEndpoint" /> node,
+    ///                 a group of edges that join multiple <typeparamref name="TTail" /> <see cref="DotSubgraphEndpoint" /> or
+    ///                 <see cref="DotEndpointGroup" /> nodes to one <typeparamref name="THead" /> <see cref="DotEndpoint" /> node,
     ///             </description>
     ///         </item>
     ///         <item>
     ///             <description>
-    ///                 a group of edges that join multiple <typeparamref name="TTail" /> <see cref="DotEndpointGroup" /> nodes to
-    ///                 multiple <typeparamref name="THead" /> <see cref="DotEndpointGroup" /> nodes.
+    ///                 a group of edges that join multiple <typeparamref name="TTail" /> <see cref="DotSubgraphEndpoint" /> or
+    ///                 <see cref="DotEndpointGroup" /> nodes to multiple <typeparamref name="THead" />
+    ///                 <see cref="DotSubgraphEndpoint" /> or <see cref="DotEndpointGroup" /> nodes.
     ///             </description>
     ///         </item>
     ///     </list>
@@ -47,18 +47,18 @@ namespace GiGraph.Dot.Entities.Edges
         protected DotEdge(TTail tail, THead head, DotEdgeAttributes attributes)
             : base(attributes)
         {
-            Tail = tail ?? throw new ArgumentNullException(nameof(tail), "Edge tail cannot be null.");
-            Head = head ?? throw new ArgumentNullException(nameof(head), "Edge head cannot be null.");
+            Tail = tail ?? throw new ArgumentNullException(nameof(tail), "Edge tail must not be null.");
+            Head = head ?? throw new ArgumentNullException(nameof(head), "Edge head must not be null.");
         }
 
         /// <summary>
         ///     Creates a new edge instance.
         /// </summary>
         /// <param name="tail">
-        ///     The tail (source, left) endpoint.
+        ///     The tail endpoint.
         /// </param>
         /// <param name="head">
-        ///     The head (destination, right) endpoint.
+        ///     The head endpoint.
         /// </param>
         public DotEdge(TTail tail, THead head)
             : this(tail, head, new DotEdgeAttributes())
@@ -66,19 +66,19 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        ///     Gets or sets the tail (source, left) endpoint.
+        ///     Gets or sets the tail endpoint.
         /// </summary>
         public virtual TTail Tail { get; }
 
         /// <summary>
-        ///     Gets or sets the head (destination, right) endpoint.
+        ///     Gets or sets the head endpoint.
         /// </summary>
         public virtual THead Head { get; }
 
         /// <summary>
         ///     Gets the endpoints of this edge.
         /// </summary>
-        public override IEnumerable<DotEndpointDefinition> Endpoints => new DotEndpointDefinition[] { Tail, Head };
+        public override DotEndpointDefinition[] Endpoints => new DotEndpointDefinition[] { Tail, Head };
 
         protected override string GetOrderingKey()
         {

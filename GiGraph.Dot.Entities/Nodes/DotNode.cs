@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Nodes
         protected DotNode(string id, DotNodeAttributes attributes)
             : base(attributes)
         {
-            Id = id ?? throw new ArgumentNullException(nameof(id), "Node identifier cannot be null.");
+            Id = id ?? throw new ArgumentNullException(nameof(id), "Node identifier must not be null.");
         }
 
         /// <summary>

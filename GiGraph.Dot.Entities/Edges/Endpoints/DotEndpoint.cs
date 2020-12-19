@@ -1,17 +1,17 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Edges.Enums;
+using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Identifiers;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
     /// <summary>
-    ///     Represents a node as an edge endpoint. The node may be connected to another node represented by a second instance of the same
-    ///     <see cref="DotEndpoint" /> class, or to multiple nodes represented by the <see cref="DotEndpointGroup" /> class. To make such
-    ///     connection, use <see cref="DotEdge{TTail, THead}" /> (or one of its more specific descendants), or
-    ///     <see cref="DotEdgeSequence" />.
+    ///     Represents a node as an endpoint.
     /// </summary>
-    public class DotEndpoint : DotEndpointDefinition, IDotEntity
+    public class DotEndpoint : DotEndpointDefinition
     {
         protected DotEndpointPort _port;
 
@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         ///     <see cref="DotCompassPoint.Center" />.
         /// </param>
         public DotEndpoint(string nodeId, string portName, DotCompassPoint? compassPoint = null)
-            : this(nodeId, new DotEndpointPort(portName) { CompassPoint = compassPoint })
+            : this(nodeId, new DotEndpointPort(portName, compassPoint))
         {
         }
 
@@ -48,7 +48,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         ///     explicitly, the default value is <see cref="DotCompassPoint.Center" />.
         /// </param>
         public DotEndpoint(string nodeId, DotCompassPoint? compassPoint = null)
-            : this(nodeId, new DotEndpointPort { CompassPoint = compassPoint })
+            : this(nodeId, new DotEndpointPort(compassPoint))
         {
         }
 
@@ -63,14 +63,14 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// </param>
         public DotEndpoint(string nodeId, DotEndpointPort port)
         {
-            NodeId = nodeId ?? throw new ArgumentNullException(nameof(nodeId), "Node identifier cannot be null.");
-            _port = port ?? throw new ArgumentNullException(nameof(port), "Port cannot be null.");
+            SetId(nodeId);
+            SetPort(port);
         }
 
         /// <summary>
         ///     Gets the node identifier.
         /// </summary>
-        public virtual string NodeId { get; }
+        public virtual string Id { get; protected set; }
 
         /// <summary>
         ///     Gets or sets the endpoint port, that is a point on a node where an edge is attached to.
@@ -78,17 +78,63 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         public virtual DotEndpointPort Port
         {
             get => _port;
-            set => _port = value ?? throw new ArgumentNullException(nameof(Port), "Port cannot be null.");
+            set => SetPort(value);
+        }
+
+        protected virtual void SetId(string id)
+        {
+            Id = id ?? throw new ArgumentNullException(nameof(id), "Node identifier must not be null.");
+        }
+
+        protected virtual void SetPort(DotEndpointPort port)
+        {
+            _port = port ?? throw new ArgumentNullException(nameof(Port), "Port must not be null.");
         }
 
         protected override string GetOrderingKey()
         {
-            return NodeId;
+            return $"{Id}:{Port.Name}:{Port.CompassPoint}";
         }
 
+        /// <summary>
+        ///     Determines the equality of endpoint identifiers (ignores port). Ensures that the endpoints are of the same type.
+        /// </summary>
+        /// <param name="endpoint">
+        ///     The endpoint to check.
+        /// </param>
+        public virtual bool IsSameEndpoint(DotEndpoint endpoint)
+        {
+            return endpoint is { } &&
+                   endpoint.Id == Id &&
+                   endpoint.GetType() == GetType();
+        }
+
+        // the type of endpoint may be specified explicitly as a generic param, in which case this implicit conversion may be useful
+        // (e.g. graph.Edges.Add<DotClusterEndpoint, DotEndpoint>("cluster 1", "node1"))
         public static implicit operator DotEndpoint(string nodeId)
         {
-            return nodeId is {} ? new DotEndpoint(nodeId) : null;
+            return nodeId is { } ? new DotEndpoint(nodeId) : null;
+        }
+
+        public static implicit operator DotEndpoint(DotNode node)
+        {
+            return node is { } ? new DotEndpoint(node.Id) : null;
+        }
+
+        // this way a cluster may be used directly for DotEndpoint parameters as well
+        public static implicit operator DotEndpoint(DotCluster cluster)
+        {
+            return (DotClusterEndpoint) cluster;
+        }
+
+        public static implicit operator DotEndpoint(DotId id)
+        {
+            return id is { } ? new DotEndpoint(id) : null;
+        }
+
+        public static implicit operator DotEndpoint(DotClusterId clusterId)
+        {
+            return (DotClusterEndpoint) clusterId;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 {
     public static class DotElementAttributesMetadataFactory
     {
-        public static IEnumerable<(DotCompatibleElements Element, Dictionary<string, DotAttributePropertyMetadata> Attributes)> Create(bool distinguishGraphCluster = false)
+        public static IEnumerable<(DotCompatibleElements Element, Dictionary<string, DotAttributePropertyMetadata> Attributes)> Create(bool distinguishGraphClusterAndGraphSubgraph = false)
         {
             var graphMetadata = new DotGraph().Attributes.GetMetadataDictionary();
             var graphClusterMetadata = new DotGraph().Clusters.Attributes.GetMetadataDictionary();
@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                 (DotCompatibleElements.Cluster, new DotCluster("").Attributes.GetMetadataDictionary())
             };
 
-            if (distinguishGraphCluster)
+            if (distinguishGraphClusterAndGraphSubgraph)
             {
                 result.Add((DotCompatibleElements.Graph, graphMetadata));
                 result.Add((DotCompatibleElements.Graph | DotCompatibleElements.Cluster, graphClusterMetadata));
@@ -33,9 +33,12 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             {
                 result.Add((
                     DotCompatibleElements.Graph,
-                    graphMetadata.Concat(graphClusterMetadata).ToDictionary(
-                        key => key.Key,
-                        element => element.Value)
+                    graphMetadata
+                       .Concat(graphClusterMetadata)
+                       .ToDictionary(
+                            key => key.Key,
+                            element => element.Value
+                        )
                 ));
             }
 

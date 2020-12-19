@@ -1,8 +1,8 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Geometry;
 using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Records;
 using GiGraph.Dot.Entities.Types.Strings;
 using GiGraph.Dot.Entities.Types.Styles;
@@ -62,7 +62,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     occasional problem when the use of edge labels distorts the layout. For other layouts, this attribute can be viewed as a
         ///     synonym for the <see cref="Label" /> attribute. These labels are added after all nodes and edges have been placed. The labels
         ///     will be placed so that they do not overlap any node or label. This means it may not be possible to place all of them. To
-        ///     force placing all of them, use the <see cref="DotGraphAttributes.ForceExternalLabels" /> attribute on the graph.
+        ///     force placing all of them, use the <see cref="DotGraphLayoutAttributes.ForceExternalLabels" /> attribute of graph
+        ///     <see cref="DotGraphAttributes.Layout" />.
         /// </summary>
         DotLabel ExternalLabel { get; set; }
 
@@ -70,7 +71,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     Vertical placement of the label (default: <see cref="DotVerticalAlignment.Center" />). This attribute is used only when the
         ///     height of the node is larger than the height of its label.
         /// </summary>
-        DotVerticalAlignment? VerticalLabelAlignment { get; set; }
+        DotVerticalAlignment? LabelAlignment { get; set; }
 
         /// <summary>
         ///     Tooltip annotation attached to the node (svg, cmap only). If unset, Graphviz will use the <see cref="Label" /> attribute if
@@ -94,7 +95,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     </para>
         ///     <para>
         ///         If a <see cref="DotNodeFillStyle.Radial" /> fill style is specified for the node, then a radial gradient fill is done.
-        ///         See also the <see cref="GradientAngle" /> attribute for setting a gradient angle.
+        ///         See also the <see cref="GradientFillAngle" /> attribute for setting a gradient angle.
         ///     </para>
         ///     <para>
         ///         These fills work with any shape. For certain shapes, fill style can be set to do fills using more than 2 colors (set the
@@ -115,8 +116,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     <para>
         ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
         ///         the <see cref="DotNodeFillStyle.Radial" /> fill style to the node will cause a radial fill. If the second color is
-        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the <see cref="GradientAngle" />
-        ///         attribute for setting a gradient angle.
+        ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
+        ///         <see cref="GradientFillAngle" /> attribute for setting a gradient angle.
         ///     </para>
         /// </summary>
         DotColorDefinition FillColor { get; set; }
@@ -136,7 +137,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///     radially from the center; for non-zero values, the colors transform from a point near the object's periphery as specified by
         ///     the value. If unset, the default angle is 0.
         /// </summary>
-        int? GradientAngle { get; set; }
+        int? GradientFillAngle { get; set; }
 
         /// <summary>
         ///     Specifies the width of the pen, in points, used to draw lines and curves. The value has no effect on text. Default: 1.0,
@@ -173,8 +174,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         string GroupName { get; set; }
 
         /// <summary>
-        ///     Gets or sets the sorting index of the node (default: 0). If <see cref="DotGraphAttributes.PackingMode" /> indicates an array
-        ///     packing, this attribute specifies an insertion order among the components, with smaller values inserted first.
+        ///     Gets or sets the sorting index of the node (default: 0). If <see cref="DotGraphLayoutAttributes.PackingMode" /> of graph
+        ///     <see cref="DotGraphAttributes.Layout" /> indicates an array packing, this attribute specifies an insertion order among the
+        ///     components, with smaller values inserted first.
         /// </summary>
         int? SortIndex { get; set; }
 
@@ -217,6 +219,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         ///         internally-used attributes distinct, the user can include multiple image maps in the same document.
         ///     </para>
         /// </summary>
-        DotEscapeString Id { get; set; }
+        DotEscapeString ObjectId { get; set; }
     }
 }

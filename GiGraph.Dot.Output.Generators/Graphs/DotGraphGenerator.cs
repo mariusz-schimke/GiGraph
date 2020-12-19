@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Output.Generators.Graphs
 
         protected virtual void WriteDeclaration(string id, bool strict, IDotGraphWriter writer)
         {
-            id = EscapeIdentifier(id);
+            id = EncodeIdentifier(id);
 
             // whether the graph and its edges will be directed, is decided by the writer instance
             writer.WriteGraphDeclaration

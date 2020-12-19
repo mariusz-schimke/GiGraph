@@ -15,10 +15,10 @@ namespace GiGraph.Dot.Entities.Nodes
         {
             if (nodeIds is null)
             {
-                throw new ArgumentNullException(nameof(nodeIds), "Node identifier collection cannot be null.");
+                throw new ArgumentNullException(nameof(nodeIds), "Node identifier collection must not be null.");
             }
 
-            NodeIds = nodeIds.Any()
+            Ids = nodeIds.Any()
                 ? nodeIds
                 : throw new ArgumentException("At least one node identifier has to be specified for a node group.", nameof(nodeIds));
         }
@@ -48,7 +48,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// <summary>
         ///     Gets the identifiers of nodes in the group.
         /// </summary>
-        public virtual string[] NodeIds { get; }
+        public virtual string[] Ids { get; }
 
         /// <summary>
         ///     The attributes of the node group.
@@ -57,7 +57,7 @@ namespace GiGraph.Dot.Entities.Nodes
 
         protected override string GetOrderingKey()
         {
-            return string.Join(" ", NodeIds.OrderBy(nodeId => nodeId));
+            return string.Join(" ", Ids.OrderBy(nodeId => nodeId));
         }
     }
 }

@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                     DotCompatibleElements.Cluster => new DotCluster("").Attributes,
                     DotCompatibleElements.Node => new DotNode("").Attributes,
                     DotCompatibleElements.Edge => new DotEdge("").Attributes,
-                    _ => throw new NotSupportedException($"Unsupported element type {elementMetadata.Element}")
+                    _ => throw new NotSupportedException($"Unsupported element type '{elementMetadata.Element}'")
                 };
 
                 ReadAndWriteAttributeProperties(result, elementMetadata.Attributes.Values.ToArray());
@@ -63,7 +63,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         {
             try
             {
-                if (targetProperty.GetSetMethod(nonPublic: true) is {})
+                if (targetProperty.GetSetMethod(nonPublic: true) is { })
                 {
                     targetProperty.SetValue(target, null);
                 }
@@ -78,7 +78,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         {
             try
             {
-                if (targetProperty.GetGetMethod(nonPublic: true) is {})
+                if (targetProperty.GetGetMethod(nonPublic: true) is { })
                 {
                     targetProperty.GetValue(target);
                 }

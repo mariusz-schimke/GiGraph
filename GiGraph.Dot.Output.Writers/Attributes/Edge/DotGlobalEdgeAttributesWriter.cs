@@ -3,7 +3,7 @@
     public class DotGlobalEdgeAttributesWriter : DotEntityWithAttributeListWriter, IDotGlobalEdgeAttributesWriter
     {
         public DotGlobalEdgeAttributesWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
-            : base(tokenWriter, configuration, configuration.Formatting.GlobalAttributes.SingleLineEdgeAttributes)
+            : base(tokenWriter, configuration, configuration.Formatting.GlobalAttributes.SingleLineEdgeAttributeList)
         {
         }
 

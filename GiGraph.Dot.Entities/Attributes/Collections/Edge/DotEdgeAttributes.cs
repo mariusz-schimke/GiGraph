@@ -10,7 +10,7 @@ using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
-    public partial class DotEdgeAttributes : DotEntityCommonAttributes<IDotEdgeAttributes>, IDotEdgeAttributes
+    public partial class DotEdgeAttributes : DotEntityRootCommonAttributes<IDotEdgeAttributes>, IDotEdgeAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup EdgeAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeAttributes, IDotEdgeAttributes>().Build();
 
@@ -19,13 +19,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEdgeHeadAttributes headAttributes,
             DotEdgeTailAttributes tailAttributes,
-            DotEntityFontAttributes fontAttributes,
-            DotEntityHyperlinkAttributes hyperlinkAttributes,
+            DotFontAttributes fontAttributes,
+            DotHyperlinkAttributes hyperlinkAttributes,
             DotEdgeEndpointLabelAttributes endpointLabelAttributes,
             DotEdgeLabelHyperlinkAttributes labelHyperlinkAttributes,
             DotEdgeHyperlinkAttributes edgeHyperlinkAttributes,
             DotEdgeStyleAttributes edgeStyleAttributes,
-            DotEntityStyleSheetAttributes styleSheetAttributes
+            DotStyleSheetAttributes styleSheetAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
@@ -45,13 +45,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
                 EdgeAttributesKeyLookup,
                 new DotEdgeHeadAttributes(attributes),
                 new DotEdgeTailAttributes(attributes),
-                new DotEntityFontAttributes(attributes),
-                new DotEntityHyperlinkAttributes(attributes),
+                new DotFontAttributes(attributes),
+                new DotHyperlinkAttributes(attributes),
                 new DotEdgeEndpointLabelAttributes(attributes),
                 new DotEdgeLabelHyperlinkAttributes(attributes),
                 new DotEdgeHyperlinkAttributes(attributes),
                 new DotEdgeStyleAttributes(attributes),
-                new DotEntityStyleSheetAttributes(attributes)
+                new DotStyleSheetAttributes(attributes)
             )
         {
         }
@@ -74,7 +74,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     Font properties.
         /// </summary>
-        public virtual DotEntityFontAttributes Font { get; }
+        public virtual DotFontAttributes Font { get; }
 
         /// <summary>
         ///     Properties applied to labels specified for the <see cref="Head" /> and the <see cref="Tail" /> of the edge.
@@ -99,10 +99,10 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     Style sheet attributes used for SVG output.
         /// </summary>
-        public virtual DotEntityStyleSheetAttributes StyleSheet { get; }
+        public virtual DotStyleSheetAttributes StyleSheet { get; }
 
         // accessible only through the interface
-        [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
+        [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotEdgeAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;
@@ -123,11 +123,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
             set => base.ColorScheme = value;
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.Id" />
-        public override DotEscapeString Id
+        /// <inheritdoc cref="IDotEdgeAttributes.ObjectId" />
+        public override DotEscapeString ObjectId
         {
-            get => base.Id;
-            set => base.Id = value;
+            get => base.ObjectId;
+            set => base.ObjectId = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Comment" />

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
+using GiGraph.Dot.Entities.Edges.Endpoints;
 
 namespace GiGraph.Dot.Entities.Edges.Collections
 {
@@ -10,26 +10,13 @@ namespace GiGraph.Dot.Entities.Edges.Collections
     /// </summary>
     public partial class DotEdgeCollection : List<DotEdgeDefinition>, IDotEntity, IDotAnnotatable
     {
-        protected readonly Func<string, string, Predicate<DotEdgeDefinition>> _matchEdgePredicate;
-        protected readonly Predicate<DotEdgeDefinition> _matchLoopPredicate;
-
-        protected DotEdgeCollection(
-            Func<string, string, Predicate<DotEdgeDefinition>> matchEdgePredicate,
-            Predicate<DotEdgeDefinition> matchLoopPredicate,
-            DotEdgeAttributes attributes)
+        protected DotEdgeCollection(DotEdgeAttributes attributes)
         {
             Attributes = attributes;
-            _matchEdgePredicate = matchEdgePredicate;
-            _matchLoopPredicate = matchLoopPredicate;
         }
 
         public DotEdgeCollection()
-            : this
-            (
-                (tailNodeId, headNodeId) => edgeDefinition => DotEdge.Equals(edgeDefinition, tailNodeId, headNodeId),
-                edgeDefinition => DotEdge.IsLoopEdge(edgeDefinition),
-                new DotEdgeAttributes()
-            )
+            : this(new DotEdgeAttributes())
         {
         }
 
@@ -62,13 +49,13 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Adds an edge that joins two nodes with the specified identifiers.
+        ///     Adds an edge that joins the two specified nodes.
         /// </summary>
         /// <param name="tailNodeId">
-        ///     The tail (source, left) node identifier.
+        ///     The tail node identifier.
         /// </param>
         /// <param name="headNodeId">
-        ///     The head (destination, right) node identifier.
+        ///     The head node identifier.
         /// </param>
         /// <param name="init">
         ///     An optional edge initializer delegate.
@@ -79,82 +66,49 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         }
 
         /// <summary>
-        ///     Gets the first matching edge that connects two nodes with the specified identifiers.
+        ///     Adds an edge that joins the two specified endpoints.
         /// </summary>
-        /// <param name="tailNodeId">
-        ///     The tail (source, left) node identifier.
+        /// <param name="tail">
+        ///     The tail node identifier (note that if you want to specify a cluster as a tail, use <see cref="DotClusterEndpoint" />).
         /// </param>
-        /// <param name="headNodeId">
-        ///     The head (destination, right) node identifier.
+        /// <param name="head">
+        ///     The head node identifier (note that if you want to specify a cluster as a head, use <see cref="DotClusterEndpoint" />).
         /// </param>
-        public virtual DotEdge Get(string tailNodeId, string headNodeId)
+        /// <param name="init">
+        ///     An optional edge initializer delegate.
+        /// </param>
+        public virtual DotEdge Add(DotEndpoint tail, DotEndpoint head, Action<DotEdge> init = null)
         {
-            return GetAll(tailNodeId, headNodeId).FirstOrDefault();
+            return Add(new DotEdge(tail, head), init);
         }
 
         /// <summary>
-        ///     Gets edges that connect two nodes with the specified identifiers.
+        ///     Adds an edge that joins the specified endpoints or groups of endpoints.
         /// </summary>
-        /// <param name="tailNodeId">
-        ///     The tail (source, left) node identifier.
+        /// <param name="tail">
+        ///     The tail node identifier. Use <see cref="DotEndpoint" /> for a node as a tail, <see cref="DotClusterEndpoint" /> for a
+        ///     cluster as a tail, <see cref="DotEndpointGroup" /> for a group of nodes as tails, or <see cref="DotSubgraphEndpoint" /> for a
+        ///     subgraph whose nodes will be used as tails.
         /// </param>
-        /// <param name="headNodeId">
-        ///     The head (destination, right) node identifier.
+        /// <param name="head">
+        ///     The head node identifier. Use <see cref="DotEndpoint" /> for a node as a head, <see cref="DotClusterEndpoint" /> for a
+        ///     cluster as a head, <see cref="DotEndpointGroup" /> for a group of nodes as heads, or <see cref="DotSubgraphEndpoint" /> for a
+        ///     subgraph whose nodes will be used as heads.
         /// </param>
-        public virtual IEnumerable<DotEdge> GetAll(string tailNodeId, string headNodeId)
+        /// <param name="init">
+        ///     An optional edge initializer delegate.
+        /// </param>
+        /// <typeparam name="TTail">
+        ///     The type of the tail endpoint.
+        /// </typeparam>
+        /// <typeparam name="THead">
+        ///     The type of the head endpoint.
+        /// </typeparam>
+        public virtual DotEdge<TTail, THead> Add<TTail, THead>(TTail tail, THead head, Action<DotEdge<TTail, THead>> init = null)
+            where THead : DotEndpointDefinition
+            where TTail : DotEndpointDefinition
         {
-            return this.OfType<DotEdge>()
-               .Where(edge => edge.Equals(tailNodeId, headNodeId));
-        }
-
-        /// <summary>
-        ///     Determines whether the specified edge is in the collection.
-        /// </summary>
-        /// <param name="tailNodeId">
-        ///     The tail (source, left) node identifier to locate.
-        /// </param>
-        /// <param name="headNodeId">
-        ///     The head (destination, right) node identifier to locate.
-        /// </param>
-        public virtual bool Contains(string tailNodeId, string headNodeId)
-        {
-            return Exists(_matchEdgePredicate(tailNodeId, headNodeId));
-        }
-
-        /// <summary>
-        ///     Removes the first matching edge that connects two nodes with the specified identifiers.
-        /// </summary>
-        /// <param name="tailNodeId">
-        ///     The tail (source, left) node identifier.
-        /// </param>
-        /// <param name="headNodeId">
-        ///     The head (destination, right) node identifier.
-        /// </param>
-        public virtual bool Remove(string tailNodeId, string headNodeId)
-        {
-            var index = FindIndex(_matchEdgePredicate(tailNodeId, headNodeId));
-
-            if (index >= 0)
-            {
-                RemoveAt(index);
-                return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        ///     Removes all edges that connect two nodes with the specified identifiers.
-        /// </summary>
-        /// <param name="tailNodeId">
-        ///     The tail (source, left) node identifier.
-        /// </param>
-        /// <param name="headNodeId">
-        ///     The head (destination, right) node identifier.
-        /// </param>
-        public virtual int RemoveAll(string tailNodeId, string headNodeId)
-        {
-            return RemoveAll(_matchEdgePredicate(tailNodeId, headNodeId));
+            return Add(new DotEdge<TTail, THead>(tail, head), init);
         }
     }
 }

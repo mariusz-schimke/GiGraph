@@ -2,6 +2,7 @@ using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Entities.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
@@ -64,7 +65,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 
         /// <inheritdoc />
         [DotAttributeKey(DotAttributeKeys.LTail)]
-        public override string ClusterId
+        public override DotClusterId ClusterId
         {
             get => base.ClusterId;
             set => base.ClusterId = value;

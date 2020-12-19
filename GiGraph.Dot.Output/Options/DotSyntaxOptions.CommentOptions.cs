@@ -14,6 +14,11 @@
             ///     single line, block comments are used even if the property is not set.
             /// </summary>
             public virtual bool PreferBlockComments { get; set; } = false;
+
+            /// <summary>
+            ///     When set, a hash (#) is used for single line comments instead of a double slash (//).
+            /// </summary>
+            public virtual bool PreferHashForSingleLineComments { get; set; } = false;
         }
     }
 }

@@ -7,22 +7,25 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
     /// </summary>
     public enum DotVerticalAlignment
     {
+        // NOTE! THE VALUES ARE USED BY THE DotAlignment ENUM AS FLAGS
+        // THE VALUES ARE CONTINUED BY DotHorizontalAlignment
+
         /// <summary>
         ///     Places the label at the top of the element.
         /// </summary>
         [DotAttributeValue("t")]
-        Top,
+        Top = 1 << 0,
 
         /// <summary>
         ///     Places the label at the vertical center of the element.
         /// </summary>
         [DotAttributeValue("c")]
-        Center,
+        Center = 1 << 1,
 
         /// <summary>
         ///     Places the label at the bottom of the element.
         /// </summary>
         [DotAttributeValue("b")]
-        Bottom
+        Bottom = 1 << 2
     }
 }

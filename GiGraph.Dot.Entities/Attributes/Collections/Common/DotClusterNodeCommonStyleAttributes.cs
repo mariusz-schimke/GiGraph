@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Types.Styles;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
-    public abstract class DotClusterNodeCommonStyleAttributes<TFillStyle, TFillStyleOptions> : DotEntityStyleAttributes
+    public abstract class DotClusterNodeCommonStyleAttributes<TFillStyle, TFillStyleOptions> : DotStyleAttributes
         where TFillStyle : Enum
         where TFillStyleOptions : DotClusterNodeCommonStyleOptions<TFillStyle>
     {

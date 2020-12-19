@@ -30,6 +30,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                 new object[] { typeof(DotEdgeDirections) },
                 new object[] { typeof(DotEdgeOrderingMode) },
                 new object[] { typeof(DotEdgeShape) },
+                new object[] { typeof(DotFontConvention) },
                 new object[] { typeof(DotGraphScaling) },
                 new object[] { typeof(DotHorizontalAlignment) },
                 new object[] { typeof(DotImageScaling) },

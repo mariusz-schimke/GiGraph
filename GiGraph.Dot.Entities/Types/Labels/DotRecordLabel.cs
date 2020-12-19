@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
         /// </param>
         public DotRecordLabel(DotRecord record)
         {
-            _record = record ?? throw new ArgumentNullException(nameof(record), "Record cannot be null.");
+            _record = record ?? throw new ArgumentNullException(nameof(record), "Record must not be null.");
         }
 
         protected internal override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Types.Labels
 
         public static implicit operator DotRecordLabel(DotRecord record)
         {
-            return record is {} ? new DotRecordLabel(record) : null;
+            return record is { } ? new DotRecordLabel(record) : null;
         }
 
         public static implicit operator DotRecord(DotRecordLabel label)

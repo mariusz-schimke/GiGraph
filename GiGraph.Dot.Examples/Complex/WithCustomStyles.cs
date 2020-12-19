@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Examples.Complex
             var graph = new DotGraph();
 
             // set left to right layout direction of the graph using graph attributes
-            graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
+            graph.Attributes.Layout.Direction = DotLayoutDirection.LeftToRight;
             graph.Attributes.Font.Name = "Helvetica";
 
             // set global node attributes (for all nodes of the graph)
@@ -78,12 +78,11 @@ namespace GiGraph.Dot.Examples.Complex
                     attrs.Color = Color.Transparent;
 
                     // set style to striped
-                    attrs.SetStriped(new DotMultiColor(
+                    attrs.SetStriped(
                         new DotWeightedColor(Color.Navy, 0.1),
                         Color.RoyalBlue,
                         Color.Turquoise,
-                        Color.Orange)
-                    );
+                        Color.Orange);
                 });
 
                 // a circular node with a wedged fill
@@ -93,12 +92,11 @@ namespace GiGraph.Dot.Examples.Complex
                     attrs.Color = Color.Transparent;
 
                     // set wedged style
-                    attrs.SetWedged(new DotMultiColor(
+                    attrs.SetWedged(
                         Color.Orange,
                         Color.RoyalBlue,
                         new DotWeightedColor(Color.Navy, 0.1),
-                        Color.Turquoise)
-                    );
+                        Color.Turquoise);
                 });
 
                 sg.Edges.Add("STRIPED", "WEDGED");

@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using GiGraph.Dot.Output.Options;
+﻿using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
@@ -24,7 +23,7 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return Value.ToString(CultureInfo.InvariantCulture);
+            return Value.ToString(syntaxRules.Culture);
         }
     }
 }

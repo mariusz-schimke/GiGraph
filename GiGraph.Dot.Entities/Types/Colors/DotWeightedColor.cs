@@ -1,6 +1,5 @@
 using System;
 using System.Drawing;
-using System.Globalization;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Colors
@@ -96,7 +95,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         protected internal override string GetDotEncodedColor(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var color = base.GetDotEncodedColor(options, syntaxRules);
-            return $"{color};{Weight.ToString(CultureInfo.InvariantCulture)}";
+            return $"{color};{Weight.ToString(syntaxRules.Culture)}";
         }
     }
 }

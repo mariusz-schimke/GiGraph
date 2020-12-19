@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Examples.Complex
             var graph = new DotGraph(directed: false);
 
             // see also how this attribute affects the layout of the nodes
-            graph.Attributes.LayoutDirection = DotLayoutDirection.LeftToRight;
+            graph.Attributes.Layout.Direction = DotLayoutDirection.LeftToRight;
 
             graph.Edges.Add("e", "h");
             graph.Edges.Add("g", "k");
@@ -34,12 +34,12 @@ namespace GiGraph.Dot.Examples.Complex
 
             // add subgraphs to control the layout of individual node groups
             // (check how the visualization changes when you remove these lines)
-            graph.Subgraphs.Add(DotRank.Same, "b", "c", "d");
-            graph.Subgraphs.Add(DotRank.Same, "e", "f", "g");
-            graph.Subgraphs.Add(DotRank.Same, "h", "i", "j", "k");
-            graph.Subgraphs.Add(DotRank.Same, "l", "m", "n");
-            graph.Subgraphs.Add(DotRank.Same, "q", "r");
-            graph.Subgraphs.Add(DotRank.Max, "o", "s", "p");
+            graph.Subgraphs.AddWithNodes(DotRank.Same, "b", "c", "d");
+            graph.Subgraphs.AddWithNodes(DotRank.Same, "e", "f", "g");
+            graph.Subgraphs.AddWithNodes(DotRank.Same, "h", "i", "j", "k");
+            graph.Subgraphs.AddWithNodes(DotRank.Same, "l", "m", "n");
+            graph.Subgraphs.AddWithNodes(DotRank.Same, "q", "r");
+            graph.Subgraphs.AddWithNodes(DotRank.Max, "o", "s", "p");
 
             return graph;
         }

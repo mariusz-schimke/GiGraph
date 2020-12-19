@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Output.Writers.Edges
     public class DotEdgeWriter : DotEntityWithAttributeListWriter, IDotEdgeWriter
     {
         public DotEdgeWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration)
-            : base(tokenWriter, configuration, configuration.Formatting.Edges.SingleLineAttributes)
+            : base(tokenWriter, configuration, configuration.Formatting.Edges.SingleLineAttributeLists)
         {
         }
 
@@ -16,6 +16,16 @@ namespace GiGraph.Dot.Output.Writers.Edges
 
         public virtual void EndEndpoint()
         {
+        }
+
+        public virtual IDotEndpointGroupWriter BeginEndpointGroup()
+        {
+            return new DotEndpointGroupWriter(_tokenWriter.SingleLine(), _configuration);
+        }
+
+        public virtual void EndEndpointGroup()
+        {
+            _tokenWriter.ClearLingerBuffer();
         }
 
         public virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration)

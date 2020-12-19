@@ -7,9 +7,9 @@
         {
         }
 
-        public virtual void WriteEndpoint(string nodeId, bool quoteNodeId, string portName, bool quotePortName, string compassPoint, bool quoteCompassPoint)
+        public virtual void WriteEndpoint(string id, bool quoteId, string portName, bool quotePortName, string compassPoint, bool quoteCompassPoint)
         {
-            _tokenWriter.Identifier(nodeId, quoteNodeId);
+            _tokenWriter.Identifier(id, quoteId);
 
             if (portName is { })
             {

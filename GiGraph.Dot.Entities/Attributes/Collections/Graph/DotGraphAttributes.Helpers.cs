@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         /// </param>
         public virtual DotGraphAttributes SetBackground(DotColor color)
         {
-            BackgroundColor = color;
+            Canvas.BackgroundColor = color;
             return this;
         }
 
@@ -43,8 +43,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                 Style.FillStyle = DotClusterFillStyle.None;
             }
 
-            BackgroundColor = color;
-            GradientAngle = angle;
+            Canvas.BackgroundColor = color;
+            Canvas.GradientFillAngle = angle;
 
             return this;
         }

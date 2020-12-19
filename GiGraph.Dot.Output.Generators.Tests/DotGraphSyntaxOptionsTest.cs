@@ -55,6 +55,23 @@ namespace GiGraph.Dot.Output.Generators.Tests
         }
 
         [Fact]
+        public void renders_graph_with_correct_hash_annotation()
+        {
+            var graph = DotGraphFactory.CreateAnnotatedGraph();
+
+            var options = new DotSyntaxOptions
+            {
+                Comments =
+                {
+                    PreferHashForSingleLineComments = true
+                }
+            };
+
+            var dot = graph.Build(syntaxOptions: options);
+            Snapshot.Match(dot, "annotated_graph_hash_comments.gv");
+        }
+
+        [Fact]
         public void renders_graph_with_correctly_with_custom_attribute_options()
         {
             var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
@@ -96,7 +113,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
         public void renders_graph_with_correctly_with_colors_as_hex()
         {
             var graph = new DotGraph();
-            graph.Attributes.BackgroundColor = Color.Brown;
+            graph.Attributes.Canvas.BackgroundColor = Color.Brown;
 
             var options = new DotSyntaxOptions
             {

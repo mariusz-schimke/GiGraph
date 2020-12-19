@@ -10,18 +10,18 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
     public enum DotClusterVisualizationMode
     {
         /// <summary>
-        ///     At present, the modes <see cref="Normal" /> and <see cref="None" /> appear to be identical, both turning off the special
+        ///     At present, the modes <see cref="Unbounded" /> and <see cref="None" /> appear to be identical, both turning off the special
         ///     cluster processing, specific to the <see cref="Bounded" /> mode.
         /// </summary>
         [DotAttributeValue("none")]
         None,
 
         /// <summary>
-        ///     At present, the modes <see cref="Normal" /> and <see cref="None" /> appear to be identical, both turning off the special
+        ///     At present, the modes <see cref="Unbounded" /> and <see cref="None" /> appear to be identical, both turning off the special
         ///     cluster processing, specific to the <see cref="Bounded" /> mode.
         /// </summary>
         [DotAttributeValue("global")]
-        Normal,
+        Unbounded,
 
         /// <summary>
         ///     When set, a subgraph whose name begins with "cluster" (see <see cref="DotCluster" />) is given special treatment (refers to

@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Metadata;
 namespace GiGraph.Dot.Entities.Attributes.Enums
 {
     /// <summary>
-    ///     Determines how an image is positioned within its containing element.
+    ///     Determines how an element is positioned within its containing element.
     /// </summary>
     public enum DotAlignment
     {
@@ -11,54 +11,54 @@ namespace GiGraph.Dot.Entities.Attributes.Enums
         ///     Top left.
         /// </summary>
         [DotAttributeValue("tl")]
-        TopLeft,
+        TopLeft = DotVerticalAlignment.Top | DotHorizontalAlignment.Left,
 
         /// <summary>
         ///     Top centered.
         /// </summary>
         [DotAttributeValue("tc")]
-        TopCenter,
+        TopCenter = DotVerticalAlignment.Top | DotHorizontalAlignment.Center,
 
         /// <summary>
         ///     Top right.
         /// </summary>
         [DotAttributeValue("tr")]
-        TopRight,
+        TopRight = DotVerticalAlignment.Top | DotHorizontalAlignment.Right,
 
         /// <summary>
         ///     Middle left.
         /// </summary>
         [DotAttributeValue("ml")]
-        MiddleLeft,
+        MiddleLeft = DotVerticalAlignment.Center | DotHorizontalAlignment.Left,
 
         /// <summary>
         ///     Middle centered.
         /// </summary>
         [DotAttributeValue("mc")]
-        MiddleCenter,
+        MiddleCenter = DotVerticalAlignment.Center | DotHorizontalAlignment.Center,
 
         /// <summary>
         ///     Middle right.
         /// </summary>
         [DotAttributeValue("mr")]
-        MiddleRight,
+        MiddleRight = DotVerticalAlignment.Center | DotHorizontalAlignment.Right,
 
         /// <summary>
         ///     Middle left.
         /// </summary>
         [DotAttributeValue("bl")]
-        BottomLeft,
+        BottomLeft = DotVerticalAlignment.Bottom | DotHorizontalAlignment.Left,
 
         /// <summary>
         ///     Bottom centered.
         /// </summary>
         [DotAttributeValue("bc")]
-        BottomCenter,
+        BottomCenter = DotVerticalAlignment.Bottom | DotHorizontalAlignment.Center,
 
         /// <summary>
         ///     Bottom right.
         /// </summary>
         [DotAttributeValue("br")]
-        BottomRight
+        BottomRight = DotVerticalAlignment.Bottom | DotHorizontalAlignment.Right
     }
 }

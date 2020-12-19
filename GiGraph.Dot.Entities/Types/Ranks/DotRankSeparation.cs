@@ -1,4 +1,3 @@
-using System.Globalization;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Ranks
@@ -48,11 +47,11 @@ namespace GiGraph.Dot.Entities.Types.Ranks
         protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             const string equally = "equally";
-            var result = Value?.ToString(CultureInfo.InvariantCulture);
+            var result = Value?.ToString(syntaxRules.Culture);
 
             if (Equal)
             {
-                return result is {} ? $"{result} {equally}" : equally;
+                return result is { } ? $"{result} {equally}" : equally;
             }
 
             return result;

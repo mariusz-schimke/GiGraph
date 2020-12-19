@@ -23,12 +23,12 @@ namespace GiGraph.Dot.Entities.Types.Colors
 
         public static implicit operator DotColorDefinition(Color[] colors)
         {
-            return colors is {} ? new DotMultiColor(colors) : null;
+            return colors is { } ? new DotMultiColor(colors) : null;
         }
 
         public static implicit operator DotColorDefinition(DotColor[] colors)
         {
-            return colors is {} ? new DotMultiColor(colors) : null;
+            return colors is { } ? new DotMultiColor(colors) : null;
         }
     }
 }

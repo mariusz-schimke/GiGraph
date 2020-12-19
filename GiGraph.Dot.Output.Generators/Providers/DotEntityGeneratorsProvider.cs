@@ -30,21 +30,20 @@ namespace GiGraph.Dot.Output.Generators.Providers
             return generator is { };
         }
 
-        public virtual IDotEntityGenerator GetForEntity<TRequiredWriter>(IDotEntity entity)
+        public virtual IDotEntityGenerator<TRequiredWriter> GetForEntity<TRequiredWriter>(IDotEntity entity)
             where TRequiredWriter : IDotEntityWriter
         {
-            return GetForEntity<TRequiredWriter>(entity.GetType());
-        }
+            if (entity is null)
+            {
+                throw new ArgumentNullException(nameof(entity), "Entity must not be null.");
+            }
 
-        public virtual IDotEntityGenerator GetForEntity<TRequiredWriter>(Type entityType)
-            where TRequiredWriter : IDotEntityWriter
-        {
-            var lastExactMatch = _generators.LastOrDefault(g => g.Supports<TRequiredWriter>(entityType, out var isExactEntityTypeMatch) && isExactEntityTypeMatch);
-            var lastCompatibleMatch = _generators.LastOrDefault(g => g.Supports<TRequiredWriter>(entityType, out var isExactEntityTypeMatch) && !isExactEntityTypeMatch);
+            var lastExactMatch = _generators.LastOrDefault(g => g.Supports<TRequiredWriter>(entity, out var isExactEntityTypeMatch) && isExactEntityTypeMatch);
+            var lastCompatibleMatch = _generators.LastOrDefault(g => g.Supports<TRequiredWriter>(entity, out var isExactEntityTypeMatch) && !isExactEntityTypeMatch);
 
-            return lastExactMatch
-                ?? lastCompatibleMatch
-                ?? throw new NotSupportedException($"No compatible generator has been registered for the entity type {entityType.FullName} with the writer type {typeof(TRequiredWriter).FullName}.");
+            return (IDotEntityGenerator<TRequiredWriter>) lastExactMatch
+                ?? (IDotEntityGenerator<TRequiredWriter>) lastCompatibleMatch
+                ?? throw new NotSupportedException($"No compatible generator has been registered for the entity type {entity.GetType().FullName} with the writer type {typeof(TRequiredWriter).FullName}.");
         }
 
         public virtual DotEntityGeneratorsProvider Register(IDotEntityGenerator generator)

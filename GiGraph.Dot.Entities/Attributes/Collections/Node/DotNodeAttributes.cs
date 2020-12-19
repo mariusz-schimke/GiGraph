@@ -4,8 +4,8 @@ using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Geometry;
 using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
 using GiGraph.Dot.Entities.Types.Styles;
 
@@ -18,13 +18,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         protected DotNodeAttributes(
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
-            DotEntityHyperlinkAttributes hyperlinkAttributes,
-            DotEntityFontAttributes fontAttributes,
+            DotHyperlinkAttributes hyperlinkAttributes,
+            DotFontAttributes fontAttributes,
             DotNodeStyleAttributes styleAttributes,
             DotNodeImageAttributes imageAttributes,
             DotNodeGeometryAttributes geometryAttributes,
             DotNodeSizeAttributes sizeAttributes,
-            DotEntityStyleSheetAttributes styleSheetAttributes
+            DotStyleSheetAttributes styleSheetAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes, styleSheetAttributes)
         {
@@ -39,13 +39,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             : this(
                 attributes,
                 NodeAttributesKeyLookup,
-                new DotEntityHyperlinkAttributes(attributes),
-                new DotEntityFontAttributes(attributes),
+                new DotHyperlinkAttributes(attributes),
+                new DotFontAttributes(attributes),
                 new DotNodeStyleAttributes(attributes),
                 new DotNodeImageAttributes(attributes),
                 new DotNodeGeometryAttributes(attributes),
                 new DotNodeSizeAttributes(attributes),
-                new DotEntityStyleSheetAttributes(attributes)
+                new DotStyleSheetAttributes(attributes)
             )
         {
         }
@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         /// <summary>
         ///     Font properties.
         /// </summary>
-        public virtual DotEntityFontAttributes Font { get; }
+        public virtual DotFontAttributes Font { get; }
 
         /// <summary>
         ///     Node image properties.
@@ -81,7 +81,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotNodeStyleAttributes Style { get; }
 
         // accessible only through the interface
-        [DotAttributeKey(DotEntityStyleAttributes.StyleKey)]
+        [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotNodeAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;
@@ -116,18 +116,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => base.FillColor = value;
         }
 
-        /// <inheritdoc cref="IDotNodeAttributes.GradientAngle" />
-        public override int? GradientAngle
+        /// <inheritdoc cref="IDotNodeAttributes.GradientFillAngle" />
+        public override int? GradientFillAngle
         {
-            get => base.GradientAngle;
-            set => base.GradientAngle = value;
-        }
-
-        /// <inheritdoc cref="IDotNodeAttributes.VerticalLabelAlignment" />
-        public override DotVerticalAlignment? VerticalLabelAlignment
-        {
-            get => base.VerticalLabelAlignment;
-            set => base.VerticalLabelAlignment = value;
+            get => base.GradientFillAngle;
+            set => base.GradientFillAngle = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Tooltip" />
@@ -158,11 +151,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => base.SortIndex = value;
         }
 
-        /// <inheritdoc cref="IDotNodeAttributes.Id" />
-        public override DotEscapeString Id
+        /// <inheritdoc cref="IDotNodeAttributes.ObjectId" />
+        public override DotEscapeString ObjectId
         {
-            get => base.Id;
-            set => base.Id = value;
+            get => base.ObjectId;
+            set => base.ObjectId = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Comment" />
@@ -181,6 +174,13 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotNodeAttributes.LabelAlignment" />
+        [DotAttributeKey(DotAttributeKeys.LabelLoc)]
+        public virtual DotVerticalAlignment? LabelAlignment
+        {
+            get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotVerticalAlignment?) null;
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
+        }
 
         /// <inheritdoc cref="IDotNodeAttributes.EdgeOrderingMode" />
         [DotAttributeKey(DotAttributeKeys.Ordering)]

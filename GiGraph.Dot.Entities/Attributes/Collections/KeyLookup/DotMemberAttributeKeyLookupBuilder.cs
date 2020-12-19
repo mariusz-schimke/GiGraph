@@ -88,17 +88,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
 
             foreach (var property in properties)
             {
-                if (!(property.GetCustomAttribute<DotAttributeKeyAttribute>() is {} attribute))
+                if (!(property.GetCustomAttribute<DotAttributeKeyAttribute>() is { } attribute))
                 {
                     continue;
                 }
 
-                if (property.GetMethod is {} getter)
+                if (property.GetMethod is { } getter)
                 {
                     lookup.Set(getter, attribute.Key);
                 }
 
-                if (property.SetMethod is {} setter)
+                if (property.SetMethod is { } setter)
                 {
                     lookup.Set(setter, attribute.Key);
                 }

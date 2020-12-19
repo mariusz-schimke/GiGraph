@@ -1,4 +1,3 @@
-using System.Globalization;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Scaling
@@ -28,7 +27,7 @@ namespace GiGraph.Dot.Entities.Types.Scaling
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return Ratio.ToString(CultureInfo.InvariantCulture);
+            return Ratio.ToString(syntaxRules.Culture);
         }
     }
 }

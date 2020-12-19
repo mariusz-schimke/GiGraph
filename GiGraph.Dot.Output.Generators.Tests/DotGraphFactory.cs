@@ -1,6 +1,7 @@
 using System;
 using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Subgraphs;
@@ -18,6 +19,12 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Clusters.Attributes.AllowEdgeClipping = true;
             graph.Clusters.Attributes.FillColor = Color.Brown;
 
+            graph.Subgraphs.Add().Id = "Subgraph2";
+            graph.Subgraphs.Add().Id = "Subgraph1";
+
+            graph.Clusters.Add("Cluster2");
+            graph.Clusters.Add("Cluster1");
+
             graph.Nodes.Attributes.Color = Color.Red;
             graph.Nodes.Attributes.Label = "node_label";
 
@@ -31,7 +38,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 attrs.Style.BorderWeight = DotBorderWeight.Bold;
             });
 
-            graph.Nodes.Add(attrs =>
+            graph.Nodes.AddGroup(attrs =>
             {
                 attrs.Shape = DotNodeShape.Box;
                 attrs.Style.BorderWeight = DotBorderWeight.Bold;
@@ -60,11 +67,14 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 edge.Attributes.Style.Invisible = true;
             }, "node1", "node2", "node3");
 
-            graph.Subgraphs.Add().Id = "Subgraph2";
-            graph.Subgraphs.Add().Id = "Subgraph1";
-
-            graph.Clusters.Add("Cluster2");
-            graph.Clusters.Add("Cluster1");
+            graph.Edges.Add(
+                new DotEndpointGroup(
+                    new DotEndpoint("node1"),
+                    new DotClusterEndpoint("cluster1"),
+                    new DotClusterEndpoint(null)
+                ),
+                new DotSubgraphEndpoint("node3", "node4")
+            );
 
             return graph;
         }
@@ -85,12 +95,12 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Subgraphs.Add(sg =>
             {
                 sg.Annotation = "subgraph comment";
-                sg.Attributes.Rank = DotRank.Min;
+                sg.Attributes.NodeRank = DotRank.Min;
 
                 sg.Subsections.Add(ss =>
                 {
                     ss.Annotation = "subgraph subsection comment";
-                    ss.Attributes.Rank = DotRank.Max;
+                    ss.Attributes.NodeRank = DotRank.Max;
                 });
             });
 
@@ -109,7 +119,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Subsections.Add(ss =>
             {
                 ss.Annotation = "graph section comment";
-                ss.Attributes.BackgroundColor = Color.Blue;
+                ss.Attributes.Canvas.BackgroundColor = Color.Blue;
                 ss.Nodes.Add("section 1 node");
                 ss.Edges.AddLoop("section 1 node");
             });
@@ -140,7 +150,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 attrs.Set(a => a.Label, "foo").Annotation = "label";
             }).Annotation = "node comment";
 
-            graph.Nodes.Add(new[] { "foo", "bar", "baz" }, node =>
+            graph.Nodes.AddGroup(new[] { "foo", "bar", "baz" }, node =>
             {
                 node.Annotation = "node group attributes";
                 node.Set(a => a.Label, "foo").Annotation = "label";
@@ -172,6 +182,24 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 edge.Attributes.Annotation = "edge sequence attributes";
                 edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
             }).Annotation = "edge sequence comment";
+
+            // endpoint groups / endpoint subgraphs / clusters as endpoints
+            var endpointGroup = new DotEndpointGroup(
+                new DotEndpoint("node1"),
+                new DotClusterEndpoint("cluster1")
+            );
+            endpointGroup.Endpoints[0].Annotation = "node1";
+            endpointGroup.Endpoints[1].Annotation = "cluster1";
+
+            graph.Edges.Add(
+                endpointGroup,
+                new DotSubgraphEndpoint("node3", "node4"),
+                edge =>
+                {
+                    edge.Head.Annotation = "subgraph endpoint";
+                    edge.Tail.Annotation = "endpoint group";
+                }
+            );
 
             // subsections
             graph.Subsections.Add(sub =>

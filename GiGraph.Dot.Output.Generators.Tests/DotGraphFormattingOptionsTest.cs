@@ -62,7 +62,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             graph.Clusters.Add("cluster1", x =>
             {
-                x.Attributes.Id = "id";
+                x.Attributes.ObjectId = "id";
                 x.Nodes.Add("node").Attributes.Comment = "comment";
                 x.Edges.AddLoop("node").Attributes.Directions = DotEdgeDirections.Backward;
             });
@@ -86,7 +86,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             var formatting = new DotFormattingOptions
             {
-                GlobalAttributes = { SingleLineAttributes = false }
+                GlobalAttributes = { SingleLineAttributeLists = false }
             };
 
             var syntax = new DotSyntaxOptions
@@ -105,7 +105,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             var options = new DotFormattingOptions
             {
-                GlobalAttributes = { SingleLineNodeAttributes = false }
+                GlobalAttributes = { SingleLineNodeAttributeList = false }
             };
 
             var dot = graph.Build(options);
@@ -119,7 +119,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             var options = new DotFormattingOptions
             {
-                Nodes = { SingleLineAttributes = false }
+                Nodes = { SingleLineAttributeLists = false }
             };
 
             var dot = graph.Build(options);
@@ -133,7 +133,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             var options = new DotFormattingOptions
             {
-                GlobalAttributes = { SingleLineEdgeAttributes = false }
+                GlobalAttributes = { SingleLineEdgeAttributeList = false }
             };
 
             var dot = graph.Build(options);
@@ -147,7 +147,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             var options = new DotFormattingOptions
             {
-                Edges = { SingleLineAttributes = false }
+                Edges = { SingleLineAttributeLists = false }
             };
 
             var dot = graph.Build(options);
@@ -161,7 +161,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             var formatting = new DotFormattingOptions
             {
-                GlobalAttributes = { SingleLineAttributes = false }
+                GlobalAttributes = { SingleLineAttributeLists = false }
             };
 
             var syntax = new DotSyntaxOptions

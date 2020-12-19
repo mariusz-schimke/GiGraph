@@ -23,8 +23,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         /// <summary>
         ///     If defined, it is output as part of the <see cref="DotEdgeAttributes.Head" /> <see cref="DotEdgeHeadAttributes.Label" /> of
         ///     the edge (svg, map only). Also, this value is used near the head node, overriding any
-        ///     <see cref="DotEntityCommonAttributes{TIEntityAttributeProperties}.Hyperlink" />
-        ///     <see cref="DotEntityHyperlinkAttributes{TIEntityHyperlinkAttributes}.Url" /> set for the edge.
+        ///     <see cref="DotEntityRootCommonAttributes{TIEntityAttributeProperties}.Hyperlink" />
+        ///     <see cref="DotHyperlinkAttributes{TIEntityHyperlinkAttributes}.Url" /> set for the edge.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.HeadUrl)]
         public override DotEscapeString Url
@@ -47,8 +47,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         ///     If <see cref="Url" /> is specified, this attribute determines which window of the browser is used for the URL (svg, map
         ///     only). Setting it to <see cref="DotHyperlinkTargets.NewWindow" /> will open a new window if it doesn't already exist, or
         ///     reuse it if it does. If undefined, the value of the edge's
-        ///     <see cref="DotEntityCommonAttributes{IDotEdgeAttributes}.Hyperlink" />
-        ///     <see cref="DotEntityHyperlinkAttributes{TIEntityHyperlinkAttributes}.Target" /> is used.
+        ///     <see cref="DotEntityRootCommonAttributes{TIEntityAttributeProperties}.Hyperlink" />
+        ///     <see cref="DotHyperlinkAttributes{TIEntityHyperlinkAttributes}.Target" /> is used.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.HeadTarget)]
         public override DotEscapeString Target

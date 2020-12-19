@@ -1,4 +1,5 @@
 ﻿using System;
+using GiGraph.Dot.Output.TextEscaping;
 
 namespace GiGraph.Dot.Output.Options
 {
@@ -28,9 +29,10 @@ namespace GiGraph.Dot.Output.Options
         public virtual char IndentationChar { get; set; } = ' ';
 
         /// <summary>
-        ///     The line break sequence to use in the DOT output (<see cref="Environment.NewLine" /> by default).
+        ///     The line break sequence to use in the DOT output (a system-dependent line break sequence is used by default; see also
+        ///     <see cref="DotNewLine" />).
         /// </summary>
-        public virtual string LineBreak { get; set; } = Environment.NewLine;
+        public virtual string LineBreak { get; set; } = DotNewLine.SystemDefault;
 
         /// <summary>
         ///     Gets global attribute formatting options.
@@ -65,26 +67,26 @@ namespace GiGraph.Dot.Output.Options
         public virtual Func<string, DotTokenType, string> TextEncoder { get; set; }
 
         /// <summary>
-        ///     Causes attributes of all types of elements to be written in single lines.
+        ///     Causes attribute lists of all types of elements to be written inline.
         /// </summary>
-        public virtual DotFormattingOptions SingleLineAttributes()
+        public virtual DotFormattingOptions SingleLineAttributeLists()
         {
-            return SingleLineAttributes(true);
+            return SingleLineAttributeLists(true);
         }
 
         /// <summary>
-        ///     Causes attributes of all types of elements to be written in multiple lines (one per line).
+        ///     Causes attribute lists of all types of elements to be written in multiple lines (one attribute per line).
         /// </summary>
-        public virtual DotFormattingOptions MultilineAttributes()
+        public virtual DotFormattingOptions MultilineAttributeLists()
         {
-            return SingleLineAttributes(false);
+            return SingleLineAttributeLists(false);
         }
 
-        protected virtual DotFormattingOptions SingleLineAttributes(bool value)
+        protected virtual DotFormattingOptions SingleLineAttributeLists(bool value)
         {
-            GlobalAttributes.SingleLineAttributes = value;
-            Nodes.SingleLineAttributes = value;
-            Edges.SingleLineAttributes = value;
+            GlobalAttributes.SingleLineAttributeLists = value;
+            Nodes.SingleLineAttributeLists = value;
+            Edges.SingleLineAttributeLists = value;
             return this;
         }
     }
