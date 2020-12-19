@@ -4,8 +4,8 @@ using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Geometry;
 using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
 using GiGraph.Dot.Entities.Types.Styles;
 

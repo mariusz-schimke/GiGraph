@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Points;
+using GiGraph.Dot.Entities.Types.Geometry;
 using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Entities.Types.Viewport;
 
@@ -108,6 +108,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotViewportAttribute(k, v));
         }
 
+        /// <inheritdoc cref="IDotGraphCanvasAttributes.BoundingBox" />
+        [DotAttributeKey(DotAttributeKeys.Bb)]
+        public virtual DotRectangle BoundingBox
+        {
+            get => GetValueAs<DotRectangle>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRectangleAttribute(k, v));
+        }
+
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Scaling" />
         [DotAttributeKey(DotAttributeKeys.Ratio)]
         public virtual DotGraphScalingDefinition Scaling
@@ -153,6 +161,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual void Set(IDotGraphCanvasAttributes attributes)
         {
             BackgroundColor = attributes.BackgroundColor;
+            BoundingBox = attributes.BoundingBox;
             CenterDrawing = attributes.CenterDrawing;
             Dpi = attributes.Dpi;
             GradientFillAngle = attributes.GradientFillAngle;

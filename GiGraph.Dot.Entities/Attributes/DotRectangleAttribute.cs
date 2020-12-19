@@ -1,11 +1,12 @@
-﻿using GiGraph.Dot.Output.Options;
+﻿using GiGraph.Dot.Entities.Types.Geometry;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
     /// <summary>
-    ///     An integer value attribute.
+    ///     A rectangle value attribute.
     /// </summary>
-    public class DotIntAttribute : DotAttribute<int>
+    public class DotRectangleAttribute : DotAttribute<DotRectangle>
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -16,14 +17,14 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotIntAttribute(string key, int value)
+        public DotRectangleAttribute(string key, DotRectangle value)
             : base(key, value)
         {
         }
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return Value.ToString(syntaxRules.Culture);
+            return Value?.GetDotEncodedValue(options, syntaxRules);
         }
     }
 }

@@ -3,9 +3,9 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Geometry;
 using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Strings;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections

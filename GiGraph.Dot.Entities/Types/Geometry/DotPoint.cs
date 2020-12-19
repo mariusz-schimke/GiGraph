@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Entities.Types.Points
+namespace GiGraph.Dot.Entities.Types.Geometry
 {
     /// <summary>
     ///     Represents a point in an n-dimensional plain.

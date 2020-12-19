@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Points;
+using GiGraph.Dot.Entities.Types.Geometry;
 using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Entities.Types.Styles;
 using GiGraph.Dot.Entities.Types.Viewport;
@@ -143,9 +143,15 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         ///     <para>
         ///         To specify width, height, and zoom of the final drawing, use <see cref="DotViewport" />. To also specify a central point
         ///         of the drawing, use <see cref="DotPointCenteredViewport" />, or, to specify a node as a central point, use
-        ///         <see cref="DotNodeCenteredViewport" />.
+        ///         <see cref="DotNodeCenteredViewport" />. By default, the focus is the center of the graph bounding box, i.e., (bbx / 2,
+        ///         bby / 2), where "bbx, bby" is the value of the <see cref="BoundingBox" /> attribute.
         ///     </para>
         /// </summary>
         DotViewport Viewport { get; set; }
+
+        /// <summary>
+        ///     Bounding box of drawing in points (write only).
+        /// </summary>
+        DotRectangle BoundingBox { get; set; }
     }
 }

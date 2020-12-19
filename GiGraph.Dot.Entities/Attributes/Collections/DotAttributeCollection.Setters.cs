@@ -6,10 +6,10 @@ using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Arrows;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Geometry;
 using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Entities.Types.Packing;
-using GiGraph.Dot.Entities.Types.Points;
 using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Entities.Types.Scaling;
 using GiGraph.Dot.Entities.Types.Strings;
@@ -551,6 +551,20 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual DotPointAttribute Set(string key, DotPoint value)
         {
             return Set(new DotPointAttribute(key, value));
+        }
+
+        /// <summary>
+        ///     Adds or replaces the specified rectangle attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotRectangleAttribute Set(string key, DotRectangle value)
+        {
+            return Set(new DotRectangleAttribute(key, value));
         }
 
         /// <summary>
