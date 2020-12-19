@@ -169,7 +169,7 @@ graph.Edges.Add("Foo", "Bar", edge =>
 });
 ```
 
-There are over a hundred different DOT attributes that may be set on the graph and on its elements. The library let's you set them conveniently by using properties on attribute collections available on the graph and on its elements. Most of the attributes listed in the DOT documentation may be specified by using existing properties. However, if by chance there is no property for a DOT attribute you would like to set, you may still provide a key and a value for it manually, as strings. Consider the following example:
+There over 170 different DOT attributes listed in the DOT documentation, that may be set on a graph or on its elements. The library let's you set most of them conveniently by using properties on attribute collections available on the graph and on its elements. However, if there is no property available for a DOT attribute you would like to set, you may still provide a key and a value for it manually, as strings. Consider the following example:
 
 ```c#
 node.Attributes.Collection.Set("fillcolor", "red:blue");
@@ -188,9 +188,7 @@ The *DotStringAttribute* may be used for any type of attribute. Its *value* will
 node.Attributes.Collection.Set("fillcolor", new DotGradientColor(Color.Red, Color.Blue));
 ```
 
-
-
-However, if you actually want to provide a value that won't be modified in any way (escaped) in the output DOT script, you may resort to *DotCustomAttribute*. It's similar to mentioned *DotStringAttribute*, but the value you provide is rendered as is, without any further processing. When using it, make sure that it is escaped appropriately, as otherwise the output DOT script may become syntactically incorrect.
+However, if you actually want to provide a value that won't be modified in any way (escaped) in the output DOT script, you may resort to *DotCustomAttribute*. It's similar to mentioned *DotStringAttribute*, but the value you provide is rendered as is, without any further processing. When using it, make sure that it is escaped appropriately, as otherwise the output DOT script may become syntactically incorrect.
 
 ```c#
 node.Attributes.Collection.SetCustom("fillcolor", "red:blue");
@@ -201,6 +199,26 @@ Under the hood, the *SetCustom* method adds a *DotCustomAttribute* instance to t
 ```c#
 var attribute = new DotCustomAttribute("fillcolor", "red:blue");
 node.Attributes.Collection.Set(attribute);
+```
+
+
+
+❕ Note that when you can't find a property for the DOT attribute you would like to set, you may use the attribute metadata dictionary on the graph or on any other element that has an attribute collection. The metadata includes, among others, a property path for a DOT attribute key:
+
+```c#
+var dict = graph.Attributes.GetMetadataDictionary();
+
+// outputs "Hyperlink.Target"
+Console.WriteLine(dict["target"].PropertyPath);
+```
+
+You may also do it the other way round:
+
+```c#
+var meta = graph.Attributes.Hyperlink.GetMetadata(attr => attr.Target);
+
+// outputs "target"
+Console.WriteLine(meta.Key);
 ```
 
 
@@ -1222,7 +1240,7 @@ digraph
 
 ### Clusters as endpoints
 
-Clusters may be used as endpoints. In such case the edge is clipped to cluster border instead of being connected to a node inside the cluster. To achieve that effect, define an edge that joins any node with a node inside the cluster. Then, on the edge endpoint you want to attach to the cluster border, assign the identifier of that cluster to the *ClusterId* attribute. First of all, however, enable clipping edges to cluster borders by setting the *AllowEdgeClipping* attribute for clusters on the graph. The following example presents the complete idea.
+Clusters may be used as endpoints. In such case the edge is clipped to cluster border instead of being connected to a node inside the cluster. To achieve that effect, define an edge that joins any node with a node inside the cluster. Then, on the edge endpoint inside the cluster assign the identifier of that cluster to the *ClusterId* attribute. First of all, however, enable clipping edges to cluster borders by setting the *AllowEdgeClipping* attribute for clusters on the graph. The following example presents the complete idea.
 
 ```c#
 var graph = new DotGraph();
@@ -1237,7 +1255,7 @@ graph.Clusters.Add("Cluster1", cluster =>
 
 graph.Edges.Add("Foo", "Bar", edge =>
 {
-    // the head node (Bar) is inside the cluster, so the edge will be attached to the cluster, not to the node
+    // the head node (Bar) is inside the cluster, so the edge will be attached to the border of that cluster instead of the node
     edge.Attributes.Head.ClusterId = "Cluster1";
 });
 ```
