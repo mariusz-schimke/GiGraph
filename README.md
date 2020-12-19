@@ -248,7 +248,7 @@ node.Attributes.Collection.Set(attribute);
 
 
 
-❕ Note that when you can't find a property for the attribute you would like to set, you may use the attribute metadata dictionary on the graph or on any other element that has an attribute collection. The metadata includes, among others, a property path for an attribute key:
+❕ Note, however, that when you can't find a property for the attribute you would like to set, you may use attribute metadata dictionary on the graph or on any other element that has an attribute collection. The metadata includes, among others, a property path for an attribute key:
 
 ```c#
 var dict = graph.Attributes.GetMetadataDictionary();
