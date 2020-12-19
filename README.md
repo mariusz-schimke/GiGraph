@@ -955,11 +955,11 @@ There are two types that represent endpoint groups: *DotEndpointGroup* and *DotS
 graph.Edges.AddOneToMany("Foo", "Bar", "Baz");
 
 // the code above is equivalent to
-var edgeGroup = new DotEdge<DotEndpoint, DotSubgraphEndpoint>(
+var edge = new DotEdge<DotEndpoint, DotSubgraphEndpoint>(
     new DotEndpoint("Foo"),
     new DotSubgraphEndpoint("Bar", "Baz"));
 
-graph.Edges.Add(edgeGroup);
+graph.Edges.Add(edge);
 ```
 
 ```dot
@@ -986,14 +986,14 @@ graph.Edges.Add(
     ));
 
 // the code above is equivalent to
-var edgeGroup = new DotEdge<DotEndpoint, DotEndpointGroup>(
+var edge = new DotEdge<DotEndpoint, DotEndpointGroup>(
     "Foo", // converted implicitly to DotEndpoint
     new DotEndpointGroup(
         new DotEndpoint("Bar", DotCompassPoint.NorthWest),
         new DotEndpoint("Baz", DotCompassPoint.NorthEast)
     ));
 
-graph.Edges.Add(edgeGroup);
+graph.Edges.Add(edge);
 ```
 
 ```dot
@@ -1016,11 +1016,11 @@ digraph
 graph.Edges.AddManyToOne("Baz", "Foo", "Bar");
 
 // the line above is equivalent to
-var edgeGroup = new DotEdge<DotSubgraphEndpoint, DotEndpoint>(
+var edge = new DotEdge<DotSubgraphEndpoint, DotEndpoint>(
     new DotSubgraphEndpoint("Foo", "Bar"),
     new DotEndpoint("Baz"));
 
-graph.Edges.Add(edgeGroup);
+graph.Edges.Add(edge);
 ```
 
 ```dot
@@ -1045,11 +1045,11 @@ graph.Edges.AddManyToMany(
     new DotSubgraphEndpoint("Baz", "Qux"));
 
 // the line above is equivalent to
-var edgeGroup = new DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>(
+var edge = new DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>(
     new DotSubgraphEndpoint("Foo", "Bar"),
     new DotSubgraphEndpoint("Baz", "Qux"));
 
-graph.Edges.Add(edgeGroup);
+graph.Edges.Add(edge);
 ```
 
 ```dot
