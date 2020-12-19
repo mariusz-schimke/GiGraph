@@ -189,7 +189,7 @@ var graph = new DotGraph(strict: true);
 
 ## Attributes
 
-Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrow head shape and so on. When you don't specify attributes explicitly, their default values may depend on the graph layout engine you use for visualization (see [documentation](http://www.graphviz.org/doc/info/attrs.html)).
+Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrow head shape, and so on. When you don't specify attributes explicitly, their default values depend on the graph layout engine you use for visualization (see [documentation](http://www.graphviz.org/doc/info/attrs.html)).
 
 ```c#
 graph.Attributes.Label = "My graph";
@@ -214,7 +214,7 @@ graph.Edges.Add("Foo", "Bar", edge =>
 });
 ```
 
-There over 170 different DOT attributes listed in the DOT documentation, that may be set on a graph or on its elements. The library let's you set most of them conveniently by using properties on attribute collections available on the graph and on its elements. However, if there is no property available for a DOT attribute you would like to set, you may still provide a key and a value for it manually, as strings. Consider the following example:
+There over 170 different attributes listed in the Graphviz documentation, that may be set on a graph or on its elements. The library let's you set most of them conveniently by using properties on attribute collections available on the graph and on its elements. However, if there is no property available for an attribute you would like to set, you may still provide a key and a value for it manually, as strings. Consider the following example:
 
 ```c#
 node.Attributes.Collection.Set("fillcolor", "red:blue");
@@ -248,7 +248,7 @@ node.Attributes.Collection.Set(attribute);
 
 
 
-❕ Note that when you can't find a property for the DOT attribute you would like to set, you may use the attribute metadata dictionary on the graph or on any other element that has an attribute collection. The metadata includes, among others, a property path for a DOT attribute key:
+❕ Note that when you can't find a property for the attribute you would like to set, you may use the attribute metadata dictionary on the graph or on any other element that has an attribute collection. The metadata includes, among others, a property path for an attribute key:
 
 ```c#
 var dict = graph.Attributes.GetMetadataDictionary();
@@ -405,7 +405,7 @@ digraph "Label formatting"
 
 #### Label justification
 
-The DOT [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type also supports escape sequences that left- or right-justify individual lines of label text. Below is an example how to format text using them implicitly (by *DotTextFormatter*) or explicitly (by string concatenation).
+The Graphviz [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type also supports escape sequences that left- or right-justify individual lines of label text. Below is an example how to format text using them implicitly (by *DotTextFormatter*) or explicitly (by string concatenation).
 
 ```c#
 graph.Nodes.Add("Foo", attrs =>
@@ -483,7 +483,7 @@ digraph
 
 ### Record nodes
 
-The shape of a node is determined by the *Shape* attribute. By default it is an ellipse with a label, but you may change it to any other shape accepted by your DOT visualization tool. The standard shapes are available under the *DotNodeShape* enumeration, and two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use either of these as the *Shape* attribute, you may assign a record type label (*DotRecord*) to the node.
+The shape of a node is determined by the *Shape* attribute. By default it is an ellipse with a label, but you may change it to any other shape accepted by your visualization tool. The standard shapes are available under the *DotNodeShape* enumeration, and two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use either of these as the *Shape* attribute, you may assign a record type label (*DotRecord*) to the node.
 
 ```c#
 using GiGraph.Dot.Extensions; // ToRecordNode
@@ -1806,7 +1806,7 @@ graph
 
 # Custom output script formatting
 
-The DOT generation engine supports setting custom preferences for generating the output. These include **syntax preferences** and **formatting preferences**.
+The DOT generation engine of the library supports setting custom preferences for generating the output. These include **syntax preferences** and **formatting preferences**.
 
 
 
