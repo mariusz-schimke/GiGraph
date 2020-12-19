@@ -1067,7 +1067,7 @@ digraph
 
 #### Group attributes
 
-Each group used in the above examples supports attributes. You may set them either directly on a group instance, or by using a lambda expression passed by an argument of the *AddOneToMany*, *AddManyToOne*, *AddManyToMany* methods on the *Edges* collection.
+Attributes for an edge definition may be set either directly on its attribute collection, or by using a lambda expression passed by an argument of the *AddOneToMany*, *AddManyToOne*, *AddManyToMany* methods on an *Edges* collection.
 
 ```c#
 graph.Edges.AddManyToMany(
@@ -1101,14 +1101,14 @@ digraph
 </p>
 
 
-❕ Note that *DotEndpoint* is implicitly convertible from *string* for convenience.
+❕ Note that *DotEndpoint* is implicitly convertible from *string* (for convenience).
 
 
 
 
 ### Edge sequences
 
-An edge sequence lets you join endpoints and/or endpoint groups in such a way that they join one another consecutively. Similarly to [endpoint groups](#endpoint-groups), a sequence may be understood as a simpler way to specify multiple edges at once, without having to define them separately for each consecutive connection. The edges, however, share one list of attributes, so when you set them for the sequence, they will be applied to all edges rendered based on it.
+An edge sequence represented by the *DotEdgeSequence* class lets you define endpoints and/or endpoint groups in such a way that they join one another consecutively. This approach may be used as a simpler way to define a sequence of edges all at once, without having to specify a separate edge for each connection between consecutive endpoints or endpoint groups. An edge sequence, however, has one list of attributes, so when you set them for the sequence, they will be applied to all edges rendered based on it.
 
 
 
