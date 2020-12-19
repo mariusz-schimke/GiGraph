@@ -943,7 +943,7 @@ digraph
 
 ### Endpoint groups
 
-And edge joins two endpoints (nodes), however, in some cases you may want to join one endpoint to multiple endpoints or multiple endpoints to multiple endpoints. To achieve that, you may either specify multiple edges having the same node identifier as their head or tail endpoint, or simply use an endpoint group as the head and/or tail instead of a single node identifier. This single edge definition will actually render multiple edges. Note, however, that all these edges share one list of attributes, so when you set them, they will be applied to all these edges.
+And edge joins two endpoints (nodes), however, in some cases you may want to join one endpoint to multiple endpoints or multiple endpoints to multiple endpoints. To achieve that, you may either specify multiple edges having the same node identifier as their head or tail endpoint, or simply use an endpoint group as the head and/or tail instead of a single node identifier. Such single edge definition actually renders multiple edges. Note, however, that all these edges share one list of attributes, so when you set them, they will be applied to all these edges.
 
 There are two types that represent endpoint groups: *DotEndpointGroup* and *DotSubgraphEndpoint*. They may be used interchangeably, but the former enables you to specify a port for any endpoint in the group, which is not possible when *DotSubgraphEndpoint* is used.
 
