@@ -56,12 +56,12 @@ namespace GiGraph.Dot.Entities.Types.Geometry
         /// <summary>
         ///     Gets or sets the x-coordinate of the upper-left corner in points.
         /// </summary>
-        public double X { get; set; }
+        public virtual double X { get; set; }
 
         /// <summary>
         ///     Gets or sets the y-coordinate of the upper-left corner in points.
         /// </summary>
-        public double Y { get; set; }
+        public virtual double Y { get; set; }
 
         /// <summary>
         ///     Gets or sets the width in points.
