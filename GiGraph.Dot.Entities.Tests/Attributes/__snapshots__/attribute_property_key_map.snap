@@ -8,6 +8,9 @@
   "arrowtail": [
     "Tail.Arrowhead [Edge]"
   ],
+  "bb": [
+    "Canvas.BoundingBox [Graph]"
+  ],
   "bgcolor": [
     "Canvas.BackgroundColor [Graph]",
     "BackgroundColor [Cluster]"

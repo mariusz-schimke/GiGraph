@@ -1,6 +1,5 @@
 using System;
 using System.Drawing;
-using System.Globalization;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Colors

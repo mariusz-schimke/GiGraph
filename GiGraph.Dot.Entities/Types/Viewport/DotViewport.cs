@@ -1,4 +1,3 @@
-using System.Globalization;
 using System.Linq;
 using GiGraph.Dot.Output.Options;
 

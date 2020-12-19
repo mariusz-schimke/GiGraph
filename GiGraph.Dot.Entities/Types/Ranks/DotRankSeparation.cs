@@ -1,4 +1,3 @@
-using System.Globalization;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Ranks

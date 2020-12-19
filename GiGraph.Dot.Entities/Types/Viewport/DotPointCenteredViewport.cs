@@ -1,4 +1,3 @@
-using System.Globalization;
 using System.Linq;
 using GiGraph.Dot.Output.Options;
 
@@ -19,10 +18,10 @@ namespace GiGraph.Dot.Entities.Types.Viewport
         ///     The height of the final image, in points.
         /// </param>
         /// <param name="x">
-        ///     The x coordinate of the center of the viewport.
+        ///     The x-coordinate of the center of the viewport.
         /// </param>
         /// <param name="y">
-        ///     The y coordinate of the center of the viewport.
+        ///     The y-coordinate of the center of the viewport.
         /// </param>
         /// <param name="zoom">
         ///     The zoom factor. The image in the original layout will be <see cref="DotViewport.Width" /> / <see cref="DotViewport.Zoom" />
@@ -36,12 +35,12 @@ namespace GiGraph.Dot.Entities.Types.Viewport
         }
 
         /// <summary>
-        ///     Gets the x coordinate of the center of the viewport.
+        ///     Gets the x-coordinate of the center of the viewport.
         /// </summary>
         public virtual double X { get; set; }
 
         /// <summary>
-        ///     Gets the y coordinate of the center of the viewport.
+        ///     Gets the y-coordinate of the center of the viewport.
         /// </summary>
         public virtual double Y { get; set; }
 
