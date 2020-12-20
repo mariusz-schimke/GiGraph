@@ -568,6 +568,34 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         }
 
         /// <summary>
+        ///     Adds or replaces the specified rectangle array attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotRectangleArrayAttribute Set(string key, DotRectangle[] value)
+        {
+            return Set(new DotRectangleArrayAttribute(key, value));
+        }
+
+        /// <summary>
+        ///     Adds or replaces the specified rectangle array attribute in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to include in the collection.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute to include in the collection.
+        /// </param>
+        public virtual DotRectangleArrayAttribute Set(string key, IEnumerable<DotRectangle> value)
+        {
+            return Set(new DotRectangleArrayAttribute(key, value));
+        }
+
+        /// <summary>
         ///     Adds or replaces the specified aspect ratio attribute in the collection.
         /// </summary>
         /// <param name="key">
