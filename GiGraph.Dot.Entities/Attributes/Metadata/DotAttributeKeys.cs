@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         [DotAttributeMetadata(DotCompatibleElements.Graph, isImplemented: false)]
         public const string Background = "_background";
 
-        [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.None)]
+        [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.None, isImplemented: false)]
         public const string Bb = "bb";
 
         [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster)]
