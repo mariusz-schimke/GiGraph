@@ -214,7 +214,7 @@ graph.Edges.Add("Foo", "Bar", edge =>
 });
 ```
 
-There over 170 different attributes listed in the Graphviz documentation, that may be set on a graph or on its elements. The library let's you set most of them conveniently by using properties on attribute collections available on the graph and on its elements. However, if there is no property available for an attribute you would like to set, you may still provide a key and a value for it manually, as strings. Consider the following example:
+There over 170 different attributes listed in the Graphviz documentation, that may be set on a graph or on its elements. The library lets you set most of them conveniently by using properties on attribute collections available on the graph and on its elements. However, if there is no property available for an attribute you would like to set, you may still provide a key and a value for it manually, as strings. Consider the following example:
 
 ```c#
 node.Attributes.Collection.Set("fillcolor", "red:blue");
