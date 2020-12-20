@@ -1,4 +1,5 @@
 using System.Drawing;
+using System.Linq;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Geometry
@@ -12,10 +13,10 @@ namespace GiGraph.Dot.Entities.Types.Geometry
         ///     Initializes a new rectangle instance.
         /// </summary>
         /// <param name="x">
-        ///     The x-coordinate of the upper-left corner in points.
+        ///     The x-coordinate of the lower-left corner in points.
         /// </param>
         /// <param name="y">
-        ///     The y-coordinate of the upper-left corner in points.
+        ///     The y-coordinate of the lower-left corner in points.
         /// </param>
         /// <param name="width">
         ///     The width in points.
@@ -54,12 +55,12 @@ namespace GiGraph.Dot.Entities.Types.Geometry
         }
 
         /// <summary>
-        ///     Gets or sets the x-coordinate of the upper-left corner in points.
+        ///     Gets or sets the x-coordinate of the lower-left corner in points.
         /// </summary>
         public virtual double X { get; set; }
 
         /// <summary>
-        ///     Gets or sets the y-coordinate of the upper-left corner in points.
+        ///     Gets or sets the y-coordinate of the lower-left corner in points.
         /// </summary>
         public virtual double Y { get; set; }
 
@@ -81,8 +82,10 @@ namespace GiGraph.Dot.Entities.Types.Geometry
         protected internal virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             // The rectangle llx,lly,urx,ury gives the coordinates, in points, of the lower-left corner (llx,lly) and the upper-right corner (urx,ury).
-            // I decided to use the standard approach, however, where a rect is defined by the upper-left and the lower right corner.
-            return $"{X.ToString(syntaxRules.Culture)},{(Y + Height).ToString(syntaxRules.Culture)},{(X + Width).ToString(syntaxRules.Culture)},{Y.ToString(syntaxRules.Culture)}";
+            return string.Join(
+                ",",
+                new[] { X, Y, X + Width, Y + Height }.Select(value => value.ToString(syntaxRules.Culture))
+            );
         }
 
         public static implicit operator DotRectangle(Rectangle? rectangle)
