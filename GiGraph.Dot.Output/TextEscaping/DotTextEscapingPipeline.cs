@@ -87,6 +87,17 @@ namespace GiGraph.Dot.Output.TextEscaping
         }
 
         /// <summary>
+        ///     Creates a new pipeline that escapes HTML text.
+        /// </summary>
+        public static DotTextEscapingPipeline ForHtmlText()
+        {
+            return new DotTextEscapingPipeline
+            (
+                new DotHtmlEscaper()
+            );
+        }
+
+        /// <summary>
         ///     Creates a new pipeline that escapes fields of record labels (backslashes, quotation marks, line breaks; angle and curly
         ///     brackets, vertical bars, and spaces).
         /// </summary>
