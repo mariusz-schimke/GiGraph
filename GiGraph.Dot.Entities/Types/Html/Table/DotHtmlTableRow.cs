@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Strings;
 
-namespace GiGraph.Dot.Entities.Types.Html
+namespace GiGraph.Dot.Entities.Types.Html.Table
 {
     /// <summary>
     ///     An HTML table row.
@@ -18,7 +19,7 @@ namespace GiGraph.Dot.Entities.Types.Html
         {
         }
 
-        public string Id { get; set; }
+        public DotEscapeString Id { get; set; }
         public string PortName { get; set; }
         public string Title { get; set; }
         public string Tooltip { get; set; }
@@ -30,7 +31,7 @@ namespace GiGraph.Dot.Entities.Types.Html
         public int? CellBorder { get; set; }
         public int? CellPadding { get; set; }
         public int? CellSpacing { get; set; }
-        public string? RowsA { get; set; }
+        public string RowsA { get; set; }
         public int? Columns { get; set; }
         public int? Sides { get; set; }
         public bool? FixedSize { get; set; }
@@ -62,9 +63,6 @@ namespace GiGraph.Dot.Entities.Types.Html
         /// </summary>
         /// <param name="cells">
         ///     The text for the cells to add.
-        /// </param>
-        /// <param name="init">
-        ///     A cell initializer delegate.
         /// </param>
         public virtual DotHtmlTableCell[] AddCells(params string[] cells)
         {
