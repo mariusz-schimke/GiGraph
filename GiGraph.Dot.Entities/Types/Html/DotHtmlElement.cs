@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Types.Html
     public abstract class DotHtmlElement : DotHtmlTag
     {
         protected DotHtmlElement(string name)
-            : base(name, contentAllowed: true)
+            : base(name, isVoid: false)
         {
             Children = new List<DotHtmlEntity>();
         }

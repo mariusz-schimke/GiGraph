@@ -8,32 +8,32 @@
         /// <summary>
         ///     Attribute options.
         /// </summary>
-        public virtual AttributeOptions Attributes { get; protected set; } = new AttributeOptions();
+        public virtual AttributeOptions Attributes { get; protected set; } = new();
 
         /// <summary>
         ///     Subgraph options.
         /// </summary>
-        public virtual SubgraphOptions Subgraphs { get; protected set; } = new SubgraphOptions();
+        public virtual SubgraphOptions Subgraphs { get; protected set; } = new();
 
         /// <summary>
         ///     Cluster options.
         /// </summary>
-        public virtual ClusterOptions Clusters { get; protected set; } = new ClusterOptions();
+        public virtual ClusterOptions Clusters { get; protected set; } = new();
 
         /// <summary>
         ///     Edge options.
         /// </summary>
-        public virtual EdgeOptions Edges { get; protected set; } = new EdgeOptions();
+        public virtual EdgeOptions Edges { get; protected set; } = new();
 
         /// <summary>
         ///     Color options.
         /// </summary>
-        public virtual ColorOptions Colors { get; protected set; } = new ColorOptions();
+        public virtual ColorOptions Colors { get; protected set; } = new();
 
         /// <summary>
         ///     Comment options.
         /// </summary>
-        public virtual CommentOptions Comments { get; protected set; } = new CommentOptions();
+        public virtual CommentOptions Comments { get; protected set; } = new();
 
         /// <summary>
         ///     When set, identifiers will always be quoted, even if it is not required.

@@ -37,27 +37,27 @@ namespace GiGraph.Dot.Output.Options
         /// <summary>
         ///     Gets global attribute formatting options.
         /// </summary>
-        public virtual GlobalAttributesOptions GlobalAttributes { get; } = new GlobalAttributesOptions();
+        public virtual GlobalAttributesOptions GlobalAttributes { get; } = new();
 
         /// <summary>
         ///     Gets subgraph formatting options.
         /// </summary>
-        public virtual SubgraphOptions Subgraphs { get; } = new SubgraphOptions();
+        public virtual SubgraphOptions Subgraphs { get; } = new();
 
         /// <summary>
         ///     Gets cluster formatting options.
         /// </summary>
-        public virtual ClusterOptions Clusters { get; } = new ClusterOptions();
+        public virtual ClusterOptions Clusters { get; } = new();
 
         /// <summary>
         ///     Gets edge formatting options.
         /// </summary>
-        public virtual EdgeOptions Edges { get; } = new EdgeOptions();
+        public virtual EdgeOptions Edges { get; } = new();
 
         /// <summary>
         ///     Gets node formatting options.
         /// </summary>
-        public virtual NodeOptions Nodes { get; } = new NodeOptions();
+        public virtual NodeOptions Nodes { get; } = new();
 
         /// <summary>
         ///     An optional text encoder to use when writing text to the output stream. May become useful when the DOT visualization tool you

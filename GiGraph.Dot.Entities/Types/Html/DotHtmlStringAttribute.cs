@@ -8,14 +8,19 @@ namespace GiGraph.Dot.Entities.Types.Html
     /// </summary>
     public class DotHtmlStringAttribute : DotHtmlAttribute<string>
     {
-        public DotHtmlStringAttribute(string value)
+        protected readonly bool _isEscaped;
+
+        public DotHtmlStringAttribute(string value, bool isEscaped = false)
             : base(value)
         {
+            _isEscaped = isEscaped;
         }
 
         public override DotHtml ToHtml()
         {
-            return DotHtmlEscaper.Escape(Value);
+            return _isEscaped
+                ? Value
+                : DotHtmlEscaper.Escape(Value);
         }
     }
 }

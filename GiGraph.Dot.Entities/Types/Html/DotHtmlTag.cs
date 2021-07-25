@@ -10,13 +10,13 @@ namespace GiGraph.Dot.Entities.Types.Html
     /// </summary>
     public abstract class DotHtmlTag : DotHtmlEntity
     {
-        protected readonly bool _contentAllowed;
+        protected readonly bool _isVoid;
         protected readonly string _name;
 
-        protected DotHtmlTag(string name, bool contentAllowed)
+        protected DotHtmlTag(string name, bool isVoid)
         {
             _name = name;
-            _contentAllowed = contentAllowed;
+            _isVoid = isVoid;
             Attributes = new Dictionary<string, DotHtmlAttribute>();
         }
 
@@ -41,15 +41,15 @@ namespace GiGraph.Dot.Entities.Types.Html
             );
             result.Append(tagWithAttributes);
 
-            if (_contentAllowed)
+            if (_isVoid)
+            {
+                result.Append("/>");
+            }
+            else
             {
                 result.Append(">");
                 AppendChildren(result);
                 result.Append($"</{_name}>");
-            }
-            else
-            {
-                result.Append(" />");
             }
 
             return result.ToString();
