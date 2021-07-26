@@ -100,7 +100,6 @@ namespace GiGraph.Dot.Output.TextEscaping
         {
             return new DotTextEscapingPipeline
             (
-                // TODO: czy escaping powinien zamieniać entery na <br/>?
                 new DotHtmlTextEscaper()
             );
         }
@@ -112,6 +111,9 @@ namespace GiGraph.Dot.Output.TextEscaping
         {
             return new DotTextEscapingPipeline
             (
+                // TODO: consider tabs and non-braking spaces?
+                // https://graphviz.org/doc/info/shapes.html#html
+                // "All non-printing characters such as tabs or newlines are ignored."
                 new DotHtmlTextEscaper()
             );
         }

@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Output.Converters
         {
             return DotHtmlElementAttributeValue.TryGet((Enum) value, out var result)
                 ? result
-                : throw new ArgumentOutOfRangeException(nameof(value), $"The specified HTML attribute enumeration value '{value}' is invalid.");
+                : throw new ArgumentOutOfRangeException(nameof(value), $"The specified value '{value}' of the '{value.GetType().Name}' enumeration is invalid or is not mapped to any HTML attribute value.");
         }
     }
 }

@@ -12,7 +12,6 @@ namespace GiGraph.Dot.Output.Converters
 
         public string Convert(object value, DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            // TODO: to nie może tak być – musi być obsłużony konkretny DotEscapeString, aby dobrać odpowiedni escaping
             return ((IDotEscapable) value).GetEscaped(syntaxRules.Attributes.Html.AttributeEscapeStringValueEscaper);
         }
     }

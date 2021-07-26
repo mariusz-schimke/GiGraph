@@ -12,9 +12,6 @@ namespace GiGraph.Dot.Output.Converters
 
         public string Convert(object value, DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            // TODO: consider tabs and non-braking spaces?
-            // https://graphviz.org/doc/info/shapes.html#html
-            // "All non-printing characters such as tabs or newlines are ignored."
             return syntaxRules.Attributes.Html.AttributeStringValueEscaper.Escape((string) value);
         }
     }
