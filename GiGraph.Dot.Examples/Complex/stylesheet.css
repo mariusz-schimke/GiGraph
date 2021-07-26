@@ -1,14 +1,11 @@
-.foo_node 
-{
+.foo_node {
     fill: red;
 }
 
-ellipse 
-{
+ellipse {
     fill: turquoise;
 }
 
-path 
-{
+path {
     stroke: royalblue;
 }

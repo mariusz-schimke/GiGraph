@@ -90,7 +90,7 @@ namespace GiGraph.Dot.Entities.Edges
         public virtual bool Loops(DotEndpoint endpoint)
         {
             return Tail.IsSameEndpoint(endpoint) &&
-                   Head.IsSameEndpoint(endpoint);
+                Head.IsSameEndpoint(endpoint);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace GiGraph.Dot.Entities.Edges
         public virtual bool Equals(string tailId, string headId)
         {
             return Tail.Id == tailId &&
-                   Head.Id == headId;
+                Head.Id == headId;
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace GiGraph.Dot.Entities.Edges
         public virtual bool Equals(DotEndpoint tail, DotEndpoint head)
         {
             return Tail.IsSameEndpoint(tail) &&
-                   Head.IsSameEndpoint(head);
+                Head.IsSameEndpoint(head);
         }
     }
 }

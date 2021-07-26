@@ -162,7 +162,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         protected virtual PropertyInfo GetProperty<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var propertyInfo = (property.Body as MemberExpression)?.Member as PropertyInfo ??
-                               throw new ArgumentException("Property expression expected.", nameof(property));
+                throw new ArgumentException("Property expression expected.", nameof(property));
 
             // make sure the property expression refers to current instance type, to any of its base classes, or to an interface it implements
             if (!propertyInfo.DeclaringType.IsAssignableFrom(GetType()))

@@ -9,8 +9,8 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 {
     public class DotAttributeEncodingTest
     {
-        private readonly DotSyntaxOptions _syntaxOptions = new DotSyntaxOptions();
-        private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
+        private readonly DotSyntaxOptions _syntaxOptions = new();
+        private readonly DotSyntaxRules _syntaxRules = new();
 
         [Fact]
         public void double_attribute_returns_invariant_culture_encoded_value()

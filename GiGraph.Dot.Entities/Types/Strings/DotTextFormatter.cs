@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Types.Strings
     /// </summary>
     public class DotTextFormatter
     {
-        protected readonly List<DotEscapeString> _items = new List<DotEscapeString>();
+        protected readonly List<DotEscapeString> _items = new();
 
         /// <summary>
         ///     Creates a new instance.

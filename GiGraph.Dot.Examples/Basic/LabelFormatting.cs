@@ -48,7 +48,7 @@ namespace GiGraph.Dot.Examples.Basic
 
                 // using string concatenation
                 edge.Attributes.Label = "From " + DotEscapeString.EdgeTailNodeId +
-                                        " to " + DotEscapeString.EdgeHeadNodeId;
+                    " to " + DotEscapeString.EdgeHeadNodeId;
             });
 
             return graph;

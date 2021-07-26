@@ -65,12 +65,12 @@ namespace GiGraph.Dot.Output.Metadata
             where TEnum : Enum
         {
             var match = typeof(TEnum)
-                .GetFields(FieldBindingFlags)
-                .FirstOrDefault(field => field.GetCustomAttribute<TAttribute>()?.Value is { } fieldDotValue && fieldDotValue == dotValue);
+               .GetFields(FieldBindingFlags)
+               .FirstOrDefault(field => field.GetCustomAttribute<TAttribute>()?.Value is { } fieldDotValue && fieldDotValue == dotValue);
 
             if (match is { })
             {
-                value = (TEnum)match.GetValue(null);
+                value = (TEnum) match.GetValue(null);
                 return true;
             }
 
@@ -105,17 +105,17 @@ namespace GiGraph.Dot.Output.Metadata
             where TEnum : Enum
         {
             return typeof(TEnum)
-                .GetFields(FieldBindingFlags)
-                .Select(field => new
+               .GetFields(FieldBindingFlags)
+               .Select(field => new
                 {
                     Attribute = field.GetCustomAttribute<TAttribute>(),
                     Field = field
                 })
-                .Where(result => result.Attribute is { })
-                .Where(result => result.Attribute.Value is { })
-                .ToDictionary(
+               .Where(result => result.Attribute is { })
+               .Where(result => result.Attribute.Value is { })
+               .ToDictionary(
                     key => key.Attribute.Value,
-                    element => (TEnum)element.Field.GetValue(null)
+                    element => (TEnum) element.Field.GetValue(null)
                 );
         }
     }

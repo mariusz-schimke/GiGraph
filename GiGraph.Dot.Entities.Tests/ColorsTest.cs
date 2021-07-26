@@ -8,8 +8,8 @@ namespace GiGraph.Dot.Entities.Tests
 {
     public class ColorsTest
     {
-        private readonly DotSyntaxOptions _syntaxOptions = new DotSyntaxOptions();
-        private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
+        private readonly DotSyntaxOptions _syntaxOptions = new();
+        private readonly DotSyntaxRules _syntaxRules = new();
 
         [Fact]
         public void color_definition_includes_alpha_in_dot_encoded_value_when_less_than_ff()

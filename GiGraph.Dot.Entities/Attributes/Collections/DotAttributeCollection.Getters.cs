@@ -163,7 +163,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         public virtual int? GetValueAsInt(string key)
         {
-            return GetValueAs<int>(key, out var value) ? value : (int?) null;
+            return GetValueAs<int>(key, out var value) ? value : null;
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 v => v is int i ? (true, i) : (false, default)
             )
                 ? value
-                : (double?) null;
+                : null;
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </summary>
         public virtual bool? GetValueAsBool(string key)
         {
-            return GetValueAs<bool>(key, out var result) ? result : (bool?) null;
+            return GetValueAs<bool>(key, out var result) ? result : null;
         }
 
         /// <summary>

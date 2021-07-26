@@ -105,8 +105,8 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         public virtual bool IsSameEndpoint(DotEndpoint endpoint)
         {
             return endpoint is { } &&
-                   endpoint.Id == Id &&
-                   endpoint.GetType() == GetType();
+                endpoint.Id == Id &&
+                endpoint.GetType() == GetType();
         }
 
         // the type of endpoint may be specified explicitly as a generic param, in which case this implicit conversion may be useful

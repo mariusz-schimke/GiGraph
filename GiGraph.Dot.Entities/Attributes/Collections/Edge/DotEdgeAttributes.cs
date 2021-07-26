@@ -105,7 +105,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotEdgeAttributes.Style
         {
-            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;
+            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
         }
 
@@ -222,7 +222,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         [DotAttributeKey(DotAttributeKeys.Dir)]
         public virtual DotEdgeDirections? Directions
         {
-            get => GetValueAs<DotEdgeDirections>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotEdgeDirections?) null;
+            get => GetValueAs<DotEdgeDirections>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeDirectionsAttribute(k, v.Value));
         }
 

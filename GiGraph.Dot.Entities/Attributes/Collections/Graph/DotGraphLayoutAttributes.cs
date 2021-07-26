@@ -50,7 +50,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         [DotAttributeKey(DotAttributeKeys.Rank)]
         public virtual DotRank? NodeRank
         {
-            get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotRank?) null;
+            get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankAttribute(k, v.Value));
         }
 
@@ -141,7 +141,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         [DotAttributeKey(DotAttributeKeys.RankDir)]
         public virtual DotLayoutDirection? Direction
         {
-            get => GetValueAs<DotLayoutDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotLayoutDirection?) null;
+            get => GetValueAs<DotLayoutDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLayoutDirectionAttribute(k, v.Value));
         }
 
@@ -149,7 +149,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         [DotAttributeKey(DotAttributeKeys.Ordering)]
         public virtual DotEdgeOrderingMode? EdgeOrderingMode
         {
-            get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotEdgeOrderingMode?) null;
+            get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeOrderingModeAttribute(k, v.Value));
         }
 

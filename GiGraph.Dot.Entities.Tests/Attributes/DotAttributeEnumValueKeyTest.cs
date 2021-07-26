@@ -15,8 +15,8 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 {
     public class DotAttributeEnumValueKeyTest
     {
-        private readonly DotSyntaxOptions _syntaxOptions = new DotSyntaxOptions();
-        private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
+        private readonly DotSyntaxOptions _syntaxOptions = new();
+        private readonly DotSyntaxRules _syntaxRules = new();
 
         public static IEnumerable<object[]> EnumTypes =>
             new List<object[]>

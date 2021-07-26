@@ -56,8 +56,8 @@ namespace GiGraph.Dot.Entities.Types.Identifiers
         public override bool Equals(object obj)
         {
             return obj is DotId id &&
-                   id._id == _id &&
-                   id.GetType() == GetType();
+                id._id == _id &&
+                id.GetType() == GetType();
         }
 
         public override int GetHashCode()

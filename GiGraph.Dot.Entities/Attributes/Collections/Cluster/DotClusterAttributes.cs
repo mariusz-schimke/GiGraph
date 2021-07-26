@@ -69,7 +69,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotClusterAttributes.Style
         {
-            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;
+            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
         }
 
@@ -147,7 +147,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         [DotAttributeKey(DotAttributeKeys.Rank)]
         public virtual DotRank? NodeRank
         {
-            get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotRank?) null;
+            get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankAttribute(k, v.Value));
         }
 

@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         [DotAttributeKey(DotAttributeKeys.ImagePos)]
         public virtual DotAlignment? Alignment
         {
-            get => GetValueAs<DotAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotAlignment?) null;
+            get => GetValueAs<DotAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotAlignmentAttribute(k, v.Value));
         }
 
@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         [DotAttributeKey(DotAttributeKeys.ImageScale)]
         public virtual DotImageScaling? Scaling
         {
-            get => GetValueAs<DotImageScaling>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotImageScaling?) null;
+            get => GetValueAs<DotImageScaling>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotImageScalingAttribute(k, v.Value));
         }
 

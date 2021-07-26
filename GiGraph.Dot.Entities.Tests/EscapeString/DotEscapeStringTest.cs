@@ -7,8 +7,8 @@ namespace GiGraph.Dot.Entities.Tests.EscapeString
 {
     public class DotEscapeStringTest
     {
-        private readonly DotSyntaxOptions _syntaxOptions = new DotSyntaxOptions();
-        private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
+        private readonly DotSyntaxOptions _syntaxOptions = new();
+        private readonly DotSyntaxRules _syntaxRules = new();
 
         [Fact]
         public void escaped_string_returns_exact_input_as_dot_encoded_value()

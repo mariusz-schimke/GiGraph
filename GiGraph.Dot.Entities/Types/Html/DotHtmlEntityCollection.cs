@@ -60,7 +60,7 @@ namespace GiGraph.Dot.Entities.Types.Html
         {
             if (text is null)
             {
-                return new();
+                return new DotHtmlEntityCollection();
             }
 
             var result = new List<IDotHtmlEntity>();
@@ -76,7 +76,7 @@ namespace GiGraph.Dot.Entities.Types.Html
                 result.Add(new DotHtmlTextContent(lines[i]));
             }
 
-            return new(result);
+            return new DotHtmlEntityCollection(result);
         }
 
         /// <summary>

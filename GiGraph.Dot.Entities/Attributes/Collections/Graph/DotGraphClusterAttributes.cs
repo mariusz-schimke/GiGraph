@@ -82,7 +82,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         [DotAttributeKey(DotAttributeKeys.ClusterRank)]
         public virtual DotClusterVisualizationMode? VisualizationMode
         {
-            get => GetValueAs<DotClusterVisualizationMode>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotClusterVisualizationMode?) null;
+            get => GetValueAs<DotClusterVisualizationMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotClusterVisualizationModeAttribute(k, v.Value));
         }
     }

@@ -88,7 +88,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotGraphAttributes.Style
         {
-            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;
+            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
         }
 
@@ -117,7 +117,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         [DotAttributeKey(DotAttributeKeys.Splines)]
         public virtual DotEdgeShape? EdgeShape
         {
-            get => GetValueAs<DotEdgeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotEdgeShape?) null;
+            get => GetValueAs<DotEdgeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeShapeAttribute(k, v.Value));
         }
 

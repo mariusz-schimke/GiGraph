@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         /// <summary>
         ///     The Brewer color schemes (<see href="http://www.graphviz.org/doc/info/colors.html#brewer" />).
         /// </summary>
-        public static DotBrewerColorSchemes Brewer { get; } = new DotBrewerColorSchemes();
+        public static DotBrewerColorSchemes Brewer { get; } = new();
 
         /// <summary>
         ///     Provides a list of supported Brewer color schemes (<see href="http://www.graphviz.org/doc/info/colors.html#brewer" />).

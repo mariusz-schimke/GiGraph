@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Output.Options
             public virtual IDotValueConverter GetAttributeValueConverterForType(Type type)
             {
                 return AttributeValueConverters.FirstOrDefault(converter => converter.CanConvert(type))
-                    ?? throw new ArgumentException($"No HTML attribute value converter has been specified for the '{type}' type.", nameof(type));
+                 ?? throw new ArgumentException($"No HTML attribute value converter has been specified for the '{type}' type.", nameof(type));
             }
 
             /// <summary>

@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Entities.Types.Html
         {
             _name = name;
             _isVoid = isVoid;
-            CustomAttributes = new();
+            CustomAttributes = new Dictionary<string, object>();
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace GiGraph.Dot.Entities.Types.Html
             var result = new StringBuilder();
 
             var attrs = GetAttributes(options, syntaxRules)
-                .Select(attr =>
+               .Select(attr =>
                     $"{(options.Attributes.Html.UpperCaseAttributeNames ? attr.Key.ToUpperInvariant() : attr.Key)}=\"{attr.Value}\""
                 );
 
@@ -42,8 +42,8 @@ namespace GiGraph.Dot.Entities.Types.Html
             var tagWithAttributes = string.Join(
                 " ",
                 Enumerable.Empty<string>()
-                    .Append($"<{tagName}")
-                    .Concat(attrs)
+                   .Append($"<{tagName}")
+                   .Concat(attrs)
             );
 
             result.Append(tagWithAttributes);
@@ -73,8 +73,8 @@ namespace GiGraph.Dot.Entities.Types.Html
         protected virtual Dictionary<string, string> GetAttributes(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var attributes = GetType()
-                .GetProperties(BindingFlags.Instance | BindingFlags.Public)
-                .Select(prop =>
+               .GetProperties(BindingFlags.Instance | BindingFlags.Public)
+               .Select(prop =>
                 {
                     var attribute = prop.GetCustomAttribute<DotHtmlElementAttributeKeyAttribute>();
                     if (attribute is null)
@@ -95,8 +95,8 @@ namespace GiGraph.Dot.Entities.Types.Html
                         Value = converter.Convert(value, options, syntaxRules)
                     };
                 })
-                .Where(attr => attr is { })
-                .ToDictionary(key => key.Key, value => value.Value);
+               .Where(attr => attr is { })
+               .ToDictionary(key => key.Key, value => value.Value);
 
             // add custom attributes
             var customAttributes = CustomAttributes.Where(attribute => !attributes.ContainsKey(attribute.Key));

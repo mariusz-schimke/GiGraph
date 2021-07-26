@@ -7,8 +7,8 @@ namespace GiGraph.Dot.Entities.Tests
 {
     public class RecordsTest
     {
-        private readonly DotSyntaxOptions _syntaxOptions = new DotSyntaxOptions();
-        private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
+        private readonly DotSyntaxOptions _syntaxOptions = new();
+        private readonly DotSyntaxRules _syntaxRules = new();
 
         [Fact]
         public void embedded_record_returns_fields_in_single_brackets_as_dot_encoded_value()

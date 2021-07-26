@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using GiGraph.Dot.Entities;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Output.Generators.Providers;

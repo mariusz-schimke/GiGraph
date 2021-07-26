@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using GiGraph.Dot.Entities;
 using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Output.Generators.Providers;

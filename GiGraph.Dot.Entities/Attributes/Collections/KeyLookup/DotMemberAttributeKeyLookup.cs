@@ -72,7 +72,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.KeyLookup
         {
             key = null;
             return _lookup.TryGetValue(member.Module, out var module) &&
-                   module.TryGetValue(member.MetadataToken, out key);
+                module.TryGetValue(member.MetadataToken, out key);
         }
 
         /// <summary>

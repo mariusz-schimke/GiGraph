@@ -84,7 +84,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotNodeAttributes.Style
         {
-            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotStyles?) null;
+            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
         }
 
@@ -178,7 +178,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         [DotAttributeKey(DotAttributeKeys.LabelLoc)]
         public virtual DotVerticalAlignment? LabelAlignment
         {
-            get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotVerticalAlignment?) null;
+            get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
         }
 
@@ -186,7 +186,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         [DotAttributeKey(DotAttributeKeys.Ordering)]
         public virtual DotEdgeOrderingMode? EdgeOrderingMode
         {
-            get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotEdgeOrderingMode?) null;
+            get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeOrderingModeAttribute(k, v.Value));
         }
 
@@ -194,7 +194,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         [DotAttributeKey(DotAttributeKeys.Shape)]
         public virtual DotNodeShape? Shape
         {
-            get => GetValueAs<DotNodeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotNodeShape?) null;
+            get => GetValueAs<DotNodeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeShapeAttribute(k, v.Value));
         }
 

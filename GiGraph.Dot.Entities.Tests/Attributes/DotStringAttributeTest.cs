@@ -7,8 +7,8 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 {
     public class DotStringAttributeTest
     {
-        private readonly DotSyntaxOptions _syntaxOptions = new DotSyntaxOptions();
-        private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
+        private readonly DotSyntaxOptions _syntaxOptions = new();
+        private readonly DotSyntaxRules _syntaxRules = new();
 
         [Fact]
         public void string_attribute_returns_encoded_value_with_only_quotation_marks_and_backslashes_escaped_as_attribute_value()

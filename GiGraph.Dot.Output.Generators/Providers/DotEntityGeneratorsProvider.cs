@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Entities;
 using GiGraph.Dot.Output.Writers;
 
 namespace GiGraph.Dot.Output.Generators.Providers
 {
     public class DotEntityGeneratorsProvider : IDotEntityGeneratorsProvider
     {
-        protected readonly List<IDotEntityGenerator> _generators = new List<IDotEntityGenerator>();
+        protected readonly List<IDotEntityGenerator> _generators = new();
 
         public virtual TGenerator Get<TGenerator>()
             where TGenerator : IDotEntityGenerator
@@ -42,8 +41,8 @@ namespace GiGraph.Dot.Output.Generators.Providers
             var lastCompatibleMatch = _generators.LastOrDefault(g => g.Supports<TRequiredWriter>(entity, out var isExactEntityTypeMatch) && !isExactEntityTypeMatch);
 
             return (IDotEntityGenerator<TRequiredWriter>) lastExactMatch
-                ?? (IDotEntityGenerator<TRequiredWriter>) lastCompatibleMatch
-                ?? throw new NotSupportedException($"No compatible generator has been registered for the entity type {entity.GetType().FullName} with the writer type {typeof(TRequiredWriter).FullName}.");
+             ?? (IDotEntityGenerator<TRequiredWriter>) lastCompatibleMatch
+             ?? throw new NotSupportedException($"No compatible generator has been registered for the entity type {entity.GetType().FullName} with the writer type {typeof(TRequiredWriter).FullName}.");
         }
 
         public virtual DotEntityGeneratorsProvider Register(IDotEntityGenerator generator)

@@ -25,8 +25,8 @@ namespace GiGraph.Dot.Examples.Basic
 
                 // using string concatenation
                 attrs.Label = "Centered line" + DotEscapeString.LineBreak +
-                              DotEscapeString.JustifyLeft("Left-justified line") +
-                              DotEscapeString.JustifyRight("Right-justified line");
+                    DotEscapeString.JustifyLeft("Left-justified line") +
+                    DotEscapeString.JustifyRight("Right-justified line");
             });
 
             return graph;

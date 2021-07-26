@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         [DotAttributeKey(DotAttributeKeys.Orientation)]
         public virtual DotOrientation? Orientation
         {
-            get => GetValueAs<DotOrientation>(MethodBase.GetCurrentMethod(), out var result) ? result : (DotOrientation?) null;
+            get => GetValueAs<DotOrientation>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotOrientationAttribute(k, v.Value));
         }
 

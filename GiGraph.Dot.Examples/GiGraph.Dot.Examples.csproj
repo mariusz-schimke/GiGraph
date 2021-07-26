@@ -1,22 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\GiGraph.Dot.Entities\GiGraph.Dot.Entities.csproj" />
-    <ProjectReference Include="..\GiGraph.Dot.Output.Generators\GiGraph.Dot.Output.Generators.csproj" />
-    <ProjectReference Include="..\GiGraph.Dot.Output.Writers\GiGraph.Dot.Output.Writers.csproj" />
-    <ProjectReference Include="..\GiGraph.Dot\GiGraph.Dot.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\GiGraph.Dot.Entities\GiGraph.Dot.Entities.csproj"/>
+        <ProjectReference Include="..\GiGraph.Dot.Output.Generators\GiGraph.Dot.Output.Generators.csproj"/>
+        <ProjectReference Include="..\GiGraph.Dot.Output.Writers\GiGraph.Dot.Output.Writers.csproj"/>
+        <ProjectReference Include="..\GiGraph.Dot\GiGraph.Dot.csproj"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="Complex\stylesheet.css" />
-    <Content Include="Complex\stylesheet.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+    <ItemGroup>
+        <None Remove="Complex\stylesheet.css"/>
+        <Content Include="Complex\stylesheet.css">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
 
 </Project>

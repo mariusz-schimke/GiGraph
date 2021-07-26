@@ -69,10 +69,10 @@ namespace GiGraph.Dot.Output.Options
         public virtual bool IsValidIdentifier(string value)
         {
             return value is { } && !IsKeyword(value) &&
-                   (
-                       Regex.Match(value, AlphabeticIdentifierPattern).Success ||
-                       Regex.Match(value, NumericIdentifierPattern).Success
-                   );
+            (
+                Regex.Match(value, AlphabeticIdentifierPattern).Success ||
+                Regex.Match(value, NumericIdentifierPattern).Success
+            );
         }
     }
 }

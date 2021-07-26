@@ -7,8 +7,8 @@ namespace GiGraph.Dot.Entities.Tests.EscapeString
 {
     public class DotConcatenatedEscapeStringConcatenationTest
     {
-        private readonly DotSyntaxOptions _syntaxOptions = new DotSyntaxOptions();
-        private readonly DotSyntaxRules _syntaxRules = new DotSyntaxRules();
+        private readonly DotSyntaxOptions _syntaxOptions = new();
+        private readonly DotSyntaxRules _syntaxRules = new();
 
         [Fact]
         public void concatenated_escape_string_concatenation_produces_a_valid_dot_encoded_value_when_both_sides_are_not_null_and_left_is_concatenated()
