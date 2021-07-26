@@ -78,8 +78,15 @@ namespace GiGraph.Dot.Output.TextEscaping
         public static DotTextEscapingPipeline ForEscapeString()
         {
             return new DotTextEscapingPipeline(
+                CommonForEscapeString(),
+                new DotQuotationMarkEscaper()
+            );
+        }
+
+        protected static DotTextEscapingPipeline CommonForEscapeString()
+        {
+            return new DotTextEscapingPipeline(
                 new DotBackslashEscaper(),
-                new DotQuotationMarkEscaper(),
                 new DotWindowsNewLineEscaper(),
                 new DotCarriageReturnEscaper(),
                 new DotUnixNewLineEscaper()
@@ -89,11 +96,34 @@ namespace GiGraph.Dot.Output.TextEscaping
         /// <summary>
         ///     Creates a new pipeline that escapes HTML text.
         /// </summary>
-        public static DotTextEscapingPipeline ForHtmlText()
+        public static DotTextEscapingPipeline ForHtmlElementTextContent()
         {
             return new DotTextEscapingPipeline
             (
-                new DotHtmlEscaper()
+                // TODO: czy escaping powinien zamieniać entery na <br/>?
+                new DotHtmlTextEscaper()
+            );
+        }
+
+        /// <summary>
+        ///     Creates a new pipeline that escapes HTML attribute value of the string type.
+        /// </summary>
+        public static DotTextEscapingPipeline ForHtmlAttributeStringValue()
+        {
+            return new DotTextEscapingPipeline
+            (
+                new DotHtmlTextEscaper()
+            );
+        }
+
+        /// <summary>
+        ///     Creates a new pipeline that escapes HTML attribute value of the escape string type.
+        /// </summary>
+        public static DotTextEscapingPipeline ForHtmlAttributeEscapeStringValue()
+        {
+            return new DotTextEscapingPipeline(
+                CommonForEscapeString(),
+                new DotHtmlTextEscaper()
             );
         }
 
@@ -123,7 +153,7 @@ namespace GiGraph.Dot.Output.TextEscaping
             );
         }
 
-        private static IDotTextEscaper CommonForRecordLabel()
+        protected static DotTextEscapingPipeline CommonForRecordLabel()
         {
             return new DotTextEscapingPipeline
             (

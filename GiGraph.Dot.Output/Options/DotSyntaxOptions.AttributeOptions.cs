@@ -25,6 +25,11 @@
             ///     [attr_list]" format will be used instead.
             /// </summary>
             public virtual bool PreferGraphAttributesAsStatements { get; set; } = true;
+
+            /// <summary>
+            ///     HTML attribute options.
+            /// </summary>
+            public virtual HtmlOptions Html { get; protected set; } = new();
         }
     }
 }

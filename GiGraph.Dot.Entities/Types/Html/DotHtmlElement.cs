@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace GiGraph.Dot.Entities.Types.Html
 {
@@ -12,18 +10,17 @@ namespace GiGraph.Dot.Entities.Types.Html
         protected DotHtmlElement(string name)
             : base(name, isVoid: false)
         {
-            Children = new List<DotHtmlEntity>();
+            Children = new List<IDotHtmlEntity>();
         }
 
         /// <summary>
         ///     Gets the children of the element.
         /// </summary>
-        public virtual List<DotHtmlEntity> Children { get; }
+        public virtual List<IDotHtmlEntity> Children { get; }
 
-        protected override void AppendChildren(StringBuilder output)
+        protected override IEnumerable<IDotHtmlEntity> GetChildren()
         {
-            var children = Children.Select(child => child.ToHtml());
-            output.Append(string.Join(string.Empty, children));
+            return Children;
         }
     }
 }

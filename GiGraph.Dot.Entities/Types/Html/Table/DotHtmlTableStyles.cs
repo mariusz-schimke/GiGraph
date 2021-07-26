@@ -1,5 +1,5 @@
 ﻿using System;
-using GiGraph.Dot.Entities.Attributes.Metadata;
+using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Types.Html.Table
 {
@@ -12,13 +12,13 @@ namespace GiGraph.Dot.Entities.Types.Html.Table
         /// <summary>
         ///     Specifies rounded corners for the element.
         /// </summary>
-        [DotAttributeValue("ROUNDED")]
+        [DotHtmlElementAttributeValue("ROUNDED")]
         Rounded = 1 << 0,
 
         /// <summary>
         ///     Specifies a radial style for the element.
         /// </summary>
-        [DotAttributeValue("RADIAL")]
+        [DotHtmlElementAttributeValue("RADIAL")]
         Radial = 1 << 1
     }
 }

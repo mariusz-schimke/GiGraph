@@ -1,5 +1,5 @@
 ﻿using System;
-using GiGraph.Dot.Entities.Attributes.Metadata;
+using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Types.Html.Table
 {
@@ -12,25 +12,25 @@ namespace GiGraph.Dot.Entities.Types.Html.Table
         /// <summary>
         ///     The top side of the border.
         /// </summary>
-        [DotAttributeValue("T")]
+        [DotHtmlElementAttributeValue("T")]
         Top = 1 << 0,
 
         /// <summary>
         ///     The right side of the border.
         /// </summary>
-        [DotAttributeValue("R")]
+        [DotHtmlElementAttributeValue("R")]
         Right = 1 << 1,
 
         /// <summary>
         ///     The bottom side of the border.
         /// </summary>
-        [DotAttributeValue("B")]
+        [DotHtmlElementAttributeValue("B")]
         Bottom = 1 << 2,
 
         /// <summary>
         ///     The left side of the border.
         /// </summary>
-        [DotAttributeValue("L")]
+        [DotHtmlElementAttributeValue("L")]
         Left = 1 << 3
     }
 }

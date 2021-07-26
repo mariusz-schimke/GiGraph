@@ -30,6 +30,11 @@ namespace GiGraph.Dot.Output.Options
             ///     A text escaper to use for ports of record node labels.
             /// </summary>
             public virtual IDotTextEscaper RecordLabelValuePortEscaper { get; set; } = DotTextEscapingPipeline.ForRecordLabelPort();
+
+            /// <summary>
+            ///     Syntax rules for HTML attributes.
+            /// </summary>
+            public virtual HtmlRules Html { get; protected set; } = new();
         }
     }
 }

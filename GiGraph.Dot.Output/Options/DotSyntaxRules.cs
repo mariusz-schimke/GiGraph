@@ -47,7 +47,7 @@ namespace GiGraph.Dot.Output.Options
         /// <summary>
         ///     Attribute-related syntax rules.
         /// </summary>
-        public virtual AttributeRules Attributes { get; } = new AttributeRules();
+        public virtual AttributeRules Attributes { get; } = new();
 
         /// <summary>
         ///     Determines if the specified word is a keyword.

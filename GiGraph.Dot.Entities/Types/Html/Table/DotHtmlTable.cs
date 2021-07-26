@@ -2,6 +2,7 @@ using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Types.Html.Table
 {
@@ -14,7 +15,7 @@ namespace GiGraph.Dot.Entities.Types.Html.Table
         ///     Initializes a new table instance.
         /// </summary>
         public DotHtmlTable()
-            : base("TABLE")
+            : base("table")
         {
         }
 
@@ -33,13 +34,14 @@ namespace GiGraph.Dot.Entities.Types.Html.Table
         ///     Specifies horizontal placement. When an object is allocated more space than required, this value determines where the extra
         ///     space is placed left and right of the object. Default: <see cref="DotHorizontalAlignment.Center" />.
         /// </summary>
+        [DotHtmlElementAttributeKey("align")]
         public virtual DotHorizontalAlignment? HorizontalAlignment { get; set; }
-
 
         /// <summary>
         ///     Specifies vertical placement. When an object is allocated more space than required, this value determines where the extra
         ///     space is placed above and below the object. Default: <see cref="DotVerticalAlignment.Center" />.
         /// </summary>
+        [DotHtmlElementAttributeKey("valign")]
         public virtual DotVerticalAlignment? VerticalAlignment { get; set; }
 
         /// <summary>
@@ -98,6 +100,7 @@ namespace GiGraph.Dot.Entities.Types.Html.Table
         /// <summary>
         ///     Specifies whether the values given by the <see cref="Width" /> and <see cref="Height" /> attributes are enforced.
         /// </summary>
+        [DotHtmlElementAttributeKey("fixedsize")]
         public virtual bool? FixedSize { get; set; }
 
         /// <summary>

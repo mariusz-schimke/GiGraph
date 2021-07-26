@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Entities.Types.Html.Table
         ///     Initializes a new table row instance.
         /// </summary>
         public DotHtmlTableRow()
-            : base("TR")
+            : base("tr")
         {
         }
 
@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Types.Html.Table
         public virtual DotHtmlTableCell AddCell(string text, Action<DotHtmlTableCell> init = null)
         {
             var rowCell = new DotHtmlTableCell();
-            rowCell.Children.AddRange(FromText(text));
+            rowCell.Children.Add(DotHtmlEntityCollection.FromMultilineText(text));
             return AddCell(rowCell, init);
         }
 

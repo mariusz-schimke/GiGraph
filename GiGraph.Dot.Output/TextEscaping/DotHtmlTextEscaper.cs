@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Output.TextEscaping
     /// <summary>
     ///     Converts a string to an HTML-encoded string.
     /// </summary>
-    public class DotHtmlEscaper : IDotTextEscaper
+    public class DotHtmlTextEscaper : IDotTextEscaper
     {
         string IDotTextEscaper.Escape(string value)
         {
