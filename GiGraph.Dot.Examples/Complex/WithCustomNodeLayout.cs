@@ -1,5 +1,6 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Graphs;
+﻿using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Types.Layout;
+using GiGraph.Dot.Entities.Types.Ranks;
 
 namespace GiGraph.Dot.Examples.Complex
 {

@@ -1,5 +1,5 @@
 using System;
-using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Text;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Labels

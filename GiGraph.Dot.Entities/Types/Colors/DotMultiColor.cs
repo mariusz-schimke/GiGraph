@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Styling;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Colors
@@ -115,7 +114,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///         <see cref="DotColorSchemes.X11" /> naming.
         ///     </para>
         /// </param>
-        public DotMultiColor(IEnumerable<Color> colors, string scheme = null)
+        public DotMultiColor(IEnumerable<System.Drawing.Color> colors, string scheme = null)
             : this(colors?.Select(c => new DotColor(c, scheme)))
         {
         }

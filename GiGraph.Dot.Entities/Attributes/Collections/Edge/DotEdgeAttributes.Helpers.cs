@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Styles;
+using GiGraph.Dot.Entities.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {

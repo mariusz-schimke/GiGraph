@@ -2,7 +2,7 @@ using System.Text;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
-using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Text;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Records

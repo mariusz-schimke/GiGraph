@@ -1,11 +1,12 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.Graph;
-using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Clusters;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Geometry;
 using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Strings;
-using GiGraph.Dot.Entities.Types.Styles;
+using GiGraph.Dot.Entities.Types.Ranks;
+using GiGraph.Dot.Entities.Types.Styling;
+using GiGraph.Dot.Entities.Types.Text;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {

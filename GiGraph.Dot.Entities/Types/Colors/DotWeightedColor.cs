@@ -1,5 +1,4 @@
 using System;
-using System.Drawing;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Colors
@@ -30,7 +29,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///         <see cref="DotColorSchemes.X11" /> naming.
         ///     </para>
         /// </param>
-        public DotWeightedColor(Color color, double weight, string scheme = null)
+        public DotWeightedColor(System.Drawing.Color color, double weight, string scheme = null)
             : base(color, scheme)
         {
             Weight = weight >= 0 && weight <= 1
@@ -62,7 +61,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     </para>
         /// </param>
         public DotWeightedColor(string name, double weight, string scheme = null)
-            : this(Color.FromName(name), weight, scheme)
+            : this(System.Drawing.Color.FromName(name), weight, scheme)
         {
         }
 

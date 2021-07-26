@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Entities.Types.Double;
+using GiGraph.Dot.Entities.Types.Encoders;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Ranks

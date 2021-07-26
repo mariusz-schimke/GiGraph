@@ -1,8 +1,8 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
+﻿using GiGraph.Dot.Entities.Types.Clusters;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Geometry;
-using GiGraph.Dot.Entities.Types.Scaling;
-using GiGraph.Dot.Entities.Types.Styles;
+using GiGraph.Dot.Entities.Types.Graphs;
+using GiGraph.Dot.Entities.Types.Orientation;
 using GiGraph.Dot.Entities.Types.Viewport;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph

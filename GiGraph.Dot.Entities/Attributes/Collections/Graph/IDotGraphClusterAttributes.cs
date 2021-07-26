@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.Edge;
-using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Clusters;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {

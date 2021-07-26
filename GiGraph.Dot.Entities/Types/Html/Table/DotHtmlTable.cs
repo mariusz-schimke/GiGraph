@@ -1,7 +1,7 @@
 using System;
-using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Alignment;
 using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Text;
 using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Types.Html.Table

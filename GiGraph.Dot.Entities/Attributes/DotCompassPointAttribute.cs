@@ -1,4 +1,3 @@
-using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Output.Options;
 

@@ -1,11 +1,13 @@
 using System;
 using System.Drawing;
-using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges.Endpoints;
-using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Subgraphs;
-using GiGraph.Dot.Entities.Types.Styles;
+using GiGraph.Dot.Entities.Types.Arrowheads;
+using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Nodes;
+using GiGraph.Dot.Entities.Types.Ranks;
+using GiGraph.Dot.Entities.Types.Styling;
 
 namespace GiGraph.Dot.Output.Generators.Tests
 {

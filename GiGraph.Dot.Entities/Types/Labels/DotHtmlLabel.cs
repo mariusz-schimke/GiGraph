@@ -1,4 +1,4 @@
-using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Text;
 
 namespace GiGraph.Dot.Entities.Types.Labels
 {

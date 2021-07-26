@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
-using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Types.Arrowheads;
+using GiGraph.Dot.Entities.Types.Nodes;
 
 namespace GiGraph.Dot.Examples.Basic
 {

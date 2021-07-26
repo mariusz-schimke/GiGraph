@@ -1,5 +1,5 @@
 using GiGraph.Dot.Entities.Types.Records;
-using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Text;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
 

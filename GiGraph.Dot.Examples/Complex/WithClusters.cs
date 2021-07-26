@@ -1,6 +1,8 @@
 ﻿using System.Drawing;
-using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Layout;
+using GiGraph.Dot.Entities.Types.Nodes;
 
 namespace GiGraph.Dot.Examples.Complex
 {

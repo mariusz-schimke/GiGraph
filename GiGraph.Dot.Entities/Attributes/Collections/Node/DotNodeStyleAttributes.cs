@@ -1,5 +1,5 @@
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
-using GiGraph.Dot.Entities.Types.Styles;
+using GiGraph.Dot.Entities.Types.Nodes;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {

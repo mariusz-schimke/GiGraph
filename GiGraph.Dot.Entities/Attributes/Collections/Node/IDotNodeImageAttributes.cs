@@ -1,5 +1,7 @@
 using GiGraph.Dot.Entities.Attributes.Collections.Graph;
-using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Alignment;
+using GiGraph.Dot.Entities.Types.Images;
+using GiGraph.Dot.Entities.Types.Nodes;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Styling;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
 

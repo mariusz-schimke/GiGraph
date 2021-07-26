@@ -1,7 +1,8 @@
 using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Edges;
+using GiGraph.Dot.Entities.Types.Layout;
 using GiGraph.Dot.Entities.Types.Packing;
 using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Output.Metadata;

@@ -1,5 +1,5 @@
-using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Helpers;
+using GiGraph.Dot.Entities.Types.Alignment;
+using GiGraph.Dot.Entities.Types.Mappers;
 
 namespace GiGraph.Dot.Entities.Types.Labels
 {

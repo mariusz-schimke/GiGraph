@@ -1,5 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Colors;
+﻿using GiGraph.Dot.Entities.Types.Colors;
+using GiGraph.Dot.Entities.Types.Styling;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes

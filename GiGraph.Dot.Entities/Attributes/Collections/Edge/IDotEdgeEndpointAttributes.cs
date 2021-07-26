@@ -1,10 +1,9 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
-using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
-using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Types.Arrows;
+using GiGraph.Dot.Entities.Types.Arrowheads;
+using GiGraph.Dot.Entities.Types.Clusters;
 using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Entities.Types.Labels;

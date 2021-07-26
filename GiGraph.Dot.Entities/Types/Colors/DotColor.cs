@@ -1,4 +1,3 @@
-using System.Drawing;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Colors
@@ -25,7 +24,7 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///         <see cref="DotColorSchemes.X11" /> naming.
         ///     </para>
         /// </param>
-        public DotColor(Color color, string scheme = null)
+        public DotColor(System.Drawing.Color color, string scheme = null)
         {
             Color = color;
             Scheme = scheme;
@@ -51,14 +50,14 @@ namespace GiGraph.Dot.Entities.Types.Colors
         ///     </para>
         /// </param>
         public DotColor(string name, string scheme = null)
-            : this(Color.FromName(name), scheme)
+            : this(System.Drawing.Color.FromName(name), scheme)
         {
         }
 
         /// <summary>
         ///     Gets the color.
         /// </summary>
-        public virtual Color Color { get; }
+        public virtual System.Drawing.Color Color { get; }
 
         /// <summary>
         ///     Gets the color scheme (see <see cref="DotColorSchemes" />).
@@ -94,12 +93,12 @@ namespace GiGraph.Dot.Entities.Types.Colors
             return $"#{Color.R:x2}{Color.G:x2}{Color.B:x2}{alpha}";
         }
 
-        public static implicit operator DotColor(Color? color)
+        public static implicit operator DotColor(System.Drawing.Color? color)
         {
             return color.HasValue ? new DotColor(color.Value) : null;
         }
 
-        public static implicit operator Color?(DotColor color)
+        public static implicit operator System.Drawing.Color?(DotColor color)
         {
             return color?.Color;
         }

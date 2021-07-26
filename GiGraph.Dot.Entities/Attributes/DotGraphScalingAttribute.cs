@@ -1,5 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Scaling;
+﻿using GiGraph.Dot.Entities.Types.Graphs;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes

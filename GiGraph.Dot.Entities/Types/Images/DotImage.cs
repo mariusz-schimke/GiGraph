@@ -1,4 +1,4 @@
-using GiGraph.Dot.Entities.Attributes.Enums;
+using GiGraph.Dot.Entities.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Types.Images
 {

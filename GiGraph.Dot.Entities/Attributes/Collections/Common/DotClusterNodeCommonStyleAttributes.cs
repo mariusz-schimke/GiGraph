@@ -1,6 +1,5 @@
 ﻿using System;
-using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Types.Styles;
+using GiGraph.Dot.Entities.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {

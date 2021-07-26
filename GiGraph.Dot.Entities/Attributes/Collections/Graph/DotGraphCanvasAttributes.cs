@@ -1,10 +1,10 @@
 using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Entities.Types.Geometry;
-using GiGraph.Dot.Entities.Types.Scaling;
+using GiGraph.Dot.Entities.Types.Graphs;
+using GiGraph.Dot.Entities.Types.Orientation;
 using GiGraph.Dot.Entities.Types.Viewport;
 using GiGraph.Dot.Output.Metadata;
 

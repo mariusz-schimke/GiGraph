@@ -1,6 +1,6 @@
-﻿using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Types.Arrows;
+﻿using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Types.Arrowheads;
+using GiGraph.Dot.Entities.Types.Edges;
 
 namespace GiGraph.Dot.Examples.Basic
 {
@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Examples.Basic
                 edge.Attributes.Head.Arrowhead = DotArrowheadShape.Crow;
             });
 
-            // some basic arrowhead combinations 
+            // some basic arrowhead combinations
             graph.Edges.Add("Foo", "Bar").Attributes.Head.Arrowhead = DotArrowhead.Empty();
             graph.Edges.Add("Foo", "Bar").Attributes.Head.Arrowhead = DotArrowhead.Empty(DotArrowheadParts.Right);
             graph.Edges.Add("Foo", "Bar").Attributes.Head.Arrowhead = DotArrowhead.Filled(DotArrowheadParts.Left);

@@ -1,4 +1,3 @@
-using System.Drawing;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
 
@@ -17,12 +16,12 @@ namespace GiGraph.Dot.Entities.Types.Colors
 
         protected internal abstract string GetDotEncodedColor(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 
-        public static implicit operator DotColorDefinition(Color? color)
+        public static implicit operator DotColorDefinition(System.Drawing.Color? color)
         {
             return color.HasValue ? new DotColor(color.Value) : null;
         }
 
-        public static implicit operator DotColorDefinition(Color[] colors)
+        public static implicit operator DotColorDefinition(System.Drawing.Color[] colors)
         {
             return colors is { } ? new DotMultiColor(colors) : null;
         }

@@ -1,6 +1,6 @@
 ﻿using System;
-using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Nodes;
+using GiGraph.Dot.Entities.Types.Nodes;
 using GiGraph.Dot.Entities.Types.Records;
 
 namespace GiGraph.Dot.Extensions

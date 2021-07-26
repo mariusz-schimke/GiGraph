@@ -1,6 +1,5 @@
 using System.Text;
-using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Edges.Enums;
+using GiGraph.Dot.Entities.Types.Nodes;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
 

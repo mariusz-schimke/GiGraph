@@ -1,5 +1,6 @@
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
-using GiGraph.Dot.Entities.Types.Styles;
+using GiGraph.Dot.Entities.Types.Clusters;
+using GiGraph.Dot.Entities.Types.Graphs;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {

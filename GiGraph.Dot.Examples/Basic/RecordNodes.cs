@@ -1,8 +1,8 @@
 ﻿using System;
-using GiGraph.Dot.Entities.Edges.Enums;
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Entities.Types.Records;
-using GiGraph.Dot.Entities.Types.Strings;
+using GiGraph.Dot.Entities.Types.Text;
 using GiGraph.Dot.Extensions;
 
 namespace GiGraph.Dot.Examples.Basic

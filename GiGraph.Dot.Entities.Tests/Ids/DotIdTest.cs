@@ -1,3 +1,4 @@
+using GiGraph.Dot.Entities.Types.Clusters;
 using GiGraph.Dot.Entities.Types.Identifiers;
 using Xunit;
 
