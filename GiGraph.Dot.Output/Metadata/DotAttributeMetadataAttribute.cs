@@ -1,6 +1,6 @@
 using System;
 
-namespace GiGraph.Dot.Entities.Attributes.Metadata
+namespace GiGraph.Dot.Output.Metadata
 {
     /// <summary>
     ///     Assigns a value indicating what elements, layout engines, and output formats an attribute key is applicable to.

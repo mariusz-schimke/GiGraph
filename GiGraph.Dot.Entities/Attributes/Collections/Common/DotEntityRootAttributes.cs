@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
+using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {

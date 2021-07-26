@@ -1,6 +1,6 @@
 using System;
 
-namespace GiGraph.Dot.Entities.Attributes.Metadata
+namespace GiGraph.Dot.Output.Metadata
 {
     /// <summary>
     ///     Determines types of graph elements that an attribute may be applied to.

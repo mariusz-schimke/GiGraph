@@ -1,6 +1,6 @@
-﻿using GiGraph.Dot.Entities.Attributes.Metadata;
-using GiGraph.Dot.Entities.Clusters;
+﻿using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Attributes.Enums
 {

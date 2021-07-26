@@ -1,6 +1,6 @@
 using System;
 
-namespace GiGraph.Dot.Entities.Attributes.Metadata
+namespace GiGraph.Dot.Output.Metadata
 {
     /// <summary>
     ///     Determines outputs that an attribute is used for.

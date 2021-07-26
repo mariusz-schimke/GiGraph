@@ -1,4 +1,5 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Graphs
 {

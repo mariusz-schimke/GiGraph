@@ -1,6 +1,6 @@
 using System;
 using GiGraph.Dot.Entities.Attributes.Enums;
-using GiGraph.Dot.Entities.Attributes.Metadata;
+using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Scaling

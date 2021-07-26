@@ -2,12 +2,13 @@ using System;
 using System.Linq;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Metadata;
 using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Subgraphs;
+using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Metadata;
 using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes

@@ -1,4 +1,4 @@
-﻿namespace GiGraph.Dot.Entities
+﻿namespace GiGraph.Dot.Output
 {
     public interface IDotEntity
     {

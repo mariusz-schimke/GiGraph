@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Output.TextEscaping;
 
-namespace GiGraph.Dot.Entities
+namespace GiGraph.Dot.Output
 {
     public interface IDotEscapable
     {

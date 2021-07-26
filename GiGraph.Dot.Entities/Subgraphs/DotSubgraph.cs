@@ -3,6 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Enums;
 using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Graphs.Collections;
+using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {

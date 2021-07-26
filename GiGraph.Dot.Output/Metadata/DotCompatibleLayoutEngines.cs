@@ -1,6 +1,6 @@
 using System;
 
-namespace GiGraph.Dot.Entities.Attributes.Metadata
+namespace GiGraph.Dot.Output.Metadata
 {
     /// <summary>
     ///     Determines layout engines that an attribute is used by.

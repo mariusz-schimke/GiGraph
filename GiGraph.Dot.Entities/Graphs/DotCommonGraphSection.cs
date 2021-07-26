@@ -4,6 +4,7 @@ using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
+using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Graphs
 {

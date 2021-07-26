@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Graphs.Collections;
+using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Clusters
 {

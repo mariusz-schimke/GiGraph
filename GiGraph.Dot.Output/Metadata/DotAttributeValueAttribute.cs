@@ -1,12 +1,12 @@
 using System;
 
-namespace GiGraph.Dot.Entities.Attributes.Metadata
+namespace GiGraph.Dot.Output.Metadata
 {
     /// <summary>
     ///     Assigns a DOT attribute value to an enumeration value.
     /// </summary>
     [AttributeUsage(AttributeTargets.Field)]
-    public class DotAttributeValueAttribute : Attribute
+    public class DotAttributeValueAttribute : Attribute, IDotAttributeValueAttribute
     {
         /// <summary>
         ///     Creates a new attribute instance.

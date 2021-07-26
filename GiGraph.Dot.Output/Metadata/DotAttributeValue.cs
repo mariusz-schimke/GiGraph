@@ -1,17 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 
-namespace GiGraph.Dot.Entities.Attributes.Metadata
+namespace GiGraph.Dot.Output.Metadata
 {
     /// <summary>
     ///     Provides methods for reading a DOT value associated with an enumeration value.
     /// </summary>
     public static class DotAttributeValue
     {
-        private const BindingFlags FieldBindingFlags = BindingFlags.Static | BindingFlags.Public;
-
         /// <summary>
         ///     Tries to get a DOT attribute value associated with the specified enumeration value.
         /// </summary>
@@ -21,22 +17,9 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         /// <param name="dotValue">
         ///     The returned DOT attribute value if available.
         /// </param>
-        /// <typeparam name="TEnum">
-        ///     The type of the enumeration whose attribute value to search.
-        /// </typeparam>
-        public static bool TryGet<TEnum>(TEnum value, out string dotValue)
-            where TEnum : Enum
+        public static bool TryGet(Enum value, out string dotValue)
         {
-            var enumMember = typeof(TEnum).GetMember(value.ToString()).FirstOrDefault();
-
-            if (enumMember?.GetCustomAttribute<DotAttributeValueAttribute>() is { } attribute)
-            {
-                dotValue = attribute.Value;
-                return true;
-            }
-
-            dotValue = null;
-            return false;
+            return DotAttributeValue<DotAttributeValueAttribute>.TryGet(value, out dotValue);
         }
 
         /// <summary>
@@ -45,15 +28,9 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         /// <param name="value">
         ///     The enumeration value whose associated DOT value to return.
         /// </param>
-        /// <typeparam name="TEnum">
-        ///     The type of the enumeration whose attribute value to search.
-        /// </typeparam>
-        public static string Get<TEnum>(TEnum value)
-            where TEnum : Enum
+        public static string Get(Enum value)
         {
-            return TryGet(value, out var result)
-                ? result
-                : throw new ArgumentException($"The specified '{value}' value of the {typeof(TEnum).Name} enumeration has no associated DOT attribute value.", nameof(value));
+            return DotAttributeValue<DotAttributeValueAttribute>.Get(value);
         }
 
         /// <summary>
@@ -71,18 +48,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         public static bool TryGet<TEnum>(string dotValue, out TEnum value)
             where TEnum : Enum
         {
-            var match = typeof(TEnum)
-               .GetFields(FieldBindingFlags)
-               .FirstOrDefault(field => field.GetCustomAttribute<DotAttributeValueAttribute>()?.Value is { } fieldDotValue && fieldDotValue == dotValue);
-
-            if (match is { })
-            {
-                value = (TEnum) match.GetValue(null);
-                return true;
-            }
-
-            value = default;
-            return false;
+            return DotAttributeValue<DotAttributeValueAttribute>.TryGet(dotValue, out value);
         }
 
         /// <summary>
@@ -97,9 +63,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         public static TEnum Get<TEnum>(string dotValue)
             where TEnum : Enum
         {
-            return TryGet<TEnum>(dotValue, out var result)
-                ? result
-                : throw new ArgumentException($"The specified DOT attribute value '{dotValue}' has no equivalent on the {typeof(TEnum).Name} enumeration.", nameof(dotValue));
+            return DotAttributeValue<DotAttributeValueAttribute>.Get<TEnum>(dotValue);
         }
 
         /// <summary>
@@ -111,19 +75,7 @@ namespace GiGraph.Dot.Entities.Attributes.Metadata
         public static Dictionary<string, TEnum> GetMapping<TEnum>()
             where TEnum : Enum
         {
-            return typeof(TEnum)
-               .GetFields(FieldBindingFlags)
-               .Select(field => new
-                {
-                    Attribute = field.GetCustomAttribute<DotAttributeValueAttribute>(),
-                    Field = field
-                })
-               .Where(result => result.Attribute is { })
-               .Where(result => result.Attribute.Value is { })
-               .ToDictionary(
-                    key => key.Attribute.Value,
-                    element => (TEnum) element.Field.GetValue(null)
-                );
+            return DotAttributeValue<DotAttributeValueAttribute>.GetMapping<TEnum>();
         }
     }
 }

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using GiGraph.Dot.Entities.Attributes.Metadata;
+using GiGraph.Dot.Output.Metadata;
 using Snapshooter.Xunit;
 using Xunit;
 

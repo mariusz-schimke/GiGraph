@@ -1,5 +1,5 @@
 using GiGraph.Dot.Entities.Types.Strings;
-using GiGraph.Dot.Output.TextEscaping;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Types.Html
 {
@@ -24,9 +24,9 @@ namespace GiGraph.Dot.Entities.Types.Html
         /// </summary>
         public virtual string Text { get; set; }
 
-        public override DotHtml ToHtml()
+        public override DotHtml ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return DotHtmlEscaper.Escape(Text);
+            return syntaxRules.Attributes.Html.ElementTextContentEscaper.Escape(Text);
         }
     }
 }

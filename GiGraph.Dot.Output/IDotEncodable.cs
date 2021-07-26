@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Entities
+namespace GiGraph.Dot.Output
 {
     public interface IDotEncodable
     {
