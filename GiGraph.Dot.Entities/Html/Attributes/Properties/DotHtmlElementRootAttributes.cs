@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Html.Attributes.Properties
 {
-    public abstract class DotHtmlElementRootAttributes<TIEntityAttributeProperties> : DotEntityMappableAttributes<TIEntityAttributeProperties>
+    public abstract class DotHtmlElementRootAttributes<TIEntityAttributeProperties> : DotEntityAttributes<TIEntityAttributeProperties>
     {
         protected DotHtmlElementRootAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)

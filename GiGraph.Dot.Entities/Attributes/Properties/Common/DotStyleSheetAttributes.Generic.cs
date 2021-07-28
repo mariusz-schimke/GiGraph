@@ -5,7 +5,7 @@ using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common
 {
-    public abstract class DotStyleSheetAttributes<TIEntityStyleSheetAttributes> : DotEntityAttributes<TIEntityStyleSheetAttributes>, IDotStyleSheetAttributes
+    public abstract class DotStyleSheetAttributes<TIEntityStyleSheetAttributes> : DotEntityAttributesWithMetadata<TIEntityStyleSheetAttributes>, IDotStyleSheetAttributes
         where TIEntityStyleSheetAttributes : IDotStyleSheetAttributes
     {
         protected DotStyleSheetAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)

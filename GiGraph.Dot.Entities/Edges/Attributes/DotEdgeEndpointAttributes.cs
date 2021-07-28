@@ -10,7 +10,7 @@ using GiGraph.Dot.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public abstract class DotEdgeEndpointAttributes : DotEntityAttributes<IDotEdgeEndpointAttributes>, IDotEdgeEndpointAttributes
+    public abstract class DotEdgeEndpointAttributes : DotEntityAttributesWithMetadata<IDotEdgeEndpointAttributes>, IDotEdgeEndpointAttributes
     {
         protected readonly DotEdgeHyperlinkAttributes _hyperlink;
 
