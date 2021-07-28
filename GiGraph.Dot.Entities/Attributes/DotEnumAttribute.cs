@@ -29,9 +29,9 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return DotAttributeValue.TryGet(Value, out var result)
+            return DotAttributeValue.TryGetAsFlags(Value, out var result)
                 ? result
-                : throw new ArgumentOutOfRangeException(nameof(Value), $"The specified value '{Value}' of the '{Value.GetType().Name}' enumeration is invalid or is not mapped to any attribute value.");
+                : DotAttributeValue.Get(Value);
         }
     }
 }

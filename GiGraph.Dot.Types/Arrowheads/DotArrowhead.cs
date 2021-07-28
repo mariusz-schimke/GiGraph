@@ -1,4 +1,3 @@
-using System;
 using System.Text;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
@@ -100,25 +99,11 @@ namespace GiGraph.Dot.Types.Arrowheads
             }
 
             // clips the shape, leaving visible only the part to the left or to the right of the edge
-            result.Append(GetDotEncodedArrowheadPart(VisibleParts));
+            result.Append(DotAttributeValue.Get(VisibleParts));
 
-            result.Append(GetDotEncodedShape(Shape));
+            result.Append(DotAttributeValue.Get(Shape));
 
             return result.ToString();
-        }
-
-        protected virtual string GetDotEncodedShape(DotArrowheadShape shape)
-        {
-            return DotAttributeValue.TryGet(shape, out var result)
-                ? result
-                : throw new ArgumentOutOfRangeException(nameof(shape), $"The specified arrowhead shape '{shape}' is invalid.");
-        }
-
-        protected virtual string GetDotEncodedArrowheadPart(DotArrowheadParts visibleParts)
-        {
-            return DotAttributeValue.TryGet(visibleParts, out var result)
-                ? result
-                : throw new ArgumentOutOfRangeException(nameof(visibleParts), $"The specified arrowhead part '{visibleParts}' is invalid.");
         }
 
         /// <summary>

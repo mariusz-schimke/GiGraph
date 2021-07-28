@@ -87,7 +87,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         DotStyles? IDotNodeAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotStyles>(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Label" />

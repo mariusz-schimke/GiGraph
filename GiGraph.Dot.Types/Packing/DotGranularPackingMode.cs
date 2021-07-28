@@ -27,9 +27,7 @@ namespace GiGraph.Dot.Types.Packing
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return DotAttributeValue.TryGet(Granularity, out var result)
-                ? result
-                : throw new ArgumentOutOfRangeException(nameof(Granularity), $"The specified packing granularity option '{Granularity}' is invalid.");
+            return DotAttributeValue.Get(Granularity);
         }
     }
 }

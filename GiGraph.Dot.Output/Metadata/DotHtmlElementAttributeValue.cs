@@ -67,12 +67,13 @@ namespace GiGraph.Dot.Output.Metadata
         }
 
         /// <summary>
-        ///     Gets a dictionary where the key is an HTML attribute value, and the value is a corresponding enumeration value.
+        ///     Gets a dictionary where each key has a DOT attribute value assigned. Enumeration values that are not marked with the
+        ///     <see name="DotHtmlElementAttributeValueAttribute" /> attribute are ignored.
         /// </summary>
         /// <typeparam name="TEnum">
         ///     The type of the enumeration whose value mapping to get.
         /// </typeparam>
-        public static Dictionary<string, TEnum> GetMapping<TEnum>()
+        public static Dictionary<TEnum, string> GetMapping<TEnum>()
             where TEnum : Enum
         {
             return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.GetMapping<TEnum>();

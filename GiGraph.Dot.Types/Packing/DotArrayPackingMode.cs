@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Text;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
@@ -73,13 +72,8 @@ namespace GiGraph.Dot.Types.Packing
 
             if (Options.HasValue)
             {
-                var flags = Enum.GetValues(typeof(DotArrayPackingOptions))
-                   .Cast<DotArrayPackingOptions>()
-                   .Where(flag => Options.Value.HasFlag(flag))
-                   .Select(flag => GetDotEncodedOption(flag, options, syntaxRules));
-
                 result.Append("_");
-                result.Append(string.Join(string.Empty, flags));
+                result.Append(DotAttributeValue.GetAsFlags(Options.Value));
             }
 
             if (RankCount.HasValue)
@@ -88,13 +82,6 @@ namespace GiGraph.Dot.Types.Packing
             }
 
             return result.ToString();
-        }
-
-        protected virtual string GetDotEncodedOption(DotArrayPackingOptions option, DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-        {
-            return DotAttributeValue.TryGet(option, out var result)
-                ? result
-                : throw new ArgumentOutOfRangeException(nameof(option), $"The specified array packing option '{option}' is invalid.");
         }
     }
 }

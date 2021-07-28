@@ -1,5 +1,6 @@
 using System.Text;
 using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Nodes;
 
@@ -114,7 +115,7 @@ namespace GiGraph.Dot.Types.Edges
             if (CompassPoint.HasValue)
             {
                 result.Append(separator);
-                result.Append(DotCompassPointConverter.Convert(CompassPoint.Value));
+                result.Append(DotAttributeValue.Get(CompassPoint.Value));
             }
 
             return result.ToString();

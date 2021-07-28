@@ -7,6 +7,7 @@ namespace GiGraph.Dot.Types.Packing
     ///     The flags used for customizing component distribution in the array packing mode.
     /// </summary>
     [Flags]
+    [DotFlags(separator: "")]
     public enum DotArrayPackingOptions
     {
         /// <summary>

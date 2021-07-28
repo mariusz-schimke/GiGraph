@@ -1,8 +1,8 @@
 ﻿using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output.Generators.Providers;
+using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Edges;
-using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Output.Generators.Edges
 {
@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Output.Generators.Edges
             var portName = EncodeIdentifier(endpoint.Port.Name);
 
             var compassPoint = endpoint.Port.CompassPoint.HasValue
-                ? DotCompassPointConverter.Convert(endpoint.Port.CompassPoint.Value)
+                ? DotAttributeValue.Get(endpoint.Port.CompassPoint.Value)
                 : null;
 
             writer.WriteEndpoint

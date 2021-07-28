@@ -71,7 +71,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         DotStyles? IDotClusterAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStyleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotStyles>(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.Label" />

@@ -9,6 +9,39 @@ namespace GiGraph.Dot.Output.Metadata
     public static class DotAttributeValue
     {
         /// <summary>
+        ///     If the specified enumeration type is marked with a <see cref="DotFlagsAttribute" /> returns its individual flags joined with
+        ///     a separator specified by the attribute. If the enumeration does not contain the attribute, returns false.
+        /// </summary>
+        /// <param name="flags">
+        ///     The enumeration to check.
+        /// </param>
+        /// <param name="sort">
+        ///     Determines whether the flags of the enumeration should be sorted when possible.
+        /// </param>
+        /// <param name="dotFlags">
+        ///     The returned DOT attribute flags.
+        /// </param>
+        public static bool TryGetAsFlags(Enum flags, out string dotFlags, bool sort = true)
+        {
+            return DotAttributeValue<DotAttributeValueAttribute>.TryGetAsFlags(flags, out dotFlags, sort);
+        }
+
+        /// <summary>
+        ///     If the specified enumeration type is marked with a <see cref="DotFlagsAttribute" /> returns its individual flags joined with
+        ///     a separator specified by the attribute. If the enumeration does not contain the attribute, throws an exception.
+        /// </summary>
+        /// <param name="flags">
+        ///     The enumeration to convert to DOT attribute flags.
+        /// </param>
+        /// <param name="sort">
+        ///     Determines whether the flags of the enumeration should be sorted when possible.
+        /// </param>
+        public static string GetAsFlags(Enum flags, bool sort = true)
+        {
+            return DotAttributeValue<DotAttributeValueAttribute>.GetAsFlags(flags, sort);
+        }
+
+        /// <summary>
         ///     Tries to get a DOT attribute value associated with the specified enumeration value.
         /// </summary>
         /// <param name="value">
@@ -67,12 +100,13 @@ namespace GiGraph.Dot.Output.Metadata
         }
 
         /// <summary>
-        ///     Gets a dictionary where the key is a DOT attribute value, and the value is a corresponding enumeration value.
+        ///     Gets a dictionary where each key has a DOT attribute value assigned. Enumeration values that are not marked with the
+        ///     <see name="DotAttributeValueAttribute" /> attribute are ignored.
         /// </summary>
         /// <typeparam name="TEnum">
         ///     The type of the enumeration whose value mapping to get.
         /// </typeparam>
-        public static Dictionary<string, TEnum> GetMapping<TEnum>()
+        public static Dictionary<TEnum, string> GetMapping<TEnum>()
             where TEnum : Enum
         {
             return DotAttributeValue<DotAttributeValueAttribute>.GetMapping<TEnum>();

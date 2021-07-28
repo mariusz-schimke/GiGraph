@@ -10,6 +10,7 @@ namespace GiGraph.Dot.Types.Styling
     ///     The styles of an element.
     /// </summary>
     [Flags]
+    [DotFlags(separator: ", ")]
     public enum DotStyles
     {
         /// <summary>

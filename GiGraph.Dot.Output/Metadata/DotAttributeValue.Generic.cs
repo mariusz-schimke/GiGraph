@@ -14,6 +14,63 @@ namespace GiGraph.Dot.Output.Metadata
         private const BindingFlags FieldBindingFlags = BindingFlags.Static | BindingFlags.Public;
 
         /// <summary>
+        ///     If the specified enumeration type is marked with a <see cref="DotFlagsAttribute" /> returns its individual flags joined with
+        ///     a separator specified by the attribute. If the enumeration does not contain the attribute, returns false.
+        /// </summary>
+        /// <param name="flags">
+        ///     The enumeration to convert to DOT attribute flags.
+        /// </param>
+        /// <param name="dotFlags">
+        ///     The returned DOT attribute flags.
+        /// </param>
+        /// <param name="sort">
+        ///     Determines whether the flags of the enumeration should be sorted when possible.
+        /// </param>
+        public static bool TryGetAsFlags(Enum flags, out string dotFlags, bool sort)
+        {
+            var enumType = flags.GetType();
+            if (enumType.GetCustomAttribute<DotFlagsAttribute>() is not { } attribute)
+            {
+                dotFlags = null;
+                return false;
+            }
+
+            var mapping = GetMapping(enumType);
+            var dotFlagsEnumerable = Enum
+               .GetValues(enumType)
+               .Cast<Enum>()
+               .Where(flags.HasFlag)
+               .Select(flag => mapping.TryGetValue(flag, out var value)
+                    ? value
+                    : throw new ArgumentException($"The value '{flag}' of the {enumType.Name} enumeration is not annotated with a {typeof(TAttribute).Name} attribute.", nameof(flags))
+                )
+               .Where(value => value is not null);
+
+            dotFlags = string.Join(
+                attribute.Separator,
+                sort ? dotFlagsEnumerable.OrderBy(flag => flag) : dotFlagsEnumerable
+            );
+            return true;
+        }
+
+        /// <summary>
+        ///     If the specified enumeration type is marked with a <see cref="DotFlagsAttribute" /> returns its individual flags joined with
+        ///     a separator specified by the attribute. If the enumeration does not contain the attribute, throws an exception.
+        /// </summary>
+        /// <param name="flags">
+        ///     The enumeration to convert to DOT attribute flags.
+        /// </param>
+        /// <param name="sort">
+        ///     Determines whether the flags of the enumeration should be sorted when possible.
+        /// </param>
+        public static string GetAsFlags(Enum flags, bool sort)
+        {
+            return TryGetAsFlags(flags, out var dotFlags, sort)
+                ? dotFlags
+                : throw new ArgumentException($"The {flags.GetType().Name} enumeration is not annotated with a {nameof(DotFlagsAttribute)} attribute.", nameof(flags));
+        }
+
+        /// <summary>
         ///     Tries to get a DOT attribute value associated with the specified enumeration value.
         /// </summary>
         /// <param name="value">
@@ -46,7 +103,7 @@ namespace GiGraph.Dot.Output.Metadata
         {
             return TryGet(value, out var result)
                 ? result
-                : throw new ArgumentException($"The specified '{value}' value of the {value.GetType().Name} enumeration has no associated DOT attribute value.", nameof(value));
+                : throw new ArgumentException($"The value '{value}' is not a member of the {value.GetType().Name} enumeration or is not annotated with a {typeof(TAttribute).Name} attribute.", nameof(value));
         }
 
         /// <summary>
@@ -68,7 +125,7 @@ namespace GiGraph.Dot.Output.Metadata
                .GetFields(FieldBindingFlags)
                .FirstOrDefault(field => field.GetCustomAttribute<TAttribute>()?.Value is { } fieldDotValue && fieldDotValue == dotValue);
 
-            if (match is { })
+            if (match is not null)
             {
                 value = (TEnum) match.GetValue(null);
                 return true;
@@ -92,31 +149,57 @@ namespace GiGraph.Dot.Output.Metadata
         {
             return TryGet<TEnum>(dotValue, out var result)
                 ? result
-                : throw new ArgumentException($"The specified DOT attribute value '{dotValue}' has no equivalent on the {typeof(TEnum).Name} enumeration.", nameof(dotValue));
+                : throw new ArgumentException($"The '{dotValue}' value is invalid or is not mapped to any value of the {typeof(TEnum).Name} enumeration by a {typeof(TAttribute).Name} attribute.", nameof(dotValue));
         }
 
         /// <summary>
-        ///     Gets a dictionary where the key is a DOT attribute value, and the value is a corresponding enumeration value.
+        ///     Gets a dictionary where each key has a DOT attribute value assigned. Enumeration values that are not marked with the
+        ///     <typeparamref name="TAttribute" /> attribute are ignored.
         /// </summary>
         /// <typeparam name="TEnum">
         ///     The type of the enumeration whose value mapping to get.
         /// </typeparam>
-        public static Dictionary<string, TEnum> GetMapping<TEnum>()
+        public static Dictionary<TEnum, string> GetMapping<TEnum>()
             where TEnum : Enum
         {
-            return typeof(TEnum)
-               .GetFields(FieldBindingFlags)
-               .Select(field => new
-                {
-                    Attribute = field.GetCustomAttribute<TAttribute>(),
-                    Field = field
-                })
-               .Where(result => result.Attribute is { })
-               .Where(result => result.Attribute.Value is { })
+            return GetMappingEnumerable(typeof(TEnum))
                .ToDictionary(
-                    key => key.Attribute.Value,
-                    element => (TEnum) element.Field.GetValue(null)
+                    item => (TEnum) item.Key,
+                    item => item.Value
                 );
+        }
+
+        /// <summary>
+        ///     Gets a dictionary where each key has a DOT attribute value assigned. Enumeration values that are not marked with the
+        ///     <typeparamref name="TAttribute" /> attribute are ignored.
+        /// </summary>
+        /// <param name="enumType">
+        ///     The type of the enumeration whose value mapping to get.
+        /// </param>
+        public static Dictionary<Enum, string> GetMapping(Type enumType)
+        {
+            return GetMappingEnumerable(enumType)
+               .ToDictionary(
+                    item => item.Key,
+                    item => item.Value
+                );
+        }
+
+        private static IEnumerable<(Enum Key, string Value)> GetMappingEnumerable(Type enumType)
+        {
+            return enumType
+               .GetFields(FieldBindingFlags)
+               .Select(field =>
+                (
+                    Attribute: field.GetCustomAttribute<TAttribute>(),
+                    EnumValue: (Enum) field.GetValue(null)
+                ))
+               .Where(result => result.Attribute is not null)
+               .Select(item =>
+                (
+                    Key: item.EnumValue,
+                    item.Attribute.Value
+                ));
         }
     }
 }

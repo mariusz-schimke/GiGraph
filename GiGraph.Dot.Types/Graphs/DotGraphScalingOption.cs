@@ -27,9 +27,7 @@ namespace GiGraph.Dot.Types.Graphs
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return DotAttributeValue.TryGet(Option, out var result)
-                ? result
-                : throw new ArgumentOutOfRangeException(nameof(Option), $"The specified graph scaling option '{Option}' is invalid.");
+            return DotAttributeValue.Get(Option);
         }
     }
 }

@@ -385,9 +385,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotStyleAttribute Set(string key, DotStyles value)
+        public virtual DotEnumAttribute<DotStyles> Set(string key, DotStyles value)
         {
-            return Set(new DotStyleAttribute(key, value));
+            return Set(new DotEnumAttribute<DotStyles>(key, value));
         }
 
         /// <summary>
