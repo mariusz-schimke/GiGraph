@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections.Graph;
+﻿using GiGraph.Dot.Entities.Graphs.Attributes;
 
 namespace GiGraph.Dot.Entities.Clusters.Collections
 {

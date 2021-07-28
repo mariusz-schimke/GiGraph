@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
+using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
