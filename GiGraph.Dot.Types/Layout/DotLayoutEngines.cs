@@ -1,4 +1,4 @@
-namespace GiGraph.Dot.Types.LayoutEngines
+namespace GiGraph.Dot.Types.Layout
 {
     /// <summary>
     ///     Provides the names of available graph layout engines.

@@ -1,5 +1,5 @@
 using System;
-using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Output.Metadata.Html;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Output.Converters

@@ -1,5 +1,5 @@
 ﻿using System;
-using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Output.Metadata.Html;
 
 namespace GiGraph.Dot.Types.Html.Table
 {

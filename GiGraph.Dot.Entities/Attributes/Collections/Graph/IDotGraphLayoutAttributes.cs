@@ -3,7 +3,6 @@ using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Attributes.Collections.Subgraph;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.Layout;
-using GiGraph.Dot.Types.LayoutEngines;
 using GiGraph.Dot.Types.Packing;
 using GiGraph.Dot.Types.Ranks;
 

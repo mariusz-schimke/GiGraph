@@ -1,6 +1,6 @@
 using System;
 
-namespace GiGraph.Dot.Output.Metadata
+namespace GiGraph.Dot.Output.Metadata.Html
 {
     /// <summary>
     ///     Provides information for a flags enumeration about how to join the flags to formulate a meaningful value for an attribute of

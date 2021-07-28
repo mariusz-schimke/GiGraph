@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GiGraph.Dot.Output.Metadata
+namespace GiGraph.Dot.Output.Metadata.Html
 {
     /// <summary>
     ///     Provides methods for reading an HTML attribute value associated with an enumeration value.

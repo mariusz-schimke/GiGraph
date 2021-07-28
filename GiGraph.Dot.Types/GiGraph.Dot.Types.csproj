@@ -5,11 +5,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="..\Solution Items\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
+        <Compile Include="..\Solution Items\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\GiGraph.Dot.Output\GiGraph.Dot.Output.csproj" />
+        <ProjectReference Include="..\GiGraph.Dot.Output\GiGraph.Dot.Output.csproj"/>
     </ItemGroup>
 
 </Project>

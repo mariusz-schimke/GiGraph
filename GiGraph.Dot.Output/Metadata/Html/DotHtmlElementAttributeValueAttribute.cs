@@ -1,6 +1,6 @@
 using System;
 
-namespace GiGraph.Dot.Output.Metadata
+namespace GiGraph.Dot.Output.Metadata.Html
 {
     /// <summary>
     ///     Assigns an HTML attribute value to an enumeration value.

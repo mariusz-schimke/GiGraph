@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Output.Metadata.Html;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Text;
 

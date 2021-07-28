@@ -1,5 +1,5 @@
 using System;
-using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Output.Metadata.Html;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Text;

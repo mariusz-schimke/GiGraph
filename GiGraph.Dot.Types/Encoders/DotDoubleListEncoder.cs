@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Types.Encoders
     /// </summary>
     public class DotDoubleListEncoder
     {
-        public static string Convert(double[] values, DotSyntaxRules syntaxRules)
+        public static string Encode(double[] values, DotSyntaxRules syntaxRules)
         {
             return string.Join(":", values.Select(v => v.ToString(syntaxRules.Culture)));
         }
