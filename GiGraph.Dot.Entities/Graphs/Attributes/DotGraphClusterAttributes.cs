@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotColorDefinition Color
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderWidth" />
@@ -61,7 +61,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotColor BorderColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColor>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.FillColor" />
@@ -69,7 +69,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotColorDefinition FillColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphClusterAttributes.AllowEdgeClipping" />

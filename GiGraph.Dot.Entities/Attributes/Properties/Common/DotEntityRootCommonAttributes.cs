@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual DotLabel Label
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotLabel>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.ColorScheme)]

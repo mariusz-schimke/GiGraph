@@ -33,11 +33,5 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
                 ? key
                 : throw new KeyNotFoundException($"No attribute key is defined for the '{property}' property of the {property.DeclaringType} type.");
         }
-
-        protected virtual void SetOrRemove<TAttribute, TValue>(MethodBase propertyAccessor, TValue value, Func<string, TValue, TAttribute> newAttribute)
-            where TAttribute : DotAttribute
-        {
-            _attributes.SetOrRemove(GetKey(propertyAccessor), value, newAttribute);
-        }
     }
 }

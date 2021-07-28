@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual DotLabel Label
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotLabel>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClipToNodeBoundary" />
@@ -49,21 +49,21 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual DotEndpointPort Port
         {
             get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotEndpointPort>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClusterId" />
         public virtual DotClusterId ClusterId
         {
             get => GetValueAsClusterId(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotClusterId>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Arrowhead" />
         public virtual DotArrowheadDefinition Arrowhead
         {
             get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotArrowheadDefinition>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
     }
 }

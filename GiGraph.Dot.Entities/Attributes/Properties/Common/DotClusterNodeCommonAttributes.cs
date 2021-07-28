@@ -31,14 +31,14 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual DotColorDefinition Color
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.FillColor)]
         public virtual DotColorDefinition FillColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.GradientAngle)]
@@ -66,7 +66,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual DotPoint Padding
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotPoint>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.SortV)]

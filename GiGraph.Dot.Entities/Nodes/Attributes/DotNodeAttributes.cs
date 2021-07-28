@@ -175,7 +175,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual DotLabel ExternalLabel
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotLabel>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.LabelAlignment" />

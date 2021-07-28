@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual DotColor Color
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColor>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <summary>

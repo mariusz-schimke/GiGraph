@@ -153,7 +153,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotId RootNodeId
         {
             get => GetValueAsId(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotId>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
     }
 }

@@ -2,7 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
-namespace GiGraph.Dot.Entities.Html.Attributes
+namespace GiGraph.Dot.Entities.Html.Attributes.Properties
 {
     public abstract class DotHtmlElementRootAttributes<TIEntityAttributeProperties> : DotEntityMappableAttributes<TIEntityAttributeProperties>
     {

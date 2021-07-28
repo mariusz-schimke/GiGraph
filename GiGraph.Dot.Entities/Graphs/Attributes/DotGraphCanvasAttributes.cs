@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotColorDefinition BackgroundColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.GradientFillAngle" />
@@ -100,7 +100,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotPoint Size
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotPoint>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Viewport" />
@@ -108,7 +108,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotViewport Viewport
         {
             get => GetValueAs<DotViewport>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotViewport>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Scaling" />
@@ -128,7 +128,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
                     ? value
                     : null;
             }
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotGraphScalingDefinition>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Margin" />
@@ -136,7 +136,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotPoint Margin
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotPoint>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Padding" />
@@ -144,7 +144,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotPoint Padding
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotPoint>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <summary>

@@ -74,7 +74,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
                     ? value
                     : null;
             }
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotPackingDefinition>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.PackingMode" />
@@ -92,7 +92,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
                     ? value
                     : null;
             }
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotPackingModeDefinition>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeSeparation" />
@@ -122,7 +122,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
                     ? value
                     : null;
             }
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotRankSeparationDefinition>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.ConcentrateEdges" />

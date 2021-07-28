@@ -159,7 +159,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         public virtual DotColor BorderColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColor>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.BackgroundColor" />
@@ -167,7 +167,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         public virtual DotColorDefinition BackgroundColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.Peripheries" />

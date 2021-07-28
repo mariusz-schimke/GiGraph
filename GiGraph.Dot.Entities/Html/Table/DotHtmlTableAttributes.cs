@@ -3,6 +3,7 @@ using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes;
+using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;
@@ -61,7 +62,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         DotColorDefinition IDotHtmlTableAttributes.BackgroundColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.Color" />
@@ -69,7 +70,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         DotColorDefinition IDotHtmlTableAttributes.Color
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
+            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.BorderWidth" />
