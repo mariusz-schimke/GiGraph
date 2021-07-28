@@ -107,7 +107,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         DotStyles? IDotEdgeAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotStyles>(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotStyles>(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Label" />
@@ -176,9 +176,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual double? Width
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(Width), v.Value, "Width must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(Width), v!.Value, "Width must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Weight" />
@@ -186,9 +186,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual double? Weight
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(Weight), v.Value, "Weight must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(Weight), v!.Value, "Weight must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Length" />
@@ -196,7 +196,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual double? Length
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.MinLength" />
@@ -204,9 +204,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual int? MinLength
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
-                ? throw new ArgumentOutOfRangeException(nameof(MinLength), v.Value, "Minimum length must be greater than or equal to 0.")
-                : new DotIntAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0
+                ? throw new ArgumentOutOfRangeException(nameof(MinLength), v!.Value, "Minimum length must be greater than or equal to 0.")
+                : new DotIntAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.ArrowheadScale" />
@@ -214,9 +214,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual double? ArrowheadScale
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(ArrowheadScale), v.Value, "Arrowhead scale must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(ArrowheadScale), v!.Value, "Arrowhead scale must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Directions" />
@@ -224,7 +224,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual DotEdgeDirections? Directions
         {
             get => GetValueAs<DotEdgeDirections>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotEdgeDirections>(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotEdgeDirections>(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.AttachLabel" />
@@ -232,7 +232,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual bool? AttachLabel
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.AllowLabelFloat" />
@@ -240,7 +240,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual bool? AllowLabelFloat
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Constrain" />
@@ -248,7 +248,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual bool? Constrain
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
         }
     }
 }

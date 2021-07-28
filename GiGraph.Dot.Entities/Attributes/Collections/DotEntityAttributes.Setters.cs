@@ -8,16 +8,16 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     {
         protected void SetOrRemoveBorderWidth(MethodBase propertyAccessor, double? value, [CallerMemberName] string propertyName = null)
         {
-            SetOrRemove(propertyAccessor, value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(propertyName, v.Value, "Border width must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
+            SetOrRemove(propertyAccessor, value, (k, v) => v!.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(propertyName, v!.Value, "Border width must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v!.Value));
         }
 
         protected void SetOrRemovePeripheries(MethodBase propertyAccessor, int? value, [CallerMemberName] string propertyName = null)
         {
-            SetOrRemove(propertyAccessor, value, (k, v) => v.Value < 0
-                ? throw new ArgumentOutOfRangeException(propertyName, v.Value, "The number of peripheries must be greater than or equal to 0.")
-                : new DotIntAttribute(k, v.Value));
+            SetOrRemove(propertyAccessor, value, (k, v) => v!.Value < 0
+                ? throw new ArgumentOutOfRangeException(propertyName, v!.Value, "The number of peripheries must be greater than or equal to 0.")
+                : new DotIntAttribute(k, v!.Value));
         }
     }
 }

@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Subgraph
         public virtual DotRank? NodeRank
         {
             get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotRank>(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotRank>(k, v!.Value));
         }
     }
 }

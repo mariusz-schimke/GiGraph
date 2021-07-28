@@ -26,9 +26,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual double? Width
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
-                ? throw new ArgumentOutOfRangeException(nameof(Width), v.Value, "The width must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0
+                ? throw new ArgumentOutOfRangeException(nameof(Width), v!.Value, "The width must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotNodeSizeAttributes.Height" />
@@ -36,9 +36,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual double? Height
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
-                ? throw new ArgumentOutOfRangeException(nameof(Height), v.Value, "The height must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0
+                ? throw new ArgumentOutOfRangeException(nameof(Height), v!.Value, "The height must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotNodeSizeAttributes.Mode" />
@@ -46,7 +46,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotNodeSizing? Mode
         {
             get => GetValueAs<DotNodeSizing>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotNodeSizing>(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotNodeSizing>(k, v!.Value));
         }
 
         /// <summary>

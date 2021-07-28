@@ -75,7 +75,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual bool? AllowEdgeClipping
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphClusterAttributes.VisualizationMode" />
@@ -83,7 +83,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotClusterVisualizationMode? VisualizationMode
         {
             get => GetValueAs<DotClusterVisualizationMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotClusterVisualizationMode>(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotClusterVisualizationMode>(k, v!.Value));
         }
     }
 }

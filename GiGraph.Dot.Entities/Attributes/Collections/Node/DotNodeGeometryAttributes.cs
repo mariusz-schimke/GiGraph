@@ -25,9 +25,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual int? Sides
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0
-                ? throw new ArgumentOutOfRangeException(nameof(Sides), v.Value, "The number of sides must be greater than or equal to 0.")
-                : new DotIntAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0
+                ? throw new ArgumentOutOfRangeException(nameof(Sides), v!.Value, "The number of sides must be greater than or equal to 0.")
+                : new DotIntAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotNodeGeometryAttributes.Regular" />
@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual bool? Regular
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotNodeGeometryAttributes.Peripheries" />
@@ -51,7 +51,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual double? Rotation
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotNodeGeometryAttributes.Skew" />
@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual double? Skew
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotNodeGeometryAttributes.Distortion" />
@@ -67,7 +67,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual double? Distortion
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v!.Value));
         }
 
         /// <summary>

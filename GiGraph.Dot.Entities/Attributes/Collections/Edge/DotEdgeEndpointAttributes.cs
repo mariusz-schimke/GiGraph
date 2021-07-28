@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual bool? ClipToNodeBoundary
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.GroupName" />

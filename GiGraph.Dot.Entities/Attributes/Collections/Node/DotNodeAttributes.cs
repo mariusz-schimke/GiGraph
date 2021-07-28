@@ -87,7 +87,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         DotStyles? IDotNodeAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotStyles>(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotStyles>(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Label" />
@@ -181,7 +181,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotVerticalAlignment? LabelAlignment
         {
             get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotVerticalAlignment>(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotVerticalAlignment>(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.EdgeOrderingMode" />
@@ -189,7 +189,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotEdgeOrderingMode? EdgeOrderingMode
         {
             get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotEdgeOrderingMode>(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotEdgeOrderingMode>(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Shape" />
@@ -197,7 +197,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotNodeShape? Shape
         {
             get => GetValueAs<DotNodeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotNodeShape>(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotNodeShape>(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.GroupName" />
@@ -213,7 +213,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual bool? IsRoot
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
         }
 
         protected override void SetFillStyle(DotStyles fillStyle)

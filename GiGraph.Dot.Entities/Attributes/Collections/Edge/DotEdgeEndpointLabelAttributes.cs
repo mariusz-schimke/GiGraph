@@ -35,9 +35,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual double? Distance
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(Distance), v.Value, "Endpoint label distance must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(Distance), v!.Value, "Endpoint label distance must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointLabelAttributes.Angle" />
@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual double? Angle
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v!.Value));
         }
     }
 }

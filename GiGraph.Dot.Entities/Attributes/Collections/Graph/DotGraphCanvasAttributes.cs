@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual int? GradientFillAngle
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.CenterDrawing" />
@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual bool? CenterDrawing
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Orientation" />
@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotOrientation? Orientation
         {
             get => GetValueAs<DotOrientation>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotOrientation>(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotOrientation>(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.OrientationAngle" />
@@ -61,7 +61,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual int? OrientationAngle
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.LandscapeOrientation" />
@@ -69,7 +69,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual bool? LandscapeOrientation
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Dpi" />
@@ -77,9 +77,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual double? Dpi
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(Dpi), v.Value, "DPI must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(Dpi), v!.Value, "DPI must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Resolution" />
@@ -87,9 +87,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual double? Resolution
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(Resolution), v.Value, "Resolution must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(Resolution), v!.Value, "Resolution must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Size" />

@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual double? Rotation
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.RepeatCrossingMinimization" />
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual bool? RepeatCrossingMinimization
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.UseGlobalRanking" />
@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual bool? UseGlobalRanking
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeRank" />
@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotRank? NodeRank
         {
             get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotRank>(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotRank>(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.Packing" />
@@ -97,9 +97,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual double? NodeSeparation
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(NodeSeparation), v.Value, "Node separation must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0.0
+                ? throw new ArgumentOutOfRangeException(nameof(NodeSeparation), v!.Value, "Node separation must be greater than or equal to 0.")
+                : new DotDoubleAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.RankSeparation" />
@@ -127,7 +127,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual bool? ConcentrateEdges
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.Engine" />
@@ -143,7 +143,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotLayoutDirection? Direction
         {
             get => GetValueAs<DotLayoutDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotLayoutDirection>(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotLayoutDirection>(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.EdgeOrderingMode" />
@@ -151,7 +151,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotEdgeOrderingMode? EdgeOrderingMode
         {
             get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotEdgeOrderingMode>(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotEdgeOrderingMode>(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.ForceExternalLabels" />
@@ -159,7 +159,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual bool? ForceExternalLabels
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.SortIndex" />
@@ -167,7 +167,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual int? SortIndex
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
         }
 
         /// <summary>
