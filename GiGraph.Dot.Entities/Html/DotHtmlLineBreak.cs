@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Html
     public class DotHtmlLineBreak : DotHtmlTag
     {
         public DotHtmlLineBreak()
-            : base("br", isVoid: true)
+            : base("br", isVoid: true, null) // TODO:
         {
         }
     }

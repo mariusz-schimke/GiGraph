@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GiGraph.Dot.Entities.Attributes.Collections;
 
 namespace GiGraph.Dot.Entities.Html
 {
@@ -7,8 +8,8 @@ namespace GiGraph.Dot.Entities.Html
     /// </summary>
     public abstract class DotHtmlElement : DotHtmlTag
     {
-        protected DotHtmlElement(string name)
-            : base(name, isVoid: false)
+        protected DotHtmlElement(string name, DotAttributeCollection attributes)
+            : base(name, isVoid: false, attributes)
         {
             Children = new List<IDotHtmlEntity>();
         }

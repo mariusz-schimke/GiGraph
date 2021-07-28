@@ -9,7 +9,7 @@ using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Html.Table
 {
-    public abstract class DotHtmlTableAttributes : DotHtmlElementRootAttributes<IDotHtmlTableAttributes>, IDotHtmlTableAttributes
+    public class DotHtmlTableAttributes : DotHtmlElementRootAttributes<IDotHtmlTableAttributes>, IDotHtmlTableAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup HtmlTableAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableAttributes, IDotHtmlTableAttributes>().Build();
 
@@ -18,8 +18,8 @@ namespace GiGraph.Dot.Entities.Html.Table
         {
         }
 
-        public DotHtmlTableAttributes(DotAttributeCollection attributes)
-            : this(attributes, HtmlTableAttributesKeyLookup)
+        public DotHtmlTableAttributes()
+            : this(new DotAttributeCollection(), HtmlTableAttributesKeyLookup)
         {
         }
 

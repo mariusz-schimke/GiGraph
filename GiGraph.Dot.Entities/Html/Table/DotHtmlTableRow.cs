@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         ///     Initializes a new table row instance.
         /// </summary>
         public DotHtmlTableRow()
-            : base("tr")
+            : base("tr", null) // TODO:
         {
         }
 

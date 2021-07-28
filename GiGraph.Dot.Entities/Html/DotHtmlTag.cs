@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
-using GiGraph.Dot.Output.Metadata.Html;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Text;
 
@@ -16,26 +15,26 @@ namespace GiGraph.Dot.Entities.Html
         protected readonly bool _isVoid;
         protected readonly string _name;
 
-        protected DotHtmlTag(string name, bool isVoid)
+        protected DotHtmlTag(string name, bool isVoid, DotAttributeCollection attributes)
         {
             _name = name;
             _isVoid = isVoid;
-            CustomAttributes = new Dictionary<string, object>();
+            Attributes = attributes;
         }
 
         /// <summary>
-        ///     Gets the attributes of the element tag.
+        ///     Gets the collection of attributes of the element.
         /// </summary>
-        public virtual Dictionary<string, object> CustomAttributes { get; }
+        public virtual DotAttributeCollection Attributes { get; }
 
         /// <inheritdoc cref="IDotHtmlEntity.ToHtml" />
         public DotHtml ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var result = new StringBuilder();
 
-            var attrs = GetAttributes(options, syntaxRules)
+            var attrs = Attributes.Values
                .Select(attr =>
-                    $"{(options.Attributes.Html.UpperCaseAttributeNames ? attr.Key.ToUpperInvariant() : attr.Key)}=\"{attr.Value}\""
+                    $"{(options.Attributes.Html.UpperCaseAttributeNames ? attr.Key.ToUpperInvariant() : attr.Key)}=\"{attr.GetDotEncodedValue(options, syntaxRules)}\""
                 );
 
             var tagName = options.Attributes.Html.UpperCaseTagNames ? _name.ToUpperInvariant() : _name;
@@ -59,7 +58,7 @@ namespace GiGraph.Dot.Entities.Html
                 var children = GetChildren().Select(child => child.ToHtml(options, syntaxRules));
                 result.Append(string.Join(string.Empty, children));
 
-                result.Append($"</{_name}>");
+                result.Append($"</{tagName}>");
             }
 
             return result.ToString();
@@ -68,45 +67,6 @@ namespace GiGraph.Dot.Entities.Html
         protected virtual IEnumerable<IDotHtmlEntity> GetChildren()
         {
             return Enumerable.Empty<IDotHtmlEntity>();
-        }
-
-        protected virtual Dictionary<string, string> GetAttributes(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-        {
-            var attributes = GetType()
-               .GetProperties(BindingFlags.Instance | BindingFlags.Public)
-               .Select(prop =>
-                {
-                    var attribute = prop.GetCustomAttribute<DotHtmlElementAttributeKeyAttribute>();
-                    if (attribute is null)
-                    {
-                        return null;
-                    }
-
-                    var value = prop.GetValue(this);
-                    if (value is null)
-                    {
-                        return null;
-                    }
-
-                    var converter = syntaxRules.Attributes.Html.GetAttributeValueConverterForValue(value);
-                    return new
-                    {
-                        attribute.Key,
-                        Value = converter.Convert(value, options, syntaxRules)
-                    };
-                })
-               .Where(attr => attr is not null)
-               .ToDictionary(key => key.Key, value => value.Value);
-
-            // add custom attributes
-            var customAttributes = CustomAttributes.Where(attribute => !attributes.ContainsKey(attribute.Key));
-            foreach (var attribute in customAttributes)
-            {
-                var converter = syntaxRules.Attributes.Html.GetAttributeValueConverterForValue(attribute.Value);
-                attributes[attribute.Key] = converter.Convert(attribute.Value, options, syntaxRules);
-            }
-
-            return attributes;
         }
     }
 }

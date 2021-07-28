@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         ///     Initializes a new table cell instance.
         /// </summary>
         public DotHtmlTableCell()
-            : base("td")
+            : base("td", null) // TODO:
         {
         }
     }

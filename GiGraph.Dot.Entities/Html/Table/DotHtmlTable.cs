@@ -15,14 +15,20 @@ namespace GiGraph.Dot.Entities.Html.Table
         ///     Initializes a new table instance.
         /// </summary>
         public DotHtmlTable()
-            : base("table")
+            : this(new DotHtmlTableAttributes())
         {
+        }
+
+        protected DotHtmlTable(DotHtmlTableAttributes attributes)
+            : base("table", attributes.Collection)
+        {
+            Attributes = attributes;
         }
 
         /// <summary>
         ///     The attributes of the table.
         /// </summary>
-        public virtual DotHtmlTableAttributes Attributes { get; }
+        public new virtual DotHtmlTableAttributes Attributes { get; }
 
         /// <summary>
         ///     Allows the user to specify a unique ID for the table.
