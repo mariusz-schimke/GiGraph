@@ -1,5 +1,4 @@
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -32,7 +31,7 @@ namespace GiGraph.Dot.Entities.Subgraphs.Attributes
         public virtual DotRank? NodeRank
         {
             get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotRank>(k, v!.Value));
+            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
     }
 }

@@ -92,7 +92,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         DotStyles? IDotGraphAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotStyles>(k, v!.Value));
+            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Label" />
@@ -121,7 +121,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotEdgeShape? EdgeShape
         {
             get => GetValueAs<DotEdgeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotEdgeShape>(k, v!.Value));
+            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Comment" />

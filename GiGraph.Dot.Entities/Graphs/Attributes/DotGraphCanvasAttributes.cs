@@ -56,7 +56,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotOrientation? Orientation
         {
             get => GetValueAs<DotOrientation>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotOrientation>(k, v!.Value));
+            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.OrientationAngle" />

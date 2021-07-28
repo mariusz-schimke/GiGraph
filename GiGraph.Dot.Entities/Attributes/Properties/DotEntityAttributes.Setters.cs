@@ -13,10 +13,25 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             _attributes.SetOrRemove(GetKey(propertyAccessor), value, newAttribute);
         }
 
-        protected void SetOrRemoveComplexAttribute<TComplexType>(MethodBase propertyAccessor, TComplexType value)
-            where TComplexType : IDotEncodable
+        protected void SetOrRemoveComplexAttribute<TComplex>(MethodBase propertyAccessor, TComplex value)
+            where TComplex : IDotEncodable
         {
-            SetOrRemove(propertyAccessor, value, (k, v) => new DotComplexAttribute<TComplexType>(k, v));
+            SetOrRemove(propertyAccessor, value, (k, v) => new DotComplexAttribute<TComplex>(k, v));
+        }
+
+        protected void SetOrRemoveEnumAttribute<TEnum>(MethodBase propertyAccessor, bool hasValue, Func<TEnum> value)
+            where TEnum : Enum
+        {
+            var key = GetKey(propertyAccessor);
+
+            if (hasValue)
+            {
+                _attributes.Set(new DotEnumAttribute<TEnum>(key, value()));
+            }
+            else
+            {
+                _attributes.Remove(key);
+            }
         }
 
         protected void SetOrRemoveBorderWidth(MethodBase propertyAccessor, double? value, [CallerMemberName] string propertyName = null)

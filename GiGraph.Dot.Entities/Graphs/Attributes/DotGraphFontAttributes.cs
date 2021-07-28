@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotFontConvention? Convention
         {
             get => GetValueAs<DotFontConvention>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotFontConvention>(k, v!.Value));
+            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <summary>

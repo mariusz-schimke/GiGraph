@@ -85,7 +85,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotClusterVisualizationMode? VisualizationMode
         {
             get => GetValueAs<DotClusterVisualizationMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotClusterVisualizationMode>(k, v!.Value));
+            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
     }
 }

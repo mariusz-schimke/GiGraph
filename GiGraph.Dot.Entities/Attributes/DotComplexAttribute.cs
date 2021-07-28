@@ -6,11 +6,11 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     ///     A DOT-encodable value attribute.
     /// </summary>
-    /// <typeparam name="TComplexType">
+    /// <typeparam name="TComplex">
     ///     A complex type that implements the <see cref="IDotEncodable" /> interface.
     /// </typeparam>
-    public class DotComplexAttribute<TComplexType> : DotAttribute<TComplexType>
-        where TComplexType : IDotEncodable
+    public class DotComplexAttribute<TComplex> : DotAttribute<TComplex>
+        where TComplex : IDotEncodable
     {
         /// <summary>
         ///     Creates a new instance of the attribute.
@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public DotComplexAttribute(string key, TComplexType value)
+        public DotComplexAttribute(string key, TComplex value)
             : base(key, value)
         {
         }

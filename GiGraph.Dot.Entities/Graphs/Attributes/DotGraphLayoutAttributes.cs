@@ -55,7 +55,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotRank? NodeRank
         {
             get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotRank>(k, v!.Value));
+            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.Packing" />
@@ -146,7 +146,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotLayoutDirection? Direction
         {
             get => GetValueAs<DotLayoutDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotLayoutDirection>(k, v!.Value));
+            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.EdgeOrderingMode" />
@@ -154,7 +154,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotEdgeOrderingMode? EdgeOrderingMode
         {
             get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotEdgeOrderingMode>(k, v!.Value));
+            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.ForceExternalLabels" />

@@ -89,7 +89,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         DotStyles? IDotNodeAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotStyles>(k, v!.Value));
+            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Label" />
@@ -183,7 +183,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual DotVerticalAlignment? LabelAlignment
         {
             get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotVerticalAlignment>(k, v!.Value));
+            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.EdgeOrderingMode" />
@@ -191,7 +191,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual DotEdgeOrderingMode? EdgeOrderingMode
         {
             get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotEdgeOrderingMode>(k, v!.Value));
+            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Shape" />
@@ -199,7 +199,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual DotNodeShape? Shape
         {
             get => GetValueAs<DotNodeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotNodeShape>(k, v!.Value));
+            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.GroupName" />
