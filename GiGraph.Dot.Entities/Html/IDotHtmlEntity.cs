@@ -1,7 +1,7 @@
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Text;
 
-namespace GiGraph.Dot.Types.Html
+namespace GiGraph.Dot.Entities.Html
 {
     /// <summary>
     ///     Represents an HTML entity.

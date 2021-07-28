@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GiGraph.Dot.Types.Html.Table
+namespace GiGraph.Dot.Entities.Html.Table
 {
     /// <summary>
     ///     An HTML table row.

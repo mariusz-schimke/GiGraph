@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace GiGraph.Dot.Types.Html
+namespace GiGraph.Dot.Entities.Html
 {
     /// <summary>
     ///     An HTML element.

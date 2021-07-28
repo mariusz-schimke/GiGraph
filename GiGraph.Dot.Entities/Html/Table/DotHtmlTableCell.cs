@@ -1,4 +1,4 @@
-namespace GiGraph.Dot.Types.Html.Table
+namespace GiGraph.Dot.Entities.Html.Table
 {
     /// <summary>
     ///     A cell of an HTML table row.

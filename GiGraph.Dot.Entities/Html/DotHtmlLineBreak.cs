@@ -1,4 +1,4 @@
-namespace GiGraph.Dot.Types.Html
+namespace GiGraph.Dot.Entities.Html
 {
     /// <summary>
     ///     An HTML line break (&lt;br/&gt;).
