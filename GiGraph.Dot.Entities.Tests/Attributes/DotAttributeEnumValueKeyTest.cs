@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -59,22 +58,27 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         {
             foreach (var value in Enum.GetValues(enumType))
             {
-                var enumMember = enumType.GetMember(value.ToString()).First();
+                var enumMember = enumType.GetMember(value.ToString()!).First();
 
                 var attribute = enumMember?.GetCustomAttribute<DotAttributeValueAttribute>();
                 Assert.NotNull(attribute);
 
                 // null is allowed, but an empty string is considered to be a mistake
                 Assert.True(attribute.Value is null || attribute.Value.Length > 0);
+            }
+        }
 
-
-                // it is assumed that if a key repeats, an exception will be thrown by the mapping method on dictionary creation
-                var mapping = (IEnumerable) typeof(DotAttributeValue).GetMethod(
-                        nameof(DotAttributeValue.GetMapping)
-                    )
-                   .MakeGenericMethod(enumType).Invoke(null, null);
-
-                Assert.NotEmpty(mapping);
+        [Theory]
+        [MemberData(nameof(EnumTypes))]
+        public void enum_properties_have_non_repeating_attribute_values_assigned(Type enumType)
+        {
+            var mapping = DotAttributeValue.GetMapping(enumType);
+            foreach (var item1 in mapping)
+            {
+                Assert.DoesNotContain(
+                    mapping,
+                    item2 => !Equals(item1.Key, item2.Key) && string.Equals(item1.Value, item2.Value, StringComparison.OrdinalIgnoreCase)
+                );
             }
         }
     }
