@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual double? Rotation
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v!.Value));
+            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.RepeatCrossingMinimization" />
@@ -170,7 +170,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual int? SortIndex
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveIntAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <summary>

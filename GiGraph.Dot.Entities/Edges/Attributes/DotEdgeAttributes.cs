@@ -198,7 +198,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual double? Length
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotDoubleAttribute(k, v!.Value));
+            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.MinLength" />

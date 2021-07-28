@@ -34,9 +34,14 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             }
         }
 
-        protected void SetOrRemoveIntAttribute(MethodBase propertyAccessor, int? value)
+        protected void SetOrRemoveNumericAttribute(MethodBase propertyAccessor, int? value)
         {
             SetOrRemove(propertyAccessor, value, (k, v) => new DotIntAttribute(k, v!.Value));
+        }
+
+        protected void SetOrRemoveNumericAttribute(MethodBase propertyAccessor, double? value)
+        {
+            SetOrRemove(propertyAccessor, value, (k, v) => new DotDoubleAttribute(k, v!.Value));
         }
 
         protected void SetOrRemoveBorderWidth(MethodBase propertyAccessor, double? value, [CallerMemberName] string propertyName = null)
