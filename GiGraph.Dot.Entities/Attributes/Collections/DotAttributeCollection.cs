@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         public virtual int RemoveAll(Predicate<DotAttribute> match)
         {
             var result = 0;
-            var matches = Values.Where(a => match(a)).ToArray();
+            var matches = this.Where(a => match(a.Value)).ToArray();
 
             foreach (var attribute in matches)
             {

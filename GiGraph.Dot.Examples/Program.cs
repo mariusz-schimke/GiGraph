@@ -2,8 +2,6 @@
 using System.Threading.Tasks;
 using GiGraph.Dot.Examples.Basic;
 using GiGraph.Dot.Extensions;
-using GiGraph.Dot.Types.Clusters;
-using GiGraph.Dot.Types.Layout;
 
 namespace GiGraph.Dot.Examples
 {

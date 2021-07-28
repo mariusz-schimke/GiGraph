@@ -31,11 +31,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="attribute">
         ///     The attribute to include in the collection.
         /// </param>
-        public virtual T Set<T>(T attribute)
+        public virtual DotAttributeCollection Set<T>(T attribute)
             where T : DotAttribute
         {
             this[attribute.Key] = attribute;
-            return attribute;
+            return this;
         }
 
         protected internal virtual void SetOrRemove<TAttribute, TValue>(string key, TValue value, Func<string, TValue, TAttribute> newAttribute)
@@ -77,7 +77,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="key">
         ///     The key of the attribute whose value to set.
         /// </param>
-        public virtual DotNullAttribute Nullify(string key)
+        public virtual DotAttributeCollection Nullify(string key)
         {
             return Set(new DotNullAttribute(key));
         }
@@ -91,7 +91,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotStringAttribute Set(string key, string value)
+        public virtual DotAttributeCollection Set(string key, string value)
         {
             return Set(new DotStringAttribute(key, value));
         }
@@ -105,7 +105,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEscapeStringAttribute Set(string key, DotEscapeString value)
+        public virtual DotAttributeCollection Set(string key, DotEscapeString value)
         {
             return Set(new DotEscapeStringAttribute(key, value));
         }
@@ -119,7 +119,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEscapeStringAttribute Set(string key, DotEscapedString value)
+        public virtual DotAttributeCollection Set(string key, DotEscapedString value)
         {
             return Set(new DotEscapeStringAttribute(key, value));
         }
@@ -133,7 +133,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEscapeStringAttribute Set(string key, DotUnescapedString value)
+        public virtual DotAttributeCollection Set(string key, DotUnescapedString value)
         {
             return Set(new DotEscapeStringAttribute(key, value));
         }
@@ -147,7 +147,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEscapeStringAttribute Set(string key, DotHtml value)
+        public virtual DotAttributeCollection Set(string key, DotHtml value)
         {
             return Set(new DotEscapeStringAttribute(key, value));
         }
@@ -161,7 +161,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotLabel> Set(string key, DotLabel value)
+        public virtual DotAttributeCollection Set(string key, DotLabel value)
         {
             return Set(new DotComplexAttribute<DotLabel>(key, value));
         }
@@ -175,7 +175,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotTextLabel> Set(string key, DotTextLabel value)
+        public virtual DotAttributeCollection Set(string key, DotTextLabel value)
         {
             return Set(new DotComplexAttribute<DotTextLabel>(key, value));
         }
@@ -189,7 +189,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotHtmlLabel> Set(string key, DotHtmlLabel value)
+        public virtual DotAttributeCollection Set(string key, DotHtmlLabel value)
         {
             return Set(new DotComplexAttribute<DotHtmlLabel>(key, value));
         }
@@ -203,7 +203,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotRecordLabel> Set(string key, DotRecordLabel value)
+        public virtual DotAttributeCollection Set(string key, DotRecordLabel value)
         {
             return Set(new DotComplexAttribute<DotRecordLabel>(key, value));
         }
@@ -217,7 +217,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotHorizontalAlignment> Set(string key, DotHorizontalAlignment value)
+        public virtual DotAttributeCollection Set(string key, DotHorizontalAlignment value)
         {
             return Set(new DotEnumAttribute<DotHorizontalAlignment>(key, value));
         }
@@ -231,7 +231,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotVerticalAlignment> Set(string key, DotVerticalAlignment value)
+        public virtual DotAttributeCollection Set(string key, DotVerticalAlignment value)
         {
             return Set(new DotEnumAttribute<DotVerticalAlignment>(key, value));
         }
@@ -245,7 +245,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotIntAttribute Set(string key, int value)
+        public virtual DotAttributeCollection Set(string key, int value)
         {
             return Set(new DotIntAttribute(key, value));
         }
@@ -259,7 +259,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotDoubleAttribute Set(string key, double value)
+        public virtual DotAttributeCollection Set(string key, double value)
         {
             return Set(new DotDoubleAttribute(key, value));
         }
@@ -273,7 +273,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotDoubleArrayAttribute Set(string key, params double[] value)
+        public virtual DotAttributeCollection Set(string key, params double[] value)
         {
             return Set(new DotDoubleArrayAttribute(key, value));
         }
@@ -287,7 +287,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotDoubleArrayAttribute Set(string key, IEnumerable<double> value)
+        public virtual DotAttributeCollection Set(string key, IEnumerable<double> value)
         {
             return Set(new DotDoubleArrayAttribute(key, value));
         }
@@ -301,7 +301,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotBoolAttribute Set(string key, bool value)
+        public virtual DotAttributeCollection Set(string key, bool value)
         {
             return Set(new DotBoolAttribute(key, value));
         }
@@ -315,7 +315,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotColorAttribute Set(string key, Color value)
+        public virtual DotAttributeCollection Set(string key, Color value)
         {
             return Set(new DotColorAttribute(key, value));
         }
@@ -329,7 +329,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotColorDefinition> Set(string key, DotColorDefinition value)
+        public virtual DotAttributeCollection Set(string key, DotColorDefinition value)
         {
             return Set(new DotComplexAttribute<DotColorDefinition>(key, value));
         }
@@ -343,7 +343,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotNodeShape> Set(string key, DotNodeShape value)
+        public virtual DotAttributeCollection Set(string key, DotNodeShape value)
         {
             return Set(new DotEnumAttribute<DotNodeShape>(key, value));
         }
@@ -357,7 +357,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotEdgeShape> Set(string key, DotEdgeShape value)
+        public virtual DotAttributeCollection Set(string key, DotEdgeShape value)
         {
             return Set(new DotEnumAttribute<DotEdgeShape>(key, value));
         }
@@ -371,7 +371,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotNodeSizing> Set(string key, DotNodeSizing value)
+        public virtual DotAttributeCollection Set(string key, DotNodeSizing value)
         {
             return Set(new DotEnumAttribute<DotNodeSizing>(key, value));
         }
@@ -385,7 +385,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotStyles> Set(string key, DotStyles value)
+        public virtual DotAttributeCollection Set(string key, DotStyles value)
         {
             return Set(new DotEnumAttribute<DotStyles>(key, value));
         }
@@ -399,7 +399,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotArrowheadShape> Set(string key, DotArrowheadShape value)
+        public virtual DotAttributeCollection Set(string key, DotArrowheadShape value)
         {
             return Set(new DotEnumAttribute<DotArrowheadShape>(key, value));
         }
@@ -413,7 +413,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotEdgeDirections> Set(string key, DotEdgeDirections value)
+        public virtual DotAttributeCollection Set(string key, DotEdgeDirections value)
         {
             return Set(new DotEnumAttribute<DotEdgeDirections>(key, value));
         }
@@ -427,7 +427,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotRank> Set(string key, DotRank value)
+        public virtual DotAttributeCollection Set(string key, DotRank value)
         {
             return Set(new DotEnumAttribute<DotRank>(key, value));
         }
@@ -441,7 +441,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotLayoutDirection> Set(string key, DotLayoutDirection value)
+        public virtual DotAttributeCollection Set(string key, DotLayoutDirection value)
         {
             return Set(new DotEnumAttribute<DotLayoutDirection>(key, value));
         }
@@ -455,7 +455,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotClusterVisualizationMode> Set(string key, DotClusterVisualizationMode value)
+        public virtual DotAttributeCollection Set(string key, DotClusterVisualizationMode value)
         {
             return Set(new DotEnumAttribute<DotClusterVisualizationMode>(key, value));
         }
@@ -469,7 +469,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotEdgeOrderingMode> Set(string key, DotEdgeOrderingMode value)
+        public virtual DotAttributeCollection Set(string key, DotEdgeOrderingMode value)
         {
             return Set(new DotEnumAttribute<DotEdgeOrderingMode>(key, value));
         }
@@ -483,7 +483,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotOrientation> Set(string key, DotOrientation value)
+        public virtual DotAttributeCollection Set(string key, DotOrientation value)
         {
             return Set(new DotEnumAttribute<DotOrientation>(key, value));
         }
@@ -498,7 +498,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotRankSeparationDefinition> Set(string key, DotRankSeparationDefinition value)
+        public virtual DotAttributeCollection Set(string key, DotRankSeparationDefinition value)
         {
             return Set(new DotComplexAttribute<DotRankSeparationDefinition>(key, value));
         }
@@ -512,7 +512,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotEndpointPort> Set(string key, DotEndpointPort value)
+        public virtual DotAttributeCollection Set(string key, DotEndpointPort value)
         {
             return Set(new DotComplexAttribute<DotEndpointPort>(key, value));
         }
@@ -526,7 +526,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotCompassPoint> Set(string key, DotCompassPoint value)
+        public virtual DotAttributeCollection Set(string key, DotCompassPoint value)
         {
             return Set(new DotEnumAttribute<DotCompassPoint>(key, value));
         }
@@ -540,7 +540,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotAlignment> Set(string key, DotAlignment value)
+        public virtual DotAttributeCollection Set(string key, DotAlignment value)
         {
             return Set(new DotEnumAttribute<DotAlignment>(key, value));
         }
@@ -554,7 +554,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotPoint> Set(string key, DotPoint value)
+        public virtual DotAttributeCollection Set(string key, DotPoint value)
         {
             return Set(new DotComplexAttribute<DotPoint>(key, value));
         }
@@ -568,7 +568,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotRectangle> Set(string key, DotRectangle value)
+        public virtual DotAttributeCollection Set(string key, DotRectangle value)
         {
             return Set(new DotComplexAttribute<DotRectangle>(key, value));
         }
@@ -582,7 +582,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotRectangleArrayAttribute Set(string key, DotRectangle[] value)
+        public virtual DotAttributeCollection Set(string key, DotRectangle[] value)
         {
             return Set(new DotRectangleArrayAttribute(key, value));
         }
@@ -596,7 +596,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotRectangleArrayAttribute Set(string key, IEnumerable<DotRectangle> value)
+        public virtual DotAttributeCollection Set(string key, IEnumerable<DotRectangle> value)
         {
             return Set(new DotRectangleArrayAttribute(key, value));
         }
@@ -610,7 +610,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotGraphScalingDefinition> Set(string key, DotGraphScalingDefinition value)
+        public virtual DotAttributeCollection Set(string key, DotGraphScalingDefinition value)
         {
             return Set(new DotComplexAttribute<DotGraphScalingDefinition>(key, value));
         }
@@ -624,7 +624,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotPackingDefinition> Set(string key, DotPackingDefinition value)
+        public virtual DotAttributeCollection Set(string key, DotPackingDefinition value)
         {
             return Set(new DotComplexAttribute<DotPackingDefinition>(key, value));
         }
@@ -638,7 +638,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotGraphScaling> Set(string key, DotGraphScaling value)
+        public virtual DotAttributeCollection Set(string key, DotGraphScaling value)
         {
             return Set(new DotEnumAttribute<DotGraphScaling>(key, value));
         }
@@ -652,7 +652,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotArrowheadDefinition> Set(string key, DotArrowheadDefinition value)
+        public virtual DotAttributeCollection Set(string key, DotArrowheadDefinition value)
         {
             return Set(new DotComplexAttribute<DotArrowheadDefinition>(key, value));
         }
@@ -666,7 +666,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotPackingGranularity> Set(string key, DotPackingGranularity value)
+        public virtual DotAttributeCollection Set(string key, DotPackingGranularity value)
         {
             return Set(new DotEnumAttribute<DotPackingGranularity>(key, value));
         }
@@ -681,7 +681,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotPackingModeDefinition> Set(string key, DotPackingModeDefinition value)
+        public virtual DotAttributeCollection Set(string key, DotPackingModeDefinition value)
         {
             return Set(new DotComplexAttribute<DotPackingModeDefinition>(key, value));
         }
@@ -695,7 +695,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotImageScaling> Set(string key, DotImageScaling value)
+        public virtual DotAttributeCollection Set(string key, DotImageScaling value)
         {
             return Set(new DotEnumAttribute<DotImageScaling>(key, value));
         }
@@ -709,7 +709,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotId> Set(string key, DotId value)
+        public virtual DotAttributeCollection Set(string key, DotId value)
         {
             return Set(new DotComplexAttribute<DotId>(key, value));
         }
@@ -723,7 +723,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotClusterId> Set(string key, DotClusterId value)
+        public virtual DotAttributeCollection Set(string key, DotClusterId value)
         {
             return Set(new DotComplexAttribute<DotClusterId>(key, value));
         }
@@ -737,7 +737,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotComplexAttribute<DotViewport> Set(string key, DotViewport value)
+        public virtual DotAttributeCollection Set(string key, DotViewport value)
         {
             return Set(new DotComplexAttribute<DotViewport>(key, value));
         }
@@ -751,7 +751,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotEnumAttribute<DotFontConvention> Set(string key, DotFontConvention value)
+        public virtual DotAttributeCollection Set(string key, DotFontConvention value)
         {
             return Set(new DotEnumAttribute<DotFontConvention>(key, value));
         }
@@ -768,7 +768,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotCustomAttribute SetCustom(string key, string value)
+        public virtual DotAttributeCollection SetCustom(string key, string value)
         {
             return Set(new DotCustomAttribute(key, value));
         }

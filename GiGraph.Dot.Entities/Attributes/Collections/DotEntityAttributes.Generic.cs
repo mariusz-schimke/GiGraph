@@ -46,7 +46,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             propertyInfo.SetValue(this, value);
 
             var key = GetKey(propertyInfo);
-            return _attributes.TryGetValue(key, out var attribute) ? attribute : null;
+            return TryGetAttribute(key);
         }
 
         /// <summary>
@@ -63,10 +63,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        public virtual DotCustomAttribute SetCustomValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
+        public virtual DotAttribute SetCustomValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
         {
             var key = GetKey(property);
-            return _attributes.SetCustom(key, value);
+            _attributes.SetCustom(key, value);
+            return TryGetAttribute(key);
         }
 
         /// <summary>
@@ -123,10 +124,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        public virtual DotNullAttribute Nullify<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        public virtual DotAttribute Nullify<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var key = GetKey(property);
-            return _attributes.Nullify(key);
+            _attributes.Nullify(key);
+            return TryGetAttribute(key);
         }
 
         /// <summary>
@@ -165,12 +167,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 throw new ArgumentException("Property expression expected.", nameof(property));
 
             // make sure the property expression refers to current instance type, to any of its base classes, or to an interface it implements
-            if (!propertyInfo.DeclaringType.IsAssignableFrom(GetType()))
+            if (propertyInfo.DeclaringType is null || !propertyInfo.DeclaringType.IsAssignableFrom(GetType()))
             {
                 throw new ArgumentException("The property expression must refer to a member of the current instance.", nameof(property));
             }
 
             return propertyInfo;
+        }
+
+        protected virtual DotAttribute TryGetAttribute(string key)
+        {
+            return _attributes.TryGetValue(key, out var attribute) ? attribute : null;
         }
     }
 }
