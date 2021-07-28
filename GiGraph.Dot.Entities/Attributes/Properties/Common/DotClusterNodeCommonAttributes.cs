@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual int? GradientFillAngle
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
+            set => SetOrRemoveIntAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.PenWidth)]
@@ -73,7 +73,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual int? SortIndex
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
+            set => SetOrRemoveIntAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         protected abstract void SetFillStyle(DotStyles fillStyle);

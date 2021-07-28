@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual int? GradientFillAngle
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
+            set => SetOrRemoveIntAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.CenterDrawing" />
@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual int? OrientationAngle
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
+            set => SetOrRemoveIntAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.LandscapeOrientation" />

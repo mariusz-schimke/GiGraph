@@ -170,7 +170,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual int? SortIndex
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
+            set => SetOrRemoveIntAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <summary>

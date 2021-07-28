@@ -78,7 +78,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.BorderWidth
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
+            set => SetOrRemoveIntAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.CellBorderWidth" />
@@ -86,7 +86,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.CellBorderWidth
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
+            set => SetOrRemoveIntAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.CellPadding" />
@@ -94,7 +94,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.CellPadding
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
+            set => SetOrRemoveIntAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.CellSpacing" />
@@ -102,7 +102,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.CellSpacing
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
+            set => SetOrRemoveIntAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.RowFormat" />
@@ -118,7 +118,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.ColumnFormat
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
+            set => SetOrRemoveIntAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.Sides" />
@@ -142,7 +142,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.GradientFillAngle
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
+            set => SetOrRemoveIntAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.Width" />
@@ -150,7 +150,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.Width
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
+            set => SetOrRemoveIntAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.Height" />
@@ -158,7 +158,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.Height
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIntAttribute(k, v!.Value));
+            set => SetOrRemoveIntAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.Href" />
