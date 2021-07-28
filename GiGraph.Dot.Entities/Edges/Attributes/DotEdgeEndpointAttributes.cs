@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual string GroupName
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Port" />

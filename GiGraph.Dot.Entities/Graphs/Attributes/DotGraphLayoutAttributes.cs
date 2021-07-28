@@ -138,7 +138,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual string Engine
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.Direction" />

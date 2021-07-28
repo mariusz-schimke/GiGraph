@@ -25,6 +25,11 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             SetOrRemove(propertyAccessor, value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
+        protected void SetOrRemoveStringAttribute(MethodBase propertyAccessor, string value)
+        {
+            SetOrRemove(propertyAccessor, value, (k, v) => new DotStringAttribute(k, v));
+        }
+
         protected void SetOrRemoveEnumAttribute<TEnum>(MethodBase propertyAccessor, bool hasValue, Func<TEnum> value)
             where TEnum : Enum
         {

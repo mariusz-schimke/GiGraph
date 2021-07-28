@@ -138,7 +138,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual string Comment
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Tooltip" />

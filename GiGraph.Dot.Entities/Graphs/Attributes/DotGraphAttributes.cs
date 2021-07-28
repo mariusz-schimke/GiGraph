@@ -129,7 +129,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual string Comment
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Charset" />
@@ -137,7 +137,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual string Charset
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.ImageDirectories" />
@@ -145,7 +145,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual string ImageDirectories
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.RootNodeId" />

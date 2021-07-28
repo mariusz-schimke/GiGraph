@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual string ColorScheme
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Id)]

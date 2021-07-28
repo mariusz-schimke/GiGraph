@@ -167,7 +167,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual string Comment
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.ExternalLabel" />
@@ -207,7 +207,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual string GroupName
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.IsRoot" />

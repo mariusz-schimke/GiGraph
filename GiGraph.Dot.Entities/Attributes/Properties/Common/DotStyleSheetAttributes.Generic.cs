@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual string Class
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotStringAttribute(k, v));
+            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
         }
     }
 }
