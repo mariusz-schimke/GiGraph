@@ -13,17 +13,17 @@ namespace GiGraph.Dot.Output.Metadata
         ///     a separator specified by the attribute. If the enumeration does not contain the attribute, returns false.
         /// </summary>
         /// <param name="flags">
-        ///     The enumeration to check.
-        /// </param>
-        /// <param name="sort">
-        ///     Determines whether the flags of the enumeration should be sorted when possible.
+        ///     The enumeration to convert to DOT attribute flags.
         /// </param>
         /// <param name="dotFlags">
         ///     The returned DOT attribute flags.
         /// </param>
+        /// <param name="sort">
+        ///     Determines whether the flags of the enumeration should be sorted when possible.
+        /// </param>
         public static bool TryGetAsFlags(Enum flags, out string dotFlags, bool sort = true)
         {
-            return DotAttributeValue<DotAttributeValueAttribute>.TryGetAsFlags(flags, out dotFlags, sort);
+            return DotAttributeValue<DotAttributeValueAttribute>.TryGetAsFlags<DotFlagsAttribute>(flags, out dotFlags, sort);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Output.Metadata
         /// </param>
         public static string GetAsFlags(Enum flags, bool sort = true)
         {
-            return DotAttributeValue<DotAttributeValueAttribute>.GetAsFlags(flags, sort);
+            return DotAttributeValue<DotAttributeValueAttribute>.GetAsFlags<DotFlagsAttribute>(flags, sort);
         }
 
         /// <summary>
@@ -85,6 +85,23 @@ namespace GiGraph.Dot.Output.Metadata
         }
 
         /// <summary>
+        ///     Tries to get an enumeration value associated with the specified DOT attribute value.
+        /// </summary>
+        /// <param name="enumType">
+        ///     The type of the enumeration whose value to search.
+        /// </param>
+        /// <param name="value">
+        ///     The returned enumeration value if found.
+        /// </param>
+        /// <param name="dotValue">
+        ///     The DOT attribute value whose associated enumeration value to return.
+        /// </param>
+        public static bool TryGet(Type enumType, string dotValue, out Enum value)
+        {
+            return DotAttributeValue<DotAttributeValueAttribute>.TryGet(enumType, dotValue, out value);
+        }
+
+        /// <summary>
         ///     Gets an enumeration value associated with the specified DOT attribute value.
         /// </summary>
         /// <param name="dotValue">
@@ -100,8 +117,22 @@ namespace GiGraph.Dot.Output.Metadata
         }
 
         /// <summary>
+        ///     Gets an enumeration value associated with the specified DOT attribute value.
+        /// </summary>
+        /// <param name="enumType">
+        ///     The type of the enumeration whose value to search.
+        /// </param>
+        /// <param name="dotValue">
+        ///     The DOT attribute value whose associated enumeration value to return.
+        /// </param>
+        public static Enum Get(Type enumType, string dotValue)
+        {
+            return DotAttributeValue<DotAttributeValueAttribute>.Get(enumType, dotValue);
+        }
+
+        /// <summary>
         ///     Gets a dictionary where each key has a DOT attribute value assigned. Enumeration values that are not marked with the
-        ///     <see name="DotAttributeValueAttribute" /> attribute are ignored.
+        ///     <see cref="DotAttributeValueAttribute" /> attribute are ignored.
         /// </summary>
         /// <typeparam name="TEnum">
         ///     The type of the enumeration whose value mapping to get.
@@ -110,6 +141,18 @@ namespace GiGraph.Dot.Output.Metadata
             where TEnum : Enum
         {
             return DotAttributeValue<DotAttributeValueAttribute>.GetMapping<TEnum>();
+        }
+
+        /// <summary>
+        ///     Gets a dictionary where each key has a DOT attribute value assigned. Enumeration values that are not marked with the
+        ///     <see cref="DotAttributeValueAttribute" /> attribute are ignored.
+        /// </summary>
+        /// <param name="enumType">
+        ///     The type of the enumeration whose value mapping to get.
+        /// </param>
+        public static Dictionary<Enum, string> GetMapping(Type enumType)
+        {
+            return DotAttributeValue<DotAttributeValueAttribute>.GetMapping(enumType);
         }
     }
 }

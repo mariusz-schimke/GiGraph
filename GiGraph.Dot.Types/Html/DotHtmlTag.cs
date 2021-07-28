@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Types.Html
         /// </summary>
         public virtual Dictionary<string, object> CustomAttributes { get; }
 
-        /// <inheritdoc cref="IDotHtmlEntity" />
+        /// <inheritdoc cref="IDotHtmlEntity.ToHtml" />
         public DotHtml ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var result = new StringBuilder();

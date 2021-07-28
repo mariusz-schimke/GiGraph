@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Types.Html
         /// </summary>
         public virtual string Text { get; set; }
 
-        /// <inheritdoc cref="IDotHtmlEntity" />
+        /// <inheritdoc cref="IDotHtmlEntity.ToHtml" />
         public DotHtml ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return syntaxRules.Attributes.Html.ElementTextContentEscaper.Escape(Text);

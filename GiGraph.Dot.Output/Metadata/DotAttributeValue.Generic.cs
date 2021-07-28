@@ -14,8 +14,8 @@ namespace GiGraph.Dot.Output.Metadata
         private const BindingFlags FieldBindingFlags = BindingFlags.Static | BindingFlags.Public;
 
         /// <summary>
-        ///     If the specified enumeration type is marked with a <see cref="DotFlagsAttribute" /> returns its individual flags joined with
-        ///     a separator specified by the attribute. If the enumeration does not contain the attribute, returns false.
+        ///     If the specified enumeration type is marked with a <typeparamref name="TFlagsAttribute" /> returns its individual flags
+        ///     joined with a separator specified by the attribute. If the enumeration does not contain the attribute, returns false.
         /// </summary>
         /// <param name="flags">
         ///     The enumeration to convert to DOT attribute flags.
@@ -26,10 +26,14 @@ namespace GiGraph.Dot.Output.Metadata
         /// <param name="sort">
         ///     Determines whether the flags of the enumeration should be sorted when possible.
         /// </param>
-        public static bool TryGetAsFlags(Enum flags, out string dotFlags, bool sort)
+        /// <typeparam name="TFlagsAttribute">
+        ///     The type of attribute that provides metadata for the specified flags enumeration.
+        /// </typeparam>
+        public static bool TryGetAsFlags<TFlagsAttribute>(Enum flags, out string dotFlags, bool sort)
+            where TFlagsAttribute : Attribute, IDotFlagsAttribute
         {
             var enumType = flags.GetType();
-            if (enumType.GetCustomAttribute<DotFlagsAttribute>() is not { } attribute)
+            if (enumType.GetCustomAttribute<TFlagsAttribute>() is not { } attribute)
             {
                 dotFlags = null;
                 return false;
@@ -54,8 +58,8 @@ namespace GiGraph.Dot.Output.Metadata
         }
 
         /// <summary>
-        ///     If the specified enumeration type is marked with a <see cref="DotFlagsAttribute" /> returns its individual flags joined with
-        ///     a separator specified by the attribute. If the enumeration does not contain the attribute, throws an exception.
+        ///     If the specified enumeration type is marked with a <typeparamref name="TFlagsAttribute" /> returns its individual flags
+        ///     joined with a separator specified by the attribute. If the enumeration does not contain the attribute, throws an exception.
         /// </summary>
         /// <param name="flags">
         ///     The enumeration to convert to DOT attribute flags.
@@ -63,11 +67,15 @@ namespace GiGraph.Dot.Output.Metadata
         /// <param name="sort">
         ///     Determines whether the flags of the enumeration should be sorted when possible.
         /// </param>
-        public static string GetAsFlags(Enum flags, bool sort)
+        /// <typeparam name="TFlagsAttribute">
+        ///     The type of attribute that provides metadata for the specified flags enumeration.
+        /// </typeparam>
+        public static string GetAsFlags<TFlagsAttribute>(Enum flags, bool sort)
+            where TFlagsAttribute : Attribute, IDotFlagsAttribute
         {
-            return TryGetAsFlags(flags, out var dotFlags, sort)
+            return TryGetAsFlags<TFlagsAttribute>(flags, out var dotFlags, sort)
                 ? dotFlags
-                : throw new ArgumentException($"The {flags.GetType().Name} enumeration is not annotated with a {nameof(DotFlagsAttribute)} attribute.", nameof(flags));
+                : throw new ArgumentException($"The {flags.GetType().Name} enumeration is not annotated with a {typeof(TFlagsAttribute).Name} attribute.", nameof(flags));
         }
 
         /// <summary>
@@ -121,13 +129,32 @@ namespace GiGraph.Dot.Output.Metadata
         public static bool TryGet<TEnum>(string dotValue, out TEnum value)
             where TEnum : Enum
         {
-            var match = typeof(TEnum)
+            var result = TryGet(typeof(TEnum), dotValue, out var enumValue);
+            value = result ? (TEnum) enumValue : default;
+            return result;
+        }
+
+        /// <summary>
+        ///     Tries to get an enumeration value associated with the specified DOT attribute value.
+        /// </summary>
+        /// <param name="enumType">
+        ///     The type of the enumeration whose value to search.
+        /// </param>
+        /// <param name="value">
+        ///     The returned enumeration value if found.
+        /// </param>
+        /// <param name="dotValue">
+        ///     The DOT attribute value whose associated enumeration value to return.
+        /// </param>
+        public static bool TryGet(Type enumType, string dotValue, out Enum value)
+        {
+            var match = enumType
                .GetFields(FieldBindingFlags)
                .FirstOrDefault(field => field.GetCustomAttribute<TAttribute>()?.Value is { } fieldDotValue && fieldDotValue == dotValue);
 
             if (match is not null)
             {
-                value = (TEnum) match.GetValue(null);
+                value = (Enum) match.GetValue(null);
                 return true;
             }
 
@@ -147,9 +174,23 @@ namespace GiGraph.Dot.Output.Metadata
         public static TEnum Get<TEnum>(string dotValue)
             where TEnum : Enum
         {
-            return TryGet<TEnum>(dotValue, out var result)
+            return (TEnum) Get(typeof(TEnum), dotValue);
+        }
+
+        /// <summary>
+        ///     Gets an enumeration value associated with the specified DOT attribute value.
+        /// </summary>
+        /// <param name="enumType">
+        ///     The type of the enumeration whose value to search.
+        /// </param>
+        /// <param name="dotValue">
+        ///     The DOT attribute value whose associated enumeration value to return.
+        /// </param>
+        public static Enum Get(Type enumType, string dotValue)
+        {
+            return TryGet(enumType, dotValue, out var result)
                 ? result
-                : throw new ArgumentException($"The '{dotValue}' value is invalid or is not mapped to any value of the {typeof(TEnum).Name} enumeration by a {typeof(TAttribute).Name} attribute.", nameof(dotValue));
+                : throw new ArgumentException($"The '{dotValue}' value is invalid or is not mapped to any value of the {enumType.Name} enumeration by a {typeof(TAttribute).Name} attribute.", nameof(dotValue));
         }
 
         /// <summary>

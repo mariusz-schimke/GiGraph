@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Types.Html
         {
         }
 
-        /// <inheritdoc cref="IDotHtmlEntity" />
+        /// <inheritdoc cref="IDotHtmlEntity.ToHtml" />
         public DotHtml ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return string.Join(string.Empty, this.Select(entity => entity.ToHtml(options, syntaxRules)));

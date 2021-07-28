@@ -19,9 +19,7 @@ namespace GiGraph.Dot.Output.Metadata
             Value = value;
         }
 
-        /// <summary>
-        ///     Gets the value of the HTML attribute.
-        /// </summary>
+        /// <inheritdoc cref="IDotAttributeValueAttribute.Value" />
         public virtual string Value { get; }
     }
 }

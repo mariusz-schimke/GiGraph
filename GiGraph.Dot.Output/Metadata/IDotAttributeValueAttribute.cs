@@ -1,7 +1,7 @@
 namespace GiGraph.Dot.Output.Metadata
 {
     /// <summary>
-    ///     A common interface for attributes that provide a value.
+    ///     A common interface for enumeration member attributes that provide a DOT attribute value.
     /// </summary>
     public interface IDotAttributeValueAttribute
     {

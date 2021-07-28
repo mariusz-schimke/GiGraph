@@ -3,10 +3,11 @@ using System;
 namespace GiGraph.Dot.Output.Metadata
 {
     /// <summary>
-    ///     Provides information for a flags enumeration about how to join the flags to formulate a meaningful value.
+    ///     Provides information for a flags enumeration about how to join the flags to formulate a meaningful value for an attribute of
+    ///     an HTML element.
     /// </summary>
     [AttributeUsage(AttributeTargets.Enum)]
-    public class DotFlagsAttribute : Attribute, IDotFlagsAttribute
+    public class DotHtmlElementFlagsAttribute : Attribute, IDotFlagsAttribute
     {
         /// <summary>
         ///     Creates a new attribute instance.
@@ -14,7 +15,7 @@ namespace GiGraph.Dot.Output.Metadata
         /// <param name="separator">
         ///     The separator to use in order to join the flags of the enumeration.
         /// </param>
-        public DotFlagsAttribute(string separator)
+        public DotHtmlElementFlagsAttribute(string separator)
         {
             Separator = separator;
         }
