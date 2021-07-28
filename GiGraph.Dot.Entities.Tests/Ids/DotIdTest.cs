@@ -1,5 +1,5 @@
-using GiGraph.Dot.Entities.Types.Clusters;
-using GiGraph.Dot.Entities.Types.Identifiers;
+using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Identifiers;
 using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Ids

@@ -1,15 +1,15 @@
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Alignment;
-using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Edges;
-using GiGraph.Dot.Entities.Types.Geometry;
-using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Nodes;
-using GiGraph.Dot.Entities.Types.Styling;
-using GiGraph.Dot.Entities.Types.Text;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Alignment;
+using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Geometry;
+using GiGraph.Dot.Types.Labels;
+using GiGraph.Dot.Types.Nodes;
+using GiGraph.Dot.Types.Styling;
+using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
@@ -173,7 +173,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotLabel ExternalLabel
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotLabel>(k, v));
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.LabelAlignment" />
@@ -181,7 +181,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotVerticalAlignment? LabelAlignment
         {
             get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotVerticalAlignment>(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.EdgeOrderingMode" />
@@ -189,7 +189,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotEdgeOrderingMode? EdgeOrderingMode
         {
             get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeOrderingModeAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotEdgeOrderingMode>(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Shape" />
@@ -197,7 +197,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotNodeShape? Shape
         {
             get => GetValueAs<DotNodeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeShapeAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotNodeShape>(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.GroupName" />

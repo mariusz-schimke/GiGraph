@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Entities.Types.Geometry;
+using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Types.Geometry;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
@@ -40,10 +41,11 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return string.Join(
-                " ",
-                (Value ?? Enumerable.Empty<DotRectangle>()).Select(value => value.GetDotEncodedValue(options, syntaxRules))
-            );
+            var encoded = (Value ?? Enumerable.Empty<DotRectangle>())
+               .Cast<IDotEncodable>()
+               .Select(value => value.GetDotEncodedValue(options, syntaxRules));
+
+            return string.Join(" ", encoded);
         }
     }
 }

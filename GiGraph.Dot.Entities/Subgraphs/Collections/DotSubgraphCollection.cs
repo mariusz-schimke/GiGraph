@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Graphs.Collections;
-using GiGraph.Dot.Entities.Types.Ranks;
+using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Subgraphs.Collections
 {

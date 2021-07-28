@@ -2,8 +2,8 @@
 using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Graphs.Collections;
-using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Output;
+using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {

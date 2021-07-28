@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Common;
-using GiGraph.Dot.Entities.Types.Text;
+using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {

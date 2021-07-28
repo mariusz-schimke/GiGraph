@@ -1,6 +1,6 @@
-using GiGraph.Dot.Entities.Types.Text;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Types.Text;
 using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.EscapeString

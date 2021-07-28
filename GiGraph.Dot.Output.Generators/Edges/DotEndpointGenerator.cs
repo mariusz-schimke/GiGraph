@@ -1,8 +1,8 @@
 ﻿using GiGraph.Dot.Entities.Edges.Endpoints;
-using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Edges;
+using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Output.Generators.Edges
 {

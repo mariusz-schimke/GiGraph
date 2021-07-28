@@ -1,10 +1,10 @@
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Edges;
-using GiGraph.Dot.Entities.Types.Hyperlinks;
-using GiGraph.Dot.Entities.Types.Text;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Hyperlinks;
+using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {

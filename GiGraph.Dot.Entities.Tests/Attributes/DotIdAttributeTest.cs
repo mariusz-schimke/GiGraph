@@ -1,7 +1,7 @@
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Types.Clusters;
-using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Extensions;
+using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Identifiers;
 using Snapshooter.Xunit;
 using Xunit;
 

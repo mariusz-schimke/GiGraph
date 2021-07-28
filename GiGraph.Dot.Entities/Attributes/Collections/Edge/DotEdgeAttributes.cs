@@ -2,12 +2,12 @@ using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Edges;
-using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Styling;
-using GiGraph.Dot.Entities.Types.Text;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Labels;
+using GiGraph.Dot.Types.Styling;
+using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
@@ -152,7 +152,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual DotColorDefinition Color
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.FillColor" />
@@ -160,7 +160,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual DotColorDefinition FillColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.ExternalLabel" />
@@ -168,7 +168,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual DotLabel ExternalLabel
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotLabel>(k, v));
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Width" />
@@ -224,7 +224,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual DotEdgeDirections? Directions
         {
             get => GetValueAs<DotEdgeDirections>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeDirectionsAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotEdgeDirections>(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.AttachLabel" />

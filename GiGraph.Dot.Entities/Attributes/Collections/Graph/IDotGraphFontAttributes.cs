@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Common;
-using GiGraph.Dot.Entities.Types.Fonts;
+using GiGraph.Dot.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {

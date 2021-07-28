@@ -1,8 +1,8 @@
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Types.Edges;
-using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Ranks;
 using Snapshooter.Xunit;
 using Xunit;
 

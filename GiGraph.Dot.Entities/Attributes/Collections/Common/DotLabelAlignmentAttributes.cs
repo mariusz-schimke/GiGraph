@@ -1,8 +1,8 @@
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Alignment;
-using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Alignment;
+using GiGraph.Dot.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         public virtual DotHorizontalAlignment? Horizontal
         {
             get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotHorizontalAlignmentAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotHorizontalAlignment>(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotLabelAlignmentAttributes.Vertical" />
@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         public virtual DotVerticalAlignment? Vertical
         {
             get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotVerticalAlignmentAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotVerticalAlignment>(k, v.Value));
         }
 
         /// <summary>

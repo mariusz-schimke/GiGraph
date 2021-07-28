@@ -1,9 +1,9 @@
-﻿using GiGraph.Dot.Entities.Types.Clusters;
-using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Geometry;
-using GiGraph.Dot.Entities.Types.Graphs;
-using GiGraph.Dot.Entities.Types.Orientation;
-using GiGraph.Dot.Entities.Types.Viewport;
+﻿using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Geometry;
+using GiGraph.Dot.Types.Graphs;
+using GiGraph.Dot.Types.Orientation;
+using GiGraph.Dot.Types.Viewport;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {

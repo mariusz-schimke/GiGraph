@@ -1,10 +1,10 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Nodes;
-using GiGraph.Dot.Entities.Types.Clusters;
-using GiGraph.Dot.Entities.Types.Edges;
-using GiGraph.Dot.Entities.Types.Identifiers;
-using GiGraph.Dot.Entities.Types.Nodes;
+using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Identifiers;
+using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {

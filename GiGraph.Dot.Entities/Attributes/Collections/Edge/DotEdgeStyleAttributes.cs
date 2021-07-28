@@ -1,6 +1,6 @@
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
-using GiGraph.Dot.Entities.Types.Edges;
-using GiGraph.Dot.Entities.Types.Styling;
+using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {

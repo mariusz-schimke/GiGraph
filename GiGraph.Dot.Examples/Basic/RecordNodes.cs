@@ -1,9 +1,9 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Types.Edges;
-using GiGraph.Dot.Entities.Types.Records;
-using GiGraph.Dot.Entities.Types.Text;
 using GiGraph.Dot.Extensions;
+using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Records;
+using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Examples.Basic
 {

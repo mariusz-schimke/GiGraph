@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Types.Text;
+using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Examples.Basic
 {

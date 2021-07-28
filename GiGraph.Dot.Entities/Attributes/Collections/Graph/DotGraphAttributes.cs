@@ -1,12 +1,12 @@
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Edges;
-using GiGraph.Dot.Entities.Types.Identifiers;
-using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Styling;
-using GiGraph.Dot.Entities.Types.Text;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Identifiers;
+using GiGraph.Dot.Types.Labels;
+using GiGraph.Dot.Types.Styling;
+using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
@@ -119,7 +119,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotEdgeShape? EdgeShape
         {
             get => GetValueAs<DotEdgeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeShapeAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotEdgeShape>(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Comment" />
@@ -151,7 +151,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotId RootNodeId
         {
             get => GetValueAsId(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIdAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotId>(k, v));
         }
     }
 }

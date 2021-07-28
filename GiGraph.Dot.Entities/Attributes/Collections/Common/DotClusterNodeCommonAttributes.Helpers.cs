@@ -1,5 +1,5 @@
-using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Styling;
+using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {

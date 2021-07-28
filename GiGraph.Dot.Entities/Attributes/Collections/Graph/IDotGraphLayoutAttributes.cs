@@ -1,11 +1,11 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections.Edge;
 using GiGraph.Dot.Entities.Attributes.Collections.Node;
 using GiGraph.Dot.Entities.Attributes.Collections.Subgraph;
-using GiGraph.Dot.Entities.Types.Edges;
-using GiGraph.Dot.Entities.Types.Layout;
-using GiGraph.Dot.Entities.Types.LayoutEngines;
-using GiGraph.Dot.Entities.Types.Packing;
-using GiGraph.Dot.Entities.Types.Ranks;
+using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Layout;
+using GiGraph.Dot.Types.LayoutEngines;
+using GiGraph.Dot.Types.Packing;
+using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {

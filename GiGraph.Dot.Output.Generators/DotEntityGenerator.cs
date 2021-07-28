@@ -1,8 +1,8 @@
 ﻿using System;
-using GiGraph.Dot.Entities.Types.Identifiers;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers;
+using GiGraph.Dot.Types.Identifiers;
 
 namespace GiGraph.Dot.Output.Generators
 {

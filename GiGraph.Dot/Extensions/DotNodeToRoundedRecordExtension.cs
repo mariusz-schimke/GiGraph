@@ -1,7 +1,7 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Nodes;
-using GiGraph.Dot.Entities.Types.Nodes;
-using GiGraph.Dot.Entities.Types.Records;
+using GiGraph.Dot.Types.Nodes;
+using GiGraph.Dot.Types.Records;
 
 namespace GiGraph.Dot.Extensions
 {

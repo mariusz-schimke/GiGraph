@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Entities.Types.Encoders;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Types.Encoders;
 
 namespace GiGraph.Dot.Entities.Attributes
 {

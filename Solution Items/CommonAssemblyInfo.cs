@@ -7,7 +7,7 @@
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Mariusz Schimke")]
 [assembly: AssemblyProduct("GiGraph DOT")]
-[assembly: AssemblyCopyright("Copyright © 2020 Mariusz Schimke")]
+[assembly: AssemblyCopyright("Copyright © 2020-2021 Mariusz Schimke")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

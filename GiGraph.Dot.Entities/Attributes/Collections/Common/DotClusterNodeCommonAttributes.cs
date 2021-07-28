@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Geometry;
-using GiGraph.Dot.Entities.Types.Styling;
-using GiGraph.Dot.Entities.Types.Text;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Geometry;
+using GiGraph.Dot.Types.Styling;
+using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {
@@ -30,14 +30,14 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         public virtual DotColorDefinition Color
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
         }
 
         [DotAttributeKey(DotAttributeKeys.FillColor)]
         public virtual DotColorDefinition FillColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
         }
 
         [DotAttributeKey(DotAttributeKeys.GradientAngle)]
@@ -65,7 +65,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Common
         public virtual DotPoint Padding
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotPoint>(k, v));
         }
 
         [DotAttributeKey(DotAttributeKeys.SortV)]

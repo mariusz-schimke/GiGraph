@@ -1,14 +1,14 @@
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Clusters;
-using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Geometry;
-using GiGraph.Dot.Entities.Types.Labels;
-using GiGraph.Dot.Entities.Types.Ranks;
-using GiGraph.Dot.Entities.Types.Styling;
-using GiGraph.Dot.Entities.Types.Text;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Geometry;
+using GiGraph.Dot.Types.Labels;
+using GiGraph.Dot.Types.Ranks;
+using GiGraph.Dot.Types.Styling;
+using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
 {
@@ -149,7 +149,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         public virtual DotRank? NodeRank
         {
             get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotRank>(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor" />
@@ -157,7 +157,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         public virtual DotColor BorderColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColor>(k, v));
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.BackgroundColor" />
@@ -165,7 +165,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Cluster
         public virtual DotColorDefinition BackgroundColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.Peripheries" />

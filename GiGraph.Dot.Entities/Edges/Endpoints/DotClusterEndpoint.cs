@@ -1,7 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Clusters;
-using GiGraph.Dot.Entities.Types.Clusters;
-using GiGraph.Dot.Entities.Types.Edges;
-using GiGraph.Dot.Entities.Types.Identifiers;
+using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {

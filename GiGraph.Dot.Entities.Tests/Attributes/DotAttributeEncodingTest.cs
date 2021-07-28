@@ -3,6 +3,7 @@ using System.Threading;
 using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Types.Labels;
 using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes
@@ -49,7 +50,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         public void label_attribute_returns_escaped_encoded_value_for_string_input()
         {
             var value = "a bcd \" \\ \r\n \r \n h ij < > { } |";
-            IDotEncodable attr = new DotLabelAttribute("key", value);
+            IDotEncodable attr = new DotComplexAttribute<DotLabel>("key", value);
 
             Assert.Equal(@"a bcd \"" \\ \n \n \n h ij < > { } |", attr.GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }

@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Entities.Types.Alignment;
+﻿using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Common
 {

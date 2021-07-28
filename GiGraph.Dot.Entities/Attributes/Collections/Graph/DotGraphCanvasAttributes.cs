@@ -1,12 +1,12 @@
 using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Geometry;
-using GiGraph.Dot.Entities.Types.Graphs;
-using GiGraph.Dot.Entities.Types.Orientation;
-using GiGraph.Dot.Entities.Types.Viewport;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Geometry;
+using GiGraph.Dot.Types.Graphs;
+using GiGraph.Dot.Types.Orientation;
+using GiGraph.Dot.Types.Viewport;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotColorDefinition BackgroundColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.GradientFillAngle" />
@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotOrientation? Orientation
         {
             get => GetValueAs<DotOrientation>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotOrientationAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotOrientation>(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.OrientationAngle" />
@@ -97,7 +97,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotPoint Size
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotPoint>(k, v));
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Viewport" />
@@ -105,7 +105,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotViewport Viewport
         {
             get => GetValueAs<DotViewport>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotViewportAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotViewport>(k, v));
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Scaling" />
@@ -125,7 +125,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                     ? value
                     : null;
             }
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotGraphScalingDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotGraphScalingDefinition>(k, v));
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Margin" />
@@ -133,7 +133,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotPoint Margin
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotPoint>(k, v));
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Padding" />
@@ -141,7 +141,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotPoint Padding
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPointAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotPoint>(k, v));
         }
 
         /// <summary>

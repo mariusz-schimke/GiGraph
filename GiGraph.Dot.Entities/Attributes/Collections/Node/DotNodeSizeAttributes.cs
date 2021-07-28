@@ -1,9 +1,9 @@
 using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Geometry;
-using GiGraph.Dot.Entities.Types.Nodes;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Geometry;
+using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
@@ -46,7 +46,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotNodeSizing? Mode
         {
             get => GetValueAs<DotNodeSizing>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotNodeSizingAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotNodeSizing>(k, v.Value));
         }
 
         /// <summary>

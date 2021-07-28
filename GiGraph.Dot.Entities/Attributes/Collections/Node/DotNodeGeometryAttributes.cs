@@ -1,8 +1,8 @@
 using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Geometry;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Geometry;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {

@@ -3,11 +3,11 @@ using System.Drawing;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Subgraphs;
-using GiGraph.Dot.Entities.Types.Arrowheads;
-using GiGraph.Dot.Entities.Types.Edges;
-using GiGraph.Dot.Entities.Types.Nodes;
-using GiGraph.Dot.Entities.Types.Ranks;
-using GiGraph.Dot.Entities.Types.Styling;
+using GiGraph.Dot.Types.Arrowheads;
+using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Nodes;
+using GiGraph.Dot.Types.Ranks;
+using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Output.Generators.Tests
 {

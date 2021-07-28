@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Types.Edges;
 using GiGraph.Dot.Extensions;
+using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Examples.Basic
 {

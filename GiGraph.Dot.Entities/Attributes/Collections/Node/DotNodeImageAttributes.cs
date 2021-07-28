@@ -1,8 +1,8 @@
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Alignment;
-using GiGraph.Dot.Entities.Types.Images;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Alignment;
+using GiGraph.Dot.Types.Images;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {
@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotAlignment? Alignment
         {
             get => GetValueAs<DotAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotAlignmentAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotAlignment>(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotNodeImageAttributes.Scaling" />
@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Node
         public virtual DotImageScaling? Scaling
         {
             get => GetValueAs<DotImageScaling>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotImageScalingAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotImageScaling>(k, v.Value));
         }
 
         /// <summary>

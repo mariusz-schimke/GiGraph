@@ -1,6 +1,6 @@
-using GiGraph.Dot.Entities.Types.Colors;
-using GiGraph.Dot.Entities.Types.Geometry;
-using GiGraph.Dot.Entities.Types.Nodes;
+using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Geometry;
+using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Node
 {

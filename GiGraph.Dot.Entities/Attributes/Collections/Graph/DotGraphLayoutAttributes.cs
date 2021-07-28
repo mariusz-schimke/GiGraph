@@ -1,11 +1,11 @@
 using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Edges;
-using GiGraph.Dot.Entities.Types.Layout;
-using GiGraph.Dot.Entities.Types.Packing;
-using GiGraph.Dot.Entities.Types.Ranks;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Layout;
+using GiGraph.Dot.Types.Packing;
+using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotRank? NodeRank
         {
             get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotRank>(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.Packing" />
@@ -71,7 +71,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                     ? value
                     : null;
             }
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPackingDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotPackingDefinition>(k, v));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.PackingMode" />
@@ -89,7 +89,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                     ? value
                     : null;
             }
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotPackingModeDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotPackingModeDefinition>(k, v));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeSeparation" />
@@ -119,7 +119,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
                     ? value
                     : null;
             }
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotRankSeparationDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotRankSeparationDefinition>(k, v));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.ConcentrateEdges" />
@@ -143,7 +143,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotLayoutDirection? Direction
         {
             get => GetValueAs<DotLayoutDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLayoutDirectionAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotLayoutDirection>(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.EdgeOrderingMode" />
@@ -151,7 +151,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotEdgeOrderingMode? EdgeOrderingMode
         {
             get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEdgeOrderingModeAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotEdgeOrderingMode>(k, v.Value));
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.ForceExternalLabels" />

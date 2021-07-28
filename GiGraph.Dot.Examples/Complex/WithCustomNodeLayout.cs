@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Types.Layout;
-using GiGraph.Dot.Entities.Types.Ranks;
+using GiGraph.Dot.Types.Layout;
+using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Examples.Complex
 {

@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Entities.Types.Ranks;
+﻿using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Subgraph
 {

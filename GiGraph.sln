@@ -22,7 +22,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{870A48CC-9D48-45B6-ADC8-E22586C6EF93}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
+		Solution Items\CommonAssemblyInfo.cs = Solution Items\CommonAssemblyInfo.cs
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Types", "GiGraph.Dot.Types\GiGraph.Dot.Types.csproj", "{6B5EFF21-2558-48B5-8564-6BFF9DBF11C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,6 +81,12 @@ Global
 		{DD020A1A-DCB7-44C1-A8D7-A4BE5C68F773}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DD020A1A-DCB7-44C1-A8D7-A4BE5C68F773}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
 		{DD020A1A-DCB7-44C1-A8D7-A4BE5C68F773}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{6B5EFF21-2558-48B5-8564-6BFF9DBF11C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B5EFF21-2558-48B5-8564-6BFF9DBF11C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B5EFF21-2558-48B5-8564-6BFF9DBF11C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B5EFF21-2558-48B5-8564-6BFF9DBF11C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B5EFF21-2558-48B5-8564-6BFF9DBF11C3}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{6B5EFF21-2558-48B5-8564-6BFF9DBF11C3}.Publish|Any CPU.Build.0 = Publish|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,6 @@
-﻿using GiGraph.Dot.Entities.Types.Text;
+﻿using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
@@ -25,7 +26,7 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return Value?.GetEscapedString(syntaxRules.Attributes.EscapeStringValueEscaper);
+            return ((IDotEscapable) Value)?.GetEscaped(syntaxRules.Attributes.EscapeStringValueEscaper);
         }
     }
 }

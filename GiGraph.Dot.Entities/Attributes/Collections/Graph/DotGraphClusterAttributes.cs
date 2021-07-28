@@ -2,9 +2,9 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.Cluster;
 using GiGraph.Dot.Entities.Attributes.Collections.Common;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Clusters;
-using GiGraph.Dot.Entities.Types.Colors;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
 {
@@ -43,7 +43,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotColorDefinition Color
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderWidth" />
@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotColor BorderColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColor>(k, v));
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.FillColor" />
@@ -67,7 +67,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotColorDefinition FillColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotColorDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotColorDefinition>(k, v));
         }
 
         /// <inheritdoc cref="IDotGraphClusterAttributes.AllowEdgeClipping" />
@@ -83,7 +83,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Graph
         public virtual DotClusterVisualizationMode? VisualizationMode
         {
             get => GetValueAs<DotClusterVisualizationMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotClusterVisualizationModeAttribute(k, v.Value));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEnumAttribute<DotClusterVisualizationMode>(k, v.Value));
         }
     }
 }

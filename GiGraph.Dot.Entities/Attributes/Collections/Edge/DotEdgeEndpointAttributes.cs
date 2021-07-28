@@ -1,10 +1,9 @@
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections.KeyLookup;
-using GiGraph.Dot.Entities.Types.Arrowheads;
-using GiGraph.Dot.Entities.Types.Clusters;
-using GiGraph.Dot.Entities.Types.Edges;
-using GiGraph.Dot.Entities.Types.Identifiers;
-using GiGraph.Dot.Entities.Types.Labels;
+using GiGraph.Dot.Types.Arrowheads;
+using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
 {
@@ -26,7 +25,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual DotLabel Label
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotLabelAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotLabel>(k, v));
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClipToNodeBoundary" />
@@ -47,21 +46,21 @@ namespace GiGraph.Dot.Entities.Attributes.Collections.Edge
         public virtual DotEndpointPort Port
         {
             get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEndpointPortAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotEndpointPort>(k, v));
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClusterId" />
         public virtual DotClusterId ClusterId
         {
             get => GetValueAsClusterId(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotIdAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotClusterId>(k, v));
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Arrowhead" />
         public virtual DotArrowheadDefinition Arrowhead
         {
             get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotArrowheadDefinitionAttribute(k, v));
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotComplexAttribute<DotArrowheadDefinition>(k, v));
         }
     }
 }

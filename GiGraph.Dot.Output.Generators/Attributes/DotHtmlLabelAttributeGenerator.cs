@@ -1,8 +1,8 @@
 ﻿using GiGraph.Dot.Entities.Attributes;
-using GiGraph.Dot.Entities.Types.Labels;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Attributes;
+using GiGraph.Dot.Types.Labels;
 
 namespace GiGraph.Dot.Output.Generators.Attributes
 {
