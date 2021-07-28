@@ -146,7 +146,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual DotEscapeString Tooltip
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            set => SetOrRemoveEscapeStringAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Color" />

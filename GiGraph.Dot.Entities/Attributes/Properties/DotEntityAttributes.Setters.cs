@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using GiGraph.Dot.Output;
+using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties
 {
@@ -17,6 +18,11 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             where TComplex : IDotEncodable
         {
             SetOrRemove(propertyAccessor, value, (k, v) => new DotComplexAttribute<TComplex>(k, v));
+        }
+
+        protected void SetOrRemoveEscapeStringAttribute(MethodBase propertyAccessor, DotEscapeString value)
+        {
+            SetOrRemove(propertyAccessor, value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
         protected void SetOrRemoveEnumAttribute<TEnum>(MethodBase propertyAccessor, bool hasValue, Func<TEnum> value)

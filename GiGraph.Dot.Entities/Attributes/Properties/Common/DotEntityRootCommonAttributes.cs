@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual DotEscapeString ObjectId
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            set => SetOrRemoveEscapeStringAttribute(MethodBase.GetCurrentMethod(), value);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual DotEscapeString Url
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            set => SetOrRemoveEscapeStringAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHyperlinkAttributes.Href" />
@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual DotEscapeString Href
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            set => SetOrRemoveEscapeStringAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHyperlinkAttributes.Target" />
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual DotEscapeString Target
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotEscapeStringAttribute(k, v));
+            set => SetOrRemoveEscapeStringAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <summary>
