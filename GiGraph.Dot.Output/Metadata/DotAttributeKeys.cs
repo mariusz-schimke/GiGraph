@@ -532,13 +532,13 @@ namespace GiGraph.Dot.Output.Metadata
         [DotAttributeMetadata(DotCompatibleElements.Node, isImplemented: false)]
         public const string Z = "z";
 
-        private static readonly Lazy<Dictionary<string, DotAttributeMetadata>> _metadata = new(BuildMetadataDictionary);
+        private static readonly Lazy<Dictionary<string, DotAttributeMetadata>> Metadata = new(BuildMetadataDictionary);
 
         /// <summary>
         ///     Gets a dictionary where the key is an attribute key, and the value is its metadata (what elements, layout engines, and output
         ///     formats it is supported by).
         /// </summary>
-        public static Dictionary<string, DotAttributeMetadata> MetadataDictionary => _metadata.Value;
+        public static Dictionary<string, DotAttributeMetadata> MetadataDictionary => Metadata.Value;
 
         private static Dictionary<string, DotAttributeMetadata> BuildMetadataDictionary()
         {

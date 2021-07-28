@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
         /// <param name="sort">
         ///     Determines whether the flags of the enumeration should be sorted when possible.
         /// </param>
-        public static bool TryGetAsFlags(Enum flags, out string dotFlags, bool sort)
+        public static bool TryGetAsFlags(Enum flags, out string dotFlags, bool sort = true)
         {
             return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.TryGetAsFlags<DotHtmlElementFlagsAttribute>(flags, out dotFlags, sort);
         }
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
         /// <param name="sort">
         ///     Determines whether the flags of the enumeration should be sorted when possible.
         /// </param>
-        public static string GetAsFlags(Enum flags, bool sort)
+        public static string GetAsFlags(Enum flags, bool sort = true)
         {
             return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.GetAsFlags<DotHtmlElementFlagsAttribute>(flags, sort);
         }
