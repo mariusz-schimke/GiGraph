@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Output.TextEscaping
 
         public static string Escape(string value)
         {
-            return value is { } ? HttpUtility.HtmlEncode(value) : value;
+            return value is not null ? HttpUtility.HtmlEncode(value) : value;
         }
     }
 }

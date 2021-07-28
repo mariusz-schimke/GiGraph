@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Types.Text
 
         public static implicit operator DotHtml(string value)
         {
-            return value is { } ? new DotHtml(value) : null;
+            return value is not null ? new DotHtml(value) : null;
         }
     }
 }

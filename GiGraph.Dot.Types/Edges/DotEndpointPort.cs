@@ -92,7 +92,7 @@ namespace GiGraph.Dot.Types.Edges
 
         public static implicit operator DotEndpointPort(string portName)
         {
-            return portName is { } ? new DotEndpointPort(portName) : null;
+            return portName is not null ? new DotEndpointPort(portName) : null;
         }
 
         public static implicit operator DotEndpointPort(DotCompassPoint? compassPoint)
@@ -105,7 +105,7 @@ namespace GiGraph.Dot.Types.Edges
             var result = new StringBuilder();
             var separator = string.Empty;
 
-            if (Name is { })
+            if (Name is not null)
             {
                 result.Append(syntaxRules.IdentifierEscaper.Escape(Name));
                 separator = ":";

@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Extensions
         {
             var output = new MemoryStream();
 
-            using var outputWriter = encoding is { }
+            using var outputWriter = encoding is not null
                 ? new StreamWriter(output, encoding)
                 : new StreamWriter(output);
 
@@ -177,7 +177,7 @@ namespace GiGraph.Dot.Extensions
         {
             var output = graph.Build(formattingOptions, syntaxOptions, syntaxRules);
 
-            // it would be better to build the graph directly to stream, but the solution does not support async building 
+            // it would be better to build the graph directly to stream, but the solution does not support async building
             using var streamWriter = CreateFileStreamWriter(filePath, encoding);
             await streamWriter.WriteAsync(output);
             await streamWriter.FlushAsync();
@@ -185,7 +185,7 @@ namespace GiGraph.Dot.Extensions
 
         private static StreamWriter CreateFileStreamWriter(string filePath, Encoding encoding)
         {
-            return encoding is { }
+            return encoding is not null
                 ? new StreamWriter(filePath, append: false, encoding)
                 : new StreamWriter(filePath, append: false);
         }

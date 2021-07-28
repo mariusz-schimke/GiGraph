@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                    .Append(new Tuple<DotEntityAttributes, PropertyInfo>(this, property))
                    .ToArray();
 
-                if (property.GetCustomAttribute<DotAttributeKeyAttribute>() is { })
+                if (property.GetCustomAttribute<DotAttributeKeyAttribute>() is not null)
                 {
                     output.Add(currentPath);
                 }

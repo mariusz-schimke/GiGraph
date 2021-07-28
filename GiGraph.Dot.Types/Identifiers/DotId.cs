@@ -50,7 +50,7 @@ namespace GiGraph.Dot.Types.Identifiers
 
         public static implicit operator DotId(string id)
         {
-            return id is { } ? new DotId(id) : null;
+            return id is not null ? new DotId(id) : null;
         }
 
         public override bool Equals(object obj)

@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Entities.Attributes
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return Value is { } ? DotDoubleListEncoder.Convert(Value, syntaxRules) : null;
+            return Value is not null ? DotDoubleListEncoder.Convert(Value, syntaxRules) : null;
         }
     }
 }

@@ -47,12 +47,12 @@ namespace GiGraph.Dot.Types.Labels
 
         public static implicit operator DotTextLabel(string text)
         {
-            return text is { } ? new DotTextLabel(text) : null;
+            return text is not null ? new DotTextLabel(text) : null;
         }
 
         public static implicit operator DotTextLabel(DotEscapeString text)
         {
-            return text is { } ? new DotTextLabel(text) : null;
+            return text is not null ? new DotTextLabel(text) : null;
         }
 
         public static implicit operator string(DotTextLabel label)

@@ -11,13 +11,13 @@
         {
             _tokenWriter.Identifier(id, quoteId);
 
-            if (portName is { })
+            if (portName is not null)
             {
                 _tokenWriter.NodePortSeparator()
                    .Identifier(portName, quotePortName);
             }
 
-            if (compassPoint is { })
+            if (compassPoint is not null)
             {
                 _tokenWriter.NodePortSeparator()
                    .Identifier(compassPoint, quoteCompassPoint);

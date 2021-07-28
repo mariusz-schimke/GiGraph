@@ -71,7 +71,7 @@ namespace GiGraph.Dot.Output.Generators
 
         protected virtual void WriteAnnotation(TEntity entity, TWriter writer)
         {
-            if (_options.Comments.Enabled && entity.Annotation is { })
+            if (_options.Comments.Enabled && entity.Annotation is not null)
             {
                 var commentWriter = writer.BeginComment(_options.Comments.PreferBlockComments);
                 commentWriter.Write(entity.Annotation);

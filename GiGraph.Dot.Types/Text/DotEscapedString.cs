@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Types.Text
 
         public static implicit operator DotEscapedString(string value)
         {
-            return value is { } ? new DotEscapedString(value) : null;
+            return value is not null ? new DotEscapedString(value) : null;
         }
     }
 }

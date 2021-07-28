@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Types.Labels
 
         public static implicit operator DotRecordLabel(DotRecord record)
         {
-            return record is { } ? new DotRecordLabel(record) : null;
+            return record is not null ? new DotRecordLabel(record) : null;
         }
 
         public static implicit operator DotRecord(DotRecordLabel label)

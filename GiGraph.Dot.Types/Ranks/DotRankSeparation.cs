@@ -51,7 +51,7 @@ namespace GiGraph.Dot.Types.Ranks
 
             if (Equal)
             {
-                return result is { } ? $"{result} {equally}" : equally;
+                return result is not null ? $"{result} {equally}" : equally;
             }
 
             return result;

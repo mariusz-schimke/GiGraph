@@ -23,14 +23,14 @@ namespace GiGraph.Dot.Types.Clusters
         {
             const string cluster = "cluster";
 
-            return _id is { }
+            return _id is not null
                 ? $"{cluster}{options.Clusters.ClusterIdSeparator}{_id}"
                 : cluster;
         }
 
         public static implicit operator DotClusterId(string id)
         {
-            return id is { } ? new DotClusterId(id) : null;
+            return id is not null ? new DotClusterId(id) : null;
         }
     }
 }

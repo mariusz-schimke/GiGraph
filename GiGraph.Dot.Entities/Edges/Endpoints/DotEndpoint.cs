@@ -104,7 +104,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// </param>
         public virtual bool IsSameEndpoint(DotEndpoint endpoint)
         {
-            return endpoint is { } &&
+            return endpoint is not null &&
                 endpoint.Id == Id &&
                 endpoint.GetType() == GetType();
         }
@@ -113,12 +113,12 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         // (e.g. graph.Edges.Add<DotClusterEndpoint, DotEndpoint>("cluster 1", "node1"))
         public static implicit operator DotEndpoint(string nodeId)
         {
-            return nodeId is { } ? new DotEndpoint(nodeId) : null;
+            return nodeId is not null ? new DotEndpoint(nodeId) : null;
         }
 
         public static implicit operator DotEndpoint(DotNode node)
         {
-            return node is { } ? new DotEndpoint(node.Id) : null;
+            return node is not null ? new DotEndpoint(node.Id) : null;
         }
 
         // this way a cluster may be used directly for DotEndpoint parameters as well
@@ -129,7 +129,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
 
         public static implicit operator DotEndpoint(DotId id)
         {
-            return id is { } ? new DotEndpoint(id) : null;
+            return id is not null ? new DotEndpoint(id) : null;
         }
 
         public static implicit operator DotEndpoint(DotClusterId clusterId)

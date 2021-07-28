@@ -16,9 +16,9 @@ namespace GiGraph.Dot.Output.TextEscaping
 
         public static string Escape(string value)
         {
-            return value is { }
+            return value is not null
                 ? Regex.Replace(value, "(?<=^[ ]*)[ ]|[ ](?=[ ]*$)", "&#32;")
-                : value;
+                : null;
         }
     }
 }

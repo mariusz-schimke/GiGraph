@@ -68,7 +68,7 @@ namespace GiGraph.Dot.Output.Options
         /// </param>
         public virtual bool IsValidIdentifier(string value)
         {
-            return value is { } && !IsKeyword(value) &&
+            return value is not null && !IsKeyword(value) &&
             (
                 Regex.Match(value, AlphabeticIdentifierPattern).Success ||
                 Regex.Match(value, NumericIdentifierPattern).Success

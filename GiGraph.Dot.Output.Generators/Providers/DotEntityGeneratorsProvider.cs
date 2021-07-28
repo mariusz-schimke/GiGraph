@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Output.Generators.Providers
             var generatorType = typeof(TGenerator);
             generator = (TGenerator) _generators.LastOrDefault(t => generatorType.IsAssignableFrom(t.GetType()));
 
-            return generator is { };
+            return generator is not null;
         }
 
         public virtual IDotEntityGenerator<TRequiredWriter> GetForEntity<TRequiredWriter>(IDotEntity entity)

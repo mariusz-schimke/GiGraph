@@ -56,7 +56,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             if (TryGetValue(key, out var output))
             {
                 attribute = output as T;
-                return attribute is { };
+                return attribute is not null;
             }
 
             attribute = null;

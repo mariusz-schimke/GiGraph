@@ -68,7 +68,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         // (e.g. graph.Edges.Add<DotSubgraphEndpoint, DotEndpoint>(DotSubgraph.FromNodes("node1", "node2"), "node3"))
         public static implicit operator DotSubgraphEndpoint(DotSubgraph subgraph)
         {
-            return subgraph is { } ? new DotSubgraphEndpoint(subgraph) : null;
+            return subgraph is not null ? new DotSubgraphEndpoint(subgraph) : null;
         }
     }
 }

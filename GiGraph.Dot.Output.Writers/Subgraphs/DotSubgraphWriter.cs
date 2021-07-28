@@ -16,19 +16,15 @@ namespace GiGraph.Dot.Output.Writers.Subgraphs
         {
             var separate = false;
 
-            if (_preferExplicitSubgraphKeyword || id is { })
+            if (_preferExplicitSubgraphKeyword || id is not null)
             {
                 _tokenWriter.Keyword("subgraph");
                 separate = true;
             }
 
-            if (id is { })
+            if (id is not null)
             {
-                if (separate)
-                {
-                    _tokenWriter.Space();
-                }
-
+                _tokenWriter.Space();
                 _tokenWriter.Identifier(id, quoteId);
             }
 

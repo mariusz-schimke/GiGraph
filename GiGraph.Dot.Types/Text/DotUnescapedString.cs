@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Types.Text
 
         public static implicit operator DotUnescapedString(string value)
         {
-            return value is { } ? new DotUnescapedString(value) : null;
+            return value is not null ? new DotUnescapedString(value) : null;
         }
     }
 }

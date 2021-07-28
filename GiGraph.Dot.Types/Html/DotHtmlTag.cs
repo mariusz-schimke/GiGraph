@@ -95,7 +95,7 @@ namespace GiGraph.Dot.Types.Html
                         Value = converter.Convert(value, options, syntaxRules)
                     };
                 })
-               .Where(attr => attr is { })
+               .Where(attr => attr is not null)
                .ToDictionary(key => key.Key, value => value.Value);
 
             // add custom attributes
