@@ -215,7 +215,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual bool? IsRoot
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
+            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         protected override void SetFillStyle(DotStyles fillStyle)

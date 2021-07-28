@@ -234,7 +234,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual bool? AttachLabel
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
+            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.AllowLabelFloat" />
@@ -242,7 +242,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual bool? AllowLabelFloat
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
+            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Constrain" />
@@ -250,7 +250,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual bool? Constrain
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
+            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
         }
     }
 }

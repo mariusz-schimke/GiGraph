@@ -77,7 +77,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual bool? AllowEdgeClipping
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
+            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphClusterAttributes.VisualizationMode" />

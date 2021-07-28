@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual bool? Regular
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
+            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotNodeGeometryAttributes.Peripheries" />

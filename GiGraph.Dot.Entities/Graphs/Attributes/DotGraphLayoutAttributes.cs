@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual bool? RepeatCrossingMinimization
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
+            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.UseGlobalRanking" />
@@ -47,7 +47,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual bool? UseGlobalRanking
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
+            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeRank" />
@@ -130,7 +130,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual bool? ConcentrateEdges
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
+            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.Engine" />
@@ -162,7 +162,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual bool? ForceExternalLabels
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => new DotBoolAttribute(k, v!.Value));
+            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.SortIndex" />
