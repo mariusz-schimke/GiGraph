@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual string Path
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotNodeImageAttributes.Alignment" />
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual DotAlignment? Alignment
         {
             get => GetValueAs<DotAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotNodeImageAttributes.Scaling" />
@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual DotImageScaling? Scaling
         {
             get => GetValueAs<DotImageScaling>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <summary>

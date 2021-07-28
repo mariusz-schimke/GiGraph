@@ -49,7 +49,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual DotNodeSizing? Mode
         {
             get => GetValueAs<DotNodeSizing>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <summary>

@@ -14,23 +14,38 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             _attributes.SetOrRemove(GetKey(propertyAccessor), value, newAttribute);
         }
 
-        protected void SetOrRemoveComplexAttribute<TComplex>(MethodBase propertyAccessor, TComplex value)
+        protected void SetOrRemove<TComplex>(MethodBase propertyAccessor, TComplex value)
             where TComplex : IDotEncodable
         {
             SetOrRemove(propertyAccessor, value, (k, v) => new DotComplexAttribute<TComplex>(k, v));
         }
 
-        protected void SetOrRemoveEscapeStringAttribute(MethodBase propertyAccessor, DotEscapeString value)
+        protected void SetOrRemove(MethodBase propertyAccessor, DotEscapeString value)
         {
             SetOrRemove(propertyAccessor, value, (k, v) => new DotEscapeStringAttribute(k, v));
         }
 
-        protected void SetOrRemoveStringAttribute(MethodBase propertyAccessor, string value)
+        protected void SetOrRemove(MethodBase propertyAccessor, string value)
         {
             SetOrRemove(propertyAccessor, value, (k, v) => new DotStringAttribute(k, v));
         }
 
-        protected void SetOrRemoveEnumAttribute<TEnum>(MethodBase propertyAccessor, bool hasValue, Func<TEnum> value)
+        protected void SetOrRemove(MethodBase propertyAccessor, int? value)
+        {
+            SetOrRemove(propertyAccessor, value, (k, v) => new DotIntAttribute(k, v!.Value));
+        }
+
+        protected void SetOrRemove(MethodBase propertyAccessor, double? value)
+        {
+            SetOrRemove(propertyAccessor, value, (k, v) => new DotDoubleAttribute(k, v!.Value));
+        }
+
+        protected void SetOrRemove(MethodBase propertyAccessor, bool? value)
+        {
+            SetOrRemove(propertyAccessor, value, (k, v) => new DotBoolAttribute(k, v!.Value));
+        }
+
+        protected void SetOrRemove<TEnum>(MethodBase propertyAccessor, bool hasValue, Func<TEnum> value)
             where TEnum : Enum
         {
             var key = GetKey(propertyAccessor);
@@ -43,21 +58,6 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             {
                 _attributes.Remove(key);
             }
-        }
-
-        protected void SetOrRemoveNumericAttribute(MethodBase propertyAccessor, int? value)
-        {
-            SetOrRemove(propertyAccessor, value, (k, v) => new DotIntAttribute(k, v!.Value));
-        }
-
-        protected void SetOrRemoveNumericAttribute(MethodBase propertyAccessor, double? value)
-        {
-            SetOrRemove(propertyAccessor, value, (k, v) => new DotDoubleAttribute(k, v!.Value));
-        }
-
-        protected void SetOrRemoveBoolAttribute(MethodBase propertyAccessor, bool? value)
-        {
-            SetOrRemove(propertyAccessor, value, (k, v) => new DotBoolAttribute(k, v!.Value));
         }
 
         protected void SetOrRemoveBorderWidth(MethodBase propertyAccessor, double? value, [CallerMemberName] string propertyName = null)

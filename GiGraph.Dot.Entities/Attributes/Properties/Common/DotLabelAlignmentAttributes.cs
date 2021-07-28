@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual DotHorizontalAlignment? Horizontal
         {
             get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotLabelAlignmentAttributes.Vertical" />
@@ -34,7 +34,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual DotVerticalAlignment? Vertical
         {
             get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <summary>

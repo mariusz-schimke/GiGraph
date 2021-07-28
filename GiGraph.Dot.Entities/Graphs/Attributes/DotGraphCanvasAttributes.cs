@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotColorDefinition BackgroundColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.GradientFillAngle" />
@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual int? GradientFillAngle
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.CenterDrawing" />
@@ -48,7 +48,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual bool? CenterDrawing
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Orientation" />
@@ -56,7 +56,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotOrientation? Orientation
         {
             get => GetValueAs<DotOrientation>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.OrientationAngle" />
@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual int? OrientationAngle
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.LandscapeOrientation" />
@@ -72,7 +72,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual bool? LandscapeOrientation
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Dpi" />
@@ -100,7 +100,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotPoint Size
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Viewport" />
@@ -108,7 +108,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotViewport Viewport
         {
             get => GetValueAs<DotViewport>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Scaling" />
@@ -128,7 +128,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
                     ? value
                     : null;
             }
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Margin" />
@@ -136,7 +136,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotPoint Margin
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Padding" />
@@ -144,7 +144,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotPoint Padding
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <summary>

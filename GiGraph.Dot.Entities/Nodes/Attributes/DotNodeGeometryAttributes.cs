@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual bool? Regular
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotNodeGeometryAttributes.Peripheries" />
@@ -54,7 +54,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual double? Rotation
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotNodeGeometryAttributes.Skew" />
@@ -62,7 +62,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual double? Skew
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotNodeGeometryAttributes.Distortion" />
@@ -70,7 +70,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual double? Distortion
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <summary>

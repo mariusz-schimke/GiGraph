@@ -28,42 +28,42 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual DotLabel Label
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClipToNodeBoundary" />
         public virtual bool? ClipToNodeBoundary
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.GroupName" />
         public virtual string GroupName
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Port" />
         public virtual DotEndpointPort Port
         {
             get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClusterId" />
         public virtual DotClusterId ClusterId
         {
             get => GetValueAsClusterId(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Arrowhead" />
         public virtual DotArrowheadDefinition Arrowhead
         {
             get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
     }
 }

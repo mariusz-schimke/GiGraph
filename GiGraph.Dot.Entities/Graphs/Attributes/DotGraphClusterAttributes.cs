@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotColorDefinition Color
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderWidth" />
@@ -61,7 +61,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotColor BorderColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.FillColor" />
@@ -69,7 +69,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotColorDefinition FillColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphClusterAttributes.AllowEdgeClipping" />
@@ -77,7 +77,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual bool? AllowEdgeClipping
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphClusterAttributes.VisualizationMode" />
@@ -85,7 +85,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotClusterVisualizationMode? VisualizationMode
         {
             get => GetValueAs<DotClusterVisualizationMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
     }
 }

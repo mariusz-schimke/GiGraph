@@ -74,7 +74,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual DotEscapeString Tooltip
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveEscapeStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <summary>

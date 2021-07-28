@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual string Url
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <summary>

@@ -30,21 +30,21 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual DotLabel Label
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.ColorScheme)]
         public virtual string ColorScheme
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Id)]
         public virtual DotEscapeString ObjectId
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveEscapeStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
     }
 }

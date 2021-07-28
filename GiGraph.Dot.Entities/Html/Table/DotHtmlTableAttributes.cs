@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         DotEscapeString IDotHtmlTableAttributes.Id
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveEscapeStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.PortName" />
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         string IDotHtmlTableAttributes.PortName
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.HorizontalAlignment" />
@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         DotHorizontalAlignment? IDotHtmlTableAttributes.HorizontalAlignment
         {
             get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.VerticalAlignment" />
@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         DotVerticalAlignment? IDotHtmlTableAttributes.VerticalAlignment
         {
             get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.BackgroundColor" />
@@ -60,7 +60,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         DotColorDefinition IDotHtmlTableAttributes.BackgroundColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.Color" />
@@ -68,7 +68,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         DotColorDefinition IDotHtmlTableAttributes.Color
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.BorderWidth" />
@@ -76,7 +76,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.BorderWidth
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.CellBorderWidth" />
@@ -84,7 +84,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.CellBorderWidth
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.CellPadding" />
@@ -92,7 +92,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.CellPadding
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.CellSpacing" />
@@ -100,7 +100,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.CellSpacing
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.RowFormat" />
@@ -108,7 +108,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         string IDotHtmlTableAttributes.RowFormat
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.ColumnFormat" />
@@ -116,7 +116,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.ColumnFormat
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.Sides" />
@@ -124,7 +124,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         DotHtmlTableSides? IDotHtmlTableAttributes.Sides
         {
             get => GetValueAs<DotHtmlTableSides>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.FixedSize" />
@@ -132,7 +132,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         bool? IDotHtmlTableAttributes.FixedSize
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.GradientFillAngle" />
@@ -140,7 +140,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.GradientFillAngle
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.Width" />
@@ -148,7 +148,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.Width
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.Height" />
@@ -156,7 +156,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         int? IDotHtmlTableAttributes.Height
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.Href" />
@@ -164,7 +164,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         DotEscapeString IDotHtmlTableAttributes.Href
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveEscapeStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.Target" />
@@ -172,7 +172,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         DotEscapeString IDotHtmlTableAttributes.Target
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveEscapeStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.Title" />
@@ -180,7 +180,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         DotEscapeString IDotHtmlTableAttributes.Title
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveEscapeStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.Tooltip" />
@@ -188,7 +188,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         DotEscapeString IDotHtmlTableAttributes.Tooltip
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveEscapeStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.Style" />
@@ -196,7 +196,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         DotHtmlTableStyles? IDotHtmlTableAttributes.Style
         {
             get => GetValueAs<DotHtmlTableStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
     }
 }

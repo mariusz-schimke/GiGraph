@@ -89,7 +89,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         DotStyles? IDotNodeAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Label" />
@@ -167,7 +167,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual string Comment
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.ExternalLabel" />
@@ -175,7 +175,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual DotLabel ExternalLabel
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.LabelAlignment" />
@@ -183,7 +183,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual DotVerticalAlignment? LabelAlignment
         {
             get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.EdgeOrderingMode" />
@@ -191,7 +191,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual DotEdgeOrderingMode? EdgeOrderingMode
         {
             get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Shape" />
@@ -199,7 +199,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual DotNodeShape? Shape
         {
             get => GetValueAs<DotNodeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.GroupName" />
@@ -207,7 +207,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual string GroupName
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.IsRoot" />
@@ -215,7 +215,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual bool? IsRoot
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         protected override void SetFillStyle(DotStyles fillStyle)

@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual string Directories
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphFontAttributes.Convention" />
@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotFontConvention? Convention
         {
             get => GetValueAs<DotFontConvention>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <summary>

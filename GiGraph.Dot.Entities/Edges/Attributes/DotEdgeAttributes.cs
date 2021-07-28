@@ -109,7 +109,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         DotStyles? IDotEdgeAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Label" />
@@ -138,7 +138,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual string Comment
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Tooltip" />
@@ -146,7 +146,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual DotEscapeString Tooltip
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveEscapeStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Color" />
@@ -154,7 +154,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual DotColorDefinition Color
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.FillColor" />
@@ -162,7 +162,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual DotColorDefinition FillColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.ExternalLabel" />
@@ -170,7 +170,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual DotLabel ExternalLabel
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Width" />
@@ -198,7 +198,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual double? Length
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.MinLength" />
@@ -226,7 +226,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual DotEdgeDirections? Directions
         {
             get => GetValueAs<DotEdgeDirections>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.AttachLabel" />
@@ -234,7 +234,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual bool? AttachLabel
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.AllowLabelFloat" />
@@ -242,7 +242,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual bool? AllowLabelFloat
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Constrain" />
@@ -250,7 +250,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual bool? Constrain
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveBoolAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
     }
 }

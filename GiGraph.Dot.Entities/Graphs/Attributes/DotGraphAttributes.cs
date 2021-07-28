@@ -92,7 +92,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         DotStyles? IDotGraphAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Label" />
@@ -121,7 +121,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotEdgeShape? EdgeShape
         {
             get => GetValueAs<DotEdgeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemoveEnumAttribute(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Comment" />
@@ -129,7 +129,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual string Comment
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Charset" />
@@ -137,7 +137,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual string Charset
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.ImageDirectories" />
@@ -145,7 +145,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual string ImageDirectories
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.RootNodeId" />
@@ -153,7 +153,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual DotId RootNodeId
         {
             get => GetValueAsId(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
     }
 }

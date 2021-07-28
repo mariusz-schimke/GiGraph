@@ -48,7 +48,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual double? Angle
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveNumericAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
     }
 }

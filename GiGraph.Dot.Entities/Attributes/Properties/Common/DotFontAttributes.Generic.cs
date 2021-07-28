@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual string Name
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveStringAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotFontAttributes.Size" />
@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual DotColor Color
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveComplexAttribute(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <summary>
