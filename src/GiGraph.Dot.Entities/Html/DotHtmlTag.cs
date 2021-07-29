@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Html
     /// <summary>
     ///     Represents an HTML tag.
     /// </summary>
-    public abstract class DotHtmlTag : IDotHtmlEntity
+    public abstract class DotHtmlTag : DotHtmlEntity
     {
         protected readonly bool _isVoid;
         protected readonly string _name;
@@ -27,8 +27,8 @@ namespace GiGraph.Dot.Entities.Html
         /// </summary>
         public virtual DotAttributeCollection Attributes { get; }
 
-        /// <inheritdoc cref="IDotHtmlEntity.ToHtml" />
-        public DotHtml ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        /// <inheritdoc />
+        public override DotHtml ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var result = new StringBuilder();
 
@@ -62,14 +62,6 @@ namespace GiGraph.Dot.Entities.Html
             }
 
             return result.ToString();
-        }
-
-        /// <summary>
-        ///     Converts the entity to HTML with default syntax and formatting rules.
-        /// </summary>
-        public virtual DotHtml ToHtml()
-        {
-            return ToHtml(DotSyntaxOptions.Default, DotSyntaxRules.Default);
         }
 
         protected virtual IEnumerable<IDotHtmlEntity> GetChildren()

@@ -40,10 +40,16 @@ namespace GiGraph.Dot.Entities.Html
         {
         }
 
-        /// <inheritdoc cref="IDotHtmlEntity.ToHtml" />
-        public DotHtml ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        /// <inheritdoc cref="IDotHtmlEntity.ToHtml(GiGraph.Dot.Output.Options.DotSyntaxOptions,GiGraph.Dot.Output.Options.DotSyntaxRules)" />
+        public virtual DotHtml ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return string.Join(string.Empty, this.Select(entity => entity.ToHtml(options, syntaxRules)));
+        }
+
+        /// <inheritdoc cref="IDotHtmlEntity.ToHtml()" />
+        public virtual DotHtml ToHtml()
+        {
+            return ToHtml(DotSyntaxOptions.Default, DotSyntaxRules.Default);
         }
 
         /// <summary>
