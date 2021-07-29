@@ -1,4 +1,5 @@
 using System;
+using GiGraph.Dot.Entities.Html.Table.Attributes;
 using GiGraph.Dot.Output.Metadata.Html;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;

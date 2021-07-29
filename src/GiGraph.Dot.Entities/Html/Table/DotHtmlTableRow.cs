@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using GiGraph.Dot.Entities.Html.Table.Attributes;
 
 namespace GiGraph.Dot.Entities.Html.Table
 {
@@ -12,9 +14,20 @@ namespace GiGraph.Dot.Entities.Html.Table
         ///     Initializes a new table row instance.
         /// </summary>
         public DotHtmlTableRow()
-            : base("tr", null) // TODO:
+            : this(new DotHtmlTableRowAttributes())
         {
         }
+
+        protected DotHtmlTableRow(DotHtmlTableRowAttributes attributes)
+            : base("tr", attributes.Collection)
+        {
+            Attributes = attributes;
+        }
+
+        /// <summary>
+        ///     The attributes of the table row.
+        /// </summary>
+        public new virtual DotHtmlTableRowAttributes Attributes { get; }
 
         /// <summary>
         ///     Adds a cell to the current row.
@@ -27,9 +40,15 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// </param>
         public virtual DotHtmlTableCell AddCell(string text, Action<DotHtmlTableCell> init = null)
         {
-            var rowCell = new DotHtmlTableCell();
-            rowCell.Children.Add(DotHtmlEntityCollection.FromMultilineText(text));
-            return AddCell(rowCell, init);
+            var cell = new DotHtmlTableCell
+            {
+                Children =
+                {
+                    DotHtmlEntityCollection.FromMultilineText(text)
+                }
+            };
+
+            return AddCell(cell, init);
         }
 
         /// <summary>
@@ -68,14 +87,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// </param>
         public virtual DotHtmlTableCell[] AddCells(IEnumerable<string> cells, Action<DotHtmlTableCell> init = null)
         {
-            var result = new List<DotHtmlTableCell>();
-
-            foreach (var cell in cells)
-            {
-                result.Add(AddCell(cell, init));
-            }
-
-            return result.ToArray();
+            return cells.Select(cell => AddCell(cell, init)).ToArray();
         }
 
         /// <summary>
