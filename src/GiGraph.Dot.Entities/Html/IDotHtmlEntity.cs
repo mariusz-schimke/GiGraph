@@ -11,6 +11,12 @@ namespace GiGraph.Dot.Entities.Html
         /// <summary>
         ///     Converts the entity to HTML.
         /// </summary>
+        /// <param name="options">
+        ///     The syntax options to apply.
+        /// </param>
+        /// <param name="syntaxRules">
+        ///     The syntax rules to apply.
+        /// </param>
         public abstract DotHtml ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
     }
 }

@@ -64,6 +64,14 @@ namespace GiGraph.Dot.Entities.Html
             return result.ToString();
         }
 
+        /// <summary>
+        ///     Converts the entity to HTML with default syntax and formatting rules.
+        /// </summary>
+        public virtual DotHtml ToHtml()
+        {
+            return ToHtml(DotSyntaxOptions.Default, DotSyntaxRules.Default);
+        }
+
         protected virtual IEnumerable<IDotHtmlEntity> GetChildren()
         {
             return Enumerable.Empty<IDotHtmlEntity>();
