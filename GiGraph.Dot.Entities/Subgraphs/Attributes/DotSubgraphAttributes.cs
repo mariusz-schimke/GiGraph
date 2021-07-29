@@ -1,5 +1,6 @@
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Factories;
 using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
@@ -22,7 +23,7 @@ namespace GiGraph.Dot.Entities.Subgraphs.Attributes
         }
 
         public DotSubgraphAttributes()
-            : this(new DotAttributeCollection())
+            : this(new DotAttributeCollection(DotAttributeFactory.Instance))
         {
         }
 

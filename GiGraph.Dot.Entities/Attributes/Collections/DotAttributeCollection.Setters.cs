@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using GiGraph.Dot.Output;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Arrowheads;
 using GiGraph.Dot.Types.Clusters;
@@ -44,16 +45,53 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             SetOrRemove(key, value is null ? null : newAttribute(key, value));
         }
 
+        protected internal void SetOrRemove(string key, DotEscapeString value)
+        {
+            SetOrRemove(key, value, _attributeFactory.CreateEscapeString);
+        }
+
+        protected internal void SetOrRemove(string key, string value)
+        {
+            SetOrRemove(key, value, _attributeFactory.CreateString);
+        }
+
+        protected internal void SetOrRemove(string key, int? value)
+        {
+            SetOrRemove(key, value, (k, v) => _attributeFactory.CreateInt(k, v!.Value));
+        }
+
+        protected internal void SetOrRemove(string key, double? value)
+        {
+            SetOrRemove(key, value, (k, v) => _attributeFactory.CreateDouble(k, v!.Value));
+        }
+
+        protected internal void SetOrRemove(string key, bool? value)
+        {
+            SetOrRemove(key, value, (k, v) => _attributeFactory.CreateBool(k, v!.Value));
+        }
+
+        protected internal void SetOrRemoveComplex<TComplex>(string key, TComplex value)
+            where TComplex : IDotEncodable
+        {
+            SetOrRemove(key, value, _attributeFactory.CreateComplex);
+        }
+
+        protected internal void SetOrRemoveEnum<TEnum>(string key, bool hasValue, Func<TEnum> value)
+            where TEnum : Enum
+        {
+            SetOrRemove(key, hasValue ? _attributeFactory.CreateEnum(key, value()) : null);
+        }
+
         protected virtual void SetOrRemove<T>(string key, T attribute)
             where T : DotAttribute
         {
-            if (attribute is null)
+            if (attribute is not null)
             {
-                Remove(key);
+                Set(attribute);
             }
             else
             {
-                Set(attribute);
+                Remove(key);
             }
         }
 
@@ -79,7 +117,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Nullify(string key)
         {
-            return Set(new DotNullAttribute(key));
+            return Set(_attributeFactory.CreateNull(key));
         }
 
         /// <summary>
@@ -93,7 +131,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, string value)
         {
-            return Set(new DotStringAttribute(key, value));
+            return Set(_attributeFactory.CreateString(key, value));
         }
 
         /// <summary>
@@ -107,7 +145,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotEscapeString value)
         {
-            return Set(new DotEscapeStringAttribute(key, value));
+            return Set(_attributeFactory.CreateEscapeString(key, value));
         }
 
         /// <summary>
@@ -121,7 +159,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotEscapedString value)
         {
-            return Set(new DotEscapeStringAttribute(key, value));
+            return Set(_attributeFactory.CreateEscapeString(key, value));
         }
 
         /// <summary>
@@ -135,7 +173,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotUnescapedString value)
         {
-            return Set(new DotEscapeStringAttribute(key, value));
+            return Set(_attributeFactory.CreateEscapeString(key, value));
         }
 
         /// <summary>
@@ -149,7 +187,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotHtml value)
         {
-            return Set(new DotEscapeStringAttribute(key, value));
+            return Set(_attributeFactory.CreateEscapeString(key, value));
         }
 
         /// <summary>
@@ -163,7 +201,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotLabel value)
         {
-            return Set(new DotComplexAttribute<DotLabel>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -177,7 +215,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotTextLabel value)
         {
-            return Set(new DotComplexAttribute<DotTextLabel>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -191,7 +229,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotHtmlLabel value)
         {
-            return Set(new DotComplexAttribute<DotHtmlLabel>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -205,7 +243,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotRecordLabel value)
         {
-            return Set(new DotComplexAttribute<DotRecordLabel>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -219,7 +257,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotHorizontalAlignment value)
         {
-            return Set(new DotEnumAttribute<DotHorizontalAlignment>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -233,7 +271,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotVerticalAlignment value)
         {
-            return Set(new DotEnumAttribute<DotVerticalAlignment>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -247,7 +285,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, int value)
         {
-            return Set(new DotIntAttribute(key, value));
+            return Set(_attributeFactory.CreateInt(key, value));
         }
 
         /// <summary>
@@ -261,7 +299,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, double value)
         {
-            return Set(new DotDoubleAttribute(key, value));
+            return Set(_attributeFactory.CreateDouble(key, value));
         }
 
         /// <summary>
@@ -275,7 +313,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, params double[] value)
         {
-            return Set(new DotDoubleArrayAttribute(key, value));
+            return Set(_attributeFactory.CreateDoubleArray(key, value));
         }
 
         /// <summary>
@@ -289,7 +327,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, IEnumerable<double> value)
         {
-            return Set(new DotDoubleArrayAttribute(key, value));
+            return Set(_attributeFactory.CreateDoubleArray(key, value));
         }
 
         /// <summary>
@@ -303,7 +341,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, bool value)
         {
-            return Set(new DotBoolAttribute(key, value));
+            return Set(_attributeFactory.CreateBool(key, value));
         }
 
         /// <summary>
@@ -317,7 +355,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, Color value)
         {
-            return Set(new DotColorAttribute(key, value));
+            return Set(_attributeFactory.CreateColor(key, value));
         }
 
         /// <summary>
@@ -331,7 +369,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotColorDefinition value)
         {
-            return Set(new DotComplexAttribute<DotColorDefinition>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -345,7 +383,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotNodeShape value)
         {
-            return Set(new DotEnumAttribute<DotNodeShape>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -359,7 +397,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotEdgeShape value)
         {
-            return Set(new DotEnumAttribute<DotEdgeShape>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -373,7 +411,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotNodeSizing value)
         {
-            return Set(new DotEnumAttribute<DotNodeSizing>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -387,7 +425,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotStyles value)
         {
-            return Set(new DotEnumAttribute<DotStyles>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -401,7 +439,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotArrowheadShape value)
         {
-            return Set(new DotEnumAttribute<DotArrowheadShape>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -415,7 +453,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotEdgeDirections value)
         {
-            return Set(new DotEnumAttribute<DotEdgeDirections>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -429,7 +467,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotRank value)
         {
-            return Set(new DotEnumAttribute<DotRank>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -443,7 +481,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotLayoutDirection value)
         {
-            return Set(new DotEnumAttribute<DotLayoutDirection>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -457,7 +495,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotClusterVisualizationMode value)
         {
-            return Set(new DotEnumAttribute<DotClusterVisualizationMode>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -471,7 +509,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotEdgeOrderingMode value)
         {
-            return Set(new DotEnumAttribute<DotEdgeOrderingMode>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -485,7 +523,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotOrientation value)
         {
-            return Set(new DotEnumAttribute<DotOrientation>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -500,7 +538,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotRankSeparationDefinition value)
         {
-            return Set(new DotComplexAttribute<DotRankSeparationDefinition>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -514,7 +552,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotEndpointPort value)
         {
-            return Set(new DotComplexAttribute<DotEndpointPort>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -528,7 +566,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotCompassPoint value)
         {
-            return Set(new DotEnumAttribute<DotCompassPoint>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -542,7 +580,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotAlignment value)
         {
-            return Set(new DotEnumAttribute<DotAlignment>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -556,7 +594,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotPoint value)
         {
-            return Set(new DotComplexAttribute<DotPoint>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -570,7 +608,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotRectangle value)
         {
-            return Set(new DotComplexAttribute<DotRectangle>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -584,7 +622,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotRectangle[] value)
         {
-            return Set(new DotRectangleArrayAttribute(key, value));
+            return Set(_attributeFactory.CreateRectangleArray(key, value));
         }
 
         /// <summary>
@@ -598,7 +636,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, IEnumerable<DotRectangle> value)
         {
-            return Set(new DotRectangleArrayAttribute(key, value));
+            return Set(_attributeFactory.CreateRectangleArray(key, value));
         }
 
         /// <summary>
@@ -612,7 +650,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotGraphScalingDefinition value)
         {
-            return Set(new DotComplexAttribute<DotGraphScalingDefinition>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -626,7 +664,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotPackingDefinition value)
         {
-            return Set(new DotComplexAttribute<DotPackingDefinition>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -640,7 +678,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotGraphScaling value)
         {
-            return Set(new DotEnumAttribute<DotGraphScaling>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -654,7 +692,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotArrowheadDefinition value)
         {
-            return Set(new DotComplexAttribute<DotArrowheadDefinition>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -668,7 +706,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotPackingGranularity value)
         {
-            return Set(new DotEnumAttribute<DotPackingGranularity>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -683,7 +721,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotPackingModeDefinition value)
         {
-            return Set(new DotComplexAttribute<DotPackingModeDefinition>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -697,7 +735,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotImageScaling value)
         {
-            return Set(new DotEnumAttribute<DotImageScaling>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -711,7 +749,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotId value)
         {
-            return Set(new DotComplexAttribute<DotId>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -725,7 +763,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotClusterId value)
         {
-            return Set(new DotComplexAttribute<DotClusterId>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -739,7 +777,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotViewport value)
         {
-            return Set(new DotComplexAttribute<DotViewport>(key, value));
+            return Set(_attributeFactory.CreateComplex(key, value));
         }
 
         /// <summary>
@@ -753,7 +791,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotFontConvention value)
         {
-            return Set(new DotEnumAttribute<DotFontConvention>(key, value));
+            return Set(_attributeFactory.CreateEnum(key, value));
         }
 
         /// <summary>
@@ -770,7 +808,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection SetCustom(string key, string value)
         {
-            return Set(new DotCustomAttribute(key, value));
+            return Set(_attributeFactory.CreateCustom(key, value));
         }
     }
 }

@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         protected virtual DotStyles? Style
         {
             get => _attributes.GetValueAs<DotStyles>(StyleKey, out var result) ? result : null;
-            set => _attributes.SetOrRemove(StyleKey, value, (k, v) => new DotEnumAttribute<DotStyles>(k, v!.Value));
+            set => _attributes.SetOrRemoveEnum(StyleKey, value.HasValue, () => value!.Value);
         }
 
         /// <summary>

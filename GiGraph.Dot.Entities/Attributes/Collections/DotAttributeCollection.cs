@@ -1,12 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Factories;
 using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
     public partial class DotAttributeCollection : SortedList<string, DotAttribute>, IDotEntity, IDotAnnotatable
     {
+        protected readonly DotAttributeFactory _attributeFactory;
+
+        public DotAttributeCollection(DotAttributeFactory attributeFactory)
+        {
+            _attributeFactory = attributeFactory;
+        }
+
         protected internal virtual string Annotation { get; set; }
 
         string IDotAnnotatable.Annotation

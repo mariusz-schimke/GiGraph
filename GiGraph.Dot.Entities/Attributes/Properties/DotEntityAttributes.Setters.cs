@@ -17,61 +17,58 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         protected void SetOrRemove<TComplex>(MethodBase propertyAccessor, TComplex value)
             where TComplex : IDotEncodable
         {
-            SetOrRemove(propertyAccessor, value, (k, v) => new DotComplexAttribute<TComplex>(k, v));
+            _attributes.SetOrRemoveComplex(GetKey(propertyAccessor), value);
         }
 
         protected void SetOrRemove(MethodBase propertyAccessor, DotEscapeString value)
         {
-            SetOrRemove(propertyAccessor, value, (k, v) => new DotEscapeStringAttribute(k, v));
+            _attributes.SetOrRemove(GetKey(propertyAccessor), value);
         }
 
         protected void SetOrRemove(MethodBase propertyAccessor, string value)
         {
-            SetOrRemove(propertyAccessor, value, (k, v) => new DotStringAttribute(k, v));
+            _attributes.SetOrRemove(GetKey(propertyAccessor), value);
         }
 
         protected void SetOrRemove(MethodBase propertyAccessor, int? value)
         {
-            SetOrRemove(propertyAccessor, value, (k, v) => new DotIntAttribute(k, v!.Value));
+            _attributes.SetOrRemove(GetKey(propertyAccessor), value);
         }
 
         protected void SetOrRemove(MethodBase propertyAccessor, double? value)
         {
-            SetOrRemove(propertyAccessor, value, (k, v) => new DotDoubleAttribute(k, v!.Value));
+            _attributes.SetOrRemove(GetKey(propertyAccessor), value);
         }
 
         protected void SetOrRemove(MethodBase propertyAccessor, bool? value)
         {
-            SetOrRemove(propertyAccessor, value, (k, v) => new DotBoolAttribute(k, v!.Value));
+            _attributes.SetOrRemove(GetKey(propertyAccessor), value);
         }
 
         protected void SetOrRemove<TEnum>(MethodBase propertyAccessor, bool hasValue, Func<TEnum> value)
             where TEnum : Enum
         {
-            var key = GetKey(propertyAccessor);
-
-            if (hasValue)
-            {
-                _attributes.Set(new DotEnumAttribute<TEnum>(key, value()));
-            }
-            else
-            {
-                _attributes.Remove(key);
-            }
+            _attributes.SetOrRemoveEnum(GetKey(propertyAccessor), hasValue, value);
         }
 
         protected void SetOrRemoveBorderWidth(MethodBase propertyAccessor, double? value, [CallerMemberName] string propertyName = null)
         {
-            SetOrRemove(propertyAccessor, value, (k, v) => v!.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(propertyName, v!.Value, "Border width must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v!.Value));
+            if (value < 0.0)
+            {
+                throw new ArgumentOutOfRangeException(propertyName, value, "Border width must be greater than or equal to 0.");
+            }
+
+            _attributes.SetOrRemove(GetKey(propertyAccessor), value);
         }
 
         protected void SetOrRemovePeripheries(MethodBase propertyAccessor, int? value, [CallerMemberName] string propertyName = null)
         {
-            SetOrRemove(propertyAccessor, value, (k, v) => v!.Value < 0
-                ? throw new ArgumentOutOfRangeException(propertyName, v!.Value, "The number of peripheries must be greater than or equal to 0.")
-                : new DotIntAttribute(k, v!.Value));
+            if (value < 0)
+            {
+                throw new ArgumentOutOfRangeException(propertyName, value, "The number of peripheries must be greater than or equal to 0.");
+            }
+
+            _attributes.SetOrRemove(GetKey(propertyAccessor), value);
         }
     }
 }

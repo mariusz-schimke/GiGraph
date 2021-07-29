@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Html.Attributes.Factories;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
@@ -19,7 +20,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         }
 
         public DotHtmlTableAttributes()
-            : this(new DotAttributeCollection(), HtmlTableAttributesKeyLookup)
+            : this(new DotAttributeCollection(DotHtmlAttributeFactory.Instance), HtmlTableAttributesKeyLookup)
         {
         }
 
