@@ -12,6 +12,11 @@ namespace GiGraph.Dot.Output.Options
     public partial class DotSyntaxRules
     {
         /// <summary>
+        ///     Gets the default syntax rules.
+        /// </summary>
+        public static DotSyntaxRules Default { get; } = new();
+
+        /// <summary>
         ///     The collection of reserved words that cannot be used as identifiers/keys unless quoted.
         /// </summary>
         public virtual ICollection<string> Keywords { get; set; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase)

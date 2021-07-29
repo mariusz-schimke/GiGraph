@@ -9,6 +9,11 @@ namespace GiGraph.Dot.Output.Options
     public partial class DotFormattingOptions
     {
         /// <summary>
+        ///     Gets the default formatting options.
+        /// </summary>
+        public static DotFormattingOptions Default { get; } = new();
+
+        /// <summary>
         ///     Indicates if the output should be generated without line breaks.
         /// </summary>
         public virtual bool SingleLine { get; set; } = false;

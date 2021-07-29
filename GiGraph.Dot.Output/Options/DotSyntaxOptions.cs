@@ -6,6 +6,11 @@
     public partial class DotSyntaxOptions
     {
         /// <summary>
+        ///     Gets the default syntax options.
+        /// </summary>
+        public static DotSyntaxOptions Default { get; } = new();
+
+        /// <summary>
         ///     Attribute options.
         /// </summary>
         public virtual AttributeOptions Attributes { get; protected set; } = new();

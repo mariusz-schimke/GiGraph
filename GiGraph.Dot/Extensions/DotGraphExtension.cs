@@ -100,9 +100,9 @@ namespace GiGraph.Dot.Extensions
         public static void Build(this DotGraph graph, StreamWriter outputWriter, IDotGraphGeneratorBuilder graphGeneratorBuilder,
             DotFormattingOptions formattingOptions = null, DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null)
         {
-            syntaxRules ??= new DotSyntaxRules();
-            syntaxOptions ??= new DotSyntaxOptions();
-            formattingOptions ??= new DotFormattingOptions();
+            syntaxRules ??= DotSyntaxRules.Default;
+            syntaxOptions ??= DotSyntaxOptions.Default;
+            formattingOptions ??= DotFormattingOptions.Default;
 
             var tokenWriterOptions = new DotTokenWriterOptions(
                 formattingOptions.IndentationLevel,
