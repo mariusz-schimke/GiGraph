@@ -58,12 +58,17 @@ namespace GiGraph.Dot.Types.Text
         {
         }
 
-        /// <inheritdoc cref="IEnumerable{T}.GetEnumerator" />
+        /// <summary>
+        ///     Returns an enumerator that iterates through the collection.
+        /// </summary>
         public IEnumerator<DotEscapeString> GetEnumerator()
         {
             return ((IEnumerable<DotEscapeString>) _items).GetEnumerator();
         }
 
+        /// <summary>
+        ///     Returns an enumerator that iterates through a collection.
+        /// </summary>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return _items.GetEnumerator();
