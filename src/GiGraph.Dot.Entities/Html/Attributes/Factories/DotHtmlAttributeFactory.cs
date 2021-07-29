@@ -13,25 +13,25 @@ namespace GiGraph.Dot.Entities.Html.Attributes.Factories
         /// </summary>
         public new static DotHtmlAttributeFactory Instance { get; } = new();
 
-        /// <inheritdoc cref="CreateBool" />
+        /// <inheritdoc />
         public override DotBoolAttribute CreateBool(string key, bool value)
         {
             return new DotHtmlBoolAttribute(key, value);
         }
 
-        /// <inheritdoc cref="CreateString" />
+        /// <inheritdoc />
         public override DotStringAttribute CreateString(string key, string value)
         {
             return new DotHtmlStringAttribute(key, value);
         }
 
-        /// <inheritdoc cref="CreateEscapeString{TEscapeString}" />
+        /// <inheritdoc />
         public override DotEscapeStringAttribute CreateEscapeString<TEscapeString>(string key, TEscapeString value)
         {
             return new DotHtmlEscapeStringAttribute(key, value);
         }
 
-        /// <inheritdoc cref="CreateEnum{TEnum}" />
+        /// <inheritdoc />
         public override DotEnumAttribute<TEnum> CreateEnum<TEnum>(string key, TEnum value)
         {
             return new DotHtmlEnumAttribute<TEnum>(key, value);
