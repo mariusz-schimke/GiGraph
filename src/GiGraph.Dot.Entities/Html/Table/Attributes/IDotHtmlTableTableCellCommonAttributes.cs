@@ -118,10 +118,11 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
 
         /// <summary>
         ///     <para>
-        ///         Specifies style characteristics of the table or cell. At present, the only legal attributes are "ROUNDED" and "RADIAL" for tables, and "RADIAL" for cells.
-        ///         If "ROUNDED" is specified, the table will have rounded corners. This probably works best if the outmost cells have no
-        ///         borders, or their <see cref="CellSpacing" /> is sufficiently large. If it is desirable to have borders around the cells,
-        ///         use HR and VR elements, or the <see cref="ColumnFormatting" /> and <see cref="RowFormatting" /> attributes of the table.
+        ///         Specifies style characteristics of the table or cell. At present, the only legal attributes are "ROUNDED" and "RADIAL"
+        ///         for tables, and "RADIAL" for cells. If "ROUNDED" is specified, the table will have rounded corners. This probably works
+        ///         best if the outmost cells have no borders, or their <see cref="CellSpacing" /> is sufficiently large. If it is desirable
+        ///         to have borders around the cells, use HR and VR elements, or the <see cref="ColumnFormatting" /> and
+        ///         <see cref="RowFormatting" /> attributes of the table.
         ///     </para>
         ///     <para>
         ///         The "RADIAL" attribute indicates a radial gradient fill. See the <see cref="BackgroundColor" /> and
