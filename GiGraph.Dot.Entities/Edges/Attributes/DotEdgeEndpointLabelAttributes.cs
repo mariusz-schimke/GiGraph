@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -38,9 +37,15 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual double? Distance
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(Distance), v!.Value, "Endpoint label distance must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v!.Value));
+            set
+            {
+                if (value < 0.0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Distance), value, "Endpoint label distance must be greater than or equal to 0.");
+                }
+
+                SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            }
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointLabelAttributes.Angle" />

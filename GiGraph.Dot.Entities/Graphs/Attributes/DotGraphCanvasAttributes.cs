@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -80,9 +79,15 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual double? Dpi
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(Dpi), v!.Value, "DPI must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v!.Value));
+            set
+            {
+                if (value < 0.0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Dpi), value, "DPI must be greater than or equal to 0.");
+                }
+
+                SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            }
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Resolution" />
@@ -90,9 +95,15 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual double? Resolution
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(Resolution), v!.Value, "Resolution must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v!.Value));
+            set
+            {
+                if (value < 0.0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Resolution), value, "Resolution must be greater than or equal to 0.");
+                }
+
+                SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            }
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Size" />
@@ -115,19 +126,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         [DotAttributeKey(DotAttributeKeys.Ratio)]
         public virtual DotGraphScalingDefinition Scaling
         {
-            get
-            {
-                return GetValueAs<DotGraphScalingDefinition>
-                (
-                    MethodBase.GetCurrentMethod(),
-                    out var value,
-                    v => v is int i ? (true, new DotGraphScalingAspectRatio(i)) : (false, default),
-                    v => v is double d ? (true, new DotGraphScalingAspectRatio(d)) : (false, default),
-                    v => v is DotGraphScaling s ? (true, new DotGraphScalingOption(s)) : (false, default)
-                )
-                    ? value
-                    : null;
-            }
+            get => GetValueAsGraphScalingDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 

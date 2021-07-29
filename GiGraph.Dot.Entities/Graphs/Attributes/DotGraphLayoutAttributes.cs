@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -62,18 +61,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         [DotAttributeKey(DotAttributeKeys.Pack)]
         public virtual DotPackingDefinition Packing
         {
-            get
-            {
-                return GetValueAs<DotPackingDefinition>
-                (
-                    MethodBase.GetCurrentMethod(),
-                    out var value,
-                    v => v is int i ? (true, new DotPackingMargin(i)) : (false, default),
-                    v => v is bool b ? (true, new DotPackingToggle(b)) : (false, default)
-                )
-                    ? value
-                    : null;
-            }
+            get => GetValueAsPackingDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
@@ -81,17 +69,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         [DotAttributeKey(DotAttributeKeys.PackMode)]
         public virtual DotPackingModeDefinition PackingMode
         {
-            get
-            {
-                return GetValueAs<DotPackingModeDefinition>
-                (
-                    MethodBase.GetCurrentMethod(),
-                    out var value,
-                    v => v is DotPackingGranularity g ? (true, new DotGranularPackingMode(g)) : (false, default)
-                )
-                    ? value
-                    : null;
-            }
+            get => GetValueAsPackingModeDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
@@ -100,28 +78,22 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual double? NodeSeparation
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0.0
-                ? throw new ArgumentOutOfRangeException(nameof(NodeSeparation), v!.Value, "Node separation must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v!.Value));
+            set
+            {
+                if (value < 0.0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(NodeSeparation), value, "Node separation must be greater than or equal to 0.");
+                }
+
+                SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            }
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.RankSeparation" />
         [DotAttributeKey(DotAttributeKeys.RankSep)]
         public virtual DotRankSeparationDefinition RankSeparation
         {
-            get
-            {
-                return GetValueAs<DotRankSeparationDefinition>
-                (
-                    MethodBase.GetCurrentMethod(),
-                    out var value,
-                    v => v is int i ? (true, new DotRankSeparation(i)) : (false, default),
-                    v => v is double d ? (true, new DotRankSeparation(d)) : (false, default),
-                    v => v is double[] da ? (true, new DotRadialRankSeparation(da)) : (false, default)
-                )
-                    ? value
-                    : null;
-            }
+            get => GetValueAsRankSeparationDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 

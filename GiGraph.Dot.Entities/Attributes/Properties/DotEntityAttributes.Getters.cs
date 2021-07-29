@@ -5,8 +5,11 @@ using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.Geometry;
+using GiGraph.Dot.Types.Graphs;
 using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Labels;
+using GiGraph.Dot.Types.Packing;
+using GiGraph.Dot.Types.Ranks;
 using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties
@@ -71,6 +74,26 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         protected virtual DotArrowheadDefinition GetValueAsArrowheadDefinition(MethodBase propertyAccessor)
         {
             return _attributes.GetValueAsArrowheadDefinition(GetKey(propertyAccessor));
+        }
+
+        protected virtual DotPackingDefinition GetValueAsPackingDefinition(MethodBase propertyAccessor)
+        {
+            return _attributes.GetValueAsPackingDefinition(GetKey(propertyAccessor));
+        }
+
+        protected virtual DotPackingModeDefinition GetValueAsPackingModeDefinition(MethodBase propertyAccessor)
+        {
+            return _attributes.GetValueAsPackingModeDefinition(GetKey(propertyAccessor));
+        }
+
+        protected virtual DotRankSeparationDefinition GetValueAsRankSeparationDefinition(MethodBase propertyAccessor)
+        {
+            return _attributes.GetValueAsRankSeparationDefinition(GetKey(propertyAccessor));
+        }
+
+        protected virtual DotGraphScalingDefinition GetValueAsGraphScalingDefinition(MethodBase propertyAccessor)
+        {
+            return _attributes.GetValueAsGraphScalingDefinition(GetKey(propertyAccessor));
         }
 
         protected virtual DotEndpointPort GetValueAsEndpointPort(MethodBase propertyAccessor)

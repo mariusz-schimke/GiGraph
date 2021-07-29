@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -29,9 +28,15 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual double? Width
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0
-                ? throw new ArgumentOutOfRangeException(nameof(Width), v!.Value, "The width must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v!.Value));
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Width), value, "The width must be greater than or equal to 0.");
+                }
+
+                SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            }
         }
 
         /// <inheritdoc cref="IDotNodeSizeAttributes.Height" />
@@ -39,9 +44,15 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual double? Height
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0
-                ? throw new ArgumentOutOfRangeException(nameof(Height), v!.Value, "The height must be greater than or equal to 0.")
-                : new DotDoubleAttribute(k, v!.Value));
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Height), value, "The height must be greater than or equal to 0.");
+                }
+
+                SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            }
         }
 
         /// <inheritdoc cref="IDotNodeSizeAttributes.Mode" />
