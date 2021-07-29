@@ -14,8 +14,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="attribute">
         ///     The attribute to include in the collection.
         /// </param>
-        public virtual DotAttributeCollection Set<T>(T attribute)
-            where T : DotAttribute
+        public virtual DotAttributeCollection Set(DotAttribute attribute)
         {
             this[attribute.Key] = attribute;
             return this;
@@ -47,15 +46,26 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             SetOrRemove(key, value, (k, v) => _attributeFactory.CreateDouble(k, v!.Value));
         }
 
+        protected internal void SetOrRemove(string key, double[] value)
+        {
+            SetOrRemove(key, value, _attributeFactory.CreateDoubleArray);
+        }
+
         protected internal void SetOrRemove(string key, bool? value)
         {
             SetOrRemove(key, value, (k, v) => _attributeFactory.CreateBool(k, v!.Value));
         }
 
         protected internal void SetOrRemoveComplex<TComplex>(string key, TComplex value)
-            where TComplex : IDotEncodable
+            where TComplex : IDotComplexType
         {
             SetOrRemove(key, value, _attributeFactory.CreateComplex);
+        }
+
+        protected internal void SetOrRemoveComplex<TComplex>(string key, TComplex[] value)
+            where TComplex : IDotComplexType
+        {
+            SetOrRemove(key, value, _attributeFactory.CreateComplexArray);
         }
 
         protected internal void SetOrRemoveEnum<TEnum>(string key, bool hasValue, Func<TEnum> value)
@@ -240,7 +250,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The value of the attribute to include in the collection.
         /// </param>
         public virtual DotAttributeCollection SetComplex<TComplex>(string key, TComplex value)
-            where TComplex : IDotEncodable
+            where TComplex : IDotComplexType
         {
             return Set(_attributeFactory.CreateComplex(key, value));
         }
@@ -255,7 +265,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The value of the attribute to include in the collection.
         /// </param>
         public virtual DotAttributeCollection SetComplex<TComplex>(string key, TComplex[] value)
-            where TComplex : IDotEncodable
+            where TComplex : IDotComplexType
         {
             return Set(_attributeFactory.CreateComplexArray(key, value));
         }
@@ -270,7 +280,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         ///     The value of the attribute to include in the collection.
         /// </param>
         public virtual DotAttributeCollection SetComplex<TComplex>(string key, IEnumerable<TComplex> value)
-            where TComplex : IDotEncodable
+            where TComplex : IDotComplexType
         {
             return Set(_attributeFactory.CreateComplexArray(key, value));
         }

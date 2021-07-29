@@ -146,7 +146,7 @@ namespace GiGraph.Dot.Entities.Attributes.Factories
         }
 
         /// <summary>
-        ///     Creates a new complex attribute.
+        ///     Creates a new complex type attribute.
         /// </summary>
         /// <param name="key">
         ///     The key of the attribute.
@@ -154,14 +154,14 @@ namespace GiGraph.Dot.Entities.Attributes.Factories
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public virtual DotComplexAttribute<TComplex> CreateComplex<TComplex>(string key, TComplex value)
-            where TComplex : IDotEncodable
+        public virtual DotComplexTypeAttribute<TComplex> CreateComplex<TComplex>(string key, TComplex value)
+            where TComplex : IDotComplexType
         {
-            return new DotComplexAttribute<TComplex>(key, value);
+            return new DotComplexTypeAttribute<TComplex>(key, value);
         }
 
         /// <summary>
-        ///     Creates a new complex array attribute.
+        ///     Creates a new complex type array attribute.
         /// </summary>
         /// <param name="key">
         ///     The key of the attribute.
@@ -169,14 +169,14 @@ namespace GiGraph.Dot.Entities.Attributes.Factories
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public virtual DotComplexArrayAttribute<TComplex> CreateComplexArray<TComplex>(string key, TComplex[] value)
-            where TComplex : IDotEncodable
+        public virtual DotComplexTypeArrayAttribute<TComplex> CreateComplexArray<TComplex>(string key, TComplex[] value)
+            where TComplex : IDotComplexType
         {
-            return new DotComplexArrayAttribute<TComplex>(key, value);
+            return new DotComplexTypeArrayAttribute<TComplex>(key, value);
         }
 
         /// <summary>
-        ///     Creates a new complex array attribute.
+        ///     Creates a new complex type array attribute.
         /// </summary>
         /// <param name="key">
         ///     The key of the attribute.
@@ -184,10 +184,10 @@ namespace GiGraph.Dot.Entities.Attributes.Factories
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public virtual DotComplexArrayAttribute<TComplex> CreateComplexArray<TComplex>(string key, IEnumerable<TComplex> value)
-            where TComplex : IDotEncodable
+        public virtual DotComplexTypeArrayAttribute<TComplex> CreateComplexArray<TComplex>(string key, IEnumerable<TComplex> value)
+            where TComplex : IDotComplexType
         {
-            return new DotComplexArrayAttribute<TComplex>(key, value?.ToArray());
+            return new DotComplexTypeArrayAttribute<TComplex>(key, value?.ToArray());
         }
 
         /// <summary>

@@ -9,9 +9,9 @@ namespace GiGraph.Dot.Types.Labels
     ///     Represents label. It can either be a text label (<see cref="DotTextLabel" />), or an HTML label (<see cref="DotHtmlLabel" />
     ///     ). <see cref="DotRecordLabel" />, on the other hand, can be used for record-like nodes.
     /// </summary>
-    public abstract class DotLabel : IDotEncodable
+    public abstract class DotLabel : IDotComplexType
     {
-        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        string IDotComplexType.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncodedString(options, syntaxRules);
         }

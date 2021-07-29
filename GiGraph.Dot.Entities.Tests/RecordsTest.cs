@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Tests
 
             Assert.Equal(
                 "{ root\\ field1 | root\\ field2 | { sub-field1 | sub-field2 } }",
-                ((IDotEncodable) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
+                ((IDotComplexType) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }
 
         [Fact]
@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Tests
 
             Assert.Equal(
                 "root\\ field1 | root\\ field2 | { { sub-field1 | sub-field2 } }",
-                ((IDotEncodable) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
+                ((IDotComplexType) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }
 
         [Fact]
@@ -43,7 +43,7 @@ namespace GiGraph.Dot.Entities.Tests
         {
             var rec = new DotRecord(flip: true, "field1", "field2");
 
-            Assert.Equal("{ field1 | field2 }", ((IDotEncodable) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
+            Assert.Equal("{ field1 | field2 }", ((IDotComplexType) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }
 
         [Fact]
@@ -51,7 +51,7 @@ namespace GiGraph.Dot.Entities.Tests
         {
             var rec = new DotRecord(flip: false, "field1", "field2");
 
-            Assert.Equal("field1 | field2", ((IDotEncodable) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
+            Assert.Equal("field1 | field2", ((IDotComplexType) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }
 
         [Fact]
@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Entities.Tests
         {
             var rec = new DotRecord(flip: false, new DotRecordTextField("field1", "port 1"), "field2");
 
-            Assert.Equal("<port\\ 1> field1 | field2", ((IDotEncodable) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
+            Assert.Equal("<port\\ 1> field1 | field2", ((IDotComplexType) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }
 
         [Fact]
@@ -74,7 +74,7 @@ namespace GiGraph.Dot.Entities.Tests
             // line breaks and backslashes are escaped in field
             var field = @"&#32;a\ \""\ \\\ \n\ \n\ \n\ \<\ \>\ \{\ \}\ \|\ \\";
 
-            Assert.Equal($"{port} {field}", ((IDotEncodable) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
+            Assert.Equal($"{port} {field}", ((IDotComplexType) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }
 
         [Fact]
@@ -86,7 +86,7 @@ namespace GiGraph.Dot.Entities.Tests
             var field = "&#32;&#32;a\\ b\\ \\ c&#32;&#32;&#32;";
             var port = $"<{field}>";
 
-            Assert.Equal($"{port} {field}", ((IDotEncodable) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
+            Assert.Equal($"{port} {field}", ((IDotComplexType) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }
     }
 }

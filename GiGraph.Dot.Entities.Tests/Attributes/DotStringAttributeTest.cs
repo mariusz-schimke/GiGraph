@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             var value = "a bcd \" \\ \r\n \r \n h ij < > { } | \\";
             var expected = "a bcd \\\" \\ \r\n \r \n h ij < > { } | &#92;";
 
-            IDotEncodable attr = new DotStringAttribute("key", value);
+            IDotComplexType attr = new DotStringAttribute("key", value);
             Assert.Equal(expected, attr.GetDotEncodedValue(_syntaxOptions, _syntaxRules));
         }
     }

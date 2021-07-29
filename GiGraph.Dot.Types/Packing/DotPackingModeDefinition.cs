@@ -7,9 +7,9 @@ namespace GiGraph.Dot.Types.Packing
     ///     Packing mode definition with two supported options: packing with specified granularity (see
     ///     <see cref="DotGranularPackingMode" />) or array packing (see <see cref="DotArrayPackingMode" />).
     /// </summary>
-    public abstract class DotPackingModeDefinition : IDotEncodable
+    public abstract class DotPackingModeDefinition : IDotComplexType
     {
-        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        string IDotComplexType.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncodedValue(options, syntaxRules);
         }

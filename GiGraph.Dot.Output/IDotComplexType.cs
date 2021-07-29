@@ -2,7 +2,10 @@
 
 namespace GiGraph.Dot.Output
 {
-    public interface IDotEncodable
+    /// <summary>
+    ///     Represents a type that can be encoded as string into a format accepted by layout engines.
+    /// </summary>
+    public interface IDotComplexType
     {
         /// <summary>
         ///     Gets a DOT-encoded value.

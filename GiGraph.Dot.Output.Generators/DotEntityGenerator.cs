@@ -80,7 +80,7 @@ namespace GiGraph.Dot.Output.Generators
         }
 
         protected virtual string EncodeIdentifier<TId>(TId id)
-            where TId : DotId, IDotEncodable
+            where TId : DotId, IDotComplexType
         {
             return id.GetDotEncodedValue(_options, _syntaxRules);
         }

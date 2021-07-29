@@ -7,9 +7,9 @@ namespace GiGraph.Dot.Types.Graphs
     ///     Represents the scaling mode of the graph. Accepts either a numeric value (<see cref="DotGraphScalingAspectRatio" />), or an
     ///     enumeration value (<see cref="DotGraphScaling" />).
     /// </summary>
-    public abstract class DotGraphScalingDefinition : IDotEncodable
+    public abstract class DotGraphScalingDefinition : IDotComplexType
     {
-        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        string IDotComplexType.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncodedValue(options, syntaxRules);
         }

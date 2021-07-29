@@ -6,9 +6,9 @@ namespace GiGraph.Dot.Types.Ranks
     /// <summary>
     ///     Rank separation (see <see cref="DotRankSeparation" /> and <see cref="DotRadialRankSeparation" />).
     /// </summary>
-    public abstract class DotRankSeparationDefinition : IDotEncodable
+    public abstract class DotRankSeparationDefinition : IDotComplexType
     {
-        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        string IDotComplexType.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncoded(options, syntaxRules);
         }

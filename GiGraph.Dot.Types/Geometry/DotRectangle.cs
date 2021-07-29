@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Types.Geometry
     ///     A rectangle.
     /// </summary>
     [DotJoinableType(separator: " ")]
-    public class DotRectangle : IDotEncodable
+    public class DotRectangle : IDotComplexType
     {
         /// <summary>
         ///     Initializes a new rectangle instance.
@@ -77,7 +77,7 @@ namespace GiGraph.Dot.Types.Geometry
         /// </summary>
         public virtual double Height { get; set; }
 
-        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        string IDotComplexType.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncodedValue(options, syntaxRules);
         }

@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Types.Identifiers
     /// <summary>
     ///     Represents element identifier.
     /// </summary>
-    public class DotId : IDotEncodable
+    public class DotId : IDotComplexType
     {
         protected readonly string _id;
 
@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Types.Identifiers
             _id = id;
         }
 
-        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        string IDotComplexType.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncodedValue(options, syntaxRules);
         }
