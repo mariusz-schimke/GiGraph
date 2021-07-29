@@ -3,7 +3,7 @@
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
         <NoWarn>1701;1702;1591</NoWarn>
-        <ApplicationIcon>..\Assets\icon.ico</ApplicationIcon>
+        <ApplicationIcon>..\..\Assets\icon.ico</ApplicationIcon>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <IncludeSymbols>true</IncludeSymbols>
