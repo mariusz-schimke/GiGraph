@@ -124,7 +124,8 @@ namespace GiGraph.Dot.Entities.Attributes.Factories
         /// <param name="value">
         ///     The value of the attribute.
         /// </param>
-        public virtual DotEscapeStringAttribute CreateEscapeString(string key, DotEscapeString value)
+        public virtual DotEscapeStringAttribute CreateEscapeString<TEscapeString>(string key, TEscapeString value)
+            where TEscapeString : DotEscapeString
         {
             return new DotEscapeStringAttribute(key, value);
         }

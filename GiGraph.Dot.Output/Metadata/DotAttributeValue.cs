@@ -9,8 +9,8 @@ namespace GiGraph.Dot.Output.Metadata
     public static class DotAttributeValue
     {
         /// <summary>
-        ///     If the specified enumeration type is marked with a <see cref="DotJoinableTypeAttribute" /> returns its individual flags joined with
-        ///     a separator specified by the attribute. If the enumeration does not contain the attribute, returns false.
+        ///     If the specified enumeration type is marked with a <see cref="DotJoinableTypeAttribute" /> returns its individual flags
+        ///     joined with a separator specified by the attribute. If the enumeration does not contain the attribute, returns false.
         /// </summary>
         /// <param name="flags">
         ///     The enumeration to convert to DOT attribute flags.
@@ -27,8 +27,8 @@ namespace GiGraph.Dot.Output.Metadata
         }
 
         /// <summary>
-        ///     If the specified enumeration type is marked with a <see cref="DotJoinableTypeAttribute" /> returns its individual flags joined with
-        ///     a separator specified by the attribute. If the enumeration does not contain the attribute, throws an exception.
+        ///     If the specified enumeration type is marked with a <see cref="DotJoinableTypeAttribute" /> returns its individual flags
+        ///     joined with a separator specified by the attribute. If the enumeration does not contain the attribute, throws an exception.
         /// </summary>
         /// <param name="flags">
         ///     The enumeration to convert to DOT attribute flags.

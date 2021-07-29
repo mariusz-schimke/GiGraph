@@ -3,7 +3,6 @@ using System.Linq.Expressions;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
-using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties
 {

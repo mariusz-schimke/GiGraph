@@ -1,6 +1,5 @@
 using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Attributes.Factories;
-using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Html.Attributes.Factories
 {
@@ -26,8 +25,8 @@ namespace GiGraph.Dot.Entities.Html.Attributes.Factories
             return new DotHtmlStringAttribute(key, value);
         }
 
-        /// <inheritdoc cref="CreateEscapeString" />
-        public override DotEscapeStringAttribute CreateEscapeString(string key, DotEscapeString value)
+        /// <inheritdoc cref="CreateEscapeString{TEscapeString}" />
+        public override DotEscapeStringAttribute CreateEscapeString<TEscapeString>(string key, TEscapeString value)
         {
             return new DotHtmlEscapeStringAttribute(key, value);
         }
