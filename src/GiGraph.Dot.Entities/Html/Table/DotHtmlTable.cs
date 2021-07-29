@@ -32,14 +32,14 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// </summary>
         public new virtual DotHtmlTableAttributes Attributes { get; }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.Id" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Id" />
         public virtual DotEscapeString Id
         {
             get => ((IDotHtmlTableAttributes) Attributes).Id;
             set => ((IDotHtmlTableAttributes) Attributes).Id = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.PortName" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.PortName" />
         public virtual string PortName
         {
             get => ((IDotHtmlTableAttributes) Attributes).PortName;
@@ -54,7 +54,7 @@ namespace GiGraph.Dot.Entities.Html.Table
             set => ((IDotHtmlTableAttributes) Attributes).HorizontalAlignment = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.VerticalAlignment" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.VerticalAlignment" />
         [DotHtmlElementAttributeKey("valign")]
         public virtual DotVerticalAlignment? VerticalAlignment
         {
@@ -62,21 +62,21 @@ namespace GiGraph.Dot.Entities.Html.Table
             set => ((IDotHtmlTableAttributes) Attributes).VerticalAlignment = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.BackgroundColor" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.BackgroundColor" />
         public virtual DotColorDefinition BackgroundColor
         {
             get => ((IDotHtmlTableAttributes) Attributes).BackgroundColor;
             set => ((IDotHtmlTableAttributes) Attributes).BackgroundColor = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.Color" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Color" />
         public virtual DotColorDefinition Color
         {
             get => ((IDotHtmlTableAttributes) Attributes).Color;
             set => ((IDotHtmlTableAttributes) Attributes).Color = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.BorderWidth" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.BorderWidth" />
         public virtual int? BorderWidth
         {
             get => ((IDotHtmlTableAttributes) Attributes).BorderWidth;
@@ -90,14 +90,14 @@ namespace GiGraph.Dot.Entities.Html.Table
             set => ((IDotHtmlTableAttributes) Attributes).CellBorderWidth = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.CellPadding" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.CellPadding" />
         public virtual int? CellPadding
         {
             get => ((IDotHtmlTableAttributes) Attributes).CellPadding;
             set => ((IDotHtmlTableAttributes) Attributes).CellPadding = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.CellSpacing" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.CellSpacing" />
         public virtual int? CellSpacing
         {
             get => ((IDotHtmlTableAttributes) Attributes).CellSpacing;
@@ -118,14 +118,14 @@ namespace GiGraph.Dot.Entities.Html.Table
             set => ((IDotHtmlTableAttributes) Attributes).ColumnFormatting = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.Sides" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Sides" />
         public virtual DotHtmlTableSides? Sides
         {
             get => ((IDotHtmlTableAttributes) Attributes).Sides;
             set => ((IDotHtmlTableAttributes) Attributes).Sides = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.FixedSize" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.FixedSize" />
         [DotHtmlElementAttributeKey("fixedsize")]
         public virtual bool? FixedSize
         {
@@ -133,56 +133,56 @@ namespace GiGraph.Dot.Entities.Html.Table
             set => ((IDotHtmlTableAttributes) Attributes).FixedSize = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.GradientFillAngle" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.GradientFillAngle" />
         public virtual int? GradientFillAngle
         {
             get => ((IDotHtmlTableAttributes) Attributes).GradientFillAngle;
             set => ((IDotHtmlTableAttributes) Attributes).GradientFillAngle = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.Width" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Width" />
         public virtual int? Width
         {
             get => ((IDotHtmlTableAttributes) Attributes).Width;
             set => ((IDotHtmlTableAttributes) Attributes).Width = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.Height" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Height" />
         public virtual int? Height
         {
             get => ((IDotHtmlTableAttributes) Attributes).Height;
             set => ((IDotHtmlTableAttributes) Attributes).Height = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.Href" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Href" />
         public virtual DotEscapeString Href
         {
             get => ((IDotHtmlTableAttributes) Attributes).Href;
             set => ((IDotHtmlTableAttributes) Attributes).Href = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.Target" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Target" />
         public virtual DotEscapeString Target
         {
             get => ((IDotHtmlTableAttributes) Attributes).Target;
             set => ((IDotHtmlTableAttributes) Attributes).Target = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.Title" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Title" />
         public virtual DotEscapeString Title
         {
             get => ((IDotHtmlTableAttributes) Attributes).Title;
             set => ((IDotHtmlTableAttributes) Attributes).Title = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.Tooltip" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Tooltip" />
         public virtual DotEscapeString Tooltip
         {
             get => ((IDotHtmlTableAttributes) Attributes).Tooltip;
             set => ((IDotHtmlTableAttributes) Attributes).Tooltip = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.Style" />
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Style" />
         public virtual DotHtmlTableStyles? Style
         {
             get => ((IDotHtmlTableAttributes) Attributes).Style;
