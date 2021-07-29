@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
     public static class DotHtmlElementAttributeValue
     {
         /// <summary>
-        ///     If the specified enumeration type is marked with a <see cref="DotHtmlElementFlagsAttribute" /> returns its individual flags
+        ///     If the specified enumeration type is marked with a <see cref="DotHtmlElementJoinableTypeAttribute" /> returns its individual flags
         ///     joined with a separator specified by the attribute. If the enumeration does not contain the attribute, returns false.
         /// </summary>
         /// <param name="flags">
@@ -23,11 +23,11 @@ namespace GiGraph.Dot.Output.Metadata.Html
         /// </param>
         public static bool TryGetAsFlags(Enum flags, out string dotFlags, bool sort = true)
         {
-            return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.TryGetAsFlags<DotHtmlElementFlagsAttribute>(flags, out dotFlags, sort);
+            return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.TryGetAsFlags<DotHtmlElementJoinableTypeAttribute>(flags, out dotFlags, sort);
         }
 
         /// <summary>
-        ///     If the specified enumeration type is marked with a <see cref="DotHtmlElementFlagsAttribute" /> returns its individual flags
+        ///     If the specified enumeration type is marked with a <see cref="DotHtmlElementJoinableTypeAttribute" /> returns its individual flags
         ///     joined with a separator specified by the attribute. If the enumeration does not contain the attribute, throws an exception.
         /// </summary>
         /// <param name="flags">
@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
         /// </param>
         public static string GetAsFlags(Enum flags, bool sort = true)
         {
-            return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.GetAsFlags<DotHtmlElementFlagsAttribute>(flags, sort);
+            return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.GetAsFlags<DotHtmlElementJoinableTypeAttribute>(flags, sort);
         }
 
         /// <summary>

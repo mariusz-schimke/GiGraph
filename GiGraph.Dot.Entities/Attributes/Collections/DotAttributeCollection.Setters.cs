@@ -622,7 +622,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, DotRectangle[] value)
         {
-            return Set(_attributeFactory.CreateRectangleArray(key, value));
+            return Set(_attributeFactory.CreateComplexArray(key, value));
         }
 
         /// <summary>
@@ -636,7 +636,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// </param>
         public virtual DotAttributeCollection Set(string key, IEnumerable<DotRectangle> value)
         {
-            return Set(_attributeFactory.CreateRectangleArray(key, value));
+            return Set(_attributeFactory.CreateComplexArray(key, value));
         }
 
         /// <summary>

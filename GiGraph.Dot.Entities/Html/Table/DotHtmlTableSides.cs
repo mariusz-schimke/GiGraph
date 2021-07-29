@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Html.Table
     ///     The sides of a border of an HTML table or cell.
     /// </summary>
     [Flags]
-    [DotHtmlElementFlags(separator: "")]
+    [DotHtmlElementJoinableType(separator: "")]
     public enum DotHtmlTableSides
     {
         /// <summary>

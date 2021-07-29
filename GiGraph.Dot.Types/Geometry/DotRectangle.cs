@@ -1,6 +1,7 @@
 using System.Drawing;
 using System.Linq;
 using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Types.Geometry
@@ -8,6 +9,7 @@ namespace GiGraph.Dot.Types.Geometry
     /// <summary>
     ///     A rectangle.
     /// </summary>
+    [DotJoinableType(separator: " ")]
     public class DotRectangle : IDotEncodable
     {
         /// <summary>

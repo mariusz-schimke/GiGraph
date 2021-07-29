@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using GiGraph.Dot.Output;
-using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Attributes.Factories
@@ -131,34 +130,6 @@ namespace GiGraph.Dot.Entities.Attributes.Factories
         }
 
         /// <summary>
-        ///     Creates a new rectangle array attribute.
-        /// </summary>
-        /// <param name="key">
-        ///     The key of the attribute.
-        /// </param>
-        /// <param name="value">
-        ///     The value of the attribute.
-        /// </param>
-        public virtual DotRectangleArrayAttribute CreateRectangleArray(string key, DotRectangle[] value)
-        {
-            return new DotRectangleArrayAttribute(key, value);
-        }
-
-        /// <summary>
-        ///     Creates a new rectangle array attribute.
-        /// </summary>
-        /// <param name="key">
-        ///     The key of the attribute.
-        /// </param>
-        /// <param name="value">
-        ///     The value of the attribute.
-        /// </param>
-        public virtual DotRectangleArrayAttribute CreateRectangleArray(string key, IEnumerable<DotRectangle> value)
-        {
-            return CreateRectangleArray(key, value?.ToArray());
-        }
-
-        /// <summary>
         ///     Creates a new enumeration attribute.
         /// </summary>
         /// <param name="key">
@@ -186,6 +157,36 @@ namespace GiGraph.Dot.Entities.Attributes.Factories
             where TComplex : IDotEncodable
         {
             return new DotComplexAttribute<TComplex>(key, value);
+        }
+
+        /// <summary>
+        ///     Creates a new complex array attribute.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute.
+        /// </param>
+        public virtual DotComplexArrayAttribute<TComplex> CreateComplexArray<TComplex>(string key, TComplex[] value)
+            where TComplex : IDotEncodable
+        {
+            return new DotComplexArrayAttribute<TComplex>(key, value);
+        }
+
+        /// <summary>
+        ///     Creates a new complex array attribute.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute.
+        /// </param>
+        /// <param name="value">
+        ///     The value of the attribute.
+        /// </param>
+        public virtual DotComplexArrayAttribute<TComplex> CreateComplexArray<TComplex>(string key, IEnumerable<TComplex> value)
+            where TComplex : IDotEncodable
+        {
+            return new DotComplexArrayAttribute<TComplex>(key, value?.ToArray());
         }
 
         /// <summary>

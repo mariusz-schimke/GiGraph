@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Output.Metadata
     public static class DotAttributeValue
     {
         /// <summary>
-        ///     If the specified enumeration type is marked with a <see cref="DotFlagsAttribute" /> returns its individual flags joined with
+        ///     If the specified enumeration type is marked with a <see cref="DotJoinableTypeAttribute" /> returns its individual flags joined with
         ///     a separator specified by the attribute. If the enumeration does not contain the attribute, returns false.
         /// </summary>
         /// <param name="flags">
@@ -23,11 +23,11 @@ namespace GiGraph.Dot.Output.Metadata
         /// </param>
         public static bool TryGetAsFlags(Enum flags, out string dotFlags, bool sort = true)
         {
-            return DotAttributeValue<DotAttributeValueAttribute>.TryGetAsFlags<DotFlagsAttribute>(flags, out dotFlags, sort);
+            return DotAttributeValue<DotAttributeValueAttribute>.TryGetAsFlags<DotJoinableTypeAttribute>(flags, out dotFlags, sort);
         }
 
         /// <summary>
-        ///     If the specified enumeration type is marked with a <see cref="DotFlagsAttribute" /> returns its individual flags joined with
+        ///     If the specified enumeration type is marked with a <see cref="DotJoinableTypeAttribute" /> returns its individual flags joined with
         ///     a separator specified by the attribute. If the enumeration does not contain the attribute, throws an exception.
         /// </summary>
         /// <param name="flags">
@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Output.Metadata
         /// </param>
         public static string GetAsFlags(Enum flags, bool sort = true)
         {
-            return DotAttributeValue<DotAttributeValueAttribute>.GetAsFlags<DotFlagsAttribute>(flags, sort);
+            return DotAttributeValue<DotAttributeValueAttribute>.GetAsFlags<DotJoinableTypeAttribute>(flags, sort);
         }
 
         /// <summary>

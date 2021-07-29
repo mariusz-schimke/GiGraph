@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Output.Metadata
         ///     The type of attribute that provides metadata for the specified flags enumeration.
         /// </typeparam>
         public static bool TryGetAsFlags<TFlagsAttribute>(Enum flags, out string dotFlags, bool sort)
-            where TFlagsAttribute : Attribute, IDotFlagsAttribute
+            where TFlagsAttribute : Attribute, IDotJoinableTypeAttribute
         {
             var enumType = flags.GetType();
             if (enumType.GetCustomAttribute<TFlagsAttribute>() is not { } attribute)
@@ -71,7 +71,7 @@ namespace GiGraph.Dot.Output.Metadata
         ///     The type of attribute that provides metadata for the specified flags enumeration.
         /// </typeparam>
         public static string GetAsFlags<TFlagsAttribute>(Enum flags, bool sort)
-            where TFlagsAttribute : Attribute, IDotFlagsAttribute
+            where TFlagsAttribute : Attribute, IDotJoinableTypeAttribute
         {
             return TryGetAsFlags<TFlagsAttribute>(flags, out var dotFlags, sort)
                 ? dotFlags

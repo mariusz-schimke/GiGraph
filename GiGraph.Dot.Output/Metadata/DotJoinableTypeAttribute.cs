@@ -3,10 +3,11 @@ using System;
 namespace GiGraph.Dot.Output.Metadata
 {
     /// <summary>
-    ///     Provides information for a flags enumeration about how to join the flags to formulate a meaningful value.
+    ///     Provides information for a flags enumeration or an array type about how to join the flags or array items to formulate a
+    ///     meaningful value.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Enum)]
-    public class DotFlagsAttribute : Attribute, IDotFlagsAttribute
+    [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Class)]
+    public class DotJoinableTypeAttribute : Attribute, IDotJoinableTypeAttribute
     {
         /// <summary>
         ///     Creates a new attribute instance.
@@ -14,12 +15,12 @@ namespace GiGraph.Dot.Output.Metadata
         /// <param name="separator">
         ///     The separator to use in order to join the flags of the enumeration.
         /// </param>
-        public DotFlagsAttribute(string separator)
+        public DotJoinableTypeAttribute(string separator)
         {
             Separator = separator;
         }
 
-        /// <inheritdoc cref="IDotFlagsAttribute.Separator" />
+        /// <inheritdoc cref="IDotJoinableTypeAttribute.Separator" />
         public virtual string Separator { get; }
     }
 }
