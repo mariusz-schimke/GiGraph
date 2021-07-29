@@ -2,6 +2,7 @@ using System;
 using GiGraph.Dot.Output.Metadata.Html;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Html.Table;
 using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Html.Table
@@ -134,20 +135,20 @@ namespace GiGraph.Dot.Entities.Html.Table
         ///     Provides general formatting information concerning the rows. At present, the only legal value is "*", which causes a
         ///     horizontal rule to appear between every row.
         /// </summary>
-        public virtual string RowFormat
+        public virtual string RowFormatting
         {
-            get => ((IDotHtmlTableAttributes) Attributes).RowFormat;
-            set => ((IDotHtmlTableAttributes) Attributes).RowFormat = value;
+            get => ((IDotHtmlTableAttributes) Attributes).RowFormatting;
+            set => ((IDotHtmlTableAttributes) Attributes).RowFormatting = value;
         }
 
         /// <summary>
         ///     Provides general formatting information concerning the columns. At present, the only legal value is "*", which causes a
         ///     vertical rule to appear between every cell in every row.
         /// </summary>
-        public virtual int? ColumnFormat
+        public virtual string ColumnFormatting
         {
-            get => ((IDotHtmlTableAttributes) Attributes).ColumnFormat;
-            set => ((IDotHtmlTableAttributes) Attributes).ColumnFormat = value;
+            get => ((IDotHtmlTableAttributes) Attributes).ColumnFormatting;
+            set => ((IDotHtmlTableAttributes) Attributes).ColumnFormatting = value;
         }
 
         /// <summary>
@@ -250,7 +251,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         ///         of style attributes. At present, the only legal attributes are "ROUNDED" and "RADIAL" for tables, and "RADIAL" for cells.
         ///         If "ROUNDED" is specified, the table will have rounded corners. This probably works best if the outmost cells have no
         ///         borders, or their <see cref="CellSpacing" /> is sufficiently large. If it is desirable to have borders around the cells,
-        ///         use HR and VR elements, or the <see cref="ColumnFormat" /> and <see cref="RowFormat" /> attributes of the table.
+        ///         use HR and VR elements, or the <see cref="ColumnFormatting" /> and <see cref="RowFormatting" /> attributes of the table.
         ///     </para>
         ///     <para>
         ///         The "RADIAL" attribute indicates a radial gradient fill. See the <see cref="BackgroundColor" /> and

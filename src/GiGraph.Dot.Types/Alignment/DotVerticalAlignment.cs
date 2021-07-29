@@ -12,21 +12,21 @@ namespace GiGraph.Dot.Types.Alignment
         // THE VALUES ARE CONTINUED BY DotHorizontalAlignment
 
         /// <summary>
-        ///     Places the label at the top of the element.
+        ///     Places the object on the top.
         /// </summary>
         [DotAttributeValue("t")]
         [DotHtmlElementAttributeValue("TOP")]
         Top = 1 << 0,
 
         /// <summary>
-        ///     Places the label at the vertical center of the element.
+        ///     Places the object in the vertical center.
         /// </summary>
         [DotAttributeValue("c")]
         [DotHtmlElementAttributeValue("MIDDLE")]
         Center = 1 << 1,
 
         /// <summary>
-        ///     Places the label at the bottom of the element.
+        ///     Places the object on the bottom.
         /// </summary>
         [DotAttributeValue("b")]
         [DotHtmlElementAttributeValue("BOTTOM")]

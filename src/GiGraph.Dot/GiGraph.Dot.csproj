@@ -9,8 +9,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="..\Assets\icon.png" Link="icon.png" />
-        <Content Include="..\LICENSE.txt" Link="LICENSE.txt" />
+        <Content Include="..\..\Assets\icon.png" Link="icon.png" />
+        <Content Include="..\..\LICENSE.txt" Link="LICENSE.txt" />
     </ItemGroup>
 
     <ItemGroup>

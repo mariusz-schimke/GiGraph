@@ -1,7 +1,7 @@
 ﻿using System;
 using GiGraph.Dot.Output.Metadata.Html;
 
-namespace GiGraph.Dot.Entities.Html.Table
+namespace GiGraph.Dot.Types.Html.Table
 {
     /// <summary>
     ///     The sides of a border of an HTML table or cell.

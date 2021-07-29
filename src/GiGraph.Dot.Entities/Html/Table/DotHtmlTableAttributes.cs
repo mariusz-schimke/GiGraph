@@ -6,6 +6,7 @@ using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Html.Table;
 using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Html.Table
@@ -104,19 +105,19 @@ namespace GiGraph.Dot.Entities.Html.Table
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.RowFormat" />
+        /// <inheritdoc cref="IDotHtmlTableAttributes.RowFormatting" />
         [DotAttributeKey("rows")]
-        string IDotHtmlTableAttributes.RowFormat
+        string IDotHtmlTableAttributes.RowFormatting
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.ColumnFormat" />
+        /// <inheritdoc cref="IDotHtmlTableAttributes.ColumnFormatting" />
         [DotAttributeKey("columns")]
-        int? IDotHtmlTableAttributes.ColumnFormat
+        string IDotHtmlTableAttributes.ColumnFormatting
         {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 

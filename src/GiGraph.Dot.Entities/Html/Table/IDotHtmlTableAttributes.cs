@@ -1,5 +1,6 @@
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Html.Table;
 using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Html.Table
@@ -46,8 +47,8 @@ namespace GiGraph.Dot.Entities.Html.Table
 
         /// <summary>
         ///     Specifies the width of the border around the object in points. A value of zero indicates no border. The default is 1. The
-        ///     maximum value is 255. If set in, and <see cref="CellBorderWidth" /> is not set, this value is also used for all cells in the
-        ///     table. It can be overridden by a corresponding tag in a cell.
+        ///     maximum value is 255. If <see cref="CellBorderWidth" /> is not set, this value is also used for all cells in the table. It
+        ///     can be overridden by a corresponding attribute in a cell.
         /// </summary>
         int? BorderWidth { get; set; }
 
@@ -71,13 +72,13 @@ namespace GiGraph.Dot.Entities.Html.Table
         ///     Provides general formatting information concerning the rows. At present, the only legal value is "*", which causes a
         ///     horizontal rule to appear between every row.
         /// </summary>
-        string RowFormat { get; set; }
+        string RowFormatting { get; set; }
 
         /// <summary>
         ///     Provides general formatting information concerning the columns. At present, the only legal value is "*", which causes a
         ///     vertical rule to appear between every cell in every row.
         /// </summary>
-        int? ColumnFormat { get; set; }
+        string ColumnFormatting { get; set; }
 
         /// <summary>
         ///     Specifies which sides of a border in a cell or table should be drawn, if a border is drawn. By default, all sides are drawn.
@@ -86,7 +87,9 @@ namespace GiGraph.Dot.Entities.Html.Table
         DotHtmlTableSides? Sides { get; set; }
 
         /// <summary>
-        ///     Specifies whether the values given by the <see cref="Width" /> and <see cref="Height" /> attributes are enforced.
+        ///     Specifies whether the values given by the <see cref="Width" /> and <see cref="Height" /> attributes are enforced. False
+        ///     allows the object to grow so that all its contents will fit (default). True fixes the object size to its given
+        ///     <see cref="Width" /> and <see cref="Height" />. Both of these attributes must be supplied.
         /// </summary>
         bool? FixedSize { get; set; }
 
@@ -138,11 +141,10 @@ namespace GiGraph.Dot.Entities.Html.Table
 
         /// <summary>
         ///     <para>
-        ///         Specifies style characteristics of the table or cell. Style characteristics are given as a comma or space separated list
-        ///         of style attributes. At present, the only legal attributes are "ROUNDED" and "RADIAL" for tables, and "RADIAL" for cells.
+        ///         Specifies style characteristics of the table or cell. At present, the only legal attributes are "ROUNDED" and "RADIAL" for tables, and "RADIAL" for cells.
         ///         If "ROUNDED" is specified, the table will have rounded corners. This probably works best if the outmost cells have no
         ///         borders, or their <see cref="CellSpacing" /> is sufficiently large. If it is desirable to have borders around the cells,
-        ///         use HR and VR elements, or the <see cref="ColumnFormat" /> and <see cref="RowFormat" /> attributes of the table.
+        ///         use HR and VR elements, or the <see cref="ColumnFormatting" /> and <see cref="RowFormatting" /> attributes of the table.
         ///     </para>
         ///     <para>
         ///         The "RADIAL" attribute indicates a radial gradient fill. See the <see cref="BackgroundColor" /> and
