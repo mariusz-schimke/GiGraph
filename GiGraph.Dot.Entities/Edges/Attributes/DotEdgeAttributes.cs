@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Factories;
 using GiGraph.Dot.Entities.Attributes.Properties.Common;
@@ -219,9 +218,15 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual int? MinLength
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0
-                ? throw new ArgumentOutOfRangeException(nameof(MinLength), v!.Value, "Minimum length must be greater than or equal to 0.")
-                : new DotIntAttribute(k, v!.Value));
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(MinLength), value, "Minimum length must be greater than or equal to 0.");
+                }
+
+                SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            }
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.ArrowheadScale" />

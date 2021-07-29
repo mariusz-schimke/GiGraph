@@ -187,7 +187,7 @@ namespace GiGraph.Dot.Entities.Attributes.Factories
         public virtual DotComplexTypeArrayAttribute<TComplex> CreateComplexArray<TComplex>(string key, IEnumerable<TComplex> value)
             where TComplex : IDotComplexType
         {
-            return new DotComplexTypeArrayAttribute<TComplex>(key, value?.ToArray());
+            return CreateComplexArray(key, value?.ToArray());
         }
 
         /// <summary>

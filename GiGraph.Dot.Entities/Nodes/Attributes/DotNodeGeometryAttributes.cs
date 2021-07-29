@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -28,9 +27,15 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual int? Sides
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value, (k, v) => v!.Value < 0
-                ? throw new ArgumentOutOfRangeException(nameof(Sides), v!.Value, "The number of sides must be greater than or equal to 0.")
-                : new DotIntAttribute(k, v!.Value));
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Sides), value, "The number of sides must be greater than or equal to 0.");
+                }
+
+                SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            }
         }
 
         /// <inheritdoc cref="IDotNodeGeometryAttributes.Regular" />
