@@ -1,33 +1,28 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Entities.Html.Table.Attributes;
+using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Html.Attributes.Factories;
 
 namespace GiGraph.Dot.Entities.Html.Table
 {
     /// <summary>
     ///     An HTML table row (&lt;tr&gt;).
     /// </summary>
-    public class DotHtmlTableRow : DotHtmlElement, IDotHtmlTableRowAttributes
+    public class DotHtmlTableRow : DotHtmlElement
     {
         /// <summary>
         ///     Initializes a new table row instance.
         /// </summary>
         public DotHtmlTableRow()
-            : this(new DotHtmlTableRowAttributes())
+            : this(new DotAttributeCollection(DotHtmlAttributeFactory.Instance))
         {
         }
 
-        protected DotHtmlTableRow(DotHtmlTableRowAttributes attributes)
-            : base("tr", attributes.Collection)
+        protected DotHtmlTableRow(DotAttributeCollection attributes)
+            : base("tr", attributes)
         {
-            Attributes = attributes;
         }
-
-        /// <summary>
-        ///     The attributes of the table row.
-        /// </summary>
-        public new virtual DotHtmlTableRowAttributes Attributes { get; }
 
         /// <summary>
         ///     Adds a cell to the current row.

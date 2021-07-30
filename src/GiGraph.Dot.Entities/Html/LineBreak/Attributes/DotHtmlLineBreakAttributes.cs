@@ -3,13 +3,12 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
-using GiGraph.Dot.Entities.Html.Table.Attributes;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Html.LineBreak.Attributes
 {
-    public class DotHtmlLineBreakAttributes : DotHtmlElementRootAttributes<IDotHtmlTableRowAttributes>, IDotHtmlLineBreakAttributes
+    public class DotHtmlLineBreakAttributes : DotHtmlElementRootAttributes<IDotHtmlLineBreakAttributes>, IDotHtmlLineBreakAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup HtmlLineBreakAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlLineBreakAttributes, IDotHtmlLineBreakAttributes>().Build();
 
