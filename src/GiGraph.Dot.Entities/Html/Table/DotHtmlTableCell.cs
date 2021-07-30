@@ -72,11 +72,11 @@ namespace GiGraph.Dot.Entities.Html.Table
             set => ((IDotHtmlTableCellAttributes) Attributes).BackgroundColor = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Color" />
-        public virtual DotColor Color
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.BorderColor" />
+        public virtual DotColor BorderColor
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).Color;
-            set => ((IDotHtmlTableCellAttributes) Attributes).Color = value;
+            get => ((IDotHtmlTableCellAttributes) Attributes).BorderColor;
+            set => ((IDotHtmlTableCellAttributes) Attributes).BorderColor = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.BorderWidth" />

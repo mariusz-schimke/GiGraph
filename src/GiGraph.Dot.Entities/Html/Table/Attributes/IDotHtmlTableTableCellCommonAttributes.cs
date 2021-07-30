@@ -34,10 +34,10 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
         DotColorDefinition BackgroundColor { get; set; }
 
         /// <summary>
-        ///     Sets the border color of the table. It can be overridden by the same attribute in descendents. By default, the border color
-        ///     is determined by the color attribute of the corresponding node, edge or graph.
+        ///     Sets the border color of the table or cell. It can be overridden by the same attribute in descendents. By default, the border
+        ///     color is determined by the corresponding node, edge or graph.
         /// </summary>
-        DotColor Color { get; set; }
+        DotColor BorderColor { get; set; }
 
         /// <summary>
         ///     Specifies the width of the border around the object in points. A value of zero indicates no border. The default is 1. The
