@@ -27,6 +27,20 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// </summary>
         public new virtual DotHtmlFontAttributes Attributes { get; }
 
+        /// <inheritdoc cref="IDotHtmlFontAttributes.Name" />
+        public virtual string Name
+        {
+            get => ((IDotHtmlFontAttributes) Attributes).Name;
+            set => ((IDotHtmlFontAttributes) Attributes).Name = value;
+        }
+
+        /// <inheritdoc cref="IDotHtmlFontAttributes.Size" />
+        public virtual int? Size
+        {
+            get => ((IDotHtmlFontAttributes) Attributes).Size;
+            set => ((IDotHtmlFontAttributes) Attributes).Size = value;
+        }
+
         /// <inheritdoc cref="IDotHtmlFontAttributes.Color" />
         public virtual DotColor Color
         {

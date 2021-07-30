@@ -22,6 +22,20 @@ namespace GiGraph.Dot.Entities.Html.Font.Attributes
         {
         }
 
+        [DotAttributeKey("face")]
+        string IDotHtmlFontAttributes.Name
+        {
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey("point-size")]
+        int? IDotHtmlFontAttributes.Size
+        {
+            get => GetValueAsInt(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
         [DotAttributeKey("color")]
         DotColor IDotHtmlFontAttributes.Color
         {
