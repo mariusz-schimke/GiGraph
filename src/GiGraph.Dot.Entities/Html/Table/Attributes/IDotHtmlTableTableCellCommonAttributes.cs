@@ -41,8 +41,8 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
 
         /// <summary>
         ///     Specifies the width of the border around the object in points. A value of zero indicates no border. The default is 1. The
-        ///     maximum value is 255. If <see cref="CellBorderWidth" /> is not set, this value is also used for all cells in the table. It
-        ///     can be overridden by a corresponding attribute in a cell.
+        ///     maximum value is 255. If set in a table, and <see cref="IDotHtmlTableAttributes.CellBorderWidth" /> is not set, this value is
+        ///     also used for all cells in the table. It can be overridden by a corresponding attribute in a cell.
         /// </summary>
         int? BorderWidth { get; set; }
 
@@ -117,17 +117,7 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
         DotEscapeString Tooltip { get; set; }
 
         /// <summary>
-        ///     <para>
-        ///         Specifies style characteristics of the table or cell. At present, the only legal attributes are "ROUNDED" and "RADIAL"
-        ///         for tables, and "RADIAL" for cells. If "ROUNDED" is specified, the table will have rounded corners. This probably works
-        ///         best if the outmost cells have no borders, or their <see cref="CellSpacing" /> is sufficiently large. If it is desirable
-        ///         to have borders around the cells, use HR and VR elements, or the <see cref="ColumnFormatting" /> and
-        ///         <see cref="RowFormatting" /> attributes of the table.
-        ///     </para>
-        ///     <para>
-        ///         The "RADIAL" attribute indicates a radial gradient fill. See the <see cref="BackgroundColor" /> and
-        ///         <see cref="GradientFillAngle" /> attributes.
-        ///     </para>
+        ///     Specifies style characteristics of the table or cell.
         /// </summary>
         DotHtmlTableStyles? Style { get; set; }
     }

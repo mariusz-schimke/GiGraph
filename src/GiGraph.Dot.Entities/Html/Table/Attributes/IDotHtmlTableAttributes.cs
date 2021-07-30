@@ -1,4 +1,5 @@
 using GiGraph.Dot.Types.Alignment;
+using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes
 {
@@ -19,14 +20,14 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
         int? CellBorderWidth { get; set; }
 
         /// <summary>
-        ///     Provides general formatting information concerning the rows. At present, the only legal value is "*", which causes a
-        ///     horizontal rule to appear between every row.
+        ///     Provides general formatting information concerning the rows. See <see cref="DotHtmlTableRowFormat" /> for accepted
+        ///     values.
         /// </summary>
         string RowFormatting { get; set; }
 
         /// <summary>
-        ///     Provides general formatting information concerning the columns. At present, the only legal value is "*", which causes a
-        ///     vertical rule to appear between every cell in every row.
+        ///     Provides general formatting information concerning the columns. See <see cref="DotHtmlTableColumnFormat" /> for accepted
+        ///     values.
         /// </summary>
         string ColumnFormatting { get; set; }
     }
