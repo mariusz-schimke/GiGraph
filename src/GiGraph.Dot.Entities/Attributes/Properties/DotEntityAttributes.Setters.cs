@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Types.Text;
 
@@ -49,26 +48,6 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             where TEnum : Enum
         {
             _attributes.SetOrRemoveEnum(GetKey(propertyAccessor), hasValue, value);
-        }
-
-        protected void SetOrRemoveBorderWidth(MethodBase propertyAccessor, double? value, [CallerMemberName] string propertyName = null)
-        {
-            if (value < 0.0)
-            {
-                throw new ArgumentOutOfRangeException(propertyName, value, "Border width must be greater than or equal to 0.");
-            }
-
-            _attributes.SetOrRemove(GetKey(propertyAccessor), value);
-        }
-
-        protected void SetOrRemovePeripheries(MethodBase propertyAccessor, int? value, [CallerMemberName] string propertyName = null)
-        {
-            if (value < 0)
-            {
-                throw new ArgumentOutOfRangeException(propertyName, value, "The number of peripheries must be greater than or equal to 0.");
-            }
-
-            _attributes.SetOrRemove(GetKey(propertyAccessor), value);
         }
     }
 }

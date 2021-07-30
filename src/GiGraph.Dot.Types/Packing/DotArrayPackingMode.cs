@@ -1,4 +1,3 @@
-using System;
 using System.Text;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
@@ -10,8 +9,6 @@ namespace GiGraph.Dot.Types.Packing
     /// </summary>
     public class DotArrayPackingMode : DotPackingModeDefinition
     {
-        protected int? _rankCount;
-
         /// <summary>
         ///     Creates a new array packing mode instance.
         /// </summary>
@@ -58,13 +55,7 @@ namespace GiGraph.Dot.Types.Packing
         ///     Gets or sets the number of columns for row-major component ordering or the number of rows for column-major component ordering
         ///     (see <see cref="DotArrayPackingOptions.ColumnMajorOrder" />).
         /// </summary>
-        public virtual int? RankCount
-        {
-            get => _rankCount;
-            set => _rankCount = value is not < 0
-                ? value
-                : throw new ArgumentOutOfRangeException(nameof(RankCount), RankCount, "The number of ranks must be greater than or equal to 0.");
-        }
+        public virtual int? RankCount { get; set; }
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {

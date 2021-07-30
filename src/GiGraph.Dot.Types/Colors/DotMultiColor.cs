@@ -40,18 +40,7 @@ namespace GiGraph.Dot.Types.Colors
         /// </param>
         public DotMultiColor(params DotColor[] colors)
         {
-            if (colors is null)
-            {
-                throw new ArgumentNullException(nameof(colors), "Color collection must not be null.");
-            }
-
-            var totalWeight = colors.Sum(c => c.GetWeight().GetValueOrDefault(0));
-            if (totalWeight > 1)
-            {
-                throw new ArgumentException("The weights of the colors must sum to at most 1 for a color list.", nameof(colors));
-            }
-
-            Colors = colors;
+            Colors = colors ?? throw new ArgumentNullException(nameof(colors), "Color collection must not be null.");
         }
 
         /// <summary>

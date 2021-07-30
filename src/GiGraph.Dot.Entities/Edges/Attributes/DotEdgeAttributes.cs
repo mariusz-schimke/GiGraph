@@ -178,15 +178,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual double? Width
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set
-            {
-                if (value < 0.0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Width), value, "Width must be greater than or equal to 0.");
-                }
-
-                SetOrRemove(MethodBase.GetCurrentMethod(), value);
-            }
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Weight" />
@@ -194,15 +186,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual double? Weight
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set
-            {
-                if (value < 0.0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Weight), value, "Weight must be greater than or equal to 0.");
-                }
-
-                SetOrRemove(MethodBase.GetCurrentMethod(), value);
-            }
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Length" />
@@ -218,15 +202,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual int? MinLength
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(MinLength), value, "Minimum length must be greater than or equal to 0.");
-                }
-
-                SetOrRemove(MethodBase.GetCurrentMethod(), value);
-            }
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.ArrowheadScale" />
@@ -234,15 +210,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual double? ArrowheadScale
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set
-            {
-                if (value < 0.0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(ArrowheadScale), value, "Arrowhead scale must be greater than or equal to 0.");
-                }
-
-                SetOrRemove(MethodBase.GetCurrentMethod(), value);
-            }
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Directions" />

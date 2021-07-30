@@ -78,15 +78,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual double? NodeSeparation
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set
-            {
-                if (value < 0.0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(NodeSeparation), value, "Node separation must be greater than or equal to 0.");
-                }
-
-                SetOrRemove(MethodBase.GetCurrentMethod(), value);
-            }
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphLayoutAttributes.RankSeparation" />

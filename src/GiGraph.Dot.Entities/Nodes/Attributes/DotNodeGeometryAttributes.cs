@@ -27,15 +27,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual int? Sides
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Sides), value, "The number of sides must be greater than or equal to 0.");
-                }
-
-                SetOrRemove(MethodBase.GetCurrentMethod(), value);
-            }
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotNodeGeometryAttributes.Regular" />
@@ -51,7 +43,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual int? Peripheries
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotNodeGeometryAttributes.Rotation" />

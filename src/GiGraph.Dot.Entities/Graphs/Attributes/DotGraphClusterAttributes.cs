@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual double? BorderWidth
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveBorderWidth(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor" />

@@ -79,15 +79,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual double? Dpi
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set
-            {
-                if (value < 0.0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Dpi), value, "DPI must be greater than or equal to 0.");
-                }
-
-                SetOrRemove(MethodBase.GetCurrentMethod(), value);
-            }
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Resolution" />
@@ -95,15 +87,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public virtual double? Resolution
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set
-            {
-                if (value < 0.0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Resolution), value, "Resolution must be greater than or equal to 0.");
-                }
-
-                SetOrRemove(MethodBase.GetCurrentMethod(), value);
-            }
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotGraphCanvasAttributes.Size" />

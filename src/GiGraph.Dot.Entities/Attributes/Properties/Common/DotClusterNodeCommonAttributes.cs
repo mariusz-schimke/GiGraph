@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual double? BorderWidth
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemoveBorderWidth(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Tooltip)]

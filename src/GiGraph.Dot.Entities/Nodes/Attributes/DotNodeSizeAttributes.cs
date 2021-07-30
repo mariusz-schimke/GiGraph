@@ -28,15 +28,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual double? Width
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Width), value, "The width must be greater than or equal to 0.");
-                }
-
-                SetOrRemove(MethodBase.GetCurrentMethod(), value);
-            }
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotNodeSizeAttributes.Height" />
@@ -44,15 +36,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         public virtual double? Height
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Height), value, "The height must be greater than or equal to 0.");
-                }
-
-                SetOrRemove(MethodBase.GetCurrentMethod(), value);
-            }
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotNodeSizeAttributes.Mode" />

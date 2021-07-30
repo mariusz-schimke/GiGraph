@@ -175,7 +175,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         public virtual int? Peripheries
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemovePeripheries(MethodBase.GetCurrentMethod(), value);
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         protected override void SetFillStyle(DotStyles fillStyle)

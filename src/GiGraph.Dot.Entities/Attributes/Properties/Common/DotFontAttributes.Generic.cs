@@ -29,15 +29,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public virtual double? Size
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set
-            {
-                if (value < 0.0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Size), value, "Font size must be greater than or equal to 0.");
-                }
-
-                SetOrRemove(MethodBase.GetCurrentMethod(), value);
-            }
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotFontAttributes.Color" />

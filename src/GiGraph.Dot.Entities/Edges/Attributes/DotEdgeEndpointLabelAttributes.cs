@@ -37,15 +37,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual double? Distance
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set
-            {
-                if (value < 0.0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Distance), value, "Endpoint label distance must be greater than or equal to 0.");
-                }
-
-                SetOrRemove(MethodBase.GetCurrentMethod(), value);
-            }
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointLabelAttributes.Angle" />
