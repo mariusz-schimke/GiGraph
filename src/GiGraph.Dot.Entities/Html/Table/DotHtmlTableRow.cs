@@ -101,5 +101,16 @@ namespace GiGraph.Dot.Entities.Html.Table
             init?.Invoke(cell);
             return cell;
         }
+
+        /// <summary>
+        ///     Adds the specified cells to the current row.
+        /// </summary>
+        /// <param name="init">
+        ///     A cell initializer delegate.
+        /// </param>
+        public virtual DotHtmlTableCell AddCell(Action<DotHtmlTableCell> init = null)
+        {
+            return AddCell(new DotHtmlTableCell(), init);
+        }
     }
 }

@@ -4,6 +4,7 @@ namespace GiGraph.Dot.Output.Options
 {
     public partial class DotSyntaxRules
     {
+        // TODO: adjust escapers
         public class HtmlRules
         {
             /// <summary>
