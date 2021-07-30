@@ -3,6 +3,9 @@ using GiGraph.Dot.Types.Mappers;
 
 namespace GiGraph.Dot.Types.Labels
 {
+    // TODO: Change from class to record?
+    // Should properties remain settable then?
+
     /// <summary>
     ///     Label alignment properties.
     /// </summary>
@@ -37,11 +40,8 @@ namespace GiGraph.Dot.Types.Labels
         ///     The alignment to set.
         /// </param>
         public DotLabelAlignment(DotAlignment alignment)
-            : this(
-                DotPartialEnumMapper.ToPartial<DotAlignment, DotHorizontalAlignment>(alignment),
-                DotPartialEnumMapper.ToPartial<DotAlignment, DotVerticalAlignment>(alignment)
-            )
         {
+            Set(alignment);
         }
 
         /// <summary>
@@ -53,5 +53,17 @@ namespace GiGraph.Dot.Types.Labels
         ///     Vertical label alignment.
         /// </summary>
         public virtual DotVerticalAlignment? Vertical { get; set; }
+
+        /// <summary>
+        ///     Sets horizontal and vertical alignment.
+        /// </summary>
+        /// <param name="alignment">
+        ///     The alignment to set.
+        /// </param>
+        public virtual void Set(DotAlignment alignment)
+        {
+            Horizontal = DotPartialEnumMapper.ToPartial<DotAlignment, DotHorizontalAlignment>(alignment);
+            Vertical = DotPartialEnumMapper.ToPartial<DotAlignment, DotVerticalAlignment>(alignment);
+        }
     }
 }
