@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
+using GiGraph.Dot.Entities.Html.Text;
 
 namespace GiGraph.Dot.Entities.Html.Table
 {

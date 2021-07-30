@@ -6,7 +6,7 @@ using GiGraph.Dot.Output.TextEscaping;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Text;
 
-namespace GiGraph.Dot.Entities.Html
+namespace GiGraph.Dot.Entities.Html.Text
 {
     /// <summary>
     ///     Text content of an HTML element.
