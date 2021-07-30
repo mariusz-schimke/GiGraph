@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Html.Table
     /// <summary>
     ///     An HTML table row.
     /// </summary>
-    public class DotHtmlTableRow : DotHtmlElement
+    public class DotHtmlTableRow : DotHtmlElement, IDotHtmlTableRowAttributes
     {
         /// <summary>
         ///     Initializes a new table row instance.
@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Html.Table
             {
                 Children =
                 {
-                    DotHtmlEntityCollection.FromMultilineText(text)
+                    DotHtmlTextContent.FromMultilineText(text)
                 }
             };
 

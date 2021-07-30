@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Html.LineBreak;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.TextEscaping;
 using GiGraph.Dot.Types.Text;
@@ -50,51 +51,6 @@ namespace GiGraph.Dot.Entities.Html
         public virtual DotHtml ToHtml()
         {
             return ToHtml(DotSyntaxOptions.Default, DotSyntaxRules.Default);
-        }
-
-        /// <summary>
-        ///     Creates a collection of entities to represent the specified text as HTML. All line breaks will be replaced with &lt;br /&gt;
-        ///     tags.
-        /// </summary>
-        /// <param name="text">
-        ///     The input text.
-        /// </param>
-        /// <param name="lineBreak">
-        ///     The line break sequences to replace with HTML line break tags (see <see cref="DotNewLine" />).
-        /// </param>
-        public static DotHtmlEntityCollection FromMultilineText(string text, params string[] lineBreak)
-        {
-            if (text is null)
-            {
-                return new DotHtmlEntityCollection();
-            }
-
-            var result = new List<IDotHtmlEntity>();
-            var lines = text.Split(lineBreak, StringSplitOptions.None);
-
-            for (var i = 0; i < lines.Length; i++)
-            {
-                if (i > 0)
-                {
-                    result.Add(new DotHtmlLineBreak());
-                }
-
-                result.Add(new DotHtmlTextContent(lines[i]));
-            }
-
-            return new DotHtmlEntityCollection(result);
-        }
-
-        /// <summary>
-        ///     Creates a collection of entities to represent the specified text as HTML. All line breaks will be replaced with &lt;br /&gt;
-        ///     tags.
-        /// </summary>
-        /// <param name="text">
-        ///     The input text.
-        /// </param>
-        public static DotHtmlEntityCollection FromMultilineText(string text)
-        {
-            return FromMultilineText(text, DotNewLine.Windows, DotNewLine.Unix);
         }
     }
 }
