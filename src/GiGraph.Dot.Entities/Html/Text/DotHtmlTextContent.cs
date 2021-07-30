@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Html.Text
         public virtual string Text { get; set; }
 
         /// <inheritdoc cref="IDotHtmlEntity.ToHtml(GiGraph.Dot.Output.Options.DotSyntaxOptions,GiGraph.Dot.Output.Options.DotSyntaxRules)" />
-        public override DotHtml ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        public override DotHtmlString ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return syntaxRules.Attributes.Html.ElementTextContentEscaper.Escape(Text);
         }

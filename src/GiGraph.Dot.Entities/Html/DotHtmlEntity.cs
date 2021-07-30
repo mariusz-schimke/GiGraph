@@ -9,10 +9,10 @@ namespace GiGraph.Dot.Entities.Html
     public abstract class DotHtmlEntity : IDotHtmlEntity
     {
         /// <inheritdoc cref="IDotHtmlEntity.ToHtml(GiGraph.Dot.Output.Options.DotSyntaxOptions,GiGraph.Dot.Output.Options.DotSyntaxRules)" />
-        public abstract DotHtml ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
+        public abstract DotHtmlString ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 
         /// <inheritdoc cref="IDotHtmlEntity.ToHtml()" />
-        public virtual DotHtml ToHtml()
+        public virtual DotHtmlString ToHtml()
         {
             return ToHtml(DotSyntaxOptions.Default, DotSyntaxRules.Default);
         }

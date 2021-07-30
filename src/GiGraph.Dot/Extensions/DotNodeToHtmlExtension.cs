@@ -22,9 +22,9 @@ namespace GiGraph.Dot.Extensions
         /// </param>
         /// <param name="html">
         ///     The HTML text to assign to node label. Pass <see cref="string" /> to convert it implicitly to the required
-        ///     <see cref="DotHtml" /> type.
+        ///     <see cref="DotHtmlString" /> type.
         /// </param>
-        public static void ToHtmlNode(this DotNode node, DotHtml html)
+        public static void ToHtmlNode(this DotNode node, DotHtmlString html)
         {
             node.Attributes.Shape = DotNodeShape.Plain;
             node.Attributes.Label = html;

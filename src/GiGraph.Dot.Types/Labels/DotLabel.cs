@@ -90,9 +90,9 @@ namespace GiGraph.Dot.Types.Labels
             return (DotRecordLabel) record;
         }
 
-        public static implicit operator DotLabel(DotHtml record)
+        public static implicit operator DotLabel(DotHtmlString html)
         {
-            return (DotHtmlLabel) record;
+            return (DotHtmlLabel) html;
         }
     }
 }

@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Html
         public virtual DotAttributeCollection Attributes { get; }
 
         /// <inheritdoc />
-        public override DotHtml ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        public override DotHtmlString ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var result = new StringBuilder();
 

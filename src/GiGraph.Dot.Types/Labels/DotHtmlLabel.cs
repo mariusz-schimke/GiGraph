@@ -19,9 +19,9 @@ namespace GiGraph.Dot.Types.Labels
         ///     <see href="http://www.graphviz.org/doc/info/shapes.html#html">
         ///         documentation
         ///     </see>
-        ///     . Pass <see cref="string" /> to convert it implicitly to the required <see cref="DotHtml" /> type.
+        ///     . Pass <see cref="string" /> to convert it implicitly to the required <see cref="DotHtmlString" /> type.
         /// </param>
-        public DotHtmlLabel(DotHtml html)
+        public DotHtmlLabel(DotHtmlString html)
             : base(html)
         {
         }
@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Types.Labels
             return html is not null ? new DotHtmlLabel(html) : null;
         }
 
-        public static implicit operator DotHtmlLabel(DotHtml html)
+        public static implicit operator DotHtmlLabel(DotHtmlString html)
         {
             return html is not null ? new DotHtmlLabel(html) : null;
         }
