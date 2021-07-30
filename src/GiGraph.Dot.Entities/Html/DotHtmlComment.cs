@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Text;
 
@@ -10,6 +8,8 @@ namespace GiGraph.Dot.Entities.Html
     /// </summary>
     public class DotHtmlComment : DotHtmlEntity
     {
+        protected readonly string _text;
+
         /// <summary>
         ///     Creates a new HTML comment tag instance.
         /// </summary>
@@ -18,23 +18,18 @@ namespace GiGraph.Dot.Entities.Html
         /// </param>
         public DotHtmlComment(string text)
         {
-            Text = text;
+            _text = text;
         }
 
-        /// <summary>
-        ///     The comment text.
-        /// </summary>
-        public virtual string Text { get; set; }
+        public override string ToString()
+        {
+            return _text;
+        }
 
         public override DotHtmlString ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             const string tagName = "--";
-            return $"<!{tagName}{syntaxRules.Attributes.Html.ElementTextContentEscaper.Escape(Text)}{tagName}>";
-        }
-
-        protected virtual IEnumerable<IDotHtmlEntity> GetChildren()
-        {
-            return Enumerable.Empty<IDotHtmlEntity>();
+            return $"<!{tagName}{syntaxRules.Attributes.Html.CommentTextEscaper.Escape(_text)}{tagName}>";
         }
     }
 }

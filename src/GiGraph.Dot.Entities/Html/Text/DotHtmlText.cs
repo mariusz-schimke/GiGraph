@@ -9,30 +9,32 @@ using GiGraph.Dot.Types.Text;
 namespace GiGraph.Dot.Entities.Html.Text
 {
     /// <summary>
-    ///     Text content of an HTML element.
+    ///     Textual content of an HTML element.
     /// </summary>
-    public class DotHtmlTextContent : DotHtmlEntity
+    public class DotHtmlText : DotHtmlEntity
     {
+        protected readonly string _text;
+
         /// <summary>
         ///     Initializes a new HTML text instance.
         /// </summary>
         /// <param name="text">
         ///     The text to initialize the instance with.
         /// </param>
-        public DotHtmlTextContent(string text)
+        public DotHtmlText(string text)
         {
-            Text = text;
+            _text = text;
         }
 
-        /// <summary>
-        ///     Gets or sets the text.
-        /// </summary>
-        public virtual string Text { get; set; }
+        public override string ToString()
+        {
+            return _text;
+        }
 
         /// <inheritdoc cref="IDotHtmlEntity.ToHtml(GiGraph.Dot.Output.Options.DotSyntaxOptions,GiGraph.Dot.Output.Options.DotSyntaxRules)" />
         public override DotHtmlString ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return syntaxRules.Attributes.Html.ElementTextContentEscaper.Escape(Text);
+            return syntaxRules.Attributes.Html.ElementTextContentEscaper.Escape(_text);
         }
 
         /// <summary>
@@ -65,7 +67,7 @@ namespace GiGraph.Dot.Entities.Html.Text
                     result.Add(new DotHtmlLineBreak(horizontalAlignment));
                 }
 
-                result.Add(new DotHtmlTextContent(lines[i]));
+                result.Add(new DotHtmlText(lines[i]));
             }
 
             return new DotHtmlEntityCollection(result);

@@ -21,6 +21,11 @@ namespace GiGraph.Dot.Output.Options
             ///     A text escaper to use for textual content of HTML elements.
             /// </summary>
             public virtual IDotTextEscaper ElementTextContentEscaper { get; set; } = DotTextEscapingPipeline.ForHtmlElementTextContent();
+
+            /// <summary>
+            ///     A text escaper to use for the textual content of HTML comment tags.
+            /// </summary>
+            public virtual IDotTextEscaper CommentTextEscaper { get; set; } = DotTextEscapingPipeline.ForHtmlCommentText();
         }
     }
 }

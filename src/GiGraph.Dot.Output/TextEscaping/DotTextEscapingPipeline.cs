@@ -101,6 +101,17 @@ namespace GiGraph.Dot.Output.TextEscaping
         }
 
         /// <summary>
+        ///     Creates a new pipeline that escapes HTML comment tag text.
+        /// </summary>
+        public static DotTextEscapingPipeline ForHtmlCommentText()
+        {
+            return new DotTextEscapingPipeline
+            (
+                new DotHtmlTextEscaper()
+            );
+        }
+
+        /// <summary>
         ///     Creates a new pipeline that escapes HTML attribute value of the string type.
         /// </summary>
         public static DotTextEscapingPipeline ForHtmlAttributeStringValue()
