@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         protected virtual (DotEntityAttributes EntityAttributes, PropertyInfo Property)[][] GetPathsOfEntityAttributeProperties()
         {
             var result = new List<Tuple<DotEntityAttributes, PropertyInfo>[]>();
-            GetPathsOfEntityAttributeProperties(result, new Tuple<DotEntityAttributes, PropertyInfo>[0]);
+            GetPathsOfEntityAttributeProperties(result, Array.Empty<Tuple<DotEntityAttributes, PropertyInfo>>());
 
             return result.Select(item =>
                 item.Select(x => x.ToValueTuple()).ToArray()

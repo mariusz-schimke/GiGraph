@@ -88,7 +88,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
 
             foreach (var property in properties)
             {
-                if (!(property.GetCustomAttribute<DotAttributeKeyAttribute>() is { } attribute))
+                if (property.GetCustomAttribute<DotAttributeKeyAttribute>() is not { } attribute)
                 {
                     continue;
                 }

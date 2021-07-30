@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Properties;
@@ -22,9 +23,9 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             // so if a property is not exposed through interface, it should throw an exception on accessing
             var elementsMetadata = DotElementAttributesMetadataFactory.Create(true);
 
-            foreach (var elementMetadata in elementsMetadata)
+            foreach (var (element, attributes) in elementsMetadata)
             {
-                object result = elementMetadata.Element switch
+                object result = element switch
                 {
                     DotCompatibleElements.Graph => new DotGraph().Attributes,
                     DotCompatibleElements.Graph | DotCompatibleElements.Cluster => new DotGraph().Clusters.Attributes,
@@ -32,14 +33,14 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                     DotCompatibleElements.Cluster => new DotCluster("").Attributes,
                     DotCompatibleElements.Node => new DotNode("").Attributes,
                     DotCompatibleElements.Edge => new DotEdge("").Attributes,
-                    _ => throw new NotSupportedException($"Unsupported element type '{elementMetadata.Element}'")
+                    _ => throw new NotSupportedException($"Unsupported element type '{element}'")
                 };
 
-                ReadAndWriteAttributeProperties(result, elementMetadata.Attributes.Values.ToArray());
+                ReadAndWriteAttributeProperties(result, attributes.Values.ToArray());
             }
         }
 
-        private static void ReadAndWriteAttributeProperties(object targetRoot, DotAttributePropertyMetadata[] attributes)
+        private static void ReadAndWriteAttributeProperties(object targetRoot, IEnumerable<DotAttributePropertyMetadata> attributes)
         {
             foreach (var attribute in attributes)
             {
@@ -48,10 +49,8 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                 var targetProperty = targetPropertyPath.Last();
 
                 // get the target object by path
-                foreach (var property in targetPropertyPath.Take(targetPropertyPath.Length - 1))
-                {
-                    target = property.GetValue(target);
-                }
+                target = targetPropertyPath.Take(targetPropertyPath.Length - 1)
+                   .Aggregate(target, (current, property) => property.GetValue(current));
 
                 InvokeGetterValid(target, targetProperty);
                 InvokeSetterValid(target, targetProperty);

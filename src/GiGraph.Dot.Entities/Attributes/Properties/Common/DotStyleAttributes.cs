@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         public const string StyleKey = DotAttributeKeys.Style;
         protected readonly DotAttributeCollection _attributes;
 
-        public DotStyleAttributes(DotAttributeCollection attributes)
+        protected DotStyleAttributes(DotAttributeCollection attributes)
         {
             _attributes = attributes;
         }
@@ -62,7 +62,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
 
         protected virtual void Remove(DotStyles options)
         {
-            Style = Style & ~options;
+            Style &= ~options;
         }
 
         protected virtual bool HasOptions(DotStyles options)

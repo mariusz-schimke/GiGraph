@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Output.Options;
 
@@ -8,7 +9,7 @@ namespace GiGraph.Dot.Types.Encoders
     /// </summary>
     public class DotDoubleListEncoder
     {
-        public static string Encode(double[] values, DotSyntaxRules syntaxRules)
+        public static string Encode(IEnumerable<double> values, DotSyntaxRules syntaxRules)
         {
             return string.Join(":", values.Select(v => v.ToString(syntaxRules.Culture)));
         }

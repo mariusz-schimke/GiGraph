@@ -69,7 +69,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         {
             color ??= System.Drawing.Color.Black;
             var colors = Enumerable.Range(0, lineCount)
-               .Select(i => new DotColor(color.Color, color.Scheme));
+               .Select(_ => new DotColor(color.Color, color.Scheme));
 
             SetMultiline(colors.ToArray());
         }

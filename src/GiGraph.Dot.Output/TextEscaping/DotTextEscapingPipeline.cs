@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace GiGraph.Dot.Output.TextEscaping
 {
@@ -38,12 +39,7 @@ namespace GiGraph.Dot.Output.TextEscaping
 
         public virtual string Escape(string value)
         {
-            foreach (var escaper in this)
-            {
-                value = escaper.Escape(value);
-            }
-
-            return value;
+            return this.Aggregate(value, (current, escaper) => escaper.Escape(current));
         }
 
         /// <summary>

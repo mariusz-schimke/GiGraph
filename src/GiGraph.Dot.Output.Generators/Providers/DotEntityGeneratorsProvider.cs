@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Output.Generators.Providers
             where TGenerator : IDotEntityGenerator
         {
             var generatorType = typeof(TGenerator);
-            generator = (TGenerator) _generators.LastOrDefault(t => generatorType.IsAssignableFrom(t.GetType()));
+            generator = (TGenerator) _generators.LastOrDefault(t => generatorType.IsInstanceOfType(t));
 
             return generator is not null;
         }

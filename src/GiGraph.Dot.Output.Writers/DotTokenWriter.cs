@@ -327,8 +327,8 @@ namespace GiGraph.Dot.Output.Writers
         {
             while (_lingerBuffer.Count > 0)
             {
-                var item = _lingerBuffer.Dequeue();
-                Write(item.Token, item.Type);
+                var (token, type) = _lingerBuffer.Dequeue();
+                Write(token, type);
             }
 
             return this;

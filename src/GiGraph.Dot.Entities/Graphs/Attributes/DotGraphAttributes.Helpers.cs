@@ -32,15 +32,17 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// </param>
         public virtual DotGraphAttributes SetBackground(DotGradientColor color, int? angle = null, bool? radial = null)
         {
-            // the style may also be set from the Clusters collection on graph, and radial is the only attribute
-            // that applies to graph background and to cluster fill
-            if (true == radial)
+            switch (radial)
             {
-                Style.FillStyle = DotClusterFillStyle.Radial;
-            }
-            else if (false == radial && Style.FillStyle == DotClusterFillStyle.Radial)
-            {
-                Style.FillStyle = DotClusterFillStyle.None;
+                // the style may also be set from the Clusters collection on graph, and radial is the only attribute
+                // that applies to graph background and to cluster fill
+                case true:
+                    Style.FillStyle = DotClusterFillStyle.Radial;
+                    break;
+
+                case false when Style.FillStyle == DotClusterFillStyle.Radial:
+                    Style.FillStyle = DotClusterFillStyle.None;
+                    break;
             }
 
             Canvas.BackgroundColor = color;

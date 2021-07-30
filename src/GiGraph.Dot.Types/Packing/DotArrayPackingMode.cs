@@ -61,7 +61,7 @@ namespace GiGraph.Dot.Types.Packing
         public virtual int? RankCount
         {
             get => _rankCount;
-            set => _rankCount = !value.HasValue || value.Value >= 0
+            set => _rankCount = value is not < 0
                 ? value
                 : throw new ArgumentOutOfRangeException(nameof(RankCount), RankCount, "The number of ranks must be greater than or equal to 0.");
         }

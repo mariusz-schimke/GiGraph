@@ -159,9 +159,9 @@ namespace GiGraph.Dot.Types.Records
             var braces = new[] { hasParent, Flip }.Where(x => x).ToList();
             var fields = Fields.Select(field => field.GetDotEncoded(options, syntaxRules, hasParent: true));
 
-            braces.ForEach(brace => result.Append("{ "));
+            braces.ForEach(_ => result.Append("{ "));
             result.Append(string.Join(" | ", fields));
-            braces.ForEach(brace => result.Append(" }"));
+            braces.ForEach(_ => result.Append(" }"));
 
             return result.ToString();
         }

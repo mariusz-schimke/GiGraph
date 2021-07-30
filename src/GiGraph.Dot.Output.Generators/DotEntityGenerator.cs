@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Output.Generators
                 return false;
             }
 
-            if (!(entity is TEntity requiredEntityType))
+            if (entity is not TEntity requiredEntityType)
             {
                 return false;
             }
@@ -49,7 +49,7 @@ namespace GiGraph.Dot.Output.Generators
                 throw new ArgumentNullException(nameof(entity), "Entity must not be null.");
             }
 
-            if (!(entity is TEntity actualEntity))
+            if (entity is not TEntity actualEntity)
             {
                 throw new ArgumentException($"The entity type {entity.GetType().FullName} is not supported by the {GetType().FullName} generator.", nameof(entity));
             }

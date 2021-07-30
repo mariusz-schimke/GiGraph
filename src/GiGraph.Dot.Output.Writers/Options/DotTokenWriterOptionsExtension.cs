@@ -37,12 +37,9 @@ namespace GiGraph.Dot.Output.Writers.Options
 
         public static string[] SplitMultilineText(this DotTokenWriterOptions options, string text)
         {
-            if (text is null)
-            {
-                return new string[0];
-            }
-
-            return text.Split(new[] { options.LineBreak }, StringSplitOptions.None);
+            return text is null
+                ? Array.Empty<string>()
+                : text.Split(new[] { options.LineBreak }, StringSplitOptions.None);
         }
     }
 }

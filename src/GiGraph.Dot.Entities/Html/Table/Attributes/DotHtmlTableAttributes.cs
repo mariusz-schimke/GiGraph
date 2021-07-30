@@ -4,7 +4,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
-using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes
 {

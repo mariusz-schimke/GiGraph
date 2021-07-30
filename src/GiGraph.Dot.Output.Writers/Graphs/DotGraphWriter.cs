@@ -15,14 +15,7 @@
                    .Space();
             }
 
-            if (_configuration.IsDirectedGraph)
-            {
-                _tokenWriter.Keyword("digraph");
-            }
-            else
-            {
-                _tokenWriter.Keyword("graph");
-            }
+            _tokenWriter.Keyword(_configuration.IsDirectedGraph ? "digraph" : "graph");
 
             if (id != null)
             {

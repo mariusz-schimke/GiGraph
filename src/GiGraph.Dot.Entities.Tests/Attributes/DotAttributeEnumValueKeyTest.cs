@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Arrowheads;
 using GiGraph.Dot.Types.Clusters;
@@ -23,9 +22,6 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 {
     public class DotAttributeEnumValueKeyTest
     {
-        private readonly DotSyntaxOptions _syntaxOptions = new();
-        private readonly DotSyntaxRules _syntaxRules = new();
-
         public static IEnumerable<object[]> EnumTypes =>
             new List<object[]>
             {
@@ -73,11 +69,12 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         public void enum_properties_have_non_repeating_attribute_values_assigned(Type enumType)
         {
             var mapping = DotAttributeValue.GetMapping(enumType);
-            foreach (var item1 in mapping)
+            foreach (var (key, value) in mapping)
             {
                 Assert.DoesNotContain(
                     mapping,
-                    item2 => !Equals(item1.Key, item2.Key) && string.Equals(item1.Value, item2.Value, StringComparison.OrdinalIgnoreCase)
+                    item2 => !Equals(key, item2.Key) &&
+                        string.Equals(value, item2.Value, StringComparison.OrdinalIgnoreCase)
                 );
             }
         }

@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Types.Colors
         public DotWeightedColor(Color color, double weight, string scheme = null)
             : base(color, scheme)
         {
-            Weight = weight >= 0 && weight <= 1
+            Weight = weight is >= 0 and <= 1
                 ? weight
                 : throw new ArgumentException($"The color weight has to be in the range 0 ≤ {nameof(weight)} ≤ 1.", nameof(weight));
         }

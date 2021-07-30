@@ -88,7 +88,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
 
         protected virtual void SetPort(DotEndpointPort port)
         {
-            _port = port ?? throw new ArgumentNullException(nameof(Port), "Port must not be null.");
+            _port = port ?? throw new ArgumentNullException(nameof(port), "Port must not be null.");
         }
 
         protected override string GetOrderingKey()

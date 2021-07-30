@@ -7,7 +7,6 @@ namespace GiGraph.Dot.Entities.Tests.EscapeString
 {
     public class DotEscapeStringConcatenationTest
     {
-        private readonly DotSyntaxOptions _syntaxOptions = new();
         private readonly DotSyntaxRules _syntaxRules = new();
 
         [Fact]

@@ -118,11 +118,10 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
         /// </summary>
         public virtual DotMemberAttributeKeyLookup ToReadOnly()
         {
-            var result = new Dictionary<Module, IDictionary<int, string>>();
-            foreach (var item in _lookup)
-            {
-                result.Add(item.Key, new ReadOnlyDictionary<int, string>(item.Value));
-            }
+            var result = _lookup.ToDictionary<KeyValuePair<Module, IDictionary<int, string>>, Module, IDictionary<int, string>>(
+                item => item.Key,
+                item => new ReadOnlyDictionary<int, string>(item.Value)
+            );
 
             return new DotMemberAttributeKeyLookup(
                 new ReadOnlyDictionary<Module, IDictionary<int, string>>(result)
