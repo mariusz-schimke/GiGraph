@@ -1,7 +1,6 @@
+using GiGraph.Dot.Entities.Html.LineBreak;
 using GiGraph.Dot.Types.Alignment;
-using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Html.Table;
-using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes
 {
@@ -16,9 +15,21 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
         /// </summary>
         DotHorizontalCellAlignment? HorizontalAlignment { get; set; }
 
-        // ALIGN
-        // BALIGN
-        // COLSPAN
-        // ROWSPAN
+        /// <summary>
+        ///     Specifies the default alignment of &lt;br/&gt; elements contained in the cell (<see cref="DotHtmlLineBreak" />). That is, if
+        ///     a &lt;br/&gt; element has no <see cref="DotHtmlLineBreak.HorizontalAlignment" /> specified explicitly, the alignment
+        ///     indicated by the current attribute is applied.
+        /// </summary>
+        DotHorizontalAlignment? HorizontalLineAlignment { get; set; }
+
+        /// <summary>
+        ///     Specifies the number of columns spanned by the cell. The default is 1, the maximum is 65535.
+        /// </summary>
+        int? ColumnSpan { get; set; }
+
+        /// <summary>
+        ///     Specifies the number of rows spanned by the cell. The default is 1, the maximum is 65535.
+        /// </summary>
+        int? RowSpan { get; set; }
     }
 }

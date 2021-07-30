@@ -1,6 +1,5 @@
 using System;
 using GiGraph.Dot.Entities.Html.Table.Attributes;
-using GiGraph.Dot.Output.Metadata.Html;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Html.Table;
@@ -47,7 +46,6 @@ namespace GiGraph.Dot.Entities.Html.Table
         }
 
         /// <inheritdoc cref="IDotHtmlTableAttributes.HorizontalAlignment" />
-        [DotHtmlElementAttributeKey("align")]
         public virtual DotHorizontalAlignment? HorizontalAlignment
         {
             get => ((IDotHtmlTableAttributes) Attributes).HorizontalAlignment;
@@ -55,7 +53,6 @@ namespace GiGraph.Dot.Entities.Html.Table
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.VerticalAlignment" />
-        [DotHtmlElementAttributeKey("valign")]
         public virtual DotVerticalAlignment? VerticalAlignment
         {
             get => ((IDotHtmlTableAttributes) Attributes).VerticalAlignment;
@@ -126,7 +123,6 @@ namespace GiGraph.Dot.Entities.Html.Table
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.FixedSize" />
-        [DotHtmlElementAttributeKey("fixedsize")]
         public virtual bool? FixedSize
         {
             get => ((IDotHtmlTableAttributes) Attributes).FixedSize;

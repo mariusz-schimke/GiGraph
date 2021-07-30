@@ -1,5 +1,4 @@
 using GiGraph.Dot.Entities.Html.Table.Attributes;
-using GiGraph.Dot.Output.Metadata.Html;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Html.Table;
@@ -46,7 +45,6 @@ namespace GiGraph.Dot.Entities.Html.Table
         }
 
         /// <inheritdoc cref="IDotHtmlTableCellAttributes.HorizontalAlignment" />
-        [DotHtmlElementAttributeKey("align")]
         public virtual DotHorizontalCellAlignment? HorizontalAlignment
         {
             get => ((IDotHtmlTableCellAttributes) Attributes).HorizontalAlignment;
@@ -54,11 +52,17 @@ namespace GiGraph.Dot.Entities.Html.Table
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.VerticalAlignment" />
-        [DotHtmlElementAttributeKey("valign")]
         public virtual DotVerticalAlignment? VerticalAlignment
         {
             get => ((IDotHtmlTableCellAttributes) Attributes).VerticalAlignment;
             set => ((IDotHtmlTableCellAttributes) Attributes).VerticalAlignment = value;
+        }
+
+        /// <inheritdoc cref="IDotHtmlTableCellAttributes.HorizontalLineAlignment" />
+        public virtual DotHorizontalAlignment? HorizontalLineAlignment
+        {
+            get => ((IDotHtmlTableCellAttributes) Attributes).HorizontalLineAlignment;
+            set => ((IDotHtmlTableCellAttributes) Attributes).HorizontalLineAlignment = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.BackgroundColor" />
@@ -96,6 +100,20 @@ namespace GiGraph.Dot.Entities.Html.Table
             set => ((IDotHtmlTableCellAttributes) Attributes).CellSpacing = value;
         }
 
+        /// <inheritdoc cref="IDotHtmlTableCellAttributes.ColumnSpan" />
+        public virtual int? ColumnSpan
+        {
+            get => ((IDotHtmlTableCellAttributes) Attributes).ColumnSpan;
+            set => ((IDotHtmlTableCellAttributes) Attributes).ColumnSpan = value;
+        }
+
+        /// <inheritdoc cref="IDotHtmlTableCellAttributes.RowSpan" />
+        public virtual int? RowSpan
+        {
+            get => ((IDotHtmlTableCellAttributes) Attributes).RowSpan;
+            set => ((IDotHtmlTableCellAttributes) Attributes).RowSpan = value;
+        }
+
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Sides" />
         public virtual DotHtmlTableSides? Sides
         {
@@ -104,7 +122,6 @@ namespace GiGraph.Dot.Entities.Html.Table
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.FixedSize" />
-        [DotHtmlElementAttributeKey("fixedsize")]
         public virtual bool? FixedSize
         {
             get => ((IDotHtmlTableCellAttributes) Attributes).FixedSize;
