@@ -31,8 +31,7 @@ namespace GiGraph.Dot.Entities.Html.Text
             return _text;
         }
 
-        /// <inheritdoc cref="IDotHtmlEntity.ToHtml(GiGraph.Dot.Output.Options.DotSyntaxOptions,GiGraph.Dot.Output.Options.DotSyntaxRules)" />
-        public override DotHtmlString ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected override DotHtmlString ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return syntaxRules.Attributes.Html.ElementTextContentEscaper.Escape(_text);
         }
