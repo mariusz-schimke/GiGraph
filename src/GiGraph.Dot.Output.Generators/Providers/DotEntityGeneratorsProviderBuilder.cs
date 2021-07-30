@@ -3,13 +3,13 @@ using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Output.Generators.Attributes;
-using GiGraph.Dot.Output.Generators.Attributes.Edge;
-using GiGraph.Dot.Output.Generators.Attributes.Graph;
-using GiGraph.Dot.Output.Generators.Attributes.Node;
 using GiGraph.Dot.Output.Generators.Clusters;
 using GiGraph.Dot.Output.Generators.Edges;
+using GiGraph.Dot.Output.Generators.Edges.Attributes;
 using GiGraph.Dot.Output.Generators.Graphs;
+using GiGraph.Dot.Output.Generators.Graphs.Attributes;
 using GiGraph.Dot.Output.Generators.Nodes;
+using GiGraph.Dot.Output.Generators.Nodes.Attributes;
 using GiGraph.Dot.Output.Generators.Subgraphs;
 using GiGraph.Dot.Output.Options;
 

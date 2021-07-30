@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the edge. It may be plain text (<see cref="string" />) or HTML (
-        ///         <see cref="DotHtmlLabel" />). See also <see cref="DotTextFormatter" /> for plain text label formatting if needed.
+        ///         <see cref="DotHtmlStringLabel" />). See also <see cref="DotTextFormatter" /> for plain text label formatting if needed.
         ///     </para>
         ///     <para>
         ///         Examples:
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         ///             </item>
         ///             <item>
         ///                 <description>
-        ///                     <see cref="Label" /> = new <see cref="DotHtmlLabel" />("&lt;TABLE&gt;...&lt;/TABLE&gt;");
+        ///                     <see cref="Label" /> = new <see cref="DotHtmlStringLabel" />("&lt;TABLE&gt;...&lt;/TABLE&gt;");
         ///                 </description>
         ///             </item>
         ///         </list>

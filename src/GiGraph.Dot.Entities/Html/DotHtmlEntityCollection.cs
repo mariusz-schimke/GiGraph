@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Types.Labels;
 using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Html
@@ -45,12 +47,18 @@ namespace GiGraph.Dot.Entities.Html
             return ToHtml(DotSyntaxOptions.Default, DotSyntaxRules.Default);
         }
 
-        DotHtmlString IDotHtmlEntity.ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        /// <inheritdoc cref="IDotHtmlEntity.ToLabel" />
+        public DotHtmlLabel ToLabel()
+        {
+            return new DotHtmlLabel(this);
+        }
+
+        string IDotHtmlEncodable.ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return ToHtml(options, syntaxRules);
         }
 
-        protected virtual DotHtmlString ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected virtual string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return string.Join(string.Empty, this.Select(entity => entity.ToHtml(options, syntaxRules)));
         }

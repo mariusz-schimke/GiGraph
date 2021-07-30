@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Output.Generators.Attributes
 
         protected override bool Supports(DotAttribute entity)
         {
-            return entity.GetValue() is DotHtmlLabel;
+            return entity.GetValue() is DotHtmlLabel or DotHtmlStringLabel;
         }
     }
 }

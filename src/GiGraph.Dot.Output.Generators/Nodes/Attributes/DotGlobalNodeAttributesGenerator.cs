@@ -1,9 +1,9 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.Writers.Attributes.Node;
+using GiGraph.Dot.Output.Writers.Nodes.Attributes;
 
-namespace GiGraph.Dot.Output.Generators.Attributes.Node
+namespace GiGraph.Dot.Output.Generators.Nodes.Attributes
 {
     public class DotGlobalNodeAttributesGenerator : DotEntityWithAttributeListGenerator<DotAttributeCollection, IDotGlobalNodeAttributesWriter>
     {

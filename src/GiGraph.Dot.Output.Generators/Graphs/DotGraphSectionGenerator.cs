@@ -10,12 +10,12 @@ using GiGraph.Dot.Entities.Subgraphs.Collections;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Attributes;
-using GiGraph.Dot.Output.Writers.Attributes.Edge;
-using GiGraph.Dot.Output.Writers.Attributes.Graph;
-using GiGraph.Dot.Output.Writers.Attributes.Node;
 using GiGraph.Dot.Output.Writers.Edges;
+using GiGraph.Dot.Output.Writers.Edges.Attributes;
 using GiGraph.Dot.Output.Writers.Graphs;
+using GiGraph.Dot.Output.Writers.Graphs.Attributes;
 using GiGraph.Dot.Output.Writers.Nodes;
+using GiGraph.Dot.Output.Writers.Nodes.Attributes;
 using GiGraph.Dot.Output.Writers.Subgraphs;
 
 namespace GiGraph.Dot.Output.Generators.Graphs

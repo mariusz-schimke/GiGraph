@@ -1,4 +1,4 @@
-﻿namespace GiGraph.Dot.Output.Writers.Attributes.Node
+﻿namespace GiGraph.Dot.Output.Writers.Nodes.Attributes
 {
     public class DotGlobalNodeAttributesWriter : DotEntityWithAttributeListWriter, IDotGlobalNodeAttributesWriter
     {

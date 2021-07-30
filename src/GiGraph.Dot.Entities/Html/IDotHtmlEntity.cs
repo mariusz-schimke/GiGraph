@@ -1,4 +1,5 @@
-using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output;
+using GiGraph.Dot.Types.Labels;
 using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Html
@@ -6,22 +7,16 @@ namespace GiGraph.Dot.Entities.Html
     /// <summary>
     ///     Represents an HTML entity.
     /// </summary>
-    public interface IDotHtmlEntity
+    public interface IDotHtmlEntity : IDotHtmlEncodable
     {
         /// <summary>
-        ///     Converts the entity to HTML.
-        /// </summary>
-        /// <param name="options">
-        ///     The syntax options to apply.
-        /// </param>
-        /// <param name="syntaxRules">
-        ///     The syntax rules to apply.
-        /// </param>
-        DotHtmlString ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
-
-        /// <summary>
-        ///     Converts the entity to HTML with default syntax and formatting rules.
+        ///     Converts the object to an HTML string. Applies the default (global) HTML syntax and formatting rules.
         /// </summary>
         DotHtmlString ToHtml();
+
+        /// <summary>
+        ///     Creates a new label with the current object as its content.
+        /// </summary>
+        DotHtmlLabel ToLabel();
     }
 }

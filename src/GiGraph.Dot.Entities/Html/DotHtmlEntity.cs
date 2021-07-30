@@ -1,4 +1,6 @@
+using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Types.Labels;
 using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Html
@@ -14,12 +16,16 @@ namespace GiGraph.Dot.Entities.Html
             return ToHtml(DotSyntaxOptions.Default, DotSyntaxRules.Default);
         }
 
-        DotHtmlString IDotHtmlEntity.ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        public DotHtmlLabel ToLabel()
+        {
+            return new DotHtmlLabel(this);
+        }
+
+        string IDotHtmlEncodable.ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return ToHtml(options, syntaxRules);
         }
 
-        /// <inheritdoc cref="IDotHtmlEntity.ToHtml(GiGraph.Dot.Output.Options.DotSyntaxOptions,GiGraph.Dot.Output.Options.DotSyntaxRules)" />
-        protected abstract DotHtmlString ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
+        protected abstract string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
     }
 }

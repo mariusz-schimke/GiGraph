@@ -1,7 +1,7 @@
 namespace GiGraph.Dot.Types.Text
 {
     /// <summary>
-    ///     An HTML DOM string.
+    ///     An HTML string.
     /// </summary>
     public class DotHtmlString : DotEscapedString
     {

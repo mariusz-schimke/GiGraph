@@ -1,9 +1,9 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.Writers.Attributes.Edge;
+using GiGraph.Dot.Output.Writers.Edges.Attributes;
 
-namespace GiGraph.Dot.Output.Generators.Attributes.Edge
+namespace GiGraph.Dot.Output.Generators.Edges.Attributes
 {
     public class DotGlobalEdgeAttributesGenerator : DotEntityWithAttributeListGenerator<DotAttributeCollection, IDotGlobalEdgeAttributesWriter>
     {

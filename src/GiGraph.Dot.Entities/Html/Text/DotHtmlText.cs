@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Html.Text
             return _text;
         }
 
-        protected override DotHtmlString ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected override string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return syntaxRules.Attributes.Html.ElementTextContentEscaper.Escape(_text);
         }

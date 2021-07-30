@@ -1,7 +1,7 @@
 ﻿using GiGraph.Dot.Output.Writers.Attributes;
-using GiGraph.Dot.Output.Writers.Attributes.Graph;
 using GiGraph.Dot.Output.Writers.Clusters;
 using GiGraph.Dot.Output.Writers.Edges;
+using GiGraph.Dot.Output.Writers.Graphs.Attributes;
 using GiGraph.Dot.Output.Writers.Nodes;
 using GiGraph.Dot.Output.Writers.Subgraphs;
 

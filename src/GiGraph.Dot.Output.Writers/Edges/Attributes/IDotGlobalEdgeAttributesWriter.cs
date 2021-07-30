@@ -1,4 +1,4 @@
-﻿namespace GiGraph.Dot.Output.Writers.Attributes.Edge
+﻿namespace GiGraph.Dot.Output.Writers.Edges.Attributes
 {
     public interface IDotGlobalEdgeAttributesWriter : IDotEntityWithAttributeListWriter
     {

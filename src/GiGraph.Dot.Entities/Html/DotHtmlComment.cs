@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Html
             return _text;
         }
 
-        protected override DotHtmlString ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected override string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             const string tagName = "--";
             return $"<!{tagName}{syntaxRules.Attributes.Html.CommentTextEscaper.Escape(_text)}{tagName}>";

@@ -6,7 +6,7 @@ using GiGraph.Dot.Types.Text;
 namespace GiGraph.Dot.Types.Labels
 {
     /// <summary>
-    ///     Represents label. It can either be a text label (<see cref="DotTextLabel" />), or an HTML label (<see cref="DotHtmlLabel" />
+    ///     Represents label. It can either be a text label (<see cref="DotTextLabel" />), or an HTML label (<see cref="DotHtmlStringLabel" />
     ///     ). <see cref="DotRecordLabel" />, on the other hand, can be used for record-like nodes.
     /// </summary>
     public abstract class DotLabel : IDotComplexType
@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Types.Labels
         /// <param name="html">
         ///     The HTML to use as the label.
         /// </param>
-        public static DotHtmlLabel FromHtml(string html)
+        public static DotHtmlStringLabel FromHtml(string html)
         {
             return html;
         }
@@ -92,7 +92,7 @@ namespace GiGraph.Dot.Types.Labels
 
         public static implicit operator DotLabel(DotHtmlString html)
         {
-            return (DotHtmlLabel) html;
+            return (DotHtmlStringLabel) html;
         }
     }
 }

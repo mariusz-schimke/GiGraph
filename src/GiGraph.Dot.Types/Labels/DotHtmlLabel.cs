@@ -1,39 +1,33 @@
-using GiGraph.Dot.Types.Text;
+using System;
+using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Types.Labels
 {
     /// <summary>
-    ///     Represents an HTML-like label. The value is a compatible HTML string following the rules described in the
-    ///     <see href="http://www.graphviz.org/doc/info/shapes.html#html">
-    ///         documentation
-    ///     </see>
-    ///     .
+    ///     Represents an HTML label with an underlying object capable of being converted to HTML on DOT output rendering.
     /// </summary>
-    public class DotHtmlLabel : DotTextLabel
+    public class DotHtmlLabel : DotLabel
     {
+        protected readonly IDotHtmlEncodable _htmlEntity;
+
         /// <summary>
-        ///     Creates a new HTML label.
+        ///     Creates a new label instance.
         /// </summary>
-        /// <param name="html">
-        ///     The HTML text to use. It is expected to be a compatible HTML string following the rules described in the
-        ///     <see href="http://www.graphviz.org/doc/info/shapes.html#html">
-        ///         documentation
-        ///     </see>
-        ///     . Pass <see cref="string" /> to convert it implicitly to the required <see cref="DotHtmlString" /> type.
+        /// <param name="htmlEntity">
+        ///     The object capable of being converted to HTML.
         /// </param>
-        public DotHtmlLabel(DotHtmlString html)
-            : base(html)
+        /// <exception cref="ArgumentNullException">
+        ///     Thrown when <paramref name="htmlEntity" /> is null.
+        /// </exception>
+        public DotHtmlLabel(IDotHtmlEncodable htmlEntity)
         {
+            _htmlEntity = htmlEntity ?? throw new ArgumentNullException(nameof(htmlEntity), "HTML entity must not be null.");
         }
 
-        public static implicit operator DotHtmlLabel(string html)
+        protected internal override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return html is not null ? new DotHtmlLabel(html) : null;
-        }
-
-        public static implicit operator DotHtmlLabel(DotHtmlString html)
-        {
-            return html is not null ? new DotHtmlLabel(html) : null;
+            return _htmlEntity?.ToHtml(options, syntaxRules);
         }
     }
 }

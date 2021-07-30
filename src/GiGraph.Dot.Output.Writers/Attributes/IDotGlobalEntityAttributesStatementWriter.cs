@@ -1,6 +1,6 @@
-﻿using GiGraph.Dot.Output.Writers.Attributes.Edge;
-using GiGraph.Dot.Output.Writers.Attributes.Graph;
-using GiGraph.Dot.Output.Writers.Attributes.Node;
+﻿using GiGraph.Dot.Output.Writers.Edges.Attributes;
+using GiGraph.Dot.Output.Writers.Graphs.Attributes;
+using GiGraph.Dot.Output.Writers.Nodes.Attributes;
 
 namespace GiGraph.Dot.Output.Writers.Attributes
 {
