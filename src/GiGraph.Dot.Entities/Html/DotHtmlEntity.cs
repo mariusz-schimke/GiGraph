@@ -8,15 +8,15 @@ namespace GiGraph.Dot.Entities.Html
     /// </summary>
     public abstract class DotHtmlEntity : IDotHtmlEntity
     {
-        DotHtmlString IDotHtmlEntity.ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-        {
-            return ToHtml(options, syntaxRules);
-        }
-
         /// <inheritdoc cref="IDotHtmlEntity.ToHtml()" />
         public virtual DotHtmlString ToHtml()
         {
             return ToHtml(DotSyntaxOptions.Default, DotSyntaxRules.Default);
+        }
+
+        DotHtmlString IDotHtmlEntity.ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        {
+            return ToHtml(options, syntaxRules);
         }
 
         /// <inheritdoc cref="IDotHtmlEntity.ToHtml(GiGraph.Dot.Output.Options.DotSyntaxOptions,GiGraph.Dot.Output.Options.DotSyntaxRules)" />
