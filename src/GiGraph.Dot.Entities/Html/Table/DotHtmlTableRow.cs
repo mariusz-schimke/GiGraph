@@ -6,7 +6,7 @@ using GiGraph.Dot.Entities.Html.Table.Attributes;
 namespace GiGraph.Dot.Entities.Html.Table
 {
     /// <summary>
-    ///     An HTML table row.
+    ///     An HTML table row (&lt;tr&gt;).
     /// </summary>
     public class DotHtmlTableRow : DotHtmlElement, IDotHtmlTableRowAttributes
     {

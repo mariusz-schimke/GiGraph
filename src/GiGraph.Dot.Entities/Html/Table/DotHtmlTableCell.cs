@@ -7,7 +7,7 @@ using GiGraph.Dot.Types.Text;
 namespace GiGraph.Dot.Entities.Html.Table
 {
     /// <summary>
-    ///     A cell of an HTML table row.
+    ///     A cell of an HTML table row (&lt;td&gt;).
     /// </summary>
     public class DotHtmlTableCell : DotHtmlElement, IDotHtmlTableCellAttributes
     {
@@ -73,7 +73,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Color" />
-        public virtual DotColorDefinition Color
+        public virtual DotColor Color
         {
             get => ((IDotHtmlTableCellAttributes) Attributes).Color;
             set => ((IDotHtmlTableCellAttributes) Attributes).Color = value;

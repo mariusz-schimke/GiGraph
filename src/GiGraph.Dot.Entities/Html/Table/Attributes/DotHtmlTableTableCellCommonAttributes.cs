@@ -46,9 +46,9 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
         }
 
         [DotAttributeKey("color")]
-        DotColorDefinition IDotHtmlTableTableCellCommonAttributes.Color
+        DotColor IDotHtmlTableTableCellCommonAttributes.Color
         {
-            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+            get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
