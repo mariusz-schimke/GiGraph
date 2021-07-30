@@ -51,6 +51,11 @@ namespace GiGraph.Dot.Entities.Html
             return ToHtml(options, syntaxRules);
         }
 
+        public override string ToString()
+        {
+            return ToHtml();
+        }
+
         protected virtual string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return string.Join(string.Empty, this.Select(entity => entity.ToHtml(options, syntaxRules)));

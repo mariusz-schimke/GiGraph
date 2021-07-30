@@ -20,6 +20,11 @@ namespace GiGraph.Dot.Entities.Html
             return ToHtml(options, syntaxRules);
         }
 
+        public override string ToString()
+        {
+            return ToHtml();
+        }
+
         protected abstract string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
     }
 }
