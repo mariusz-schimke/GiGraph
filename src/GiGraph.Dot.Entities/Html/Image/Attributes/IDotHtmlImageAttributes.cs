@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Images;
 namespace GiGraph.Dot.Entities.Html.Image.Attributes
 {
     /// <summary>
-    ///     The attributes of an HTML &lt;image&gt; element.
+    ///     The attributes of an HTML image element (&lt;img&gt;).
     /// </summary>
     public interface IDotHtmlImageAttributes
     {

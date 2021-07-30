@@ -5,7 +5,7 @@ using GiGraph.Dot.Types.Alignment;
 namespace GiGraph.Dot.Entities.Html.LineBreak
 {
     /// <summary>
-    ///     An HTML line break (&lt;br/&gt;).
+    ///     An HTML line break element (&lt;br/&gt;).
     /// </summary>
     public class DotHtmlLineBreak : DotHtmlTag, IDotHtmlLineBreakAttributes
     {

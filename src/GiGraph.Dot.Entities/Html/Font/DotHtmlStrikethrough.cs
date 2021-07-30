@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 namespace GiGraph.Dot.Entities.Html.Font
 {
     /// <summary>
-    ///     An HTML strikethrough text element.
+    ///     An HTML strikethrough text element (&lt;s&gt;).
     /// </summary>
     public class DotHtmlStrikethrough : DotHtmlFontStyle
     {

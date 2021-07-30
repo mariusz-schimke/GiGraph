@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 namespace GiGraph.Dot.Entities.Html.Font
 {
     /// <summary>
-    ///     An HTML bold text element.
+    ///     An HTML bold text element (&lt;b&gt;).
     /// </summary>
     public class DotHtmlBold : DotHtmlFontStyle
     {

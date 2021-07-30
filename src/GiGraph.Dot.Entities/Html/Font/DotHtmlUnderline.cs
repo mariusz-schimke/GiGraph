@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 namespace GiGraph.Dot.Entities.Html.Font
 {
     /// <summary>
-    ///     An HTML underlined text element.
+    ///     An HTML underlined text element (&lt;u&gt;).
     /// </summary>
     public class DotHtmlUnderline : DotHtmlFontStyle
     {

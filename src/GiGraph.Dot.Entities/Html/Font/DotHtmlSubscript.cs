@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 namespace GiGraph.Dot.Entities.Html.Font
 {
     /// <summary>
-    ///     An HTML subscript text element.
+    ///     An HTML subscript text element (&lt;sub&gt;).
     /// </summary>
     public class DotHtmlSubscript : DotHtmlFontStyle
     {

@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 namespace GiGraph.Dot.Entities.Html.Font
 {
     /// <summary>
-    ///     An HTML overline text element.
+    ///     An HTML overline text element (&lt;o&gt;).
     /// </summary>
     public class DotHtmlOverline : DotHtmlFontStyle
     {

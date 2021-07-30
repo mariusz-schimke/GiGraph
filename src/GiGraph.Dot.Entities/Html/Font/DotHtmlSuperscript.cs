@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 namespace GiGraph.Dot.Entities.Html.Font
 {
     /// <summary>
-    ///     An HTML superscript text element.
+    ///     An HTML superscript text element (&lt;sup&gt;).
     /// </summary>
     public class DotHtmlSuperscript : DotHtmlFontStyle
     {
