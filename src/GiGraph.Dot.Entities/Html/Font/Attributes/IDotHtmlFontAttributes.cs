@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Colors;
 namespace GiGraph.Dot.Entities.Html.Font.Attributes
 {
     /// <summary>
-    ///     The attributes of an HTML font element.
+    ///     The attributes of an HTML &lt;font&gt; element.
     /// </summary>
     public interface IDotHtmlFontAttributes
     {

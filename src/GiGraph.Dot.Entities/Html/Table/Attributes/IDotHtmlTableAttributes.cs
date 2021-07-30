@@ -4,7 +4,7 @@ using GiGraph.Dot.Types.Html.Table;
 namespace GiGraph.Dot.Entities.Html.Table.Attributes
 {
     /// <summary>
-    ///     The attributes of an HTML table.
+    ///     The attributes of an HTML table (&lt;table&gt;).
     /// </summary>
     public interface IDotHtmlTableAttributes : IDotHtmlTableTableCellCommonAttributes
     {

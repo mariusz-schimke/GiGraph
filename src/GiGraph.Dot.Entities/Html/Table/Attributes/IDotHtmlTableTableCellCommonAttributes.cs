@@ -6,7 +6,7 @@ using GiGraph.Dot.Types.Text;
 namespace GiGraph.Dot.Entities.Html.Table.Attributes
 {
     /// <summary>
-    ///     The common attributes of an HTML table and an HTML table cell.
+    ///     The common attributes of an HTML table (&lt;table&gt;) and an HTML table cell (&lt;td&gt;).
     /// </summary>
     public interface IDotHtmlTableTableCellCommonAttributes
     {
