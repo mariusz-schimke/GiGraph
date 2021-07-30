@@ -1,13 +1,12 @@
-using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Factories;
 using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
-using GiGraph.Dot.Types.Labels;
 using GiGraph.Dot.Types.Styling;
 using GiGraph.Dot.Types.Text;
 

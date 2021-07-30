@@ -2,7 +2,7 @@ using System;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Types.Labels
+namespace GiGraph.Dot.Entities.Labels
 {
     /// <summary>
     ///     Represents an HTML label with an underlying object capable of being converted to HTML on DOT output rendering.

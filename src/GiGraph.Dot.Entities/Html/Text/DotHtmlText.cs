@@ -4,7 +4,6 @@ using GiGraph.Dot.Entities.Html.LineBreak;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.TextEscaping;
 using GiGraph.Dot.Types.Alignment;
-using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Html.Text
 {

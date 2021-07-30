@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Labels;
+using GiGraph.Dot.Types.Records;
 
 namespace GiGraph.Dot.Types.Nodes
 {
@@ -172,7 +172,8 @@ namespace GiGraph.Dot.Types.Nodes
 
         /// <summary>
         ///     Visually, a record is a box, with fields represented by alternating rows of horizontal or vertical subboxes. Use a
-        ///     <see cref="DotRecordLabel" /> label to define the fields of the record (
+        ///     <see cref="DotRecord" /> instance to define the fields of the record and assign it directly to the label attribute of the
+        ///     node (
         ///     <see href="https://www.graphviz.org/doc/info/shapes.html#record">
         ///         learn more
         ///     </see>
@@ -183,7 +184,8 @@ namespace GiGraph.Dot.Types.Nodes
 
         /// <summary>
         ///     Visually, this type of record shape is a box with rounded corers, and fields represented by alternating rows of horizontal or
-        ///     vertical subboxes. Use a <see cref="DotRecordLabel" /> label to define the fields of the record (
+        ///     vertical subboxes. Use a <see cref="DotRecord" /> instance to define the fields of the record and assign it directly to the
+        ///     label attribute of the node (
         ///     <see href="https://www.graphviz.org/doc/info/shapes.html#record">
         ///         learn more
         ///     </see>

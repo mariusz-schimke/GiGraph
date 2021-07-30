@@ -1,6 +1,6 @@
 using GiGraph.Dot.Types.Text;
 
-namespace GiGraph.Dot.Types.Labels
+namespace GiGraph.Dot.Entities.Labels
 {
     /// <summary>
     ///     Represents an HTML string label. The value should be a compatible HTML string following the rules described in the

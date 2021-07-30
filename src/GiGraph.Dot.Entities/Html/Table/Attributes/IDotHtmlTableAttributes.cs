@@ -20,8 +20,7 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
         int? CellBorderWidth { get; set; }
 
         /// <summary>
-        ///     Provides general formatting information concerning the rows. See <see cref="DotHtmlTableRowFormat" /> for accepted
-        ///     values.
+        ///     Provides general formatting information concerning the rows. See <see cref="DotHtmlTableRowFormat" /> for accepted values.
         /// </summary>
         string RowFormatting { get; set; }
 

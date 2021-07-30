@@ -1,8 +1,8 @@
-﻿using GiGraph.Dot.Entities.Nodes.Attributes;
+﻿using GiGraph.Dot.Entities.Labels;
+using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.Identifiers;
-using GiGraph.Dot.Types.Labels;
 using GiGraph.Dot.Types.Styling;
 using GiGraph.Dot.Types.Text;
 

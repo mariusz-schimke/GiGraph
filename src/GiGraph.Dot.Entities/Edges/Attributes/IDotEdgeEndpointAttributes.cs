@@ -1,10 +1,10 @@
 ﻿using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Graphs.Attributes;
+using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Arrowheads;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Edges;
-using GiGraph.Dot.Types.Labels;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {

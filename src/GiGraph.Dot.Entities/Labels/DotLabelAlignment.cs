@@ -1,7 +1,7 @@
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Mappers;
 
-namespace GiGraph.Dot.Types.Labels
+namespace GiGraph.Dot.Entities.Labels
 {
     // TODO: Change from class to record?
     // Should properties remain settable then?

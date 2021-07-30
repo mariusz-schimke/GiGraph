@@ -1,8 +1,9 @@
 using System;
+using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Text;
 
-namespace GiGraph.Dot.Types.Labels
+namespace GiGraph.Dot.Entities.Labels
 {
     /// <summary>
     ///     <para>
@@ -42,7 +43,7 @@ namespace GiGraph.Dot.Types.Labels
 
         protected internal override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return _text?.GetEscapedString(syntaxRules.Attributes.EscapeStringValueEscaper);
+            return ((IDotEscapable) _text)?.GetEscaped(syntaxRules.Attributes.EscapeStringValueEscaper);
         }
 
         public static implicit operator DotTextLabel(string text)

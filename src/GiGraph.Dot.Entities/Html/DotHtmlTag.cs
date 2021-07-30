@@ -3,7 +3,6 @@ using System.Linq;
 using System.Text;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Html
 {

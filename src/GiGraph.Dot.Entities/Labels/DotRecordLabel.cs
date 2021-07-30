@@ -1,8 +1,9 @@
 using System;
+using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Records;
 
-namespace GiGraph.Dot.Types.Labels
+namespace GiGraph.Dot.Entities.Labels
 {
     /// <summary>
     ///     Represents a record label. The value is a compatible record string following the rules described in the
@@ -28,7 +29,7 @@ namespace GiGraph.Dot.Types.Labels
 
         protected internal override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return _record?.GetDotEncoded(options, syntaxRules, hasParent: false);
+            return ((IDotComplexType) _record)?.GetDotEncodedValue(options, syntaxRules);
         }
 
         public static implicit operator DotRecordLabel(DotRecord record)

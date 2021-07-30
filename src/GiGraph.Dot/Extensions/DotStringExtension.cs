@@ -17,8 +17,8 @@ namespace GiGraph.Dot.Extensions
         }
 
         /// <summary>
-        ///     Converts the string to <see cref="DotHtmlString" /> without modifying it in any way. When assigned to a label of an element, it
-        ///     will be rendered as is, without any extra processing (escaping).
+        ///     Converts the string to <see cref="DotHtmlString" /> without modifying it in any way. When assigned to a label of an element,
+        ///     it will be rendered as is, without any extra processing (escaping).
         /// </summary>
         /// <param name="string">
         ///     The string to convert.

@@ -1,13 +1,14 @@
+using GiGraph.Dot.Entities.Html;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Records;
 using GiGraph.Dot.Types.Text;
 
-namespace GiGraph.Dot.Types.Labels
+namespace GiGraph.Dot.Entities.Labels
 {
     /// <summary>
-    ///     Represents label. It can either be a text label (<see cref="DotTextLabel" />), or an HTML label (<see cref="DotHtmlStringLabel" />
-    ///     ). <see cref="DotRecordLabel" />, on the other hand, can be used for record-like nodes.
+    ///     Represents label. It can either be a text label (<see cref="DotTextLabel" />), or an HTML label (
+    ///     <see cref="DotHtmlStringLabel" /> ). <see cref="DotRecordLabel" />, on the other hand, can be used for record-like nodes.
     /// </summary>
     public abstract class DotLabel : IDotComplexType
     {
@@ -93,6 +94,16 @@ namespace GiGraph.Dot.Types.Labels
         public static implicit operator DotLabel(DotHtmlString html)
         {
             return (DotHtmlStringLabel) html;
+        }
+
+        public static implicit operator DotLabel(DotHtmlEntity htmlEntity)
+        {
+            return new DotHtmlLabel(htmlEntity);
+        }
+
+        public static implicit operator DotLabel(DotHtmlEntityCollection htmlEntityCollection)
+        {
+            return new DotHtmlLabel(htmlEntityCollection);
         }
     }
 }
