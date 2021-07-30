@@ -4,7 +4,7 @@ using GiGraph.Dot.Types.Images;
 namespace GiGraph.Dot.Entities.Html.Image
 {
     /// <summary>
-    ///     An HTML &lt;image&gt; element.
+    ///     An HTML &lt;img&gt; element.
     /// </summary>
     public class DotHtmlImage : DotHtmlElement, IDotHtmlImageAttributes
     {
@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Html.Image
         }
 
         protected DotHtmlImage(DotHtmlImageAttributes attributes)
-            : base("image", attributes.Collection)
+            : base("img", attributes.Collection)
         {
             Attributes = attributes;
         }
