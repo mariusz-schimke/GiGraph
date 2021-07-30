@@ -1,9 +1,9 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 
-namespace GiGraph.Dot.Entities.Html.Rules
+namespace GiGraph.Dot.Entities.Html.Rule
 {
     /// <summary>
-    ///     An HTML vertical rule element.
+    ///     An HTML vertical rule element (&lt;vr&gt;).
     /// </summary>
     public class DotHtmlVerticalRule : DotHtmlRule
     {

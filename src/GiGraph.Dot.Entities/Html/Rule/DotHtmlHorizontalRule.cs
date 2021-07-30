@@ -1,9 +1,9 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 
-namespace GiGraph.Dot.Entities.Html.Rules
+namespace GiGraph.Dot.Entities.Html.Rule
 {
     /// <summary>
-    ///     An HTML horizontal rule element.
+    ///     An HTML horizontal rule element (&lt;hr&gt;).
     /// </summary>
     public class DotHtmlHorizontalRule : DotHtmlRule
     {

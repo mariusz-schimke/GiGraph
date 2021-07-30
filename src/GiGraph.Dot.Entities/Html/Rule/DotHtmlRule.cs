@@ -1,7 +1,7 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
 
-namespace GiGraph.Dot.Entities.Html.Rules
+namespace GiGraph.Dot.Entities.Html.Rule
 {
     /// <summary>
     ///     An HTML rule element.
