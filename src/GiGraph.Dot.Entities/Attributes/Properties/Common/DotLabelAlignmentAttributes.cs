@@ -60,7 +60,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         /// </param>
         public virtual void Set(DotAlignment alignment)
         {
-            Set(new DotLabelAlignment(alignment));
+            Set(new DotAlignmentProperties(alignment));
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         /// <param name="alignment">
         ///     The alignment to set.
         /// </param>
-        public virtual void Set(DotLabelAlignment alignment)
+        public virtual void Set(DotAlignmentProperties alignment)
         {
             Set(alignment.Horizontal, alignment.Vertical);
         }

@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Types.Graphs
     /// <summary>
     ///     Graph style options.
     /// </summary>
-    public class DotGraphStyleOptions
+    public class DotGraphStyleProperties
     {
         /// <summary>
         ///     Creates and initializes a new instance.
@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Types.Graphs
         ///     The fill style for graph and clusters. The only option applicable to the root graph is
         ///     <see cref="DotClusterFillStyle.Radial" />.
         /// </param>
-        public DotGraphStyleOptions(DotClusterFillStyle fillStyle = DotClusterFillStyle.None)
+        public DotGraphStyleProperties(DotClusterFillStyle fillStyle = DotClusterFillStyle.None)
         {
             FillStyle = fillStyle;
         }

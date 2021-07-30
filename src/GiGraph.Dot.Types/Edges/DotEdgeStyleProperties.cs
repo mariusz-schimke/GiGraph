@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Types.Edges
     /// <summary>
     ///     Edge style options.
     /// </summary>
-    public class DotEdgeStyleOptions
+    public class DotEdgeStyleProperties
     {
         /// <summary>
         ///     Creates and initializes a new instance.
@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Types.Edges
         /// <param name="invisible">
         ///     Determines whether the element is invisible.
         /// </param>
-        public DotEdgeStyleOptions(DotLineStyle lineStyle = default, DotLineWeight lineWeight = default, bool invisible = false)
+        public DotEdgeStyleProperties(DotLineStyle lineStyle = default, DotLineWeight lineWeight = default, bool invisible = false)
         {
             LineStyle = lineStyle;
             LineWeight = lineWeight;

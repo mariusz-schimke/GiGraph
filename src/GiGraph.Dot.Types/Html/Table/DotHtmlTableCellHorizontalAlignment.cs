@@ -3,10 +3,12 @@ using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Types.Html.Table
 {
+    // TODO: Napisać UT, żeby sprawdzał, czy te zależne od siebie enumy się nie rozjeżdżają
+
     /// <summary>
-    ///     The justification options for labels.
+    ///     The justification options for HTML table cells.
     /// </summary>
-    public enum DotHorizontalCellAlignment
+    public enum DotHtmlTableCellHorizontalAlignment
     {
         // NOTE! THE VALUES ARE USED BY THE DotAlignment ENUM AS FLAGS
         // THE VALUES CONTINUE FROM DotVerticalAlignment
@@ -43,5 +45,3 @@ namespace GiGraph.Dot.Types.Html.Table
         Justify = DotHorizontalAlignment.Right << 1
     }
 }
-
-// TODO: Napisać UT, żeby sprawdzał, czy te zależne od siebie enumy się nie rozjeżdżają

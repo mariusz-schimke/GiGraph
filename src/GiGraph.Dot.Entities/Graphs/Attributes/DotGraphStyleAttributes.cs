@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// <param name="options">
         ///     The options to apply.
         /// </param>
-        public virtual void Set(DotGraphStyleOptions options)
+        public virtual void Set(DotGraphStyleProperties options)
         {
             Set(options.FillStyle);
         }

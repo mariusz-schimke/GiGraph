@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Types.Clusters
     /// <summary>
     ///     Cluster style options.
     /// </summary>
-    public class DotClusterStyleOptions : DotClusterNodeCommonStyleOptions<DotClusterFillStyle>
+    public class DotClusterStyleProperties : DotClusterNodeCommonStyleProperties<DotClusterFillStyle>
     {
         /// <summary>
         ///     Creates and initializes a new instance.
@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Types.Clusters
         /// <param name="invisible">
         ///     Determines whether the element is invisible.
         /// </param>
-        public DotClusterStyleOptions(
+        public DotClusterStyleProperties(
             DotClusterFillStyle fillStyle = default,
             DotBorderStyle borderStyle = default,
             DotBorderWeight borderWeight = default,

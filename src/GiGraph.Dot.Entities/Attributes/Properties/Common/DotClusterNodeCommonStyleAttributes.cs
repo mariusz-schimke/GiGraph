@@ -4,9 +4,9 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common
 {
-    public abstract class DotClusterNodeCommonStyleAttributes<TFillStyle, TFillStyleOptions> : DotStyleAttributes
+    public abstract class DotClusterNodeCommonStyleAttributes<TFillStyle, TFillStyleProperties> : DotStyleAttributes
         where TFillStyle : Enum
-        where TFillStyleOptions : DotClusterNodeCommonStyleOptions<TFillStyle>
+        where TFillStyleProperties : DotClusterNodeCommonStyleProperties<TFillStyle>
     {
         protected DotClusterNodeCommonStyleAttributes(DotAttributeCollection attributes)
             : base(attributes)
@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         /// <param name="options">
         ///     The options to apply.
         /// </param>
-        public virtual void Set(TFillStyleOptions options)
+        public virtual void Set(TFillStyleProperties options)
         {
             Set(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Invisible);
         }
@@ -102,7 +102,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         /// <param name="source">
         ///     The instance to copy the properties from.
         /// </param>
-        protected virtual void CopyFrom(DotClusterNodeCommonStyleAttributes<TFillStyle, TFillStyleOptions> source)
+        protected virtual void CopyFrom(DotClusterNodeCommonStyleAttributes<TFillStyle, TFillStyleProperties> source)
         {
             Set(source.FillStyle, source.BorderStyle, source.BorderWeight, source.CornerStyle, source.Invisible);
         }

@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         }
 
         /// <inheritdoc cref="IDotHtmlTableCellAttributes.HorizontalAlignment" />
-        public virtual DotHorizontalCellAlignment? HorizontalAlignment
+        public virtual DotHtmlTableCellHorizontalAlignment? HorizontalAlignment
         {
             get => ((IDotHtmlTableCellAttributes) Attributes).HorizontalAlignment;
             set => ((IDotHtmlTableCellAttributes) Attributes).HorizontalAlignment = value;

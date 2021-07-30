@@ -1,25 +1,24 @@
-using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Mappers;
 
-namespace GiGraph.Dot.Entities.Labels
+namespace GiGraph.Dot.Types.Alignment
 {
     // TODO: Change from class to record?
     // Should properties remain settable then?
 
     /// <summary>
-    ///     Label alignment properties.
+    ///     Alignment properties.
     /// </summary>
-    public class DotLabelAlignment
+    public class DotAlignmentProperties
     {
         /// <summary>
-        ///     Initializes a new label alignment instance.
+        ///     Initializes a new alignment instance.
         /// </summary>
-        public DotLabelAlignment()
+        public DotAlignmentProperties()
         {
         }
 
         /// <summary>
-        ///     Initializes a new label alignment instance.
+        ///     Initializes a new instance.
         /// </summary>
         /// <param name="horizontal">
         ///     The horizontal alignment to set.
@@ -27,30 +26,30 @@ namespace GiGraph.Dot.Entities.Labels
         /// <param name="vertical">
         ///     The vertical alignment to set.
         /// </param>
-        public DotLabelAlignment(DotHorizontalAlignment? horizontal, DotVerticalAlignment? vertical)
+        public DotAlignmentProperties(DotHorizontalAlignment? horizontal, DotVerticalAlignment? vertical)
         {
             Horizontal = horizontal;
             Vertical = vertical;
         }
 
         /// <summary>
-        ///     Initializes a new label alignment instance.
+        ///     Initializes a new instance.
         /// </summary>
         /// <param name="alignment">
         ///     The alignment to set.
         /// </param>
-        public DotLabelAlignment(DotAlignment alignment)
+        public DotAlignmentProperties(DotAlignment alignment)
         {
             Set(alignment);
         }
 
         /// <summary>
-        ///     Horizontal label alignment.
+        ///     Horizontal alignment.
         /// </summary>
         public virtual DotHorizontalAlignment? Horizontal { get; set; }
 
         /// <summary>
-        ///     Vertical label alignment.
+        ///     Vertical alignment.
         /// </summary>
         public virtual DotVerticalAlignment? Vertical { get; set; }
 

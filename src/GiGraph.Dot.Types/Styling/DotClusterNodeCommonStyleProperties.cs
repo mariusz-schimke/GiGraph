@@ -2,10 +2,10 @@ using System;
 
 namespace GiGraph.Dot.Types.Styling
 {
-    public abstract class DotClusterNodeCommonStyleOptions<TFillStyle>
+    public abstract class DotClusterNodeCommonStyleProperties<TFillStyle>
         where TFillStyle : Enum
     {
-        protected DotClusterNodeCommonStyleOptions(TFillStyle fillStyle, DotBorderStyle borderStyle, DotBorderWeight borderWeight, DotCornerStyle cornerStyle, bool invisible)
+        protected DotClusterNodeCommonStyleProperties(TFillStyle fillStyle, DotBorderStyle borderStyle, DotBorderWeight borderWeight, DotCornerStyle cornerStyle, bool invisible)
         {
             FillStyle = fillStyle;
             BorderStyle = borderStyle;

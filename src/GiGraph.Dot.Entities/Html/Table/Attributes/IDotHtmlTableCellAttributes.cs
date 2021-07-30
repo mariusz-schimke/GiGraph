@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
         ///     Specifies horizontal placement. When an object is allocated more space than required, this value determines where the extra
         ///     space is placed left and right of the object. Default: <see cref="DotHorizontalAlignment.Center" />.
         /// </summary>
-        DotHorizontalCellAlignment? HorizontalAlignment { get; set; }
+        DotHtmlTableCellHorizontalAlignment? HorizontalAlignment { get; set; }
 
         /// <summary>
         ///     Specifies the default alignment of &lt;br/&gt; elements contained in the cell (<see cref="DotHtmlLineBreak" />). That is, if

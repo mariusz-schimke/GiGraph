@@ -25,9 +25,9 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
         }
 
         [DotAttributeKey("align")]
-        DotHorizontalCellAlignment? IDotHtmlTableCellAttributes.HorizontalAlignment
+        DotHtmlTableCellHorizontalAlignment? IDotHtmlTableCellAttributes.HorizontalAlignment
         {
-            get => GetValueAs<DotHorizontalCellAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAs<DotHtmlTableCellHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 

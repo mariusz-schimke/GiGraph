@@ -4,7 +4,7 @@ using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
-    public class DotNodeStyleAttributes : DotClusterNodeCommonStyleAttributes<DotNodeFillStyle, DotNodeStyleOptions>
+    public class DotNodeStyleAttributes : DotClusterNodeCommonStyleAttributes<DotNodeFillStyle, DotNodeStyleProperties>
     {
         public DotNodeStyleAttributes(DotAttributeCollection attributes)
             : base(attributes)

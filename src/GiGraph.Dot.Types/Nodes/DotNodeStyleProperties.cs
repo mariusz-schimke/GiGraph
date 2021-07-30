@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Types.Nodes
     /// <summary>
     ///     Node style options.
     /// </summary>
-    public class DotNodeStyleOptions : DotClusterNodeCommonStyleOptions<DotNodeFillStyle>
+    public class DotNodeStyleProperties : DotClusterNodeCommonStyleProperties<DotNodeFillStyle>
     {
         /// <summary>
         ///     Creates and initializes a new instance.
@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Types.Nodes
         /// <param name="invisible">
         ///     Determines whether the element is invisible.
         /// </param>
-        public DotNodeStyleOptions(
+        public DotNodeStyleProperties(
             DotNodeFillStyle fillStyle = default,
             DotBorderStyle borderStyle = default,
             DotBorderWeight borderWeight = default,

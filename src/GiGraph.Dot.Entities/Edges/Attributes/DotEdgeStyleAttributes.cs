@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         /// <param name="options">
         ///     The options to apply.
         /// </param>
-        public virtual void Set(DotEdgeStyleOptions options)
+        public virtual void Set(DotEdgeStyleProperties options)
         {
             Set(options.LineStyle, options.LineWeight, options.Invisible);
         }
