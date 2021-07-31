@@ -50,6 +50,7 @@ namespace GiGraph.Dot.Output.EnumHelpers
         {
             return !GetValues()
                .Where(v => !Equals(v, value))
+               .Where(v => (int) (object) v != 0)
                .Any(value.HasFlag);
         }
     }
