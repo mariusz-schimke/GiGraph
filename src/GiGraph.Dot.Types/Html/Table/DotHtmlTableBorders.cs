@@ -8,30 +8,45 @@ namespace GiGraph.Dot.Types.Html.Table
     /// </summary>
     [Flags]
     [DotHtmlElementJoinableType(separator: "")]
-    public enum DotHtmlTableSides
+    public enum DotHtmlTableBorders
     {
         /// <summary>
-        ///     The top side of the border.
+        ///     The top border.
         /// </summary>
         [DotHtmlElementAttributeValue("T")]
         Top = 1 << 0,
 
         /// <summary>
-        ///     The right side of the border.
+        ///     The right border.
         /// </summary>
         [DotHtmlElementAttributeValue("R")]
         Right = 1 << 1,
 
         /// <summary>
-        ///     The bottom side of the border.
+        ///     The bottom border.
         /// </summary>
         [DotHtmlElementAttributeValue("B")]
         Bottom = 1 << 2,
 
         /// <summary>
-        ///     The left side of the border.
+        ///     The left border.
         /// </summary>
         [DotHtmlElementAttributeValue("L")]
-        Left = 1 << 3
+        Left = 1 << 3,
+
+        /// <summary>
+        ///     The top and bottom borders.
+        /// </summary>
+        Horizontal = Top | Bottom,
+
+        /// <summary>
+        ///     The left and right borders.
+        /// </summary>
+        Vertical = Left | Right,
+
+        /// <summary>
+        ///     All borders.
+        /// </summary>
+        All = Horizontal | Vertical
     }
 }

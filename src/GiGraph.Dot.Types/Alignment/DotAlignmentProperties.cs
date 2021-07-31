@@ -1,4 +1,4 @@
-using GiGraph.Dot.Types.Mappers;
+using GiGraph.Dot.Types.EnumHelpers;
 
 namespace GiGraph.Dot.Types.Alignment
 {

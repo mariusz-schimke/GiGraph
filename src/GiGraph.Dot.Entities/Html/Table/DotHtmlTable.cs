@@ -115,11 +115,11 @@ namespace GiGraph.Dot.Entities.Html.Table
             set => ((IDotHtmlTableAttributes) Attributes).ColumnFormatting = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Sides" />
-        public virtual DotHtmlTableSides? Sides
+        /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Borders" />
+        public virtual DotHtmlTableBorders? Borders
         {
-            get => ((IDotHtmlTableAttributes) Attributes).Sides;
-            set => ((IDotHtmlTableAttributes) Attributes).Sides = value;
+            get => ((IDotHtmlTableAttributes) Attributes).Borders;
+            set => ((IDotHtmlTableAttributes) Attributes).Borders = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.FixedSize" />

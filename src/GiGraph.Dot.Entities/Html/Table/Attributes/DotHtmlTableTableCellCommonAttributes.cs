@@ -74,9 +74,9 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
         }
 
         [DotAttributeKey("sides")]
-        DotHtmlTableSides? IDotHtmlTableTableCellCommonAttributes.Sides
+        DotHtmlTableBorders? IDotHtmlTableTableCellCommonAttributes.Borders
         {
-            get => GetValueAs<DotHtmlTableSides>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+            get => GetValueAs<DotHtmlTableBorders>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 

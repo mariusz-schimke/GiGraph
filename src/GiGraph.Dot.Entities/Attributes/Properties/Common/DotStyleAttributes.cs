@@ -1,7 +1,7 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Mappers;
+using GiGraph.Dot.Types.EnumHelpers;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common

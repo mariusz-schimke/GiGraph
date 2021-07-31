@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using GiGraph.Dot.Output.EnumHelpers;
 
 namespace GiGraph.Dot.Output.Metadata
 {
@@ -39,10 +40,10 @@ namespace GiGraph.Dot.Output.Metadata
                 return false;
             }
 
+            var enumValues = new DotEnumMetadata(enumType).GetSingleFlagValues();
             var mapping = GetMapping(enumType);
-            var dotFlagsEnumerable = Enum
-               .GetValues(enumType)
-               .Cast<Enum>()
+
+            var dotFlagsEnumerable = enumValues
                .Where(flags.HasFlag)
                .Select(flag => mapping.TryGetValue(flag, out var value)
                     ? value

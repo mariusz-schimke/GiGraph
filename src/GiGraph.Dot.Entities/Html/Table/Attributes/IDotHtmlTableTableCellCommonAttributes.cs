@@ -61,7 +61,7 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
         ///     Specifies which sides of a border in a cell or table should be drawn, if a border is drawn. By default, all sides are drawn.
         ///     Multiple flags may be specified.
         /// </summary>
-        DotHtmlTableSides? Sides { get; set; }
+        DotHtmlTableBorders? Borders { get; set; }
 
         /// <summary>
         ///     Specifies whether the values given by the <see cref="Width" /> and <see cref="Height" /> attributes are enforced. False
