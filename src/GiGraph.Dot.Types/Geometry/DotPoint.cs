@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Types.Geometry
     /// <summary>
     ///     Represents a point in an n-dimensional plain.
     /// </summary>
-    public class DotPoint : IDotComplexType
+    public class DotPoint : IDotEncodable
     {
         /// <summary>
         ///     Creates and initializes a new point in an n-dimensional plain.
@@ -127,7 +127,7 @@ namespace GiGraph.Dot.Types.Geometry
         /// </summary>
         public virtual bool? IsFixed { get; set; }
 
-        string IDotComplexType.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncodedValue(options, syntaxRules);
         }

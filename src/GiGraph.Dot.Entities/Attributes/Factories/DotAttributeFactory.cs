@@ -155,7 +155,7 @@ namespace GiGraph.Dot.Entities.Attributes.Factories
         ///     The value of the attribute.
         /// </param>
         public virtual DotComplexTypeAttribute<TComplex> CreateComplex<TComplex>(string key, TComplex value)
-            where TComplex : IDotComplexType
+            where TComplex : IDotEncodable
         {
             return new DotComplexTypeAttribute<TComplex>(key, value);
         }
@@ -170,7 +170,7 @@ namespace GiGraph.Dot.Entities.Attributes.Factories
         ///     The value of the attribute.
         /// </param>
         public virtual DotComplexTypeArrayAttribute<TComplex> CreateComplexArray<TComplex>(string key, TComplex[] value)
-            where TComplex : IDotComplexType
+            where TComplex : IDotEncodable
         {
             return new DotComplexTypeArrayAttribute<TComplex>(key, value);
         }
@@ -185,7 +185,7 @@ namespace GiGraph.Dot.Entities.Attributes.Factories
         ///     The value of the attribute.
         /// </param>
         public virtual DotComplexTypeArrayAttribute<TComplex> CreateComplexArray<TComplex>(string key, IEnumerable<TComplex> value)
-            where TComplex : IDotComplexType
+            where TComplex : IDotEncodable
         {
             return CreateComplexArray(key, value?.ToArray());
         }

@@ -11,10 +11,10 @@ namespace GiGraph.Dot.Entities.Attributes
     ///     A DOT-encodable value array attribute.
     /// </summary>
     /// <typeparam name="TComplex">
-    ///     A complex type that implements the <see cref="IDotComplexType" /> interface.
+    ///     A complex type that implements the <see cref="IDotEncodable" /> interface.
     /// </typeparam>
     public class DotComplexTypeArrayAttribute<TComplex> : DotAttribute<TComplex[]>
-        where TComplex : IDotComplexType
+        where TComplex : IDotEncodable
     {
         /// <summary>
         ///     Creates a new instance of the attribute.

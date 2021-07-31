@@ -7,9 +7,9 @@ namespace GiGraph.Dot.Types.Arrowheads
     ///     Represents an arrowhead as either a single shape (<see cref="DotArrowhead" />) or as a composition of multiple shapes (
     ///     <see cref="DotCompositeArrowhead" />).
     /// </summary>
-    public abstract class DotArrowheadDefinition : IDotComplexType
+    public abstract class DotArrowheadDefinition : IDotEncodable
     {
-        string IDotComplexType.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncoded(options, syntaxRules);
         }

@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Labels
 
         protected internal override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return ((IDotComplexType) _record)?.GetDotEncodedValue(options, syntaxRules);
+            return ((IDotEncodable) _record)?.GetDotEncodedValue(options, syntaxRules);
         }
 
         public static implicit operator DotRecordLabel(DotRecord record)

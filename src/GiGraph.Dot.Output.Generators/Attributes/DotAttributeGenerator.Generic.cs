@@ -6,7 +6,7 @@ using GiGraph.Dot.Output.Writers.Attributes;
 namespace GiGraph.Dot.Output.Generators.Attributes
 {
     public class DotAttributeGenerator<TAttribute> : DotEntityGenerator<TAttribute, IDotAttributeWriter>
-        where TAttribute : DotAttribute, IDotComplexType
+        where TAttribute : DotAttribute, IDotEncodable
     {
         public DotAttributeGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)

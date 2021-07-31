@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Types.Viewport
     /// <summary>
     ///     Specifies a viewport for the graph image.
     /// </summary>
-    public class DotViewport : IDotComplexType
+    public class DotViewport : IDotEncodable
     {
         protected const double DefaultZoom = 1;
 
@@ -47,7 +47,7 @@ namespace GiGraph.Dot.Types.Viewport
         /// </summary>
         public virtual double Zoom { get; set; }
 
-        string IDotComplexType.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncodedValue(options, syntaxRules);
         }

@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         }
 
         protected void SetOrRemove<TComplex>(MethodBase propertyAccessor, TComplex value)
-            where TComplex : IDotComplexType
+            where TComplex : IDotEncodable
         {
             _attributes.SetOrRemoveComplex(GetKey(propertyAccessor), value);
         }

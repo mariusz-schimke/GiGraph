@@ -4,7 +4,7 @@ using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
-    public abstract class DotAttribute : IDotEntity, IDotAnnotatable, IDotComplexType, IDotOrderable
+    public abstract class DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable, IDotOrderable
     {
         protected DotAttribute(string key)
         {
@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }
 
-        string IDotComplexType.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncodedValue(options, syntaxRules);
         }

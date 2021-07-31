@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Types.Edges
     /// <summary>
     ///     Represents the endpoint port, that is a point on a node an edge is attached to.
     /// </summary>
-    public class DotEndpointPort : IDotComplexType
+    public class DotEndpointPort : IDotEncodable
     {
         /// <summary>
         ///     Creates a new instance with no port properties specified.
@@ -78,7 +78,7 @@ namespace GiGraph.Dot.Types.Edges
         /// </summary>
         public virtual DotCompassPoint? CompassPoint { get; set; }
 
-        string IDotComplexType.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return GetDotEncoded(options, syntaxRules);
         }
