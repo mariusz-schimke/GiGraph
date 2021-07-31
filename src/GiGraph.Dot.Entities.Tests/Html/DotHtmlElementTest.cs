@@ -45,5 +45,28 @@ namespace GiGraph.Dot.Entities.Tests.Html
                 "html_element"
             );
         }
+
+        [Fact]
+        public void encoded_html_element_name_is_upper_case()
+        {
+            var tag = new DotHtmlElement("custom-tag-name");
+            tag.Attributes.Set("attr1", "value1");
+
+            var syntaxOptions = new DotSyntaxOptions
+            {
+                Attributes =
+                {
+                    Html =
+                    {
+                        UpperCaseTagNames = true
+                    }
+                }
+            };
+
+            Snapshot.Match(
+                ((IDotHtmlEncodable) tag).ToHtml(syntaxOptions, _syntaxRules),
+                "html_element_upper_case_name"
+            );
+        }
     }
 }
