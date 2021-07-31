@@ -99,9 +99,9 @@ namespace GiGraph.Dot.Types.Text
         /// <param name="value">
         ///     The string to use.
         /// </param>
-        public static DotEscapeString FromString(string value)
+        public static DotUnescapedString FromString(string value)
         {
-            return (DotUnescapedString) value;
+            return value;
         }
 
         /// <summary>
@@ -110,18 +110,7 @@ namespace GiGraph.Dot.Types.Text
         /// <param name="items">
         ///     The escape string items to concatenate.
         /// </param>
-        public static DotEscapeString Concat(params DotEscapeString[] items)
-        {
-            return new DotConcatenatedEscapeString(items);
-        }
-
-        /// <summary>
-        ///     Concatenates the specified escape strings.
-        /// </summary>
-        /// <param name="items">
-        ///     The escape string items to concatenate.
-        /// </param>
-        public static DotEscapeString Concat(IEnumerable<DotEscapeString> items)
+        public static DotConcatenatedEscapeString Concat(params DotEscapeString[] items)
         {
             return new DotConcatenatedEscapeString(items);
         }
@@ -132,7 +121,7 @@ namespace GiGraph.Dot.Types.Text
         /// <param name="items">
         ///     The escape string items to concatenate.
         /// </param>
-        public static DotEscapeString Concat(params string[] items)
+        public static DotConcatenatedEscapeString Concat(IEnumerable<DotEscapeString> items)
         {
             return new DotConcatenatedEscapeString(items);
         }
@@ -143,7 +132,18 @@ namespace GiGraph.Dot.Types.Text
         /// <param name="items">
         ///     The escape string items to concatenate.
         /// </param>
-        public static DotEscapeString Concat(IEnumerable<string> items)
+        public static DotConcatenatedEscapeString Concat(params string[] items)
+        {
+            return new DotConcatenatedEscapeString(items);
+        }
+
+        /// <summary>
+        ///     Concatenates the specified escape strings.
+        /// </summary>
+        /// <param name="items">
+        ///     The escape string items to concatenate.
+        /// </param>
+        public static DotConcatenatedEscapeString Concat(IEnumerable<string> items)
         {
             return new DotConcatenatedEscapeString(items);
         }
@@ -159,9 +159,9 @@ namespace GiGraph.Dot.Types.Text
         /// <param name="value">
         ///     The string to use.
         /// </param>
-        public static DotEscapeString FromEscapedString(string value)
+        public static DotEscapedString FromEscapedString(string value)
         {
-            return (DotEscapedString) value;
+            return value;
         }
 
         /// <summary>
@@ -175,9 +175,9 @@ namespace GiGraph.Dot.Types.Text
         /// <param name="items">
         ///     The string to use.
         /// </param>
-        public static DotEscapeString ConcatEscaped(params string[] items)
+        public static DotConcatenatedEscapeString ConcatEscapedStrings(params string[] items)
         {
-            return ConcatEscaped((IEnumerable<string>) items);
+            return ConcatEscapedStrings((IEnumerable<string>) items);
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace GiGraph.Dot.Types.Text
         /// <param name="items">
         ///     The string to use.
         /// </param>
-        public static DotEscapeString ConcatEscaped(IEnumerable<string> items)
+        public static DotConcatenatedEscapeString ConcatEscapedStrings(IEnumerable<string> items)
         {
             return new DotConcatenatedEscapeString(items?.Select(FromEscapedString));
         }
