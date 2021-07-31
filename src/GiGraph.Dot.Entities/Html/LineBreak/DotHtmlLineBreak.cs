@@ -1,6 +1,8 @@
 using GiGraph.Dot.Entities.Html.LineBreak.Attributes;
 using GiGraph.Dot.Output.Metadata.Html;
+using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Alignment;
+using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Html.LineBreak
 {
@@ -9,6 +11,8 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
     /// </summary>
     public class DotHtmlLineBreak : DotHtmlTag, IDotHtmlLineBreakAttributes
     {
+        protected static readonly DotHtmlLineBreak LineBreak = new();
+
         /// <summary>
         ///     Initializes a new line break instance.
         /// </summary>
@@ -35,12 +39,22 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
         /// </summary>
         public new virtual DotHtmlLineBreakAttributes Attributes { get; }
 
+        /// <summary>
+        ///     Returns a &lt;br/&gt; HTML tag string according to the default syntax options and rules.
+        /// </summary>
+        public static DotHtmlString Html => LineBreak.ToHtml(DotSyntaxOptions.Default, DotSyntaxRules.Default);
+
         /// <inheritdoc cref="IDotHtmlLineBreakAttributes.HorizontalAlignment" />
         [DotHtmlElementAttributeKey("align")]
         public virtual DotHorizontalAlignment? HorizontalAlignment
         {
             get => ((IDotHtmlLineBreakAttributes) Attributes).HorizontalAlignment;
             set => ((IDotHtmlLineBreakAttributes) Attributes).HorizontalAlignment = value;
+        }
+
+        internal static string AsHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        {
+            return LineBreak.ToHtml(options, syntaxRules);
         }
     }
 }
