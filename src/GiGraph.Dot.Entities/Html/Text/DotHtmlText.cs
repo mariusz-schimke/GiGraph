@@ -48,7 +48,7 @@ namespace GiGraph.Dot.Entities.Html.Text
         /// <param name="horizontalAlignment">
         ///     Specifies horizontal placement of lines of multiline text.
         /// </param>
-        public static DotHtmlEntityCollection FromMultilineText(string text, string[] lineBreaks, DotHorizontalAlignment? horizontalAlignment = null)
+        public static DotHtmlEntityCollection FromText(string text, string[] lineBreaks, DotHorizontalAlignment? horizontalAlignment = null)
         {
             if (text is null)
             {
@@ -72,7 +72,7 @@ namespace GiGraph.Dot.Entities.Html.Text
         }
 
         /// <summary>
-        ///     Creates a collection of entities to represent the specified text as HTML. All line breaks will be replaced with &lt;br /&gt;
+        ///     Creates a collection of entities to represent the specified text as HTML. Line breaks will be replaced with &lt;br /&gt;
         ///     tags.
         /// </summary>
         /// <param name="text">
@@ -81,9 +81,9 @@ namespace GiGraph.Dot.Entities.Html.Text
         /// <param name="horizontalAlignment">
         ///     Specifies horizontal placement of lines of multiline text.
         /// </param>
-        public static DotHtmlEntityCollection FromMultilineText(string text, DotHorizontalAlignment? horizontalAlignment = null)
+        public static DotHtmlEntityCollection FromText(string text, DotHorizontalAlignment? horizontalAlignment = null)
         {
-            return FromMultilineText(text, new[] { DotNewLine.Windows, DotNewLine.Unix }, horizontalAlignment);
+            return FromText(text, new[] { DotNewLine.SystemDefault }, horizontalAlignment);
         }
     }
 }
