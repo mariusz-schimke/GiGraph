@@ -16,8 +16,16 @@ namespace GiGraph.Dot.Entities.Tests.Html
         [Fact]
         public void multiline_text_is_split_with_br_elements()
         {
-            var entity = DotHtmlText.FromMultilineText($"Line 1{Environment.NewLine}Line 2");
+            var text = $"Line 1{Environment.NewLine}Line 2";
+            var entities = DotHtmlText.FromMultilineText(text);
 
+            Snapshot.Match(
+                ((IDotHtmlEncodable) entities).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_multiline_text"
+            );
+
+            // this should generate the same result
+            var entity = new DotHtmlText(text);
             Snapshot.Match(
                 ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
                 "html_multiline_text"
@@ -27,10 +35,11 @@ namespace GiGraph.Dot.Entities.Tests.Html
         [Fact]
         public void multiline_text_is_split_with_br_elements_with_alignment()
         {
-            var entity = DotHtmlText.FromMultilineText($"Line 1{Environment.NewLine}Line 2", DotHorizontalAlignment.Right);
+            var text = $"Line 1{Environment.NewLine}Line 2";
+            var entities = DotHtmlText.FromMultilineText(text, DotHorizontalAlignment.Right);
 
             Snapshot.Match(
-                ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
+                ((IDotHtmlEncodable) entities).ToHtml(_syntaxOptions, _syntaxRules),
                 "html_multiline_right-aligned_text"
             );
         }
@@ -38,10 +47,18 @@ namespace GiGraph.Dot.Entities.Tests.Html
         [Fact]
         public void single_line_text_is_not_split()
         {
-            var entity = DotHtmlText.FromMultilineText("Line 1");
+            var text = "Line 1";
+            var entities = DotHtmlText.FromMultilineText(text);
 
             Snapshot.Match(
-                ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
+                ((IDotHtmlEncodable) entities).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_single-line_text"
+            );
+
+            // this should generate the same result
+            var entity = new DotHtmlText(text);
+            Snapshot.Match(
+                ((IDotHtmlEncodable) entities).ToHtml(_syntaxOptions, _syntaxRules),
                 "html_single-line_text"
             );
         }
