@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Entities.Html.Text
     /// </summary>
     public class DotHtmlText : DotHtmlEntity
     {
-        protected static string[] LineBreaks = { DotNewLine.Windows, DotNewLine.Unix };
+        protected static readonly string[] LineBreaks = { DotNewLine.Windows, DotNewLine.Unix };
         protected readonly string _text;
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Entities.Html.Text
 
         protected static string[] SplitMultiline(string text, string[] lineBreaks)
         {
-            return text?.Split(lineBreaks, StringSplitOptions.None);
+            return text?.Split(lineBreaks, StringSplitOptions.None) ?? Array.Empty<string>();
         }
 
         /// <summary>
