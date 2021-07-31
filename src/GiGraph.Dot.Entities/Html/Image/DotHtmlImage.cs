@@ -9,11 +9,23 @@ namespace GiGraph.Dot.Entities.Html.Image
     public class DotHtmlImage : DotHtmlElement, IDotHtmlImageAttributes
     {
         /// <summary>
-        ///     Initializes a new font element instance.
+        ///     Initializes a new image element instance.
         /// </summary>
-        public DotHtmlImage()
+        /// <param name="source">
+        ///     Specifies the image file to be displayed in the cell.
+        /// </param>
+        /// <param name="scaling">
+        ///     Specifies how the image will use any extra space available in its cell.
+        /// </param>
+        public DotHtmlImage(string source, DotImageScaling? scaling = null)
             : this(new DotHtmlImageAttributes())
         {
+            Source = source;
+
+            if (scaling.HasValue)
+            {
+                Scaling = scaling;
+            }
         }
 
         protected DotHtmlImage(DotHtmlImageAttributes attributes)
