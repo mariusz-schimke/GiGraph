@@ -17,6 +17,15 @@ namespace GiGraph.Dot.Entities.Html.Font
         {
         }
 
+        /// <summary>
+        ///     Creates a new instance with the specified text as its content.
+        /// </summary>
+        public DotHtmlBold(string text)
+            : base(TagName)
+        {
+            AppendText(text);
+        }
+
         protected DotHtmlBold(DotAttributeCollection attributes)
             : base(TagName, attributes)
         {

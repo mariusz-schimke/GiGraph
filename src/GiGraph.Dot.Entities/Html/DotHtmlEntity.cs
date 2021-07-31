@@ -25,6 +25,6 @@ namespace GiGraph.Dot.Entities.Html
             return ToHtml();
         }
 
-        protected abstract string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
+        protected internal abstract string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
     }
 }
