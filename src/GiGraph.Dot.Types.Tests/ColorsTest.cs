@@ -4,7 +4,7 @@ using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Colors;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests
+namespace GiGraph.Dot.Types.Tests
 {
     public class ColorsTest
     {

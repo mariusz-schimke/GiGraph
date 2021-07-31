@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Tests.Html
         [Fact]
         public void text_is_escaped()
         {
-            var element = new DotHtmlText($"My custom text < > \" ' & \u00A0");
+            var element = new DotHtmlText("My custom text < > \" ' &  ");
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) element).ToHtml(_syntaxOptions, _syntaxRules),

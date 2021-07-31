@@ -1,9 +1,7 @@
-using GiGraph.Dot.Entities.Html.Image;
 using GiGraph.Dot.Entities.Html.LineBreak;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Alignment;
-using GiGraph.Dot.Types.Images;
 using Snapshooter.Xunit;
 using Xunit;
 

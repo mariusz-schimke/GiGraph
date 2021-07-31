@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Types", "GiGraph.Dot.Types\GiGraph.Dot.Types.csproj", "{6B5EFF21-2558-48B5-8564-6BFF9DBF11C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Types.Tests", "GiGraph.Dot.Types.Tests\GiGraph.Dot.Types.Tests.csproj", "{BCA1E2F9-1ADB-44B1-BA3F-2BBCABC02CE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,12 @@ Global
 		{6B5EFF21-2558-48B5-8564-6BFF9DBF11C3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6B5EFF21-2558-48B5-8564-6BFF9DBF11C3}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
 		{6B5EFF21-2558-48B5-8564-6BFF9DBF11C3}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{BCA1E2F9-1ADB-44B1-BA3F-2BBCABC02CE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCA1E2F9-1ADB-44B1-BA3F-2BBCABC02CE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCA1E2F9-1ADB-44B1-BA3F-2BBCABC02CE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCA1E2F9-1ADB-44B1-BA3F-2BBCABC02CE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCA1E2F9-1ADB-44B1-BA3F-2BBCABC02CE2}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{BCA1E2F9-1ADB-44B1-BA3F-2BBCABC02CE2}.Publish|Any CPU.Build.0 = Publish|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
