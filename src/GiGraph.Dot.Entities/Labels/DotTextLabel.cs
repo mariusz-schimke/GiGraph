@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Labels
     ///         .
     ///     </para>
     ///     <para>
-    ///         When you want to generate an HTML-like label, use <see cref="DotHtmlStringLabel" /> instead.
+    ///         When you want to generate an HTML-like label, use <see cref="DotHtmlLabel" /> instead.
     ///     </para>
     /// </summary>
     public class DotTextLabel : DotLabel

@@ -7,8 +7,8 @@ using GiGraph.Dot.Types.Text;
 namespace GiGraph.Dot.Entities.Labels
 {
     /// <summary>
-    ///     Represents label. It can either be a text label (<see cref="DotTextLabel" />), or an HTML label (
-    ///     <see cref="DotHtmlStringLabel" /> ). <see cref="DotRecordLabel" />, on the other hand, can be used for record-like nodes.
+    ///     Represents label. It can either be a text label (<see cref="DotTextLabel" />), or an HTML label ( <see cref="DotHtmlLabel" />
+    ///     ). <see cref="DotRecordLabel" />, on the other hand, can be used for record-like nodes.
     /// </summary>
     public abstract class DotLabel : IDotEncodable
     {
@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Labels
         /// </param>
         public static DotTextLabel FromText(string text)
         {
-            return text;
+            return new DotTextLabel(text);
         }
 
         /// <summary>
@@ -45,9 +45,9 @@ namespace GiGraph.Dot.Entities.Labels
         /// <param name="text">
         ///     The escaped text to use as the label.
         /// </param>
-        public static DotTextLabel FromFormattedText(string text)
+        public static DotTextLabel FromFormattedText(DotEscapedString text)
         {
-            return (DotEscapedString) text;
+            return new DotTextLabel(text);
         }
 
         /// <summary>
@@ -60,9 +60,20 @@ namespace GiGraph.Dot.Entities.Labels
         /// <param name="html">
         ///     The HTML to use as the label.
         /// </param>
-        public static DotHtmlStringLabel FromHtml(string html)
+        public static DotHtmlLabel FromHtml(DotHtmlString html)
         {
-            return html;
+            return new DotHtmlString(html);
+        }
+
+        /// <summary>
+        ///     Creates an HTML label.
+        /// </summary>
+        /// <param name="htmlEntity">
+        ///     The HTML entity to use as the label.
+        /// </param>
+        public static DotHtmlLabel FromHtml(IDotHtmlEntity htmlEntity)
+        {
+            return new DotHtmlLabel(htmlEntity);
         }
 
         /// <summary>
@@ -73,7 +84,7 @@ namespace GiGraph.Dot.Entities.Labels
         /// </param>
         public static DotRecordLabel FromRecord(DotRecord record)
         {
-            return record;
+            return new DotRecordLabel(record);
         }
 
         public static implicit operator DotLabel(string text)
@@ -93,7 +104,7 @@ namespace GiGraph.Dot.Entities.Labels
 
         public static implicit operator DotLabel(DotHtmlString html)
         {
-            return (DotHtmlStringLabel) html;
+            return (DotHtmlLabel) html;
         }
 
         public static implicit operator DotLabel(DotHtmlEntity htmlEntity)
