@@ -98,12 +98,12 @@ namespace GiGraph.Dot.Entities.Labels
 
         public static implicit operator DotLabel(DotHtmlEntity htmlEntity)
         {
-            return new DotHtmlLabel(htmlEntity);
+            return (DotHtmlLabel) htmlEntity;
         }
 
         public static implicit operator DotLabel(DotHtmlEntityCollection htmlEntityCollection)
         {
-            return new DotHtmlLabel(htmlEntityCollection);
+            return (DotHtmlLabel) htmlEntityCollection;
         }
     }
 }

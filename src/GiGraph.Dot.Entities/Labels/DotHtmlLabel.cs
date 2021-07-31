@@ -1,4 +1,5 @@
 using System;
+using GiGraph.Dot.Entities.Html;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
 
@@ -28,6 +29,21 @@ namespace GiGraph.Dot.Entities.Labels
         protected internal override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return _htmlEntity?.ToHtml(options, syntaxRules);
+        }
+
+        public override string ToString()
+        {
+            return _htmlEntity?.ToString();
+        }
+
+        public static implicit operator DotHtmlLabel(DotHtmlEntity htmlEntity)
+        {
+            return htmlEntity is not null ? new DotHtmlLabel(htmlEntity) : null;
+        }
+
+        public static implicit operator DotHtmlLabel(DotHtmlEntityCollection htmlEntityCollection)
+        {
+            return htmlEntityCollection is not null ? new DotHtmlLabel(htmlEntityCollection) : null;
         }
     }
 }

@@ -1,3 +1,5 @@
+using System;
+using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Labels
@@ -9,8 +11,10 @@ namespace GiGraph.Dot.Entities.Labels
     ///     </see>
     ///     .
     /// </summary>
-    public class DotHtmlStringLabel : DotTextLabel
+    public class DotHtmlStringLabel : DotLabel
     {
+        protected readonly DotHtmlString _html;
+
         /// <summary>
         ///     Creates a new HTML string label.
         /// </summary>
@@ -22,9 +26,16 @@ namespace GiGraph.Dot.Entities.Labels
         ///     . Pass <see cref="string" /> to convert it implicitly to the required <see cref="DotHtmlString" /> type.
         /// </param>
         public DotHtmlStringLabel(DotHtmlString html)
-            : base(html)
         {
+            _html = html ?? throw new ArgumentNullException(nameof(html), "HTML string must not be null.");
         }
+
+        public override string ToString()
+        {
+            return _html;
+        }
+
+        protected internal override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => _html;
 
         public static implicit operator DotHtmlStringLabel(string html)
         {
@@ -34,6 +45,16 @@ namespace GiGraph.Dot.Entities.Labels
         public static implicit operator DotHtmlStringLabel(DotHtmlString html)
         {
             return html is not null ? new DotHtmlStringLabel(html) : null;
+        }
+
+        public static implicit operator string(DotHtmlStringLabel label)
+        {
+            return label?._html;
+        }
+
+        public static implicit operator DotHtmlString(DotHtmlStringLabel label)
+        {
+            return label?._html;
         }
     }
 }
