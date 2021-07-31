@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using GiGraph.Dot.Entities.Html.LineBreak;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.TextEscaping;
+using GiGraph.Dot.Output.TextEscaping.Escapers;
 using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Html.Text

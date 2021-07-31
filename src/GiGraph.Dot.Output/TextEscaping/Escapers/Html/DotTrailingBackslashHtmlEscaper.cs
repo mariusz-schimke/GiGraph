@@ -1,7 +1,7 @@
-﻿namespace GiGraph.Dot.Output.TextEscaping
+﻿namespace GiGraph.Dot.Output.TextEscaping.Escapers.Html
 {
     /// <summary>
-    ///     Escapes trailing backslash with the &#92; HTML code.
+    ///     Escapes trailing backslash with the &amp;#92; HTML code.
     /// </summary>
     public class DotTrailingBackslashHtmlEscaper : IDotTextEscaper
     {

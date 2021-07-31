@@ -1,6 +1,6 @@
 using System;
 
-namespace GiGraph.Dot.Output.TextEscaping
+namespace GiGraph.Dot.Output.TextEscaping.Escapers
 {
     /// <summary>
     ///     Operating system-based new line constants.

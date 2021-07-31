@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using GiGraph.Dot.Output.TextEscaping;
+using GiGraph.Dot.Output.TextEscaping.Escapers;
+using GiGraph.Dot.Output.TextEscaping.Pipelines;
 
 namespace GiGraph.Dot.Output.Options
 {

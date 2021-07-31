@@ -1,4 +1,4 @@
-﻿namespace GiGraph.Dot.Output.TextEscaping
+﻿namespace GiGraph.Dot.Output.TextEscaping.Escapers
 {
     /// <summary>
     ///     Escapes angle brackets (&lt;, &gt;). Use for escaping text of record node fields.

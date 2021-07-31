@@ -1,0 +1,45 @@
+﻿using GiGraph.Dot.Output.TextEscaping.Escapers;
+
+namespace GiGraph.Dot.Output.TextEscaping.Pipelines
+{
+    public partial class DotTextEscapingPipeline
+    {
+        /// <summary>
+        ///     Creates a new pipeline that escapes fields of record labels (backslashes, quotation marks, line breaks; angle and curly
+        ///     brackets, vertical bars, and spaces).
+        /// </summary>
+        public static DotTextEscapingPipeline ForRecordLabelField()
+        {
+            return new DotTextEscapingPipeline(
+                ForEscapeString(),
+                CommonForRecordLabel()
+            );
+        }
+
+        /// <summary>
+        ///     Creates a new pipeline that escapes ports of record labels (backslashes, quotation marks; angle and curly brackets, vertical
+        ///     bars, and spaces).
+        /// </summary>
+        public static DotTextEscapingPipeline ForRecordLabelPort()
+        {
+            return new DotTextEscapingPipeline(
+                // when a port string ends with a backslash (<...\>), the closing angle bracket is interpreted as a content character,
+                // so the backslash has to be escaped
+                ForString(),
+                CommonForRecordLabel()
+            );
+        }
+
+        protected static DotTextEscapingPipeline CommonForRecordLabel()
+        {
+            return new DotTextEscapingPipeline
+            (
+                new DotAngleBracketsEscaper(),
+                new DotCurlyBracketsEscaper(),
+                new DotVerticalBarEscaper(),
+                new DotSpacePaddingEscaper(),
+                new DotSpaceEscaper()
+            );
+        }
+    }
+}

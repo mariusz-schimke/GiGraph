@@ -1,16 +1,16 @@
-﻿using GiGraph.Dot.Output.TextEscaping;
+﻿using GiGraph.Dot.Output.TextEscaping.Escapers;
+using GiGraph.Dot.Output.TextEscaping.Pipelines;
 
 namespace GiGraph.Dot.Output.Options
 {
     public partial class DotSyntaxRules
     {
-        // TODO: adjust escapers
         public class HtmlRules
         {
             /// <summary>
-            ///     A text escaper to use for HTML attribute values of the string type.
+            ///     A text escaper to use for HTML attribute values in general (unless another escaper is used in some contexts).
             /// </summary>
-            public virtual IDotTextEscaper AttributeStringValueEscaper { get; set; } = DotTextEscapingPipeline.ForHtmlAttributeStringValue();
+            public virtual IDotTextEscaper AttributeValueEscaper { get; set; } = DotTextEscapingPipeline.ForHtmlAttributeStringValue();
 
             /// <summary>
             ///     A text escaper to use for HTML attribute values of the escape string type.

@@ -1,4 +1,4 @@
-﻿namespace GiGraph.Dot.Output.TextEscaping
+﻿namespace GiGraph.Dot.Output.TextEscaping.Escapers
 {
     /// <summary>
     ///     Escapes line feed characters (LF == \x000A == \n).

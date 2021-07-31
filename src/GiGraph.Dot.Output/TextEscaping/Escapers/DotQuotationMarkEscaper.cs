@@ -1,9 +1,9 @@
-﻿namespace GiGraph.Dot.Output.TextEscaping
+﻿namespace GiGraph.Dot.Output.TextEscaping.Escapers
 {
     /// <summary>
-    ///     Escapes spaces with the &#32; HTML code.
+    ///     Escapes quotation marks.
     /// </summary>
-    public class DotSpaceHtmlEscaper : IDotTextEscaper
+    public class DotQuotationMarkEscaper : IDotTextEscaper
     {
         string IDotTextEscaper.Escape(string value)
         {
@@ -12,7 +12,7 @@
 
         public static string Escape(string value)
         {
-            return value?.Replace(" ", "&#32;");
+            return value?.Replace("\"", "\\\"");
         }
     }
 }
