@@ -11,9 +11,32 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <summary>
         ///     Initializes a new font element instance.
         /// </summary>
-        public DotHtmlFont()
+        /// <param name="name">
+        ///     Specifies the font to use within the scope of the current element.
+        /// </param>
+        /// <param name="size">
+        ///     Specifies the size of the font, in points, to use within the scope of the current element.
+        /// </param>
+        /// <param name="color">
+        ///     Sets the color of the font within the scope of the current element.
+        /// </param>
+        public DotHtmlFont(string name = null, int? size = null, DotColor color = null)
             : this(new DotHtmlFontAttributes())
         {
+            if (name is not null)
+            {
+                Name = name;
+            }
+
+            if (size.HasValue)
+            {
+                Size = size;
+            }
+
+            if (color is not null)
+            {
+                Color = color;
+            }
         }
 
         protected DotHtmlFont(DotHtmlFontAttributes attributes)
