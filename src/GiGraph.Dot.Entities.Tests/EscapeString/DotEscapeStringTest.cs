@@ -8,11 +8,12 @@ namespace GiGraph.Dot.Entities.Tests.EscapeString
     public class DotEscapeStringTest
     {
         private readonly DotSyntaxRules _syntaxRules = new();
+        public const string SpecialChars = "\" \\ \r\n \r \n < > { } |";
 
         [Fact]
         public void escaped_string_returns_exact_input_as_dot_encoded_value()
         {
-            var value = "a bcd \" \\ \r\n \r \n h ij < > { } |";
+            var value = $"a bcd {SpecialChars} h ij";
 
             DotEscapedString str = value;
             Assert.Equal(value, ((IDotEscapable) str).GetEscaped(_syntaxRules.Attributes.EscapeStringValueEscaper));
@@ -21,9 +22,9 @@ namespace GiGraph.Dot.Entities.Tests.EscapeString
         [Fact]
         public void unescaped_string_returns_escaped_string_as_dot_encoded_value()
         {
-            DotUnescapedString str = "a bcd \" \\ \r\n \r \n h ij < > { } |";
+            DotUnescapedString str = $"a bcd {SpecialChars} h ij";
             Assert.Equal(
-                @"a bcd \"" \\ \n \n \n h ij < > { } |",
+                @"a bcd \"" \\ \n \n \n < > { } | h ij",
                 ((IDotEscapable) str).GetEscaped(_syntaxRules.Attributes.EscapeStringValueEscaper));
         }
     }
