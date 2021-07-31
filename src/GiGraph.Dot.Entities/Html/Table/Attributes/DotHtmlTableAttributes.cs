@@ -36,14 +36,14 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
         }
 
         [DotAttributeKey("rows")]
-        string IDotHtmlTableAttributes.RowFormatting
+        string IDotHtmlTableAttributes.RowFormat
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("columns")]
-        string IDotHtmlTableAttributes.ColumnFormatting
+        string IDotHtmlTableAttributes.ColumnFormat
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);

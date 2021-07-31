@@ -101,18 +101,18 @@ namespace GiGraph.Dot.Entities.Html.Table
             set => ((IDotHtmlTableAttributes) Attributes).CellSpacing = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.RowFormatting" />
-        public virtual string RowFormatting
+        /// <inheritdoc cref="IDotHtmlTableAttributes.RowFormat" />
+        public virtual string RowFormat
         {
-            get => ((IDotHtmlTableAttributes) Attributes).RowFormatting;
-            set => ((IDotHtmlTableAttributes) Attributes).RowFormatting = value;
+            get => ((IDotHtmlTableAttributes) Attributes).RowFormat;
+            set => ((IDotHtmlTableAttributes) Attributes).RowFormat = value;
         }
 
-        /// <inheritdoc cref="IDotHtmlTableAttributes.ColumnFormatting" />
-        public virtual string ColumnFormatting
+        /// <inheritdoc cref="IDotHtmlTableAttributes.ColumnFormat" />
+        public virtual string ColumnFormat
         {
-            get => ((IDotHtmlTableAttributes) Attributes).ColumnFormatting;
-            set => ((IDotHtmlTableAttributes) Attributes).ColumnFormatting = value;
+            get => ((IDotHtmlTableAttributes) Attributes).ColumnFormat;
+            set => ((IDotHtmlTableAttributes) Attributes).ColumnFormat = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Borders" />

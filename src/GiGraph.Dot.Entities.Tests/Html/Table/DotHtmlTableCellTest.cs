@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.Table
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) table).ToHtml(_syntaxOptions, _syntaxRules),
-                "html_table_cell_single_line"
+                "html_table_cell"
             );
         }
     }

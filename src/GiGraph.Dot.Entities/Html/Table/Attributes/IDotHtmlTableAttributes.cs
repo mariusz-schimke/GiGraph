@@ -22,12 +22,12 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
         /// <summary>
         ///     Provides general formatting information concerning the rows. See <see cref="DotHtmlTableRowFormat" /> for accepted values.
         /// </summary>
-        string RowFormatting { get; set; }
+        string RowFormat { get; set; }
 
         /// <summary>
         ///     Provides general formatting information concerning the columns. See <see cref="DotHtmlTableColumnFormat" /> for accepted
         ///     values.
         /// </summary>
-        string ColumnFormatting { get; set; }
+        string ColumnFormat { get; set; }
     }
 }
