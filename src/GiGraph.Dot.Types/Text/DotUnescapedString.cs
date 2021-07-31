@@ -10,7 +10,16 @@ namespace GiGraph.Dot.Types.Text
     {
         protected readonly string _value;
 
-        protected DotUnescapedString(string value)
+        /// <summary>
+        ///     Initializes a new instance.
+        /// </summary>
+        /// <param name="value">
+        ///     The unescaped string to initialize the instance with.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        ///     Thrown when the <paramref name="value" /> is null.
+        /// </exception>
+        public DotUnescapedString(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value), "Value must not be null.");
         }
