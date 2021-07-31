@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Entities.Tests.Html
         [Fact]
         public void multiline_text_is_split_with_br_elements()
         {
-            var entity = DotHtmlText.FromText($"Line 1{Environment.NewLine}Line 2");
+            var entity = DotHtmlText.FromMultilineText($"Line 1{Environment.NewLine}Line 2");
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Tests.Html
         [Fact]
         public void multiline_text_is_split_with_br_elements_with_alignment()
         {
-            var entity = DotHtmlText.FromText($"Line 1{Environment.NewLine}Line 2", DotHorizontalAlignment.Right);
+            var entity = DotHtmlText.FromMultilineText($"Line 1{Environment.NewLine}Line 2", DotHorizontalAlignment.Right);
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Tests.Html
         [Fact]
         public void single_line_text_is_not_split()
         {
-            var entity = DotHtmlText.FromText("Line 1");
+            var entity = DotHtmlText.FromMultilineText("Line 1");
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
