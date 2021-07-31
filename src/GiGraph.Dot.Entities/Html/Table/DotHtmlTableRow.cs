@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Entities.Html.Table
             {
                 Children =
                 {
-                    DotHtmlText.FromMultilineText(text)
+                    DotHtmlText.FromText(text)
                 }
             };
 
