@@ -1,5 +1,5 @@
 ﻿using System;
-using GiGraph.Dot.Output.TextEscaping.Escapers;
+using GiGraph.Dot.Output.Text;
 
 namespace GiGraph.Dot.Output.Options
 {

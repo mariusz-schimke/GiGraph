@@ -1,4 +1,4 @@
-﻿namespace GiGraph.Dot.Output.TextEscaping.Escapers.Html
+﻿namespace GiGraph.Dot.Output.Text.Escaping.Html
 {
     /// <summary>
     ///     Escapes spaces with the &amp;#32; HTML code.

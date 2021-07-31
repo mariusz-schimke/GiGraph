@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Output.TextEscaping.Escapers;
+﻿using GiGraph.Dot.Output.Text.Escaping;
 
 namespace GiGraph.Dot.Output
 {

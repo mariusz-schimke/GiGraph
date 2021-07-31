@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace GiGraph.Dot.Output.TextEscaping.Escapers
+namespace GiGraph.Dot.Output.Text.Escaping
 {
     /// <summary>
     ///     Escapes leading and trailing spaces with the &#32; HTML code. Used because escaping a leading space with a backslash seems to

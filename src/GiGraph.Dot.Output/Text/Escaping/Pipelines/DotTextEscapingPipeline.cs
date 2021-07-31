@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Output.TextEscaping.Escapers;
-using GiGraph.Dot.Output.TextEscaping.Escapers.Html;
+using GiGraph.Dot.Output.Text.Escaping.Html;
 
-namespace GiGraph.Dot.Output.TextEscaping.Pipelines
+namespace GiGraph.Dot.Output.Text.Escaping.Pipelines
 {
     /// <summary>
     ///     Escapes text in multiple steps.

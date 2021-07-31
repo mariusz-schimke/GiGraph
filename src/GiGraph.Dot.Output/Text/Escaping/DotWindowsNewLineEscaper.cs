@@ -1,4 +1,4 @@
-﻿namespace GiGraph.Dot.Output.TextEscaping.Escapers
+﻿namespace GiGraph.Dot.Output.Text.Escaping
 {
     /// <summary>
     ///     Escapes the carriage return + line feed character sequence (CRLF == \x000D\x000A == \r\n).

@@ -1,6 +1,6 @@
 ﻿using System.Web;
 
-namespace GiGraph.Dot.Output.TextEscaping.Escapers.Html
+namespace GiGraph.Dot.Output.Text.Escaping.Html
 {
     /// <summary>
     ///     Converts a string to an HTML-encoded string.

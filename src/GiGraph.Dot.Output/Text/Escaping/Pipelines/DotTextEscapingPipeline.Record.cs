@@ -1,6 +1,4 @@
-﻿using GiGraph.Dot.Output.TextEscaping.Escapers;
-
-namespace GiGraph.Dot.Output.TextEscaping.Pipelines
+﻿namespace GiGraph.Dot.Output.Text.Escaping.Pipelines
 {
     public partial class DotTextEscapingPipeline
     {
