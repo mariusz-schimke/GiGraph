@@ -3,7 +3,7 @@ using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Text;
 using Xunit;
 
-namespace GiGraph.Dot.Types.Tests.EscapeString
+namespace GiGraph.Dot.Types.Tests.Text
 {
     public class DotEscapeStringConcatenationTest
     {

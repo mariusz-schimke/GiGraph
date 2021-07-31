@@ -4,7 +4,7 @@ using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Text;
 using Xunit;
 
-namespace GiGraph.Dot.Types.Tests.EscapeString
+namespace GiGraph.Dot.Types.Tests.Text
 {
     public class DotEscapeStringTest
     {
@@ -33,8 +33,19 @@ namespace GiGraph.Dot.Types.Tests.EscapeString
         public void throws_exception_on_constructor_null_value()
         {
             Assert.Throws<ArgumentNullException>(() => new DotEscapedString(null));
-            Assert.Throws<ArgumentNullException>(() => new DotUnescapedString(null));
-            Assert.Throws<ArgumentNullException>(() => new DotHtmlString(null));
+        }
+
+        [Fact]
+        public void implicit_conversion_returns_null()
+        {
+            DotEscapeString escStringValue = (string) null;
+            Assert.Null(escStringValue);
+
+            string stringValue = escStringValue;
+            Assert.Null(stringValue);
+
+            escStringValue = (DotHtmlString) null;
+            Assert.Null(escStringValue);
         }
     }
 }

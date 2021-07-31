@@ -56,7 +56,7 @@ namespace GiGraph.Dot.Types.Text
 
         public static DotHtmlString operator +(DotHtmlString value1, DotHtmlString value2)
         {
-            return $"{value1?._html}{value2?._html}";
+            return value1 is not null || value2 is not null ? $"{value1?._html}{value2?._html}" : null;
         }
     }
 }
