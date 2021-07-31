@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Tests.Html
             {
                 Id = "id",
                 Style = DotHtmlTableStyles.Radial | DotHtmlTableStyles.Rounded,
-                Borders = DotHtmlTableBorders.All,
+                Borders = DotHtmlTableBorders.Vertical,
                 BackgroundColor = new DotGradientColor(Color.Red, Color.Blue)
             };
 
