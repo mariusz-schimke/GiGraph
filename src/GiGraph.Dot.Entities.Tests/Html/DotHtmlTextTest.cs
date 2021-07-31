@@ -25,10 +25,21 @@ namespace GiGraph.Dot.Entities.Tests.Html
             );
 
             // this should generate the same result
-            var entity = new DotHtmlText(text);
+            var element = new DotHtmlText(text);
             Snapshot.Match(
-                ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
+                ((IDotHtmlEncodable) element).ToHtml(_syntaxOptions, _syntaxRules),
                 "html_multiline_text"
+            );
+        }
+
+        [Fact]
+        public void text_is_escaped()
+        {
+            var element = new DotHtmlText($"My custom text < > \" ' & \u00A0");
+
+            Snapshot.Match(
+                ((IDotHtmlEncodable) element).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_escaped_text"
             );
         }
 
@@ -56,9 +67,9 @@ namespace GiGraph.Dot.Entities.Tests.Html
             );
 
             // this should generate the same result
-            var entity = new DotHtmlText(text);
+            var element = new DotHtmlText(text);
             Snapshot.Match(
-                ((IDotHtmlEncodable) entities).ToHtml(_syntaxOptions, _syntaxRules),
+                ((IDotHtmlEncodable) element).ToHtml(_syntaxOptions, _syntaxRules),
                 "html_single-line_text"
             );
         }
