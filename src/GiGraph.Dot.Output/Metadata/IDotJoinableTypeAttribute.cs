@@ -9,5 +9,10 @@ namespace GiGraph.Dot.Output.Metadata
         ///     Gets the separator to use in order to join the enumeration flags or array items.
         /// </summary>
         string Separator { get; }
+
+        /// <summary>
+        ///     Determines whether the values should be ordered before joining.
+        /// </summary>
+        bool Sort { get; }
     }
 }

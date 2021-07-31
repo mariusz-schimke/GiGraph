@@ -15,12 +15,19 @@ namespace GiGraph.Dot.Output.Metadata
         /// <param name="separator">
         ///     The separator to use in order to join the flags of the enumeration.
         /// </param>
-        public DotJoinableTypeAttribute(string separator)
+        /// <param name="order">
+        ///     Determines whether the values should be ordered before joining.
+        /// </param>
+        public DotJoinableTypeAttribute(string separator, bool order = true)
         {
             Separator = separator;
+            Sort = order;
         }
 
         /// <inheritdoc cref="IDotJoinableTypeAttribute.Separator" />
         public virtual string Separator { get; }
+
+        /// <inheritdoc cref="IDotJoinableTypeAttribute.Sort" />
+        public bool Sort { get; }
     }
 }

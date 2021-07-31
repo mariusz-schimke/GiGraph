@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Types.Packing
     ///     The flags used for customizing component distribution in the array packing mode.
     /// </summary>
     [Flags]
-    [DotJoinableType(separator: "")]
+    [DotJoinableType(separator: "", order: false)]
     public enum DotArrayPackingOptions
     {
         /// <summary>
@@ -24,22 +24,22 @@ namespace GiGraph.Dot.Types.Packing
         AlignTop = 1 << 1,
 
         /// <summary>
+        ///     Aligns graphs next to the right side of the cells they occupy.
+        /// </summary>
+        [DotAttributeValue("r")]
+        AlignRight = 1 << 2,
+
+        /// <summary>
         ///     Aligns graphs next to the bottom of the cells they occupy.
         /// </summary>
         [DotAttributeValue("b")]
-        AlignBottom = 1 << 2,
+        AlignBottom = 1 << 3,
 
         /// <summary>
         ///     Aligns graphs next to the left side of the cells they occupy.
         /// </summary>
         [DotAttributeValue("l")]
-        AlignLeft = 1 << 3,
-
-        /// <summary>
-        ///     Aligns graphs next to the right side of the cells they occupy.
-        /// </summary>
-        [DotAttributeValue("r")]
-        AlignRight = 1 << 4,
+        AlignLeft = 1 << 4,
 
         /// <summary>
         ///     Causes the insertion order of elements in the array to be determined by user-supplied values. Each component can specify its
