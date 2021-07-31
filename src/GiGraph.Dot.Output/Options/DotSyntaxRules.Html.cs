@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Output.Options
             /// <summary>
             ///     A text escaper to use for HTML attribute values in general (unless another escaper is used in some contexts).
             /// </summary>
-            public virtual IDotTextEscaper AttributeValueEscaper { get; set; } = DotTextEscapingPipeline.ForHtmlAttributeStringValue();
+            public virtual IDotTextEscaper AttributeValueEscaper { get; set; } = DotTextEscapingPipeline.ForHtmlAttributeValue();
 
             /// <summary>
             ///     A text escaper to use for HTML attribute values of the escape string type.
