@@ -7,7 +7,7 @@ using GiGraph.Dot.Types.Html.Table;
 using Snapshooter.Xunit;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests.Html
+namespace GiGraph.Dot.Entities.Tests.Html.Table
 {
     public class DotHtmlTableTest
     {
