@@ -12,6 +12,7 @@ namespace GiGraph.Dot.Entities.Html.Text
     /// </summary>
     public class DotHtmlText : DotHtmlEntity
     {
+        protected static string[] LineBreaks = { DotNewLine.Windows, DotNewLine.Unix };
         protected readonly string _text;
 
         /// <summary>
@@ -30,9 +31,18 @@ namespace GiGraph.Dot.Entities.Html.Text
             return _text;
         }
 
-        protected override string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected internal override string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return syntaxRules.Attributes.Html.ElementTextContentEscaper.Escape(_text);
+            var br = DotHtmlLineBreak.AsHtml(options, syntaxRules);
+            var escaped = syntaxRules.Attributes.Html.ElementTextContentEscaper.Escape(_text);
+            var lines = SplitMultiline(escaped, LineBreaks);
+
+            return string.Join(br, lines);
+        }
+
+        protected static string[] SplitMultiline(string text, string[] lineBreaks)
+        {
+            return text?.Split(lineBreaks, StringSplitOptions.None);
         }
 
         /// <summary>
@@ -48,7 +58,7 @@ namespace GiGraph.Dot.Entities.Html.Text
         /// <param name="horizontalAlignment">
         ///     Specifies horizontal placement of lines of multiline text.
         /// </param>
-        public static DotHtmlEntityCollection FromText(string text, string[] lineBreaks, DotHorizontalAlignment? horizontalAlignment = null)
+        public static DotHtmlEntityCollection FromMultilineText(string text, string[] lineBreaks, DotHorizontalAlignment? horizontalAlignment = null)
         {
             if (text is null)
             {
@@ -56,7 +66,7 @@ namespace GiGraph.Dot.Entities.Html.Text
             }
 
             var result = new List<IDotHtmlEntity>();
-            var lines = text.Split(lineBreaks, StringSplitOptions.None);
+            var lines = SplitMultiline(text, lineBreaks);
 
             for (var i = 0; i < lines.Length; i++)
             {
@@ -81,9 +91,9 @@ namespace GiGraph.Dot.Entities.Html.Text
         /// <param name="horizontalAlignment">
         ///     Specifies horizontal placement of lines of multiline text.
         /// </param>
-        public static DotHtmlEntityCollection FromText(string text, DotHorizontalAlignment? horizontalAlignment = null)
+        public static DotHtmlEntityCollection FromMultilineText(string text, DotHorizontalAlignment? horizontalAlignment = null)
         {
-            return FromText(text, new[] { DotNewLine.Windows, DotNewLine.Unix }, horizontalAlignment);
+            return FromMultilineText(text, LineBreaks, horizontalAlignment);
         }
     }
 }
