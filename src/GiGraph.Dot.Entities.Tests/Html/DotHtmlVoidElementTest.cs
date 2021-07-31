@@ -6,7 +6,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Html
 {
-    public class DotHtmlTagTest
+    public class DotHtmlVoidElementTest
     {
         private readonly DotSyntaxOptions _syntaxOptions = new();
         private readonly DotSyntaxRules _syntaxRules = new();
@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Entities.Tests.Html
         [Fact]
         public void encoded_html_tag_is_valid_html()
         {
-            var tag = new DotHtmlTag("custom-tag-name");
+            var tag = new DotHtmlVoidElement("custom-tag-name");
             tag.Attributes.Set("attr1", "value1");
 
             Snapshot.Match(
@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Tests.Html
         [Fact]
         public void encoded_html_tag_name_is_upper_case()
         {
-            var tag = new DotHtmlTag("custom-tag-name");
+            var tag = new DotHtmlVoidElement("custom-tag-name");
             tag.Attributes.Set("attr1", "value1");
 
             var syntaxOptions = new DotSyntaxOptions
@@ -49,7 +49,7 @@ namespace GiGraph.Dot.Entities.Tests.Html
         [Fact]
         public void encoded_html_tag_attributes_are_upper_case()
         {
-            var tag = new DotHtmlTag("custom-tag-name");
+            var tag = new DotHtmlVoidElement("custom-tag-name");
             tag.Attributes.Set("attr1", "value1");
 
             var syntaxOptions = new DotSyntaxOptions

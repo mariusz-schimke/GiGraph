@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Html.Attributes.Factories;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Entities.Html
@@ -10,26 +9,13 @@ namespace GiGraph.Dot.Entities.Html
     /// <summary>
     ///     Represents an HTML tag with optional attributes.
     /// </summary>
-    public class DotHtmlTag : DotHtmlEntity
+    public abstract class DotHtmlTag : DotHtmlEntity
     {
-        protected readonly bool _isVoid;
         protected readonly string _name;
 
-        /// <summary>
-        ///     Initializes a void HTML tag with the given name.
-        /// </summary>
-        /// <param name="name">
-        ///     The tag name to use.
-        /// </param>
-        public DotHtmlTag(string name)
-            : this(name, isVoid: true, new DotAttributeCollection(DotHtmlAttributeFactory.Instance))
-        {
-        }
-
-        protected DotHtmlTag(string name, bool isVoid, DotAttributeCollection attributes)
+        protected DotHtmlTag(string name, DotAttributeCollection attributes)
         {
             _name = name;
-            _isVoid = isVoid;
             Attributes = attributes;
         }
 
@@ -37,6 +23,8 @@ namespace GiGraph.Dot.Entities.Html
         ///     Gets the collection of attributes of the element.
         /// </summary>
         public virtual DotAttributeCollection Attributes { get; }
+
+        protected abstract bool IsVoid { get; }
 
         protected internal override string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
@@ -57,7 +45,7 @@ namespace GiGraph.Dot.Entities.Html
 
             result.Append(tagWithAttributes);
 
-            if (_isVoid)
+            if (IsVoid)
             {
                 result.Append("/>");
             }

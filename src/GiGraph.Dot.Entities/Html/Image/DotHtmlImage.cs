@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Html.Image
     /// <summary>
     ///     An HTML &lt;img&gt; element.
     /// </summary>
-    public class DotHtmlImage : DotHtmlElement, IDotHtmlImageAttributes
+    public class DotHtmlImage : DotHtmlVoidElement, IDotHtmlImageAttributes
     {
         /// <summary>
         ///     Initializes a new image element instance.

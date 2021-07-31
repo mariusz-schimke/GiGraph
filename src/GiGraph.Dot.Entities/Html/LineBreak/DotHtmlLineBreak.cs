@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
     /// <summary>
     ///     An HTML line break element (&lt;br/&gt;).
     /// </summary>
-    public class DotHtmlLineBreak : DotHtmlTag, IDotHtmlLineBreakAttributes
+    public class DotHtmlLineBreak : DotHtmlVoidElement, IDotHtmlLineBreakAttributes
     {
         protected static readonly DotHtmlLineBreak Default = new();
 
@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
         }
 
         protected DotHtmlLineBreak(DotHtmlLineBreakAttributes attributes)
-            : base("br", isVoid: true, attributes.Collection)
+            : base("br", attributes.Collection)
         {
             Attributes = attributes;
         }

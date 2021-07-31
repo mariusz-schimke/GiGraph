@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Html.Rule
     /// <summary>
     ///     An HTML rule element.
     /// </summary>
-    public abstract class DotHtmlRule : DotHtmlElement
+    public abstract class DotHtmlRule : DotHtmlVoidElement
     {
         protected DotHtmlRule(string tagName)
             : base(tagName, new DotAttributeCollection(DotHtmlAttributeFactory.Instance))

@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Html
         }
 
         protected DotHtmlElement(string name, DotAttributeCollection attributes)
-            : base(name, isVoid: false, attributes)
+            : base(name, attributes)
         {
             Children = new List<IDotHtmlEntity>();
         }
@@ -30,6 +30,8 @@ namespace GiGraph.Dot.Entities.Html
         ///     Gets the children of the element.
         /// </summary>
         public virtual List<IDotHtmlEntity> Children { get; }
+
+        protected override bool IsVoid => false;
 
         protected override IEnumerable<IDotHtmlEntity> GetChildren()
         {
