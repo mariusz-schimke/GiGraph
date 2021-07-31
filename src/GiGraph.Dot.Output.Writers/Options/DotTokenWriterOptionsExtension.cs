@@ -1,4 +1,5 @@
 ﻿using System;
+using GiGraph.Dot.Output.Text;
 
 namespace GiGraph.Dot.Output.Writers.Options
 {
@@ -39,7 +40,7 @@ namespace GiGraph.Dot.Output.Writers.Options
         {
             return text is null
                 ? Array.Empty<string>()
-                : text.Split(new[] { options.LineBreak }, StringSplitOptions.None);
+                : text.Split(new[] { DotNewLine.Windows, DotNewLine.Unix }, StringSplitOptions.None);
         }
     }
 }

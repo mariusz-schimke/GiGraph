@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using GiGraph.Dot.Entities.Html.LineBreak;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.TextEscaping.Escapers;
+using GiGraph.Dot.Output.Text;
 using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Html.Text
@@ -83,7 +83,7 @@ namespace GiGraph.Dot.Entities.Html.Text
         /// </param>
         public static DotHtmlEntityCollection FromText(string text, DotHorizontalAlignment? horizontalAlignment = null)
         {
-            return FromText(text, new[] { DotNewLine.SystemDefault }, horizontalAlignment);
+            return FromText(text, new[] { DotNewLine.Windows, DotNewLine.Unix }, horizontalAlignment);
         }
     }
 }
