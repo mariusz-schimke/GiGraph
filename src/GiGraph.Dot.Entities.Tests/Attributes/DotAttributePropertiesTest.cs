@@ -17,6 +17,53 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
     public class DotAttributePropertiesTest
     {
         [Fact]
+        public void all_entity_attributes_generic_class_descendants_implement_the_interface_passed_to_it_as_the_generic_argument()
+        {
+            var types = Assembly.GetAssembly(typeof(DotEntityAttributes<>))!.GetTypes()
+               .Where(t => !t.IsAbstract)
+               .Where(t => t.IsAssignableTo(typeof(DotEntityAttributes)))
+               .Where(t => t != typeof(DotEntityAttributes))
+               .ToArray();
+
+            Assert.NotEmpty(types);
+
+            foreach (var sourceType in types)
+            {
+                var type = sourceType;
+
+                do
+                {
+                    if (!type.IsGenericType)
+                    {
+                        type = type.BaseType;
+                        continue;
+                    }
+
+                    var entityAttributeInterfaceType = type.GetGenericArguments().First();
+                    Assert.True(entityAttributeInterfaceType.IsInterface);
+
+                    var entityAttributesImplementationType = typeof(DotEntityAttributes<>).MakeGenericType(entityAttributeInterfaceType);
+
+                    // ensure that the type is assignable to the DotEntityAttributes<> with the same generic argument
+                    // (this indicates that the class of interest is a descendant of that type
+                    Assert.True(sourceType.IsAssignableTo(entityAttributesImplementationType));
+
+                    // ensure that the same type is also assignable to the interface used as a generic argument
+                    // (the assumption is that the same class that inherits from DotEntityAttributes<IMyAttributesInterface>
+                    // should also implement the interface IMyAttributesInterface passed as the generic argument
+                    Assert.True(sourceType.IsAssignableTo(entityAttributeInterfaceType));
+
+                    break;
+                } while (type is not null);
+
+                if (type is null)
+                {
+                    throw new Exception($"The type {sourceType.Name} is not a descendant of {typeof(DotEntityAttributes<>).Name}");
+                }
+            }
+        }
+
+        [Fact]
         public void all_property_accessors_have_keys_available()
         {
             // it is assumed that only implemented interface properties exist in attribute key lookups,
