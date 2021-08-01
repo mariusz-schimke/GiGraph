@@ -1,7 +1,6 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Html.Table;
-using GiGraph.Dot.Entities.Html.Text;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.Html.Table;
@@ -26,55 +25,40 @@ namespace GiGraph.Dot.Examples.Basic
                .AddRow(row =>
                 {
                     row.Children.AddCell(
-                        cell =>
-                        {
-                            cell.RowSpan = 3;
-                            cell.Children.Add(new DotHtmlText($"Foo{Environment.NewLine}Bar"));
-                        }
+                        $"Foo{Environment.NewLine}Bar",
+                        cell => cell.RowSpan = 3
                     );
 
                     row.Children.AddCell(
+                        "Baz",
                         cell =>
                         {
                             cell.ColumnSpan = 3;
                             cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Left;
-                            cell.Children.Add(new DotHtmlText("Baz"));
                         }
                     );
 
                     row.Children.AddCell(
-                        cell =>
-                        {
-                            cell.RowSpan = 3;
-                            cell.Children.Add(new DotHtmlText("Qux"));
-                        }
+                        "Qux",
+                        cell => cell.RowSpan = 3
                     );
 
                     row.Children.AddCell(
-                        cell =>
-                        {
-                            cell.RowSpan = 3;
-                            cell.Children.Add(new DotHtmlText("Quux"));
-                        }
+                        "Quux",
+                        cell => cell.RowSpan = 3
                     );
                 });
 
             table.Children.AddRow(
                 row =>
                 {
+                    row.Children.AddCell("Garply");
+                    row.Children.AddCell("Waldo");
                     row.Children.AddCell(
-                        cell => cell.Children.Add(new DotHtmlText("Garply"))
-                    );
-
-                    row.Children.AddCell(
-                        cell => cell.Children.Add(new DotHtmlText("Waldo"))
-                    );
-
-                    row.Children.AddCell(
+                        "Fred",
                         cell =>
                         {
                             cell.PortName = "port1";
-                            cell.Children.Add(new DotHtmlText("Fred"));
                         }
                     );
                 }
@@ -82,11 +66,11 @@ namespace GiGraph.Dot.Examples.Basic
 
             table.Children.AddRow(
                 row => row.Children.AddCell(
+                    "Plugh",
                     cell =>
                     {
                         cell.ColumnSpan = 3;
                         cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Right;
-                        cell.Children.Add(new DotHtmlText("Plugh"));
                     }
                 )
             );
