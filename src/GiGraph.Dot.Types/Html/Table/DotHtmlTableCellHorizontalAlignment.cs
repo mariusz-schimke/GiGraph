@@ -3,8 +3,6 @@ using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Types.Html.Table
 {
-    // TODO: Napisać UT, żeby sprawdzał, czy te zależne od siebie enumy się nie rozjeżdżają
-
     /// <summary>
     ///     The justification options for HTML table cells.
     /// </summary>
@@ -16,19 +14,19 @@ namespace GiGraph.Dot.Types.Html.Table
         /// <summary>
         ///     Places the label at the left side of the element.
         /// </summary>
-        [DotHtmlElementAttributeValue("LEFT")]
+        [DotHtmlAttributeValue("LEFT")]
         Left = DotHorizontalAlignment.Left,
 
         /// <summary>
         ///     Places the label at the horizontal center of the element.
         /// </summary>
-        [DotHtmlElementAttributeValue("CENTER")]
+        [DotHtmlAttributeValue("CENTER")]
         Center = DotHorizontalAlignment.Center,
 
         /// <summary>
         ///     Places the label at the right side of the element.
         /// </summary>
-        [DotHtmlElementAttributeValue("RIGHT")]
+        [DotHtmlAttributeValue("RIGHT")]
         Right = DotHorizontalAlignment.Right,
 
         /// <summary>
@@ -41,7 +39,7 @@ namespace GiGraph.Dot.Types.Html.Table
         ///         Applicable to HTML table cell only (&lt;td&gt;).
         ///     </para>
         /// </summary>
-        [DotHtmlElementAttributeValue("TEXT")]
+        [DotHtmlAttributeValue("TEXT")]
         Justify = DotHorizontalAlignment.Right << 1
     }
 }

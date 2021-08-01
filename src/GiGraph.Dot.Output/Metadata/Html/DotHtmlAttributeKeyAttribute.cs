@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
     ///     Assigns an HTML attribute key to a property.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
-    public class DotHtmlElementAttributeKeyAttribute : Attribute
+    public class DotHtmlAttributeKeyAttribute : Attribute
     {
         /// <summary>
         ///     Creates a new attribute instance.
@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
         /// <param name="key">
         ///     The key of the HTML attribute.
         /// </param>
-        public DotHtmlElementAttributeKeyAttribute(string key)
+        public DotHtmlAttributeKeyAttribute(string key)
         {
             Key = key;
         }

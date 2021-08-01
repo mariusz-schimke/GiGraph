@@ -40,6 +40,14 @@ namespace GiGraph.Dot.Output.EnumHelpers
         }
 
         /// <summary>
+        ///     Gets all multi-flag values of the enumeration.
+        /// </summary>
+        public virtual Enum[] GetMultiFlagValues()
+        {
+            return GetValues().Where(v => !IsSingleFlagValue(v)).ToArray();
+        }
+
+        /// <summary>
         ///     Checks the number of flags set in the specified enumeration value. Some enum member values may be helpers that are a result
         ///     of a binary or operation of multiple other values (flags) of that enumeration. The method indicates if this is not the case.
         /// </summary>

@@ -6,10 +6,10 @@ namespace GiGraph.Dot.Output.Metadata.Html
     /// <summary>
     ///     Provides methods for reading an HTML attribute value associated with an enumeration value.
     /// </summary>
-    public static class DotHtmlElementAttributeValue
+    public static class DotHtmlAttributeValue
     {
         /// <summary>
-        ///     If the specified enumeration type is marked with a <see cref="DotHtmlElementJoinableTypeAttribute" /> returns its individual
+        ///     If the specified enumeration type is marked with a <see cref="DotHtmlJoinableTypeAttribute" /> returns its individual
         ///     flags joined with a separator specified by the attribute. If the enumeration does not contain the attribute, returns false.
         /// </summary>
         /// <param name="flags">
@@ -23,11 +23,11 @@ namespace GiGraph.Dot.Output.Metadata.Html
         /// </param>
         public static bool TryGetAsFlags(Enum flags, out string dotFlags, bool sort = true)
         {
-            return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.TryGetAsFlags<DotHtmlElementJoinableTypeAttribute>(flags, out dotFlags, sort);
+            return DotAttributeValue<DotHtmlAttributeValueAttribute>.TryGetAsFlags<DotHtmlJoinableTypeAttribute>(flags, out dotFlags, sort);
         }
 
         /// <summary>
-        ///     If the specified enumeration type is marked with a <see cref="DotHtmlElementJoinableTypeAttribute" /> returns its individual
+        ///     If the specified enumeration type is marked with a <see cref="DotHtmlJoinableTypeAttribute" /> returns its individual
         ///     flags joined with a separator specified by the attribute. If the enumeration does not contain the attribute, throws an
         ///     exception.
         /// </summary>
@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
         /// </param>
         public static string GetAsFlags(Enum flags, bool sort = true)
         {
-            return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.GetAsFlags<DotHtmlElementJoinableTypeAttribute>(flags, sort);
+            return DotAttributeValue<DotHtmlAttributeValueAttribute>.GetAsFlags<DotHtmlJoinableTypeAttribute>(flags, sort);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
         /// </param>
         public static bool TryGet(Enum value, out string dotValue)
         {
-            return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.TryGet(value, out dotValue);
+            return DotAttributeValue<DotHtmlAttributeValueAttribute>.TryGet(value, out dotValue);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
         /// </param>
         public static string Get(Enum value)
         {
-            return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.Get(value);
+            return DotAttributeValue<DotHtmlAttributeValueAttribute>.Get(value);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
         public static bool TryGet<TEnum>(string dotValue, out TEnum value)
             where TEnum : Enum
         {
-            return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.TryGet(dotValue, out value);
+            return DotAttributeValue<DotHtmlAttributeValueAttribute>.TryGet(dotValue, out value);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
         /// </param>
         public static bool TryGet(Type enumType, string dotValue, out Enum value)
         {
-            return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.TryGet(enumType, dotValue, out value);
+            return DotAttributeValue<DotHtmlAttributeValueAttribute>.TryGet(enumType, dotValue, out value);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
         public static TEnum Get<TEnum>(string dotValue)
             where TEnum : Enum
         {
-            return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.Get<TEnum>(dotValue);
+            return DotAttributeValue<DotHtmlAttributeValueAttribute>.Get<TEnum>(dotValue);
         }
 
         /// <summary>
@@ -128,12 +128,12 @@ namespace GiGraph.Dot.Output.Metadata.Html
         /// </param>
         public static Enum Get(Type enumType, string dotValue)
         {
-            return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.Get(enumType, dotValue);
+            return DotAttributeValue<DotHtmlAttributeValueAttribute>.Get(enumType, dotValue);
         }
 
         /// <summary>
         ///     Gets a dictionary where each key has a DOT attribute value assigned. Enumeration values that are not marked with the
-        ///     <see cref="DotHtmlElementAttributeValueAttribute" /> attribute are ignored.
+        ///     <see cref="DotHtmlAttributeValueAttribute" /> attribute are ignored.
         /// </summary>
         /// <typeparam name="TEnum">
         ///     The type of the enumeration whose value mapping to get.
@@ -141,19 +141,19 @@ namespace GiGraph.Dot.Output.Metadata.Html
         public static Dictionary<TEnum, string> GetMapping<TEnum>()
             where TEnum : Enum
         {
-            return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.GetMapping<TEnum>();
+            return DotAttributeValue<DotHtmlAttributeValueAttribute>.GetMapping<TEnum>();
         }
 
         /// <summary>
         ///     Gets a dictionary where each key has a DOT attribute value assigned. Enumeration values that are not marked with the
-        ///     <see cref="DotHtmlElementAttributeValueAttribute" /> attribute are ignored.
+        ///     <see cref="DotHtmlAttributeValueAttribute" /> attribute are ignored.
         /// </summary>
         /// <param name="enumType">
         ///     The type of the enumeration whose value mapping to get.
         /// </param>
         public static Dictionary<Enum, string> GetMapping(Type enumType)
         {
-            return DotAttributeValue<DotHtmlElementAttributeValueAttribute>.GetMapping(enumType);
+            return DotAttributeValue<DotHtmlAttributeValueAttribute>.GetMapping(enumType);
         }
     }
 }

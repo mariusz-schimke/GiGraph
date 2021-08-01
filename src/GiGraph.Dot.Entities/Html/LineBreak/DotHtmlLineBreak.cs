@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
         public static DotHtmlString Html => Default.ToHtml(DotSyntaxOptions.Default, DotSyntaxRules.Default);
 
         /// <inheritdoc cref="IDotHtmlLineBreakAttributes.HorizontalAlignment" />
-        [DotHtmlElementAttributeKey("align")]
+        [DotHtmlAttributeKey("align")]
         public virtual DotHorizontalAlignment? HorizontalAlignment
         {
             get => ((IDotHtmlLineBreakAttributes) Attributes).HorizontalAlignment;

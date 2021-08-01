@@ -8,8 +8,6 @@ using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes
 {
-    // TODO: napisać UT, który sprawdzi, czy wszystkie klasy potomne we wszystkich bibliotekach implementują
-    // ten sam interfejs, który przekazany zostaje do bazowej DotEntityAttributes<TIEntityAttributeProperties>
     public class DotHtmlTableCellAttributes : DotHtmlTableTableCellCommonAttributes<IDotHtmlTableCellAttributes>, IDotHtmlTableCellAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup HtmlTableCellAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableCellAttributes, IDotHtmlTableCellAttributes>().Build();

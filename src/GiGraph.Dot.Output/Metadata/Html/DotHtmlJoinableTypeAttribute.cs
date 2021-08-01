@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
     ///     meaningful value for an HTML attribute.
     /// </summary>
     [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Class)]
-    public class DotHtmlElementJoinableTypeAttribute : Attribute, IDotJoinableTypeAttribute
+    public class DotHtmlJoinableTypeAttribute : Attribute, IDotJoinableTypeAttribute
     {
         /// <summary>
         ///     Creates a new attribute instance.
@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
         /// <param name="order">
         ///     Determines whether the values should be ordered before joining.
         /// </param>
-        public DotHtmlElementJoinableTypeAttribute(string separator, bool order = true)
+        public DotHtmlJoinableTypeAttribute(string separator, bool order = true)
         {
             Separator = separator;
             Sort = order;
