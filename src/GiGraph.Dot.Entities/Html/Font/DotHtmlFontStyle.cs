@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Entities.Html.Font
             var metadata = new DotEnumMetadata(style.GetType());
             foreach (var styleFlag in metadata.GetSetFlags(style).Cast<DotFontStyles>())
             {
-                DotHtmlFontStyle element = styleFlag switch
+                DotHtmlFontStyle styleElement = styleFlag switch
                 {
                     DotFontStyles.Bold => new DotHtmlBold(),
                     DotFontStyles.Italic => new DotHtmlItalic(),
@@ -75,15 +75,15 @@ namespace GiGraph.Dot.Entities.Html.Font
                     _ => throw new ArgumentOutOfRangeException(nameof(style), styleFlag, "Invalid font style flag")
                 };
 
-                nestedElement?.Children.Add(element);
-                nestedElement = element;
+                nestedElement?.Children.Add(styleElement);
+                nestedElement = styleElement;
                 rootElement ??= nestedElement;
             }
 
-            var styledElement = createStyledEntity();
-            nestedElement?.Children.Add(styledElement);
+            var styledEntity = createStyledEntity();
+            nestedElement?.Children.Add(styledEntity);
 
-            return rootElement ?? styledElement;
+            return rootElement ?? styledEntity;
         }
     }
 }
