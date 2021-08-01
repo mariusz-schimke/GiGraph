@@ -61,13 +61,18 @@ namespace GiGraph.Dot.Types.Tests.Html
         }
 
         [Fact]
-        public void concatenation_returns_null_for_both_nulls()
+        public void concatenation_of_nulls_same_as_for_string()
         {
             DotHtmlString value1 = null;
             DotHtmlString value2 = null;
 
-            var result = value1 + value2;
-            Assert.Null(result);
+            // null string concatenation returns an empty string instead of null, and the expected behavior below should be analogous
+
+            var result1 = value1 + value2;
+            Assert.True(string.IsNullOrEmpty(result1.ToString()));
+
+            string result2 = value1 + value2;
+            Assert.True(string.IsNullOrEmpty(result2));
         }
     }
 }
