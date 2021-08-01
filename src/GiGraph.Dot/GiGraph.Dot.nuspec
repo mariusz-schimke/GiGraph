@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <tags>DOT Graphviz graph</tags>
+
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <copyright>$copyright$</copyright>
+
+    <icon>content\icon.png</icon>
+
+    <projectUrl>https://github.com/$repository$</projectUrl>
+    <repository type="git" url="https://github.com/$repository$.git" branch="$branch$" commit="$commit$" />
+
+    <license type="file">content\LICENSE.txt</license>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+    <summary>Simple yet versatile library for generating graphs in the DOT language.</summary>
+
+    <description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code or online tools like http://viz-js.com or http://magjac.com/graphviz-visual-editor, where you paste a script to view its visualization.</description>
+
+    <releaseNotes>- Added classes to represent HTML elements supported by Graphviz as nodes (for the so-called HTML-like labels). Thanks to that you won't have to check what attributes you can set for specific HTML elements since the classes expose appropriate properties.
+
+- Refactoring.
+
+
+See also https://github.com/$repository$/releases</releaseNotes>
+  </metadata>
+</package>
