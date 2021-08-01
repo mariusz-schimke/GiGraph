@@ -16,14 +16,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup .NET 5
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - name: Install dependencies
+    - name: Restore dependencies
       run: dotnet restore
-    - name: Build
+    - name: Build project
       run: dotnet build --configuration Release --no-restore
-    - name: Test
+    - name: Run tests
       run: dotnet test --no-restore
