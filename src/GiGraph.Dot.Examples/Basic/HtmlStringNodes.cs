@@ -4,7 +4,7 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Examples.Basic
 {
-    public static class HtmlNodes
+    public static class HtmlStringNodes
     {
         public static DotGraph Generate()
         {
