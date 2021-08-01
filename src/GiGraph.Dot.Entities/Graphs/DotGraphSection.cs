@@ -47,6 +47,6 @@ namespace GiGraph.Dot.Entities.Graphs
         public virtual DotGraphAttributes Attributes => (DotGraphAttributes) _attributes;
 
         /// <inheritdoc cref="DotCommonGraphSection.Clusters" />
-        public new DotGraphClusterCollection Clusters => (DotGraphClusterCollection) base.Clusters;
+        public new virtual DotGraphClusterCollection Clusters => (DotGraphClusterCollection) base.Clusters;
     }
 }
