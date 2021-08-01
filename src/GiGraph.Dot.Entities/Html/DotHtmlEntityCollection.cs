@@ -51,6 +51,23 @@ namespace GiGraph.Dot.Entities.Html
             return ToHtml(options, syntaxRules);
         }
 
+        /// <summary>
+        ///     Adds a new HTML entity to the collection.
+        /// </summary>
+        /// <param name="entity">
+        ///     The entity to add.
+        /// </param>
+        /// <param name="init">
+        ///     An optional entity initializer.
+        /// </param>
+        public DotHtmlEntityCollection Add<TEntity>(TEntity entity, Action<TEntity> init = null)
+            where TEntity : IDotHtmlEntity
+        {
+            init?.Invoke(entity);
+            base.Add(entity);
+            return this;
+        }
+
         public override string ToString()
         {
             return ToHtml();

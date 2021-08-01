@@ -21,15 +21,20 @@ namespace GiGraph.Dot.Entities.Html
         }
 
         protected DotHtmlElement(string name, DotAttributeCollection attributes)
+            : this(name, attributes, new DotHtmlEntityCollection())
+        {
+        }
+
+        protected DotHtmlElement(string name, DotAttributeCollection attributes, DotHtmlEntityCollection children)
             : base(name, attributes)
         {
-            Children = new List<IDotHtmlEntity>();
+            Children = children;
         }
 
         /// <summary>
         ///     Gets the children of the element.
         /// </summary>
-        public virtual List<IDotHtmlEntity> Children { get; }
+        public virtual DotHtmlEntityCollection Children { get; }
 
         protected sealed override bool IsVoid => false;
 
