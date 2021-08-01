@@ -8,10 +8,10 @@ using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Styling;
-using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes
 {

@@ -3,9 +3,9 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Styling;
-using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common
 {

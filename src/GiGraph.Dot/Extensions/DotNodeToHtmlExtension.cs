@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Nodes;
+using GiGraph.Dot.Types.Html;
 using GiGraph.Dot.Types.Nodes;
-using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Extensions
 {

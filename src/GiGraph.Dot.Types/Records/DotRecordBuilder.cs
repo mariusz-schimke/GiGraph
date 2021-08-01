@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Types.Text;
+using GiGraph.Dot.Types.EscapeString;
 
 namespace GiGraph.Dot.Types.Records
 {

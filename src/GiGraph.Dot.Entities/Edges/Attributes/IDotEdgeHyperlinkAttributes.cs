@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common;
-using GiGraph.Dot.Types.Text;
+using GiGraph.Dot.Types.EscapeString;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {

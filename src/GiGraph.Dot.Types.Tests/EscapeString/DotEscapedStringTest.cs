@@ -1,25 +1,25 @@
 using System;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Types.Text;
+using GiGraph.Dot.Types.EscapeString;
 using Xunit;
 
-namespace GiGraph.Dot.Types.Tests.Text
+namespace GiGraph.Dot.Types.Tests.EscapeString
 {
-    public class DotUnescapeStringTest
+    public class DotEscapedStringTest
     {
         private readonly DotSyntaxRules _syntaxRules = new();
 
         [Fact]
         public void throws_exception_on_constructor_null_value()
         {
-            Assert.Throws<ArgumentNullException>(() => new DotUnescapedString(null));
+            Assert.Throws<ArgumentNullException>(() => new DotEscapedString(null));
         }
 
         [Fact]
         public void implicit_conversion_returns_null_for_null()
         {
-            DotUnescapedString escStringValue = (string) null;
+            DotEscapedString escStringValue = (string) null;
             Assert.Null(escStringValue);
 
             string stringValue = escStringValue;
@@ -31,17 +31,17 @@ namespace GiGraph.Dot.Types.Tests.Text
         {
             var value = DotEscapeStringTest.SpecialChars;
 
-            var escStringValue = (DotUnescapedString) value;
+            DotEscapedString escStringValue = value;
             Assert.Equal(value, escStringValue.ToString());
         }
 
         [Fact]
-        public void returns_escaped_string_as_dot_encoded_value()
+        public void returns_exact_input_as_dot_encoded_value()
         {
-            DotUnescapedString str = $"a bcd {DotEscapeStringTest.SpecialChars} h ij";
-            Assert.Equal(
-                @"a bcd \"" \\ \n \n \n < > { } | h ij",
-                ((IDotEscapable) str).GetEscaped(_syntaxRules.Attributes.EscapeStringValueEscaper));
+            var value = $"a bcd {DotEscapeStringTest.SpecialChars} h ij";
+
+            DotEscapedString str = value;
+            Assert.Equal(value, ((IDotEscapable) str).GetEscaped(_syntaxRules.Attributes.EscapeStringValueEscaper));
         }
     }
 }

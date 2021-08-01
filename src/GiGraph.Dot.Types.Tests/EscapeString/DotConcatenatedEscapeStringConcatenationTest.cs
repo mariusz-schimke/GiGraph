@@ -1,9 +1,9 @@
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Types.Text;
+using GiGraph.Dot.Types.EscapeString;
 using Xunit;
 
-namespace GiGraph.Dot.Types.Tests.Text
+namespace GiGraph.Dot.Types.Tests.EscapeString
 {
     public class DotConcatenatedEscapeStringConcatenationTest
     {

@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Nodes;
-using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Examples.Basic
 {

@@ -1,4 +1,5 @@
-using GiGraph.Dot.Types.Text;
+using GiGraph.Dot.Types.EscapeString;
+using GiGraph.Dot.Types.Html;
 
 namespace GiGraph.Dot.Extensions
 {

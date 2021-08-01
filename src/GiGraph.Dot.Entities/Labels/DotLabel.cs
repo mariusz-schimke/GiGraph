@@ -1,8 +1,9 @@
 using GiGraph.Dot.Entities.Html;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Types.EscapeString;
+using GiGraph.Dot.Types.Html;
 using GiGraph.Dot.Types.Records;
-using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Labels
 {

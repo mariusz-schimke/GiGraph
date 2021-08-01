@@ -2,8 +2,8 @@ using System;
 using GiGraph.Dot.Entities.Html.Table.Attributes;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html.Table;
-using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Html.Table
 {

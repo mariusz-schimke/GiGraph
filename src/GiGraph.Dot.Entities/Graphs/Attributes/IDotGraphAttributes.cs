@@ -2,9 +2,9 @@
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Styling;
-using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {

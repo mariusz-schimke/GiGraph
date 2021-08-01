@@ -1,8 +1,8 @@
 using System;
-using GiGraph.Dot.Types.Text;
+using GiGraph.Dot.Types.Html;
 using Xunit;
 
-namespace GiGraph.Dot.Types.Tests.Text
+namespace GiGraph.Dot.Types.Tests.Html
 {
     public class DotHtmlStringTest
     {

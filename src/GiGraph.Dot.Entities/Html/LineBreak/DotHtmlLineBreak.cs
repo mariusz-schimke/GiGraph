@@ -2,7 +2,7 @@ using GiGraph.Dot.Entities.Html.LineBreak.Attributes;
 using GiGraph.Dot.Output.Metadata.Html;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Alignment;
-using GiGraph.Dot.Types.Text;
+using GiGraph.Dot.Types.Html;
 
 namespace GiGraph.Dot.Entities.Html.LineBreak
 {

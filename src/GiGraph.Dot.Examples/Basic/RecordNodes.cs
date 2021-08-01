@@ -2,8 +2,8 @@
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Records;
-using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Examples.Basic
 {

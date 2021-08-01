@@ -1,5 +1,5 @@
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Types.Text;
+using GiGraph.Dot.Types.Html;
 
 namespace GiGraph.Dot.Entities.Html
 {

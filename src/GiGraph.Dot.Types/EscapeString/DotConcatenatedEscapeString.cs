@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Output.Text.Escaping;
 
-namespace GiGraph.Dot.Types.Text
+namespace GiGraph.Dot.Types.EscapeString
 {
     /// <summary>
     ///     Represents a collection of escape string instances.

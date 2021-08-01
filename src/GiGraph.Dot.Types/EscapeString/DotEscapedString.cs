@@ -1,12 +1,17 @@
 using System;
 using GiGraph.Dot.Output.Text.Escaping;
 
-namespace GiGraph.Dot.Types.Text
+namespace GiGraph.Dot.Types.EscapeString
 {
     /// <summary>
-    ///     A string to be escaped on output DOT script generation.
+    ///     An escaped string to be rendered as is on output DOT script generation. It should follow the formatting rules described in
+    ///     the
+    ///     <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">
+    ///         documentation
+    ///     </see>
+    ///     .
     /// </summary>
-    public class DotUnescapedString : DotEscapeString
+    public class DotEscapedString : DotEscapeString
     {
         protected readonly string _value;
 
@@ -14,12 +19,12 @@ namespace GiGraph.Dot.Types.Text
         ///     Initializes a new instance.
         /// </summary>
         /// <param name="value">
-        ///     The unescaped string to initialize the instance with.
+        ///     The escaped string to initialize the instance with.
         /// </param>
         /// <exception cref="ArgumentNullException">
         ///     Thrown when the <paramref name="value" /> is null.
         /// </exception>
-        public DotUnescapedString(string value)
+        public DotEscapedString(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value), "Value must not be null.");
         }
@@ -31,12 +36,12 @@ namespace GiGraph.Dot.Types.Text
 
         protected internal override string GetEscapedString(IDotTextEscaper textEscaper)
         {
-            return textEscaper.Escape(_value);
+            return _value;
         }
 
-        public static implicit operator DotUnescapedString(string value)
+        public static implicit operator DotEscapedString(string value)
         {
-            return value is not null ? new DotUnescapedString(value) : null;
+            return value is not null ? new DotEscapedString(value) : null;
         }
     }
 }

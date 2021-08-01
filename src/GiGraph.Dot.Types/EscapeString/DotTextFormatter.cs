@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GiGraph.Dot.Types.Text
+namespace GiGraph.Dot.Types.EscapeString
 {
     /// <summary>
     ///     Facilitates building text with escape sequences that format its lines or hold a place for identifiers filled in on graph

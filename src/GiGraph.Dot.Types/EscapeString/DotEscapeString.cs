@@ -3,7 +3,7 @@ using System.Linq;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Text.Escaping;
 
-namespace GiGraph.Dot.Types.Text
+namespace GiGraph.Dot.Types.EscapeString
 {
     /// <summary>
     ///     Represents the DOT escape string (<see href="http://www.graphviz.org/doc/info/attrs.html#k:escString" />).

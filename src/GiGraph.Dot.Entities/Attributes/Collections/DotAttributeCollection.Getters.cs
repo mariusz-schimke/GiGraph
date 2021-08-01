@@ -6,12 +6,12 @@ using GiGraph.Dot.Types.Arrowheads;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Graphs;
 using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Packing;
 using GiGraph.Dot.Types.Ranks;
-using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {

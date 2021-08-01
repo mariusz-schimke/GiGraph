@@ -1,5 +1,5 @@
+using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Hyperlinks;
-using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Types.Edges
 {

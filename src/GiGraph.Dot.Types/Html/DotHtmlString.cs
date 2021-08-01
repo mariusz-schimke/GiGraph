@@ -1,8 +1,9 @@
 using System;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Types.EscapeString;
 
-namespace GiGraph.Dot.Types.Text
+namespace GiGraph.Dot.Types.Html
 {
     /// <summary>
     ///     Represents an HTML string. The value should be a compatible HTML string following the rules described in the

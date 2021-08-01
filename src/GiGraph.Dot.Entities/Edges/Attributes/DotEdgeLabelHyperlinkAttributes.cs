@@ -2,8 +2,8 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Hyperlinks;
-using GiGraph.Dot.Types.Text;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
