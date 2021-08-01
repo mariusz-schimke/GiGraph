@@ -3,8 +3,6 @@ using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Types.Html.Table
 {
-    // TODO: Napisać UT, żeby sprawdzał, czy te zależne od siebie enumy się nie rozjeżdżają
-
     /// <summary>
     ///     The justification options for HTML table cells.
     /// </summary>

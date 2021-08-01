@@ -26,12 +26,12 @@ namespace GiGraph.Dot.Types.Tests.Enums
             typeof(DotLineWeight)
         };
 
-        public static IEnumerable<object[]> EnumTypes { get; } = GetAllEnumTypes()
+        public static IEnumerable<object[]> EnumTypes { get; } = DotEnumsTest.GetAllEnumTypes()
            .Where(t => !IgnoredEnums.Contains(t))
            .Select(t => new[] { t })
            .ToArray();
 
-        public static IEnumerable<object[]> FlagsEnumTypes { get; } = GetAllEnumTypes()
+        public static IEnumerable<object[]> FlagsEnumTypes { get; } = DotEnumsTest.GetAllEnumTypes()
            .Where(t => !IgnoredEnums.Contains(t))
            .Where(t =>
                 t.GetCustomAttribute<DotJoinableTypeAttribute>() is not null ||
@@ -39,16 +39,6 @@ namespace GiGraph.Dot.Types.Tests.Enums
             )
            .Select(t => new[] { t })
            .ToArray();
-
-        private static IEnumerable<Type> GetAllEnumTypes()
-        {
-            var types = Assembly.LoadFrom("GiGraph.Dot.Types.dll")!.GetTypes()
-               .Where(t => t.IsEnum)
-               .ToArray();
-
-            Assert.NotEmpty(types);
-            return types;
-        }
 
         [Theory]
         [MemberData(nameof(EnumTypes))]
