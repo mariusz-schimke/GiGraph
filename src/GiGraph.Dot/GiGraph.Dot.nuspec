@@ -24,7 +24,7 @@
 
     <releaseNotes>- Added classes to represent HTML elements supported by Graphviz as nodes (for the so-called HTML-like labels). Thanks to that you won't have to check what attributes you can set for specific HTML elements since the classes expose appropriate properties.
 
-- General refactoring (namespace cleanup, removal of redundant DotAttribute descendant classes, etc.)
+- Refactoring.
 
 
 See also https://github.com/$repository$/releases</releaseNotes>

@@ -3,7 +3,7 @@
     /// <summary>
     ///     Escapes the environment new line character or sequence (system-dependent).
     /// </summary>
-    public class DotEnvironmentNewLineEscaper : IDotTextEscaper
+    public class DotSystemDefaultNewLineEscaper : IDotTextEscaper
     {
         string IDotTextEscaper.Escape(string value)
         {

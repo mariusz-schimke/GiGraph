@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Html
         /// </summary>
         public virtual List<IDotHtmlEntity> Children { get; }
 
-        protected override bool IsVoid => false;
+        protected sealed override bool IsVoid => false;
 
         protected override IEnumerable<IDotHtmlEntity> GetChildren()
         {
