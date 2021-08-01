@@ -4,9 +4,9 @@ using GiGraph.Dot.Types.Text;
 namespace GiGraph.Dot.Entities.Html
 {
     /// <summary>
-    ///     An HTML entity represented by ready HTML text, to be rendered as is.
+    ///     Contains ready HTML text to be rendered as is, without further processing.
     /// </summary>
-    public class DotCustomHtml : DotHtmlEntity
+    public class DotHtml : DotHtmlEntity
     {
         protected readonly DotHtmlString _html;
 
@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Entities.Html
         /// <param name="html">
         ///     The HTML to initialize the instance with.
         /// </param>
-        public DotCustomHtml(DotHtmlString html)
+        public DotHtml(DotHtmlString html)
         {
             _html = html;
         }
