@@ -18,13 +18,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Setup .NET 5
+    - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build project
+    - name: Build solution
       run: dotnet build --configuration Release --no-restore
     - name: Run tests
       run: dotnet test --no-restore
