@@ -32,31 +32,43 @@ namespace GiGraph.Dot.Output.EnumHelpers
         }
 
         /// <summary>
-        ///     Gets all single-flag values of the enumeration.
+        ///     Gets all non-compound values of the enumeration.
         /// </summary>
-        public virtual Enum[] GetSingleFlagValues()
+        public virtual Enum[] GetNonCompoundValues()
         {
-            return GetValues().Where(IsSingleFlagValue).ToArray();
+            return GetValues().Where(v => !IsCompoundValue(v)).ToArray();
         }
 
         /// <summary>
-        ///     Gets all multi-flag values of the enumeration.
+        ///     Gets all compound (multi-flag) values of the enumeration.
         /// </summary>
-        public virtual Enum[] GetMultiFlagValues()
+        public virtual Enum[] GetCompoundValues()
         {
-            return GetValues().Where(v => !IsSingleFlagValue(v)).ToArray();
+            return GetValues().Where(IsCompoundValue).ToArray();
+        }
+
+        /// <summary>
+        ///     Gets set flags of the enumeration.
+        /// </summary>
+        public virtual Enum[] GetSetFlags(Enum flags)
+        {
+            return GetValues()
+               .Where(v => !IsCompoundValue(v))
+               .Where(v => (int) (object) v != 0)
+               .Where(flags.HasFlag)
+               .ToArray();
         }
 
         /// <summary>
         ///     Checks the number of flags set in the specified enumeration value. Some enum member values may be helpers that are a result
-        ///     of a binary or operation of multiple other values (flags) of that enumeration. The method indicates if this is not the case.
+        ///     of a binary or operation of multiple other values (flags) of that enumeration. The method indicates if this is the case.
         /// </summary>
         /// <param name="value">
         ///     The enum value to check.
         /// </param>
-        public virtual bool IsSingleFlagValue(Enum value)
+        public virtual bool IsCompoundValue(Enum value)
         {
-            return !GetValues()
+            return GetValues()
                .Where(v => !Equals(v, value))
                .Where(v => (int) (object) v != 0)
                .Any(value.HasFlag);

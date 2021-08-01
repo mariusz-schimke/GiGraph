@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Output.Metadata
                 return false;
             }
 
-            var enumValues = new DotEnumMetadata(enumType).GetSingleFlagValues();
+            var enumValues = new DotEnumMetadata(enumType).GetNonCompoundValues();
             var mapping = GetMapping(enumType);
 
             var dotFlagsEnumerable = enumValues
