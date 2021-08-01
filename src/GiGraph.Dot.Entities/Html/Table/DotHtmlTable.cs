@@ -1,5 +1,5 @@
-using System;
 using GiGraph.Dot.Entities.Html.Table.Attributes;
+using GiGraph.Dot.Entities.Html.Table.Collections;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.EscapeString;
@@ -21,7 +21,12 @@ namespace GiGraph.Dot.Entities.Html.Table
         }
 
         protected DotHtmlTable(DotHtmlTableAttributes attributes)
-            : base("table", attributes.Collection)
+            : this(attributes, new DotHtmlTableChildrenCollection())
+        {
+        }
+
+        protected DotHtmlTable(DotHtmlTableAttributes attributes, DotHtmlTableChildrenCollection children)
+            : base("table", attributes.Collection, children)
         {
             Attributes = attributes;
         }
@@ -30,6 +35,9 @@ namespace GiGraph.Dot.Entities.Html.Table
         ///     The attributes of the table.
         /// </summary>
         public new virtual DotHtmlTableAttributes Attributes { get; }
+
+        /// <inheritdoc cref="DotHtmlElement.Children" />
+        public new virtual DotHtmlTableChildrenCollection Children => (DotHtmlTableChildrenCollection) base.Children;
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Id" />
         public virtual DotEscapeString Id
@@ -183,33 +191,6 @@ namespace GiGraph.Dot.Entities.Html.Table
         {
             get => ((IDotHtmlTableAttributes) Attributes).Style;
             set => ((IDotHtmlTableAttributes) Attributes).Style = value;
-        }
-
-        /// <summary>
-        ///     Adds a new row to the table and optionally initializes it.
-        /// </summary>
-        /// <param name="row">
-        ///     The row to add.
-        /// </param>
-        /// <param name="init">
-        ///     A row initializer delegate.
-        /// </param>
-        public virtual DotHtmlTableRow AddRow(DotHtmlTableRow row, Action<DotHtmlTableRow> init = null)
-        {
-            Children.Add(row);
-            init?.Invoke(row);
-            return row;
-        }
-
-        /// <summary>
-        ///     Adds a new row to the table and optionally initializes it.
-        /// </summary>
-        /// <param name="init">
-        ///     A row initializer delegate.
-        /// </param>
-        public virtual DotHtmlTableRow AddRow(Action<DotHtmlTableRow> init = null)
-        {
-            return AddRow(new DotHtmlTableRow(), init);
         }
     }
 }

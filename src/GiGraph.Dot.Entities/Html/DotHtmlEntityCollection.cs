@@ -60,12 +60,12 @@ namespace GiGraph.Dot.Entities.Html
         /// <param name="init">
         ///     An optional entity initializer.
         /// </param>
-        public DotHtmlEntityCollection Add<TEntity>(TEntity entity, Action<TEntity> init = null)
+        public TEntity Add<TEntity>(TEntity entity, Action<TEntity> init = null)
             where TEntity : IDotHtmlEntity
         {
             init?.Invoke(entity);
             base.Add(entity);
-            return this;
+            return entity;
         }
 
         public override string ToString()
