@@ -6,13 +6,14 @@ using GiGraph.Dot.Output.EnumHelpers;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Metadata.Html;
 using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Fonts;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Styling;
 using Xunit;
 
 namespace GiGraph.Dot.Types.Tests.Enums
 {
-    public class DotAttributeEnumValueKeyTest
+    public class DotEnumAttributeValueKeyTest
     {
         private static readonly HashSet<Type> IgnoredEnums = new()
         {
@@ -23,7 +24,8 @@ namespace GiGraph.Dot.Types.Tests.Enums
             typeof(DotBorderWeight),
             typeof(DotCornerStyle),
             typeof(DotLineStyle),
-            typeof(DotLineWeight)
+            typeof(DotLineWeight),
+            typeof(DotFontStyles)
         };
 
         public static IEnumerable<object[]> EnumTypes { get; } = DotEnumsTest.GetAllEnumTypes()
@@ -46,7 +48,7 @@ namespace GiGraph.Dot.Types.Tests.Enums
         {
             var metadata = new DotEnumMetadata(enumType);
 
-            foreach (var value in metadata.GetSingleFlagValues())
+            foreach (var value in metadata.GetNonCompoundValues())
             {
                 var enumMember = enumType.GetMember(value.ToString()!).First();
 
@@ -70,7 +72,7 @@ namespace GiGraph.Dot.Types.Tests.Enums
         {
             var metadata = new DotEnumMetadata(enumType);
 
-            foreach (var value in metadata.GetMultiFlagValues())
+            foreach (var value in metadata.GetCompoundValues())
             {
                 var enumMember = enumType.GetMember(value.ToString()!).First();
 
