@@ -23,12 +23,12 @@ namespace GiGraph.Dot.Types.Records
 
         public static implicit operator DotRecordField(string text)
         {
-            return (DotRecordTextField) text;
+            return new DotRecordTextField(text);
         }
 
         public static implicit operator DotRecordField(DotEscapeString text)
         {
-            return (DotRecordTextField) text;
+            return new DotRecordTextField(text);
         }
     }
 }

@@ -74,15 +74,5 @@ namespace GiGraph.Dot.Types.Records
 
             return result.ToString();
         }
-
-        public static implicit operator DotRecordTextField(string text)
-        {
-            return new DotRecordTextField(text);
-        }
-
-        public static implicit operator DotRecordTextField(DotEscapeString text)
-        {
-            return new DotRecordTextField(text);
-        }
     }
 }
