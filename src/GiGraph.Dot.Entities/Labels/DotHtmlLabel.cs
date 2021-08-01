@@ -51,35 +51,5 @@ namespace GiGraph.Dot.Entities.Labels
         {
             return _value.ToString();
         }
-
-        public static implicit operator DotHtmlLabel(DotHtmlEntity htmlEntity)
-        {
-            return htmlEntity is not null ? new DotHtmlLabel(htmlEntity) : null;
-        }
-
-        public static implicit operator DotHtmlLabel(DotHtmlEntityCollection htmlEntityCollection)
-        {
-            return htmlEntityCollection is not null ? new DotHtmlLabel(htmlEntityCollection) : null;
-        }
-
-        public static implicit operator DotHtmlLabel(string html)
-        {
-            return html is not null ? new DotHtmlLabel(html) : null;
-        }
-
-        public static implicit operator DotHtmlLabel(DotHtmlString html)
-        {
-            return html is not null ? new DotHtmlLabel(html) : null;
-        }
-
-        public static implicit operator string(DotHtmlLabel label)
-        {
-            return label?.ToString();
-        }
-
-        public static implicit operator DotHtmlString(DotHtmlLabel label)
-        {
-            return label?.ToString();
-        }
     }
 }

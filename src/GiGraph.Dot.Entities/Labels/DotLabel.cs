@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Labels
         /// <param name="text">
         ///     The text to use as the label.
         /// </param>
-        public static DotTextLabel FromText(string text)
+        public static DotLabel FromText(string text)
         {
             return new DotTextLabel(text);
         }
@@ -46,9 +46,9 @@ namespace GiGraph.Dot.Entities.Labels
         /// <param name="text">
         ///     The escaped text to use as the label.
         /// </param>
-        public static DotTextLabel FromFormattedText(DotEscapedString text)
+        public static DotLabel FromFormattedText(string text)
         {
-            return new DotTextLabel(text);
+            return new DotTextLabel((DotEscapedString) text);
         }
 
         /// <summary>
@@ -61,9 +61,9 @@ namespace GiGraph.Dot.Entities.Labels
         /// <param name="html">
         ///     The HTML to use as the label.
         /// </param>
-        public static DotHtmlLabel FromHtml(DotHtmlString html)
+        public static DotLabel FromHtml(string html)
         {
-            return new DotHtmlString(html);
+            return new DotHtmlLabel(html);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace GiGraph.Dot.Entities.Labels
         /// <param name="htmlEntity">
         ///     The HTML entity to use as the label.
         /// </param>
-        public static DotHtmlLabel FromHtml(IDotHtmlEntity htmlEntity)
+        public static DotLabel FromHtml(IDotHtmlEntity htmlEntity)
         {
             return new DotHtmlLabel(htmlEntity);
         }
@@ -83,39 +83,39 @@ namespace GiGraph.Dot.Entities.Labels
         /// <param name="record">
         ///     The record to use as the label.
         /// </param>
-        public static DotRecordLabel FromRecord(DotRecord record)
+        public static DotLabel FromRecord(DotRecord record)
         {
             return new DotRecordLabel(record);
         }
 
         public static implicit operator DotLabel(string text)
         {
-            return (DotTextLabel) text;
+            return text is not null ? new DotTextLabel(text) : null;
         }
 
         public static implicit operator DotLabel(DotEscapeString text)
         {
-            return (DotTextLabel) text;
+            return text is not null ? new DotTextLabel(text) : null;
         }
 
         public static implicit operator DotLabel(DotRecord record)
         {
-            return (DotRecordLabel) record;
+            return record is not null ? new DotRecordLabel(record) : null;
         }
 
         public static implicit operator DotLabel(DotHtmlString html)
         {
-            return (DotHtmlLabel) html;
+            return html is not null ? new DotHtmlLabel(html) : null;
         }
 
         public static implicit operator DotLabel(DotHtmlEntity htmlEntity)
         {
-            return (DotHtmlLabel) htmlEntity;
+            return htmlEntity is not null ? new DotHtmlLabel(htmlEntity) : null;
         }
 
         public static implicit operator DotLabel(DotHtmlEntityCollection htmlEntityCollection)
         {
-            return (DotHtmlLabel) htmlEntityCollection;
+            return htmlEntityCollection is not null ? new DotHtmlLabel(htmlEntityCollection) : null;
         }
     }
 }

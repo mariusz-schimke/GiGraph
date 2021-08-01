@@ -45,25 +45,5 @@ namespace GiGraph.Dot.Entities.Labels
         {
             return ((IDotEscapable) _text)?.GetEscaped(syntaxRules.Attributes.EscapeStringValueEscaper);
         }
-
-        public static implicit operator DotTextLabel(string text)
-        {
-            return text is not null ? new DotTextLabel(text) : null;
-        }
-
-        public static implicit operator DotTextLabel(DotEscapeString text)
-        {
-            return text is not null ? new DotTextLabel(text) : null;
-        }
-
-        public static implicit operator string(DotTextLabel label)
-        {
-            return label?._text;
-        }
-
-        public static implicit operator DotEscapeString(DotTextLabel label)
-        {
-            return label?._text;
-        }
     }
 }

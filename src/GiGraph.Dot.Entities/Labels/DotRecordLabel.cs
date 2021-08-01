@@ -31,15 +31,5 @@ namespace GiGraph.Dot.Entities.Labels
         {
             return ((IDotEncodable) _record)?.GetDotEncodedValue(options, syntaxRules);
         }
-
-        public static implicit operator DotRecordLabel(DotRecord record)
-        {
-            return record is not null ? new DotRecordLabel(record) : null;
-        }
-
-        public static implicit operator DotRecord(DotRecordLabel label)
-        {
-            return label?._record;
-        }
     }
 }
