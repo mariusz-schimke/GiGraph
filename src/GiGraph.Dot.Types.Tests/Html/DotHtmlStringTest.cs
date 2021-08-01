@@ -1,4 +1,5 @@
 using System;
+using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html;
 using Xunit;
 
@@ -20,6 +21,20 @@ namespace GiGraph.Dot.Types.Tests.Html
 
             string stringValue = htmlStringValue;
             Assert.Null(stringValue);
+        }
+
+        [Fact]
+        public void implicit_conversion_returns_original_string()
+        {
+            var value = "<table></table>";
+            DotHtmlString htmlStringValue = value;
+
+            string stringValue = htmlStringValue;
+            Assert.Equal(value, stringValue);
+
+            DotEscapeString escStringValue = htmlStringValue;
+            Assert.IsType<DotUnescapedString>(escStringValue);
+            Assert.Equal(value, escStringValue.ToString());
         }
 
         [Fact]
