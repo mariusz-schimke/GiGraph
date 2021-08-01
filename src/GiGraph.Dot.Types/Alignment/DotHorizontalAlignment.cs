@@ -15,21 +15,21 @@ namespace GiGraph.Dot.Types.Alignment
         ///     Places the label at the left side of the element.
         /// </summary>
         [DotAttributeValue("l")]
-        [DotHtmlElementAttributeValue("LEFT")]
+        [DotHtmlAttributeValue("LEFT")]
         Left = 1 << 3,
 
         /// <summary>
         ///     Places the label at the horizontal center of the element.
         /// </summary>
         [DotAttributeValue("c")]
-        [DotHtmlElementAttributeValue("CENTER")]
+        [DotHtmlAttributeValue("CENTER")]
         Center = 1 << 4,
 
         /// <summary>
         ///     Places the label at the right side of the element.
         /// </summary>
         [DotAttributeValue("r")]
-        [DotHtmlElementAttributeValue("RIGHT")]
+        [DotHtmlAttributeValue("RIGHT")]
         Right = 1 << 5
     }
 }

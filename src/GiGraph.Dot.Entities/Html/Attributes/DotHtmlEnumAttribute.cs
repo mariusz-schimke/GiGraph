@@ -31,9 +31,9 @@ namespace GiGraph.Dot.Entities.Html.Attributes
 
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return DotHtmlElementAttributeValue.TryGetAsFlags(Value, out var result)
+            return DotHtmlAttributeValue.TryGetAsFlags(Value, out var result)
                 ? result
-                : DotHtmlElementAttributeValue.Get(Value);
+                : DotHtmlAttributeValue.Get(Value);
         }
     }
 }

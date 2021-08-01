@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Types.Images
         ///     The image retains its natural size.
         /// </summary>
         [DotAttributeValue("false")]
-        [DotHtmlElementAttributeValue("FALSE")]
+        [DotHtmlAttributeValue("FALSE")]
         None,
 
         /// <summary>
@@ -20,28 +20,28 @@ namespace GiGraph.Dot.Types.Images
         ///     dimension of the image will be as large as possible given the size of the node.
         /// </summary>
         [DotAttributeValue("true")]
-        [DotHtmlElementAttributeValue("TRUE")]
+        [DotHtmlAttributeValue("TRUE")]
         Uniform,
 
         /// <summary>
         ///     The width of the image is scaled to fill the node or table cell width.
         /// </summary>
         [DotAttributeValue("width")]
-        [DotHtmlElementAttributeValue("WIDTH")]
+        [DotHtmlAttributeValue("WIDTH")]
         FillWidth,
 
         /// <summary>
         ///     The height of the image is scaled to fill the node or table cell height.
         /// </summary>
         [DotAttributeValue("height")]
-        [DotHtmlElementAttributeValue("HEIGHT")]
+        [DotHtmlAttributeValue("HEIGHT")]
         FillHeight,
 
         /// <summary>
         ///     Both the height and the width are scaled separately to fill the node or table cell.
         /// </summary>
         [DotAttributeValue("both")]
-        [DotHtmlElementAttributeValue("BOTH")]
+        [DotHtmlAttributeValue("BOTH")]
         FillBoth
     }
 }

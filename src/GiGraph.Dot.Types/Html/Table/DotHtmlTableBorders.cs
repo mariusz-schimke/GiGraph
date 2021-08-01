@@ -7,31 +7,31 @@ namespace GiGraph.Dot.Types.Html.Table
     ///     The sides of a border of an HTML table or cell.
     /// </summary>
     [Flags]
-    [DotHtmlElementJoinableType(separator: "", order: false)]
+    [DotHtmlJoinableType(separator: "", order: false)]
     public enum DotHtmlTableBorders
     {
         /// <summary>
         ///     The top border.
         /// </summary>
-        [DotHtmlElementAttributeValue("T")]
+        [DotHtmlAttributeValue("T")]
         Top = 1 << 0,
 
         /// <summary>
         ///     The right border.
         /// </summary>
-        [DotHtmlElementAttributeValue("R")]
+        [DotHtmlAttributeValue("R")]
         Right = 1 << 1,
 
         /// <summary>
         ///     The bottom border.
         /// </summary>
-        [DotHtmlElementAttributeValue("B")]
+        [DotHtmlAttributeValue("B")]
         Bottom = 1 << 2,
 
         /// <summary>
         ///     The left border.
         /// </summary>
-        [DotHtmlElementAttributeValue("L")]
+        [DotHtmlAttributeValue("L")]
         Left = 1 << 3,
 
         /// <summary>

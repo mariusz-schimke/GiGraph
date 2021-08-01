@@ -15,21 +15,21 @@ namespace GiGraph.Dot.Types.Alignment
         ///     Places the object on the top.
         /// </summary>
         [DotAttributeValue("t")]
-        [DotHtmlElementAttributeValue("TOP")]
+        [DotHtmlAttributeValue("TOP")]
         Top = 1 << 0,
 
         /// <summary>
         ///     Places the object in the vertical center.
         /// </summary>
         [DotAttributeValue("c")]
-        [DotHtmlElementAttributeValue("MIDDLE")]
+        [DotHtmlAttributeValue("MIDDLE")]
         Center = 1 << 1,
 
         /// <summary>
         ///     Places the object on the bottom.
         /// </summary>
         [DotAttributeValue("b")]
-        [DotHtmlElementAttributeValue("BOTTOM")]
+        [DotHtmlAttributeValue("BOTTOM")]
         Bottom = 1 << 2
     }
 }

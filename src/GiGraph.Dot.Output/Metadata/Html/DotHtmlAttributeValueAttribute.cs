@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
     ///     Assigns an HTML attribute value to an enumeration value.
     /// </summary>
     [AttributeUsage(AttributeTargets.Field)]
-    public class DotHtmlElementAttributeValueAttribute : Attribute, IDotAttributeValueAttribute
+    public class DotHtmlAttributeValueAttribute : Attribute, IDotAttributeValueAttribute
     {
         /// <summary>
         ///     Creates a new attribute instance.
@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
         /// <param name="value">
         ///     The value of the HTML attribute.
         /// </param>
-        public DotHtmlElementAttributeValueAttribute(string value)
+        public DotHtmlAttributeValueAttribute(string value)
         {
             Value = value;
         }
