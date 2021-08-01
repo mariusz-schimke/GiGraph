@@ -13,13 +13,21 @@ namespace GiGraph.Dot.Types.Tests.Text
         }
 
         [Fact]
-        public void implicit_conversion_returns_null()
+        public void implicit_conversion_returns_null_for_null()
         {
             DotHtmlString htmlStringValue = (string) null;
             Assert.Null(htmlStringValue);
 
             string stringValue = htmlStringValue;
             Assert.Null(stringValue);
+        }
+
+        [Fact]
+        public void to_string_returns_original_value()
+        {
+            var value = "<table></table>";
+            DotHtmlString htmlStringValue = value;
+            Assert.Equal(value, htmlStringValue.ToString());
         }
 
         [Fact]
@@ -30,6 +38,12 @@ namespace GiGraph.Dot.Types.Tests.Text
 
             var result = value1 + value2;
             Assert.Equal("value1value2", result);
+
+            result = value1 + null;
+            Assert.Equal("value1", result);
+
+            result = null + value2;
+            Assert.Equal("value2", result);
         }
 
         [Fact]
