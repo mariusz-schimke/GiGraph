@@ -60,12 +60,35 @@ namespace GiGraph.Dot.Entities.Html
         /// <param name="init">
         ///     An optional entity initializer.
         /// </param>
-        public TEntity Add<TEntity>(TEntity entity, Action<TEntity> init = null)
+        public virtual TEntity Add<TEntity>(TEntity entity, Action<TEntity> init = null)
             where TEntity : IDotHtmlEntity
         {
             init?.Invoke(entity);
             base.Add(entity);
             return entity;
+        }
+
+        /// <summary>
+        ///     Adds new HTML entities to the collection.
+        /// </summary>
+        /// <param name="entities">
+        ///     The entities to add.
+        /// </param>
+        public virtual IDotHtmlEntity[] AddRange(params IDotHtmlEntity[] entities)
+        {
+            base.AddRange(entities);
+            return entities;
+        }
+
+        /// <summary>
+        ///     Appends the specified HTML to the content of the element.
+        /// </summary>
+        /// <param name="html">
+        ///     The html to add to the content of the element.
+        /// </param>
+        public virtual void AddHtml(string html)
+        {
+            Add(new DotHtml(html), init: null);
         }
 
         public override string ToString()
