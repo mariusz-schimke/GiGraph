@@ -14,5 +14,8 @@ namespace GiGraph.Dot.Entities.Html.Table.Collections
         {
             return Add(new DotHtmlTableRow(), init);
         }
+
+        // TODO: może lepiej niech tego typu metody nie zwracają dodanego elementu, bo to wprowadza ryzyko,
+        // że przy fluencie doda się do elementu nadrzędnego nie cały zbudowany obiekt, ale jakiś element w nim zagnieżdżony
     }
 }

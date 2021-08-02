@@ -1,4 +1,7 @@
+using GiGraph.Dot.Entities.Html;
 using GiGraph.Dot.Entities.Html.Font;
+using GiGraph.Dot.Entities.Html.Table;
+using GiGraph.Dot.Entities.Html.Text;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Fonts;
@@ -7,7 +10,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
 {
-    public class DotHtmlFontStyleStylingTest
+    public class DotHtmlFontStylingTest
     {
         private readonly DotSyntaxOptions _syntaxOptions = new();
         private readonly DotSyntaxRules _syntaxRules = new();
@@ -56,6 +59,33 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
             Snapshot.Match(
                 ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
                 "html_text_styling_all_tags_text"
+            );
+        }
+
+        [Fact]
+        public void entity_collection_is_correctly_processed()
+        {
+            IDotHtmlEntity entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
+            var entity = DotHtmlFontStyle.StyleEntity(entityCollection, DotFontStyles.Bold);
+
+            Snapshot.Match(
+                entity.ToHtml(_syntaxOptions, _syntaxRules),
+                "html_entity_collection_styling"
+            );
+        }
+
+        [Fact]
+        public void entity_interface_is_correctly_processed()
+        {
+            var table = new DotHtmlTable();
+            table.Children.AddRow(r => r.Children.AddCell("text"));
+            DotHtmlEntity htmlEntity = table;
+
+            var entity = DotHtmlFontStyle.StyleEntity(htmlEntity, DotFontStyles.Bold);
+
+            Snapshot.Match(
+                ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_entity_interface_styling"
             );
         }
     }

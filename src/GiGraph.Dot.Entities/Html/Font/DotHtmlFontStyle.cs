@@ -39,7 +39,21 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// </param>
         public static DotHtmlEntity StyleText(string text, DotFontStyles style)
         {
-            return StyleEntity(style, () => new DotHtmlText(text));
+            return (DotHtmlEntity) StyleEntity(style, () => new DotHtmlText(text));
+        }
+
+        /// <summary>
+        ///     Embeds the entity in appropriate HTML tags based on the specified font style.
+        /// </summary>
+        /// <param name="entity">
+        ///     The entity to embed in font style elements.
+        /// </param>
+        /// <param name="style">
+        ///     The style to apply to the text.
+        /// </param>
+        public static IDotHtmlEntity StyleEntity(IDotHtmlEntity entity, DotFontStyles style)
+        {
+            return StyleEntity(style, () => entity);
         }
 
         /// <summary>
@@ -53,10 +67,10 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// </param>
         public static DotHtmlEntity StyleEntity(DotHtmlEntity entity, DotFontStyles style)
         {
-            return StyleEntity(style, () => entity);
+            return (DotHtmlEntity) StyleEntity(style, () => entity);
         }
 
-        protected static DotHtmlEntity StyleEntity(DotFontStyles style, Func<DotHtmlEntity> createStyledEntity)
+        protected static IDotHtmlEntity StyleEntity(DotFontStyles style, Func<IDotHtmlEntity> createStyledEntity)
         {
             DotHtmlFontStyle rootElement = null;
             DotHtmlFontStyle nestedElement = null;
