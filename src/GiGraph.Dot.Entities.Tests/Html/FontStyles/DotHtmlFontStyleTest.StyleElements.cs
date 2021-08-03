@@ -3,20 +3,16 @@ using GiGraph.Dot.Entities.Html.Font;
 using GiGraph.Dot.Entities.Html.Table;
 using GiGraph.Dot.Entities.Html.Text;
 using GiGraph.Dot.Output;
-using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Fonts;
 using Snapshooter.Xunit;
 using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
 {
-    public class DotHtmlFontStylingTest
+    public partial class DotHtmlFontStyleTest
     {
-        private readonly DotSyntaxOptions _syntaxOptions = new();
-        private readonly DotSyntaxRules _syntaxRules = new();
-
         [Fact]
-        public void text_is_not_embedded_in_any_tag()
+        public void text_is_not_embedded_in_any_tag_for_normal_style()
         {
             var entity = DotHtmlFontStyle.StyleText("text", DotFontStyles.Normal);
 

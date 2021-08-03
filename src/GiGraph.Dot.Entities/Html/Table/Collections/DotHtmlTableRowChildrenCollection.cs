@@ -9,6 +9,8 @@ namespace GiGraph.Dot.Entities.Html.Table.Collections
 {
     // TODO: dodać jakiś łatwy sposób dodawania tekstu w podanym stylu, również z możliwością zagnieżdżenia go od razu w tagu font (może rekord z nazwą, rozmiarem i stylem czcionki?).
     // TODO: Dla tagu font też umożliwić tworzenie go z zawartością i może ze stylem czcionki
+    // TODO: https://graphviz.org/doc/info/shapes.html#html -- możliwość dodania img do komórki
+    // TODO: dodać komentarze sugerujące, jakie elementy można dodać gdzie
 
     public class DotHtmlTableRowChildrenCollection : DotHtmlEntityCollection
     {
