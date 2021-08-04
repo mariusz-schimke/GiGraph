@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         }
 
         [Fact]
-        public void entity_collection_is_correctly_processed()
+        public void entity_collection_is_correctly_processed_for_font_style()
         {
             IDotHtmlEntity entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
             var entity = DotHtmlFontStyle.StyleEntity(entityCollection, DotFontStyles.Bold);
@@ -71,7 +71,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         }
 
         [Fact]
-        public void entity_interface_is_correctly_processed()
+        public void entity_interface_is_correctly_processed_for_font_style()
         {
             var table = new DotHtmlTable();
             table.Children.AddRow(r => r.Children.AddCell("text"));

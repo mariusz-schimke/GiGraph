@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="color">
         ///     Sets the color of the font within the scope of the current element.
         /// </param>
-        public DotHtmlFont(string name = null, int? size = null, DotColor color = null)
+        public DotHtmlFont(string name = null, double? size = null, DotColor color = null)
             : this(new DotHtmlFontAttributes())
         {
             if (name is not null)
@@ -39,6 +39,28 @@ namespace GiGraph.Dot.Entities.Html.Font
             {
                 Color = color;
             }
+        }
+
+        /// <summary>
+        ///     Initializes a new font element instance.
+        /// </summary>
+        /// <param name="font">
+        ///     The font to set.
+        /// </param>
+        public DotHtmlFont(DotFont font)
+            : this(font.Name, font.Size, font.Color)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new font element instance.
+        /// </summary>
+        /// <param name="source">
+        ///     The font to set.
+        /// </param>
+        public DotHtmlFont(IDotHtmlFontAttributes source)
+            : this(source.Name, source.Size, source.Color)
+        {
         }
 
         protected DotHtmlFont(DotHtmlFontAttributes attributes)
@@ -132,9 +154,23 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="size">
         ///     The size to apply to the font.
         /// </param>
-        public static DotHtmlEntity StyleText(string text, string name = null, int? size = null, DotColor color = null, DotFontStyles? style = null)
+        public static DotHtmlEntity StyleText(string text, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
         {
             return StyleEntity(new DotHtmlText(text), name, size, color, style);
+        }
+
+        /// <summary>
+        ///     Embeds the text in appropriate HTML tags based on the specified font style.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to embed in font and style elements.
+        /// </param>
+        /// <param name="font">
+        ///     The font and style to apply.
+        /// </param>
+        public static DotHtmlEntity StyleText(string text, DotStyledFont font)
+        {
+            return StyleText(text, font.Name, font.Size, font.Color, font.Style);
         }
 
         /// <summary>
@@ -159,7 +195,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="size">
         ///     The size to apply to the font.
         /// </param>
-        public static DotHtmlEntity StyleEntity(DotHtmlEntity entity, string name = null, int? size = null, DotColor color = null, DotFontStyles? style = null)
+        public static DotHtmlEntity StyleEntity(DotHtmlEntity entity, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
         {
             return (DotHtmlEntity) StyleEntity((IDotHtmlEntity) entity, name, size, color, style);
         }
@@ -168,7 +204,26 @@ namespace GiGraph.Dot.Entities.Html.Font
         ///     Embeds the entity in appropriate HTML tags based on the specified font style.
         /// </summary>
         /// <param name="entity">
-        ///     The entity to embed in font and style elements. Only text and table elements are supported (including collections of those). See
+        ///     The entity to embed in font and style elements. Only text and table elements are supported. See
+        ///     <see href="https://graphviz.org/doc/info/shapes.html#html">
+        ///         grammar
+        ///     </see>
+        ///     for more details.
+        /// </param>
+        /// <param name="font">
+        ///     The font and style to apply.
+        /// </param>
+        public static DotHtmlEntity StyleEntity(DotHtmlEntity entity, DotStyledFont font)
+        {
+            return StyleEntity(entity, font.Name, font.Size, font.Color, font.Style);
+        }
+
+        /// <summary>
+        ///     Embeds the entity in appropriate HTML tags based on the specified font style.
+        /// </summary>
+        /// <param name="entity">
+        ///     The entity to embed in font and style elements. Only text and table elements are supported (including collections of those).
+        ///     See
         ///     <see href="https://graphviz.org/doc/info/shapes.html#html">
         ///         grammar
         ///     </see>
@@ -186,7 +241,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="size">
         ///     The size to apply to the font.
         /// </param>
-        public static IDotHtmlEntity StyleEntity(IDotHtmlEntity entity, string name = null, int? size = null, DotColor color = null, DotFontStyles? style = null)
+        public static IDotHtmlEntity StyleEntity(IDotHtmlEntity entity, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
         {
             var result = style.HasValue
                 ? DotHtmlFontStyle.StyleEntity(entity, style.Value)
@@ -201,6 +256,25 @@ namespace GiGraph.Dot.Entities.Html.Font
                     Children = { result }
                 }
                 : result;
+        }
+
+        /// <summary>
+        ///     Embeds the entity in appropriate HTML tags based on the specified font style.
+        /// </summary>
+        /// <param name="entity">
+        ///     The entity to embed in font and style elements. Only text and table elements are supported (including collections of those).
+        ///     See
+        ///     <see href="https://graphviz.org/doc/info/shapes.html#html">
+        ///         grammar
+        ///     </see>
+        ///     for more details.
+        /// </param>
+        /// <param name="font">
+        ///     The font and style to apply.
+        /// </param>
+        public static IDotHtmlEntity StyleEntity(IDotHtmlEntity entity, DotStyledFont font)
+        {
+            return StyleEntity(entity, font.Name, font.Size, font.Color, font.Style);
         }
     }
 }
