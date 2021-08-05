@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Entities.Html.Image
         ///     Initializes a new image element instance.
         /// </summary>
         /// <param name="source">
-        ///     Specifies the image file to be displayed in the cell.
+        ///     Specifies the image file to be displayed.
         /// </param>
         /// <param name="scaling">
         ///     Specifies how the image will use any extra space available in its cell.
