@@ -6,6 +6,8 @@ using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Extensions
 {
+    // TODO: edge też może być typu HTML albo record - może extension methods?
+
     /// <summary>
     ///     Provides extension methods for <see cref="DotNode" />.
     /// </summary>

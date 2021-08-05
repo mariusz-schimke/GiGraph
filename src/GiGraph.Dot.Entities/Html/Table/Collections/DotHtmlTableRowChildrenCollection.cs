@@ -11,7 +11,7 @@ using GiGraph.Dot.Types.Images;
 
 namespace GiGraph.Dot.Entities.Html.Table.Collections
 {
-    // TODO: dodać komentarze sugerujące, jakie elementy można dodać gdzie
+    // TODO: edge też może być typu HTML albo record - może extension methods?
 
     public class DotHtmlTableRowChildrenCollection : DotHtmlEntityCollection
     {
