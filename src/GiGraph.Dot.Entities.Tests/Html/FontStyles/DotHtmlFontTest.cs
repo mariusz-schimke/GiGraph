@@ -89,7 +89,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
             var font = new DotStyledFont("Arial", 20, Color.Blue, DotFontStyles.Bold);
 
             var table = new DotHtmlTable();
-            table.Children.AddRow(r => r.Children.AddCell("text"));
+            table.AddRow(r => r.AddCell("text"));
             DotHtmlEntity htmlEntity = table;
 
             var entity1 = DotHtmlFont.StyleEntity(htmlEntity, font);

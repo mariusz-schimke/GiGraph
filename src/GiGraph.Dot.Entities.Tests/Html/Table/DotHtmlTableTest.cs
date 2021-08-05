@@ -71,24 +71,24 @@ namespace GiGraph.Dot.Entities.Tests.Html.Table
                 Id = "tableId"
             };
 
-            table.Children.AddRow(row =>
+            table.AddRow(row =>
             {
-                row.Children.AddCell(cell => cell.Id = "cellId1");
-                row.Children.AddCell("cell2", cell => cell.Id = "cellId2");
-                row.Children.AddCell("cell3", font.Style!.Value, font.Name, font.Size, font.Color, cell => cell.Id = "cell3");
-                row.Children.AddCell("cell4", font, cell => cell.Id = "cell4");
+                row.AddCell(cell => cell.Id = "cellId1");
+                row.AddCell("cell2", cell => cell.Id = "cellId2");
+                row.AddCell("cell3", font.Style!.Value, font.Name, font.Size, font.Color, cell => cell.Id = "cell3");
+                row.AddCell("cell4", font, cell => cell.Id = "cell4");
 
-                row.Children.AddCells("cell5", "cell6");
-                row.Children.AddCells(new[] { "cell7", "cell8" }, (cell, i) => cell.Id = $"cell{i}");
-                row.Children.AddCells(new[] { "cell9", "cell10" }, font, (cell, i) => cell.Id = $"cell{i}");
-                row.Children.AddCells(new[] { "cell11", "cell12" }, font.Style!.Value, font.Name, font.Size, font.Color, (cell, i) => cell.Id = $"cell{i}");
+                row.AddCells("cell5", "cell6");
+                row.AddCells(new[] { "cell7", "cell8" }, (cell, i) => cell.Id = $"cell{i}");
+                row.AddCells(new[] { "cell9", "cell10" }, font, (cell, i) => cell.Id = $"cell{i}");
+                row.AddCells(new[] { "cell11", "cell12" }, font.Style!.Value, font.Name, font.Size, font.Color, (cell, i) => cell.Id = $"cell{i}");
 
-                row.Children.AddVerticalRule();
+                row.AddVerticalRule();
 
-                row.Children.AddImageCell("image.png", DotImageScaling.None, cell => cell.Id = "img-cell");
+                row.AddImageCell("image.png", DotImageScaling.None, cell => cell.Id = "img-cell");
             });
 
-            table.Children.AddHorizontalRule();
+            table.AddHorizontalRule();
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) table).ToHtml(_syntaxOptions, _syntaxRules),

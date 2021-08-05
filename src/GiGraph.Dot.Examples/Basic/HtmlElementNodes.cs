@@ -21,51 +21,44 @@ namespace GiGraph.Dot.Examples.Basic
                 CellPadding = 4
             };
 
-            table.Children
-               .AddRow(row =>
-                {
-                    row.Children.AddCell(
-                        $"Foo{Environment.NewLine}Bar",
-                        cell => cell.RowSpan = 3
-                    );
+            table.AddRow(row =>
+            {
+                row.AddCell(
+                    $"Foo{Environment.NewLine}Bar",
+                    cell => cell.RowSpan = 3
+                );
 
-                    row.Children.AddCell(
-                        "Baz",
-                        cell =>
-                        {
-                            cell.ColumnSpan = 3;
-                            cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Left;
-                        }
-                    );
+                row.AddCell(
+                    "Baz",
+                    cell =>
+                    {
+                        cell.ColumnSpan = 3;
+                        cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Left;
+                    }
+                );
 
-                    row.Children.AddCell(
-                        "Qux",
-                        cell => cell.RowSpan = 3
-                    );
+                row.AddCell(
+                    "Qux",
+                    cell => cell.RowSpan = 3
+                );
 
-                    row.Children.AddCell(
-                        "Quux",
-                        cell => cell.RowSpan = 3
-                    );
-                });
+                row.AddCell(
+                    "Quux",
+                    cell => cell.RowSpan = 3
+                );
+            });
 
-            table.Children.AddRow(
-                row =>
-                {
-                    row.Children.AddCell("Garply");
-                    row.Children.AddCell("Waldo");
-                    row.Children.AddCell(
-                        "Fred",
-                        cell =>
-                        {
-                            cell.PortName = "port1";
-                        }
-                    );
-                }
-            );
+            table.AddRow(row =>
+            {
+                row.AddCells("Garply", "Waldo");
+                row.AddCell(
+                    "Fred",
+                    cell => cell.PortName = "port1"
+                );
+            });
 
-            table.Children.AddRow(
-                row => row.Children.AddCell(
+            table.AddRow(row =>
+                row.AddCell(
                     "Plugh",
                     cell =>
                     {

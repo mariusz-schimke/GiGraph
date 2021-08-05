@@ -74,7 +74,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         public void entity_interface_is_correctly_processed_for_font_style()
         {
             var table = new DotHtmlTable();
-            table.Children.AddRow(r => r.Children.AddCell("text"));
+            table.AddRow(r => r.AddCell("text"));
             DotHtmlEntity htmlEntity = table;
 
             var entity = DotHtmlFontStyle.StyleEntity(htmlEntity, DotFontStyles.Bold);
