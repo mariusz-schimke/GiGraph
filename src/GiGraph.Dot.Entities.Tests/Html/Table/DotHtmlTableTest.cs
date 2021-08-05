@@ -86,6 +86,8 @@ namespace GiGraph.Dot.Entities.Tests.Html.Table
                 row.Children.AddImageCell("image.png", DotImageScaling.None, cell => cell.Id = "img-cell");
             });
 
+            table.Children.AddHorizontalRule();
+
             Snapshot.Match(
                 ((IDotHtmlEncodable) table).ToHtml(_syntaxOptions, _syntaxRules),
                 "html_table_with_rows"

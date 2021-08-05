@@ -1,4 +1,5 @@
 using System;
+using GiGraph.Dot.Entities.Html.Rule;
 
 namespace GiGraph.Dot.Entities.Html.Table.Collections
 {
@@ -13,6 +14,14 @@ namespace GiGraph.Dot.Entities.Html.Table.Collections
         public virtual DotHtmlTableRow AddRow(Action<DotHtmlTableRow> init = null)
         {
             return Add(new DotHtmlTableRow(), init);
+        }
+
+        /// <summary>
+        ///     Adds a horizontal rule to separate two neighboring rows.
+        /// </summary>
+        public virtual DotHtmlHorizontalRule AddHorizontalRule()
+        {
+            return Add(new DotHtmlHorizontalRule(), init: null);
         }
     }
 }
