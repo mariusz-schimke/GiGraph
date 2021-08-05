@@ -83,6 +83,8 @@ namespace GiGraph.Dot.Entities.Tests.Html.Table
                 row.Children.AddCells(new[] { "cell9", "cell10" }, font, (cell, i) => cell.Id = $"cell{i}");
                 row.Children.AddCells(new[] { "cell11", "cell12" }, font.Style!.Value, font.Name, font.Size, font.Color, (cell, i) => cell.Id = $"cell{i}");
 
+                row.Children.AddVerticalRule();
+
                 row.Children.AddImageCell("image.png", DotImageScaling.None, cell => cell.Id = "img-cell");
             });
 

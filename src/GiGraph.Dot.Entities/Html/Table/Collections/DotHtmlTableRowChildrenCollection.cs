@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Html.Font;
 using GiGraph.Dot.Entities.Html.Image;
+using GiGraph.Dot.Entities.Html.Rule;
 using GiGraph.Dot.Entities.Html.Text;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Fonts;
@@ -14,6 +15,14 @@ namespace GiGraph.Dot.Entities.Html.Table.Collections
 
     public class DotHtmlTableRowChildrenCollection : DotHtmlEntityCollection
     {
+        /// <summary>
+        ///     Adds a vertical rule to separate two neighboring cells.
+        /// </summary>
+        public virtual DotHtmlVerticalRule AddVerticalRule()
+        {
+            return Add(new DotHtmlVerticalRule(), init: null);
+        }
+
         /// <summary>
         ///     Adds a cell to the current row.
         /// </summary>
