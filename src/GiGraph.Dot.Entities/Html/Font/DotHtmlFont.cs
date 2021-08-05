@@ -1,4 +1,5 @@
 using GiGraph.Dot.Entities.Html.Font.Attributes;
+using GiGraph.Dot.Entities.Html.Table;
 using GiGraph.Dot.Entities.Html.Text;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Fonts;
@@ -6,7 +7,7 @@ using GiGraph.Dot.Types.Fonts;
 namespace GiGraph.Dot.Entities.Html.Font
 {
     /// <summary>
-    ///     An HTML &lt;font&gt; element.
+    ///     An HTML &lt;font&gt; element. Supports <see cref="DotHtmlTable" />, text and text styling elements as the content.
     /// </summary>
     public class DotHtmlFont : DotHtmlElement, IDotHtmlFontAttributes
     {
