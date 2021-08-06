@@ -9,11 +9,6 @@ namespace GiGraph.Dot.Entities.Html
     {
         // TODO: dodać osobną klasę z kodami HTML: https://www.rapidtables.com/web/html/html-codes.html
 
-        /// <summary>
-        ///     Non-breaking space.
-        /// </summary>
-        public static readonly DotHtml Nbsp = new("&nbsp;");
-
         protected readonly string _html;
 
         /// <summary>

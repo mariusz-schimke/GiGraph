@@ -2,9 +2,6 @@ using GiGraph.Dot.Types.EnumHelpers;
 
 namespace GiGraph.Dot.Types.Alignment
 {
-    // TODO: Change from class to record?
-    // Should properties remain settable then?
-
     /// <summary>
     ///     Alignment properties.
     /// </summary>
