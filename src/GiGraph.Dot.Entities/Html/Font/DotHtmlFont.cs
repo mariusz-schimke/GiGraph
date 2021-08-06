@@ -198,7 +198,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// </param>
         public static DotHtmlEntity StyleEntity(DotHtmlEntity entity, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
         {
-            return (DotHtmlEntity) StyleEntity((IDotHtmlEntity) entity, name, size, color, style);
+            return StyleEntity((IDotHtmlEntity) entity, name, size, color, style);
         }
 
         /// <summary>
@@ -242,13 +242,13 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="size">
         ///     The size to apply to the font.
         /// </param>
-        public static IDotHtmlEntity StyleEntity(IDotHtmlEntity entity, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
+        public static DotHtmlEntity<IDotHtmlEntity> StyleEntity(IDotHtmlEntity entity, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
         {
             var result = style.HasValue
                 ? DotHtmlFontStyle.StyleEntity(entity, style.Value)
                 : entity;
 
-            return name is not null || color is not null || size.HasValue
+            result = name is not null || color is not null || size.HasValue
                 ? new DotHtmlFont
                 {
                     Name = name,
@@ -257,6 +257,8 @@ namespace GiGraph.Dot.Entities.Html.Font
                     Children = { result }
                 }
                 : result;
+
+            return new DotHtmlEntity<IDotHtmlEntity>(result);
         }
 
         /// <summary>
@@ -273,7 +275,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="font">
         ///     The font and style to apply.
         /// </param>
-        public static IDotHtmlEntity StyleEntity(IDotHtmlEntity entity, DotStyledFont font)
+        public static DotHtmlEntity<IDotHtmlEntity> StyleEntity(IDotHtmlEntity entity, DotStyledFont font)
         {
             return StyleEntity(entity, font.Name, font.Size, font.Color, font.Style);
         }
