@@ -35,9 +35,9 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="items">
         ///     The pieces of text to style.
         /// </param>
-        public static DotHtmlEntityCollection SetStyle(params (string Text, DotFontStyles Style)[] items)
+        public static DotHtmlEntityCollection SetStyles(params (string Text, DotFontStyles Style)[] items)
         {
-            return SetStyle((IEnumerable<(string Text, DotFontStyles Style)>) items);
+            return SetStyles((IEnumerable<(string Text, DotFontStyles Style)>) items);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="items">
         ///     The pieces of text to style.
         /// </param>
-        public static DotHtmlEntityCollection SetStyle(IEnumerable<(string Text, DotFontStyles Style)> items)
+        public static DotHtmlEntityCollection SetStyles(IEnumerable<(string Text, DotFontStyles Style)> items)
         {
             return new DotHtmlEntityCollection(
                 items.Select(item => SetStyle(item.Text, item.Style))
@@ -59,9 +59,9 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="items">
         ///     The HTML entities to style.
         /// </param>
-        public static DotHtmlEntityCollection SetStyle(params (IDotHtmlEntity Entity, DotFontStyles Style)[] items)
+        public static DotHtmlEntityCollection SetStyles(params (IDotHtmlEntity Entity, DotFontStyles Style)[] items)
         {
-            return SetStyle((IEnumerable<(IDotHtmlEntity Entity, DotFontStyles Style)>) items);
+            return SetStyles((IEnumerable<(IDotHtmlEntity Entity, DotFontStyles Style)>) items);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="items">
         ///     The HTML entities to style.
         /// </param>
-        public static DotHtmlEntityCollection SetStyle(IEnumerable<(IDotHtmlEntity Entity, DotFontStyles Style)> items)
+        public static DotHtmlEntityCollection SetStyles(IEnumerable<(IDotHtmlEntity Entity, DotFontStyles Style)> items)
         {
             return new DotHtmlEntityCollection(
                 items.Select(item => SetStyle(item.Entity, item.Style))
