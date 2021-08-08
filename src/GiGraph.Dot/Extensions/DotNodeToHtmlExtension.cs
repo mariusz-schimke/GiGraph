@@ -6,8 +6,6 @@ using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Extensions
 {
-    // TODO: edge też może być typu HTML albo record - może extension methods?
-
     /// <summary>
     ///     Provides extension methods for <see cref="DotNode" />.
     /// </summary>
@@ -28,10 +26,10 @@ namespace GiGraph.Dot.Extensions
         ///     The HTML text to assign to node label. Pass <see cref="string" /> to convert it implicitly to the required
         ///     <see cref="DotHtmlString" /> type.
         /// </param>
-        public static void ToHtmlNode(this DotNode node, DotHtmlString html)
+        public static void ToHtmlNode(this DotNode node, string html)
         {
             node.Attributes.Shape = DotNodeShape.Plain;
-            node.Attributes.Label = html;
+            node.Attributes.Label = (DotHtmlString) html;
         }
 
         /// <summary>

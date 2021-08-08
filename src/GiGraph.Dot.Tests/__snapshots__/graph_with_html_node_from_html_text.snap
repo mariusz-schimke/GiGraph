@@ -1,0 +1,4 @@
+﻿digraph
+{
+    node1 [ label = <<b>label</b>>, shape = plain ]
+}
