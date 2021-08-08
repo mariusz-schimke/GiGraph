@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Html.Font
     public partial class DotHtmlFontStyle
     {
         /// <summary>
-        ///     Embeds the individual entities in appropriate HTML tags based on the font style specified for them.
+        ///     Embeds the entities in appropriate HTML tags each, based on the font styles specified for them.
         /// </summary>
         /// <param name="items">
         ///     The HTML entities to style.
@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         }
 
         /// <summary>
-        ///     Embeds the individual entities in appropriate HTML tags based on the font style specified for them.
+        ///     Embeds the entities in appropriate HTML tags each, based on the font styles specified for them.
         /// </summary>
         /// <param name="style">
         ///     The common style to apply to the entities.
@@ -34,7 +34,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         }
 
         /// <summary>
-        ///     Embeds the individual entities in appropriate HTML tags based on the font style specified for them.
+        ///     Embeds the entities in appropriate HTML tags each, based on the font styles specified for them.
         /// </summary>
         /// <param name="items">
         ///     The HTML entities to style.
@@ -63,7 +63,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         ///     for more details.
         /// </param>
         /// <param name="style">
-        ///     The style to apply to the text.
+        ///     The style to apply to the entities.
         /// </param>
         public static DotHtmlEntity SetStyle(IDotHtmlEntity entity, DotFontStyles style)
         {
