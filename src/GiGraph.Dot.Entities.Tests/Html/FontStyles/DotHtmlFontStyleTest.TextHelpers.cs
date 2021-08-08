@@ -70,5 +70,20 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
                 "html_text_multistyling"
             );
         }
+
+        [Fact]
+        public void text_items_are_correctly_styled_with_common_parent_style()
+        {
+            var entity = DotHtmlFontStyle.SetStyles(
+                DotFontStyles.Italic,
+                ("text", DotFontStyles.Normal),
+                ("text", DotFontStyles.Bold)
+            );
+
+            Snapshot.Match(
+                ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_text_multistyling_with_common_parent_style"
+            );
+        }
     }
 }

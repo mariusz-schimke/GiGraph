@@ -60,9 +60,12 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="size">
         ///     The size to apply to the font.
         /// </param>
-        public static DotHtmlEntity SetFont(IEnumerable<(string Text, DotFontStyles Style)> items, string name = null, double? size = null, DotColor color = null)
+        /// <param name="style">
+        ///     The style to apply to the text.
+        /// </param>
+        public static DotHtmlEntity SetFont(IEnumerable<(string Text, DotFontStyles Style)> items, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
         {
-            return SetFont(DotHtmlFontStyle.SetStyles(items), name, size, color);
+            return SetFont(DotHtmlFontStyle.SetStyles(items), name, size, color, style);
         }
 
         /// <summary>

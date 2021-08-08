@@ -59,7 +59,8 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
                 },
                 "Arial",
                 10,
-                Color.CadetBlue
+                Color.CadetBlue,
+                DotFontStyles.Bold
             );
 
             Snapshot.Match(

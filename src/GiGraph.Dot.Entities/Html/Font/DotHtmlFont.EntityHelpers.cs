@@ -29,9 +29,6 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <summary>
         ///     Embeds the pieces of text in appropriate HTML tags based on the specified font style.
         /// </summary>
-        /// <param name="color">
-        ///     The color to apply to the text.
-        /// </param>
         /// <param name="items">
         ///     The pieces of text to style.
         /// </param>
@@ -41,9 +38,15 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="size">
         ///     The size to apply to the font.
         /// </param>
-        public static DotHtmlEntity SetFont(IEnumerable<(IDotHtmlEntity Entity, DotFontStyles Style)> items, string name = null, double? size = null, DotColor color = null)
+        /// <param name="color">
+        ///     The color to apply to the text.
+        /// </param>
+        /// <param name="style">
+        ///     The style to apply to the text.
+        /// </param>
+        public static DotHtmlEntity SetFont(IEnumerable<(IDotHtmlEntity Entity, DotFontStyles Style)> items, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
         {
-            return SetFont(DotHtmlFontStyle.SetStyles(items), name, size, color);
+            return SetFont(DotHtmlFontStyle.SetStyles(items), name, size, color, style);
         }
 
         /// <summary>
