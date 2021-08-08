@@ -28,8 +28,7 @@ namespace GiGraph.Dot.Extensions
         /// </param>
         public static void ToHtmlNode(this DotNode node, string html)
         {
-            node.Attributes.Shape = DotNodeShape.Plain;
-            node.Attributes.Label = (DotHtmlString) html;
+            node.ToHtmlNode((DotHtmlLabel) (DotHtmlString) html);
         }
 
         /// <summary>
@@ -48,8 +47,13 @@ namespace GiGraph.Dot.Extensions
         /// </param>
         public static void ToHtmlNode(this DotNode node, IDotHtmlEntity html)
         {
+            node.ToHtmlNode(new DotHtmlLabel(html));
+        }
+
+        private static void ToHtmlNode(this DotNode node, DotHtmlLabel label)
+        {
             node.Attributes.Shape = DotNodeShape.Plain;
-            node.Attributes.Label = new DotHtmlLabel(html);
+            node.Attributes.Label = label;
         }
     }
 }

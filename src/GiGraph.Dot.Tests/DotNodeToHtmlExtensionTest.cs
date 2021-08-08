@@ -22,6 +22,15 @@ namespace GiGraph.Dot.Tests
         }
 
         [Fact]
+        public void does_not_throw_for_null_html_text()
+        {
+            var node = new DotGraph().Nodes.Add("node1");
+            node.ToHtmlNode((string) null);
+
+            Assert.Null(node.Attributes.Label);
+        }
+
+        [Fact]
         public void converts_node_to_html_node_from_html_entity()
         {
             var graph = new DotGraph();

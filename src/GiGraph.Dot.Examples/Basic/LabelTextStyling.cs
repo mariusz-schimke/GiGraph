@@ -1,7 +1,6 @@
 ﻿using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Html.Font;
-using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.Fonts;
 using GiGraph.Dot.Types.Nodes;
 
