@@ -111,7 +111,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         public virtual DotHtmlTableCell AddCell(string text, DotFontStyles fontStyle, string name = null, double? size = null, DotColor color = null, Action<DotHtmlTableCell> init = null)
         {
             return Children.Add(
-                new DotHtmlTableCell { Children = { DotHtmlFont.StyleText(text, name, size, color, fontStyle) } },
+                new DotHtmlTableCell { Children = { DotHtmlFont.SetFont(text, name, size, color, fontStyle) } },
                 init
             );
         }
@@ -131,7 +131,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         public virtual DotHtmlTableCell AddCell(string text, DotStyledFont font, Action<DotHtmlTableCell> init = null)
         {
             return Children.Add(
-                new DotHtmlTableCell { Children = { DotHtmlFont.StyleText(text, font) } },
+                new DotHtmlTableCell { Children = { DotHtmlFont.SetFont(text, font) } },
                 init
             );
         }
@@ -192,7 +192,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         {
             return cells.Select((item, index) =>
                 {
-                    var cell = new DotHtmlTableCell { Children = { DotHtmlFont.StyleText(item, name, size, color, fontStyle) } };
+                    var cell = new DotHtmlTableCell { Children = { DotHtmlFont.SetFont(item, name, size, color, fontStyle) } };
                     init?.Invoke(cell, index);
                     return Children.Add(cell);
                 })
@@ -215,7 +215,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         {
             return cells.Select((item, index) =>
                 {
-                    var cell = new DotHtmlTableCell { Children = { DotHtmlFont.StyleText(item, font) } };
+                    var cell = new DotHtmlTableCell { Children = { DotHtmlFont.SetFont(item, font) } };
                     init?.Invoke(cell, index);
                     return Children.Add(cell);
                 })

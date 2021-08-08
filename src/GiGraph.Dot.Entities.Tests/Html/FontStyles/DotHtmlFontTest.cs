@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         [Fact]
         public void text_is_not_embedded_in_any_tag_for_no_font_params()
         {
-            var entity = DotHtmlFont.StyleText("text");
+            var entity = DotHtmlFont.SetFont("text");
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         [Fact]
         public void text_is_embedded_in_font_tag_only_with_all_set_attributes()
         {
-            var entity = DotHtmlFont.StyleText("text", "Arial", 20, Color.Blue);
+            var entity = DotHtmlFont.SetFont("text", "Arial", 20, Color.Blue);
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
@@ -54,8 +54,8 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         {
             var font = new DotStyledFont("Arial", 20, Color.Blue, DotFontStyles.Overline | DotFontStyles.Subscript);
 
-            var entity1 = DotHtmlFont.StyleText("text", font);
-            var entity2 = DotHtmlFont.StyleText("text", font.Name, font.Size, font.Color, font.Style);
+            var entity1 = DotHtmlFont.SetFont("text", font);
+            var entity2 = DotHtmlFont.SetFont("text", font.Name, font.Size, font.Color, font.Style);
 
             Assert.Equal((string) entity1.ToHtml(), entity2.ToHtml());
 
@@ -72,8 +72,8 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
 
             IDotHtmlEntity entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
 
-            var entity1 = DotHtmlFont.StyleEntity(entityCollection, font);
-            var entity2 = DotHtmlFont.StyleEntity(entityCollection, font.Name, font.Size, font.Color, font.Style);
+            var entity1 = DotHtmlFont.SetFont(entityCollection, font);
+            var entity2 = DotHtmlFont.SetFont(entityCollection, font.Name, font.Size, font.Color, font.Style);
 
             Assert.Equal((string) entity1.ToHtml(), entity2.ToHtml());
 
@@ -92,8 +92,8 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
             table.AddRow(r => r.AddCell("text"));
             DotHtmlEntity htmlEntity = table;
 
-            var entity1 = DotHtmlFont.StyleEntity(htmlEntity, font);
-            var entity2 = DotHtmlFont.StyleEntity(htmlEntity, font.Name, font.Size, font.Color, font.Style);
+            var entity1 = DotHtmlFont.SetFont(htmlEntity, font);
+            var entity2 = DotHtmlFont.SetFont(htmlEntity, font.Name, font.Size, font.Color, font.Style);
 
             Assert.Equal((string) entity1.ToHtml(), entity2.ToHtml());
 

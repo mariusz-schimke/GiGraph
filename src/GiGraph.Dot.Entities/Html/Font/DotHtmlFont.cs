@@ -155,9 +155,10 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="size">
         ///     The size to apply to the font.
         /// </param>
-        public static DotHtmlEntity StyleText(string text, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
+        public static DotHtmlEntity SetFont(string text, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
         {
-            return StyleEntity(new DotHtmlText(text), name, size, color, style);
+            return SetFont(new DotHtmlText(text), name, size, color, style);
+        }
         }
 
         /// <summary>
@@ -169,9 +170,9 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="font">
         ///     The font and style to apply.
         /// </param>
-        public static DotHtmlEntity StyleText(string text, DotStyledFont font)
+        public static DotHtmlEntity SetFont(string text, DotStyledFont font)
         {
-            return StyleText(text, font.Name, font.Size, font.Color, font.Style);
+            return SetFont(text, font.Name, font.Size, font.Color, font.Style);
         }
 
         /// <summary>
@@ -196,9 +197,9 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="size">
         ///     The size to apply to the font.
         /// </param>
-        public static DotHtmlEntity StyleEntity(DotHtmlEntity entity, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
+        public static DotHtmlEntity SetFont(DotHtmlEntity entity, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
         {
-            return StyleEntity((IDotHtmlEntity) entity, name, size, color, style);
+            return SetFont((IDotHtmlEntity) entity, name, size, color, style);
         }
 
         /// <summary>
@@ -214,9 +215,9 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="font">
         ///     The font and style to apply.
         /// </param>
-        public static DotHtmlEntity StyleEntity(DotHtmlEntity entity, DotStyledFont font)
+        public static DotHtmlEntity SetFont(DotHtmlEntity entity, DotStyledFont font)
         {
-            return StyleEntity(entity, font.Name, font.Size, font.Color, font.Style);
+            return SetFont(entity, font.Name, font.Size, font.Color, font.Style);
         }
 
         /// <summary>
@@ -242,10 +243,10 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="size">
         ///     The size to apply to the font.
         /// </param>
-        public static DotHtmlEntity<IDotHtmlEntity> StyleEntity(IDotHtmlEntity entity, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
+        public static DotHtmlEntity<IDotHtmlEntity> SetFont(IDotHtmlEntity entity, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
         {
             var result = style.HasValue
-                ? DotHtmlFontStyle.StyleEntity(entity, style.Value)
+                ? DotHtmlFontStyle.SetStyle(entity, style.Value)
                 : entity;
 
             result = name is not null || color is not null || size.HasValue
@@ -275,9 +276,9 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="font">
         ///     The font and style to apply.
         /// </param>
-        public static DotHtmlEntity<IDotHtmlEntity> StyleEntity(IDotHtmlEntity entity, DotStyledFont font)
+        public static DotHtmlEntity<IDotHtmlEntity> SetFont(IDotHtmlEntity entity, DotStyledFont font)
         {
-            return StyleEntity(entity, font.Name, font.Size, font.Color, font.Style);
+            return SetFont(entity, font.Name, font.Size, font.Color, font.Style);
         }
     }
 }

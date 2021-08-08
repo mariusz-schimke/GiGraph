@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         [Fact]
         public void text_is_not_embedded_in_any_tag_for_normal_style()
         {
-            var entity = DotHtmlFontStyle.StyleText("text", DotFontStyles.Normal);
+            var entity = DotHtmlFontStyle.SetStyle("text", DotFontStyles.Normal);
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         [Fact]
         public void text_is_embedded_in_bold_tag()
         {
-            var entity = DotHtmlFontStyle.StyleText("text", DotFontStyles.Bold);
+            var entity = DotHtmlFontStyle.SetStyle("text", DotFontStyles.Bold);
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         [Fact]
         public void text_is_embedded_in_bold_italic_tags()
         {
-            var entity = DotHtmlFontStyle.StyleText("text", DotFontStyles.Bold | DotFontStyles.Italic);
+            var entity = DotHtmlFontStyle.SetStyle("text", DotFontStyles.Bold | DotFontStyles.Italic);
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
@@ -47,7 +47,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         [Fact]
         public void text_is_embedded_in_all_tags()
         {
-            var entity = DotHtmlFontStyle.StyleText(
+            var entity = DotHtmlFontStyle.SetStyle(
                 "text",
                 DotFontStyles.Bold | DotFontStyles.Italic | DotFontStyles.Underline | DotFontStyles.Overline | DotFontStyles.Subscript | DotFontStyles.Superscript
             );
@@ -62,7 +62,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         public void entity_collection_is_correctly_processed_for_font_style()
         {
             IDotHtmlEntity entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
-            var entity = DotHtmlFontStyle.StyleEntity(entityCollection, DotFontStyles.Bold);
+            var entity = DotHtmlFontStyle.SetStyle(entityCollection, DotFontStyles.Bold);
 
             Snapshot.Match(
                 entity.ToHtml(_syntaxOptions, _syntaxRules),
@@ -77,7 +77,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
             table.AddRow(r => r.AddCell("text"));
             DotHtmlEntity htmlEntity = table;
 
-            var entity = DotHtmlFontStyle.StyleEntity(htmlEntity, DotFontStyles.Bold);
+            var entity = DotHtmlFontStyle.SetStyle(htmlEntity, DotFontStyles.Bold);
 
             Snapshot.Match(
                 ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),

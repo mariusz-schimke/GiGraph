@@ -34,10 +34,10 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="items">
         ///     The pieces of text to style.
         /// </param>
-        public static DotHtmlEntityCollection StyleText(params (string Text, DotFontStyles Style)[] items)
+        public static DotHtmlEntityCollection SetStyle(params (string Text, DotFontStyles Style)[] items)
         {
             return new DotHtmlEntityCollection(
-                items.Select(item => StyleText(item.Text, item.Style))
+                items.Select(item => SetStyle(item.Text, item.Style))
             );
         }
 
@@ -47,10 +47,10 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="items">
         ///     The HTML entities to style.
         /// </param>
-        public static DotHtmlEntityCollection StyleEntities(params (DotHtmlEntity Entity, DotFontStyles Style)[] items)
+        public static DotHtmlEntityCollection SetStyle(params (DotHtmlEntity Entity, DotFontStyles Style)[] items)
         {
             return new DotHtmlEntityCollection(
-                items.Select(item => StyleEntity(item.Entity, item.Style))
+                items.Select(item => SetStyle(item.Entity, item.Style))
             );
         }
 
@@ -60,10 +60,10 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="items">
         ///     The HTML entities to style.
         /// </param>
-        public static DotHtmlEntityCollection StyleEntities(params (IDotHtmlEntity Entity, DotFontStyles Style)[] items)
+        public static DotHtmlEntityCollection SetStyle(params (IDotHtmlEntity Entity, DotFontStyles Style)[] items)
         {
             return new DotHtmlEntityCollection(
-                items.Select(item => StyleEntity(item.Entity, item.Style))
+                items.Select(item => SetStyle(item.Entity, item.Style))
             );
         }
 
@@ -76,9 +76,9 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="style">
         ///     The style to apply to the text.
         /// </param>
-        public static DotHtmlEntity StyleText(string text, DotFontStyles style)
+        public static DotHtmlEntity SetStyle(string text, DotFontStyles style)
         {
-            return StyleEntity(new DotHtmlText(text), style);
+            return SetStyle(new DotHtmlText(text), style);
         }
 
         /// <summary>
@@ -94,9 +94,9 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="style">
         ///     The style to apply to the text.
         /// </param>
-        public static DotHtmlEntity StyleEntity(DotHtmlEntity entity, DotFontStyles style)
+        public static DotHtmlEntity SetStyle(DotHtmlEntity entity, DotFontStyles style)
         {
-            return StyleEntity((IDotHtmlEntity) entity, style);
+            return SetStyle((IDotHtmlEntity) entity, style);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="style">
         ///     The style to apply to the text.
         /// </param>
-        public static DotHtmlEntity<IDotHtmlEntity> StyleEntity(IDotHtmlEntity entity, DotFontStyles style)
+        public static DotHtmlEntity<IDotHtmlEntity> SetStyle(IDotHtmlEntity entity, DotFontStyles style)
         {
             DotHtmlFontStyle rootElement = null;
             DotHtmlFontStyle nestedElement = null;
