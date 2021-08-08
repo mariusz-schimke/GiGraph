@@ -78,5 +78,20 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
                 "html_font_array_with_entity"
             );
         }
+
+        [Fact]
+        public void entity_items_are_correctly_styled_with_multiple_fonts_and_common_parent_font()
+        {
+            var entity = DotHtmlFont.SetFonts(
+                new DotStyledFont("Arial"),
+                (new DotHtmlTable(), new DotStyledFont(size: 10, color: Color.CadetBlue, style: DotFontStyles.Bold)),
+                (new DotHtmlTable(), new DotStyledFont(size: 12, color: Color.Red, style: DotFontStyles.Italic))
+            );
+
+            Snapshot.Match(
+                ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_font_array_with_entity_and_common_parent_font"
+            );
+        }
     }
 }
