@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
@@ -36,6 +37,17 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// </param>
         public static DotHtmlEntityCollection SetStyle(params (string Text, DotFontStyles Style)[] items)
         {
+            return SetStyle((IEnumerable<(string Text, DotFontStyles Style)>) items);
+        }
+
+        /// <summary>
+        ///     Embeds the individual pieces of text in appropriate HTML tags based on the font style specified for them.
+        /// </summary>
+        /// <param name="items">
+        ///     The pieces of text to style.
+        /// </param>
+        public static DotHtmlEntityCollection SetStyle(IEnumerable<(string Text, DotFontStyles Style)> items)
+        {
             return new DotHtmlEntityCollection(
                 items.Select(item => SetStyle(item.Text, item.Style))
             );
@@ -47,11 +59,9 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="items">
         ///     The HTML entities to style.
         /// </param>
-        public static DotHtmlEntityCollection SetStyle(params (DotHtmlEntity Entity, DotFontStyles Style)[] items)
+        public static DotHtmlEntityCollection SetStyle(params (IDotHtmlEntity Entity, DotFontStyles Style)[] items)
         {
-            return new DotHtmlEntityCollection(
-                items.Select(item => SetStyle(item.Entity, item.Style))
-            );
+            return SetStyle((IEnumerable<(IDotHtmlEntity Entity, DotFontStyles Style)>) items);
         }
 
         /// <summary>
@@ -60,7 +70,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="items">
         ///     The HTML entities to style.
         /// </param>
-        public static DotHtmlEntityCollection SetStyle(params (IDotHtmlEntity Entity, DotFontStyles Style)[] items)
+        public static DotHtmlEntityCollection SetStyle(IEnumerable<(IDotHtmlEntity Entity, DotFontStyles Style)> items)
         {
             return new DotHtmlEntityCollection(
                 items.Select(item => SetStyle(item.Entity, item.Style))
@@ -85,24 +95,6 @@ namespace GiGraph.Dot.Entities.Html.Font
         ///     Embeds the entity in appropriate HTML tags based on the specified font style.
         /// </summary>
         /// <param name="entity">
-        ///     The entity to embed in font style elements. Only text and table elements are supported. See
-        ///     <see href="https://graphviz.org/doc/info/shapes.html#html">
-        ///         grammar
-        ///     </see>
-        ///     for more details.
-        /// </param>
-        /// <param name="style">
-        ///     The style to apply to the text.
-        /// </param>
-        public static DotHtmlEntity SetStyle(DotHtmlEntity entity, DotFontStyles style)
-        {
-            return SetStyle((IDotHtmlEntity) entity, style);
-        }
-
-        /// <summary>
-        ///     Embeds the entity in appropriate HTML tags based on the specified font style.
-        /// </summary>
-        /// <param name="entity">
         ///     The entity to embed in font style elements. Only text and table elements are supported (including collections of those). See
         ///     <see href="https://graphviz.org/doc/info/shapes.html#html">
         ///         grammar
@@ -112,7 +104,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="style">
         ///     The style to apply to the text.
         /// </param>
-        public static DotHtmlEntity<IDotHtmlEntity> SetStyle(IDotHtmlEntity entity, DotFontStyles style)
+        public static DotHtmlEntity SetStyle(IDotHtmlEntity entity, DotFontStyles style)
         {
             DotHtmlFontStyle rootElement = null;
             DotHtmlFontStyle nestedElement = null;

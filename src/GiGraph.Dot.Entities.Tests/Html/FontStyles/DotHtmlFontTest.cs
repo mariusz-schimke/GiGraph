@@ -34,7 +34,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
-                "html_text_font_no_params"
+                "html_font_no_params"
             );
         }
 
@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
-                "html_text_font_arial_20_blue"
+                "html_font_arial_20_blue"
             );
         }
 
@@ -61,12 +61,12 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) entity1).ToHtml(_syntaxOptions, _syntaxRules),
-                "html_text_font_arial_20_blue_overline_subscript"
+                "html_font_arial_20_blue_overline_subscript"
             );
         }
 
         [Fact]
-        public void entity_collection_is_correctly_processed_for_font()
+        public void entity_interface_is_correctly_processed()
         {
             var font = new DotStyledFont("Arial", 20, Color.Blue, DotFontStyles.Bold);
 
@@ -78,13 +78,13 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
             Assert.Equal((string) entity1.ToHtml(), entity2.ToHtml());
 
             Snapshot.Match(
-                entity1.ToHtml(_syntaxOptions, _syntaxRules),
-                "html_text_font_entity_collection"
+                ((IDotHtmlEntity) entity1).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_font_with_interface_content"
             );
         }
 
         [Fact]
-        public void entity_interface_is_correctly_processed_for_font()
+        public void entity_is_correctly_processed()
         {
             var font = new DotStyledFont("Arial", 20, Color.Blue, DotFontStyles.Bold);
 
@@ -99,7 +99,56 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
 
             Snapshot.Match(
                 ((IDotHtmlEntity) entity1).ToHtml(_syntaxOptions, _syntaxRules),
-                "html_text_font_interface"
+                "html_font_with_entity_content"
+            );
+        }
+
+        [Fact]
+        public void text_enumerable_is_correctly_styled_with_same_font()
+        {
+            var entity = DotHtmlFont.SetFont(
+                new[]
+                {
+                    ("text", DotFontStyles.Normal),
+                    ("text", DotFontStyles.Italic)
+                },
+                "Arial",
+                10,
+                Color.CadetBlue
+            );
+
+            Snapshot.Match(
+                ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_font_with_text_enumerable"
+            );
+        }
+
+        [Fact]
+        public void text_items_are_correctly_styled_with_same_font()
+        {
+            var entity = DotHtmlFont.SetFont(
+                new DotStyledFont("Arial", 10, Color.CadetBlue, DotFontStyles.Bold),
+                ("text", DotFontStyles.Normal),
+                ("text", DotFontStyles.Italic)
+            );
+
+            Snapshot.Match(
+                ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_font_with_text_array"
+            );
+        }
+
+        [Fact]
+        public void text_items_are_correctly_styled_with_multiple_font()
+        {
+            var entity = DotHtmlFont.SetFont(
+                ("text", new DotStyledFont("Arial", 10, Color.CadetBlue, DotFontStyles.Bold)),
+                ("text", new DotStyledFont("Arial", 12, Color.Red, DotFontStyles.Italic))
+            );
+
+            Snapshot.Match(
+                ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_font_array_with_text"
             );
         }
     }

@@ -59,19 +59,19 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         }
 
         [Fact]
-        public void entity_collection_is_correctly_processed_for_font_style()
+        public void entity_interface_is_correctly_styled()
         {
             IDotHtmlEntity entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
             var entity = DotHtmlFontStyle.SetStyle(entityCollection, DotFontStyles.Bold);
 
             Snapshot.Match(
-                entity.ToHtml(_syntaxOptions, _syntaxRules),
-                "html_entity_collection_styling"
+                ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_entity_interface_styling"
             );
         }
 
         [Fact]
-        public void entity_interface_is_correctly_processed_for_font_style()
+        public void entity_is_correctly_styled()
         {
             var table = new DotHtmlTable();
             table.AddRow(r => r.AddCell("text"));
@@ -81,7 +81,36 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
 
             Snapshot.Match(
                 ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),
-                "html_entity_interface_styling"
+                "html_entity_collection_styling"
+            );
+        }
+
+        [Fact]
+        public void text_items_are_correctly_styled()
+        {
+            var entity = DotHtmlFontStyle.SetStyle(
+                ("Foo ", DotFontStyles.Normal),
+                ("Bar ", DotFontStyles.Bold),
+                ("Baz ", DotFontStyles.Italic | DotFontStyles.Underline)
+            );
+
+            Snapshot.Match(
+                ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_text_multistyling"
+            );
+        }
+
+        [Fact]
+        public void entity_items_are_correctly_styled()
+        {
+            var entity = DotHtmlFontStyle.SetStyle(
+                (new DotHtmlTable(), DotFontStyles.Normal),
+                (new DotHtmlTable(), DotFontStyles.Bold)
+            );
+
+            Snapshot.Match(
+                ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_entity_multistyling"
             );
         }
     }
