@@ -1,12 +1,14 @@
 using GiGraph.Dot.Entities.Html.Font.Attributes;
+using GiGraph.Dot.Entities.Html.Table;
 using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Html.Font
 {
     /// <summary>
-    ///     An HTML &lt;font&gt; element.
+    ///     An HTML &lt;font&gt; element. Supports <see cref="DotHtmlTable" />, text and text styling elements as the content.
     /// </summary>
-    public class DotHtmlFont : DotHtmlElement, IDotHtmlFontAttributes
+    public partial class DotHtmlFont : DotHtmlElement, IDotHtmlFontAttributes
     {
         /// <summary>
         ///     Initializes a new font element instance.
@@ -20,7 +22,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="color">
         ///     Sets the color of the font within the scope of the current element.
         /// </param>
-        public DotHtmlFont(string name = null, int? size = null, DotColor color = null)
+        public DotHtmlFont(string name = null, double? size = null, DotColor color = null)
             : this(new DotHtmlFontAttributes())
         {
             if (name is not null)
@@ -37,6 +39,28 @@ namespace GiGraph.Dot.Entities.Html.Font
             {
                 Color = color;
             }
+        }
+
+        /// <summary>
+        ///     Initializes a new font element instance.
+        /// </summary>
+        /// <param name="font">
+        ///     The font to set.
+        /// </param>
+        public DotHtmlFont(DotFont font)
+            : this(font.Name, font.Size, font.Color)
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new font element instance.
+        /// </summary>
+        /// <param name="source">
+        ///     The font to set.
+        /// </param>
+        public DotHtmlFont(IDotHtmlFontAttributes source)
+            : this(source.Name, source.Size, source.Color)
+        {
         }
 
         protected DotHtmlFont(DotHtmlFontAttributes attributes)
@@ -58,7 +82,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         }
 
         /// <inheritdoc cref="IDotHtmlFontAttributes.Size" />
-        public virtual int? Size
+        public virtual double? Size
         {
             get => ((IDotHtmlFontAttributes) Attributes).Size;
             set => ((IDotHtmlFontAttributes) Attributes).Size = value;
@@ -69,6 +93,47 @@ namespace GiGraph.Dot.Entities.Html.Font
         {
             get => ((IDotHtmlFontAttributes) Attributes).Color;
             set => ((IDotHtmlFontAttributes) Attributes).Color = value;
+        }
+
+        /// <summary>
+        ///     Sets font properties.
+        /// </summary>
+        /// <param name="name">
+        ///     Font name.
+        /// </param>
+        /// <param name="size">
+        ///     Font size.
+        /// </param>
+        /// <param name="color">
+        ///     Font color.
+        /// </param>
+        public virtual void Set(string name = null, double? size = null, DotColor color = null)
+        {
+            Size = size;
+            Color = color;
+            Name = name;
+        }
+
+        /// <summary>
+        ///     Sets font properties.
+        /// </summary>
+        /// <param name="attributes">
+        ///     The properties to set.
+        /// </param>
+        public virtual void Set(DotFont attributes)
+        {
+            Set(attributes.Name, attributes.Size, attributes.Color);
+        }
+
+        /// <summary>
+        ///     Copies font properties from the specified instance.
+        /// </summary>
+        /// <param name="attributes">
+        ///     The instance to copy the properties from.
+        /// </param>
+        public virtual void Set(IDotHtmlFontAttributes attributes)
+        {
+            Set(attributes.Name, attributes.Size, attributes.Color);
         }
     }
 }

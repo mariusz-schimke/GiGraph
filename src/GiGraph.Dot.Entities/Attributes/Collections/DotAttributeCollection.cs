@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="attribute">
         ///     The attribute to add.
         /// </param>
-        public new void Add(string key, DotAttribute attribute)
+        public new virtual void Add(string key, DotAttribute attribute)
         {
             if (key != attribute.Key)
             {

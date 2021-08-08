@@ -4,7 +4,9 @@ using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Fonts;
 using GiGraph.Dot.Types.Html.Table;
+using GiGraph.Dot.Types.Images;
 using Snapshooter.Xunit;
 using Xunit;
 
@@ -56,6 +58,41 @@ namespace GiGraph.Dot.Entities.Tests.Html.Table
             Snapshot.Match(
                 ((IDotHtmlEncodable) table).ToHtml(_syntaxOptions, _syntaxRules),
                 "html_table"
+            );
+        }
+
+        [Fact]
+        public void encoded_html_table_with_rows_and_cells_is_valid_html()
+        {
+            var font = new DotStyledFont("Arial", 10, Color.Red, DotFontStyles.Bold);
+
+            var table = new DotHtmlTable
+            {
+                Id = "tableId"
+            };
+
+            table.AddRow(row =>
+            {
+                row.AddCell(cell => cell.Id = "cellId1");
+                row.AddCell("cell2", cell => cell.Id = "cellId2");
+                row.AddCell("cell3", font.Style!.Value, font.Name, font.Size, font.Color, cell => cell.Id = "cell3");
+                row.AddCell("cell4", font, cell => cell.Id = "cell4");
+
+                row.AddCells("cell5", "cell6");
+                row.AddCells(new[] { "cell7", "cell8" }, (cell, i) => cell.Id = $"cell{i}");
+                row.AddCells(new[] { "cell9", "cell10" }, font, (cell, i) => cell.Id = $"cell{i}");
+                row.AddCells(new[] { "cell11", "cell12" }, font.Style!.Value, font.Name, font.Size, font.Color, (cell, i) => cell.Id = $"cell{i}");
+
+                row.AddVerticalRule();
+
+                row.AddImageCell("image.png", DotImageScaling.None, cell => cell.Id = "img-cell");
+            });
+
+            table.AddHorizontalRule();
+
+            Snapshot.Match(
+                ((IDotHtmlEncodable) table).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_table_with_rows"
             );
         }
     }

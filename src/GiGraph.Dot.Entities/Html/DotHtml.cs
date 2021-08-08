@@ -1,5 +1,4 @@
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Types.Html;
 
 namespace GiGraph.Dot.Entities.Html
 {
@@ -8,7 +7,9 @@ namespace GiGraph.Dot.Entities.Html
     /// </summary>
     public class DotHtml : DotHtmlEntity
     {
-        protected readonly DotHtmlString _html;
+        // TODO: dodać osobną klasę z kodami HTML: https://www.rapidtables.com/web/html/html-codes.html
+
+        protected readonly string _html;
 
         /// <summary>
         ///     Initializes a new instance with the specified HTML.
@@ -16,7 +17,7 @@ namespace GiGraph.Dot.Entities.Html
         /// <param name="html">
         ///     The HTML to initialize the instance with.
         /// </param>
-        public DotHtml(DotHtmlString html)
+        public DotHtml(string html)
         {
             _html = html;
         }

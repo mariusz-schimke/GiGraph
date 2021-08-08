@@ -68,5 +68,14 @@ namespace GiGraph.Dot.Entities.Tests.Html
                 "html_element_upper_case_name"
             );
         }
+
+        [Fact]
+        public void to_string_returns_html()
+        {
+            var tag = new DotHtmlElement("custom-tag-name");
+            tag.Attributes.SetEnum("align", DotHorizontalAlignment.Center);
+
+            Assert.Equal(tag.ToHtml(), tag.ToString());
+        }
     }
 }

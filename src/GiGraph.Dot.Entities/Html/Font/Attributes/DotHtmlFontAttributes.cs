@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Html.Font.Attributes
         }
 
         [DotAttributeKey("point-size")]
-        int? IDotHtmlFontAttributes.Size
+        double? IDotHtmlFontAttributes.Size
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);

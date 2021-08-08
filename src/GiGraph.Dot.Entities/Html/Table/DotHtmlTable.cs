@@ -1,4 +1,5 @@
 using System;
+using GiGraph.Dot.Entities.Html.Rule;
 using GiGraph.Dot.Entities.Html.Table.Attributes;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;
@@ -188,28 +189,20 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// <summary>
         ///     Adds a new row to the table and optionally initializes it.
         /// </summary>
-        /// <param name="row">
-        ///     The row to add.
-        /// </param>
         /// <param name="init">
-        ///     A row initializer delegate.
-        /// </param>
-        public virtual DotHtmlTableRow AddRow(DotHtmlTableRow row, Action<DotHtmlTableRow> init = null)
-        {
-            Children.Add(row);
-            init?.Invoke(row);
-            return row;
-        }
-
-        /// <summary>
-        ///     Adds a new row to the table and optionally initializes it.
-        /// </summary>
-        /// <param name="init">
-        ///     A row initializer delegate.
+        ///     An optional row initializer delegate.
         /// </param>
         public virtual DotHtmlTableRow AddRow(Action<DotHtmlTableRow> init = null)
         {
-            return AddRow(new DotHtmlTableRow(), init);
+            return Children.Add(new DotHtmlTableRow(), init);
+        }
+
+        /// <summary>
+        ///     Adds a horizontal rule to separate two neighboring rows.
+        /// </summary>
+        public virtual DotHtmlHorizontalRule AddHorizontalRule()
+        {
+            return Children.Add(new DotHtmlHorizontalRule(), init: null);
         }
     }
 }

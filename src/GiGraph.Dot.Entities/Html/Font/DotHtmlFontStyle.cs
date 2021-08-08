@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Html.Font
     /// <summary>
     ///     An HTML font style element.
     /// </summary>
-    public abstract class DotHtmlFontStyle : DotHtmlElement
+    public abstract partial class DotHtmlFontStyle : DotHtmlElement
     {
         protected DotHtmlFontStyle(string tagName)
             : base(tagName, new DotAttributeCollection(DotHtmlAttributeFactory.Instance))

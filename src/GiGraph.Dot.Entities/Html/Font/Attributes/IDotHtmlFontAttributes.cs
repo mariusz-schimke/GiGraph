@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Html.Font.Attributes
         ///     Specifies the size of the font, in points, to use within the scope of the current element. It can be overridden by a
         ///     corresponding attribute in descendents. By default, the font size is determined by the corresponding node, edge or graph.
         /// </summary>
-        int? Size { get; set; }
+        double? Size { get; set; }
 
         /// <summary>
         ///     Sets the color of the font within the scope of the current element. It can be overridden by a corresponding attribute in

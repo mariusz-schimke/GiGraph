@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
+using GiGraph.Dot.Entities.Html.Font;
+using GiGraph.Dot.Entities.Html.Image;
+using GiGraph.Dot.Entities.Html.Rule;
 using GiGraph.Dot.Entities.Html.Text;
+using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Fonts;
+using GiGraph.Dot.Types.Images;
 
 namespace GiGraph.Dot.Entities.Html.Table
 {
@@ -26,7 +32,46 @@ namespace GiGraph.Dot.Entities.Html.Table
         }
 
         /// <summary>
+        ///     Adds a vertical rule to separate two neighboring cells.
+        /// </summary>
+        public virtual DotHtmlVerticalRule AddVerticalRule()
+        {
+            return Children.Add(new DotHtmlVerticalRule(), init: null);
+        }
+
+        /// <summary>
         ///     Adds a cell to the current row.
+        /// </summary>
+        /// <param name="init">
+        ///     A cell initializer delegate.
+        /// </param>
+        public virtual DotHtmlTableCell AddCell(Action<DotHtmlTableCell> init = null)
+        {
+            return Children.Add(new DotHtmlTableCell(), init);
+        }
+
+        /// <summary>
+        ///     Adds a cell with an image to the current row.
+        /// </summary>
+        /// <param name="source">
+        ///     The image file to be displayed in the cell.
+        /// </param>
+        /// <param name="scaling">
+        ///     Specifies how the image will use any extra space available in its cell.
+        /// </param>
+        /// <param name="init">
+        ///     A cell initializer delegate.
+        /// </param>
+        public virtual DotHtmlTableCell AddImageCell(string source, DotImageScaling? scaling = null, Action<DotHtmlTableCell> init = null)
+        {
+            return Children.Add(
+                new DotHtmlTableCell { Children = { new DotHtmlImage(source, scaling) } },
+                init
+            );
+        }
+
+        /// <summary>
+        ///     Adds a text cell to the current row.
         /// </summary>
         /// <param name="text">
         ///     The text to initialize the cell with.
@@ -36,44 +81,74 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// </param>
         public virtual DotHtmlTableCell AddCell(string text, Action<DotHtmlTableCell> init = null)
         {
-            var cell = new DotHtmlTableCell
-            {
-                Children =
-                {
-                    new DotHtmlText(text)
-                }
-            };
-
-            return AddCell(cell, init);
+            return Children.Add(
+                new DotHtmlTableCell { Children = { new DotHtmlText(text) } },
+                init
+            );
         }
 
         /// <summary>
-        ///     Adds the specified cells to the current row.
+        ///     Adds a text cell to the current row.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to initialize the cell with.
+        /// </param>
+        /// <param name="fontStyle">
+        ///     The font style to apply to the text.
+        /// </param>
+        /// <param name="fontName">
+        ///     The name of the font to use.
+        /// </param>
+        /// <param name="fontSize">
+        ///     The size to apply to the font.
+        /// </param>
+        /// <param name="fontColor">
+        ///     The color to apply to the text.
+        /// </param>
+        /// <param name="init">
+        ///     A cell initializer delegate.
+        /// </param>
+        public virtual DotHtmlTableCell AddCell(string text, DotFontStyles fontStyle, string fontName = null, double? fontSize = null, DotColor fontColor = null, Action<DotHtmlTableCell> init = null)
+        {
+            return Children.Add(
+                new DotHtmlTableCell { Children = { DotHtmlFont.SetFont(text, fontName, fontSize, fontColor, fontStyle) } },
+                init
+            );
+        }
+
+        /// <summary>
+        ///     Adds a text cell to the current row.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to initialize the cell with.
+        /// </param>
+        /// <param name="font">
+        ///     The font and style to apply to the text.
+        /// </param>
+        /// <param name="init">
+        ///     A cell initializer delegate.
+        /// </param>
+        public virtual DotHtmlTableCell AddCell(string text, DotStyledFont font, Action<DotHtmlTableCell> init = null)
+        {
+            return Children.Add(
+                new DotHtmlTableCell { Children = { DotHtmlFont.SetFont(text, font) } },
+                init
+            );
+        }
+
+        /// <summary>
+        ///     Adds the specified text cells to the current row.
         /// </summary>
         /// <param name="cells">
         ///     The text for the cells to add.
         /// </param>
         public virtual DotHtmlTableCell[] AddCells(params string[] cells)
         {
-            return AddCells(cells, init: null);
+            return AddCells((IEnumerable<string>) cells);
         }
 
         /// <summary>
-        ///     Adds the specified cells to the current row.
-        /// </summary>
-        /// <param name="init">
-        ///     A cell initializer delegate.
-        /// </param>
-        /// <param name="cells">
-        ///     The text for the cells to add.
-        /// </param>
-        public virtual DotHtmlTableCell[] AddCells(Action<DotHtmlTableCell> init, params string[] cells)
-        {
-            return AddCells(cells, init);
-        }
-
-        /// <summary>
-        ///     Adds the specified cells to the current row.
+        ///     Adds the specified text cells to the current row.
         /// </summary>
         /// <param name="cells">
         ///     The text for the cells to add.
@@ -81,36 +156,70 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// <param name="init">
         ///     A cell initializer delegate.
         /// </param>
-        public virtual DotHtmlTableCell[] AddCells(IEnumerable<string> cells, Action<DotHtmlTableCell> init = null)
+        public virtual DotHtmlTableCell[] AddCells(IEnumerable<string> cells, Action<DotHtmlTableCell, int> init = null)
         {
-            return cells.Select(cell => AddCell(cell, init)).ToArray();
+            return cells.Select((item, index) =>
+                {
+                    var cell = new DotHtmlTableCell { Children = { new DotHtmlText(item) } };
+                    init?.Invoke(cell, index);
+                    return Children.Add(cell);
+                })
+               .ToArray();
         }
 
         /// <summary>
-        ///     Adds the specified cells to the current row.
+        ///     Adds the specified text cells to the current row.
         /// </summary>
-        /// <param name="cell">
-        ///     The cell to add.
+        /// <param name="cells">
+        ///     The text for the cells to add.
+        /// </param>
+        /// <param name="fontStyle">
+        ///     The font style to apply to the text.
+        /// </param>
+        /// <param name="fontName">
+        ///     The name of the font to use.
+        /// </param>
+        /// <param name="fontSize">
+        ///     The size to apply to the font.
+        /// </param>
+        /// <param name="fontColor">
+        ///     The color to apply to the text.
         /// </param>
         /// <param name="init">
         ///     A cell initializer delegate.
         /// </param>
-        public virtual DotHtmlTableCell AddCell(DotHtmlTableCell cell, Action<DotHtmlTableCell> init = null)
+        public virtual DotHtmlTableCell[] AddCells(IEnumerable<string> cells, DotFontStyles fontStyle, string fontName = null, double? fontSize = null, DotColor fontColor = null, Action<DotHtmlTableCell, int> init = null)
         {
-            Children.Add(cell);
-            init?.Invoke(cell);
-            return cell;
+            return cells.Select((item, index) =>
+                {
+                    var cell = new DotHtmlTableCell { Children = { DotHtmlFont.SetFont(item, fontName, fontSize, fontColor, fontStyle) } };
+                    init?.Invoke(cell, index);
+                    return Children.Add(cell);
+                })
+               .ToArray();
         }
 
         /// <summary>
-        ///     Adds the specified cells to the current row.
+        ///     Adds the specified text cells to the current row.
         /// </summary>
+        /// <param name="cells">
+        ///     The text for the cells to add.
+        /// </param>
+        /// <param name="font">
+        ///     The font and style to apply to the text.
+        /// </param>
         /// <param name="init">
         ///     A cell initializer delegate.
         /// </param>
-        public virtual DotHtmlTableCell AddCell(Action<DotHtmlTableCell> init = null)
+        public virtual DotHtmlTableCell[] AddCells(IEnumerable<string> cells, DotStyledFont font, Action<DotHtmlTableCell, int> init = null)
         {
-            return AddCell(new DotHtmlTableCell(), init);
+            return cells.Select((item, index) =>
+                {
+                    var cell = new DotHtmlTableCell { Children = { DotHtmlFont.SetFont(item, font) } };
+                    init?.Invoke(cell, index);
+                    return Children.Add(cell);
+                })
+               .ToArray();
         }
     }
 }

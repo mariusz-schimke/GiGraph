@@ -7,7 +7,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
 {
-    public class DotHtmlFontTest
+    public partial class DotHtmlFontTest
     {
         private readonly DotSyntaxOptions _syntaxOptions = new();
         private readonly DotSyntaxRules _syntaxRules = new();
