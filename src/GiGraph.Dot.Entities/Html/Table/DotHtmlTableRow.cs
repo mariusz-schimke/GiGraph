@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// </summary>
         public virtual DotHtmlVerticalRule AddVerticalRule()
         {
-            return Children.Add(new DotHtmlVerticalRule(), init: null);
+            return Content.Add(new DotHtmlVerticalRule(), init: null);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// </param>
         public virtual DotHtmlTableCell AddCell(Action<DotHtmlTableCell> init = null)
         {
-            return Children.Add(new DotHtmlTableCell(), init);
+            return Content.Add(new DotHtmlTableCell(), init);
         }
 
         /// <summary>
@@ -64,8 +64,8 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// </param>
         public virtual DotHtmlTableCell AddImageCell(string source, DotImageScaling? scaling = null, Action<DotHtmlTableCell> init = null)
         {
-            return Children.Add(
-                new DotHtmlTableCell { Children = { new DotHtmlImage(source, scaling) } },
+            return Content.Add(
+                new DotHtmlTableCell { Content = { new DotHtmlImage(source, scaling) } },
                 init
             );
         }
@@ -81,8 +81,8 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// </param>
         public virtual DotHtmlTableCell AddCell(string text, Action<DotHtmlTableCell> init = null)
         {
-            return Children.Add(
-                new DotHtmlTableCell { Children = { new DotHtmlText(text) } },
+            return Content.Add(
+                new DotHtmlTableCell { Content = { new DotHtmlText(text) } },
                 init
             );
         }
@@ -110,8 +110,8 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// </param>
         public virtual DotHtmlTableCell AddCell(string text, DotFontStyles fontStyle, string fontName = null, double? fontSize = null, DotColor fontColor = null, Action<DotHtmlTableCell> init = null)
         {
-            return Children.Add(
-                new DotHtmlTableCell { Children = { DotHtmlFont.SetFont(text, fontName, fontSize, fontColor, fontStyle) } },
+            return Content.Add(
+                new DotHtmlTableCell { Content = { DotHtmlFont.SetFont(text, fontName, fontSize, fontColor, fontStyle) } },
                 init
             );
         }
@@ -130,8 +130,8 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// </param>
         public virtual DotHtmlTableCell AddCell(string text, DotStyledFont font, Action<DotHtmlTableCell> init = null)
         {
-            return Children.Add(
-                new DotHtmlTableCell { Children = { DotHtmlFont.SetFont(text, font) } },
+            return Content.Add(
+                new DotHtmlTableCell { Content = { DotHtmlFont.SetFont(text, font) } },
                 init
             );
         }
@@ -160,9 +160,9 @@ namespace GiGraph.Dot.Entities.Html.Table
         {
             return cells.Select((item, index) =>
                 {
-                    var cell = new DotHtmlTableCell { Children = { new DotHtmlText(item) } };
+                    var cell = new DotHtmlTableCell { Content = { new DotHtmlText(item) } };
                     init?.Invoke(cell, index);
-                    return Children.Add(cell);
+                    return Content.Add(cell);
                 })
                .ToArray();
         }
@@ -192,9 +192,9 @@ namespace GiGraph.Dot.Entities.Html.Table
         {
             return cells.Select((item, index) =>
                 {
-                    var cell = new DotHtmlTableCell { Children = { DotHtmlFont.SetFont(item, fontName, fontSize, fontColor, fontStyle) } };
+                    var cell = new DotHtmlTableCell { Content = { DotHtmlFont.SetFont(item, fontName, fontSize, fontColor, fontStyle) } };
                     init?.Invoke(cell, index);
-                    return Children.Add(cell);
+                    return Content.Add(cell);
                 })
                .ToArray();
         }
@@ -215,9 +215,9 @@ namespace GiGraph.Dot.Entities.Html.Table
         {
             return cells.Select((item, index) =>
                 {
-                    var cell = new DotHtmlTableCell { Children = { DotHtmlFont.SetFont(item, font) } };
+                    var cell = new DotHtmlTableCell { Content = { DotHtmlFont.SetFont(item, font) } };
                     init?.Invoke(cell, index);
-                    return Children.Add(cell);
+                    return Content.Add(cell);
                 })
                .ToArray();
         }

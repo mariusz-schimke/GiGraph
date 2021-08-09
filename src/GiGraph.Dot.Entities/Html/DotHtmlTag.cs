@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Entities.Html
             {
                 result.Append(">");
 
-                var children = GetChildren().Select(child => child.ToHtml(options, syntaxRules));
+                var children = GetContent().Select(child => child.ToHtml(options, syntaxRules));
                 result.Append(string.Join(string.Empty, children));
 
                 result.Append($"</{tagName}>");
@@ -62,7 +62,7 @@ namespace GiGraph.Dot.Entities.Html
             return result.ToString();
         }
 
-        protected virtual IEnumerable<IDotHtmlEntity> GetChildren()
+        protected virtual IEnumerable<IDotHtmlEntity> GetContent()
         {
             return Enumerable.Empty<IDotHtmlEntity>();
         }

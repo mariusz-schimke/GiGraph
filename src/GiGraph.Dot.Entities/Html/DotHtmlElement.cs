@@ -27,22 +27,22 @@ namespace GiGraph.Dot.Entities.Html
         {
         }
 
-        protected DotHtmlElement(string name, DotAttributeCollection attributes, DotHtmlEntityCollection children)
+        protected DotHtmlElement(string name, DotAttributeCollection attributes, DotHtmlEntityCollection content)
             : base(name, attributes)
         {
-            Children = children;
+            Content = content;
         }
 
         /// <summary>
         ///     Gets the children of the element.
         /// </summary>
-        public virtual DotHtmlEntityCollection Children { get; }
+        public virtual DotHtmlEntityCollection Content { get; }
 
         protected sealed override bool IsVoid => false;
 
-        protected override IEnumerable<IDotHtmlEntity> GetChildren()
+        protected override IEnumerable<IDotHtmlEntity> GetContent()
         {
-            return Children;
+            return Content;
         }
 
         /// <summary>
@@ -53,8 +53,8 @@ namespace GiGraph.Dot.Entities.Html
         /// </param>
         public virtual void SetContent(IDotHtmlEntity entity)
         {
-            Children.Clear();
-            Children.Add(entity);
+            Content.Clear();
+            Content.Add(entity);
         }
 
         /// <summary>
@@ -68,11 +68,11 @@ namespace GiGraph.Dot.Entities.Html
             var builder = new DotHtmlBuilder();
             build(builder);
 
-            Children.Clear();
+            Content.Clear();
 
             if (builder.Count > 0)
             {
-                Children.Add(builder.Build());
+                Content.Add(builder.Build());
             }
         }
     }

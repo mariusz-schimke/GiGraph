@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Html.Font
 
         protected virtual void AppendText(string text)
         {
-            Children.Add(new DotHtmlText(text));
+            Content.Add(new DotHtmlText(text));
         }
     }
 }
