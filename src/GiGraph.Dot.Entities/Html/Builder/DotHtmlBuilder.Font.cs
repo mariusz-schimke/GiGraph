@@ -10,6 +10,17 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <summary>
         ///     Initializes and appends a font element.
         /// </summary>
+        /// <param name="init">
+        ///     An element initialization delegate.
+        /// </param>
+        public virtual DotHtmlBuilder AppendFont(Action<DotHtmlFont> init)
+        {
+            return Append(new DotHtmlFont(), init);
+        }
+
+        /// <summary>
+        ///     Initializes and appends a font element.
+        /// </summary>
         /// <param name="name">
         ///     Specifies the font to use within the scope of the current element.
         /// </param>
@@ -39,17 +50,6 @@ namespace GiGraph.Dot.Entities.Html.Builder
         public virtual DotHtmlBuilder AppendFont(DotFont font, Action<DotHtmlFont> init)
         {
             return Append(new DotHtmlFont(font), init);
-        }
-
-        /// <summary>
-        ///     Initializes and appends a bold element.
-        /// </summary>
-        /// <param name="init">
-        ///     An element initialization delegate.
-        /// </param>
-        public virtual DotHtmlBuilder AppendBold(Action<DotHtmlBold> init)
-        {
-            return Append(new DotHtmlBold(), init);
         }
     }
 }

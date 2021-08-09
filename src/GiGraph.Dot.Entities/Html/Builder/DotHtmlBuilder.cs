@@ -60,14 +60,6 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Builds output HTML from the content of the builder.
-        /// </summary>
-        public virtual DotHtmlEntityCollection Build()
-        {
-            return new DotHtmlEntityCollection((IEnumerable<IDotHtmlEntity>) _entities);
-        }
-
-        /// <summary>
         ///     Appends HTML to the builder.
         /// </summary>
         /// <param name="html">
@@ -77,6 +69,14 @@ namespace GiGraph.Dot.Entities.Html.Builder
         {
             _entities.Add(new DotHtml(html));
             return this;
+        }
+
+        /// <summary>
+        ///     Builds output HTML from the content of the builder.
+        /// </summary>
+        public virtual DotHtmlEntityCollection Build()
+        {
+            return new DotHtmlEntityCollection((IEnumerable<IDotHtmlEntity>) _entities);
         }
     }
 }
