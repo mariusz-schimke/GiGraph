@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         ///         <see cref="DotNodeShape.RoundedRecord" />). When not specified, node identifier is used.
         ///     </para>
         ///     <para>
-        ///         See also <see cref="DotTextFormatter" /> for plain text label formatting if needed, and <see cref="DotRecordBuilder" />
+        ///         See also <see cref="DotFormattedTextBuilder" /> for plain text label formatting if needed, and <see cref="DotRecordBuilder" />
         ///         for building records.
         ///     </para>
         ///     <para>
@@ -209,7 +209,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         ///     </para>
         ///     <para>
         ///         Normal <see cref="DotEscapeString.NodeId" />, <see cref="DotEscapeString.EdgeDefinition" />,
-        ///         <see cref="DotEscapeString.GraphId" /> substitutions can be applied (see <see cref="DotTextFormatter" />). Note, however,
+        ///         <see cref="DotEscapeString.GraphId" /> substitutions can be applied (see <see cref="DotFormattedTextBuilder" />). Note, however,
         ///         that <see cref="DotEscapeString.EdgeDefinition" /> does not provide a unique ID for multi-edges.
         ///     </para>
         ///     <para>

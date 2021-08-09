@@ -12,9 +12,9 @@ namespace GiGraph.Dot.Examples.Basic
             // -- graph label example --
 
             // using text formatter
-            graph.Attributes.Label = new DotTextFormatter("Graph title: ")
+            graph.Attributes.Label = new DotFormattedTextBuilder("Graph title: ")
                .AppendGraphId()
-               .ToFormattedText();
+               .Build();
 
             // using string concatenation
             graph.Attributes.Label = "Graph title: " + DotEscapeString.GraphId;
@@ -25,9 +25,9 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Nodes.Add("Foo", attrs =>
             {
                 // using text formatter
-                attrs.Label = new DotTextFormatter("Node ")
+                attrs.Label = new DotFormattedTextBuilder("Node ")
                    .AppendNodeId()
-                   .ToFormattedText();
+                   .Build();
 
                 // using string concatenation
                 attrs.Label = "Node " + DotEscapeString.NodeId;
@@ -40,15 +40,15 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Edges.Add("Foo", "Bar", edge =>
             {
                 // using text formatter
-                edge.Attributes.Label = new DotTextFormatter("From ")
-                   .AppendEdgeTailNodeId()
+                edge.Attributes.Label = new DotFormattedTextBuilder("From ")
+                   .AppendTailNodeId()
                    .Append(" to ")
-                   .AppendEdgeHeadNodeId()
-                   .ToFormattedText();
+                   .AppendHeadNodeId()
+                   .Build();
 
                 // using string concatenation
-                edge.Attributes.Label = "From " + DotEscapeString.EdgeTailNodeId +
-                    " to " + DotEscapeString.EdgeHeadNodeId;
+                edge.Attributes.Label = "From " + DotEscapeString.TailNodeId +
+                    " to " + DotEscapeString.HeadNodeId;
             });
 
             return graph;

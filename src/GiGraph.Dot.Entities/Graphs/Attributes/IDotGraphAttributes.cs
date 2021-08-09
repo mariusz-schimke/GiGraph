@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the graph. It may be plain text (<see cref="string" />) or HTML (
-        ///         <see cref="DotHtmlLabel" />). See also <see cref="DotTextFormatter" /> for plain text label formatting if needed.
+        ///         <see cref="DotHtmlLabel" />). See also <see cref="DotFormattedTextBuilder" /> for plain text label formatting if needed.
         ///     </para>
         ///     <para>
         ///         Examples:
@@ -119,7 +119,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         ///     </para>
         ///     <para>
         ///         Normal <see cref="DotEscapeString.NodeId" />, <see cref="DotEscapeString.EdgeDefinition" />,
-        ///         <see cref="DotEscapeString.GraphId" /> substitutions can be applied (see <see cref="DotTextFormatter" />). Note, however,
+        ///         <see cref="DotEscapeString.GraphId" /> substitutions can be applied (see <see cref="DotFormattedTextBuilder" />). Note, however,
         ///         that <see cref="DotEscapeString.EdgeDefinition" /> does not provide a unique ID for multi-edges.
         ///     </para>
         ///     <para>

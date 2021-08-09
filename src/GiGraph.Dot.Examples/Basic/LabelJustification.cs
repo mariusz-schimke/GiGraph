@@ -17,11 +17,11 @@ namespace GiGraph.Dot.Examples.Basic
                 attrs.Size.Width = 3;
 
                 // using text formatter
-                attrs.Label = new DotTextFormatter()
+                attrs.Label = new DotFormattedTextBuilder()
                    .AppendLine("Centered line")
-                   .AppendLineLeftJustified("Left-justified line")
-                   .AppendLineRightJustified("Right-justified line")
-                   .ToFormattedText();
+                   .AppendLeftJustifiedLine("Left-justified line")
+                   .AppendRightJustifiedLine("Right-justified line")
+                   .Build();
 
                 // using string concatenation
                 attrs.Label = "Centered line" + DotEscapeString.LineBreak +
