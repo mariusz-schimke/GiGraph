@@ -1,11 +1,5 @@
 using System;
 using System.Collections.Generic;
-using GiGraph.Dot.Entities.Html.Font;
-using GiGraph.Dot.Entities.Html.Image;
-using GiGraph.Dot.Entities.Html.Table;
-using GiGraph.Dot.Types.Colors;
-using GiGraph.Dot.Types.Fonts;
-using GiGraph.Dot.Types.Images;
 
 namespace GiGraph.Dot.Entities.Html.Builder
 {
@@ -83,34 +77,6 @@ namespace GiGraph.Dot.Entities.Html.Builder
         {
             _entities.Add(new DotHtml(html));
             return this;
-        }
-
-        /// <summary>
-        ///     Initializes and appends a table.
-        /// </summary>
-        /// <param name="init">
-        ///     A table initialization delegate.
-        /// </param>
-        public virtual DotHtmlBuilder AppendTable(Action<DotHtmlTable> init)
-        {
-            return Append(new DotHtmlTable(), init);
-        }
-
-        /// <summary>
-        ///     Initializes and appends an image.
-        /// </summary>
-        /// <param name="source">
-        ///     Specifies the image file to be displayed.
-        /// </param>
-        /// <param name="scaling">
-        ///     Specifies how the image will use any extra space available in its cell.
-        /// </param>
-        /// <param name="init">
-        ///     An optional image initialization delegate.
-        /// </param>
-        public virtual DotHtmlBuilder AppendImage(string source, DotImageScaling? scaling = null, Action<DotHtmlImage> init = null)
-        {
-            return Append(new DotHtmlImage(source, scaling), init);
         }
     }
 }
