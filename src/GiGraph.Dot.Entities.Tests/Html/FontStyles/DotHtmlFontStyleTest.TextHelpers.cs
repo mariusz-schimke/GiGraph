@@ -47,7 +47,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         {
             var entity = DotHtmlFontStyle.SetStyle(
                 "text",
-                DotFontStyles.Bold | DotFontStyles.Italic | DotFontStyles.Underline | DotFontStyles.Overline | DotFontStyles.Subscript | DotFontStyles.Superscript
+                DotFontStyles.Bold | DotFontStyles.Italic | DotFontStyles.Underline | DotFontStyles.Overline | DotFontStyles.Subscript | DotFontStyles.Superscript | DotFontStyles.Strikethrough
             );
 
             Snapshot.Match(

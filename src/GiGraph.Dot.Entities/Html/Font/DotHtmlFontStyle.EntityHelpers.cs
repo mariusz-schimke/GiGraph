@@ -81,6 +81,7 @@ namespace GiGraph.Dot.Entities.Html.Font
                     DotFontStyles.Overline => new DotHtmlOverline(),
                     DotFontStyles.Subscript => new DotHtmlSubscript(),
                     DotFontStyles.Superscript => new DotHtmlSuperscript(),
+                    DotFontStyles.Strikethrough => new DotHtmlStrikethrough(),
                     _ => throw new ArgumentOutOfRangeException(nameof(style), styleFlag, "Invalid font style flag")
                 };
 
