@@ -30,6 +30,11 @@ namespace GiGraph.Dot.Types.EscapeString
         }
 
         /// <summary>
+        ///     Gets the number of items in this builder.
+        /// </summary>
+        public virtual int Count => _items.Count;
+
+        /// <summary>
         ///     Appends the specified text to the instance.
         /// </summary>
         /// <param name="text">

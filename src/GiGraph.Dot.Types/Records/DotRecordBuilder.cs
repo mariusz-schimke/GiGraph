@@ -33,6 +33,11 @@ namespace GiGraph.Dot.Types.Records
         }
 
         /// <summary>
+        ///     Gets the number of fields in this builder.
+        /// </summary>
+        public virtual int Count => _fields.Count;
+
+        /// <summary>
         ///     Appends a field to the record being built.
         /// </summary>
         /// <param name="text">
