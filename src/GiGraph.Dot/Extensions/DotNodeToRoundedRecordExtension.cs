@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Extensions
             var builder = new DotRecordBuilder();
             buildRecord(builder);
 
-            ToRoundedRecordNode(node, builder.ToRecord(flip));
+            ToRoundedRecordNode(node, builder.Build(flip));
         }
     }
 }

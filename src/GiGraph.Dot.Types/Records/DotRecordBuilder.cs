@@ -58,12 +58,12 @@ namespace GiGraph.Dot.Types.Records
         ///     The port name, that is a name that can be referred to from an edge endpoint in order to attach the end of the edge to the
         ///     appended field.
         /// </param>
-        public virtual DotRecordBuilder AppendField(Action<DotTextFormatter> formatText, string portName = null)
+        public virtual DotRecordBuilder AppendField(Action<DotFormattedTextBuilder> formatText, string portName = null)
         {
-            var formatter = new DotTextFormatter();
+            var formatter = new DotFormattedTextBuilder();
             formatText(formatter);
 
-            return AppendField(formatter.ToFormattedText(), portName);
+            return AppendField(formatter.Build(), portName);
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace GiGraph.Dot.Types.Records
             var builder = new DotRecordBuilder();
             buildRecord(builder);
 
-            return AppendRecord(builder.ToRecord(flip));
+            return AppendRecord(builder.Build(flip));
         }
 
         /// <summary>
@@ -258,7 +258,7 @@ namespace GiGraph.Dot.Types.Records
         /// <param name="flip">
         ///     Determines whether to change orientation of the record.
         /// </param>
-        public virtual DotRecord ToRecord(bool flip = false)
+        public virtual DotRecord Build(bool flip = false)
         {
             return new DotRecord(_fields.ToArray(), flip);
         }
