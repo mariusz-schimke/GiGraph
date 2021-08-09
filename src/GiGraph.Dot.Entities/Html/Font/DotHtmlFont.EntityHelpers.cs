@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Types.Colors;
@@ -154,21 +155,82 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// </param>
         public static DotHtmlEntity SetFont(IDotHtmlEntity entity, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
         {
-            var result = style.HasValue
-                ? DotHtmlFontStyle.SetStyle(entity, style.Value)
-                : entity;
+            var result = FromFont(
+                element => element.SetContent(entity),
+                name, size, color, style
+            );
 
-            result = name is not null || color is not null || size.HasValue
-                ? new DotHtmlFont
+            return (DotHtmlEntity) result ?? new DotHtmlEntity<IDotHtmlEntity>(entity);
+        }
+
+        /// <summary>
+        ///     Creates an appropriate nested structure of HTML tags based on the specified font and style. Returns null if no attributes are
+        ///     specified and the font style is <see cref="DotFontStyles.Normal" /> or null.
+        /// </summary>
+        /// <param name="init">
+        ///     An element initialization delegate (called for the bottom-level element so that content can be added to it).
+        /// </param>
+        /// <param name="color">
+        ///     The color to apply to the text.
+        /// </param>
+        /// <param name="style">
+        ///     The style to apply to the text.
+        /// </param>
+        /// <param name="name">
+        ///     The name of the font to use.
+        /// </param>
+        /// <param name="size">
+        ///     The size to apply to the font.
+        /// </param>
+        public static DotHtmlElement FromFont(Action<DotHtmlElement> init, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
+        {
+            var rootStyle = style.HasValue
+                ? DotHtmlFontStyle.FromStyle(style.Value, init)
+                : null;
+
+            return InitializeFont(name, size, color,
+                font =>
                 {
-                    Name = name,
-                    Size = size,
-                    Color = color,
-                    Children = { result }
+                    if (rootStyle is not null)
+                    {
+                        font.SetContent(rootStyle);
+                    }
+                    else
+                    {
+                        // initialization will be called earlier for a font style tag if font style has been specified,
+                        // so it should be called here otherwise only
+                        init?.Invoke(font);
+                    }
                 }
-                : result;
+            );
+        }
 
-            return new DotHtmlEntity<IDotHtmlEntity>(result);
+        /// <summary>
+        ///     Creates an appropriate nested structure of HTML tags based on the specified font and style. Returns null if no attributes are
+        ///     specified and the font style is <see cref="DotFontStyles.Normal" /> or null.
+        /// </summary>
+        /// <param name="font">
+        ///     The font and/or style to apply
+        /// </param>
+        /// <param name="init">
+        ///     An element initialization delegate (called for the bottom-level element so that content can be added to it).
+        /// </param>
+        public static DotHtmlElement FromFont(DotStyledFont font, Action<DotHtmlElement> init)
+        {
+            return FromFont(init, font.Name, font.Size, font.Color, font.Style);
+        }
+
+        protected static DotHtmlFont InitializeFont(string name, double? size, DotColor color, Action<DotHtmlFont> init)
+        {
+            if (name is null && color is null && !size.HasValue)
+            {
+                return null;
+            }
+
+            var font = new DotHtmlFont(name, size, color);
+            init?.Invoke(font);
+
+            return font;
         }
     }
 }

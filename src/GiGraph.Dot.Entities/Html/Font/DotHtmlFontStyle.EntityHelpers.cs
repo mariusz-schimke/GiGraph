@@ -67,8 +67,46 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// </param>
         public static DotHtmlEntity SetStyle(IDotHtmlEntity entity, DotFontStyles style)
         {
-            DotHtmlFontStyle rootElement = null;
-            DotHtmlFontStyle nestedElement = null;
+            var result = FromStyle(style, element => element.SetContent(entity));
+            return (DotHtmlEntity) result ?? new DotHtmlEntity<IDotHtmlEntity>(entity);
+        }
+
+        /// <summary>
+        ///     Creates an appropriate nested structure of HTML tags based on the specified font style. Returns null for the
+        ///     <see cref="DotFontStyles.Normal" /> font style.
+        /// </summary>
+        /// <param name="style">
+        ///     The style to apply to the entities.
+        /// </param>
+        /// <param name="init">
+        ///     An element initialization delegate (called for the bottom-level element so that content can be added to it).
+        /// </param>
+        public static DotHtmlFontStyle FromStyle(DotFontStyles style, Action<DotHtmlFontStyle> init)
+        {
+            var rootElement = FromStyle(style, out var nestedElement);
+
+            if (nestedElement is not null)
+            {
+                init?.Invoke(nestedElement);
+            }
+
+            return rootElement;
+        }
+
+        /// <summary>
+        ///     Creates an appropriate nested structure of HTML tags based on the specified font style. Returns null for the
+        ///     <see cref="DotFontStyles.Normal" /> font style.
+        /// </summary>
+        /// <param name="style">
+        ///     The style to apply to the entities.
+        /// </param>
+        /// <param name="contentElement">
+        ///     The bottom-level element to embed content in.
+        /// </param>
+        public static DotHtmlFontStyle FromStyle(DotFontStyles style, out DotHtmlFontStyle contentElement)
+        {
+            DotHtmlFontStyle result = null;
+            contentElement = null;
 
             var metadata = new DotEnumMetadata(style.GetType());
             foreach (var styleFlag in metadata.GetSetFlags(style).Cast<DotFontStyles>())
@@ -85,13 +123,12 @@ namespace GiGraph.Dot.Entities.Html.Font
                     _ => throw new ArgumentOutOfRangeException(nameof(style), styleFlag, "Invalid font style flag")
                 };
 
-                nestedElement?.Children.Add(styleElement);
-                nestedElement = styleElement;
-                rootElement ??= nestedElement;
+                contentElement?.Content.Add(styleElement);
+                contentElement = styleElement;
+                result ??= contentElement;
             }
 
-            nestedElement?.Children.Add(entity);
-            return new DotHtmlEntity<IDotHtmlEntity>(rootElement ?? entity);
+            return result;
         }
     }
 }
