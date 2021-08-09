@@ -1,6 +1,10 @@
 using System;
+using System.Collections.Generic;
+using GiGraph.Dot.Entities.Html.Font;
 using GiGraph.Dot.Entities.Html.Image;
 using GiGraph.Dot.Entities.Html.Table;
+using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Fonts;
 using GiGraph.Dot.Types.Images;
 
 namespace GiGraph.Dot.Entities.Html.Builder
@@ -8,7 +12,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
     /// <summary>
     ///     HTML builder.
     /// </summary>
-    public class DotHtmlBuilder
+    public partial class DotHtmlBuilder
     {
         protected readonly DotHtmlEntityCollection _entities;
 
@@ -40,6 +44,11 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
+        ///     Gets the number of entities in this builder.
+        /// </summary>
+        public virtual int Count => _entities.Count;
+
+        /// <summary>
         ///     Appends an entity to the builder.
         /// </summary>
         /// <param name="entity">
@@ -54,6 +63,14 @@ namespace GiGraph.Dot.Entities.Html.Builder
             init?.Invoke(entity);
             _entities.Add(entity);
             return this;
+        }
+
+        /// <summary>
+        ///     Builds output HTML from the content of the builder.
+        /// </summary>
+        public virtual DotHtmlEntityCollection Build()
+        {
+            return new DotHtmlEntityCollection((IEnumerable<IDotHtmlEntity>) _entities);
         }
 
         /// <summary>
