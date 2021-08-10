@@ -1,5 +1,6 @@
 using System;
 using GiGraph.Dot.Entities.Html.Font;
+using GiGraph.Dot.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Html.Builder
 {
@@ -80,6 +81,24 @@ namespace GiGraph.Dot.Entities.Html.Builder
         public virtual DotHtmlBuilder AppendStrikethrough(Action<DotHtmlStrikethrough> init)
         {
             return Append(new DotHtmlStrikethrough(), init);
+        }
+
+        /// <summary>
+        ///     Initializes and appends a font element with embedded font style elements.
+        /// </summary>
+        /// <param name="fontStyle">
+        ///     The font style to use.
+        /// </param>
+        /// <param name="init">
+        ///     An element initialization delegate.
+        /// </param>
+        public virtual DotHtmlBuilder AppendStyledFont(DotFontStyles fontStyle, Action<IDotHtmlContentEntity> init)
+        {
+            var rootElement = (IDotHtmlContentEntity) DotHtmlFontStyle.FromStyle(fontStyle, out var contentElement)
+             ?? new DotHtmlEntityCollection();
+
+            init?.Invoke(contentElement ?? rootElement);
+            return Append(rootElement);
         }
     }
 }

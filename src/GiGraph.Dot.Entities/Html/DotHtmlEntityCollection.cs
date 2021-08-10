@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Html;
@@ -10,7 +11,7 @@ namespace GiGraph.Dot.Entities.Html
     /// <summary>
     ///     Represents an HTML entity collection.
     /// </summary>
-    public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlEntity
+    public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlContentEntity
     {
         /// <summary>
         ///     Creates a new entity collection.
@@ -49,6 +50,27 @@ namespace GiGraph.Dot.Entities.Html
         string IDotHtmlEncodable.ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return ToHtml(options, syntaxRules);
+        }
+
+        DotHtmlEntityCollection IDotHtmlContentEntity.Content => this;
+
+        void IDotHtmlContentEntity.SetContent(IDotHtmlEntity entity)
+        {
+            Clear();
+            Add(entity);
+        }
+
+        void IDotHtmlContentEntity.SetContent(Action<DotHtmlBuilder> build)
+        {
+            var builder = new DotHtmlBuilder();
+            build(builder);
+
+            Clear();
+
+            if (builder.Count > 0)
+            {
+                Add(builder.Build());
+            }
         }
 
         /// <summary>

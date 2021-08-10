@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Html
     /// <summary>
     ///     An HTML element with optional attributes and child elements.
     /// </summary>
-    public class DotHtmlElement : DotHtmlTag
+    public class DotHtmlElement : DotHtmlTag, IDotHtmlContentEntity
     {
         /// <summary>
         ///     Initializes an HTML element with the given name.
@@ -33,17 +33,12 @@ namespace GiGraph.Dot.Entities.Html
             Content = content;
         }
 
-        /// <summary>
-        ///     Gets the children of the element.
-        /// </summary>
-        public virtual DotHtmlEntityCollection Content { get; }
-
         protected sealed override bool IsVoid => false;
 
-        protected override IEnumerable<IDotHtmlEntity> GetContent()
-        {
-            return Content;
-        }
+        /// <summary>
+        ///     Gets the content items of the element.
+        /// </summary>
+        public virtual DotHtmlEntityCollection Content { get; }
 
         /// <summary>
         ///     Uses the specified HTML entity as the content of the current element.
@@ -53,8 +48,7 @@ namespace GiGraph.Dot.Entities.Html
         /// </param>
         public virtual void SetContent(IDotHtmlEntity entity)
         {
-            Content.Clear();
-            Content.Add(entity);
+            ((IDotHtmlContentEntity) Content).SetContent(entity);
         }
 
         /// <summary>
@@ -65,15 +59,12 @@ namespace GiGraph.Dot.Entities.Html
         /// </param>
         public virtual void SetContent(Action<DotHtmlBuilder> build)
         {
-            var builder = new DotHtmlBuilder();
-            build(builder);
+            ((IDotHtmlContentEntity) Content).SetContent(build);
+        }
 
-            Content.Clear();
-
-            if (builder.Count > 0)
-            {
-                Content.Add(builder.Build());
-            }
+        protected override IEnumerable<IDotHtmlEntity> GetContent()
+        {
+            return Content;
         }
     }
 }
