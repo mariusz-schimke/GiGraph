@@ -23,12 +23,25 @@ namespace GiGraph.Dot.Entities.Tests.Html.Builder
 
             builder.Append(new DotHtmlFont());
 
+            builder.AppendBold("bold");
             builder.AppendBold(b => b.SetContent("bold"));
+
+            builder.AppendItalic("italic");
             builder.AppendItalic(i => i.SetContent("italic"));
+
+            builder.AppendUnderline("underline");
             builder.AppendUnderline(u => u.SetContent("underline"));
+
+            builder.AppendOverline("overline");
             builder.AppendOverline(o => o.SetContent("overline"));
+
+            builder.AppendSubscript("subscript");
             builder.AppendSubscript(sb => sb.SetContent("subscript"));
+
+            builder.AppendSuperscript("superscript");
             builder.AppendSuperscript(sp => sp.SetContent("superscript"));
+
+            builder.AppendStrikethrough("strikethrough");
             builder.AppendStrikethrough(st => st.SetContent("strikethrough"));
 
             builder.AppendText("text");
@@ -40,14 +53,19 @@ namespace GiGraph.Dot.Entities.Tests.Html.Builder
             builder.AppendLine("line of text");
             builder.AppendLine("right-justified line of text", DotHorizontalAlignment.Right);
 
-            builder.AppendFont(f => f.SetContent("font content"));
-            builder.AppendFont(new DotFont("arial", 10, Color.Red), f => f.SetContent("font content"));
+            builder.AppendFont(f => f.SetContent("font 1"));
+            builder.AppendFont("font 2", "arial", 10, Color.Red);
+            builder.AppendFont("font 3", new DotFont("arial", 10, Color.Red));
+            builder.AppendFont(new DotFont("arial", 10, Color.Red), f => f.SetContent("font 4"));
 
-            builder.AppendStyledFont(new DotStyledFont("arial", 10, Color.Red, DotFontStyles.Bold), f => f.SetContent("styled font content"));
-            builder.AppendStyledFont(new DotStyledFont(), f => f.SetContent("styled font content"));
+            builder.AppendStyledFont("styled text 1", "arial", 10, Color.Red, DotFontStyles.Bold);
+            builder.AppendStyledFont("styled text 2", new DotStyledFont("arial", 10, Color.Red, DotFontStyles.Bold));
+            builder.AppendStyledFont(new DotStyledFont(), f => f.SetContent("styled text 3"));
+            builder.AppendStyledFont(new DotStyledFont("arial", 10, Color.Red, DotFontStyles.Bold), f => f.SetContent("styled text 4"));
 
-            builder.AppendStyled(DotFontStyles.Bold, f => f.SetContent("bold text"));
-            builder.AppendStyled(DotFontStyles.Normal, f => f.SetContent("normal text"));
+            builder.AppendStyled("bold text 1", DotFontStyles.Bold);
+            builder.AppendStyled(DotFontStyles.Bold, f => f.SetContent("bold text 2"));
+            builder.AppendStyled(DotFontStyles.Normal, f => f.SetContent("normal text 3"));
 
             builder.AppendImage("image.png", DotImageScaling.None);
             builder.AppendImage("image.png", init: e => e.Scaling = DotImageScaling.Uniform);

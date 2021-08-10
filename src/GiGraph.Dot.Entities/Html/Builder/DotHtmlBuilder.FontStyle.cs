@@ -18,6 +18,17 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
+        ///     Initializes and appends a bold element.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to append.
+        /// </param>
+        public virtual DotHtmlBuilder AppendBold(string text)
+        {
+            return Append(new DotHtmlBold(text));
+        }
+
+        /// <summary>
         ///     Initializes and appends an italic element.
         /// </summary>
         /// <param name="init">
@@ -26,6 +37,17 @@ namespace GiGraph.Dot.Entities.Html.Builder
         public virtual DotHtmlBuilder AppendItalic(Action<DotHtmlItalic> init)
         {
             return Append(new DotHtmlItalic(), init);
+        }
+
+        /// <summary>
+        ///     Initializes and appends an italic element.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to append.
+        /// </param>
+        public virtual DotHtmlBuilder AppendItalic(string text)
+        {
+            return Append(new DotHtmlItalic(text));
         }
 
         /// <summary>
@@ -40,6 +62,17 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
+        ///     Initializes and appends an underline element.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to append.
+        /// </param>
+        public virtual DotHtmlBuilder AppendUnderline(string text)
+        {
+            return Append(new DotHtmlUnderline(text));
+        }
+
+        /// <summary>
         ///     Initializes and appends an overline element.
         /// </summary>
         /// <param name="init">
@@ -48,6 +81,17 @@ namespace GiGraph.Dot.Entities.Html.Builder
         public virtual DotHtmlBuilder AppendOverline(Action<DotHtmlOverline> init)
         {
             return Append(new DotHtmlOverline(), init);
+        }
+
+        /// <summary>
+        ///     Initializes and appends an overline element.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to append.
+        /// </param>
+        public virtual DotHtmlBuilder AppendOverline(string text)
+        {
+            return Append(new DotHtmlOverline(text));
         }
 
         /// <summary>
@@ -62,6 +106,17 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
+        ///     Initializes and appends an subscript element.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to append.
+        /// </param>
+        public virtual DotHtmlBuilder AppendSubscript(string text)
+        {
+            return Append(new DotHtmlSubscript(text));
+        }
+
+        /// <summary>
         ///     Initializes and appends an superscript element.
         /// </summary>
         /// <param name="init">
@@ -73,6 +128,17 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
+        ///     Initializes and appends an superscript element.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to append.
+        /// </param>
+        public virtual DotHtmlBuilder AppendSuperscript(string text)
+        {
+            return Append(new DotHtmlSuperscript(text));
+        }
+
+        /// <summary>
         ///     Initializes and appends an strikethrough element.
         /// </summary>
         /// <param name="init">
@@ -81,6 +147,17 @@ namespace GiGraph.Dot.Entities.Html.Builder
         public virtual DotHtmlBuilder AppendStrikethrough(Action<DotHtmlStrikethrough> init)
         {
             return Append(new DotHtmlStrikethrough(), init);
+        }
+
+        /// <summary>
+        ///     Initializes and appends an strikethrough element.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to append.
+        /// </param>
+        public virtual DotHtmlBuilder AppendStrikethrough(string text)
+        {
+            return Append(new DotHtmlStrikethrough(text));
         }
 
         /// <summary>
@@ -99,6 +176,20 @@ namespace GiGraph.Dot.Entities.Html.Builder
 
             init?.Invoke(contentElement ?? rootElement);
             return Append(rootElement);
+        }
+
+        /// <summary>
+        ///     Initializes and appends nested font style elements.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to append.
+        /// </param>
+        /// <param name="fontStyle">
+        ///     The font style to use.
+        /// </param>
+        public virtual DotHtmlBuilder AppendStyled(string text, DotFontStyles fontStyle)
+        {
+            return AppendStyled(fontStyle, s => s.SetContent(text));
         }
     }
 }
