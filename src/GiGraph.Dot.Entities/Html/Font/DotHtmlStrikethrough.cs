@@ -1,4 +1,5 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Html.Font
 {
@@ -20,10 +21,15 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <summary>
         ///     Creates a new instance with the specified text as its content.
         /// </summary>
-        public DotHtmlStrikethrough(string text)
-            : base(TagName)
+        /// <param name="text">
+        ///     The text to set as the content.
+        /// </param>
+        /// <param name="horizontalAlignment">
+        ///     Specifies horizontal placement of lines if multiline text is specified.
+        /// </param>
+        public DotHtmlStrikethrough(string text, DotHorizontalAlignment? horizontalAlignment = null)
+            : base(TagName, text, horizontalAlignment)
         {
-            SetContent(text);
         }
 
         protected DotHtmlStrikethrough(DotAttributeCollection attributes)

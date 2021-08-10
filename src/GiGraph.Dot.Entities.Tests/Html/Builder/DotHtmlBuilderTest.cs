@@ -23,25 +23,25 @@ namespace GiGraph.Dot.Entities.Tests.Html.Builder
 
             builder.Append(new DotHtmlFont());
 
-            builder.AppendBold("bold");
+            builder.AppendBoldText("bold\n", DotHorizontalAlignment.Left);
             builder.AppendBold(b => b.SetContent("bold"));
 
-            builder.AppendItalic("italic");
+            builder.AppendItalicText("italic\n", DotHorizontalAlignment.Center);
             builder.AppendItalic(i => i.SetContent("italic"));
 
-            builder.AppendUnderline("underline");
+            builder.AppendUnderlineText("underline\n", DotHorizontalAlignment.Right);
             builder.AppendUnderline(u => u.SetContent("underline"));
 
-            builder.AppendOverline("overline");
+            builder.AppendOverlineText("overline\n", DotHorizontalAlignment.Left);
             builder.AppendOverline(o => o.SetContent("overline"));
 
-            builder.AppendSubscript("subscript");
+            builder.AppendSubscriptText("subscript\n", DotHorizontalAlignment.Center);
             builder.AppendSubscript(sb => sb.SetContent("subscript"));
 
-            builder.AppendSuperscript("superscript");
+            builder.AppendSuperscriptText("superscript\n", DotHorizontalAlignment.Right);
             builder.AppendSuperscript(sp => sp.SetContent("superscript"));
 
-            builder.AppendStrikethrough("strikethrough");
+            builder.AppendStrikethroughText("strikethrough\n", DotHorizontalAlignment.Left);
             builder.AppendStrikethrough(st => st.SetContent("strikethrough"));
 
             builder.AppendText("text");

@@ -1,5 +1,6 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
+using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Html.Font
 {
@@ -11,6 +12,12 @@ namespace GiGraph.Dot.Entities.Html.Font
         protected DotHtmlFontStyle(string tagName)
             : base(tagName, new DotAttributeCollection(DotHtmlAttributeFactory.Instance))
         {
+        }
+
+        protected DotHtmlFontStyle(string tagName, string text, DotHorizontalAlignment? horizontalAlignment)
+            : base(tagName, new DotAttributeCollection(DotHtmlAttributeFactory.Instance))
+        {
+            SetContent(text, horizontalAlignment);
         }
 
         protected DotHtmlFontStyle(string tagName, DotAttributeCollection attributes)
