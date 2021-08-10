@@ -5,6 +5,7 @@ using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Entities.Html.Text;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Html;
 
 namespace GiGraph.Dot.Entities.Html
@@ -61,9 +62,9 @@ namespace GiGraph.Dot.Entities.Html
             Add(entity);
         }
 
-        void IDotHtmlContentEntity.SetContent(string text)
+        void IDotHtmlContentEntity.SetContent(string text, DotHorizontalAlignment? horizontalAlignment = null)
         {
-            ((IDotHtmlContentEntity) this).SetContent(new DotHtmlText(text));
+            ((IDotHtmlContentEntity) this).SetContent(new DotHtmlText(text, horizontalAlignment));
         }
 
         void IDotHtmlContentEntity.SetContent(Action<DotHtmlBuilder> build)

@@ -54,19 +54,19 @@ namespace GiGraph.Dot.Entities.Tests.Html.Builder
             builder.AppendLine("right-justified line of text", DotHorizontalAlignment.Right);
 
             builder.AppendFont(f => f.SetContent("font 1"));
-            builder.AppendFont(new DotFont("arial", 10, Color.Red), f => f.SetContent("font 4"));
+            builder.AppendFont(new DotFont("arial", 10, Color.Red), f => f.SetContent("font 2"));
 
-            builder.AppendStyledFont(new DotStyledFont(), f => f.SetContent("styled text 3"));
-            builder.AppendStyledFont(new DotStyledFont("arial", 10, Color.Red, DotFontStyles.Bold), f => f.SetContent("styled text 4"));
+            builder.AppendStyledFont(new DotStyledFont(), f => f.SetContent("styled text 1"));
+            builder.AppendStyledFont(new DotStyledFont("arial", 10, Color.Red, DotFontStyles.Bold), f => f.SetContent("styled text 2"));
 
-            builder.AppendStyled(DotFontStyles.Bold, f => f.SetContent("bold text 2"));
-            builder.AppendStyled(DotFontStyles.Normal, f => f.SetContent("normal text 3"));
+            builder.AppendStyled(DotFontStyles.Bold, f => f.SetContent("bold text"));
+            builder.AppendStyled(DotFontStyles.Normal, f => f.SetContent("normal text"));
 
-            builder.AppendStyledText("styled text 1", "arial", 10, Color.Red, DotFontStyles.Bold);
-            builder.AppendStyledText("styled text 2", new DotStyledFont("arial", 10, Color.Red, DotFontStyles.Bold));
+            builder.AppendStyledText("styled text 1\n", "arial", 10, Color.Red, DotFontStyles.Bold, DotHorizontalAlignment.Center);
+            builder.AppendStyledText("styled text 2\n", new DotStyledFont("arial", 10, Color.Red, DotFontStyles.Bold), DotHorizontalAlignment.Left);
 
-            builder.AppendStyledText("font 3", new DotFont("arial", 10, Color.Red));
-            builder.AppendStyledText("bold text 1", DotFontStyles.Bold);
+            builder.AppendStyledText("font\n", new DotFont("arial", 10, Color.Red), DotHorizontalAlignment.Left);
+            builder.AppendStyledText("bold text 1\n", DotFontStyles.Bold, DotHorizontalAlignment.Right);
 
             builder.AppendImage("image.png", DotImageScaling.None);
             builder.AppendImage("image.png", init: e => e.Scaling = DotImageScaling.Uniform);

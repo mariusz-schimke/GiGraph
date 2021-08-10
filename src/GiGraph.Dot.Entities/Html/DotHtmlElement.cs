@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
 using GiGraph.Dot.Entities.Html.Builder;
+using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Html
 {
@@ -46,10 +47,10 @@ namespace GiGraph.Dot.Entities.Html
             ((IDotHtmlContentEntity) Content).SetContent(entity);
         }
 
-        /// <inheritdoc cref="IDotHtmlContentEntity.SetContent(string)" />
-        public virtual void SetContent(string text)
+        /// <inheritdoc cref="IDotHtmlContentEntity.SetContent(string,System.Nullable{GiGraph.Dot.Types.Alignment.DotHorizontalAlignment})" />
+        public virtual void SetContent(string text, DotHorizontalAlignment? horizontalAlignment = null)
         {
-            ((IDotHtmlContentEntity) Content).SetContent(text);
+            ((IDotHtmlContentEntity) Content).SetContent(text, horizontalAlignment);
         }
 
         /// <inheritdoc cref="IDotHtmlContentEntity.SetContent(System.Action{GiGraph.Dot.Entities.Html.Builder.DotHtmlBuilder})" />

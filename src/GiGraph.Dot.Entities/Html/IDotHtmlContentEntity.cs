@@ -1,5 +1,6 @@
 using System;
 using GiGraph.Dot.Entities.Html.Builder;
+using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Html
 {
@@ -24,7 +25,10 @@ namespace GiGraph.Dot.Entities.Html
         /// <param name="text">
         ///     The text to set as the content.
         /// </param>
-        void SetContent(string text);
+        /// <param name="horizontalAlignment">
+        ///     Specifies horizontal placement of lines if multiline text is specified.
+        /// </param>
+        void SetContent(string text, DotHorizontalAlignment? horizontalAlignment = null);
 
         /// <summary>
         ///     Uses the builder to build a HTML entity to use as the content of the current element.
