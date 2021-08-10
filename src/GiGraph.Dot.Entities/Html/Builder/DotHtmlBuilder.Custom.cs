@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <param name="init">
         ///     An element initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder AppendElement(string elementName, Action<DotHtmlElement> init)
+        public virtual DotHtmlBuilder AppendElement(string elementName, Action<DotHtmlElement> init = null)
         {
             return Append(new DotHtmlElement(elementName), init);
         }
@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <param name="init">
         ///     An element initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder AppendVoidElement(string elementName, Action<DotHtmlVoidElement> init)
+        public virtual DotHtmlBuilder AppendVoidElement(string elementName, Action<DotHtmlVoidElement> init = null)
         {
             return Append(new DotHtmlVoidElement(elementName), init);
         }

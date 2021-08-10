@@ -1,3 +1,4 @@
+using System;
 using GiGraph.Dot.Entities.Html.Rule;
 
 namespace GiGraph.Dot.Entities.Html.Builder
@@ -7,17 +8,23 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <summary>
         ///     Appends a horizontal rule to the builder.
         /// </summary>
-        public virtual DotHtmlBuilder AppendHorizontalRule()
+        /// <param name="init">
+        ///     An element initialization delegate.
+        /// </param>
+        public virtual DotHtmlBuilder AppendHorizontalRule(Action<DotHtmlHorizontalRule> init = null)
         {
-            return Append(new DotHtmlHorizontalRule());
+            return Append(new DotHtmlHorizontalRule(), init);
         }
 
         /// <summary>
         ///     Appends a vertical rule to the builder.
         /// </summary>
-        public virtual DotHtmlBuilder AppendVerticalRule()
+        /// <param name="init">
+        ///     An element initialization delegate.
+        /// </param>
+        public virtual DotHtmlBuilder AppendVerticalRule(Action<DotHtmlVerticalRule> init = null)
         {
-            return Append(new DotHtmlVerticalRule());
+            return Append(new DotHtmlVerticalRule(), init);
         }
     }
 }

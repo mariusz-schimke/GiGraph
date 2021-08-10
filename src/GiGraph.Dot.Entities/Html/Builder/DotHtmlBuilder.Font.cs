@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends a font element with embedded font style elements.
+        ///     Initializes and appends a font element with nested font style elements.
         /// </summary>
         /// <param name="font">
         ///     The font to use.

@@ -84,7 +84,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends a font element with embedded font style elements.
+        ///     Initializes and appends nested font style elements.
         /// </summary>
         /// <param name="fontStyle">
         ///     The font style to use.
@@ -92,7 +92,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <param name="init">
         ///     An element initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder AppendStyledFont(DotFontStyles fontStyle, Action<IDotHtmlContentEntity> init)
+        public virtual DotHtmlBuilder AppendStyled(DotFontStyles fontStyle, Action<IDotHtmlContentEntity> init)
         {
             var rootElement = (IDotHtmlContentEntity) DotHtmlFontStyle.FromStyle(fontStyle, out var contentElement)
              ?? new DotHtmlEntityCollection();
