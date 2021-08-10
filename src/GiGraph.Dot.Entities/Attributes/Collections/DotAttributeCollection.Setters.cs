@@ -178,7 +178,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         /// <param name="value">
         ///     The value of the attribute to include in the collection.
         /// </param>
-        public virtual DotAttributeCollection Set(string key, params double[] value)
+        public virtual DotAttributeCollection Set(string key, double[] value)
         {
             return Set(_attributeFactory.CreateDoubleArray(key, value));
         }
