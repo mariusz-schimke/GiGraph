@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Html.Builder;
+using GiGraph.Dot.Entities.Html.Text;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Html;
@@ -58,6 +59,11 @@ namespace GiGraph.Dot.Entities.Html
         {
             Clear();
             Add(entity);
+        }
+
+        void IDotHtmlContentEntity.SetContent(string text)
+        {
+            ((IDotHtmlContentEntity) this).SetContent(new DotHtmlText(text));
         }
 
         void IDotHtmlContentEntity.SetContent(Action<DotHtmlBuilder> build)

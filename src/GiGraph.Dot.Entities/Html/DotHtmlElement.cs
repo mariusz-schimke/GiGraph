@@ -40,23 +40,19 @@ namespace GiGraph.Dot.Entities.Html
         /// </summary>
         public virtual DotHtmlEntityCollection Content { get; }
 
-        /// <summary>
-        ///     Uses the specified HTML entity as the content of the current element.
-        /// </summary>
-        /// <param name="entity">
-        ///     The element to set as the content.
-        /// </param>
+        /// <inheritdoc cref="IDotHtmlContentEntity.SetContent(GiGraph.Dot.Entities.Html.IDotHtmlEntity)" />
         public virtual void SetContent(IDotHtmlEntity entity)
         {
             ((IDotHtmlContentEntity) Content).SetContent(entity);
         }
 
-        /// <summary>
-        ///     Uses the builder to build a HTML entity to use as the content of the current element.
-        /// </summary>
-        /// <param name="build">
-        ///     The HTML builder delegate.
-        /// </param>
+        /// <inheritdoc cref="IDotHtmlContentEntity.SetContent(string)" />
+        public virtual void SetContent(string text)
+        {
+            ((IDotHtmlContentEntity) Content).SetContent(text);
+        }
+
+        /// <inheritdoc cref="IDotHtmlContentEntity.SetContent(System.Action{GiGraph.Dot.Entities.Html.Builder.DotHtmlBuilder})" />
         public virtual void SetContent(Action<DotHtmlBuilder> build)
         {
             ((IDotHtmlContentEntity) Content).SetContent(build);

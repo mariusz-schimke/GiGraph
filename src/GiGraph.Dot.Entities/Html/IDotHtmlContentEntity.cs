@@ -19,6 +19,14 @@ namespace GiGraph.Dot.Entities.Html
         void SetContent(IDotHtmlEntity entity);
 
         /// <summary>
+        ///     Uses the specified text as the content of the current element.
+        /// </summary>
+        /// <param name="text">
+        ///     The text to set as the content.
+        /// </param>
+        void SetContent(string text);
+
+        /// <summary>
         ///     Uses the builder to build a HTML entity to use as the content of the current element.
         /// </summary>
         /// <param name="build">
