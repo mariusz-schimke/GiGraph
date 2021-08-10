@@ -54,18 +54,19 @@ namespace GiGraph.Dot.Entities.Tests.Html.Builder
             builder.AppendLine("right-justified line of text", DotHorizontalAlignment.Right);
 
             builder.AppendFont(f => f.SetContent("font 1"));
-            builder.AppendFont("font 2", "arial", 10, Color.Red);
-            builder.AppendFont("font 3", new DotFont("arial", 10, Color.Red));
             builder.AppendFont(new DotFont("arial", 10, Color.Red), f => f.SetContent("font 4"));
 
-            builder.AppendStyledFont("styled text 1", "arial", 10, Color.Red, DotFontStyles.Bold);
-            builder.AppendStyledFont("styled text 2", new DotStyledFont("arial", 10, Color.Red, DotFontStyles.Bold));
             builder.AppendStyledFont(new DotStyledFont(), f => f.SetContent("styled text 3"));
             builder.AppendStyledFont(new DotStyledFont("arial", 10, Color.Red, DotFontStyles.Bold), f => f.SetContent("styled text 4"));
 
-            builder.AppendStyled("bold text 1", DotFontStyles.Bold);
             builder.AppendStyled(DotFontStyles.Bold, f => f.SetContent("bold text 2"));
             builder.AppendStyled(DotFontStyles.Normal, f => f.SetContent("normal text 3"));
+
+            builder.AppendStyledText("styled text 1", "arial", 10, Color.Red, DotFontStyles.Bold);
+            builder.AppendStyledText("styled text 2", new DotStyledFont("arial", 10, Color.Red, DotFontStyles.Bold));
+
+            builder.AppendStyledText("font 3", new DotFont("arial", 10, Color.Red));
+            builder.AppendStyledText("bold text 1", DotFontStyles.Bold);
 
             builder.AppendImage("image.png", DotImageScaling.None);
             builder.AppendImage("image.png", init: e => e.Scaling = DotImageScaling.Uniform);

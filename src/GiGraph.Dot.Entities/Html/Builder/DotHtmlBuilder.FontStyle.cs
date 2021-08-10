@@ -177,19 +177,5 @@ namespace GiGraph.Dot.Entities.Html.Builder
             init?.Invoke(contentElement ?? rootElement);
             return Append(rootElement);
         }
-
-        /// <summary>
-        ///     Initializes and appends nested font style elements.
-        /// </summary>
-        /// <param name="text">
-        ///     The text to append.
-        /// </param>
-        /// <param name="fontStyle">
-        ///     The font style to use.
-        /// </param>
-        public virtual DotHtmlBuilder AppendStyled(string text, DotFontStyles fontStyle)
-        {
-            return AppendStyled(fontStyle, s => s.SetContent(text));
-        }
     }
 }
