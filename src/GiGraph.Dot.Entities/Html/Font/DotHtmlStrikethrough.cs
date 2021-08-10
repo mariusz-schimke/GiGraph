@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         public DotHtmlStrikethrough(string text)
             : base(TagName)
         {
-            AppendText(text);
+            SetContent(text);
         }
 
         protected DotHtmlStrikethrough(DotAttributeCollection attributes)

@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         public DotHtmlBold(string text)
             : base(TagName)
         {
-            AppendText(text);
+            SetContent(text);
         }
 
         protected DotHtmlBold(DotAttributeCollection attributes)

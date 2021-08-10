@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         public DotHtmlUnderline(string text)
             : base(TagName)
         {
-            AppendText(text);
+            SetContent(text);
         }
 
         protected DotHtmlUnderline(DotAttributeCollection attributes)

@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         public DotHtmlSuperscript(string text)
             : base(TagName)
         {
-            AppendText(text);
+            SetContent(text);
         }
 
         protected DotHtmlSuperscript(DotAttributeCollection attributes)

@@ -1,6 +1,5 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
-using GiGraph.Dot.Entities.Html.Text;
 
 namespace GiGraph.Dot.Entities.Html.Font
 {
@@ -17,11 +16,6 @@ namespace GiGraph.Dot.Entities.Html.Font
         protected DotHtmlFontStyle(string tagName, DotAttributeCollection attributes)
             : base(tagName, attributes)
         {
-        }
-
-        protected virtual void AppendText(string text)
-        {
-            Content.Add(new DotHtmlText(text));
         }
     }
 }
