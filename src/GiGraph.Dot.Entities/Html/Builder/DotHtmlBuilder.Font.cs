@@ -1,6 +1,5 @@
 using System;
 using GiGraph.Dot.Entities.Html.Font;
-using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Html.Builder
@@ -21,26 +20,6 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <summary>
         ///     Initializes and appends a font element.
         /// </summary>
-        /// <param name="name">
-        ///     Specifies the font to use within the scope of the current element.
-        /// </param>
-        /// <param name="size">
-        ///     Specifies the size of the font, in points, to use within the scope of the current element.
-        /// </param>
-        /// <param name="color">
-        ///     Sets the color of the font within the scope of the current element.
-        /// </param>
-        /// <param name="init">
-        ///     An element initialization delegate.
-        /// </param>
-        public virtual DotHtmlBuilder AppendFont(string name, double? size, DotColor color, Action<DotHtmlFont> init)
-        {
-            return Append(new DotHtmlFont(name, size, color), init);
-        }
-
-        /// <summary>
-        ///     Initializes and appends a font element.
-        /// </summary>
         /// <param name="font">
         ///     The font to use.
         /// </param>
@@ -50,6 +29,34 @@ namespace GiGraph.Dot.Entities.Html.Builder
         public virtual DotHtmlBuilder AppendFont(DotFont font, Action<DotHtmlFont> init)
         {
             return Append(new DotHtmlFont(font), init);
+        }
+
+        /// <summary>
+        ///     Initializes and appends a font element with embedded font style elements.
+        /// </summary>
+        /// <param name="font">
+        ///     The font to use.
+        /// </param>
+        /// <param name="init">
+        ///     An element initialization delegate.
+        /// </param>
+        public virtual DotHtmlBuilder AppendStyledFont(DotStyledFont font, Action<DotHtmlElement> init)
+        {
+            var fontElement = new DotHtmlFont(font);
+            DotHtmlElement initElement = fontElement;
+
+            if (font.Style.HasValue)
+            {
+                var styleRootElement = DotHtmlFontStyle.FromStyle(font.Style.Value, out var contentElement);
+                if (styleRootElement is not null)
+                {
+                    fontElement.SetContent(styleRootElement);
+                    initElement = contentElement;
+                }
+            }
+
+            init?.Invoke(initElement);
+            return Append(fontElement);
         }
     }
 }
