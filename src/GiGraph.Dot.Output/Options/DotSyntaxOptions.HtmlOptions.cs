@@ -5,14 +5,14 @@
         public class HtmlOptions
         {
             /// <summary>
-            ///     When set to true, HTML tag names will be written in the upper case.
+            ///     Determines the casing to use for HTML element names.
             /// </summary>
-            public virtual bool UpperCaseTagNames { get; set; } = false;
+            public virtual DotTextCase ElementNameCasing { get; set; } = DotTextCase.Normal;
 
             /// <summary>
-            ///     When set to true, HTML attribute names will be written in the upper case.
+            ///     Determines the casing to use for HTML element attribute keys.
             /// </summary>
-            public virtual bool UpperCaseAttributeNames { get; set; } = false;
+            public virtual DotTextCase AttributeKeyCasing { get; set; } = DotTextCase.Normal;
         }
     }
 }

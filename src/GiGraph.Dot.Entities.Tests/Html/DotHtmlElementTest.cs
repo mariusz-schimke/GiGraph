@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Entities.Tests.Html
                 {
                     Html =
                     {
-                        UpperCaseTagNames = true
+                        ElementNameCasing = DotTextCase.Upper
                     }
                 }
             };
