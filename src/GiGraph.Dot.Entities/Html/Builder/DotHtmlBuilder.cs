@@ -19,25 +19,6 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes a new instance with an HTML entity.
-        /// </summary>
-        public DotHtmlBuilder(IDotHtmlEntity entity)
-        {
-            _entities = new DotHtmlEntityCollection
-            {
-                entity
-            };
-        }
-
-        /// <summary>
-        ///     Initializes a new instance with HTML.
-        /// </summary>
-        public DotHtmlBuilder(string html)
-            : this(new DotHtml(html))
-        {
-        }
-
-        /// <summary>
         ///     Gets the number of entities in this builder.
         /// </summary>
         public virtual int Count => _entities.Count;

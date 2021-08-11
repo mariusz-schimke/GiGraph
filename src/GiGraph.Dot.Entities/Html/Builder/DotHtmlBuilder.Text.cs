@@ -106,24 +106,24 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <param name="text">
         ///     The text to append.
         /// </param>
-        /// <param name="name">
+        /// <param name="fontName">
         ///     Font name.
         /// </param>
-        /// <param name="size">
+        /// <param name="fontSize">
         ///     Font size.
         /// </param>
-        /// <param name="color">
+        /// <param name="fontColor">
         ///     Font color.
         /// </param>
-        /// <param name="style">
+        /// <param name="fontStyle">
         ///     Font style.
         /// </param>
         /// <param name="lineAlignment">
         ///     Specifies horizontal placement of lines if multiline text is specified.
         /// </param>
-        public virtual DotHtmlBuilder AppendStyledText(string text, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null, DotHorizontalAlignment? lineAlignment = null)
+        public virtual DotHtmlBuilder AppendStyledText(string text, string fontName = null, double? fontSize = null, DotColor fontColor = null, DotFontStyles? fontStyle = null, DotHorizontalAlignment? lineAlignment = null)
         {
-            return AppendStyledText(text, new DotStyledFont(name, size, color, style), lineAlignment);
+            return AppendStyledText(text, new DotStyledFont(fontName, fontSize, fontColor, fontStyle), lineAlignment);
         }
     }
 }

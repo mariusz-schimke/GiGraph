@@ -13,6 +13,11 @@ using GiGraph.Dot.Types.Images;
 
 namespace GiGraph.Dot.Entities.Html.Table
 {
+    // TODO: przejrzeć methody, do których przekazywany jest tekst (np. brakuje line alignment).
+    // Możliwe, że trzeba je usunąć
+    // TODO: dodać AddCell() z HTML builderem
+
+
     /// <summary>
     ///     An HTML table row (&lt;tr&gt;).
     /// </summary>
@@ -111,7 +116,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         public virtual DotHtmlTableCell AddCell(string text, DotFontStyles fontStyle, string fontName = null, double? fontSize = null, DotColor fontColor = null, Action<DotHtmlTableCell> init = null)
         {
             return Content.Add(
-                new DotHtmlTableCell { Content = { DotHtmlFont.SetFont(text, fontName, fontSize, fontColor, fontStyle) } },
+                new DotHtmlTableCell { Content = { DotHtmlFont.WithText(text, fontName, fontSize, fontColor, fontStyle) } },
                 init
             );
         }
@@ -131,7 +136,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         public virtual DotHtmlTableCell AddCell(string text, DotStyledFont font, Action<DotHtmlTableCell> init = null)
         {
             return Content.Add(
-                new DotHtmlTableCell { Content = { DotHtmlFont.SetFont(text, font) } },
+                new DotHtmlTableCell { Content = { DotHtmlFont.WithText(text, font) } },
                 init
             );
         }
@@ -192,7 +197,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         {
             return cells.Select((item, index) =>
                 {
-                    var cell = new DotHtmlTableCell { Content = { DotHtmlFont.SetFont(item, fontName, fontSize, fontColor, fontStyle) } };
+                    var cell = new DotHtmlTableCell { Content = { DotHtmlFont.WithText(item, fontName, fontSize, fontColor, fontStyle) } };
                     init?.Invoke(cell, index);
                     return Content.Add(cell);
                 })
@@ -215,7 +220,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         {
             return cells.Select((item, index) =>
                 {
-                    var cell = new DotHtmlTableCell { Content = { DotHtmlFont.SetFont(item, font) } };
+                    var cell = new DotHtmlTableCell { Content = { DotHtmlFont.WithText(item, font) } };
                     init?.Invoke(cell, index);
                     return Content.Add(cell);
                 })

@@ -1,7 +1,6 @@
 using System.Drawing;
 using GiGraph.Dot.Entities.Html;
 using GiGraph.Dot.Entities.Html.Font;
-using GiGraph.Dot.Entities.Html.Table;
 using GiGraph.Dot.Entities.Html.Text;
 using GiGraph.Dot.Types.Fonts;
 using Snapshooter.Xunit;
@@ -12,85 +11,74 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
     public partial class DotHtmlFontTest
     {
         [Fact]
-        public void entity_interface_is_correctly_processed()
+        public void entity_factory_method_generates_font_with_attributes_and_entity_as_content()
         {
-            var font = new DotStyledFont("Arial", 20, Color.Blue, DotFontStyles.Bold);
+            var font = new DotFont("Arial", 20, Color.Blue);
 
             var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
 
-            var entity1 = DotHtmlFont.SetFont(entityCollection, font);
-            var entity2 = DotHtmlFont.SetFont(entityCollection, font.Name, font.Size, font.Color, font.Style);
+            var entity1 = DotHtmlFont.WithEntity(entityCollection, font);
+            var entity2 = DotHtmlFont.WithEntity(entityCollection, font.Name, font.Size, font.Color);
 
             Assert.Equal((string) entity1.ToHtml(), entity2.ToHtml());
 
             Snapshot.Match(
                 ((IDotHtmlEntity) entity1).ToHtml(_syntaxOptions, _syntaxRules),
-                "html_font_with_entity_content"
+                "html_font_with_attributes_and_entity"
             );
         }
 
         [Fact]
-        public void entity_enumerable_is_correctly_styled_with_same_font()
+        public void entity_factory_method_generates_font_without_attributes_with_entity_as_content()
         {
-            var entity = DotHtmlFont.SetFont(
-                new (IDotHtmlEntity, DotFontStyles)[]
-                {
-                    (new DotHtmlTable(), DotFontStyles.Normal),
-                    (new DotHtmlTable(), DotFontStyles.Italic)
-                },
-                "Arial",
-                10,
-                Color.CadetBlue,
-                DotFontStyles.Bold
-            );
+            var font = new DotFont();
+
+            var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
+
+            var entity1 = DotHtmlFont.WithEntity(entityCollection, font);
+            var entity2 = DotHtmlFont.WithEntity(entityCollection, font.Name, font.Size, font.Color);
+
+            Assert.Equal((string) entity1.ToHtml(), entity2.ToHtml());
 
             Snapshot.Match(
-                ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),
-                "html_font_with_entity_enumerable"
+                ((IDotHtmlEntity) entity1).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_font_without_attributes_with_entity"
             );
         }
 
         [Fact]
-        public void entity_items_are_correctly_styled_with_same_font()
+        public void entity_factory_method_generates_font_with_attributes_style_tags_and_entity_as_content()
         {
-            var entity = DotHtmlFont.SetFont(
-                new DotStyledFont("Arial", 10, Color.CadetBlue, DotFontStyles.Bold),
-                (new DotHtmlTable(), DotFontStyles.Normal),
-                (new DotHtmlTable(), DotFontStyles.Italic)
-            );
+            var font = new DotStyledFont("Arial", 20, Color.Blue, DotFontStyles.Bold | DotFontStyles.Italic);
+
+            var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
+
+            var entity1 = DotHtmlFont.WithEntity(entityCollection, font);
+            var entity2 = DotHtmlFont.WithEntity(entityCollection, font.Name, font.Size, font.Color, font.Style);
+
+            Assert.Equal((string) entity1.ToHtml(), entity2.ToHtml());
 
             Snapshot.Match(
-                ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),
-                "html_font_with_entity_array"
+                ((IDotHtmlEntity) entity1).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_styled_font_with_attributes_and_entity"
             );
         }
 
         [Fact]
-        public void entity_items_are_correctly_styled_with_multiple_fonts()
+        public void entity_factory_method_generates_font_without_attributes_with_style_tags_and_entity_as_content()
         {
-            var entity = DotHtmlFont.SetFonts(
-                (new DotHtmlTable(), new DotStyledFont("Arial", 10, Color.CadetBlue, DotFontStyles.Bold)),
-                (new DotHtmlTable(), new DotStyledFont("Arial", 12, Color.Red, DotFontStyles.Italic))
-            );
+            var font = new DotStyledFont(style: DotFontStyles.Bold | DotFontStyles.Italic);
+
+            var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
+
+            var entity1 = DotHtmlFont.WithEntity(entityCollection, font);
+            var entity2 = DotHtmlFont.WithEntity(entityCollection, font.Name, font.Size, font.Color, font.Style);
+
+            Assert.Equal((string) entity1.ToHtml(), entity2.ToHtml());
 
             Snapshot.Match(
-                ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),
-                "html_font_array_with_entity"
-            );
-        }
-
-        [Fact]
-        public void entity_items_are_correctly_styled_with_multiple_fonts_and_common_parent_font()
-        {
-            var entity = DotHtmlFont.SetFonts(
-                new DotStyledFont("Arial"),
-                (new DotHtmlTable(), new DotStyledFont(size: 10, color: Color.CadetBlue, style: DotFontStyles.Bold)),
-                (new DotHtmlTable(), new DotStyledFont(size: 12, color: Color.Red, style: DotFontStyles.Italic))
-            );
-
-            Snapshot.Match(
-                ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),
-                "html_font_array_with_entity_and_common_parent_font"
+                ((IDotHtmlEntity) entity1).ToHtml(_syntaxOptions, _syntaxRules),
+                "html_styled_font_without_attributes_with_entity"
             );
         }
     }

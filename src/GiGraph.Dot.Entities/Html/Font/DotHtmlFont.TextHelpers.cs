@@ -1,6 +1,5 @@
-using System.Collections.Generic;
-using System.Linq;
 using GiGraph.Dot.Entities.Html.Text;
+using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Fonts;
 
@@ -9,26 +8,29 @@ namespace GiGraph.Dot.Entities.Html.Font
     public partial class DotHtmlFont
     {
         /// <summary>
-        ///     Embeds the text in appropriate HTML tags based on the specified font style.
+        ///     Embeds the entity in appropriate HTML tags based on the specified font style.
         /// </summary>
         /// <param name="text">
         ///     The text to embed in font and style elements.
         /// </param>
-        /// <param name="color">
-        ///     The color to apply to the text.
-        /// </param>
-        /// <param name="style">
-        ///     The style to apply to the text.
-        /// </param>
-        /// <param name="name">
+        /// <param name="fontName">
         ///     The name of the font to use.
         /// </param>
-        /// <param name="size">
+        /// <param name="fontSize">
         ///     The size to apply to the font.
         /// </param>
-        public static DotHtmlEntity SetFont(string text, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
+        /// <param name="fontColor">
+        ///     The color to apply to the text.
+        /// </param>
+        /// <param name="fontStyle">
+        ///     The style to apply to the text.
+        /// </param>
+        /// <param name="lineAlignment">
+        ///     Specifies horizontal placement of lines if multiline text is specified.
+        /// </param>
+        public static DotHtmlEntity WithText(string text, string fontName = null, double? fontSize = null, DotColor fontColor = null, DotFontStyles? fontStyle = null, DotHorizontalAlignment? lineAlignment = null)
         {
-            return SetFont(new DotHtmlText(text), name, size, color, style);
+            return WithEntity(new DotHtmlText(text, lineAlignment), fontName, fontSize, fontColor, fontStyle);
         }
 
         /// <summary>
@@ -40,112 +42,29 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="font">
         ///     The font and/or style to apply.
         /// </param>
-        public static DotHtmlEntity SetFont(string text, DotStyledFont font)
+        /// <param name="lineAlignment">
+        ///     Specifies horizontal placement of lines if multiline text is specified.
+        /// </param>
+        public static DotHtmlFont WithText(string text, DotFont font, DotHorizontalAlignment? lineAlignment = null)
         {
-            return SetFont(text, font.Name, font.Size, font.Color, font.Style);
+            return WithEntity(new DotHtmlText(text, lineAlignment), font);
         }
 
         /// <summary>
-        ///     Embeds the pieces of text in appropriate HTML tags each, based on the font styles specified for them.
+        ///     Embeds the text in appropriate HTML tags based on the specified font style.
         /// </summary>
-        /// <param name="items">
-        ///     The pieces of text to style.
-        /// </param>
-        /// <param name="name">
-        ///     The name of the font to use.
-        /// </param>
-        /// <param name="size">
-        ///     The size to apply to the font.
-        /// </param>
-        /// <param name="color">
-        ///     The color to apply to the text.
-        /// </param>
-        /// <param name="style">
-        ///     The common style to apply to the text.
-        /// </param>
-        public static DotHtmlEntity SetFont(IEnumerable<(string Text, DotFontStyles Style)> items, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
-        {
-            return SetFont(DotHtmlFontStyle.SetStyles(items), name, size, color, style);
-        }
-
-        /// <summary>
-        ///     Embeds the pieces of text in appropriate HTML tags each, based on the font styles specified for them.
-        /// </summary>
-        /// <param name="items">
-        ///     The pieces of text to style.
+        /// <param name="text">
+        ///     The text to embed in font and style elements.
         /// </param>
         /// <param name="font">
-        ///     The common font and/or style to apply to the text.
+        ///     The font and/or style to apply.
         /// </param>
-        public static DotHtmlEntity SetFont(DotStyledFont font, params (string Text, DotFontStyles Style)[] items)
+        /// <param name="lineAlignment">
+        ///     Specifies horizontal placement of lines if multiline text is specified.
+        /// </param>
+        public static DotHtmlFont WithText(string text, DotStyledFont font, DotHorizontalAlignment? lineAlignment = null)
         {
-            return SetFont(items, font);
-        }
-
-        /// <summary>
-        ///     Embeds the pieces of text in appropriate HTML tags each, based on the font styles specified for them.
-        /// </summary>
-        /// <param name="items">
-        ///     The pieces of text to style.
-        /// </param>
-        /// <param name="font">
-        ///     The common font and/or style to apply to the text.
-        /// </param>
-        public static DotHtmlEntity SetFont(IEnumerable<(string Text, DotFontStyles Style)> items, DotStyledFont font)
-        {
-            return SetFont(DotHtmlFontStyle.SetStyles(items), font);
-        }
-
-        /// <summary>
-        ///     Embeds the pieces of text in appropriate HTML tags each, based on the font styles specified for them.
-        /// </summary>
-        /// <param name="items">
-        ///     The pieces of text to style.
-        /// </param>
-        public static DotHtmlEntityCollection SetFonts(params (string Text, DotStyledFont Font)[] items)
-        {
-            return SetFonts((IEnumerable<(string Text, DotStyledFont Font)>) items);
-        }
-
-        /// <summary>
-        ///     Embeds the pieces of text in appropriate HTML tags each, based on the font styles specified for them.
-        /// </summary>
-        /// <param name="font">
-        ///     The common font and/or style to apply to the text.
-        /// </param>
-        /// <param name="items">
-        ///     The pieces of text to style.
-        /// </param>
-        public static DotHtmlEntity SetFonts(DotStyledFont font, params (string Text, DotStyledFont Font)[] items)
-        {
-            return SetFonts(items, font);
-        }
-
-        /// <summary>
-        ///     Embeds the pieces of text in appropriate HTML tags each, based on the font styles specified for them.
-        /// </summary>
-        /// <param name="items">
-        ///     The pieces of text to style.
-        /// </param>
-        public static DotHtmlEntityCollection SetFonts(IEnumerable<(string Text, DotStyledFont Font)> items)
-        {
-            return new DotHtmlEntityCollection(
-                items.Select(item => SetFont(item.Text, item.Font))
-            );
-        }
-
-        /// <summary>
-        ///     Embeds the pieces of text in appropriate HTML tags each, based on the font styles specified for them.
-        /// </summary>
-        /// <param name="items">
-        ///     The pieces of text to style.
-        /// </param>
-        /// <param name="font">
-        ///     The common font and/or style to apply to the text.
-        /// </param>
-        public static DotHtmlEntity SetFonts(IEnumerable<(string Text, DotStyledFont Font)> items, DotStyledFont font)
-        {
-            return SetFont(SetFonts(items), font);
+            return WithEntity(new DotHtmlText(text, lineAlignment), font);
         }
     }
 }
