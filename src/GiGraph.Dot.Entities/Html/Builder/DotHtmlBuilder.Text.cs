@@ -15,12 +15,12 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <param name="text">
         ///     The text to append.
         /// </param>
-        /// <param name="horizontalAlignment">
+        /// <param name="lineAlignment">
         ///     Specifies horizontal placement of lines if multiline text is specified.
         /// </param>
-        public virtual DotHtmlBuilder AppendText(string text, DotHorizontalAlignment? horizontalAlignment = null)
+        public virtual DotHtmlBuilder AppendText(string text, DotHorizontalAlignment? lineAlignment = null)
         {
-            return Append(DotHtmlText.FromMultilineText(text, horizontalAlignment));
+            return Append(DotHtmlText.FromMultilineText(text, lineAlignment));
         }
 
         /// <summary>
@@ -29,24 +29,24 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <param name="text">
         ///     The text to append.
         /// </param>
-        /// <param name="horizontalAlignment">
+        /// <param name="lineAlignment">
         ///     Specifies horizontal placement of the line.
         /// </param>
-        public virtual DotHtmlBuilder AppendLine(string text, DotHorizontalAlignment? horizontalAlignment = null)
+        public virtual DotHtmlBuilder AppendLine(string text, DotHorizontalAlignment? lineAlignment = null)
         {
-            AppendText(text, horizontalAlignment);
-            return AppendLine(horizontalAlignment);
+            AppendText(text, lineAlignment);
+            return AppendLine(lineAlignment);
         }
 
         /// <summary>
         ///     Initializes and appends a font element.
         /// </summary>
-        /// <param name="horizontalAlignment">
+        /// <param name="lineAlignment">
         ///     Specifies horizontal placement of the last line of text.
         /// </param>
-        public virtual DotHtmlBuilder AppendLine(DotHorizontalAlignment? horizontalAlignment = null)
+        public virtual DotHtmlBuilder AppendLine(DotHorizontalAlignment? lineAlignment = null)
         {
-            return Append(new DotHtmlLineBreak(horizontalAlignment));
+            return Append(new DotHtmlLineBreak(lineAlignment));
         }
 
         /// <summary>
@@ -58,12 +58,12 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <param name="fontStyle">
         ///     The font style to use.
         /// </param>
-        /// <param name="horizontalAlignment">
+        /// <param name="lineAlignment">
         ///     Specifies horizontal placement of lines if multiline text is specified.
         /// </param>
-        public virtual DotHtmlBuilder AppendStyledText(string text, DotFontStyles fontStyle, DotHorizontalAlignment? horizontalAlignment = null)
+        public virtual DotHtmlBuilder AppendStyledText(string text, DotFontStyles fontStyle, DotHorizontalAlignment? lineAlignment = null)
         {
-            return AppendStyled(fontStyle, s => s.SetContent(text, horizontalAlignment));
+            return AppendStyled(fontStyle, s => s.SetContent(text, lineAlignment));
         }
 
         /// <summary>
@@ -75,12 +75,12 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <param name="font">
         ///     The font to use.
         /// </param>
-        /// <param name="horizontalAlignment">
+        /// <param name="lineAlignment">
         ///     Specifies horizontal placement of lines if multiline text is specified.
         /// </param>
-        public virtual DotHtmlBuilder AppendStyledText(string text, DotFont font, DotHorizontalAlignment? horizontalAlignment = null)
+        public virtual DotHtmlBuilder AppendStyledText(string text, DotFont font, DotHorizontalAlignment? lineAlignment = null)
         {
-            return AppendFont(font, e => e.SetContent(text, horizontalAlignment));
+            return AppendFont(font, e => e.SetContent(text, lineAlignment));
         }
 
         /// <summary>
@@ -92,12 +92,12 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <param name="font">
         ///     The font to use.
         /// </param>
-        /// <param name="horizontalAlignment">
+        /// <param name="lineAlignment">
         ///     Specifies horizontal placement of lines if multiline text is specified.
         /// </param>
-        public virtual DotHtmlBuilder AppendStyledText(string text, DotStyledFont font, DotHorizontalAlignment? horizontalAlignment = null)
+        public virtual DotHtmlBuilder AppendStyledText(string text, DotStyledFont font, DotHorizontalAlignment? lineAlignment = null)
         {
-            return AppendStyledFont(font, e => e.SetContent(text, horizontalAlignment));
+            return AppendStyledFont(font, e => e.SetContent(text, lineAlignment));
         }
 
         /// <summary>
@@ -118,12 +118,12 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <param name="style">
         ///     Font style.
         /// </param>
-        /// <param name="horizontalAlignment">
+        /// <param name="lineAlignment">
         ///     Specifies horizontal placement of lines if multiline text is specified.
         /// </param>
-        public virtual DotHtmlBuilder AppendStyledText(string text, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null, DotHorizontalAlignment? horizontalAlignment = null)
+        public virtual DotHtmlBuilder AppendStyledText(string text, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null, DotHorizontalAlignment? lineAlignment = null)
         {
-            return AppendStyledText(text, new DotStyledFont(name, size, color, style), horizontalAlignment);
+            return AppendStyledText(text, new DotStyledFont(name, size, color, style), lineAlignment);
         }
     }
 }

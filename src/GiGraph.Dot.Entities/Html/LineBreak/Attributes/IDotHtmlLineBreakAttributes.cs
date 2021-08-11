@@ -10,6 +10,6 @@ namespace GiGraph.Dot.Entities.Html.LineBreak.Attributes
         /// <summary>
         ///     Specifies horizontal placement of the line.
         /// </summary>
-        DotHorizontalAlignment? HorizontalAlignment { get; set; }
+        DotHorizontalAlignment? LineAlignment { get; set; }
     }
 }

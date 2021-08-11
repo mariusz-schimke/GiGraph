@@ -24,11 +24,11 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="text">
         ///     The text to set as the content.
         /// </param>
-        /// <param name="horizontalAlignment">
+        /// <param name="lineAlignment">
         ///     Specifies horizontal placement of lines if multiline text is specified.
         /// </param>
-        public DotHtmlBold(string text, DotHorizontalAlignment? horizontalAlignment = null)
-            : base(TagName, text, horizontalAlignment)
+        public DotHtmlBold(string text, DotHorizontalAlignment? lineAlignment = null)
+            : base(TagName, text, lineAlignment)
         {
         }
 

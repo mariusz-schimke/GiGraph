@@ -25,10 +25,10 @@ namespace GiGraph.Dot.Entities.Html
         /// <param name="text">
         ///     The text to set as the content.
         /// </param>
-        /// <param name="horizontalAlignment">
+        /// <param name="lineAlignment">
         ///     Specifies horizontal placement of lines if multiline text is specified.
         /// </param>
-        void SetContent(string text, DotHorizontalAlignment? horizontalAlignment = null);
+        void SetContent(string text, DotHorizontalAlignment? lineAlignment = null);
 
         /// <summary>
         ///     Uses the builder to build a HTML entity to use as the content of the current element.

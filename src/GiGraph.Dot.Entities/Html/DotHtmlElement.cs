@@ -48,9 +48,9 @@ namespace GiGraph.Dot.Entities.Html
         }
 
         /// <inheritdoc cref="IDotHtmlContentEntity.SetContent(string,System.Nullable{GiGraph.Dot.Types.Alignment.DotHorizontalAlignment})" />
-        public virtual void SetContent(string text, DotHorizontalAlignment? horizontalAlignment = null)
+        public virtual void SetContent(string text, DotHorizontalAlignment? lineAlignment = null)
         {
-            ((IDotHtmlContentEntity) Content).SetContent(text, horizontalAlignment);
+            ((IDotHtmlContentEntity) Content).SetContent(text, lineAlignment);
         }
 
         /// <inheritdoc cref="IDotHtmlContentEntity.SetContent(System.Action{GiGraph.Dot.Entities.Html.Builder.DotHtmlBuilder})" />

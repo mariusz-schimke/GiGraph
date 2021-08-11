@@ -62,9 +62,9 @@ namespace GiGraph.Dot.Entities.Html
             Add(entity);
         }
 
-        void IDotHtmlContentEntity.SetContent(string text, DotHorizontalAlignment? horizontalAlignment = null)
+        void IDotHtmlContentEntity.SetContent(string text, DotHorizontalAlignment? lineAlignment)
         {
-            ((IDotHtmlContentEntity) this).SetContent(new DotHtmlText(text, horizontalAlignment));
+            ((IDotHtmlContentEntity) this).SetContent(new DotHtmlText(text, lineAlignment));
         }
 
         void IDotHtmlContentEntity.SetContent(Action<DotHtmlBuilder> build)

@@ -30,15 +30,15 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
         /// <summary>
         ///     Initializes a new line break instance.
         /// </summary>
-        /// <param name="horizontalAlignment">
+        /// <param name="lineAlignment">
         ///     Specifies horizontal placement of the line.
         /// </param>
-        public DotHtmlLineBreak(DotHorizontalAlignment? horizontalAlignment = null)
+        public DotHtmlLineBreak(DotHorizontalAlignment? lineAlignment = null)
             : this(new DotHtmlLineBreakAttributes())
         {
-            if (horizontalAlignment.HasValue)
+            if (lineAlignment.HasValue)
             {
-                HorizontalAlignment = horizontalAlignment;
+                LineAlignment = lineAlignment;
             }
         }
 
@@ -53,28 +53,28 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
         /// </summary>
         public new virtual DotHtmlLineBreakAttributes Attributes { get; }
 
-        /// <inheritdoc cref="IDotHtmlLineBreakAttributes.HorizontalAlignment" />
+        /// <inheritdoc cref="IDotHtmlLineBreakAttributes.LineAlignment" />
         [DotHtmlAttributeKey("align")]
-        public virtual DotHorizontalAlignment? HorizontalAlignment
+        public virtual DotHorizontalAlignment? LineAlignment
         {
-            get => ((IDotHtmlLineBreakAttributes) Attributes).HorizontalAlignment;
-            set => ((IDotHtmlLineBreakAttributes) Attributes).HorizontalAlignment = value;
+            get => ((IDotHtmlLineBreakAttributes) Attributes).LineAlignment;
+            set => ((IDotHtmlLineBreakAttributes) Attributes).LineAlignment = value;
         }
 
         /// <summary>
         ///     Returns a &lt;br/&gt; HTML tag string according to the default syntax options and rules.
         /// </summary>
-        /// <param name="horizontalAlignment">
+        /// <param name="lineAlignment">
         ///     Specifies horizontal placement of the line.
         /// </param>
-        public static DotHtmlString Html(DotHorizontalAlignment? horizontalAlignment = null)
+        public static DotHtmlString Html(DotHorizontalAlignment? lineAlignment = null)
         {
-            return Html(horizontalAlignment, DotSyntaxOptions.Default, DotSyntaxRules.Default);
+            return Html(lineAlignment, DotSyntaxOptions.Default, DotSyntaxRules.Default);
         }
 
-        internal static string Html(DotHorizontalAlignment? horizontalAlignment, DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        internal static string Html(DotHorizontalAlignment? lineAlignment, DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return (horizontalAlignment.HasValue ? AlignedLineBreaks[horizontalAlignment.Value] : Default)
+            return (lineAlignment.HasValue ? AlignedLineBreaks[lineAlignment.Value] : Default)
                .ToHtml(options, syntaxRules);
         }
     }

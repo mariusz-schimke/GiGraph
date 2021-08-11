@@ -14,10 +14,10 @@ namespace GiGraph.Dot.Entities.Html.Font
         {
         }
 
-        protected DotHtmlFontStyle(string tagName, string text, DotHorizontalAlignment? horizontalAlignment)
+        protected DotHtmlFontStyle(string tagName, string text, DotHorizontalAlignment? lineAlignment)
             : base(tagName, new DotAttributeCollection(DotHtmlAttributeFactory.Instance))
         {
-            SetContent(text, horizontalAlignment);
+            SetContent(text, lineAlignment);
         }
 
         protected DotHtmlFontStyle(string tagName, DotAttributeCollection attributes)

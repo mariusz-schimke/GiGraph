@@ -21,69 +21,48 @@ namespace GiGraph.Dot.Entities.Tests.Html.Builder
         {
             var builder = new DotHtmlBuilder();
 
-            builder.Append(new DotHtmlFont());
-
-            builder.AppendBoldText("bold\n", DotHorizontalAlignment.Left);
-            builder.AppendBold(b => b.SetContent("bold"));
-
-            builder.AppendItalicText("italic\n", DotHorizontalAlignment.Center);
-            builder.AppendItalic(i => i.SetContent("italic"));
-
-            builder.AppendUnderlineText("underline\n", DotHorizontalAlignment.Right);
-            builder.AppendUnderline(u => u.SetContent("underline"));
-
-            builder.AppendOverlineText("overline\n", DotHorizontalAlignment.Left);
-            builder.AppendOverline(o => o.SetContent("overline"));
-
-            builder.AppendSubscriptText("subscript\n", DotHorizontalAlignment.Center);
-            builder.AppendSubscript(sb => sb.SetContent("subscript"));
-
-            builder.AppendSuperscriptText("superscript\n", DotHorizontalAlignment.Right);
-            builder.AppendSuperscript(sp => sp.SetContent("superscript"));
-
-            builder.AppendStrikethroughText("strikethrough\n", DotHorizontalAlignment.Left);
-            builder.AppendStrikethrough(st => st.SetContent("strikethrough"));
-
-            builder.AppendText("text");
-            builder.AppendText("text\n", DotHorizontalAlignment.Left);
-
-            builder.AppendLine();
-            builder.AppendLine(DotHorizontalAlignment.Center);
-
-            builder.AppendLine("line of text");
-            builder.AppendLine("right-justified line of text", DotHorizontalAlignment.Right);
-
-            builder.AppendFont(f => f.SetContent("font 1"));
-            builder.AppendFont(new DotFont("arial", 10, Color.Red), f => f.SetContent("font 2"));
-
-            builder.AppendStyledFont(new DotStyledFont(), f => f.SetContent("styled text 1"));
-            builder.AppendStyledFont(new DotStyledFont("arial", 10, Color.Red, DotFontStyles.Bold), f => f.SetContent("styled text 2"));
-
-            builder.AppendStyled(DotFontStyles.Bold, f => f.SetContent("bold text"));
-            builder.AppendStyled(DotFontStyles.Normal, f => f.SetContent("normal text"));
-
-            builder.AppendStyledText("styled text 1\n", "arial", 10, Color.Red, DotFontStyles.Bold, DotHorizontalAlignment.Center);
-            builder.AppendStyledText("styled text 2\n", new DotStyledFont("arial", 10, Color.Red, DotFontStyles.Bold), DotHorizontalAlignment.Left);
-
-            builder.AppendStyledText("font\n", new DotFont("arial", 10, Color.Red), DotHorizontalAlignment.Left);
-            builder.AppendStyledText("bold text 1\n", DotFontStyles.Bold, DotHorizontalAlignment.Right);
-
-            builder.AppendImage("image.png", DotImageScaling.None);
-            builder.AppendImage("image.png", init: e => e.Scaling = DotImageScaling.Uniform);
-            builder.AppendTable(t => t.AddRow(r => r.AddCell("cell")));
-
-            builder.AppendHorizontalRule();
-            builder.AppendHorizontalRule(e => e.Attributes.Set("attr", 5));
-
-            builder.AppendVerticalRule();
-            builder.AppendVerticalRule(e => e.Attributes.Set("attr", 5));
-
-            builder.AppendHtml("<custom-html></custom-html>");
-
-            builder.AppendElement("custom-element", e => e.SetContent("content"));
-            builder.AppendVoidElement("custom-void-element", e => e.Attributes.Set("attr", 5));
-
-            builder.AppendComment("comment");
+            builder.Append(new DotHtmlFont())
+               .AppendBoldText("bold\n", DotHorizontalAlignment.Left)
+               .AppendBold(b => b.SetContent("bold"))
+               .AppendItalicText("italic\n", DotHorizontalAlignment.Center)
+               .AppendItalic(i => i.SetContent("italic"))
+               .AppendUnderlineText("underline\n", DotHorizontalAlignment.Right)
+               .AppendUnderline(u => u.SetContent("underline"))
+               .AppendOverlineText("overline\n", DotHorizontalAlignment.Left)
+               .AppendOverline(o => o.SetContent("overline"))
+               .AppendSubscriptText("subscript\n", DotHorizontalAlignment.Center)
+               .AppendSubscript(sb => sb.SetContent("subscript"))
+               .AppendSuperscriptText("superscript\n", DotHorizontalAlignment.Right)
+               .AppendSuperscript(sp => sp.SetContent("superscript"))
+               .AppendStrikethroughText("strikethrough\n", DotHorizontalAlignment.Left)
+               .AppendStrikethrough(st => st.SetContent("strikethrough"))
+               .AppendText("text")
+               .AppendText("text\n", DotHorizontalAlignment.Left)
+               .AppendLine()
+               .AppendLine(DotHorizontalAlignment.Center)
+               .AppendLine("line of text")
+               .AppendLine("right-justified line of text", DotHorizontalAlignment.Right)
+               .AppendFont(f => f.SetContent("font 1"))
+               .AppendFont(new DotFont("arial", 10, Color.Red), f => f.SetContent("font 2"))
+               .AppendStyledFont(new DotStyledFont(), f => f.SetContent("styled text 1"))
+               .AppendStyledFont(new DotStyledFont("arial", 10, Color.Red, DotFontStyles.Bold), f => f.SetContent("styled text 2"))
+               .AppendStyled(DotFontStyles.Bold, f => f.SetContent("bold text"))
+               .AppendStyled(DotFontStyles.Normal, f => f.SetContent("normal text"))
+               .AppendStyledText("styled text 1\n", "arial", 10, Color.Red, DotFontStyles.Bold, DotHorizontalAlignment.Center)
+               .AppendStyledText("styled text 2\n", new DotStyledFont("arial", 10, Color.Red, DotFontStyles.Bold), DotHorizontalAlignment.Left)
+               .AppendStyledText("font\n", new DotFont("arial", 10, Color.Red), DotHorizontalAlignment.Left)
+               .AppendStyledText("bold text 1\n", DotFontStyles.Bold, DotHorizontalAlignment.Right)
+               .AppendImage("image.png", DotImageScaling.None)
+               .AppendImage("image.png", init: e => e.Scaling = DotImageScaling.Uniform)
+               .AppendTable(t => t.AddRow(r => r.AddCell("cell")))
+               .AppendHorizontalRule()
+               .AppendHorizontalRule(e => e.Attributes.Set("attr", 5))
+               .AppendVerticalRule()
+               .AppendVerticalRule(e => e.Attributes.Set("attr", 5))
+               .AppendHtml("<custom-html></custom-html>")
+               .AppendElement("custom-element", e => e.SetContent("content"))
+               .AppendVoidElement("custom-void-element", e => e.Attributes.Set("attr", 5))
+               .AppendComment("comment");
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) builder.Build()).ToHtml(_syntaxOptions, _syntaxRules),
