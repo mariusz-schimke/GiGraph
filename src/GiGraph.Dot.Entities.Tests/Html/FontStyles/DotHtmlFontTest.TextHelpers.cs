@@ -34,7 +34,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         [Fact]
         public void text_is_embedded_in_font_tag_only_with_all_set_attributes_and_style()
         {
-            var font = new DotStyledFont("Arial", 20, Color.Blue, DotFontStyles.Overline | DotFontStyles.Subscript);
+            var font = new DotStyledFont(DotFontStyles.Overline | DotFontStyles.Subscript, "Arial", 20, Color.Blue);
 
             var entity1 = DotHtmlFont.WithText("text", font);
             var entity2 = DotHtmlFont.WithText("text", font.Name, font.Size, font.Color, font.Style);

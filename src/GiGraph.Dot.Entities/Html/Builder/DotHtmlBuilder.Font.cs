@@ -4,6 +4,8 @@ using GiGraph.Dot.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Html.Builder
 {
+    // TODO: w metodach init przekazywać builder zamiast nowo dodanej encji?
+
     public partial class DotHtmlBuilder
     {
         /// <summary>

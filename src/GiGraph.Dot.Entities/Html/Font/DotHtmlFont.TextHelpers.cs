@@ -13,24 +13,24 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="text">
         ///     The text to embed in font and style elements.
         /// </param>
-        /// <param name="fontName">
+        /// <param name="font">
         ///     The name of the font to use.
         /// </param>
-        /// <param name="fontSize">
+        /// <param name="size">
         ///     The size to apply to the font.
         /// </param>
-        /// <param name="fontColor">
+        /// <param name="color">
         ///     The color to apply to the text.
         /// </param>
-        /// <param name="fontStyle">
+        /// <param name="style">
         ///     The style to apply to the text.
         /// </param>
         /// <param name="lineAlignment">
         ///     Specifies horizontal placement of lines if multiline text is specified.
         /// </param>
-        public static DotHtmlEntity WithText(string text, string fontName = null, double? fontSize = null, DotColor fontColor = null, DotFontStyles? fontStyle = null, DotHorizontalAlignment? lineAlignment = null)
+        public static DotHtmlEntity WithText(string text, string font = null, double? size = null, DotColor color = null, DotFontStyles? style = null, DotHorizontalAlignment? lineAlignment = null)
         {
-            return WithEntity(new DotHtmlText(text, lineAlignment), fontName, fontSize, fontColor, fontStyle);
+            return WithEntity(new DotHtmlText(text, lineAlignment), font, size, color, style);
         }
 
         /// <summary>

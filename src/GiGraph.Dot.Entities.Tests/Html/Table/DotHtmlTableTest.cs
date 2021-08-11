@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.Table
         [Fact]
         public void encoded_html_table_with_rows_and_cells_is_valid_html()
         {
-            var font = new DotStyledFont("Arial", 10, Color.Red, DotFontStyles.Bold);
+            var font = new DotStyledFont(DotFontStyles.Bold, "Arial", 10, Color.Red);
 
             var table = new DotHtmlTable
             {
