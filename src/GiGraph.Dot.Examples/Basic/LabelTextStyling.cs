@@ -28,14 +28,12 @@ namespace GiGraph.Dot.Examples.Basic
                 attrs.Label = new DotHtmlBuilder()
                    .AppendFont(
                         new DotFont("Arial", 12, Color.Blue),
-                        f => f.SetContent(c =>
-                        {
-                            c.AppendStyledText("Incididunt ut labore\n", style: DotFontStyles.Bold, color: Color.Blue)
-                               .AppendStyledText("et dolore ", color: Color.Black, style: DotFontStyles.Normal)
-                               .AppendStyledText("magna", color: Color.Red, style: DotFontStyles.Bold)
-                               .AppendStyledText(" ", DotFontStyles.Normal)
-                               .AppendStyledText("aliqua", style: DotFontStyles.Normal, color: Color.Black);
-                        })
+                        f => f
+                           .AppendStyledText("Incididunt ut labore\n", new DotStyledFont(DotFontStyles.Bold, Color.Blue))
+                           .AppendStyledText("et dolore ", new DotStyledFont(DotFontStyles.Normal, Color.Black))
+                           .AppendStyledText("magna", new DotStyledFont(style: DotFontStyles.Bold, Color.Red))
+                           .AppendStyledText(" ", DotFontStyles.Normal)
+                           .AppendStyledText("aliqua", new DotStyledFont(DotFontStyles.Normal, Color.Black))
                     )
                    .Build();
             });
@@ -46,12 +44,10 @@ namespace GiGraph.Dot.Examples.Basic
                 edge.Attributes.Label = new DotHtmlBuilder()
                    .AppendFont(
                         new DotFont("Arial", 8, Color.Gray),
-                        f => f.SetContent(c =>
-                            {
-                                c.AppendStyledText("Consectetur adipiscing elit,\n", DotFontStyles.Normal)
-                                   .AppendStyledText("sed do eiusmod tempor", DotFontStyles.Italic | DotFontStyles.Underline);
-                            }
-                        ))
+                        f => f
+                           .AppendStyledText("Consectetur adipiscing elit,\n", DotFontStyles.Normal)
+                           .AppendStyledText("sed do eiusmod tempor", DotFontStyles.Italic | DotFontStyles.Underline)
+                    )
                    .Build();
             });
 

@@ -12,9 +12,9 @@ namespace GiGraph.Dot.Entities.Html.Builder
         ///     Initializes and appends a font element.
         /// </summary>
         /// <param name="init">
-        ///     An element initialization delegate.
+        ///     A content initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder AppendFont(Action<DotHtmlFont> init)
+        public virtual DotHtmlBuilder AppendFont(Action<DotHtmlBuilder> init)
         {
             return Append(new DotHtmlFont(), init);
         }
@@ -26,9 +26,9 @@ namespace GiGraph.Dot.Entities.Html.Builder
         ///     The font to use.
         /// </param>
         /// <param name="init">
-        ///     An element initialization delegate.
+        ///     A content initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder AppendFont(DotFont font, Action<DotHtmlFont> init)
+        public virtual DotHtmlBuilder AppendFont(DotFont font, Action<DotHtmlBuilder> init)
         {
             return Append(new DotHtmlFont(font), init);
         }
@@ -40,9 +40,9 @@ namespace GiGraph.Dot.Entities.Html.Builder
         ///     The font to use.
         /// </param>
         /// <param name="init">
-        ///     An element initialization delegate.
+        ///     A content initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder AppendStyledFont(DotStyledFont font, Action<DotHtmlElement> init)
+        public virtual DotHtmlBuilder AppendStyledFont(DotStyledFont font, Action<DotHtmlBuilder> init)
         {
             var fontElement = new DotHtmlFont(font);
             DotHtmlElement initElement = fontElement;
@@ -57,8 +57,8 @@ namespace GiGraph.Dot.Entities.Html.Builder
                 }
             }
 
-            init?.Invoke(initElement);
-            return Append(fontElement);
+            initElement.SetContent(init);
+            return AppendEntity(fontElement);
         }
     }
 }

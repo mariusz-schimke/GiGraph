@@ -1,7 +1,6 @@
 using GiGraph.Dot.Entities.Html.LineBreak;
 using GiGraph.Dot.Entities.Html.Text;
 using GiGraph.Dot.Types.Alignment;
-using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Html.Builder
@@ -20,7 +19,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendText(string text, DotHorizontalAlignment? lineAlignment = null)
         {
-            return Append(DotHtmlText.FromMultilineText(text, lineAlignment));
+            return AppendEntity(DotHtmlText.FromMultilineText(text, lineAlignment));
         }
 
         /// <summary>
@@ -46,7 +45,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendLine(DotHorizontalAlignment? lineAlignment = null)
         {
-            return Append(new DotHtmlLineBreak(lineAlignment));
+            return AppendEntity(DotHtmlLineBreak.Instance(lineAlignment));
         }
 
         /// <summary>
@@ -63,7 +62,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendStyledText(string text, DotFontStyles fontStyle, DotHorizontalAlignment? lineAlignment = null)
         {
-            return AppendStyled(fontStyle, s => s.SetContent(text, lineAlignment));
+            return AppendStyled(fontStyle, s => s.AppendText(text, lineAlignment));
         }
 
         /// <summary>
@@ -80,7 +79,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendStyledText(string text, DotFont font, DotHorizontalAlignment? lineAlignment = null)
         {
-            return AppendFont(font, e => e.SetContent(text, lineAlignment));
+            return AppendFont(font, e => e.AppendText(text, lineAlignment));
         }
 
         /// <summary>
@@ -97,33 +96,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendStyledText(string text, DotStyledFont font, DotHorizontalAlignment? lineAlignment = null)
         {
-            return AppendStyledFont(font, e => e.SetContent(text, lineAlignment));
-        }
-
-        /// <summary>
-        ///     Initializes and appends a font element with nested font style elements.
-        /// </summary>
-        /// <param name="text">
-        ///     The text to append.
-        /// </param>
-        /// <param name="font">
-        ///     Font name.
-        /// </param>
-        /// <param name="size">
-        ///     Font size.
-        /// </param>
-        /// <param name="color">
-        ///     Font color.
-        /// </param>
-        /// <param name="style">
-        ///     Font style.
-        /// </param>
-        /// <param name="lineAlignment">
-        ///     Specifies horizontal placement of lines if multiline text is specified.
-        /// </param>
-        public virtual DotHtmlBuilder AppendStyledText(string text, string font = null, double? size = null, DotColor color = null, DotFontStyles? style = null, DotHorizontalAlignment? lineAlignment = null)
-        {
-            return AppendStyledText(text, new DotStyledFont(style, font, size, color), lineAlignment);
+            return AppendStyledFont(font, e => e.AppendText(text, lineAlignment));
         }
     }
 }

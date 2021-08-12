@@ -70,7 +70,9 @@ namespace GiGraph.Dot.Entities.Html
         void IDotHtmlContentEntity.SetContent(Action<DotHtmlBuilder> build)
         {
             var builder = new DotHtmlBuilder();
-            build(builder);
+
+            // checked for null because this method is used from HTML builder where initialization is optional
+            build?.Invoke(builder);
 
             Clear();
 

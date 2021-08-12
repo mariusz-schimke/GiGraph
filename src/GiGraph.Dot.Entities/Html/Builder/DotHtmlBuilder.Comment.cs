@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendComment(string text)
         {
-            return Append(new DotHtmlComment(text));
+            return AppendEntity(new DotHtmlComment(text));
         }
     }
 }

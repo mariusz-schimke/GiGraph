@@ -18,9 +18,9 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <param name="init">
         ///     An optional image initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder AppendImage(string source, DotImageScaling? scaling = null, Action<DotHtmlImage> init = null)
+        public virtual DotHtmlBuilder AppendImage(string source, DotImageScaling? scaling = null)
         {
-            return Append(new DotHtmlImage(source, scaling), init);
+            return AppendEntity(new DotHtmlImage(source, scaling));
         }
     }
 }

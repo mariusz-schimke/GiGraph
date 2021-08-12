@@ -29,13 +29,34 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <param name="entity">
         ///     The entity to append.
         /// </param>
-        /// <param name="init">
-        ///     An optional entity initialization delegate.
-        /// </param>
-        public virtual DotHtmlBuilder Append<TEntity>(TEntity entity, Action<TEntity> init = null)
+        public virtual DotHtmlBuilder Append<TEntity>(TEntity entity)
+            where TEntity : IDotHtmlEntity
+        {
+            _entities.Add(entity);
+            return this;
+        }
+
+        protected virtual DotHtmlBuilder AppendEntity<TEntity>(TEntity entity, Action<TEntity> init = null)
             where TEntity : IDotHtmlEntity
         {
             init?.Invoke(entity);
+            _entities.Add(entity);
+            return this;
+        }
+
+        /// <summary>
+        ///     Appends an entity to the builder.
+        /// </summary>
+        /// <param name="entity">
+        ///     The entity to append.
+        /// </param>
+        /// <param name="init">
+        ///     A content initialization delegate.
+        /// </param>
+        public virtual DotHtmlBuilder Append<TContentEntity>(TContentEntity entity, Action<DotHtmlBuilder> init)
+            where TContentEntity : IDotHtmlContentEntity
+        {
+            entity.SetContent(init);
             _entities.Add(entity);
             return this;
         }

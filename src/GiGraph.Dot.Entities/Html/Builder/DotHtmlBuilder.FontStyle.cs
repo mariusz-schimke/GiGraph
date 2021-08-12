@@ -11,15 +11,15 @@ namespace GiGraph.Dot.Entities.Html.Builder
         ///     Initializes and appends a bold element.
         /// </summary>
         /// <param name="init">
-        ///     An element initialization delegate.
+        ///     A content initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder AppendBold(Action<DotHtmlBold> init)
+        public virtual DotHtmlBuilder AppendBold(Action<DotHtmlBuilder> init)
         {
             return Append(new DotHtmlBold(), init);
         }
 
         /// <summary>
-        ///     Initializes and appends a bold element.
+        ///     Initializes and appends bold text.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -29,22 +29,22 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendBoldText(string text, DotHorizontalAlignment? lineAlignment = null)
         {
-            return Append(new DotHtmlBold(text, lineAlignment));
+            return AppendEntity(new DotHtmlBold(text, lineAlignment));
         }
 
         /// <summary>
         ///     Initializes and appends an italic element.
         /// </summary>
         /// <param name="init">
-        ///     An element initialization delegate.
+        ///     A content initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder AppendItalic(Action<DotHtmlItalic> init)
+        public virtual DotHtmlBuilder AppendItalic(Action<DotHtmlBuilder> init)
         {
             return Append(new DotHtmlItalic(), init);
         }
 
         /// <summary>
-        ///     Initializes and appends an italic element.
+        ///     Initializes and appends italic text.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -54,22 +54,22 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendItalicText(string text, DotHorizontalAlignment? lineAlignment = null)
         {
-            return Append(new DotHtmlItalic(text, lineAlignment));
+            return AppendEntity(new DotHtmlItalic(text, lineAlignment));
         }
 
         /// <summary>
         ///     Initializes and appends an underline element.
         /// </summary>
         /// <param name="init">
-        ///     An element initialization delegate.
+        ///     A content initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder AppendUnderline(Action<DotHtmlUnderline> init)
+        public virtual DotHtmlBuilder AppendUnderline(Action<DotHtmlBuilder> init)
         {
             return Append(new DotHtmlUnderline(), init);
         }
 
         /// <summary>
-        ///     Initializes and appends an underline element.
+        ///     Initializes and appends underline text.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -79,22 +79,22 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendUnderlineText(string text, DotHorizontalAlignment? lineAlignment = null)
         {
-            return Append(new DotHtmlUnderline(text, lineAlignment));
+            return AppendEntity(new DotHtmlUnderline(text, lineAlignment));
         }
 
         /// <summary>
         ///     Initializes and appends an overline element.
         /// </summary>
         /// <param name="init">
-        ///     An element initialization delegate.
+        ///     A content initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder AppendOverline(Action<DotHtmlOverline> init)
+        public virtual DotHtmlBuilder AppendOverline(Action<DotHtmlBuilder> init)
         {
             return Append(new DotHtmlOverline(), init);
         }
 
         /// <summary>
-        ///     Initializes and appends an overline element.
+        ///     Initializes and appends overline text.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -104,22 +104,22 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendOverlineText(string text, DotHorizontalAlignment? lineAlignment = null)
         {
-            return Append(new DotHtmlOverline(text, lineAlignment));
+            return AppendEntity(new DotHtmlOverline(text, lineAlignment));
         }
 
         /// <summary>
-        ///     Initializes and appends an subscript element.
+        ///     Initializes and appends a subscript element.
         /// </summary>
         /// <param name="init">
-        ///     An element initialization delegate.
+        ///     A content initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder AppendSubscript(Action<DotHtmlSubscript> init)
+        public virtual DotHtmlBuilder AppendSubscript(Action<DotHtmlBuilder> init)
         {
             return Append(new DotHtmlSubscript(), init);
         }
 
         /// <summary>
-        ///     Initializes and appends an subscript element.
+        ///     Initializes and appends subscript text.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -129,22 +129,22 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendSubscriptText(string text, DotHorizontalAlignment? lineAlignment = null)
         {
-            return Append(new DotHtmlSubscript(text, lineAlignment));
+            return AppendEntity(new DotHtmlSubscript(text, lineAlignment));
         }
 
         /// <summary>
-        ///     Initializes and appends an superscript element.
+        ///     Initializes and appends a superscript element.
         /// </summary>
         /// <param name="init">
-        ///     An element initialization delegate.
+        ///     A content initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder AppendSuperscript(Action<DotHtmlSuperscript> init)
+        public virtual DotHtmlBuilder AppendSuperscript(Action<DotHtmlBuilder> init)
         {
             return Append(new DotHtmlSuperscript(), init);
         }
 
         /// <summary>
-        ///     Initializes and appends an superscript element.
+        ///     Initializes and appends superscript text.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -154,22 +154,22 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendSuperscriptText(string text, DotHorizontalAlignment? lineAlignment = null)
         {
-            return Append(new DotHtmlSuperscript(text, lineAlignment));
+            return AppendEntity(new DotHtmlSuperscript(text, lineAlignment));
         }
 
         /// <summary>
-        ///     Initializes and appends an strikethrough element.
+        ///     Initializes and appends a strikethrough element.
         /// </summary>
         /// <param name="init">
-        ///     An element initialization delegate.
+        ///     A content initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder AppendStrikethrough(Action<DotHtmlStrikethrough> init)
+        public virtual DotHtmlBuilder AppendStrikethrough(Action<DotHtmlBuilder> init)
         {
             return Append(new DotHtmlStrikethrough(), init);
         }
 
         /// <summary>
-        ///     Initializes and appends an strikethrough element.
+        ///     Initializes and appends strikethrough text.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -179,7 +179,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendStrikethroughText(string text, DotHorizontalAlignment? lineAlignment = null)
         {
-            return Append(new DotHtmlStrikethrough(text, lineAlignment));
+            return AppendEntity(new DotHtmlStrikethrough(text, lineAlignment));
         }
 
         /// <summary>
@@ -189,15 +189,15 @@ namespace GiGraph.Dot.Entities.Html.Builder
         ///     The font style to use.
         /// </param>
         /// <param name="init">
-        ///     An element initialization delegate.
+        ///     A content initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder AppendStyled(DotFontStyles fontStyle, Action<IDotHtmlContentEntity> init)
+        public virtual DotHtmlBuilder AppendStyled(DotFontStyles fontStyle, Action<DotHtmlBuilder> init)
         {
             var rootElement = (IDotHtmlContentEntity) DotHtmlFontStyle.FromStyle(fontStyle, out var contentElement)
              ?? new DotHtmlEntityCollection();
 
-            init?.Invoke(contentElement ?? rootElement);
-            return Append(rootElement);
+            (contentElement ?? rootElement).SetContent(init);
+            return AppendEntity(rootElement);
         }
     }
 }

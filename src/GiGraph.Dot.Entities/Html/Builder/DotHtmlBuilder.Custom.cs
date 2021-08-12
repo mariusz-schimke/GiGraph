@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendElement(string elementName, Action<DotHtmlElement> init = null)
         {
-            return Append(new DotHtmlElement(elementName), init);
+            return AppendEntity(new DotHtmlElement(elementName), init);
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendVoidElement(string elementName, Action<DotHtmlVoidElement> init = null)
         {
-            return Append(new DotHtmlVoidElement(elementName), init);
+            return AppendEntity(new DotHtmlVoidElement(elementName), init);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendTable(Action<DotHtmlTable> init)
         {
-            return Append(new DotHtmlTable(), init);
+            return AppendEntity(new DotHtmlTable(), init);
         }
     }
 }

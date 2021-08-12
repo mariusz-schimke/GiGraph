@@ -23,42 +23,38 @@ namespace GiGraph.Dot.Entities.Tests.Html.Builder
 
             builder.Append(new DotHtmlFont())
                .AppendBoldText("bold\n", DotHorizontalAlignment.Left)
-               .AppendBold(b => b.SetContent("bold"))
+               .AppendBold(b => b.AppendText("bold"))
                .AppendItalicText("italic\n", DotHorizontalAlignment.Center)
-               .AppendItalic(i => i.SetContent("italic"))
+               .AppendItalic(i => i.AppendText("italic"))
                .AppendUnderlineText("underline\n", DotHorizontalAlignment.Right)
-               .AppendUnderline(u => u.SetContent("underline"))
+               .AppendUnderline(u => u.AppendText("underline"))
                .AppendOverlineText("overline\n", DotHorizontalAlignment.Left)
-               .AppendOverline(o => o.SetContent("overline"))
+               .AppendOverline(o => o.AppendText("overline"))
                .AppendSubscriptText("subscript\n", DotHorizontalAlignment.Center)
-               .AppendSubscript(sb => sb.SetContent("subscript"))
+               .AppendSubscript(sb => sb.AppendText("subscript"))
                .AppendSuperscriptText("superscript\n", DotHorizontalAlignment.Right)
-               .AppendSuperscript(sp => sp.SetContent("superscript"))
+               .AppendSuperscript(sp => sp.AppendText("superscript"))
                .AppendStrikethroughText("strikethrough\n", DotHorizontalAlignment.Left)
-               .AppendStrikethrough(st => st.SetContent("strikethrough"))
+               .AppendStrikethrough(st => st.AppendText("strikethrough"))
                .AppendText("text")
                .AppendText("text\n", DotHorizontalAlignment.Left)
                .AppendLine()
                .AppendLine(DotHorizontalAlignment.Center)
                .AppendLine("line of text")
                .AppendLine("right-justified line of text", DotHorizontalAlignment.Right)
-               .AppendFont(f => f.SetContent("font 1"))
-               .AppendFont(new DotFont("arial", 10, Color.Red), f => f.SetContent("font 2"))
-               .AppendStyledFont(new DotStyledFont(), f => f.SetContent("styled text 1"))
-               .AppendStyledFont(new DotStyledFont(DotFontStyles.Bold, "arial", 10, Color.Red), f => f.SetContent("styled text 2"))
-               .AppendStyled(DotFontStyles.Bold, f => f.SetContent("bold text"))
-               .AppendStyled(DotFontStyles.Normal, f => f.SetContent("normal text"))
-               .AppendStyledText("styled text 1\n", "arial", 10, Color.Red, DotFontStyles.Bold, DotHorizontalAlignment.Center)
-               .AppendStyledText("styled text 2\n", new DotStyledFont(DotFontStyles.Bold, "arial", 10, Color.Red), DotHorizontalAlignment.Left)
+               .AppendFont(f => f.AppendText("font"))
+               .AppendFont(new DotFont("arial", 10, Color.Red), f => f.AppendText("font"))
+               .AppendStyledFont(new DotStyledFont(), f => f.AppendText("styled text"))
+               .AppendStyledFont(new DotStyledFont(DotFontStyles.Bold, "arial", 10, Color.Red), f => f.AppendText("styled text"))
+               .AppendStyled(DotFontStyles.Bold, f => f.AppendText("bold text"))
+               .AppendStyled(DotFontStyles.Normal, f => f.AppendText("normal text"))
+               .AppendStyledText("styled text\n", new DotStyledFont(DotFontStyles.Bold, "arial", 10, Color.Red), DotHorizontalAlignment.Left)
                .AppendStyledText("font\n", new DotFont("arial", 10, Color.Red), DotHorizontalAlignment.Left)
                .AppendStyledText("bold text 1\n", DotFontStyles.Bold, DotHorizontalAlignment.Right)
                .AppendImage("image.png", DotImageScaling.None)
-               .AppendImage("image.png", init: e => e.Scaling = DotImageScaling.Uniform)
                .AppendTable(t => t.AddRow(r => r.AddCell("cell")))
                .AppendHorizontalRule()
-               .AppendHorizontalRule(e => e.Attributes.Set("attr", 5))
                .AppendVerticalRule()
-               .AppendVerticalRule(e => e.Attributes.Set("attr", 5))
                .AppendHtml("<custom-html></custom-html>")
                .AppendElement("custom-element", e => e.SetContent("content"))
                .AppendVoidElement("custom-void-element", e => e.Attributes.Set("attr", 5))
@@ -75,10 +71,11 @@ namespace GiGraph.Dot.Entities.Tests.Html.Builder
         {
             var builder = new DotHtmlBuilder();
 
-            builder.AppendBold(b => b.SetContent(c =>
-            {
-                c.AppendItalic(i => i.SetContent("bold italic"));
-            }));
+            builder.AppendBold(b =>
+                b.AppendItalic(i =>
+                    i.AppendText("bold italic")
+                )
+            );
 
             Snapshot.Match(
                 ((IDotHtmlEncodable) builder.Build()).ToHtml(_syntaxOptions, _syntaxRules),
