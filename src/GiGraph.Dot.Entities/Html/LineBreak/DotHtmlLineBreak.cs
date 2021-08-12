@@ -14,8 +14,8 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
     /// </summary>
     public class DotHtmlLineBreak : DotHtmlVoidElement, IDotHtmlLineBreakAttributes
     {
-        protected static readonly DotHtmlLineBreak Default = new();
-        protected static readonly Dictionary<DotHorizontalAlignment, DotHtmlLineBreak> AlignedLineBreaks;
+        protected static readonly DotHtmlEntity Default = new DotHtmlReadOnlyEntity<DotHtmlLineBreak>(new DotHtmlLineBreak());
+        protected static readonly Dictionary<DotHorizontalAlignment, DotHtmlEntity> AlignedLineBreaks;
 
         static DotHtmlLineBreak()
         {
@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
                .Cast<DotHorizontalAlignment>()
                .ToDictionary(
                     key => key,
-                    value => new DotHtmlLineBreak(value)
+                    value => (DotHtmlEntity) new DotHtmlReadOnlyEntity<DotHtmlLineBreak>(new DotHtmlLineBreak(value))
                 );
         }
 
@@ -74,8 +74,25 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
 
         internal static string Html(DotHorizontalAlignment? lineAlignment, DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return (lineAlignment.HasValue ? AlignedLineBreaks[lineAlignment.Value] : Default)
-               .ToHtml(options, syntaxRules);
+            return Instance(lineAlignment).ToHtml(options, syntaxRules);
+        }
+
+        /// <summary>
+        ///     Gets a static instance of a line break with the specified alignment. Use for memory optimization.
+        /// </summary>
+        /// <param name="lineAlignment">
+        ///     Specifies horizontal placement of the line.
+        /// </param>
+        public static DotHtmlEntity Instance(DotHorizontalAlignment? lineAlignment = null)
+        {
+            if (lineAlignment.HasValue)
+            {
+                return AlignedLineBreaks.TryGetValue(lineAlignment.Value, out var result)
+                    ? result
+                    : throw new ArgumentException($"The specified HTML line break alignment '{lineAlignment}' is invalid.", nameof(lineAlignment));
+            }
+
+            return Default;
         }
     }
 }

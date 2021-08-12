@@ -76,7 +76,7 @@ namespace GiGraph.Dot.Entities.Html.Text
             {
                 if (i > 0)
                 {
-                    result.Add(new DotHtmlLineBreak(lineAlignment));
+                    result.Add(DotHtmlLineBreak.Instance(lineAlignment));
                 }
 
                 result.Add(new DotHtmlText(lines[i]));
