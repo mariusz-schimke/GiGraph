@@ -59,6 +59,12 @@ namespace GiGraph.Dot.Entities.Html
             ((IDotHtmlContentEntity) Content).SetContent(build);
         }
 
+        /// <inheritdoc cref="IDotHtmlContentEntity.SetHtmlContent" />
+        public virtual void SetHtmlContent(string html)
+        {
+            ((IDotHtmlContentEntity) Content).SetHtmlContent(html);
+        }
+
         protected override IEnumerable<IDotHtmlEntity> GetContent()
         {
             return Content;

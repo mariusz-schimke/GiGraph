@@ -37,5 +37,13 @@ namespace GiGraph.Dot.Entities.Html
         ///     The HTML builder delegate.
         /// </param>
         void SetContent(Action<DotHtmlBuilder> build);
+
+        /// <summary>
+        ///     Uses the specified HTML as the content of the current element.
+        /// </summary>
+        /// <param name="html">
+        ///     The HTML to use as the content.
+        /// </param>
+        void SetHtmlContent(string html);
     }
 }

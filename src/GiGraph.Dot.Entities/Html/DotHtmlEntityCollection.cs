@@ -67,6 +67,11 @@ namespace GiGraph.Dot.Entities.Html
             ((IDotHtmlContentEntity) this).SetContent(new DotHtmlText(text, lineAlignment));
         }
 
+        void IDotHtmlContentEntity.SetHtmlContent(string html)
+        {
+            ((IDotHtmlContentEntity) this).SetContent(new DotHtml(html));
+        }
+
         void IDotHtmlContentEntity.SetContent(Action<DotHtmlBuilder> build)
         {
             var builder = new DotHtmlBuilder();
