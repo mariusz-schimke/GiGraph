@@ -63,6 +63,20 @@ namespace GiGraph.Dot.Types.Fonts
         }
 
         /// <summary>
+        ///     Creates and initializes a new instance.
+        /// </summary>
+        /// <param name="font">
+        ///     A source font to copy properties from.
+        /// </param>
+        /// <param name="style">
+        ///     Font style.
+        /// </param>
+        public DotStyledFont(DotFont font, DotFontStyles? style = null)
+            : this(style, font.Name, font.Size, font.Color)
+        {
+        }
+
+        /// <summary>
         ///     Gets or sets font style.
         /// </summary>
         public virtual DotFontStyles? Style { get; set; }
