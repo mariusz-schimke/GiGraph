@@ -2,9 +2,6 @@ using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Types.Fonts
 {
-    // TODO: skoro są te konstruktory ze wszystkimi możliwościami, to rozważyć usunięcie metod ze wszystkimi parametrami czcionki
-    // Upewnić się wtedy, że metody przyjmują zarówno DotFont, jak i DotStyledFont niezależnie
-
     /// <summary>
     ///     Font and style properties.
     /// </summary>

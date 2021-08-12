@@ -147,36 +147,10 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// </param>
         public static DotHtmlFont FromStyledFont(DotStyledFont font, out DotHtmlElement contentElement)
         {
-            return FromStyledFont(out contentElement, font.Name, font.Size, font.Color, font.Style);
-        }
-
-        /// <summary>
-        ///     Creates an appropriate nested structure of HTML tags based on the specified font and style.
-        /// </summary>
-        /// <param name="font">
-        ///     The font and/or style to apply.
-        /// </param>
-        /// <param name="contentElement">
-        ///     The bottom-level element to embed content in.
-        /// </param>
-        /// <param name="name">
-        ///     Font name.
-        /// </param>
-        /// <param name="size">
-        ///     Font size.
-        /// </param>
-        /// <param name="color">
-        ///     Font color.
-        /// </param>
-        /// <param name="style">
-        ///     Font style.
-        /// </param>
-        public static DotHtmlFont FromStyledFont(out DotHtmlElement contentElement, string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
-        {
-            var fontElement = new DotHtmlFont(name, size, color);
+            var fontElement = new DotHtmlFont(font);
             contentElement = fontElement;
 
-            if (style.HasValue && DotHtmlFontStyle.FromStyle(style.Value, out var styleContentElement) is { } styleRoot)
+            if (font.Style.HasValue && DotHtmlFontStyle.FromStyle(font.Style.Value, out var styleContentElement) is { } styleRoot)
             {
                 fontElement.SetContent(styleRoot);
                 contentElement = styleContentElement;
