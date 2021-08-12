@@ -1,6 +1,5 @@
 using System;
 using GiGraph.Dot.Entities.Html.Font;
-using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Html.Builder
@@ -19,20 +18,6 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends bold text.
-        /// </summary>
-        /// <param name="text">
-        ///     The text to append.
-        /// </param>
-        /// <param name="lineAlignment">
-        ///     Specifies horizontal placement of lines if multiline text is specified.
-        /// </param>
-        public virtual DotHtmlBuilder AppendBoldText(string text, DotHorizontalAlignment? lineAlignment = null)
-        {
-            return AppendEntity(new DotHtmlBold(text, lineAlignment));
-        }
-
-        /// <summary>
         ///     Initializes and appends an italic element.
         /// </summary>
         /// <param name="init">
@@ -41,20 +26,6 @@ namespace GiGraph.Dot.Entities.Html.Builder
         public virtual DotHtmlBuilder AppendItalic(Action<DotHtmlBuilder> init)
         {
             return Append(new DotHtmlItalic(), init);
-        }
-
-        /// <summary>
-        ///     Initializes and appends italic text.
-        /// </summary>
-        /// <param name="text">
-        ///     The text to append.
-        /// </param>
-        /// <param name="lineAlignment">
-        ///     Specifies horizontal placement of lines if multiline text is specified.
-        /// </param>
-        public virtual DotHtmlBuilder AppendItalicText(string text, DotHorizontalAlignment? lineAlignment = null)
-        {
-            return AppendEntity(new DotHtmlItalic(text, lineAlignment));
         }
 
         /// <summary>
@@ -69,20 +40,6 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends underline text.
-        /// </summary>
-        /// <param name="text">
-        ///     The text to append.
-        /// </param>
-        /// <param name="lineAlignment">
-        ///     Specifies horizontal placement of lines if multiline text is specified.
-        /// </param>
-        public virtual DotHtmlBuilder AppendUnderlineText(string text, DotHorizontalAlignment? lineAlignment = null)
-        {
-            return AppendEntity(new DotHtmlUnderline(text, lineAlignment));
-        }
-
-        /// <summary>
         ///     Initializes and appends an overline element.
         /// </summary>
         /// <param name="init">
@@ -91,20 +48,6 @@ namespace GiGraph.Dot.Entities.Html.Builder
         public virtual DotHtmlBuilder AppendOverline(Action<DotHtmlBuilder> init)
         {
             return Append(new DotHtmlOverline(), init);
-        }
-
-        /// <summary>
-        ///     Initializes and appends overline text.
-        /// </summary>
-        /// <param name="text">
-        ///     The text to append.
-        /// </param>
-        /// <param name="lineAlignment">
-        ///     Specifies horizontal placement of lines if multiline text is specified.
-        /// </param>
-        public virtual DotHtmlBuilder AppendOverlineText(string text, DotHorizontalAlignment? lineAlignment = null)
-        {
-            return AppendEntity(new DotHtmlOverline(text, lineAlignment));
         }
 
         /// <summary>
@@ -119,20 +62,6 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends subscript text.
-        /// </summary>
-        /// <param name="text">
-        ///     The text to append.
-        /// </param>
-        /// <param name="lineAlignment">
-        ///     Specifies horizontal placement of lines if multiline text is specified.
-        /// </param>
-        public virtual DotHtmlBuilder AppendSubscriptText(string text, DotHorizontalAlignment? lineAlignment = null)
-        {
-            return AppendEntity(new DotHtmlSubscript(text, lineAlignment));
-        }
-
-        /// <summary>
         ///     Initializes and appends a superscript element.
         /// </summary>
         /// <param name="init">
@@ -144,20 +73,6 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends superscript text.
-        /// </summary>
-        /// <param name="text">
-        ///     The text to append.
-        /// </param>
-        /// <param name="lineAlignment">
-        ///     Specifies horizontal placement of lines if multiline text is specified.
-        /// </param>
-        public virtual DotHtmlBuilder AppendSuperscriptText(string text, DotHorizontalAlignment? lineAlignment = null)
-        {
-            return AppendEntity(new DotHtmlSuperscript(text, lineAlignment));
-        }
-
-        /// <summary>
         ///     Initializes and appends a strikethrough element.
         /// </summary>
         /// <param name="init">
@@ -166,20 +81,6 @@ namespace GiGraph.Dot.Entities.Html.Builder
         public virtual DotHtmlBuilder AppendStrikethrough(Action<DotHtmlBuilder> init)
         {
             return Append(new DotHtmlStrikethrough(), init);
-        }
-
-        /// <summary>
-        ///     Initializes and appends strikethrough text.
-        /// </summary>
-        /// <param name="text">
-        ///     The text to append.
-        /// </param>
-        /// <param name="lineAlignment">
-        ///     Specifies horizontal placement of lines if multiline text is specified.
-        /// </param>
-        public virtual DotHtmlBuilder AppendStrikethroughText(string text, DotHorizontalAlignment? lineAlignment = null)
-        {
-            return AppendEntity(new DotHtmlStrikethrough(text, lineAlignment));
         }
 
         /// <summary>
