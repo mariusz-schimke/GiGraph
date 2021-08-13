@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Html.Table;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Fonts;
 using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Examples.Html
@@ -54,6 +56,7 @@ namespace GiGraph.Dot.Examples.Html
                 row.AddCell("Waldo");
                 row.AddCell(
                     "Fred",
+                    new DotStyledFont(DotFontStyles.Bold | DotFontStyles.Italic, Color.Brown),
                     cell => cell.PortName = "port1"
                 );
             });
