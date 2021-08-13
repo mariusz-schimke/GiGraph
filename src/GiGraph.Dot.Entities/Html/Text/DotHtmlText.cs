@@ -52,56 +52,5 @@ namespace GiGraph.Dot.Entities.Html.Text
         {
             return text?.Split(lineBreaks, StringSplitOptions.None) ?? Array.Empty<string>();
         }
-
-        /// <summary>
-        ///     Creates a collection of entities to represent the specified text as HTML. All line breaks will be replaced with &lt;br /&gt;
-        ///     tags.
-        /// </summary>
-        /// <param name="text">
-        ///     The input text.
-        /// </param>
-        /// <param name="lineBreaks">
-        ///     The line break sequences to replace with HTML line break tags (see <see cref="DotNewLine" />).
-        /// </param>
-        /// <param name="lineAlignment">
-        ///     Specifies horizontal placement of lines if multiline text is specified.
-        /// </param>
-        public static DotHtmlEntity FromMultilineText(string text, string[] lineBreaks, DotHorizontalAlignment? lineAlignment = null)
-        {
-            var lines = SplitMultiline(text, lineBreaks);
-            if (lines.Length <= 1)
-            {
-                return new DotHtmlText(text);
-            }
-
-            var result = new DotHtmlEntityCollection();
-
-            for (var i = 0; i < lines.Length; i++)
-            {
-                if (i > 0)
-                {
-                    result.Add(DotHtmlLineBreak.Instance(lineAlignment));
-                }
-
-                result.Add(new DotHtmlText(lines[i]));
-            }
-
-            return new DotHtmlEntity<DotHtmlEntityCollection>(result);
-        }
-
-        /// <summary>
-        ///     Creates a collection of entities to represent the specified text as HTML. Line breaks will be replaced with &lt;br /&gt;
-        ///     tags.
-        /// </summary>
-        /// <param name="text">
-        ///     The input text.
-        /// </param>
-        /// <param name="lineAlignment">
-        ///     Specifies horizontal placement of lines if multiline text is specified.
-        /// </param>
-        public static DotHtmlEntity FromMultilineText(string text, DotHorizontalAlignment? lineAlignment = null)
-        {
-            return FromMultilineText(text, LineBreaks, lineAlignment);
-        }
     }
 }

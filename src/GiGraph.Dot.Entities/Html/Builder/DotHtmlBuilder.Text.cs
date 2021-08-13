@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// </param>
         public virtual DotHtmlBuilder AppendText(string text, DotHorizontalAlignment? lineAlignment = null)
         {
-            return AppendEntity(DotHtmlText.FromMultilineText(text, lineAlignment));
+            return AppendEntity(new DotHtmlText(text, lineAlignment));
         }
 
         /// <summary>

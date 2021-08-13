@@ -17,10 +17,10 @@ namespace GiGraph.Dot.Entities.Tests.Html
         public void multiline_text_is_split_with_br_elements()
         {
             var text = $"Line 1{Environment.NewLine}Line 2";
-            var entities = DotHtmlText.FromMultilineText(text);
+            var entity = new DotHtmlText(text);
 
             Snapshot.Match(
-                ((IDotHtmlEncodable) entities).ToHtml(_syntaxOptions, _syntaxRules),
+                ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
                 "html_multiline_text"
             );
 
@@ -47,10 +47,10 @@ namespace GiGraph.Dot.Entities.Tests.Html
         public void multiline_text_is_split_with_br_elements_with_alignment()
         {
             var text = $"Line 1{Environment.NewLine}Line 2";
-            var entities = DotHtmlText.FromMultilineText(text, DotHorizontalAlignment.Right);
+            var entity = new DotHtmlText(text, DotHorizontalAlignment.Right);
 
             Snapshot.Match(
-                ((IDotHtmlEncodable) entities).ToHtml(_syntaxOptions, _syntaxRules),
+                ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
                 "html_multiline_right-aligned_text"
             );
         }
@@ -59,10 +59,10 @@ namespace GiGraph.Dot.Entities.Tests.Html
         public void single_line_text_is_not_split()
         {
             var text = "Line 1";
-            var entities = DotHtmlText.FromMultilineText(text);
+            var entity = new DotHtmlText(text);
 
             Snapshot.Match(
-                ((IDotHtmlEncodable) entities).ToHtml(_syntaxOptions, _syntaxRules),
+                ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),
                 "html_single-line_text"
             );
 
