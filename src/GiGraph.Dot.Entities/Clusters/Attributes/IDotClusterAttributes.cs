@@ -1,10 +1,13 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Graphs.Attributes;
+using GiGraph.Dot.Entities.Html.Builder;
+using GiGraph.Dot.Entities.Html.Font;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
+using GiGraph.Dot.Types.Html;
 using GiGraph.Dot.Types.Ranks;
 using GiGraph.Dot.Types.Styling;
 
@@ -27,7 +30,9 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the cluster. It may be plain text (<see cref="string" />) or HTML (
-        ///         <see cref="DotHtmlLabel" />). See also <see cref="DotFormattedTextBuilder" /> for plain text label formatting if needed.
+        ///         <see cref="DotHtmlString" />). See also <see cref="DotFormattedTextBuilder" /> for text justification and simple
+        ///         formatting and <see cref="DotHtmlBuilder" /> for custom text styling and defining tables. The latter one gives the most
+        ///         possibilities (specifying font, size, color, style, images, etc.).
         ///     </para>
         ///     <para>
         ///         Examples:
@@ -39,7 +44,12 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         ///             </item>
         ///             <item>
         ///                 <description>
-        ///                     <see cref="Label" /> = new <see cref="DotHtmlLabel" />("&lt;TABLE&gt;...&lt;/TABLE&gt;");
+        ///                     <see cref="Label" /> = new <see cref="DotHtmlBold" />("My label");
+        ///                 </description>
+        ///             </item>
+        ///             <item>
+        ///                 <description>
+        ///                     <see cref="Label" /> = (<see cref="DotHtmlString" />) "&lt;b&gt;My label&lt;/b&gt;";
         ///                 </description>
         ///             </item>
         ///         </list>
