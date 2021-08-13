@@ -185,8 +185,8 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         ///     </para>
         ///     <para>
         ///         Normal <see cref="DotEscapeString.NodeId" />, <see cref="DotEscapeString.EdgeDefinition" />,
-        ///         <see cref="DotEscapeString.GraphId" /> substitutions can be applied (see <see cref="DotFormattedTextBuilder" />). Note, however,
-        ///         that <see cref="DotEscapeString.EdgeDefinition" /> does not provide a unique ID for multi-edges.
+        ///         <see cref="DotEscapeString.GraphId" /> substitutions can be applied (see <see cref="DotFormattedTextBuilder" />). Note,
+        ///         however, that <see cref="DotEscapeString.EdgeDefinition" /> does not provide a unique ID for multi-edges.
         ///     </para>
         ///     <para>
         ///         If provided, it is the responsibility of the provider to keep ID values unique for its intended downstream use. If no ID

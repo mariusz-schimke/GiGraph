@@ -5,17 +5,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="..\Solution Items\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
+        <Compile Include="..\Solution Items\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="..\..\Assets\icon.png" Link="icon.png" />
-        <Content Include="..\..\LICENSE.txt" Link="LICENSE.txt" />
+        <Content Include="..\..\Assets\icon.png" Link="icon.png"/>
+        <Content Include="..\..\LICENSE.txt" Link="LICENSE.txt"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\GiGraph.Dot.Entities\GiGraph.Dot.Entities.csproj" />
-        <ProjectReference Include="..\GiGraph.Dot.Output.Generators\GiGraph.Dot.Output.Generators.csproj" />
+        <ProjectReference Include="..\GiGraph.Dot.Entities\GiGraph.Dot.Entities.csproj"/>
+        <ProjectReference Include="..\GiGraph.Dot.Output.Generators\GiGraph.Dot.Output.Generators.csproj"/>
     </ItemGroup>
 
 </Project>
