@@ -10,6 +10,9 @@ namespace GiGraph.Dot.Types.Fonts
         /// <summary>
         ///     Creates and initializes a new instance.
         /// </summary>
+        /// <param name="style">
+        ///     Font style.
+        /// </param>
         /// <param name="name">
         ///     Font name.
         /// </param>
@@ -19,13 +22,58 @@ namespace GiGraph.Dot.Types.Fonts
         /// <param name="color">
         ///     Font color.
         /// </param>
-        /// <param name="style">
-        ///     Font style.
-        /// </param>
-        public DotStyledFont(string name = null, double? size = null, DotColor color = null, DotFontStyles? style = null)
+        public DotStyledFont(DotFontStyles? style = null, string name = null, double? size = null, DotColor color = null)
             : base(name, size, color)
         {
             Style = style;
+        }
+
+        /// <summary>
+        ///     Creates and initializes a new instance.
+        /// </summary>
+        /// <param name="style">
+        ///     Font style.
+        /// </param>
+        /// <param name="size">
+        ///     Font size.
+        /// </param>
+        /// <param name="color">
+        ///     Font color.
+        /// </param>
+        public DotStyledFont(DotFontStyles? style, double? size, DotColor color = null)
+            : this(style, name: null, size, color)
+        {
+        }
+
+        /// <summary>
+        ///     Creates and initializes a new instance.
+        /// </summary>
+        /// <param name="style">
+        ///     Font style.
+        /// </param>
+        /// <param name="color">
+        ///     Font color.
+        /// </param>
+        /// <param name="name">
+        ///     Font name.
+        /// </param>
+        public DotStyledFont(DotFontStyles? style, DotColor color, string name = null)
+            : this(style, name, size: null, color)
+        {
+        }
+
+        /// <summary>
+        ///     Creates and initializes a new instance.
+        /// </summary>
+        /// <param name="font">
+        ///     A source font to copy properties from.
+        /// </param>
+        /// <param name="style">
+        ///     Font style.
+        /// </param>
+        public DotStyledFont(DotFont font, DotFontStyles? style = null)
+            : this(style, font.Name, font.Size, font.Color)
+        {
         }
 
         /// <summary>

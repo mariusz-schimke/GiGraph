@@ -34,12 +34,12 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Nodes.Add("Baz").ToRecordNode(rb1 => rb1
                .AppendField($"Foo{Environment.NewLine}Bar")
                .AppendRecord(rb2 => rb2
-                   .AppendField(tf => tf.AppendLineLeftJustified("Baz"))
+                   .AppendField(tf => tf.AppendLeftJustifiedLine("Baz"))
                    .AppendRecord(rb3 => rb3
                        .AppendFields("Garply", "Waldo")
                        .AppendField("Fred", "port1")
                     )
-                   .AppendField(tf => tf.AppendLineRightJustified("Plugh"))
+                   .AppendField(tf => tf.AppendRightJustifiedLine("Plugh"))
                 )
                .AppendFields("Qux", "Quux")
             );

@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Extensions
     public static class DotNodeToRoundedRecordExtension
     {
         /// <summary>
-        ///     Converts the current node to a rounded record node.
+        ///     Converts the current node to a rounded record-shaped node.
         /// </summary>
         /// <param name="node">
         ///     The current node.
@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Extensions
         }
 
         /// <summary>
-        ///     Converts the current node to a rounded record node composed using a builder.
+        ///     Converts the current node to a rounded record-shaped node composed using a builder.
         /// </summary>
         /// <param name="node">
         ///     The current node.
@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Extensions
             var builder = new DotRecordBuilder();
             buildRecord(builder);
 
-            ToRoundedRecordNode(node, builder.ToRecord(flip));
+            ToRoundedRecordNode(node, builder.Build(flip));
         }
     }
 }

@@ -21,5 +21,10 @@ namespace GiGraph.Dot.Entities.Html.Rule
             : base(TagName, attributes)
         {
         }
+
+        /// <summary>
+        ///     Gets a static instance of a horizontal rule element.
+        /// </summary>
+        public static DotHtmlEntity Instance { get; } = new DotHtmlReadOnlyEntity<DotHtmlHorizontalRule>(new DotHtmlHorizontalRule());
     }
 }

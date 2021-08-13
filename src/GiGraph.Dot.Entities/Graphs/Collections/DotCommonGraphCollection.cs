@@ -21,8 +21,8 @@ namespace GiGraph.Dot.Entities.Graphs.Collections
         /// </param>
         public virtual TGraph Add(TGraph graph, Action<TGraph> init)
         {
-            Add(graph);
             init?.Invoke(graph);
+            Add(graph);
             return graph;
         }
     }

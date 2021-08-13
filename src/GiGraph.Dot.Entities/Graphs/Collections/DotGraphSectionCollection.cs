@@ -17,8 +17,8 @@ namespace GiGraph.Dot.Entities.Graphs.Collections
         /// </param>
         public virtual TSection Add(TSection section, Action<TSection> init)
         {
-            Add(section);
             init?.Invoke(section);
+            Add(section);
             return section;
         }
 

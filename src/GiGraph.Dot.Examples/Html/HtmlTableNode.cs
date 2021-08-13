@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Html.Table;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Fonts;
 using GiGraph.Dot.Types.Html.Table;
 
-namespace GiGraph.Dot.Examples.Basic
+namespace GiGraph.Dot.Examples.Html
 {
-    public static class HtmlElementNodes
+    public static class HtmlTableNode
     {
         public static DotGraph Generate()
         {
@@ -50,9 +52,11 @@ namespace GiGraph.Dot.Examples.Basic
 
             table.AddRow(row =>
             {
-                row.AddCells("Garply", "Waldo");
+                row.AddCell("Garply");
+                row.AddCell("Waldo");
                 row.AddCell(
                     "Fred",
+                    new DotStyledFont(DotFontStyles.Bold | DotFontStyles.Italic, Color.Brown),
                     cell => cell.PortName = "port1"
                 );
             });
@@ -68,7 +72,7 @@ namespace GiGraph.Dot.Examples.Basic
                 )
             );
 
-            graph.Nodes.Add("Bar").ToHtmlNode(table);
+            graph.Nodes.Add("Bar").ToPlainHtmlNode(table);
 
             // the following line is equivalent to the next one as far as visualization is concerned
             graph.Edges.Add("Foo", "Bar").Attributes.Head.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);

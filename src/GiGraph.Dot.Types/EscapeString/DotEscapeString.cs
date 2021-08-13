@@ -28,12 +28,12 @@ namespace GiGraph.Dot.Types.EscapeString
         /// <summary>
         ///     An escape sequence replaced with the identifier of the tail node of the current edge on graph visualization.
         /// </summary>
-        public static readonly DotEscapeString EdgeTailNodeId = (DotEscapedString) "\\T";
+        public static readonly DotEscapeString TailNodeId = (DotEscapedString) "\\T";
 
         /// <summary>
         ///     An escape sequence replaced with the identifier of the head node of the current edge on graph visualization.
         /// </summary>
-        public static readonly DotEscapeString EdgeHeadNodeId = (DotEscapedString) "\\H";
+        public static readonly DotEscapeString HeadNodeId = (DotEscapedString) "\\H";
 
         /// <summary>
         ///     An escape sequence replaced with the label of the current element on graph visualization.

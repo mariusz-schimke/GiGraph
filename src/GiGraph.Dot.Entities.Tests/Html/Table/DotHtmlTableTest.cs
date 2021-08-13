@@ -1,4 +1,5 @@
 using System.Drawing;
+using GiGraph.Dot.Entities.Html;
 using GiGraph.Dot.Entities.Html.Table;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
@@ -64,7 +65,8 @@ namespace GiGraph.Dot.Entities.Tests.Html.Table
         [Fact]
         public void encoded_html_table_with_rows_and_cells_is_valid_html()
         {
-            var font = new DotStyledFont("Arial", 10, Color.Red, DotFontStyles.Bold);
+            var font = new DotFont("Arial", 10, Color.Red);
+            var styledFont = new DotStyledFont(font, DotFontStyles.Bold);
 
             var table = new DotHtmlTable
             {
@@ -74,14 +76,20 @@ namespace GiGraph.Dot.Entities.Tests.Html.Table
             table.AddRow(row =>
             {
                 row.AddCell(cell => cell.Id = "cellId1");
-                row.AddCell("cell2", cell => cell.Id = "cellId2");
-                row.AddCell("cell3", font.Style!.Value, font.Name, font.Size, font.Color, cell => cell.Id = "cell3");
-                row.AddCell("cell4", font, cell => cell.Id = "cell4");
 
-                row.AddCells("cell5", "cell6");
-                row.AddCells(new[] { "cell7", "cell8" }, (cell, i) => cell.Id = $"cell{i}");
-                row.AddCells(new[] { "cell9", "cell10" }, font, (cell, i) => cell.Id = $"cell{i}");
-                row.AddCells(new[] { "cell11", "cell12" }, font.Style!.Value, font.Name, font.Size, font.Color, (cell, i) => cell.Id = $"cell{i}");
+                row.AddCell("cell2", cell => cell.Id = "cellId2");
+                row.AddCell("cell2\n", DotHorizontalAlignment.Left, cell => cell.Id = "cellId2");
+
+                row.AddCell("cell3", font, cell => cell.Id = "cell3");
+                row.AddCell("cell3\n", font, DotHorizontalAlignment.Center, cell => cell.Id = "cell3");
+
+                row.AddCell("cell4", styledFont.Style!.Value, cell => cell.Id = "cell4");
+                row.AddCell("cell4\n", styledFont.Style.Value, DotHorizontalAlignment.Right, cell => cell.Id = "cell4");
+
+                row.AddCell("cell5", styledFont, cell => cell.Id = "cell5");
+                row.AddCell("cell5\n", styledFont, DotHorizontalAlignment.Right, cell => cell.Id = "cell5");
+
+                row.AddCell(new DotHtmlElement("custom"), cell => cell.Id = "customId");
 
                 row.AddVerticalRule();
 

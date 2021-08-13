@@ -12,8 +12,7 @@ namespace GiGraph.Dot.Extensions
     public static class DotNodeToHtmlExtension
     {
         /// <summary>
-        ///     Converts the current node to an HTML node by assigning HTML text to its label attribute, and setting its shape to
-        ///     <see cref="DotNodeShape.Plain" />. See the
+        ///     Converts the current node to an HTML node by assigning HTML text to its label attribute. See the
         ///     <see href="http://www.graphviz.org/doc/info/shapes.html#html">
         ///         documentation
         ///     </see>
@@ -23,21 +22,15 @@ namespace GiGraph.Dot.Extensions
         ///     The node to convert.
         /// </param>
         /// <param name="html">
-        ///     The HTML text to assign to node label. Pass <see cref="string" /> to convert it implicitly to the required
-        ///     <see cref="DotHtmlString" /> type.
+        ///     The HTML text to assign to node label.
         /// </param>
         public static void ToHtmlNode(this DotNode node, string html)
         {
-            node.ToHtmlNode((DotHtmlLabel) (DotHtmlString) html);
+            node.Attributes.Label = (DotHtmlString) html;
         }
 
         /// <summary>
-        ///     Converts the current node to an HTML node by assigning HTML to its label attribute, and setting its shape to
-        ///     <see cref="DotNodeShape.Plain" />. See the
-        ///     <see href="http://www.graphviz.org/doc/info/shapes.html#html">
-        ///         documentation
-        ///     </see>
-        ///     to learn what HTML grammar is supported.
+        ///     Converts the current node to an HTML node by assigning HTML to its label attribute.
         /// </summary>
         /// <param name="node">
         ///     The node to convert.
@@ -47,10 +40,46 @@ namespace GiGraph.Dot.Extensions
         /// </param>
         public static void ToHtmlNode(this DotNode node, IDotHtmlEntity html)
         {
-            node.ToHtmlNode(new DotHtmlLabel(html));
+            node.Attributes.Label = new DotHtmlLabel(html);
         }
 
-        private static void ToHtmlNode(this DotNode node, DotHtmlLabel label)
+        /// <summary>
+        ///     Converts the current node to an HTML node by assigning HTML text to its label attribute, and setting its shape to
+        ///     <see cref="DotNodeShape.Plain" />. See the
+        ///     <see href="http://www.graphviz.org/doc/info/shapes.html#html">
+        ///         documentation
+        ///     </see>
+        ///     to learn what HTML grammar is supported. Useful when the HTML entity represents a table and you don't want the node to have
+        ///     any shape.
+        /// </summary>
+        /// <param name="node">
+        ///     The node to convert.
+        /// </param>
+        /// <param name="html">
+        ///     The HTML text to assign to node label.
+        /// </param>
+        public static void ToPlainHtmlNode(this DotNode node, string html)
+        {
+            node.ToPlainHtmlNode((DotHtmlLabel) (DotHtmlString) html);
+        }
+
+        /// <summary>
+        ///     Converts the current node to an HTML node by assigning HTML to its label attribute, and setting its shape to
+        ///     <see cref="DotNodeShape.Plain" />. Useful when the HTML entity represents a table and you don't want the node to have any
+        ///     shape.
+        /// </summary>
+        /// <param name="node">
+        ///     The node to convert.
+        /// </param>
+        /// <param name="html">
+        ///     The HTML entity to assign to node label.
+        /// </param>
+        public static void ToPlainHtmlNode(this DotNode node, IDotHtmlEntity html)
+        {
+            node.ToPlainHtmlNode(new DotHtmlLabel(html));
+        }
+
+        private static void ToPlainHtmlNode(this DotNode node, DotHtmlLabel label)
         {
             node.Attributes.Shape = DotNodeShape.Plain;
             node.Attributes.Label = label;

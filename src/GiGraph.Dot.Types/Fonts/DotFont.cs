@@ -27,6 +27,34 @@ namespace GiGraph.Dot.Types.Fonts
         }
 
         /// <summary>
+        ///     Creates and initializes a new instance.
+        /// </summary>
+        /// <param name="size">
+        ///     Font size.
+        /// </param>
+        /// <param name="color">
+        ///     Font color.
+        /// </param>
+        public DotFont(double size, DotColor color = null)
+            : this(name: null, size, color)
+        {
+        }
+
+        /// <summary>
+        ///     Creates and initializes a new instance.
+        /// </summary>
+        /// <param name="color">
+        ///     Font color.
+        /// </param>
+        /// <param name="name">
+        ///     Font name.
+        /// </param>
+        public DotFont(DotColor color, string name = null)
+            : this(name, size: null, color)
+        {
+        }
+
+        /// <summary>
         ///     Gets or sets font name.
         /// </summary>
         public virtual string Name { get; set; }

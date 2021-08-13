@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Tests.Html
         {
             var tag = new DotHtmlElement("custom-tag-name")
             {
-                Children =
+                Content =
                 {
                     new DotHtmlBold("bold text")
                 }
@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Entities.Tests.Html
                 {
                     Html =
                     {
-                        UpperCaseTagNames = true
+                        ElementNameCasing = DotTextCase.Upper
                     }
                 }
             };

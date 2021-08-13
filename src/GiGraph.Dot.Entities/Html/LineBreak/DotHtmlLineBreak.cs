@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using GiGraph.Dot.Entities.Html.LineBreak.Attributes;
 using GiGraph.Dot.Output.Metadata.Html;
 using GiGraph.Dot.Output.Options;
@@ -11,20 +14,31 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
     /// </summary>
     public class DotHtmlLineBreak : DotHtmlVoidElement, IDotHtmlLineBreakAttributes
     {
-        protected static readonly DotHtmlLineBreak Default = new();
+        protected static readonly DotHtmlEntity Default = new DotHtmlReadOnlyEntity<DotHtmlLineBreak>(new DotHtmlLineBreak());
+        protected static readonly Dictionary<DotHorizontalAlignment, DotHtmlEntity> AlignedLineBreaks;
+
+        static DotHtmlLineBreak()
+        {
+            AlignedLineBreaks = Enum.GetValues(typeof(DotHorizontalAlignment))
+               .Cast<DotHorizontalAlignment>()
+               .ToDictionary(
+                    key => key,
+                    value => (DotHtmlEntity) new DotHtmlReadOnlyEntity<DotHtmlLineBreak>(new DotHtmlLineBreak(value))
+                );
+        }
 
         /// <summary>
         ///     Initializes a new line break instance.
         /// </summary>
-        /// <param name="horizontalAlignment">
+        /// <param name="lineAlignment">
         ///     Specifies horizontal placement of the line.
         /// </param>
-        public DotHtmlLineBreak(DotHorizontalAlignment? horizontalAlignment = null)
+        public DotHtmlLineBreak(DotHorizontalAlignment? lineAlignment = null)
             : this(new DotHtmlLineBreakAttributes())
         {
-            if (horizontalAlignment.HasValue)
+            if (lineAlignment.HasValue)
             {
-                HorizontalAlignment = horizontalAlignment;
+                LineAlignment = lineAlignment;
             }
         }
 
@@ -39,22 +53,46 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
         /// </summary>
         public new virtual DotHtmlLineBreakAttributes Attributes { get; }
 
+        /// <inheritdoc cref="IDotHtmlLineBreakAttributes.LineAlignment" />
+        [DotHtmlAttributeKey("align")]
+        public virtual DotHorizontalAlignment? LineAlignment
+        {
+            get => ((IDotHtmlLineBreakAttributes) Attributes).LineAlignment;
+            set => ((IDotHtmlLineBreakAttributes) Attributes).LineAlignment = value;
+        }
+
         /// <summary>
         ///     Returns a &lt;br/&gt; HTML tag string according to the default syntax options and rules.
         /// </summary>
-        public static DotHtmlString Html => Default.ToHtml(DotSyntaxOptions.Default, DotSyntaxRules.Default);
-
-        /// <inheritdoc cref="IDotHtmlLineBreakAttributes.HorizontalAlignment" />
-        [DotHtmlAttributeKey("align")]
-        public virtual DotHorizontalAlignment? HorizontalAlignment
+        /// <param name="lineAlignment">
+        ///     Specifies horizontal placement of the line.
+        /// </param>
+        public static DotHtmlString Html(DotHorizontalAlignment? lineAlignment = null)
         {
-            get => ((IDotHtmlLineBreakAttributes) Attributes).HorizontalAlignment;
-            set => ((IDotHtmlLineBreakAttributes) Attributes).HorizontalAlignment = value;
+            return Html(lineAlignment, DotSyntaxOptions.Default, DotSyntaxRules.Default);
         }
 
-        internal static string AsHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        internal static string Html(DotHorizontalAlignment? lineAlignment, DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return Default.ToHtml(options, syntaxRules);
+            return Instance(lineAlignment).ToHtml(options, syntaxRules);
+        }
+
+        /// <summary>
+        ///     Gets a static instance of a line break with the specified alignment. Use for memory optimization.
+        /// </summary>
+        /// <param name="lineAlignment">
+        ///     Specifies horizontal placement of the line.
+        /// </param>
+        public static DotHtmlEntity Instance(DotHorizontalAlignment? lineAlignment = null)
+        {
+            if (lineAlignment.HasValue)
+            {
+                return AlignedLineBreaks.TryGetValue(lineAlignment.Value, out var result)
+                    ? result
+                    : throw new ArgumentException($"The specified HTML line break alignment '{lineAlignment}' is invalid.", nameof(lineAlignment));
+            }
+
+            return Default;
         }
     }
 }

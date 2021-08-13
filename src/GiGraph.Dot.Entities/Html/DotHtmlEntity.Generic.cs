@@ -6,6 +6,9 @@ namespace GiGraph.Dot.Entities.Html
     ///     Represents an HTML entity adapter. Useful for wrapping <see cref="IDotHtmlEntity" /> objects, which are not implicitly
     ///     convertible, so cannot be assigned directly to a label of a DOT element.
     /// </summary>
+    /// <typeparam name="TEntity">
+    ///     The type of entity to wrap.
+    /// </typeparam>
     public class DotHtmlEntity<TEntity> : DotHtmlEntity
         where TEntity : IDotHtmlEntity
     {

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Text;
 
 namespace GiGraph.Dot.Entities.Html
 {
@@ -32,18 +33,18 @@ namespace GiGraph.Dot.Entities.Html
 
             var attrs = Attributes.Values
                .Select(attr =>
-                    $"{(options.Attributes.Html.UpperCaseAttributeNames ? attr.Key.ToUpperInvariant() : attr.Key)}=\"{attr.GetDotEncodedValue(options, syntaxRules)}\""
+                    $"{DotTextCasing.SetCasing(attr.Key, options.Attributes.Html.AttributeKeyCasing)}=\"{attr.GetDotEncodedValue(options, syntaxRules)}\""
                 );
 
-            var tagName = options.Attributes.Html.UpperCaseTagNames ? _name.ToUpperInvariant() : _name;
-            var tagWithAttributes = string.Join(
+            var elementName = DotTextCasing.SetCasing(_name, options.Attributes.Html.ElementNameCasing);
+            var elementWithAttributes = string.Join(
                 " ",
                 Enumerable.Empty<string>()
-                   .Append($"<{tagName}")
+                   .Append($"<{elementName}")
                    .Concat(attrs)
             );
 
-            result.Append(tagWithAttributes);
+            result.Append(elementWithAttributes);
 
             if (IsVoid)
             {
@@ -53,16 +54,16 @@ namespace GiGraph.Dot.Entities.Html
             {
                 result.Append(">");
 
-                var children = GetChildren().Select(child => child.ToHtml(options, syntaxRules));
+                var children = GetContent().Select(child => child.ToHtml(options, syntaxRules));
                 result.Append(string.Join(string.Empty, children));
 
-                result.Append($"</{tagName}>");
+                result.Append($"</{elementName}>");
             }
 
             return result.ToString();
         }
 
-        protected virtual IEnumerable<IDotHtmlEntity> GetChildren()
+        protected virtual IEnumerable<IDotHtmlEntity> GetContent()
         {
             return Enumerable.Empty<IDotHtmlEntity>();
         }

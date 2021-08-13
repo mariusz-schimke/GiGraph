@@ -17,8 +17,8 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
 
         /// <summary>
         ///     Specifies the default alignment of &lt;br/&gt; elements contained in the cell (<see cref="DotHtmlLineBreak" />). That is, if
-        ///     a &lt;br/&gt; element has no <see cref="DotHtmlLineBreak.HorizontalAlignment" /> specified explicitly, the alignment
-        ///     indicated by the current attribute is applied.
+        ///     a &lt;br/&gt; element has no <see cref="DotHtmlLineBreak.LineAlignment" /> specified explicitly, the alignment indicated by
+        ///     the current attribute is applied.
         /// </summary>
         DotHorizontalAlignment? HorizontalLineAlignment { get; set; }
 

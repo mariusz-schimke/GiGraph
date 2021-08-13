@@ -1,6 +1,10 @@
+using System;
+using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
-using GiGraph.Dot.Entities.Html.Text;
+using GiGraph.Dot.Output.EnumHelpers;
+using GiGraph.Dot.Types.Alignment;
+using GiGraph.Dot.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Html.Font
 {
@@ -14,14 +18,53 @@ namespace GiGraph.Dot.Entities.Html.Font
         {
         }
 
+        protected DotHtmlFontStyle(string tagName, string text, DotHorizontalAlignment? lineAlignment)
+            : base(tagName, new DotAttributeCollection(DotHtmlAttributeFactory.Instance))
+        {
+            SetContent(text, lineAlignment);
+        }
+
         protected DotHtmlFontStyle(string tagName, DotAttributeCollection attributes)
             : base(tagName, attributes)
         {
         }
 
-        protected virtual void AppendText(string text)
+        /// <summary>
+        ///     Creates an appropriate nested structure of HTML tags based on the specified font style. Returns null for the
+        ///     <see cref="DotFontStyles.Normal" /> font style.
+        /// </summary>
+        /// <param name="style">
+        ///     The style to apply to the entities.
+        /// </param>
+        /// <param name="contentElement">
+        ///     The bottom-level element to embed content in. Returns null for the <see cref="DotFontStyles.Normal" /> font style.
+        /// </param>
+        public static DotHtmlFontStyle FromStyle(DotFontStyles style, out DotHtmlFontStyle contentElement)
         {
-            Children.Add(new DotHtmlText(text));
+            DotHtmlFontStyle result = null;
+            contentElement = null;
+
+            var metadata = new DotEnumMetadata(style.GetType());
+            foreach (var styleFlag in metadata.GetSetFlags(style).Cast<DotFontStyles>())
+            {
+                DotHtmlFontStyle styleElement = styleFlag switch
+                {
+                    DotFontStyles.Bold => new DotHtmlBold(),
+                    DotFontStyles.Italic => new DotHtmlItalic(),
+                    DotFontStyles.Underline => new DotHtmlUnderline(),
+                    DotFontStyles.Overline => new DotHtmlOverline(),
+                    DotFontStyles.Subscript => new DotHtmlSubscript(),
+                    DotFontStyles.Superscript => new DotHtmlSuperscript(),
+                    DotFontStyles.Strikethrough => new DotHtmlStrikethrough(),
+                    _ => throw new ArgumentOutOfRangeException(nameof(style), styleFlag, "Invalid font style flag")
+                };
+
+                contentElement?.Content.Add(styleElement);
+                contentElement = styleElement;
+                result ??= contentElement;
+            }
+
+            return result;
         }
     }
 }

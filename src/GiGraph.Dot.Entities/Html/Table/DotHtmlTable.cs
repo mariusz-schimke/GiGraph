@@ -194,7 +194,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// </param>
         public virtual DotHtmlTableRow AddRow(Action<DotHtmlTableRow> init = null)
         {
-            return Children.Add(new DotHtmlTableRow(), init);
+            return Content.Add(new DotHtmlTableRow(), init);
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// </summary>
         public virtual DotHtmlHorizontalRule AddHorizontalRule()
         {
-            return Children.Add(new DotHtmlHorizontalRule(), init: null);
+            return Content.Add(new DotHtmlHorizontalRule(), init: null);
         }
     }
 }

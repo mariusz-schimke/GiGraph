@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <summary>
         ///     Adds an edge to the collection and initializes its attributes.
         /// </summary>
-        /// <typeparam name="T">
+        /// <typeparam name="TEdge">
         ///     The type of edge to add.
         /// </typeparam>
         /// <param name="edge">
@@ -41,11 +41,11 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <param name="init">
         ///     An optional edge initializer delegate.
         /// </param>
-        public virtual T Add<T>(T edge, Action<T> init)
-            where T : DotEdgeDefinition
+        public virtual TEdge Add<TEdge>(TEdge edge, Action<TEdge> init)
+            where TEdge : DotEdgeDefinition
         {
-            Add(edge);
             init?.Invoke(edge);
+            Add(edge);
             return edge;
         }
 

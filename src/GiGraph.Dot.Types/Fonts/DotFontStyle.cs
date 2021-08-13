@@ -41,6 +41,11 @@ namespace GiGraph.Dot.Types.Fonts
         /// <summary>
         ///     Superscript style.
         /// </summary>
-        Superscript = 1 << 5
+        Superscript = 1 << 5,
+
+        /// <summary>
+        ///     Strikethrough style.
+        /// </summary>
+        Strikethrough = 1 << 6
     }
 }

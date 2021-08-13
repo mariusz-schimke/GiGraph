@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Html.LineBreak.Attributes
         }
 
         [DotAttributeKey("align")]
-        DotHorizontalAlignment? IDotHtmlLineBreakAttributes.HorizontalAlignment
+        DotHorizontalAlignment? IDotHtmlLineBreakAttributes.LineAlignment
         {
             get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
