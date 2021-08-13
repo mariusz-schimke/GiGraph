@@ -4,9 +4,6 @@ using GiGraph.Dot.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Html.Builder
 {
-    // TODO: dla spójności wszystkie metody AppendLine też powinny móc customizować tekst...
-    // Może da sie to jakoś obejść, żeby ciągle nie powtarzać szeregu metod?
-
     public partial class DotHtmlBuilder
     {
         /// <summary>

@@ -50,7 +50,8 @@ namespace GiGraph.Dot.Examples.Basic
 
             table.AddRow(row =>
             {
-                row.AddCells("Garply", "Waldo");
+                row.AddCell("Garply");
+                row.AddCell("Waldo");
                 row.AddCell(
                     "Fred",
                     cell => cell.PortName = "port1"
