@@ -12,12 +12,23 @@ namespace GiGraph.Dot.Tests
         public void converts_node_to_html_node_from_html_text()
         {
             var graph = new DotGraph();
-            graph.Nodes.Add("node1")
-               .ToHtmlNode("<b>label</b>");
+            graph.Nodes.Add("node1").ToHtmlNode("<b>label</b>");
 
             Snapshot.Match(
                 graph.Build(),
-                "graph_with_html_node_from_html_text"
+                "graph_with_html_node_from_html_string"
+            );
+        }
+
+        [Fact]
+        public void converts_node_to_plain_html_node_from_html_text()
+        {
+            var graph = new DotGraph();
+            graph.Nodes.Add("node1").ToPlainHtmlNode("<b>label</b>");
+
+            Snapshot.Match(
+                graph.Build(),
+                "graph_with_plain_html_node_from_html_string"
             );
         }
 
@@ -34,12 +45,23 @@ namespace GiGraph.Dot.Tests
         public void converts_node_to_html_node_from_html_entity()
         {
             var graph = new DotGraph();
-            graph.Nodes.Add("node1")
-               .ToHtmlNode(new DotHtmlTable());
+            graph.Nodes.Add("node1").ToHtmlNode(new DotHtmlTable());
 
             Snapshot.Match(
                 graph.Build(),
                 "graph_with_html_node_from_html_entity"
+            );
+        }
+
+        [Fact]
+        public void converts_node_to_plain_html_node_from_html_entity()
+        {
+            var graph = new DotGraph();
+            graph.Nodes.Add("node1").ToPlainHtmlNode(new DotHtmlTable());
+
+            Snapshot.Match(
+                graph.Build(),
+                "graph_with_plain_html_node_from_html_entity"
             );
         }
     }

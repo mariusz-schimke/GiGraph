@@ -2,15 +2,15 @@
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Edges;
 
-namespace GiGraph.Dot.Examples.Basic
+namespace GiGraph.Dot.Examples.Html
 {
-    public static class HtmlStringNodes
+    public static class HtmlTableStringNode
     {
         public static DotGraph Generate()
         {
             var graph = new DotGraph();
 
-            graph.Nodes.Add("Bar").ToHtmlNode
+            graph.Nodes.Add("Bar").ToPlainHtmlNode
             (
                 @"<TABLE BORDER=""0"" CELLBORDER=""1"" CELLSPACING=""0"" CELLPADDING=""4"">
                     <TR>

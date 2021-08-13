@@ -1,4 +1,4 @@
 ﻿digraph
 {
-    node1 [ label = <<table></table>>, shape = plain ]
+    node1 [ label = <<table></table>> ]
 }

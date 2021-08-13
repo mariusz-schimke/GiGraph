@@ -5,9 +5,9 @@ using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.Html.Table;
 
-namespace GiGraph.Dot.Examples.Basic
+namespace GiGraph.Dot.Examples.Html
 {
-    public static class HtmlElementNodes
+    public static class HtmlTableNode
     {
         public static DotGraph Generate()
         {
@@ -69,7 +69,7 @@ namespace GiGraph.Dot.Examples.Basic
                 )
             );
 
-            graph.Nodes.Add("Bar").ToHtmlNode(table);
+            graph.Nodes.Add("Bar").ToPlainHtmlNode(table);
 
             // the following line is equivalent to the next one as far as visualization is concerned
             graph.Edges.Add("Foo", "Bar").Attributes.Head.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
