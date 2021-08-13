@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Entities.Labels
         ///     </see>
         ///     . If the text represents a record, its format should follow the rules described in the
         ///     <see href="http://www.graphviz.org/doc/info/shapes.html#record">
-        ///         record node documentation
+        ///         record-shaped node documentation
         ///     </see>
         ///     .
         /// </summary>

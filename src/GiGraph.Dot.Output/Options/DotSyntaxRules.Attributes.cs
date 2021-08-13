@@ -23,12 +23,12 @@ namespace GiGraph.Dot.Output.Options
             public virtual IDotTextEscaper EscapeStringValueEscaper { get; set; } = DotTextEscapingPipeline.ForEscapeString();
 
             /// <summary>
-            ///     A text escaper to use for fields of record node labels.
+            ///     A text escaper to use for fields of record-shaped node labels.
             /// </summary>
             public virtual IDotTextEscaper RecordLabelValueFieldEscaper { get; set; } = DotTextEscapingPipeline.ForRecordLabelField();
 
             /// <summary>
-            ///     A text escaper to use for ports of record node labels.
+            ///     A text escaper to use for ports of record-shaped node labels.
             /// </summary>
             public virtual IDotTextEscaper RecordLabelValuePortEscaper { get; set; } = DotTextEscapingPipeline.ForRecordLabelPort();
 

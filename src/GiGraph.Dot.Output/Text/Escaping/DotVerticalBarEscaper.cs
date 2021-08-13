@@ -1,7 +1,7 @@
 ﻿namespace GiGraph.Dot.Output.Text.Escaping
 {
     /// <summary>
-    ///     Escapes vertical bars (|). Use for escaping text of record node fields.
+    ///     Escapes vertical bars (|). Use for escaping text of record-shaped node fields.
     /// </summary>
     public class DotVerticalBarEscaper : IDotTextEscaper
     {

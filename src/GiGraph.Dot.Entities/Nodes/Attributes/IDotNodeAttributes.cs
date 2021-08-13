@@ -31,9 +31,9 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         /// <summary>
         ///     <para>
         ///         Gets or sets the label to display on the node. It may be plain text (<see cref="string" />), HTML (
-        ///         <see cref="DotHtmlLabel" />), or a record (<see cref="DotRecordLabel" />) for a record-based node (when
-        ///         <see cref="Shape" /> = <see cref="DotNodeShape.Record" /> or <see cref="Shape" /> =
-        ///         <see cref="DotNodeShape.RoundedRecord" />). When not specified, node identifier is used.
+        ///         <see cref="DotHtmlString" />), or a record (<see cref="DotRecord" />) for a record-shaped node (when <see cref="Shape" />
+        ///         = <see cref="DotNodeShape.Record" /> or <see cref="Shape" /> = <see cref="DotNodeShape.RoundedRecord" />). When not
+        ///         specified, node identifier is used.
         ///     </para>
         ///     <para>
         ///         See also <see cref="DotFormattedTextBuilder" /> for text justification and simple formatting,

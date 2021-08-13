@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Types.Records
     /// <summary>
     ///     Represents a record that can be used as the label of a
     ///     <see href="http://www.graphviz.org/doc/info/shapes.html#record">
-    ///         record-based node
+    ///         record-shaped node
     ///     </see>
     ///     .
     /// </summary>
@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Types.Records
         /// </summary>
         /// <param name="flip">
         ///     Determines whether the orientation of the record should be changed from horizontal to vertical, or the other way round. The
-        ///     initial orientation of a record node depends on the layout direction of the graph. If set to
+        ///     initial orientation of a record-shaped node depends on the layout direction of the graph. If set to
         ///     <see cref="DotLayoutDirection.TopToBottom" /> (the default) or <see cref="DotLayoutDirection.BottomToTop" />, corresponding
         ///     to vertical layouts, the top-level fields in a record are displayed horizontally. If, however, the direction is
         ///     <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to horizontal
@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Types.Records
         /// </param>
         /// <param name="flip">
         ///     Determines whether the orientation of the record should be changed from horizontal to vertical, or the other way round. The
-        ///     initial orientation of a record node depends on the layout direction of the graph. If set to
+        ///     initial orientation of a record-shaped node depends on the layout direction of the graph. If set to
         ///     <see cref="DotLayoutDirection.TopToBottom" /> (the default) or <see cref="DotLayoutDirection.BottomToTop" />, corresponding
         ///     to vertical layouts, the top-level fields in a record are displayed horizontally. If, however, the direction is
         ///     <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to horizontal
@@ -74,7 +74,7 @@ namespace GiGraph.Dot.Types.Records
         /// </summary>
         /// <param name="flip">
         ///     Determines whether the orientation of the record should be changed from horizontal to vertical, or the other way round. The
-        ///     initial orientation of a record node depends on the layout direction of the graph. If set to
+        ///     initial orientation of a record-shaped node depends on the layout direction of the graph. If set to
         ///     <see cref="DotLayoutDirection.TopToBottom" /> (the default) or <see cref="DotLayoutDirection.BottomToTop" />, corresponding
         ///     to vertical layouts, the top-level fields in a record are displayed horizontally. If, however, the direction is
         ///     <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to horizontal
@@ -107,7 +107,7 @@ namespace GiGraph.Dot.Types.Records
         /// </param>
         /// <param name="flip">
         ///     Determines whether the orientation of the record should be changed from horizontal to vertical, or the other way round. The
-        ///     initial orientation of a record node depends on the layout direction of the graph. If set to
+        ///     initial orientation of a record-shaped node depends on the layout direction of the graph. If set to
         ///     <see cref="DotLayoutDirection.TopToBottom" /> (the default) or <see cref="DotLayoutDirection.BottomToTop" />, corresponding
         ///     to vertical layouts, the top-level fields in a record are displayed horizontally. If, however, the direction is
         ///     <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to horizontal
@@ -126,7 +126,7 @@ namespace GiGraph.Dot.Types.Records
         /// </param>
         /// <param name="flip">
         ///     Determines whether the orientation of the record should be changed from horizontal to vertical, or the other way round. The
-        ///     initial orientation of a record node depends on the layout direction of the graph. If set to
+        ///     initial orientation of a record-shaped node depends on the layout direction of the graph. If set to
         ///     <see cref="DotLayoutDirection.TopToBottom" /> (the default) or <see cref="DotLayoutDirection.BottomToTop" />, corresponding
         ///     to vertical layouts, the top-level fields in a record are displayed horizontally. If, however, the direction is
         ///     <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to horizontal
@@ -144,7 +144,7 @@ namespace GiGraph.Dot.Types.Records
 
         /// <summary>
         ///     Gets or sets the value indicating whether the orientation of the record should be changed from horizontal to vertical, or the
-        ///     other way round. The initial orientation of a record node depends on the layout direction of the graph. If set to
+        ///     other way round. The initial orientation of a record-shaped node depends on the layout direction of the graph. If set to
         ///     <see cref="DotLayoutDirection.TopToBottom" /> (the default) or <see cref="DotLayoutDirection.BottomToTop" />, corresponding
         ///     to vertical layouts, the top-level fields in a record are displayed horizontally. If, however, the direction is
         ///     <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to horizontal

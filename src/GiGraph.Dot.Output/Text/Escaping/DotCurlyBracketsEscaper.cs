@@ -1,7 +1,7 @@
 ﻿namespace GiGraph.Dot.Output.Text.Escaping
 {
     /// <summary>
-    ///     Escapes curly brackets ({, }). Use for escaping text of record node fields.
+    ///     Escapes curly brackets ({, }). Use for escaping text of record-shaped node fields.
     /// </summary>
     public class DotCurlyBracketsEscaper : IDotTextEscaper
     {

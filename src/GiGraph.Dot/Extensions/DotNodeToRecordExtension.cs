@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Extensions
     public static class DotNodeToRecordExtension
     {
         /// <summary>
-        ///     Converts the current node to a record node.
+        ///     Converts the current node to a record-shaped node.
         /// </summary>
         /// <param name="node">
         ///     The current node.
@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Extensions
         }
 
         /// <summary>
-        ///     Converts the current node to a record node composed using a builder.
+        ///     Converts the current node to a record-shaped node composed using a builder.
         /// </summary>
         /// <param name="node">
         ///     The current node.
