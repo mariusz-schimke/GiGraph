@@ -35,11 +35,11 @@ namespace GiGraph.Dot.Entities.Labels
         ///     <see href="http://www.graphviz.org/doc/info/shapes.html#html">
         ///         documentation
         ///     </see>
-        ///     . Pass <see cref="string" /> to convert it implicitly to the required <see cref="DotHtmlString" /> type.
+        ///     .
         /// </param>
-        public DotHtmlLabel(DotHtmlString html)
+        public DotHtmlLabel(string html)
         {
-            _value = html ?? throw new ArgumentNullException(nameof(html), "HTML string must not be null.");
+            _value = (DotHtmlString) html ?? throw new ArgumentNullException(nameof(html), "HTML string must not be null.");
         }
 
         protected internal override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
