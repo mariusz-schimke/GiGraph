@@ -14,11 +14,12 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         public void entity_factory_method_generates_font_with_attributes_and_entity_as_content()
         {
             var font = new DotFont("Arial", 20, Color.Blue);
+            var styledFont = new DotStyledFont(font);
 
             var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
 
             var entity1 = DotHtmlFont.WithEntity(entityCollection, font);
-            var entity2 = DotHtmlFont.WithEntity(entityCollection, font.Name, font.Size, font.Color);
+            var entity2 = DotHtmlFont.WithEntity(entityCollection, styledFont);
 
             Assert.Equal((string) entity1.ToHtml(), entity2.ToHtml());
 
@@ -32,11 +33,12 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         public void entity_factory_method_generates_font_without_attributes_with_entity_as_content()
         {
             var font = new DotFont();
+            var styledFont = new DotStyledFont(font);
 
             var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
 
             var entity1 = DotHtmlFont.WithEntity(entityCollection, font);
-            var entity2 = DotHtmlFont.WithEntity(entityCollection, font.Name, font.Size, font.Color);
+            var entity2 = DotHtmlFont.WithEntity(entityCollection, styledFont);
 
             Assert.Equal((string) entity1.ToHtml(), entity2.ToHtml());
 
@@ -53,13 +55,10 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
 
             var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
 
-            var entity1 = DotHtmlFont.WithEntity(entityCollection, font);
-            var entity2 = DotHtmlFont.WithEntity(entityCollection, font.Name, font.Size, font.Color, font.Style);
-
-            Assert.Equal((string) entity1.ToHtml(), entity2.ToHtml());
+            var entity = DotHtmlFont.WithEntity(entityCollection, font);
 
             Snapshot.Match(
-                ((IDotHtmlEntity) entity1).ToHtml(_syntaxOptions, _syntaxRules),
+                ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),
                 "html_styled_font_with_attributes_and_entity"
             );
         }
@@ -71,13 +70,10 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
 
             var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
 
-            var entity1 = DotHtmlFont.WithEntity(entityCollection, font);
-            var entity2 = DotHtmlFont.WithEntity(entityCollection, font.Name, font.Size, font.Color, font.Style);
-
-            Assert.Equal((string) entity1.ToHtml(), entity2.ToHtml());
+            var entity = DotHtmlFont.WithEntity(entityCollection, font);
 
             Snapshot.Match(
-                ((IDotHtmlEntity) entity1).ToHtml(_syntaxOptions, _syntaxRules),
+                ((IDotHtmlEntity) entity).ToHtml(_syntaxOptions, _syntaxRules),
                 "html_styled_font_without_attributes_with_entity"
             );
         }

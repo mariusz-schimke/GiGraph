@@ -49,7 +49,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.Builder
                .AppendStyled(DotFontStyles.Bold, f => f.AppendText("bold text"))
                .AppendStyled(DotFontStyles.Normal, f => f.AppendText("normal text"))
                .AppendStyledText("styled text\n", new DotStyledFont(DotFontStyles.Bold, "arial", 10, Color.Red), DotHorizontalAlignment.Left)
-               .AppendStyledText("font\n", new DotFont("arial", 10, Color.Red), DotHorizontalAlignment.Left)
+               .AppendText("font\n", new DotFont("arial", 10, Color.Red), DotHorizontalAlignment.Left)
                .AppendStyledText("bold text 1\n", DotFontStyles.Bold, DotHorizontalAlignment.Right)
                .AppendImage("image.png", DotImageScaling.None)
                .AppendTable(t => t.AddRow(r => r.AddCell("cell")))
