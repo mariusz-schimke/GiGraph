@@ -829,7 +829,7 @@ graph.Edges.Add(edge);
 
 An edge may have an arrowhead next to its head and/or tail node. By default, in a directed graph, an arrowhead appears only near the head node, but this behavior may be modified by setting the *Directions* property on an edge or globally in the edge collection's attributes on the graph. By setting this property you can choose whether the arrowhead appears next to the head node, next to the tail node, on both sides of the edge, or not at all.
 
-The shape of the arrowhead may be [customized](http://www.graphviz.org/doc/info/arrows.html) and there are 42 possible combinations of shapes based on the set of 11 basic shapes. The combinations include:
+The shape of the arrowhead may be <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">customized</a>, and there are 42 possible combinations of shapes based on the set of 11 basic shapes. The combinations include:
 
 - a filled and an empty version of a shape,
 - side clipping that leaves visible only the part to the left or to the right of an edge.
