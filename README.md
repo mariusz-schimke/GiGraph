@@ -37,7 +37,7 @@ For a complete documentation of the DOT language and visualization capabilities 
     + [Global (default) attributes](#global--default--attributes)
     + [Label justification and styling](#label-justification-and-styling)
       - [Label justification](#label-justification)
-      - [Label content placeholders](#label-content-placeholders)
+      - [Label placeholders](#label-placeholders)
       - [HTML-styled label](#html-styled-label)
   * [Nodes](#nodes)
     + [Record nodes](#record-nodes)
@@ -351,7 +351,7 @@ digraph
 </p>
 
 
-#### Label content placeholders
+#### Label placeholders
 
 The text assigned to any *DotLabel* or <a href="http://www.graphviz.org/docs/attr-types/escString" target="_blank">DotEscapeString</a> type attribute may contain placeholders. On graph visualization they are replaced with, for example, the graph identifier, the identifier of the current node, the definition of the current edge etc. You may use them in text by concatenating fragments of the text with predefined placeholders exposed by the *DotEscapeString* class, or choose the *DotFormattedTextBuilder* class to compose the text more intuitively.
 
