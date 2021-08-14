@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
         ///         If Graphviz is not built with a high-level font library, <see cref="Name" /> will be considered the name of a Type 1 or
         ///         True Type font file. If you specify <see cref="Name" /> = "schlbk", the tool will look for a file named schlbk.ttf or
         ///         schlbk.pfa or schlbk.pfb in one of the directories specified by the <see cref="DotGraphFontAttributes.Directories" />
-        ///         attribute of graph <see cref="DotGraphAttributes.Font" />. The lookup does support various aliases for the common fonts.
+        ///         attribute of graph <see cref="IDotGraphAttributesRoot.Font" />. The lookup does support various aliases for the common fonts.
         ///     </para>
         /// </summary>
         string Name { get; set; }

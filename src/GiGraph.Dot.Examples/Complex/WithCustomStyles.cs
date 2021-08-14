@@ -81,7 +81,7 @@ namespace GiGraph.Dot.Examples.Complex
                     node.Color = Color.Transparent;
 
                     // set style to striped
-                    node.SetStriped(
+                    node.Attributes.SetStriped(
                         new DotWeightedColor(Color.Navy, 0.1),
                         Color.RoyalBlue,
                         Color.Turquoise,

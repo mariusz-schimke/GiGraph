@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         DotNodeImageAttributes Image { get; }
 
         /// <summary>
-        ///     Node geometry properties applicable if <see cref="Shape" /> is set to <see cref="DotNodeShape.Polygon" />.
+        ///     Node geometry properties applicable if <see cref="IDotNodeAttributes.Shape" /> is set to <see cref="DotNodeShape.Polygon" />.
         /// </summary>
         DotNodeGeometryAttributes Geometry { get; }
 

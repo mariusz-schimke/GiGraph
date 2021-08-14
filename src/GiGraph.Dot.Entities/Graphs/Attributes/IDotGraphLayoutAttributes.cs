@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
 
         /// <summary>
-        ///     If true, all node <see cref="DotNodeAttributes.ExternalLabel" /> and edge <see cref="DotEdgeAttributes.ExternalLabel" />
+        ///     If true, all node <see cref="IDotNodeAttributes.ExternalLabel" /> and edge <see cref="DotEdgeAttributes.ExternalLabel" />
         ///     attributes are placed, even if there is some overlap with nodes or other labels (default: true).
         /// </summary>
         bool? ForceExternalLabels { get; set; }

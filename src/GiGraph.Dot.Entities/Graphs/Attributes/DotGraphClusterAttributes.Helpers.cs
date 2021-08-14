@@ -25,12 +25,12 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// </param>
         /// <param name="angle">
         ///     The angle of the fill. Note that this attribute is shared with the parent graph (see
-        ///     <see cref="DotGraphCanvasAttributes.GradientFillAngle" /> of graph <see cref="DotGraphAttributes.Canvas" />), and will
+        ///     <see cref="DotGraphCanvasAttributes.GradientFillAngle" /> of graph <see cref="IDotGraphAttributesRoot.Canvas" />), and will
         ///     overwrite its current value if already set there.
         /// </param>
         /// <param name="radial">
         ///     Determines whether to use a radial-style gradient fill. Note that this attribute is shared with the parent graph (see
-        ///     <see cref="DotGraphAttributes.Style" />), and will overwrite its current value if already set there.
+        ///     <see cref="IDotGraphAttributes.Style" />), and will overwrite its current value if already set there.
         /// </param>
         public virtual void SetFilled(DotGradientColor color, int? angle = null, bool radial = false)
         {

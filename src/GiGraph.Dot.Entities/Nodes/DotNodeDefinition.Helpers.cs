@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Nodes
     public abstract partial class DotNodeDefinition
     {
         /// <summary>
-        ///     Sets a wedged fill, assuming that the node has an elliptical shape (see <see cref="DotNodeAttributes.Shape" />).
+        ///     Sets a wedged fill, assuming that the node has an elliptical shape (see <see cref="IDotNodeAttributes.Shape" />).
         /// </summary>
         /// <param name="colors">
         ///     The colors to use for consecutive wedges. Proportions for individual wedges may be specified optionally by using a
@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Nodes
         }
 
         /// <summary>
-        ///     Sets a wedged fill, assuming that the node has an elliptical shape (see <see cref="DotNodeAttributes.Shape" />).
+        ///     Sets a wedged fill, assuming that the node has an elliptical shape (see <see cref="IDotNodeAttributes.Shape" />).
         /// </summary>
         /// <param name="colors">
         ///     The colors to use for consecutive wedges. Proportions for individual wedges may be specified optionally by using a
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Nodes
         ///     Converts the current node to a polygon shape.
         /// </summary>
         /// <param name="sides">
-        ///     The number of sides if <see cref="DotNodeAttributes.Shape" /> is set to <see cref="DotNodeShape.Polygon" /> (default: 4,
+        ///     The number of sides if <see cref="IDotNodeAttributes.Shape" /> is set to <see cref="DotNodeShape.Polygon" /> (default: 4,
         ///     minimum: 0).
         /// </param>
         /// <param name="regular">
@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Nodes
         ///     the node (default: false).
         /// </param>
         /// <param name="peripheries">
-        ///     Sets the number of peripheries used in polygonal shapes (<see cref="DotNodeAttributes.Shape" />). The default value is shape
+        ///     Sets the number of peripheries used in polygonal shapes (<see cref="IDotNodeAttributes.Shape" />). The default value is shape
         ///     dependent, the minimum value is 0. Note that
         ///     <see href="http://www.graphviz.org/doc/info/shapes.html#epsf">
         ///         user-defined shapes
@@ -53,16 +53,16 @@ namespace GiGraph.Dot.Entities.Nodes
         ///     bounding rectangle. Setting peripheries to 0 will turn this off.
         /// </param>
         /// <param name="rotation">
-        ///     Angle, in degrees, used to rotate polygon node shapes (<see cref="DotNodeAttributes.Shape" /> =
+        ///     Angle, in degrees, used to rotate polygon node shapes (<see cref="IDotNodeAttributes.Shape" /> =
         ///     <see cref="DotNodeShape.Polygon" />). For any number of polygon sides, 0 degrees rotation results in a flat base. Default: 0,
         ///     maximum: 360.
         /// </param>
         /// <param name="skew">
-        ///     Skew factor for <see cref="DotNodeAttributes.Shape" /> set to <see cref="DotNodeShape.Polygon" /> (default: 0, minimum:
+        ///     Skew factor for <see cref="IDotNodeAttributes.Shape" /> set to <see cref="DotNodeShape.Polygon" /> (default: 0, minimum:
         ///     -100). Positive values skew top of polygon to right; negative to left.
         /// </param>
         /// <param name="distortion">
-        ///     Distortion factor for <see cref="DotNodeAttributes.Shape" /> set to <see cref="DotNodeShape.Polygon" /> (default: 0, minimum:
+        ///     Distortion factor for <see cref="IDotNodeAttributes.Shape" /> set to <see cref="DotNodeShape.Polygon" /> (default: 0, minimum:
         ///     -100). Positive values cause top part to be larger than bottom; negative values do the opposite.
         /// </param>
         public virtual void SetPolygonal(
