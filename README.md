@@ -166,7 +166,7 @@ var graph = new DotGraph(strict: true);
 
 Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrow head shape, and various others, depending on the context. When an attribute is not specified explicitly, its default value depends on the graph layout engine you use for visualization (see <a href="http://www.graphviz.org/doc/info/attrs.html" target="_blank">Graphviz documentation</a>). That default value is usually stated in the comment of the associated property.
 
-There over 170 different attributes listed in the <a href="http://www.graphviz.org/doc/info/attrs.html" target="_blank">documentation</a>, that may be set on the graph or on its elements. The library lets you set most of them conveniently by using properties on attribute collections available on the graph and other elements. Below are a few examples of setting attributes on the graph, on a node and on an edge:
+There are over 170 different attributes listed in the <a href="http://www.graphviz.org/doc/info/attrs.html" target="_blank">documentation</a>, that may be set on the graph or on its elements. The library lets you set most of them conveniently by using properties on attribute collections available on the graph and other elements. Below are a few examples of setting attributes on the graph, on a node and on an edge:
 
 ```c#
 graph.Attributes.Label = "My graph";
@@ -326,8 +326,8 @@ graph.Nodes.Add("Foo", attrs =>
     // use text formatter
     attrs.Label = new DotFormattedTextBuilder()
         .AppendLine("Centered line")
-        .AppendLineLeftJustified("Left-justified line")
-        .AppendLineRightJustified("Right-justified line")
+        .AppendLeftJustifiedLine("Left-justified line")
+        .AppendRightJustifiedLine("Right-justified line")
         .ToFormattedText();
 
     // or string concatenation
@@ -423,7 +423,7 @@ The <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">
 
 For a complete list of supported elements and their attributes, you can study the <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">documentation</a> and compose an HTML label by yourself, but there is an easier way. The *DotHtmlBuilder* class lets you compose and style a label with the set of HTML elements that Graphviz does support.
 
-Consider the following example. For simplicity, it's uses only a narrow subset of methods provided by the builder.
+Consider the following example. For simplicity, it uses only a narrow subset of methods provided by the builder.
 
 ```c#
 var graph = new DotGraph();
@@ -520,7 +520,7 @@ digraph
 
 ### Record nodes
 
-The shape of a node is determined by the *Shape* attribute. By default it is an ellipse with a label, but you may change it to any other shape accepted by your Graphviz visualization tool. All supported shapes are available under the *DotNodeShape* enumeration, but two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use either of these as the *Shape* attribute, you may assign a record (*DotRecord*) to the node. In such case the node will be presented in a table-like form.
+The shape of a node is determined by the *Shape* attribute. By default it is an ellipse with a label, but you may change it to any other shape accepted by your Graphviz visualization tool. All supported shapes are available under the *DotNodeShape* enumeration, but two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use either of these as the *Shape* attribute, you may assign a record (*DotRecord*) to the node. In that case the node will be presented in a table-like form.
 
 ```c#
 // for convenience, just use the ToRecordNode or ToRoundedRecordNode extension method on a node
@@ -1364,7 +1364,7 @@ digraph
 
 ### Clusters as endpoints
 
-Clusters may be used as endpoints. In such case the edge is clipped to cluster border instead of being connected to a node inside the cluster. To achieve that, define an edge that joins any node with a node inside the cluster. Then, on the edge endpoint inside the cluster, assign the identifier of that cluster to the *ClusterId* attribute. First of all, however, enable clipping edges to cluster borders by setting the *AllowEdgeClipping* attribute for clusters on the graph. The following example presents the complete idea.
+Clusters may be used as endpoints. In such case the edge is clipped to the cluster border instead of being connected to a node inside the cluster. To achieve that, define an edge that joins any node with a node inside the cluster. Then, on the edge endpoint inside the cluster, assign the identifier of that cluster to the *ClusterId* attribute. First of all, however, enable clipping edges to cluster borders by setting the *AllowEdgeClipping* attribute for clusters on the graph. The following example presents the complete idea.
 
 ```c#
 var graph = new DotGraph();
@@ -1404,7 +1404,7 @@ digraph
 
 
 
-Note that for some layout engines (see *fdp*) cluster ID has to be specified directly as an edge endpoint identifier. To do that, use the *DotClusterEndpoint* class as an endpoint, with an identifier of the cluster to be used as the endpoint. Se the example below.
+Note that for some layout engines (see *fdp*) cluster ID has to be specified directly as an edge endpoint identifier. To do that, use the *DotClusterEndpoint* class as an endpoint, with an identifier of the cluster to be used as the endpoint. See the example below.
 
 ```c#
 var graph = new DotGraph();
@@ -1983,11 +1983,11 @@ By design, the library generates the output DOT script with elements written in 
 * nodes,
 * edges.
 
-The DOT grammar, however, lets you place individual elements in the script in any order. It may have impact on the way the graph is laid out, or what attributes are actually applied to specific elements on visualization.
+The DOT grammar, however, lets you place individual elements in the script in any order. It may have an impact on the way the graph is laid out, or what attributes are actually applied to specific elements on visualization.
 
 The subsections, as they are called in the library, are separate groups of elements. They are written consecutively, one section after another, in the order they are added to the collection of subsections on the graph instance level. The elements in each such section, on the other hand, are written in the order mentioned earlier.
 
-⚠️ By using subsections you can split the DOT script into multiple sections, and, for instance, set different global attributes in any of them. Remember, however, that attributes set in one section have impact on the elements that follow them in the output script. So as long as sections are written consecutively, setting attributes in any of them has impact not only on the elements in that specific section, but also on elements in the sections that follow it.
+⚠️ By using subsections you can split the DOT script into multiple sections, and, for instance, set different global attributes in any of them. Remember, however, that attributes set in one section have an impact on the elements that follow them in the output script. So as long as sections are written consecutively, setting attributes in any of them has an impact not only on the elements in that specific section, but also on elements in the sections that follow it.
 
 *❗️ Note that in most cases you won't probably need to split the DOT script into sections. They give you the flexibility to control the order individual elements or groups of elements are written, but it isn't usually necessary. When you want to specify attributes for specific groups of elements of the graph, you will probably prefer using [subgraphs](#subgraphs), as they give you more granular control over the elements they contain, without affecting others.*
 
