@@ -595,7 +595,7 @@ graph.Nodes.Add("Bar").ToRecordNode(rb =>
 
 
 
-❕ Note that record fields support [line justification](#label-justification) and [placeholders](#label-content-placeholders), and the same *DotRecordBuilder* class handles these too.
+❕ Note that record fields support [line justification](#label-justification) and [placeholders](#label-placeholders), and the same *DotRecordBuilder* class handles these too.
 
 
 
