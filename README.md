@@ -655,7 +655,7 @@ See also a similar example in the [HTML-styled nodes](#html-styled-nodes) sectio
 
 As already indicated in the [HTML-styled label](#html-styled-label) section, nodes, among other elements, may have an HTML label assigned. This way you can handle more complex node content arrangement and styling scenarios than in a record node for instance.
 
-The example below presents an HTML table visualized as a node. For simple text styling, please refer to the [HTML-styled label](#html-styled-label) section.
+The example below presents a node visualized as a table composed using HTML. For simple text styling, please refer to the [HTML-styled label](#html-styled-label) section.
 
 ```c#
 var graph = new DotGraph();
