@@ -239,9 +239,9 @@ Console.WriteLine(meta.Key);
 
 
 
-### Global attributes
+### Global (default) attributes
 
-Node and edge attributes may be specified on the graph, on the subgraph, or on the cluster level. This way the attributes (by the library design), apply to all elements on that level, and you don't have to specify them individually, per element. This approach comes in handy when you want to apply certain styling, for instance, to all elements of the graph or subgraph/cluster at once. Attributes may be set directly on individual elements at the same time to override or extend the attributes set globally.
+Node and edge attributes may be specified on the graph, on the subgraph, or on the cluster level. This way the attributes (by the library design), apply to all elements on that level, and you don't have to specify them individually, per element. This approach comes in handy when you want to apply certain styling, for instance, to all elements of the graph or subgraph/cluster at once. Attributes may be set directly on individual elements at the same time to override or extend the list of attributes set globally.
 
 ```c#
 // node attributes on graph level (they apply to all nodes of the graph)
@@ -261,7 +261,9 @@ digraph
 }
 ```
 
-In some cases, when setting global attributes, you will want to restore the attributes of specific elements to their *default* values used by the visualization engine. It may be achieved for some types of attributes by assigning them a blank value. The library, however, is designed in such a way that it does not render attributes with *null* values assigned to their corresponding properties. But there is a workaround: you may use the *Nullify* method on a collection of attributes, and specify the attribute to nullify either by a lambda expression (recommended), or by its key.
+
+
+There might be cases when you will want to restore some attributes of specific elements to their *default* values used by the visualization engine. It may be achieved for some types of attributes by assigning them a blank value. The library, however, is designed in such a way that it does not render attributes with *null* values assigned to their corresponding properties. But there is a workaround: you may use the *Nullify* method on a collection of attributes, and specify the attribute to nullify either by a lambda expression (recommended), or by its key.
 
 Consider the following example:
 
@@ -301,78 +303,15 @@ digraph
 </p>
 
 
-### Label
+### Label justification and styling
 
-Label is a textual attribute you may assign to the root graph and clusters (as a title), to nodes (as the text displayed within them), and to edges (as the text displayed next to them). It may either be plain text, or formatted text; you may also justify its individual lines.
-
-#### Label formatting
-
-The text assigned to any [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type attribute (mainly label) may contain special escape sequences. On graph visualization they are replaced with, for example, the graph identifier, the identifier of the current node, the definition of the current edge etc. You may use them in text by concatenating fragments of the text with predefined escape sequences exposed by the *DotEscapeString* class, or simply use the *DotTextFormatter* class to build your text.
-
-*⚠️ Note that if you prefer using string concatenation, the escape sequences provided by the DotEscapeString class should not be used as parameters of the string.Format method or of an interpolated string. The result text will not be valid in such cases.*
-
-Below is an example presenting labels with element-specific escape sequences embedded, replaced with actual element identifiers on graph visualization.
-
-```c#
-var graph = new DotGraph("Label formatting");
-
-// use text formatter
-graph.Attributes.Label = new DotTextFormatter("Graph title: ")
-    .AppendGraphId() // graph ID escape sequence
-    .ToFormattedText();
-
-// or string concatenation
-graph.Attributes.Label = "Graph title: " + DotEscapeString.GraphId;
-
-
-graph.Nodes.Add("Foo", attrs =>
-{
-    // use text formatter
-    attrs.Label = new DotTextFormatter("Node ")
-        .AppendNodeId() // node ID escape sequence
-        .ToFormattedText();
-
-    // or string concatenation
-    attrs.Label = "Node " + DotEscapeString.NodeId;
-});
-
-
-graph.Edges.Add("Foo", "Bar", edge =>
-{
-    // use text formatter
-    edge.Attributes.Label = new DotTextFormatter("From ")
-        .AppendEdgeTailNodeId() // tail node ID escape sequence
-        .Append(" to ")
-        .AppendEdgeHeadNodeId() // head node ID escape sequence
-        .ToFormattedText();
-
-    // or string concatenation
-    edge.Attributes.Label = "From " + DotEscapeString.EdgeTailNodeId +
-        " to " + DotEscapeString.EdgeHeadNodeId;
-});
-```
-
-```dot
-digraph "Label formatting"
-{
-    label = "Graph title: \G"
-
-    Foo [ label = "Node \N" ]
-
-    Foo -> Bar [ label = "From \T to \H" ]
-}
-```
-
-<p align="center">
-  <img src="./Assets/Examples/label-identifiers.svg">
-</p>
-
+Label is a textual attribute you may assign to the root graph and clusters (as a title), to nodes (as the text displayed within them), and to edges (as the text displayed next to them). It may be plain text, formatted text with special placeholders (escape sequences) or basic, Graphviz-specific HTML.
 
 
 
 #### Label justification
 
-The Graphviz [escString](http://www.graphviz.org/doc/info/attrs.html#k:escString) type also supports escape sequences that left- or right-justify individual lines of label text. Below is an example how to format text using them implicitly (by *DotTextFormatter*) or explicitly (by string concatenation).
+The lines of text assigned to any *DotLabel* or <a href="http://www.graphviz.org/docs/attr-types/escString" target="_blank">DotEscapeString</a> type attribute may contain special escape sequences that left- or right-justify them. Below is an example how to format text using them implicitly (by the use of the *DotFormattedTextBuilder* class) or explicitly (by string concatenation).
 
 ```c#
 graph.Nodes.Add("Foo", attrs =>
@@ -381,7 +320,7 @@ graph.Nodes.Add("Foo", attrs =>
     attrs.Width = 3;
 
     // use text formatter
-    attrs.Label = new DotTextFormatter()
+    attrs.Label = new DotFormattedTextBuilder()
         .AppendLine("Centered line")
         .AppendLineLeftJustified("Left-justified line")
         .AppendLineRightJustified("Right-justified line")
@@ -405,6 +344,76 @@ digraph
   <img src="./Assets/Examples/label-justification.svg">
 </p>
 
+
+#### Label content placeholders
+
+The text assigned to any *DotLabel* or <a href="http://www.graphviz.org/docs/attr-types/escString" target="_blank">DotEscapeString</a> type attribute may contain placeholders. On graph visualization they are replaced with, for example, the graph identifier, the identifier of the current node, the definition of the current edge etc. You may use them in text by concatenating fragments of the text with predefined placeholders exposed by the *DotEscapeString* class, or choose the *DotFormattedTextBuilder* class to compose the text more intuitively.
+
+Below is an example presenting labels with element-specific escape sequences embedded, replaced with actual element identifiers on graph visualization.
+
+```c#
+var graph = new DotGraph("Label formatting");
+
+// formatted text builder
+graph.Attributes.Label = new DotFormattedTextBuilder("Graph title: ")
+    .AppendGraphId() // graph ID placeholder
+    .ToFormattedText();
+
+// the same effect by string concatenation
+graph.Attributes.Label = "Graph title: " + DotEscapeString.GraphId;
+
+
+graph.Nodes.Add("Foo", attrs =>
+{
+    // formatted text builder
+    attrs.Label = new DotFormattedTextBuilder("Node ")
+        .AppendNodeId() // node ID placeholder
+        .ToFormattedText();
+
+    // the same effect by string concatenation
+    attrs.Label = "Node " + DotEscapeString.NodeId;
+});
+
+
+graph.Edges.Add("Foo", "Bar", edge =>
+{
+    // formatted text builder
+    edge.Attributes.Label = new DotFormattedTextBuilder("From ")
+        .AppendTailNodeId() // tail node ID placeholder
+        .Append(" to ")
+        .AppendHeadNodeId() // head node ID placeholder
+        .ToFormattedText();
+
+    // the same effect by string concatenation
+    edge.Attributes.Label = "From " + DotEscapeString.TailNodeId +
+        " to " + DotEscapeString.HeadNodeId;
+});
+```
+
+```dot
+digraph "Label formatting"
+{
+    label = "Graph title: \G"
+
+    Foo [ label = "Node \N" ]
+
+    Foo -> Bar [ label = "From \T to \H" ]
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/label-identifiers.svg">
+</p>
+
+
+
+*⚠️ Note that if you prefer using string concatenation to embed mentioned escape sequences in your text, they should not be used as parameters of the string.Format method or of an interpolated string. The result would be treated as string then and the placeholders would just remain in the text when the graph is visualized.*
+
+
+
+#### HTML-styled label
+
+!!! TODO !!!
 
 
 
