@@ -417,7 +417,64 @@ digraph "Label formatting"
 
 #### HTML-styled label
 
-!!! TODO !!!
+When it comes to customizing labels in terms of font, its size, color and style, the basic Graphviz-specific HTML is the only available solution. 
+
+The <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">Graphviz documentation</a> states that *the features and syntax supported by [...] labels are modeled on HTML. However, there are many aspects that are relevant to Graphviz labels that are not in HTML and, conversely, HTML allows various constructs which are meaningless in Graphviz*. Therefore, only a small subset of HTML elements is supported, with no CSS. The library lets you make use of all of the supported elements conveniently.
+
+You can check the <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">documentation</a> what HTML elements are supported, and compose an HTML label on your own, but ther is an easier way. The *DotHtmlBuilder* class lets you compose and style a label with the HTML elements that Graphviz supports.
+
+Consider the following example. For simplicity, it's uses only a narrow subset of methods provided by the builder.
+
+```c#
+var graph = new DotGraph();
+
+graph.Nodes.Add("Foo", attrs =>
+{
+    attrs.Shape = DotNodeShape.Rectangle;
+
+    attrs.Label = new DotHtmlBuilder()
+        // appends a <font> element to the builder, with a custom size, color and style
+       .AppendStyledFont(new DotStyledFont(DotFontStyles.Bold, 20, Color.RoyalBlue),
+            // specifies content of the parent <font> element
+            font => font
+                // appends any custom HTML
+               .AppendHtml("&bull; ")
+                // appends plain text and text embedded in another <font> tag with a color specified
+               .AppendText("Foo ").AppendText("Bar", new DotFont(Color.Black))
+        )
+        // appends a <br/> element
+       .AppendLine()
+        // appends text embedded in the <i> and <u> elements
+       .AppendStyledText("Baz", DotFontStyles.Italic | DotFontStyles.Underline)
+        // returns a type that may be assigned directly to a label
+       .Build();
+});
+```
+
+```dot
+digraph
+{
+    Foo [ label = <<font color="royalblue" point-size="20"><b>&bull; Foo <font color="black">Bar</font></b></font><br/><i><u>Baz</u></i>>, shape = rectangle ]
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/html-styled-label.svg">
+</p>
+
+However, if you prefer to compose the label by yourself, type cast your HTML string to *DotHtmlString* or call the *AsHtml()* extension method on that string and assign the result to a label of an element:
+
+```c#
+graph.Nodes.Add("Foo", attrs =>
+{
+    attrs.Shape = DotNodeShape.Rectangle;
+    attrs.Label = @"<font color=""royalblue"" point-size=""20""><b>&bull; Foo <font color=""black"">Bar</font></b></font><br/><i><u>Baz</u></i>".AsHtml();
+});
+```
+
+
+
+❕ Note that you can HTML-style not only node labels, but also those on the graph, cluster, and edge.
 
 
 
