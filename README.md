@@ -419,9 +419,9 @@ digraph "Label formatting"
 
 ## Nodes
 
-Nodes are distinguished by their **identifiers**. The identifiers are used by edges to refer to them as the endpoints they join. Node identifier is also used as a label by default if you don't specify its *label* attribute explicitly.
+Nodes are identified by their **ids**. The identifiers are used by edges to refer to them as the endpoints that they join. Node identifier is also used as a label by default if you don't specify its *Label* property explicitly, in which case it is displayed on the node.
 
-A node may be added to the node collection of the root graph, of a subgraph, or of a cluster, but does not have to. It is necessary when you want to set its attributes, or when the node is an isolated node (not used as an endpoint of any edge). When an edge refers to a node that is not present in any node collection, the node will still be visualized, with its default and/or global attributes applied.
+A node may be added to the node collection of the root graph, of a subgraph, or of a cluster, but not necessarily. You have to do that when you want to set its attributes or when the node is an isolated node (not used as an endpoint of any edge). When an edge refers to a node that is not present in any node collection, the node will nevertheless appear on the graph, with its default and/or global attributes applied.
 
 ```c#
 // adding a node to the node collection of the graph
@@ -459,13 +459,13 @@ digraph
 
 ### Record nodes
 
-The shape of a node is determined by the *Shape* attribute. By default it is an ellipse with a label, but you may change it to any other shape accepted by your visualization tool. The standard shapes are available under the *DotNodeShape* enumeration, and two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use either of these as the *Shape* attribute, you may assign a record type label (*DotRecord*) to the node.
+The shape of a node is determined by the *Shape* attribute. By default it is an ellipse with a label, but you may change it to any other shape accepted by your Graphviz visualization tool. All supported shapes are available under the *DotNodeShape* enumeration, but two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use either of these as the *Shape* attribute, you may assign a record (*DotRecord*) to the node. In such case the node will be presented in a table-like form.
 
 ```c#
 using GiGraph.Dot.Extensions; // ToRecordNode
 ...
 
-// use the ToRecordNode or ToRoundedRecordNode extension method on a node
+// for convenience, just use the ToRecordNode or ToRoundedRecordNode extension method on a node
 graph.Nodes.Add("Foo").ToRecordNode(new DotRecord("Hello", "World!"));
 
 // or set shape and label explicitly
@@ -496,7 +496,7 @@ A *DotRecord* may be composed of textual fields (*DotRecordTextField*), as well 
 using GiGraph.Dot.Extensions; // ToRecord
 ...
 
-// note that string is implicitly converted to DotRecordTextField here
+// note that string is implicitly converted to DotRecordTextField here for convenience
 graph.Nodes.Add("Foo").ToRecordNode(
     new DotRecord("Foo", new DotRecord("Bar", "Baz"), "Qux")
 );
@@ -516,7 +516,7 @@ digraph
 
 #### Record builder
 
-The *DotRecordBuilder* class facilitates building complex record nodes. To give you an idea how to use it, consider the following examples that generate the same output script as the [previous example](#sub-records).
+The *DotRecordBuilder* class facilitates building complex record nodes. To give you an idea how to use it, consider the following examples that generate the same output script as the [previous one](#sub-records).
 
 ```c#
 var builder = new DotRecordBuilder()
@@ -538,9 +538,13 @@ graph.Nodes.Add("Bar").ToRecordNode(rb =>
 
 
 
+❕ Note that record fields support [line justification](#label-justification) and [placeholders](#label-content-placeholders), and the same *DotRecordBuilder* class handles these too.
+
+
+
 #### Customizing edge placement
 
-The fields of record nodes may have a **port** specified as well. The port may have a name that you may refer to when defining an edge (see the [edges](#edges) section). This way you may decide which field of the record an edge tail or head is attached to. In the following example the field labeled 'Fred' has a port assigned, named 'port1'. The edge that joins the two nodes refers to that port name to attach the tail to it.
+The fields of record nodes may have a **port** specified as well. The port may have a name that you refer to when defining an edge (see the [edges](#edges) section). This way you can decide which field of the record an edge tail or head is attached to. In the following example the field labeled 'Fred' has a port named 'port1' assigned. The edge that joins the two nodes refers to that port to attach the tail to it. See the code below for details.
 
 <p align="center">
   <img src="./Assets/Examples/record-node-subrecord-with-port.svg">
@@ -554,8 +558,6 @@ digraph
     Foo -> Bar:port1:ne
 }
 ```
-
-And the code to generate it is:
 
 ```c#
 graph.Nodes.Add("Baz").ToRecordNode(rb1 => rb1
@@ -588,14 +590,16 @@ See also a similar example in the [HTML nodes](#html-nodes) section.
 
 ### HTML nodes
 
-Nodes may have an HTML label assigned. This way you can handle more complex node content arrangement and styling scenarios than in a record node for instance. The HTML grammar is Graphviz specific, and is described in the <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">documentation</a>. In general, tables, text styles, and images are the main valid markups that may be used for an HTML node label.
+Nodes may have an HTML label assigned. This way you can handle more complex node content arrangement and styling scenarios than in a record node for instance. The HTML grammar is Graphviz specific and is described in the <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">documentation</a>. In general, tables, text styles, and images are the main valid markups that may be used for an HTML node label.
+
+The example below presents an HTML table visualized as a node.
 
 ```c#
 using GiGraph.Dot.Extensions; // ToHtml
 ...
 
-// use the ToHtml extension method on a node
-graph.Nodes.Add("Bar").ToHtmlNode
+// the ToPlainHtmlNode extension method sets a borderless (plain) shape of the node so that the HTML table determines its shape fully
+graph.Nodes.Add("Bar").ToPlainHtmlNode
 (
     @"<TABLE BORDER=""0"" CELLBORDER=""1"" CELLSPACING=""0"" CELLPADDING=""4"">
         <TR>
@@ -657,19 +661,17 @@ digraph
 
 #### Customizing edge placement
 
-Similarly to the record node case, you can specify *ports* within the HTML table. As already mentioned, the port may have an individual name that you may refer to when defining an edge (see the [edge](#edges) section). This way you may decide which field of the HTML table an edge tail or head is attached to. In the example above the field labeled 'Fred' has a port assigned, named 'port1', so it can be referred to by its name from an edge. See the following example that extends the code above with an edge.
+Similarly to the record node case, you can specify *ports* within the HTML table. As already mentioned, the port may have an individual name that you refer to when defining an edge (see the [edge](#edges) section). This way you can decide which field of the HTML table an edge tail or head is attached to. In the example above the field labeled 'Fred' has a port named 'port1' assigned, so it can be referred to by its name from an edge. See the following example that extends the code above with an edge.
 
 ```c#
-...
+// (here should be the code from the previous example)
 
 // add an edge whose head is attached to the port1 port
 graph.Edges.Add("Foo", "Bar").Attributes.Head.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
 
-// you can also set the port this way, achieving a slightly different output, but the same visualization
+// you can also set the port another way, achieving a slightly different output, but the same visualization
 graph.Edges.Add("Foo", "Bar").Head.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
 ```
-
-And the output generated by the code is similar to:
 
 ```dot
 digraph
@@ -694,7 +696,7 @@ digraph
 
 ### Node groups
 
-When adding nodes to a graph, subgraph or cluster, you may use a node group, that has a shared list of attributes for all the nodes within it. To do it, use one of the overloads of the *AddGroup* method on a node collection.
+When adding nodes to a graph, subgraph or cluster, you can use a node group that has a shared list of attributes for all the nodes within it. To do it, use one of the overloads of the *AddGroup* method on a node collection. This way you can generate a more concise output script if that's necessary (otherwise you can just add nodes in the standard way, one by one).
 
 ```c#
 graph.Nodes.AddGroup
@@ -708,7 +710,7 @@ graph.Nodes.AddGroup
 );
 ```
 
-You may also do it this way:
+You can also do it this way:
 
 ```c#
 var nodeGroup = new DotNodeGroup("Foo", "Bar", "Baz");
@@ -732,7 +734,7 @@ digraph
 </p>
 
 
-Note that there is also an ***AddRange*** method available on the node collection, and it differs from the mentioned *AddGroup* method in that it adds nodes with independent lists of attributes for each. The following script differs, but renders an identical visualization (because the same attributes are specified for each node in the range):
+Note that there is also an ***AddRange*** method available on the node collection, and it differs from the mentioned *AddGroup* one in that it adds nodes with independent lists of attributes for each of them. The following script differs, but renders an identical visualization (because the same attributes are specified for each node in the range):
 
 ```dot
 digraph
@@ -742,8 +744,6 @@ digraph
     Baz [ color = orange, shape = hexagon ]
 }
 ```
-
-The code to generate it:
 
 ```c#
 graph.Nodes.AddRange
