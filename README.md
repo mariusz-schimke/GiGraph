@@ -763,9 +763,7 @@ graph.Edges.Add("Foo", "Bar").Head.Port = new DotEndpointPort("port1", DotCompas
 ```dot
 digraph
 {
-    Bar [ label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
-    // ... ommitted ...
-    </TABLE>>, shape = plain ]
+    Bar [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td rowspan="3">Foo<br/>Bar</td><td align="LEFT" colspan="3">Baz</td><td rowspan="3">Qux</td><td rowspan="3">Quux</td></tr><tr><td>Garply</td><td>Waldo</td><td port="port1"><font color="royalblue"><b><i>Fred</i></b></font></td></tr><tr><td align="RIGHT" colspan="3">Plugh</td></tr></table>>, shape = plain ]
 
     // the first method of defining port (as an attribute)
     Foo -> Bar [ headport = "port1:ne" ]
