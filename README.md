@@ -44,7 +44,7 @@ For a complete documentation of the DOT language and visualization capabilities 
       - [Sub-records](#sub-records)
       - [Record builder](#record-builder)
       - [Customizing edge placement](#customizing-edge-placement)
-    + [HTML nodes](#html-nodes)
+    + [HTML-styled nodes](#html-styled-nodes)
       - [Customizing edge placement](#customizing-edge-placement-1)
     + [Node groups](#node-groups)
   * [Edges](#edges)
@@ -647,11 +647,11 @@ graph.Edges.Add("Foo", "Bar", edge =>
 
 ❕ Note that you can either use the *Port* property of edge *Tail* and *Head* for setting port parameters as in the example above, or the *Tail.Port* and *Head.Port* attributes of the edge itself, with the same effect.
 
-See also a similar example in the [HTML nodes](#html-nodes) section.
+See also a similar example in the [HTML-styled nodes](#html-styled-nodes) section.
 
 
 
-### HTML nodes
+### HTML-styled nodes
 
 As already indicated in the [HTML-styled label](#html-styled-label) section, nodes, among other elements, may have an HTML label assigned. This way you can handle more complex node content arrangement and styling scenarios than in a record node for instance.
 
