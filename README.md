@@ -421,7 +421,7 @@ When it comes to customizing labels in terms of font, its size, color and style,
 
 The <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">Graphviz documentation</a> states that *the features and syntax supported by [...] labels are modeled on HTML. However, there are many aspects that are relevant to Graphviz labels that are not in HTML and, conversely, HTML allows various constructs which are meaningless in Graphviz*. Therefore, only a small subset of HTML elements is supported, with no CSS. The library lets you make use of all of the supported elements conveniently.
 
-You can check the <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">documentation</a> what HTML elements are supported, and compose an HTML label on your own, but ther is an easier way. The *DotHtmlBuilder* class lets you compose and style a label with the HTML elements that Graphviz supports.
+You can check the <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">documentation</a> what HTML elements are supported and compose an HTML label by yourself, but there is an easier way. The *DotHtmlBuilder* class lets you compose and style a label with the set of HTML elements that Graphviz does support.
 
 Consider the following example. For simplicity, it's uses only a narrow subset of methods provided by the builder.
 
@@ -462,7 +462,7 @@ digraph
   <img src="./Assets/Examples/html-styled-label.svg">
 </p>
 
-However, if you prefer to compose the label by yourself, type cast your HTML string to *DotHtmlString* or call the *AsHtml()* extension method on that string and assign the result to a label of an element:
+If you prefer to compose the label by yourself, however, type cast your HTML string to *DotHtmlString* or call the *AsHtml()* extension method on that string and assign the result to a label of an element:
 
 ```c#
 graph.Nodes.Add("Foo", attrs =>
