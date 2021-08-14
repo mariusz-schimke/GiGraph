@@ -1180,13 +1180,13 @@ digraph
 
 ## Subgraphs
 
-A subgraph, represented by the **DotSubgraph** class, is a collection of nodes you may use when want to have more granular control on the **style** of the nodes and edges it contains, or on the **layout** of the those nodes (valid for the ***dot*** layout engine only).
+A subgraph, represented by the **DotSubgraph** class, is a collection of nodes you may use when want to have more granular control on the **style** of the nodes and edges it contains, or on the **layout** of the those nodes (this is valid for the ***dot*** layout engine only).
 
-Note that a **subgraph does not have any border or fill**, as opposed to [cluster subgraph](#clusters) represented by the **DotCluster** class, which supports them.
+Note that a **subgraph does not have any border or fill**, as opposed to [cluster subgraph](#clusters) represented by the **DotCluster** class, which does support them.
 
-Subgraph supports applying a common style to nodes and edges within it, as well as controlling the layout of those nodes against nodes outside it. The style may be customized by setting global node or edge attributes in the subgraph, whereas the layout may be adjusted by specifying a rank on the subgraph. To see an example, jump to the [customizing node layout](#customizing-node-layout) section.
+Subgraph supports applying a common style to nodes and edges within it, as well as controlling the layout of those nodes against the nodes outside it. The style may be customized by setting global node or edge attributes in the subgraph, whereas the layout may be adjusted by specifying a rank on the subgraph. To see an example, jump to the [customizing node layout](#customizing-node-layout) section.
 
-There are several ways you may add a subgraph to a graph, and the code below presents some of them.
+There are several ways you can add a subgraph to a graph, and the code below presents some of them.
 
 ```c#
 // add a subgraph with a custom content initialization
@@ -1198,7 +1198,7 @@ graph.Subgraphs.Add(DotRank.Same, subgraph =>
 // or simply (if only nodes are going to be specified)
 graph.Subgraphs.AddWithNodes(DotRank.Same, "a", "b", "c");
 
-// you may also create a new instance, and initialize it manually
+// you may also create a new instance and initialize it manually
 var subgraph = new DotSubgraph(DotRank.Same);
 subgraph.Nodes.AddRange("a", "b", "c");
 
@@ -1236,7 +1236,7 @@ A cluster is represented by the **DotCluster** class. It is a special type of [s
 
 *⚠️ Note that cluster subgraphs are not part of the DOT language, but solely a syntactic convention adhered to by certain of the layout engines.*
 
-*❕ When using clusters, make sure the visualization mode for clusters on the graph is DotClusterVisualizationMode.Bounded (this is the default value, and does not have to be set explicitly).*
+*❕ When using clusters, make sure the visualization mode for clusters on the graph is DotClusterVisualizationMode.Bounded (this is the default value and does not have to be set explicitly).*
 
 There are several ways you may add a cluster to a graph, and the code below presents some of them.
 
@@ -1279,7 +1279,7 @@ digraph
 
 ### Clusters as endpoints
 
-Clusters may be used as endpoints. In such case the edge is clipped to cluster border instead of being connected to a node inside the cluster. To achieve that effect, define an edge that joins any node with a node inside the cluster. Then, on the edge endpoint inside the cluster assign the identifier of that cluster to the *ClusterId* attribute. First of all, however, enable clipping edges to cluster borders by setting the *AllowEdgeClipping* attribute for clusters on the graph. The following example presents the complete idea.
+Clusters may be used as endpoints. In such case the edge is clipped to cluster border instead of being connected to a node inside the cluster. To achieve that, define an edge that joins any node with a node inside the cluster. Then, on the edge endpoint inside the cluster, assign the identifier of that cluster to the *ClusterId* attribute. First of all, however, enable clipping edges to cluster borders by setting the *AllowEdgeClipping* attribute for clusters on the graph. The following example presents the complete idea.
 
 ```c#
 var graph = new DotGraph();
@@ -1324,7 +1324,7 @@ Note that for some layout engines (see *fdp*) cluster ID has to be specified dir
 ```c#
 var graph = new DotGraph();
 
-// (optional if the layout engine is specified externally)
+// (optional if the layout engine is specified externally, e.g. by the command line)
 graph.Attributes.Layout.Engine = DotLayoutEngines.Fdp;
 
 graph.Clusters.Add("Cluster1", cluster =>
@@ -1544,14 +1544,14 @@ digraph
 
 ## Grouping nodes visually
 
-In order to group nodes visually by displaying them in a rectangle, embed them in a [cluster](#clusters). Below is an example, where two clusters are used to group several nodes. They are also used as logical endpoints in order for edges to be attached to their borders instead of a node inside them.
+In order to group nodes visually by displaying them in a rectangle, embed them in a [cluster](#clusters). Below is an example where two clusters are used to group several nodes. They are also used as logical endpoints in order for edges to be attached to their borders instead of a node inside them.
 
 <p align="center">
   <img src="./Assets/Examples/clusters.svg">
 </p>
 
 
-And here's the code to generate it:
+Here's the code to generate it:
 
 ```c#
 using System;
@@ -1825,7 +1825,7 @@ Console.WriteLine(graph.Build(options));
 graph.SaveToFile("example.gv", options);
 ```
 
-The [hello world](#generating-a-graph) example would be rendered like this after applying above options:
+The [hello world](#generating-a-graph) example would be rendered like this after applying the options above:
 
 ```dot
 digraph { Hello -> "World!" }
@@ -1835,7 +1835,7 @@ digraph { Hello -> "World!" }
 
 ## Syntax preferences
 
-Syntax preferences, on the other hand, may be modified using the **DotSyntaxOptions** class. You may, for example, force statement delimiters (*;*) at the end of lines, or require identifiers to be quoted, even when it is not required.
+Syntax preferences, on the other hand, may be modified using the **DotSyntaxOptions** class. You can, for example, force statement delimiters (*;*) at the end of lines or require identifiers to be quoted, even when it is not required.
 
 ```c#
 ...
@@ -1880,9 +1880,9 @@ digraph
 
 ### Sorting elements
 
-Using mentioned **DotSyntaxOptions** and its *SortElements* property you may enable sorting elements of the output script alphabetically. This comes in handy when the graph is built based on input elements the order of which changes each time you generate the graph. Sometimes you need to compare the output to its other versions, and in such cases you want to see only the actual differences, not the lines that only moved from one place of the file to another, without actually changing semantics. When you enable this setting, all attribute lists, the lists of edges, nodes, subgraphs, and clusters, will always be ordered alphabetically. This way you should get more consistent outputs on every build.
+Using mentioned **DotSyntaxOptions** and its *SortElements* property you may enable sorting elements of the output script alphabetically. This comes in handy when the graph is built based on input elements the order of which changes each time you generate the graph. Sometimes you may need to compare the output to its previous version, and in such cases you will want to distinguish only the actual semantic differences, not necessarily the lines that only moved from one place of the file to another, without changing semantics. When you enable this setting, all attribute lists, the lists of edges, nodes, subgraphs, and clusters, will always be ordered alphabetically. This way you should get more consistent outputs on every build.
 
-*❕ Have in mind, however, that even though this feature does not affect the structure of the graph, it may affect the layout in some cases, but it won't probably matter for you in the described case.*
+*❕ Have in mind, however, that even though this feature does not affect the structure of the graph, it may affect the layout in some cases, but it won't probably matter for you in the described scenario.*
 
 
 
@@ -1902,7 +1902,7 @@ The DOT grammar, however, lets you place individual elements in the script in an
 
 The subsections, as they are called in the library, are separate groups of elements. They are written consecutively, one section after another, in the order they are added to the collection of subsections on the graph instance level. The elements in each such section, on the other hand, are written in the order mentioned earlier.
 
-By using subsections you may split the DOT script into multiple sections, and, for instance, set different global attributes in any of them. Remember, however, that attributes set in one section have impact on the elements that follow them in the output script. So as long as sections are written consecutively, setting attributes in any of them has impact not only on the elements in that specific section, but also on elements in the sections that follow it.
+⚠️ By using subsections you can split the DOT script into multiple sections, and, for instance, set different global attributes in any of them. Remember, however, that attributes set in one section have impact on the elements that follow them in the output script. So as long as sections are written consecutively, setting attributes in any of them has impact not only on the elements in that specific section, but also on elements in the sections that follow it.
 
 *❗️ Note that in most cases you won't probably need to split the DOT script into sections. They give you the flexibility to control the order individual elements or groups of elements are written, but it isn't usually necessary. When you want to specify attributes for specific groups of elements of the graph, you will probably prefer using [subgraphs](#subgraphs), as they give you more granular control over the elements they contain, without affecting others.*
 
