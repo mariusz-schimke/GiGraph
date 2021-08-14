@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
     public partial class DotHtmlBuilder
     {
         /// <summary>
-        ///     Appends a custom element to the builder.
+        ///     Appends a custom element to this instance and initializes it.
         /// </summary>
         /// <param name="elementName">
         ///     The name of the element to append.
@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Appends a custom void element to the builder.
+        ///     Appends a custom void element to this instance and initializes it.
         /// </summary>
         /// <param name="elementName">
         ///     The name of the element to append.

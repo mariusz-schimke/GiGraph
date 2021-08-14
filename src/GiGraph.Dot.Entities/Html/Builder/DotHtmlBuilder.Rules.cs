@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
     public partial class DotHtmlBuilder
     {
         /// <summary>
-        ///     Appends a horizontal rule to the builder.
+        ///     Appends a horizontal rule to this instance.
         /// </summary>
         public virtual DotHtmlBuilder AppendHorizontalRule()
         {
@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Appends a vertical rule to the builder.
+        ///     Appends a vertical rule to this instance.
         /// </summary>
         public virtual DotHtmlBuilder AppendVerticalRule()
         {

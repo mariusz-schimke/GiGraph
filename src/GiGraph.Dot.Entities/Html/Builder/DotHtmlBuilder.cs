@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         public virtual int Count => _entities.Count;
 
         /// <summary>
-        ///     Appends an entity with customizable content to the builder.
+        ///     Appends an entity with customizable content to this instance.
         /// </summary>
         /// <param name="entity">
         ///     The entity to append.
@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Appends an entity to the builder.
+        ///     Appends an entity to this instance.
         /// </summary>
         /// <param name="entity">
         ///     The entity to append.
@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Appends HTML to the builder.
+        ///     Appends custom HTML to this instance.
         /// </summary>
         /// <param name="html">
         ///     The HTML to append.

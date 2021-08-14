@@ -3,7 +3,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
     public partial class DotHtmlBuilder
     {
         /// <summary>
-        ///     Appends a comment to the builder.
+        ///     Appends a comment to this instance.
         /// </summary>
         /// <param name="text">
         ///     The comment to append.
