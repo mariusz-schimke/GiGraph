@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Html
     /// <summary>
     ///     An HTML element with optional attributes and child elements.
     /// </summary>
-    public class DotHtmlElement : DotHtmlTag, IDotHtmlContentEntity
+    public partial class DotHtmlElement : DotHtmlTag, IDotHtmlContentEntity
     {
         /// <summary>
         ///     Initializes an HTML element with the given name.

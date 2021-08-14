@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         public virtual DotHtmlTableCell AddCell(string text, DotFontStyles style, DotHorizontalAlignment? lineAlignment, Action<DotHtmlTableCell> init = null)
         {
             return Content.Add(
-                new DotHtmlTableCell { Content = { DotHtmlFontStyle.WithText(text, style, lineAlignment) } },
+                new DotHtmlTableCell { DotHtmlFontStyle.WithText(text, style, lineAlignment) },
                 init
             );
         }
@@ -82,7 +82,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         public virtual DotHtmlTableCell AddCell(string text, DotStyledFont font, DotHorizontalAlignment? lineAlignment, Action<DotHtmlTableCell> init = null)
         {
             return Content.Add(
-                new DotHtmlTableCell { Content = { DotHtmlFont.WithText(text, font, lineAlignment) } },
+                new DotHtmlTableCell { DotHtmlFont.WithText(text, font, lineAlignment) },
                 init
             );
         }
