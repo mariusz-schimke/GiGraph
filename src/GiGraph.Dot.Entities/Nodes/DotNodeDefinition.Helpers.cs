@@ -1,10 +1,11 @@
+using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Nodes;
 
-namespace GiGraph.Dot.Entities.Nodes.Attributes
+namespace GiGraph.Dot.Entities.Nodes
 {
-    public partial class DotNodeAttributes
+    public abstract partial class DotNodeDefinition
     {
         /// <summary>
         ///     Sets a wedged fill, assuming that the node has an elliptical shape (see <see cref="DotNodeAttributes.Shape" />).

@@ -3,7 +3,7 @@ using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Nodes
 {
-    public abstract class DotNodeDefinition : IDotEntity, IDotAnnotatable, IDotOrderable
+    public abstract partial class DotNodeDefinition : IDotEntity, IDotAnnotatable, IDotOrderable
     {
         protected DotNodeDefinition(DotNodeAttributes attributes)
         {

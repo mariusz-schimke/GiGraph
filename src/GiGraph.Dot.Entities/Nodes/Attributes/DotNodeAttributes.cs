@@ -6,18 +6,21 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
-using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
-using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
-    public partial class DotNodeAttributes : DotClusterNodeCommonAttributes<IDotNodeAttributes>, IDotNodeAttributes
+    public class DotNodeAttributes : DotClusterNodeCommonAttributes<IDotNodeAttributes>, IDotNodeAttributesRoot
     {
         protected static readonly DotMemberAttributeKeyLookup NodeAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeAttributes, IDotNodeAttributes>().Build();
+
+        protected readonly DotFontAttributes _font;
+        protected readonly DotNodeGeometryAttributes _geometry;
+        protected readonly DotNodeImageAttributes _image;
+        protected readonly DotNodeSizeAttributes _size;
+        protected readonly DotNodeStyleAttributes _style;
 
         protected DotNodeAttributes(
             DotAttributeCollection attributes,
@@ -32,11 +35,11 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
         {
-            Font = fontAttributes;
-            Style = styleAttributes;
-            Image = imageAttributes;
-            Geometry = geometryAttributes;
-            Size = sizeAttributes;
+            _font = fontAttributes;
+            _style = styleAttributes;
+            _image = imageAttributes;
+            _geometry = geometryAttributes;
+            _size = sizeAttributes;
         }
 
         public DotNodeAttributes(DotAttributeCollection attributes)
@@ -59,32 +62,12 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         {
         }
 
-        /// <summary>
-        ///     Font properties.
-        /// </summary>
-        public virtual DotFontAttributes Font { get; }
+        DotFontAttributes IDotNodeAttributesRoot.Font => _font;
+        DotNodeImageAttributes IDotNodeAttributesRoot.Image => _image;
+        DotNodeGeometryAttributes IDotNodeAttributesRoot.Geometry => _geometry;
+        DotNodeSizeAttributes IDotNodeAttributesRoot.Size => _size;
+        DotNodeStyleAttributes IDotNodeAttributesRoot.Style => _style;
 
-        /// <summary>
-        ///     Node image properties.
-        /// </summary>
-        public virtual DotNodeImageAttributes Image { get; }
-
-        /// <summary>
-        ///     Node geometry properties applicable if <see cref="Shape" /> is set to <see cref="DotNodeShape.Polygon" />.
-        /// </summary>
-        public virtual DotNodeGeometryAttributes Geometry { get; }
-
-        /// <summary>
-        ///     Node size properties.
-        /// </summary>
-        public virtual DotNodeSizeAttributes Size { get; }
-
-        /// <summary>
-        ///     Style options.
-        /// </summary>
-        public virtual DotNodeStyleAttributes Style { get; }
-
-        // accessible only through the interface
         [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotNodeAttributes.Style
         {
@@ -92,127 +75,50 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
-        /// <inheritdoc cref="IDotNodeAttributes.Label" />
-        public override DotLabel Label
-        {
-            get => base.Label;
-            set => base.Label = value;
-        }
-
-        /// <inheritdoc cref="IDotNodeAttributes.ColorScheme" />
-        public override string ColorScheme
-        {
-            get => base.ColorScheme;
-            set => base.ColorScheme = value;
-        }
-
-        /// <inheritdoc cref="IDotNodeAttributes.Color" />
-        public override DotColorDefinition Color
-        {
-            get => base.Color;
-            set => base.Color = value;
-        }
-
-        /// <inheritdoc cref="IDotNodeAttributes.FillColor" />
-        public override DotColorDefinition FillColor
-        {
-            get => base.FillColor;
-            set => base.FillColor = value;
-        }
-
-        /// <inheritdoc cref="IDotNodeAttributes.GradientFillAngle" />
-        public override int? GradientFillAngle
-        {
-            get => base.GradientFillAngle;
-            set => base.GradientFillAngle = value;
-        }
-
-        /// <inheritdoc cref="IDotNodeAttributes.Tooltip" />
-        public override DotEscapeString Tooltip
-        {
-            get => base.Tooltip;
-            set => base.Tooltip = value;
-        }
-
-        /// <inheritdoc cref="IDotNodeAttributes.Padding" />
-        public override DotPoint Padding
-        {
-            get => base.Padding;
-            set => base.Padding = value;
-        }
-
-        /// <inheritdoc cref="IDotNodeAttributes.BorderWidth" />
-        public override double? BorderWidth
-        {
-            get => base.BorderWidth;
-            set => base.BorderWidth = value;
-        }
-
-        /// <inheritdoc cref="IDotNodeAttributes.SortIndex" />
-        public override int? SortIndex
-        {
-            get => base.SortIndex;
-            set => base.SortIndex = value;
-        }
-
-        /// <inheritdoc cref="IDotNodeAttributes.ObjectId" />
-        public override DotEscapeString ObjectId
-        {
-            get => base.ObjectId;
-            set => base.ObjectId = value;
-        }
-
-        /// <inheritdoc cref="IDotNodeAttributes.Comment" />
         [DotAttributeKey(DotAttributeKeys.Comment)]
-        public virtual string Comment
+        string IDotNodeAttributes.Comment
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotNodeAttributes.ExternalLabel" />
         [DotAttributeKey(DotAttributeKeys.XLabel)]
-        public virtual DotLabel ExternalLabel
+        DotLabel IDotNodeAttributes.ExternalLabel
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotNodeAttributes.LabelAlignment" />
         [DotAttributeKey(DotAttributeKeys.LabelLoc)]
-        public virtual DotVerticalAlignment? LabelAlignment
+        DotVerticalAlignment? IDotNodeAttributes.LabelAlignment
         {
             get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
-        /// <inheritdoc cref="IDotNodeAttributes.EdgeOrderingMode" />
         [DotAttributeKey(DotAttributeKeys.Ordering)]
-        public virtual DotEdgeOrderingMode? EdgeOrderingMode
+        DotEdgeOrderingMode? IDotNodeAttributes.EdgeOrderingMode
         {
             get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
-        /// <inheritdoc cref="IDotNodeAttributes.Shape" />
         [DotAttributeKey(DotAttributeKeys.Shape)]
-        public virtual DotNodeShape? Shape
+        DotNodeShape? IDotNodeAttributes.Shape
         {
             get => GetValueAs<DotNodeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
-        /// <inheritdoc cref="IDotNodeAttributes.GroupName" />
         [DotAttributeKey(DotAttributeKeys.Group)]
-        public virtual string GroupName
+        string IDotNodeAttributes.GroupName
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotNodeAttributes.IsRoot" />
         [DotAttributeKey(DotAttributeKeys.Root)]
-        public virtual bool? IsRoot
+        bool? IDotNodeAttributes.IsRoot
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
@@ -220,7 +126,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
 
         protected override void SetFillStyle(DotStyles fillStyle)
         {
-            Style.FillStyle = (DotNodeFillStyle) fillStyle;
+            ((IDotNodeAttributesRoot) this).Style.FillStyle = (DotNodeFillStyle) fillStyle;
         }
     }
 }

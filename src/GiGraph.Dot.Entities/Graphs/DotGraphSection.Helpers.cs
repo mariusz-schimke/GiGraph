@@ -1,4 +1,3 @@
-using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
 

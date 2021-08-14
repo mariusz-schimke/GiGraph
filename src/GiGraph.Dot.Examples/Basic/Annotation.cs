@@ -22,10 +22,10 @@ namespace GiGraph.Dot.Examples.Basic
 
             // nodes
             graph.Nodes.Annotation = "nodes";
-            graph.Nodes.Add("foo", attrs =>
+            graph.Nodes.Add("foo", node =>
             {
-                attrs.Annotation = "node attributes";
-                attrs.Set(a => a.Label, "foo").Annotation = "label";
+                node.Annotation = "node attributes";
+                node.Attributes.Set(a => a.Label, "foo").Annotation = "label";
             }).Annotation = "node comment";
 
             // edge defaults

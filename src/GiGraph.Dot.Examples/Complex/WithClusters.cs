@@ -21,9 +21,9 @@ namespace GiGraph.Dot.Examples.Complex
             graph.Clusters.Attributes.AllowEdgeClipping = true;
 
             // set individual node styles
-            graph.Nodes.Add("Start").Attributes.Shape = DotNodeShape.Circle;
-            graph.Nodes.Add("Decision").Attributes.Shape = DotNodeShape.Diamond;
-            graph.Nodes.Add("Exit").Attributes.Shape = DotNodeShape.DoubleCircle;
+            graph.Nodes.Add("Start").Shape = DotNodeShape.Circle;
+            graph.Nodes.Add("Decision").Shape = DotNodeShape.Diamond;
+            graph.Nodes.Add("Exit").Shape = DotNodeShape.DoubleCircle;
 
 
             // --- define edges ---

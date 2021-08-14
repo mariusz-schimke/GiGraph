@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Extensions
         /// </param>
         public static void ToRoundedRecordNode(this DotNode node, DotRecord record)
         {
-            node.Attributes.Shape = DotNodeShape.RoundedRecord;
+            node.Shape = DotNodeShape.RoundedRecord;
             node.Attributes.Label = record;
         }
 

@@ -3,6 +3,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common
 {
+    // TODO: jak to współdzielić z root graphem?
     public partial class DotClusterNodeCommonAttributes<TIEntityAttributeProperties>
     {
         /// <summary>

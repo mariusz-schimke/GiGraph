@@ -49,7 +49,7 @@ namespace GiGraph.Dot.Extensions
 
         private static void ToPlainHtmlNode(this DotNode node, DotHtmlLabel label)
         {
-            node.Attributes.Shape = DotNodeShape.Plain;
+            node.Shape = DotNodeShape.Plain;
             node.Attributes.Label = label;
         }
     }

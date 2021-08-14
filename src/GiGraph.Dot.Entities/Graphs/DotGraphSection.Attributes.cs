@@ -11,22 +11,22 @@ namespace GiGraph.Dot.Entities.Graphs
     public partial class DotGraphSection : IDotGraphAttributesRoot
     {
         /// <inheritdoc cref="IDotGraphAttributesRoot.Font" />
-        public DotGraphFontAttributes Font => ((IDotGraphAttributesRoot) Attributes).Font;
+        public virtual DotGraphFontAttributes Font => ((IDotGraphAttributesRoot) Attributes).Font;
 
         /// <inheritdoc cref="IDotGraphAttributesRoot.Style" />
-        public DotGraphStyleAttributes Style => ((IDotGraphAttributesRoot) Attributes).Style;
+        public virtual DotGraphStyleAttributes Style => ((IDotGraphAttributesRoot) Attributes).Style;
 
         /// <inheritdoc cref="IDotGraphAttributesRoot.SvgStyleSheet" />
-        public DotGraphSvgSvgStyleSheetAttributes SvgStyleSheet => ((IDotGraphAttributesRoot) Attributes).SvgStyleSheet;
+        public virtual DotGraphSvgSvgStyleSheetAttributes SvgStyleSheet => ((IDotGraphAttributesRoot) Attributes).SvgStyleSheet;
 
         /// <inheritdoc cref="IDotGraphAttributesRoot.Layout" />
-        public DotGraphLayoutAttributes Layout => ((IDotGraphAttributesRoot) Attributes).Layout;
+        public virtual DotGraphLayoutAttributes Layout => ((IDotGraphAttributesRoot) Attributes).Layout;
 
         /// <inheritdoc cref="IDotGraphAttributesRoot.Canvas" />
-        public DotGraphCanvasAttributes Canvas => ((IDotGraphAttributesRoot) Attributes).Canvas;
+        public virtual DotGraphCanvasAttributes Canvas => ((IDotGraphAttributesRoot) Attributes).Canvas;
 
         /// <inheritdoc cref="IDotGraphAttributesRoot.LabelAlignment" />
-        public DotLabelAlignmentAttributes LabelAlignment => ((IDotGraphAttributesRoot) Attributes).LabelAlignment;
+        public virtual DotLabelAlignmentAttributes LabelAlignment => ((IDotGraphAttributesRoot) Attributes).LabelAlignment;
 
         DotStyles? IDotGraphAttributes.Style
         {

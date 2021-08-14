@@ -34,17 +34,17 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Edges.Attributes.Label = "edge_label";
 
             graph.Nodes.Add("no_attributes");
-            graph.Nodes.Add("node3", attrs =>
+            graph.Nodes.Add("node3", node =>
             {
-                attrs.Shape = DotNodeShape.Assembly;
-                attrs.Style.BorderWeight = DotBorderWeight.Bold;
+                node.Shape = DotNodeShape.Assembly;
+                node.Style.BorderWeight = DotBorderWeight.Bold;
             });
 
-            graph.Nodes.AddGroup(attrs =>
+            graph.Nodes.AddGroup(nodeGroup =>
             {
-                attrs.Shape = DotNodeShape.Box;
-                attrs.Style.BorderWeight = DotBorderWeight.Bold;
-                attrs.Style.BorderStyle = DotBorderStyle.Dashed;
+                nodeGroup.Shape = DotNodeShape.Box;
+                nodeGroup.Style.BorderWeight = DotBorderWeight.Bold;
+                nodeGroup.Style.BorderStyle = DotBorderStyle.Dashed;
             }, "node1", "node2");
 
             graph.Edges.AddLoop("no_attributes");
@@ -146,10 +146,10 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             // nodes
             graph.Nodes.Annotation = "nodes";
-            graph.Nodes.Add("foo", attrs =>
+            graph.Nodes.Add("foo", node =>
             {
-                attrs.Annotation = "node attributes";
-                attrs.Set(a => a.Label, "foo").Annotation = "label";
+                node.Annotation = "node attributes";
+                node.Set(a => a.Label, "foo").Annotation = "label";
             }).Annotation = "node comment";
 
             graph.Nodes.AddGroup(new[] { "foo", "bar", "baz" }, node =>

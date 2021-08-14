@@ -181,7 +181,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             graph.Subgraphs.Add(DotRank.Max, x =>
             {
-                x.Nodes.Add("node").Attributes.Comment = "comment";
+                x.Nodes.Add("node").Comment = "comment";
                 x.Edges.AddLoop("node").Attributes.Directions = DotEdgeDirections.Backward;
             });
 

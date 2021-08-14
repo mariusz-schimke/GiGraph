@@ -76,12 +76,12 @@ namespace GiGraph.Dot.Examples.Complex
             graph.Subgraphs.Add(sg =>
             {
                 // a rectangular node with a striped fill
-                sg.Nodes.Add("STRIPED", attrs =>
+                sg.Nodes.Add("STRIPED", node =>
                 {
-                    attrs.Color = Color.Transparent;
+                    node.Color = Color.Transparent;
 
                     // set style to striped
-                    attrs.SetStriped(
+                    node.SetStriped(
                         new DotWeightedColor(Color.Navy, 0.1),
                         Color.RoyalBlue,
                         Color.Turquoise,
@@ -89,13 +89,13 @@ namespace GiGraph.Dot.Examples.Complex
                 });
 
                 // a circular node with a wedged fill
-                sg.Nodes.Add("WEDGED", attrs =>
+                sg.Nodes.Add("WEDGED", node =>
                 {
-                    attrs.Shape = DotNodeShape.Circle;
-                    attrs.Color = Color.Transparent;
+                    node.Shape = DotNodeShape.Circle;
+                    node.Color = Color.Transparent;
 
                     // set wedged style
-                    attrs.SetWedged(
+                    node.SetWedged(
                         Color.Orange,
                         Color.RoyalBlue,
                         new DotWeightedColor(Color.Navy, 0.1),

@@ -22,15 +22,15 @@ namespace GiGraph.Dot.Examples.Basic
 
             // -- node label example --
 
-            graph.Nodes.Add("Foo", attrs =>
+            graph.Nodes.Add("Foo", node =>
             {
                 // using text formatter
-                attrs.Label = new DotFormattedTextBuilder("Node ")
+                node.Label = new DotFormattedTextBuilder("Node ")
                    .AppendNodeId()
                    .Build();
 
                 // using string concatenation
-                attrs.Label = "Node " + DotEscapeString.NodeId;
+                node.Label = "Node " + DotEscapeString.NodeId;
             });
 
 
