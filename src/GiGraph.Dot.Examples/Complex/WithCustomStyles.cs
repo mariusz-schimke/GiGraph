@@ -20,9 +20,9 @@ namespace GiGraph.Dot.Examples.Complex
             graph.Font.Name = "Helvetica";
 
             // set global node attributes (for all nodes of the graph)
-            graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
+            graph.Nodes.Shape = DotNodeShape.Rectangle;
             graph.Nodes.Attributes.SetFilled(new DotGradientColor(Color.Turquoise, Color.RoyalBlue));
-            graph.Nodes.Attributes.Font.Name = graph.Font.Name;
+            graph.Nodes.Font.Name = graph.Font.Name;
 
             // set global edge attributes (for all edges of the graph)
             graph.Edges.Attributes.Head.Arrowhead = graph.Edges.Attributes.Tail.Arrowhead = DotArrowheadShape.Vee;
@@ -110,7 +110,7 @@ namespace GiGraph.Dot.Examples.Complex
             {
                 sg.Nodes.Attributes.Color = Color.RoyalBlue;
                 sg.Nodes.Attributes.FillColor = Color.Orange;
-                sg.Nodes.Attributes.Shape = DotNodeShape.Circle;
+                sg.Nodes.Shape = DotNodeShape.Circle;
 
                 sg.Edges.Attributes.Color = Color.RoyalBlue;
 

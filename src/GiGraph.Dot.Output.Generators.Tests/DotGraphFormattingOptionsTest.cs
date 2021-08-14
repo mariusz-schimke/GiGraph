@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Clusters.Add("cluster1", x =>
             {
                 x.Attributes.ObjectId = "id";
-                x.Nodes.Add("node").Attributes.Comment = "comment";
+                x.Nodes.Add("node").Comment = "comment";
                 x.Edges.AddLoop("node").Attributes.Directions = DotEdgeDirections.Backward;
             });
 

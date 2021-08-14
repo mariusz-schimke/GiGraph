@@ -6,7 +6,7 @@ using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Nodes.Collections
 {
-    public class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, IDotAnnotatable
+    public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, IDotAnnotatable
     {
         protected DotNodeCollection(DotNodeAttributes attributes)
         {

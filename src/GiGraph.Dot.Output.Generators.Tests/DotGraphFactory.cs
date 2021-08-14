@@ -141,8 +141,8 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             // node defaults
             graph.Nodes.Attributes.Annotation = "global node attributes";
-            graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
-            graph.Nodes.Attributes.Geometry.Distortion = 2;
+            graph.Nodes.Shape = DotNodeShape.Rectangle;
+            graph.Nodes.Geometry.Distortion = 2;
 
             // nodes
             graph.Nodes.Annotation = "nodes";

@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Examples.Complex
 
             graph.Nodes.Attributes.Annotation = "set default node color and style";
             graph.Nodes.Attributes.Color = Color.Orange;
-            graph.Nodes.Attributes.Style.FillStyle = DotNodeFillStyle.Normal;
+            graph.Nodes.Style.FillStyle = DotNodeFillStyle.Normal;
 
             graph.Edges.Add("foo", "bar");
 
