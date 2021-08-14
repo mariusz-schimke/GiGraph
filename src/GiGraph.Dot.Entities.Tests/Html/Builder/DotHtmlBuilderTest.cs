@@ -22,6 +22,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.Builder
             var builder = new DotHtmlBuilder();
 
             builder.Append(new DotHtmlFont())
+               .AppendEntity(new DotHtmlFont(), f => f.Color = Color.Red)
                .AppendBoldText("bold\n", DotHorizontalAlignment.Left)
                .AppendBold(b => b.AppendText("bold"))
                .AppendItalicText("italic\n", DotHorizontalAlignment.Center)

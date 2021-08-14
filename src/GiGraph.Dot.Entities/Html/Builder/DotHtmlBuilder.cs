@@ -24,22 +24,18 @@ namespace GiGraph.Dot.Entities.Html.Builder
         public virtual int Count => _entities.Count;
 
         /// <summary>
-        ///     Appends an entity to the builder.
+        ///     Appends an entity with customizable content to the builder.
         /// </summary>
         /// <param name="entity">
         ///     The entity to append.
         /// </param>
-        public virtual DotHtmlBuilder Append<TEntity>(TEntity entity)
-            where TEntity : IDotHtmlEntity
+        /// <param name="init">
+        ///     A content initialization delegate.
+        /// </param>
+        public virtual DotHtmlBuilder Append<TContentEntity>(TContentEntity entity, Action<DotHtmlBuilder> init = null)
+            where TContentEntity : IDotHtmlContentEntity
         {
-            _entities.Add(entity);
-            return this;
-        }
-
-        protected virtual DotHtmlBuilder AppendEntity<TEntity>(TEntity entity, Action<TEntity> init = null)
-            where TEntity : IDotHtmlEntity
-        {
-            init?.Invoke(entity);
+            entity.SetContent(init);
             _entities.Add(entity);
             return this;
         }
@@ -51,12 +47,12 @@ namespace GiGraph.Dot.Entities.Html.Builder
         ///     The entity to append.
         /// </param>
         /// <param name="init">
-        ///     A content initialization delegate.
+        ///     An entity initialization delegate.
         /// </param>
-        public virtual DotHtmlBuilder Append<TContentEntity>(TContentEntity entity, Action<DotHtmlBuilder> init)
-            where TContentEntity : IDotHtmlContentEntity
+        public virtual DotHtmlBuilder AppendEntity<TEntity>(TEntity entity, Action<TEntity> init = null)
+            where TEntity : IDotHtmlEntity
         {
-            entity.SetContent(init);
+            init?.Invoke(entity);
             _entities.Add(entity);
             return this;
         }
