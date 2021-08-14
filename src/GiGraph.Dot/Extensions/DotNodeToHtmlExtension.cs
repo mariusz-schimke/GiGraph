@@ -12,38 +12,6 @@ namespace GiGraph.Dot.Extensions
     public static class DotNodeToHtmlExtension
     {
         /// <summary>
-        ///     Converts the current node to an HTML node by assigning HTML text to its label attribute. See the
-        ///     <see href="http://www.graphviz.org/doc/info/shapes.html#html">
-        ///         documentation
-        ///     </see>
-        ///     to learn what HTML grammar is supported.
-        /// </summary>
-        /// <param name="node">
-        ///     The node to convert.
-        /// </param>
-        /// <param name="html">
-        ///     The HTML text to assign to node label.
-        /// </param>
-        public static void ToHtmlNode(this DotNode node, string html)
-        {
-            node.Attributes.Label = (DotHtmlString) html;
-        }
-
-        /// <summary>
-        ///     Converts the current node to an HTML node by assigning HTML to its label attribute.
-        /// </summary>
-        /// <param name="node">
-        ///     The node to convert.
-        /// </param>
-        /// <param name="html">
-        ///     The HTML entity to assign to node label.
-        /// </param>
-        public static void ToHtmlNode(this DotNode node, IDotHtmlEntity html)
-        {
-            node.Attributes.Label = new DotHtmlLabel(html);
-        }
-
-        /// <summary>
         ///     Converts the current node to an HTML node by assigning HTML text to its label attribute, and setting its shape to
         ///     <see cref="DotNodeShape.Plain" />. See the
         ///     <see href="http://www.graphviz.org/doc/info/shapes.html#html">
