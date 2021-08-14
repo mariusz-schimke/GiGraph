@@ -756,7 +756,7 @@ graph.Nodes.Add("Bar").ToPlainHtmlNode
 
 #### Customizing edge placement
 
-Similarly to the record node case, you can specify *ports* within the HTML table. As already mentioned, the port may have an individual name that you refer to when defining an edge (see the [edge](#edges) section). This way you can decide which field of the HTML table an edge tail or head is attached to. In the example above the table field labeled 'Fred' has a port named 'port1' assigned, so it can be referred to by its name from an edge. See the following example that extends the code above with an edge.
+Similarly to the record node case, you can specify *ports* within the HTML table. As already mentioned, the port may have an individual name that you refer to when defining an edge (see the [edge](#edges) section). This way you can decide which field of the HTML table an edge tail or head is attached to. In the example above, the table field labeled 'Fred' has a port named 'port1' assigned, so it can be referred to by its name from an edge. See the following example that extends the code above with an edge.
 
 ```c#
 // (here should be the code from the previous example)
