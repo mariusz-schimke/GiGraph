@@ -20,7 +20,7 @@
 
     <summary>Simple yet versatile library for generating graphs in the DOT language.</summary>
 
-    <description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code or online tools like http://viz-js.com or http://magjac.com/graphviz-visual-editor, where you paste a script to view its visualization.</description>
+    <description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using the Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code or online tools like http://viz-js.com or http://magjac.com/graphviz-visual-editor, where you paste a script to view its visualization.</description>
 
     <releaseNotes>- Added classes to represent HTML elements supported by Graphviz as nodes (for the so-called HTML-like labels). Thanks to that you won't have to check what attributes you can set for specific HTML elements since the classes expose appropriate properties.
 
