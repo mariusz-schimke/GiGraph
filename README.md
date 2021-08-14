@@ -724,22 +724,22 @@ An identical result may be achieved by composing the HTML table directly, as tex
 // the ToPlainHtmlNode extension method sets a borderless (plain) shape of the node so that the HTML table fully determines the shape
 graph.Nodes.Add("Bar").ToPlainHtmlNode
 (
-    @"<TABLE BORDER=""0"" CELLBORDER=""1"" CELLSPACING=""0"" CELLPADDING=""4"">
-        <TR>
-            <TD ROWSPAN=""3"">Foo<BR/>Bar</TD>
-            <TD COLSPAN=""3"" ALIGN=""LEFT"">Baz</TD>
-            <TD ROWSPAN=""3"">Qux</TD>
-            <TD ROWSPAN=""3"">Quux</TD>
-        </TR>
-        <TR>
-            <TD>Garply</TD>
-            <TD>Waldo</TD>
-            <TD PORT=""port1""><FONT COLOR=""royalblue""><B><I>Fred</I></B></FONT></TD>
-        </TR>
-        <TR>
-            <TD COLSPAN=""3"" ALIGN=""RIGHT"">Plugh</TD>
-        </TR>
-    </TABLE>"
+    @"<table border=""0"" cellborder=""1"" cellspacing=""0"" cellpadding=""4"">
+        <tr>
+            <td rowspan=""3"">Foo<br/>Bar</td>
+            <td colspan=""3"" align=""left"">Baz</td>
+            <td rowspan=""3"">Qux</td>
+            <td rowspan=""3"">Quux</td>
+        </tr>
+        <tr>
+            <td>Garply</td>
+            <td>Waldo</td>
+            <td port=""port1""><font color=""royalblue""><b><i>Fred</i></b></font></td>
+        </tr>
+        <tr>
+            <td colspan=""3"" align=""right"">Plugh</td>
+        </tr>
+    </table>"
 );
 ```
 
