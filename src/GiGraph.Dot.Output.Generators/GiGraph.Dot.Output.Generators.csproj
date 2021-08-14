@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="..\Solution Items\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\GiGraph.Dot.Entities\GiGraph.Dot.Entities.csproj" />
+        <ProjectReference Include="..\GiGraph.Dot.Output.Writers\GiGraph.Dot.Output.Writers.csproj" />
+    </ItemGroup>
+
+</Project>
