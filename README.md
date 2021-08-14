@@ -476,15 +476,13 @@ graph.Nodes.Add("Foo", attrs =>
 
 
 
-
-
 ❕ Note that you can HTML-style not only node labels, but also those on the graph, cluster, and edge.
 
 
 
 ## Nodes
 
-Nodes are identified by their **ids**. The identifiers are used by edges to refer to them as the endpoints that they join. Node identifier is also used as a label by default if you don't specify its *Label* property explicitly, in which case it is displayed on the node.
+Nodes are identified by their **IDs**. The identifiers are used by edges to refer to them as the endpoints that they join. Node identifier is also used as a label by default if you don't specify its *Label* property explicitly, in which case it is displayed on the node.
 
 A node may be added to the node collection of the root graph, of a subgraph, or of a cluster, but not necessarily. You have to do that when you want to set its attributes or when the node is an isolated node (not used as an endpoint of any edge). When an edge refers to a node that is not present in any node collection, the node will nevertheless appear on the graph, with its default and/or global attributes applied.
 
