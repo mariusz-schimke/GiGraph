@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Examples.Complex
         {
             var graph = new DotGraph();
 
-            graph.Attributes.SvgStyleSheet.Url = Path.GetFullPath("stylesheet.css");
+            graph.SvgStyleSheet.Url = Path.GetFullPath("stylesheet.css");
 
             graph.Nodes.Add("foo").Attributes.SvgStyleSheet.Class = "foo_node";
             graph.Edges.Add("foo", "bar");

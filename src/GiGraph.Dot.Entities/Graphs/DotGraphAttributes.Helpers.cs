@@ -1,9 +1,10 @@
+using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
 
-namespace GiGraph.Dot.Entities.Graphs.Attributes
+namespace GiGraph.Dot.Entities.Graphs
 {
-    public partial class DotGraphAttributes
+    public partial class DotGraphSection
     {
         /// <summary>
         ///     Sets a background color.
@@ -11,10 +12,9 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// <param name="color">
         ///     The color to use.
         /// </param>
-        public virtual DotGraphAttributes SetBackground(DotColor color)
+        public virtual void SetBackground(DotColor color)
         {
             Canvas.BackgroundColor = color;
-            return this;
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         ///     Determines whether to use a radial-style gradient fill. Note that this attribute also applies to clusters. Pass null if you
         ///     don't want to modify the current fill style if set.
         /// </param>
-        public virtual DotGraphAttributes SetBackground(DotGradientColor color, int? angle = null, bool? radial = null)
+        public virtual void SetBackground(DotGradientColor color, int? angle = null, bool? radial = null)
         {
             switch (radial)
             {
@@ -47,8 +47,6 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 
             Canvas.BackgroundColor = color;
             Canvas.GradientFillAngle = angle;
-
-            return this;
         }
     }
 }

@@ -3,18 +3,22 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Factories;
 using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
-using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Edges;
-using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public partial class DotGraphAttributes : DotEntityRootCommonAttributes<IDotGraphAttributes>, IDotGraphAttributes
+    public partial class DotGraphAttributes : DotEntityRootCommonAttributes<IDotGraphAttributes>, IDotGraphAttributesRoot
     {
         protected static readonly DotMemberAttributeKeyLookup GraphAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphAttributes, IDotGraphAttributes>().Build();
+        protected readonly DotGraphCanvasAttributes _canvas;
+        protected readonly DotGraphFontAttributes _font;
+        protected readonly DotLabelAlignmentAttributes _labelAlignment;
+        protected readonly DotGraphLayoutAttributes _layout;
+        protected readonly DotGraphStyleAttributes _style;
+        protected readonly DotGraphSvgSvgStyleSheetAttributes _svgStyleSheet;
 
         protected DotGraphAttributes(
             DotAttributeCollection attributes,
@@ -29,12 +33,12 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
-            Font = fontAttributes;
-            Style = styleAttributes;
-            SvgStyleSheet = svgStyleSheetAttributes;
-            Layout = layoutAttributes;
-            Canvas = canvasAttributes;
-            LabelAlignment = labelAlignmentAttributes;
+            _font = fontAttributes;
+            _style = styleAttributes;
+            _svgStyleSheet = svgStyleSheetAttributes;
+            _layout = layoutAttributes;
+            _canvas = canvasAttributes;
+            _labelAlignment = labelAlignmentAttributes;
         }
 
         public DotGraphAttributes(DotAttributeCollection attributes)
@@ -57,37 +61,13 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         {
         }
 
-        /// <summary>
-        ///     Font properties.
-        /// </summary>
-        public virtual DotGraphFontAttributes Font { get; }
+        DotGraphFontAttributes IDotGraphAttributesRoot.Font => _font;
+        DotGraphStyleAttributes IDotGraphAttributesRoot.Style => _style;
+        DotGraphSvgSvgStyleSheetAttributes IDotGraphAttributesRoot.SvgStyleSheet => _svgStyleSheet;
+        DotGraphLayoutAttributes IDotGraphAttributesRoot.Layout => _layout;
+        DotGraphCanvasAttributes IDotGraphAttributesRoot.Canvas => _canvas;
+        DotLabelAlignmentAttributes IDotGraphAttributesRoot.LabelAlignment => _labelAlignment;
 
-        /// <summary>
-        ///     Style options. Note that the options are shared with those specified for <see cref="Clusters" />.
-        /// </summary>
-        public virtual DotGraphStyleAttributes Style { get; }
-
-        /// <summary>
-        ///     Style sheet attributes used for SVG output.
-        /// </summary>
-        public virtual DotGraphSvgSvgStyleSheetAttributes SvgStyleSheet { get; }
-
-        /// <summary>
-        ///     Graph layout options.
-        /// </summary>
-        public virtual DotGraphLayoutAttributes Layout { get; }
-
-        /// <summary>
-        ///     Graph canvas properties.
-        /// </summary>
-        public virtual DotGraphCanvasAttributes Canvas { get; }
-
-        /// <summary>
-        ///     Horizontal and vertical label alignment options.
-        /// </summary>
-        public virtual DotLabelAlignmentAttributes LabelAlignment { get; }
-
-        // accessible only through the interface
         [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotGraphAttributes.Style
         {
@@ -95,62 +75,36 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
-        /// <inheritdoc cref="IDotGraphAttributes.Label" />
-        public override DotLabel Label
-        {
-            get => base.Label;
-            set => base.Label = value;
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.ColorScheme" />
-        public override string ColorScheme
-        {
-            get => base.ColorScheme;
-            set => base.ColorScheme = value;
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.ObjectId" />
-        public override DotEscapeString ObjectId
-        {
-            get => base.ObjectId;
-            set => base.ObjectId = value;
-        }
-
-        /// <inheritdoc cref="IDotGraphAttributes.EdgeShape" />
         [DotAttributeKey(DotAttributeKeys.Splines)]
-        public virtual DotEdgeShape? EdgeShape
+        DotEdgeShape? IDotGraphAttributes.EdgeShape
         {
             get => GetValueAs<DotEdgeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
-        /// <inheritdoc cref="IDotGraphAttributes.Comment" />
         [DotAttributeKey(DotAttributeKeys.Comment)]
-        public virtual string Comment
+        string IDotGraphAttributes.Comment
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotGraphAttributes.Charset" />
         [DotAttributeKey(DotAttributeKeys.Charset)]
-        public virtual string Charset
+        string IDotGraphAttributes.Charset
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotGraphAttributes.ImageDirectories" />
         [DotAttributeKey(DotAttributeKeys.ImagePath)]
-        public virtual string ImageDirectories
+        string IDotGraphAttributes.ImageDirectories
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotGraphAttributes.RootNodeId" />
         [DotAttributeKey(DotAttributeKeys.Root)]
-        public virtual DotId RootNodeId
+        DotId IDotGraphAttributes.RootNodeId
         {
             get => GetValueAsId(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);

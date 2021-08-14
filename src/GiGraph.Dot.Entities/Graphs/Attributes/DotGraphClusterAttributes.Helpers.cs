@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         {
             Style.FillStyle = radial ? DotClusterFillStyle.Radial : DotClusterFillStyle.Normal;
             FillColor = color;
-            _graphGraphAttributes.Canvas.GradientFillAngle = angle;
+            ((IDotGraphAttributesRoot) _graphAttributes).Canvas.GradientFillAngle = angle;
         }
 
         /// <summary>

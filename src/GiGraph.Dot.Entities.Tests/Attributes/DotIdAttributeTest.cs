@@ -26,10 +26,10 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         {
             var graph = new DotGraph();
 
-            graph.Subsections.Add().Attributes.RootNodeId = null;
-            graph.Subsections.Add().Attributes.RootNodeId = "root";
-            graph.Subsections.Add().Attributes.RootNodeId = new DotId(null);
-            graph.Subsections.Add().Attributes.RootNodeId = new DotClusterId("root");
+            graph.Subsections.Add().RootNodeId = null;
+            graph.Subsections.Add().RootNodeId = "root";
+            graph.Subsections.Add().RootNodeId = new DotId(null);
+            graph.Subsections.Add().RootNodeId = new DotClusterId("root");
 
             Snapshot.Match(graph.Build(), "root_node_id_attribute.gv");
         }

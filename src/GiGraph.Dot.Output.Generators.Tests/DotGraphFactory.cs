@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
         {
             var graph = new DotGraph("graph1", directed);
 
-            graph.Attributes.Comment = "graph_comment";
+            graph.Comment = "graph_comment";
             graph.Clusters.Attributes.AllowEdgeClipping = true;
             graph.Clusters.Attributes.FillColor = Color.Brown;
 
@@ -121,7 +121,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Subsections.Add(ss =>
             {
                 ss.Annotation = "graph section comment";
-                ss.Attributes.Canvas.BackgroundColor = Color.Blue;
+                ss.Canvas.BackgroundColor = Color.Blue;
                 ss.Nodes.Add("section 1 node");
                 ss.Edges.AddLoop("section 1 node");
             });

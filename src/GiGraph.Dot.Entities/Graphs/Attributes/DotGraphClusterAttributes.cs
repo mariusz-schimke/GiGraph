@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
     public partial class DotGraphClusterAttributes : DotEntityMappableAttributes<IDotGraphClusterAttributes>, IDotGraphClusterAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup GraphClusterAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClusterAttributes, IDotGraphClusterAttributes>().Build();
-        protected readonly DotGraphAttributes _graphGraphAttributes;
+        protected readonly DotGraphAttributes _graphAttributes;
 
         protected DotGraphClusterAttributes(
             DotGraphAttributes graphAttributes,
@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         )
             : base(graphAttributes.Collection, attributeKeyLookup)
         {
-            _graphGraphAttributes = graphAttributes;
+            _graphAttributes = graphAttributes;
             Style = styleAttributes;
         }
 
