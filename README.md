@@ -211,6 +211,12 @@ You can also conveniently use specific types that represent attribute values to 
 node.Attributes.Collection.SetComplex("fillcolor", new DotGradientColor(Color.Red, Color.Blue));
 ```
 
+And similarly when you want to use an enumeration type:
+
+```c#
+node.Attributes.Collection.SetEnum("shape", DotNodeShape.Circle);
+```
+
 
 
 If there is a case that you want your value to be written as is in the output DOT script (without escaping), use the *SetCustom* method. It's similar to the first approach, but the value you provide doesn't undergo any further processing (normally it must be escaped if it contains special characters so that they are interpreted correctly and don't break syntactic consistency of the output script). In this case, however, you have to take care of following the syntax rules by yourself for the provided value.
