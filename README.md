@@ -75,7 +75,7 @@ For a complete documentation of the DOT language and visualization capabilities 
 
 # Generating a graph
 
-For a basic case, create a new **DotGraph** instance, and use its *Edges* collection to define connections between nodes. In order to generate the output DOT script, call the ***Build*** extension method on the graph instance. And that's mostly it.
+For a basic case, create a new **DotGraph** instance and use its *Edges* collection to define connections between nodes. In order to generate the output DOT script, call the ***Build*** extension method on the graph. And that's mostly it.
 
 Here's a simple *Hello World!* graph example with two nodes joined by an edge.
 
@@ -141,31 +141,6 @@ graph
 
 # Graph building blocks
 
-There are five basic types that are the building blocks of a graph in this library:
-
-- **DotGraph** – the *root* graph,
-- **DotNode** – a node (vertex) of the graph,
-- **DotEdge** – an edge that joins two nodes (endpoints),
-- **DotSubgraph** – a subgraph that groups nodes together *logically* and allows you to control their layout against other nodes in the graph. It may also be used as a collection of nodes to be used as multiple endpoints.
-- **DotCluster** – a special type of subgraph that groups nodes together *visually* by placing them inside a rectangle.
-
-
-Auxiliary types:
-
-- **DotNodeGroup** – a group of nodes that share a common list of attributes. Useful when you want to apply the same attributes to a group of nodes. It is rendered as a single DOT script statement—a list of nodes followed by a list of attributes if specified.
-- **DotEdge<*TTail*, *THead*>** – a custom edge, where *TTail* and *THead* may represent a single node (**DotEndpoint**), a cluster (**DotClusterEndpoint**), multiple nodes, where each may have a custom port specified (**DotEndpointGroup**), or multiple nodes of a subgraph (**DotSubgraphEndpoint**).
-- **DotEdgeSequence** – a sequence of edges composed of **DotEndpoint**, **DotClusterEndpoint**, **DotEndpointGroup** and/or **DotSubgraphEndpoint** instances. Used to join consecutive nodes and/or groups of nodes to one another. All edges in the sequence share a common list of attributes, and are rendered as a single DOT script statement with a list of nodes and/or subgraphs joined by edges, and followed by a list of attributes if specified.
-
-
-There is also a variety of *attributes* distinguished by the type of value they specify. To mention a few basic ones:
-
-- **DotStringAttribute** – a string value attribute,
-- **DotBoolAttribute** – a boolean attribute,
-- **DotIntAttribute** – an integer value attribute,
-- **DotDoubleAttribute** – an double precision value attribute,
-- **DotColorAttribute** – a color attribute,
-- **DotNodeShapeAttribute** – a node shape attribute.
-
 
 
 ## Graph
@@ -189,7 +164,9 @@ var graph = new DotGraph(strict: true);
 
 ## Attributes
 
-Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrow head shape, and so on. When you don't specify attributes explicitly, their default values depend on the graph layout engine you use for visualization (see [documentation](http://www.graphviz.org/doc/info/attrs.html)).
+Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrow head shape, and various others, depending on the context. When an attribute is not specified explicitly, its default value depends on the graph layout engine you use for visualization (see <a href="http://www.graphviz.org/doc/info/attrs.html" target="_blank">documentation</a>). That default value is usually stated in the comment of the associated property.
+
+There over 170 different attributes listed in the <a href="http://www.graphviz.org/doc/info/attrs.html" target="_blank">Graphviz documentation</a>, that may be set on the graph or on its elements. The library lets you set most of them conveniently by using properties on attribute collections available on the graph and other elements. Below are a few examples of setting attributes on the graph, on a node and on an edge:
 
 ```c#
 graph.Attributes.Label = "My graph";
@@ -214,41 +191,31 @@ graph.Edges.Add("Foo", "Bar", edge =>
 });
 ```
 
-There over 170 different attributes listed in the Graphviz documentation, that may be set on a graph or on its elements. The library lets you set most of them conveniently by using properties on attribute collections available on the graph and on its elements. However, if there is no property available for an attribute you would like to set, you may still provide a key and a value for it manually, as strings. Consider the following example:
+
+
+In rare cases you may come across an attribute that is not exposed as a property, but then you may still provide a key and a value for it manually. Here's an example:
 
 ```c#
 node.Attributes.Collection.Set("fillcolor", "red:blue");
 ```
 
-Under the hood, the *Set* method above adds a *DotStringAttribute* instance to the collection of attributes:
-
-```c#
-var attribute = new DotStringAttribute("fillcolor", "red:blue");
-node.Attributes.Collection.Set(attribute);
-```
-
-The *DotStringAttribute* may be used for any type of attribute. Its *value* will automatically be escaped when necessary, to ensure that the output DOT script is syntactically correct (quotation marks and trailing backslashes are escaped). Before you resort to this approach, however, make sure that there is no *Set* method overload appropriate for the type of value you would like to set. If there is one, you won't have to take care of value formatting details. For instance, the following code renders the same result as the previous examples:
+There are many overloads of the *Set* method, however, so you can also conveniently use specific types that represent attribute values to not have to care about syntactic details. For instance, the following code renders the same result as the example above:
 
 ```dot
 node.Attributes.Collection.Set("fillcolor", new DotGradientColor(Color.Red, Color.Blue));
 ```
 
-However, if you actually want to provide a value that won't be modified in any way (escaped) in the output DOT script, you may resort to *DotCustomAttribute*. It's similar to mentioned *DotStringAttribute*, but the value you provide is rendered as is, without any further processing. When using it, make sure that it is escaped appropriately, as otherwise the output DOT script may become syntactically incorrect.
+
+
+If there is a case that you want your value to be written as is in the output DOT script (without escaping), use the *SetCustom* method. It's similar to the first approach, but the value you provide doesn't undergo any further processing (normally it must be escaped if it contains special characters so that they are interpreted correctly and don't break syntactic consistency of the output script). In this case, however, you have to take care of following the syntax rules by yourself for the provided value.
 
 ```c#
 node.Attributes.Collection.SetCustom("fillcolor", "red:blue");
 ```
 
-Under the hood, the *SetCustom* method adds a *DotCustomAttribute* instance to the collection of attributes:
-
-```c#
-var attribute = new DotCustomAttribute("fillcolor", "red:blue");
-node.Attributes.Collection.Set(attribute);
-```
 
 
-
-❕ Note, however, that when you can't find a property for the attribute you would like to set, you may use attribute metadata dictionary on the graph or on any other element that has an attribute collection. The metadata includes, among others, a property path for an attribute key:
+❕ Note, however, that when you can't find a property for the Graphviz attribute you would like to set, just use the attribute metadata dictionary on the graph or on any other element that has an attribute collection. The metadata includes, among others, a property path for an associated Graphviz attribute key:
 
 ```c#
 var dict = graph.Attributes.GetMetadataDictionary();
