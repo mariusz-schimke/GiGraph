@@ -17,11 +17,11 @@ namespace GiGraph.Dot.Examples.Html
                 attrs.Shape = DotNodeShape.Rectangle;
 
                 attrs.Label = new DotHtmlBuilder()
-                   .AppendStyledText("Foo", new DotStyledFont(DotFontStyles.Bold, 20, Color.Brown))
-                   .AppendText(" ")
-                   .AppendText("Bar", new DotFont(20))
+                   .AppendStyledFont(new DotStyledFont(DotFontStyles.Bold, 20, Color.Brown), font => font
+                       .AppendHtml("&bull; ").AppendText("Foo ").AppendText("Bar", new DotFont(Color.Black))
+                    )
                    .AppendLine()
-                   .AppendStyledText("Baz", new DotStyledFont(DotFontStyles.Italic | DotFontStyles.Underline, 14))
+                   .AppendStyledText("Baz", DotFontStyles.Italic | DotFontStyles.Underline)
                    .Build();
             });
 

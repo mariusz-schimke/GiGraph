@@ -32,10 +32,7 @@ namespace GiGraph.Dot.Entities.Tests.Html
         {
             var tag = new DotHtmlElement("custom-tag-name")
             {
-                Content =
-                {
-                    new DotHtmlBold("bold text")
-                }
+                new DotHtmlBold("bold text")
             };
 
             tag.Attributes.SetComplex("bgcolor", new DotGradientColor(Color.Red, Color.Blue));

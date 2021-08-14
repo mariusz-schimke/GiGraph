@@ -47,7 +47,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// </param>
         public virtual DotHtmlTableCell AddCell(IDotHtmlEntity content, Action<DotHtmlTableCell> init = null)
         {
-            return Content.Add(new DotHtmlTableCell { Content = { content } }, init);
+            return Content.Add(new DotHtmlTableCell { content }, init);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         public virtual DotHtmlTableCell AddImageCell(string source, DotImageScaling? scaling = null, Action<DotHtmlTableCell> init = null)
         {
             return Content.Add(
-                new DotHtmlTableCell { Content = { new DotHtmlImage(source, scaling) } },
+                new DotHtmlTableCell { new DotHtmlImage(source, scaling) },
                 init
             );
         }
