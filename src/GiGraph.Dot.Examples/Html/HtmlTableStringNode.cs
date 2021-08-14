@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Examples.Html
                     <TR>
                         <TD>Garply</TD>
                         <TD>Waldo</TD>
-                        <TD PORT=""port1"">Fred</TD>
+                        <TD PORT=""port1""><FONT COLOR=""royalblue""><B><I>Fred</I></B></FONT></TD>
                     </TR>
                     <TR>
                         <TD COLSPAN=""3"" ALIGN=""RIGHT"">Plugh</TD>

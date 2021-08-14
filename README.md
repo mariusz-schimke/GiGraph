@@ -419,9 +419,9 @@ digraph "Label formatting"
 
 When it comes to customizing labels in terms of font, its size, color and style, the basic Graphviz-specific HTML is the only available solution. 
 
-The <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">Graphviz documentation</a> states that *the features and syntax supported by [...] labels are modeled on HTML. However, there are many aspects that are relevant to Graphviz labels that are not in HTML and, conversely, HTML allows various constructs which are meaningless in Graphviz*. Therefore, only a small subset of HTML elements is supported, with no CSS. The library lets you make use of all of the supported elements conveniently.
+The <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">Graphviz documentation</a> states that *the features and syntax supported by [...] labels are modeled on HTML. However, there are many aspects that are relevant to Graphviz labels that are not in HTML and, conversely, HTML allows various constructs which are meaningless in Graphviz*. Therefore, only a small subset of HTML elements is supported, with no CSS. The library lets you make use of all of the supported elements conveniently. In general, table, font, font styles, image, and a few other types of elements are valid for use in an HTML label.
 
-You can check the <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">documentation</a> what HTML elements are supported and compose an HTML label by yourself, but there is an easier way. The *DotHtmlBuilder* class lets you compose and style a label with the set of HTML elements that Graphviz does support.
+For a complete list of supported elements and their attributes, you can study the <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">documentation</a> and compose an HTML label by yourself, but there is an easier way. The *DotHtmlBuilder* class lets you compose and style a label with the set of HTML elements that Graphviz does support.
 
 Consider the following example. For simplicity, it's uses only a narrow subset of methods provided by the builder.
 
@@ -523,9 +523,6 @@ digraph
 The shape of a node is determined by the *Shape* attribute. By default it is an ellipse with a label, but you may change it to any other shape accepted by your Graphviz visualization tool. All supported shapes are available under the *DotNodeShape* enumeration, but two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use either of these as the *Shape* attribute, you may assign a record (*DotRecord*) to the node. In such case the node will be presented in a table-like form.
 
 ```c#
-using GiGraph.Dot.Extensions; // ToRecordNode
-...
-
 // for convenience, just use the ToRecordNode or ToRoundedRecordNode extension method on a node
 graph.Nodes.Add("Foo").ToRecordNode(new DotRecord("Hello", "World!"));
 
@@ -554,9 +551,6 @@ digraph
 A *DotRecord* may be composed of textual fields (*DotRecordTextField*), as well as record fields (*DotRecord*), when you want to embed a sub-record inside a record. A record or a sub-record may also be flipped to change the orientation of its fields. By default, sub-records have an orientation opposite to the orientation of their parent record. The orientation of the root record, on the other hand, is dependent on the layout direction of the graph.
 
 ```c#
-using GiGraph.Dot.Extensions; // ToRecord
-...
-
 // note that string is implicitly converted to DotRecordTextField here for convenience
 graph.Nodes.Add("Foo").ToRecordNode(
     new DotRecord("Foo", new DotRecord("Bar", "Baz"), "Qux")
@@ -651,15 +645,83 @@ See also a similar example in the [HTML nodes](#html-nodes) section.
 
 ### HTML nodes
 
-Nodes may have an HTML label assigned. This way you can handle more complex node content arrangement and styling scenarios than in a record node for instance. The HTML grammar is Graphviz specific and is described in the <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">documentation</a>. In general, tables, text styles, and images are the main valid markups that may be used for an HTML node label.
+As already indicated in the [HTML-styled label](#html-styled-label) section, nodes, among other elements, may have an HTML label assigned. This way you can handle more complex node content arrangement and styling scenarios than in a record node for instance.
 
-The example below presents an HTML table visualized as a node.
+The example below presents an HTML table visualized as a node. For simple text styling, please refer to the [HTML-styled label](#html-styled-label) section.
 
 ```c#
-using GiGraph.Dot.Extensions; // ToHtml
-...
+var graph = new DotGraph();
 
-// the ToPlainHtmlNode extension method sets a borderless (plain) shape of the node so that the HTML table determines its shape fully
+var table = new DotHtmlTable
+{
+    BorderWidth = 0,
+    CellBorderWidth = 1,
+    CellSpacing = 0,
+    CellPadding = 4
+};
+
+table.AddRow(row =>
+{
+    row.AddCell($"Foo{Environment.NewLine}Bar", cell => cell.RowSpan = 3);
+
+    row.AddCell(
+        "Baz",
+        cell =>
+        {
+            cell.ColumnSpan = 3;
+            cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Left;
+        }
+    );
+
+    row.AddCell("Qux", cell => cell.RowSpan = 3);
+    row.AddCell("Quux", cell => cell.RowSpan = 3);
+});
+
+table.AddRow(row =>
+{
+    row.AddCell("Garply");
+    row.AddCell("Waldo");
+    row.AddCell(
+        "Fred",
+        new DotStyledFont(DotFontStyles.Bold | DotFontStyles.Italic, Color.RoyalBlue),
+        cell => cell.PortName = "port1"
+    );
+});
+
+table.AddRow(row =>
+    row.AddCell(
+        "Plugh",
+        cell =>
+        {
+            cell.ColumnSpan = 3;
+            cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Right;
+        }
+    )
+);
+
+// sets a borderless (plain) shape of the node so that the HTML table fully determines the shape
+graph.Nodes.Add("Bar").ToPlainHtmlNode(table);
+```
+
+The code above renders:
+
+```dot
+digraph
+{
+    Bar [ label = <<table border="0" cellborder="1" cellpadding="4" cellspacing="0"><tr><td rowspan="3">Foo<br/>Bar</td><td align="LEFT" colspan="3">Baz</td><td rowspan="3">Qux</td><td rowspan="3">Quux</td></tr><tr><td>Garply</td><td>Waldo</td><td port="port1"><font color="royalblue"><b><i>Fred</i></b></font></td></tr><tr><td align="RIGHT" colspan="3">Plugh</td></tr></table>>, shape = plain ]
+}
+```
+
+<p align="center">
+  <img src="./Assets/Examples/html-node.svg">
+</p>
+
+
+
+An identical result may be achieved by composing the HTML table directly, as text, if this is the preferred approach:
+
+```c#
+// the ToPlainHtmlNode extension method sets a borderless (plain) shape of the node so that the HTML table fully determines the shape
 graph.Nodes.Add("Bar").ToPlainHtmlNode
 (
     @"<TABLE BORDER=""0"" CELLBORDER=""1"" CELLSPACING=""0"" CELLPADDING=""4"">
@@ -672,51 +734,15 @@ graph.Nodes.Add("Bar").ToPlainHtmlNode
         <TR>
             <TD>Garply</TD>
             <TD>Waldo</TD>
-            <TD PORT=""port1"">Fred</TD>
+            <TD PORT=""port1""><FONT COLOR=""royalblue""><B><I>Fred</I></B></FONT></TD>
         </TR>
         <TR>
             <TD COLSPAN=""3"" ALIGN=""RIGHT"">Plugh</TD>
         </TR>
     </TABLE>"
 );
-
-// the code above is equivalent to
-graph.Nodes.Add("Bar", attrs =>
-{
-    attrs.Shape = DotNodeShape.Plain;
-    attrs.Label = (DotHtmlLabel) @"<TABLE BORDER=""0"" CELLBORDER=""1"" CELLSPACING=""0"" CELLPADDING=""4"">
-        ... ommitted ...
-        </TABLE>";
-});
 ```
 
-The code above renders:
-
-```dot
-digraph
-{
-    Bar [ label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
-        <TR>
-            <TD ROWSPAN="3">Foo<BR/>Bar</TD>
-            <TD COLSPAN="3" ALIGN="LEFT">Baz</TD>
-            <TD ROWSPAN="3">Qux</TD>
-            <TD ROWSPAN="3">Quux</TD>
-        </TR>
-        <TR>
-            <TD>Garply</TD>
-            <TD>Waldo</TD>
-            <TD PORT="port1">Fred</TD>
-        </TR>
-        <TR>
-            <TD COLSPAN="3" ALIGN="RIGHT">Plugh</TD>
-        </TR>
-    </TABLE>>, shape = plain ]
-}
-```
-
-<p align="center">
-  <img src="./Assets/Examples/html-node.svg">
-</p>
 
 
 
