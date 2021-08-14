@@ -25,10 +25,7 @@ namespace GiGraph.Dot.Examples.Html
 
             table.AddRow(row =>
             {
-                row.AddCell(
-                    $"Foo{Environment.NewLine}Bar",
-                    cell => cell.RowSpan = 3
-                );
+                row.AddCell($"Foo{Environment.NewLine}Bar", cell => cell.RowSpan = 3);
 
                 row.AddCell(
                     "Baz",
@@ -39,15 +36,8 @@ namespace GiGraph.Dot.Examples.Html
                     }
                 );
 
-                row.AddCell(
-                    "Qux",
-                    cell => cell.RowSpan = 3
-                );
-
-                row.AddCell(
-                    "Quux",
-                    cell => cell.RowSpan = 3
-                );
+                row.AddCell("Qux", cell => cell.RowSpan = 3);
+                row.AddCell("Quux", cell => cell.RowSpan = 3);
             });
 
             table.AddRow(row =>
@@ -56,7 +46,7 @@ namespace GiGraph.Dot.Examples.Html
                 row.AddCell("Waldo");
                 row.AddCell(
                     "Fred",
-                    new DotStyledFont(DotFontStyles.Bold | DotFontStyles.Italic, Color.Brown),
+                    new DotStyledFont(DotFontStyles.Bold | DotFontStyles.Italic, Color.RoyalBlue),
                     cell => cell.PortName = "port1"
                 );
             });

@@ -5,15 +5,15 @@ using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common
 {
-    public abstract class DotStyleSheetAttributes<TIEntityStyleSheetAttributes> : DotEntityAttributesWithMetadata<TIEntityStyleSheetAttributes>, IDotStyleSheetAttributes
-        where TIEntityStyleSheetAttributes : IDotStyleSheetAttributes
+    public abstract class DotSvgStyleSheetAttributes<TIEntitySvgStyleSheetAttributes> : DotEntityAttributesWithMetadata<TIEntitySvgStyleSheetAttributes>, IDotSvgStyleSheetAttributes
+        where TIEntitySvgStyleSheetAttributes : IDotSvgStyleSheetAttributes
     {
-        protected DotStyleSheetAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotSvgStyleSheetAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }
 
-        /// <inheritdoc cref="IDotStyleSheetAttributes.Class" />
+        /// <inheritdoc cref="IDotSvgStyleSheetAttributes.Class" />
         [DotAttributeKey(DotAttributeKeys.Class)]
         public virtual string Class
         {

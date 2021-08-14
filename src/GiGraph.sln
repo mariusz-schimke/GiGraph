@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
 		Solution Items\CommonAssemblyInfo.cs = Solution Items\CommonAssemblyInfo.cs
+		..\README.md = ..\README.md
+		GiGraph.Dot.Entities.Tests\Attributes\__snapshots__\attribute_property_key_map.snap = GiGraph.Dot.Entities.Tests\Attributes\__snapshots__\attribute_property_key_map.snap
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Types", "GiGraph.Dot.Types\GiGraph.Dot.Types.csproj", "{6B5EFF21-2558-48B5-8564-6BFF9DBF11C3}"

@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
             DotHyperlinkAttributes hyperlinkAttributes,
             DotGraphFontAttributes fontAttributes,
             DotGraphStyleAttributes styleAttributes,
-            DotGraphStyleSheetAttributes styleSheetAttributes,
+            DotGraphSvgSvgStyleSheetAttributes svgStyleSheetAttributes,
             DotGraphLayoutAttributes layoutAttributes,
             DotGraphCanvasAttributes canvasAttributes,
             DotLabelAlignmentAttributes labelAlignmentAttributes
@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         {
             Font = fontAttributes;
             Style = styleAttributes;
-            StyleSheet = styleSheetAttributes;
+            SvgStyleSheet = svgStyleSheetAttributes;
             Layout = layoutAttributes;
             Canvas = canvasAttributes;
             LabelAlignment = labelAlignmentAttributes;
@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
                 new DotHyperlinkAttributes(attributes),
                 new DotGraphFontAttributes(attributes),
                 new DotGraphStyleAttributes(attributes),
-                new DotGraphStyleSheetAttributes(attributes),
+                new DotGraphSvgSvgStyleSheetAttributes(attributes),
                 new DotGraphLayoutAttributes(attributes),
                 new DotGraphCanvasAttributes(attributes),
                 new DotLabelAlignmentAttributes(attributes)
@@ -70,7 +70,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// <summary>
         ///     Style sheet attributes used for SVG output.
         /// </summary>
-        public virtual DotGraphStyleSheetAttributes StyleSheet { get; }
+        public virtual DotGraphSvgSvgStyleSheetAttributes SvgStyleSheet { get; }
 
         /// <summary>
         ///     Graph layout options.

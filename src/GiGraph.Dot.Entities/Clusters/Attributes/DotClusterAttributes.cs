@@ -24,10 +24,10 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
             DotHyperlinkAttributes hyperlinkAttributes,
             DotFontAttributes fontAttributes,
             DotClusterStyleAttributes styleAttributes,
-            DotStyleSheetAttributes styleSheetAttributes,
+            DotSvgStyleSheetAttributes svgStyleSheetAttributes,
             DotLabelAlignmentAttributes labelAlignmentAttributes
         )
-            : base(attributes, attributeKeyLookup, hyperlinkAttributes, styleSheetAttributes)
+            : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
         {
             Font = fontAttributes;
             Style = styleAttributes;
@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
                 new DotHyperlinkAttributes(attributes),
                 new DotFontAttributes(attributes),
                 new DotClusterStyleAttributes(attributes),
-                new DotStyleSheetAttributes(attributes),
+                new DotSvgStyleSheetAttributes(attributes),
                 new DotLabelAlignmentAttributes(attributes)
             )
         {

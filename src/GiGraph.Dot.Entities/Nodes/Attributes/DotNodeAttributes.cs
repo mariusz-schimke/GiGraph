@@ -28,9 +28,9 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
             DotNodeImageAttributes imageAttributes,
             DotNodeGeometryAttributes geometryAttributes,
             DotNodeSizeAttributes sizeAttributes,
-            DotStyleSheetAttributes styleSheetAttributes
+            DotSvgStyleSheetAttributes svgStyleSheetAttributes
         )
-            : base(attributes, attributeKeyLookup, hyperlinkAttributes, styleSheetAttributes)
+            : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
         {
             Font = fontAttributes;
             Style = styleAttributes;
@@ -49,7 +49,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
                 new DotNodeImageAttributes(attributes),
                 new DotNodeGeometryAttributes(attributes),
                 new DotNodeSizeAttributes(attributes),
-                new DotStyleSheetAttributes(attributes)
+                new DotSvgStyleSheetAttributes(attributes)
             )
         {
         }

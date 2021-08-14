@@ -19,7 +19,7 @@
     "Charset [Graph]"
   ],
   "class": [
-    "StyleSheet.Class [Graph, Cluster, Node, Edge]"
+    "SvgStyleSheet.Class [Graph, Cluster, Node, Edge]"
   ],
   "clusterrank": [
     "VisualizationMode [Graph]"
@@ -296,7 +296,7 @@
     "Style [Graph, Cluster, Node, Edge]"
   ],
   "stylesheet": [
-    "StyleSheet.Url [Graph]"
+    "SvgStyleSheet.Url [Graph]"
   ],
   "tailclip": [
     "Tail.ClipToNodeBoundary [Edge]"
