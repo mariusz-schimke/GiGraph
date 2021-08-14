@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
     public partial class DotHtmlBuilder
     {
         /// <summary>
-        ///     Initializes and appends bold text.
+        ///     Appends bold text to this instance.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends italic text.
+        ///     Appends italic text to this instance.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends underline text.
+        ///     Appends underline text to this instance.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -49,7 +49,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends overline text.
+        ///     Appends overline text to this instance.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -63,7 +63,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends subscript text.
+        ///     Appends subscript text to this instance.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -77,7 +77,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends superscript text.
+        ///     Appends superscript text to this instance.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -91,7 +91,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends strikethrough text.
+        ///     Appends strikethrough text to this instance.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -105,7 +105,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends nested font style elements.
+        ///     Appends styled text to this instance.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -122,7 +122,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends a font element with nested font style elements.
+        ///     Appends styled text to this instance.
         /// </summary>
         /// <param name="text">
         ///     The text to append.

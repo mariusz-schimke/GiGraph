@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
     public partial class DotHtmlBuilder
     {
         /// <summary>
-        ///     Initializes and appends an image.
+        ///     Appends an image element to this instance.
         /// </summary>
         /// <param name="source">
         ///     Specifies the image file to be displayed.
