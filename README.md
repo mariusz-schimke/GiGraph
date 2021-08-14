@@ -767,7 +767,11 @@ Edges **join two nodes**: a *tail* node and a *head* node (this naming conventio
 graph.Edges.Add("Foo", "Bar");
 ```
 
-Edges have attributes, and *label* is probably one of those that you will use most often. Edges support customizing which side of a node (and/or cell, when record nodes are used) the head and/or tail of the edge is attached to. This can be done in two ways: by using attributes, or by using the *Port* properties on edge tail or head. The difference is that the attributes may be set globally, as opposed to the *Port* properties on individual edge endpoints.
+
+
+### Edge placement
+
+Edges support customizing which side of a node (and/or cell, when record or HTML table nodes are used) the head and/or tail of the edge is attached to. This can be done in two ways: by using attributes or by using the *Port* properties on edge tail or head. The difference is that the attributes may be set globally, as opposed to the *Port* properties on individual edge endpoints.
 
 The code below applies attributes to an edge, and also specifies on which sides of its endpoints it should be attached to.
 
@@ -799,25 +803,19 @@ digraph
 </p>
 
 
-
-
 An edge may as well be created and added to an edge collection explicitly:
 
 ```c#
-// create an edge
 var edge = new DotEdge("Foo", "Bar");
 
-// optionally set the compass points as in the previous example,
-// to change the points on the node where the edge should be attached
 edge.Tail.Port.CompassPoint = DotCompassPoint.West;
 edge.Head.Port.CompassPoint = DotCompassPoint.West;
 
-// or
+// or the same as above, but explicitly
 edge = new DotEdge(
     new DotEndpoint("Foo", DotCompassPoint.North),
     new DotEndpoint("Bar", DotCompassPoint.South)
 );
-
 
 edge.Attributes.Label = "Baz";
 edge.Attributes.Color = Color.Blue;
@@ -829,12 +827,12 @@ graph.Edges.Add(edge);
 
 ### Arrowhead shapes
 
-An edge may have an arrowhead next to its head and/or tail node. By default, in a directed graph, an arrowhead appears only near the head node, but this behavior may be modified by setting the *Directions* property directly on an edge, or globally in global edge attributes. By setting this property you may choose whether the arrowhead appears next to the head node, next to the tail node, on both sides of the edge, or not at all.
+An edge may have an arrowhead next to its head and/or tail node. By default, in a directed graph, an arrowhead appears only near the head node, but this behavior may be modified by setting the *Directions* property on an edge or globally in the edge collection's attributes on the graph. By setting this property you can choose whether the arrowhead appears next to the head node, next to the tail node, on both sides of the edge, or not at all.
 
-The shape of the arrowhead may be [customized](http://www.graphviz.org/doc/info/arrows.html), and there are 42 possible combinations of shapes, based on the set of 11 basic shapes. The combinations include:
+The shape of the arrowhead may be [customized](http://www.graphviz.org/doc/info/arrows.html) and there are 42 possible combinations of shapes based on the set of 11 basic shapes. The combinations include:
 
 - a filled and an empty version of a shape,
-- side clipping, that leaves visible only the part to the left or to the right of an edge.
+- side clipping that leaves visible only the part to the left or to the right of an edge.
 
 What's more, the end of an edge may be composed of **multiple arrowheads**, each customized independently.
 
@@ -882,12 +880,12 @@ digraph
 
 ### Multicolor and multiline edges
 
-By default, an edge is visualized as a single spline in one color. There are two other variants available, however:
+By default, an edge is visualized as a single spline. There are two other variants available, however:
 
 - a single spline with segments in specified colors,
 - multiple parallel splines in specified colors.
 
-Consider the following example.
+Consider the following example:
 
 ```c#
 graph.Edges.Add("Foo", "Bar", edge =>
@@ -919,7 +917,7 @@ digraph
 
 ### Endpoint groups
 
-And edge joins two endpoints (nodes), however, in some cases you may want to join one endpoint to multiple endpoints or multiple endpoints to multiple endpoints. To achieve that, you may either specify multiple edges having the same node identifier as their head or tail endpoint, or simply use an endpoint group as the head and/or tail instead of a single node identifier. Such single edge definition actually renders multiple edges. Note, however, that it still has only one list of attributes, so when you set them, they will be applied to all edges rendered based on it.
+And edge joins two endpoints (nodes), however, in some cases you may want to join one endpoint to multiple endpoints or multiple endpoints to multiple endpoints. To achieve that, you may either specify multiple edges having the same node identifier as their head or tail endpoint, or simply use an endpoint group as the head and/or tail instead of a single node identifier. Such single edge definition is actually visualized as multiple edges. Note, however, that it has only one list of attributes, so when you set them, they will be applied to all the edges.
 
 There are two types that represent endpoint groups: *DotEndpointGroup* and *DotSubgraphEndpoint*. For basic purposes, they may be used interchangeably, but the former enables you to specify a port for any endpoint in the group, which is not possible when *DotSubgraphEndpoint* is used.
 
@@ -1041,7 +1039,7 @@ digraph
 
 
 
-#### Group attributes
+#### Endpoint group attributes
 
 Attributes for an edge definition may be set either directly on its attribute collection, or by using a lambda expression passed by an argument of the *AddOneToMany*, *AddManyToOne*, *AddManyToMany* methods on an *Edges* collection.
 
@@ -1084,7 +1082,7 @@ digraph
 
 ### Edge sequences
 
-An edge sequence represented by the *DotEdgeSequence* class lets you define endpoints and/or endpoint groups in such a way that they join one another consecutively. This approach may be used as a simpler way to define a sequence of edges all at once, without having to specify a separate edge for each connection between consecutive endpoints or endpoint groups. An edge sequence, however, has one list of attributes, so when you set them for the sequence, they will be applied to all edges rendered based on it.
+An edge sequence represented by the *DotEdgeSequence* class lets you define endpoints and/or endpoint groups in such a way that they join one another consecutively. This approach may be used as a simpler way to define a sequence of edges all at once, without having to specify a separate edge for each connection between consecutive endpoints or endpoint groups. An edge sequence, however, has one list of attributes, so when you set them for the sequence, they will be applied to all edges that join the endpoints of the sequence.
 
 
 
