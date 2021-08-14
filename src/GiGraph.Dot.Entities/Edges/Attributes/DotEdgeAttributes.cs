@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
             DotEdgeLabelHyperlinkAttributes labelHyperlinkAttributes,
             DotEdgeHyperlinkAttributes edgeHyperlinkAttributes,
             DotEdgeStyleAttributes edgeStyleAttributes,
-            DotStyleSheetAttributes styleSheetAttributes
+            DotSvgStyleSheetAttributes svgStyleSheetAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
             Tail = tailAttributes;
             Font = fontAttributes;
             Style = edgeStyleAttributes;
-            StyleSheet = styleSheetAttributes;
+            SvgStyleSheet = svgStyleSheetAttributes;
             EndpointLabels = endpointLabelAttributes;
             EdgeHyperlink = edgeHyperlinkAttributes;
             LabelHyperlink = labelHyperlinkAttributes;
@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
                 new DotEdgeLabelHyperlinkAttributes(attributes),
                 new DotEdgeHyperlinkAttributes(attributes),
                 new DotEdgeStyleAttributes(attributes),
-                new DotStyleSheetAttributes(attributes)
+                new DotSvgStyleSheetAttributes(attributes)
             )
         {
         }
@@ -101,7 +101,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         /// <summary>
         ///     Style sheet attributes used for SVG output.
         /// </summary>
-        public virtual DotStyleSheetAttributes StyleSheet { get; }
+        public virtual DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
         // accessible only through the interface
         [DotAttributeKey(DotStyleAttributes.StyleKey)]

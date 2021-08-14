@@ -15,17 +15,17 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotHyperlinkAttributes hyperlinkAttributes,
-            DotStyleSheetAttributes styleSheetAttributes
+            DotSvgStyleSheetAttributes svgStyleSheetAttributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
-            StyleSheet = styleSheetAttributes;
+            SvgStyleSheet = svgStyleSheetAttributes;
         }
 
         /// <summary>
         ///     Style sheet attributes used for SVG output.
         /// </summary>
-        public virtual DotStyleSheetAttributes StyleSheet { get; }
+        public virtual DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
         [DotAttributeKey(DotAttributeKeys.Color)]
         public virtual DotColorDefinition Color

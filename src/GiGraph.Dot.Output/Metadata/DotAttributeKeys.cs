@@ -467,7 +467,7 @@ namespace GiGraph.Dot.Output.Metadata
         public const string Style = "style";
 
         [DotAttributeMetadata(DotCompatibleElements.Graph, compatibleOutputs: DotCompatibleOutputs.Svg)]
-        public const string StyleSheet = "stylesheet";
+        public const string SvgStyleSheet = "stylesheet";
 
         [DotAttributeMetadata(DotCompatibleElements.Edge)]
         public const string TailClip = "tailclip";

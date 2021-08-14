@@ -6,22 +6,22 @@ using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphStyleSheetAttributes : DotStyleSheetAttributes<IDotGraphStyleSheetAttributes>, IDotGraphStyleSheetAttributes
+    public class DotGraphSvgSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGraphSvgStyleSheetAttributes>, IDotGraphSvgStyleSheetAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EntityStyleSheetAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphStyleSheetAttributes, IDotGraphStyleSheetAttributes>().Build();
+        protected static readonly DotMemberAttributeKeyLookup GraphSvgStyleSheetAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphSvgSvgStyleSheetAttributes, IDotGraphSvgStyleSheetAttributes>().Build();
 
-        protected DotGraphStyleSheetAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotGraphSvgSvgStyleSheetAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }
 
-        public DotGraphStyleSheetAttributes(DotAttributeCollection attributes)
-            : base(attributes, EntityStyleSheetAttributesKeyLookup)
+        public DotGraphSvgSvgStyleSheetAttributes(DotAttributeCollection attributes)
+            : base(attributes, GraphSvgStyleSheetAttributesKeyLookup)
         {
         }
 
-        /// <inheritdoc cref="IDotGraphStyleSheetAttributes.Url" />
-        [DotAttributeKey(DotAttributeKeys.StyleSheet)]
+        /// <inheritdoc cref="IDotGraphSvgStyleSheetAttributes.Url" />
+        [DotAttributeKey(DotAttributeKeys.SvgStyleSheet)]
         public virtual string Url
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
@@ -49,7 +49,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// <param name="attributes">
         ///     The instance to copy the properties from.
         /// </param>
-        public virtual void Set(IDotGraphStyleSheetAttributes attributes)
+        public virtual void Set(IDotGraphSvgStyleSheetAttributes attributes)
         {
             Set(attributes.Url, attributes.Class);
         }
