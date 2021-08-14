@@ -75,7 +75,7 @@ For a complete documentation of the DOT language and visualization capabilities 
 
 # Generating a graph
 
-For a basic case, create a new **DotGraph** instance and use its *Edges* collection to define connections between nodes. In order to generate the output DOT script, call the ***Build*** extension method on the graph. And that's mostly it.
+For a basic scenario, create a new **DotGraph** instance and use its *Edges* collection to define connections between nodes. In order to generate the output DOT script, call the ***Build*** extension method on the graph. And that's mostly it.
 
 Here's a simple *Hello World!* graph example with two nodes joined by an edge.
 
@@ -164,15 +164,17 @@ var graph = new DotGraph(strict: true);
 
 ## Attributes
 
-Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrow head shape, and various others, depending on the context. When an attribute is not specified explicitly, its default value depends on the graph layout engine you use for visualization (see <a href="http://www.graphviz.org/doc/info/attrs.html" target="_blank">documentation</a>). That default value is usually stated in the comment of the associated property.
+Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrow head shape, and various others, depending on the context. When an attribute is not specified explicitly, its default value depends on the graph layout engine you use for visualization (see <a href="http://www.graphviz.org/doc/info/attrs.html" target="_blank">Graphviz documentation</a>). That default value is usually stated in the comment of the associated property.
 
-There over 170 different attributes listed in the <a href="http://www.graphviz.org/doc/info/attrs.html" target="_blank">Graphviz documentation</a>, that may be set on the graph or on its elements. The library lets you set most of them conveniently by using properties on attribute collections available on the graph and other elements. Below are a few examples of setting attributes on the graph, on a node and on an edge:
+There over 170 different attributes listed in the <a href="http://www.graphviz.org/doc/info/attrs.html" target="_blank">documentation</a>, that may be set on the graph or on its elements. The library lets you set most of them conveniently by using properties on attribute collections available on the graph and other elements. Below are a few examples of setting attributes on the graph, on a node and on an edge:
 
 ```c#
 graph.Attributes.Label = "My graph";
 graph.Attributes.Layout.Direction = DotLayoutDirection.LeftToRight;
 graph.Attributes.Canvas.BackgroundColor = Color.LightGray;
 ```
+
+
 
 ```c#
 graph.Nodes.Add("Foo", attrs =>
@@ -182,6 +184,8 @@ graph.Nodes.Add("Foo", attrs =>
     attrs.FillColor = Color.Blue;
 });
 ```
+
+
 
 ```c#
 graph.Edges.Add("Foo", "Bar", edge =>
@@ -829,7 +833,7 @@ graph.Edges.Add(edge);
 
 An edge may have an arrowhead next to its head and/or tail node. By default, in a directed graph, an arrowhead appears only near the head node, but this behavior may be modified by setting the *Directions* property on an edge or globally in the edge collection's attributes on the graph. By setting this property you can choose whether the arrowhead appears next to the head node, next to the tail node, on both sides of the edge, or not at all.
 
-The shape of the arrowhead may be <a href="http://www.graphviz.org/doc/info/shapes.html#html" target="_blank">customized</a>, and there are 42 possible combinations of shapes based on the set of 11 basic shapes. The combinations include:
+The shape of the arrowhead may be <a href="http://www.graphviz.org/doc/info/arrows.html" target="_blank">customized</a>, and there are 42 possible combinations of shapes based on the set of 11 basic shapes. The combinations include:
 
 - a filled and an empty version of a shape,
 - side clipping that leaves visible only the part to the left or to the right of an edge.
