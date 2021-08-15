@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Properties;
@@ -69,31 +68,47 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         }
 
         [Fact]
-        public void all_property_accessors_have_keys_available()
+        public void all_graph_attributes_property_accessors_have_keys_available()
         {
-            // it is assumed that only implemented interface properties exist in attribute key lookups,
-            // so if a property is not exposed through interface, it should throw an exception on accessing
-            var elementsMetadata = DotElementAttributesMetadataFactory.Create(true);
-
-            foreach (var (element, attributes) in elementsMetadata)
-            {
-                object result = element switch
-                {
-                    DotCompatibleElements.Graph => new DotGraph().Attributes,
-                    DotCompatibleElements.Graph | DotCompatibleElements.Cluster => new DotGraph().Clusters.Attributes,
-                    DotCompatibleElements.Subgraph => new DotSubgraph().Attributes,
-                    DotCompatibleElements.Cluster => new DotCluster("").Attributes,
-                    DotCompatibleElements.Node => new DotNode("").Attributes,
-                    DotCompatibleElements.Edge => new DotEdge("").Attributes,
-                    _ => throw new NotSupportedException($"Unsupported element type '{element}'")
-                };
-
-                ReadAndWriteAttributeProperties(result, attributes.Values.ToArray());
-            }
+            var graph = new DotGraph();
+            ReadAndWriteAttributeProperties(graph.Attributes, graph.Attributes.GetMetadataDictionary().Values.ToArray());
+            ReadAndWriteAttributeProperties(graph.Clusters.Attributes, graph.Clusters.Attributes.GetMetadataDictionary().Values.ToArray());
         }
 
-        private static void ReadAndWriteAttributeProperties(object targetRoot, IEnumerable<DotAttributePropertyMetadata> attributes)
+        [Fact]
+        public void all_cluster_attributes_property_accessors_have_keys_available()
         {
+            var cluster = new DotCluster("");
+            ReadAndWriteAttributeProperties(cluster.Attributes, cluster.Attributes.GetMetadataDictionary().Values.ToArray());
+        }
+
+        [Fact]
+        public void all_subgraph_attributes_property_accessors_have_keys_available()
+        {
+            var subgraph = new DotSubgraph();
+            ReadAndWriteAttributeProperties(subgraph.Attributes, subgraph.Attributes.GetMetadataDictionary().Values.ToArray());
+        }
+
+        [Fact]
+        public void all_node_attributes_property_accessors_have_keys_available()
+        {
+            var node = new DotNode("");
+            ReadAndWriteAttributeProperties(node.Attributes, node.Attributes.GetMetadataDictionary().Values.ToArray());
+        }
+
+        [Fact]
+        public void all_edge_attributes_property_accessors_have_keys_available()
+        {
+            var edge = new DotEdge("");
+            ReadAndWriteAttributeProperties(edge.Attributes, edge.Attributes.GetMetadataDictionary().Values.ToArray());
+            ReadAndWriteAttributeProperties(edge.Tail.Attributes, edge.Tail.Attributes.GetMetadataDictionary().Values.ToArray());
+            ReadAndWriteAttributeProperties(edge.Head.Attributes, edge.Head.Attributes.GetMetadataDictionary().Values.ToArray());
+        }
+
+        private static void ReadAndWriteAttributeProperties(object targetRoot, DotAttributePropertyMetadata[] attributes)
+        {
+            Assert.NotEmpty(attributes);
+
             foreach (var attribute in attributes)
             {
                 var target = targetRoot;

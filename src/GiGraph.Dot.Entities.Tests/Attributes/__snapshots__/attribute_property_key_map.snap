@@ -9,8 +9,8 @@
     "Tail.Arrowhead: DotArrowheadDefinition [Edge]"
   ],
   "bgcolor": [
-    "Canvas.BackgroundColor: DotColorDefinition [Graph]",
-    "BackgroundColor: DotColorDefinition [Cluster]"
+    "BackgroundColor: DotColorDefinition [Cluster]",
+    "Canvas.BackgroundColor: DotColorDefinition [Graph]"
   ],
   "center": [
     "Canvas.CenterDrawing: Boolean? [Graph]"
@@ -22,10 +22,11 @@
     "SvgStyleSheet.Class: String [Graph, Cluster, Node, Edge]"
   ],
   "clusterrank": [
-    "VisualizationMode: DotClusterVisualizationMode? [Graph]"
+    "Clusters.VisualizationMode: DotClusterVisualizationMode? [Graph]"
   ],
   "color": [
-    "Color: DotColorDefinition [Graph, Cluster, Node, Edge]"
+    "Clusters.Color: DotColorDefinition [Graph]",
+    "Color: DotColorDefinition [Cluster, Node, Edge]"
   ],
   "colorscheme": [
     "ColorScheme: String [Graph, Cluster, Node, Edge]"
@@ -34,7 +35,7 @@
     "Comment: String [Graph, Node, Edge]"
   ],
   "compound": [
-    "AllowEdgeClipping: Boolean? [Graph]"
+    "Clusters.AllowEdgeClipping: Boolean? [Graph]"
   ],
   "concentrate": [
     "Layout.ConcentrateEdges: Boolean? [Graph]"
@@ -67,7 +68,8 @@
     "EdgeHyperlink.Url: DotEscapeString [Edge]"
   ],
   "fillcolor": [
-    "FillColor: DotColorDefinition [Graph, Cluster, Node, Edge]"
+    "Clusters.FillColor: DotColorDefinition [Graph]",
+    "FillColor: DotColorDefinition [Cluster, Node, Edge]"
   ],
   "fixedsize": [
     "Size.Mode: DotNodeSizing? [Node]"
@@ -167,8 +169,8 @@
     "LabelAlignment.Horizontal: DotHorizontalAlignment? [Graph, Cluster]"
   ],
   "labelloc": [
-    "LabelAlignment.Vertical: DotVerticalAlignment? [Graph, Cluster]",
-    "LabelAlignment: DotVerticalAlignment? [Node]"
+    "LabelAlignment: DotVerticalAlignment? [Node]",
+    "LabelAlignment.Vertical: DotVerticalAlignment? [Graph, Cluster]"
   ],
   "labeltarget": [
     "LabelHyperlink.Target: DotEscapeString [Edge]"
@@ -208,8 +210,8 @@
     "Layout.NodeSeparation: Double? [Graph]"
   ],
   "ordering": [
-    "Layout.EdgeOrderingMode: DotEdgeOrderingMode? [Graph]",
-    "EdgeOrderingMode: DotEdgeOrderingMode? [Node]"
+    "EdgeOrderingMode: DotEdgeOrderingMode? [Node]",
+    "Layout.EdgeOrderingMode: DotEdgeOrderingMode? [Graph]"
   ],
   "orientation": [
     "Canvas.Orientation: DotOrientation? [Graph]",
@@ -225,15 +227,17 @@
     "Canvas.Padding: DotPoint [Graph]"
   ],
   "pencolor": [
-    "BorderColor: DotColor [Graph, Cluster]"
+    "BorderColor: DotColor [Cluster]",
+    "Clusters.BorderColor: DotColor [Graph]"
   ],
   "penwidth": [
-    "BorderWidth: Double? [Graph, Cluster, Node]",
+    "BorderWidth: Double? [Cluster, Node]",
+    "Clusters.BorderWidth: Double? [Graph]",
     "Width: Double? [Edge]"
   ],
   "peripheries": [
-    "Peripheries: Int32? [Cluster]",
-    "Geometry.Peripheries: Int32? [Node]"
+    "Geometry.Peripheries: Int32? [Node]",
+    "Peripheries: Int32? [Cluster]"
   ],
   "rank": [
     "Layout.NodeRank: DotRank? [Graph]",
@@ -258,8 +262,8 @@
     "Canvas.Resolution: Double? [Graph]"
   ],
   "root": [
-    "RootNodeId: DotId [Graph]",
-    "IsRoot: Boolean? [Node]"
+    "IsRoot: Boolean? [Node]",
+    "RootNodeId: DotId [Graph]"
   ],
   "rotate": [
     "Canvas.OrientationAngle: Int32? [Graph]"
