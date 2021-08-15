@@ -7,9 +7,9 @@ using GiGraph.Dot.Types.Nodes;
 namespace GiGraph.Dot.Extensions
 {
     /// <summary>
-    ///     Provides extension methods for <see cref="DotNode" />.
+    ///     Provides extension methods for <see cref="DotNodeDefinition" />.
     /// </summary>
-    public static class DotNodeToHtmlExtension
+    public static class DotNodeDefinitionToHtmlExtension
     {
         /// <summary>
         ///     Converts the current node to an HTML node by assigning HTML text to its label attribute, and setting its shape to
@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Extensions
         /// <param name="html">
         ///     The HTML text to assign to node label.
         /// </param>
-        public static void ToPlainHtmlNode(this DotNode node, string html)
+        public static void ToPlainHtmlNode(this DotNodeDefinition node, string html)
         {
             node.ToPlainHtmlNode((DotHtmlLabel) (DotHtmlString) html);
         }
@@ -42,12 +42,12 @@ namespace GiGraph.Dot.Extensions
         /// <param name="html">
         ///     The HTML entity to assign to node label.
         /// </param>
-        public static void ToPlainHtmlNode(this DotNode node, IDotHtmlEntity html)
+        public static void ToPlainHtmlNode(this DotNodeDefinition node, IDotHtmlEntity html)
         {
             node.ToPlainHtmlNode(new DotHtmlLabel(html));
         }
 
-        private static void ToPlainHtmlNode(this DotNode node, DotHtmlLabel label)
+        private static void ToPlainHtmlNode(this DotNodeDefinition node, DotHtmlLabel label)
         {
             node.Shape = DotNodeShape.Plain;
             node.Label = label;
