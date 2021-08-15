@@ -106,7 +106,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         }
 
         [DotAttributeKey(DotAttributeKeys.Splines)]
-        DotEdgeShape? IDotGraphAttributes.EdgeShape
+        DotEdgeShape? IDotGraphAttributes.EdgesShape
         {
             get => GetValueAs<DotEdgeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
