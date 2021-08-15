@@ -12,9 +12,6 @@ namespace GiGraph.Dot.Entities.Edges
 {
     public abstract partial class DotEdgeDefinition : IDotEdgeRootAttributes
     {
-        DotEdgeHeadAttributes IDotEdgeRootAttributes.Head => ((IDotEdgeRootAttributes) Attributes).Head;
-        DotEdgeTailAttributes IDotEdgeRootAttributes.Tail => ((IDotEdgeRootAttributes) Attributes).Tail;
-
         /// <inheritdoc cref="IDotEdgeRootAttributes.Font" />
         public virtual DotFontAttributes Font => ((IDotEdgeRootAttributes) Attributes).Font;
 

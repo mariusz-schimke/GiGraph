@@ -11,9 +11,24 @@ namespace GiGraph.Dot.Entities.Edges.Collections
     /// </summary>
     public partial class DotEdgeCollection : List<DotEdgeDefinition>, IDotEntity, IDotAnnotatable
     {
-        protected DotEdgeCollection(DotEdgeRootAttributes attributes)
+        protected DotEdgeCollection(
+            DotEdgeRootAttributes attributes,
+            DotEdgeHeadAttributes headAttributes,
+            DotEdgeTailAttributes tailAttributes
+        )
         {
             Attributes = attributes;
+            Head = headAttributes;
+            Tail = tailAttributes;
+        }
+
+        protected DotEdgeCollection(DotEdgeRootAttributes attributes)
+            : this(
+                attributes,
+                new DotEdgeHeadAttributes(attributes.Collection),
+                new DotEdgeTailAttributes(attributes.Collection)
+            )
+        {
         }
 
         public DotEdgeCollection()

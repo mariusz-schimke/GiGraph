@@ -14,8 +14,10 @@ namespace GiGraph.Dot.Entities.Edges
     {
         protected readonly DotEndpointDefinition[] _endpoints;
 
-        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes attributes)
-            : base(attributes)
+        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes rootAttributes,
+            DotEdgeTailAttributes tailAttributes, DotEdgeHeadAttributes headAttributes
+        )
+            : base(rootAttributes)
         {
             if (endpoints is null)
             {
@@ -25,6 +27,14 @@ namespace GiGraph.Dot.Entities.Edges
             _endpoints = endpoints.Length > 1
                 ? endpoints
                 : throw new ArgumentException("At least a pair of endpoints has to be specified for an edge sequence.", nameof(endpoints));
+
+            Tails = tailAttributes;
+            Heads = headAttributes;
+        }
+
+        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes rootAttributes)
+            : this(endpoints, rootAttributes, new DotEdgeTailAttributes(rootAttributes.Collection), new DotEdgeHeadAttributes(rootAttributes.Collection))
+        {
         }
 
         /// <summary>
@@ -81,12 +91,12 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         ///     Properties applied to the heads of the edges in this sequence.
         /// </summary>
-        public virtual DotEdgeHeadAttributes Heads => ((IDotEdgeRootAttributes) Attributes).Head;
+        public virtual DotEdgeHeadAttributes Heads { get; }
 
         /// <summary>
         ///     Properties applied to the tails of the edges in this sequence.
         /// </summary>
-        public virtual DotEdgeTailAttributes Tails => ((IDotEdgeRootAttributes) Attributes).Tail;
+        public virtual DotEdgeTailAttributes Tails { get; }
 
         protected override string GetOrderingKey()
         {
