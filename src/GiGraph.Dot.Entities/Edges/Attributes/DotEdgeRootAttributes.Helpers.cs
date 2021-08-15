@@ -6,7 +6,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    // TODO: przenieść
+    // TODO: ujednolicić podejście extension vs. wbudowane helpery (może da się zrobić interfejs i jego rozszerzać, żeby dało się ustawiać też te style globalnie dla elementów)
     public partial class DotEdgeRootAttributes
     {
         /// <summary>

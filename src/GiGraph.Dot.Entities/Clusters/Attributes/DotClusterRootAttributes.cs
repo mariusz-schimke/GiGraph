@@ -1,7 +1,7 @@
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Factories;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode;
+using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
@@ -11,7 +11,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
@@ -20,7 +19,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes
 {
-    public class DotClusterRootAttributes : DotClusterNodeCommonAttributes<IDotClusterAttributes>, IDotClusterRootAttributes
+    public class DotClusterRootAttributes : DotEntityRootAttributes<IDotClusterAttributes>, IDotClusterRootAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup ClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().Build();
 
@@ -175,11 +174,6 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
-
-        protected override void SetFillStyle(DotStyles fillStyle)
-        {
-            _styleAttributes.FillStyle = (DotClusterFillStyle) fillStyle;
         }
     }
 }

@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
-    // TODO: przenieść
+    // TODO: ujednolicić podejście extension vs. wbudowane helpery (może da się zrobić interfejs i jego rozszerzać, żeby dało się ustawiać też te style globalnie dla elementów)
     public partial class DotGraphSection
     {
         /// <summary>

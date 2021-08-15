@@ -6,10 +6,118 @@ using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Extensions
 {
+    // TODO: problem jest taki, że tych ustawień nie da się zastosować dla globalnych atrybutów (zobaczyć też inne extensions)
+    // TODO: testy jednostkowe
+
     public static class DotNodeDefinitionStyleExtension
     {
         /// <summary>
-        ///     Sets a wedged fill, assuming that the node has an elliptical shape (see <see cref="IDotNodeAttributes.Shape" />).
+        ///     Sets a plain-color fill.
+        /// </summary>
+        /// <param name="node">
+        ///     The current node.
+        /// </param>
+        /// <param name="color">
+        ///     The color to use.
+        /// </param>
+        public static void SetPlainColorFill(this DotNodeDefinition node, DotColor color)
+        {
+            node.Style.FillStyle = DotNodeFillStyle.Normal;
+            node.FillColor = color;
+        }
+
+        /// <summary>
+        ///     Sets a gradient fill.
+        /// </summary>
+        /// <param name="node">
+        ///     The current node.
+        /// </param>
+        /// <param name="color">
+        ///     The gradient color definition to use.
+        /// </param>
+        /// <param name="angle">
+        ///     The angle of the fill.
+        /// </param>
+        /// <param name="radial">
+        ///     Determines whether to use a radial-style gradient fill.
+        /// </param>
+        public static void SetGradientFill(this DotNodeDefinition node, DotGradientColor color, int? angle = null, bool radial = false)
+        {
+            node.Style.FillStyle = radial ? DotNodeFillStyle.Radial : DotNodeFillStyle.Normal;
+            node.FillColor = color;
+            node.GradientFillAngle = angle;
+        }
+
+        /// <summary>
+        ///     Sets a striped fill. Applicable to rectangularly-shaped nodes (see <see cref="DotNodeDefinition.Shape" />).
+        /// </summary>
+        /// <param name="node">
+        ///     The current node.
+        /// </param>
+        /// <param name="colors">
+        ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
+        ///     <see cref="DotWeightedColor" /> for them.
+        /// </param>
+        public static void SetStripedFill(this DotNodeDefinition node, DotMultiColor colors)
+        {
+            node.Style.FillStyle = DotNodeFillStyle.Striped;
+            node.FillColor = colors;
+        }
+
+        /// <summary>
+        ///     Sets a striped fill. Applicable to rectangularly-shaped nodes.
+        /// </summary>
+        /// <param name="node">
+        ///     The current node.
+        /// </param>
+        /// <param name="shape">
+        ///     The shape to set (has to be rectangular).
+        /// </param>
+        /// <param name="colors">
+        ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
+        ///     <see cref="DotWeightedColor" /> for them.
+        /// </param>
+        public static void SetStripedFill(this DotNodeDefinition node, DotNodeShape shape, DotMultiColor colors)
+        {
+            node.SetStripedFill(colors);
+            node.Shape = shape;
+        }
+
+        /// <summary>
+        ///     Sets a striped fill. Applicable to rectangularly-shaped nodes (see <see cref="DotNodeDefinition.Shape" />).
+        /// </summary>
+        /// <param name="node">
+        ///     The current node.
+        /// </param>
+        /// <param name="colors">
+        ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
+        ///     <see cref="DotWeightedColor" /> for them.
+        /// </param>
+        public static void SetStripedFill(this DotNodeDefinition node, params DotColor[] colors)
+        {
+            node.SetStripedFill(new DotMultiColor(colors));
+        }
+
+        /// <summary>
+        ///     Sets a striped fill. Applicable to rectangularly-shaped nodes.
+        /// </summary>
+        /// <param name="node">
+        ///     The current node.
+        /// </param>
+        /// <param name="shape">
+        ///     The shape to set (has to be rectangular).
+        /// </param>
+        /// <param name="colors">
+        ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
+        ///     <see cref="DotWeightedColor" /> for them.
+        /// </param>
+        public static void SetStripedFill(this DotNodeDefinition node, DotNodeShape shape, params DotColor[] colors)
+        {
+            node.SetStripedFill(shape, new DotMultiColor(colors));
+        }
+
+        /// <summary>
+        ///     Sets a wedged fill. Applicable to elliptically-shaped nodes (see <see cref="DotNodeDefinition.Shape" />).
         /// </summary>
         /// <param name="node">
         ///     The current node.
@@ -18,14 +126,33 @@ namespace GiGraph.Dot.Extensions
         ///     The colors to use for consecutive wedges. Proportions for individual wedges may be specified optionally by using a
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
-        public static void SetWedged(this DotNodeDefinition node, DotMultiColor colors)
+        public static void SetWedgedFill(this DotNodeDefinition node, DotMultiColor colors)
         {
             node.Style.FillStyle = DotNodeFillStyle.Wedged;
             node.FillColor = colors;
         }
 
         /// <summary>
-        ///     Sets a wedged fill, assuming that the node has an elliptical shape (see <see cref="IDotNodeAttributes.Shape" />).
+        ///     Sets a wedged fill. Applicable to elliptically-shaped nodes (see <see cref="DotNodeDefinition.Shape" />).
+        /// </summary>
+        /// <param name="node">
+        ///     The current node.
+        /// </param>
+        /// <param name="shape">
+        ///     The shape to set (has to be elliptical).
+        /// </param>
+        /// <param name="colors">
+        ///     The colors to use for consecutive wedges. Proportions for individual wedges may be specified optionally by using a
+        ///     <see cref="DotWeightedColor" /> for them.
+        /// </param>
+        public static void SetWedgedFill(this DotNodeDefinition node, DotNodeShape shape, DotMultiColor colors)
+        {
+            node.SetWedgedFill(colors);
+            node.Shape = shape;
+        }
+
+        /// <summary>
+        ///     Sets a wedged fill. Applicable to elliptically-shaped nodes (see <see cref="DotNodeDefinition.Shape" />).
         /// </summary>
         /// <param name="node">
         ///     The current node.
@@ -34,13 +161,31 @@ namespace GiGraph.Dot.Extensions
         ///     The colors to use for consecutive wedges. Proportions for individual wedges may be specified optionally by using a
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
-        public static void SetWedged(this DotNodeDefinition node, params DotColor[] colors)
+        public static void SetWedgedFill(this DotNodeDefinition node, params DotColor[] colors)
         {
-            node.SetWedged(new DotMultiColor(colors));
+            node.SetWedgedFill(new DotMultiColor(colors));
         }
 
         /// <summary>
-        ///     Converts the current node to a polygon shape.
+        ///     Sets a wedged fill. Applicable to elliptically-shaped nodes (see <see cref="DotNodeDefinition.Shape" />).
+        /// </summary>
+        /// <param name="node">
+        ///     The current node.
+        /// </param>
+        /// <param name="shape">
+        ///     The shape to set (has to be elliptical).
+        /// </param>
+        /// <param name="colors">
+        ///     The colors to use for consecutive wedges. Proportions for individual wedges may be specified optionally by using a
+        ///     <see cref="DotWeightedColor" /> for them.
+        /// </param>
+        public static void SetWedgedFill(this DotNodeDefinition node, DotNodeShape shape, params DotColor[] colors)
+        {
+            node.SetWedgedFill(shape, new DotMultiColor(colors));
+        }
+
+        /// <summary>
+        ///     Converts the current node to a polygon.
         /// </summary>
         /// <param name="node">
         ///     The current node.
@@ -75,7 +220,7 @@ namespace GiGraph.Dot.Extensions
         ///     Distortion factor for <see cref="IDotNodeAttributes.Shape" /> set to <see cref="DotNodeShape.Polygon" /> (default: 0,
         ///     minimum: -100). Positive values cause top part to be larger than bottom; negative values do the opposite.
         /// </param>
-        public static void SetPolygonal(
+        public static void SetPolygonalShape(
             this DotNodeDefinition node,
             int? sides = null,
             bool? regular = null,
@@ -89,7 +234,7 @@ namespace GiGraph.Dot.Extensions
         }
 
         /// <summary>
-        ///     Converts the current node to a polygon shape.
+        ///     Converts the current node to a polygon.
         /// </summary>
         /// <param name="node">
         ///     The current node.
@@ -97,7 +242,7 @@ namespace GiGraph.Dot.Extensions
         /// <param name="attributes">
         ///     The polygon attributes to set.
         /// </param>
-        public static void SetPolygonal(this DotNodeDefinition node, DotPolygon attributes)
+        public static void SetPolygonalShape(this DotNodeDefinition node, DotPolygon attributes)
         {
             node.Shape = DotNodeShape.Polygon;
             node.Geometry.Set(attributes);

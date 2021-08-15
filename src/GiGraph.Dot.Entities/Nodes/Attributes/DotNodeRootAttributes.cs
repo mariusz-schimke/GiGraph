@@ -1,7 +1,7 @@
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Factories;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode;
+using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
@@ -19,7 +19,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
-    public class DotNodeRootAttributes : DotClusterNodeCommonAttributes<IDotNodeAttributes>, IDotNodeRootAttributes
+    public class DotNodeRootAttributes : DotEntityRootAttributes<IDotNodeAttributes>, IDotNodeRootAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup NodeRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().Build();
 
@@ -205,11 +205,6 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
-
-        protected override void SetFillStyle(DotStyles fillStyle)
-        {
-            _styleAttributes.FillStyle = (DotNodeFillStyle) fillStyle;
         }
     }
 }
