@@ -4,7 +4,7 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
 {
     public partial class DotGraphClusterCollection : DotClusterCollection
     {
-        public DotGraphClusterCollection(DotGraphClusterAttributes attributes)
+        public DotGraphClusterCollection(DotGraphClusterRootAttributes attributes)
         {
             Attributes = attributes;
         }
@@ -12,6 +12,6 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
         /// <summary>
         ///     Global graph attributes applied to clusters.
         /// </summary>
-        public virtual DotGraphClusterAttributes Attributes { get; }
+        public virtual DotGraphClusterRootAttributes Attributes { get; }
     }
 }

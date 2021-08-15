@@ -6,19 +6,19 @@ using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Clusters.Collections
 {
-    public partial class DotGraphClusterCollection : IDotGraphClusterAttributesRoot
+    public partial class DotGraphClusterCollection : IDotGraphClusterRootAttributes
     {
-        /// <inheritdoc cref="IDotGraphClusterAttributesRoot.Style" />
-        public virtual DotClusterStyleAttributes Style => ((IDotGraphClusterAttributesRoot) Attributes).Style;
+        /// <inheritdoc cref="IDotGraphClusterRootAttributes.Style" />
+        public virtual DotClusterStyleAttributes Style => ((IDotGraphClusterRootAttributes) Attributes).Style;
 
-        /// <inheritdoc cref="IDotGraphClusterAttributesRoot.AllowEdgeClipping" />
+        /// <inheritdoc cref="IDotGraphClusterRootAttributes.AllowEdgeClipping" />
         public virtual bool? AllowEdgeClipping
         {
             get => ((IDotGraphClusterAttributes) Attributes).AllowEdgeClipping;
             set => ((IDotGraphClusterAttributes) Attributes).AllowEdgeClipping = value;
         }
 
-        /// <inheritdoc cref="IDotGraphClusterAttributesRoot.VisualizationMode" />
+        /// <inheritdoc cref="IDotGraphClusterRootAttributes.VisualizationMode" />
         public virtual DotClusterVisualizationMode? VisualizationMode
         {
             get => ((IDotGraphClusterAttributes) Attributes).VisualizationMode;

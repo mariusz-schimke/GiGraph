@@ -9,14 +9,14 @@ using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public partial class DotGraphClusterAttributes : DotEntityMappableAttributes<IDotGraphClusterAttributes>, IDotGraphClusterAttributesRoot
+    public partial class DotGraphClusterRootAttributes : DotEntityMappableAttributes<IDotGraphClusterAttributes>, IDotGraphClusterRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup GraphClusterAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClusterAttributes, IDotGraphClusterAttributes>().Build();
+        protected static readonly DotMemberAttributeKeyLookup GraphClusterAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClusterRootAttributes, IDotGraphClusterAttributes>().Build();
 
         protected readonly DotGraphRootAttributes _graphAttributes;
         protected readonly DotClusterStyleAttributes _style;
 
-        protected DotGraphClusterAttributes(
+        protected DotGraphClusterRootAttributes(
             DotGraphRootAttributes graphAttributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotClusterStyleAttributes styleAttributes
@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
             _style = styleAttributes;
         }
 
-        public DotGraphClusterAttributes(DotGraphRootAttributes graphAttributes)
+        public DotGraphClusterRootAttributes(DotGraphRootAttributes graphAttributes)
             : this(
                 graphAttributes,
                 GraphClusterAttributesKeyLookup,
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         {
         }
 
-        DotClusterStyleAttributes IDotGraphClusterAttributesRoot.Style => _style;
+        DotClusterStyleAttributes IDotGraphClusterRootAttributes.Style => _style;
 
         [DotAttributeKey(DotAttributeKeys.Color)]
         DotColorDefinition IDotGraphClusterCommonAttributes.Color
