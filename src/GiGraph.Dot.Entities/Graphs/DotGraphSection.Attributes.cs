@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Edges;
@@ -27,6 +28,9 @@ namespace GiGraph.Dot.Entities.Graphs
 
         /// <inheritdoc cref="IDotGraphAttributesRoot.LabelAlignment" />
         public virtual DotLabelAlignmentAttributes LabelAlignment => ((IDotGraphAttributesRoot) Attributes).LabelAlignment;
+
+        /// <inheritdoc cref="IDotGraphAttributesRoot.SvgStyleSheet" />
+        public virtual DotHyperlinkAttributes Hyperlink => ((IDotGraphAttributesRoot) Attributes).Hyperlink;
 
         DotStyles? IDotGraphAttributes.Style
         {

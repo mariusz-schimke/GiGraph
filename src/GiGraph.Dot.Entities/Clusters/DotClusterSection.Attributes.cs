@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Clusters.Attributes;
@@ -25,6 +26,9 @@ namespace GiGraph.Dot.Entities.Clusters
 
         /// <inheritdoc cref="IDotClusterAttributesRoot.SvgStyleSheet" />
         public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotClusterAttributesRoot) Attributes).SvgStyleSheet;
+
+        /// <inheritdoc cref="IDotClusterAttributesRoot.SvgStyleSheet" />
+        public virtual DotHyperlinkAttributes Hyperlink => ((IDotClusterAttributesRoot) Attributes).Hyperlink;
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.Color" />
         public virtual DotColorDefinition Color

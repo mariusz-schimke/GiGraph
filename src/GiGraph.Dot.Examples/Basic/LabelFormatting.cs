@@ -12,12 +12,12 @@ namespace GiGraph.Dot.Examples.Basic
             // -- graph label example --
 
             // using text formatter
-            graph.Attributes.Label = new DotFormattedTextBuilder("Graph title: ")
+            graph.Label = new DotFormattedTextBuilder("Graph title: ")
                .AppendGraphId()
                .Build();
 
             // using string concatenation
-            graph.Attributes.Label = "Graph title: " + DotEscapeString.GraphId;
+            graph.Label = "Graph title: " + DotEscapeString.GraphId;
 
 
             // -- node label example --

@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Examples.Complex
             var graph = new DotGraph();
 
             // set graph attributes
-            graph.Attributes.Label = "Example Flow";
+            graph.Label = "Example Flow";
             graph.Layout.Direction = DotLayoutDirection.LeftToRight;
             graph.EdgeShape = DotEdgeShape.Orthogonal;
 
@@ -61,14 +61,14 @@ namespace GiGraph.Dot.Examples.Complex
             graph.Clusters.Add(id: "Flow 1", cluster =>
             {
                 cluster.BackgroundColor = Color.Turquoise;
-                cluster.Attributes.Label = "Flow 1";
+                cluster.Label = "Flow 1";
 
                 cluster.Edges.AddSequence("Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit");
             });
 
             graph.Clusters.Add(id: "Flow 2", cluster =>
             {
-                cluster.Attributes.Label = "Flow 2";
+                cluster.Label = "Flow 2";
                 cluster.BackgroundColor = Color.Orange;
 
                 cluster.Edges.AddSequence("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");

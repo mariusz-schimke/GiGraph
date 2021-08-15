@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Clusters.Add("Cluster1");
 
             graph.Nodes.Color = Color.Red;
-            graph.Nodes.Attributes.Label = "node_label";
+            graph.Nodes.Label = "node_label";
 
             graph.Edges.Attributes.Color = Color.Blue;
             graph.Edges.Attributes.Label = "edge_label";
@@ -87,7 +87,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             graph.Annotation = "graph comment";
 
-            graph.Nodes.Attributes.Label = "node label";
+            graph.Nodes.Label = "node label";
             graph.Edges.Attributes.Label = "edge label";
             graph.Clusters.Attributes.AllowEdgeClipping = true;
 

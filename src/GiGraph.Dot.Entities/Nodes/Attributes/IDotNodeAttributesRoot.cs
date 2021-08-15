@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Types.Nodes;
 
@@ -35,5 +36,10 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         ///     Style sheet attributes used for SVG output.
         /// </summary>
         DotSvgStyleSheetAttributes SvgStyleSheet { get; }
+
+        /// <summary>
+        ///     Hyperlink attributes.
+        /// </summary>
+        DotHyperlinkAttributes Hyperlink { get; }
     }
 }

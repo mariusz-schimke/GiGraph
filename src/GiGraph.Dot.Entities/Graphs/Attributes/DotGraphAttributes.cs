@@ -6,18 +6,22 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphAttributes : DotEntityRootCommonAttributes<IDotGraphAttributes>, IDotGraphAttributesRoot
+    public class DotGraphAttributes : DotEntityRootAttributes<IDotGraphAttributes>, IDotGraphAttributesRoot
     {
         protected static readonly DotMemberAttributeKeyLookup GraphAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphAttributes, IDotGraphAttributes>().Build();
+
         protected readonly DotGraphCanvasAttributes _canvas;
         protected readonly DotGraphFontAttributes _font;
+        protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
         protected readonly DotLabelAlignmentAttributes _labelAlignment;
         protected readonly DotGraphLayoutAttributes _layout;
         protected readonly DotGraphStyleAttributes _style;
@@ -34,8 +38,9 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
             DotGraphCanvasAttributes canvasAttributes,
             DotLabelAlignmentAttributes labelAlignmentAttributes
         )
-            : base(attributes, attributeKeyLookup, hyperlinkAttributes)
+            : base(attributes, attributeKeyLookup)
         {
+            _hyperlinkAttributes = hyperlinkAttributes;
             _font = fontAttributes;
             _style = styleAttributes;
             _svgStyleSheet = svgStyleSheetAttributes;
@@ -64,12 +69,34 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         {
         }
 
+        DotHyperlinkAttributes IDotGraphAttributesRoot.Hyperlink => _hyperlinkAttributes;
         DotGraphFontAttributes IDotGraphAttributesRoot.Font => _font;
         DotGraphStyleAttributes IDotGraphAttributesRoot.Style => _style;
         DotGraphSvgSvgStyleSheetAttributes IDotGraphAttributesRoot.SvgStyleSheet => _svgStyleSheet;
         DotGraphLayoutAttributes IDotGraphAttributesRoot.Layout => _layout;
         DotGraphCanvasAttributes IDotGraphAttributesRoot.Canvas => _canvas;
         DotLabelAlignmentAttributes IDotGraphAttributesRoot.LabelAlignment => _labelAlignment;
+
+        [DotAttributeKey(DotAttributeKeys.Label)]
+        DotLabel IDotGraphAttributes.Label
+        {
+            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.ColorScheme)]
+        string IDotGraphAttributes.ColorScheme
+        {
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.Id)]
+        DotEscapeString IDotGraphAttributes.ObjectId
+        {
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
 
         [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotGraphAttributes.Style

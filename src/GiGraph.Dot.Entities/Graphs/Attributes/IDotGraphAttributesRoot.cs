@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
@@ -33,5 +34,10 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         ///     Horizontal and vertical label alignment options.
         /// </summary>
         DotLabelAlignmentAttributes LabelAlignment { get; }
+
+        /// <summary>
+        ///     Hyperlink attributes.
+        /// </summary>
+        DotHyperlinkAttributes Hyperlink { get; }
     }
 }

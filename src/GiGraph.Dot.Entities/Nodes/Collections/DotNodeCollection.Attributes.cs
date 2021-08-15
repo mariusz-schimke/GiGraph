@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Nodes.Attributes;
@@ -31,6 +32,9 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
 
         /// <inheritdoc cref="IDotNodeAttributesRoot.SvgStyleSheet" />
         public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotNodeAttributesRoot) Attributes).SvgStyleSheet;
+
+        /// <inheritdoc cref="IDotNodeAttributesRoot.SvgStyleSheet" />
+        public virtual DotHyperlinkAttributes Hyperlink => ((IDotNodeAttributesRoot) Attributes).Hyperlink;
 
         DotStyles? IDotNodeAttributes.Style
         {

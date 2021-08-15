@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Extensions
         public static void ToRoundedRecordNode(this DotNode node, DotRecord record)
         {
             node.Shape = DotNodeShape.RoundedRecord;
-            node.Attributes.Label = record;
+            node.Label = record;
         }
 
         /// <summary>

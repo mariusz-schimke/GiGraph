@@ -16,9 +16,11 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public partial class DotEdgeAttributes : DotEntityRootCommonAttributes<IDotEdgeAttributes>, IDotEdgeAttributes
+    public partial class DotEdgeAttributes : DotEntityRootAttributes<IDotEdgeAttributes>, IDotEdgeAttributesRoot
     {
         protected static readonly DotMemberAttributeKeyLookup EdgeAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeAttributes, IDotEdgeAttributes>().Build();
+
+        protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
 
         protected DotEdgeAttributes(
             DotAttributeCollection attributes,
@@ -33,8 +35,9 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
             DotEdgeStyleAttributes edgeStyleAttributes,
             DotSvgStyleSheetAttributes svgStyleSheetAttributes
         )
-            : base(attributes, attributeKeyLookup, hyperlinkAttributes)
+            : base(attributes, attributeKeyLookup)
         {
+            _hyperlinkAttributes = hyperlinkAttributes;
             Head = headAttributes;
             Tail = tailAttributes;
             Font = fontAttributes;
@@ -107,33 +110,34 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         /// </summary>
         public virtual DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
-        // accessible only through the interface
+        DotHyperlinkAttributes IDotEdgeAttributesRoot.Hyperlink => _hyperlinkAttributes;
+
+        [DotAttributeKey(DotAttributeKeys.Label)]
+        DotLabel IDotEdgeAttributes.Label
+        {
+            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.ColorScheme)]
+        string IDotEdgeAttributes.ColorScheme
+        {
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.Id)]
+        DotEscapeString IDotEdgeAttributes.ObjectId
+        {
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
         [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotEdgeAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
-        }
-
-        /// <inheritdoc cref="IDotEdgeAttributes.Label" />
-        public override DotLabel Label
-        {
-            get => base.Label;
-            set => base.Label = value;
-        }
-
-        /// <inheritdoc cref="IDotEdgeAttributes.ColorScheme" />
-        public override string ColorScheme
-        {
-            get => base.ColorScheme;
-            set => base.ColorScheme = value;
-        }
-
-        /// <inheritdoc cref="IDotEdgeAttributes.ObjectId" />
-        public override DotEscapeString ObjectId
-        {
-            get => base.ObjectId;
-            set => base.ObjectId = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Comment" />

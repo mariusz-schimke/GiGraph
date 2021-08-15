@@ -23,10 +23,12 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
     public class DotClusterAttributes : DotClusterNodeCommonAttributes<IDotClusterAttributes>, IDotClusterAttributesRoot
     {
         protected static readonly DotMemberAttributeKeyLookup ClusterAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterAttributes, IDotClusterAttributes>().Build();
-
         protected readonly DotFontAttributes _font;
+
+        protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
         protected readonly DotLabelAlignmentAttributes _labelAlignment;
         protected readonly DotClusterStyleAttributes _style;
+        protected readonly DotSvgStyleSheetAttributes _svgStyleSheet;
 
         protected DotClusterAttributes(
             DotAttributeCollection attributes,
@@ -37,10 +39,12 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
             DotSvgStyleSheetAttributes svgStyleSheetAttributes,
             DotLabelAlignmentAttributes labelAlignmentAttributes
         )
-            : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
+            : base(attributes, attributeKeyLookup)
         {
+            _hyperlinkAttributes = hyperlinkAttributes;
             _font = fontAttributes;
             _style = styleAttributes;
+            _svgStyleSheet = svgStyleSheetAttributes;
             _labelAlignment = labelAlignmentAttributes;
         }
 
@@ -62,27 +66,31 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         {
         }
 
+        DotHyperlinkAttributes IDotClusterAttributesRoot.Hyperlink => _hyperlinkAttributes;
         DotFontAttributes IDotClusterAttributesRoot.Font => _font;
         DotClusterStyleAttributes IDotClusterAttributesRoot.Style => _style;
-        DotLabelAlignmentAttributes IDotClusterAttributesRoot.LabelAlignment => _labelAlignment;
         DotSvgStyleSheetAttributes IDotClusterAttributesRoot.SvgStyleSheet => _svgStyleSheet;
+        DotLabelAlignmentAttributes IDotClusterAttributesRoot.LabelAlignment => _labelAlignment;
 
+        [DotAttributeKey(DotAttributeKeys.Label)]
         DotLabel IDotClusterAttributes.Label
         {
-            get => base.Label;
-            set => base.Label = value;
+            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
+        [DotAttributeKey(DotAttributeKeys.ColorScheme)]
         string IDotClusterAttributes.ColorScheme
         {
-            get => base.ColorScheme;
-            set => base.ColorScheme = value;
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
+        [DotAttributeKey(DotAttributeKeys.Id)]
         DotEscapeString IDotClusterAttributes.ObjectId
         {
-            get => base.ObjectId;
-            set => base.ObjectId = value;
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Color)]
