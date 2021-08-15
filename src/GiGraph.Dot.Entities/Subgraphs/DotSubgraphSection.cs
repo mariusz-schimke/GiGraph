@@ -8,7 +8,7 @@ using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
-    public partial class DotSubgraphSection : DotCommonGraphSection, IDotSubgraphAttributes
+    public partial class DotSubgraphSection : DotCommonGraphSection
     {
         protected DotSubgraphSection(
             DotSubgraphAttributes attributes,

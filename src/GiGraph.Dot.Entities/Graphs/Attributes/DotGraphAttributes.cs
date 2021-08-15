@@ -19,13 +19,13 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
     {
         protected static readonly DotMemberAttributeKeyLookup GraphAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphAttributes, IDotGraphAttributes>().Build();
 
-        protected readonly DotGraphCanvasAttributes _canvas;
-        protected readonly DotGraphFontAttributes _font;
+        protected readonly DotGraphCanvasAttributes _canvasAttributes;
+        protected readonly DotGraphFontAttributes _fontAttributes;
         protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
-        protected readonly DotLabelAlignmentAttributes _labelAlignment;
-        protected readonly DotGraphLayoutAttributes _layout;
-        protected readonly DotGraphStyleAttributes _style;
-        protected readonly DotGraphSvgSvgStyleSheetAttributes _svgStyleSheet;
+        protected readonly DotLabelAlignmentAttributes _labelAlignmentAttributes;
+        protected readonly DotGraphLayoutAttributes _layoutAttributes;
+        protected readonly DotGraphStyleAttributes _styleAttributes;
+        protected readonly DotGraphSvgSvgStyleSheetAttributes _svgStyleSheetAttributes;
 
         protected DotGraphAttributes(
             DotAttributeCollection attributes,
@@ -41,12 +41,12 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
             : base(attributes, attributeKeyLookup)
         {
             _hyperlinkAttributes = hyperlinkAttributes;
-            _font = fontAttributes;
-            _style = styleAttributes;
-            _svgStyleSheet = svgStyleSheetAttributes;
-            _layout = layoutAttributes;
-            _canvas = canvasAttributes;
-            _labelAlignment = labelAlignmentAttributes;
+            _fontAttributes = fontAttributes;
+            _styleAttributes = styleAttributes;
+            _svgStyleSheetAttributes = svgStyleSheetAttributes;
+            _layoutAttributes = layoutAttributes;
+            _canvasAttributes = canvasAttributes;
+            _labelAlignmentAttributes = labelAlignmentAttributes;
         }
 
         public DotGraphAttributes(DotAttributeCollection attributes)
@@ -70,12 +70,12 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         }
 
         DotHyperlinkAttributes IDotGraphAttributesRoot.Hyperlink => _hyperlinkAttributes;
-        DotGraphFontAttributes IDotGraphAttributesRoot.Font => _font;
-        DotGraphStyleAttributes IDotGraphAttributesRoot.Style => _style;
-        DotGraphSvgSvgStyleSheetAttributes IDotGraphAttributesRoot.SvgStyleSheet => _svgStyleSheet;
-        DotGraphLayoutAttributes IDotGraphAttributesRoot.Layout => _layout;
-        DotGraphCanvasAttributes IDotGraphAttributesRoot.Canvas => _canvas;
-        DotLabelAlignmentAttributes IDotGraphAttributesRoot.LabelAlignment => _labelAlignment;
+        DotGraphFontAttributes IDotGraphAttributesRoot.Font => _fontAttributes;
+        DotGraphStyleAttributes IDotGraphAttributesRoot.Style => _styleAttributes;
+        DotGraphSvgSvgStyleSheetAttributes IDotGraphAttributesRoot.SvgStyleSheet => _svgStyleSheetAttributes;
+        DotGraphLayoutAttributes IDotGraphAttributesRoot.Layout => _layoutAttributes;
+        DotGraphCanvasAttributes IDotGraphAttributesRoot.Canvas => _canvasAttributes;
+        DotLabelAlignmentAttributes IDotGraphAttributesRoot.LabelAlignment => _labelAlignmentAttributes;
 
         [DotAttributeKey(DotAttributeKeys.Label)]
         DotLabel IDotGraphAttributes.Label

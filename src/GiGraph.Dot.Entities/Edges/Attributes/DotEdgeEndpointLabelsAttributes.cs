@@ -6,11 +6,11 @@ using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public class DotEdgeEndpointLabelAttributes : DotEntityAttributesWithMetadata<IDotEdgeEndpointLabelAttributes>, IDotEdgeEndpointLabelAttributes
+    public class DotEdgeEndpointLabelsAttributes : DotEntityAttributesWithMetadata<IDotEdgeEndpointLabelAttributes>, IDotEdgeEndpointLabelAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EdgeEndpointLabelAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeEndpointLabelAttributes, IDotEdgeEndpointLabelAttributes>().Build();
+        protected static readonly DotMemberAttributeKeyLookup EdgeEndpointLabelAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeEndpointLabelsAttributes, IDotEdgeEndpointLabelAttributes>().Build();
 
-        protected DotEdgeEndpointLabelAttributes(
+        protected DotEdgeEndpointLabelsAttributes(
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEdgeEndpointLabelFontAttributes fontAttributes
@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
             Font = fontAttributes;
         }
 
-        public DotEdgeEndpointLabelAttributes(DotAttributeCollection attributes)
+        public DotEdgeEndpointLabelsAttributes(DotAttributeCollection attributes)
             : this(attributes, EdgeEndpointLabelAttributesKeyLookup, new DotEdgeEndpointLabelFontAttributes(attributes))
         {
         }

@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         /// </param>
         public virtual void SetTapered(double startWidth)
         {
-            _style.LineStyle = DotLineStyle.Tapered;
+            _styleAttributes.LineStyle = DotLineStyle.Tapered;
             ((IDotEdgeAttributes) this).Width = startWidth;
         }
 

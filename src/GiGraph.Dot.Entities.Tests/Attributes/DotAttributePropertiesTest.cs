@@ -12,6 +12,7 @@ using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Entities.Subgraphs;
+using GiGraph.Dot.Entities.Subgraphs.Attributes;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Metadata;
 using Xunit;
@@ -146,6 +147,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             {
                 typeof(IDotAnnotatable),
                 typeof(IDotGraphAttributesRoot),
+                typeof(IDotSubgraphAttributesRoot),
                 typeof(IDotClusterAttributesRoot),
                 typeof(IDotNodeAttributesRoot),
                 typeof(IDotEdgeAttributesRoot)

@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
-    public partial class DotSubgraphSection
+    public partial class DotSubgraphSection : IDotSubgraphAttributesRoot
     {
         /// <inheritdoc cref="IDotSubgraphAttributes.NodeRank" />
         public virtual DotRank? NodeRank

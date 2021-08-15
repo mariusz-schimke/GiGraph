@@ -8,7 +8,7 @@ using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Subgraphs.Attributes
 {
-    public class DotSubgraphAttributes : DotEntityRootAttributes<IDotSubgraphAttributes>, IDotSubgraphAttributes
+    public class DotSubgraphAttributes : DotEntityRootAttributes<IDotSubgraphAttributes>, IDotSubgraphAttributesRoot
     {
         protected static readonly DotMemberAttributeKeyLookup SubgraphAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotSubgraphAttributes, IDotSubgraphAttributes>().Build();
 
@@ -27,7 +27,6 @@ namespace GiGraph.Dot.Entities.Subgraphs.Attributes
         {
         }
 
-        /// <inheritdoc cref="IDotSubgraphAttributes.NodeRank" />
         [DotAttributeKey(DotAttributeKeys.Rank)]
         DotRank? IDotSubgraphAttributes.NodeRank
         {

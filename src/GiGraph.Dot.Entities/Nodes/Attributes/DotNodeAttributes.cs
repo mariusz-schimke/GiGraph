@@ -22,15 +22,14 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
     public class DotNodeAttributes : DotClusterNodeCommonAttributes<IDotNodeAttributes>, IDotNodeAttributesRoot
     {
         protected static readonly DotMemberAttributeKeyLookup NodeAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeAttributes, IDotNodeAttributes>().Build();
-        protected readonly DotFontAttributes _font;
-        protected readonly DotNodeGeometryAttributes _geometry;
 
-        // TODO: ujednlolicić nazewnictwo tych parametrów, żeby były z przyrostkiem attributes
+        protected readonly DotFontAttributes _fontAttributes;
+        protected readonly DotNodeGeometryAttributes _geometryAttributes;
         protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
-        protected readonly DotNodeImageAttributes _image;
-        protected readonly DotNodeSizeAttributes _size;
-        protected readonly DotNodeStyleAttributes _style;
-        protected readonly DotSvgStyleSheetAttributes _svgStyleSheet;
+        protected readonly DotNodeImageAttributes _imageAttributes;
+        protected readonly DotNodeSizeAttributes _sizeAttributes;
+        protected readonly DotNodeStyleAttributes _styleAttributes;
+        protected readonly DotSvgStyleSheetAttributes _svgStyleSheetAttributes;
 
         protected DotNodeAttributes(
             DotAttributeCollection attributes,
@@ -46,12 +45,12 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
             : base(attributes, attributeKeyLookup)
         {
             _hyperlinkAttributes = hyperlinkAttributes;
-            _font = fontAttributes;
-            _style = styleAttributes;
-            _image = imageAttributes;
-            _geometry = geometryAttributes;
-            _size = sizeAttributes;
-            _svgStyleSheet = svgStyleSheetAttributes;
+            _fontAttributes = fontAttributes;
+            _styleAttributes = styleAttributes;
+            _imageAttributes = imageAttributes;
+            _geometryAttributes = geometryAttributes;
+            _sizeAttributes = sizeAttributes;
+            _svgStyleSheetAttributes = svgStyleSheetAttributes;
         }
 
         public DotNodeAttributes(DotAttributeCollection attributes)
@@ -75,12 +74,12 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         }
 
         DotHyperlinkAttributes IDotNodeAttributesRoot.Hyperlink => _hyperlinkAttributes;
-        DotFontAttributes IDotNodeAttributesRoot.Font => _font;
-        DotNodeStyleAttributes IDotNodeAttributesRoot.Style => _style;
-        DotNodeSizeAttributes IDotNodeAttributesRoot.Size => _size;
-        DotNodeGeometryAttributes IDotNodeAttributesRoot.Geometry => _geometry;
-        DotNodeImageAttributes IDotNodeAttributesRoot.Image => _image;
-        DotSvgStyleSheetAttributes IDotNodeAttributesRoot.SvgStyleSheet => _svgStyleSheet;
+        DotFontAttributes IDotNodeAttributesRoot.Font => _fontAttributes;
+        DotNodeStyleAttributes IDotNodeAttributesRoot.Style => _styleAttributes;
+        DotNodeSizeAttributes IDotNodeAttributesRoot.Size => _sizeAttributes;
+        DotNodeGeometryAttributes IDotNodeAttributesRoot.Geometry => _geometryAttributes;
+        DotNodeImageAttributes IDotNodeAttributesRoot.Image => _imageAttributes;
+        DotSvgStyleSheetAttributes IDotNodeAttributesRoot.SvgStyleSheet => _svgStyleSheetAttributes;
 
         [DotAttributeKey(DotAttributeKeys.Label)]
         DotLabel IDotNodeAttributes.Label
@@ -210,7 +209,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
 
         protected override void SetFillStyle(DotStyles fillStyle)
         {
-            _style.FillStyle = (DotNodeFillStyle) fillStyle;
+            _styleAttributes.FillStyle = (DotNodeFillStyle) fillStyle;
         }
     }
 }

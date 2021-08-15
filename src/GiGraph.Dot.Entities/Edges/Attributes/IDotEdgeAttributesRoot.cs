@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         /// <summary>
         ///     Properties applied to labels specified for the <see cref="HeadAttributes" /> and the <see cref="TailAttributes" /> of the edge.
         /// </summary>
-        DotEdgeEndpointLabelAttributes EndpointLabels { get; }
+        DotEdgeEndpointLabelsAttributes EndpointLabels { get; }
 
         /// <summary>
         ///     Hyperlink properties applied to the non-label parts of the edge.

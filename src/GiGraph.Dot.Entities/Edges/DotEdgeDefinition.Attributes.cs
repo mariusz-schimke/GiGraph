@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Edges
         public virtual DotFontAttributes Font => ((IDotEdgeAttributesRoot) Attributes).Font;
 
         /// <inheritdoc cref="IDotEdgeAttributesRoot.EndpointLabels" />
-        public virtual DotEdgeEndpointLabelAttributes EndpointLabels => ((IDotEdgeAttributesRoot) Attributes).EndpointLabels;
+        public virtual DotEdgeEndpointLabelsAttributes EndpointLabels => ((IDotEdgeAttributesRoot) Attributes).EndpointLabels;
 
         /// <inheritdoc cref="IDotEdgeAttributesRoot.EdgeHyperlink" />
         public virtual DotEdgeHyperlinkAttributes EdgeHyperlink => ((IDotEdgeAttributesRoot) Attributes).EdgeHyperlink;
