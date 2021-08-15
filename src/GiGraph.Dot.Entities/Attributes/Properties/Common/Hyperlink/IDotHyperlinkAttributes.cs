@@ -27,8 +27,8 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink
         ///     </para>
         ///     <para>
         ///         Note that, for edges, the <see cref="DotEdgeHeadHyperlinkAttributes.Url" /> attribute of the head and the tail, the
-        ///         <see cref="DotEdgeLabelHyperlinkAttributes.Url" /> attribute of <see cref="IDotEdgeAttributesRoot.LabelHyperlink" />, and
-        ///         the <see cref="DotEdgeHyperlinkAttributes.Url" /> attribute of <see cref="IDotEdgeAttributesRoot.EdgeHyperlink" />, allow
+        ///         <see cref="DotEdgeLabelHyperlinkAttributes.Url" /> attribute of <see cref="IDotEdgeRootAttributes.LabelHyperlink" />, and
+        ///         the <see cref="DotEdgeHyperlinkAttributes.Url" /> attribute of <see cref="IDotEdgeRootAttributes.EdgeHyperlink" />, allow
         ///         control of various parts of an edge. Also note that, if active areas of two edges overlap, it is unspecified which area
         ///         dominates.
         ///     </para>

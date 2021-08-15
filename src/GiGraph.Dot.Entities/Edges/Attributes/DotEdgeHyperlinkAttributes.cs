@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         ///     unless overridden by the <see cref="DotEdgeHyperlinkAttributes.Url" /> on the head
         ///     <see cref="DotEdgeHeadAttributes.Hyperlink" /> attributes, or on the tail <see cref="DotEdgeTailAttributes.Hyperlink" />
         ///     attributes of the edge. This value overrides any <see cref="IDotHyperlinkAttributes.Url" /> specified for the edge's
-        ///     <see cref="IDotEdgeAttributesRoot.Hyperlink" />.
+        ///     <see cref="IDotEdgeRootAttributes.Hyperlink" />.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.EdgeUrl)]
         public override DotEscapeString Url
@@ -48,11 +48,11 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         /// <summary>
-        ///     If <see cref="Url" /> is specified, or if the edge has a <see cref="IDotEdgeAttributesRoot.Hyperlink" />
+        ///     If <see cref="Url" /> is specified, or if the edge has a <see cref="IDotEdgeRootAttributes.Hyperlink" />
         ///     <see cref="IDotHyperlinkAttributes.Url" /> attribute specified, determines which window of the browser is used for the URL
         ///     attached to the non-label part of the edge (svg, map only). Setting it to <see cref="DotHyperlinkTargets.NewWindow" /> will
         ///     open a new window if it doesn't already exist, or reuse it if it does. If undefined, the value of the edge's
-        ///     <see cref="IDotEdgeAttributesRoot.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Target" /> is used.
+        ///     <see cref="IDotEdgeRootAttributes.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Target" /> is used.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.EdgeTarget)]
         public override DotEscapeString Target
@@ -63,7 +63,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
 
         /// <summary>
         ///     Tooltip annotation attached to the non-label part of the edge (svg, cmap only). This is used only if <see cref="Url" /> is
-        ///     specified, or if the edge has a <see cref="IDotEdgeAttributesRoot.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Url" />
+        ///     specified, or if the edge has a <see cref="IDotEdgeRootAttributes.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Url" />
         ///     specified.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.EdgeTooltip)]

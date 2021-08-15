@@ -16,9 +16,9 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public partial class DotEdgeAttributes : DotEntityRootAttributes<IDotEdgeAttributes>, IDotEdgeAttributesRoot
+    public partial class DotEdgeRootAttributes : DotEntityRootAttributes<IDotEdgeAttributes>, IDotEdgeRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EdgeAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeAttributes, IDotEdgeAttributes>().Build();
+        protected static readonly DotMemberAttributeKeyLookup EdgeRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().Build();
 
         protected readonly DotEdgeHyperlinkAttributes _edgeHyperlinkAttributes;
         protected readonly DotEdgeEndpointLabelsAttributes _endpointLabelsAttributes;
@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         protected readonly DotSvgStyleSheetAttributes _svgStyleSheetAttributes;
         protected readonly DotEdgeTailAttributes _tailAttributes;
 
-        protected DotEdgeAttributes(
+        protected DotEdgeRootAttributes(
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotEdgeHeadAttributes headAttributes,
@@ -56,10 +56,10 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
             _labelHyperlinkAttributes = labelHyperlinkAttributes;
         }
 
-        public DotEdgeAttributes(DotAttributeCollection attributes)
+        public DotEdgeRootAttributes(DotAttributeCollection attributes)
             : this(
                 attributes,
-                EdgeAttributesKeyLookup,
+                EdgeRootAttributesKeyLookup,
                 new DotEdgeHeadAttributes(attributes),
                 new DotEdgeTailAttributes(attributes),
                 new DotFontAttributes(attributes),
@@ -73,20 +73,20 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         {
         }
 
-        public DotEdgeAttributes()
+        public DotEdgeRootAttributes()
             : this(new DotAttributeCollection(DotAttributeFactory.Instance))
         {
         }
 
-        DotEdgeHeadAttributes IDotEdgeAttributesRoot.Head => _headAttributes;
-        DotEdgeTailAttributes IDotEdgeAttributesRoot.Tail => _tailAttributes;
-        DotFontAttributes IDotEdgeAttributesRoot.Font => _fontAttributes;
-        DotEdgeEndpointLabelsAttributes IDotEdgeAttributesRoot.EndpointLabels => _endpointLabelsAttributes;
-        DotEdgeHyperlinkAttributes IDotEdgeAttributesRoot.EdgeHyperlink => _edgeHyperlinkAttributes;
-        DotEdgeLabelHyperlinkAttributes IDotEdgeAttributesRoot.LabelHyperlink => _labelHyperlinkAttributes;
-        DotEdgeStyleAttributes IDotEdgeAttributesRoot.Style => _styleAttributes;
-        DotSvgStyleSheetAttributes IDotEdgeAttributesRoot.SvgStyleSheet => _svgStyleSheetAttributes;
-        DotHyperlinkAttributes IDotEdgeAttributesRoot.Hyperlink => _hyperlinkAttributes;
+        DotEdgeHeadAttributes IDotEdgeRootAttributes.Head => _headAttributes;
+        DotEdgeTailAttributes IDotEdgeRootAttributes.Tail => _tailAttributes;
+        DotFontAttributes IDotEdgeRootAttributes.Font => _fontAttributes;
+        DotEdgeEndpointLabelsAttributes IDotEdgeRootAttributes.EndpointLabels => _endpointLabelsAttributes;
+        DotEdgeHyperlinkAttributes IDotEdgeRootAttributes.EdgeHyperlink => _edgeHyperlinkAttributes;
+        DotEdgeLabelHyperlinkAttributes IDotEdgeRootAttributes.LabelHyperlink => _labelHyperlinkAttributes;
+        DotEdgeStyleAttributes IDotEdgeRootAttributes.Style => _styleAttributes;
+        DotSvgStyleSheetAttributes IDotEdgeRootAttributes.SvgStyleSheet => _svgStyleSheetAttributes;
+        DotHyperlinkAttributes IDotEdgeRootAttributes.Hyperlink => _hyperlinkAttributes;
 
         [DotAttributeKey(DotAttributeKeys.Label)]
         DotLabel IDotEdgeAttributes.Label

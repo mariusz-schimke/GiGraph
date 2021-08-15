@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public interface IDotEdgeAttributesRoot : IDotEdgeAttributes
+    public interface IDotEdgeRootAttributes : IDotEdgeAttributes
     {
         /// <summary>
         ///     Properties applied to the head of the edge.

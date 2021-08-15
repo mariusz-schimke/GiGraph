@@ -6,7 +6,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public partial class DotEdgeAttributes
+    public partial class DotEdgeRootAttributes
     {
         /// <summary>
         ///     Applies the <see cref="DotLineStyle.Tapered" /> style to the edge. The edge starts with the specified width, and tapers to

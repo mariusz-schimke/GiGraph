@@ -44,11 +44,11 @@ namespace GiGraph.Dot.Entities.Edges
         where TTail : DotEndpointDefinition, IDotOrderable
         where THead : DotEndpointDefinition, IDotOrderable
     {
-        protected DotEdge(TTail tail, THead head, DotEdgeAttributes attributes)
+        protected DotEdge(TTail tail, THead head, DotEdgeRootAttributes attributes)
             : base(attributes)
         {
-            Tail = new DotEdgeTail<TTail>(tail, ((IDotEdgeAttributesRoot) attributes).Tail);
-            Head = new DotEdgeHead<THead>(head, ((IDotEdgeAttributesRoot) attributes).Head);
+            Tail = new DotEdgeTail<TTail>(tail, ((IDotEdgeRootAttributes) attributes).Tail);
+            Head = new DotEdgeHead<THead>(head, ((IDotEdgeRootAttributes) attributes).Head);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace GiGraph.Dot.Entities.Edges
         ///     The head endpoint.
         /// </param>
         public DotEdge(TTail tail, THead head)
-            : this(tail, head, new DotEdgeAttributes())
+            : this(tail, head, new DotEdgeRootAttributes())
         {
         }
 

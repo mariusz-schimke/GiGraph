@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
 
         /// <summary>
         ///     If defined, it is output as part of the head <see cref="DotEdgeHeadAttributes.Label" /> of the edge (svg, map only). Also,
-        ///     this value is used near the head node, overriding any <see cref="IDotEdgeAttributesRoot.Hyperlink" />
+        ///     this value is used near the head node, overriding any <see cref="IDotEdgeRootAttributes.Hyperlink" />
         ///     <see cref="IDotHyperlinkAttributes.Url" /> set for the edge.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.HeadUrl)]
@@ -46,7 +46,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         /// <summary>
         ///     If <see cref="Url" /> is specified, this attribute determines which window of the browser is used for the URL (svg, map
         ///     only). Setting it to <see cref="DotHyperlinkTargets.NewWindow" /> will open a new window if it doesn't already exist, or
-        ///     reuse it if it does. If undefined, the value of the edge's <see cref="IDotEdgeAttributesRoot.Hyperlink" />
+        ///     reuse it if it does. If undefined, the value of the edge's <see cref="IDotEdgeRootAttributes.Hyperlink" />
         ///     <see cref="IDotHyperlinkAttributes.Target" /> is used.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.HeadTarget)]

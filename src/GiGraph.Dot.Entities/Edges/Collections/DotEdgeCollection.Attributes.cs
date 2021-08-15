@@ -10,34 +10,34 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Collections
 {
-    public partial class DotEdgeCollection : IDotEdgeAttributesRoot
+    public partial class DotEdgeCollection : IDotEdgeRootAttributes
     {
-        /// <inheritdoc cref="IDotEdgeAttributesRoot.Head" />
-        public virtual DotEdgeHeadAttributes Head => ((IDotEdgeAttributesRoot) Attributes).Head;
+        /// <inheritdoc cref="IDotEdgeRootAttributes.Head" />
+        public virtual DotEdgeHeadAttributes Head => ((IDotEdgeRootAttributes) Attributes).Head;
 
-        /// <inheritdoc cref="IDotEdgeAttributesRoot.Tail" />
-        public virtual DotEdgeTailAttributes Tail => ((IDotEdgeAttributesRoot) Attributes).Tail;
+        /// <inheritdoc cref="IDotEdgeRootAttributes.Tail" />
+        public virtual DotEdgeTailAttributes Tail => ((IDotEdgeRootAttributes) Attributes).Tail;
 
-        /// <inheritdoc cref="IDotEdgeAttributesRoot.Font" />
-        public virtual DotFontAttributes Font => ((IDotEdgeAttributesRoot) Attributes).Font;
+        /// <inheritdoc cref="IDotEdgeRootAttributes.Font" />
+        public virtual DotFontAttributes Font => ((IDotEdgeRootAttributes) Attributes).Font;
 
-        /// <inheritdoc cref="IDotEdgeAttributesRoot.EndpointLabels" />
-        public virtual DotEdgeEndpointLabelsAttributes EndpointLabels => ((IDotEdgeAttributesRoot) Attributes).EndpointLabels;
+        /// <inheritdoc cref="IDotEdgeRootAttributes.EndpointLabels" />
+        public virtual DotEdgeEndpointLabelsAttributes EndpointLabels => ((IDotEdgeRootAttributes) Attributes).EndpointLabels;
 
-        /// <inheritdoc cref="IDotEdgeAttributesRoot.EdgeHyperlink" />
-        public virtual DotEdgeHyperlinkAttributes EdgeHyperlink => ((IDotEdgeAttributesRoot) Attributes).EdgeHyperlink;
+        /// <inheritdoc cref="IDotEdgeRootAttributes.EdgeHyperlink" />
+        public virtual DotEdgeHyperlinkAttributes EdgeHyperlink => ((IDotEdgeRootAttributes) Attributes).EdgeHyperlink;
 
-        /// <inheritdoc cref="IDotEdgeAttributesRoot.LabelHyperlink" />
-        public virtual DotEdgeLabelHyperlinkAttributes LabelHyperlink => ((IDotEdgeAttributesRoot) Attributes).LabelHyperlink;
+        /// <inheritdoc cref="IDotEdgeRootAttributes.LabelHyperlink" />
+        public virtual DotEdgeLabelHyperlinkAttributes LabelHyperlink => ((IDotEdgeRootAttributes) Attributes).LabelHyperlink;
 
-        /// <inheritdoc cref="IDotEdgeAttributesRoot.Style" />
-        public virtual DotEdgeStyleAttributes Style => ((IDotEdgeAttributesRoot) Attributes).Style;
+        /// <inheritdoc cref="IDotEdgeRootAttributes.Style" />
+        public virtual DotEdgeStyleAttributes Style => ((IDotEdgeRootAttributes) Attributes).Style;
 
-        /// <inheritdoc cref="IDotEdgeAttributesRoot.SvgStyleSheet" />
-        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotEdgeAttributesRoot) Attributes).SvgStyleSheet;
+        /// <inheritdoc cref="IDotEdgeRootAttributes.SvgStyleSheet" />
+        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotEdgeRootAttributes) Attributes).SvgStyleSheet;
 
-        /// <inheritdoc cref="IDotEdgeAttributesRoot.Hyperlink" />
-        public virtual DotHyperlinkAttributes Hyperlink => ((IDotEdgeAttributesRoot) Attributes).Hyperlink;
+        /// <inheritdoc cref="IDotEdgeRootAttributes.Hyperlink" />
+        public virtual DotHyperlinkAttributes Hyperlink => ((IDotEdgeRootAttributes) Attributes).Hyperlink;
 
         DotStyles? IDotEdgeAttributes.Style
         {
