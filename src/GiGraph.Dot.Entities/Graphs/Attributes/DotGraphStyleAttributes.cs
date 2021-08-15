@@ -1,5 +1,5 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Graphs;
 

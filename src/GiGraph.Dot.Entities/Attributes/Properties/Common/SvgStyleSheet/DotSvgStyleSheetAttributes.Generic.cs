@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Entities.Attributes.Properties.Common
+namespace GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet
 {
     public abstract class DotSvgStyleSheetAttributes<TIEntitySvgStyleSheetAttributes> : DotEntityAttributesWithMetadata<TIEntitySvgStyleSheetAttributes>, IDotSvgStyleSheetAttributes
         where TIEntitySvgStyleSheetAttributes : IDotSvgStyleSheetAttributes

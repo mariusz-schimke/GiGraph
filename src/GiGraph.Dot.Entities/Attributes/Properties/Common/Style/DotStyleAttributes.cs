@@ -4,7 +4,7 @@ using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.EnumHelpers;
 using GiGraph.Dot.Types.Styling;
 
-namespace GiGraph.Dot.Entities.Attributes.Properties.Common
+namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Style
 {
     public abstract class DotStyleAttributes
     {

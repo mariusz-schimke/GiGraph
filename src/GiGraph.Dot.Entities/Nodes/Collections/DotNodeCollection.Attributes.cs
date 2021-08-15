@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Properties.Common;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Types.Alignment;

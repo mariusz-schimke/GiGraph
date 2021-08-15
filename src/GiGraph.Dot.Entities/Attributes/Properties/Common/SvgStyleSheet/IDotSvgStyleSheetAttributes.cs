@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Graphs.Attributes;
 
-namespace GiGraph.Dot.Entities.Attributes.Properties.Common
+namespace GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet
 {
     public interface IDotSvgStyleSheetAttributes
     {

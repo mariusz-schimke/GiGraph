@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Properties.Common;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Types.Clusters;
 

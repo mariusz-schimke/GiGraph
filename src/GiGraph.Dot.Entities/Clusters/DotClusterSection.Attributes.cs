@@ -1,4 +1,6 @@
-﻿using GiGraph.Dot.Entities.Attributes.Properties.Common;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Colors;

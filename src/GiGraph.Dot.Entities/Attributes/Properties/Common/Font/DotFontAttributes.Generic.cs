@@ -5,7 +5,7 @@ using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Fonts;
 
-namespace GiGraph.Dot.Entities.Attributes.Properties.Common
+namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Font
 {
     public abstract class DotFontAttributes<TIEntityFontAttributes> : DotEntityAttributesWithMetadata<TIEntityFontAttributes>, IDotFontAttributes
         where TIEntityFontAttributes : IDotFontAttributes

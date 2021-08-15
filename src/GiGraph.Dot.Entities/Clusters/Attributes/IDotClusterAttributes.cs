@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Properties.Common;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Entities.Html.Font;

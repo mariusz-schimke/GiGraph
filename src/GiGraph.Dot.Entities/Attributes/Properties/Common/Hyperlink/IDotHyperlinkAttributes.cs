@@ -1,7 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Types.EscapeString;
 
-namespace GiGraph.Dot.Entities.Attributes.Properties.Common
+namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink
 {
     public interface IDotHyperlinkAttributes
     {

@@ -187,8 +187,8 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
 
         /// <summary>
         ///     Gets or sets the sorting index of the node (default: 0). If <see cref="DotGraphLayoutAttributes.PackingMode" /> of graph
-        ///     <see cref="IDotGraphAttributesRoot.Layout" /> indicates an array packing, this attribute specifies an insertion order among the
-        ///     components, with smaller values inserted first.
+        ///     <see cref="IDotGraphAttributesRoot.Layout" /> indicates an array packing, this attribute specifies an insertion order among
+        ///     the components, with smaller values inserted first.
         /// </summary>
         int? SortIndex { get; set; }
 

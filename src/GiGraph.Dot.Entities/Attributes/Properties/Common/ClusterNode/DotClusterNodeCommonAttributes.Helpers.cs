@@ -1,7 +1,7 @@
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Styling;
 
-namespace GiGraph.Dot.Entities.Attributes.Properties.Common
+namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
 {
     // TODO: jak to współdzielić z root graphem? Wspólny interfejs, dla którego zdefiniowana zostanie klasa extension?
     // Może wtedy dla spójności wszystkie takie helpery przenieść do extension?

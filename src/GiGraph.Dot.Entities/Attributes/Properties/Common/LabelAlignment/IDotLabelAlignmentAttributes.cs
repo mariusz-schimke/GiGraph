@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Types.Alignment;
 
-namespace GiGraph.Dot.Entities.Attributes.Properties.Common
+namespace GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment
 {
     public interface IDotLabelAlignmentAttributes
     {

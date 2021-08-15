@@ -1,5 +1,5 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.Styling;
 

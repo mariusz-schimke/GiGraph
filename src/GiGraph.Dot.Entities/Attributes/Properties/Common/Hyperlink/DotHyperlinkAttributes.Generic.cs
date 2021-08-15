@@ -5,7 +5,7 @@ using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Hyperlinks;
 
-namespace GiGraph.Dot.Entities.Attributes.Properties.Common
+namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink
 {
     public abstract class DotHyperlinkAttributes<TIEntityHyperlinkAttributes> : DotEntityAttributesWithMetadata<TIEntityHyperlinkAttributes>, IDotHyperlinkAttributes
         where TIEntityHyperlinkAttributes : IDotHyperlinkAttributes

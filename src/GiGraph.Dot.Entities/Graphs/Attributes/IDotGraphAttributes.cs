@@ -92,8 +92,8 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// <summary>
         ///     <para>
         ///         Specifies a list of directories in which to look for image files used by nodes, referenced either by the
-        ///         <see cref="DotNodeImageAttributes.Path" /> of their <see cref="IDotNodeAttributesRoot.Image" /> attributes, or from the IMG
-        ///         element in HTML-like labels. The string should be a list of (absolute or relative) path names, each separated by a
+        ///         <see cref="DotNodeImageAttributes.Path" /> of their <see cref="IDotNodeAttributesRoot.Image" /> attributes, or from the
+        ///         IMG element in HTML-like labels. The string should be a list of (absolute or relative) path names, each separated by a
         ///         semicolon (for Windows) or a colon (all other OS). The first directory in which a file of the given name is found will be
         ///         used to load the image.
         ///     </para>

@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Properties.Common;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {

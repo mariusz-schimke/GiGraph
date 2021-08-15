@@ -1,6 +1,6 @@
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Properties;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Output.Metadata;
