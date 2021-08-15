@@ -3,7 +3,7 @@ using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
-    public class DotEdgeHead<TEndpoint> : DotEdgeEndpoint<TEndpoint>, IDotEdgeHeadAttributesRoot
+    public class DotEdgeHead<TEndpoint> : DotEdgeEndpoint<TEndpoint>, IDotEdgeHeadRootAttributes
         where TEndpoint : DotEndpointDefinition, IDotOrderable
     {
         public DotEdgeHead(TEndpoint endpoint, DotEdgeHeadAttributes attributes)
@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         {
         }
 
-        /// <inheritdoc cref="IDotEdgeHeadAttributesRoot.Hyperlink" />
+        /// <inheritdoc cref="IDotEdgeHeadRootAttributes.Hyperlink" />
         public virtual DotEdgeHeadHyperlinkAttributes Hyperlink => ((DotEdgeHeadAttributes) Attributes).Hyperlink;
     }
 }

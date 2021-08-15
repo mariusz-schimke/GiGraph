@@ -1,6 +1,6 @@
 ﻿namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public interface IDotEdgeTailAttributesRoot : IDotEdgeEndpointAttributes
+    public interface IDotEdgeTailRootAttributes : IDotEdgeEndpointAttributes
     {
         /// <summary>
         ///     Hyperlink properties of the tail of the edge. If defined, the hyperlink is output as part of the tail's

@@ -152,8 +152,8 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                 typeof(IDotSubgraphAttributesRoot),
                 typeof(IDotNodeAttributesRoot),
                 typeof(IDotEdgeRootAttributes),
-                typeof(IDotEdgeTailAttributesRoot),
-                typeof(IDotEdgeHeadAttributesRoot)
+                typeof(IDotEdgeTailRootAttributes),
+                typeof(IDotEdgeHeadRootAttributes)
             };
 
             var tested = 0;
