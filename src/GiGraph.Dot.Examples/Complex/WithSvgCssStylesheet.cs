@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Examples.Complex
 
             graph.SvgStyleSheet.Url = Path.GetFullPath("stylesheet.css");
 
-            graph.Nodes.Add("foo").Attributes.SvgStyleSheet.Class = "foo_node";
+            graph.Nodes.Add("foo").SvgStyleSheet.Class = "foo_node";
             graph.Edges.Add("foo", "bar");
 
             return graph;

@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Types.Alignment;
@@ -27,6 +28,9 @@ namespace GiGraph.Dot.Entities.Nodes
 
         /// <inheritdoc cref="IDotNodeAttributesRoot.Style" />
         public virtual DotNodeStyleAttributes Style => ((IDotNodeAttributesRoot) Attributes).Style;
+
+        /// <inheritdoc cref="IDotNodeAttributesRoot.SvgStyleSheet" />
+        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotNodeAttributesRoot) Attributes).SvgStyleSheet;
 
         DotStyles? IDotNodeAttributes.Style
         {

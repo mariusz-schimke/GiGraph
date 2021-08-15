@@ -10,7 +10,10 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
+using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.EscapeString;
+using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Styling;
 
@@ -67,10 +70,78 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         }
 
         DotFontAttributes IDotNodeAttributesRoot.Font => _font;
-        DotNodeImageAttributes IDotNodeAttributesRoot.Image => _image;
-        DotNodeGeometryAttributes IDotNodeAttributesRoot.Geometry => _geometry;
-        DotNodeSizeAttributes IDotNodeAttributesRoot.Size => _size;
         DotNodeStyleAttributes IDotNodeAttributesRoot.Style => _style;
+        DotNodeSizeAttributes IDotNodeAttributesRoot.Size => _size;
+        DotNodeGeometryAttributes IDotNodeAttributesRoot.Geometry => _geometry;
+        DotNodeImageAttributes IDotNodeAttributesRoot.Image => _image;
+        DotSvgStyleSheetAttributes IDotNodeAttributesRoot.SvgStyleSheet => _svgStyleSheet;
+
+        DotLabel IDotNodeAttributes.Label
+        {
+            get => base.Label;
+            set => base.Label = value;
+        }
+
+        string IDotNodeAttributes.ColorScheme
+        {
+            get => base.ColorScheme;
+            set => base.ColorScheme = value;
+        }
+
+        DotEscapeString IDotNodeAttributes.ObjectId
+        {
+            get => base.ObjectId;
+            set => base.ObjectId = value;
+        }
+
+        [DotAttributeKey(DotAttributeKeys.Color)]
+        DotColorDefinition IDotNodeAttributes.Color
+        {
+            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.FillColor)]
+        DotColorDefinition IDotNodeAttributes.FillColor
+        {
+            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.GradientAngle)]
+        int? IDotNodeAttributes.GradientFillAngle
+        {
+            get => GetValueAsInt(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.PenWidth)]
+        double? IDotNodeAttributes.BorderWidth
+        {
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.Tooltip)]
+        DotEscapeString IDotNodeAttributes.Tooltip
+        {
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.Margin)]
+        DotPoint IDotNodeAttributes.Padding
+        {
+            get => GetValueAsPoint(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.SortV)]
+        int? IDotNodeAttributes.SortIndex
+        {
+            get => GetValueAsInt(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
 
         [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotNodeAttributes.Style

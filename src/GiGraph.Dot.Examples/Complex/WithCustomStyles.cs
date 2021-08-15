@@ -57,8 +57,8 @@ namespace GiGraph.Dot.Examples.Complex
             graph.Subgraphs.Add(sg =>
             {
                 // nodes with dual-color fill; fill proportions specified by the weight properties
-                sg.Nodes.Add("C").Attributes.FillColor = new DotMultiColor(Color.RoyalBlue, new DotWeightedColor(Color.Turquoise, 0.25));
-                sg.Nodes.Add("D").Attributes.FillColor = new DotMultiColor(new DotWeightedColor(Color.Navy, 0.25), Color.RoyalBlue);
+                sg.Nodes.Add("C").FillColor = new DotMultiColor(Color.RoyalBlue, new DotWeightedColor(Color.Turquoise, 0.25));
+                sg.Nodes.Add("D").FillColor = new DotMultiColor(new DotWeightedColor(Color.Navy, 0.25), Color.RoyalBlue);
 
                 sg.Edges.Add("C", "D", edge =>
                 {
@@ -108,8 +108,8 @@ namespace GiGraph.Dot.Examples.Complex
             // a subgraph example – to override global attributes for a group of nodes and/or edges
             graph.Subgraphs.Add(sg =>
             {
-                sg.Nodes.Attributes.Color = Color.RoyalBlue;
-                sg.Nodes.Attributes.FillColor = Color.Orange;
+                sg.Nodes.Color = Color.RoyalBlue;
+                sg.Nodes.FillColor = Color.Orange;
                 sg.Nodes.Shape = DotNodeShape.Circle;
 
                 sg.Edges.Attributes.Color = Color.RoyalBlue;

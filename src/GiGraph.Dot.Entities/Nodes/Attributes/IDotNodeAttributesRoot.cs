@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes
@@ -11,14 +12,9 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         DotFontAttributes Font { get; }
 
         /// <summary>
-        ///     Node image properties.
+        ///     Style options.
         /// </summary>
-        DotNodeImageAttributes Image { get; }
-
-        /// <summary>
-        ///     Node geometry properties applicable if <see cref="IDotNodeAttributes.Shape" /> is set to <see cref="DotNodeShape.Polygon" />.
-        /// </summary>
-        DotNodeGeometryAttributes Geometry { get; }
+        new DotNodeStyleAttributes Style { get; }
 
         /// <summary>
         ///     Node size properties.
@@ -26,8 +22,18 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         DotNodeSizeAttributes Size { get; }
 
         /// <summary>
-        ///     Style options.
+        ///     Node geometry properties applicable if <see cref="IDotNodeAttributes.Shape" /> is set to <see cref="DotNodeShape.Polygon" />.
         /// </summary>
-        new DotNodeStyleAttributes Style { get; }
+        DotNodeGeometryAttributes Geometry { get; }
+
+        /// <summary>
+        ///     Node image properties.
+        /// </summary>
+        DotNodeImageAttributes Image { get; }
+
+        /// <summary>
+        ///     Style sheet attributes used for SVG output.
+        /// </summary>
+        DotSvgStyleSheetAttributes SvgStyleSheet { get; }
     }
 }

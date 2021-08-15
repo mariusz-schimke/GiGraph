@@ -1,6 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Colors;
@@ -21,6 +22,9 @@ namespace GiGraph.Dot.Entities.Clusters
 
         /// <inheritdoc cref="IDotClusterAttributesRoot.LabelAlignment" />
         public virtual DotLabelAlignmentAttributes LabelAlignment => ((IDotClusterAttributesRoot) Attributes).LabelAlignment;
+
+        /// <inheritdoc cref="IDotClusterAttributesRoot.SvgStyleSheet" />
+        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotClusterAttributesRoot) Attributes).SvgStyleSheet;
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.Color" />
         public virtual DotColorDefinition Color

@@ -9,9 +9,12 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.EscapeString;
+using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Ranks;
 using GiGraph.Dot.Types.Styling;
 
@@ -62,6 +65,74 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         DotFontAttributes IDotClusterAttributesRoot.Font => _font;
         DotClusterStyleAttributes IDotClusterAttributesRoot.Style => _style;
         DotLabelAlignmentAttributes IDotClusterAttributesRoot.LabelAlignment => _labelAlignment;
+        DotSvgStyleSheetAttributes IDotClusterAttributesRoot.SvgStyleSheet => _svgStyleSheet;
+
+        DotLabel IDotClusterAttributes.Label
+        {
+            get => base.Label;
+            set => base.Label = value;
+        }
+
+        string IDotClusterAttributes.ColorScheme
+        {
+            get => base.ColorScheme;
+            set => base.ColorScheme = value;
+        }
+
+        DotEscapeString IDotClusterAttributes.ObjectId
+        {
+            get => base.ObjectId;
+            set => base.ObjectId = value;
+        }
+
+        [DotAttributeKey(DotAttributeKeys.Color)]
+        DotColorDefinition IDotGraphClusterCommonAttributes.Color
+        {
+            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.FillColor)]
+        DotColorDefinition IDotGraphClusterCommonAttributes.FillColor
+        {
+            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.PenWidth)]
+        double? IDotGraphClusterCommonAttributes.BorderWidth
+        {
+            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.GradientAngle)]
+        int? IDotClusterAttributes.GradientFillAngle
+        {
+            get => GetValueAsInt(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.Tooltip)]
+        DotEscapeString IDotClusterAttributes.Tooltip
+        {
+            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.Margin)]
+        DotPoint IDotClusterAttributes.Padding
+        {
+            get => GetValueAsPoint(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        [DotAttributeKey(DotAttributeKeys.SortV)]
+        int? IDotClusterAttributes.SortIndex
+        {
+            get => GetValueAsInt(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
 
         [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotClusterAttributes.Style

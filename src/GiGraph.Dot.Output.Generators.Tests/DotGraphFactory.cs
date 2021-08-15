@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Clusters.Add("Cluster2");
             graph.Clusters.Add("Cluster1");
 
-            graph.Nodes.Attributes.Color = Color.Red;
+            graph.Nodes.Color = Color.Red;
             graph.Nodes.Attributes.Label = "node_label";
 
             graph.Edges.Attributes.Color = Color.Blue;
@@ -109,12 +109,12 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Clusters.Add("cluster1", c =>
             {
                 c.Annotation = "cluster comment";
-                c.Attributes.Color = Color.Blue;
+                c.Color = Color.Blue;
 
                 c.Subsections.Add(ss =>
                 {
                     ss.Annotation = "cluster subsection comment";
-                    ss.Attributes.Color = Color.Magenta;
+                    ss.Color = Color.Magenta;
                 });
             });
 
