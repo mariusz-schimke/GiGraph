@@ -12,6 +12,6 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         }
 
         /// <inheritdoc cref="IDotEdgeHeadAttributesRoot.Hyperlink" />
-        public virtual DotEdgeHeadHyperlinkAttributes Hyperlink => ((DotEdgeHeadAttributes) _attributes).Hyperlink;
+        public virtual DotEdgeHeadHyperlinkAttributes Hyperlink => ((DotEdgeHeadAttributes) Attributes).Hyperlink;
     }
 }

@@ -11,13 +11,16 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     public abstract class DotEdgeEndpoint<TEndpoint> : IDotEdgeEndpointAttributes
         where TEndpoint : DotEndpointDefinition, IDotOrderable
     {
-        protected readonly DotEdgeEndpointAttributes _attributes;
-
         public DotEdgeEndpoint(TEndpoint endpoint, DotEdgeEndpointAttributes attributes)
         {
             Endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint), "Edge endpoint must not be null.");
-            _attributes = attributes;
+            Attributes = attributes;
         }
+
+        /// <summary>
+        ///     Gets the attributes of the endpoint.
+        /// </summary>
+        public virtual DotEdgeEndpointAttributes Attributes { get; }
 
         /// <summary>
         ///     The endpoint of the edge.
@@ -27,43 +30,43 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Label" />
         public virtual DotLabel Label
         {
-            get => _attributes.Label;
-            set => _attributes.Label = value;
+            get => Attributes.Label;
+            set => Attributes.Label = value;
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Port" />
         public virtual DotEndpointPort Port
         {
-            get => _attributes.Port;
-            set => _attributes.Port = value;
+            get => Attributes.Port;
+            set => Attributes.Port = value;
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClusterId" />
         public virtual DotClusterId ClusterId
         {
-            get => _attributes.ClusterId;
-            set => _attributes.ClusterId = value;
+            get => Attributes.ClusterId;
+            set => Attributes.ClusterId = value;
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClipToNodeBoundary" />
         public virtual bool? ClipToNodeBoundary
         {
-            get => _attributes.ClipToNodeBoundary;
-            set => _attributes.ClipToNodeBoundary = value;
+            get => Attributes.ClipToNodeBoundary;
+            set => Attributes.ClipToNodeBoundary = value;
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.GroupName" />
         public virtual string GroupName
         {
-            get => _attributes.GroupName;
-            set => _attributes.GroupName = value;
+            get => Attributes.GroupName;
+            set => Attributes.GroupName = value;
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Arrowhead" />
         public virtual DotArrowheadDefinition Arrowhead
         {
-            get => _attributes.Arrowhead;
-            set => _attributes.Arrowhead = value;
+            get => Attributes.Arrowhead;
+            set => Attributes.Arrowhead = value;
         }
     }
 }
