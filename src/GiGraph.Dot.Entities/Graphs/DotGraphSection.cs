@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Graphs
     public partial class DotGraphSection : DotCommonGraphSection
     {
         protected DotGraphSection(
-            DotGraphAttributes attributes,
+            DotGraphRootAttributes attributes,
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Graphs
         {
         }
 
-        private DotGraphSection(DotGraphAttributes attributes)
+        private DotGraphSection(DotGraphRootAttributes attributes)
             : base(
                 attributes,
                 new DotSubgraphCollection(),
@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Graphs
         }
 
         public DotGraphSection()
-            : this(new DotGraphAttributes())
+            : this(new DotGraphRootAttributes())
         {
         }
 
@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Entities.Graphs
         /// <summary>
         ///     The attributes of the graph.
         /// </summary>
-        public virtual DotGraphAttributes Attributes => (DotGraphAttributes) _attributes;
+        public virtual DotGraphRootAttributes Attributes => (DotGraphRootAttributes) _attributes;
 
         /// <inheritdoc cref="DotCommonGraphSection.Clusters" />
         public new virtual DotGraphClusterCollection Clusters => (DotGraphClusterCollection) base.Clusters;

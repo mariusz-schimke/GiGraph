@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// </param>
         /// <param name="angle">
         ///     The angle of the fill. Note that this attribute is shared with the parent graph (see
-        ///     <see cref="DotGraphCanvasAttributes.GradientFillAngle" /> of graph <see cref="IDotGraphAttributesRoot.Canvas" />), and will
+        ///     <see cref="DotGraphCanvasAttributes.GradientFillAngle" /> of graph <see cref="IDotGraphRootAttributes.Canvas" />), and will
         ///     overwrite its current value if already set there.
         /// </param>
         /// <param name="radial">
@@ -37,7 +37,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         {
             _style.FillStyle = radial ? DotClusterFillStyle.Radial : DotClusterFillStyle.Normal;
             ((IDotGraphClusterAttributesRoot) this).FillColor = color;
-            ((IDotGraphAttributesRoot) _graphAttributes).Canvas.GradientFillAngle = angle;
+            ((IDotGraphRootAttributes) _graphAttributes).Canvas.GradientFillAngle = angle;
         }
 
         /// <summary>

@@ -146,7 +146,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             var ignore = new[]
             {
                 typeof(IDotAnnotatable),
-                typeof(IDotGraphAttributesRoot),
+                typeof(IDotGraphRootAttributes),
                 typeof(IDotGraphClusterAttributesRoot),
                 typeof(IDotClusterAttributesRoot),
                 typeof(IDotSubgraphAttributesRoot),

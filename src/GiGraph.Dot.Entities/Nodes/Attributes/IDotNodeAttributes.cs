@@ -75,7 +75,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         ///     synonym for the <see cref="Label" /> attribute. These labels are added after all nodes and edges have been placed. The labels
         ///     will be placed so that they do not overlap any node or label. This means it may not be possible to place all of them. To
         ///     force placing all of them, use the <see cref="DotGraphLayoutAttributes.ForceExternalLabels" /> attribute of graph
-        ///     <see cref="IDotGraphAttributesRoot.Layout" />.
+        ///     <see cref="IDotGraphRootAttributes.Layout" />.
         /// </summary>
         DotLabel ExternalLabel { get; set; }
 
@@ -187,7 +187,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
 
         /// <summary>
         ///     Gets or sets the sorting index of the node (default: 0). If <see cref="DotGraphLayoutAttributes.PackingMode" /> of graph
-        ///     <see cref="IDotGraphAttributesRoot.Layout" /> indicates an array packing, this attribute specifies an insertion order among
+        ///     <see cref="IDotGraphRootAttributes.Layout" /> indicates an array packing, this attribute specifies an insertion order among
         ///     the components, with smaller values inserted first.
         /// </summary>
         int? SortIndex { get; set; }

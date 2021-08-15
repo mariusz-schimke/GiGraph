@@ -13,11 +13,11 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
     {
         protected static readonly DotMemberAttributeKeyLookup GraphClusterAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClusterAttributes, IDotGraphClusterAttributes>().Build();
 
-        protected readonly DotGraphAttributes _graphAttributes;
+        protected readonly DotGraphRootAttributes _graphAttributes;
         protected readonly DotClusterStyleAttributes _style;
 
         protected DotGraphClusterAttributes(
-            DotGraphAttributes graphAttributes,
+            DotGraphRootAttributes graphAttributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotClusterStyleAttributes styleAttributes
         )
@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
             _style = styleAttributes;
         }
 
-        public DotGraphClusterAttributes(DotGraphAttributes graphAttributes)
+        public DotGraphClusterAttributes(DotGraphRootAttributes graphAttributes)
             : this(
                 graphAttributes,
                 GraphClusterAttributesKeyLookup,

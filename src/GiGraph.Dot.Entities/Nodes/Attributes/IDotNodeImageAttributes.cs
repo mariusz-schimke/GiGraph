@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         /// <summary>
         ///     <para>
         ///         Attribute controlling how an image fills its containing node. In general, the image is given its natural size, (compare
-        ///         the <see cref="DotGraphCanvasAttributes.Dpi" /> attribute on graph <see cref="IDotGraphAttributesRoot.Canvas" />), and
+        ///         the <see cref="DotGraphCanvasAttributes.Dpi" /> attribute on graph <see cref="IDotGraphRootAttributes.Canvas" />), and
         ///         the node size is made large enough to contain its image, its label, its padding, and its peripheries. Its width and
         ///         height will also be at least as large as its minimum width and height. If, however, the node's
         ///         <see cref="IDotNodeAttributesRoot.Size" /> <see cref="DotNodeSizeAttributes.Mode" /> is

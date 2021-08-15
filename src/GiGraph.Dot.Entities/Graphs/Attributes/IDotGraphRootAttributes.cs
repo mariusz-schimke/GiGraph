@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public interface IDotGraphAttributesRoot : IDotGraphAttributes
+    public interface IDotGraphRootAttributes : IDotGraphAttributes
     {
         /// <summary>
         ///     Font properties.

@@ -9,28 +9,28 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
-    public partial class DotGraphSection : IDotGraphAttributesRoot
+    public partial class DotGraphSection : IDotGraphRootAttributes
     {
-        /// <inheritdoc cref="IDotGraphAttributesRoot.Font" />
-        public virtual DotGraphFontAttributes Font => ((IDotGraphAttributesRoot) Attributes).Font;
+        /// <inheritdoc cref="IDotGraphRootAttributes.Font" />
+        public virtual DotGraphFontAttributes Font => ((IDotGraphRootAttributes) Attributes).Font;
 
-        /// <inheritdoc cref="IDotGraphAttributesRoot.Style" />
-        public virtual DotGraphStyleAttributes Style => ((IDotGraphAttributesRoot) Attributes).Style;
+        /// <inheritdoc cref="IDotGraphRootAttributes.Style" />
+        public virtual DotGraphStyleAttributes Style => ((IDotGraphRootAttributes) Attributes).Style;
 
-        /// <inheritdoc cref="IDotGraphAttributesRoot.SvgStyleSheet" />
-        public virtual DotGraphSvgSvgStyleSheetAttributes SvgStyleSheet => ((IDotGraphAttributesRoot) Attributes).SvgStyleSheet;
+        /// <inheritdoc cref="IDotGraphRootAttributes.SvgStyleSheet" />
+        public virtual DotGraphSvgSvgStyleSheetAttributes SvgStyleSheet => ((IDotGraphRootAttributes) Attributes).SvgStyleSheet;
 
-        /// <inheritdoc cref="IDotGraphAttributesRoot.Layout" />
-        public virtual DotGraphLayoutAttributes Layout => ((IDotGraphAttributesRoot) Attributes).Layout;
+        /// <inheritdoc cref="IDotGraphRootAttributes.Layout" />
+        public virtual DotGraphLayoutAttributes Layout => ((IDotGraphRootAttributes) Attributes).Layout;
 
-        /// <inheritdoc cref="IDotGraphAttributesRoot.Canvas" />
-        public virtual DotGraphCanvasAttributes Canvas => ((IDotGraphAttributesRoot) Attributes).Canvas;
+        /// <inheritdoc cref="IDotGraphRootAttributes.Canvas" />
+        public virtual DotGraphCanvasAttributes Canvas => ((IDotGraphRootAttributes) Attributes).Canvas;
 
-        /// <inheritdoc cref="IDotGraphAttributesRoot.LabelAlignment" />
-        public virtual DotLabelAlignmentAttributes LabelAlignment => ((IDotGraphAttributesRoot) Attributes).LabelAlignment;
+        /// <inheritdoc cref="IDotGraphRootAttributes.LabelAlignment" />
+        public virtual DotLabelAlignmentAttributes LabelAlignment => ((IDotGraphRootAttributes) Attributes).LabelAlignment;
 
-        /// <inheritdoc cref="IDotGraphAttributesRoot.SvgStyleSheet" />
-        public virtual DotHyperlinkAttributes Hyperlink => ((IDotGraphAttributesRoot) Attributes).Hyperlink;
+        /// <inheritdoc cref="IDotGraphRootAttributes.SvgStyleSheet" />
+        public virtual DotHyperlinkAttributes Hyperlink => ((IDotGraphRootAttributes) Attributes).Hyperlink;
 
         DotStyles? IDotGraphAttributes.Style
         {

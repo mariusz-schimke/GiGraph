@@ -15,9 +15,9 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphAttributes : DotEntityRootAttributes<IDotGraphAttributes>, IDotGraphAttributesRoot
+    public class DotGraphRootAttributes : DotEntityRootAttributes<IDotGraphAttributes>, IDotGraphRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup GraphAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphAttributes, IDotGraphAttributes>().Build();
+        protected static readonly DotMemberAttributeKeyLookup GraphAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().Build();
 
         protected readonly DotGraphCanvasAttributes _canvasAttributes;
         protected readonly DotGraphFontAttributes _fontAttributes;
@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         protected readonly DotGraphStyleAttributes _styleAttributes;
         protected readonly DotGraphSvgSvgStyleSheetAttributes _svgStyleSheetAttributes;
 
-        protected DotGraphAttributes(
+        protected DotGraphRootAttributes(
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotHyperlinkAttributes hyperlinkAttributes,
@@ -49,7 +49,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
             _labelAlignmentAttributes = labelAlignmentAttributes;
         }
 
-        public DotGraphAttributes(DotAttributeCollection attributes)
+        public DotGraphRootAttributes(DotAttributeCollection attributes)
             : this(
                 attributes,
                 GraphAttributesKeyLookup,
@@ -64,18 +64,18 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         {
         }
 
-        public DotGraphAttributes()
+        public DotGraphRootAttributes()
             : this(new DotAttributeCollection(DotAttributeFactory.Instance))
         {
         }
 
-        DotHyperlinkAttributes IDotGraphAttributesRoot.Hyperlink => _hyperlinkAttributes;
-        DotGraphFontAttributes IDotGraphAttributesRoot.Font => _fontAttributes;
-        DotGraphStyleAttributes IDotGraphAttributesRoot.Style => _styleAttributes;
-        DotGraphSvgSvgStyleSheetAttributes IDotGraphAttributesRoot.SvgStyleSheet => _svgStyleSheetAttributes;
-        DotGraphLayoutAttributes IDotGraphAttributesRoot.Layout => _layoutAttributes;
-        DotGraphCanvasAttributes IDotGraphAttributesRoot.Canvas => _canvasAttributes;
-        DotLabelAlignmentAttributes IDotGraphAttributesRoot.LabelAlignment => _labelAlignmentAttributes;
+        DotHyperlinkAttributes IDotGraphRootAttributes.Hyperlink => _hyperlinkAttributes;
+        DotGraphFontAttributes IDotGraphRootAttributes.Font => _fontAttributes;
+        DotGraphStyleAttributes IDotGraphRootAttributes.Style => _styleAttributes;
+        DotGraphSvgSvgStyleSheetAttributes IDotGraphRootAttributes.SvgStyleSheet => _svgStyleSheetAttributes;
+        DotGraphLayoutAttributes IDotGraphRootAttributes.Layout => _layoutAttributes;
+        DotGraphCanvasAttributes IDotGraphRootAttributes.Canvas => _canvasAttributes;
+        DotLabelAlignmentAttributes IDotGraphRootAttributes.LabelAlignment => _labelAlignmentAttributes;
 
         [DotAttributeKey(DotAttributeKeys.Label)]
         DotLabel IDotGraphAttributes.Label
