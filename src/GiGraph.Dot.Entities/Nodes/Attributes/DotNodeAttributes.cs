@@ -126,7 +126,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
 
         protected override void SetFillStyle(DotStyles fillStyle)
         {
-            ((IDotNodeAttributesRoot) this).Style.FillStyle = (DotNodeFillStyle) fillStyle;
+            _style.FillStyle = (DotNodeFillStyle) fillStyle;
         }
     }
 }

@@ -8,7 +8,7 @@ using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Clusters
 {
-    public class DotClusterSection : DotCommonGraphSection
+    public partial class DotClusterSection : DotCommonGraphSection
     {
         protected DotClusterSection(
             DotClusterAttributes attributes,

@@ -4,6 +4,7 @@ using GiGraph.Dot.Types.Clusters;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes
 {
+    // TODO: co z tymi helperami typu CopyFrom, Set?
     public class DotClusterStyleAttributes : DotClusterNodeCommonStyleAttributes<DotClusterFillStyle, DotClusterStyleProperties>
     {
         public DotClusterStyleAttributes(DotAttributeCollection attributes)

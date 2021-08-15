@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Clusters;
+using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Graphs.Attributes;
@@ -144,8 +145,11 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             {
                 typeof(IDotAnnotatable),
                 typeof(IDotGraphAttributesRoot),
+                typeof(IDotClusterAttributesRoot),
                 typeof(IDotNodeAttributesRoot)
             };
+
+            var tested = 0;
 
             foreach (var @interface in targetProperty.ReflectedType.GetInterfaces().Where(i => !ignore.Contains(i)))
             {
@@ -156,8 +160,13 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                     // should throw an exception if no key is available for a property
                     var key = getKey(property);
                     Assert.NotEmpty(key);
+
+                    tested++;
                 }
             }
+
+            // just to be sure that the filtering conditions are formulated properly and anything is tested actually
+            Assert.True(tested > 0);
         }
     }
 }

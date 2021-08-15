@@ -60,7 +60,7 @@ namespace GiGraph.Dot.Examples.Complex
 
             graph.Clusters.Add(id: "Flow 1", cluster =>
             {
-                cluster.Attributes.BackgroundColor = Color.Turquoise;
+                cluster.BackgroundColor = Color.Turquoise;
                 cluster.Attributes.Label = "Flow 1";
 
                 cluster.Edges.AddSequence("Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit");
@@ -69,7 +69,7 @@ namespace GiGraph.Dot.Examples.Complex
             graph.Clusters.Add(id: "Flow 2", cluster =>
             {
                 cluster.Attributes.Label = "Flow 2";
-                cluster.Attributes.BackgroundColor = Color.Orange;
+                cluster.BackgroundColor = Color.Orange;
 
                 cluster.Edges.AddSequence("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");
             });

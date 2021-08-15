@@ -3,20 +3,21 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Factories;
 using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
-using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
-using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Ranks;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes
 {
-    public class DotClusterAttributes : DotClusterNodeCommonAttributes<IDotClusterAttributes>, IDotClusterAttributes
+    public class DotClusterAttributes : DotClusterNodeCommonAttributes<IDotClusterAttributes>, IDotClusterAttributesRoot
     {
         protected static readonly DotMemberAttributeKeyLookup ClusterAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterAttributes, IDotClusterAttributes>().Build();
+
+        protected readonly DotFontAttributes _font;
+        protected readonly DotLabelAlignmentAttributes _labelAlignment;
+        protected readonly DotClusterStyleAttributes _style;
 
         protected DotClusterAttributes(
             DotAttributeCollection attributes,
@@ -29,9 +30,9 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
         {
-            Font = fontAttributes;
-            Style = styleAttributes;
-            LabelAlignment = labelAlignmentAttributes;
+            _font = fontAttributes;
+            _style = styleAttributes;
+            _labelAlignment = labelAlignmentAttributes;
         }
 
         public DotClusterAttributes(DotAttributeCollection attributes)
@@ -52,23 +53,10 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         {
         }
 
-        /// <summary>
-        ///     Font properties.
-        /// </summary>
-        public virtual DotFontAttributes Font { get; }
+        DotFontAttributes IDotClusterAttributesRoot.Font => _font;
+        DotClusterStyleAttributes IDotClusterAttributesRoot.Style => _style;
+        DotLabelAlignmentAttributes IDotClusterAttributesRoot.LabelAlignment => _labelAlignment;
 
-        /// <summary>
-        ///     Style options.
-        /// </summary>
-        public virtual DotClusterStyleAttributes Style { get; }
-
-        /// <summary>
-        ///     Horizontal and vertical label alignment options.
-        /// </summary>
-        public virtual DotLabelAlignmentAttributes LabelAlignment { get; }
-
-        // accessible only through the interface
-        /// <inheritdoc cref="IDotClusterAttributes.Style" />
         [DotAttributeKey(DotStyleAttributes.StyleKey)]
         DotStyles? IDotClusterAttributes.Style
         {
@@ -76,103 +64,29 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
-        /// <inheritdoc cref="IDotClusterAttributes.Label" />
-        public override DotLabel Label
-        {
-            get => base.Label;
-            set => base.Label = value;
-        }
-
-        /// <inheritdoc cref="IDotClusterAttributes.ColorScheme" />
-        public override string ColorScheme
-        {
-            get => base.ColorScheme;
-            set => base.ColorScheme = value;
-        }
-
-        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.Color" />
-        public override DotColorDefinition Color
-        {
-            get => base.Color;
-            set => base.Color = value;
-        }
-
-        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.FillColor" />
-        public override DotColorDefinition FillColor
-        {
-            get => base.FillColor;
-            set => base.FillColor = value;
-        }
-
-        /// <inheritdoc cref="IDotClusterAttributes.GradientFillAngle" />
-        public override int? GradientFillAngle
-        {
-            get => base.GradientFillAngle;
-            set => base.GradientFillAngle = value;
-        }
-
-        /// <inheritdoc cref="IDotClusterAttributes.Tooltip" />
-        public override DotEscapeString Tooltip
-        {
-            get => base.Tooltip;
-            set => base.Tooltip = value;
-        }
-
-        /// <inheritdoc cref="IDotClusterAttributes.Padding" />
-        public override DotPoint Padding
-        {
-            get => base.Padding;
-            set => base.Padding = value;
-        }
-
-        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderWidth" />
-        public override double? BorderWidth
-        {
-            get => base.BorderWidth;
-            set => base.BorderWidth = value;
-        }
-
-        /// <inheritdoc cref="IDotClusterAttributes.SortIndex" />
-        public override int? SortIndex
-        {
-            get => base.SortIndex;
-            set => base.SortIndex = value;
-        }
-
-        /// <inheritdoc cref="IDotClusterAttributes.ObjectId" />
-        public override DotEscapeString ObjectId
-        {
-            get => base.ObjectId;
-            set => base.ObjectId = value;
-        }
-
-        /// <inheritdoc cref="IDotClusterAttributes.NodeRank" />
         [DotAttributeKey(DotAttributeKeys.Rank)]
-        public virtual DotRank? NodeRank
+        DotRank? IDotClusterAttributes.NodeRank
         {
             get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
-        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor" />
         [DotAttributeKey(DotAttributeKeys.PenColor)]
-        public virtual DotColor BorderColor
+        DotColor IDotGraphClusterCommonAttributes.BorderColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotClusterAttributes.BackgroundColor" />
         [DotAttributeKey(DotAttributeKeys.BgColor)]
-        public virtual DotColorDefinition BackgroundColor
+        DotColorDefinition IDotClusterAttributes.BackgroundColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotClusterAttributes.Peripheries" />
         [DotAttributeKey(DotAttributeKeys.Peripheries)]
-        public virtual int? Peripheries
+        int? IDotClusterAttributes.Peripheries
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
@@ -180,7 +94,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
 
         protected override void SetFillStyle(DotStyles fillStyle)
         {
-            Style.FillStyle = (DotClusterFillStyle) fillStyle;
+            _style.FillStyle = (DotClusterFillStyle) fillStyle;
         }
     }
 }
