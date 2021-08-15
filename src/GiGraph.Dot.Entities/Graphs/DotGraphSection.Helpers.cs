@@ -3,6 +3,7 @@ using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
+    // TODO: przenieść
     public partial class DotGraphSection
     {
         /// <summary>

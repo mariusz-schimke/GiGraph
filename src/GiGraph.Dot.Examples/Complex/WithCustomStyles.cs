@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Arrowheads;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;

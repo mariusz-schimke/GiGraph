@@ -6,6 +6,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
+    // TODO: przenieść
     public partial class DotEdgeRootAttributes
     {
         /// <summary>

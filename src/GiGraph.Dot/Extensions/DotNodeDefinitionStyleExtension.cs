@@ -1,40 +1,50 @@
+using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Nodes;
 
-namespace GiGraph.Dot.Entities.Nodes
+namespace GiGraph.Dot.Extensions
 {
-    public abstract partial class DotNodeDefinition
+    public static class DotNodeDefinitionStyleExtension
     {
         /// <summary>
         ///     Sets a wedged fill, assuming that the node has an elliptical shape (see <see cref="IDotNodeAttributes.Shape" />).
         /// </summary>
+        /// <param name="node">
+        ///     The current node.
+        /// </param>
         /// <param name="colors">
         ///     The colors to use for consecutive wedges. Proportions for individual wedges may be specified optionally by using a
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
-        public virtual void SetWedged(DotMultiColor colors)
+        public static void SetWedged(this DotNodeDefinition node, DotMultiColor colors)
         {
-            Style.FillStyle = DotNodeFillStyle.Wedged;
-            FillColor = colors;
+            node.Style.FillStyle = DotNodeFillStyle.Wedged;
+            node.FillColor = colors;
         }
 
         /// <summary>
         ///     Sets a wedged fill, assuming that the node has an elliptical shape (see <see cref="IDotNodeAttributes.Shape" />).
         /// </summary>
+        /// <param name="node">
+        ///     The current node.
+        /// </param>
         /// <param name="colors">
         ///     The colors to use for consecutive wedges. Proportions for individual wedges may be specified optionally by using a
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
-        public virtual void SetWedged(params DotColor[] colors)
+        public static void SetWedged(this DotNodeDefinition node, params DotColor[] colors)
         {
-            SetWedged(new DotMultiColor(colors));
+            node.SetWedged(new DotMultiColor(colors));
         }
 
         /// <summary>
         ///     Converts the current node to a polygon shape.
         /// </summary>
+        /// <param name="node">
+        ///     The current node.
+        /// </param>
         /// <param name="sides">
         ///     The number of sides if <see cref="IDotNodeAttributes.Shape" /> is set to <see cref="DotNodeShape.Polygon" /> (default: 4,
         ///     minimum: 0).
@@ -65,7 +75,8 @@ namespace GiGraph.Dot.Entities.Nodes
         ///     Distortion factor for <see cref="IDotNodeAttributes.Shape" /> set to <see cref="DotNodeShape.Polygon" /> (default: 0,
         ///     minimum: -100). Positive values cause top part to be larger than bottom; negative values do the opposite.
         /// </param>
-        public virtual void SetPolygonal(
+        public static void SetPolygonal(
+            this DotNodeDefinition node,
             int? sides = null,
             bool? regular = null,
             int? peripheries = null,
@@ -73,20 +84,23 @@ namespace GiGraph.Dot.Entities.Nodes
             double? skew = null,
             double? distortion = null)
         {
-            Shape = DotNodeShape.Polygon;
-            Geometry.Set(sides, regular, peripheries, rotation, skew, distortion);
+            node.Shape = DotNodeShape.Polygon;
+            node.Geometry.Set(sides, regular, peripheries, rotation, skew, distortion);
         }
 
         /// <summary>
         ///     Converts the current node to a polygon shape.
         /// </summary>
+        /// <param name="node">
+        ///     The current node.
+        /// </param>
         /// <param name="attributes">
         ///     The polygon attributes to set.
         /// </param>
-        public virtual void SetPolygonal(DotPolygon attributes)
+        public static void SetPolygonal(this DotNodeDefinition node, DotPolygon attributes)
         {
-            Shape = DotNodeShape.Polygon;
-            Geometry.Set(attributes);
+            node.Shape = DotNodeShape.Polygon;
+            node.Geometry.Set(attributes);
         }
     }
 }

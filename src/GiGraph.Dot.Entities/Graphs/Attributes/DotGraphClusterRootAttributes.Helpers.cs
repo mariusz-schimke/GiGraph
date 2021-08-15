@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    // TODO: co z tą klasą?
+    // TODO: przenieść
     public partial class DotGraphClusterRootAttributes
     {
         /// <summary>
