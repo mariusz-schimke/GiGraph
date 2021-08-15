@@ -148,13 +148,13 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Nodes.Annotation = "nodes";
             graph.Nodes.Add("foo", node =>
             {
-                node.Annotation = "node attributes";
+                node.Attributes.Annotation = "node attributes";
                 node.Attributes.Set(a => a.Label, "foo").Annotation = "label";
             }).Annotation = "node comment";
 
             graph.Nodes.AddGroup(new[] { "foo", "bar", "baz" }, node =>
             {
-                node.Annotation = "node group attributes";
+                node.Attributes.Annotation = "node group attributes";
                 node.Attributes.Set(a => a.Label, "foo").Annotation = "label";
             }).Annotation = "node group comment";
 

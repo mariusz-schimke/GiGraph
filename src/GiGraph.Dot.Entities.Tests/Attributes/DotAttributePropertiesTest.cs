@@ -6,7 +6,9 @@ using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Nodes;
+using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Metadata;
@@ -138,7 +140,12 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
         private static void EnsureInterfacePropertiesHaveAttributeKeysAssigned(object target, PropertyInfo targetProperty)
         {
-            var ignore = new[] { typeof(IDotAnnotatable) };
+            var ignore = new[]
+            {
+                typeof(IDotAnnotatable),
+                typeof(IDotGraphAttributesRoot),
+                typeof(IDotNodeAttributesRoot)
+            };
 
             foreach (var @interface in targetProperty.ReflectedType.GetInterfaces().Where(i => !ignore.Contains(i)))
             {

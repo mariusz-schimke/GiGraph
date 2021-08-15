@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Nodes.Annotation = "nodes";
             graph.Nodes.Add("foo", node =>
             {
-                node.Annotation = "node attributes";
+                node.Attributes.Annotation = "node attributes";
                 node.Attributes.Set(a => a.Label, "foo").Annotation = "label";
             }).Annotation = "node comment";
 
