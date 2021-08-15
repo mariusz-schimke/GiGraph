@@ -1,5 +1,4 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
@@ -23,10 +22,9 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         /// <summary>
-        ///     If defined, it is output as part of the <see cref="DotEdgeAttributes.HeadAttributes" /> <see cref="DotEdgeHeadAttributes.Label" /> of
-        ///     the edge (svg, map only). Also, this value is used near the head node, overriding any
-        ///     <see cref="DotEntityRootCommonAttributes{TIEntityAttributeProperties}.Hyperlink" />
-        ///     <see cref="DotHyperlinkAttributes{TIEntityHyperlinkAttributes}.Url" /> set for the edge.
+        ///     If defined, it is output as part of the <see cref="IDotEdgeAttributesRoot.HeadAttributes" />
+        ///     <see cref="DotEdgeHeadAttributes.Label" /> of the edge (svg, map only). Also, this value is used near the head node,
+        ///     overriding any <see cref="IDotEdgeAttributesRoot.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Url" /> set for the edge.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.HeadUrl)]
         public override DotEscapeString Url
@@ -48,9 +46,8 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         /// <summary>
         ///     If <see cref="Url" /> is specified, this attribute determines which window of the browser is used for the URL (svg, map
         ///     only). Setting it to <see cref="DotHyperlinkTargets.NewWindow" /> will open a new window if it doesn't already exist, or
-        ///     reuse it if it does. If undefined, the value of the edge's
-        ///     <see cref="DotEntityRootCommonAttributes{TIEntityAttributeProperties}.Hyperlink" />
-        ///     <see cref="DotHyperlinkAttributes{TIEntityHyperlinkAttributes}.Target" /> is used.
+        ///     reuse it if it does. If undefined, the value of the edge's <see cref="IDotEdgeAttributesRoot.Hyperlink" />
+        ///     <see cref="IDotHyperlinkAttributes.Target" /> is used.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.HeadTarget)]
         public override DotEscapeString Target

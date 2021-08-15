@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         ///     width 1, in points.
         /// </summary>
         /// <param name="startWidth">
-        ///     The width to start with (applied to the <see cref="Width" /> attribute).
+        ///     The width to start with (applied to the <see cref="IDotEdgeAttributes.Width" /> attribute).
         /// </param>
         public virtual void SetTapered(double startWidth)
         {
