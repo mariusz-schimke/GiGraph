@@ -1,12 +1,12 @@
 ﻿{
   "arrowhead": [
-    "HeadAttributes.Arrowhead: DotArrowheadDefinition [Edge]"
+    "Head.Arrowhead: DotArrowheadDefinition [Edge]"
   ],
   "arrowsize": [
     "ArrowheadScale: Double? [Edge]"
   ],
   "arrowtail": [
-    "TailAttributes.Arrowhead: DotArrowheadDefinition [Edge]"
+    "Tail.Arrowhead: DotArrowheadDefinition [Edge]"
   ],
   "bgcolor": [
     "Canvas.BackgroundColor: DotColorDefinition [Graph]",
@@ -98,25 +98,25 @@
     "GroupName: String [Node]"
   ],
   "headclip": [
-    "HeadAttributes.ClipToNodeBoundary: Boolean? [Edge]"
+    "Head.ClipToNodeBoundary: Boolean? [Edge]"
   ],
   "headhref": [
-    "HeadAttributes.Hyperlink.Href: DotEscapeString [Edge]"
+    "Head.Hyperlink.Href: DotEscapeString [Edge]"
   ],
   "headlabel": [
-    "HeadAttributes.Label: DotLabel [Edge]"
+    "Head.Label: DotLabel [Edge]"
   ],
   "headport": [
-    "HeadAttributes.Port: DotEndpointPort [Edge]"
+    "Head.Port: DotEndpointPort [Edge]"
   ],
   "headtarget": [
-    "HeadAttributes.Hyperlink.Target: DotEscapeString [Edge]"
+    "Head.Hyperlink.Target: DotEscapeString [Edge]"
   ],
   "headtooltip": [
-    "HeadAttributes.Hyperlink.Tooltip: DotEscapeString [Edge]"
+    "Head.Hyperlink.Tooltip: DotEscapeString [Edge]"
   ],
   "headURL": [
-    "HeadAttributes.Hyperlink.Url: DotEscapeString [Edge]"
+    "Head.Hyperlink.Url: DotEscapeString [Edge]"
   ],
   "height": [
     "Size.Height: Double? [Node]"
@@ -189,10 +189,10 @@
     "Length: Double? [Edge]"
   ],
   "lhead": [
-    "HeadAttributes.ClusterId: DotClusterId [Edge]"
+    "Head.ClusterId: DotClusterId [Edge]"
   ],
   "ltail": [
-    "TailAttributes.ClusterId: DotClusterId [Edge]"
+    "Tail.ClusterId: DotClusterId [Edge]"
   ],
   "margin": [
     "Canvas.Margin: DotPoint [Graph]",
@@ -268,10 +268,10 @@
     "Layout.Rotation: Double? [Graph]"
   ],
   "samehead": [
-    "HeadAttributes.GroupName: String [Edge]"
+    "Head.GroupName: String [Edge]"
   ],
   "sametail": [
-    "TailAttributes.GroupName: String [Edge]"
+    "Tail.GroupName: String [Edge]"
   ],
   "shape": [
     "Shape: DotNodeShape? [Node]"
@@ -299,25 +299,25 @@
     "SvgStyleSheet.Url: String [Graph]"
   ],
   "tailclip": [
-    "TailAttributes.ClipToNodeBoundary: Boolean? [Edge]"
+    "Tail.ClipToNodeBoundary: Boolean? [Edge]"
   ],
   "tailhref": [
-    "TailAttributes.Hyperlink.Href: DotEscapeString [Edge]"
+    "Tail.Hyperlink.Href: DotEscapeString [Edge]"
   ],
   "taillabel": [
-    "TailAttributes.Label: DotLabel [Edge]"
+    "Tail.Label: DotLabel [Edge]"
   ],
   "tailport": [
-    "TailAttributes.Port: DotEndpointPort [Edge]"
+    "Tail.Port: DotEndpointPort [Edge]"
   ],
   "tailtarget": [
-    "TailAttributes.Hyperlink.Target: DotEscapeString [Edge]"
+    "Tail.Hyperlink.Target: DotEscapeString [Edge]"
   ],
   "tailtooltip": [
-    "TailAttributes.Hyperlink.Tooltip: DotEscapeString [Edge]"
+    "Tail.Hyperlink.Tooltip: DotEscapeString [Edge]"
   ],
   "tailURL": [
-    "TailAttributes.Hyperlink.Url: DotEscapeString [Edge]"
+    "Tail.Hyperlink.Url: DotEscapeString [Edge]"
   ],
   "target": [
     "Hyperlink.Target: DotEscapeString [Graph, Cluster, Node, Edge]"
