@@ -5,7 +5,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes
 {
-    public interface IDotClusterAttributesRoot : IDotClusterAttributes
+    public interface IDotClusterRootAttributes : IDotClusterAttributes
     {
         /// <summary>
         ///     Font properties.

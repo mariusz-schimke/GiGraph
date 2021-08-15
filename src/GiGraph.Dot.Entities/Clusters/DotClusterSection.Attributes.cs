@@ -13,22 +13,22 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters
 {
-    public partial class DotClusterSection : IDotClusterAttributesRoot
+    public partial class DotClusterSection : IDotClusterRootAttributes
     {
-        /// <inheritdoc cref="IDotClusterAttributesRoot.Font" />
-        public virtual DotFontAttributes Font => ((IDotClusterAttributesRoot) Attributes).Font;
+        /// <inheritdoc cref="IDotClusterRootAttributes.Font" />
+        public virtual DotFontAttributes Font => ((IDotClusterRootAttributes) Attributes).Font;
 
-        /// <inheritdoc cref="IDotClusterAttributesRoot.Style" />
-        public virtual DotClusterStyleAttributes Style => ((IDotClusterAttributesRoot) Attributes).Style;
+        /// <inheritdoc cref="IDotClusterRootAttributes.Style" />
+        public virtual DotClusterStyleAttributes Style => ((IDotClusterRootAttributes) Attributes).Style;
 
-        /// <inheritdoc cref="IDotClusterAttributesRoot.LabelAlignment" />
-        public virtual DotLabelAlignmentAttributes LabelAlignment => ((IDotClusterAttributesRoot) Attributes).LabelAlignment;
+        /// <inheritdoc cref="IDotClusterRootAttributes.LabelAlignment" />
+        public virtual DotLabelAlignmentAttributes LabelAlignment => ((IDotClusterRootAttributes) Attributes).LabelAlignment;
 
-        /// <inheritdoc cref="IDotClusterAttributesRoot.SvgStyleSheet" />
-        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotClusterAttributesRoot) Attributes).SvgStyleSheet;
+        /// <inheritdoc cref="IDotClusterRootAttributes.SvgStyleSheet" />
+        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotClusterRootAttributes) Attributes).SvgStyleSheet;
 
-        /// <inheritdoc cref="IDotClusterAttributesRoot.SvgStyleSheet" />
-        public virtual DotHyperlinkAttributes Hyperlink => ((IDotClusterAttributesRoot) Attributes).Hyperlink;
+        /// <inheritdoc cref="IDotClusterRootAttributes.SvgStyleSheet" />
+        public virtual DotHyperlinkAttributes Hyperlink => ((IDotClusterRootAttributes) Attributes).Hyperlink;
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.Color" />
         public virtual DotColorDefinition Color

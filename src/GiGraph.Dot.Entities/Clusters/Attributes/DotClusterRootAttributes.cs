@@ -20,9 +20,9 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes
 {
-    public class DotClusterAttributes : DotClusterNodeCommonAttributes<IDotClusterAttributes>, IDotClusterAttributesRoot
+    public class DotClusterRootAttributes : DotClusterNodeCommonAttributes<IDotClusterAttributes>, IDotClusterRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup ClusterAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterAttributes, IDotClusterAttributes>().Build();
+        protected static readonly DotMemberAttributeKeyLookup ClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().Build();
 
         protected readonly DotFontAttributes _fontAttributes;
         protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         protected readonly DotClusterStyleAttributes _styleAttributes;
         protected readonly DotSvgStyleSheetAttributes _svgStyleSheetAttributes;
 
-        protected DotClusterAttributes(
+        protected DotClusterRootAttributes(
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotHyperlinkAttributes hyperlinkAttributes,
@@ -48,10 +48,10 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
             _labelAlignmentAttributes = labelAlignmentAttributes;
         }
 
-        public DotClusterAttributes(DotAttributeCollection attributes)
+        public DotClusterRootAttributes(DotAttributeCollection attributes)
             : this(
                 attributes,
-                ClusterAttributesKeyLookup,
+                ClusterRootAttributesKeyLookup,
                 new DotHyperlinkAttributes(attributes),
                 new DotFontAttributes(attributes),
                 new DotClusterStyleAttributes(attributes),
@@ -61,16 +61,16 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         {
         }
 
-        public DotClusterAttributes()
+        public DotClusterRootAttributes()
             : this(new DotAttributeCollection(DotAttributeFactory.Instance))
         {
         }
 
-        DotHyperlinkAttributes IDotClusterAttributesRoot.Hyperlink => _hyperlinkAttributes;
-        DotFontAttributes IDotClusterAttributesRoot.Font => _fontAttributes;
-        DotClusterStyleAttributes IDotClusterAttributesRoot.Style => _styleAttributes;
-        DotSvgStyleSheetAttributes IDotClusterAttributesRoot.SvgStyleSheet => _svgStyleSheetAttributes;
-        DotLabelAlignmentAttributes IDotClusterAttributesRoot.LabelAlignment => _labelAlignmentAttributes;
+        DotHyperlinkAttributes IDotClusterRootAttributes.Hyperlink => _hyperlinkAttributes;
+        DotFontAttributes IDotClusterRootAttributes.Font => _fontAttributes;
+        DotClusterStyleAttributes IDotClusterRootAttributes.Style => _styleAttributes;
+        DotSvgStyleSheetAttributes IDotClusterRootAttributes.SvgStyleSheet => _svgStyleSheetAttributes;
+        DotLabelAlignmentAttributes IDotClusterRootAttributes.LabelAlignment => _labelAlignmentAttributes;
 
         [DotAttributeKey(DotAttributeKeys.Label)]
         DotLabel IDotClusterAttributes.Label
