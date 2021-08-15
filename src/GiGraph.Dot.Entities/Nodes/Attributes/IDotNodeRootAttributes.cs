@@ -5,7 +5,7 @@ using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
-    public interface IDotNodeAttributesRoot : IDotNodeAttributes
+    public interface IDotNodeRootAttributes : IDotNodeAttributes
     {
         /// <summary>
         ///     Font properties.

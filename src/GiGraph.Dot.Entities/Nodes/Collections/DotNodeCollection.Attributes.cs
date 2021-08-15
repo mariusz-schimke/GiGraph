@@ -13,28 +13,28 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Collections
 {
-    public partial class DotNodeCollection : IDotNodeAttributesRoot
+    public partial class DotNodeCollection : IDotNodeRootAttributes
     {
-        /// <inheritdoc cref="IDotNodeAttributesRoot.Font" />
-        public virtual DotFontAttributes Font => ((IDotNodeAttributesRoot) Attributes).Font;
+        /// <inheritdoc cref="IDotNodeRootAttributes.Font" />
+        public virtual DotFontAttributes Font => ((IDotNodeRootAttributes) Attributes).Font;
 
-        /// <inheritdoc cref="IDotNodeAttributesRoot.Image" />
-        public virtual DotNodeImageAttributes Image => ((IDotNodeAttributesRoot) Attributes).Image;
+        /// <inheritdoc cref="IDotNodeRootAttributes.Image" />
+        public virtual DotNodeImageAttributes Image => ((IDotNodeRootAttributes) Attributes).Image;
 
-        /// <inheritdoc cref="IDotNodeAttributesRoot.Geometry" />
-        public virtual DotNodeGeometryAttributes Geometry => ((IDotNodeAttributesRoot) Attributes).Geometry;
+        /// <inheritdoc cref="IDotNodeRootAttributes.Geometry" />
+        public virtual DotNodeGeometryAttributes Geometry => ((IDotNodeRootAttributes) Attributes).Geometry;
 
-        /// <inheritdoc cref="IDotNodeAttributesRoot.Size" />
-        public virtual DotNodeSizeAttributes Size => ((IDotNodeAttributesRoot) Attributes).Size;
+        /// <inheritdoc cref="IDotNodeRootAttributes.Size" />
+        public virtual DotNodeSizeAttributes Size => ((IDotNodeRootAttributes) Attributes).Size;
 
-        /// <inheritdoc cref="IDotNodeAttributesRoot.Style" />
-        public virtual DotNodeStyleAttributes Style => ((IDotNodeAttributesRoot) Attributes).Style;
+        /// <inheritdoc cref="IDotNodeRootAttributes.Style" />
+        public virtual DotNodeStyleAttributes Style => ((IDotNodeRootAttributes) Attributes).Style;
 
-        /// <inheritdoc cref="IDotNodeAttributesRoot.SvgStyleSheet" />
-        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotNodeAttributesRoot) Attributes).SvgStyleSheet;
+        /// <inheritdoc cref="IDotNodeRootAttributes.SvgStyleSheet" />
+        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotNodeRootAttributes) Attributes).SvgStyleSheet;
 
-        /// <inheritdoc cref="IDotNodeAttributesRoot.SvgStyleSheet" />
-        public virtual DotHyperlinkAttributes Hyperlink => ((IDotNodeAttributesRoot) Attributes).Hyperlink;
+        /// <inheritdoc cref="IDotNodeRootAttributes.SvgStyleSheet" />
+        public virtual DotHyperlinkAttributes Hyperlink => ((IDotNodeRootAttributes) Attributes).Hyperlink;
 
         DotStyles? IDotNodeAttributes.Style
         {

@@ -8,20 +8,20 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
 {
     public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, IDotAnnotatable
     {
-        protected DotNodeCollection(DotNodeAttributes attributes)
+        protected DotNodeCollection(DotNodeRootAttributes attributes)
         {
             Attributes = attributes;
         }
 
         public DotNodeCollection()
-            : this(new DotNodeAttributes())
+            : this(new DotNodeRootAttributes())
         {
         }
 
         /// <summary>
         ///     Gets the attributes to apply by default to all nodes of the graph.
         /// </summary>
-        public virtual DotNodeAttributes Attributes { get; }
+        public virtual DotNodeRootAttributes Attributes { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

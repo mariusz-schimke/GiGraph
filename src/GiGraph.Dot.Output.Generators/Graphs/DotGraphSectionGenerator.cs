@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Output.Generators.Graphs
             WriteEdges(graphSection.Edges, writer);
         }
 
-        protected virtual void WriteGlobalAttributes(DotAttributeCollection graphAttributes, DotNodeAttributes nodeAttributes, DotEdgeRootAttributes edgeAttributes, IDotGraphBodyWriter writer)
+        protected virtual void WriteGlobalAttributes(DotAttributeCollection graphAttributes, DotNodeRootAttributes nodeAttributes, DotEdgeRootAttributes edgeAttributes, IDotGraphBodyWriter writer)
         {
             var writeGraphAttributes = graphAttributes.Any();
 
@@ -94,7 +94,7 @@ namespace GiGraph.Dot.Output.Generators.Graphs
             }
         }
 
-        protected virtual void WriteGlobalNodeAttributes(DotNodeAttributes attributes, IDotGlobalEntityAttributesStatementWriter writer)
+        protected virtual void WriteGlobalNodeAttributes(DotNodeRootAttributes attributes, IDotGlobalEntityAttributesStatementWriter writer)
         {
             var collection = attributes.Collection;
 

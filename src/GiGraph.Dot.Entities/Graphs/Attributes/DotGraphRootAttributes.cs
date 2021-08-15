@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
     public class DotGraphRootAttributes : DotEntityRootAttributes<IDotGraphAttributes>, IDotGraphRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup GraphAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().Build();
+        protected static readonly DotMemberAttributeKeyLookup GraphRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().Build();
 
         protected readonly DotGraphCanvasAttributes _canvasAttributes;
         protected readonly DotGraphFontAttributes _fontAttributes;
@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public DotGraphRootAttributes(DotAttributeCollection attributes)
             : this(
                 attributes,
-                GraphAttributesKeyLookup,
+                GraphRootAttributesKeyLookup,
                 new DotHyperlinkAttributes(attributes),
                 new DotGraphFontAttributes(attributes),
                 new DotGraphStyleAttributes(attributes),

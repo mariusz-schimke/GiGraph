@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
     public partial class DotGraphClusterRootAttributes : DotEntityMappableAttributes<IDotGraphClusterAttributes>, IDotGraphClusterRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup GraphClusterAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClusterRootAttributes, IDotGraphClusterAttributes>().Build();
+        protected static readonly DotMemberAttributeKeyLookup GraphClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClusterRootAttributes, IDotGraphClusterAttributes>().Build();
 
         protected readonly DotGraphRootAttributes _graphAttributes;
         protected readonly DotClusterStyleAttributes _style;
@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         public DotGraphClusterRootAttributes(DotGraphRootAttributes graphAttributes)
             : this(
                 graphAttributes,
-                GraphClusterAttributesKeyLookup,
+                GraphClusterRootAttributesKeyLookup,
                 new DotClusterStyleAttributes(graphAttributes.Collection)
             )
         {

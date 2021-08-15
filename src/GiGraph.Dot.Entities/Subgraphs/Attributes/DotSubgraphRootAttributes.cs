@@ -8,21 +8,21 @@ using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Subgraphs.Attributes
 {
-    public class DotSubgraphAttributes : DotEntityRootAttributes<IDotSubgraphAttributes>, IDotSubgraphAttributesRoot
+    public class DotSubgraphRootAttributes : DotEntityRootAttributes<IDotSubgraphAttributes>, IDotSubgraphRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup SubgraphAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotSubgraphAttributes, IDotSubgraphAttributes>().Build();
+        protected static readonly DotMemberAttributeKeyLookup SubgraphRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotSubgraphRootAttributes, IDotSubgraphAttributes>().Build();
 
-        protected DotSubgraphAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotSubgraphRootAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }
 
-        public DotSubgraphAttributes(DotAttributeCollection attributes)
-            : this(attributes, SubgraphAttributesKeyLookup)
+        public DotSubgraphRootAttributes(DotAttributeCollection attributes)
+            : this(attributes, SubgraphRootAttributesKeyLookup)
         {
         }
 
-        public DotSubgraphAttributes()
+        public DotSubgraphRootAttributes()
             : this(new DotAttributeCollection(DotAttributeFactory.Instance))
         {
         }

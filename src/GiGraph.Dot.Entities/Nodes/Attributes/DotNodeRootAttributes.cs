@@ -19,9 +19,9 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
-    public class DotNodeAttributes : DotClusterNodeCommonAttributes<IDotNodeAttributes>, IDotNodeAttributesRoot
+    public class DotNodeRootAttributes : DotClusterNodeCommonAttributes<IDotNodeAttributes>, IDotNodeRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup NodeAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeAttributes, IDotNodeAttributes>().Build();
+        protected static readonly DotMemberAttributeKeyLookup NodeRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().Build();
 
         protected readonly DotFontAttributes _fontAttributes;
         protected readonly DotNodeGeometryAttributes _geometryAttributes;
@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         protected readonly DotNodeStyleAttributes _styleAttributes;
         protected readonly DotSvgStyleSheetAttributes _svgStyleSheetAttributes;
 
-        protected DotNodeAttributes(
+        protected DotNodeRootAttributes(
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotHyperlinkAttributes hyperlinkAttributes,
@@ -53,10 +53,10 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
             _svgStyleSheetAttributes = svgStyleSheetAttributes;
         }
 
-        public DotNodeAttributes(DotAttributeCollection attributes)
+        public DotNodeRootAttributes(DotAttributeCollection attributes)
             : this(
                 attributes,
-                NodeAttributesKeyLookup,
+                NodeRootAttributesKeyLookup,
                 new DotHyperlinkAttributes(attributes),
                 new DotFontAttributes(attributes),
                 new DotNodeStyleAttributes(attributes),
@@ -68,18 +68,18 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         {
         }
 
-        public DotNodeAttributes()
+        public DotNodeRootAttributes()
             : this(new DotAttributeCollection(DotAttributeFactory.Instance))
         {
         }
 
-        DotHyperlinkAttributes IDotNodeAttributesRoot.Hyperlink => _hyperlinkAttributes;
-        DotFontAttributes IDotNodeAttributesRoot.Font => _fontAttributes;
-        DotNodeStyleAttributes IDotNodeAttributesRoot.Style => _styleAttributes;
-        DotNodeSizeAttributes IDotNodeAttributesRoot.Size => _sizeAttributes;
-        DotNodeGeometryAttributes IDotNodeAttributesRoot.Geometry => _geometryAttributes;
-        DotNodeImageAttributes IDotNodeAttributesRoot.Image => _imageAttributes;
-        DotSvgStyleSheetAttributes IDotNodeAttributesRoot.SvgStyleSheet => _svgStyleSheetAttributes;
+        DotHyperlinkAttributes IDotNodeRootAttributes.Hyperlink => _hyperlinkAttributes;
+        DotFontAttributes IDotNodeRootAttributes.Font => _fontAttributes;
+        DotNodeStyleAttributes IDotNodeRootAttributes.Style => _styleAttributes;
+        DotNodeSizeAttributes IDotNodeRootAttributes.Size => _sizeAttributes;
+        DotNodeGeometryAttributes IDotNodeRootAttributes.Geometry => _geometryAttributes;
+        DotNodeImageAttributes IDotNodeRootAttributes.Image => _imageAttributes;
+        DotSvgStyleSheetAttributes IDotNodeRootAttributes.SvgStyleSheet => _svgStyleSheetAttributes;
 
         [DotAttributeKey(DotAttributeKeys.Label)]
         DotLabel IDotNodeAttributes.Label
