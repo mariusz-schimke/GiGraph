@@ -18,8 +18,8 @@ namespace GiGraph.Dot.Output.Generators.Tests
             var graph = new DotGraph("graph1", directed);
 
             graph.Comment = "graph_comment";
-            graph.Clusters.Attributes.AllowEdgeClipping = true;
-            graph.Clusters.Attributes.FillColor = Color.Brown;
+            graph.Clusters.AllowEdgeClipping = true;
+            graph.Clusters.FillColor = Color.Brown;
 
             graph.Subgraphs.Add().Id = "Subgraph2";
             graph.Subgraphs.Add().Id = "Subgraph1";
@@ -89,7 +89,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             graph.Nodes.Label = "node label";
             graph.Edges.Label = "edge label";
-            graph.Clusters.Attributes.AllowEdgeClipping = true;
+            graph.Clusters.AllowEdgeClipping = true;
 
             graph.Nodes.Add("node1");
             graph.Edges.Add("node1", "node2");

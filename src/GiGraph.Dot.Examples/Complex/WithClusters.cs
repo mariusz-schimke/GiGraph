@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Examples.Complex
             graph.EdgesShape = DotEdgeShape.Orthogonal;
 
             // set attributes for clusters
-            graph.Clusters.Attributes.AllowEdgeClipping = true;
+            graph.Clusters.AllowEdgeClipping = true;
 
             // set individual node styles
             graph.Nodes.Add("Start").Shape = DotNodeShape.Circle;

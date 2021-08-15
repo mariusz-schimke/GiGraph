@@ -147,8 +147,9 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             {
                 typeof(IDotAnnotatable),
                 typeof(IDotGraphAttributesRoot),
-                typeof(IDotSubgraphAttributesRoot),
+                typeof(IDotGraphClusterAttributesRoot),
                 typeof(IDotClusterAttributesRoot),
+                typeof(IDotSubgraphAttributesRoot),
                 typeof(IDotNodeAttributesRoot),
                 typeof(IDotEdgeAttributesRoot),
                 typeof(IDotEdgeTailAttributesRoot),

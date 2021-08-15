@@ -9,10 +9,12 @@ using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public partial class DotGraphClusterAttributes : DotEntityMappableAttributes<IDotGraphClusterAttributes>, IDotGraphClusterAttributes
+    public partial class DotGraphClusterAttributes : DotEntityMappableAttributes<IDotGraphClusterAttributes>, IDotGraphClusterAttributesRoot
     {
         protected static readonly DotMemberAttributeKeyLookup GraphClusterAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClusterAttributes, IDotGraphClusterAttributes>().Build();
+
         protected readonly DotGraphAttributes _graphAttributes;
+        protected readonly DotClusterStyleAttributes _style;
 
         protected DotGraphClusterAttributes(
             DotGraphAttributes graphAttributes,
@@ -22,7 +24,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
             : base(graphAttributes.Collection, attributeKeyLookup)
         {
             _graphAttributes = graphAttributes;
-            Style = styleAttributes;
+            _style = styleAttributes;
         }
 
         public DotGraphClusterAttributes(DotGraphAttributes graphAttributes)
@@ -34,54 +36,45 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         {
         }
 
-        /// <summary>
-        ///     Style options. Note that the options are shared with those of the graph.
-        /// </summary>
-        public virtual DotClusterStyleAttributes Style { get; }
+        DotClusterStyleAttributes IDotGraphClusterAttributesRoot.Style => _style;
 
-        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.Color" />
         [DotAttributeKey(DotAttributeKeys.Color)]
-        public virtual DotColorDefinition Color
+        DotColorDefinition IDotGraphClusterCommonAttributes.Color
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderWidth" />
         [DotAttributeKey(DotAttributeKeys.PenWidth)]
-        public virtual double? BorderWidth
+        double? IDotGraphClusterCommonAttributes.BorderWidth
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor" />
         [DotAttributeKey(DotAttributeKeys.PenColor)]
-        public virtual DotColor BorderColor
+        DotColor IDotGraphClusterCommonAttributes.BorderColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotGraphClusterCommonAttributes.FillColor" />
         [DotAttributeKey(DotAttributeKeys.FillColor)]
-        public virtual DotColorDefinition FillColor
+        DotColorDefinition IDotGraphClusterCommonAttributes.FillColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotGraphClusterAttributes.AllowEdgeClipping" />
         [DotAttributeKey(DotAttributeKeys.Compound)]
-        public virtual bool? AllowEdgeClipping
+        bool? IDotGraphClusterAttributes.AllowEdgeClipping
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotGraphClusterAttributes.VisualizationMode" />
         [DotAttributeKey(DotAttributeKeys.ClusterRank)]
-        public virtual DotClusterVisualizationMode? VisualizationMode
+        DotClusterVisualizationMode? IDotGraphClusterAttributes.VisualizationMode
         {
             get => GetValueAs<DotClusterVisualizationMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);

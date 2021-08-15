@@ -2,7 +2,7 @@
 
 namespace GiGraph.Dot.Entities.Clusters.Collections
 {
-    public class DotGraphClusterCollection : DotClusterCollection
+    public partial class DotGraphClusterCollection : DotClusterCollection
     {
         public DotGraphClusterCollection(DotGraphClusterAttributes attributes)
         {

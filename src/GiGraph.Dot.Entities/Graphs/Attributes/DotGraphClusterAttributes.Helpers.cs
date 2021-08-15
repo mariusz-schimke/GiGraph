@@ -3,6 +3,7 @@ using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
+    // TODO: co z tą klasą?
     public partial class DotGraphClusterAttributes
     {
         /// <summary>
@@ -13,8 +14,8 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// </param>
         public virtual void SetFilled(DotColor color)
         {
-            Style.FillStyle = DotClusterFillStyle.Normal;
-            FillColor = color;
+            _style.FillStyle = DotClusterFillStyle.Normal;
+            ((IDotGraphClusterAttributesRoot) this).FillColor = color;
         }
 
         /// <summary>
@@ -34,8 +35,8 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// </param>
         public virtual void SetFilled(DotGradientColor color, int? angle = null, bool radial = false)
         {
-            Style.FillStyle = radial ? DotClusterFillStyle.Radial : DotClusterFillStyle.Normal;
-            FillColor = color;
+            _style.FillStyle = radial ? DotClusterFillStyle.Radial : DotClusterFillStyle.Normal;
+            ((IDotGraphClusterAttributesRoot) this).FillColor = color;
             ((IDotGraphAttributesRoot) _graphAttributes).Canvas.GradientFillAngle = angle;
         }
 
@@ -48,8 +49,8 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// </param>
         public virtual void SetStriped(DotMultiColor colors)
         {
-            Style.FillStyle = DotClusterFillStyle.Striped;
-            FillColor = colors;
+            _style.FillStyle = DotClusterFillStyle.Striped;
+            ((IDotGraphClusterAttributesRoot) this).FillColor = colors;
         }
     }
 }
