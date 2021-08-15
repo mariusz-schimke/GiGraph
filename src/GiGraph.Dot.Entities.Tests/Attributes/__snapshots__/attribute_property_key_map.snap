@@ -1,12 +1,12 @@
 ﻿{
   "arrowhead": [
-    "Head.Arrowhead [Edge]"
+    "HeadAttributes.Arrowhead [Edge]"
   ],
   "arrowsize": [
     "ArrowheadScale [Edge]"
   ],
   "arrowtail": [
-    "Tail.Arrowhead [Edge]"
+    "TailAttributes.Arrowhead [Edge]"
   ],
   "bgcolor": [
     "Canvas.BackgroundColor [Graph]",
@@ -98,25 +98,25 @@
     "GroupName [Node]"
   ],
   "headclip": [
-    "Head.ClipToNodeBoundary [Edge]"
+    "HeadAttributes.ClipToNodeBoundary [Edge]"
   ],
   "headhref": [
-    "Head.Hyperlink.Href [Edge]"
+    "HeadAttributes.Hyperlink.Href [Edge]"
   ],
   "headlabel": [
-    "Head.Label [Edge]"
+    "HeadAttributes.Label [Edge]"
   ],
   "headport": [
-    "Head.Port [Edge]"
+    "HeadAttributes.Port [Edge]"
   ],
   "headtarget": [
-    "Head.Hyperlink.Target [Edge]"
+    "HeadAttributes.Hyperlink.Target [Edge]"
   ],
   "headtooltip": [
-    "Head.Hyperlink.Tooltip [Edge]"
+    "HeadAttributes.Hyperlink.Tooltip [Edge]"
   ],
   "headURL": [
-    "Head.Hyperlink.Url [Edge]"
+    "HeadAttributes.Hyperlink.Url [Edge]"
   ],
   "height": [
     "Size.Height [Node]"
@@ -189,10 +189,10 @@
     "Length [Edge]"
   ],
   "lhead": [
-    "Head.ClusterId [Edge]"
+    "HeadAttributes.ClusterId [Edge]"
   ],
   "ltail": [
-    "Tail.ClusterId [Edge]"
+    "TailAttributes.ClusterId [Edge]"
   ],
   "margin": [
     "Canvas.Margin [Graph]",
@@ -268,10 +268,10 @@
     "Layout.Rotation [Graph]"
   ],
   "samehead": [
-    "Head.GroupName [Edge]"
+    "HeadAttributes.GroupName [Edge]"
   ],
   "sametail": [
-    "Tail.GroupName [Edge]"
+    "TailAttributes.GroupName [Edge]"
   ],
   "shape": [
     "Shape [Node]"
@@ -299,25 +299,25 @@
     "SvgStyleSheet.Url [Graph]"
   ],
   "tailclip": [
-    "Tail.ClipToNodeBoundary [Edge]"
+    "TailAttributes.ClipToNodeBoundary [Edge]"
   ],
   "tailhref": [
-    "Tail.Hyperlink.Href [Edge]"
+    "TailAttributes.Hyperlink.Href [Edge]"
   ],
   "taillabel": [
-    "Tail.Label [Edge]"
+    "TailAttributes.Label [Edge]"
   ],
   "tailport": [
-    "Tail.Port [Edge]"
+    "TailAttributes.Port [Edge]"
   ],
   "tailtarget": [
-    "Tail.Hyperlink.Target [Edge]"
+    "TailAttributes.Hyperlink.Target [Edge]"
   ],
   "tailtooltip": [
-    "Tail.Hyperlink.Tooltip [Edge]"
+    "TailAttributes.Hyperlink.Tooltip [Edge]"
   ],
   "tailURL": [
-    "Tail.Hyperlink.Url [Edge]"
+    "TailAttributes.Hyperlink.Url [Edge]"
   ],
   "target": [
     "Hyperlink.Target [Graph, Cluster, Node, Edge]"

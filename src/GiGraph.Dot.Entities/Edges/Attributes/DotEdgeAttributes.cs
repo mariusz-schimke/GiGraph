@@ -20,7 +20,15 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
     {
         protected static readonly DotMemberAttributeKeyLookup EdgeAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeAttributes, IDotEdgeAttributes>().Build();
 
+        protected readonly DotEdgeHyperlinkAttributes _edgeHyperlink;
+        protected readonly DotEdgeEndpointLabelAttributes _endpointLabels;
+        protected readonly DotFontAttributes _font;
+        protected readonly DotEdgeHeadAttributes _head;
         protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
+        protected readonly DotEdgeLabelHyperlinkAttributes _labelHyperlink;
+        protected readonly DotEdgeStyleAttributes _style;
+        protected readonly DotSvgStyleSheetAttributes _svgStyleSheet;
+        protected readonly DotEdgeTailAttributes _tail;
 
         protected DotEdgeAttributes(
             DotAttributeCollection attributes,
@@ -38,14 +46,14 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
             : base(attributes, attributeKeyLookup)
         {
             _hyperlinkAttributes = hyperlinkAttributes;
-            Head = headAttributes;
-            Tail = tailAttributes;
-            Font = fontAttributes;
-            Style = edgeStyleAttributes;
-            SvgStyleSheet = svgStyleSheetAttributes;
-            EndpointLabels = endpointLabelAttributes;
-            EdgeHyperlink = edgeHyperlinkAttributes;
-            LabelHyperlink = labelHyperlinkAttributes;
+            _head = headAttributes;
+            _tail = tailAttributes;
+            _font = fontAttributes;
+            _style = edgeStyleAttributes;
+            _svgStyleSheet = svgStyleSheetAttributes;
+            _endpointLabels = endpointLabelAttributes;
+            _edgeHyperlink = edgeHyperlinkAttributes;
+            _labelHyperlink = labelHyperlinkAttributes;
         }
 
         public DotEdgeAttributes(DotAttributeCollection attributes)
@@ -70,46 +78,14 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         {
         }
 
-        /// <summary>
-        ///     Properties applied to the head of the edge.
-        /// </summary>
-        public virtual DotEdgeHeadAttributes Head { get; }
-
-        /// <summary>
-        ///     Properties applied to the tail of the edge.
-        /// </summary>
-        public virtual DotEdgeTailAttributes Tail { get; }
-
-        /// <summary>
-        ///     Font properties.
-        /// </summary>
-        public virtual DotFontAttributes Font { get; }
-
-        /// <summary>
-        ///     Properties applied to labels specified for the <see cref="Head" /> and the <see cref="Tail" /> of the edge.
-        /// </summary>
-        public virtual DotEdgeEndpointLabelAttributes EndpointLabels { get; }
-
-        /// <summary>
-        ///     Hyperlink properties applied to the non-label parts of the edge.
-        /// </summary>
-        public virtual DotEdgeHyperlinkAttributes EdgeHyperlink { get; }
-
-        /// <summary>
-        ///     Hyperlink properties applied to the label of the edge.
-        /// </summary>
-        public virtual DotEdgeLabelHyperlinkAttributes LabelHyperlink { get; }
-
-        /// <summary>
-        ///     Style options.
-        /// </summary>
-        public virtual DotEdgeStyleAttributes Style { get; }
-
-        /// <summary>
-        ///     Style sheet attributes used for SVG output.
-        /// </summary>
-        public virtual DotSvgStyleSheetAttributes SvgStyleSheet { get; }
-
+        DotEdgeHeadAttributes IDotEdgeAttributesRoot.HeadAttributes => _head;
+        DotEdgeTailAttributes IDotEdgeAttributesRoot.TailAttributes => _tail;
+        DotFontAttributes IDotEdgeAttributesRoot.Font => _font;
+        DotEdgeEndpointLabelAttributes IDotEdgeAttributesRoot.EndpointLabels => _endpointLabels;
+        DotEdgeHyperlinkAttributes IDotEdgeAttributesRoot.EdgeHyperlink => _edgeHyperlink;
+        DotEdgeLabelHyperlinkAttributes IDotEdgeAttributesRoot.LabelHyperlink => _labelHyperlink;
+        DotEdgeStyleAttributes IDotEdgeAttributesRoot.Style => _style;
+        DotSvgStyleSheetAttributes IDotEdgeAttributesRoot.SvgStyleSheet => _svgStyleSheet;
         DotHyperlinkAttributes IDotEdgeAttributesRoot.Hyperlink => _hyperlinkAttributes;
 
         [DotAttributeKey(DotAttributeKeys.Label)]
@@ -140,113 +116,99 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.Comment" />
         [DotAttributeKey(DotAttributeKeys.Comment)]
-        public virtual string Comment
+        string IDotEdgeAttributes.Comment
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.Tooltip" />
         [DotAttributeKey(DotAttributeKeys.Tooltip)]
-        public virtual DotEscapeString Tooltip
+        DotEscapeString IDotEdgeAttributes.Tooltip
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.Color" />
         [DotAttributeKey(DotAttributeKeys.Color)]
-        public virtual DotColorDefinition Color
+        DotColorDefinition IDotEdgeAttributes.Color
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.FillColor" />
         [DotAttributeKey(DotAttributeKeys.FillColor)]
-        public virtual DotColorDefinition FillColor
+        DotColorDefinition IDotEdgeAttributes.FillColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.ExternalLabel" />
         [DotAttributeKey(DotAttributeKeys.XLabel)]
-        public virtual DotLabel ExternalLabel
+        DotLabel IDotEdgeAttributes.ExternalLabel
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.Width" />
         [DotAttributeKey(DotAttributeKeys.PenWidth)]
-        public virtual double? Width
+        double? IDotEdgeAttributes.Width
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.Weight" />
         [DotAttributeKey(DotAttributeKeys.Weight)]
-        public virtual double? Weight
+        double? IDotEdgeAttributes.Weight
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.Length" />
         [DotAttributeKey(DotAttributeKeys.Len)]
-        public virtual double? Length
+        double? IDotEdgeAttributes.Length
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.MinLength" />
         [DotAttributeKey(DotAttributeKeys.MinLen)]
-        public virtual int? MinLength
+        int? IDotEdgeAttributes.MinLength
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.ArrowheadScale" />
         [DotAttributeKey(DotAttributeKeys.ArrowSize)]
-        public virtual double? ArrowheadScale
+        double? IDotEdgeAttributes.ArrowheadScale
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.Directions" />
         [DotAttributeKey(DotAttributeKeys.Dir)]
-        public virtual DotEdgeDirections? Directions
+        DotEdgeDirections? IDotEdgeAttributes.Directions
         {
             get => GetValueAs<DotEdgeDirections>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.AttachLabel" />
         [DotAttributeKey(DotAttributeKeys.Decorate)]
-        public virtual bool? AttachLabel
+        bool? IDotEdgeAttributes.AttachLabel
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.AllowLabelFloat" />
         [DotAttributeKey(DotAttributeKeys.LabelFloat)]
-        public virtual bool? AllowLabelFloat
+        bool? IDotEdgeAttributes.AllowLabelFloat
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotEdgeAttributes.Constrain" />
         [DotAttributeKey(DotAttributeKeys.Constraint)]
-        public virtual bool? Constrain
+        bool? IDotEdgeAttributes.Constrain
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);

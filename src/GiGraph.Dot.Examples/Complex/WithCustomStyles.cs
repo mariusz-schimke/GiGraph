@@ -25,8 +25,8 @@ namespace GiGraph.Dot.Examples.Complex
             graph.Nodes.Font.Name = graph.Font.Name;
 
             // set global edge attributes (for all edges of the graph)
-            graph.Edges.Attributes.Head.Arrowhead = graph.Edges.Attributes.Tail.Arrowhead = DotArrowheadShape.Vee;
-            graph.Edges.Attributes.Font.Set(graph.Font.Name, 10);
+            graph.Edges.HeadAttributes.Arrowhead = graph.Edges.TailAttributes.Arrowhead = DotArrowheadShape.Vee;
+            graph.Edges.Font.Set(graph.Font.Name, 10);
 
 
             // -- (subgraphs are used here only to control the order the elements are visualized, and may be removed) --
@@ -36,8 +36,8 @@ namespace GiGraph.Dot.Examples.Complex
                 // a dotted edge
                 sg.Edges.Add("G", "H", edge =>
                 {
-                    edge.Attributes.Label = "DOTTED";
-                    edge.Attributes.Style.LineStyle = DotLineStyle.Dotted;
+                    edge.Label = "DOTTED";
+                    edge.Style.LineStyle = DotLineStyle.Dotted;
                 });
             });
 
@@ -46,8 +46,8 @@ namespace GiGraph.Dot.Examples.Complex
                 // edges rendered as parallel splines
                 sg.Edges.Add("E", "F", edge =>
                 {
-                    edge.Attributes.Label = "PARALLEL SPLINES";
-                    edge.Attributes.Directions = DotEdgeDirections.Both;
+                    edge.Label = "PARALLEL SPLINES";
+                    edge.Directions = DotEdgeDirections.Both;
 
                     // this will render two parallel splines (but more of them may be specified)
                     edge.Attributes.SetMultiline(Color.Turquoise, Color.RoyalBlue);
@@ -62,8 +62,8 @@ namespace GiGraph.Dot.Examples.Complex
 
                 sg.Edges.Add("C", "D", edge =>
                 {
-                    edge.Attributes.Label = "MULTICOLOR SERIES";
-                    edge.Attributes.Directions = DotEdgeDirections.Both;
+                    edge.Label = "MULTICOLOR SERIES";
+                    edge.Directions = DotEdgeDirections.Both;
 
                     // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
                     edge.Attributes.SetSegmented(
@@ -112,9 +112,9 @@ namespace GiGraph.Dot.Examples.Complex
                 sg.Nodes.FillColor = Color.Orange;
                 sg.Nodes.Shape = DotNodeShape.Circle;
 
-                sg.Edges.Attributes.Color = Color.RoyalBlue;
+                sg.Edges.Color = Color.RoyalBlue;
 
-                sg.Edges.Add("A", "B").Attributes.Label = "PLAIN COLOR";
+                sg.Edges.Add("A", "B").Label = "PLAIN COLOR";
             });
 
             return graph;

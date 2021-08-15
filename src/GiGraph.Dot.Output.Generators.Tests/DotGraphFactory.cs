@@ -30,8 +30,8 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Nodes.Color = Color.Red;
             graph.Nodes.Label = "node_label";
 
-            graph.Edges.Attributes.Color = Color.Blue;
-            graph.Edges.Attributes.Label = "edge_label";
+            graph.Edges.Color = Color.Blue;
+            graph.Edges.Label = "edge_label";
 
             graph.Nodes.Add("no_attributes");
             graph.Nodes.Add("node3", node =>
@@ -53,20 +53,20 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 edge.Tail.Port.Name = "port6";
                 edge.Tail.Port.CompassPoint = DotCompassPoint.East;
 
-                edge.Attributes.Color = Color.Gold;
-                edge.Attributes.Style.LineStyle = DotLineStyle.Dotted;
+                edge.Color = Color.Gold;
+                edge.Style.LineStyle = DotLineStyle.Dotted;
             });
 
             graph.Edges.AddSequence(edge =>
             {
-                edge.Attributes.Constrain = true;
-                edge.Attributes.Style.LineStyle = DotLineStyle.Solid;
+                edge.Constrain = true;
+                edge.Style.LineStyle = DotLineStyle.Solid;
             }, "node4", DotSubgraph.FromNodes("snode1", "snode2"), "node5");
 
             graph.Edges.AddSequence(edge =>
             {
-                edge.Attributes.Color = Color.Beige;
-                edge.Attributes.Style.Invisible = true;
+                edge.Color = Color.Beige;
+                edge.Style.Invisible = true;
             }, "node1", "node2", "node3");
 
             graph.Edges.Add(
@@ -88,7 +88,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Annotation = "graph comment";
 
             graph.Nodes.Label = "node label";
-            graph.Edges.Attributes.Label = "edge label";
+            graph.Edges.Label = "edge label";
             graph.Clusters.Attributes.AllowEdgeClipping = true;
 
             graph.Nodes.Add("node1");
@@ -160,7 +160,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             // edge defaults
             graph.Edges.Attributes.Annotation = "global edge attributes";
-            graph.Edges.Attributes.Head.Arrowhead = DotArrowheadShape.Curve;
+            graph.Edges.HeadAttributes.Arrowhead = DotArrowheadShape.Curve;
 
             // edges
             graph.Edges.Annotation = "edges";

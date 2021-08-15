@@ -40,14 +40,14 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Edges.Add("Foo", "Bar", edge =>
             {
                 // using text formatter
-                edge.Attributes.Label = new DotFormattedTextBuilder("From ")
+                edge.Label = new DotFormattedTextBuilder("From ")
                    .AppendTailNodeId()
                    .Append(" to ")
                    .AppendHeadNodeId()
                    .Build();
 
                 // using string concatenation
-                edge.Attributes.Label = "From " + DotEscapeString.TailNodeId +
+                edge.Label = "From " + DotEscapeString.TailNodeId +
                     " to " + DotEscapeString.HeadNodeId;
             });
 

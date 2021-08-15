@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using System.Linq;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Styling;
@@ -16,8 +17,8 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         /// </param>
         public virtual void SetTapered(double startWidth)
         {
-            Style.LineStyle = DotLineStyle.Tapered;
-            Width = startWidth;
+            _style.LineStyle = DotLineStyle.Tapered;
+            ((IDotEdgeAttributes) this).Width = startWidth;
         }
 
         /// <summary>
@@ -52,7 +53,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
                 throw new ArgumentException("At least one color has to have a weight specified.", nameof(segments));
             }
 
-            Color = segments;
+            ((IDotEdgeAttributes) this).Color = segments;
         }
 
         /// <summary>
@@ -67,7 +68,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         /// </param>
         public virtual void SetMultiline(int lineCount, DotColor color = null)
         {
-            color ??= System.Drawing.Color.Black;
+            color ??= Color.Black;
             var colors = Enumerable.Range(0, lineCount)
                .Select(_ => new DotColor(color.Color, color.Scheme));
 
@@ -101,7 +102,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
                 throw new ArgumentException("Weighted colors cannot be applied to parallel edge splines.", nameof(lines));
             }
 
-            Color = lines;
+            ((IDotEdgeAttributes) this).Color = lines;
         }
     }
 }

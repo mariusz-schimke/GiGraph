@@ -65,7 +65,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             {
                 x.ObjectId = "id";
                 x.Nodes.Add("node").Comment = "comment";
-                x.Edges.AddLoop("node").Attributes.Directions = DotEdgeDirections.Backward;
+                x.Edges.AddLoop("node").Directions = DotEdgeDirections.Backward;
             });
 
             var options = new DotFormattingOptions
@@ -182,7 +182,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Subgraphs.Add(DotRank.Max, x =>
             {
                 x.Nodes.Add("node").Comment = "comment";
-                x.Edges.AddLoop("node").Attributes.Directions = DotEdgeDirections.Backward;
+                x.Edges.AddLoop("node").Directions = DotEdgeDirections.Backward;
             });
 
             var options = new DotFormattingOptions

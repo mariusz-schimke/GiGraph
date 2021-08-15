@@ -14,9 +14,9 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         {
             var graph = new DotGraph();
 
-            graph.Edges.AddLoop("node1").Attributes.Head.ClusterId = null;
-            graph.Edges.AddLoop("node2").Attributes.Head.ClusterId = "cluster1";
-            graph.Edges.AddLoop("node3").Attributes.Head.ClusterId = new DotClusterId(null);
+            graph.Edges.AddLoop("node1").HeadAttributes.ClusterId = null;
+            graph.Edges.AddLoop("node2").HeadAttributes.ClusterId = "cluster1";
+            graph.Edges.AddLoop("node3").HeadAttributes.ClusterId = new DotClusterId(null);
 
             Snapshot.Match(graph.Build(), "cluster_id_attribute.gv");
         }

@@ -4,7 +4,7 @@ using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Edges
 {
-    public abstract class DotEdgeDefinition : IDotEntity, IDotAnnotatable, IDotOrderable
+    public abstract partial class DotEdgeDefinition : IDotEntity, IDotAnnotatable, IDotOrderable
     {
         protected DotEdgeDefinition(DotEdgeAttributes attributes)
         {

@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Examples.Basic
 
             // edge defaults
             graph.Edges.Attributes.Annotation = "global edge attributes";
-            graph.Edges.Attributes.Head.Arrowhead = DotArrowheadShape.Curve;
+            graph.Edges.HeadAttributes.Arrowhead = DotArrowheadShape.Curve;
 
             // edges
             graph.Edges.Annotation = "edges";

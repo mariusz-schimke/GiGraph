@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         /// <summary>
-        ///     If defined, it is output as part of the <see cref="DotEdgeAttributes.Tail" /> <see cref="DotEdgeTailAttributes.Label" /> of
+        ///     If defined, it is output as part of the <see cref="DotEdgeAttributes.TailAttributes" /> <see cref="DotEdgeTailAttributes.Label" /> of
         ///     the edge (svg, map only). Also, this value is used near the tail node, overriding any
         ///     <see cref="DotEntityRootCommonAttributes{TIEntityAttributeProperties}.Hyperlink" />
         ///     <see cref="DotHyperlinkAttributes{TIEntityHyperlinkAttributes}.Url" /> set for the edge.

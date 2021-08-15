@@ -34,22 +34,22 @@ namespace GiGraph.Dot.Examples.Complex
             // (which is the root graph in this case)
             graph.Edges.Add("Decision", "Cluster 1 Start", edge =>
             {
-                edge.Attributes.Label = "yes";
+                edge.Label = "yes";
 
                 // attach the arrow to cluster border
-                edge.Attributes.Head.ClusterId = "Flow 1";
+                edge.HeadAttributes.ClusterId = "Flow 1";
             });
 
             graph.Edges.Add("Decision", "Cluster 2 Start", edge =>
             {
-                edge.Attributes.Label = "no";
+                edge.Label = "no";
 
                 // attach the arrow to cluster border
-                edge.Attributes.Head.ClusterId = "Flow 2";
+                edge.HeadAttributes.ClusterId = "Flow 2";
             });
 
-            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.Tail.ClusterId = "Flow 1";
-            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.Tail.ClusterId = "Flow 2";
+            graph.Edges.Add("Cluster 1 Exit", "Exit").TailAttributes.ClusterId = "Flow 1";
+            graph.Edges.Add("Cluster 2 Exit", "Exit").TailAttributes.ClusterId = "Flow 2";
 
 
             // --- add clusters ---
