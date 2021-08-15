@@ -15,17 +15,17 @@ namespace GiGraph.Dot.Examples.Basic
             {
                 edge.Directions = DotEdgeDirections.Both;
 
-                edge.TailAttributes.Arrowhead = DotArrowheadShape.Diamond;
-                edge.HeadAttributes.Arrowhead = DotArrowheadShape.Crow;
+                edge.Tail.Arrowhead = DotArrowheadShape.Diamond;
+                edge.Head.Arrowhead = DotArrowheadShape.Crow;
             });
 
             // some basic arrowhead combinations
-            graph.Edges.Add("Foo", "Bar").HeadAttributes.Arrowhead = DotArrowhead.Empty();
-            graph.Edges.Add("Foo", "Bar").HeadAttributes.Arrowhead = DotArrowhead.Empty(DotArrowheadParts.Right);
-            graph.Edges.Add("Foo", "Bar").HeadAttributes.Arrowhead = DotArrowhead.Filled(DotArrowheadParts.Left);
+            graph.Edges.Add("Foo", "Bar").Head.Arrowhead = DotArrowhead.Empty();
+            graph.Edges.Add("Foo", "Bar").Head.Arrowhead = DotArrowhead.Empty(DotArrowheadParts.Right);
+            graph.Edges.Add("Foo", "Bar").Head.Arrowhead = DotArrowhead.Filled(DotArrowheadParts.Left);
 
             // a composition of multiple arrowheads
-            graph.Edges.Add("Foo", "Bar").HeadAttributes.Arrowhead = new DotCompositeArrowhead
+            graph.Edges.Add("Foo", "Bar").Head.Arrowhead = new DotCompositeArrowhead
             (
                 DotArrowheadShape.Tee,
                 DotArrowheadShape.None, // may be used as a separator

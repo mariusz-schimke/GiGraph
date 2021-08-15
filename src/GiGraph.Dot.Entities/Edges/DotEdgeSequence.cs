@@ -78,6 +78,16 @@ namespace GiGraph.Dot.Entities.Edges
         /// </summary>
         public override DotEndpointDefinition[] Endpoints => _endpoints;
 
+        /// <summary>
+        ///     Properties applied to the heads of the edges in this sequence.
+        /// </summary>
+        public virtual DotEdgeHeadAttributes Heads => ((IDotEdgeAttributesRoot) Attributes).Head;
+
+        /// <summary>
+        ///     Properties applied to the tails of the edges in this sequence.
+        /// </summary>
+        public virtual DotEdgeTailAttributes Tails => ((IDotEdgeAttributesRoot) Attributes).Tail;
+
         protected override string GetOrderingKey()
         {
             return string.Join

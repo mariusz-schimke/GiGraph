@@ -6,17 +6,15 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
 {
     public interface IDotEdgeAttributesRoot : IDotEdgeAttributes
     {
-        // TODO: dostosować nazwę:
         /// <summary>
         ///     Properties applied to the head of the edge.
         /// </summary>
-        DotEdgeHeadAttributes HeadAttributes { get; }
+        DotEdgeHeadAttributes Head { get; }
 
-        // TODO: dostosować nazwę:
         /// <summary>
         ///     Properties applied to the tail of the edge.
         /// </summary>
-        DotEdgeTailAttributes TailAttributes { get; }
+        DotEdgeTailAttributes Tail { get; }
 
         /// <summary>
         ///     Font properties.
@@ -24,7 +22,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         DotFontAttributes Font { get; }
 
         /// <summary>
-        ///     Properties applied to labels specified for the <see cref="HeadAttributes" /> and the <see cref="TailAttributes" /> of the edge.
+        ///     Properties applied to labels specified for the head and the tail of the edge.
         /// </summary>
         DotEdgeEndpointLabelsAttributes EndpointLabels { get; }
 

@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Examples.Complex
             graph.Nodes.Font.Name = graph.Font.Name;
 
             // set global edge attributes (for all edges of the graph)
-            graph.Edges.HeadAttributes.Arrowhead = graph.Edges.TailAttributes.Arrowhead = DotArrowheadShape.Vee;
+            graph.Edges.Head.Arrowhead = graph.Edges.Tail.Arrowhead = DotArrowheadShape.Vee;
             graph.Edges.Font.Set(graph.Font.Name, 10);
 
 

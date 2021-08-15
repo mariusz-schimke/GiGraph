@@ -12,11 +12,11 @@ namespace GiGraph.Dot.Entities.Edges.Collections
 {
     public partial class DotEdgeCollection : IDotEdgeAttributesRoot
     {
-        /// <inheritdoc cref="IDotEdgeAttributesRoot.HeadAttributes" />
-        public virtual DotEdgeHeadAttributes HeadAttributes => ((IDotEdgeAttributesRoot) Attributes).HeadAttributes;
+        /// <inheritdoc cref="IDotEdgeAttributesRoot.Head" />
+        public virtual DotEdgeHeadAttributes Head => ((IDotEdgeAttributesRoot) Attributes).Head;
 
-        /// <inheritdoc cref="IDotEdgeAttributesRoot.TailAttributes" />
-        public virtual DotEdgeTailAttributes TailAttributes => ((IDotEdgeAttributesRoot) Attributes).TailAttributes;
+        /// <inheritdoc cref="IDotEdgeAttributesRoot.Tail" />
+        public virtual DotEdgeTailAttributes Tail => ((IDotEdgeAttributesRoot) Attributes).Tail;
 
         /// <inheritdoc cref="IDotEdgeAttributesRoot.Font" />
         public virtual DotFontAttributes Font => ((IDotEdgeAttributesRoot) Attributes).Font;

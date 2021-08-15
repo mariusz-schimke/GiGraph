@@ -78,8 +78,8 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         {
         }
 
-        DotEdgeHeadAttributes IDotEdgeAttributesRoot.HeadAttributes => _headAttributes;
-        DotEdgeTailAttributes IDotEdgeAttributesRoot.TailAttributes => _tailAttributes;
+        DotEdgeHeadAttributes IDotEdgeAttributesRoot.Head => _headAttributes;
+        DotEdgeTailAttributes IDotEdgeAttributesRoot.Tail => _tailAttributes;
         DotFontAttributes IDotEdgeAttributesRoot.Font => _fontAttributes;
         DotEdgeEndpointLabelsAttributes IDotEdgeAttributesRoot.EndpointLabels => _endpointLabelsAttributes;
         DotEdgeHyperlinkAttributes IDotEdgeAttributesRoot.EdgeHyperlink => _edgeHyperlinkAttributes;

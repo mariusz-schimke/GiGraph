@@ -26,12 +26,11 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink
         ///         label, this will also be active.
         ///     </para>
         ///     <para>
-        ///         Note that, for edges, the <see cref="DotEdgeHeadHyperlinkAttributes.Url" /> attribute of
-        ///         <see cref="IDotEdgeAttributesRoot.HeadAttributes" />, the <see cref="DotEdgeTailHyperlinkAttributes.Url" /> attribute of
-        ///         <see cref="IDotEdgeAttributesRoot.TailAttributes" />, the <see cref="DotEdgeLabelHyperlinkAttributes.Url" /> attribute of
-        ///         <see cref="IDotEdgeAttributesRoot.LabelHyperlink" />, and the <see cref="DotEdgeHyperlinkAttributes.Url" /> attribute of
-        ///         <see cref="IDotEdgeAttributesRoot.EdgeHyperlink" />, allow control of various parts of an edge. Also note that, if active
-        ///         areas of two edges overlap, it is unspecified which area dominates.
+        ///         Note that, for edges, the <see cref="DotEdgeHeadHyperlinkAttributes.Url" /> attribute of the head and the tail, the
+        ///         <see cref="DotEdgeLabelHyperlinkAttributes.Url" /> attribute of <see cref="IDotEdgeAttributesRoot.LabelHyperlink" />, and
+        ///         the <see cref="DotEdgeHyperlinkAttributes.Url" /> attribute of <see cref="IDotEdgeAttributesRoot.EdgeHyperlink" />, allow
+        ///         control of various parts of an edge. Also note that, if active areas of two edges overlap, it is unspecified which area
+        ///         dominates.
         ///     </para>
         /// </summary>
         DotEscapeString Url { get; set; }

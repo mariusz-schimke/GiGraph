@@ -22,9 +22,9 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         /// <summary>
-        ///     If defined, it is output as part of the <see cref="IDotEdgeAttributesRoot.HeadAttributes" />
-        ///     <see cref="DotEdgeHeadAttributes.Label" /> of the edge (svg, map only). Also, this value is used near the head node,
-        ///     overriding any <see cref="IDotEdgeAttributesRoot.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Url" /> set for the edge.
+        ///     If defined, it is output as part of the head <see cref="DotEdgeHeadAttributes.Label" /> of the edge (svg, map only). Also,
+        ///     this value is used near the head node, overriding any <see cref="IDotEdgeAttributesRoot.Hyperlink" />
+        ///     <see cref="IDotHyperlinkAttributes.Url" /> set for the edge.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.HeadUrl)]
         public override DotEscapeString Url

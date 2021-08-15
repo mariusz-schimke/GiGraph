@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Entities.Edges.Attributes;
+﻿using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output;
 
@@ -48,8 +47,8 @@ namespace GiGraph.Dot.Entities.Edges
         protected DotEdge(TTail tail, THead head, DotEdgeAttributes attributes)
             : base(attributes)
         {
-            Tail = tail ?? throw new ArgumentNullException(nameof(tail), "Edge tail must not be null.");
-            Head = head ?? throw new ArgumentNullException(nameof(head), "Edge head must not be null.");
+            Tail = new DotEdgeTail<TTail>(tail, ((IDotEdgeAttributesRoot) attributes).Tail);
+            Head = new DotEdgeHead<THead>(head, ((IDotEdgeAttributesRoot) attributes).Head);
         }
 
         /// <summary>
@@ -69,21 +68,21 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         ///     Gets or sets the tail endpoint.
         /// </summary>
-        public virtual TTail Tail { get; }
+        public virtual DotEdgeTail<TTail> Tail { get; }
 
         /// <summary>
         ///     Gets or sets the head endpoint.
         /// </summary>
-        public virtual THead Head { get; }
+        public virtual DotEdgeHead<THead> Head { get; }
 
         /// <summary>
         ///     Gets the endpoints of this edge.
         /// </summary>
-        public override DotEndpointDefinition[] Endpoints => new DotEndpointDefinition[] { Tail, Head };
+        public override DotEndpointDefinition[] Endpoints => new DotEndpointDefinition[] { Tail.Endpoint, Head.Endpoint };
 
         protected override string GetOrderingKey()
         {
-            return $"{Tail.OrderingKey} {Head.OrderingKey}";
+            return $"{Tail.Endpoint.OrderingKey} {Head.Endpoint.OrderingKey}";
         }
     }
 }

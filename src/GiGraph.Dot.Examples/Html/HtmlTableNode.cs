@@ -64,11 +64,11 @@ namespace GiGraph.Dot.Examples.Html
 
             graph.Nodes.Add("Bar").ToPlainHtmlNode(table);
 
-            // the following line is equivalent to the next one as far as visualization is concerned
-            graph.Edges.Add("Foo", "Bar").HeadAttributes.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
-
-            // an equivalent method of defining a port
+            // sets an attribute of the edge (can be set globally)
             graph.Edges.Add("Foo", "Bar").Head.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
+
+            // an equivalent method of defining a port (directly on the endpoint; cannot be set globally)
+            graph.Edges.Add("Foo", "Bar").Head.Endpoint.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
 
             return graph;
         }

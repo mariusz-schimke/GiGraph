@@ -50,8 +50,8 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Edges.AddLoop("no_attributes");
             graph.Edges.Add("node6", "node7", edge =>
             {
-                edge.Tail.Port.Name = "port6";
-                edge.Tail.Port.CompassPoint = DotCompassPoint.East;
+                edge.Tail.Endpoint.Port.Name = "port6";
+                edge.Tail.Endpoint.Port.CompassPoint = DotCompassPoint.East;
 
                 edge.Color = Color.Gold;
                 edge.Style.LineStyle = DotLineStyle.Dotted;
@@ -160,14 +160,14 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             // edge defaults
             graph.Edges.Attributes.Annotation = "global edge attributes";
-            graph.Edges.HeadAttributes.Arrowhead = DotArrowheadShape.Curve;
+            graph.Edges.Head.Arrowhead = DotArrowheadShape.Curve;
 
             // edges
             graph.Edges.Annotation = "edges";
             graph.Edges.Add("foo", "bar", edge =>
             {
-                edge.Head.Annotation = "head";
-                edge.Tail.Annotation = "tail";
+                edge.Head.Endpoint.Annotation = "head";
+                edge.Tail.Endpoint.Annotation = "tail";
 
                 edge.Attributes.Annotation = "edge attributes";
                 edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
@@ -198,8 +198,8 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 new DotSubgraphEndpoint("node3", "node4"),
                 edge =>
                 {
-                    edge.Head.Annotation = "subgraph endpoint";
-                    edge.Tail.Annotation = "endpoint group";
+                    edge.Head.Endpoint.Annotation = "subgraph endpoint";
+                    edge.Tail.Endpoint.Annotation = "endpoint group";
                 }
             );
 
