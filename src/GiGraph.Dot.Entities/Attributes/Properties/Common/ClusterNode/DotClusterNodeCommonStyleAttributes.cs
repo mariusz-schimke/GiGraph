@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
         }
 
         /// <summary>
-        ///     Gets or sets a fill style for the node.
+        ///     Gets or sets a fill style.
         /// </summary>
         public virtual TFillStyle FillStyle
         {
@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
         }
 
         /// <summary>
-        ///     Gets or sets a border style for the node.
+        ///     Gets or sets a border style.
         /// </summary>
         public virtual DotBorderStyle BorderStyle
         {
@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
         }
 
         /// <summary>
-        ///     Gets or sets a border weight for the node.
+        ///     Gets or sets a border weight.
         /// </summary>
         public virtual DotBorderWeight BorderWeight
         {
@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
         }
 
         /// <summary>
-        ///     Gets or sets a corner style for the node.
+        ///     Gets or sets a corner style.
         /// </summary>
         public virtual DotCornerStyle CornerStyle
         {
@@ -60,7 +60,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
         }
 
         /// <summary>
-        ///     Applies the specified style options to the node.
+        ///     Applies the specified style options.
         /// </summary>
         /// <param name="options">
         ///     The options to apply.
@@ -71,7 +71,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
         }
 
         /// <summary>
-        ///     Applies the specified style options to the node.
+        ///     Applies the specified style options.
         /// </summary>
         /// <param name="fillStyle">
         ///     The fill style to set.
