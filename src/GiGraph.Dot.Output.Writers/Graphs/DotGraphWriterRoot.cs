@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
     {
         protected readonly DotFormattingOptions _formattingOptions;
         protected readonly DotTokenWriter _tokenWriter;
-        private bool _initializeIndentation = true;
+        protected bool _initializeIndentation = true;
 
         public DotGraphWriterRoot(DotTokenWriter tokenWriter, DotFormattingOptions formattingOptions)
         {
