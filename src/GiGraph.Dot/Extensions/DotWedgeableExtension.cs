@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Extensions
     public static class DotWedgeableExtension
     {
         /// <summary>
-        ///     Sets a wedged fill. Applicable to elliptically-shaped nodes (see <see cref="DotNode.Shape" />).
+        ///     Sets a wedged fill. Applicable to elliptically-shaped nodes (see <see cref="DotNodeDefinition.Shape" />).
         /// </summary>
         /// <param name="this">
         ///     The current context to set the fill for.
@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Extensions
         }
 
         /// <summary>
-        ///     Sets a wedged fill. Applicable to elliptically-shaped nodes (see <see cref="DotNode.Shape" />).
+        ///     Sets a wedged fill. Applicable to elliptically-shaped nodes (see <see cref="DotNodeDefinition.Shape" />).
         /// </summary>
         /// <param name="this">
         ///     The current context to set the fill for.
@@ -46,7 +46,7 @@ namespace GiGraph.Dot.Extensions
         }
 
         /// <summary>
-        ///     Sets a wedged fill. Applicable to elliptically-shaped nodes (see <see cref="DotNode.Shape" />).
+        ///     Sets a wedged fill. Applicable to elliptically-shaped nodes (see <see cref="DotNodeDefinition.Shape" />).
         /// </summary>
         /// <param name="this">
         ///     The current context to set the fill for.
@@ -62,7 +62,7 @@ namespace GiGraph.Dot.Extensions
         }
 
         /// <summary>
-        ///     Sets a wedged fill. Applicable to elliptically-shaped nodes (see <see cref="DotNode.Shape" />).
+        ///     Sets a wedged fill. Applicable to elliptically-shaped nodes (see <see cref="DotNodeDefinition.Shape" />).
         /// </summary>
         /// <param name="this">
         ///     The current context to set the fill for.

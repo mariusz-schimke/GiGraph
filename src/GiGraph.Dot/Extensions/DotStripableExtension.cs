@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Extensions
     public static class DotStripableExtension
     {
         /// <summary>
-        ///     Sets a striped fill. Applicable to clusters and rectangularly-shaped nodes (see <see cref="DotNode.Shape" />).
+        ///     Sets a striped fill. Applicable to clusters and rectangularly-shaped nodes (see <see cref="DotNodeDefinition.Shape" />).
         /// </summary>
         /// <param name="this">
         ///     The current context to set the fill for.
@@ -46,7 +46,7 @@ namespace GiGraph.Dot.Extensions
         }
 
         /// <summary>
-        ///     Sets a striped fill. Applicable to clusters and rectangularly-shaped nodes (see <see cref="DotNode.Shape" />).
+        ///     Sets a striped fill. Applicable to clusters and rectangularly-shaped nodes (see <see cref="DotNodeDefinition.Shape" />).
         /// </summary>
         /// <param name="this">
         ///     The current context to set the fill for.

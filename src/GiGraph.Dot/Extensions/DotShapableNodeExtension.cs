@@ -4,7 +4,7 @@ using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Extensions
 {
-    public static class DotNodeShapeExtension
+    public static class DotShapableNodeExtension
     {
         /// <summary>
         ///     Applies a polygonal shape.
