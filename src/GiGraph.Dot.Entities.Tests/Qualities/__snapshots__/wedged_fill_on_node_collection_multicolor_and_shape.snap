@@ -1,0 +1,4 @@
+﻿digraph
+{
+    node [ fillcolor = "red:blue", shape = rectangle, style = wedged ]
+}
