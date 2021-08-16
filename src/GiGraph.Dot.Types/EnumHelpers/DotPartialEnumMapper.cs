@@ -5,6 +5,18 @@ namespace GiGraph.Dot.Types.EnumHelpers
 {
     public static class DotPartialEnumMapper
     {
+        /// <summary>
+        ///     Gets a bitmask composed of only those bits from the complete bitmask that the partial bitmask enum is able to set.
+        /// </summary>
+        /// <param name="complete">
+        ///     The complete type to strip off with bits outside the range of the partial type.
+        /// </param>
+        /// <typeparam name="TComplete">
+        ///     The complete bitmask enum type.
+        /// </typeparam>
+        /// <typeparam name="TPartial">
+        ///     The partial bitmask enum type.
+        /// </typeparam>
         public static TPartial ToPartial<TComplete, TPartial>(TComplete complete)
             where TComplete : Enum
             where TPartial : Enum
@@ -18,6 +30,22 @@ namespace GiGraph.Dot.Types.EnumHelpers
             );
         }
 
+        /// <summary>
+        ///     Merges the partial bitmask enum into the complete bitmask by overwriting the bits of the complete type, that exist as values
+        ///     of the partial bitmask enum. Returns the merged complete value.
+        /// </summary>
+        /// <param name="partial">
+        ///     The partial type to merge into the complete one.
+        /// </param>
+        /// <param name="complete">
+        ///     The complete value whose selection of bits to overwrite with those set in the partial type enum.
+        /// </param>
+        /// <typeparam name="TPartial">
+        ///     The partial bitmask enum type.
+        /// </typeparam>
+        /// <typeparam name="TComplete">
+        ///     The complete bitmask enum type.
+        /// </typeparam>
         public static TComplete ToComplete<TPartial, TComplete>(TPartial partial, TComplete complete)
             where TPartial : Enum
             where TComplete : Enum
