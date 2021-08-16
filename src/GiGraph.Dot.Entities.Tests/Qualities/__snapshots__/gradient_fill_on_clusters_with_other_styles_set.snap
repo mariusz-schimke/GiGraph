@@ -1,0 +1,11 @@
+﻿digraph
+{
+    fillcolor = red
+    style = "bold, filled, invis, rounded, solid"
+
+    subgraph cluster
+    {
+        fillcolor = red
+        style = "bold, filled, invis, rounded, solid"
+    }
+}

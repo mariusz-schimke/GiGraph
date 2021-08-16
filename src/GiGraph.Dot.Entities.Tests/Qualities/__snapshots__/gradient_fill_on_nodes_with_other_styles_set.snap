@@ -1,0 +1,6 @@
+﻿digraph
+{
+    node [ fillcolor = red, style = "bold, filled, invis, rounded, solid" ]
+
+    "node" [ fillcolor = red, style = "bold, filled, invis, rounded, solid" ]
+}
