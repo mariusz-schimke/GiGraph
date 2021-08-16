@@ -11,13 +11,13 @@ namespace GiGraph.Dot.Types.Clusters
         /// <summary>
         ///     No fill.
         /// </summary>
-        None = 0,
+        None = DotFillStyle.None,
 
         /// <summary>
         ///     Causes a plain color fill when <see cref="DotColor" /> is used, or a gradient fill when <see cref="DotGradientColor" /> is
         ///     used.
         /// </summary>
-        Normal = DotStyles.Filled,
+        Normal = DotFillStyle.Normal,
 
         /// <summary>
         ///     Causes the fill to be done as a set of vertical stripes. The colors are specified via a color list (see
@@ -25,11 +25,11 @@ namespace GiGraph.Dot.Types.Clusters
         ///     indicate the proportional widths of the bars. If the sum of the weights is less than 1, the remainder is divided evenly among
         ///     the colors with no weight.
         /// </summary>
-        Striped = DotStyles.Striped,
+        Striped = DotFillStyle.Striped,
 
         /// <summary>
         ///     Causes a radial gradient fill when a <see cref="DotGradientColor" /> is used.
         /// </summary>
-        Radial = DotStyles.Radial
+        Radial = DotFillStyle.Radial
     }
 }

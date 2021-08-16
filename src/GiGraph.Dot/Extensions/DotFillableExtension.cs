@@ -16,9 +16,9 @@ namespace GiGraph.Dot.Extensions
         ///     The color to use.
         /// </param>
         public static void SetPlainColorFill<T>(this T @this, DotColor color)
-            where T : IDotStylable, IDotFillable
+            where T : IDotFillable
         {
-            @this.SetStyle(DotStyles.Filled);
+            @this.SetFillStyle(DotFillStyle.Normal);
             @this.SetFillColor(color);
         }
 
@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Extensions
         ///     The angle of the fill.
         /// </param>
         public static void SetGradientFill<T>(this T @this, DotGradientColor color, int? angle = null)
-            where T : IDotStylable, IDotFillable
+            where T : IDotFillable
         {
             @this.SetGradientFill(color, angle, radial: false);
         }
@@ -53,15 +53,15 @@ namespace GiGraph.Dot.Extensions
         ///     The angle of the fill.
         /// </param>
         public static void SetRadialGradientFill<T>(this T @this, DotGradientColor color, int? angle = null)
-            where T : IDotStylable, IDotFillable
+            where T : IDotFillable
         {
             @this.SetGradientFill(color, angle, radial: true);
         }
 
         private static void SetGradientFill<T>(this T @this, DotGradientColor color, int? angle, bool radial)
-            where T : IDotStylable, IDotFillable
+            where T : IDotFillable
         {
-            @this.SetStyle(radial ? DotStyles.Radial : DotStyles.Filled);
+            @this.SetFillStyle(radial ? DotFillStyle.Radial : DotFillStyle.Normal);
             @this.SetFillColor(color);
             @this.SetGradientFillAngle(angle);
         }

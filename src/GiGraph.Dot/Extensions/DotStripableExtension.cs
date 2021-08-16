@@ -19,9 +19,9 @@ namespace GiGraph.Dot.Extensions
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
         public static void SetStripedFill<T>(this T @this, DotMultiColor colors)
-            where T : IDotStylable, IDotStripable
+            where T : IDotFillable, IDotStripable
         {
-            @this.SetStyle(DotStyles.Striped);
+            @this.SetFillStyle(DotFillStyle.Striped);
             @this.SetStripeColors(colors);
         }
 
@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Extensions
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
         public static void SetStripedFill<T>(this T @this, DotNodeShape shape, DotMultiColor colors)
-            where T : IDotStylable, IDotStripable, IDotShapableNode
+            where T : IDotFillable, IDotStripable, IDotShapableNode
         {
             @this.SetStripedFill(colors);
             @this.SetShape(shape);
@@ -56,7 +56,7 @@ namespace GiGraph.Dot.Extensions
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
         public static void SetStripedFill<T>(this T @this, params DotColor[] colors)
-            where T : IDotStylable, IDotStripable
+            where T : IDotFillable, IDotStripable
         {
             @this.SetStripedFill(new DotMultiColor(colors));
         }
@@ -75,7 +75,7 @@ namespace GiGraph.Dot.Extensions
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
         public static void SetStripedFill<T>(this T @this, DotNodeShape shape, params DotColor[] colors)
-            where T : IDotStylable, IDotStripable, IDotShapableNode
+            where T : IDotFillable, IDotStripable, IDotShapableNode
         {
             @this.SetStripedFill(shape, new DotMultiColor(colors));
         }
