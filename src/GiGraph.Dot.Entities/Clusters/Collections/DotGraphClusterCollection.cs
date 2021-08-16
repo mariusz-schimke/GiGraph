@@ -4,9 +4,12 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
 {
     public partial class DotGraphClusterCollection : DotClusterCollection
     {
-        public DotGraphClusterCollection(DotGraphClusterRootAttributes attributes)
+        protected readonly DotGraphRootAttributes _graphAttributes;
+
+        public DotGraphClusterCollection(DotGraphRootAttributes graphAttributes, DotGraphClusterRootAttributes graphClusterAttributes)
         {
-            Attributes = attributes;
+            _graphAttributes = graphAttributes;
+            Attributes = graphClusterAttributes;
         }
 
         /// <summary>

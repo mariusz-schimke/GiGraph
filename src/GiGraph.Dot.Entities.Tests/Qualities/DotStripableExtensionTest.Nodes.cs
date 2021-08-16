@@ -8,7 +8,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Qualities
 {
-    public class DotStripableExtensionTest
+    public partial class DotStripableExtensionTest
     {
         [Fact]
         public void sets_striped_fill_on_individual_nodes()

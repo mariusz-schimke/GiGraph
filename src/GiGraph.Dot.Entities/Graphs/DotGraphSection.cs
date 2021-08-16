@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Graphs
             : base(
                 attributes,
                 new DotSubgraphCollection(),
-                new DotGraphClusterCollection(new DotGraphClusterRootAttributes(attributes))
+                new DotGraphClusterCollection(attributes, new DotGraphClusterRootAttributes(attributes))
             )
         {
         }
