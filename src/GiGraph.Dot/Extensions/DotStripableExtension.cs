@@ -6,7 +6,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Extensions
 {
-    public static class DotStripeableExtension
+    public static class DotStripableExtension
     {
         /// <summary>
         ///     Sets a striped fill. Applicable to clusters and rectangularly-shaped nodes (see <see cref="DotNode.Shape" />).
@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Extensions
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
         public static void SetStripedFill<T>(this T @this, DotMultiColor colors)
-            where T : IDotStylable, IDotStripeable
+            where T : IDotStylable, IDotStripable
         {
             @this.SetStyle(DotStyles.Striped);
             @this.SetStripeColors(colors);
@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Extensions
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
         public static void SetStripedFill<T>(this T @this, DotNodeShape shape, DotMultiColor colors)
-            where T : IDotStylable, IDotStripeable, IDotShapableNode
+            where T : IDotStylable, IDotStripable, IDotShapableNode
         {
             @this.SetStripedFill(colors);
             @this.SetShape(shape);
@@ -56,7 +56,7 @@ namespace GiGraph.Dot.Extensions
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
         public static void SetStripedFill<T>(this T @this, params DotColor[] colors)
-            where T : IDotStylable, IDotStripeable
+            where T : IDotStylable, IDotStripable
         {
             @this.SetStripedFill(new DotMultiColor(colors));
         }
@@ -75,7 +75,7 @@ namespace GiGraph.Dot.Extensions
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
         public static void SetStripedFill<T>(this T @this, DotNodeShape shape, params DotColor[] colors)
-            where T : IDotStylable, IDotStripeable, IDotShapableNode
+            where T : IDotStylable, IDotStripable, IDotShapableNode
         {
             @this.SetStripedFill(shape, new DotMultiColor(colors));
         }
