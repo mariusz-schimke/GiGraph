@@ -1,0 +1,18 @@
+﻿digraph
+{
+    subgraph cluster
+    {
+        fillcolor = "red:brown"
+        style = filled
+    }
+
+    subgraph cluster
+    {
+        fillcolor = "red:brown"
+        gradientangle = 45
+        style = filled
+    }
+
+    node1 [ fillcolor = "red:brown", style = filled ]
+    node2 [ fillcolor = "red:brown", gradientangle = 45, style = filled ]
+}

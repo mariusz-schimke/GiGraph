@@ -16,7 +16,10 @@ namespace GiGraph.Dot.Entities.Tests.Qualities
             graph.Nodes.Add("node1").SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown));
             graph.Nodes.Add("node2").SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
 
-            Snapshot.Match(graph.Build(), "radial_gradient_fill_on_node");
+            graph.Clusters.Add().SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown));
+            graph.Clusters.Add().SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
+
+            Snapshot.Match(graph.Build(), "radial_gradient_fill_on_nodes_and_clusters");
         }
 
         [Fact]
@@ -26,7 +29,7 @@ namespace GiGraph.Dot.Entities.Tests.Qualities
             graph.Nodes.AddGroup("node1", "node2").SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown));
             graph.Nodes.AddGroup("node3", "node4").SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
 
-            Snapshot.Match(graph.Build(), "radial_gradient_fill_on_node_group");
+            Snapshot.Match(graph.Build(), "radial_gradient_fill_on_node_groups");
         }
 
         [Fact]

@@ -1,0 +1,10 @@
+﻿digraph
+{
+    subgraph cluster
+    {
+        fillcolor = red
+        style = filled
+    }
+
+    "node" [ fillcolor = red, style = filled ]
+}

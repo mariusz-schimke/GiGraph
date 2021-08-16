@@ -13,10 +13,14 @@ namespace GiGraph.Dot.Entities.Tests.Qualities
         public void sets_gradient_fill_on_node()
         {
             var graph = new DotGraph();
+
             graph.Nodes.Add("node1").SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
             graph.Nodes.Add("node2").SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
 
-            Snapshot.Match(graph.Build(), "gradient_fill_on_node");
+            graph.Clusters.Add().SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
+            graph.Clusters.Add().SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
+
+            Snapshot.Match(graph.Build(), "gradient_fill_on_nodes_and_clusters");
         }
 
         [Fact]
@@ -26,7 +30,7 @@ namespace GiGraph.Dot.Entities.Tests.Qualities
             graph.Nodes.AddGroup("node1", "node2").SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
             graph.Nodes.AddGroup("node3", "node4").SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
 
-            Snapshot.Match(graph.Build(), "gradient_fill_on_node_group");
+            Snapshot.Match(graph.Build(), "gradient_fill_on_node_groups");
         }
 
         [Fact]

@@ -12,9 +12,11 @@ namespace GiGraph.Dot.Entities.Tests.Qualities
         public void sets_plain_color_fill_on_node()
         {
             var graph = new DotGraph();
-            graph.Nodes.Add("node").SetPlainColorFill(Color.Red);
 
-            Snapshot.Match(graph.Build(), "plain_color_fill_on_node");
+            graph.Nodes.Add("node").SetPlainColorFill(Color.Red);
+            graph.Clusters.Add().SetPlainColorFill(Color.Red);
+
+            Snapshot.Match(graph.Build(), "plain_color_fill_on_node_and_cluster");
         }
 
         [Fact]
