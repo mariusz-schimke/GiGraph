@@ -12,7 +12,4 @@
         gradientangle = 45
         style = radial
     }
-
-    node1 [ fillcolor = "red:brown", style = radial ]
-    node2 [ fillcolor = "red:brown", gradientangle = 45, style = radial ]
 }

@@ -17,16 +17,14 @@ namespace GiGraph.Dot.Entities.Tests.Qualities
             graph.Nodes.Add("node1").SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
             graph.Nodes.Add("node2").SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
 
-            graph.Clusters.Add().SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
-            graph.Clusters.Add().SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
-
-            Snapshot.Match(graph.Build(), "gradient_fill_on_nodes_and_clusters");
+            Snapshot.Match(graph.Build(), "gradient_fill_on_nodes");
         }
 
         [Fact]
         public void sets_gradient_fill_on_node_group()
         {
             var graph = new DotGraph();
+
             graph.Nodes.AddGroup("node1", "node2").SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
             graph.Nodes.AddGroup("node3", "node4").SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
 
@@ -38,7 +36,6 @@ namespace GiGraph.Dot.Entities.Tests.Qualities
         {
             var graph = new DotGraph();
             graph.Nodes.SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
-
             Snapshot.Match(graph.Build(), "gradient_fill_on_node_collection");
         }
 
@@ -47,7 +44,6 @@ namespace GiGraph.Dot.Entities.Tests.Qualities
         {
             var graph = new DotGraph();
             graph.Nodes.SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
-
             Snapshot.Match(graph.Build(), "gradient_fill_on_node_collection_with_angle");
         }
     }

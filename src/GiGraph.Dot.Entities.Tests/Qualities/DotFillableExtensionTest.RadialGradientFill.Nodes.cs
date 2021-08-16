@@ -13,19 +13,18 @@ namespace GiGraph.Dot.Entities.Tests.Qualities
         public void sets_radial_gradient_fill_on_node()
         {
             var graph = new DotGraph();
+
             graph.Nodes.Add("node1").SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown));
             graph.Nodes.Add("node2").SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
 
-            graph.Clusters.Add().SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown));
-            graph.Clusters.Add().SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
-
-            Snapshot.Match(graph.Build(), "radial_gradient_fill_on_nodes_and_clusters");
+            Snapshot.Match(graph.Build(), "radial_gradient_fill_on_nodes");
         }
 
         [Fact]
         public void sets_radial_gradient_fill_on_node_group()
         {
             var graph = new DotGraph();
+
             graph.Nodes.AddGroup("node1", "node2").SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown));
             graph.Nodes.AddGroup("node3", "node4").SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
 

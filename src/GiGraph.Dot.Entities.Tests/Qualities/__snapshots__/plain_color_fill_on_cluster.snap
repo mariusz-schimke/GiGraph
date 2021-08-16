@@ -5,6 +5,4 @@
         fillcolor = red
         style = filled
     }
-
-    "node" [ fillcolor = red, style = filled ]
 }
