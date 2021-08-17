@@ -5,11 +5,10 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters
 {
-    public partial class DotCluster : IDotFillable, IDotStripable
+    public partial class DotCluster : IDotStripeFillable
     {
         void IDotFillable.SetFillStyle(DotFillStyle style) => Style.FillStyle = (DotClusterFillStyle) style;
         void IDotFillable.SetFillColor(DotColorDefinition color) => FillColor = color;
         void IDotFillable.SetGradientFillAngle(int? angle) => GradientFillAngle = angle;
-        void IDotStripable.SetStripeColors(DotMultiColor color) => FillColor = color;
     }
 }

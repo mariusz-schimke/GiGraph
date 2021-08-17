@@ -6,14 +6,12 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Collections
 {
-    public partial class DotNodeCollection : IDotShapableNode, IDotFillable, IDotStripable, IDotWedgeable
+    public partial class DotNodeCollection : IDotShapableNode, IDotStripeFillable, IDotWedgeFillable
     {
+        void IDotShapableNode.SetShape(DotNodeShape shape) => Shape = shape;
+        void IDotShapableNode.SetGeometry(DotPolygon geometry) => Geometry.Set(geometry);
         void IDotFillable.SetFillStyle(DotFillStyle style) => Style.FillStyle = (DotNodeFillStyle) style;
         void IDotFillable.SetFillColor(DotColorDefinition color) => FillColor = color;
         void IDotFillable.SetGradientFillAngle(int? angle) => GradientFillAngle = angle;
-        void IDotShapableNode.SetShape(DotNodeShape shape) => Shape = shape;
-        void IDotShapableNode.SetGeometry(DotPolygon geometry) => Geometry.Set(geometry);
-        void IDotStripable.SetStripeColors(DotMultiColor color) => FillColor = color;
-        void IDotWedgeable.SetWedgeColors(DotMultiColor color) => FillColor = color;
     }
 }

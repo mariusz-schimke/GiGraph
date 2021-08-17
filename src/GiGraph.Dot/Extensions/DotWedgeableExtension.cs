@@ -19,10 +19,10 @@ namespace GiGraph.Dot.Extensions
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
         public static void SetWedgedFill<T>(this T @this, DotMultiColor colors)
-            where T : IDotFillable, IDotWedgeable
+            where T : IDotFillable, IDotWedgeFillable
         {
             @this.SetFillStyle(DotFillStyle.Wedged);
-            @this.SetWedgeColors(colors);
+            @this.SetFillColor(colors);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Extensions
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
         public static void SetWedgedFill<T>(this T @this, DotNodeShape shape, DotMultiColor colors)
-            where T : IDotFillable, IDotWedgeable, IDotShapableNode
+            where T : IDotFillable, IDotWedgeFillable, IDotShapableNode
         {
             @this.SetWedgedFill(colors);
             @this.SetShape(shape);
@@ -56,7 +56,7 @@ namespace GiGraph.Dot.Extensions
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
         public static void SetWedgedFill<T>(this T @this, params DotColor[] colors)
-            where T : IDotFillable, IDotWedgeable
+            where T : IDotFillable, IDotWedgeFillable
         {
             @this.SetWedgedFill(new DotMultiColor(colors));
         }
@@ -75,7 +75,7 @@ namespace GiGraph.Dot.Extensions
         ///     <see cref="DotWeightedColor" /> for them.
         /// </param>
         public static void SetWedgedFill<T>(this T @this, DotNodeShape shape, params DotColor[] colors)
-            where T : IDotFillable, IDotWedgeable, IDotShapableNode
+            where T : IDotFillable, IDotWedgeFillable, IDotShapableNode
         {
             @this.SetWedgedFill(shape, new DotMultiColor(colors));
         }
