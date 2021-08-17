@@ -1,0 +1,7 @@
+﻿digraph
+{
+    a -> b [ color = "black:black:black:black" ]
+    c -> d [ color = "red:red:red:red" ]
+    e -> f [ color = "red:black:green" ]
+    g -> h [ color = "red:black:green" ]
+}

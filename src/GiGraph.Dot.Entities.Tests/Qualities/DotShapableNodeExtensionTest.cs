@@ -6,7 +6,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Qualities
 {
-    public class DotShapableNodeExtension
+    public class DotShapableNodeExtensionTest
     {
         [Fact]
         public void sets_striped_fill_on_individual_nodes()

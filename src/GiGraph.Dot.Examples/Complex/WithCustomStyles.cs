@@ -51,7 +51,7 @@ namespace GiGraph.Dot.Examples.Complex
                     edge.Directions = DotEdgeDirections.Both;
 
                     // this will render two parallel splines (but more of them may be specified)
-                    edge.Attributes.SetMultiline(Color.Turquoise, Color.RoyalBlue);
+                    edge.SetMultilineStyle(Color.Turquoise, Color.RoyalBlue);
                 });
             });
 
@@ -67,7 +67,7 @@ namespace GiGraph.Dot.Examples.Complex
                     edge.Directions = DotEdgeDirections.Both;
 
                     // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
-                    edge.Attributes.SetSegmented(
+                    edge.SetSegmentedStyle(
                         new DotWeightedColor(Color.Turquoise, 0.33),
                         new DotWeightedColor(Color.Gray, 0.33),
                         Color.Navy);
