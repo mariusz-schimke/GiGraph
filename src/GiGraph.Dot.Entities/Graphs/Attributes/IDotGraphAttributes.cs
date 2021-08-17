@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         ///     ). If fdp is used for layout and <see cref="DotEdgeShape.Compound" /> is used, then the edges are drawn to avoid clusters as
         ///     well as nodes.
         /// </summary>
-        DotEdgeShape? EdgesShape { get; set; }
+        DotEdgeShape? EdgeShape { get; set; }
 
         /// <summary>
         ///     <para>

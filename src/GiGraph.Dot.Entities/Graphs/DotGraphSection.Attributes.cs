@@ -38,11 +38,11 @@ namespace GiGraph.Dot.Entities.Graphs
             set => ((IDotGraphAttributes) Attributes).Style = value;
         }
 
-        /// <inheritdoc cref="IDotGraphAttributes.EdgesShape" />
-        public virtual DotEdgeShape? EdgesShape
+        /// <inheritdoc cref="IDotGraphAttributes.EdgeShape" />
+        public virtual DotEdgeShape? EdgeShape
         {
-            get => ((IDotGraphAttributes) Attributes).EdgesShape;
-            set => ((IDotGraphAttributes) Attributes).EdgesShape = value;
+            get => ((IDotGraphAttributes) Attributes).EdgeShape;
+            set => ((IDotGraphAttributes) Attributes).EdgeShape = value;
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Label" />

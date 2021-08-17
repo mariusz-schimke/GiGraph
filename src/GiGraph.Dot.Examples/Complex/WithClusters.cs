@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Examples.Complex
             // set graph attributes
             graph.Label = "Example Flow";
             graph.Layout.Direction = DotLayoutDirection.LeftToRight;
-            graph.EdgesShape = DotEdgeShape.Orthogonal;
+            graph.EdgeShape = DotEdgeShape.Orthogonal;
 
             // set attributes for clusters
             graph.Clusters.AllowEdgeClipping = true;

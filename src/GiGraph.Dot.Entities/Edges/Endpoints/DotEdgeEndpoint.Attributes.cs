@@ -1,6 +1,5 @@
 using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Labels;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Types.Arrowheads;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Edges;
