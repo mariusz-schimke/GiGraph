@@ -1,6 +1,7 @@
 using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
+using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Styling;
 using Snapshooter.Xunit;
 using Xunit;
@@ -15,18 +16,11 @@ namespace GiGraph.Dot.Entities.Tests.Qualities
             var graph = new DotGraph();
 
             graph.Clusters.Add(c =>
-                {
-                    c.Style.BorderStyle = DotBorderStyle.Solid;
-                    c.Style.CornerStyle = DotCornerStyle.Rounded;
-                    c.Style.BorderWeight = DotBorderWeight.Bold;
-                    c.Style.Invisible = true;
-                })
+                    c.Style.Set(DotClusterFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true)
+                )
                .SetPlainColorFill(Color.Red);
 
-            graph.Clusters.Style.BorderStyle = DotBorderStyle.Solid;
-            graph.Clusters.Style.CornerStyle = DotCornerStyle.Rounded;
-            graph.Clusters.Style.BorderWeight = DotBorderWeight.Bold;
-            graph.Clusters.Style.Invisible = true;
+            graph.Clusters.Style.Set(DotClusterFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true);
             graph.Clusters.SetPlainColorFill(Color.Red);
 
             Snapshot.Match(graph.Build(), "gradient_fill_on_clusters_with_other_styles_set");

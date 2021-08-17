@@ -18,6 +18,7 @@ namespace GiGraph.Dot.Types.Tests.Enums
         private static readonly HashSet<Type> IgnoredEnums = new()
         {
             // these enums are not expected to have any attribute names assigned
+            typeof(DotFillStyle),
             typeof(DotNodeFillStyle),
             typeof(DotClusterFillStyle),
             typeof(DotBorderStyle),
