@@ -3,11 +3,11 @@ using GiGraph.Dot.Types.EscapeString;
 
 namespace GiGraph.Dot.Examples.Basic
 {
-    public static class LabelFormatting
+    public static class LabelPlaceholders
     {
         public static DotGraph Generate()
         {
-            var graph = new DotGraph("Label formatting");
+            var graph = new DotGraph("Label placeholders");
 
             // -- graph label example --
 

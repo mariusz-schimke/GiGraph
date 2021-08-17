@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Extensions
     /// <summary>
     ///     Provides extension methods for <see cref="DotNodeDefinition" />.
     /// </summary>
-    public static class DotNodeDefinitionToHtmlExtension
+    public static class DotNodeToHtmlExtension
     {
         /// <summary>
         ///     Converts the current node to an HTML node by assigning HTML text to its label attribute, and setting its shape to

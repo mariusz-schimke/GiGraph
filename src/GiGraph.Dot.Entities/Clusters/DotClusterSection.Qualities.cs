@@ -5,7 +5,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters
 {
-    public partial class DotCluster : IDotStripeFillable
+    public partial class DotClusterSection : IDotStripeFillable
     {
         void IDotFillable.SetFillStyle(DotFillStyle style) => Style.FillStyle = (DotClusterFillStyle) style;
         void IDotFillable.SetFillColor(DotColorDefinition color) => FillColor = color;

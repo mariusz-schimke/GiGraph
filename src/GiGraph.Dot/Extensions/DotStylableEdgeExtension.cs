@@ -84,8 +84,7 @@ namespace GiGraph.Dot.Extensions
         public static void SetMultilineStyle<T>(this T @this, int lineCount, DotColor color = null)
             where T : IDotStylableEdge
         {
-            color ??= Color.Black;
-            var colors = Enumerable.Range(0, lineCount).Select(_ => color);
+            var colors = Enumerable.Range(0, lineCount).Select(_ => color ??= Color.Black);
             @this.SetMultilineStyle(colors.ToArray());
         }
 

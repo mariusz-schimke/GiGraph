@@ -5,7 +5,6 @@ using GiGraph.Dot.Extensions;
 
 namespace GiGraph.Dot.Examples
 {
-    // TODO: uruchomić wszystkie przykłady, czy dalej działają jak wcześniej
     internal class Program
     {
         private static async Task Main(string[] args)
