@@ -6,7 +6,7 @@ using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment
 {
-    public class DotLabelAlignmentAttributes : DotEntityAttributesWithMetadata<IDotLabelAlignmentAttributes>, IDotLabelAlignmentAttributes
+    public class DotLabelAlignmentAttributes : DotEntityAttributes<IDotLabelAlignmentAttributes>, IDotLabelAlignmentAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup LabelAlignmentAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotLabelAlignmentAttributes, IDotLabelAlignmentAttributes>().Build();
 

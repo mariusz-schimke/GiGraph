@@ -9,7 +9,7 @@ using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphClusterRootAttributes : DotEntityAttributesWithMetadata<IDotGraphClusterAttributes>, IDotGraphClusterRootAttributes
+    public class DotGraphClusterRootAttributes : DotEntityAttributes<IDotGraphClusterAttributes>, IDotGraphClusterRootAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup GraphClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClusterRootAttributes, IDotGraphClusterAttributes>().Build();
 

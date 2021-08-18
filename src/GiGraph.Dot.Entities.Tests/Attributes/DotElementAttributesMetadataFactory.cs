@@ -8,6 +8,7 @@ using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Subgraphs;
+using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes
@@ -43,7 +44,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             return result;
         }
 
-        public static Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary<TIEntityAttributeProperties>(DotEntityAttributesWithMetadata<TIEntityAttributeProperties> attributes, PropertyInfo rootProperty)
+        public static Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary<TIEntityAttributeProperties>(DotEntityAttributes<TIEntityAttributeProperties> attributes, PropertyInfo rootProperty)
         {
             var prefix = rootProperty is not null
                 ? Enumerable.Empty<PropertyInfo>().Append(rootProperty)

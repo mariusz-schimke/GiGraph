@@ -6,25 +6,25 @@ using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties
 {
-    public abstract partial class DotEntityAttributes
+    public abstract partial class DotEntityAttributes : IDotEntityAttributes
     {
         /// <summary>
         ///     The binding flags describing the properties of the class that may have a DOT attribute key assigned by the
         ///     <see cref="DotAttributeKeyAttribute" /> property attribute.
         /// </summary>
-        public static readonly BindingFlags AttributeKeyPropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+        internal static readonly BindingFlags AttributeKeyPropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
 
-        protected virtual (DotEntityAttributes EntityAttributes, PropertyInfo Property)[][] GetPathsOfEntityAttributeProperties()
+        (DotEntityAttributes EntityAttributes, PropertyInfo Property)[][] IDotEntityAttributes.GetPathsToAttributeProperties()
         {
             var result = new List<Tuple<DotEntityAttributes, PropertyInfo>[]>();
-            GetPathsOfEntityAttributeProperties(result, Array.Empty<Tuple<DotEntityAttributes, PropertyInfo>>());
+            GetPathsToAttributeProperties(result, Array.Empty<Tuple<DotEntityAttributes, PropertyInfo>>());
 
             return result.Select(item =>
                 item.Select(x => x.ToValueTuple()).ToArray()
             ).ToArray();
         }
 
-        protected virtual void GetPathsOfEntityAttributeProperties(
+        protected virtual void GetPathsToAttributeProperties(
             List<Tuple<DotEntityAttributes, PropertyInfo>[]> output,
             Tuple<DotEntityAttributes, PropertyInfo>[] basePath
         )
@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
                 if (typeof(DotEntityAttributes).IsAssignableFrom(property.PropertyType))
                 {
                     var next = (DotEntityAttributes) property.GetValue(this);
-                    next.GetPathsOfEntityAttributeProperties(output, currentPath);
+                    next.GetPathsToAttributeProperties(output, currentPath);
                 }
             }
         }

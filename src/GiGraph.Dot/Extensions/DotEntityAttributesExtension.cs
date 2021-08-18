@@ -3,31 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Entities.Attributes.Properties
+namespace GiGraph.Dot.Extensions
 {
-    public abstract class DotEntityAttributesWithMetadata<TIEntityAttributeProperties> : DotEntityAttributes<TIEntityAttributeProperties>
+    public static class DotEntityAttributesExtension
     {
-        protected DotEntityAttributesWithMetadata(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
-        {
-        }
-
         /// <summary>
         ///     Gets metadata of the DOT attribute the specified property provides access to.
         /// </summary>
+        /// <param name="this">
+        ///     The current attribute collection context whose property to get the metadata for.
+        /// </param>
         /// <param name="property">
         ///     The property to get attribute metadata for.
         /// </param>
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        public virtual DotAttributeMetadata GetMetadata<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        /// <typeparam name="TProperties">
+        ///     Provides access to properties that represent DOT attributes.
+        /// </typeparam>
+        public static DotAttributeMetadata GetMetadata<TProperties, TProperty>(this DotEntityAttributes<TProperties> @this, Expression<Func<TProperties, TProperty>> property)
         {
-            var key = GetKey(property);
+            var key = @this.GetKey(property);
             return DotAttributeKeys.MetadataDictionary[key];
         }
 
@@ -35,9 +35,12 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         ///     Gets a dictionary where the key is a DOT attribute, and the value is attribute metadata in the context of the current
         ///     element.
         /// </summary>
-        public virtual Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary()
+        /// <param name="this">
+        ///     The current attribute collection context to get the metadata dictionary for.
+        /// </param>
+        public static Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary<TProperties>(this DotEntityAttributes<TProperties> @this)
         {
-            var properties = GetPathsOfEntityAttributeProperties();
+            var properties = ((IDotEntityAttributes) @this).GetPathsToAttributeProperties();
 
             return properties
                .Select(path =>
@@ -54,10 +57,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
                         path.Select(item => item.Property).ToArray()
                     );
                 })
-               .ToDictionary(
-                    key => key.Key,
-                    element => element
-                );
+               .ToDictionary(key => key.Key, element => element);
         }
     }
 }
