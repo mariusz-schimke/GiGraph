@@ -294,7 +294,7 @@
     "SortIndex: Int32? [Cluster, Node]"
   ],
   "splines": [
-    "EdgesShape: DotEdgeShape? [Graph]"
+    "EdgeShape: DotEdgeShape? [Graph]"
   ],
   "style": [
     "Style: DotStyles? [Graph, Cluster, Node, Edge]"
