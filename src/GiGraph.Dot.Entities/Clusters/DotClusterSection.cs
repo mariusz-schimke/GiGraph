@@ -8,10 +8,10 @@ using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Clusters
 {
-    public class DotClusterSection : DotCommonGraphSection
+    public partial class DotClusterSection : DotCommonGraphSection
     {
         protected DotClusterSection(
-            DotClusterAttributes attributes,
+            DotClusterRootAttributes attributes,
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
@@ -27,14 +27,14 @@ namespace GiGraph.Dot.Entities.Clusters
         }
 
         public DotClusterSection()
-            : base(new DotClusterAttributes())
+            : base(new DotClusterRootAttributes())
         {
         }
 
         /// <summary>
         ///     The attributes of the cluster.
         /// </summary>
-        public virtual DotClusterAttributes Attributes => (DotClusterAttributes) _attributes;
+        public virtual DotClusterRootAttributes Attributes => (DotClusterRootAttributes) _attributes;
 
         protected override DotAttributeCollection AttributeCollection => Attributes.Collection;
     }

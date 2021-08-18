@@ -17,9 +17,9 @@ namespace GiGraph.Dot.Output.Generators.Tests
         {
             var graph = new DotGraph("graph1", directed);
 
-            graph.Attributes.Comment = "graph_comment";
-            graph.Clusters.Attributes.AllowEdgeClipping = true;
-            graph.Clusters.Attributes.FillColor = Color.Brown;
+            graph.Comment = "graph_comment";
+            graph.Clusters.AllowEdgeClipping = true;
+            graph.Clusters.FillColor = Color.Brown;
 
             graph.Subgraphs.Add().Id = "Subgraph2";
             graph.Subgraphs.Add().Id = "Subgraph1";
@@ -27,46 +27,46 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Clusters.Add("Cluster2");
             graph.Clusters.Add("Cluster1");
 
-            graph.Nodes.Attributes.Color = Color.Red;
-            graph.Nodes.Attributes.Label = "node_label";
+            graph.Nodes.Color = Color.Red;
+            graph.Nodes.Label = "node_label";
 
-            graph.Edges.Attributes.Color = Color.Blue;
-            graph.Edges.Attributes.Label = "edge_label";
+            graph.Edges.Color = Color.Blue;
+            graph.Edges.Label = "edge_label";
 
             graph.Nodes.Add("no_attributes");
-            graph.Nodes.Add("node3", attrs =>
+            graph.Nodes.Add("node3", node =>
             {
-                attrs.Shape = DotNodeShape.Assembly;
-                attrs.Style.BorderWeight = DotBorderWeight.Bold;
+                node.Shape = DotNodeShape.Assembly;
+                node.Style.BorderWeight = DotBorderWeight.Bold;
             });
 
-            graph.Nodes.AddGroup(attrs =>
+            graph.Nodes.AddGroup(nodeGroup =>
             {
-                attrs.Shape = DotNodeShape.Box;
-                attrs.Style.BorderWeight = DotBorderWeight.Bold;
-                attrs.Style.BorderStyle = DotBorderStyle.Dashed;
+                nodeGroup.Shape = DotNodeShape.Box;
+                nodeGroup.Style.BorderWeight = DotBorderWeight.Bold;
+                nodeGroup.Style.BorderStyle = DotBorderStyle.Dashed;
             }, "node1", "node2");
 
             graph.Edges.AddLoop("no_attributes");
             graph.Edges.Add("node6", "node7", edge =>
             {
-                edge.Tail.Port.Name = "port6";
-                edge.Tail.Port.CompassPoint = DotCompassPoint.East;
+                edge.Tail.Endpoint.Port.Name = "port6";
+                edge.Tail.Endpoint.Port.CompassPoint = DotCompassPoint.East;
 
-                edge.Attributes.Color = Color.Gold;
-                edge.Attributes.Style.LineStyle = DotLineStyle.Dotted;
+                edge.Color = Color.Gold;
+                edge.Style.LineStyle = DotLineStyle.Dotted;
             });
 
             graph.Edges.AddSequence(edge =>
             {
-                edge.Attributes.Constrain = true;
-                edge.Attributes.Style.LineStyle = DotLineStyle.Solid;
+                edge.Constrain = true;
+                edge.Style.LineStyle = DotLineStyle.Solid;
             }, "node4", DotSubgraph.FromNodes("snode1", "snode2"), "node5");
 
             graph.Edges.AddSequence(edge =>
             {
-                edge.Attributes.Color = Color.Beige;
-                edge.Attributes.Style.Invisible = true;
+                edge.Color = Color.Beige;
+                edge.Style.Invisible = true;
             }, "node1", "node2", "node3");
 
             graph.Edges.Add(
@@ -87,9 +87,9 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             graph.Annotation = "graph comment";
 
-            graph.Nodes.Attributes.Label = "node label";
-            graph.Edges.Attributes.Label = "edge label";
-            graph.Clusters.Attributes.AllowEdgeClipping = true;
+            graph.Nodes.Label = "node label";
+            graph.Edges.Label = "edge label";
+            graph.Clusters.AllowEdgeClipping = true;
 
             graph.Nodes.Add("node1");
             graph.Edges.Add("node1", "node2");
@@ -97,31 +97,31 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Subgraphs.Add(sg =>
             {
                 sg.Annotation = "subgraph comment";
-                sg.Attributes.NodeRank = DotRank.Min;
+                sg.NodeRank = DotRank.Min;
 
                 sg.Subsections.Add(ss =>
                 {
                     ss.Annotation = "subgraph subsection comment";
-                    ss.Attributes.NodeRank = DotRank.Max;
+                    ss.NodeRank = DotRank.Max;
                 });
             });
 
             graph.Clusters.Add("cluster1", c =>
             {
                 c.Annotation = "cluster comment";
-                c.Attributes.Color = Color.Blue;
+                c.Color = Color.Blue;
 
                 c.Subsections.Add(ss =>
                 {
                     ss.Annotation = "cluster subsection comment";
-                    ss.Attributes.Color = Color.Magenta;
+                    ss.Color = Color.Magenta;
                 });
             });
 
             graph.Subsections.Add(ss =>
             {
                 ss.Annotation = "graph section comment";
-                ss.Attributes.Canvas.BackgroundColor = Color.Blue;
+                ss.Canvas.BackgroundColor = Color.Blue;
                 ss.Nodes.Add("section 1 node");
                 ss.Edges.AddLoop("section 1 node");
             });
@@ -141,33 +141,33 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             // node defaults
             graph.Nodes.Attributes.Annotation = "global node attributes";
-            graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
-            graph.Nodes.Attributes.Geometry.Distortion = 2;
+            graph.Nodes.Shape = DotNodeShape.Rectangle;
+            graph.Nodes.Geometry.Distortion = 2;
 
             // nodes
             graph.Nodes.Annotation = "nodes";
-            graph.Nodes.Add("foo", attrs =>
+            graph.Nodes.Add("foo", node =>
             {
-                attrs.Annotation = "node attributes";
-                attrs.Set(a => a.Label, "foo").Annotation = "label";
+                node.Attributes.Annotation = "node attributes";
+                node.Attributes.Set(a => a.Label, "foo").Annotation = "label";
             }).Annotation = "node comment";
 
             graph.Nodes.AddGroup(new[] { "foo", "bar", "baz" }, node =>
             {
-                node.Annotation = "node group attributes";
-                node.Set(a => a.Label, "foo").Annotation = "label";
+                node.Attributes.Annotation = "node group attributes";
+                node.Attributes.Set(a => a.Label, "foo").Annotation = "label";
             }).Annotation = "node group comment";
 
             // edge defaults
             graph.Edges.Attributes.Annotation = "global edge attributes";
-            graph.Edges.Attributes.Head.Arrowhead = DotArrowheadShape.Curve;
+            graph.Edges.Head.Arrowhead = DotArrowheadShape.Curve;
 
             // edges
             graph.Edges.Annotation = "edges";
             graph.Edges.Add("foo", "bar", edge =>
             {
-                edge.Head.Annotation = "head";
-                edge.Tail.Annotation = "tail";
+                edge.Head.Endpoint.Annotation = "head";
+                edge.Tail.Endpoint.Annotation = "tail";
 
                 edge.Attributes.Annotation = "edge attributes";
                 edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
@@ -198,8 +198,8 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 new DotSubgraphEndpoint("node3", "node4"),
                 edge =>
                 {
-                    edge.Head.Annotation = "subgraph endpoint";
-                    edge.Tail.Annotation = "endpoint group";
+                    edge.Head.Endpoint.Annotation = "subgraph endpoint";
+                    edge.Tail.Endpoint.Annotation = "endpoint group";
                 }
             );
 

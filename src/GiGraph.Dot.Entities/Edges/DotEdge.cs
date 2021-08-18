@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Edges
     /// </summary>
     public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     {
-        protected DotEdge(DotEndpoint tail, DotEndpoint head, DotEdgeAttributes attributes)
+        protected DotEdge(DotEndpoint tail, DotEndpoint head, DotEdgeRootAttributes attributes)
             : base(tail, head, attributes)
         {
         }
@@ -66,7 +66,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         ///     Indicates if the edge is a loop.
         /// </summary>
-        public virtual bool IsLoop => Tail.IsSameEndpoint(Head);
+        public virtual bool IsLoop => Tail.Endpoint.IsSameEndpoint(Head.Endpoint);
 
         /// <summary>
         ///     Determines whether the edge joins the specified endpoint to itself.
@@ -89,8 +89,8 @@ namespace GiGraph.Dot.Entities.Edges
         /// </param>
         public virtual bool Loops(DotEndpoint endpoint)
         {
-            return Tail.IsSameEndpoint(endpoint) &&
-                Head.IsSameEndpoint(endpoint);
+            return Tail.Endpoint.IsSameEndpoint(endpoint) &&
+                Head.Endpoint.IsSameEndpoint(endpoint);
         }
 
         /// <summary>
@@ -104,8 +104,8 @@ namespace GiGraph.Dot.Entities.Edges
         /// </param>
         public virtual bool Equals(string tailId, string headId)
         {
-            return Tail.Id == tailId &&
-                Head.Id == headId;
+            return Tail.Endpoint.Id == tailId &&
+                Head.Endpoint.Id == headId;
         }
 
         /// <summary>
@@ -119,8 +119,8 @@ namespace GiGraph.Dot.Entities.Edges
         /// </param>
         public virtual bool Equals(DotEndpoint tail, DotEndpoint head)
         {
-            return Tail.IsSameEndpoint(tail) &&
-                Head.IsSameEndpoint(head);
+            return Tail.Endpoint.IsSameEndpoint(tail) &&
+                Head.Endpoint.IsSameEndpoint(head);
         }
     }
 }

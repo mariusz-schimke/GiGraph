@@ -1,0 +1,4 @@
+﻿digraph
+{
+    node [ fillcolor = "red:brown", gradientangle = 45, style = filled ]
+}

@@ -59,7 +59,8 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                 {
                     metadata.Element,
                     attribute.Key,
-                    attribute.Value.PropertyPath
+                    attribute.Value.PropertyPath,
+                    Property = attribute.Value.GetPropertyInfoPath().Last()
                 }))
                .ToLookup(
                     key => key.Key,
@@ -71,10 +72,18 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                     {
                         return element
                            .GroupBy(
-                                groupKey => groupKey.PropertyPath,
+                                groupKey =>
+                                {
+                                    var propertyTypeName = Nullable.GetUnderlyingType(groupKey.Property.PropertyType) is { } underlyingType
+                                        ? $"{underlyingType.Name}?"
+                                        : groupKey.Property.PropertyType.Name;
+
+                                    return $"{groupKey.PropertyPath}: {propertyTypeName}";
+                                },
                                 groupElement => groupElement.Element
                             )
                            .Select(property => $"{property.Key} [{property.Aggregate((current, value) => current | value)}]")
+                           .OrderBy(property => property)
                            .ToArray();
                     }
                 );

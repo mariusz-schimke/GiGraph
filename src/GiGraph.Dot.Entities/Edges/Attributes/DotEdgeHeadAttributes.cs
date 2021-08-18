@@ -8,7 +8,7 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public class DotEdgeHeadAttributes : DotEdgeEndpointAttributes
+    public class DotEdgeHeadAttributes : DotEdgeEndpointAttributes, IDotEdgeHeadRootAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup EdgeHeadAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadAttributes, IDotEdgeEndpointAttributes>().Build();
 

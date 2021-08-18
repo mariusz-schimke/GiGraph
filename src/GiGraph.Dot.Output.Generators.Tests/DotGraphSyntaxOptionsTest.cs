@@ -113,7 +113,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
         public void renders_graph_with_correctly_with_colors_as_hex()
         {
             var graph = new DotGraph();
-            graph.Attributes.Canvas.BackgroundColor = Color.Brown;
+            graph.Canvas.BackgroundColor = Color.Brown;
 
             var options = new DotSyntaxOptions
             {

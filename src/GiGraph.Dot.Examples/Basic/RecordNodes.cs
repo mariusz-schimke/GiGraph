@@ -46,8 +46,8 @@ namespace GiGraph.Dot.Examples.Basic
 
             graph.Edges.Add("Foo", "Bar", edge =>
             {
-                edge.Head.Port.Name = "port1";
-                edge.Head.Port.CompassPoint = DotCompassPoint.NorthEast;
+                edge.Head.Endpoint.Port.Name = "port1";
+                edge.Head.Endpoint.Port.CompassPoint = DotCompassPoint.NorthEast;
             });
 
             return graph;

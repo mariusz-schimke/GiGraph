@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;

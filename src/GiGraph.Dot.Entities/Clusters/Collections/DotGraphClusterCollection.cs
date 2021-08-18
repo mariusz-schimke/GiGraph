@@ -2,16 +2,19 @@
 
 namespace GiGraph.Dot.Entities.Clusters.Collections
 {
-    public class DotGraphClusterCollection : DotClusterCollection
+    public partial class DotGraphClusterCollection : DotClusterCollection
     {
-        public DotGraphClusterCollection(DotGraphClusterAttributes attributes)
+        protected readonly DotGraphRootAttributes _graphAttributes;
+
+        public DotGraphClusterCollection(DotGraphRootAttributes graphAttributes, DotGraphClusterRootAttributes graphClusterAttributes)
         {
-            Attributes = attributes;
+            _graphAttributes = graphAttributes;
+            Attributes = graphClusterAttributes;
         }
 
         /// <summary>
         ///     Global graph attributes applied to clusters.
         /// </summary>
-        public virtual DotGraphClusterAttributes Attributes { get; }
+        public virtual DotGraphClusterRootAttributes Attributes { get; }
     }
 }

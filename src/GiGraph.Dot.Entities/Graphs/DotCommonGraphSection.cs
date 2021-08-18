@@ -75,7 +75,7 @@ namespace GiGraph.Dot.Entities.Graphs
         ///     </para>
         ///     <para>
         ///         Use a subgraph when you want to have more granular control on the layout of the nodes it contains by constraining them
-        ///         within a rank (see the subgraph's <see cref="DotSubgraphAttributes.NodeRank" /> attribute). However, when you want the
+        ///         within a rank (see the subgraph's <see cref="IDotSubgraphAttributes.NodeRank" /> attribute). However, when you want the
         ///         nodes to be drawn together in a bounding rectangle, that has a custom color and fill, use a cluster instead (
         ///         <see cref="Clusters" />). You can use either of these types to set a common style of nodes and edges within them.
         ///     </para>

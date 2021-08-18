@@ -1,0 +1,6 @@
+﻿digraph
+{
+    edge [ color = "red:black:green;0.5" ]
+
+    edge [ color = "red:black:green;0.5" ]
+}

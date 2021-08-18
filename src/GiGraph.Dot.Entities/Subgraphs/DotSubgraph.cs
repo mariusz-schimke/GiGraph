@@ -54,7 +54,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         public DotSubgraph(string id, DotRank? nodeRank)
             : this(id)
         {
-            Attributes.NodeRank = nodeRank;
+            NodeRank = nodeRank;
         }
 
         /// <summary>

@@ -1,0 +1,8 @@
+﻿digraph
+{
+    bgcolor = "gold:darkmagenta"
+    style = ""
+
+    bgcolor = "gold:darkmagenta"
+    style = striped
+}

@@ -14,9 +14,9 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         {
             var graph = new DotGraph();
 
-            graph.Edges.AddLoop("node1").Attributes.Head.ClusterId = null;
-            graph.Edges.AddLoop("node2").Attributes.Head.ClusterId = "cluster1";
-            graph.Edges.AddLoop("node3").Attributes.Head.ClusterId = new DotClusterId(null);
+            graph.Edges.AddLoop("node1").Head.ClusterId = null;
+            graph.Edges.AddLoop("node2").Head.ClusterId = "cluster1";
+            graph.Edges.AddLoop("node3").Head.ClusterId = new DotClusterId(null);
 
             Snapshot.Match(graph.Build(), "cluster_id_attribute.gv");
         }
@@ -26,10 +26,10 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         {
             var graph = new DotGraph();
 
-            graph.Subsections.Add().Attributes.RootNodeId = null;
-            graph.Subsections.Add().Attributes.RootNodeId = "root";
-            graph.Subsections.Add().Attributes.RootNodeId = new DotId(null);
-            graph.Subsections.Add().Attributes.RootNodeId = new DotClusterId("root");
+            graph.Subsections.Add().RootNodeId = null;
+            graph.Subsections.Add().RootNodeId = "root";
+            graph.Subsections.Add().RootNodeId = new DotId(null);
+            graph.Subsections.Add().RootNodeId = new DotClusterId("root");
 
             Snapshot.Match(graph.Build(), "root_node_id_attribute.gv");
         }

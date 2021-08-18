@@ -11,20 +11,20 @@ namespace GiGraph.Dot.Examples.Basic
             var graph = new DotGraph();
 
             // node label with the ID of the node
-            graph.Nodes.Add("Foo", attrs =>
+            graph.Nodes.Add("Foo", node =>
             {
-                attrs.Shape = DotNodeShape.Box;
-                attrs.Size.Width = 3;
+                node.Shape = DotNodeShape.Box;
+                node.Size.Width = 3;
 
                 // using text formatter
-                attrs.Label = new DotFormattedTextBuilder()
+                node.Label = new DotFormattedTextBuilder()
                    .AppendLine("Centered line")
                    .AppendLeftJustifiedLine("Left-justified line")
                    .AppendRightJustifiedLine("Right-justified line")
                    .Build();
 
                 // using string concatenation
-                attrs.Label = "Centered line" + DotEscapeString.LineBreak +
+                node.Label = "Centered line" + DotEscapeString.LineBreak +
                     DotEscapeString.JustifyLeft("Left-justified line") +
                     DotEscapeString.JustifyRight("Right-justified line");
             });

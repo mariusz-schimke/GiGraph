@@ -18,13 +18,13 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         /// <summary>
         ///     Indicates where on the node to attach the end of the edge. In the default case (<see cref="DotCompassPoint.Center" />), the
         ///     edge is aimed towards the center of the node, and then clipped at the node boundary. See also the corresponding
-        ///     <see cref="DotEndpoint.Port" /> property of the edge's <see cref="DotEdge{TTail,THead}.Head" /> or
-        ///     <see cref="DotEdge{TTail,THead}.Tail" />.
+        ///     <see cref="DotEndpoint.Port" /> property on the <see cref="DotEdgeEndpoint{TEndpoint}.Endpoint" /> of the
+        ///     <see cref="DotEdge{TTail,THead}.Head" /> or <see cref="DotEdge{TTail,THead}.Tail" /> of the edge.
         /// </summary>
         DotEndpointPort Port { get; set; }
 
         /// <summary>
-        ///     Logical endpoint of the edge (dot only). When <see cref="DotGraphClusterAttributes.AllowEdgeClipping" /> is true (see
+        ///     Logical endpoint of the edge (dot only). When <see cref="IDotGraphClusterAttributes.AllowEdgeClipping" /> is true (see
         ///     attributes on the graph's <see cref="DotCommonGraphSection.Clusters" /> collection), if the current property is defined, and
         ///     is the identifier of a cluster containing the real endpoint node, the edge is clipped to the boundary of the cluster.
         /// </summary>
@@ -45,9 +45,10 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         /// <summary>
         ///     <para>
         ///         Gets or sets the style of arrowhead at the end of the edge (default: <see cref="DotArrowheadShape.Normal" />). Appears
-        ///         only if the <see cref="DotEdgeAttributes.Directions" /> attribute on the edge is <see cref="DotEdgeDirections.Forward" />
-        ///         (when specifying an arrowhead for the head endpoint), <see cref="DotEdgeDirections.Backward" /> (when specifying an
-        ///         arrowhead for the tail endpoint), or <see cref="DotEdgeDirections.Both" />.
+        ///         only if the <see cref="IDotEdgeAttributes.Directions" /> attribute on the edge is
+        ///         <see cref="DotEdgeDirections.Forward" /> (when specifying an arrowhead for the head endpoint),
+        ///         <see cref="DotEdgeDirections.Backward" /> (when specifying an arrowhead for the tail endpoint), or
+        ///         <see cref="DotEdgeDirections.Both" />.
         ///     </para>
         ///     <para>
         ///         For basic shapes, assign a value of the <see cref="DotArrowheadShape" /> enumeration to this property (it will be

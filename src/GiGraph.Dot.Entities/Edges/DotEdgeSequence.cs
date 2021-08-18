@@ -14,8 +14,10 @@ namespace GiGraph.Dot.Entities.Edges
     {
         protected readonly DotEndpointDefinition[] _endpoints;
 
-        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeAttributes attributes)
-            : base(attributes)
+        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes rootAttributes,
+            DotEdgeTailAttributes tailAttributes, DotEdgeHeadAttributes headAttributes
+        )
+            : base(rootAttributes)
         {
             if (endpoints is null)
             {
@@ -25,6 +27,14 @@ namespace GiGraph.Dot.Entities.Edges
             _endpoints = endpoints.Length > 1
                 ? endpoints
                 : throw new ArgumentException("At least a pair of endpoints has to be specified for an edge sequence.", nameof(endpoints));
+
+            Tails = tailAttributes;
+            Heads = headAttributes;
+        }
+
+        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes rootAttributes)
+            : this(endpoints, rootAttributes, new DotEdgeTailAttributes(rootAttributes.Collection), new DotEdgeHeadAttributes(rootAttributes.Collection))
+        {
         }
 
         /// <summary>
@@ -34,7 +44,7 @@ namespace GiGraph.Dot.Entities.Edges
         ///     The endpoints to initialize the instance with.
         /// </param>
         public DotEdgeSequence(params DotEndpointDefinition[] endpoints)
-            : this(endpoints, new DotEdgeAttributes())
+            : this(endpoints, new DotEdgeRootAttributes())
         {
         }
 
@@ -77,6 +87,16 @@ namespace GiGraph.Dot.Entities.Edges
         ///     Gets the sequence of endpoints.
         /// </summary>
         public override DotEndpointDefinition[] Endpoints => _endpoints;
+
+        /// <summary>
+        ///     Properties applied to the heads of the edges in this sequence.
+        /// </summary>
+        public virtual DotEdgeHeadAttributes Heads { get; }
+
+        /// <summary>
+        ///     Properties applied to the tails of the edges in this sequence.
+        /// </summary>
+        public virtual DotEdgeTailAttributes Tails { get; }
 
         protected override string GetOrderingKey()
         {

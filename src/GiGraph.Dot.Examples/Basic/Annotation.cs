@@ -18,26 +18,26 @@ namespace GiGraph.Dot.Examples.Basic
 
             // node defaults
             graph.Nodes.Attributes.Annotation = "global node attributes";
-            graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
+            graph.Nodes.Shape = DotNodeShape.Rectangle;
 
             // nodes
             graph.Nodes.Annotation = "nodes";
-            graph.Nodes.Add("foo", attrs =>
+            graph.Nodes.Add("foo", node =>
             {
-                attrs.Annotation = "node attributes";
-                attrs.Set(a => a.Label, "foo").Annotation = "label";
+                node.Attributes.Annotation = "node attributes";
+                node.Attributes.Set(a => a.Label, "foo").Annotation = "label";
             }).Annotation = "node comment";
 
             // edge defaults
             graph.Edges.Attributes.Annotation = "global edge attributes";
-            graph.Edges.Attributes.Head.Arrowhead = DotArrowheadShape.Curve;
+            graph.Edges.Head.Arrowhead = DotArrowheadShape.Curve;
 
             // edges
             graph.Edges.Annotation = "edges";
             graph.Edges.Add("foo", "bar", edge =>
             {
-                edge.Head.Annotation = "head";
-                edge.Tail.Annotation = "tail";
+                edge.Head.Endpoint.Annotation = "head";
+                edge.Tail.Endpoint.Annotation = "tail";
 
                 edge.Attributes.Annotation = "edge attributes";
                 edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";

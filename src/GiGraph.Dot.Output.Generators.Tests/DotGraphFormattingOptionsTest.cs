@@ -63,9 +63,9 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             graph.Clusters.Add("cluster1", x =>
             {
-                x.Attributes.ObjectId = "id";
-                x.Nodes.Add("node").Attributes.Comment = "comment";
-                x.Edges.AddLoop("node").Attributes.Directions = DotEdgeDirections.Backward;
+                x.ObjectId = "id";
+                x.Nodes.Add("node").Comment = "comment";
+                x.Edges.AddLoop("node").Directions = DotEdgeDirections.Backward;
             });
 
             var options = new DotFormattingOptions
@@ -181,8 +181,8 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             graph.Subgraphs.Add(DotRank.Max, x =>
             {
-                x.Nodes.Add("node").Attributes.Comment = "comment";
-                x.Edges.AddLoop("node").Attributes.Directions = DotEdgeDirections.Backward;
+                x.Nodes.Add("node").Comment = "comment";
+                x.Edges.AddLoop("node").Directions = DotEdgeDirections.Backward;
             });
 
             var options = new DotFormattingOptions
@@ -203,21 +203,21 @@ namespace GiGraph.Dot.Output.Generators.Tests
             var graph = new DotGraph();
 
             graph.Edges.AddOneToMany("a", "b", "c");
-            graph.Edges.AddOneToMany("d", "e", "f").Head.Subgraph.Id = "subgraph1";
+            graph.Edges.AddOneToMany("d", "e", "f").Head.Endpoint.Subgraph.Id = "subgraph1";
 
             graph.Edges.AddManyToMany(new[] { "g", "h" }, new[] { "i", "j" }, e =>
             {
-                e.Head.Subgraph.Id = "head";
-                e.Tail.Subgraph.Id = "tail";
+                e.Head.Endpoint.Subgraph.Id = "head";
+                e.Tail.Endpoint.Subgraph.Id = "tail";
             });
 
             graph.Edges.AddManyToMany(new[] { "k", "l" }, new[] { "m", "n" }, e =>
             {
-                e.Head.Annotation = "head subgraph comment";
-                e.Tail.Annotation = "tail subgraph comment";
+                e.Head.Endpoint.Annotation = "head subgraph comment";
+                e.Tail.Endpoint.Annotation = "tail subgraph comment";
 
-                e.Head.Subgraph.Id = "head";
-                e.Tail.Subgraph.Id = "tail";
+                e.Head.Endpoint.Subgraph.Id = "head";
+                e.Tail.Endpoint.Subgraph.Id = "tail";
             });
 
             graph.Edges.AddManyToMany(new[] { "o", "p" }, "q", "r");

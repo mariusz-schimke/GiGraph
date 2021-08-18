@@ -1,0 +1,6 @@
+﻿digraph
+{
+    edge [ penwidth = 4, style = tapered ]
+
+    a -> b [ penwidth = 4, style = tapered ]
+}

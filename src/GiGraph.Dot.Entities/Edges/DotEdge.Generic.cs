@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Entities.Edges.Attributes;
+﻿using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output;
 
@@ -45,11 +44,23 @@ namespace GiGraph.Dot.Entities.Edges
         where TTail : DotEndpointDefinition, IDotOrderable
         where THead : DotEndpointDefinition, IDotOrderable
     {
-        protected DotEdge(TTail tail, THead head, DotEdgeAttributes attributes)
-            : base(attributes)
+        protected DotEdge(TTail tail, THead head,
+            DotEdgeRootAttributes rootAttributes,
+            DotEdgeTailAttributes tailAttributes,
+            DotEdgeHeadAttributes headAttributes
+        )
+            : base(rootAttributes)
         {
-            Tail = tail ?? throw new ArgumentNullException(nameof(tail), "Edge tail must not be null.");
-            Head = head ?? throw new ArgumentNullException(nameof(head), "Edge head must not be null.");
+            Tail = new DotEdgeTail<TTail>(tail, tailAttributes);
+            Head = new DotEdgeHead<THead>(head, headAttributes);
+        }
+
+        protected DotEdge(TTail tail, THead head, DotEdgeRootAttributes rootAttributes)
+            : this(tail, head, rootAttributes,
+                new DotEdgeTailAttributes(rootAttributes.Collection),
+                new DotEdgeHeadAttributes(rootAttributes.Collection)
+            )
+        {
         }
 
         /// <summary>
@@ -62,28 +73,28 @@ namespace GiGraph.Dot.Entities.Edges
         ///     The head endpoint.
         /// </param>
         public DotEdge(TTail tail, THead head)
-            : this(tail, head, new DotEdgeAttributes())
+            : this(tail, head, new DotEdgeRootAttributes())
         {
         }
 
         /// <summary>
         ///     Gets or sets the tail endpoint.
         /// </summary>
-        public virtual TTail Tail { get; }
+        public virtual DotEdgeTail<TTail> Tail { get; }
 
         /// <summary>
         ///     Gets or sets the head endpoint.
         /// </summary>
-        public virtual THead Head { get; }
+        public virtual DotEdgeHead<THead> Head { get; }
 
         /// <summary>
         ///     Gets the endpoints of this edge.
         /// </summary>
-        public override DotEndpointDefinition[] Endpoints => new DotEndpointDefinition[] { Tail, Head };
+        public override DotEndpointDefinition[] Endpoints => new DotEndpointDefinition[] { Tail.Endpoint, Head.Endpoint };
 
         protected override string GetOrderingKey()
         {
-            return $"{Tail.OrderingKey} {Head.OrderingKey}";
+            return $"{Tail.Endpoint.OrderingKey} {Head.Endpoint.OrderingKey}";
         }
     }
 }

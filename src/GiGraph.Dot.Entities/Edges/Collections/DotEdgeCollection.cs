@@ -11,20 +11,35 @@ namespace GiGraph.Dot.Entities.Edges.Collections
     /// </summary>
     public partial class DotEdgeCollection : List<DotEdgeDefinition>, IDotEntity, IDotAnnotatable
     {
-        protected DotEdgeCollection(DotEdgeAttributes attributes)
+        protected DotEdgeCollection(
+            DotEdgeRootAttributes attributes,
+            DotEdgeHeadAttributes headAttributes,
+            DotEdgeTailAttributes tailAttributes
+        )
         {
             Attributes = attributes;
+            Head = headAttributes;
+            Tail = tailAttributes;
+        }
+
+        protected DotEdgeCollection(DotEdgeRootAttributes attributes)
+            : this(
+                attributes,
+                new DotEdgeHeadAttributes(attributes.Collection),
+                new DotEdgeTailAttributes(attributes.Collection)
+            )
+        {
         }
 
         public DotEdgeCollection()
-            : this(new DotEdgeAttributes())
+            : this(new DotEdgeRootAttributes())
         {
         }
 
         /// <summary>
         ///     Gets the attributes to apply by default to all edges of the graph.
         /// </summary>
-        public virtual DotEdgeAttributes Attributes { get; }
+        public virtual DotEdgeRootAttributes Attributes { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

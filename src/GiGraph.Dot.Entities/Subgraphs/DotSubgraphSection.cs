@@ -8,10 +8,10 @@ using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
-    public class DotSubgraphSection : DotCommonGraphSection
+    public partial class DotSubgraphSection : DotCommonGraphSection
     {
         protected DotSubgraphSection(
-            DotSubgraphAttributes attributes,
+            DotSubgraphRootAttributes attributes,
             DotNodeCollection nodes,
             DotEdgeCollection edges,
             DotSubgraphCollection subgraphs,
@@ -27,14 +27,14 @@ namespace GiGraph.Dot.Entities.Subgraphs
         }
 
         public DotSubgraphSection()
-            : base(new DotSubgraphAttributes())
+            : base(new DotSubgraphRootAttributes())
         {
         }
 
         /// <summary>
         ///     The attributes of the subgraph.
         /// </summary>
-        public virtual DotSubgraphAttributes Attributes => (DotSubgraphAttributes) _attributes;
+        public virtual DotSubgraphRootAttributes Attributes => (DotSubgraphRootAttributes) _attributes;
 
         protected override DotAttributeCollection AttributeCollection => Attributes.Collection;
     }

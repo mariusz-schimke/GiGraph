@@ -1,0 +1,14 @@
+﻿digraph
+{
+    subgraph cluster
+    {
+        fillcolor = "red:blue"
+        style = striped
+    }
+
+    subgraph cluster
+    {
+        fillcolor = "red:blue"
+        style = striped
+    }
+}

@@ -4,9 +4,9 @@ using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Edges
 {
-    public abstract class DotEdgeDefinition : IDotEntity, IDotAnnotatable, IDotOrderable
+    public abstract partial class DotEdgeDefinition : IDotEntity, IDotAnnotatable, IDotOrderable
     {
-        protected DotEdgeDefinition(DotEdgeAttributes attributes)
+        protected DotEdgeDefinition(DotEdgeRootAttributes attributes)
         {
             Attributes = attributes;
         }
@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         ///     Gets the attributes of the edge.
         /// </summary>
-        public virtual DotEdgeAttributes Attributes { get; }
+        public virtual DotEdgeRootAttributes Attributes { get; }
 
         /// <summary>
         ///     Gets the endpoints of the edge.
