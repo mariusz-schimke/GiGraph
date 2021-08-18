@@ -34,7 +34,7 @@ For a complete documentation of the DOT language and visualization capabilities 
 - [Graph building blocks](#graph-building-blocks)
   * [Graph](#graph)
   * [Attributes](#attributes)
-    + [Global (default) attributes](#global--default--attributes)
+    + [Global attributes](#global-attributes)
     + [Label justification and styling](#label-justification-and-styling)
       - [Label justification](#label-justification)
       - [Label placeholders](#label-placeholders)
@@ -171,19 +171,19 @@ Every element of the graph, including the graph itself, has **attributes**. Thes
 There are over 170 different attributes listed in the <a href="http://www.graphviz.org/doc/info/attrs.html" target="_blank">documentation</a>, that may be set on the graph or on its elements. The library lets you set most of them conveniently by using properties on attribute collections available on the graph and other elements. Below are a few examples of setting attributes on the graph, on a node and on an edge:
 
 ```c#
-graph.Attributes.Label = "My graph";
-graph.Attributes.Layout.Direction = DotLayoutDirection.LeftToRight;
-graph.Attributes.Canvas.BackgroundColor = Color.LightGray;
+graph.Label = "My graph";
+graph.Layout.Direction = DotLayoutDirection.LeftToRight;
+graph.Canvas.BackgroundColor = Color.LightGray;
 ```
 
 
 
 ```c#
-graph.Nodes.Add("Foo", attrs =>
+graph.Nodes.Add("Foo", node =>
 {
-    attrs.Label = "My Foo node";
-    attrs.Style.FillStyle = DotNodeFillStyle.Normal;
-    attrs.FillColor = Color.Blue;
+    node.Label = "My Foo node";
+    node.Style.FillStyle = DotNodeFillStyle.Normal;
+    node.FillColor = Color.Blue;
 });
 ```
 
@@ -192,8 +192,8 @@ graph.Nodes.Add("Foo", attrs =>
 ```c#
 graph.Edges.Add("Foo", "Bar", edge =>
 {
-    edge.Attributes.Label = "My Foo-Bar edge";
-    edge.Attributes.Color = Color.Red;
+    edge.Label = "My Foo-Bar edge";
+    edge.Color = Color.Red;
 });
 ```
 
@@ -230,6 +230,8 @@ node.Attributes.Collection.SetCustom("fillcolor", "red:blue");
 ❕ Note, however, that when you can't find a property for the Graphviz attribute you would like to set, just use the attribute metadata dictionary on the graph or on any other element that has an attribute collection. The metadata includes, among others, a property path for an associated Graphviz attribute key:
 
 ```c#
+using GiGraph.Dot.Extensions;
+
 var dict = graph.Attributes.GetMetadataDictionary();
 
 // outputs "Hyperlink.Target"
@@ -239,7 +241,9 @@ Console.WriteLine(dict["target"].PropertyPath);
 You may also do it the other way round:
 
 ```c#
-var meta = graph.Attributes.Hyperlink.GetMetadata(attr => attr.Target);
+using GiGraph.Dot.Extensions;
+
+var meta = graph.Hyperlink.GetMetadata(attr => attr.Target);
 
 // outputs "target"
 Console.WriteLine(meta.Key);
@@ -251,18 +255,18 @@ Console.WriteLine(meta.Key);
 
 
 
-### Global (default) attributes
+### Global attributes
 
-Node and edge attributes may be specified on the graph, on the subgraph, or on the cluster level. This way the attributes (by the library design), apply to all elements on that level, and you don't have to specify them individually, per element. This approach comes in handy when you want to apply certain styling, for instance, to all elements of the graph or subgraph/cluster at once. Attributes may be set directly on individual elements at the same time to override or extend the list of attributes set globally.
+Node and edge attributes may be specified on the graph, on the subgraph, or on the cluster level. This way the attributes (by the library design) apply to all elements within that scope, and you don't have to specify them individually, per element. This approach comes in handy when you want to apply certain styling, for instance, to all elements of the graph or subgraph/cluster at once. Attributes may be set directly on individual elements at the same time to override or extend the list of attributes set globally.
 
 ```c#
 // node attributes on graph level (they apply to all nodes of the graph)
-graph.Nodes.Attributes.Color = Color.Orange;
+graph.Nodes.Color = Color.Orange;
 ```
 
 ```c#
 // edge attributes on graph level (they apply to all edges of the graph)
-graph.Edges.Attributes.Color = Color.Red;
+graph.Edges.Color = Color.Red;
 ```
 
 ```dot
@@ -281,21 +285,22 @@ Consider the following example:
 
 ```c#
 // global node color set on graph level
-graph.Nodes.Attributes.Color = Color.Orange;
+graph.Nodes.Color = Color.Orange;
 
 // this node will have the globally set color
 graph.Nodes.Add("orange");
 
 // this node will have a blank value assigned to the 'color' attribute
-graph.Nodes.Add("restored", attrs =>
+graph.Nodes.Add("restored", node =>
 {
     // assign null to the attribute by using a lambda expression (recommended)
-    attrs.Nullify(a => a.Color);
-  
-    // or by specifying its key explicitly
-    attrs.Collection.Nullify("color");
+    node.Attributes.Nullify(a => a.Color);
 
-    // the following wouldn't do the trick because it removes the attribute from the collection, so it wouldn't appear in the output DOT script at all
+    // or by specifying its key explicitly
+    node.Attributes.Collection.Nullify("color");
+
+    // the following wouldn't do the trick because it removes the attribute from the collection,
+    // so it wouldn't appear in the output DOT script at all
     // attrs.Color = null;
 });
 ```
@@ -326,20 +331,20 @@ Label is a textual attribute you may assign to the root graph and clusters (as a
 The lines of text assigned to any *DotLabel* or <a href="http://www.graphviz.org/docs/attr-types/escString" target="_blank">DotEscapeString</a> type attribute may contain special escape sequences that left- or right-justify them. Below is an example how to format text using them implicitly (by the use of the *DotFormattedTextBuilder* class) or explicitly (by string concatenation).
 
 ```c#
-graph.Nodes.Add("Foo", attrs =>
+graph.Nodes.Add("Foo", node =>
 {
-    attrs.Shape = DotNodeShape.Box;
-    attrs.Size.Width = 3;
+    node.Shape = DotNodeShape.Box;
+    node.Size.Width = 3;
 
     // use text formatter
-    attrs.Label = new DotFormattedTextBuilder()
+    node.Label = new DotFormattedTextBuilder()
         .AppendLine("Centered line")
         .AppendLeftJustifiedLine("Left-justified line")
         .AppendRightJustifiedLine("Right-justified line")
         .Build();
 
     // or string concatenation
-    attrs.Label = "Centered line" + DotEscapeString.LineBreak +
+    node.Label = "Centered line" + DotEscapeString.LineBreak +
         DotEscapeString.JustifyLeft("Left-justified line") +
         DotEscapeString.JustifyRight("Right-justified line");
 });
@@ -367,37 +372,37 @@ Below is an example presenting labels with element-specific escape sequences emb
 var graph = new DotGraph("Label formatting");
 
 // formatted text builder
-graph.Attributes.Label = new DotFormattedTextBuilder("Graph title: ")
+graph.Label = new DotFormattedTextBuilder("Graph title: ")
     .AppendGraphId() // graph ID placeholder
     .Build();
 
 // the same effect by string concatenation
-graph.Attributes.Label = "Graph title: " + DotEscapeString.GraphId;
+graph.Label = "Graph title: " + DotEscapeString.GraphId;
 
 
-graph.Nodes.Add("Foo", attrs =>
+graph.Nodes.Add("Foo", node =>
 {
     // formatted text builder
-    attrs.Label = new DotFormattedTextBuilder("Node ")
+    node.Label = new DotFormattedTextBuilder("Node ")
         .AppendNodeId() // node ID placeholder
         .Build();
 
     // the same effect by string concatenation
-    attrs.Label = "Node " + DotEscapeString.NodeId;
+    node.Label = "Node " + DotEscapeString.NodeId;
 });
 
 
 graph.Edges.Add("Foo", "Bar", edge =>
 {
     // formatted text builder
-    edge.Attributes.Label = new DotFormattedTextBuilder("From ")
+    edge.Label = new DotFormattedTextBuilder("From ")
         .AppendTailNodeId() // tail node ID placeholder
         .Append(" to ")
         .AppendHeadNodeId() // head node ID placeholder
         .Build();
 
     // the same effect by string concatenation
-    edge.Attributes.Label = "From " + DotEscapeString.TailNodeId +
+    edge.Label = "From " + DotEscapeString.TailNodeId +
         " to " + DotEscapeString.HeadNodeId;
 });
 ```
@@ -436,13 +441,13 @@ Consider the following example. For simplicity, it uses only a narrow subset of 
 ```c#
 var graph = new DotGraph();
 
-graph.Nodes.Add("Foo", attrs =>
+graph.Nodes.Add("Foo", node =>
 {
-    attrs.Shape = DotNodeShape.Rectangle;
+    node.Shape = DotNodeShape.Rectangle;
 
-    attrs.Label = new DotHtmlBuilder()
-        // appends a <font> element to the builder, with a custom size, color and style
-       .AppendStyledFont(new DotStyledFont(DotFontStyles.Bold, 20, Color.RoyalBlue),
+    node.Label = new DotHtmlBuilder()
+         // appends a <font> element to the builder, with a custom size, color and style
+        .AppendStyledFont(new DotStyledFont(DotFontStyles.Bold, 20, Color.RoyalBlue),
             // specifies content of the parent <font> element
             font => font
                 // appends any custom HTML
@@ -450,12 +455,12 @@ graph.Nodes.Add("Foo", attrs =>
                 // appends plain text and text embedded in another <font> tag with a color specified
                .AppendText("Foo ").AppendText("Bar", new DotFont(Color.Black))
         )
-        // appends a <br/> element
-       .AppendLine()
-        // appends text embedded in the <i> and <u> elements
-       .AppendStyledText("Baz", DotFontStyles.Italic | DotFontStyles.Underline)
-        // returns a type that may be assigned directly to a label
-       .Build();
+         // appends a <br/> element
+        .AppendLine()
+         // appends text embedded in the <i> and <u> elements
+        .AppendStyledText("Baz", DotFontStyles.Italic | DotFontStyles.Underline)
+         // returns a type that may be assigned directly to a label
+        .Build();
 });
 ```
 
@@ -473,10 +478,12 @@ digraph
 If you prefer to compose the label by yourself, however, type cast your HTML string to *DotHtmlString* or call the *AsHtml()* extension method on that string and assign the result to a label of an element:
 
 ```c#
-graph.Nodes.Add("Foo", attrs =>
+using GiGraph.Dot.Extensions;
+
+graph.Nodes.Add("Foo", node =>
 {
-    attrs.Shape = DotNodeShape.Rectangle;
-    attrs.Label = @"<font color=""royalblue"" point-size=""20""><b>&bull; Foo <font color=""black"">Bar</font></b></font><br/><i><u>Baz</u></i>".AsHtml();
+    node.Shape = DotNodeShape.Rectangle;
+    node.Label = @"<font color=""royalblue"" point-size=""20""><b>&bull; Foo <font color=""black"">Bar</font></b></font><br/><i><u>Baz</u></i>".AsHtml();
 });
 ```
 
@@ -494,10 +501,10 @@ A node may be added to the node collection of the root graph, of a subgraph, or 
 
 ```c#
 // adding a node to the node collection of the graph
-graph.Nodes.Add("Foo", attrs =>
+graph.Nodes.Add("Foo", node =>
 {
-    attrs.Label = "Hello World!";
-    attrs.Shape = DotNodeShape.Hexagon;
+    node.Label = "Hello World!";
+    node.Shape = DotNodeShape.Hexagon;
 });
 ```
 
@@ -505,8 +512,8 @@ The code above is equivalent to:
 
 ```c#
 var node = new DotNode("Foo");
-node.Attributes.Label = "Hello World!";
-node.Attributes.Shape = DotNodeShape.Hexagon;
+node.Label = "Hello World!";
+node.Shape = DotNodeShape.Hexagon;
 
 graph.Nodes.Add(node);
 ```
@@ -531,14 +538,16 @@ digraph
 The shape of a node is determined by the *Shape* attribute. By default it is an ellipse with a label, but you may change it to any other shape accepted by your Graphviz visualization tool. All supported shapes are available under the *DotNodeShape* enumeration, but two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use either of these as the *Shape* attribute, you may assign a record (*DotRecord*) to the node. In that case the node will be presented in a table-like form.
 
 ```c#
+using GiGraph.Dot.Extensions;
+
 // for convenience, just use the ToRecordNode or ToRoundedRecordNode extension method on a node
 graph.Nodes.Add("Foo").ToRecordNode(new DotRecord("Hello", "World!"));
 
 // or set shape and label explicitly
-graph.Nodes.Add("Foo", attrs =>
+graph.Nodes.Add("Foo", node =>
 {
-    attrs.Shape = DotNodeShape.Record;
-    attrs.Label = new DotRecord("Hello", "World!");
+    node.Shape = DotNodeShape.Record;
+    node.Label = new DotRecord("Hello", "World!");
 });
 ```
 
@@ -559,6 +568,8 @@ digraph
 A *DotRecord* may be composed of textual fields (*DotRecordTextField*), as well as record fields (*DotRecord*), when you want to embed a sub-record inside a record. A record or a sub-record may also be flipped to change the orientation of its fields. By default, sub-records have an orientation opposite to the orientation of their parent record. The orientation of the root record, on the other hand, is dependent on the layout direction of the graph.
 
 ```c#
+using GiGraph.Dot.Extensions;
+
 // note that string is implicitly converted to DotRecordTextField here for convenience
 graph.Nodes.Add("Foo").ToRecordNode(
     new DotRecord("Foo", new DotRecord("Bar", "Baz"), "Qux")
@@ -579,9 +590,11 @@ digraph
 
 #### Record builder
 
-The *DotRecordBuilder* class facilitates building complex record nodes. To give you an idea how to use it, consider the following examples that generate the same output script as the [previous one](#sub-records).
+The *DotRecordBuilder* class facilitates building complex record nodes. To get an idea how to use it, consider the following examples that generate the same output script as the [previous one](#sub-records).
 
 ```c#
+using GiGraph.Dot.Extensions;
+
 var builder = new DotRecordBuilder()
    .AppendField("Foo")
    .AppendRecord("Bar", "Baz")
@@ -591,6 +604,8 @@ graph.Nodes.Add("Bar").ToRecordNode(builder.Build());
 ```
 
 ```c#
+using GiGraph.Dot.Extensions;
+
 graph.Nodes.Add("Bar").ToRecordNode(rb =>
 {
     rb.AppendField("Foo")
@@ -729,6 +744,8 @@ digraph
 An identical result may be achieved by composing the HTML table directly, as text, if this is the preferred approach:
 
 ```c#
+using GiGraph.Dot.Extensions;
+
 // the ToPlainHtmlNode extension method sets a borderless (plain) shape of the node so that the HTML table fully determines the shape
 graph.Nodes.Add("Bar").ToPlainHtmlNode
 (
@@ -761,11 +778,11 @@ Similarly to the record node case, you can specify *ports* within the HTML table
 ```c#
 // (here should be the code from the previous example)
 
-// add an edge whose head is attached to the port1 port
-graph.Edges.Add("Foo", "Bar").Attributes.Head.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
-
-// you can also set the port another way, achieving a slightly different output, but the same visualization
+// add an edge and specify a port attribute for its endpoint to attach it to the cell with that port assigned
 graph.Edges.Add("Foo", "Bar").Head.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
+
+// alternatively you can set the port directly on the endpoint
+graph.Edges.Add("Foo", "Bar").Head.Endpoint.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
 ```
 
 ```dot
@@ -776,7 +793,7 @@ digraph
     // the first method of defining port (as an attribute)
     Foo -> Bar [ headport = "port1:ne" ]
     
-    // the second method of defining port (as edge head parameters)
+    // the second method of defining port (as an endpoint parameter)
     Foo -> Bar:port1:ne
 }
 ```
@@ -794,10 +811,10 @@ When adding nodes to a graph, subgraph or cluster, you can use a node group that
 ```c#
 graph.Nodes.AddGroup
 (
-    attrs =>
+    nodeGroup =>
     {
-        attrs.Color = Color.Orange;
-        attrs.Shape = DotNodeShape.Hexagon;
+        nodeGroup.Color = Color.Orange;
+        nodeGroup.Shape = DotNodeShape.Hexagon;
     },
     "Foo", "Bar", "Baz"
 );
@@ -807,8 +824,8 @@ You can also do it this way:
 
 ```c#
 var nodeGroup = new DotNodeGroup("Foo", "Bar", "Baz");
-nodeGroup.Attributes.Color = Color.Orange;
-nodeGroup.Attributes.Shape = DotNodeShape.Hexagon;
+nodeGroup.Color = Color.Orange;
+nodeGroup.Shape = DotNodeShape.Hexagon;
 
 graph.Nodes.Add(nodeGroup);
 ```
@@ -843,8 +860,8 @@ graph.Nodes.AddRange
 (
     node =>
     {
-        node.Attributes.Color = Color.Orange;
-        node.Attributes.Shape = DotNodeShape.Hexagon;
+        node.Color = Color.Orange;
+        node.Shape = DotNodeShape.Hexagon;
     },
     "Foo", "Bar", "Baz"
 );
@@ -864,23 +881,23 @@ graph.Edges.Add("Foo", "Bar");
 
 ### Edge placement
 
-Edges support customizing which side of a node (and/or cell, when record or HTML table nodes are used) the head and/or tail of the edge is attached to. This can be done in two ways: by using attributes or by using the *Port* properties on edge tail or head. The difference is that the attributes may be set globally, as opposed to the *Port* properties on individual edge endpoints.
+Edges support customizing which side of a node (and/or cell, when record or HTML table nodes are used) the head and/or tail of the edge is attached to. This can be done in two ways: either by using the *Port* property on the *Head* or *Tail* of the edge (which sets an edge attribute), or by using a property with the same name on a nested property named *Endpoint* (which sets a property directly on the endpoint). The actual difference is that attributes may be set globally within the scope of a graph, a subgraph or a cluster, so you can choose the first of the described approaches to specify an edge placement once for a given scope (see [global attributes](#global-attributes)).
 
-The code below applies attributes to an edge, and also specifies on which sides of its endpoints it should be attached to.
+The code below adds an edge and specifies which sides of its endpoints it should be attached to.
 
 ```c#
 graph.Edges.Add("Foo", "Bar", edge =>
 {
-    edge.Attributes.Label = "Baz";
-    edge.Attributes.Color = Color.Blue;
+    edge.Label = "Baz";
+    edge.Color = Color.Blue;
 
     // the tail and the head of the edge will be attached to the left side of the nodes
-    edge.Tail.Port.CompassPoint = DotCompassPoint.West;
-    edge.Head.Port.CompassPoint = DotCompassPoint.West;
-
-    // it may as well be done by using attributes
-    edge.Attributes.Tail.Port = DotCompassPoint.West;
-    edge.Attributes.Head.Port = DotCompassPoint.West;
+    edge.Tail.Port = DotCompassPoint.West;
+    edge.Head.Port = DotCompassPoint.West;
+  
+    // you can alternatively specify the compass points directly on the endpoint
+    edge.Tail.Endpoint.Port.CompassPoint = DotCompassPoint.West;
+    edge.Head.Endpoint.Port.CompassPoint = DotCompassPoint.West;
 });
 ```
 
@@ -896,22 +913,21 @@ digraph
 </p>
 
 
-An edge may as well be created and added to an edge collection explicitly:
+An edge may alternatively be created and added to an edge collection explicitly:
 
 ```c#
 var edge = new DotEdge("Foo", "Bar");
+edge.Tail.Port = DotCompassPoint.West;
+edge.Head.Port = DotCompassPoint.West;
 
-edge.Tail.Port.CompassPoint = DotCompassPoint.West;
-edge.Head.Port.CompassPoint = DotCompassPoint.West;
-
-// or the same as above, but explicitly
+// or an alternative approach
 edge = new DotEdge(
     new DotEndpoint("Foo", DotCompassPoint.North),
     new DotEndpoint("Bar", DotCompassPoint.South)
 );
 
-edge.Attributes.Label = "Baz";
-edge.Attributes.Color = Color.Blue;
+edge.Label = "Baz";
+edge.Color = Color.Blue;
 
 graph.Edges.Add(edge);
 ```
