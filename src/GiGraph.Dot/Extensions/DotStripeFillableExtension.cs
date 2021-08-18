@@ -6,7 +6,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Extensions
 {
-    public static class DotStripableExtension
+    public static class DotStripeFillableExtension
     {
         /// <summary>
         ///     Sets a striped fill. Applicable to clusters and rectangularly-shaped nodes (see <see cref="DotNodeDefinition.Shape" />).

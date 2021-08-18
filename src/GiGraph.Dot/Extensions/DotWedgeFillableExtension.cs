@@ -6,7 +6,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Extensions
 {
-    public static class DotWedgeableExtension
+    public static class DotWedgeFillableExtension
     {
         /// <summary>
         ///     Sets a wedged fill. Applicable to elliptically-shaped nodes (see <see cref="DotNodeDefinition.Shape" />).
