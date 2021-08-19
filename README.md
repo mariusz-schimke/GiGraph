@@ -628,14 +628,6 @@ The fields of record nodes may have a **port** specified as well. The port may h
   <img src="./Assets/Examples/record-node-subrecord-with-port.svg">
 </p>
 
-```dot
-digraph
-{
-    Bar [ label = "Foo\nBar | { Baz\l | { Garply | Waldo | <port1> Fred } | Plugh\r } | Qux | Quux", shape = record ]
-
-    Foo -> Bar:port1:ne
-}
-```
 
 ```c#
 graph.Nodes.Add("Baz").ToRecordNode(rb1 => rb1
@@ -656,6 +648,15 @@ graph.Edges.Add("Foo", "Bar", edge =>
     edge.Head.Port.Name = "port1";
     edge.Head.Port.CompassPoint = DotCompassPoint.NorthEast;
 });
+```
+
+```dot
+digraph
+{
+    Bar [ label = "Foo\nBar | { Baz\l | { Garply | Waldo | <port1> Fred } | Plugh\r } | Qux | Quux", shape = record ]
+
+    Foo -> Bar:port1:ne
+}
 ```
 
 
@@ -894,10 +895,10 @@ graph.Edges.Add("Foo", "Bar", edge =>
     // the tail and the head of the edge will be attached to the left side of the nodes
     edge.Tail.Port = DotCompassPoint.West;
     edge.Head.Port = DotCompassPoint.West;
-  
+
     // you can alternatively specify the compass points directly on the endpoint
-    edge.Tail.Endpoint.Port.CompassPoint = DotCompassPoint.West;
-    edge.Head.Endpoint.Port.CompassPoint = DotCompassPoint.West;
+    edge.Tail.Endpoint.Port = DotCompassPoint.West;
+    edge.Head.Endpoint.Port = DotCompassPoint.West;
 });
 ```
 
@@ -951,19 +952,19 @@ The example code below presents a few possible combinations of arrowheads:
 // an edge with arrowheads on both sides
 graph.Edges.Add("Foo", "Bar", edge =>
 {
-    edge.Attributes.Directions = DotEdgeDirections.Both;
+    edge.Directions = DotEdgeDirections.Both;
 
-    edge.Attributes.Tail.Arrowhead = DotArrowheadShape.Diamond;
-    edge.Attributes.Head.Arrowhead = DotArrowheadShape.Crow;
+    edge.Tail.Arrowhead = DotArrowheadShape.Diamond;
+    edge.Head.Arrowhead = DotArrowheadShape.Crow;
 });
 
 // some basic arrowhead variants 
-graph.Edges.Add("Foo", "Bar").Attributes.Head.Arrowhead = DotArrowhead.Empty();
-graph.Edges.Add("Foo", "Bar").Attributes.Head.Arrowhead = DotArrowhead.Empty(DotArrowheadParts.Right);
-graph.Edges.Add("Foo", "Bar").Attributes.Head.Arrowhead = DotArrowhead.Filled(DotArrowheadParts.Left);
+graph.Edges.Add("Foo", "Bar").Head.Arrowhead = DotArrowhead.Empty();
+graph.Edges.Add("Foo", "Bar").Head.Arrowhead = DotArrowhead.Empty(DotArrowheadParts.Right);
+graph.Edges.Add("Foo", "Bar").Head.Arrowhead = DotArrowhead.Filled(DotArrowheadParts.Left);
 
 // a composition of multiple arrowheads
-graph.Edges.Add("Foo", "Bar").Attributes.Head.Arrowhead = new DotCompositeArrowhead
+graph.Edges.Add("Foo", "Bar").Head.Arrowhead = new DotCompositeArrowhead
 (
     DotArrowheadShape.Tee,
     DotArrowheadShape.None, // may be used as a separator
@@ -997,15 +998,13 @@ By default, an edge is visualized as a single spline. There are two other varian
 Consider the following example:
 
 ```c#
-graph.Edges.Add("Foo", "Bar", edge =>
-{
-    edge.Attributes.SetSegmented(new DotWeightedColor(Color.RoyalBlue, 0.5), Color.Turquoise);
-});
+using GiGraph.Dot.Extensions;
 
-graph.Edges.Add("Foo", "Bar", edge =>
-{
-    edge.Attributes.SetMultiline(Color.RoyalBlue, Color.Turquoise);
-});
+graph.Edges.Add("Foo", "Bar")
+   .SetSegmentedStyle(new DotWeightedColor(Color.RoyalBlue, 0.5), Color.Turquoise);
+
+graph.Edges.Add("Foo", "Bar")
+   .SetMultilineStyle(Color.RoyalBlue, Color.Turquoise);
 ```
 
 Note that in the case of multicolor segments, at least one color has to have a weight specified. The weight is interpreted as a length proportion of that segment in relation to other segments. Other colors may be provided without weights, in which case the lengths of their segments are distributed proportionally within the remaining part of an edge.
@@ -1158,8 +1157,8 @@ graph.Edges.AddManyToMany(
     new DotSubgraphEndpoint("Baz", "Qux"),
     edge =>
     {
-        // set attributes (they affect all edges rendered based on this definition)
-        edge.Attributes.Color = Color.Red;
+        // attributes specified here affect all edges drawn based on this entry
+        edge.Color = Color.Red;
     });
 
 // the code above is equivalent to
@@ -1167,7 +1166,7 @@ var edge = new DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>(
     new DotSubgraphEndpoint("Foo", "Bar"),
     new DotSubgraphEndpoint("Baz", "Qux"));
 
-edge.Attributes.Color = Color.Red;
+edge.Color = Color.Red;
 
 graph.Edges.Add(edge);
 ```
@@ -1256,8 +1255,8 @@ graph.Edges.AddSequence
 (
     edge =>
     {
-        // set attributes (they affect all edges of this sequence)
-        edge.Attributes.Color = Color.Red;
+        // attributes specified here affect all edges in this sequence
+        edge.Color = Color.Red;
     },
     "Foo",
     new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
@@ -1270,7 +1269,7 @@ var edgeSequence = new DotEdgeSequence(
     new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
     new DotEndpoint("Quux", DotCompassPoint.North));
 
-edgeSequence.Attributes.Color = Color.Red;
+edgeSequence.Color = Color.Red;
 
 graph.Edges.Add(edgeSequence);
 ```
@@ -1307,7 +1306,7 @@ graph.Subgraphs.Add(DotRank.Same, subgraph =>
 // or simply (if only nodes are going to be specified)
 graph.Subgraphs.AddWithNodes(DotRank.Same, "a", "b", "c");
 
-// you may also create a new instance and initialize it manually
+// you can also create a new instance and initialize it manually
 var subgraph = new DotSubgraph(DotRank.Same);
 subgraph.Nodes.AddRange("a", "b", "c");
 
@@ -1315,7 +1314,7 @@ subgraph.Nodes.AddRange("a", "b", "c");
 subgraph = DotSubgraph.FromNodes(DotRank.Same, "a", "b", "c");
 
 // style settings are accepted as well for the elements inside
-subgraph.Nodes.Attributes.Shape = DotNodeShape.Box;
+subgraph.Nodes.Shape = DotNodeShape.Box;
 
 graph.Subgraphs.Add(subgraph);
 ```
@@ -1367,7 +1366,7 @@ cluster.Nodes.AddRange("a", "b", "c");
 cluster = DotCluster.FromNodes("My cluster 1", "a", "b", "c");
 
 // style settings are accepted as well for the elements inside
-cluster.Nodes.Attributes.Shape = DotNodeShape.Box;
+cluster.Nodes.Shape = DotNodeShape.Box;
 
 graph.Clusters.Add(cluster);
 ```
@@ -1394,7 +1393,7 @@ Clusters may be used as endpoints. In such case the edge is clipped to the clust
 var graph = new DotGraph();
 
 // required
-graph.Clusters.Attributes.AllowEdgeClipping = true;
+graph.Clusters.AllowEdgeClipping = true;
 
 graph.Clusters.Add("Cluster1", cluster =>
 {
@@ -1404,7 +1403,7 @@ graph.Clusters.Add("Cluster1", cluster =>
 graph.Edges.Add("Foo", "Bar", edge =>
 {
     // the head node (Bar) is inside the cluster, so the edge will be attached to the border of that cluster instead of the node
-    edge.Attributes.Head.ClusterId = "Cluster1";
+    edge.Head.ClusterId = "Cluster1";
 });
 ```
 
@@ -1434,7 +1433,7 @@ Note that for some layout engines (see *fdp*) cluster ID has to be specified dir
 var graph = new DotGraph();
 
 // (optional if the layout engine is specified externally, e.g. by the command line)
-graph.Attributes.Layout.Engine = DotLayoutEngines.Fdp;
+graph.Layout.Engine = DotLayoutEngines.Fdp;
 
 graph.Clusters.Add("Cluster1", cluster =>
 {
@@ -1492,124 +1491,114 @@ using GiGraph.Dot.Types.Layout;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Styling;
 
-namespace GiGraph.Dot.Examples
+var graph = new DotGraph();
+
+// set left to right layout direction of the graph using graph attributes
+graph.Layout.Direction = DotLayoutDirection.LeftToRight;
+graph.Font.Name = "Helvetica";
+
+// set global node attributes (for all nodes of the graph)
+graph.Nodes.Shape = DotNodeShape.Rectangle;
+graph.Nodes.Font.Name = graph.Font.Name;
+graph.Nodes.SetGradientFill(new DotGradientColor(Color.Turquoise, Color.RoyalBlue));
+
+// set global edge attributes (for all edges of the graph)
+graph.Edges.Head.Arrowhead = graph.Edges.Tail.Arrowhead = DotArrowheadShape.Vee;
+graph.Edges.Font.Set(graph.Font.Name, 10);
+
+
+// -- (subgraphs are used here only to control the order the elements are visualized, and may be removed) --
+
+graph.Subgraphs.Add(sg =>
 {
-    internal class Program
+    // a dotted edge
+    sg.Edges.Add("G", "H", edge =>
     {
-        private static void Main(string[] args)
-        {
-            var graph = new DotGraph();
+        edge.Label = "DOTTED";
+        edge.Style.LineStyle = DotLineStyle.Dotted;
+    });
+});
 
-            // set left to right layout direction of the graph using graph attributes
-            graph.Attributes.Layout.Direction = DotLayoutDirection.LeftToRight;
-            graph.Attributes.Font.Name = "Helvetica";
+graph.Subgraphs.Add(sg =>
+{
+    // edges rendered as parallel splines
+    sg.Edges.Add("E", "F", edge =>
+    {
+        edge.Label = "PARALLEL SPLINES";
+        edge.Directions = DotEdgeDirections.Both;
 
-            // set global node attributes (for all nodes of the graph)
-            graph.Nodes.Attributes.Shape = DotNodeShape.Rectangle;
-            graph.Nodes.Attributes.SetFilled(new DotGradientColor(Color.Turquoise, Color.RoyalBlue));
-            graph.Nodes.Attributes.Font.Name = graph.Attributes.Font.Name;
+        // this will render two parallel splines (but more of them may be specified)
+        edge.SetMultilineStyle(Color.Turquoise, Color.RoyalBlue);
+    });
+});
 
-            // set global edge attributes (for all edges of the graph)
-            graph.Edges.Attributes.Head.Arrowhead = graph.Edges.Attributes.Tail.Arrowhead = DotArrowheadShape.Vee;
-            graph.Edges.Attributes.Font.Set(graph.Attributes.Font.Name, 10);
+graph.Subgraphs.Add(sg =>
+{
+    // nodes with dual-color fill; fill proportions specified by the weight properties
+    sg.Nodes.Add("C").FillColor = new DotMultiColor(Color.RoyalBlue, new DotWeightedColor(Color.Turquoise, 0.25));
+    sg.Nodes.Add("D").FillColor = new DotMultiColor(new DotWeightedColor(Color.Navy, 0.25), Color.RoyalBlue);
 
+    sg.Edges.Add("C", "D", edge =>
+    {
+        edge.Label = "MULTICOLOR SERIES";
+        edge.Directions = DotEdgeDirections.Both;
 
-            // -- (subgraphs are used here only to control the order the elements are visualized, and may be removed) --
+        // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
+        edge.SetSegmentedStyle(
+            new DotWeightedColor(Color.Turquoise, 0.33),
+            new DotWeightedColor(Color.Gray, 0.33),
+            Color.Navy);
+    });
+});
 
-            graph.Subgraphs.Add(sg =>
-            {
-                // a dotted edge
-                sg.Edges.Add("G", "H", edge =>
-                {
-                    edge.Attributes.Label = "DOTTED";
-                    edge.Attributes.Style.LineStyle = DotLineStyle.Dotted;
-                });
-            });
+graph.Subgraphs.Add(sg =>
+{
+    // a rectangular node with a striped fill
+    sg.Nodes.Add("STRIPED", attrs =>
+    {
+        attrs.Color = Color.Transparent;
 
-            graph.Subgraphs.Add(sg =>
-            {
-                // edges rendered as parallel splines
-                sg.Edges.Add("E", "F", edge =>
-                {
-                    edge.Attributes.Label = "PARALLEL SPLINES";
-                    edge.Attributes.Directions = DotEdgeDirections.Both;
+        // set style to striped
+        attrs.SetStripedFill(
+            new DotWeightedColor(Color.Navy, 0.1),
+            Color.RoyalBlue,
+            Color.Turquoise,
+            Color.Orange);
+    });
 
-                    // this will render two parallel splines (but more of them may be specified)
-                    edge.Attributes.SetMultiline(Color.Turquoise, Color.RoyalBlue);
-                });
-            });
+    // a circular node with a wedged fill
+    sg.Nodes.Add("WEDGED", attrs =>
+    {
+        attrs.Shape = DotNodeShape.Circle;
+        attrs.Color = Color.Transparent;
 
-            graph.Subgraphs.Add(sg =>
-            {
-                // nodes with dual-color fill; fill proportions specified by the weight properties
-                sg.Nodes.Add("C").Attributes.FillColor = new DotMultiColor(Color.RoyalBlue, new DotWeightedColor(Color.Turquoise, 0.25));
-                sg.Nodes.Add("D").Attributes.FillColor = new DotMultiColor(new DotWeightedColor(Color.Navy, 0.25), Color.RoyalBlue);
+        // set wedged style
+        attrs.SetWedgedFill(
+            Color.Orange,
+            Color.RoyalBlue,
+            new DotWeightedColor(Color.Navy, 0.1),
+            Color.Turquoise);
+    });
 
-                sg.Edges.Add("C", "D", edge =>
-                {
-                    edge.Attributes.Label = "MULTICOLOR SERIES";
-                    edge.Attributes.Directions = DotEdgeDirections.Both;
+    sg.Edges.Add("STRIPED", "WEDGED");
+});
 
-                    // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
-                    edge.Attributes.SetSegmented(
-                        new DotWeightedColor(Color.Turquoise, 0.33),
-                        new DotWeightedColor(Color.Gray, 0.33),
-                        Color.Navy);
-                });
-            });
+// a subgraph example – to override global attributes for a group of nodes and/or edges
+graph.Subgraphs.Add(sg =>
+{
+    sg.Nodes.Color = Color.RoyalBlue;
+    sg.Nodes.FillColor = Color.Orange;
+    sg.Nodes.Shape = DotNodeShape.Circle;
 
-            graph.Subgraphs.Add(sg =>
-            {
-                // a rectangular node with a striped fill
-                sg.Nodes.Add("STRIPED", attrs =>
-                {
-                    attrs.Color = Color.Transparent;
+    sg.Edges.Color = Color.RoyalBlue;
+    sg.Edges.Add("A", "B").Label = "PLAIN COLOR";
+});
 
-                    // set style to striped
-                    attrs.SetStriped(
-                        new DotWeightedColor(Color.Navy, 0.1),
-                        Color.RoyalBlue,
-                        Color.Turquoise,
-                        Color.Orange);
-                });
+// build a graph as string
+Console.WriteLine(graph.Build());
 
-                // a circular node with a wedged fill
-                sg.Nodes.Add("WEDGED", attrs =>
-                {
-                    attrs.Shape = DotNodeShape.Circle;
-                    attrs.Color = Color.Transparent;
-
-                    // set wedged style
-                    attrs.SetWedged(
-                        Color.Orange,
-                        Color.RoyalBlue,
-                        new DotWeightedColor(Color.Navy, 0.1),
-                        Color.Turquoise);
-                });
-
-                sg.Edges.Add("STRIPED", "WEDGED");
-            });
-
-            // a subgraph example – to override global attributes for a group of nodes and/or edges
-            graph.Subgraphs.Add(sg =>
-            {
-                sg.Nodes.Attributes.Color = Color.RoyalBlue;
-                sg.Nodes.Attributes.FillColor = Color.Orange;
-                sg.Nodes.Attributes.Shape = DotNodeShape.Circle;
-
-                sg.Edges.Attributes.Color = Color.RoyalBlue;
-
-                sg.Edges.Add("A", "B").Attributes.Label = "PLAIN COLOR";
-            });
-
-            // build a graph as string
-            Console.WriteLine(graph.Build());
-
-            // or save it to a file (.gv and .dot are the default extensions)
-            graph.SaveToFile("example.gv");
-        }
-    }
-}
+// or save it to a file (.gv and .dot are the default extensions)
+graph.SaveToFile("example.gv");
 ```
 
 ```dot
