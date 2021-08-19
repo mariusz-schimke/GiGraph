@@ -11,7 +11,7 @@ using GiGraph.Dot.Types.Viewport;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<IDotGraphCanvasAttributes>, IDotGraphCanvasAttributes
+    public class DotGraphCanvasAttributes : DotEntityAttributes<IDotGraphCanvasAttributes>, IDotGraphCanvasAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup GraphCanvasAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphCanvasAttributes, IDotGraphCanvasAttributes>().Build();
 

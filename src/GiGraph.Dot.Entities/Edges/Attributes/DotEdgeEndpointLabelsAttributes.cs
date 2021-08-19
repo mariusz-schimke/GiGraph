@@ -6,7 +6,7 @@ using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public class DotEdgeEndpointLabelsAttributes : DotEntityAttributesWithMetadata<IDotEdgeEndpointLabelAttributes>, IDotEdgeEndpointLabelAttributes
+    public class DotEdgeEndpointLabelsAttributes : DotEntityAttributes<IDotEdgeEndpointLabelAttributes>, IDotEdgeEndpointLabelAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup EdgeEndpointLabelAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeEndpointLabelsAttributes, IDotEdgeEndpointLabelAttributes>().Build();
 

@@ -8,7 +8,7 @@ using GiGraph.Dot.Types.Images;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
-    public class DotNodeImageAttributes : DotEntityAttributesWithMetadata<IDotNodeImageAttributes>, IDotNodeImageAttributes
+    public class DotNodeImageAttributes : DotEntityAttributes<IDotNodeImageAttributes>, IDotNodeImageAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup NodeImageAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeImageAttributes, IDotNodeImageAttributes>().Build();
 

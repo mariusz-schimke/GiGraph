@@ -7,7 +7,7 @@ using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink
 {
-    public abstract class DotHyperlinkAttributes<TIEntityHyperlinkAttributes> : DotEntityAttributesWithMetadata<TIEntityHyperlinkAttributes>, IDotHyperlinkAttributes
+    public abstract class DotHyperlinkAttributes<TIEntityHyperlinkAttributes> : DotEntityAttributes<TIEntityHyperlinkAttributes>, IDotHyperlinkAttributes
         where TIEntityHyperlinkAttributes : IDotHyperlinkAttributes
     {
         protected DotHyperlinkAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)

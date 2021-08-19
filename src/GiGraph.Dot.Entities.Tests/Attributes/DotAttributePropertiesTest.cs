@@ -12,6 +12,7 @@ using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Entities.Subgraphs.Attributes;
+using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Metadata;
 using Xunit;
@@ -173,9 +174,13 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
             var tested = 0;
 
-            foreach (var @interface in targetProperty.ReflectedType.GetInterfaces().Where(i => !ignore.Contains(i)))
+            var attributeKeyPropertyBindingFlags = (BindingFlags) typeof(DotEntityAttributes)
+               .GetField("AttributeKeyPropertyBindingFlags", BindingFlags.Static | BindingFlags.NonPublic)!
+               .GetValue(null)!;
+
+            foreach (var @interface in targetProperty.ReflectedType!.GetInterfaces().Where(i => !ignore.Contains(i)))
             {
-                foreach (var property in @interface.GetProperties(DotEntityAttributes.AttributeKeyPropertyBindingFlags))
+                foreach (var property in @interface.GetProperties(attributeKeyPropertyBindingFlags))
                 {
                     var getKey = (Func<PropertyInfo, string>) Delegate.CreateDelegate(typeof(Func<PropertyInfo, string>), target, "GetKey");
 
