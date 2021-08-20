@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Styling;
 namespace GiGraph.Dot.Types.Nodes
 {
     /// <summary>
-    ///     Node style options.
+    ///     Node style properties.
     /// </summary>
     public class DotNodeStyleProperties : DotClusterNodeCommonStyleProperties<DotNodeFillStyle>
     {
@@ -22,6 +22,10 @@ namespace GiGraph.Dot.Types.Nodes
         /// <param name="cornerStyle">
         ///     Corner style for the element.
         /// </param>
+        /// <param name="diagonals">
+        ///     Causes small chords to be drawn near the vertices of the node’s polygon or, in case of circles and ellipses, two chords near
+        ///     the top and the bottom of the shape.
+        /// </param>
         /// <param name="invisible">
         ///     Determines whether the element is invisible.
         /// </param>
@@ -30,10 +34,18 @@ namespace GiGraph.Dot.Types.Nodes
             DotBorderStyle borderStyle = default,
             DotBorderWeight borderWeight = default,
             DotCornerStyle cornerStyle = default,
+            bool diagonals = false,
             bool invisible = false
         )
             : base(fillStyle, borderStyle, borderWeight, cornerStyle, invisible)
         {
+            Diagonals = diagonals;
         }
+
+        /// <summary>
+        ///     Causes small chords to be drawn near the vertices of the node’s polygon or, in case of circles and ellipses, two chords near
+        ///     the top and the bottom of the shape.
+        /// </summary>
+        public virtual bool Diagonals { get; set; }
     }
 }
