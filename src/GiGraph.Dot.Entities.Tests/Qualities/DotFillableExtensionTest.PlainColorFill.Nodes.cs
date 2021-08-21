@@ -16,11 +16,11 @@ namespace GiGraph.Dot.Entities.Tests.Qualities
             var graph = new DotGraph();
 
             graph.Nodes.Add("node", c =>
-                    c.Style.Set(DotNodeFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true)
+                    c.Style.Set(DotNodeFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true, true)
                 )
                .SetPlainColorFill(Color.Red);
 
-            graph.Nodes.Style.Set(DotNodeFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true);
+            graph.Nodes.Style.Set(DotNodeFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true, true);
             graph.Nodes.SetPlainColorFill(Color.Red);
 
             Snapshot.Match(graph.Build(), "gradient_fill_on_nodes_with_other_styles_set");
