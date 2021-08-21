@@ -5,9 +5,9 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
 {
-    public abstract class DotClusterNodeCommonStyleAttributes<TFillStyle, TFillStyleProperties> : DotStyleAttributes
+    public abstract class DotClusterNodeCommonStyleAttributes<TFillStyle, TStyleProperties> : DotStyleAttributes
         where TFillStyle : Enum
-        where TFillStyleProperties : DotClusterNodeCommonStyleProperties<TFillStyle>
+        where TStyleProperties : DotClusterNodeCommonStyleProperties<TFillStyle>
     {
         protected DotClusterNodeCommonStyleAttributes(DotAttributeCollection attributes)
             : base(attributes)
@@ -51,7 +51,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
         }
 
         /// <summary>
-        ///     Gets or sets a value indicating if the element is invisible.
+        ///     When set, makes the element invisible.
         /// </summary>
         public virtual bool Invisible
         {
@@ -65,36 +65,9 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
         /// <param name="options">
         ///     The options to apply.
         /// </param>
-        public virtual void Set(TFillStyleProperties options)
+        public virtual void Set(TStyleProperties options)
         {
-            Set(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Invisible);
-        }
-
-        /// <summary>
-        ///     Applies the specified style options.
-        /// </summary>
-        /// <param name="fillStyle">
-        ///     The fill style to set.
-        /// </param>
-        /// <param name="borderStyle">
-        ///     The border style to set.
-        /// </param>
-        /// <param name="borderWeight">
-        ///     The border weight to set.
-        /// </param>
-        /// <param name="cornerStyle">
-        ///     The corner style to set.
-        /// </param>
-        /// <param name="invisible">
-        ///     Determines whether the node should be invisible.
-        /// </param>
-        public virtual void Set(TFillStyle fillStyle = default, DotBorderStyle borderStyle = default, DotBorderWeight borderWeight = default, DotCornerStyle cornerStyle = default, bool invisible = false)
-        {
-            FillStyle = fillStyle;
-            BorderStyle = borderStyle;
-            BorderWeight = borderWeight;
-            CornerStyle = cornerStyle;
-            Invisible = invisible;
+            SetProperties(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Invisible);
         }
 
         /// <summary>
@@ -103,9 +76,18 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
         /// <param name="source">
         ///     The instance to copy the properties from.
         /// </param>
-        protected virtual void CopyFrom(DotClusterNodeCommonStyleAttributes<TFillStyle, TFillStyleProperties> source)
+        protected virtual void CopyFrom(DotClusterNodeCommonStyleAttributes<TFillStyle, TStyleProperties> source)
         {
-            Set(source.FillStyle, source.BorderStyle, source.BorderWeight, source.CornerStyle, source.Invisible);
+            SetProperties(source.FillStyle, source.BorderStyle, source.BorderWeight, source.CornerStyle, source.Invisible);
+        }
+
+        protected virtual void SetProperties(TFillStyle fillStyle, DotBorderStyle borderStyle, DotBorderWeight borderWeight, DotCornerStyle cornerStyle, bool invisible)
+        {
+            FillStyle = fillStyle;
+            BorderStyle = borderStyle;
+            BorderWeight = borderWeight;
+            CornerStyle = cornerStyle;
+            Invisible = invisible;
         }
     }
 }

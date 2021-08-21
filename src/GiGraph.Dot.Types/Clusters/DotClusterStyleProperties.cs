@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Styling;
 namespace GiGraph.Dot.Types.Clusters
 {
     /// <summary>
-    ///     Cluster style options.
+    ///     Cluster style properties.
     /// </summary>
     public class DotClusterStyleProperties : DotClusterNodeCommonStyleProperties<DotClusterFillStyle>
     {

@@ -1,0 +1,7 @@
+﻿digraph
+{
+    subgraph "cluster c1"
+    {
+        style = "bold, dotted, invis, rounded, striped"
+    }
+}

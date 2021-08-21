@@ -22,11 +22,9 @@
 
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using the Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code or online tools like http://viz-js.com or http://magjac.com/graphviz-visual-editor, where you paste a script to view its visualization.</description>
 
-    <releaseNotes>- Node, edge, cluster, and graph label styling is much easier now! This release adds classes to represent HTML elements supported by Graphviz, and a builder for composing HTML labels. You don't have to study the Graphviz documentation now to learn what HTML elements and attributes are supported, since the builder exposes appropriate methods and properties to let you build easily a Graphviz-compliant HTML label.
+    <releaseNotes>- The attributes of the graph and of other elements may now be set directly on the elements instead of through the parent 'Attributes' property. This should be more intuitive and concise.
 
-Styling labels with HTML: https://github.com/$repository$/blob/$version$/README.md#html-styled-label
-
-Styling node as an HTML table: https://github.com/$repository$/blob/$version$/README.md#html-styled-nodes
+- Restored the missing style setting for nodes that adds diagonals next to their vertices or two chords for circular and elliptical shapes.
 
 - Refactoring.
 
