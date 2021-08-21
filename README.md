@@ -157,9 +157,9 @@ var graph = new DotGraph(strict: true);
 
 ## Attributes
 
-Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrow head shape, and various others, depending on the context. When an attribute is not specified explicitly, its default value depends on the graph layout engine you use for visualization (see <a href="http://www.graphviz.org/doc/info/attrs.html" target="_blank">Graphviz documentation</a>). That default value is usually stated in the comment of the associated property.
+Every element of the graph, including the graph itself, has **attributes**. These are for instance: background color, style, node shape, arrowhead shape, and various others, depending on the context. When an attribute is not specified explicitly, its default value depends on the graph layout engine you use for visualization (see <a href="http://www.graphviz.org/doc/info/attrs.html" target="_blank">Graphviz documentation</a>). That default value is usually stated in the comment of the associated property.
 
-There are over 170 different attributes listed in the <a href="http://www.graphviz.org/doc/info/attrs.html" target="_blank">documentation</a>, that may be set on the graph or on its elements. The library lets you set most of them conveniently by using properties on attribute collections available on the graph and other elements. Below are a few examples of setting attributes on the graph, on a node and on an edge:
+There are over 170 different attributes listed in the <a href="http://www.graphviz.org/doc/info/attrs.html" target="_blank">documentation</a>, that may be set on the graph or on its elements. The library lets you set most of them conveniently by using properties on attribute collections available on the graph and other elements. Below are a few examples of setting attributes on the graph, on a node, and on an edge:
 
 ```c#
 graph.Label = "My graph";
@@ -190,7 +190,7 @@ graph.Edges.Add("Foo", "Bar", edge =>
 
 
 
-In rare cases you may come across an attribute that is not exposed as a property, but then you may still provide a key and a value for it manually. Here's an example:
+In rare cases you may come across an attribute that is not exposed as a property, but then you can still provide a key and a value for it manually. Here's an example:
 
 ```c#
 node.Attributes.Collection.Set("fillcolor", "red:blue");
@@ -210,7 +210,7 @@ node.Attributes.Collection.SetEnum("shape", DotNodeShape.Circle);
 
 
 
-If there is a case that you want your value to be written as is in the output DOT script (without escaping), use the *SetCustom* method. It's similar to the first approach, but the value you provide doesn't undergo any further processing (normally it must be escaped if it contains special characters so that they are interpreted correctly and don't break syntactic consistency of the output script). In this case, however, you have to take care of following the syntax rules by yourself for the provided value.
+If there is a case that you want your value to be written as is in the output DOT script, use the *SetCustom* method. It's similar to the first approach, but the value you provide doesn't undergo any further processing (normally, if it contains special characters, they have to be escaped so that they are interpreted correctly and don't break syntactic consistency of the output script). In this case, however, you have to take care of following the syntax rules by yourself for the provided value.
 
 ```c#
 node.Attributes.Collection.SetCustom("fillcolor", "red:blue");
@@ -218,7 +218,7 @@ node.Attributes.Collection.SetCustom("fillcolor", "red:blue");
 
 
 
-❕ Note, however, that when you can't find a property for the Graphviz attribute you would like to set, just use the attribute metadata dictionary on the graph or on any other element that has an attribute collection. The metadata includes, among others, a property path for an associated Graphviz attribute key:
+❕ Note, however, that when you can't find a property for the Graphviz attribute you would like to set, just use the attribute metadata dictionary on the graph or on any other element that has an attribute collection exposed. The metadata includes, among others, a property path for an associated Graphviz attribute key:
 
 ```c#
 using GiGraph.Dot.Extensions;
@@ -229,7 +229,7 @@ var dict = graph.Attributes.GetMetadataDictionary();
 Console.WriteLine(dict["target"].PropertyPath);
 ```
 
-You may also do it the other way round:
+You can also do it the other way round:
 
 ```c#
 using GiGraph.Dot.Extensions;
@@ -251,12 +251,12 @@ Console.WriteLine(meta.Key);
 Node and edge attributes may be specified on the graph, on the subgraph, or on the cluster level. This way the attributes (by the library design) apply to all elements within that scope, and you don't have to specify them individually, per element. This approach comes in handy when you want to apply certain styling, for instance, to all elements of the graph or subgraph/cluster at once. Attributes may be set directly on individual elements at the same time to override or extend the list of attributes set globally.
 
 ```c#
-// node attributes on graph level (they apply to all nodes of the graph)
+// node attributes on the graph level (they apply to all nodes of the graph)
 graph.Nodes.Color = Color.Orange;
 ```
 
 ```c#
-// edge attributes on graph level (they apply to all edges of the graph)
+// edge attributes on the graph level (they apply to all edges of the graph)
 graph.Edges.Color = Color.Red;
 ```
 
@@ -270,12 +270,12 @@ digraph
 
 
 
-There might be cases when you will want to restore some attributes of specific elements to their *default* values used by the visualization engine. It may be achieved for some types of attributes by assigning them a blank value. The library, however, is designed in such a way that it does not render attributes with *null* values assigned to their corresponding properties. But there is a workaround: you may use the *Nullify* method on a collection of attributes, and specify the attribute to nullify either by a lambda expression (recommended), or by its key.
+There might be cases when you will want to restore some attributes of specific elements to their *default* values used by the visualization engine. It may be achieved for some types of attributes by assigning them a blank value. The library, however, is designed in such a way that it does not render attributes with *null* values assigned to their corresponding properties. But there is a workaround: you can use the *Nullify* method on a collection of attributes, and specify the attribute to nullify either by a lambda expression, or by its key.
 
 Consider the following example:
 
 ```c#
-// global node color set on graph level
+// global node color set on the graph level
 graph.Nodes.Color = Color.Orange;
 
 // this node will have the globally set color
@@ -313,7 +313,7 @@ digraph
 
 ### Label justification and styling
 
-Label is a textual attribute you may assign to the root graph and clusters (as a title), to nodes (as the text displayed within them), and to edges (as the text displayed next to them). It may be plain text, formatted text with special placeholders (escape sequences) or basic, Graphviz-specific HTML.
+Label is a textual attribute you can assign to the root graph and clusters (as a title), to nodes (as the text displayed within them), and to edges (as the text displayed next to them). It may be plain text, formatted text with special placeholders and justified lines, or the Graphviz-specific subset of HTML to style the text or formulate a custom table.
 
 
 
@@ -355,7 +355,7 @@ digraph
 
 #### Label placeholders
 
-The text assigned to any *DotLabel* or <a href="http://www.graphviz.org/docs/attr-types/escString" target="_blank">DotEscapeString</a> type attribute may contain placeholders. On graph visualization they are replaced with, for example, the graph identifier, the identifier of the current node, the definition of the current edge etc. You may use them in text by concatenating fragments of the text with predefined placeholders exposed by the *DotEscapeString* class, or choose the *DotFormattedTextBuilder* class to compose the text more intuitively.
+The text assigned to any *DotLabel* or <a href="http://www.graphviz.org/docs/attr-types/escString" target="_blank">DotEscapeString</a> type attribute may contain placeholders. On graph visualization they are replaced with, for example, the graph identifier, the identifier of the current node, the definition of the current edge, etc. You can use them in text by concatenating fragments of the text with predefined placeholders exposed by the *DotEscapeString* class, or choose the *DotFormattedTextBuilder* class to compose the text more intuitively.
 
 Below is an example presenting labels with element-specific escape sequences embedded, replaced with actual element identifiers on graph visualization.
 
@@ -526,7 +526,7 @@ digraph
 
 ### Record nodes
 
-The shape of a node is determined by the *Shape* attribute. By default it is an ellipse with a label, but you may change it to any other shape accepted by your Graphviz visualization tool. All supported shapes are available under the *DotNodeShape* enumeration, but two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use either of these as the *Shape* attribute, you may assign a record (*DotRecord*) to the node. In that case the node will be presented in a table-like form.
+The shape of a node is determined by the *Shape* attribute. By default it is an ellipse with a label, but you can change it to any other shape accepted by your Graphviz visualization tool. All supported shapes are available under the *DotNodeShape* enumeration, but two of them represent the record shape: *DotNodeShape.Record* and *DotNodeShape.RoundedRecord*. When you use either of these as the *Shape* attribute, you can assign a record (*DotRecord*) to the node's label. In that case the node will be presented in a table-like form.
 
 ```c#
 using GiGraph.Dot.Extensions;
@@ -636,8 +636,8 @@ graph.Nodes.Add("Baz").ToRecordNode(rb1 => rb1
 
 graph.Edges.Add("Foo", "Bar", edge =>
 {
-    edge.Head.Port.Name = "port1";
-    edge.Head.Port.CompassPoint = DotCompassPoint.NorthEast;
+    edge.Head.Endpoint.Port.Name = "port1";
+    edge.Head.Endpoint.Port.CompassPoint = DotCompassPoint.NorthEast;
 });
 ```
 
@@ -652,7 +652,7 @@ digraph
 
 
 
-❕ Note that you can either use the *Port* property of edge *Tail* and *Head* for setting port parameters as in the example above, or the *Tail.Port* and *Head.Port* attributes of the edge itself, with the same effect.
+❕ Note that you can use either the *Port* property of an edge's *Tail.Endpoint* or *Head.Endpoint* for setting port parameters as in the example above, or the *Tail.Port* and *Head.Port* properties which specify the edge's attributes with the same final effect.
 
 See also a similar example in the [HTML-styled nodes](#html-styled-nodes) section.
 
@@ -660,9 +660,9 @@ See also a similar example in the [HTML-styled nodes](#html-styled-nodes) sectio
 
 ### HTML-styled nodes
 
-As already indicated in the [HTML-styled label](#html-styled-label) section, nodes, among other elements, may have an HTML label assigned. This way you can handle more complex node content arrangement and styling scenarios than in a record node for instance.
+As already indicated in the [HTML-styled label](#html-styled-label) section, nodes, among other elements, may have an HTML label assigned. Thanks to that, you can handle more complex node content arrangement and styling scenarios than in a record node for instance.
 
-The example below presents a node visualized as a table composed using HTML. For simple text styling, please refer to the [HTML-styled label](#html-styled-label) section.
+The example below presents a node visualized as a table composed using HTML. For simple text styling, however, please refer to the [HTML-styled label](#html-styled-label) section.
 
 ```c#
 var graph = new DotGraph();
@@ -798,7 +798,7 @@ digraph
 
 ### Node groups
 
-When adding nodes to a graph, subgraph or cluster, you can use a node group that has a shared list of attributes for all the nodes within it. To do it, use one of the overloads of the *AddGroup* method on a node collection. This way you can generate a more concise output script if that's necessary (otherwise you can just add nodes in the standard way, one by one).
+When adding nodes to a graph, subgraph, or cluster, you can use a node group, which has a shared list of attributes for all the nodes within it. To do it, use one of the overloads of the *AddGroup* method on a node collection. This way you can generate a more concise output script if that's necessary (otherwise you can just add nodes in the standard way, one by one).
 
 ```c#
 graph.Nodes.AddGroup
@@ -838,15 +838,6 @@ digraph
 
 Note that there is also an ***AddRange*** method available on the node collection, and it differs from the mentioned *AddGroup* one in that it adds nodes with independent lists of attributes for each of them. The following script differs, but renders an identical visualization (because the same attributes are specified for each node in the range):
 
-```dot
-digraph
-{
-    Foo [ color = orange, shape = hexagon ]
-    Bar [ color = orange, shape = hexagon ]
-    Baz [ color = orange, shape = hexagon ]
-}
-```
-
 ```c#
 graph.Nodes.AddRange
 (
@@ -857,6 +848,15 @@ graph.Nodes.AddRange
     },
     "Foo", "Bar", "Baz"
 );
+```
+
+```dot
+digraph
+{
+    Foo [ color = orange, shape = hexagon ]
+    Bar [ color = orange, shape = hexagon ]
+    Baz [ color = orange, shape = hexagon ]
+}
 ```
 
 
@@ -875,7 +875,7 @@ graph.Edges.Add("Foo", "Bar");
 
 Edges support customizing which side of a node (and/or cell, when record or HTML table nodes are used) the head and/or tail of the edge is attached to. This can be done in two ways: either by using the *Port* property on the *Head* or *Tail* of the edge (which sets an edge attribute), or by using a property with the same name on a nested property named *Endpoint* (which sets a property directly on the endpoint). The actual difference is that attributes may be set globally within the scope of a graph, a subgraph or a cluster, so you can choose the first of the described approaches to specify an edge placement once for a given scope (see [global attributes](#global-attributes)).
 
-The code below adds an edge and specifies which sides of its endpoints it should be attached to.
+The code below adds an edge, and specifies which sides of its endpoints it should be attached to.
 
 ```c#
 graph.Edges.Add("Foo", "Bar", edge =>
@@ -887,7 +887,7 @@ graph.Edges.Add("Foo", "Bar", edge =>
     edge.Tail.Port = DotCompassPoint.West;
     edge.Head.Port = DotCompassPoint.West;
 
-    // you can alternatively specify the compass points directly on the endpoint
+    // you can alternatively specify the compass points directly on the endpoint (the approach above sets attributes)
     edge.Tail.Endpoint.Port = DotCompassPoint.West;
     edge.Head.Endpoint.Port = DotCompassPoint.West;
 });
@@ -909,8 +909,8 @@ An edge may alternatively be created and added to an edge collection explicitly:
 
 ```c#
 var edge = new DotEdge("Foo", "Bar");
-edge.Tail.Port = DotCompassPoint.West;
-edge.Head.Port = DotCompassPoint.West;
+edge.Tail.Endpoint.Port = DotCompassPoint.West;
+edge.Head.Endpoint.Port = DotCompassPoint.West;
 
 // or an alternative approach
 edge = new DotEdge(
@@ -928,7 +928,7 @@ graph.Edges.Add(edge);
 
 ### Arrowhead shapes
 
-An edge may have an arrowhead next to its head and/or tail node. By default, in a directed graph, an arrowhead appears only near the head node, but this behavior may be modified by setting the *Directions* property on an edge or globally in the edge collection's attributes on the graph. By setting this property you can choose whether the arrowhead appears next to the head node, next to the tail node, on both sides of the edge, or not at all.
+An edge may have an arrowhead next to its head and/or tail node. By default, in a directed graph, an arrowhead appears only near the head node, but this behavior may be modified by setting the *Directions* property on an edge, or globally, in the edge collection's attributes on the graph. By setting this property you can choose whether the arrowhead appears next to the head node, next to the tail node, on both sides of the edge, or not at all.
 
 The shape of the arrowhead may be <a href="http://www.graphviz.org/doc/info/arrows.html" target="_blank">customized</a>, and there are 42 possible combinations of shapes based on the set of 11 basic shapes. The combinations include:
 
@@ -1016,7 +1016,7 @@ digraph
 
 ### Endpoint groups
 
-And edge joins two endpoints (nodes), however, in some cases you may want to join one endpoint to multiple endpoints or multiple endpoints to multiple endpoints. To achieve that, you may either specify multiple edges having the same node identifier as their head or tail endpoint, or simply use an endpoint group as the head and/or tail instead of a single node identifier. Such single edge definition is actually visualized as multiple edges. Note, however, that it has only one list of attributes, so when you set them, they will be applied to all the edges.
+And edge joins two endpoints (nodes). However, in some cases you may want to join one endpoint to multiple endpoints or multiple endpoints to multiple endpoints. To achieve that, you can either specify multiple edges that have the same node identifier used as their head or tail endpoint, or simply use an endpoint group as the head and/or tail instead of a single node identifier. Such single edge definition is actually visualized as multiple edges. Note, however, that it has only one list of attributes, so when you set them, they will be applied to all these edges.
 
 There are two types that represent endpoint groups: *DotEndpointGroup* and *DotSubgraphEndpoint*. For basic purposes, they may be used interchangeably, but the former enables you to specify a port for any endpoint in the group, which is not possible when *DotSubgraphEndpoint* is used.
 
@@ -1181,7 +1181,7 @@ digraph
 
 ### Edge sequences
 
-An edge sequence represented by the *DotEdgeSequence* class lets you define endpoints and/or endpoint groups in such a way that they join one another consecutively. This approach may be used as a simpler way to define a sequence of edges all at once, without having to specify a separate edge for each connection between consecutive endpoints or endpoint groups. An edge sequence, however, has one list of attributes, so when you set them for the sequence, they will be applied to all edges that join the endpoints of the sequence.
+An edge sequence represented by the *DotEdgeSequence* class lets you define endpoints and/or endpoint groups in such a way that they join one another consecutively. This approach may be used as a simpler way to define a sequence of edges all at once, without the need to specify a separate edge for each connection between consecutive endpoints or endpoint groups. An edge sequence, however, has one list of attributes, so when you set them for the sequence, they will be applied to all edges that join the endpoints of the sequence.
 
 
 
@@ -1279,11 +1279,11 @@ digraph
 
 ## Subgraphs
 
-A subgraph, represented by the **DotSubgraph** class, is a collection of nodes you may use when want to have more granular control on the **style** of the nodes and edges it contains, or on the **layout** of the those nodes (this is valid for the ***dot*** layout engine only).
+A subgraph, represented by the **DotSubgraph** class, is a collection of nodes you can use when you want to have more granular control on the **style** of the nodes and edges it contains, or on the **layout** of the those nodes (this is valid for the ***dot*** layout engine only).
 
 Note that a **subgraph does not have any border or fill**, as opposed to [cluster subgraph](#clusters) represented by the **DotCluster** class, which does support them.
 
-Subgraph supports applying a common style to nodes and edges within it, as well as controlling the layout of those nodes against the nodes outside it. The style may be customized by setting global node or edge attributes in the subgraph, whereas the layout may be adjusted by specifying a rank on the subgraph. To see an example, jump to the [customizing node layout](#customizing-node-layout) section.
+Subgraph supports applying a common style to nodes and edges within it, as well as controlling the layout of those nodes in relation to the nodes outside it. The style may be customized by setting global node or edge attributes in the subgraph, whereas the layout may be adjusted by specifying a rank on the subgraph. To see an example, jump to the [customizing node layout](#customizing-node-layout) section.
 
 There are several ways you can add a subgraph to a graph, and the code below presents some of them.
 
@@ -1304,7 +1304,7 @@ subgraph.Nodes.AddRange("a", "b", "c");
 // or use a factory method to add nodes conveniently
 subgraph = DotSubgraph.FromNodes(DotRank.Same, "a", "b", "c");
 
-// style settings are accepted as well for the elements inside
+// global style settings are accepted as well for the elements inside
 subgraph.Nodes.Shape = DotNodeShape.Box;
 
 graph.Subgraphs.Add(subgraph);
@@ -1337,10 +1337,10 @@ A cluster is represented by the **DotCluster** class. It is a special type of [s
 
 *❕ When using clusters, make sure the visualization mode for clusters on the graph is DotClusterVisualizationMode.Bounded (this is the default value and does not have to be set explicitly).*
 
-There are several ways you may add a cluster to a graph, and the code below presents some of them.
+There are several ways you can add a cluster to a graph, and the code below presents some of them.
 
 ```c#
-// add a cluster with a custom content initialization
+// add a cluster with custom content initialization
 graph.Clusters.Add("My cluster 1", cluster =>
 {
     cluster.Nodes.AddRange("a", "b", "c");
@@ -1349,7 +1349,7 @@ graph.Clusters.Add("My cluster 1", cluster =>
 // or simply (if only nodes are going to be specified)
 graph.Clusters.AddWithNodes("My cluster 1", "a", "b", "c");
 
-// you may also create a new instance, and initialize it manually
+// you can also create a new instance and initialize it manually
 var cluster = new DotCluster("My cluster 1");
 cluster.Nodes.AddRange("a", "b", "c");
 
@@ -1548,8 +1548,6 @@ graph.Subgraphs.Add(sg =>
     sg.Nodes.Add("STRIPED", node =>
     {
         node.Color = Color.Transparent;
-
-        // set style to striped
         node.SetStripedFill(
             new DotWeightedColor(Color.Navy, 0.1),
             Color.RoyalBlue,
@@ -1562,8 +1560,6 @@ graph.Subgraphs.Add(sg =>
     {
         node.Shape = DotNodeShape.Circle;
         node.Color = Color.Transparent;
-
-        // set wedged style
         node.SetWedgedFill(
             Color.Orange,
             Color.RoyalBlue,
@@ -1944,7 +1940,7 @@ digraph
 
 ### Sorting elements
 
-Using mentioned **DotSyntaxOptions** and its *SortElements* property you may enable sorting elements of the output script alphabetically. This comes in handy when the graph is built based on input elements the order of which changes each time you generate the graph. Sometimes you may need to compare the output to its previous version, and in such cases you will want to distinguish only the actual semantic differences, not necessarily the lines that only moved from one place of the file to another, without changing semantics. When you enable this setting, all attribute lists, the lists of edges, nodes, subgraphs, and clusters, will always be ordered alphabetically. This way you should get more consistent outputs on every build.
+Using mentioned **DotSyntaxOptions** and its *SortElements* property you can enable sorting elements of the output script alphabetically. This comes in handy when the graph is built based on input elements the order of which changes each time you generate the graph. Sometimes you may need to compare the output to its previous version, and in such cases you will want to distinguish only the actual semantic differences, not necessarily the lines that only moved from one place of the file to another, without changing semantics. When you enable this setting, all attribute lists, the lists of edges, nodes, subgraphs, and clusters, will always be ordered alphabetically. This way you should get more consistent outputs on every build.
 
 *❕ Have in mind, however, that even though this feature does not affect the structure of the graph, it may affect the layout in some cases, but it won't probably matter for you in the described scenario.*
 
