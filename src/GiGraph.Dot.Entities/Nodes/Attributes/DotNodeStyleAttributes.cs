@@ -13,8 +13,8 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         }
 
         /// <summary>
-        ///     Causes small chords to be drawn near the vertices of the node’s polygon or, in case of circles and ellipses, two chords near
-        ///     the top and the bottom of the shape.
+        ///     When set, causes small chords to be drawn near the vertices of the node’s polygon or, in case of circles and ellipses, two
+        ///     chords near the top and the bottom of the shape.
         /// </summary>
         public virtual bool Diagonals
         {

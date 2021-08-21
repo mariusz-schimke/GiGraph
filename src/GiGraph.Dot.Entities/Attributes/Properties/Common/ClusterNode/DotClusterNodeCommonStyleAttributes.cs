@@ -51,7 +51,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
         }
 
         /// <summary>
-        ///     Gets or sets a value indicating if the element is invisible.
+        ///     When set, makes the element invisible.
         /// </summary>
         public virtual bool Invisible
         {
