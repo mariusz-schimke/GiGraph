@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Types.Geometry
     ///     A rectangle.
     /// </summary>
     [DotJoinableType(separator: " ")]
-    public class DotRectangle : IDotEncodable
+    public record DotRectangle : IDotEncodable
     {
         /// <summary>
         ///     Initializes a new rectangle instance.
@@ -60,22 +60,22 @@ namespace GiGraph.Dot.Types.Geometry
         /// <summary>
         ///     Gets or sets the x-coordinate of the lower-left corner in points.
         /// </summary>
-        public virtual double X { get; set; }
+        public virtual double X { get; init; }
 
         /// <summary>
         ///     Gets or sets the y-coordinate of the lower-left corner in points.
         /// </summary>
-        public virtual double Y { get; set; }
+        public virtual double Y { get; init; }
 
         /// <summary>
         ///     Gets or sets the width in points.
         /// </summary>
-        public virtual double Width { get; set; }
+        public virtual double Width { get; init; }
 
         /// <summary>
         ///     Gets or sets the height in points.
         /// </summary>
-        public virtual double Height { get; set; }
+        public virtual double Height { get; init; }
 
         string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
