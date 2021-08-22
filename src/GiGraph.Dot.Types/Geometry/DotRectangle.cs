@@ -60,22 +60,22 @@ namespace GiGraph.Dot.Types.Geometry
         /// <summary>
         ///     The x-coordinate of the lower-left corner in points.
         /// </summary>
-        public virtual double X { get; init; }
+        public double X { get; init; }
 
         /// <summary>
         ///     The y-coordinate of the lower-left corner in points.
         /// </summary>
-        public virtual double Y { get; init; }
+        public double Y { get; init; }
 
         /// <summary>
         ///     The width in points.
         /// </summary>
-        public virtual double Width { get; init; }
+        public double Width { get; init; }
 
         /// <summary>
         ///     The height in points.
         /// </summary>
-        public virtual double Height { get; init; }
+        public double Height { get; init; }
 
         string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {

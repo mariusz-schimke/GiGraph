@@ -71,6 +71,6 @@ namespace GiGraph.Dot.Types.Fonts
         /// <summary>
         ///     The font style.
         /// </summary>
-        public virtual DotFontStyles? Style { get; init; } = Style;
+        public DotFontStyles? Style { get; init; } = Style;
     }
 }

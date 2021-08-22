@@ -40,11 +40,11 @@ namespace GiGraph.Dot.Types.Alignment
         /// <summary>
         ///     Horizontal alignment.
         /// </summary>
-        public virtual DotHorizontalAlignment? Horizontal { get; init; }
+        public DotHorizontalAlignment? Horizontal { get; init; }
 
         /// <summary>
         ///     Vertical alignment.
         /// </summary>
-        public virtual DotVerticalAlignment? Vertical { get; init; }
+        public DotVerticalAlignment? Vertical { get; init; }
     }
 }

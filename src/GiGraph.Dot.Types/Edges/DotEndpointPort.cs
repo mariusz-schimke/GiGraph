@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Types.Edges
         ///     shape (<see cref="DotNodeShape.Record" /> or <see cref="DotNodeShape.RoundedRecord" />) with one of its fields having the
         ///     given port name, or have an HTML-like label, one of whose components has a PORT attribute set to the specified port name.
         /// </summary>
-        public virtual string Name { get; init; }
+        public string Name { get; init; }
 
         /// <summary>
         ///     <para>
@@ -70,7 +70,7 @@ namespace GiGraph.Dot.Types.Edges
         ///         If no compass point is specified explicitly, the default value is <see cref="DotCompassPoint.Center" />.
         ///     </para>
         /// </summary>
-        public virtual DotCompassPoint? CompassPoint { get; init; }
+        public DotCompassPoint? CompassPoint { get; init; }
 
         string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {

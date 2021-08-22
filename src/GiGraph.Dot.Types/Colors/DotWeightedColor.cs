@@ -73,7 +73,7 @@ namespace GiGraph.Dot.Types.Colors
         ///     The weight of the color in the range 0 ≤ <see cref="Weight" /> ≤ 1. Represents the proportion of the area covered with that
         ///     color.
         /// </summary>
-        public virtual double Weight { get; init; } = Weight;
+        public double Weight { get; init; } = Weight;
 
         protected internal override double? GetWeight()
         {

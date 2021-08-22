@@ -47,16 +47,16 @@ namespace GiGraph.Dot.Types.Fonts
         /// <summary>
         ///     The font name.
         /// </summary>
-        public virtual string Name { get; init; } = Name;
+        public string Name { get; init; } = Name;
 
         /// <summary>
         ///     The font size.
         /// </summary>
-        public virtual double? Size { get; init; } = Size;
+        public double? Size { get; init; } = Size;
 
         /// <summary>
         ///     The font color.
         /// </summary>
-        public virtual DotColor Color { get; init; } = Color;
+        public DotColor Color { get; init; } = Color;
     }
 }

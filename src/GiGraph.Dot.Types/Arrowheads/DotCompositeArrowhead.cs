@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Types.Arrowheads
         /// <summary>
         ///     Gets the component arrowheads.
         /// </summary>
-        public virtual DotArrowhead[] Arrowheads { get; }
+        public DotArrowhead[] Arrowheads { get; }
 
         protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {

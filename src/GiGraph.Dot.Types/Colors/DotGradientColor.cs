@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Types.Colors
         /// <summary>
         ///     The start color of the gradient fill.
         /// </summary>
-        public virtual DotColor StartColor
+        public DotColor StartColor
         {
             get => Colors[0];
             init => Colors[0] = value;
@@ -47,7 +47,7 @@ namespace GiGraph.Dot.Types.Colors
         /// <summary>
         ///     The end color of the gradient fill.
         /// </summary>
-        public virtual DotColor EndColor
+        public DotColor EndColor
         {
             get => Colors[1];
             init => Colors[1] = value;

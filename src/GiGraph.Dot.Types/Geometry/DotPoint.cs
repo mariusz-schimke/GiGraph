@@ -121,12 +121,12 @@ namespace GiGraph.Dot.Types.Geometry
         /// <summary>
         ///     The coordinates of the point.
         /// </summary>
-        public virtual double[] Coordinates { get; }
+        public double[] Coordinates { get; }
 
         /// <summary>
         ///     Determines whether the node position (if applied to nodes) should not change (input-only).
         /// </summary>
-        public virtual bool? IsFixed { get; init; }
+        public bool? IsFixed { get; init; }
 
         string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {

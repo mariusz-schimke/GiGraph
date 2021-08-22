@@ -10,7 +10,8 @@ namespace GiGraph.Dot.Types.Edges
     ///     The URL.
     /// </param>
     /// <param name="Target">
-    ///     Determines which window of the browser is used for the URL. See <see cref="DotHyperlinkTargets" />.
+    ///     Determines which window of the browser is used for the URL. See
+    ///     <see cref="GiGraph.Dot.Types.Hyperlinks.DotHyperlinkTargets" />.
     /// </param>
     /// <param name="Tooltip">
     ///     Tooltip annotation.

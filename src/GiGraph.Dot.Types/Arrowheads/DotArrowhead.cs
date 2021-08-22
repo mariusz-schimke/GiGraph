@@ -68,18 +68,18 @@ namespace GiGraph.Dot.Types.Arrowheads
         /// <summary>
         ///     The shape of the arrowhead.
         /// </summary>
-        public virtual DotArrowheadShape Shape { get; init; } = Shape;
+        public DotArrowheadShape Shape { get; init; } = Shape;
 
         /// <summary>
         ///     Determines whether to use a filled version of the shape.
         /// </summary>
-        public virtual bool IsFilled { get; init; } = true;
+        public bool IsFilled { get; init; } = true;
 
         /// <summary>
         ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right
         ///     of the edge.
         /// </summary>
-        public virtual DotArrowheadParts VisibleParts { get; init; } = DotArrowheadParts.Both;
+        public DotArrowheadParts VisibleParts { get; init; } = DotArrowheadParts.Both;
 
         protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {

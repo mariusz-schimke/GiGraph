@@ -49,12 +49,12 @@ namespace GiGraph.Dot.Types.Colors
         /// <summary>
         ///     The color.
         /// </summary>
-        public virtual Color Color { get; init; } = Color;
+        public Color Color { get; init; } = Color;
 
         /// <summary>
         ///     The color scheme (see <see cref="DotColorSchemes" />).
         /// </summary>
-        public virtual string Scheme { get; init; } = Scheme;
+        public string Scheme { get; init; } = Scheme;
 
         protected internal virtual double? GetWeight()
         {
