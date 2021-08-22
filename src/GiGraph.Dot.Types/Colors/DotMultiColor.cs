@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Types.Colors
     /// <summary>
     ///     Represents a list of colors that may be used to generate gradient fill, multicolor stripes or wedges, or multicolor edges.
     /// </summary>
-    public class DotMultiColor : DotColorDefinition
+    public record DotMultiColor : DotColorDefinition
     {
         /// <summary>
         ///     <para>

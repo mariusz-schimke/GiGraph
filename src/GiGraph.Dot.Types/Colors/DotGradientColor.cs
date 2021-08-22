@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Types.Colors
     ///         of region is filled with each color.
     ///     </para>
     /// </summary>
-    public class DotGradientColor : DotMultiColor
+    public record DotGradientColor : DotMultiColor
     {
         /// <summary>
         ///     <para>
@@ -33,6 +33,24 @@ namespace GiGraph.Dot.Types.Colors
         public DotGradientColor(DotColor startColor, DotColor endColor)
             : base(startColor, endColor)
         {
+        }
+
+        /// <summary>
+        ///     The start color of the gradient fill.
+        /// </summary>
+        public virtual DotColor StartColor
+        {
+            get => Colors[0];
+            init => Colors[0] = value;
+        }
+
+        /// <summary>
+        ///     The end color of the gradient fill.
+        /// </summary>
+        public virtual DotColor EndColor
+        {
+            get => Colors[1];
+            init => Colors[1] = value;
         }
     }
 }
