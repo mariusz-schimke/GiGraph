@@ -10,8 +10,10 @@ namespace GiGraph.Dot.Types.Geometry
     /// <summary>
     ///     Represents a point in an n-dimensional plain.
     /// </summary>
-    public class DotPoint : IDotEncodable
+    public record DotPoint : IDotEncodable
     {
+        protected readonly double[] _coordinates;
+
         /// <summary>
         ///     Creates and initializes a new point in an n-dimensional plain.
         /// </summary>
@@ -24,12 +26,7 @@ namespace GiGraph.Dot.Types.Geometry
         public DotPoint(bool? isFixed, params double[] coordinates)
         {
             IsFixed = isFixed;
-            Coordinates = coordinates ?? throw new ArgumentNullException(nameof(coordinates), "Coordinate collection must not be null.");
-
-            if (!coordinates.Any())
-            {
-                throw new ArgumentException("At least one coordinate has to be specified for a point.", nameof(coordinates));
-            }
+            Coordinates = coordinates;
         }
 
         /// <summary>
@@ -118,14 +115,31 @@ namespace GiGraph.Dot.Types.Geometry
         }
 
         /// <summary>
-        ///     Gets the coordinates of the point.
+        ///     The coordinates of the point.
         /// </summary>
-        public virtual double[] Coordinates { get; }
+        public virtual double[] Coordinates
+        {
+            get => _coordinates;
+            init
+            {
+                if (value is null)
+                {
+                    throw new ArgumentNullException(nameof(value), "Point coordinate collection must not be null.");
+                }
+
+                if (!value.Any())
+                {
+                    throw new ArgumentException("At least one coordinate has to be specified for a point.", nameof(value));
+                }
+
+                _coordinates = value;
+            }
+        }
 
         /// <summary>
-        ///     Gets or sets the value indicating whether the node position (if applied to nodes) should not change (input-only).
+        ///     Indicates whether the node position (if applied to nodes) should not change (input-only).
         /// </summary>
-        public virtual bool? IsFixed { get; set; }
+        public virtual bool? IsFixed { get; init; }
 
         string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
