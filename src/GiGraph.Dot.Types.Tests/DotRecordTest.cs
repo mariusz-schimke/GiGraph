@@ -5,7 +5,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Types.Tests
 {
-    public class RecordsTest
+    public class DotRecordTest
     {
         private readonly DotSyntaxOptions _syntaxOptions = new();
         private readonly DotSyntaxRules _syntaxRules = new();
