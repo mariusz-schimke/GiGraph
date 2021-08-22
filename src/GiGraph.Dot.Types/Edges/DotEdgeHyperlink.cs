@@ -6,32 +6,24 @@ namespace GiGraph.Dot.Types.Edges
     /// <summary>
     ///     Specifies hyperlink properties (edge specific).
     /// </summary>
-    public class DotEdgeHyperlink : DotHyperlink
+    /// <param name="Url">
+    ///     The URL.
+    /// </param>
+    /// <param name="Target">
+    ///     Determines which window of the browser is used for the URL. See <see cref="DotHyperlinkTargets" />.
+    /// </param>
+    /// <param name="Tooltip">
+    ///     Tooltip annotation.
+    /// </param>
+    /// <param name="Href">
+    ///     Synonym for <paramref name="Url" />.
+    /// </param>
+    public record DotEdgeHyperlink(DotEscapeString Url = null, DotEscapeString Target = null, DotEscapeString Tooltip = null, DotEscapeString Href = null)
+        : DotHyperlink(Url, Target, Href)
     {
-        /// <summary>
-        ///     Creates and initializes a new instance.
-        /// </summary>
-        /// <param name="url">
-        ///     The URL.
-        /// </param>
-        /// <param name="target">
-        ///     Determines which window of the browser is used for the URL. See <see cref="DotHyperlinkTargets" />.
-        /// </param>
-        /// <param name="tooltip">
-        ///     Tooltip annotation.
-        /// </param>
-        /// <param name="href">
-        ///     Synonym for <paramref name="url" />.
-        /// </param>
-        public DotEdgeHyperlink(DotEscapeString url = null, DotEscapeString target = null, DotEscapeString tooltip = null, DotEscapeString href = null)
-            : base(url, target, href)
-        {
-            Tooltip = tooltip;
-        }
-
         /// <summary>
         ///     The tooltip annotation.
         /// </summary>
-        public virtual DotEscapeString Tooltip { get; set; }
+        public virtual DotEscapeString Tooltip { get; init; } = Tooltip;
     }
 }
