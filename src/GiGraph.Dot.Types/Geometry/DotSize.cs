@@ -3,31 +3,22 @@ namespace GiGraph.Dot.Types.Geometry
     /// <summary>
     ///     Size properties.
     /// </summary>
-    public class DotSize
+    /// <param name="Width">
+    ///     The width to set.
+    /// </param>
+    /// <param name="Height">
+    ///     The height to set.
+    /// </param>
+    public record DotSize(double? Width = null, double? Height = null)
     {
         /// <summary>
-        ///     Creates a new size instance.
+        ///     The width.
         /// </summary>
-        /// <param name="width">
-        ///     The width to set.
-        /// </param>
-        /// <param name="height">
-        ///     The height to set.
-        /// </param>
-        public DotSize(double? width = null, double? height = null)
-        {
-            Width = width;
-            Height = height;
-        }
+        public virtual double? Width { get; init; } = Width;
 
         /// <summary>
-        ///     Gets or sets the width.
+        ///     The height.
         /// </summary>
-        public virtual double? Width { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the height.
-        /// </summary>
-        public virtual double? Height { get; set; }
+        public virtual double? Height { get; init; } = Height;
     }
 }

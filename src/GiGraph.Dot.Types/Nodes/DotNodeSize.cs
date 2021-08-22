@@ -5,29 +5,20 @@ namespace GiGraph.Dot.Types.Nodes
     /// <summary>
     ///     Node size properties.
     /// </summary>
-    public class DotNodeSize : DotSize
+    /// <param name="Width">
+    ///     The width to set.
+    /// </param>
+    /// <param name="Height">
+    ///     The height to set.
+    /// </param>
+    /// <param name="Mode">
+    ///     The sizing mode to set.
+    /// </param>
+    public record DotNodeSize(double? Width = null, double? Height = null, DotNodeSizing? Mode = null) : DotSize(Width, Height)
     {
         /// <summary>
-        ///     Creates a new size instance.
+        ///     The node sizing mode.
         /// </summary>
-        /// <param name="width">
-        ///     The width to set.
-        /// </param>
-        /// <param name="height">
-        ///     The height to set.
-        /// </param>
-        /// <param name="mode">
-        ///     The sizing mode to set.
-        /// </param>
-        public DotNodeSize(double? width = null, double? height = null, DotNodeSizing? mode = null)
-            : base(width, height)
-        {
-            Mode = mode;
-        }
-
-        /// <summary>
-        ///     Gets or sets node sizing mode.
-        /// </summary>
-        public virtual DotNodeSizing? Mode { get; set; }
+        public virtual DotNodeSizing? Mode { get; init; } = Mode;
     }
 }
