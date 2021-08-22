@@ -4,10 +4,10 @@ namespace GiGraph.Dot.Types.Geometry
     ///     Size properties.
     /// </summary>
     /// <param name="Width">
-    ///     The width to set.
+    ///     The width.
     /// </param>
     /// <param name="Height">
-    ///     The height to set.
+    ///     The height.
     /// </param>
     public record DotSize(double? Width = null, double? Height = null);
 }

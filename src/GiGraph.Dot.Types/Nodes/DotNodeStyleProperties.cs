@@ -6,16 +6,16 @@ namespace GiGraph.Dot.Types.Nodes
     ///     Node style properties.
     /// </summary>
     /// <param name="FillStyle">
-    ///     Fill style for the element.
+    ///     Fill style.
     /// </param>
     /// <param name="BorderStyle">
-    ///     Border style for the element.
+    ///     Border style.
     /// </param>
     /// <param name="BorderWeight">
-    ///     Border weight for the element.
+    ///     Border weight.
     /// </param>
     /// <param name="CornerStyle">
-    ///     Corner style for the element.
+    ///     Corner style.
     /// </param>
     /// <param name="Diagonals">
     ///     Causes small chords to be drawn near the vertices of the node’s polygon or, in case of circles and ellipses, two chords near

@@ -76,8 +76,7 @@ namespace GiGraph.Dot.Types.Arrowheads
         public bool IsFilled { get; init; } = true;
 
         /// <summary>
-        ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right
-        ///     of the edge.
+        ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
         /// </summary>
         public DotArrowheadParts VisibleParts { get; init; } = DotArrowheadParts.Both;
 
