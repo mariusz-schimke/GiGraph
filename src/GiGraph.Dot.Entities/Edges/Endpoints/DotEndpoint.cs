@@ -18,12 +18,12 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// <summary>
         ///     Creates a new instance of the class.
         /// </summary>
-        /// <param name="nodeId">
+        /// <param name="id">
         ///     The node identifier.
         /// </param>
         /// <param name="portName">
         ///     Determines the edge placement to aim for the specified port. If specified, the corresponding node, referred to by the
-        ///     <paramref name="nodeId" /> parameter, must either have a record shape (<see cref="DotNodeShape.Record" />,
+        ///     <paramref name="id" /> parameter, must either have a record shape (<see cref="DotNodeShape.Record" />,
         ///     <see cref="DotNodeShape.RoundedRecord" />) with one of its fields having the given port name, or have an HTML-like label, one
         ///     of whose components has a PORT attribute set to the specified port name.
         /// </param>
@@ -32,38 +32,38 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         ///     the node itself otherwise. If no compass point is specified explicitly, the default value is
         ///     <see cref="DotCompassPoint.Center" />.
         /// </param>
-        public DotEndpoint(string nodeId, string portName, DotCompassPoint? compassPoint = null)
-            : this(nodeId, new DotEndpointPort(portName, compassPoint))
+        public DotEndpoint(string id, string portName, DotCompassPoint? compassPoint = null)
+            : this(id, new DotEndpointPort(portName, compassPoint))
         {
         }
 
         /// <summary>
         ///     Creates a new instance of the class.
         /// </summary>
-        /// <param name="nodeId">
+        /// <param name="id">
         ///     The node identifier.
         /// </param>
         /// <param name="compassPoint">
         ///     Determines the edge placement to aim for the specified compass point on the node. If no compass point is specified
         ///     explicitly, the default value is <see cref="DotCompassPoint.Center" />.
         /// </param>
-        public DotEndpoint(string nodeId, DotCompassPoint? compassPoint = null)
-            : this(nodeId, new DotEndpointPort(compassPoint))
+        public DotEndpoint(string id, DotCompassPoint? compassPoint = null)
+            : this(id, new DotEndpointPort(compassPoint))
         {
         }
 
         /// <summary>
         ///     Creates a new instance of the class.
         /// </summary>
-        /// <param name="nodeId">
+        /// <param name="id">
         ///     The node identifier.
         /// </param>
         /// <param name="port">
         ///     The endpoint port, that is a point on a node an edge will be attached to.
         /// </param>
-        public DotEndpoint(string nodeId, DotEndpointPort port)
+        public DotEndpoint(string id, DotEndpointPort port)
         {
-            SetId(nodeId);
+            SetId(id);
             SetPort(port);
         }
 
@@ -83,12 +83,12 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
 
         protected virtual void SetId(string id)
         {
-            Id = id ?? throw new ArgumentNullException(nameof(id), "Node identifier must not be null.");
+            Id = id ?? throw new ArgumentNullException(nameof(id), "Endpoint identifier must not be null.");
         }
 
         protected virtual void SetPort(DotEndpointPort port)
         {
-            _port = port ?? throw new ArgumentNullException(nameof(port), "Port must not be null.");
+            _port = port ?? throw new ArgumentNullException(nameof(port), "Endpoint port must not be null.");
         }
 
         protected override string GetOrderingKey()
@@ -111,9 +111,9 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
 
         // the type of endpoint may be specified explicitly as a generic param, in which case this implicit conversion may be useful
         // (e.g. graph.Edges.Add<DotClusterEndpoint, DotEndpoint>("cluster 1", "node1"))
-        public static implicit operator DotEndpoint(string nodeId)
+        public static implicit operator DotEndpoint(string id)
         {
-            return nodeId is not null ? new DotEndpoint(nodeId) : null;
+            return id is not null ? new DotEndpoint(id) : null;
         }
 
         public static implicit operator DotEndpoint(DotNode node)
