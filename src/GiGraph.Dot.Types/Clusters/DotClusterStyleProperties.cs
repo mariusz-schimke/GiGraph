@@ -5,35 +5,27 @@ namespace GiGraph.Dot.Types.Clusters
     /// <summary>
     ///     Cluster style properties.
     /// </summary>
-    public class DotClusterStyleProperties : DotClusterNodeCommonStyleProperties<DotClusterFillStyle>
-    {
-        /// <summary>
-        ///     Creates and initializes a new instance.
-        /// </summary>
-        /// <param name="fillStyle">
-        ///     Fill style for the element.
-        /// </param>
-        /// <param name="borderStyle">
-        ///     Border style for the element.
-        /// </param>
-        /// <param name="borderWeight">
-        ///     Border weight for the element.
-        /// </param>
-        /// <param name="cornerStyle">
-        ///     Corner style for the element.
-        /// </param>
-        /// <param name="invisible">
-        ///     Determines whether the element is invisible.
-        /// </param>
-        public DotClusterStyleProperties(
-            DotClusterFillStyle fillStyle = default,
-            DotBorderStyle borderStyle = default,
-            DotBorderWeight borderWeight = default,
-            DotCornerStyle cornerStyle = default,
-            bool invisible = false
-        )
-            : base(fillStyle, borderStyle, borderWeight, cornerStyle, invisible)
-        {
-        }
-    }
+    /// <param name="FillStyle">
+    ///     Fill style.
+    /// </param>
+    /// <param name="BorderStyle">
+    ///     Border style.
+    /// </param>
+    /// <param name="BorderWeight">
+    ///     Border weight.
+    /// </param>
+    /// <param name="CornerStyle">
+    ///     Corner style.
+    /// </param>
+    /// <param name="Invisible">
+    ///     Determines whether the element is invisible.
+    /// </param>
+    public record DotClusterStyleProperties
+    (
+        DotClusterFillStyle FillStyle = default,
+        DotBorderStyle BorderStyle = default,
+        DotBorderWeight BorderWeight = default,
+        DotCornerStyle CornerStyle = default,
+        bool Invisible = false
+    ) : DotClusterNodeCommonStyleProperties<DotClusterFillStyle>(FillStyle, BorderStyle, BorderWeight, CornerStyle, Invisible);
 }

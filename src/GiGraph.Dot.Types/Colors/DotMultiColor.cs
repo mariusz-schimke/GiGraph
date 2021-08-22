@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Types.Colors
     /// <summary>
     ///     Represents a list of colors that may be used to generate gradient fill, multicolor stripes or wedges, or multicolor edges.
     /// </summary>
-    public class DotMultiColor : DotColorDefinition
+    public record DotMultiColor : DotColorDefinition
     {
         /// <summary>
         ///     <para>
@@ -112,7 +112,7 @@ namespace GiGraph.Dot.Types.Colors
         /// <summary>
         ///     Gets the colors of the color list (<see cref="DotColor" />, <see cref="DotWeightedColor" />).
         /// </summary>
-        public virtual DotColor[] Colors { get; }
+        public DotColor[] Colors { get; }
 
         protected internal override string GetDotEncodedColor(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {

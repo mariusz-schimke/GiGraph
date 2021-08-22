@@ -11,19 +11,11 @@ namespace GiGraph.Dot.Types.Arrowheads
     ///     </see>
     ///     to view what shape configurations are supported.
     /// </summary>
-    public class DotArrowhead : DotArrowheadDefinition
+    /// <param name="Shape">
+    ///     Determines the shape of the arrowhead to use.
+    /// </param>
+    public record DotArrowhead(DotArrowheadShape Shape) : DotArrowheadDefinition
     {
-        /// <summary>
-        ///     Creates and initializes a new arrowhead definition instance.
-        /// </summary>
-        /// <param name="shape">
-        ///     Determines the shape of the arrowhead to use.
-        /// </param>
-        public DotArrowhead(DotArrowheadShape shape)
-        {
-            Shape = shape;
-        }
-
         /// <summary>
         ///     Creates and initializes a new arrowhead definition instance.
         /// </summary>
@@ -74,20 +66,19 @@ namespace GiGraph.Dot.Types.Arrowheads
         }
 
         /// <summary>
-        ///     Gets or sets the shape of the arrowhead.
+        ///     The shape of the arrowhead.
         /// </summary>
-        public virtual DotArrowheadShape Shape { get; set; }
+        public DotArrowheadShape Shape { get; init; } = Shape;
 
         /// <summary>
-        ///     Gets or sets a value indicating whether to use a filled version of the shape.
+        ///     Determines whether to use a filled version of the shape.
         /// </summary>
-        public virtual bool IsFilled { get; set; } = true;
+        public bool IsFilled { get; init; } = true;
 
         /// <summary>
-        ///     Gets or sets a value indicating whether and how to clip the shape, leaving visible only the part to the left or to the right
-        ///     of the edge.
+        ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
         /// </summary>
-        public virtual DotArrowheadParts VisibleParts { get; set; } = DotArrowheadParts.Both;
+        public DotArrowheadParts VisibleParts { get; init; } = DotArrowheadParts.Both;
 
         protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {

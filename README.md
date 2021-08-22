@@ -636,8 +636,7 @@ graph.Nodes.Add("Baz").ToRecordNode(rb1 => rb1
 
 graph.Edges.Add("Foo", "Bar", edge =>
 {
-    edge.Head.Endpoint.Port.Name = "port1";
-    edge.Head.Endpoint.Port.CompassPoint = DotCompassPoint.NorthEast;
+    edge.Head.Endpoint.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
 });
 ```
 

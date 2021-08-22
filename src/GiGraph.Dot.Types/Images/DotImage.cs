@@ -5,40 +5,14 @@ namespace GiGraph.Dot.Types.Images
     /// <summary>
     ///     Image properties.
     /// </summary>
-    public class DotImage
-    {
-        /// <summary>
-        ///     Creates and initializes a new instance.
-        /// </summary>
-        /// <param name="path">
-        ///     Image path.
-        /// </param>
-        /// <param name="alignment">
-        ///     Image alignment.
-        /// </param>
-        /// <param name="scaling">
-        ///     Image scaling.
-        /// </param>
-        public DotImage(string path = null, DotAlignment? alignment = null, DotImageScaling? scaling = null)
-        {
-            Path = path;
-            Alignment = alignment;
-            Scaling = scaling;
-        }
-
-        /// <summary>
-        ///     Gets or sets image path.
-        /// </summary>
-        public virtual string Path { get; set; }
-
-        /// <summary>
-        ///     Gets or sets image alignment.
-        /// </summary>
-        public virtual DotAlignment? Alignment { get; set; }
-
-        /// <summary>
-        ///     Gets or sets image scaling.
-        /// </summary>
-        public virtual DotImageScaling? Scaling { get; set; }
-    }
+    /// <param name="Path">
+    ///     Image path.
+    /// </param>
+    /// <param name="Alignment">
+    ///     Image alignment.
+    /// </param>
+    /// <param name="Scaling">
+    ///     Image scaling.
+    /// </param>
+    public record DotImage(string Path = null, DotAlignment? Alignment = null, DotImageScaling? Scaling = null);
 }

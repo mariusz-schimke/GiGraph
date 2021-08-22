@@ -6,31 +6,22 @@ namespace GiGraph.Dot.Types.Colors
     /// <summary>
     ///     Represents a single color.
     /// </summary>
-    public class DotColor : DotColorDefinition
+    /// <param name="Color">
+    ///     The color to initialize the instance with.
+    /// </param>
+    /// <param name="Scheme">
+    ///     <para>
+    ///         The color scheme to evaluate the current color with if a named color is specified. See <see cref="DotColorSchemes" /> for
+    ///         supported scheme names.
+    ///     </para>
+    ///     <para>
+    ///         Pass null to use the color scheme set on the element, or to use the default scheme if none was set. Pass
+    ///         <see cref="DotColorSchemes.Default" /> to make the color be evaluated using the default
+    ///         <see cref="DotColorSchemes.X11" /> naming.
+    ///     </para>
+    /// </param>
+    public record DotColor(Color Color, string Scheme = null) : DotColorDefinition
     {
-        /// <summary>
-        ///     Creates a new instance initialized with a color.
-        /// </summary>
-        /// <param name="color">
-        ///     The color to initialize the instance with.
-        /// </param>
-        /// <param name="scheme">
-        ///     <para>
-        ///         The color scheme to evaluate the current color with if a named color is specified. See <see cref="DotColorSchemes" /> for
-        ///         supported scheme names.
-        ///     </para>
-        ///     <para>
-        ///         Pass null to use the color scheme set on the element, or to use the default scheme if none was set. Pass
-        ///         <see cref="DotColorSchemes.Default" /> to make the color be evaluated using the default
-        ///         <see cref="DotColorSchemes.X11" /> naming.
-        ///     </para>
-        /// </param>
-        public DotColor(Color color, string scheme = null)
-        {
-            Color = color;
-            Scheme = scheme;
-        }
-
         /// <summary>
         ///     Creates a new instance initialized with a named color.
         /// </summary>
@@ -56,14 +47,14 @@ namespace GiGraph.Dot.Types.Colors
         }
 
         /// <summary>
-        ///     Gets the color.
+        ///     The color.
         /// </summary>
-        public virtual Color Color { get; }
+        public Color Color { get; init; } = Color;
 
         /// <summary>
-        ///     Gets the color scheme (see <see cref="DotColorSchemes" />).
+        ///     The color scheme (see <see cref="DotColorSchemes" />).
         /// </summary>
-        public virtual string Scheme { get; }
+        public string Scheme { get; init; } = Scheme;
 
         protected internal virtual double? GetWeight()
         {

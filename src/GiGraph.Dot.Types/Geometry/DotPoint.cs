@@ -10,13 +10,13 @@ namespace GiGraph.Dot.Types.Geometry
     /// <summary>
     ///     Represents a point in an n-dimensional plain.
     /// </summary>
-    public class DotPoint : IDotEncodable
+    public record DotPoint : IDotEncodable
     {
         /// <summary>
         ///     Creates and initializes a new point in an n-dimensional plain.
         /// </summary>
         /// <param name="isFixed">
-        ///     Indicates whether the node position (if applied to nodes) should not change (input-only).
+        ///     Determines whether the node position (if applied to nodes) should not change (input-only).
         /// </param>
         /// <param name="coordinates">
         ///     The coordinates of the point.
@@ -24,7 +24,8 @@ namespace GiGraph.Dot.Types.Geometry
         public DotPoint(bool? isFixed, params double[] coordinates)
         {
             IsFixed = isFixed;
-            Coordinates = coordinates ?? throw new ArgumentNullException(nameof(coordinates), "Coordinate collection must not be null.");
+
+            Coordinates = coordinates ?? throw new ArgumentNullException(nameof(coordinates), "Point coordinate collection must not be null.");
 
             if (!coordinates.Any())
             {
@@ -39,7 +40,7 @@ namespace GiGraph.Dot.Types.Geometry
         ///     The coordinates of the point.
         /// </param>
         /// <param name="isFixed">
-        ///     Indicates whether the node position (if applied to nodes) should not change (input-only).
+        ///     Determines whether the node position (if applied to nodes) should not change (input-only).
         /// </param>
         public DotPoint(IEnumerable<double> coordinates, bool? isFixed = null)
             : this(isFixed, coordinates?.ToArray())
@@ -65,7 +66,7 @@ namespace GiGraph.Dot.Types.Geometry
         ///     The value to use.
         /// </param>
         /// <param name="isFixed">
-        ///     Indicates whether the node position (if applied to nodes) should not change (input-only).
+        ///     Determines whether the node position (if applied to nodes) should not change (input-only).
         /// </param>
         public DotPoint(double value, bool? isFixed = null)
             : this(isFixed, value)
@@ -82,7 +83,7 @@ namespace GiGraph.Dot.Types.Geometry
         ///     The y-coordinate of the point.
         /// </param>
         /// <param name="isFixed">
-        ///     Indicates whether the node position (if applied to nodes) should not change (input-only).
+        ///     Determines whether the node position (if applied to nodes) should not change (input-only).
         /// </param>
         public DotPoint(double x, double y, bool? isFixed = null)
             : this(isFixed, x, y)
@@ -96,7 +97,7 @@ namespace GiGraph.Dot.Types.Geometry
         ///     The <see cref="System.Drawing.Point" /> to initialize the instance with.
         /// </param>
         /// <param name="isFixed">
-        ///     Indicates whether the node position (if applied to nodes) should not change (input-only).
+        ///     Determines whether the node position (if applied to nodes) should not change (input-only).
         /// </param>
         public DotPoint(Point point, bool? isFixed = null)
             : this(isFixed, point.X, point.Y)
@@ -110,7 +111,7 @@ namespace GiGraph.Dot.Types.Geometry
         ///     The <see cref="System.Drawing.PointF" /> to initialize the instance with.
         /// </param>
         /// <param name="isFixed">
-        ///     Indicates whether the node position (if applied to nodes) should not change (input-only).
+        ///     Determines whether the node position (if applied to nodes) should not change (input-only).
         /// </param>
         public DotPoint(PointF point, bool? isFixed = null)
             : this(isFixed, point.X, point.Y)
@@ -118,14 +119,14 @@ namespace GiGraph.Dot.Types.Geometry
         }
 
         /// <summary>
-        ///     Gets the coordinates of the point.
+        ///     The coordinates of the point.
         /// </summary>
-        public virtual double[] Coordinates { get; }
+        public double[] Coordinates { get; }
 
         /// <summary>
-        ///     Gets or sets the value indicating whether the node position (if applied to nodes) should not change (input-only).
+        ///     Determines whether the node position (if applied to nodes) should not change (input-only).
         /// </summary>
-        public virtual bool? IsFixed { get; set; }
+        public bool? IsFixed { get; init; }
 
         string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {

@@ -9,15 +9,8 @@ namespace GiGraph.Dot.Types.Edges
     /// <summary>
     ///     Represents the endpoint port, that is a point on a node an edge is attached to.
     /// </summary>
-    public class DotEndpointPort : IDotEncodable
+    public record DotEndpointPort() : IDotEncodable
     {
-        /// <summary>
-        ///     Creates a new instance with no port properties specified.
-        /// </summary>
-        public DotEndpointPort()
-        {
-        }
-
         /// <summary>
         ///     Creates a new instance of the port, initialized with a port name.
         /// </summary>
@@ -27,6 +20,7 @@ namespace GiGraph.Dot.Types.Edges
         ///     name, or have an HTML-like label, one of whose components has a PORT attribute set to the specified port name.
         /// </param>
         public DotEndpointPort(string name)
+            : this()
         {
             Name = name;
         }
@@ -38,6 +32,7 @@ namespace GiGraph.Dot.Types.Edges
         ///     Determines the edge placement to aim for the specified compass point on a node.
         /// </param>
         public DotEndpointPort(DotCompassPoint? compassPoint)
+            : this()
         {
             CompassPoint = compassPoint;
         }
@@ -60,23 +55,22 @@ namespace GiGraph.Dot.Types.Edges
         }
 
         /// <summary>
-        ///     Gets or sets a value that modifies the edge placement to aim for the specified port. If specified, the corresponding node
-        ///     must either have a record shape (<see cref="DotNodeShape.Record" /> or <see cref="DotNodeShape.RoundedRecord" />) with one of
-        ///     its fields having the given port name, or have an HTML-like label, one of whose components has a PORT attribute set to the
-        ///     specified port name.
+        ///     Modifies the edge placement to aim for the specified port. If specified, the corresponding node must either have a record
+        ///     shape (<see cref="DotNodeShape.Record" /> or <see cref="DotNodeShape.RoundedRecord" />) with one of its fields having the
+        ///     given port name, or have an HTML-like label, one of whose components has a PORT attribute set to the specified port name.
         /// </summary>
-        public virtual string Name { get; set; }
+        public string Name { get; init; }
 
         /// <summary>
         ///     <para>
-        ///         Gets or sets a value that modifies the edge placement to aim for the specified compass point on the <see cref="Name" />
-        ///         port if specified, or on the node itself otherwise.
+        ///         Modifies the edge placement to aim for the specified compass point on the <see cref="Name" /> port if specified, or on
+        ///         the node itself otherwise.
         ///     </para>
         ///     <para>
         ///         If no compass point is specified explicitly, the default value is <see cref="DotCompassPoint.Center" />.
         ///     </para>
         /// </summary>
-        public virtual DotCompassPoint? CompassPoint { get; set; }
+        public DotCompassPoint? CompassPoint { get; init; }
 
         string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {

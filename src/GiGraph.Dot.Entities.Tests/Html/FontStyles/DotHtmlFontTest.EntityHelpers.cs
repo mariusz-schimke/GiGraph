@@ -66,7 +66,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.FontStyles
         [Fact]
         public void entity_factory_method_generates_font_without_attributes_with_style_tags_and_entity_as_content()
         {
-            var font = new DotStyledFont(style: DotFontStyles.Bold | DotFontStyles.Italic);
+            var font = new DotStyledFont(Style: DotFontStyles.Bold | DotFontStyles.Italic);
 
             var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
 
