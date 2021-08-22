@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Types.Ranks
     /// <summary>
     ///     Radial separation of concentric circles in twopi.
     /// </summary>
-    public class DotRadialRankSeparation : DotRankSeparationDefinition
+    public record DotRadialRankSeparation : DotRankSeparationDefinition
     {
         /// <summary>
         ///     Creates a new rank separation instance.
