@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Examples.Basic
                     (
                         "Garply",
                         "Waldo",
-                        new DotRecordTextField("Fred", portName: "port1")
+                        new DotRecordTextField("Fred", PortName: "port1")
                     ),
                     DotEscapeString.JustifyRight("Plugh")
                 ),
