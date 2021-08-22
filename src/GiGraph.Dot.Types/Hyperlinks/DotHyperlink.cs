@@ -14,21 +14,5 @@ namespace GiGraph.Dot.Types.Hyperlinks
     /// <param name="Href">
     ///     Synonym for <paramref name="Url" />.
     /// </param>
-    public record DotHyperlink(DotEscapeString Url = null, DotEscapeString Target = null, DotEscapeString Href = null)
-    {
-        /// <summary>
-        ///     The URL.
-        /// </summary>
-        public virtual DotEscapeString Url { get; init; } = Url;
-
-        /// <summary>
-        ///     Synonym for <see cref="Url" />.
-        /// </summary>
-        public virtual DotEscapeString Href { get; init; } = Href;
-
-        /// <summary>
-        ///     Determines which window of the browser is used for the URL. See <see cref="DotHyperlinkTargets" />.
-        /// </summary>
-        public virtual DotEscapeString Target { get; init; } = Target;
-    }
+    public record DotHyperlink(DotEscapeString Url = null, DotEscapeString Target = null, DotEscapeString Href = null);
 }

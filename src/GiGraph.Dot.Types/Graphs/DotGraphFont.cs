@@ -22,16 +22,5 @@ namespace GiGraph.Dot.Types.Graphs
     ///     The font convention to use.
     /// </param>
     public record DotGraphFont(string Name = null, double? Size = null, DotColor Color = null, string Directories = null, DotFontConvention? Convention = null)
-        : DotFont(Name, Size, Color)
-    {
-        /// <summary>
-        ///     The directory list to search for fonts.
-        /// </summary>
-        public virtual string Directories { get; init; } = Directories;
-
-        /// <summary>
-        ///     The font convention to use.
-        /// </summary>
-        public virtual DotFontConvention? Convention { get; init; } = Convention;
-    }
+        : DotFont(Name, Size, Color);
 }

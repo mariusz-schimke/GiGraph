@@ -19,11 +19,5 @@ namespace GiGraph.Dot.Types.Edges
     ///     Synonym for <paramref name="Url" />.
     /// </param>
     public record DotEdgeHyperlink(DotEscapeString Url = null, DotEscapeString Target = null, DotEscapeString Tooltip = null, DotEscapeString Href = null)
-        : DotHyperlink(Url, Target, Href)
-    {
-        /// <summary>
-        ///     The tooltip annotation.
-        /// </summary>
-        public virtual DotEscapeString Tooltip { get; init; } = Tooltip;
-    }
+        : DotHyperlink(Url, Target, Href);
 }
