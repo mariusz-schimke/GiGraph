@@ -31,32 +31,32 @@ namespace GiGraph.Dot.Types.Geometry
     )
     {
         /// <summary>
-        ///     Gets or sets the number of sides.
+        ///     The number of sides.
         /// </summary>
         public virtual int? Sides { get; init; } = Sides;
 
         /// <summary>
-        ///     Gets or sets a value indicating whether the shape is regular.
+        ///     Indicates whether the shape is regular.
         /// </summary>
         public virtual bool? Regular { get; init; } = Regular;
 
         /// <summary>
-        ///     Gets or sets the number of peripheries.
+        ///     The number of peripheries.
         /// </summary>
         public virtual int? Peripheries { get; init; } = Peripheries;
 
         /// <summary>
-        ///     Gets or sets rotation angle.
+        ///     The rotation angle.
         /// </summary>
         public virtual double? Rotation { get; init; } = Rotation;
 
         /// <summary>
-        ///     Gets or sets skew factor.
+        ///     The skew factor.
         /// </summary>
         public virtual double? Skew { get; init; } = Skew;
 
         /// <summary>
-        ///     Gets or sets distortion factor.
+        ///     The distortion factor.
         /// </summary>
         public virtual double? Distortion { get; init; } = Distortion;
     }

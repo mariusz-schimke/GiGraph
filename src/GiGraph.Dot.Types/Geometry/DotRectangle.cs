@@ -58,22 +58,22 @@ namespace GiGraph.Dot.Types.Geometry
         }
 
         /// <summary>
-        ///     Gets or sets the x-coordinate of the lower-left corner in points.
+        ///     The x-coordinate of the lower-left corner in points.
         /// </summary>
         public virtual double X { get; init; }
 
         /// <summary>
-        ///     Gets or sets the y-coordinate of the lower-left corner in points.
+        ///     The y-coordinate of the lower-left corner in points.
         /// </summary>
         public virtual double Y { get; init; }
 
         /// <summary>
-        ///     Gets or sets the width in points.
+        ///     The width in points.
         /// </summary>
         public virtual double Width { get; init; }
 
         /// <summary>
-        ///     Gets or sets the height in points.
+        ///     The height in points.
         /// </summary>
         public virtual double Height { get; init; }
 
