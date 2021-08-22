@@ -1,0 +1,6 @@
+﻿digraph
+{
+    edge [ arrowhead = box, arrowtail = crow ]
+
+    a -> b -> c [ headport = port, tailport = port ]
+}
