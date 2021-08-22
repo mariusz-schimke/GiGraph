@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Types.Packing
     {
         protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
-            return Size.ToString();
+            return Size.ToString(syntaxRules.Culture);
         }
     }
 }
