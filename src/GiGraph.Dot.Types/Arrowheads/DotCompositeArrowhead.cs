@@ -10,8 +10,6 @@ namespace GiGraph.Dot.Types.Arrowheads
     /// </summary>
     public record DotCompositeArrowhead : DotArrowheadDefinition
     {
-        protected readonly DotArrowhead[] _arrowheads;
-
         /// <summary>
         ///     Defines an arrowhead composed of multiple shapes.
         /// </summary>
@@ -28,7 +26,7 @@ namespace GiGraph.Dot.Types.Arrowheads
         /// </param>
         public DotCompositeArrowhead(params DotArrowhead[] arrowheads)
         {
-            Arrowheads = arrowheads;
+            Arrowheads = arrowheads ?? throw new ArgumentNullException(nameof(arrowheads), "Arrowhead collection must not be null.");
         }
 
         /// <summary>
@@ -60,11 +58,7 @@ namespace GiGraph.Dot.Types.Arrowheads
         /// <summary>
         ///     Gets the component arrowheads.
         /// </summary>
-        public virtual DotArrowhead[] Arrowheads
-        {
-            get => _arrowheads;
-            init => _arrowheads = value ?? throw new ArgumentNullException(nameof(value), "Arrowhead collection must not be null.");
-        }
+        public virtual DotArrowhead[] Arrowheads { get; }
 
         protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {

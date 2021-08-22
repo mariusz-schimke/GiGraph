@@ -12,8 +12,6 @@ namespace GiGraph.Dot.Types.Geometry
     /// </summary>
     public record DotPoint : IDotEncodable
     {
-        protected readonly double[] _coordinates;
-
         /// <summary>
         ///     Creates and initializes a new point in an n-dimensional plain.
         /// </summary>
@@ -26,7 +24,13 @@ namespace GiGraph.Dot.Types.Geometry
         public DotPoint(bool? isFixed, params double[] coordinates)
         {
             IsFixed = isFixed;
-            Coordinates = coordinates;
+
+            Coordinates = coordinates ?? throw new ArgumentNullException(nameof(coordinates), "Point coordinate collection must not be null.");
+
+            if (!coordinates.Any())
+            {
+                throw new ArgumentException("At least one coordinate has to be specified for a point.", nameof(coordinates));
+            }
         }
 
         /// <summary>
@@ -117,24 +121,7 @@ namespace GiGraph.Dot.Types.Geometry
         /// <summary>
         ///     The coordinates of the point.
         /// </summary>
-        public virtual double[] Coordinates
-        {
-            get => _coordinates;
-            init
-            {
-                if (value is null)
-                {
-                    throw new ArgumentNullException(nameof(value), "Point coordinate collection must not be null.");
-                }
-
-                if (!value.Any())
-                {
-                    throw new ArgumentException("At least one coordinate has to be specified for a point.", nameof(value));
-                }
-
-                _coordinates = value;
-            }
-        }
+        public virtual double[] Coordinates { get; }
 
         /// <summary>
         ///     Indicates whether the node position (if applied to nodes) should not change (input-only).
