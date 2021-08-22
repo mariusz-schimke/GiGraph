@@ -6,27 +6,27 @@ namespace GiGraph.Dot.Types.Styling
         where TFillStyle : Enum
     {
         /// <summary>
-        ///     Gets or sets a fill style for the element.
+        ///     The fill style.
         /// </summary>
         public virtual TFillStyle FillStyle { get; init; } = FillStyle;
 
         /// <summary>
-        ///     Gets or sets a border style for the element.
+        ///     The border style.
         /// </summary>
         public virtual DotBorderStyle BorderStyle { get; init; } = BorderStyle;
 
         /// <summary>
-        ///     Gets or sets a border weight for the element.
+        ///     The border weight.
         /// </summary>
         public virtual DotBorderWeight BorderWeight { get; init; } = BorderWeight;
 
         /// <summary>
-        ///     Gets or sets a corner style for the element.
+        ///     The corner style.
         /// </summary>
         public virtual DotCornerStyle CornerStyle { get; init; } = CornerStyle;
 
         /// <summary>
-        ///     Gets or sets a value indicating whether the element is invisible.
+        ///     Determines whether the element is invisible.
         /// </summary>
         public virtual bool Invisible { get; init; } = Invisible;
     }

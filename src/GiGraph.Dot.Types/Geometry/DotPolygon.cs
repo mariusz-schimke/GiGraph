@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Types.Geometry
         public virtual int? Sides { get; init; } = Sides;
 
         /// <summary>
-        ///     Indicates whether the shape is regular.
+        ///     Determines whether the shape is regular.
         /// </summary>
         public virtual bool? Regular { get; init; } = Regular;
 

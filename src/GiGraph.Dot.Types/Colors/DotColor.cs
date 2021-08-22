@@ -47,12 +47,12 @@ namespace GiGraph.Dot.Types.Colors
         }
 
         /// <summary>
-        ///     Gets the color.
+        ///     The color.
         /// </summary>
         public virtual Color Color { get; init; } = Color;
 
         /// <summary>
-        ///     Gets the color scheme (see <see cref="DotColorSchemes" />).
+        ///     The color scheme (see <see cref="DotColorSchemes" />).
         /// </summary>
         public virtual string Scheme { get; init; } = Scheme;
 

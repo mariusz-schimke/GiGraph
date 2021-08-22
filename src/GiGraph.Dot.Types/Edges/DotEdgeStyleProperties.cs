@@ -6,10 +6,10 @@ namespace GiGraph.Dot.Types.Edges
     ///     Edge style options.
     /// </summary>
     /// <param name="LineStyle">
-    ///     A line style for the edge.
+    ///     A line style.
     /// </param>
     /// <param name="LineWeight">
-    ///     A line weight for the edge.
+    ///     A line weight.
     /// </param>
     /// <param name="Invisible">
     ///     Determines whether the element is invisible.
@@ -17,17 +17,17 @@ namespace GiGraph.Dot.Types.Edges
     public record DotEdgeStyleProperties(DotLineStyle LineStyle = default, DotLineWeight LineWeight = default, bool Invisible = false)
     {
         /// <summary>
-        ///     Gets or sets a line style for the edge.
+        ///     The line style.
         /// </summary>
         public virtual DotLineStyle LineStyle { get; init; } = LineStyle;
 
         /// <summary>
-        ///     Gets or sets a line weight for the edge.
+        ///     The line weight.
         /// </summary>
         public virtual DotLineWeight LineWeight { get; init; } = LineWeight;
 
         /// <summary>
-        ///     Gets or sets a value indicating whether the element is invisible.
+        ///     Determines whether the element is invisible.
         /// </summary>
         public virtual bool Invisible { get; init; } = Invisible;
     }
