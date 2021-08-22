@@ -50,9 +50,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Edges.AddLoop("no_attributes");
             graph.Edges.Add("node6", "node7", edge =>
             {
-                edge.Tail.Endpoint.Port.Name = "port6";
-                edge.Tail.Endpoint.Port.CompassPoint = DotCompassPoint.East;
-
+                edge.Tail.Endpoint.Port = new DotEndpointPort("port6", DotCompassPoint.East);
                 edge.Color = Color.Gold;
                 edge.Style.LineStyle = DotLineStyle.Dotted;
             });
