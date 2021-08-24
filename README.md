@@ -502,9 +502,11 @@ graph.Nodes.Add("Foo", node =>
 The code above is equivalent to:
 
 ```c#
-var node = new DotNode("Foo");
-node.Label = "Hello World!";
-node.Shape = DotNodeShape.Hexagon;
+var node = new DotNode("Foo")
+{
+    Label = "Hello World!",
+    Shape = DotNodeShape.Hexagon
+};
 
 graph.Nodes.Add(node);
 ```
