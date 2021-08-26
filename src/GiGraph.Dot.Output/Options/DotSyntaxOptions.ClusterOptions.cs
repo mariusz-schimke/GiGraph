@@ -10,6 +10,12 @@
             ///     an identifier in a format "cluster identifier", where 'identifier' is any string used as a cluster identifier.
             /// </summary>
             public virtual string ClusterIdSeparator { get; set; } = " ";
+
+            /// <summary>
+            ///     When true, cluster attributes will be written as separate statements. When false, the "graph [attr_list]" format will be used
+            ///     instead.
+            /// </summary>
+            public virtual bool AttributesAsStatements { get; set; } = true;
         }
     }
 }

@@ -21,12 +21,6 @@
             public virtual bool PreferExplicitSeparator { get; set; } = true;
 
             /// <summary>
-            ///     When true, graph, subgraph, and cluster attributes will be written as separate statements. When false, the "graph
-            ///     [attr_list]" format will be used instead.
-            /// </summary>
-            public virtual bool PreferGraphAttributesAsStatements { get; set; } = true;
-
-            /// <summary>
             ///     HTML attribute options.
             /// </summary>
             public virtual HtmlOptions Html { get; protected set; } = new();

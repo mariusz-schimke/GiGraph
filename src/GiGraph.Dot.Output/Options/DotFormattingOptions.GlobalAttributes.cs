@@ -5,9 +5,10 @@
         public class GlobalAttributesOptions
         {
             /// <summary>
-            ///     Gets or sets a value indicating if global graph attributes should be written inline (assuming that the
-            ///     <see cref="DotSyntaxOptions.AttributeOptions.PreferGraphAttributesAsStatements" /> option of <see cref="DotSyntaxOptions" />
-            ///     is false).
+            ///     Gets or sets a value indicating if graph, cluster and subgraph attributes should be written inline (assuming that their
+            ///     corresponding <see cref="DotSyntaxOptions.GraphOptions.AttributesAsStatements" />,
+            ///     <see cref="DotSyntaxOptions.ClusterOptions.AttributesAsStatements" />, or
+            ///     <see cref="DotSyntaxOptions.SubgraphOptions.AttributesAsStatements" /> option of <see cref="DotSyntaxOptions" /> is false).
             /// </summary>
             public virtual bool SingleLineGraphAttributeList { get; set; } = true;
 

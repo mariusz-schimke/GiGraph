@@ -83,7 +83,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
                     PreferExplicitSeparator = false,
                     PreferQuotedKey = true,
                     PreferQuotedValue = true,
-                    PreferGraphAttributesAsStatements = false
+                    GraphAttributesAsStatements = false
                 }
             };
 
