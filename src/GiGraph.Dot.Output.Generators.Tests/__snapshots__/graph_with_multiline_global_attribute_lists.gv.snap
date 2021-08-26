@@ -11,12 +11,14 @@ digraph
         // label
         label = "Foo Graph"
     ]
+
     // global node attributes
     node
     [
         distortion = 2,
         shape = rectangle
     ]
+
     // global edge attributes
     edge
     [

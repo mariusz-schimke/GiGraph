@@ -16,6 +16,7 @@ digraph
         distortion = 2,
         shape = rectangle
     ]
+
     // global edge attributes
     edge [ arrowhead = curve ]
 
