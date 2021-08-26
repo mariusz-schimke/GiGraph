@@ -92,7 +92,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             var syntax = new DotSyntaxOptions
             {
-                Attributes = { GraphAttributesAsStatements = false }
+                Graph = { AttributesAsStatements = false }
             };
 
             var dot = graph.Build(formatting, syntax);
@@ -167,7 +167,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             var syntax = new DotSyntaxOptions
             {
-                Attributes = { GraphAttributesAsStatements = false }
+                Graph = { AttributesAsStatements = false }
             };
 
             var dot = graph.Build(formatting, syntax);

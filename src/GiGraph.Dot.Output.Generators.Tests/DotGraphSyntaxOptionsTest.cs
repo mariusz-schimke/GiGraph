@@ -82,9 +82,9 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 {
                     PreferExplicitSeparator = false,
                     PreferQuotedKey = true,
-                    PreferQuotedValue = true,
-                    GraphAttributesAsStatements = false
-                }
+                    PreferQuotedValue = true
+                },
+                Graph = { AttributesAsStatements = false }
             };
 
             var dot = graph.Build(syntaxOptions: options);
