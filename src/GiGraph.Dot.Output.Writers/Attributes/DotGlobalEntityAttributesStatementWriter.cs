@@ -57,6 +57,7 @@ namespace GiGraph.Dot.Output.Writers.Attributes
             // (unless this is the first entity)
             if (_wasPreviousEntitySingleLine.HasValue && (!_wasPreviousEntitySingleLine.Value || !isCurrentEntitySingleLine))
             {
+                _tokenWriter.ClearLingerBuffer();
                 LineBreak();
             }
 
