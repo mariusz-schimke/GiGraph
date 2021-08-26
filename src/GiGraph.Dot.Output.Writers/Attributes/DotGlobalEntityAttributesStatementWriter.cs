@@ -53,6 +53,11 @@ namespace GiGraph.Dot.Output.Writers.Attributes
 
         protected virtual void EnsureStatementSpacing(bool isCurrentEntitySingleLine)
         {
+            if (_tokenWriter.Options.SingleLine)
+            {
+                return;
+            }
+
             // if the previous entity was multiline, or the current one is, insert a line break to separate them for clarity
             // (unless this is the first entity)
             if (_wasPreviousEntitySingleLine.HasValue && (!_wasPreviousEntitySingleLine.Value || !isCurrentEntitySingleLine))
