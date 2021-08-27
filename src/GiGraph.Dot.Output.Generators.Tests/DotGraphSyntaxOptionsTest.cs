@@ -7,7 +7,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Output.Generators.Tests
 {
-    public class DotGraphSyntaxOptionsTest
+    public partial class DotGraphSyntaxOptionsTest
     {
         [Fact]
         public void graph_with_all_possible_elements_is_rendered_ordered_according_to_rules_and_options()
