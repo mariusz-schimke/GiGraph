@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             var formatting = new DotFormattingOptions
             {
-                GlobalAttributes = { SingleLineAttributeLists = false }
+                GlobalAttributes = { SingleLineGraphAttributeList = false }
             };
 
             var syntax = new DotSyntaxOptions
@@ -24,6 +24,20 @@ namespace GiGraph.Dot.Output.Generators.Tests
 
             var dot = graph.Build(formatting, syntax);
             Snapshot.Match(dot, "graph_with_multiline_global_graph_attribute_list.gv");
+        }
+
+        [Fact]
+        public void renders_graph_with_single_line_global_graph_attribute_list()
+        {
+            var graph = DotGraphFactory.CreateAnnotatedGraph();
+
+            var syntax = new DotSyntaxOptions
+            {
+                Graph = { AttributesAsStatements = false }
+            };
+
+            var dot = graph.Build(syntaxOptions: syntax);
+            Snapshot.Match(dot, "graph_with_single_line_global_graph_attribute_list.gv");
         }
 
         [Fact]
