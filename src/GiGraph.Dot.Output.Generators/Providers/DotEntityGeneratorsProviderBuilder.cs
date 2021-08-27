@@ -1,6 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Edges.Endpoints;
-using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Output.Generators.Attributes;
 using GiGraph.Dot.Output.Generators.Clusters;
@@ -31,7 +30,7 @@ namespace GiGraph.Dot.Output.Generators.Providers
             var provider = new DotEntityGeneratorsProvider();
 
             provider.Register(new DotGraphGenerator(syntaxRules, options, provider));
-            provider.Register(new DotGraphSectionGenerator<DotGraphSection>(syntaxRules, options, provider));
+            provider.Register(new DotGraphSectionGenerator(syntaxRules, options, provider));
 
             provider.Register(new DotGlobalGraphAttributeStatementsGenerator(syntaxRules, options, provider));
             provider.Register(new DotGlobalGraphAttributesGenerator(syntaxRules, options, provider));
@@ -39,11 +38,11 @@ namespace GiGraph.Dot.Output.Generators.Providers
             provider.Register(new DotGlobalEdgeAttributesGenerator(syntaxRules, options, provider));
 
             provider.Register(new DotSubgraphGenerator(syntaxRules, options, provider));
-            provider.Register(new DotGraphSectionGenerator<DotSubgraphSection>(syntaxRules, options, provider));
+            provider.Register(new DotSubgraphSectionGenerator(syntaxRules, options, provider));
             provider.Register(new DotSubgraphCollectionGenerator<DotSubgraph>(syntaxRules, options, provider));
 
             provider.Register(new DotClusterGenerator(syntaxRules, options, provider));
-            provider.Register(new DotGraphSectionGenerator<DotClusterSection>(syntaxRules, options, provider));
+            provider.Register(new DotClusterSectionGenerator(syntaxRules, options, provider));
             provider.Register(new DotSubgraphCollectionGenerator<DotCluster>(syntaxRules, options, provider));
 
             provider.Register(new DotAttributeGenerator(syntaxRules, options, provider));

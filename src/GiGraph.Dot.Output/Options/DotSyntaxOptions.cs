@@ -16,6 +16,11 @@
         public virtual AttributeOptions Attributes { get; protected set; } = new();
 
         /// <summary>
+        ///     Root graph options.
+        /// </summary>
+        public virtual GraphOptions Graph { get; protected set; } = new();
+
+        /// <summary>
         ///     Subgraph options.
         /// </summary>
         public virtual SubgraphOptions Subgraphs { get; protected set; } = new();

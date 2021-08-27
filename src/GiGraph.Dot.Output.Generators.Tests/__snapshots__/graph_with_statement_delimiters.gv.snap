@@ -9,6 +9,10 @@
 
     subgraph Subgraph2
     {
+        rank = max;
+
+        node [ color = chartreuse, label = nodes_label ];
+        edge [ color = chocolate, label = edges_label ];
     }
 
     subgraph Subgraph1
@@ -17,6 +21,11 @@
 
     subgraph "cluster Cluster2"
     {
+        label = "cluster label";
+        margin = 10;
+
+        node [ color = chartreuse, label = "nodes label" ];
+        edge [ color = chocolate, label = "edges label" ];
     }
 
     subgraph "cluster Cluster1"

@@ -7,7 +7,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Output.Generators.Tests
 {
-    public class DotGraphSyntaxOptionsTest
+    public partial class DotGraphSyntaxOptionsTest
     {
         [Fact]
         public void graph_with_all_possible_elements_is_rendered_ordered_according_to_rules_and_options()
@@ -82,9 +82,9 @@ namespace GiGraph.Dot.Output.Generators.Tests
                 {
                     PreferExplicitSeparator = false,
                     PreferQuotedKey = true,
-                    PreferQuotedValue = true,
-                    PreferGraphAttributesAsStatements = false
-                }
+                    PreferQuotedValue = true
+                },
+                Graph = { AttributesAsStatements = false }
             };
 
             var dot = graph.Build(syntaxOptions: options);

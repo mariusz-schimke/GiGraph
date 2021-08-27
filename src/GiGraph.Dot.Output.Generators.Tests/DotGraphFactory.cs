@@ -21,11 +21,35 @@ namespace GiGraph.Dot.Output.Generators.Tests
             graph.Clusters.AllowEdgeClipping = true;
             graph.Clusters.FillColor = Color.Brown;
 
-            graph.Subgraphs.Add().Id = "Subgraph2";
-            graph.Subgraphs.Add().Id = "Subgraph1";
 
-            graph.Clusters.Add("Cluster2");
+            graph.Subgraphs.Add("Subgraph2", sg =>
+            {
+                sg.NodeRank = DotRank.Max;
+
+                sg.Nodes.Color = Color.Chartreuse;
+                sg.Nodes.Label = "nodes_label";
+
+                sg.Edges.Color = Color.Chocolate;
+                sg.Edges.Label = "edges_label";
+            });
+
+            graph.Subgraphs.Add("Subgraph1");
+
+
+            graph.Clusters.Add("Cluster2", cluster =>
+            {
+                cluster.Label = "cluster label";
+                cluster.Padding = 10;
+
+                cluster.Nodes.Color = Color.Chartreuse;
+                cluster.Nodes.Label = "nodes label";
+
+                cluster.Edges.Color = Color.Chocolate;
+                cluster.Edges.Label = "edges label";
+            });
+
             graph.Clusters.Add("Cluster1");
+
 
             graph.Nodes.Color = Color.Red;
             graph.Nodes.Label = "node_label";
