@@ -31,12 +31,17 @@ namespace GiGraph.Dot.Output.Generators.Tests
         {
             var graph = DotGraphFactory.CreateAnnotatedGraph();
 
+            var formatting = new DotFormattingOptions
+            {
+                GlobalAttributes = { SingleLineGraphAttributeList = true }
+            };
+
             var syntax = new DotSyntaxOptions
             {
                 Graph = { AttributesAsStatements = false }
             };
 
-            var dot = graph.Build(syntaxOptions: syntax);
+            var dot = graph.Build(formatting, syntax);
             Snapshot.Match(dot, "graph_with_single_line_global_graph_attribute_list.gv");
         }
 
