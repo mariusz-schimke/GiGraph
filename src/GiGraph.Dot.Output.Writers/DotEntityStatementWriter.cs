@@ -19,7 +19,7 @@
                 _tokenWriter.StatementDelimiter();
             }
 
-            LineBreak();
+            NewLine();
         }
 
         public override void EndComment()

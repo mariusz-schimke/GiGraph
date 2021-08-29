@@ -266,9 +266,7 @@ namespace GiGraph.Dot.Output.Writers
             }
 
             Space(linger);
-            BlockCommentEnd(linger);
-
-            return this;
+            return BlockCommentEnd(linger);
         }
 
         public virtual DotTokenWriter LineBreak(bool linger = false)
@@ -276,11 +274,16 @@ namespace GiGraph.Dot.Output.Writers
             return Append(Options.LineBreak(), DotTokenType.LineBreak, linger);
         }
 
-        public virtual DotTokenWriter NewLine(bool linger = false)
+        public virtual DotTokenWriter NewLine(bool linger = false, bool enforceLineBreak = false)
         {
-            LineBreak(linger);
-            Indentation(linger);
-            return this;
+            LineBreak(linger && !enforceLineBreak);
+            return Indentation(linger);
+        }
+
+        public virtual DotTokenWriter EmptyLine(bool linger = false, bool enforceLineBreak = false)
+        {
+            LineBreak(linger && !enforceLineBreak);
+            return NewLine(linger, enforceLineBreak: false);
         }
 
         public virtual DotTokenWriter Space(bool linger = false)
