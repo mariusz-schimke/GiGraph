@@ -46,9 +46,9 @@ namespace GiGraph.Dot.Output.Writers.Attributes
             foreach (var valuePart in valueParts.Skip(1))
             {
                 tokenWriter ??= _tokenWriter.NextIndentationLevel();
-                tokenWriter.Space(linger: true)
-                   .StringConcatenationOperator(linger: true)
-                   .NewLine(linger: true)
+                tokenWriter.Space()
+                   .StringConcatenationOperator()
+                   .NewLine()
                    .Value(valuePart, quoteValue);
             }
         }

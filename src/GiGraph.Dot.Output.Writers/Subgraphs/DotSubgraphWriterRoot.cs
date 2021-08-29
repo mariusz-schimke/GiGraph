@@ -37,7 +37,7 @@
 
             if (singleLine)
             {
-                LineBreak();
+                NewLine();
             }
             else
             {

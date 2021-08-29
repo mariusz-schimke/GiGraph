@@ -22,20 +22,17 @@ namespace GiGraph.Dot.Output.Writers
 
         public virtual void EndComment()
         {
-            LineBreak();
+            NewLine();
         }
 
-        protected virtual void EmptyLine()
+        protected virtual DotTokenWriter EmptyLine(bool linger = true, bool enforceLineBreak = true)
         {
-            _tokenWriter.LineBreak()
-               .LineBreak(linger: true)
-               .Indentation(linger: true);
+            return _tokenWriter.EmptyLine(linger, enforceLineBreak);
         }
 
-        protected virtual void LineBreak()
+        protected virtual DotTokenWriter NewLine(bool linger = true, bool enforceLineBreak = true)
         {
-            _tokenWriter.LineBreak()
-               .Indentation(linger: true);
+            return _tokenWriter.NewLine(linger, enforceLineBreak);
         }
     }
 }
