@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Graphs
+﻿using GiGraph.Dot.Output.Writers.TokenWriter;
+
+namespace GiGraph.Dot.Output.Writers.Graphs
 {
     public abstract class DotGraphBlockWriter : DotEntityWriter
     {

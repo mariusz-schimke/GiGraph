@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Options;
 
-namespace GiGraph.Dot.Output.Writers
+namespace GiGraph.Dot.Output.Writers.TokenWriter
 {
     public class DotTokenWriter
     {
@@ -22,6 +23,9 @@ namespace GiGraph.Dot.Output.Writers
         {
         }
 
+        public EventHandler<DotAppendTokenEventArgs> OnBeforeAppendToken { get; set; }
+        public EventHandler<DotAppendTokenEventArgs> OnAfterAppendToken { get; set; }
+
         public DotTokenWriterOptions Options { get; }
 
         public virtual DotTokenWriter SingleLine()
@@ -32,6 +36,13 @@ namespace GiGraph.Dot.Output.Writers
         public virtual DotTokenWriter NextIndentationLevel()
         {
             return new DotTokenWriter(_writer, _lingerBuffer, Options.IncreaseIndentation());
+        }
+
+        public virtual DotTokenWriter CloneWith(Action<DotTokenWriter> init)
+        {
+            var result = new DotTokenWriter(_writer, _lingerBuffer, Options);
+            init?.Invoke(result);
+            return result;
         }
 
         public virtual DotTokenWriter Token(string token, DotTokenType type, bool linger = false)
@@ -303,6 +314,9 @@ namespace GiGraph.Dot.Output.Writers
 
         protected virtual DotTokenWriter Append(string token, DotTokenType tokenType, bool linger = false)
         {
+            var eventArgs = new DotAppendTokenEventArgs(token, tokenType, linger);
+            OnBeforeAppendToken?.Invoke(this, eventArgs);
+
             if (linger)
             {
                 _lingerBuffer.Enqueue((token, tokenType));
@@ -313,6 +327,7 @@ namespace GiGraph.Dot.Output.Writers
                 Write(token, tokenType);
             }
 
+            OnAfterAppendToken?.Invoke(this, eventArgs);
             return this;
         }
 

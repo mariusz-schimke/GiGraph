@@ -4,6 +4,7 @@ using GiGraph.Dot.Output.Writers.Edges;
 using GiGraph.Dot.Output.Writers.Graphs.Attributes;
 using GiGraph.Dot.Output.Writers.Nodes;
 using GiGraph.Dot.Output.Writers.Subgraphs;
+using GiGraph.Dot.Output.Writers.TokenWriter;
 
 namespace GiGraph.Dot.Output.Writers.Graphs
 {

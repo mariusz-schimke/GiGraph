@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Comments;
+using GiGraph.Dot.Output.Writers.TokenWriter;
 
 namespace GiGraph.Dot.Output.Writers.Graphs
 {

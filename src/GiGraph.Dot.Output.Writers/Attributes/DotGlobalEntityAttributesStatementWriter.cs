@@ -1,6 +1,7 @@
 ﻿using GiGraph.Dot.Output.Writers.Edges.Attributes;
 using GiGraph.Dot.Output.Writers.Graphs.Attributes;
 using GiGraph.Dot.Output.Writers.Nodes.Attributes;
+using GiGraph.Dot.Output.Writers.TokenWriter;
 
 namespace GiGraph.Dot.Output.Writers.Attributes
 {

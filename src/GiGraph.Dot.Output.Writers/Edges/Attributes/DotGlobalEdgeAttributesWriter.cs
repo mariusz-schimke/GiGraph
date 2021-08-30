@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Edges.Attributes
+﻿using GiGraph.Dot.Output.Writers.TokenWriter;
+
+namespace GiGraph.Dot.Output.Writers.Edges.Attributes
 {
     public class DotGlobalEdgeAttributesWriter : DotEntityWithAttributeListWriter, IDotGlobalEdgeAttributesWriter
     {

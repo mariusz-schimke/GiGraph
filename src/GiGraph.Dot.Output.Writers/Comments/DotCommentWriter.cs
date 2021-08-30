@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Comments
+﻿using GiGraph.Dot.Output.Writers.TokenWriter;
+
+namespace GiGraph.Dot.Output.Writers.Comments
 {
     public class DotCommentWriter : IDotCommentWriter
     {

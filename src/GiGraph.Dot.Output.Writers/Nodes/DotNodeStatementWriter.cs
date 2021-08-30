@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Nodes
+﻿using GiGraph.Dot.Output.Writers.TokenWriter;
+
+namespace GiGraph.Dot.Output.Writers.Nodes
 {
     public class DotNodeStatementWriter : DotEntityStatementWriter, IDotNodeStatementWriter
     {
