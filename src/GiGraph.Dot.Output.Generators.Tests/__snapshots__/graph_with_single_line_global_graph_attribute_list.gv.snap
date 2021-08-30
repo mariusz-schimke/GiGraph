@@ -4,7 +4,7 @@ digraph
 {
     // graph attributes
     // comment
-    graph [ /* comment */ comment = comment, /* label */ label = "Foo Graph" ]
+    graph [ /* comment */ comment = comment,  /* label */ label = "Foo Graph" ]
     // global node attributes
     node [ distortion = 2, shape = rectangle ]
     // global edge attributes

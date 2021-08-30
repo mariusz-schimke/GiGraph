@@ -8,6 +8,7 @@ digraph
     [
         // comment
         comment = comment,
+
         // label
         label = "Foo Graph"
     ]
