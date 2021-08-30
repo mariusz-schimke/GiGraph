@@ -16,26 +16,24 @@ namespace GiGraph.Dot.Output.Writers.Attributes
 
         public virtual IDotAttributeWriter BeginAttribute()
         {
-            var tokenWriter = _tokenWriter.CloneWith(
+            var tokenWriterClone = _tokenWriter.CloneWith(
                 tw => tw.OnBeforeAppendToken = (sender, e) =>
                 {
                     tw.OnBeforeAppendToken = null;
-                    var tokenWriter = (DotTokenWriter) sender;
 
                     if (false == _wasAttributeCommented && e.IsCommentStartToken)
                     {
-                        tokenWriter.NewLine();
+                        tw.NewLine();
                     }
                     else if (_prependIndentation)
                     {
-                        tokenWriter.Indentation();
+                        tw.Indentation();
                     }
 
                     _wasAttributeCommented = e.IsCommentStartToken;
-                }
-            );
+                });
 
-            return new DotAttributeWriter(tokenWriter, _configuration);
+            return new DotAttributeWriter(tokenWriterClone, _configuration);
         }
 
         public virtual void EndAttribute()
