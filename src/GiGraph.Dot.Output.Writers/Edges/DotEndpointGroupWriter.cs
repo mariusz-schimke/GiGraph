@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Output.Writers.Edges
 
         public override void EndComment()
         {
-            _tokenWriter.Space().Space();
+            _tokenWriter.Space(2);
         }
     }
 }

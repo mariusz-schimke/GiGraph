@@ -302,6 +302,16 @@ namespace GiGraph.Dot.Output.Writers.TokenWriter
             return Append(Options.Space(), DotTokenType.Space, linger);
         }
 
+        public virtual DotTokenWriter Space(int count, bool linger = false)
+        {
+            for (var i = 0; i < count; i++)
+            {
+                Space(linger);
+            }
+
+            return this;
+        }
+
         public virtual DotTokenWriter Indentation(bool linger = false)
         {
             return Append(Options.Indentation(), DotTokenType.Indentation, linger);
