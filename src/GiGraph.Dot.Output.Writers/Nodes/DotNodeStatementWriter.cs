@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Output.Writers.Nodes
 
         public virtual IDotNodeWriter BeginNodeStatement()
         {
-            return new DotNodeWriter(_tokenWriter, _configuration);
+            return new DotNodeWriter(_separableEntityWriter.BeginEntity(), _configuration);
         }
 
         public virtual void EndNodeStatement()

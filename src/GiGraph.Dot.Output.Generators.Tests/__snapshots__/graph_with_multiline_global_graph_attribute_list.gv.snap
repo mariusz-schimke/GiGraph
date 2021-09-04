@@ -15,6 +15,7 @@ digraph
 
     // global node attributes
     node [ distortion = 2, shape = rectangle ]
+
     // global edge attributes
     edge [ arrowhead = curve ]
 
@@ -22,6 +23,7 @@ digraph
 
     // node comment
     foo [ /* node attributes */  /* label */ label = foo ]
+
     // node group comment
     foo, bar, baz [ /* node group attributes */  /* label */ label = foo ]
 
@@ -29,8 +31,10 @@ digraph
 
     // edge comment
     /* tail */ foo -> /* head */ bar [ /* edge attributes */  /* color */ color = red ]
+
     // edge sequence comment
     /* endpoint 1 */ foo -> /* endpoint 2 */ bar -> /* endpoint 3 */ baz [ /* edge sequence attributes */  /* color */ color = red ]
+
     /* endpoint group */  /* node1 */ node1, /* cluster1 */ "cluster cluster1" -> /* subgraph endpoint */ { node3 node4 }
 
     /* subsection 1 */

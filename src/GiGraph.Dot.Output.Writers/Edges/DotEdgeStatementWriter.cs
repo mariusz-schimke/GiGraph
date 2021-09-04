@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Output.Writers.Edges
 
         public virtual IDotEdgeWriter BeginEdgeStatement()
         {
-            return new DotEdgeWriter(_tokenWriter, _configuration);
+            return new DotEdgeWriter(_separableEntityWriter.BeginEntity(), _configuration);
         }
 
         public virtual void EndEdgeStatement()

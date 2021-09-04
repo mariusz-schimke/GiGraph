@@ -30,19 +30,28 @@ namespace GiGraph.Dot.Output.Writers.TokenWriter
 
         public virtual DotTokenWriter SingleLine()
         {
-            return new DotTokenWriter(_writer, _lingerBuffer, Options.ToSingleLine());
+            return CloneWith(Options.ToSingleLine());
         }
 
         public virtual DotTokenWriter NextIndentationLevel()
         {
-            return new DotTokenWriter(_writer, _lingerBuffer, Options.IncreaseIndentation());
+            return CloneWith(Options.IncreaseIndentation());
         }
 
         public virtual DotTokenWriter CloneWith(Action<DotTokenWriter> init)
         {
-            var result = new DotTokenWriter(_writer, _lingerBuffer, Options);
+            var result = CloneWith(Options);
             init?.Invoke(result);
             return result;
+        }
+
+        public virtual DotTokenWriter CloneWith(DotTokenWriterOptions options)
+        {
+            return new DotTokenWriter(_writer, _lingerBuffer, options)
+            {
+                OnBeforeAppendToken = (sender, e) => OnBeforeAppendToken?.Invoke(sender, e),
+                OnAfterAppendToken = (sender, e) => OnAfterAppendToken?.Invoke(sender, e)
+            };
         }
 
         public virtual DotTokenWriter Token(string token, DotTokenType type, bool linger = false)

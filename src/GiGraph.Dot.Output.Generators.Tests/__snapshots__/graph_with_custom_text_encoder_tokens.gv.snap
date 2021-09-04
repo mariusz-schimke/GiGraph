@@ -40,6 +40,7 @@ ValueAssignmentOperator
 Space
 Value
 LineBreak
+LineBreak
 Indentation
 CommentStart
 Space
@@ -84,6 +85,7 @@ LineBreak
 Indentation
 AttributeListEnd
 LineBreak
+LineBreak
 Indentation
 CommentStart
 Space
@@ -150,6 +152,7 @@ LineBreak
 Indentation
 AttributeListEnd
 LineBreak
+LineBreak
 Indentation
 CommentStart
 Space
@@ -253,6 +256,7 @@ LineBreak
 Indentation
 AttributeListEnd
 LineBreak
+LineBreak
 Indentation
 CommentStart
 Space
@@ -314,6 +318,7 @@ Value
 LineBreak
 Indentation
 AttributeListEnd
+LineBreak
 LineBreak
 Indentation
 BlockCommentStart

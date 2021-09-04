@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs.Attributes
 
         public virtual IDotAttributeWriter BeginAttributeStatement()
         {
-            return new DotAttributeWriter(_tokenWriter, _configuration);
+            return new DotAttributeWriter(_separableEntityWriter.BeginEntity(), _configuration);
         }
 
         public virtual void EndAttributeStatement()
