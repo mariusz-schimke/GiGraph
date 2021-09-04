@@ -2,26 +2,26 @@
 
 namespace GiGraph.Dot.Output.Writers
 {
-    public class DotSeparableEntityWriter
+    public class DotPaddedEntityWriter
     {
         protected readonly DotTokenWriter _tokenWriter;
-        protected bool? _isSeparated;
+        protected bool? _isPadded;
         protected bool _prependIndentation;
 
-        public DotSeparableEntityWriter(DotTokenWriter tokenWriter)
+        public DotPaddedEntityWriter(DotTokenWriter tokenWriter)
         {
             _tokenWriter = tokenWriter;
         }
 
-        public virtual DotTokenWriter BeginEntity(bool enforceSeparation = false)
+        public virtual DotTokenWriter BeginEntity(bool enforcePadding = false)
         {
             return _tokenWriter.CloneWith(
                 tw => tw.OnBeforeAppendToken = (sender, e) =>
                 {
                     tw.OnBeforeAppendToken = null;
-                    enforceSeparation |= e.IsCommentStartToken;
+                    enforcePadding |= e.IsCommentStartToken;
 
-                    if (false == _isSeparated && enforceSeparation)
+                    if (false == _isPadded && enforcePadding)
                     {
                         tw.NewLine();
                     }
@@ -30,14 +30,14 @@ namespace GiGraph.Dot.Output.Writers
                         tw.Indentation();
                     }
 
-                    _isSeparated = enforceSeparation;
+                    _isPadded = enforcePadding;
                 });
         }
 
         public virtual void EndEntity(bool linger = true, bool enforceLineBreak = true)
         {
             // the assumption is that a commented attribute needs to have an empty line above and below
-            if (true == _isSeparated)
+            if (true == _isPadded)
             {
                 _tokenWriter.EmptyLine(linger, enforceLineBreak);
                 _prependIndentation = false;

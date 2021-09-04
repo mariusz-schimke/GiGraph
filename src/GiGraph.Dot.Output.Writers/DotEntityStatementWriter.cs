@@ -4,14 +4,14 @@ namespace GiGraph.Dot.Output.Writers
 {
     public abstract class DotEntityStatementWriter : DotEntityWriter
     {
-        protected readonly DotSeparableEntityWriter _separableEntityWriter;
+        protected readonly DotPaddedEntityWriter _paddedEntityWriter;
         protected readonly bool _useStatementDelimiter;
 
         protected DotEntityStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool useStatementDelimiter)
             : base(tokenWriter, configuration, enforceBlockComment: true)
         {
             _useStatementDelimiter = useStatementDelimiter;
-            _separableEntityWriter = new DotSeparableEntityWriter(tokenWriter);
+            _paddedEntityWriter = new DotPaddedEntityWriter(tokenWriter);
         }
 
         public virtual void EndStatement()
@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Output.Writers
                 _tokenWriter.StatementDelimiter();
             }
 
-            _separableEntityWriter.EndEntity();
+            _paddedEntityWriter.EndEntity();
         }
 
         public override void EndComment()

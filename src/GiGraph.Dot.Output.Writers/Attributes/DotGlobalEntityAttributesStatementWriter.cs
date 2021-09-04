@@ -60,7 +60,7 @@ namespace GiGraph.Dot.Output.Writers.Attributes
         {
             return _tokenWriter.Options.SingleLine
                 ? _tokenWriter
-                : _separableEntityWriter.BeginEntity(enforceSeparation: !isCurrentEntitySingleLine);
+                : _paddedEntityWriter.BeginEntity(enforcePadding: !isCurrentEntitySingleLine);
         }
 
         public override void EndComment()
