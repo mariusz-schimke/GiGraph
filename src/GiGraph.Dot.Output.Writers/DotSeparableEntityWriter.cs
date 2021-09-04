@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Output.Writers
     public class DotCommentableEntityWriter
     {
         protected readonly DotTokenWriter _tokenWriter;
-        protected bool? _isCommented;
+        protected bool? _isSeparated;
         protected bool _prependIndentation;
 
         public DotCommentableEntityWriter(DotTokenWriter tokenWriter)
@@ -13,14 +13,15 @@ namespace GiGraph.Dot.Output.Writers
             _tokenWriter = tokenWriter;
         }
 
-        public virtual DotTokenWriter BeginEntity()
+        public virtual DotTokenWriter BeginEntity(bool enforceSeparation = false)
         {
             return _tokenWriter.CloneWith(
                 tw => tw.OnBeforeAppendToken = (sender, e) =>
                 {
                     tw.OnBeforeAppendToken = null;
+                    enforceSeparation |= e.IsCommentStartToken;
 
-                    if (false == _isCommented && e.IsCommentStartToken)
+                    if (false == _isSeparated && enforceSeparation)
                     {
                         tw.NewLine();
                     }
@@ -29,14 +30,14 @@ namespace GiGraph.Dot.Output.Writers
                         tw.Indentation();
                     }
 
-                    _isCommented = e.IsCommentStartToken;
+                    _isSeparated = enforceSeparation;
                 });
         }
 
         public virtual void EndEntity(bool linger = true, bool enforceLineBreak = true)
         {
             // the assumption is that a commented attribute needs to have an empty line above and below
-            if (true == _isCommented)
+            if (true == _isSeparated)
             {
                 _tokenWriter.EmptyLine(linger, enforceLineBreak);
                 _prependIndentation = false;
