@@ -2,13 +2,13 @@
 
 namespace GiGraph.Dot.Output.Writers
 {
-    public class DotCommentableEntityWriter
+    public class DotSeparableEntityWriter
     {
         protected readonly DotTokenWriter _tokenWriter;
         protected bool? _isSeparated;
         protected bool _prependIndentation;
 
-        public DotCommentableEntityWriter(DotTokenWriter tokenWriter)
+        public DotSeparableEntityWriter(DotTokenWriter tokenWriter)
         {
             _tokenWriter = tokenWriter;
         }
