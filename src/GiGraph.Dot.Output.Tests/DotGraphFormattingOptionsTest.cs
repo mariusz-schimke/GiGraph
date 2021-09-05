@@ -8,7 +8,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Output.Tests
 {
-    public partial class DotGraphFormattingOptionsTest
+    public class DotGraphFormattingOptionsTest
     {
         [Fact]
         public void renders_empty_graph_in_expected_single_line_format()
