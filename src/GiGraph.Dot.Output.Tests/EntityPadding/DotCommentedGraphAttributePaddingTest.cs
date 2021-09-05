@@ -22,42 +22,42 @@ namespace GiGraph.Dot.Output.Tests.EntityPadding
         }
 
         [Fact]
-        public void graph_commented_attribute_has_padding_before_and_after_when_between_two_other_attributes()
+        public void commented_graph_attribute_has_top_and_bottom_padding_when_between_two_other_attributes()
         {
             var graph = new DotGraph();
             graph.Font.Set("arial", 10, Color.Red);
             graph.Font.Get(x => x.Name).Annotation = "comment";
 
-            Snapshot.Match(graph.Build(), "commented_graph_attribute_with_padding_before_and_after.gv");
+            Snapshot.Match(graph.Build(), "commented_graph_attribute_with_top_and_bottom_padding.gv");
 
             var formatting = new DotFormattingOptions { SingleLine = true };
-            Snapshot.Match(graph.Build(formatting), "commented_graph_attribute_with_padding_before_and_after_single_line.gv");
+            Snapshot.Match(graph.Build(formatting), "commented_graph_attribute_with_top_and_bottom_padding_single_line.gv");
         }
 
         [Fact]
-        public void graph_commented_attribute_has_padding_after_only_when_first()
+        public void commented_graph_attribute_has_bottom_padding_only_when_first()
         {
             var graph = new DotGraph();
             graph.Font.Set("arial", 10, Color.Red);
             graph.Font.Get(x => x.Color).Annotation = "comment";
 
-            Snapshot.Match(graph.Build(), "commented_graph_attribute_with_padding_after.gv");
+            Snapshot.Match(graph.Build(), "commented_graph_attribute_with_bottom_padding.gv");
 
             var formatting = new DotFormattingOptions { SingleLine = true };
-            Snapshot.Match(graph.Build(formatting), "commented_graph_attribute_with_padding_after_single_line.gv");
+            Snapshot.Match(graph.Build(formatting), "commented_graph_attribute_with_bottom_padding_single_line.gv");
         }
 
         [Fact]
-        public void graph_commented_attribute_has_padding_before_only_when_last()
+        public void commented_graph_attribute_has_top_padding_only_when_last()
         {
             var graph = new DotGraph();
             graph.Font.Set("arial", 10, Color.Red);
             graph.Font.Get(x => x.Size).Annotation = "comment";
 
-            Snapshot.Match(graph.Build(), "commented_graph_attribute_with_padding_before.gv");
+            Snapshot.Match(graph.Build(), "commented_graph_attribute_with_top_padding.gv");
 
             var formatting = new DotFormattingOptions { SingleLine = true };
-            Snapshot.Match(graph.Build(formatting), "commented_graph_attribute_with_padding_before_single_line.gv");
+            Snapshot.Match(graph.Build(formatting), "commented_graph_attribute_with_top_padding_single_line.gv");
         }
     }
 }
