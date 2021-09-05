@@ -114,5 +114,30 @@ namespace GiGraph.Dot.Output.Tests.EntityPadding
             formatting.SingleLine = true;
             Snapshot.Match(graph.Build(formatting), "edge_with_bottom_padding_single_line.gv");
         }
+
+        [Fact]
+        public void last_edge_has_no_bottom_padding()
+        {
+            var graph = new DotGraph();
+
+            graph.Edges.AddLoop("node1");
+            graph.Edges.AddLoop("node2");
+
+            graph.Edges.AddSequence(
+                new DotEndpointGroup(
+                    new DotEndpoint("node3"),
+                    new DotClusterEndpoint("cluster1"),
+                    new DotClusterEndpoint(null)
+                ),
+                new DotSubgraphEndpoint("node4", "node5")
+            );
+
+
+            var formatting = new DotFormattingOptions { Edges = { SingleLineSubgraphs = false } };
+            Snapshot.Match(graph.Build(formatting), "edge_with_top_padding.gv");
+
+            formatting.SingleLine = true;
+            Snapshot.Match(graph.Build(formatting), "edge_with_top_padding_single_line.gv");
+        }
     }
 }
