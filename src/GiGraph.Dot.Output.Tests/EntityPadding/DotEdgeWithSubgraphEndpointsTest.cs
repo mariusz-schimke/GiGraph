@@ -7,7 +7,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Output.Tests.EntityPadding
 {
-    public class DotEdgeWithSubgraphEndpointsPaddingTest
+    public class DotEdgeWithSubgraphEndpointsTest
     {
         [Fact]
         public void edge_has_no_padding_when_it_contains_no_subgraph_endpoints()
