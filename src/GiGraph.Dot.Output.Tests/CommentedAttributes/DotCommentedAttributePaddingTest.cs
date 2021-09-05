@@ -1,6 +1,7 @@
 using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
+using GiGraph.Dot.Output.Options;
 using Snapshooter.Xunit;
 using Xunit;
 
@@ -14,8 +15,10 @@ namespace GiGraph.Dot.Output.Tests.CommentedAttributes
             var graph = new DotGraph();
             graph.Font.Set("arial", 10);
 
-            var dot = graph.Build();
-            Snapshot.Match(dot, "commented_graph_attribute_without_padding.gv");
+            Snapshot.Match(graph.Build(), "commented_graph_attribute_without_padding.gv");
+
+            var formatting = new DotFormattingOptions { SingleLine = true };
+            Snapshot.Match(graph.Build(formatting), "commented_graph_attribute_without_padding_single_line.gv");
         }
 
         [Fact]
@@ -25,8 +28,10 @@ namespace GiGraph.Dot.Output.Tests.CommentedAttributes
             graph.Font.Set("arial", 10, Color.Red);
             graph.Font.Get(x => x.Name).Annotation = "comment";
 
-            var dot = graph.Build();
-            Snapshot.Match(dot, "commented_graph_attribute_with_padding_before_and_after.gv");
+            Snapshot.Match(graph.Build(), "commented_graph_attribute_with_padding_before_and_after.gv");
+
+            var formatting = new DotFormattingOptions { SingleLine = true };
+            Snapshot.Match(graph.Build(formatting), "commented_graph_attribute_with_padding_before_and_after_single_line.gv");
         }
 
         [Fact]
@@ -36,8 +41,10 @@ namespace GiGraph.Dot.Output.Tests.CommentedAttributes
             graph.Font.Set("arial", 10, Color.Red);
             graph.Font.Get(x => x.Color).Annotation = "comment";
 
-            var dot = graph.Build();
-            Snapshot.Match(dot, "commented_graph_attribute_with_padding_after.gv");
+            Snapshot.Match(graph.Build(), "commented_graph_attribute_with_padding_after.gv");
+
+            var formatting = new DotFormattingOptions { SingleLine = true };
+            Snapshot.Match(graph.Build(formatting), "commented_graph_attribute_with_padding_after_single_line.gv");
         }
 
         [Fact]
@@ -47,8 +54,10 @@ namespace GiGraph.Dot.Output.Tests.CommentedAttributes
             graph.Font.Set("arial", 10, Color.Red);
             graph.Font.Get(x => x.Size).Annotation = "comment";
 
-            var dot = graph.Build();
-            Snapshot.Match(dot, "commented_graph_attribute_with_padding_before.gv");
+            Snapshot.Match(graph.Build(), "commented_graph_attribute_with_padding_before.gv");
+
+            var formatting = new DotFormattingOptions { SingleLine = true };
+            Snapshot.Match(graph.Build(formatting), "commented_graph_attribute_with_padding_before_single_line.gv");
         }
     }
 }
