@@ -25,8 +25,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
                    .Identifier(id, quoteId);
             }
 
-            _tokenWriter.LineBreak()
-               .Indentation();
+            _tokenWriter.NewLine();
         }
     }
 }

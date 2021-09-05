@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
 
         protected virtual void WriteNode(DotNodeDefinition node, IDotNodeStatementWriter writer)
         {
-            var nodeWriter = writer.BeginNodeStatement();
+            var nodeWriter = writer.BeginNodeStatement(node.Attributes.Collection.Any());
             _entityGenerators.GetForEntity<IDotNodeWriter>(node).Generate(node, nodeWriter);
             writer.EndNodeStatement();
         }

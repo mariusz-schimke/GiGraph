@@ -1,5 +1,6 @@
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
+using GiGraph.Dot.Output.Options;
 using Snapshooter.Xunit;
 using Xunit;
 
@@ -41,6 +42,26 @@ namespace GiGraph.Dot.Output.Tests
 
             var dot = graph.Build();
             Snapshot.Match(dot, "annotated_graph_default_options.gv");
+        }
+
+        [Fact]
+        public void renders_graph_with_correct_annotation_and_multiline_attributes()
+        {
+            var graph = DotGraphFactory.CreateAnnotatedGraph();
+
+            var formatting = new DotFormattingOptions
+            {
+                GlobalAttributes = { SingleLineAttributeLists = false },
+                Nodes = { SingleLineAttributeLists = false },
+                Edges = { SingleLineAttributeLists = false }
+            };
+
+            var syntax = new DotSyntaxOptions
+            {
+                Graph = { AttributesAsStatements = false }
+            };
+
+            Snapshot.Match(graph.Build(formatting, syntax), "annotated_graph_multiline_attributes.gv");
         }
 
         [Fact]

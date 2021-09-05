@@ -34,8 +34,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
 
         public virtual void EndComment()
         {
-            _tokenWriter.LineBreak()
-               .Indentation(linger: true);
+            _tokenWriter.NewLine(linger: true, enforceLineBreak: true);
         }
 
         protected virtual void InitializeIndentation()

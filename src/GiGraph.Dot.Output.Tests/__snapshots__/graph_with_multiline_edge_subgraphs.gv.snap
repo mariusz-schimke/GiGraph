@@ -4,11 +4,13 @@
         b
         c
     }
+
     d -> subgraph subgraph1
     {
         e
         f
     }
+
     subgraph tail
     {
         g

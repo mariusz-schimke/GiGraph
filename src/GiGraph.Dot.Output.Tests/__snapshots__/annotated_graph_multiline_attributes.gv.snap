@@ -2,28 +2,49 @@
 // comment
 digraph
 {
-    /* graph attributes
-       comment */
-
+    // graph attributes
     // comment
-    comment = comment
+    graph
+    [
+        // comment
+        comment = comment,
 
-    // label
-    label = "Foo Graph"
+        // label
+        label = "Foo Graph"
+    ]
 
     // global node attributes
-    node [ distortion = 2, shape = rectangle ]
+    node
+    [
+        distortion = 2,
+        shape = rectangle
+    ]
 
     // global edge attributes
-    edge [ arrowhead = curve ]
+    edge
+    [
+        arrowhead = curve
+    ]
 
     /* nodes */
 
     // node comment
-    foo [ /* node attributes */  /* label */ label = foo ]
+    foo
+    [
+        /* node attributes */
+
+        // label
+        label = foo
+    ]
 
     // node group comment
-    foo, bar, baz [ /* node group attributes */  /* label */ label = foo ]
+    foo, bar, baz
+    [
+        /* node group attributes */
+
+        // label
+        label = foo
+    ]
 
     /* edges */
 
@@ -45,7 +66,8 @@ digraph
         color = red
     ]
 
-    /* endpoint group */  /* node1 */ node1, /* cluster1 */ "cluster cluster1" -> /* subgraph endpoint */ { node3 node4 }
+    // edge comment
+    /* tail endpoint group */  /* node1 */ node1, /* cluster1 */ "cluster cluster1" -> /* head subgraph endpoint */ { node3 node4 }
 
     /* subsection 1 */
 

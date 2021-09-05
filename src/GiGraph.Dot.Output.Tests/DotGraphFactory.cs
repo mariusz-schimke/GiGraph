@@ -170,15 +170,17 @@ namespace GiGraph.Dot.Output.Tests
             graph.Nodes.Annotation = "nodes";
             graph.Nodes.Add("foo", node =>
             {
+                node.Annotation = "node comment";
                 node.Attributes.Annotation = "node attributes";
                 node.Attributes.Set(a => a.Label, "foo").Annotation = "label";
-            }).Annotation = "node comment";
+            });
 
             graph.Nodes.AddGroup(new[] { "foo", "bar", "baz" }, node =>
             {
+                node.Annotation = "node group comment";
                 node.Attributes.Annotation = "node group attributes";
                 node.Attributes.Set(a => a.Label, "foo").Annotation = "label";
-            }).Annotation = "node group comment";
+            });
 
             // edge defaults
             graph.Edges.Attributes.Annotation = "global edge attributes";
@@ -188,12 +190,14 @@ namespace GiGraph.Dot.Output.Tests
             graph.Edges.Annotation = "edges";
             graph.Edges.Add("foo", "bar", edge =>
             {
+                edge.Annotation = "edge comment";
+
                 edge.Head.Endpoint.Annotation = "head";
                 edge.Tail.Endpoint.Annotation = "tail";
 
                 edge.Attributes.Annotation = "edge attributes";
                 edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
-            }).Annotation = "edge comment";
+            });
 
             graph.Edges.AddSequence(new[] { "foo", "bar", "baz" }, edge =>
             {
@@ -203,9 +207,10 @@ namespace GiGraph.Dot.Output.Tests
                     endpoint.Annotation = $"endpoint {i++}";
                 }
 
+                edge.Annotation = "edge sequence comment";
                 edge.Attributes.Annotation = "edge sequence attributes";
                 edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
-            }).Annotation = "edge sequence comment";
+            });
 
             // endpoint groups / endpoint subgraphs / clusters as endpoints
             var endpointGroup = new DotEndpointGroup(
@@ -220,8 +225,9 @@ namespace GiGraph.Dot.Output.Tests
                 new DotSubgraphEndpoint("node3", "node4"),
                 edge =>
                 {
-                    edge.Head.Endpoint.Annotation = "subgraph endpoint";
-                    edge.Tail.Endpoint.Annotation = "endpoint group";
+                    edge.Annotation = "edge comment";
+                    edge.Head.Endpoint.Annotation = "head subgraph endpoint";
+                    edge.Tail.Endpoint.Annotation = "tail endpoint group";
                 }
             );
 

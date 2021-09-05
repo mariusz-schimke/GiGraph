@@ -1,0 +1,1 @@
+﻿digraph { node1 -> node1 [ color = red ] node2 -> node2 [ fontsize = 10 ] node3 -> node3 [ fontname = arial ] }

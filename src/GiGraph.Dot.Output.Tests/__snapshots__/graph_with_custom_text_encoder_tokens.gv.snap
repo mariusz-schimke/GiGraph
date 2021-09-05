@@ -321,6 +321,11 @@ AttributeListEnd
 LineBreak
 LineBreak
 Indentation
+CommentStart
+Space
+CommentText
+LineBreak
+Indentation
 BlockCommentStart
 Space
 BlockCommentText

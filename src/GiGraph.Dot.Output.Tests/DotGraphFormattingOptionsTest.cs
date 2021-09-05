@@ -1,3 +1,4 @@
+using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Options;
@@ -8,7 +9,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Output.Tests
 {
-    public partial class DotGraphFormattingOptionsTest
+    public class DotGraphFormattingOptionsTest
     {
         [Fact]
         public void renders_empty_graph_in_expected_single_line_format()
@@ -106,6 +107,86 @@ namespace GiGraph.Dot.Output.Tests
         [Fact]
         public void renders_graph_with_multiline_edge_subgraphs()
         {
+            var graph = CreateGraphWithMultilineEdgeSubgraphs();
+
+            var options = new DotFormattingOptions
+            {
+                Edges =
+                {
+                    SingleLineSubgraphs = false
+                }
+            };
+
+            var dot = graph.Build(options);
+            Snapshot.Match(dot, "graph_with_multiline_edge_subgraphs.gv");
+        }
+
+        [Fact]
+        public void renders_graph_with_multiline_edge_subgraphs_and_attributes()
+        {
+            var graph = CreateGraphWithMultilineEdgeSubgraphs();
+
+            foreach (var edge in graph.Edges)
+            {
+                edge.Color = Color.Wheat;
+            }
+
+            var options = new DotFormattingOptions
+            {
+                Edges =
+                {
+                    SingleLineSubgraphs = false
+                }
+            };
+
+            var dot = graph.Build(options);
+            Snapshot.Match(dot, "graph_with_multiline_edge_subgraphs_and_attributes.gv");
+        }
+
+        [Fact]
+        public void renders_graph_with_multiline_edge_subgraphs_and_multiline_attributes()
+        {
+            var graph = CreateGraphWithMultilineEdgeSubgraphs();
+
+            foreach (var edge in graph.Edges)
+            {
+                edge.Color = Color.Wheat;
+            }
+
+            var options = new DotFormattingOptions
+            {
+                Edges =
+                {
+                    SingleLineSubgraphs = false,
+                    SingleLineAttributeLists = false
+                }
+            };
+
+            var dot = graph.Build(options);
+            Snapshot.Match(dot, "graph_with_multiline_edge_subgraphs_and_multiline_attributes.gv");
+        }
+
+        [Fact]
+        public void renders_graph_with_custom_text_encoder()
+        {
+            var graph = DotGraphFactory.CreateAnnotatedGraph();
+            graph.Id = "graph1";
+
+            var options = new DotFormattingOptions
+            {
+                TextEncoder = (value, _) => value.ToUpper()
+            };
+
+            var dot = graph.Build(options);
+            Snapshot.Match(dot, "graph_with_custom_text_encoder.gv");
+
+            options.TextEncoder = (_, type) => $"{type}\n";
+            dot = graph.Build(options);
+            Snapshot.Match(dot, "graph_with_custom_text_encoder_tokens.gv");
+        }
+
+        private static DotGraph CreateGraphWithMultilineEdgeSubgraphs()
+        {
             var graph = new DotGraph();
 
             graph.Edges.AddOneToMany("a", "b", "c");
@@ -128,35 +209,7 @@ namespace GiGraph.Dot.Output.Tests
 
             graph.Edges.AddManyToMany(new[] { "o", "p" }, "q", "r");
 
-            var options = new DotFormattingOptions
-            {
-                Edges =
-                {
-                    SingleLineSubgraphs = false
-                }
-            };
-
-            var dot = graph.Build(options);
-            Snapshot.Match(dot, "graph_with_multiline_edge_subgraphs.gv");
-        }
-
-        [Fact]
-        public void renders_graph_with_custom_text_encoder()
-        {
-            var graph = DotGraphFactory.CreateAnnotatedGraph();
-            graph.Id = "graph1";
-
-            var options = new DotFormattingOptions
-            {
-                TextEncoder = (value, _) => value.ToUpper()
-            };
-
-            var dot = graph.Build(options);
-            Snapshot.Match(dot, "graph_with_custom_text_encoder.gv");
-
-            options.TextEncoder = (_, type) => $"{type}\n";
-            dot = graph.Build(options);
-            Snapshot.Match(dot, "graph_with_custom_text_encoder_tokens.gv");
+            return graph;
         }
     }
 }

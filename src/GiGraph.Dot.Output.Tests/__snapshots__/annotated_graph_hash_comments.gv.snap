@@ -33,7 +33,8 @@ digraph
     # edge sequence comment
     /* endpoint 1 */ foo -> /* endpoint 2 */ bar -> /* endpoint 3 */ baz [ /* edge sequence attributes */  /* color */ color = red ]
 
-    /* endpoint group */  /* node1 */ node1, /* cluster1 */ "cluster cluster1" -> /* subgraph endpoint */ { node3 node4 }
+    # edge comment
+    /* tail endpoint group */  /* node1 */ node1, /* cluster1 */ "cluster cluster1" -> /* head subgraph endpoint */ { node3 node4 }
 
     /* subsection 1 */
 
