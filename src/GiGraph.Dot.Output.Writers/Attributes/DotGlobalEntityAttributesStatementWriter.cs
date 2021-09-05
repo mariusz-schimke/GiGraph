@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Output.Writers.Attributes
         public virtual IDotGlobalGraphAttributesWriter BeginGraphAttributesStatement()
         {
             return new DotGlobalGraphAttributesWriter(
-                BeginSeparateEntity(_configuration.Formatting.GlobalAttributes.SingleLineGraphAttributeList),
+                BeginPaddedEntity(_configuration.Formatting.GlobalAttributes.SingleLineGraphAttributeList),
                 _configuration
             );
         }
@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Output.Writers.Attributes
         public virtual IDotGlobalNodeAttributesWriter BeginNodeAttributesStatement()
         {
             return new DotGlobalNodeAttributesWriter(
-                BeginSeparateEntity(_configuration.Formatting.GlobalAttributes.SingleLineNodeAttributeList),
+                BeginPaddedEntity(_configuration.Formatting.GlobalAttributes.SingleLineNodeAttributeList),
                 _configuration
             );
         }
@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Output.Writers.Attributes
         public virtual IDotGlobalEdgeAttributesWriter BeginEdgeAttributesStatement()
         {
             return new DotGlobalEdgeAttributesWriter(
-                BeginSeparateEntity(_configuration.Formatting.GlobalAttributes.SingleLineEdgeAttributeList),
+                BeginPaddedEntity(_configuration.Formatting.GlobalAttributes.SingleLineEdgeAttributeList),
                 _configuration
             );
         }
@@ -56,7 +56,7 @@ namespace GiGraph.Dot.Output.Writers.Attributes
             EndStatement();
         }
 
-        protected virtual DotTokenWriter BeginSeparateEntity(bool isCurrentEntitySingleLine)
+        protected virtual DotTokenWriter BeginPaddedEntity(bool isCurrentEntitySingleLine)
         {
             return _tokenWriter.Options.SingleLine
                 ? _tokenWriter
