@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Output.Writers.Options
             return options.Space(1);
         }
 
-        private static string Space(this DotTokenWriterOptions options, int count)
+        public static string Space(this DotTokenWriterOptions options, int count)
         {
             return string.Empty.PadRight(count);
         }
