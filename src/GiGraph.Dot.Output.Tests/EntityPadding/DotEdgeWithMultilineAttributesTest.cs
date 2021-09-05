@@ -86,5 +86,21 @@ namespace GiGraph.Dot.Output.Tests.EntityPadding
             formatting.SingleLine = true;
             Snapshot.Match(graph.Build(formatting), "edge_with_attributes_with_bottom_padding_single_line.gv");
         }
+
+        [Fact]
+        public void last_edge_has_bottom_padding_only_when_it_contain_multiline_attributes()
+        {
+            var graph = new DotGraph();
+
+            graph.Edges.AddLoop("node1");
+            graph.Edges.AddLoop("node2");
+            graph.Edges.AddLoop("node3").Color = Color.Red;
+
+            var formatting = new DotFormattingOptions { Edges = { SingleLineAttributeLists = false } };
+            Snapshot.Match(graph.Build(formatting), "edge_with_attributes_with_top_padding.gv");
+
+            formatting.SingleLine = true;
+            Snapshot.Match(graph.Build(formatting), "edge_with_attributes_with_top_padding_single_line.gv");
+        }
     }
 }
