@@ -1,0 +1,4 @@
+﻿digraph
+{
+    node1 -> node1
+}
