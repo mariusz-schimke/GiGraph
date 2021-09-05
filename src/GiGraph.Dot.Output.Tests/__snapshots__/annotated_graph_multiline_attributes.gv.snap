@@ -66,7 +66,7 @@ digraph
         color = red
     ]
 
-    /* endpoint group */  /* node1 */ node1, /* cluster1 */ "cluster cluster1" -> /* subgraph endpoint */ { node3 node4 }
+    /* tail endpoint group */  /* node1 */ node1, /* cluster1 */ "cluster cluster1" -> /* head subgraph endpoint */ { node3 node4 }
 
     /* subsection 1 */
 

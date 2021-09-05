@@ -220,8 +220,8 @@ namespace GiGraph.Dot.Output.Tests
                 new DotSubgraphEndpoint("node3", "node4"),
                 edge =>
                 {
-                    edge.Head.Endpoint.Annotation = "subgraph endpoint";
-                    edge.Tail.Endpoint.Annotation = "endpoint group";
+                    edge.Head.Endpoint.Annotation = "head subgraph endpoint";
+                    edge.Tail.Endpoint.Annotation = "tail endpoint group";
                 }
             );
 
