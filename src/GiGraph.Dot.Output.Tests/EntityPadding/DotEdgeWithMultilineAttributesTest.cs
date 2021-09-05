@@ -1,3 +1,4 @@
+using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Options;
@@ -52,6 +53,22 @@ namespace GiGraph.Dot.Output.Tests.EntityPadding
 
             formatting.SingleLine = true;
             Snapshot.Match(graph.Build(formatting), "edges_without_attributes_without_padding_single_line.gv");
+        }
+
+        [Fact]
+        public void edges_have_padding_when_they_contain_multiline_attributes()
+        {
+            var graph = new DotGraph();
+
+            graph.Edges.AddLoop("node1").Color = Color.Red;
+            graph.Edges.AddLoop("node2").Font.Size = 10;
+            graph.Edges.AddLoop("node3").Font.Name = "arial";
+
+            var formatting = new DotFormattingOptions { Edges = { SingleLineAttributeLists = false } };
+            Snapshot.Match(graph.Build(formatting), "edges_with_attributes_with_padding.gv");
+
+            formatting.SingleLine = true;
+            Snapshot.Match(graph.Build(formatting), "edges_with_attributes_with_padding_single_line.gv");
         }
     }
 }
