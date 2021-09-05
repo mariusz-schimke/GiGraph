@@ -22,9 +22,8 @@ namespace GiGraph.Dot.Output.Writers.Graphs
         public virtual void EndBody()
         {
             _tokenWriter.ClearLingerBuffer();
-            _tokenWriter.Indentation();
-
-            _tokenWriter.BlockEnd();
+            _tokenWriter.Indentation()
+               .BlockEnd();
         }
     }
 }
