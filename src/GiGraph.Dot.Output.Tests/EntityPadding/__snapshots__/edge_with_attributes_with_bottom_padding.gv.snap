@@ -1,0 +1,10 @@
+﻿digraph
+{
+    node1 -> node1
+    [
+        color = red
+    ]
+
+    node2 -> node2
+    node3 -> node3
+}
