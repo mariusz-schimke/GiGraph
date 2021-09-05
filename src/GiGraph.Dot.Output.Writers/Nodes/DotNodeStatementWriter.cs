@@ -9,9 +9,15 @@ namespace GiGraph.Dot.Output.Writers.Nodes
         {
         }
 
-        public virtual IDotNodeWriter BeginNodeStatement()
+        public virtual IDotNodeWriter BeginNodeStatement(bool containsAttributes)
         {
-            return new DotNodeWriter(_paddedEntityWriter.BeginEntity(), _configuration);
+            var isMultiline = !_configuration.Formatting.SingleLine &&
+                containsAttributes && !_configuration.Formatting.Nodes.SingleLineAttributeLists;
+
+            return new DotNodeWriter(
+                _paddedEntityWriter.BeginEntity(enforcePadding: isMultiline),
+                _configuration
+            );
         }
 
         public virtual void EndNodeStatement()
