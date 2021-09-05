@@ -2041,9 +2041,10 @@ graph.Nodes.Shape = DotNodeShape.Rectangle;
 graph.Nodes.Annotation = "nodes";
 graph.Nodes.Add("foo", node =>
 {
-    node.Annotation = "node attributes";
+    node.Annotation = "node comment";
+    node.Attributes.Annotation = "node attributes";
     node.Attributes.Set(a => a.Label, "foo").Annotation = "label";
-}).Annotation = "node comment";
+});
 
 // edge defaults
 graph.Edges.Attributes.Annotation = "global edge attributes";
@@ -2053,25 +2054,27 @@ graph.Edges.Head.Arrowhead = DotArrowheadShape.Curve;
 graph.Edges.Annotation = "edges";
 graph.Edges.Add("foo", "bar", edge =>
 {
+    edge.Annotation = "edge comment";
+
     edge.Head.Endpoint.Annotation = "head";
     edge.Tail.Endpoint.Annotation = "tail";
 
     edge.Attributes.Annotation = "edge attributes";
     edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
-}).Annotation = "edge comment";
+});
 
 // subsections
-graph.Subsections.Add(sub =>
+graph.Subsections.Add(section =>
 {
-    sub.Annotation = "subsection 1";
+    section.Annotation = "subsection 1";
 
     // clusters
-    sub.Clusters.Annotation = "clusters";
-    sub.Clusters.Add("cluster 1").Annotation = "cluster";
+    section.Clusters.Annotation = "clusters";
+    section.Clusters.Add("cluster 1").Annotation = "cluster";
 
     // subgraphs
-    sub.Subgraphs.Annotation = "subgraphs";
-    sub.Subgraphs.Add().Annotation = "subgraph";
+    section.Subgraphs.Annotation = "subgraphs";
+    section.Subgraphs.Add().Annotation = "subgraph";
 });
 ```
 
@@ -2086,18 +2089,19 @@ digraph
 
     // global node attributes
     node [ shape = rectangle ]
+
     // global edge attributes
     edge [ arrowhead = curve ]
 
     /* nodes */
 
     // node comment
-    foo [ /* node attributes */ /* label */ label = foo ]
+    foo [ /* node attributes */  /* label */ label = foo ]
 
     /* edges */
 
     // edge comment
-    /* tail */ foo -> /* head */ bar [ /* edge attributes */ /* color */ color = red ]
+    /* tail */ foo -> /* head */ bar [ /* edge attributes */  /* color */ color = red ]
 
     /* subsection 1 */
 
