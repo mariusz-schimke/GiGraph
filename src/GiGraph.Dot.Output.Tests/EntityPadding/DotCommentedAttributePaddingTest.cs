@@ -5,7 +5,7 @@ using GiGraph.Dot.Output.Options;
 using Snapshooter.Xunit;
 using Xunit;
 
-namespace GiGraph.Dot.Output.Tests.CommentedAttributes
+namespace GiGraph.Dot.Output.Tests.EntityPadding
 {
     public class DotCommentedAttributePaddingTest
     {
