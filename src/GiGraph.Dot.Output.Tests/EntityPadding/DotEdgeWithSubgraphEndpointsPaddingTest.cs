@@ -69,7 +69,7 @@ namespace GiGraph.Dot.Output.Tests.EntityPadding
         {
             var graph = new DotGraph();
 
-            for (int i = 0; i < 3; i++)
+            for (var i = 0; i < 3; i++)
             {
                 graph.Edges.AddSequence(
                     new DotEndpointGroup(
@@ -81,11 +81,38 @@ namespace GiGraph.Dot.Output.Tests.EntityPadding
                 );
             }
 
+            graph.Edges.AddLoop("node4");
+            graph.Edges.AddLoop("node5");
+
             var formatting = new DotFormattingOptions { Edges = { SingleLineSubgraphs = false } };
             Snapshot.Match(graph.Build(formatting), "edges_with_padding.gv");
 
             formatting.SingleLine = true;
             Snapshot.Match(graph.Build(formatting), "edges_with_padding_single_line.gv");
+        }
+
+        [Fact]
+        public void first_edge_has_no_top_padding()
+        {
+            var graph = new DotGraph();
+
+            graph.Edges.AddSequence(
+                new DotEndpointGroup(
+                    new DotEndpoint("node1"),
+                    new DotClusterEndpoint("cluster1"),
+                    new DotClusterEndpoint(null)
+                ),
+                new DotSubgraphEndpoint("node2", "node3")
+            );
+
+            graph.Edges.AddLoop("node4");
+            graph.Edges.AddLoop("node5");
+
+            var formatting = new DotFormattingOptions { Edges = { SingleLineSubgraphs = false } };
+            Snapshot.Match(graph.Build(formatting), "edge_with_bottom_padding.gv");
+
+            formatting.SingleLine = true;
+            Snapshot.Match(graph.Build(formatting), "edge_with_bottom_padding_single_line.gv");
         }
     }
 }
