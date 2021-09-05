@@ -7,7 +7,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Output.Tests.EntityPadding
 {
-    public class DotCommentedAttributePaddingTest
+    public class DotCommentedGraphAttributePaddingTest
     {
         [Fact]
         public void graph_attributes_have_no_padding_when_not_commented()
