@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Options;
 
-namespace GiGraph.Dot.Output.Writers
+namespace GiGraph.Dot.Output.Writers.TokenWriter
 {
     public class DotTokenWriter
     {
@@ -22,16 +23,35 @@ namespace GiGraph.Dot.Output.Writers
         {
         }
 
+        public EventHandler<DotAppendTokenEventArgs> OnBeforeAppendToken { get; set; }
+        public EventHandler<DotAppendTokenEventArgs> OnAfterAppendToken { get; set; }
+
         public DotTokenWriterOptions Options { get; }
 
         public virtual DotTokenWriter SingleLine()
         {
-            return new DotTokenWriter(_writer, _lingerBuffer, Options.ToSingleLine());
+            return CloneWith(Options.ToSingleLine());
         }
 
         public virtual DotTokenWriter NextIndentationLevel()
         {
-            return new DotTokenWriter(_writer, _lingerBuffer, Options.IncreaseIndentation());
+            return CloneWith(Options.IncreaseIndentation());
+        }
+
+        public virtual DotTokenWriter CloneWith(Action<DotTokenWriter> init)
+        {
+            var result = CloneWith(Options);
+            init?.Invoke(result);
+            return result;
+        }
+
+        public virtual DotTokenWriter CloneWith(DotTokenWriterOptions options)
+        {
+            return new DotTokenWriter(_writer, _lingerBuffer, options)
+            {
+                OnBeforeAppendToken = (sender, e) => OnBeforeAppendToken?.Invoke(sender, e),
+                OnAfterAppendToken = (sender, e) => OnAfterAppendToken?.Invoke(sender, e)
+            };
         }
 
         public virtual DotTokenWriter Token(string token, DotTokenType type, bool linger = false)
@@ -291,6 +311,16 @@ namespace GiGraph.Dot.Output.Writers
             return Append(Options.Space(), DotTokenType.Space, linger);
         }
 
+        public virtual DotTokenWriter Space(int count, bool linger = false)
+        {
+            for (var i = 0; i < count; i++)
+            {
+                Space(linger);
+            }
+
+            return this;
+        }
+
         public virtual DotTokenWriter Indentation(bool linger = false)
         {
             return Append(Options.Indentation(), DotTokenType.Indentation, linger);
@@ -303,6 +333,9 @@ namespace GiGraph.Dot.Output.Writers
 
         protected virtual DotTokenWriter Append(string token, DotTokenType tokenType, bool linger = false)
         {
+            var eventArgs = new DotAppendTokenEventArgs(token, tokenType, linger);
+            OnBeforeAppendToken?.Invoke(this, eventArgs);
+
             if (linger)
             {
                 _lingerBuffer.Enqueue((token, tokenType));
@@ -313,6 +346,7 @@ namespace GiGraph.Dot.Output.Writers
                 Write(token, tokenType);
             }
 
+            OnAfterAppendToken?.Invoke(this, eventArgs);
             return this;
         }
 

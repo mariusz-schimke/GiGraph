@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Output.Writers.Graphs;
+using GiGraph.Dot.Output.Writers.TokenWriter;
 
 namespace GiGraph.Dot.Output.Writers.Subgraphs
 {
@@ -30,8 +31,7 @@ namespace GiGraph.Dot.Output.Writers.Subgraphs
 
             if (separate)
             {
-                _tokenWriter.LineBreak()
-                   .Indentation();
+                _tokenWriter.NewLine();
             }
         }
     }

@@ -1,13 +1,12 @@
 ﻿using GiGraph.Dot.Output.Writers.Edges.Attributes;
 using GiGraph.Dot.Output.Writers.Graphs.Attributes;
 using GiGraph.Dot.Output.Writers.Nodes.Attributes;
+using GiGraph.Dot.Output.Writers.TokenWriter;
 
 namespace GiGraph.Dot.Output.Writers.Attributes
 {
     public class DotGlobalEntityAttributesStatementWriter : DotEntityStatementWriter, IDotGlobalEntityAttributesStatementWriter
     {
-        protected bool? _wasPreviousEntitySingleLine;
-
         public DotGlobalEntityAttributesStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool useStatementDelimiter)
             : base(tokenWriter, configuration, useStatementDelimiter)
         {
@@ -15,8 +14,10 @@ namespace GiGraph.Dot.Output.Writers.Attributes
 
         public virtual IDotGlobalGraphAttributesWriter BeginGraphAttributesStatement()
         {
-            EnsureStatementSpacing(_configuration.Formatting.GlobalAttributes.SingleLineGraphAttributeList);
-            return new DotGlobalGraphAttributesWriter(_tokenWriter, _configuration);
+            return new DotGlobalGraphAttributesWriter(
+                BeginPaddedEntity(_configuration.Formatting.GlobalAttributes.SingleLineGraphAttributeList),
+                _configuration
+            );
         }
 
         public virtual void EndGraphAttributesStatement()
@@ -26,8 +27,10 @@ namespace GiGraph.Dot.Output.Writers.Attributes
 
         public virtual IDotGlobalNodeAttributesWriter BeginNodeAttributesStatement()
         {
-            EnsureStatementSpacing(_configuration.Formatting.GlobalAttributes.SingleLineNodeAttributeList);
-            return new DotGlobalNodeAttributesWriter(_tokenWriter, _configuration);
+            return new DotGlobalNodeAttributesWriter(
+                BeginPaddedEntity(_configuration.Formatting.GlobalAttributes.SingleLineNodeAttributeList),
+                _configuration
+            );
         }
 
         public virtual void EndNodeAttributesStatement()
@@ -37,8 +40,10 @@ namespace GiGraph.Dot.Output.Writers.Attributes
 
         public virtual IDotGlobalEdgeAttributesWriter BeginEdgeAttributesStatement()
         {
-            EnsureStatementSpacing(_configuration.Formatting.GlobalAttributes.SingleLineEdgeAttributeList);
-            return new DotGlobalEdgeAttributesWriter(_tokenWriter, _configuration);
+            return new DotGlobalEdgeAttributesWriter(
+                BeginPaddedEntity(_configuration.Formatting.GlobalAttributes.SingleLineEdgeAttributeList),
+                _configuration
+            );
         }
 
         public virtual void EndEdgeAttributesStatement()
@@ -51,22 +56,11 @@ namespace GiGraph.Dot.Output.Writers.Attributes
             EndStatement();
         }
 
-        protected virtual void EnsureStatementSpacing(bool isCurrentEntitySingleLine)
+        protected virtual DotTokenWriter BeginPaddedEntity(bool isCurrentEntitySingleLine)
         {
-            if (_tokenWriter.Options.SingleLine)
-            {
-                return;
-            }
-
-            // if the previous entity was multiline, or the current one is, insert a line break to separate them for clarity
-            // (unless this is the first entity)
-            if (_wasPreviousEntitySingleLine.HasValue && (!_wasPreviousEntitySingleLine.Value || !isCurrentEntitySingleLine))
-            {
-                _tokenWriter.ClearLingerBuffer();
-                NewLine();
-            }
-
-            _wasPreviousEntitySingleLine = isCurrentEntitySingleLine;
+            return _tokenWriter.Options.SingleLine
+                ? _tokenWriter
+                : _paddedEntityWriter.BeginEntity(enforcePadding: !isCurrentEntitySingleLine);
         }
 
         public override void EndComment()

@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Edges
+﻿using GiGraph.Dot.Output.Writers.TokenWriter;
+
+namespace GiGraph.Dot.Output.Writers.Edges
 {
     public class DotEndpointWriter : DotEntityWriter, IDotEndpointWriter
     {

@@ -9,7 +9,7 @@ using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Ranks;
 using GiGraph.Dot.Types.Styling;
 
-namespace GiGraph.Dot.Output.Generators.Tests
+namespace GiGraph.Dot.Output.Tests
 {
     public class DotGraphFactory
     {

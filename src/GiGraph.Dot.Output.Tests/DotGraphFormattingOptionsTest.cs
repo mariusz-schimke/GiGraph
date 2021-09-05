@@ -6,7 +6,7 @@ using GiGraph.Dot.Types.Ranks;
 using Snapshooter.Xunit;
 using Xunit;
 
-namespace GiGraph.Dot.Output.Generators.Tests
+namespace GiGraph.Dot.Output.Tests
 {
     public partial class DotGraphFormattingOptionsTest
     {

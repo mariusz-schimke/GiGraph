@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Output.Writers.Attributes;
+using GiGraph.Dot.Output.Writers.TokenWriter;
 
 namespace GiGraph.Dot.Output.Writers.Graphs.Attributes
 {
@@ -11,7 +12,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs.Attributes
 
         public virtual IDotAttributeWriter BeginAttributeStatement()
         {
-            return new DotAttributeWriter(_tokenWriter, _configuration);
+            return new DotAttributeWriter(_paddedEntityWriter.BeginEntity(), _configuration);
         }
 
         public virtual void EndAttributeStatement()

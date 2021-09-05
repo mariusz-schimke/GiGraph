@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Edges
+﻿using GiGraph.Dot.Output.Writers.TokenWriter;
+
+namespace GiGraph.Dot.Output.Writers.Edges
 {
     public class DotEndpointGroupWriter : DotEntityWriter, IDotEndpointGroupWriter
     {
@@ -20,7 +22,7 @@
 
         public override void EndComment()
         {
-            _tokenWriter.Space().Space();
+            _tokenWriter.Space(2);
         }
     }
 }

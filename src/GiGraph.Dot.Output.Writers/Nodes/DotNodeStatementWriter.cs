@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Nodes
+﻿using GiGraph.Dot.Output.Writers.TokenWriter;
+
+namespace GiGraph.Dot.Output.Writers.Nodes
 {
     public class DotNodeStatementWriter : DotEntityStatementWriter, IDotNodeStatementWriter
     {
@@ -9,7 +11,7 @@
 
         public virtual IDotNodeWriter BeginNodeStatement()
         {
-            return new DotNodeWriter(_tokenWriter, _configuration);
+            return new DotNodeWriter(_paddedEntityWriter.BeginEntity(), _configuration);
         }
 
         public virtual void EndNodeStatement()

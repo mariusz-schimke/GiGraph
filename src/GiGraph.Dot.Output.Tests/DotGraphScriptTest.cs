@@ -3,9 +3,9 @@ using GiGraph.Dot.Extensions;
 using Snapshooter.Xunit;
 using Xunit;
 
-namespace GiGraph.Dot.Output.Generators.Tests
+namespace GiGraph.Dot.Output.Tests
 {
-    public class DotGraphGeneratorTest
+    public class DotGraphScriptTest
     {
         [Fact]
         public void graph_with_all_possible_elements_is_rendered_according_to_default_rules_and_options()

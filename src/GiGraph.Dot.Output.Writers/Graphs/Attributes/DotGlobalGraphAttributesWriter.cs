@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Graphs.Attributes
+﻿using GiGraph.Dot.Output.Writers.TokenWriter;
+
+namespace GiGraph.Dot.Output.Writers.Graphs.Attributes
 {
     public class DotGlobalGraphAttributesWriter : DotEntityWithAttributeListWriter, IDotGlobalGraphAttributesWriter
     {

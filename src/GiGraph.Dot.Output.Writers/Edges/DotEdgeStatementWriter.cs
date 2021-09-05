@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Edges
+﻿using GiGraph.Dot.Output.Writers.TokenWriter;
+
+namespace GiGraph.Dot.Output.Writers.Edges
 {
     public class DotEdgeStatementWriter : DotEntityStatementWriter, IDotEdgeStatementWriter
     {
@@ -9,7 +11,7 @@
 
         public virtual IDotEdgeWriter BeginEdgeStatement()
         {
-            return new DotEdgeWriter(_tokenWriter, _configuration);
+            return new DotEdgeWriter(_paddedEntityWriter.BeginEntity(), _configuration);
         }
 
         public virtual void EndEdgeStatement()
