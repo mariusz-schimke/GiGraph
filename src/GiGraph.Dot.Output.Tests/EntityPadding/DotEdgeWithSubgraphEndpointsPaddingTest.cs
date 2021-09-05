@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Output.Tests.EntityPadding
     public class DotEdgeWithSubgraphEndpointsPaddingTest
     {
         [Fact]
-        public void edge_has_no_padding_when_no_subgraph_endpoints()
+        public void edge_has_no_padding_when_it_contains_no_subgraph_endpoints()
         {
             var graph = new DotGraph();
 
@@ -29,10 +29,39 @@ namespace GiGraph.Dot.Output.Tests.EntityPadding
             );
 
             var formatting = new DotFormattingOptions { Edges = { SingleLineSubgraphs = false } };
-            Snapshot.Match(graph.Build(formatting), "edge_without_padding.gv");
+            Snapshot.Match(graph.Build(formatting), "single_edge_without_padding.gv");
 
             formatting.SingleLine = true;
-            Snapshot.Match(graph.Build(formatting), "edge_without_padding_single_line.gv");
+            Snapshot.Match(graph.Build(formatting), "single_edge_without_padding_single_line.gv");
+        }
+
+        [Fact]
+        public void edges_have_no_padding_when_they_contain_no_subgraph_endpoints()
+        {
+            var graph = new DotGraph();
+
+            graph.Edges.AddSequence(
+                new DotEndpointGroup(
+                    new DotEndpoint("node1"),
+                    new DotClusterEndpoint("cluster1"),
+                    new DotClusterEndpoint(null)
+                ),
+                new DotEndpointGroup(
+                    new DotEndpoint("node2"),
+                    new DotClusterEndpoint("cluster2"),
+                    new DotClusterEndpoint(null)
+                ),
+                new DotEndpoint("node3", "port1")
+            );
+
+            graph.Edges.AddLoop("node4");
+            graph.Edges.AddLoop("node5");
+
+            var formatting = new DotFormattingOptions { Edges = { SingleLineSubgraphs = false } };
+            Snapshot.Match(graph.Build(formatting), "edges_without_padding.gv");
+
+            formatting.SingleLine = true;
+            Snapshot.Match(graph.Build(formatting), "edges_without_padding_single_line.gv");
         }
 
         [Fact]
@@ -53,10 +82,10 @@ namespace GiGraph.Dot.Output.Tests.EntityPadding
             }
 
             var formatting = new DotFormattingOptions { Edges = { SingleLineSubgraphs = false } };
-            Snapshot.Match(graph.Build(formatting), "edge_with_padding.gv");
+            Snapshot.Match(graph.Build(formatting), "edges_with_padding.gv");
 
             formatting.SingleLine = true;
-            Snapshot.Match(graph.Build(formatting), "edge_with_padding_single_line.gv");
+            Snapshot.Match(graph.Build(formatting), "edges_with_padding_single_line.gv");
         }
     }
 }

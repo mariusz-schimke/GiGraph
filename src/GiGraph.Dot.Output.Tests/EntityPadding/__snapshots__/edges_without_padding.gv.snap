@@ -1,0 +1,6 @@
+﻿digraph
+{
+    node1, "cluster cluster1", cluster -> node2, "cluster cluster2", cluster -> node3:port1
+    node4 -> node4
+    node5 -> node5
+}
