@@ -83,8 +83,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
         protected virtual void EndSection()
         {
             _tokenWriter.ClearLingerBuffer()
-               .LineBreak(linger: true)
-               .Indentation(linger: true);
+               .NewLine(linger: true);
         }
     }
 }

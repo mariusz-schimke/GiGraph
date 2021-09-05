@@ -13,8 +13,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
         {
             var tokenWriter = _tokenWriter.NextIndentationLevel();
             tokenWriter.BlockStart()
-               .LineBreak()
-               .Indentation(linger: true);
+               .NewLine(linger: true, enforceLineBreak: true);
 
             return new DotGraphBodyWriter(tokenWriter, _configuration);
         }
