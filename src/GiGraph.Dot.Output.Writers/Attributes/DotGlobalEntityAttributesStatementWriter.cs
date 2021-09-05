@@ -58,9 +58,8 @@ namespace GiGraph.Dot.Output.Writers.Attributes
 
         protected virtual DotTokenWriter BeginPaddedEntity(bool isCurrentEntitySingleLine)
         {
-            return _tokenWriter.Options.SingleLine
-                ? _tokenWriter
-                : _paddedEntityWriter.BeginEntity(enforcePadding: !isCurrentEntitySingleLine);
+            var isMultiline = !isCurrentEntitySingleLine && !_configuration.Formatting.SingleLine;
+            return _paddedEntityWriter.BeginEntity(enforcePadding: isMultiline);
         }
 
         public override void EndComment()
