@@ -9,11 +9,13 @@ namespace GiGraph.Dot.Output.Writers.Edges
         {
         }
 
-        public virtual IDotEdgeWriter BeginEdgeStatement(bool containsSubgraphs)
+        public virtual IDotEdgeWriter BeginEdgeStatement(bool containsSubgraphs, bool containsAttributes)
         {
-            var isMultiline = containsSubgraphs &&
-                !_configuration.Formatting.Edges.SingleLineSubgraphs &&
-                !_configuration.Formatting.SingleLine;
+            var isMultiline =
+                containsSubgraphs && !_configuration.Formatting.Edges.SingleLineSubgraphs ||
+                containsAttributes && !_configuration.Formatting.Edges.SingleLineAttributeLists;
+
+            isMultiline &= !_configuration.Formatting.SingleLine;
 
             return new DotEdgeWriter(
                 _paddedEntityWriter.BeginEntity(enforcePadding: isMultiline),

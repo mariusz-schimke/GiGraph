@@ -32,8 +32,9 @@ namespace GiGraph.Dot.Output.Generators.Edges
         protected virtual void WriteEdge(DotEdgeDefinition edge, IDotEdgeStatementWriter writer)
         {
             var containsSubgraphs = edge.Endpoints.Any(e => e is DotSubgraphEndpoint);
+            var containsAttributes = edge.Attributes.Collection.Any();
 
-            var edgeWriter = writer.BeginEdgeStatement(containsSubgraphs);
+            var edgeWriter = writer.BeginEdgeStatement(containsSubgraphs, containsAttributes);
             _entityGenerators.GetForEntity<IDotEdgeWriter>(edge).Generate(edge, edgeWriter);
             writer.EndEdgeStatement();
         }

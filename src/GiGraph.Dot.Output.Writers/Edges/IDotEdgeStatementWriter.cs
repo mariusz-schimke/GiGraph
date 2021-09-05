@@ -2,7 +2,7 @@
 {
     public interface IDotEdgeStatementWriter : IDotEntityWriter
     {
-        IDotEdgeWriter BeginEdgeStatement(bool containsSubgraphs);
+        IDotEdgeWriter BeginEdgeStatement(bool containsSubgraphs, bool containsAttributes);
         void EndEdgeStatement();
     }
 }
