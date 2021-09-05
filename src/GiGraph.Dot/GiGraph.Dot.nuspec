@@ -26,6 +26,8 @@
 
 - Restored the missing style setting for nodes that adds diagonals next to their vertices or two chords for circular and elliptical shapes.
 
+- Minor improvements in the formatting style of the DOT script.
+
 - Refactoring.
 
 See also https://github.com/$repository$/releases</releaseNotes>
