@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Style
         /// <summary>
         ///     Removes style from the element.
         /// </summary>
-        public virtual void Remove()
+        public virtual void Clear()
         {
             Style = null;
         }
