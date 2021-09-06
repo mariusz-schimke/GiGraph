@@ -6,7 +6,7 @@
     ///     <see href="https://graphviz.org/doc/info/lang.html" />). If, for instance, it contains an unescaped quotation mark, the
     ///     output script will be syntactically incorrect.
     /// </summary>
-    public class DotCustomAttribute : DotAttribute<string>
+    public record DotCustomAttribute : DotAttribute<string>
     {
         /// <summary>
         ///     Creates a new instance of a custom attribute.

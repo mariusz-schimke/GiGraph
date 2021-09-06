@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <typeparam name="TComplex">
     ///     A complex type that implements the <see cref="IDotEncodable" /> interface.
     /// </typeparam>
-    public class DotComplexTypeArrayAttribute<TComplex> : DotAttribute<TComplex[]>
+    public record DotComplexTypeArrayAttribute<TComplex> : DotAttribute<TComplex[]>
         where TComplex : IDotEncodable
     {
         /// <summary>

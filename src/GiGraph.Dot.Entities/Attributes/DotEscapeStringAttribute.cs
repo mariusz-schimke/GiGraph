@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes
     ///     A string attribute whose value is escaped on DOT script rendering when <see cref="DotUnescapedString" /> is used, or is
     ///     assumed to already be escaped when <see cref="DotEscapedString" /> is used.
     /// </summary>
-    public class DotEscapeStringAttribute : DotAttribute<DotEscapeString>
+    public record DotEscapeStringAttribute : DotAttribute<DotEscapeString>
     {
         /// <summary>
         ///     Creates a new instance of a string attribute.
