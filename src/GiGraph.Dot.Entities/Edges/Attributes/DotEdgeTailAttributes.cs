@@ -27,8 +27,8 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         /// <summary>
-        ///     Hyperlink properties of the tail of the edge. If defined, the hyperlink is output as part of the tail's <see cref="Label" />.
-        ///     Also, this value is used near the tail, overriding hyperlink properties set on the edge.
+        ///     Hyperlink attributes of the tail of the edge. If defined, the hyperlink is output as part of the tail's <see cref="Label" />.
+        ///     Also, this value is used near the tail, overriding hyperlink attributes set on the edge.
         /// </summary>
         public virtual DotEdgeTailHyperlinkAttributes Hyperlink => (DotEdgeTailHyperlinkAttributes) _hyperlink;
 

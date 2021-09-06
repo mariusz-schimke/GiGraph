@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
     public interface IDotNodeRootAttributes : IDotNodeAttributes
     {
         /// <summary>
-        ///     Font properties.
+        ///     Font attributes.
         /// </summary>
         DotFontAttributes Font { get; }
 
@@ -18,17 +18,17 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         new DotNodeStyleAttributes Style { get; }
 
         /// <summary>
-        ///     Node size properties.
+        ///     Node size attributes.
         /// </summary>
         DotNodeSizeAttributes Size { get; }
 
         /// <summary>
-        ///     Node geometry properties applicable if <see cref="IDotNodeAttributes.Shape" /> is set to <see cref="DotNodeShape.Polygon" />.
+        ///     Node geometry attributes applicable if <see cref="IDotNodeAttributes.Shape" /> is set to <see cref="DotNodeShape.Polygon" />.
         /// </summary>
         DotNodeGeometryAttributes Geometry { get; }
 
         /// <summary>
-        ///     Node image properties.
+        ///     Node image attributes.
         /// </summary>
         DotNodeImageAttributes Image { get; }
 

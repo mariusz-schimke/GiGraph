@@ -27,8 +27,8 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         /// <summary>
-        ///     Hyperlink properties of the head of the edge. If defined, the hyperlink is output as part of the head's <see cref="Label" />.
-        ///     Also, this value is used near the head, overriding hyperlink properties set on the edge.
+        ///     Hyperlink attributes of the head of the edge. If defined, the hyperlink is output as part of the head's <see cref="Label" />.
+        ///     Also, this value is used near the head, overriding hyperlink attributes set on the edge.
         /// </summary>
         public virtual DotEdgeHeadHyperlinkAttributes Hyperlink => (DotEdgeHeadHyperlinkAttributes) _hyperlink;
 

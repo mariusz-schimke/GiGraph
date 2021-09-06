@@ -13,12 +13,12 @@ namespace GiGraph.Dot.Entities.Edges.Collections
     public partial class DotEdgeCollection : IDotEdgeRootAttributes
     {
         /// <summary>
-        ///     Properties applied to the heads of the edges.
+        ///     Attributes applied to the heads of the edges.
         /// </summary>
         public virtual DotEdgeHeadAttributes Head { get; }
 
         /// <summary>
-        ///     Properties applied to the tails of the edges.
+        ///     Attributes applied to the tails of the edges.
         /// </summary>
         public virtual DotEdgeTailAttributes Tail { get; }
 

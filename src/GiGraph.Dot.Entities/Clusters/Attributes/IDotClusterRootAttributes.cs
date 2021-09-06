@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
     public interface IDotClusterRootAttributes : IDotClusterAttributes
     {
         /// <summary>
-        ///     Font properties.
+        ///     Font attributes.
         /// </summary>
         DotFontAttributes Font { get; }
 

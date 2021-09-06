@@ -89,12 +89,12 @@ namespace GiGraph.Dot.Entities.Edges
         public override DotEndpointDefinition[] Endpoints => _endpoints;
 
         /// <summary>
-        ///     Properties applied to the heads of the edges in this sequence.
+        ///     Attributes applied to the heads of the edges in this sequence.
         /// </summary>
         public virtual DotEdgeHeadAttributes Heads { get; }
 
         /// <summary>
-        ///     Properties applied to the tails of the edges in this sequence.
+        ///     Attributes applied to the tails of the edges in this sequence.
         /// </summary>
         public virtual DotEdgeTailAttributes Tails { get; }
 

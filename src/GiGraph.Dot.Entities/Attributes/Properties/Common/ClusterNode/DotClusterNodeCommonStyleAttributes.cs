@@ -71,10 +71,10 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
         }
 
         /// <summary>
-        ///     Copies style properties from the specified instance.
+        ///     Copies style attributes from the specified instance.
         /// </summary>
         /// <param name="source">
-        ///     The instance to copy the properties from.
+        ///     The instance to copy the attributes from.
         /// </param>
         protected virtual void CopyFrom(DotClusterNodeCommonStyleAttributes<TFillStyle, TStyleProperties> source)
         {

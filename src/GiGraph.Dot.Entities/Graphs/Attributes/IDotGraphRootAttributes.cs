@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
     public interface IDotGraphRootAttributes : IDotGraphAttributes
     {
         /// <summary>
-        ///     Font properties.
+        ///     Font attributes.
         /// </summary>
         DotGraphFontAttributes Font { get; }
 
@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         DotGraphLayoutAttributes Layout { get; }
 
         /// <summary>
-        ///     Graph canvas properties.
+        ///     Graph canvas attributes.
         /// </summary>
         DotGraphCanvasAttributes Canvas { get; }
 

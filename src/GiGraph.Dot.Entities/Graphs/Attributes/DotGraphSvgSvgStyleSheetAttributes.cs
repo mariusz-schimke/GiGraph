@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         }
 
         /// <summary>
-        ///     Sets style sheet properties.
+        ///     Sets style sheet attributes.
         /// </summary>
         /// <param name="url">
         ///     The URL or pathname specifying an XML style sheet.
@@ -44,10 +44,10 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         }
 
         /// <summary>
-        ///     Copies style sheet properties from the specified instance.
+        ///     Copies style sheet attributes from the specified instance.
         /// </summary>
         /// <param name="attributes">
-        ///     The instance to copy the properties from.
+        ///     The instance to copy the attributes from.
         /// </param>
         public virtual void Set(IDotGraphSvgStyleSheetAttributes attributes)
         {
