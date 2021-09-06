@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Colors;
 namespace GiGraph.Dot.Types.Fonts
 {
     /// <summary>
-    ///     Font properties.
+    ///     Font attributes.
     /// </summary>
     /// <param name="Name">
     ///     Font name.

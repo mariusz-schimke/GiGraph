@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.EscapeString;
 namespace GiGraph.Dot.Types.Hyperlinks
 {
     /// <summary>
-    ///     Specifies hyperlink properties.
+    ///     Specifies hyperlink attributes.
     /// </summary>
     /// <param name="Url">
     ///     The URL.

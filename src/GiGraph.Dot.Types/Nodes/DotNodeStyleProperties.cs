@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Styling;
 namespace GiGraph.Dot.Types.Nodes
 {
     /// <summary>
-    ///     Node style properties.
+    ///     Node style attributes.
     /// </summary>
     /// <param name="FillStyle">
     ///     Fill style.

@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Alignment;
 namespace GiGraph.Dot.Types.Images
 {
     /// <summary>
-    ///     Image properties.
+    ///     Image attributes.
     /// </summary>
     /// <param name="Path">
     ///     Image path.
