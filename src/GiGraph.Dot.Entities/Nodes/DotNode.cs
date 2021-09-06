@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// <summary>
         ///     Gets or sets the unique identifier of the node.
         /// </summary>
-        public virtual string Id { get; }
+        public virtual string Id { get; set; }
 
         /// <summary>
         ///     The attributes of the node.
