@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// <inheritdoc cref="IDotNodeRootAttributes.SvgStyleSheet" />
         public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotNodeRootAttributes) Attributes).SvgStyleSheet;
 
-        /// <inheritdoc cref="IDotNodeRootAttributes.SvgStyleSheet" />
+        /// <inheritdoc cref="IDotNodeRootAttributes.Hyperlink" />
         public virtual DotHyperlinkAttributes Hyperlink => ((IDotNodeRootAttributes) Attributes).Hyperlink;
 
         DotStyles? IDotNodeAttributes.Style

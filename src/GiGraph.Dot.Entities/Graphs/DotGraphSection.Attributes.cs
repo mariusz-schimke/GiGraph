@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Graphs
         /// <inheritdoc cref="IDotGraphRootAttributes.LabelAlignment" />
         public virtual DotLabelAlignmentAttributes LabelAlignment => ((IDotGraphRootAttributes) Attributes).LabelAlignment;
 
-        /// <inheritdoc cref="IDotGraphRootAttributes.SvgStyleSheet" />
+        /// <inheritdoc cref="IDotGraphRootAttributes.Hyperlink" />
         public virtual DotHyperlinkAttributes Hyperlink => ((IDotGraphRootAttributes) Attributes).Hyperlink;
 
         DotStyles? IDotGraphAttributes.Style
