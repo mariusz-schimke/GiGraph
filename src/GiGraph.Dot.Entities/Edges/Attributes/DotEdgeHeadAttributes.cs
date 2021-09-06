@@ -7,7 +7,7 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public class DotEdgeHeadAttributes : DotEdgeHeadRootAttributes
+    public class DotEdgeHeadAttributes : DotEdgeHeadRootAttributes, IDotEdgeHeadRootAttributes
     {
         protected DotEdgeHeadAttributes(
             DotAttributeCollection attributes,
