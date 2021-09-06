@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         protected readonly DotFontAttributes _fontAttributes;
         protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
         protected readonly DotEdgeLabelHyperlinkAttributes _labelHyperlinkAttributes;
-        protected readonly DotEdgeStyleAttributes _styleAttributes;
+        protected readonly DotEdgeStyleAttributeOptions _styleAttributeOptions;
         protected readonly DotSvgStyleSheetAttributes _svgStyleSheetAttributes;
 
         protected DotEdgeRootAttributes(
@@ -36,14 +36,14 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
             DotEdgeEndpointLabelsAttributes endpointLabelsAttributes,
             DotEdgeLabelHyperlinkAttributes labelHyperlinkAttributes,
             DotEdgeHyperlinkAttributes edgeHyperlinkAttributes,
-            DotEdgeStyleAttributes edgeStyleAttributes,
+            DotEdgeStyleAttributeOptions edgeStyleAttributeOptions,
             DotSvgStyleSheetAttributes svgStyleSheetAttributes
         )
             : base(attributes, attributeKeyLookup)
         {
             _hyperlinkAttributes = hyperlinkAttributes;
             _fontAttributes = fontAttributes;
-            _styleAttributes = edgeStyleAttributes;
+            _styleAttributeOptions = edgeStyleAttributeOptions;
             _svgStyleSheetAttributes = svgStyleSheetAttributes;
             _endpointLabelsAttributes = endpointLabelsAttributes;
             _edgeHyperlinkAttributes = edgeHyperlinkAttributes;
@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
                 new DotEdgeEndpointLabelsAttributes(attributes),
                 new DotEdgeLabelHyperlinkAttributes(attributes),
                 new DotEdgeHyperlinkAttributes(attributes),
-                new DotEdgeStyleAttributes(attributes),
+                new DotEdgeStyleAttributeOptions(attributes),
                 new DotSvgStyleSheetAttributes(attributes)
             )
         {
@@ -74,7 +74,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         DotEdgeEndpointLabelsAttributes IDotEdgeRootAttributes.EndpointLabels => _endpointLabelsAttributes;
         DotEdgeHyperlinkAttributes IDotEdgeRootAttributes.EdgeHyperlink => _edgeHyperlinkAttributes;
         DotEdgeLabelHyperlinkAttributes IDotEdgeRootAttributes.LabelHyperlink => _labelHyperlinkAttributes;
-        DotEdgeStyleAttributes IDotEdgeRootAttributes.Style => _styleAttributes;
+        DotEdgeStyleAttributeOptions IDotEdgeRootAttributes.Style => _styleAttributeOptions;
         DotSvgStyleSheetAttributes IDotEdgeRootAttributes.SvgStyleSheet => _svgStyleSheetAttributes;
         DotHyperlinkAttributes IDotEdgeRootAttributes.Hyperlink => _hyperlinkAttributes;
 
@@ -99,7 +99,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        [DotAttributeKey(DotStyleAttributes.StyleKey)]
+        [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
         DotStyles? IDotEdgeAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;

@@ -6,12 +6,12 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Style
 {
-    public abstract class DotStyleAttributes
+    public abstract class DotStyleAttributeOptions
     {
         public const string StyleKey = DotAttributeKeys.Style;
         protected readonly DotAttributeCollection _attributes;
 
-        protected DotStyleAttributes(DotAttributeCollection attributes)
+        protected DotStyleAttributeOptions(DotAttributeCollection attributes)
         {
             _attributes = attributes;
         }

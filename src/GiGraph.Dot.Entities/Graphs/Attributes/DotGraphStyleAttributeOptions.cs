@@ -5,9 +5,9 @@ using GiGraph.Dot.Types.Graphs;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphStyleAttributes : DotStyleAttributes
+    public class DotGraphStyleAttributeOptions : DotStyleAttributeOptions
     {
-        public DotGraphStyleAttributes(DotAttributeCollection attributes)
+        public DotGraphStyleAttributeOptions(DotAttributeCollection attributes)
             : base(attributes)
         {
         }
@@ -45,14 +45,14 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         }
 
         /// <summary>
-        ///     Copies style attributes from the specified instance.
+        ///     Copies style options from the specified instance.
         /// </summary>
-        /// <param name="attributes">
-        ///     The instance to copy the attributes from.
+        /// <param name="options">
+        ///     The instance to copy the options from.
         /// </param>
-        public virtual void CopyFrom(DotGraphStyleAttributes attributes)
+        public virtual void CopyFrom(DotGraphStyleAttributeOptions options)
         {
-            Set(attributes.FillStyle);
+            Set(options.FillStyle);
         }
     }
 }

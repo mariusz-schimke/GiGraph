@@ -8,7 +8,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Clusters
 {
-    public class DotClusterStyleAttributesTest
+    public class DotClusterStyleAttributeOptionsTest
     {
         [Fact]
         public void all_style_properties_are_specified()

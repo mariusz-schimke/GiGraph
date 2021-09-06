@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// <summary>
         ///     Style options. Note that the options are shared with those specified for <see cref="Clusters" />.
         /// </summary>
-        new DotGraphStyleAttributes Style { get; }
+        new DotGraphStyleAttributeOptions Style { get; }
 
         /// <summary>
         ///     Style sheet attributes used for SVG output.

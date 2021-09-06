@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Graphs
         public virtual DotGraphFontAttributes Font => ((IDotGraphRootAttributes) Attributes).Font;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.Style" />
-        public virtual DotGraphStyleAttributes Style => ((IDotGraphRootAttributes) Attributes).Style;
+        public virtual DotGraphStyleAttributeOptions Style => ((IDotGraphRootAttributes) Attributes).Style;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.SvgStyleSheet" />
         public virtual DotGraphSvgSvgStyleSheetAttributes SvgStyleSheet => ((IDotGraphRootAttributes) Attributes).SvgStyleSheet;

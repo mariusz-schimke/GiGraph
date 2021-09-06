@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         public virtual DotNodeSizeAttributes Size => ((IDotNodeRootAttributes) Attributes).Size;
 
         /// <inheritdoc cref="IDotNodeRootAttributes.Style" />
-        public virtual DotNodeStyleAttributes Style => ((IDotNodeRootAttributes) Attributes).Style;
+        public virtual DotNodeStyleAttributeOptions Style => ((IDotNodeRootAttributes) Attributes).Style;
 
         /// <inheritdoc cref="IDotNodeRootAttributes.SvgStyleSheet" />
         public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotNodeRootAttributes) Attributes).SvgStyleSheet;

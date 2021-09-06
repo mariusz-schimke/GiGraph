@@ -7,6 +7,6 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// <summary>
         ///     Style options. Note that the options are shared with those of the graph.
         /// </summary>
-        DotClusterStyleAttributes Style { get; }
+        DotClusterStyleAttributeOptions Style { get; }
     }
 }

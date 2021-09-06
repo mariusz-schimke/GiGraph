@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         /// <summary>
         ///     Style options.
         /// </summary>
-        new DotClusterStyleAttributes Style { get; }
+        new DotClusterStyleAttributeOptions Style { get; }
 
         /// <summary>
         ///     Horizontal and vertical label alignment options.

@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         /// <summary>
         ///     Style options.
         /// </summary>
-        new DotNodeStyleAttributes Style { get; }
+        new DotNodeStyleAttributeOptions Style { get; }
 
         /// <summary>
         ///     Node size attributes.

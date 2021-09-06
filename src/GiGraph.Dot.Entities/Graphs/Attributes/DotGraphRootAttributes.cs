@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
         protected readonly DotLabelAlignmentAttributes _labelAlignmentAttributes;
         protected readonly DotGraphLayoutAttributes _layoutAttributes;
-        protected readonly DotGraphStyleAttributes _styleAttributes;
+        protected readonly DotGraphStyleAttributeOptions _styleAttributeOptions;
         protected readonly DotGraphSvgSvgStyleSheetAttributes _svgStyleSheetAttributes;
 
         protected DotGraphRootAttributes(
@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotHyperlinkAttributes hyperlinkAttributes,
             DotGraphFontAttributes fontAttributes,
-            DotGraphStyleAttributes styleAttributes,
+            DotGraphStyleAttributeOptions styleAttributeOptions,
             DotGraphSvgSvgStyleSheetAttributes svgStyleSheetAttributes,
             DotGraphLayoutAttributes layoutAttributes,
             DotGraphCanvasAttributes canvasAttributes,
@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         {
             _hyperlinkAttributes = hyperlinkAttributes;
             _fontAttributes = fontAttributes;
-            _styleAttributes = styleAttributes;
+            _styleAttributeOptions = styleAttributeOptions;
             _svgStyleSheetAttributes = svgStyleSheetAttributes;
             _layoutAttributes = layoutAttributes;
             _canvasAttributes = canvasAttributes;
@@ -55,7 +55,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
                 GraphRootAttributesKeyLookup,
                 new DotHyperlinkAttributes(attributes),
                 new DotGraphFontAttributes(attributes),
-                new DotGraphStyleAttributes(attributes),
+                new DotGraphStyleAttributeOptions(attributes),
                 new DotGraphSvgSvgStyleSheetAttributes(attributes),
                 new DotGraphLayoutAttributes(attributes),
                 new DotGraphCanvasAttributes(attributes),
@@ -71,7 +71,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 
         DotHyperlinkAttributes IDotGraphRootAttributes.Hyperlink => _hyperlinkAttributes;
         DotGraphFontAttributes IDotGraphRootAttributes.Font => _fontAttributes;
-        DotGraphStyleAttributes IDotGraphRootAttributes.Style => _styleAttributes;
+        DotGraphStyleAttributeOptions IDotGraphRootAttributes.Style => _styleAttributeOptions;
         DotGraphSvgSvgStyleSheetAttributes IDotGraphRootAttributes.SvgStyleSheet => _svgStyleSheetAttributes;
         DotGraphLayoutAttributes IDotGraphRootAttributes.Layout => _layoutAttributes;
         DotGraphCanvasAttributes IDotGraphRootAttributes.Canvas => _canvasAttributes;
@@ -98,7 +98,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        [DotAttributeKey(DotStyleAttributes.StyleKey)]
+        [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
         DotStyles? IDotGraphAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;

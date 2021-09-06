@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         /// <summary>
         ///     Style options.
         /// </summary>
-        new DotEdgeStyleAttributes Style { get; }
+        new DotEdgeStyleAttributeOptions Style { get; }
 
         /// <summary>
         ///     Style sheet attributes used for SVG output.

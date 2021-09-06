@@ -5,9 +5,9 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes
 {
-    public class DotClusterStyleAttributes : DotClusterNodeCommonStyleAttributes<DotClusterFillStyle, DotClusterStyleProperties>
+    public class DotClusterStyleAttributeOptions : DotClusterNodeCommonStyleAttributeOptions<DotClusterFillStyle, DotClusterStyleProperties>
     {
-        public DotClusterStyleAttributes(DotAttributeCollection attributes)
+        public DotClusterStyleAttributeOptions(DotAttributeCollection attributes)
             : base(attributes)
         {
         }
@@ -36,10 +36,10 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
             base.SetProperties(fillStyle, borderStyle, borderWeight, cornerStyle, invisible);
         }
 
-        /// <inheritdoc cref="DotClusterNodeCommonStyleAttributes{TFillStyle,TStyleProperties}.CopyFrom" />
-        public virtual void CopyFrom(DotClusterStyleAttributes attributes)
+        /// <inheritdoc cref="DotClusterNodeCommonStyleAttributeOptions{TFillStyle,TStyleProperties}.CopyFrom" />
+        public virtual void CopyFrom(DotClusterStyleAttributeOptions options)
         {
-            base.CopyFrom(attributes);
+            base.CopyFrom(options);
         }
     }
 }
