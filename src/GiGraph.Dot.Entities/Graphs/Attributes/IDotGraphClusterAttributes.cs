@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
     {
         /// <summary>
         ///     If true, allows edges between clusters (dot only, default: false). Specify a
-        ///     <see cref="DotEdgeEndpointAttributes.ClusterId" /> for an edge's head or tail to attach it to the border of the cluster with
+        ///     <see cref="IDotEdgeEndpointAttributes.ClusterId" /> for an edge's head or tail to attach it to the border of the cluster with
         ///     that identifier.
         /// </summary>
         bool? AllowEdgeClipping { get; set; }
