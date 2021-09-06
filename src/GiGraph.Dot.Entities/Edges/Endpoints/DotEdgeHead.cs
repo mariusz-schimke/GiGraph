@@ -6,12 +6,12 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     public class DotEdgeHead<TEndpoint> : DotEdgeEndpoint<TEndpoint>, IDotEdgeHeadRootAttributes
         where TEndpoint : DotEndpointDefinition, IDotOrderable
     {
-        public DotEdgeHead(TEndpoint endpoint, DotEdgeHeadAttributes attributes)
+        public DotEdgeHead(TEndpoint endpoint, DotEdgeHeadRootAttributes attributes)
             : base(endpoint, attributes)
         {
         }
 
         /// <inheritdoc cref="IDotEdgeHeadRootAttributes.Hyperlink" />
-        public virtual DotEdgeHeadHyperlinkAttributes Hyperlink => ((DotEdgeHeadAttributes) Attributes).Hyperlink;
+        public virtual DotEdgeHeadHyperlinkAttributes Hyperlink => ((IDotEdgeHeadRootAttributes) Attributes).Hyperlink;
     }
 }

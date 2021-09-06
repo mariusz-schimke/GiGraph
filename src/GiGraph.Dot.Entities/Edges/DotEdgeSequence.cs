@@ -33,7 +33,12 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes rootAttributes)
-            : this(endpoints, rootAttributes, new DotEdgeTailAttributes(rootAttributes.Collection), new DotEdgeHeadAttributes(rootAttributes.Collection))
+            : this(
+                endpoints,
+                rootAttributes,
+                new DotEdgeTailAttributes(rootAttributes.Collection),
+                new DotEdgeHeadAttributes(rootAttributes.Collection)
+            )
         {
         }
 

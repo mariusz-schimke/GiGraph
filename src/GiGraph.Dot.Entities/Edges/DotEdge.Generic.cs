@@ -46,8 +46,8 @@ namespace GiGraph.Dot.Entities.Edges
     {
         protected DotEdge(TTail tail, THead head,
             DotEdgeRootAttributes rootAttributes,
-            DotEdgeTailAttributes tailAttributes,
-            DotEdgeHeadAttributes headAttributes
+            DotEdgeTailRootAttributes tailAttributes,
+            DotEdgeHeadRootAttributes headAttributes
         )
             : base(rootAttributes)
         {
@@ -57,8 +57,8 @@ namespace GiGraph.Dot.Entities.Edges
 
         protected DotEdge(TTail tail, THead head, DotEdgeRootAttributes rootAttributes)
             : this(tail, head, rootAttributes,
-                new DotEdgeTailAttributes(rootAttributes.Collection),
-                new DotEdgeHeadAttributes(rootAttributes.Collection)
+                new DotEdgeTailRootAttributes(rootAttributes.Collection),
+                new DotEdgeHeadRootAttributes(rootAttributes.Collection)
             )
         {
         }

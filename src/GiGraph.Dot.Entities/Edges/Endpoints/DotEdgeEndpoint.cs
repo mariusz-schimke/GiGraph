@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     public abstract partial class DotEdgeEndpoint<TEndpoint>
         where TEndpoint : DotEndpointDefinition, IDotOrderable
     {
-        public DotEdgeEndpoint(TEndpoint endpoint, DotEdgeEndpointAttributes attributes)
+        public DotEdgeEndpoint(TEndpoint endpoint, DotEdgeEndpointRootAttributes attributes)
         {
             Endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint), "Edge endpoint must not be null.");
             Attributes = attributes;
@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// <summary>
         ///     Gets the attributes of the endpoint.
         /// </summary>
-        public virtual DotEdgeEndpointAttributes Attributes { get; }
+        public virtual DotEdgeEndpointRootAttributes Attributes { get; }
 
         /// <summary>
         ///     The endpoint of the edge.
