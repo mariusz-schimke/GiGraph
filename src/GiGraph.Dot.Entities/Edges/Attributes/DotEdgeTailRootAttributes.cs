@@ -1,4 +1,6 @@
+using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
@@ -8,17 +10,19 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public class DotEdgeTailRootAttributes : DotEdgeEndpointRootAttributes, IDotEdgeTailRootAttributes
+    public class DotEdgeTailRootAttributes : DotEntityAttributes<IDotEdgeEndpointAttributes>, IDotEdgeTailRootAttributes
     {
         protected static readonly DotMemberAttributeKeyLookup EdgeTailAttributesLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeTailRootAttributes, IDotEdgeEndpointAttributes>().Build();
+        protected readonly DotEdgeTailHyperlinkAttributes _hyperlinkAttributes;
 
         protected DotEdgeTailRootAttributes(
             DotAttributeCollection attributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
-            DotEdgeTailHyperlinkAttributes edgeTailHyperlinkAttributes
+            DotEdgeTailHyperlinkAttributes hyperlinkAttributes
         )
-            : base(attributes, attributeKeyLookup, edgeTailHyperlinkAttributes)
+            : base(attributes, attributeKeyLookup)
         {
+            _hyperlinkAttributes = hyperlinkAttributes;
         }
 
         public DotEdgeTailRootAttributes(DotAttributeCollection attributes)
@@ -27,47 +31,47 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         [DotAttributeKey(DotAttributeKeys.TailLabel)]
-        protected override DotLabel Label
+        DotLabel IDotEdgeEndpointAttributes.Label
         {
-            get => base.Label;
-            set => base.Label = value;
+            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.TailClip)]
-        protected override bool? ClipToNodeBoundary
+        bool? IDotEdgeEndpointAttributes.ClipToNodeBoundary
         {
-            get => base.ClipToNodeBoundary;
-            set => base.ClipToNodeBoundary = value;
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.SameTail)]
-        protected override string GroupName
+        string IDotEdgeEndpointAttributes.GroupName
         {
-            get => base.GroupName;
-            set => base.GroupName = value;
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.TailPort)]
-        protected override DotEndpointPort Port
+        DotEndpointPort IDotEdgeEndpointAttributes.Port
         {
-            get => base.Port;
-            set => base.Port = value;
+            get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.LTail)]
-        protected override DotClusterId ClusterId
+        DotClusterId IDotEdgeEndpointAttributes.ClusterId
         {
-            get => base.ClusterId;
-            set => base.ClusterId = value;
+            get => GetValueAsClusterId(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.ArrowTail)]
-        protected override DotArrowheadDefinition Arrowhead
+        DotArrowheadDefinition IDotEdgeEndpointAttributes.Arrowhead
         {
-            get => base.Arrowhead;
-            set => base.Arrowhead = value;
+            get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        DotEdgeTailHyperlinkAttributes IDotEdgeTailRootAttributes.Hyperlink => (DotEdgeTailHyperlinkAttributes) _hyperlink;
+        DotEdgeTailHyperlinkAttributes IDotEdgeTailRootAttributes.Hyperlink => _hyperlinkAttributes;
     }
 }

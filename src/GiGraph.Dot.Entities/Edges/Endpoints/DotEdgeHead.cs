@@ -11,6 +11,11 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         {
         }
 
+        /// <summary>
+        ///     Gets the head attributes of the edge.
+        /// </summary>
+        public virtual DotEdgeHeadRootAttributes Attributes => (DotEdgeHeadRootAttributes) _attributes;
+
         /// <inheritdoc cref="IDotEdgeHeadRootAttributes.Hyperlink" />
         public virtual DotEdgeHeadHyperlinkAttributes Hyperlink => ((IDotEdgeHeadRootAttributes) Attributes).Hyperlink;
     }
