@@ -22,8 +22,8 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         /// <summary>
-        ///     If defined, it is output as part of the head <see cref="DotEdgeHeadAttributes.Label" /> of the edge (svg, map only). Also,
-        ///     this value is used near the head node, overriding any <see cref="IDotEdgeRootAttributes.Hyperlink" />
+        ///     If defined, it is output as part of the head <see cref="IDotEdgeEndpointAttributes.Label" /> of the edge (svg, map only).
+        ///     Also, this value is used near the head node, overriding any <see cref="IDotEdgeRootAttributes.Hyperlink" />
         ///     <see cref="IDotHyperlinkAttributes.Url" /> set for the edge.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.HeadUrl)]

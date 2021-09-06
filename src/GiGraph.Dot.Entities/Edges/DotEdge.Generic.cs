@@ -78,12 +78,12 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        ///     Gets or sets the tail endpoint.
+        ///     Gets the tail endpoint.
         /// </summary>
         public virtual DotEdgeTail<TTail> Tail { get; }
 
         /// <summary>
-        ///     Gets or sets the head endpoint.
+        ///     Gets the head endpoint.
         /// </summary>
         public virtual DotEdgeHead<THead> Head { get; }
 
