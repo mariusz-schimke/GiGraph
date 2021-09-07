@@ -1,6 +1,8 @@
-﻿namespace GiGraph.Dot.Entities.Edges.Attributes
+﻿using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
+
+namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public interface IDotEdgeEndpointLabelAttributes
+    public interface IDotEdgeEndpointLabelsAttributes
     {
         /// <summary>
         ///     Multiplicative scaling factor adjusting the distance that the the head and tail labels are from the head/tail nodes (see

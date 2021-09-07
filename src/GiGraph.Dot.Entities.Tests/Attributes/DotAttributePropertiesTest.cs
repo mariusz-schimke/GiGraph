@@ -6,6 +6,7 @@ using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Attributes;
+using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Nodes;

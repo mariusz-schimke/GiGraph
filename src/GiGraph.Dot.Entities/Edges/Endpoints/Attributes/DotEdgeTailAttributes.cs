@@ -5,7 +5,7 @@ using GiGraph.Dot.Types.Arrowheads;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Edges;
 
-namespace GiGraph.Dot.Entities.Edges.Attributes
+namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
     public class DotEdgeTailAttributes : DotEdgeTailRootAttributes
     {

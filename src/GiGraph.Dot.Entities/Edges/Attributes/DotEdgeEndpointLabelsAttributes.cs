@@ -6,9 +6,9 @@ using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public class DotEdgeEndpointLabelsAttributes : DotEntityAttributes<IDotEdgeEndpointLabelAttributes>, IDotEdgeEndpointLabelAttributes
+    public class DotEdgeEndpointLabelsAttributes : DotEntityAttributes<IDotEdgeEndpointLabelsAttributes>, IDotEdgeEndpointLabelsAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EdgeEndpointLabelAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeEndpointLabelsAttributes, IDotEdgeEndpointLabelAttributes>().Build();
+        protected static readonly DotMemberAttributeKeyLookup EdgeEndpointLabelAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeEndpointLabelsAttributes, IDotEdgeEndpointLabelsAttributes>().Build();
 
         protected DotEdgeEndpointLabelsAttributes(
             DotAttributeCollection attributes,
@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         /// </summary>
         public virtual DotEdgeEndpointLabelFontAttributes Font { get; }
 
-        /// <inheritdoc cref="IDotEdgeEndpointLabelAttributes.Distance" />
+        /// <inheritdoc cref="IDotEdgeEndpointLabelsAttributes.Distance" />
         [DotAttributeKey(DotAttributeKeys.LabelDistance)]
         public virtual double? Distance
         {
@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        /// <inheritdoc cref="IDotEdgeEndpointLabelAttributes.Angle" />
+        /// <inheritdoc cref="IDotEdgeEndpointLabelsAttributes.Angle" />
         [DotAttributeKey(DotAttributeKeys.LabelAngle)]
         public virtual double? Angle
         {

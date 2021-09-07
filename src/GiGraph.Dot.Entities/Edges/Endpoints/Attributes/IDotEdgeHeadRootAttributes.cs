@@ -1,4 +1,4 @@
-﻿namespace GiGraph.Dot.Entities.Edges.Attributes
+﻿namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
     public interface IDotEdgeHeadRootAttributes : IDotEdgeEndpointAttributes
     {

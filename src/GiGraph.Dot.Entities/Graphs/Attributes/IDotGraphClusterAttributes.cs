@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 using GiGraph.Dot.Entities.Edges.Attributes;
+using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Types.Clusters;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
