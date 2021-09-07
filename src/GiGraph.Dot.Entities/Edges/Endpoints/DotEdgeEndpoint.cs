@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     {
         protected readonly IDotEdgeEndpointAttributes _attributes;
 
-        public DotEdgeEndpoint(IDotEdgeEndpointAttributes attributes)
+        protected DotEdgeEndpoint(IDotEdgeEndpointAttributes attributes)
         {
             _attributes = attributes;
         }
