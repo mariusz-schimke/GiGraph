@@ -1,11 +1,13 @@
 using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
+using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
-    public class DotEdgeTail : DotEdgeEndpoint, IDotEdgeTailRootAttributes
+    public class DotEdgeTail<TEndpoint> : DotEdgeEndpoint<TEndpoint>, IDotEdgeTailRootAttributes
+        where TEndpoint : DotEndpointDefinition, IDotOrderable
     {
-        public DotEdgeTail(DotEdgeTailRootAttributes attributes)
-            : base(attributes)
+        public DotEdgeTail(TEndpoint endpoint, DotEdgeTailRootAttributes attributes)
+            : base(endpoint, attributes)
         {
         }
 

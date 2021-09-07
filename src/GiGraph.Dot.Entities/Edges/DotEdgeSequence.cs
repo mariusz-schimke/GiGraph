@@ -29,8 +29,8 @@ namespace GiGraph.Dot.Entities.Edges
                 ? endpoints
                 : throw new ArgumentException("At least a pair of endpoints has to be specified for an edge sequence.", nameof(endpoints));
 
-            Tails = tailAttributes;
-            Heads = headAttributes;
+            Tails = new DotEdgeTail(tailAttributes);
+            Heads = new DotEdgeHead(headAttributes);
         }
 
         protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes rootAttributes)
@@ -97,12 +97,12 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         ///     Attributes applied to the heads of the edges in this sequence.
         /// </summary>
-        public virtual DotEdgeHeadAttributes Heads { get; }
+        public virtual DotEdgeHead Heads { get; }
 
         /// <summary>
         ///     Attributes applied to the tails of the edges in this sequence.
         /// </summary>
-        public virtual DotEdgeTailAttributes Tails { get; }
+        public virtual DotEdgeTail Tails { get; }
 
         protected override string GetOrderingKey()
         {
