@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         public DotEdgeTailAttributes(DotAttributeCollection attributes)
-            : this(attributes, EdgeTailAttributesLookup, new DotEdgeTailHyperlinkAttributes(attributes))
+            : this(attributes, EdgeTailRootAttributesKeyLookup, new DotEdgeTailHyperlinkAttributes(attributes))
         {
         }
 

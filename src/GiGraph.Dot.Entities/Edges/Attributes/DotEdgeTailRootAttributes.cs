@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
 {
     public class DotEdgeTailRootAttributes : DotEntityAttributes<IDotEdgeEndpointAttributes>, IDotEdgeTailRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EdgeTailAttributesLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeTailRootAttributes, IDotEdgeEndpointAttributes>().Build();
+        protected static readonly DotMemberAttributeKeyLookup EdgeTailRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeTailRootAttributes, IDotEdgeEndpointAttributes>().Build();
         protected readonly DotEdgeTailHyperlinkAttributes _hyperlinkAttributes;
 
         protected DotEdgeTailRootAttributes(
@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         public DotEdgeTailRootAttributes(DotAttributeCollection attributes)
-            : this(attributes, EdgeTailAttributesLookup, new DotEdgeTailHyperlinkAttributes(attributes))
+            : this(attributes, EdgeTailRootAttributesKeyLookup, new DotEdgeTailHyperlinkAttributes(attributes))
         {
         }
 

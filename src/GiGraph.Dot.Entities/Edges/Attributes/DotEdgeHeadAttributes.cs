@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         public DotEdgeHeadAttributes(DotAttributeCollection attributes)
-            : this(attributes, EdgeHeadAttributesKeyLookup, new DotEdgeHeadHyperlinkAttributes(attributes))
+            : this(attributes, EdgeHeadRootAttributesKeyLookup, new DotEdgeHeadHyperlinkAttributes(attributes))
         {
         }
 
