@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
 {
     public abstract class DotEntityAttributes<TIEntityAttributeProperties> : DotEntityAttributes
     {
-        protected DotEntityAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotEntityAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }

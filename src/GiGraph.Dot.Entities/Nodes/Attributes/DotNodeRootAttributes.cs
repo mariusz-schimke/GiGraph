@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Factories;
@@ -21,7 +22,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
     public class DotNodeRootAttributes : DotEntityRootAttributes<IDotNodeAttributes>, IDotNodeRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup NodeRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> NodeRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().BuildLazy();
 
         protected readonly DotFontAttributes _fontAttributes;
         protected readonly DotNodeGeometryAttributes _geometryAttributes;
@@ -33,7 +34,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
 
         protected DotNodeRootAttributes(
             DotAttributeCollection attributes,
-            DotMemberAttributeKeyLookup attributeKeyLookup,
+            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
             DotHyperlinkAttributes hyperlinkAttributes,
             DotFontAttributes fontAttributes,
             DotNodeStyleAttributeOptions styleAttributeOptions,

@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Factories;
@@ -18,7 +19,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
 {
     public class DotEdgeRootAttributes : DotEntityRootAttributes<IDotEdgeAttributes>, IDotEdgeRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EdgeRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().BuildLazy();
 
         protected readonly DotEdgeHyperlinkAttributes _edgeHyperlinkAttributes;
         protected readonly DotEdgeEndpointLabelsAttributes _endpointLabelsAttributes;
@@ -30,7 +31,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
 
         protected DotEdgeRootAttributes(
             DotAttributeCollection attributes,
-            DotMemberAttributeKeyLookup attributeKeyLookup,
+            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
             DotFontAttributes fontAttributes,
             DotHyperlinkAttributes hyperlinkAttributes,
             DotEdgeEndpointLabelsAttributes endpointLabelsAttributes,

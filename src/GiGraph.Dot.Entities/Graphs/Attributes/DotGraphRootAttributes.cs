@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Factories;
@@ -17,7 +18,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
     public class DotGraphRootAttributes : DotEntityRootAttributes<IDotGraphAttributes>, IDotGraphRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup GraphRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().BuildLazy();
 
         protected readonly DotGraphCanvasAttributes _canvasAttributes;
         protected readonly DotGraphFontAttributes _fontAttributes;
@@ -29,7 +30,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 
         protected DotGraphRootAttributes(
             DotAttributeCollection attributes,
-            DotMemberAttributeKeyLookup attributeKeyLookup,
+            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
             DotHyperlinkAttributes hyperlinkAttributes,
             DotGraphFontAttributes fontAttributes,
             DotGraphStyleAttributeOptions styleAttributeOptions,

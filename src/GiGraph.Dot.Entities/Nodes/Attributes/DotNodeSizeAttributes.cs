@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
@@ -10,9 +11,9 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
     public class DotNodeSizeAttributes : DotEntityAttributes<IDotNodeSizeAttributes>, IDotNodeSizeAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup NodeSizeAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeSizeAttributes, IDotNodeSizeAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> NodeSizeAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeSizeAttributes, IDotNodeSizeAttributes>().BuildLazy();
 
-        protected DotNodeSizeAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotNodeSizeAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }

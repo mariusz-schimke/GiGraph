@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
@@ -10,9 +11,9 @@ namespace GiGraph.Dot.Entities.Html.Image.Attributes
 {
     public class DotHtmlImageAttributes : DotHtmlElementRootAttributes<IDotHtmlImageAttributes>, IDotHtmlImageAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup HtmlImageAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlImageAttributes, IDotHtmlImageAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> HtmlImageAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlImageAttributes, IDotHtmlImageAttributes>().BuildLazy();
 
-        protected DotHtmlImageAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotHtmlImageAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }
