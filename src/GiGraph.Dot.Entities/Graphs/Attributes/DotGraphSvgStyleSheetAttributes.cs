@@ -7,16 +7,16 @@ using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphSvgSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGraphSvgStyleSheetAttributes>, IDotGraphSvgStyleSheetAttributes
+    public class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGraphSvgStyleSheetAttributes>, IDotGraphSvgStyleSheetAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphSvgStyleSheetAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphSvgSvgStyleSheetAttributes, IDotGraphSvgStyleSheetAttributes>().BuildLazy();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphSvgStyleSheetAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphSvgStyleSheetAttributes, IDotGraphSvgStyleSheetAttributes>().BuildLazy();
 
-        protected DotGraphSvgSvgStyleSheetAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+        protected DotGraphSvgStyleSheetAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }
 
-        public DotGraphSvgSvgStyleSheetAttributes(DotAttributeCollection attributes)
+        public DotGraphSvgStyleSheetAttributes(DotAttributeCollection attributes)
             : base(attributes, GraphSvgStyleSheetAttributesKeyLookup)
         {
         }

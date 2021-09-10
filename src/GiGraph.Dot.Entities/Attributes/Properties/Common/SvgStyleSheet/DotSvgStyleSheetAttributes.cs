@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet
 {
     public class DotSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotSvgStyleSheetAttributes>
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> EntitySvgStyleSheetAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotSvgStyleSheetAttributes, IDotSvgStyleSheetAttributes>().BuildLazy();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> SvgStyleSheetAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotSvgStyleSheetAttributes, IDotSvgStyleSheetAttributes>().BuildLazy();
 
         protected DotSvgStyleSheetAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet
         }
 
         public DotSvgStyleSheetAttributes(DotAttributeCollection attributes)
-            : base(attributes, EntitySvgStyleSheetAttributesKeyLookup)
+            : base(attributes, SvgStyleSheetAttributesKeyLookup)
         {
         }
     }

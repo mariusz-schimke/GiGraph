@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// <summary>
         ///     Style sheet attributes used for SVG output.
         /// </summary>
-        DotGraphSvgSvgStyleSheetAttributes SvgStyleSheet { get; }
+        DotGraphSvgStyleSheetAttributes SvgStyleSheet { get; }
 
         /// <summary>
         ///     Graph layout options.
