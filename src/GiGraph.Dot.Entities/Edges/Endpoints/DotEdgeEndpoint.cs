@@ -1,26 +1,14 @@
-using System;
-using GiGraph.Dot.Entities.Edges.Attributes;
-using GiGraph.Dot.Output;
+using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
-    public abstract partial class DotEdgeEndpoint<TEndpoint>
-        where TEndpoint : DotEndpointDefinition, IDotOrderable
+    public abstract partial class DotEdgeEndpoint
     {
-        public DotEdgeEndpoint(TEndpoint endpoint, DotEdgeEndpointAttributes attributes)
+        protected readonly IDotEdgeEndpointAttributes _attributes;
+
+        protected DotEdgeEndpoint(IDotEdgeEndpointAttributes attributes)
         {
-            Endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint), "Edge endpoint must not be null.");
-            Attributes = attributes;
+            _attributes = attributes;
         }
-
-        /// <summary>
-        ///     Gets the attributes of the endpoint.
-        /// </summary>
-        public virtual DotEdgeEndpointAttributes Attributes { get; }
-
-        /// <summary>
-        ///     The endpoint of the edge.
-        /// </summary>
-        public virtual TEndpoint Endpoint { get; }
     }
 }

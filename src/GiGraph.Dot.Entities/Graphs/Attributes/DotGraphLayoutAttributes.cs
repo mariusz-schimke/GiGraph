@@ -137,10 +137,10 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         }
 
         /// <summary>
-        ///     Copies layout properties from the specified instance.
+        ///     Copies layout attributes from the specified instance.
         /// </summary>
         /// <param name="attributes">
-        ///     The instance to copy the properties from.
+        ///     The instance to copy the attributes from.
         /// </param>
         public virtual void Set(IDotGraphLayoutAttributes attributes)
         {

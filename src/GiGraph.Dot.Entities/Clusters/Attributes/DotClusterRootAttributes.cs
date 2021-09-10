@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         protected readonly DotFontAttributes _fontAttributes;
         protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
         protected readonly DotLabelAlignmentAttributes _labelAlignmentAttributes;
-        protected readonly DotClusterStyleAttributes _styleAttributes;
+        protected readonly DotClusterStyleAttributeOptions _styleAttributeOptions;
         protected readonly DotSvgStyleSheetAttributes _svgStyleSheetAttributes;
 
         protected DotClusterRootAttributes(
@@ -34,7 +34,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotHyperlinkAttributes hyperlinkAttributes,
             DotFontAttributes fontAttributes,
-            DotClusterStyleAttributes styleAttributes,
+            DotClusterStyleAttributeOptions styleAttributeOptions,
             DotSvgStyleSheetAttributes svgStyleSheetAttributes,
             DotLabelAlignmentAttributes labelAlignmentAttributes
         )
@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         {
             _hyperlinkAttributes = hyperlinkAttributes;
             _fontAttributes = fontAttributes;
-            _styleAttributes = styleAttributes;
+            _styleAttributeOptions = styleAttributeOptions;
             _svgStyleSheetAttributes = svgStyleSheetAttributes;
             _labelAlignmentAttributes = labelAlignmentAttributes;
         }
@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
                 ClusterRootAttributesKeyLookup,
                 new DotHyperlinkAttributes(attributes),
                 new DotFontAttributes(attributes),
-                new DotClusterStyleAttributes(attributes),
+                new DotClusterStyleAttributeOptions(attributes),
                 new DotSvgStyleSheetAttributes(attributes),
                 new DotLabelAlignmentAttributes(attributes)
             )
@@ -67,7 +67,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
 
         DotHyperlinkAttributes IDotClusterRootAttributes.Hyperlink => _hyperlinkAttributes;
         DotFontAttributes IDotClusterRootAttributes.Font => _fontAttributes;
-        DotClusterStyleAttributes IDotClusterRootAttributes.Style => _styleAttributes;
+        DotClusterStyleAttributeOptions IDotClusterRootAttributes.Style => _styleAttributeOptions;
         DotSvgStyleSheetAttributes IDotClusterRootAttributes.SvgStyleSheet => _svgStyleSheetAttributes;
         DotLabelAlignmentAttributes IDotClusterRootAttributes.LabelAlignment => _labelAlignmentAttributes;
 
@@ -141,7 +141,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        [DotAttributeKey(DotStyleAttributes.StyleKey)]
+        [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
         DotStyles? IDotClusterAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;

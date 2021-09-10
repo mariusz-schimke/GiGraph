@@ -96,7 +96,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         }
 
         /// <summary>
-        ///     Sets font properties.
+        ///     Sets font attributes.
         /// </summary>
         /// <param name="name">
         ///     Font name.
@@ -115,10 +115,10 @@ namespace GiGraph.Dot.Entities.Html.Font
         }
 
         /// <summary>
-        ///     Sets font properties.
+        ///     Sets font attributes.
         /// </summary>
         /// <param name="attributes">
-        ///     The properties to set.
+        ///     The attributes to set.
         /// </param>
         public virtual void Set(DotFont attributes)
         {
@@ -126,10 +126,10 @@ namespace GiGraph.Dot.Entities.Html.Font
         }
 
         /// <summary>
-        ///     Copies font properties from the specified instance.
+        ///     Copies font attributes from the specified instance.
         /// </summary>
         /// <param name="attributes">
-        ///     The instance to copy the properties from.
+        ///     The instance to copy the attributes from.
         /// </param>
         public virtual void Set(IDotHtmlFontAttributes attributes)
         {

@@ -1,7 +1,7 @@
 namespace GiGraph.Dot.Types.Geometry
 {
     /// <summary>
-    ///     Geometry properties of a polygonal shape.
+    ///     Geometry attributes of a polygonal shape.
     /// </summary>
     /// <param name="Sides">
     ///     Number of sides.

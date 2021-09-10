@@ -5,9 +5,9 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public class DotEdgeStyleAttributes : DotStyleAttributes
+    public class DotEdgeStyleAttributeOptions : DotStyleAttributeOptions
     {
-        public DotEdgeStyleAttributes(DotAttributeCollection attributes)
+        public DotEdgeStyleAttributeOptions(DotAttributeCollection attributes)
             : base(attributes)
         {
         }
@@ -70,14 +70,14 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         /// <summary>
-        ///     Copies style properties from the specified instance.
+        ///     Copies style options from the specified instance.
         /// </summary>
-        /// <param name="attributes">
-        ///     The instance to copy the properties from.
+        /// <param name="options">
+        ///     The instance to copy the options from.
         /// </param>
-        public virtual void CopyFrom(DotEdgeStyleAttributes attributes)
+        public virtual void CopyFrom(DotEdgeStyleAttributeOptions options)
         {
-            Set(attributes.LineStyle, attributes.LineWeight, attributes.Invisible);
+            Set(options.LineStyle, options.LineWeight, options.Invisible);
         }
     }
 }

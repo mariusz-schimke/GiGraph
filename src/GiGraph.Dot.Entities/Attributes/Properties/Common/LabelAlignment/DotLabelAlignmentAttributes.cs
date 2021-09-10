@@ -74,10 +74,10 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment
         }
 
         /// <summary>
-        ///     Copies label alignment properties from the specified instance.
+        ///     Copies label alignment attributes from the specified instance.
         /// </summary>
         /// <param name="attributes">
-        ///     The instance to copy the properties from.
+        ///     The instance to copy the attributes from.
         /// </param>
         public virtual void Set(IDotLabelAlignmentAttributes attributes)
         {

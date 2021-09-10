@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Edges.Attributes;
+using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
@@ -13,12 +14,12 @@ namespace GiGraph.Dot.Entities.Edges.Collections
     public partial class DotEdgeCollection : IDotEdgeRootAttributes
     {
         /// <summary>
-        ///     Properties applied to the heads of the edges.
+        ///     Attributes applied to the heads of the edges.
         /// </summary>
         public virtual DotEdgeHeadAttributes Head { get; }
 
         /// <summary>
-        ///     Properties applied to the tails of the edges.
+        ///     Attributes applied to the tails of the edges.
         /// </summary>
         public virtual DotEdgeTailAttributes Tail { get; }
 
@@ -35,7 +36,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         public virtual DotEdgeLabelHyperlinkAttributes LabelHyperlink => ((IDotEdgeRootAttributes) Attributes).LabelHyperlink;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.Style" />
-        public virtual DotEdgeStyleAttributes Style => ((IDotEdgeRootAttributes) Attributes).Style;
+        public virtual DotEdgeStyleAttributeOptions Style => ((IDotEdgeRootAttributes) Attributes).Style;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.SvgStyleSheet" />
         public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotEdgeRootAttributes) Attributes).SvgStyleSheet;

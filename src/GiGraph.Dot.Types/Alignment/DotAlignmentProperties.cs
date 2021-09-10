@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.EnumHelpers;
 namespace GiGraph.Dot.Types.Alignment
 {
     /// <summary>
-    ///     Alignment properties.
+    ///     Alignment attributes.
     /// </summary>
     public record DotAlignmentProperties()
     {

@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Entities.Edges
         public virtual DotEdgeLabelHyperlinkAttributes LabelHyperlink => ((IDotEdgeRootAttributes) Attributes).LabelHyperlink;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.Style" />
-        public virtual DotEdgeStyleAttributes Style => ((IDotEdgeRootAttributes) Attributes).Style;
+        public virtual DotEdgeStyleAttributeOptions Style => ((IDotEdgeRootAttributes) Attributes).Style;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.SvgStyleSheet" />
         public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotEdgeRootAttributes) Attributes).SvgStyleSheet;

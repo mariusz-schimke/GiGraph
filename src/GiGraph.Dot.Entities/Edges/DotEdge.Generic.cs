@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
+using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Edges
@@ -46,8 +47,8 @@ namespace GiGraph.Dot.Entities.Edges
     {
         protected DotEdge(TTail tail, THead head,
             DotEdgeRootAttributes rootAttributes,
-            DotEdgeTailAttributes tailAttributes,
-            DotEdgeHeadAttributes headAttributes
+            DotEdgeTailRootAttributes tailAttributes,
+            DotEdgeHeadRootAttributes headAttributes
         )
             : base(rootAttributes)
         {
@@ -57,8 +58,8 @@ namespace GiGraph.Dot.Entities.Edges
 
         protected DotEdge(TTail tail, THead head, DotEdgeRootAttributes rootAttributes)
             : this(tail, head, rootAttributes,
-                new DotEdgeTailAttributes(rootAttributes.Collection),
-                new DotEdgeHeadAttributes(rootAttributes.Collection)
+                new DotEdgeTailRootAttributes(rootAttributes.Collection),
+                new DotEdgeHeadRootAttributes(rootAttributes.Collection)
             )
         {
         }
@@ -78,12 +79,12 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         /// <summary>
-        ///     Gets or sets the tail endpoint.
+        ///     Gets the tail endpoint.
         /// </summary>
         public virtual DotEdgeTail<TTail> Tail { get; }
 
         /// <summary>
-        ///     Gets or sets the head endpoint.
+        ///     Gets the head endpoint.
         /// </summary>
         public virtual DotEdgeHead<THead> Head { get; }
 

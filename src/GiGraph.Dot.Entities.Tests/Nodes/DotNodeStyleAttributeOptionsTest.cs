@@ -8,7 +8,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Nodes
 {
-    public class DotNodeStyleAttributesTest
+    public class DotNodeStyleAttributeOptionsTest
     {
         [Fact]
         public void all_style_properties_are_specified()

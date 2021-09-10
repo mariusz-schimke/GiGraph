@@ -2,7 +2,7 @@
 
 namespace GiGraph.Dot.Entities.Attributes
 {
-    public abstract class DotAttribute<T> : DotAttribute
+    public abstract record DotAttribute<T> : DotAttribute
     {
         protected DotAttribute(string key, T value)
             : base(key)
@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Attributes
         }
 
         /// <summary>
-        ///     Gets or sets the value of the attribute.
+        ///     Gets the value of the attribute.
         /// </summary>
         public virtual T Value { get; }
 

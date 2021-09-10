@@ -4,7 +4,7 @@ using GiGraph.Dot.Types.Hyperlinks;
 namespace GiGraph.Dot.Types.Edges
 {
     /// <summary>
-    ///     Specifies hyperlink properties (edge specific).
+    ///     Specifies hyperlink attributes (edge specific).
     /// </summary>
     /// <param name="Url">
     ///     The URL.

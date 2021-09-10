@@ -8,14 +8,14 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
     public interface IDotClusterRootAttributes : IDotClusterAttributes
     {
         /// <summary>
-        ///     Font properties.
+        ///     Font attributes.
         /// </summary>
         DotFontAttributes Font { get; }
 
         /// <summary>
         ///     Style options.
         /// </summary>
-        new DotClusterStyleAttributes Style { get; }
+        new DotClusterStyleAttributeOptions Style { get; }
 
         /// <summary>
         ///     Horizontal and vertical label alignment options.

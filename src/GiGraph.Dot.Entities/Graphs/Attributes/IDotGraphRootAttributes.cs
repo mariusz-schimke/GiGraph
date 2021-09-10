@@ -6,14 +6,14 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
     public interface IDotGraphRootAttributes : IDotGraphAttributes
     {
         /// <summary>
-        ///     Font properties.
+        ///     Font attributes.
         /// </summary>
         DotGraphFontAttributes Font { get; }
 
         /// <summary>
         ///     Style options. Note that the options are shared with those specified for <see cref="Clusters" />.
         /// </summary>
-        new DotGraphStyleAttributes Style { get; }
+        new DotGraphStyleAttributeOptions Style { get; }
 
         /// <summary>
         ///     Style sheet attributes used for SVG output.
@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         DotGraphLayoutAttributes Layout { get; }
 
         /// <summary>
-        ///     Graph canvas properties.
+        ///     Graph canvas attributes.
         /// </summary>
         DotGraphCanvasAttributes Canvas { get; }
 

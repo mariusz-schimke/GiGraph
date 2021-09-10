@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
+using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Edges
@@ -28,12 +29,17 @@ namespace GiGraph.Dot.Entities.Edges
                 ? endpoints
                 : throw new ArgumentException("At least a pair of endpoints has to be specified for an edge sequence.", nameof(endpoints));
 
-            Tails = tailAttributes;
-            Heads = headAttributes;
+            Tails = new DotEdgeTail(tailAttributes);
+            Heads = new DotEdgeHead(headAttributes);
         }
 
         protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes rootAttributes)
-            : this(endpoints, rootAttributes, new DotEdgeTailAttributes(rootAttributes.Collection), new DotEdgeHeadAttributes(rootAttributes.Collection))
+            : this(
+                endpoints,
+                rootAttributes,
+                new DotEdgeTailAttributes(rootAttributes.Collection),
+                new DotEdgeHeadAttributes(rootAttributes.Collection)
+            )
         {
         }
 
@@ -89,14 +95,14 @@ namespace GiGraph.Dot.Entities.Edges
         public override DotEndpointDefinition[] Endpoints => _endpoints;
 
         /// <summary>
-        ///     Properties applied to the heads of the edges in this sequence.
+        ///     Attributes applied to the heads of the edges in this sequence.
         /// </summary>
-        public virtual DotEdgeHeadAttributes Heads { get; }
+        public virtual DotEdgeHead Heads { get; }
 
         /// <summary>
-        ///     Properties applied to the tails of the edges in this sequence.
+        ///     Attributes applied to the tails of the edges in this sequence.
         /// </summary>
-        public virtual DotEdgeTailAttributes Tails { get; }
+        public virtual DotEdgeTail Tails { get; }
 
         protected override string GetOrderingKey()
         {

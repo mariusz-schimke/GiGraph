@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
     public partial class DotGraphClusterCollection : IDotGraphClusterRootAttributes
     {
         /// <inheritdoc cref="IDotGraphClusterRootAttributes.Style" />
-        public virtual DotClusterStyleAttributes Style => ((IDotGraphClusterRootAttributes) Attributes).Style;
+        public virtual DotClusterStyleAttributeOptions Style => ((IDotGraphClusterRootAttributes) Attributes).Style;
 
         /// <inheritdoc cref="IDotGraphClusterAttributes.AllowEdgeClipping" />
         public virtual bool? AllowEdgeClipping

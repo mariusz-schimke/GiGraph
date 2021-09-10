@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Graphs.Attributes;
+﻿using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
+using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Entities.Html.Font;
 using GiGraph.Dot.Entities.Labels;
@@ -150,7 +151,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         ///     </para>
         ///     <para>
         ///         Indicates which ends of the edge should be decorated with an arrowhead. The actual style of the arrowhead may be
-        ///         specified using the <see cref="DotEdgeEndpointAttributes.Arrowhead" /> attribute on the head or tail of the edge.
+        ///         specified using the <see cref="IDotEdgeEndpointAttributes.Arrowhead" /> attribute on the head or tail of the edge.
         ///     </para>
         ///     <para>
         ///         A glyph is drawn at the head end of the edge if and only if the direction is <see cref="DotEdgeDirections.Forward" /> or

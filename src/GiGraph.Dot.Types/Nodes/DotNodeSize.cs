@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Geometry;
 namespace GiGraph.Dot.Types.Nodes
 {
     /// <summary>
-    ///     Node size properties.
+    ///     Node size attributes.
     /// </summary>
     /// <param name="Width">
     ///     The width.

@@ -4,7 +4,7 @@ using GiGraph.Dot.Types.Fonts;
 namespace GiGraph.Dot.Types.Graphs
 {
     /// <summary>
-    ///     Font properties (graph specific).
+    ///     Font attributes (graph specific).
     /// </summary>
     /// <param name="Name">
     ///     Font name.

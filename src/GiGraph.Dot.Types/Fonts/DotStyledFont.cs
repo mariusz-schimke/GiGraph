@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Colors;
 namespace GiGraph.Dot.Types.Fonts
 {
     /// <summary>
-    ///     Font and style properties.
+    ///     Font and style attributes.
     /// </summary>
     /// <param name="Style">
     ///     Font style.
@@ -58,7 +58,7 @@ namespace GiGraph.Dot.Types.Fonts
         ///     Creates and initializes a new instance.
         /// </summary>
         /// <param name="font">
-        ///     A source font to copy properties from.
+        ///     A source font to copy attributes from.
         /// </param>
         /// <param name="style">
         ///     Font style.

@@ -62,9 +62,9 @@ namespace GiGraph.Dot.Entities.Graphs
         ///         Gets the collection of edges.
         ///     </para>
         ///     <para>
-        ///         (!) When an edge connects two elements belonging to two different subgraphs (or where one belongs to the root graph, and
-        ///         the other belongs to a subgraph), then it should be added to the common upper level graph or subgraph, not to the current
-        ///         graph.
+        ///         Note that when an edge joins two endpoints belonging to two different subgraphs (or where one belongs to the root graph,
+        ///         and the other belongs to a subgraph), then it should be added to the common upper level graph or subgraph, not to the
+        ///         current graph.
         ///     </para>
         /// </summary>
         public virtual DotEdgeCollection Edges { get; }
@@ -76,7 +76,7 @@ namespace GiGraph.Dot.Entities.Graphs
         ///     <para>
         ///         Use a subgraph when you want to have more granular control on the layout of the nodes it contains by constraining them
         ///         within a rank (see the subgraph's <see cref="IDotSubgraphAttributes.NodeRank" /> attribute). However, when you want the
-        ///         nodes to be drawn together in a bounding rectangle, that has a custom color and fill, use a cluster instead (
+        ///         nodes to be drawn together in a bounding rectangle, that has a custom color and fill, use a cluster instead (see
         ///         <see cref="Clusters" />). You can use either of these types to set a common style of nodes and edges within them.
         ///     </para>
         /// </summary>
@@ -84,11 +84,11 @@ namespace GiGraph.Dot.Entities.Graphs
 
         /// <summary>
         ///     <para>
-        ///         Gets the collection of clusters. A cluster is a collection of nodes drawn within a bounding rectangle.
+        ///         Gets the collection of clusters. A cluster is a collection of nodes and edges drawn within a bounding rectangle.
         ///     </para>
         ///     <para>
         ///         Use a cluster when you want the nodes within it to be drawn together in a bounding rectangle, that has a custom color and
-        ///         fill. However, when you want to have more granular control on the layout of selected nodes, use a subgraph instead (
+        ///         fill. However, when you want to have more granular control on the layout of selected nodes, use a subgraph instead (see
         ///         <see cref="Subgraphs" />). You can use either of these types to set a common style of nodes and edges within them.
         ///     </para>
         /// </summary>

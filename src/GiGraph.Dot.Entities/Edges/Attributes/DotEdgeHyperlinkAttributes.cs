@@ -2,6 +2,7 @@ using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
@@ -25,10 +26,10 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
 
         /// <summary>
         ///     If defined, this is the link used for the non-label parts of the edge (svg, map only). Used near the head or the tail node,
-        ///     unless overridden by the <see cref="DotEdgeHyperlinkAttributes.Url" /> on the head
-        ///     <see cref="DotEdgeHeadAttributes.Hyperlink" /> attributes, or on the tail <see cref="DotEdgeTailAttributes.Hyperlink" />
-        ///     attributes of the edge. This value overrides any <see cref="IDotHyperlinkAttributes.Url" /> specified for the edge's
-        ///     <see cref="IDotEdgeRootAttributes.Hyperlink" />.
+        ///     unless overridden by the <see cref="IDotHyperlinkAttributes.Url" /> on the head
+        ///     <see cref="IDotEdgeHeadRootAttributes.Hyperlink" /> attributes, or on the tail
+        ///     <see cref="IDotEdgeTailRootAttributes.Hyperlink" /> attributes of the edge. This value overrides any
+        ///     <see cref="IDotHyperlinkAttributes.Url" /> specified for the edge's <see cref="IDotEdgeRootAttributes.Hyperlink" />.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.EdgeUrl)]
         public override DotEscapeString Url
@@ -74,7 +75,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         /// <summary>
-        ///     Specifies hyperlink properties.
+        ///     Specifies hyperlink attributes.
         /// </summary>
         /// <param name="url">
         ///     The URL of the hyperlink.
@@ -98,10 +99,10 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         /// <summary>
-        ///     Specifies hyperlink properties.
+        ///     Specifies hyperlink attributes.
         /// </summary>
         /// <param name="attributes">
-        ///     The properties to set.
+        ///     The attributes to set.
         /// </param>
         public virtual void Set(DotEdgeHyperlink attributes)
         {
@@ -110,10 +111,10 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         /// <summary>
-        ///     Copies hyperlink properties from the specified instance.
+        ///     Copies hyperlink attributes from the specified instance.
         /// </summary>
         /// <param name="attributes">
-        ///     The instance to copy the properties from.
+        ///     The instance to copy the attributes from.
         /// </param>
         public virtual void Set(IDotEdgeHyperlinkAttributes attributes)
         {

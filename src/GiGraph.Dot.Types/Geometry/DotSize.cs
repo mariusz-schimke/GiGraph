@@ -1,7 +1,7 @@
 namespace GiGraph.Dot.Types.Geometry
 {
     /// <summary>
-    ///     Size properties.
+    ///     Size attributes.
     /// </summary>
     /// <param name="Width">
     ///     The width.

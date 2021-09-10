@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Clusters
         public virtual DotFontAttributes Font => ((IDotClusterRootAttributes) Attributes).Font;
 
         /// <inheritdoc cref="IDotClusterRootAttributes.Style" />
-        public virtual DotClusterStyleAttributes Style => ((IDotClusterRootAttributes) Attributes).Style;
+        public virtual DotClusterStyleAttributeOptions Style => ((IDotClusterRootAttributes) Attributes).Style;
 
         /// <inheritdoc cref="IDotClusterRootAttributes.LabelAlignment" />
         public virtual DotLabelAlignmentAttributes LabelAlignment => ((IDotClusterRootAttributes) Attributes).LabelAlignment;
@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Clusters
         /// <inheritdoc cref="IDotClusterRootAttributes.SvgStyleSheet" />
         public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotClusterRootAttributes) Attributes).SvgStyleSheet;
 
-        /// <inheritdoc cref="IDotClusterRootAttributes.SvgStyleSheet" />
+        /// <inheritdoc cref="IDotClusterRootAttributes.Hyperlink" />
         public virtual DotHyperlinkAttributes Hyperlink => ((IDotClusterRootAttributes) Attributes).Hyperlink;
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.Color" />

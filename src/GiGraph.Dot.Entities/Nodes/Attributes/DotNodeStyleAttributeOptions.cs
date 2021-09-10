@@ -5,9 +5,9 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
-    public class DotNodeStyleAttributes : DotClusterNodeCommonStyleAttributes<DotNodeFillStyle, DotNodeStyleProperties>
+    public class DotNodeStyleAttributeOptions : DotClusterNodeCommonStyleAttributeOptions<DotNodeFillStyle, DotNodeStyleProperties>
     {
-        public DotNodeStyleAttributes(DotAttributeCollection attributes)
+        public DotNodeStyleAttributeOptions(DotAttributeCollection attributes)
             : base(attributes)
         {
         }
@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
             set => ApplyOption(DotStyles.Diagonals, value);
         }
 
-        /// <inheritdoc cref="DotClusterNodeCommonStyleAttributes{TFillStyle,TStyleProperties}.Set" />
+        /// <inheritdoc cref="DotClusterNodeCommonStyleAttributeOptions{TFillStyle,TStyleProperties}.Set" />
         public override void Set(DotNodeStyleProperties options)
         {
             base.Set(options);
@@ -58,11 +58,11 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
             Diagonals = diagonals;
         }
 
-        /// <inheritdoc cref="DotClusterNodeCommonStyleAttributes{TFillStyle,TStyleProperties}.CopyFrom" />
-        public virtual void CopyFrom(DotNodeStyleAttributes attributes)
+        /// <inheritdoc cref="DotClusterNodeCommonStyleAttributeOptions{TFillStyle,TStyleProperties}.CopyFrom" />
+        public virtual void CopyFrom(DotNodeStyleAttributeOptions options)
         {
-            base.CopyFrom(attributes);
-            Diagonals = attributes.Diagonals;
+            base.CopyFrom(options);
+            Diagonals = options.Diagonals;
         }
     }
 }

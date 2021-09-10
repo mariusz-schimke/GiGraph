@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Edges.Attributes;
+using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Types.EscapeString;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink

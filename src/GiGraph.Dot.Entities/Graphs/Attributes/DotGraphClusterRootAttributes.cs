@@ -13,28 +13,28 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
     {
         protected static readonly DotMemberAttributeKeyLookup GraphClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClusterRootAttributes, IDotGraphClusterAttributes>().Build();
 
-        protected readonly DotClusterStyleAttributes _style;
+        protected readonly DotClusterStyleAttributeOptions _styleAttributeOptions;
 
         protected DotGraphClusterRootAttributes(
             DotGraphRootAttributes graphAttributes,
             DotMemberAttributeKeyLookup attributeKeyLookup,
-            DotClusterStyleAttributes styleAttributes
+            DotClusterStyleAttributeOptions styleAttributeOptions
         )
             : base(graphAttributes.Collection, attributeKeyLookup)
         {
-            _style = styleAttributes;
+            _styleAttributeOptions = styleAttributeOptions;
         }
 
         public DotGraphClusterRootAttributes(DotGraphRootAttributes graphAttributes)
             : this(
                 graphAttributes,
                 GraphClusterRootAttributesKeyLookup,
-                new DotClusterStyleAttributes(graphAttributes.Collection)
+                new DotClusterStyleAttributeOptions(graphAttributes.Collection)
             )
         {
         }
 
-        DotClusterStyleAttributes IDotGraphClusterRootAttributes.Style => _style;
+        DotClusterStyleAttributeOptions IDotGraphClusterRootAttributes.Style => _styleAttributeOptions;
 
         [DotAttributeKey(DotAttributeKeys.Color)]
         DotColorDefinition IDotGraphClusterCommonAttributes.Color

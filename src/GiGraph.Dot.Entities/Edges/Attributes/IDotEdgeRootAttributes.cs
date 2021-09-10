@@ -7,29 +7,29 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
     public interface IDotEdgeRootAttributes : IDotEdgeAttributes
     {
         /// <summary>
-        ///     Font properties.
+        ///     Font attributes.
         /// </summary>
         DotFontAttributes Font { get; }
 
         /// <summary>
-        ///     Properties applied to labels specified for the head and the tail of the edge.
+        ///     Attributes applied to labels specified for the head and the tail of the edge.
         /// </summary>
         DotEdgeEndpointLabelsAttributes EndpointLabels { get; }
 
         /// <summary>
-        ///     Hyperlink properties applied to the non-label parts of the edge.
+        ///     Hyperlink attributes applied to the non-label parts of the edge.
         /// </summary>
         DotEdgeHyperlinkAttributes EdgeHyperlink { get; }
 
         /// <summary>
-        ///     Hyperlink properties applied to the label of the edge.
+        ///     Hyperlink attributes applied to the label of the edge.
         /// </summary>
         DotEdgeLabelHyperlinkAttributes LabelHyperlink { get; }
 
         /// <summary>
         ///     Style options.
         /// </summary>
-        new DotEdgeStyleAttributes Style { get; }
+        new DotEdgeStyleAttributeOptions Style { get; }
 
         /// <summary>
         ///     Style sheet attributes used for SVG output.

@@ -28,7 +28,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
         protected readonly DotNodeImageAttributes _imageAttributes;
         protected readonly DotNodeSizeAttributes _sizeAttributes;
-        protected readonly DotNodeStyleAttributes _styleAttributes;
+        protected readonly DotNodeStyleAttributeOptions _styleAttributeOptions;
         protected readonly DotSvgStyleSheetAttributes _svgStyleSheetAttributes;
 
         protected DotNodeRootAttributes(
@@ -36,7 +36,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
             DotMemberAttributeKeyLookup attributeKeyLookup,
             DotHyperlinkAttributes hyperlinkAttributes,
             DotFontAttributes fontAttributes,
-            DotNodeStyleAttributes styleAttributes,
+            DotNodeStyleAttributeOptions styleAttributeOptions,
             DotNodeImageAttributes imageAttributes,
             DotNodeGeometryAttributes geometryAttributes,
             DotNodeSizeAttributes sizeAttributes,
@@ -46,7 +46,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         {
             _hyperlinkAttributes = hyperlinkAttributes;
             _fontAttributes = fontAttributes;
-            _styleAttributes = styleAttributes;
+            _styleAttributeOptions = styleAttributeOptions;
             _imageAttributes = imageAttributes;
             _geometryAttributes = geometryAttributes;
             _sizeAttributes = sizeAttributes;
@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
                 NodeRootAttributesKeyLookup,
                 new DotHyperlinkAttributes(attributes),
                 new DotFontAttributes(attributes),
-                new DotNodeStyleAttributes(attributes),
+                new DotNodeStyleAttributeOptions(attributes),
                 new DotNodeImageAttributes(attributes),
                 new DotNodeGeometryAttributes(attributes),
                 new DotNodeSizeAttributes(attributes),
@@ -75,7 +75,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
 
         DotHyperlinkAttributes IDotNodeRootAttributes.Hyperlink => _hyperlinkAttributes;
         DotFontAttributes IDotNodeRootAttributes.Font => _fontAttributes;
-        DotNodeStyleAttributes IDotNodeRootAttributes.Style => _styleAttributes;
+        DotNodeStyleAttributeOptions IDotNodeRootAttributes.Style => _styleAttributeOptions;
         DotNodeSizeAttributes IDotNodeRootAttributes.Size => _sizeAttributes;
         DotNodeGeometryAttributes IDotNodeRootAttributes.Geometry => _geometryAttributes;
         DotNodeImageAttributes IDotNodeRootAttributes.Image => _imageAttributes;
@@ -151,7 +151,7 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        [DotAttributeKey(DotStyleAttributes.StyleKey)]
+        [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
         DotStyles? IDotNodeAttributes.Style
         {
             get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;

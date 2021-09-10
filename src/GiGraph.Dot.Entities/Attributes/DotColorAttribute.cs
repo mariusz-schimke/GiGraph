@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     ///     Represents a single color.
     /// </summary>
-    public class DotColorAttribute : DotAttribute<Color>
+    public record DotColorAttribute : DotAttribute<Color>
     {
         /// <summary>
         ///     Creates a new color attribute.
