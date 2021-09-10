@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
@@ -12,12 +13,12 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
     public class DotEdgeHeadRootAttributes : DotEntityAttributes<IDotEdgeEndpointAttributes>, IDotEdgeHeadRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EdgeHeadRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadRootAttributes, IDotEdgeEndpointAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeHeadRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadRootAttributes, IDotEdgeEndpointAttributes>().BuildLazy();
         protected readonly DotEdgeHeadHyperlinkAttributes _hyperlinkAttributes;
 
         protected DotEdgeHeadRootAttributes(
             DotAttributeCollection attributes,
-            DotMemberAttributeKeyLookup attributeKeyLookup,
+            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
             DotEdgeHeadHyperlinkAttributes hyperlinkAttributes
         )
             : base(attributes, attributeKeyLookup)

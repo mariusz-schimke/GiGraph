@@ -1,13 +1,14 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using System;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Font
 {
     public class DotFontAttributes : DotFontAttributes<IDotFontAttributes>
     {
-        protected static readonly DotMemberAttributeKeyLookup EntityFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotFontAttributes, IDotFontAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> EntityFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotFontAttributes, IDotFontAttributes>().BuildLazy();
 
-        protected DotFontAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotFontAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }

@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
@@ -10,9 +11,9 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
 {
     public class DotHtmlTableCellAttributes : DotHtmlTableTableCellCommonAttributes<IDotHtmlTableCellAttributes>, IDotHtmlTableCellAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup HtmlTableCellAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableCellAttributes, IDotHtmlTableCellAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> HtmlTableCellAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableCellAttributes, IDotHtmlTableCellAttributes>().BuildLazy();
 
-        protected DotHtmlTableCellAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotHtmlTableCellAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }

@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
@@ -10,9 +11,9 @@ namespace GiGraph.Dot.Entities.Html.Font.Attributes
 {
     public class DotHtmlFontAttributes : DotHtmlElementRootAttributes<IDotHtmlFontAttributes>, IDotHtmlFontAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup HtmlFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlFontAttributes, IDotHtmlFontAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> HtmlFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlFontAttributes, IDotHtmlFontAttributes>().BuildLazy();
 
-        protected DotHtmlFontAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotHtmlFontAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }

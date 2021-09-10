@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
@@ -11,9 +12,9 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
     public class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAttributes>, IDotGraphFontAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup GraphFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphFontAttributes, IDotGraphFontAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphFontAttributes, IDotGraphFontAttributes>().BuildLazy();
 
-        protected DotGraphFontAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotGraphFontAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }

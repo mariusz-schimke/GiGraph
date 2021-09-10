@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using System;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
@@ -8,9 +9,9 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
 {
     public class DotEdgeEndpointLabelFontAttributes : DotFontAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EdgeEndpointLabelFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeEndpointLabelFontAttributes, IDotFontAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeEndpointLabelFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeEndpointLabelFontAttributes, IDotFontAttributes>().BuildLazy();
 
-        protected DotEdgeEndpointLabelFontAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotEdgeEndpointLabelFontAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }

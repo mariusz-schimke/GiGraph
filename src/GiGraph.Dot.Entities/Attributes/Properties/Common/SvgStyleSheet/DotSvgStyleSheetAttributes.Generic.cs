@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
@@ -8,7 +9,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet
     public abstract class DotSvgStyleSheetAttributes<TIEntitySvgStyleSheetAttributes> : DotEntityAttributes<TIEntitySvgStyleSheetAttributes>, IDotSvgStyleSheetAttributes
         where TIEntitySvgStyleSheetAttributes : IDotSvgStyleSheetAttributes
     {
-        protected DotSvgStyleSheetAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotSvgStyleSheetAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }

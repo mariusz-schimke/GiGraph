@@ -1,3 +1,4 @@
+using System;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
@@ -11,7 +12,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
     {
         protected DotEdgeTailAttributes(
             DotAttributeCollection attributes,
-            DotMemberAttributeKeyLookup attributeKeyLookup,
+            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
             DotEdgeTailHyperlinkAttributes edgeTailHyperlinkAttributes
         )
             : base(attributes, attributeKeyLookup, edgeTailHyperlinkAttributes)

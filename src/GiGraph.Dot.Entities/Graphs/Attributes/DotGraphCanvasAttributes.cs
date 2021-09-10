@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
@@ -13,9 +14,9 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
     public class DotGraphCanvasAttributes : DotEntityAttributes<IDotGraphCanvasAttributes>, IDotGraphCanvasAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup GraphCanvasAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphCanvasAttributes, IDotGraphCanvasAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphCanvasAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphCanvasAttributes, IDotGraphCanvasAttributes>().BuildLazy();
 
-        protected DotGraphCanvasAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotGraphCanvasAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }

@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
@@ -8,11 +9,11 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
 {
     public class DotEdgeEndpointLabelsAttributes : DotEntityAttributes<IDotEdgeEndpointLabelsAttributes>, IDotEdgeEndpointLabelsAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EdgeEndpointLabelAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeEndpointLabelsAttributes, IDotEdgeEndpointLabelsAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeEndpointLabelAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeEndpointLabelsAttributes, IDotEdgeEndpointLabelsAttributes>().BuildLazy();
 
         protected DotEdgeEndpointLabelsAttributes(
             DotAttributeCollection attributes,
-            DotMemberAttributeKeyLookup attributeKeyLookup,
+            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
             DotEdgeEndpointLabelFontAttributes fontAttributes
         )
             : base(attributes, attributeKeyLookup)

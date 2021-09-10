@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using System;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
@@ -6,7 +7,7 @@ namespace GiGraph.Dot.Entities.Html.Attributes.Properties
 {
     public abstract class DotHtmlElementRootAttributes<TIEntityAttributeProperties> : DotEntityAttributes<TIEntityAttributeProperties>
     {
-        protected DotHtmlElementRootAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotHtmlElementRootAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }

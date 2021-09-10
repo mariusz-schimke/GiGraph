@@ -19,6 +19,17 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
         where TEntityAttributes : DotEntityAttributes, TIEntityAttributeProperties
     {
         /// <summary>
+        ///     Builds lazily a lookup for properties and property accessors.
+        /// </summary>
+        /// <param name="readOnly">
+        ///     Determines whether the built lookup should be read only.
+        /// </param>
+        public Lazy<DotMemberAttributeKeyLookup> BuildLazy(bool readOnly = true)
+        {
+            return new Lazy<DotMemberAttributeKeyLookup>(() => Build(readOnly));
+        }
+
+        /// <summary>
         ///     Builds a lookup for properties and property accessors.
         /// </summary>
         /// <param name="readOnly">

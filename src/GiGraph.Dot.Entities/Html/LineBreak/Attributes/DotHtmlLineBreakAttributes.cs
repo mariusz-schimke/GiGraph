@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
@@ -10,9 +11,9 @@ namespace GiGraph.Dot.Entities.Html.LineBreak.Attributes
 {
     public class DotHtmlLineBreakAttributes : DotHtmlElementRootAttributes<IDotHtmlLineBreakAttributes>, IDotHtmlLineBreakAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup HtmlLineBreakAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlLineBreakAttributes, IDotHtmlLineBreakAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> HtmlLineBreakAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlLineBreakAttributes, IDotHtmlLineBreakAttributes>().BuildLazy();
 
-        protected DotHtmlLineBreakAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotHtmlLineBreakAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }

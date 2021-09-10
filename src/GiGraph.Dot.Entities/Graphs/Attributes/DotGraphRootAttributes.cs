@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Factories;
@@ -17,7 +18,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
     public class DotGraphRootAttributes : DotEntityRootAttributes<IDotGraphAttributes>, IDotGraphRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup GraphRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().BuildLazy();
 
         protected readonly DotGraphCanvasAttributes _canvasAttributes;
         protected readonly DotGraphFontAttributes _fontAttributes;
@@ -25,15 +26,15 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         protected readonly DotLabelAlignmentAttributes _labelAlignmentAttributes;
         protected readonly DotGraphLayoutAttributes _layoutAttributes;
         protected readonly DotGraphStyleAttributeOptions _styleAttributeOptions;
-        protected readonly DotGraphSvgSvgStyleSheetAttributes _svgStyleSheetAttributes;
+        protected readonly DotGraphSvgStyleSheetAttributes _svgStyleSheetAttributes;
 
         protected DotGraphRootAttributes(
             DotAttributeCollection attributes,
-            DotMemberAttributeKeyLookup attributeKeyLookup,
+            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
             DotHyperlinkAttributes hyperlinkAttributes,
             DotGraphFontAttributes fontAttributes,
             DotGraphStyleAttributeOptions styleAttributeOptions,
-            DotGraphSvgSvgStyleSheetAttributes svgStyleSheetAttributes,
+            DotGraphSvgStyleSheetAttributes svgStyleSheetAttributes,
             DotGraphLayoutAttributes layoutAttributes,
             DotGraphCanvasAttributes canvasAttributes,
             DotLabelAlignmentAttributes labelAlignmentAttributes
@@ -56,7 +57,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
                 new DotHyperlinkAttributes(attributes),
                 new DotGraphFontAttributes(attributes),
                 new DotGraphStyleAttributeOptions(attributes),
-                new DotGraphSvgSvgStyleSheetAttributes(attributes),
+                new DotGraphSvgStyleSheetAttributes(attributes),
                 new DotGraphLayoutAttributes(attributes),
                 new DotGraphCanvasAttributes(attributes),
                 new DotLabelAlignmentAttributes(attributes)
@@ -72,7 +73,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         DotHyperlinkAttributes IDotGraphRootAttributes.Hyperlink => _hyperlinkAttributes;
         DotGraphFontAttributes IDotGraphRootAttributes.Font => _fontAttributes;
         DotGraphStyleAttributeOptions IDotGraphRootAttributes.Style => _styleAttributeOptions;
-        DotGraphSvgSvgStyleSheetAttributes IDotGraphRootAttributes.SvgStyleSheet => _svgStyleSheetAttributes;
+        DotGraphSvgStyleSheetAttributes IDotGraphRootAttributes.SvgStyleSheet => _svgStyleSheetAttributes;
         DotGraphLayoutAttributes IDotGraphRootAttributes.Layout => _layoutAttributes;
         DotGraphCanvasAttributes IDotGraphRootAttributes.Canvas => _canvasAttributes;
         DotLabelAlignmentAttributes IDotGraphRootAttributes.LabelAlignment => _labelAlignmentAttributes;

@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Factories;
@@ -21,7 +22,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
 {
     public class DotClusterRootAttributes : DotEntityRootAttributes<IDotClusterAttributes>, IDotClusterRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup ClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> ClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
 
         protected readonly DotFontAttributes _fontAttributes;
         protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
@@ -31,7 +32,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
 
         protected DotClusterRootAttributes(
             DotAttributeCollection attributes,
-            DotMemberAttributeKeyLookup attributeKeyLookup,
+            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
             DotHyperlinkAttributes hyperlinkAttributes,
             DotFontAttributes fontAttributes,
             DotClusterStyleAttributeOptions styleAttributeOptions,

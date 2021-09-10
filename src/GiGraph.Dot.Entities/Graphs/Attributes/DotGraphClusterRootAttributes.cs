@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
@@ -11,13 +12,13 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
     public class DotGraphClusterRootAttributes : DotEntityAttributes<IDotGraphClusterAttributes>, IDotGraphClusterRootAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup GraphClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClusterRootAttributes, IDotGraphClusterAttributes>().Build();
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClusterRootAttributes, IDotGraphClusterAttributes>().BuildLazy();
 
         protected readonly DotClusterStyleAttributeOptions _styleAttributeOptions;
 
         protected DotGraphClusterRootAttributes(
             DotGraphRootAttributes graphAttributes,
-            DotMemberAttributeKeyLookup attributeKeyLookup,
+            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
             DotClusterStyleAttributeOptions styleAttributeOptions
         )
             : base(graphAttributes.Collection, attributeKeyLookup)
