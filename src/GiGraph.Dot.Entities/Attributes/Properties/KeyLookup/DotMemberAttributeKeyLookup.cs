@@ -11,25 +11,36 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
     public class DotMemberAttributeKeyLookup
     {
         protected readonly IDictionary<Module, IDictionary<int, string>> _lookup;
+        protected readonly bool _useCommonBaseAsLookupKey;
 
-        protected DotMemberAttributeKeyLookup(IDictionary<Module, IDictionary<int, string>> lookup)
+        protected DotMemberAttributeKeyLookup(IDictionary<Module, IDictionary<int, string>> lookup, bool useCommonBaseAsLookupKey)
         {
             _lookup = lookup;
+            _useCommonBaseAsLookupKey = useCommonBaseAsLookupKey;
         }
 
         /// <summary>
         ///     Creates a new lookup instance.
         /// </summary>
-        public DotMemberAttributeKeyLookup()
-            : this(new Dictionary<Module, IDictionary<int, string>>())
+        /// <param name="useCommonBaseAsLookupKey">
+        ///     True to use the base definitions of property accessors as their keys in the lookup. This reduces the number of items to map
+        ///     when certain properties are overridden in descendant classes. In such case only their common ancestor property is mapped with
+        ///     the same attribute key used for all its descendants. Pass false to use the accessor as is (to map every property accessor
+        ///     separately to any attribute key).
+        /// </param>
+        public DotMemberAttributeKeyLookup(bool useCommonBaseAsLookupKey = true)
+            : this(new Dictionary<Module, IDictionary<int, string>>(), useCommonBaseAsLookupKey)
         {
         }
 
         /// <summary>
         ///     Creates a new lookup initialized with content copied from another instance.
         /// </summary>
+        /// <param name="source">
+        ///     The source lookup to copy the content from.
+        /// </param>
         public DotMemberAttributeKeyLookup(DotMemberAttributeKeyLookup source)
-            : this()
+            : this(source._useCommonBaseAsLookupKey)
         {
             foreach (var item in source._lookup)
             {
@@ -43,15 +54,34 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
         public virtual int Count => _lookup.Sum(module => module.Value.Count);
 
         /// <summary>
-        ///     Adds or replaces a key for the specified member.
+        ///     Adds or replaces a key for the specified property.
         /// </summary>
-        /// <param name="member">
-        ///     The member whose attribute key to set.
+        /// <param name="property">
+        ///     The property whose attribute key to set.
         /// </param>
         /// <param name="key">
-        ///     The attribute key to assign to the specified member.
+        ///     The attribute key to assign to the specified property.
         /// </param>
-        public virtual void Set(MemberInfo member, string key)
+        public virtual void SetPropertyKey(PropertyInfo property, string key)
+        {
+            SetMemberKey(property, key);
+        }
+
+        /// <summary>
+        ///     Adds or replaces a key for the specified property accessor.
+        /// </summary>
+        /// <param name="accessor">
+        ///     The property accessor whose attribute key to set.
+        /// </param>
+        /// <param name="key">
+        ///     The attribute key to assign to the specified property accessor.
+        /// </param>
+        public virtual void SetPropertyAccessorKey(MethodInfo accessor, string key)
+        {
+            SetMemberKey(GetPropertyAccessorDefinition(accessor), key);
+        }
+
+        protected virtual void SetMemberKey(MemberInfo member, string key)
         {
             var module = GetOrAddModule(member.Module);
 
@@ -60,15 +90,34 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
         }
 
         /// <summary>
-        ///     Tries to get an attribute key for the specified member.
+        ///     Tries to get an attribute key for the specified property.
         /// </summary>
-        /// <param name="member">
-        ///     The member whose attribute key to get.
+        /// <param name="property">
+        ///     The property whose attribute key to get.
         /// </param>
         /// <param name="key">
         ///     The output attribute key if found.
         /// </param>
-        public virtual bool TryGetKey(MemberInfo member, out string key)
+        public virtual bool TryGetPropertyKey(PropertyInfo property, out string key)
+        {
+            return TryGetMemberKey(property, out key);
+        }
+
+        /// <summary>
+        ///     Tries to get an attribute key for the specified property accessor.
+        /// </summary>
+        /// <param name="accessor">
+        ///     The property accessor whose attribute key to get.
+        /// </param>
+        /// <param name="key">
+        ///     The output attribute key if found.
+        /// </param>
+        public virtual bool TryGetPropertyAccessorKey(MethodInfo accessor, out string key)
+        {
+            return TryGetMemberKey(GetPropertyAccessorDefinition(accessor), out key);
+        }
+
+        protected virtual bool TryGetMemberKey(MemberInfo member, out string key)
         {
             key = null;
             return _lookup.TryGetValue(member.Module, out var module) &&
@@ -76,21 +125,44 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
         }
 
         /// <summary>
-        ///     Gets an attribute key for the specified member.
+        ///     Gets an attribute key for the specified property.
         /// </summary>
-        /// <param name="member">
-        ///     The member whose attribute key to get.
+        /// <param name="property">
+        ///     The property whose attribute key to get.
         /// </param>
         /// <exception cref="KeyNotFoundException">
-        ///     Thrown when the collection does not contain a key for the specified member.
+        ///     Thrown when the collection does not contain a key for the specified property.
         /// </exception>
-        public virtual string GetKey(MemberInfo member)
+        public virtual string GetPropertyKey(PropertyInfo property)
         {
-            return TryGetKey(member, out var key)
+            return TryGetPropertyKey(property, out var key)
                 ? key
                 : throw new KeyNotFoundException(
-                    $"The attribute key lookup does not contain a key for the '{member}' member of the {member.DeclaringType} type."
+                    $"There is no attribute key specified for the '{property}' property of the {property.DeclaringType} type."
                 );
+        }
+
+        /// <summary>
+        ///     Gets an attribute key for the specified property accessor.
+        /// </summary>
+        /// <param name="accessor">
+        ///     The property accessor whose attribute key to get.
+        /// </param>
+        /// <exception cref="KeyNotFoundException">
+        ///     Thrown when the collection does not contain a key for the specified property accessor.
+        /// </exception>
+        public virtual string GetPropertyAccessorKey(MethodInfo accessor)
+        {
+            return TryGetPropertyAccessorKey(accessor, out var key)
+                ? key
+                : throw new KeyNotFoundException(
+                    $"There is no attribute key specified for the '{accessor}' property accessor of the {accessor.DeclaringType} type."
+                );
+        }
+
+        protected virtual MethodInfo GetPropertyAccessorDefinition(MethodInfo accessor)
+        {
+            return _useCommonBaseAsLookupKey ? accessor.GetRuntimeBaseDefinition() : accessor;
         }
 
         /// <summary>
@@ -124,7 +196,8 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
             );
 
             return new DotMemberAttributeKeyLookup(
-                new ReadOnlyDictionary<Module, IDictionary<int, string>>(result)
+                new ReadOnlyDictionary<Module, IDictionary<int, string>>(result),
+                _useCommonBaseAsLookupKey
             );
         }
 
