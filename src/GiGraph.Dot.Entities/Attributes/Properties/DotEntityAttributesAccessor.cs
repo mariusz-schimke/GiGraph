@@ -8,18 +8,30 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
 {
     public class DotEntityAttributesAccessor<TIEntityAttributeProperties> : DotEntityAttributes
     {
+        // type guarding
+        protected readonly Type _entityAttributePropertiesType = typeof(TIEntityAttributeProperties).IsInterface
+            ? typeof(TIEntityAttributeProperties)
+            : throw new ArgumentException($"The type {typeof(TIEntityAttributeProperties).Name} specified as the type parameter is not an interface.", nameof(TIEntityAttributeProperties));
+
         protected readonly DotEntityAttributes _parent;
 
         protected DotEntityAttributesAccessor(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
-            _parent = this;
+            _parent = ValidateParent(this);
         }
 
         public DotEntityAttributesAccessor(DotEntityAttributes parent)
             : base(parent)
         {
-            _parent = parent;
+            _parent = ValidateParent(parent);
+        }
+
+        protected virtual DotEntityAttributes ValidateParent(DotEntityAttributes parent)
+        {
+            return _entityAttributePropertiesType.IsInstanceOfType(parent)
+                ? parent
+                : throw new ArgumentException($"The specified parent object of type {parent.GetType().Name} does not implement the {_entityAttributePropertiesType.Name} interface.", nameof(parent));
         }
 
         /// <summary>
