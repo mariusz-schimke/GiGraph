@@ -1,11 +1,22 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
+using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
     public interface IDotEdgeRootAttributes : IDotEdgeAttributes
     {
+        /// <summary>
+        ///     Attributes applied to the head of the edge.
+        /// </summary>
+        DotEdgeHeadAttributes Head { get; }
+
+        /// <summary>
+        ///     Attributes applied to the tail of the edge.
+        /// </summary>
+        DotEdgeTailAttributes Tail { get; }
+
         /// <summary>
         ///     Font attributes.
         /// </summary>

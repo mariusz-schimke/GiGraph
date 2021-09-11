@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
-using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Edges.Collections
@@ -12,24 +11,9 @@ namespace GiGraph.Dot.Entities.Edges.Collections
     /// </summary>
     public partial class DotEdgeCollection : List<DotEdgeDefinition>, IDotEntity, IDotAnnotatable
     {
-        protected DotEdgeCollection(
-            DotEdgeRootAttributes attributes,
-            DotEdgeHeadAttributes headAttributes,
-            DotEdgeTailAttributes tailAttributes
-        )
+        protected DotEdgeCollection(DotEdgeRootAttributes attributes)
         {
             Attributes = attributes;
-            Head = headAttributes;
-            Tail = tailAttributes;
-        }
-
-        protected DotEdgeCollection(DotEdgeRootAttributes attributes)
-            : this(
-                attributes,
-                new DotEdgeHeadAttributes(attributes.Collection),
-                new DotEdgeTailAttributes(attributes.Collection)
-            )
-        {
         }
 
         public DotEdgeCollection()

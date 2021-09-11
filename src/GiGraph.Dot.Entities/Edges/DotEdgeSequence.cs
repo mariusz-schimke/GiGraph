@@ -15,10 +15,8 @@ namespace GiGraph.Dot.Entities.Edges
     {
         protected readonly DotEndpointDefinition[] _endpoints;
 
-        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes rootAttributes,
-            DotEdgeTailAttributes tailAttributes, DotEdgeHeadAttributes headAttributes
-        )
-            : base(rootAttributes)
+        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes attributes)
+            : base(attributes)
         {
             if (endpoints is null)
             {
@@ -29,18 +27,8 @@ namespace GiGraph.Dot.Entities.Edges
                 ? endpoints
                 : throw new ArgumentException("At least a pair of endpoints has to be specified for an edge sequence.", nameof(endpoints));
 
-            Tails = new DotEdgeTail(tailAttributes);
-            Heads = new DotEdgeHead(headAttributes);
-        }
-
-        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes rootAttributes)
-            : this(
-                endpoints,
-                rootAttributes,
-                new DotEdgeTailAttributes(rootAttributes.Collection),
-                new DotEdgeHeadAttributes(rootAttributes.Collection)
-            )
-        {
+            Tails = new DotEdgeTail(new DotEdgeTailRootAttributes(attributes.Collection));
+            Heads = new DotEdgeHead(new DotEdgeHeadRootAttributes(attributes.Collection));
         }
 
         /// <summary>

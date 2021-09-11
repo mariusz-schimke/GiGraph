@@ -8,6 +8,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
@@ -24,14 +25,18 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         protected readonly DotEdgeHyperlinkAttributes _edgeHyperlinkAttributes;
         protected readonly DotEdgeEndpointLabelsAttributes _endpointLabelsAttributes;
         protected readonly DotFontAttributes _fontAttributes;
+        protected readonly DotEdgeHeadAttributes _headAttributes;
         protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
         protected readonly DotEdgeLabelHyperlinkAttributes _labelHyperlinkAttributes;
         protected readonly DotEdgeStyleAttributeOptions _styleAttributeOptions;
         protected readonly DotSvgStyleSheetAttributes _svgStyleSheetAttributes;
+        protected readonly DotEdgeTailAttributes _tailAttributes;
 
         protected DotEdgeRootAttributes(
             DotAttributeCollection attributes,
             Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
+            DotEdgeHeadAttributes headAttributes,
+            DotEdgeTailAttributes tailAttributes,
             DotFontAttributes fontAttributes,
             DotHyperlinkAttributes hyperlinkAttributes,
             DotEdgeEndpointLabelsAttributes endpointLabelsAttributes,
@@ -42,6 +47,8 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         )
             : base(attributes, attributeKeyLookup)
         {
+            _headAttributes = headAttributes;
+            _tailAttributes = tailAttributes;
             _hyperlinkAttributes = hyperlinkAttributes;
             _fontAttributes = fontAttributes;
             _styleAttributeOptions = edgeStyleAttributeOptions;
@@ -55,6 +62,8 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
             : this(
                 attributes,
                 EdgeRootAttributesKeyLookup,
+                new DotEdgeHeadAttributes(attributes),
+                new DotEdgeTailAttributes(attributes),
                 new DotFontAttributes(attributes),
                 new DotHyperlinkAttributes(attributes),
                 new DotEdgeEndpointLabelsAttributes(attributes),
@@ -70,6 +79,9 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
             : this(new DotAttributeCollection(DotAttributeFactory.Instance))
         {
         }
+
+        DotEdgeHeadAttributes IDotEdgeRootAttributes.Head => _headAttributes;
+        DotEdgeTailAttributes IDotEdgeRootAttributes.Tail => _tailAttributes;
 
         DotFontAttributes IDotEdgeRootAttributes.Font => _fontAttributes;
         DotEdgeEndpointLabelsAttributes IDotEdgeRootAttributes.EndpointLabels => _endpointLabelsAttributes;
