@@ -8,12 +8,16 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
 {
     public class DotEntityAttributesAccessor<TIEntityAttributeProperties> : DotEntityAttributes
     {
-        // type guarding
-        protected readonly Type _entityAttributePropertiesType = typeof(TIEntityAttributeProperties).IsInterface
-            ? typeof(TIEntityAttributeProperties)
-            : throw new ArgumentException($"The type {typeof(TIEntityAttributeProperties).Name} specified as the type parameter is not an interface.", nameof(TIEntityAttributeProperties));
-
+        protected static readonly Type EntityAttributePropertiesType;
         protected readonly DotEntityAttributes _parent;
+
+        static DotEntityAttributesAccessor()
+        {
+            // type guarding
+            EntityAttributePropertiesType = typeof(TIEntityAttributeProperties).IsInterface
+                ? typeof(TIEntityAttributeProperties)
+                : throw new ArgumentException($"The type {typeof(TIEntityAttributeProperties).Name} specified as the type parameter is not an interface.", nameof(TIEntityAttributeProperties));
+        }
 
         protected DotEntityAttributesAccessor(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
@@ -29,9 +33,9 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
 
         protected virtual DotEntityAttributes ValidateParent(DotEntityAttributes parent)
         {
-            return _entityAttributePropertiesType.IsInstanceOfType(parent)
+            return EntityAttributePropertiesType.IsInstanceOfType(parent)
                 ? parent
-                : throw new ArgumentException($"The specified parent object of type {parent.GetType().Name} does not implement the {_entityAttributePropertiesType.Name} interface.", nameof(parent));
+                : throw new ArgumentException($"The specified parent object of type {parent.GetType().Name} does not implement the {EntityAttributePropertiesType.Name} interface.", nameof(parent));
         }
 
         /// <summary>
