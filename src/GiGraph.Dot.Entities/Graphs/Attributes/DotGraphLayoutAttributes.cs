@@ -11,7 +11,7 @@ using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphLayoutAttributes : DotEntityAttributes<IDotGraphLayoutAttributes>, IDotGraphLayoutAttributes
+    public class DotGraphLayoutAttributes : DotNestedEntityAttributes<IDotGraphLayoutAttributes>, IDotGraphLayoutAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphLayoutAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphLayoutAttributes, IDotGraphLayoutAttributes>().BuildLazy();
 

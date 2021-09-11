@@ -10,6 +10,11 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         protected readonly Lazy<DotMemberAttributeKeyLookup> _attributeKeyLookup;
         protected readonly DotAttributeCollection _attributes;
 
+        protected DotEntityAttributes(DotEntityAttributes source)
+            : this(source._attributes, source._attributeKeyLookup)
+        {
+        }
+
         protected DotEntityAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
         {
             _attributes = attributes;

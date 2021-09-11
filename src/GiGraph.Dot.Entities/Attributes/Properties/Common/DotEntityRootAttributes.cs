@@ -5,7 +5,7 @@ using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common
 {
-    public abstract class DotEntityRootAttributes<TIEntityAttributeProperties> : DotEntityAttributes<TIEntityAttributeProperties>, IDotAnnotatable
+    public abstract class DotEntityRootAttributes<TIEntityAttributeProperties> : DotEntityAttributesAccessor<TIEntityAttributeProperties>, IDotAnnotatable
     {
         protected DotEntityRootAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)

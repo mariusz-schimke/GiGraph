@@ -8,7 +8,7 @@ using GiGraph.Dot.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Font
 {
-    public abstract class DotFontAttributes<TIEntityFontAttributes> : DotEntityAttributes<TIEntityFontAttributes>, IDotFontAttributes
+    public abstract class DotFontAttributes<TIEntityFontAttributes> : DotNestedEntityAttributes<TIEntityFontAttributes>, IDotFontAttributes
         where TIEntityFontAttributes : IDotFontAttributes
     {
         protected DotFontAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)

@@ -6,11 +6,20 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties
 {
-    public abstract class DotEntityAttributes<TIEntityAttributeProperties> : DotEntityAttributes
+    public class DotEntityAttributesAccessor<TIEntityAttributeProperties> : DotEntityAttributes
     {
-        protected DotEntityAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+        protected readonly DotEntityAttributes _parent;
+
+        protected DotEntityAttributesAccessor(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
+            _parent = this;
+        }
+
+        public DotEntityAttributesAccessor(DotEntityAttributes parent)
+            : base(parent)
+        {
+            _parent = parent;
         }
 
         /// <summary>
@@ -43,9 +52,9 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         public virtual DotAttribute Set<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value)
         {
             var propertyInfo = GetProperty(property);
-            propertyInfo.SetValue(this, value);
+            propertyInfo.SetValue(_parent, value);
 
-            var key = GetKey(propertyInfo);
+            var key = GetPropertyKey(propertyInfo);
             return TryGetAttribute(key);
         }
 
@@ -143,7 +152,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         public virtual string GetKey<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var propertyInfo = GetProperty(property);
-            return GetKey(propertyInfo);
+            return GetPropertyKey(propertyInfo);
         }
 
         protected virtual PropertyInfo GetProperty<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
@@ -163,6 +172,12 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         protected virtual DotAttribute TryGetAttribute(string key)
         {
             return _attributes.TryGetValue(key, out var attribute) ? attribute : null;
+        }
+
+        protected virtual string GetPropertyKey(PropertyInfo property)
+        {
+            // the lookup contains only interface properties and property accessors of implementing classes
+            return _attributeKeyLookup.Value.GetPropertyKey(property);
         }
     }
 }

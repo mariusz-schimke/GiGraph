@@ -8,6 +8,7 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
+    // TODO: powinna wystawiać właściwość Attributes
     public class DotEdgeHeadAttributes : DotEdgeHeadRootAttributes
     {
         protected DotEdgeHeadAttributes(
