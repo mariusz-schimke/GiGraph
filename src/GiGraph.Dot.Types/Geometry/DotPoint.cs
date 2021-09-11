@@ -133,7 +133,7 @@ namespace GiGraph.Dot.Types.Geometry
             return GetDotEncodedValue(options, syntaxRules);
         }
 
-        protected internal virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var fix = true == IsFixed ? "!" : string.Empty;
             return $"{string.Join(",", Coordinates.Select(c => c.ToString(syntaxRules.Culture)))}{fix}";

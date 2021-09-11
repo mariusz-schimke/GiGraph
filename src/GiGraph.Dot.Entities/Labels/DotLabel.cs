@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Labels
             return GetDotEncodedString(options, syntaxRules);
         }
 
-        protected internal abstract string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
+        protected abstract string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 
         /// <summary>
         ///     Creates a label initialized with the specified text.

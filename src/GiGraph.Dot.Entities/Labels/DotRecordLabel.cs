@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Labels
             _record = record ?? throw new ArgumentNullException(nameof(record), "Record must not be null.");
         }
 
-        protected internal override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return ((IDotEncodable) _record)?.GetDotEncodedValue(options, syntaxRules);
         }

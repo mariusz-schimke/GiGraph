@@ -29,6 +29,6 @@ namespace GiGraph.Dot.Types.Packing
             return value.HasValue ? new DotArrayPackingMode(value.Value) : null;
         }
 
-        protected internal abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
+        protected abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
     }
 }

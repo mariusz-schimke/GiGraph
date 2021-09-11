@@ -25,11 +25,5 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         {
             return _attributeKeyLookup.Value.GetPropertyAccessorKey((MethodInfo) accessor);
         }
-
-        protected internal virtual string GetKey(PropertyInfo property)
-        {
-            // the lookup contains only interface properties and property accessors of implementing classes
-            return _attributeKeyLookup.Value.GetPropertyKey(property);
-        }
     }
 }

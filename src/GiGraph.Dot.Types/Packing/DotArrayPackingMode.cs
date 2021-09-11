@@ -57,7 +57,7 @@ namespace GiGraph.Dot.Types.Packing
         /// </summary>
         public int? RankCount { get; init; }
 
-        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var result = new StringBuilder("array");
 
