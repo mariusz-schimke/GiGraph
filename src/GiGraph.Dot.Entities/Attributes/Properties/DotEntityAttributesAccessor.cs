@@ -8,13 +8,13 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
 {
     public class DotEntityAttributesAccessor<TIEntityAttributeProperties> : DotEntityAttributes
     {
-        protected static readonly Type EntityAttributePropertiesType;
+        protected static readonly Type EntityAttributePropertiesInterfaceType;
         protected readonly DotEntityAttributes _parent;
 
         static DotEntityAttributesAccessor()
         {
             // type guarding
-            EntityAttributePropertiesType = typeof(TIEntityAttributeProperties).IsInterface
+            EntityAttributePropertiesInterfaceType = typeof(TIEntityAttributeProperties).IsInterface
                 ? typeof(TIEntityAttributeProperties)
                 : throw new ArgumentException($"The type {typeof(TIEntityAttributeProperties).Name} specified as the type parameter is not an interface.", nameof(TIEntityAttributeProperties));
         }
@@ -33,9 +33,9 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
 
         protected virtual DotEntityAttributes ValidateParent(DotEntityAttributes parent)
         {
-            return EntityAttributePropertiesType.IsInstanceOfType(parent)
+            return EntityAttributePropertiesInterfaceType.IsInstanceOfType(parent)
                 ? parent
-                : throw new ArgumentException($"The specified parent object of type {parent.GetType().Name} does not implement the {EntityAttributePropertiesType.Name} interface.", nameof(parent));
+                : throw new ArgumentException($"The specified parent object of type {parent.GetType().Name} does not implement the {EntityAttributePropertiesInterfaceType.Name} interface.", nameof(parent));
         }
 
         /// <summary>
@@ -176,10 +176,10 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             var propertyInfo = (property.Body as MemberExpression)?.Member as PropertyInfo ??
                 throw new ArgumentException("Property expression expected.", nameof(property));
 
-            // make sure the property expression refers to current instance type, to any of its base classes, or to an interface it implements
-            if (propertyInfo.DeclaringType is null || !propertyInfo.DeclaringType.IsAssignableFrom(GetType()))
+            // make sure the property expression refers to parent instance type, to any of its base classes, or to an interface it implements
+            if (propertyInfo.DeclaringType is null || !propertyInfo.DeclaringType.IsInstanceOfType(_parent))
             {
-                throw new ArgumentException("The property expression must refer to a member of the current instance.", nameof(property));
+                throw new ArgumentException($"The expression must refer to a property of the {EntityAttributePropertiesInterfaceType.Name} interface.", nameof(property));
             }
 
             return propertyInfo;
