@@ -6,6 +6,12 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
 {
     public abstract class DotNestedEntityAttributes<TIEntityAttributeProperties> : DotEntityAttributes
     {
+        protected DotNestedEntityAttributes(DotEntityAttributesAccessor<TIEntityAttributeProperties> attributes)
+            : base(attributes)
+        {
+            Attributes = attributes;
+        }
+
         protected DotNestedEntityAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
