@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Output.Tests.EntityPadding
         {
             var graph = new DotGraph();
             graph.Font.Set("arial", 10, Color.Red);
-            graph.Font.Get(x => x.Name).Annotation = "comment";
+            graph.Font.Attributes.Get(x => x.Name).Annotation = "comment";
 
             Snapshot.Match(graph.Build(), "commented_graph_attribute_with_top_and_bottom_padding.gv");
 
@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Output.Tests.EntityPadding
         {
             var graph = new DotGraph();
             graph.Font.Set("arial", 10, Color.Red);
-            graph.Font.Get(x => x.Color).Annotation = "comment";
+            graph.Font.Attributes.Get(x => x.Color).Annotation = "comment";
 
             Snapshot.Match(graph.Build(), "commented_graph_attribute_with_bottom_padding.gv");
 
@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Output.Tests.EntityPadding
         {
             var graph = new DotGraph();
             graph.Font.Set("arial", 10, Color.Red);
-            graph.Font.Get(x => x.Size).Annotation = "comment";
+            graph.Font.Attributes.Get(x => x.Size).Annotation = "comment";
 
             Snapshot.Match(graph.Build(), "commented_graph_attribute_with_top_padding.gv");
 
