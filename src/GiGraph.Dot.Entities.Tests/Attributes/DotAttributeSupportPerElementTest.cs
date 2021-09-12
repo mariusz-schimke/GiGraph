@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
             if (result.Any())
             {
-                throw new Exception($"The following attributes must be supported by [{element}]: {string.Join(", ", result)}");
+                throw new Exception($"The following attributes have to be supported by [{element}]: {string.Join(", ", result)}");
             }
         }
 
