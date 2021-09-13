@@ -8,8 +8,8 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <inheritdoc cref="IDotSubgraphAttributes.NodeRank" />
         public virtual DotRank? NodeRank
         {
-            get => Attributes.Attributes.NodeRank;
-            set => Attributes.Attributes.NodeRank = value;
+            get => Attributes.Implementation.NodeRank;
+            set => Attributes.Implementation.NodeRank = value;
         }
     }
 }
