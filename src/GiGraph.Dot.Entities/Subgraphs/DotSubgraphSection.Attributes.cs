@@ -5,11 +5,13 @@ namespace GiGraph.Dot.Entities.Subgraphs
 {
     public partial class DotSubgraphSection : IDotSubgraphRootAttributes
     {
+        private DotSubgraphRootAttributes SubgraphAttributes => (DotSubgraphRootAttributes) _attributes;
+
         /// <inheritdoc cref="IDotSubgraphAttributes.NodeRank" />
         public virtual DotRank? NodeRank
         {
-            get => ((IDotSubgraphAttributes) Attributes).NodeRank;
-            set => ((IDotSubgraphAttributes) Attributes).NodeRank = value;
+            get => SubgraphAttributes.NodeRank;
+            set => SubgraphAttributes.NodeRank = value;
         }
     }
 }
