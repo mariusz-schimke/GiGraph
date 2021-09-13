@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Graphs
 {
     public abstract class DotCommonGraphSection : IDotCommonGraphSection, IDotAnnotatable
     {
-        protected readonly DotEntityAttributes _attributes;
+        private readonly DotEntityAttributes _attributes;
 
         protected DotCommonGraphSection(
             DotEntityAttributes attributes,
