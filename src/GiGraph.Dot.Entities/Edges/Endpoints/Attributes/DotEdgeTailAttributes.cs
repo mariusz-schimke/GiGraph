@@ -7,64 +7,64 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
-    public class DotEdgeTailAttributes : DotNestedEntityAttributes<IDotEdgeEndpointAttributes>, IDotEdgeTailRootAttributes
+    public class DotEdgeTailAttributes : DotNestedEntityAttributes<IDotEdgeEndpointAttributes, DotEdgeTailRootAttributes>, IDotEdgeTailRootAttributes
     {
-        protected DotEdgeTailAttributes(DotEdgeTailRootAttributes attributes)
-            : base(attributes)
-        {
-        }
-
         public DotEdgeTailAttributes(DotAttributeCollection attributes)
             : this(new DotEdgeTailRootAttributes(attributes))
         {
         }
 
+        private DotEdgeTailAttributes(DotEdgeTailRootAttributes attributes)
+            : base(attributes)
+        {
+        }
+
         /// <summary>
         ///     Hyperlink attributes of the tail of the edge. If defined, the hyperlink is output as part of the tail's <see cref="Label" />.
-        ///     Also, Attributes value is used near the tail, overriding hyperlink attributes set on the edge.
+        ///     Also, this value is used near the tail, overriding hyperlink attributes set on the edge.
         /// </summary>
-        public virtual DotEdgeTailHyperlinkAttributes Hyperlink => ((IDotEdgeTailRootAttributes) Attributes).Hyperlink;
+        public virtual DotEdgeTailHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Label" />
         public virtual DotLabel Label
         {
-            get => ((IDotEdgeEndpointAttributes) Attributes).Label;
-            set => ((IDotEdgeEndpointAttributes) Attributes).Label = value;
+            get => Attributes.Implementation.Label;
+            set => Attributes.Implementation.Label = value;
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClipToNodeBoundary" />
         public virtual bool? ClipToNodeBoundary
         {
-            get => ((IDotEdgeEndpointAttributes) Attributes).ClipToNodeBoundary;
-            set => ((IDotEdgeEndpointAttributes) Attributes).ClipToNodeBoundary = value;
+            get => Attributes.Implementation.ClipToNodeBoundary;
+            set => Attributes.Implementation.ClipToNodeBoundary = value;
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.GroupName" />
         public virtual string GroupName
         {
-            get => ((IDotEdgeEndpointAttributes) Attributes).GroupName;
-            set => ((IDotEdgeEndpointAttributes) Attributes).GroupName = value;
+            get => Attributes.Implementation.GroupName;
+            set => Attributes.Implementation.GroupName = value;
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Port" />
         public virtual DotEndpointPort Port
         {
-            get => ((IDotEdgeEndpointAttributes) Attributes).Port;
-            set => ((IDotEdgeEndpointAttributes) Attributes).Port = value;
+            get => Attributes.Implementation.Port;
+            set => Attributes.Implementation.Port = value;
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClusterId" />
         public virtual DotClusterId ClusterId
         {
-            get => ((IDotEdgeEndpointAttributes) Attributes).ClusterId;
-            set => ((IDotEdgeEndpointAttributes) Attributes).ClusterId = value;
+            get => Attributes.Implementation.ClusterId;
+            set => Attributes.Implementation.ClusterId = value;
         }
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Arrowhead" />
         public virtual DotArrowheadDefinition Arrowhead
         {
-            get => ((IDotEdgeEndpointAttributes) Attributes).Arrowhead;
-            set => ((IDotEdgeEndpointAttributes) Attributes).Arrowhead = value;
+            get => Attributes.Implementation.Arrowhead;
+            set => Attributes.Implementation.Arrowhead = value;
         }
     }
 }

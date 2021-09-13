@@ -15,6 +15,11 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
     {
         private static readonly Lazy<DotMemberAttributeKeyLookup> EdgeTailRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeTailRootAttributes, IDotEdgeEndpointAttributes>().BuildLazy();
 
+        public DotEdgeTailRootAttributes(DotAttributeCollection attributes)
+            : this(attributes, EdgeTailRootAttributesKeyLookup, new DotEdgeTailHyperlinkAttributes(attributes))
+        {
+        }
+
         protected DotEdgeTailRootAttributes(
             DotAttributeCollection attributes,
             Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
@@ -23,11 +28,6 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
             : base(attributes, attributeKeyLookup)
         {
             Hyperlink = hyperlinkAttributes;
-        }
-
-        public DotEdgeTailRootAttributes(DotAttributeCollection attributes)
-            : this(attributes, EdgeTailRootAttributesKeyLookup, new DotEdgeTailHyperlinkAttributes(attributes))
-        {
         }
 
         [DotAttributeKey(DotAttributeKeys.TailLabel)]
