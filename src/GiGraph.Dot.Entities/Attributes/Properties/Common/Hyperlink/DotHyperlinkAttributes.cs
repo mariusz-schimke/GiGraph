@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink
 {
-    public class DotHyperlinkAttributes : DotHyperlinkAttributes<IDotHyperlinkAttributes>
+    public class DotHyperlinkAttributes : DotHyperlinkAttributes<IDotHyperlinkAttributes, DotHyperlinkAttributes>
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> EntityHyperlinkAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHyperlinkAttributes, IDotHyperlinkAttributes>().BuildLazy();
 

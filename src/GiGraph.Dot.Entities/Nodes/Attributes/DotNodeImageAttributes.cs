@@ -9,7 +9,7 @@ using GiGraph.Dot.Types.Images;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
-    public class DotNodeImageAttributes : DotNestedEntityAttributes<IDotNodeImageAttributes>, IDotNodeImageAttributes
+    public class DotNodeImageAttributes : DotNestedEntityAttributes<IDotNodeImageAttributes, DotNodeImageAttributes>, IDotNodeImageAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> NodeImageAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeImageAttributes, IDotNodeImageAttributes>().BuildLazy();
 

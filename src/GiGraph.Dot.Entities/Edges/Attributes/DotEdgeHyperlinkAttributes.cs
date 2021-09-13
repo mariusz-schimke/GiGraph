@@ -11,7 +11,7 @@ using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdgeHyperlinkAttributes>, IDotEdgeHyperlinkAttributes
+    public class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdgeHyperlinkAttributes, DotEdgeHyperlinkAttributes>, IDotEdgeHyperlinkAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeHyperlinkAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().BuildLazy();
 
