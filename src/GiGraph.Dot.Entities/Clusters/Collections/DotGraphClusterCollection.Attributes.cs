@@ -9,48 +9,48 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
     public partial class DotGraphClusterCollection : IDotGraphClusterRootAttributes
     {
         /// <inheritdoc cref="IDotGraphClusterRootAttributes.Style" />
-        public virtual DotClusterStyleAttributeOptions Style => ((IDotGraphClusterRootAttributes) Attributes).Style;
+        public virtual DotClusterStyleAttributeOptions Style => Attributes.Implementation.Style;
 
         /// <inheritdoc cref="IDotGraphClusterAttributes.AllowEdgeClipping" />
         public virtual bool? AllowEdgeClipping
         {
-            get => ((IDotGraphClusterAttributes) Attributes).AllowEdgeClipping;
-            set => ((IDotGraphClusterAttributes) Attributes).AllowEdgeClipping = value;
+            get => Attributes.Implementation.AllowEdgeClipping;
+            set => Attributes.Implementation.AllowEdgeClipping = value;
         }
 
         /// <inheritdoc cref="IDotGraphClusterAttributes.VisualizationMode" />
         public virtual DotClusterVisualizationMode? VisualizationMode
         {
-            get => ((IDotGraphClusterAttributes) Attributes).VisualizationMode;
-            set => ((IDotGraphClusterAttributes) Attributes).VisualizationMode = value;
+            get => Attributes.Implementation.VisualizationMode;
+            set => Attributes.Implementation.VisualizationMode = value;
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.Color" />
         public virtual DotColorDefinition Color
         {
-            get => ((IDotGraphClusterCommonAttributes) Attributes).Color;
-            set => ((IDotGraphClusterCommonAttributes) Attributes).Color = value;
+            get => Attributes.Implementation.Color;
+            set => Attributes.Implementation.Color = value;
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.FillColor" />
         public virtual DotColorDefinition FillColor
         {
-            get => ((IDotGraphClusterCommonAttributes) Attributes).FillColor;
-            set => ((IDotGraphClusterCommonAttributes) Attributes).FillColor = value;
+            get => Attributes.Implementation.FillColor;
+            set => Attributes.Implementation.FillColor = value;
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderWidth" />
         public virtual double? BorderWidth
         {
-            get => ((IDotGraphClusterCommonAttributes) Attributes).BorderWidth;
-            set => ((IDotGraphClusterCommonAttributes) Attributes).BorderWidth = value;
+            get => Attributes.Implementation.BorderWidth;
+            set => Attributes.Implementation.BorderWidth = value;
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor" />
         public virtual DotColor BorderColor
         {
-            get => ((IDotGraphClusterCommonAttributes) Attributes).BorderColor;
-            set => ((IDotGraphClusterCommonAttributes) Attributes).BorderColor = value;
+            get => Attributes.Implementation.BorderColor;
+            set => Attributes.Implementation.BorderColor = value;
         }
     }
 }
