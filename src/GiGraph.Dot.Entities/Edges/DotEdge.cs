@@ -1,5 +1,4 @@
-﻿using GiGraph.Dot.Entities.Edges.Attributes;
-using GiGraph.Dot.Entities.Edges.Endpoints;
+﻿using GiGraph.Dot.Entities.Edges.Endpoints;
 
 namespace GiGraph.Dot.Entities.Edges
 {
@@ -8,11 +7,6 @@ namespace GiGraph.Dot.Entities.Edges
     /// </summary>
     public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     {
-        protected DotEdge(DotEndpoint tail, DotEndpoint head, DotEdgeRootAttributes attributes)
-            : base(tail, head, attributes)
-        {
-        }
-
         /// <summary>
         ///     Creates a new edge.
         /// </summary>

@@ -1,4 +1,6 @@
-﻿using GiGraph.Dot.Entities.Edges.Attributes;
+﻿using System;
+using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output;
 
@@ -6,20 +8,26 @@ namespace GiGraph.Dot.Entities.Edges
 {
     public abstract partial class DotEdgeDefinition : IDotEntity, IDotAnnotatable, IDotOrderable
     {
-        protected DotEdgeDefinition(DotEdgeRootAttributes attributes)
+        protected DotEdgeDefinition(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes attributes)
         {
-            Attributes = attributes;
+            Endpoints = endpoints is null
+                ? throw new ArgumentNullException(nameof(endpoints), "Endpoint collection must not be null.")
+                : endpoints.Length > 1
+                    ? endpoints
+                    : throw new ArgumentException("At least a pair of endpoints has to be specified.", nameof(endpoints));
+
+            Attributes = new DotEntityRootAttributes<IDotEdgeRootAttributes, DotEdgeRootAttributes>(attributes);
         }
 
         /// <summary>
-        ///     Gets the attributes of the edge.
+        ///     Provides access to the attributes of the edge.
         /// </summary>
-        public virtual DotEdgeRootAttributes Attributes { get; }
+        public virtual DotEntityRootAttributes<IDotEdgeRootAttributes, DotEdgeRootAttributes> Attributes { get; }
 
         /// <summary>
         ///     Gets the endpoints of the edge.
         /// </summary>
-        public abstract DotEndpointDefinition[] Endpoints { get; }
+        public virtual DotEndpointDefinition[] Endpoints { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

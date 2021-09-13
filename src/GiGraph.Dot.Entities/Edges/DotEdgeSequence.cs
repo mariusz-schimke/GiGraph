@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
@@ -13,24 +14,6 @@ namespace GiGraph.Dot.Entities.Edges
     /// </summary>
     public class DotEdgeSequence : DotEdgeDefinition
     {
-        protected readonly DotEndpointDefinition[] _endpoints;
-
-        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes attributes)
-            : base(attributes)
-        {
-            if (endpoints is null)
-            {
-                throw new ArgumentNullException(nameof(endpoints), "Endpoint collection must not be null.");
-            }
-
-            _endpoints = endpoints.Length > 1
-                ? endpoints
-                : throw new ArgumentException("At least a pair of endpoints has to be specified for an edge sequence.", nameof(endpoints));
-
-            Tails = new DotEdgeTail(new DotEdgeTailRootAttributes(attributes.Collection));
-            Heads = new DotEdgeHead(new DotEdgeHeadRootAttributes(attributes.Collection));
-        }
-
         /// <summary>
         ///     Creates a new edge sequence initialized with the specified endpoints. At least a pair of endpoints has to be provided.
         /// </summary>
@@ -38,8 +21,15 @@ namespace GiGraph.Dot.Entities.Edges
         ///     The endpoints to initialize the instance with.
         /// </param>
         public DotEdgeSequence(params DotEndpointDefinition[] endpoints)
-            : this(endpoints, new DotEdgeRootAttributes())
+            : this(endpoints, new DotAttributeCollection())
         {
+        }
+
+        private DotEdgeSequence(DotEndpointDefinition[] endpoints, DotAttributeCollection attributes)
+            : base(endpoints, new DotEdgeRootAttributes(attributes))
+        {
+            Tails = new DotEdgeTail(new DotEdgeTailRootAttributes(attributes));
+            Heads = new DotEdgeHead(new DotEdgeHeadRootAttributes(attributes));
         }
 
         /// <summary>
@@ -76,11 +66,6 @@ namespace GiGraph.Dot.Entities.Edges
             : this(nodeIds?.Select(nodeId => new DotEndpoint(nodeId)))
         {
         }
-
-        /// <summary>
-        ///     Gets the sequence of endpoints.
-        /// </summary>
-        public override DotEndpointDefinition[] Endpoints => _endpoints;
 
         /// <summary>
         ///     Attributes applied to the heads of the edges in this sequence.
