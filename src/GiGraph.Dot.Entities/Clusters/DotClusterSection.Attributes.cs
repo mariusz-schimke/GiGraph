@@ -16,123 +16,123 @@ namespace GiGraph.Dot.Entities.Clusters
     public partial class DotClusterSection : IDotClusterRootAttributes
     {
         /// <inheritdoc cref="IDotClusterRootAttributes.Font" />
-        public virtual DotFontAttributes Font => ((IDotClusterRootAttributes) Attributes).Font;
+        public virtual DotFontAttributes Font => Attributes.Attributes.Font;
 
         /// <inheritdoc cref="IDotClusterRootAttributes.Style" />
-        public virtual DotClusterStyleAttributeOptions Style => ((IDotClusterRootAttributes) Attributes).Style;
+        public virtual DotClusterStyleAttributeOptions Style => Attributes.Attributes.Style;
 
         /// <inheritdoc cref="IDotClusterRootAttributes.LabelAlignment" />
-        public virtual DotLabelAlignmentAttributes LabelAlignment => ((IDotClusterRootAttributes) Attributes).LabelAlignment;
+        public virtual DotLabelAlignmentAttributes LabelAlignment => Attributes.Attributes.LabelAlignment;
 
         /// <inheritdoc cref="IDotClusterRootAttributes.SvgStyleSheet" />
-        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotClusterRootAttributes) Attributes).SvgStyleSheet;
+        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => Attributes.Attributes.SvgStyleSheet;
 
         /// <inheritdoc cref="IDotClusterRootAttributes.Hyperlink" />
-        public virtual DotHyperlinkAttributes Hyperlink => ((IDotClusterRootAttributes) Attributes).Hyperlink;
+        public virtual DotHyperlinkAttributes Hyperlink => Attributes.Attributes.Hyperlink;
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.Color" />
         public virtual DotColorDefinition Color
         {
-            get => ((IDotClusterAttributes) Attributes).Color;
-            set => ((IDotClusterAttributes) Attributes).Color = value;
+            get => Attributes.Attributes.Color;
+            set => Attributes.Attributes.Color = value;
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.FillColor" />
         public virtual DotColorDefinition FillColor
         {
-            get => ((IDotClusterAttributes) Attributes).FillColor;
-            set => ((IDotClusterAttributes) Attributes).FillColor = value;
+            get => Attributes.Attributes.FillColor;
+            set => Attributes.Attributes.FillColor = value;
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderWidth" />
         public virtual double? BorderWidth
         {
-            get => ((IDotClusterAttributes) Attributes).BorderWidth;
-            set => ((IDotClusterAttributes) Attributes).BorderWidth = value;
+            get => Attributes.Attributes.BorderWidth;
+            set => Attributes.Attributes.BorderWidth = value;
         }
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor" />
         public virtual DotColor BorderColor
         {
-            get => ((IDotClusterAttributes) Attributes).BorderColor;
-            set => ((IDotClusterAttributes) Attributes).BorderColor = value;
+            get => Attributes.Attributes.BorderColor;
+            set => Attributes.Attributes.BorderColor = value;
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.Style" />
         DotStyles? IDotClusterAttributes.Style
         {
-            get => ((IDotClusterAttributes) Attributes).Style;
-            set => ((IDotClusterAttributes) Attributes).Style = value;
+            get => ((IDotClusterAttributes) Attributes.Attributes).Style;
+            set => ((IDotClusterAttributes) Attributes.Attributes).Style = value;
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.Label" />
         public virtual DotLabel Label
         {
-            get => ((IDotClusterAttributes) Attributes).Label;
-            set => ((IDotClusterAttributes) Attributes).Label = value;
+            get => Attributes.Attributes.Label;
+            set => Attributes.Attributes.Label = value;
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.Tooltip" />
         public virtual DotEscapeString Tooltip
         {
-            get => ((IDotClusterAttributes) Attributes).Tooltip;
-            set => ((IDotClusterAttributes) Attributes).Tooltip = value;
+            get => Attributes.Attributes.Tooltip;
+            set => Attributes.Attributes.Tooltip = value;
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.BackgroundColor" />
         public virtual DotColorDefinition BackgroundColor
         {
-            get => ((IDotClusterAttributes) Attributes).BackgroundColor;
-            set => ((IDotClusterAttributes) Attributes).BackgroundColor = value;
+            get => Attributes.Attributes.BackgroundColor;
+            set => Attributes.Attributes.BackgroundColor = value;
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.ColorScheme" />
         public virtual string ColorScheme
         {
-            get => ((IDotClusterAttributes) Attributes).ColorScheme;
-            set => ((IDotClusterAttributes) Attributes).ColorScheme = value;
+            get => Attributes.Attributes.ColorScheme;
+            set => Attributes.Attributes.ColorScheme = value;
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.GradientFillAngle" />
         public virtual int? GradientFillAngle
         {
-            get => ((IDotClusterAttributes) Attributes).GradientFillAngle;
-            set => ((IDotClusterAttributes) Attributes).GradientFillAngle = value;
+            get => Attributes.Attributes.GradientFillAngle;
+            set => Attributes.Attributes.GradientFillAngle = value;
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.Peripheries" />
         public virtual int? Peripheries
         {
-            get => ((IDotClusterAttributes) Attributes).Peripheries;
-            set => ((IDotClusterAttributes) Attributes).Peripheries = value;
+            get => Attributes.Attributes.Peripheries;
+            set => Attributes.Attributes.Peripheries = value;
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.Padding" />
         public virtual DotPoint Padding
         {
-            get => ((IDotClusterAttributes) Attributes).Padding;
-            set => ((IDotClusterAttributes) Attributes).Padding = value;
+            get => Attributes.Attributes.Padding;
+            set => Attributes.Attributes.Padding = value;
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.SortIndex" />
         public virtual int? SortIndex
         {
-            get => ((IDotClusterAttributes) Attributes).SortIndex;
-            set => ((IDotClusterAttributes) Attributes).SortIndex = value;
+            get => Attributes.Attributes.SortIndex;
+            set => Attributes.Attributes.SortIndex = value;
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.ObjectId" />
         public virtual DotEscapeString ObjectId
         {
-            get => ((IDotClusterAttributes) Attributes).ObjectId;
-            set => ((IDotClusterAttributes) Attributes).ObjectId = value;
+            get => Attributes.Attributes.ObjectId;
+            set => Attributes.Attributes.ObjectId = value;
         }
 
         /// <inheritdoc cref="IDotClusterAttributes.NodeRank" />
         public virtual DotRank? NodeRank
         {
-            get => ((IDotClusterAttributes) Attributes).NodeRank;
-            set => ((IDotClusterAttributes) Attributes).NodeRank = value;
+            get => Attributes.Attributes.NodeRank;
+            set => Attributes.Attributes.NodeRank = value;
         }
     }
 }
