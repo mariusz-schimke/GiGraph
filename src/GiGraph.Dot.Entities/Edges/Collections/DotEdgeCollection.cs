@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output;
@@ -11,20 +13,27 @@ namespace GiGraph.Dot.Entities.Edges.Collections
     /// </summary>
     public partial class DotEdgeCollection : List<DotEdgeDefinition>, IDotEntity, IDotAnnotatable
     {
-        protected DotEdgeCollection(DotEdgeRootAttributes attributes)
+        public DotEdgeCollection()
+            : this(new DotAttributeCollection())
         {
-            Attributes = attributes;
         }
 
-        public DotEdgeCollection()
-            : this(new DotEdgeRootAttributes())
+        private DotEdgeCollection(DotAttributeCollection attributes)
+            : this(new DotEdgeRootAttributes(attributes))
         {
+        }
+
+        private DotEdgeCollection(DotEdgeRootAttributes attributes)
+        {
+            // TODO: DotEntityRootAttributes i DotNestedEntityAttributes nie mogą przyjmować w pierwszym parametrze IDotRootXXXAttributes,
+            // tylko atrybuty, które mają być wystawiane na zewnątrz!
+            Attributes = new DotEntityRootAttributes<IDotEdgeRootAttributes, DotEdgeRootAttributes>(attributes);
         }
 
         /// <summary>
-        ///     Gets the attributes to apply by default to all edges of the graph.
+        ///     Provides access to the global attributes applied to edges.
         /// </summary>
-        public virtual DotEdgeRootAttributes Attributes { get; }
+        public virtual DotEntityRootAttributes<IDotEdgeRootAttributes, DotEdgeRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }
