@@ -158,8 +158,8 @@ namespace GiGraph.Dot.Output.Tests
             // graph
             graph.Annotation = $"graph{Environment.NewLine}comment";
             graph.Attributes.Annotation = $"graph attributes{Environment.NewLine}comment";
-            graph.Attributes.Set(a => a.Label, "Foo Graph").Annotation = "label";
-            graph.Attributes.Set(a => a.Comment, "comment").Annotation = "comment";
+            graph.Attributes.SetValue(a => a.Label, "Foo Graph").Annotation = "label";
+            graph.Attributes.SetValue(a => a.Comment, "comment").Annotation = "comment";
 
             // node defaults
             graph.Nodes.Attributes.Annotation = "global node attributes";
@@ -172,14 +172,14 @@ namespace GiGraph.Dot.Output.Tests
             {
                 node.Annotation = "node comment";
                 node.Attributes.Annotation = "node attributes";
-                node.Attributes.Set(a => a.Label, "foo").Annotation = "label";
+                node.Attributes.SetValue(a => a.Label, "foo").Annotation = "label";
             });
 
             graph.Nodes.AddGroup(new[] { "foo", "bar", "baz" }, node =>
             {
                 node.Annotation = "node group comment";
                 node.Attributes.Annotation = "node group attributes";
-                node.Attributes.Set(a => a.Label, "foo").Annotation = "label";
+                node.Attributes.SetValue(a => a.Label, "foo").Annotation = "label";
             });
 
             // edge defaults

@@ -62,7 +62,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         }
 
         public DotClusterRootAttributes()
-            : this(new DotAttributeCollection(DotAttributeFactory.Instance))
+            : this(new DotAttributeCollection())
         {
         }
 
