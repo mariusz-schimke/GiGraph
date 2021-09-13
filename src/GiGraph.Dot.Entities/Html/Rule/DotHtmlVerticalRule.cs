@@ -1,4 +1,5 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Html.Attributes.Collections;
 
 namespace GiGraph.Dot.Entities.Html.Rule
 {
@@ -17,7 +18,7 @@ namespace GiGraph.Dot.Entities.Html.Rule
         {
         }
 
-        protected DotHtmlVerticalRule(DotAttributeCollection attributes)
+        protected DotHtmlVerticalRule(DotHtmlAttributeCollection attributes)
             : base(TagName, attributes)
         {
         }

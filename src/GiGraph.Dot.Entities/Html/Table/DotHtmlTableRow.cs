@@ -1,5 +1,6 @@
 using System;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
 using GiGraph.Dot.Entities.Html.Image;
 using GiGraph.Dot.Entities.Html.Rule;
@@ -16,11 +17,11 @@ namespace GiGraph.Dot.Entities.Html.Table
         ///     Initializes a new table row instance.
         /// </summary>
         public DotHtmlTableRow()
-            : this(new DotAttributeCollection(DotHtmlAttributeFactory.Instance))
+            : this(new DotHtmlAttributeCollection())
         {
         }
 
-        protected DotHtmlTableRow(DotAttributeCollection attributes)
+        protected DotHtmlTableRow(DotHtmlAttributeCollection attributes)
             : base("tr", attributes)
         {
         }

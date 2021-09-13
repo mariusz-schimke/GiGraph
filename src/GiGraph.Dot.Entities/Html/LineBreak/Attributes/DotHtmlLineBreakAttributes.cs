@@ -2,6 +2,7 @@
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Factories;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Output.Metadata;
@@ -13,13 +14,13 @@ namespace GiGraph.Dot.Entities.Html.LineBreak.Attributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> HtmlLineBreakAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlLineBreakAttributes, IDotHtmlLineBreakAttributes>().BuildLazy();
 
-        protected DotHtmlLineBreakAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+        protected DotHtmlLineBreakAttributes(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }
 
         public DotHtmlLineBreakAttributes()
-            : this(new DotAttributeCollection(DotHtmlAttributeFactory.Instance), HtmlLineBreakAttributesKeyLookup)
+            : this(new DotHtmlAttributeCollection(), HtmlLineBreakAttributesKeyLookup)
         {
         }
 

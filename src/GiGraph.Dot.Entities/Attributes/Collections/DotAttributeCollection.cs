@@ -15,6 +15,11 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             _attributeFactory = attributeFactory;
         }
 
+        public DotAttributeCollection()
+            : this(DotAttributeFactory.Instance)
+        {
+        }
+
         protected internal virtual string Annotation { get; set; }
 
         string IDotAnnotatable.Annotation
