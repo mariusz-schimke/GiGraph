@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Nodes.Attributes;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Output;
 
 namespace GiGraph.Dot.Entities.Nodes
@@ -7,13 +8,13 @@ namespace GiGraph.Dot.Entities.Nodes
     {
         protected DotNodeDefinition(DotNodeRootAttributes attributes)
         {
-            Attributes = attributes;
+            Attributes = new DotEntityRootAttributes<IDotNodeRootAttributes, DotNodeRootAttributes>(attributes);
         }
 
         /// <summary>
-        ///     The attributes of the node or node group.
+        ///     Provides access to the attributes of the node.
         /// </summary>
-        public virtual DotNodeRootAttributes Attributes { get; }
+        public virtual DotEntityRootAttributes<IDotNodeRootAttributes, DotNodeRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

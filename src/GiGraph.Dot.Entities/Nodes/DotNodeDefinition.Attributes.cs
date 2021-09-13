@@ -16,149 +16,149 @@ namespace GiGraph.Dot.Entities.Nodes
     public abstract partial class DotNodeDefinition : IDotNodeRootAttributes
     {
         /// <inheritdoc cref="IDotNodeRootAttributes.Font" />
-        public virtual DotFontAttributes Font => ((IDotNodeRootAttributes) Attributes).Font;
+        public virtual DotFontAttributes Font => Attributes.Attributes.Font;
 
         /// <inheritdoc cref="IDotNodeRootAttributes.Image" />
-        public virtual DotNodeImageAttributes Image => ((IDotNodeRootAttributes) Attributes).Image;
+        public virtual DotNodeImageAttributes Image => Attributes.Attributes.Image;
 
         /// <inheritdoc cref="IDotNodeRootAttributes.Geometry" />
-        public virtual DotNodeGeometryAttributes Geometry => ((IDotNodeRootAttributes) Attributes).Geometry;
+        public virtual DotNodeGeometryAttributes Geometry => Attributes.Attributes.Geometry;
 
         /// <inheritdoc cref="IDotNodeRootAttributes.Size" />
-        public virtual DotNodeSizeAttributes Size => ((IDotNodeRootAttributes) Attributes).Size;
+        public virtual DotNodeSizeAttributes Size => Attributes.Attributes.Size;
 
         /// <inheritdoc cref="IDotNodeRootAttributes.Style" />
-        public virtual DotNodeStyleAttributeOptions Style => ((IDotNodeRootAttributes) Attributes).Style;
+        public virtual DotNodeStyleAttributeOptions Style => Attributes.Attributes.Style;
 
         /// <inheritdoc cref="IDotNodeRootAttributes.SvgStyleSheet" />
-        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotNodeRootAttributes) Attributes).SvgStyleSheet;
+        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => Attributes.Attributes.SvgStyleSheet;
 
         /// <inheritdoc cref="IDotNodeRootAttributes.Hyperlink" />
-        public virtual DotHyperlinkAttributes Hyperlink => ((IDotNodeRootAttributes) Attributes).Hyperlink;
+        public virtual DotHyperlinkAttributes Hyperlink => Attributes.Attributes.Hyperlink;
 
         DotStyles? IDotNodeAttributes.Style
         {
-            get => ((IDotNodeAttributes) Attributes).Style;
-            set => ((IDotNodeAttributes) Attributes).Style = value;
+            get => ((IDotNodeAttributes) Attributes.Attributes).Style;
+            set => ((IDotNodeAttributes) Attributes.Attributes).Style = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Label" />
         public virtual DotLabel Label
         {
-            get => ((IDotNodeAttributes) Attributes).Label;
-            set => ((IDotNodeAttributes) Attributes).Label = value;
+            get => Attributes.Attributes.Label;
+            set => Attributes.Attributes.Label = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.ExternalLabel" />
         public virtual DotLabel ExternalLabel
         {
-            get => ((IDotNodeAttributes) Attributes).ExternalLabel;
-            set => ((IDotNodeAttributes) Attributes).ExternalLabel = value;
+            get => Attributes.Attributes.ExternalLabel;
+            set => Attributes.Attributes.ExternalLabel = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.LabelAlignment" />
         public virtual DotVerticalAlignment? LabelAlignment
         {
-            get => ((IDotNodeAttributes) Attributes).LabelAlignment;
-            set => ((IDotNodeAttributes) Attributes).LabelAlignment = value;
+            get => Attributes.Attributes.LabelAlignment;
+            set => Attributes.Attributes.LabelAlignment = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Tooltip" />
         public virtual DotEscapeString Tooltip
         {
-            get => ((IDotNodeAttributes) Attributes).Tooltip;
-            set => ((IDotNodeAttributes) Attributes).Tooltip = value;
+            get => Attributes.Attributes.Tooltip;
+            set => Attributes.Attributes.Tooltip = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Color" />
         public virtual DotColorDefinition Color
         {
-            get => ((IDotNodeAttributes) Attributes).Color;
-            set => ((IDotNodeAttributes) Attributes).Color = value;
+            get => Attributes.Attributes.Color;
+            set => Attributes.Attributes.Color = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.FillColor" />
         public virtual DotColorDefinition FillColor
         {
-            get => ((IDotNodeAttributes) Attributes).FillColor;
-            set => ((IDotNodeAttributes) Attributes).FillColor = value;
+            get => Attributes.Attributes.FillColor;
+            set => Attributes.Attributes.FillColor = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.ColorScheme" />
         public virtual string ColorScheme
         {
-            get => ((IDotNodeAttributes) Attributes).ColorScheme;
-            set => ((IDotNodeAttributes) Attributes).ColorScheme = value;
+            get => Attributes.Attributes.ColorScheme;
+            set => Attributes.Attributes.ColorScheme = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.GradientFillAngle" />
         public virtual int? GradientFillAngle
         {
-            get => ((IDotNodeAttributes) Attributes).GradientFillAngle;
-            set => ((IDotNodeAttributes) Attributes).GradientFillAngle = value;
+            get => Attributes.Attributes.GradientFillAngle;
+            set => Attributes.Attributes.GradientFillAngle = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.BorderWidth" />
         public virtual double? BorderWidth
         {
-            get => ((IDotNodeAttributes) Attributes).BorderWidth;
-            set => ((IDotNodeAttributes) Attributes).BorderWidth = value;
+            get => Attributes.Attributes.BorderWidth;
+            set => Attributes.Attributes.BorderWidth = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Shape" />
         public virtual DotNodeShape? Shape
         {
-            get => ((IDotNodeAttributes) Attributes).Shape;
-            set => ((IDotNodeAttributes) Attributes).Shape = value;
+            get => Attributes.Attributes.Shape;
+            set => Attributes.Attributes.Shape = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Padding" />
         public virtual DotPoint Padding
         {
-            get => ((IDotNodeAttributes) Attributes).Padding;
-            set => ((IDotNodeAttributes) Attributes).Padding = value;
+            get => Attributes.Attributes.Padding;
+            set => Attributes.Attributes.Padding = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.Comment" />
         public virtual string Comment
         {
-            get => ((IDotNodeAttributes) Attributes).Comment;
-            set => ((IDotNodeAttributes) Attributes).Comment = value;
+            get => Attributes.Attributes.Comment;
+            set => Attributes.Attributes.Comment = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.EdgeOrderingMode" />
         public virtual DotEdgeOrderingMode? EdgeOrderingMode
         {
-            get => ((IDotNodeAttributes) Attributes).EdgeOrderingMode;
-            set => ((IDotNodeAttributes) Attributes).EdgeOrderingMode = value;
+            get => Attributes.Attributes.EdgeOrderingMode;
+            set => Attributes.Attributes.EdgeOrderingMode = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.GroupName" />
         public virtual string GroupName
         {
-            get => ((IDotNodeAttributes) Attributes).GroupName;
-            set => ((IDotNodeAttributes) Attributes).GroupName = value;
+            get => Attributes.Attributes.GroupName;
+            set => Attributes.Attributes.GroupName = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.SortIndex" />
         public virtual int? SortIndex
         {
-            get => ((IDotNodeAttributes) Attributes).SortIndex;
-            set => ((IDotNodeAttributes) Attributes).SortIndex = value;
+            get => Attributes.Attributes.SortIndex;
+            set => Attributes.Attributes.SortIndex = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.IsRoot" />
         public virtual bool? IsRoot
         {
-            get => ((IDotNodeAttributes) Attributes).IsRoot;
-            set => ((IDotNodeAttributes) Attributes).IsRoot = value;
+            get => Attributes.Attributes.IsRoot;
+            set => Attributes.Attributes.IsRoot = value;
         }
 
         /// <inheritdoc cref="IDotNodeAttributes.ObjectId" />
         public virtual DotEscapeString ObjectId
         {
-            get => ((IDotNodeAttributes) Attributes).ObjectId;
-            set => ((IDotNodeAttributes) Attributes).ObjectId = value;
+            get => Attributes.Attributes.ObjectId;
+            set => Attributes.Attributes.ObjectId = value;
         }
     }
 }
