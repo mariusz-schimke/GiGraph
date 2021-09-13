@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Examples.Basic
                 edge.Tail.Endpoint.Annotation = "tail";
 
                 edge.Attributes.Annotation = "edge attributes";
-                edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
+                edge.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
             }).Annotation = "edge comment";
 
             // subsections
