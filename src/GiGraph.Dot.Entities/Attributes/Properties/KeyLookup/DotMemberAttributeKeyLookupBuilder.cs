@@ -52,7 +52,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
 
         protected void UpdateByInterfaceMembers(DotMemberAttributeKeyLookup output, Type entityAttributePropertiesInterfaceType)
         {
-            var interfaceProperties = entityAttributePropertiesInterfaceType.GetProperties(DotEntityAttributes.AttributeKeyPropertyBindingFlags);
+            var interfaceProperties = entityAttributePropertiesInterfaceType.GetProperties(BindingFlags.Instance | BindingFlags.Public);
             var interfaceMap = typeof(TEntityAttributes).GetInterfaceMap(entityAttributePropertiesInterfaceType);
 
             // build a temporary lookup for all types the implemented properties are declared by
@@ -66,24 +66,28 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
                 var interfaceMethod = interfaceMap.InterfaceMethods[index];
                 var targetMethod = interfaceMap.TargetMethods[index];
 
-                var key = tempLookup.GetKey(targetMethod);
-                output.Set(targetMethod.GetRuntimeBaseDefinition(), key);
+                var key = tempLookup.GetPropertyAccessorKey(targetMethod);
+                output.SetPropertyAccessorKey(targetMethod, key);
 
-                tempLookup.Set(interfaceMethod, key);
+                tempLookup.SetPropertyAccessorKey(interfaceMethod, key);
             }
 
             // include interface properties
             foreach (var interfaceProperty in interfaceProperties)
             {
                 var interfacePropertyAccessor = interfaceProperty.GetMethod ?? interfaceProperty.SetMethod;
-                var key = tempLookup.GetKey(interfacePropertyAccessor);
-                output.Set(interfaceProperty, key);
+                var key = tempLookup.GetPropertyAccessorKey(interfacePropertyAccessor);
+                output.SetPropertyKey(interfaceProperty, key);
             }
         }
 
         protected virtual DotMemberAttributeKeyLookup BuildWithDeclaredPropertyAccessorsOf(IEnumerable<Type> entityAttributesTypes)
         {
-            var result = new DotMemberAttributeKeyLookup();
+            // don't use the common base property as the lookup key because when overridden, the descendant property may have a different
+            // attribute key assigned, in which case it should become the final attribute key to use for the property
+            // (if a common base was used, properties with the same ancestor would overwrite one another in the lookup
+            // with the last one enforcing its attribute key as the final key)
+            var result = new DotMemberAttributeKeyLookup(useCommonBaseAsLookupKey: false);
 
             foreach (var entityAttributesType in entityAttributesTypes.Distinct())
             {
@@ -95,7 +99,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
 
         protected void UpdateWithDeclaredPropertyAccessorsOf(DotMemberAttributeKeyLookup lookup, Type entityAttributesType)
         {
-            var properties = entityAttributesType.GetProperties(BindingFlags.DeclaredOnly | DotEntityAttributes.AttributeKeyPropertyBindingFlags);
+            var properties = entityAttributesType.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 
             foreach (var property in properties)
             {
@@ -106,12 +110,12 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
 
                 if (property.GetMethod is { } getter)
                 {
-                    lookup.Set(getter, attribute.Key);
+                    lookup.SetPropertyAccessorKey(getter, attribute.Key);
                 }
 
                 if (property.SetMethod is { } setter)
                 {
-                    lookup.Set(setter, attribute.Key);
+                    lookup.SetPropertyAccessorKey(setter, attribute.Key);
                 }
             }
         }

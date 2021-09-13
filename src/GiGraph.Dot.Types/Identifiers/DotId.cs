@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Types.Identifiers
             return _id;
         }
 
-        protected internal virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             // use the same identifier escaping pipeline as the one used by entity generators
             return syntaxRules.IdentifierEscaper.Escape(FormatId(options, syntaxRules));

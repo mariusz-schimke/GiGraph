@@ -6,11 +6,35 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties
 {
-    public abstract class DotEntityAttributes<TIEntityAttributeProperties> : DotEntityAttributes
+    public class DotEntityAttributesAccessor<TIEntityAttributeProperties> : DotEntityAttributesAccessor
     {
-        protected DotEntityAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+        protected readonly DotEntityAttributes _parent;
+
+        static DotEntityAttributesAccessor()
+        {
+            if (!typeof(TIEntityAttributeProperties).IsInterface)
+            {
+                throw new ArgumentException($"The type {typeof(TIEntityAttributeProperties).Name} specified as the type parameter is not an interface.", nameof(TIEntityAttributeProperties));
+            }
+        }
+
+        protected DotEntityAttributesAccessor(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
+            _parent = ValidateParent(this);
+        }
+
+        public DotEntityAttributesAccessor(DotEntityAttributes parent)
+            : base(parent)
+        {
+            _parent = ValidateParent(parent);
+        }
+
+        protected virtual DotEntityAttributes ValidateParent(DotEntityAttributes parent)
+        {
+            return parent is TIEntityAttributeProperties
+                ? parent
+                : throw new ArgumentException($"The specified parent object of type {parent.GetType().Name} does not implement the {typeof(TIEntityAttributeProperties).Name} interface.", nameof(parent));
         }
 
         /// <summary>
@@ -43,10 +67,10 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         public virtual DotAttribute Set<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value)
         {
             var propertyInfo = GetProperty(property);
-            propertyInfo.SetValue(this, value);
+            propertyInfo.SetValue(_parent, value);
 
-            var key = GetKey(propertyInfo);
-            return TryGetAttribute(key);
+            var key = GetPropertyKey(propertyInfo);
+            return _attributes.Get(key);
         }
 
         /// <summary>
@@ -67,7 +91,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         {
             var key = GetKey(property);
             _attributes.SetCustom(key, value);
-            return TryGetAttribute(key);
+            return _attributes.Get(key);
         }
 
         /// <summary>
@@ -128,7 +152,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         {
             var key = GetKey(property);
             _attributes.Nullify(key);
-            return TryGetAttribute(key);
+            return _attributes.Get(key);
         }
 
         /// <summary>
@@ -143,7 +167,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         public virtual string GetKey<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var propertyInfo = GetProperty(property);
-            return GetKey(propertyInfo);
+            return GetPropertyKey(propertyInfo);
         }
 
         protected virtual PropertyInfo GetProperty<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
@@ -151,18 +175,13 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             var propertyInfo = (property.Body as MemberExpression)?.Member as PropertyInfo ??
                 throw new ArgumentException("Property expression expected.", nameof(property));
 
-            // make sure the property expression refers to current instance type, to any of its base classes, or to an interface it implements
-            if (propertyInfo.DeclaringType is null || !propertyInfo.DeclaringType.IsAssignableFrom(GetType()))
+            // make sure the property expression refers to parent instance type, to any of its base classes, or to an interface it implements
+            if (propertyInfo.DeclaringType is null || !propertyInfo.DeclaringType.IsInstanceOfType(_parent))
             {
-                throw new ArgumentException("The property expression must refer to a member of the current instance.", nameof(property));
+                throw new ArgumentException($"The expression has to specify a property of the {typeof(TIEntityAttributeProperties).Name} interface.", nameof(property));
             }
 
             return propertyInfo;
-        }
-
-        protected virtual DotAttribute TryGetAttribute(string key)
-        {
-            return _attributes.TryGetValue(key, out var attribute) ? attribute : null;
         }
     }
 }

@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Entities.Labels
             _value = (DotHtmlString) html ?? throw new ArgumentNullException(nameof(html), "HTML string must not be null.");
         }
 
-        protected internal override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return _value.ToHtml(options, syntaxRules);
         }

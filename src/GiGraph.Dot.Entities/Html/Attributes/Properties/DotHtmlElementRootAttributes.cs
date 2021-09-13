@@ -5,7 +5,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Html.Attributes.Properties
 {
-    public abstract class DotHtmlElementRootAttributes<TIEntityAttributeProperties> : DotEntityAttributes<TIEntityAttributeProperties>
+    public abstract class DotHtmlElementRootAttributes<TIEntityAttributeProperties> : DotEntityAttributesAccessor<TIEntityAttributeProperties>
     {
         protected DotHtmlElementRootAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)

@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Edges.Attributes;
+using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
@@ -12,6 +13,11 @@ namespace GiGraph.Dot.Entities.Edges
 {
     public abstract partial class DotEdgeDefinition : IDotEdgeRootAttributes
     {
+        // hidden by explicit implementation because they are exposed through separate properties of descendant classes
+        DotEdgeHeadAttributes IDotEdgeRootAttributes.Head => ((IDotEdgeRootAttributes) Attributes).Head;
+        DotEdgeTailAttributes IDotEdgeRootAttributes.Tail => ((IDotEdgeRootAttributes) Attributes).Tail;
+
+
         /// <inheritdoc cref="IDotEdgeRootAttributes.Font" />
         public virtual DotFontAttributes Font => ((IDotEdgeRootAttributes) Attributes).Font;
 

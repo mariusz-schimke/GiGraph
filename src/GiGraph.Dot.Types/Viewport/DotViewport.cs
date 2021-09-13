@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Types.Viewport
             return GetDotEncodedValue(options, syntaxRules);
         }
 
-        protected internal virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return string.Join(
                 ",",

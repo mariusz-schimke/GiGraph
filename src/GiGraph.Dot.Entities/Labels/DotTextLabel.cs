@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Entities.Labels
             return _text;
         }
 
-        protected internal override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return ((IDotEscapable) _text)?.GetEscaped(syntaxRules.Attributes.EscapeStringValueEscaper);
         }

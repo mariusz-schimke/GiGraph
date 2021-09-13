@@ -11,7 +11,7 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
-    public class DotEdgeTailRootAttributes : DotEntityAttributes<IDotEdgeEndpointAttributes>, IDotEdgeTailRootAttributes
+    public class DotEdgeTailRootAttributes : DotEntityAttributesAccessor<IDotEdgeEndpointAttributes>, IDotEdgeTailRootAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeTailRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeTailRootAttributes, IDotEdgeEndpointAttributes>().BuildLazy();
         protected readonly DotEdgeTailHyperlinkAttributes _hyperlinkAttributes;

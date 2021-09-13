@@ -18,6 +18,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     public partial class DotAttributeCollection
     {
         /// <summary>
+        ///     Gets an attribute with the specified key or null if it does not exist in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to get.
+        /// </param>
+        public virtual DotAttribute Get(string key)
+        {
+            return TryGetValue(key, out var attribute) ? attribute : null;
+        }
+
+        /// <summary>
         ///     Checks if an attribute with the specified key exists in the collection, and returns it as the specified type. If the
         ///     attribute is found, but cannot be cast as the specified type, an exception is thrown.
         /// </summary>
@@ -37,7 +48,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
             return attribute is T output
                 ? output
-                : throw new InvalidCastException($"The '{key}' attribute of type {attribute.GetType().FullName} cannot be accessed as {typeof(T).FullName}.");
+                : throw new InvalidCastException($"The '{key}' attribute of type {attribute.GetType().Name} cannot be accessed as {typeof(T).Name}.");
         }
 
         /// <summary>
@@ -156,7 +167,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 }
             }
 
-            throw new InvalidCastException($"The '{key}' attribute value of type {attributeValue.GetType().FullName} cannot be accessed as {typeof(T).FullName}.");
+            throw new InvalidCastException($"The '{key}' attribute value of type {attributeValue.GetType().Name} cannot be accessed as {typeof(T).Name}.");
         }
 
         /// <summary>

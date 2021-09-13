@@ -24,6 +24,6 @@ namespace GiGraph.Dot.Types.Graphs
             return value.HasValue ? new DotGraphScalingOption(value.Value) : null;
         }
 
-        protected internal abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
+        protected abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
     }
 }
