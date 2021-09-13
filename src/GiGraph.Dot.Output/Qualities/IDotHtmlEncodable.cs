@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Output
+namespace GiGraph.Dot.Output.Qualities
 {
     /// <summary>
     ///     Represents a type that can be converted to an HTML string.

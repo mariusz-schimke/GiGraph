@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Writers;
 
 namespace GiGraph.Dot.Output.Generators.Providers

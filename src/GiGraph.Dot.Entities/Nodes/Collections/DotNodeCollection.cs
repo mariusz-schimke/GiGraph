@@ -5,6 +5,8 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Entities;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Nodes.Collections
 {

@@ -1,6 +1,7 @@
 using GiGraph.Dot.Entities.Html.Image;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.Images;
 using Snapshooter.Xunit;
 using Xunit;

@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Attributes
 {

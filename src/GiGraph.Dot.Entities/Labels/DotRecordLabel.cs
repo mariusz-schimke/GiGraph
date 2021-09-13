@@ -1,6 +1,7 @@
 using System;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.Records;
 
 namespace GiGraph.Dot.Entities.Labels

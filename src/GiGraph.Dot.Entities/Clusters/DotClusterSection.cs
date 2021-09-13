@@ -33,7 +33,5 @@ namespace GiGraph.Dot.Entities.Clusters
         ///     Provides access to the attributes of the subgraph.
         /// </summary>
         public virtual DotEntityRootAttributes<IDotClusterRootAttributes, DotClusterRootAttributes> Attributes { get; }
-
-        protected override DotAttributeCollection AttributeCollection => Attributes.Collection;
     }
 }

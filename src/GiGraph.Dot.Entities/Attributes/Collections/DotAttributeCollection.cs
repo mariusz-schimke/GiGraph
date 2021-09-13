@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Factories;
-using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Entities;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections
 {
-    public partial class DotAttributeCollection : SortedList<string, DotAttribute>, IDotEntity, IDotAnnotatable
+    public partial class DotAttributeCollection : SortedList<string, DotAttribute>, IDotAttributeCollection, IDotAnnotatable
     {
         protected readonly DotAttributeFactory _attributeFactory;
 
@@ -27,6 +28,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             get => Annotation;
             set => Annotation = value;
         }
+
+        bool IDotAttributeCollection.Any() => this.Any();
 
         /// <summary>
         ///     Removes all attributes matching the specified criteria from the collection.
