@@ -19,10 +19,16 @@ namespace GiGraph.Dot.Extensions
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        /// <typeparam name="TProperties">
-        ///     Provides access to properties that represent DOT attributes.
+        /// <typeparam name="TInterface">
+        ///     An interface that provides access to properties that represent DOT attributes.
         /// </typeparam>
-        public static DotAttributeMetadata GetMetadata<TProperties, TProperty>(this DotEntityAttributesAccessor<TProperties> @this, Expression<Func<TProperties, TProperty>> property)
+        /// <typeparam name="TImplementation">
+        ///     The implementation of the <typeparamref name="TInterface" /> interface.
+        /// </typeparam>
+        public static DotAttributeMetadata GetMetadata<TInterface, TImplementation, TProperty>(
+            this DotEntityAttributesAccessor<TInterface, TImplementation> @this, Expression<Func<TInterface, TProperty>> property
+        )
+            where TImplementation : DotEntityAttributes, TInterface
         {
             var key = @this.GetKey(property);
             return DotAttributeKeys.MetadataDictionary[key];
