@@ -196,7 +196,7 @@ namespace GiGraph.Dot.Output.Tests
                 edge.Tail.Endpoint.Annotation = "tail";
 
                 edge.Attributes.Annotation = "edge attributes";
-                edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
+                edge.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
             });
 
             graph.Edges.AddSequence(new[] { "foo", "bar", "baz" }, edge =>
@@ -209,7 +209,7 @@ namespace GiGraph.Dot.Output.Tests
 
                 edge.Annotation = "edge sequence comment";
                 edge.Attributes.Annotation = "edge sequence attributes";
-                edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
+                edge.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
             });
 
             // endpoint groups / endpoint subgraphs / clusters as endpoints
