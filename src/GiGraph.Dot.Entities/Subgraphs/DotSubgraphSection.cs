@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
     public partial class DotSubgraphSection : DotCommonGraphSection
     {
         public DotSubgraphSection()
-            : this(new DotSubgraphRootAttributes())
+            : this(new DotAttributeCollection())
         {
         }
 
@@ -18,7 +18,12 @@ namespace GiGraph.Dot.Entities.Subgraphs
             Attributes = source.Attributes;
         }
 
-        protected DotSubgraphSection(DotSubgraphRootAttributes attributes)
+        private DotSubgraphSection(DotAttributeCollection attributes)
+            : this(new DotSubgraphRootAttributes(attributes))
+        {
+        }
+
+        private DotSubgraphSection(DotSubgraphRootAttributes attributes)
             : base(attributes)
         {
             Attributes = new DotEntityRootAttributes<IDotSubgraphRootAttributes, DotSubgraphRootAttributes>(attributes);
