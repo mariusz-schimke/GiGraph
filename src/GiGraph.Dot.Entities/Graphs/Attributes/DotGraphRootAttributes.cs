@@ -1,8 +1,7 @@
 using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Factories;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
@@ -16,7 +15,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphRootAttributes : DotEntityRootAttributes<IDotGraphAttributes>, IDotGraphRootAttributes
+    public class DotGraphRootAttributes : DotEntityAttributes, IDotGraphRootAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().BuildLazy();
 
@@ -50,6 +49,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
             _labelAlignmentAttributes = labelAlignmentAttributes;
         }
 
+        // TODO: usunąć tego typu konstruktory (uprościć)?
         public DotGraphRootAttributes(DotAttributeCollection attributes)
             : this(
                 attributes,
@@ -65,35 +65,31 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         {
         }
 
-        public DotGraphRootAttributes()
-            : this(new DotAttributeCollection(DotAttributeFactory.Instance))
-        {
-        }
+        public virtual DotGraphStyleAttributeOptions Style => _styleAttributeOptions;
 
-        DotHyperlinkAttributes IDotGraphRootAttributes.Hyperlink => _hyperlinkAttributes;
-        DotGraphFontAttributes IDotGraphRootAttributes.Font => _fontAttributes;
-        DotGraphStyleAttributeOptions IDotGraphRootAttributes.Style => _styleAttributeOptions;
-        DotGraphSvgStyleSheetAttributes IDotGraphRootAttributes.SvgStyleSheet => _svgStyleSheetAttributes;
-        DotGraphLayoutAttributes IDotGraphRootAttributes.Layout => _layoutAttributes;
-        DotGraphCanvasAttributes IDotGraphRootAttributes.Canvas => _canvasAttributes;
-        DotLabelAlignmentAttributes IDotGraphRootAttributes.LabelAlignment => _labelAlignmentAttributes;
+        public virtual DotHyperlinkAttributes Hyperlink => _hyperlinkAttributes;
+        public virtual DotGraphFontAttributes Font => _fontAttributes;
+        public virtual DotGraphSvgStyleSheetAttributes SvgStyleSheet => _svgStyleSheetAttributes;
+        public virtual DotGraphLayoutAttributes Layout => _layoutAttributes;
+        public virtual DotGraphCanvasAttributes Canvas => _canvasAttributes;
+        public virtual DotLabelAlignmentAttributes LabelAlignment => _labelAlignmentAttributes;
 
         [DotAttributeKey(DotAttributeKeys.Label)]
-        DotLabel IDotGraphAttributes.Label
+        public virtual DotLabel Label
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.ColorScheme)]
-        string IDotGraphAttributes.ColorScheme
+        public virtual string ColorScheme
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Id)]
-        DotEscapeString IDotGraphAttributes.ObjectId
+        public virtual DotEscapeString ObjectId
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
@@ -107,35 +103,35 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         }
 
         [DotAttributeKey(DotAttributeKeys.Splines)]
-        DotEdgeShape? IDotGraphAttributes.EdgeShape
+        public virtual DotEdgeShape? EdgeShape
         {
             get => GetValueAs<DotEdgeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Comment)]
-        string IDotGraphAttributes.Comment
+        public virtual string Comment
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Charset)]
-        string IDotGraphAttributes.Charset
+        public virtual string Charset
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.ImagePath)]
-        string IDotGraphAttributes.ImageDirectories
+        public virtual string ImageDirectories
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Root)]
-        DotId IDotGraphAttributes.RootNodeId
+        public virtual DotId RootNodeId
         {
             get => GetValueAsId(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
