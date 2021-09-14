@@ -21,6 +21,8 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             _attributeKeyLookup = attributeKeyLookup;
         }
 
+        internal DotAttributeCollection Collection => _attributes;
+
         protected virtual string GetKey(MethodBase accessor)
         {
             return _attributeKeyLookup.Value.GetPropertyAccessorKey((MethodInfo) accessor);

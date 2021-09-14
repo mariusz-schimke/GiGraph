@@ -11,10 +11,14 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
-    public class DotEdgeHeadRootAttributes : DotEntityAttributesAccessor<IDotEdgeEndpointAttributes>, IDotEdgeHeadRootAttributes
+    public class DotEdgeHeadRootAttributes : DotEntityAttributes, IDotEdgeHeadRootAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeHeadRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadRootAttributes, IDotEdgeEndpointAttributes>().BuildLazy();
-        protected readonly DotEdgeHeadHyperlinkAttributes _hyperlinkAttributes;
+        private static readonly Lazy<DotMemberAttributeKeyLookup> EdgeHeadRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadRootAttributes, IDotEdgeEndpointAttributes>().BuildLazy();
+
+        public DotEdgeHeadRootAttributes(DotAttributeCollection attributes)
+            : this(attributes, EdgeHeadRootAttributesKeyLookup, new DotEdgeHeadHyperlinkAttributes(attributes))
+        {
+        }
 
         protected DotEdgeHeadRootAttributes(
             DotAttributeCollection attributes,
@@ -23,56 +27,51 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
         )
             : base(attributes, attributeKeyLookup)
         {
-            _hyperlinkAttributes = hyperlinkAttributes;
-        }
-
-        public DotEdgeHeadRootAttributes(DotAttributeCollection attributes)
-            : this(attributes, EdgeHeadRootAttributesKeyLookup, new DotEdgeHeadHyperlinkAttributes(attributes))
-        {
+            Hyperlink = hyperlinkAttributes;
         }
 
         [DotAttributeKey(DotAttributeKeys.HeadLabel)]
-        DotLabel IDotEdgeEndpointAttributes.Label
+        public virtual DotLabel Label
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.HeadClip)]
-        bool? IDotEdgeEndpointAttributes.ClipToNodeBoundary
+        public virtual bool? ClipToNodeBoundary
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.SameHead)]
-        string IDotEdgeEndpointAttributes.GroupName
+        public virtual string GroupName
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.HeadPort)]
-        DotEndpointPort IDotEdgeEndpointAttributes.Port
+        public virtual DotEndpointPort Port
         {
             get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.LHead)]
-        DotClusterId IDotEdgeEndpointAttributes.ClusterId
+        public virtual DotClusterId ClusterId
         {
             get => GetValueAsClusterId(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Arrowhead)]
-        DotArrowheadDefinition IDotEdgeEndpointAttributes.Arrowhead
+        public virtual DotArrowheadDefinition Arrowhead
         {
             get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
-        DotEdgeHeadHyperlinkAttributes IDotEdgeHeadRootAttributes.Hyperlink => _hyperlinkAttributes;
+        public virtual DotEdgeHeadHyperlinkAttributes Hyperlink { get; }
     }
 }

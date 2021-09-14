@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet
 {
-    public class DotSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotSvgStyleSheetAttributes>
+    public class DotSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotSvgStyleSheetAttributes, DotSvgStyleSheetAttributes>
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> SvgStyleSheetAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotSvgStyleSheetAttributes, IDotSvgStyleSheetAttributes>().BuildLazy();
 

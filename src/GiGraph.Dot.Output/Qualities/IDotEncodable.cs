@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Output
+namespace GiGraph.Dot.Output.Qualities
 {
     /// <summary>
     ///     Represents a type that can be encoded as string into a format accepted by layout engines.

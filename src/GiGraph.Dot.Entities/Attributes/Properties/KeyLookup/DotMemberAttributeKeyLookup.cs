@@ -138,7 +138,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
             return TryGetPropertyKey(property, out var key)
                 ? key
                 : throw new KeyNotFoundException(
-                    $"There is no attribute key specified for the '{property}' property of the {property.DeclaringType} type."
+                    $"There is no attribute key specified for the '{property.Name}' property of the {property.DeclaringType?.Name} type."
                 );
         }
 
@@ -156,7 +156,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
             return TryGetPropertyAccessorKey(accessor, out var key)
                 ? key
                 : throw new KeyNotFoundException(
-                    $"There is no attribute key specified for the '{accessor}' property accessor of the {accessor.DeclaringType} type."
+                    $"There is no attribute key specified for the '{accessor.Name}' property accessor of the {accessor.DeclaringType?.Name} type."
                 );
         }
 

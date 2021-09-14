@@ -1,10 +1,11 @@
 ﻿using System;
-using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
-    public abstract record DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable, IDotOrderable
+    public abstract record DotAttribute : IDotAttribute, IDotAnnotatable, IDotEncodable, IDotOrderable
     {
         protected DotAttribute(string key)
         {

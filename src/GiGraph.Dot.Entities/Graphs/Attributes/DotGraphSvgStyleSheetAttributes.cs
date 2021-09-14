@@ -7,7 +7,7 @@ using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGraphSvgStyleSheetAttributes>, IDotGraphSvgStyleSheetAttributes
+    public class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGraphSvgStyleSheetAttributes, DotGraphSvgStyleSheetAttributes>, IDotGraphSvgStyleSheetAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphSvgStyleSheetAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphSvgStyleSheetAttributes, IDotGraphSvgStyleSheetAttributes>().BuildLazy();
 

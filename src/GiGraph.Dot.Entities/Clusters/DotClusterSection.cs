@@ -1,41 +1,37 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Clusters.Attributes;
-using GiGraph.Dot.Entities.Clusters.Collections;
-using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Nodes.Collections;
-using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Clusters
 {
     public partial class DotClusterSection : DotCommonGraphSection
     {
-        protected DotClusterSection(
-            DotClusterRootAttributes attributes,
-            DotNodeCollection nodes,
-            DotEdgeCollection edges,
-            DotSubgraphCollection subgraphs,
-            DotClusterCollection clusters
-        )
-            : base(attributes, nodes, edges, subgraphs, clusters)
+        public DotClusterSection()
+            : this(new DotAttributeCollection())
         {
         }
 
         protected DotClusterSection(DotClusterSection source)
             : base(source)
         {
+            Attributes = source.Attributes;
         }
 
-        public DotClusterSection()
-            : base(new DotClusterRootAttributes())
+        private DotClusterSection(DotAttributeCollection attributes)
+            : this(new DotClusterRootAttributes(attributes))
         {
         }
 
-        /// <summary>
-        ///     The attributes of the cluster.
-        /// </summary>
-        public virtual DotClusterRootAttributes Attributes => (DotClusterRootAttributes) _attributes;
+        private DotClusterSection(DotClusterRootAttributes attributes)
+            : base(attributes)
+        {
+            Attributes = new DotEntityRootAttributes<IDotClusterAttributes, DotClusterRootAttributes>(attributes);
+        }
 
-        protected override DotAttributeCollection AttributeCollection => Attributes.Collection;
+        /// <summary>
+        ///     Provides access to the attributes of the subgraph.
+        /// </summary>
+        public virtual DotEntityRootAttributes<IDotClusterAttributes, DotClusterRootAttributes> Attributes { get; }
     }
 }

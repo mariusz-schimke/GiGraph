@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties
 {
-    public class DotEntityAttributesAccessor<TIEntityAttributeProperties> : DotEntityAttributesAccessor
+    public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributesAccessor
+        where TEntityAttributeProperties : DotEntityAttributes, TIEntityAttributeProperties
     {
-        protected readonly DotEntityAttributes _parent;
+        protected readonly TEntityAttributeProperties _implementation;
 
         static DotEntityAttributesAccessor()
         {
@@ -18,24 +17,16 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             }
         }
 
-        protected DotEntityAttributesAccessor(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotEntityAttributesAccessor(TEntityAttributeProperties implementation)
+            : base(implementation)
         {
-            _parent = ValidateParent(this);
+            _implementation = implementation;
         }
 
-        public DotEntityAttributesAccessor(DotEntityAttributes parent)
-            : base(parent)
-        {
-            _parent = ValidateParent(parent);
-        }
-
-        protected virtual DotEntityAttributes ValidateParent(DotEntityAttributes parent)
-        {
-            return parent is TIEntityAttributeProperties
-                ? parent
-                : throw new ArgumentException($"The specified parent object of type {parent.GetType().Name} does not implement the {typeof(TIEntityAttributeProperties).Name} interface.", nameof(parent));
-        }
+        /// <summary>
+        ///     Gets the underlying attribute properties implementation.
+        /// </summary>
+        internal TEntityAttributeProperties Implementation => _implementation;
 
         /// <summary>
         ///     Gets the specified attribute from the collection. If it is not defined, returns null.
@@ -53,7 +44,22 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         }
 
         /// <summary>
-        ///     Assigns a value to the specified property, and returns the actual attribute added to the collection.
+        ///     Gets the value of the specified attribute from the collection. If it is not defined, returns null.
+        /// </summary>
+        /// <param name="property">
+        ///     The property to get an attribute for.
+        /// </param>
+        /// <typeparam name="TProperty">
+        ///     The type returned by the property.
+        /// </typeparam>
+        public virtual TProperty GetValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        {
+            var propertyInfo = GetProperty(property);
+            return (TProperty) propertyInfo.GetValue(_implementation);
+        }
+
+        /// <summary>
+        ///     Assigns a value to the specified property and returns the actual attribute added to the collection.
         /// </summary>
         /// <param name="property">
         ///     The property whose value to set.
@@ -64,17 +70,17 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        public virtual DotAttribute Set<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value)
+        public virtual DotAttribute SetValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value)
         {
             var propertyInfo = GetProperty(property);
-            propertyInfo.SetValue(_parent, value);
+            propertyInfo.SetValue(_implementation, value);
 
             var key = GetPropertyKey(propertyInfo);
             return _attributes.Get(key);
         }
 
         /// <summary>
-        ///     Assigns a custom value to the specified property, and returns the actual attribute added to the collection. The value is
+        ///     Assigns a custom value to the specified property and returns the actual attribute added to the collection. The value is
         ///     rendered AS IS in the output DOT script, so it has to escaped appropriately when necessary (see
         ///     <see href="https://graphviz.org/doc/info/lang.html" />).
         /// </summary>
@@ -118,7 +124,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        public virtual bool IsSet<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+        public virtual bool Contains<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var key = GetKey(property);
             return _attributes.ContainsKey(key);
@@ -175,8 +181,8 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             var propertyInfo = (property.Body as MemberExpression)?.Member as PropertyInfo ??
                 throw new ArgumentException("Property expression expected.", nameof(property));
 
-            // make sure the property expression refers to parent instance type, to any of its base classes, or to an interface it implements
-            if (propertyInfo.DeclaringType is null || !propertyInfo.DeclaringType.IsInstanceOfType(_parent))
+            // make sure the property expression refers to entity attributes instance type, to any of its base classes, or to an interface it implements
+            if (propertyInfo.DeclaringType is null || !propertyInfo.DeclaringType.IsInstanceOfType(_implementation))
             {
                 throw new ArgumentException($"The expression has to specify a property of the {typeof(TIEntityAttributeProperties).Name} interface.", nameof(property));
             }

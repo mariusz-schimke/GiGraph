@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes

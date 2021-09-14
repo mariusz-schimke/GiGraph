@@ -2,8 +2,8 @@ using System.Globalization;
 using System.Threading;
 using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Labels;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes

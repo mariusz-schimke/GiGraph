@@ -1,3 +1,5 @@
+using GiGraph.Dot.Entities.Html.Attributes.Collections;
+using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Entities.Html.Image.Attributes;
 using GiGraph.Dot.Types.Images;
 
@@ -18,7 +20,7 @@ namespace GiGraph.Dot.Entities.Html.Image
         ///     Specifies how the image will use any extra space available in its cell.
         /// </param>
         public DotHtmlImage(string source, DotImageScaling? scaling = null)
-            : this(new DotHtmlImageAttributes())
+            : this(new DotHtmlAttributeCollection())
         {
             Source = source;
 
@@ -28,29 +30,34 @@ namespace GiGraph.Dot.Entities.Html.Image
             }
         }
 
-        protected DotHtmlImage(DotHtmlImageAttributes attributes)
+        private DotHtmlImage(DotHtmlAttributeCollection attributes)
+            : this(new DotHtmlImageAttributes(attributes))
+        {
+        }
+
+        private DotHtmlImage(DotHtmlImageAttributes attributes)
             : base("img", attributes.Collection)
         {
-            Attributes = attributes;
+            Attributes = new DotHtmlElementRootAttributes<IDotHtmlImageAttributes, DotHtmlImageAttributes>(attributes);
         }
 
         /// <summary>
-        ///     The attributes of the font.
+        ///     Provides access to the attributes of the image.
         /// </summary>
-        public new virtual DotHtmlImageAttributes Attributes { get; }
+        public new DotHtmlElementRootAttributes<IDotHtmlImageAttributes, DotHtmlImageAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotHtmlImageAttributes.Source" />
         public virtual string Source
         {
-            get => ((IDotHtmlImageAttributes) Attributes).Source;
-            set => ((IDotHtmlImageAttributes) Attributes).Source = value;
+            get => Attributes.Implementation.Source;
+            set => Attributes.Implementation.Source = value;
         }
 
         /// <inheritdoc cref="IDotHtmlImageAttributes.Scaling" />
         public virtual DotImageScaling? Scaling
         {
-            get => ((IDotHtmlImageAttributes) Attributes).Scaling;
-            set => ((IDotHtmlImageAttributes) Attributes).Scaling = value;
+            get => Attributes.Implementation.Scaling;
+            set => Attributes.Implementation.Scaling = value;
         }
     }
 }

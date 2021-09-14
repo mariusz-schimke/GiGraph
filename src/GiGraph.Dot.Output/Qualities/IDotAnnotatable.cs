@@ -1,4 +1,4 @@
-﻿namespace GiGraph.Dot.Output
+﻿namespace GiGraph.Dot.Output.Qualities
 {
     public interface IDotAnnotatable
     {
