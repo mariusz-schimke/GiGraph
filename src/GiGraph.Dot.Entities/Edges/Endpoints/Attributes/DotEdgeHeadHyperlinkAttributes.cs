@@ -9,14 +9,9 @@ using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
-    public class DotEdgeHeadHyperlinkAttributes : DotEdgeHyperlinkAttributes
+    public class DotEdgeHeadHyperlinkAttributes : DotEdgeEndpointHyperlinkAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeHeadHyperlinkAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().BuildLazy();
-
-        protected DotEdgeHeadHyperlinkAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
-        {
-        }
 
         public DotEdgeHeadHyperlinkAttributes(DotAttributeCollection attributes)
             : base(attributes, EdgeHeadHyperlinkAttributesKeyLookup)

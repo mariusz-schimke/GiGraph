@@ -9,23 +9,13 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
-    public class DotEdgeHeadRootAttributes : DotEdgeEndpointRootAttributes, IDotEdgeHeadRootAttributes
+    public class DotEdgeHeadRootAttributes : DotEdgeEndpointRootAttributes
     {
         private static readonly Lazy<DotMemberAttributeKeyLookup> EdgeHeadRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadRootAttributes, IDotEdgeEndpointAttributes>().BuildLazy();
 
         public DotEdgeHeadRootAttributes(DotAttributeCollection attributes)
-            : this(attributes, EdgeHeadRootAttributesKeyLookup, new DotEdgeHeadHyperlinkAttributes(attributes))
+            : base(attributes, EdgeHeadRootAttributesKeyLookup, new DotEdgeHeadHyperlinkAttributes(attributes))
         {
-        }
-
-        protected DotEdgeHeadRootAttributes(
-            DotAttributeCollection attributes,
-            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-            DotEdgeHeadHyperlinkAttributes hyperlinkAttributes
-        )
-            : base(attributes, attributeKeyLookup)
-        {
-            Hyperlink = hyperlinkAttributes;
         }
 
         [DotAttributeKey(DotAttributeKeys.HeadLabel)]
@@ -69,7 +59,5 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
             get => base.Arrowhead;
             set => base.Arrowhead = value;
         }
-
-        public virtual DotEdgeHeadHyperlinkAttributes Hyperlink { get; }
     }
 }

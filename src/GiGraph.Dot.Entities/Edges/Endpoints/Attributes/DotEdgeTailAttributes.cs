@@ -7,7 +7,7 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
-    public class DotEdgeTailAttributes : DotNestedEntityAttributes<IDotEdgeEndpointAttributes, DotEdgeTailRootAttributes>, IDotEdgeTailRootAttributes
+    public class DotEdgeTailAttributes : DotNestedEntityAttributes<IDotEdgeEndpointAttributes, DotEdgeTailRootAttributes>, IDotEdgeEndpointRootAttributes
     {
         public DotEdgeTailAttributes(DotAttributeCollection attributes)
             : this(new DotEdgeTailRootAttributes(attributes))
@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
         ///     Hyperlink attributes of the tail of the edge. If defined, the hyperlink is output as part of the tail's <see cref="Label" />.
         ///     Also, this value is used near the tail, overriding hyperlink attributes set on the edge.
         /// </summary>
-        public virtual DotEdgeTailHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
+        public virtual DotEdgeEndpointHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Label" />
         public virtual DotLabel Label

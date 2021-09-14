@@ -10,12 +10,17 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
-    public abstract class DotEdgeEndpointRootAttributes : DotEntityAttributes, IDotEdgeEndpointAttributes
+    public abstract class DotEdgeEndpointRootAttributes : DotEntityAttributes, IDotEdgeEndpointRootAttributes
     {
-        protected DotEdgeEndpointRootAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+        protected DotEdgeEndpointRootAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
+            DotEdgeEndpointHyperlinkAttributes hyperlinkAttributes
+        )
             : base(attributes, attributeKeyLookup)
         {
+            Hyperlink = hyperlinkAttributes;
         }
+
+        public virtual DotEdgeEndpointHyperlinkAttributes Hyperlink { get; }
 
         public virtual DotLabel Label
         {
