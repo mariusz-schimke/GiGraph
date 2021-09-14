@@ -13,12 +13,7 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
         protected static readonly Lazy<DotMemberAttributeKeyLookup> HtmlTableCellAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableCellAttributes, IDotHtmlTableCellAttributes>().BuildLazy();
 
         public DotHtmlTableCellAttributes(DotHtmlAttributeCollection attributes)
-            : this(attributes, HtmlTableCellAttributesKeyLookup)
-        {
-        }
-
-        private DotHtmlTableCellAttributes(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+            : base(attributes, HtmlTableCellAttributesKeyLookup)
         {
         }
 

@@ -1,6 +1,3 @@
-using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Html.Attributes.Collections;
-
 namespace GiGraph.Dot.Entities.Html.Rule
 {
     /// <summary>
@@ -8,18 +5,11 @@ namespace GiGraph.Dot.Entities.Html.Rule
     /// </summary>
     public class DotHtmlVerticalRule : DotHtmlRule
     {
-        protected const string TagName = "vr";
-
         /// <summary>
         ///     Creates a new instance.
         /// </summary>
         public DotHtmlVerticalRule()
-            : base(TagName)
-        {
-        }
-
-        protected DotHtmlVerticalRule(DotHtmlAttributeCollection attributes)
-            : base(TagName, attributes)
+            : base("vr")
         {
         }
 

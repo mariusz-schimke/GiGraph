@@ -1,6 +1,3 @@
-using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Html.Attributes.Collections;
-
 namespace GiGraph.Dot.Entities.Html.Rule
 {
     /// <summary>
@@ -8,18 +5,11 @@ namespace GiGraph.Dot.Entities.Html.Rule
     /// </summary>
     public class DotHtmlHorizontalRule : DotHtmlRule
     {
-        protected const string TagName = "hr";
-
         /// <summary>
         ///     Creates a new instance.
         /// </summary>
         public DotHtmlHorizontalRule()
-            : base(TagName)
-        {
-        }
-
-        protected DotHtmlHorizontalRule(DotHtmlAttributeCollection attributes)
-            : base(TagName, attributes)
+            : base("hr")
         {
         }
 
