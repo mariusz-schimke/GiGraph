@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -11,21 +12,45 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
     public abstract class DotEdgeEndpointRootAttributes : DotEntityAttributes, IDotEdgeEndpointAttributes
     {
-        protected DotEdgeEndpointRootAttributes(DotEntityAttributes source)
-            : base(source)
-        {
-        }
-
         protected DotEdgeEndpointRootAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }
 
-        public abstract DotLabel Label { get; set; }
-        public abstract DotEndpointPort Port { get; set; }
-        public abstract DotClusterId ClusterId { get; set; }
-        public abstract bool? ClipToNodeBoundary { get; set; }
-        public abstract string GroupName { get; set; }
-        public abstract DotArrowheadDefinition Arrowhead { get; set; }
+        public virtual DotLabel Label
+        {
+            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        public virtual bool? ClipToNodeBoundary
+        {
+            get => GetValueAsBool(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        public virtual string GroupName
+        {
+            get => GetValueAsString(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        public virtual DotEndpointPort Port
+        {
+            get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        public virtual DotClusterId ClusterId
+        {
+            get => GetValueAsClusterId(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
+
+        public virtual DotArrowheadDefinition Arrowhead
+        {
+            get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
+            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        }
     }
 }

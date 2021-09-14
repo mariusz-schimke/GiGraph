@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
@@ -32,43 +31,43 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
         [DotAttributeKey(DotAttributeKeys.HeadLabel)]
         public override DotLabel Label
         {
-            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.Label;
+            set => base.Label = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.HeadClip)]
         public override bool? ClipToNodeBoundary
         {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.ClipToNodeBoundary;
+            set => base.ClipToNodeBoundary = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.SameHead)]
         public override string GroupName
         {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.GroupName;
+            set => base.GroupName = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.HeadPort)]
         public override DotEndpointPort Port
         {
-            get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.Port;
+            set => base.Port = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.LHead)]
         public override DotClusterId ClusterId
         {
-            get => GetValueAsClusterId(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.ClusterId;
+            set => base.ClusterId = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.Arrowhead)]
         public override DotArrowheadDefinition Arrowhead
         {
-            get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.Arrowhead;
+            set => base.Arrowhead = value;
         }
 
         public virtual DotEdgeHeadHyperlinkAttributes Hyperlink { get; }
