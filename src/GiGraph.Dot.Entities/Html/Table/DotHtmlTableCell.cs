@@ -27,7 +27,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         }
 
         private DotHtmlTableCell(DotHtmlTableCellAttributes attributes)
-            : base("td")
+            : base("td", attributes.Collection)
         {
             Attributes = new DotHtmlElementRootAttributes<IDotHtmlTableCellAttributes, DotHtmlTableCellAttributes>(attributes);
         }

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
+using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;
@@ -12,7 +11,7 @@ using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes
 {
-    public abstract class DotHtmlTableTableCellCommonAttributes : DotEntityAttributes, IDotHtmlTableTableCellCommonAttributes
+    public abstract class DotHtmlTableTableCellCommonAttributes : DotHtmlEntityAttributes, IDotHtmlTableTableCellCommonAttributes
     {
         protected DotHtmlTableTableCellCommonAttributes(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)

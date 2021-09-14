@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         }
 
         private DotHtmlTable(DotHtmlTableAttributes attributes)
-            : base("table")
+            : base("table", attributes.Collection)
         {
             Attributes = new DotHtmlElementRootAttributes<IDotHtmlTableAttributes, DotHtmlTableAttributes>(attributes);
         }
