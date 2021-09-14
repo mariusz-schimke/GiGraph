@@ -1,8 +1,6 @@
 using System;
 using System.Linq;
-using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
-using GiGraph.Dot.Entities.Html.Attributes.Factories;
 using GiGraph.Dot.Output.EnumHelpers;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Fonts;

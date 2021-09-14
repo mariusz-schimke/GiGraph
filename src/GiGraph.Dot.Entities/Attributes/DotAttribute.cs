@@ -1,5 +1,4 @@
 ﻿using System;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;

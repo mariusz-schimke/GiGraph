@@ -1,5 +1,4 @@
 using GiGraph.Dot.Entities.Html.Rule;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 using Snapshooter.Xunit;

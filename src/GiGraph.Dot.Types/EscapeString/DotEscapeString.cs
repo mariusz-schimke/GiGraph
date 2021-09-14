@@ -1,4 +1,3 @@
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Output.Text.Escaping;
 

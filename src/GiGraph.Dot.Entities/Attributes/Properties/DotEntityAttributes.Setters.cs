@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.EscapeString;
 

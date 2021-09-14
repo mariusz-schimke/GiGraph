@@ -59,7 +59,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         }
 
         /// <summary>
-        ///     Assigns a value to the specified property, and returns the actual attribute added to the collection.
+        ///     Assigns a value to the specified property and returns the actual attribute added to the collection.
         /// </summary>
         /// <param name="property">
         ///     The property whose value to set.
@@ -80,7 +80,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         }
 
         /// <summary>
-        ///     Assigns a custom value to the specified property, and returns the actual attribute added to the collection. The value is
+        ///     Assigns a custom value to the specified property and returns the actual attribute added to the collection. The value is
         ///     rendered AS IS in the output DOT script, so it has to escaped appropriately when necessary (see
         ///     <see href="https://graphviz.org/doc/info/lang.html" />).
         /// </summary>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Qualities;
 
