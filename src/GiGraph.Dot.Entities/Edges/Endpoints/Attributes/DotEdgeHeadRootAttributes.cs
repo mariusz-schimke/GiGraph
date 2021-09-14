@@ -1,7 +1,6 @@
 using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
@@ -11,7 +10,7 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
-    public class DotEdgeHeadRootAttributes : DotEntityAttributes, IDotEdgeHeadRootAttributes
+    public class DotEdgeHeadRootAttributes : DotEdgeEndpointRootAttributes, IDotEdgeHeadRootAttributes
     {
         private static readonly Lazy<DotMemberAttributeKeyLookup> EdgeHeadRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadRootAttributes, IDotEdgeEndpointAttributes>().BuildLazy();
 
@@ -31,42 +30,42 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
         }
 
         [DotAttributeKey(DotAttributeKeys.HeadLabel)]
-        public virtual DotLabel Label
+        public override DotLabel Label
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.HeadClip)]
-        public virtual bool? ClipToNodeBoundary
+        public override bool? ClipToNodeBoundary
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.SameHead)]
-        public virtual string GroupName
+        public override string GroupName
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.HeadPort)]
-        public virtual DotEndpointPort Port
+        public override DotEndpointPort Port
         {
             get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.LHead)]
-        public virtual DotClusterId ClusterId
+        public override DotClusterId ClusterId
         {
             get => GetValueAsClusterId(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Arrowhead)]
-        public virtual DotArrowheadDefinition Arrowhead
+        public override DotArrowheadDefinition Arrowhead
         {
             get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
