@@ -10,13 +10,13 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         public DotEdgeHead(TEndpoint endpoint, DotEdgeHeadRootAttributes attributes)
             : base(endpoint, attributes)
         {
-            Attributes = new DotEntityAttributesAccessor<IDotEdgeHeadRootAttributes, DotEdgeHeadRootAttributes>(attributes);
+            Attributes = new DotEntityAttributesAccessor<IDotEdgeEndpointAttributes, DotEdgeHeadRootAttributes>(attributes);
         }
 
         /// <summary>
         ///     Provides access to the attributes of the edge's head.
         /// </summary>
-        public virtual DotEntityAttributesAccessor<IDotEdgeHeadRootAttributes, DotEdgeHeadRootAttributes> Attributes { get; }
+        public virtual DotEntityAttributesAccessor<IDotEdgeEndpointAttributes, DotEdgeHeadRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotEdgeHeadRootAttributes.Hyperlink" />
         public virtual DotEdgeHeadHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
