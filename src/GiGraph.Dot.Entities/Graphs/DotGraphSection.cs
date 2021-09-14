@@ -26,13 +26,13 @@ namespace GiGraph.Dot.Entities.Graphs
         private DotGraphSection(DotGraphRootAttributes graphAttributes, DotGraphClustersRootAttributes graphClustersAttributes)
             : base(graphAttributes, new DotGraphClusterCollection(graphAttributes, graphClustersAttributes))
         {
-            Attributes = new DotEntityRootAttributes<IDotGraphRootAttributes, DotGraphRootAttributes>(graphAttributes);
+            Attributes = new DotEntityRootAttributes<IDotGraphAttributes, DotGraphRootAttributes>(graphAttributes);
         }
 
         /// <summary>
         ///     Provides access to the attributes of the graph.
         /// </summary>
-        public virtual DotEntityRootAttributes<IDotGraphRootAttributes, DotGraphRootAttributes> Attributes { get; }
+        public virtual DotEntityRootAttributes<IDotGraphAttributes, DotGraphRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="DotCommonGraphSection.Clusters" />
         public new virtual DotGraphClusterCollection Clusters => (DotGraphClusterCollection) base.Clusters;

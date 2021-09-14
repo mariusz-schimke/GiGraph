@@ -10,13 +10,13 @@ namespace GiGraph.Dot.Entities.Nodes
     {
         protected DotNodeDefinition(DotNodeRootAttributes attributes)
         {
-            Attributes = new DotEntityRootAttributes<IDotNodeRootAttributes, DotNodeRootAttributes>(attributes);
+            Attributes = new DotEntityRootAttributes<IDotNodeAttributes, DotNodeRootAttributes>(attributes);
         }
 
         /// <summary>
         ///     Provides access to the attributes of the node.
         /// </summary>
-        public virtual DotEntityRootAttributes<IDotNodeRootAttributes, DotNodeRootAttributes> Attributes { get; }
+        public virtual DotEntityRootAttributes<IDotNodeAttributes, DotNodeRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

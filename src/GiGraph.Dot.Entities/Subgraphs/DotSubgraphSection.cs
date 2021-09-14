@@ -26,12 +26,12 @@ namespace GiGraph.Dot.Entities.Subgraphs
         private DotSubgraphSection(DotSubgraphRootAttributes attributes)
             : base(attributes)
         {
-            Attributes = new DotEntityRootAttributes<IDotSubgraphRootAttributes, DotSubgraphRootAttributes>(attributes);
+            Attributes = new DotEntityRootAttributes<IDotSubgraphAttributes, DotSubgraphRootAttributes>(attributes);
         }
 
         /// <summary>
         ///     Provides access to the attributes of the subgraph.
         /// </summary>
-        public virtual DotEntityRootAttributes<IDotSubgraphRootAttributes, DotSubgraphRootAttributes> Attributes { get; }
+        public virtual DotEntityRootAttributes<IDotSubgraphAttributes, DotSubgraphRootAttributes> Attributes { get; }
     }
 }

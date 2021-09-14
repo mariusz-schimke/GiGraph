@@ -29,13 +29,13 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         {
             // TODO: DotEntityRootAttributes i DotNestedEntityAttributes nie mogą przyjmować w pierwszym parametrze IDotRootXXXAttributes,
             // tylko atrybuty, które mają być wystawiane na zewnątrz!
-            Attributes = new DotEntityRootAttributes<IDotEdgeRootAttributes, DotEdgeRootAttributes>(attributes);
+            Attributes = new DotEntityRootAttributes<IDotEdgeAttributes, DotEdgeRootAttributes>(attributes);
         }
 
         /// <summary>
         ///     Provides access to the global attributes applied to edges.
         /// </summary>
-        public virtual DotEntityRootAttributes<IDotEdgeRootAttributes, DotEdgeRootAttributes> Attributes { get; }
+        public virtual DotEntityRootAttributes<IDotEdgeAttributes, DotEdgeRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

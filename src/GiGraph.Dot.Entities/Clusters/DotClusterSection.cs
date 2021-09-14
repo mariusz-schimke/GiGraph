@@ -26,12 +26,12 @@ namespace GiGraph.Dot.Entities.Clusters
         private DotClusterSection(DotClusterRootAttributes attributes)
             : base(attributes)
         {
-            Attributes = new DotEntityRootAttributes<IDotClusterRootAttributes, DotClusterRootAttributes>(attributes);
+            Attributes = new DotEntityRootAttributes<IDotClusterAttributes, DotClusterRootAttributes>(attributes);
         }
 
         /// <summary>
         ///     Provides access to the attributes of the subgraph.
         /// </summary>
-        public virtual DotEntityRootAttributes<IDotClusterRootAttributes, DotClusterRootAttributes> Attributes { get; }
+        public virtual DotEntityRootAttributes<IDotClusterAttributes, DotClusterRootAttributes> Attributes { get; }
     }
 }
