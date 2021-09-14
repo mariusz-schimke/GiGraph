@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         }
 
         /// <summary>
-        ///     The attributes of the table.
+        ///     Provides access to the attributes of the table cell.
         /// </summary>
         public new virtual DotHtmlElementRootAttributes<IDotHtmlTableCellAttributes, DotHtmlTableCellAttributes> Attributes { get; }
 
