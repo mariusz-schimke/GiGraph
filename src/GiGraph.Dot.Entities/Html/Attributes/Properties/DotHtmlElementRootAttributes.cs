@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Html.Attributes.Collections;
 
 namespace GiGraph.Dot.Entities.Html.Attributes.Properties
 {
-    public sealed class DotHtmlElementRootAttributes<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties>
+    public class DotHtmlElementRootAttributes<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties>
         where TEntityAttributeProperties : DotHtmlEntityAttributes, TIEntityAttributeProperties
     {
         public DotHtmlElementRootAttributes(TEntityAttributeProperties attributes)
