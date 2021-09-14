@@ -4,7 +4,8 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties
 {
-    public abstract class DotNestedEntityAttributes<TIEntityAttributeProperties> : DotEntityAttributes
+    public abstract class DotNestedEntityAttributes<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributes
+        where TEntityAttributeProperties : DotEntityAttributes, TIEntityAttributeProperties
     {
         static DotNestedEntityAttributes()
         {
@@ -14,31 +15,26 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             }
         }
 
-        protected DotNestedEntityAttributes(DotEntityAttributesAccessor<TIEntityAttributeProperties> attributes)
-            : base(attributes)
+        protected DotNestedEntityAttributes(TEntityAttributeProperties implementation)
+            : base(implementation)
         {
-            ValidateCurrentType();
-            Attributes = attributes;
+            Attributes = new DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties>(implementation);
         }
 
         protected DotNestedEntityAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
-            ValidateCurrentType();
-            Attributes = new DotEntityAttributesAccessor<TIEntityAttributeProperties>(parent: this);
+            if (this is not TEntityAttributeProperties implementation)
+            {
+                throw new ArgumentException($"The type {GetType().Name} is not assignable to the {typeof(TEntityAttributeProperties).Name} type specified as the type parameter.", nameof(TEntityAttributeProperties));
+            }
+
+            Attributes = new DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties>(implementation);
         }
 
         /// <summary>
         ///     Provides access to individual attributes in the current context.
         /// </summary>
-        public virtual DotEntityAttributesAccessor<TIEntityAttributeProperties> Attributes { get; }
-
-        protected virtual void ValidateCurrentType()
-        {
-            if (this is not TIEntityAttributeProperties)
-            {
-                throw new Exception($"The type {GetType().Name} does not implement the {typeof(TIEntityAttributeProperties).Name} interface.");
-            }
-        }
+        public virtual DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties> Attributes { get; }
     }
 }
