@@ -57,7 +57,6 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
             _labelHyperlinkAttributes = labelHyperlinkAttributes;
         }
 
-        // TODO: usunąć tego typu konstruktory
         public DotEdgeRootAttributes(DotAttributeCollection attributes)
             : this(
                 attributes,

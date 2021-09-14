@@ -26,8 +26,6 @@ namespace GiGraph.Dot.Entities.Edges.Collections
 
         private DotEdgeCollection(DotEdgeRootAttributes attributes)
         {
-            // TODO: DotEntityRootAttributes i DotNestedEntityAttributes nie mogą przyjmować w pierwszym parametrze IDotRootXXXAttributes,
-            // tylko atrybuty, które mają być wystawiane na zewnątrz!
             Attributes = new DotEntityRootAttributes<IDotEdgeAttributes, DotEdgeRootAttributes>(attributes);
         }
 
