@@ -54,9 +54,8 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         /// </typeparam>
         public virtual TProperty GetValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
-            // TODO: sprawdzić tę metodę z uwzględnieniem typów referencyjnych, wartości i nullowalnych
             var propertyInfo = GetProperty(property);
-            return (TProperty) propertyInfo.GetValue(_attributes);
+            return (TProperty) propertyInfo.GetValue(_implementation);
         }
 
         /// <summary>
@@ -74,7 +73,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         public virtual DotAttribute SetValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value)
         {
             var propertyInfo = GetProperty(property);
-            propertyInfo.SetValue(_attributes, value);
+            propertyInfo.SetValue(_implementation, value);
 
             var key = GetPropertyKey(propertyInfo);
             return _attributes.Get(key);
@@ -182,8 +181,8 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             var propertyInfo = (property.Body as MemberExpression)?.Member as PropertyInfo ??
                 throw new ArgumentException("Property expression expected.", nameof(property));
 
-            // make sure the property expression refers to attributes instance type, to any of its base classes, or to an interface it implements
-            if (propertyInfo.DeclaringType is null || !propertyInfo.DeclaringType.IsInstanceOfType(_attributes))
+            // make sure the property expression refers to entity attributes instance type, to any of its base classes, or to an interface it implements
+            if (propertyInfo.DeclaringType is null || !propertyInfo.DeclaringType.IsInstanceOfType(_implementation))
             {
                 throw new ArgumentException($"The expression has to specify a property of the {typeof(TIEntityAttributeProperties).Name} interface.", nameof(property));
             }
