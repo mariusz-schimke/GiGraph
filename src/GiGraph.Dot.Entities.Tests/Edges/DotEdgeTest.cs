@@ -39,7 +39,7 @@ namespace GiGraph.Dot.Entities.Tests.Edges
         }
 
         [Fact]
-        public void edge_sequence_has_properties_for_head_and_tail_attributes_exposed_and_not_mistaken()
+        public void all_edge_attribute_types_have_properties_for_head_and_tail_attributes_exposed_and_not_confused()
         {
             // this test makes sure that the head attributes are not replaced with tail attributes implementation or the other way round
             // (because the Head(s) and Tail(s) properties are the same classes, accepting any endpoint attributes implementation as a constructor parameter)
