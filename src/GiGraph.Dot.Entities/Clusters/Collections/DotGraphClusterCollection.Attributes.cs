@@ -11,14 +11,14 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
         /// <inheritdoc cref="IDotGraphClustersRootAttributes.Style" />
         public virtual DotClusterStyleAttributeOptions Style => Attributes.Implementation.Style;
 
-        /// <inheritdoc cref="IDotGraphClusterAttributes.AllowEdgeClipping" />
+        /// <inheritdoc cref="IDotGraphClustersAttributes.AllowEdgeClipping" />
         public virtual bool? AllowEdgeClipping
         {
             get => Attributes.Implementation.AllowEdgeClipping;
             set => Attributes.Implementation.AllowEdgeClipping = value;
         }
 
-        /// <inheritdoc cref="IDotGraphClusterAttributes.VisualizationMode" />
+        /// <inheritdoc cref="IDotGraphClustersAttributes.VisualizationMode" />
         public virtual DotClusterVisualizationMode? VisualizationMode
         {
             get => Attributes.Implementation.VisualizationMode;

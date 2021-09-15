@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Entities.Graphs
     public partial class DotGraphSection : IDotGraphRootAttributes
     {
         // hidden by explicit implementation because they are exposed through the Clusters collection property
-        DotGraphClustersRootAttributes IDotGraphRootAttributes.Clusters => Attributes.Implementation.Clusters;
+        DotGraphClustersAttributes IDotGraphRootAttributes.Clusters => Attributes.Implementation.Clusters;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.Font" />
         public virtual DotGraphFontAttributes Font => Attributes.Implementation.Font;

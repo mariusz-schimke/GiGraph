@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// <summary>
         ///     Attributes applied to clusters.
         /// </summary>
-        DotGraphClustersRootAttributes Clusters { get; }
+        DotGraphClustersAttributes Clusters { get; }
 
         /// <summary>
         ///     Font attributes.

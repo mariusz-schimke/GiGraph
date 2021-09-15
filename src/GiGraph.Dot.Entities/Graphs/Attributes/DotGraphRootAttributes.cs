@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 
         protected readonly DotGraphCanvasAttributes _canvasAttributes;
         protected readonly DotGraphFontAttributes _fontAttributes;
-        protected readonly DotGraphClustersRootAttributes _clusterAttributes;
+        protected readonly DotGraphClustersAttributes _clusterAttributes;
         protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
         protected readonly DotLabelAlignmentAttributes _labelAlignmentAttributes;
         protected readonly DotGraphLayoutAttributes _layoutAttributes;
@@ -31,7 +31,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         protected DotGraphRootAttributes(
             DotAttributeCollection attributes,
             Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-            DotGraphClustersRootAttributes clusterAttributes,
+            DotGraphClustersAttributes clusterAttributes,
             DotHyperlinkAttributes hyperlinkAttributes,
             DotGraphFontAttributes fontAttributes,
             DotGraphStyleAttributeOptions styleAttributeOptions,
@@ -57,7 +57,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
             : this(
                 attributes,
                 GraphRootAttributesKeyLookup,
-                new DotGraphClustersRootAttributes(attributes),
+                new DotGraphClustersAttributes(attributes),
                 new DotHyperlinkAttributes(attributes),
                 new DotGraphFontAttributes(attributes),
                 new DotGraphStyleAttributeOptions(attributes),
@@ -69,9 +69,9 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         {
         }
 
-        public virtual DotGraphClustersRootAttributes Clusters => _clusterAttributes;
         public virtual DotGraphStyleAttributeOptions Style => _styleAttributeOptions;
 
+        public virtual DotGraphClustersAttributes Clusters => _clusterAttributes;
         public virtual DotHyperlinkAttributes Hyperlink => _hyperlinkAttributes;
         public virtual DotGraphFontAttributes Font => _fontAttributes;
         public virtual DotGraphSvgStyleSheetAttributes SvgStyleSheet => _svgStyleSheetAttributes;

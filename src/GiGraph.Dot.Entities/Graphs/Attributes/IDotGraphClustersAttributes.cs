@@ -4,7 +4,7 @@ using GiGraph.Dot.Types.Clusters;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public interface IDotGraphClusterAttributes : IDotGraphClusterCommonAttributes
+    public interface IDotGraphClustersAttributes : IDotGraphClusterCommonAttributes
     {
         /// <summary>
         ///     If true, allows edges between clusters (dot only, default: false). Specify a

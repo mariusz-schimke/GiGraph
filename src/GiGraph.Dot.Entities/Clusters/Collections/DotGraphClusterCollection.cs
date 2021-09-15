@@ -10,12 +10,12 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
         public DotGraphClusterCollection(DotGraphRootAttributes graphAttributes)
         {
             _graphAttributes = graphAttributes;
-            Attributes = new DotEntityAttributesAccessor<IDotGraphClusterAttributes, DotGraphClustersRootAttributes>(graphAttributes.Clusters);
+            Attributes = new DotEntityAttributesAccessor<IDotGraphClustersAttributes, DotGraphClustersAttributes>(graphAttributes.Clusters);
         }
 
         /// <summary>
         ///     Provides access to the global graph attributes applied to clusters.
         /// </summary>
-        public virtual DotEntityAttributesAccessor<IDotGraphClusterAttributes, DotGraphClustersRootAttributes> Attributes { get; }
+        public virtual DotEntityAttributesAccessor<IDotGraphClustersAttributes, DotGraphClustersAttributes> Attributes { get; }
     }
 }
