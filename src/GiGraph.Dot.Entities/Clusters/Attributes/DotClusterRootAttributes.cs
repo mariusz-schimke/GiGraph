@@ -18,7 +18,6 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes
 {
-    // TODO: rozważyć usunięcie słówka Root i/lub dodanie słówka Nested do klas potomnych od NestedAttributes
     public class DotClusterRootAttributes : DotEntityAttributes, IDotClusterRootAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> ClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
