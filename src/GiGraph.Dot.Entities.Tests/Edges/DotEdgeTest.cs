@@ -39,18 +39,40 @@ namespace GiGraph.Dot.Entities.Tests.Edges
         }
 
         [Fact]
-        public void has_properties_for_head_and_tail_attributes_exposed()
+        public void all_edge_attribute_types_have_properties_for_head_and_tail_attributes_exposed_and_not_confused()
         {
+            // this test makes sure that the head attributes are not replaced with tail attributes implementation or the other way round
+            // (because the Head(s) and Tail(s) properties are the same classes, accepting any endpoint attributes implementation as a constructor parameter)
+
             var graph = new DotGraph();
 
+            // edge collection
             graph.Edges.Head.Arrowhead = DotArrowheadShape.Box;
             graph.Edges.Tail.Arrowhead = DotArrowheadShape.Crow;
 
+            graph.Edges.Head.Hyperlink.Href = "https://www.google.com/search?q=head";
+            graph.Edges.Tail.Hyperlink.Href = "https://www.google.com/search?q=tail";
+
+            // ordinary edges
+            graph.Edges.AddLoop("edge1", edge =>
+            {
+                edge.Head.Arrowhead = DotArrowheadShape.Box;
+                edge.Tail.Arrowhead = DotArrowheadShape.Crow;
+                edge.Head.Hyperlink.Href = "https://www.google.com/search?q=head";
+                edge.Tail.Hyperlink.Href = "https://www.google.com/search?q=tail";
+            });
+
+            // edge sequence
             // this test just makes sure that the head and tail attributes are exposed by the descendant class
             // (not to lose them as a result of some future refactoring)
-            var edgeSequence = graph.Edges.AddSequence("a", "b", "c");
-            edgeSequence.Heads.Port = "port";
-            edgeSequence.Tails.Port = "port";
+            graph.Edges.AddSequence(edge =>
+                {
+                    edge.Heads.Port = "head_port";
+                    edge.Tails.Port = "tail_port";
+                    edge.Heads.Hyperlink.Href = "https://www.google.com/search?q=head";
+                    edge.Tails.Hyperlink.Href = "https://www.google.com/search?q=tail";
+                },
+                "a", "b", "c");
 
             Snapshot.Match(graph.Build(), "edge_head_and_tail_attributes");
         }

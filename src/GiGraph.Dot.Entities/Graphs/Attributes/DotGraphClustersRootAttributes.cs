@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Output.Metadata;
@@ -10,70 +10,56 @@ using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphClusterRootAttributes : DotEntityAttributes<IDotGraphClusterAttributes>, IDotGraphClusterRootAttributes
+    public class DotGraphClustersRootAttributes : DotEntityAttributes, IDotGraphClusterRootAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClusterRootAttributes, IDotGraphClusterAttributes>().BuildLazy();
+        // TODO: jeśli te kolekcje staną się prywatne, można skrócić im nazwy
+        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClustersRootAttributes, IDotGraphClusterAttributes>().BuildLazy();
 
-        protected readonly DotClusterStyleAttributeOptions _styleAttributeOptions;
-
-        protected DotGraphClusterRootAttributes(
-            DotGraphRootAttributes graphAttributes,
-            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-            DotClusterStyleAttributeOptions styleAttributeOptions
-        )
-            : base(graphAttributes.Collection, attributeKeyLookup)
+        public DotGraphClustersRootAttributes(DotAttributeCollection attributes)
+            : base(attributes, GraphClusterRootAttributesKeyLookup)
         {
-            _styleAttributeOptions = styleAttributeOptions;
+            Style = new DotClusterStyleAttributeOptions(attributes);
         }
 
-        public DotGraphClusterRootAttributes(DotGraphRootAttributes graphAttributes)
-            : this(
-                graphAttributes,
-                GraphClusterRootAttributesKeyLookup,
-                new DotClusterStyleAttributeOptions(graphAttributes.Collection)
-            )
-        {
-        }
-
-        DotClusterStyleAttributeOptions IDotGraphClusterRootAttributes.Style => _styleAttributeOptions;
+        public virtual DotClusterStyleAttributeOptions Style { get; }
 
         [DotAttributeKey(DotAttributeKeys.Color)]
-        DotColorDefinition IDotGraphClusterCommonAttributes.Color
+        public virtual DotColorDefinition Color
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.PenWidth)]
-        double? IDotGraphClusterCommonAttributes.BorderWidth
+        public virtual double? BorderWidth
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.PenColor)]
-        DotColor IDotGraphClusterCommonAttributes.BorderColor
+        public virtual DotColor BorderColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.FillColor)]
-        DotColorDefinition IDotGraphClusterCommonAttributes.FillColor
+        public virtual DotColorDefinition FillColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Compound)]
-        bool? IDotGraphClusterAttributes.AllowEdgeClipping
+        public virtual bool? AllowEdgeClipping
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.ClusterRank)]
-        DotClusterVisualizationMode? IDotGraphClusterAttributes.VisualizationMode
+        public virtual DotClusterVisualizationMode? VisualizationMode
         {
             get => GetValueAs<DotClusterVisualizationMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);

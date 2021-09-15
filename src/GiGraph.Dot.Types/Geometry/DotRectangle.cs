@@ -1,8 +1,8 @@
 using System.Drawing;
 using System.Linq;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Types.Geometry
 {
@@ -82,7 +82,7 @@ namespace GiGraph.Dot.Types.Geometry
             return GetDotEncodedValue(options, syntaxRules);
         }
 
-        protected internal virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             // The rectangle llx,lly,urx,ury gives the coordinates, in points, of the lower-left corner (llx,lly) and the upper-right corner (urx,ury).
             return string.Join(

@@ -1,24 +1,23 @@
-﻿using System;
-using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
-using GiGraph.Dot.Output;
+﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common
 {
-    public abstract class DotEntityRootAttributes<TIEntityAttributeProperties> : DotEntityAttributes<TIEntityAttributeProperties>, IDotAnnotatable
+    public class DotEntityRootAttributes<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties>, IDotAnnotatable
+        where TEntityAttributeProperties : DotEntityAttributes, TIEntityAttributeProperties
     {
-        protected DotEntityRootAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotEntityRootAttributes(TEntityAttributeProperties implementation)
+            : base(implementation)
         {
         }
 
         /// <summary>
         ///     Gets the underlying collection of attributes applied to the element.
         /// </summary>
-        public virtual DotAttributeCollection Collection => _attributes;
+        public new DotAttributeCollection Collection => _attributes;
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
-        public virtual string Annotation
+        public string Annotation
         {
             get => _attributes.Annotation;
             set => _attributes.Annotation = value;

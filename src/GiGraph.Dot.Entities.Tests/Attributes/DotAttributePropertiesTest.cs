@@ -16,6 +16,7 @@ using GiGraph.Dot.Entities.Subgraphs.Attributes;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Output.Qualities;
 using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes

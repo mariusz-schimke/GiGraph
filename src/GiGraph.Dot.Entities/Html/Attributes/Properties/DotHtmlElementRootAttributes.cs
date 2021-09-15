@@ -1,20 +1,19 @@
-﻿using System;
-using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties;
-using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+﻿using GiGraph.Dot.Entities.Attributes.Properties;
+using GiGraph.Dot.Entities.Html.Attributes.Collections;
 
 namespace GiGraph.Dot.Entities.Html.Attributes.Properties
 {
-    public abstract class DotHtmlElementRootAttributes<TIEntityAttributeProperties> : DotEntityAttributes<TIEntityAttributeProperties>
+    public class DotHtmlElementRootAttributes<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties>
+        where TEntityAttributeProperties : DotHtmlEntityAttributes, TIEntityAttributeProperties
     {
-        protected DotHtmlElementRootAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotHtmlElementRootAttributes(TEntityAttributeProperties attributes)
+            : base(attributes)
         {
         }
 
         /// <summary>
         ///     Gets the underlying collection of attributes applied to the element.
         /// </summary>
-        public virtual DotAttributeCollection Collection => _attributes;
+        public new DotHtmlAttributeCollection Collection => (DotHtmlAttributeCollection) _attributes;
     }
 }

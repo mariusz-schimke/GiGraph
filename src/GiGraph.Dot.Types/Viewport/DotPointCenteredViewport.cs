@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Types.Viewport
     public record DotPointCenteredViewport(double Width, double Height, double X, double Y, double Zoom = DotViewport.DefaultZoom)
         : DotViewport(Width, Height, Zoom)
     {
-        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var whz = base.GetDotEncodedValue(options, syntaxRules);
             var xy = string.Join(",", new[] { X, Y }.Select(v => v.ToString(syntaxRules.Culture)));

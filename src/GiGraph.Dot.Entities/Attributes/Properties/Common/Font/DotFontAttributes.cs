@@ -4,7 +4,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Font
 {
-    public class DotFontAttributes : DotFontAttributes<IDotFontAttributes>
+    public class DotFontAttributes : DotFontAttributes<IDotFontAttributes, DotFontAttributes>
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> EntityFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotFontAttributes, IDotFontAttributes>().BuildLazy();
 

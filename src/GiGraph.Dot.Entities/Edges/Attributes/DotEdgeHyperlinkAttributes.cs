@@ -11,7 +11,7 @@ using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdgeHyperlinkAttributes>, IDotEdgeHyperlinkAttributes
+    public class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdgeHyperlinkAttributes, DotEdgeHyperlinkAttributes>, IDotEdgeHyperlinkAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeHyperlinkAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().BuildLazy();
 
@@ -27,9 +27,8 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
 
         /// <summary>
         ///     If defined, this is the link used for the non-label parts of the edge (svg, map only). Used near the head or the tail node,
-        ///     unless overridden by the <see cref="IDotHyperlinkAttributes.Url" /> on the head
-        ///     <see cref="IDotEdgeHeadRootAttributes.Hyperlink" /> attributes, or on the tail
-        ///     <see cref="IDotEdgeTailRootAttributes.Hyperlink" /> attributes of the edge. This value overrides any
+        ///     unless overridden by the <see cref="IDotHyperlinkAttributes.Url" /> on the head's or tail's
+        ///     <see cref="IDotEdgeEndpointRootAttributes.Hyperlink" /> attributes of the edge. This value overrides any
         ///     <see cref="IDotHyperlinkAttributes.Url" /> specified for the edge's <see cref="IDotEdgeRootAttributes.Hyperlink" />.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.EdgeUrl)]

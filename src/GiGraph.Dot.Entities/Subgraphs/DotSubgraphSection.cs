@@ -1,41 +1,37 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Clusters.Collections;
-using GiGraph.Dot.Entities.Edges.Collections;
+using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Attributes;
-using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Subgraphs
 {
     public partial class DotSubgraphSection : DotCommonGraphSection
     {
-        protected DotSubgraphSection(
-            DotSubgraphRootAttributes attributes,
-            DotNodeCollection nodes,
-            DotEdgeCollection edges,
-            DotSubgraphCollection subgraphs,
-            DotClusterCollection clusters
-        )
-            : base(attributes, nodes, edges, subgraphs, clusters)
+        public DotSubgraphSection()
+            : this(new DotAttributeCollection())
         {
         }
 
         protected DotSubgraphSection(DotSubgraphSection source)
             : base(source)
         {
+            Attributes = source.Attributes;
         }
 
-        public DotSubgraphSection()
-            : base(new DotSubgraphRootAttributes())
+        private DotSubgraphSection(DotAttributeCollection attributes)
+            : this(new DotSubgraphRootAttributes(attributes))
         {
         }
 
-        /// <summary>
-        ///     The attributes of the subgraph.
-        /// </summary>
-        public virtual DotSubgraphRootAttributes Attributes => (DotSubgraphRootAttributes) _attributes;
+        private DotSubgraphSection(DotSubgraphRootAttributes attributes)
+            : base(attributes)
+        {
+            Attributes = new DotEntityRootAttributes<IDotSubgraphAttributes, DotSubgraphRootAttributes>(attributes);
+        }
 
-        protected override DotAttributeCollection AttributeCollection => Attributes.Collection;
+        /// <summary>
+        ///     Provides access to the attributes of the subgraph.
+        /// </summary>
+        public virtual DotEntityRootAttributes<IDotSubgraphAttributes, DotSubgraphRootAttributes> Attributes { get; }
     }
 }

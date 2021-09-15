@@ -1,7 +1,5 @@
 using System;
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
@@ -11,68 +9,55 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
-    public class DotEdgeHeadRootAttributes : DotEntityAttributes<IDotEdgeEndpointAttributes>, IDotEdgeHeadRootAttributes
+    public class DotEdgeHeadRootAttributes : DotEdgeEndpointRootAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeHeadRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadRootAttributes, IDotEdgeEndpointAttributes>().BuildLazy();
-        protected readonly DotEdgeHeadHyperlinkAttributes _hyperlinkAttributes;
-
-        protected DotEdgeHeadRootAttributes(
-            DotAttributeCollection attributes,
-            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-            DotEdgeHeadHyperlinkAttributes hyperlinkAttributes
-        )
-            : base(attributes, attributeKeyLookup)
-        {
-            _hyperlinkAttributes = hyperlinkAttributes;
-        }
+        private static readonly Lazy<DotMemberAttributeKeyLookup> EdgeHeadRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadRootAttributes, IDotEdgeEndpointAttributes>().BuildLazy();
 
         public DotEdgeHeadRootAttributes(DotAttributeCollection attributes)
-            : this(attributes, EdgeHeadRootAttributesKeyLookup, new DotEdgeHeadHyperlinkAttributes(attributes))
+            : base(attributes, EdgeHeadRootAttributesKeyLookup, new DotEdgeHeadHyperlinkAttributes(attributes))
         {
         }
 
         [DotAttributeKey(DotAttributeKeys.HeadLabel)]
-        DotLabel IDotEdgeEndpointAttributes.Label
+        public override DotLabel Label
         {
-            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.Label;
+            set => base.Label = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.HeadClip)]
-        bool? IDotEdgeEndpointAttributes.ClipToNodeBoundary
+        public override bool? ClipToNodeBoundary
         {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.ClipToNodeBoundary;
+            set => base.ClipToNodeBoundary = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.SameHead)]
-        string IDotEdgeEndpointAttributes.GroupName
+        public override string GroupName
         {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.GroupName;
+            set => base.GroupName = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.HeadPort)]
-        DotEndpointPort IDotEdgeEndpointAttributes.Port
+        public override DotEndpointPort Port
         {
-            get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.Port;
+            set => base.Port = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.LHead)]
-        DotClusterId IDotEdgeEndpointAttributes.ClusterId
+        public override DotClusterId ClusterId
         {
-            get => GetValueAsClusterId(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.ClusterId;
+            set => base.ClusterId = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.Arrowhead)]
-        DotArrowheadDefinition IDotEdgeEndpointAttributes.Arrowhead
+        public override DotArrowheadDefinition Arrowhead
         {
-            get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.Arrowhead;
+            set => base.Arrowhead = value;
         }
-
-        DotEdgeHeadHyperlinkAttributes IDotEdgeHeadRootAttributes.Hyperlink => _hyperlinkAttributes;
     }
 }

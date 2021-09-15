@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using GiGraph.Dot.Entities.Graphs.Collections;
-using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Entities;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
     /// <summary>
     ///     Represents a graph (the root DOT graph).
     /// </summary>
-    public class DotGraph : DotGraphSection, IDotCommonGraph, IDotOrderable
+    public class DotGraph : DotGraphSection, IDotGraph, IDotOrderable
     {
         protected const bool DirectedDefault = true;
         protected const bool StrictDefault = false;
@@ -92,7 +93,7 @@ namespace GiGraph.Dot.Entities.Graphs
         /// </summary>
         public virtual string Id { get; set; }
 
-        IEnumerable<DotCommonGraphSection> IDotCommonGraph.Subsections => Subsections;
+        IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 
         string IDotOrderable.OrderingKey => Id;
     }

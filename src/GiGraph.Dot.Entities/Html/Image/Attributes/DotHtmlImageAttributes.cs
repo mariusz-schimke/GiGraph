@@ -1,37 +1,31 @@
 ﻿using System;
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
-using GiGraph.Dot.Entities.Html.Attributes.Factories;
+using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Images;
 
 namespace GiGraph.Dot.Entities.Html.Image.Attributes
 {
-    public class DotHtmlImageAttributes : DotHtmlElementRootAttributes<IDotHtmlImageAttributes>, IDotHtmlImageAttributes
+    public class DotHtmlImageAttributes : DotHtmlEntityAttributes, IDotHtmlImageAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> HtmlImageAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlImageAttributes, IDotHtmlImageAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> HtmlImageAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlImageAttributes, IDotHtmlImageAttributes>().BuildLazy();
 
-        protected DotHtmlImageAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
-        {
-        }
-
-        public DotHtmlImageAttributes()
-            : this(new DotAttributeCollection(DotHtmlAttributeFactory.Instance), HtmlImageAttributesKeyLookup)
+        public DotHtmlImageAttributes(DotHtmlAttributeCollection attributes)
+            : base(attributes, HtmlImageAttributesKeyLookup)
         {
         }
 
         [DotAttributeKey("src")]
-        string IDotHtmlImageAttributes.Source
+        public virtual string Source
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("scale")]
-        DotImageScaling? IDotHtmlImageAttributes.Scaling
+        public virtual DotImageScaling? Scaling
         {
             get => GetValueAs<DotImageScaling>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);

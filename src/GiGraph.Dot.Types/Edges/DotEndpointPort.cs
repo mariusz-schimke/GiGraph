@@ -1,7 +1,7 @@
 using System.Text;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Types.Edges
@@ -95,7 +95,7 @@ namespace GiGraph.Dot.Types.Edges
             return compassPoint.HasValue ? new DotEndpointPort(compassPoint.Value) : null;
         }
 
-        protected internal virtual string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected virtual string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var result = new StringBuilder();
             var separator = string.Empty;

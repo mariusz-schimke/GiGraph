@@ -1,17 +1,17 @@
-﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties;
+﻿using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Attributes;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
-using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Entities;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
-    public abstract class DotCommonGraphSection : IDotCommonGraphSection, IDotAnnotatable
+    public abstract class DotCommonGraphSection : IDotGraphSection, IDotAnnotatable
     {
-        protected readonly DotEntityAttributes _attributes;
+        private readonly DotEntityAttributes _attributes;
 
         protected DotCommonGraphSection(
             DotEntityAttributes attributes,
@@ -32,23 +32,13 @@ namespace GiGraph.Dot.Entities.Graphs
         {
         }
 
-        protected DotCommonGraphSection(DotEntityAttributes attributes, DotSubgraphCollection subgraphs, DotClusterCollection clusters)
-            : this(
-                attributes,
-                new DotNodeCollection(),
-                new DotEdgeCollection(),
-                subgraphs,
-                clusters
-            )
+        protected DotCommonGraphSection(DotEntityAttributes attributes, DotClusterCollection clusters)
+            : this(attributes, new DotNodeCollection(), new DotEdgeCollection(), new DotSubgraphCollection(), clusters)
         {
         }
 
         protected DotCommonGraphSection(DotEntityAttributes attributes)
-            : this(
-                attributes,
-                new DotSubgraphCollection(),
-                new DotClusterCollection()
-            )
+            : this(attributes, new DotClusterCollection())
         {
         }
 
@@ -94,11 +84,9 @@ namespace GiGraph.Dot.Entities.Graphs
         /// </summary>
         public virtual DotClusterCollection Clusters { get; }
 
-        protected abstract DotAttributeCollection AttributeCollection { get; }
-
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }
 
-        DotAttributeCollection IDotCommonGraphSection.Attributes => AttributeCollection;
+        IDotAttributeCollection IDotGraphSection.Attributes => _attributes.Collection;
     }
 }

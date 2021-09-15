@@ -1,15 +1,14 @@
 using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Factories;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Subgraphs.Attributes
 {
-    public class DotSubgraphRootAttributes : DotEntityRootAttributes<IDotSubgraphAttributes>, IDotSubgraphRootAttributes
+    public class DotSubgraphRootAttributes : DotEntityAttributes, IDotSubgraphRootAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> SubgraphRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotSubgraphRootAttributes, IDotSubgraphAttributes>().BuildLazy();
 
@@ -23,13 +22,8 @@ namespace GiGraph.Dot.Entities.Subgraphs.Attributes
         {
         }
 
-        public DotSubgraphRootAttributes()
-            : this(new DotAttributeCollection(DotAttributeFactory.Instance))
-        {
-        }
-
         [DotAttributeKey(DotAttributeKeys.Rank)]
-        DotRank? IDotSubgraphAttributes.NodeRank
+        public virtual DotRank? NodeRank
         {
             get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
