@@ -1,7 +1,5 @@
 using System;
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
@@ -11,67 +9,55 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
-    public class DotEdgeTailRootAttributes : DotEntityAttributes, IDotEdgeTailRootAttributes
+    public class DotEdgeTailRootAttributes : DotEdgeEndpointRootAttributes
     {
         private static readonly Lazy<DotMemberAttributeKeyLookup> EdgeTailRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeTailRootAttributes, IDotEdgeEndpointAttributes>().BuildLazy();
 
         public DotEdgeTailRootAttributes(DotAttributeCollection attributes)
-            : this(attributes, EdgeTailRootAttributesKeyLookup, new DotEdgeTailHyperlinkAttributes(attributes))
+            : base(attributes, EdgeTailRootAttributesKeyLookup, new DotEdgeTailHyperlinkAttributes(attributes))
         {
-        }
-
-        protected DotEdgeTailRootAttributes(
-            DotAttributeCollection attributes,
-            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-            DotEdgeTailHyperlinkAttributes hyperlinkAttributes
-        )
-            : base(attributes, attributeKeyLookup)
-        {
-            Hyperlink = hyperlinkAttributes;
         }
 
         [DotAttributeKey(DotAttributeKeys.TailLabel)]
-        public virtual DotLabel Label
+        public override DotLabel Label
         {
-            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.Label;
+            set => base.Label = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.TailClip)]
-        public virtual bool? ClipToNodeBoundary
+        public override bool? ClipToNodeBoundary
         {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.ClipToNodeBoundary;
+            set => base.ClipToNodeBoundary = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.SameTail)]
-        public virtual string GroupName
+        public override string GroupName
         {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.GroupName;
+            set => base.GroupName = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.TailPort)]
-        public virtual DotEndpointPort Port
+        public override DotEndpointPort Port
         {
-            get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.Port;
+            set => base.Port = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.LTail)]
-        public virtual DotClusterId ClusterId
+        public override DotClusterId ClusterId
         {
-            get => GetValueAsClusterId(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.ClusterId;
+            set => base.ClusterId = value;
         }
 
         [DotAttributeKey(DotAttributeKeys.ArrowTail)]
-        public virtual DotArrowheadDefinition Arrowhead
+        public override DotArrowheadDefinition Arrowhead
         {
-            get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+            get => base.Arrowhead;
+            set => base.Arrowhead = value;
         }
-
-        public virtual DotEdgeTailHyperlinkAttributes Hyperlink { get; }
     }
 }

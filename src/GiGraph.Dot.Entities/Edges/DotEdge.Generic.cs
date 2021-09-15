@@ -62,14 +62,14 @@ namespace GiGraph.Dot.Entities.Edges
 
         private DotEdge(TTail tail, THead head, DotAttributeCollection attributes)
             : this(
-                new DotEdgeTail<TTail>(tail, new DotEdgeTailRootAttributes(attributes)),
-                new DotEdgeHead<THead>(head, new DotEdgeHeadRootAttributes(attributes)),
+                new DotEdgeEndpoint<TTail>(tail, new DotEdgeTailRootAttributes(attributes)),
+                new DotEdgeEndpoint<THead>(head, new DotEdgeHeadRootAttributes(attributes)),
                 new DotEdgeRootAttributes(attributes)
             )
         {
         }
 
-        private DotEdge(DotEdgeTail<TTail> tail, DotEdgeHead<THead> head, DotEdgeRootAttributes attributes)
+        private DotEdge(DotEdgeEndpoint<TTail> tail, DotEdgeEndpoint<THead> head, DotEdgeRootAttributes attributes)
             : base(new DotEndpointDefinition[] { tail.Endpoint, head.Endpoint }, attributes)
         {
             Tail = tail;
@@ -79,12 +79,12 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         ///     Gets the tail endpoint.
         /// </summary>
-        public virtual DotEdgeTail<TTail> Tail { get; }
+        public virtual DotEdgeEndpoint<TTail> Tail { get; }
 
         /// <summary>
         ///     Gets the head endpoint.
         /// </summary>
-        public virtual DotEdgeHead<THead> Head { get; }
+        public virtual DotEdgeEndpoint<THead> Head { get; }
 
         protected override string GetOrderingKey()
         {

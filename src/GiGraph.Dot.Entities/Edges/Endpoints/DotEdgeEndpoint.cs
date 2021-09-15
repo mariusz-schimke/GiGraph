@@ -1,14 +1,18 @@
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
-    public abstract partial class DotEdgeEndpoint
+    public partial class DotEdgeEndpoint
     {
-        protected readonly IDotEdgeEndpointAttributes _attributes;
-
-        protected DotEdgeEndpoint(IDotEdgeEndpointAttributes attributes)
+        public DotEdgeEndpoint(DotEdgeEndpointRootAttributes attributes)
         {
-            _attributes = attributes;
+            Attributes = new DotEntityAttributesAccessor<IDotEdgeEndpointAttributes, DotEdgeEndpointRootAttributes>(attributes);
         }
+
+        /// <summary>
+        ///     Provides access to edge attributes applied to the endpoint.
+        /// </summary>
+        public DotEntityAttributesAccessor<IDotEdgeEndpointAttributes, DotEdgeEndpointRootAttributes> Attributes { get; }
     }
 }

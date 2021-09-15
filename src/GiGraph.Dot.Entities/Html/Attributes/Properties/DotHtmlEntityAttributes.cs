@@ -17,6 +17,6 @@ namespace GiGraph.Dot.Entities.Html.Attributes.Properties
         {
         }
 
-        internal new DotHtmlAttributeCollection Collection => (DotHtmlAttributeCollection) base.Collection;
+        internal new DotHtmlAttributeCollection Collection => (DotHtmlAttributeCollection) _attributes;
     }
 }

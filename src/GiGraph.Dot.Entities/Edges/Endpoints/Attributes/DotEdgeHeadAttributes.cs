@@ -1,5 +1,6 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
+using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Arrowheads;
 using GiGraph.Dot.Types.Clusters;
@@ -7,7 +8,7 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
-    public class DotEdgeHeadAttributes : DotNestedEntityAttributes<IDotEdgeEndpointAttributes, DotEdgeHeadRootAttributes>, IDotEdgeHeadRootAttributes
+    public class DotEdgeHeadAttributes : DotNestedEntityAttributes<IDotEdgeEndpointAttributes, DotEdgeHeadRootAttributes>, IDotEdgeEndpointRootAttributes
     {
         public DotEdgeHeadAttributes(DotAttributeCollection attributes)
             : this(new DotEdgeHeadRootAttributes(attributes))
@@ -23,7 +24,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
         ///     Hyperlink attributes of the head of the edge. If defined, the hyperlink is output as part of the head's <see cref="Label" />.
         ///     Also, this value is used near the head, overriding hyperlink attributes set on the edge.
         /// </summary>
-        public virtual DotEdgeHeadHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
+        public virtual DotEdgeEndpointHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Label" />
         public virtual DotLabel Label
