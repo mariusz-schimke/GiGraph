@@ -6,9 +6,9 @@ using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Clusters.Collections
 {
-    public partial class DotGraphClusterCollection : IDotGraphClusterRootAttributes
+    public partial class DotGraphClusterCollection : IDotGraphClustersRootAttributes
     {
-        /// <inheritdoc cref="IDotGraphClusterRootAttributes.Style" />
+        /// <inheritdoc cref="IDotGraphClustersRootAttributes.Style" />
         public virtual DotClusterStyleAttributeOptions Style => Attributes.Implementation.Style;
 
         /// <inheritdoc cref="IDotGraphClusterAttributes.AllowEdgeClipping" />
