@@ -15,12 +15,6 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             }
         }
 
-        protected DotNestedEntityAttributes(TEntityAttributeProperties implementation)
-            : base(implementation)
-        {
-            Attributes = new DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties>(implementation);
-        }
-
         protected DotNestedEntityAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {

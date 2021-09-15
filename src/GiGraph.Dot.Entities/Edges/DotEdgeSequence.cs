@@ -4,7 +4,6 @@ using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
-using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Edges
@@ -26,10 +25,15 @@ namespace GiGraph.Dot.Entities.Edges
         }
 
         private DotEdgeSequence(DotEndpointDefinition[] endpoints, DotAttributeCollection attributes)
-            : base(endpoints, new DotEdgeRootAttributes(attributes))
+            : this(endpoints, new DotEdgeRootAttributes(attributes))
         {
-            Tails = new DotEdgeEndpoint(new DotEdgeTailRootAttributes(attributes));
-            Heads = new DotEdgeEndpoint(new DotEdgeHeadRootAttributes(attributes));
+        }
+
+        private DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes attributes)
+            : base(endpoints, attributes)
+        {
+            Tails = new DotEdgeEndpoint(attributes.Tail);
+            Heads = new DotEdgeEndpoint(attributes.Head);
         }
 
         /// <summary>
