@@ -7,10 +7,10 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
     {
         private readonly DotGraphRootAttributes _graphAttributes;
 
-        public DotGraphClusterCollection(DotGraphRootAttributes graphAttributes, DotGraphClustersRootAttributes graphClustersAttributes)
+        public DotGraphClusterCollection(DotGraphRootAttributes graphAttributes)
         {
             _graphAttributes = graphAttributes;
-            Attributes = new DotEntityAttributesAccessor<IDotGraphClusterAttributes, DotGraphClustersRootAttributes>(graphClustersAttributes);
+            Attributes = new DotEntityAttributesAccessor<IDotGraphClusterAttributes, DotGraphClustersRootAttributes>(graphAttributes.Clusters);
         }
 
         /// <summary>

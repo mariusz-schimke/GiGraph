@@ -6,6 +6,11 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
     public interface IDotGraphRootAttributes : IDotGraphAttributes
     {
         /// <summary>
+        ///     Attributes applied to clusters.
+        /// </summary>
+        DotGraphClustersRootAttributes Clusters { get; }
+
+        /// <summary>
         ///     Font attributes.
         /// </summary>
         DotGraphFontAttributes Font { get; }
