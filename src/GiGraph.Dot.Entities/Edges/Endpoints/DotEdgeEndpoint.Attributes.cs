@@ -6,7 +6,7 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
-    public abstract partial class DotEdgeEndpoint : IDotEdgeEndpointRootAttributes
+    public partial class DotEdgeEndpoint : IDotEdgeEndpointRootAttributes
     {
         /// <inheritdoc cref="IDotEdgeEndpointRootAttributes.Hyperlink" />
         public virtual DotEdgeEndpointHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;

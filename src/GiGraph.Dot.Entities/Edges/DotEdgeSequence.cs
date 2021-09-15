@@ -28,8 +28,8 @@ namespace GiGraph.Dot.Entities.Edges
         private DotEdgeSequence(DotEndpointDefinition[] endpoints, DotAttributeCollection attributes)
             : base(endpoints, new DotEdgeRootAttributes(attributes))
         {
-            Tails = new DotEdgeTail(new DotEdgeTailRootAttributes(attributes));
-            Heads = new DotEdgeHead(new DotEdgeHeadRootAttributes(attributes));
+            Tails = new DotEdgeEndpoint(new DotEdgeTailRootAttributes(attributes));
+            Heads = new DotEdgeEndpoint(new DotEdgeHeadRootAttributes(attributes));
         }
 
         /// <summary>
@@ -70,12 +70,12 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         ///     Attributes applied to the heads of the edges in this sequence.
         /// </summary>
-        public virtual DotEdgeHead Heads { get; }
+        public virtual DotEdgeEndpoint Heads { get; }
 
         /// <summary>
         ///     Attributes applied to the tails of the edges in this sequence.
         /// </summary>
-        public virtual DotEdgeTail Tails { get; }
+        public virtual DotEdgeEndpoint Tails { get; }
 
         protected override string GetOrderingKey()
         {

@@ -3,9 +3,9 @@ using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
-    public abstract partial class DotEdgeEndpoint
+    public partial class DotEdgeEndpoint
     {
-        protected DotEdgeEndpoint(DotEdgeEndpointRootAttributes attributes)
+        public DotEdgeEndpoint(DotEdgeEndpointRootAttributes attributes)
         {
             Attributes = new DotEntityAttributesAccessor<IDotEdgeEndpointAttributes, DotEdgeEndpointRootAttributes>(attributes);
         }
