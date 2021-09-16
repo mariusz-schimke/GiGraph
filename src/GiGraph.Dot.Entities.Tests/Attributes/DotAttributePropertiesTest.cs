@@ -6,7 +6,6 @@ using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Attributes;
-using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Nodes;
@@ -14,7 +13,6 @@ using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Entities.Subgraphs.Attributes;
 using GiGraph.Dot.Extensions;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Qualities;
 using Xunit;
@@ -24,12 +22,11 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
     public class DotAttributePropertiesTest
     {
         [Fact]
-        public void all_entity_attributes_generic_class_descendants_implement_the_interface_passed_to_it_as_the_generic_argument()
+        public void all_nested_entity_attributes_class_descendants_implement_the_interface_passed_to_them_as_the_generic_argument()
         {
-            var types = Assembly.GetAssembly(typeof(DotEntityAttributes<>))!.GetTypes()
+            var types = Assembly.GetAssembly(typeof(DotNestedEntityAttributes<,>))!.GetTypes()
                .Where(t => !t.IsAbstract)
-               .Where(t => t.IsAssignableTo(typeof(DotEntityAttributes)))
-               .Where(t => t != typeof(DotEntityAttributes))
+               .Where(t => t.IsAssignableTo(typeof(DotNestedEntityAttributes)))
                .ToArray();
 
             Assert.NotEmpty(types);
@@ -40,24 +37,27 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
                 do
                 {
-                    if (!type.IsGenericType)
+                    if (type.BaseType != typeof(DotNestedEntityAttributes))
                     {
                         type = type.BaseType;
                         continue;
                     }
 
-                    var entityAttributeInterfaceType = type.GetGenericArguments().First();
+                    var entityAttributeInterfaceType = type.GetGenericArguments()[0];
+                    var entityAttributeImplementationType = type.GetGenericArguments()[1];
                     Assert.True(entityAttributeInterfaceType.IsInterface);
+                    Assert.False(entityAttributeImplementationType.IsInterface);
 
-                    var entityAttributesImplementationType = typeof(DotEntityAttributes<>).MakeGenericType(entityAttributeInterfaceType);
+                    var entityAttributesImplementationType = typeof(DotNestedEntityAttributes<,>).MakeGenericType(entityAttributeInterfaceType, entityAttributeImplementationType);
 
-                    // ensure that the type is assignable to the DotEntityAttributes<> with the same generic argument
-                    // (this indicates that the class of interest is a descendant of that type
+                    // ensure that the type is assignable to DotNestedEntityAttributes<,> to make sure no type inherits directly
+                    // from the non-generic DotNestedEntityAttributes base type
                     Assert.True(sourceType.IsAssignableTo(entityAttributesImplementationType));
 
-                    // ensure that the same type is also assignable to the interface used as a generic argument
-                    // (the assumption is that the same class that inherits from DotEntityAttributes<IMyAttributesInterface>
-                    // should also implement the interface IMyAttributesInterface passed as the generic argument
+                    // Ensure that the same type is also assignable to the interface used as the first generic argument.
+                    // The assumption is that the same class that inherits from DotNestedEntityAttributes<IMyAttributesInterface, IMyEntity>
+                    // should also implement the interface IMyAttributesInterface passed as the generic argument. If another type
+                    // is used as the implementation parameter, it may be a mistake.
                     Assert.True(sourceType.IsAssignableTo(entityAttributeInterfaceType));
 
                     break;
@@ -65,7 +65,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
                 if (type is null)
                 {
-                    throw new Exception($"The type {sourceType.Name} is not a descendant of {typeof(DotEntityAttributes<>).Name}");
+                    throw new Exception($"The type {sourceType.Name} is not a descendant of {nameof(DotNestedEntityAttributes)}");
                 }
             }
         }
