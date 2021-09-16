@@ -3,18 +3,12 @@ using System.Linq;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Clusters;
-using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Entities.Edges;
-using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Nodes;
-using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Entities.Subgraphs;
-using GiGraph.Dot.Entities.Subgraphs.Attributes;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Output.Qualities;
 using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes
@@ -108,24 +102,24 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             ReadAndWriteAttributeProperties(edge.Head.Attributes, edge.Head.Attributes.GetMetadataDictionary().Values.ToArray());
         }
 
-        private static void ReadAndWriteAttributeProperties(object targetRoot, DotAttributePropertyMetadata[] attributes)
+        private static void ReadAndWriteAttributeProperties(IDotEntityAttributesAccessor targetRootObject, DotAttributePropertyMetadata[] attributes)
         {
             Assert.NotEmpty(attributes);
 
             foreach (var attribute in attributes)
             {
-                var target = targetRoot;
+                var targetObject = targetRootObject.Implementation;
                 var targetPropertyPath = attribute.GetPropertyInfoPath();
                 var targetProperty = targetPropertyPath.Last();
 
                 // get the target object by path
-                target = targetPropertyPath.Take(targetPropertyPath.Length - 1)
-                   .Aggregate(target, (current, property) => property.GetValue(current));
+                targetObject = targetPropertyPath.Take(targetPropertyPath.Length - 1)
+                   .Aggregate(targetObject, (current, property) => (DotEntityAttributes) property.GetValue(current));
 
-                InvokeGetterValid(target, targetProperty);
-                InvokeSetterValid(target, targetProperty);
+                InvokeGetterValid(targetObject, targetProperty);
+                InvokeSetterValid(targetObject, targetProperty);
 
-                EnsureInterfacePropertiesHaveAttributeKeysAssigned(target, targetProperty);
+                EnsureInterfacePropertiesHaveAttributeKeysAssigned(targetObject, targetProperty);
             }
         }
 
@@ -159,32 +153,21 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             }
         }
 
-        private static void EnsureInterfacePropertiesHaveAttributeKeysAssigned(object target, PropertyInfo targetProperty)
+        private static void EnsureInterfacePropertiesHaveAttributeKeysAssigned(DotEntityAttributes targetObject, PropertyInfo targetProperty)
         {
-            var ignore = new[]
-            {
-                typeof(IDotAnnotatable),
-                typeof(IDotGraphRootAttributes),
-                typeof(IDotGraphClusterRootAttributes),
-                typeof(IDotClusterRootAttributes),
-                typeof(IDotSubgraphRootAttributes),
-                typeof(IDotNodeRootAttributes),
-                typeof(IDotEdgeRootAttributes),
-                typeof(IDotEdgeTailRootAttributes),
-                typeof(IDotEdgeHeadRootAttributes)
-            };
-
             var tested = 0;
 
-            var attributeKeyPropertyBindingFlags = (BindingFlags) typeof(DotEntityAttributes)
-               .GetField("AttributeKeyPropertyBindingFlags", BindingFlags.Static | BindingFlags.NonPublic)!
-               .GetValue(null)!;
+            // it is assumed that the metadata dictionary contains interface properties
+            Assert.True(targetProperty.ReflectedType!.IsInterface);
 
-            foreach (var @interface in targetProperty.ReflectedType!.GetInterfaces().Where(i => !ignore.Contains(i)))
+            var interfaces = targetProperty.ReflectedType!.GetInterfaces()
+               .Append(targetProperty.ReflectedType);
+
+            foreach (var @interface in interfaces)
             {
-                foreach (var property in @interface.GetProperties(attributeKeyPropertyBindingFlags))
+                foreach (var property in @interface.GetRuntimeProperties())
                 {
-                    var getKey = (Func<PropertyInfo, string>) Delegate.CreateDelegate(typeof(Func<PropertyInfo, string>), target, "GetKey");
+                    var getKey = (Func<PropertyInfo, string>) Delegate.CreateDelegate(typeof(Func<PropertyInfo, string>), targetObject, "GetKey");
 
                     // should throw an exception if no key is available for a property
                     var key = getKey(property);
