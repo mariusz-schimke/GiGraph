@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties
 {
@@ -7,6 +6,5 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
     {
         Type InterfaceType { get; }
         DotEntityAttributes Implementation { get; }
-        string GetPropertyKey(PropertyInfo property);
     }
 }

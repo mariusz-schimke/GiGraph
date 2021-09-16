@@ -5,15 +5,10 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties
 {
-    public abstract partial class DotEntityAttributes
+    public abstract partial class DotEntityAttributes : IDotEntityAttributes
     {
         protected readonly Lazy<DotMemberAttributeKeyLookup> _attributeKeyLookup;
         protected readonly DotAttributeCollection _attributes;
-
-        protected DotEntityAttributes(DotEntityAttributes source)
-            : this(source._attributes, source._attributeKeyLookup)
-        {
-        }
 
         protected DotEntityAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
         {
@@ -21,11 +16,19 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             _attributeKeyLookup = attributeKeyLookup;
         }
 
-        internal DotAttributeCollection Collection => _attributes;
+        public DotAttributeCollection Collection => _attributes;
+
+        string IDotEntityAttributes.GetPropertyKey(PropertyInfo property) => GetKey(property);
 
         protected virtual string GetKey(MethodBase accessor)
         {
             return _attributeKeyLookup.Value.GetPropertyAccessorKey((MethodInfo) accessor);
+        }
+
+        protected virtual string GetKey(PropertyInfo property)
+        {
+            // the lookup contains only interface properties and property accessors of implementing classes
+            return _attributeKeyLookup.Value.GetPropertyKey(property);
         }
     }
 }

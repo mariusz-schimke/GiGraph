@@ -11,9 +11,6 @@ namespace GiGraph.Dot.Entities.Html.Attributes.Properties
         {
         }
 
-        /// <summary>
-        ///     Gets the underlying collection of attributes applied to the element.
-        /// </summary>
-        public new DotHtmlAttributeCollection Collection => (DotHtmlAttributeCollection) _attributes;
+        public DotHtmlAttributeCollection Collection => ((DotHtmlEntityAttributes) _attributes).Collection;
     }
 }
