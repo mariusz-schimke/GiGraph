@@ -62,8 +62,8 @@ namespace GiGraph.Dot.Entities.Edges
 
         private DotEdge(TTail tail, THead head, DotAttributeCollection attributes)
             : this(
-                new DotEdgeEndpoint<TTail>(tail, new DotEdgeTailRootAttributes(attributes)),
-                new DotEdgeEndpoint<THead>(head, new DotEdgeHeadRootAttributes(attributes)),
+                new DotEdgeEndpoint<TTail>(tail, new DotEdgeTailAttributes(attributes)),
+                new DotEdgeEndpoint<THead>(head, new DotEdgeHeadAttributes(attributes)),
                 new DotEdgeRootAttributes(attributes)
             )
         {

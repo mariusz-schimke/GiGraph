@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
         DotEndpointPort Port { get; set; }
 
         /// <summary>
-        ///     Logical endpoint of the edge (dot only). When <see cref="IDotGraphClusterAttributes.AllowEdgeClipping" /> is true (see
+        ///     Logical endpoint of the edge (dot only). When <see cref="IDotGraphClustersAttributes.AllowEdgeClipping" /> is true (see
         ///     attributes on the graph's <see cref="DotCommonGraphSection.Clusters" /> collection), if the current property is defined, and
         ///     is the identifier of a cluster containing the real endpoint node, the edge is clipped to the boundary of the cluster.
         /// </summary>
