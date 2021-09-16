@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties
 {
-    public abstract class DotEntityAttributesAccessor : DotEntityAttributes
+    public abstract class DotEntityAttributesAccessor : DotEntityAttributes, IDotEntityAttributesAccessor
     {
         protected DotEntityAttributesAccessor(DotEntityAttributes source)
             : base(source)
         {
         }
 
-        protected DotEntityAttributesAccessor(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
-        {
-        }
+        Type IDotEntityAttributesAccessor.InterfaceType => GetInterfaceType();
+        DotEntityAttributes IDotEntityAttributesAccessor.Implementation => GetImplementation();
+        string IDotEntityAttributesAccessor.GetPropertyKey(PropertyInfo property) => GetPropertyKey(property);
+
+        protected abstract Type GetInterfaceType();
+        protected abstract DotEntityAttributes GetImplementation();
 
         protected virtual string GetPropertyKey(PropertyInfo property)
         {

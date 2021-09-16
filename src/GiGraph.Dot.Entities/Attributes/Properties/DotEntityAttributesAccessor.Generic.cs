@@ -7,13 +7,14 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
     public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributesAccessor
         where TEntityAttributeProperties : DotEntityAttributes, TIEntityAttributeProperties
     {
+        protected static readonly Type InterfaceType = typeof(TIEntityAttributeProperties);
         protected readonly TEntityAttributeProperties _implementation;
 
         static DotEntityAttributesAccessor()
         {
-            if (!typeof(TIEntityAttributeProperties).IsInterface)
+            if (!InterfaceType.IsInterface)
             {
-                throw new ArgumentException($"The type {typeof(TIEntityAttributeProperties).Name} specified as the type parameter is not an interface.", nameof(TIEntityAttributeProperties));
+                throw new ArgumentException($"The type {InterfaceType.Name} specified as the type parameter is not an interface.", nameof(TIEntityAttributeProperties));
             }
         }
 
@@ -27,6 +28,9 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         ///     Gets the underlying attribute properties implementation.
         /// </summary>
         internal TEntityAttributeProperties Implementation => _implementation;
+
+        protected override DotEntityAttributes GetImplementation() => _implementation;
+        protected override Type GetInterfaceType() => InterfaceType;
 
         /// <summary>
         ///     Gets the specified attribute from the collection. If it is not defined, returns null.
@@ -184,7 +188,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             // make sure the property expression refers to entity attributes instance type, to any of its base classes, or to an interface it implements
             if (propertyInfo.DeclaringType is null || !propertyInfo.DeclaringType.IsInstanceOfType(_implementation))
             {
-                throw new ArgumentException($"The expression has to specify a property of the {typeof(TIEntityAttributeProperties).Name} interface.", nameof(property));
+                throw new ArgumentException($"The expression has to specify a property of the {InterfaceType.Name} interface.", nameof(property));
             }
 
             return propertyInfo;
