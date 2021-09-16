@@ -167,10 +167,8 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             {
                 foreach (var property in @interface.GetRuntimeProperties())
                 {
-                    var getKey = (Func<PropertyInfo, string>) Delegate.CreateDelegate(typeof(Func<PropertyInfo, string>), targetObject, "GetKey");
-
                     // should throw an exception if no key is available for a property
-                    var key = getKey(property);
+                    var key = ((IDotEntityAttributes) targetObject).GetPropertyKey(property);
                     Assert.NotEmpty(key);
 
                     tested++;
