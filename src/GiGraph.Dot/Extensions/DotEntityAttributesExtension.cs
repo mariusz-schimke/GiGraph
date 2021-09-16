@@ -46,9 +46,9 @@ namespace GiGraph.Dot.Extensions
         /// </param>
         public static Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary(this DotEntityAttributesAccessor @this)
         {
-            var properties = @this.GetPathsToAttributeProperties();
+            var propertyPathDictionary = @this.GetPathsToAttributeProperties();
 
-            return properties
+            return propertyPathDictionary
                .Select(item =>
                 {
                     var metadata = DotAttributeKeys.MetadataDictionary[item.Key];
@@ -58,23 +58,22 @@ namespace GiGraph.Dot.Extensions
                         metadata.CompatibleElements,
                         metadata.CompatibleLayoutEngines,
                         metadata.CompatibleOutputs,
-                        item.Value.Select(pathItem => pathItem.Property).ToArray()
+                        item.Value.Select(propertyInfo => propertyInfo).ToArray()
                     );
                 })
                .ToDictionary(key => key.Key, element => element);
         }
 
-        private static IDictionary<string, (DotEntityAttributes DeclaringInstance, PropertyInfo Property)[]> GetPathsToAttributeProperties(this DotEntityAttributesAccessor @this)
+        private static IDictionary<string, PropertyInfo[]> GetPathsToAttributeProperties(this DotEntityAttributesAccessor @this)
         {
-            var output = new Dictionary<string, (DotEntityAttributes DeclaringInstance, PropertyInfo Property)[]>();
-            @this.GetPathsToAttributeProperties(output, basePath: Array.Empty<(DotEntityAttributes, PropertyInfo)>());
+            var output = new Dictionary<string, PropertyInfo[]>();
+            @this.GetPathsToAttributeProperties(output, basePath: Array.Empty<PropertyInfo>());
             return output;
         }
 
-        private static void GetPathsToAttributeProperties(
-            this DotEntityAttributesAccessor @this,
-            IDictionary<string, (DotEntityAttributes DeclaringInstance, PropertyInfo Property)[]> output,
-            (DotEntityAttributes DeclaringInstance, PropertyInfo Property)[] basePath
+        private static void GetPathsToAttributeProperties(this DotEntityAttributesAccessor @this,
+            IDictionary<string, PropertyInfo[]> output,
+            PropertyInfo[] basePath
         )
         {
             var accessor = (IDotEntityAttributesAccessor) @this;
@@ -89,8 +88,8 @@ namespace GiGraph.Dot.Extensions
             foreach (var interfaceProperty in interfaceProperties)
             {
                 output.Add(
-                    accessor.GetPropertyKey(interfaceProperty),
-                    basePath.Append((accessor.Implementation, interfaceProperty)).ToArray()
+                    ((IDotEntityAttributes) accessor.Implementation).GetPropertyKey(interfaceProperty),
+                    basePath.Append(interfaceProperty).ToArray()
                 );
             }
 
@@ -101,7 +100,7 @@ namespace GiGraph.Dot.Extensions
 
             foreach (var nestedAttributesProperty in nestedAttributesProperties)
             {
-                var currentPath = basePath.Append((accessor.Implementation, nestedAttributesProperty)).ToArray();
+                var currentPath = basePath.Append(nestedAttributesProperty).ToArray();
 
                 var nested = (IDotNestedEntityAttributes) nestedAttributesProperty.GetValue(accessor.Implementation);
                 nested.Accessor.GetPathsToAttributeProperties(output, currentPath);
