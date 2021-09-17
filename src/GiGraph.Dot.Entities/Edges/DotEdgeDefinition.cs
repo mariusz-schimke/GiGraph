@@ -1,4 +1,5 @@
 ﻿using System;
+using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
 using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
@@ -17,13 +18,13 @@ namespace GiGraph.Dot.Entities.Edges
                     ? endpoints
                     : throw new ArgumentException("At least a pair of endpoints has to be specified.", nameof(endpoints));
 
-            Attributes = new DotEntityRootAttributes<IDotEdgeAttributes, DotEdgeRootAttributes>(attributes);
+            Attributes = new DotEntityRootAttributesAccessor<IDotEdgeAttributes, DotEdgeRootAttributes>(attributes);
         }
 
         /// <summary>
         ///     Provides access to the attributes of the edge.
         /// </summary>
-        public virtual DotEntityRootAttributes<IDotEdgeAttributes, DotEdgeRootAttributes> Attributes { get; }
+        public virtual DotEntityRootAttributesAccessor<IDotEdgeAttributes, DotEdgeRootAttributes> Attributes { get; }
 
         /// <summary>
         ///     Gets the endpoints of the edge.

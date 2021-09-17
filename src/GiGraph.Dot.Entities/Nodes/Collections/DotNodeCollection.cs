@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
 using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Output.Entities;
@@ -23,13 +24,13 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
 
         private DotNodeCollection(DotNodeRootAttributes attributes)
         {
-            Attributes = new DotEntityRootAttributes<IDotNodeAttributes, DotNodeRootAttributes>(attributes);
+            Attributes = new DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes>(attributes);
         }
 
         /// <summary>
         ///     Provides access to the global attributes applied to nodes.
         /// </summary>
-        public virtual DotEntityRootAttributes<IDotNodeAttributes, DotNodeRootAttributes> Attributes { get; }
+        public virtual DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

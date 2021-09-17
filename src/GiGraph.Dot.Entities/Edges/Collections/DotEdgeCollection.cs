@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
 using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
@@ -26,13 +27,13 @@ namespace GiGraph.Dot.Entities.Edges.Collections
 
         private DotEdgeCollection(DotEdgeRootAttributes attributes)
         {
-            Attributes = new DotEntityRootAttributes<IDotEdgeAttributes, DotEdgeRootAttributes>(attributes);
+            Attributes = new DotEntityRootAttributesAccessor<IDotEdgeAttributes, DotEdgeRootAttributes>(attributes);
         }
 
         /// <summary>
         ///     Provides access to the global attributes applied to edges.
         /// </summary>
-        public virtual DotEntityRootAttributes<IDotEdgeAttributes, DotEdgeRootAttributes> Attributes { get; }
+        public virtual DotEntityRootAttributesAccessor<IDotEdgeAttributes, DotEdgeRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

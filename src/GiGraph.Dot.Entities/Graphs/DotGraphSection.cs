@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
 using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Graphs.Attributes;
@@ -26,13 +27,13 @@ namespace GiGraph.Dot.Entities.Graphs
         private DotGraphSection(DotGraphRootAttributes graphAttributes)
             : base(graphAttributes, new DotGraphClusterCollection(graphAttributes))
         {
-            Attributes = new DotEntityRootAttributes<IDotGraphAttributes, DotGraphRootAttributes>(graphAttributes);
+            Attributes = new DotEntityRootAttributesAccessor<IDotGraphAttributes, DotGraphRootAttributes>(graphAttributes);
         }
 
         /// <summary>
         ///     Provides access to the attributes of the graph.
         /// </summary>
-        public virtual DotEntityRootAttributes<IDotGraphAttributes, DotGraphRootAttributes> Attributes { get; }
+        public virtual DotEntityRootAttributesAccessor<IDotGraphAttributes, DotGraphRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="DotCommonGraphSection.Clusters" />
         public new virtual DotGraphClusterCollection Clusters => (DotGraphClusterCollection) base.Clusters;

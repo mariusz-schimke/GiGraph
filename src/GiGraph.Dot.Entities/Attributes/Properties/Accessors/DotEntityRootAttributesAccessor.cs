@@ -1,13 +1,12 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
 using GiGraph.Dot.Output.Qualities;
 
-namespace GiGraph.Dot.Entities.Attributes.Properties.Common
+namespace GiGraph.Dot.Entities.Attributes.Properties.Accessors
 {
-    public class DotEntityRootAttributes<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties>, IDotAnnotatable
+    public class DotEntityRootAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties>, IDotAnnotatable
         where TEntityAttributeProperties : DotEntityAttributes, TIEntityAttributeProperties
     {
-        public DotEntityRootAttributes(TEntityAttributeProperties attributes)
+        public DotEntityRootAttributesAccessor(TEntityAttributeProperties attributes)
             : base(attributes)
         {
         }
