@@ -71,7 +71,6 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         {
             var graph = new DotGraph();
             ReadAndWriteAttributeProperties(graph.Attributes, graph.Attributes.GetMetadataDictionary().Values.ToArray());
-            ReadAndWriteAttributeProperties(graph.Clusters.Attributes, graph.Clusters.Attributes.GetMetadataDictionary().Values.ToArray());
         }
 
         [Fact]
@@ -100,8 +99,6 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         {
             var edge = new DotEdge("");
             ReadAndWriteAttributeProperties(edge.Attributes, edge.Attributes.GetMetadataDictionary().Values.ToArray());
-            ReadAndWriteAttributeProperties(edge.Tail.Attributes, edge.Tail.Attributes.GetMetadataDictionary().Values.ToArray());
-            ReadAndWriteAttributeProperties(edge.Head.Attributes, edge.Head.Attributes.GetMetadataDictionary().Values.ToArray());
         }
 
         private static void ReadAndWriteAttributeProperties(IDotEntityAttributesAccessor targetRootObject, DotAttributePropertyMetadata[] attributes)
@@ -159,7 +156,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         {
             var tested = 0;
 
-            // it is assumed that the metadata dictionary contains interface properties
+            // it is assumed that the metadata dictionary that the target property comes from, contains interface properties
             Assert.True(targetProperty.ReflectedType!.IsInterface);
 
             var interfaces = targetProperty.ReflectedType!.GetInterfaces()
