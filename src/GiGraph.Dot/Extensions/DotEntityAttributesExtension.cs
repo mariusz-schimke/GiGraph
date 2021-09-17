@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Extensions
         /// <param name="this">
         ///     The current attribute collection context to get the metadata dictionary for.
         /// </param>
-        public static Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary(this DotEntityAttributesAccessor @this)
+        public static Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary(this IDotEntityAttributesAccessor @this)
         {
             var propertyPathDictionary = @this.GetPathsToAttributeProperties();
 
@@ -64,37 +64,33 @@ namespace GiGraph.Dot.Extensions
                .ToDictionary(key => key.Key, element => element);
         }
 
-        private static IDictionary<string, PropertyInfo[]> GetPathsToAttributeProperties(this DotEntityAttributesAccessor @this)
+        private static IDictionary<string, PropertyInfo[]> GetPathsToAttributeProperties(this IDotEntityAttributesAccessor @this)
         {
             var output = new Dictionary<string, PropertyInfo[]>();
             @this.GetPathsToAttributeProperties(output, basePath: Array.Empty<PropertyInfo>());
             return output;
         }
 
-        private static void GetPathsToAttributeProperties(this DotEntityAttributesAccessor @this,
-            IDictionary<string, PropertyInfo[]> output,
-            PropertyInfo[] basePath
-        )
+        private static void GetPathsToAttributeProperties(this IDotEntityAttributesAccessor @this,
+            IDictionary<string, PropertyInfo[]> output, PropertyInfo[] basePath)
         {
-            var accessor = (IDotEntityAttributesAccessor) @this;
-
             // get component interfaces and the properties of each of them
-            var interfaceProperties = accessor.InterfaceType
+            var interfaceProperties = @this.InterfaceType
                .GetInterfaces()
-               .Concat(new[] { accessor.InterfaceType })
+               .Concat(new[] { @this.InterfaceType })
                .SelectMany(i => i.GetProperties(BindingFlags.Instance | BindingFlags.Public));
 
             // add the properties to the output asserting that each of them represents an attribute
             foreach (var interfaceProperty in interfaceProperties)
             {
                 output.Add(
-                    accessor.GetPropertyKey(interfaceProperty),
+                    @this.GetPropertyKey(interfaceProperty),
                     basePath.Append(interfaceProperty).ToArray()
                 );
             }
 
             // now get all nested property groups
-            var nestedAttributesProperties = accessor.Implementation.GetType()
+            var nestedAttributesProperties = @this.Implementation.GetType()
                .GetProperties(BindingFlags.Instance | BindingFlags.Public)
                .Where(property => typeof(IDotEntityAttributes).IsAssignableFrom(property.PropertyType));
 
@@ -102,7 +98,7 @@ namespace GiGraph.Dot.Extensions
             {
                 var currentPath = basePath.Append(nestedAttributesProperty).ToArray();
 
-                var nested = (IDotEntityAttributes) nestedAttributesProperty.GetValue(accessor.Implementation);
+                var nested = (IDotEntityAttributes) nestedAttributesProperty.GetValue(@this.Implementation);
                 nested.Accessor.GetPathsToAttributeProperties(output, currentPath);
             }
         }
