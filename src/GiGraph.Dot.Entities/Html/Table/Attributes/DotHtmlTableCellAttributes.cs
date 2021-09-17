@@ -8,7 +8,7 @@ using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes
 {
-    public class DotHtmlTableCellAttributes : DotHtmlTableTableCellCommonAttributes, IDotHtmlTableCellAttributes
+    public class DotHtmlTableCellAttributes : DotHtmlTableTableCellCommonAttributes<IDotHtmlTableCellAttributes, DotHtmlTableCellAttributes>, IDotHtmlTableCellAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> HtmlTableCellAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableCellAttributes, IDotHtmlTableCellAttributes>().BuildLazy();
 

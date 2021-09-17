@@ -8,7 +8,7 @@ using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Html.Font.Attributes
 {
-    public class DotHtmlFontAttributes : DotHtmlEntityAttributes, IDotHtmlFontAttributes
+    public class DotHtmlFontAttributes : DotHtmlEntityAttributes<IDotHtmlFontAttributes, DotHtmlFontAttributes>, IDotHtmlFontAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> HtmlFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlFontAttributes, IDotHtmlFontAttributes>().BuildLazy();
 

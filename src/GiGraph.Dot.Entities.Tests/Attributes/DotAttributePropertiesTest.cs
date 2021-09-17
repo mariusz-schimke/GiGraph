@@ -18,9 +18,9 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
         [Fact]
         public void all_nested_entity_attributes_class_descendants_implement_the_interface_passed_to_them_as_the_generic_argument()
         {
-            var types = Assembly.GetAssembly(typeof(DotNestedEntityAttributes<,>))!.GetTypes()
+            var types = Assembly.GetAssembly(typeof(DotEntityAttributes<,>))!.GetTypes()
                .Where(t => !t.IsAbstract)
-               .Where(t => t.IsAssignableTo(typeof(DotNestedEntityAttributes)))
+               .Where(t => t.IsAssignableTo(typeof(DotEntityAttributes)))
                .ToArray();
 
             Assert.NotEmpty(types);
@@ -31,25 +31,27 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
                 do
                 {
-                    if (type.BaseType != typeof(DotNestedEntityAttributes))
+                    if (type.BaseType != typeof(DotEntityAttributes))
                     {
                         type = type.BaseType;
                         continue;
                     }
 
-                    var entityAttributeInterfaceType = type.GetGenericArguments()[0];
-                    var entityAttributeImplementationType = type.GetGenericArguments()[1];
+                    var genericArguments = type.GetGenericArguments();
+                    var entityAttributeInterfaceType = genericArguments[0];
+                    var entityAttributeImplementationType = genericArguments[1];
+
                     Assert.True(entityAttributeInterfaceType.IsInterface);
                     Assert.False(entityAttributeImplementationType.IsInterface);
 
-                    var entityAttributesImplementationType = typeof(DotNestedEntityAttributes<,>).MakeGenericType(entityAttributeInterfaceType, entityAttributeImplementationType);
+                    var entityAttributesImplementationType = typeof(DotEntityAttributes<,>).MakeGenericType(entityAttributeInterfaceType, entityAttributeImplementationType);
 
-                    // ensure that the type is assignable to DotNestedEntityAttributes<,> to make sure no type inherits directly
-                    // from the non-generic DotNestedEntityAttributes base type
+                    // ensure that the type is assignable to DotEntityAttributes<,> to make sure no type inherits directly
+                    // from the non-generic DotEntityAttributes base type
                     Assert.True(sourceType.IsAssignableTo(entityAttributesImplementationType));
 
                     // Ensure that the same type is also assignable to the interface used as the first generic argument.
-                    // The assumption is that the same class that inherits from DotNestedEntityAttributes<IMyAttributesInterface, IMyEntity>
+                    // The assumption is that the same class that inherits from DotEntityAttributes<IMyAttributesInterface, IMyEntity>
                     // should also implement the interface IMyAttributesInterface passed as the generic argument. If another type
                     // is used as the implementation parameter, it may be a mistake.
                     Assert.True(sourceType.IsAssignableTo(entityAttributeInterfaceType));
@@ -59,7 +61,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
                 if (type is null)
                 {
-                    throw new Exception($"The type {sourceType.Name} is not a descendant of {nameof(DotNestedEntityAttributes)}");
+                    throw new Exception($"The type {sourceType.Name} is not a descendant of {nameof(DotEntityAttributes)}");
                 }
             }
         }
@@ -167,8 +169,10 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
             {
                 foreach (var property in @interface.GetRuntimeProperties())
                 {
+                    var accessor = ((IDotEntityAttributes) targetObject).Accessor;
+
                     // should throw an exception if no key is available for a property
-                    var key = ((IDotEntityAttributes) targetObject).GetPropertyKey(property);
+                    var key = ((IDotEntityAttributesAccessor) accessor).GetPropertyKey(property);
                     Assert.NotEmpty(key);
 
                     tested++;

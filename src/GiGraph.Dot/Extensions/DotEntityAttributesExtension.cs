@@ -88,7 +88,7 @@ namespace GiGraph.Dot.Extensions
             foreach (var interfaceProperty in interfaceProperties)
             {
                 output.Add(
-                    ((IDotEntityAttributes) accessor.Implementation).GetPropertyKey(interfaceProperty),
+                    accessor.GetPropertyKey(interfaceProperty),
                     basePath.Append(interfaceProperty).ToArray()
                 );
             }
@@ -96,13 +96,13 @@ namespace GiGraph.Dot.Extensions
             // now get all nested property groups
             var nestedAttributesProperties = accessor.Implementation.GetType()
                .GetProperties(BindingFlags.Instance | BindingFlags.Public)
-               .Where(property => typeof(IDotNestedEntityAttributes).IsAssignableFrom(property.PropertyType));
+               .Where(property => typeof(IDotEntityAttributes).IsAssignableFrom(property.PropertyType));
 
             foreach (var nestedAttributesProperty in nestedAttributesProperties)
             {
                 var currentPath = basePath.Append(nestedAttributesProperty).ToArray();
 
-                var nested = (IDotNestedEntityAttributes) nestedAttributesProperty.GetValue(accessor.Implementation);
+                var nested = (IDotEntityAttributes) nestedAttributesProperty.GetValue(accessor.Implementation);
                 nested.Accessor.GetPathsToAttributeProperties(output, currentPath);
             }
         }

@@ -18,7 +18,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes
 {
-    public class DotClusterRootAttributes : DotEntityAttributes, IDotClusterRootAttributes
+    public class DotClusterRootAttributes : DotEntityAttributes<IDotClusterAttributes, DotClusterRootAttributes>, IDotClusterRootAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> ClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
 

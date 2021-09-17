@@ -7,7 +7,7 @@ using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes
 {
-    public class DotHtmlTableAttributes : DotHtmlTableTableCellCommonAttributes, IDotHtmlTableAttributes
+    public class DotHtmlTableAttributes : DotHtmlTableTableCellCommonAttributes<IDotHtmlTableAttributes, DotHtmlTableAttributes>, IDotHtmlTableAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> HtmlTableAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableAttributes, IDotHtmlTableAttributes>().BuildLazy();
 

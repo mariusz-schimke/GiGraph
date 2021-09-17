@@ -16,16 +16,18 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             _attributeKeyLookup = attributeKeyLookup;
         }
 
-        public DotAttributeCollection Collection => _attributes;
+        internal DotAttributeCollection Collection => _attributes;
 
-        string IDotEntityAttributes.GetPropertyKey(PropertyInfo property) => GetKey(property);
+        DotEntityAttributesAccessor IDotEntityAttributes.Accessor => GetAccessor();
+        protected abstract DotEntityAttributesAccessor GetAccessor();
 
         protected virtual string GetKey(MethodBase accessor)
         {
+            // the lookup contains only interface properties and property accessors of implementing classes
             return _attributeKeyLookup.Value.GetPropertyAccessorKey((MethodInfo) accessor);
         }
 
-        protected virtual string GetKey(PropertyInfo property)
+        protected internal virtual string GetKey(PropertyInfo property)
         {
             // the lookup contains only interface properties and property accessors of implementing classes
             return _attributeKeyLookup.Value.GetPropertyKey(property);

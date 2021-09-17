@@ -73,7 +73,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             var propertyInfo = GetProperty(property);
             propertyInfo.SetValue(_attributes, value);
 
-            var key = ((IDotEntityAttributes) _attributes).GetPropertyKey(propertyInfo);
+            var key = _attributes.GetKey(propertyInfo);
             return _attributes.Collection.Get(key);
         }
 
@@ -171,7 +171,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         public virtual string GetKey<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
         {
             var propertyInfo = GetProperty(property);
-            return ((IDotEntityAttributes) _attributes).GetPropertyKey(propertyInfo);
+            return _attributes.GetKey(propertyInfo);
         }
 
         protected virtual PropertyInfo GetProperty<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)

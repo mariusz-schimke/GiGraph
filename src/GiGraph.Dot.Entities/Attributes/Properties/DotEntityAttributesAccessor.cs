@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties
 {
@@ -13,6 +14,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
 
         Type IDotEntityAttributesAccessor.InterfaceType => GetInterfaceType();
         DotEntityAttributes IDotEntityAttributesAccessor.Implementation => _attributes;
+        string IDotEntityAttributesAccessor.GetPropertyKey(PropertyInfo property) => _attributes.GetKey(property);
 
         protected abstract Type GetInterfaceType();
     }

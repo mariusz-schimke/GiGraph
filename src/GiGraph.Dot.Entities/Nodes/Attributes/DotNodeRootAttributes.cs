@@ -19,7 +19,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
-    public class DotNodeRootAttributes : DotEntityAttributes, IDotNodeRootAttributes
+    public class DotNodeRootAttributes : DotEntityAttributes<IDotNodeAttributes, DotNodeRootAttributes>, IDotNodeRootAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> NodeRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().BuildLazy();
 

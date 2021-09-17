@@ -15,13 +15,13 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphRootAttributes : DotEntityAttributes, IDotGraphRootAttributes
+    public class DotGraphRootAttributes : DotEntityAttributes<IDotGraphAttributes, DotGraphRootAttributes>, IDotGraphRootAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().BuildLazy();
 
         protected readonly DotGraphCanvasAttributes _canvasAttributes;
-        protected readonly DotGraphFontAttributes _fontAttributes;
         protected readonly DotGraphClustersAttributes _clusterAttributes;
+        protected readonly DotGraphFontAttributes _fontAttributes;
         protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
         protected readonly DotLabelAlignmentAttributes _labelAlignmentAttributes;
         protected readonly DotGraphLayoutAttributes _layoutAttributes;
