@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
@@ -10,21 +10,18 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
-using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Ranks;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes
 {
-    public class DotClusterRootAttributes : DotEntityRootCommonAttributes<IDotClusterAttributes, DotClusterRootAttributes>, IDotClusterRootAttributes
+    public class DotClusterRootAttributes : DotClusterNodeRootCommonAttributes<IDotClusterAttributes, DotClusterRootAttributes>, IDotClusterRootAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> ClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
 
         protected readonly DotFontAttributes _fontAttributes;
         protected readonly DotLabelAlignmentAttributes _labelAlignmentAttributes;
         protected readonly DotClusterStyleAttributeOptions _styleAttributeOptions;
-        protected readonly DotSvgStyleSheetAttributes _svgStyleSheetAttributes;
 
         protected DotClusterRootAttributes(
             DotAttributeCollection attributes,
@@ -35,11 +32,10 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
             DotSvgStyleSheetAttributes svgStyleSheetAttributes,
             DotLabelAlignmentAttributes labelAlignmentAttributes
         )
-            : base(attributes, attributeKeyLookup, hyperlinkAttributes)
+            : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
         {
             _fontAttributes = fontAttributes;
             _styleAttributeOptions = styleAttributeOptions;
-            _svgStyleSheetAttributes = svgStyleSheetAttributes;
             _labelAlignmentAttributes = labelAlignmentAttributes;
         }
 
@@ -58,57 +54,7 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
 
         public virtual DotFontAttributes Font => _fontAttributes;
         public virtual DotClusterStyleAttributeOptions Style => _styleAttributeOptions;
-        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => _svgStyleSheetAttributes;
         public virtual DotLabelAlignmentAttributes LabelAlignment => _labelAlignmentAttributes;
-
-        [DotAttributeKey(DotAttributeKeys.Color)]
-        public virtual DotColorDefinition Color
-        {
-            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
-
-        [DotAttributeKey(DotAttributeKeys.FillColor)]
-        public virtual DotColorDefinition FillColor
-        {
-            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
-
-        [DotAttributeKey(DotAttributeKeys.PenWidth)]
-        public virtual double? BorderWidth
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
-
-        [DotAttributeKey(DotAttributeKeys.GradientAngle)]
-        public virtual int? GradientFillAngle
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
-
-        [DotAttributeKey(DotAttributeKeys.Tooltip)]
-        public virtual DotEscapeString Tooltip
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
-
-        [DotAttributeKey(DotAttributeKeys.Margin)]
-        public virtual DotPoint Padding
-        {
-            get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
-
-        [DotAttributeKey(DotAttributeKeys.SortV)]
-        public virtual int? SortIndex
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
 
         [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
         DotStyles? IDotClusterAttributes.Style
