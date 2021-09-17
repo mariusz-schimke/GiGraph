@@ -26,9 +26,6 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
             SvgStyleSheet = svgStyleSheetAttributes;
         }
 
-        /// <summary>
-        ///     Style sheet attributes used for SVG output.
-        /// </summary>
         public virtual DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
         [DotAttributeKey(DotAttributeKeys.Color)]

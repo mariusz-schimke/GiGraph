@@ -24,9 +24,6 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
             Hyperlink = hyperlinkAttributes;
         }
 
-        /// <summary>
-        ///     Hyperlink attributes.
-        /// </summary>
         public virtual DotHyperlinkAttributes Hyperlink { get; }
 
         [DotAttributeKey(DotAttributeKeys.Label)]
