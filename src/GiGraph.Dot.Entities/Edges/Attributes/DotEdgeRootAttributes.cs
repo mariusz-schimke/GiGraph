@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties;
+using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
@@ -17,7 +17,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public class DotEdgeRootAttributes : DotEntityAttributes<IDotEdgeAttributes, DotEdgeRootAttributes>, IDotEdgeRootAttributes
+    public class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotEdgeAttributes, DotEdgeRootAttributes>, IDotEdgeRootAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().BuildLazy();
 
@@ -25,7 +25,6 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         protected readonly DotEdgeEndpointLabelsAttributes _endpointLabelsAttributes;
         protected readonly DotFontAttributes _fontAttributes;
         protected readonly DotEdgeHeadAttributes _headAttributes;
-        protected readonly DotHyperlinkAttributes _hyperlinkAttributes;
         protected readonly DotEdgeLabelHyperlinkAttributes _labelHyperlinkAttributes;
         protected readonly DotEdgeStyleAttributeOptions _styleAttributeOptions;
         protected readonly DotSvgStyleSheetAttributes _svgStyleSheetAttributes;
@@ -44,11 +43,10 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
             DotEdgeStyleAttributeOptions edgeStyleAttributeOptions,
             DotSvgStyleSheetAttributes svgStyleSheetAttributes
         )
-            : base(attributes, attributeKeyLookup)
+            : base(attributes, attributeKeyLookup, hyperlinkAttributes)
         {
             _headAttributes = headAttributes;
             _tailAttributes = tailAttributes;
-            _hyperlinkAttributes = hyperlinkAttributes;
             _fontAttributes = fontAttributes;
             _styleAttributeOptions = edgeStyleAttributeOptions;
             _svgStyleSheetAttributes = svgStyleSheetAttributes;
@@ -83,28 +81,6 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         public virtual DotEdgeLabelHyperlinkAttributes LabelHyperlink => _labelHyperlinkAttributes;
         public virtual DotEdgeStyleAttributeOptions Style => _styleAttributeOptions;
         public virtual DotSvgStyleSheetAttributes SvgStyleSheet => _svgStyleSheetAttributes;
-        public virtual DotHyperlinkAttributes Hyperlink => _hyperlinkAttributes;
-
-        [DotAttributeKey(DotAttributeKeys.Label)]
-        public virtual DotLabel Label
-        {
-            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
-
-        [DotAttributeKey(DotAttributeKeys.ColorScheme)]
-        public virtual string ColorScheme
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
-
-        [DotAttributeKey(DotAttributeKeys.Id)]
-        public virtual DotEscapeString ObjectId
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
 
         [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
         DotStyles? IDotEdgeAttributes.Style
