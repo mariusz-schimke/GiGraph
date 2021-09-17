@@ -8,7 +8,7 @@ using GiGraph.Dot.Types.Images;
 
 namespace GiGraph.Dot.Entities.Html.Image.Attributes
 {
-    public class DotHtmlImageAttributes : DotHtmlEntityAttributes, IDotHtmlImageAttributes
+    public class DotHtmlImageAttributes : DotHtmlEntityAttributes<IDotHtmlImageAttributes, DotHtmlImageAttributes>, IDotHtmlImageAttributes
     {
         private static readonly Lazy<DotMemberAttributeKeyLookup> HtmlImageAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlImageAttributes, IDotHtmlImageAttributes>().BuildLazy();
 

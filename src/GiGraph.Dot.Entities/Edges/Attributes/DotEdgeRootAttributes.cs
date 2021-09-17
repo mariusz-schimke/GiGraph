@@ -17,7 +17,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public class DotEdgeRootAttributes : DotEntityAttributes, IDotEdgeRootAttributes
+    public class DotEdgeRootAttributes : DotEntityAttributes<IDotEdgeAttributes, DotEdgeRootAttributes>, IDotEdgeRootAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().BuildLazy();
 

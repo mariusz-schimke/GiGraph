@@ -8,7 +8,7 @@ using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Html.LineBreak.Attributes
 {
-    public class DotHtmlLineBreakAttributes : DotHtmlEntityAttributes, IDotHtmlLineBreakAttributes
+    public class DotHtmlLineBreakAttributes : DotHtmlEntityAttributes<IDotHtmlLineBreakAttributes, DotHtmlLineBreakAttributes>, IDotHtmlLineBreakAttributes
     {
         private static readonly Lazy<DotMemberAttributeKeyLookup> HtmlLineBreakAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlLineBreakAttributes, IDotHtmlLineBreakAttributes>().BuildLazy();
 

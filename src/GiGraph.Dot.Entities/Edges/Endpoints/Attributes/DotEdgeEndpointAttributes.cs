@@ -10,7 +10,7 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
-    public abstract class DotEdgeEndpointAttributes : DotNestedEntityAttributes<IDotEdgeEndpointAttributes, DotEdgeEndpointAttributes>, IDotEdgeEndpointRootAttributes
+    public abstract class DotEdgeEndpointAttributes : DotEntityAttributes<IDotEdgeEndpointAttributes, DotEdgeEndpointAttributes>, IDotEdgeEndpointRootAttributes
     {
         protected DotEdgeEndpointAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
             DotEdgeEndpointHyperlinkAttributes hyperlinkAttributes

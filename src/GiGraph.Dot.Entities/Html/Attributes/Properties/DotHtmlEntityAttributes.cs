@@ -5,13 +5,9 @@ using GiGraph.Dot.Entities.Html.Attributes.Collections;
 
 namespace GiGraph.Dot.Entities.Html.Attributes.Properties
 {
-    public abstract class DotHtmlEntityAttributes : DotEntityAttributes
+    public abstract class DotHtmlEntityAttributes<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>
+        where TEntityAttributeProperties : DotHtmlEntityAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
     {
-        protected DotHtmlEntityAttributes(DotHtmlEntityAttributes source)
-            : base(source)
-        {
-        }
-
         protected DotHtmlEntityAttributes(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {

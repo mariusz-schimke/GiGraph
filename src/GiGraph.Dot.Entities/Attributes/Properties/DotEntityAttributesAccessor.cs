@@ -3,24 +3,19 @@ using System.Reflection;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties
 {
-    public abstract class DotEntityAttributesAccessor : DotEntityAttributes, IDotEntityAttributesAccessor
+    public abstract class DotEntityAttributesAccessor : IDotEntityAttributesAccessor
     {
-        protected DotEntityAttributesAccessor(DotEntityAttributes source)
-            : base(source)
+        protected readonly DotEntityAttributes _attributes;
+
+        protected DotEntityAttributesAccessor(DotEntityAttributes attributes)
         {
+            _attributes = attributes;
         }
 
         Type IDotEntityAttributesAccessor.InterfaceType => GetInterfaceType();
-        DotEntityAttributes IDotEntityAttributesAccessor.Implementation => GetImplementation();
-        string IDotEntityAttributesAccessor.GetPropertyKey(PropertyInfo property) => GetPropertyKey(property);
+        DotEntityAttributes IDotEntityAttributesAccessor.Implementation => _attributes;
+        string IDotEntityAttributesAccessor.GetPropertyKey(PropertyInfo property) => _attributes.GetKey(property);
 
         protected abstract Type GetInterfaceType();
-        protected abstract DotEntityAttributes GetImplementation();
-
-        protected virtual string GetPropertyKey(PropertyInfo property)
-        {
-            // the lookup contains only interface properties and property accessors of implementing classes
-            return _attributeKeyLookup.Value.GetPropertyKey(property);
-        }
     }
 }

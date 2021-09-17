@@ -44,11 +44,11 @@ namespace GiGraph.Dot.Extensions
         /// <param name="this">
         ///     The current attribute collection context to get the metadata dictionary for.
         /// </param>
-        public static Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary(this DotEntityAttributesAccessor @this)
+        public static Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary(this IDotEntityAttributesAccessor @this)
         {
-            var properties = @this.GetPathsToAttributeProperties();
+            var propertyPathDictionary = @this.GetPathsToAttributeProperties();
 
-            return properties
+            return propertyPathDictionary
                .Select(item =>
                 {
                     var metadata = DotAttributeKeys.MetadataDictionary[item.Key];
@@ -58,52 +58,47 @@ namespace GiGraph.Dot.Extensions
                         metadata.CompatibleElements,
                         metadata.CompatibleLayoutEngines,
                         metadata.CompatibleOutputs,
-                        item.Value.Select(pathItem => pathItem.Property).ToArray()
+                        item.Value.Select(propertyInfo => propertyInfo).ToArray()
                     );
                 })
                .ToDictionary(key => key.Key, element => element);
         }
 
-        private static IDictionary<string, (DotEntityAttributes DeclaringInstance, PropertyInfo Property)[]> GetPathsToAttributeProperties(this DotEntityAttributesAccessor @this)
+        private static IDictionary<string, PropertyInfo[]> GetPathsToAttributeProperties(this IDotEntityAttributesAccessor @this)
         {
-            var output = new Dictionary<string, (DotEntityAttributes DeclaringInstance, PropertyInfo Property)[]>();
-            @this.GetPathsToAttributeProperties(output, basePath: Array.Empty<(DotEntityAttributes, PropertyInfo)>());
+            var output = new Dictionary<string, PropertyInfo[]>();
+            @this.GetPathsToAttributeProperties(output, basePath: Array.Empty<PropertyInfo>());
             return output;
         }
 
-        private static void GetPathsToAttributeProperties(
-            this DotEntityAttributesAccessor @this,
-            IDictionary<string, (DotEntityAttributes DeclaringInstance, PropertyInfo Property)[]> output,
-            (DotEntityAttributes DeclaringInstance, PropertyInfo Property)[] basePath
-        )
+        private static void GetPathsToAttributeProperties(this IDotEntityAttributesAccessor @this,
+            IDictionary<string, PropertyInfo[]> output, PropertyInfo[] basePath)
         {
-            var accessor = (IDotEntityAttributesAccessor) @this;
-
             // get component interfaces and the properties of each of them
-            var interfaceProperties = accessor.InterfaceType
+            var interfaceProperties = @this.InterfaceType
                .GetInterfaces()
-               .Concat(new[] { accessor.InterfaceType })
+               .Concat(new[] { @this.InterfaceType })
                .SelectMany(i => i.GetProperties(BindingFlags.Instance | BindingFlags.Public));
 
             // add the properties to the output asserting that each of them represents an attribute
             foreach (var interfaceProperty in interfaceProperties)
             {
                 output.Add(
-                    accessor.GetPropertyKey(interfaceProperty),
-                    basePath.Append((accessor.Implementation, interfaceProperty)).ToArray()
+                    @this.GetPropertyKey(interfaceProperty),
+                    basePath.Append(interfaceProperty).ToArray()
                 );
             }
 
             // now get all nested property groups
-            var nestedAttributesProperties = accessor.Implementation.GetType()
+            var nestedAttributesProperties = @this.Implementation.GetType()
                .GetProperties(BindingFlags.Instance | BindingFlags.Public)
-               .Where(property => typeof(IDotNestedEntityAttributes).IsAssignableFrom(property.PropertyType));
+               .Where(property => typeof(IDotEntityAttributes).IsAssignableFrom(property.PropertyType));
 
             foreach (var nestedAttributesProperty in nestedAttributesProperties)
             {
-                var currentPath = basePath.Append((accessor.Implementation, nestedAttributesProperty)).ToArray();
+                var currentPath = basePath.Append(nestedAttributesProperty).ToArray();
 
-                var nested = (IDotNestedEntityAttributes) nestedAttributesProperty.GetValue(accessor.Implementation);
+                var nested = (IDotEntityAttributes) nestedAttributesProperty.GetValue(@this.Implementation);
                 nested.Accessor.GetPathsToAttributeProperties(output, currentPath);
             }
         }

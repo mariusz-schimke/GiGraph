@@ -4,10 +4,10 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties
 {
-    public abstract class DotNestedEntityAttributes<TIEntityAttributeProperties, TEntityAttributeProperties> : DotNestedEntityAttributes
-        where TEntityAttributeProperties : DotEntityAttributes, TIEntityAttributeProperties
+    public abstract class DotEntityAttributes<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributes
+        where TEntityAttributeProperties : DotEntityAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
     {
-        static DotNestedEntityAttributes()
+        static DotEntityAttributes()
         {
             if (!typeof(TIEntityAttributeProperties).IsInterface)
             {
@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             }
         }
 
-        protected DotNestedEntityAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+        protected DotEntityAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
             if (this is not TEntityAttributeProperties implementation)

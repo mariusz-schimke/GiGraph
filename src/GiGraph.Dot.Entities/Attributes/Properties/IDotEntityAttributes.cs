@@ -1,6 +1,6 @@
 namespace GiGraph.Dot.Entities.Attributes.Properties
 {
-    public interface IDotNestedEntityAttributes
+    public interface IDotEntityAttributes
     {
         DotEntityAttributesAccessor Accessor { get; }
     }
