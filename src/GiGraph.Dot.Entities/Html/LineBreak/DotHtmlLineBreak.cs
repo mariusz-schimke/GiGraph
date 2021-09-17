@@ -52,13 +52,13 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
         private DotHtmlLineBreak(DotHtmlLineBreakAttributes attributes)
             : base("br", attributes.Collection)
         {
-            Attributes = new DotHtmlElementRootAttributes<IDotHtmlLineBreakAttributes, DotHtmlLineBreakAttributes>(attributes);
+            Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlLineBreakAttributes, DotHtmlLineBreakAttributes>(attributes);
         }
 
         /// <summary>
         ///     Provides access to the attributes of the line break element.
         /// </summary>
-        public new virtual DotHtmlElementRootAttributes<IDotHtmlLineBreakAttributes, DotHtmlLineBreakAttributes> Attributes { get; }
+        public new virtual DotHtmlElementRootAttributesAccessor<IDotHtmlLineBreakAttributes, DotHtmlLineBreakAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotHtmlLineBreakAttributes.LineAlignment" />
         [DotHtmlAttributeKey("align")]

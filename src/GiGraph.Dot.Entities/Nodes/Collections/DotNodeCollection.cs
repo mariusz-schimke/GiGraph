@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Qualities;

@@ -38,13 +38,13 @@ namespace GiGraph.Dot.Entities.Html.Image
         private DotHtmlImage(DotHtmlImageAttributes attributes)
             : base("img", attributes.Collection)
         {
-            Attributes = new DotHtmlElementRootAttributes<IDotHtmlImageAttributes, DotHtmlImageAttributes>(attributes);
+            Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlImageAttributes, DotHtmlImageAttributes>(attributes);
         }
 
         /// <summary>
         ///     Provides access to the attributes of the image.
         /// </summary>
-        public new DotHtmlElementRootAttributes<IDotHtmlImageAttributes, DotHtmlImageAttributes> Attributes { get; }
+        public new DotHtmlElementRootAttributesAccessor<IDotHtmlImageAttributes, DotHtmlImageAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotHtmlImageAttributes.Source" />
         public virtual string Source

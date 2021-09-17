@@ -1,5 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Properties;
-using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
 using GiGraph.Dot.Entities.Graphs.Attributes;
 
 namespace GiGraph.Dot.Entities.Clusters.Collections

@@ -73,13 +73,13 @@ namespace GiGraph.Dot.Entities.Html.Font
         private DotHtmlFont(DotHtmlFontAttributes attributes)
             : base("font", attributes.Collection)
         {
-            Attributes = new DotHtmlElementRootAttributes<IDotHtmlFontAttributes, DotHtmlFontAttributes>(attributes);
+            Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlFontAttributes, DotHtmlFontAttributes>(attributes);
         }
 
         /// <summary>
         ///     Provides access to the attributes of the font.
         /// </summary>
-        public new virtual DotHtmlElementRootAttributes<IDotHtmlFontAttributes, DotHtmlFontAttributes> Attributes { get; }
+        public new virtual DotHtmlElementRootAttributesAccessor<IDotHtmlFontAttributes, DotHtmlFontAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotHtmlFontAttributes.Name" />
         public virtual string Name

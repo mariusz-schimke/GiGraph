@@ -1,6 +1,5 @@
 ﻿using System;
 using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output.Entities;

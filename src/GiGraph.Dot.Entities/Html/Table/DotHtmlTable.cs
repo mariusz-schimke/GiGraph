@@ -32,13 +32,13 @@ namespace GiGraph.Dot.Entities.Html.Table
         private DotHtmlTable(DotHtmlTableAttributes attributes)
             : base("table", attributes.Collection)
         {
-            Attributes = new DotHtmlElementRootAttributes<IDotHtmlTableAttributes, DotHtmlTableAttributes>(attributes);
+            Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlTableAttributes, DotHtmlTableAttributes>(attributes);
         }
 
         /// <summary>
         ///     Provides access to the attributes of the table.
         /// </summary>
-        public new virtual DotHtmlElementRootAttributes<IDotHtmlTableAttributes, DotHtmlTableAttributes> Attributes { get; }
+        public new virtual DotHtmlElementRootAttributesAccessor<IDotHtmlTableAttributes, DotHtmlTableAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Id" />
         public virtual DotEscapeString Id
