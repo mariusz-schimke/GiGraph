@@ -16,7 +16,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
     public class DotAttributePropertiesTest
     {
         [Fact]
-        public void all_nested_entity_attributes_class_descendants_implement_the_interface_passed_to_them_as_the_generic_argument()
+        public void all_entity_attributes_class_descendants_implement_the_interface_passed_to_them_as_the_generic_argument()
         {
             var types = Assembly.GetAssembly(typeof(DotEntityAttributes<,>))!.GetTypes()
                .Where(t => !t.IsAbstract)
