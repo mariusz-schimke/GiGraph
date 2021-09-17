@@ -1,7 +1,7 @@
 using System;
 using GiGraph.Dot.Entities.Html;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using Snapshooter.Xunit;
 using Xunit;
 

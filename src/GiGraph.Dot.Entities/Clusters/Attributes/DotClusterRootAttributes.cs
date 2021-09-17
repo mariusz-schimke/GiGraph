@@ -1,10 +1,8 @@
 using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Factories;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
@@ -20,7 +18,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes
 {
-    public class DotClusterRootAttributes : DotEntityRootAttributes<IDotClusterAttributes>, IDotClusterRootAttributes
+    public class DotClusterRootAttributes : DotEntityAttributes<IDotClusterAttributes, DotClusterRootAttributes>, IDotClusterRootAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> ClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
 
@@ -61,82 +59,77 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         {
         }
 
-        public DotClusterRootAttributes()
-            : this(new DotAttributeCollection(DotAttributeFactory.Instance))
-        {
-        }
-
-        DotHyperlinkAttributes IDotClusterRootAttributes.Hyperlink => _hyperlinkAttributes;
-        DotFontAttributes IDotClusterRootAttributes.Font => _fontAttributes;
-        DotClusterStyleAttributeOptions IDotClusterRootAttributes.Style => _styleAttributeOptions;
-        DotSvgStyleSheetAttributes IDotClusterRootAttributes.SvgStyleSheet => _svgStyleSheetAttributes;
-        DotLabelAlignmentAttributes IDotClusterRootAttributes.LabelAlignment => _labelAlignmentAttributes;
+        public virtual DotHyperlinkAttributes Hyperlink => _hyperlinkAttributes;
+        public virtual DotFontAttributes Font => _fontAttributes;
+        public virtual DotClusterStyleAttributeOptions Style => _styleAttributeOptions;
+        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => _svgStyleSheetAttributes;
+        public virtual DotLabelAlignmentAttributes LabelAlignment => _labelAlignmentAttributes;
 
         [DotAttributeKey(DotAttributeKeys.Label)]
-        DotLabel IDotClusterAttributes.Label
+        public virtual DotLabel Label
         {
             get => GetValueAsLabel(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.ColorScheme)]
-        string IDotClusterAttributes.ColorScheme
+        public virtual string ColorScheme
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Id)]
-        DotEscapeString IDotClusterAttributes.ObjectId
+        public virtual DotEscapeString ObjectId
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Color)]
-        DotColorDefinition IDotGraphClusterCommonAttributes.Color
+        public virtual DotColorDefinition Color
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.FillColor)]
-        DotColorDefinition IDotGraphClusterCommonAttributes.FillColor
+        public virtual DotColorDefinition FillColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.PenWidth)]
-        double? IDotGraphClusterCommonAttributes.BorderWidth
+        public virtual double? BorderWidth
         {
             get => GetValueAsDouble(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.GradientAngle)]
-        int? IDotClusterAttributes.GradientFillAngle
+        public virtual int? GradientFillAngle
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Tooltip)]
-        DotEscapeString IDotClusterAttributes.Tooltip
+        public virtual DotEscapeString Tooltip
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Margin)]
-        DotPoint IDotClusterAttributes.Padding
+        public virtual DotPoint Padding
         {
             get => GetValueAsPoint(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.SortV)]
-        int? IDotClusterAttributes.SortIndex
+        public virtual int? SortIndex
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
@@ -150,28 +143,28 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         }
 
         [DotAttributeKey(DotAttributeKeys.Rank)]
-        DotRank? IDotClusterAttributes.NodeRank
+        public virtual DotRank? NodeRank
         {
             get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         [DotAttributeKey(DotAttributeKeys.PenColor)]
-        DotColor IDotGraphClusterCommonAttributes.BorderColor
+        public virtual DotColor BorderColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.BgColor)]
-        DotColorDefinition IDotClusterAttributes.BackgroundColor
+        public virtual DotColorDefinition BackgroundColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey(DotAttributeKeys.Peripheries)]
-        int? IDotClusterAttributes.Peripheries
+        public virtual int? Peripheries
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);

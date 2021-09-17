@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Entities.Html.Text;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Html;
 

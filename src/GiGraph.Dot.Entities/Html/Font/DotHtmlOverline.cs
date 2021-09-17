@@ -1,4 +1,4 @@
-using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Html.Font
@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         {
         }
 
-        protected DotHtmlOverline(DotAttributeCollection attributes)
+        protected DotHtmlOverline(DotHtmlAttributeCollection attributes)
             : base(TagName, attributes)
         {
         }

@@ -1,6 +1,6 @@
 using GiGraph.Dot.Entities.Html;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html;
 using GiGraph.Dot.Types.Records;
@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Labels
             return GetDotEncodedString(options, syntaxRules);
         }
 
-        protected internal abstract string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
+        protected abstract string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 
         /// <summary>
         ///     Creates a label initialized with the specified text.

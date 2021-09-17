@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using GiGraph.Dot.Entities.Clusters;
-using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Graphs.Collections;
-using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Entities;
+using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Subgraphs
@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
     ///         are connected to the other side of the edge.
     ///     </para>
     /// </summary>
-    public class DotSubgraph : DotSubgraphSection, IDotCommonGraph, IDotOrderable
+    public class DotSubgraph : DotSubgraphSection, IDotGraph, IDotOrderable
     {
         protected DotSubgraph(string id, DotSubgraphSection rootSection, DotGraphSectionCollection<DotSubgraphSection> subsections)
             : base(rootSection)
@@ -87,7 +87,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// </summary>
         public virtual DotGraphSectionCollection<DotSubgraphSection> Subsections { get; }
 
-        IEnumerable<DotCommonGraphSection> IDotCommonGraph.Subsections => Subsections;
+        IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 
         /// <summary>
         ///     Gets or sets the identifier of the subgraph (optional).

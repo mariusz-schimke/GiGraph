@@ -4,6 +4,7 @@ using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Output.Writers.Edges;
 
 namespace GiGraph.Dot.Output.Generators.Edges

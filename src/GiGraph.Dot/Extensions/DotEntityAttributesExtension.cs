@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Properties;
+using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
 using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Extensions
@@ -11,7 +12,7 @@ namespace GiGraph.Dot.Extensions
     public static class DotEntityAttributesExtension
     {
         /// <summary>
-        ///     Gets metadata of the DOT attribute the specified property provides access to.
+        ///     Gets the metadata of the DOT attribute specified by the property expression.
         /// </summary>
         /// <param name="this">
         ///     The current attribute collection context whose property to get the metadata for.
@@ -22,42 +23,85 @@ namespace GiGraph.Dot.Extensions
         /// <typeparam name="TProperty">
         ///     The type returned by the property.
         /// </typeparam>
-        /// <typeparam name="TProperties">
-        ///     Provides access to properties that represent DOT attributes.
+        /// <typeparam name="TInterface">
+        ///     An interface that provides access to properties that represent DOT attributes.
         /// </typeparam>
-        public static DotAttributeMetadata GetMetadata<TProperties, TProperty>(this DotEntityAttributes<TProperties> @this, Expression<Func<TProperties, TProperty>> property)
+        /// <typeparam name="TImplementation">
+        ///     The implementation of the <typeparamref name="TInterface" /> interface.
+        /// </typeparam>
+        public static DotAttributeMetadata GetMetadata<TInterface, TImplementation, TProperty>(
+            this DotEntityAttributesAccessor<TInterface, TImplementation> @this, Expression<Func<TInterface, TProperty>> property
+        )
+            where TImplementation : DotEntityAttributes, TInterface
         {
             var key = @this.GetKey(property);
             return DotAttributeKeys.MetadataDictionary[key];
         }
 
         /// <summary>
-        ///     Gets a dictionary where the key is a DOT attribute, and the value is attribute metadata in the context of the current
+        ///     Gets a dictionary where the key is a DOT attribute, and the value is the attribute's metadata in the context of the current
         ///     element.
         /// </summary>
         /// <param name="this">
         ///     The current attribute collection context to get the metadata dictionary for.
         /// </param>
-        public static Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary<TProperties>(this DotEntityAttributes<TProperties> @this)
+        public static Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary(this IDotEntityAttributesAccessor @this)
         {
-            var properties = ((IDotEntityAttributes) @this).GetPathsToAttributeProperties();
+            var propertyPathDictionary = @this.GetPathsToAttributeProperties();
 
-            return properties
-               .Select(path =>
+            return propertyPathDictionary
+               .Select(item =>
                 {
-                    var property = path.Last();
-                    var key = property.Property.GetCustomAttribute<DotAttributeKeyAttribute>().Key;
-                    var metadata = DotAttributeKeys.MetadataDictionary[key];
+                    var metadata = DotAttributeKeys.MetadataDictionary[item.Key];
 
                     return new DotAttributePropertyMetadata(
-                        key,
+                        item.Key,
                         metadata.CompatibleElements,
                         metadata.CompatibleLayoutEngines,
                         metadata.CompatibleOutputs,
-                        path.Select(item => item.Property).ToArray()
+                        item.Value.Select(propertyInfo => propertyInfo).ToArray()
                     );
                 })
                .ToDictionary(key => key.Key, element => element);
+        }
+
+        private static IDictionary<string, PropertyInfo[]> GetPathsToAttributeProperties(this IDotEntityAttributesAccessor @this)
+        {
+            var output = new Dictionary<string, PropertyInfo[]>();
+            @this.GetPathsToAttributeProperties(output, basePath: Array.Empty<PropertyInfo>());
+            return output;
+        }
+
+        private static void GetPathsToAttributeProperties(this IDotEntityAttributesAccessor @this,
+            IDictionary<string, PropertyInfo[]> output, PropertyInfo[] basePath)
+        {
+            // get component interfaces and the properties of each of them
+            var interfaceProperties = @this.InterfaceType
+               .GetInterfaces()
+               .Concat(new[] { @this.InterfaceType })
+               .SelectMany(i => i.GetProperties(BindingFlags.Instance | BindingFlags.Public));
+
+            // add the properties to the output asserting that each of them represents an attribute
+            foreach (var interfaceProperty in interfaceProperties)
+            {
+                output.Add(
+                    @this.GetPropertyKey(interfaceProperty),
+                    basePath.Append(interfaceProperty).ToArray()
+                );
+            }
+
+            // now get all nested property groups
+            var nestedAttributesProperties = @this.Implementation.GetType()
+               .GetProperties(BindingFlags.Instance | BindingFlags.Public)
+               .Where(property => typeof(IDotEntityAttributes).IsAssignableFrom(property.PropertyType));
+
+            foreach (var nestedAttributesProperty in nestedAttributesProperties)
+            {
+                var currentPath = basePath.Append(nestedAttributesProperty).ToArray();
+
+                var nested = (IDotEntityAttributes) nestedAttributesProperty.GetValue(@this.Implementation);
+                nested.Accessor.GetPathsToAttributeProperties(output, currentPath);
+            }
         }
     }
 }

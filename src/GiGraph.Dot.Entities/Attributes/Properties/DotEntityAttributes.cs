@@ -1,11 +1,12 @@
 using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties
 {
-    public abstract partial class DotEntityAttributes
+    public abstract partial class DotEntityAttributes : IDotEntityAttributes
     {
         protected readonly Lazy<DotMemberAttributeKeyLookup> _attributeKeyLookup;
         protected readonly DotAttributeCollection _attributes;
@@ -16,8 +17,14 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
             _attributeKeyLookup = attributeKeyLookup;
         }
 
+        internal DotAttributeCollection Collection => _attributes;
+
+        DotEntityAttributesAccessor IDotEntityAttributes.Accessor => GetAccessor();
+        protected abstract DotEntityAttributesAccessor GetAccessor();
+
         protected virtual string GetKey(MethodBase accessor)
         {
+            // the lookup contains only interface properties and property accessors of implementing classes
             return _attributeKeyLookup.Value.GetPropertyAccessorKey((MethodInfo) accessor);
         }
 

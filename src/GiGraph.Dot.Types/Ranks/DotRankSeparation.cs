@@ -43,7 +43,7 @@ namespace GiGraph.Dot.Types.Ranks
         /// </summary>
         public bool Equal { get; init; }
 
-        protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             const string equally = "equally";
             var result = Value?.ToString(syntaxRules.Culture);

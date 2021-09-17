@@ -1,3 +1,5 @@
+using GiGraph.Dot.Entities.Html.Attributes.Collections;
+using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Entities.Html.Font.Attributes;
 using GiGraph.Dot.Entities.Html.Table;
 using GiGraph.Dot.Types.Colors;
@@ -23,7 +25,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         ///     Sets the color of the font within the scope of the current element.
         /// </param>
         public DotHtmlFont(string name = null, double? size = null, DotColor color = null)
-            : this(new DotHtmlFontAttributes())
+            : this(new DotHtmlAttributeCollection())
         {
             if (name is not null)
             {
@@ -63,36 +65,41 @@ namespace GiGraph.Dot.Entities.Html.Font
         {
         }
 
-        protected DotHtmlFont(DotHtmlFontAttributes attributes)
+        private DotHtmlFont(DotHtmlAttributeCollection attributes)
+            : this(new DotHtmlFontAttributes(attributes))
+        {
+        }
+
+        private DotHtmlFont(DotHtmlFontAttributes attributes)
             : base("font", attributes.Collection)
         {
-            Attributes = attributes;
+            Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlFontAttributes, DotHtmlFontAttributes>(attributes);
         }
 
         /// <summary>
-        ///     The attributes of the font.
+        ///     Provides access to the attributes of the font.
         /// </summary>
-        public new virtual DotHtmlFontAttributes Attributes { get; }
+        public new virtual DotHtmlElementRootAttributesAccessor<IDotHtmlFontAttributes, DotHtmlFontAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotHtmlFontAttributes.Name" />
         public virtual string Name
         {
-            get => ((IDotHtmlFontAttributes) Attributes).Name;
-            set => ((IDotHtmlFontAttributes) Attributes).Name = value;
+            get => Attributes.Implementation.Name;
+            set => Attributes.Implementation.Name = value;
         }
 
         /// <inheritdoc cref="IDotHtmlFontAttributes.Size" />
         public virtual double? Size
         {
-            get => ((IDotHtmlFontAttributes) Attributes).Size;
-            set => ((IDotHtmlFontAttributes) Attributes).Size = value;
+            get => Attributes.Implementation.Size;
+            set => Attributes.Implementation.Size = value;
         }
 
         /// <inheritdoc cref="IDotHtmlFontAttributes.Color" />
         public virtual DotColor Color
         {
-            get => ((IDotHtmlFontAttributes) Attributes).Color;
-            set => ((IDotHtmlFontAttributes) Attributes).Color = value;
+            get => Attributes.Implementation.Color;
+            set => Attributes.Implementation.Color = value;
         }
 
         /// <summary>

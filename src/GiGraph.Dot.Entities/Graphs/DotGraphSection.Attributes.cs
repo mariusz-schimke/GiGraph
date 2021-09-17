@@ -11,87 +11,90 @@ namespace GiGraph.Dot.Entities.Graphs
 {
     public partial class DotGraphSection : IDotGraphRootAttributes
     {
+        // hidden by explicit implementation because they are exposed through the Clusters collection property
+        DotGraphClustersAttributes IDotGraphRootAttributes.Clusters => Attributes.Implementation.Clusters;
+
         /// <inheritdoc cref="IDotGraphRootAttributes.Font" />
-        public virtual DotGraphFontAttributes Font => ((IDotGraphRootAttributes) Attributes).Font;
+        public virtual DotGraphFontAttributes Font => Attributes.Implementation.Font;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.Style" />
-        public virtual DotGraphStyleAttributeOptions Style => ((IDotGraphRootAttributes) Attributes).Style;
+        public virtual DotGraphStyleAttributeOptions Style => Attributes.Implementation.Style;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.SvgStyleSheet" />
-        public virtual DotGraphSvgStyleSheetAttributes SvgStyleSheet => ((IDotGraphRootAttributes) Attributes).SvgStyleSheet;
+        public virtual DotGraphSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.Layout" />
-        public virtual DotGraphLayoutAttributes Layout => ((IDotGraphRootAttributes) Attributes).Layout;
+        public virtual DotGraphLayoutAttributes Layout => Attributes.Implementation.Layout;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.Canvas" />
-        public virtual DotGraphCanvasAttributes Canvas => ((IDotGraphRootAttributes) Attributes).Canvas;
+        public virtual DotGraphCanvasAttributes Canvas => Attributes.Implementation.Canvas;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.LabelAlignment" />
-        public virtual DotLabelAlignmentAttributes LabelAlignment => ((IDotGraphRootAttributes) Attributes).LabelAlignment;
+        public virtual DotLabelAlignmentAttributes LabelAlignment => Attributes.Implementation.LabelAlignment;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.Hyperlink" />
-        public virtual DotHyperlinkAttributes Hyperlink => ((IDotGraphRootAttributes) Attributes).Hyperlink;
+        public virtual DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
 
         DotStyles? IDotGraphAttributes.Style
         {
-            get => ((IDotGraphAttributes) Attributes).Style;
-            set => ((IDotGraphAttributes) Attributes).Style = value;
+            get => ((IDotGraphAttributes) Attributes.Implementation).Style;
+            set => ((IDotGraphAttributes) Attributes.Implementation).Style = value;
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.EdgeShape" />
         public virtual DotEdgeShape? EdgeShape
         {
-            get => ((IDotGraphAttributes) Attributes).EdgeShape;
-            set => ((IDotGraphAttributes) Attributes).EdgeShape = value;
+            get => Attributes.Implementation.EdgeShape;
+            set => Attributes.Implementation.EdgeShape = value;
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Label" />
         public virtual DotLabel Label
         {
-            get => ((IDotGraphAttributes) Attributes).Label;
-            set => ((IDotGraphAttributes) Attributes).Label = value;
+            get => Attributes.Implementation.Label;
+            set => Attributes.Implementation.Label = value;
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.ColorScheme" />
         public virtual string ColorScheme
         {
-            get => ((IDotGraphAttributes) Attributes).ColorScheme;
-            set => ((IDotGraphAttributes) Attributes).ColorScheme = value;
+            get => Attributes.Implementation.ColorScheme;
+            set => Attributes.Implementation.ColorScheme = value;
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Charset" />
         public virtual string Charset
         {
-            get => ((IDotGraphAttributes) Attributes).Charset;
-            set => ((IDotGraphAttributes) Attributes).Charset = value;
+            get => Attributes.Implementation.Charset;
+            set => Attributes.Implementation.Charset = value;
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.Comment" />
         public virtual string Comment
         {
-            get => ((IDotGraphAttributes) Attributes).Comment;
-            set => ((IDotGraphAttributes) Attributes).Comment = value;
+            get => Attributes.Implementation.Comment;
+            set => Attributes.Implementation.Comment = value;
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.ImageDirectories" />
         public virtual string ImageDirectories
         {
-            get => ((IDotGraphAttributes) Attributes).ImageDirectories;
-            set => ((IDotGraphAttributes) Attributes).ImageDirectories = value;
+            get => Attributes.Implementation.ImageDirectories;
+            set => Attributes.Implementation.ImageDirectories = value;
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.RootNodeId" />
         public virtual DotId RootNodeId
         {
-            get => ((IDotGraphAttributes) Attributes).RootNodeId;
-            set => ((IDotGraphAttributes) Attributes).RootNodeId = value;
+            get => Attributes.Implementation.RootNodeId;
+            set => Attributes.Implementation.RootNodeId = value;
         }
 
         /// <inheritdoc cref="IDotGraphAttributes.ObjectId" />
         public virtual DotEscapeString ObjectId
         {
-            get => ((IDotGraphAttributes) Attributes).ObjectId;
-            set => ((IDotGraphAttributes) Attributes).ObjectId = value;
+            get => Attributes.Implementation.ObjectId;
+            set => Attributes.Implementation.ObjectId = value;
         }
     }
 }

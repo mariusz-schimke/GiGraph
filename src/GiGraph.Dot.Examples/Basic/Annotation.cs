@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Examples.Basic
             // graph
             graph.Annotation = "graph";
             graph.Attributes.Annotation = "graph attributes";
-            graph.Attributes.Set(a => a.Label, "Foo Graph").Annotation = "label";
+            graph.Attributes.SetValue(a => a.Label, "Foo Graph").Annotation = "label";
 
             // node defaults
             graph.Nodes.Attributes.Annotation = "global node attributes";
@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Examples.Basic
             graph.Nodes.Add("foo", node =>
             {
                 node.Attributes.Annotation = "node attributes";
-                node.Attributes.Set(a => a.Label, "foo").Annotation = "label";
+                node.Attributes.SetValue(a => a.Label, "foo").Annotation = "label";
             }).Annotation = "node comment";
 
             // edge defaults
@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Examples.Basic
                 edge.Tail.Endpoint.Annotation = "tail";
 
                 edge.Attributes.Annotation = "edge attributes";
-                edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
+                edge.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
             }).Annotation = "edge comment";
 
             // subsections

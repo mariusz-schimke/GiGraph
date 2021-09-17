@@ -1,3 +1,5 @@
+using GiGraph.Dot.Entities.Html.Attributes.Collections;
+using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Entities.Html.Table.Attributes;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Colors;
@@ -15,173 +17,178 @@ namespace GiGraph.Dot.Entities.Html.Table
         ///     Initializes a new table cell instance.
         /// </summary>
         public DotHtmlTableCell()
-            : this(new DotHtmlTableCellAttributes())
+            : this(new DotHtmlAttributeCollection())
         {
         }
 
-        protected DotHtmlTableCell(DotHtmlTableCellAttributes attributes)
+        private DotHtmlTableCell(DotHtmlAttributeCollection attributes)
+            : this(new DotHtmlTableCellAttributes(attributes))
+        {
+        }
+
+        private DotHtmlTableCell(DotHtmlTableCellAttributes attributes)
             : base("td", attributes.Collection)
         {
-            Attributes = attributes;
+            Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlTableCellAttributes, DotHtmlTableCellAttributes>(attributes);
         }
 
         /// <summary>
-        ///     The attributes of the table.
+        ///     Provides access to the attributes of the table cell.
         /// </summary>
-        public new virtual DotHtmlTableCellAttributes Attributes { get; }
+        public new virtual DotHtmlElementRootAttributesAccessor<IDotHtmlTableCellAttributes, DotHtmlTableCellAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Id" />
         public virtual DotEscapeString Id
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).Id;
-            set => ((IDotHtmlTableCellAttributes) Attributes).Id = value;
+            get => Attributes.Implementation.Id;
+            set => Attributes.Implementation.Id = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.PortName" />
         public virtual string PortName
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).PortName;
-            set => ((IDotHtmlTableCellAttributes) Attributes).PortName = value;
+            get => Attributes.Implementation.PortName;
+            set => Attributes.Implementation.PortName = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableCellAttributes.HorizontalAlignment" />
         public virtual DotHtmlTableCellHorizontalAlignment? HorizontalAlignment
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).HorizontalAlignment;
-            set => ((IDotHtmlTableCellAttributes) Attributes).HorizontalAlignment = value;
+            get => Attributes.Implementation.HorizontalAlignment;
+            set => Attributes.Implementation.HorizontalAlignment = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.VerticalAlignment" />
         public virtual DotVerticalAlignment? VerticalAlignment
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).VerticalAlignment;
-            set => ((IDotHtmlTableCellAttributes) Attributes).VerticalAlignment = value;
+            get => Attributes.Implementation.VerticalAlignment;
+            set => Attributes.Implementation.VerticalAlignment = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableCellAttributes.HorizontalLineAlignment" />
         public virtual DotHorizontalAlignment? HorizontalLineAlignment
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).HorizontalLineAlignment;
-            set => ((IDotHtmlTableCellAttributes) Attributes).HorizontalLineAlignment = value;
+            get => Attributes.Implementation.HorizontalLineAlignment;
+            set => Attributes.Implementation.HorizontalLineAlignment = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.BackgroundColor" />
         public virtual DotColorDefinition BackgroundColor
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).BackgroundColor;
-            set => ((IDotHtmlTableCellAttributes) Attributes).BackgroundColor = value;
+            get => Attributes.Implementation.BackgroundColor;
+            set => Attributes.Implementation.BackgroundColor = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.BorderColor" />
         public virtual DotColor BorderColor
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).BorderColor;
-            set => ((IDotHtmlTableCellAttributes) Attributes).BorderColor = value;
+            get => Attributes.Implementation.BorderColor;
+            set => Attributes.Implementation.BorderColor = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.BorderWidth" />
         public virtual int? BorderWidth
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).BorderWidth;
-            set => ((IDotHtmlTableCellAttributes) Attributes).BorderWidth = value;
+            get => Attributes.Implementation.BorderWidth;
+            set => Attributes.Implementation.BorderWidth = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.CellPadding" />
         public virtual int? CellPadding
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).CellPadding;
-            set => ((IDotHtmlTableCellAttributes) Attributes).CellPadding = value;
+            get => Attributes.Implementation.CellPadding;
+            set => Attributes.Implementation.CellPadding = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.CellSpacing" />
         public virtual int? CellSpacing
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).CellSpacing;
-            set => ((IDotHtmlTableCellAttributes) Attributes).CellSpacing = value;
+            get => Attributes.Implementation.CellSpacing;
+            set => Attributes.Implementation.CellSpacing = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableCellAttributes.ColumnSpan" />
         public virtual int? ColumnSpan
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).ColumnSpan;
-            set => ((IDotHtmlTableCellAttributes) Attributes).ColumnSpan = value;
+            get => Attributes.Implementation.ColumnSpan;
+            set => Attributes.Implementation.ColumnSpan = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableCellAttributes.RowSpan" />
         public virtual int? RowSpan
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).RowSpan;
-            set => ((IDotHtmlTableCellAttributes) Attributes).RowSpan = value;
+            get => Attributes.Implementation.RowSpan;
+            set => Attributes.Implementation.RowSpan = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Borders" />
         public virtual DotHtmlTableBorders? Borders
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).Borders;
-            set => ((IDotHtmlTableCellAttributes) Attributes).Borders = value;
+            get => Attributes.Implementation.Borders;
+            set => Attributes.Implementation.Borders = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.FixedSize" />
         public virtual bool? FixedSize
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).FixedSize;
-            set => ((IDotHtmlTableCellAttributes) Attributes).FixedSize = value;
+            get => Attributes.Implementation.FixedSize;
+            set => Attributes.Implementation.FixedSize = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.GradientFillAngle" />
         public virtual int? GradientFillAngle
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).GradientFillAngle;
-            set => ((IDotHtmlTableCellAttributes) Attributes).GradientFillAngle = value;
+            get => Attributes.Implementation.GradientFillAngle;
+            set => Attributes.Implementation.GradientFillAngle = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Width" />
         public virtual int? Width
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).Width;
-            set => ((IDotHtmlTableCellAttributes) Attributes).Width = value;
+            get => Attributes.Implementation.Width;
+            set => Attributes.Implementation.Width = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Height" />
         public virtual int? Height
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).Height;
-            set => ((IDotHtmlTableCellAttributes) Attributes).Height = value;
+            get => Attributes.Implementation.Height;
+            set => Attributes.Implementation.Height = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Href" />
         public virtual DotEscapeString Href
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).Href;
-            set => ((IDotHtmlTableCellAttributes) Attributes).Href = value;
+            get => Attributes.Implementation.Href;
+            set => Attributes.Implementation.Href = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Target" />
         public virtual DotEscapeString Target
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).Target;
-            set => ((IDotHtmlTableCellAttributes) Attributes).Target = value;
+            get => Attributes.Implementation.Target;
+            set => Attributes.Implementation.Target = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Title" />
         public virtual DotEscapeString Title
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).Title;
-            set => ((IDotHtmlTableCellAttributes) Attributes).Title = value;
+            get => Attributes.Implementation.Title;
+            set => Attributes.Implementation.Title = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Tooltip" />
         public virtual DotEscapeString Tooltip
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).Tooltip;
-            set => ((IDotHtmlTableCellAttributes) Attributes).Tooltip = value;
+            get => Attributes.Implementation.Tooltip;
+            set => Attributes.Implementation.Tooltip = value;
         }
 
         /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Style" />
         public virtual DotHtmlTableStyles? Style
         {
-            get => ((IDotHtmlTableCellAttributes) Attributes).Style;
-            set => ((IDotHtmlTableCellAttributes) Attributes).Style = value;
+            get => Attributes.Implementation.Style;
+            set => Attributes.Implementation.Style = value;
         }
     }
 }

@@ -1,7 +1,8 @@
-﻿using GiGraph.Dot.Entities.Edges.Attributes;
+﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
-using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Edges
 {
@@ -45,25 +46,6 @@ namespace GiGraph.Dot.Entities.Edges
         where TTail : DotEndpointDefinition, IDotOrderable
         where THead : DotEndpointDefinition, IDotOrderable
     {
-        protected DotEdge(TTail tail, THead head,
-            DotEdgeRootAttributes rootAttributes,
-            DotEdgeTailRootAttributes tailAttributes,
-            DotEdgeHeadRootAttributes headAttributes
-        )
-            : base(rootAttributes)
-        {
-            Tail = new DotEdgeTail<TTail>(tail, tailAttributes);
-            Head = new DotEdgeHead<THead>(head, headAttributes);
-        }
-
-        protected DotEdge(TTail tail, THead head, DotEdgeRootAttributes rootAttributes)
-            : this(tail, head, rootAttributes,
-                new DotEdgeTailRootAttributes(rootAttributes.Collection),
-                new DotEdgeHeadRootAttributes(rootAttributes.Collection)
-            )
-        {
-        }
-
         /// <summary>
         ///     Creates a new edge instance.
         /// </summary>
@@ -74,24 +56,35 @@ namespace GiGraph.Dot.Entities.Edges
         ///     The head endpoint.
         /// </param>
         public DotEdge(TTail tail, THead head)
-            : this(tail, head, new DotEdgeRootAttributes())
+            : this(tail, head, new DotAttributeCollection())
         {
+        }
+
+        private DotEdge(TTail tail, THead head, DotAttributeCollection attributes)
+            : this(
+                new DotEdgeEndpoint<TTail>(tail, new DotEdgeTailAttributes(attributes)),
+                new DotEdgeEndpoint<THead>(head, new DotEdgeHeadAttributes(attributes)),
+                new DotEdgeRootAttributes(attributes)
+            )
+        {
+        }
+
+        private DotEdge(DotEdgeEndpoint<TTail> tail, DotEdgeEndpoint<THead> head, DotEdgeRootAttributes attributes)
+            : base(new DotEndpointDefinition[] { tail.Endpoint, head.Endpoint }, attributes)
+        {
+            Tail = tail;
+            Head = head;
         }
 
         /// <summary>
         ///     Gets the tail endpoint.
         /// </summary>
-        public virtual DotEdgeTail<TTail> Tail { get; }
+        public virtual DotEdgeEndpoint<TTail> Tail { get; }
 
         /// <summary>
         ///     Gets the head endpoint.
         /// </summary>
-        public virtual DotEdgeHead<THead> Head { get; }
-
-        /// <summary>
-        ///     Gets the endpoints of this edge.
-        /// </summary>
-        public override DotEndpointDefinition[] Endpoints => new DotEndpointDefinition[] { Tail.Endpoint, Head.Endpoint };
+        public virtual DotEdgeEndpoint<THead> Head { get; }
 
         protected override string GetOrderingKey()
         {

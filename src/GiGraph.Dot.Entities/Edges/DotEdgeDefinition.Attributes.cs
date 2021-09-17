@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Edges.Attributes;
+using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
@@ -12,150 +13,155 @@ namespace GiGraph.Dot.Entities.Edges
 {
     public abstract partial class DotEdgeDefinition : IDotEdgeRootAttributes
     {
+        // hidden by explicit implementation because they are exposed through separate properties of descendant classes
+        DotEdgeHeadAttributes IDotEdgeRootAttributes.Head => Attributes.Implementation.Head;
+        DotEdgeTailAttributes IDotEdgeRootAttributes.Tail => Attributes.Implementation.Tail;
+
+
         /// <inheritdoc cref="IDotEdgeRootAttributes.Font" />
-        public virtual DotFontAttributes Font => ((IDotEdgeRootAttributes) Attributes).Font;
+        public virtual DotFontAttributes Font => Attributes.Implementation.Font;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.EndpointLabels" />
-        public virtual DotEdgeEndpointLabelsAttributes EndpointLabels => ((IDotEdgeRootAttributes) Attributes).EndpointLabels;
+        public virtual DotEdgeEndpointLabelsAttributes EndpointLabels => Attributes.Implementation.EndpointLabels;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.EdgeHyperlink" />
-        public virtual DotEdgeHyperlinkAttributes EdgeHyperlink => ((IDotEdgeRootAttributes) Attributes).EdgeHyperlink;
+        public virtual DotEdgeHyperlinkAttributes EdgeHyperlink => Attributes.Implementation.EdgeHyperlink;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.LabelHyperlink" />
-        public virtual DotEdgeLabelHyperlinkAttributes LabelHyperlink => ((IDotEdgeRootAttributes) Attributes).LabelHyperlink;
+        public virtual DotEdgeLabelHyperlinkAttributes LabelHyperlink => Attributes.Implementation.LabelHyperlink;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.Style" />
-        public virtual DotEdgeStyleAttributeOptions Style => ((IDotEdgeRootAttributes) Attributes).Style;
+        public virtual DotEdgeStyleAttributeOptions Style => Attributes.Implementation.Style;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.SvgStyleSheet" />
-        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => ((IDotEdgeRootAttributes) Attributes).SvgStyleSheet;
+        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.Hyperlink" />
-        public virtual DotHyperlinkAttributes Hyperlink => ((IDotEdgeRootAttributes) Attributes).Hyperlink;
+        public virtual DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
 
         DotStyles? IDotEdgeAttributes.Style
         {
-            get => ((IDotEdgeAttributes) Attributes).Style;
-            set => ((IDotEdgeAttributes) Attributes).Style = value;
+            get => ((IDotEdgeAttributes) Attributes.Implementation).Style;
+            set => ((IDotEdgeAttributes) Attributes.Implementation).Style = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Label" />
         public virtual DotLabel Label
         {
-            get => ((IDotEdgeAttributes) Attributes).Label;
-            set => ((IDotEdgeAttributes) Attributes).Label = value;
+            get => Attributes.Implementation.Label;
+            set => Attributes.Implementation.Label = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.ExternalLabel" />
         public virtual DotLabel ExternalLabel
         {
-            get => ((IDotEdgeAttributes) Attributes).ExternalLabel;
-            set => ((IDotEdgeAttributes) Attributes).ExternalLabel = value;
+            get => Attributes.Implementation.ExternalLabel;
+            set => Attributes.Implementation.ExternalLabel = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.AllowLabelFloat" />
         public virtual bool? AllowLabelFloat
         {
-            get => ((IDotEdgeAttributes) Attributes).AllowLabelFloat;
-            set => ((IDotEdgeAttributes) Attributes).AllowLabelFloat = value;
+            get => Attributes.Implementation.AllowLabelFloat;
+            set => Attributes.Implementation.AllowLabelFloat = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.MinLength" />
         public virtual int? MinLength
         {
-            get => ((IDotEdgeAttributes) Attributes).MinLength;
-            set => ((IDotEdgeAttributes) Attributes).MinLength = value;
+            get => Attributes.Implementation.MinLength;
+            set => Attributes.Implementation.MinLength = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Length" />
         public virtual double? Length
         {
-            get => ((IDotEdgeAttributes) Attributes).Length;
-            set => ((IDotEdgeAttributes) Attributes).Length = value;
+            get => Attributes.Implementation.Length;
+            set => Attributes.Implementation.Length = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Weight" />
         public virtual double? Weight
         {
-            get => ((IDotEdgeAttributes) Attributes).Weight;
-            set => ((IDotEdgeAttributes) Attributes).Weight = value;
+            get => Attributes.Implementation.Weight;
+            set => Attributes.Implementation.Weight = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Tooltip" />
         public virtual DotEscapeString Tooltip
         {
-            get => ((IDotEdgeAttributes) Attributes).Tooltip;
-            set => ((IDotEdgeAttributes) Attributes).Tooltip = value;
+            get => Attributes.Implementation.Tooltip;
+            set => Attributes.Implementation.Tooltip = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Color" />
         public virtual DotColorDefinition Color
         {
-            get => ((IDotEdgeAttributes) Attributes).Color;
-            set => ((IDotEdgeAttributes) Attributes).Color = value;
+            get => Attributes.Implementation.Color;
+            set => Attributes.Implementation.Color = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.FillColor" />
         public virtual DotColorDefinition FillColor
         {
-            get => ((IDotEdgeAttributes) Attributes).FillColor;
-            set => ((IDotEdgeAttributes) Attributes).FillColor = value;
+            get => Attributes.Implementation.FillColor;
+            set => Attributes.Implementation.FillColor = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.ColorScheme" />
         public virtual string ColorScheme
         {
-            get => ((IDotEdgeAttributes) Attributes).ColorScheme;
-            set => ((IDotEdgeAttributes) Attributes).ColorScheme = value;
+            get => Attributes.Implementation.ColorScheme;
+            set => Attributes.Implementation.ColorScheme = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Width" />
         public virtual double? Width
         {
-            get => ((IDotEdgeAttributes) Attributes).Width;
-            set => ((IDotEdgeAttributes) Attributes).Width = value;
+            get => Attributes.Implementation.Width;
+            set => Attributes.Implementation.Width = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.ArrowheadScale" />
         public virtual double? ArrowheadScale
         {
-            get => ((IDotEdgeAttributes) Attributes).ArrowheadScale;
-            set => ((IDotEdgeAttributes) Attributes).ArrowheadScale = value;
+            get => Attributes.Implementation.ArrowheadScale;
+            set => Attributes.Implementation.ArrowheadScale = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Directions" />
         public virtual DotEdgeDirections? Directions
         {
-            get => ((IDotEdgeAttributes) Attributes).Directions;
-            set => ((IDotEdgeAttributes) Attributes).Directions = value;
+            get => Attributes.Implementation.Directions;
+            set => Attributes.Implementation.Directions = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.AttachLabel" />
         public virtual bool? AttachLabel
         {
-            get => ((IDotEdgeAttributes) Attributes).AttachLabel;
-            set => ((IDotEdgeAttributes) Attributes).AttachLabel = value;
+            get => Attributes.Implementation.AttachLabel;
+            set => Attributes.Implementation.AttachLabel = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Constrain" />
         public virtual bool? Constrain
         {
-            get => ((IDotEdgeAttributes) Attributes).Constrain;
-            set => ((IDotEdgeAttributes) Attributes).Constrain = value;
+            get => Attributes.Implementation.Constrain;
+            set => Attributes.Implementation.Constrain = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.Comment" />
         public virtual string Comment
         {
-            get => ((IDotEdgeAttributes) Attributes).Comment;
-            set => ((IDotEdgeAttributes) Attributes).Comment = value;
+            get => Attributes.Implementation.Comment;
+            set => Attributes.Implementation.Comment = value;
         }
 
         /// <inheritdoc cref="IDotEdgeAttributes.ObjectId" />
         public virtual DotEscapeString ObjectId
         {
-            get => ((IDotEdgeAttributes) Attributes).ObjectId;
-            set => ((IDotEdgeAttributes) Attributes).ObjectId = value;
+            get => Attributes.Implementation.ObjectId;
+            set => Attributes.Implementation.ObjectId = value;
         }
     }
 }

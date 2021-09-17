@@ -1,27 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
 using GiGraph.Dot.Entities.Nodes.Attributes;
-using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Entities;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Nodes.Collections
 {
     public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, IDotAnnotatable
     {
-        protected DotNodeCollection(DotNodeRootAttributes attributes)
+        public DotNodeCollection()
+            : this(new DotAttributeCollection())
         {
-            Attributes = attributes;
         }
 
-        public DotNodeCollection()
-            : this(new DotNodeRootAttributes())
+        private DotNodeCollection(DotAttributeCollection attributes)
+            : this(new DotNodeRootAttributes(attributes))
         {
+        }
+
+        private DotNodeCollection(DotNodeRootAttributes attributes)
+        {
+            Attributes = new DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes>(attributes);
         }
 
         /// <summary>
-        ///     Gets the attributes to apply by default to all nodes of the graph.
+        ///     Provides access to the global attributes applied to nodes.
         /// </summary>
-        public virtual DotNodeRootAttributes Attributes { get; }
+        public virtual DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

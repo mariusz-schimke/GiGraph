@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Output.Writers;
+﻿using GiGraph.Dot.Output.Entities;
+using GiGraph.Dot.Output.Writers;
 
 namespace GiGraph.Dot.Output.Generators
 {
