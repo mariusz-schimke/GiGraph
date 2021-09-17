@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Properties;
+using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
 using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Extensions

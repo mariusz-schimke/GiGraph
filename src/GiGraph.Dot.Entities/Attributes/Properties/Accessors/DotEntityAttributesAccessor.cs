@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace GiGraph.Dot.Entities.Attributes.Properties
+namespace GiGraph.Dot.Entities.Attributes.Properties.Accessors
 {
     public abstract class DotEntityAttributesAccessor : IDotEntityAttributesAccessor
     {

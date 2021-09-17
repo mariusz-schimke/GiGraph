@@ -1,4 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
 using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common

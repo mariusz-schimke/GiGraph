@@ -2,8 +2,11 @@
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace GiGraph.Dot.Entities.Attributes.Properties
+namespace GiGraph.Dot.Entities.Attributes.Properties.Accessors
 {
+    /// <summary>
+    ///     Provides access to attributes through property expressions.
+    /// </summary>
     public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributesAccessor
         where TEntityAttributeProperties : DotEntityAttributes, TIEntityAttributeProperties
     {
