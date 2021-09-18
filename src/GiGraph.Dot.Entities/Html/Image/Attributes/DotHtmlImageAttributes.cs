@@ -17,6 +17,11 @@ namespace GiGraph.Dot.Entities.Html.Image.Attributes
         {
         }
 
+        protected DotHtmlImageAttributes(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
+        {
+        }
+
         [DotAttributeKey("src")]
         public virtual string Source
         {

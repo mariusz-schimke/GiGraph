@@ -17,6 +17,11 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
         {
         }
 
+        protected DotHtmlTableCellAttributes(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
+        {
+        }
+
         [DotAttributeKey("align")]
         public virtual DotHtmlTableCellHorizontalAlignment? HorizontalAlignment
         {

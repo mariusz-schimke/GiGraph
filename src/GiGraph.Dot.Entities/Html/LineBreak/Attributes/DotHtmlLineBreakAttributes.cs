@@ -17,6 +17,11 @@ namespace GiGraph.Dot.Entities.Html.LineBreak.Attributes
         {
         }
 
+        protected DotHtmlLineBreakAttributes(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
+        {
+        }
+
         [DotAttributeKey("align")]
         public virtual DotHorizontalAlignment? LineAlignment
         {
