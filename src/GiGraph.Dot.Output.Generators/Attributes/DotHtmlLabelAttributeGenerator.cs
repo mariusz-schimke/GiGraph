@@ -6,7 +6,7 @@ using GiGraph.Dot.Output.Writers.Attributes;
 
 namespace GiGraph.Dot.Output.Generators.Attributes
 {
-    public class DotHtmlLabelAttributeGenerator : DotAttributeGenerator<DotAttribute>
+    public class DotHtmlLabelAttributeGenerator : DotAttributeGenerator
     {
         public DotHtmlLabelAttributeGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
             : base(syntaxRules, options, entityGenerators)
