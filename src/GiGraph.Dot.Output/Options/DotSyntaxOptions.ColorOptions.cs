@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Output.Options
             ///     <see cref="Color" /> instance, set the current property to false, in which case the actual color value will always be used
             ///     instead of its name.
             /// </summary>
-            public virtual bool PreferName { get; set; } = true;
+            public bool PreferName { get; set; } = true;
         }
     }
 }

@@ -8,7 +8,7 @@
             ///     When true, graph attributes will be written as separate statements. When false, the "graph [attr_list]" format will be used
             ///     instead.
             /// </summary>
-            public virtual bool AttributesAsStatements { get; set; } = true;
+            public bool AttributesAsStatements { get; set; } = true;
         }
     }
 }
