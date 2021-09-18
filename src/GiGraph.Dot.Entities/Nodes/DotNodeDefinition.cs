@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Nodes
         /// <summary>
         ///     Provides access to the attributes of the node.
         /// </summary>
-        public virtual DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes> Attributes { get; }
+        public DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

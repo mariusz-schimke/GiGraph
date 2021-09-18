@@ -32,6 +32,6 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <summary>
         ///     Provides access to the attributes of the subgraph.
         /// </summary>
-        public virtual DotEntityRootAttributesAccessor<IDotSubgraphAttributes, DotSubgraphRootAttributes> Attributes { get; }
+        public DotEntityRootAttributesAccessor<IDotSubgraphAttributes, DotSubgraphRootAttributes> Attributes { get; }
     }
 }

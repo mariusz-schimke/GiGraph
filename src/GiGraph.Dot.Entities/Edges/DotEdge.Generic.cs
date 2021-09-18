@@ -79,12 +79,12 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         ///     Gets the tail endpoint.
         /// </summary>
-        public virtual DotEdgeEndpoint<TTail> Tail { get; }
+        public DotEdgeEndpoint<TTail> Tail { get; }
 
         /// <summary>
         ///     Gets the head endpoint.
         /// </summary>
-        public virtual DotEdgeEndpoint<THead> Head { get; }
+        public DotEdgeEndpoint<THead> Head { get; }
 
         protected override string GetOrderingKey()
         {

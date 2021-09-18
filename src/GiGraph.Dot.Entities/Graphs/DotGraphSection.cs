@@ -32,9 +32,9 @@ namespace GiGraph.Dot.Entities.Graphs
         /// <summary>
         ///     Provides access to the attributes of the graph.
         /// </summary>
-        public virtual DotEntityRootAttributesAccessor<IDotGraphAttributes, DotGraphRootAttributes> Attributes { get; }
+        public DotEntityRootAttributesAccessor<IDotGraphAttributes, DotGraphRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="DotCommonGraphSection.Clusters" />
-        public new virtual DotGraphClusterCollection Clusters => (DotGraphClusterCollection) base.Clusters;
+        public new DotGraphClusterCollection Clusters => (DotGraphClusterCollection) base.Clusters;
     }
 }

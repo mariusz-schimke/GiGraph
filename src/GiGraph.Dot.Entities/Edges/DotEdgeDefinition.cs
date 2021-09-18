@@ -23,12 +23,12 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         ///     Provides access to the attributes of the edge.
         /// </summary>
-        public virtual DotEntityRootAttributesAccessor<IDotEdgeAttributes, DotEdgeRootAttributes> Attributes { get; }
+        public DotEntityRootAttributesAccessor<IDotEdgeAttributes, DotEdgeRootAttributes> Attributes { get; }
 
         /// <summary>
         ///     Gets the endpoints of the edge.
         /// </summary>
-        public virtual DotEndpointDefinition[] Endpoints { get; }
+        public DotEndpointDefinition[] Endpoints { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }
