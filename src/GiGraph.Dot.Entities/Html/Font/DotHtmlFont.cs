@@ -80,7 +80,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <summary>
         ///     Provides access to the attributes of the font.
         /// </summary>
-        public new virtual DotHtmlElementRootAttributesAccessor<IDotHtmlFontAttributes, DotHtmlFontAttributes> Attributes { get; }
+        public new DotHtmlElementRootAttributesAccessor<IDotHtmlFontAttributes, DotHtmlFontAttributes> Attributes { get; }
 
         /// <summary>
         ///     Creates an appropriate nested structure of HTML tags based on the specified font and style.

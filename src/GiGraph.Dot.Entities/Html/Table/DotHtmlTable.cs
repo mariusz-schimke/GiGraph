@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// <summary>
         ///     Provides access to the attributes of the table.
         /// </summary>
-        public new virtual DotHtmlElementRootAttributesAccessor<IDotHtmlTableAttributes, DotHtmlTableAttributes> Attributes { get; }
+        public new DotHtmlElementRootAttributesAccessor<IDotHtmlTableAttributes, DotHtmlTableAttributes> Attributes { get; }
 
         /// <summary>
         ///     Adds a new row to the table and optionally initializes it.

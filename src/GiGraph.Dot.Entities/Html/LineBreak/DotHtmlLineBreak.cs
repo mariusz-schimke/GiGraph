@@ -57,7 +57,7 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
         /// <summary>
         ///     Provides access to the attributes of the line break element.
         /// </summary>
-        public new virtual DotHtmlElementRootAttributesAccessor<IDotHtmlLineBreakAttributes, DotHtmlLineBreakAttributes> Attributes { get; }
+        public new DotHtmlElementRootAttributesAccessor<IDotHtmlLineBreakAttributes, DotHtmlLineBreakAttributes> Attributes { get; }
 
         /// <summary>
         ///     Returns a &lt;br/&gt; HTML tag string according to the default syntax options and rules.
