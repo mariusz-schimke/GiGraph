@@ -48,7 +48,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
             _labelAlignmentAttributes = labelAlignmentAttributes;
         }
 
-        // TODO: przejrzeć wszystkie elementy projektów oznaczone nadmiarowo jako virtual i zrewidować to podejście
+        // TODO: przejrzeć wszystkie elementy projektów oznaczone nadmiarowo jako virtual (oraz pola protected) i zrewidować to podejście
         // TODO: usunąć tego typu konstruktory (uprościć)?
         public DotGraphRootAttributes(DotAttributeCollection attributes)
             : this(
