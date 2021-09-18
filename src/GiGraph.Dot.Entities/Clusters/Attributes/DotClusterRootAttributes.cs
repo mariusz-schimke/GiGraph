@@ -19,10 +19,6 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> ClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
 
-        protected readonly DotFontAttributes _fontAttributes;
-        protected readonly DotLabelAlignmentAttributes _labelAlignmentAttributes;
-        protected readonly DotClusterStyleAttributeOptions _styleAttributeOptions;
-
         protected DotClusterRootAttributes(
             DotAttributeCollection attributes,
             Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
@@ -34,9 +30,9 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
         {
-            _fontAttributes = fontAttributes;
-            _styleAttributeOptions = styleAttributeOptions;
-            _labelAlignmentAttributes = labelAlignmentAttributes;
+            Font = fontAttributes;
+            Style = styleAttributeOptions;
+            LabelAlignment = labelAlignmentAttributes;
         }
 
         public DotClusterRootAttributes(DotAttributeCollection attributes)
@@ -52,9 +48,9 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         {
         }
 
-        public virtual DotFontAttributes Font => _fontAttributes;
-        public virtual DotClusterStyleAttributeOptions Style => _styleAttributeOptions;
-        public virtual DotLabelAlignmentAttributes LabelAlignment => _labelAlignmentAttributes;
+        public virtual DotFontAttributes Font { get; }
+        public virtual DotClusterStyleAttributeOptions Style { get; }
+        public virtual DotLabelAlignmentAttributes LabelAlignment { get; }
 
         [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
         DotStyles? IDotClusterAttributes.Style
