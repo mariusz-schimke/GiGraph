@@ -5,7 +5,7 @@ using GiGraph.Dot.Output.EnumHelpers;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Fonts;
 
-namespace GiGraph.Dot.Entities.Html.Font
+namespace GiGraph.Dot.Entities.Html.Font.Styles
 {
     /// <summary>
     ///     An HTML font style element.

@@ -1,6 +1,7 @@
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Entities.Html.Font.Attributes;
+using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Entities.Html.Table;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Fonts;

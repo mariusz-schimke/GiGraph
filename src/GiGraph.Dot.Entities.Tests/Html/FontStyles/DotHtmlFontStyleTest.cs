@@ -1,4 +1,5 @@
 using GiGraph.Dot.Entities.Html.Font;
+using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 using Snapshooter.Xunit;
