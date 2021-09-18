@@ -14,8 +14,8 @@ namespace GiGraph.Dot.Output.Generators.Attributes
 
         protected override void WriteAttribute(DotAttribute attribute, IDotAttributeListItemWriter writer)
         {
-            var nodeWriter = writer.BeginAttribute();
-            _entityGenerators.GetForEntity<IDotAttributeWriter>(attribute).Generate(attribute, nodeWriter);
+            var attributeWriter = writer.BeginAttribute();
+            _entityGenerators.GetForEntity<IDotAttributeWriter>(attribute).Generate(attribute, attributeWriter);
             writer.EndAttribute();
         }
     }

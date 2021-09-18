@@ -22,8 +22,8 @@ namespace GiGraph.Dot.Output.Generators
         {
             if (attributes.Any())
             {
-                var attributesWriter = writer.BeginAttributeList(_options.Attributes.PreferExplicitSeparator);
-                _entityGenerators.GetForEntity<IDotAttributeListItemWriter>(attributes).Generate(attributes, attributesWriter, annotate);
+                var attributeListItemWriter = writer.BeginAttributeList(_options.Attributes.PreferExplicitSeparator);
+                _entityGenerators.GetForEntity<IDotAttributeListItemWriter>(attributes).Generate(attributes, attributeListItemWriter, annotate);
                 writer.EndAttributeList();
             }
         }
