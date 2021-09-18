@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
 {
     public abstract class DotClusterNodeRootCommonAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>
         : DotEntityRootCommonAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>
-        where TEntityAttributeProperties : DotEntityAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
+        where TEntityAttributeProperties : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
     {
         protected DotClusterNodeRootCommonAttributes(
             DotAttributeCollection attributes,
