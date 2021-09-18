@@ -10,10 +10,10 @@ namespace GiGraph.Dot.Entities.Html.Image.Attributes
 {
     public class DotHtmlImageAttributes : DotHtmlElementAttributes<IDotHtmlImageAttributes, DotHtmlImageAttributes>, IDotHtmlImageAttributes
     {
-        private static readonly Lazy<DotMemberAttributeKeyLookup> HtmlImageAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlImageAttributes, IDotHtmlImageAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlImageAttributes, IDotHtmlImageAttributes>().BuildLazy();
 
         public DotHtmlImageAttributes(DotHtmlAttributeCollection attributes)
-            : base(attributes, HtmlImageAttributesKeyLookup)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 

@@ -10,10 +10,10 @@ namespace GiGraph.Dot.Entities.Html.LineBreak.Attributes
 {
     public class DotHtmlLineBreakAttributes : DotHtmlElementAttributes<IDotHtmlLineBreakAttributes, DotHtmlLineBreakAttributes>, IDotHtmlLineBreakAttributes
     {
-        private static readonly Lazy<DotMemberAttributeKeyLookup> HtmlLineBreakAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlLineBreakAttributes, IDotHtmlLineBreakAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlLineBreakAttributes, IDotHtmlLineBreakAttributes>().BuildLazy();
 
         public DotHtmlLineBreakAttributes(DotHtmlAttributeCollection attributes)
-            : base(attributes, HtmlLineBreakAttributesKeyLookup)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 

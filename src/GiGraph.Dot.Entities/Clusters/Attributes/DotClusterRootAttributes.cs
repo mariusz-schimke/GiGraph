@@ -17,12 +17,12 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
 {
     public class DotClusterRootAttributes : DotClusterNodeRootCommonAttributes<IDotClusterAttributes, DotClusterRootAttributes>, IDotClusterRootAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> ClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
 
         public DotClusterRootAttributes(DotAttributeCollection attributes)
             : this(
                 attributes,
-                ClusterRootAttributesKeyLookup,
+                AttributeKeyLookup,
                 new DotHyperlinkAttributes(attributes),
                 new DotFontAttributes(attributes),
                 new DotClusterStyleAttributeOptions(attributes),

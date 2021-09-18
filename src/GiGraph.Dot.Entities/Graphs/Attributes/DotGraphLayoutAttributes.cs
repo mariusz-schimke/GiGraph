@@ -13,10 +13,10 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
     public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGraphLayoutAttributes, DotGraphLayoutAttributes>, IDotGraphLayoutAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphLayoutAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphLayoutAttributes, IDotGraphLayoutAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphLayoutAttributes, IDotGraphLayoutAttributes>().BuildLazy();
 
         public DotGraphLayoutAttributes(DotAttributeCollection attributes)
-            : base(attributes, GraphLayoutAttributesKeyLookup)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 

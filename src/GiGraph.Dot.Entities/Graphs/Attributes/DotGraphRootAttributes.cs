@@ -15,12 +15,12 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
     public class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDotGraphAttributes, DotGraphRootAttributes>, IDotGraphRootAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().BuildLazy();
 
         public DotGraphRootAttributes(DotAttributeCollection attributes)
             : this(
                 attributes,
-                GraphRootAttributesKeyLookup,
+                AttributeKeyLookup,
                 new DotGraphClustersAttributes(attributes),
                 new DotHyperlinkAttributes(attributes),
                 new DotGraphFontAttributes(attributes),

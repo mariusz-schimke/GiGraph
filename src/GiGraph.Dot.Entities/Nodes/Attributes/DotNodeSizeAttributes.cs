@@ -11,10 +11,10 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
     public class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDotNodeSizeAttributes, DotNodeSizeAttributes>, IDotNodeSizeAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> NodeSizeAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeSizeAttributes, IDotNodeSizeAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeSizeAttributes, IDotNodeSizeAttributes>().BuildLazy();
 
         public DotNodeSizeAttributes(DotAttributeCollection attributes)
-            : base(attributes, NodeSizeAttributesKeyLookup)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 

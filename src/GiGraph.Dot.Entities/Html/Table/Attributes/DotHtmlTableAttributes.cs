@@ -9,10 +9,12 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
 {
     public class DotHtmlTableAttributes : DotHtmlTableTableCellCommonAttributes<IDotHtmlTableAttributes, DotHtmlTableAttributes>, IDotHtmlTableAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> HtmlTableAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableAttributes, IDotHtmlTableAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableAttributes, IDotHtmlTableAttributes>().BuildLazy();
+
+        // TODO: konstruktory z AttributeKeyLookup - brakuje ich w elementach HTML
 
         public DotHtmlTableAttributes(DotHtmlAttributeCollection attributes)
-            : base(attributes, HtmlTableAttributesKeyLookup)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 

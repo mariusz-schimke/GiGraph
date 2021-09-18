@@ -11,10 +11,10 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes
 {
     public class DotEdgeTailHyperlinkAttributes : DotEdgeEndpointHyperlinkAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeTailHyperlinkAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeTailHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeTailHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().BuildLazy();
 
         public DotEdgeTailHyperlinkAttributes(DotAttributeCollection attributes)
-            : base(attributes, EdgeTailHyperlinkAttributesKeyLookup)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 

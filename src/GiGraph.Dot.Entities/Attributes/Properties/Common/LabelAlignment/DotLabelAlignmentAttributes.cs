@@ -9,10 +9,10 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment
 {
     public class DotLabelAlignmentAttributes : DotEntityAttributesWithMetadata<IDotLabelAlignmentAttributes, DotLabelAlignmentAttributes>, IDotLabelAlignmentAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> LabelAlignmentAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotLabelAlignmentAttributes, IDotLabelAlignmentAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotLabelAlignmentAttributes, IDotLabelAlignmentAttributes>().BuildLazy();
 
         public DotLabelAlignmentAttributes(DotAttributeCollection attributes)
-            : base(attributes, LabelAlignmentAttributesKeyLookup)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 

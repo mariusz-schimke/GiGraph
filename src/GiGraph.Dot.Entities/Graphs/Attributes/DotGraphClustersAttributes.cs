@@ -12,11 +12,10 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
     public class DotGraphClustersAttributes : DotEntityAttributesWithMetadata<IDotGraphClustersAttributes, DotGraphClustersAttributes>, IDotGraphClustersRootAttributes
     {
-        // TODO: jeśli te kolekcje staną się prywatne, można skrócić im nazwy
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClustersAttributes, IDotGraphClustersAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClustersAttributes, IDotGraphClustersAttributes>().BuildLazy();
 
         public DotGraphClustersAttributes(DotAttributeCollection attributes)
-            : this(attributes, GraphClusterRootAttributesKeyLookup, new DotClusterStyleAttributeOptions(attributes))
+            : this(attributes, AttributeKeyLookup, new DotClusterStyleAttributeOptions(attributes))
         {
         }
 

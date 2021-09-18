@@ -18,12 +18,12 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
     public class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<IDotNodeAttributes, DotNodeRootAttributes>, IDotNodeRootAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> NodeRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().BuildLazy();
 
         public DotNodeRootAttributes(DotAttributeCollection attributes)
             : this(
                 attributes,
-                NodeRootAttributesKeyLookup,
+                AttributeKeyLookup,
                 new DotHyperlinkAttributes(attributes),
                 new DotFontAttributes(attributes),
                 new DotNodeStyleAttributeOptions(attributes),

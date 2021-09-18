@@ -6,10 +6,10 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet
 {
     public class DotSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotSvgStyleSheetAttributes, DotSvgStyleSheetAttributes>
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> SvgStyleSheetAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotSvgStyleSheetAttributes, IDotSvgStyleSheetAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotSvgStyleSheetAttributes, IDotSvgStyleSheetAttributes>().BuildLazy();
 
         public DotSvgStyleSheetAttributes(DotAttributeCollection attributes)
-            : base(attributes, SvgStyleSheetAttributesKeyLookup)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 

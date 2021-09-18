@@ -10,10 +10,10 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
 {
     public class DotEdgeLabelHyperlinkAttributes : DotEdgeHyperlinkAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeLabelHyperlinkAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeLabelHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeLabelHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().BuildLazy();
 
         public DotEdgeLabelHyperlinkAttributes(DotAttributeCollection attributes)
-            : base(attributes, EdgeLabelHyperlinkAttributesKeyLookup)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 

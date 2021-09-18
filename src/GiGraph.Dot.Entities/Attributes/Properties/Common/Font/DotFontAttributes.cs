@@ -6,10 +6,10 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Font
 {
     public class DotFontAttributes : DotFontAttributes<IDotFontAttributes, DotFontAttributes>
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> EntityFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotFontAttributes, IDotFontAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotFontAttributes, IDotFontAttributes>().BuildLazy();
 
         public DotFontAttributes(DotAttributeCollection attributes)
-            : base(attributes, EntityFontAttributesKeyLookup)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 

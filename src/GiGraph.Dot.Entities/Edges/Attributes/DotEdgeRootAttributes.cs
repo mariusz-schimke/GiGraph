@@ -19,12 +19,12 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
 {
     public class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotEdgeAttributes, DotEdgeRootAttributes>, IDotEdgeRootAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().BuildLazy();
 
         public DotEdgeRootAttributes(DotAttributeCollection attributes)
             : this(
                 attributes,
-                EdgeRootAttributesKeyLookup,
+                AttributeKeyLookup,
                 new DotEdgeHeadAttributes(attributes),
                 new DotEdgeTailAttributes(attributes),
                 new DotFontAttributes(attributes),
