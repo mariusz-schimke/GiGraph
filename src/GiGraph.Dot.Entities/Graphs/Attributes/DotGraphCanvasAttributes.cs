@@ -12,7 +12,7 @@ using GiGraph.Dot.Types.Viewport;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphCanvasAttributes : DotEntityAttributes<IDotGraphCanvasAttributes, DotGraphCanvasAttributes>, IDotGraphCanvasAttributes
+    public class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<IDotGraphCanvasAttributes, DotGraphCanvasAttributes>, IDotGraphCanvasAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphCanvasAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphCanvasAttributes, IDotGraphCanvasAttributes>().BuildLazy();
 

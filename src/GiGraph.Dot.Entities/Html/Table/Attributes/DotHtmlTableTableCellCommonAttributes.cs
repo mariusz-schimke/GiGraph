@@ -12,7 +12,7 @@ using GiGraph.Dot.Types.Html.Table;
 namespace GiGraph.Dot.Entities.Html.Table.Attributes
 {
     public abstract class DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>
-        : DotHtmlEntityAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>, IDotHtmlTableTableCellCommonAttributes
+        : DotHtmlElementAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>, IDotHtmlTableTableCellCommonAttributes
         where TIHtmlTableTableCellAttributeProperties : IDotHtmlTableTableCellCommonAttributes
         where THtmlTableTableCellAttributeProperties : DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>, TIHtmlTableTableCellAttributeProperties
     {

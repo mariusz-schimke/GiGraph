@@ -32,6 +32,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
                 do
                 {
+                    // this ensures that we get to DotEntityAttributes<,>, which is the direct descendant of DotEntityAttributes
                     if (type.BaseType != typeof(DotEntityAttributes))
                     {
                         type = type.BaseType;

@@ -15,8 +15,8 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common
     /// <remarks>
     ///     When adding new properties, override them in all descendant classes to set adequate XML documentation comments.
     /// </remarks>
-    public abstract class DotEntityRootCommonAttributes<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>
-        where TEntityAttributeProperties : DotEntityAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
+    public abstract class DotEntityRootCommonAttributes<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>
+        where TEntityAttributeProperties : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
     {
         protected DotEntityRootCommonAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup, DotHyperlinkAttributes hyperlinkAttributes)
             : base(attributes, attributeKeyLookup)

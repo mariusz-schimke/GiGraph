@@ -10,7 +10,7 @@ using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphClustersAttributes : DotEntityAttributes<IDotGraphClustersAttributes, DotGraphClustersAttributes>, IDotGraphClustersRootAttributes
+    public class DotGraphClustersAttributes : DotEntityAttributesWithMetadata<IDotGraphClustersAttributes, DotGraphClustersAttributes>, IDotGraphClustersRootAttributes
     {
         // TODO: jeśli te kolekcje staną się prywatne, można skrócić im nazwy
         protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClustersAttributes, IDotGraphClustersAttributes>().BuildLazy();

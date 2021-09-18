@@ -7,7 +7,7 @@ using GiGraph.Dot.Output.Metadata;
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet
 {
     public abstract class DotSvgStyleSheetAttributes<TIEntitySvgStyleSheetAttributes, TEntitySvgStyleSheetAttributes>
-        : DotEntityAttributes<TIEntitySvgStyleSheetAttributes, TEntitySvgStyleSheetAttributes>, IDotSvgStyleSheetAttributes
+        : DotEntityAttributesWithMetadata<TIEntitySvgStyleSheetAttributes, TEntitySvgStyleSheetAttributes>, IDotSvgStyleSheetAttributes
         where TIEntitySvgStyleSheetAttributes : IDotSvgStyleSheetAttributes
         where TEntitySvgStyleSheetAttributes : DotSvgStyleSheetAttributes<TIEntitySvgStyleSheetAttributes, TEntitySvgStyleSheetAttributes>, TIEntitySvgStyleSheetAttributes
     {

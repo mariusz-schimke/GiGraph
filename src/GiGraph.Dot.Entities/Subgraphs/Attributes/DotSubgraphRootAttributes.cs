@@ -8,7 +8,7 @@ using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Subgraphs.Attributes
 {
-    public class DotSubgraphRootAttributes : DotEntityAttributes<IDotSubgraphAttributes, DotSubgraphRootAttributes>, IDotSubgraphRootAttributes
+    public class DotSubgraphRootAttributes : DotEntityAttributesWithMetadata<IDotSubgraphAttributes, DotSubgraphRootAttributes>, IDotSubgraphRootAttributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> SubgraphRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotSubgraphRootAttributes, IDotSubgraphAttributes>().BuildLazy();
 

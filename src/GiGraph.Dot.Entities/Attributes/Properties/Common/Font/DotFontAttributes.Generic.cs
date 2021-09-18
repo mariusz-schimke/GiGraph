@@ -9,7 +9,7 @@ using GiGraph.Dot.Types.Fonts;
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Font
 {
     public abstract class DotFontAttributes<TIEntityFontAttributes, TEntityFontAttributes>
-        : DotEntityAttributes<TIEntityFontAttributes, TEntityFontAttributes>, IDotFontAttributes
+        : DotEntityAttributesWithMetadata<TIEntityFontAttributes, TEntityFontAttributes>, IDotFontAttributes
         where TIEntityFontAttributes : IDotFontAttributes
         where TEntityFontAttributes : DotFontAttributes<TIEntityFontAttributes, TEntityFontAttributes>, TIEntityFontAttributes
     {

@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Extensions
         public static DotAttributeMetadata GetMetadata<TInterface, TImplementation, TProperty>(
             this DotEntityAttributesAccessor<TInterface, TImplementation> @this, Expression<Func<TInterface, TProperty>> property
         )
-            where TImplementation : DotEntityAttributes, TInterface
+            where TImplementation : DotEntityAttributesWithMetadata<TInterface, TImplementation>, TInterface
         {
             var key = @this.GetKey(property);
             return DotAttributeKeys.MetadataDictionary[key];
@@ -45,7 +45,10 @@ namespace GiGraph.Dot.Extensions
         /// <param name="this">
         ///     The current attribute collection context to get the metadata dictionary for.
         /// </param>
-        public static Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary(this IDotEntityAttributesAccessor @this)
+        public static Dictionary<string, DotAttributePropertyMetadata> GetMetadataDictionary<TInterface, TImplementation>(
+            this DotEntityAttributesAccessor<TInterface, TImplementation> @this
+        )
+            where TImplementation : DotEntityAttributesWithMetadata<TInterface, TImplementation>, TInterface
         {
             var propertyPathDictionary = @this.GetPathsToAttributeProperties();
 
@@ -93,7 +96,7 @@ namespace GiGraph.Dot.Extensions
             // now get all nested property groups
             var nestedAttributesProperties = @this.Implementation.GetType()
                .GetProperties(BindingFlags.Instance | BindingFlags.Public)
-               .Where(property => typeof(IDotEntityAttributes).IsAssignableFrom(property.PropertyType));
+               .Where(property => typeof(DotEntityAttributes).IsAssignableFrom(property.PropertyType));
 
             foreach (var nestedAttributesProperty in nestedAttributesProperties)
             {
