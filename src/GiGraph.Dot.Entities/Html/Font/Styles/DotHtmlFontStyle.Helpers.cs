@@ -2,7 +2,7 @@ using GiGraph.Dot.Entities.Html.Text;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Fonts;
 
-namespace GiGraph.Dot.Entities.Html.Font
+namespace GiGraph.Dot.Entities.Html.Font.Styles
 {
     public partial class DotHtmlFontStyle
     {

@@ -1,19 +1,19 @@
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Types.Alignment;
 
-namespace GiGraph.Dot.Entities.Html.Font
+namespace GiGraph.Dot.Entities.Html.Font.Styles
 {
     /// <summary>
-    ///     An HTML underlined text element (&lt;u&gt;).
+    ///     An HTML strikethrough text element (&lt;s&gt;).
     /// </summary>
-    public class DotHtmlUnderline : DotHtmlFontStyle
+    public class DotHtmlStrikethrough : DotHtmlFontStyle
     {
-        protected const string TagName = "u";
+        protected const string TagName = "s";
 
         /// <summary>
         ///     Creates a new instance.
         /// </summary>
-        public DotHtmlUnderline()
+        public DotHtmlStrikethrough()
             : base(TagName)
         {
         }
@@ -27,12 +27,12 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <param name="lineAlignment">
         ///     Specifies horizontal placement of lines if multiline text is specified.
         /// </param>
-        public DotHtmlUnderline(string text, DotHorizontalAlignment? lineAlignment = null)
+        public DotHtmlStrikethrough(string text, DotHorizontalAlignment? lineAlignment = null)
             : base(TagName, text, lineAlignment)
         {
         }
 
-        protected DotHtmlUnderline(DotHtmlAttributeCollection attributes)
+        protected DotHtmlStrikethrough(DotHtmlAttributeCollection attributes)
             : base(TagName, attributes)
         {
         }

@@ -1,5 +1,5 @@
 using GiGraph.Dot.Entities.Html;
-using GiGraph.Dot.Entities.Html.Font;
+using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Entities.Html.Image;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;

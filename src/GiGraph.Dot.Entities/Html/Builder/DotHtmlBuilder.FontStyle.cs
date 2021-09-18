@@ -1,5 +1,5 @@
 using System;
-using GiGraph.Dot.Entities.Html.Font;
+using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Html.Builder
