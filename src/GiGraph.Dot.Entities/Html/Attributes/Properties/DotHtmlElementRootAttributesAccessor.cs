@@ -3,14 +3,14 @@ using GiGraph.Dot.Entities.Html.Attributes.Collections;
 
 namespace GiGraph.Dot.Entities.Html.Attributes.Properties
 {
-    public class DotHtmlElementRootAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties>
-        where TEntityAttributeProperties : DotHtmlEntityAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
+    public class DotHtmlElementRootAttributesAccessor<TIHtmlElementAttributeProperties, THtmlElementAttributeProperties> : DotEntityAttributesAccessor<TIHtmlElementAttributeProperties, THtmlElementAttributeProperties>
+        where THtmlElementAttributeProperties : DotHtmlEntityAttributes<TIHtmlElementAttributeProperties, THtmlElementAttributeProperties>, TIHtmlElementAttributeProperties
     {
-        public DotHtmlElementRootAttributesAccessor(TEntityAttributeProperties attributes)
+        public DotHtmlElementRootAttributesAccessor(THtmlElementAttributeProperties attributes)
             : base(attributes)
         {
         }
 
-        public DotHtmlAttributeCollection Collection => ((DotHtmlEntityAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>) _attributes).Collection;
+        public DotHtmlAttributeCollection Collection => ((DotHtmlEntityAttributes<TIHtmlElementAttributeProperties, THtmlElementAttributeProperties>) _attributes).Collection;
     }
 }
