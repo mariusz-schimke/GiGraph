@@ -93,7 +93,7 @@ namespace GiGraph.Dot.Extensions
             // now get all nested property groups
             var nestedAttributesProperties = @this.Implementation.GetType()
                .GetProperties(BindingFlags.Instance | BindingFlags.Public)
-               .Where(property => typeof(IDotEntityAttributes).IsAssignableFrom(property.PropertyType));
+               .Where(property => typeof(DotEntityAttributes).IsAssignableFrom(property.PropertyType));
 
             foreach (var nestedAttributesProperty in nestedAttributesProperties)
             {
