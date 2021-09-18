@@ -19,12 +19,12 @@ namespace GiGraph.Dot.Entities.Html.Table
         {
         }
 
-        private DotHtmlTable(DotHtmlAttributeCollection attributes)
+        protected DotHtmlTable(DotHtmlAttributeCollection attributes)
             : this(new DotHtmlTableAttributes(attributes))
         {
         }
 
-        private DotHtmlTable(DotHtmlTableAttributes attributes)
+        protected DotHtmlTable(DotHtmlTableAttributes attributes)
             : base("table", attributes.Collection)
         {
             Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlTableAttributes, DotHtmlTableAttributes>(attributes);

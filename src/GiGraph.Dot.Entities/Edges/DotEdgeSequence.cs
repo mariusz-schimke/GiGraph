@@ -24,18 +24,6 @@ namespace GiGraph.Dot.Entities.Edges
         {
         }
 
-        private DotEdgeSequence(DotEndpointDefinition[] endpoints, DotAttributeCollection attributes)
-            : this(endpoints, new DotEdgeRootAttributes(attributes))
-        {
-        }
-
-        private DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes attributes)
-            : base(endpoints, attributes)
-        {
-            Tails = new DotEdgeEndpoint(attributes.Tail);
-            Heads = new DotEdgeEndpoint(attributes.Head);
-        }
-
         /// <summary>
         ///     Creates a new edge sequence initialized with the specified endpoints. At least a pair of endpoints has to be provided.
         /// </summary>
@@ -69,6 +57,18 @@ namespace GiGraph.Dot.Entities.Edges
         public DotEdgeSequence(IEnumerable<string> nodeIds)
             : this(nodeIds?.Select(nodeId => new DotEndpoint(nodeId)))
         {
+        }
+
+        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotAttributeCollection attributes)
+            : this(endpoints, new DotEdgeRootAttributes(attributes))
+        {
+        }
+
+        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes attributes)
+            : base(endpoints, attributes)
+        {
+            Tails = new DotEdgeEndpoint(attributes.Tail);
+            Heads = new DotEdgeEndpoint(attributes.Head);
         }
 
         /// <summary>

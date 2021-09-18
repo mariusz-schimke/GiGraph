@@ -66,12 +66,12 @@ namespace GiGraph.Dot.Entities.Html.Font
         {
         }
 
-        private DotHtmlFont(DotHtmlAttributeCollection attributes)
+        protected DotHtmlFont(DotHtmlAttributeCollection attributes)
             : this(new DotHtmlFontAttributes(attributes))
         {
         }
 
-        private DotHtmlFont(DotHtmlFontAttributes attributes)
+        protected DotHtmlFont(DotHtmlFontAttributes attributes)
             : base("font", attributes.Collection)
         {
             Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlFontAttributes, DotHtmlFontAttributes>(attributes);

@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// <summary>
         ///     Gets the subgraph whose nodes are used as endpoints.
         /// </summary>
-        public virtual DotSubgraph Subgraph { get; }
+        public DotSubgraph Subgraph { get; }
 
         protected override string GetOrderingKey()
         {

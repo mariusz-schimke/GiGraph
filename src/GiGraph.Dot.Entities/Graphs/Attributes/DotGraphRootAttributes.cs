@@ -17,39 +17,6 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().BuildLazy();
 
-        protected readonly DotGraphCanvasAttributes _canvasAttributes;
-        protected readonly DotGraphClustersAttributes _clusterAttributes;
-        protected readonly DotGraphFontAttributes _fontAttributes;
-        protected readonly DotLabelAlignmentAttributes _labelAlignmentAttributes;
-        protected readonly DotGraphLayoutAttributes _layoutAttributes;
-        protected readonly DotGraphStyleAttributeOptions _styleAttributeOptions;
-        protected readonly DotGraphSvgStyleSheetAttributes _svgStyleSheetAttributes;
-
-        protected DotGraphRootAttributes(
-            DotAttributeCollection attributes,
-            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-            DotGraphClustersAttributes clusterAttributes,
-            DotHyperlinkAttributes hyperlinkAttributes,
-            DotGraphFontAttributes fontAttributes,
-            DotGraphStyleAttributeOptions styleAttributeOptions,
-            DotGraphSvgStyleSheetAttributes svgStyleSheetAttributes,
-            DotGraphLayoutAttributes layoutAttributes,
-            DotGraphCanvasAttributes canvasAttributes,
-            DotLabelAlignmentAttributes labelAlignmentAttributes
-        )
-            : base(attributes, attributeKeyLookup, hyperlinkAttributes)
-        {
-            _clusterAttributes = clusterAttributes;
-            _fontAttributes = fontAttributes;
-            _styleAttributeOptions = styleAttributeOptions;
-            _svgStyleSheetAttributes = svgStyleSheetAttributes;
-            _layoutAttributes = layoutAttributes;
-            _canvasAttributes = canvasAttributes;
-            _labelAlignmentAttributes = labelAlignmentAttributes;
-        }
-
-        // TODO: przejrzeć wszystkie elementy projektów oznaczone nadmiarowo jako virtual (oraz pola protected) i zrewidować to podejście
-        // TODO: usunąć tego typu konstruktory (uprościć)?
         public DotGraphRootAttributes(DotAttributeCollection attributes)
             : this(
                 attributes,
@@ -66,14 +33,37 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         {
         }
 
-        public virtual DotGraphStyleAttributeOptions Style => _styleAttributeOptions;
+        protected DotGraphRootAttributes(
+            DotAttributeCollection attributes,
+            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
+            DotGraphClustersAttributes clusterAttributes,
+            DotHyperlinkAttributes hyperlinkAttributes,
+            DotGraphFontAttributes fontAttributes,
+            DotGraphStyleAttributeOptions styleAttributeOptions,
+            DotGraphSvgStyleSheetAttributes svgStyleSheetAttributes,
+            DotGraphLayoutAttributes layoutAttributes,
+            DotGraphCanvasAttributes canvasAttributes,
+            DotLabelAlignmentAttributes labelAlignmentAttributes
+        )
+            : base(attributes, attributeKeyLookup, hyperlinkAttributes)
+        {
+            Clusters = clusterAttributes;
+            Font = fontAttributes;
+            Style = styleAttributeOptions;
+            SvgStyleSheet = svgStyleSheetAttributes;
+            Layout = layoutAttributes;
+            Canvas = canvasAttributes;
+            LabelAlignment = labelAlignmentAttributes;
+        }
 
-        public virtual DotGraphClustersAttributes Clusters => _clusterAttributes;
-        public virtual DotGraphFontAttributes Font => _fontAttributes;
-        public virtual DotGraphSvgStyleSheetAttributes SvgStyleSheet => _svgStyleSheetAttributes;
-        public virtual DotGraphLayoutAttributes Layout => _layoutAttributes;
-        public virtual DotGraphCanvasAttributes Canvas => _canvasAttributes;
-        public virtual DotLabelAlignmentAttributes LabelAlignment => _labelAlignmentAttributes;
+        public DotGraphStyleAttributeOptions Style { get; }
+
+        public DotGraphClustersAttributes Clusters { get; }
+        public DotGraphFontAttributes Font { get; }
+        public DotGraphSvgStyleSheetAttributes SvgStyleSheet { get; }
+        public DotGraphLayoutAttributes Layout { get; }
+        public DotGraphCanvasAttributes Canvas { get; }
+        public DotLabelAlignmentAttributes LabelAlignment { get; }
 
         [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
         DotStyles? IDotGraphAttributes.Style

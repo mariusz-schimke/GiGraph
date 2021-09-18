@@ -11,13 +11,13 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> LabelAlignmentAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotLabelAlignmentAttributes, IDotLabelAlignmentAttributes>().BuildLazy();
 
-        protected DotLabelAlignmentAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotLabelAlignmentAttributes(DotAttributeCollection attributes)
+            : base(attributes, LabelAlignmentAttributesKeyLookup)
         {
         }
 
-        public DotLabelAlignmentAttributes(DotAttributeCollection attributes)
-            : base(attributes, LabelAlignmentAttributesKeyLookup)
+        protected DotLabelAlignmentAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

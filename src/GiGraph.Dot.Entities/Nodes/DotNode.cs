@@ -20,12 +20,12 @@ namespace GiGraph.Dot.Entities.Nodes
         {
         }
 
-        private DotNode(string id, DotAttributeCollection attributes)
+        protected DotNode(string id, DotAttributeCollection attributes)
             : this(id, new DotNodeRootAttributes(attributes))
         {
         }
 
-        private DotNode(string id, DotNodeRootAttributes attributes)
+        protected DotNode(string id, DotNodeRootAttributes attributes)
             : base(attributes)
         {
             Id = id ?? throw new ArgumentNullException(nameof(id), "Node identifier must not be null.");

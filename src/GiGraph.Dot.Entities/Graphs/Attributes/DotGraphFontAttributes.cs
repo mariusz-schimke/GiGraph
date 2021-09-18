@@ -14,13 +14,13 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphFontAttributes, IDotGraphFontAttributes>().BuildLazy();
 
-        protected DotGraphFontAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotGraphFontAttributes(DotAttributeCollection attributes)
+            : base(attributes, GraphFontAttributesKeyLookup)
         {
         }
 
-        public DotGraphFontAttributes(DotAttributeCollection attributes)
-            : base(attributes, GraphFontAttributesKeyLookup)
+        protected DotGraphFontAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

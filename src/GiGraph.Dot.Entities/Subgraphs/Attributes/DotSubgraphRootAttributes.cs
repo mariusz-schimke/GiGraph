@@ -12,13 +12,13 @@ namespace GiGraph.Dot.Entities.Subgraphs.Attributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> SubgraphRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotSubgraphRootAttributes, IDotSubgraphAttributes>().BuildLazy();
 
-        protected DotSubgraphRootAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotSubgraphRootAttributes(DotAttributeCollection attributes)
+            : this(attributes, SubgraphRootAttributesKeyLookup)
         {
         }
 
-        public DotSubgraphRootAttributes(DotAttributeCollection attributes)
-            : this(attributes, SubgraphRootAttributesKeyLookup)
+        protected DotSubgraphRootAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

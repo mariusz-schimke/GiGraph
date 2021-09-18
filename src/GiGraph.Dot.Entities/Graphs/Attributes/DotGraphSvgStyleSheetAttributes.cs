@@ -11,13 +11,13 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphSvgStyleSheetAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphSvgStyleSheetAttributes, IDotGraphSvgStyleSheetAttributes>().BuildLazy();
 
-        protected DotGraphSvgStyleSheetAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotGraphSvgStyleSheetAttributes(DotAttributeCollection attributes)
+            : base(attributes, GraphSvgStyleSheetAttributesKeyLookup)
         {
         }
 
-        public DotGraphSvgStyleSheetAttributes(DotAttributeCollection attributes)
-            : base(attributes, GraphSvgStyleSheetAttributesKeyLookup)
+        protected DotGraphSvgStyleSheetAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

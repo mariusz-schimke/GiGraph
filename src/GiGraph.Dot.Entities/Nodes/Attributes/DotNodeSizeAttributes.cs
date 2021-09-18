@@ -13,13 +13,13 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> NodeSizeAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeSizeAttributes, IDotNodeSizeAttributes>().BuildLazy();
 
-        protected DotNodeSizeAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotNodeSizeAttributes(DotAttributeCollection attributes)
+            : base(attributes, NodeSizeAttributesKeyLookup)
         {
         }
 
-        public DotNodeSizeAttributes(DotAttributeCollection attributes)
-            : base(attributes, NodeSizeAttributesKeyLookup)
+        protected DotNodeSizeAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

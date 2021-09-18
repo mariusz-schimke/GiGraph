@@ -18,12 +18,12 @@ namespace GiGraph.Dot.Entities.Graphs
             Attributes = source.Attributes;
         }
 
-        private DotGraphSection(DotAttributeCollection attributes)
+        protected DotGraphSection(DotAttributeCollection attributes)
             : this(new DotGraphRootAttributes(attributes))
         {
         }
 
-        private DotGraphSection(DotGraphRootAttributes graphAttributes)
+        protected DotGraphSection(DotGraphRootAttributes graphAttributes)
             : base(graphAttributes, new DotGraphClusterCollection(graphAttributes))
         {
             Attributes = new DotEntityRootAttributesAccessor<IDotGraphAttributes, DotGraphRootAttributes>(graphAttributes);

@@ -20,32 +20,6 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> NodeRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().BuildLazy();
 
-        protected readonly DotFontAttributes _fontAttributes;
-        protected readonly DotNodeGeometryAttributes _geometryAttributes;
-        protected readonly DotNodeImageAttributes _imageAttributes;
-        protected readonly DotNodeSizeAttributes _sizeAttributes;
-        protected readonly DotNodeStyleAttributeOptions _styleAttributeOptions;
-
-        protected DotNodeRootAttributes(
-            DotAttributeCollection attributes,
-            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-            DotHyperlinkAttributes hyperlinkAttributes,
-            DotFontAttributes fontAttributes,
-            DotNodeStyleAttributeOptions styleAttributeOptions,
-            DotNodeImageAttributes imageAttributes,
-            DotNodeGeometryAttributes geometryAttributes,
-            DotNodeSizeAttributes sizeAttributes,
-            DotSvgStyleSheetAttributes svgStyleSheetAttributes
-        )
-            : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
-        {
-            _fontAttributes = fontAttributes;
-            _styleAttributeOptions = styleAttributeOptions;
-            _imageAttributes = imageAttributes;
-            _geometryAttributes = geometryAttributes;
-            _sizeAttributes = sizeAttributes;
-        }
-
         public DotNodeRootAttributes(DotAttributeCollection attributes)
             : this(
                 attributes,
@@ -61,11 +35,31 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         {
         }
 
-        public virtual DotFontAttributes Font => _fontAttributes;
-        public virtual DotNodeStyleAttributeOptions Style => _styleAttributeOptions;
-        public virtual DotNodeSizeAttributes Size => _sizeAttributes;
-        public virtual DotNodeGeometryAttributes Geometry => _geometryAttributes;
-        public virtual DotNodeImageAttributes Image => _imageAttributes;
+        protected DotNodeRootAttributes(
+            DotAttributeCollection attributes,
+            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
+            DotHyperlinkAttributes hyperlinkAttributes,
+            DotFontAttributes fontAttributes,
+            DotNodeStyleAttributeOptions styleAttributeOptions,
+            DotNodeImageAttributes imageAttributes,
+            DotNodeGeometryAttributes geometryAttributes,
+            DotNodeSizeAttributes sizeAttributes,
+            DotSvgStyleSheetAttributes svgStyleSheetAttributes
+        )
+            : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
+        {
+            Font = fontAttributes;
+            Style = styleAttributeOptions;
+            Image = imageAttributes;
+            Geometry = geometryAttributes;
+            Size = sizeAttributes;
+        }
+
+        public DotFontAttributes Font { get; }
+        public DotNodeStyleAttributeOptions Style { get; }
+        public DotNodeSizeAttributes Size { get; }
+        public DotNodeGeometryAttributes Geometry { get; }
+        public DotNodeImageAttributes Image { get; }
 
         [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
         DotStyles? IDotNodeAttributes.Style

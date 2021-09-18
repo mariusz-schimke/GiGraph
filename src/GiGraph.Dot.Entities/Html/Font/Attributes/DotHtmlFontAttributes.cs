@@ -12,13 +12,13 @@ namespace GiGraph.Dot.Entities.Html.Font.Attributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> HtmlFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlFontAttributes, IDotHtmlFontAttributes>().BuildLazy();
 
-        protected DotHtmlFontAttributes(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotHtmlFontAttributes(DotHtmlAttributeCollection attributes)
+            : this(attributes, HtmlFontAttributesKeyLookup)
         {
         }
 
-        public DotHtmlFontAttributes(DotHtmlAttributeCollection attributes)
-            : this(attributes, HtmlFontAttributesKeyLookup)
+        protected DotHtmlFontAttributes(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

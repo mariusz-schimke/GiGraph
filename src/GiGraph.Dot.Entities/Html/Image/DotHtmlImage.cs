@@ -30,12 +30,12 @@ namespace GiGraph.Dot.Entities.Html.Image
             }
         }
 
-        private DotHtmlImage(DotHtmlAttributeCollection attributes)
+        protected DotHtmlImage(DotHtmlAttributeCollection attributes)
             : this(new DotHtmlImageAttributes(attributes))
         {
         }
 
-        private DotHtmlImage(DotHtmlImageAttributes attributes)
+        protected DotHtmlImage(DotHtmlImageAttributes attributes)
             : base("img", attributes.Collection)
         {
             Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlImageAttributes, DotHtmlImageAttributes>(attributes);

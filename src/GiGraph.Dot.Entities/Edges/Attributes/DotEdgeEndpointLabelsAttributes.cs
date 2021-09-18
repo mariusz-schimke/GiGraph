@@ -11,9 +11,12 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeEndpointLabelAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeEndpointLabelsAttributes, IDotEdgeEndpointLabelsAttributes>().BuildLazy();
 
-        protected DotEdgeEndpointLabelsAttributes(
-            DotAttributeCollection attributes,
-            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
+        public DotEdgeEndpointLabelsAttributes(DotAttributeCollection attributes)
+            : this(attributes, EdgeEndpointLabelAttributesKeyLookup, new DotEdgeEndpointLabelsFontAttributes(attributes))
+        {
+        }
+
+        protected DotEdgeEndpointLabelsAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
             DotEdgeEndpointLabelsFontAttributes fontAttributes
         )
             : base(attributes, attributeKeyLookup)
@@ -21,16 +24,11 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
             Font = fontAttributes;
         }
 
-        public DotEdgeEndpointLabelsAttributes(DotAttributeCollection attributes)
-            : this(attributes, EdgeEndpointLabelAttributesKeyLookup, new DotEdgeEndpointLabelsFontAttributes(attributes))
-        {
-        }
-
         /// <summary>
         ///     Font attributes used for labels of the head and of the tail of the edge. If not set, default to font attributes specified for
         ///     the edge.
         /// </summary>
-        public virtual DotEdgeEndpointLabelsFontAttributes Font { get; }
+        public DotEdgeEndpointLabelsFontAttributes Font { get; }
 
         /// <inheritdoc cref="IDotEdgeEndpointLabelsAttributes.Distance" />
         [DotAttributeKey(DotAttributeKeys.LabelDistance)]

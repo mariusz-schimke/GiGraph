@@ -11,13 +11,13 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeEndpointLabelFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeEndpointLabelsFontAttributes, IDotFontAttributes>().BuildLazy();
 
-        protected DotEdgeEndpointLabelsFontAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotEdgeEndpointLabelsFontAttributes(DotAttributeCollection attributes)
+            : base(attributes, EdgeEndpointLabelFontAttributesKeyLookup)
         {
         }
 
-        public DotEdgeEndpointLabelsFontAttributes(DotAttributeCollection attributes)
-            : base(attributes, EdgeEndpointLabelFontAttributesKeyLookup)
+        protected DotEdgeEndpointLabelsFontAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

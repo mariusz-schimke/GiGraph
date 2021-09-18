@@ -16,6 +16,6 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// <summary>
         ///     The endpoint of the edge.
         /// </summary>
-        public virtual TEndpoint Endpoint { get; }
+        public TEndpoint Endpoint { get; }
     }
 }

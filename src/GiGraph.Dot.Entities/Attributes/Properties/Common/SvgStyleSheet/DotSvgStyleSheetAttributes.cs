@@ -8,13 +8,13 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> SvgStyleSheetAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotSvgStyleSheetAttributes, IDotSvgStyleSheetAttributes>().BuildLazy();
 
-        protected DotSvgStyleSheetAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotSvgStyleSheetAttributes(DotAttributeCollection attributes)
+            : base(attributes, SvgStyleSheetAttributesKeyLookup)
         {
         }
 
-        public DotSvgStyleSheetAttributes(DotAttributeCollection attributes)
-            : base(attributes, SvgStyleSheetAttributesKeyLookup)
+        protected DotSvgStyleSheetAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
     }

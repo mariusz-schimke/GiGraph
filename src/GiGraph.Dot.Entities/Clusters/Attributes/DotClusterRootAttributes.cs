@@ -19,6 +19,19 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> ClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
 
+        public DotClusterRootAttributes(DotAttributeCollection attributes)
+            : this(
+                attributes,
+                ClusterRootAttributesKeyLookup,
+                new DotHyperlinkAttributes(attributes),
+                new DotFontAttributes(attributes),
+                new DotClusterStyleAttributeOptions(attributes),
+                new DotSvgStyleSheetAttributes(attributes),
+                new DotLabelAlignmentAttributes(attributes)
+            )
+        {
+        }
+
         protected DotClusterRootAttributes(
             DotAttributeCollection attributes,
             Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
@@ -35,22 +48,9 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
             LabelAlignment = labelAlignmentAttributes;
         }
 
-        public DotClusterRootAttributes(DotAttributeCollection attributes)
-            : this(
-                attributes,
-                ClusterRootAttributesKeyLookup,
-                new DotHyperlinkAttributes(attributes),
-                new DotFontAttributes(attributes),
-                new DotClusterStyleAttributeOptions(attributes),
-                new DotSvgStyleSheetAttributes(attributes),
-                new DotLabelAlignmentAttributes(attributes)
-            )
-        {
-        }
-
-        public virtual DotFontAttributes Font { get; }
-        public virtual DotClusterStyleAttributeOptions Style { get; }
-        public virtual DotLabelAlignmentAttributes LabelAlignment { get; }
+        public DotFontAttributes Font { get; }
+        public DotClusterStyleAttributeOptions Style { get; }
+        public DotLabelAlignmentAttributes LabelAlignment { get; }
 
         [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
         DotStyles? IDotClusterAttributes.Style

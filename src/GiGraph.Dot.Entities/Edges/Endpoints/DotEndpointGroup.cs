@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// <summary>
         ///     Gets the endpoints.
         /// </summary>
-        public virtual DotEndpoint[] Endpoints { get; }
+        public DotEndpoint[] Endpoints { get; }
 
         protected override string GetOrderingKey()
         {

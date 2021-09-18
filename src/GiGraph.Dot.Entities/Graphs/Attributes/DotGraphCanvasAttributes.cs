@@ -16,13 +16,13 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphCanvasAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphCanvasAttributes, IDotGraphCanvasAttributes>().BuildLazy();
 
-        protected DotGraphCanvasAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotGraphCanvasAttributes(DotAttributeCollection attributes)
+            : base(attributes, GraphCanvasAttributesKeyLookup)
         {
         }
 
-        public DotGraphCanvasAttributes(DotAttributeCollection attributes)
-            : base(attributes, GraphCanvasAttributesKeyLookup)
+        protected DotGraphCanvasAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

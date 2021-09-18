@@ -5,13 +5,13 @@ namespace GiGraph.Dot.Entities.Html.Attributes.Collections
 {
     public class DotHtmlAttributeCollection : DotAttributeCollection
     {
-        public DotHtmlAttributeCollection(DotHtmlAttributeFactory attributeFactory)
-            : base(attributeFactory)
+        public DotHtmlAttributeCollection()
+            : base(DotHtmlAttributeFactory.Instance)
         {
         }
 
-        public DotHtmlAttributeCollection()
-            : base(DotHtmlAttributeFactory.Instance)
+        public DotHtmlAttributeCollection(DotHtmlAttributeFactory attributeFactory)
+            : base(attributeFactory)
         {
         }
     }

@@ -16,12 +16,12 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         {
         }
 
-        private DotNodeCollection(DotAttributeCollection attributes)
+        protected DotNodeCollection(DotAttributeCollection attributes)
             : this(new DotNodeRootAttributes(attributes))
         {
         }
 
-        private DotNodeCollection(DotNodeRootAttributes attributes)
+        protected DotNodeCollection(DotNodeRootAttributes attributes)
         {
             Attributes = new DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes>(attributes);
         }
@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
         /// <summary>
         ///     Provides access to the global attributes applied to nodes.
         /// </summary>
-        public virtual DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes> Attributes { get; }
+        public DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

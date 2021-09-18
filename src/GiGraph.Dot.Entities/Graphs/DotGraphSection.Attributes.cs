@@ -15,25 +15,25 @@ namespace GiGraph.Dot.Entities.Graphs
         DotGraphClustersAttributes IDotGraphRootAttributes.Clusters => Attributes.Implementation.Clusters;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.Font" />
-        public virtual DotGraphFontAttributes Font => Attributes.Implementation.Font;
+        public DotGraphFontAttributes Font => Attributes.Implementation.Font;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.Style" />
-        public virtual DotGraphStyleAttributeOptions Style => Attributes.Implementation.Style;
+        public DotGraphStyleAttributeOptions Style => Attributes.Implementation.Style;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.SvgStyleSheet" />
-        public virtual DotGraphSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
+        public DotGraphSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.Layout" />
-        public virtual DotGraphLayoutAttributes Layout => Attributes.Implementation.Layout;
+        public DotGraphLayoutAttributes Layout => Attributes.Implementation.Layout;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.Canvas" />
-        public virtual DotGraphCanvasAttributes Canvas => Attributes.Implementation.Canvas;
+        public DotGraphCanvasAttributes Canvas => Attributes.Implementation.Canvas;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.LabelAlignment" />
-        public virtual DotLabelAlignmentAttributes LabelAlignment => Attributes.Implementation.LabelAlignment;
+        public DotLabelAlignmentAttributes LabelAlignment => Attributes.Implementation.LabelAlignment;
 
         /// <inheritdoc cref="IDotGraphRootAttributes.Hyperlink" />
-        public virtual DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
+        public DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
 
         DotStyles? IDotGraphAttributes.Style
         {

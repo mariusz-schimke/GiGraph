@@ -12,13 +12,13 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeLabelHyperlinkAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeLabelHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().BuildLazy();
 
-        protected DotEdgeLabelHyperlinkAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotEdgeLabelHyperlinkAttributes(DotAttributeCollection attributes)
+            : base(attributes, EdgeLabelHyperlinkAttributesKeyLookup)
         {
         }
 
-        public DotEdgeLabelHyperlinkAttributes(DotAttributeCollection attributes)
-            : base(attributes, EdgeLabelHyperlinkAttributesKeyLookup)
+        protected DotEdgeLabelHyperlinkAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

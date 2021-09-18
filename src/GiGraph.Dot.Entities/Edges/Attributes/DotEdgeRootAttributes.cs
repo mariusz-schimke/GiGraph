@@ -21,40 +21,6 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
     {
         protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().BuildLazy();
 
-        protected readonly DotEdgeHyperlinkAttributes _edgeHyperlinkAttributes;
-        protected readonly DotEdgeEndpointLabelsAttributes _endpointLabelsAttributes;
-        protected readonly DotFontAttributes _fontAttributes;
-        protected readonly DotEdgeHeadAttributes _headAttributes;
-        protected readonly DotEdgeLabelHyperlinkAttributes _labelHyperlinkAttributes;
-        protected readonly DotEdgeStyleAttributeOptions _styleAttributeOptions;
-        protected readonly DotSvgStyleSheetAttributes _svgStyleSheetAttributes;
-        protected readonly DotEdgeTailAttributes _tailAttributes;
-
-        protected DotEdgeRootAttributes(
-            DotAttributeCollection attributes,
-            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-            DotEdgeHeadAttributes headAttributes,
-            DotEdgeTailAttributes tailAttributes,
-            DotFontAttributes fontAttributes,
-            DotHyperlinkAttributes hyperlinkAttributes,
-            DotEdgeEndpointLabelsAttributes endpointLabelsAttributes,
-            DotEdgeLabelHyperlinkAttributes labelHyperlinkAttributes,
-            DotEdgeHyperlinkAttributes edgeHyperlinkAttributes,
-            DotEdgeStyleAttributeOptions edgeStyleAttributeOptions,
-            DotSvgStyleSheetAttributes svgStyleSheetAttributes
-        )
-            : base(attributes, attributeKeyLookup, hyperlinkAttributes)
-        {
-            _headAttributes = headAttributes;
-            _tailAttributes = tailAttributes;
-            _fontAttributes = fontAttributes;
-            _styleAttributeOptions = edgeStyleAttributeOptions;
-            _svgStyleSheetAttributes = svgStyleSheetAttributes;
-            _endpointLabelsAttributes = endpointLabelsAttributes;
-            _edgeHyperlinkAttributes = edgeHyperlinkAttributes;
-            _labelHyperlinkAttributes = labelHyperlinkAttributes;
-        }
-
         public DotEdgeRootAttributes(DotAttributeCollection attributes)
             : this(
                 attributes,
@@ -72,15 +38,40 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         {
         }
 
-        public virtual DotEdgeHeadAttributes Head => _headAttributes;
-        public virtual DotEdgeTailAttributes Tail => _tailAttributes;
+        protected DotEdgeRootAttributes(
+            DotAttributeCollection attributes,
+            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
+            DotEdgeHeadAttributes headAttributes,
+            DotEdgeTailAttributes tailAttributes,
+            DotFontAttributes fontAttributes,
+            DotHyperlinkAttributes hyperlinkAttributes,
+            DotEdgeEndpointLabelsAttributes endpointLabelsAttributes,
+            DotEdgeLabelHyperlinkAttributes labelHyperlinkAttributes,
+            DotEdgeHyperlinkAttributes edgeHyperlinkAttributes,
+            DotEdgeStyleAttributeOptions edgeStyleAttributeOptions,
+            DotSvgStyleSheetAttributes svgStyleSheetAttributes
+        )
+            : base(attributes, attributeKeyLookup, hyperlinkAttributes)
+        {
+            Head = headAttributes;
+            Tail = tailAttributes;
+            Font = fontAttributes;
+            Style = edgeStyleAttributeOptions;
+            SvgStyleSheet = svgStyleSheetAttributes;
+            EndpointLabels = endpointLabelsAttributes;
+            EdgeHyperlink = edgeHyperlinkAttributes;
+            LabelHyperlink = labelHyperlinkAttributes;
+        }
 
-        public virtual DotFontAttributes Font => _fontAttributes;
-        public virtual DotEdgeEndpointLabelsAttributes EndpointLabels => _endpointLabelsAttributes;
-        public virtual DotEdgeHyperlinkAttributes EdgeHyperlink => _edgeHyperlinkAttributes;
-        public virtual DotEdgeLabelHyperlinkAttributes LabelHyperlink => _labelHyperlinkAttributes;
-        public virtual DotEdgeStyleAttributeOptions Style => _styleAttributeOptions;
-        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => _svgStyleSheetAttributes;
+        public DotEdgeHeadAttributes Head { get; }
+        public DotEdgeTailAttributes Tail { get; }
+
+        public DotFontAttributes Font { get; }
+        public DotEdgeEndpointLabelsAttributes EndpointLabels { get; }
+        public DotEdgeHyperlinkAttributes EdgeHyperlink { get; }
+        public DotEdgeLabelHyperlinkAttributes LabelHyperlink { get; }
+        public DotEdgeStyleAttributeOptions Style { get; }
+        public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
         [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
         DotStyles? IDotEdgeAttributes.Style
