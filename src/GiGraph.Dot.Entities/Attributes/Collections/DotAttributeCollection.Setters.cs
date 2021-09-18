@@ -26,49 +26,49 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             SetOrRemove(key, value is null ? null : newAttribute(key, value));
         }
 
-        protected internal void SetOrRemove(string key, DotEscapeString value)
+        protected internal virtual void SetOrRemove(string key, DotEscapeString value)
         {
             SetOrRemove(key, value, _attributeFactory.CreateEscapeString);
         }
 
-        protected internal void SetOrRemove(string key, string value)
+        protected internal virtual void SetOrRemove(string key, string value)
         {
             SetOrRemove(key, value, _attributeFactory.CreateString);
         }
 
-        protected internal void SetOrRemove(string key, int? value)
+        protected internal virtual void SetOrRemove(string key, int? value)
         {
             SetOrRemove(key, value, (k, v) => _attributeFactory.CreateInt(k, v!.Value));
         }
 
-        protected internal void SetOrRemove(string key, double? value)
+        protected internal virtual void SetOrRemove(string key, double? value)
         {
             SetOrRemove(key, value, (k, v) => _attributeFactory.CreateDouble(k, v!.Value));
         }
 
-        protected internal void SetOrRemove(string key, double[] value)
+        protected internal virtual void SetOrRemove(string key, double[] value)
         {
             SetOrRemove(key, value, _attributeFactory.CreateDoubleArray);
         }
 
-        protected internal void SetOrRemove(string key, bool? value)
+        protected internal virtual void SetOrRemove(string key, bool? value)
         {
             SetOrRemove(key, value, (k, v) => _attributeFactory.CreateBool(k, v!.Value));
         }
 
-        protected internal void SetOrRemoveComplex<TComplex>(string key, TComplex value)
+        protected internal virtual void SetOrRemoveComplex<TComplex>(string key, TComplex value)
             where TComplex : IDotEncodable
         {
             SetOrRemove(key, value, _attributeFactory.CreateComplex);
         }
 
-        protected internal void SetOrRemoveComplex<TComplex>(string key, TComplex[] value)
+        protected internal virtual void SetOrRemoveComplex<TComplex>(string key, TComplex[] value)
             where TComplex : IDotEncodable
         {
             SetOrRemove(key, value, _attributeFactory.CreateComplexArray);
         }
 
-        protected internal void SetOrRemoveEnum<TEnum>(string key, bool hasValue, Func<TEnum> value)
+        protected internal virtual void SetOrRemoveEnum<TEnum>(string key, bool hasValue, Func<TEnum> value)
             where TEnum : Enum
         {
             SetOrRemove(key, hasValue ? _attributeFactory.CreateEnum(key, value()) : null);
