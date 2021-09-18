@@ -18,16 +18,14 @@ namespace GiGraph.Dot.Output.Generators.Graphs
 
         protected virtual void WriteBody(TGraph graphBody, IDotCommonGraphWriter writer)
         {
-            var bodyWriter = writer.BeginBody();
+            var graphBodyWriter = writer.BeginBody();
 
             // the annotation of the root section is written above graph/subgraph/cluster declaration by another generator
-            _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graphBody).Generate(graphBody, bodyWriter, annotate: false);
+            _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graphBody).Generate(graphBody, graphBodyWriter, annotate: false);
 
-            // TODO: można by dodać DotGraphSectionCollectionGenerator i wtedy w interfejsie IDotGraph
-            // zlikwidować IEnumerable<>, a zamiast tego dać IDotGraphSectionCollection
             foreach (var subsection in graphBody.Subsections)
             {
-                _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graphBody).Generate(subsection, bodyWriter);
+                _entityGenerators.GetForEntity<IDotGraphBodyWriter>(graphBody).Generate(subsection, graphBodyWriter);
             }
 
             writer.EndBody();

@@ -8,8 +8,6 @@ using GiGraph.Dot.Output.Writers;
 
 namespace GiGraph.Dot.Output.Generators.Attributes
 {
-    // TODO: czy z powodu dodania interfejsu IAttribute i IDotAttributeCollection nie powinien tu być generycznie przekazywany typ
-    // z ograniczeniem "DotAttributeCollection, IDotAttributeCollection"? Zobaczyć inne podobne sytuacje (np. IDotGraphSectionCollection, jeśli zostanie dodany)
     public abstract class DotAttributeCollectionGenerator<TWriter> : DotEntityGenerator<DotAttributeCollection, TWriter>
         where TWriter : IDotEntityWriter
     {
