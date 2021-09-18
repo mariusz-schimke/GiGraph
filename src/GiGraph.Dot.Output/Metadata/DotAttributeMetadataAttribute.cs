@@ -39,21 +39,21 @@ namespace GiGraph.Dot.Output.Metadata
         /// <summary>
         ///     Gets the entities the current attribute key is supported by.
         /// </summary>
-        public virtual DotCompatibleElements CompatibleElements { get; }
+        public DotCompatibleElements CompatibleElements { get; }
 
         /// <summary>
         ///     Gets the layout engines the attribute key is supported by.
         /// </summary>
-        public virtual DotCompatibleLayoutEngines CompatibleLayoutEngines { get; }
+        public DotCompatibleLayoutEngines CompatibleLayoutEngines { get; }
 
         /// <summary>
         ///     Gets the output formats the attribute key is supported by.
         /// </summary>
-        public virtual DotCompatibleOutputs CompatibleOutputs { get; }
+        public DotCompatibleOutputs CompatibleOutputs { get; }
 
         /// <summary>
         ///     Gets a value indicating if the attribute is supported by the library.
         /// </summary>
-        public virtual bool IsImplemented { get; }
+        public bool IsImplemented { get; }
     }
 }

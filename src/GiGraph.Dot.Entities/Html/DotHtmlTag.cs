@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Html
         /// <summary>
         ///     Gets the collection of attributes of the element.
         /// </summary>
-        public virtual DotHtmlAttributeCollection Attributes { get; }
+        public DotHtmlAttributeCollection Attributes { get; }
 
         protected abstract bool IsVoid { get; }
 

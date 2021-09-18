@@ -20,6 +20,6 @@ namespace GiGraph.Dot.Output.Metadata
         }
 
         /// <inheritdoc cref="IDotAttributeValueAttribute.Value" />
-        public virtual string Value { get; }
+        public string Value { get; }
     }
 }

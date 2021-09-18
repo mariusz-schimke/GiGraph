@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <summary>
         ///     Provides access to the global attributes applied to edges.
         /// </summary>
-        public virtual DotEntityRootAttributesAccessor<IDotEdgeAttributes, DotEdgeRootAttributes> Attributes { get; }
+        public DotEntityRootAttributesAccessor<IDotEdgeAttributes, DotEdgeRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

@@ -74,12 +74,12 @@ namespace GiGraph.Dot.Entities.Edges
         /// <summary>
         ///     Attributes applied to the heads of the edges in this sequence.
         /// </summary>
-        public virtual DotEdgeEndpoint Heads { get; }
+        public DotEdgeEndpoint Heads { get; }
 
         /// <summary>
         ///     Attributes applied to the tails of the edges in this sequence.
         /// </summary>
-        public virtual DotEdgeEndpoint Tails { get; }
+        public DotEdgeEndpoint Tails { get; }
 
         protected override string GetOrderingKey()
         {

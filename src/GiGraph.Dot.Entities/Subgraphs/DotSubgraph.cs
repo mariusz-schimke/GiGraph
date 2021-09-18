@@ -85,7 +85,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         ///         <see cref="Subgraphs" /> may be the cleaner and preferable way to achieve the effect.
         ///     </para>
         /// </summary>
-        public virtual DotGraphSectionCollection<DotSubgraphSection> Subsections { get; }
+        public DotGraphSectionCollection<DotSubgraphSection> Subsections { get; }
 
         IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 
