@@ -36,7 +36,6 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
             base.SetProperties(fillStyle, borderStyle, borderWeight, cornerStyle, invisible);
         }
 
-        // TODO: Tu jest CopyFrom, a gdzie indziej Set() przyjmująca interfejs. Po co ta rozbieżność?
         /// <inheritdoc cref="DotClusterNodeCommonStyleAttributeOptions{TFillStyle,TStyleProperties}.CopyFrom" />
         public virtual void CopyFrom(DotClusterStyleAttributeOptions options)
         {
