@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
         }
 
-        protected internal string Annotation { get; set; }
+        protected internal virtual string Annotation { get; set; }
 
         string IDotAnnotatable.Annotation
         {
