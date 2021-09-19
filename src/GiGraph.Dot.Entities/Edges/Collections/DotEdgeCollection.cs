@@ -19,12 +19,12 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         {
         }
 
-        private DotEdgeCollection(DotAttributeCollection attributes)
+        protected DotEdgeCollection(DotAttributeCollection attributes)
             : this(new DotEdgeRootAttributes(attributes))
         {
         }
 
-        private DotEdgeCollection(DotEdgeRootAttributes attributes)
+        protected DotEdgeCollection(DotEdgeRootAttributes attributes)
         {
             Attributes = new DotEntityRootAttributesAccessor<IDotEdgeAttributes, DotEdgeRootAttributes>(attributes);
         }
@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Edges.Collections
         /// <summary>
         ///     Provides access to the global attributes applied to edges.
         /// </summary>
-        public virtual DotEntityRootAttributesAccessor<IDotEdgeAttributes, DotEdgeRootAttributes> Attributes { get; }
+        public DotEntityRootAttributesAccessor<IDotEdgeAttributes, DotEdgeRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

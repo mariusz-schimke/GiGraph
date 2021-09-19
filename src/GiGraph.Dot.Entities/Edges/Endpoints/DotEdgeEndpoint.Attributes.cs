@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
     public partial class DotEdgeEndpoint : IDotEdgeEndpointRootAttributes
     {
         /// <inheritdoc cref="IDotEdgeEndpointRootAttributes.Hyperlink" />
-        public virtual DotEdgeEndpointHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
+        public DotEdgeEndpointHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
 
         /// <inheritdoc cref="IDotEdgeEndpointAttributes.Label" />
         public virtual DotLabel Label

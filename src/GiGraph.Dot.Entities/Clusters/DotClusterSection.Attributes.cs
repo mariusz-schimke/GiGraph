@@ -16,19 +16,19 @@ namespace GiGraph.Dot.Entities.Clusters
     public partial class DotClusterSection : IDotClusterRootAttributes
     {
         /// <inheritdoc cref="IDotClusterRootAttributes.Font" />
-        public virtual DotFontAttributes Font => Attributes.Implementation.Font;
+        public DotFontAttributes Font => Attributes.Implementation.Font;
 
         /// <inheritdoc cref="IDotClusterRootAttributes.Style" />
-        public virtual DotClusterStyleAttributeOptions Style => Attributes.Implementation.Style;
+        public DotClusterStyleAttributeOptions Style => Attributes.Implementation.Style;
 
         /// <inheritdoc cref="IDotClusterRootAttributes.LabelAlignment" />
-        public virtual DotLabelAlignmentAttributes LabelAlignment => Attributes.Implementation.LabelAlignment;
+        public DotLabelAlignmentAttributes LabelAlignment => Attributes.Implementation.LabelAlignment;
 
         /// <inheritdoc cref="IDotClusterRootAttributes.SvgStyleSheet" />
-        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
+        public DotSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
 
         /// <inheritdoc cref="IDotClusterRootAttributes.Hyperlink" />
-        public virtual DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
+        public DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
 
         /// <inheritdoc cref="IDotGraphClusterCommonAttributes.Color" />
         public virtual DotColorDefinition Color

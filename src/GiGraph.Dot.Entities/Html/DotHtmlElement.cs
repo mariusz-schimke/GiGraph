@@ -38,7 +38,7 @@ namespace GiGraph.Dot.Entities.Html
         /// <summary>
         ///     Gets the content items of the element.
         /// </summary>
-        public virtual DotHtmlEntityCollection Content { get; }
+        public DotHtmlEntityCollection Content { get; }
 
         /// <inheritdoc cref="IDotHtmlContentEntity.SetContent(GiGraph.Dot.Entities.Html.IDotHtmlEntity)" />
         public virtual void SetContent(IDotHtmlEntity entity)

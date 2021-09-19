@@ -12,16 +12,22 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
     public class DotGraphClustersAttributes : DotEntityAttributesWithMetadata<IDotGraphClustersAttributes, DotGraphClustersAttributes>, IDotGraphClustersRootAttributes
     {
-        // TODO: jeśli te kolekcje staną się prywatne, można skrócić im nazwy
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClustersAttributes, IDotGraphClustersAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClustersAttributes, IDotGraphClustersAttributes>().BuildLazy();
 
         public DotGraphClustersAttributes(DotAttributeCollection attributes)
-            : base(attributes, GraphClusterRootAttributesKeyLookup)
+            : this(attributes, AttributeKeyLookup, new DotClusterStyleAttributeOptions(attributes))
         {
-            Style = new DotClusterStyleAttributeOptions(attributes);
         }
 
-        public virtual DotClusterStyleAttributeOptions Style { get; }
+        protected DotGraphClustersAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
+            DotClusterStyleAttributeOptions styleAttributeOptions
+        )
+            : base(attributes, attributeKeyLookup)
+        {
+            Style = styleAttributeOptions;
+        }
+
+        public DotClusterStyleAttributeOptions Style { get; }
 
         [DotAttributeKey(DotAttributeKeys.Color)]
         public virtual DotColorDefinition Color

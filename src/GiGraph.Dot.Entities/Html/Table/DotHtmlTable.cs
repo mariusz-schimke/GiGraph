@@ -19,12 +19,12 @@ namespace GiGraph.Dot.Entities.Html.Table
         {
         }
 
-        private DotHtmlTable(DotHtmlAttributeCollection attributes)
+        protected DotHtmlTable(DotHtmlAttributeCollection attributes)
             : this(new DotHtmlTableAttributes(attributes))
         {
         }
 
-        private DotHtmlTable(DotHtmlTableAttributes attributes)
+        protected DotHtmlTable(DotHtmlTableAttributes attributes)
             : base("table", attributes.Collection)
         {
             Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlTableAttributes, DotHtmlTableAttributes>(attributes);
@@ -33,7 +33,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// <summary>
         ///     Provides access to the attributes of the table.
         /// </summary>
-        public new virtual DotHtmlElementRootAttributesAccessor<IDotHtmlTableAttributes, DotHtmlTableAttributes> Attributes { get; }
+        public new DotHtmlElementRootAttributesAccessor<IDotHtmlTableAttributes, DotHtmlTableAttributes> Attributes { get; }
 
         /// <summary>
         ///     Adds a new row to the table and optionally initializes it.

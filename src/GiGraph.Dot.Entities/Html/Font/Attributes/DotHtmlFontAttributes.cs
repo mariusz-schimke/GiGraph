@@ -10,15 +10,15 @@ namespace GiGraph.Dot.Entities.Html.Font.Attributes
 {
     public class DotHtmlFontAttributes : DotHtmlElementAttributes<IDotHtmlFontAttributes, DotHtmlFontAttributes>, IDotHtmlFontAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> HtmlFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlFontAttributes, IDotHtmlFontAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlFontAttributes, IDotHtmlFontAttributes>().BuildLazy();
 
-        protected DotHtmlFontAttributes(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotHtmlFontAttributes(DotHtmlAttributeCollection attributes)
+            : this(attributes, AttributeKeyLookup)
         {
         }
 
-        public DotHtmlFontAttributes(DotHtmlAttributeCollection attributes)
-            : this(attributes, HtmlFontAttributesKeyLookup)
+        protected DotHtmlFontAttributes(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

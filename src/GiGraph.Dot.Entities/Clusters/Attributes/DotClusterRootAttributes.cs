@@ -17,11 +17,20 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
 {
     public class DotClusterRootAttributes : DotClusterNodeRootCommonAttributes<IDotClusterAttributes, DotClusterRootAttributes>, IDotClusterRootAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> ClusterRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
 
-        protected readonly DotFontAttributes _fontAttributes;
-        protected readonly DotLabelAlignmentAttributes _labelAlignmentAttributes;
-        protected readonly DotClusterStyleAttributeOptions _styleAttributeOptions;
+        public DotClusterRootAttributes(DotAttributeCollection attributes)
+            : this(
+                attributes,
+                AttributeKeyLookup,
+                new DotHyperlinkAttributes(attributes),
+                new DotFontAttributes(attributes),
+                new DotClusterStyleAttributeOptions(attributes),
+                new DotSvgStyleSheetAttributes(attributes),
+                new DotLabelAlignmentAttributes(attributes)
+            )
+        {
+        }
 
         protected DotClusterRootAttributes(
             DotAttributeCollection attributes,
@@ -34,27 +43,14 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
         {
-            _fontAttributes = fontAttributes;
-            _styleAttributeOptions = styleAttributeOptions;
-            _labelAlignmentAttributes = labelAlignmentAttributes;
+            Font = fontAttributes;
+            Style = styleAttributeOptions;
+            LabelAlignment = labelAlignmentAttributes;
         }
 
-        public DotClusterRootAttributes(DotAttributeCollection attributes)
-            : this(
-                attributes,
-                ClusterRootAttributesKeyLookup,
-                new DotHyperlinkAttributes(attributes),
-                new DotFontAttributes(attributes),
-                new DotClusterStyleAttributeOptions(attributes),
-                new DotSvgStyleSheetAttributes(attributes),
-                new DotLabelAlignmentAttributes(attributes)
-            )
-        {
-        }
-
-        public virtual DotFontAttributes Font => _fontAttributes;
-        public virtual DotClusterStyleAttributeOptions Style => _styleAttributeOptions;
-        public virtual DotLabelAlignmentAttributes LabelAlignment => _labelAlignmentAttributes;
+        public DotFontAttributes Font { get; }
+        public DotClusterStyleAttributeOptions Style { get; }
+        public DotLabelAlignmentAttributes LabelAlignment { get; }
 
         [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
         DotStyles? IDotClusterAttributes.Style

@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Html
         /// <summary>
         ///     The entity associated with the instance.
         /// </summary>
-        public virtual TEntity Entity { get; }
+        public TEntity Entity { get; }
 
         protected internal override string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Entity.ToHtml(options, syntaxRules);
     }

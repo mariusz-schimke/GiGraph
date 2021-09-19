@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Entities.Html.Table
         {
         }
 
-        private DotHtmlTableRow(DotHtmlAttributeCollection attributes)
+        protected DotHtmlTableRow(DotHtmlAttributeCollection attributes)
             : base("tr", attributes)
         {
         }

@@ -9,10 +9,15 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes
 {
     public class DotHtmlTableAttributes : DotHtmlTableTableCellCommonAttributes<IDotHtmlTableAttributes, DotHtmlTableAttributes>, IDotHtmlTableAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> HtmlTableAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableAttributes, IDotHtmlTableAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableAttributes, IDotHtmlTableAttributes>().BuildLazy();
 
         public DotHtmlTableAttributes(DotHtmlAttributeCollection attributes)
-            : base(attributes, HtmlTableAttributesKeyLookup)
+            : base(attributes, AttributeKeyLookup)
+        {
+        }
+
+        protected DotHtmlTableAttributes(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

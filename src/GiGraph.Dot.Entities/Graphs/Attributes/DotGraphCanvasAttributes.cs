@@ -14,15 +14,15 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
     public class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<IDotGraphCanvasAttributes, DotGraphCanvasAttributes>, IDotGraphCanvasAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphCanvasAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphCanvasAttributes, IDotGraphCanvasAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphCanvasAttributes, IDotGraphCanvasAttributes>().BuildLazy();
 
-        protected DotGraphCanvasAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotGraphCanvasAttributes(DotAttributeCollection attributes)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 
-        public DotGraphCanvasAttributes(DotAttributeCollection attributes)
-            : base(attributes, GraphCanvasAttributesKeyLookup)
+        protected DotGraphCanvasAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

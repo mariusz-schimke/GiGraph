@@ -22,6 +22,6 @@ namespace GiGraph.Dot.Output.Metadata.Html
         /// <summary>
         ///     Gets the key of the HTML attribute.
         /// </summary>
-        public virtual string Key { get; }
+        public string Key { get; }
     }
 }

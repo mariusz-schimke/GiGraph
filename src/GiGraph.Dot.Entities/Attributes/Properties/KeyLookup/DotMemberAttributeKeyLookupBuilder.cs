@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
         /// <param name="readOnly">
         ///     Determines whether the built lookup should be read only.
         /// </param>
-        public Lazy<DotMemberAttributeKeyLookup> BuildLazy(bool readOnly = true)
+        public virtual Lazy<DotMemberAttributeKeyLookup> BuildLazy(bool readOnly = true)
         {
             return new Lazy<DotMemberAttributeKeyLookup>(() => Build(readOnly));
         }
@@ -35,7 +35,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
         /// <param name="readOnly">
         ///     Determines whether the built lookup should be read only.
         /// </param>
-        public DotMemberAttributeKeyLookup Build(bool readOnly = true)
+        public virtual DotMemberAttributeKeyLookup Build(bool readOnly = true)
         {
             var result = new DotMemberAttributeKeyLookup();
 
@@ -50,7 +50,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
             return readOnly ? result.ToReadOnly() : result;
         }
 
-        protected void UpdateByInterfaceMembers(DotMemberAttributeKeyLookup output, Type entityAttributePropertiesInterfaceType)
+        protected virtual void UpdateByInterfaceMembers(DotMemberAttributeKeyLookup output, Type entityAttributePropertiesInterfaceType)
         {
             var interfaceProperties = entityAttributePropertiesInterfaceType.GetProperties(BindingFlags.Instance | BindingFlags.Public);
             var interfaceMap = typeof(TEntityAttributes).GetInterfaceMap(entityAttributePropertiesInterfaceType);
@@ -97,7 +97,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
             return result;
         }
 
-        protected void UpdateWithDeclaredPropertyAccessorsOf(DotMemberAttributeKeyLookup lookup, Type entityAttributesType)
+        protected virtual void UpdateWithDeclaredPropertyAccessorsOf(DotMemberAttributeKeyLookup lookup, Type entityAttributesType)
         {
             var properties = entityAttributesType.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 

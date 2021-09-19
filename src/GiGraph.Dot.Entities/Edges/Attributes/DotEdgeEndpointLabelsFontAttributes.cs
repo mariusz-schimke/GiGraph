@@ -9,15 +9,15 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
 {
     public class DotEdgeEndpointLabelsFontAttributes : DotFontAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> EdgeEndpointLabelFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeEndpointLabelsFontAttributes, IDotFontAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeEndpointLabelsFontAttributes, IDotFontAttributes>().BuildLazy();
 
-        protected DotEdgeEndpointLabelsFontAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotEdgeEndpointLabelsFontAttributes(DotAttributeCollection attributes)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 
-        public DotEdgeEndpointLabelsFontAttributes(DotAttributeCollection attributes)
-            : base(attributes, EdgeEndpointLabelFontAttributesKeyLookup)
+        protected DotEdgeEndpointLabelsFontAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

@@ -13,47 +13,47 @@
         /// <summary>
         ///     Attribute options.
         /// </summary>
-        public virtual AttributeOptions Attributes { get; protected set; } = new();
+        public AttributeOptions Attributes { get; protected set; } = new();
 
         /// <summary>
         ///     Root graph options.
         /// </summary>
-        public virtual GraphOptions Graph { get; protected set; } = new();
+        public GraphOptions Graph { get; protected set; } = new();
 
         /// <summary>
         ///     Subgraph options.
         /// </summary>
-        public virtual SubgraphOptions Subgraphs { get; protected set; } = new();
+        public SubgraphOptions Subgraphs { get; protected set; } = new();
 
         /// <summary>
         ///     Cluster options.
         /// </summary>
-        public virtual ClusterOptions Clusters { get; protected set; } = new();
+        public ClusterOptions Clusters { get; protected set; } = new();
 
         /// <summary>
         ///     Edge options.
         /// </summary>
-        public virtual EdgeOptions Edges { get; protected set; } = new();
+        public EdgeOptions Edges { get; protected set; } = new();
 
         /// <summary>
         ///     Color options.
         /// </summary>
-        public virtual ColorOptions Colors { get; protected set; } = new();
+        public ColorOptions Colors { get; protected set; } = new();
 
         /// <summary>
         ///     Comment options.
         /// </summary>
-        public virtual CommentOptions Comments { get; protected set; } = new();
+        public CommentOptions Comments { get; protected set; } = new();
 
         /// <summary>
         ///     When set, identifiers will always be quoted, even if it is not required.
         /// </summary>
-        public virtual bool PreferQuotedIdentifiers { get; set; } = false;
+        public bool PreferQuotedIdentifiers { get; set; } = false;
 
         /// <summary>
         ///     When set, all statements within the graph will be followed by a delimiter (;).
         /// </summary>
-        public virtual bool PreferStatementDelimiter { get; set; } = false;
+        public bool PreferStatementDelimiter { get; set; } = false;
 
         /// <summary>
         ///     Gets or sets a value indicating if graph elements should be sorted in the output DOT script. This setting affects attributes,
@@ -65,6 +65,6 @@
         ///         script may affect the order they are visualized, if that matters.
         ///     </para>
         /// </summary>
-        public virtual bool SortElements { get; set; } = false;
+        public bool SortElements { get; set; } = false;
     }
 }

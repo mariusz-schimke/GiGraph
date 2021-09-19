@@ -30,7 +30,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties
         /// <summary>
         ///     Provides access to individual attributes in the current context.
         /// </summary>
-        public virtual DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties> Attributes { get; }
+        public DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties> Attributes { get; }
 
         protected override DotEntityAttributesAccessor GetAccessor() => Attributes;
     }

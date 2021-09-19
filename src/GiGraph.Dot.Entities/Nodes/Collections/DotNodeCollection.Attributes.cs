@@ -16,25 +16,25 @@ namespace GiGraph.Dot.Entities.Nodes.Collections
     public partial class DotNodeCollection : IDotNodeRootAttributes
     {
         /// <inheritdoc cref="IDotNodeRootAttributes.Font" />
-        public virtual DotFontAttributes Font => Attributes.Implementation.Font;
+        public DotFontAttributes Font => Attributes.Implementation.Font;
 
         /// <inheritdoc cref="IDotNodeRootAttributes.Image" />
-        public virtual DotNodeImageAttributes Image => Attributes.Implementation.Image;
+        public DotNodeImageAttributes Image => Attributes.Implementation.Image;
 
         /// <inheritdoc cref="IDotNodeRootAttributes.Geometry" />
-        public virtual DotNodeGeometryAttributes Geometry => Attributes.Implementation.Geometry;
+        public DotNodeGeometryAttributes Geometry => Attributes.Implementation.Geometry;
 
         /// <inheritdoc cref="IDotNodeRootAttributes.Size" />
-        public virtual DotNodeSizeAttributes Size => Attributes.Implementation.Size;
+        public DotNodeSizeAttributes Size => Attributes.Implementation.Size;
 
         /// <inheritdoc cref="IDotNodeRootAttributes.Style" />
-        public virtual DotNodeStyleAttributeOptions Style => Attributes.Implementation.Style;
+        public DotNodeStyleAttributeOptions Style => Attributes.Implementation.Style;
 
         /// <inheritdoc cref="IDotNodeRootAttributes.SvgStyleSheet" />
-        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
+        public DotSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
 
         /// <inheritdoc cref="IDotNodeRootAttributes.Hyperlink" />
-        public virtual DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
+        public DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
 
         DotStyles? IDotNodeAttributes.Style
         {

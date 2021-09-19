@@ -12,15 +12,15 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
     public class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAttributes, DotGraphFontAttributes>, IDotGraphFontAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphFontAttributes, IDotGraphFontAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphFontAttributes, IDotGraphFontAttributes>().BuildLazy();
 
-        protected DotGraphFontAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotGraphFontAttributes(DotAttributeCollection attributes)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 
-        public DotGraphFontAttributes(DotAttributeCollection attributes)
-            : base(attributes, GraphFontAttributesKeyLookup)
+        protected DotGraphFontAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

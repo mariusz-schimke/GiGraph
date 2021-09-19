@@ -17,12 +17,12 @@ namespace GiGraph.Dot.Entities.Html.Table
         {
         }
 
-        private DotHtmlTableCell(DotHtmlAttributeCollection attributes)
+        protected DotHtmlTableCell(DotHtmlAttributeCollection attributes)
             : this(new DotHtmlTableCellAttributes(attributes))
         {
         }
 
-        private DotHtmlTableCell(DotHtmlTableCellAttributes attributes)
+        protected DotHtmlTableCell(DotHtmlTableCellAttributes attributes)
             : base("td", attributes.Collection)
         {
             Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlTableCellAttributes, DotHtmlTableCellAttributes>(attributes);
@@ -31,6 +31,6 @@ namespace GiGraph.Dot.Entities.Html.Table
         /// <summary>
         ///     Provides access to the attributes of the table cell.
         /// </summary>
-        public new virtual DotHtmlElementRootAttributesAccessor<IDotHtmlTableCellAttributes, DotHtmlTableCellAttributes> Attributes { get; }
+        public new DotHtmlElementRootAttributesAccessor<IDotHtmlTableCellAttributes, DotHtmlTableCellAttributes> Attributes { get; }
     }
 }

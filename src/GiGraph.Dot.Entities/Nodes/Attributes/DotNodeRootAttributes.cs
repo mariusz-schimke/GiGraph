@@ -18,13 +18,22 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
     public class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<IDotNodeAttributes, DotNodeRootAttributes>, IDotNodeRootAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> NodeRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().BuildLazy();
 
-        protected readonly DotFontAttributes _fontAttributes;
-        protected readonly DotNodeGeometryAttributes _geometryAttributes;
-        protected readonly DotNodeImageAttributes _imageAttributes;
-        protected readonly DotNodeSizeAttributes _sizeAttributes;
-        protected readonly DotNodeStyleAttributeOptions _styleAttributeOptions;
+        public DotNodeRootAttributes(DotAttributeCollection attributes)
+            : this(
+                attributes,
+                AttributeKeyLookup,
+                new DotHyperlinkAttributes(attributes),
+                new DotFontAttributes(attributes),
+                new DotNodeStyleAttributeOptions(attributes),
+                new DotNodeImageAttributes(attributes),
+                new DotNodeGeometryAttributes(attributes),
+                new DotNodeSizeAttributes(attributes),
+                new DotSvgStyleSheetAttributes(attributes)
+            )
+        {
+        }
 
         protected DotNodeRootAttributes(
             DotAttributeCollection attributes,
@@ -39,33 +48,18 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         )
             : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
         {
-            _fontAttributes = fontAttributes;
-            _styleAttributeOptions = styleAttributeOptions;
-            _imageAttributes = imageAttributes;
-            _geometryAttributes = geometryAttributes;
-            _sizeAttributes = sizeAttributes;
+            Font = fontAttributes;
+            Style = styleAttributeOptions;
+            Image = imageAttributes;
+            Geometry = geometryAttributes;
+            Size = sizeAttributes;
         }
 
-        public DotNodeRootAttributes(DotAttributeCollection attributes)
-            : this(
-                attributes,
-                NodeRootAttributesKeyLookup,
-                new DotHyperlinkAttributes(attributes),
-                new DotFontAttributes(attributes),
-                new DotNodeStyleAttributeOptions(attributes),
-                new DotNodeImageAttributes(attributes),
-                new DotNodeGeometryAttributes(attributes),
-                new DotNodeSizeAttributes(attributes),
-                new DotSvgStyleSheetAttributes(attributes)
-            )
-        {
-        }
-
-        public virtual DotFontAttributes Font => _fontAttributes;
-        public virtual DotNodeStyleAttributeOptions Style => _styleAttributeOptions;
-        public virtual DotNodeSizeAttributes Size => _sizeAttributes;
-        public virtual DotNodeGeometryAttributes Geometry => _geometryAttributes;
-        public virtual DotNodeImageAttributes Image => _imageAttributes;
+        public DotFontAttributes Font { get; }
+        public DotNodeStyleAttributeOptions Style { get; }
+        public DotNodeSizeAttributes Size { get; }
+        public DotNodeGeometryAttributes Geometry { get; }
+        public DotNodeImageAttributes Image { get; }
 
         [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
         DotStyles? IDotNodeAttributes.Style

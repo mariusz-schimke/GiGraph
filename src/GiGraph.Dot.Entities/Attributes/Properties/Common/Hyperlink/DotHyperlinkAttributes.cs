@@ -6,15 +6,15 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink
 {
     public class DotHyperlinkAttributes : DotHyperlinkAttributes<IDotHyperlinkAttributes, DotHyperlinkAttributes>
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> EntityHyperlinkAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHyperlinkAttributes, IDotHyperlinkAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHyperlinkAttributes, IDotHyperlinkAttributes>().BuildLazy();
 
-        protected DotHyperlinkAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotHyperlinkAttributes(DotAttributeCollection attributes)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 
-        public DotHyperlinkAttributes(DotAttributeCollection attributes)
-            : base(attributes, EntityHyperlinkAttributesKeyLookup)
+        protected DotHyperlinkAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
     }

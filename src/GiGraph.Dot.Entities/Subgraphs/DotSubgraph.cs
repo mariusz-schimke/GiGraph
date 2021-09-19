@@ -24,24 +24,6 @@ namespace GiGraph.Dot.Entities.Subgraphs
     /// </summary>
     public class DotSubgraph : DotSubgraphSection, IDotGraph, IDotOrderable
     {
-        protected DotSubgraph(string id, DotSubgraphSection rootSection, DotGraphSectionCollection<DotSubgraphSection> subsections)
-            : base(rootSection)
-        {
-            Id = id;
-            Subsections = subsections;
-        }
-
-        /// <summary>
-        ///     Creates a new subgraph.
-        /// </summary>
-        /// <param name="id">
-        ///     The identifier to assign to the subgraph.
-        /// </param>
-        public DotSubgraph(string id = null)
-            : this(id, new DotSubgraphSection(), new DotGraphSectionCollection<DotSubgraphSection>())
-        {
-        }
-
         /// <summary>
         ///     Creates a new subgraph.
         /// </summary>
@@ -51,10 +33,15 @@ namespace GiGraph.Dot.Entities.Subgraphs
         /// <param name="nodeRank">
         ///     The rank constraints to apply to the nodes in the subgraph.
         /// </param>
-        public DotSubgraph(string id, DotRank? nodeRank)
-            : this(id)
+        public DotSubgraph(string id = null, DotRank? nodeRank = null)
+            : this(new DotSubgraphSection(), new DotGraphSectionCollection<DotSubgraphSection>())
         {
-            NodeRank = nodeRank;
+            Id = id;
+
+            if (nodeRank.HasValue)
+            {
+                NodeRank = nodeRank;
+            }
         }
 
         /// <summary>
@@ -66,6 +53,12 @@ namespace GiGraph.Dot.Entities.Subgraphs
         public DotSubgraph(DotRank? nodeRank)
             : this(id: null, nodeRank)
         {
+        }
+
+        protected DotSubgraph(DotSubgraphSection rootSection, DotGraphSectionCollection<DotSubgraphSection> subsections)
+            : base(rootSection)
+        {
+            Subsections = subsections;
         }
 
         /// <summary>
@@ -85,7 +78,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         ///         <see cref="Subgraphs" /> may be the cleaner and preferable way to achieve the effect.
         ///     </para>
         /// </summary>
-        public virtual DotGraphSectionCollection<DotSubgraphSection> Subsections { get; }
+        public DotGraphSectionCollection<DotSubgraphSection> Subsections { get; }
 
         IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 

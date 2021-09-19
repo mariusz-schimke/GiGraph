@@ -14,32 +14,32 @@ namespace GiGraph.Dot.Entities.Edges.Collections
     public partial class DotEdgeCollection : IDotEdgeRootAttributes
     {
         /// <inheritdoc cref="IDotEdgeRootAttributes.Head" />
-        public virtual DotEdgeHeadAttributes Head => Attributes.Implementation.Head;
+        public DotEdgeHeadAttributes Head => Attributes.Implementation.Head;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.Tail" />
-        public virtual DotEdgeTailAttributes Tail => Attributes.Implementation.Tail;
+        public DotEdgeTailAttributes Tail => Attributes.Implementation.Tail;
 
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.Font" />
-        public virtual DotFontAttributes Font => Attributes.Implementation.Font;
+        public DotFontAttributes Font => Attributes.Implementation.Font;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.EndpointLabels" />
-        public virtual DotEdgeEndpointLabelsAttributes EndpointLabels => Attributes.Implementation.EndpointLabels;
+        public DotEdgeEndpointLabelsAttributes EndpointLabels => Attributes.Implementation.EndpointLabels;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.EdgeHyperlink" />
-        public virtual DotEdgeHyperlinkAttributes EdgeHyperlink => Attributes.Implementation.EdgeHyperlink;
+        public DotEdgeHyperlinkAttributes EdgeHyperlink => Attributes.Implementation.EdgeHyperlink;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.LabelHyperlink" />
-        public virtual DotEdgeLabelHyperlinkAttributes LabelHyperlink => Attributes.Implementation.LabelHyperlink;
+        public DotEdgeLabelHyperlinkAttributes LabelHyperlink => Attributes.Implementation.LabelHyperlink;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.Style" />
-        public virtual DotEdgeStyleAttributeOptions Style => Attributes.Implementation.Style;
+        public DotEdgeStyleAttributeOptions Style => Attributes.Implementation.Style;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.SvgStyleSheet" />
-        public virtual DotSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
+        public DotSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
 
         /// <inheritdoc cref="IDotEdgeRootAttributes.Hyperlink" />
-        public virtual DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
+        public DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
 
         DotStyles? IDotEdgeAttributes.Style
         {

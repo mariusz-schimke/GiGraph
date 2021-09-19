@@ -7,7 +7,7 @@
             /// <summary>
             ///     Gets or sets a value indicating if subgraphs should be written in single lines.
             /// </summary>
-            public virtual bool SingleLine { get; set; } = false;
+            public bool SingleLine { get; set; } = false;
         }
     }
 }

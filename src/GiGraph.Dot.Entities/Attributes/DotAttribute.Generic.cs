@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <summary>
         ///     Gets the value of the attribute.
         /// </summary>
-        public virtual T Value { get; }
+        public T Value { get; }
 
         /// <inheritdoc />
         public override object GetValue()

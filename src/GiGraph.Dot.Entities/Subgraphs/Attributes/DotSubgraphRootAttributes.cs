@@ -10,15 +10,15 @@ namespace GiGraph.Dot.Entities.Subgraphs.Attributes
 {
     public class DotSubgraphRootAttributes : DotEntityAttributesWithMetadata<IDotSubgraphAttributes, DotSubgraphRootAttributes>, IDotSubgraphRootAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> SubgraphRootAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotSubgraphRootAttributes, IDotSubgraphAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotSubgraphRootAttributes, IDotSubgraphAttributes>().BuildLazy();
 
-        protected DotSubgraphRootAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotSubgraphRootAttributes(DotAttributeCollection attributes)
+            : this(attributes, AttributeKeyLookup)
         {
         }
 
-        public DotSubgraphRootAttributes(DotAttributeCollection attributes)
-            : this(attributes, SubgraphRootAttributesKeyLookup)
+        protected DotSubgraphRootAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

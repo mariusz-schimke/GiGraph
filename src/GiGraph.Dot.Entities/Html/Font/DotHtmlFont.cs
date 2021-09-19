@@ -66,12 +66,12 @@ namespace GiGraph.Dot.Entities.Html.Font
         {
         }
 
-        private DotHtmlFont(DotHtmlAttributeCollection attributes)
+        protected DotHtmlFont(DotHtmlAttributeCollection attributes)
             : this(new DotHtmlFontAttributes(attributes))
         {
         }
 
-        private DotHtmlFont(DotHtmlFontAttributes attributes)
+        protected DotHtmlFont(DotHtmlFontAttributes attributes)
             : base("font", attributes.Collection)
         {
             Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlFontAttributes, DotHtmlFontAttributes>(attributes);
@@ -80,7 +80,7 @@ namespace GiGraph.Dot.Entities.Html.Font
         /// <summary>
         ///     Provides access to the attributes of the font.
         /// </summary>
-        public new virtual DotHtmlElementRootAttributesAccessor<IDotHtmlFontAttributes, DotHtmlFontAttributes> Attributes { get; }
+        public new DotHtmlElementRootAttributesAccessor<IDotHtmlFontAttributes, DotHtmlFontAttributes> Attributes { get; }
 
         /// <summary>
         ///     Creates an appropriate nested structure of HTML tags based on the specified font and style.

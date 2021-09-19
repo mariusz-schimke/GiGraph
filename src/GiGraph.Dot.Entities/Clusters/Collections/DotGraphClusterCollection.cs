@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
 {
     public partial class DotGraphClusterCollection : DotClusterCollection
     {
-        private readonly DotGraphRootAttributes _graphAttributes;
+        protected readonly DotGraphRootAttributes _graphAttributes;
 
         public DotGraphClusterCollection(DotGraphRootAttributes graphAttributes)
         {
@@ -16,6 +16,6 @@ namespace GiGraph.Dot.Entities.Clusters.Collections
         /// <summary>
         ///     Provides access to the global graph attributes applied to clusters.
         /// </summary>
-        public virtual DotEntityAttributesAccessor<IDotGraphClustersAttributes, DotGraphClustersAttributes> Attributes { get; }
+        public DotEntityAttributesAccessor<IDotGraphClustersAttributes, DotGraphClustersAttributes> Attributes { get; }
     }
 }

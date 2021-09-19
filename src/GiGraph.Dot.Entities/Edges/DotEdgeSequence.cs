@@ -24,18 +24,6 @@ namespace GiGraph.Dot.Entities.Edges
         {
         }
 
-        private DotEdgeSequence(DotEndpointDefinition[] endpoints, DotAttributeCollection attributes)
-            : this(endpoints, new DotEdgeRootAttributes(attributes))
-        {
-        }
-
-        private DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes attributes)
-            : base(endpoints, attributes)
-        {
-            Tails = new DotEdgeEndpoint(attributes.Tail);
-            Heads = new DotEdgeEndpoint(attributes.Head);
-        }
-
         /// <summary>
         ///     Creates a new edge sequence initialized with the specified endpoints. At least a pair of endpoints has to be provided.
         /// </summary>
@@ -71,15 +59,27 @@ namespace GiGraph.Dot.Entities.Edges
         {
         }
 
+        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotAttributeCollection attributes)
+            : this(endpoints, new DotEdgeRootAttributes(attributes))
+        {
+        }
+
+        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes attributes)
+            : base(endpoints, attributes)
+        {
+            Tails = new DotEdgeEndpoint(attributes.Tail);
+            Heads = new DotEdgeEndpoint(attributes.Head);
+        }
+
         /// <summary>
         ///     Attributes applied to the heads of the edges in this sequence.
         /// </summary>
-        public virtual DotEdgeEndpoint Heads { get; }
+        public DotEdgeEndpoint Heads { get; }
 
         /// <summary>
         ///     Attributes applied to the tails of the edges in this sequence.
         /// </summary>
-        public virtual DotEdgeEndpoint Tails { get; }
+        public DotEdgeEndpoint Tails { get; }
 
         protected override string GetOrderingKey()
         {

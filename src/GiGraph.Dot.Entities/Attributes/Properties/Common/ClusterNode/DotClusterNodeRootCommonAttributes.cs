@@ -26,7 +26,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode
             SvgStyleSheet = svgStyleSheetAttributes;
         }
 
-        public virtual DotSvgStyleSheetAttributes SvgStyleSheet { get; }
+        public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
         [DotAttributeKey(DotAttributeKeys.Color)]
         public virtual DotColorDefinition Color

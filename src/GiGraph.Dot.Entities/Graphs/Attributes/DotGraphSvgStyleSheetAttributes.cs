@@ -9,15 +9,15 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
     public class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGraphSvgStyleSheetAttributes, DotGraphSvgStyleSheetAttributes>, IDotGraphSvgStyleSheetAttributes
     {
-        protected static readonly Lazy<DotMemberAttributeKeyLookup> GraphSvgStyleSheetAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphSvgStyleSheetAttributes, IDotGraphSvgStyleSheetAttributes>().BuildLazy();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphSvgStyleSheetAttributes, IDotGraphSvgStyleSheetAttributes>().BuildLazy();
 
-        protected DotGraphSvgStyleSheetAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotGraphSvgStyleSheetAttributes(DotAttributeCollection attributes)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 
-        public DotGraphSvgStyleSheetAttributes(DotAttributeCollection attributes)
-            : base(attributes, GraphSvgStyleSheetAttributesKeyLookup)
+        protected DotGraphSvgStyleSheetAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 

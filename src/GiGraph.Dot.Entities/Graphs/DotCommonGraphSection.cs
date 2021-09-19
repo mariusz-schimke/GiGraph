@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Graphs
 {
     public abstract class DotCommonGraphSection : IDotGraphSection, IDotAnnotatable
     {
-        private readonly DotEntityAttributes _attributes;
+        protected readonly DotEntityAttributes _attributes;
 
         protected DotCommonGraphSection(
             DotEntityAttributes attributes,
@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Graphs
         /// <summary>
         ///     Gets the collection of nodes.
         /// </summary>
-        public virtual DotNodeCollection Nodes { get; }
+        public DotNodeCollection Nodes { get; }
 
         /// <summary>
         ///     <para>
@@ -57,7 +57,7 @@ namespace GiGraph.Dot.Entities.Graphs
         ///         current graph.
         ///     </para>
         /// </summary>
-        public virtual DotEdgeCollection Edges { get; }
+        public DotEdgeCollection Edges { get; }
 
         /// <summary>
         ///     <para>
@@ -70,7 +70,7 @@ namespace GiGraph.Dot.Entities.Graphs
         ///         <see cref="Clusters" />). You can use either of these types to set a common style of nodes and edges within them.
         ///     </para>
         /// </summary>
-        public virtual DotSubgraphCollection Subgraphs { get; }
+        public DotSubgraphCollection Subgraphs { get; }
 
         /// <summary>
         ///     <para>
@@ -82,7 +82,7 @@ namespace GiGraph.Dot.Entities.Graphs
         ///         <see cref="Subgraphs" />). You can use either of these types to set a common style of nodes and edges within them.
         ///     </para>
         /// </summary>
-        public virtual DotClusterCollection Clusters { get; }
+        public DotClusterCollection Clusters { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

@@ -13,13 +13,6 @@ namespace GiGraph.Dot.Entities.Clusters
     /// </summary>
     public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     {
-        protected DotCluster(string id, DotClusterSection rootSection, DotGraphSectionCollection<DotClusterSection> subsections)
-            : base(rootSection)
-        {
-            Id = id;
-            Subsections = subsections;
-        }
-
         /// <summary>
         ///     Creates a new cluster subgraph.
         /// </summary>
@@ -27,8 +20,15 @@ namespace GiGraph.Dot.Entities.Clusters
         ///     The unique identifier of the cluster.
         /// </param>
         public DotCluster(string id)
-            : this(id, new DotClusterSection(), new DotGraphSectionCollection<DotClusterSection>())
+            : this(new DotClusterSection(), new DotGraphSectionCollection<DotClusterSection>())
         {
+            Id = id;
+        }
+
+        protected DotCluster(DotClusterSection rootSection, DotGraphSectionCollection<DotClusterSection> subsections)
+            : base(rootSection)
+        {
+            Subsections = subsections;
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace GiGraph.Dot.Entities.Clusters
         ///         <see cref="Subgraphs" /> may be the cleaner and preferable way to achieve the effect.
         ///     </para>
         /// </summary>
-        public virtual DotGraphSectionCollection<DotClusterSection> Subsections { get; }
+        public DotGraphSectionCollection<DotClusterSection> Subsections { get; }
 
         IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 

@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Output.Generators
         }
 
         /// <inheritdoc cref="IDotEntityGenerator{TWriter}.Generate" />
-        public void Generate(IDotEntity entity, TWriter writer, bool annotate)
+        public virtual void Generate(IDotEntity entity, TWriter writer, bool annotate)
         {
             if (entity is null)
             {

@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <summary>
         ///     Gets the key of the attribute.
         /// </summary>
-        public virtual string Key { get; }
+        public string Key { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }
