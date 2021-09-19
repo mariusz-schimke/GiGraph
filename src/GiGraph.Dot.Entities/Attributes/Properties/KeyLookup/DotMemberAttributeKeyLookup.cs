@@ -51,7 +51,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup
         /// <summary>
         ///     Returns the total number of mapped member keys.
         /// </summary>
-        public int Count => _lookup.Sum(module => module.Value.Count);
+        public virtual int Count => _lookup.Sum(module => module.Value.Count);
 
         /// <summary>
         ///     Adds or replaces a key for the specified property.

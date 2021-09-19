@@ -21,7 +21,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         /// <summary>
         ///     Gets the number of entities in this builder.
         /// </summary>
-        public int Count => _entities.Count;
+        public virtual int Count => _entities.Count;
 
         /// <summary>
         ///     Appends an entity with customizable content to this instance.

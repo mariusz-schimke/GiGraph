@@ -36,10 +36,7 @@ namespace GiGraph.Dot.Entities.Subgraphs
         public DotSubgraph(string id = null, DotRank? nodeRank = null)
             : this(new DotSubgraphSection(), new DotGraphSectionCollection<DotSubgraphSection>())
         {
-            if (id is not null)
-            {
-                Id = id;
-            }
+            Id = id;
 
             if (nodeRank.HasValue)
             {
