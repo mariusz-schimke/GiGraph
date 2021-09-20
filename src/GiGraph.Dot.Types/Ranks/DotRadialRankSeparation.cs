@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Types.Ranks
     /// <summary>
     ///     Radial separation of concentric circles in twopi.
     /// </summary>
-    public class DotRadialRankSeparation : DotRankSeparationDefinition
+    public record DotRadialRankSeparation : DotRankSeparationDefinition
     {
         /// <summary>
         ///     Creates a new rank separation instance.
@@ -44,7 +44,7 @@ namespace GiGraph.Dot.Types.Ranks
         /// </summary>
         public double[] Values { get; }
 
-        protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return DotDoubleListEncoder.Encode(Values, syntaxRules);
         }

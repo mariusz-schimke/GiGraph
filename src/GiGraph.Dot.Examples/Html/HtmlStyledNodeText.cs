@@ -13,11 +13,11 @@ namespace GiGraph.Dot.Examples.Html
         {
             var graph = new DotGraph();
 
-            graph.Nodes.Add("Foo", attrs =>
+            graph.Nodes.Add("Foo", node =>
             {
-                attrs.Shape = DotNodeShape.Rectangle;
+                node.Shape = DotNodeShape.Rectangle;
 
-                attrs.Label = new DotHtmlBuilder()
+                node.Label = new DotHtmlBuilder()
                     // appends a <font> element to the builder, with a custom size, color and style
                    .AppendStyledFont(new DotStyledFont(DotFontStyles.Bold, 20, Color.RoyalBlue),
                         // specifies content of the parent <font> element
@@ -36,12 +36,12 @@ namespace GiGraph.Dot.Examples.Html
             });
 
             // an equivalent result with a manually composed HTML string
-            graph.Nodes.Add("Foo", attrs =>
+            graph.Nodes.Add("Foo", node =>
             {
-                attrs.Shape = DotNodeShape.Rectangle;
+                node.Shape = DotNodeShape.Rectangle;
 
                 // the AsHtml() method just casts the string to DotHtmlString so that it is interpreted as HTML when the output script is generated
-                attrs.Label = @"<font color=""royalblue"" point-size=""20""><b>&bull; Foo <font color=""black"">Bar</font></b></font><br/><i><u>Baz</u></i>".AsHtml();
+                node.Label = @"<font color=""royalblue"" point-size=""20""><b>&bull; Foo <font color=""black"">Bar</font></b></font><br/><i><u>Baz</u></i>".AsHtml();
             });
 
             return graph;

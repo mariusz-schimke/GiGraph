@@ -1,0 +1,5 @@
+﻿digraph
+{
+    fillcolor = "red:blue"
+    style = striped
+}

@@ -1,5 +1,6 @@
 using System;
 using GiGraph.Dot.Entities.Html.Font;
+using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Html.Builder
@@ -7,7 +8,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
     public partial class DotHtmlBuilder
     {
         /// <summary>
-        ///     Initializes and appends a font element.
+        ///     Appends a font element to this instance and builds its content.
         /// </summary>
         /// <param name="init">
         ///     A content initialization delegate.
@@ -18,7 +19,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends a font element.
+        ///     Appends a font element to this instance and builds its content.
         /// </summary>
         /// <param name="font">
         ///     The font to use.
@@ -32,7 +33,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends a font element with nested font style elements.
+        ///     Appends a font element with nested font style elements to this instance and builds the content of the bottom one.
         /// </summary>
         /// <param name="font">
         ///     The font to use.

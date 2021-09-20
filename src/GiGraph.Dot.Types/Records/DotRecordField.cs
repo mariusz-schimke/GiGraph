@@ -1,5 +1,5 @@
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.EscapeString;
 
 namespace GiGraph.Dot.Types.Records
@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Types.Records
     ///     </see>
     ///     .
     /// </summary>
-    public abstract class DotRecordField : IDotEncodable
+    public abstract record DotRecordField : IDotEncodable
     {
         string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {

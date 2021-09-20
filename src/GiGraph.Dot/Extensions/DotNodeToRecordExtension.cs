@@ -5,8 +5,12 @@ using GiGraph.Dot.Types.Records;
 
 namespace GiGraph.Dot.Extensions
 {
+    // It extends DotNodeDefinition not DotNode because these extensions still make sense for DotNodeGroup
+    // (a record may use placeholders, so even if the same record is assigned to all nodes in the group,
+    // all of them will have different labels when visualized).
+
     /// <summary>
-    ///     Provides extension methods for <see cref="DotNode" />.
+    ///     Provides extension methods for <see cref="DotNodeDefinition" />.
     /// </summary>
     public static class DotNodeToRecordExtension
     {
@@ -19,10 +23,10 @@ namespace GiGraph.Dot.Extensions
         /// <param name="record">
         ///     The record to use as the label of the node.
         /// </param>
-        public static void ToRecordNode(this DotNode node, DotRecord record)
+        public static void ToRecordNode(this DotNodeDefinition node, DotRecord record)
         {
-            node.Attributes.Shape = DotNodeShape.Record;
-            node.Attributes.Label = record;
+            node.Shape = DotNodeShape.Record;
+            node.Label = record;
         }
 
         /// <summary>
@@ -37,7 +41,7 @@ namespace GiGraph.Dot.Extensions
         /// <param name="flip">
         ///     Determines whether to change orientation of the record.
         /// </param>
-        public static void ToRecordNode(this DotNode node, Action<DotRecordBuilder> buildRecord, bool flip = false)
+        public static void ToRecordNode(this DotNodeDefinition node, Action<DotRecordBuilder> buildRecord, bool flip = false)
         {
             var builder = new DotRecordBuilder();
             buildRecord(builder);

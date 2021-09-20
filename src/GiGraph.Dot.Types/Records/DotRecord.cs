@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Types.Records
     ///     </see>
     ///     .
     /// </summary>
-    public class DotRecord : DotRecordField
+    public record DotRecord : DotRecordField
     {
         protected const bool FlipDefault = false;
 
@@ -140,17 +140,17 @@ namespace GiGraph.Dot.Types.Records
         /// <summary>
         ///     Gets the fields of the record.
         /// </summary>
-        public virtual DotRecordField[] Fields { get; }
+        public DotRecordField[] Fields { get; }
 
         /// <summary>
-        ///     Gets or sets the value indicating whether the orientation of the record should be changed from horizontal to vertical, or the
-        ///     other way round. The initial orientation of a record-shaped node depends on the layout direction of the graph. If set to
+        ///     Determines whether the orientation of the record should be changed from horizontal to vertical, or the other way round. The
+        ///     initial orientation of a record-shaped node depends on the layout direction of the graph. If set to
         ///     <see cref="DotLayoutDirection.TopToBottom" /> (the default) or <see cref="DotLayoutDirection.BottomToTop" />, corresponding
         ///     to vertical layouts, the top-level fields in a record are displayed horizontally. If, however, the direction is
         ///     <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to horizontal
         ///     layouts, the top-level fields are displayed vertically.
         /// </summary>
-        public virtual bool Flip { get; set; } = FlipDefault;
+        public bool Flip { get; init; } = FlipDefault;
 
         protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules, bool hasParent)
         {

@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Edges
+﻿using GiGraph.Dot.Output.Writers.TokenWriter;
+
+namespace GiGraph.Dot.Output.Writers.Edges
 {
     public class DotEdgeStatementWriter : DotEntityStatementWriter, IDotEdgeStatementWriter
     {
@@ -7,9 +9,18 @@
         {
         }
 
-        public virtual IDotEdgeWriter BeginEdgeStatement()
+        public virtual IDotEdgeWriter BeginEdgeStatement(bool containsSubgraphs, bool containsAttributes)
         {
-            return new DotEdgeWriter(_tokenWriter, _configuration);
+            var isMultiline =
+                containsSubgraphs && !_configuration.Formatting.Edges.SingleLineSubgraphs ||
+                containsAttributes && !_configuration.Formatting.Edges.SingleLineAttributeLists;
+
+            isMultiline &= !_configuration.Formatting.SingleLine;
+
+            return new DotEdgeWriter(
+                _paddedEntityWriter.BeginEntity(enforcePadding: isMultiline),
+                _configuration
+            );
         }
 
         public virtual void EndEdgeStatement()

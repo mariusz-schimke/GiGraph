@@ -1,5 +1,5 @@
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Types.Packing
 {
@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Types.Packing
     ///     Packing mode definition with two supported options: packing with specified granularity (see
     ///     <see cref="DotGranularPackingMode" />) or array packing (see <see cref="DotArrayPackingMode" />).
     /// </summary>
-    public abstract class DotPackingModeDefinition : IDotEncodable
+    public abstract record DotPackingModeDefinition : IDotEncodable
     {
         string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
@@ -29,6 +29,6 @@ namespace GiGraph.Dot.Types.Packing
             return value.HasValue ? new DotArrayPackingMode(value.Value) : null;
         }
 
-        protected internal abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
+        protected abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
     }
 }

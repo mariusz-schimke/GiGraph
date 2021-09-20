@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Types.Packing
     /// <summary>
     ///     Array packing mode parameters.
     /// </summary>
-    public class DotArrayPackingMode : DotPackingModeDefinition
+    public record DotArrayPackingMode : DotPackingModeDefinition
     {
         /// <summary>
         ///     Creates a new array packing mode instance.
@@ -47,17 +47,17 @@ namespace GiGraph.Dot.Types.Packing
         }
 
         /// <summary>
-        ///     Gets or sets the granularity option.
+        ///     The granularity option.
         /// </summary>
-        public virtual DotArrayPackingOptions? Options { get; set; }
+        public DotArrayPackingOptions? Options { get; init; }
 
         /// <summary>
-        ///     Gets or sets the number of columns for row-major component ordering or the number of rows for column-major component ordering
-        ///     (see <see cref="DotArrayPackingOptions.ColumnMajorOrder" />).
+        ///     The number of columns for row-major component ordering or the number of rows for column-major component ordering (see
+        ///     <see cref="DotArrayPackingOptions.ColumnMajorOrder" />).
         /// </summary>
-        public virtual int? RankCount { get; set; }
+        public int? RankCount { get; init; }
 
-        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             var result = new StringBuilder("array");
 

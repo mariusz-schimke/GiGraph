@@ -1,10 +1,11 @@
 ﻿using System;
-using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
-    public abstract class DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable, IDotOrderable
+    public abstract record DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable, IDotOrderable
     {
         protected DotAttribute(string key)
         {
@@ -14,7 +15,7 @@ namespace GiGraph.Dot.Entities.Attributes
         /// <summary>
         ///     Gets the key of the attribute.
         /// </summary>
-        public virtual string Key { get; }
+        public string Key { get; }
 
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

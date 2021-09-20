@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Html.Attributes.Collections;
+using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Entities.Html.LineBreak.Attributes;
-using GiGraph.Dot.Output.Metadata.Html;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Html;
@@ -12,7 +13,7 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
     /// <summary>
     ///     An HTML line break element (&lt;br/&gt;).
     /// </summary>
-    public class DotHtmlLineBreak : DotHtmlVoidElement, IDotHtmlLineBreakAttributes
+    public partial class DotHtmlLineBreak : DotHtmlVoidElement
     {
         protected static readonly DotHtmlEntity Default = new DotHtmlReadOnlyEntity<DotHtmlLineBreak>(new DotHtmlLineBreak());
         protected static readonly Dictionary<DotHorizontalAlignment, DotHtmlEntity> AlignedLineBreaks;
@@ -34,7 +35,7 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
         ///     Specifies horizontal placement of the line.
         /// </param>
         public DotHtmlLineBreak(DotHorizontalAlignment? lineAlignment = null)
-            : this(new DotHtmlLineBreakAttributes())
+            : this(new DotHtmlAttributeCollection())
         {
             if (lineAlignment.HasValue)
             {
@@ -42,24 +43,21 @@ namespace GiGraph.Dot.Entities.Html.LineBreak
             }
         }
 
+        protected DotHtmlLineBreak(DotHtmlAttributeCollection attributes)
+            : this(new DotHtmlLineBreakAttributes(attributes))
+        {
+        }
+
         protected DotHtmlLineBreak(DotHtmlLineBreakAttributes attributes)
             : base("br", attributes.Collection)
         {
-            Attributes = attributes;
+            Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlLineBreakAttributes, DotHtmlLineBreakAttributes>(attributes);
         }
 
         /// <summary>
-        ///     The attributes of the line break element.
+        ///     Provides access to the attributes of the line break element.
         /// </summary>
-        public new virtual DotHtmlLineBreakAttributes Attributes { get; }
-
-        /// <inheritdoc cref="IDotHtmlLineBreakAttributes.LineAlignment" />
-        [DotHtmlAttributeKey("align")]
-        public virtual DotHorizontalAlignment? LineAlignment
-        {
-            get => ((IDotHtmlLineBreakAttributes) Attributes).LineAlignment;
-            set => ((IDotHtmlLineBreakAttributes) Attributes).LineAlignment = value;
-        }
+        public new DotHtmlElementRootAttributesAccessor<IDotHtmlLineBreakAttributes, DotHtmlLineBreakAttributes> Attributes { get; }
 
         /// <summary>
         ///     Returns a &lt;br/&gt; HTML tag string according to the default syntax options and rules.

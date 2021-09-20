@@ -4,34 +4,21 @@ using GiGraph.Dot.Types.Hyperlinks;
 namespace GiGraph.Dot.Types.Edges
 {
     /// <summary>
-    ///     Specifies hyperlink properties (edge specific).
+    ///     Specifies hyperlink attributes (edge specific).
     /// </summary>
-    public class DotEdgeHyperlink : DotHyperlink
-    {
-        /// <summary>
-        ///     Creates and initializes a new instance.
-        /// </summary>
-        /// <param name="url">
-        ///     The URL.
-        /// </param>
-        /// <param name="target">
-        ///     Determines which window of the browser is used for the URL. See <see cref="DotHyperlinkTargets" />.
-        /// </param>
-        /// <param name="tooltip">
-        ///     Tooltip annotation.
-        /// </param>
-        /// <param name="href">
-        ///     Synonym for <paramref name="url" />.
-        /// </param>
-        public DotEdgeHyperlink(DotEscapeString url = null, DotEscapeString target = null, DotEscapeString tooltip = null, DotEscapeString href = null)
-            : base(url, target, href)
-        {
-            Tooltip = tooltip;
-        }
-
-        /// <summary>
-        ///     The tooltip annotation.
-        /// </summary>
-        public virtual DotEscapeString Tooltip { get; set; }
-    }
+    /// <param name="Url">
+    ///     The URL.
+    /// </param>
+    /// <param name="Target">
+    ///     Determines which window of the browser is used for the URL. See
+    ///     <see cref="GiGraph.Dot.Types.Hyperlinks.DotHyperlinkTargets" />.
+    /// </param>
+    /// <param name="Tooltip">
+    ///     Tooltip annotation.
+    /// </param>
+    /// <param name="Href">
+    ///     Synonym for <paramref name="Url" />.
+    /// </param>
+    public record DotEdgeHyperlink(DotEscapeString Url = null, DotEscapeString Target = null, DotEscapeString Tooltip = null, DotEscapeString Href = null)
+        : DotHyperlink(Url, Target, Href);
 }

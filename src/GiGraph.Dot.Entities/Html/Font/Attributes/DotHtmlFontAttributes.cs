@@ -1,43 +1,43 @@
-﻿using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using System;
+using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
-using GiGraph.Dot.Entities.Html.Attributes.Factories;
+using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Html.Font.Attributes
 {
-    public class DotHtmlFontAttributes : DotHtmlElementRootAttributes<IDotHtmlFontAttributes>, IDotHtmlFontAttributes
+    public class DotHtmlFontAttributes : DotHtmlElementAttributes<IDotHtmlFontAttributes, DotHtmlFontAttributes>, IDotHtmlFontAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup HtmlFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlFontAttributes, IDotHtmlFontAttributes>().Build();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlFontAttributes, IDotHtmlFontAttributes>().BuildLazy();
 
-        protected DotHtmlFontAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        public DotHtmlFontAttributes(DotHtmlAttributeCollection attributes)
+            : this(attributes, AttributeKeyLookup)
+        {
+        }
+
+        protected DotHtmlFontAttributes(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }
 
-        public DotHtmlFontAttributes()
-            : this(new DotAttributeCollection(DotHtmlAttributeFactory.Instance), HtmlFontAttributesKeyLookup)
-        {
-        }
-
         [DotAttributeKey("face")]
-        string IDotHtmlFontAttributes.Name
+        public virtual string Name
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("point-size")]
-        double? IDotHtmlFontAttributes.Size
+        public virtual double? Size
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("color")]
-        DotColor IDotHtmlFontAttributes.Color
+        public virtual DotColor Color
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);

@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
@@ -8,17 +9,17 @@ using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
-    public class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDotNodeSizeAttributes>, IDotNodeSizeAttributes
+    public class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDotNodeSizeAttributes, DotNodeSizeAttributes>, IDotNodeSizeAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup NodeSizeAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeSizeAttributes, IDotNodeSizeAttributes>().Build();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeSizeAttributes, IDotNodeSizeAttributes>().BuildLazy();
 
-        protected DotNodeSizeAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotNodeSizeAttributes(DotAttributeCollection attributes)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 
-        public DotNodeSizeAttributes(DotAttributeCollection attributes)
-            : base(attributes, NodeSizeAttributesKeyLookup)
+        protected DotNodeSizeAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 
@@ -102,10 +103,10 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         }
 
         /// <summary>
-        ///     Copies size properties from the specified instance.
+        ///     Copies size attributes from the specified instance.
         /// </summary>
         /// <param name="attributes">
-        ///     The instance to copy the properties from.
+        ///     The instance to copy the attributes from.
         /// </param>
         public virtual void Set(IDotNodeSizeAttributes attributes)
         {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
@@ -64,7 +64,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// <summary>
         ///     Gets the endpoints.
         /// </summary>
-        public virtual DotEndpoint[] Endpoints { get; }
+        public DotEndpoint[] Endpoints { get; }
 
         protected override string GetOrderingKey()
         {

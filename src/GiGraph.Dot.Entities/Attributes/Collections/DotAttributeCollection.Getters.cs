@@ -18,6 +18,17 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
     public partial class DotAttributeCollection
     {
         /// <summary>
+        ///     Gets an attribute with the specified key or null if it does not exist in the collection.
+        /// </summary>
+        /// <param name="key">
+        ///     The key of the attribute to get.
+        /// </param>
+        public virtual DotAttribute Get(string key)
+        {
+            return TryGetValue(key, out var attribute) ? attribute : null;
+        }
+
+        /// <summary>
         ///     Checks if an attribute with the specified key exists in the collection, and returns it as the specified type. If the
         ///     attribute is found, but cannot be cast as the specified type, an exception is thrown.
         /// </summary>
@@ -37,7 +48,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
 
             return attribute is T output
                 ? output
-                : throw new InvalidCastException($"The '{key}' attribute of type {attribute.GetType().FullName} cannot be accessed as {typeof(T).FullName}.");
+                : throw new InvalidCastException($"The '{key}' attribute of type {attribute.GetType().Name} cannot be accessed as {typeof(T).Name}.");
         }
 
         /// <summary>
@@ -105,7 +116,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 return true;
             }
 
-            value = default;
+            value = default(T);
             return false;
         }
 
@@ -131,7 +142,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
         {
             if (!TryGetValue(key, out var attribute) || attribute.GetValue() is not { } attributeValue)
             {
-                value = default;
+                value = default(T);
                 return false;
             }
 
@@ -156,7 +167,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
                 }
             }
 
-            throw new InvalidCastException($"The '{key}' attribute value of type {attributeValue.GetType().FullName} cannot be accessed as {typeof(T).FullName}.");
+            throw new InvalidCastException($"The '{key}' attribute value of type {attributeValue.GetType().Name} cannot be accessed as {typeof(T).Name}.");
         }
 
         /// <summary>
@@ -178,7 +189,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is int i ? (true, i) : (false, default)
+                v => v is int i ? (true, i) : (false, default(int))
             )
                 ? value
                 : null;
@@ -212,7 +223,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is Color c ? (true, new DotColor(c)) : (false, default)
+                v => v is Color c ? (true, new DotColor(c)) : (false, null)
             )
                 ? value
                 : null;
@@ -229,7 +240,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is Color c ? (true, new DotColor(c)) : (false, default)
+                v => v is Color c ? (true, new DotColor(c)) : (false, null)
             )
                 ? value
                 : null;
@@ -255,7 +266,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is string s ? (true, (DotEscapedString) s) : (false, default)
+                v => v is string s ? (true, (DotEscapedString) s) : (false, null)
             )
                 ? value
                 : null;
@@ -271,8 +282,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is DotEscapeString s ? (true, s) : (false, default),
-                v => v is string s ? (true, (DotEscapedString) s) : (false, default)
+                v => v is DotEscapeString s ? (true, s) : (false, null),
+                v => v is string s ? (true, (DotEscapedString) s) : (false, null)
             )
                 ? value
                 : null;
@@ -289,7 +300,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is DotArrowheadShape s ? (true, new DotArrowhead(s)) : (false, default)
+                v => v is DotArrowheadShape s ? (true, new DotArrowhead(s)) : (false, null)
             )
                 ? value
                 : null;
@@ -306,8 +317,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is int i ? (true, new DotPackingMargin(i)) : (false, default),
-                v => v is bool b ? (true, new DotPackingToggle(b)) : (false, default)
+                v => v is int i ? (true, new DotPackingMargin(i)) : (false, null),
+                v => v is bool b ? (true, new DotPackingToggle(b)) : (false, null)
             )
                 ? value
                 : null;
@@ -324,7 +335,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is DotPackingGranularity g ? (true, new DotGranularPackingMode(g)) : (false, default)
+                v => v is DotPackingGranularity g ? (true, new DotGranularPackingMode(g)) : (false, null)
             )
                 ? value
                 : null;
@@ -341,9 +352,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is int i ? (true, new DotRankSeparation(i)) : (false, default),
-                v => v is double d ? (true, new DotRankSeparation(d)) : (false, default),
-                v => v is double[] da ? (true, new DotRadialRankSeparation(da)) : (false, default)
+                v => v is int i ? (true, new DotRankSeparation(i)) : (false, null),
+                v => v is double d ? (true, new DotRankSeparation(d)) : (false, null),
+                v => v is double[] da ? (true, new DotRadialRankSeparation(da)) : (false, null)
             )
                 ? value
                 : null;
@@ -360,9 +371,9 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is int i ? (true, new DotGraphScalingAspectRatio(i)) : (false, default),
-                v => v is double d ? (true, new DotGraphScalingAspectRatio(d)) : (false, default),
-                v => v is DotGraphScaling s ? (true, new DotGraphScalingOption(s)) : (false, default)
+                v => v is int i ? (true, new DotGraphScalingAspectRatio(i)) : (false, null),
+                v => v is double d ? (true, new DotGraphScalingAspectRatio(d)) : (false, null),
+                v => v is DotGraphScaling s ? (true, new DotGraphScalingOption(s)) : (false, null)
             )
                 ? value
                 : null;
@@ -379,8 +390,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is DotCompassPoint cp ? (true, new DotEndpointPort(cp)) : (false, default),
-                v => v is string s ? (true, new DotEndpointPort(s)) : (false, default)
+                v => v is DotCompassPoint cp ? (true, new DotEndpointPort(cp)) : (false, null),
+                v => v is string s ? (true, new DotEndpointPort(s)) : (false, null)
             )
                 ? value
                 : null;
@@ -396,7 +407,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is string s ? (true, new DotId(s)) : (false, default)
+                v => v is string s ? (true, new DotId(s)) : (false, null)
             )
                 ? value
                 : null;
@@ -412,7 +423,7 @@ namespace GiGraph.Dot.Entities.Attributes.Collections
             (
                 key,
                 out var value,
-                v => v is string s ? (true, new DotClusterId(s)) : (false, default)
+                v => v is string s ? (true, new DotClusterId(s)) : (false, null)
             )
                 ? value
                 : null;

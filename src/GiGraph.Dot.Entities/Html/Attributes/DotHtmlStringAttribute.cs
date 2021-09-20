@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Html.Attributes
     ///     A string attribute. The value is rendered as is in the output DOT script, so the attribute can be used for any type of value,
     ///     not only for strings. For use in the context of HTML elements
     /// </summary>
-    public class DotHtmlStringAttribute : DotStringAttribute
+    public record DotHtmlStringAttribute : DotStringAttribute
     {
         /// <summary>
         ///     Creates a new instance of the attribute.

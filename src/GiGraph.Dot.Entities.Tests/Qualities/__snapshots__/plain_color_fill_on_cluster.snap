@@ -1,0 +1,8 @@
+﻿digraph
+{
+    subgraph cluster
+    {
+        fillcolor = red
+        style = filled
+    }
+}

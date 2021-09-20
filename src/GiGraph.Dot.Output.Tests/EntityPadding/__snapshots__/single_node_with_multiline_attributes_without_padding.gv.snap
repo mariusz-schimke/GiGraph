@@ -1,0 +1,7 @@
+﻿digraph
+{
+    node1
+    [
+        fontsize = 10
+    ]
+}

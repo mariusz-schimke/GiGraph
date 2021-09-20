@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Graphs.Collections;
-using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Entities;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Clusters
 {
@@ -11,15 +11,8 @@ namespace GiGraph.Dot.Entities.Clusters
     ///     together, with the entire drawing of the cluster contained within a bounding rectangle. Note that cluster subgraphs are not
     ///     part of the DOT language, but solely a syntactic convention adhered to by certain of the layout engines.
     /// </summary>
-    public class DotCluster : DotClusterSection, IDotCommonGraph, IDotOrderable
+    public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     {
-        protected DotCluster(string id, DotClusterSection rootSection, DotGraphSectionCollection<DotClusterSection> subsections)
-            : base(rootSection)
-        {
-            Id = id;
-            Subsections = subsections;
-        }
-
         /// <summary>
         ///     Creates a new cluster subgraph.
         /// </summary>
@@ -27,8 +20,15 @@ namespace GiGraph.Dot.Entities.Clusters
         ///     The unique identifier of the cluster.
         /// </param>
         public DotCluster(string id)
-            : this(id, new DotClusterSection(), new DotGraphSectionCollection<DotClusterSection>())
+            : this(new DotClusterSection(), new DotGraphSectionCollection<DotClusterSection>())
         {
+            Id = id;
+        }
+
+        protected DotCluster(DotClusterSection rootSection, DotGraphSectionCollection<DotClusterSection> subsections)
+            : base(rootSection)
+        {
+            Subsections = subsections;
         }
 
         /// <summary>
@@ -48,9 +48,9 @@ namespace GiGraph.Dot.Entities.Clusters
         ///         <see cref="Subgraphs" /> may be the cleaner and preferable way to achieve the effect.
         ///     </para>
         /// </summary>
-        public virtual DotGraphSectionCollection<DotClusterSection> Subsections { get; }
+        public DotGraphSectionCollection<DotClusterSection> Subsections { get; }
 
-        IEnumerable<DotCommonGraphSection> IDotCommonGraph.Subsections => Subsections;
+        IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 
         /// <summary>
         ///     Gets or sets the identifier of the cluster (optional).

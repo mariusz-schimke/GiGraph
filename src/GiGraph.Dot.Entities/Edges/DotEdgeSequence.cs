@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
-using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Edges
 {
@@ -12,21 +13,6 @@ namespace GiGraph.Dot.Entities.Edges
     /// </summary>
     public class DotEdgeSequence : DotEdgeDefinition
     {
-        protected readonly DotEndpointDefinition[] _endpoints;
-
-        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeAttributes attributes)
-            : base(attributes)
-        {
-            if (endpoints is null)
-            {
-                throw new ArgumentNullException(nameof(endpoints), "Endpoint collection must not be null.");
-            }
-
-            _endpoints = endpoints.Length > 1
-                ? endpoints
-                : throw new ArgumentException("At least a pair of endpoints has to be specified for an edge sequence.", nameof(endpoints));
-        }
-
         /// <summary>
         ///     Creates a new edge sequence initialized with the specified endpoints. At least a pair of endpoints has to be provided.
         /// </summary>
@@ -34,7 +20,7 @@ namespace GiGraph.Dot.Entities.Edges
         ///     The endpoints to initialize the instance with.
         /// </param>
         public DotEdgeSequence(params DotEndpointDefinition[] endpoints)
-            : this(endpoints, new DotEdgeAttributes())
+            : this(endpoints, new DotAttributeCollection())
         {
         }
 
@@ -73,10 +59,27 @@ namespace GiGraph.Dot.Entities.Edges
         {
         }
 
+        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotAttributeCollection attributes)
+            : this(endpoints, new DotEdgeRootAttributes(attributes))
+        {
+        }
+
+        protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes attributes)
+            : base(endpoints, attributes)
+        {
+            Tails = new DotEdgeEndpoint(attributes.Tail);
+            Heads = new DotEdgeEndpoint(attributes.Head);
+        }
+
         /// <summary>
-        ///     Gets the sequence of endpoints.
+        ///     Attributes applied to the heads of the edges in this sequence.
         /// </summary>
-        public override DotEndpointDefinition[] Endpoints => _endpoints;
+        public DotEdgeEndpoint Heads { get; }
+
+        /// <summary>
+        ///     Attributes applied to the tails of the edges in this sequence.
+        /// </summary>
+        public DotEdgeEndpoint Tails { get; }
 
         protected override string GetOrderingKey()
         {

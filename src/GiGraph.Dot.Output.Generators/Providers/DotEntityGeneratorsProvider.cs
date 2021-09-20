@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Writers;
 
 namespace GiGraph.Dot.Output.Generators.Providers
@@ -24,7 +25,7 @@ namespace GiGraph.Dot.Output.Generators.Providers
             where TGenerator : IDotEntityGenerator
         {
             var generatorType = typeof(TGenerator);
-            generator = (TGenerator) _generators.LastOrDefault(t => generatorType.IsInstanceOfType(t));
+            generator = (TGenerator) _generators.FirstOrDefault(t => generatorType.IsInstanceOfType(t));
 
             return generator is not null;
         }
@@ -37,17 +38,29 @@ namespace GiGraph.Dot.Output.Generators.Providers
                 throw new ArgumentNullException(nameof(entity), "Entity must not be null.");
             }
 
-            var lastExactMatch = _generators.LastOrDefault(g => g.Supports<TRequiredWriter>(entity, out var isExactEntityTypeMatch) && isExactEntityTypeMatch);
-            var lastCompatibleMatch = _generators.LastOrDefault(g => g.Supports<TRequiredWriter>(entity, out var isExactEntityTypeMatch) && !isExactEntityTypeMatch);
+            IDotEntityGenerator firstCompatibleMatch = null;
 
-            return (IDotEntityGenerator<TRequiredWriter>) lastExactMatch
-             ?? (IDotEntityGenerator<TRequiredWriter>) lastCompatibleMatch
+            foreach (var generator in _generators)
+            {
+                var supports = generator.Supports<TRequiredWriter>(entity, out var isExactEntityTypeMatch);
+
+                if (supports && isExactEntityTypeMatch)
+                {
+                    return (IDotEntityGenerator<TRequiredWriter>) generator;
+                }
+
+                firstCompatibleMatch ??= supports ? generator : null;
+            }
+
+            return (IDotEntityGenerator<TRequiredWriter>) firstCompatibleMatch
              ?? throw new NotSupportedException($"No compatible generator has been registered for the entity type {entity.GetType().FullName} with the writer type {typeof(TRequiredWriter).FullName}.");
         }
 
         public virtual DotEntityGeneratorsProvider Register(IDotEntityGenerator generator)
         {
-            _generators.Add(generator);
+            // the last registered generator overrides a previously added one when they are both
+            // compatible for a given element type that is later searched for
+            _generators.Insert(0, generator);
             return this;
         }
 

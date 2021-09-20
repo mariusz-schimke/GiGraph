@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
@@ -10,17 +11,17 @@ using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGraphLayoutAttributes>, IDotGraphLayoutAttributes
+    public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGraphLayoutAttributes, DotGraphLayoutAttributes>, IDotGraphLayoutAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup GraphLayoutAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphLayoutAttributes, IDotGraphLayoutAttributes>().Build();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphLayoutAttributes, IDotGraphLayoutAttributes>().BuildLazy();
 
-        protected DotGraphLayoutAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotGraphLayoutAttributes(DotAttributeCollection attributes)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 
-        public DotGraphLayoutAttributes(DotAttributeCollection attributes)
-            : base(attributes, GraphLayoutAttributesKeyLookup)
+        protected DotGraphLayoutAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 
@@ -137,10 +138,10 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         }
 
         /// <summary>
-        ///     Copies layout properties from the specified instance.
+        ///     Copies layout attributes from the specified instance.
         /// </summary>
         /// <param name="attributes">
-        ///     The instance to copy the properties from.
+        ///     The instance to copy the attributes from.
         /// </param>
         public virtual void Set(IDotGraphLayoutAttributes attributes)
         {

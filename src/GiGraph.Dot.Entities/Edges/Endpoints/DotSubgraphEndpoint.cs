@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Subgraphs;
-using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints
 {
@@ -53,7 +53,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
         /// <summary>
         ///     Gets the subgraph whose nodes are used as endpoints.
         /// </summary>
-        public virtual DotSubgraph Subgraph { get; }
+        public DotSubgraph Subgraph { get; }
 
         protected override string GetOrderingKey()
         {

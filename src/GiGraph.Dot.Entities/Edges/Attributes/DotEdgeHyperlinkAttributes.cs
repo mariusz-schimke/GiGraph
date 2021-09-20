@@ -1,7 +1,9 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
@@ -9,27 +11,25 @@ using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes
 {
-    public class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdgeHyperlinkAttributes>, IDotEdgeHyperlinkAttributes
+    public class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdgeHyperlinkAttributes, DotEdgeHyperlinkAttributes>, IDotEdgeHyperlinkAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup EdgeHyperlinkAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().Build();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().BuildLazy();
 
-        protected DotEdgeHyperlinkAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotEdgeHyperlinkAttributes(DotAttributeCollection attributes)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 
-        public DotEdgeHyperlinkAttributes(DotAttributeCollection attributes)
-            : base(attributes, EdgeHyperlinkAttributesKeyLookup)
+        protected DotEdgeHyperlinkAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 
         /// <summary>
         ///     If defined, this is the link used for the non-label parts of the edge (svg, map only). Used near the head or the tail node,
-        ///     unless overridden by the <see cref="DotEdgeHyperlinkAttributes.Url" /> on the <see cref="DotEdgeAttributes.Head" />
-        ///     <see cref="DotEdgeHeadAttributes.Hyperlink" /> attributes, or on the <see cref="DotEdgeAttributes.Tail" />
-        ///     <see cref="DotEdgeTailAttributes.Hyperlink" /> attributes of the edge. This value overrides any
-        ///     <see cref="DotHyperlinkAttributes{TIEntityHyperlinkAttributes}.Url" /> specified for the edge's
-        ///     <see cref="DotEntityRootCommonAttributes{TIEntityAttributeProperties}.Hyperlink" />.
+        ///     unless overridden by the <see cref="IDotHyperlinkAttributes.Url" /> on the head's or tail's
+        ///     <see cref="IDotEdgeEndpointRootAttributes.Hyperlink" /> attributes of the edge. This value overrides any
+        ///     <see cref="IDotHyperlinkAttributes.Url" /> specified for the edge's <see cref="IDotEdgeRootAttributes.Hyperlink" />.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.EdgeUrl)]
         public override DotEscapeString Url
@@ -49,13 +49,11 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         /// <summary>
-        ///     If <see cref="Url" /> is specified, or if the edge has a
-        ///     <see cref="DotEntityRootCommonAttributes{TIEntityAttributeProperties}.Hyperlink" />
-        ///     <see cref="DotHyperlinkAttributes{TIEntityHyperlinkAttributes}.Url" /> attribute specified, determines which window of the
-        ///     browser is used for the URL attached to the non-label part of the edge (svg, map only). Setting it to
-        ///     <see cref="DotHyperlinkTargets.NewWindow" /> will open a new window if it doesn't already exist, or reuse it if it does. If
-        ///     undefined, the value of the edge's <see cref="DotEntityRootCommonAttributes{TIEntityAttributeProperties}.Hyperlink" />
-        ///     <see cref="DotHyperlinkAttributes{TIEntityHyperlinkAttributes}.Target" /> is used.
+        ///     If <see cref="Url" /> is specified, or if the edge has a <see cref="IDotEdgeRootAttributes.Hyperlink" />
+        ///     <see cref="IDotHyperlinkAttributes.Url" /> attribute specified, determines which window of the browser is used for the URL
+        ///     attached to the non-label part of the edge (svg, map only). Setting it to <see cref="DotHyperlinkTargets.NewWindow" /> will
+        ///     open a new window if it doesn't already exist, or reuse it if it does. If undefined, the value of the edge's
+        ///     <see cref="IDotEdgeRootAttributes.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Target" /> is used.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.EdgeTarget)]
         public override DotEscapeString Target
@@ -66,8 +64,8 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
 
         /// <summary>
         ///     Tooltip annotation attached to the non-label part of the edge (svg, cmap only). This is used only if <see cref="Url" /> is
-        ///     specified, or if the edge has a <see cref="DotEntityRootCommonAttributes{TIEntityAttributeProperties}.Hyperlink" />
-        ///     <see cref="DotHyperlinkAttributes{TIEntityHyperlinkAttributes}.Url" /> specified.
+        ///     specified, or if the edge has a <see cref="IDotEdgeRootAttributes.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Url" />
+        ///     specified.
         /// </summary>
         [DotAttributeKey(DotAttributeKeys.EdgeTooltip)]
         public virtual DotEscapeString Tooltip
@@ -77,7 +75,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         /// <summary>
-        ///     Specifies hyperlink properties.
+        ///     Specifies hyperlink attributes.
         /// </summary>
         /// <param name="url">
         ///     The URL of the hyperlink.
@@ -101,10 +99,10 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         /// <summary>
-        ///     Specifies hyperlink properties.
+        ///     Specifies hyperlink attributes.
         /// </summary>
         /// <param name="attributes">
-        ///     The properties to set.
+        ///     The attributes to set.
         /// </param>
         public virtual void Set(DotEdgeHyperlink attributes)
         {
@@ -113,10 +111,10 @@ namespace GiGraph.Dot.Entities.Edges.Attributes
         }
 
         /// <summary>
-        ///     Copies hyperlink properties from the specified instance.
+        ///     Copies hyperlink attributes from the specified instance.
         /// </summary>
         /// <param name="attributes">
-        ///     The instance to copy the properties from.
+        ///     The instance to copy the attributes from.
         /// </param>
         public virtual void Set(IDotEdgeHyperlinkAttributes attributes)
         {

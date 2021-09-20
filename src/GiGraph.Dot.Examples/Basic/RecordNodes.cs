@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Examples.Basic
                     (
                         "Garply",
                         "Waldo",
-                        new DotRecordTextField("Fred", portName: "port1")
+                        new DotRecordTextField("Fred", PortName: "port1")
                     ),
                     DotEscapeString.JustifyRight("Plugh")
                 ),
@@ -46,8 +46,7 @@ namespace GiGraph.Dot.Examples.Basic
 
             graph.Edges.Add("Foo", "Bar", edge =>
             {
-                edge.Head.Port.Name = "port1";
-                edge.Head.Port.CompassPoint = DotCompassPoint.NorthEast;
+                edge.Head.Endpoint.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
             });
 
             return graph;

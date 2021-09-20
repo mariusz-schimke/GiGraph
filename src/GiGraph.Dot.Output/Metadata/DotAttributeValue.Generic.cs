@@ -131,7 +131,7 @@ namespace GiGraph.Dot.Output.Metadata
             where TEnum : Enum
         {
             var result = TryGet(typeof(TEnum), dotValue, out var enumValue);
-            value = result ? (TEnum) enumValue : default;
+            value = result ? (TEnum) enumValue : default(TEnum);
             return result;
         }
 
@@ -159,7 +159,7 @@ namespace GiGraph.Dot.Output.Metadata
                 return true;
             }
 
-            value = default;
+            value = default(Enum);
             return false;
         }
 

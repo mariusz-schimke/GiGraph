@@ -1,17 +1,21 @@
-﻿using GiGraph.Dot.Entities.Graphs.Attributes;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
+using GiGraph.Dot.Entities.Graphs.Attributes;
 
 namespace GiGraph.Dot.Entities.Clusters.Collections
 {
-    public class DotGraphClusterCollection : DotClusterCollection
+    public partial class DotGraphClusterCollection : DotClusterCollection
     {
-        public DotGraphClusterCollection(DotGraphClusterAttributes attributes)
+        protected readonly DotGraphRootAttributes _graphAttributes;
+
+        public DotGraphClusterCollection(DotGraphRootAttributes graphAttributes)
         {
-            Attributes = attributes;
+            _graphAttributes = graphAttributes;
+            Attributes = new DotEntityAttributesAccessor<IDotGraphClustersAttributes, DotGraphClustersAttributes>(graphAttributes.Clusters);
         }
 
         /// <summary>
-        ///     Global graph attributes applied to clusters.
+        ///     Provides access to the global graph attributes applied to clusters.
         /// </summary>
-        public virtual DotGraphClusterAttributes Attributes { get; }
+        public DotEntityAttributesAccessor<IDotGraphClustersAttributes, DotGraphClustersAttributes> Attributes { get; }
     }
 }

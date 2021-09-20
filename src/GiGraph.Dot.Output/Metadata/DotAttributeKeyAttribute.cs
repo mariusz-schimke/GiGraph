@@ -22,6 +22,6 @@ namespace GiGraph.Dot.Output.Metadata
         /// <summary>
         ///     Gets the key of the DOT attribute.
         /// </summary>
-        public virtual string Key { get; }
+        public string Key { get; }
     }
 }

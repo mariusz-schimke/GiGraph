@@ -1,25 +1,17 @@
 ﻿using System.Collections.Generic;
 using GiGraph.Dot.Entities.Graphs.Collections;
-using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Entities;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
     /// <summary>
     ///     Represents a graph (the root DOT graph).
     /// </summary>
-    public class DotGraph : DotGraphSection, IDotCommonGraph, IDotOrderable
+    public class DotGraph : DotGraphSection, IDotGraph, IDotOrderable
     {
         protected const bool DirectedDefault = true;
         protected const bool StrictDefault = false;
-
-        protected DotGraph(string id, bool directed, bool strict, DotGraphSection rootSection, DotGraphSectionCollection<DotGraphSection> subsections)
-            : base(rootSection)
-        {
-            Id = id;
-            IsDirected = directed;
-            IsStrict = strict;
-            Subsections = subsections;
-        }
 
         /// <summary>
         ///     Creates and initializes a graph instance.
@@ -36,8 +28,11 @@ namespace GiGraph.Dot.Entities.Graphs
         ///     a given tail node and head node in the directed case.
         /// </param>
         public DotGraph(string id, bool directed = DirectedDefault, bool strict = StrictDefault)
-            : this(id, directed, strict, new DotGraphSection(), new DotGraphSectionCollection<DotGraphSection>())
+            : this(new DotGraphSection(), new DotGraphSectionCollection<DotGraphSection>())
         {
+            Id = id;
+            IsDirected = directed;
+            IsStrict = strict;
         }
 
         /// <summary>
@@ -54,6 +49,12 @@ namespace GiGraph.Dot.Entities.Graphs
         public DotGraph(bool directed = DirectedDefault, bool strict = StrictDefault)
             : this(id: null, directed, strict)
         {
+        }
+
+        protected DotGraph(DotGraphSection rootSection, DotGraphSectionCollection<DotGraphSection> subsections)
+            : base(rootSection)
+        {
+            Subsections = subsections;
         }
 
         /// <summary>
@@ -85,14 +86,14 @@ namespace GiGraph.Dot.Entities.Graphs
         ///         <see cref="Subgraphs" /> may be the cleaner and preferable way to achieve the effect.
         ///     </para>
         /// </summary>
-        public virtual DotGraphSectionCollection<DotGraphSection> Subsections { get; }
+        public DotGraphSectionCollection<DotGraphSection> Subsections { get; }
 
         /// <summary>
         ///     Gets or sets the identifier of the graph (optional).
         /// </summary>
         public virtual string Id { get; set; }
 
-        IEnumerable<DotCommonGraphSection> IDotCommonGraph.Subsections => Subsections;
+        IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 
         string IDotOrderable.OrderingKey => Id;
     }

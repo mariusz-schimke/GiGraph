@@ -1,3 +1,5 @@
+using GiGraph.Dot.Entities.Html.Attributes.Collections;
+using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Entities.Html.Image.Attributes;
 using GiGraph.Dot.Types.Images;
 
@@ -6,7 +8,7 @@ namespace GiGraph.Dot.Entities.Html.Image
     /// <summary>
     ///     An HTML &lt;img&gt; element.
     /// </summary>
-    public class DotHtmlImage : DotHtmlVoidElement, IDotHtmlImageAttributes
+    public partial class DotHtmlImage : DotHtmlVoidElement
     {
         /// <summary>
         ///     Initializes a new image element instance.
@@ -18,7 +20,7 @@ namespace GiGraph.Dot.Entities.Html.Image
         ///     Specifies how the image will use any extra space available in its cell.
         /// </param>
         public DotHtmlImage(string source, DotImageScaling? scaling = null)
-            : this(new DotHtmlImageAttributes())
+            : this(new DotHtmlAttributeCollection())
         {
             Source = source;
 
@@ -28,29 +30,20 @@ namespace GiGraph.Dot.Entities.Html.Image
             }
         }
 
+        protected DotHtmlImage(DotHtmlAttributeCollection attributes)
+            : this(new DotHtmlImageAttributes(attributes))
+        {
+        }
+
         protected DotHtmlImage(DotHtmlImageAttributes attributes)
             : base("img", attributes.Collection)
         {
-            Attributes = attributes;
+            Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlImageAttributes, DotHtmlImageAttributes>(attributes);
         }
 
         /// <summary>
-        ///     The attributes of the font.
+        ///     Provides access to the attributes of the image.
         /// </summary>
-        public new virtual DotHtmlImageAttributes Attributes { get; }
-
-        /// <inheritdoc cref="IDotHtmlImageAttributes.Source" />
-        public virtual string Source
-        {
-            get => ((IDotHtmlImageAttributes) Attributes).Source;
-            set => ((IDotHtmlImageAttributes) Attributes).Source = value;
-        }
-
-        /// <inheritdoc cref="IDotHtmlImageAttributes.Scaling" />
-        public virtual DotImageScaling? Scaling
-        {
-            get => ((IDotHtmlImageAttributes) Attributes).Scaling;
-            set => ((IDotHtmlImageAttributes) Attributes).Scaling = value;
-        }
+        public new DotHtmlElementRootAttributesAccessor<IDotHtmlImageAttributes, DotHtmlImageAttributes> Attributes { get; }
     }
 }

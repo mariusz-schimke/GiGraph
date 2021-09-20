@@ -201,7 +201,7 @@ namespace GiGraph.Dot.Types.Nodes
         ///     Synthetic biology: coding sequence (CDS).
         /// </summary>
         [DotAttributeValue("cds")]
-        Cds,
+        CodingSequence,
 
         /// <summary>
         ///     Synthetic biology: signature.
@@ -243,7 +243,7 @@ namespace GiGraph.Dot.Types.Nodes
         ///     Synthetic biology: untranslated region (UTR).
         /// </summary>
         [DotAttributeValue("utr")]
-        Utr,
+        UntranslatedRegion,
 
         /// <summary>
         ///     Synthetic biology: terminator.

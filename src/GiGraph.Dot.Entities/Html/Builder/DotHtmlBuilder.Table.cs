@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
     public partial class DotHtmlBuilder
     {
         /// <summary>
-        ///     Initializes and appends a table.
+        ///     Appends a table to this instance and builds its content.
         /// </summary>
         /// <param name="init">
         ///     A table initialization delegate.

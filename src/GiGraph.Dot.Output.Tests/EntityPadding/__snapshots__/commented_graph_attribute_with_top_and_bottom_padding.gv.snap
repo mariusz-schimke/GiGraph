@@ -1,0 +1,9 @@
+﻿digraph
+{
+    fontcolor = red
+
+    // comment
+    fontname = arial
+
+    fontsize = 10
+}

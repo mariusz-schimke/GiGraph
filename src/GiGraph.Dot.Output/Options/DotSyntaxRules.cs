@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Output.Options
         /// <summary>
         ///     The collection of reserved words that cannot be used as identifiers/keys unless quoted.
         /// </summary>
-        public virtual ICollection<string> Keywords { get; set; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        public ICollection<string> Keywords { get; set; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
             "graph",
             "node",
@@ -33,27 +33,27 @@ namespace GiGraph.Dot.Output.Options
         /// <summary>
         ///     The regex pattern to use in order to determine if an alphabetic identifier or attribute value can be used without quoting.
         /// </summary>
-        public virtual string AlphabeticIdentifierPattern { get; set; } = @"^[_a-zA-Z\200-\377]+[_0-9a-zA-Z\200-\377]*$";
+        public string AlphabeticIdentifierPattern { get; set; } = @"^[_a-zA-Z\200-\377]+[_0-9a-zA-Z\200-\377]*$";
 
         /// <summary>
         ///     The regex pattern to use in order to determine if a numeric identifier or attribute value can be used without quoting.
         /// </summary>
-        public virtual string NumericIdentifierPattern { get; set; } = @"^[-]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)$";
+        public string NumericIdentifierPattern { get; set; } = @"^[-]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)$";
 
         /// <summary>
         ///     A text escaper to use for identifiers (only quotation marks and trailing backslashes are escaped by default).
         /// </summary>
-        public virtual IDotTextEscaper IdentifierEscaper { get; set; } = DotTextEscapingPipeline.ForString();
+        public IDotTextEscaper IdentifierEscaper { get; set; } = DotTextEscapingPipeline.ForString();
 
         /// <summary>
         ///     The culture info to use for writing numbers, especially floating-point numbers.
         /// </summary>
-        public virtual CultureInfo Culture { get; set; } = CultureInfo.InvariantCulture;
+        public CultureInfo Culture { get; set; } = CultureInfo.InvariantCulture;
 
         /// <summary>
         ///     Attribute-related syntax rules.
         /// </summary>
-        public virtual AttributeRules Attributes { get; } = new();
+        public AttributeRules Attributes { get; } = new();
 
         /// <summary>
         ///     Determines if the specified word is a keyword.

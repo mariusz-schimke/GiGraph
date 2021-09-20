@@ -1,5 +1,5 @@
 using System;
-using GiGraph.Dot.Entities.Html.Font;
+using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Html.Builder
@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
     public partial class DotHtmlBuilder
     {
         /// <summary>
-        ///     Initializes and appends a bold element.
+        ///     Appends a bold element to this instance and builds its content.
         /// </summary>
         /// <param name="init">
         ///     A content initialization delegate.
@@ -18,7 +18,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends an italic element.
+        ///     Appends an italic element to this instance and builds its content.
         /// </summary>
         /// <param name="init">
         ///     A content initialization delegate.
@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends an underline element.
+        ///     Appends an underline element to this instance and builds its content.
         /// </summary>
         /// <param name="init">
         ///     A content initialization delegate.
@@ -40,7 +40,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends an overline element.
+        ///     Appends an overline element to this instance and builds its content.
         /// </summary>
         /// <param name="init">
         ///     A content initialization delegate.
@@ -51,7 +51,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends a subscript element.
+        ///     Appends a subscript element to this instance and builds its content.
         /// </summary>
         /// <param name="init">
         ///     A content initialization delegate.
@@ -62,7 +62,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends a superscript element.
+        ///     Appends a superscript element to this instance and builds its content.
         /// </summary>
         /// <param name="init">
         ///     A content initialization delegate.
@@ -73,7 +73,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends a strikethrough element.
+        ///     Appends a strikethrough element to this instance and builds its content.
         /// </summary>
         /// <param name="init">
         ///     A content initialization delegate.
@@ -84,7 +84,8 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends nested font style elements.
+        ///     Appends nested font style elements to this instance based on the specified style and initializes the content of the bottom
+        ///     one.
         /// </summary>
         /// <param name="fontStyle">
         ///     The font style to use.

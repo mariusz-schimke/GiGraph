@@ -5,9 +5,9 @@ using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Output.Generators.Graphs;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
-using GiGraph.Dot.Output.Writers;
 using GiGraph.Dot.Output.Writers.Graphs;
 using GiGraph.Dot.Output.Writers.Options;
+using GiGraph.Dot.Output.Writers.TokenWriter;
 
 namespace GiGraph.Dot.Extensions
 {

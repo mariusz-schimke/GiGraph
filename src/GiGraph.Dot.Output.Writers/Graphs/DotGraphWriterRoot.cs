@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Comments;
+using GiGraph.Dot.Output.Writers.TokenWriter;
 
 namespace GiGraph.Dot.Output.Writers.Graphs
 {
@@ -7,7 +8,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
     {
         protected readonly DotFormattingOptions _formattingOptions;
         protected readonly DotTokenWriter _tokenWriter;
-        private bool _initializeIndentation = true;
+        protected bool _initializeIndentation = true;
 
         public DotGraphWriterRoot(DotTokenWriter tokenWriter, DotFormattingOptions formattingOptions)
         {
@@ -33,8 +34,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
 
         public virtual void EndComment()
         {
-            _tokenWriter.LineBreak()
-               .Indentation(linger: true);
+            _tokenWriter.NewLine(linger: true, enforceLineBreak: true);
         }
 
         protected virtual void InitializeIndentation()

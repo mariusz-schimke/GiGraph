@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
-using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Html.Attributes.Factories;
+using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Types.Alignment;
 
@@ -19,16 +18,16 @@ namespace GiGraph.Dot.Entities.Html
         ///     The tag name to use for the element.
         /// </param>
         public DotHtmlElement(string name)
-            : this(name, new DotAttributeCollection(DotHtmlAttributeFactory.Instance))
+            : this(name, new DotHtmlAttributeCollection())
         {
         }
 
-        protected DotHtmlElement(string name, DotAttributeCollection attributes)
+        protected DotHtmlElement(string name, DotHtmlAttributeCollection attributes)
             : this(name, attributes, new DotHtmlEntityCollection())
         {
         }
 
-        protected DotHtmlElement(string name, DotAttributeCollection attributes, DotHtmlEntityCollection content)
+        protected DotHtmlElement(string name, DotHtmlAttributeCollection attributes, DotHtmlEntityCollection content)
             : base(name, attributes)
         {
             Content = content;
@@ -39,7 +38,7 @@ namespace GiGraph.Dot.Entities.Html
         /// <summary>
         ///     Gets the content items of the element.
         /// </summary>
-        public virtual DotHtmlEntityCollection Content { get; }
+        public DotHtmlEntityCollection Content { get; }
 
         /// <inheritdoc cref="IDotHtmlContentEntity.SetContent(GiGraph.Dot.Entities.Html.IDotHtmlEntity)" />
         public virtual void SetContent(IDotHtmlEntity entity)

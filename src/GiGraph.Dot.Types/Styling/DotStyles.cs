@@ -22,68 +22,69 @@ namespace GiGraph.Dot.Types.Styling
         Default = 0,
 
         /// <summary>
-        ///     Applicable to nodes, edges, and clusters.
+        ///     A solid line style. Applicable to nodes, edges, and clusters.
         /// </summary>
         [DotAttributeValue("solid")]
         Solid = 1 << 0,
 
         /// <summary>
-        ///     Applicable to nodes, edges, and clusters.
+        ///     A dashed line style. Applicable to nodes, edges, and clusters.
         /// </summary>
         [DotAttributeValue("dashed")]
         Dashed = 1 << 1,
 
         /// <summary>
-        ///     Applicable to nodes, edges, and clusters.
+        ///     A dotted line style. Applicable to nodes, edges, and clusters.
         /// </summary>
         [DotAttributeValue("dotted")]
         Dotted = 1 << 2,
 
         /// <summary>
-        ///     Applicable to nodes, edges, and clusters.
+        ///     A bold line style. Applicable to nodes, edges, and clusters.
         /// </summary>
         [DotAttributeValue("bold")]
         Bold = 1 << 3,
 
         /// <summary>
-        ///     Applicable to nodes and clusters.
+        ///     Applies rounded corners to the shape. Applicable to nodes and clusters.
         /// </summary>
         [DotAttributeValue("rounded")]
         Rounded = 1 << 4,
 
         /// <summary>
-        ///     Applicable to nodes.
+        ///     Causes small chords to be drawn near the vertices of the node’s polygon or, in case of circles and ellipses, two chords near
+        ///     the top and the bottom of the shape. Applicable to nodes.
         /// </summary>
         [DotAttributeValue("diagonals")]
         Diagonals = 1 << 5,
 
         /// <summary>
-        ///     Applicable to nodes and clusters.
+        ///     Applies a filled style to the shape. Applicable to nodes and clusters.
         /// </summary>
         [DotAttributeValue("filled")]
         Filled = 1 << 6,
 
         /// <summary>
-        ///     Applicable to clusters and rectangularly-shaped nodes. Causes the fill to be done as a set of vertical stripes. The colors
-        ///     are specified via a color list (see <see cref="DotMultiColor" />), and drawn from left to right in list order. Optional color
-        ///     weights can be specified to indicate the proportional widths of the bars. If the sum of the weights is less than 1, the
-        ///     remainder is divided evenly among the colors with no weight.
+        ///     Causes the fill to be done as a set of vertical stripes. The colors are specified via a color list (see
+        ///     <see cref="DotMultiColor" />), and drawn from left to right in list order. Optional color weights can be specified to
+        ///     indicate the proportional widths of the bars. If the sum of the weights is less than 1, the remainder is divided evenly among
+        ///     the colors with no weight. Applicable to clusters and rectangularly-shaped nodes.
         /// </summary>
         [DotAttributeValue("striped")]
         Striped = 1 << 7,
 
         /// <summary>
-        ///     Applicable to elliptically-shaped nodes. Causes the fill to be done as a set of wedges. The colors are specified via a color
-        ///     list (see <see cref="DotMultiColor" />), with the colors drawn counter-clockwise starting at angle 0. Optional color weights
-        ///     can be specified to indicate the proportional widths of the bars. If the sum of the weights is less than 1, the remainder is
-        ///     divided evenly among the colors with no weight.
+        ///     Causes the fill to be done as a set of wedges. The colors are specified via a color list (see <see cref="DotMultiColor" />),
+        ///     with the colors drawn counter-clockwise starting at angle 0. Optional color weights can be specified to indicate the
+        ///     proportional widths of the bars. If the sum of the weights is less than 1, the remainder is divided evenly among the colors
+        ///     with no weight. Applicable to elliptically-shaped nodes.
         /// </summary>
         [DotAttributeValue("wedged")]
         Wedged = 1 << 8,
 
         /// <summary>
-        ///     Applicable to nodes, clusters, and graphs. Indicates a radial-style gradient fill when colors are specified via a color list
-        ///     (see <see cref="DotGradientColor" />).
+        ///     Indicates a radial-style gradient fill when colors are specified via a color list (see <see cref="DotGradientColor" />).
+        ///     Applicable to nodes, clusters, and graphs.
         /// </summary>
         [DotAttributeValue("radial")]
         Radial = 1 << 9,
@@ -109,7 +110,7 @@ namespace GiGraph.Dot.Types.Styling
         Tapered = 1 << 10,
 
         /// <summary>
-        ///     Applicable to nodes, edges, and clusters.
+        ///     Makes the element invisible. Applicable to nodes, edges, and clusters.
         /// </summary>
         [DotAttributeValue("invis")]
         Invisible = 1 << 11

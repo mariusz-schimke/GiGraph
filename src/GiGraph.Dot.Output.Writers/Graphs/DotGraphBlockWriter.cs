@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Graphs
+﻿using GiGraph.Dot.Output.Writers.TokenWriter;
+
+namespace GiGraph.Dot.Output.Writers.Graphs
 {
     public abstract class DotGraphBlockWriter : DotEntityWriter
     {
@@ -11,8 +13,7 @@
         {
             var tokenWriter = _tokenWriter.NextIndentationLevel();
             tokenWriter.BlockStart()
-               .LineBreak()
-               .Indentation(linger: true);
+               .NewLine(linger: true, enforceLineBreak: true);
 
             return new DotGraphBodyWriter(tokenWriter, _configuration);
         }
@@ -20,9 +21,8 @@
         public virtual void EndBody()
         {
             _tokenWriter.ClearLingerBuffer();
-            _tokenWriter.Indentation();
-
-            _tokenWriter.BlockEnd();
+            _tokenWriter.Indentation()
+               .BlockEnd();
         }
     }
 }

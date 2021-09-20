@@ -6,7 +6,8 @@ namespace GiGraph.Dot.Entities.Html.Builder
     public partial class DotHtmlBuilder
     {
         /// <summary>
-        ///     Initializes and appends a font element.
+        ///     Appends a line of text to this instance and optionally sets alignment for its individual lines if the text is composed of
+        ///     multiple lines.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -21,10 +22,10 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends a font element.
+        ///     Appends a line break to this instance.
         /// </summary>
         /// <param name="lineAlignment">
-        ///     Specifies horizontal placement of the last line of text.
+        ///     Specifies horizontal placement of the preceding line of text.
         /// </param>
         public virtual DotHtmlBuilder AppendLine(DotHorizontalAlignment? lineAlignment = null)
         {

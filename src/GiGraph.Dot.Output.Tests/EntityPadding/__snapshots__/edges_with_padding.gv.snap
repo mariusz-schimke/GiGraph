@@ -1,0 +1,20 @@
+﻿digraph
+{
+    node1, "cluster cluster1", cluster -> {
+        node2
+        node3
+    }
+
+    node1, "cluster cluster1", cluster -> {
+        node2
+        node3
+    }
+
+    node1, "cluster cluster1", cluster -> {
+        node2
+        node3
+    }
+
+    node4 -> node4
+    node5 -> node5
+}

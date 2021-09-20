@@ -1,5 +1,5 @@
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Types.Graphs
 {
@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Types.Graphs
     ///     Represents the scaling mode of the graph. Accepts either a numeric value (<see cref="DotGraphScalingAspectRatio" />), or an
     ///     enumeration value (<see cref="DotGraphScaling" />).
     /// </summary>
-    public abstract class DotGraphScalingDefinition : IDotEncodable
+    public abstract record DotGraphScalingDefinition : IDotEncodable
     {
         string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
@@ -24,6 +24,6 @@ namespace GiGraph.Dot.Types.Graphs
             return value.HasValue ? new DotGraphScalingOption(value.Value) : null;
         }
 
-        protected internal abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
+        protected abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
     }
 }

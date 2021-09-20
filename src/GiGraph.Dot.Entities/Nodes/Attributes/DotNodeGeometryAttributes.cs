@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
@@ -7,17 +8,17 @@ using GiGraph.Dot.Types.Geometry;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
-    public class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata<IDotNodeGeometryAttributes>, IDotNodeGeometryAttributes
+    public class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata<IDotNodeGeometryAttributes, DotNodeGeometryAttributes>, IDotNodeGeometryAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup NodeGeometryAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeGeometryAttributes, IDotNodeGeometryAttributes>().Build();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeGeometryAttributes, IDotNodeGeometryAttributes>().BuildLazy();
 
-        protected DotNodeGeometryAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotNodeGeometryAttributes(DotAttributeCollection attributes)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 
-        public DotNodeGeometryAttributes(DotAttributeCollection attributes)
-            : base(attributes, NodeGeometryAttributesKeyLookup)
+        protected DotNodeGeometryAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 
@@ -112,10 +113,10 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         }
 
         /// <summary>
-        ///     Copies geometry properties from the specified instance.
+        ///     Copies geometry attributes from the specified instance.
         /// </summary>
         /// <param name="attributes">
-        ///     The instance to copy the properties from.
+        ///     The instance to copy the attributes from.
         /// </param>
         public virtual void Set(IDotNodeGeometryAttributes attributes)
         {

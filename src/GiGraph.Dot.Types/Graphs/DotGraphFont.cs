@@ -4,43 +4,23 @@ using GiGraph.Dot.Types.Fonts;
 namespace GiGraph.Dot.Types.Graphs
 {
     /// <summary>
-    ///     Font properties (graph specific).
+    ///     Font attributes (graph specific).
     /// </summary>
-    public class DotGraphFont : DotFont
-    {
-        /// <summary>
-        ///     Creates and initializes a new instance.
-        /// </summary>
-        /// <param name="name">
-        ///     Font name.
-        /// </param>
-        /// <param name="size">
-        ///     Font size.
-        /// </param>
-        /// <param name="color">
-        ///     Font color.
-        /// </param>
-        /// <param name="directories">
-        ///     The directory list to search for fonts.
-        /// </param>
-        /// <param name="convention">
-        ///     The font convention to use.
-        /// </param>
-        public DotGraphFont(string name = null, double? size = null, DotColor color = null, string directories = null, DotFontConvention? convention = null)
-            : base(name, size, color)
-        {
-            Directories = directories;
-            Convention = convention;
-        }
-
-        /// <summary>
-        ///     Gets or sets the directory list to search for fonts.
-        /// </summary>
-        public virtual string Directories { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the font convention to use.
-        /// </summary>
-        public virtual DotFontConvention? Convention { get; set; }
-    }
+    /// <param name="Name">
+    ///     Font name.
+    /// </param>
+    /// <param name="Size">
+    ///     Font size.
+    /// </param>
+    /// <param name="Color">
+    ///     Font color.
+    /// </param>
+    /// <param name="Directories">
+    ///     The directory list to search for fonts.
+    /// </param>
+    /// <param name="Convention">
+    ///     The font convention to use.
+    /// </param>
+    public record DotGraphFont(string Name = null, double? Size = null, DotColor Color = null, string Directories = null, DotFontConvention? Convention = null)
+        : DotFont(Name, Size, Color);
 }

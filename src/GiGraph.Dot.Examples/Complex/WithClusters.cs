@@ -13,17 +13,17 @@ namespace GiGraph.Dot.Examples.Complex
             var graph = new DotGraph();
 
             // set graph attributes
-            graph.Attributes.Label = "Example Flow";
-            graph.Attributes.Layout.Direction = DotLayoutDirection.LeftToRight;
-            graph.Attributes.EdgeShape = DotEdgeShape.Orthogonal;
+            graph.Label = "Example Flow";
+            graph.Layout.Direction = DotLayoutDirection.LeftToRight;
+            graph.EdgeShape = DotEdgeShape.Orthogonal;
 
             // set attributes for clusters
-            graph.Clusters.Attributes.AllowEdgeClipping = true;
+            graph.Clusters.AllowEdgeClipping = true;
 
             // set individual node styles
-            graph.Nodes.Add("Start").Attributes.Shape = DotNodeShape.Circle;
-            graph.Nodes.Add("Decision").Attributes.Shape = DotNodeShape.Diamond;
-            graph.Nodes.Add("Exit").Attributes.Shape = DotNodeShape.DoubleCircle;
+            graph.Nodes.Add("Start").Shape = DotNodeShape.Circle;
+            graph.Nodes.Add("Decision").Shape = DotNodeShape.Diamond;
+            graph.Nodes.Add("Exit").Shape = DotNodeShape.DoubleCircle;
 
 
             // --- define edges ---
@@ -34,22 +34,22 @@ namespace GiGraph.Dot.Examples.Complex
             // (which is the root graph in this case)
             graph.Edges.Add("Decision", "Cluster 1 Start", edge =>
             {
-                edge.Attributes.Label = "yes";
+                edge.Label = "yes";
 
                 // attach the arrow to cluster border
-                edge.Attributes.Head.ClusterId = "Flow 1";
+                edge.Head.ClusterId = "Flow 1";
             });
 
             graph.Edges.Add("Decision", "Cluster 2 Start", edge =>
             {
-                edge.Attributes.Label = "no";
+                edge.Label = "no";
 
                 // attach the arrow to cluster border
-                edge.Attributes.Head.ClusterId = "Flow 2";
+                edge.Head.ClusterId = "Flow 2";
             });
 
-            graph.Edges.Add("Cluster 1 Exit", "Exit").Attributes.Tail.ClusterId = "Flow 1";
-            graph.Edges.Add("Cluster 2 Exit", "Exit").Attributes.Tail.ClusterId = "Flow 2";
+            graph.Edges.Add("Cluster 1 Exit", "Exit").Tail.ClusterId = "Flow 1";
+            graph.Edges.Add("Cluster 2 Exit", "Exit").Tail.ClusterId = "Flow 2";
 
 
             // --- add clusters ---
@@ -60,16 +60,16 @@ namespace GiGraph.Dot.Examples.Complex
 
             graph.Clusters.Add(id: "Flow 1", cluster =>
             {
-                cluster.Attributes.BackgroundColor = Color.Turquoise;
-                cluster.Attributes.Label = "Flow 1";
+                cluster.BackgroundColor = Color.Turquoise;
+                cluster.Label = "Flow 1";
 
                 cluster.Edges.AddSequence("Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit");
             });
 
             graph.Clusters.Add(id: "Flow 2", cluster =>
             {
-                cluster.Attributes.Label = "Flow 2";
-                cluster.Attributes.BackgroundColor = Color.Orange;
+                cluster.Label = "Flow 2";
+                cluster.BackgroundColor = Color.Orange;
 
                 cluster.Edges.AddSequence("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");
             });

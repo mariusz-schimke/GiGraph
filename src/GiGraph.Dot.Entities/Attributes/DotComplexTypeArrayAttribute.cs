@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Attributes
 {
@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <typeparam name="TComplex">
     ///     A complex type that implements the <see cref="IDotEncodable" /> interface.
     /// </typeparam>
-    public class DotComplexTypeArrayAttribute<TComplex> : DotAttribute<TComplex[]>
+    public record DotComplexTypeArrayAttribute<TComplex> : DotAttribute<TComplex[]>
         where TComplex : IDotEncodable
     {
         /// <summary>

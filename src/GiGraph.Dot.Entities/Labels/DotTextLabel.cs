@@ -1,6 +1,6 @@
 using System;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.EscapeString;
 
 namespace GiGraph.Dot.Entities.Labels
@@ -41,7 +41,7 @@ namespace GiGraph.Dot.Entities.Labels
             return _text;
         }
 
-        protected internal override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return ((IDotEscapable) _text)?.GetEscaped(syntaxRules.Attributes.EscapeStringValueEscaper);
         }

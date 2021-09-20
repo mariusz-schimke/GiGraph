@@ -3,6 +3,7 @@ using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Output.Writers.Nodes;
 
 namespace GiGraph.Dot.Output.Generators.Nodes
@@ -30,7 +31,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
 
         protected virtual void WriteNode(DotNodeDefinition node, IDotNodeStatementWriter writer)
         {
-            var nodeWriter = writer.BeginNodeStatement();
+            var nodeWriter = writer.BeginNodeStatement(node.Attributes.Collection.Any());
             _entityGenerators.GetForEntity<IDotNodeWriter>(node).Generate(node, nodeWriter);
             writer.EndNodeStatement();
         }

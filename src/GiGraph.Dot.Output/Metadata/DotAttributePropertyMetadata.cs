@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Reflection;
 
@@ -8,7 +9,8 @@ namespace GiGraph.Dot.Output.Metadata
     /// </summary>
     public class DotAttributePropertyMetadata : DotAttributeMetadata
     {
-        protected readonly PropertyInfo[] _propertyPath;
+        protected readonly PropertyInfo[] _propertyInfoPath;
+        protected readonly Lazy<string> _propertyPath;
 
         /// <summary>
         ///     Creates and initializes a new attribute metadata instance.
@@ -25,7 +27,7 @@ namespace GiGraph.Dot.Output.Metadata
         /// <param name="compatibleOutputs">
         ///     Determines what output formats the attribute is supported by.
         /// </param>
-        /// <param name="propertyPath">
+        /// <param name="propertyInfoPath">
         ///     The property path as an array of property info, where the last item is the actual property associated with the attribute key.
         /// </param>
         public DotAttributePropertyMetadata(
@@ -33,25 +35,27 @@ namespace GiGraph.Dot.Output.Metadata
             DotCompatibleElements compatibleElements,
             DotCompatibleLayoutEngines compatibleLayoutEngines,
             DotCompatibleOutputs compatibleOutputs,
-            PropertyInfo[] propertyPath
+            PropertyInfo[] propertyInfoPath
         )
             : base(key, compatibleElements, compatibleLayoutEngines, compatibleOutputs)
         {
-            _propertyPath = propertyPath;
-            PropertyPath = string.Join(".", propertyPath.Select(property => property.Name.Split('.').Last()));
+            _propertyInfoPath = propertyInfoPath;
+            _propertyPath = new Lazy<string>(
+                () => string.Join(".", propertyInfoPath.Select(property => property.Name.Split('.').Last()))
+            );
         }
 
         /// <summary>
         ///     The path to the property.
         /// </summary>
-        public string PropertyPath { get; }
+        public string PropertyPath => _propertyPath.Value;
 
         /// <summary>
         ///     Gets property path as an array of property info (the last item is the actual property associated with the attribute key).
         /// </summary>
         public virtual PropertyInfo[] GetPropertyInfoPath()
         {
-            return _propertyPath;
+            return _propertyInfoPath;
         }
     }
 }

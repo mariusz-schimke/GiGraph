@@ -1,5 +1,5 @@
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Types.Packing
 {
@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Types.Packing
     ///     Determines whether packing is enabled (see <see cref="DotPackingToggle" />) or specifies a margin around each laid out
     ///     component (see <see cref="DotPackingMargin" />).
     /// </summary>
-    public abstract class DotPackingDefinition : IDotEncodable
+    public abstract record DotPackingDefinition : IDotEncodable
     {
         string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
@@ -24,6 +24,6 @@ namespace GiGraph.Dot.Types.Packing
             return value.HasValue ? new DotPackingToggle(value.Value) : null;
         }
 
-        protected internal abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
+        protected abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
     }
 }

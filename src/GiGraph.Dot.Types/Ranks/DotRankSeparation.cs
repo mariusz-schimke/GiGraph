@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Types.Ranks
     /// <summary>
     ///     Rank separation, in inches.
     /// </summary>
-    public class DotRankSeparation : DotRankSeparationDefinition
+    public record DotRankSeparation : DotRankSeparationDefinition
     {
         /// <summary>
         ///     Creates a new rank separation instance.
@@ -17,9 +17,9 @@ namespace GiGraph.Dot.Types.Ranks
         ///     Determines if the centers of all ranks should be spaced equally apart.
         /// </param>
         public DotRankSeparation(double value, bool equal = false)
+            : this(equal)
         {
             Value = value;
-            Equal = equal;
         }
 
         /// <summary>
@@ -34,17 +34,16 @@ namespace GiGraph.Dot.Types.Ranks
         }
 
         /// <summary>
-        ///     Gets or sets the minimum vertical distance in inches between the bottom of the nodes in one rank and the tops of nodes in the
-        ///     next.
+        ///     The minimum vertical distance in inches between the bottom of the nodes in one rank and the tops of nodes in the next.
         /// </summary>
-        public virtual double? Value { get; set; }
+        public double? Value { get; init; }
 
         /// <summary>
-        ///     Gets or sets a value indicating if the centers of all ranks should be spaced equally apart.
+        ///     Indicates if the centers of all ranks should be spaced equally apart.
         /// </summary>
-        public virtual bool Equal { get; set; }
+        public bool Equal { get; init; }
 
-        protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             const string equally = "equally";
             var result = Value?.ToString(syntaxRules.Culture);

@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
@@ -8,17 +9,17 @@ using GiGraph.Dot.Types.Images;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes
 {
-    public class DotNodeImageAttributes : DotEntityAttributesWithMetadata<IDotNodeImageAttributes>, IDotNodeImageAttributes
+    public class DotNodeImageAttributes : DotEntityAttributesWithMetadata<IDotNodeImageAttributes, DotNodeImageAttributes>, IDotNodeImageAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup NodeImageAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeImageAttributes, IDotNodeImageAttributes>().Build();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeImageAttributes, IDotNodeImageAttributes>().BuildLazy();
 
-        protected DotNodeImageAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotNodeImageAttributes(DotAttributeCollection attributes)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 
-        public DotNodeImageAttributes(DotAttributeCollection attributes)
-            : base(attributes, NodeImageAttributesKeyLookup)
+        protected DotNodeImageAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 
@@ -77,10 +78,10 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes
         }
 
         /// <summary>
-        ///     Copies image properties from the specified instance.
+        ///     Copies image attributes from the specified instance.
         /// </summary>
         /// <param name="attributes">
-        ///     The instance to copy the properties from.
+        ///     The instance to copy the attributes from.
         /// </param>
         public virtual void Set(IDotNodeImageAttributes attributes)
         {

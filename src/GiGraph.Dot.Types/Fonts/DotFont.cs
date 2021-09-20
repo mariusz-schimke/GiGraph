@@ -3,29 +3,19 @@ using GiGraph.Dot.Types.Colors;
 namespace GiGraph.Dot.Types.Fonts
 {
     /// <summary>
-    ///     Font properties.
+    ///     Font attributes.
     /// </summary>
-    public class DotFont
+    /// <param name="Name">
+    ///     Font name.
+    /// </param>
+    /// <param name="Size">
+    ///     Font size.
+    /// </param>
+    /// <param name="Color">
+    ///     Font color.
+    /// </param>
+    public record DotFont(string Name = null, double? Size = null, DotColor Color = null)
     {
-        /// <summary>
-        ///     Creates and initializes a new instance.
-        /// </summary>
-        /// <param name="name">
-        ///     Font name.
-        /// </param>
-        /// <param name="size">
-        ///     Font size.
-        /// </param>
-        /// <param name="color">
-        ///     Font color.
-        /// </param>
-        public DotFont(string name = null, double? size = null, DotColor color = null)
-        {
-            Name = name;
-            Size = size;
-            Color = color;
-        }
-
         /// <summary>
         ///     Creates and initializes a new instance.
         /// </summary>
@@ -36,7 +26,7 @@ namespace GiGraph.Dot.Types.Fonts
         ///     Font color.
         /// </param>
         public DotFont(double size, DotColor color = null)
-            : this(name: null, size, color)
+            : this(Name: null, size, color)
         {
         }
 
@@ -50,23 +40,23 @@ namespace GiGraph.Dot.Types.Fonts
         ///     Font name.
         /// </param>
         public DotFont(DotColor color, string name = null)
-            : this(name, size: null, color)
+            : this(name, Size: null, color)
         {
         }
 
         /// <summary>
-        ///     Gets or sets font name.
+        ///     The font name.
         /// </summary>
-        public virtual string Name { get; set; }
+        public string Name { get; init; } = Name;
 
         /// <summary>
-        ///     Gets or sets font size.
+        ///     The font size.
         /// </summary>
-        public virtual double? Size { get; set; }
+        public double? Size { get; init; } = Size;
 
         /// <summary>
-        ///     Gets or sets font color.
+        ///     The font color.
         /// </summary>
-        public virtual DotColor Color { get; set; }
+        public DotColor Color { get; init; } = Color;
     }
 }

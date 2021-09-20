@@ -32,7 +32,7 @@ namespace GiGraph.Dot.Entities.Html.Text
         /// <summary>
         ///     Specifies horizontal placement of lines if multiline text is specified.
         /// </summary>
-        public virtual DotHorizontalAlignment? LineAlignment { get; }
+        public DotHorizontalAlignment? LineAlignment { get; }
 
         public override string ToString()
         {

@@ -1,0 +1,7 @@
+﻿digraph
+{
+    node1, node2 [ fillcolor = "red:blue", style = striped ]
+    node3, node4 [ fillcolor = "red:blue", style = striped ]
+    node5, node6 [ fillcolor = "red:blue", shape = rect, style = striped ]
+    node7, node8 [ fillcolor = "red:blue", shape = rectangle, style = striped ]
+}

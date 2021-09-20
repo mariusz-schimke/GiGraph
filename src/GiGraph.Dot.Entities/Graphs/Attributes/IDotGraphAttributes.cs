@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Html.Builder;
-using GiGraph.Dot.Entities.Html.Font;
+using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Types.Colors;
@@ -92,8 +92,8 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         /// <summary>
         ///     <para>
         ///         Specifies a list of directories in which to look for image files used by nodes, referenced either by the
-        ///         <see cref="DotNodeImageAttributes.Path" /> of their <see cref="DotNodeAttributes.Image" /> attributes, or from the IMG
-        ///         element in HTML-like labels. The string should be a list of (absolute or relative) path names, each separated by a
+        ///         <see cref="DotNodeImageAttributes.Path" /> of their <see cref="IDotNodeRootAttributes.Image" /> attributes, or from the
+        ///         IMG element in HTML-like labels. The string should be a list of (absolute or relative) path names, each separated by a
         ///         semicolon (for Windows) or a colon (all other OS). The first directory in which a file of the given name is found will be
         ///         used to load the image.
         ///     </para>
@@ -117,7 +117,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         ///     </para>
         ///     <para>
         ///         For twopi, it is possible to have multiple roots, presumably one for each component. If more than one node in a component
-        ///         is marked as the root, twopi will pick one (see the <see cref="DotNodeAttributes.IsRoot" /> attribute on a node).
+        ///         is marked as the root, twopi will pick one (see the <see cref="IDotNodeAttributes.IsRoot" /> attribute on a node).
         ///     </para>
         /// </summary>
         DotId RootNodeId { get; set; }

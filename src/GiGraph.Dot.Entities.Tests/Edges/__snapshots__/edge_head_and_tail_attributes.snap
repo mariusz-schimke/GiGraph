@@ -1,0 +1,7 @@
+﻿digraph
+{
+    edge [ arrowhead = box, arrowtail = crow, headhref = "https://www.google.com/search?q=head", tailhref = "https://www.google.com/search?q=tail" ]
+
+    edge1 -> edge1 [ arrowhead = box, arrowtail = crow, headhref = "https://www.google.com/search?q=head", tailhref = "https://www.google.com/search?q=tail" ]
+    a -> b -> c [ headhref = "https://www.google.com/search?q=head", headport = head_port, tailhref = "https://www.google.com/search?q=tail", tailport = tail_port ]
+}

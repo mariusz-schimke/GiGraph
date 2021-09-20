@@ -1,0 +1,43 @@
+﻿digraph
+{
+    a -> {
+        b
+        c
+    } [ color = wheat ]
+
+    d -> subgraph subgraph1
+    {
+        e
+        f
+    } [ color = wheat ]
+
+    subgraph tail
+    {
+        g
+        h
+    } -> subgraph head
+    {
+        i
+        j
+    } [ color = wheat ]
+
+    // tail subgraph comment
+    subgraph tail
+    {
+        k
+        l
+    } -> // head subgraph comment
+    subgraph head
+    {
+        m
+        n
+    } [ color = wheat ]
+
+    {
+        o
+        p
+    } -> {
+        q
+        r
+    } [ color = wheat ]
+}

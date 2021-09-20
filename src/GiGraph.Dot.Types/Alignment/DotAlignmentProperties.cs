@@ -3,17 +3,10 @@ using GiGraph.Dot.Types.EnumHelpers;
 namespace GiGraph.Dot.Types.Alignment
 {
     /// <summary>
-    ///     Alignment properties.
+    ///     Alignment attributes.
     /// </summary>
-    public class DotAlignmentProperties
+    public record DotAlignmentProperties()
     {
-        /// <summary>
-        ///     Initializes a new alignment instance.
-        /// </summary>
-        public DotAlignmentProperties()
-        {
-        }
-
         /// <summary>
         ///     Initializes a new instance.
         /// </summary>
@@ -24,6 +17,7 @@ namespace GiGraph.Dot.Types.Alignment
         ///     The vertical alignment to set.
         /// </param>
         public DotAlignmentProperties(DotHorizontalAlignment? horizontal, DotVerticalAlignment? vertical)
+            : this()
         {
             Horizontal = horizontal;
             Vertical = vertical;
@@ -36,30 +30,21 @@ namespace GiGraph.Dot.Types.Alignment
         ///     The alignment to set.
         /// </param>
         public DotAlignmentProperties(DotAlignment alignment)
+            : this(
+                DotPartialEnumMapper.ToPartial<DotAlignment, DotHorizontalAlignment>(alignment),
+                DotPartialEnumMapper.ToPartial<DotAlignment, DotVerticalAlignment>(alignment)
+            )
         {
-            Set(alignment);
         }
 
         /// <summary>
         ///     Horizontal alignment.
         /// </summary>
-        public virtual DotHorizontalAlignment? Horizontal { get; set; }
+        public DotHorizontalAlignment? Horizontal { get; init; }
 
         /// <summary>
         ///     Vertical alignment.
         /// </summary>
-        public virtual DotVerticalAlignment? Vertical { get; set; }
-
-        /// <summary>
-        ///     Sets horizontal and vertical alignment.
-        /// </summary>
-        /// <param name="alignment">
-        ///     The alignment to set.
-        /// </param>
-        public virtual void Set(DotAlignment alignment)
-        {
-            Horizontal = DotPartialEnumMapper.ToPartial<DotAlignment, DotHorizontalAlignment>(alignment);
-            Vertical = DotPartialEnumMapper.ToPartial<DotAlignment, DotVerticalAlignment>(alignment);
-        }
+        public DotVerticalAlignment? Vertical { get; init; }
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using GiGraph.Dot.Entities.Html;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.Html;
 
 namespace GiGraph.Dot.Entities.Labels
@@ -42,7 +42,7 @@ namespace GiGraph.Dot.Entities.Labels
             _value = (DotHtmlString) html ?? throw new ArgumentNullException(nameof(html), "HTML string must not be null.");
         }
 
-        protected internal override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+        protected override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
         {
             return _value.ToHtml(options, syntaxRules);
         }

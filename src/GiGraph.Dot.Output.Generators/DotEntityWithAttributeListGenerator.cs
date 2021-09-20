@@ -1,7 +1,9 @@
 ﻿using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Output.Writers;
 using GiGraph.Dot.Output.Writers.Attributes;
 
@@ -20,8 +22,8 @@ namespace GiGraph.Dot.Output.Generators
         {
             if (attributes.Any())
             {
-                var attributesWriter = writer.BeginAttributeList(_options.Attributes.PreferExplicitSeparator);
-                _entityGenerators.GetForEntity<IDotAttributeListItemWriter>(attributes).Generate(attributes, attributesWriter, annotate);
+                var attributeListItemWriter = writer.BeginAttributeList(_options.Attributes.PreferExplicitSeparator);
+                _entityGenerators.GetForEntity<IDotAttributeListItemWriter>(attributes).Generate(attributes, attributeListItemWriter, annotate);
                 writer.EndAttributeList();
             }
         }

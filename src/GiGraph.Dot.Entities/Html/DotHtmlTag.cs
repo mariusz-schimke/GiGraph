@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Text;
 
@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Entities.Html
     {
         protected readonly string _name;
 
-        protected DotHtmlTag(string name, DotAttributeCollection attributes)
+        protected DotHtmlTag(string name, DotHtmlAttributeCollection attributes)
         {
             _name = name;
             Attributes = attributes;
@@ -23,7 +23,7 @@ namespace GiGraph.Dot.Entities.Html
         /// <summary>
         ///     Gets the collection of attributes of the element.
         /// </summary>
-        public virtual DotAttributeCollection Attributes { get; }
+        public DotHtmlAttributeCollection Attributes { get; }
 
         protected abstract bool IsVoid { get; }
 

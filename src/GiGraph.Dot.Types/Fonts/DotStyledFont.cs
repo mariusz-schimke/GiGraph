@@ -3,31 +3,23 @@ using GiGraph.Dot.Types.Colors;
 namespace GiGraph.Dot.Types.Fonts
 {
     /// <summary>
-    ///     Font and style properties.
+    ///     Font and style attributes.
     /// </summary>
-    public class DotStyledFont : DotFont
+    /// <param name="Style">
+    ///     Font style.
+    /// </param>
+    /// <param name="Name">
+    ///     Font name.
+    /// </param>
+    /// <param name="Size">
+    ///     Font size.
+    /// </param>
+    /// <param name="Color">
+    ///     Font color.
+    /// </param>
+    public record DotStyledFont(DotFontStyles? Style = null, string Name = null, double? Size = null, DotColor Color = null)
+        : DotFont(Name, Size, Color)
     {
-        /// <summary>
-        ///     Creates and initializes a new instance.
-        /// </summary>
-        /// <param name="style">
-        ///     Font style.
-        /// </param>
-        /// <param name="name">
-        ///     Font name.
-        /// </param>
-        /// <param name="size">
-        ///     Font size.
-        /// </param>
-        /// <param name="color">
-        ///     Font color.
-        /// </param>
-        public DotStyledFont(DotFontStyles? style = null, string name = null, double? size = null, DotColor color = null)
-            : base(name, size, color)
-        {
-            Style = style;
-        }
-
         /// <summary>
         ///     Creates and initializes a new instance.
         /// </summary>
@@ -41,7 +33,7 @@ namespace GiGraph.Dot.Types.Fonts
         ///     Font color.
         /// </param>
         public DotStyledFont(DotFontStyles? style, double? size, DotColor color = null)
-            : this(style, name: null, size, color)
+            : this(style, Name: null, size, color)
         {
         }
 
@@ -58,7 +50,7 @@ namespace GiGraph.Dot.Types.Fonts
         ///     Font name.
         /// </param>
         public DotStyledFont(DotFontStyles? style, DotColor color, string name = null)
-            : this(style, name, size: null, color)
+            : this(style, name, Size: null, color)
         {
         }
 
@@ -66,7 +58,7 @@ namespace GiGraph.Dot.Types.Fonts
         ///     Creates and initializes a new instance.
         /// </summary>
         /// <param name="font">
-        ///     A source font to copy properties from.
+        ///     A source font to copy attributes from.
         /// </param>
         /// <param name="style">
         ///     Font style.
@@ -77,8 +69,8 @@ namespace GiGraph.Dot.Types.Fonts
         }
 
         /// <summary>
-        ///     Gets or sets font style.
+        ///     The font style.
         /// </summary>
-        public virtual DotFontStyles? Style { get; set; }
+        public DotFontStyles? Style { get; init; } = Style;
     }
 }

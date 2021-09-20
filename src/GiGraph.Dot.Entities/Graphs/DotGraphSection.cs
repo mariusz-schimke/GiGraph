@@ -1,52 +1,40 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
 using GiGraph.Dot.Entities.Clusters.Collections;
-using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Graphs.Attributes;
-using GiGraph.Dot.Entities.Nodes.Collections;
-using GiGraph.Dot.Entities.Subgraphs.Collections;
 
 namespace GiGraph.Dot.Entities.Graphs
 {
-    public class DotGraphSection : DotCommonGraphSection
+    public partial class DotGraphSection : DotCommonGraphSection
     {
-        protected DotGraphSection(
-            DotGraphAttributes attributes,
-            DotNodeCollection nodes,
-            DotEdgeCollection edges,
-            DotSubgraphCollection subgraphs,
-            DotGraphClusterCollection clusters
-        )
-            : base(attributes, nodes, edges, subgraphs, clusters)
+        public DotGraphSection()
+            : this(new DotAttributeCollection())
         {
         }
 
         protected DotGraphSection(DotGraphSection source)
             : base(source)
         {
+            Attributes = source.Attributes;
         }
 
-        private DotGraphSection(DotGraphAttributes attributes)
-            : base(
-                attributes,
-                new DotSubgraphCollection(),
-                new DotGraphClusterCollection(new DotGraphClusterAttributes(attributes))
-            )
+        protected DotGraphSection(DotAttributeCollection attributes)
+            : this(new DotGraphRootAttributes(attributes))
         {
         }
 
-        public DotGraphSection()
-            : this(new DotGraphAttributes())
+        protected DotGraphSection(DotGraphRootAttributes graphAttributes)
+            : base(graphAttributes, new DotGraphClusterCollection(graphAttributes))
         {
+            Attributes = new DotEntityRootAttributesAccessor<IDotGraphAttributes, DotGraphRootAttributes>(graphAttributes);
         }
-
-        protected override DotAttributeCollection AttributeCollection => Attributes.Collection;
 
         /// <summary>
-        ///     The attributes of the graph.
+        ///     Provides access to the attributes of the graph.
         /// </summary>
-        public virtual DotGraphAttributes Attributes => (DotGraphAttributes) _attributes;
+        public DotEntityRootAttributesAccessor<IDotGraphAttributes, DotGraphRootAttributes> Attributes { get; }
 
         /// <inheritdoc cref="DotCommonGraphSection.Clusters" />
-        public new virtual DotGraphClusterCollection Clusters => (DotGraphClusterCollection) base.Clusters;
+        public new DotGraphClusterCollection Clusters => (DotGraphClusterCollection) base.Clusters;
     }
 }

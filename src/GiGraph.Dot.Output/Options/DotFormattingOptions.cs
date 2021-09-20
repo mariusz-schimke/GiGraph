@@ -16,60 +16,60 @@ namespace GiGraph.Dot.Output.Options
         /// <summary>
         ///     Indicates if the output should be generated without line breaks.
         /// </summary>
-        public virtual bool SingleLine { get; set; } = false;
+        public bool SingleLine { get; set; } = false;
 
         /// <summary>
         ///     The base indentation level for the DOT output.
         /// </summary>
-        public virtual int IndentationLevel { get; set; } = 0;
+        public int IndentationLevel { get; set; } = 0;
 
         /// <summary>
         ///     The indentation size.
         /// </summary>
-        public virtual int IndentationSize { get; set; } = 4;
+        public int IndentationSize { get; set; } = 4;
 
         /// <summary>
         ///     Determines what character to use for indentation (space by default).
         /// </summary>
-        public virtual char IndentationChar { get; set; } = ' ';
+        public char IndentationChar { get; set; } = ' ';
 
         /// <summary>
         ///     The line break sequence to use in the DOT output (a system-dependent line break sequence is used by default; see also
         ///     <see cref="DotNewLine" />).
         /// </summary>
-        public virtual string LineBreak { get; set; } = DotNewLine.SystemDefault;
+        public string LineBreak { get; set; } = DotNewLine.SystemDefault;
 
         /// <summary>
         ///     Gets global attribute formatting options.
         /// </summary>
-        public virtual GlobalAttributesOptions GlobalAttributes { get; } = new();
+        public GlobalAttributesOptions GlobalAttributes { get; } = new();
 
         /// <summary>
         ///     Gets subgraph formatting options.
         /// </summary>
-        public virtual SubgraphOptions Subgraphs { get; } = new();
+        public SubgraphOptions Subgraphs { get; } = new();
 
         /// <summary>
         ///     Gets cluster formatting options.
         /// </summary>
-        public virtual ClusterOptions Clusters { get; } = new();
+        public ClusterOptions Clusters { get; } = new();
 
         /// <summary>
         ///     Gets edge formatting options.
         /// </summary>
-        public virtual EdgeOptions Edges { get; } = new();
+        public EdgeOptions Edges { get; } = new();
 
         /// <summary>
         ///     Gets node formatting options.
         /// </summary>
-        public virtual NodeOptions Nodes { get; } = new();
+        public NodeOptions Nodes { get; } = new();
 
         /// <summary>
         ///     An optional text encoder to use when writing text to the output stream. May become useful when the DOT visualization tool you
         ///     use fails processing some special or national characters. In such case replacing them with their HTML-code equivalents might
         ///     help.
         /// </summary>
-        public virtual Func<string, DotTokenType, string> TextEncoder { get; set; }
+        public Func<string, DotTokenType, string> TextEncoder { get; set; }
 
         /// <summary>
         ///     Causes attribute lists of all types of elements to be written inline.

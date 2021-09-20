@@ -1,6 +1,7 @@
-﻿using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using System;
+using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
@@ -10,134 +11,137 @@ using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes
 {
-    public abstract class DotHtmlTableTableCellCommonAttributes<TIEntityAttributeProperties> : DotHtmlElementRootAttributes<TIEntityAttributeProperties>, IDotHtmlTableTableCellCommonAttributes
+    public abstract class DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>
+        : DotHtmlElementAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>, IDotHtmlTableTableCellCommonAttributes
+        where TIHtmlTableTableCellAttributeProperties : IDotHtmlTableTableCellCommonAttributes
+        where THtmlTableTableCellAttributeProperties : DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>, TIHtmlTableTableCellAttributeProperties
     {
-        protected DotHtmlTableTableCellCommonAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
+        protected DotHtmlTableTableCellCommonAttributes(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
             : base(attributes, attributeKeyLookup)
         {
         }
 
         [DotAttributeKey("id")]
-        DotEscapeString IDotHtmlTableTableCellCommonAttributes.Id
+        public virtual DotEscapeString Id
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("port")]
-        string IDotHtmlTableTableCellCommonAttributes.PortName
+        public virtual string PortName
         {
             get => GetValueAsString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("valign")]
-        DotVerticalAlignment? IDotHtmlTableTableCellCommonAttributes.VerticalAlignment
+        public virtual DotVerticalAlignment? VerticalAlignment
         {
             get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         [DotAttributeKey("bgcolor")]
-        DotColorDefinition IDotHtmlTableTableCellCommonAttributes.BackgroundColor
+        public virtual DotColorDefinition BackgroundColor
         {
             get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("color")]
-        DotColor IDotHtmlTableTableCellCommonAttributes.BorderColor
+        public virtual DotColor BorderColor
         {
             get => GetValueAsColor(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("border")]
-        int? IDotHtmlTableTableCellCommonAttributes.BorderWidth
+        public virtual int? BorderWidth
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("cellpadding")]
-        int? IDotHtmlTableTableCellCommonAttributes.CellPadding
+        public virtual int? CellPadding
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("cellspacing")]
-        int? IDotHtmlTableTableCellCommonAttributes.CellSpacing
+        public virtual int? CellSpacing
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("sides")]
-        DotHtmlTableBorders? IDotHtmlTableTableCellCommonAttributes.Borders
+        public virtual DotHtmlTableBorders? Borders
         {
             get => GetValueAs<DotHtmlTableBorders>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
         }
 
         [DotAttributeKey("fixedsize")]
-        bool? IDotHtmlTableTableCellCommonAttributes.FixedSize
+        public virtual bool? FixedSize
         {
             get => GetValueAsBool(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("gradientangle")]
-        int? IDotHtmlTableTableCellCommonAttributes.GradientFillAngle
+        public virtual int? GradientFillAngle
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("width")]
-        int? IDotHtmlTableTableCellCommonAttributes.Width
+        public virtual int? Width
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("height")]
-        int? IDotHtmlTableTableCellCommonAttributes.Height
+        public virtual int? Height
         {
             get => GetValueAsInt(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("href")]
-        DotEscapeString IDotHtmlTableTableCellCommonAttributes.Href
+        public virtual DotEscapeString Href
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("target")]
-        DotEscapeString IDotHtmlTableTableCellCommonAttributes.Target
+        public virtual DotEscapeString Target
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("title")]
-        DotEscapeString IDotHtmlTableTableCellCommonAttributes.Title
+        public virtual DotEscapeString Title
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("tooltip")]
-        DotEscapeString IDotHtmlTableTableCellCommonAttributes.Tooltip
+        public virtual DotEscapeString Tooltip
         {
             get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
         }
 
         [DotAttributeKey("style")]
-        DotHtmlTableStyles? IDotHtmlTableTableCellCommonAttributes.Style
+        public virtual DotHtmlTableStyles? Style
         {
             get => GetValueAs<DotHtmlTableStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
             set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);

@@ -4,6 +4,7 @@ using GiGraph.Dot.Output.Writers.Edges;
 using GiGraph.Dot.Output.Writers.Graphs.Attributes;
 using GiGraph.Dot.Output.Writers.Nodes;
 using GiGraph.Dot.Output.Writers.Subgraphs;
+using GiGraph.Dot.Output.Writers.TokenWriter;
 
 namespace GiGraph.Dot.Output.Writers.Graphs
 {
@@ -82,8 +83,7 @@ namespace GiGraph.Dot.Output.Writers.Graphs
         protected virtual void EndSection()
         {
             _tokenWriter.ClearLingerBuffer()
-               .LineBreak(linger: true)
-               .Indentation(linger: true);
+               .NewLine(linger: true);
         }
     }
 }

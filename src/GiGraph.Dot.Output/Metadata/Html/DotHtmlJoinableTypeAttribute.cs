@@ -25,7 +25,7 @@ namespace GiGraph.Dot.Output.Metadata.Html
         }
 
         /// <inheritdoc cref="IDotJoinableTypeAttribute.Separator" />
-        public virtual string Separator { get; }
+        public string Separator { get; }
 
         /// <inheritdoc cref="IDotJoinableTypeAttribute.Sort" />
         public bool Sort { get; }

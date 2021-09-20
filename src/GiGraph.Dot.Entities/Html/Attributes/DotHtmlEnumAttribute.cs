@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Entities.Html.Attributes
     /// <typeparam name="TEnum">
     ///     An enumeration type whose values are annotated with the <see cref="DotAttributeValueAttribute" /> attributes.
     /// </typeparam>
-    public class DotHtmlEnumAttribute<TEnum> : DotEnumAttribute<TEnum>
+    public record DotHtmlEnumAttribute<TEnum> : DotEnumAttribute<TEnum>
         where TEnum : Enum
     {
         /// <summary>

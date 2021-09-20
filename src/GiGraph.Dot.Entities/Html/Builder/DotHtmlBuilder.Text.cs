@@ -7,8 +7,8 @@ namespace GiGraph.Dot.Entities.Html.Builder
     public partial class DotHtmlBuilder
     {
         /// <summary>
-        ///     Appends the specified text to the builder and optionally sets alignment for its individual lines if the text is composed of
-        ///     multiple lines.
+        ///     Appends text to this instance and optionally sets alignment for its individual lines if the text is composed of multiple
+        ///     lines.
         /// </summary>
         /// <param name="text">
         ///     The text to append.
@@ -22,7 +22,7 @@ namespace GiGraph.Dot.Entities.Html.Builder
         }
 
         /// <summary>
-        ///     Initializes and appends a font element.
+        ///     Appends text with the specified font to this instance.
         /// </summary>
         /// <param name="text">
         ///     The text to append.

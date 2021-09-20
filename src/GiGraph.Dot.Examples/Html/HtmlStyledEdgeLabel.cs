@@ -14,7 +14,7 @@ namespace GiGraph.Dot.Examples.Html
             graph.Edges.Add("Foo", "Bar", edge =>
             {
                 // applies one font to all pieces of text, but each piece has a different style assigned
-                edge.Attributes.Label = new DotHtmlBuilder()
+                edge.Label = new DotHtmlBuilder()
                    .AppendFont(
                         new DotFont("Arial", 8, Color.Gray),
                         f => f

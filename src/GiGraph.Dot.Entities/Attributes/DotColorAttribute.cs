@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
-using GiGraph.Dot.Output;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes
@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes
     /// <summary>
     ///     Represents a single color.
     /// </summary>
-    public class DotColorAttribute : DotAttribute<Color>
+    public record DotColorAttribute : DotAttribute<Color>
     {
         /// <summary>
         ///     Creates a new color attribute.

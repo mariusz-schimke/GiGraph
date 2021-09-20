@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using GiGraph.Dot.Output;
+using GiGraph.Dot.Output.Entities;
+using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Graphs.Collections
 {
     public class DotCommonGraphCollection<TGraph> : List<TGraph>, IDotEntity, IDotAnnotatable
-        where TGraph : IDotCommonGraph
+        where TGraph : IDotGraph
     {
         /// <inheritdoc cref="IDotAnnotatable.Annotation" />
         public virtual string Annotation { get; set; }

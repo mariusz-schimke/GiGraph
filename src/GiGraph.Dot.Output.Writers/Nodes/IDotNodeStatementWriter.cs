@@ -2,7 +2,7 @@
 {
     public interface IDotNodeStatementWriter : IDotEntityWriter
     {
-        IDotNodeWriter BeginNodeStatement();
+        IDotNodeWriter BeginNodeStatement(bool containsAttributes);
         void EndNodeStatement();
     }
 }

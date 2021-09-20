@@ -1,6 +1,7 @@
+using System;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
@@ -9,17 +10,17 @@ using GiGraph.Dot.Types.Graphs;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes
 {
-    public class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAttributes>, IDotGraphFontAttributes
+    public class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAttributes, DotGraphFontAttributes>, IDotGraphFontAttributes
     {
-        protected static readonly DotMemberAttributeKeyLookup GraphFontAttributesKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphFontAttributes, IDotGraphFontAttributes>().Build();
+        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphFontAttributes, IDotGraphFontAttributes>().BuildLazy();
 
-        protected DotGraphFontAttributes(DotAttributeCollection attributes, DotMemberAttributeKeyLookup attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
+        public DotGraphFontAttributes(DotAttributeCollection attributes)
+            : base(attributes, AttributeKeyLookup)
         {
         }
 
-        public DotGraphFontAttributes(DotAttributeCollection attributes)
-            : base(attributes, GraphFontAttributesKeyLookup)
+        protected DotGraphFontAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+            : base(attributes, attributeKeyLookup)
         {
         }
 
@@ -40,7 +41,7 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         }
 
         /// <summary>
-        ///     Sets font properties.
+        ///     Sets font attributes.
         /// </summary>
         /// <param name="name">
         ///     Font name.
@@ -65,10 +66,10 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         }
 
         /// <summary>
-        ///     Sets font properties.
+        ///     Sets font attributes.
         /// </summary>
         /// <param name="attributes">
-        ///     The properties to set.
+        ///     The attributes to set.
         /// </param>
         public virtual void Set(DotGraphFont attributes)
         {
@@ -78,10 +79,10 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes
         }
 
         /// <summary>
-        ///     Copies font properties from the specified instance.
+        ///     Copies font attributes from the specified instance.
         /// </summary>
         /// <param name="attributes">
-        ///     The instance to copy the properties from.
+        ///     The instance to copy the attributes from.
         /// </param>
         public virtual void Set(IDotGraphFontAttributes attributes)
         {

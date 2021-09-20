@@ -3,42 +3,17 @@ using GiGraph.Dot.Types.EscapeString;
 namespace GiGraph.Dot.Types.Hyperlinks
 {
     /// <summary>
-    ///     Specifies hyperlink properties.
+    ///     Specifies hyperlink attributes.
     /// </summary>
-    public class DotHyperlink
-    {
-        /// <summary>
-        ///     Creates and initializes a new instance.
-        /// </summary>
-        /// <param name="url">
-        ///     The URL.
-        /// </param>
-        /// <param name="target">
-        ///     Determines which window of the browser is used for the URL. See <see cref="DotHyperlinkTargets" />.
-        /// </param>
-        /// <param name="href">
-        ///     Synonym for <paramref name="url" />.
-        /// </param>
-        public DotHyperlink(DotEscapeString url = null, DotEscapeString target = null, DotEscapeString href = null)
-        {
-            Url = url;
-            Target = target;
-            Href = href;
-        }
-
-        /// <summary>
-        ///     The URL.
-        /// </summary>
-        public virtual DotEscapeString Url { get; set; }
-
-        /// <summary>
-        ///     Synonym for <see cref="Url" />.
-        /// </summary>
-        public virtual DotEscapeString Href { get; set; }
-
-        /// <summary>
-        ///     Determines which window of the browser is used for the URL. See <see cref="DotHyperlinkTargets" />.
-        /// </summary>
-        public virtual DotEscapeString Target { get; set; }
-    }
+    /// <param name="Url">
+    ///     The URL.
+    /// </param>
+    /// <param name="Target">
+    ///     Determines which window of the browser is used for the URL. See
+    ///     <see cref="GiGraph.Dot.Types.Hyperlinks.DotHyperlinkTargets" />.
+    /// </param>
+    /// <param name="Href">
+    ///     Synonym for <paramref name="Url" />.
+    /// </param>
+    public record DotHyperlink(DotEscapeString Url = null, DotEscapeString Target = null, DotEscapeString Href = null);
 }

@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Subgraphs
+﻿using GiGraph.Dot.Output.Writers.TokenWriter;
+
+namespace GiGraph.Dot.Output.Writers.Subgraphs
 {
     public class DotSubgraphWriterRoot : DotEntityWriter, IDotSubgraphWriterRoot
     {
@@ -37,7 +39,7 @@
 
             if (singleLine)
             {
-                LineBreak();
+                NewLine();
             }
             else
             {

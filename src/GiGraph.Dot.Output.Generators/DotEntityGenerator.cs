@@ -1,6 +1,8 @@
 ﻿using System;
+using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Output.Writers;
 using GiGraph.Dot.Types.Identifiers;
 
@@ -42,7 +44,7 @@ namespace GiGraph.Dot.Output.Generators
         }
 
         /// <inheritdoc cref="IDotEntityGenerator{TWriter}.Generate" />
-        public void Generate(IDotEntity entity, TWriter writer, bool annotate)
+        public virtual void Generate(IDotEntity entity, TWriter writer, bool annotate)
         {
             if (entity is null)
             {

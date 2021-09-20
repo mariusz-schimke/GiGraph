@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Nodes
+﻿using GiGraph.Dot.Output.Writers.TokenWriter;
+
+namespace GiGraph.Dot.Output.Writers.Nodes
 {
     public class DotNodeStatementWriter : DotEntityStatementWriter, IDotNodeStatementWriter
     {
@@ -7,9 +9,15 @@
         {
         }
 
-        public virtual IDotNodeWriter BeginNodeStatement()
+        public virtual IDotNodeWriter BeginNodeStatement(bool containsAttributes)
         {
-            return new DotNodeWriter(_tokenWriter, _configuration);
+            var isMultiline = !_configuration.Formatting.SingleLine &&
+                containsAttributes && !_configuration.Formatting.Nodes.SingleLineAttributeLists;
+
+            return new DotNodeWriter(
+                _paddedEntityWriter.BeginEntity(enforcePadding: isMultiline),
+                _configuration
+            );
         }
 
         public virtual void EndNodeStatement()

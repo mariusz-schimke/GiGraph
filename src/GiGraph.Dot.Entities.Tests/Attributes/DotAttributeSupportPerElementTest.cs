@@ -45,7 +45,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
 
             if (result.Any())
             {
-                throw new Exception($"The following attributes must be supported by [{element}]: {string.Join(", ", result)}");
+                throw new Exception($"The following attributes have to be supported by [{element}]: {string.Join(", ", result)}");
             }
         }
 
@@ -59,7 +59,8 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                 {
                     metadata.Element,
                     attribute.Key,
-                    attribute.Value.PropertyPath
+                    attribute.Value.PropertyPath,
+                    Property = attribute.Value.GetPropertyInfoPath().Last()
                 }))
                .ToLookup(
                     key => key.Key,
@@ -67,16 +68,21 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                 )
                .ToDictionary(
                     key => key.Key,
-                    element =>
-                    {
-                        return element
-                           .GroupBy(
-                                groupKey => groupKey.PropertyPath,
-                                groupElement => groupElement.Element
-                            )
-                           .Select(property => $"{property.Key} [{property.Aggregate((current, value) => current | value)}]")
-                           .ToArray();
-                    }
+                    element => element
+                       .GroupBy(
+                            groupKey =>
+                            {
+                                var propertyTypeName = Nullable.GetUnderlyingType(groupKey.Property.PropertyType) is { } underlyingType
+                                    ? $"{underlyingType.Name}?"
+                                    : groupKey.Property.PropertyType.Name;
+
+                                return $"{groupKey.PropertyPath}: {propertyTypeName}";
+                            },
+                            groupElement => groupElement.Element
+                        )
+                       .Select(property => $"{property.Key} [{property.Aggregate((current, value) => current | value)}]")
+                       .OrderBy(property => property)
+                       .ToArray()
                 );
 
             Snapshot.Match(new SortedDictionary<string, string[]>(keyLookup), "attribute_property_key_map");
