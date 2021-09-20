@@ -53,7 +53,9 @@ namespace GiGraph.Dot.Output.Metadata
 
             dotFlags = string.Join(
                 attribute.Separator,
-                attribute.Sort && sort ? dotFlagsEnumerable.OrderBy(flag => flag) : dotFlagsEnumerable
+                attribute.Sort && sort
+                    ? dotFlagsEnumerable.OrderBy(flag => flag, StringComparer.InvariantCulture)
+                    : dotFlagsEnumerable
             );
             return true;
         }

@@ -29,7 +29,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
             }
 
             var orderedNodeIds = _options.SortElements
-                ? nodeIds.OrderBy(nodeId => nodeId)
+                ? nodeIds.OrderBy(nodeId => nodeId, StringComparer.InvariantCulture)
                 : nodeIds;
 
             foreach (var nodeId in orderedNodeIds)

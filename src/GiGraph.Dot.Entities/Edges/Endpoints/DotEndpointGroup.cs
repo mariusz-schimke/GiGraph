@@ -72,7 +72,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
                 Endpoints
                    .Cast<IDotOrderable>()
                    .Select(endpoint => endpoint.OrderingKey)
-                   .OrderBy(key => key));
+                   .OrderBy(key => key, StringComparer.InvariantCulture));
         }
     }
 }

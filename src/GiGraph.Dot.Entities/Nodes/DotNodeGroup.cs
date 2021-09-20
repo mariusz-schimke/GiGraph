@@ -55,7 +55,7 @@ namespace GiGraph.Dot.Entities.Nodes
 
         protected override string GetOrderingKey()
         {
-            return string.Join(" ", Ids.OrderBy(nodeId => nodeId));
+            return string.Join(" ", Ids.OrderBy(nodeId => nodeId, StringComparer.InvariantCulture));
         }
     }
 }

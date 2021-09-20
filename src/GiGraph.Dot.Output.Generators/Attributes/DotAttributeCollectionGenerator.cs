@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Output.Generators.Providers;
@@ -21,7 +22,7 @@ namespace GiGraph.Dot.Output.Generators.Attributes
             var orderedAttributes = _options.SortElements
                 ? attributes.Values
                    .Cast<IDotOrderable>()
-                   .OrderBy(attribute => attribute.OrderingKey)
+                   .OrderBy(attribute => attribute.OrderingKey, StringComparer.InvariantCulture)
                    .Cast<DotAttribute>()
                 : attributes.Values;
 
