@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Generators.Providers;
@@ -20,7 +21,7 @@ namespace GiGraph.Dot.Output.Generators.Subgraphs
         {
             var orderedSubgraphs = _options.SortElements
                 ? subgraphs.Cast<IDotOrderable>()
-                   .OrderBy(subgraph => subgraph.OrderingKey)
+                   .OrderBy(subgraph => subgraph.OrderingKey, StringComparer.InvariantCulture)
                    .Cast<TSubgraph>()
                 : subgraphs;
 

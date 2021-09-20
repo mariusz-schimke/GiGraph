@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Output.Generators.Providers;
@@ -19,7 +20,7 @@ namespace GiGraph.Dot.Output.Generators.Nodes
         {
             var orderedNodes = _options.SortElements
                 ? nodes.Cast<IDotOrderable>()
-                   .OrderBy(node => node.OrderingKey)
+                   .OrderBy(node => node.OrderingKey, StringComparer.InvariantCulture)
                    .Cast<DotNodeDefinition>()
                 : nodes;
 

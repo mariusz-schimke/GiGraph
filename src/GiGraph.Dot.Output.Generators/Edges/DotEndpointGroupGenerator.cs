@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
@@ -19,7 +20,7 @@ namespace GiGraph.Dot.Output.Generators.Edges
             var orderedEndpoints = _options.SortElements
                 ? endpointGroup.Endpoints
                    .Cast<IDotOrderable>()
-                   .OrderBy(endpoint => endpoint.OrderingKey)
+                   .OrderBy(endpoint => endpoint.OrderingKey, StringComparer.InvariantCulture)
                    .Cast<DotEndpoint>()
                 : endpointGroup.Endpoints;
 

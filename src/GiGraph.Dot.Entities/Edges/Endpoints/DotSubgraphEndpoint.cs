@@ -61,7 +61,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints
                 Subgraph.Nodes
                    .Cast<IDotOrderable>()
                    .Select(node => node.OrderingKey)
-                   .OrderBy(key => key));
+                   .OrderBy(key => key, StringComparer.InvariantCulture));
         }
 
         // the type of endpoint may be specified explicitly as a generic param, in which case this implicit conversion may be useful
