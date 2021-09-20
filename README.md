@@ -234,7 +234,7 @@ You can also do it the other way round:
 ```c#
 using GiGraph.Dot.Extensions;
 
-var meta = graph.Hyperlink.GetMetadata(attr => attr.Target);
+var meta = graph.Hyperlink.Attributes.GetMetadata(attr => attr.Target);
 
 // outputs "target"
 Console.WriteLine(meta.Key);
@@ -2031,7 +2031,7 @@ You can use script annotation (comments) simply by assigning text to the *Annota
 // graph
 graph.Annotation = "graph";
 graph.Attributes.Annotation = "graph attributes";
-graph.Attributes.Set(a => a.Label, "Foo Graph").Annotation = "label";
+graph.Attributes.SetValue(a => a.Label, "Foo Graph").Annotation = "label";
 
 // node defaults
 graph.Nodes.Attributes.Annotation = "global node attributes";
@@ -2043,7 +2043,7 @@ graph.Nodes.Add("foo", node =>
 {
     node.Annotation = "node comment";
     node.Attributes.Annotation = "node attributes";
-    node.Attributes.Set(a => a.Label, "foo").Annotation = "label";
+    node.Attributes.SetValue(a => a.Label, "foo").Annotation = "label";
 });
 
 // edge defaults
@@ -2060,7 +2060,7 @@ graph.Edges.Add("foo", "bar", edge =>
     edge.Tail.Endpoint.Annotation = "tail";
 
     edge.Attributes.Annotation = "edge attributes";
-    edge.Attributes.Set(a => a.Color, Color.Red).Annotation = "color";
+    edge.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
 });
 
 // subsections
