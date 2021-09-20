@@ -22,11 +22,11 @@
 
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using the Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code or online tools like http://viz-js.com or http://magjac.com/graphviz-visual-editor, where you paste a script to view its visualization.</description>
 
-    <releaseNotes>- The attributes of the graph and of other elements may now be set directly on the elements instead of through the parent 'Attributes' property. This should be more intuitive and concise.
+    <releaseNotes>- The attributes of the graph and other elements may now be set directly on the elements instead of through the 'Attributes' property. It should be more convenient now.
 
-- Restored the missing style setting for nodes that adds diagonals next to their vertices or two chords for circular and elliptical shapes.
+- Restored the missing style setting for nodes, that adds diagonals next to the vertices of polygonal shapes or two chords near the top and the bottom of circular and elliptical shapes.
 
-- Minor improvements in the formatting style of the DOT script.
+- Minor improvements in the formatting style of the output DOT script.
 
 - Refactoring.
 
