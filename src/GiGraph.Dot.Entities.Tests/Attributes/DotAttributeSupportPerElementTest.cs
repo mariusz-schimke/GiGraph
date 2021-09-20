@@ -81,7 +81,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes
                             groupElement => groupElement.Element
                         )
                        .Select(property => $"{property.Key} [{property.Aggregate((current, value) => current | value)}]")
-                       .OrderBy(property => property)
+                       .OrderBy(property => property, StringComparer.InvariantCulture)
                        .ToArray()
                 );
 

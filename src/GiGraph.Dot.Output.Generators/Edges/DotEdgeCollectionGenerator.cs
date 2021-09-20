@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Edges.Endpoints;
@@ -20,7 +21,7 @@ namespace GiGraph.Dot.Output.Generators.Edges
         {
             var orderedEdges = _options.SortElements
                 ? edges.Cast<IDotOrderable>()
-                   .OrderBy(edge => edge.OrderingKey)
+                   .OrderBy(edge => edge.OrderingKey, StringComparer.InvariantCulture)
                    .Cast<DotEdgeDefinition>()
                 : edges;
 
