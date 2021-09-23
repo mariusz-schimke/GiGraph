@@ -18,6 +18,14 @@ namespace GiGraph.Dot.Entities.Tests.Qualities
             graph.Nodes.Add("node2").SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
 
             Snapshot.Match(graph.Build(), "radial_gradient_fill_on_nodes");
+
+            graph.Nodes.Clear();
+
+            // an overload (with the same result)
+            graph.Nodes.Add("node1").SetRadialGradientFill(Color.Red, Color.Brown);
+            graph.Nodes.Add("node2").SetRadialGradientFill(Color.Red, Color.Brown, 45);
+
+            Snapshot.Match(graph.Build(), "radial_gradient_fill_on_nodes");
         }
 
         [Fact]

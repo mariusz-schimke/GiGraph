@@ -1,14 +1,16 @@
 ﻿digraph
 {
     bgcolor = "gold:darkmagenta"
+    style = radial
+
+    bgcolor = "gold:darkmagenta"
+    style = radial
+
+    bgcolor = "gold:darkmagenta"
     gradientangle = 10
     style = radial
 
     bgcolor = "gold:darkmagenta"
     gradientangle = 20
-    style = radial
-
-    bgcolor = "chartreuse:plum"
-    gradientangle = 30
     style = radial
 }

@@ -22,8 +22,8 @@ namespace GiGraph.Dot.Examples.Complex
 
             // set global node attributes (for all nodes of the graph)
             graph.Nodes.Shape = DotNodeShape.Rectangle;
-            graph.Nodes.SetGradientFill(new DotGradientColor(Color.Turquoise, Color.RoyalBlue));
             graph.Nodes.Font.Name = graph.Font.Name;
+            graph.Nodes.SetGradientFill(Color.Turquoise, Color.RoyalBlue);
 
             // set global edge attributes (for all edges of the graph)
             graph.Edges.Head.Arrowhead = graph.Edges.Tail.Arrowhead = DotArrowheadShape.Vee;
