@@ -18,6 +18,14 @@ namespace GiGraph.Dot.Entities.Tests.Qualities
             graph.Clusters.Add().SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
 
             Snapshot.Match(graph.Build(), "radial_gradient_fill_on_clusters");
+
+            graph.Clusters.Clear();
+
+            // an overload (with the same result)
+            graph.Clusters.Add().SetRadialGradientFill(Color.Red, Color.Brown);
+            graph.Clusters.Add().SetRadialGradientFill(Color.Red, Color.Brown, 45);
+
+            Snapshot.Match(graph.Build(), "radial_gradient_fill_on_clusters");
         }
 
         [Fact]

@@ -4,5 +4,11 @@
     style = ""
 
     bgcolor = "gold:darkmagenta"
+
+    bgcolor = "gold:darkmagenta"
+    gradientangle = 10
+
+    bgcolor = "gold:darkmagenta"
+    gradientangle = 20
     style = striped
 }
