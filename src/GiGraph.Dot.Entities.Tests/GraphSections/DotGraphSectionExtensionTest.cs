@@ -29,13 +29,16 @@ namespace GiGraph.Dot.Entities.Tests.GraphSections
             // this should be removed by the extension method (radial style by none)
             graph.Clusters.Style.FillStyle = DotClusterFillStyle.Radial;
 
-            graph.SetGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta));
+            graph.SetGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta), 10);
+
             graph.Subsections.Add(s =>
                 {
                     // this should not be removed by the extension method (non-radial style)
                     s.Clusters.Style.FillStyle = DotClusterFillStyle.Striped;
                 })
-               .SetGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta));
+               .SetGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta), 20);
+
+            graph.Subsections.Add().SetGradientBackground(Color.Chartreuse, Color.Plum, 30);
 
             Snapshot.Match(graph.Build(), "gradient_graph_background");
         }
@@ -48,9 +51,12 @@ namespace GiGraph.Dot.Entities.Tests.GraphSections
             // this should be overwritten by the extension method (non-radial style by radial)
             graph.Clusters.Style.FillStyle = DotClusterFillStyle.Striped;
 
-            graph.SetRadialGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta));
+            graph.SetRadialGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta), 10);
+
             graph.Subsections.Add()
-               .SetRadialGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta));
+               .SetRadialGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta), 20);
+
+            graph.Subsections.Add().SetRadialGradientBackground(Color.Chartreuse, Color.Plum, 30);
 
             Snapshot.Match(graph.Build(), "radial_gradient_graph_background");
         }
