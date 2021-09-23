@@ -50,7 +50,7 @@ namespace GiGraph.Dot.Entities.Tests.GraphSections
         {
             var graph = new DotGraph();
 
-            // this should be overwritten by the extension method (a non-radial style by the radial style)
+            // this setting should be overwritten by the extension method (a non-radial style by the radial style)
             graph.Clusters.Style.FillStyle = DotClusterFillStyle.Striped;
             graph.SetRadialGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta));
 

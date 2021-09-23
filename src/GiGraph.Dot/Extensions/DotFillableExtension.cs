@@ -69,7 +69,7 @@ namespace GiGraph.Dot.Extensions
         }
 
         /// <summary>
-        ///     Sets a radiant gradient fill.
+        ///     Sets a radial gradient fill.
         /// </summary>
         /// <param name="this">
         ///     The current context to set the fill for.
@@ -87,7 +87,7 @@ namespace GiGraph.Dot.Extensions
         }
 
         /// <summary>
-        ///     Sets a radiant gradient fill.
+        ///     Sets a radial gradient fill.
         /// </summary>
         /// <param name="this">
         ///     The current context to set the fill for.
