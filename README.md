@@ -1379,22 +1379,24 @@ digraph
 
 ### Clusters as endpoints
 
-Clusters may be used as endpoints. In such case the edge is clipped to the cluster border instead of being connected to a node inside the cluster. To achieve that, define an edge that joins any node with a node inside the cluster. Then, on the edge endpoint inside the cluster, assign the identifier of that cluster to the *ClusterId* attribute. First of all, however, enable clipping edges to cluster borders by setting the *AllowEdgeClipping* attribute for clusters on the graph. The following example presents the complete idea.
+Clusters may be used as endpoints. In such case the edge is clipped to the cluster border instead of being connected to a node inside the cluster. To achieve that, define an edge that joins any node outside the cluster with a node inside the cluster. Then, on the same edge, assign the identifier of that cluster to the *ClusterId* attribute of the endpoint that refers to the node inside the cluster. Also, remember to enable clipping edges to cluster borders by setting the *AllowEdgeClipping* attribute for clusters on the graph. The following example presents the complete idea.
 
 ```c#
 var graph = new DotGraph();
 
-// required
+// required to enable clipping edges to cluster borders
 graph.Clusters.AllowEdgeClipping = true;
 
+// specify a cluster and add a node to it
 graph.Clusters.Add("Cluster1", cluster =>
 {
     cluster.Nodes.Add("Bar");
 });
 
+// the edge is defined outside the cluster, and the head endpoint name (Bar) refers to the node inside that cluster
 graph.Edges.Add("Foo", "Bar", edge =>
 {
-    // the head node (Bar) is inside the cluster, so the edge will be attached to the border of that cluster instead of the node
+    // by referring to the name of the cluster, the edge will be attached to the border of that cluster instead of the Bar node
     edge.Head.ClusterId = "Cluster1";
 });
 ```
