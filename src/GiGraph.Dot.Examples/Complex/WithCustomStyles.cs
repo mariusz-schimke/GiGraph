@@ -57,16 +57,16 @@ namespace GiGraph.Dot.Examples.Complex
 
             graph.Subgraphs.Add(sg =>
             {
-                // nodes with dual-color fill; fill proportions specified by the weight properties
-                sg.Nodes.Add("C").FillColor = new DotMultiColor(Color.RoyalBlue, new DotWeightedColor(Color.Turquoise, 0.25));
-                sg.Nodes.Add("D").FillColor = new DotMultiColor(new DotWeightedColor(Color.Navy, 0.25), Color.RoyalBlue);
+                // nodes with a dual-color fill; fill proportions specified by the weight properties (this is actually a degenerate linear gradient fill)
+                sg.Nodes.Add("C").SetGradientFill(Color.RoyalBlue, new DotWeightedColor(Color.Turquoise, 0.25));
+                sg.Nodes.Add("D").SetGradientFill(new DotWeightedColor(Color.Navy, 0.25), Color.RoyalBlue);
 
                 sg.Edges.Add("C", "D", edge =>
                 {
                     edge.Label = "MULTICOLOR SERIES";
                     edge.Directions = DotEdgeDirections.Both;
 
-                    // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
+                    // this will render a multicolor edge where each color may optionally have an area proportion determined by the weight parameter
                     edge.SetSegmentedStyle(
                         new DotWeightedColor(Color.Turquoise, 0.33),
                         new DotWeightedColor(Color.Gray, 0.33),
@@ -81,7 +81,6 @@ namespace GiGraph.Dot.Examples.Complex
                 {
                     node.Color = Color.Transparent;
 
-                    // set style to striped
                     node.SetStripedFill(
                         new DotWeightedColor(Color.Navy, 0.1),
                         Color.RoyalBlue,
@@ -95,7 +94,6 @@ namespace GiGraph.Dot.Examples.Complex
                     node.Shape = DotNodeShape.Circle;
                     node.Color = Color.Transparent;
 
-                    // set wedged style
                     node.SetWedgedFill(
                         Color.Orange,
                         Color.RoyalBlue,
