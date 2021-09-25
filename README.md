@@ -1492,7 +1492,7 @@ graph.Font.Name = "Helvetica";
 // set global node attributes (for all nodes of the graph)
 graph.Nodes.Shape = DotNodeShape.Rectangle;
 graph.Nodes.Font.Name = graph.Font.Name;
-graph.Nodes.SetGradientFill(new DotGradientColor(Color.Turquoise, Color.RoyalBlue));
+graph.Nodes.SetGradientFill(Color.Turquoise, Color.RoyalBlue);
 
 // set global edge attributes (for all edges of the graph)
 graph.Edges.Head.Arrowhead = graph.Edges.Tail.Arrowhead = DotArrowheadShape.Vee;
@@ -1526,16 +1526,16 @@ graph.Subgraphs.Add(sg =>
 
 graph.Subgraphs.Add(sg =>
 {
-    // nodes with dual-color fill; fill proportions specified by the weight properties
-    sg.Nodes.Add("C").FillColor = new DotMultiColor(Color.RoyalBlue, new DotWeightedColor(Color.Turquoise, 0.25));
-    sg.Nodes.Add("D").FillColor = new DotMultiColor(new DotWeightedColor(Color.Navy, 0.25), Color.RoyalBlue);
+    // nodes with a dual-color fill; fill proportions specified by the weight properties (this is actually a degenerate linear gradient fill)
+    sg.Nodes.Add("C").SetGradientFill(Color.RoyalBlue, new DotWeightedColor(Color.Turquoise, 0.25));
+    sg.Nodes.Add("D").SetGradientFill(new DotWeightedColor(Color.Navy, 0.25), Color.RoyalBlue);
 
     sg.Edges.Add("C", "D", edge =>
     {
         edge.Label = "MULTICOLOR SERIES";
         edge.Directions = DotEdgeDirections.Both;
 
-        // this will render a multicolor edge, where each color may optionally have an area proportion determined by the weight parameter
+        // this will render a multicolor edge where each color may optionally have an area proportion determined by the weight parameter
         edge.SetSegmentedStyle(
             new DotWeightedColor(Color.Turquoise, 0.33),
             new DotWeightedColor(Color.Gray, 0.33),
@@ -1549,6 +1549,7 @@ graph.Subgraphs.Add(sg =>
     sg.Nodes.Add("STRIPED", node =>
     {
         node.Color = Color.Transparent;
+
         node.SetStripedFill(
             new DotWeightedColor(Color.Navy, 0.1),
             Color.RoyalBlue,
@@ -1561,6 +1562,7 @@ graph.Subgraphs.Add(sg =>
     {
         node.Shape = DotNodeShape.Circle;
         node.Color = Color.Transparent;
+
         node.SetWedgedFill(
             Color.Orange,
             Color.RoyalBlue,
@@ -1579,6 +1581,7 @@ graph.Subgraphs.Add(sg =>
     sg.Nodes.Shape = DotNodeShape.Circle;
 
     sg.Edges.Color = Color.RoyalBlue;
+
     sg.Edges.Add("A", "B").Label = "PLAIN COLOR";
 });
 
@@ -1605,8 +1608,8 @@ digraph
     }
 
     {
-        C [ fillcolor = "royalblue:turquoise;0.25" ]
-        D [ fillcolor = "navy;0.25:royalblue" ]
+        C [ fillcolor = "royalblue:turquoise;0.25", style = filled ]
+        D [ fillcolor = "navy;0.25:royalblue", style = filled ]
 
         C -> D [ color = "turquoise;0.33:gray;0.33:navy", dir = both, label = "MULTICOLOR SERIES" ]
     }
