@@ -8,9 +8,24 @@ namespace GiGraph.Dot.Output.Writers.TokenWriter
 {
     public class DotTokenWriter
     {
+        private readonly TextWriter _textWriter;
+
         protected readonly Queue<(string Token, DotTokenType Type)> _lingerBuffer;
+        [Obsolete("Please use the Writer property instead")]
         protected readonly StreamWriter _writer;
 
+#pragma warning disable CS0618
+        protected TextWriter Writer => _textWriter ?? _writer;
+#pragma warning restore CS0618
+
+        protected DotTokenWriter(TextWriter writer, Queue<(string, DotTokenType)> lingerBuffer, DotTokenWriterOptions options)
+        {
+            _textWriter = writer;
+            _lingerBuffer = lingerBuffer;
+            Options = options;
+        }
+
+        [Obsolete("Please use the constructor taking a TextWriter instead of a StreamWriter")]
         protected DotTokenWriter(StreamWriter writer, Queue<(string, DotTokenType)> lingerBuffer, DotTokenWriterOptions options)
         {
             _writer = writer;
@@ -18,6 +33,12 @@ namespace GiGraph.Dot.Output.Writers.TokenWriter
             Options = options;
         }
 
+        public DotTokenWriter(TextWriter writer, DotTokenWriterOptions options)
+            : this(writer, new Queue<(string, DotTokenType)>(), options)
+        {
+        }
+
+        [Obsolete("Please use the constructor taking a TextWriter instead of a StreamWriter")]
         public DotTokenWriter(StreamWriter writer, DotTokenWriterOptions options)
             : this(writer, new Queue<(string, DotTokenType)>(), options)
         {
@@ -47,7 +68,7 @@ namespace GiGraph.Dot.Output.Writers.TokenWriter
 
         public virtual DotTokenWriter CloneWith(DotTokenWriterOptions options)
         {
-            return new DotTokenWriter(_writer, _lingerBuffer, options)
+            return new DotTokenWriter(Writer, _lingerBuffer, options)
             {
                 OnBeforeAppendToken = (sender, e) => OnBeforeAppendToken?.Invoke(sender, e),
                 OnAfterAppendToken = (sender, e) => OnAfterAppendToken?.Invoke(sender, e)
@@ -352,7 +373,7 @@ namespace GiGraph.Dot.Output.Writers.TokenWriter
                 token = encode(token, type);
             }
 
-            _writer.Write(token);
+            Writer.Write(token);
         }
 
         public virtual DotTokenWriter FlushLingerBuffer()
