@@ -4,7 +4,7 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <tags>DOT Graphviz graph diagram</tags>
+    <tags>DOT Graphviz graph diagram visualization</tags>
 
     <authors>$author$</authors>
     <owners>$author$</owners>
@@ -22,13 +22,11 @@
 
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using the Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code or online tools like http://viz-js.com or http://magjac.com/graphviz-visual-editor, where you paste a script to view its visualization.</description>
 
-    <releaseNotes>- The attributes of the graph and other elements may now be set directly on the elements instead of through the 'Attributes' property. It should be more convenient now.
+    <releaseNotes>- Added a couple of helper methods for setting gradient color fill on graph elements.
 
-- Restored the missing style setting for nodes, that adds diagonals next to the vertices of polygonal shapes or two chords near the top and the bottom of circular and elliptical shapes.
+- Output script string building has been optimized.
 
-- Minor improvements in the formatting style of the output DOT script.
-
-- Refactoring.
+- StreamWriter for generating the output script has been abstracted with TextWriter for better interoperability.
 
 See also https://github.com/$repository$/releases</releaseNotes>
   </metadata>
