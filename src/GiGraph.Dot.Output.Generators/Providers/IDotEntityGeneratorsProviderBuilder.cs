@@ -1,9 +1,8 @@
 ﻿using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Output.Generators.Providers
+namespace GiGraph.Dot.Output.Generators.Providers;
+
+public interface IDotEntityGeneratorsProviderBuilder
 {
-    public interface IDotEntityGeneratorsProviderBuilder
-    {
-        IDotEntityGeneratorsProvider Build(DotSyntaxRules syntaxRules, DotSyntaxOptions options);
-    }
+    IDotEntityGeneratorsProvider Build(DotSyntaxRules syntaxRules, DotSyntaxOptions options);
 }

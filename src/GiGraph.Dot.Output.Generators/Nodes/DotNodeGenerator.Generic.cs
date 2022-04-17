@@ -3,20 +3,19 @@ using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Nodes;
 
-namespace GiGraph.Dot.Output.Generators.Nodes
-{
-    public abstract class DotNodeGenerator<TEntity> : DotEntityWithAttributeListGenerator<TEntity, IDotNodeWriter>
-        where TEntity : DotNodeDefinition
-    {
-        protected DotNodeGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
-            : base(syntaxRules, options, entityGenerators)
-        {
-        }
+namespace GiGraph.Dot.Output.Generators.Nodes;
 
-        protected virtual void WriteIdentifier(string id, IDotNodeWriter writer)
-        {
-            id = EncodeIdentifier(id);
-            writer.WriteNodeIdentifier(id, IdentifierRequiresQuoting(id));
-        }
+public abstract class DotNodeGenerator<TEntity> : DotEntityWithAttributeListGenerator<TEntity, IDotNodeWriter>
+    where TEntity : DotNodeDefinition
+{
+    protected DotNodeGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        : base(syntaxRules, options, entityGenerators)
+    {
+    }
+
+    protected virtual void WriteIdentifier(string id, IDotNodeWriter writer)
+    {
+        id = EncodeIdentifier(id);
+        writer.WriteNodeIdentifier(id, IdentifierRequiresQuoting(id));
     }
 }

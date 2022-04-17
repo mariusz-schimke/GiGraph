@@ -2,12 +2,11 @@
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Styling;
 
-namespace GiGraph.Dot.Entities.Edges.Collections
+namespace GiGraph.Dot.Entities.Edges.Collections;
+
+public partial class DotEdgeCollection : IDotStylableEdge
 {
-    public partial class DotEdgeCollection : IDotStylableEdge
-    {
-        void IDotStylableEdge.SetStyle(DotLineStyle style) => Style.LineStyle = style;
-        void IDotStylableEdge.SetColor(DotColorDefinition color) => Color = color;
-        void IDotStylableEdge.SetWidth(double? width) => Width = width;
-    }
+    void IDotStylableEdge.SetStyle(DotLineStyle style) => Style.LineStyle = style;
+    void IDotStylableEdge.SetColor(DotColorDefinition color) => Color = color;
+    void IDotStylableEdge.SetWidth(double? width) => Width = width;
 }

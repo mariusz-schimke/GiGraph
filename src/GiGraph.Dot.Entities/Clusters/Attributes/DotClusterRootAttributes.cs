@@ -13,78 +13,77 @@ using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Ranks;
 using GiGraph.Dot.Types.Styling;
 
-namespace GiGraph.Dot.Entities.Clusters.Attributes
+namespace GiGraph.Dot.Entities.Clusters.Attributes;
+
+public class DotClusterRootAttributes : DotClusterNodeRootCommonAttributes<IDotClusterAttributes, DotClusterRootAttributes>, IDotClusterRootAttributes
 {
-    public class DotClusterRootAttributes : DotClusterNodeRootCommonAttributes<IDotClusterAttributes, DotClusterRootAttributes>, IDotClusterRootAttributes
-    {
-        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
 
-        public DotClusterRootAttributes(DotAttributeCollection attributes)
-            : this(
-                attributes,
-                AttributeKeyLookup,
-                new DotHyperlinkAttributes(attributes),
-                new DotFontAttributes(attributes),
-                new DotClusterStyleAttributeOptions(attributes),
-                new DotSvgStyleSheetAttributes(attributes),
-                new DotLabelAlignmentAttributes(attributes)
-            )
-        {
-        }
-
-        protected DotClusterRootAttributes(
-            DotAttributeCollection attributes,
-            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-            DotHyperlinkAttributes hyperlinkAttributes,
-            DotFontAttributes fontAttributes,
-            DotClusterStyleAttributeOptions styleAttributeOptions,
-            DotSvgStyleSheetAttributes svgStyleSheetAttributes,
-            DotLabelAlignmentAttributes labelAlignmentAttributes
+    public DotClusterRootAttributes(DotAttributeCollection attributes)
+        : this(
+            attributes,
+            AttributeKeyLookup,
+            new DotHyperlinkAttributes(attributes),
+            new DotFontAttributes(attributes),
+            new DotClusterStyleAttributeOptions(attributes),
+            new DotSvgStyleSheetAttributes(attributes),
+            new DotLabelAlignmentAttributes(attributes)
         )
-            : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
-        {
-            Font = fontAttributes;
-            Style = styleAttributeOptions;
-            LabelAlignment = labelAlignmentAttributes;
-        }
+    {
+    }
 
-        public DotFontAttributes Font { get; }
-        public DotClusterStyleAttributeOptions Style { get; }
-        public DotLabelAlignmentAttributes LabelAlignment { get; }
+    protected DotClusterRootAttributes(
+        DotAttributeCollection attributes,
+        Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
+        DotHyperlinkAttributes hyperlinkAttributes,
+        DotFontAttributes fontAttributes,
+        DotClusterStyleAttributeOptions styleAttributeOptions,
+        DotSvgStyleSheetAttributes svgStyleSheetAttributes,
+        DotLabelAlignmentAttributes labelAlignmentAttributes
+    )
+        : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
+    {
+        Font = fontAttributes;
+        Style = styleAttributeOptions;
+        LabelAlignment = labelAlignmentAttributes;
+    }
 
-        [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
-        DotStyles? IDotClusterAttributes.Style
-        {
-            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
-        }
+    public DotFontAttributes Font { get; }
+    public DotClusterStyleAttributeOptions Style { get; }
+    public DotLabelAlignmentAttributes LabelAlignment { get; }
 
-        [DotAttributeKey(DotAttributeKeys.Rank)]
-        public virtual DotRank? NodeRank
-        {
-            get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
-        }
+    [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
+    DotStyles? IDotClusterAttributes.Style
+    {
+        get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.PenColor)]
-        public virtual DotColor BorderColor
-        {
-            get => GetValueAsColor(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.Rank)]
+    public virtual DotRank? NodeRank
+    {
+        get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.BgColor)]
-        public virtual DotColorDefinition BackgroundColor
-        {
-            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.PenColor)]
+    public virtual DotColor BorderColor
+    {
+        get => GetValueAsColor(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.Peripheries)]
-        public virtual int? Peripheries
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.BgColor)]
+    public virtual DotColorDefinition BackgroundColor
+    {
+        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
+
+    [DotAttributeKey(DotAttributeKeys.Peripheries)]
+    public virtual int? Peripheries
+    {
+        get => GetValueAsInt(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
     }
 }

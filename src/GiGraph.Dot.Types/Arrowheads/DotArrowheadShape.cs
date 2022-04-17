@@ -1,47 +1,46 @@
 ﻿using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Types.Arrowheads
+namespace GiGraph.Dot.Types.Arrowheads;
+
+/// <summary>
+///     The arrowhead shape. See the
+///     <see href="https://www.graphviz.org/doc/info/arrows.html">
+///         documentation
+///     </see>
+///     to view how individual shapes are visualized.
+/// </summary>
+public enum DotArrowheadShape
 {
-    /// <summary>
-    ///     The arrowhead shape. See the
-    ///     <see href="https://www.graphviz.org/doc/info/arrows.html">
-    ///         documentation
-    ///     </see>
-    ///     to view how individual shapes are visualized.
-    /// </summary>
-    public enum DotArrowheadShape
-    {
-        [DotAttributeValue("none")]
-        None,
+    [DotAttributeValue("none")]
+    None,
 
-        [DotAttributeValue("normal")]
-        Normal,
+    [DotAttributeValue("normal")]
+    Normal,
 
-        [DotAttributeValue("inv")]
-        InvertedNormal,
+    [DotAttributeValue("inv")]
+    InvertedNormal,
 
-        [DotAttributeValue("box")]
-        Box,
+    [DotAttributeValue("box")]
+    Box,
 
-        [DotAttributeValue("crow")]
-        Crow,
+    [DotAttributeValue("crow")]
+    Crow,
 
-        [DotAttributeValue("curve")]
-        Curve,
+    [DotAttributeValue("curve")]
+    Curve,
 
-        [DotAttributeValue("icurve")]
-        InvertedCurve,
+    [DotAttributeValue("icurve")]
+    InvertedCurve,
 
-        [DotAttributeValue("diamond")]
-        Diamond,
+    [DotAttributeValue("diamond")]
+    Diamond,
 
-        [DotAttributeValue("dot")]
-        Dot,
+    [DotAttributeValue("dot")]
+    Dot,
 
-        [DotAttributeValue("tee")]
-        Tee,
+    [DotAttributeValue("tee")]
+    Tee,
 
-        [DotAttributeValue("vee")]
-        Vee
-    }
+    [DotAttributeValue("vee")]
+    Vee
 }

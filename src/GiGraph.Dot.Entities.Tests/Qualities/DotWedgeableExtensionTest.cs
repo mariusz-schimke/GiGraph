@@ -6,56 +6,55 @@ using GiGraph.Dot.Types.Nodes;
 using Snapshooter.Xunit;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests.Qualities
+namespace GiGraph.Dot.Entities.Tests.Qualities;
+
+public class DotWedgeableExtensionTest
 {
-    public class DotWedgeableExtensionTest
+    [Fact]
+    public void sets_wedged_fill_on_individual_nodes()
     {
-        [Fact]
-        public void sets_wedged_fill_on_individual_nodes()
-        {
-            var graph = new DotGraph();
+        var graph = new DotGraph();
 
-            graph.Nodes.Add("node1").SetWedgedFill(Color.Red, Color.Blue);
-            graph.Nodes.Add("node2").SetWedgedFill(new DotMultiColor(Color.Red, Color.Blue));
+        graph.Nodes.Add("node1").SetWedgedFill(Color.Red, Color.Blue);
+        graph.Nodes.Add("node2").SetWedgedFill(new DotMultiColor(Color.Red, Color.Blue));
 
-            graph.Nodes.Add("node3").SetWedgedFill(DotNodeShape.Rect, Color.Red, Color.Blue);
-            graph.Nodes.Add("node4").SetWedgedFill(DotNodeShape.Rectangle, new DotMultiColor(Color.Red, Color.Blue));
+        graph.Nodes.Add("node3").SetWedgedFill(DotNodeShape.Rect, Color.Red, Color.Blue);
+        graph.Nodes.Add("node4").SetWedgedFill(DotNodeShape.Rectangle, new DotMultiColor(Color.Red, Color.Blue));
 
-            Snapshot.Match(graph.Build(), "wedged_fill_on_individual_nodes");
-        }
+        Snapshot.Match(graph.Build(), "wedged_fill_on_individual_nodes");
+    }
 
-        [Fact]
-        public void sets_wedged_fill_on_individual_node_groups()
-        {
-            var graph = new DotGraph();
+    [Fact]
+    public void sets_wedged_fill_on_individual_node_groups()
+    {
+        var graph = new DotGraph();
 
-            graph.Nodes.AddGroup("node1", "node2").SetWedgedFill(Color.Red, Color.Blue);
-            graph.Nodes.AddGroup("node3", "node4").SetWedgedFill(new DotMultiColor(Color.Red, Color.Blue));
+        graph.Nodes.AddGroup("node1", "node2").SetWedgedFill(Color.Red, Color.Blue);
+        graph.Nodes.AddGroup("node3", "node4").SetWedgedFill(new DotMultiColor(Color.Red, Color.Blue));
 
-            graph.Nodes.AddGroup("node5", "node6").SetWedgedFill(DotNodeShape.Rect, Color.Red, Color.Blue);
-            graph.Nodes.AddGroup("node7", "node8").SetWedgedFill(DotNodeShape.Rectangle, new DotMultiColor(Color.Red, Color.Blue));
+        graph.Nodes.AddGroup("node5", "node6").SetWedgedFill(DotNodeShape.Rect, Color.Red, Color.Blue);
+        graph.Nodes.AddGroup("node7", "node8").SetWedgedFill(DotNodeShape.Rectangle, new DotMultiColor(Color.Red, Color.Blue));
 
-            Snapshot.Match(graph.Build(), "wedged_fill_on_individual_node_groups");
-        }
+        Snapshot.Match(graph.Build(), "wedged_fill_on_individual_node_groups");
+    }
 
-        [Fact]
-        public void sets_wedged_fill_on_node_collection()
-        {
-            var graph = new DotGraph();
-            graph.Nodes.SetWedgedFill(Color.Red, Color.Blue);
-            Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_params");
+    [Fact]
+    public void sets_wedged_fill_on_node_collection()
+    {
+        var graph = new DotGraph();
+        graph.Nodes.SetWedgedFill(Color.Red, Color.Blue);
+        Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_params");
 
-            graph = new DotGraph();
-            graph.Nodes.SetWedgedFill(new DotMultiColor(Color.Red, Color.Blue));
-            Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_multicolor");
+        graph = new DotGraph();
+        graph.Nodes.SetWedgedFill(new DotMultiColor(Color.Red, Color.Blue));
+        Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_multicolor");
 
-            graph = new DotGraph();
-            graph.Nodes.SetWedgedFill(DotNodeShape.Rect, Color.Red, Color.Blue);
-            Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_params_and_shape");
+        graph = new DotGraph();
+        graph.Nodes.SetWedgedFill(DotNodeShape.Rect, Color.Red, Color.Blue);
+        Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_params_and_shape");
 
-            graph = new DotGraph();
-            graph.Nodes.SetWedgedFill(DotNodeShape.Rectangle, new DotMultiColor(Color.Red, Color.Blue));
-            Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_multicolor_and_shape");
-        }
+        graph = new DotGraph();
+        graph.Nodes.SetWedgedFill(DotNodeShape.Rectangle, new DotMultiColor(Color.Red, Color.Blue));
+        Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_multicolor_and_shape");
     }
 }

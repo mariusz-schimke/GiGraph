@@ -1,8 +1,7 @@
-﻿namespace GiGraph.Dot.Output.Writers.Subgraphs
+﻿namespace GiGraph.Dot.Output.Writers.Subgraphs;
+
+public interface IDotSubgraphWriterRoot : IDotEntityWriter
 {
-    public interface IDotSubgraphWriterRoot : IDotEntityWriter
-    {
-        IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration);
-        void EndSubgraph();
-    }
+    IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration);
+    void EndSubgraph();
 }

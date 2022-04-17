@@ -1,13 +1,12 @@
-﻿namespace GiGraph.Dot.Output.Options
+﻿namespace GiGraph.Dot.Output.Options;
+
+public partial class DotFormattingOptions
 {
-    public partial class DotFormattingOptions
+    public class NodeOptions
     {
-        public class NodeOptions
-        {
-            /// <summary>
-            ///     Gets or sets a value indicating if node attributes should be written in a single line.
-            /// </summary>
-            public bool SingleLineAttributeLists { get; set; } = true;
-        }
+        /// <summary>
+        ///     Gets or sets a value indicating if node attributes should be written in a single line.
+        /// </summary>
+        public bool SingleLineAttributeLists { get; set; } = true;
     }
 }

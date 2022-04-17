@@ -3,33 +3,32 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 
-namespace GiGraph.Dot.Entities.Clusters.Attributes
+namespace GiGraph.Dot.Entities.Clusters.Attributes;
+
+public interface IDotClusterRootAttributes : IDotClusterAttributes
 {
-    public interface IDotClusterRootAttributes : IDotClusterAttributes
-    {
-        /// <summary>
-        ///     Font attributes.
-        /// </summary>
-        DotFontAttributes Font { get; }
+    /// <summary>
+    ///     Font attributes.
+    /// </summary>
+    DotFontAttributes Font { get; }
 
-        /// <summary>
-        ///     Style options.
-        /// </summary>
-        new DotClusterStyleAttributeOptions Style { get; }
+    /// <summary>
+    ///     Style options.
+    /// </summary>
+    new DotClusterStyleAttributeOptions Style { get; }
 
-        /// <summary>
-        ///     Horizontal and vertical label alignment options.
-        /// </summary>
-        DotLabelAlignmentAttributes LabelAlignment { get; }
+    /// <summary>
+    ///     Horizontal and vertical label alignment options.
+    /// </summary>
+    DotLabelAlignmentAttributes LabelAlignment { get; }
 
-        /// <summary>
-        ///     Style sheet attributes used for SVG output.
-        /// </summary>
-        DotSvgStyleSheetAttributes SvgStyleSheet { get; }
+    /// <summary>
+    ///     Style sheet attributes used for SVG output.
+    /// </summary>
+    DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
-        /// <summary>
-        ///     Hyperlink attributes.
-        /// </summary>
-        DotHyperlinkAttributes Hyperlink { get; }
-    }
+    /// <summary>
+    ///     Hyperlink attributes.
+    /// </summary>
+    DotHyperlinkAttributes Hyperlink { get; }
 }

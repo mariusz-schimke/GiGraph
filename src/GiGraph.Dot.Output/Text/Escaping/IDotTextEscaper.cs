@@ -1,16 +1,15 @@
-﻿namespace GiGraph.Dot.Output.Text.Escaping
+﻿namespace GiGraph.Dot.Output.Text.Escaping;
+
+/// <summary>
+///     Escapes text.
+/// </summary>
+public interface IDotTextEscaper
 {
     /// <summary>
-    ///     Escapes text.
+    ///     Escapes the specified text.
     /// </summary>
-    public interface IDotTextEscaper
-    {
-        /// <summary>
-        ///     Escapes the specified text.
-        /// </summary>
-        /// <param name="value">
-        ///     The text to escape.
-        /// </param>
-        string Escape(string value);
-    }
+    /// <param name="value">
+    ///     The text to escape.
+    /// </param>
+    string Escape(string value);
 }

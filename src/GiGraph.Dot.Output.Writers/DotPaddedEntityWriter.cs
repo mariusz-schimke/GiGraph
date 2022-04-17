@@ -1,52 +1,51 @@
 ﻿using GiGraph.Dot.Output.Writers.TokenWriter;
 
-namespace GiGraph.Dot.Output.Writers
+namespace GiGraph.Dot.Output.Writers;
+
+public class DotPaddedEntityWriter
 {
-    public class DotPaddedEntityWriter
+    protected readonly DotTokenWriter _tokenWriter;
+    protected bool? _isPadded;
+    protected bool _prependIndentation;
+
+    public DotPaddedEntityWriter(DotTokenWriter tokenWriter)
     {
-        protected readonly DotTokenWriter _tokenWriter;
-        protected bool? _isPadded;
-        protected bool _prependIndentation;
+        _tokenWriter = tokenWriter;
+    }
 
-        public DotPaddedEntityWriter(DotTokenWriter tokenWriter)
-        {
-            _tokenWriter = tokenWriter;
-        }
+    public virtual DotTokenWriter BeginEntity(bool enforcePadding = false)
+    {
+        return _tokenWriter.CloneWith(
+            tw => tw.OnBeforeAppendToken = (sender, e) =>
+            {
+                tw.OnBeforeAppendToken = null;
+                enforcePadding |= e.IsCommentStartToken;
 
-        public virtual DotTokenWriter BeginEntity(bool enforcePadding = false)
-        {
-            return _tokenWriter.CloneWith(
-                tw => tw.OnBeforeAppendToken = (sender, e) =>
+                if (false == _isPadded && enforcePadding)
                 {
-                    tw.OnBeforeAppendToken = null;
-                    enforcePadding |= e.IsCommentStartToken;
+                    tw.NewLine();
+                }
+                else if (_prependIndentation)
+                {
+                    tw.Indentation();
+                }
 
-                    if (false == _isPadded && enforcePadding)
-                    {
-                        tw.NewLine();
-                    }
-                    else if (_prependIndentation)
-                    {
-                        tw.Indentation();
-                    }
+                _isPadded = enforcePadding;
+            });
+    }
 
-                    _isPadded = enforcePadding;
-                });
-        }
-
-        public virtual void EndEntity(bool linger = true, bool enforceLineBreak = true)
+    public virtual void EndEntity(bool linger = true, bool enforceLineBreak = true)
+    {
+        // the assumption is that a commented attribute needs to have an empty line above and below
+        if (true == _isPadded)
         {
-            // the assumption is that a commented attribute needs to have an empty line above and below
-            if (true == _isPadded)
-            {
-                _tokenWriter.EmptyLine(linger, enforceLineBreak);
-                _prependIndentation = false;
-            }
-            else
-            {
-                _tokenWriter.LineBreak(linger && !enforceLineBreak);
-                _prependIndentation = true;
-            }
+            _tokenWriter.EmptyLine(linger, enforceLineBreak);
+            _prependIndentation = false;
+        }
+        else
+        {
+            _tokenWriter.LineBreak(linger && !enforceLineBreak);
+            _prependIndentation = true;
         }
     }
 }

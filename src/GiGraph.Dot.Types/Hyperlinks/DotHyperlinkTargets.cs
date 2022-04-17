@@ -1,13 +1,12 @@
-namespace GiGraph.Dot.Types.Hyperlinks
+namespace GiGraph.Dot.Types.Hyperlinks;
+
+/// <summary>
+///     Specifies where to open linked documents.
+/// </summary>
+public class DotHyperlinkTargets
 {
     /// <summary>
-    ///     Specifies where to open linked documents.
+    ///     Opens a new window if it doesn't already exist, or reuses it if it does.
     /// </summary>
-    public class DotHyperlinkTargets
-    {
-        /// <summary>
-        ///     Opens a new window if it doesn't already exist, or reuses it if it does.
-        /// </summary>
-        public const string NewWindow = "_graphviz";
-    }
+    public const string NewWindow = "_graphviz";
 }

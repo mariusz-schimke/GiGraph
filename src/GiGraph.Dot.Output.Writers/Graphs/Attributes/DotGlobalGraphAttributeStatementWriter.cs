@@ -1,28 +1,27 @@
 ﻿using GiGraph.Dot.Output.Writers.Attributes;
 using GiGraph.Dot.Output.Writers.TokenWriter;
 
-namespace GiGraph.Dot.Output.Writers.Graphs.Attributes
+namespace GiGraph.Dot.Output.Writers.Graphs.Attributes;
+
+public class DotGlobalGraphAttributeStatementWriter : DotEntityStatementWriter, IDotGlobalGraphAttributeStatementWriter
 {
-    public class DotGlobalGraphAttributeStatementWriter : DotEntityStatementWriter, IDotGlobalGraphAttributeStatementWriter
+    public DotGlobalGraphAttributeStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool useStatementDelimiter)
+        : base(tokenWriter, configuration, useStatementDelimiter)
     {
-        public DotGlobalGraphAttributeStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool useStatementDelimiter)
-            : base(tokenWriter, configuration, useStatementDelimiter)
-        {
-        }
+    }
 
-        public virtual IDotAttributeWriter BeginAttributeStatement()
-        {
-            return new DotAttributeWriter(_paddedEntityWriter.BeginEntity(), _configuration);
-        }
+    public virtual IDotAttributeWriter BeginAttributeStatement()
+    {
+        return new DotAttributeWriter(_paddedEntityWriter.BeginEntity(), _configuration);
+    }
 
-        public virtual void EndAttributeStatement()
-        {
-            EndStatement();
-        }
+    public virtual void EndAttributeStatement()
+    {
+        EndStatement();
+    }
 
-        public override void EndComment()
-        {
-            EmptyLine();
-        }
+    public override void EndComment()
+    {
+        EmptyLine();
     }
 }

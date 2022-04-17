@@ -1,7 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Nodes.Attributes
+﻿namespace GiGraph.Dot.Output.Writers.Nodes.Attributes;
+
+public interface IDotGlobalNodeAttributesWriter : IDotEntityWithAttributeListWriter
 {
-    public interface IDotGlobalNodeAttributesWriter : IDotEntityWithAttributeListWriter
-    {
-        void WriteNodeKeyword();
-    }
+    void WriteNodeKeyword();
 }
