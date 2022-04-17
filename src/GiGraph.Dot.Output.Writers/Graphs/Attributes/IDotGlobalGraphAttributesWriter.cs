@@ -1,7 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Graphs.Attributes
+﻿namespace GiGraph.Dot.Output.Writers.Graphs.Attributes;
+
+public interface IDotGlobalGraphAttributesWriter : IDotEntityWithAttributeListWriter
 {
-    public interface IDotGlobalGraphAttributesWriter : IDotEntityWithAttributeListWriter
-    {
-        void WriteGraphKeyword();
-    }
+    void WriteGraphKeyword();
 }

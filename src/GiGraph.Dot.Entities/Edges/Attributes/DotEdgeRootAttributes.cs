@@ -15,167 +15,166 @@ using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Styling;
 
-namespace GiGraph.Dot.Entities.Edges.Attributes
+namespace GiGraph.Dot.Entities.Edges.Attributes;
+
+public class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotEdgeAttributes, DotEdgeRootAttributes>, IDotEdgeRootAttributes
 {
-    public class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotEdgeAttributes, DotEdgeRootAttributes>, IDotEdgeRootAttributes
-    {
-        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().BuildLazy();
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().BuildLazy();
 
-        public DotEdgeRootAttributes(DotAttributeCollection attributes)
-            : this(
-                attributes,
-                AttributeKeyLookup,
-                new DotEdgeHeadAttributes(attributes),
-                new DotEdgeTailAttributes(attributes),
-                new DotFontAttributes(attributes),
-                new DotHyperlinkAttributes(attributes),
-                new DotEdgeEndpointLabelsAttributes(attributes),
-                new DotEdgeLabelHyperlinkAttributes(attributes),
-                new DotEdgeHyperlinkAttributes(attributes),
-                new DotEdgeStyleAttributeOptions(attributes),
-                new DotSvgStyleSheetAttributes(attributes)
-            )
-        {
-        }
-
-        protected DotEdgeRootAttributes(
-            DotAttributeCollection attributes,
-            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-            DotEdgeHeadAttributes headAttributes,
-            DotEdgeTailAttributes tailAttributes,
-            DotFontAttributes fontAttributes,
-            DotHyperlinkAttributes hyperlinkAttributes,
-            DotEdgeEndpointLabelsAttributes endpointLabelsAttributes,
-            DotEdgeLabelHyperlinkAttributes labelHyperlinkAttributes,
-            DotEdgeHyperlinkAttributes edgeHyperlinkAttributes,
-            DotEdgeStyleAttributeOptions edgeStyleAttributeOptions,
-            DotSvgStyleSheetAttributes svgStyleSheetAttributes
+    public DotEdgeRootAttributes(DotAttributeCollection attributes)
+        : this(
+            attributes,
+            AttributeKeyLookup,
+            new DotEdgeHeadAttributes(attributes),
+            new DotEdgeTailAttributes(attributes),
+            new DotFontAttributes(attributes),
+            new DotHyperlinkAttributes(attributes),
+            new DotEdgeEndpointLabelsAttributes(attributes),
+            new DotEdgeLabelHyperlinkAttributes(attributes),
+            new DotEdgeHyperlinkAttributes(attributes),
+            new DotEdgeStyleAttributeOptions(attributes),
+            new DotSvgStyleSheetAttributes(attributes)
         )
-            : base(attributes, attributeKeyLookup, hyperlinkAttributes)
-        {
-            Head = headAttributes;
-            Tail = tailAttributes;
-            Font = fontAttributes;
-            Style = edgeStyleAttributeOptions;
-            SvgStyleSheet = svgStyleSheetAttributes;
-            EndpointLabels = endpointLabelsAttributes;
-            EdgeHyperlink = edgeHyperlinkAttributes;
-            LabelHyperlink = labelHyperlinkAttributes;
-        }
+    {
+    }
 
-        public DotEdgeHeadAttributes Head { get; }
-        public DotEdgeTailAttributes Tail { get; }
+    protected DotEdgeRootAttributes(
+        DotAttributeCollection attributes,
+        Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
+        DotEdgeHeadAttributes headAttributes,
+        DotEdgeTailAttributes tailAttributes,
+        DotFontAttributes fontAttributes,
+        DotHyperlinkAttributes hyperlinkAttributes,
+        DotEdgeEndpointLabelsAttributes endpointLabelsAttributes,
+        DotEdgeLabelHyperlinkAttributes labelHyperlinkAttributes,
+        DotEdgeHyperlinkAttributes edgeHyperlinkAttributes,
+        DotEdgeStyleAttributeOptions edgeStyleAttributeOptions,
+        DotSvgStyleSheetAttributes svgStyleSheetAttributes
+    )
+        : base(attributes, attributeKeyLookup, hyperlinkAttributes)
+    {
+        Head = headAttributes;
+        Tail = tailAttributes;
+        Font = fontAttributes;
+        Style = edgeStyleAttributeOptions;
+        SvgStyleSheet = svgStyleSheetAttributes;
+        EndpointLabels = endpointLabelsAttributes;
+        EdgeHyperlink = edgeHyperlinkAttributes;
+        LabelHyperlink = labelHyperlinkAttributes;
+    }
 
-        public DotFontAttributes Font { get; }
-        public DotEdgeEndpointLabelsAttributes EndpointLabels { get; }
-        public DotEdgeHyperlinkAttributes EdgeHyperlink { get; }
-        public DotEdgeLabelHyperlinkAttributes LabelHyperlink { get; }
-        public DotEdgeStyleAttributeOptions Style { get; }
-        public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
+    public DotEdgeHeadAttributes Head { get; }
+    public DotEdgeTailAttributes Tail { get; }
 
-        [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
-        DotStyles? IDotEdgeAttributes.Style
-        {
-            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
-        }
+    public DotFontAttributes Font { get; }
+    public DotEdgeEndpointLabelsAttributes EndpointLabels { get; }
+    public DotEdgeHyperlinkAttributes EdgeHyperlink { get; }
+    public DotEdgeLabelHyperlinkAttributes LabelHyperlink { get; }
+    public DotEdgeStyleAttributeOptions Style { get; }
+    public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
-        [DotAttributeKey(DotAttributeKeys.Comment)]
-        public virtual string Comment
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
+    DotStyles? IDotEdgeAttributes.Style
+    {
+        get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.Tooltip)]
-        public virtual DotEscapeString Tooltip
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.Comment)]
+    public virtual string Comment
+    {
+        get => GetValueAsString(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.Color)]
-        public virtual DotColorDefinition Color
-        {
-            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.Tooltip)]
+    public virtual DotEscapeString Tooltip
+    {
+        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.FillColor)]
-        public virtual DotColorDefinition FillColor
-        {
-            get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.Color)]
+    public virtual DotColorDefinition Color
+    {
+        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.XLabel)]
-        public virtual DotLabel ExternalLabel
-        {
-            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.FillColor)]
+    public virtual DotColorDefinition FillColor
+    {
+        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.PenWidth)]
-        public virtual double? Width
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.XLabel)]
+    public virtual DotLabel ExternalLabel
+    {
+        get => GetValueAsLabel(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.Weight)]
-        public virtual double? Weight
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.PenWidth)]
+    public virtual double? Width
+    {
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.Len)]
-        public virtual double? Length
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.Weight)]
+    public virtual double? Weight
+    {
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.MinLen)]
-        public virtual int? MinLength
-        {
-            get => GetValueAsInt(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.Len)]
+    public virtual double? Length
+    {
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.ArrowSize)]
-        public virtual double? ArrowheadScale
-        {
-            get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.MinLen)]
+    public virtual int? MinLength
+    {
+        get => GetValueAsInt(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.Dir)]
-        public virtual DotEdgeDirections? Directions
-        {
-            get => GetValueAs<DotEdgeDirections>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
-        }
+    [DotAttributeKey(DotAttributeKeys.ArrowSize)]
+    public virtual double? ArrowheadScale
+    {
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.Decorate)]
-        public virtual bool? AttachLabel
-        {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.Dir)]
+    public virtual DotEdgeDirections? Directions
+    {
+        get => GetValueAs<DotEdgeDirections>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.LabelFloat)]
-        public virtual bool? AllowLabelFloat
-        {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.Decorate)]
+    public virtual bool? AttachLabel
+    {
+        get => GetValueAsBool(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.Constraint)]
-        public virtual bool? Constrain
-        {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.LabelFloat)]
+    public virtual bool? AllowLabelFloat
+    {
+        get => GetValueAsBool(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
+
+    [DotAttributeKey(DotAttributeKeys.Constraint)]
+    public virtual bool? Constrain
+    {
+        get => GetValueAsBool(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
     }
 }

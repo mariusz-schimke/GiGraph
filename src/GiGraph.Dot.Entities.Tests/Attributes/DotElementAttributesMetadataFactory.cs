@@ -7,23 +7,22 @@ using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Entities.Tests.Attributes
-{
-    public static class DotElementAttributesMetadataFactory
-    {
-        public static IEnumerable<(DotCompatibleElements Element, Dictionary<string, DotAttributePropertyMetadata> Attributes)> Create()
-        {
-            var result = new List<(DotCompatibleElements, Dictionary<string, DotAttributePropertyMetadata>)>
-            {
-                (DotCompatibleElements.Node, new DotNode("").Attributes.GetMetadataDictionary()),
-                (DotCompatibleElements.Subgraph, new DotSubgraph().Attributes.GetMetadataDictionary()),
-                (DotCompatibleElements.Cluster, new DotCluster("").Attributes.GetMetadataDictionary()),
-                (DotCompatibleElements.Graph, new DotGraph().Attributes.GetMetadataDictionary()),
-                (DotCompatibleElements.Edge, new DotEdge("").Attributes.GetMetadataDictionary())
-            };
+namespace GiGraph.Dot.Entities.Tests.Attributes;
 
-            result.Reverse();
-            return result;
-        }
+public static class DotElementAttributesMetadataFactory
+{
+    public static IEnumerable<(DotCompatibleElements Element, Dictionary<string, DotAttributePropertyMetadata> Attributes)> Create()
+    {
+        var result = new List<(DotCompatibleElements, Dictionary<string, DotAttributePropertyMetadata>)>
+        {
+            (DotCompatibleElements.Node, new DotNode("").Attributes.GetMetadataDictionary()),
+            (DotCompatibleElements.Subgraph, new DotSubgraph().Attributes.GetMetadataDictionary()),
+            (DotCompatibleElements.Cluster, new DotCluster("").Attributes.GetMetadataDictionary()),
+            (DotCompatibleElements.Graph, new DotGraph().Attributes.GetMetadataDictionary()),
+            (DotCompatibleElements.Edge, new DotEdge("").Attributes.GetMetadataDictionary())
+        };
+
+        result.Reverse();
+        return result;
     }
 }

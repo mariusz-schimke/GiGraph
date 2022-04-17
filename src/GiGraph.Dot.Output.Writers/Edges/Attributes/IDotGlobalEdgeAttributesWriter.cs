@@ -1,7 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Edges.Attributes
+﻿namespace GiGraph.Dot.Output.Writers.Edges.Attributes;
+
+public interface IDotGlobalEdgeAttributesWriter : IDotEntityWithAttributeListWriter
 {
-    public interface IDotGlobalEdgeAttributesWriter : IDotEntityWithAttributeListWriter
-    {
-        void WriteEdgeKeyword();
-    }
+    void WriteEdgeKeyword();
 }

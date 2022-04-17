@@ -14,107 +14,106 @@ using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Styling;
 
-namespace GiGraph.Dot.Entities.Nodes.Attributes
+namespace GiGraph.Dot.Entities.Nodes.Attributes;
+
+public class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<IDotNodeAttributes, DotNodeRootAttributes>, IDotNodeRootAttributes
 {
-    public class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<IDotNodeAttributes, DotNodeRootAttributes>, IDotNodeRootAttributes
-    {
-        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().BuildLazy();
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().BuildLazy();
 
-        public DotNodeRootAttributes(DotAttributeCollection attributes)
-            : this(
-                attributes,
-                AttributeKeyLookup,
-                new DotHyperlinkAttributes(attributes),
-                new DotFontAttributes(attributes),
-                new DotNodeStyleAttributeOptions(attributes),
-                new DotNodeImageAttributes(attributes),
-                new DotNodeGeometryAttributes(attributes),
-                new DotNodeSizeAttributes(attributes),
-                new DotSvgStyleSheetAttributes(attributes)
-            )
-        {
-        }
-
-        protected DotNodeRootAttributes(
-            DotAttributeCollection attributes,
-            Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-            DotHyperlinkAttributes hyperlinkAttributes,
-            DotFontAttributes fontAttributes,
-            DotNodeStyleAttributeOptions styleAttributeOptions,
-            DotNodeImageAttributes imageAttributes,
-            DotNodeGeometryAttributes geometryAttributes,
-            DotNodeSizeAttributes sizeAttributes,
-            DotSvgStyleSheetAttributes svgStyleSheetAttributes
+    public DotNodeRootAttributes(DotAttributeCollection attributes)
+        : this(
+            attributes,
+            AttributeKeyLookup,
+            new DotHyperlinkAttributes(attributes),
+            new DotFontAttributes(attributes),
+            new DotNodeStyleAttributeOptions(attributes),
+            new DotNodeImageAttributes(attributes),
+            new DotNodeGeometryAttributes(attributes),
+            new DotNodeSizeAttributes(attributes),
+            new DotSvgStyleSheetAttributes(attributes)
         )
-            : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
-        {
-            Font = fontAttributes;
-            Style = styleAttributeOptions;
-            Image = imageAttributes;
-            Geometry = geometryAttributes;
-            Size = sizeAttributes;
-        }
+    {
+    }
 
-        public DotFontAttributes Font { get; }
-        public DotNodeStyleAttributeOptions Style { get; }
-        public DotNodeSizeAttributes Size { get; }
-        public DotNodeGeometryAttributes Geometry { get; }
-        public DotNodeImageAttributes Image { get; }
+    protected DotNodeRootAttributes(
+        DotAttributeCollection attributes,
+        Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
+        DotHyperlinkAttributes hyperlinkAttributes,
+        DotFontAttributes fontAttributes,
+        DotNodeStyleAttributeOptions styleAttributeOptions,
+        DotNodeImageAttributes imageAttributes,
+        DotNodeGeometryAttributes geometryAttributes,
+        DotNodeSizeAttributes sizeAttributes,
+        DotSvgStyleSheetAttributes svgStyleSheetAttributes
+    )
+        : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
+    {
+        Font = fontAttributes;
+        Style = styleAttributeOptions;
+        Image = imageAttributes;
+        Geometry = geometryAttributes;
+        Size = sizeAttributes;
+    }
 
-        [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
-        DotStyles? IDotNodeAttributes.Style
-        {
-            get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
-        }
+    public DotFontAttributes Font { get; }
+    public DotNodeStyleAttributeOptions Style { get; }
+    public DotNodeSizeAttributes Size { get; }
+    public DotNodeGeometryAttributes Geometry { get; }
+    public DotNodeImageAttributes Image { get; }
 
-        [DotAttributeKey(DotAttributeKeys.Comment)]
-        public virtual string Comment
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
+    DotStyles? IDotNodeAttributes.Style
+    {
+        get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.XLabel)]
-        public virtual DotLabel ExternalLabel
-        {
-            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.Comment)]
+    public virtual string Comment
+    {
+        get => GetValueAsString(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.LabelLoc)]
-        public virtual DotVerticalAlignment? LabelAlignment
-        {
-            get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
-        }
+    [DotAttributeKey(DotAttributeKeys.XLabel)]
+    public virtual DotLabel ExternalLabel
+    {
+        get => GetValueAsLabel(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.Ordering)]
-        public virtual DotEdgeOrderingMode? EdgeOrderingMode
-        {
-            get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
-        }
+    [DotAttributeKey(DotAttributeKeys.LabelLoc)]
+    public virtual DotVerticalAlignment? LabelAlignment
+    {
+        get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.Shape)]
-        public virtual DotNodeShape? Shape
-        {
-            get => GetValueAs<DotNodeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
-        }
+    [DotAttributeKey(DotAttributeKeys.Ordering)]
+    public virtual DotEdgeOrderingMode? EdgeOrderingMode
+    {
+        get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.Group)]
-        public virtual string GroupName
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.Shape)]
+    public virtual DotNodeShape? Shape
+    {
+        get => GetValueAs<DotNodeShape>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.Root)]
-        public virtual bool? IsRoot
-        {
-            get => GetValueAsBool(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.Group)]
+    public virtual string GroupName
+    {
+        get => GetValueAsString(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
+
+    [DotAttributeKey(DotAttributeKeys.Root)]
+    public virtual bool? IsRoot
+    {
+        get => GetValueAsBool(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
     }
 }

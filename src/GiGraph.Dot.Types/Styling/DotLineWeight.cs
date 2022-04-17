@@ -1,18 +1,17 @@
-namespace GiGraph.Dot.Types.Styling
+namespace GiGraph.Dot.Types.Styling;
+
+/// <summary>
+///     Line weight.
+/// </summary>
+public enum DotLineWeight
 {
     /// <summary>
-    ///     Line weight.
+    ///     A normal line weight.
     /// </summary>
-    public enum DotLineWeight
-    {
-        /// <summary>
-        ///     A normal line weight.
-        /// </summary>
-        Normal = 0,
+    Normal = 0,
 
-        /// <summary>
-        ///     A bold line style.
-        /// </summary>
-        Bold = DotStyles.Bold
-    }
+    /// <summary>
+    ///     A bold line style.
+    /// </summary>
+    Bold = DotStyles.Bold
 }

@@ -1,10 +1,9 @@
 ﻿using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Graphs;
 
-namespace GiGraph.Dot.Output.Generators.Graphs
+namespace GiGraph.Dot.Output.Generators.Graphs;
+
+public interface IDotGraphGeneratorBuilder
 {
-    public interface IDotGraphGeneratorBuilder
-    {
-        IDotEntityGenerator<IDotGraphWriterRoot> Build(DotSyntaxRules syntaxRules, DotSyntaxOptions options);
-    }
+    IDotEntityGenerator<IDotGraphWriterRoot> Build(DotSyntaxRules syntaxRules, DotSyntaxOptions options);
 }

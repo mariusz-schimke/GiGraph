@@ -3,50 +3,48 @@ using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Records;
 
-namespace GiGraph.Dot.Extensions
+namespace GiGraph.Dot.Extensions;
+// It extends DotNodeDefinition not DotNode because these extensions still make sense for DotNodeGroup
+// (a record may use placeholders, so even if the same record is assigned to all nodes in the group,
+// all of them will have different labels when visualized).
+
+/// <summary>
+///     Provides extension methods for <see cref="DotNodeDefinition" />.
+/// </summary>
+public static class DotNodeToRecordExtension
 {
-    // It extends DotNodeDefinition not DotNode because these extensions still make sense for DotNodeGroup
-    // (a record may use placeholders, so even if the same record is assigned to all nodes in the group,
-    // all of them will have different labels when visualized).
+    /// <summary>
+    ///     Converts the current node to a record-shaped node.
+    /// </summary>
+    /// <param name="node">
+    ///     The current node.
+    /// </param>
+    /// <param name="record">
+    ///     The record to use as the label of the node.
+    /// </param>
+    public static void ToRecordNode(this DotNodeDefinition node, DotRecord record)
+    {
+        node.Shape = DotNodeShape.Record;
+        node.Label = record;
+    }
 
     /// <summary>
-    ///     Provides extension methods for <see cref="DotNodeDefinition" />.
+    ///     Converts the current node to a record-shaped node composed using a builder.
     /// </summary>
-    public static class DotNodeToRecordExtension
+    /// <param name="node">
+    ///     The current node.
+    /// </param>
+    /// <param name="buildRecord">
+    ///     A method delegate that provides a record built with a specified builder.
+    /// </param>
+    /// <param name="flip">
+    ///     Determines whether to change orientation of the record.
+    /// </param>
+    public static void ToRecordNode(this DotNodeDefinition node, Action<DotRecordBuilder> buildRecord, bool flip = false)
     {
-        /// <summary>
-        ///     Converts the current node to a record-shaped node.
-        /// </summary>
-        /// <param name="node">
-        ///     The current node.
-        /// </param>
-        /// <param name="record">
-        ///     The record to use as the label of the node.
-        /// </param>
-        public static void ToRecordNode(this DotNodeDefinition node, DotRecord record)
-        {
-            node.Shape = DotNodeShape.Record;
-            node.Label = record;
-        }
+        var builder = new DotRecordBuilder();
+        buildRecord(builder);
 
-        /// <summary>
-        ///     Converts the current node to a record-shaped node composed using a builder.
-        /// </summary>
-        /// <param name="node">
-        ///     The current node.
-        /// </param>
-        /// <param name="buildRecord">
-        ///     A method delegate that provides a record built with a specified builder.
-        /// </param>
-        /// <param name="flip">
-        ///     Determines whether to change orientation of the record.
-        /// </param>
-        public static void ToRecordNode(this DotNodeDefinition node, Action<DotRecordBuilder> buildRecord, bool flip = false)
-        {
-            var builder = new DotRecordBuilder();
-            buildRecord(builder);
-
-            ToRecordNode(node, builder.Build(flip));
-        }
+        ToRecordNode(node, builder.Build(flip));
     }
 }

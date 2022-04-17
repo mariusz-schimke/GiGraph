@@ -5,54 +5,53 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Entities.Graphs.Attributes
+namespace GiGraph.Dot.Entities.Graphs.Attributes;
+
+public class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGraphSvgStyleSheetAttributes, DotGraphSvgStyleSheetAttributes>, IDotGraphSvgStyleSheetAttributes
 {
-    public class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGraphSvgStyleSheetAttributes, DotGraphSvgStyleSheetAttributes>, IDotGraphSvgStyleSheetAttributes
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphSvgStyleSheetAttributes, IDotGraphSvgStyleSheetAttributes>().BuildLazy();
+
+    public DotGraphSvgStyleSheetAttributes(DotAttributeCollection attributes)
+        : base(attributes, AttributeKeyLookup)
     {
-        private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphSvgStyleSheetAttributes, IDotGraphSvgStyleSheetAttributes>().BuildLazy();
+    }
 
-        public DotGraphSvgStyleSheetAttributes(DotAttributeCollection attributes)
-            : base(attributes, AttributeKeyLookup)
-        {
-        }
+    protected DotGraphSvgStyleSheetAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+        : base(attributes, attributeKeyLookup)
+    {
+    }
 
-        protected DotGraphSvgStyleSheetAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-            : base(attributes, attributeKeyLookup)
-        {
-        }
+    /// <inheritdoc cref="IDotGraphSvgStyleSheetAttributes.Url" />
+    [DotAttributeKey(DotAttributeKeys.SvgStyleSheet)]
+    public virtual string Url
+    {
+        get => GetValueAsString(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        /// <inheritdoc cref="IDotGraphSvgStyleSheetAttributes.Url" />
-        [DotAttributeKey(DotAttributeKeys.SvgStyleSheet)]
-        public virtual string Url
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    /// <summary>
+    ///     Sets style sheet attributes.
+    /// </summary>
+    /// <param name="url">
+    ///     The URL or pathname specifying an XML style sheet.
+    /// </param>
+    /// <param name="class">
+    ///     The CSS class to set.
+    /// </param>
+    public virtual void Set(string url, string @class)
+    {
+        Url = url;
+        Class = @class;
+    }
 
-        /// <summary>
-        ///     Sets style sheet attributes.
-        /// </summary>
-        /// <param name="url">
-        ///     The URL or pathname specifying an XML style sheet.
-        /// </param>
-        /// <param name="class">
-        ///     The CSS class to set.
-        /// </param>
-        public virtual void Set(string url, string @class)
-        {
-            Url = url;
-            Class = @class;
-        }
-
-        /// <summary>
-        ///     Copies style sheet attributes from the specified instance.
-        /// </summary>
-        /// <param name="attributes">
-        ///     The instance to copy the attributes from.
-        /// </param>
-        public virtual void Set(IDotGraphSvgStyleSheetAttributes attributes)
-        {
-            Set(attributes.Url, attributes.Class);
-        }
+    /// <summary>
+    ///     Copies style sheet attributes from the specified instance.
+    /// </summary>
+    /// <param name="attributes">
+    ///     The instance to copy the attributes from.
+    /// </param>
+    public virtual void Set(IDotGraphSvgStyleSheetAttributes attributes)
+    {
+        Set(attributes.Url, attributes.Class);
     }
 }

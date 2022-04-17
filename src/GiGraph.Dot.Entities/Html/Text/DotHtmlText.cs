@@ -4,53 +4,52 @@ using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Text;
 using GiGraph.Dot.Types.Alignment;
 
-namespace GiGraph.Dot.Entities.Html.Text
+namespace GiGraph.Dot.Entities.Html.Text;
+
+/// <summary>
+///     Textual content of an HTML element.
+/// </summary>
+public class DotHtmlText : DotHtmlEntity
 {
+    protected static readonly string[] LineBreaks = { DotNewLine.Windows, DotNewLine.Unix };
+    protected readonly string _text;
+
     /// <summary>
-    ///     Textual content of an HTML element.
+    ///     Initializes a new HTML text instance.
     /// </summary>
-    public class DotHtmlText : DotHtmlEntity
+    /// <param name="text">
+    ///     The text to initialize the instance with.
+    /// </param>
+    /// <param name="lineAlignment">
+    ///     Specifies horizontal placement of lines if multiline text is specified.
+    /// </param>
+    public DotHtmlText(string text, DotHorizontalAlignment? lineAlignment = null)
     {
-        protected static readonly string[] LineBreaks = { DotNewLine.Windows, DotNewLine.Unix };
-        protected readonly string _text;
+        _text = text;
+        LineAlignment = lineAlignment;
+    }
 
-        /// <summary>
-        ///     Initializes a new HTML text instance.
-        /// </summary>
-        /// <param name="text">
-        ///     The text to initialize the instance with.
-        /// </param>
-        /// <param name="lineAlignment">
-        ///     Specifies horizontal placement of lines if multiline text is specified.
-        /// </param>
-        public DotHtmlText(string text, DotHorizontalAlignment? lineAlignment = null)
-        {
-            _text = text;
-            LineAlignment = lineAlignment;
-        }
+    /// <summary>
+    ///     Specifies horizontal placement of lines if multiline text is specified.
+    /// </summary>
+    public DotHorizontalAlignment? LineAlignment { get; }
 
-        /// <summary>
-        ///     Specifies horizontal placement of lines if multiline text is specified.
-        /// </summary>
-        public DotHorizontalAlignment? LineAlignment { get; }
+    public override string ToString()
+    {
+        return _text;
+    }
 
-        public override string ToString()
-        {
-            return _text;
-        }
+    protected internal override string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+    {
+        var br = DotHtmlLineBreak.Html(LineAlignment, options, syntaxRules);
+        var escaped = syntaxRules.Attributes.Html.ElementTextContentEscaper.Escape(_text);
+        var lines = SplitMultiline(escaped, LineBreaks);
 
-        protected internal override string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-        {
-            var br = DotHtmlLineBreak.Html(LineAlignment, options, syntaxRules);
-            var escaped = syntaxRules.Attributes.Html.ElementTextContentEscaper.Escape(_text);
-            var lines = SplitMultiline(escaped, LineBreaks);
+        return string.Join(br, lines);
+    }
 
-            return string.Join(br, lines);
-        }
-
-        protected static string[] SplitMultiline(string text, string[] lineBreaks)
-        {
-            return text?.Split(lineBreaks, StringSplitOptions.None) ?? Array.Empty<string>();
-        }
+    protected static string[] SplitMultiline(string text, string[] lineBreaks)
+    {
+        return text?.Split(lineBreaks, StringSplitOptions.None) ?? Array.Empty<string>();
     }
 }

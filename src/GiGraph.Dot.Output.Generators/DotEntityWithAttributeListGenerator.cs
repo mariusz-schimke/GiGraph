@@ -7,25 +7,24 @@ using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Output.Writers;
 using GiGraph.Dot.Output.Writers.Attributes;
 
-namespace GiGraph.Dot.Output.Generators
-{
-    public abstract class DotEntityWithAttributeListGenerator<TEntity, TWriter> : DotEntityGenerator<TEntity, TWriter>
-        where TEntity : IDotEntity, IDotAnnotatable
-        where TWriter : IDotEntityWithAttributeListWriter
-    {
-        protected DotEntityWithAttributeListGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
-            : base(syntaxRules, options, entityGenerators)
-        {
-        }
+namespace GiGraph.Dot.Output.Generators;
 
-        protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotEntityWithAttributeListWriter writer, bool annotate = true)
+public abstract class DotEntityWithAttributeListGenerator<TEntity, TWriter> : DotEntityGenerator<TEntity, TWriter>
+    where TEntity : IDotEntity, IDotAnnotatable
+    where TWriter : IDotEntityWithAttributeListWriter
+{
+    protected DotEntityWithAttributeListGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        : base(syntaxRules, options, entityGenerators)
+    {
+    }
+
+    protected virtual void WriteAttributes(DotAttributeCollection attributes, IDotEntityWithAttributeListWriter writer, bool annotate = true)
+    {
+        if (attributes.Any())
         {
-            if (attributes.Any())
-            {
-                var attributeListItemWriter = writer.BeginAttributeList(_options.Attributes.PreferExplicitSeparator);
-                _entityGenerators.GetForEntity<IDotAttributeListItemWriter>(attributes).Generate(attributes, attributeListItemWriter, annotate);
-                writer.EndAttributeList();
-            }
+            var attributeListItemWriter = writer.BeginAttributeList(_options.Attributes.PreferExplicitSeparator);
+            _entityGenerators.GetForEntity<IDotAttributeListItemWriter>(attributes).Generate(attributes, attributeListItemWriter, annotate);
+            writer.EndAttributeList();
         }
     }
 }

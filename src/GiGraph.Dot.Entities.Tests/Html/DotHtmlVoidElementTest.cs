@@ -4,69 +4,68 @@ using GiGraph.Dot.Output.Qualities;
 using Snapshooter.Xunit;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests.Html
+namespace GiGraph.Dot.Entities.Tests.Html;
+
+public class DotHtmlVoidElementTest
 {
-    public class DotHtmlVoidElementTest
+    private readonly DotSyntaxOptions _syntaxOptions = new();
+    private readonly DotSyntaxRules _syntaxRules = new();
+
+    [Fact]
+    public void encoded_html_tag_is_valid_html()
     {
-        private readonly DotSyntaxOptions _syntaxOptions = new();
-        private readonly DotSyntaxRules _syntaxRules = new();
+        var tag = new DotHtmlVoidElement("custom-tag-name");
+        tag.Attributes.Set("attr1", "value1");
 
-        [Fact]
-        public void encoded_html_tag_is_valid_html()
+        Snapshot.Match(
+            ((IDotHtmlEncodable) tag).ToHtml(_syntaxOptions, _syntaxRules),
+            "html_void_tag"
+        );
+    }
+
+    [Fact]
+    public void encoded_html_tag_name_is_upper_case()
+    {
+        var tag = new DotHtmlVoidElement("custom-tag-name");
+        tag.Attributes.Set("attr1", "value1");
+
+        var syntaxOptions = new DotSyntaxOptions
         {
-            var tag = new DotHtmlVoidElement("custom-tag-name");
-            tag.Attributes.Set("attr1", "value1");
-
-            Snapshot.Match(
-                ((IDotHtmlEncodable) tag).ToHtml(_syntaxOptions, _syntaxRules),
-                "html_void_tag"
-            );
-        }
-
-        [Fact]
-        public void encoded_html_tag_name_is_upper_case()
-        {
-            var tag = new DotHtmlVoidElement("custom-tag-name");
-            tag.Attributes.Set("attr1", "value1");
-
-            var syntaxOptions = new DotSyntaxOptions
+            Attributes =
             {
-                Attributes =
+                Html =
                 {
-                    Html =
-                    {
-                        ElementNameCasing = DotTextCase.Upper
-                    }
+                    ElementNameCasing = DotTextCase.Upper
                 }
-            };
+            }
+        };
 
-            Snapshot.Match(
-                ((IDotHtmlEncodable) tag).ToHtml(syntaxOptions, _syntaxRules),
-                "html_void_tag_upper_case_name"
-            );
-        }
+        Snapshot.Match(
+            ((IDotHtmlEncodable) tag).ToHtml(syntaxOptions, _syntaxRules),
+            "html_void_tag_upper_case_name"
+        );
+    }
 
-        [Fact]
-        public void encoded_html_tag_attributes_are_upper_case()
+    [Fact]
+    public void encoded_html_tag_attributes_are_upper_case()
+    {
+        var tag = new DotHtmlVoidElement("custom-tag-name");
+        tag.Attributes.Set("attr1", "value1");
+
+        var syntaxOptions = new DotSyntaxOptions
         {
-            var tag = new DotHtmlVoidElement("custom-tag-name");
-            tag.Attributes.Set("attr1", "value1");
-
-            var syntaxOptions = new DotSyntaxOptions
+            Attributes =
             {
-                Attributes =
+                Html =
                 {
-                    Html =
-                    {
-                        AttributeKeyCasing = DotTextCase.Upper
-                    }
+                    AttributeKeyCasing = DotTextCase.Upper
                 }
-            };
+            }
+        };
 
-            Snapshot.Match(
-                ((IDotHtmlEncodable) tag).ToHtml(syntaxOptions, _syntaxRules),
-                "html_void_tag_upper_case_attributes"
-            );
-        }
+        Snapshot.Match(
+            ((IDotHtmlEncodable) tag).ToHtml(syntaxOptions, _syntaxRules),
+            "html_void_tag_upper_case_attributes"
+        );
     }
 }

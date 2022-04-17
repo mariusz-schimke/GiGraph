@@ -1,8 +1,7 @@
-﻿namespace GiGraph.Dot.Output.Writers.Graphs
+﻿namespace GiGraph.Dot.Output.Writers.Graphs;
+
+public interface IDotGraphWriterRoot : IDotEntityWriter
 {
-    public interface IDotGraphWriterRoot : IDotEntityWriter
-    {
-        IDotGraphWriter BeginGraph(bool directed);
-        void EndGraph();
-    }
+    IDotGraphWriter BeginGraph(bool directed);
+    void EndGraph();
 }

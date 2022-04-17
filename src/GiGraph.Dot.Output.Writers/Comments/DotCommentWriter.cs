@@ -1,28 +1,27 @@
 ﻿using GiGraph.Dot.Output.Writers.TokenWriter;
 
-namespace GiGraph.Dot.Output.Writers.Comments
+namespace GiGraph.Dot.Output.Writers.Comments;
+
+public class DotCommentWriter : IDotCommentWriter
 {
-    public class DotCommentWriter : IDotCommentWriter
+    protected readonly bool _preferBlockComment;
+    protected readonly DotTokenWriter _tokenWriter;
+
+    public DotCommentWriter(DotTokenWriter tokenWriter, bool preferBlockComment)
     {
-        protected readonly bool _preferBlockComment;
-        protected readonly DotTokenWriter _tokenWriter;
+        _tokenWriter = tokenWriter;
+        _preferBlockComment = preferBlockComment;
+    }
 
-        public DotCommentWriter(DotTokenWriter tokenWriter, bool preferBlockComment)
+    public virtual void Write(string comment)
+    {
+        if (_preferBlockComment)
         {
-            _tokenWriter = tokenWriter;
-            _preferBlockComment = preferBlockComment;
+            _tokenWriter.BlockComment(comment);
         }
-
-        public virtual void Write(string comment)
+        else
         {
-            if (_preferBlockComment)
-            {
-                _tokenWriter.BlockComment(comment);
-            }
-            else
-            {
-                _tokenWriter.Comment(comment);
-            }
+            _tokenWriter.Comment(comment);
         }
     }
 }

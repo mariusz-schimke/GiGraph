@@ -1,14 +1,13 @@
-﻿namespace GiGraph.Dot.Output.Options
+﻿namespace GiGraph.Dot.Output.Options;
+
+public partial class DotSyntaxOptions
 {
-    public partial class DotSyntaxOptions
+    public class GraphOptions
     {
-        public class GraphOptions
-        {
-            /// <summary>
-            ///     When true, graph attributes will be written as separate statements. When false, the "graph [attr_list]" format will be used
-            ///     instead.
-            /// </summary>
-            public bool AttributesAsStatements { get; set; } = true;
-        }
+        /// <summary>
+        ///     When true, graph attributes will be written as separate statements. When false, the "graph [attr_list]" format will be used
+        ///     instead.
+        /// </summary>
+        public bool AttributesAsStatements { get; set; } = true;
     }
 }

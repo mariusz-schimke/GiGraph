@@ -1,28 +1,27 @@
-namespace GiGraph.Dot.Types.Styling
+namespace GiGraph.Dot.Types.Styling;
+
+/// <summary>
+///     Border style.
+/// </summary>
+public enum DotBorderStyle
 {
     /// <summary>
-    ///     Border style.
+    ///     The default border style.
     /// </summary>
-    public enum DotBorderStyle
-    {
-        /// <summary>
-        ///     The default border style.
-        /// </summary>
-        Normal = 0,
+    Normal = 0,
 
-        /// <summary>
-        ///     A solid border style.
-        /// </summary>
-        Solid = DotStyles.Solid,
+    /// <summary>
+    ///     A solid border style.
+    /// </summary>
+    Solid = DotStyles.Solid,
 
-        /// <summary>
-        ///     A dashed border style.
-        /// </summary>
-        Dashed = DotStyles.Dashed,
+    /// <summary>
+    ///     A dashed border style.
+    /// </summary>
+    Dashed = DotStyles.Dashed,
 
-        /// <summary>
-        ///     A dotted border style.
-        /// </summary>
-        Dotted = DotStyles.Dotted
-    }
+    /// <summary>
+    ///     A dotted border style.
+    /// </summary>
+    Dotted = DotStyles.Dotted
 }

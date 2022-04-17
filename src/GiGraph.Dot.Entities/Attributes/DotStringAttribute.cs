@@ -1,30 +1,29 @@
 ﻿using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Entities.Attributes
+namespace GiGraph.Dot.Entities.Attributes;
+
+/// <summary>
+///     A string attribute. The value is rendered as is in the output DOT script, so the attribute can be used for any type of value,
+///     not only for strings.
+/// </summary>
+public record DotStringAttribute : DotAttribute<string>
 {
     /// <summary>
-    ///     A string attribute. The value is rendered as is in the output DOT script, so the attribute can be used for any type of value,
-    ///     not only for strings.
+    ///     Creates a new instance of a string attribute.
     /// </summary>
-    public record DotStringAttribute : DotAttribute<string>
+    /// <param name="key">
+    ///     The key of the attribute.
+    /// </param>
+    /// <param name="value">
+    ///     The value of the attribute.
+    /// </param>
+    public DotStringAttribute(string key, string value)
+        : base(key, value)
     {
-        /// <summary>
-        ///     Creates a new instance of a string attribute.
-        /// </summary>
-        /// <param name="key">
-        ///     The key of the attribute.
-        /// </param>
-        /// <param name="value">
-        ///     The value of the attribute.
-        /// </param>
-        public DotStringAttribute(string key, string value)
-            : base(key, value)
-        {
-        }
+    }
 
-        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-        {
-            return syntaxRules.Attributes.StringValueEscaper.Escape(Value);
-        }
+    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+    {
+        return syntaxRules.Attributes.StringValueEscaper.Escape(Value);
     }
 }

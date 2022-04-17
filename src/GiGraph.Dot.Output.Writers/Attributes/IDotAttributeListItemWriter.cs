@@ -1,8 +1,7 @@
-﻿namespace GiGraph.Dot.Output.Writers.Attributes
+﻿namespace GiGraph.Dot.Output.Writers.Attributes;
+
+public interface IDotAttributeListItemWriter : IDotEntityWriter
 {
-    public interface IDotAttributeListItemWriter : IDotEntityWriter
-    {
-        IDotAttributeWriter BeginAttribute();
-        void EndAttribute();
-    }
+    IDotAttributeWriter BeginAttribute();
+    void EndAttribute();
 }

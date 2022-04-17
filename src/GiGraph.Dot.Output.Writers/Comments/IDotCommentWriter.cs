@@ -1,7 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Comments
+﻿namespace GiGraph.Dot.Output.Writers.Comments;
+
+public interface IDotCommentWriter
 {
-    public interface IDotCommentWriter
-    {
-        void Write(string comment);
-    }
+    void Write(string comment);
 }

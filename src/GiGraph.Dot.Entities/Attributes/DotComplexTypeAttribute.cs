@@ -1,34 +1,33 @@
 ﻿using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 
-namespace GiGraph.Dot.Entities.Attributes
+namespace GiGraph.Dot.Entities.Attributes;
+
+/// <summary>
+///     A DOT-encodable value attribute.
+/// </summary>
+/// <typeparam name="TComplex">
+///     A complex type that implements the <see cref="IDotEncodable" /> interface.
+/// </typeparam>
+public record DotComplexTypeAttribute<TComplex> : DotAttribute<TComplex>
+    where TComplex : IDotEncodable
 {
     /// <summary>
-    ///     A DOT-encodable value attribute.
+    ///     Creates a new instance of the attribute.
     /// </summary>
-    /// <typeparam name="TComplex">
-    ///     A complex type that implements the <see cref="IDotEncodable" /> interface.
-    /// </typeparam>
-    public record DotComplexTypeAttribute<TComplex> : DotAttribute<TComplex>
-        where TComplex : IDotEncodable
+    /// <param name="key">
+    ///     The key of the attribute.
+    /// </param>
+    /// <param name="value">
+    ///     The value of the attribute.
+    /// </param>
+    public DotComplexTypeAttribute(string key, TComplex value)
+        : base(key, value)
     {
-        /// <summary>
-        ///     Creates a new instance of the attribute.
-        /// </summary>
-        /// <param name="key">
-        ///     The key of the attribute.
-        /// </param>
-        /// <param name="value">
-        ///     The value of the attribute.
-        /// </param>
-        public DotComplexTypeAttribute(string key, TComplex value)
-            : base(key, value)
-        {
-        }
+    }
 
-        protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-        {
-            return Value?.GetDotEncodedValue(options, syntaxRules);
-        }
+    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+    {
+        return Value?.GetDotEncodedValue(options, syntaxRules);
     }
 }

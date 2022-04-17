@@ -1,23 +1,22 @@
-namespace GiGraph.Dot.Output.Options
+namespace GiGraph.Dot.Output.Options;
+
+/// <summary>
+///     Text case options.
+/// </summary>
+public enum DotTextCase
 {
     /// <summary>
-    ///     Text case options.
+    ///     Leaves the current text casing as is.
     /// </summary>
-    public enum DotTextCase
-    {
-        /// <summary>
-        ///     Leaves the current text casing as is.
-        /// </summary>
-        Normal,
+    Normal,
 
-        /// <summary>
-        ///     Converts text to upper case.
-        /// </summary>
-        Upper,
+    /// <summary>
+    ///     Converts text to upper case.
+    /// </summary>
+    Upper,
 
-        /// <summary>
-        ///     Converts text to lower case.
-        /// </summary>
-        Lower
-    }
+    /// <summary>
+    ///     Converts text to lower case.
+    /// </summary>
+    Lower
 }

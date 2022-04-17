@@ -5,20 +5,19 @@ using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Attributes;
 using GiGraph.Dot.Output.Writers.Graphs.Attributes;
 
-namespace GiGraph.Dot.Output.Generators.Graphs.Attributes
-{
-    public class DotGlobalGraphAttributeStatementsGenerator : DotAttributeCollectionGenerator<IDotGlobalGraphAttributeStatementWriter>
-    {
-        public DotGlobalGraphAttributeStatementsGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
-            : base(syntaxRules, options, entityGenerators)
-        {
-        }
+namespace GiGraph.Dot.Output.Generators.Graphs.Attributes;
 
-        protected override void WriteAttribute(DotAttribute attribute, IDotGlobalGraphAttributeStatementWriter writer)
-        {
-            var attributeWriter = writer.BeginAttributeStatement();
-            _entityGenerators.GetForEntity<IDotAttributeWriter>(attribute).Generate(attribute, attributeWriter);
-            writer.EndAttributeStatement();
-        }
+public class DotGlobalGraphAttributeStatementsGenerator : DotAttributeCollectionGenerator<IDotGlobalGraphAttributeStatementWriter>
+{
+    public DotGlobalGraphAttributeStatementsGenerator(DotSyntaxRules syntaxRules, DotSyntaxOptions options, IDotEntityGeneratorsProvider entityGenerators)
+        : base(syntaxRules, options, entityGenerators)
+    {
+    }
+
+    protected override void WriteAttribute(DotAttribute attribute, IDotGlobalGraphAttributeStatementWriter writer)
+    {
+        var attributeWriter = writer.BeginAttributeStatement();
+        _entityGenerators.GetForEntity<IDotAttributeWriter>(attribute).Generate(attribute, attributeWriter);
+        writer.EndAttributeStatement();
     }
 }

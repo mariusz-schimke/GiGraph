@@ -1,18 +1,17 @@
-namespace GiGraph.Dot.Types.Styling
+namespace GiGraph.Dot.Types.Styling;
+
+/// <summary>
+///     Corner style.
+/// </summary>
+public enum DotCornerStyle
 {
     /// <summary>
-    ///     Corner style.
+    ///     A normal corner style (orthogonal).
     /// </summary>
-    public enum DotCornerStyle
-    {
-        /// <summary>
-        ///     A normal corner style (orthogonal).
-        /// </summary>
-        Normal = 0,
+    Normal = 0,
 
-        /// <summary>
-        ///     A rounded corner style.
-        /// </summary>
-        Rounded = DotStyles.Rounded
-    }
+    /// <summary>
+    ///     A rounded corner style.
+    /// </summary>
+    Rounded = DotStyles.Rounded
 }

@@ -1,6 +1,5 @@
-﻿namespace GiGraph.Dot.Output.Entities
+﻿namespace GiGraph.Dot.Output.Entities;
+
+public interface IDotEntity
 {
-    public interface IDotEntity
-    {
-    }
 }

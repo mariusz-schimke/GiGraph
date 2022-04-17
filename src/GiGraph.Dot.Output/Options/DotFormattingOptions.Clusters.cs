@@ -1,13 +1,12 @@
-﻿namespace GiGraph.Dot.Output.Options
+﻿namespace GiGraph.Dot.Output.Options;
+
+public partial class DotFormattingOptions
 {
-    public partial class DotFormattingOptions
+    public class ClusterOptions
     {
-        public class ClusterOptions
-        {
-            /// <summary>
-            ///     Gets or sets a value indicating if clusters should be written in single lines.
-            /// </summary>
-            public bool SingleLine { get; set; } = false;
-        }
+        /// <summary>
+        ///     Gets or sets a value indicating if clusters should be written in single lines.
+        /// </summary>
+        public bool SingleLine { get; set; } = false;
     }
 }

@@ -1,22 +1,21 @@
 ﻿using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Types.Orientation
+namespace GiGraph.Dot.Types.Orientation;
+
+/// <summary>
+///     The orientation options.
+/// </summary>
+public enum DotOrientation
 {
     /// <summary>
-    ///     The orientation options.
+    ///     Vertical orientation.
     /// </summary>
-    public enum DotOrientation
-    {
-        /// <summary>
-        ///     Vertical orientation.
-        /// </summary>
-        [DotAttributeValue("portrait")]
-        Portrait,
+    [DotAttributeValue("portrait")]
+    Portrait,
 
-        /// <summary>
-        ///     Horizontal orientation.
-        /// </summary>
-        [DotAttributeValue("landscape")]
-        Landscape
-    }
+    /// <summary>
+    ///     Horizontal orientation.
+    /// </summary>
+    [DotAttributeValue("landscape")]
+    Landscape
 }
