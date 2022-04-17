@@ -23,9 +23,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Solution Items\CommonAssemblyInfo.cs = Solution Items\CommonAssemblyInfo.cs
 		..\README.md = ..\README.md
 		GiGraph.Dot.Entities.Tests\Attributes\__snapshots__\attribute_property_key_map.snap = GiGraph.Dot.Entities.Tests\Attributes\__snapshots__\attribute_property_key_map.snap
-		Solution Items\ADR\01. Extensibility.md = Solution Items\ADR\01. Extensibility.md
-		Solution Items\ADR\02. Enumerations.md = Solution Items\ADR\02. Enumerations.md
-		Solution Items\ADR\03. Attribute key mapping.md = Solution Items\ADR\03. Attribute key mapping.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Types", "GiGraph.Dot.Types\GiGraph.Dot.Types.csproj", "{6B5EFF21-2558-48B5-8564-6BFF9DBF11C3}"
@@ -35,6 +32,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Output.Tests", "GiGraph.Dot.Output.Tests\GiGraph.Dot.Output.Tests.csproj", "{7970E3B9-39DB-4206-9D76-30B497D42537}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Tests", "GiGraph.Dot.Tests\GiGraph.Dot.Tests.csproj", "{D99EADAB-E47B-431F-BC83-19C445965D44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ADR", "ADR", "{6EE4859A-6F78-4717-9D75-29BF1E824554}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\ADR\01. Extensibility.md = Solution Items\ADR\01. Extensibility.md
+		Solution Items\ADR\02. Enumerations.md = Solution Items\ADR\02. Enumerations.md
+		Solution Items\ADR\03. Attribute key mapping.md = Solution Items\ADR\03. Attribute key mapping.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -114,5 +118,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E3360D57-72FA-438A-9E1A-DA7F873758C0}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6EE4859A-6F78-4717-9D75-29BF1E824554} = {870A48CC-9D48-45B6-ADC8-E22586C6EF93}
 	EndGlobalSection
 EndGlobal
