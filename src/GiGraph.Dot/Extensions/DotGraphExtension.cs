@@ -34,10 +34,10 @@ namespace GiGraph.Dot.Extensions
         public static string Build(this DotGraph graph, DotFormattingOptions formattingOptions = null,
             DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null)
         {
-            using var outputWriter = new StringWriter(new StringBuilder(), syntaxRules?.Culture);
-            graph.Build(outputWriter, formattingOptions, syntaxOptions, syntaxRules);
+            using var stringWriter = new StringWriter();
+            graph.Build(stringWriter, formattingOptions, syntaxOptions, syntaxRules);
 
-            return outputWriter.ToString();
+            return stringWriter.ToString();
         }
 
         /// <summary>
