@@ -8,9 +8,8 @@ namespace GiGraph.Dot.Output.Writers.TokenWriter
 {
     public class DotTokenWriter
     {
-        private readonly TextWriter _writer;
-
         protected readonly Queue<(string Token, DotTokenType Type)> _lingerBuffer;
+        protected readonly TextWriter _writer;
 
         protected DotTokenWriter(TextWriter writer, Queue<(string, DotTokenType)> lingerBuffer, DotTokenWriterOptions options)
         {
