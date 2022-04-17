@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using GiGraph.Dot.Entities.Graphs;
@@ -32,21 +33,17 @@ namespace GiGraph.Dot.Extensions
         ///     The syntax rules to use.
         /// </param>
         /// <param name="encoding">
-        ///     The encoding to use for the output text.
+        ///     Unused. Kept for backward compatibility.
         /// </param>
         public static string Build(this DotGraph graph, DotFormattingOptions formattingOptions = null,
             DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null, Encoding encoding = null)
         {
-            var output = new MemoryStream();
-
-            using var outputWriter = encoding is not null
-                ? new StreamWriter(output, encoding)
-                : new StreamWriter(output);
+            var initialCapacity = (graph.Nodes.Count + graph.Edges.Count) * 16;
+            var outputWriter = new StringWriter(new StringBuilder(initialCapacity));
 
             graph.Build(outputWriter, formattingOptions, syntaxOptions, syntaxRules);
 
-            outputWriter.Flush();
-            return outputWriter.Encoding.GetString(output.ToArray());
+            return outputWriter.ToString();
         }
 
         /// <summary>
@@ -67,7 +64,7 @@ namespace GiGraph.Dot.Extensions
         /// <param name="syntaxRules">
         ///     The syntax rules to use.
         /// </param>
-        public static void Build(this DotGraph graph, StreamWriter outputWriter, DotFormattingOptions formattingOptions = null,
+        public static void Build(this DotGraph graph, TextWriter outputWriter, DotFormattingOptions formattingOptions = null,
             DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null)
         {
             var generatorsProviderBuilder = new DotEntityGeneratorsProviderBuilder();
@@ -94,10 +91,63 @@ namespace GiGraph.Dot.Extensions
         /// <param name="syntaxRules">
         ///     The syntax rules to use.
         /// </param>
+        [Obsolete("Please use the equivalent Build method taking a TextWriter instead of a StreamWriter")]
+        public static void Build(this DotGraph graph, StreamWriter outputWriter, DotFormattingOptions formattingOptions = null,
+            DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null)
+        {
+            graph.Build((TextWriter)outputWriter, formattingOptions, syntaxOptions, syntaxRules);
+        }
+
+        /// <summary>
+        ///     Stringifies the specified graph to the DOT format into a stream writer.
+        /// </summary>
+        /// <param name="graph">
+        ///     The graph to stringify.
+        /// </param>
+        /// <param name="outputWriter">
+        ///     The output to write the DOT string to.
+        /// </param>
+        /// <param name="formattingOptions">
+        ///     The formatting options to use.
+        /// </param>
+        /// <param name="syntaxOptions">
+        ///     The generation options to use.
+        /// </param>
+        /// <param name="syntaxRules">
+        ///     The syntax rules to use.
+        /// </param>
         /// <param name="graphGeneratorBuilder">
         ///     The graph generator builder to use in order to get the graph builder to generate the DOT output with.
         /// </param>
+        [Obsolete("Please use the equivalent Build method taking a TextWriter instead of a StreamWriter")]
         public static void Build(this DotGraph graph, StreamWriter outputWriter, IDotGraphGeneratorBuilder graphGeneratorBuilder,
+            DotFormattingOptions formattingOptions = null, DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null)
+        {
+            graph.Build((TextWriter)outputWriter, graphGeneratorBuilder, formattingOptions, syntaxOptions, syntaxRules);
+        }
+
+        /// <summary>
+        ///     Stringifies the specified graph to the DOT format into a stream writer.
+        /// </summary>
+        /// <param name="graph">
+        ///     The graph to stringify.
+        /// </param>
+        /// <param name="outputWriter">
+        ///     The output to write the DOT string to.
+        /// </param>
+        /// <param name="formattingOptions">
+        ///     The formatting options to use.
+        /// </param>
+        /// <param name="syntaxOptions">
+        ///     The generation options to use.
+        /// </param>
+        /// <param name="syntaxRules">
+        ///     The syntax rules to use.
+        /// </param>
+        /// <param name="graphGeneratorBuilder">
+        ///     The graph generator builder to use in order to get the graph builder to generate the DOT output with.
+        /// </param>
+        public static void Build(this DotGraph graph, TextWriter outputWriter, IDotGraphGeneratorBuilder graphGeneratorBuilder,
             DotFormattingOptions formattingOptions = null, DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null)
         {
             syntaxRules ??= DotSyntaxRules.Default;
@@ -183,7 +233,7 @@ namespace GiGraph.Dot.Extensions
             await streamWriter.FlushAsync();
         }
 
-        private static StreamWriter CreateFileStreamWriter(string filePath, Encoding encoding)
+        private static TextWriter CreateFileStreamWriter(string filePath, Encoding encoding)
         {
             return encoding is not null
                 ? new StreamWriter(filePath, append: false, encoding)
