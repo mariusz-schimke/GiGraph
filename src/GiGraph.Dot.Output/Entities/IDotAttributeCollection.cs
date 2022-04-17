@@ -1,10 +1,9 @@
-namespace GiGraph.Dot.Output.Entities
+namespace GiGraph.Dot.Output.Entities;
+
+public interface IDotAttributeCollection : IDotEntity
 {
-    public interface IDotAttributeCollection : IDotEntity
-    {
-        /// <summary>
-        ///     Checks if the collection contains any attributes.
-        /// </summary>
-        bool Any();
-    }
+    /// <summary>
+    ///     Checks if the collection contains any attributes.
+    /// </summary>
+    bool Any();
 }

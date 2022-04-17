@@ -5,22 +5,21 @@ using GiGraph.Dot.Output.Qualities;
 using Snapshooter.Xunit;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests.Html
+namespace GiGraph.Dot.Entities.Tests.Html;
+
+public class DotHtmlCommentTest
 {
-    public class DotHtmlCommentTest
+    private readonly DotSyntaxOptions _syntaxOptions = new();
+    private readonly DotSyntaxRules _syntaxRules = new();
+
+    [Fact]
+    public void encoded_html_comment_is_valid_html()
     {
-        private readonly DotSyntaxOptions _syntaxOptions = new();
-        private readonly DotSyntaxRules _syntaxRules = new();
+        var tag = new DotHtmlComment($"My custom comment{Environment.NewLine} < > \" ' & \u00A0");
 
-        [Fact]
-        public void encoded_html_comment_is_valid_html()
-        {
-            var tag = new DotHtmlComment($"My custom comment{Environment.NewLine} < > \" ' & \u00A0");
-
-            Snapshot.Match(
-                ((IDotHtmlEncodable) tag).ToHtml(_syntaxOptions, _syntaxRules),
-                "html_comment"
-            );
-        }
+        Snapshot.Match(
+            ((IDotHtmlEncodable) tag).ToHtml(_syntaxOptions, _syntaxRules),
+            "html_comment"
+        );
     }
 }

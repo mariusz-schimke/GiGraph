@@ -7,44 +7,43 @@ using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.EscapeString;
 
-namespace GiGraph.Dot.Entities.Attributes.Properties.Common
+namespace GiGraph.Dot.Entities.Attributes.Properties.Common;
+
+/// <summary>
+///     Common attributes of the root graph, clusters, nodes, and edges.
+/// </summary>
+/// <remarks>
+///     When adding new properties, override them in all descendant classes to set adequate XML documentation comments.
+/// </remarks>
+public abstract class DotEntityRootCommonAttributes<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>
+    where TEntityAttributeProperties : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
 {
-    /// <summary>
-    ///     Common attributes of the root graph, clusters, nodes, and edges.
-    /// </summary>
-    /// <remarks>
-    ///     When adding new properties, override them in all descendant classes to set adequate XML documentation comments.
-    /// </remarks>
-    public abstract class DotEntityRootCommonAttributes<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>
-        where TEntityAttributeProperties : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
+    protected DotEntityRootCommonAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup, DotHyperlinkAttributes hyperlinkAttributes)
+        : base(attributes, attributeKeyLookup)
     {
-        protected DotEntityRootCommonAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup, DotHyperlinkAttributes hyperlinkAttributes)
-            : base(attributes, attributeKeyLookup)
-        {
-            Hyperlink = hyperlinkAttributes;
-        }
+        Hyperlink = hyperlinkAttributes;
+    }
 
-        public DotHyperlinkAttributes Hyperlink { get; }
+    public DotHyperlinkAttributes Hyperlink { get; }
 
-        [DotAttributeKey(DotAttributeKeys.Label)]
-        public virtual DotLabel Label
-        {
-            get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.Label)]
+    public virtual DotLabel Label
+    {
+        get => GetValueAsLabel(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.ColorScheme)]
-        public virtual string ColorScheme
-        {
-            get => GetValueAsString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.ColorScheme)]
+    public virtual string ColorScheme
+    {
+        get => GetValueAsString(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 
-        [DotAttributeKey(DotAttributeKeys.Id)]
-        public virtual DotEscapeString ObjectId
-        {
-            get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-            set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-        }
+    [DotAttributeKey(DotAttributeKeys.Id)]
+    public virtual DotEscapeString ObjectId
+    {
+        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
     }
 }

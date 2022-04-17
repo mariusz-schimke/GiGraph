@@ -4,26 +4,25 @@ using GiGraph.Dot.Output.Writers.Graphs.Attributes;
 using GiGraph.Dot.Output.Writers.Nodes;
 using GiGraph.Dot.Output.Writers.Subgraphs;
 
-namespace GiGraph.Dot.Output.Writers.Graphs
+namespace GiGraph.Dot.Output.Writers.Graphs;
+
+public interface IDotGraphBodyWriter : IDotEntityWriter
 {
-    public interface IDotGraphBodyWriter : IDotEntityWriter
-    {
-        IDotGlobalGraphAttributeStatementWriter BeginGlobalGraphAttributesSection(bool useStatementDelimiter);
-        void EndGlobalGraphAttributesSection();
+    IDotGlobalGraphAttributeStatementWriter BeginGlobalGraphAttributesSection(bool useStatementDelimiter);
+    void EndGlobalGraphAttributesSection();
 
-        IDotGlobalEntityAttributesStatementWriter BeginGlobalEntityAttributesSection(bool useStatementDelimiter);
-        void EndGlobalEntityAttributesSection();
+    IDotGlobalEntityAttributesStatementWriter BeginGlobalEntityAttributesSection(bool useStatementDelimiter);
+    void EndGlobalEntityAttributesSection();
 
-        IDotNodeStatementWriter BeginNodesSection(bool useStatementDelimiter);
-        void EndNodesSection();
+    IDotNodeStatementWriter BeginNodesSection(bool useStatementDelimiter);
+    void EndNodesSection();
 
-        IDotEdgeStatementWriter BeginEdgesSection(bool useStatementDelimiter);
-        void EndEdgesSection();
+    IDotEdgeStatementWriter BeginEdgesSection(bool useStatementDelimiter);
+    void EndEdgesSection();
 
-        IDotSubgraphWriterRoot BeginSubgraphsSection();
-        void EndSubgraphsSection();
+    IDotSubgraphWriterRoot BeginSubgraphsSection();
+    void EndSubgraphsSection();
 
-        IDotSubgraphWriterRoot BeginClustersSection();
-        void EndClustersSection();
-    }
+    IDotSubgraphWriterRoot BeginClustersSection();
+    void EndClustersSection();
 }

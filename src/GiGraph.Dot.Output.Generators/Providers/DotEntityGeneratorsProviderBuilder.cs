@@ -12,58 +12,57 @@ using GiGraph.Dot.Output.Generators.Nodes.Attributes;
 using GiGraph.Dot.Output.Generators.Subgraphs;
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Output.Generators.Providers
+namespace GiGraph.Dot.Output.Generators.Providers;
+
+public class DotEntityGeneratorsProviderBuilder : IDotEntityGeneratorsProviderBuilder
 {
-    public class DotEntityGeneratorsProviderBuilder : IDotEntityGeneratorsProviderBuilder
+    /// <summary>
+    ///     Builds a provider with all generators necessary to generate a graph.
+    /// </summary>
+    /// <param name="syntaxRules">
+    ///     The syntax rules to follow.
+    /// </param>
+    /// <param name="options">
+    ///     The DOT language generation options to use for graph generation and its components.
+    /// </param>
+    public virtual IDotEntityGeneratorsProvider Build(DotSyntaxRules syntaxRules, DotSyntaxOptions options)
     {
-        /// <summary>
-        ///     Builds a provider with all generators necessary to generate a graph.
-        /// </summary>
-        /// <param name="syntaxRules">
-        ///     The syntax rules to follow.
-        /// </param>
-        /// <param name="options">
-        ///     The DOT language generation options to use for graph generation and its components.
-        /// </param>
-        public virtual IDotEntityGeneratorsProvider Build(DotSyntaxRules syntaxRules, DotSyntaxOptions options)
-        {
-            var provider = new DotEntityGeneratorsProvider();
+        var provider = new DotEntityGeneratorsProvider();
 
-            provider.Register(new DotGraphGenerator(syntaxRules, options, provider));
-            provider.Register(new DotGraphSectionGenerator(syntaxRules, options, provider));
+        provider.Register(new DotGraphGenerator(syntaxRules, options, provider));
+        provider.Register(new DotGraphSectionGenerator(syntaxRules, options, provider));
 
-            provider.Register(new DotGlobalGraphAttributeStatementsGenerator(syntaxRules, options, provider));
-            provider.Register(new DotGlobalGraphAttributesGenerator(syntaxRules, options, provider));
-            provider.Register(new DotGlobalNodeAttributesGenerator(syntaxRules, options, provider));
-            provider.Register(new DotGlobalEdgeAttributesGenerator(syntaxRules, options, provider));
+        provider.Register(new DotGlobalGraphAttributeStatementsGenerator(syntaxRules, options, provider));
+        provider.Register(new DotGlobalGraphAttributesGenerator(syntaxRules, options, provider));
+        provider.Register(new DotGlobalNodeAttributesGenerator(syntaxRules, options, provider));
+        provider.Register(new DotGlobalEdgeAttributesGenerator(syntaxRules, options, provider));
 
-            provider.Register(new DotSubgraphGenerator(syntaxRules, options, provider));
-            provider.Register(new DotSubgraphSectionGenerator(syntaxRules, options, provider));
-            provider.Register(new DotSubgraphCollectionGenerator<DotSubgraph>(syntaxRules, options, provider));
+        provider.Register(new DotSubgraphGenerator(syntaxRules, options, provider));
+        provider.Register(new DotSubgraphSectionGenerator(syntaxRules, options, provider));
+        provider.Register(new DotSubgraphCollectionGenerator<DotSubgraph>(syntaxRules, options, provider));
 
-            provider.Register(new DotClusterGenerator(syntaxRules, options, provider));
-            provider.Register(new DotClusterSectionGenerator(syntaxRules, options, provider));
-            provider.Register(new DotSubgraphCollectionGenerator<DotCluster>(syntaxRules, options, provider));
+        provider.Register(new DotClusterGenerator(syntaxRules, options, provider));
+        provider.Register(new DotClusterSectionGenerator(syntaxRules, options, provider));
+        provider.Register(new DotSubgraphCollectionGenerator<DotCluster>(syntaxRules, options, provider));
 
-            provider.Register(new DotAttributeGenerator(syntaxRules, options, provider));
-            provider.Register(new DotAttributeListGenerator(syntaxRules, options, provider));
-            provider.Register(new DotHtmlLabelAttributeGenerator(syntaxRules, options, provider));
+        provider.Register(new DotAttributeGenerator(syntaxRules, options, provider));
+        provider.Register(new DotAttributeListGenerator(syntaxRules, options, provider));
+        provider.Register(new DotHtmlLabelAttributeGenerator(syntaxRules, options, provider));
 
-            provider.Register(new DotNodeGenerator(syntaxRules, options, provider));
-            provider.Register(new DotNodeGroupGenerator(syntaxRules, options, provider));
-            provider.Register(new DotNodeCollectionGenerator(syntaxRules, options, provider));
+        provider.Register(new DotNodeGenerator(syntaxRules, options, provider));
+        provider.Register(new DotNodeGroupGenerator(syntaxRules, options, provider));
+        provider.Register(new DotNodeCollectionGenerator(syntaxRules, options, provider));
 
-            provider.Register(new DotEdgeGenerator(syntaxRules, options, provider));
-            provider.Register(new DotEdgeCollectionGenerator(syntaxRules, options, provider));
-            provider.Register(new DotEdgeEndpointGenerator(syntaxRules, options, provider));
-            provider.Register(new DotEdgeEndpointGroupGenerator(syntaxRules, options, provider));
-            provider.Register(new DotEdgeSubgraphEndpointGenerator(syntaxRules, options, provider));
+        provider.Register(new DotEdgeGenerator(syntaxRules, options, provider));
+        provider.Register(new DotEdgeCollectionGenerator(syntaxRules, options, provider));
+        provider.Register(new DotEdgeEndpointGenerator(syntaxRules, options, provider));
+        provider.Register(new DotEdgeEndpointGroupGenerator(syntaxRules, options, provider));
+        provider.Register(new DotEdgeSubgraphEndpointGenerator(syntaxRules, options, provider));
 
-            provider.Register(new DotEndpointGenerator<DotEndpoint>(syntaxRules, options, provider));
-            provider.Register(new DotClusterEndpointGenerator(syntaxRules, options, provider));
-            provider.Register(new DotEndpointGroupGenerator(syntaxRules, options, provider));
+        provider.Register(new DotEndpointGenerator<DotEndpoint>(syntaxRules, options, provider));
+        provider.Register(new DotClusterEndpointGenerator(syntaxRules, options, provider));
+        provider.Register(new DotEndpointGroupGenerator(syntaxRules, options, provider));
 
-            return provider;
-        }
+        return provider;
     }
 }

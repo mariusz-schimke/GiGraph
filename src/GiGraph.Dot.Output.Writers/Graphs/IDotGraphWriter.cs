@@ -1,7 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Writers.Graphs
+﻿namespace GiGraph.Dot.Output.Writers.Graphs;
+
+public interface IDotGraphWriter : IDotCommonGraphWriter
 {
-    public interface IDotGraphWriter : IDotCommonGraphWriter
-    {
-        void WriteGraphDeclaration(string id, bool strict, bool quoteId);
-    }
+    void WriteGraphDeclaration(string id, bool strict, bool quoteId);
 }

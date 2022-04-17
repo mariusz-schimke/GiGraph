@@ -7,70 +7,69 @@ using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.Fonts;
 using GiGraph.Dot.Types.Html.Table;
 
-namespace GiGraph.Dot.Examples.Html
+namespace GiGraph.Dot.Examples.Html;
+
+public static class HtmlTableNode
 {
-    public static class HtmlTableNode
+    public static DotGraph Generate()
     {
-        public static DotGraph Generate()
+        var graph = new DotGraph();
+
+        var table = new DotHtmlTable
         {
-            var graph = new DotGraph();
+            BorderWidth = 0,
+            CellBorderWidth = 1,
+            CellSpacing = 0,
+            CellPadding = 4
+        };
 
-            var table = new DotHtmlTable
-            {
-                BorderWidth = 0,
-                CellBorderWidth = 1,
-                CellSpacing = 0,
-                CellPadding = 4
-            };
+        table.AddRow(row =>
+        {
+            row.AddCell($"Foo{Environment.NewLine}Bar", cell => cell.RowSpan = 3);
 
-            table.AddRow(row =>
-            {
-                row.AddCell($"Foo{Environment.NewLine}Bar", cell => cell.RowSpan = 3);
-
-                row.AddCell(
-                    "Baz",
-                    cell =>
-                    {
-                        cell.ColumnSpan = 3;
-                        cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Left;
-                    }
-                );
-
-                row.AddCell("Qux", cell => cell.RowSpan = 3);
-                row.AddCell("Quux", cell => cell.RowSpan = 3);
-            });
-
-            table.AddRow(row =>
-            {
-                row.AddCell("Garply");
-                row.AddCell("Waldo");
-                row.AddCell(
-                    "Fred",
-                    new DotStyledFont(DotFontStyles.Bold | DotFontStyles.Italic, Color.RoyalBlue),
-                    cell => cell.PortName = "port1"
-                );
-            });
-
-            table.AddRow(row =>
-                row.AddCell(
-                    "Plugh",
-                    cell =>
-                    {
-                        cell.ColumnSpan = 3;
-                        cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Right;
-                    }
-                )
+            row.AddCell(
+                "Baz",
+                cell =>
+                {
+                    cell.ColumnSpan = 3;
+                    cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Left;
+                }
             );
 
-            graph.Nodes.Add("Bar").ToPlainHtmlNode(table);
+            row.AddCell("Qux", cell => cell.RowSpan = 3);
+            row.AddCell("Quux", cell => cell.RowSpan = 3);
+        });
 
-            // sets an attribute of the edge (can be set globally)
-            graph.Edges.Add("Foo", "Bar").Head.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
+        table.AddRow(row =>
+        {
+            row.AddCell("Garply");
+            row.AddCell("Waldo");
+            row.AddCell(
+                "Fred",
+                new DotStyledFont(DotFontStyles.Bold | DotFontStyles.Italic, Color.RoyalBlue),
+                cell => cell.PortName = "port1"
+            );
+        });
 
-            // an equivalent method of defining a port (directly on the endpoint; cannot be set globally)
-            graph.Edges.Add("Foo", "Bar").Head.Endpoint.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
+        table.AddRow(row =>
+            row.AddCell(
+                "Plugh",
+                cell =>
+                {
+                    cell.ColumnSpan = 3;
+                    cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Right;
+                }
+            )
+        );
 
-            return graph;
-        }
+        graph.Nodes.Add("Bar").ToPlainHtmlNode(table);
+
+        // sets an attribute of the edge (can be set globally)
+        graph.Edges.Add("Foo", "Bar").Head.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
+
+        // an equivalent method of defining a port (directly on the endpoint; cannot be set globally)
+        graph.Edges.Add("Foo", "Bar").Head.Endpoint.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
+
+        return graph;
     }
 }

@@ -1,34 +1,33 @@
 ﻿using GiGraph.Dot.Output.Writers.TokenWriter;
 
-namespace GiGraph.Dot.Output.Writers
+namespace GiGraph.Dot.Output.Writers;
+
+public abstract class DotEntityStatementWriter : DotEntityWriter
 {
-    public abstract class DotEntityStatementWriter : DotEntityWriter
+    protected readonly DotPaddedEntityWriter _paddedEntityWriter;
+    protected readonly bool _useStatementDelimiter;
+
+    protected DotEntityStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool useStatementDelimiter)
+        : base(tokenWriter, configuration, enforceBlockComment: true)
     {
-        protected readonly DotPaddedEntityWriter _paddedEntityWriter;
-        protected readonly bool _useStatementDelimiter;
+        _useStatementDelimiter = useStatementDelimiter;
+        _paddedEntityWriter = new DotPaddedEntityWriter(tokenWriter);
+    }
 
-        protected DotEntityStatementWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool useStatementDelimiter)
-            : base(tokenWriter, configuration, enforceBlockComment: true)
+    public virtual void EndStatement()
+    {
+        _tokenWriter.ClearLingerBuffer();
+
+        if (_useStatementDelimiter)
         {
-            _useStatementDelimiter = useStatementDelimiter;
-            _paddedEntityWriter = new DotPaddedEntityWriter(tokenWriter);
+            _tokenWriter.StatementDelimiter();
         }
 
-        public virtual void EndStatement()
-        {
-            _tokenWriter.ClearLingerBuffer();
+        _paddedEntityWriter.EndEntity();
+    }
 
-            if (_useStatementDelimiter)
-            {
-                _tokenWriter.StatementDelimiter();
-            }
-
-            _paddedEntityWriter.EndEntity();
-        }
-
-        public override void EndComment()
-        {
-            EmptyLine();
-        }
+    public override void EndComment()
+    {
+        EmptyLine();
     }
 }

@@ -3,92 +3,91 @@ using GiGraph.Dot.Output.Options;
 using Snapshooter.Xunit;
 using Xunit;
 
-namespace GiGraph.Dot.Output.Tests
+namespace GiGraph.Dot.Output.Tests;
+
+public partial class DotGraphSyntaxOptionsTest
 {
-    public partial class DotGraphSyntaxOptionsTest
+    [Fact]
+    public void graph_attributes_are_rendered_as_statements()
     {
-        [Fact]
-        public void graph_attributes_are_rendered_as_statements()
+        var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
+
+        var options = new DotSyntaxOptions
         {
-            var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
+            Graph = { AttributesAsStatements = true }
+        };
 
-            var options = new DotSyntaxOptions
-            {
-                Graph = { AttributesAsStatements = true }
-            };
+        var dot = graph.Build(syntaxOptions: options);
+        Snapshot.Match(dot, "graph_attributes_as_statements.gv");
+    }
 
-            var dot = graph.Build(syntaxOptions: options);
-            Snapshot.Match(dot, "graph_attributes_as_statements.gv");
-        }
+    [Fact]
+    public void graph_attributes_are_rendered_as_list()
+    {
+        var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
 
-        [Fact]
-        public void graph_attributes_are_rendered_as_list()
+        var options = new DotSyntaxOptions
         {
-            var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
+            Graph = { AttributesAsStatements = false }
+        };
 
-            var options = new DotSyntaxOptions
-            {
-                Graph = { AttributesAsStatements = false }
-            };
+        var dot = graph.Build(syntaxOptions: options);
+        Snapshot.Match(dot, "graph_attributes_as_list.gv");
+    }
 
-            var dot = graph.Build(syntaxOptions: options);
-            Snapshot.Match(dot, "graph_attributes_as_list.gv");
-        }
+    [Fact]
+    public void graph_attributes_in_cluster_are_rendered_as_statements()
+    {
+        var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
 
-        [Fact]
-        public void graph_attributes_in_cluster_are_rendered_as_statements()
+        var options = new DotSyntaxOptions
         {
-            var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
+            Clusters = { AttributesAsStatements = true }
+        };
 
-            var options = new DotSyntaxOptions
-            {
-                Clusters = { AttributesAsStatements = true }
-            };
+        var dot = graph.Build(syntaxOptions: options);
+        Snapshot.Match(dot, "graph_attributes_in_cluster_as_statements.gv");
+    }
 
-            var dot = graph.Build(syntaxOptions: options);
-            Snapshot.Match(dot, "graph_attributes_in_cluster_as_statements.gv");
-        }
+    [Fact]
+    public void graph_attributes_in_cluster_are_rendered_as_list()
+    {
+        var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
 
-        [Fact]
-        public void graph_attributes_in_cluster_are_rendered_as_list()
+        var options = new DotSyntaxOptions
         {
-            var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
+            Clusters = { AttributesAsStatements = false }
+        };
 
-            var options = new DotSyntaxOptions
-            {
-                Clusters = { AttributesAsStatements = false }
-            };
+        var dot = graph.Build(syntaxOptions: options);
+        Snapshot.Match(dot, "graph_attributes_in_cluster_as_list.gv");
+    }
 
-            var dot = graph.Build(syntaxOptions: options);
-            Snapshot.Match(dot, "graph_attributes_in_cluster_as_list.gv");
-        }
+    [Fact]
+    public void graph_attributes_in_subgraph_are_rendered_as_statements()
+    {
+        var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
 
-        [Fact]
-        public void graph_attributes_in_subgraph_are_rendered_as_statements()
+        var options = new DotSyntaxOptions
         {
-            var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
+            Subgraphs = { AttributesAsStatements = true }
+        };
 
-            var options = new DotSyntaxOptions
-            {
-                Subgraphs = { AttributesAsStatements = true }
-            };
+        var dot = graph.Build(syntaxOptions: options);
+        Snapshot.Match(dot, "graph_attributes_in_subgraph_as_statements.gv");
+    }
 
-            var dot = graph.Build(syntaxOptions: options);
-            Snapshot.Match(dot, "graph_attributes_in_subgraph_as_statements.gv");
-        }
+    [Fact]
+    public void graph_attributes_in_subgraph_are_rendered_as_list()
+    {
+        var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
 
-        [Fact]
-        public void graph_attributes_in_subgraph_are_rendered_as_list()
+        var options = new DotSyntaxOptions
         {
-            var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
+            Subgraphs = { AttributesAsStatements = false }
+        };
 
-            var options = new DotSyntaxOptions
-            {
-                Subgraphs = { AttributesAsStatements = false }
-            };
-
-            var dot = graph.Build(syntaxOptions: options);
-            Snapshot.Match(dot, "graph_attributes_in_subgraph_as_list.gv");
-        }
+        var dot = graph.Build(syntaxOptions: options);
+        Snapshot.Match(dot, "graph_attributes_in_subgraph_as_list.gv");
     }
 }

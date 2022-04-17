@@ -1,10 +1,9 @@
 ﻿using GiGraph.Dot.Output.Writers.Comments;
 
-namespace GiGraph.Dot.Output.Writers
+namespace GiGraph.Dot.Output.Writers;
+
+public interface IDotEntityWriter
 {
-    public interface IDotEntityWriter
-    {
-        IDotCommentWriter BeginComment(bool preferBlockComment);
-        void EndComment();
-    }
+    IDotCommentWriter BeginComment(bool preferBlockComment);
+    void EndComment();
 }

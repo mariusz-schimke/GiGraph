@@ -5,122 +5,121 @@ using GiGraph.Dot.Output.Options;
 using Snapshooter.Xunit;
 using Xunit;
 
-namespace GiGraph.Dot.Output.Tests.EntityPadding
+namespace GiGraph.Dot.Output.Tests.EntityPadding;
+
+public class DotGraphWithMultilineGlobalAttributesTest
 {
-    public class DotGraphWithMultilineGlobalAttributesTest
+    [Fact]
+    public void renders_graph_with_multiline_global_graph_attribute_list()
     {
-        [Fact]
-        public void renders_graph_with_multiline_global_graph_attribute_list()
+        var graph = CreateGraph();
+
+        var formatting = new DotFormattingOptions
         {
-            var graph = CreateGraph();
+            GlobalAttributes = { SingleLineGraphAttributeList = false }
+        };
 
-            var formatting = new DotFormattingOptions
-            {
-                GlobalAttributes = { SingleLineGraphAttributeList = false }
-            };
-
-            var syntax = new DotSyntaxOptions
-            {
-                Graph = { AttributesAsStatements = false }
-            };
-
-            Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_graph_attribute_list.gv");
-
-            formatting.SingleLine = true;
-            Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_graph_attribute_list_single_line.gv");
-        }
-
-        [Fact]
-        public void renders_graph_with_single_line_global_graph_attribute_list()
+        var syntax = new DotSyntaxOptions
         {
-            var graph = CreateGraph();
+            Graph = { AttributesAsStatements = false }
+        };
 
-            var formatting = new DotFormattingOptions
-            {
-                GlobalAttributes = { SingleLineGraphAttributeList = true }
-            };
+        Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_graph_attribute_list.gv");
 
-            var syntax = new DotSyntaxOptions
-            {
-                Graph = { AttributesAsStatements = false }
-            };
+        formatting.SingleLine = true;
+        Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_graph_attribute_list_single_line.gv");
+    }
 
-            Snapshot.Match(graph.Build(formatting, syntax), "graph_with_single_line_global_graph_attribute_list.gv");
+    [Fact]
+    public void renders_graph_with_single_line_global_graph_attribute_list()
+    {
+        var graph = CreateGraph();
 
-            formatting.SingleLine = true;
-            Snapshot.Match(graph.Build(formatting, syntax), "graph_with_single_line_global_graph_attribute_list_single_line.gv");
-        }
-
-        [Fact]
-        public void renders_graph_with_multiline_global_node_attribute_list()
+        var formatting = new DotFormattingOptions
         {
-            var graph = CreateGraph();
+            GlobalAttributes = { SingleLineGraphAttributeList = true }
+        };
 
-            var formatting = new DotFormattingOptions
-            {
-                GlobalAttributes = { SingleLineNodeAttributeList = false }
-            };
-
-            var syntax = new DotSyntaxOptions
-            {
-                Graph = { AttributesAsStatements = false }
-            };
-
-            Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_node_attribute_list.gv");
-
-            formatting.SingleLine = true;
-            Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_node_attribute_list_single_line.gv");
-        }
-
-        [Fact]
-        public void renders_graph_with_multiline_global_edge_attribute_list()
+        var syntax = new DotSyntaxOptions
         {
-            var graph = CreateGraph();
+            Graph = { AttributesAsStatements = false }
+        };
 
-            var formatting = new DotFormattingOptions
-            {
-                GlobalAttributes = { SingleLineEdgeAttributeList = false }
-            };
+        Snapshot.Match(graph.Build(formatting, syntax), "graph_with_single_line_global_graph_attribute_list.gv");
 
-            var syntax = new DotSyntaxOptions
-            {
-                Graph = { AttributesAsStatements = false }
-            };
+        formatting.SingleLine = true;
+        Snapshot.Match(graph.Build(formatting, syntax), "graph_with_single_line_global_graph_attribute_list_single_line.gv");
+    }
 
-            Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_edge_attribute_list.gv");
+    [Fact]
+    public void renders_graph_with_multiline_global_node_attribute_list()
+    {
+        var graph = CreateGraph();
 
-            formatting.SingleLine = true;
-            Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_edge_attribute_list_single_line.gv");
-        }
-
-        [Fact]
-        public void renders_graph_with_multiline_global_attribute_lists()
+        var formatting = new DotFormattingOptions
         {
-            var graph = CreateGraph();
+            GlobalAttributes = { SingleLineNodeAttributeList = false }
+        };
 
-            var formatting = new DotFormattingOptions
-            {
-                GlobalAttributes = { SingleLineAttributeLists = false }
-            };
-
-            var syntax = new DotSyntaxOptions
-            {
-                Graph = { AttributesAsStatements = false }
-            };
-
-            Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_attribute_lists.gv");
-
-            formatting.SingleLine = true;
-            Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_attribute_lists_single_line.gv");
-        }
-
-        private static DotGraph CreateGraph()
+        var syntax = new DotSyntaxOptions
         {
-            var graph = new DotGraph();
-            graph.Font.Set("arial", 10, Color.Red);
-            graph.Nodes.Font.Set("arial", 10, Color.Red);
-            graph.Edges.Font.Set("arial", 10, Color.Red);
-            return graph;
-        }
+            Graph = { AttributesAsStatements = false }
+        };
+
+        Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_node_attribute_list.gv");
+
+        formatting.SingleLine = true;
+        Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_node_attribute_list_single_line.gv");
+    }
+
+    [Fact]
+    public void renders_graph_with_multiline_global_edge_attribute_list()
+    {
+        var graph = CreateGraph();
+
+        var formatting = new DotFormattingOptions
+        {
+            GlobalAttributes = { SingleLineEdgeAttributeList = false }
+        };
+
+        var syntax = new DotSyntaxOptions
+        {
+            Graph = { AttributesAsStatements = false }
+        };
+
+        Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_edge_attribute_list.gv");
+
+        formatting.SingleLine = true;
+        Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_edge_attribute_list_single_line.gv");
+    }
+
+    [Fact]
+    public void renders_graph_with_multiline_global_attribute_lists()
+    {
+        var graph = CreateGraph();
+
+        var formatting = new DotFormattingOptions
+        {
+            GlobalAttributes = { SingleLineAttributeLists = false }
+        };
+
+        var syntax = new DotSyntaxOptions
+        {
+            Graph = { AttributesAsStatements = false }
+        };
+
+        Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_attribute_lists.gv");
+
+        formatting.SingleLine = true;
+        Snapshot.Match(graph.Build(formatting, syntax), "graph_with_multiline_global_attribute_lists_single_line.gv");
+    }
+
+    private static DotGraph CreateGraph()
+    {
+        var graph = new DotGraph();
+        graph.Font.Set("arial", 10, Color.Red);
+        graph.Nodes.Font.Set("arial", 10, Color.Red);
+        graph.Edges.Font.Set("arial", 10, Color.Red);
+        return graph;
     }
 }

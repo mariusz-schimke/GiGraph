@@ -1,6 +1,5 @@
-namespace GiGraph.Dot.Entities.Qualities
+namespace GiGraph.Dot.Entities.Qualities;
+
+public interface IDotWedgeFillable : IDotFillable
 {
-    public interface IDotWedgeFillable : IDotFillable
-    {
-    }
 }

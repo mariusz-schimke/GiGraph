@@ -1,8 +1,7 @@
-﻿namespace GiGraph.Dot.Output.Writers.Graphs
+﻿namespace GiGraph.Dot.Output.Writers.Graphs;
+
+public interface IDotCommonGraphWriter : IDotEntityWriter
 {
-    public interface IDotCommonGraphWriter : IDotEntityWriter
-    {
-        IDotGraphBodyWriter BeginBody();
-        void EndBody();
-    }
+    IDotGraphBodyWriter BeginBody();
+    void EndBody();
 }

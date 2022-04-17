@@ -1,8 +1,7 @@
-﻿namespace GiGraph.Dot.Output.Writers.Nodes
+﻿namespace GiGraph.Dot.Output.Writers.Nodes;
+
+public interface IDotNodeStatementWriter : IDotEntityWriter
 {
-    public interface IDotNodeStatementWriter : IDotEntityWriter
-    {
-        IDotNodeWriter BeginNodeStatement(bool containsAttributes);
-        void EndNodeStatement();
-    }
+    IDotNodeWriter BeginNodeStatement(bool containsAttributes);
+    void EndNodeStatement();
 }

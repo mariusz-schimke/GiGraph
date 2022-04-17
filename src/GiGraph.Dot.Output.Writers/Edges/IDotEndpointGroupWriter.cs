@@ -1,8 +1,7 @@
-namespace GiGraph.Dot.Output.Writers.Edges
+namespace GiGraph.Dot.Output.Writers.Edges;
+
+public interface IDotEndpointGroupWriter : IDotEntityWriter
 {
-    public interface IDotEndpointGroupWriter : IDotEntityWriter
-    {
-        IDotEndpointWriter BeginEndpoint();
-        void EndEndpoint();
-    }
+    IDotEndpointWriter BeginEndpoint();
+    void EndEndpoint();
 }

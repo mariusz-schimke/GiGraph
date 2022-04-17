@@ -1,8 +1,7 @@
-﻿namespace GiGraph.Dot.Output.Writers.Edges
+﻿namespace GiGraph.Dot.Output.Writers.Edges;
+
+public interface IDotEdgeStatementWriter : IDotEntityWriter
 {
-    public interface IDotEdgeStatementWriter : IDotEntityWriter
-    {
-        IDotEdgeWriter BeginEdgeStatement(bool containsSubgraphs, bool containsAttributes);
-        void EndEdgeStatement();
-    }
+    IDotEdgeWriter BeginEdgeStatement(bool containsSubgraphs, bool containsAttributes);
+    void EndEdgeStatement();
 }

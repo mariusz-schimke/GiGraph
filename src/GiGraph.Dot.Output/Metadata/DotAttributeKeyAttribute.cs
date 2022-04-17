@@ -1,27 +1,26 @@
 using System;
 
-namespace GiGraph.Dot.Output.Metadata
+namespace GiGraph.Dot.Output.Metadata;
+
+/// <summary>
+///     Assigns a DOT attribute key to a property.
+/// </summary>
+[AttributeUsage(AttributeTargets.Property)]
+public class DotAttributeKeyAttribute : Attribute
 {
     /// <summary>
-    ///     Assigns a DOT attribute key to a property.
+    ///     Creates a new attribute instance.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Property)]
-    public class DotAttributeKeyAttribute : Attribute
+    /// <param name="key">
+    ///     The key of the DOT attribute.
+    /// </param>
+    public DotAttributeKeyAttribute(string key)
     {
-        /// <summary>
-        ///     Creates a new attribute instance.
-        /// </summary>
-        /// <param name="key">
-        ///     The key of the DOT attribute.
-        /// </param>
-        public DotAttributeKeyAttribute(string key)
-        {
-            Key = key;
-        }
-
-        /// <summary>
-        ///     Gets the key of the DOT attribute.
-        /// </summary>
-        public string Key { get; }
+        Key = key;
     }
+
+    /// <summary>
+    ///     Gets the key of the DOT attribute.
+    /// </summary>
+    public string Key { get; }
 }

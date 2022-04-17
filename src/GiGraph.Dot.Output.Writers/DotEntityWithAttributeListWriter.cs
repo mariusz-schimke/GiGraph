@@ -1,46 +1,45 @@
 ﻿using GiGraph.Dot.Output.Writers.Attributes;
 using GiGraph.Dot.Output.Writers.TokenWriter;
 
-namespace GiGraph.Dot.Output.Writers
+namespace GiGraph.Dot.Output.Writers;
+
+public abstract class DotEntityWithAttributeListWriter : DotEntityWriter, IDotEntityWithAttributeListWriter
 {
-    public abstract class DotEntityWithAttributeListWriter : DotEntityWriter, IDotEntityWithAttributeListWriter
+    protected readonly bool _singleLineAttributeList;
+
+    protected DotEntityWithAttributeListWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool singleLineAttributeList)
+        : base(tokenWriter, configuration, enforceBlockComment: false)
     {
-        protected readonly bool _singleLineAttributeList;
+        _singleLineAttributeList = singleLineAttributeList;
+    }
 
-        protected DotEntityWithAttributeListWriter(DotTokenWriter tokenWriter, DotEntityWriterConfiguration configuration, bool singleLineAttributeList)
-            : base(tokenWriter, configuration, enforceBlockComment: false)
+    public virtual IDotAttributeListItemWriter BeginAttributeList(bool useAttributeSeparator)
+    {
+        var tokenWriter = PrepareTokenWriter()
+           .NewLine()
+           .AttributeListStart()
+           .NextIndentationLevel()
+           .NewLine(linger: true);
+
+        return new DotAttributeListItemWriter(tokenWriter, _configuration, useAttributeSeparator);
+    }
+
+    public virtual void EndAttributeList()
+    {
+        PrepareTokenWriter()
+           .NewLine()
+           .AttributeListEnd();
+    }
+
+    protected virtual DotTokenWriter PrepareTokenWriter()
+    {
+        var tokenWriter = _tokenWriter.ClearLingerBuffer();
+
+        if (_singleLineAttributeList)
         {
-            _singleLineAttributeList = singleLineAttributeList;
+            tokenWriter = tokenWriter.SingleLine();
         }
 
-        public virtual IDotAttributeListItemWriter BeginAttributeList(bool useAttributeSeparator)
-        {
-            var tokenWriter = PrepareTokenWriter()
-               .NewLine()
-               .AttributeListStart()
-               .NextIndentationLevel()
-               .NewLine(linger: true);
-
-            return new DotAttributeListItemWriter(tokenWriter, _configuration, useAttributeSeparator);
-        }
-
-        public virtual void EndAttributeList()
-        {
-            PrepareTokenWriter()
-               .NewLine()
-               .AttributeListEnd();
-        }
-
-        protected virtual DotTokenWriter PrepareTokenWriter()
-        {
-            var tokenWriter = _tokenWriter.ClearLingerBuffer();
-
-            if (_singleLineAttributeList)
-            {
-                tokenWriter = tokenWriter.SingleLine();
-            }
-
-            return tokenWriter;
-        }
+        return tokenWriter;
     }
 }

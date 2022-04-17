@@ -1,16 +1,15 @@
 using GiGraph.Dot.Entities.Labels;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests.Labels
+namespace GiGraph.Dot.Entities.Tests.Labels;
+
+public class DotTextLabelTest
 {
-    public class DotTextLabelTest
+    [Fact]
+    public void converts_string_to_text_label()
     {
-        [Fact]
-        public void converts_string_to_text_label()
-        {
-            var value = "text";
-            DotLabel label = value;
-            Assert.Equal(value, label.ToString());
-        }
+        var value = "text";
+        DotLabel label = value;
+        Assert.Equal(value, label.ToString());
     }
 }
