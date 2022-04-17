@@ -31,11 +31,8 @@ namespace GiGraph.Dot.Extensions
         /// <param name="syntaxRules">
         ///     The syntax rules to use.
         /// </param>
-        /// <param name="encoding">
-        ///     Unused. Kept for backward compatibility.
-        /// </param>
         public static string Build(this DotGraph graph, DotFormattingOptions formattingOptions = null,
-            DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null, Encoding encoding = null)
+            DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null)
         {
             using var outputWriter = new StringWriter(new StringBuilder(), syntaxRules?.Culture);
             graph.Build(outputWriter, formattingOptions, syntaxOptions, syntaxRules);
