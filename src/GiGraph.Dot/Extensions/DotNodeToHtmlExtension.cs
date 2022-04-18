@@ -20,7 +20,7 @@ public static class DotNodeToHtmlExtension
     ///     <see href="http://www.graphviz.org/doc/info/shapes.html#html">
     ///         documentation
     ///     </see>
-    ///     to learn what HTML grammar is supported. Useful when the HTML entity represents a table and you don't want the node to have
+    ///     to learn what HTML grammar is supported. Useful when the HTML entity represents a table, and you don't want the node to have
     ///     any shape.
     /// </summary>
     /// <param name="node">
@@ -36,7 +36,7 @@ public static class DotNodeToHtmlExtension
 
     /// <summary>
     ///     Converts the current node to an HTML node by assigning HTML to its label attribute, and setting its shape to
-    ///     <see cref="DotNodeShape.Plain" />. Useful when the HTML entity represents a table and you don't want the node to have any
+    ///     <see cref="DotNodeShape.Plain" />. Useful when the HTML entity represents a table, and you don't want the node to have any
     ///     shape.
     /// </summary>
     /// <param name="node">
@@ -52,8 +52,8 @@ public static class DotNodeToHtmlExtension
 
     /// <summary>
     ///     Converts the current node to an HTML node by assigning custom-built HTML to its label attribute, and setting its shape to
-    ///     <see cref="DotNodeShape.Plain" />. Useful when the HTML entity represents a table and you don't want the node to have any
-    ///     shape.
+    ///     <see cref="DotNodeShape.Plain" />. Useful when the custom-built HTML represents a table, and you don't want the node to have
+    ///     any shape.
     /// </summary>
     /// <param name="node">
     ///     The node to convert.
