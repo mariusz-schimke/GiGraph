@@ -36,7 +36,7 @@ public static class DotNodeToRecordExtension
     ///     The current node.
     /// </param>
     /// <param name="buildRecord">
-    ///     A method delegate that provides a record built with a specified builder.
+    ///     A method delegate that provides a record builder to compose the node's content.
     /// </param>
     /// <param name="flip">
     ///     Determines whether the orientation of the record should be changed from horizontal to vertical, or the other way round. The
