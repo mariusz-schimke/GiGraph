@@ -6,29 +6,31 @@ namespace GiGraph.Dot.Types.EscapeString;
 public abstract partial class DotEscapeString
 {
     /// <summary>
-    ///     Returns left-justified text.
+    ///     Left-justifies the last line of the specified text. Note that if any text is further appended, it will start from a new line.
     /// </summary>
     /// <param name="text">
     ///     The text to justify.
     /// </param>
-    public static DotEscapeString JustifyLeft(DotEscapeString text)
+    public static DotEscapeString LeftJustifyLine(DotEscapeString text)
     {
-        return text + LeftJustification;
+        return text + LeftJustificationLineBreak;
     }
 
     /// <summary>
-    ///     Returns right-justified text.
+    ///     Right-justifies the last line of the specified text. Note that if any text is further appended, it will start from a new
+    ///     line.
     /// </summary>
     /// <param name="text">
     ///     The text to justify.
     /// </param>
-    public static DotEscapeString JustifyRight(DotEscapeString text)
+    public static DotEscapeString RightJustifyLine(DotEscapeString text)
     {
-        return text + RightJustification;
+        return text + RightJustificationLineBreak;
     }
 
     /// <summary>
-    ///     Creates a new instance initialized with the specified text. The text will be escaped on output DOT script generation.
+    ///     Creates a new instance initialized with the specified text. The text will be escaped on output DOT script generation to
+    ///     ensure its correct rendering.
     /// </summary>
     /// <param name="value">
     ///     The string to use.

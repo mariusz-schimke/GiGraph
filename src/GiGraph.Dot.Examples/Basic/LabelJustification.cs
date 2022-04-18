@@ -25,8 +25,8 @@ public static class LabelJustification
 
             // using string concatenation
             node.Label = "Centered line" + DotEscapeString.LineBreak +
-                DotEscapeString.JustifyLeft("Left-justified line") +
-                DotEscapeString.JustifyRight("Right-justified line");
+                DotEscapeString.LeftJustifyLine("Left-justified line") +
+                DotEscapeString.RightJustifyLine("Right-justified line");
         });
 
         return graph;

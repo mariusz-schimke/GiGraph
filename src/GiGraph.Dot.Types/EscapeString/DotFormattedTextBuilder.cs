@@ -51,8 +51,7 @@ public class DotFormattedTextBuilder
     /// </summary>
     public virtual DotFormattedTextBuilder AppendLine()
     {
-        _items.Add(DotEscapeString.LineBreak);
-        return this;
+        return Append(DotEscapeString.LineBreak);
     }
 
     /// <summary>
@@ -63,110 +62,99 @@ public class DotFormattedTextBuilder
     /// </param>
     public virtual DotFormattedTextBuilder AppendLine(DotEscapeString line)
     {
-        _items.Add(line);
-        return AppendLine();
+        return Append(line).AppendLine();
     }
 
     /// <summary>
-    ///     Appends the specified line of text to the instance and marks it as left-justified (if the text contains line breaks,
-    ///     justification will be applied to the last line only on graph visualization).
+    ///     Causes the last line of text in this instance to be left-justified. Further appended text will start from a new line.
+    /// </summary>
+    public virtual DotFormattedTextBuilder AppendLeftJustificationLineBreak()
+    {
+        return Append(DotEscapeString.LeftJustificationLineBreak);
+    }
+
+    /// <summary>
+    ///     Appends the specified line of text to the instance and left-justifies it. Note that if the text contains line breaks, the
+    ///     justification will be applied to the last line only.
     /// </summary>
     /// <param name="line">
     ///     The line of text to append to the instance.
     /// </param>
     public virtual DotFormattedTextBuilder AppendLeftJustifiedLine(DotEscapeString line)
     {
-        return Append(line).LeftJustifyLine();
+        return Append(line).AppendLeftJustificationLineBreak();
     }
 
     /// <summary>
-    ///     Appends the specified line of text to the instance and marks it as right-justified (if the text contains line breaks,
-    ///     justification will be applied to the last line only on graph visualization).
+    ///     Causes the last line of text in this instance to be right-justified. Further appended text will start from a new line.
+    /// </summary>
+    public virtual DotFormattedTextBuilder AppendRightJustificationLineBreak()
+    {
+        return Append(DotEscapeString.RightJustificationLineBreak);
+    }
+
+    /// <summary>
+    ///     Appends the specified line of text to the instance and right-justifies it. Note that if the text contains line breaks, the
+    ///     justification will be applied to the last line only.
     /// </summary>
     /// <param name="line">
     ///     The line of text to append to the instance.
     /// </param>
     public virtual DotFormattedTextBuilder AppendRightJustifiedLine(DotEscapeString line)
     {
-        return Append(line).RightJustifyLine();
-    }
-
-    /// <summary>
-    ///     <para>
-    ///         Causes the preceding line of text to be left-justified.
-    ///     </para>
-    ///     <para>
-    ///         Note that if further text is added to the instance after the method is called, it will appear in a new line.
-    ///     </para>
-    /// </summary>
-    public virtual DotFormattedTextBuilder LeftJustifyLine()
-    {
-        return Append(DotEscapeString.LeftJustification);
-    }
-
-    /// <summary>
-    ///     <para>
-    ///         Causes the preceding line of text to be right-justified.
-    ///     </para>
-    ///     <para>
-    ///         Note that if further text is added to the instance after the method is called, it will appear in a new line.
-    ///     </para>
-    /// </summary>
-    public virtual DotFormattedTextBuilder RightJustifyLine()
-    {
-        return Append(DotEscapeString.RightJustification);
+        return Append(line).AppendRightJustificationLineBreak();
     }
 
     /// <summary>
     ///     Appends a placeholder replaced with the label of the current object when the graph is visualized.
     /// </summary>
-    public virtual DotFormattedTextBuilder AppendLabel()
+    public virtual DotFormattedTextBuilder AppendLabelPlaceholder()
     {
-        return Append(DotEscapeString.Label);
+        return Append(DotEscapeString.LabelPlaceholder);
     }
 
     /// <summary>
     ///     Appends a placeholder replaced with the identifier of the graph when the graph is visualized.
     /// </summary>
-    public virtual DotFormattedTextBuilder AppendGraphId()
+    public virtual DotFormattedTextBuilder AppendGraphIdPlaceholder()
     {
-        return Append(DotEscapeString.GraphId);
+        return Append(DotEscapeString.GraphIdPlaceholder);
     }
 
     /// <summary>
     ///     Appends a placeholder replaced with the definition of the current edge when the graph is visualized. Applicable to edges
     ///     only.
     /// </summary>
-    public virtual DotFormattedTextBuilder AppendEdgeDefinition()
+    public virtual DotFormattedTextBuilder AppendEdgeDefinitionPlaceholder()
     {
-        return Append(DotEscapeString.EdgeDefinition);
+        return Append(DotEscapeString.EdgeDefinitionPlaceholder);
     }
 
     /// <summary>
     ///     Appends a placeholder replaced with the identifier of the tail node of the current edge when the graph is visualized.
     ///     Applicable to edges only.
     /// </summary>
-    public virtual DotFormattedTextBuilder AppendTailNodeId()
+    public virtual DotFormattedTextBuilder AppendTailNodeIdPlaceholder()
     {
-        return Append(DotEscapeString.TailNodeId);
+        return Append(DotEscapeString.TailNodeIdPlaceholder);
     }
 
     /// <summary>
     ///     Appends a placeholder replaced with the identifier of the head node of the current edge when the graph is visualized.
     ///     Applicable to edges only.
     /// </summary>
-    public virtual DotFormattedTextBuilder AppendHeadNodeId()
+    public virtual DotFormattedTextBuilder AppendHeadNodeIdPlaceholder()
     {
-        return Append(DotEscapeString.HeadNodeId);
+        return Append(DotEscapeString.HeadNodeIdPlaceholder);
     }
 
     /// <summary>
     ///     Appends a placeholder replaced with the identifier of the current node when the graph is visualized. Applicable to nodes
     ///     only.
     /// </summary>
-    public virtual DotFormattedTextBuilder AppendNodeId()
+    public virtual DotFormattedTextBuilder AppendNodeIdPlaceholder()
     {
-        return Append(DotEscapeString.NodeId);
+        return Append(DotEscapeString.NodeIdPlaceholder);
     }
 
     /// <summary>

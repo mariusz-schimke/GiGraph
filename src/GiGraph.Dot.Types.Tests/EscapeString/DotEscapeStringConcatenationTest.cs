@@ -12,7 +12,7 @@ public class DotEscapeStringConcatenationTest
     [Fact]
     public void escape_string_concatenation_produces_a_valid_dot_encoded_value_when_both_sides_are_not_null()
     {
-        var value = @"\a" + DotEscapeString.GraphId;
+        var value = @"\a" + DotEscapeString.GraphIdPlaceholder;
 
         Assert.Equal(
             @"\\a\G",

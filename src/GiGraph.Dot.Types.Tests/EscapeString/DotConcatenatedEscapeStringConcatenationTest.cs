@@ -12,7 +12,7 @@ public class DotConcatenatedEscapeStringConcatenationTest
     [Fact]
     public void concatenated_escape_string_concatenation_produces_a_valid_dot_encoded_value_when_both_sides_are_not_null_and_left_is_concatenated()
     {
-        var concatenated = @"\a" + DotEscapeString.GraphId;
+        var concatenated = @"\a" + DotEscapeString.GraphIdPlaceholder;
         var value = concatenated + " ";
 
         Assert.Equal(
@@ -23,7 +23,7 @@ public class DotConcatenatedEscapeStringConcatenationTest
     [Fact]
     public void concatenated_escape_string_concatenation_produces_a_valid_dot_encoded_value_when_both_sides_are_not_null_and_right_is_concatenated()
     {
-        var concatenated = @"\a" + DotEscapeString.GraphId;
+        var concatenated = @"\a" + DotEscapeString.GraphIdPlaceholder;
         var value = " " + concatenated;
 
         Assert.Equal(
@@ -74,7 +74,7 @@ public class DotConcatenatedEscapeStringConcatenationTest
     [Fact]
     public void concatenated_escape_string_concatenation_produces_a_valid_dot_encoded_value_when_only_left_side_is_not_null_and_left_is_concatenated()
     {
-        var concatenated = @"\a" + DotEscapeString.GraphId;
+        var concatenated = @"\a" + DotEscapeString.GraphIdPlaceholder;
         var value = concatenated + null;
 
         Assert.Equal(
@@ -85,7 +85,7 @@ public class DotConcatenatedEscapeStringConcatenationTest
     [Fact]
     public void concatenated_escape_string_concatenation_produces_a_valid_dot_encoded_value_when_only_right_side_is_not_null_and_right_is_concatenated()
     {
-        var concatenated = @"\a" + DotEscapeString.GraphId;
+        var concatenated = @"\a" + DotEscapeString.GraphIdPlaceholder;
         var value = null + concatenated;
 
         Assert.Equal(

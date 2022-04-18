@@ -17,14 +17,14 @@ public static class RecordNodes
             $"Foo{Environment.NewLine}Bar",
             new DotRecord
             (
-                DotEscapeString.JustifyLeft("Baz"),
+                DotEscapeString.LeftJustifyLine("Baz"),
                 new DotRecord
                 (
                     "Garply",
                     "Waldo",
                     new DotRecordTextField("Fred", PortName: "port1")
                 ),
-                DotEscapeString.JustifyRight("Plugh")
+                DotEscapeString.RightJustifyLine("Plugh")
             ),
             "Qux",
             "Quux"
@@ -33,9 +33,9 @@ public static class RecordNodes
         // you can achieve the same effect using a record builder
         graph.Nodes.Add("Baz").ToRecordNode(rb1 => rb1
            .AppendField($"Foo{Environment.NewLine}Bar")
-           .AppendRecord(rb2 => rb2
+           .AppendSubrecord(rb2 => rb2
                .AppendField(tf => tf.AppendLeftJustifiedLine("Baz"))
-               .AppendRecord(rb3 => rb3
+               .AppendSubrecord(rb3 => rb3
                    .AppendFields("Garply", "Waldo")
                    .AppendField("Fred", "port1")
                 )

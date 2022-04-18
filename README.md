@@ -336,8 +336,8 @@ graph.Nodes.Add("Foo", node =>
 
     // or string concatenation
     node.Label = "Centered line" + DotEscapeString.LineBreak +
-        DotEscapeString.JustifyLeft("Left-justified line") +
-        DotEscapeString.JustifyRight("Right-justified line");
+        DotEscapeString.LeftJustifyLine("Left-justified line") +
+        DotEscapeString.RightJustifyLine("Right-justified line");
 });
 ```
 
@@ -364,22 +364,22 @@ var graph = new DotGraph("Label formatting");
 
 // formatted text builder
 graph.Label = new DotFormattedTextBuilder("Graph title: ")
-    .AppendGraphId() // graph ID placeholder
+    .AppendGraphIdPlaceholder()
     .Build();
 
 // the same effect by string concatenation
-graph.Label = "Graph title: " + DotEscapeString.GraphId;
+graph.Label = "Graph title: " + DotEscapeString.GraphIdPlaceholder;
 
 
 graph.Nodes.Add("Foo", node =>
 {
     // formatted text builder
     node.Label = new DotFormattedTextBuilder("Node ")
-        .AppendNodeId() // node ID placeholder
+        .AppendNodeIdPlaceholder()
         .Build();
 
     // the same effect by string concatenation
-    node.Label = "Node " + DotEscapeString.NodeId;
+    node.Label = "Node " + DotEscapeString.NodeIdPlaceholder;
 });
 
 
@@ -387,14 +387,14 @@ graph.Edges.Add("Foo", "Bar", edge =>
 {
     // formatted text builder
     edge.Label = new DotFormattedTextBuilder("From ")
-        .AppendTailNodeId() // tail node ID placeholder
+        .AppendTailNodeIdPlaceholder()
         .Append(" to ")
-        .AppendHeadNodeId() // head node ID placeholder
+        .AppendHeadNodeIdPlaceholder()
         .Build();
 
     // the same effect by string concatenation
-    edge.Label = "From " + DotEscapeString.TailNodeId +
-        " to " + DotEscapeString.HeadNodeId;
+    edge.Label = "From " + DotEscapeString.TailNodeIdPlaceholder +
+        " to " + DotEscapeString.HeadNodeIdPlaceholder;
 });
 ```
 
@@ -590,7 +590,7 @@ using GiGraph.Dot.Extensions;
 
 var builder = new DotRecordBuilder()
    .AppendField("Foo")
-   .AppendRecord("Bar", "Baz")
+   .AppendSubrecord("Bar", "Baz")
    .AppendField("Qux");
 
 graph.Nodes.Add("Bar").ToRecordNode(builder.Build());
@@ -602,7 +602,7 @@ using GiGraph.Dot.Extensions;
 graph.Nodes.Add("Bar").ToRecordNode(rb =>
 {
     rb.AppendField("Foo")
-      .AppendRecord("Bar", "Baz")
+      .AppendSubrecord("Bar", "Baz")
       .AppendField("Qux");
 });
 ```
@@ -625,9 +625,9 @@ The fields of record nodes may have a **port** specified as well. The port may h
 ```c#
 graph.Nodes.Add("Baz").ToRecordNode(rb1 => rb1
    .AppendField($"Foo{Environment.NewLine}Bar")
-   .AppendRecord(rb2 => rb2
+   .AppendSubrecord(rb2 => rb2
        .AppendField(tf => tf.AppendLeftJustifiedLine("Baz"))
-       .AppendRecord(rb3 => rb3
+       .AppendSubrecord(rb3 => rb3
            .AppendFields("Garply", "Waldo")
            .AppendField("Fred", "port1")
         )
@@ -716,7 +716,7 @@ table.AddRow(row =>
 );
 
 // sets a borderless (plain) shape of the node so that the HTML table fully determines the shape
-graph.Nodes.Add("Bar").ToPlainHtmlNode(table);
+graph.Nodes.Add("Bar").ToHtmlTableNode(table);
 ```
 
 The code above renders:
