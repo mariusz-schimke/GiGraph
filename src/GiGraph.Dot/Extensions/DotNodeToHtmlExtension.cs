@@ -1,4 +1,6 @@
-﻿using GiGraph.Dot.Entities.Html;
+﻿using System;
+using GiGraph.Dot.Entities.Html;
+using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Types.Html;
@@ -45,6 +47,25 @@ public static class DotNodeToHtmlExtension
     public static void ToPlainHtmlNode(this DotNodeDefinition node, IDotHtmlEntity html)
     {
         node.ToPlainHtmlNode(new DotHtmlLabel(html));
+    }
+
+    /// <summary>
+    ///     Converts the current node to an HTML node by assigning custom-built HTML to its label attribute, and setting its shape to
+    ///     <see cref="DotNodeShape.Plain" />. Useful when the HTML entity represents a table and you don't want the node to have any
+    ///     shape.
+    /// </summary>
+    /// <param name="node">
+    ///     The node to convert.
+    /// </param>
+    /// <param name="buildHtml">
+    ///     A method delegate that provides an HTML builder to compose the node's content.
+    /// </param>
+    public static void ToPlainHtmlNode(this DotNodeDefinition node, Action<DotHtmlBuilder> buildHtml)
+    {
+        var builder = new DotHtmlBuilder();
+        buildHtml(builder);
+
+        ToPlainHtmlNode(node, builder.Build());
     }
 
     private static void ToPlainHtmlNode(this DotNodeDefinition node, DotHtmlLabel label)
