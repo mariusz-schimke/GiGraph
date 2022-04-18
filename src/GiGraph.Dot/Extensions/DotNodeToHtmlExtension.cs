@@ -87,6 +87,21 @@ public static class DotNodeToHtmlExtension
         ToPlainHtmlNode(node, table);
     }
 
+    /// <summary>
+    ///     Converts the current node to an HTML node by assigning the specified HTML table to its label attribute, and setting its shape
+    ///     to <see cref="DotNodeShape.Plain" />. The content and shape of the node will be fully determined by the table.
+    /// </summary>
+    /// <param name="node">
+    ///     The node to convert.
+    /// </param>
+    /// <param name="table">
+    ///     The HTML table to assign to node label.
+    /// </param>
+    public static void ToHtmlTableNode(this DotNodeDefinition node, DotHtmlTable table)
+    {
+        ToPlainHtmlNode(node, table);
+    }
+
     private static void ToPlainHtmlNode(this DotNodeDefinition node, DotHtmlLabel label)
     {
         node.Shape = DotNodeShape.Plain;

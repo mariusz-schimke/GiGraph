@@ -24,6 +24,8 @@
 
     <releaseNotes>- The names and comments of certain methods and properties have been improved to better express their meaning.
 
+- Added a couple of helper methods to nodes (ToHtmlTableNode, ToPlainHtmlNode with HTML builder).
+
 See also https://github.com/$repository$/releases</releaseNotes>
   </metadata>
 </package>
