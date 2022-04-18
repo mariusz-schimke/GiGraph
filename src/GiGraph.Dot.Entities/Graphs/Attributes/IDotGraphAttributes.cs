@@ -129,8 +129,9 @@ public interface IDotGraphAttributes
     ///     </para>
     ///     <para>
     ///         Normal <see cref="DotEscapeString.NodeIdPlaceholder" />, <see cref="DotEscapeString.EdgeDefinitionPlaceholder" />,
-    ///         <see cref="DotEscapeString.GraphIdPlaceholder" /> substitutions can be applied (see <see cref="DotFormattedTextBuilder" />). Note,
-    ///         however, that <see cref="DotEscapeString.EdgeDefinitionPlaceholder" /> does not provide a unique ID for multi-edges.
+    ///         <see cref="DotEscapeString.GraphIdPlaceholder" /> substitutions can be applied (see
+    ///         <see cref="DotFormattedTextBuilder" />). Note, however, that <see cref="DotEscapeString.EdgeDefinitionPlaceholder" />
+    ///         does not provide a unique ID for multi-edges.
     ///     </para>
     ///     <para>
     ///         If provided, it is the responsibility of the provider to keep ID values unique for its intended downstream use. If no ID
