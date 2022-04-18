@@ -17,14 +17,14 @@ public static class RecordNodes
             $"Foo{Environment.NewLine}Bar",
             new DotRecord
             (
-                DotEscapeString.JustifyLeft("Baz"),
+                DotEscapeString.LeftJustifyLine("Baz"),
                 new DotRecord
                 (
                     "Garply",
                     "Waldo",
                     new DotRecordTextField("Fred", PortName: "port1")
                 ),
-                DotEscapeString.JustifyRight("Plugh")
+                DotEscapeString.RightJustifyLine("Plugh")
             ),
             "Qux",
             "Quux"

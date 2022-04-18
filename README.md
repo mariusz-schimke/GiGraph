@@ -336,8 +336,8 @@ graph.Nodes.Add("Foo", node =>
 
     // or string concatenation
     node.Label = "Centered line" + DotEscapeString.LineBreak +
-        DotEscapeString.JustifyLeft("Left-justified line") +
-        DotEscapeString.JustifyRight("Right-justified line");
+        DotEscapeString.LeftJustifyLine("Left-justified line") +
+        DotEscapeString.RightJustifyLine("Right-justified line");
 });
 ```
 
@@ -364,22 +364,22 @@ var graph = new DotGraph("Label formatting");
 
 // formatted text builder
 graph.Label = new DotFormattedTextBuilder("Graph title: ")
-    .AppendGraphId() // graph ID placeholder
+    .AppendGraphIdPlaceholder()
     .Build();
 
 // the same effect by string concatenation
-graph.Label = "Graph title: " + DotEscapeString.GraphId;
+graph.Label = "Graph title: " + DotEscapeString.GraphIdPlaceholder;
 
 
 graph.Nodes.Add("Foo", node =>
 {
     // formatted text builder
     node.Label = new DotFormattedTextBuilder("Node ")
-        .AppendNodeId() // node ID placeholder
+        .AppendNodeIdPlaceholder()
         .Build();
 
     // the same effect by string concatenation
-    node.Label = "Node " + DotEscapeString.NodeId;
+    node.Label = "Node " + DotEscapeString.NodeIdPlaceholder;
 });
 
 
@@ -387,14 +387,14 @@ graph.Edges.Add("Foo", "Bar", edge =>
 {
     // formatted text builder
     edge.Label = new DotFormattedTextBuilder("From ")
-        .AppendTailNodeId() // tail node ID placeholder
+        .AppendTailNodeIdPlaceholder()
         .Append(" to ")
-        .AppendHeadNodeId() // head node ID placeholder
+        .AppendHeadNodeIdPlaceholder()
         .Build();
 
     // the same effect by string concatenation
-    edge.Label = "From " + DotEscapeString.TailNodeId +
-        " to " + DotEscapeString.HeadNodeId;
+    edge.Label = "From " + DotEscapeString.TailNodeIdPlaceholder +
+        " to " + DotEscapeString.HeadNodeIdPlaceholder;
 });
 ```
 
