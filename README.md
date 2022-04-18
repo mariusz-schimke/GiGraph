@@ -590,7 +590,7 @@ using GiGraph.Dot.Extensions;
 
 var builder = new DotRecordBuilder()
    .AppendField("Foo")
-   .AppendRecord("Bar", "Baz")
+   .AppendSubrecord("Bar", "Baz")
    .AppendField("Qux");
 
 graph.Nodes.Add("Bar").ToRecordNode(builder.Build());
@@ -602,7 +602,7 @@ using GiGraph.Dot.Extensions;
 graph.Nodes.Add("Bar").ToRecordNode(rb =>
 {
     rb.AppendField("Foo")
-      .AppendRecord("Bar", "Baz")
+      .AppendSubrecord("Bar", "Baz")
       .AppendField("Qux");
 });
 ```
@@ -625,9 +625,9 @@ The fields of record nodes may have a **port** specified as well. The port may h
 ```c#
 graph.Nodes.Add("Baz").ToRecordNode(rb1 => rb1
    .AppendField($"Foo{Environment.NewLine}Bar")
-   .AppendRecord(rb2 => rb2
+   .AppendSubrecord(rb2 => rb2
        .AppendField(tf => tf.AppendLeftJustifiedLine("Baz"))
-       .AppendRecord(rb3 => rb3
+       .AppendSubrecord(rb3 => rb3
            .AppendFields("Garply", "Waldo")
            .AppendField("Fred", "port1")
         )
