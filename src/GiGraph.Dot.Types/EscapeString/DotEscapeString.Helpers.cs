@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Types.EscapeString;
 public abstract partial class DotEscapeString
 {
     /// <summary>
-    ///     Returns a left-justified line of text. Note that if any text is further appended to it, it will start from a new line.
+    ///     Left-justifies the last line of the specified text. Note that if any text is further appended, it will start from a new line.
     /// </summary>
     /// <param name="text">
     ///     The text to justify.
@@ -17,7 +17,8 @@ public abstract partial class DotEscapeString
     }
 
     /// <summary>
-    ///     Returns right-justified text. Note that if any text is further appended to it, it will start from a new line.
+    ///     Right-justifies the last line of the specified text. Note that if any text is further appended, it will start from a new
+    ///     line.
     /// </summary>
     /// <param name="text">
     ///     The text to justify.
