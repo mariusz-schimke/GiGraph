@@ -3,7 +3,7 @@ using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.Records;
 using Xunit;
 
-namespace GiGraph.Dot.Types.Tests;
+namespace GiGraph.Dot.Types.Tests.Records;
 
 public class DotRecordTest
 {
