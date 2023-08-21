@@ -81,4 +81,19 @@ public static class DotLayoutEngines
     ///     .
     /// </summary>
     public const string Patchwork = "patchwork";
+
+    /// <summary>
+    ///     Pretty-print DOT graph file. Equivalent to <see cref="Nop1" />.
+    /// </summary>
+    public const string Nop = "nop";
+
+    /// <summary>
+    ///     Pretty-print DOT graph file. Equivalent to <see cref="Nop" />.
+    /// </summary>
+    public const string Nop1 = "nop1";
+
+    /// <summary>
+    ///     Pretty-print DOT graph file, assuming positions already known.
+    /// </summary>
+    public const string Nop2 = "nop2";
 }

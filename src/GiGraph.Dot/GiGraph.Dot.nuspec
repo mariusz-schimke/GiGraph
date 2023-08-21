@@ -22,11 +22,9 @@
 
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using the Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code or online tools like http://viz-js.com or http://magjac.com/graphviz-visual-editor, where you paste a script to view its visualization.</description>
 
-    <releaseNotes>- Added a couple of helper methods for setting gradient color fill on graph elements.
+    <releaseNotes>- Added new Graphviz attribute keys to the DotAttributeKeys consts (Beautify, Cluster, LineLength, OneBlock, TbBalance).
 
-- Output script string building has been optimized.
-
-- StreamWriter for generating the output script has been abstracted with TextWriter for better interoperability.
+- Added missing layout engines to the DotLayoutEngines consts (Nop, Nop1, Nop2).
 
 See also https://github.com/$repository$/releases</releaseNotes>
   </metadata>
