@@ -35,6 +35,12 @@
     "CompatibleLayoutEngines": "None",
     "CompatibleOutputs": "Any"
   },
+  "beautify": {
+    "Key": "beautify",
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Sfdp",
+    "CompatibleOutputs": "Any"
+  },
   "bgcolor": {
     "Key": "bgcolor",
     "CompatibleElements": "Graph, Cluster",
@@ -58,6 +64,12 @@
     "CompatibleElements": "Graph, Cluster, Node, Edge",
     "CompatibleLayoutEngines": "Any",
     "CompatibleOutputs": "Svg"
+  },
+  "cluster": {
+    "Key": "cluster",
+    "CompatibleElements": "Subgraph, Cluster",
+    "CompatibleLayoutEngines": "Any",
+    "CompatibleOutputs": "Any"
   },
   "clusterrank": {
     "Key": "clusterrank",
@@ -509,6 +521,12 @@
     "CompatibleLayoutEngines": "None",
     "CompatibleOutputs": "Any"
   },
+  "linelength": {
+    "Key": "linelength",
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "None",
+    "CompatibleOutputs": "Dot"
+  },
   "lp": {
     "Key": "lp",
     "CompatibleElements": "Graph, Cluster, Edge",
@@ -615,6 +633,12 @@
     "Key": "nslimit1",
     "CompatibleElements": "Graph",
     "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
+  },
+  "oneblock": {
+    "Key": "oneblock",
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Circo",
     "CompatibleOutputs": "Any"
   },
   "ordering": {
@@ -958,6 +982,12 @@
     "CompatibleElements": "Graph, Cluster, Node, Edge",
     "CompatibleLayoutEngines": "Any",
     "CompatibleOutputs": "Svg, Map"
+  },
+  "TBbalance": {
+    "Key": "TBbalance",
+    "CompatibleElements": "Graph",
+    "CompatibleLayoutEngines": "Dot",
+    "CompatibleOutputs": "Any"
   },
   "tooltip": {
     "Key": "tooltip",
