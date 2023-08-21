@@ -41,6 +41,14 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
         set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
     }
 
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.EdgeCrossingMinimizationScale" />
+    [DotAttributeKey(DotAttributeKeys.McLimit)]
+    public virtual double? EdgeCrossingMinimizationScale
+    {
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
+
     /// <inheritdoc cref="IDotGraphLayoutAttributes.UseGlobalRanking" />
     [DotAttributeKey(DotAttributeKeys.NewRank)]
     public virtual bool? UseGlobalRanking
@@ -156,6 +164,7 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
         PackingMode = attributes.PackingMode;
         RankSeparation = attributes.RankSeparation;
         RepeatCrossingMinimization = attributes.RepeatCrossingMinimization;
+        EdgeCrossingMinimizationScale = attributes.EdgeCrossingMinimizationScale;
         Rotation = attributes.Rotation;
         SortIndex = attributes.SortIndex;
         UseGlobalRanking = attributes.UseGlobalRanking;

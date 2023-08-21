@@ -115,9 +115,21 @@ public interface IDotGraphLayoutAttributes
     DotPackingModeDefinition PackingMode { get; set; }
 
     /// <summary>
-    ///     If true and there are multiple clusters, runs crossing minimization a second time (dot only, default: true).
+    ///     If there are multiple clusters, determines whether to run edge crossing minimization a second time (dot only, default: true).
     /// </summary>
     bool? RepeatCrossingMinimization { get; set; }
+
+    /// <summary>
+    ///     <para>
+    ///         Scale factor for mincross (mc) edge crossing minimiser parameters (dot only, default: 1.0).
+    ///     </para>
+    ///     <para>
+    ///         Multiplicative scale factor used to alter the MinQuit (default = 8) and MaxIter (default = 24) parameters used during
+    ///         crossing minimization. These correspond to the number of tries without improvement before quitting and the maximum number
+    ///         of iterations in each pass.
+    ///     </para>
+    /// </summary>
+    double? EdgeCrossingMinimizationScale { get; set; }
 
     /// <summary>
     ///     <para>
