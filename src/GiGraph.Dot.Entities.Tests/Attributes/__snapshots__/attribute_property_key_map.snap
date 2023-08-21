@@ -200,6 +200,9 @@
     "Canvas.Margin: DotPoint [Graph]",
     "Padding: DotPoint [Cluster, Node]"
   ],
+  "mclimit": [
+    "Layout.EdgeCrossingMinimizationScale: Double? [Graph]"
+  ],
   "minlen": [
     "MinLength: Int32? [Edge]"
   ],
