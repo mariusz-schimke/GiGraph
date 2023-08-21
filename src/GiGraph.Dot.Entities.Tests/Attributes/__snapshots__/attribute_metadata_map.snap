@@ -525,7 +525,7 @@
     "Key": "linelength",
     "CompatibleElements": "Graph",
     "CompatibleLayoutEngines": "None",
-    "CompatibleOutputs": "Any"
+    "CompatibleOutputs": "Dot"
   },
   "lp": {
     "Key": "lp",
