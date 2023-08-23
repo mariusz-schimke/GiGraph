@@ -114,6 +114,7 @@ public interface IDotGraphLayoutAttributes
     /// </summary>
     DotPackingModeDefinition PackingMode { get; set; }
 
+    // TODO: Rename to RepeatEdgeCrossingMinimization
     /// <summary>
     ///     If there are multiple clusters, determines whether to run edge crossing minimization a second time (dot only, default: true).
     /// </summary>

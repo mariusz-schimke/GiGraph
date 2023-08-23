@@ -2,7 +2,6 @@ using System;
 
 namespace GiGraph.Dot.Output.Metadata;
 
-// TODO: Rename to DotCompatibleOutputFormats (include properties of this type).
 /// <summary>
 ///     Determines outputs that an attribute is used for.
 /// </summary>
@@ -15,12 +14,12 @@ public enum DotCompatibleOutputs
     Any = -1,
 
     /// <summary>
-    ///     The attribute is used for text output, for example:
+    ///     The attribute is applicable to text outputs, for example:
     ///     <c>
     ///         echo 'digraph G { Node0 }' | dot -Tcanon
     ///     </c>
     /// </summary>
-    Dot = 1 << 0,
+    Text = 1 << 0,
 
     /// <summary>
     ///     The attribute is used for the xdot output. It extends the dot format by providing much more detailed information about how
