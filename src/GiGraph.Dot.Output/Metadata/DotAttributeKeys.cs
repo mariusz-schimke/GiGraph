@@ -282,7 +282,7 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Edge, DotCompatibleLayoutEngines.None, isImplemented: false)]
     public const string Lp = "lp";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.None, DotCompatibleOutputs.Dot, isImplemented: false)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.None, DotCompatibleOutputs.Text, isImplemented: false)]
     public const string LineLength = "linelength";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node)]
