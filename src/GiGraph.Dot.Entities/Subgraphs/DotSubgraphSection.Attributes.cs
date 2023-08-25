@@ -11,4 +11,11 @@ public partial class DotSubgraphSection : IDotSubgraphRootAttributes
         get => Attributes.Implementation.NodeRank;
         set => Attributes.Implementation.NodeRank = value;
     }
+
+    /// <inheritdoc cref="IDotSubgraphAttributes.IsCluster" />
+    public virtual bool? IsCluster
+    {
+        get => ((IDotSubgraphAttributes) Attributes.Implementation).IsCluster;
+        set => ((IDotSubgraphAttributes) Attributes.Implementation).IsCluster = value;
+    }
 }

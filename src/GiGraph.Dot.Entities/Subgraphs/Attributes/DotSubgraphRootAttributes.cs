@@ -28,4 +28,11 @@ public class DotSubgraphRootAttributes : DotEntityAttributesWithMetadata<IDotSub
         get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
         set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
     }
+
+    [DotAttributeKey(DotAttributeKeys.Cluster)]
+    bool? IDotSubgraphAttributes.IsCluster
+    {
+        get => GetValueAsBool(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
 }
