@@ -70,6 +70,12 @@ public interface IDotGraphLayoutAttributes
     DotRank? NodeRank { get; set; }
 
     /// <summary>
+    ///     Determines which rank to move floating (loose) nodes to. The valid options are <see cref="DotRank.Min" /> or
+    ///     <see cref="DotRank.Max" />. Otherwise, floating nodes are placed anywhere.
+    /// </summary>
+    DotRank? FloatingNodeRank { get; set; }
+
+    /// <summary>
     ///     <para>
     ///         In dot, this gives the desired rank separation, in inches (<see cref="DotRankSeparation" />; default: 0.5, minimum: 0.02.
     ///         This is the minimum vertical distance between the bottom of the nodes in one rank and the tops of nodes in the next.
