@@ -28,6 +28,9 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.None, isImplemented: false)]
     public const string Bb = "bb";
 
+    [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Sfdp, isImplemented: false)]
+    public const string Beautify = "beautify";
+
     [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster)]
     public const string BgColor = "bgcolor";
 
@@ -42,6 +45,9 @@ public static class DotAttributeKeys
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot)]
     public const string ClusterRank = "clusterrank";
+
+    [DotAttributeMetadata(DotCompatibleElements.Subgraph | DotCompatibleElements.Cluster)]
+    public const string Cluster = "cluster";
 
     // based on the documentation, the attribute is not supported by the root graph, but when set, it is actually inherited by clusters
     [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge)]
@@ -276,13 +282,16 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Edge, DotCompatibleLayoutEngines.None, isImplemented: false)]
     public const string Lp = "lp";
 
+    [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.None, DotCompatibleOutputs.Text, isImplemented: false)]
+    public const string LineLength = "linelength";
+
     [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node)]
     public const string Margin = "margin";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Neato | DotCompatibleLayoutEngines.Fdp, isImplemented: false)]
     public const string MaxIter = "maxiter";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot, isImplemented: false)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot)]
     public const string McLimit = "mclimit";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Circo, isImplemented: false)]
@@ -320,6 +329,9 @@ public static class DotAttributeKeys
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot, isImplemented: false)]
     public const string NsLimit1 = "nslimit1";
+
+    [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Circo)]
+    public const string OneBlock = "oneblock";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Node, DotCompatibleLayoutEngines.Dot)]
     public const string Ordering = "ordering";
@@ -495,6 +507,9 @@ public static class DotAttributeKeys
 
     [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.Map)]
     public const string Target = "target";
+
+    [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot)]
+    public const string TbBalance = "TBbalance";
 
     [DotAttributeMetadata(DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.Cmap)]
     public const string Tooltip = "tooltip";

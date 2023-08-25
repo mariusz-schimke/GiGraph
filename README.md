@@ -190,11 +190,19 @@ graph.Edges.Add("Foo", "Bar", edge =>
 
 
 
-In rare cases you may come across an attribute that is not exposed as a property, but then you can still provide a key and a value for it manually. Here's an example:
+In some cases you may come across an attribute that is not exposed as a property, but then you can still provide a key and a value for it manually. Here's an example:
 
 ```c#
 node.Attributes.Collection.Set("fillcolor", "red:blue");
 ```
+
+or using an attribute key const available in the *DotAttributeKeys* class:
+
+```c#
+node.Attributes.Collection.Set(DotAttributeKeys.FillColor, "red:blue");
+```
+
+
 
 You can also conveniently use specific types that represent attribute values to not have to care about syntactic details. For instance, the following code renders the same result as the example above:
 
@@ -210,7 +218,7 @@ node.Attributes.Collection.SetEnum("shape", DotNodeShape.Circle);
 
 
 
-If there is a case that you want your value to be written as is in the output DOT script, use the *SetCustom* method. It's similar to the first approach, but the value you provide doesn't undergo any further processing (normally, if it contains special characters, they have to be escaped so that they are interpreted correctly and don't break syntactic consistency of the output script). In this case, however, you have to take care of following the syntax rules by yourself for the provided value.
+If there is a case that you want your value to be written **as is** in the output DOT script, use the *SetCustom* method. It's similar to the first approach, but the value you provide doesn't undergo any further processing (normally, if it contains special characters, they have to be escaped so that they are interpreted correctly and don't break syntactic consistency of the output script). In this case, however, you have to take care of following the syntax rules by yourself for the provided value.
 
 ```c#
 node.Attributes.Collection.SetCustom("fillcolor", "red:blue");
