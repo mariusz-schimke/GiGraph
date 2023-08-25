@@ -332,6 +332,9 @@
   "target": [
     "Hyperlink.Target: DotEscapeString [Graph, Cluster, Node, Edge]"
   ],
+  "TBbalance": [
+    "Layout.FloatingNodeRank: DotRank? [Graph]"
+  ],
   "tooltip": [
     "Tooltip: DotEscapeString [Cluster, Node, Edge]"
   ],

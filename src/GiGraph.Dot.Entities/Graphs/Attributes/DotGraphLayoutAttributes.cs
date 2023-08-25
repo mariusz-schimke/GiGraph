@@ -25,6 +25,14 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
     {
     }
 
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.FloatingNodeRank" />
+    [DotAttributeKey(DotAttributeKeys.TbBalance)]
+    public virtual DotRank? FloatingNodeRank
+    {
+        get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+    }
+
     /// <inheritdoc cref="IDotGraphLayoutAttributes.Rotation" />
     [DotAttributeKey(DotAttributeKeys.Rotation)]
     public virtual double? Rotation
