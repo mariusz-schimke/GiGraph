@@ -145,6 +145,14 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
         set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
     }
 
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.ForceCircularLayout" />
+    [DotAttributeKey(DotAttributeKeys.OneBlock)]
+    public virtual bool? ForceCircularLayout
+    {
+        get => GetValueAsBool(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
+
     /// <inheritdoc cref="IDotGraphLayoutAttributes.SortIndex" />
     [DotAttributeKey(DotAttributeKeys.SortV)]
     public virtual int? SortIndex
@@ -153,6 +161,7 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
         set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
     }
 
+    // TODO: unit tests for these methods to make sure all props are copied
     /// <summary>
     ///     Copies layout attributes from the specified instance.
     /// </summary>
@@ -166,7 +175,9 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
         EdgeOrderingMode = attributes.EdgeOrderingMode;
         Engine = attributes.Engine;
         ForceExternalLabels = attributes.ForceExternalLabels;
+        ForceCircularLayout = attributes.ForceCircularLayout;
         NodeRank = attributes.NodeRank;
+        FloatingNodeRank = attributes.FloatingNodeRank;
         NodeSeparation = attributes.NodeSeparation;
         Packing = attributes.Packing;
         PackingMode = attributes.PackingMode;

@@ -330,7 +330,7 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot, isImplemented: false)]
     public const string NsLimit1 = "nslimit1";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Circo, isImplemented: false)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Circo)]
     public const string OneBlock = "oneblock";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Node, DotCompatibleLayoutEngines.Dot)]
