@@ -43,6 +43,11 @@ public interface IDotGraphLayoutAttributes
     bool? ForceExternalLabels { get; set; }
 
     /// <summary>
+    ///     Determines whether to draw circo graphs around one circle (circo only; default: false).
+    /// </summary>
+    bool? ForceCircularLayout { get; set; }
+
+    /// <summary>
     ///     Rotates the final layout counter-clockwise by the specified number of degrees (sfdp only; default: 0).
     /// </summary>
     double? Rotation { get; set; }

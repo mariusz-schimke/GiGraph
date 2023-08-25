@@ -212,6 +212,9 @@
   "nodesep": [
     "Layout.NodeSeparation: Double? [Graph]"
   ],
+  "oneblock": [
+    "Layout.ForceCircularLayout: Boolean? [Graph]"
+  ],
   "ordering": [
     "EdgeOrderingMode: DotEdgeOrderingMode? [Node]",
     "Layout.EdgeOrderingMode: DotEdgeOrderingMode? [Graph]"
