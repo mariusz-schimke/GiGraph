@@ -134,4 +134,11 @@ public partial class DotClusterSection : IDotClusterRootAttributes
         get => Attributes.Implementation.NodeRank;
         set => Attributes.Implementation.NodeRank = value;
     }
+
+    /// <inheritdoc cref="IDotClusterAttributes.IsCluster" />
+    public virtual bool? IsCluster
+    {
+        get => ((IDotClusterAttributes) Attributes.Implementation).IsCluster;
+        set => ((IDotClusterAttributes) Attributes.Implementation).IsCluster = value;
+    }
 }

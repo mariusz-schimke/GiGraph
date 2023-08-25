@@ -43,6 +43,11 @@ public interface IDotGraphLayoutAttributes
     bool? ForceExternalLabels { get; set; }
 
     /// <summary>
+    ///     Determines whether to draw circo graphs around one circle (circo only; default: false).
+    /// </summary>
+    bool? ForceCircularLayout { get; set; }
+
+    /// <summary>
     ///     Rotates the final layout counter-clockwise by the specified number of degrees (sfdp only; default: 0).
     /// </summary>
     double? Rotation { get; set; }
@@ -68,6 +73,12 @@ public interface IDotGraphLayoutAttributes
     ///     Gets or sets the rank constraints on the nodes in the graph (dot only). See also <see cref="UseGlobalRanking" />.
     /// </summary>
     DotRank? NodeRank { get; set; }
+
+    /// <summary>
+    ///     Determines which rank to move floating (loose) nodes to. The valid options are <see cref="DotRank.Min" /> or
+    ///     <see cref="DotRank.Max" />. Otherwise, floating nodes are placed anywhere.
+    /// </summary>
+    DotRank? FloatingNodeRank { get; set; }
 
     /// <summary>
     ///     <para>
@@ -114,10 +125,23 @@ public interface IDotGraphLayoutAttributes
     /// </summary>
     DotPackingModeDefinition PackingMode { get; set; }
 
+    // TODO: Rename to RepeatEdgeCrossingMinimization
     /// <summary>
-    ///     If true and there are multiple clusters, runs crossing minimization a second time (dot only, default: true).
+    ///     If there are multiple clusters, determines whether to run edge crossing minimization a second time (dot only, default: true).
     /// </summary>
     bool? RepeatCrossingMinimization { get; set; }
+
+    /// <summary>
+    ///     <para>
+    ///         Scale factor for mincross (mc) edge crossing minimiser parameters (dot only, default: 1.0).
+    ///     </para>
+    ///     <para>
+    ///         Multiplicative scale factor used to alter the MinQuit (default = 8) and MaxIter (default = 24) parameters used during
+    ///         crossing minimization. These correspond to the number of tries without improvement before quitting and the maximum number
+    ///         of iterations in each pass.
+    ///     </para>
+    /// </summary>
+    double? EdgeCrossingMinimizationScale { get; set; }
 
     /// <summary>
     ///     <para>

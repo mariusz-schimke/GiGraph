@@ -25,6 +25,14 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
     {
     }
 
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.FloatingNodeRank" />
+    [DotAttributeKey(DotAttributeKeys.TbBalance)]
+    public virtual DotRank? FloatingNodeRank
+    {
+        get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+    }
+
     /// <inheritdoc cref="IDotGraphLayoutAttributes.Rotation" />
     [DotAttributeKey(DotAttributeKeys.Rotation)]
     public virtual double? Rotation
@@ -38,6 +46,14 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
     public virtual bool? RepeatCrossingMinimization
     {
         get => GetValueAsBool(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
+
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.EdgeCrossingMinimizationScale" />
+    [DotAttributeKey(DotAttributeKeys.McLimit)]
+    public virtual double? EdgeCrossingMinimizationScale
+    {
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
         set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
     }
 
@@ -129,6 +145,14 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
         set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
     }
 
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.ForceCircularLayout" />
+    [DotAttributeKey(DotAttributeKeys.OneBlock)]
+    public virtual bool? ForceCircularLayout
+    {
+        get => GetValueAsBool(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
+
     /// <inheritdoc cref="IDotGraphLayoutAttributes.SortIndex" />
     [DotAttributeKey(DotAttributeKeys.SortV)]
     public virtual int? SortIndex
@@ -137,6 +161,7 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
         set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
     }
 
+    // TODO: unit tests for these methods to make sure all props are copied
     /// <summary>
     ///     Copies layout attributes from the specified instance.
     /// </summary>
@@ -150,12 +175,15 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
         EdgeOrderingMode = attributes.EdgeOrderingMode;
         Engine = attributes.Engine;
         ForceExternalLabels = attributes.ForceExternalLabels;
+        ForceCircularLayout = attributes.ForceCircularLayout;
         NodeRank = attributes.NodeRank;
+        FloatingNodeRank = attributes.FloatingNodeRank;
         NodeSeparation = attributes.NodeSeparation;
         Packing = attributes.Packing;
         PackingMode = attributes.PackingMode;
         RankSeparation = attributes.RankSeparation;
         RepeatCrossingMinimization = attributes.RepeatCrossingMinimization;
+        EdgeCrossingMinimizationScale = attributes.EdgeCrossingMinimizationScale;
         Rotation = attributes.Rotation;
         SortIndex = attributes.SortIndex;
         UseGlobalRanking = attributes.UseGlobalRanking;

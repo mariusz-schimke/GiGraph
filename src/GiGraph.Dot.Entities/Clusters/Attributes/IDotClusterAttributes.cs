@@ -3,6 +3,7 @@ using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Entities.Labels;
+using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.EscapeString;
@@ -138,4 +139,17 @@ public interface IDotClusterAttributes : IDotGraphClusterCommonAttributes
     ///     Gets or sets the rank constraints on the nodes in the cluster (dot only).
     /// </summary>
     DotRank? NodeRank { get; set; }
+
+    /// <summary>
+    ///     <para>
+    ///         Determines whether the subgraph is a cluster (default false). Subgraph clusters are rendered differently, e.g. dot
+    ///         renders a box around subgraph clusters, but doesn't draw a box around non-subgraph clusters.
+    ///     </para>
+    ///     <para>
+    ///         Since this library makes a strong distinction between subgraphs and clusters (in terms of what purpose they are used for
+    ///         and what attributes are settable on each of them), you should use a <see cref="DotSubgraph" /> rather than a cluster with
+    ///         <see cref="IsCluster" /> set to <see langword="false" />.
+    ///     </para>
+    /// </summary>
+    bool? IsCluster { get; set; }
 }

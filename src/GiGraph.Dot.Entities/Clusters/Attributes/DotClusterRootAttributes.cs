@@ -48,6 +48,13 @@ public class DotClusterRootAttributes : DotClusterNodeRootCommonAttributes<IDotC
         LabelAlignment = labelAlignmentAttributes;
     }
 
+    [DotAttributeKey(DotAttributeKeys.Cluster)]
+    bool? IDotClusterAttributes.IsCluster
+    {
+        get => GetValueAsBool(MethodBase.GetCurrentMethod());
+        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+    }
+
     public DotFontAttributes Font { get; }
     public DotClusterStyleAttributeOptions Style { get; }
     public DotLabelAlignmentAttributes LabelAlignment { get; }

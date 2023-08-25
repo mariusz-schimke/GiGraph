@@ -21,6 +21,9 @@
   "class": [
     "SvgStyleSheet.Class: String [Graph, Cluster, Node, Edge]"
   ],
+  "cluster": [
+    "IsCluster: Boolean? [Subgraph, Cluster]"
+  ],
   "clusterrank": [
     "Clusters.VisualizationMode: DotClusterVisualizationMode? [Graph]"
   ],
@@ -200,6 +203,9 @@
     "Canvas.Margin: DotPoint [Graph]",
     "Padding: DotPoint [Cluster, Node]"
   ],
+  "mclimit": [
+    "Layout.EdgeCrossingMinimizationScale: Double? [Graph]"
+  ],
   "minlen": [
     "MinLength: Int32? [Edge]"
   ],
@@ -208,6 +214,9 @@
   ],
   "nodesep": [
     "Layout.NodeSeparation: Double? [Graph]"
+  ],
+  "oneblock": [
+    "Layout.ForceCircularLayout: Boolean? [Graph]"
   ],
   "ordering": [
     "EdgeOrderingMode: DotEdgeOrderingMode? [Node]",
@@ -325,6 +334,9 @@
   ],
   "target": [
     "Hyperlink.Target: DotEscapeString [Graph, Cluster, Node, Edge]"
+  ],
+  "TBbalance": [
+    "Layout.FloatingNodeRank: DotRank? [Graph]"
   ],
   "tooltip": [
     "Tooltip: DotEscapeString [Cluster, Node, Edge]"
