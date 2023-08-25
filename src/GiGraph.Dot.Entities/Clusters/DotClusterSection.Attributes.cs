@@ -136,7 +136,7 @@ public partial class DotClusterSection : IDotClusterRootAttributes
     }
 
     /// <inheritdoc cref="IDotClusterAttributes.IsCluster" />
-    public virtual bool? IsCluster
+    bool? IDotClusterAttributes.IsCluster
     {
         get => ((IDotClusterAttributes) Attributes.Implementation).IsCluster;
         set => ((IDotClusterAttributes) Attributes.Implementation).IsCluster = value;
