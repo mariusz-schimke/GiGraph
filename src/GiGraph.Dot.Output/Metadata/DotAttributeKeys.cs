@@ -291,7 +291,7 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Neato | DotCompatibleLayoutEngines.Fdp, isImplemented: false)]
     public const string MaxIter = "maxiter";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot, isImplemented: true)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot)]
     public const string McLimit = "mclimit";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Circo, isImplemented: false)]
