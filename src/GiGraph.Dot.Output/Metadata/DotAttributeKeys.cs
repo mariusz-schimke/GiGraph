@@ -46,7 +46,7 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot)]
     public const string ClusterRank = "clusterrank";
 
-    [DotAttributeMetadata(DotCompatibleElements.Subgraph | DotCompatibleElements.Cluster, isImplemented: false)]
+    [DotAttributeMetadata(DotCompatibleElements.Subgraph | DotCompatibleElements.Cluster)]
     public const string Cluster = "cluster";
 
     // based on the documentation, the attribute is not supported by the root graph, but when set, it is actually inherited by clusters
