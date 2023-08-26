@@ -22,9 +22,9 @@
 
     <description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using the Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code or online tools like http://viz-js.com or http://magjac.com/graphviz-visual-editor, where you paste a script to view its visualization.</description>
 
-    <releaseNotes>- Added support for the TBbalance graph attribute (see Layout.FloatingNodeRank) which determines which rank to move floating (loose) nodes to.
+    <releaseNotes>- Added support for the TBbalance graph attribute (see Layout.FloatingNodeRank) that determines which rank to move floating (loose) nodes to.
 
-- Added support for the oneblock graph attribute (see Layout.ForceCircularLayout) which determines whether to draw circo graphs around one circle.
+- Added support for the oneblock graph attribute (see Layout.ForceCircularLayout) that determines whether to draw circo graphs around one circle.
 
 - Added new Graphviz attribute keys to the DotAttributeKeys consts (Beautify, Cluster, LineLength, OneBlock, TbBalance).
 
