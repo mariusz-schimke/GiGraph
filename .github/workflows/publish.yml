@@ -7,6 +7,9 @@ on:
 env:
   BRANCH: master
 
+  # remove and adjust building a nuget package to the latest requirements
+  NUGET_ENABLE_LEGACY_CSPROJ_PACK: true
+
 defaults:
   run:
     working-directory: src
