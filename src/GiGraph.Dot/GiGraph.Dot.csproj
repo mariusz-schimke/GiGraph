@@ -3,7 +3,6 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <SignAssembly>true</SignAssembly>
-        <AssemblyOriginatorKeyFile>..\Solution Items\GiGraph.snk</AssemblyOriginatorKeyFile>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -22,14 +21,37 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <ApplicationIcon>..\..\Assets\icon.ico</ApplicationIcon>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <Configurations>Debug;Release;Publish</Configurations>
+        <Platforms>AnyCPU</Platforms>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Publish' ">
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>GiGraph.snk</AssemblyOriginatorKeyFile>
+        <Optimize>true</Optimize>
+    </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="..\Solution Items\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+        <PackageReference Include="SauceControl.InheritDoc">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="..\..\Solution Items\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
     </ItemGroup>
 
     <ItemGroup>
         <Content Include="..\..\Assets\icon.png" Link="icon.png" PackagePath="$(PackageIcon)" />
         <Content Include="..\..\LICENSE.txt" Link="LICENSE.txt" PackagePath="$(PackageLicenseFile)" />
+        <Content Include="..\..\README.md" Link="LICENSE.txt" PackagePath="$(PackageLicenseFile)" />
     </ItemGroup>
 
 </Project>

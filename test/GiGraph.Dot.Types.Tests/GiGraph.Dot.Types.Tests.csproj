@@ -19,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\GiGraph.Dot\GiGraph.Dot.csproj" />
+      <ProjectReference Include="..\..\src\GiGraph.Dot\GiGraph.Dot.csproj" />
     </ItemGroup>
 
 </Project>
