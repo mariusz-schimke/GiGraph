@@ -17,12 +17,16 @@
         <RepositoryUrl>https://github.com/mariusz-schimke/GiGraph.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <Description>$(Description)</Description>
-<!--        <PackageReleaseNotes>Release notes...</PackageReleaseNotes>-->
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageReleaseNotes>- The names and comments of certain methods and properties have been improved to better express their meaning.
+
+- A couple of helper methods have been added to nodes (ToHtmlTableNode, ToPlainHtmlNode with HTML builder).
+
+See also https://github.com/$repository$/releases</PackageReleaseNotes>
     </PropertyGroup>
 
     <PropertyGroup>
-        <ApplicationIcon>..\..\Assets\icon.ico</ApplicationIcon>
+        <ApplicationIcon>..\..\assets\icon.ico</ApplicationIcon>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -45,13 +49,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Include="..\..\Solution Items\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <Content Include="..\..\Assets\icon.png" Link="icon.png" PackagePath="$(PackageIcon)" />
-        <Content Include="..\..\LICENSE.txt" Link="LICENSE.txt" PackagePath="$(PackageLicenseFile)" />
-        <Content Include="..\..\README.md" Link="LICENSE.txt" PackagePath="$(PackageLicenseFile)" />
+        <None Include="../../assets/icon.png" Pack="true" Visible="false" PackagePath="/" />
+        <None Include="../../README.md" Pack="true" Visible="false" PackagePath="/" />
+        <None Include="../../LICENSE.txt" Pack="true" Visible="false" PackagePath="/" />
     </ItemGroup>
 
 </Project>
