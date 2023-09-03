@@ -2,20 +2,34 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>..\Solution Items\GiGraph.snk</AssemblyOriginatorKeyFile>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <Title>GiGraph DOT</Title>
+        <Authors>Mariusz Schimke</Authors>
+        <PackageTags>DOT Graphviz graph diagram visualization</PackageTags>
+<!--        <Copyright>Copyright © 2020-2023 Mariusz Schimke</Copyright>-->
+        <PackageProjectUrl>https://github.com/mariusz-schimke/GiGraph</PackageProjectUrl>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageIcon>icon.png</PackageIcon>
+        <RepositoryUrl>https://github.com/mariusz-schimke/GiGraph.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <Description>$(Description)</Description>
+<!--        <PackageReleaseNotes>Release notes...</PackageReleaseNotes>-->
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
+
 
     <ItemGroup>
         <Compile Include="..\Solution Items\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="..\..\Assets\icon.png" Link="icon.png" />
-        <Content Include="..\..\LICENSE.txt" Link="LICENSE.txt" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\GiGraph.Dot.Entities\GiGraph.Dot.Entities.csproj" />
-        <ProjectReference Include="..\GiGraph.Dot.Output.Generators\GiGraph.Dot.Output.Generators.csproj" />
+        <Content Include="..\..\Assets\icon.png" Link="icon.png" PackagePath="$(PackageIcon)" />
+        <Content Include="..\..\LICENSE.txt" Link="LICENSE.txt" PackagePath="$(PackageLicenseFile)" />
     </ItemGroup>
 
 </Project>

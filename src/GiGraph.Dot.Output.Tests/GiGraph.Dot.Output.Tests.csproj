@@ -20,8 +20,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\GiGraph.Dot.Entities\GiGraph.Dot.Entities.csproj" />
-        <ProjectReference Include="..\GiGraph.Dot.Output\GiGraph.Dot.Output.csproj" />
-        <ProjectReference Include="..\GiGraph.Dot.Types\GiGraph.Dot.Types.csproj" />
         <ProjectReference Include="..\GiGraph.Dot\GiGraph.Dot.csproj" />
     </ItemGroup>
 
