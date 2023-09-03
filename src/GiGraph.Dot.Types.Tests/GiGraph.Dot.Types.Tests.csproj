@@ -18,4 +18,8 @@
         </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\GiGraph.Dot\GiGraph.Dot.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -11,11 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiGraph.Dot.Entities.Tests"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{870A48CC-9D48-45B6-ADC8-E22586C6EF93}"
 	ProjectSection(SolutionItems) = preProject
-		Directory.Build.props = Directory.Build.props
 		Solution Items\CommonAssemblyInfo.cs = Solution Items\CommonAssemblyInfo.cs
-		..\README.md = ..\README.md
-		GiGraph.Dot.Entities.Tests\Attributes\__snapshots__\attribute_property_key_map.snap = GiGraph.Dot.Entities.Tests\Attributes\__snapshots__\attribute_property_key_map.snap
-		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.Types.Tests", "GiGraph.Dot.Types.Tests\GiGraph.Dot.Types.Tests.csproj", "{BCA1E2F9-1ADB-44B1-BA3F-2BBCABC02CE2}"
@@ -30,6 +26,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ADR", "ADR", "{6EE4859A-6F7
 		Solution Items\ADR\02. Enumerations.md = Solution Items\ADR\02. Enumerations.md
 		Solution Items\ADR\03. Attribute key mapping.md = Solution Items\ADR\03. Attribute key mapping.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{332941F6-4FF7-4D05-88DC-4FC86062EC73}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C45F0348-82F4-4C1E-9B44-3BA16FDE0D5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,5 +82,12 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6EE4859A-6F78-4717-9D75-29BF1E824554} = {870A48CC-9D48-45B6-ADC8-E22586C6EF93}
+		{BAC8EB9A-B449-4697-AC51-9A34FEDD0EC3} = {332941F6-4FF7-4D05-88DC-4FC86062EC73}
+		{A9472EBB-A99C-4533-A081-75DEABC15CD9} = {332941F6-4FF7-4D05-88DC-4FC86062EC73}
+		{870A48CC-9D48-45B6-ADC8-E22586C6EF93} = {332941F6-4FF7-4D05-88DC-4FC86062EC73}
+		{D99EADAB-E47B-431F-BC83-19C445965D44} = {C45F0348-82F4-4C1E-9B44-3BA16FDE0D5F}
+		{070671C7-38EB-4274-87F1-95FA02407CBC} = {C45F0348-82F4-4C1E-9B44-3BA16FDE0D5F}
+		{7970E3B9-39DB-4206-9D76-30B497D42537} = {C45F0348-82F4-4C1E-9B44-3BA16FDE0D5F}
+		{BCA1E2F9-1ADB-44B1-BA3F-2BBCABC02CE2} = {C45F0348-82F4-4C1E-9B44-3BA16FDE0D5F}
 	EndGlobalSection
 EndGlobal
