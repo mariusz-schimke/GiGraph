@@ -1,23 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <SignAssembly>true</SignAssembly>
+        <Configurations>Debug;Release;Publish</Configurations>
+        <Platforms>AnyCPU</Platforms>
+
+        <ApplicationIcon>..\..\assets\icon.ico</ApplicationIcon>
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <Title>GiGraph DOT</Title>
+        
+        <Version></Version>
+        <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
+
+        <PackageId>GiGraph.Dot</PackageId>
+        <Title>GiGraph.Dot</Title>
+        <Product>GiGraph DOT</Product>
+        <Description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using the Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code or online tools like https://viz-js.com or http://magjac.com/graphviz-visual-editor, where you paste a script to view its visualization.</Description>
         <Authors>Mariusz Schimke</Authors>
+        <Copyright>Copyright © 2020-2023 Mariusz Schimke</Copyright>
         <PackageTags>DOT Graphviz graph diagram visualization</PackageTags>
-<!--        <Copyright>Copyright © 2020-2023 Mariusz Schimke</Copyright>-->
+
         <PackageProjectUrl>https://github.com/mariusz-schimke/GiGraph</PackageProjectUrl>
         <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <PackageIcon>icon.png</PackageIcon>
-        <RepositoryUrl>https://github.com/mariusz-schimke/GiGraph.git</RepositoryUrl>
+        
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <Description>$(Description)</Description>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <RepositoryUrl>https://github.com/mariusz-schimke/GiGraph.git</RepositoryUrl>
+        <RepositoryBranch></RepositoryBranch>
+        <RepositoryCommit></RepositoryCommit>
+
         <PackageReleaseNotes>- The names and comments of certain methods and properties have been improved to better express their meaning.
 
 - A couple of helper methods have been added to nodes (ToHtmlTableNode, ToPlainHtmlNode with HTML builder).
@@ -25,19 +41,14 @@
 See also https://github.com/$repository$/releases</PackageReleaseNotes>
     </PropertyGroup>
 
-    <PropertyGroup>
-        <ApplicationIcon>..\..\assets\icon.ico</ApplicationIcon>
-        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <Configurations>Debug;Release;Publish</Configurations>
-        <Platforms>AnyCPU</Platforms>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Publish' ">
+    <PropertyGroup Condition="'$(Configuration)' == 'Publish'">
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>GiGraph.snk</AssemblyOriginatorKeyFile>
         <Optimize>true</Optimize>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     </PropertyGroup>
 
     <ItemGroup>
