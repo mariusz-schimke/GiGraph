@@ -12,7 +12,7 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         
-        <Version></Version>
+        <Version>$(Version)</Version>
         <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
 
         <PackageId>GiGraph.Dot</PackageId>
@@ -23,16 +23,16 @@
         <Copyright>Copyright © 2020-2023 Mariusz Schimke</Copyright>
         <PackageTags>DOT Graphviz graph diagram visualization</PackageTags>
 
-        <PackageProjectUrl>https://github.com/mariusz-schimke/GiGraph</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/$(Repository)</PackageProjectUrl>
         <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <PackageIcon>icon.png</PackageIcon>
         
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>https://github.com/mariusz-schimke/GiGraph.git</RepositoryUrl>
-        <RepositoryBranch></RepositoryBranch>
-        <RepositoryCommit></RepositoryCommit>
+        <RepositoryUrl>https://github.com/$(Repository).git</RepositoryUrl>
+        <RepositoryBranch>$(Branch)</RepositoryBranch>
+        <RepositoryCommit>$(Commit)</RepositoryCommit>
 
         <PackageReleaseNotes>- The names and comments of certain methods and properties have been improved to better express their meaning.
 
