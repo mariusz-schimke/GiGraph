@@ -1,4 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <!-- https://www.meziantou.net/creating-reproducible-build-in-dotnet.htm -->
+
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <Configurations>Debug;Release;Publish</Configurations>
@@ -7,10 +10,13 @@
         <ApplicationIcon>..\..\assets\icon.ico</ApplicationIcon>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        
+
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+        <!-- to include generated files in the NuGet package-->
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
         <Deterministic>true</Deterministic>
 
         <Version>$(Version)</Version>
