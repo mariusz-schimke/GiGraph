@@ -38,16 +38,13 @@
 
 - A couple of helper methods have been added to nodes (ToHtmlTableNode, ToPlainHtmlNode with HTML builder).
 
-See also https://github.com/$repository$/releases</PackageReleaseNotes>
+See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Publish'">
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>GiGraph.snk</AssemblyOriginatorKeyFile>
         <Optimize>true</Optimize>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     </PropertyGroup>
 
