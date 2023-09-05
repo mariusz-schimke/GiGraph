@@ -14,6 +14,7 @@ public class DotEnumsTest
 
     public static IEnumerable<Type> GetAllEnumTypes()
     {
+        // get only the enum types used as attribute values (they belong to the Types namespace)
         var types = Assembly.LoadFrom("GiGraph.Dot.dll")!
            .GetTypes()
            .Where(t => t.IsEnum)
