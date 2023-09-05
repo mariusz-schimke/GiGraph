@@ -28,7 +28,8 @@
         <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <PackageIcon>icon.png</PackageIcon>
-        
+        <EnablePackageValidation>true</EnablePackageValidation>
+
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/$(Repository).git</RepositoryUrl>
