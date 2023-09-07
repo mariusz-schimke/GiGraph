@@ -10,10 +10,7 @@ public class DotGlobalGraphAttributeStatementWriter : DotEntityStatementWriter, 
     {
     }
 
-    public virtual IDotAttributeWriter BeginAttributeStatement()
-    {
-        return new DotAttributeWriter(_paddedEntityWriter.BeginEntity(), _configuration);
-    }
+    public virtual IDotAttributeWriter BeginAttributeStatement() => new DotAttributeWriter(_paddedEntityWriter.BeginEntity(), _configuration);
 
     public virtual void EndAttributeStatement()
     {

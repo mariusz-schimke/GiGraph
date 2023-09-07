@@ -90,10 +90,7 @@ public partial class DotRecordBuilder
     /// <param name="buildRecord">
     ///     The method delegate to build a record using the specified record builder.
     /// </param>
-    public virtual DotRecordBuilder AppendSubrecord(Action<DotRecordBuilder> buildRecord)
-    {
-        return AppendSubrecord(buildRecord, flip: false);
-    }
+    public virtual DotRecordBuilder AppendSubrecord(Action<DotRecordBuilder> buildRecord) => AppendSubrecord(buildRecord, flip: false);
 
     protected virtual DotRecordBuilder AppendSubrecord(Action<DotRecordBuilder> buildRecord, bool flip)
     {

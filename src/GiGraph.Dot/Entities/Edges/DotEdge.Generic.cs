@@ -86,8 +86,5 @@ public class DotEdge<TTail, THead> : DotEdgeDefinition
     /// </summary>
     public DotEdgeEndpoint<THead> Head { get; }
 
-    protected override string GetOrderingKey()
-    {
-        return $"{Tail.Endpoint.OrderingKey} {Head.Endpoint.OrderingKey}";
-    }
+    protected override string GetOrderingKey() => $"{Tail.Endpoint.OrderingKey} {Head.Endpoint.OrderingKey}";
 }

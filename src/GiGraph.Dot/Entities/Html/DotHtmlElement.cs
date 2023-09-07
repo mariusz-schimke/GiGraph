@@ -64,8 +64,5 @@ public partial class DotHtmlElement : DotHtmlTag, IDotHtmlContentEntity
         ((IDotHtmlContentEntity) Content).SetHtmlContent(html);
     }
 
-    protected override IEnumerable<IDotHtmlEntity> GetContent()
-    {
-        return Content;
-    }
+    protected override IEnumerable<IDotHtmlEntity> GetContent() => Content;
 }

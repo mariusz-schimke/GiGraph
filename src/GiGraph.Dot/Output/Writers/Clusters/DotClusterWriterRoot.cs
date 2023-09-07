@@ -10,10 +10,7 @@ public class DotClusterWriterRoot : DotSubgraphWriterRoot
     {
     }
 
-    public override IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration)
-    {
-        return BeginSubgraph(preferExplicitDeclaration, _configuration.Formatting.Clusters.SingleLine);
-    }
+    public override IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration) => BeginSubgraph(preferExplicitDeclaration, _configuration.Formatting.Clusters.SingleLine);
 
     public override void EndSubgraph()
     {

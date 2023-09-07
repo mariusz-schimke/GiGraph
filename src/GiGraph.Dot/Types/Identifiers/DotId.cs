@@ -22,46 +22,24 @@ public class DotId : IDotEncodable
         _id = id;
     }
 
-    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return GetDotEncodedValue(options, syntaxRules);
-    }
+    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
 
-    public override string ToString()
-    {
-        return _id;
-    }
+    public override string ToString() => _id;
 
-    protected virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
+    protected virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
         // use the same identifier escaping pipeline as the one used by entity generators
-        return syntaxRules.IdentifierEscaper.Escape(FormatId(options, syntaxRules));
-    }
+        syntaxRules.IdentifierEscaper.Escape(FormatId(options, syntaxRules));
 
-    protected virtual string FormatId(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return _id;
-    }
+    protected virtual string FormatId(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => _id;
 
-    public static implicit operator string(DotId id)
-    {
-        return id?._id;
-    }
+    public static implicit operator string(DotId id) => id?._id;
 
-    public static implicit operator DotId(string id)
-    {
-        return id is not null ? new DotId(id) : null;
-    }
+    public static implicit operator DotId(string id) => id is not null ? new DotId(id) : null;
 
-    public override bool Equals(object obj)
-    {
-        return obj is DotId id &&
-            id._id == _id &&
-            id.GetType() == GetType();
-    }
+    public override bool Equals(object obj) =>
+        obj is DotId id &&
+        id._id == _id &&
+        id.GetType() == GetType();
 
-    public override int GetHashCode()
-    {
-        return Tuple.Create(_id, GetType()).GetHashCode();
-    }
+    public override int GetHashCode() => Tuple.Create(_id, GetType()).GetHashCode();
 }

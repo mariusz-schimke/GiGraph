@@ -9,20 +9,11 @@ namespace GiGraph.Dot.Types.Packing;
 /// </summary>
 public abstract record DotPackingDefinition : IDotEncodable
 {
-    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return GetDotEncodedValue(options, syntaxRules);
-    }
+    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
 
-    public static implicit operator DotPackingDefinition(int? value)
-    {
-        return value.HasValue ? new DotPackingMargin(value.Value) : null;
-    }
+    public static implicit operator DotPackingDefinition(int? value) => value.HasValue ? new DotPackingMargin(value.Value) : null;
 
-    public static implicit operator DotPackingDefinition(bool? value)
-    {
-        return value.HasValue ? new DotPackingToggle(value.Value) : null;
-    }
+    public static implicit operator DotPackingDefinition(bool? value) => value.HasValue ? new DotPackingToggle(value.Value) : null;
 
     protected abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 }

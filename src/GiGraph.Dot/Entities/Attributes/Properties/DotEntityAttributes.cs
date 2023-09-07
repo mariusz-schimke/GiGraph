@@ -22,15 +22,11 @@ public abstract partial class DotEntityAttributes : IDotEntityAttributes
     DotEntityAttributesAccessor IDotEntityAttributes.Accessor => GetAccessor();
     protected abstract DotEntityAttributesAccessor GetAccessor();
 
-    protected virtual string GetKey(MethodBase accessor)
-    {
+    protected virtual string GetKey(MethodBase accessor) =>
         // the lookup contains only interface properties and property accessors of implementing classes
-        return _attributeKeyLookup.Value.GetPropertyAccessorKey((MethodInfo) accessor);
-    }
+        _attributeKeyLookup.Value.GetPropertyAccessorKey((MethodInfo) accessor);
 
-    protected internal virtual string GetKey(PropertyInfo property)
-    {
+    protected internal virtual string GetKey(PropertyInfo property) =>
         // the lookup contains only interface properties and property accessors of implementing classes
-        return _attributeKeyLookup.Value.GetPropertyKey(property);
-    }
+        _attributeKeyLookup.Value.GetPropertyKey(property);
 }

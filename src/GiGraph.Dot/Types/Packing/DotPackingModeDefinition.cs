@@ -9,25 +9,13 @@ namespace GiGraph.Dot.Types.Packing;
 /// </summary>
 public abstract record DotPackingModeDefinition : IDotEncodable
 {
-    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return GetDotEncodedValue(options, syntaxRules);
-    }
+    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
 
-    public static implicit operator DotPackingModeDefinition(DotPackingGranularity? value)
-    {
-        return value.HasValue ? new DotGranularPackingMode(value.Value) : null;
-    }
+    public static implicit operator DotPackingModeDefinition(DotPackingGranularity? value) => value.HasValue ? new DotGranularPackingMode(value.Value) : null;
 
-    public static implicit operator DotPackingModeDefinition(DotArrayPackingOptions? value)
-    {
-        return value.HasValue ? new DotArrayPackingMode(value.Value) : null;
-    }
+    public static implicit operator DotPackingModeDefinition(DotArrayPackingOptions? value) => value.HasValue ? new DotArrayPackingMode(value.Value) : null;
 
-    public static implicit operator DotPackingModeDefinition(int? value)
-    {
-        return value.HasValue ? new DotArrayPackingMode(value.Value) : null;
-    }
+    public static implicit operator DotPackingModeDefinition(int? value) => value.HasValue ? new DotArrayPackingMode(value.Value) : null;
 
     protected abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 }

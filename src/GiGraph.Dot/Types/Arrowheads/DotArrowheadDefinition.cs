@@ -9,25 +9,13 @@ namespace GiGraph.Dot.Types.Arrowheads;
 /// </summary>
 public abstract record DotArrowheadDefinition : IDotEncodable
 {
-    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return GetDotEncoded(options, syntaxRules);
-    }
+    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncoded(options, syntaxRules);
 
     protected internal abstract string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 
-    public static implicit operator DotArrowheadDefinition(DotArrowheadShape? shape)
-    {
-        return (DotArrowhead) shape;
-    }
+    public static implicit operator DotArrowheadDefinition(DotArrowheadShape? shape) => (DotArrowhead) shape;
 
-    public static implicit operator DotArrowheadDefinition(DotArrowheadShape[] shapes)
-    {
-        return shapes is not null ? new DotCompositeArrowhead(shapes) : null;
-    }
+    public static implicit operator DotArrowheadDefinition(DotArrowheadShape[] shapes) => shapes is not null ? new DotCompositeArrowhead(shapes) : null;
 
-    public static implicit operator DotArrowheadDefinition(DotArrowhead[] arrows)
-    {
-        return arrows is not null ? new DotCompositeArrowhead(arrows) : null;
-    }
+    public static implicit operator DotArrowheadDefinition(DotArrowhead[] arrows) => arrows is not null ? new DotCompositeArrowhead(arrows) : null;
 }

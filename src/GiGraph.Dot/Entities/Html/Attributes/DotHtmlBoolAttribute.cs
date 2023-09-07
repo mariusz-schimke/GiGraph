@@ -22,8 +22,5 @@ public record DotHtmlBoolAttribute : DotBoolAttribute
     {
     }
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return Value ? "TRUE" : "FALSE";
-    }
+    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Value ? "TRUE" : "FALSE";
 }

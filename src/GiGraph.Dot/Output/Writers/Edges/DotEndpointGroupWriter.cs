@@ -9,10 +9,7 @@ public class DotEndpointGroupWriter : DotEntityWriter, IDotEndpointGroupWriter
     {
     }
 
-    public virtual IDotEndpointWriter BeginEndpoint()
-    {
-        return new DotEndpointWriter(_tokenWriter, _configuration);
-    }
+    public virtual IDotEndpointWriter BeginEndpoint() => new DotEndpointWriter(_tokenWriter, _configuration);
 
     public virtual void EndEndpoint()
     {

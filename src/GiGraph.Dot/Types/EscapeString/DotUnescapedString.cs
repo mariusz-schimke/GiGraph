@@ -24,18 +24,9 @@ public class DotUnescapedString : DotEscapeString
         _value = value ?? throw new ArgumentNullException(nameof(value), "Value must not be null.");
     }
 
-    protected internal override string GetRawString()
-    {
-        return _value;
-    }
+    protected internal override string GetRawString() => _value;
 
-    protected internal override string GetEscapedString(IDotTextEscaper textEscaper)
-    {
-        return textEscaper.Escape(_value);
-    }
+    protected internal override string GetEscapedString(IDotTextEscaper textEscaper) => textEscaper.Escape(_value);
 
-    public static implicit operator DotUnescapedString(string value)
-    {
-        return value is not null ? new DotUnescapedString(value) : null;
-    }
+    public static implicit operator DotUnescapedString(string value) => value is not null ? new DotUnescapedString(value) : null;
 }

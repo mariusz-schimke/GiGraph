@@ -34,10 +34,7 @@ public class DotHtmlText : DotHtmlEntity
     /// </summary>
     public DotHorizontalAlignment? LineAlignment { get; }
 
-    public override string ToString()
-    {
-        return _text;
-    }
+    public override string ToString() => _text;
 
     protected internal override string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
@@ -48,8 +45,5 @@ public class DotHtmlText : DotHtmlEntity
         return string.Join(br, lines);
     }
 
-    protected static string[] SplitMultiline(string text, string[] lineBreaks)
-    {
-        return text?.Split(lineBreaks, StringSplitOptions.None) ?? Array.Empty<string>();
-    }
+    protected static string[] SplitMultiline(string text, string[] lineBreaks) => text?.Split(lineBreaks, StringSplitOptions.None) ?? Array.Empty<string>();
 }

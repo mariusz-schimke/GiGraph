@@ -64,10 +64,7 @@ public abstract class DotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator
         WriteEntity(actualEntity, writer);
     }
 
-    protected virtual bool Supports(TEntity entity)
-    {
-        return true;
-    }
+    protected virtual bool Supports(TEntity entity) => true;
 
     protected abstract void WriteEntity(TEntity entity, TWriter writer);
 
@@ -82,18 +79,10 @@ public abstract class DotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator
     }
 
     protected virtual string EncodeIdentifier<TId>(TId id)
-        where TId : DotId, IDotEncodable
-    {
-        return id.GetDotEncodedValue(_options, _syntaxRules);
-    }
+        where TId : DotId, IDotEncodable =>
+        id.GetDotEncodedValue(_options, _syntaxRules);
 
-    protected virtual string EncodeIdentifier(string id)
-    {
-        return EncodeIdentifier(new DotId(id));
-    }
+    protected virtual string EncodeIdentifier(string id) => EncodeIdentifier(new DotId(id));
 
-    protected virtual bool IdentifierRequiresQuoting(string id)
-    {
-        return _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);
-    }
+    protected virtual bool IdentifierRequiresQuoting(string id) => _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);
 }

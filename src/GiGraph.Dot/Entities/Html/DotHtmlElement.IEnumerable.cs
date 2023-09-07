@@ -9,18 +9,12 @@ public partial class DotHtmlElement : IEnumerable<IDotHtmlEntity>
     /// <summary>
     ///     Returns an enumerator that iterates through the content of the element.
     /// </summary>
-    IEnumerator<IDotHtmlEntity> IEnumerable<IDotHtmlEntity>.GetEnumerator()
-    {
-        return Content.GetEnumerator();
-    }
+    IEnumerator<IDotHtmlEntity> IEnumerable<IDotHtmlEntity>.GetEnumerator() => Content.GetEnumerator();
 
     /// <summary>
     ///     Returns an enumerator that iterates through the content of the element.
     /// </summary>
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return ((IEnumerable) Content).GetEnumerator();
-    }
+    IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable) Content).GetEnumerator();
 
     /// <summary>
     ///     Adds an element to the <see cref="Content" /> collection.

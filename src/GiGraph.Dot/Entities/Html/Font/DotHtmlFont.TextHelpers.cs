@@ -18,10 +18,7 @@ public partial class DotHtmlFont
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public static DotHtmlFont WithText(string text, DotFont font, DotHorizontalAlignment? lineAlignment = null)
-    {
-        return WithEntity(new DotHtmlText(text, lineAlignment), font);
-    }
+    public static DotHtmlFont WithText(string text, DotFont font, DotHorizontalAlignment? lineAlignment = null) => WithEntity(new DotHtmlText(text, lineAlignment), font);
 
     /// <summary>
     ///     Embeds the text in appropriate HTML tags based on the specified font style.
@@ -35,8 +32,5 @@ public partial class DotHtmlFont
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public static DotHtmlFont WithText(string text, DotStyledFont font, DotHorizontalAlignment? lineAlignment = null)
-    {
-        return WithEntity(new DotHtmlText(text, lineAlignment), font);
-    }
+    public static DotHtmlFont WithText(string text, DotStyledFont font, DotHorizontalAlignment? lineAlignment = null) => WithEntity(new DotHtmlText(text, lineAlignment), font);
 }

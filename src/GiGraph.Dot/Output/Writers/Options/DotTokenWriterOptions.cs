@@ -13,19 +13,15 @@ public record DotTokenWriterOptions(
     Func<string, DotTokenType, string> TextEncoder
 )
 {
-    public virtual DotTokenWriterOptions ToSingleLine()
-    {
-        return this with
+    public virtual DotTokenWriterOptions ToSingleLine() =>
+        this with
         {
             SingleLine = true
         };
-    }
 
-    public virtual DotTokenWriterOptions IncreaseIndentation()
-    {
-        return this with
+    public virtual DotTokenWriterOptions IncreaseIndentation() =>
+        this with
         {
             IndentationLevel = IndentationLevel + 1
         };
-    }
 }

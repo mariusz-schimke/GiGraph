@@ -28,8 +28,5 @@ public class DotClusterId : DotId
             : cluster;
     }
 
-    public static implicit operator DotClusterId(string id)
-    {
-        return id is not null ? new DotClusterId(id) : null;
-    }
+    public static implicit operator DotClusterId(string id) => id is not null ? new DotClusterId(id) : null;
 }

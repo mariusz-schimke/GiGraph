@@ -10,35 +10,27 @@ public class DotEdgeWriter : DotEntityWithAttributeListWriter, IDotEdgeWriter
     {
     }
 
-    public virtual IDotEndpointWriter BeginEndpoint()
-    {
-        return new DotEndpointWriter(_tokenWriter, _configuration);
-    }
+    public virtual IDotEndpointWriter BeginEndpoint() => new DotEndpointWriter(_tokenWriter, _configuration);
 
     public virtual void EndEndpoint()
     {
     }
 
-    public virtual IDotEndpointGroupWriter BeginEndpointGroup()
-    {
-        return new DotEndpointGroupWriter(_tokenWriter.SingleLine(), _configuration);
-    }
+    public virtual IDotEndpointGroupWriter BeginEndpointGroup() => new DotEndpointGroupWriter(_tokenWriter.SingleLine(), _configuration);
 
     public virtual void EndEndpointGroup()
     {
         _tokenWriter.ClearLingerBuffer();
     }
 
-    public virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration)
-    {
-        return new DotSubgraphWriter(
+    public virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration) =>
+        new DotSubgraphWriter(
             _configuration.Formatting.Edges.SingleLineSubgraphs
                 ? _tokenWriter.SingleLine()
                 : _tokenWriter,
             _configuration,
             preferExplicitDeclaration
         );
-    }
 
     public virtual void EndSubgraph()
     {

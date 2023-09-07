@@ -101,10 +101,7 @@ public class DotEdgeSequence : DotEdgeDefinition
     /// <param name="initEndpoint">
     ///     An optional endpoint initializer to call for each created endpoint.
     /// </param>
-    public static DotEdgeSequence FromNodes(Action<DotEndpoint> initEndpoint, params string[] nodeIds)
-    {
-        return FromNodes(nodeIds, initEndpoint);
-    }
+    public static DotEdgeSequence FromNodes(Action<DotEndpoint> initEndpoint, params string[] nodeIds) => FromNodes(nodeIds, initEndpoint);
 
     /// <summary>
     ///     Creates a new edge sequence initialized with the specified node identifiers. At least a pair of identifiers has to be

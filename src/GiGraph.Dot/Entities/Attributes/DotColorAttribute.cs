@@ -24,8 +24,5 @@ public record DotColorAttribute : DotAttribute<Color>
     {
     }
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return ((IDotEncodable) new DotColor(Value)).GetDotEncodedValue(options, syntaxRules);
-    }
+    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => ((IDotEncodable) new DotColor(Value)).GetDotEncodedValue(options, syntaxRules);
 }

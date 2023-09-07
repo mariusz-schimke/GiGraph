@@ -12,10 +12,7 @@ public partial class DotEdgeCollection
     /// <param name="nodeIds">
     ///     The identifiers of consecutive nodes to connect with edges (at least a pair is required).
     /// </param>
-    public virtual DotEdgeSequence AddSequence(params string[] nodeIds)
-    {
-        return AddSequence(nodeIds, init: null);
-    }
+    public virtual DotEdgeSequence AddSequence(params string[] nodeIds) => AddSequence(nodeIds, init: null);
 
     /// <summary>
     ///     Adds a sequence of edges that join specified nodes consecutively. At least a pair of identifiers has to be provided.
@@ -26,10 +23,7 @@ public partial class DotEdgeCollection
     /// <param name="nodeIds">
     ///     The identifiers of consecutive nodes to connect with edges (at least a pair is required).
     /// </param>
-    public virtual DotEdgeSequence AddSequence(Action<DotEdgeSequence> init, params string[] nodeIds)
-    {
-        return AddSequence(nodeIds, init);
-    }
+    public virtual DotEdgeSequence AddSequence(Action<DotEdgeSequence> init, params string[] nodeIds) => AddSequence(nodeIds, init);
 
     /// <summary>
     ///     Adds a sequence of edges that join specified nodes consecutively. At least a pair of identifiers has to be provided.
@@ -40,10 +34,7 @@ public partial class DotEdgeCollection
     /// <param name="init">
     ///     An optional initializer delegate to call for the created sequence.
     /// </param>
-    public virtual DotEdgeSequence AddSequence(IEnumerable<string> nodeIds, Action<DotEdgeSequence> init = null)
-    {
-        return Add(DotEdgeSequence.FromNodes(nodeIds), init);
-    }
+    public virtual DotEdgeSequence AddSequence(IEnumerable<string> nodeIds, Action<DotEdgeSequence> init = null) => Add(DotEdgeSequence.FromNodes(nodeIds), init);
 
     /// <summary>
     ///     Adds a sequence of edges that connect the specified endpoints consecutively. At least a pair of endpoints has to be provided.
@@ -51,10 +42,7 @@ public partial class DotEdgeCollection
     /// <param name="endpoints">
     ///     The endpoints to initialize the instance with (at least a pair is required).
     /// </param>
-    public virtual DotEdgeSequence AddSequence(params DotEndpointDefinition[] endpoints)
-    {
-        return AddSequence(endpoints, init: null);
-    }
+    public virtual DotEdgeSequence AddSequence(params DotEndpointDefinition[] endpoints) => AddSequence(endpoints, init: null);
 
     /// <summary>
     ///     Adds a sequence of edges that connect the specified endpoints consecutively. At least a pair of endpoints has to be provided.
@@ -65,10 +53,7 @@ public partial class DotEdgeCollection
     /// <param name="endpoints">
     ///     The endpoints to initialize the instance with (at least a pair is required).
     /// </param>
-    public virtual DotEdgeSequence AddSequence(Action<DotEdgeSequence> init, params DotEndpointDefinition[] endpoints)
-    {
-        return AddSequence(endpoints, init);
-    }
+    public virtual DotEdgeSequence AddSequence(Action<DotEdgeSequence> init, params DotEndpointDefinition[] endpoints) => AddSequence(endpoints, init);
 
     /// <summary>
     ///     Adds a sequence of edges that connect the specified endpoints consecutively. At least a pair of endpoints has to be provided.
@@ -79,8 +64,5 @@ public partial class DotEdgeCollection
     /// <param name="init">
     ///     An optional initializer delegate to call for the created sequence.
     /// </param>
-    public virtual DotEdgeSequence AddSequence(IEnumerable<DotEndpointDefinition> endpoints, Action<DotEdgeSequence> init = null)
-    {
-        return Add(new(endpoints), init);
-    }
+    public virtual DotEdgeSequence AddSequence(IEnumerable<DotEndpointDefinition> endpoints, Action<DotEdgeSequence> init = null) => Add(new(endpoints), init);
 }

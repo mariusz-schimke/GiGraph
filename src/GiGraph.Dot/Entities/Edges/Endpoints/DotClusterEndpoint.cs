@@ -46,18 +46,9 @@ public class DotClusterEndpoint : DotEndpoint
 
     // the type of endpoint may be specified explicitly as a generic param, in which case this implicit conversion may be useful
     // (e.g. graph.Edges.Add<DotClusterEndpoint, DotEndpoint>("cluster 1", "node1"))
-    public static implicit operator DotClusterEndpoint(string clusterId)
-    {
-        return clusterId is not null ? new DotClusterEndpoint(clusterId) : null;
-    }
+    public static implicit operator DotClusterEndpoint(string clusterId) => clusterId is not null ? new DotClusterEndpoint(clusterId) : null;
 
-    public static implicit operator DotClusterEndpoint(DotCluster cluster)
-    {
-        return cluster is not null ? new DotClusterEndpoint(cluster.Id) : null;
-    }
+    public static implicit operator DotClusterEndpoint(DotCluster cluster) => cluster is not null ? new DotClusterEndpoint(cluster.Id) : null;
 
-    public static implicit operator DotClusterEndpoint(DotClusterId clusterId)
-    {
-        return clusterId is not null ? new DotClusterEndpoint(clusterId) : null;
-    }
+    public static implicit operator DotClusterEndpoint(DotClusterId clusterId) => clusterId is not null ? new DotClusterEndpoint(clusterId) : null;
 }

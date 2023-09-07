@@ -16,13 +16,7 @@ public abstract record DotAttribute<T> : DotAttribute
     public T Value { get; }
 
     /// <inheritdoc />
-    public override object GetValue()
-    {
-        return Value;
-    }
+    public override object GetValue() => Value;
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return Value?.ToString();
-    }
+    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Value?.ToString();
 }

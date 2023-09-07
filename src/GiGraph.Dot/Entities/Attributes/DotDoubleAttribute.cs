@@ -21,8 +21,5 @@ public record DotDoubleAttribute : DotAttribute<double>
     {
     }
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return Value.ToString(syntaxRules.Culture);
-    }
+    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Value.ToString(syntaxRules.Culture);
 }

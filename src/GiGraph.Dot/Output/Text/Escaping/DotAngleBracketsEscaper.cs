@@ -5,15 +5,10 @@
 /// </summary>
 public class DotAngleBracketsEscaper : IDotTextEscaper
 {
-    string IDotTextEscaper.Escape(string value)
-    {
-        return Escape(value);
-    }
+    string IDotTextEscaper.Escape(string value) => Escape(value);
 
-    public static string Escape(string value)
-    {
-        return value
+    public static string Escape(string value) =>
+        value
           ?.Replace("<", "\\<")
           ?.Replace(">", "\\>");
-    }
 }

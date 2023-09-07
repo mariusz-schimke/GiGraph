@@ -14,10 +14,7 @@ public static class DotStringExtension
     /// <param name="string">
     ///     The string to convert.
     /// </param>
-    public static DotEscapeString AsFormattedString(this string @string)
-    {
-        return (DotEscapedString) @string;
-    }
+    public static DotEscapeString AsFormattedString(this string @string) => (DotEscapedString) @string;
 
     /// <summary>
     ///     Converts the string to <see cref="DotHtmlString" /> without modifying it in any way. When assigned to a label of an element,
@@ -26,8 +23,5 @@ public static class DotStringExtension
     /// <param name="string">
     ///     The string to convert.
     /// </param>
-    public static DotHtmlString AsHtml(this string @string)
-    {
-        return @string;
-    }
+    public static DotHtmlString AsHtml(this string @string) => @string;
 }

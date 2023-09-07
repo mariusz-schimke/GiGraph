@@ -20,10 +20,7 @@ public abstract record DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable
     /// <inheritdoc cref="IDotAnnotatable.Annotation" />
     public virtual string Annotation { get; set; }
 
-    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return GetDotEncodedValue(options, syntaxRules);
-    }
+    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
 
     string IDotOrderable.OrderingKey => Key;
 

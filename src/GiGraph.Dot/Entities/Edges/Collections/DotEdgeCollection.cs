@@ -109,8 +109,6 @@ public partial class DotEdgeCollection : List<DotEdgeDefinition>, IDotEntity, ID
     /// </typeparam>
     public virtual DotEdge<TTail, THead> Add<TTail, THead>(TTail tail, THead head, Action<DotEdge<TTail, THead>> init = null)
         where THead : DotEndpointDefinition
-        where TTail : DotEndpointDefinition
-    {
-        return Add(new(tail, head), init);
-    }
+        where TTail : DotEndpointDefinition =>
+        Add(new(tail, head), init);
 }

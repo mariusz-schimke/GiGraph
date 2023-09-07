@@ -26,10 +26,7 @@ public class DotEnumMetadata
     /// <summary>
     ///     Gets all values of the enumeration.
     /// </summary>
-    public virtual Enum[] GetValues()
-    {
-        return _enumValues.Value;
-    }
+    public virtual Enum[] GetValues() => _enumValues.Value;
 
     /// <summary>
     ///     Gets all non-compound values of the enumeration.
@@ -42,10 +39,7 @@ public class DotEnumMetadata
     /// <summary>
     ///     Gets all compound (multi-flag) values of the enumeration.
     /// </summary>
-    public virtual Enum[] GetCompoundValues()
-    {
-        return GetValues().Where(IsCompoundValue).ToArray();
-    }
+    public virtual Enum[] GetCompoundValues() => GetValues().Where(IsCompoundValue).ToArray();
 
     /// <summary>
     ///     Gets set flags of the enumeration.

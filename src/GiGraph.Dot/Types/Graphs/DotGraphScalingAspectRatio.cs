@@ -12,8 +12,5 @@ namespace GiGraph.Dot.Types.Graphs;
 /// </param>
 public record DotGraphScalingAspectRatio(double Ratio) : DotGraphScalingDefinition
 {
-    protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return Ratio.ToString(syntaxRules.Culture);
-    }
+    protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Ratio.ToString(syntaxRules.Culture);
 }

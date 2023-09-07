@@ -27,8 +27,5 @@ public class DotRecordLabel : DotLabel
         _record = record ?? throw new ArgumentNullException(nameof(record), "Record must not be null.");
     }
 
-    protected override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return ((IDotEncodable) _record)?.GetDotEncodedValue(options, syntaxRules);
-    }
+    protected override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => ((IDotEncodable) _record)?.GetDotEncodedValue(options, syntaxRules);
 }

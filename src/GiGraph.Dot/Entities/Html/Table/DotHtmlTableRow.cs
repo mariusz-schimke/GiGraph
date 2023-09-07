@@ -30,10 +30,7 @@ public partial class DotHtmlTableRow : DotHtmlElement
     /// <param name="init">
     ///     A cell initializer delegate.
     /// </param>
-    public virtual DotHtmlTableCell AddCell(Action<DotHtmlTableCell> init = null)
-    {
-        return Content.Add(new(), init);
-    }
+    public virtual DotHtmlTableCell AddCell(Action<DotHtmlTableCell> init = null) => Content.Add(new(), init);
 
     /// <summary>
     ///     Adds a cell to the current row.
@@ -44,10 +41,7 @@ public partial class DotHtmlTableRow : DotHtmlElement
     /// <param name="init">
     ///     A cell initializer delegate.
     /// </param>
-    public virtual DotHtmlTableCell AddCell(IDotHtmlEntity content, Action<DotHtmlTableCell> init = null)
-    {
-        return Content.Add(new() { content }, init);
-    }
+    public virtual DotHtmlTableCell AddCell(IDotHtmlEntity content, Action<DotHtmlTableCell> init = null) => Content.Add(new() { content }, init);
 
     /// <summary>
     ///     Adds a cell with an image to the current row.
@@ -61,16 +55,10 @@ public partial class DotHtmlTableRow : DotHtmlElement
     /// <param name="init">
     ///     A cell initializer delegate.
     /// </param>
-    public virtual DotHtmlTableCell AddImageCell(string source, DotImageScaling? scaling = null, Action<DotHtmlTableCell> init = null)
-    {
-        return Content.Add(new() { new DotHtmlImage(source, scaling) }, init);
-    }
+    public virtual DotHtmlTableCell AddImageCell(string source, DotImageScaling? scaling = null, Action<DotHtmlTableCell> init = null) => Content.Add(new() { new DotHtmlImage(source, scaling) }, init);
 
     /// <summary>
     ///     Adds a vertical rule to separate two neighboring cells.
     /// </summary>
-    public virtual DotHtmlVerticalRule AddVerticalRule()
-    {
-        return Content.Add(new DotHtmlVerticalRule(), init: null);
-    }
+    public virtual DotHtmlVerticalRule AddVerticalRule() => Content.Add(new DotHtmlVerticalRule(), init: null);
 }

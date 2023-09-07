@@ -69,8 +69,5 @@ public partial class DotAttributeCollection : SortedList<string, DotAttribute>, 
     /// <param name="key">
     ///     The key of the attribute whose value to check.
     /// </param>
-    public virtual bool IsNullified(string key)
-    {
-        return TryGetValue(key, out var result) && result.GetValue() is null;
-    }
+    public virtual bool IsNullified(string key) => TryGetValue(key, out var result) && result.GetValue() is null;
 }

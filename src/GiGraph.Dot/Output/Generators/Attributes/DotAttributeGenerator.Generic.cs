@@ -37,23 +37,11 @@ public class DotAttributeGenerator<TAttribute> : DotEntityGenerator<TAttribute, 
         );
     }
 
-    protected virtual string EscapeKey(string key)
-    {
-        return _syntaxRules.Attributes.KeyEscaper.Escape(key);
-    }
+    protected virtual string EscapeKey(string key) => _syntaxRules.Attributes.KeyEscaper.Escape(key);
 
-    protected virtual bool KeyRequiresQuoting(string key)
-    {
-        return _options.Attributes.PreferQuotedKey || !_syntaxRules.IsValidIdentifier(key);
-    }
+    protected virtual bool KeyRequiresQuoting(string key) => _options.Attributes.PreferQuotedKey || !_syntaxRules.IsValidIdentifier(key);
 
-    protected virtual bool ValueRequiresQuoting(string value)
-    {
-        return _options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
-    }
+    protected virtual bool ValueRequiresQuoting(string value) => _options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
 
-    protected virtual bool ValueRequiresQuoting(string[] valueParts)
-    {
-        return ValueRequiresQuoting(string.Join(string.Empty, valueParts));
-    }
+    protected virtual bool ValueRequiresQuoting(string[] valueParts) => ValueRequiresQuoting(string.Join(string.Empty, valueParts));
 }

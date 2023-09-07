@@ -14,20 +14,11 @@ namespace GiGraph.Dot.Types.Records;
 /// </summary>
 public abstract record DotRecordField : IDotEncodable
 {
-    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return GetDotEncoded(options, syntaxRules, hasParent: false);
-    }
+    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncoded(options, syntaxRules, hasParent: false);
 
     protected internal abstract string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules, bool hasParent);
 
-    public static implicit operator DotRecordField(string text)
-    {
-        return new DotRecordTextField(text);
-    }
+    public static implicit operator DotRecordField(string text) => new DotRecordTextField(text);
 
-    public static implicit operator DotRecordField(DotEscapeString text)
-    {
-        return new DotRecordTextField(text);
-    }
+    public static implicit operator DotRecordField(DotEscapeString text) => new DotRecordTextField(text);
 }

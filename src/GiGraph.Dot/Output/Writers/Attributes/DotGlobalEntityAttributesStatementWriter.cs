@@ -12,39 +12,33 @@ public class DotGlobalEntityAttributesStatementWriter : DotEntityStatementWriter
     {
     }
 
-    public virtual IDotGlobalGraphAttributesWriter BeginGraphAttributesStatement()
-    {
-        return new DotGlobalGraphAttributesWriter(
+    public virtual IDotGlobalGraphAttributesWriter BeginGraphAttributesStatement() =>
+        new DotGlobalGraphAttributesWriter(
             BeginPaddedEntity(_configuration.Formatting.GlobalAttributes.SingleLineGraphAttributeList),
             _configuration
         );
-    }
 
     public virtual void EndGraphAttributesStatement()
     {
         EndEntityAttributesStatement();
     }
 
-    public virtual IDotGlobalNodeAttributesWriter BeginNodeAttributesStatement()
-    {
-        return new DotGlobalNodeAttributesWriter(
+    public virtual IDotGlobalNodeAttributesWriter BeginNodeAttributesStatement() =>
+        new DotGlobalNodeAttributesWriter(
             BeginPaddedEntity(_configuration.Formatting.GlobalAttributes.SingleLineNodeAttributeList),
             _configuration
         );
-    }
 
     public virtual void EndNodeAttributesStatement()
     {
         EndEntityAttributesStatement();
     }
 
-    public virtual IDotGlobalEdgeAttributesWriter BeginEdgeAttributesStatement()
-    {
-        return new DotGlobalEdgeAttributesWriter(
+    public virtual IDotGlobalEdgeAttributesWriter BeginEdgeAttributesStatement() =>
+        new DotGlobalEdgeAttributesWriter(
             BeginPaddedEntity(_configuration.Formatting.GlobalAttributes.SingleLineEdgeAttributeList),
             _configuration
         );
-    }
 
     public virtual void EndEdgeAttributesStatement()
     {

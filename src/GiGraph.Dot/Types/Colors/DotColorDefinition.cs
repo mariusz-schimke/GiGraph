@@ -10,25 +10,13 @@ namespace GiGraph.Dot.Types.Colors;
 /// </summary>
 public abstract record DotColorDefinition : IDotEncodable
 {
-    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return GetDotEncodedColor(options, syntaxRules);
-    }
+    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedColor(options, syntaxRules);
 
     protected internal abstract string GetDotEncodedColor(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 
-    public static implicit operator DotColorDefinition(Color? color)
-    {
-        return color.HasValue ? new DotColor(color.Value) : null;
-    }
+    public static implicit operator DotColorDefinition(Color? color) => color.HasValue ? new DotColor(color.Value) : null;
 
-    public static implicit operator DotColorDefinition(Color[] colors)
-    {
-        return colors is not null ? new DotMultiColor(colors) : null;
-    }
+    public static implicit operator DotColorDefinition(Color[] colors) => colors is not null ? new DotMultiColor(colors) : null;
 
-    public static implicit operator DotColorDefinition(DotColor[] colors)
-    {
-        return colors is not null ? new DotMultiColor(colors) : null;
-    }
+    public static implicit operator DotColorDefinition(DotColor[] colors) => colors is not null ? new DotMultiColor(colors) : null;
 }

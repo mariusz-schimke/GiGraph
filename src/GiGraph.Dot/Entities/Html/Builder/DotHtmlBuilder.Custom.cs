@@ -13,10 +13,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     An element initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendElement(string elementName, Action<DotHtmlElement> init = null)
-    {
-        return AppendEntity(new(elementName), init);
-    }
+    public virtual DotHtmlBuilder AppendElement(string elementName, Action<DotHtmlElement> init = null) => AppendEntity(new(elementName), init);
 
     /// <summary>
     ///     Appends a custom void element to this instance and initializes it.
@@ -27,8 +24,5 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     An element initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendVoidElement(string elementName, Action<DotHtmlVoidElement> init = null)
-    {
-        return AppendEntity(new(elementName), init);
-    }
+    public virtual DotHtmlBuilder AppendVoidElement(string elementName, Action<DotHtmlVoidElement> init = null) => AppendEntity(new(elementName), init);
 }

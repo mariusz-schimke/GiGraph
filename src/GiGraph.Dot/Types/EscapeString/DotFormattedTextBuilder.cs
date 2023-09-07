@@ -49,10 +49,7 @@ public class DotFormattedTextBuilder
     /// <summary>
     ///     Appends a line break to the instance.
     /// </summary>
-    public virtual DotFormattedTextBuilder AppendLine()
-    {
-        return Append(DotEscapeString.LineBreak);
-    }
+    public virtual DotFormattedTextBuilder AppendLine() => Append(DotEscapeString.LineBreak);
 
     /// <summary>
     ///     Appends the specified line of text to the instance.
@@ -60,18 +57,12 @@ public class DotFormattedTextBuilder
     /// <param name="line">
     ///     The line of text to append to the instance.
     /// </param>
-    public virtual DotFormattedTextBuilder AppendLine(DotEscapeString line)
-    {
-        return Append(line).AppendLine();
-    }
+    public virtual DotFormattedTextBuilder AppendLine(DotEscapeString line) => Append(line).AppendLine();
 
     /// <summary>
     ///     Causes the last line of text in this instance to be left-justified. Further appended text will start from a new line.
     /// </summary>
-    public virtual DotFormattedTextBuilder AppendLeftJustificationLineBreak()
-    {
-        return Append(DotEscapeString.LeftJustificationLineBreak);
-    }
+    public virtual DotFormattedTextBuilder AppendLeftJustificationLineBreak() => Append(DotEscapeString.LeftJustificationLineBreak);
 
     /// <summary>
     ///     Appends the specified line of text to the instance and left-justifies it. Note that if the text contains line breaks, the
@@ -80,18 +71,12 @@ public class DotFormattedTextBuilder
     /// <param name="line">
     ///     The line of text to append to the instance.
     /// </param>
-    public virtual DotFormattedTextBuilder AppendLeftJustifiedLine(DotEscapeString line)
-    {
-        return Append(line).AppendLeftJustificationLineBreak();
-    }
+    public virtual DotFormattedTextBuilder AppendLeftJustifiedLine(DotEscapeString line) => Append(line).AppendLeftJustificationLineBreak();
 
     /// <summary>
     ///     Causes the last line of text in this instance to be right-justified. Further appended text will start from a new line.
     /// </summary>
-    public virtual DotFormattedTextBuilder AppendRightJustificationLineBreak()
-    {
-        return Append(DotEscapeString.RightJustificationLineBreak);
-    }
+    public virtual DotFormattedTextBuilder AppendRightJustificationLineBreak() => Append(DotEscapeString.RightJustificationLineBreak);
 
     /// <summary>
     ///     Appends the specified line of text to the instance and right-justifies it. Note that if the text contains line breaks, the
@@ -100,76 +85,49 @@ public class DotFormattedTextBuilder
     /// <param name="line">
     ///     The line of text to append to the instance.
     /// </param>
-    public virtual DotFormattedTextBuilder AppendRightJustifiedLine(DotEscapeString line)
-    {
-        return Append(line).AppendRightJustificationLineBreak();
-    }
+    public virtual DotFormattedTextBuilder AppendRightJustifiedLine(DotEscapeString line) => Append(line).AppendRightJustificationLineBreak();
 
     /// <summary>
     ///     Appends a placeholder replaced with the label of the current object when the graph is visualized.
     /// </summary>
-    public virtual DotFormattedTextBuilder AppendLabelPlaceholder()
-    {
-        return Append(DotEscapeString.LabelPlaceholder);
-    }
+    public virtual DotFormattedTextBuilder AppendLabelPlaceholder() => Append(DotEscapeString.LabelPlaceholder);
 
     /// <summary>
     ///     Appends a placeholder replaced with the identifier of the graph when the graph is visualized.
     /// </summary>
-    public virtual DotFormattedTextBuilder AppendGraphIdPlaceholder()
-    {
-        return Append(DotEscapeString.GraphIdPlaceholder);
-    }
+    public virtual DotFormattedTextBuilder AppendGraphIdPlaceholder() => Append(DotEscapeString.GraphIdPlaceholder);
 
     /// <summary>
     ///     Appends a placeholder replaced with the definition of the current edge when the graph is visualized. Applicable to edges
     ///     only.
     /// </summary>
-    public virtual DotFormattedTextBuilder AppendEdgeDefinitionPlaceholder()
-    {
-        return Append(DotEscapeString.EdgeDefinitionPlaceholder);
-    }
+    public virtual DotFormattedTextBuilder AppendEdgeDefinitionPlaceholder() => Append(DotEscapeString.EdgeDefinitionPlaceholder);
 
     /// <summary>
     ///     Appends a placeholder replaced with the identifier of the tail node of the current edge when the graph is visualized.
     ///     Applicable to edges only.
     /// </summary>
-    public virtual DotFormattedTextBuilder AppendTailNodeIdPlaceholder()
-    {
-        return Append(DotEscapeString.TailNodeIdPlaceholder);
-    }
+    public virtual DotFormattedTextBuilder AppendTailNodeIdPlaceholder() => Append(DotEscapeString.TailNodeIdPlaceholder);
 
     /// <summary>
     ///     Appends a placeholder replaced with the identifier of the head node of the current edge when the graph is visualized.
     ///     Applicable to edges only.
     /// </summary>
-    public virtual DotFormattedTextBuilder AppendHeadNodeIdPlaceholder()
-    {
-        return Append(DotEscapeString.HeadNodeIdPlaceholder);
-    }
+    public virtual DotFormattedTextBuilder AppendHeadNodeIdPlaceholder() => Append(DotEscapeString.HeadNodeIdPlaceholder);
 
     /// <summary>
     ///     Appends a placeholder replaced with the identifier of the current node when the graph is visualized. Applicable to nodes
     ///     only.
     /// </summary>
-    public virtual DotFormattedTextBuilder AppendNodeIdPlaceholder()
-    {
-        return Append(DotEscapeString.NodeIdPlaceholder);
-    }
+    public virtual DotFormattedTextBuilder AppendNodeIdPlaceholder() => Append(DotEscapeString.NodeIdPlaceholder);
 
     /// <summary>
     ///     Returns content as a concatenated string.
     /// </summary>
-    public override string ToString()
-    {
-        return Build().ToString();
-    }
+    public override string ToString() => Build().ToString();
 
     /// <summary>
     ///     Returns content as formatted text that can be used as a label of an element.
     /// </summary>
-    public virtual DotEscapeString Build()
-    {
-        return new DotConcatenatedEscapeString(_items.ToArray());
-    }
+    public virtual DotEscapeString Build() => new DotConcatenatedEscapeString(_items.ToArray());
 }

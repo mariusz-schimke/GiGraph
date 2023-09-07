@@ -14,10 +14,7 @@ public class DotAttributeListItemWriter : DotEntityWriter, IDotAttributeListItem
         _paddedEntityWriter = new(tokenWriter);
     }
 
-    public virtual IDotAttributeWriter BeginAttribute()
-    {
-        return new DotAttributeWriter(_paddedEntityWriter.BeginEntity(), _configuration);
-    }
+    public virtual IDotAttributeWriter BeginAttribute() => new DotAttributeWriter(_paddedEntityWriter.BeginEntity(), _configuration);
 
     public virtual void EndAttribute()
     {

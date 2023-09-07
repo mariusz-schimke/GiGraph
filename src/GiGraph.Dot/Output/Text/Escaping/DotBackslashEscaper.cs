@@ -5,13 +5,7 @@
 /// </summary>
 public class DotBackslashEscaper : IDotTextEscaper
 {
-    string IDotTextEscaper.Escape(string value)
-    {
-        return Escape(value);
-    }
+    string IDotTextEscaper.Escape(string value) => Escape(value);
 
-    public static string Escape(string value)
-    {
-        return value?.Replace("\\", "\\\\");
-    }
+    public static string Escape(string value) => value?.Replace("\\", "\\\\");
 }

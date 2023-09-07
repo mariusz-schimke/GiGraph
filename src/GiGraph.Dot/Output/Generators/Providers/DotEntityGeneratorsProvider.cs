@@ -64,10 +64,7 @@ public class DotEntityGeneratorsProvider : IDotEntityGeneratorsProvider
         return this;
     }
 
-    public virtual int Remove(Predicate<IDotEntityGenerator> match)
-    {
-        return _generators.RemoveAll(match);
-    }
+    public virtual int Remove(Predicate<IDotEntityGenerator> match) => _generators.RemoveAll(match);
 
     public virtual void Clear()
     {

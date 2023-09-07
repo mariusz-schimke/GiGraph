@@ -12,8 +12,5 @@ public class DotClusterEndpointGenerator : DotEndpointGenerator<DotClusterEndpoi
     {
     }
 
-    protected override string EncodeEndpointIdentifier(string endpointId)
-    {
-        return EncodeIdentifier(new DotClusterId(endpointId));
-    }
+    protected override string EncodeEndpointIdentifier(string endpointId) => EncodeIdentifier(new DotClusterId(endpointId));
 }

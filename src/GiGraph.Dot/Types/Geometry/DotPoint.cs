@@ -128,10 +128,7 @@ public record DotPoint : IDotEncodable
     /// </summary>
     public bool? IsFixed { get; init; }
 
-    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return GetDotEncodedValue(options, syntaxRules);
-    }
+    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
 
     protected virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
@@ -139,18 +136,9 @@ public record DotPoint : IDotEncodable
         return $"{string.Join(",", Coordinates.Select(c => c.ToString(syntaxRules.Culture)))}{fix}";
     }
 
-    public static implicit operator DotPoint(double? value)
-    {
-        return value.HasValue ? new DotPoint(value.Value) : null;
-    }
+    public static implicit operator DotPoint(double? value) => value.HasValue ? new DotPoint(value.Value) : null;
 
-    public static implicit operator DotPoint(Point? point)
-    {
-        return point.HasValue ? new DotPoint(point.Value) : null;
-    }
+    public static implicit operator DotPoint(Point? point) => point.HasValue ? new DotPoint(point.Value) : null;
 
-    public static implicit operator DotPoint(PointF? point)
-    {
-        return point.HasValue ? new DotPoint(point.Value) : null;
-    }
+    public static implicit operator DotPoint(PointF? point) => point.HasValue ? new DotPoint(point.Value) : null;
 }

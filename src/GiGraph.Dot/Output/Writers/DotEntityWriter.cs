@@ -16,23 +16,14 @@ public abstract class DotEntityWriter : IDotEntityWriter
         _enforceBlockComment = enforceBlockComment;
     }
 
-    public virtual IDotCommentWriter BeginComment(bool preferBlockComment)
-    {
-        return new DotCommentWriter(_tokenWriter, preferBlockComment || _enforceBlockComment);
-    }
+    public virtual IDotCommentWriter BeginComment(bool preferBlockComment) => new DotCommentWriter(_tokenWriter, preferBlockComment || _enforceBlockComment);
 
     public virtual void EndComment()
     {
         NewLine();
     }
 
-    protected virtual DotTokenWriter EmptyLine(bool linger = true, bool enforceLineBreak = true)
-    {
-        return _tokenWriter.EmptyLine(linger, enforceLineBreak);
-    }
+    protected virtual DotTokenWriter EmptyLine(bool linger = true, bool enforceLineBreak = true) => _tokenWriter.EmptyLine(linger, enforceLineBreak);
 
-    protected virtual DotTokenWriter NewLine(bool linger = true, bool enforceLineBreak = true)
-    {
-        return _tokenWriter.NewLine(linger, enforceLineBreak);
-    }
+    protected virtual DotTokenWriter NewLine(bool linger = true, bool enforceLineBreak = true) => _tokenWriter.NewLine(linger, enforceLineBreak);
 }

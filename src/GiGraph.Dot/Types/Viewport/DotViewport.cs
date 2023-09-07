@@ -21,10 +21,7 @@ public record DotViewport(double Width, double Height, double Zoom = DotViewport
 {
     protected const double DefaultZoom = 1;
 
-    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return GetDotEncodedValue(options, syntaxRules);
-    }
+    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
 
     protected virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {

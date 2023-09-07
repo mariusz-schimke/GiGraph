@@ -44,8 +44,5 @@ public record DotRadialRankSeparation : DotRankSeparationDefinition
     /// </summary>
     public double[] Values { get; }
 
-    protected override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return DotDoubleListEncoder.Encode(Values, syntaxRules);
-    }
+    protected override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => DotDoubleListEncoder.Encode(Values, syntaxRules);
 }

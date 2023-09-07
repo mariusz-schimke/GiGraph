@@ -27,8 +27,5 @@ public partial class DotHtmlBuilder
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of the preceding line of text.
     /// </param>
-    public virtual DotHtmlBuilder AppendLine(DotHorizontalAlignment? lineAlignment = null)
-    {
-        return AppendEntity(DotHtmlLineBreak.Instance(lineAlignment));
-    }
+    public virtual DotHtmlBuilder AppendLine(DotHorizontalAlignment? lineAlignment = null) => AppendEntity(DotHtmlLineBreak.Instance(lineAlignment));
 }

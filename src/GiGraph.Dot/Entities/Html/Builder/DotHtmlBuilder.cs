@@ -72,10 +72,8 @@ public partial class DotHtmlBuilder
     /// <summary>
     ///     Builds output HTML from the content of the builder.
     /// </summary>
-    public virtual DotHtmlEntity Build()
-    {
-        return new DotHtmlEntity<DotHtmlEntityCollection>(
+    public virtual DotHtmlEntity Build() =>
+        new DotHtmlEntity<DotHtmlEntityCollection>(
             new((IEnumerable<IDotHtmlEntity>) _entities)
         );
-    }
 }

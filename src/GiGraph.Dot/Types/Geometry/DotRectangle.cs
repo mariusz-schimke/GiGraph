@@ -77,10 +77,7 @@ public record DotRectangle : IDotEncodable
     /// </summary>
     public double Height { get; init; }
 
-    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return GetDotEncodedValue(options, syntaxRules);
-    }
+    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
 
     protected virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
@@ -91,13 +88,7 @@ public record DotRectangle : IDotEncodable
         );
     }
 
-    public static implicit operator DotRectangle(Rectangle? rectangle)
-    {
-        return rectangle.HasValue ? new DotRectangle(rectangle.Value.X, rectangle.Value.Y, rectangle.Value.Width, rectangle.Value.Height) : null;
-    }
+    public static implicit operator DotRectangle(Rectangle? rectangle) => rectangle.HasValue ? new DotRectangle(rectangle.Value.X, rectangle.Value.Y, rectangle.Value.Width, rectangle.Value.Height) : null;
 
-    public static implicit operator DotRectangle(RectangleF? rectangle)
-    {
-        return rectangle.HasValue ? new DotRectangle(rectangle.Value.X, rectangle.Value.Y, rectangle.Value.Width, rectangle.Value.Height) : null;
-    }
+    public static implicit operator DotRectangle(RectangleF? rectangle) => rectangle.HasValue ? new DotRectangle(rectangle.Value.X, rectangle.Value.Y, rectangle.Value.Width, rectangle.Value.Height) : null;
 }

@@ -74,12 +74,10 @@ public static class DotAttributeValue<TAttribute>
     ///     The type of attribute that provides metadata for the specified flags enumeration.
     /// </typeparam>
     public static string GetAsFlags<TFlagsAttribute>(Enum flags, bool sort)
-        where TFlagsAttribute : Attribute, IDotJoinableTypeAttribute
-    {
-        return TryGetAsFlags<TFlagsAttribute>(flags, out var dotFlags, sort)
+        where TFlagsAttribute : Attribute, IDotJoinableTypeAttribute =>
+        TryGetAsFlags<TFlagsAttribute>(flags, out var dotFlags, sort)
             ? dotFlags
             : throw new ArgumentException($"The {flags.GetType().Name} enumeration is not annotated with a {typeof(TFlagsAttribute).Name} attribute.", nameof(flags));
-    }
 
     /// <summary>
     ///     Tries to get a DOT attribute value associated with the specified enumeration value.
@@ -110,12 +108,9 @@ public static class DotAttributeValue<TAttribute>
     /// <param name="value">
     ///     The enumeration value whose associated DOT value to return.
     /// </param>
-    public static string Get(Enum value)
-    {
-        return TryGet(value, out var result)
-            ? result
-            : throw new ArgumentException($"The value '{value}' is not a member of the {value.GetType().Name} enumeration or is not annotated with a {typeof(TAttribute).Name} attribute.", nameof(value));
-    }
+    public static string Get(Enum value) => TryGet(value, out var result)
+        ? result
+        : throw new ArgumentException($"The value '{value}' is not a member of the {value.GetType().Name} enumeration or is not annotated with a {typeof(TAttribute).Name} attribute.", nameof(value));
 
     /// <summary>
     ///     Tries to get an enumeration value associated with the specified DOT attribute value.
@@ -175,10 +170,8 @@ public static class DotAttributeValue<TAttribute>
     ///     The type of the enumeration whose value to search.
     /// </typeparam>
     public static TEnum Get<TEnum>(string dotValue)
-        where TEnum : Enum
-    {
-        return (TEnum) Get(typeof(TEnum), dotValue);
-    }
+        where TEnum : Enum =>
+        (TEnum) Get(typeof(TEnum), dotValue);
 
     /// <summary>
     ///     Gets an enumeration value associated with the specified DOT attribute value.
@@ -189,12 +182,9 @@ public static class DotAttributeValue<TAttribute>
     /// <param name="dotValue">
     ///     The DOT attribute value whose associated enumeration value to return.
     /// </param>
-    public static Enum Get(Type enumType, string dotValue)
-    {
-        return TryGet(enumType, dotValue, out var result)
-            ? result
-            : throw new ArgumentException($"The '{dotValue}' value is invalid or is not mapped to any value of the {enumType.Name} enumeration by a {typeof(TAttribute).Name} attribute.", nameof(dotValue));
-    }
+    public static Enum Get(Type enumType, string dotValue) => TryGet(enumType, dotValue, out var result)
+        ? result
+        : throw new ArgumentException($"The '{dotValue}' value is invalid or is not mapped to any value of the {enumType.Name} enumeration by a {typeof(TAttribute).Name} attribute.", nameof(dotValue));
 
     /// <summary>
     ///     Gets a dictionary where each key has a DOT attribute value assigned. Enumeration values that are not marked with the

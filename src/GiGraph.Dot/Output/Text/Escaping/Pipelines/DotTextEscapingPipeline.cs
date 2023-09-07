@@ -48,9 +48,8 @@ public partial class DotTextEscapingPipeline : List<IDotTextEscaper>, IDotTextEs
     /// <summary>
     ///     Creates a new pipeline that escapes backslashes and quotation marks.
     /// </summary>
-    public static DotTextEscapingPipeline ForString()
-    {
-        return new(
+    public static DotTextEscapingPipeline ForString() =>
+        new(
             // When a string ends with a backslash ("...\"), the closing quotation mark is interpreted as a content character,
             // so the backslash has to be escaped.
 
@@ -60,20 +59,17 @@ public partial class DotTextEscapingPipeline : List<IDotTextEscaper>, IDotTextEs
             new DotTrailingBackslashHtmlEscaper(),
             new DotQuotationMarkEscaper()
         );
-    }
 
     /// <summary>
     ///     Creates a new pipeline that escapes backslashes, quotation marks, and line breaks.
     /// </summary>
     public static DotTextEscapingPipeline ForEscapeString() => new(CommonForEscapeString(), new DotQuotationMarkEscaper());
 
-    protected static DotTextEscapingPipeline CommonForEscapeString()
-    {
-        return new(
+    protected static DotTextEscapingPipeline CommonForEscapeString() =>
+        new(
             new DotBackslashEscaper(),
             new DotWindowsNewLineEscaper(),
             new DotCarriageReturnEscaper(),
             new DotUnixNewLineEscaper()
         );
-    }
 }
