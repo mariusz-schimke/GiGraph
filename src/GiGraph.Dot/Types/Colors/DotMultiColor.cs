@@ -136,12 +136,8 @@ public record DotMultiColor : DotColorDefinition
     /// <param name="weight2">
     ///     The proportion of the area to cover with the second color (it must be in the range 0 ≤ weight &lt; 1).
     /// </param>
-    public static DotMultiColor Dual(DotColor color1, double weight1, DotColor color2, double weight2)
-    {
-        return new DotMultiColor(
-            new DotWeightedColor(color1, weight1),
-            new DotWeightedColor(color2, weight2));
-    }
+    public static DotMultiColor Dual(DotColor color1, double weight1, DotColor color2, double weight2) =>
+        new(new DotWeightedColor(color1, weight1), new DotWeightedColor(color2, weight2));
 
     /// <summary>
     ///     Creates a new color definition visualized as a dual-color fill (refers to the root graph, nodes, and clusters), or as a
@@ -156,10 +152,7 @@ public record DotMultiColor : DotColorDefinition
     /// <param name="color2">
     ///     The second color to initialize the instance with.
     /// </param>
-    public static DotMultiColor Dual(DotColor color1, double weight1, DotColor color2)
-    {
-        return new DotMultiColor(new DotWeightedColor(color1, weight1), color2);
-    }
+    public static DotMultiColor Dual(DotColor color1, double weight1, DotColor color2) => new(new DotWeightedColor(color1, weight1), color2);
 
     /// <summary>
     ///     Creates a new color definition visualized as a dual-color fill (refers to the root graph, nodes, and clusters), or as a
@@ -174,8 +167,5 @@ public record DotMultiColor : DotColorDefinition
     /// <param name="weight2">
     ///     The proportion of the area to cover with the second color (it must be in the range 0 ≤ weight &lt; 1).
     /// </param>
-    public static DotMultiColor Dual(DotColor color1, DotColor color2, double weight2)
-    {
-        return new DotMultiColor(color1, new DotWeightedColor(color2, weight2));
-    }
+    public static DotMultiColor Dual(DotColor color1, DotColor color2, double weight2) => new(color1, new DotWeightedColor(color2, weight2));
 }

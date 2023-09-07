@@ -27,7 +27,7 @@ public partial class DotHtmlTable : DotHtmlElement
     protected DotHtmlTable(DotHtmlTableAttributes attributes)
         : base("table", attributes.Collection)
     {
-        Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlTableAttributes, DotHtmlTableAttributes>(attributes);
+        Attributes = new(attributes);
     }
 
     /// <summary>
@@ -43,7 +43,7 @@ public partial class DotHtmlTable : DotHtmlElement
     /// </param>
     public virtual DotHtmlTableRow AddRow(Action<DotHtmlTableRow> init = null)
     {
-        return Content.Add(new DotHtmlTableRow(), init);
+        return Content.Add(new(), init);
     }
 
     /// <summary>

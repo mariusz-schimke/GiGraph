@@ -16,7 +16,7 @@ public partial class DotEdgeCollection
     /// </param>
     public virtual DotEdge AddLoop(string nodeId, Action<DotEdge> init = null)
     {
-        return Add(new DotEdge(nodeId), init);
+        return Add(new(nodeId), init);
     }
 
     /// <summary>
@@ -30,6 +30,6 @@ public partial class DotEdgeCollection
     /// </param>
     public virtual DotEdge AddLoop(DotEndpoint endpoint, Action<DotEdge> init = null)
     {
-        return Add(new DotEdge(endpoint), init);
+        return Add(new(endpoint), init);
     }
 }

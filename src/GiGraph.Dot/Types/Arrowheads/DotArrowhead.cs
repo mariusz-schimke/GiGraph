@@ -119,7 +119,7 @@ public record DotArrowhead(DotArrowheadShape Shape) : DotArrowheadDefinition
     /// </param>
     public static DotArrowhead Filled(DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
     {
-        return new DotArrowhead(shape, filled: true, visibleParts);
+        return new(shape, filled: true, visibleParts);
     }
 
     /// <summary>
@@ -144,7 +144,7 @@ public record DotArrowhead(DotArrowheadShape Shape) : DotArrowheadDefinition
     /// </param>
     public static DotArrowhead Empty(DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
     {
-        return new DotArrowhead(shape, filled: false, visibleParts);
+        return new(shape, filled: false, visibleParts);
     }
 
     public static implicit operator DotArrowhead(DotArrowheadShape? shape)

@@ -1,5 +1,3 @@
-using GiGraph.Dot.Entities.Html.Attributes.Collections;
-
 namespace GiGraph.Dot.Entities.Html.Rule;
 
 /// <summary>
@@ -8,7 +6,7 @@ namespace GiGraph.Dot.Entities.Html.Rule;
 public abstract class DotHtmlRule : DotHtmlVoidElement
 {
     protected DotHtmlRule(string tagName)
-        : base(tagName, new DotHtmlAttributeCollection())
+        : base(tagName, new())
     {
     }
 

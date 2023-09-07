@@ -23,7 +23,7 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
 
     protected DotNodeCollection(DotNodeRootAttributes attributes)
     {
-        Attributes = new DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes>(attributes);
+        Attributes = new(attributes);
     }
 
     /// <summary>
@@ -104,7 +104,7 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
     /// </param>
     public virtual DotNodeGroup AddGroup(IEnumerable<string> ids, Action<DotNodeGroup> init = null)
     {
-        return Add(new DotNodeGroup(ids), init);
+        return Add(new(ids), init);
     }
 
     /// <summary>

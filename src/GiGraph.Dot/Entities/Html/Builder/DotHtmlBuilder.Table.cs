@@ -13,6 +13,6 @@ public partial class DotHtmlBuilder
     /// </param>
     public virtual DotHtmlBuilder AppendTable(Action<DotHtmlTable> init)
     {
-        return AppendEntity(new DotHtmlTable(), init);
+        return AppendEntity(new(), init);
     }
 }

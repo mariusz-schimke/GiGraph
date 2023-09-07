@@ -195,7 +195,7 @@ public class DotMemberAttributeKeyLookup
             item => new ReadOnlyDictionary<int, string>(item.Value)
         );
 
-        return new DotMemberAttributeKeyLookup(
+        return new(
             new ReadOnlyDictionary<Module, IDictionary<int, string>>(result),
             _useCommonBaseAsLookupKey
         );

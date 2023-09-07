@@ -114,6 +114,6 @@ public partial class DotEdgeCollection
         string tailNodeId, DotSubgraph heads,
         Action<DotEdge<DotEndpoint, DotSubgraphEndpoint>> init = null)
     {
-        return Add(new DotEndpoint(tailNodeId), new DotSubgraphEndpoint(heads), init);
+        return Add(new(tailNodeId), new(heads), init);
     }
 }

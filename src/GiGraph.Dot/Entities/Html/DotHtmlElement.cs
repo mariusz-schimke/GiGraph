@@ -18,12 +18,12 @@ public partial class DotHtmlElement : DotHtmlTag, IDotHtmlContentEntity
     ///     The tag name to use for the element.
     /// </param>
     public DotHtmlElement(string name)
-        : this(name, new DotHtmlAttributeCollection())
+        : this(name, new())
     {
     }
 
     protected DotHtmlElement(string name, DotHtmlAttributeCollection attributes)
-        : this(name, attributes, new DotHtmlEntityCollection())
+        : this(name, attributes, new())
     {
     }
 

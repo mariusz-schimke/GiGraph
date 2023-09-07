@@ -81,6 +81,6 @@ public partial class DotEdgeCollection
     /// </param>
     public virtual DotEdgeSequence AddSequence(IEnumerable<DotEndpointDefinition> endpoints, Action<DotEdgeSequence> init = null)
     {
-        return Add(new DotEdgeSequence(endpoints), init);
+        return Add(new(endpoints), init);
     }
 }

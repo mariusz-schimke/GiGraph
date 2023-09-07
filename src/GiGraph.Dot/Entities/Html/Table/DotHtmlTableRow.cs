@@ -15,7 +15,7 @@ public partial class DotHtmlTableRow : DotHtmlElement
     ///     Initializes a new table row instance.
     /// </summary>
     public DotHtmlTableRow()
-        : this(new DotHtmlAttributeCollection())
+        : this(new())
     {
     }
 
@@ -32,7 +32,7 @@ public partial class DotHtmlTableRow : DotHtmlElement
     /// </param>
     public virtual DotHtmlTableCell AddCell(Action<DotHtmlTableCell> init = null)
     {
-        return Content.Add(new DotHtmlTableCell(), init);
+        return Content.Add(new(), init);
     }
 
     /// <summary>
@@ -46,7 +46,7 @@ public partial class DotHtmlTableRow : DotHtmlElement
     /// </param>
     public virtual DotHtmlTableCell AddCell(IDotHtmlEntity content, Action<DotHtmlTableCell> init = null)
     {
-        return Content.Add(new DotHtmlTableCell { content }, init);
+        return Content.Add(new() { content }, init);
     }
 
     /// <summary>
@@ -63,10 +63,7 @@ public partial class DotHtmlTableRow : DotHtmlElement
     /// </param>
     public virtual DotHtmlTableCell AddImageCell(string source, DotImageScaling? scaling = null, Action<DotHtmlTableCell> init = null)
     {
-        return Content.Add(
-            new DotHtmlTableCell { new DotHtmlImage(source, scaling) },
-            init
-        );
+        return Content.Add(new() { new DotHtmlImage(source, scaling) }, init);
     }
 
     /// <summary>

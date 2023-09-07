@@ -20,7 +20,7 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     ///     The unique identifier of the cluster.
     /// </param>
     public DotCluster(string id)
-        : this(new DotClusterSection(), new DotGraphSectionCollection<DotClusterSection>())
+        : this(new(), new())
     {
         Id = id;
     }

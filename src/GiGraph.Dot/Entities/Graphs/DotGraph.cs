@@ -28,7 +28,7 @@ public class DotGraph : DotGraphSection, IDotGraph, IDotOrderable
     ///     a given tail node and head node in the directed case.
     /// </param>
     public DotGraph(string id, bool directed = DirectedDefault, bool strict = StrictDefault)
-        : this(new DotGraphSection(), new DotGraphSectionCollection<DotGraphSection>())
+        : this(new(), new DotGraphSectionCollection<DotGraphSection>())
     {
         Id = id;
         IsDirected = directed;

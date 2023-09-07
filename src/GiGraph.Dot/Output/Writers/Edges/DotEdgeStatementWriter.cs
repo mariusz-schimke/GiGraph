@@ -12,8 +12,8 @@ public class DotEdgeStatementWriter : DotEntityStatementWriter, IDotEdgeStatemen
     public virtual IDotEdgeWriter BeginEdgeStatement(bool containsSubgraphs, bool containsAttributes)
     {
         var isMultiline =
-            containsSubgraphs && !_configuration.Formatting.Edges.SingleLineSubgraphs ||
-            containsAttributes && !_configuration.Formatting.Edges.SingleLineAttributeLists;
+            (containsSubgraphs && !_configuration.Formatting.Edges.SingleLineSubgraphs) ||
+            (containsAttributes && !_configuration.Formatting.Edges.SingleLineAttributeLists);
 
         isMultiline &= !_configuration.Formatting.SingleLine;
 

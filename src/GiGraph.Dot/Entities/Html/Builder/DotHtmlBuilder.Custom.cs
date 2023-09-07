@@ -15,7 +15,7 @@ public partial class DotHtmlBuilder
     /// </param>
     public virtual DotHtmlBuilder AppendElement(string elementName, Action<DotHtmlElement> init = null)
     {
-        return AppendEntity(new DotHtmlElement(elementName), init);
+        return AppendEntity(new(elementName), init);
     }
 
     /// <summary>
@@ -29,6 +29,6 @@ public partial class DotHtmlBuilder
     /// </param>
     public virtual DotHtmlBuilder AppendVoidElement(string elementName, Action<DotHtmlVoidElement> init = null)
     {
-        return AppendEntity(new DotHtmlVoidElement(elementName), init);
+        return AppendEntity(new(elementName), init);
     }
 }

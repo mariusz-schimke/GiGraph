@@ -13,7 +13,7 @@ public static class RecordNodes
     {
         var graph = new DotGraph();
 
-        graph.Nodes.Add("Bar").ToRecordNode(new DotRecord(
+        graph.Nodes.Add("Bar").ToRecordNode(new(
             $"Foo{Environment.NewLine}Bar",
             new DotRecord
             (
@@ -46,7 +46,7 @@ public static class RecordNodes
 
         graph.Edges.Add("Foo", "Bar", edge =>
         {
-            edge.Head.Endpoint.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
+            edge.Head.Endpoint.Port = new("port1", DotCompassPoint.NorthEast);
         });
 
         return graph;

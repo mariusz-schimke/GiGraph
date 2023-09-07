@@ -177,7 +177,7 @@ public static class DotGraphExtension
     private static TextWriter CreateFileStreamWriter(string filePath, Encoding encoding)
     {
         return encoding is not null
-            ? new StreamWriter(filePath, append: false, encoding)
+            ? new(filePath, append: false, encoding)
             : new StreamWriter(filePath, append: false);
     }
 }

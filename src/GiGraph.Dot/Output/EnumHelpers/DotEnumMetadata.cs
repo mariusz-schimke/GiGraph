@@ -20,7 +20,7 @@ public class DotEnumMetadata
     public DotEnumMetadata(Type enumType)
     {
         _enumType = enumType;
-        _enumValues = new Lazy<Enum[]>(() => Enum.GetValues(_enumType).Cast<Enum>().ToArray());
+        _enumValues = new(() => Enum.GetValues(_enumType).Cast<Enum>().ToArray());
     }
 
     /// <summary>

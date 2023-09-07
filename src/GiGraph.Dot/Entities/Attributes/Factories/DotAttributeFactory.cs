@@ -26,10 +26,7 @@ public class DotAttributeFactory
     /// <param name="value">
     ///     The value of the attribute.
     /// </param>
-    public virtual DotBoolAttribute CreateBool(string key, bool value)
-    {
-        return new DotBoolAttribute(key, value);
-    }
+    public virtual DotBoolAttribute CreateBool(string key, bool value) => new(key, value);
 
     /// <summary>
     ///     Creates a new integer attribute.
@@ -40,10 +37,7 @@ public class DotAttributeFactory
     /// <param name="value">
     ///     The value of the attribute.
     /// </param>
-    public virtual DotIntAttribute CreateInt(string key, int value)
-    {
-        return new DotIntAttribute(key, value);
-    }
+    public virtual DotIntAttribute CreateInt(string key, int value) => new(key, value);
 
     /// <summary>
     ///     Creates a new double attribute.
@@ -54,10 +48,7 @@ public class DotAttributeFactory
     /// <param name="value">
     ///     The value of the attribute.
     /// </param>
-    public virtual DotDoubleAttribute CreateDouble(string key, double value)
-    {
-        return new DotDoubleAttribute(key, value);
-    }
+    public virtual DotDoubleAttribute CreateDouble(string key, double value) => new(key, value);
 
     /// <summary>
     ///     Creates a new double array attribute.
@@ -68,10 +59,7 @@ public class DotAttributeFactory
     /// <param name="value">
     ///     The value of the attribute.
     /// </param>
-    public virtual DotDoubleArrayAttribute CreateDoubleArray(string key, double[] value)
-    {
-        return new DotDoubleArrayAttribute(key, value);
-    }
+    public virtual DotDoubleArrayAttribute CreateDoubleArray(string key, double[] value) => new(key, value);
 
     /// <summary>
     ///     Creates a new double array attribute.
@@ -82,10 +70,7 @@ public class DotAttributeFactory
     /// <param name="value">
     ///     The value of the attribute.
     /// </param>
-    public virtual DotDoubleArrayAttribute CreateDoubleArray(string key, IEnumerable<double> value)
-    {
-        return CreateDoubleArray(key, value?.ToArray());
-    }
+    public virtual DotDoubleArrayAttribute CreateDoubleArray(string key, IEnumerable<double> value) => CreateDoubleArray(key, value?.ToArray());
 
     /// <summary>
     ///     Creates a new color attribute.
@@ -96,10 +81,7 @@ public class DotAttributeFactory
     /// <param name="value">
     ///     The value of the attribute.
     /// </param>
-    public virtual DotColorAttribute CreateColor(string key, Color value)
-    {
-        return new DotColorAttribute(key, value);
-    }
+    public virtual DotColorAttribute CreateColor(string key, Color value) => new(key, value);
 
     /// <summary>
     ///     Creates a new string attribute.
@@ -110,10 +92,7 @@ public class DotAttributeFactory
     /// <param name="value">
     ///     The value of the attribute.
     /// </param>
-    public virtual DotStringAttribute CreateString(string key, string value)
-    {
-        return new DotStringAttribute(key, value);
-    }
+    public virtual DotStringAttribute CreateString(string key, string value) => new(key, value);
 
     /// <summary>
     ///     Creates a new escape string attribute.
@@ -125,10 +104,7 @@ public class DotAttributeFactory
     ///     The value of the attribute.
     /// </param>
     public virtual DotEscapeStringAttribute CreateEscapeString<TEscapeString>(string key, TEscapeString value)
-        where TEscapeString : DotEscapeString
-    {
-        return new DotEscapeStringAttribute(key, value);
-    }
+        where TEscapeString : DotEscapeString => new(key, value);
 
     /// <summary>
     ///     Creates a new enumeration attribute.
@@ -140,10 +116,7 @@ public class DotAttributeFactory
     ///     The value of the attribute.
     /// </param>
     public virtual DotEnumAttribute<TEnum> CreateEnum<TEnum>(string key, TEnum value)
-        where TEnum : Enum
-    {
-        return new DotEnumAttribute<TEnum>(key, value);
-    }
+        where TEnum : Enum => new(key, value);
 
     /// <summary>
     ///     Creates a new complex type attribute.
@@ -155,10 +128,7 @@ public class DotAttributeFactory
     ///     The value of the attribute.
     /// </param>
     public virtual DotComplexTypeAttribute<TComplex> CreateComplex<TComplex>(string key, TComplex value)
-        where TComplex : IDotEncodable
-    {
-        return new DotComplexTypeAttribute<TComplex>(key, value);
-    }
+        where TComplex : IDotEncodable => new(key, value);
 
     /// <summary>
     ///     Creates a new complex type array attribute.
@@ -170,10 +140,7 @@ public class DotAttributeFactory
     ///     The value of the attribute.
     /// </param>
     public virtual DotComplexTypeArrayAttribute<TComplex> CreateComplexArray<TComplex>(string key, TComplex[] value)
-        where TComplex : IDotEncodable
-    {
-        return new DotComplexTypeArrayAttribute<TComplex>(key, value);
-    }
+        where TComplex : IDotEncodable => new(key, value);
 
     /// <summary>
     ///     Creates a new complex type array attribute.
@@ -185,10 +152,7 @@ public class DotAttributeFactory
     ///     The value of the attribute.
     /// </param>
     public virtual DotComplexTypeArrayAttribute<TComplex> CreateComplexArray<TComplex>(string key, IEnumerable<TComplex> value)
-        where TComplex : IDotEncodable
-    {
-        return CreateComplexArray(key, value?.ToArray());
-    }
+        where TComplex : IDotEncodable => CreateComplexArray(key, value?.ToArray());
 
     /// <summary>
     ///     Creates a new custom value attribute.
@@ -199,10 +163,7 @@ public class DotAttributeFactory
     /// <param name="value">
     ///     The value of the attribute.
     /// </param>
-    public virtual DotCustomAttribute CreateCustom(string key, string value)
-    {
-        return new DotCustomAttribute(key, value);
-    }
+    public virtual DotCustomAttribute CreateCustom(string key, string value) => new(key, value);
 
     /// <summary>
     ///     Creates a new null value attribute.
@@ -210,8 +171,5 @@ public class DotAttributeFactory
     /// <param name="key">
     ///     The key of the attribute.
     /// </param>
-    public virtual DotNullAttribute CreateNull(string key)
-    {
-        return new DotNullAttribute(key);
-    }
+    public virtual DotNullAttribute CreateNull(string key) => new(key);
 }

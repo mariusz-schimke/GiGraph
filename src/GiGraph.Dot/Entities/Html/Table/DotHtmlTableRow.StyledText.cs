@@ -42,10 +42,7 @@ public partial class DotHtmlTableRow
     /// </param>
     public virtual DotHtmlTableCell AddCell(string text, DotFontStyles style, DotHorizontalAlignment? lineAlignment, Action<DotHtmlTableCell> init = null)
     {
-        return Content.Add(
-            new DotHtmlTableCell { DotHtmlFontStyle.WithText(text, style, lineAlignment) },
-            init
-        );
+        return Content.Add(new() { DotHtmlFontStyle.WithText(text, style, lineAlignment) }, init);
     }
 
     /// <summary>
@@ -82,9 +79,6 @@ public partial class DotHtmlTableRow
     /// </param>
     public virtual DotHtmlTableCell AddCell(string text, DotStyledFont font, DotHorizontalAlignment? lineAlignment, Action<DotHtmlTableCell> init = null)
     {
-        return Content.Add(
-            new DotHtmlTableCell { DotHtmlFont.WithText(text, font, lineAlignment) },
-            init
-        );
+        return Content.Add(new() { DotHtmlFont.WithText(text, font, lineAlignment) }, init);
     }
 }

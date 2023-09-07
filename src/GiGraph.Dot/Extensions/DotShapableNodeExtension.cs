@@ -49,7 +49,7 @@ public static class DotShapableNodeExtension
     )
         where T : IDotShapableNode
     {
-        @this.SetPolygonalShape(new DotPolygon(sides, regular, peripheries, rotation, skew, distortion));
+        @this.SetPolygonalShape(new(sides, regular, peripheries, rotation, skew, distortion));
     }
 
     /// <summary>

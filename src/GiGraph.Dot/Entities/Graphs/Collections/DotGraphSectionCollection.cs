@@ -30,6 +30,6 @@ public class DotGraphSectionCollection<TSection> : List<TSection>
     /// </param>
     public virtual TSection Add(Action<TSection> init = null)
     {
-        return Add(new TSection(), init);
+        return Add(new(), init);
     }
 }

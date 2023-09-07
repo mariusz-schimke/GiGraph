@@ -33,12 +33,12 @@ public abstract class DotCommonGraphSection : IDotGraphSection, IDotAnnotatable
     }
 
     protected DotCommonGraphSection(DotEntityAttributes attributes, DotClusterCollection clusters)
-        : this(attributes, new DotNodeCollection(), new DotEdgeCollection(), new DotSubgraphCollection(), clusters)
+        : this(attributes, new(), new(), new(), clusters)
     {
     }
 
     protected DotCommonGraphSection(DotEntityAttributes attributes)
-        : this(attributes, new DotClusterCollection())
+        : this(attributes, new())
     {
     }
 

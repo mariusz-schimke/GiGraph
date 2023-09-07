@@ -38,26 +38,19 @@ public partial class DotTextEscapingPipeline : List<IDotTextEscaper>, IDotTextEs
     {
     }
 
-    public virtual string Escape(string value)
-    {
-        return this.Aggregate(value, (current, escaper) => escaper.Escape(current));
-    }
+    public virtual string Escape(string value) => this.Aggregate(value, (current, escaper) => escaper.Escape(current));
 
     /// <summary>
     ///     Creates a new pipeline that does not modify the input string in any way.
     /// </summary>
-    public static DotTextEscapingPipeline None()
-    {
-        return new DotTextEscapingPipeline();
-    }
+    public static DotTextEscapingPipeline None() => new();
 
     /// <summary>
     ///     Creates a new pipeline that escapes backslashes and quotation marks.
     /// </summary>
     public static DotTextEscapingPipeline ForString()
     {
-        return new DotTextEscapingPipeline
-        (
+        return new(
             // When a string ends with a backslash ("...\"), the closing quotation mark is interpreted as a content character,
             // so the backslash has to be escaped.
 
@@ -72,17 +65,11 @@ public partial class DotTextEscapingPipeline : List<IDotTextEscaper>, IDotTextEs
     /// <summary>
     ///     Creates a new pipeline that escapes backslashes, quotation marks, and line breaks.
     /// </summary>
-    public static DotTextEscapingPipeline ForEscapeString()
-    {
-        return new DotTextEscapingPipeline(
-            CommonForEscapeString(),
-            new DotQuotationMarkEscaper()
-        );
-    }
+    public static DotTextEscapingPipeline ForEscapeString() => new(CommonForEscapeString(), new DotQuotationMarkEscaper());
 
     protected static DotTextEscapingPipeline CommonForEscapeString()
     {
-        return new DotTextEscapingPipeline(
+        return new(
             new DotBackslashEscaper(),
             new DotWindowsNewLineEscaper(),
             new DotCarriageReturnEscaper(),
