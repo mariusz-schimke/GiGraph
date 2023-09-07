@@ -218,10 +218,10 @@ node.Attributes.Collection.SetEnum("shape", DotNodeShape.Circle);
 
 
 
-If there is a case that you want your value to be written **as is** in the output DOT script, use the *SetCustom* method. It's similar to the first approach, but the value you provide doesn't undergo any further processing (normally, if it contains special characters, they have to be escaped so that they are interpreted correctly and don't break syntactic consistency of the output script). In this case, however, you have to take care of following the syntax rules by yourself for the provided value.
+If there is a case that you want your value to be written **as is** in the output DOT script, use the *SetRaw* method. It's similar to the first approach, but the value you provide doesn't undergo any further processing (normally, if it contains special characters, they have to be escaped so that they are interpreted correctly and don't break syntactic consistency of the output script). In this case, however, you have to take care of following the syntax rules by yourself for the provided value.
 
 ```c#
-node.Attributes.Collection.SetCustom("fillcolor", "red:blue");
+node.Attributes.Collection.SetRaw("fillcolor", "red:blue");
 ```
 
 

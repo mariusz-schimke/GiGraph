@@ -45,11 +45,11 @@ public class DotHtmlAttributeValueEscapingTest
     {
         var value = $"Unchanged value {SpecialChars}";
         var element = new DotHtmlVoidElement("element");
-        element.Attributes.SetCustom("attribute", value);
+        element.Attributes.SetRaw("attribute", value);
 
         Snapshot.Match(
             ((IDotHtmlEncodable) element).ToHtml(_syntaxOptions, _syntaxRules),
-            "html_attribute_custom_string_value"
+            "html_attribute_raw_string_value"
         );
     }
 }

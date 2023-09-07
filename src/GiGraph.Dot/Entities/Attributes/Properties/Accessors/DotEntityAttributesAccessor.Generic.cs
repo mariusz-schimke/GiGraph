@@ -81,8 +81,8 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     }
 
     /// <summary>
-    ///     Assigns a custom value to the specified property and returns the actual attribute added to the collection. The value is
-    ///     rendered AS IS in the output DOT script, so it has to escaped appropriately when necessary (see
+    ///     Assigns a raw value to the specified property and returns the actual attribute added to the collection. The value is rendered
+    ///     AS IS in the output DOT script, so it has to escaped appropriately when necessary (see
     ///     <see href="https://graphviz.org/doc/info/lang.html" />).
     /// </summary>
     /// <param name="property">
@@ -94,10 +94,10 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <typeparam name="TProperty">
     ///     The type returned by the property.
     /// </typeparam>
-    public virtual DotAttribute SetCustomValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
+    public virtual DotAttribute SetRawValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
     {
         var key = GetKey(property);
-        _attributes.Collection.SetCustom(key, value);
+        _attributes.Collection.SetRaw(key, value);
         return _attributes.Collection.Get(key);
     }
 
