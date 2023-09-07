@@ -10,6 +10,7 @@
         <ApplicationIcon>..\..\assets\icon.ico</ApplicationIcon>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
