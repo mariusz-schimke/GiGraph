@@ -20,7 +20,7 @@
 
         <Deterministic>true</Deterministic>
 
-        <Version>$(Version)</Version>
+        <Version>3.0.0</Version>
         <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
 
         <PackageId>GiGraph.Dot</PackageId>

@@ -55,10 +55,10 @@ public class DotAttributeEncodingTest
     }
 
     [Fact]
-    public void custom_attribute_returns_the_exact_same_encoded_value_as_attribute_value()
+    public void raw_attribute_returns_the_exact_same_encoded_value_as_attribute_value()
     {
         var value = "a bcd \" \\ \r\n \r \n h ij < > { } |";
-        IDotEncodable attr = new DotCustomAttribute("key", value);
+        IDotEncodable attr = new DotRawAttribute("key", value);
 
         Assert.Equal(value, attr.GetDotEncodedValue(_syntaxOptions, _syntaxRules));
     }

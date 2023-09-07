@@ -155,7 +155,7 @@ public class DotAttributeFactory
         where TComplex : IDotEncodable => CreateComplexArray(key, value?.ToArray());
 
     /// <summary>
-    ///     Creates a new custom value attribute.
+    ///     Creates a new raw value attribute.
     /// </summary>
     /// <param name="key">
     ///     The key of the attribute.
@@ -163,7 +163,7 @@ public class DotAttributeFactory
     /// <param name="value">
     ///     The value of the attribute.
     /// </param>
-    public virtual DotCustomAttribute CreateCustom(string key, string value) => new(key, value);
+    public virtual DotRawAttribute CreateRaw(string key, string value) => new(key, value);
 
     /// <summary>
     ///     Creates a new null value attribute.

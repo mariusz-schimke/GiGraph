@@ -263,5 +263,5 @@ public partial class DotAttributeCollection
     /// <param name="value">
     ///     The value of the attribute to include in the collection.
     /// </param>
-    public virtual DotAttributeCollection SetCustom(string key, string value) => Set(_attributeFactory.CreateCustom(key, value));
+    public virtual DotAttributeCollection SetRaw(string key, string value) => Set(_attributeFactory.CreateRaw(key, value));
 }
