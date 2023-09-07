@@ -31,7 +31,7 @@ public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     ///     The identifier of the head node.
     /// </param>
     public DotEdge(string tailNodeId, string headNodeId)
-        : this(new DotEndpoint(tailNodeId), new DotEndpoint(headNodeId))
+        : this(new(tailNodeId), new DotEndpoint(headNodeId))
     {
     }
 
@@ -68,12 +68,10 @@ public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     /// <param name="endpointId">
     ///     The identifier of the endpoint to check.
     /// </param>
-    public virtual bool Loops(string endpointId)
-    {
+    public virtual bool Loops(string endpointId) =>
         // IsLoop is checked here to make sure that both the endpoints are of the same type
         // (they may represent a node ID or a cluster ID)
-        return Equals(endpointId, endpointId) && IsLoop;
-    }
+        Equals(endpointId, endpointId) && IsLoop;
 
     /// <summary>
     ///     Determines whether the edge joins the specified endpoint to itself.
@@ -81,11 +79,9 @@ public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     /// <param name="endpoint">
     ///     The endpoint to check (note that if you want to check a cluster as an endpoint, use <see cref="DotClusterEndpoint" />).
     /// </param>
-    public virtual bool Loops(DotEndpoint endpoint)
-    {
-        return Tail.Endpoint.IsSameEndpoint(endpoint) &&
-            Head.Endpoint.IsSameEndpoint(endpoint);
-    }
+    public virtual bool Loops(DotEndpoint endpoint) =>
+        Tail.Endpoint.IsSameEndpoint(endpoint) &&
+        Head.Endpoint.IsSameEndpoint(endpoint);
 
     /// <summary>
     ///     Determines whether the edge joins the specified endpoints.
@@ -96,11 +92,9 @@ public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     /// <param name="headId">
     ///     The identifier of the head endpoint to check.
     /// </param>
-    public virtual bool Equals(string tailId, string headId)
-    {
-        return Tail.Endpoint.Id == tailId &&
-            Head.Endpoint.Id == headId;
-    }
+    public virtual bool Equals(string tailId, string headId) =>
+        Tail.Endpoint.Id == tailId &&
+        Head.Endpoint.Id == headId;
 
     /// <summary>
     ///     Determines whether the edge joins the specified endpoints.
@@ -111,9 +105,7 @@ public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     /// <param name="head">
     ///     The identifier of the head endpoint to check.
     /// </param>
-    public virtual bool Equals(DotEndpoint tail, DotEndpoint head)
-    {
-        return Tail.Endpoint.IsSameEndpoint(tail) &&
-            Head.Endpoint.IsSameEndpoint(head);
-    }
+    public virtual bool Equals(DotEndpoint tail, DotEndpoint head) =>
+        Tail.Endpoint.IsSameEndpoint(tail) &&
+        Head.Endpoint.IsSameEndpoint(head);
 }

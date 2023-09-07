@@ -91,10 +91,7 @@ public class DotEndpoint : DotEndpointDefinition
         _port = port ?? throw new ArgumentNullException(nameof(port), "Endpoint port must not be null.");
     }
 
-    protected override string GetOrderingKey()
-    {
-        return $"{Id}:{Port.Name}:{Port.CompassPoint}";
-    }
+    protected override string GetOrderingKey() => $"{Id}:{Port.Name}:{Port.CompassPoint}";
 
     /// <summary>
     ///     Determines the equality of endpoint identifiers (ignores port). Ensures that the endpoints are of the same type.
@@ -102,38 +99,21 @@ public class DotEndpoint : DotEndpointDefinition
     /// <param name="endpoint">
     ///     The endpoint to check.
     /// </param>
-    public virtual bool IsSameEndpoint(DotEndpoint endpoint)
-    {
-        return endpoint is not null &&
-            endpoint.Id == Id &&
-            endpoint.GetType() == GetType();
-    }
+    public virtual bool IsSameEndpoint(DotEndpoint endpoint) =>
+        endpoint is not null &&
+        endpoint.Id == Id &&
+        endpoint.GetType() == GetType();
 
     // the type of endpoint may be specified explicitly as a generic param, in which case this implicit conversion may be useful
     // (e.g. graph.Edges.Add<DotClusterEndpoint, DotEndpoint>("cluster 1", "node1"))
-    public static implicit operator DotEndpoint(string id)
-    {
-        return id is not null ? new DotEndpoint(id) : null;
-    }
+    public static implicit operator DotEndpoint(string id) => id is not null ? new DotEndpoint(id) : null;
 
-    public static implicit operator DotEndpoint(DotNode node)
-    {
-        return node is not null ? new DotEndpoint(node.Id) : null;
-    }
+    public static implicit operator DotEndpoint(DotNode node) => node is not null ? new DotEndpoint(node.Id) : null;
 
     // this way a cluster may be used directly for DotEndpoint parameters as well
-    public static implicit operator DotEndpoint(DotCluster cluster)
-    {
-        return (DotClusterEndpoint) cluster;
-    }
+    public static implicit operator DotEndpoint(DotCluster cluster) => (DotClusterEndpoint) cluster;
 
-    public static implicit operator DotEndpoint(DotId id)
-    {
-        return id is not null ? new DotEndpoint(id) : null;
-    }
+    public static implicit operator DotEndpoint(DotId id) => id is not null ? new DotEndpoint(id) : null;
 
-    public static implicit operator DotEndpoint(DotClusterId clusterId)
-    {
-        return (DotClusterEndpoint) clusterId;
-    }
+    public static implicit operator DotEndpoint(DotClusterId clusterId) => (DotClusterEndpoint) clusterId;
 }

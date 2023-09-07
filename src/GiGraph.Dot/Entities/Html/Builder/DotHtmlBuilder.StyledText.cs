@@ -15,10 +15,7 @@ public partial class DotHtmlBuilder
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public virtual DotHtmlBuilder AppendBoldText(string text, DotHorizontalAlignment? lineAlignment = null)
-    {
-        return AppendEntity(new DotHtmlBold(text, lineAlignment));
-    }
+    public virtual DotHtmlBuilder AppendBoldText(string text, DotHorizontalAlignment? lineAlignment = null) => AppendEntity(new DotHtmlBold(text, lineAlignment));
 
     /// <summary>
     ///     Appends italic text to this instance.
@@ -29,10 +26,7 @@ public partial class DotHtmlBuilder
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public virtual DotHtmlBuilder AppendItalicText(string text, DotHorizontalAlignment? lineAlignment = null)
-    {
-        return AppendEntity(new DotHtmlItalic(text, lineAlignment));
-    }
+    public virtual DotHtmlBuilder AppendItalicText(string text, DotHorizontalAlignment? lineAlignment = null) => AppendEntity(new DotHtmlItalic(text, lineAlignment));
 
     /// <summary>
     ///     Appends underline text to this instance.
@@ -43,10 +37,7 @@ public partial class DotHtmlBuilder
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public virtual DotHtmlBuilder AppendUnderlineText(string text, DotHorizontalAlignment? lineAlignment = null)
-    {
-        return AppendEntity(new DotHtmlUnderline(text, lineAlignment));
-    }
+    public virtual DotHtmlBuilder AppendUnderlineText(string text, DotHorizontalAlignment? lineAlignment = null) => AppendEntity(new DotHtmlUnderline(text, lineAlignment));
 
     /// <summary>
     ///     Appends overline text to this instance.
@@ -57,10 +48,7 @@ public partial class DotHtmlBuilder
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public virtual DotHtmlBuilder AppendOverlineText(string text, DotHorizontalAlignment? lineAlignment = null)
-    {
-        return AppendEntity(new DotHtmlOverline(text, lineAlignment));
-    }
+    public virtual DotHtmlBuilder AppendOverlineText(string text, DotHorizontalAlignment? lineAlignment = null) => AppendEntity(new DotHtmlOverline(text, lineAlignment));
 
     /// <summary>
     ///     Appends subscript text to this instance.
@@ -71,10 +59,7 @@ public partial class DotHtmlBuilder
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public virtual DotHtmlBuilder AppendSubscriptText(string text, DotHorizontalAlignment? lineAlignment = null)
-    {
-        return AppendEntity(new DotHtmlSubscript(text, lineAlignment));
-    }
+    public virtual DotHtmlBuilder AppendSubscriptText(string text, DotHorizontalAlignment? lineAlignment = null) => AppendEntity(new DotHtmlSubscript(text, lineAlignment));
 
     /// <summary>
     ///     Appends superscript text to this instance.
@@ -85,10 +70,7 @@ public partial class DotHtmlBuilder
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public virtual DotHtmlBuilder AppendSuperscriptText(string text, DotHorizontalAlignment? lineAlignment = null)
-    {
-        return AppendEntity(new DotHtmlSuperscript(text, lineAlignment));
-    }
+    public virtual DotHtmlBuilder AppendSuperscriptText(string text, DotHorizontalAlignment? lineAlignment = null) => AppendEntity(new DotHtmlSuperscript(text, lineAlignment));
 
     /// <summary>
     ///     Appends strikethrough text to this instance.
@@ -99,10 +81,7 @@ public partial class DotHtmlBuilder
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public virtual DotHtmlBuilder AppendStrikethroughText(string text, DotHorizontalAlignment? lineAlignment = null)
-    {
-        return AppendEntity(new DotHtmlStrikethrough(text, lineAlignment));
-    }
+    public virtual DotHtmlBuilder AppendStrikethroughText(string text, DotHorizontalAlignment? lineAlignment = null) => AppendEntity(new DotHtmlStrikethrough(text, lineAlignment));
 
     /// <summary>
     ///     Appends styled text to this instance.

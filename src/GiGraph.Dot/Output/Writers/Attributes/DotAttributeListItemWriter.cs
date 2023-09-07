@@ -11,13 +11,10 @@ public class DotAttributeListItemWriter : DotEntityWriter, IDotAttributeListItem
         : base(tokenWriter, configuration, enforceBlockComment: true)
     {
         _useAttributeSeparator = useAttributeSeparator;
-        _paddedEntityWriter = new DotPaddedEntityWriter(tokenWriter);
+        _paddedEntityWriter = new(tokenWriter);
     }
 
-    public virtual IDotAttributeWriter BeginAttribute()
-    {
-        return new DotAttributeWriter(_paddedEntityWriter.BeginEntity(), _configuration);
-    }
+    public virtual IDotAttributeWriter BeginAttribute() => new DotAttributeWriter(_paddedEntityWriter.BeginEntity(), _configuration);
 
     public virtual void EndAttribute()
     {

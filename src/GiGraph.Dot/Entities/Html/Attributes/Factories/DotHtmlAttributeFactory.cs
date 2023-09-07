@@ -14,26 +14,14 @@ public class DotHtmlAttributeFactory : DotAttributeFactory
     public new static DotHtmlAttributeFactory Instance { get; } = new();
 
     /// <inheritdoc />
-    public override DotBoolAttribute CreateBool(string key, bool value)
-    {
-        return new DotHtmlBoolAttribute(key, value);
-    }
+    public override DotBoolAttribute CreateBool(string key, bool value) => new DotHtmlBoolAttribute(key, value);
 
     /// <inheritdoc />
-    public override DotStringAttribute CreateString(string key, string value)
-    {
-        return new DotHtmlStringAttribute(key, value);
-    }
+    public override DotStringAttribute CreateString(string key, string value) => new DotHtmlStringAttribute(key, value);
 
     /// <inheritdoc />
-    public override DotEscapeStringAttribute CreateEscapeString<TEscapeString>(string key, TEscapeString value)
-    {
-        return new DotHtmlEscapeStringAttribute(key, value);
-    }
+    public override DotEscapeStringAttribute CreateEscapeString<TEscapeString>(string key, TEscapeString value) => new DotHtmlEscapeStringAttribute(key, value);
 
     /// <inheritdoc />
-    public override DotEnumAttribute<TEnum> CreateEnum<TEnum>(string key, TEnum value)
-    {
-        return new DotHtmlEnumAttribute<TEnum>(key, value);
-    }
+    public override DotEnumAttribute<TEnum> CreateEnum<TEnum>(string key, TEnum value) => new DotHtmlEnumAttribute<TEnum>(key, value);
 }

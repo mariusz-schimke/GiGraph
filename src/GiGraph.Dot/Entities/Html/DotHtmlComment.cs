@@ -20,10 +20,7 @@ public class DotHtmlComment : DotHtmlEntity
         _text = text;
     }
 
-    public override string ToString()
-    {
-        return _text;
-    }
+    public override string ToString() => _text;
 
     protected internal override string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {

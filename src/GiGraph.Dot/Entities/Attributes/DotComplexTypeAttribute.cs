@@ -26,8 +26,5 @@ public record DotComplexTypeAttribute<TComplex> : DotAttribute<TComplex>
     {
     }
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return Value?.GetDotEncodedValue(options, syntaxRules);
-    }
+    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Value?.GetDotEncodedValue(options, syntaxRules);
 }

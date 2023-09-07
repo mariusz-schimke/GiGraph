@@ -174,10 +174,8 @@ public static class DotGraphExtension
         await streamWriter.FlushAsync();
     }
 
-    private static TextWriter CreateFileStreamWriter(string filePath, Encoding encoding)
-    {
-        return encoding is not null
-            ? new StreamWriter(filePath, append: false, encoding)
+    private static TextWriter CreateFileStreamWriter(string filePath, Encoding encoding) =>
+        encoding is not null
+            ? new(filePath, append: false, encoding)
             : new StreamWriter(filePath, append: false);
-    }
 }

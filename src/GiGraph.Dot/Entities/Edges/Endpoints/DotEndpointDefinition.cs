@@ -17,23 +17,11 @@ public abstract class DotEndpointDefinition : IDotEntity, IDotOrderable, IDotAnn
     string IDotOrderable.OrderingKey => GetOrderingKey();
     protected abstract string GetOrderingKey();
 
-    public static implicit operator DotEndpointDefinition(string nodeId)
-    {
-        return (DotEndpoint) nodeId;
-    }
+    public static implicit operator DotEndpointDefinition(string nodeId) => (DotEndpoint) nodeId;
 
-    public static implicit operator DotEndpointDefinition(DotNode node)
-    {
-        return (DotEndpoint) node;
-    }
+    public static implicit operator DotEndpointDefinition(DotNode node) => (DotEndpoint) node;
 
-    public static implicit operator DotEndpointDefinition(DotCluster cluster)
-    {
-        return (DotClusterEndpoint) cluster;
-    }
+    public static implicit operator DotEndpointDefinition(DotCluster cluster) => (DotClusterEndpoint) cluster;
 
-    public static implicit operator DotEndpointDefinition(DotSubgraph subgraph)
-    {
-        return (DotSubgraphEndpoint) subgraph;
-    }
+    public static implicit operator DotEndpointDefinition(DotSubgraph subgraph) => (DotSubgraphEndpoint) subgraph;
 }

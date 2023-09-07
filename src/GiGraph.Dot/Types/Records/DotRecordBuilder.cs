@@ -15,7 +15,7 @@ public partial class DotRecordBuilder
     /// </summary>
     public DotRecordBuilder()
     {
-        _fields = new List<DotRecordField>();
+        _fields = new();
     }
 
     /// <summary>
@@ -26,7 +26,7 @@ public partial class DotRecordBuilder
     /// </param>
     public DotRecordBuilder(IEnumerable<DotRecordField> fields)
     {
-        _fields = new List<DotRecordField>(fields);
+        _fields = new(fields);
     }
 
     /// <summary>
@@ -45,8 +45,5 @@ public partial class DotRecordBuilder
     ///     <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to horizontal
     ///     layouts, the top-level fields are displayed vertically.
     /// </param>
-    public virtual DotRecord Build(bool flip = false)
-    {
-        return new DotRecord(_fields.ToArray(), flip);
-    }
+    public virtual DotRecord Build(bool flip = false) => new(_fields.ToArray(), flip);
 }

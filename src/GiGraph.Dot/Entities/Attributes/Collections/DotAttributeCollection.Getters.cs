@@ -23,10 +23,7 @@ public partial class DotAttributeCollection
     /// <param name="key">
     ///     The key of the attribute to get.
     /// </param>
-    public virtual DotAttribute Get(string key)
-    {
-        return TryGetValue(key, out var attribute) ? attribute : null;
-    }
+    public virtual DotAttribute Get(string key) => TryGetValue(key, out var attribute) ? attribute : null;
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns it as the specified type. If the
@@ -90,10 +87,7 @@ public partial class DotAttributeCollection
     /// <param name="value">
     ///     The value of the attribute if found and valid, or null if not found.
     /// </param>
-    public virtual bool GetValueAs<T>(string key, out T value)
-    {
-        return GetValueAs(key, out value, converters: null);
-    }
+    public virtual bool GetValueAs<T>(string key, out T value) => GetValueAs(key, out value, converters: null);
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as the specified type. If the
@@ -174,10 +168,7 @@ public partial class DotAttributeCollection
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="int" />. If the
     ///     attribute is found, but its value cannot be cast nor converted to the specified type, an exception is thrown.
     /// </summary>
-    public virtual int? GetValueAsInt(string key)
-    {
-        return GetValueAs<int>(key, out var value) ? value : null;
-    }
+    public virtual int? GetValueAsInt(string key) => GetValueAs<int>(key, out var value) ? value : null;
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="double" />. If
@@ -199,19 +190,13 @@ public partial class DotAttributeCollection
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="bool" />. If the
     ///     attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
-    public virtual bool? GetValueAsBool(string key)
-    {
-        return GetValueAs<bool>(key, out var result) ? result : null;
-    }
+    public virtual bool? GetValueAsBool(string key) => GetValueAs<bool>(key, out var result) ? result : null;
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotPoint" />. If
     ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
-    public virtual DotPoint GetValueAsPoint(string key)
-    {
-        return GetValueAs<DotPoint>(key, out var result) ? result : null;
-    }
+    public virtual DotPoint GetValueAsPoint(string key) => GetValueAs<DotPoint>(key, out var result) ? result : null;
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotColor" />. If
@@ -250,10 +235,7 @@ public partial class DotAttributeCollection
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="string" />. If
     ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
-    public virtual string GetValueAsString(string key)
-    {
-        return GetValueAs<string>(key, out var result) ? result : null;
-    }
+    public virtual string GetValueAsString(string key) => GetValueAs<string>(key, out var result) ? result : null;
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as

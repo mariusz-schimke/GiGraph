@@ -15,7 +15,7 @@ public partial class DotHtmlBuilder
     /// </summary>
     public DotHtmlBuilder()
     {
-        _entities = new DotHtmlEntityCollection();
+        _entities = new();
     }
 
     /// <summary>
@@ -72,10 +72,8 @@ public partial class DotHtmlBuilder
     /// <summary>
     ///     Builds output HTML from the content of the builder.
     /// </summary>
-    public virtual DotHtmlEntity Build()
-    {
-        return new DotHtmlEntity<DotHtmlEntityCollection>(
-            new DotHtmlEntityCollection((IEnumerable<IDotHtmlEntity>) _entities)
+    public virtual DotHtmlEntity Build() =>
+        new DotHtmlEntity<DotHtmlEntityCollection>(
+            new((IEnumerable<IDotHtmlEntity>) _entities)
         );
-    }
 }

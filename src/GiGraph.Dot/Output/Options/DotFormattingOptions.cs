@@ -74,18 +74,12 @@ public partial class DotFormattingOptions
     /// <summary>
     ///     Causes attribute lists of all types of elements to be written inline.
     /// </summary>
-    public virtual DotFormattingOptions SingleLineAttributeLists()
-    {
-        return SingleLineAttributeLists(true);
-    }
+    public virtual DotFormattingOptions SingleLineAttributeLists() => SingleLineAttributeLists(true);
 
     /// <summary>
     ///     Causes attribute lists of all types of elements to be written in multiple lines (one attribute per line).
     /// </summary>
-    public virtual DotFormattingOptions MultilineAttributeLists()
-    {
-        return SingleLineAttributeLists(false);
-    }
+    public virtual DotFormattingOptions MultilineAttributeLists() => SingleLineAttributeLists(false);
 
     protected virtual DotFormattingOptions SingleLineAttributeLists(bool value)
     {

@@ -9,10 +9,7 @@ public class DotSubgraphWriterRoot : DotEntityWriter, IDotSubgraphWriterRoot
     {
     }
 
-    public virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration)
-    {
-        return BeginSubgraph(preferExplicitDeclaration, _configuration.Formatting.Subgraphs.SingleLine);
-    }
+    public virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration) => BeginSubgraph(preferExplicitDeclaration, _configuration.Formatting.Subgraphs.SingleLine);
 
     public virtual void EndSubgraph()
     {
@@ -24,14 +21,12 @@ public class DotSubgraphWriterRoot : DotEntityWriter, IDotSubgraphWriterRoot
         EmptyLine();
     }
 
-    protected virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration, bool singleLine)
-    {
-        return new DotSubgraphWriter(
+    protected virtual IDotSubgraphWriter BeginSubgraph(bool preferExplicitDeclaration, bool singleLine) =>
+        new DotSubgraphWriter(
             singleLine ? _tokenWriter.SingleLine() : _tokenWriter,
             _configuration,
             preferExplicitDeclaration
         );
-    }
 
     protected virtual void EndSubgraph(bool singleLine)
     {

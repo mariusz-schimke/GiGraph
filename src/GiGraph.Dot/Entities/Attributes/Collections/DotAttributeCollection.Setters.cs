@@ -107,10 +107,7 @@ public partial class DotAttributeCollection
     /// <param name="key">
     ///     The key of the attribute whose value to set.
     /// </param>
-    public virtual DotAttributeCollection Nullify(string key)
-    {
-        return Set(_attributeFactory.CreateNull(key));
-    }
+    public virtual DotAttributeCollection Nullify(string key) => Set(_attributeFactory.CreateNull(key));
 
     /// <summary>
     ///     Adds or replaces the specified attribute in the collection.
@@ -121,10 +118,7 @@ public partial class DotAttributeCollection
     /// <param name="value">
     ///     The value of the attribute to include in the collection.
     /// </param>
-    public virtual DotAttributeCollection Set(string key, string value)
-    {
-        return Set(_attributeFactory.CreateString(key, value));
-    }
+    public virtual DotAttributeCollection Set(string key, string value) => Set(_attributeFactory.CreateString(key, value));
 
     /// <summary>
     ///     Adds or replaces the specified escape string attribute in the collection.
@@ -136,10 +130,8 @@ public partial class DotAttributeCollection
     ///     The value of the attribute to include in the collection.
     /// </param>
     public virtual DotAttributeCollection Set<TEscapeString>(string key, TEscapeString value)
-        where TEscapeString : DotEscapeString
-    {
-        return Set(_attributeFactory.CreateEscapeString(key, value));
-    }
+        where TEscapeString : DotEscapeString =>
+        Set(_attributeFactory.CreateEscapeString(key, value));
 
     /// <summary>
     ///     Adds or replaces the specified integer value attribute in the collection.
@@ -150,10 +142,7 @@ public partial class DotAttributeCollection
     /// <param name="value">
     ///     The value of the attribute to include in the collection.
     /// </param>
-    public virtual DotAttributeCollection Set(string key, int value)
-    {
-        return Set(_attributeFactory.CreateInt(key, value));
-    }
+    public virtual DotAttributeCollection Set(string key, int value) => Set(_attributeFactory.CreateInt(key, value));
 
     /// <summary>
     ///     Adds or replaces the specified double value attribute in the collection.
@@ -164,10 +153,7 @@ public partial class DotAttributeCollection
     /// <param name="value">
     ///     The value of the attribute to include in the collection.
     /// </param>
-    public virtual DotAttributeCollection Set(string key, double value)
-    {
-        return Set(_attributeFactory.CreateDouble(key, value));
-    }
+    public virtual DotAttributeCollection Set(string key, double value) => Set(_attributeFactory.CreateDouble(key, value));
 
     /// <summary>
     ///     Adds or replaces the specified double list value attribute in the collection.
@@ -178,10 +164,7 @@ public partial class DotAttributeCollection
     /// <param name="value">
     ///     The value of the attribute to include in the collection.
     /// </param>
-    public virtual DotAttributeCollection Set(string key, double[] value)
-    {
-        return Set(_attributeFactory.CreateDoubleArray(key, value));
-    }
+    public virtual DotAttributeCollection Set(string key, double[] value) => Set(_attributeFactory.CreateDoubleArray(key, value));
 
     /// <summary>
     ///     Adds or replaces the specified double list value attribute in the collection.
@@ -192,10 +175,7 @@ public partial class DotAttributeCollection
     /// <param name="value">
     ///     The value of the attribute to include in the collection.
     /// </param>
-    public virtual DotAttributeCollection Set(string key, IEnumerable<double> value)
-    {
-        return Set(_attributeFactory.CreateDoubleArray(key, value));
-    }
+    public virtual DotAttributeCollection Set(string key, IEnumerable<double> value) => Set(_attributeFactory.CreateDoubleArray(key, value));
 
     /// <summary>
     ///     Adds or replaces the specified boolean value attribute in the collection.
@@ -206,10 +186,7 @@ public partial class DotAttributeCollection
     /// <param name="value">
     ///     The value of the attribute to include in the collection.
     /// </param>
-    public virtual DotAttributeCollection Set(string key, bool value)
-    {
-        return Set(_attributeFactory.CreateBool(key, value));
-    }
+    public virtual DotAttributeCollection Set(string key, bool value) => Set(_attributeFactory.CreateBool(key, value));
 
     /// <summary>
     ///     Adds or replaces the specified color value attribute in the collection.
@@ -220,10 +197,7 @@ public partial class DotAttributeCollection
     /// <param name="value">
     ///     The value of the attribute to include in the collection.
     /// </param>
-    public virtual DotAttributeCollection Set(string key, Color value)
-    {
-        return Set(_attributeFactory.CreateColor(key, value));
-    }
+    public virtual DotAttributeCollection Set(string key, Color value) => Set(_attributeFactory.CreateColor(key, value));
 
     /// <summary>
     ///     Adds or replaces the specified enumeration value attribute in the collection.
@@ -235,10 +209,8 @@ public partial class DotAttributeCollection
     ///     The value of the attribute to include in the collection.
     /// </param>
     public virtual DotAttributeCollection SetEnum<TEnum>(string key, TEnum value)
-        where TEnum : Enum
-    {
-        return Set(_attributeFactory.CreateEnum(key, value));
-    }
+        where TEnum : Enum =>
+        Set(_attributeFactory.CreateEnum(key, value));
 
     /// <summary>
     ///     Adds or replaces the specified complex type value attribute in the collection.
@@ -250,10 +222,8 @@ public partial class DotAttributeCollection
     ///     The value of the attribute to include in the collection.
     /// </param>
     public virtual DotAttributeCollection SetComplex<TComplex>(string key, TComplex value)
-        where TComplex : IDotEncodable
-    {
-        return Set(_attributeFactory.CreateComplex(key, value));
-    }
+        where TComplex : IDotEncodable =>
+        Set(_attributeFactory.CreateComplex(key, value));
 
     /// <summary>
     ///     Adds or replaces the specified complex type value array attribute in the collection.
@@ -265,10 +235,8 @@ public partial class DotAttributeCollection
     ///     The value of the attribute to include in the collection.
     /// </param>
     public virtual DotAttributeCollection SetComplex<TComplex>(string key, TComplex[] value)
-        where TComplex : IDotEncodable
-    {
-        return Set(_attributeFactory.CreateComplexArray(key, value));
-    }
+        where TComplex : IDotEncodable =>
+        Set(_attributeFactory.CreateComplexArray(key, value));
 
     /// <summary>
     ///     Adds or replaces the specified complex type value array attribute in the collection.
@@ -280,10 +248,8 @@ public partial class DotAttributeCollection
     ///     The value of the attribute to include in the collection.
     /// </param>
     public virtual DotAttributeCollection SetComplex<TComplex>(string key, IEnumerable<TComplex> value)
-        where TComplex : IDotEncodable
-    {
-        return Set(_attributeFactory.CreateComplexArray(key, value));
-    }
+        where TComplex : IDotEncodable =>
+        Set(_attributeFactory.CreateComplexArray(key, value));
 
     /// <summary>
     ///     Adds or replaces the specified attribute in the collection. The value is rendered AS IS in the output DOT script, so the
@@ -297,8 +263,5 @@ public partial class DotAttributeCollection
     /// <param name="value">
     ///     The value of the attribute to include in the collection.
     /// </param>
-    public virtual DotAttributeCollection SetCustom(string key, string value)
-    {
-        return Set(_attributeFactory.CreateCustom(key, value));
-    }
+    public virtual DotAttributeCollection SetCustom(string key, string value) => Set(_attributeFactory.CreateCustom(key, value));
 }

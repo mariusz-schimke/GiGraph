@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Entities.Html.LineBreak;
 /// </summary>
 public partial class DotHtmlLineBreak : DotHtmlVoidElement
 {
-    protected static readonly DotHtmlEntity Default = new DotHtmlReadOnlyEntity<DotHtmlLineBreak>(new DotHtmlLineBreak());
+    protected static readonly DotHtmlEntity Default = new DotHtmlReadOnlyEntity<DotHtmlLineBreak>(new());
     protected static readonly Dictionary<DotHorizontalAlignment, DotHtmlEntity> AlignedLineBreaks;
 
     static DotHtmlLineBreak()
@@ -24,7 +24,7 @@ public partial class DotHtmlLineBreak : DotHtmlVoidElement
            .Cast<DotHorizontalAlignment>()
            .ToDictionary(
                 key => key,
-                value => (DotHtmlEntity) new DotHtmlReadOnlyEntity<DotHtmlLineBreak>(new DotHtmlLineBreak(value))
+                value => (DotHtmlEntity) new DotHtmlReadOnlyEntity<DotHtmlLineBreak>(new(value))
             );
     }
 
@@ -51,7 +51,7 @@ public partial class DotHtmlLineBreak : DotHtmlVoidElement
     protected DotHtmlLineBreak(DotHtmlLineBreakAttributes attributes)
         : base("br", attributes.Collection)
     {
-        Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlLineBreakAttributes, DotHtmlLineBreakAttributes>(attributes);
+        Attributes = new(attributes);
     }
 
     /// <summary>
@@ -65,15 +65,9 @@ public partial class DotHtmlLineBreak : DotHtmlVoidElement
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of the line.
     /// </param>
-    public static DotHtmlString Html(DotHorizontalAlignment? lineAlignment = null)
-    {
-        return Html(lineAlignment, DotSyntaxOptions.Default, DotSyntaxRules.Default);
-    }
+    public static DotHtmlString Html(DotHorizontalAlignment? lineAlignment = null) => Html(lineAlignment, DotSyntaxOptions.Default, DotSyntaxRules.Default);
 
-    internal static string Html(DotHorizontalAlignment? lineAlignment, DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return Instance(lineAlignment).ToHtml(options, syntaxRules);
-    }
+    internal static string Html(DotHorizontalAlignment? lineAlignment, DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Instance(lineAlignment).ToHtml(options, syntaxRules);
 
     /// <summary>
     ///     Gets a static instance of a line break with the specified alignment. Use for memory optimization.

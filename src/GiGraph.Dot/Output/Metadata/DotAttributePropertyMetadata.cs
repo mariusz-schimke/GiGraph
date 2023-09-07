@@ -40,7 +40,7 @@ public class DotAttributePropertyMetadata : DotAttributeMetadata
         : base(key, compatibleElements, compatibleLayoutEngines, compatibleOutputs)
     {
         _propertyInfoPath = propertyInfoPath;
-        _propertyPath = new Lazy<string>(
+        _propertyPath = new(
             () => string.Join(".", propertyInfoPath.Select(property => property.Name.Split('.').Last()))
         );
     }
@@ -53,8 +53,5 @@ public class DotAttributePropertyMetadata : DotAttributeMetadata
     /// <summary>
     ///     Gets property path as an array of property info (the last item is the actual property associated with the attribute key).
     /// </summary>
-    public virtual PropertyInfo[] GetPropertyInfoPath()
-    {
-        return _propertyInfoPath;
-    }
+    public virtual PropertyInfo[] GetPropertyInfoPath() => _propertyInfoPath;
 }

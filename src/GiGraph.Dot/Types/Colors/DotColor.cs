@@ -56,10 +56,7 @@ public record DotColor(Color Color, string Scheme = null) : DotColorDefinition
     /// </summary>
     public string Scheme { get; init; } = Scheme;
 
-    protected internal virtual double? GetWeight()
-    {
-        return null;
-    }
+    protected internal virtual double? GetWeight() => null;
 
     protected internal override string GetDotEncodedColor(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
@@ -85,13 +82,7 @@ public record DotColor(Color Color, string Scheme = null) : DotColorDefinition
         return $"#{Color.R:x2}{Color.G:x2}{Color.B:x2}{alpha}";
     }
 
-    public static implicit operator DotColor(Color? color)
-    {
-        return color.HasValue ? new DotColor(color.Value) : null;
-    }
+    public static implicit operator DotColor(Color? color) => color.HasValue ? new DotColor(color.Value) : null;
 
-    public static implicit operator Color?(DotColor color)
-    {
-        return color?.Color;
-    }
+    public static implicit operator Color?(DotColor color) => color?.Color;
 }

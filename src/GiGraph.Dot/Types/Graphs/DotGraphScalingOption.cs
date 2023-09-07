@@ -11,8 +11,5 @@ namespace GiGraph.Dot.Types.Graphs;
 /// </param>
 public record DotGraphScalingOption(DotGraphScaling Option) : DotGraphScalingDefinition
 {
-    protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return DotAttributeValue.Get(Option);
-    }
+    protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => DotAttributeValue.Get(Option);
 }

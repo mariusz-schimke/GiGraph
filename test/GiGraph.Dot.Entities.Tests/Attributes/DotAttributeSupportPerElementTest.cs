@@ -29,7 +29,7 @@ public class DotAttributeSupportPerElementTest
 
         if (result.Any())
         {
-            throw new Exception($"The following attributes are not supposed to be supported by [{element}] or are marked as unimplemented: {string.Join(", ", result)}");
+            throw new($"The following attributes are not supposed to be supported by [{element}] or are marked as unimplemented: {string.Join(", ", result)}");
         }
     }
 
@@ -45,7 +45,7 @@ public class DotAttributeSupportPerElementTest
 
         if (result.Any())
         {
-            throw new Exception($"The following attributes have to be supported by [{element}]: {string.Join(", ", result)}");
+            throw new($"The following attributes have to be supported by [{element}]: {string.Join(", ", result)}");
         }
     }
 

@@ -26,7 +26,7 @@ public partial class DotClusterSection : DotCommonGraphSection
     protected DotClusterSection(DotClusterRootAttributes attributes)
         : base(attributes)
     {
-        Attributes = new DotEntityRootAttributesAccessor<IDotClusterAttributes, DotClusterRootAttributes>(attributes);
+        Attributes = new(attributes);
     }
 
     /// <summary>

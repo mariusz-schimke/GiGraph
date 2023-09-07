@@ -61,18 +61,12 @@ public class DotConcatenatedEscapeString : DotEscapeString, IEnumerable<DotEscap
     /// <summary>
     ///     Returns an enumerator that iterates through the collection.
     /// </summary>
-    public IEnumerator<DotEscapeString> GetEnumerator()
-    {
-        return ((IEnumerable<DotEscapeString>) _items).GetEnumerator();
-    }
+    public IEnumerator<DotEscapeString> GetEnumerator() => ((IEnumerable<DotEscapeString>) _items).GetEnumerator();
 
     /// <summary>
     ///     Returns an enumerator that iterates through a collection.
     /// </summary>
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return _items.GetEnumerator();
-    }
+    IEnumerator IEnumerable.GetEnumerator() => _items.GetEnumerator();
 
     protected internal override string GetRawString()
     {

@@ -1,4 +1,3 @@
-using System.Globalization;
 using System.Threading;
 using GiGraph.Dot.Entities.Attributes;
 using GiGraph.Dot.Entities.Labels;
@@ -19,7 +18,7 @@ public class DotAttributeEncodingTest
         var value = 10.23455;
         IDotEncodable attr = new DotDoubleAttribute("key", value);
 
-        Thread.CurrentThread.CurrentCulture = new CultureInfo("PL");
+        Thread.CurrentThread.CurrentCulture = new("PL");
         Assert.Equal("0,5", 0.5.ToString());
 
         Assert.Equal("10.23455", attr.GetDotEncodedValue(_syntaxOptions, _syntaxRules));
@@ -31,7 +30,7 @@ public class DotAttributeEncodingTest
         var values = new[] { 10.23455, 0.5, 1.345 };
         IDotEncodable attr = new DotDoubleArrayAttribute("key", values);
 
-        Thread.CurrentThread.CurrentCulture = new CultureInfo("PL");
+        Thread.CurrentThread.CurrentCulture = new("PL");
         Assert.Equal("0,5", 0.5.ToString());
 
         Assert.Equal("10.23455:0.5:1.345", attr.GetDotEncodedValue(_syntaxOptions, _syntaxRules));

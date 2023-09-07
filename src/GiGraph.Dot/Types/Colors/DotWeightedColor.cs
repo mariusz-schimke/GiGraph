@@ -75,10 +75,7 @@ public record DotWeightedColor(Color Color, double Weight, string Scheme = null)
     /// </summary>
     public double Weight { get; init; } = Weight;
 
-    protected internal override double? GetWeight()
-    {
-        return Weight;
-    }
+    protected internal override double? GetWeight() => Weight;
 
     protected internal override string GetDotEncodedColor(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {

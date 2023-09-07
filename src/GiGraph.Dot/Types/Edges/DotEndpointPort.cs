@@ -72,28 +72,16 @@ public record DotEndpointPort() : IDotEncodable
     /// </summary>
     public DotCompassPoint? CompassPoint { get; init; }
 
-    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return GetDotEncoded(options, syntaxRules);
-    }
+    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncoded(options, syntaxRules);
 
     /// <summary>
     ///     Creates a new endpoint port with no properties specified.
     /// </summary>
-    public static DotEndpointPort Default()
-    {
-        return new DotEndpointPort();
-    }
+    public static DotEndpointPort Default() => new();
 
-    public static implicit operator DotEndpointPort(string portName)
-    {
-        return portName is not null ? new DotEndpointPort(portName) : null;
-    }
+    public static implicit operator DotEndpointPort(string portName) => portName is not null ? new DotEndpointPort(portName) : null;
 
-    public static implicit operator DotEndpointPort(DotCompassPoint? compassPoint)
-    {
-        return compassPoint.HasValue ? new DotEndpointPort(compassPoint.Value) : null;
-    }
+    public static implicit operator DotEndpointPort(DotCompassPoint? compassPoint) => compassPoint.HasValue ? new DotEndpointPort(compassPoint.Value) : null;
 
     protected virtual string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {

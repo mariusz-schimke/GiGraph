@@ -67,8 +67,8 @@ public class DotEdgeSequence : DotEdgeDefinition
     protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes attributes)
         : base(endpoints, attributes)
     {
-        Tails = new DotEdgeEndpoint(attributes.Tail);
-        Heads = new DotEdgeEndpoint(attributes.Head);
+        Tails = new(attributes.Tail);
+        Heads = new(attributes.Head);
     }
 
     /// <summary>
@@ -101,10 +101,7 @@ public class DotEdgeSequence : DotEdgeDefinition
     /// <param name="initEndpoint">
     ///     An optional endpoint initializer to call for each created endpoint.
     /// </param>
-    public static DotEdgeSequence FromNodes(Action<DotEndpoint> initEndpoint, params string[] nodeIds)
-    {
-        return FromNodes(nodeIds, initEndpoint);
-    }
+    public static DotEdgeSequence FromNodes(Action<DotEndpoint> initEndpoint, params string[] nodeIds) => FromNodes(nodeIds, initEndpoint);
 
     /// <summary>
     ///     Creates a new edge sequence initialized with the specified node identifiers. At least a pair of identifiers has to be
@@ -118,8 +115,7 @@ public class DotEdgeSequence : DotEdgeDefinition
     /// </param>
     public static DotEdgeSequence FromNodes(IEnumerable<string> nodeIds, Action<DotEndpoint> initEndpoint = null)
     {
-        return new DotEdgeSequence
-        (
+        return new(
             nodeIds.Select(nodeId =>
             {
                 var endpoint = new DotEndpoint(nodeId);

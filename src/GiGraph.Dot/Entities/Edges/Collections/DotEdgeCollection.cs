@@ -26,7 +26,7 @@ public partial class DotEdgeCollection : List<DotEdgeDefinition>, IDotEntity, ID
 
     protected DotEdgeCollection(DotEdgeRootAttributes attributes)
     {
-        Attributes = new DotEntityRootAttributesAccessor<IDotEdgeAttributes, DotEdgeRootAttributes>(attributes);
+        Attributes = new(attributes);
     }
 
     /// <summary>
@@ -69,10 +69,7 @@ public partial class DotEdgeCollection : List<DotEdgeDefinition>, IDotEntity, ID
     /// <param name="init">
     ///     An optional edge initializer delegate.
     /// </param>
-    public virtual DotEdge Add(string tailNodeId, string headNodeId, Action<DotEdge> init = null)
-    {
-        return Add(new DotEdge(tailNodeId, headNodeId), init);
-    }
+    public virtual DotEdge Add(string tailNodeId, string headNodeId, Action<DotEdge> init = null) => Add(new(tailNodeId, headNodeId), init);
 
     /// <summary>
     ///     Adds an edge that joins the two specified endpoints.
@@ -86,10 +83,7 @@ public partial class DotEdgeCollection : List<DotEdgeDefinition>, IDotEntity, ID
     /// <param name="init">
     ///     An optional edge initializer delegate.
     /// </param>
-    public virtual DotEdge Add(DotEndpoint tail, DotEndpoint head, Action<DotEdge> init = null)
-    {
-        return Add(new DotEdge(tail, head), init);
-    }
+    public virtual DotEdge Add(DotEndpoint tail, DotEndpoint head, Action<DotEdge> init = null) => Add(new(tail, head), init);
 
     /// <summary>
     ///     Adds an edge that joins the specified endpoints or groups of endpoints.
@@ -115,8 +109,6 @@ public partial class DotEdgeCollection : List<DotEdgeDefinition>, IDotEntity, ID
     /// </typeparam>
     public virtual DotEdge<TTail, THead> Add<TTail, THead>(TTail tail, THead head, Action<DotEdge<TTail, THead>> init = null)
         where THead : DotEndpointDefinition
-        where TTail : DotEndpointDefinition
-    {
-        return Add(new DotEdge<TTail, THead>(tail, head), init);
-    }
+        where TTail : DotEndpointDefinition =>
+        Add(new(tail, head), init);
 }

@@ -7,16 +7,10 @@ public partial class DotHtmlBuilder
     /// <summary>
     ///     Appends a horizontal rule to this instance.
     /// </summary>
-    public virtual DotHtmlBuilder AppendHorizontalRule()
-    {
-        return AppendEntity(DotHtmlRule.Horizontal);
-    }
+    public virtual DotHtmlBuilder AppendHorizontalRule() => AppendEntity(DotHtmlRule.Horizontal);
 
     /// <summary>
     ///     Appends a vertical rule to this instance.
     /// </summary>
-    public virtual DotHtmlBuilder AppendVerticalRule()
-    {
-        return AppendEntity(DotHtmlRule.Vertical);
-    }
+    public virtual DotHtmlBuilder AppendVerticalRule() => AppendEntity(DotHtmlRule.Vertical);
 }

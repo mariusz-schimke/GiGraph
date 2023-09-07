@@ -21,8 +21,5 @@ public record DotBoolAttribute : DotAttribute<bool>
     {
     }
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return Value ? "true" : "false";
-    }
+    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Value ? "true" : "false";
 }

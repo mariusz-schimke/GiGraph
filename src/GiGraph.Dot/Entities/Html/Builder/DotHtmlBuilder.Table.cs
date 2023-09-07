@@ -11,8 +11,5 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     A table initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendTable(Action<DotHtmlTable> init)
-    {
-        return AppendEntity(new DotHtmlTable(), init);
-    }
+    public virtual DotHtmlBuilder AppendTable(Action<DotHtmlTable> init) => AppendEntity(new(), init);
 }

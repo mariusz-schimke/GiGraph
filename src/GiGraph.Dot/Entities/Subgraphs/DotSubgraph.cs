@@ -34,7 +34,7 @@ public class DotSubgraph : DotSubgraphSection, IDotGraph, IDotOrderable
     ///     The rank constraints to apply to the nodes in the subgraph.
     /// </param>
     public DotSubgraph(string id = null, DotRank? nodeRank = null)
-        : this(new DotSubgraphSection(), new DotGraphSectionCollection<DotSubgraphSection>())
+        : this(new(), new DotGraphSectionCollection<DotSubgraphSection>())
     {
         Id = id;
 
@@ -95,10 +95,7 @@ public class DotSubgraph : DotSubgraphSection, IDotGraph, IDotOrderable
     /// <param name="nodeIds">
     ///     The identifiers of nodes to populate the subgraph with.
     /// </param>
-    public static DotSubgraph FromNodes(params string[] nodeIds)
-    {
-        return FromNodes(nodeIds, nodeRank: null);
-    }
+    public static DotSubgraph FromNodes(params string[] nodeIds) => FromNodes(nodeIds, nodeRank: null);
 
     /// <summary>
     ///     Creates a new subgraph, and populates it with the specified nodes.
@@ -112,10 +109,7 @@ public class DotSubgraph : DotSubgraphSection, IDotGraph, IDotOrderable
     /// <param name="nodeIds">
     ///     The identifiers of nodes to populate the subgraph with.
     /// </param>
-    public static DotSubgraph FromNodes(string id, DotRank? nodeRank, params string[] nodeIds)
-    {
-        return FromNodes(nodeIds, nodeRank, id);
-    }
+    public static DotSubgraph FromNodes(string id, DotRank? nodeRank, params string[] nodeIds) => FromNodes(nodeIds, nodeRank, id);
 
     /// <summary>
     ///     Creates a new subgraph, and populates it with the specified nodes.
@@ -126,10 +120,7 @@ public class DotSubgraph : DotSubgraphSection, IDotGraph, IDotOrderable
     /// <param name="nodeIds">
     ///     The identifiers of nodes to populate the subgraph with.
     /// </param>
-    public static DotSubgraph FromNodes(DotRank? nodeRank, params string[] nodeIds)
-    {
-        return FromNodes(nodeIds, nodeRank);
-    }
+    public static DotSubgraph FromNodes(DotRank? nodeRank, params string[] nodeIds) => FromNodes(nodeIds, nodeRank);
 
     /// <summary>
     ///     Creates a new subgraph, and populates it with the specified nodes.

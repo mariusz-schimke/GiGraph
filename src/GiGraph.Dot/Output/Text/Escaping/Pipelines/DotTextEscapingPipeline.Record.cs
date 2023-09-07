@@ -6,37 +6,26 @@ public partial class DotTextEscapingPipeline
     ///     Creates a new pipeline that escapes fields of record labels (backslashes, quotation marks, line breaks; angle and curly
     ///     brackets, vertical bars, and spaces).
     /// </summary>
-    public static DotTextEscapingPipeline ForRecordLabelField()
-    {
-        return new DotTextEscapingPipeline(
-            ForEscapeString(),
-            CommonForRecordLabel()
-        );
-    }
+    public static DotTextEscapingPipeline ForRecordLabelField() => new(ForEscapeString(), CommonForRecordLabel());
 
     /// <summary>
     ///     Creates a new pipeline that escapes ports of record labels (backslashes, quotation marks; angle and curly brackets, vertical
     ///     bars, and spaces).
     /// </summary>
-    public static DotTextEscapingPipeline ForRecordLabelPort()
-    {
-        return new DotTextEscapingPipeline(
+    public static DotTextEscapingPipeline ForRecordLabelPort() =>
+        new(
             // when a port string ends with a backslash (<...\>), the closing angle bracket is interpreted as a content character,
             // so the backslash has to be escaped
             ForString(),
             CommonForRecordLabel()
         );
-    }
 
-    protected static DotTextEscapingPipeline CommonForRecordLabel()
-    {
-        return new DotTextEscapingPipeline
-        (
+    protected static DotTextEscapingPipeline CommonForRecordLabel() =>
+        new(
             new DotAngleBracketsEscaper(),
             new DotCurlyBracketsEscaper(),
             new DotVerticalBarEscaper(),
             new DotSpacePaddingEscaper(),
             new DotSpaceEscaper()
         );
-    }
 }

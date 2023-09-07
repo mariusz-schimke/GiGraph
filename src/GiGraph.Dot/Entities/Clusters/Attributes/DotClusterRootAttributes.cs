@@ -20,15 +20,7 @@ public class DotClusterRootAttributes : DotClusterNodeRootCommonAttributes<IDotC
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
 
     public DotClusterRootAttributes(DotAttributeCollection attributes)
-        : this(
-            attributes,
-            AttributeKeyLookup,
-            new DotHyperlinkAttributes(attributes),
-            new DotFontAttributes(attributes),
-            new DotClusterStyleAttributeOptions(attributes),
-            new DotSvgStyleSheetAttributes(attributes),
-            new DotLabelAlignmentAttributes(attributes)
-        )
+        : this(attributes, AttributeKeyLookup, new(attributes), new(attributes), new(attributes), new(attributes), new(attributes))
     {
     }
 

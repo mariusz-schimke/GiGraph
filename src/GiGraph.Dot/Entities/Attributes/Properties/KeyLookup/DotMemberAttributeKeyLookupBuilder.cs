@@ -24,10 +24,7 @@ public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttri
     /// <param name="readOnly">
     ///     Determines whether the built lookup should be read only.
     /// </param>
-    public virtual Lazy<DotMemberAttributeKeyLookup> BuildLazy(bool readOnly = true)
-    {
-        return new Lazy<DotMemberAttributeKeyLookup>(() => Build(readOnly));
-    }
+    public virtual Lazy<DotMemberAttributeKeyLookup> BuildLazy(bool readOnly = true) => new(() => Build(readOnly));
 
     /// <summary>
     ///     Builds a lookup for properties and property accessors.

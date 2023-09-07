@@ -14,7 +14,7 @@ public class DotHtmlVoidElement : DotHtmlTag
     ///     The tag name to use.
     /// </param>
     public DotHtmlVoidElement(string name)
-        : this(name, new DotHtmlAttributeCollection())
+        : this(name, new())
     {
     }
 

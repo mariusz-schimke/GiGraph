@@ -44,15 +44,9 @@ public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlContentEnti
     }
 
     /// <inheritdoc cref="IDotHtmlEntity.ToHtml()" />
-    public virtual DotHtmlString ToHtml()
-    {
-        return ToHtml(DotSyntaxOptions.Default, DotSyntaxRules.Default);
-    }
+    public virtual DotHtmlString ToHtml() => ToHtml(DotSyntaxOptions.Default, DotSyntaxRules.Default);
 
-    string IDotHtmlEncodable.ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return ToHtml(options, syntaxRules);
-    }
+    string IDotHtmlEncodable.ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => ToHtml(options, syntaxRules);
 
     DotHtmlEntityCollection IDotHtmlContentEntity.Content => this;
 
@@ -127,10 +121,7 @@ public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlContentEnti
         Add(new DotHtml(html), init: null);
     }
 
-    public override string ToString()
-    {
-        return ToHtml();
-    }
+    public override string ToString() => ToHtml();
 
     protected virtual string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {

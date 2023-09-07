@@ -26,8 +26,5 @@ public class DotHtmlLabelAttributeGenerator : DotAttributeGenerator
         );
     }
 
-    protected override bool Supports(DotAttribute entity)
-    {
-        return entity.GetValue() is DotHtmlLabel;
-    }
+    protected override bool Supports(DotAttribute entity) => entity.GetValue() is DotHtmlLabel;
 }

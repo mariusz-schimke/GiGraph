@@ -8,8 +8,5 @@ public partial class DotHtmlBuilder
     /// <param name="text">
     ///     The comment to append.
     /// </param>
-    public virtual DotHtmlBuilder AppendComment(string text)
-    {
-        return AppendEntity(new DotHtmlComment(text));
-    }
+    public virtual DotHtmlBuilder AppendComment(string text) => AppendEntity(new DotHtmlComment(text));
 }

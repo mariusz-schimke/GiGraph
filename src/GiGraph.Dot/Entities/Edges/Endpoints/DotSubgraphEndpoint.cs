@@ -66,8 +66,5 @@ public class DotSubgraphEndpoint : DotEndpointDefinition
 
     // the type of endpoint may be specified explicitly as a generic param, in which case this implicit conversion may be useful
     // (e.g. graph.Edges.Add<DotSubgraphEndpoint, DotEndpoint>(DotSubgraph.FromNodes("node1", "node2"), "node3"))
-    public static implicit operator DotSubgraphEndpoint(DotSubgraph subgraph)
-    {
-        return subgraph is not null ? new DotSubgraphEndpoint(subgraph) : null;
-    }
+    public static implicit operator DotSubgraphEndpoint(DotSubgraph subgraph) => subgraph is not null ? new DotSubgraphEndpoint(subgraph) : null;
 }

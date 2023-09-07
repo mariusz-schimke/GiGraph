@@ -18,8 +18,5 @@ namespace GiGraph.Dot.Types.Packing;
 /// </param>
 public record DotPackingMargin(int Size) : DotPackingDefinition
 {
-    protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return Size.ToString(syntaxRules.Culture);
-    }
+    protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Size.ToString(syntaxRules.Culture);
 }

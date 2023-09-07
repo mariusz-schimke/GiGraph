@@ -8,20 +8,11 @@ namespace GiGraph.Dot.Types.Ranks;
 /// </summary>
 public abstract record DotRankSeparationDefinition : IDotEncodable
 {
-    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return GetDotEncoded(options, syntaxRules);
-    }
+    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncoded(options, syntaxRules);
 
     protected abstract string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 
-    public static implicit operator DotRankSeparationDefinition(double? value)
-    {
-        return value.HasValue ? new DotRankSeparation(value.Value) : null;
-    }
+    public static implicit operator DotRankSeparationDefinition(double? value) => value.HasValue ? new DotRankSeparation(value.Value) : null;
 
-    public static implicit operator DotRankSeparationDefinition(double[] value)
-    {
-        return value is not null ? new DotRadialRankSeparation(value) : null;
-    }
+    public static implicit operator DotRankSeparationDefinition(double[] value) => value is not null ? new DotRadialRankSeparation(value) : null;
 }

@@ -61,10 +61,7 @@ public partial class DotSyntaxRules
     /// <param name="value">
     ///     The word to check.
     /// </param>
-    public virtual bool IsKeyword(string value)
-    {
-        return Keywords.Contains(value);
-    }
+    public virtual bool IsKeyword(string value) => Keywords.Contains(value);
 
     /// <summary>
     ///     Determines if the specified value can be used as identifier without quoting.
@@ -72,12 +69,11 @@ public partial class DotSyntaxRules
     /// <param name="value">
     ///     The value to check.
     /// </param>
-    public virtual bool IsValidIdentifier(string value)
-    {
-        return value is not null && !IsKeyword(value) &&
+    public virtual bool IsValidIdentifier(string value) =>
+        value is not null &&
+        !IsKeyword(value) &&
         (
             Regex.Match(value, AlphabeticIdentifierPattern).Success ||
             Regex.Match(value, NumericIdentifierPattern).Success
         );
-    }
 }

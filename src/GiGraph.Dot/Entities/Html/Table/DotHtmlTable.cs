@@ -27,7 +27,7 @@ public partial class DotHtmlTable : DotHtmlElement
     protected DotHtmlTable(DotHtmlTableAttributes attributes)
         : base("table", attributes.Collection)
     {
-        Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlTableAttributes, DotHtmlTableAttributes>(attributes);
+        Attributes = new(attributes);
     }
 
     /// <summary>
@@ -41,16 +41,10 @@ public partial class DotHtmlTable : DotHtmlElement
     /// <param name="init">
     ///     An optional row initializer delegate.
     /// </param>
-    public virtual DotHtmlTableRow AddRow(Action<DotHtmlTableRow> init = null)
-    {
-        return Content.Add(new DotHtmlTableRow(), init);
-    }
+    public virtual DotHtmlTableRow AddRow(Action<DotHtmlTableRow> init = null) => Content.Add(new(), init);
 
     /// <summary>
     ///     Adds a horizontal rule to separate two neighboring rows.
     /// </summary>
-    public virtual DotHtmlHorizontalRule AddHorizontalRule()
-    {
-        return Content.Add(new DotHtmlHorizontalRule(), init: null);
-    }
+    public virtual DotHtmlHorizontalRule AddHorizontalRule() => Content.Add(new DotHtmlHorizontalRule(), init: null);
 }

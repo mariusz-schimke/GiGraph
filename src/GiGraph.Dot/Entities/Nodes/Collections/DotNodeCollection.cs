@@ -23,7 +23,7 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
 
     protected DotNodeCollection(DotNodeRootAttributes attributes)
     {
-        Attributes = new DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes>(attributes);
+        Attributes = new(attributes);
     }
 
     /// <summary>
@@ -63,10 +63,7 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
     /// <param name="init">
     ///     An optional initializer delegate to call for the created node.
     /// </param>
-    public virtual DotNode Add(string id, Action<DotNode> init = null)
-    {
-        return Add(new DotNode(id), init);
-    }
+    public virtual DotNode Add(string id, Action<DotNode> init = null) => Add(new DotNode(id), init);
 
     /// <summary>
     ///     Adds a group of nodes with the specified identifiers to the collection.
@@ -74,10 +71,7 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
     /// <param name="ids">
     ///     The identifiers of the nodes to add.
     /// </param>
-    public virtual DotNodeGroup AddGroup(params string[] ids)
-    {
-        return AddGroup(ids, init: null);
-    }
+    public virtual DotNodeGroup AddGroup(params string[] ids) => AddGroup(ids, init: null);
 
     /// <summary>
     ///     Adds a group of nodes with the specified identifiers to the collection.
@@ -88,10 +82,7 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
     /// <param name="ids">
     ///     The identifiers of the nodes to add.
     /// </param>
-    public virtual DotNodeGroup AddGroup(Action<DotNodeGroup> init, params string[] ids)
-    {
-        return AddGroup(ids, init);
-    }
+    public virtual DotNodeGroup AddGroup(Action<DotNodeGroup> init, params string[] ids) => AddGroup(ids, init);
 
     /// <summary>
     ///     Adds a group of nodes with the specified identifiers to the collection.
@@ -102,10 +93,7 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
     /// <param name="init">
     ///     An optional initializer delegate to call for the created group.
     /// </param>
-    public virtual DotNodeGroup AddGroup(IEnumerable<string> ids, Action<DotNodeGroup> init = null)
-    {
-        return Add(new DotNodeGroup(ids), init);
-    }
+    public virtual DotNodeGroup AddGroup(IEnumerable<string> ids, Action<DotNodeGroup> init = null) => Add(new(ids), init);
 
     /// <summary>
     ///     Adds nodes with the specified identifiers to the collection, and returns them.
@@ -113,10 +101,7 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
     /// <param name="ids">
     ///     The identifiers of the nodes to add.
     /// </param>
-    public virtual DotNode[] AddRange(params string[] ids)
-    {
-        return AddRange(ids, init: null);
-    }
+    public virtual DotNode[] AddRange(params string[] ids) => AddRange(ids, init: null);
 
     /// <summary>
     ///     Adds nodes with the specified identifiers to the collection, and returns them.
@@ -127,10 +112,7 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
     /// <param name="init">
     ///     An optional initializer delegate to call for each created node.
     /// </param>
-    public virtual DotNode[] AddRange(Action<DotNode> init, params string[] ids)
-    {
-        return AddRange(ids, init);
-    }
+    public virtual DotNode[] AddRange(Action<DotNode> init, params string[] ids) => AddRange(ids, init);
 
     /// <summary>
     ///     Adds nodes with the specified identifiers to the collection, and returns them.

@@ -20,7 +20,7 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     ///     The unique identifier of the cluster.
     /// </param>
     public DotCluster(string id)
-        : this(new DotClusterSection(), new DotGraphSectionCollection<DotClusterSection>())
+        : this(new(), new())
     {
         Id = id;
     }
@@ -68,10 +68,7 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     /// <param name="nodeIds">
     ///     The identifiers of nodes to add to the subgraph.
     /// </param>
-    public static DotCluster FromNodes(string id, params string[] nodeIds)
-    {
-        return FromNodes(id, (IEnumerable<string>) nodeIds);
-    }
+    public static DotCluster FromNodes(string id, params string[] nodeIds) => FromNodes(id, (IEnumerable<string>) nodeIds);
 
     /// <summary>
     ///     Creates a new cluster with the specified nodes.

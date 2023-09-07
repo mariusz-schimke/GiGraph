@@ -18,17 +18,8 @@ public class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDotGraphAtt
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().BuildLazy();
 
     public DotGraphRootAttributes(DotAttributeCollection attributes)
-        : this(
-            attributes,
-            AttributeKeyLookup,
-            new DotGraphClustersAttributes(attributes),
-            new DotHyperlinkAttributes(attributes),
-            new DotGraphFontAttributes(attributes),
-            new DotGraphStyleAttributeOptions(attributes),
-            new DotGraphSvgStyleSheetAttributes(attributes),
-            new DotGraphLayoutAttributes(attributes),
-            new DotGraphCanvasAttributes(attributes),
-            new DotLabelAlignmentAttributes(attributes)
+        : this(attributes, AttributeKeyLookup, new(attributes), new(attributes), new(attributes), new(attributes),
+            new(attributes), new(attributes), new(attributes), new(attributes)
         )
     {
     }

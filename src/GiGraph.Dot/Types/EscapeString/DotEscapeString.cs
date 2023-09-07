@@ -8,10 +8,7 @@ namespace GiGraph.Dot.Types.EscapeString;
 /// </summary>
 public abstract partial class DotEscapeString : IDotEscapable
 {
-    string IDotEscapable.GetEscaped(IDotTextEscaper textEscaper)
-    {
-        return GetEscapedString(textEscaper);
-    }
+    string IDotEscapable.GetEscaped(IDotTextEscaper textEscaper) => GetEscapedString(textEscaper);
 
     protected internal abstract string GetRawString();
     protected internal abstract string GetEscapedString(IDotTextEscaper textEscaper);
@@ -19,23 +16,11 @@ public abstract partial class DotEscapeString : IDotEscapable
     /// <summary>
     ///     Returns the underlying string.
     /// </summary>
-    public override string ToString()
-    {
-        return GetRawString();
-    }
+    public override string ToString() => GetRawString();
 
-    public static implicit operator DotEscapeString(string value)
-    {
-        return (DotUnescapedString) value;
-    }
+    public static implicit operator DotEscapeString(string value) => (DotUnescapedString) value;
 
-    public static implicit operator string(DotEscapeString value)
-    {
-        return value?.GetRawString();
-    }
+    public static implicit operator string(DotEscapeString value) => value?.GetRawString();
 
-    public static DotEscapeString operator +(DotEscapeString value1, DotEscapeString value2)
-    {
-        return new DotConcatenatedEscapeString(value1, value2);
-    }
+    public static DotEscapeString operator +(DotEscapeString value1, DotEscapeString value2) => new DotConcatenatedEscapeString(value1, value2);
 }

@@ -27,7 +27,7 @@ public partial class DotStripableExtensionTest
         graph.Clusters.SetStripedFill(Color.Red, Color.Blue);
         Snapshot.Match(graph.Build(), "striped_fill_on_cluster_collection_params");
 
-        graph = new DotGraph();
+        graph = new();
         graph.Clusters.SetStripedFill(new DotMultiColor(Color.Red, Color.Blue));
         Snapshot.Match(graph.Build(), "striped_fill_on_cluster_collection_multicolor");
     }

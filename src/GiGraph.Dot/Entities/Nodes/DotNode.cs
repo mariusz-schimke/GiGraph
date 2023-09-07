@@ -36,8 +36,5 @@ public class DotNode : DotNodeDefinition
     /// </summary>
     public virtual string Id { get; set; }
 
-    protected override string GetOrderingKey()
-    {
-        return Id;
-    }
+    protected override string GetOrderingKey() => Id;
 }

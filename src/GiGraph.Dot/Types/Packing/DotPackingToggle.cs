@@ -11,8 +11,5 @@ namespace GiGraph.Dot.Types.Packing;
 /// </param>
 public record DotPackingToggle(bool Enabled) : DotPackingDefinition
 {
-    protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return Enabled ? "true" : "false";
-    }
+    protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Enabled ? "true" : "false";
 }

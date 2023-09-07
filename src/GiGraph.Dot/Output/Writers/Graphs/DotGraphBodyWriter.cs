@@ -15,60 +15,42 @@ public class DotGraphBodyWriter : DotEntityWriter, IDotGraphBodyWriter
     {
     }
 
-    public virtual IDotGlobalGraphAttributeStatementWriter BeginGlobalGraphAttributesSection(bool useStatementDelimiter)
-    {
-        return new DotGlobalGraphAttributeStatementWriter(_tokenWriter, _configuration, useStatementDelimiter);
-    }
+    public virtual IDotGlobalGraphAttributeStatementWriter BeginGlobalGraphAttributesSection(bool useStatementDelimiter) => new DotGlobalGraphAttributeStatementWriter(_tokenWriter, _configuration, useStatementDelimiter);
 
     public virtual void EndGlobalGraphAttributesSection()
     {
         EndSection();
     }
 
-    public virtual IDotGlobalEntityAttributesStatementWriter BeginGlobalEntityAttributesSection(bool useStatementDelimiter)
-    {
-        return new DotGlobalEntityAttributesStatementWriter(_tokenWriter, _configuration, useStatementDelimiter);
-    }
+    public virtual IDotGlobalEntityAttributesStatementWriter BeginGlobalEntityAttributesSection(bool useStatementDelimiter) => new DotGlobalEntityAttributesStatementWriter(_tokenWriter, _configuration, useStatementDelimiter);
 
     public virtual void EndGlobalEntityAttributesSection()
     {
         EndSection();
     }
 
-    public virtual IDotNodeStatementWriter BeginNodesSection(bool useStatementDelimiter)
-    {
-        return new DotNodeStatementWriter(_tokenWriter, _configuration, useStatementDelimiter);
-    }
+    public virtual IDotNodeStatementWriter BeginNodesSection(bool useStatementDelimiter) => new DotNodeStatementWriter(_tokenWriter, _configuration, useStatementDelimiter);
 
     public virtual void EndNodesSection()
     {
         EndSection();
     }
 
-    public virtual IDotEdgeStatementWriter BeginEdgesSection(bool useStatementDelimiter)
-    {
-        return new DotEdgeStatementWriter(_tokenWriter, _configuration, useStatementDelimiter);
-    }
+    public virtual IDotEdgeStatementWriter BeginEdgesSection(bool useStatementDelimiter) => new DotEdgeStatementWriter(_tokenWriter, _configuration, useStatementDelimiter);
 
     public virtual void EndEdgesSection()
     {
         EndSection();
     }
 
-    public virtual IDotSubgraphWriterRoot BeginSubgraphsSection()
-    {
-        return new DotSubgraphWriterRoot(_tokenWriter, _configuration);
-    }
+    public virtual IDotSubgraphWriterRoot BeginSubgraphsSection() => new DotSubgraphWriterRoot(_tokenWriter, _configuration);
 
     public virtual void EndSubgraphsSection()
     {
         EndSection();
     }
 
-    public virtual IDotSubgraphWriterRoot BeginClustersSection()
-    {
-        return new DotClusterWriterRoot(_tokenWriter, _configuration);
-    }
+    public virtual IDotSubgraphWriterRoot BeginClustersSection() => new DotClusterWriterRoot(_tokenWriter, _configuration);
 
     public virtual void EndClustersSection()
     {

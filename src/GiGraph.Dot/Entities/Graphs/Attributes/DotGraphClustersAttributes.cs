@@ -15,7 +15,7 @@ public class DotGraphClustersAttributes : DotEntityAttributesWithMetadata<IDotGr
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClustersAttributes, IDotGraphClustersAttributes>().BuildLazy();
 
     public DotGraphClustersAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new DotClusterStyleAttributeOptions(attributes))
+        : this(attributes, AttributeKeyLookup, new(attributes))
     {
     }
 

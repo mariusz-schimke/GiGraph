@@ -22,18 +22,8 @@ public class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotEdgeAttri
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().BuildLazy();
 
     public DotEdgeRootAttributes(DotAttributeCollection attributes)
-        : this(
-            attributes,
-            AttributeKeyLookup,
-            new DotEdgeHeadAttributes(attributes),
-            new DotEdgeTailAttributes(attributes),
-            new DotFontAttributes(attributes),
-            new DotHyperlinkAttributes(attributes),
-            new DotEdgeEndpointLabelsAttributes(attributes),
-            new DotEdgeLabelHyperlinkAttributes(attributes),
-            new DotEdgeHyperlinkAttributes(attributes),
-            new DotEdgeStyleAttributeOptions(attributes),
-            new DotSvgStyleSheetAttributes(attributes)
+        : this(attributes, AttributeKeyLookup, new(attributes), new(attributes), new(attributes), new(attributes),
+            new(attributes), new(attributes), new(attributes), new(attributes), new(attributes)
         )
     {
     }

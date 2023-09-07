@@ -27,10 +27,8 @@ public record DotEnumAttribute<TEnum> : DotAttribute<TEnum>
     {
     }
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
-    {
-        return DotAttributeValue.TryGetAsFlags(Value, out var result)
+    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
+        DotAttributeValue.TryGetAsFlags(Value, out var result)
             ? result
             : DotAttributeValue.Get(Value);
-    }
 }

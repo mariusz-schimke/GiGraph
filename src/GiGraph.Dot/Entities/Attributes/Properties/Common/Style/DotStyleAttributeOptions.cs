@@ -25,18 +25,12 @@ public abstract class DotStyleAttributeOptions
     /// <summary>
     ///     Determines if any style is assigned to the element.
     /// </summary>
-    public virtual bool IsSet()
-    {
-        return Style.HasValue;
-    }
+    public virtual bool IsSet() => Style.HasValue;
 
     /// <summary>
     ///     Determines if the default style is assigned to the element.
     /// </summary>
-    public virtual bool IsDefault()
-    {
-        return Style == DotStyles.Default;
-    }
+    public virtual bool IsDefault() => Style == DotStyles.Default;
 
     /// <summary>
     ///     Removes style from the element.
@@ -65,10 +59,7 @@ public abstract class DotStyleAttributeOptions
         Style &= ~options;
     }
 
-    protected virtual bool HasOptions(DotStyles options)
-    {
-        return Style.GetValueOrDefault(DotStyles.Default).HasFlag(options);
-    }
+    protected virtual bool HasOptions(DotStyles options) => Style.GetValueOrDefault(DotStyles.Default).HasFlag(options);
 
     protected virtual void ApplyOption(DotStyles option, bool set)
     {
@@ -89,8 +80,6 @@ public abstract class DotStyleAttributeOptions
     }
 
     protected virtual TPart GetPart<TPart>()
-        where TPart : Enum
-    {
-        return DotPartialEnumMapper.ToPartial<DotStyles, TPart>(Style.GetValueOrDefault(DotStyles.Default));
-    }
+        where TPart : Enum =>
+        DotPartialEnumMapper.ToPartial<DotStyles, TPart>(Style.GetValueOrDefault(DotStyles.Default));
 }
