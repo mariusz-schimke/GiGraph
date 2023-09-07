@@ -1,0 +1,359 @@
+﻿{
+  "arrowhead": [
+    "Head.Arrowhead: DotArrowheadDefinition [Edge]"
+  ],
+  "arrowsize": [
+    "ArrowheadScale: Double? [Edge]"
+  ],
+  "arrowtail": [
+    "Tail.Arrowhead: DotArrowheadDefinition [Edge]"
+  ],
+  "bgcolor": [
+    "BackgroundColor: DotColorDefinition [Cluster]",
+    "Canvas.BackgroundColor: DotColorDefinition [Graph]"
+  ],
+  "center": [
+    "Canvas.CenterDrawing: Boolean? [Graph]"
+  ],
+  "charset": [
+    "Charset: String [Graph]"
+  ],
+  "class": [
+    "SvgStyleSheet.Class: String [Graph, Cluster, Node, Edge]"
+  ],
+  "cluster": [
+    "IsCluster: Boolean? [Subgraph, Cluster]"
+  ],
+  "clusterrank": [
+    "Clusters.VisualizationMode: DotClusterVisualizationMode? [Graph]"
+  ],
+  "color": [
+    "Clusters.Color: DotColorDefinition [Graph]",
+    "Color: DotColorDefinition [Cluster, Node, Edge]"
+  ],
+  "colorscheme": [
+    "ColorScheme: String [Graph, Cluster, Node, Edge]"
+  ],
+  "comment": [
+    "Comment: String [Graph, Node, Edge]"
+  ],
+  "compound": [
+    "Clusters.AllowEdgeClipping: Boolean? [Graph]"
+  ],
+  "concentrate": [
+    "Layout.ConcentrateEdges: Boolean? [Graph]"
+  ],
+  "constraint": [
+    "Constrain: Boolean? [Edge]"
+  ],
+  "decorate": [
+    "AttachLabel: Boolean? [Edge]"
+  ],
+  "dir": [
+    "Directions: DotEdgeDirections? [Edge]"
+  ],
+  "distortion": [
+    "Geometry.Distortion: Double? [Node]"
+  ],
+  "dpi": [
+    "Canvas.Dpi: Double? [Graph]"
+  ],
+  "edgehref": [
+    "EdgeHyperlink.Href: DotEscapeString [Edge]"
+  ],
+  "edgetarget": [
+    "EdgeHyperlink.Target: DotEscapeString [Edge]"
+  ],
+  "edgetooltip": [
+    "EdgeHyperlink.Tooltip: DotEscapeString [Edge]"
+  ],
+  "edgeURL": [
+    "EdgeHyperlink.Url: DotEscapeString [Edge]"
+  ],
+  "fillcolor": [
+    "Clusters.FillColor: DotColorDefinition [Graph]",
+    "FillColor: DotColorDefinition [Cluster, Node, Edge]"
+  ],
+  "fixedsize": [
+    "Size.Mode: DotNodeSizing? [Node]"
+  ],
+  "fontcolor": [
+    "Font.Color: DotColor [Graph, Cluster, Node, Edge]"
+  ],
+  "fontname": [
+    "Font.Name: String [Graph, Cluster, Node, Edge]"
+  ],
+  "fontnames": [
+    "Font.Convention: DotFontConvention? [Graph]"
+  ],
+  "fontpath": [
+    "Font.Directories: String [Graph]"
+  ],
+  "fontsize": [
+    "Font.Size: Double? [Graph, Cluster, Node, Edge]"
+  ],
+  "forcelabels": [
+    "Layout.ForceExternalLabels: Boolean? [Graph]"
+  ],
+  "gradientangle": [
+    "Canvas.GradientFillAngle: Int32? [Graph]",
+    "GradientFillAngle: Int32? [Cluster, Node]"
+  ],
+  "group": [
+    "GroupName: String [Node]"
+  ],
+  "headclip": [
+    "Head.ClipToNodeBoundary: Boolean? [Edge]"
+  ],
+  "headhref": [
+    "Head.Hyperlink.Href: DotEscapeString [Edge]"
+  ],
+  "headlabel": [
+    "Head.Label: DotLabel [Edge]"
+  ],
+  "headport": [
+    "Head.Port: DotEndpointPort [Edge]"
+  ],
+  "headtarget": [
+    "Head.Hyperlink.Target: DotEscapeString [Edge]"
+  ],
+  "headtooltip": [
+    "Head.Hyperlink.Tooltip: DotEscapeString [Edge]"
+  ],
+  "headURL": [
+    "Head.Hyperlink.Url: DotEscapeString [Edge]"
+  ],
+  "height": [
+    "Size.Height: Double? [Node]"
+  ],
+  "href": [
+    "Hyperlink.Href: DotEscapeString [Graph, Cluster, Node, Edge]"
+  ],
+  "id": [
+    "ObjectId: DotEscapeString [Graph, Cluster, Node, Edge]"
+  ],
+  "image": [
+    "Image.Path: String [Node]"
+  ],
+  "imagepath": [
+    "ImageDirectories: String [Graph]"
+  ],
+  "imagepos": [
+    "Image.Alignment: DotAlignment? [Node]"
+  ],
+  "imagescale": [
+    "Image.Scaling: DotImageScaling? [Node]"
+  ],
+  "label": [
+    "Label: DotLabel [Graph, Cluster, Node, Edge]"
+  ],
+  "labelangle": [
+    "EndpointLabels.Angle: Double? [Edge]"
+  ],
+  "labeldistance": [
+    "EndpointLabels.Distance: Double? [Edge]"
+  ],
+  "labelfloat": [
+    "AllowLabelFloat: Boolean? [Edge]"
+  ],
+  "labelfontcolor": [
+    "EndpointLabels.Font.Color: DotColor [Edge]"
+  ],
+  "labelfontname": [
+    "EndpointLabels.Font.Name: String [Edge]"
+  ],
+  "labelfontsize": [
+    "EndpointLabels.Font.Size: Double? [Edge]"
+  ],
+  "labelhref": [
+    "LabelHyperlink.Href: DotEscapeString [Edge]"
+  ],
+  "labeljust": [
+    "LabelAlignment.Horizontal: DotHorizontalAlignment? [Graph, Cluster]"
+  ],
+  "labelloc": [
+    "LabelAlignment: DotVerticalAlignment? [Node]",
+    "LabelAlignment.Vertical: DotVerticalAlignment? [Graph, Cluster]"
+  ],
+  "labeltarget": [
+    "LabelHyperlink.Target: DotEscapeString [Edge]"
+  ],
+  "labeltooltip": [
+    "LabelHyperlink.Tooltip: DotEscapeString [Edge]"
+  ],
+  "labelURL": [
+    "LabelHyperlink.Url: DotEscapeString [Edge]"
+  ],
+  "landscape": [
+    "Canvas.LandscapeOrientation: Boolean? [Graph]"
+  ],
+  "layout": [
+    "Layout.Engine: String [Graph]"
+  ],
+  "len": [
+    "Length: Double? [Edge]"
+  ],
+  "lhead": [
+    "Head.ClusterId: DotClusterId [Edge]"
+  ],
+  "ltail": [
+    "Tail.ClusterId: DotClusterId [Edge]"
+  ],
+  "margin": [
+    "Canvas.Margin: DotPoint [Graph]",
+    "Padding: DotPoint [Cluster, Node]"
+  ],
+  "mclimit": [
+    "Layout.EdgeCrossingMinimizationScale: Double? [Graph]"
+  ],
+  "minlen": [
+    "MinLength: Int32? [Edge]"
+  ],
+  "newrank": [
+    "Layout.UseGlobalRanking: Boolean? [Graph]"
+  ],
+  "nodesep": [
+    "Layout.NodeSeparation: Double? [Graph]"
+  ],
+  "oneblock": [
+    "Layout.ForceCircularLayout: Boolean? [Graph]"
+  ],
+  "ordering": [
+    "EdgeOrderingMode: DotEdgeOrderingMode? [Node]",
+    "Layout.EdgeOrderingMode: DotEdgeOrderingMode? [Graph]"
+  ],
+  "orientation": [
+    "Canvas.Orientation: DotOrientation? [Graph]",
+    "Geometry.Rotation: Double? [Node]"
+  ],
+  "pack": [
+    "Layout.Packing: DotPackingDefinition [Graph]"
+  ],
+  "packmode": [
+    "Layout.PackingMode: DotPackingModeDefinition [Graph]"
+  ],
+  "pad": [
+    "Canvas.Padding: DotPoint [Graph]"
+  ],
+  "pencolor": [
+    "BorderColor: DotColor [Cluster]",
+    "Clusters.BorderColor: DotColor [Graph]"
+  ],
+  "penwidth": [
+    "BorderWidth: Double? [Cluster, Node]",
+    "Clusters.BorderWidth: Double? [Graph]",
+    "Width: Double? [Edge]"
+  ],
+  "peripheries": [
+    "Geometry.Peripheries: Int32? [Node]",
+    "Peripheries: Int32? [Cluster]"
+  ],
+  "rank": [
+    "Layout.NodeRank: DotRank? [Graph]",
+    "NodeRank: DotRank? [Subgraph, Cluster]"
+  ],
+  "rankdir": [
+    "Layout.Direction: DotLayoutDirection? [Graph]"
+  ],
+  "ranksep": [
+    "Layout.RankSeparation: DotRankSeparationDefinition [Graph]"
+  ],
+  "ratio": [
+    "Canvas.Scaling: DotGraphScalingDefinition [Graph]"
+  ],
+  "regular": [
+    "Geometry.Regular: Boolean? [Node]"
+  ],
+  "remincross": [
+    "Layout.RepeatEdgeCrossingMinimization: Boolean? [Graph]"
+  ],
+  "resolution": [
+    "Canvas.Resolution: Double? [Graph]"
+  ],
+  "root": [
+    "IsRoot: Boolean? [Node]",
+    "RootNodeId: DotId [Graph]"
+  ],
+  "rotate": [
+    "Canvas.OrientationAngle: Int32? [Graph]"
+  ],
+  "rotation": [
+    "Layout.Rotation: Double? [Graph]"
+  ],
+  "samehead": [
+    "Head.GroupName: String [Edge]"
+  ],
+  "sametail": [
+    "Tail.GroupName: String [Edge]"
+  ],
+  "shape": [
+    "Shape: DotNodeShape? [Node]"
+  ],
+  "sides": [
+    "Geometry.Sides: Int32? [Node]"
+  ],
+  "size": [
+    "Canvas.Size: DotPoint [Graph]"
+  ],
+  "skew": [
+    "Geometry.Skew: Double? [Node]"
+  ],
+  "sortv": [
+    "Layout.SortIndex: Int32? [Graph]",
+    "SortIndex: Int32? [Cluster, Node]"
+  ],
+  "splines": [
+    "EdgeShape: DotEdgeShape? [Graph]"
+  ],
+  "style": [
+    "Style: DotStyles? [Graph, Cluster, Node, Edge]"
+  ],
+  "stylesheet": [
+    "SvgStyleSheet.Url: String [Graph]"
+  ],
+  "tailclip": [
+    "Tail.ClipToNodeBoundary: Boolean? [Edge]"
+  ],
+  "tailhref": [
+    "Tail.Hyperlink.Href: DotEscapeString [Edge]"
+  ],
+  "taillabel": [
+    "Tail.Label: DotLabel [Edge]"
+  ],
+  "tailport": [
+    "Tail.Port: DotEndpointPort [Edge]"
+  ],
+  "tailtarget": [
+    "Tail.Hyperlink.Target: DotEscapeString [Edge]"
+  ],
+  "tailtooltip": [
+    "Tail.Hyperlink.Tooltip: DotEscapeString [Edge]"
+  ],
+  "tailURL": [
+    "Tail.Hyperlink.Url: DotEscapeString [Edge]"
+  ],
+  "target": [
+    "Hyperlink.Target: DotEscapeString [Graph, Cluster, Node, Edge]"
+  ],
+  "TBbalance": [
+    "Layout.FloatingNodeRank: DotRank? [Graph]"
+  ],
+  "tooltip": [
+    "Tooltip: DotEscapeString [Cluster, Node, Edge]"
+  ],
+  "URL": [
+    "Hyperlink.Url: DotEscapeString [Graph, Cluster, Node, Edge]"
+  ],
+  "viewport": [
+    "Canvas.Viewport: DotViewport [Graph]"
+  ],
+  "weight": [
+    "Weight: Double? [Edge]"
+  ],
+  "width": [
+    "Size.Width: Double? [Node]"
+  ],
+  "xlabel": [
+    "ExternalLabel: DotLabel [Node, Edge]"
+  ]
+}
