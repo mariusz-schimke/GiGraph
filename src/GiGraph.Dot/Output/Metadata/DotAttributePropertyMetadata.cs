@@ -53,8 +53,5 @@ public class DotAttributePropertyMetadata : DotAttributeMetadata
     /// <summary>
     ///     Gets property path as an array of property info (the last item is the actual property associated with the attribute key).
     /// </summary>
-    public virtual PropertyInfo[] GetPropertyInfoPath()
-    {
-        return _propertyInfoPath;
-    }
+    public virtual PropertyInfo[] GetPropertyInfoPath() => _propertyInfoPath;
 }
