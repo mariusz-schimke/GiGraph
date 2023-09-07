@@ -41,9 +41,9 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
         set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
     }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.RepeatCrossingMinimization" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.RepeatEdgeCrossingMinimization" />
     [DotAttributeKey(DotAttributeKeys.ReMinCross)]
-    public virtual bool? RepeatCrossingMinimization
+    public virtual bool? RepeatEdgeCrossingMinimization
     {
         get => GetValueAsBool(MethodBase.GetCurrentMethod());
         set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
@@ -182,7 +182,7 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
         Packing = attributes.Packing;
         PackingMode = attributes.PackingMode;
         RankSeparation = attributes.RankSeparation;
-        RepeatCrossingMinimization = attributes.RepeatCrossingMinimization;
+        RepeatEdgeCrossingMinimization = attributes.RepeatEdgeCrossingMinimization;
         EdgeCrossingMinimizationScale = attributes.EdgeCrossingMinimizationScale;
         Rotation = attributes.Rotation;
         SortIndex = attributes.SortIndex;

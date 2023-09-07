@@ -265,7 +265,7 @@
     "Geometry.Regular: Boolean? [Node]"
   ],
   "remincross": [
-    "Layout.RepeatCrossingMinimization: Boolean? [Graph]"
+    "Layout.RepeatEdgeCrossingMinimization: Boolean? [Graph]"
   ],
   "resolution": [
     "Canvas.Resolution: Double? [Graph]"
