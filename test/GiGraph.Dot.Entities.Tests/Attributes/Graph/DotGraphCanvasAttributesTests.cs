@@ -1,5 +1,5 @@
 using System.Drawing;
-using System.Reflection;
+using Bogus;
 using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Types.Graphs;
 using GiGraph.Dot.Types.Orientation;
@@ -9,32 +9,32 @@ namespace GiGraph.Dot.Entities.Tests.Attributes.Graph;
 
 public class DotGraphCanvasAttributesTests
 {
+    private readonly Faker _faker = new();
+
     [Fact]
     public void TestSetMethodUsingReflection()
     {
         var sourceAttributes = new DotGraphCanvasAttributes(new())
         {
-            BackgroundColor = Color.Red,
-            CenterDrawing = true,
-            Dpi = 72.0,
-            GradientFillAngle = 45,
-            LandscapeOrientation = true,
-            Margin = new(10, 10),
-            Orientation = DotOrientation.Landscape,
-            OrientationAngle = 90,
-            Padding = new(5, 5),
-            Resolution = 300,
-            Scaling = new DotGraphScalingAspectRatio(1),
-            Size = new(1920, 1080),
-            Viewport = new(10, 23)
+            BackgroundColor = Color.FromArgb(_faker.Random.Int()),
+            CenterDrawing = _faker.Random.Bool(),
+            Dpi = _faker.Random.Double(),
+            GradientFillAngle = _faker.Random.Int(),
+            LandscapeOrientation = _faker.Random.Bool(),
+            Margin = new(_faker.Random.Double(), _faker.Random.Double()),
+            Orientation = _faker.PickRandom<DotOrientation>(),
+            OrientationAngle = _faker.Random.Int(),
+            Padding = new(_faker.Random.Double(), _faker.Random.Double()),
+            Resolution = _faker.Random.Double(),
+            Scaling = new DotGraphScalingAspectRatio(_faker.Random.Double()),
+            Size = new(_faker.Random.Double(), _faker.Random.Double()),
+            Viewport = new(_faker.Random.Int(), _faker.Random.Int())
         };
 
         var targetAttributes = new DotGraphCanvasAttributes(new());
-
         targetAttributes.Set(sourceAttributes);
 
-        var properties = typeof(IDotGraphCanvasAttributes).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-        foreach (var property in properties)
+        foreach (var property in typeof(IDotGraphCanvasAttributes).GetProperties())
         {
             var sourceValue = property.GetValue(sourceAttributes);
             var targetValue = property.GetValue(targetAttributes);
