@@ -134,7 +134,7 @@ public class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotEdgeAttri
     }
 
     [DotAttributeKey(DotAttributeKeys.ArrowSize)]
-    public virtual double? ArrowheadScale
+    public virtual double? ArrowheadScaleFactor
     {
         get => GetValueAsDouble(MethodBase.GetCurrentMethod());
         set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
@@ -155,7 +155,7 @@ public class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotEdgeAttri
     }
 
     [DotAttributeKey(DotAttributeKeys.LabelFloat)]
-    public virtual bool? AllowLabelFloat
+    public virtual bool? AllowLabelFloating
     {
         get => GetValueAsBool(MethodBase.GetCurrentMethod());
         set => SetOrRemove(MethodBase.GetCurrentMethod(), value);

@@ -3,7 +3,7 @@
     "Head.Arrowhead: DotArrowheadDefinition [Edge]"
   ],
   "arrowsize": [
-    "ArrowheadScale: Double? [Edge]"
+    "ArrowheadScaleFactor: Double? [Edge]"
   ],
   "arrowtail": [
     "Tail.Arrowhead: DotArrowheadDefinition [Edge]"
@@ -154,7 +154,7 @@
     "EndpointLabels.Distance: Double? [Edge]"
   ],
   "labelfloat": [
-    "AllowLabelFloat: Boolean? [Edge]"
+    "AllowLabelFloating: Boolean? [Edge]"
   ],
   "labelfontcolor": [
     "EndpointLabels.Font.Color: DotColor [Edge]"
@@ -204,7 +204,7 @@
     "Padding: DotPoint [Cluster, Node]"
   ],
   "mclimit": [
-    "Layout.EdgeCrossingMinimizationScale: Double? [Graph]"
+    "Layout.EdgeCrossingMinimizationScaleFactor: Double? [Graph]"
   ],
   "minlen": [
     "MinLength: Int32? [Edge]"
