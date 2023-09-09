@@ -161,7 +161,7 @@ public partial class DotAttributeCollection
             }
         }
 
-        throw new InvalidCastException($"The '{key}' attribute value of type {attributeValue.GetType().Name} cannot be accessed as {typeof(T).Name}.");
+        throw new InvalidCastException($"The '{key}' attribute value '{attributeValue}' of type {attributeValue.GetType().Name} cannot be accessed as {typeof(T).Name}.");
     }
 
     /// <summary>
