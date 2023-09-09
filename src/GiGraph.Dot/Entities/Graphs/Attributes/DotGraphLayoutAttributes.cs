@@ -161,7 +161,6 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
         set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
     }
 
-    // TODO: unit tests for these methods to make sure all props are copied
     /// <summary>
     ///     Copies layout attributes from the specified instance.
     /// </summary>
