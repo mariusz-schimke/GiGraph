@@ -39,6 +39,10 @@ public class DotGraphCanvasAttributesTests
             var sourceValue = property.GetValue(sourceAttributes);
             var targetValue = property.GetValue(targetAttributes);
 
+            // this should throw when a new property is added that is not covered by the test
+            Assert.NotNull(sourceValue);
+
+            // compare the instances
             Assert.Equal(sourceValue, targetValue);
         }
     }
