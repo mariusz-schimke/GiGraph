@@ -34,6 +34,6 @@ public class DotGraphCanvasAttributesTests : DotGraphAttributeSettersTestBase<ID
         var targetAttributes = new DotGraphCanvasAttributes(new());
         targetAttributes.Set(sourceAttributes);
 
-        CompareCollections(sourceAttributes, targetAttributes);
+        AssertAttributesNonNullAndEqual(sourceAttributes, targetAttributes);
     }
 }

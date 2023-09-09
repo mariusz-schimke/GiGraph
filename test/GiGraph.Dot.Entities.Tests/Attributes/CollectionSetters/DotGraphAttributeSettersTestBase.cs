@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Tests.Attributes.CollectionSetters;
 public class DotGraphAttributeSettersTestBase<TInterface, TImplementation>
     where TImplementation : TInterface
 {
-    protected static void CompareCollections(TImplementation sourceAttributes, TImplementation targetAttributes)
+    protected static void AssertAttributesNonNullAndEqual(TImplementation sourceAttributes, TImplementation targetAttributes)
     {
         foreach (var property in typeof(TInterface).GetProperties())
         {

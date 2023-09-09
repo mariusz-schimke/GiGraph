@@ -39,6 +39,6 @@ public class DotGraphLayoutAttributesTests : DotGraphAttributeSettersTestBase<ID
         var targetAttributes = new DotGraphLayoutAttributes(new());
         targetAttributes.Set(sourceAttributes);
 
-        CompareCollections(sourceAttributes, targetAttributes);
+        AssertAttributesNonNullAndEqual(sourceAttributes, targetAttributes);
     }
 }
