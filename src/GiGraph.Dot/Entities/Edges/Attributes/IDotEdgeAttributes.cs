@@ -73,7 +73,7 @@ public interface IDotEdgeAttributes
     ///     If true, allows edge labels to be less constrained in position. In particular, it may appear on top of other edges. Default:
     ///     false.
     /// </summary>
-    bool? AllowLabelFloat { get; set; }
+    bool? AllowLabelFloating { get; set; }
 
     /// <summary>
     ///     Minimum edge length (rank difference between head and tail). Dot only, default: 1, minimum: 0.
@@ -142,7 +142,7 @@ public interface IDotEdgeAttributes
     /// <summary>
     ///     Gets or sets the multiplicative scale factor for arrowheads (default: 1.0, minimum: 0.0).
     /// </summary>
-    double? ArrowheadScale { get; set; }
+    double? ArrowheadScaleFactor { get; set; }
 
     /// <summary>
     ///     <para>

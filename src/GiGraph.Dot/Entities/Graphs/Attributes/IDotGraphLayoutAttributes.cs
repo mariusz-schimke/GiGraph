@@ -140,7 +140,7 @@ public interface IDotGraphLayoutAttributes
     ///         of iterations in each pass.
     ///     </para>
     /// </summary>
-    double? EdgeCrossingMinimizationScale { get; set; }
+    double? EdgeCrossingMinimizationScaleFactor { get; set; }
 
     /// <summary>
     ///     <para>

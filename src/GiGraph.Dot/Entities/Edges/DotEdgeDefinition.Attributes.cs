@@ -59,11 +59,11 @@ public abstract partial class DotEdgeDefinition : IDotEdgeRootAttributes
         set => Attributes.Implementation.ExternalLabel = value;
     }
 
-    /// <inheritdoc cref="IDotEdgeAttributes.AllowLabelFloat" />
-    public virtual bool? AllowLabelFloat
+    /// <inheritdoc cref="IDotEdgeAttributes.AllowLabelFloating" />
+    public virtual bool? AllowLabelFloating
     {
-        get => Attributes.Implementation.AllowLabelFloat;
-        set => Attributes.Implementation.AllowLabelFloat = value;
+        get => Attributes.Implementation.AllowLabelFloating;
+        set => Attributes.Implementation.AllowLabelFloating = value;
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.MinLength" />
@@ -122,11 +122,11 @@ public abstract partial class DotEdgeDefinition : IDotEdgeRootAttributes
         set => Attributes.Implementation.Width = value;
     }
 
-    /// <inheritdoc cref="IDotEdgeAttributes.ArrowheadScale" />
-    public virtual double? ArrowheadScale
+    /// <inheritdoc cref="IDotEdgeAttributes.ArrowheadScaleFactor" />
+    public virtual double? ArrowheadScaleFactor
     {
-        get => Attributes.Implementation.ArrowheadScale;
-        set => Attributes.Implementation.ArrowheadScale = value;
+        get => Attributes.Implementation.ArrowheadScaleFactor;
+        set => Attributes.Implementation.ArrowheadScaleFactor = value;
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.Directions" />
