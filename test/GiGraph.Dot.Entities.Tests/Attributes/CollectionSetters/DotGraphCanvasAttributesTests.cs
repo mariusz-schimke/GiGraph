@@ -5,9 +5,9 @@ using GiGraph.Dot.Types.Graphs;
 using GiGraph.Dot.Types.Orientation;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests.Attributes.Graph;
+namespace GiGraph.Dot.Entities.Tests.Attributes.CollectionSetters;
 
-public class DotGraphCanvasAttributesTests
+public class DotGraphCanvasAttributesTests : DotGraphAttributeSettersTestBase<IDotGraphCanvasAttributes, DotGraphCanvasAttributes>
 {
     private readonly Faker _faker = new();
 
@@ -34,16 +34,6 @@ public class DotGraphCanvasAttributesTests
         var targetAttributes = new DotGraphCanvasAttributes(new());
         targetAttributes.Set(sourceAttributes);
 
-        foreach (var property in typeof(IDotGraphCanvasAttributes).GetProperties())
-        {
-            var sourceValue = property.GetValue(sourceAttributes);
-            var targetValue = property.GetValue(targetAttributes);
-
-            // this should throw when a new property is added that is not covered by the test
-            Assert.NotNull(sourceValue);
-
-            // compare the instances
-            Assert.Equal(sourceValue, targetValue);
-        }
+        CompareCollections(sourceAttributes, targetAttributes);
     }
 }
