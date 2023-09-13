@@ -1,9 +1,10 @@
+using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Output.Options;
+
 namespace GiGraph.Dot.Output.Entities;
 
 public interface IDotAttributeCollection : IDotEntity
 {
-    /// <summary>
-    ///     Checks if the collection contains any attributes.
-    /// </summary>
-    bool Any();
+    // TODO: teraz niby implementacja jest sama w sobie kolekcją, a tu zwracam tę samą lub inną przez metodę
+    DotAttributeCollection GetAttributes(DotSyntaxOptions options);
 }
