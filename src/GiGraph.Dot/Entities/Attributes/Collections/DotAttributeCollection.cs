@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using GiGraph.Dot.Entities.Attributes.Factories;
 using GiGraph.Dot.Output.Entities;
-using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections;
 
-public partial class DotAttributeCollection : SortedList<string, DotAttribute>, IDotAttributeCollection, IDotAnnotatable
+public partial class DotAttributeCollection : SortedList<string, DotAttribute>, IDotEntity, IDotAnnotatable
 {
     protected readonly DotAttributeFactory _attributeFactory;
 
-    public DotAttributeCollection(DotAttributeFactory attributeFactory, IDictionary<string, DotAttribute> source)
-        : base(source)
+    public DotAttributeCollection()
+        : this(DotAttributeFactory.Instance)
     {
-        _attributeFactory = attributeFactory;
+    }
+
+    public DotAttributeCollection(DotAttributeCollection source)
+        : this(source._attributeFactory, source)
+    {
     }
 
     public DotAttributeCollection(DotAttributeFactory attributeFactory)
@@ -23,9 +26,10 @@ public partial class DotAttributeCollection : SortedList<string, DotAttribute>, 
         _attributeFactory = attributeFactory;
     }
 
-    public DotAttributeCollection()
-        : this(DotAttributeFactory.Instance)
+    public DotAttributeCollection(DotAttributeFactory attributeFactory, IDictionary<string, DotAttribute> source)
+        : base(source)
     {
+        _attributeFactory = attributeFactory;
     }
 
     protected internal virtual string Annotation { get; set; }
@@ -35,10 +39,6 @@ public partial class DotAttributeCollection : SortedList<string, DotAttribute>, 
         get => Annotation;
         set => Annotation = value;
     }
-
-    DotAttributeCollection IDotAttributeCollection.GetAttributes(DotSyntaxOptions options) => GetAttributes(options);
-
-    protected virtual DotAttributeCollection GetAttributes(DotSyntaxOptions options) => this;
 
     /// <summary>
     ///     Removes all attributes matching the specified criteria from the collection.

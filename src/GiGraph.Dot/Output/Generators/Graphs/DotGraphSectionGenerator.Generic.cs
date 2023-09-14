@@ -33,9 +33,7 @@ public abstract class DotGraphSectionGenerator<TSection> : DotEntityGenerator<TS
     {
         // global node and edge attributes have to appear first, so that they are applied to all elements that come later in the output script
         WriteGlobalAttributes(
-            // TODO: teraz jest niespójność, ze tu biorę przez metodę, a gdzie indziej wprost
-            // TODO: napisać testy jednostkowe dla klastrów (czy mają ten atrybut)
-            graphSection.Attributes.GetAttributes(_options),
+            graphSection.GetAttributes(_options),
             graphSection.Nodes.Attributes.Collection,
             graphSection.Edges.Attributes.Collection,
             writer
@@ -82,9 +80,9 @@ public abstract class DotGraphSectionGenerator<TSection> : DotEntityGenerator<TS
         writer.EndGlobalEntityAttributesSection();
     }
 
-    protected virtual void WriteGlobalGraphAttributesAsStatementList(IDotAttributeCollection attributes, IDotGraphBodyWriter writer)
+    protected virtual void WriteGlobalGraphAttributesAsStatementList(DotAttributeCollection attributes, IDotGraphBodyWriter writer)
     {
-        if (attributes.GetAttributes(_options).Any())
+        if (attributes.Any())
         {
             var globalGraphAttributeStatementWriter = writer.BeginGlobalGraphAttributesSection(_options.PreferStatementDelimiter);
             _entityGenerators.GetForEntity<IDotGlobalGraphAttributeStatementWriter>(attributes).Generate(attributes, globalGraphAttributeStatementWriter);
@@ -92,9 +90,9 @@ public abstract class DotGraphSectionGenerator<TSection> : DotEntityGenerator<TS
         }
     }
 
-    protected virtual void WriteGlobalGraphAttributesAsClause(IDotAttributeCollection attributes, IDotGlobalEntityAttributesStatementWriter writer)
+    protected virtual void WriteGlobalGraphAttributesAsClause(DotAttributeCollection attributes, IDotGlobalEntityAttributesStatementWriter writer)
     {
-        if (attributes.GetAttributes(_options).Any())
+        if (attributes.Any())
         {
             var globalGraphAttributesWriter = writer.BeginGraphAttributesStatement();
             _entityGenerators.GetForEntity<IDotGlobalGraphAttributesWriter>(attributes).Generate(attributes, globalGraphAttributesWriter);

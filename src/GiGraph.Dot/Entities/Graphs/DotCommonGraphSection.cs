@@ -1,10 +1,12 @@
-﻿using GiGraph.Dot.Entities.Attributes.Properties;
+﻿using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Clusters.Collections;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Entities.Subgraphs.Attributes;
 using GiGraph.Dot.Entities.Subgraphs.Collections;
 using GiGraph.Dot.Output.Entities;
+using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Graphs;
@@ -87,5 +89,6 @@ public abstract class DotCommonGraphSection : IDotGraphSection, IDotAnnotatable
     /// <inheritdoc cref="IDotAnnotatable.Annotation" />
     public virtual string Annotation { get; set; }
 
-    IDotAttributeCollection IDotGraphSection.Attributes => _attributes.Collection;
+    DotAttributeCollection IDotGraphSection.GetAttributes(DotSyntaxOptions options) => GetAttributes(options);
+    protected virtual DotAttributeCollection GetAttributes(DotSyntaxOptions options) => _attributes.Collection;
 }
