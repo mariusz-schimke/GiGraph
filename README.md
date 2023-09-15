@@ -15,14 +15,6 @@ For a complete documentation of the DOT language and visualization capabilities 
 **Built with** <a href="https://docs.microsoft.com/en-US/dotnet/standard/net-standard#net-implementation-support" target="_blank">.NET Standard 2.0</a> (compatible with *.NET Core 2.0* and above, *.NET Framework 4.6.1* and above).
 
 
-**Special thanks** to <a href="https://www.jetbrains.com/?from=GiGraphDot" target="_blank">JetBrains</a> for providing me free of charge with their fantastic Rider IDE and tools!
-
-
-
-<p align="center">
-  <img src="./assets/jetbrains.svg" width="200px">
-</p>
-
 
 **‼️ If you have any suggestions or comments, feel free to create an issue. ‼️**
 
