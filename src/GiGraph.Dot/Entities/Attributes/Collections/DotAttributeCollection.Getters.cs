@@ -43,9 +43,8 @@ public partial class DotAttributeCollection
             return null;
         }
 
-        return attribute is T output
-            ? output
-            : throw new InvalidCastException($"The '{key}' attribute of type {attribute.GetType().Name} cannot be accessed as {typeof(T).Name}.");
+        return attribute as T
+         ?? throw new InvalidCastException($"The '{key}' attribute of type {attribute.GetType().Name} cannot be accessed as {typeof(T).Name}.");
     }
 
     /// <summary>

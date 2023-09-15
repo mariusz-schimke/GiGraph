@@ -24,8 +24,7 @@ public partial class DotHtmlFontStyle
         var result = FromStyle(style, out var contentElement);
         contentElement?.SetContent(entity);
 
-        return (DotHtmlEntity) result ??
-            (entity is DotHtmlEntity htmlEntity ? htmlEntity : new DotHtmlEntity<IDotHtmlEntity>(entity));
+        return (DotHtmlEntity) result ?? entity as DotHtmlEntity ?? new DotHtmlEntity<IDotHtmlEntity>(entity);
     }
 
     /// <summary>
