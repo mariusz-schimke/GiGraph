@@ -72,7 +72,6 @@ See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
 
     <ItemGroup>
         <None Include="../../assets/icon.png" Pack="true" Visible="false" PackagePath="/" />
-        <None Include="../../README.md" Pack="true" Visible="false" PackagePath="/" />
         <None Include="../../LICENSE.txt" Pack="true" Visible="false" PackagePath="/" />
     </ItemGroup>
 
