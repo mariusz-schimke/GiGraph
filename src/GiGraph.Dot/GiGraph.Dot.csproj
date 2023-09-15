@@ -1,21 +1,78 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+    <!-- https://www.meziantou.net/creating-reproducible-build-in-dotnet.htm -->
+
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <Configurations>Debug;Release;Publish</Configurations>
+        <Platforms>AnyCPU</Platforms>
+
+        <ApplicationIcon>..\..\assets\icon.ico</ApplicationIcon>
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+        <!-- to include generated files in the NuGet package-->
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+        <Deterministic>true</Deterministic>
+
+        <Version>3.0.0</Version>
+        <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
+
+        <PackageId>GiGraph.Dot</PackageId>
+        <Title>GiGraph.Dot</Title>
+        <Product>GiGraph DOT</Product>
+        <Description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using the Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code or online tools like https://viz-js.com or http://magjac.com/graphviz-visual-editor, where you paste a script to view its visualization.</Description>
+        <Authors>Mariusz Schimke</Authors>
+        <Copyright>Copyright © 2020-2023 Mariusz Schimke</Copyright>
+        <PackageTags>DOT Graphviz graph diagram visualization</PackageTags>
+
+        <PackageProjectUrl>https://github.com/$(Repository)</PackageProjectUrl>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageIcon>icon.png</PackageIcon>
+        <EnablePackageValidation>true</EnablePackageValidation>
+
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/$(Repository).git</RepositoryUrl>
+        <RepositoryBranch>$(Branch)</RepositoryBranch>
+        <RepositoryCommit>$(Commit)</RepositoryCommit>
+
+        <PackageReleaseNotes>- The names and comments of certain methods and properties have been improved to better express their meaning.
+
+- A couple of helper methods have been added to nodes (ToHtmlTableNode, ToPlainHtmlNode with HTML builder).
+
+- The 'cluster' attribute is now supported as a syntax preference option to use when building the output graph (it was introduced by Graphviz as an alternative way of turning a subgraph into a cluster without using the 'cluster' prefix in its ID).
+
+See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Publish'">
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>GiGraph.snk</AssemblyOriginatorKeyFile>
+        <Optimize>true</Optimize>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="..\Solution Items\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+        <PackageReference Include="SauceControl.InheritDoc">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="..\..\Assets\icon.png" Link="icon.png" />
-        <Content Include="..\..\LICENSE.txt" Link="LICENSE.txt" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\GiGraph.Dot.Entities\GiGraph.Dot.Entities.csproj" />
-        <ProjectReference Include="..\GiGraph.Dot.Output.Generators\GiGraph.Dot.Output.Generators.csproj" />
+        <None Include="../../assets/icon.png" Pack="true" Visible="false" PackagePath="/" />
+        <None Include="../../LICENSE.txt" Pack="true" Visible="false" PackagePath="/" />
     </ItemGroup>
 
 </Project>
