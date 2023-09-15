@@ -33,7 +33,7 @@ public abstract class DotGraphSectionGenerator<TSection> : DotEntityGenerator<TS
     {
         // global node and edge attributes have to appear first, so that they are applied to all elements that come later in the output script
         WriteGlobalAttributes(
-            graphSection.Attributes,
+            graphSection.GetAttributes(_options),
             graphSection.Nodes.Attributes.Collection,
             graphSection.Edges.Attributes.Collection,
             writer
@@ -50,7 +50,7 @@ public abstract class DotGraphSectionGenerator<TSection> : DotEntityGenerator<TS
         WriteEdges(graphSection.Edges, writer);
     }
 
-    protected virtual void WriteGlobalAttributes(IDotAttributeCollection graphAttributes, DotAttributeCollection nodeAttributes, DotAttributeCollection edgeAttributes, IDotGraphBodyWriter writer)
+    protected virtual void WriteGlobalAttributes(DotAttributeCollection graphAttributes, DotAttributeCollection nodeAttributes, DotAttributeCollection edgeAttributes, IDotGraphBodyWriter writer)
     {
         var writeGraphAttributes = graphAttributes.Any();
 
@@ -80,7 +80,7 @@ public abstract class DotGraphSectionGenerator<TSection> : DotEntityGenerator<TS
         writer.EndGlobalEntityAttributesSection();
     }
 
-    protected virtual void WriteGlobalGraphAttributesAsStatementList(IDotAttributeCollection attributes, IDotGraphBodyWriter writer)
+    protected virtual void WriteGlobalGraphAttributesAsStatementList(DotAttributeCollection attributes, IDotGraphBodyWriter writer)
     {
         if (attributes.Any())
         {
@@ -90,7 +90,7 @@ public abstract class DotGraphSectionGenerator<TSection> : DotEntityGenerator<TS
         }
     }
 
-    protected virtual void WriteGlobalGraphAttributesAsClause(IDotAttributeCollection attributes, IDotGlobalEntityAttributesStatementWriter writer)
+    protected virtual void WriteGlobalGraphAttributesAsClause(DotAttributeCollection attributes, IDotGlobalEntityAttributesStatementWriter writer)
     {
         if (attributes.Any())
         {

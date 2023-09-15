@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Output.Entities;
+using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Clusters;
@@ -58,6 +61,28 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     public virtual string Id { get; set; }
 
     string IDotOrderable.OrderingKey => Id;
+
+    /// <summary>
+    ///     Returns attributes from the collection based on the syntax options specified. Because Graphviz introduced the 'cluster'
+    ///     attribute at some point as an alternative way of specifying that a subgraph should be interpreted as a cluster, this method
+    ///     makes sure that the attribute is present in the returned collection when there is a preference in the options to use it
+    ///     instead of the 'cluster' prefix in the ID of the subgraph.
+    /// </summary>
+    /// <param name="options">
+    ///     The options to apply.
+    /// </param>
+    protected override DotAttributeCollection GetAttributes(DotSyntaxOptions options)
+    {
+        var result = base.GetAttributes(options);
+        if (!options.Clusters.PreferClusterAttribute)
+        {
+            return result;
+        }
+
+        result = new(result);
+        result.Set(DotAttributeKeys.Cluster, true);
+        return result;
+    }
 
     /// <summary>
     ///     Creates a new cluster with the specified nodes.

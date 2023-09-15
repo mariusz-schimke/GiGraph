@@ -23,6 +23,11 @@ public class DotClusterId : DotId
     {
         const string cluster = "cluster";
 
+        if (options.Clusters.PreferClusterAttribute)
+        {
+            return _id;
+        }
+
         return _id is not null
             ? $"{cluster}{options.Clusters.ClusterIdSeparator}{_id}"
             : cluster;

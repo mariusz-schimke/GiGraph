@@ -39,4 +39,13 @@ public abstract record DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable
     ///     The DOT syntax rules to use.
     /// </param>
     protected internal abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
+
+    /// <summary>
+    ///     Checks if the attribute has the specified key. The comparison is made based on Graphviz syntax rules (where the keys are case
+    ///     sensitive).
+    /// </summary>
+    /// <param name="key">
+    ///     The key to check.
+    /// </param>
+    public bool HasKey(string key) => string.Equals(Key, key, StringComparison.Ordinal);
 }
