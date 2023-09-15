@@ -27,11 +27,8 @@ public class DotConcatenatedEscapeString : DotEscapeString, IEnumerable<DotEscap
         }
 
         // flatten to prevent multiple recursion on building the output string
-        _items = items.SelectMany
-            (
-                item => item is IEnumerable<DotEscapeString> concatenated
-                    ? concatenated
-                    : Enumerable.Empty<DotEscapeString>().Append(item)
+        _items = items.SelectMany(
+                item => item as IEnumerable<DotEscapeString> ?? Enumerable.Empty<DotEscapeString>().Append(item)
             )
            .ToArray();
     }
