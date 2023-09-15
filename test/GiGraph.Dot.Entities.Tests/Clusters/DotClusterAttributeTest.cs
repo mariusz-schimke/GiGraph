@@ -34,6 +34,10 @@ public class DotClusterAttributeTest
         // set this attribute explicitly, and it should be still overwritten with a value of true
         cluster.Attributes.SetValue(a => a.IsCluster, false);
         Snapshot.Match(graph.Build(syntaxOptions: syntaxOptions), snapshotName);
+
+        // the value should stay intact after the graph is built
+        var isCluster = cluster.Attributes.GetValue(a => a.IsCluster);
+        Assert.False(isCluster);
     }
 
     [Fact]

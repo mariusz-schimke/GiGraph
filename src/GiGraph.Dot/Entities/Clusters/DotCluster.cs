@@ -73,12 +73,13 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     /// </param>
     protected override DotAttributeCollection GetAttributes(DotSyntaxOptions options)
     {
+        var result = base.GetAttributes(options);
         if (!options.Clusters.PreferClusterAttribute)
         {
-            return base.GetAttributes(options);
+            return result;
         }
 
-        var result = new DotAttributeCollection(_attributes.Collection);
+        result = new(result);
         result.Set(DotAttributeKeys.Cluster, true);
         return result;
     }
