@@ -4,7 +4,7 @@
 
 ------
 
-[![NuGet Version](http://img.shields.io/nuget/v/GiGraph.Dot.svg?style=for-the-badge)](https://www.nuget.org/packages/GiGraph.Dot/) [![NuGet Downloads](https://img.shields.io/nuget/dt/GiGraph.Dot.svg?style=for-the-badge)](https://www.nuget.org/packages/GiGraph.Dot/)
+[![NuGet Version](http://img.shields.io/nuget/v/GiGraph.Dot.svg?style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/GiGraph.Dot/) [![NuGet Downloads](https://img.shields.io/nuget/dt/GiGraph.Dot.svg?style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/GiGraph.Dot/)
 
 
 
