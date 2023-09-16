@@ -32,6 +32,9 @@ public enum DotNodeShape
     [DotAttributeValue("plaintext")]
     PlainText,
 
+    /// <summary>
+    ///     An underline.
+    /// </summary>
     [DotAttributeValue("underline")]
     Underline,
 
@@ -41,22 +44,39 @@ public enum DotNodeShape
     [DotAttributeValue("point")]
     Point,
 
+    /// <summary>
+    ///     A circular shape.
+    /// </summary>
     [DotAttributeValue("circle")]
     Circle,
 
+    /// <summary>
+    ///     A clipped circle shape.
+    /// </summary>
     [DotAttributeValue("Mcircle")]
     ClippedCircle,
 
+    /// <summary>
+    ///     A double circle shape.
+    /// </summary>
     [DotAttributeValue("doublecircle")]
     DoubleCircle,
 
-
+    /// <summary>
+    ///     An elliptical shape.
+    /// </summary>
     [DotAttributeValue("ellipse")]
     Ellipse,
 
+    /// <summary>
+    ///     An oval shape.
+    /// </summary>
     [DotAttributeValue("oval")]
     Oval,
 
+    /// <summary>
+    ///     An egg shape.
+    /// </summary>
     [DotAttributeValue("egg")]
     Egg,
 
@@ -84,32 +104,51 @@ public enum DotNodeShape
     [DotAttributeValue("rectangle")]
     Rectangle,
 
-
+    /// <summary>
+    ///     A cylindrical shape.
+    /// </summary>
     [DotAttributeValue("cylinder")]
     Cylinder,
 
-
+    /// <summary>
+    ///     A square shape.
+    /// </summary>
     [DotAttributeValue("square")]
     Square,
 
+    /// <summary>
+    ///     A clipped square shape.
+    /// </summary>
     [DotAttributeValue("Msquare")]
     ClippedSquare,
 
-
+    /// <summary>
+    ///     A triangular shape.
+    /// </summary>
     [DotAttributeValue("triangle")]
     Triangle,
 
+    /// <summary>
+    ///     An inverted triangle shape.
+    /// </summary>
     [DotAttributeValue("invtriangle")]
     InvertedTriangle,
 
-
+    /// <summary>
+    ///     A diamond shape.
+    /// </summary>
     [DotAttributeValue("diamond")]
     Diamond,
 
+    /// <summary>
+    ///     A clipped diamond shape.
+    /// </summary>
     [DotAttributeValue("Mdiamond")]
     ClippedDiamond,
 
-
+    /// <summary>
+    ///     A parallelogram shape.
+    /// </summary>
     [DotAttributeValue("parallelogram")]
     Parallelogram,
 
@@ -119,54 +158,93 @@ public enum DotNodeShape
     [DotAttributeValue("polygon")]
     Polygon,
 
-
+    /// <summary>
+    ///     A pentagonal shape.
+    /// </summary>
     [DotAttributeValue("pentagon")]
     Pentagon,
 
+    /// <summary>
+    ///     A hexagonal shape.
+    /// </summary>
     [DotAttributeValue("hexagon")]
     Hexagon,
 
+    /// <summary>
+    ///     A septagonal shape.
+    /// </summary>
     [DotAttributeValue("septagon")]
     Septagon,
 
-
+    /// <summary>
+    ///     An octagonal shape.
+    /// </summary>
     [DotAttributeValue("octagon")]
     Octagon,
 
+    /// <summary>
+    ///     A double octagon shape.
+    /// </summary>
     [DotAttributeValue("doubleoctagon")]
     DoubleOctagon,
 
+    /// <summary>
+    ///     A triple octagon shape.
+    /// </summary>
     [DotAttributeValue("tripleoctagon")]
     TripleOctagon,
 
-
+    /// <summary>
+    ///     A trapezium shape.
+    /// </summary>
     [DotAttributeValue("trapezium")]
     Trapezium,
 
+    /// <summary>
+    ///     An inverted trapezium shape.
+    /// </summary>
     [DotAttributeValue("invtrapezium")]
     InvertedTrapezium,
 
-
+    /// <summary>
+    ///     A house shape.
+    /// </summary>
     [DotAttributeValue("house")]
     House,
 
+    /// <summary>
+    ///     An inverted house shape.
+    /// </summary>
     [DotAttributeValue("invhouse")]
     InvertedHouse,
 
-
+    /// <summary>
+    ///     A star shape.
+    /// </summary>
     [DotAttributeValue("star")]
     Star,
 
-
+    /// <summary>
+    ///     A note shape.
+    /// </summary>
     [DotAttributeValue("note")]
     Note,
 
+    /// <summary>
+    ///     A folder shape.
+    /// </summary>
     [DotAttributeValue("folder")]
     Folder,
 
+    /// <summary>
+    ///     A component shape.
+    /// </summary>
     [DotAttributeValue("component")]
     Component,
 
+    /// <summary>
+    ///     A tab shape.
+    /// </summary>
     [DotAttributeValue("tab")]
     Tab,
 
