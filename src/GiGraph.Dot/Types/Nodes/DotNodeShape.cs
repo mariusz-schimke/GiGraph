@@ -196,6 +196,8 @@ public enum DotNodeShape
 
 
     // --- SYNTHETIC BIOLOGY SHAPES ---
+    // see also Synthetic Biology Open Language (SBOL): https://en.wikipedia.org/wiki/Synthetic_Biology_Open_Language
+    // see also https://sbolstandard.org/visual-glyphs/
 
     /// <summary>
     ///     Synthetic biology: coding sequence (CDS).
@@ -252,16 +254,28 @@ public enum DotNodeShape
     Terminator,
 
     /// <summary>
-    ///     Synthetic biology: primer site.
+    ///     Synthetic biology: primer binding site.
     /// </summary>
     [DotAttributeValue("primersite")]
-    PrimerSite,
+    PrimerBindingSite,
 
     /// <summary>
-    ///     Synthetic biology: restriction site.
+    ///     Synthetic biology: 5' sticky restriction site.
     /// </summary>
     [DotAttributeValue("restrictionsite")]
-    RestrictionSite,
+    FivePrimeStickyRestrictionSite,
+
+    /// <summary>
+    ///     Synthetic biology: ribonuclease site.
+    /// </summary>
+    [DotAttributeValue("ribosite")]
+    RibonucleaseSite,
+
+    /// <summary>
+    ///     Synthetic biology: protease site.
+    /// </summary>
+    [DotAttributeValue("proteasesite")]
+    ProteaseSite,
 
     /// <summary>
     ///     Synthetic biology: 3' overhang.
@@ -276,16 +290,16 @@ public enum DotNodeShape
     FivePrimeOverhang,
 
     /// <summary>
-    ///     Synthetic biology: n overhang.
+    ///     Synthetic biology: nucleotide overhang.
     /// </summary>
     [DotAttributeValue("noverhang")]
-    NOverhang,
+    NucleotideOverhang,
 
     /// <summary>
-    ///     Synthetic biology: assembly.
+    ///     Synthetic biology: assembly scar.
     /// </summary>
     [DotAttributeValue("assembly")]
-    Assembly,
+    AssemblyScar,
 
     /// <summary>
     ///     Synthetic biology: insulator.
@@ -294,26 +308,14 @@ public enum DotNodeShape
     Insulator,
 
     /// <summary>
-    ///     Synthetic biology: ribo site.
-    /// </summary>
-    [DotAttributeValue("ribosite")]
-    RiboSite,
-
-    /// <summary>
-    ///     Synthetic biology: protease site.
-    /// </summary>
-    [DotAttributeValue("proteasesite")]
-    ProteaseSite,
-
-    /// <summary>
-    ///     Synthetic biology: RNA stab.
+    ///     Synthetic biology: RNA stability element.
     /// </summary>
     [DotAttributeValue("rnastab")]
-    RnaStab,
+    RnaStabilityElement,
 
     /// <summary>
-    ///     Synthetic biology: protein stab.
+    ///     Synthetic biology: protein stability element.
     /// </summary>
     [DotAttributeValue("proteinstab")]
-    ProteinStab
+    ProteinStabilityElement
 }
