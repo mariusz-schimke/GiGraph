@@ -43,11 +43,7 @@
         <RepositoryBranch>$(Branch)</RepositoryBranch>
         <RepositoryCommit>$(Commit)</RepositoryCommit>
 
-        <PackageReleaseNotes>- The names and comments of certain methods and properties have been improved to better express their meaning.
-
-- A couple of helper methods have been added to nodes (ToHtmlTableNode, ToPlainHtmlNode with HTML builder).
-
-- The 'cluster' attribute is now supported as a syntax preference option to use when building the output graph (it was introduced by Graphviz as an alternative way of turning a subgraph into a cluster without using the 'cluster' prefix in its ID).
+        <PackageReleaseNotes>- Synthetic biology node shape names have been improved (clarified).
 
 See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
     </PropertyGroup>
