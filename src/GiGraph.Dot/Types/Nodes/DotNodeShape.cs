@@ -276,6 +276,7 @@ public enum DotNodeShape
     // --- SYNTHETIC BIOLOGY SHAPES ---
     // see also Synthetic Biology Open Language (SBOL): https://en.wikipedia.org/wiki/Synthetic_Biology_Open_Language
     // see also https://sbolstandard.org/visual-glyphs/
+    // see also (these symbols match those by Graphviz): https://fr.m.wikipedia.org/wiki/Fichier:Synthetic_Biology_Open_Language_%28SBOL%29_standard_visual_symbols.png
 
     /// <summary>
     ///     Synthetic biology: coding sequence (CDS).
