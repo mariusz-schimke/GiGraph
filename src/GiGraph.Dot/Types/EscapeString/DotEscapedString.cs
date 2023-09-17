@@ -4,12 +4,12 @@ using GiGraph.Dot.Output.Text.Escaping;
 namespace GiGraph.Dot.Types.EscapeString;
 
 /// <summary>
-///     An escaped string to be rendered as is on output DOT script generation. It should follow the formatting rules described in
-///     the
-///     <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">
+///     An escaped string to be rendered on output DOT script generation as is, with no further processing applied to it (no special
+///     characters will be escaped or replaced). The string value has to follow the formatting rules described in the
+///     <see href="https://www.graphviz.org/docs/attr-types/escString">
 ///         documentation
 ///     </see>
-///     .
+///     (otherwise the output DOT script may be syntactically incorrect). For comparison, see also <see cref="DotUnescapedString" />.
 /// </summary>
 public class DotEscapedString : DotEscapeString
 {
