@@ -65,6 +65,7 @@ For a complete documentation of the DOT language and visualization capabilities 
   * [Formatting preferences](#formatting-preferences)
   * [Syntax preferences](#syntax-preferences)
     + [Sorting elements](#sorting-elements)
+    + [Cluster preferences](#cluster-preferences)
 - [Script subsections](#script-subsections)
 - [Script annotation](#script-annotation)
 
