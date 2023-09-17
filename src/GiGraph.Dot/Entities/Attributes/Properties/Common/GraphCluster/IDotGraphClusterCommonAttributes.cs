@@ -28,7 +28,7 @@ public interface IDotGraphClusterCommonAttributes
     ///     </para>
     ///     <para>
     ///         The fill style can also be set to do fills using more than 2 colors (set fill style to
-    ///         <see cref="DotClusterFillStyle.Striped" />, and use <see cref="DotMultiColor" /> as a color list definition).
+    ///         <see cref="DotClusterFillStyle.Striped" />, and use <see cref="DotMulticolor" /> as a color list definition).
     ///     </para>
     /// </summary>
     DotColorDefinition Color { get; set; }

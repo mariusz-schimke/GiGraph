@@ -4,7 +4,7 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Types.Colors;
 
 /// <summary>
-///     Represents a weighted color for use in color lists only (<see cref="DotMultiColor" />).
+///     Represents a weighted color for use in color lists only (<see cref="DotMulticolor" />).
 /// </summary>
 /// <param name="Color">
 ///     The color to initialize the instance with.

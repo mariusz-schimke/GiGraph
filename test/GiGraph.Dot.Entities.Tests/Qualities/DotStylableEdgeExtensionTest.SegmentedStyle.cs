@@ -17,7 +17,7 @@ public partial class DotStylableEdgeExtensionTest
         var edge = graph.Edges.Add("a", "b");
 
         Assert.Throws<ArgumentException>(() => edge.SetSegmentedStyle(Color.Red));
-        Assert.Throws<ArgumentException>(() => edge.SetSegmentedStyle(new DotMultiColor(Color.Red)));
+        Assert.Throws<ArgumentException>(() => edge.SetSegmentedStyle(new DotMulticolor(Color.Red)));
     }
 
     [Fact]
@@ -29,7 +29,7 @@ public partial class DotStylableEdgeExtensionTest
            .SetSegmentedStyle(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5));
 
         graph.Edges.Add("c", "d")
-           .SetSegmentedStyle(new DotMultiColor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
+           .SetSegmentedStyle(new DotMulticolor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
 
         Snapshot.Match(graph.Build(), "segmented_edges");
     }
@@ -43,7 +43,7 @@ public partial class DotStylableEdgeExtensionTest
            .SetSegmentedStyle(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5));
 
         graph.Subsections.Add()
-           .Edges.SetSegmentedStyle(new DotMultiColor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
+           .Edges.SetSegmentedStyle(new DotMulticolor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
 
         Snapshot.Match(graph.Build(), "segmented_edge_collections");
     }
