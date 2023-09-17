@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Types.Edges;
 
 /// <summary>
 ///     The arrow direction.
-///     <see href="https://www.graphviz.org/doc/info/attrs.html#k:dirType">
+///     <see href="https://www.graphviz.org/docs/attr-types/dirType">
 ///         View how individual arrow directions are visualized
 ///     </see>
 ///     .
