@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Output.Metadata;
+﻿using GiGraph.Dot.Entities.Nodes;
+using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Records;
 
 namespace GiGraph.Dot.Types.Nodes;
@@ -339,7 +340,8 @@ public enum DotNodeShape
     PrimerBindingSite,
 
     /// <summary>
-    ///     Synthetic biology: 5' sticky restriction site.
+    ///     Synthetic biology: 5' sticky restriction site. Note that to achieve a 3' sticky restriction site shape, use this one instead,
+    ///     and rotate the node by 90° (see <see cref="DotNodeDefinition.Geometry" />).
     /// </summary>
     [DotAttributeValue("restrictionsite")]
     FivePrimeStickyRestrictionSite,
