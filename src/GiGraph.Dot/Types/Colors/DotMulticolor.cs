@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Types.Colors;
 /// <summary>
 ///     Represents a list of colors that may be used to generate gradient fill, multicolor stripes or wedges, or multicolor edges.
 /// </summary>
-public record DotMultiColor : DotColorDefinition
+public record DotMulticolor : DotColorDefinition
 {
     /// <summary>
     ///     <para>
@@ -38,7 +38,7 @@ public record DotMultiColor : DotColorDefinition
     ///     both colors with and without weights are provided, the sum of the weighted ones should be below 1, as otherwise those without
     ///     weights will be ignored by the visualization tool.
     /// </param>
-    public DotMultiColor(params DotColor[] colors)
+    public DotMulticolor(params DotColor[] colors)
     {
         Colors = colors ?? throw new ArgumentNullException(nameof(colors), "Color collection must not be null.");
     }
@@ -69,7 +69,7 @@ public record DotMultiColor : DotColorDefinition
     ///     both colors with and without weights are provided, the sum of the weighted ones should be below 1, as otherwise those without
     ///     weights will be ignored by the visualization tool.
     /// </param>
-    public DotMultiColor(IEnumerable<DotColor> colors)
+    public DotMulticolor(IEnumerable<DotColor> colors)
         : this(colors?.ToArray())
     {
     }
@@ -104,7 +104,7 @@ public record DotMultiColor : DotColorDefinition
     ///         <see cref="DotColorSchemes.X11" /> naming.
     ///     </para>
     /// </param>
-    public DotMultiColor(IEnumerable<Color> colors, string scheme = null)
+    public DotMulticolor(IEnumerable<Color> colors, string scheme = null)
         : this(colors?.Select(c => new DotColor(c, scheme)))
     {
     }
@@ -136,7 +136,7 @@ public record DotMultiColor : DotColorDefinition
     /// <param name="weight2">
     ///     The proportion of the area to cover with the second color (it must be in the range 0 ≤ weight &lt; 1).
     /// </param>
-    public static DotMultiColor Dual(DotColor color1, double weight1, DotColor color2, double weight2) =>
+    public static DotMulticolor Dual(DotColor color1, double weight1, DotColor color2, double weight2) =>
         new(new DotWeightedColor(color1, weight1), new DotWeightedColor(color2, weight2));
 
     /// <summary>
@@ -152,7 +152,7 @@ public record DotMultiColor : DotColorDefinition
     /// <param name="color2">
     ///     The second color to initialize the instance with.
     /// </param>
-    public static DotMultiColor Dual(DotColor color1, double weight1, DotColor color2) => new(new DotWeightedColor(color1, weight1), color2);
+    public static DotMulticolor Dual(DotColor color1, double weight1, DotColor color2) => new(new DotWeightedColor(color1, weight1), color2);
 
     /// <summary>
     ///     Creates a new color definition visualized as a dual-color fill (refers to the root graph, nodes, and clusters), or as a
@@ -167,5 +167,5 @@ public record DotMultiColor : DotColorDefinition
     /// <param name="weight2">
     ///     The proportion of the area to cover with the second color (it must be in the range 0 ≤ weight &lt; 1).
     /// </param>
-    public static DotMultiColor Dual(DotColor color1, DotColor color2, double weight2) => new(color1, new DotWeightedColor(color2, weight2));
+    public static DotMulticolor Dual(DotColor color1, DotColor color2, double weight2) => new(color1, new DotWeightedColor(color2, weight2));
 }

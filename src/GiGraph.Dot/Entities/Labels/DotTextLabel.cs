@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Labels;
 ///     <para>
 ///         Represents a string label. The label can either be a plain text that will be escaped on output DOT script generation, or
 ///         an escaped string (<see cref="DotEscapedString" />) that follows the rules described in the
-///         <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">
+///         <see href="https://www.graphviz.org/docs/attr-types/escString">
 ///             documentation
 ///         </see>
 ///         .

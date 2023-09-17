@@ -19,7 +19,7 @@ public partial class DotStylableEdgeExtensionTest
         Assert.Throws<ArgumentException>(() => edge.SetMultilineStyle(4, new DotWeightedColor(Color.Red, 0.5)));
 
         Assert.Throws<ArgumentException>(() => edge.SetMultilineStyle(new DotWeightedColor(Color.Red, 0.5)));
-        Assert.Throws<ArgumentException>(() => edge.SetMultilineStyle(new DotMultiColor(new DotWeightedColor(Color.Red, 0.5))));
+        Assert.Throws<ArgumentException>(() => edge.SetMultilineStyle(new DotMulticolor(new DotWeightedColor(Color.Red, 0.5))));
     }
 
     [Fact]
@@ -31,7 +31,7 @@ public partial class DotStylableEdgeExtensionTest
         graph.Edges.Add("c", "d").SetMultilineStyle(4, Color.Red);
 
         graph.Edges.Add("e", "f").SetMultilineStyle(Color.Red, Color.Black, Color.Green);
-        graph.Edges.Add("g", "h").SetMultilineStyle(new DotMultiColor(Color.Red, Color.Black, Color.Green));
+        graph.Edges.Add("g", "h").SetMultilineStyle(new DotMulticolor(Color.Red, Color.Black, Color.Green));
 
         Snapshot.Match(graph.Build(), "multiline_edges");
     }
@@ -44,7 +44,7 @@ public partial class DotStylableEdgeExtensionTest
         graph.Edges.SetMultilineStyle(4);
         graph.Subsections.Add().Edges.SetMultilineStyle(4, Color.Red);
         graph.Subsections.Add().Edges.SetMultilineStyle(Color.Red, Color.Black, Color.Green);
-        graph.Subsections.Add().Edges.SetMultilineStyle(new DotMultiColor(Color.Red, Color.Black, Color.Green));
+        graph.Subsections.Add().Edges.SetMultilineStyle(new DotMulticolor(Color.Red, Color.Black, Color.Green));
 
         Snapshot.Match(graph.Build(), "multiline_edge_collections");
     }

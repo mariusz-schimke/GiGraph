@@ -16,10 +16,10 @@ public class DotWedgeableExtensionTest
         var graph = new DotGraph();
 
         graph.Nodes.Add("node1").SetWedgedFill(Color.Red, Color.Blue);
-        graph.Nodes.Add("node2").SetWedgedFill(new DotMultiColor(Color.Red, Color.Blue));
+        graph.Nodes.Add("node2").SetWedgedFill(new DotMulticolor(Color.Red, Color.Blue));
 
         graph.Nodes.Add("node3").SetWedgedFill(DotNodeShape.Rect, Color.Red, Color.Blue);
-        graph.Nodes.Add("node4").SetWedgedFill(DotNodeShape.Rectangle, new DotMultiColor(Color.Red, Color.Blue));
+        graph.Nodes.Add("node4").SetWedgedFill(DotNodeShape.Rectangle, new DotMulticolor(Color.Red, Color.Blue));
 
         Snapshot.Match(graph.Build(), "wedged_fill_on_individual_nodes");
     }
@@ -30,10 +30,10 @@ public class DotWedgeableExtensionTest
         var graph = new DotGraph();
 
         graph.Nodes.AddGroup("node1", "node2").SetWedgedFill(Color.Red, Color.Blue);
-        graph.Nodes.AddGroup("node3", "node4").SetWedgedFill(new DotMultiColor(Color.Red, Color.Blue));
+        graph.Nodes.AddGroup("node3", "node4").SetWedgedFill(new DotMulticolor(Color.Red, Color.Blue));
 
         graph.Nodes.AddGroup("node5", "node6").SetWedgedFill(DotNodeShape.Rect, Color.Red, Color.Blue);
-        graph.Nodes.AddGroup("node7", "node8").SetWedgedFill(DotNodeShape.Rectangle, new DotMultiColor(Color.Red, Color.Blue));
+        graph.Nodes.AddGroup("node7", "node8").SetWedgedFill(DotNodeShape.Rectangle, new DotMulticolor(Color.Red, Color.Blue));
 
         Snapshot.Match(graph.Build(), "wedged_fill_on_individual_node_groups");
     }
@@ -46,7 +46,7 @@ public class DotWedgeableExtensionTest
         Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_params");
 
         graph = new();
-        graph.Nodes.SetWedgedFill(new DotMultiColor(Color.Red, Color.Blue));
+        graph.Nodes.SetWedgedFill(new DotMulticolor(Color.Red, Color.Blue));
         Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_multicolor");
 
         graph = new();
@@ -54,7 +54,7 @@ public class DotWedgeableExtensionTest
         Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_params_and_shape");
 
         graph = new();
-        graph.Nodes.SetWedgedFill(DotNodeShape.Rectangle, new DotMultiColor(Color.Red, Color.Blue));
+        graph.Nodes.SetWedgedFill(DotNodeShape.Rectangle, new DotMulticolor(Color.Red, Color.Blue));
         Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_multicolor_and_shape");
     }
 }

@@ -28,7 +28,7 @@ public abstract class DotLabel : IDotEncodable
     /// <summary>
     ///     Creates a label initialized with formatted text. The text should be formatted and escaped according to the rules described in
     ///     the
-    ///     <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">
+    ///     <see href="https://www.graphviz.org/docs/attr-types/escString">
     ///         escape string documentation
     ///     </see>
     ///     . If the text represents a record, its format should follow the rules described in the

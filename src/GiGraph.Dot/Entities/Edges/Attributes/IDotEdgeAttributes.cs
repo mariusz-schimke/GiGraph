@@ -104,13 +104,13 @@ public interface IDotEdgeAttributes
     ///         Gets or sets the color to use for the edge (default: <see cref="System.Drawing.Color.Black" />).
     ///     </para>
     ///     <para>
-    ///         If <see cref="DotMultiColor" /> is used, with no weighted colors in its color collection (<see cref="DotColor" /> items
+    ///         If <see cref="DotMulticolor" /> is used, with no weighted colors in its color collection (<see cref="DotColor" /> items
     ///         only), the edge is drawn using parallel splines or lines, one for each color in the list, in the order given. The head
     ///         arrow, if any, is drawn using the first color in the list, and the tail arrow, if any, the second color. This supports
     ///         the common case of drawing opposing edges, but using parallel splines instead of separately routed multiedges.
     ///     </para>
     ///     <para>
-    ///         If <see cref="DotMultiColor" /> is used with at least one weighted color (<see cref="DotWeightedColor" />), the colors
+    ///         If <see cref="DotMulticolor" /> is used with at least one weighted color (<see cref="DotWeightedColor" />), the colors
     ///         are drawn in series, with each color being given roughly its specified fraction of the edge, expressed by the
     ///         <see cref="DotWeightedColor.Weight" /> property.
     ///     </para>

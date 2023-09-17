@@ -21,7 +21,7 @@ public enum DotClusterFillStyle
 
     /// <summary>
     ///     Causes the fill to be done as a set of vertical stripes. The colors are specified via a color list (see
-    ///     <see cref="DotMultiColor" />), and drawn from left to right in list order. Optional color weights can be specified to
+    ///     <see cref="DotMulticolor" />), and drawn from left to right in list order. Optional color weights can be specified to
     ///     indicate the proportional widths of the bars. If the sum of the weights is less than 1, the remainder is divided evenly among
     ///     the colors with no weight.
     /// </summary>

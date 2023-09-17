@@ -18,7 +18,7 @@ public static class DotWedgeFillableExtension
     ///     The colors to use for consecutive wedges. Proportions for individual wedges may be specified optionally by using a
     ///     <see cref="DotWeightedColor" /> for them.
     /// </param>
-    public static void SetWedgedFill<T>(this T @this, DotMultiColor colors)
+    public static void SetWedgedFill<T>(this T @this, DotMulticolor colors)
         where T : IDotFillable, IDotWedgeFillable
     {
         @this.SetFillStyle(DotFillStyle.Wedged);
@@ -38,7 +38,7 @@ public static class DotWedgeFillableExtension
     ///     The colors to use for consecutive wedges. Proportions for individual wedges may be specified optionally by using a
     ///     <see cref="DotWeightedColor" /> for them.
     /// </param>
-    public static void SetWedgedFill<T>(this T @this, DotNodeShape shape, DotMultiColor colors)
+    public static void SetWedgedFill<T>(this T @this, DotNodeShape shape, DotMulticolor colors)
         where T : IDotFillable, IDotWedgeFillable, IDotShapableNode
     {
         @this.SetWedgedFill(colors);
@@ -58,7 +58,7 @@ public static class DotWedgeFillableExtension
     public static void SetWedgedFill<T>(this T @this, params DotColor[] colors)
         where T : IDotFillable, IDotWedgeFillable
     {
-        @this.SetWedgedFill(new DotMultiColor(colors));
+        @this.SetWedgedFill(new DotMulticolor(colors));
     }
 
     /// <summary>
@@ -77,6 +77,6 @@ public static class DotWedgeFillableExtension
     public static void SetWedgedFill<T>(this T @this, DotNodeShape shape, params DotColor[] colors)
         where T : IDotFillable, IDotWedgeFillable, IDotShapableNode
     {
-        @this.SetWedgedFill(shape, new DotMultiColor(colors));
+        @this.SetWedgedFill(shape, new DotMulticolor(colors));
     }
 }

@@ -65,6 +65,7 @@ For a complete documentation of the DOT language and visualization capabilities 
   * [Formatting preferences](#formatting-preferences)
   * [Syntax preferences](#syntax-preferences)
     + [Sorting elements](#sorting-elements)
+    + [Cluster preferences](#cluster-preferences)
 - [Script subsections](#script-subsections)
 - [Script annotation](#script-annotation)
 
@@ -1954,6 +1955,52 @@ Using mentioned **DotSyntaxOptions** and its *SortElements* property you can ena
 
 
 
+### Cluster preferences
+
+There are two ways to turn a [subgraph](#subgraphs) semantically into a [cluster](#clusters):
+
+* by adding the ‘cluster’ prefix to its ID (this is done by the library implicitly),
+
+* by setting its ‘cluster’ attribute to true.
+
+By default, the library applies the first option, that is prefixing the subgraph’s ID. If you want to change that behavior, use the **DotSyntaxOptions** class as in the example below.
+
+```c#
+var graph = new DotGraph();
+graph.Clusters.Add("C1");
+
+var options = new DotSyntaxOptions
+{
+    Clusters = { PreferClusterAttribute = true }
+};
+
+Console.WriteLine(graph.Build(syntaxOptions: options));
+graph.SaveToFile("example.gv", syntaxOptions: options);
+```
+
+```dot
+digraph
+{
+    subgraph C1
+    {
+        cluster = true
+    }
+}
+```
+
+The *PreferClusterAttribute* is set to false by default, in which case the output script would look like this:
+
+```dot
+digraph
+{
+    subgraph "cluster C1"
+    {
+    }
+}
+```
+
+
+
 # Script subsections
 
 By design, the library generates the output DOT script with elements written in the following order:
@@ -1970,11 +2017,11 @@ The DOT grammar, however, lets you place individual elements in the script in an
 
 The subsections, as they are called in the library, are separate groups of elements. They are written consecutively, one section after another, in the order they are added to the collection of subsections on the graph instance level. The elements in each such section, on the other hand, are written in the order mentioned earlier.
 
-⚠️ By using subsections you can split the DOT script into multiple sections, and, for instance, set different global attributes in any of them. Remember, however, that attributes set in one section have an impact on the elements that follow them in the output script. So as long as sections are written consecutively, setting attributes in any of them has an impact not only on the elements in that specific section, but also on elements in the sections that follow it.
+⚠️ By using subsections you can split the DOT script into multiple sections, and, for instance, set different global attributes in any of them. Remember, however, that attributes set in one section have an impact on the elements that follow them in the output script. So because sections are written consecutively, setting attributes in any of them has an impact not only on the elements in that specific section, but also on elements in the sections that follow it.
 
-*❗️ Note that in most cases you won't probably need to split the DOT script into sections. They give you the flexibility to control the order individual elements or groups of elements are written, but it isn't usually necessary. When you want to specify attributes for specific groups of elements of the graph, you will probably prefer using [subgraphs](#subgraphs), as they give you more granular control over the elements they contain, without affecting others.*
+*❗️ Note that in the majority of cases you won't need to split the DOT script into sections. They give you the flexibility to control the order individual elements or groups of elements are written, but they shouldn't normally be useful. When you want to specify attributes for specific groups of elements of the graph, consider using [subgraphs](#subgraphs) because they give you more granular control over the elements they contain, without affecting others.*
 
-Consider the following example to see how the primary section (on the graph instance level), and subsections, are rendered in the output DOT script, and how their attributes impact graph visualization.
+The following example shows how the primary section (on the graph instance level), and subsections, are rendered in the output DOT script, and how their attributes impact graph visualization.
 
 ```c#
 // the primary section (on the graph instance level)
@@ -2027,6 +2074,10 @@ digraph
 <p align="center">
   <img src="./assets/examples/subsections.svg">
 </p>
+
+
+Subsections are supported the same way for subgraphs and clusters.
+
 
 
 
