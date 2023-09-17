@@ -13,10 +13,14 @@ public partial class DotTextEscapingPipeline
     ///     Creates a new pipeline that escapes HTML comment tag text.
     /// </summary>
     /// <remarks>
-    ///     https://graphviz.org/doc/info/shapes.html#border "HTML comments are allowed within an HTML string. They can occur anywhere
-    ///     provided that, if they contain part of an HTML element, they must contain the entire element." Therefore I think it should
-    ///     undergo escaping similar to that of textual context of an element. This will reduce readability of the comment, but will make
-    ///     sure it will not break the structure of the HTML document.
+    ///     "HTML comments are allowed within an HTML string. They can occur anywhere provided that, if they contain part of an HTML
+    ///     element, they must contain the entire element." Therefore I think it should undergo escaping similar to that of textual
+    ///     context of an element. This will reduce readability of the comment, but will make sure it will not break the structure of the
+    ///     HTML document. See
+    ///     <see href="https://www.graphviz.org/doc/info/shapes.html#html">
+    ///         documentation
+    ///     </see>
+    ///     .
     /// </remarks>
     public static DotTextEscapingPipeline ForHtmlCommentText() => ForHtmlElementTextContent();
 

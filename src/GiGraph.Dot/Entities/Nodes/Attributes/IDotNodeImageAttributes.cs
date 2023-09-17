@@ -10,7 +10,7 @@ public interface IDotNodeImageAttributes
     /// <summary>
     ///     <para>
     ///         Gives the name of a file containing an image to be displayed inside the node. The image file must be in one of the
-    ///         <see href="http://www.graphviz.org/doc/info/output.html#d:image_fmts">
+    ///         <see href="https://www.graphviz.org/docs/outputs/#image-formats">
     ///             recognized formats
     ///         </see>
     ///         , typically JPEG, PNG, GIF, BMP, SVG or Postscript, and be able to be converted into the desired output format.

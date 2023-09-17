@@ -55,7 +55,7 @@ public partial class DotTextEscapingPipeline : List<IDotTextEscaper>, IDotTextEs
 
             // In quoted strings in DOT, the only escaped character is double-quote ("). That is, in quoted strings, the dyad \" is converted to ";
             // all other characters are left unchanged. In particular, \\ remains \\. Layout engines may apply additional escape sequences.
-            // https://graphviz.org/doc/info/lang.html
+            // https://www.graphviz.org/doc/info/lang.html
             new DotTrailingBackslashHtmlEscaper(),
             new DotQuotationMarkEscaper()
         );

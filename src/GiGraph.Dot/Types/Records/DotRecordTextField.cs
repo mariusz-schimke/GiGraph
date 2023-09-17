@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Types.Records;
 
 /// <summary>
 ///     Represents a textual field of a record (<see cref="DotRecord" />). A record can be used as the label of a
-///     <see href="http://www.graphviz.org/doc/info/shapes.html#record">
+///     <see href="https://www.graphviz.org/doc/info/shapes.html#record">
 ///         record-shaped node
 ///     </see>
 ///     .

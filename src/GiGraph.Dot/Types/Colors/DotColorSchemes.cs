@@ -11,22 +11,22 @@ public static class DotColorSchemes
     public const string Default = "/";
 
     /// <summary>
-    ///     The X11 color scheme (<see href="http://www.graphviz.org/doc/info/colors.html#x11" />).
+    ///     The X11 color scheme (<see href="https://www.graphviz.org/doc/info/colors.html#x11" />).
     /// </summary>
     public const string X11 = "x11";
 
     /// <summary>
-    ///     The SVG color scheme (<see href="http://www.graphviz.org/doc/info/colors.html#svg" />).
+    ///     The SVG color scheme (<see href="https://www.graphviz.org/doc/info/colors.html#svg" />).
     /// </summary>
     public const string Svg = "svg";
 
     /// <summary>
-    ///     The Brewer color schemes (<see href="http://www.graphviz.org/doc/info/colors.html#brewer" />).
+    ///     The Brewer color schemes (<see href="https://www.graphviz.org/doc/info/colors.html#brewer" />).
     /// </summary>
     public static DotBrewerColorSchemes Brewer { get; } = new();
 
     /// <summary>
-    ///     Provides a list of supported Brewer color schemes (<see href="http://www.graphviz.org/doc/info/colors.html#brewer" />).
+    ///     Provides a list of supported Brewer color schemes (<see href="https://www.graphviz.org/doc/info/colors.html#brewer" />).
     /// </summary>
     public class DotBrewerColorSchemes
     {

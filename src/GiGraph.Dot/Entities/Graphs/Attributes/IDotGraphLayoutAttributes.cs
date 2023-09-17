@@ -103,11 +103,8 @@ public interface IDotGraphLayoutAttributes
     ///         the graphs are packed together.
     ///     </para>
     ///     <para>
-    ///         If an integral value is specified (see <see cref="DotPackingMargin" />), this is used as the size, in
-    ///         <see href="http://www.graphviz.org/doc/info/attrs.html#points">
-    ///             points
-    ///         </see>
-    ///         , of a margin around each part; otherwise, a default margin of 8 is used.
+    ///         If an integral value is specified (see <see cref="DotPackingMargin" />), this is used as the size, in points, of a margin
+    ///         around each part; otherwise, a default margin of 8 is used.
     ///     </para>
     ///     <para>
     ///         If disabled (see <see cref="DotPackingToggle" />), the entire graph is laid out together. The granularity and method of

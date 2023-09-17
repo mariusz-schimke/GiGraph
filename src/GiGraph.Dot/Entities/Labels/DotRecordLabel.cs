@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Labels;
 
 /// <summary>
 ///     Represents a record label. The value is a compatible record string following the rules described in the
-///     <see href="http://www.graphviz.org/doc/info/shapes.html#record">
+///     <see href="https://www.graphviz.org/doc/info/shapes.html#record">
 ///         documentation
 ///     </see>
 ///     .

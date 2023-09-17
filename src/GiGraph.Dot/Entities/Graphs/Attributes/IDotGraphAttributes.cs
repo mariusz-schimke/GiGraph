@@ -30,7 +30,7 @@ public interface IDotGraphAttributes
     ///     layout. For dot, the default is to draw edges as splines (<see cref="DotEdgeShape.Spline" />). For all other layouts, the
     ///     default is to draw edges as line segments (<see cref="DotEdgeShape.Line" />). Note that for these latter layouts, if
     ///     <see cref="DotEdgeShape.Spline" /> is used, this requires non-overlapping nodes (cf.
-    ///     <see href="http://www.graphviz.org/doc/info/attrs.html#d:overlap">
+    ///     <see href="https://www.graphviz.org/docs/attrs/overlap">
     ///         overlap
     ///     </see>
     ///     ). If fdp is used for layout and <see cref="DotEdgeShape.Compound" /> is used, then the edges are drawn to avoid clusters as

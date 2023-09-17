@@ -19,7 +19,7 @@ public interface IDotNodeGeometryAttributes
     /// <summary>
     ///     Sets the number of peripheries used in polygonal node shapes (<see cref="IDotNodeAttributes.Shape" />). The default value is
     ///     shape dependent, the minimum value is 0. Note that user-defined shapes (see
-    ///     <see href="http://www.graphviz.org/doc/info/shapes.html#epsf">
+    ///     <see href="https://www.graphviz.org/doc/info/shapes.html#epsf">
     ///         documentation
     ///     </see>
     ///     ) are treated as a form of box shape, so the default peripheries value is 1, and the user-defined shape will be drawn in a
