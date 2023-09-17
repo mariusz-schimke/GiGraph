@@ -254,8 +254,11 @@ public partial class DotAttributeCollection
     /// <summary>
     ///     Adds or replaces the specified attribute in the collection. The value is rendered AS IS in the output DOT script, so the
     ///     attribute can be used for any type of value, not only for strings. Make sure, however, that the value is escaped when
-    ///     necessary, following the DOT syntax rules ( <see href="https://www.graphviz.org/doc/info/lang.html" />). If, for instance, it
-    ///     contains an unescaped quotation mark, the output script will be syntactically incorrect.
+    ///     necessary, following the DOT syntax rules (see
+    ///     <see href="https://www.graphviz.org/doc/info/lang.html">
+    ///         documentation
+    ///     </see>
+    ///     ). If, for instance, it contains an unescaped quotation mark, the output script will be syntactically incorrect.
     /// </summary>
     /// <param name="key">
     ///     The key of the attribute to include in the collection.
