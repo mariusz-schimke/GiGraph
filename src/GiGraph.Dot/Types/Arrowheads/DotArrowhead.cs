@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Types.Arrowheads;
 
 /// <summary>
 ///     Defines an arrowhead shape. See the
-///     <see href="http://www.graphviz.org/doc/info/arrows.html">
+///     <see href="https://www.graphviz.org/doc/info/arrows.html">
 ///         documentation
 ///     </see>
 ///     to view what shape configurations are supported.

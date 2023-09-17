@@ -32,7 +32,7 @@ public abstract class DotLabel : IDotEncodable
     ///         escape string documentation
     ///     </see>
     ///     . If the text represents a record, its format should follow the rules described in the
-    ///     <see href="http://www.graphviz.org/doc/info/shapes.html#record">
+    ///     <see href="https://www.graphviz.org/doc/info/shapes.html#record">
     ///         record-shaped node documentation
     ///     </see>
     ///     .
@@ -44,7 +44,7 @@ public abstract class DotLabel : IDotEncodable
 
     /// <summary>
     ///     Creates an HTML label. The HTML should be generated according to the rules described in the
-    ///     <see href="http://www.graphviz.org/doc/info/shapes.html#html">
+    ///     <see href="https://www.graphviz.org/doc/info/shapes.html#html">
     ///         documentation
     ///     </see>
     ///     .

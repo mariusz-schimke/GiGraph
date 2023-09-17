@@ -2,9 +2,12 @@
 
 /// <summary>
 ///     A raw value attribute. The value is rendered AS IS in the output DOT script, so the attribute can be used for any type of
-///     value, not only for strings. Make sure, however, that the value is escaped when necessary, following the DOT syntax rules (
-///     <see href="https://graphviz.org/doc/info/lang.html" />). If, for instance, it contains an unescaped quotation mark, the
-///     output script will be syntactically incorrect.
+///     value, not only for strings. Make sure, however, that the value is escaped when necessary, following the DOT syntax rules
+///     (see
+///     <see href="https://www.graphviz.org/doc/info/lang.html">
+///         documentation
+///     </see>
+///     ). If, for instance, it contains an unescaped quotation mark, the output script will be syntactically incorrect.
 /// </summary>
 public record DotRawAttribute : DotAttribute<string>
 {

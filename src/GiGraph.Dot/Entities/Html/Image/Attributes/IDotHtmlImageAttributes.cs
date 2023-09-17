@@ -10,11 +10,7 @@ public interface IDotHtmlImageAttributes
     /// <summary>
     ///     Specifies the image file to be displayed. Note that if the software is used as a web server, file system access to images is
     ///     more restricted. See
-    ///     <see href="https://graphviz.org/doc/info/command.html#d:GV_FILE_PATH">
-    ///         GV_FILE_PATH
-    ///     </see>
-    ///     and
-    ///     <see href="https://graphviz.org/doc/info/command.html#d:SERVER_NAME">
+    ///     <see href="https://www.graphviz.org/doc/info/command.html#d:SERVER_NAME">
     ///         SERVER_NAME
     ///     </see>
     ///     .

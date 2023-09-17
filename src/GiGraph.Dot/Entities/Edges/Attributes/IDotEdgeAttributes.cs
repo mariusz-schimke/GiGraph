@@ -176,7 +176,7 @@ public interface IDotEdgeAttributes
 
     /// <summary>
     ///     If false, the edge is not used in ranking the nodes (dot only, default: true). See
-    ///     <see href="http://www.graphviz.org/doc/info/attrs.html#a:constraint">
+    ///     <see href="https://www.graphviz.org/docs/attrs/constraint">
     ///         documentation
     ///     </see>
     ///     for more details.
