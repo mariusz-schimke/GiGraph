@@ -45,6 +45,8 @@
 
         <PackageReleaseNotes>- Synthetic biology node shape names have been improved (clarified).
 
+- Some type comments have been improved and broken links to the Graphviz documenation have been updated.
+
 See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
     </PropertyGroup>
 
