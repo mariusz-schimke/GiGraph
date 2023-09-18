@@ -5,7 +5,7 @@ on:
     types: [ published ]
 
 env:
-  BRANCH: master
+  BRANCH: main
 
 jobs:
   build:
