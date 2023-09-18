@@ -11,7 +11,7 @@ public partial class DotHtmlFontStyle
     /// </summary>
     /// <param name="entity">
     ///     The entity to embed in font style elements. Only text and table elements are supported (including collections of those). See
-    ///     <see href="https://graphviz.org/doc/info/shapes.html#html">
+    ///     <see href="https://www.graphviz.org/doc/info/shapes.html#html">
     ///         grammar
     ///     </see>
     ///     for more details.

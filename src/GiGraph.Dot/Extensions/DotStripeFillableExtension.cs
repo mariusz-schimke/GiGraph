@@ -18,7 +18,7 @@ public static class DotStripeFillableExtension
     ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
     ///     <see cref="DotWeightedColor" /> for them.
     /// </param>
-    public static void SetStripedFill<T>(this T @this, DotMultiColor colors)
+    public static void SetStripedFill<T>(this T @this, DotMulticolor colors)
         where T : IDotFillable, IDotStripeFillable
     {
         @this.SetFillStyle(DotFillStyle.Striped);
@@ -38,7 +38,7 @@ public static class DotStripeFillableExtension
     ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
     ///     <see cref="DotWeightedColor" /> for them.
     /// </param>
-    public static void SetStripedFill<T>(this T @this, DotNodeShape shape, DotMultiColor colors)
+    public static void SetStripedFill<T>(this T @this, DotNodeShape shape, DotMulticolor colors)
         where T : IDotFillable, IDotStripeFillable, IDotShapableNode
     {
         @this.SetStripedFill(colors);
@@ -58,7 +58,7 @@ public static class DotStripeFillableExtension
     public static void SetStripedFill<T>(this T @this, params DotColor[] colors)
         where T : IDotFillable, IDotStripeFillable
     {
-        @this.SetStripedFill(new DotMultiColor(colors));
+        @this.SetStripedFill(new DotMulticolor(colors));
     }
 
     /// <summary>
@@ -77,6 +77,6 @@ public static class DotStripeFillableExtension
     public static void SetStripedFill<T>(this T @this, DotNodeShape shape, params DotColor[] colors)
         where T : IDotFillable, IDotStripeFillable, IDotShapableNode
     {
-        @this.SetStripedFill(shape, new DotMultiColor(colors));
+        @this.SetStripedFill(shape, new DotMulticolor(colors));
     }
 }

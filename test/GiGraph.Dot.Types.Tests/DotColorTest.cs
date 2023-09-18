@@ -46,7 +46,7 @@ public class DotColorTest
     [Fact]
     public void color_list_includes_colon_separated_colors_in_dot_encoded_value()
     {
-        DotColorDefinition def = new DotMultiColor(
+        DotColorDefinition def = new DotMulticolor(
             new DotWeightedColor(Color.Blue, 0.8),
             Color.Green);
 

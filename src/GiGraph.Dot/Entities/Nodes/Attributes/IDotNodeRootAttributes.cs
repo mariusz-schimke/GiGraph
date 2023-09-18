@@ -1,7 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
-using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
@@ -23,7 +22,7 @@ public interface IDotNodeRootAttributes : IDotNodeAttributes
     DotNodeSizeAttributes Size { get; }
 
     /// <summary>
-    ///     Node geometry attributes applicable if <see cref="IDotNodeAttributes.Shape" /> is set to <see cref="DotNodeShape.Polygon" />.
+    ///     Node geometry attributes applicable if the <see cref="IDotNodeAttributes.Shape" /> is polygonal.
     /// </summary>
     DotNodeGeometryAttributes Geometry { get; }
 

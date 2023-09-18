@@ -34,7 +34,7 @@ public abstract partial class DotEscapeString
     /// <summary>
     ///     Creates a new instance initialized with escaped string. The string will not be modified in any way on output DOT script
     ///     generation, so it must follow the formatting rules described in the
-    ///     <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">
+    ///     <see href="https://www.graphviz.org/docs/attr-types/escString">
     ///         documentation
     ///     </see>
     ///     .
@@ -79,7 +79,7 @@ public abstract partial class DotEscapeString
     /// <summary>
     ///     Concatenates the specified escaped strings. The component strings will not be modified in any way on output DOT script
     ///     generation, so they must follow the formatting rules described in the
-    ///     <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">
+    ///     <see href="https://www.graphviz.org/docs/attr-types/escString">
     ///         documentation
     ///     </see>
     ///     .
@@ -92,7 +92,7 @@ public abstract partial class DotEscapeString
     /// <summary>
     ///     Concatenates the specified escaped strings. The component strings will not be modified in any way on output DOT script
     ///     generation, so they must follow the formatting rules described in the
-    ///     <see href="http://www.graphviz.org/doc/info/attrs.html#k:escString">
+    ///     <see href="https://www.graphviz.org/docs/attr-types/escString">
     ///         documentation
     ///     </see>
     ///     .

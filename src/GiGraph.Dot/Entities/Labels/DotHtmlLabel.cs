@@ -32,7 +32,7 @@ public class DotHtmlLabel : DotLabel
     /// </summary>
     /// <param name="html">
     ///     The HTML text to use. It is expected to be a compatible HTML string following the rules described in the
-    ///     <see href="http://www.graphviz.org/doc/info/shapes.html#html">
+    ///     <see href="https://www.graphviz.org/doc/info/shapes.html#html">
     ///         documentation
     ///     </see>
     ///     .

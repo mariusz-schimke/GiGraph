@@ -60,7 +60,7 @@ public class DotGraphFactory
         graph.Nodes.Add("no_attributes");
         graph.Nodes.Add("node3", node =>
         {
-            node.Shape = DotNodeShape.Assembly;
+            node.Shape = DotNodeShape.AssemblyScar;
             node.Style.BorderWeight = DotBorderWeight.Bold;
         });
 

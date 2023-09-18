@@ -112,7 +112,7 @@ public interface IDotNodeAttributes
     ///     <para>
     ///         These fills work with any shape. For certain shapes, fill style can be set to do fills using more than 2 colors (set the
     ///         fill style to <see cref="DotNodeFillStyle.Striped" /> or <see cref="DotNodeFillStyle.Wedged" /> style, and use
-    ///         <see cref="DotMultiColor" /> as a color list definition).
+    ///         <see cref="DotMulticolor" /> as a color list definition).
     ///     </para>
     /// </summary>
     DotColorDefinition Color { get; set; }

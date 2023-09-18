@@ -21,7 +21,7 @@ public static class DotShapableNodeExtension
     /// </param>
     /// <param name="peripheries">
     ///     Sets the number of peripheries. The default value is shape dependent, the minimum value is 0. Note that
-    ///     <see href="http://www.graphviz.org/doc/info/shapes.html#epsf">
+    ///     <see href="https://www.graphviz.org/doc/info/shapes.html#epsf">
     ///         user-defined shapes
     ///     </see>
     ///     are treated as a form of box shape, so the default peripheries value is 1, and the user-defined shape will be drawn in a

@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Types.Html;
 
 /// <summary>
 ///     Represents an HTML string. The value should be a compatible HTML string following the rules described in the
-///     <see href="http://www.graphviz.org/doc/info/shapes.html#html">
+///     <see href="https://www.graphviz.org/doc/info/shapes.html#html">
 ///         documentation
 ///     </see>
 ///     .

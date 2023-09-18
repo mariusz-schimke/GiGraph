@@ -22,7 +22,7 @@ public class DotAttributeWriter : DotEntityWriter, IDotAttributeWriter
 
         // As HTML strings can contain newline characters, which are used solely for formatting, the language does not allow
         // escaped newlines or concatenation operators to be used within them.
-        // https://graphviz.org/doc/info/lang.html
+        // https://www.graphviz.org/doc/info/lang.html
         _tokenWriter.HtmlValue(value, writeInBrackets);
     }
 

@@ -125,7 +125,7 @@ public class DotTokenWriter
     public virtual DotTokenWriter CommentStart(bool linger = false) => Token("//", DotTokenType.CommentStart, linger);
 
     public virtual DotTokenWriter DiscardedLineStart(bool linger = false) =>
-        // based on https://graphviz.org/doc/info/lang.html
+        // based on https://www.graphviz.org/doc/info/lang.html
         // The language supports C++-style comments: /* */ and //. In addition, a line beginning with a '#' character
         // is considered a line output from a C preprocessor (e.g., # 34 to indicate line 34 ) and discarded
         Token("#", DotTokenType.DiscardedLineStart, linger);
