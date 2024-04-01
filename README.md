@@ -243,6 +243,8 @@ var meta = graph.Hyperlink.Attributes.GetMetadata(attr => attr.Target);
 Console.WriteLine(meta.Key);
 ```
 
+Or you can simply refer to [this file](test/GiGraph.Dot.Entities.Tests/Attributes/__snapshots__/attribute_property_key_map.snap) that contains GraphViz attributes mapped to properties they are exposed as.
+
 
 
 ***‼️ If you come across an attribute that is not exposed as a property, and you find it necessary for your use case, please let me know by opening an issue. ‼️***
