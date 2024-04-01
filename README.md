@@ -219,9 +219,28 @@ If there is a case that you want your value to be written **as is** in the outpu
 node.Attributes.Collection.SetRaw("fillcolor", "red:blue");
 ```
 
+Note the difference between *Set* and *SetRaw* in terms of how the value is processed internally.
+
+```c#
+// output (syntax correct): label = "Foo \"Bar\" Baz"
+node.Attributes.Collection.Set("label", @"Foo ""Bar"" Baz");
+
+// output (syntax error): label = "Foo "Bar" Baz"
+node.Attributes.Collection.SetRaw("label", @"Foo ""Bar"" Baz");
+```
+
+The output of the second example is syntactically incorrect because *SetRaw* doesn't apply any character escaping, and quotation marks have to be escaped with a backslash. A corrected example could look like this:
+
+```c#
+// output: label = "Foo \"Bar\" Baz"
+node.Attributes.Collection.SetRaw("label", @"Foo \""Bar\"" Baz");
+```
 
 
-❕ Note, however, that when you can't find a property for the Graphviz attribute you would like to set, just use the attribute metadata dictionary on the graph or on any other element that has an attribute collection exposed. The metadata includes, among others, a property path for an associated Graphviz attribute key:
+
+### Can't find an attribute?
+
+When you can't find a property for the Graphviz attribute you would like to set, you can use the attribute metadata dictionary on the graph or on any other element that has an attribute collection exposed. The metadata includes, among others, a property path for an associated Graphviz attribute key:
 
 ```c#
 using GiGraph.Dot.Extensions;
@@ -242,6 +261,8 @@ var meta = graph.Hyperlink.Attributes.GetMetadata(attr => attr.Target);
 // outputs "target"
 Console.WriteLine(meta.Key);
 ```
+
+Or you can simply refer to [this file](./test/GiGraph.Dot.Entities.Tests/Attributes/__snapshots__/attribute_property_key_map.snap) that contains Graphviz attributes mapped to properties they are exposed as.
 
 
 

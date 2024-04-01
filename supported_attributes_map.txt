@@ -1,1 +1,1 @@
-./src/GiGraph.Dot.Entities.Tests/Attributes/__snapshots__/attribute_property_key_map.snap
+./test/GiGraph.Dot.Entities.Tests/Attributes/__snapshots__/attribute_property_key_map.snap
