@@ -229,7 +229,7 @@ node.Attributes.Collection.Set("label", @"Foo ""Bar"" Baz");
 node.Attributes.Collection.SetRaw("label", @"Foo ""Bar"" Baz");
 ```
 
-The second example is syntactically incorrect because *SetRaw* doesn't apply any character escaping, and quotation marks have to be escaped with a backslash. A corrected example could look like this:
+The output of the second example is syntactically incorrect because *SetRaw* doesn't apply any character escaping, and quotation marks have to be escaped with a backslash. A corrected example could look like this:
 
 ```c#
 // output: label = "Foo \"Bar\" Baz"
@@ -262,7 +262,7 @@ var meta = graph.Hyperlink.Attributes.GetMetadata(attr => attr.Target);
 Console.WriteLine(meta.Key);
 ```
 
-Or you can simply refer to [this file](test/GiGraph.Dot.Entities.Tests/Attributes/__snapshots__/attribute_property_key_map.snap) that contains Graphviz attributes mapped to properties they are exposed as.
+Or you can simply refer to [this file](./test/GiGraph.Dot.Entities.Tests/Attributes/__snapshots__/attribute_property_key_map.snap) that contains Graphviz attributes mapped to properties they are exposed as.
 
 
 
