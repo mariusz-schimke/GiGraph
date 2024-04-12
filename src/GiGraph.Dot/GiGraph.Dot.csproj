@@ -32,9 +32,10 @@
         <PackageTags>DOT Graphviz graph diagram visualization</PackageTags>
 
         <PackageProjectUrl>https://github.com/$(Repository)</PackageProjectUrl>
-        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <PackageIcon>icon.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <EnablePackageValidation>true</EnablePackageValidation>
 
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -70,7 +71,8 @@ See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
 
     <ItemGroup>
         <None Include="../../assets/icon.png" Pack="true" Visible="false" PackagePath="/" />
-        <None Include="../../LICENSE.txt" Pack="true" Visible="false" PackagePath="/" />
+        <None Include="../../LICENSE" Pack="true" Visible="false" PackagePath="/" />
+        <None Include="../../README.md" Pack="true" Visible="false" PackagePath="/" />
     </ItemGroup>
 
 </Project>
