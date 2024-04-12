@@ -1,4 +1,4 @@
-![social-preview.png](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/social-preview.png)
+![social-preview](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/social-preview.png)
 
 ------
 
@@ -104,7 +104,7 @@ digraph
 
 Here's how the script is visualized:
 
-![hello-world-directed.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/hello-world-directed.svg)
+![hello-world-directed](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/hello-world-directed.svg)
 
 And here's an example of an undirected version of the same graph:
 
@@ -120,7 +120,7 @@ graph
 }
 ```
 
-![hello-world-undirected.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/hello-world-undirected.svg)
+![hello-world-undirected](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/hello-world-undirected.svg)
 
 
 # Graph building blocks
@@ -326,7 +326,7 @@ digraph
 }
 ```
 
-![default-attributes.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/default-attributes.svg)
+![default-attributes](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/default-attributes.svg)
 
 
 ### Label justification and styling
@@ -366,7 +366,7 @@ digraph
 }
 ```
 
-![label-justification.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/label-justification.svg)
+![label-justification](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/label-justification.svg)
 
 
 #### Label placeholders
@@ -425,7 +425,7 @@ digraph "Label formatting"
 }
 ```
 
-![label-identifiers.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/label-identifiers.svg)
+![label-identifiers](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/label-identifiers.svg)
 
 
 
@@ -476,7 +476,7 @@ digraph
 }
 ```
 
-![html-styled-label.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/html-styled-label.svg)
+![html-styled-label](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/html-styled-label.svg)
 
 If you prefer to compose the label by yourself, however, type cast your HTML string to *DotHtmlString* or call the *AsHtml()* extension method on that string and assign the result to a label of an element:
 
@@ -532,7 +532,7 @@ digraph
 }
 ```
 
-![node-hexagon-hello-world.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/node-hexagon-hello-world.svg)
+![node-hexagon-hello-world](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/node-hexagon-hello-world.svg)
 
 
 
@@ -561,7 +561,7 @@ digraph
 }
 ```
 
-![record-node-hello-world.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/record-node-hello-world.svg)
+![record-node-hello-world](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/record-node-hello-world.svg)
 
 
 #### Sub-records
@@ -584,7 +584,7 @@ digraph
 }
 ```
 
-![record-node-subrecord.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/record-node-subrecord.svg)
+![record-node-subrecord](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/record-node-subrecord.svg)
 
 
 #### Record builder
@@ -623,7 +623,7 @@ graph.Nodes.Add("Bar").ToRecordNode(rb =>
 
 The fields of record nodes may have a **port** specified as well. The port may have a name that you refer to when defining an edge (see the [edges](#edges) section). This way you can decide which field of the record an edge tail or head is attached to. In the following example the field labeled 'Fred' has a port named 'port1' assigned. The edge that joins the two nodes refers to that port to attach the tail to it. See the code below for details.
 
-![record-node-subrecord-with-port.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/record-node-subrecord-with-port.svg)
+![record-node-subrecord-with-port](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/record-node-subrecord-with-port.svg)
 
 
 ```c#
@@ -732,7 +732,7 @@ digraph
 }
 ```
 
-![html-node.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/html-node.svg)
+![html-node](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/html-node.svg)
 
 
 
@@ -793,7 +793,7 @@ digraph
 }
 ```
 
-![html-node-with-port.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/html-node-with-port.svg)
+![html-node-with-port](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/html-node-with-port.svg)
 
 
 
@@ -832,7 +832,7 @@ digraph
 }
 ```
 
-![node-group-of-three.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/node-group-of-three.svg)
+![node-group-of-three](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/node-group-of-three.svg)
 
 
 Note that there is also an ***AddRange*** method available on the node collection, and it differs from the mentioned *AddGroup* one in that it adds nodes with independent lists of attributes for each of them. The following script differs, but renders an identical visualization (because the same attributes are specified for each node in the range):
@@ -899,7 +899,7 @@ digraph
 }
 ```
 
-![edge-compass-point.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-compass-point.svg)
+![edge-compass-point](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-compass-point.svg)
 
 
 An edge may alternatively be created and added to an edge collection explicitly:
@@ -971,7 +971,7 @@ digraph
 }
 ```
 
-![arrowheads.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/arrowheads.svg)
+![arrowheads](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/arrowheads.svg)
 
 
 ### Multicolor and multiline edges
@@ -1003,7 +1003,7 @@ digraph
 }
 ```
 
-![multicolor-edges.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/multicolor-edges.svg)
+![multicolor-edges](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/multicolor-edges.svg)
 
 
 
@@ -1035,7 +1035,7 @@ digraph
 }
 ```
 
-![edge-one-to-many-subgraph.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-one-to-many-subgraph.svg)
+![edge-one-to-many-subgraph](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-one-to-many-subgraph.svg)
 
 
 
@@ -1067,7 +1067,7 @@ digraph
 }
 ```
 
-![edge-one-to-many-group.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-one-to-many-group.svg)
+![edge-one-to-many-group](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-one-to-many-group.svg)
 
 
 
@@ -1092,7 +1092,7 @@ digraph
 }
 ```
 
-![edge-many-to-one.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-many-to-one.svg)
+![edge-many-to-one](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-many-to-one.svg)
 
 
 
@@ -1119,7 +1119,7 @@ digraph
 }
 ```
 
-![edge-many-to-many.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-many-to-many.svg)
+![edge-many-to-many](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-many-to-many.svg)
 
 
 
@@ -1154,7 +1154,7 @@ digraph
 }
 ```
 
-![edge-many-to-many-with-attrs.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-many-to-many-with-attrs.svg)
+![edge-many-to-many-with-attrs](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-many-to-many-with-attrs.svg)
 
 
 ❕ Note that *DotEndpoint* is implicitly convertible from *string* (for convenience).
@@ -1185,7 +1185,7 @@ digraph
 }
 ```
 
-![edge-sequence-of-three.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-sequence-of-three.svg)
+![edge-sequence-of-three](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-sequence-of-three.svg)
 
 
 
@@ -1213,7 +1213,7 @@ digraph
 }
 ```
 
-![edge-sequence-with-group.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-sequence-with-group.svg)
+![edge-sequence-with-group](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-sequence-with-group.svg)
 
 
 #### Sequence attributes
@@ -1251,7 +1251,7 @@ digraph
 }
 ```
 
-![edge-sequence-with-group-and-attrs.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-sequence-with-group-and-attrs.svg)
+![edge-sequence-with-group-and-attrs](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/edge-sequence-with-group-and-attrs.svg)
 
 
 ## Subgraphs
@@ -1391,7 +1391,7 @@ digraph
 }
 ```
 
-![cluster-edge-clipping.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/cluster-edge-clipping.svg)
+![cluster-edge-clipping](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/cluster-edge-clipping.svg)
 
 
 
@@ -1439,7 +1439,7 @@ The example below presents how individual graph elements may be customized. The 
 
 
 
-![custom-styling.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/custom-styling.svg)
+![custom-styling](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/custom-styling.svg)
 
 
 *❕ In the example below, groups of elements are embedded in subgraphs only to control the order they are visualized (for clarity). One of the subgraphs, however, is actually meaningful, and is used as an example of setting style for a custom group of elements.*
@@ -1610,7 +1610,7 @@ digraph
 
 In order to group nodes visually by displaying them in a rectangle, embed them in a [cluster](#clusters). Below is an example where two clusters are used to group several nodes. They are also used as logical endpoints in order for edges to be attached to their borders instead of a node inside them.
 
-![clusters.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/clusters.svg)
+![clusters](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/clusters.svg)
 
 
 Here's the code to generate it:
@@ -1736,13 +1736,13 @@ Graph nodes are distributed within ranks (that is rows or columns, depending on 
 
 Consider the following graph with no layout customizations applied:
 
-![complex-graph.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/complex-graph.svg)
+![complex-graph](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/complex-graph.svg)
 
 
 
 As an example, let's place certain groups of nodes in the same ranks (columns in this case). To achieve that, the nodes have to be placed in subgraphs, and each of the subgraphs has to have an adequate **rank** attribute specified. Consider the following example.
 
-![complex-graph-with-subgraphs.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/complex-graph-with-subgraphs.svg)
+![complex-graph-with-subgraphs](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/complex-graph-with-subgraphs.svg)
 
 
 The nodes embedded in subgraphs with the *DotRank.Same* rank constraint are arranged in the same columns. Apart from those, the nodes *o*, *p*, and *t* in a subgraph with a rank *DotRank.Max*, are pushed together towards the rightmost border.
@@ -2034,7 +2034,7 @@ digraph
 }
 ```
 
-![subsections.svg](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/subsections.svg)
+![subsections](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/subsections.svg)
 
 
 Subsections are supported the same way for subgraphs and clusters.
