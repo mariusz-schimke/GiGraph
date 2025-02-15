@@ -29,9 +29,9 @@ public class DotClusterId : DotId
             return _id;
         }
 
-        return _id is not null
-            ? $"{cluster}{options.Clusters.ClusterIdSeparator}{_id}"
-            : cluster;
+        return string.IsNullOrEmpty(_id)
+            ? cluster
+            : $"{cluster}{options.Clusters.ClusterIdSeparator}{_id}";
     }
 
     [return: NotNullIfNotNull(nameof(id))]
