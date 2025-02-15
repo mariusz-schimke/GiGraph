@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Entities.Html;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
@@ -23,7 +24,8 @@ public abstract class DotLabel : IDotEncodable
     /// <param name="text">
     ///     The text to use as the label.
     /// </param>
-    public static DotLabel FromText(string? text) => text;
+    [return: NotNullIfNotNull(nameof(text))]
+    public static DotLabel? FromText(string? text) => text;
 
     /// <summary>
     ///     Creates a label initialized with formatted text. The text should be formatted and escaped according to the rules described in
@@ -40,7 +42,8 @@ public abstract class DotLabel : IDotEncodable
     /// <param name="text">
     ///     The escaped text to use as the label.
     /// </param>
-    public static DotLabel FromFormattedText(string? text) => (DotEscapedString) text;
+    [return: NotNullIfNotNull(nameof(text))]
+    public static DotLabel? FromFormattedText(string? text) => (DotEscapedString) text;
 
     /// <summary>
     ///     Creates an HTML label. The HTML should be generated according to the rules described in the
@@ -52,7 +55,8 @@ public abstract class DotLabel : IDotEncodable
     /// <param name="html">
     ///     The HTML to use as the label.
     /// </param>
-    public static DotLabel FromHtml(string? html) => html is not null ? new DotHtmlLabel(html) : null!;
+    [return: NotNullIfNotNull(nameof(html))]
+    public static DotLabel? FromHtml(string? html) => html is not null ? new DotHtmlLabel(html) : null;
 
     /// <summary>
     ///     Creates an HTML label.
@@ -60,7 +64,8 @@ public abstract class DotLabel : IDotEncodable
     /// <param name="htmlEntity">
     ///     The HTML entity to use as the label.
     /// </param>
-    public static DotLabel FromHtml(IDotHtmlEntity? htmlEntity) => htmlEntity is not null ? new DotHtmlLabel(htmlEntity) : null!;
+    [return: NotNullIfNotNull(nameof(htmlEntity))]
+    public static DotLabel? FromHtml(IDotHtmlEntity? htmlEntity) => htmlEntity is not null ? new DotHtmlLabel(htmlEntity) : null;
 
     /// <summary>
     ///     Creates a label initialized with the specified record.
@@ -68,18 +73,25 @@ public abstract class DotLabel : IDotEncodable
     /// <param name="record">
     ///     The record to use as the label.
     /// </param>
-    public static DotLabel FromRecord(DotRecord? record) => record;
+    [return: NotNullIfNotNull(nameof(record))]
+    public static DotLabel? FromRecord(DotRecord? record) => record;
 
-    public static implicit operator DotLabel(string? text) => text is not null ? new DotTextLabel(text) : null!;
+    [return: NotNullIfNotNull(nameof(text))]
+    public static implicit operator DotLabel?(string? text) => text is not null ? new DotTextLabel(text) : null;
 
-    public static implicit operator DotLabel(DotEscapeString? text) => text is not null ? new DotTextLabel(text) : null!;
+    [return: NotNullIfNotNull(nameof(text))]
+    public static implicit operator DotLabel?(DotEscapeString? text) => text is not null ? new DotTextLabel(text) : null;
 
-    public static implicit operator DotLabel(DotRecord? record) => record is not null ? new DotRecordLabel(record) : null!;
+    [return: NotNullIfNotNull(nameof(record))]
+    public static implicit operator DotLabel?(DotRecord? record) => record is not null ? new DotRecordLabel(record) : null;
 
-    public static implicit operator DotLabel(DotHtmlString? html) => html is not null ? new DotHtmlLabel(html) : null!;
+    [return: NotNullIfNotNull(nameof(html))]
+    public static implicit operator DotLabel?(DotHtmlString? html) => html is not null ? new DotHtmlLabel(html) : null;
 
-    public static implicit operator DotLabel(DotHtmlEntity? htmlEntity) => htmlEntity is not null ? new DotHtmlLabel(htmlEntity) : null!;
+    [return: NotNullIfNotNull(nameof(htmlEntity))]
+    public static implicit operator DotLabel?(DotHtmlEntity? htmlEntity) => htmlEntity is not null ? new DotHtmlLabel(htmlEntity) : null;
 
-    public static implicit operator DotLabel(DotHtmlEntityCollection? htmlEntityCollection) =>
-        htmlEntityCollection is not null ? new DotHtmlLabel(htmlEntityCollection) : null!;
+    [return: NotNullIfNotNull(nameof(htmlEntityCollection))]
+    public static implicit operator DotLabel?(DotHtmlEntityCollection? htmlEntityCollection) =>
+        htmlEntityCollection is not null ? new DotHtmlLabel(htmlEntityCollection) : null;
 }

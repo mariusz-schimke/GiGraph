@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Output.Text.Escaping;
 
 namespace GiGraph.Dot.Types.EscapeString;
@@ -33,5 +34,6 @@ public class DotEscapedString : DotEscapeString
 
     protected internal override string GetEscapedString(IDotTextEscaper textEscaper) => _value;
 
-    public static implicit operator DotEscapedString(string? value) => value is not null ? new DotEscapedString(value) : null!;
+    [return: NotNullIfNotNull(nameof(value))]
+    public static implicit operator DotEscapedString?(string? value) => value is not null ? new DotEscapedString(value) : null;
 }
