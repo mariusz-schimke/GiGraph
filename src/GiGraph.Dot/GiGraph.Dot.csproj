@@ -28,7 +28,7 @@
         <Product>GiGraph DOT</Product>
         <Description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using the Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code or online tools like https://viz-js.com or http://magjac.com/graphviz-visual-editor, where you paste a script to view its visualization.</Description>
         <Authors>Mariusz Schimke</Authors>
-        <Copyright>Copyright © 2020-2023 Mariusz Schimke</Copyright>
+        <Copyright>Copyright © 2020-2025 Mariusz Schimke</Copyright>
         <PackageTags>DOT Graphviz graph diagram visualization</PackageTags>
 
         <PackageProjectUrl>https://github.com/$(Repository)</PackageProjectUrl>
