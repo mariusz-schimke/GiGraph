@@ -27,21 +27,21 @@ public abstract class DotEntityRootCommonAttributes<TIEntityAttributeProperties,
     public DotHyperlinkAttributes Hyperlink { get; }
 
     [DotAttributeKey(DotAttributeKeys.Label)]
-    public virtual DotLabel Label
+    public virtual DotLabel? Label
     {
         get => GetValueAsLabel(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.ColorScheme)]
-    public virtual string ColorScheme
+    public virtual string? ColorScheme
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Id)]
-    public virtual DotEscapeString ObjectId
+    public virtual DotEscapeString? ObjectId
     {
         get => GetValueAsEscapeString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
