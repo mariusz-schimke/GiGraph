@@ -17,7 +17,7 @@ namespace GiGraph.Dot.Types.Fonts;
 /// <param name="Color">
 ///     Font color.
 /// </param>
-public record DotStyledFont(DotFontStyles? Style = null, string Name = null, double? Size = null, DotColor Color = null)
+public record DotStyledFont(DotFontStyles? Style = null, string? Name = null, double? Size = null, DotColor? Color = null)
     : DotFont(Name, Size, Color)
 {
     /// <summary>
@@ -32,7 +32,7 @@ public record DotStyledFont(DotFontStyles? Style = null, string Name = null, dou
     /// <param name="color">
     ///     Font color.
     /// </param>
-    public DotStyledFont(DotFontStyles? style, double? size, DotColor color = null)
+    public DotStyledFont(DotFontStyles? style, double? size, DotColor? color = null)
         : this(style, Name: null, size, color)
     {
     }
@@ -49,7 +49,7 @@ public record DotStyledFont(DotFontStyles? Style = null, string Name = null, dou
     /// <param name="name">
     ///     Font name.
     /// </param>
-    public DotStyledFont(DotFontStyles? style, DotColor color, string name = null)
+    public DotStyledFont(DotFontStyles? style, DotColor? color, string? name = null)
         : this(style, name, Size: null, color)
     {
     }
