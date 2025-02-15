@@ -10,10 +10,10 @@ public class DotEscapeStringTest
     [Fact]
     public void implicit_conversion_returns_null_for_null()
     {
-        DotEscapeString escStringValue = (string) null;
+        DotEscapeString? escStringValue = (string?) null;
         Assert.Null(escStringValue);
 
-        string stringValue = escStringValue;
+        string? stringValue = escStringValue;
         Assert.Null(stringValue);
     }
 }

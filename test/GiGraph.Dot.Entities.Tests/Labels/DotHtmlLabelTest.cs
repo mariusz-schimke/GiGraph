@@ -11,8 +11,8 @@ public class DotHtmlLabelTest
     [Fact]
     public void throws_exception_on_constructor_null_value()
     {
-        Assert.Throws<ArgumentNullException>(() => new DotHtmlLabel((IDotHtmlEntity) null));
-        Assert.Throws<ArgumentNullException>(() => new DotHtmlLabel((DotHtmlString) null));
+        Assert.Throws<ArgumentNullException>(() => new DotHtmlLabel((IDotHtmlEntity) null!));
+        Assert.Throws<ArgumentNullException>(() => new DotHtmlLabel((DotHtmlString) null!));
     }
 
     [Fact]

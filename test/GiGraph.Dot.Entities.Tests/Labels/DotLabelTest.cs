@@ -12,40 +12,40 @@ public class DotLabelTest
     [Fact]
     public void converts_string_to_text_label()
     {
-        DotLabel label = "text";
+        DotLabel? label = "text";
         Assert.IsType<DotTextLabel>(label);
 
-        label = (string) null;
+        label = (string?) null;
         Assert.Null(label);
     }
 
     [Fact]
     public void converts_escape_string_to_text_label()
     {
-        DotLabel label = (DotEscapeString) "text";
+        DotLabel? label = (DotEscapeString) "text";
         Assert.IsType<DotTextLabel>(label);
 
-        label = (DotEscapeString) null;
+        label = (DotEscapeString?) null;
         Assert.Null(label);
     }
 
     [Fact]
     public void converts_record_to_record_label()
     {
-        DotLabel label = new DotRecord("text");
+        DotLabel? label = new DotRecord("text");
         Assert.IsType<DotRecordLabel>(label);
 
-        label = (DotRecord) null;
+        label = (DotRecord?) null;
         Assert.Null(label);
     }
 
     [Fact]
     public void converts_html_string_to_html_label()
     {
-        DotLabel label = (DotHtmlString) "<table></table>";
+        DotLabel? label = (DotHtmlString) "<table></table>";
         Assert.IsType<DotHtmlLabel>(label);
 
-        label = (DotHtmlString) null;
+        label = (DotHtmlString?) null;
         Assert.Null(label);
     }
 
@@ -53,20 +53,20 @@ public class DotLabelTest
     public void converts_html_entity_to_html_label()
     {
         var entity = new DotHtml("<table></table>");
-        DotLabel label = entity;
+        DotLabel? label = entity;
         Assert.IsType<DotHtmlLabel>(label);
 
-        label = (DotHtml) null;
+        label = (DotHtml?) null;
         Assert.Null(label);
     }
 
     [Fact]
     public void converts_html_entities_to_html_label()
     {
-        DotLabel label = new DotHtmlEntityCollection();
+        DotLabel? label = new DotHtmlEntityCollection();
         Assert.IsType<DotHtmlLabel>(label);
 
-        label = (DotHtmlEntityCollection) null;
+        label = (DotHtmlEntityCollection?) null;
         Assert.Null(label);
     }
 }

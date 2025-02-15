@@ -13,16 +13,16 @@ public class DotUnescapeStringTest
     [Fact]
     public void throws_exception_on_constructor_null_value()
     {
-        Assert.Throws<ArgumentNullException>(() => new DotUnescapedString(null));
+        Assert.Throws<ArgumentNullException>(() => new DotUnescapedString(null!));
     }
 
     [Fact]
     public void implicit_conversion_returns_null_for_null()
     {
-        DotUnescapedString escStringValue = (string) null;
+        DotUnescapedString? escStringValue = (string?) null;
         Assert.Null(escStringValue);
 
-        string stringValue = escStringValue;
+        string? stringValue = escStringValue;
         Assert.Null(stringValue);
     }
 

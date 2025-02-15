@@ -10,16 +10,16 @@ public class DotHtmlStringTest
     [Fact]
     public void throws_exception_on_constructor_null_value()
     {
-        Assert.Throws<ArgumentNullException>(() => new DotHtmlString(null));
+        Assert.Throws<ArgumentNullException>(() => new DotHtmlString(null!));
     }
 
     [Fact]
     public void implicit_conversion_returns_null_for_null()
     {
-        DotHtmlString htmlStringValue = (string) null;
+        DotHtmlString? htmlStringValue = (string?) null;
         Assert.Null(htmlStringValue);
 
-        string stringValue = htmlStringValue;
+        string? stringValue = htmlStringValue;
         Assert.Null(stringValue);
     }
 
@@ -78,8 +78,8 @@ public class DotHtmlStringTest
     [Fact]
     public void concatenation_of_nulls_same_as_for_string()
     {
-        DotHtmlString value1 = null;
-        DotHtmlString value2 = null;
+        DotHtmlString? value1 = null;
+        DotHtmlString? value2 = null;
 
         // null string concatenation returns an empty string instead of null, and the expected behavior below should be analogous
 
