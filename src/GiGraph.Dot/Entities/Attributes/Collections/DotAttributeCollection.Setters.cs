@@ -56,16 +56,16 @@ public partial class DotAttributeCollection
         SetOrRemove(key, value, (k, v) => _attributeFactory.CreateBool(k, v!.Value));
     }
 
-    protected internal virtual void SetOrRemoveComplex<TComplex>(string key, TComplex value)
+    protected internal virtual void SetOrRemoveComplex<TComplex>(string key, TComplex? value)
         where TComplex : IDotEncodable
     {
-        SetOrRemove(key, value, _attributeFactory.CreateComplex);
+        SetOrRemove(key, value, (s, v) => _attributeFactory.CreateComplex(s, v!));
     }
 
-    protected internal virtual void SetOrRemoveComplex<TComplex>(string key, TComplex[] value)
+    protected internal virtual void SetOrRemoveComplex<TComplex>(string key, TComplex[]? value)
         where TComplex : IDotEncodable
     {
-        SetOrRemove(key, value, _attributeFactory.CreateComplexArray);
+        SetOrRemove(key, value, (s, v) => _attributeFactory.CreateComplexArray(s, v!));
     }
 
     protected internal virtual void SetOrRemoveEnum<TEnum>(string key, bool hasValue, Func<TEnum> value)
@@ -74,7 +74,7 @@ public partial class DotAttributeCollection
         SetOrRemove(key, hasValue ? _attributeFactory.CreateEnum(key, value()) : null);
     }
 
-    protected virtual void SetOrRemove<T>(string key, T attribute)
+    protected virtual void SetOrRemove<T>(string key, T? attribute)
         where T : DotAttribute
     {
         if (attribute is not null)
