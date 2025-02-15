@@ -86,5 +86,5 @@ public abstract class DotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator
 
     protected virtual string? EncodeIdentifier(string? id) => EncodeIdentifier((DotId?) id);
 
-    protected virtual bool IdentifierRequiresQuoting(string id) => _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);
+    protected virtual bool IdentifierRequiresQuoting(string? id) => _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);
 }

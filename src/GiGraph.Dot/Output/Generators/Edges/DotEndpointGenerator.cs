@@ -34,5 +34,5 @@ public class DotEndpointGenerator<TEndpoint> : DotEntityGenerator<TEndpoint, IDo
         );
     }
 
-    protected virtual string EncodeEndpointIdentifier(string endpointId) => EncodeIdentifier(endpointId);
+    protected virtual string? EncodeEndpointIdentifier(string endpointId) => EncodeIdentifier(endpointId);
 }

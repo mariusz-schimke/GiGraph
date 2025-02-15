@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Writers;
@@ -21,11 +22,11 @@ public class DotEntityGeneratorsProvider : IDotEntityGeneratorsProvider
         return result;
     }
 
-    public virtual bool TryGet<TGenerator>(out TGenerator generator)
+    public virtual bool TryGet<TGenerator>([MaybeNullWhen(false)] out TGenerator generator)
         where TGenerator : IDotEntityGenerator
     {
         var generatorType = typeof(TGenerator);
-        generator = (TGenerator) _generators.FirstOrDefault(t => generatorType.IsInstanceOfType(t));
+        generator = (TGenerator?) _generators.FirstOrDefault(t => generatorType.IsInstanceOfType(t));
 
         return generator is not null;
     }

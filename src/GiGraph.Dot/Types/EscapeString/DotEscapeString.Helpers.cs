@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace GiGraph.Dot.Types.EscapeString;
@@ -29,7 +30,8 @@ public abstract partial class DotEscapeString
     /// <param name="value">
     ///     The string to use.
     /// </param>
-    public static DotEscapeString FromString(string? value) => (DotUnescapedString) value;
+    [return: NotNullIfNotNull(nameof(value))]
+    public static DotEscapeString? FromString(string? value) => (DotUnescapedString?) value;
 
     /// <summary>
     ///     Creates a new instance initialized with escaped string. The string will not be modified in any way on output DOT script
@@ -42,7 +44,8 @@ public abstract partial class DotEscapeString
     /// <param name="value">
     ///     The string to use.
     /// </param>
-    public static DotEscapeString FromEscapedString(string? value) => (DotEscapedString) value;
+    [return: NotNullIfNotNull(nameof(value))]
+    public static DotEscapeString? FromEscapedString(string? value) => (DotEscapedString?) value;
 
     /// <summary>
     ///     Concatenates the specified escape strings.

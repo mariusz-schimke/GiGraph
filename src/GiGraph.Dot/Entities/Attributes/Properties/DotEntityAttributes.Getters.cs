@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Arrowheads;
@@ -16,10 +17,10 @@ namespace GiGraph.Dot.Entities.Attributes.Properties;
 
 public abstract partial class DotEntityAttributes
 {
-    protected virtual bool GetValueAs<T>(MethodBase propertyAccessor, out T? value) =>
+    protected virtual bool GetValueAs<T>(MethodBase propertyAccessor, [MaybeNullWhen(false)] out T value) =>
         _attributes.GetValueAs(GetKey(propertyAccessor), out value);
 
-    protected virtual bool GetValueAs<T>(MethodBase propertyAccessor, out T? value, params Func<object, (bool IsValid, T? Result)>[]? converters) =>
+    protected virtual bool GetValueAs<T>(MethodBase propertyAccessor, [MaybeNullWhen(false)] out T value, params Func<object, (bool IsValid, T Result)>[]? converters) =>
         _attributes.GetValueAs(GetKey(propertyAccessor), out value, converters);
 
     protected virtual int? GetValueAsInt(MethodBase propertyAccessor) =>

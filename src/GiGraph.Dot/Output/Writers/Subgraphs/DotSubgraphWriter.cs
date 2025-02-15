@@ -13,17 +13,17 @@ public class DotSubgraphWriter : DotGraphBlockWriter, IDotSubgraphWriter
         _preferExplicitSubgraphKeyword = preferExplicitSubgraphKeyword;
     }
 
-    public virtual void WriteSubgraphDeclaration(string id, bool quoteId)
+    public virtual void WriteSubgraphDeclaration(string? id, bool quoteId)
     {
         var separate = false;
 
-        if (_preferExplicitSubgraphKeyword || id is not null)
+        if (_preferExplicitSubgraphKeyword || !string.IsNullOrEmpty(id))
         {
             _tokenWriter.Keyword("subgraph");
             separate = true;
         }
 
-        if (id is not null)
+        if (!string.IsNullOrEmpty(id))
         {
             _tokenWriter.Space();
             _tokenWriter.Identifier(id, quoteId);

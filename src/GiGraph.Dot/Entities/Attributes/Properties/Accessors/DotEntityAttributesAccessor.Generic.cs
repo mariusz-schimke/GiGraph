@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -38,10 +39,10 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <typeparam name="TProperty">
     ///     The type returned by the property.
     /// </typeparam>
-    public virtual DotAttribute Get<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+    public virtual DotAttribute? Get<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
     {
         var key = GetKey(property);
-        return _attributes.Collection.TryGetValue(key, out var result) ? result : null;
+        return _attributes.Collection.GetValueOrDefault(key);
     }
 
     /// <summary>

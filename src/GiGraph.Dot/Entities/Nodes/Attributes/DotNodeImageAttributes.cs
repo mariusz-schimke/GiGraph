@@ -59,7 +59,7 @@ public class DotNodeImageAttributes : DotEntityAttributesWithMetadata<IDotNodeIm
     /// <param name="scaling">
     ///     The scaling option to apply to the image.
     /// </param>
-    public virtual void Set(string path, DotAlignment? alignment = null, DotImageScaling? scaling = null)
+    public virtual void Set(string? path, DotAlignment? alignment = null, DotImageScaling? scaling = null)
     {
         Path = path;
         Alignment = alignment;

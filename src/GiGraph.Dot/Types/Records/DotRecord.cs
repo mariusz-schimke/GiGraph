@@ -65,7 +65,7 @@ public record DotRecord : DotRecordField
     ///     layouts, the top-level fields are displayed vertically.
     /// </param>
     public DotRecord(IEnumerable<DotRecordField> fields, bool flip = FlipDefault)
-        : this(flip, fields?.ToArray())
+        : this(flip, fields.ToArray())
     {
     }
 

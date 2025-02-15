@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
 using GiGraph.Dot.Entities.Labels;
@@ -38,13 +39,12 @@ public partial class DotAttributeCollection
     public virtual T? GetAs<T>(string key)
         where T : DotAttribute
     {
-        if (!TryGetValue(key, out var attribute) || attribute is null)
+        if (!TryGetValue(key, out var attribute))
         {
             return null;
         }
 
-        return attribute as T
-         ?? throw new InvalidCastException($"The '{key}' attribute of type {attribute.GetType().Name} cannot be accessed as {typeof(T).Name}.");
+        return attribute as T ?? throw new InvalidCastException($"The '{key}' attribute of type {attribute.GetType().Name} cannot be accessed as {typeof(T).Name}.");
     }
 
     /// <summary>
@@ -60,7 +60,7 @@ public partial class DotAttributeCollection
     /// <param name="attribute">
     ///     The attribute if found and valid, or null otherwise.
     /// </param>
-    public virtual bool TryGetAs<T>(string key, out T? attribute)
+    public virtual bool TryGetAs<T>(string key, [MaybeNullWhen(false)] out T attribute)
         where T : DotAttribute
     {
         if (TryGetValue(key, out var output))
@@ -86,7 +86,8 @@ public partial class DotAttributeCollection
     /// <param name="value">
     ///     The value of the attribute if found and valid, or null if not found.
     /// </param>
-    public virtual bool GetValueAs<T>(string key, out T? value) => GetValueAs(key, out value, converters: null);
+    public virtual bool GetValueAs<T>(string key, [MaybeNullWhen(false)] out T value) =>
+        GetValueAs(key, out value, converters: null);
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as the specified type. If the
@@ -101,7 +102,7 @@ public partial class DotAttributeCollection
     /// <param name="value">
     ///     The value of the attribute if found and valid, or null otherwise.
     /// </param>
-    public virtual bool TryGetValueAs<T>(string key, out T? value)
+    public virtual bool TryGetValueAs<T>(string key, [MaybeNullWhen(false)] out T value)
     {
         if (TryGetValue(key, out var attribute) && attribute.GetValue() is T output)
         {
@@ -131,7 +132,7 @@ public partial class DotAttributeCollection
     ///     The converters to try to use when the value of the attribute is of a different type than specified by the
     ///     <typeparamref name="T" /> parameter.
     /// </param>
-    public virtual bool GetValueAs<T>(string key, out T? value, params Func<object, (bool IsValid, T? Result)>[]? converters)
+    public virtual bool GetValueAs<T>(string key, [MaybeNullWhen(false)] out T value, params Func<object, (bool IsValid, T Result)>[]? converters)
     {
         if (!TryGetValue(key, out var attribute) || attribute.GetValue() is not { } attributeValue)
         {
@@ -179,7 +180,7 @@ public partial class DotAttributeCollection
         (
             key,
             out var value,
-            v => v is int i ? (true, i) : (false, default(int))
+            v => v is int i ? (true, i) : (false, 0)
         )
             ? value
             : null;
@@ -195,7 +196,7 @@ public partial class DotAttributeCollection
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotPoint" />. If
     ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
-    public virtual DotPoint GetValueAsPoint(string key) => GetValueAs<DotPoint>(key, out var result) ? result : null;
+    public virtual DotPoint? GetValueAsPoint(string key) => GetValueAs<DotPoint>(key, out var result) ? result : null;
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotColor" />. If
@@ -224,7 +225,7 @@ public partial class DotAttributeCollection
         (
             key,
             out var value,
-            v => v is Color c ? (true, new DotColor(c)) : (false, null)
+            v => v is Color c ? (true, new DotColor(c)) : (false, null!)
         )
             ? value
             : null;
@@ -247,7 +248,7 @@ public partial class DotAttributeCollection
         (
             key,
             out var value,
-            v => v is string s ? (true, (DotEscapedString) s) : (false, null)
+            v => v is string s ? (true, (DotEscapedString) s) : (false, null!)
         )
             ? value
             : null;
@@ -263,8 +264,8 @@ public partial class DotAttributeCollection
         (
             key,
             out var value,
-            v => v is DotEscapeString s ? (true, s) : (false, null),
-            v => v is string s ? (true, (DotEscapedString) s) : (false, null)
+            v => v is DotEscapeString s ? (true, s) : (false, null!),
+            v => v is string s ? (true, (DotEscapedString) s) : (false, null!)
         )
             ? value
             : null;
@@ -275,13 +276,13 @@ public partial class DotAttributeCollection
     ///     <see cref="DotArrowheadDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the returned
     ///     type, an exception is thrown.
     /// </summary>
-    public virtual DotArrowheadDefinition GetValueAsArrowheadDefinition(string key)
+    public virtual DotArrowheadDefinition? GetValueAsArrowheadDefinition(string key)
     {
         return GetValueAs<DotArrowheadDefinition>
         (
             key,
             out var value,
-            v => v is DotArrowheadShape s ? (true, new DotArrowhead(s)) : (false, null)
+            v => v is DotArrowheadShape s ? (true, new DotArrowhead(s)) : (false, null!)
         )
             ? value
             : null;
@@ -292,14 +293,14 @@ public partial class DotAttributeCollection
     ///     <see cref="DotPackingDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the returned
     ///     type, an exception is thrown.
     /// </summary>
-    public virtual DotPackingDefinition GetValueAsPackingDefinition(string key)
+    public virtual DotPackingDefinition? GetValueAsPackingDefinition(string key)
     {
         return GetValueAs<DotPackingDefinition>
         (
             key,
             out var value,
-            v => v is int i ? (true, new DotPackingMargin(i)) : (false, null),
-            v => v is bool b ? (true, new DotPackingToggle(b)) : (false, null)
+            v => v is int i ? (true, new DotPackingMargin(i)) : (false, null!),
+            v => v is bool b ? (true, new DotPackingToggle(b)) : (false, null!)
         )
             ? value
             : null;
@@ -310,13 +311,13 @@ public partial class DotAttributeCollection
     ///     <see cref="DotPackingModeDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the
     ///     returned type, an exception is thrown.
     /// </summary>
-    public virtual DotPackingModeDefinition GetValueAsPackingModeDefinition(string key)
+    public virtual DotPackingModeDefinition? GetValueAsPackingModeDefinition(string key)
     {
         return GetValueAs<DotPackingModeDefinition>
         (
             key,
             out var value,
-            v => v is DotPackingGranularity g ? (true, new DotGranularPackingMode(g)) : (false, null)
+            v => v is DotPackingGranularity g ? (true, new DotGranularPackingMode(g)) : (false, null!)
         )
             ? value
             : null;
@@ -327,15 +328,15 @@ public partial class DotAttributeCollection
     ///     <see cref="DotRankSeparationDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the
     ///     returned type, an exception is thrown.
     /// </summary>
-    public virtual DotRankSeparationDefinition GetValueAsRankSeparationDefinition(string key)
+    public virtual DotRankSeparationDefinition? GetValueAsRankSeparationDefinition(string key)
     {
         return GetValueAs<DotRankSeparationDefinition>
         (
             key,
             out var value,
-            v => v is int i ? (true, new DotRankSeparation(i)) : (false, null),
-            v => v is double d ? (true, new DotRankSeparation(d)) : (false, null),
-            v => v is double[] da ? (true, new DotRadialRankSeparation(da)) : (false, null)
+            v => v is int i ? (true, new DotRankSeparation(i)) : (false, null!),
+            v => v is double d ? (true, new DotRankSeparation(d)) : (false, null!),
+            v => v is double[] da ? (true, new DotRadialRankSeparation(da)) : (false, null!)
         )
             ? value
             : null;
@@ -346,15 +347,15 @@ public partial class DotAttributeCollection
     ///     <see cref="DotGraphScalingDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the
     ///     returned type, an exception is thrown.
     /// </summary>
-    public virtual DotGraphScalingDefinition GetValueAsGraphScalingDefinition(string key)
+    public virtual DotGraphScalingDefinition? GetValueAsGraphScalingDefinition(string key)
     {
         return GetValueAs<DotGraphScalingDefinition>
         (
             key,
             out var value,
-            v => v is int i ? (true, new DotGraphScalingAspectRatio(i)) : (false, null),
-            v => v is double d ? (true, new DotGraphScalingAspectRatio(d)) : (false, null),
-            v => v is DotGraphScaling s ? (true, new DotGraphScalingOption(s)) : (false, null)
+            v => v is int i ? (true, new DotGraphScalingAspectRatio(i)) : (false, null!),
+            v => v is double d ? (true, new DotGraphScalingAspectRatio(d)) : (false, null!),
+            v => v is DotGraphScaling s ? (true, new DotGraphScalingOption(s)) : (false, null!)
         )
             ? value
             : null;
@@ -365,7 +366,7 @@ public partial class DotAttributeCollection
     ///     <see cref="DotEndpointPort" />. If the attribute is found, but its value cannot be cast nor converted to the returned type,
     ///     an exception is thrown.
     /// </summary>
-    public virtual DotEndpointPort GetValueAsEndpointPort(string key)
+    public virtual DotEndpointPort? GetValueAsEndpointPort(string key)
     {
         return GetValueAs
         (
@@ -398,7 +399,7 @@ public partial class DotAttributeCollection
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotClusterId" />.
     ///     If the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
-    public virtual DotClusterId GetValueAsClusterId(string key)
+    public virtual DotClusterId? GetValueAsClusterId(string key)
     {
         return GetValueAs
         (

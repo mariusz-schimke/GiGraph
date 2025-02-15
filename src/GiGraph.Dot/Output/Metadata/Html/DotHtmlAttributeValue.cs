@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GiGraph.Dot.Output.Metadata.Html;
 
@@ -21,7 +22,7 @@ public static class DotHtmlAttributeValue
     /// <param name="sort">
     ///     Determines whether the flags of the enumeration should be sorted when possible.
     /// </param>
-    public static bool TryGetAsFlags(Enum flags, out string dotFlags, bool sort = true) =>
+    public static bool TryGetAsFlags(Enum flags, [MaybeNullWhen(false)] out string dotFlags, bool sort = true) =>
         DotAttributeValue<DotHtmlAttributeValueAttribute>.TryGetAsFlags<DotHtmlJoinableTypeAttribute>(flags, out dotFlags, sort);
 
     /// <summary>
@@ -46,7 +47,8 @@ public static class DotHtmlAttributeValue
     /// <param name="dotValue">
     ///     The returned DOT attribute value if available.
     /// </param>
-    public static bool TryGet(Enum value, out string dotValue) => DotAttributeValue<DotHtmlAttributeValueAttribute>.TryGet(value, out dotValue);
+    public static bool TryGet(Enum value, [MaybeNullWhen(false)] out string dotValue) =>
+        DotAttributeValue<DotHtmlAttributeValueAttribute>.TryGet(value, out dotValue);
 
     /// <summary>
     ///     Gets a DOT attribute value associated with the specified enumeration value.
@@ -68,7 +70,7 @@ public static class DotHtmlAttributeValue
     /// <typeparam name="TEnum">
     ///     The type of the enumeration whose value to search.
     /// </typeparam>
-    public static bool TryGet<TEnum>(string dotValue, out TEnum value)
+    public static bool TryGet<TEnum>(string dotValue, [MaybeNullWhen(false)] out TEnum value)
         where TEnum : Enum => DotAttributeValue<DotHtmlAttributeValueAttribute>.TryGet(dotValue, out value);
 
     /// <summary>
@@ -83,7 +85,7 @@ public static class DotHtmlAttributeValue
     /// <param name="dotValue">
     ///     The DOT attribute value whose associated enumeration value to return.
     /// </param>
-    public static bool TryGet(Type enumType, string dotValue, out Enum value) =>
+    public static bool TryGet(Type enumType, string dotValue, [MaybeNullWhen(false)] out Enum value) =>
         DotAttributeValue<DotHtmlAttributeValueAttribute>.TryGet(enumType, dotValue, out value);
 
     /// <summary>

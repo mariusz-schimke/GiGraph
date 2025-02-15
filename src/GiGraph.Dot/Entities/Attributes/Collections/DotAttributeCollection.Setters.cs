@@ -28,7 +28,7 @@ public partial class DotAttributeCollection
 
     protected internal virtual void SetOrRemove(string key, DotEscapeString? value)
     {
-        SetOrRemove(key, value, _attributeFactory.CreateEscapeString);
+        SetOrRemove(key, value, (k, v) => _attributeFactory.CreateEscapeString(k, v!));
     }
 
     protected internal virtual void SetOrRemove(string key, string value)

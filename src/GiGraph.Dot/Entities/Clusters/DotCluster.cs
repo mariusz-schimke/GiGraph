@@ -59,7 +59,7 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     /// <summary>
     ///     Gets or sets the identifier of the cluster.
     /// </summary>
-    public virtual string Id { get; set; }
+    public virtual string Id { get; set; } = null!;
 
     string IDotOrderable.OrderingKey => Id;
 
