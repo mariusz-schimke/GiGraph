@@ -18,12 +18,12 @@ public class DotEdgeWithSubgraphEndpointsTest
             new DotEndpointGroup(
                 new DotEndpoint("node1"),
                 new DotClusterEndpoint("cluster1"),
-                new DotClusterEndpoint(null)
+                new DotClusterEndpoint("")
             ),
             new DotEndpointGroup(
                 new DotEndpoint("node2"),
                 new DotClusterEndpoint("cluster2"),
-                new DotClusterEndpoint(null)
+                new DotClusterEndpoint("")
             ),
             new DotEndpoint("node3", "port1")
         );
@@ -44,12 +44,12 @@ public class DotEdgeWithSubgraphEndpointsTest
             new DotEndpointGroup(
                 new DotEndpoint("node1"),
                 new DotClusterEndpoint("cluster1"),
-                new DotClusterEndpoint(null)
+                new DotClusterEndpoint("")
             ),
             new DotEndpointGroup(
                 new DotEndpoint("node2"),
                 new DotClusterEndpoint("cluster2"),
-                new DotClusterEndpoint(null)
+                new DotClusterEndpoint("")
             ),
             new DotEndpoint("node3", "port1")
         );
@@ -75,7 +75,7 @@ public class DotEdgeWithSubgraphEndpointsTest
                 new DotEndpointGroup(
                     new DotEndpoint("node1"),
                     new DotClusterEndpoint("cluster1"),
-                    new DotClusterEndpoint(null)
+                    new DotClusterEndpoint("")
                 ),
                 new DotSubgraphEndpoint("node2", "node3")
             );
@@ -100,7 +100,7 @@ public class DotEdgeWithSubgraphEndpointsTest
             new DotEndpointGroup(
                 new DotEndpoint("node1"),
                 new DotClusterEndpoint("cluster1"),
-                new DotClusterEndpoint(null)
+                new DotClusterEndpoint("")
             ),
             new DotSubgraphEndpoint("node2", "node3")
         );
@@ -127,7 +127,7 @@ public class DotEdgeWithSubgraphEndpointsTest
             new DotEndpointGroup(
                 new DotEndpoint("node3"),
                 new DotClusterEndpoint("cluster1"),
-                new DotClusterEndpoint(null)
+                new DotClusterEndpoint("")
             ),
             new DotSubgraphEndpoint("node4", "node5")
         );

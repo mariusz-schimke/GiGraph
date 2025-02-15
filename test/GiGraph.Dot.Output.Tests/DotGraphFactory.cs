@@ -95,7 +95,7 @@ public class DotGraphFactory
             new DotEndpointGroup(
                 new DotEndpoint("node1"),
                 new DotClusterEndpoint("cluster1"),
-                new DotClusterEndpoint(null)
+                new DotClusterEndpoint("")
             ),
             new DotSubgraphEndpoint("node3", "node4")
         );
