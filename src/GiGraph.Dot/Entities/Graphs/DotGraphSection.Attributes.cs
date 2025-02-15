@@ -49,49 +49,49 @@ public partial class DotGraphSection : IDotGraphRootAttributes
     }
 
     /// <inheritdoc cref="IDotGraphAttributes.Label" />
-    public virtual DotLabel Label
+    public virtual DotLabel? Label
     {
         get => Attributes.Implementation.Label;
         set => Attributes.Implementation.Label = value;
     }
 
     /// <inheritdoc cref="IDotGraphAttributes.ColorScheme" />
-    public virtual string ColorScheme
+    public virtual string? ColorScheme
     {
         get => Attributes.Implementation.ColorScheme;
         set => Attributes.Implementation.ColorScheme = value;
     }
 
     /// <inheritdoc cref="IDotGraphAttributes.Charset" />
-    public virtual string Charset
+    public virtual string? Charset
     {
         get => Attributes.Implementation.Charset;
         set => Attributes.Implementation.Charset = value;
     }
 
     /// <inheritdoc cref="IDotGraphAttributes.Comment" />
-    public virtual string Comment
+    public virtual string? Comment
     {
         get => Attributes.Implementation.Comment;
         set => Attributes.Implementation.Comment = value;
     }
 
     /// <inheritdoc cref="IDotGraphAttributes.ImageDirectories" />
-    public virtual string ImageDirectories
+    public virtual string? ImageDirectories
     {
         get => Attributes.Implementation.ImageDirectories;
         set => Attributes.Implementation.ImageDirectories = value;
     }
 
     /// <inheritdoc cref="IDotGraphAttributes.RootNodeId" />
-    public virtual DotId RootNodeId
+    public virtual DotId? RootNodeId
     {
         get => Attributes.Implementation.RootNodeId;
         set => Attributes.Implementation.RootNodeId = value;
     }
 
     /// <inheritdoc cref="IDotGraphAttributes.ObjectId" />
-    public virtual DotEscapeString ObjectId
+    public virtual DotEscapeString? ObjectId
     {
         get => Attributes.Implementation.ObjectId;
         set => Attributes.Implementation.ObjectId = value;

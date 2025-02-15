@@ -31,7 +31,7 @@ public abstract partial class DotEdgeDefinition : IDotEntity, IDotAnnotatable, I
     public DotEndpointDefinition[] Endpoints { get; }
 
     /// <inheritdoc cref="IDotAnnotatable.Annotation" />
-    public virtual string Annotation { get; set; }
+    public virtual string? Annotation { get; set; }
 
     string IDotOrderable.OrderingKey => GetOrderingKey();
 

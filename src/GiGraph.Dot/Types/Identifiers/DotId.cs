@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 
@@ -9,7 +10,7 @@ namespace GiGraph.Dot.Types.Identifiers;
 /// </summary>
 public class DotId : IDotEncodable
 {
-    protected readonly string _id;
+    protected readonly string? _id;
 
     /// <summary>
     ///     Creates a new element identifier.
@@ -17,26 +18,28 @@ public class DotId : IDotEncodable
     /// <param name="id">
     ///     The identifier to use.
     /// </param>
-    public DotId(string id)
+    public DotId(string? id)
     {
         _id = id;
     }
 
-    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
+    string? IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
 
-    public override string ToString() => _id;
+    public override string? ToString() => _id;
 
-    protected virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
+    protected virtual string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
         // use the same identifier escaping pipeline as the one used by entity generators
         syntaxRules.IdentifierEscaper.Escape(FormatId(options, syntaxRules));
 
-    protected virtual string FormatId(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => _id;
+    protected virtual string? FormatId(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => _id;
 
-    public static implicit operator string(DotId id) => id?._id;
+    [return: NotNullIfNotNull(nameof(id))]
+    public static implicit operator string?(DotId? id) => id?._id;
 
-    public static implicit operator DotId(string id) => id is not null ? new DotId(id) : null;
+    [return: NotNullIfNotNull(nameof(id))]
+    public static implicit operator DotId?(string? id) => id is not null ? new DotId(id) : null;
 
-    public override bool Equals(object obj) =>
+    public override bool Equals(object? obj) =>
         obj is DotId id &&
         id._id == _id &&
         id.GetType() == GetType();

@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Identifiers;
 
@@ -14,12 +15,12 @@ public class DotClusterId : DotId
     /// <param name="id">
     ///     The identifier to use.
     /// </param>
-    public DotClusterId(string id)
+    public DotClusterId(string? id)
         : base(id)
     {
     }
 
-    protected override string FormatId(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+    protected override string? FormatId(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
         const string cluster = "cluster";
 
@@ -33,5 +34,6 @@ public class DotClusterId : DotId
             : cluster;
     }
 
-    public static implicit operator DotClusterId(string id) => id is not null ? new DotClusterId(id) : null;
+    [return: NotNullIfNotNull(nameof(id))]
+    public static implicit operator DotClusterId?(string? id) => id is not null ? new DotClusterId(id) : null;
 }

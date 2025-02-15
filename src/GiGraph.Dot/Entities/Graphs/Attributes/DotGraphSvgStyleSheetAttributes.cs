@@ -23,7 +23,7 @@ public class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGr
 
     /// <inheritdoc cref="IDotGraphSvgStyleSheetAttributes.Url" />
     [DotAttributeKey(DotAttributeKeys.SvgStyleSheet)]
-    public virtual string Url
+    public virtual string? Url
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -38,7 +38,7 @@ public class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGr
     /// <param name="class">
     ///     The CSS class to set.
     /// </param>
-    public virtual void Set(string url, string @class)
+    public virtual void Set(string? url, string? @class)
     {
         Url = url;
         Class = @class;
