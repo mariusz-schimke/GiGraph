@@ -26,48 +26,48 @@ public class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata<IDotNod
     [DotAttributeKey(DotAttributeKeys.Sides)]
     public virtual int? Sides
     {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsInt(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotNodeGeometryAttributes.Regular" />
     [DotAttributeKey(DotAttributeKeys.Regular)]
     public virtual bool? Regular
     {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsBool(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotNodeGeometryAttributes.Peripheries" />
     [DotAttributeKey(DotAttributeKeys.Peripheries)]
     public virtual int? Peripheries
     {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsInt(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotNodeGeometryAttributes.Rotation" />
     [DotAttributeKey(DotAttributeKeys.Orientation)]
     public virtual double? Rotation
     {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotNodeGeometryAttributes.Skew" />
     [DotAttributeKey(DotAttributeKeys.Skew)]
     public virtual double? Skew
     {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotNodeGeometryAttributes.Distortion" />
     [DotAttributeKey(DotAttributeKeys.Distortion)]
     public virtual double? Distortion
     {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <summary>

@@ -27,24 +27,24 @@ public class DotNodeImageAttributes : DotEntityAttributesWithMetadata<IDotNodeIm
     [DotAttributeKey(DotAttributeKeys.Image)]
     public virtual string Path
     {
-        get => GetValueAsString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotNodeImageAttributes.Alignment" />
     [DotAttributeKey(DotAttributeKeys.ImagePos)]
     public virtual DotAlignment? Alignment
     {
-        get => GetValueAs<DotAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotAlignment>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 
     /// <inheritdoc cref="IDotNodeImageAttributes.Scaling" />
     [DotAttributeKey(DotAttributeKeys.ImageScale)]
     public virtual DotImageScaling? Scaling
     {
-        get => GetValueAs<DotImageScaling>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotImageScaling>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 
     /// <summary>

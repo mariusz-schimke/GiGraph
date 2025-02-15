@@ -32,42 +32,42 @@ public class DotGraphClustersAttributes : DotEntityAttributesWithMetadata<IDotGr
     [DotAttributeKey(DotAttributeKeys.Color)]
     public virtual DotColorDefinition Color
     {
-        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.PenWidth)]
     public virtual double? BorderWidth
     {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.PenColor)]
     public virtual DotColor BorderColor
     {
-        get => GetValueAsColor(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsColor(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.FillColor)]
     public virtual DotColorDefinition FillColor
     {
-        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Compound)]
     public virtual bool? AllowEdgeClipping
     {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsBool(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.ClusterRank)]
     public virtual DotClusterVisualizationMode? VisualizationMode
     {
-        get => GetValueAs<DotClusterVisualizationMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotClusterVisualizationMode>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 }

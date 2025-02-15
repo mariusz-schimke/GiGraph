@@ -34,15 +34,15 @@ public class DotEdgeEndpointLabelsAttributes : DotEntityAttributesWithMetadata<I
     [DotAttributeKey(DotAttributeKeys.LabelDistance)]
     public virtual double? Distance
     {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotEdgeEndpointLabelsAttributes.Angle" />
     [DotAttributeKey(DotAttributeKeys.LabelAngle)]
     public virtual double? Angle
     {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 }

@@ -22,24 +22,24 @@ public abstract class DotHyperlinkAttributes<TIEntityHyperlinkAttributes, TEntit
     [DotAttributeKey(DotAttributeKeys.Url)]
     public virtual DotEscapeString? Url
     {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotHyperlinkAttributes.Href" />
     [DotAttributeKey(DotAttributeKeys.Href)]
     public virtual DotEscapeString? Href
     {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotHyperlinkAttributes.Target" />
     [DotAttributeKey(DotAttributeKeys.Target)]
     public virtual DotEscapeString? Target
     {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <summary>

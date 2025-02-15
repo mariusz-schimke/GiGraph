@@ -28,16 +28,16 @@ public class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAttributes,
     [DotAttributeKey(DotAttributeKeys.FontPath)]
     public virtual string Directories
     {
-        get => GetValueAsString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphFontAttributes.Convention" />
     [DotAttributeKey(DotAttributeKeys.FontNames)]
     public virtual DotFontConvention? Convention
     {
-        get => GetValueAs<DotFontConvention>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotFontConvention>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 
     /// <summary>

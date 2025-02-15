@@ -22,24 +22,24 @@ public abstract class DotFontAttributes<TIEntityFontAttributes, TEntityFontAttri
     [DotAttributeKey(DotAttributeKeys.FontName)]
     public virtual string Name
     {
-        get => GetValueAsString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotFontAttributes.Size" />
     [DotAttributeKey(DotAttributeKeys.FontSize)]
     public virtual double? Size
     {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotFontAttributes.Color" />
     [DotAttributeKey(DotAttributeKeys.FontColor)]
     public virtual DotColor Color
     {
-        get => GetValueAsColor(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsColor(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <summary>

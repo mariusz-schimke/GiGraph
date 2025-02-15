@@ -43,8 +43,8 @@ public class DotClusterRootAttributes : DotClusterNodeRootCommonAttributes<IDotC
     [DotAttributeKey(DotAttributeKeys.Cluster)]
     bool? IDotClusterAttributes.IsCluster
     {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsBool(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     public DotFontAttributes Font { get; }
@@ -54,35 +54,35 @@ public class DotClusterRootAttributes : DotClusterNodeRootCommonAttributes<IDotC
     [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
     DotStyles? IDotClusterAttributes.Style
     {
-        get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Rank)]
     public virtual DotRank? NodeRank
     {
-        get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 
     [DotAttributeKey(DotAttributeKeys.PenColor)]
     public virtual DotColor BorderColor
     {
-        get => GetValueAsColor(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsColor(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.BgColor)]
     public virtual DotColorDefinition BackgroundColor
     {
-        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Peripheries)]
     public virtual int? Peripheries
     {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsInt(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 }

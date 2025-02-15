@@ -20,7 +20,7 @@ public abstract class DotSvgStyleSheetAttributes<TIEntitySvgStyleSheetAttributes
     [DotAttributeKey(DotAttributeKeys.Class)]
     public virtual string Class
     {
-        get => GetValueAsString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 }

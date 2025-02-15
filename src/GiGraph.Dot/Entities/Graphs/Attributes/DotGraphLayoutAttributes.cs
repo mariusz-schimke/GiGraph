@@ -29,136 +29,136 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
     [DotAttributeKey(DotAttributeKeys.TbBalance)]
     public virtual DotRank? FloatingNodeRank
     {
-        get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.Rotation" />
     [DotAttributeKey(DotAttributeKeys.Rotation)]
     public virtual double? Rotation
     {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.RepeatEdgeCrossingMinimization" />
     [DotAttributeKey(DotAttributeKeys.ReMinCross)]
     public virtual bool? RepeatEdgeCrossingMinimization
     {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsBool(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.EdgeCrossingMinimizationScaleFactor" />
     [DotAttributeKey(DotAttributeKeys.McLimit)]
     public virtual double? EdgeCrossingMinimizationScaleFactor
     {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.UseGlobalRanking" />
     [DotAttributeKey(DotAttributeKeys.NewRank)]
     public virtual bool? UseGlobalRanking
     {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsBool(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeRank" />
     [DotAttributeKey(DotAttributeKeys.Rank)]
     public virtual DotRank? NodeRank
     {
-        get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.Packing" />
     [DotAttributeKey(DotAttributeKeys.Pack)]
     public virtual DotPackingDefinition Packing
     {
-        get => GetValueAsPackingDefinition(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsPackingDefinition(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.PackingMode" />
     [DotAttributeKey(DotAttributeKeys.PackMode)]
     public virtual DotPackingModeDefinition PackingMode
     {
-        get => GetValueAsPackingModeDefinition(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsPackingModeDefinition(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeSeparation" />
     [DotAttributeKey(DotAttributeKeys.NodeSep)]
     public virtual double? NodeSeparation
     {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.RankSeparation" />
     [DotAttributeKey(DotAttributeKeys.RankSep)]
     public virtual DotRankSeparationDefinition RankSeparation
     {
-        get => GetValueAsRankSeparationDefinition(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsRankSeparationDefinition(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.ConcentrateEdges" />
     [DotAttributeKey(DotAttributeKeys.Concentrate)]
     public virtual bool? ConcentrateEdges
     {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsBool(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.Engine" />
     [DotAttributeKey(DotAttributeKeys.Layout)]
     public virtual string Engine
     {
-        get => GetValueAsString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.Direction" />
     [DotAttributeKey(DotAttributeKeys.RankDir)]
     public virtual DotLayoutDirection? Direction
     {
-        get => GetValueAs<DotLayoutDirection>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotLayoutDirection>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.EdgeOrderingMode" />
     [DotAttributeKey(DotAttributeKeys.Ordering)]
     public virtual DotEdgeOrderingMode? EdgeOrderingMode
     {
-        get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.ForceExternalLabels" />
     [DotAttributeKey(DotAttributeKeys.ForceLabels)]
     public virtual bool? ForceExternalLabels
     {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsBool(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.ForceCircularLayout" />
     [DotAttributeKey(DotAttributeKeys.OneBlock)]
     public virtual bool? ForceCircularLayout
     {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsBool(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.SortIndex" />
     [DotAttributeKey(DotAttributeKeys.SortV)]
     public virtual int? SortIndex
     {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsInt(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <summary>

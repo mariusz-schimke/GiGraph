@@ -70,8 +70,8 @@ public class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdgeHyperli
     [DotAttributeKey(DotAttributeKeys.EdgeTooltip)]
     public virtual DotEscapeString? Tooltip
     {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <summary>

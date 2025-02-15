@@ -25,8 +25,8 @@ public class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGr
     [DotAttributeKey(DotAttributeKeys.SvgStyleSheet)]
     public virtual string Url
     {
-        get => GetValueAsString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <summary>

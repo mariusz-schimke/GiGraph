@@ -13,18 +13,18 @@ public abstract partial class DotEntityAttributes
         _attributes.SetOrRemove(GetKey(propertyAccessor), value, newAttribute);
     }
 
-    protected void SetOrRemove<TComplex>(MethodBase propertyAccessor, TComplex value)
+    protected void SetOrRemove<TComplex>(MethodBase propertyAccessor, TComplex? value)
         where TComplex : IDotEncodable
     {
         _attributes.SetOrRemoveComplex(GetKey(propertyAccessor), value);
     }
 
-    protected void SetOrRemove(MethodBase propertyAccessor, DotEscapeString value)
+    protected void SetOrRemove(MethodBase propertyAccessor, DotEscapeString? value)
     {
         _attributes.SetOrRemove(GetKey(propertyAccessor), value);
     }
 
-    protected void SetOrRemove(MethodBase propertyAccessor, string value)
+    protected void SetOrRemove(MethodBase propertyAccessor, string? value)
     {
         _attributes.SetOrRemove(GetKey(propertyAccessor), value);
     }

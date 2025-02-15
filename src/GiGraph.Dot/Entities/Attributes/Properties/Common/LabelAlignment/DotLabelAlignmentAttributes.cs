@@ -25,16 +25,16 @@ public class DotLabelAlignmentAttributes : DotEntityAttributesWithMetadata<IDotL
     [DotAttributeKey(DotAttributeKeys.LabelJust)]
     public virtual DotHorizontalAlignment? Horizontal
     {
-        get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 
     /// <inheritdoc cref="IDotLabelAlignmentAttributes.Vertical" />
     [DotAttributeKey(DotAttributeKeys.LabelLoc)]
     public virtual DotVerticalAlignment? Vertical
     {
-        get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 
     /// <summary>
