@@ -22,7 +22,7 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     /// <param name="id">
     ///     The unique identifier of the cluster.
     /// </param>
-    public DotCluster(string id)
+    public DotCluster(string? id)
         : this(new(), new())
     {
         Id = id;
@@ -58,9 +58,9 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     /// <summary>
     ///     Gets or sets the identifier of the cluster (optional).
     /// </summary>
-    public virtual string Id { get; set; }
+    public virtual string? Id { get; set; }
 
-    string IDotOrderable.OrderingKey => Id;
+    string? IDotOrderable.OrderingKey => Id;
 
     /// <summary>
     ///     Returns attributes from the collection based on the syntax options specified. Because Graphviz introduced the 'cluster'
