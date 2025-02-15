@@ -23,9 +23,9 @@ public abstract partial class DotEscapeString : IDotEscapable
     /// </summary>
     public override string ToString() => GetRawString();
 
-    public static implicit operator DotEscapeString(string value) => (DotUnescapedString) value;
+    public static implicit operator DotEscapeString(string? value) => (DotUnescapedString) value;
 
-    public static implicit operator string(DotEscapeString value) => value?.GetRawString();
+    public static implicit operator string(DotEscapeString? value) => value?.GetRawString()!;
 
-    public static DotEscapeString operator +(DotEscapeString value1, DotEscapeString value2) => new DotConcatenatedEscapeString(value1, value2);
+    public static DotEscapeString operator +(DotEscapeString? value1, DotEscapeString? value2) => new DotConcatenatedEscapeString(value1, value2);
 }

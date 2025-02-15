@@ -33,5 +33,5 @@ public class DotEscapedString : DotEscapeString
 
     protected internal override string GetEscapedString(IDotTextEscaper textEscaper) => _value;
 
-    public static implicit operator DotEscapedString(string value) => value is not null ? new DotEscapedString(value) : null;
+    public static implicit operator DotEscapedString(string? value) => value is not null ? new DotEscapedString(value) : null!;
 }

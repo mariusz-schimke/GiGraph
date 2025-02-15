@@ -32,5 +32,5 @@ public class DotUnescapedString : DotEscapeString
 
     protected internal override string GetEscapedString(IDotTextEscaper textEscaper) => textEscaper.Escape(_value);
 
-    public static implicit operator DotUnescapedString(string value) => value is not null ? new DotUnescapedString(value) : null;
+    public static implicit operator DotUnescapedString(string? value) => value is not null ? new DotUnescapedString(value) : null!;
 }
