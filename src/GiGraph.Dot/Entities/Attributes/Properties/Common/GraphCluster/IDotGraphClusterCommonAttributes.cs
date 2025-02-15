@@ -31,7 +31,7 @@ public interface IDotGraphClusterCommonAttributes
     ///         <see cref="DotClusterFillStyle.Striped" />, and use <see cref="DotMulticolor" /> as a color list definition).
     ///     </para>
     /// </summary>
-    DotColorDefinition Color { get; set; }
+    DotColorDefinition? Color { get; set; }
 
     /// <summary>
     ///     <para>
@@ -55,7 +55,7 @@ public interface IDotGraphClusterCommonAttributes
     ///         <see cref="IDotClusterAttributes.BackgroundColor" /> set for the cluster.
     ///     </para>
     /// </summary>
-    DotColorDefinition FillColor { get; set; }
+    DotColorDefinition? FillColor { get; set; }
 
     /// <summary>
     ///     Specifies the width of the pen, in points, used to draw the bounding box around clusters. The value is inherited by
@@ -70,5 +70,5 @@ public interface IDotGraphClusterCommonAttributes
     ///     clusters, it will override a <see cref="Color" /> or <see cref="IDotClusterAttributes.BackgroundColor" /> attribute set for
     ///     individual clusters.
     /// </summary>
-    DotColor BorderColor { get; set; }
+    DotColor? BorderColor { get; set; }
 }
