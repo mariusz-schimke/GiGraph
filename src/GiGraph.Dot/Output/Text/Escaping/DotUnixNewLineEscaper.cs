@@ -5,7 +5,7 @@
 /// </summary>
 public class DotUnixNewLineEscaper : IDotTextEscaper
 {
-    string IDotTextEscaper.Escape(string value) => Escape(value);
+    string? IDotTextEscaper.Escape(string? value) => Escape(value);
 
-    public static string Escape(string value) => value?.Replace(DotNewLine.Unix, "\\n");
+    public static string? Escape(string? value) => value?.Replace(DotNewLine.Unix, "\\n");
 }

@@ -66,14 +66,14 @@ public class DotClusterRootAttributes : DotClusterNodeRootCommonAttributes<IDotC
     }
 
     [DotAttributeKey(DotAttributeKeys.PenColor)]
-    public virtual DotColor BorderColor
+    public virtual DotColor? BorderColor
     {
         get => GetValueAsColor(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.BgColor)]
-    public virtual DotColorDefinition BackgroundColor
+    public virtual DotColorDefinition? BackgroundColor
     {
         get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);

@@ -9,9 +9,9 @@ namespace GiGraph.Dot.Output.Text.Escaping;
 /// </summary>
 public class DotSpacePaddingEscaper : IDotTextEscaper
 {
-    string IDotTextEscaper.Escape(string value) => Escape(value);
+    string? IDotTextEscaper.Escape(string? value) => Escape(value);
 
-    public static string Escape(string value) =>
+    public static string? Escape(string? value) =>
         value is not null
             ? Regex.Replace(value, "(?<=^[ ]*)[ ]|[ ](?=[ ]*$)", "&#32;")
             : null;
