@@ -82,6 +82,9 @@ public record DotColor(Color Color, string? Scheme = null) : DotColorDefinition
         return $"#{Color.R:x2}{Color.G:x2}{Color.B:x2}{alpha}";
     }
 
+    // TODO: implement implicit operators for all types like below
+    // (for both nullable and non-nullable input and output)
+
     public static implicit operator DotColor(Color color) => new(color);
     public static implicit operator DotColor?(Color? color) => color.HasValue ? color.Value : null;
 
