@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Clusters;
+﻿using System.Diagnostics.CodeAnalysis;
+using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Edges;
 
@@ -19,29 +20,19 @@ public class DotClusterEndpoint : DotEndpoint
     ///     Determines the edge placement to aim for the specified compass point on the cluster. If no compass point is specified
     ///     explicitly, the default value is <see cref="DotCompassPoint.Center" />.
     /// </param>
-    public DotClusterEndpoint(string clusterId, DotCompassPoint? compassPoint = null)
-        : base(clusterId, compassPoint)
+    public DotClusterEndpoint(string? clusterId, DotCompassPoint? compassPoint = null)
+        : base(clusterId!, compassPoint)
     {
     }
 
     /// <summary>
     ///     Gets the cluster identifier.
     /// </summary>
-    public override string Id => base.Id;
-
-    /// <summary>
-    ///     Gets or sets the endpoint port, that is a point on a cluster where an edge is attached to.
-    /// </summary>
-    public override DotEndpointPort Port
+    public override string Id
     {
-        get => base.Port;
-        set => base.Port = value;
-    }
-
-    protected override void SetId(string id)
-    {
+        get => _id;
         // allow null (it will generate an ID of 'cluster')
-        Id = id;
+        protected init => _id = value;
     }
 
     // the type of endpoint may be specified explicitly as a generic param, in which case this implicit conversion may be useful

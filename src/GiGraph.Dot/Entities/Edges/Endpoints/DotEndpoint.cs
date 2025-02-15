@@ -14,6 +14,7 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints;
 /// </summary>
 public class DotEndpoint : DotEndpointDefinition
 {
+    protected string _id;
     protected DotEndpointPort _port;
 
     /// <summary>
@@ -64,14 +65,18 @@ public class DotEndpoint : DotEndpointDefinition
     /// </param>
     public DotEndpoint(string id, DotEndpointPort port)
     {
-        SetId(id);
-        SetPort(port);
+        Id = id;
+        Port = port;
     }
 
     /// <summary>
     ///     Gets the node identifier.
     /// </summary>
-    public virtual string Id { get; protected set; }
+    public virtual string Id
+    {
+        get => _id;
+        protected init => _id = value ?? throw new ArgumentNullException(nameof(Id), "Endpoint identifier must not be null.");
+    }
 
     /// <summary>
     ///     Gets or sets the endpoint port, that is a point on a node where an edge is attached to.
@@ -79,17 +84,7 @@ public class DotEndpoint : DotEndpointDefinition
     public virtual DotEndpointPort Port
     {
         get => _port;
-        set => SetPort(value);
-    }
-
-    protected virtual void SetId(string id)
-    {
-        Id = id ?? throw new ArgumentNullException(nameof(id), "Endpoint identifier must not be null.");
-    }
-
-    protected virtual void SetPort(DotEndpointPort port)
-    {
-        _port = port ?? throw new ArgumentNullException(nameof(port), "Endpoint port must not be null.");
+        set => _port = value ?? throw new ArgumentNullException(nameof(Port), "Endpoint port must not be null.");
     }
 
     protected override string GetOrderingKey() => $"{Id}:{Port.Name}:{Port.CompassPoint}";
