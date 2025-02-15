@@ -382,7 +382,7 @@ public partial class DotAttributeCollection
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotId" />. If the
     ///     attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
-    public virtual DotId GetValueAsId(string key)
+    public virtual DotId? GetValueAsId(string key)
     {
         return GetValueAs
         (

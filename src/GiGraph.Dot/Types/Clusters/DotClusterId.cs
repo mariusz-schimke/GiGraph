@@ -15,12 +15,12 @@ public class DotClusterId : DotId
     /// <param name="id">
     ///     The identifier to use.
     /// </param>
-    public DotClusterId(string? id)
+    public DotClusterId(string id)
         : base(id)
     {
     }
 
-    protected override string? FormatId(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+    protected override string FormatId(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
         const string cluster = "cluster";
 

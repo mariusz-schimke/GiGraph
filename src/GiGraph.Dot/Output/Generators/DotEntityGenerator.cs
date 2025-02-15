@@ -70,19 +70,21 @@ public abstract class DotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator
 
     protected virtual void WriteAnnotation(TEntity entity, TWriter writer)
     {
-        if (_options.Comments.Enabled && entity.Annotation is not null)
+        if (!_options.Comments.Enabled || entity.Annotation is null)
         {
-            var commentWriter = writer.BeginComment(_options.Comments.PreferBlockComments);
-            commentWriter.Write(entity.Annotation);
-            writer.EndComment();
+            return;
         }
+
+        var commentWriter = writer.BeginComment(_options.Comments.PreferBlockComments);
+        commentWriter.Write(entity.Annotation);
+        writer.EndComment();
     }
 
-    protected virtual string EncodeIdentifier<TId>(TId id)
+    protected virtual string? EncodeIdentifier<TId>(TId? id)
         where TId : DotId, IDotEncodable =>
-        id.GetDotEncodedValue(_options, _syntaxRules);
+        id?.GetDotEncodedValue(_options, _syntaxRules);
 
-    protected virtual string EncodeIdentifier(string id) => EncodeIdentifier(new DotId(id));
+    protected virtual string? EncodeIdentifier(string? id) => EncodeIdentifier((DotId?) id);
 
     protected virtual bool IdentifierRequiresQuoting(string id) => _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);
 }
