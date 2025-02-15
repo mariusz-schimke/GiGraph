@@ -32,7 +32,7 @@ public class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdgeHyperli
     ///     <see cref="IDotHyperlinkAttributes.Url" /> specified for the edge's <see cref="IDotEdgeRootAttributes.Hyperlink" />.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.EdgeUrl)]
-    public override DotEscapeString Url
+    public override DotEscapeString? Url
     {
         get => base.Url;
         set => base.Url = value;
@@ -42,7 +42,7 @@ public class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdgeHyperli
     ///     Synonym for <see cref="Url" /> (svg, map only).
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.EdgeHref)]
-    public override DotEscapeString Href
+    public override DotEscapeString? Href
     {
         get => base.Href;
         set => base.Href = value;
@@ -56,7 +56,7 @@ public class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdgeHyperli
     ///     <see cref="IDotEdgeRootAttributes.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Target" /> is used.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.EdgeTarget)]
-    public override DotEscapeString Target
+    public override DotEscapeString? Target
     {
         get => base.Target;
         set => base.Target = value;
@@ -68,7 +68,7 @@ public class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdgeHyperli
     ///     specified.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.EdgeTooltip)]
-    public virtual DotEscapeString Tooltip
+    public virtual DotEscapeString? Tooltip
     {
         get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
         set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
@@ -86,13 +86,13 @@ public class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdgeHyperli
     /// <param name="tooltip">
     ///     The tooltip of the hyperlink.
     /// </param>
-    public virtual void Set(DotEscapeString url, DotEscapeString target = null, DotEscapeString tooltip = null)
+    public virtual void Set(DotEscapeString? url, DotEscapeString? target = null, DotEscapeString? tooltip = null)
     {
         Tooltip = tooltip;
         base.Set(url, target);
     }
 
-    protected virtual void SetAll(DotEscapeString url, DotEscapeString target, DotEscapeString href, DotEscapeString tooltip)
+    protected virtual void SetAll(DotEscapeString? url, DotEscapeString? target, DotEscapeString? href, DotEscapeString? tooltip)
     {
         Tooltip = tooltip;
         base.SetAll(url, target, href);
