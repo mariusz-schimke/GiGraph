@@ -30,7 +30,7 @@ public class DotGraphClustersAttributes : DotEntityAttributesWithMetadata<IDotGr
     public DotClusterStyleAttributeOptions Style { get; }
 
     [DotAttributeKey(DotAttributeKeys.Color)]
-    public virtual DotColorDefinition Color
+    public virtual DotColorDefinition? Color
     {
         get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -44,14 +44,14 @@ public class DotGraphClustersAttributes : DotEntityAttributesWithMetadata<IDotGr
     }
 
     [DotAttributeKey(DotAttributeKeys.PenColor)]
-    public virtual DotColor BorderColor
+    public virtual DotColor? BorderColor
     {
         get => GetValueAsColor(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.FillColor)]
-    public virtual DotColorDefinition FillColor
+    public virtual DotColorDefinition? FillColor
     {
         get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);

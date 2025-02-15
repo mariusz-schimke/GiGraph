@@ -31,14 +31,14 @@ public partial class DotClusterSection : IDotClusterRootAttributes
     public DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
 
     /// <inheritdoc cref="IDotGraphClusterCommonAttributes.Color" />
-    public virtual DotColorDefinition Color
+    public virtual DotColorDefinition? Color
     {
         get => Attributes.Implementation.Color;
         set => Attributes.Implementation.Color = value;
     }
 
     /// <inheritdoc cref="IDotGraphClusterCommonAttributes.FillColor" />
-    public virtual DotColorDefinition FillColor
+    public virtual DotColorDefinition? FillColor
     {
         get => Attributes.Implementation.FillColor;
         set => Attributes.Implementation.FillColor = value;
@@ -52,7 +52,7 @@ public partial class DotClusterSection : IDotClusterRootAttributes
     }
 
     /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor" />
-    public virtual DotColor BorderColor
+    public virtual DotColor? BorderColor
     {
         get => Attributes.Implementation.BorderColor;
         set => Attributes.Implementation.BorderColor = value;
@@ -66,28 +66,28 @@ public partial class DotClusterSection : IDotClusterRootAttributes
     }
 
     /// <inheritdoc cref="IDotClusterAttributes.Label" />
-    public virtual DotLabel Label
+    public virtual DotLabel? Label
     {
         get => Attributes.Implementation.Label;
         set => Attributes.Implementation.Label = value;
     }
 
     /// <inheritdoc cref="IDotClusterAttributes.Tooltip" />
-    public virtual DotEscapeString Tooltip
+    public virtual DotEscapeString? Tooltip
     {
         get => Attributes.Implementation.Tooltip;
         set => Attributes.Implementation.Tooltip = value;
     }
 
     /// <inheritdoc cref="IDotClusterAttributes.BackgroundColor" />
-    public virtual DotColorDefinition BackgroundColor
+    public virtual DotColorDefinition? BackgroundColor
     {
         get => Attributes.Implementation.BackgroundColor;
         set => Attributes.Implementation.BackgroundColor = value;
     }
 
     /// <inheritdoc cref="IDotClusterAttributes.ColorScheme" />
-    public virtual string ColorScheme
+    public virtual string? ColorScheme
     {
         get => Attributes.Implementation.ColorScheme;
         set => Attributes.Implementation.ColorScheme = value;
@@ -108,7 +108,7 @@ public partial class DotClusterSection : IDotClusterRootAttributes
     }
 
     /// <inheritdoc cref="IDotClusterAttributes.Padding" />
-    public virtual DotPoint Padding
+    public virtual DotPoint? Padding
     {
         get => Attributes.Implementation.Padding;
         set => Attributes.Implementation.Padding = value;
@@ -122,7 +122,7 @@ public partial class DotClusterSection : IDotClusterRootAttributes
     }
 
     /// <inheritdoc cref="IDotClusterAttributes.ObjectId" />
-    public virtual DotEscapeString ObjectId
+    public virtual DotEscapeString? ObjectId
     {
         get => Attributes.Implementation.ObjectId;
         set => Attributes.Implementation.ObjectId = value;

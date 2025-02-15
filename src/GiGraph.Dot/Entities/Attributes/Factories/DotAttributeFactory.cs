@@ -103,7 +103,7 @@ public class DotAttributeFactory
     /// <param name="value">
     ///     The value of the attribute.
     /// </param>
-    public virtual DotEscapeStringAttribute CreateEscapeString<TEscapeString>(string key, TEscapeString? value)
+    public virtual DotEscapeStringAttribute CreateEscapeString<TEscapeString>(string key, TEscapeString value)
         where TEscapeString : DotEscapeString => new(key, value);
 
     /// <summary>

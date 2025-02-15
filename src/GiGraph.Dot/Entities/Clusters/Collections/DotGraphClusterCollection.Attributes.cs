@@ -26,14 +26,14 @@ public partial class DotGraphClusterCollection : IDotGraphClustersRootAttributes
     }
 
     /// <inheritdoc cref="IDotGraphClusterCommonAttributes.Color" />
-    public virtual DotColorDefinition Color
+    public virtual DotColorDefinition? Color
     {
         get => Attributes.Implementation.Color;
         set => Attributes.Implementation.Color = value;
     }
 
     /// <inheritdoc cref="IDotGraphClusterCommonAttributes.FillColor" />
-    public virtual DotColorDefinition FillColor
+    public virtual DotColorDefinition? FillColor
     {
         get => Attributes.Implementation.FillColor;
         set => Attributes.Implementation.FillColor = value;
@@ -47,7 +47,7 @@ public partial class DotGraphClusterCollection : IDotGraphClustersRootAttributes
     }
 
     /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor" />
-    public virtual DotColor BorderColor
+    public virtual DotColor? BorderColor
     {
         get => Attributes.Implementation.BorderColor;
         set => Attributes.Implementation.BorderColor = value;

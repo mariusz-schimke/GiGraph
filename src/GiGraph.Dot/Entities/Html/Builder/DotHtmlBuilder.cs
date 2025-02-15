@@ -32,7 +32,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     A content initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder Append<TContentEntity>(TContentEntity entity, Action<DotHtmlBuilder> init = null)
+    public virtual DotHtmlBuilder Append<TContentEntity>(TContentEntity entity, Action<DotHtmlBuilder>? init = null)
         where TContentEntity : IDotHtmlContentEntity
     {
         entity.SetContent(init);
@@ -49,7 +49,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     An entity initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendEntity<TEntity>(TEntity entity, Action<TEntity> init = null)
+    public virtual DotHtmlBuilder AppendEntity<TEntity>(TEntity entity, Action<TEntity>? init = null)
         where TEntity : IDotHtmlEntity
     {
         init?.Invoke(entity);

@@ -71,28 +71,28 @@ public class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDotGraphAtt
     }
 
     [DotAttributeKey(DotAttributeKeys.Comment)]
-    public virtual string Comment
+    public virtual string? Comment
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Charset)]
-    public virtual string Charset
+    public virtual string? Charset
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.ImagePath)]
-    public virtual string ImageDirectories
+    public virtual string? ImageDirectories
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Root)]
-    public virtual DotId RootNodeId
+    public virtual DotId? RootNodeId
     {
         get => GetValueAsId(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);

@@ -29,14 +29,14 @@ public abstract class DotClusterNodeRootCommonAttributes<TIEntityAttributeProper
     public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
     [DotAttributeKey(DotAttributeKeys.Color)]
-    public virtual DotColorDefinition Color
+    public virtual DotColorDefinition? Color
     {
         get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.FillColor)]
-    public virtual DotColorDefinition FillColor
+    public virtual DotColorDefinition? FillColor
     {
         get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -57,14 +57,14 @@ public abstract class DotClusterNodeRootCommonAttributes<TIEntityAttributeProper
     }
 
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
-    public virtual DotEscapeString Tooltip
+    public virtual DotEscapeString? Tooltip
     {
         get => GetValueAsEscapeString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Margin)]
-    public virtual DotPoint Padding
+    public virtual DotPoint? Padding
     {
         get => GetValueAsPoint(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);

@@ -75,7 +75,7 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.Packing" />
     [DotAttributeKey(DotAttributeKeys.Pack)]
-    public virtual DotPackingDefinition Packing
+    public virtual DotPackingDefinition? Packing
     {
         get => GetValueAsPackingDefinition(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -83,7 +83,7 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.PackingMode" />
     [DotAttributeKey(DotAttributeKeys.PackMode)]
-    public virtual DotPackingModeDefinition PackingMode
+    public virtual DotPackingModeDefinition? PackingMode
     {
         get => GetValueAsPackingModeDefinition(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -99,7 +99,7 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.RankSeparation" />
     [DotAttributeKey(DotAttributeKeys.RankSep)]
-    public virtual DotRankSeparationDefinition RankSeparation
+    public virtual DotRankSeparationDefinition? RankSeparation
     {
         get => GetValueAsRankSeparationDefinition(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -115,7 +115,7 @@ public class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<IDotGrap
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.Engine" />
     [DotAttributeKey(DotAttributeKeys.Layout)]
-    public virtual string Engine
+    public virtual string? Engine
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);

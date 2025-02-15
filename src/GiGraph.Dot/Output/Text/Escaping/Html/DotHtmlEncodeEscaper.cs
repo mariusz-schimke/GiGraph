@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Output.Text.Escaping.Html;
 /// </summary>
 public class DotHtmlEncodeEscaper : IDotTextEscaper
 {
-    string IDotTextEscaper.Escape(string value) => Escape(value);
+    string? IDotTextEscaper.Escape(string? value) => Escape(value);
 
-    public static string Escape(string value) => HttpUtility.HtmlEncode(value);
+    public static string? Escape(string? value) => HttpUtility.HtmlEncode(value!);
 }

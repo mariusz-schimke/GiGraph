@@ -28,7 +28,7 @@ public class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<IDotGrap
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.BackgroundColor" />
     [DotAttributeKey(DotAttributeKeys.BgColor)]
-    public virtual DotColorDefinition BackgroundColor
+    public virtual DotColorDefinition? BackgroundColor
     {
         get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -92,7 +92,7 @@ public class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<IDotGrap
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Size" />
     [DotAttributeKey(DotAttributeKeys.Size)]
-    public virtual DotPoint Size
+    public virtual DotPoint? Size
     {
         get => GetValueAsPoint(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -100,7 +100,7 @@ public class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<IDotGrap
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Viewport" />
     [DotAttributeKey(DotAttributeKeys.Viewport)]
-    public virtual DotViewport Viewport
+    public virtual DotViewport? Viewport
     {
         get => GetValueAs<DotViewport>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -108,7 +108,7 @@ public class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<IDotGrap
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Scaling" />
     [DotAttributeKey(DotAttributeKeys.Ratio)]
-    public virtual DotGraphScalingDefinition Scaling
+    public virtual DotGraphScalingDefinition? Scaling
     {
         get => GetValueAsGraphScalingDefinition(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -116,7 +116,7 @@ public class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<IDotGrap
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Margin" />
     [DotAttributeKey(DotAttributeKeys.Margin)]
-    public virtual DotPoint Margin
+    public virtual DotPoint? Margin
     {
         get => GetValueAsPoint(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -124,7 +124,7 @@ public class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<IDotGrap
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Padding" />
     [DotAttributeKey(DotAttributeKeys.Pad)]
-    public virtual DotPoint Padding
+    public virtual DotPoint? Padding
     {
         get => GetValueAsPoint(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);

@@ -25,7 +25,7 @@ public class DotNodeImageAttributes : DotEntityAttributesWithMetadata<IDotNodeIm
 
     /// <inheritdoc cref="IDotNodeImageAttributes.Path" />
     [DotAttributeKey(DotAttributeKeys.Image)]
-    public virtual string Path
+    public virtual string? Path
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
