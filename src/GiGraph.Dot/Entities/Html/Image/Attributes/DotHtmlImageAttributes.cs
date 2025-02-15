@@ -23,7 +23,7 @@ public class DotHtmlImageAttributes : DotHtmlElementAttributes<IDotHtmlImageAttr
     }
 
     [DotAttributeKey("src")]
-    public virtual string Source
+    public virtual string? Source
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);

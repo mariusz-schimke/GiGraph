@@ -29,7 +29,7 @@ public class DotNodeGroup : DotNodeDefinition
     ///     The node identifiers to initialize the instance with.
     /// </param>
     public DotNodeGroup(IEnumerable<string> nodeIds)
-        : this(nodeIds?.ToArray())
+        : this(nodeIds.ToArray())
     {
     }
 

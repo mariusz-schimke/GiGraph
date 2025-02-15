@@ -43,7 +43,7 @@ public abstract class DotLabel : IDotEncodable
     ///     The escaped text to use as the label.
     /// </param>
     [return: NotNullIfNotNull(nameof(text))]
-    public static DotLabel? FromFormattedText(string? text) => (DotEscapedString) text;
+    public static DotLabel? FromFormattedText(string? text) => (DotEscapedString?) text;
 
     /// <summary>
     ///     Creates an HTML label. The HTML should be generated according to the rules described in the

@@ -59,14 +59,14 @@ public class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<IDotNode
     }
 
     [DotAttributeKey(DotAttributeKeys.Comment)]
-    public virtual string Comment
+    public virtual string? Comment
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.XLabel)]
-    public virtual DotLabel ExternalLabel
+    public virtual DotLabel? ExternalLabel
     {
         get => GetValueAsLabel(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -94,7 +94,7 @@ public class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<IDotNode
     }
 
     [DotAttributeKey(DotAttributeKeys.Group)]
-    public virtual string GroupName
+    public virtual string? GroupName
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);

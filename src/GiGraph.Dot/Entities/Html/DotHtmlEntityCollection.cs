@@ -66,7 +66,7 @@ public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlContentEnti
         ((IDotHtmlContentEntity) this).SetContent(new DotHtml(html));
     }
 
-    void IDotHtmlContentEntity.SetContent(Action<DotHtmlBuilder> build)
+    void IDotHtmlContentEntity.SetContent(Action<DotHtmlBuilder>? build)
     {
         var builder = new DotHtmlBuilder();
 
@@ -90,7 +90,7 @@ public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlContentEnti
     /// <param name="init">
     ///     An optional entity initializer.
     /// </param>
-    public virtual TEntity Add<TEntity>(TEntity entity, Action<TEntity> init = null)
+    public virtual TEntity Add<TEntity>(TEntity entity, Action<TEntity>? init = null)
         where TEntity : IDotHtmlEntity
     {
         init?.Invoke(entity);

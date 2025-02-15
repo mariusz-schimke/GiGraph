@@ -17,7 +17,7 @@ public class DotEndpointGroup : DotEndpointDefinition
     ///     The identifiers of nodes to use as endpoints.
     /// </param>
     public DotEndpointGroup(params string[] nodeIds)
-        : this(nodeIds?.Select(nodeId => new DotEndpoint(nodeId)))
+        : this(nodeIds.Select(nodeId => new DotEndpoint(nodeId)))
     {
     }
 
@@ -28,7 +28,7 @@ public class DotEndpointGroup : DotEndpointDefinition
     ///     The identifiers of nodes to use as endpoints.
     /// </param>
     public DotEndpointGroup(IEnumerable<string> nodeIds)
-        : this(nodeIds?.Select(nodeId => new DotEndpoint(nodeId)))
+        : this(nodeIds.Select(nodeId => new DotEndpoint(nodeId)))
     {
     }
 
@@ -57,7 +57,7 @@ public class DotEndpointGroup : DotEndpointDefinition
     ///     The endpoints to use.
     /// </param>
     public DotEndpointGroup(IEnumerable<DotEndpoint> endpoints)
-        : this(endpoints?.ToArray())
+        : this(endpoints.ToArray())
     {
     }
 
@@ -70,8 +70,8 @@ public class DotEndpointGroup : DotEndpointDefinition
     {
         return string.Join(" ",
             Endpoints
-               .Cast<IDotOrderable>()
-               .Select(endpoint => endpoint.OrderingKey)
-               .OrderBy(key => key, StringComparer.InvariantCulture));
+                .Cast<IDotOrderable>()
+                .Select(endpoint => endpoint.OrderingKey)
+                .OrderBy(key => key, StringComparer.InvariantCulture));
     }
 }

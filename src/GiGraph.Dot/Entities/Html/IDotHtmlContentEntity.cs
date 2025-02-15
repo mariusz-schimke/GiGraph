@@ -36,7 +36,7 @@ public interface IDotHtmlContentEntity : IDotHtmlEntity
     /// <param name="build">
     ///     The HTML builder delegate.
     /// </param>
-    void SetContent(Action<DotHtmlBuilder> build);
+    void SetContent(Action<DotHtmlBuilder>? build);
 
     /// <summary>
     ///     Uses the specified HTML as the content of the current element.

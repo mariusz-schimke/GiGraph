@@ -5,7 +5,7 @@
 /// </summary>
 public class DotSpaceHtmlEscaper : IDotTextEscaper
 {
-    string IDotTextEscaper.Escape(string value) => Escape(value);
+    string? IDotTextEscaper.Escape(string? value) => Escape(value);
 
-    public static string Escape(string value) => value?.Replace(" ", "&#32;");
+    public static string? Escape(string? value) => value?.Replace(" ", "&#32;");
 }

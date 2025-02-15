@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Html.Font;
 public partial class DotHtmlFont : IDotHtmlFontAttributes
 {
     /// <inheritdoc cref="IDotHtmlFontAttributes.Name" />
-    public virtual string Name
+    public virtual string? Name
     {
         get => Attributes.Implementation.Name;
         set => Attributes.Implementation.Name = value;
@@ -21,7 +21,7 @@ public partial class DotHtmlFont : IDotHtmlFontAttributes
     }
 
     /// <inheritdoc cref="IDotHtmlFontAttributes.Color" />
-    public virtual DotColor Color
+    public virtual DotColor? Color
     {
         get => Attributes.Implementation.Color;
         set => Attributes.Implementation.Color = value;
@@ -39,7 +39,7 @@ public partial class DotHtmlFont : IDotHtmlFontAttributes
     /// <param name="color">
     ///     Font color.
     /// </param>
-    public virtual void Set(string name = null, double? size = null, DotColor color = null)
+    public virtual void Set(string? name = null, double? size = null, DotColor? color = null)
     {
         Size = size;
         Color = color;
