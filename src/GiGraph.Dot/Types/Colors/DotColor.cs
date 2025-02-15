@@ -20,7 +20,7 @@ namespace GiGraph.Dot.Types.Colors;
 ///         <see cref="DotColorSchemes.X11" /> naming.
 ///     </para>
 /// </param>
-public record DotColor(Color Color, string Scheme = null) : DotColorDefinition
+public record DotColor(Color Color, string? Scheme = null) : DotColorDefinition
 {
     /// <summary>
     ///     Creates a new instance initialized with a named color.
@@ -41,7 +41,7 @@ public record DotColor(Color Color, string Scheme = null) : DotColorDefinition
     ///         <see cref="DotColorSchemes.X11" /> naming.
     ///     </para>
     /// </param>
-    public DotColor(string name, string scheme = null)
+    public DotColor(string name, string? scheme = null)
         : this(Color.FromName(name), scheme)
     {
     }
@@ -54,7 +54,7 @@ public record DotColor(Color Color, string Scheme = null) : DotColorDefinition
     /// <summary>
     ///     The color scheme (see <see cref="DotColorSchemes" />).
     /// </summary>
-    public string Scheme { get; init; } = Scheme;
+    public string? Scheme { get; init; } = Scheme;
 
     protected internal virtual double? GetWeight() => null;
 
@@ -82,7 +82,9 @@ public record DotColor(Color Color, string Scheme = null) : DotColorDefinition
         return $"#{Color.R:x2}{Color.G:x2}{Color.B:x2}{alpha}";
     }
 
-    public static implicit operator DotColor(Color? color) => color.HasValue ? new DotColor(color.Value) : null;
+    public static implicit operator DotColor(Color color) => new(color);
+    public static implicit operator DotColor?(Color? color) => color.HasValue ? color.Value : null;
 
-    public static implicit operator Color?(DotColor color) => color?.Color;
+    public static implicit operator Color(DotColor color) => color.Color;
+    public static implicit operator Color?(DotColor? color) => color?.Color;
 }
