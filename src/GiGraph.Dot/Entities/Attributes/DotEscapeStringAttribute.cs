@@ -19,10 +19,11 @@ public record DotEscapeStringAttribute : DotAttribute<DotEscapeString>
     /// <param name="value">
     ///     The value of the attribute.
     /// </param>
-    public DotEscapeStringAttribute(string key, DotEscapeString value)
+    public DotEscapeStringAttribute(string key, DotEscapeString? value)
         : base(key, value)
     {
     }
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => ((IDotEscapable) Value)?.GetEscaped(syntaxRules.Attributes.EscapeStringValueEscaper);
+    protected internal override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
+        ((IDotEscapable?) Value)?.GetEscaped(syntaxRules.Attributes.EscapeStringValueEscaper);
 }

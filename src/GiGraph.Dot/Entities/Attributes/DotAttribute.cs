@@ -20,14 +20,14 @@ public abstract record DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable
     /// <inheritdoc cref="IDotAnnotatable.Annotation" />
     public virtual string? Annotation { get; set; }
 
-    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
+    string? IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
 
     string IDotOrderable.OrderingKey => Key;
 
     /// <summary>
     ///     Gets the value of the attribute.
     /// </summary>
-    public abstract object GetValue();
+    public abstract object? GetValue();
 
     /// <summary>
     ///     Gets the value of the attribute in a format understood by DOT graph renderer.
@@ -38,7 +38,7 @@ public abstract record DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable
     /// <param name="syntaxRules">
     ///     The DOT syntax rules to use.
     /// </param>
-    protected internal abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
+    protected internal abstract string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 
     /// <summary>
     ///     Checks if the attribute has the specified key. The comparison is made based on Graphviz syntax rules (where the keys are case
