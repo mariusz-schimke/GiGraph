@@ -8,5 +8,5 @@ public interface IDotAttributeValueAttribute
     /// <summary>
     ///     Gets the value of the DOT attribute.
     /// </summary>
-    string Value { get; }
+    string? Value { get; }
 }
