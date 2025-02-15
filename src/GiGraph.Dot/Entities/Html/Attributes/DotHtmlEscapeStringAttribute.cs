@@ -20,7 +20,7 @@ public record DotHtmlEscapeStringAttribute : DotEscapeStringAttribute
     /// <param name="value">
     ///     The value of the attribute.
     /// </param>
-    public DotHtmlEscapeStringAttribute(string key, DotEscapeString? value)
+    public DotHtmlEscapeStringAttribute(string key, DotEscapeString value)
         : base(key, value)
     {
     }

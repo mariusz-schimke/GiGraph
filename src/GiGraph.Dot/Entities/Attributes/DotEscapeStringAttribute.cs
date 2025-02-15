@@ -19,7 +19,7 @@ public record DotEscapeStringAttribute : DotAttribute<DotEscapeString>
     /// <param name="value">
     ///     The value of the attribute.
     /// </param>
-    public DotEscapeStringAttribute(string key, DotEscapeString? value)
+    public DotEscapeStringAttribute(string key, DotEscapeString value)
         : base(key, value)
     {
     }

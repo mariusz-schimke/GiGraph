@@ -4,7 +4,7 @@ namespace GiGraph.Dot.Entities.Attributes;
 
 public abstract record DotAttribute<T> : DotAttribute
 {
-    protected DotAttribute(string key, T? value)
+    protected DotAttribute(string key, T value)
         : base(key)
     {
         Value = value;
@@ -13,7 +13,7 @@ public abstract record DotAttribute<T> : DotAttribute
     /// <summary>
     ///     Gets the value of the attribute.
     /// </summary>
-    public T? Value { get; }
+    public T Value { get; }
 
     /// <inheritdoc />
     public override object? GetValue() => Value;

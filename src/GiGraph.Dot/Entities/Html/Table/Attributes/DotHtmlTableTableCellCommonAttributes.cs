@@ -22,14 +22,14 @@ public abstract class DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCell
     }
 
     [DotAttributeKey("id")]
-    public virtual DotEscapeString Id
+    public virtual DotEscapeString? Id
     {
         get => GetValueAsEscapeString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey("port")]
-    public virtual string PortName
+    public virtual string? PortName
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -43,14 +43,14 @@ public abstract class DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCell
     }
 
     [DotAttributeKey("bgcolor")]
-    public virtual DotColorDefinition BackgroundColor
+    public virtual DotColorDefinition? BackgroundColor
     {
         get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey("color")]
-    public virtual DotColor BorderColor
+    public virtual DotColor? BorderColor
     {
         get => GetValueAsColor(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -113,28 +113,28 @@ public abstract class DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCell
     }
 
     [DotAttributeKey("href")]
-    public virtual DotEscapeString Href
+    public virtual DotEscapeString? Href
     {
         get => GetValueAsEscapeString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey("target")]
-    public virtual DotEscapeString Target
+    public virtual DotEscapeString? Target
     {
         get => GetValueAsEscapeString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey("title")]
-    public virtual DotEscapeString Title
+    public virtual DotEscapeString? Title
     {
         get => GetValueAsEscapeString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey("tooltip")]
-    public virtual DotEscapeString Tooltip
+    public virtual DotEscapeString? Tooltip
     {
         get => GetValueAsEscapeString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);

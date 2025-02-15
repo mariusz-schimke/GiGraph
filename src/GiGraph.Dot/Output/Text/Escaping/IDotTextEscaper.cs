@@ -11,5 +11,5 @@ public interface IDotTextEscaper
     /// <param name="value">
     ///     The text to escape.
     /// </param>
-    string Escape(string value);
+    string Escape(string? value);
 }

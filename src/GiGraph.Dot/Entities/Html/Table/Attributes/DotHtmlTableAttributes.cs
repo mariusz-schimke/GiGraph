@@ -36,14 +36,14 @@ public class DotHtmlTableAttributes : DotHtmlTableTableCellCommonAttributes<IDot
     }
 
     [DotAttributeKey("rows")]
-    public virtual string RowFormat
+    public virtual string? RowFormat
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey("columns")]
-    public virtual string ColumnFormat
+    public virtual string? ColumnFormat
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
