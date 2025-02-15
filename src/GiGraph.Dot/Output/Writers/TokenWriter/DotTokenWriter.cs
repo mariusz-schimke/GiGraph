@@ -23,8 +23,8 @@ public class DotTokenWriter
     {
     }
 
-    public EventHandler<DotAppendTokenEventArgs> OnBeforeAppendToken { get; set; }
-    public EventHandler<DotAppendTokenEventArgs> OnAfterAppendToken { get; set; }
+    public EventHandler<DotAppendTokenEventArgs>? OnBeforeAppendToken { get; set; }
+    public EventHandler<DotAppendTokenEventArgs>? OnAfterAppendToken { get; set; }
 
     public DotTokenWriterOptions Options { get; }
 

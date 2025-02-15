@@ -53,7 +53,7 @@ public partial class DotHtmlElement : DotHtmlTag, IDotHtmlContentEntity
     }
 
     /// <inheritdoc cref="IDotHtmlContentEntity.SetContent(System.Action{GiGraph.Dot.Entities.Html.Builder.DotHtmlBuilder})" />
-    public virtual void SetContent(Action<DotHtmlBuilder> build)
+    public virtual void SetContent(Action<DotHtmlBuilder>? build)
     {
         ((IDotHtmlContentEntity) Content).SetContent(build);
     }

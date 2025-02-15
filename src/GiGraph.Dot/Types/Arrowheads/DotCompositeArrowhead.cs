@@ -38,7 +38,7 @@ public record DotCompositeArrowhead : DotArrowheadDefinition
     ///     as a separator between two consecutive shapes.
     /// </param>
     public DotCompositeArrowhead(IEnumerable<DotArrowhead> arrowheads)
-        : this(arrowheads?.ToArray())
+        : this(arrowheads.ToArray())
     {
     }
 
@@ -51,7 +51,7 @@ public record DotCompositeArrowhead : DotArrowheadDefinition
     ///     space, so it can be used as a separator between two consecutive shapes.
     /// </param>
     public DotCompositeArrowhead(IEnumerable<DotArrowheadShape> shapes)
-        : this(shapes?.Select(shape => new DotArrowhead(shape)).ToArray())
+        : this(shapes.Select(shape => new DotArrowhead(shape)).ToArray())
     {
     }
 
