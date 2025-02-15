@@ -19,7 +19,7 @@ namespace GiGraph.Dot.Types.Records;
 ///     current field. You can specify the port on an edge's head or tail endpoint, or, alternatively, by using a corresponding
 ///     attribute for the head or tail among the attributes of the edge.
 /// </param>
-public record DotRecordTextField(DotEscapeString Text, string PortName = null) : DotRecordField
+public record DotRecordTextField(DotEscapeString? Text, string? PortName = null) : DotRecordField
 {
     protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules, bool hasParent)
     {

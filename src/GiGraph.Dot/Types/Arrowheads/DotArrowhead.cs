@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
@@ -135,5 +136,6 @@ public record DotArrowhead(DotArrowheadShape Shape) : DotArrowheadDefinition
     /// </param>
     public static DotArrowhead Empty(DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both) => new(shape, filled: false, visibleParts);
 
-    public static implicit operator DotArrowhead(DotArrowheadShape? shape) => shape.HasValue ? new DotArrowhead(shape.Value) : null;
+    [return: NotNullIfNotNull(nameof(shape))]
+    public static implicit operator DotArrowhead?(DotArrowheadShape? shape) => shape.HasValue ? new DotArrowhead(shape.Value) : null;
 }

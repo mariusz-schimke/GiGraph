@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 
@@ -13,9 +14,12 @@ public abstract record DotArrowheadDefinition : IDotEncodable
 
     protected internal abstract string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 
-    public static implicit operator DotArrowheadDefinition(DotArrowheadShape? shape) => (DotArrowhead) shape;
+    [return: NotNullIfNotNull(nameof(shape))]
+    public static implicit operator DotArrowheadDefinition?(DotArrowheadShape? shape) => (DotArrowhead?) shape;
 
-    public static implicit operator DotArrowheadDefinition(DotArrowheadShape[] shapes) => shapes is not null ? new DotCompositeArrowhead(shapes) : null;
+    [return: NotNullIfNotNull(nameof(shapes))]
+    public static implicit operator DotArrowheadDefinition?(DotArrowheadShape[]? shapes) => shapes is not null ? new DotCompositeArrowhead(shapes) : null;
 
-    public static implicit operator DotArrowheadDefinition(DotArrowhead[] arrows) => arrows is not null ? new DotCompositeArrowhead(arrows) : null;
+    [return: NotNullIfNotNull(nameof(arrows))]
+    public static implicit operator DotArrowheadDefinition?(DotArrowhead[]? arrows) => arrows is not null ? new DotCompositeArrowhead(arrows) : null;
 }

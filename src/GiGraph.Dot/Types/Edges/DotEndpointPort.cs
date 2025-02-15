@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
@@ -63,7 +64,7 @@ public record DotEndpointPort() : IDotEncodable
     ///     shape (<see cref="DotNodeShape.Record" /> or <see cref="DotNodeShape.RoundedRecord" />) with one of its fields having the
     ///     given port name, or have an HTML-like label, one of whose components has a PORT attribute set to the specified port name.
     /// </summary>
-    public string Name { get; init; }
+    public string? Name { get; init; }
 
     /// <summary>
     ///     <para>
@@ -83,9 +84,11 @@ public record DotEndpointPort() : IDotEncodable
     /// </summary>
     public static DotEndpointPort Default() => new();
 
-    public static implicit operator DotEndpointPort(string portName) => portName is not null ? new DotEndpointPort(portName) : null;
+    [return: NotNullIfNotNull(nameof(portName))]
+    public static implicit operator DotEndpointPort?(string? portName) => portName is not null ? new DotEndpointPort(portName) : null;
 
-    public static implicit operator DotEndpointPort(DotCompassPoint? compassPoint) => compassPoint.HasValue ? new DotEndpointPort(compassPoint.Value) : null;
+    [return: NotNullIfNotNull(nameof(compassPoint))]
+    public static implicit operator DotEndpointPort?(DotCompassPoint? compassPoint) => compassPoint.HasValue ? new DotEndpointPort(compassPoint.Value) : null;
 
     protected virtual string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {

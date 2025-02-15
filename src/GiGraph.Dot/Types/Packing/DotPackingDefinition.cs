@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 
@@ -11,9 +12,11 @@ public abstract record DotPackingDefinition : IDotEncodable
 {
     string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
 
-    public static implicit operator DotPackingDefinition(int? value) => value.HasValue ? new DotPackingMargin(value.Value) : null;
+    [return: NotNullIfNotNull(nameof(value))]
+    public static implicit operator DotPackingDefinition?(int? value) => value.HasValue ? new DotPackingMargin(value.Value) : null;
 
-    public static implicit operator DotPackingDefinition(bool? value) => value.HasValue ? new DotPackingToggle(value.Value) : null;
+    [return: NotNullIfNotNull(nameof(value))]
+    public static implicit operator DotPackingDefinition?(bool? value) => value.HasValue ? new DotPackingToggle(value.Value) : null;
 
     protected abstract string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.EscapeString;
@@ -34,11 +35,14 @@ public class DotHtmlString : IDotHtmlEncodable
 
     public override string ToString() => _html;
 
-    public static implicit operator DotHtmlString(string value) => value is not null ? new DotHtmlString(value) : null;
+    [return: NotNullIfNotNull(nameof(value))]
+    public static implicit operator DotHtmlString?(string? value) => value is not null ? new DotHtmlString(value) : null;
 
-    public static implicit operator string(DotHtmlString value) => value?._html;
+    [return: NotNullIfNotNull(nameof(value))]
+    public static implicit operator string?(DotHtmlString? value) => value?._html;
 
-    public static implicit operator DotUnescapedString(DotHtmlString value) => value?._html;
+    [return: NotNullIfNotNull(nameof(value))]
+    public static implicit operator DotUnescapedString?(DotHtmlString? value) => value?._html;
 
-    public static DotHtmlString operator +(DotHtmlString value1, DotHtmlString value2) => value1?._html + value2?._html;
+    public static DotHtmlString operator +(DotHtmlString? value1, DotHtmlString? value2) => value1?._html + value2?._html;
 }

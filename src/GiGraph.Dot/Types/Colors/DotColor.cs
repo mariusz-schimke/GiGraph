@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using GiGraph.Dot.Output.Options;
 
@@ -82,12 +83,9 @@ public record DotColor(Color Color, string? Scheme = null) : DotColorDefinition
         return $"#{Color.R:x2}{Color.G:x2}{Color.B:x2}{alpha}";
     }
 
-    // TODO: implement implicit operators for all types like below
-    // (for both nullable and non-nullable input and output)
+    [return: NotNullIfNotNull(nameof(color))]
+    public static implicit operator DotColor?(Color? color) => color.HasValue ? new(color.Value) : null;
 
-    public static implicit operator DotColor(Color color) => new(color);
-    public static implicit operator DotColor?(Color? color) => color.HasValue ? color.Value : null;
-
-    public static implicit operator Color(DotColor color) => color.Color;
+    [return: NotNullIfNotNull(nameof(color))]
     public static implicit operator Color?(DotColor? color) => color?.Color;
 }

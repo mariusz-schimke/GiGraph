@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 
@@ -12,7 +13,9 @@ public abstract record DotRankSeparationDefinition : IDotEncodable
 
     protected abstract string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 
-    public static implicit operator DotRankSeparationDefinition(double? value) => value.HasValue ? new DotRankSeparation(value.Value) : null;
+    [return: NotNullIfNotNull(nameof(value))]
+    public static implicit operator DotRankSeparationDefinition?(double? value) => value.HasValue ? new DotRankSeparation(value.Value) : null;
 
-    public static implicit operator DotRankSeparationDefinition(double[] value) => value is not null ? new DotRadialRankSeparation(value) : null;
+    [return: NotNullIfNotNull(nameof(value))]
+    public static implicit operator DotRankSeparationDefinition?(double[]? value) => value is not null ? new DotRadialRankSeparation(value) : null;
 }
