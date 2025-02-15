@@ -23,7 +23,7 @@ public partial class DotAttributeCollection
     /// <param name="key">
     ///     The key of the attribute to get.
     /// </param>
-    public virtual DotAttribute Get(string key) => TryGetValue(key, out var attribute) ? attribute : null;
+    public virtual DotAttribute? Get(string key) => TryGetValue(key, out var attribute) ? attribute : null;
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns it as the specified type. If the
@@ -35,7 +35,7 @@ public partial class DotAttributeCollection
     /// <param name="key">
     ///     The key of the attribute to get.
     /// </param>
-    public virtual T GetAs<T>(string key)
+    public virtual T? GetAs<T>(string key)
         where T : DotAttribute
     {
         if (!TryGetValue(key, out var attribute) || attribute is null)
@@ -60,7 +60,7 @@ public partial class DotAttributeCollection
     /// <param name="attribute">
     ///     The attribute if found and valid, or null otherwise.
     /// </param>
-    public virtual bool TryGetAs<T>(string key, out T attribute)
+    public virtual bool TryGetAs<T>(string key, out T? attribute)
         where T : DotAttribute
     {
         if (TryGetValue(key, out var output))
@@ -86,7 +86,7 @@ public partial class DotAttributeCollection
     /// <param name="value">
     ///     The value of the attribute if found and valid, or null if not found.
     /// </param>
-    public virtual bool GetValueAs<T>(string key, out T value) => GetValueAs(key, out value, converters: null);
+    public virtual bool GetValueAs<T>(string key, out T? value) => GetValueAs(key, out value, converters: null);
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as the specified type. If the
@@ -101,7 +101,7 @@ public partial class DotAttributeCollection
     /// <param name="value">
     ///     The value of the attribute if found and valid, or null otherwise.
     /// </param>
-    public virtual bool TryGetValueAs<T>(string key, out T value)
+    public virtual bool TryGetValueAs<T>(string key, out T? value)
     {
         if (TryGetValue(key, out var attribute) && attribute.GetValue() is T output)
         {
@@ -131,7 +131,7 @@ public partial class DotAttributeCollection
     ///     The converters to try to use when the value of the attribute is of a different type than specified by the
     ///     <typeparamref name="T" /> parameter.
     /// </param>
-    public virtual bool GetValueAs<T>(string key, out T value, params Func<object, (bool IsValid, T Result)>[] converters)
+    public virtual bool GetValueAs<T>(string key, out T? value, params Func<object, (bool IsValid, T? Result)>[]? converters)
     {
         if (!TryGetValue(key, out var attribute) || attribute.GetValue() is not { } attributeValue)
         {
@@ -150,8 +150,8 @@ public partial class DotAttributeCollection
         if (true == converters?.Any())
         {
             var converted = converters
-               .Select(convert => convert(attributeValue))
-               .FirstOrDefault(result => result.IsValid);
+                .Select(convert => convert(attributeValue))
+                .FirstOrDefault(result => result.IsValid);
 
             if (converted.IsValid)
             {
@@ -201,7 +201,7 @@ public partial class DotAttributeCollection
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotColor" />. If
     ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
-    public virtual DotColor GetValueAsColor(string key)
+    public virtual DotColor? GetValueAsColor(string key)
     {
         return GetValueAs
         (
@@ -218,7 +218,7 @@ public partial class DotAttributeCollection
     ///     <see cref="DotColorDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the returned
     ///     type, an exception is thrown.
     /// </summary>
-    public virtual DotColorDefinition GetValueAsColorDefinition(string key)
+    public virtual DotColorDefinition? GetValueAsColorDefinition(string key)
     {
         return GetValueAs<DotColorDefinition>
         (
@@ -234,14 +234,14 @@ public partial class DotAttributeCollection
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="string" />. If
     ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
-    public virtual string GetValueAsString(string key) => GetValueAs<string>(key, out var result) ? result : null;
+    public virtual string? GetValueAsString(string key) => GetValueAs<string>(key, out var result) ? result : null;
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as
     ///     <see cref="DotEscapeString" />. If the attribute is found, but its value cannot be cast nor converted to the returned type,
     ///     an exception is thrown.
     /// </summary>
-    public virtual DotEscapeString GetValueAsEscapeString(string key)
+    public virtual DotEscapeString? GetValueAsEscapeString(string key)
     {
         return GetValueAs<DotEscapeString>
         (
@@ -257,7 +257,7 @@ public partial class DotAttributeCollection
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotLabel" />. If
     ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
-    public virtual DotLabel GetValueAsLabel(string key)
+    public virtual DotLabel? GetValueAsLabel(string key)
     {
         return GetValueAs<DotLabel>
         (
