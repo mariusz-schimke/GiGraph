@@ -20,19 +20,9 @@ public class DotClusterEndpoint : DotEndpoint
     ///     Determines the edge placement to aim for the specified compass point on the cluster. If no compass point is specified
     ///     explicitly, the default value is <see cref="DotCompassPoint.Center" />.
     /// </param>
-    public DotClusterEndpoint(string? clusterId, DotCompassPoint? compassPoint = null)
-        : base(clusterId!, compassPoint)
+    public DotClusterEndpoint(string clusterId, DotCompassPoint? compassPoint = null)
+        : base(clusterId, compassPoint)
     {
-    }
-
-    /// <summary>
-    ///     Gets the cluster identifier.
-    /// </summary>
-    public override string Id
-    {
-        get => _id;
-        // allow null (it will generate an ID of 'cluster')
-        protected init => _id = value;
     }
 
     // the type of endpoint may be specified explicitly as a generic param, in which case this implicit conversion may be useful

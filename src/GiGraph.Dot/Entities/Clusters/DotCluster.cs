@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Output.Entities;
@@ -22,10 +23,10 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     /// <param name="id">
     ///     The unique identifier of the cluster.
     /// </param>
-    public DotCluster(string? id)
+    public DotCluster(string id)
         : this(new(), new())
     {
-        Id = id;
+        Id = id ?? throw new ArgumentNullException(nameof(id), "Cluster identifier must not be null.");
     }
 
     protected DotCluster(DotClusterSection rootSection, DotGraphSectionCollection<DotClusterSection> subsections)
@@ -56,11 +57,11 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 
     /// <summary>
-    ///     Gets or sets the identifier of the cluster (optional).
+    ///     Gets or sets the identifier of the cluster.
     /// </summary>
-    public virtual string? Id { get; set; }
+    public virtual string Id { get; set; }
 
-    string? IDotOrderable.OrderingKey => Id;
+    string IDotOrderable.OrderingKey => Id;
 
     /// <summary>
     ///     Returns attributes from the collection based on the syntax options specified. Because Graphviz introduced the 'cluster'
@@ -93,7 +94,7 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     /// <param name="nodeIds">
     ///     The identifiers of nodes to add to the subgraph.
     /// </param>
-    public static DotCluster FromNodes(string? id, params string[] nodeIds) => FromNodes(id, (IEnumerable<string>) nodeIds);
+    public static DotCluster FromNodes(string id, params string[] nodeIds) => FromNodes(id, (IEnumerable<string>) nodeIds);
 
     /// <summary>
     ///     Creates a new cluster with the specified nodes.
@@ -104,7 +105,7 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     /// <param name="nodeIds">
     ///     The identifiers of nodes to add to the subgraph.
     /// </param>
-    public static DotCluster FromNodes(string? id, IEnumerable<string> nodeIds)
+    public static DotCluster FromNodes(string id, IEnumerable<string> nodeIds)
     {
         var result = new DotCluster(id);
         result.Nodes.AddRange(nodeIds);
