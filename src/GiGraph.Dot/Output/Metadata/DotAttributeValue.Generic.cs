@@ -49,7 +49,8 @@ public static class DotAttributeValue<TAttribute>
             .Select(flag => mapping.TryGetValue(flag, out var value)
                 ? value
                 : throw new ArgumentException($"The value '{flag}' of the {enumType.Name} enumeration is not annotated with a {typeof(TAttribute).Name} attribute.", nameof(flags))
-            );
+            )
+            .OfType<string>();
 
         dotFlags = string.Join(
             attribute.Separator,
@@ -193,7 +194,7 @@ public static class DotAttributeValue<TAttribute>
     /// <typeparam name="TEnum">
     ///     The type of the enumeration whose value mapping to get.
     /// </typeparam>
-    public static Dictionary<TEnum, string> GetMapping<TEnum>()
+    public static Dictionary<TEnum, string?> GetMapping<TEnum>()
         where TEnum : Enum
     {
         return GetMappingEnumerable(typeof(TEnum))
@@ -210,7 +211,7 @@ public static class DotAttributeValue<TAttribute>
     /// <param name="enumType">
     ///     The type of the enumeration whose value mapping to get.
     /// </param>
-    public static Dictionary<Enum, string> GetMapping(Type enumType)
+    public static Dictionary<Enum, string?> GetMapping(Type enumType)
     {
         return GetMappingEnumerable(enumType)
             .ToDictionary(
@@ -219,7 +220,7 @@ public static class DotAttributeValue<TAttribute>
             );
     }
 
-    private static IEnumerable<(Enum Key, string Value)> GetMappingEnumerable(Type enumType)
+    private static IEnumerable<(Enum Key, string? Value)> GetMappingEnumerable(Type enumType)
     {
         return enumType
             .GetFields(FieldBindingFlags)
@@ -232,7 +233,7 @@ public static class DotAttributeValue<TAttribute>
             .Select(item =>
             (
                 Key: item.EnumValue,
-                item.Attribute!.Value!
+                item.Attribute?.Value
             ));
     }
 }
