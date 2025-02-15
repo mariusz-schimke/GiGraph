@@ -71,35 +71,35 @@ public class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotEdgeAttri
     }
 
     [DotAttributeKey(DotAttributeKeys.Comment)]
-    public virtual string Comment
+    public virtual string? Comment
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
-    public virtual DotEscapeString Tooltip
+    public virtual DotEscapeString? Tooltip
     {
         get => GetValueAsEscapeString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Color)]
-    public virtual DotColorDefinition Color
+    public virtual DotColorDefinition? Color
     {
         get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.FillColor)]
-    public virtual DotColorDefinition FillColor
+    public virtual DotColorDefinition? FillColor
     {
         get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.XLabel)]
-    public virtual DotLabel ExternalLabel
+    public virtual DotLabel? ExternalLabel
     {
         get => GetValueAsLabel(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);

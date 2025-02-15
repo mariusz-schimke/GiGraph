@@ -26,7 +26,7 @@ public class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAttributes,
 
     /// <inheritdoc cref="IDotGraphFontAttributes.Directories" />
     [DotAttributeKey(DotAttributeKeys.FontPath)]
-    public virtual string Directories
+    public virtual string? Directories
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -58,7 +58,7 @@ public class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAttributes,
     /// <param name="convention">
     ///     The font convention to use.
     /// </param>
-    public virtual void Set(string name = null, double? size = null, DotColor color = null, string directories = null, DotFontConvention? convention = null)
+    public virtual void Set(string? name = null, double? size = null, DotColor? color = null, string? directories = null, DotFontConvention? convention = null)
     {
         base.Set(name, size, color);
         Directories = directories;

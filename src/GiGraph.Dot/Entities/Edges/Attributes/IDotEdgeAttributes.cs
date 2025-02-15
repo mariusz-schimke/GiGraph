@@ -53,7 +53,7 @@ public interface IDotEdgeAttributes
     ///         </list>
     ///     </para>
     /// </summary>
-    DotLabel Label { get; set; }
+    DotLabel? Label { get; set; }
 
     /// <summary>
     ///     <para>
@@ -67,7 +67,7 @@ public interface IDotEdgeAttributes
     ///         <see cref="DotGraphLayoutAttributes.ForceExternalLabels" /> attribute on the graph.
     ///     </para>
     /// </summary>
-    DotLabel ExternalLabel { set; get; }
+    DotLabel? ExternalLabel { set; get; }
 
     /// <summary>
     ///     If true, allows edge labels to be less constrained in position. In particular, it may appear on top of other edges. Default:
@@ -97,7 +97,7 @@ public interface IDotEdgeAttributes
     ///     Tooltip annotation attached to the edge (svg, cmap only). If unset, Graphviz will use the <see cref="Label" /> attribute if
     ///     defined.
     /// </summary>
-    DotEscapeString Tooltip { get; set; }
+    DotEscapeString? Tooltip { get; set; }
 
     /// <summary>
     ///     <para>
@@ -115,14 +115,14 @@ public interface IDotEdgeAttributes
     ///         <see cref="DotWeightedColor.Weight" /> property.
     ///     </para>
     /// </summary>
-    DotColorDefinition Color { get; set; }
+    DotColorDefinition? Color { get; set; }
 
     /// <summary>
     ///     Gets or sets the color used to fill the arrowhead, assuming it has a filled style. If <see cref="FillColor" /> is not
     ///     defined, <see cref="Color" /> is used. If it is not defined too, the default is used, except when the output format is MIF,
     ///     which use black by default.
     /// </summary>
-    DotColorDefinition FillColor { get; set; }
+    DotColorDefinition? FillColor { get; set; }
 
     /// <summary>
     ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
@@ -131,7 +131,7 @@ public interface IDotEdgeAttributes
     ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes" /> for
     ///     supported scheme names.
     /// </summary>
-    string ColorScheme { get; set; }
+    string? ColorScheme { get; set; }
 
     /// <summary>
     ///     Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges. The value has no
@@ -186,7 +186,7 @@ public interface IDotEdgeAttributes
     /// <summary>
     ///     Comments are inserted into output. Device-dependent.
     /// </summary>
-    string Comment { get; set; }
+    string? Comment { get; set; }
 
     /// <summary>
     ///     <para>
@@ -208,5 +208,5 @@ public interface IDotEdgeAttributes
     ///         internally-used attributes distinct, the user can include multiple image maps in the same document.
     ///     </para>
     /// </summary>
-    DotEscapeString ObjectId { get; set; }
+    DotEscapeString? ObjectId { get; set; }
 }

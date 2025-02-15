@@ -20,7 +20,7 @@ public abstract class DotFontAttributes<TIEntityFontAttributes, TEntityFontAttri
 
     /// <inheritdoc cref="IDotFontAttributes.Name" />
     [DotAttributeKey(DotAttributeKeys.FontName)]
-    public virtual string Name
+    public virtual string? Name
     {
         get => GetValueAsString(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -36,7 +36,7 @@ public abstract class DotFontAttributes<TIEntityFontAttributes, TEntityFontAttri
 
     /// <inheritdoc cref="IDotFontAttributes.Color" />
     [DotAttributeKey(DotAttributeKeys.FontColor)]
-    public virtual DotColor Color
+    public virtual DotColor? Color
     {
         get => GetValueAsColor(MethodBase.GetCurrentMethod()!);
         set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
@@ -54,7 +54,7 @@ public abstract class DotFontAttributes<TIEntityFontAttributes, TEntityFontAttri
     /// <param name="color">
     ///     Font color.
     /// </param>
-    public virtual void Set(string name = null, double? size = null, DotColor color = null)
+    public virtual void Set(string? name = null, double? size = null, DotColor? color = null)
     {
         Size = size;
         Color = color;

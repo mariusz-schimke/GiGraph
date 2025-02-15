@@ -26,7 +26,7 @@ public class DotEdgeEndpointLabelsFontAttributes : DotFontAttributes
     ///     name specified for the edge.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.LabelFontName)]
-    public override string Name
+    public override string? Name
     {
         get => base.Name;
         set => base.Name = value;
@@ -37,7 +37,7 @@ public class DotEdgeEndpointLabelsFontAttributes : DotFontAttributes
     ///     If not set, defaults to font color specified for the edge.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.LabelFontColor)]
-    public override DotColor Color
+    public override DotColor? Color
     {
         get => base.Color;
         set => base.Color = value;

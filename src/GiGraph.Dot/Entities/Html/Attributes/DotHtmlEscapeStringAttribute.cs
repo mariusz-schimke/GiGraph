@@ -20,10 +20,11 @@ public record DotHtmlEscapeStringAttribute : DotEscapeStringAttribute
     /// <param name="value">
     ///     The value of the attribute.
     /// </param>
-    public DotHtmlEscapeStringAttribute(string key, DotEscapeString value)
+    public DotHtmlEscapeStringAttribute(string key, DotEscapeString? value)
         : base(key, value)
     {
     }
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => ((IDotEscapable) Value)?.GetEscaped(syntaxRules.Attributes.Html.AttributeEscapeStringValueEscaper);
+    protected internal override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
+        ((IDotEscapable?) Value)?.GetEscaped(syntaxRules.Attributes.Html.AttributeEscapeStringValueEscaper);
 }
