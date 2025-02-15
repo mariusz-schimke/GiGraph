@@ -93,7 +93,7 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     /// <param name="nodeIds">
     ///     The identifiers of nodes to add to the subgraph.
     /// </param>
-    public static DotCluster FromNodes(string id, params string[] nodeIds) => FromNodes(id, (IEnumerable<string>) nodeIds);
+    public static DotCluster FromNodes(string? id, params string[] nodeIds) => FromNodes(id, (IEnumerable<string>) nodeIds);
 
     /// <summary>
     ///     Creates a new cluster with the specified nodes.
@@ -104,7 +104,7 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     /// <param name="nodeIds">
     ///     The identifiers of nodes to add to the subgraph.
     /// </param>
-    public static DotCluster FromNodes(string id, IEnumerable<string> nodeIds)
+    public static DotCluster FromNodes(string? id, IEnumerable<string> nodeIds)
     {
         var result = new DotCluster(id);
         result.Nodes.AddRange(nodeIds);
