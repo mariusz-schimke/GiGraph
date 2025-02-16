@@ -42,7 +42,7 @@ public class DotConcatenatedEscapeString : DotEscapeString, IEnumerable<DotEscap
     ///     The escape strings to initialize the instance with.
     /// </param>
     public DotConcatenatedEscapeString(IEnumerable<string?> items)
-        : this(items.Select(item => (DotEscapeString) item))
+        : this(items.Select(item => (DotEscapeString?) item))
     {
     }
 

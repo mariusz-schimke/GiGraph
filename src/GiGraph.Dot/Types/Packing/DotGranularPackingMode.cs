@@ -11,5 +11,5 @@ namespace GiGraph.Dot.Types.Packing;
 /// </param>
 public record DotGranularPackingMode(DotPackingGranularity Granularity) : DotPackingModeDefinition
 {
-    protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => DotAttributeValue.Get(Granularity);
+    protected override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => DotAttributeValue.Get(Granularity);
 }

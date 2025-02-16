@@ -56,7 +56,7 @@ public static class DotAttributeValue
     /// <param name="value">
     ///     The enumeration value whose associated DOT value to return.
     /// </param>
-    public static string Get(Enum value) => DotAttributeValue<DotAttributeValueAttribute>.Get(value);
+    public static string? Get(Enum value) => DotAttributeValue<DotAttributeValueAttribute>.Get(value);
 
     /// <summary>
     ///     Tries to get an enumeration value associated with the specified DOT attribute value.
@@ -118,7 +118,7 @@ public static class DotAttributeValue
     /// <typeparam name="TEnum">
     ///     The type of the enumeration whose value mapping to get.
     /// </typeparam>
-    public static Dictionary<TEnum, string> GetMapping<TEnum>()
+    public static Dictionary<TEnum, string?> GetMapping<TEnum>()
         where TEnum : Enum => DotAttributeValue<DotAttributeValueAttribute>.GetMapping<TEnum>();
 
     /// <summary>
@@ -128,5 +128,5 @@ public static class DotAttributeValue
     /// <param name="enumType">
     ///     The type of the enumeration whose value mapping to get.
     /// </param>
-    public static Dictionary<Enum, string> GetMapping(Type enumType) => DotAttributeValue<DotAttributeValueAttribute>.GetMapping(enumType);
+    public static Dictionary<Enum, string?> GetMapping(Type enumType) => DotAttributeValue<DotAttributeValueAttribute>.GetMapping(enumType);
 }

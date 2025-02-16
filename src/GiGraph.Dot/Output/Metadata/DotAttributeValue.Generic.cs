@@ -89,7 +89,7 @@ public static class DotAttributeValue<TAttribute>
     /// <param name="dotValue">
     ///     The returned DOT attribute value if available.
     /// </param>
-    public static bool TryGet(Enum value, out string dotValue)
+    public static bool TryGet(Enum value, out string? dotValue)
     {
         var enumMember = value.GetType().GetMember(value.ToString()).FirstOrDefault();
 
@@ -109,7 +109,7 @@ public static class DotAttributeValue<TAttribute>
     /// <param name="value">
     ///     The enumeration value whose associated DOT value to return.
     /// </param>
-    public static string Get(Enum value) => TryGet(value, out var result)
+    public static string? Get(Enum value) => TryGet(value, out var result)
         ? result
         : throw new ArgumentException($"The value '{value}' is not a member of the {value.GetType().Name} enumeration or is not annotated with a {typeof(TAttribute).Name} attribute.", nameof(value));
 

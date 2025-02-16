@@ -43,7 +43,7 @@ public record DotRankSeparation : DotRankSeparationDefinition
     /// </summary>
     public bool Equal { get; init; }
 
-    protected override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
+    protected override string? GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
         const string equally = "equally";
         var result = Value?.ToString(syntaxRules.Culture);

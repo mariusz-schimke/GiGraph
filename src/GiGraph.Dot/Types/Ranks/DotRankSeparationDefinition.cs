@@ -9,9 +9,9 @@ namespace GiGraph.Dot.Types.Ranks;
 /// </summary>
 public abstract record DotRankSeparationDefinition : IDotEncodable
 {
-    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncoded(options, syntaxRules);
+    string? IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncoded(options, syntaxRules);
 
-    protected abstract string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
+    protected abstract string? GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 
     [return: NotNullIfNotNull(nameof(value))]
     public static implicit operator DotRankSeparationDefinition?(double? value) => value.HasValue ? new DotRankSeparation(value.Value) : null;

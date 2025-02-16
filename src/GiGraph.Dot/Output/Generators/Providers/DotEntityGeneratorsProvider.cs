@@ -39,7 +39,7 @@ public class DotEntityGeneratorsProvider : IDotEntityGeneratorsProvider
             throw new ArgumentNullException(nameof(entity), "Entity must not be null.");
         }
 
-        IDotEntityGenerator firstCompatibleMatch = null;
+        IDotEntityGenerator? firstCompatibleMatch = null;
 
         foreach (var generator in _generators)
         {
@@ -53,7 +53,7 @@ public class DotEntityGeneratorsProvider : IDotEntityGeneratorsProvider
             firstCompatibleMatch ??= supports ? generator : null;
         }
 
-        return (IDotEntityGenerator<TRequiredWriter>) firstCompatibleMatch
+        return (IDotEntityGenerator<TRequiredWriter>?) firstCompatibleMatch
          ?? throw new NotSupportedException($"No compatible generator has been registered for the entity type {entity.GetType().FullName} with the writer type {typeof(TRequiredWriter).FullName}.");
     }
 

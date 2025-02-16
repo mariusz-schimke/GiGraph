@@ -114,7 +114,7 @@ public record DotRecord : DotRecordField
     ///     layouts, the top-level fields are displayed vertically.
     /// </param>
     public DotRecord(IEnumerable<DotEscapeString> fields, bool flip = FlipDefault)
-        : this(fields?.Select(field => new DotRecordTextField(field)), flip)
+        : this(fields.Select(field => new DotRecordTextField(field)), flip)
     {
     }
 
@@ -133,7 +133,7 @@ public record DotRecord : DotRecordField
     ///     layouts, the top-level fields are displayed vertically.
     /// </param>
     public DotRecord(IEnumerable<string> fields, bool flip = FlipDefault)
-        : this(fields?.Select(field => new DotRecordTextField(field)), flip)
+        : this(fields.Select(field => new DotRecordTextField(field)), flip)
     {
     }
 
