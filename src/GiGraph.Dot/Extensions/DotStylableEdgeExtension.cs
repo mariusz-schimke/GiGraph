@@ -81,7 +81,7 @@ public static class DotStylableEdgeExtension
     ///     The color to assign to individual lines the edge will be composed of. If not specified,
     ///     <see cref="System.Drawing.Color.Black" /> is used.
     /// </param>
-    public static void SetMultilineStyle<T>(this T @this, int lineCount, DotColor color = null)
+    public static void SetMultilineStyle<T>(this T @this, int lineCount, DotColor? color = null)
         where T : IDotStylableEdge
     {
         var colors = Enumerable.Range(0, lineCount).Select(_ => color ??= Color.Black);

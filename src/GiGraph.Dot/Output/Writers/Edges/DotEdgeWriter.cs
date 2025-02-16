@@ -41,7 +41,7 @@ public class DotEdgeWriter : DotEntityWithAttributeListWriter, IDotEdgeWriter
     {
         // these will be removed by the parent writer if no further endpoints are written
         _tokenWriter.Space(linger: true)
-           .Edge(_configuration.IsDirectedGraph, linger: true)
-           .Space(linger: true);
+            .Edge(_configuration.IsDirectedGraph, linger: true)
+            .Space(linger: true);
     }
 }

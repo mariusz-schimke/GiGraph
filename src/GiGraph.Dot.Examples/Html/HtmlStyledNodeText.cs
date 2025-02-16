@@ -19,20 +19,20 @@ public static class HtmlStyledNodeText
 
             node.Label = new DotHtmlBuilder()
                 // appends a <font> element to the builder, with a custom size, color and style
-               .AppendStyledFont(new(DotFontStyles.Bold, 20, Color.RoyalBlue),
+                .AppendStyledFont(new(DotFontStyles.Bold, 20, Color.RoyalBlue),
                     // specifies content of the parent <font> element
                     font => font
                         // appends any custom HTML
-                       .AppendHtml("&bull; ")
+                        .AppendHtml("&bull; ")
                         // appends plain text and text embedded in another <font> tag with a color specified
-                       .AppendText("Foo ").AppendText("Bar", new DotFont(Color.Black))
+                        .AppendText("Foo ").AppendText("Bar", new DotFont(Color.Black))
                 )
                 // appends a <br/> element
-               .AppendLine()
+                .AppendLine()
                 // appends text embedded in the <i> and <u> elements
-               .AppendStyledText("Baz", DotFontStyles.Italic | DotFontStyles.Underline)
+                .AppendStyledText("Baz", DotFontStyles.Italic | DotFontStyles.Underline)
                 // returns a type that may be assigned directly to a label
-               .Build();
+                .Build();
         });
 
         // an equivalent result with a manually composed HTML string

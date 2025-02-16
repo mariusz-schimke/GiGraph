@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Types.Ranks;
 
@@ -14,7 +13,7 @@ public class DotSubgraphCollection : DotCommonGraphCollection<DotSubgraph>
     /// <param name="init">
     ///     An optional subgraph initializer delegate.
     /// </param>
-    public virtual DotSubgraph Add(Action<DotSubgraph> init = null) => AddSubgraph(nodeIds: Enumerable.Empty<string>(), init: init);
+    public virtual DotSubgraph Add(Action<DotSubgraph>? init = null) => AddSubgraph(nodeIds: [], init: init);
 
     /// <summary>
     ///     Adds a new subgraph with the specified identifier to the collection, and returns it.
@@ -25,7 +24,7 @@ public class DotSubgraphCollection : DotCommonGraphCollection<DotSubgraph>
     /// <param name="init">
     ///     An optional subgraph initializer delegate.
     /// </param>
-    public virtual DotSubgraph Add(string id, Action<DotSubgraph> init = null) => AddSubgraph(nodeIds: Enumerable.Empty<string>(), id, init: init);
+    public virtual DotSubgraph Add(string? id, Action<DotSubgraph>? init = null) => AddSubgraph(nodeIds: [], id, init: init);
 
     /// <summary>
     ///     Adds a new subgraph with the specified identifier and rank constraints to the collection, and returns it.
@@ -39,7 +38,7 @@ public class DotSubgraphCollection : DotCommonGraphCollection<DotSubgraph>
     /// <param name="init">
     ///     An optional subgraph initializer delegate.
     /// </param>
-    public virtual DotSubgraph Add(string id, DotRank? nodeRank, Action<DotSubgraph> init = null) => AddSubgraph(nodeIds: Enumerable.Empty<string>(), id, nodeRank, init);
+    public virtual DotSubgraph Add(string? id, DotRank? nodeRank, Action<DotSubgraph>? init = null) => AddSubgraph(nodeIds: [], id, nodeRank, init);
 
     /// <summary>
     ///     Adds a new subgraph with the specified rank constraints to the collection, and returns it.
@@ -50,7 +49,7 @@ public class DotSubgraphCollection : DotCommonGraphCollection<DotSubgraph>
     /// <param name="init">
     ///     An optional subgraph initializer delegate.
     /// </param>
-    public virtual DotSubgraph Add(DotRank? nodeRank, Action<DotSubgraph> init = null) => AddSubgraph(nodeIds: Enumerable.Empty<string>(), nodeRank: nodeRank, init: init);
+    public virtual DotSubgraph Add(DotRank? nodeRank, Action<DotSubgraph>? init = null) => AddSubgraph(nodeIds: [], nodeRank: nodeRank, init: init);
 
     /// <summary>
     ///     Adds a new subgraph to the collection, and returns it.
@@ -83,7 +82,7 @@ public class DotSubgraphCollection : DotCommonGraphCollection<DotSubgraph>
     /// <param name="nodeIds">
     ///     Optional node identifiers to populate the subgraph with.
     /// </param>
-    public virtual DotSubgraph AddWithNodes(string id, DotRank? nodeRank, params string[] nodeIds) => AddSubgraph(nodeIds, id, nodeRank);
+    public virtual DotSubgraph AddWithNodes(string? id, DotRank? nodeRank, params string[] nodeIds) => AddSubgraph(nodeIds, id, nodeRank);
 
     /// <summary>
     ///     Adds a new subgraph to the collection, and returns it.
@@ -116,7 +115,7 @@ public class DotSubgraphCollection : DotCommonGraphCollection<DotSubgraph>
     /// <param name="nodeIds">
     ///     A node identifier collection to populate the subgraph with.
     /// </param>
-    public virtual DotSubgraph AddWithNodes(string id, DotRank? nodeRank, IEnumerable<string> nodeIds) => AddSubgraph(nodeIds, id, nodeRank);
+    public virtual DotSubgraph AddWithNodes(string? id, DotRank? nodeRank, IEnumerable<string> nodeIds) => AddSubgraph(nodeIds, id, nodeRank);
 
     /// <summary>
     ///     Adds a new subgraph with the specified identifier to the collection, and returns it.
@@ -127,7 +126,8 @@ public class DotSubgraphCollection : DotCommonGraphCollection<DotSubgraph>
     /// <param name="nodeIds">
     ///     A node identifier collection to populate the subgraph with.
     /// </param>
-    public virtual DotSubgraph AddWithNodes(string id, IEnumerable<string> nodeIds) => AddSubgraph(nodeIds, id);
+    public virtual DotSubgraph AddWithNodes(string? id, IEnumerable<string> nodeIds) => AddSubgraph(nodeIds, id);
 
-    protected virtual DotSubgraph AddSubgraph(IEnumerable<string> nodeIds, string id = null, DotRank? nodeRank = null, Action<DotSubgraph> init = null) => Add(DotSubgraph.FromNodes(nodeIds, nodeRank, id), init);
+    protected virtual DotSubgraph AddSubgraph(IEnumerable<string> nodeIds, string? id = null, DotRank? nodeRank = null, Action<DotSubgraph>? init = null) =>
+        Add(DotSubgraph.FromNodes(nodeIds, nodeRank, id), init);
 }

@@ -28,7 +28,7 @@ public interface IDotGraphCanvasAttributes
     ///         <see cref="System.Drawing.Color.Transparent" />.
     ///     </para>
     /// </summary>
-    DotColorDefinition BackgroundColor { get; set; }
+    DotColorDefinition? BackgroundColor { get; set; }
 
     /// <summary>
     ///     If a gradient fill is being used, this determines the angle of the fill. For linear fills, the colors transform along a line
@@ -91,7 +91,7 @@ public interface IDotGraphCanvasAttributes
     ///         Note that there is some interaction between the <see cref="Size" /> and the <see cref="Scaling" /> attributes.
     ///     </para>
     /// </summary>
-    DotPoint Size { get; set; }
+    DotPoint? Size { get; set; }
 
     /// <summary>
     ///     <para>
@@ -103,7 +103,7 @@ public interface IDotGraphCanvasAttributes
     ///         and edges abutting the boundary of the drawn region.
     ///     </para>
     /// </summary>
-    DotPoint Padding { get; set; }
+    DotPoint? Padding { get; set; }
 
     /// <summary>
     ///     <para>
@@ -116,7 +116,7 @@ public interface IDotGraphCanvasAttributes
     ///         To actually extend the background of a drawing, see the <see cref="Padding" /> attribute.
     ///     </para>
     /// </summary>
-    DotPoint Margin { get; set; }
+    DotPoint? Margin { get; set; }
 
     /// <summary>
     ///     <para>
@@ -133,7 +133,7 @@ public interface IDotGraphCanvasAttributes
     ///         See also <see cref="DotGraphScaling" /> for non-numeric options of the ratio.
     ///     </para>
     /// </summary>
-    DotGraphScalingDefinition Scaling { get; set; }
+    DotGraphScalingDefinition? Scaling { get; set; }
 
     /// <summary>
     ///     <para>
@@ -147,5 +147,5 @@ public interface IDotGraphCanvasAttributes
     ///         bby / 2), where "bbx, bby" is the value of the bounding box attribute bb.
     ///     </para>
     /// </summary>
-    DotViewport Viewport { get; set; }
+    DotViewport? Viewport { get; set; }
 }

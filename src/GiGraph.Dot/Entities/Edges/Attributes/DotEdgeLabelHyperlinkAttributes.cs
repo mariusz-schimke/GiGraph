@@ -27,7 +27,7 @@ public class DotEdgeLabelHyperlinkAttributes : DotEdgeHyperlinkAttributes
     ///     <see cref="IDotEdgeRootAttributes.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Url" /> defined for the edge.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.LabelUrl)]
-    public override DotEscapeString Url
+    public override DotEscapeString? Url
     {
         get => base.Url;
         set => base.Url = value;
@@ -37,7 +37,7 @@ public class DotEdgeLabelHyperlinkAttributes : DotEdgeHyperlinkAttributes
     ///     Synonym for <see cref="Url" /> (svg, map only).
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.LabelHref)]
-    public override DotEscapeString Href
+    public override DotEscapeString? Href
     {
         get => base.Href;
         set => base.Href = value;
@@ -51,7 +51,7 @@ public class DotEdgeLabelHyperlinkAttributes : DotEdgeHyperlinkAttributes
     ///     <see cref="IDotEdgeRootAttributes.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Target" /> is used.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.LabelTarget)]
-    public override DotEscapeString Target
+    public override DotEscapeString? Target
     {
         get => base.Target;
         set => base.Target = value;
@@ -62,7 +62,7 @@ public class DotEdgeLabelHyperlinkAttributes : DotEdgeHyperlinkAttributes
     ///     or if the edge has a <see cref="IDotEdgeRootAttributes.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Url" /> specified.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.LabelTooltip)]
-    public override DotEscapeString Tooltip
+    public override DotEscapeString? Tooltip
     {
         get => base.Tooltip;
         set => base.Tooltip = value;

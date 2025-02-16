@@ -20,7 +20,7 @@ public class DotEdgeTailAttributes : DotEdgeEndpointAttributes
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.Label" />
     [DotAttributeKey(DotAttributeKeys.TailLabel)]
-    public override DotLabel Label
+    public override DotLabel? Label
     {
         get => base.Label;
         set => base.Label = value;
@@ -36,7 +36,7 @@ public class DotEdgeTailAttributes : DotEdgeEndpointAttributes
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.GroupName" />
     [DotAttributeKey(DotAttributeKeys.SameTail)]
-    public override string GroupName
+    public override string? GroupName
     {
         get => base.GroupName;
         set => base.GroupName = value;
@@ -44,7 +44,7 @@ public class DotEdgeTailAttributes : DotEdgeEndpointAttributes
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.Port" />
     [DotAttributeKey(DotAttributeKeys.TailPort)]
-    public override DotEndpointPort Port
+    public override DotEndpointPort? Port
     {
         get => base.Port;
         set => base.Port = value;
@@ -52,7 +52,7 @@ public class DotEdgeTailAttributes : DotEdgeEndpointAttributes
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClusterId" />
     [DotAttributeKey(DotAttributeKeys.LTail)]
-    public override DotClusterId ClusterId
+    public override DotClusterId? ClusterId
     {
         get => base.ClusterId;
         set => base.ClusterId = value;
@@ -60,7 +60,7 @@ public class DotEdgeTailAttributes : DotEdgeEndpointAttributes
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.Arrowhead" />
     [DotAttributeKey(DotAttributeKeys.ArrowTail)]
-    public override DotArrowheadDefinition Arrowhead
+    public override DotArrowheadDefinition? Arrowhead
     {
         get => base.Arrowhead;
         set => base.Arrowhead = value;

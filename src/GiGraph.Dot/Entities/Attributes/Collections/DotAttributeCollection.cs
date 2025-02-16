@@ -32,9 +32,9 @@ public partial class DotAttributeCollection : SortedList<string, DotAttribute>, 
         _attributeFactory = attributeFactory;
     }
 
-    protected internal virtual string Annotation { get; set; }
+    protected internal string? Annotation { get; set; }
 
-    string IDotAnnotatable.Annotation
+    string? IDotAnnotatable.Annotation
     {
         get => Annotation;
         set => Annotation = value;

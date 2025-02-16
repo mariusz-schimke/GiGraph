@@ -28,106 +28,106 @@ public class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<IDotGrap
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.BackgroundColor" />
     [DotAttributeKey(DotAttributeKeys.BgColor)]
-    public virtual DotColorDefinition BackgroundColor
+    public virtual DotColorDefinition? BackgroundColor
     {
-        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.GradientFillAngle" />
     [DotAttributeKey(DotAttributeKeys.GradientAngle)]
     public virtual int? GradientFillAngle
     {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsInt(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.CenterDrawing" />
     [DotAttributeKey(DotAttributeKeys.Center)]
     public virtual bool? CenterDrawing
     {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsBool(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Orientation" />
     [DotAttributeKey(DotAttributeKeys.Orientation)]
     public virtual DotOrientation? Orientation
     {
-        get => GetValueAs<DotOrientation>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotOrientation>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.OrientationAngle" />
     [DotAttributeKey(DotAttributeKeys.Rotate)]
     public virtual int? OrientationAngle
     {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsInt(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.LandscapeOrientation" />
     [DotAttributeKey(DotAttributeKeys.Landscape)]
     public virtual bool? LandscapeOrientation
     {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsBool(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Dpi" />
     [DotAttributeKey(DotAttributeKeys.Dpi)]
     public virtual double? Dpi
     {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Resolution" />
     [DotAttributeKey(DotAttributeKeys.Resolution)]
     public virtual double? Resolution
     {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Size" />
     [DotAttributeKey(DotAttributeKeys.Size)]
-    public virtual DotPoint Size
+    public virtual DotPoint? Size
     {
-        get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsPoint(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Viewport" />
     [DotAttributeKey(DotAttributeKeys.Viewport)]
-    public virtual DotViewport Viewport
+    public virtual DotViewport? Viewport
     {
-        get => GetValueAs<DotViewport>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAs<DotViewport>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Scaling" />
     [DotAttributeKey(DotAttributeKeys.Ratio)]
-    public virtual DotGraphScalingDefinition Scaling
+    public virtual DotGraphScalingDefinition? Scaling
     {
-        get => GetValueAsGraphScalingDefinition(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsGraphScalingDefinition(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Margin" />
     [DotAttributeKey(DotAttributeKeys.Margin)]
-    public virtual DotPoint Margin
+    public virtual DotPoint? Margin
     {
-        get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsPoint(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Padding" />
     [DotAttributeKey(DotAttributeKeys.Pad)]
-    public virtual DotPoint Padding
+    public virtual DotPoint? Padding
     {
-        get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsPoint(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <summary>

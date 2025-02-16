@@ -69,7 +69,7 @@ public partial class DotSyntaxRules
     /// <param name="value">
     ///     The value to check.
     /// </param>
-    public virtual bool IsValidIdentifier(string value) =>
+    public virtual bool IsValidIdentifier(string? value) =>
         value is not null &&
         !IsKeyword(value) &&
         (

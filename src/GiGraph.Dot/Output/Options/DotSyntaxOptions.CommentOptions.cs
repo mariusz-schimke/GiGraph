@@ -13,11 +13,11 @@ public partial class DotSyntaxOptions
         ///     When set, block comments are used (/* */) instead of single line comments (//). When the output DOT script is written as a
         ///     single line, block comments are used even if the property is not set.
         /// </summary>
-        public bool PreferBlockComments { get; set; } = false;
+        public bool PreferBlockComments { get; set; }
 
         /// <summary>
         ///     When set, a hash (#) is used for single line comments instead of a double slash (//).
         /// </summary>
-        public bool PreferHashForSingleLineComments { get; set; } = false;
+        public bool PreferHashForSingleLineComments { get; set; }
     }
 }

@@ -9,7 +9,7 @@ public class DotCommonGraphCollection<TGraph> : List<TGraph>, IDotEntity, IDotAn
     where TGraph : IDotGraph
 {
     /// <inheritdoc cref="IDotAnnotatable.Annotation" />
-    public virtual string Annotation { get; set; }
+    public virtual string? Annotation { get; set; }
 
     /// <summary>
     ///     Adds a graph to the collection and initializes it.
@@ -20,7 +20,7 @@ public class DotCommonGraphCollection<TGraph> : List<TGraph>, IDotEntity, IDotAn
     /// <param name="init">
     ///     An optional graph initializer delegate.
     /// </param>
-    public virtual TGraph Add(TGraph graph, Action<TGraph> init)
+    public virtual TGraph Add(TGraph graph, Action<TGraph>? init)
     {
         init?.Invoke(graph);
         Add(graph);

@@ -46,7 +46,7 @@ public partial class DotHtmlBuilder
             if (styleRootElement is not null)
             {
                 fontElement.SetContent(styleRootElement);
-                initElement = contentElement;
+                initElement = contentElement!;
             }
         }
 

@@ -12,6 +12,6 @@ public class DotGlobalEdgeAttributesWriter : DotEntityWithAttributeListWriter, I
     public virtual void WriteEdgeKeyword()
     {
         _tokenWriter.Keyword("edge")
-           .Space(linger: true);
+            .Space(linger: true);
     }
 }

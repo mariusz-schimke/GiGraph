@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 
@@ -19,7 +20,7 @@ public class DotId : IDotEncodable
     /// </param>
     public DotId(string id)
     {
-        _id = id;
+        _id = id ?? throw new ArgumentNullException(nameof(id), "Identifier must not be null.");
     }
 
     string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
@@ -32,11 +33,13 @@ public class DotId : IDotEncodable
 
     protected virtual string FormatId(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => _id;
 
-    public static implicit operator string(DotId id) => id?._id;
+    [return: NotNullIfNotNull(nameof(id))]
+    public static implicit operator string?(DotId? id) => id?._id;
 
-    public static implicit operator DotId(string id) => id is not null ? new DotId(id) : null;
+    [return: NotNullIfNotNull(nameof(id))]
+    public static implicit operator DotId?(string? id) => id is not null ? new DotId(id) : null;
 
-    public override bool Equals(object obj) =>
+    public override bool Equals(object? obj) =>
         obj is DotId id &&
         id._id == _id &&
         id.GetType() == GetType();

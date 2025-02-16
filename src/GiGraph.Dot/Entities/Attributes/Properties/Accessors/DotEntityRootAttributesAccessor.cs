@@ -17,7 +17,7 @@ public class DotEntityRootAttributesAccessor<TIEntityAttributeProperties, TEntit
     public DotAttributeCollection Collection => _attributes.Collection;
 
     /// <inheritdoc cref="IDotAnnotatable.Annotation" />
-    public string Annotation
+    public string? Annotation
     {
         get => _attributes.Collection.Annotation;
         set => _attributes.Collection.Annotation = value;

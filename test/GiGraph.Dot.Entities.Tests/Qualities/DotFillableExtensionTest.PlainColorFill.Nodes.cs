@@ -18,7 +18,7 @@ public partial class DotFillableExtensionTest
         graph.Nodes.Add("node", c =>
                 c.Style.Set(DotNodeFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true, true)
             )
-           .SetPlainColorFill(Color.Red);
+            .SetPlainColorFill(Color.Red);
 
         graph.Nodes.Style.Set(DotNodeFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true, true);
         graph.Nodes.SetPlainColorFill(Color.Red);

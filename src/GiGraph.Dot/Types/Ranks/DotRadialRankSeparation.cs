@@ -33,7 +33,7 @@ public record DotRadialRankSeparation : DotRankSeparationDefinition
     ///     remainder.
     /// </param>
     public DotRadialRankSeparation(IEnumerable<double> value)
-        : this(value?.ToArray())
+        : this(value.ToArray())
     {
     }
 

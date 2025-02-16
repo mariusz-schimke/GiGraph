@@ -24,7 +24,7 @@ public class DotAttributeGenerator<TAttribute> : DotEntityGenerator<TAttribute, 
         );
     }
 
-    protected virtual void WriteAttribute(string key, string value, IDotAttributeWriter writer)
+    protected virtual void WriteAttribute(string key, string? value, IDotAttributeWriter writer)
     {
         key = EscapeKey(key);
 
@@ -41,7 +41,7 @@ public class DotAttributeGenerator<TAttribute> : DotEntityGenerator<TAttribute, 
 
     protected virtual bool KeyRequiresQuoting(string key) => _options.Attributes.PreferQuotedKey || !_syntaxRules.IsValidIdentifier(key);
 
-    protected virtual bool ValueRequiresQuoting(string value) => _options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
+    protected virtual bool ValueRequiresQuoting(string? value) => _options.Attributes.PreferQuotedValue || !_syntaxRules.IsValidIdentifier(value);
 
     protected virtual bool ValueRequiresQuoting(string[] valueParts) => ValueRequiresQuoting(string.Join(string.Empty, valueParts));
 }

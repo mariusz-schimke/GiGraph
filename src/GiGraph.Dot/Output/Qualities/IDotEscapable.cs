@@ -10,5 +10,5 @@ public interface IDotEscapable
     /// <param name="textEscaper">
     ///     The text escaper to use.
     /// </param>
-    string GetEscaped(IDotTextEscaper textEscaper);
+    string? GetEscaped(IDotTextEscaper textEscaper);
 }

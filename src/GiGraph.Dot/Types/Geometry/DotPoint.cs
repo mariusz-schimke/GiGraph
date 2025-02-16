@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
 using GiGraph.Dot.Output.Options;
@@ -43,7 +44,7 @@ public record DotPoint : IDotEncodable
     ///     Determines whether the node position (if applied to nodes) should not change (input-only).
     /// </param>
     public DotPoint(IEnumerable<double> coordinates, bool? isFixed = null)
-        : this(isFixed, coordinates?.ToArray())
+        : this(isFixed, coordinates.ToArray())
     {
     }
 
@@ -136,9 +137,12 @@ public record DotPoint : IDotEncodable
         return $"{string.Join(",", Coordinates.Select(c => c.ToString(syntaxRules.Culture)))}{fix}";
     }
 
-    public static implicit operator DotPoint(double? value) => value.HasValue ? new DotPoint(value.Value) : null;
+    [return: NotNullIfNotNull(nameof(value))]
+    public static implicit operator DotPoint?(double? value) => value.HasValue ? new DotPoint(value.Value) : null;
 
-    public static implicit operator DotPoint(Point? point) => point.HasValue ? new DotPoint(point.Value) : null;
+    [return: NotNullIfNotNull(nameof(point))]
+    public static implicit operator DotPoint?(Point? point) => point.HasValue ? new DotPoint(point.Value) : null;
 
-    public static implicit operator DotPoint(PointF? point) => point.HasValue ? new DotPoint(point.Value) : null;
+    [return: NotNullIfNotNull(nameof(point))]
+    public static implicit operator DotPoint?(PointF? point) => point.HasValue ? new DotPoint(point.Value) : null;
 }

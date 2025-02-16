@@ -22,7 +22,7 @@ public partial class DotEdgeCollection
     /// </param>
     public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(
         IEnumerable<string> tailNodeIds, IEnumerable<string> headNodeIds,
-        Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>> init = null) =>
+        Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>>? init = null) =>
         AddManyToMany(DotSubgraph.FromNodes(tailNodeIds), DotSubgraph.FromNodes(headNodeIds), init);
 
     /// <summary>
@@ -35,7 +35,8 @@ public partial class DotEdgeCollection
     /// <param name="headNodeIds">
     ///     The identifiers of the head nodes.
     /// </param>
-    public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(IEnumerable<string> tailNodeIds, params string[] headNodeIds) => AddManyToMany(DotSubgraph.FromNodes(tailNodeIds), DotSubgraph.FromNodes(headNodeIds), init: null);
+    public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(IEnumerable<string> tailNodeIds, params string[] headNodeIds) =>
+        AddManyToMany(DotSubgraph.FromNodes(tailNodeIds), DotSubgraph.FromNodes(headNodeIds), init: null);
 
     /// <summary>
     ///     Adds a group of edges where all <paramref name="tailNodeIds" /> as tail nodes are joined to all
@@ -70,7 +71,7 @@ public partial class DotEdgeCollection
     /// </param>
     public virtual DotEdge<DotEndpointGroup, DotEndpointGroup> AddManyToMany(
         DotEndpointGroup tails, DotEndpointGroup heads,
-        Action<DotEdge<DotEndpointGroup, DotEndpointGroup>> init = null) =>
+        Action<DotEdge<DotEndpointGroup, DotEndpointGroup>>? init = null) =>
         Add(tails, heads, init);
 
     /// <summary>
@@ -87,7 +88,7 @@ public partial class DotEdgeCollection
     /// </param>
     public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(
         DotSubgraphEndpoint tails, DotSubgraphEndpoint heads,
-        Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>> init = null) =>
+        Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>>? init = null) =>
         Add(tails, heads, init);
 
     /// <summary>
@@ -104,6 +105,6 @@ public partial class DotEdgeCollection
     /// </param>
     public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(
         DotSubgraph tails, DotSubgraph heads,
-        Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>> init = null) =>
+        Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>>? init = null) =>
         Add(new(tails), new(heads), init);
 }

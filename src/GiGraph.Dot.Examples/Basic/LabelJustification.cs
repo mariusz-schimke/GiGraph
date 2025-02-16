@@ -18,10 +18,10 @@ public static class LabelJustification
 
             // using text formatter
             node.Label = new DotFormattedTextBuilder()
-               .AppendLine("Centered line")
-               .AppendLeftJustifiedLine("Left-justified line")
-               .AppendRightJustifiedLine("Right-justified line")
-               .Build();
+                .AppendLine("Centered line")
+                .AppendLeftJustifiedLine("Left-justified line")
+                .AppendRightJustifiedLine("Right-justified line")
+                .Build();
 
             // using string concatenation
             node.Label = "Centered line" + DotEscapeString.LineBreak +

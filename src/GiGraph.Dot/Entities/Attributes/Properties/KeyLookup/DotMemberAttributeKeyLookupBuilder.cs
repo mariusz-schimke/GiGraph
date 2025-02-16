@@ -37,7 +37,7 @@ public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttri
         var result = new DotMemberAttributeKeyLookup();
 
         var entityAttributePropertiesInterfaceTypes = typeof(TIEntityAttributeProperties).GetInterfaces()
-           .Concat(new[] { typeof(TIEntityAttributeProperties) });
+            .Concat(new[] { typeof(TIEntityAttributeProperties) });
 
         foreach (var interfaceType in entityAttributePropertiesInterfaceTypes)
         {
@@ -54,7 +54,7 @@ public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttri
 
         // build a temporary lookup for all types the implemented properties are declared by
         var tempLookup = BuildWithDeclaredPropertyAccessorsOf(
-            interfaceMap.TargetMethods.Select(accessor => accessor.DeclaringType)
+            interfaceMap.TargetMethods.Select(accessor => accessor.DeclaringType)!
         );
 
         // based on the previously created lookup, include base definitions of all implemented property accessors
@@ -73,7 +73,7 @@ public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttri
         foreach (var interfaceProperty in interfaceProperties)
         {
             var interfacePropertyAccessor = interfaceProperty.GetMethod ?? interfaceProperty.SetMethod;
-            var key = tempLookup.GetPropertyAccessorKey(interfacePropertyAccessor);
+            var key = tempLookup.GetPropertyAccessorKey(interfacePropertyAccessor!);
             output.SetPropertyKey(interfaceProperty, key);
         }
     }

@@ -70,7 +70,7 @@ public record DotMulticolor : DotColorDefinition
     ///     weights will be ignored by the visualization tool.
     /// </param>
     public DotMulticolor(IEnumerable<DotColor> colors)
-        : this(colors?.ToArray())
+        : this(colors.ToArray())
     {
     }
 
@@ -104,8 +104,8 @@ public record DotMulticolor : DotColorDefinition
     ///         <see cref="DotColorSchemes.X11" /> naming.
     ///     </para>
     /// </param>
-    public DotMulticolor(IEnumerable<Color> colors, string scheme = null)
-        : this(colors?.Select(c => new DotColor(c, scheme)))
+    public DotMulticolor(IEnumerable<Color> colors, string? scheme = null)
+        : this(colors.Select(c => new DotColor(c, scheme)))
     {
     }
 

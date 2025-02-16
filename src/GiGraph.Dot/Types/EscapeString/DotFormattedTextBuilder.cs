@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Types.EscapeString;
 /// </summary>
 public class DotFormattedTextBuilder
 {
-    protected readonly List<DotEscapeString> _items = new();
+    protected readonly List<DotEscapeString> _items = [];
 
     /// <summary>
     ///     Creates a new instance.

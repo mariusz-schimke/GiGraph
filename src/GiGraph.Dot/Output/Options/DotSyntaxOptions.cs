@@ -48,12 +48,12 @@ public partial class DotSyntaxOptions
     /// <summary>
     ///     When set, identifiers will always be quoted, even if it is not required.
     /// </summary>
-    public bool PreferQuotedIdentifiers { get; set; } = false;
+    public bool PreferQuotedIdentifiers { get; set; }
 
     /// <summary>
     ///     When set, all statements within the graph will be followed by a delimiter (;).
     /// </summary>
-    public bool PreferStatementDelimiter { get; set; } = false;
+    public bool PreferStatementDelimiter { get; set; }
 
     /// <summary>
     ///     Gets or sets a value indicating if graph elements should be sorted in the output DOT script. This setting affects attributes,
@@ -65,5 +65,5 @@ public partial class DotSyntaxOptions
     ///         script may affect the order they are visualized, if that matters.
     ///     </para>
     /// </summary>
-    public bool SortElements { get; set; } = false;
+    public bool SortElements { get; set; }
 }

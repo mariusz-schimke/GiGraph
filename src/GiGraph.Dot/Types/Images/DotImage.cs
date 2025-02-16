@@ -14,4 +14,4 @@ namespace GiGraph.Dot.Types.Images;
 /// <param name="Scaling">
 ///     Image scaling.
 /// </param>
-public record DotImage(string Path = null, DotAlignment? Alignment = null, DotImageScaling? Scaling = null);
+public record DotImage(string? Path = null, DotAlignment? Alignment = null, DotImageScaling? Scaling = null);

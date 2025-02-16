@@ -38,7 +38,7 @@ public partial class DotTextEscapingPipeline : List<IDotTextEscaper>, IDotTextEs
     {
     }
 
-    public virtual string Escape(string value) => this.Aggregate(value, (current, escaper) => escaper.Escape(current));
+    public virtual string? Escape(string? value) => this.Aggregate(value, (current, escaper) => escaper.Escape(current));
 
     /// <summary>
     ///     Creates a new pipeline that does not modify the input string in any way.

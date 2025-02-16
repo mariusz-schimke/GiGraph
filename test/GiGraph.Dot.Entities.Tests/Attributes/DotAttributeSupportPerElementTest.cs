@@ -24,8 +24,8 @@ public class DotAttributeSupportPerElementTest
         var validKeys = GetCompatibleKeysFor(element);
 
         var result = elementAttributesMetadata.Keys
-           .Except(validKeys.Intersect(elementAttributesMetadata.Keys))
-           .ToArray();
+            .Except(validKeys.Intersect(elementAttributesMetadata.Keys))
+            .ToArray();
 
         if (result.Any())
         {
@@ -40,8 +40,8 @@ public class DotAttributeSupportPerElementTest
         var validKeys = GetCompatibleKeysFor(element);
 
         var result = validKeys
-           .Except(elementAttributesMetadata.Keys.Intersect(validKeys))
-           .ToArray();
+            .Except(elementAttributesMetadata.Keys.Intersect(validKeys))
+            .ToArray();
 
         if (result.Any())
         {
@@ -55,22 +55,22 @@ public class DotAttributeSupportPerElementTest
         var attributesMetadata = DotElementAttributesMetadataFactory.Create();
 
         var keyLookup = attributesMetadata
-           .SelectMany(metadata => metadata.Attributes.Select(attribute => new
+            .SelectMany(metadata => metadata.Attributes.Select(attribute => new
             {
                 metadata.Element,
                 attribute.Key,
                 attribute.Value.PropertyPath,
                 Property = attribute.Value.GetPropertyInfoPath().Last()
             }))
-           .ToLookup(
+            .ToLookup(
                 key => key.Key,
                 element => element
             )
-           .ToDictionary(
+            .ToDictionary(
                 key => key.Key,
                 element => element
-                   .OrderBy(e => e.PropertyPath, StringComparer.InvariantCulture)
-                   .GroupBy(
+                    .OrderBy(e => e.PropertyPath, StringComparer.InvariantCulture)
+                    .GroupBy(
                         groupKey =>
                         {
                             var propertyTypeName = Nullable.GetUnderlyingType(groupKey.Property.PropertyType) is { } underlyingType
@@ -81,8 +81,8 @@ public class DotAttributeSupportPerElementTest
                         },
                         groupElement => groupElement.Element
                     )
-                   .Select(property => $"{property.Key} [{property.Aggregate((current, value) => current | value)}]")
-                   .ToArray()
+                    .Select(property => $"{property.Key} [{property.Aggregate((current, value) => current | value)}]")
+                    .ToArray()
             );
 
         Snapshot.Match(new SortedDictionary<string, string[]>(keyLookup), "attribute_property_key_map");
@@ -91,15 +91,15 @@ public class DotAttributeSupportPerElementTest
     private static string[] GetCompatibleKeysFor(DotCompatibleElements compatibleElements)
     {
         return typeof(DotAttributeKeys)
-           .GetFields(BindingFlags.Static | BindingFlags.Public)
-           .Select(property => new
+            .GetFields(BindingFlags.Static | BindingFlags.Public)
+            .Select(property => new
             {
-                Key = (string) property.GetValue(null),
-                Metadata = property.GetCustomAttribute<DotAttributeMetadataAttribute>()
+                Key = (string) property.GetValue(null)!,
+                Metadata = property.GetCustomAttribute<DotAttributeMetadataAttribute>()!
             })
-           .Where(item => item.Metadata.CompatibleElements.HasFlag(compatibleElements))
-           .Where(item => item.Metadata.IsImplemented)
-           .Select(item => item.Key)
-           .ToArray();
+            .Where(item => item.Metadata.CompatibleElements.HasFlag(compatibleElements))
+            .Where(item => item.Metadata.IsImplemented)
+            .Select(item => item.Key)
+            .ToArray();
     }
 }

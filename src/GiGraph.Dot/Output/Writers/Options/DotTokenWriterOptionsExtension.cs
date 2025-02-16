@@ -24,10 +24,8 @@ public static class DotTokenWriterOptionsExtension
             ? options.Space()
             : options.LineBreak;
 
-    public static string[] SplitMultilineText(this DotTokenWriterOptions options, string text)
-    {
-        return text is null
-            ? Array.Empty<string>()
-            : text.Split(new[] { DotNewLine.Windows, DotNewLine.Unix }, StringSplitOptions.None);
-    }
+    public static string[] SplitMultilineText(this DotTokenWriterOptions options, string? text) =>
+        text is null
+            ? []
+            : text.Split([DotNewLine.Windows, DotNewLine.Unix], StringSplitOptions.None);
 }

@@ -48,14 +48,14 @@ public partial class DotEdgeCollection : IDotEdgeRootAttributes
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.Label" />
-    public virtual DotLabel Label
+    public virtual DotLabel? Label
     {
         get => Attributes.Implementation.Label;
         set => Attributes.Implementation.Label = value;
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.ExternalLabel" />
-    public virtual DotLabel ExternalLabel
+    public virtual DotLabel? ExternalLabel
     {
         get => Attributes.Implementation.ExternalLabel;
         set => Attributes.Implementation.ExternalLabel = value;
@@ -90,28 +90,28 @@ public partial class DotEdgeCollection : IDotEdgeRootAttributes
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.Tooltip" />
-    public virtual DotEscapeString Tooltip
+    public virtual DotEscapeString? Tooltip
     {
         get => Attributes.Implementation.Tooltip;
         set => Attributes.Implementation.Tooltip = value;
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.Color" />
-    public virtual DotColorDefinition Color
+    public virtual DotColorDefinition? Color
     {
         get => Attributes.Implementation.Color;
         set => Attributes.Implementation.Color = value;
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.FillColor" />
-    public virtual DotColorDefinition FillColor
+    public virtual DotColorDefinition? FillColor
     {
         get => Attributes.Implementation.FillColor;
         set => Attributes.Implementation.FillColor = value;
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.ColorScheme" />
-    public virtual string ColorScheme
+    public virtual string? ColorScheme
     {
         get => Attributes.Implementation.ColorScheme;
         set => Attributes.Implementation.ColorScheme = value;
@@ -153,14 +153,14 @@ public partial class DotEdgeCollection : IDotEdgeRootAttributes
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.Comment" />
-    public virtual string Comment
+    public virtual string? Comment
     {
         get => Attributes.Implementation.Comment;
         set => Attributes.Implementation.Comment = value;
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.ObjectId" />
-    public virtual DotEscapeString ObjectId
+    public virtual DotEscapeString? ObjectId
     {
         get => Attributes.Implementation.ObjectId;
         set => Attributes.Implementation.ObjectId = value;

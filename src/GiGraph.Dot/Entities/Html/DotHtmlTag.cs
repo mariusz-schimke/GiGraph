@@ -32,7 +32,7 @@ public abstract class DotHtmlTag : DotHtmlEntity
         var result = new StringBuilder();
 
         var attrs = Attributes.Values
-           .Select(attr =>
+            .Select(attr =>
                 $"{DotTextCasing.SetCasing(attr.Key, options.Attributes.Html.AttributeKeyCasing)}=\"{attr.GetDotEncodedValue(options, syntaxRules)}\""
             );
 
@@ -40,8 +40,8 @@ public abstract class DotHtmlTag : DotHtmlEntity
         var elementWithAttributes = string.Join(
             " ",
             Enumerable.Empty<string>()
-               .Append($"<{elementName}")
-               .Concat(attrs)
+                .Append($"<{elementName}")
+                .Concat(attrs)
         );
 
         result.Append(elementWithAttributes);

@@ -12,7 +12,7 @@ public class DotSubgraphGenerator : DotCommonSubgraphGenerator<DotSubgraph>
     {
     }
 
-    protected override void WriteDeclaration(string id, IDotSubgraphWriter writer)
+    protected override void WriteDeclaration(string? id, IDotSubgraphWriter writer)
     {
         id = EncodeIdentifier(id);
         writer.WriteSubgraphDeclaration(id, IdentifierRequiresQuoting(id));

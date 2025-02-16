@@ -56,13 +56,13 @@ public interface IDotClusterAttributes : IDotGraphClusterCommonAttributes
     ///         </list>
     ///     </para>
     /// </summary>
-    DotLabel Label { get; set; }
+    DotLabel? Label { get; set; }
 
     /// <summary>
     ///     Tooltip annotation attached to the cluster (svg, cmap only). If unset, Graphviz will use the <see cref="Label" /> attribute
     ///     if defined.
     /// </summary>
-    DotEscapeString Tooltip { get; set; }
+    DotEscapeString? Tooltip { get; set; }
 
     /// <summary>
     ///     <para>
@@ -77,7 +77,7 @@ public interface IDotClusterAttributes : IDotGraphClusterCommonAttributes
     ///         <see cref="GradientFillAngle" /> attribute for setting a gradient angle.
     ///     </para>
     /// </summary>
-    DotColorDefinition BackgroundColor { get; set; }
+    DotColorDefinition? BackgroundColor { get; set; }
 
     /// <summary>
     ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
@@ -86,7 +86,7 @@ public interface IDotClusterAttributes : IDotGraphClusterCommonAttributes
     ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes" /> for
     ///     supported scheme names.
     /// </summary>
-    string ColorScheme { get; set; }
+    string? ColorScheme { get; set; }
 
     /// <summary>
     ///     If a gradient fill is being used, this determines the angle of the fill. For linear fills, the colors transform along a line
@@ -105,7 +105,7 @@ public interface IDotClusterAttributes : IDotGraphClusterCommonAttributes
     /// <summary>
     ///     Specifies the space between the nodes in the cluster and bounding box of the cluster. By default, this is 8 points.
     /// </summary>
-    DotPoint Padding { get; set; }
+    DotPoint? Padding { get; set; }
 
     /// <summary>
     ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="DotGraphLayoutAttributes.PackingMode" /> indicates
@@ -133,7 +133,7 @@ public interface IDotClusterAttributes : IDotGraphClusterCommonAttributes
     ///         internally-used attributes distinct, the user can include multiple image maps in the same document.
     ///     </para>
     /// </summary>
-    DotEscapeString ObjectId { get; set; }
+    DotEscapeString? ObjectId { get; set; }
 
     /// <summary>
     ///     Gets or sets the rank constraints on the nodes in the cluster (dot only).

@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Identifiers;
 
@@ -28,10 +29,11 @@ public class DotClusterId : DotId
             return _id;
         }
 
-        return _id is not null
-            ? $"{cluster}{options.Clusters.ClusterIdSeparator}{_id}"
-            : cluster;
+        return string.IsNullOrEmpty(_id)
+            ? cluster
+            : $"{cluster}{options.Clusters.ClusterIdSeparator}{_id}";
     }
 
-    public static implicit operator DotClusterId(string id) => id is not null ? new DotClusterId(id) : null;
+    [return: NotNullIfNotNull(nameof(id))]
+    public static implicit operator DotClusterId?(string? id) => id is not null ? new DotClusterId(id) : null;
 }

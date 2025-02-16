@@ -20,26 +20,26 @@ public abstract class DotHyperlinkAttributes<TIEntityHyperlinkAttributes, TEntit
 
     /// <inheritdoc cref="IDotHyperlinkAttributes.Url" />
     [DotAttributeKey(DotAttributeKeys.Url)]
-    public virtual DotEscapeString Url
+    public virtual DotEscapeString? Url
     {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotHyperlinkAttributes.Href" />
     [DotAttributeKey(DotAttributeKeys.Href)]
-    public virtual DotEscapeString Href
+    public virtual DotEscapeString? Href
     {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotHyperlinkAttributes.Target" />
     [DotAttributeKey(DotAttributeKeys.Target)]
-    public virtual DotEscapeString Target
+    public virtual DotEscapeString? Target
     {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <summary>
@@ -51,13 +51,13 @@ public abstract class DotHyperlinkAttributes<TIEntityHyperlinkAttributes, TEntit
     /// <param name="target">
     ///     The target of the hyperlink. See <see cref="DotHyperlinkTargets" /> for accepted values.
     /// </param>
-    public virtual void Set(DotEscapeString url, DotEscapeString target = null)
+    public virtual void Set(DotEscapeString? url, DotEscapeString? target = null)
     {
         Url = url;
         Target = target;
     }
 
-    protected virtual void SetAll(DotEscapeString url, DotEscapeString target, DotEscapeString href)
+    protected virtual void SetAll(DotEscapeString? url, DotEscapeString? target, DotEscapeString? href)
     {
         Href = href;
         Set(url, target);

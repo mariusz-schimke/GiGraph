@@ -38,5 +38,6 @@ public class DotTextLabel : DotLabel
     /// </summary>
     public override string ToString() => _text;
 
-    protected override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => ((IDotEscapable) _text)?.GetEscaped(syntaxRules.Attributes.EscapeStringValueEscaper);
+    protected override string? GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
+        ((IDotEscapable?) _text)?.GetEscaped(syntaxRules.Attributes.EscapeStringValueEscaper);
 }

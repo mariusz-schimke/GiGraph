@@ -18,7 +18,6 @@ public abstract record DotRecordField : IDotEncodable
 
     protected internal abstract string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules, bool hasParent);
 
-    public static implicit operator DotRecordField(string text) => new DotRecordTextField(text);
-
-    public static implicit operator DotRecordField(DotEscapeString text) => new DotRecordTextField(text);
+    public static implicit operator DotRecordField(string? text) => new DotRecordTextField(text);
+    public static implicit operator DotRecordField(DotEscapeString? text) => new DotRecordTextField(text);
 }

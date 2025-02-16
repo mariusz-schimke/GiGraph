@@ -27,7 +27,7 @@ public class DotGraph : DotGraphSection, IDotGraph, IDotOrderable
     ///     Determines if the graph is strict. Strict graph forbids the creation of multi-edges, i.e., there may be at most one edge with
     ///     a given tail node and head node in the directed case.
     /// </param>
-    public DotGraph(string id, bool directed = DirectedDefault, bool strict = StrictDefault)
+    public DotGraph(string? id, bool directed = DirectedDefault, bool strict = StrictDefault)
         : this(new(), new DotGraphSectionCollection<DotGraphSection>())
     {
         Id = id;
@@ -91,9 +91,9 @@ public class DotGraph : DotGraphSection, IDotGraph, IDotOrderable
     /// <summary>
     ///     Gets or sets the identifier of the graph (optional).
     /// </summary>
-    public virtual string Id { get; set; }
+    public virtual string? Id { get; set; }
 
     IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 
-    string IDotOrderable.OrderingKey => Id;
+    string? IDotOrderable.OrderingKey => Id;
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -38,10 +40,10 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <typeparam name="TProperty">
     ///     The type returned by the property.
     /// </typeparam>
-    public virtual DotAttribute Get<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+    public virtual DotAttribute? Get<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
     {
         var key = GetKey(property);
-        return _attributes.Collection.TryGetValue(key, out var result) ? result : null;
+        return _attributes.Collection.GetValueOrDefault(key);
     }
 
     /// <summary>
@@ -53,10 +55,10 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <typeparam name="TProperty">
     ///     The type returned by the property.
     /// </typeparam>
-    public virtual TProperty GetValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+    public virtual TProperty? GetValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
     {
         var propertyInfo = GetProperty(property);
-        return (TProperty) propertyInfo.GetValue(_attributes);
+        return (TProperty?) propertyInfo.GetValue(_attributes);
     }
 
     /// <summary>
@@ -71,7 +73,8 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <typeparam name="TProperty">
     ///     The type returned by the property.
     /// </typeparam>
-    public virtual DotAttribute SetValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value)
+    [return: NotNullIfNotNull(nameof(value))]
+    public virtual DotAttribute? SetValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value)
     {
         var propertyInfo = GetProperty(property);
         propertyInfo.SetValue(_attributes, value);
@@ -100,8 +103,9 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     public virtual DotAttribute SetRawValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
     {
         var key = GetKey(property);
-        _attributes.Collection.SetRaw(key, value);
-        return _attributes.Collection.Get(key);
+        return _attributes.Collection
+            .SetRaw(key, value)
+            .Get(key)!;
     }
 
     /// <summary>
@@ -161,8 +165,9 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     public virtual DotAttribute Nullify<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
     {
         var key = GetKey(property);
-        _attributes.Collection.Nullify(key);
-        return _attributes.Collection.Get(key);
+        return _attributes.Collection
+            .Nullify(key)
+            .Get(key)!;
     }
 
     /// <summary>

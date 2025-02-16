@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace GiGraph.Dot.Types.EscapeString;
@@ -11,7 +12,7 @@ public abstract partial class DotEscapeString
     /// <param name="text">
     ///     The text to justify.
     /// </param>
-    public static DotEscapeString LeftJustifyLine(DotEscapeString text) => text + LeftJustificationLineBreak;
+    public static DotEscapeString LeftJustifyLine(DotEscapeString? text) => text + LeftJustificationLineBreak;
 
     /// <summary>
     ///     Right-justifies the last line of the specified text. Note that if any text is further appended, it will start from a new
@@ -20,7 +21,7 @@ public abstract partial class DotEscapeString
     /// <param name="text">
     ///     The text to justify.
     /// </param>
-    public static DotEscapeString RightJustifyLine(DotEscapeString text) => text + RightJustificationLineBreak;
+    public static DotEscapeString RightJustifyLine(DotEscapeString? text) => text + RightJustificationLineBreak;
 
     /// <summary>
     ///     Creates a new instance initialized with the specified text. The text will be escaped on output DOT script generation to
@@ -29,7 +30,8 @@ public abstract partial class DotEscapeString
     /// <param name="value">
     ///     The string to use.
     /// </param>
-    public static DotEscapeString FromString(string value) => new DotUnescapedString(value);
+    [return: NotNullIfNotNull(nameof(value))]
+    public static DotEscapeString? FromString(string? value) => (DotUnescapedString?) value;
 
     /// <summary>
     ///     Creates a new instance initialized with escaped string. The string will not be modified in any way on output DOT script
@@ -42,7 +44,8 @@ public abstract partial class DotEscapeString
     /// <param name="value">
     ///     The string to use.
     /// </param>
-    public static DotEscapeString FromEscapedString(string value) => new DotEscapedString(value);
+    [return: NotNullIfNotNull(nameof(value))]
+    public static DotEscapeString? FromEscapedString(string? value) => (DotEscapedString?) value;
 
     /// <summary>
     ///     Concatenates the specified escape strings.
@@ -50,7 +53,7 @@ public abstract partial class DotEscapeString
     /// <param name="items">
     ///     The escape string items to concatenate.
     /// </param>
-    public static DotEscapeString Concat(params DotEscapeString[] items) => new DotConcatenatedEscapeString(items);
+    public static DotEscapeString Concat(params DotEscapeString?[] items) => new DotConcatenatedEscapeString(items);
 
     /// <summary>
     ///     Concatenates the specified escape strings.
@@ -58,7 +61,7 @@ public abstract partial class DotEscapeString
     /// <param name="items">
     ///     The escape string items to concatenate.
     /// </param>
-    public static DotEscapeString Concat(IEnumerable<DotEscapeString> items) => new DotConcatenatedEscapeString(items);
+    public static DotEscapeString Concat(IEnumerable<DotEscapeString?> items) => new DotConcatenatedEscapeString(items);
 
     /// <summary>
     ///     Concatenates the specified escape strings.
@@ -66,7 +69,7 @@ public abstract partial class DotEscapeString
     /// <param name="items">
     ///     The escape string items to concatenate.
     /// </param>
-    public static DotEscapeString Concat(params string[] items) => new DotConcatenatedEscapeString(items);
+    public static DotEscapeString Concat(params string?[] items) => new DotConcatenatedEscapeString(items);
 
     /// <summary>
     ///     Concatenates the specified escape strings.
@@ -74,7 +77,7 @@ public abstract partial class DotEscapeString
     /// <param name="items">
     ///     The escape string items to concatenate.
     /// </param>
-    public static DotEscapeString Concat(IEnumerable<string> items) => new DotConcatenatedEscapeString(items);
+    public static DotEscapeString Concat(IEnumerable<string?> items) => new DotConcatenatedEscapeString(items);
 
     /// <summary>
     ///     Concatenates the specified escaped strings. The component strings will not be modified in any way on output DOT script
@@ -87,7 +90,7 @@ public abstract partial class DotEscapeString
     /// <param name="items">
     ///     The string to use.
     /// </param>
-    public static DotEscapeString ConcatEscapedStrings(params string[] items) => ConcatEscapedStrings((IEnumerable<string>) items);
+    public static DotEscapeString ConcatEscapedStrings(params string?[] items) => ConcatEscapedStrings((IEnumerable<string?>) items);
 
     /// <summary>
     ///     Concatenates the specified escaped strings. The component strings will not be modified in any way on output DOT script
@@ -100,5 +103,6 @@ public abstract partial class DotEscapeString
     /// <param name="items">
     ///     The string to use.
     /// </param>
-    public static DotEscapeString ConcatEscapedStrings(IEnumerable<string> items) => new DotConcatenatedEscapeString(items?.Select(FromEscapedString));
+    public static DotEscapeString ConcatEscapedStrings(IEnumerable<string?> items) =>
+        new DotConcatenatedEscapeString(items.Select(FromEscapedString));
 }

@@ -45,5 +45,5 @@ public class DotHtmlText : DotHtmlEntity
         return string.Join(br, lines);
     }
 
-    protected static string[] SplitMultiline(string text, string[] lineBreaks) => text?.Split(lineBreaks, StringSplitOptions.None) ?? Array.Empty<string>();
+    protected static string[] SplitMultiline(string? text, string[] lineBreaks) => text?.Split(lineBreaks, StringSplitOptions.None) ?? [];
 }

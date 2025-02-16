@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 
@@ -98,7 +99,8 @@ public class DotMemberAttributeKeyLookup
     /// <param name="key">
     ///     The output attribute key if found.
     /// </param>
-    public virtual bool TryGetPropertyKey(PropertyInfo property, out string key) => TryGetMemberKey(property, out key);
+    public virtual bool TryGetPropertyKey(PropertyInfo property, [MaybeNullWhen(false)] out string key) =>
+        TryGetMemberKey(property, out key);
 
     /// <summary>
     ///     Tries to get an attribute key for the specified property accessor.
@@ -109,9 +111,10 @@ public class DotMemberAttributeKeyLookup
     /// <param name="key">
     ///     The output attribute key if found.
     /// </param>
-    public virtual bool TryGetPropertyAccessorKey(MethodInfo accessor, out string key) => TryGetMemberKey(GetPropertyAccessorDefinition(accessor), out key);
+    public virtual bool TryGetPropertyAccessorKey(MethodInfo accessor, [MaybeNullWhen(false)] out string key) =>
+        TryGetMemberKey(GetPropertyAccessorDefinition(accessor), out key);
 
-    protected virtual bool TryGetMemberKey(MemberInfo member, out string key)
+    protected virtual bool TryGetMemberKey(MemberInfo member, [MaybeNullWhen(false)] out string key)
     {
         key = null;
         return _lookup.TryGetValue(member.Module, out var module) &&
@@ -150,7 +153,8 @@ public class DotMemberAttributeKeyLookup
                 $"There is no attribute key specified for the '{accessor.Name}' property accessor of the {accessor.DeclaringType?.Name} type."
             );
 
-    protected virtual MethodInfo GetPropertyAccessorDefinition(MethodInfo accessor) => _useCommonBaseAsLookupKey ? accessor.GetRuntimeBaseDefinition() : accessor;
+    protected virtual MethodInfo GetPropertyAccessorDefinition(MethodInfo accessor) =>
+        _useCommonBaseAsLookupKey ? accessor.GetRuntimeBaseDefinition()! : accessor;
 
     /// <summary>
     ///     Adds and updates (overwrites) the content of the current instance with the content of the specified instance.

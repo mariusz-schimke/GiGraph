@@ -31,8 +31,8 @@ public static class DotGraphExtension
     /// <param name="syntaxRules">
     ///     The syntax rules to use.
     /// </param>
-    public static string Build(this DotGraph graph, DotFormattingOptions formattingOptions = null,
-        DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null)
+    public static string Build(this DotGraph graph, DotFormattingOptions? formattingOptions = null,
+        DotSyntaxOptions? syntaxOptions = null, DotSyntaxRules? syntaxRules = null)
     {
         using var stringWriter = new StringWriter();
         graph.Build(stringWriter, formattingOptions, syntaxOptions, syntaxRules);
@@ -58,8 +58,8 @@ public static class DotGraphExtension
     /// <param name="syntaxRules">
     ///     The syntax rules to use.
     /// </param>
-    public static void Build(this DotGraph graph, TextWriter outputWriter, DotFormattingOptions formattingOptions = null,
-        DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null)
+    public static void Build(this DotGraph graph, TextWriter outputWriter, DotFormattingOptions? formattingOptions = null,
+        DotSyntaxOptions? syntaxOptions = null, DotSyntaxRules? syntaxRules = null)
     {
         var generatorsProviderBuilder = new DotEntityGeneratorsProviderBuilder();
         var graphGeneratorBuilder = new DotGraphGeneratorBuilder(generatorsProviderBuilder);
@@ -89,7 +89,7 @@ public static class DotGraphExtension
     ///     The graph generator builder to use in order to get the graph builder to generate the DOT output with.
     /// </param>
     public static void Build(this DotGraph graph, TextWriter outputWriter, IDotGraphGeneratorBuilder graphGeneratorBuilder,
-        DotFormattingOptions formattingOptions = null, DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null)
+        DotFormattingOptions? formattingOptions = null, DotSyntaxOptions? syntaxOptions = null, DotSyntaxRules? syntaxRules = null)
     {
         syntaxRules ??= DotSyntaxRules.Default;
         syntaxOptions ??= DotSyntaxOptions.Default;
@@ -134,8 +134,8 @@ public static class DotGraphExtension
     /// <param name="encoding">
     ///     The encoding to use for the output text.
     /// </param>
-    public static void SaveToFile(this DotGraph graph, string filePath, DotFormattingOptions formattingOptions = null,
-        DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null, Encoding encoding = null)
+    public static void SaveToFile(this DotGraph graph, string filePath, DotFormattingOptions? formattingOptions = null,
+        DotSyntaxOptions? syntaxOptions = null, DotSyntaxRules? syntaxRules = null, Encoding? encoding = null)
     {
         using var streamWriter = CreateFileStreamWriter(filePath, encoding);
         graph.Build(streamWriter, formattingOptions, syntaxOptions, syntaxRules);
@@ -163,8 +163,8 @@ public static class DotGraphExtension
     /// <param name="encoding">
     ///     The encoding to use for the output text.
     /// </param>
-    public static async Task SaveToFileAsync(this DotGraph graph, string filePath, DotFormattingOptions formattingOptions = null,
-        DotSyntaxOptions syntaxOptions = null, DotSyntaxRules syntaxRules = null, Encoding encoding = null)
+    public static async Task SaveToFileAsync(this DotGraph graph, string filePath, DotFormattingOptions? formattingOptions = null,
+        DotSyntaxOptions? syntaxOptions = null, DotSyntaxRules? syntaxRules = null, Encoding? encoding = null)
     {
         var output = graph.Build(formattingOptions, syntaxOptions, syntaxRules);
 
@@ -174,7 +174,7 @@ public static class DotGraphExtension
         await streamWriter.FlushAsync();
     }
 
-    private static TextWriter CreateFileStreamWriter(string filePath, Encoding encoding) =>
+    private static TextWriter CreateFileStreamWriter(string filePath, Encoding? encoding) =>
         encoding is not null
             ? new(filePath, append: false, encoding)
             : new StreamWriter(filePath, append: false);

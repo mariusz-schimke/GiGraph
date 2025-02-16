@@ -22,7 +22,7 @@ public interface IDotGraphLayoutAttributes
     ///         command name used.
     ///     </para>
     /// </summary>
-    string Engine { get; set; }
+    string? Engine { get; set; }
 
     /// <summary>
     ///     Gets or sets the direction of graph layout (dot only, default: <see cref="DotLayoutDirection.TopToBottom" />).
@@ -95,7 +95,7 @@ public interface IDotGraphLayoutAttributes
     ///         Twopi, dot only.
     ///     </para>
     /// </summary>
-    DotRankSeparationDefinition RankSeparation { get; set; }
+    DotRankSeparationDefinition? RankSeparation { get; set; }
 
     /// <summary>
     ///     <para>
@@ -114,13 +114,13 @@ public interface IDotGraphLayoutAttributes
     ///         Default: disabled (see <see cref="DotPackingToggle" />).
     ///     </para>
     /// </summary>
-    DotPackingDefinition Packing { get; set; }
+    DotPackingDefinition? Packing { get; set; }
 
     /// <summary>
     ///     Indicates how connected components should be packed (default: <see cref="DotPackingGranularity.Node" />). Note that
     ///     specifying a value for this property will automatically turn on packing as though one had set <see cref="Packing" /> = true.
     /// </summary>
-    DotPackingModeDefinition PackingMode { get; set; }
+    DotPackingModeDefinition? PackingMode { get; set; }
 
     /// <summary>
     ///     If there are multiple clusters, determines whether to run edge crossing minimization a second time (dot only, default: true).

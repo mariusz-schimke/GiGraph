@@ -25,26 +25,26 @@ public class DotNodeImageAttributes : DotEntityAttributesWithMetadata<IDotNodeIm
 
     /// <inheritdoc cref="IDotNodeImageAttributes.Path" />
     [DotAttributeKey(DotAttributeKeys.Image)]
-    public virtual string Path
+    public virtual string? Path
     {
-        get => GetValueAsString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotNodeImageAttributes.Alignment" />
     [DotAttributeKey(DotAttributeKeys.ImagePos)]
     public virtual DotAlignment? Alignment
     {
-        get => GetValueAs<DotAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotAlignment>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 
     /// <inheritdoc cref="IDotNodeImageAttributes.Scaling" />
     [DotAttributeKey(DotAttributeKeys.ImageScale)]
     public virtual DotImageScaling? Scaling
     {
-        get => GetValueAs<DotImageScaling>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotImageScaling>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 
     /// <summary>
@@ -59,7 +59,7 @@ public class DotNodeImageAttributes : DotEntityAttributesWithMetadata<IDotNodeIm
     /// <param name="scaling">
     ///     The scaling option to apply to the image.
     /// </param>
-    public virtual void Set(string path, DotAlignment? alignment = null, DotImageScaling? scaling = null)
+    public virtual void Set(string? path, DotAlignment? alignment = null, DotImageScaling? scaling = null)
     {
         Path = path;
         Alignment = alignment;

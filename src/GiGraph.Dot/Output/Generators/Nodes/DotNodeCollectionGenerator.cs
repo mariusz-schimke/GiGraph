@@ -20,8 +20,8 @@ public class DotNodeCollectionGenerator : DotEntityGenerator<DotNodeCollection, 
     {
         var orderedNodes = _options.SortElements
             ? nodes.Cast<IDotOrderable>()
-               .OrderBy(node => node.OrderingKey, StringComparer.InvariantCulture)
-               .Cast<DotNodeDefinition>()
+                .OrderBy(node => node.OrderingKey, StringComparer.InvariantCulture)
+                .Cast<DotNodeDefinition>()
             : nodes;
 
         foreach (var node in orderedNodes)

@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
 using GiGraph.Dot.Output.Metadata;
@@ -88,7 +89,13 @@ public record DotRectangle : IDotEncodable
         );
     }
 
-    public static implicit operator DotRectangle(Rectangle? rectangle) => rectangle.HasValue ? new DotRectangle(rectangle.Value.X, rectangle.Value.Y, rectangle.Value.Width, rectangle.Value.Height) : null;
+    [return: NotNullIfNotNull(nameof(rectangle))]
+    public static implicit operator DotRectangle?(Rectangle? rectangle) => rectangle.HasValue
+        ? new DotRectangle(rectangle.Value.X, rectangle.Value.Y, rectangle.Value.Width, rectangle.Value.Height)
+        : null;
 
-    public static implicit operator DotRectangle(RectangleF? rectangle) => rectangle.HasValue ? new DotRectangle(rectangle.Value.X, rectangle.Value.Y, rectangle.Value.Width, rectangle.Value.Height) : null;
+    [return: NotNullIfNotNull(nameof(rectangle))]
+    public static implicit operator DotRectangle?(RectangleF? rectangle) => rectangle.HasValue
+        ? new DotRectangle(rectangle.Value.X, rectangle.Value.Y, rectangle.Value.Width, rectangle.Value.Height)
+        : null;
 }

@@ -25,7 +25,7 @@ public partial class DotHtmlFont : DotHtmlElement
     /// <param name="color">
     ///     Sets the color of the font within the scope of the current element.
     /// </param>
-    public DotHtmlFont(string name = null, double? size = null, DotColor color = null)
+    public DotHtmlFont(string? name = null, double? size = null, DotColor? color = null)
         : this(new DotHtmlAttributeCollection())
     {
         if (name is not null)
@@ -99,7 +99,7 @@ public partial class DotHtmlFont : DotHtmlElement
         if (font.Style.HasValue && DotHtmlFontStyle.FromStyle(font.Style.Value, out var styleContentElement) is { } styleRoot)
         {
             fontElement.SetContent(styleRoot);
-            contentElement = styleContentElement;
+            contentElement = styleContentElement!;
         }
 
         return fontElement;

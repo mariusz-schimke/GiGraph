@@ -24,7 +24,7 @@ namespace GiGraph.Dot.Types.Colors;
 ///         <see cref="DotColorSchemes.X11" /> naming.
 ///     </para>
 /// </param>
-public record DotWeightedColor(Color Color, double Weight, string Scheme = null) : DotColor(Color, Scheme)
+public record DotWeightedColor(Color Color, double Weight, string? Scheme = null) : DotColor(Color, Scheme)
 {
     /// <summary>
     ///     Creates a new instance initialized with a named color.
@@ -49,7 +49,7 @@ public record DotWeightedColor(Color Color, double Weight, string Scheme = null)
     ///         <see cref="DotColorSchemes.X11" /> naming.
     ///     </para>
     /// </param>
-    public DotWeightedColor(string name, double weight, string scheme = null)
+    public DotWeightedColor(string name, double weight, string? scheme = null)
         : this(Color.FromName(name), weight, scheme)
     {
     }

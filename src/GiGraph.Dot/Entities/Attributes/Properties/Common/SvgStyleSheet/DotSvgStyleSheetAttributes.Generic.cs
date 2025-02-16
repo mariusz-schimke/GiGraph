@@ -18,9 +18,9 @@ public abstract class DotSvgStyleSheetAttributes<TIEntitySvgStyleSheetAttributes
 
     /// <inheritdoc cref="IDotSvgStyleSheetAttributes.Class" />
     [DotAttributeKey(DotAttributeKeys.Class)]
-    public virtual string Class
+    public virtual string? Class
     {
-        get => GetValueAsString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 }

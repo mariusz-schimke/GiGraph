@@ -7,7 +7,7 @@ public partial class DotSyntaxOptions
         /// <summary>
         ///     When set, subgraphs will always be preceded with the 'subgraph' keyword, even when it is not required.
         /// </summary>
-        public bool PreferExplicitDeclaration { get; set; } = false;
+        public bool PreferExplicitDeclaration { get; set; }
 
         /// <summary>
         ///     When true, subgraph attributes will be written as separate statements. When false, the "graph [attr_list]" format will be

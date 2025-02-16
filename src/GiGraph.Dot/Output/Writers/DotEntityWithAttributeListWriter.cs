@@ -16,10 +16,10 @@ public abstract class DotEntityWithAttributeListWriter : DotEntityWriter, IDotEn
     public virtual IDotAttributeListItemWriter BeginAttributeList(bool useAttributeSeparator)
     {
         var tokenWriter = PrepareTokenWriter()
-           .NewLine()
-           .AttributeListStart()
-           .NextIndentationLevel()
-           .NewLine(linger: true);
+            .NewLine()
+            .AttributeListStart()
+            .NextIndentationLevel()
+            .NewLine(linger: true);
 
         return new DotAttributeListItemWriter(tokenWriter, _configuration, useAttributeSeparator);
     }
@@ -27,8 +27,8 @@ public abstract class DotEntityWithAttributeListWriter : DotEntityWriter, IDotEn
     public virtual void EndAttributeList()
     {
         PrepareTokenWriter()
-           .NewLine()
-           .AttributeListEnd();
+            .NewLine()
+            .AttributeListEnd();
     }
 
     protected virtual DotTokenWriter PrepareTokenWriter()

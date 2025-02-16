@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
@@ -14,9 +15,12 @@ public abstract record DotColorDefinition : IDotEncodable
 
     protected internal abstract string GetDotEncodedColor(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 
-    public static implicit operator DotColorDefinition(Color? color) => color.HasValue ? new DotColor(color.Value) : null;
+    [return: NotNullIfNotNull(nameof(color))]
+    public static implicit operator DotColorDefinition?(Color? color) => color.HasValue ? new DotColor(color.Value) : null;
 
-    public static implicit operator DotColorDefinition(Color[] colors) => colors is not null ? new DotMulticolor(colors) : null;
+    [return: NotNullIfNotNull(nameof(colors))]
+    public static implicit operator DotColorDefinition?(Color[]? colors) => colors is not null ? new DotMulticolor(colors) : null;
 
-    public static implicit operator DotColorDefinition(DotColor[] colors) => colors is not null ? new DotMulticolor(colors) : null;
+    [return: NotNullIfNotNull(nameof(colors))]
+    public static implicit operator DotColorDefinition?(DotColor[]? colors) => colors is not null ? new DotMulticolor(colors) : null;
 }

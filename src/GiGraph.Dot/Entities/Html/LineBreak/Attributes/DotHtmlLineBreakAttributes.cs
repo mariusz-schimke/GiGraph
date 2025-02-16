@@ -25,7 +25,7 @@ public class DotHtmlLineBreakAttributes : DotHtmlElementAttributes<IDotHtmlLineB
     [DotAttributeKey("align")]
     public virtual DotHorizontalAlignment? LineAlignment
     {
-        get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 }

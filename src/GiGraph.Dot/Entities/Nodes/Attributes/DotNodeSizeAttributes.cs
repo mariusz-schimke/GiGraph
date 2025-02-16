@@ -27,24 +27,24 @@ public class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDotNodeSiz
     [DotAttributeKey(DotAttributeKeys.Width)]
     public virtual double? Width
     {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotNodeSizeAttributes.Height" />
     [DotAttributeKey(DotAttributeKeys.Height)]
     public virtual double? Height
     {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
+        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
     }
 
     /// <inheritdoc cref="IDotNodeSizeAttributes.Mode" />
     [DotAttributeKey(DotAttributeKeys.FixedSize)]
     public virtual DotNodeSizing? Mode
     {
-        get => GetValueAs<DotNodeSizing>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        get => GetValueAs<DotNodeSizing>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
+        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
     }
 
     /// <summary>

@@ -20,9 +20,9 @@ public class DotAttributePropertiesTest
     public void all_entity_attributes_class_descendants_implement_the_interface_passed_to_them_as_the_generic_argument()
     {
         var types = Assembly.GetAssembly(typeof(DotEntityAttributes<,>))!.GetTypes()
-           .Where(t => !t.IsAbstract)
-           .Where(t => t.IsAssignableTo(typeof(DotEntityAttributes)))
-           .ToArray();
+            .Where(t => !t.IsAbstract)
+            .Where(t => t.IsAssignableTo(typeof(DotEntityAttributes)))
+            .ToArray();
 
         Assert.NotEmpty(types);
 
@@ -114,8 +114,9 @@ public class DotAttributePropertiesTest
             var targetProperty = targetPropertyPath.Last();
 
             // get the target object by path
-            targetObject = targetPropertyPath.Take(targetPropertyPath.Length - 1)
-               .Aggregate(targetObject, (current, property) => (DotEntityAttributes) property.GetValue(current));
+            targetObject = targetPropertyPath
+                .Take(targetPropertyPath.Length - 1)
+                .Aggregate(targetObject, (current, property) => (DotEntityAttributes) property.GetValue(current)!);
 
             InvokeGetterValid(targetObject, targetProperty);
             InvokeSetterValid(targetObject, targetProperty);
@@ -162,7 +163,7 @@ public class DotAttributePropertiesTest
         Assert.True(targetProperty.ReflectedType!.IsInterface);
 
         var interfaces = targetProperty.ReflectedType!.GetInterfaces()
-           .Append(targetProperty.ReflectedType);
+            .Append(targetProperty.ReflectedType);
 
         foreach (var @interface in interfaces)
         {

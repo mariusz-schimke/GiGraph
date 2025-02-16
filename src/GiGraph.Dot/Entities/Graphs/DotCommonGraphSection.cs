@@ -87,7 +87,7 @@ public abstract class DotCommonGraphSection : IDotGraphSection, IDotAnnotatable
     public DotClusterCollection Clusters { get; }
 
     /// <inheritdoc cref="IDotAnnotatable.Annotation" />
-    public virtual string Annotation { get; set; }
+    public virtual string? Annotation { get; set; }
 
     DotAttributeCollection IDotGraphSection.GetAttributes(DotSyntaxOptions options) => GetAttributes(options);
     protected virtual DotAttributeCollection GetAttributes(DotSyntaxOptions options) => _attributes.Collection;

@@ -24,7 +24,7 @@ public class DotEdgeHeadHyperlinkAttributes : DotEdgeEndpointHyperlinkAttributes
     ///     <see cref="IDotHyperlinkAttributes.Url" /> set for the edge.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.HeadUrl)]
-    public override DotEscapeString Url
+    public override DotEscapeString? Url
     {
         get => base.Url;
         set => base.Url = value;
@@ -34,7 +34,7 @@ public class DotEdgeHeadHyperlinkAttributes : DotEdgeEndpointHyperlinkAttributes
     ///     Synonym for <see cref="Url" /> (svg, map only).
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.HeadHref)]
-    public override DotEscapeString Href
+    public override DotEscapeString? Href
     {
         get => base.Href;
         set => base.Href = value;
@@ -47,7 +47,7 @@ public class DotEdgeHeadHyperlinkAttributes : DotEdgeEndpointHyperlinkAttributes
     ///     <see cref="IDotHyperlinkAttributes.Target" /> is used.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.HeadTarget)]
-    public override DotEscapeString Target
+    public override DotEscapeString? Target
     {
         get => base.Target;
         set => base.Target = value;
@@ -57,7 +57,7 @@ public class DotEdgeHeadHyperlinkAttributes : DotEdgeEndpointHyperlinkAttributes
     ///     Tooltip annotation attached to the head of an edge (svg, cmap only). This is used only if <see cref="Url" /> is specified.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.HeadTooltip)]
-    public override DotEscapeString Tooltip
+    public override DotEscapeString? Tooltip
     {
         get => base.Tooltip;
         set => base.Tooltip = value;
