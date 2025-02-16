@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Attributes;
 /// <summary>
 ///     A double array attribute.
 /// </summary>
-public record DotDoubleArrayAttribute : DotAttribute<double[]>
+public class DotDoubleArrayAttribute : DotAttribute<double[]>
 {
     /// <summary>
     ///     Creates a new instance of the attribute.

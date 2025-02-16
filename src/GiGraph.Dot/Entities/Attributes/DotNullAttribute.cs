@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Attributes;
 /// <summary>
 ///     An attribute with no value.
 /// </summary>
-public record DotNullAttribute : DotAttribute
+public class DotNullAttribute : DotAttribute
 {
     /// <summary>
     ///     Creates a new instance of the attribute.
