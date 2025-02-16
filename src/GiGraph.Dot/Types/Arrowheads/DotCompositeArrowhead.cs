@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Types.Arrowheads;
 /// <summary>
 ///     Defines an arrowhead composed of multiple shapes.
 /// </summary>
-public record DotCompositeArrowhead : DotArrowheadDefinition
+public class DotCompositeArrowhead : DotArrowheadDefinition
 {
     /// <summary>
     ///     Defines an arrowhead composed of multiple shapes.
