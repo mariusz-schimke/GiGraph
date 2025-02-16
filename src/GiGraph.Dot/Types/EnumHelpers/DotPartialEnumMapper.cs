@@ -18,8 +18,8 @@ public static class DotPartialEnumMapper
     ///     The partial bitmask enum type.
     /// </typeparam>
     public static TPartial ToPartial<TComplete, TPartial>(TComplete complete)
-        where TComplete : Enum
-        where TPartial : Enum
+        where TComplete : struct, Enum
+        where TPartial : struct, Enum
     {
         var partialMask = GetMask<TPartial>();
         var completeInt = Convert.ToInt32(complete);
@@ -47,8 +47,8 @@ public static class DotPartialEnumMapper
     ///     The complete bitmask enum type.
     /// </typeparam>
     public static TComplete ToComplete<TPartial, TComplete>(TPartial partial, TComplete complete)
-        where TPartial : Enum
-        where TComplete : Enum
+        where TPartial : struct, Enum
+        where TComplete : struct, Enum
     {
         var partialMask = GetMask<TPartial>();
         var partialInt = Convert.ToInt32(partial);
@@ -61,7 +61,7 @@ public static class DotPartialEnumMapper
     }
 
     private static int GetMask<TEnum>()
-        where TEnum : Enum
+        where TEnum : struct, Enum
     {
         return Enum.GetValues(typeof(TEnum))
             .Cast<int>()
