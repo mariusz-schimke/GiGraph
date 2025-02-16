@@ -23,7 +23,7 @@ public class DotAlignmentEnumsTest
         var horizontalAlignmentValues = Enum.GetValues(typeof(DotHorizontalAlignment)).Cast<int>().ToArray();
         var htmlHorizontalAlignmentValues = Enum.GetValues(typeof(DotHtmlTableCellHorizontalAlignment)).Cast<int>().ToArray();
 
-        Assert.True(htmlHorizontalAlignmentValues.Distinct().Count() == htmlHorizontalAlignmentValues.Count());
+        Assert.True(htmlHorizontalAlignmentValues.Distinct().Count() == htmlHorizontalAlignmentValues.Length);
         Assert.True(htmlHorizontalAlignmentValues.Max() > horizontalAlignmentValues.Max());
     }
 }

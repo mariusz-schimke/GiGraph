@@ -15,11 +15,15 @@ public class DotGraphFactory
 {
     public static DotGraph CreateCompleteGraph(bool directed)
     {
-        var graph = new DotGraph("graph1", directed);
-
-        graph.Comment = "graph_comment";
-        graph.Clusters.AllowEdgeClipping = true;
-        graph.Clusters.FillColor = Color.Brown;
+        var graph = new DotGraph("graph1", directed)
+        {
+            Comment = "graph_comment",
+            Clusters =
+            {
+                AllowEdgeClipping = true,
+                FillColor = Color.Brown
+            }
+        };
 
 
         graph.Subgraphs.Add("Subgraph2", sg =>
@@ -105,13 +109,22 @@ public class DotGraphFactory
 
     public static DotGraph CreateSectionedGraph(bool directed)
     {
-        var graph = new DotGraph("graph1", directed);
-
-        graph.Annotation = "graph comment";
-
-        graph.Nodes.Label = "node label";
-        graph.Edges.Label = "edge label";
-        graph.Clusters.AllowEdgeClipping = true;
+        var graph = new DotGraph("graph1", directed)
+        {
+            Annotation = "graph comment",
+            Nodes =
+            {
+                Label = "node label"
+            },
+            Edges =
+            {
+                Label = "edge label"
+            },
+            Clusters =
+            {
+                AllowEdgeClipping = true
+            }
+        };
 
         graph.Nodes.Add("node1");
         graph.Edges.Add("node1", "node2");
@@ -153,11 +166,16 @@ public class DotGraphFactory
 
     public static DotGraph CreateAnnotatedGraph()
     {
-        var graph = new DotGraph();
+        var graph = new DotGraph
+        {
+            // graph
+            Annotation = $"graph{Environment.NewLine}comment",
+            Attributes =
+            {
+                Annotation = $"graph attributes{Environment.NewLine}comment"
+            }
+        };
 
-        // graph
-        graph.Annotation = $"graph{Environment.NewLine}comment";
-        graph.Attributes.Annotation = $"graph attributes{Environment.NewLine}comment";
         graph.Attributes.SetValue(a => a.Label, "Foo Graph").Annotation = "label";
         graph.Attributes.SetValue(a => a.Comment, "comment").Annotation = "comment";
 
