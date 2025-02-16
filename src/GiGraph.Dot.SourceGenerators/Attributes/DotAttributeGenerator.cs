@@ -67,7 +67,7 @@ public class DotAttributeGenerator : IIncrementalGenerator
 
         foreach (var property in properties)
         {
-            sb.AppendLine($"    public virtual partial {property.ReturnType} {property.Name}");
+            sb.AppendLine($"    {property.Modifiers} {property.ReturnType} {property.Name}");
             sb.AppendLine("    {");
             sb.AppendLine($"        get => _attributes.GetValue(\"{property.DotKey}\", out {property.ReturnType.TrimEnd('?')} value) ? value : null;");
             sb.AppendLine($"        set => _attributes.SetOrRemove(\"{property.DotKey}\", value);");
@@ -83,6 +83,8 @@ public class DotAttributeGenerator : IIncrementalGenerator
 
     private static AttributePropertyDeclaration[] GetAttributeProperties(ClassDeclarationSyntax classDeclaration, SemanticModel model, INamedTypeSymbol attributeSymbol)
     {
+        // todo: metadata.PropertySymbol.ExplicitInterfaceImplementations
+
         return classDeclaration.Members
             .OfType<PropertyDeclarationSyntax>()
             .Select(property => model.GetDeclaredSymbol(property))
@@ -94,11 +96,28 @@ public class DotAttributeGenerator : IIncrementalGenerator
                     .FirstOrDefault(attr => SymbolEqualityComparer.Default.Equals(attr.AttributeClass, attributeSymbol))
             })
             .Where(propertySymbol => propertySymbol.DotKeyAttribute is not null)
-            .Select(metadata => new AttributePropertyDeclaration(
-                metadata.PropertySymbol!.Name,
-                metadata.PropertySymbol.Type.ToDisplayString(),
-                metadata.DotKeyAttribute!.ConstructorArguments.Single().Value!.ToString()
-            ))
+            .Select(metadata =>
+            {
+                var modifiers = new StringBuilder("public");
+
+                if (metadata.PropertySymbol!.IsOverride)
+                {
+                    modifiers.Append(" override");
+                }
+                else if (metadata.PropertySymbol.IsVirtual)
+                {
+                    modifiers.Append(" virtual");
+                }
+
+                modifiers.Append(" partial");
+
+                return new AttributePropertyDeclaration(
+                    modifiers.ToString(),
+                    metadata.PropertySymbol!.Name,
+                    metadata.PropertySymbol.Type.ToDisplayString(),
+                    metadata.DotKeyAttribute!.ConstructorArguments.Single().Value!.ToString()
+                );
+            })
             .ToArray();
     }
 }
