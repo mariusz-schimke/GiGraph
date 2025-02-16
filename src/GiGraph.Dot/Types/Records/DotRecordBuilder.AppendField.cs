@@ -15,7 +15,7 @@ public partial class DotRecordBuilder
     ///     The port name, that is a name that can be referred to from an edge endpoint in order to attach the end of the edge to the
     ///     appended field.
     /// </param>
-    public virtual DotRecordBuilder AppendField(DotEscapeString text, string? portName = null)
+    public virtual DotRecordBuilder AppendField(DotEscapeString? text, string? portName = null)
     {
         _fields.Add(new DotRecordTextField(text, portName));
         return this;
