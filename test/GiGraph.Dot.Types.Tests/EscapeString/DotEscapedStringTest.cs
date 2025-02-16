@@ -29,7 +29,7 @@ public class DotEscapedStringTest
     [Fact]
     public void to_string_returns_original_value()
     {
-        var value = DotEscapeStringTest.SpecialChars;
+        const string value = DotEscapeStringTest.SpecialChars;
 
         DotEscapedString escStringValue = value;
         Assert.Equal(value, escStringValue.ToString());
@@ -38,7 +38,7 @@ public class DotEscapedStringTest
     [Fact]
     public void returns_exact_input_as_dot_encoded_value()
     {
-        var value = $"a bcd {DotEscapeStringTest.SpecialChars} h ij";
+        const string value = $"a bcd {DotEscapeStringTest.SpecialChars} h ij";
 
         DotEscapedString str = value;
         Assert.Equal(value, ((IDotEscapable) str).GetEscaped(_syntaxRules.Attributes.EscapeStringValueEscaper));
