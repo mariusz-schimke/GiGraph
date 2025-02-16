@@ -65,6 +65,6 @@ public class DotGraphBodyWriter : DotEntityWriter, IDotGraphBodyWriter
     protected virtual void EndSection()
     {
         _tokenWriter.ClearLingerBuffer()
-           .NewLine(linger: true);
+            .NewLine(linger: true);
     }
 }

@@ -48,17 +48,17 @@ public class DotAttributeWriter : DotEntityWriter, IDotAttributeWriter
         {
             tokenWriter ??= _tokenWriter.NextIndentationLevel();
             tokenWriter.Space()
-               .StringConcatenationOperator()
-               .NewLine()
-               .Value(valuePart, quoteValue);
+                .StringConcatenationOperator()
+                .NewLine()
+                .Value(valuePart, quoteValue);
         }
     }
 
     protected virtual void InitializeAttribute(string key, bool quoteKey)
     {
         _tokenWriter.Identifier(key, quoteKey)
-           .Space()
-           .ValueAssignmentOperator()
-           .Space();
+            .Space()
+            .ValueAssignmentOperator()
+            .Space();
     }
 }

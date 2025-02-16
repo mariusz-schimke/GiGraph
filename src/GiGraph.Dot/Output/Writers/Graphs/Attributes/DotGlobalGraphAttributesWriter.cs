@@ -12,6 +12,6 @@ public class DotGlobalGraphAttributesWriter : DotEntityWithAttributeListWriter, 
     public virtual void WriteGraphKeyword()
     {
         _tokenWriter.Keyword("graph")
-           .Space(linger: true);
+            .Space(linger: true);
     }
 }

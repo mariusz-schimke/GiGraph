@@ -21,9 +21,9 @@ public abstract class DotAttributeCollectionGenerator<TWriter> : DotEntityGenera
     {
         var orderedAttributes = _options.SortElements
             ? attributes.Values
-               .Cast<IDotOrderable>()
-               .OrderBy(attribute => attribute.OrderingKey, StringComparer.InvariantCulture)
-               .Cast<DotAttribute>()
+                .Cast<IDotOrderable>()
+                .OrderBy(attribute => attribute.OrderingKey, StringComparer.InvariantCulture)
+                .Cast<DotAttribute>()
             : attributes.Values;
 
         foreach (var attribute in orderedAttributes)

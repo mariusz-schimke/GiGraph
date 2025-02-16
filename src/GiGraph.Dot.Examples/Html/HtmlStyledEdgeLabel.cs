@@ -15,13 +15,13 @@ public static class HtmlStyledEdgeLabel
         {
             // applies one font to all pieces of text, but each piece has a different style assigned
             edge.Label = new DotHtmlBuilder()
-               .AppendFont(
+                .AppendFont(
                     new("Arial", 8, Color.Gray),
                     f => f
-                       .AppendStyledText("Lorem ipsum dolor sit amet,\n", DotFontStyles.Normal)
-                       .AppendStyledText("consectetur adipiscing elit", DotFontStyles.Italic | DotFontStyles.Underline)
+                        .AppendStyledText("Lorem ipsum dolor sit amet,\n", DotFontStyles.Normal)
+                        .AppendStyledText("consectetur adipiscing elit", DotFontStyles.Italic | DotFontStyles.Underline)
                 )
-               .Build();
+                .Build();
         });
 
         return graph;

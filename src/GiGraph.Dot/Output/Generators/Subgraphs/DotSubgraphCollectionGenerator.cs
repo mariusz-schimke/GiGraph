@@ -21,8 +21,8 @@ public class DotSubgraphCollectionGenerator<TSubgraph> : DotEntityGenerator<DotC
     {
         var orderedSubgraphs = _options.SortElements
             ? subgraphs.Cast<IDotOrderable>()
-               .OrderBy(subgraph => subgraph.OrderingKey, StringComparer.InvariantCulture)
-               .Cast<TSubgraph>()
+                .OrderBy(subgraph => subgraph.OrderingKey, StringComparer.InvariantCulture)
+                .Cast<TSubgraph>()
             : subgraphs;
 
         foreach (var subgraph in orderedSubgraphs)

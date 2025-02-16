@@ -106,7 +106,7 @@ public abstract class DotGraphSectionGenerator<TSection> : DotEntityGenerator<TS
         {
             var globalNodeAttributesWriter = writer.BeginNodeAttributesStatement();
             _entityGenerators.GetForEntity<IDotGlobalNodeAttributesWriter>(attributes)
-               .Generate(attributes, globalNodeAttributesWriter);
+                .Generate(attributes, globalNodeAttributesWriter);
             writer.EndNodeAttributesStatement();
         }
     }
@@ -117,7 +117,7 @@ public abstract class DotGraphSectionGenerator<TSection> : DotEntityGenerator<TS
         {
             var globalEdgeAttributesWriter = writer.BeginEdgeAttributesStatement();
             _entityGenerators.GetForEntity<IDotGlobalEdgeAttributesWriter>(attributes)
-               .Generate(attributes, globalEdgeAttributesWriter);
+                .Generate(attributes, globalEdgeAttributesWriter);
             writer.EndEdgeAttributesStatement();
         }
     }

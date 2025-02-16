@@ -102,7 +102,7 @@ public partial class DotAttributeCollection
     }
 
     // TODO: return the created attribute rather then the collection itself
-    
+
     /// <summary>
     ///     Sets a null value for the specified attribute key.
     /// </summary>

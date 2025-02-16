@@ -14,7 +14,7 @@ public class DotEndpointGroupWriter : DotEntityWriter, IDotEndpointGroupWriter
     public virtual void EndEndpoint()
     {
         _tokenWriter.NodeSeparator(linger: true)
-           .Space(linger: true);
+            .Space(linger: true);
     }
 
     public override void EndComment()

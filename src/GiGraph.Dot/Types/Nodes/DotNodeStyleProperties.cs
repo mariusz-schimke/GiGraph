@@ -24,6 +24,11 @@ namespace GiGraph.Dot.Types.Nodes;
 /// <param name="Invisible">
 ///     Determines whether the element is invisible.
 /// </param>
-public record DotNodeStyleProperties(DotNodeFillStyle FillStyle = default, DotBorderStyle BorderStyle = default, DotBorderWeight BorderWeight = default,
-    DotCornerStyle CornerStyle = default, bool Diagonals = false, bool Invisible = false
+public record DotNodeStyleProperties(
+    DotNodeFillStyle FillStyle = default,
+    DotBorderStyle BorderStyle = default,
+    DotBorderWeight BorderWeight = default,
+    DotCornerStyle CornerStyle = default,
+    bool Diagonals = false,
+    bool Invisible = false
 ) : DotClusterNodeCommonStyleProperties<DotNodeFillStyle>(FillStyle, BorderStyle, BorderWeight, CornerStyle, Invisible);

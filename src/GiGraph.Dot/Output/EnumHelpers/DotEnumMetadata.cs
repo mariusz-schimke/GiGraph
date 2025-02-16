@@ -47,10 +47,10 @@ public class DotEnumMetadata
     public virtual Enum[] GetSetFlags(Enum flags)
     {
         return GetValues()
-           .Where(v => !IsCompoundValue(v))
-           .Where(v => (int) (object) v != 0)
-           .Where(flags.HasFlag)
-           .ToArray();
+            .Where(v => !IsCompoundValue(v))
+            .Where(v => (int) (object) v != 0)
+            .Where(flags.HasFlag)
+            .ToArray();
     }
 
     /// <summary>
@@ -63,8 +63,8 @@ public class DotEnumMetadata
     public virtual bool IsCompoundValue(Enum value)
     {
         return GetValues()
-           .Where(v => !Equals(v, value))
-           .Where(v => (int) (object) v != 0)
-           .Any(value.HasFlag);
+            .Where(v => !Equals(v, value))
+            .Where(v => (int) (object) v != 0)
+            .Any(value.HasFlag);
     }
 }

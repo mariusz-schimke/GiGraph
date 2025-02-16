@@ -13,8 +13,8 @@ public static class LabelPlaceholders
 
         // using text formatter
         graph.Label = new DotFormattedTextBuilder("Graph title: ")
-           .AppendGraphIdPlaceholder()
-           .Build();
+            .AppendGraphIdPlaceholder()
+            .Build();
 
         // using string concatenation
         graph.Label = "Graph title: " + DotEscapeString.GraphIdPlaceholder;
@@ -26,8 +26,8 @@ public static class LabelPlaceholders
         {
             // using text formatter
             node.Label = new DotFormattedTextBuilder("Node ")
-               .AppendNodeIdPlaceholder()
-               .Build();
+                .AppendNodeIdPlaceholder()
+                .Build();
 
             // using string concatenation
             node.Label = "Node " + DotEscapeString.NodeIdPlaceholder;
@@ -41,10 +41,10 @@ public static class LabelPlaceholders
         {
             // using text formatter
             edge.Label = new DotFormattedTextBuilder("From ")
-               .AppendTailNodeIdPlaceholder()
-               .Append(" to ")
-               .AppendHeadNodeIdPlaceholder()
-               .Build();
+                .AppendTailNodeIdPlaceholder()
+                .Append(" to ")
+                .AppendHeadNodeIdPlaceholder()
+                .Build();
 
             // using string concatenation
             edge.Label = "From " + DotEscapeString.TailNodeIdPlaceholder +

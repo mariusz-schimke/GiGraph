@@ -39,7 +39,7 @@ public class DotGraphSectionExtensionTest
                 // this setting should not be removed by the extension method called below (this is a non-radial style)
                 s.Clusters.Style.FillStyle = DotClusterFillStyle.Striped;
             })
-           .SetGradientBackground(new(Color.Gold, Color.DarkMagenta), 20);
+            .SetGradientBackground(new(Color.Gold, Color.DarkMagenta), 20);
 
         Snapshot.Match(graph.Build(), "gradient_graph_background");
     }
@@ -58,7 +58,7 @@ public class DotGraphSectionExtensionTest
         graph.Subsections.Add().SetRadialGradientBackground(Color.Gold, Color.DarkMagenta, 10);
 
         graph.Subsections.Add()
-           .SetRadialGradientBackground(new(Color.Gold, Color.DarkMagenta), 20);
+            .SetRadialGradientBackground(new(Color.Gold, Color.DarkMagenta), 20);
 
         Snapshot.Match(graph.Build(), "radial_gradient_graph_background");
     }

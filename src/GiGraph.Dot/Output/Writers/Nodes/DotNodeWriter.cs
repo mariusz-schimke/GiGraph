@@ -13,7 +13,7 @@ public class DotNodeWriter : DotEntityWithAttributeListWriter, IDotNodeWriter
     {
         _tokenWriter.Identifier(id, quote)
             // these will be removed by a parent node statement writer or before writing attributes
-           .NodeSeparator(linger: true)
-           .Space(linger: true);
+            .NodeSeparator(linger: true)
+            .Space(linger: true);
     }
 }

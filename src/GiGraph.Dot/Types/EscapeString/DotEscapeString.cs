@@ -14,10 +14,10 @@ namespace GiGraph.Dot.Types.EscapeString;
 /// </summary>
 public abstract partial class DotEscapeString : IDotEscapable
 {
-    string? IDotEscapable.GetEscaped(IDotTextEscaper textEscaper) => GetEscapedString(textEscaper);
+    string IDotEscapable.GetEscaped(IDotTextEscaper textEscaper) => GetEscapedString(textEscaper);
 
     protected internal abstract string GetRawString();
-    protected internal abstract string? GetEscapedString(IDotTextEscaper textEscaper);
+    protected internal abstract string GetEscapedString(IDotTextEscaper textEscaper);
 
     /// <summary>
     ///     Returns the underlying string.

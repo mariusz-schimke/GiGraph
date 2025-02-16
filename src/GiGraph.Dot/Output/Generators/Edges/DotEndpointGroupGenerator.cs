@@ -19,9 +19,9 @@ public class DotEndpointGroupGenerator : DotEntityGenerator<DotEndpointGroup, ID
     {
         var orderedEndpoints = _options.SortElements
             ? endpointGroup.Endpoints
-               .Cast<IDotOrderable>()
-               .OrderBy(endpoint => endpoint.OrderingKey, StringComparer.InvariantCulture)
-               .Cast<DotEndpoint>()
+                .Cast<IDotOrderable>()
+                .OrderBy(endpoint => endpoint.OrderingKey, StringComparer.InvariantCulture)
+                .Cast<DotEndpoint>()
             : endpointGroup.Endpoints;
 
         foreach (var endpoint in orderedEndpoints)

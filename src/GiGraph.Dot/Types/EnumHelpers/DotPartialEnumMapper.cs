@@ -64,7 +64,7 @@ public static class DotPartialEnumMapper
         where TEnum : Enum
     {
         return Enum.GetValues(typeof(TEnum))
-           .Cast<int>()
-           .Aggregate(0, (current, value) => current | value);
+            .Cast<int>()
+            .Aggregate(0, (current, value) => current | value);
     }
 }

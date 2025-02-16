@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Types.Ranks;
 
@@ -129,6 +128,6 @@ public class DotSubgraphCollection : DotCommonGraphCollection<DotSubgraph>
     /// </param>
     public virtual DotSubgraph AddWithNodes(string? id, IEnumerable<string> nodeIds) => AddSubgraph(nodeIds, id);
 
-    protected virtual DotSubgraph AddSubgraph(IEnumerable<string> nodeIds, string? id = null, DotRank? nodeRank = null, Action<DotSubgraph>? init = null) => 
+    protected virtual DotSubgraph AddSubgraph(IEnumerable<string> nodeIds, string? id = null, DotRank? nodeRank = null, Action<DotSubgraph>? init = null) =>
         Add(DotSubgraph.FromNodes(nodeIds, nodeRank, id), init);
 }
