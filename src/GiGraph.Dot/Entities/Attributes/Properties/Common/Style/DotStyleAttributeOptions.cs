@@ -18,7 +18,7 @@ public abstract class DotStyleAttributeOptions
 
     protected virtual DotStyles? Style
     {
-        get => _attributes.GetValueAs<DotStyles>(StyleKey, out var result) ? result : null;
+        get => _attributes.GetValue<DotStyles>(StyleKey, out var result) ? result : null;
         set => _attributes.SetOrRemoveEnum(StyleKey, value.HasValue, () => value!.Value);
     }
 
