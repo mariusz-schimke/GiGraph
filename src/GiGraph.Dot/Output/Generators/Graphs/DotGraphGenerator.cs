@@ -22,7 +22,7 @@ public class DotGraphGenerator : DotCommonGraphGenerator<DotGraph, IDotGraphWrit
         writerRoot.EndGraph();
     }
 
-    protected virtual void WriteDeclaration(string id, bool strict, IDotGraphWriter writer)
+    protected virtual void WriteDeclaration(string? id, bool strict, IDotGraphWriter writer)
     {
         id = EncodeIdentifier(id);
 

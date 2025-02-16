@@ -8,10 +8,10 @@ namespace GiGraph.Dot.Output.Writers.TokenWriter;
 
 public class DotTokenWriter
 {
-    protected readonly Queue<(string Token, DotTokenType Type)> _lingerBuffer;
+    protected readonly Queue<(string? Token, DotTokenType Type)> _lingerBuffer;
     protected readonly TextWriter _writer;
 
-    protected DotTokenWriter(TextWriter writer, Queue<(string, DotTokenType)> lingerBuffer, DotTokenWriterOptions options)
+    protected DotTokenWriter(TextWriter writer, Queue<(string?, DotTokenType)> lingerBuffer, DotTokenWriterOptions options)
     {
         _writer = writer;
         _lingerBuffer = lingerBuffer;
@@ -48,15 +48,15 @@ public class DotTokenWriter
         };
     }
 
-    public virtual DotTokenWriter Token(string token, DotTokenType type, bool linger = false) => Append(token, type, linger);
+    public virtual DotTokenWriter Token(string? token, DotTokenType type, bool linger = false) => Append(token, type, linger);
 
     public virtual DotTokenWriter Keyword(string keyword, bool linger = false) => Token(keyword, DotTokenType.Keyword, linger);
 
     public virtual DotTokenWriter Identifier(string id, bool quote, bool linger = false) => Identifier(id, DotTokenType.Identifier, quote, linger);
 
-    public virtual DotTokenWriter Value(string value, bool quote, bool linger = false) => Identifier(value, DotTokenType.Value, quote, linger);
+    public virtual DotTokenWriter Value(string? value, bool quote, bool linger = false) => Identifier(value, DotTokenType.Value, quote, linger);
 
-    protected virtual DotTokenWriter Identifier(string id, DotTokenType tokenType, bool quote, bool linger)
+    protected virtual DotTokenWriter Identifier(string? id, DotTokenType tokenType, bool quote, bool linger)
     {
         if (quote)
         {
@@ -100,7 +100,7 @@ public class DotTokenWriter
 
     public virtual DotTokenWriter HtmlValueEnd(bool linger = false) => Token(">", DotTokenType.HtmlValueEnd, linger);
 
-    public virtual DotTokenWriter HtmlValue(string html, bool writeInBrackets = true, bool linger = false)
+    public virtual DotTokenWriter HtmlValue(string? html, bool writeInBrackets = true, bool linger = false)
     {
         if (writeInBrackets)
         {
@@ -231,7 +231,7 @@ public class DotTokenWriter
 
     protected virtual DotTokenWriter Alignment(int width, bool linger = false) => Append(Options.Alignment(width), DotTokenType.Space, linger);
 
-    protected virtual DotTokenWriter Append(string token, DotTokenType tokenType, bool linger = false)
+    protected virtual DotTokenWriter Append(string? token, DotTokenType tokenType, bool linger = false)
     {
         var eventArgs = new DotAppendTokenEventArgs(token, tokenType, linger);
         OnBeforeAppendToken?.Invoke(this, eventArgs);
@@ -250,7 +250,7 @@ public class DotTokenWriter
         return this;
     }
 
-    protected virtual void Write(string token, DotTokenType type)
+    protected virtual void Write(string? token, DotTokenType type)
     {
         if (Options.TextEncoder is { } encode)
         {

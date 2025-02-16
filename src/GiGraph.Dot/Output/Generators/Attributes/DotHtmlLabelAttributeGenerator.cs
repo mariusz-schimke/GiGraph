@@ -13,7 +13,7 @@ public class DotHtmlLabelAttributeGenerator : DotAttributeGenerator
     {
     }
 
-    protected override void WriteAttribute(string key, string value, IDotAttributeWriter writer)
+    protected override void WriteAttribute(string key, string? value, IDotAttributeWriter writer)
     {
         key = EscapeKey(key);
 

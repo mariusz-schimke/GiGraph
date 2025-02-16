@@ -10,13 +10,13 @@ public class DotAttributeWriter : DotEntityWriter, IDotAttributeWriter
     {
     }
 
-    public virtual void WriteAttribute(string key, bool quoteKey, string value, bool quoteValue)
+    public virtual void WriteAttribute(string key, bool quoteKey, string? value, bool quoteValue)
     {
         InitializeAttribute(key, quoteKey);
         _tokenWriter.Value(value, quoteValue);
     }
 
-    public virtual void WriteHtmlAttribute(string key, bool quoteKey, string value, bool writeInBrackets)
+    public virtual void WriteHtmlAttribute(string key, bool quoteKey, string? value, bool writeInBrackets)
     {
         InitializeAttribute(key, quoteKey);
 

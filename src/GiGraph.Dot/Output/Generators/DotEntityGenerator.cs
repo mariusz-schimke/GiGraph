@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
@@ -80,10 +81,12 @@ public abstract class DotEntityGenerator<TEntity, TWriter> : IDotEntityGenerator
         writer.EndComment();
     }
 
+    [return: NotNullIfNotNull(nameof(id))]
     protected virtual string? EncodeIdentifier<TId>(TId? id)
         where TId : DotId, IDotEncodable =>
         id?.GetDotEncodedValue(_options, _syntaxRules);
 
+    [return: NotNullIfNotNull(nameof(id))]
     protected virtual string? EncodeIdentifier(string? id) => EncodeIdentifier((DotId?) id);
 
     protected virtual bool IdentifierRequiresQuoting(string? id) => _options.PreferQuotedIdentifiers || !_syntaxRules.IsValidIdentifier(id);

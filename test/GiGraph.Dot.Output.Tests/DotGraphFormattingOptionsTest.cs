@@ -174,7 +174,7 @@ public class DotGraphFormattingOptionsTest
 
         var options = new DotFormattingOptions
         {
-            TextEncoder = (value, _) => value.ToUpper()
+            TextEncoder = (value, _) => value?.ToUpper()
         };
 
         var dot = graph.Build(options);
