@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Types.Packing;
 ///     Determines whether packing is enabled (see <see cref="DotPackingToggle" />) or specifies a margin around each laid out
 ///     component (see <see cref="DotPackingMargin" />).
 /// </summary>
-public abstract record DotPackingDefinition : IDotEncodable
+public abstract class DotPackingDefinition : IDotEncodable
 {
     string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
 
