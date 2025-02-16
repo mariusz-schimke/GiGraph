@@ -15,7 +15,7 @@ namespace GiGraph.Dot.Types.Records;
 ///     </see>
 ///     .
 /// </summary>
-public record DotRecord : DotRecordField
+public class DotRecord : DotRecordField
 {
     protected const bool FlipDefault = false;
 

@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Types.Records;
 ///     </see>
 ///     .
 /// </summary>
-public abstract record DotRecordField : IDotEncodable
+public abstract class DotRecordField : IDotEncodable
 {
     string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncoded(options, syntaxRules, hasParent: false);
 
