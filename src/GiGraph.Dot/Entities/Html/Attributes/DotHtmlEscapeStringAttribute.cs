@@ -26,5 +26,5 @@ public record DotHtmlEscapeStringAttribute : DotEscapeStringAttribute
     }
 
     protected internal override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
-        ((IDotEscapable?) Value)?.GetEscaped(syntaxRules.Attributes.Html.AttributeEscapeStringValueEscaper);
+        ((IDotEscapable) Value).GetEscaped(syntaxRules.Attributes.Html.AttributeEscapeStringValueEscaper);
 }

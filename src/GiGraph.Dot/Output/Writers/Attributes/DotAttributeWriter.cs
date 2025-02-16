@@ -43,7 +43,7 @@ public class DotAttributeWriter : DotEntityWriter, IDotAttributeWriter
         quoteValue |= valueParts.Length > 1;
         WriteAttribute(key, quoteKey, valueParts.FirstOrDefault(), quoteValue);
 
-        DotTokenWriter tokenWriter = null;
+        DotTokenWriter? tokenWriter = null;
         foreach (var valuePart in valueParts.Skip(1))
         {
             tokenWriter ??= _tokenWriter.NextIndentationLevel();

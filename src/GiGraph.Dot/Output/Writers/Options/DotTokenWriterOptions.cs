@@ -10,7 +10,7 @@ public record DotTokenWriterOptions(
     string LineBreak,
     bool SingleLine,
     bool HashForSingleLineComments,
-    Func<string, DotTokenType, string> TextEncoder
+    Func<string, DotTokenType, string>? TextEncoder
 )
 {
     public virtual DotTokenWriterOptions ToSingleLine() =>
