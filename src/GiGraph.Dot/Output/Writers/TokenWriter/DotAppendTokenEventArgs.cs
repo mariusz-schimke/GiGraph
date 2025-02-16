@@ -3,18 +3,11 @@ using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Output.Writers.TokenWriter;
 
-public class DotAppendTokenEventArgs : EventArgs
+public class DotAppendTokenEventArgs(string? token, DotTokenType tokenType, bool linger) : EventArgs
 {
-    public DotAppendTokenEventArgs(string? token, DotTokenType tokenType, bool linger)
-    {
-        Token = token;
-        TokenType = tokenType;
-        Linger = linger;
-    }
-
-    public string? Token { get; }
-    public DotTokenType TokenType { get; }
-    public bool Linger { get; }
+    public string? Token { get; } = token;
+    public DotTokenType TokenType { get; } = tokenType;
+    public bool Linger { get; } = linger;
 
     public bool IsCommentStartToken => TokenType is DotTokenType.CommentStart
         or DotTokenType.DiscardedLineStart

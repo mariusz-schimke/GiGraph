@@ -87,7 +87,7 @@ public record DotArrowhead(DotArrowheadShape Shape) : DotArrowheadDefinition
 
         if (!IsFilled)
         {
-            result.Append("o");
+            result.Append('o');
         }
 
         // clips the shape, leaving visible only the part to the left or to the right of the edge

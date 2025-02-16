@@ -15,7 +15,7 @@ public partial class DotHtmlBuilder
     /// </summary>
     public DotHtmlBuilder()
     {
-        _entities = new();
+        _entities = [];
     }
 
     /// <summary>

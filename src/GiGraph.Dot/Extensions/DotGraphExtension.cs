@@ -169,7 +169,7 @@ public static class DotGraphExtension
         var output = graph.Build(formattingOptions, syntaxOptions, syntaxRules);
 
         // it would be better to build the graph directly to stream, but the solution does not support async building
-        using var streamWriter = CreateFileStreamWriter(filePath, encoding);
+        await using var streamWriter = CreateFileStreamWriter(filePath, encoding);
         await streamWriter.WriteAsync(output);
         await streamWriter.FlushAsync();
     }

@@ -1,5 +1,3 @@
 namespace GiGraph.Dot.Entities.Qualities;
 
-public interface IDotStripeFillable : IDotFillable
-{
-}
+public interface IDotStripeFillable : IDotFillable;

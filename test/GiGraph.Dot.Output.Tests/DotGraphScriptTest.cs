@@ -110,7 +110,7 @@ public class DotGraphScriptTest
     [Fact]
     public void renders_graph_with_appropriately_escaped_identifiers()
     {
-        var id = "a bcd \" \\ \r\n \r \n h ij < > { } | \\";
+        const string id = "a bcd \" \\ \r\n \r \n h ij < > { } | \\";
         var graph = new DotGraph(id);
 
         graph.Nodes.Add(id);

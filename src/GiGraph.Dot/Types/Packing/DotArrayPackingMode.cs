@@ -63,7 +63,7 @@ public record DotArrayPackingMode : DotPackingModeDefinition
 
         if (Options.HasValue)
         {
-            result.Append("_");
+            result.Append('_');
             result.Append(DotAttributeValue.GetAsFlags(Options.Value));
         }
 

@@ -52,7 +52,7 @@ public abstract class DotHtmlTag : DotHtmlEntity
         }
         else
         {
-            result.Append(">");
+            result.Append('>');
 
             var children = GetContent().Select(child => child.ToHtml(options, syntaxRules));
             result.Append(string.Join(string.Empty, children));

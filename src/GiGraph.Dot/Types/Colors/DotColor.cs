@@ -63,11 +63,12 @@ public record DotColor(Color Color, string? Scheme = null) : DotColorDefinition
     {
         if (options.Colors.PreferName && Color.IsNamedColor)
         {
-            var scheme = Scheme is null
-                ? null
-                : Scheme == DotColorSchemes.Default
-                    ? DotColorSchemes.Default
-                    : $"/{Scheme}/";
+            var scheme = Scheme switch
+            {
+                null => null,
+                DotColorSchemes.Default => DotColorSchemes.Default,
+                _ => $"/{Scheme}/"
+            };
 
             return $"{scheme?.ToLowerInvariant()}{Color.Name.ToLowerInvariant()}";
         }

@@ -28,9 +28,9 @@ public record DotRecordTextField(DotEscapeString? Text, string? PortName = null)
 
         if (PortName is not null)
         {
-            result.Append("<");
+            result.Append('<');
             result.Append(syntaxRules.Attributes.RecordLabelValuePortEscaper.Escape(PortName));
-            result.Append(">");
+            result.Append('>');
             separator = " ";
         }
 

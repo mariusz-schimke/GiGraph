@@ -11,8 +11,8 @@ public class DotAlignmentEnumsTest
     [Fact]
     public void horizontal_alignment_continues_vertical_alignment()
     {
-        var horizontalAlignmentValues = Enum.GetValues(typeof(DotHorizontalAlignment)).Cast<int>();
-        var verticalAlignmentValues = Enum.GetValues(typeof(DotVerticalAlignment)).Cast<int>();
+        var horizontalAlignmentValues = Enum.GetValues<DotHorizontalAlignment>().Cast<int>();
+        var verticalAlignmentValues = Enum.GetValues<DotVerticalAlignment>().Cast<int>();
 
         Assert.True(horizontalAlignmentValues.Min() > verticalAlignmentValues.Min());
     }
@@ -20,8 +20,8 @@ public class DotAlignmentEnumsTest
     [Fact]
     public void html_table_cell_horizontal_alignment_continues_horizontal_alignment()
     {
-        var horizontalAlignmentValues = Enum.GetValues(typeof(DotHorizontalAlignment)).Cast<int>().ToArray();
-        var htmlHorizontalAlignmentValues = Enum.GetValues(typeof(DotHtmlTableCellHorizontalAlignment)).Cast<int>().ToArray();
+        var horizontalAlignmentValues = Enum.GetValues<DotHorizontalAlignment>().Cast<int>().ToArray();
+        var htmlHorizontalAlignmentValues = Enum.GetValues<DotHtmlTableCellHorizontalAlignment>().Cast<int>().ToArray();
 
         Assert.True(htmlHorizontalAlignmentValues.Distinct().Count() == htmlHorizontalAlignmentValues.Length);
         Assert.True(htmlHorizontalAlignmentValues.Max() > horizontalAlignmentValues.Max());

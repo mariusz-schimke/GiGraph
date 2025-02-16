@@ -23,7 +23,7 @@ public partial class DotHtmlElement : DotHtmlTag, IDotHtmlContentEntity
     }
 
     protected DotHtmlElement(string name, DotHtmlAttributeCollection attributes)
-        : this(name, attributes, new())
+        : this(name, attributes, [])
     {
     }
 

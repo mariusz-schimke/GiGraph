@@ -15,7 +15,7 @@ public partial class DotRecordBuilder
     /// </summary>
     public DotRecordBuilder()
     {
-        _fields = new();
+        _fields = [];
     }
 
     /// <summary>

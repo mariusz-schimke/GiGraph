@@ -84,7 +84,7 @@ public class DotRecordTest
         var rec = new DotRecord(new DotRecordTextField(value, value));
 
         const string field = @"&#32;&#32;a\ b\ \ c&#32;&#32;&#32;";
-        var port = $"<{field}>";
+        const string port = $"<{field}>";
 
         Assert.Equal($"{port} {field}", ((IDotEncodable) rec).GetDotEncodedValue(_syntaxOptions, _syntaxRules));
     }
