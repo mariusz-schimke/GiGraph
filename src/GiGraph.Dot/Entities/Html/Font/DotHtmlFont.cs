@@ -99,7 +99,7 @@ public partial class DotHtmlFont : DotHtmlElement
         if (font.Style.HasValue && DotHtmlFontStyle.FromStyle(font.Style.Value, out var styleContentElement) is { } styleRoot)
         {
             fontElement.SetContent(styleRoot);
-            contentElement = styleContentElement;
+            contentElement = styleContentElement!;
         }
 
         return fontElement;
