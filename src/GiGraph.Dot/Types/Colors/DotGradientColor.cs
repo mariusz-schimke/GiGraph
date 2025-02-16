@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Types.Colors;
 ///         of region is filled with each color.
 ///     </para>
 /// </summary>
-public record DotGradientColor : DotMulticolor
+public class DotGradientColor : DotMulticolor
 {
     /// <summary>
     ///     <para>

@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Types.Colors;
 ///     Represents a color definition as a single color (<see cref="DotColor" />), as a gradient (<see cref="DotMulticolor" />) or as
 ///     multiple colors (<see cref="DotMulticolor" />).
 /// </summary>
-public abstract record DotColorDefinition : IDotEncodable
+public abstract class DotColorDefinition : IDotEncodable
 {
     string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedColor(options, syntaxRules);
 

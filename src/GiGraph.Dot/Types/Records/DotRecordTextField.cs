@@ -63,10 +63,4 @@ public class DotRecordTextField : DotRecordField
 
         return result.ToString();
     }
-
-    public void Deconstruct(out DotEscapeString? Text, out string? PortName)
-    {
-        Text = this.Text;
-        PortName = this.PortName;
-    }
 }
