@@ -25,7 +25,7 @@ public class DotEdgeCollectionGenerator : DotEntityGenerator<DotEdgeCollection, 
                 .Cast<DotEdgeDefinition>()
             : edges;
 
-        foreach (var edge in orderedEdges.Where(edge => edge.Endpoints.Any()))
+        foreach (var edge in orderedEdges.Where(edge => edge.Endpoints.Length != 0))
         {
             WriteEdge(edge, writer);
         }

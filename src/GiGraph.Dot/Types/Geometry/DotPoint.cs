@@ -28,7 +28,7 @@ public record DotPoint : IDotEncodable
 
         Coordinates = coordinates ?? throw new ArgumentNullException(nameof(coordinates), "Point coordinate collection must not be null.");
 
-        if (!coordinates.Any())
+        if (coordinates.Length == 0)
         {
             throw new ArgumentException("At least one coordinate has to be specified for a point.", nameof(coordinates));
         }
