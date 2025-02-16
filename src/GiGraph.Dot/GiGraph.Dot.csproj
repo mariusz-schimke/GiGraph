@@ -75,4 +75,8 @@ See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
         <None Include="../../README.md" Pack="true" Visible="false" PackagePath="/" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\GiGraph.Dot.SourceGenerators\GiGraph.Dot.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+    </ItemGroup>
+
 </Project>
