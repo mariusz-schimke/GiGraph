@@ -9,5 +9,5 @@ public class DotHtmlEncodeEscaper : IDotTextEscaper
 {
     string? IDotTextEscaper.Escape(string? value) => Escape(value);
 
-    public static string? Escape(string? value) => HttpUtility.HtmlEncode(value!);
+    public static string? Escape(string? value) => HttpUtility.HtmlEncode(value);
 }

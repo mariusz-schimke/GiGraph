@@ -51,7 +51,7 @@ public class DotEnumAttributeValueKeyTest
 
         foreach (var value in metadata.GetNonCompoundValues())
         {
-            var enumMember = enumType.GetMember(value.ToString()!).First();
+            var enumMember = enumType.GetMember(value.ToString()).First();
 
             IDotAttributeValueAttribute? dotAttribute = enumMember.GetCustomAttribute<DotAttributeValueAttribute>();
             IDotAttributeValueAttribute? htmlAttribute = enumMember.GetCustomAttribute<DotHtmlAttributeValueAttribute>();
@@ -75,7 +75,7 @@ public class DotEnumAttributeValueKeyTest
 
         foreach (var value in metadata.GetCompoundValues())
         {
-            var enumMember = enumType.GetMember(value.ToString()!).First();
+            var enumMember = enumType.GetMember(value.ToString()).First();
 
             IDotAttributeValueAttribute? dotAttribute = enumMember.GetCustomAttribute<DotAttributeValueAttribute>();
             IDotAttributeValueAttribute? htmlAttribute = enumMember.GetCustomAttribute<DotHtmlAttributeValueAttribute>();

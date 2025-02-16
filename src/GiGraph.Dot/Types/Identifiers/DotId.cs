@@ -27,7 +27,7 @@ public class DotId : IDotEncodable
 
     public override string ToString() => _id;
 
-    protected virtual string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
+    protected virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
         // use the same identifier escaping pipeline as the one used by entity generators
         syntaxRules.IdentifierEscaper.Escape(FormatId(options, syntaxRules));
 

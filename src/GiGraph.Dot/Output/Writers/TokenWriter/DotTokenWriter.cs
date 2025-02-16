@@ -32,7 +32,7 @@ public class DotTokenWriter
 
     public virtual DotTokenWriter NextIndentationLevel() => CloneWith(Options.IncreaseIndentation());
 
-    public virtual DotTokenWriter CloneWith(Action<DotTokenWriter> init)
+    public virtual DotTokenWriter CloneWith(Action<DotTokenWriter>? init)
     {
         var result = CloneWith(Options);
         init?.Invoke(result);

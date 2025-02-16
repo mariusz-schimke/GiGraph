@@ -16,12 +16,12 @@ public partial class DotFormattingOptions
     /// <summary>
     ///     Indicates if the output should be generated without line breaks.
     /// </summary>
-    public bool SingleLine { get; set; } = false;
+    public bool SingleLine { get; set; }
 
     /// <summary>
     ///     The base indentation level for the DOT output.
     /// </summary>
-    public int IndentationLevel { get; set; } = 0;
+    public int IndentationLevel { get; set; }
 
     /// <summary>
     ///     The indentation size.

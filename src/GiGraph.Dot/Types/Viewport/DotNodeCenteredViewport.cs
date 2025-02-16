@@ -28,7 +28,7 @@ public record DotNodeCenteredViewport(double Width, double Height, string NodeId
         // Based on the Graphviz code, escaping the apostrophe is not supported, but
         // they implemented a fallback for a case when there is an apostrophe and no comma.
         // When there is both a comma and an apostrophe in the node identifier, the centering will not work.
-        return true == NodeId?.Contains("'") && false == NodeId?.Contains(",")
+        return NodeId.Contains('\'') && false == NodeId.Contains(',')
             ? $"{whz},{NodeId}"
             : $"{whz},'{NodeId}'";
     }

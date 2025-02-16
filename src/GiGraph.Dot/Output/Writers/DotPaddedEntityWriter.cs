@@ -16,7 +16,7 @@ public class DotPaddedEntityWriter
     public virtual DotTokenWriter BeginEntity(bool enforcePadding = false)
     {
         return _tokenWriter.CloneWith(
-            tw => tw.OnBeforeAppendToken = (sender, e) =>
+            tw => tw.OnBeforeAppendToken = (_, e) =>
             {
                 tw.OnBeforeAppendToken = null;
                 enforcePadding |= e.IsCommentStartToken;

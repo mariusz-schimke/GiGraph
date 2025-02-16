@@ -9,7 +9,7 @@ public partial class DotSyntaxOptions
         ///     clusters. When set to <see langword="false" /> (default), on the other hand, they will have their identifiers prefixed with
         ///     the "cluster" keyword for this purpose. See also <see cref="ClusterIdSeparator" /> as the context for the latter option.
         /// </summary>
-        public bool PreferClusterAttribute { get; set; } = false;
+        public bool PreferClusterAttribute { get; set; }
 
         /// <summary>
         ///     Cluster is a subgraph with its identifier prefixed with the "cluster" keyword or with its "cluster" attribute set to

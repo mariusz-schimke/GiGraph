@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.EscapeString;
@@ -19,9 +18,6 @@ public abstract record DotRecordField : IDotEncodable
 
     protected internal abstract string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules, bool hasParent);
 
-    [return: NotNullIfNotNull(nameof(text))]
-    public static implicit operator DotRecordField?(string? text) => new DotRecordTextField(text);
-
-    [return: NotNullIfNotNull(nameof(text))]
-    public static implicit operator DotRecordField?(DotEscapeString? text) => new DotRecordTextField(text);
+    public static implicit operator DotRecordField(string? text) => new DotRecordTextField(text);
+    public static implicit operator DotRecordField(DotEscapeString? text) => new DotRecordTextField(text);
 }
