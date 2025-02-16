@@ -74,12 +74,12 @@ public abstract class DotStyleAttributeOptions
     }
 
     protected virtual void SetPart<TPart>(TPart style)
-        where TPart : Enum
+        where TPart : struct, Enum
     {
         Style = DotPartialEnumMapper.ToComplete(style, Style.GetValueOrDefault(DotStyles.Default));
     }
 
     protected virtual TPart GetPart<TPart>()
-        where TPart : Enum =>
+        where TPart : struct, Enum =>
         DotPartialEnumMapper.ToPartial<DotStyles, TPart>(Style.GetValueOrDefault(DotStyles.Default));
 }
