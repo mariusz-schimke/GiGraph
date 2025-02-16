@@ -46,9 +46,9 @@ public partial class DotAttributeCollection
         SetOrRemove(key, value, (k, v) => _attributeFactory.CreateDouble(k, v!.Value));
     }
 
-    protected internal virtual void SetOrRemove(string key, double[] value)
+    protected internal virtual void SetOrRemove(string key, double[]? value)
     {
-        SetOrRemove(key, value, _attributeFactory.CreateDoubleArray);
+        SetOrRemove(key, value, (k, v) => _attributeFactory.CreateDoubleArray(k, v!));
     }
 
     protected internal virtual void SetOrRemove(string key, bool? value)
@@ -101,6 +101,8 @@ public partial class DotAttributeCollection
         }
     }
 
+    // TODO: return the created attribute rather then the collection itself
+    
     /// <summary>
     ///     Sets a null value for the specified attribute key.
     /// </summary>
