@@ -19,7 +19,7 @@ public record DotNullAttribute : DotAttribute
     }
 
     /// <inheritdoc />
-    public override object GetValue() => null;
+    public override object? GetValue() => null;
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => null;
+    protected internal override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => null;
 }

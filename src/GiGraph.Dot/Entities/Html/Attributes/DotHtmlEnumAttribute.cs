@@ -29,7 +29,7 @@ public record DotHtmlEnumAttribute<TEnum> : DotEnumAttribute<TEnum>
     {
     }
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
+    protected internal override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
         DotHtmlAttributeValue.TryGetAsFlags(Value, out var result)
             ? result
             : DotHtmlAttributeValue.Get(Value);

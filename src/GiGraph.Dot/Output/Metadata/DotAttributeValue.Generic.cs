@@ -129,7 +129,7 @@ public static class DotAttributeValue<TAttribute>
         where TEnum : Enum
     {
         var result = TryGet(typeof(TEnum), dotValue, out var enumValue);
-        value = result ? (TEnum) enumValue : default(TEnum);
+        value = result ? (TEnum) enumValue! : default(TEnum);
         return result;
     }
 
@@ -145,7 +145,7 @@ public static class DotAttributeValue<TAttribute>
     /// <param name="dotValue">
     ///     The DOT attribute value whose associated enumeration value to return.
     /// </param>
-    public static bool TryGet(Type enumType, string dotValue, out Enum value)
+    public static bool TryGet(Type enumType, string dotValue, [MaybeNullWhen(false)] out Enum value)
     {
         var match = enumType
             .GetFields(FieldBindingFlags)
@@ -153,11 +153,11 @@ public static class DotAttributeValue<TAttribute>
 
         if (match is not null)
         {
-            value = (Enum) match.GetValue(null);
+            value = (Enum) match.GetValue(null)!;
             return true;
         }
 
-        value = default(Enum);
+        value = null;
         return false;
     }
 
