@@ -71,7 +71,7 @@ public static class DotAttributeValue
     ///     The type of the enumeration whose value to search.
     /// </typeparam>
     public static bool TryGet<TEnum>(string dotValue, [MaybeNullWhen(false)] out TEnum value)
-        where TEnum : Enum => DotAttributeValue<DotAttributeValueAttribute>.TryGet(dotValue, out value);
+        where TEnum : struct, Enum => DotAttributeValue<DotAttributeValueAttribute>.TryGet(dotValue, out value);
 
     /// <summary>
     ///     Tries to get an enumeration value associated with the specified DOT attribute value.
@@ -98,7 +98,7 @@ public static class DotAttributeValue
     ///     The type of the enumeration whose value to search.
     /// </typeparam>
     public static TEnum Get<TEnum>(string dotValue)
-        where TEnum : Enum => DotAttributeValue<DotAttributeValueAttribute>.Get<TEnum>(dotValue);
+        where TEnum : struct, Enum => DotAttributeValue<DotAttributeValueAttribute>.Get<TEnum>(dotValue);
 
     /// <summary>
     ///     Gets an enumeration value associated with the specified DOT attribute value.
@@ -119,7 +119,7 @@ public static class DotAttributeValue
     ///     The type of the enumeration whose value mapping to get.
     /// </typeparam>
     public static Dictionary<TEnum, string?> GetMapping<TEnum>()
-        where TEnum : Enum => DotAttributeValue<DotAttributeValueAttribute>.GetMapping<TEnum>();
+        where TEnum : struct, Enum => DotAttributeValue<DotAttributeValueAttribute>.GetMapping<TEnum>();
 
     /// <summary>
     ///     Gets a dictionary where each key has a DOT attribute value assigned. Enumeration values that are not marked with the

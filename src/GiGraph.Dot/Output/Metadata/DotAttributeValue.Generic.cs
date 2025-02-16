@@ -126,7 +126,7 @@ public static class DotAttributeValue<TAttribute>
     ///     The type of the enumeration whose value to search.
     /// </typeparam>
     public static bool TryGet<TEnum>(string dotValue, [MaybeNullWhen(false)] out TEnum value)
-        where TEnum : Enum
+        where TEnum : struct, Enum
     {
         var result = TryGet(typeof(TEnum), dotValue, out var enumValue);
         value = result ? (TEnum) enumValue! : default(TEnum);
@@ -171,7 +171,7 @@ public static class DotAttributeValue<TAttribute>
     ///     The type of the enumeration whose value to search.
     /// </typeparam>
     public static TEnum Get<TEnum>(string dotValue)
-        where TEnum : Enum =>
+        where TEnum : struct, Enum =>
         (TEnum) Get(typeof(TEnum), dotValue);
 
     /// <summary>
@@ -195,7 +195,7 @@ public static class DotAttributeValue<TAttribute>
     ///     The type of the enumeration whose value mapping to get.
     /// </typeparam>
     public static Dictionary<TEnum, string?> GetMapping<TEnum>()
-        where TEnum : Enum
+        where TEnum : struct, Enum
     {
         return GetMappingEnumerable(typeof(TEnum))
             .ToDictionary(

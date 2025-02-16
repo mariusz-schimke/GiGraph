@@ -116,7 +116,7 @@ public class DotAttributeFactory
     ///     The value of the attribute.
     /// </param>
     public virtual DotEnumAttribute<TEnum> CreateEnum<TEnum>(string key, TEnum value)
-        where TEnum : Enum => new(key, value);
+        where TEnum : struct, Enum => new(key, value);
 
     /// <summary>
     ///     Creates a new complex type attribute.
