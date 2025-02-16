@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using GiGraph.Dot.Entities.Edges.Endpoints;
+﻿using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
@@ -35,6 +34,5 @@ public class DotEndpointGenerator<TEndpoint> : DotEntityGenerator<TEndpoint, IDo
         );
     }
 
-    [return: NotNullIfNotNull(nameof(endpointId))]
-    protected virtual string? EncodeEndpointIdentifier(string? endpointId) => EncodeIdentifier(endpointId);
+    protected virtual string EncodeEndpointIdentifier(string endpointId) => EncodeIdentifier(endpointId);
 }
