@@ -150,7 +150,7 @@ public class DotRecord : DotRecordField
     ///     <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to horizontal
     ///     layouts, the top-level fields are displayed vertically.
     /// </summary>
-    public bool Flip { get; init; } = FlipDefault;
+    public bool Flip { get; init; }
 
     protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules, bool hasParent)
     {

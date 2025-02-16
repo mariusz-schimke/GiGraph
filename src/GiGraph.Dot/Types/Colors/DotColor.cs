@@ -59,7 +59,7 @@ public class DotColor : DotColorDefinition
     /// <summary>
     ///     The color.
     /// </summary>
-    public Color Color { get; init; }
+    public Color Color { get; }
 
     /// <summary>
     ///     The color scheme (see <see cref="DotColorSchemes" />).

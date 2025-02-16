@@ -82,7 +82,7 @@ public class DotWeightedColor : DotColor
     ///     The weight of the color in the range 0 ≤ <see cref="Weight" /> ≤ 1. Represents the proportion of the area covered with that
     ///     color.
     /// </summary>
-    public double Weight { get; init; }
+    public double Weight { get; }
 
     protected internal override double? GetWeight() => Weight;
 

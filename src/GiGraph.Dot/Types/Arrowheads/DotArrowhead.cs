@@ -77,7 +77,7 @@ public class DotArrowhead : DotArrowheadDefinition
     /// <summary>
     ///     The shape of the arrowhead.
     /// </summary>
-    public DotArrowheadShape Shape { get; init; }
+    public DotArrowheadShape Shape { get; }
 
     /// <summary>
     ///     Determines whether to use a filled version of the shape.

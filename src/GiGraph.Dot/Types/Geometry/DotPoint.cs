@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Types.Geometry;
 /// <summary>
 ///     Represents a point in an n-dimensional plain.
 /// </summary>
-public record DotPoint : IDotEncodable
+public class DotPoint : IDotEncodable
 {
     /// <summary>
     ///     Creates and initializes a new point in an n-dimensional plain.

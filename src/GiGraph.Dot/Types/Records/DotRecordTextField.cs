@@ -33,7 +33,7 @@ public class DotRecordTextField : DotRecordField
     /// <summary>
     ///     The text of the field.
     /// </summary>
-    public DotEscapeString? Text { get; init; }
+    public DotEscapeString? Text { get; }
 
     /// <summary>
     ///     The port name, that is a name that can be referred to from an edge's endpoint in order to attach the end of the edge to the
