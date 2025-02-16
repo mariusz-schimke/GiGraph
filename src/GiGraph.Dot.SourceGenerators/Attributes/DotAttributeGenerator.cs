@@ -1,5 +1,6 @@
 using System.Collections.Immutable;
 using System.Text;
+using GiGraph.Dot.SourceGenerators;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -7,6 +8,8 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 [Generator]
 public class DotAttributeGenerator : IIncrementalGenerator
 {
+    private const string AttributeKeyAttributeType = "GiGraph.Dot.Output.Metadata.DotAttributeKeyAttributeTest";
+
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
         var classes = context.SyntaxProvider
@@ -21,16 +24,14 @@ public class DotAttributeGenerator : IIncrementalGenerator
         context.RegisterSourceOutput(compilationAndClasses, Execute);
     }
 
-    private void Execute(SourceProductionContext context, (Compilation compilation, ImmutableArray<ClassDeclarationSyntax> classes) input)
+    private static void Execute(SourceProductionContext context, (Compilation compilation, ImmutableArray<ClassDeclarationSyntax> classes) input)
     {
         var (compilation, classes) = input;
-        var attributeSymbol = compilation.GetTypeByMetadataName("GiGraph.Dot.Output.Metadata.DotAttributeKeyAttributeTest");
+        var attributeSymbol = compilation.GetTypeByMetadataName(AttributeKeyAttributeType);
 
         if (attributeSymbol is null)
         {
-            context.ReportDiagnostic(Diagnostic.Create(new(
-                "DOT001", "Generator Error", "DotAttributeKeyAttribute not found!", "Usage",
-                DiagnosticSeverity.Error, true), null));
+            context.WriteError($"{AttributeKeyAttributeType} not found!");
             return;
         }
 
@@ -38,18 +39,12 @@ public class DotAttributeGenerator : IIncrementalGenerator
         {
             var model = compilation.GetSemanticModel(classDeclaration.SyntaxTree);
             var classSymbol = model.GetDeclaredSymbol(classDeclaration);
-            if (classSymbol == null)
+            if (classSymbol is null)
             {
                 continue;
             }
 
-            context.ReportDiagnostic(Diagnostic.Create(new(
-                "DOT001", "Generator Error", classSymbol.Name, "Usage",
-                DiagnosticSeverity.Info, true), null));
-
             var sb = new StringBuilder();
-            sb.AppendLine("using System;");
-            sb.AppendLine();
             sb.AppendLine($"namespace {classSymbol.ContainingNamespace.ToDisplayString()};");
             sb.AppendLine();
             sb.AppendLine($"public partial class {classSymbol.Name}");
@@ -67,13 +62,14 @@ public class DotAttributeGenerator : IIncrementalGenerator
 
                 added = true;
                 var propName = propertySymbol.Name;
+
                 var propType = propertySymbol.Type.ToDisplayString();
-                var attrValue = propertySymbol.GetAttributes().First().ConstructorArguments[0].Value;
+                var attrKey = propertySymbol.GetAttributes().First().ConstructorArguments.First().Value;
 
                 sb.AppendLine($"    public virtual partial {propType} {propName}");
                 sb.AppendLine("    {");
-                sb.AppendLine($"        get => _attributes.GetValue(\"{attrValue}\", out {propType.TrimEnd('?')} value) ? value : null;");
-                sb.AppendLine($"        set => _attributes.SetOrRemove(\"{attrValue}\", value);");
+                sb.AppendLine($"        get => _attributes.GetValue(\"{attrKey}\", out {propType.TrimEnd('?')} value) ? value : null;");
+                sb.AppendLine($"        set => _attributes.SetOrRemove(\"{attrKey}\", value);");
                 sb.AppendLine("    }");
                 sb.AppendLine();
             }
@@ -82,9 +78,7 @@ public class DotAttributeGenerator : IIncrementalGenerator
 
             if (added)
             {
-                context.ReportDiagnostic(Diagnostic.Create(new(
-                    "DOT005", "Generator Error", sb.ToString().Replace("\n", ""), "Usage",
-                    DiagnosticSeverity.Warning, true), null));
+                // context.WriteWarning(sb.ToString().Replace("\n", " "));
 
                 context.AddSource($"{classSymbol.Name}_AttributeProperties.g.cs", sb.ToString());
             }
