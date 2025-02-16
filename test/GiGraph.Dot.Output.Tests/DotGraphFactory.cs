@@ -166,9 +166,9 @@ public class DotGraphFactory
 
     public static DotGraph CreateAnnotatedGraph()
     {
+        // graph
         var graph = new DotGraph
         {
-            // graph
             Annotation = $"graph{Environment.NewLine}comment",
             Attributes =
             {

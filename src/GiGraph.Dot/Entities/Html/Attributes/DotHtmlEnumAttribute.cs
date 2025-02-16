@@ -13,7 +13,7 @@ namespace GiGraph.Dot.Entities.Html.Attributes;
 ///     An enumeration type whose values are annotated with the <see cref="DotAttributeValueAttribute" /> attributes.
 /// </typeparam>
 public class DotHtmlEnumAttribute<TEnum> : DotEnumAttribute<TEnum>
-    where TEnum : Enum
+    where TEnum : struct, Enum
 {
     /// <summary>
     ///     Creates a new instance of the attribute.

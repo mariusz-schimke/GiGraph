@@ -100,12 +100,10 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <typeparam name="TProperty">
     ///     The type returned by the property.
     /// </typeparam>
-    public virtual DotAttribute SetRawValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
+    public virtual DotRawAttribute SetRawValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
     {
         var key = GetKey(property);
-        return _attributes.Collection
-            .SetRaw(key, value)
-            .Get(key)!;
+        return _attributes.Collection.SetRaw(key, value);
     }
 
     /// <summary>
@@ -162,12 +160,10 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <typeparam name="TProperty">
     ///     The type returned by the property.
     /// </typeparam>
-    public virtual DotAttribute Nullify<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+    public virtual DotNullAttribute Nullify<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
     {
         var key = GetKey(property);
-        return _attributes.Collection
-            .Nullify(key)
-            .Get(key)!;
+        return _attributes.Collection.Nullify(key);
     }
 
     /// <summary>

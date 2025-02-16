@@ -45,7 +45,7 @@ public abstract partial class DotEntityAttributes
     }
 
     protected void SetOrRemove<TEnum>(MethodBase propertyAccessor, bool hasValue, Func<TEnum> value)
-        where TEnum : Enum
+        where TEnum : struct, Enum
     {
         _attributes.SetOrRemoveEnum(GetKey(propertyAccessor), hasValue, value);
     }
