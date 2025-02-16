@@ -59,10 +59,37 @@ public class DotAttributeGenerator : IIncrementalGenerator
 
         var sb = new StringBuilder();
 
+        var classModifiers = new StringBuilder();
+        if (classSymbol.DeclaredAccessibility == Accessibility.Public)
+        {
+            classModifiers.Append("public ");
+        }
+        else if (classSymbol.DeclaredAccessibility == Accessibility.Internal)
+        {
+            classModifiers.Append("internal ");
+        }
+
+        if (classSymbol.IsAbstract)
+        {
+            classModifiers.Append("abstract ");
+        }
+
+        if (classSymbol.IsSealed)
+        {
+            classModifiers.Append("sealed ");
+        }
+
+        if (classSymbol.IsStatic)
+        {
+            classModifiers.Append("static ");
+        }
+
+        // todo: ignore non-partial classes and non-partial properties?
+
         sb.AppendLine("#nullable enable");
         sb.AppendLine($"namespace {classSymbol.ContainingNamespace.ToDisplayString()};");
         sb.AppendLine();
-        sb.AppendLine($"public partial class {classSymbol.Name}");
+        sb.AppendLine($"{classModifiers}partial class {classSymbol.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat)}");
         sb.AppendLine("{");
 
         foreach (var property in properties)
