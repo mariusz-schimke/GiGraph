@@ -26,7 +26,7 @@ public class DotHtmlStringTest
     [Fact]
     public void implicit_conversion_returns_original_string()
     {
-        var value = "<table></table>";
+        const string value = "<table></table>";
         DotHtmlString htmlStringValue = value;
 
         string stringValue = htmlStringValue;
@@ -40,7 +40,7 @@ public class DotHtmlStringTest
     [Fact]
     public void to_string_returns_original_value()
     {
-        var value = "<table></table>";
+        const string value = "<table></table>";
         DotHtmlString htmlStringValue = value;
         Assert.Equal(value, htmlStringValue.ToString());
     }
@@ -65,7 +65,7 @@ public class DotHtmlStringTest
     public void concatenation_works_for_string_and_html_string()
     {
         DotHtmlString value1 = "value1";
-        var value2 = "value2";
+        const string value2 = "value2";
 
         var result1 = value1 + value2;
         Assert.IsType<DotHtmlString>(result1);

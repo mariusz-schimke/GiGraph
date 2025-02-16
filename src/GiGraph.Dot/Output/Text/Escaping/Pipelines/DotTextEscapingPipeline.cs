@@ -43,7 +43,7 @@ public partial class DotTextEscapingPipeline : List<IDotTextEscaper>, IDotTextEs
     /// <summary>
     ///     Creates a new pipeline that does not modify the input string in any way.
     /// </summary>
-    public static DotTextEscapingPipeline None() => new();
+    public static DotTextEscapingPipeline None() => [];
 
     /// <summary>
     ///     Creates a new pipeline that escapes backslashes and quotation marks.

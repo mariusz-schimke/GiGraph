@@ -29,7 +29,7 @@ public class DotUnescapeStringTest
     [Fact]
     public void to_string_returns_original_value()
     {
-        var value = DotEscapeStringTest.SpecialChars;
+        const string value = DotEscapeStringTest.SpecialChars;
 
         var escStringValue = (DotUnescapedString) value;
         Assert.Equal(value, escStringValue.ToString());

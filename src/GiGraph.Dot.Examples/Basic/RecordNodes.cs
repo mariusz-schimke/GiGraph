@@ -22,7 +22,7 @@ public static class RecordNodes
                 (
                     "Garply",
                     "Waldo",
-                    new DotRecordTextField("Fred", PortName: "port1")
+                    new DotRecordTextField("Fred", portName: "port1")
                 ),
                 DotEscapeString.RightJustifyLine("Plugh")
             ),

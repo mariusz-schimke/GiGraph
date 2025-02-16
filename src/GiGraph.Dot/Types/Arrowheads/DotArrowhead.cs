@@ -12,11 +12,19 @@ namespace GiGraph.Dot.Types.Arrowheads;
 ///     </see>
 ///     to view what shape configurations are supported.
 /// </summary>
-/// <param name="Shape">
-///     Determines the shape of the arrowhead to use.
-/// </param>
-public record DotArrowhead(DotArrowheadShape Shape) : DotArrowheadDefinition
+public class DotArrowhead : DotArrowheadDefinition
 {
+    /// <summary>
+    ///     Creates and initializes a new arrowhead definition instance.
+    /// </summary>
+    /// <param name="shape">
+    ///     Determines the shape of the arrowhead to use.
+    /// </param>
+    public DotArrowhead(DotArrowheadShape shape)
+    {
+        Shape = shape;
+    }
+
     /// <summary>
     ///     Creates and initializes a new arrowhead definition instance.
     /// </summary>
@@ -69,7 +77,7 @@ public record DotArrowhead(DotArrowheadShape Shape) : DotArrowheadDefinition
     /// <summary>
     ///     The shape of the arrowhead.
     /// </summary>
-    public DotArrowheadShape Shape { get; init; } = Shape;
+    public DotArrowheadShape Shape { get; }
 
     /// <summary>
     ///     Determines whether to use a filled version of the shape.
@@ -87,7 +95,7 @@ public record DotArrowhead(DotArrowheadShape Shape) : DotArrowheadDefinition
 
         if (!IsFilled)
         {
-            result.Append("o");
+            result.Append('o');
         }
 
         // clips the shape, leaving visible only the part to the left or to the right of the edge

@@ -148,7 +148,7 @@ public partial class DotAttributeCollection
         }
 
         // otherwise try to convert it
-        if (true == converters?.Any())
+        if (converters?.Length > 0)
         {
             var converted = converters
                 .Select(convert => convert(attributeValue))

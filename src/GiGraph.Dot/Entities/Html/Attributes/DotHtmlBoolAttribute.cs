@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Html.Attributes;
 /// <summary>
 ///     A boolean value attribute for use in the context of HTML elements.
 /// </summary>
-public record DotHtmlBoolAttribute : DotBoolAttribute
+public class DotHtmlBoolAttribute : DotBoolAttribute
 {
     /// <summary>
     ///     Creates a new instance of the attribute.

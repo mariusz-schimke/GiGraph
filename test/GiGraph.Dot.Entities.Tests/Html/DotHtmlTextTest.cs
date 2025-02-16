@@ -58,7 +58,7 @@ public class DotHtmlTextTest
     [Fact]
     public void single_line_text_is_not_split()
     {
-        var text = "Line 1";
+        const string text = "Line 1";
         var entity = new DotHtmlText(text);
 
         Snapshot.Match(

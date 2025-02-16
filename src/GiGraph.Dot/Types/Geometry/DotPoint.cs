@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Types.Geometry;
 /// <summary>
 ///     Represents a point in an n-dimensional plain.
 /// </summary>
-public record DotPoint : IDotEncodable
+public class DotPoint : IDotEncodable
 {
     /// <summary>
     ///     Creates and initializes a new point in an n-dimensional plain.
@@ -28,7 +28,7 @@ public record DotPoint : IDotEncodable
 
         Coordinates = coordinates ?? throw new ArgumentNullException(nameof(coordinates), "Point coordinate collection must not be null.");
 
-        if (!coordinates.Any())
+        if (coordinates.Length == 0)
         {
             throw new ArgumentException("At least one coordinate has to be specified for a point.", nameof(coordinates));
         }

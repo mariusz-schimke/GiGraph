@@ -41,7 +41,7 @@ public partial class DotHtmlTable : DotHtmlElement
     /// <param name="init">
     ///     An optional row initializer delegate.
     /// </param>
-    public virtual DotHtmlTableRow AddRow(Action<DotHtmlTableRow>? init = null) => Content.Add(new(), init);
+    public virtual DotHtmlTableRow AddRow(Action<DotHtmlTableRow>? init = null) => Content.Add([], init);
 
     /// <summary>
     ///     Adds a horizontal rule to separate two neighboring rows.

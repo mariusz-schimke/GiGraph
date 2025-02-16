@@ -27,7 +27,7 @@ public class DotAttributeSupportPerElementTest
             .Except(validKeys.Intersect(elementAttributesMetadata.Keys))
             .ToArray();
 
-        if (result.Any())
+        if (result.Length > 0)
         {
             throw new($"The following attributes are not supposed to be supported by [{element}] or are marked as unimplemented: {string.Join(", ", result)}");
         }
@@ -43,7 +43,7 @@ public class DotAttributeSupportPerElementTest
             .Except(elementAttributesMetadata.Keys.Intersect(validKeys))
             .ToArray();
 
-        if (result.Any())
+        if (result.Length > 0)
         {
             throw new($"The following attributes have to be supported by [{element}]: {string.Join(", ", result)}");
         }

@@ -7,14 +7,10 @@ using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Types.Edges;
 
-// TODO: convert records to classes. Record should be comparable by properties
-// (Equals, GetHashCode) and will usually contain no logic.
-// Also, we have several constructors here which also is a signal to use a class.
-
 /// <summary>
 ///     Represents the endpoint port, that is a point on a node an edge is attached to.
 /// </summary>
-public record DotEndpointPort() : IDotEncodable
+public class DotEndpointPort() : IDotEncodable
 {
     /// <summary>
     ///     Creates a new instance of the port, initialized with a port name.

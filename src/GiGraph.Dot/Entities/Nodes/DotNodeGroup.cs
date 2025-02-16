@@ -43,7 +43,7 @@ public class DotNodeGroup : DotNodeDefinition
     {
         Ids = nodeIds is null
             ? throw new ArgumentNullException(nameof(nodeIds), "Node identifier collection must not be null.")
-            : nodeIds.Any()
+            : nodeIds.Length > 0
                 ? nodeIds
                 : throw new ArgumentException("At least one node identifier has to be specified for a node group.", nameof(nodeIds));
     }

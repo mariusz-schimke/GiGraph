@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Attributes;
 /// <summary>
 ///     A double value attribute.
 /// </summary>
-public record DotDoubleAttribute : DotAttribute<double>
+public class DotDoubleAttribute : DotAttribute<double>
 {
     /// <summary>
     ///     Creates a new instance of the attribute.

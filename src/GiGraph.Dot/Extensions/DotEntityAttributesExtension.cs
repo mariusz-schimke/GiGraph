@@ -71,7 +71,7 @@ public static class DotEntityAttributesExtension
     private static IDictionary<string, PropertyInfo[]> GetPathsToAttributeProperties(this IDotEntityAttributesAccessor @this)
     {
         var output = new Dictionary<string, PropertyInfo[]>();
-        @this.GetPathsToAttributeProperties(output, basePath: Array.Empty<PropertyInfo>());
+        @this.GetPathsToAttributeProperties(output, basePath: []);
         return output;
     }
 

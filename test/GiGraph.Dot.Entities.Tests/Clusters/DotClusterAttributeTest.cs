@@ -84,7 +84,7 @@ public class DotClusterAttributeTest
     [Fact]
     public void cluster_attribute_is_settable_when_no_cluster_attribute_preference_is_set()
     {
-        var snapshotName = "cluster_with_cluster_attribute_specified_explicitly";
+        const string snapshotName = "cluster_with_cluster_attribute_specified_explicitly";
 
         var graph = new DotGraph();
         graph.Clusters.Add("c1", c =>

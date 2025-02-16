@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Types.Ranks;
 /// <summary>
 ///     Rank separation, in inches.
 /// </summary>
-public record DotRankSeparation : DotRankSeparationDefinition
+public class DotRankSeparation : DotRankSeparationDefinition
 {
     /// <summary>
     ///     Creates a new rank separation instance.
@@ -36,12 +36,12 @@ public record DotRankSeparation : DotRankSeparationDefinition
     /// <summary>
     ///     The minimum vertical distance in inches between the bottom of the nodes in one rank and the tops of nodes in the next.
     /// </summary>
-    public double? Value { get; init; }
+    public double? Value { get; }
 
     /// <summary>
     ///     Indicates if the centers of all ranks should be spaced equally apart.
     /// </summary>
-    public bool Equal { get; init; }
+    public bool Equal { get; }
 
     protected override string? GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {

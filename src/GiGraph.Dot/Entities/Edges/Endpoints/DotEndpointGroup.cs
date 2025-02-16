@@ -45,7 +45,7 @@ public class DotEndpointGroup : DotEndpointDefinition
             throw new ArgumentNullException(nameof(endpoints), "Endpoint collection must not be null.");
         }
 
-        Endpoints = endpoints.Any()
+        Endpoints = endpoints.Length > 0
             ? endpoints
             : throw new ArgumentException("At least one endpoint has to be specified for an endpoint group.", nameof(endpoints));
     }

@@ -5,7 +5,7 @@ using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Attributes;
 
-public abstract record DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable, IDotOrderable
+public abstract class DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable, IDotOrderable
 {
     protected DotAttribute(string key)
     {

@@ -2,7 +2,7 @@
 
 namespace GiGraph.Dot.Entities.Attributes;
 
-public abstract record DotAttribute<T> : DotAttribute
+public abstract class DotAttribute<T> : DotAttribute
 {
     protected DotAttribute(string key, T value)
         : base(key)

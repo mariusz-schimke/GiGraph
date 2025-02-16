@@ -26,7 +26,7 @@ public class DotHtmlLabelTest
     [Fact]
     public void to_string_returns_html_for_html_entity()
     {
-        var value = "<table></table>";
+        const string value = "<table></table>";
 
         var entity = new DotHtml(value);
         DotLabel label = entity;

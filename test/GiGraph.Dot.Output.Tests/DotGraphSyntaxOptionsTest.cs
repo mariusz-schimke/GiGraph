@@ -112,8 +112,13 @@ public partial class DotGraphSyntaxOptionsTest
     [Fact]
     public void renders_graph_with_correctly_with_colors_as_hex()
     {
-        var graph = new DotGraph();
-        graph.Canvas.BackgroundColor = Color.Brown;
+        var graph = new DotGraph
+        {
+            Canvas =
+            {
+                BackgroundColor = Color.Brown
+            }
+        };
 
         var options = new DotSyntaxOptions
         {

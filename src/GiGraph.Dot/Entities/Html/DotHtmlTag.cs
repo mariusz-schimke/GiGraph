@@ -52,7 +52,7 @@ public abstract class DotHtmlTag : DotHtmlEntity
         }
         else
         {
-            result.Append(">");
+            result.Append('>');
 
             var children = GetContent().Select(child => child.ToHtml(options, syntaxRules));
             result.Append(string.Join(string.Empty, children));
@@ -63,5 +63,5 @@ public abstract class DotHtmlTag : DotHtmlEntity
         return result.ToString();
     }
 
-    protected virtual IEnumerable<IDotHtmlEntity> GetContent() => Enumerable.Empty<IDotHtmlEntity>();
+    protected virtual IEnumerable<IDotHtmlEntity> GetContent() => [];
 }
