@@ -175,7 +175,7 @@ public class DotGraphFactory
             node.Attributes.SetValue(a => a.Label, "foo").Annotation = "label";
         });
 
-        graph.Nodes.AddGroup(new[] { "foo", "bar", "baz" }, node =>
+        graph.Nodes.AddGroup(["foo", "bar", "baz"], node =>
         {
             node.Annotation = "node group comment";
             node.Attributes.Annotation = "node group attributes";
@@ -199,7 +199,7 @@ public class DotGraphFactory
             edge.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
         });
 
-        graph.Edges.AddSequence(new[] { "foo", "bar", "baz" }, edge =>
+        graph.Edges.AddSequence(["foo", "bar", "baz"], edge =>
         {
             var i = 1;
             foreach (var endpoint in edge.Endpoints)

@@ -192,13 +192,13 @@ public class DotGraphFormattingOptionsTest
         graph.Edges.AddOneToMany("a", "b", "c");
         graph.Edges.AddOneToMany("d", "e", "f").Head.Endpoint.Subgraph.Id = "subgraph1";
 
-        graph.Edges.AddManyToMany(new[] { "g", "h" }, new[] { "i", "j" }, e =>
+        graph.Edges.AddManyToMany(["g", "h"], ["i", "j"], e =>
         {
             e.Head.Endpoint.Subgraph.Id = "head";
             e.Tail.Endpoint.Subgraph.Id = "tail";
         });
 
-        graph.Edges.AddManyToMany(new[] { "k", "l" }, new[] { "m", "n" }, e =>
+        graph.Edges.AddManyToMany(["k", "l"], ["m", "n"], e =>
         {
             e.Head.Endpoint.Annotation = "head subgraph comment";
             e.Tail.Endpoint.Annotation = "tail subgraph comment";
@@ -207,7 +207,7 @@ public class DotGraphFormattingOptionsTest
             e.Tail.Endpoint.Subgraph.Id = "tail";
         });
 
-        graph.Edges.AddManyToMany(new[] { "o", "p" }, "q", "r");
+        graph.Edges.AddManyToMany(["o", "p"], "q", "r");
 
         return graph;
     }

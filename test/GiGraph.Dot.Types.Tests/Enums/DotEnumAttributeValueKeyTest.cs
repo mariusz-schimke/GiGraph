@@ -15,9 +15,8 @@ namespace GiGraph.Dot.Types.Tests.Enums;
 
 public class DotEnumAttributeValueKeyTest
 {
-    private static readonly HashSet<Type> IgnoredEnums = new()
-    {
-        // these enums are not expected to have any attribute names assigned
+    private static readonly HashSet<Type> IgnoredEnums =
+    [
         typeof(DotFillStyle),
         typeof(DotNodeFillStyle),
         typeof(DotClusterFillStyle),
@@ -27,7 +26,7 @@ public class DotEnumAttributeValueKeyTest
         typeof(DotLineStyle),
         typeof(DotLineWeight),
         typeof(DotFontStyles)
-    };
+    ];
 
     public static IEnumerable<object[]> EnumTypes { get; } = DotEnumsTest.GetAllEnumTypes()
         .Where(t => !IgnoredEnums.Contains(t))

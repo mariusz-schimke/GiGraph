@@ -63,5 +63,5 @@ public abstract class DotHtmlTag : DotHtmlEntity
         return result.ToString();
     }
 
-    protected virtual IEnumerable<IDotHtmlEntity> GetContent() => Enumerable.Empty<IDotHtmlEntity>();
+    protected virtual IEnumerable<IDotHtmlEntity> GetContent() => [];
 }

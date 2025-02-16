@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Output.Generators.Providers;
 
 public class DotEntityGeneratorsProvider : IDotEntityGeneratorsProvider
 {
-    protected readonly List<IDotEntityGenerator> _generators = new();
+    protected readonly List<IDotEntityGenerator> _generators = [];
 
     public virtual TGenerator Get<TGenerator>()
         where TGenerator : IDotEntityGenerator

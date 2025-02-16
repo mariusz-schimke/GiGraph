@@ -37,7 +37,7 @@ public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttri
         var result = new DotMemberAttributeKeyLookup();
 
         var entityAttributePropertiesInterfaceTypes = typeof(TIEntityAttributeProperties).GetInterfaces()
-            .Concat(new[] { typeof(TIEntityAttributeProperties) });
+            .Concat([typeof(TIEntityAttributeProperties)]);
 
         foreach (var interfaceType in entityAttributePropertiesInterfaceTypes)
         {

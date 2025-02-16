@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Html.Text;
 /// </summary>
 public class DotHtmlText : DotHtmlEntity
 {
-    protected static readonly string[] LineBreaks = { DotNewLine.Windows, DotNewLine.Unix };
+    protected static readonly string[] LineBreaks = [DotNewLine.Windows, DotNewLine.Unix];
     protected readonly string _text;
 
     /// <summary>

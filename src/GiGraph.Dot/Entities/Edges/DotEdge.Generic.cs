@@ -70,7 +70,7 @@ public class DotEdge<TTail, THead> : DotEdgeDefinition
     }
 
     private DotEdge(DotEdgeEndpoint<TTail> tail, DotEdgeEndpoint<THead> head, DotEdgeRootAttributes attributes)
-        : base(new DotEndpointDefinition[] { tail.Endpoint, head.Endpoint }, attributes)
+        : base([tail.Endpoint, head.Endpoint], attributes)
     {
         Tail = tail;
         Head = head;
