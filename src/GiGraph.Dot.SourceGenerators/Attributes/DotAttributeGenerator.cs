@@ -1,9 +1,10 @@
 using System.Collections.Immutable;
 using System.Text;
-using GiGraph.Dot.SourceGenerators;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+
+namespace GiGraph.Dot.SourceGenerators.Attributes;
 
 [Generator]
 public class DotAttributeGenerator : IIncrementalGenerator
@@ -44,44 +45,59 @@ public class DotAttributeGenerator : IIncrementalGenerator
                 continue;
             }
 
-            var sb = new StringBuilder();
-            sb.AppendLine($"namespace {classSymbol.ContainingNamespace.ToDisplayString()};");
-            sb.AppendLine();
-            sb.AppendLine($"public partial class {classSymbol.Name}");
-            sb.AppendLine("{");
-
-            var added = false;
-
-            foreach (var property in classDeclaration.Members.OfType<PropertyDeclarationSyntax>())
-            {
-                var propertySymbol = model.GetDeclaredSymbol(property);
-                if (propertySymbol is null || !propertySymbol.GetAttributes().Any(attr => SymbolEqualityComparer.Default.Equals(attr.AttributeClass, attributeSymbol)))
-                {
-                    continue;
-                }
-
-                added = true;
-                var propName = propertySymbol.Name;
-
-                var propType = propertySymbol.Type.ToDisplayString();
-                var attrKey = propertySymbol.GetAttributes().First().ConstructorArguments.First().Value;
-
-                sb.AppendLine($"    public virtual partial {propType} {propName}");
-                sb.AppendLine("    {");
-                sb.AppendLine($"        get => _attributes.GetValue(\"{attrKey}\", out {propType.TrimEnd('?')} value) ? value : null;");
-                sb.AppendLine($"        set => _attributes.SetOrRemove(\"{attrKey}\", value);");
-                sb.AppendLine("    }");
-                sb.AppendLine();
-            }
-
-            sb.AppendLine("}");
-
-            if (added)
-            {
-                // context.WriteWarning(sb.ToString().Replace("\n", " "));
-
-                context.AddSource($"{classSymbol.Name}_AttributeProperties.g.cs", sb.ToString());
-            }
+            var properties = GetAttributeProperties(classDeclaration, model, attributeSymbol);
+            GenerateClassWithProperties(context, classSymbol, properties);
         }
+    }
+
+    private static void GenerateClassWithProperties(SourceProductionContext context, INamedTypeSymbol classSymbol, AttributePropertyDeclaration[] properties)
+    {
+        if (properties.Length == 0)
+        {
+            return;
+        }
+
+        var sb = new StringBuilder();
+
+        sb.AppendLine($"namespace {classSymbol.ContainingNamespace.ToDisplayString()};");
+        sb.AppendLine();
+        sb.AppendLine($"public partial class {classSymbol.Name}");
+        sb.AppendLine("{");
+
+        foreach (var property in properties)
+        {
+            sb.AppendLine($"    public virtual partial {property.ReturnType} {property.Name}");
+            sb.AppendLine("    {");
+            sb.AppendLine($"        get => _attributes.GetValue(\"{property.DotKey}\", out {property.ReturnType.TrimEnd('?')} value) ? value : null;");
+            sb.AppendLine($"        set => _attributes.SetOrRemove(\"{property.DotKey}\", value);");
+            sb.AppendLine("    }");
+            sb.AppendLine();
+        }
+
+        sb.AppendLine("}");
+
+        // context.WriteWarning(sb.ToString().Replace("\n", " "));
+        context.AddSource($"{classSymbol.Name}_AttributeProperties.g.cs", sb.ToString());
+    }
+
+    private static AttributePropertyDeclaration[] GetAttributeProperties(ClassDeclarationSyntax classDeclaration, SemanticModel model, INamedTypeSymbol attributeSymbol)
+    {
+        return classDeclaration.Members
+            .OfType<PropertyDeclarationSyntax>()
+            .Select(property => model.GetDeclaredSymbol(property))
+            .Select(propertySymbol => new
+            {
+                PropertySymbol = propertySymbol,
+                DotKeyAttribute = propertySymbol?
+                    .GetAttributes()
+                    .FirstOrDefault(attr => SymbolEqualityComparer.Default.Equals(attr.AttributeClass, attributeSymbol))
+            })
+            .Where(propertySymbol => propertySymbol.DotKeyAttribute is not null)
+            .Select(metadata => new AttributePropertyDeclaration(
+                metadata.PropertySymbol!.Name,
+                metadata.PropertySymbol.Type.ToDisplayString(),
+                metadata.DotKeyAttribute!.ConstructorArguments.Single().Value!.ToString()
+            ))
+            .ToArray();
     }
 }
