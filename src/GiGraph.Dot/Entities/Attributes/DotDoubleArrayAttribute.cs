@@ -22,6 +22,6 @@ public record DotDoubleArrayAttribute : DotAttribute<double[]>
     {
     }
 
-    protected internal override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => 
-        Value is not null ? DotDoubleListEncoder.Encode(Value, syntaxRules) : null;
+    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
+        DotDoubleListEncoder.Encode(Value, syntaxRules);
 }

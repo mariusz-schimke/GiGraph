@@ -38,9 +38,7 @@ public record DotComplexTypeArrayAttribute<TComplex> : DotAttribute<TComplex[]>
             throw new ArgumentException($"The {complexType.Name} type is not annotated with a {nameof(DotJoinableTypeAttribute)} attribute.", nameof(Value));
         }
 
-        var encoded = (Value ?? Enumerable.Empty<TComplex>())
-           .Select(value => value.GetDotEncodedValue(options, syntaxRules));
-
+        var encoded = Value.Select(value => value.GetDotEncodedValue(options, syntaxRules));
         return string.Join(attribute.Separator, encoded);
     }
 }

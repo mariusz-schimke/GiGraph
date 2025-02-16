@@ -44,7 +44,7 @@ public record DotPoint : IDotEncodable
     ///     Determines whether the node position (if applied to nodes) should not change (input-only).
     /// </param>
     public DotPoint(IEnumerable<double> coordinates, bool? isFixed = null)
-        : this(isFixed, coordinates?.ToArray())
+        : this(isFixed, coordinates.ToArray())
     {
     }
 

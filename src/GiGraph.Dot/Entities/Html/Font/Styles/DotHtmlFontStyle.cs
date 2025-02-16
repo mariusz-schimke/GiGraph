@@ -38,9 +38,9 @@ public abstract partial class DotHtmlFontStyle : DotHtmlElement
     /// <param name="contentElement">
     ///     The bottom-level element to embed content in. Returns null for the <see cref="DotFontStyles.Normal" /> font style.
     /// </param>
-    public static DotHtmlFontStyle FromStyle(DotFontStyles style, out DotHtmlFontStyle contentElement)
+    public static DotHtmlFontStyle? FromStyle(DotFontStyles style, out DotHtmlFontStyle? contentElement)
     {
-        DotHtmlFontStyle result = null;
+        DotHtmlFontStyle? result = null;
         contentElement = null;
 
         var metadata = new DotEnumMetadata(style.GetType());

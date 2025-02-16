@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Text.Escaping;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace GiGraph.Dot.Output.Text.Escaping;
 
 /// <summary>
 ///     Escapes text.
@@ -11,5 +13,6 @@ public interface IDotTextEscaper
     /// <param name="value">
     ///     The text to escape.
     /// </param>
+    [return: NotNullIfNotNull(nameof(value))]
     string? Escape(string? value);
 }
