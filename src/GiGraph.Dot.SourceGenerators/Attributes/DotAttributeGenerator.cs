@@ -9,7 +9,7 @@ namespace GiGraph.Dot.SourceGenerators.Attributes;
 [Generator]
 public class DotAttributeGenerator : IIncrementalGenerator
 {
-    private const string AttributeKeyAttributeType = "GiGraph.Dot.Output.Metadata.DotAttributeKeyAttributeTest";
+    private const string AttributeKeyAttributeType = "GiGraph.Dot.Output.Metadata.DotAttributeKeyAttribute";
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
@@ -59,6 +59,7 @@ public class DotAttributeGenerator : IIncrementalGenerator
 
         var sb = new StringBuilder();
 
+        sb.AppendLine("#nullable enable");
         sb.AppendLine($"namespace {classSymbol.ContainingNamespace.ToDisplayString()};");
         sb.AppendLine();
         sb.AppendLine($"public partial class {classSymbol.Name}");
