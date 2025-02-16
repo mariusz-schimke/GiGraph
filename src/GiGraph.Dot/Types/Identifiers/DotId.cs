@@ -23,7 +23,7 @@ public class DotId : IDotEncodable
         _id = id ?? throw new ArgumentNullException(nameof(id), "Identifier must not be null.");
     }
 
-    string? IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
+    string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
 
     public override string ToString() => _id;
 

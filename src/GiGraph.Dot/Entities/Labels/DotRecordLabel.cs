@@ -28,5 +28,5 @@ public class DotRecordLabel : DotLabel
     }
 
     protected override string? GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
-        ((IDotEncodable) _record)?.GetDotEncodedValue(options, syntaxRules);
+        ((IDotEncodable) _record).GetDotEncodedValue(options, syntaxRules);
 }
