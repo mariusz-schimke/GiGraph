@@ -1,6 +1,4 @@
-﻿using System;
-using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Output.Metadata;
@@ -8,7 +6,7 @@ using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Html.LineBreak.Attributes;
 
-public class DotHtmlLineBreakAttributes : DotHtmlElementAttributes<IDotHtmlLineBreakAttributes, DotHtmlLineBreakAttributes>, IDotHtmlLineBreakAttributes
+public partial class DotHtmlLineBreakAttributes : DotHtmlElementAttributes<IDotHtmlLineBreakAttributes, DotHtmlLineBreakAttributes>, IDotHtmlLineBreakAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlLineBreakAttributes, IDotHtmlLineBreakAttributes>().BuildLazy();
 
@@ -23,9 +21,5 @@ public class DotHtmlLineBreakAttributes : DotHtmlElementAttributes<IDotHtmlLineB
     }
 
     [DotAttributeKey("align")]
-    public virtual DotHorizontalAlignment? LineAlignment
-    {
-        get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotHorizontalAlignment? LineAlignment { get; set; }
 }
