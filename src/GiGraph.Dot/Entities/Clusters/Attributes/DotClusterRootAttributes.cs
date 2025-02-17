@@ -1,5 +1,3 @@
-using System;
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
@@ -59,30 +57,14 @@ public partial class DotClusterRootAttributes : DotClusterNodeRootCommonAttribut
     }
 
     [DotAttributeKey(DotAttributeKeys.Rank)]
-    public virtual DotRank? NodeRank
-    {
-        get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotRank? NodeRank { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.PenColor)]
-    public virtual DotColor? BorderColor
-    {
-        get => GetValueAsColor(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial DotColor? BorderColor { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.BgColor)]
-    public virtual DotColorDefinition? BackgroundColor
-    {
-        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial DotColorDefinition? BackgroundColor { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Peripheries)]
-    public virtual int? Peripheries
-    {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial int? Peripheries { get; set; }
 }
