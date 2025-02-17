@@ -12,6 +12,9 @@ public partial class DotAttributeCollection
     /// <param name="attribute">
     ///     The attribute to include in the collection.
     /// </param>
+    /// <typeparam name="TAttribute">
+    ///     The type of attribute.
+    /// </typeparam>
     public virtual TAttribute Put<TAttribute>(TAttribute attribute)
         where TAttribute : DotAttribute
     {
@@ -19,62 +22,20 @@ public partial class DotAttributeCollection
         return attribute;
     }
 
-    protected internal virtual void SetOrRemove<TAttribute, TValue>(string key, TValue value, Func<string, TValue, TAttribute> createAttribute)
+    /// <summary>
+    ///     Adds or removes the specified attribute from the collection. The attribute is removed if it is null.
+    /// </summary>
+    /// <param name="key">
+    ///     The key of the attribute used for removal.
+    /// </param>
+    /// <param name="attribute">
+    ///     The attribute to add.
+    /// </param>
+    /// <typeparam name="TAttribute">
+    ///     The type of attribute.
+    /// </typeparam>
+    protected virtual void Put<TAttribute>(string key, TAttribute? attribute)
         where TAttribute : DotAttribute
-    {
-        PutOrRemove(key, value is null ? null : createAttribute(key, value));
-    }
-
-    protected internal virtual void SetOrRemove(string key, DotEscapeString? value)
-    {
-        SetOrRemove(key, value, (k, v) => _attributeFactory.CreateEscapeString(k, v!));
-    }
-
-    protected internal virtual void SetOrRemove(string key, string? value)
-    {
-        SetOrRemove(key, value, (k, v) => _attributeFactory.CreateString(k, v!));
-    }
-
-    protected internal virtual void SetOrRemove(string key, int? value)
-    {
-        SetOrRemove(key, value, (k, v) => _attributeFactory.CreateInt(k, v!.Value));
-    }
-
-    protected internal virtual void SetOrRemove(string key, double? value)
-    {
-        SetOrRemove(key, value, (k, v) => _attributeFactory.CreateDouble(k, v!.Value));
-    }
-
-    protected internal virtual void SetOrRemove(string key, double[]? value)
-    {
-        SetOrRemove(key, value, (k, v) => _attributeFactory.CreateDoubleArray(k, v!));
-    }
-
-    protected internal virtual void SetOrRemove(string key, bool? value)
-    {
-        SetOrRemove(key, value, (k, v) => _attributeFactory.CreateBool(k, v!.Value));
-    }
-
-    protected internal virtual void SetOrRemoveComplex<TComplex>(string key, TComplex? value)
-        where TComplex : IDotEncodable
-    {
-        SetOrRemove(key, value, (s, v) => _attributeFactory.CreateComplex(s, v!));
-    }
-
-    protected internal virtual void SetOrRemoveComplex<TComplex>(string key, TComplex[]? value)
-        where TComplex : IDotEncodable
-    {
-        SetOrRemove(key, value, (s, v) => _attributeFactory.CreateComplexArray(s, v!));
-    }
-
-    protected internal virtual void SetOrRemoveEnum<TEnum>(string key, bool hasValue, Func<TEnum> value)
-        where TEnum : struct, Enum
-    {
-        PutOrRemove(key, hasValue ? _attributeFactory.CreateEnum(key, value()) : null);
-    }
-
-    protected virtual void PutOrRemove<T>(string key, T? attribute)
-        where T : DotAttribute
     {
         if (attribute is not null)
         {
@@ -98,6 +59,54 @@ public partial class DotAttributeCollection
         {
             Put(attribute);
         }
+    }
+
+    protected internal virtual void SetValue(string key, string? value)
+    {
+        Put(key, value is null ? null : _attributeFactory.CreateString(key, value));
+    }
+
+    protected internal virtual void SetValue(string key, DotEscapeString? value)
+    {
+        Put(key, value is null ? null : _attributeFactory.CreateEscapeString(key, value));
+    }
+
+    protected internal virtual void SetValue(string key, int? value)
+    {
+        Put(key, value is null ? null : _attributeFactory.CreateInt(key, value.Value));
+    }
+
+    protected internal virtual void SetValue(string key, double? value)
+    {
+        Put(key, value is null ? null : _attributeFactory.CreateDouble(key, value.Value));
+    }
+
+    protected internal virtual void SetValue(string key, double[]? value)
+    {
+        Put(key, value is null ? null : _attributeFactory.CreateDoubleArray(key, value));
+    }
+
+    protected internal virtual void SetValue(string key, bool? value)
+    {
+        Put(key, value is null ? null : _attributeFactory.CreateBool(key, value.Value));
+    }
+
+    protected internal virtual void SetValue<TComplex>(string key, TComplex? value)
+        where TComplex : IDotEncodable
+    {
+        Put(key, value is null ? null : _attributeFactory.CreateComplex(key, value));
+    }
+
+    protected internal virtual void SetValue<TComplex>(string key, TComplex[]? value)
+        where TComplex : IDotEncodable
+    {
+        Put(key, value is null ? null : _attributeFactory.CreateComplexArray(key, value));
+    }
+
+    protected internal virtual void SetValue<TEnum>(string key, TEnum? value)
+        where TEnum : struct, Enum
+    {
+        Put(key, value is null ? null : _attributeFactory.CreateEnum(key, value.Value));
     }
 
     /// <summary>
