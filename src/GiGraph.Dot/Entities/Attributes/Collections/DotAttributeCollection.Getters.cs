@@ -127,6 +127,8 @@ public partial class DotAttributeCollection
         return false;
     }
 
+    // todo: te metody nie są wołane, bo niesłusznie wywoływany jest generyczny ich wariant
+    
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="int" />. If the
     ///     attribute is found, but its value cannot be cast nor converted to the specified type, an exception is thrown.
