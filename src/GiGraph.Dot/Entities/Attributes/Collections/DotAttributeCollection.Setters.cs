@@ -15,14 +15,14 @@ public partial class DotAttributeCollection
     public virtual TAttribute Put<TAttribute>(TAttribute attribute)
         where TAttribute : DotAttribute
     {
-        this[attribute.Key] = attribute;
+        this[attribute.Key] = attribute ?? throw new ArgumentNullException(nameof(attribute), "Attribute must not be null.");
         return attribute;
     }
 
-    protected internal virtual void SetOrRemove<TAttribute, TValue>(string key, TValue value, Func<string, TValue, TAttribute> newAttribute)
+    protected internal virtual void SetOrRemove<TAttribute, TValue>(string key, TValue value, Func<string, TValue, TAttribute> createAttribute)
         where TAttribute : DotAttribute
     {
-        SetOrRemove(key, value is null ? null : newAttribute(key, value));
+        PutOrRemove(key, value is null ? null : createAttribute(key, value));
     }
 
     protected internal virtual void SetOrRemove(string key, DotEscapeString? value)
@@ -70,10 +70,10 @@ public partial class DotAttributeCollection
     protected internal virtual void SetOrRemoveEnum<TEnum>(string key, bool hasValue, Func<TEnum> value)
         where TEnum : struct, Enum
     {
-        SetOrRemove(key, hasValue ? _attributeFactory.CreateEnum(key, value()) : null);
+        PutOrRemove(key, hasValue ? _attributeFactory.CreateEnum(key, value()) : null);
     }
 
-    protected virtual void SetOrRemove<T>(string key, T? attribute)
+    protected virtual void PutOrRemove<T>(string key, T? attribute)
         where T : DotAttribute
     {
         if (attribute is not null)
@@ -92,7 +92,7 @@ public partial class DotAttributeCollection
     /// <param name="attributes">
     ///     The attributes to include in the collection.
     /// </param>
-    public virtual void SetRange(IEnumerable<DotAttribute> attributes)
+    public virtual void PutRange(IEnumerable<DotAttribute> attributes)
     {
         foreach (var attribute in attributes)
         {
