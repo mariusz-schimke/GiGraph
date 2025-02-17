@@ -1,6 +1,4 @@
-﻿using System;
-using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
@@ -8,7 +6,7 @@ using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
-public class DotHtmlTableCellAttributes : DotHtmlTableTableCellCommonAttributes<IDotHtmlTableCellAttributes, DotHtmlTableCellAttributes>, IDotHtmlTableCellAttributes
+public partial class DotHtmlTableCellAttributes : DotHtmlTableTableCellCommonAttributes<IDotHtmlTableCellAttributes, DotHtmlTableCellAttributes>, IDotHtmlTableCellAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableCellAttributes, IDotHtmlTableCellAttributes>().BuildLazy();
 
@@ -22,31 +20,17 @@ public class DotHtmlTableCellAttributes : DotHtmlTableTableCellCommonAttributes<
     {
     }
 
+    // todo: sprawdzić, czy wszystkie metody są partial (czy nie brakuje tego słowa kluczowego)!!!
+
     [DotAttributeKey("align")]
-    public virtual DotHtmlTableCellHorizontalAlignment? HorizontalAlignment
-    {
-        get => GetValueAs<DotHtmlTableCellHorizontalAlignment>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotHtmlTableCellHorizontalAlignment? HorizontalAlignment { get; set; }
 
     [DotAttributeKey("balign")]
-    public virtual DotHorizontalAlignment? HorizontalLineAlignment
-    {
-        get => GetValueAs<DotHorizontalAlignment>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotHorizontalAlignment? HorizontalLineAlignment { get; set; }
 
     [DotAttributeKey("colspan")]
-    public virtual int? ColumnSpan
-    {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial int? ColumnSpan { get; set; }
 
     [DotAttributeKey("rowspan")]
-    public virtual int? RowSpan
-    {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial int? RowSpan { get; set; }
 }
