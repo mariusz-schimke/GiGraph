@@ -1,5 +1,3 @@
-using System;
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
@@ -7,7 +5,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
-using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
@@ -63,9 +60,12 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
     public DotEdgeStyleAttributeOptions Style { get; }
     public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
-    // todo: can't handle implicit implementation
     [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
-    partial DotStyles? IDotEdgeAttributes.Style { get; set; }
+    DotStyles? IDotEdgeAttributes.Style
+    {
+        get => _attributes.GetValue(DotStyleAttributeOptions.StyleKey, out DotStyles? result) ? result : null;
+        set => _attributes.SetOrRemove(DotStyleAttributeOptions.StyleKey, value);
+    }
 
     [DotAttributeKey(DotAttributeKeys.Comment)]
     public virtual partial string? Comment { get; set; }
