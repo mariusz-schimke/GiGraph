@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.EnumHelpers;
 using GiGraph.Dot.Types.Styling;
@@ -18,8 +17,8 @@ public abstract class DotStyleAttributeOptions
 
     protected virtual DotStyles? Style
     {
-        get => _attributes.GetValue<DotStyles>(StyleKey, out var result) ? result : null;
-        set => _attributes.SetOrRemoveEnum(StyleKey, value.HasValue, () => value!.Value);
+        get => _attributes.GetValue(StyleKey, out DotStyles? result) ? result : null;
+        set => _attributes.SetOrRemove(StyleKey, value);
     }
 
     /// <summary>

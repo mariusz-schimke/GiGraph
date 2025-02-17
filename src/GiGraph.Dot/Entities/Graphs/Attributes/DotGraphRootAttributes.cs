@@ -13,7 +13,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
-public class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDotGraphAttributes, DotGraphRootAttributes>, IDotGraphRootAttributes
+public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDotGraphAttributes, DotGraphRootAttributes>, IDotGraphRootAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().BuildLazy();
 
@@ -59,42 +59,22 @@ public class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDotGraphAtt
     [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
     DotStyles? IDotGraphAttributes.Style
     {
-        get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
+        get => _attributes.GetValue(DotStyleAttributeOptions.StyleKey, out DotStyles? result) ? result : null;
+        set => _attributes.SetOrRemove(DotStyleAttributeOptions.StyleKey, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Splines)]
-    public virtual DotEdgeShape? EdgeShape
-    {
-        get => GetValueAs<DotEdgeShape>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotEdgeShape? EdgeShape { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Comment)]
-    public virtual string? Comment
-    {
-        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial string? Comment { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Charset)]
-    public virtual string? Charset
-    {
-        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial string? Charset { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.ImagePath)]
-    public virtual string? ImageDirectories
-    {
-        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial string? ImageDirectories { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Root)]
-    public virtual DotId? RootNodeId
-    {
-        get => GetValueAsId(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial DotId? RootNodeId { get; set; }
 }
