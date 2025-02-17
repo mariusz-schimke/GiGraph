@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -8,7 +7,7 @@ using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes;
 
-public class DotEdgeLabelHyperlinkAttributes : DotEdgeHyperlinkAttributes
+public partial class DotEdgeLabelHyperlinkAttributes : DotEdgeHyperlinkAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeLabelHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().BuildLazy();
 
@@ -27,21 +26,13 @@ public class DotEdgeLabelHyperlinkAttributes : DotEdgeHyperlinkAttributes
     ///     <see cref="IDotEdgeRootAttributes.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Url" /> defined for the edge.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.LabelUrl)]
-    public override DotEscapeString? Url
-    {
-        get => base.Url;
-        set => base.Url = value;
-    }
+    public override partial DotEscapeString? Url { get; set; }
 
     /// <summary>
     ///     Synonym for <see cref="Url" /> (svg, map only).
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.LabelHref)]
-    public override DotEscapeString? Href
-    {
-        get => base.Href;
-        set => base.Href = value;
-    }
+    public override partial DotEscapeString? Href { get; set; }
 
     /// <summary>
     ///     If <see cref="Url" /> is specified, or if the edge has a <see cref="IDotEdgeRootAttributes.Hyperlink" />
@@ -51,20 +42,12 @@ public class DotEdgeLabelHyperlinkAttributes : DotEdgeHyperlinkAttributes
     ///     <see cref="IDotEdgeRootAttributes.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Target" /> is used.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.LabelTarget)]
-    public override DotEscapeString? Target
-    {
-        get => base.Target;
-        set => base.Target = value;
-    }
+    public override partial DotEscapeString? Target { get; set; }
 
     /// <summary>
     ///     Tooltip annotation attached to the label of the edge (svg, cmap only). This is used only if <see cref="Url" /> is specified,
     ///     or if the edge has a <see cref="IDotEdgeRootAttributes.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Url" /> specified.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.LabelTooltip)]
-    public override DotEscapeString? Tooltip
-    {
-        get => base.Tooltip;
-        set => base.Tooltip = value;
-    }
+    public override partial DotEscapeString? Tooltip { get; set; }
 }

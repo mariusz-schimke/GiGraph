@@ -5,6 +5,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;

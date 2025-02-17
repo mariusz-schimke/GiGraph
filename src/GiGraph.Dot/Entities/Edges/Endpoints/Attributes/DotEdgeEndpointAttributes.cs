@@ -1,5 +1,3 @@
-using System;
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -24,44 +22,20 @@ public abstract class DotEdgeEndpointAttributes : DotEntityAttributesWithMetadat
     public DotEdgeEndpointHyperlinkAttributes Hyperlink { get; }
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.Label" />
-    public virtual DotLabel? Label
-    {
-        get => GetValueAsLabel(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public abstract DotLabel? Label { get; set; }
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClipToNodeBoundary" />
-    public virtual bool? ClipToNodeBoundary
-    {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public abstract bool? ClipToNodeBoundary { get; set; }
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.GroupName" />
-    public virtual string? GroupName
-    {
-        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public abstract string? GroupName { get; set; }
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.Port" />
-    public virtual DotEndpointPort? Port
-    {
-        get => GetValueAsEndpointPort(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public abstract DotEndpointPort? Port { get; set; }
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClusterId" />
-    public virtual DotClusterId? ClusterId
-    {
-        get => GetValueAsClusterId(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public abstract DotClusterId? ClusterId { get; set; }
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.Arrowhead" />
-    public virtual DotArrowheadDefinition? Arrowhead
-    {
-        get => GetValueAsArrowheadDefinition(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public abstract DotArrowheadDefinition? Arrowhead { get; set; }
 }
