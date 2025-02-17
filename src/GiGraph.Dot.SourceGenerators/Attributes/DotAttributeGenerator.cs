@@ -104,6 +104,7 @@ public class DotAttributeGenerator : IIncrementalGenerator
 
         sb.AppendLine("}");
 
+        // todo: adjust file name to include namespace and replace special chars
         // context.WriteWarning(sb.ToString().Replace("\n", " "));
         context.AddSource($"{classSymbol.Name}_AttributeProperties.g.cs", sb.ToString());
     }
@@ -122,6 +123,7 @@ public class DotAttributeGenerator : IIncrementalGenerator
                     .GetAttributes()
                     .FirstOrDefault(attr => SymbolEqualityComparer.Default.Equals(attr.AttributeClass, attributeSymbol))
             })
+            .Where(propertySymbol => true == propertySymbol.PropertySymbol?.IsPartialDefinition)
             .Where(propertySymbol => propertySymbol.DotKeyAttribute is not null)
             .Select(metadata =>
             {

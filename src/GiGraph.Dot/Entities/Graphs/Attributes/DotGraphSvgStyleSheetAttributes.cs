@@ -1,13 +1,11 @@
-﻿using System;
-using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
-public class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGraphSvgStyleSheetAttributes, DotGraphSvgStyleSheetAttributes>, IDotGraphSvgStyleSheetAttributes
+public partial class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGraphSvgStyleSheetAttributes, DotGraphSvgStyleSheetAttributes>, IDotGraphSvgStyleSheetAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphSvgStyleSheetAttributes, IDotGraphSvgStyleSheetAttributes>().BuildLazy();
 
@@ -23,11 +21,7 @@ public class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGr
 
     /// <inheritdoc cref="IDotGraphSvgStyleSheetAttributes.Url" />
     [DotAttributeKey(DotAttributeKeys.SvgStyleSheet)]
-    public virtual string? Url
-    {
-        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial string? Url { get; set; }
 
     /// <summary>
     ///     Sets style sheet attributes.
