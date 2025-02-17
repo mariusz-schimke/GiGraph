@@ -1,5 +1,3 @@
-using System;
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -9,7 +7,7 @@ using GiGraph.Dot.Types.Images;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
-public class DotNodeImageAttributes : DotEntityAttributesWithMetadata<IDotNodeImageAttributes, DotNodeImageAttributes>, IDotNodeImageAttributes
+public partial class DotNodeImageAttributes : DotEntityAttributesWithMetadata<IDotNodeImageAttributes, DotNodeImageAttributes>, IDotNodeImageAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeImageAttributes, IDotNodeImageAttributes>().BuildLazy();
 
@@ -25,27 +23,15 @@ public class DotNodeImageAttributes : DotEntityAttributesWithMetadata<IDotNodeIm
 
     /// <inheritdoc cref="IDotNodeImageAttributes.Path" />
     [DotAttributeKey(DotAttributeKeys.Image)]
-    public virtual string? Path
-    {
-        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial string? Path { get; set; }
 
     /// <inheritdoc cref="IDotNodeImageAttributes.Alignment" />
     [DotAttributeKey(DotAttributeKeys.ImagePos)]
-    public virtual DotAlignment? Alignment
-    {
-        get => GetValueAs<DotAlignment>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotAlignment? Alignment { get; set; }
 
     /// <inheritdoc cref="IDotNodeImageAttributes.Scaling" />
     [DotAttributeKey(DotAttributeKeys.ImageScale)]
-    public virtual DotImageScaling? Scaling
-    {
-        get => GetValueAs<DotImageScaling>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotImageScaling? Scaling { get; set; }
 
     /// <summary>
     ///     Specifies image attributes.

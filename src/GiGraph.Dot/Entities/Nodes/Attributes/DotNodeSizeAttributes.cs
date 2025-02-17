@@ -9,7 +9,7 @@ using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
-public class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDotNodeSizeAttributes, DotNodeSizeAttributes>, IDotNodeSizeAttributes
+public partial class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDotNodeSizeAttributes, DotNodeSizeAttributes>, IDotNodeSizeAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeSizeAttributes, IDotNodeSizeAttributes>().BuildLazy();
 
@@ -25,27 +25,15 @@ public class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDotNodeSiz
 
     /// <inheritdoc cref="IDotNodeSizeAttributes.Width" />
     [DotAttributeKey(DotAttributeKeys.Width)]
-    public virtual double? Width
-    {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial double? Width { get; set; }
 
     /// <inheritdoc cref="IDotNodeSizeAttributes.Height" />
     [DotAttributeKey(DotAttributeKeys.Height)]
-    public virtual double? Height
-    {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial double? Height { get; set; }
 
     /// <inheritdoc cref="IDotNodeSizeAttributes.Mode" />
     [DotAttributeKey(DotAttributeKeys.FixedSize)]
-    public virtual DotNodeSizing? Mode
-    {
-        get => GetValueAs<DotNodeSizing>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotNodeSizing? Mode { get; set; }
 
     /// <summary>
     ///     Sets size attributes.
