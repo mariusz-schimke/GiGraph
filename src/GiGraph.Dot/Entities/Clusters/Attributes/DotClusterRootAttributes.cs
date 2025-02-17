@@ -15,7 +15,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes;
 
-public class DotClusterRootAttributes : DotClusterNodeRootCommonAttributes<IDotClusterAttributes, DotClusterRootAttributes>, IDotClusterRootAttributes
+public partial class DotClusterRootAttributes : DotClusterNodeRootCommonAttributes<IDotClusterAttributes, DotClusterRootAttributes>, IDotClusterRootAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
 
@@ -43,8 +43,8 @@ public class DotClusterRootAttributes : DotClusterNodeRootCommonAttributes<IDotC
     [DotAttributeKey(DotAttributeKeys.Cluster)]
     bool? IDotClusterAttributes.IsCluster
     {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
+        get => _attributes.GetValue(DotAttributeKeys.Cluster, out bool? result) ? result : null;
+        set => _attributes.SetOrRemove(DotAttributeKeys.Cluster, value);
     }
 
     public DotFontAttributes Font { get; }
@@ -54,8 +54,8 @@ public class DotClusterRootAttributes : DotClusterNodeRootCommonAttributes<IDotC
     [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
     DotStyles? IDotClusterAttributes.Style
     {
-        get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
+        get => _attributes.GetValue(DotStyleAttributeOptions.StyleKey, out DotStyles? result) ? result : null;
+        set => _attributes.SetOrRemove(DotStyleAttributeOptions.StyleKey, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Rank)]

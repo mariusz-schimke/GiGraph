@@ -54,8 +54,8 @@ public class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<IDotNode
     [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
     DotStyles? IDotNodeAttributes.Style
     {
-        get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
+        get => _attributes.GetValue(DotStyleAttributeOptions.StyleKey, out DotStyles? result) ? result : null;
+        set => _attributes.SetOrRemove(DotStyleAttributeOptions.StyleKey, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Comment)]
