@@ -96,7 +96,7 @@ public class DotAttributeGenerator : IIncrementalGenerator
         {
             sb.AppendLine($"    {property.Modifiers} {property.ReturnType} {property.Name}");
             sb.AppendLine("    {");
-            sb.AppendLine($"        get => _attributes.GetValue(\"{property.DotKey}\", out {property.ReturnType.TrimEnd('?')} value) ? value : null;");
+            sb.AppendLine($"        get => _attributes.GetValue(\"{property.DotKey}\", out {property.ReturnType} value) ? value : null;");
             sb.AppendLine($"        set => _attributes.SetOrRemove(\"{property.DotKey}\", value);");
             sb.AppendLine("    }");
             sb.AppendLine();
