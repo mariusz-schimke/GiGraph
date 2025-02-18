@@ -64,7 +64,7 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
     [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
     DotStyles? IDotEdgeAttributes.Style
     {
-        get => _attributes.GetValue(DotStyleAttributeOptions.StyleKey, out DotStyles? result) ? result : null;
+        get => _attributes.GetValueAs(DotStyleAttributeOptions.StyleKey, out DotStyles? result) ? result : null;
         set => _attributes.SetOrRemove(DotStyleAttributeOptions.StyleKey, value);
     }
 

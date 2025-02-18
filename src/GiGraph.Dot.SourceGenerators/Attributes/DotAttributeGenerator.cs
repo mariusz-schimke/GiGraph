@@ -87,6 +87,7 @@ public class DotAttributeGenerator : IIncrementalGenerator
         // todo: ignore non-partial classes and non-partial properties?
 
         sb.AppendLine("#nullable enable");
+        sb.AppendLine();
         sb.AppendLine($"namespace {classSymbol.ContainingNamespace.ToDisplayString()};");
         sb.AppendLine();
         sb.AppendLine($"{classModifiers}partial class {classSymbol.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat)}");
@@ -96,7 +97,7 @@ public class DotAttributeGenerator : IIncrementalGenerator
         {
             sb.AppendLine($"    {property.Modifiers} {property.ReturnType} {property.Name}");
             sb.AppendLine("    {");
-            sb.AppendLine($"        get => _attributes.GetValue(\"{property.DotKey}\", out {property.ReturnType} value) ? value : null;");
+            sb.AppendLine($"        get => _attributes.GetValueAs(\"{property.DotKey}\", out {property.ReturnType} value) ? value : null;");
             sb.AppendLine($"        set => _attributes.SetOrRemove(\"{property.DotKey}\", value);");
             sb.AppendLine("    }");
             sb.AppendLine();
