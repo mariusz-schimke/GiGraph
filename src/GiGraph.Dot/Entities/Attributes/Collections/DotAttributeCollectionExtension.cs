@@ -11,13 +11,10 @@ using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Packing;
 using GiGraph.Dot.Types.Ranks;
 
-namespace GiGraph.Dot.Entities.Attributes.Collections.Extensions;
+namespace GiGraph.Dot.Entities.Attributes.Collections;
 
 public static class DotAttributeCollectionExtension
 {
-    // todo: tu zmieniłem zachowanie, bo wcześniej rzucało wyjątek, a teraz zwraca false.
-    // albo to zmienić albo zaktualizować komentarz
-
     // todo: sprawdzić, czy dla wszystkich typów deklarujących implicit operator są tu konwersje
 
     /// <summary>
@@ -26,18 +23,19 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, out double value)
     {
-        if (@this.TryGetValueAs(key, out value))
+        if (!@this.TryGetValue(key, out var attribute))
         {
-            return true;
+            value = 0;
+            return false;
         }
 
-        if (@this.TryGetValueAs<int>(key, out var integer))
+        if (attribute.TryGetValueAs<int>(out var integer))
         {
             value = integer;
             return true;
         }
 
-        return false;
+        return attribute.GetValueAs(out value);
     }
 
     /// <summary>
@@ -46,18 +44,19 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotColor value)
     {
-        if (@this.TryGetValueAs(key, out value))
+        if (!@this.TryGetValue(key, out var attribute))
         {
+            value = null;
+            return false;
+        }
+
+        if (attribute.TryGetValueAs<Color>(out var color))
+        {
+            value = color;
             return true;
         }
 
-        if (@this.TryGetValueAs<Color>(key, out var color))
-        {
-            value = new(color);
-            return true;
-        }
-
-        return false;
+        return attribute.GetValueAs(out value);
     }
 
     /// <summary>
@@ -67,18 +66,19 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotColorDefinition value)
     {
-        if (@this.TryGetValueAs(key, out value))
+        if (!@this.TryGetValue(key, out var attribute))
         {
-            return true;
+            value = null;
+            return false;
         }
 
-        if (@this.TryGetValueAs<Color>(key, out var color))
+        if (attribute.TryGetValueAs<Color>(out var color))
         {
             value = new DotColor(color);
             return true;
         }
 
-        return false;
+        return attribute.GetValueAs(out value);
     }
 
     /// <summary>
@@ -88,18 +88,19 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotEscapeString value)
     {
-        if (@this.TryGetValueAs(key, out value))
+        if (!@this.TryGetValue(key, out var attribute))
         {
-            return true;
+            value = null;
+            return false;
         }
 
-        if (@this.TryGetValueAs<string>(key, out var s))
+        if (attribute.TryGetValueAs<string>(out var s))
         {
             value = (DotEscapedString) s;
             return true;
         }
 
-        return false;
+        return attribute.GetValueAs(out value);
     }
 
     /// <summary>
@@ -108,18 +109,19 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotLabel value)
     {
-        if (@this.TryGetValueAs(key, out value))
+        if (!@this.TryGetValue(key, out var attribute))
         {
-            return true;
+            value = null;
+            return false;
         }
 
-        if (@this.TryGetValueAs<string>(key, out var s))
+        if (attribute.TryGetValueAs<string>(out var s))
         {
             value = (DotEscapedString) s;
             return true;
         }
 
-        return false;
+        return attribute.GetValueAs(out value);
     }
 
     /// <summary>
@@ -129,18 +131,19 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotArrowheadDefinition value)
     {
-        if (@this.TryGetValueAs(key, out value))
+        if (!@this.TryGetValue(key, out var attribute))
         {
-            return true;
+            value = null;
+            return false;
         }
 
-        if (@this.TryGetValueAs<DotArrowheadShape>(key, out var shape))
+        if (attribute.TryGetValueAs<DotArrowheadShape>(out var shape))
         {
             value = shape;
             return true;
         }
 
-        return false;
+        return attribute.GetValueAs(out value);
     }
 
     /// <summary>
@@ -150,18 +153,19 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotPackingDefinition value)
     {
-        if (@this.TryGetValueAs(key, out value))
+        if (!@this.TryGetValue(key, out var attribute))
         {
-            return true;
+            value = null;
+            return false;
         }
 
-        if (@this.TryGetValueAs<bool>(key, out var toggle))
+        if (attribute.TryGetValueAs<bool>(out var toggle))
         {
             value = toggle;
             return true;
         }
 
-        return false;
+        return attribute.GetValueAs(out value);
     }
 
     /// <summary>
@@ -171,18 +175,19 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotPackingModeDefinition value)
     {
-        if (@this.TryGetValueAs(key, out value))
+        if (!@this.TryGetValue(key, out var attribute))
         {
-            return true;
+            value = null;
+            return false;
         }
 
-        if (@this.TryGetValueAs<DotPackingGranularity>(key, out var toggle))
+        if (attribute.TryGetValueAs<DotPackingGranularity>(out var toggle))
         {
             value = toggle;
             return true;
         }
 
-        return false;
+        return attribute.GetValueAs(out value);
     }
 
     /// <summary>
@@ -192,30 +197,31 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotRankSeparationDefinition value)
     {
-        if (@this.TryGetValueAs(key, out value))
+        if (!@this.TryGetValue(key, out var attribute))
         {
-            return true;
+            value = null;
+            return false;
         }
 
-        if (@this.TryGetValueAs<int>(key, out var rankSeparationInt))
+        if (attribute.TryGetValueAs<int>(out var rankSeparationInt))
         {
             value = rankSeparationInt;
             return true;
         }
 
-        if (@this.TryGetValueAs<double>(key, out var rankSeparationDouble))
+        if (attribute.TryGetValueAs<double>(out var rankSeparationDouble))
         {
             value = rankSeparationDouble;
             return true;
         }
 
-        if (@this.TryGetValueAs<double[]>(key, out var radialRankSeparation))
+        if (attribute.TryGetValueAs<double[]>(out var radialRankSeparation))
         {
             value = radialRankSeparation;
             return true;
         }
 
-        return false;
+        return attribute.GetValueAs(out value);
     }
 
     /// <summary>
@@ -225,30 +231,31 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotGraphScalingDefinition value)
     {
-        if (@this.TryGetValueAs(key, out value))
+        if (!@this.TryGetValue(key, out var attribute))
         {
-            return true;
+            value = null;
+            return false;
         }
 
-        if (@this.TryGetValueAs<int>(key, out var scalingAspectRatioInt))
+        if (attribute.TryGetValueAs<int>(out var scalingAspectRatioInt))
         {
             value = scalingAspectRatioInt;
             return true;
         }
 
-        if (@this.TryGetValueAs<double>(key, out var scalingAspectRatioDouble))
+        if (attribute.TryGetValueAs<double>(out var scalingAspectRatioDouble))
         {
             value = scalingAspectRatioDouble;
             return true;
         }
 
-        if (@this.TryGetValueAs<DotGraphScaling>(key, out var scalingOption))
+        if (attribute.TryGetValueAs<DotGraphScaling>(out var scalingOption))
         {
             value = scalingOption;
             return true;
         }
 
-        return false;
+        return attribute.GetValueAs(out value);
     }
 
     /// <summary>
@@ -258,24 +265,25 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotEndpointPort value)
     {
-        if (@this.TryGetValueAs(key, out value))
+        if (!@this.TryGetValue(key, out var attribute))
         {
-            return true;
+            value = null;
+            return false;
         }
 
-        if (@this.TryGetValueAs<DotCompassPoint>(key, out var compassPoint))
+        if (attribute.TryGetValueAs<DotCompassPoint>(out var compassPoint))
         {
             value = compassPoint;
             return true;
         }
 
-        if (@this.TryGetValueAs<string>(key, out var s))
+        if (attribute.TryGetValueAs<string>(out var s))
         {
             value = s;
             return true;
         }
 
-        return false;
+        return attribute.GetValueAs(out value);
     }
 
     /// <summary>
@@ -284,18 +292,19 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotId value)
     {
-        if (@this.TryGetValueAs(key, out value))
+        if (!@this.TryGetValue(key, out var attribute))
         {
-            return true;
+            value = null;
+            return false;
         }
 
-        if (@this.TryGetValueAs<string>(key, out var s))
+        if (attribute.TryGetValueAs<string>(out var s))
         {
             value = s;
             return true;
         }
 
-        return false;
+        return attribute.GetValueAs(out value);
     }
 
     /// <summary>
@@ -304,17 +313,18 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotClusterId value)
     {
-        if (@this.TryGetValueAs(key, out value))
+        if (!@this.TryGetValue(key, out var attribute))
         {
-            return true;
+            value = null;
+            return false;
         }
 
-        if (@this.TryGetValueAs<string>(key, out var s))
+        if (attribute.TryGetValueAs<string>(out var s))
         {
             value = s;
             return true;
         }
 
-        return false;
+        return attribute.GetValueAs(out value);
     }
 }
