@@ -21,7 +21,7 @@ public static class DotAttributeCollectionExtension
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="double" />. If
     ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
-    public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, out double value)
+    public static bool GetNumber(this DotAttributeCollection @this, string key, out double value)
     {
         if (!@this.TryGetValue(key, out var attribute))
         {
@@ -42,7 +42,7 @@ public static class DotAttributeCollectionExtension
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotColor" />. If
     ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
-    public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotColor value)
+    public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotColor value)
     {
         if (!@this.TryGetValue(key, out var attribute))
         {
@@ -64,7 +64,7 @@ public static class DotAttributeCollectionExtension
     ///     <see cref="DotColorDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the returned
     ///     type, an exception is thrown.
     /// </summary>
-    public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotColorDefinition value)
+    public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotColorDefinition value)
     {
         if (!@this.TryGetValue(key, out var attribute))
         {
@@ -86,7 +86,7 @@ public static class DotAttributeCollectionExtension
     ///     <see cref="DotEscapeString" />. If the attribute is found, but its value cannot be cast nor converted to the returned type,
     ///     an exception is thrown.
     /// </summary>
-    public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotEscapeString value)
+    public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotEscapeString value)
     {
         if (!@this.TryGetValue(key, out var attribute))
         {
@@ -107,7 +107,7 @@ public static class DotAttributeCollectionExtension
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotLabel" />. If
     ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
-    public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotLabel value)
+    public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotLabel value)
     {
         if (!@this.TryGetValue(key, out var attribute))
         {
@@ -129,7 +129,7 @@ public static class DotAttributeCollectionExtension
     ///     <see cref="DotArrowheadDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the returned
     ///     type, an exception is thrown.
     /// </summary>
-    public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotArrowheadDefinition value)
+    public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotArrowheadDefinition value)
     {
         if (!@this.TryGetValue(key, out var attribute))
         {
@@ -151,7 +151,7 @@ public static class DotAttributeCollectionExtension
     ///     <see cref="DotPackingDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the returned
     ///     type, an exception is thrown.
     /// </summary>
-    public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotPackingDefinition value)
+    public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotPackingDefinition value)
     {
         if (!@this.TryGetValue(key, out var attribute))
         {
@@ -173,7 +173,7 @@ public static class DotAttributeCollectionExtension
     ///     <see cref="DotPackingModeDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the
     ///     returned type, an exception is thrown.
     /// </summary>
-    public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotPackingModeDefinition value)
+    public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotPackingModeDefinition value)
     {
         if (!@this.TryGetValue(key, out var attribute))
         {
@@ -195,7 +195,7 @@ public static class DotAttributeCollectionExtension
     ///     <see cref="DotRankSeparationDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the
     ///     returned type, an exception is thrown.
     /// </summary>
-    public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotRankSeparationDefinition value)
+    public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotRankSeparationDefinition value)
     {
         if (!@this.TryGetValue(key, out var attribute))
         {
@@ -229,7 +229,7 @@ public static class DotAttributeCollectionExtension
     ///     <see cref="DotGraphScalingDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the
     ///     returned type, an exception is thrown.
     /// </summary>
-    public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotGraphScalingDefinition value)
+    public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotGraphScalingDefinition value)
     {
         if (!@this.TryGetValue(key, out var attribute))
         {
@@ -263,7 +263,7 @@ public static class DotAttributeCollectionExtension
     ///     <see cref="DotEndpointPort" />. If the attribute is found, but its value cannot be cast nor converted to the returned type,
     ///     an exception is thrown.
     /// </summary>
-    public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotEndpointPort value)
+    public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotEndpointPort value)
     {
         if (!@this.TryGetValue(key, out var attribute))
         {
@@ -290,7 +290,7 @@ public static class DotAttributeCollectionExtension
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotId" />. If the
     ///     attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
-    public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotId value)
+    public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotId value)
     {
         if (!@this.TryGetValue(key, out var attribute))
         {
@@ -311,7 +311,7 @@ public static class DotAttributeCollectionExtension
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotClusterId" />.
     ///     If the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
-    public static bool GetMultiTypedValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotClusterId value)
+    public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotClusterId value)
     {
         if (!@this.TryGetValue(key, out var attribute))
         {
