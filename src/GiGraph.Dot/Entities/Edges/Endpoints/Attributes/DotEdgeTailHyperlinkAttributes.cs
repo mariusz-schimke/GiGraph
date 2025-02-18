@@ -40,6 +40,8 @@ public partial class DotEdgeTailHyperlinkAttributes : DotEdgeEndpointHyperlinkAt
     [DotAttributeKey(DotAttributeKeys.TailTarget)]
     public override partial DotEscapeString? Target { get; set; }
 
+    // todo: sprawdzić wszystkie public override, czy w klasie bazowej ta właściwość jest abstract, jeśli nie określa kluczy atrybutów, żeby wymusić implementację
+
     /// <summary>
     ///     Tooltip annotation attached to the tail of an edge (svg, cmap only). This is used only if <see cref="Url" /> is specified.
     /// </summary>
