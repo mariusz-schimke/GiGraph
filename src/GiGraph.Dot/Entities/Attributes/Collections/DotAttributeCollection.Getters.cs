@@ -23,19 +23,14 @@ public partial class DotAttributeCollection
     ///     The key of the attribute to get.
     /// </param>
     public virtual T? GetAs<T>(string key)
-        where T : DotAttribute
-    {
-        if (!TryGetValue(key, out var attribute))
-        {
-            return null;
-        }
-
-        return attribute as T ?? throw new InvalidCastException($"The '{key}' attribute of type {attribute.GetType().Name} cannot be accessed as {typeof(T).Name}.");
-    }
+        where T : DotAttribute =>
+        TryGetValue(key, out var attribute)
+            ? attribute as T ?? throw new InvalidCastException($"The '{key}' attribute of type {attribute.GetType().Name} cannot be accessed as {typeof(T).Name}.")
+            : null;
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns it as the specified type. If the
-    ///     attribute is found, but cannot be cast as the specified type, returns false.
+    ///     attribute is not found, or cannot be cast as the specified type, returns false.
     /// </summary>
     /// <typeparam name="T">
     ///     The type to return the attribute as.
@@ -44,7 +39,7 @@ public partial class DotAttributeCollection
     ///     The key of the attribute to get.
     /// </param>
     /// <param name="attribute">
-    ///     The attribute if found and valid, or null otherwise.
+    ///     The matching attribute.
     /// </param>
     public virtual bool TryGetAs<T>(string key, [MaybeNullWhen(false)] out T attribute)
         where T : DotAttribute
@@ -60,8 +55,8 @@ public partial class DotAttributeCollection
     }
 
     /// <summary>
-    ///     Checks if an attribute with the specified key exists in the collection, and returns its value as the specified type. If the
-    ///     attribute is found, but its value cannot be cast as the specified type, an exception is thrown.
+    ///     Checks if an attribute with the specified key exists in the collection, and if it does, returns its value as the specified
+    ///     type. If the attribute is found, but its value cannot be cast as the specified type, an exception is thrown.
     /// </summary>
     /// <typeparam name="T">
     ///     The type to return the attribute value as.
@@ -70,29 +65,22 @@ public partial class DotAttributeCollection
     ///     The key of the attribute to get.
     /// </param>
     /// <param name="value">
-    ///     The value of the attribute if found and valid, or null if not found.
+    ///     The output value.
     /// </param>
     public virtual bool GetValueAs<T>(string key, [MaybeNullWhen(false)] out T value)
     {
-        if (!TryGetValue(key, out var attribute) || attribute.GetValue() is not { } attributeValue)
+        if (TryGetValue(key, out var attribute))
         {
-            value = default(T);
-            return false;
+            return attribute.GetValueAs(out value);
         }
 
-        // if not null and of a matching type, return it
-        if (attributeValue is T output)
-        {
-            value = output;
-            return true;
-        }
-
-        throw new InvalidCastException($"The '{key}' attribute value '{attributeValue}' of type {attributeValue.GetType().Name} cannot be accessed as {typeof(T).Name}.");
+        value = default(T?);
+        return false;
     }
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as the specified type. If the
-    ///     attribute is found, but its value cannot be cast as the specified type, returns false.
+    ///     attribute is not found, or its value cannot be cast as the specified type, returns false.
     /// </summary>
     /// <typeparam name="T">
     ///     The type to return the attribute value as.
@@ -101,17 +89,16 @@ public partial class DotAttributeCollection
     ///     The key of the attribute to get.
     /// </param>
     /// <param name="value">
-    ///     The value of the attribute if found and valid, or null otherwise.
+    ///     The value of the matching attribute.
     /// </param>
     public virtual bool TryGetValueAs<T>(string key, [MaybeNullWhen(false)] out T value)
     {
-        if (TryGetValue(key, out var attribute) && attribute.GetValue() is T output)
+        if (TryGetValue(key, out var attribute))
         {
-            value = output;
-            return true;
+            return attribute.TryGetValueAs(out value);
         }
 
-        value = default(T);
+        value = default(T?);
         return false;
     }
 }

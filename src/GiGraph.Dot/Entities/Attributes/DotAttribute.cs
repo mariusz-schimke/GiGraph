@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
@@ -16,6 +16,8 @@ public abstract class DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable,
     ///     Gets the key of the attribute.
     /// </summary>
     public string Key { get; }
+
+    public virtual bool HasValue => GetValue() is not null;
 
     /// <inheritdoc cref="IDotAnnotatable.Annotation" />
     public virtual string? Annotation { get; set; }
@@ -48,4 +50,54 @@ public abstract class DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable,
     ///     The key to check.
     /// </param>
     public bool HasKey(string key) => string.Equals(Key, key, StringComparison.Ordinal);
+
+    /// <summary>
+    ///     Returns the value of the attribute as the specified type. If the value cannot be cast as the specified type, an exception is
+    ///     thrown.
+    /// </summary>
+    /// <typeparam name="T">
+    ///     The type to return the attribute value as.
+    /// </typeparam>
+    /// <param name="value">
+    ///     The output value.
+    /// </param>
+    public virtual bool GetValueAs<T>([MaybeNullWhen(false)] out T value)
+    {
+        if (GetValue() is not { } attributeValue)
+        {
+            value = default(T?);
+            return false;
+        }
+
+        // if not null and of a matching type, return it
+        if (attributeValue is T output)
+        {
+            value = output;
+            return true;
+        }
+
+        throw new InvalidCastException($"The value of type {attributeValue.GetType().Name} cannot be accessed as {typeof(T).Name}.");
+    }
+
+    /// <summary>
+    ///     Returns the value of the attribute as the specified type. If the value is null, or cannot be cast as the specified type,
+    ///     returns false.
+    /// </summary>
+    /// <typeparam name="T">
+    ///     The type to return the attribute value as.
+    /// </typeparam>
+    /// <param name="value">
+    ///     The output value.
+    /// </param>
+    public virtual bool TryGetValueAs<T>([MaybeNullWhen(false)] out T value)
+    {
+        if (GetValue() is T output)
+        {
+            value = output;
+            return true;
+        }
+
+        value = default(T?);
+        return false;
+    }
 }
