@@ -1,0 +1,198 @@
+﻿digraph
+{
+    bgcolor = "/red;1"
+    center = true
+    charset = text
+    class = text
+    clusterrank = local
+    color = "/red;1"
+    colorscheme = text
+    comment = text
+    compound = true
+    concentrate = true
+    dpi = 123
+    fillcolor = "/red;1"
+    fontcolor = red
+    fontname = text
+    fontnames = hd
+    fontpath = text
+    fontsize = 123
+    forcelabels = true
+    gradientangle = 1234
+    href = escape
+    id = escape
+    imagepath = text
+    label = text
+    labeljust = c
+    labelloc = b
+    landscape = true
+    layout = text
+    margin = "1,2"
+    mclimit = 123
+    newrank = true
+    nodesep = 123
+    oneblock = true
+    ordering = out
+    orientation = landscape
+    pack = 12
+    packmode = array_b
+    pad = "1,2"
+    pencolor = red
+    penwidth = 123
+    rank = same
+    rankdir = LR
+    ranksep = 1
+    ratio = auto
+    remincross = true
+    resolution = 123
+    root = id
+    rotate = 1234
+    rotation = 123
+    size = "1,2"
+    sortv = 1234
+    splines = polyline
+    style = "bold, dashed, diagonals, dotted, filled, rounded, solid, striped"
+    stylesheet = text
+    target = escape
+    TBbalance = same
+    URL = escape
+    viewport = "1,2,3"
+
+    subgraph subgraph1
+    {
+        cluster = true
+        rank = same
+    }
+
+    subgraph "cluster cluster1"
+    {
+        bgcolor = "/red;1"
+        class = text
+        cluster = true
+        color = "/red;1"
+        colorscheme = text
+        fillcolor = "/red;1"
+        fontcolor = red
+        fontname = text
+        fontsize = 123
+        gradientangle = 1234
+        href = escape
+        id = escape
+        label = text
+        labeljust = c
+        labelloc = b
+        margin = "1,2"
+        pencolor = red
+        penwidth = 123
+        peripheries = 1234
+        rank = same
+        sortv = 1234
+        style = "bold, dashed, diagonals, dotted, filled, rounded, solid, striped"
+        target = escape
+        tooltip = escape
+        URL = escape
+    }
+
+    node1
+    [
+        class = text
+        color = "/red;1"
+        colorscheme = text
+        comment = text
+        distortion = 123
+        fillcolor = "/red;1"
+        fixedsize = false
+        fontcolor = red
+        fontname = text
+        fontsize = 123
+        gradientangle = 1234
+        group = text
+        height = 123
+        href = escape
+        id = escape
+        image = text
+        imagepos = bc
+        imagescale = true
+        label = text
+        labelloc = b
+        margin = "1,2"
+        ordering = out
+        orientation = 123
+        penwidth = 123
+        peripheries = 1234
+        regular = true
+        root = true
+        shape = box
+        sides = 1234
+        skew = 123
+        sortv = 1234
+        style = "bold, dashed, diagonals, dotted, filled, rounded, solid, striped"
+        target = escape
+        tooltip = escape
+        URL = escape
+        width = 123
+        xlabel = text
+    ]
+
+    node1 -> node2
+    [
+        arrowhead = dot
+        arrowsize = 123
+        arrowtail = dot
+        class = text
+        color = "/red;1"
+        colorscheme = text
+        comment = text
+        constraint = true
+        decorate = true
+        dir = back
+        edgehref = escape
+        edgetarget = escape
+        edgetooltip = escape
+        edgeURL = escape
+        fillcolor = "/red;1"
+        fontcolor = red
+        fontname = text
+        fontsize = 123
+        headclip = true
+        headhref = escape
+        headlabel = text
+        headport = "port1:e"
+        headtarget = escape
+        headtooltip = escape
+        headURL = escape
+        href = escape
+        id = escape
+        label = text
+        labelangle = 123
+        labeldistance = 123
+        labelfloat = true
+        labelfontcolor = red
+        labelfontname = text
+        labelfontsize = 123
+        labelhref = escape
+        labeltarget = escape
+        labeltooltip = escape
+        labelURL = escape
+        len = 123
+        lhead = "cluster cluster_id"
+        ltail = "cluster cluster_id"
+        minlen = 1234
+        penwidth = 123
+        samehead = text
+        sametail = text
+        style = "bold, dashed, diagonals, dotted, filled, rounded, solid, striped"
+        tailclip = true
+        tailhref = escape
+        taillabel = text
+        tailport = "port1:e"
+        tailtarget = escape
+        tailtooltip = escape
+        tailURL = escape
+        target = escape
+        tooltip = escape
+        URL = escape
+        weight = 123
+        xlabel = text
+    ]
+}
