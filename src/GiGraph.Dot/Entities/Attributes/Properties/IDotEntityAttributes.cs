@@ -7,5 +7,5 @@ public interface IDotEntityAttributes
     /// <summary>
     ///     Gets an accessor that provides access to attributes through property expressions.
     /// </summary>
-    DotEntityAttributesAccessor Accessor { get; }
+    IDotEntityAttributesAccessor Accessor { get; }
 }
