@@ -8,6 +8,7 @@ using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Subgraphs;
+using GiGraph.Dot.Entities.Tests.Attributes.Helpers;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Metadata;
 using Xunit;
@@ -105,23 +106,17 @@ public class DotAttributePropertiesTest
 
     private static void ReadAndWriteAttributeProperties(IDotEntityAttributesAccessor targetRootObject, DotAttributePropertyMetadata[] attributes)
     {
-        Assert.NotEmpty(attributes);
+        var propertyTree = DotPropertyTreeFactory.GetFlattenedPropertyTreeByMetadata(targetRootObject, attributes);
 
-        foreach (var attribute in attributes)
+        foreach (var propertySubtree in propertyTree)
         {
-            var targetObject = targetRootObject.Implementation;
-            var targetPropertyPath = attribute.GetPropertyInfoPath();
-            var targetProperty = targetPropertyPath.Last();
+            foreach (var property in propertySubtree)
+            {
+                InvokeGetterValid(propertySubtree.Key, property);
+                InvokeSetterValid(propertySubtree.Key, property);
 
-            // get the target object by path
-            targetObject = targetPropertyPath
-                .Take(targetPropertyPath.Length - 1)
-                .Aggregate(targetObject, (current, property) => (DotEntityAttributes) property.GetValue(current)!);
-
-            InvokeGetterValid(targetObject, targetProperty);
-            InvokeSetterValid(targetObject, targetProperty);
-
-            EnsureInterfacePropertiesHaveAttributeKeysAssigned(targetObject, targetProperty);
+                EnsureInterfacePropertiesHaveAttributeKeysAssigned(propertySubtree.Key, property);
+            }
         }
     }
 
