@@ -35,7 +35,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes;
 
-public class DotAttributeMappingTest
+public class DotAttributeKeyAssociationTest
 {
     private static readonly IDictionary<Type, object> PropertyTypeValues = new Dictionary<Type, object>
     {
@@ -75,7 +75,7 @@ public class DotAttributeMappingTest
     };
 
     [Fact]
-    public void complete_graph_has_correct_attribute_keys_on_all_element_types()
+    public void graph_elements_have_correct_attribute_keys_on_properties()
     {
         var graph = new DotGraph();
         var cluster = graph.Clusters.Add("cluster1");
