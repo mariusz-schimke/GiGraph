@@ -78,5 +78,9 @@ See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
     <ItemGroup>
       <ProjectReference Include="..\GiGraph.Dot.SourceGenerators\GiGraph.Dot.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
     </ItemGroup>
+    
+    <ItemGroup>
+        <InternalsVisibleTo Include="GiGraph.Dot.Entities.Tests" />
+    </ItemGroup>
 
 </Project>
