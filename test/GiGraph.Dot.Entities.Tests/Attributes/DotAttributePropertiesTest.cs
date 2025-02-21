@@ -162,6 +162,8 @@ public class DotAttributePropertiesTest
         // it is assumed that the metadata dictionary that the target property comes from, contains interface properties
         Assert.True(targetProperty.ReflectedType!.IsInterface);
 
+        // some interfaces extend other interfaces, but they are treated as if they were separate
+        // from the implementing type perspective, so we need to get the current interface and all interfaces it extends
         var interfaces = targetProperty.ReflectedType!.GetInterfaces()
             .Append(targetProperty.ReflectedType);
 
@@ -172,7 +174,7 @@ public class DotAttributePropertiesTest
                 var accessor = ((IDotEntityAttributes) targetObject).Accessor;
 
                 // should throw an exception if no key is available for a property
-                var key = ((IDotEntityAttributesAccessor) accessor).GetPropertyKey(property);
+                var key = accessor.GetPropertyKey(property);
                 Assert.NotEmpty(key);
 
                 tested++;

@@ -120,28 +120,16 @@ public class DotAttributeMappingTest
 
     private static void SetPropertyValue(DotEntityAttributes targetObject, PropertyInfo targetProperty)
     {
-        // it is assumed that the metadata dictionary that the target property comes from, contains interface properties
-        Assert.True(targetProperty.ReflectedType!.IsInterface);
+        var propertyType = (targetProperty.PropertyType.IsNullable() && targetProperty.PropertyType.IsGenericType
+                ? Nullable.GetUnderlyingType(targetProperty.PropertyType)
+                : targetProperty.PropertyType)
+         ?? throw new("Can't determine the property type.");
 
-        var interfaces = targetProperty.ReflectedType!.GetInterfaces()
-            .Append(targetProperty.ReflectedType);
-
-        foreach (var @interface in interfaces)
+        if (!PropertyTypeValues.TryGetValue(propertyType, out var value))
         {
-            foreach (var property in @interface.GetRuntimeProperties())
-            {
-                var propertyType = (property.PropertyType.IsNullable() && property.PropertyType.IsGenericType
-                        ? Nullable.GetUnderlyingType(property.PropertyType)
-                        : property.PropertyType)
-                 ?? throw new("Can't determine the property type.");
-
-                if (!PropertyTypeValues.TryGetValue(propertyType, out var value))
-                {
-                    throw new($"No test property value has been specified for type {propertyType.Name}.");
-                }
-
-                property.SetValue(targetObject, value);
-            }
+            throw new($"No test property value has been specified for type {propertyType.Name}.");
         }
+
+        targetProperty.SetValue(targetObject, value);
     }
 }
