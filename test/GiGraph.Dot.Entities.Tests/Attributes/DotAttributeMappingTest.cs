@@ -7,6 +7,7 @@ using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Labels;
+using GiGraph.Dot.Entities.Tests.Attributes.Helpers;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
@@ -82,11 +83,11 @@ public class DotAttributeMappingTest
         var node = graph.Nodes.Add("node1");
         var edge = graph.Edges.Add("node1", "node2");
 
-        SetAllAttributes(graph.Attributes, graph.Attributes.GetMetadataDictionary().Values.ToArray());
-        SetAllAttributes(cluster.Attributes, cluster.Attributes.GetMetadataDictionary().Values.ToArray());
-        SetAllAttributes(subgraph.Attributes, subgraph.Attributes.GetMetadataDictionary().Values.ToArray());
-        SetAllAttributes(node.Attributes, node.Attributes.GetMetadataDictionary().Values.ToArray());
-        SetAllAttributes(edge.Attributes, edge.Attributes.GetMetadataDictionary().Values.ToArray());
+        SetAllElementAttributes(graph.Attributes, graph.Attributes.GetMetadataDictionary().Values.ToArray());
+        SetAllElementAttributes(cluster.Attributes, cluster.Attributes.GetMetadataDictionary().Values.ToArray());
+        SetAllElementAttributes(subgraph.Attributes, subgraph.Attributes.GetMetadataDictionary().Values.ToArray());
+        SetAllElementAttributes(node.Attributes, node.Attributes.GetMetadataDictionary().Values.ToArray());
+        SetAllElementAttributes(edge.Attributes, edge.Attributes.GetMetadataDictionary().Values.ToArray());
 
         var formatOptions = new DotFormattingOptions
         {
@@ -104,26 +105,20 @@ public class DotAttributeMappingTest
         Snapshot.Match(graph.Build(formatOptions, syntaxOptions), "graph_with_all_attributes_on_all_elements");
     }
 
-    private static void SetAllAttributes(IDotEntityAttributesAccessor targetRootObject, DotAttributePropertyMetadata[] attributes)
+    private static void SetAllElementAttributes(IDotEntityAttributesAccessor targetRootObject, DotAttributePropertyMetadata[] attributes)
     {
-        Assert.NotEmpty(attributes);
+        var propertyTree = DotPropertyTreeFactory.GetFlattenedPropertyTreeByMetadata(targetRootObject, attributes);
 
-        foreach (var attribute in attributes)
+        foreach (var propertySubtree in propertyTree)
         {
-            var targetObject = targetRootObject.Implementation;
-            var targetPropertyPath = attribute.GetPropertyInfoPath();
-            var targetProperty = targetPropertyPath.Last();
-
-            // get the target object by path
-            targetObject = targetPropertyPath
-                .Take(targetPropertyPath.Length - 1)
-                .Aggregate(targetObject, (current, property) => (DotEntityAttributes) property.GetValue(current)!);
-
-            EnsureInterfacePropertiesHaveAttributeKeysAssigned(targetObject, targetProperty);
+            foreach (var property in propertySubtree)
+            {
+                SetPropertyValue(propertySubtree.Key, property);
+            }
         }
     }
 
-    private static void EnsureInterfacePropertiesHaveAttributeKeysAssigned(DotEntityAttributes targetObject, PropertyInfo targetProperty)
+    private static void SetPropertyValue(DotEntityAttributes targetObject, PropertyInfo targetProperty)
     {
         // it is assumed that the metadata dictionary that the target property comes from, contains interface properties
         Assert.True(targetProperty.ReflectedType!.IsInterface);
