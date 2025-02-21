@@ -19,7 +19,7 @@ public abstract partial class DotEntityAttributes : IDotEntityAttributes
 
     internal DotAttributeCollection Collection => _attributes;
 
-    DotEntityAttributesAccessor IDotEntityAttributes.Accessor => GetAccessor();
+    IDotEntityAttributesAccessor IDotEntityAttributes.Accessor => GetAccessor();
     protected abstract DotEntityAttributesAccessor GetAccessor();
 
     protected virtual string GetKey(MethodBase accessor) =>

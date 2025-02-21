@@ -5,6 +5,7 @@ using GiGraph.Dot.Types.EscapeString;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties;
 
+// todo: remove
 public abstract partial class DotEntityAttributes
 {
     protected virtual void SetOrRemove<TAttribute, TValue>(MethodBase propertyAccessor, TValue value, Func<string, TValue, TAttribute> newAttribute)
