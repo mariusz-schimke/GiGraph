@@ -1,6 +1,6 @@
 using Microsoft.CodeAnalysis;
 
-namespace GiGraph.Dot.SourceGenerators;
+namespace GiGraph.Dot.SourceGenerators.Extensions;
 
 internal static class BuildMessageWriterExtension
 {
