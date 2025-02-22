@@ -1,5 +1,6 @@
 using System.Collections.Immutable;
 using System.Text;
+using GiGraph.Dot.SourceGenerators.Extensions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -46,74 +47,55 @@ public class DotAttributeGenerator : IIncrementalGenerator
             }
 
             var properties = GetAttributeProperties(classDeclaration, model, attributeSymbol);
-            GenerateClassWithProperties(context, classSymbol, properties);
+            GenerateClassWithProperties(context, classSymbol, properties, classDeclaration.SyntaxTree.FilePath);
         }
     }
 
-    private static void GenerateClassWithProperties(SourceProductionContext context, INamedTypeSymbol classSymbol, AttributePropertyDeclaration[] properties)
+    private static void GenerateClassWithProperties(SourceProductionContext context, INamedTypeSymbol classSymbol,
+        AttributePropertyDeclaration[] properties, string filePath)
     {
         if (properties.Length == 0)
         {
             return;
         }
 
-        var sb = new StringBuilder();
+        var classBuilder = new StringBuilder();
 
-        var classModifiers = new StringBuilder();
-        if (classSymbol.DeclaredAccessibility == Accessibility.Public)
-        {
-            classModifiers.Append("public ");
-        }
-        else if (classSymbol.DeclaredAccessibility == Accessibility.Internal)
-        {
-            classModifiers.Append("internal ");
-        }
-
-        if (classSymbol.IsAbstract)
-        {
-            classModifiers.Append("abstract ");
-        }
-
-        if (classSymbol.IsSealed)
-        {
-            classModifiers.Append("sealed ");
-        }
-
-        if (classSymbol.IsStatic)
-        {
-            classModifiers.Append("static ");
-        }
+        var classModifiers = string.Join(" ",
+        [
+            classSymbol.DeclaredAccessibility.GetAsString(),
+            ..classSymbol.GetModifiersAsString()
+        ]);
 
         // todo: ignore non-partial classes and non-partial properties?
 
-        sb.AppendLine("#nullable enable");
-        sb.AppendLine();
-        sb.AppendLine($"namespace {classSymbol.ContainingNamespace.ToDisplayString()};");
-        sb.AppendLine();
-        sb.AppendLine($"{classModifiers}partial class {classSymbol.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat)}");
-        sb.AppendLine("{");
+        classBuilder.AppendLine("#nullable enable");
+        classBuilder.AppendLine();
+        classBuilder.AppendLine($"namespace {classSymbol.ContainingNamespace.ToDisplayString()};");
+        classBuilder.AppendLine();
+        classBuilder.AppendLine($"{classModifiers} partial class {classSymbol.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat)}");
+        classBuilder.AppendLine("{");
 
         foreach (var property in properties)
         {
-            sb.AppendLine($"    {property.Modifiers} {property.ReturnType} {property.Name}");
-            sb.AppendLine("    {");
-            sb.AppendLine($"        get => _attributes.GetValueAs(\"{property.DotKey}\", out {property.ReturnType} value) ? value : null;");
-            sb.AppendLine($"        set => _attributes.SetOrRemove(\"{property.DotKey}\", value);");
-            sb.AppendLine("    }");
-            sb.AppendLine();
+            var propertyModifiers = string.Join(" ", property.Modifiers);
+            classBuilder.AppendLine($"    {propertyModifiers} {property.ReturnType} {property.Name}");
+            classBuilder.AppendLine("    {");
+            classBuilder.AppendLine($"        get => _attributes.GetValueAs(\"{property.DotKey}\", out {property.ReturnType} value) ? value : null;");
+            classBuilder.AppendLine($"        set => _attributes.SetOrRemove(\"{property.DotKey}\", value);");
+            classBuilder.AppendLine("    }");
+            classBuilder.AppendLine();
         }
 
-        sb.AppendLine("}");
+        classBuilder.AppendLine("}");
 
-        // todo: adjust file name to include namespace and replace special chars
-        // context.WriteWarning(sb.ToString().Replace("\n", " "));
-        context.AddSource($"{classSymbol.Name}_AttributeProperties.g.cs", sb.ToString());
+        // context.WriteWarning(fileName);
+        var fileName = Path.GetFileNameWithoutExtension(filePath);
+        context.AddSource($"{fileName}.g.cs", classBuilder.ToString());
     }
 
     private static AttributePropertyDeclaration[] GetAttributeProperties(ClassDeclarationSyntax classDeclaration, SemanticModel model, INamedTypeSymbol attributeSymbol)
     {
-        // todo: metadata.PropertySymbol.ExplicitInterfaceImplementations
-
         return classDeclaration.Members
             .OfType<PropertyDeclarationSyntax>()
             .Select(property => model.GetDeclaredSymbol(property))
@@ -128,21 +110,15 @@ public class DotAttributeGenerator : IIncrementalGenerator
             .Where(propertySymbol => propertySymbol.DotKeyAttribute is not null)
             .Select(metadata =>
             {
-                var modifiers = new StringBuilder("public");
-
-                if (metadata.PropertySymbol!.IsOverride)
-                {
-                    modifiers.Append(" override");
-                }
-                else if (metadata.PropertySymbol.IsVirtual)
-                {
-                    modifiers.Append(" virtual");
-                }
-
-                modifiers.Append(" partial");
+                string[] modifiers =
+                [
+                    metadata.PropertySymbol!.DeclaredAccessibility.GetAsString(),
+                    ..metadata.PropertySymbol.GetModifiersAsString(),
+                    "partial"
+                ];
 
                 return new AttributePropertyDeclaration(
-                    modifiers.ToString(),
+                    modifiers.ToArray(),
                     metadata.PropertySymbol!.Name,
                     metadata.PropertySymbol.Type.ToDisplayString(),
                     metadata.DotKeyAttribute!.ConstructorArguments.Single().Value!.ToString()
