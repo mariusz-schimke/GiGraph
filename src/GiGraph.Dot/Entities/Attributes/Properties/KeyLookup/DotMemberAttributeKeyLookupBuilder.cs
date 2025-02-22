@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using GiGraph.Dot.Output.Metadata;
 
@@ -64,7 +61,9 @@ public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttri
             var targetMethod = interfaceMap.TargetMethods[index];
 
             var key = tempLookup.GetPropertyAccessorKey(targetMethod);
-            output.SetPropertyAccessorKey(targetMethod, key);
+
+            // since keys won't be looked up by accessors, let's not include them in the final lookup
+            // output.SetPropertyAccessorKey(targetMethod, key);
 
             tempLookup.SetPropertyAccessorKey(interfaceMethod, key);
         }
