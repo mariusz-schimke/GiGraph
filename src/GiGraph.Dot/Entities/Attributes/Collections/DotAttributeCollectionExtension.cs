@@ -72,7 +72,7 @@ public static class DotAttributeCollectionExtension
 
         if (attribute.TryGetValueAs<Color>(out var color))
         {
-            value = new DotColor(color);
+            value = color;
             return true;
         }
 
