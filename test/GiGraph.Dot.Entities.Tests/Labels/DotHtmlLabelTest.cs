@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Html;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Html;

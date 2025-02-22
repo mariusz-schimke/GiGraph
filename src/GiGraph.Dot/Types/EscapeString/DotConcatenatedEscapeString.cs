@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using GiGraph.Dot.Output.Text.Escaping;
 
 namespace GiGraph.Dot.Types.EscapeString;

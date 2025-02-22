@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Html.LineBreak;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Text;

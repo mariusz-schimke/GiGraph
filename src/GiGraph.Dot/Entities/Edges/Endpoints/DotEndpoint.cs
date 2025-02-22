@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Types.Clusters;

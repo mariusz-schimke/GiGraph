@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Builder;

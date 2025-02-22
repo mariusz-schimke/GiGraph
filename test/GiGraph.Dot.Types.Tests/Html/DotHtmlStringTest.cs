@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html;
 using Xunit;

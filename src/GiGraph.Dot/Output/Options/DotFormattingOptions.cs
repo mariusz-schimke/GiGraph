@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Output.Text;
+﻿using GiGraph.Dot.Output.Text;
 
 namespace GiGraph.Dot.Output.Options;
 

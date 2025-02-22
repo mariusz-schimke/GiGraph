@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace GiGraph.Dot.Output.Entities;
 
 public interface IDotGraph : IDotEntity

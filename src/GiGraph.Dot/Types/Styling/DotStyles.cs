@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Output.Metadata;
+﻿using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Arrowheads;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;

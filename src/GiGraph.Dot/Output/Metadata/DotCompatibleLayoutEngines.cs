@@ -1,5 +1,3 @@
-using System;
-
 namespace GiGraph.Dot.Output.Metadata;
 
 /// <summary>

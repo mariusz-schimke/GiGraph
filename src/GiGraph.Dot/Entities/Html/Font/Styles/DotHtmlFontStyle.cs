@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Output.EnumHelpers;
 using GiGraph.Dot.Types.Alignment;

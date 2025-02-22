@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Entities.Html;
+﻿using GiGraph.Dot.Entities.Html;
 using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Entities.Html.Table;
 using GiGraph.Dot.Entities.Labels;

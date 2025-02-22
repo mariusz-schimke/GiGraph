@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using GiGraph.Dot.Output.Options;
+﻿using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Options;
 
 namespace GiGraph.Dot.Output.Writers.TokenWriter;

@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace GiGraph.Dot.Entities.Graphs.Collections;
 
 public class DotGraphSectionCollection<TSection> : List<TSection>

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using GiGraph.Dot.Entities.Nodes;
+﻿using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;

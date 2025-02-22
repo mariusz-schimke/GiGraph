@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Types.Alignment;

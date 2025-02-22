@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using GiGraph.Dot.Output.Metadata;
 using Snapshooter.Xunit;
 using Xunit;

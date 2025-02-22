@@ -1,5 +1,3 @@
-using System;
-
 namespace GiGraph.Dot.Output.Text;
 
 /// <summary>

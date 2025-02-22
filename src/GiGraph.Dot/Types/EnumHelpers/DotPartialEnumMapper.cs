@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-
 namespace GiGraph.Dot.Types.EnumHelpers;
 
 public static class DotPartialEnumMapper

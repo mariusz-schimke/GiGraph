@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Types.Arrowheads;
