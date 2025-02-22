@@ -8,9 +8,9 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace GiGraph.Dot.SourceGenerators.Attributes;
 
 [Generator]
-public class DotAttributeGenerator : IIncrementalGenerator
+public class DotAttributePropertiesGenerator : IIncrementalGenerator
 {
-    private const string AttributeKeyAttributeType = "GiGraph.Dot.Output.Metadata.DotAttributeKeyAttribute";
+    private const string DotAttributeKeyAttributeTypeMetadataName = "GiGraph.Dot.Output.Metadata.DotAttributeKeyAttribute";
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
@@ -30,11 +30,11 @@ public class DotAttributeGenerator : IIncrementalGenerator
     private static void Execute(SourceProductionContext context, (Compilation compilation, ImmutableArray<ClassDeclarationSyntax> classes) input)
     {
         var (compilation, classes) = input;
-        var attributeSymbol = compilation.GetTypeByMetadataName(AttributeKeyAttributeType);
+        var attributeSymbol = compilation.GetTypeByMetadataName(DotAttributeKeyAttributeTypeMetadataName);
 
         if (attributeSymbol is null)
         {
-            context.WriteError($"{AttributeKeyAttributeType} not found!");
+            context.WriteError($"{DotAttributeKeyAttributeTypeMetadataName} type not found!");
             return;
         }
 
@@ -68,8 +68,6 @@ public class DotAttributeGenerator : IIncrementalGenerator
             ..classSymbol.GetModifiersAsString()
         ]);
 
-        // todo: ignore non-partial classes and non-partial properties?
-
         classBuilder.AppendLine("#nullable enable");
         classBuilder.AppendLine();
         classBuilder.AppendLine($"namespace {classSymbol.ContainingNamespace.ToDisplayString()};");
@@ -77,15 +75,20 @@ public class DotAttributeGenerator : IIncrementalGenerator
         classBuilder.AppendLine($"{classModifiers} partial class {classSymbol.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat)}");
         classBuilder.AppendLine("{");
 
-        foreach (var property in properties)
+        for (var index = 0; index < properties.Length; index++)
         {
-            var propertyModifiers = string.Join(" ", property.Modifiers);
-            classBuilder.AppendLine($"    {propertyModifiers} {property.ReturnType} {property.Name}");
+            var property = properties[index];
+
+            classBuilder.AppendLine($"    {string.Join(" ", [..property.Modifiers, property.ReturnType, property.Name])}");
             classBuilder.AppendLine("    {");
             classBuilder.AppendLine($"        get => _attributes.GetValueAs(\"{property.DotKey}\", out {property.ReturnType} value) ? value : null;");
             classBuilder.AppendLine($"        set => _attributes.SetOrRemove(\"{property.DotKey}\", value);");
             classBuilder.AppendLine("    }");
-            classBuilder.AppendLine();
+
+            if (index < properties.Length - 1)
+            {
+                classBuilder.AppendLine();
+            }
         }
 
         classBuilder.AppendLine("}");
