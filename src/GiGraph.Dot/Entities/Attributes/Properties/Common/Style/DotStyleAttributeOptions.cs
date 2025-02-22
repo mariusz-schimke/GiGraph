@@ -5,9 +5,8 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 
-public abstract class DotStyleAttributeOptions
+public abstract partial class DotStyleAttributeOptions
 {
-    public const string StyleKey = DotAttributeKeys.Style;
     protected readonly DotAttributeCollection _attributes;
 
     protected DotStyleAttributeOptions(DotAttributeCollection attributes)
@@ -15,11 +14,9 @@ public abstract class DotStyleAttributeOptions
         _attributes = attributes;
     }
 
-    protected virtual DotStyles? Style
-    {
-        get => _attributes.GetValueAs(StyleKey, out DotStyles? result) ? result : null;
-        set => _attributes.SetOrRemove(StyleKey, value);
-    }
+    // attribute used only for automatic code generation here
+    [DotAttributeKey(DotAttributeKeys.Style)]
+    protected virtual partial DotStyles? Style { get; set; }
 
     /// <summary>
     ///     Determines if any style is assigned to the element.

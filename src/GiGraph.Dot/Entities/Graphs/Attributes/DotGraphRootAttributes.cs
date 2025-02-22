@@ -56,11 +56,11 @@ public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDot
     public DotGraphCanvasAttributes Canvas { get; }
     public DotLabelAlignmentAttributes LabelAlignment { get; }
 
-    [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
+    [DotAttributeKey(DotAttributeKeys.Style)]
     DotStyles? IDotGraphAttributes.Style
     {
-        get => _attributes.GetValueAs(DotStyleAttributeOptions.StyleKey, out DotStyles? result) ? result : null;
-        set => _attributes.SetOrRemove(DotStyleAttributeOptions.StyleKey, value);
+        get => _attributes.GetValueAs(DotAttributeKeys.Style, out DotStyles? result) ? result : null;
+        set => _attributes.SetOrRemove(DotAttributeKeys.Style, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Splines)]

@@ -51,11 +51,11 @@ public partial class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<
     public DotNodeGeometryAttributes Geometry { get; }
     public DotNodeImageAttributes Image { get; }
 
-    [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
+    [DotAttributeKey(DotAttributeKeys.Style)]
     DotStyles? IDotNodeAttributes.Style
     {
-        get => _attributes.GetValueAs(DotStyleAttributeOptions.StyleKey, out DotStyles? result) ? result : null;
-        set => _attributes.SetOrRemove(DotStyleAttributeOptions.StyleKey, value);
+        get => _attributes.GetValueAs(DotAttributeKeys.Style, out DotStyles? result) ? result : null;
+        set => _attributes.SetOrRemove(DotAttributeKeys.Style, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Comment)]
