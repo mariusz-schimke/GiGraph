@@ -16,7 +16,8 @@ public class DotAttributeGenerator : IIncrementalGenerator
     {
         var classes = context.SyntaxProvider
             .CreateSyntaxProvider(
-                predicate: static (s, _) => s is ClassDeclarationSyntax,
+                predicate: static (s, _) => s is ClassDeclarationSyntax cds &&
+                    cds.Modifiers.Any(m => m.IsKind(SyntaxKind.PartialKeyword)),
                 transform: static (ctx, _) => (ClassDeclarationSyntax) ctx.Node)
             .Where(static c => c is not null);
 
