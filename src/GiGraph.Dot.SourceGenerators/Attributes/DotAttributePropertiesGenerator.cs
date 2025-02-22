@@ -110,7 +110,7 @@ public class DotAttributePropertiesGenerator : IIncrementalGenerator
                     .GetAttributes()
                     .FirstOrDefault(attr => SymbolEqualityComparer.Default.Equals(attr.AttributeClass, attributeSymbol))
             })
-            .Where(propertySymbol => true == propertySymbol.PropertySymbol?.IsPartialDefinition)
+            .Where(propertySymbol => propertySymbol.PropertySymbol?.IsPartialDefinition is true)
             .Where(propertySymbol => propertySymbol.DotKeyAttribute is not null)
             .Select(metadata =>
             {

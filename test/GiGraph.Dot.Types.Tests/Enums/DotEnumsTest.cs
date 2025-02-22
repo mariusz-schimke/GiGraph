@@ -15,7 +15,7 @@ public class DotEnumsTest
         var types = Assembly.LoadFrom("GiGraph.Dot.dll")
             .GetTypes()
             .Where(t => t.IsEnum)
-            .Where(t => true == t.Namespace?.StartsWith("GiGraph.Dot.Types"))
+            .Where(t => t.Namespace?.StartsWith("GiGraph.Dot.Types") is true)
             .ToArray();
 
         Assert.NotEmpty(types);
