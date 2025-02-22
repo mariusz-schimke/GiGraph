@@ -21,7 +21,7 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetNumber(this DotAttributeCollection @this, string key, out double value)
     {
-        if (!@this.TryGetValue(key, out var attribute))
+        if (@this.Get(key) is not { } attribute)
         {
             value = 0;
             return false;
@@ -42,7 +42,7 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotColor value)
     {
-        if (!@this.TryGetValue(key, out var attribute))
+        if (@this.Get(key) is not { } attribute)
         {
             value = null;
             return false;
@@ -64,7 +64,7 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotColorDefinition value)
     {
-        if (!@this.TryGetValue(key, out var attribute))
+        if (@this.Get(key) is not { } attribute)
         {
             value = null;
             return false;
@@ -86,7 +86,7 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotEscapeString value)
     {
-        if (!@this.TryGetValue(key, out var attribute))
+        if (@this.Get(key) is not { } attribute)
         {
             value = null;
             return false;
@@ -107,7 +107,7 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotLabel value)
     {
-        if (!@this.TryGetValue(key, out var attribute))
+        if (@this.Get(key) is not { } attribute)
         {
             value = null;
             return false;
@@ -129,7 +129,7 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotArrowheadDefinition value)
     {
-        if (!@this.TryGetValue(key, out var attribute))
+        if (@this.Get(key) is not { } attribute)
         {
             value = null;
             return false;
@@ -151,7 +151,7 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotPackingDefinition value)
     {
-        if (!@this.TryGetValue(key, out var attribute))
+        if (@this.Get(key) is not { } attribute)
         {
             value = null;
             return false;
@@ -173,7 +173,7 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotPackingModeDefinition value)
     {
-        if (!@this.TryGetValue(key, out var attribute))
+        if (@this.Get(key) is not { } attribute)
         {
             value = null;
             return false;
@@ -195,7 +195,7 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotRankSeparationDefinition value)
     {
-        if (!@this.TryGetValue(key, out var attribute))
+        if (@this.Get(key) is not { } attribute)
         {
             value = null;
             return false;
@@ -229,7 +229,7 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotGraphScalingDefinition value)
     {
-        if (!@this.TryGetValue(key, out var attribute))
+        if (@this.Get(key) is not { } attribute)
         {
             value = null;
             return false;
@@ -263,7 +263,7 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotEndpointPort value)
     {
-        if (!@this.TryGetValue(key, out var attribute))
+        if (@this.Get(key) is not { } attribute)
         {
             value = null;
             return false;
@@ -290,7 +290,7 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotId value)
     {
-        if (!@this.TryGetValue(key, out var attribute))
+        if (@this.Get(key) is not { } attribute)
         {
             value = null;
             return false;
@@ -311,7 +311,7 @@ public static class DotAttributeCollectionExtension
     /// </summary>
     public static bool GetComplex(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotClusterId value)
     {
-        if (!@this.TryGetValue(key, out var attribute))
+        if (@this.Get(key) is not { } attribute)
         {
             value = null;
             return false;

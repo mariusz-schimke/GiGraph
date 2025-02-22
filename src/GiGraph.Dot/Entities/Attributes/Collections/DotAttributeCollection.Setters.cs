@@ -18,7 +18,7 @@ public partial class DotAttributeCollection
     public virtual TAttribute Put<TAttribute>(TAttribute attribute)
         where TAttribute : DotAttribute
     {
-        this[attribute.Key] = attribute ?? throw new ArgumentNullException(nameof(attribute), "Attribute must not be null.");
+        _attributes[attribute.Key] = attribute ?? throw new ArgumentNullException(nameof(attribute), "Attribute must not be null.");
         return attribute;
     }
 
@@ -57,7 +57,7 @@ public partial class DotAttributeCollection
         }
         else
         {
-            Remove(key);
+            _attributes.Remove(key);
         }
     }
 

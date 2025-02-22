@@ -41,7 +41,7 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     public virtual DotAttribute? Get<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
     {
         var key = GetKey(property);
-        return _attributes.Collection.GetValueOrDefault(key);
+        return _attributes.Collection.Get(key);
     }
 
     /// <summary>
@@ -113,7 +113,7 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <typeparam name="TProperty">
     ///     The type returned by the property.
     /// </typeparam>
-    public virtual bool Remove<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+    public virtual DotAttribute? Remove<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
     {
         var key = GetKey(property);
         return _attributes.Collection.Remove(key);

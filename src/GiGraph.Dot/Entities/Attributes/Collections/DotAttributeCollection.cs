@@ -5,9 +5,10 @@ using GiGraph.Dot.Output.Qualities;
 namespace GiGraph.Dot.Entities.Attributes.Collections;
 
 // TODO: Zastosować OrderedDictionary, ale przez kompozycję, a nie dziedziczenie.
-public partial class DotAttributeCollection : SortedList<string, DotAttribute>, IDotEntity, IDotAnnotatable
+public partial class DotAttributeCollection : IDotEntity, IDotAnnotatable
 {
     protected readonly DotAttributeFactory _attributeFactory;
+    protected readonly SortedDictionary<string, DotAttribute> _attributes = new();
 
     public DotAttributeCollection()
         : this(DotAttributeFactory.Instance)
@@ -15,7 +16,7 @@ public partial class DotAttributeCollection : SortedList<string, DotAttribute>, 
     }
 
     public DotAttributeCollection(DotAttributeCollection source)
-        : this(source._attributeFactory, source)
+        : this(source._attributeFactory, source._attributes)
     {
     }
 
@@ -25,9 +26,9 @@ public partial class DotAttributeCollection : SortedList<string, DotAttribute>, 
     }
 
     public DotAttributeCollection(DotAttributeFactory attributeFactory, IDictionary<string, DotAttribute> source)
-        : base(source)
+        : this(attributeFactory)
     {
-        _attributeFactory = attributeFactory;
+        _attributes = new(source);
     }
 
     protected internal string? Annotation { get; set; }
@@ -39,36 +40,20 @@ public partial class DotAttributeCollection : SortedList<string, DotAttribute>, 
     }
 
     /// <summary>
-    ///     Removes all attributes matching the specified criteria from the collection.
-    /// </summary>
-    /// <param name="match">
-    ///     The predicate to use for matching attributes.
-    /// </param>
-    public virtual int RemoveAll(Predicate<DotAttribute> match)
-    {
-        var matches = this.Where(a => match(a.Value)).ToArray();
-        return matches.Sum(attribute => Remove(attribute.Key) ? 1 : 0);
-    }
-
-    /// <summary>
-    ///     Adds an entry with the given key and value to the list. An <see cref="ArgumentException" /> is thrown if the key is already
-    ///     present in the list or when the specified key is different than the key assigned to the attribute.
+    ///     Determines whether the collection contains an attribute with the specified key.
     /// </summary>
     /// <param name="key">
-    ///     The key of the attribute to add.
+    ///     The key of the attribute to locate.
     /// </param>
-    /// <param name="attribute">
-    ///     The attribute to add.
-    /// </param>
-    public new virtual void Add(string key, DotAttribute attribute)
-    {
-        if (key != attribute.Key)
-        {
-            throw new ArgumentException($"The key specified (\"{key}\") has to match the attribute key (\"{attribute.Key}\").", nameof(key));
-        }
+    public bool ContainsKey(string key) => _attributes.ContainsKey(key);
 
-        base.Add(key, attribute);
-    }
+    /// <summary>
+    ///     Removes an attribute with the specified key from the collection.
+    /// </summary>
+    /// <param name="key">
+    ///     The key of the attribute to remove.
+    /// </param>
+    public DotAttribute? Remove(string key) => _attributes.Remove(key, out var result) ? result : null;
 
     /// <summary>
     ///     Determines whether the collection contains an attribute with the specified key, whose value is null.
@@ -76,5 +61,5 @@ public partial class DotAttributeCollection : SortedList<string, DotAttribute>, 
     /// <param name="key">
     ///     The key of the attribute whose value to check.
     /// </param>
-    public virtual bool IsNullified(string key) => TryGetValue(key, out var result) && result.GetValue() is null;
+    public virtual bool IsNullified(string key) => Get(key)?.HasValue is false;
 }
