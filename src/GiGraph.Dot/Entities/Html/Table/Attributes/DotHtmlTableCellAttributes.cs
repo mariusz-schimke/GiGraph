@@ -20,8 +20,6 @@ public partial class DotHtmlTableCellAttributes : DotHtmlTableTableCellCommonAtt
     {
     }
 
-    // todo: sprawdzić, czy wszystkie metody są partial (czy nie brakuje tego słowa kluczowego)!!!
-
     [DotAttributeKey("align")]
     public virtual partial DotHtmlTableCellHorizontalAlignment? HorizontalAlignment { get; set; }
 
