@@ -1,5 +1,3 @@
-using System;
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -8,7 +6,7 @@ using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Subgraphs.Attributes;
 
-public class DotSubgraphRootAttributes : DotEntityAttributesWithMetadata<IDotSubgraphAttributes, DotSubgraphRootAttributes>, IDotSubgraphRootAttributes
+public partial class DotSubgraphRootAttributes : DotEntityAttributesWithMetadata<IDotSubgraphAttributes, DotSubgraphRootAttributes>, IDotSubgraphRootAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotSubgraphRootAttributes, IDotSubgraphAttributes>().BuildLazy();
 
@@ -23,16 +21,12 @@ public class DotSubgraphRootAttributes : DotEntityAttributesWithMetadata<IDotSub
     }
 
     [DotAttributeKey(DotAttributeKeys.Rank)]
-    public virtual DotRank? NodeRank
-    {
-        get => GetValueAs<DotRank>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotRank? NodeRank { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Cluster)]
     bool? IDotSubgraphAttributes.IsCluster
     {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
+        get => _attributes.GetValueAs(DotAttributeKeys.Cluster, out bool? result) ? result : null;
+        set => _attributes.SetOrRemove(DotAttributeKeys.Cluster, value);
     }
 }

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using GiGraph.Dot.Entities.Attributes.Factories;
+﻿using GiGraph.Dot.Entities.Attributes.Factories;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections;
 
+// TODO: Zastosować OrderedDictionary, ale przez kompozycję, a nie dziedziczenie.
 public partial class DotAttributeCollection : SortedList<string, DotAttribute>, IDotEntity, IDotAnnotatable
 {
     protected readonly DotAttributeFactory _attributeFactory;

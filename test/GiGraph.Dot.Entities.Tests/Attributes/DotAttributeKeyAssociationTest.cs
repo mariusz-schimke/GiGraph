@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
@@ -9,6 +6,7 @@ using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Tests.Attributes.Helpers;
 using GiGraph.Dot.Extensions;
+using GiGraph.Dot.Helpers;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Alignment;
@@ -29,12 +27,15 @@ using GiGraph.Dot.Types.Packing;
 using GiGraph.Dot.Types.Ranks;
 using GiGraph.Dot.Types.Styling;
 using GiGraph.Dot.Types.Viewport;
-using Snapshooter.Extensions;
 using Snapshooter.Xunit;
 using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes;
 
+/// <summary>
+///     This test class is used to check if attribute keys are correctly associated with the properties of all DOT entities since
+///     properties are auto-generated, and the implementations have to use the correct keys provided by annotations.
+/// </summary>
 public class DotAttributeKeyAssociationTest
 {
     private static readonly IDictionary<Type, object> PropertyTypeValues = new Dictionary<Type, object>
@@ -83,11 +84,11 @@ public class DotAttributeKeyAssociationTest
         var node = graph.Nodes.Add("node1");
         var edge = graph.Edges.Add("node1", "node2");
 
-        SetAllElementAttributes(graph.Attributes, graph.Attributes.GetMetadataDictionary().Values.ToArray());
-        SetAllElementAttributes(cluster.Attributes, cluster.Attributes.GetMetadataDictionary().Values.ToArray());
-        SetAllElementAttributes(subgraph.Attributes, subgraph.Attributes.GetMetadataDictionary().Values.ToArray());
-        SetAllElementAttributes(node.Attributes, node.Attributes.GetMetadataDictionary().Values.ToArray());
-        SetAllElementAttributes(edge.Attributes, edge.Attributes.GetMetadataDictionary().Values.ToArray());
+        SetAllElementAttributesWithChecks(graph.Attributes, graph.Attributes.GetMetadataDictionary().Values.ToArray());
+        SetAllElementAttributesWithChecks(cluster.Attributes, cluster.Attributes.GetMetadataDictionary().Values.ToArray());
+        SetAllElementAttributesWithChecks(subgraph.Attributes, subgraph.Attributes.GetMetadataDictionary().Values.ToArray());
+        SetAllElementAttributesWithChecks(node.Attributes, node.Attributes.GetMetadataDictionary().Values.ToArray());
+        SetAllElementAttributesWithChecks(edge.Attributes, edge.Attributes.GetMetadataDictionary().Values.ToArray());
 
         var formatOptions = new DotFormattingOptions
         {
@@ -105,7 +106,7 @@ public class DotAttributeKeyAssociationTest
         Snapshot.Match(graph.Build(formatOptions, syntaxOptions), "graph_with_all_attributes_on_all_elements");
     }
 
-    private static void SetAllElementAttributes(IDotEntityAttributesAccessor targetRootObject, DotAttributePropertyMetadata[] attributes)
+    private static void SetAllElementAttributesWithChecks(IDotEntityAttributesAccessor targetRootObject, DotAttributePropertyMetadata[] attributes)
     {
         var propertyTree = DotPropertyTreeFactory.GetFlattenedPropertyTreeByMetadata(targetRootObject, attributes);
 
@@ -113,23 +114,44 @@ public class DotAttributeKeyAssociationTest
         {
             foreach (var property in propertySubtree)
             {
-                SetPropertyValue(propertySubtree.Key, property);
+                SetPropertyValueWithCheck(propertySubtree.Key, property);
             }
         }
     }
 
-    private static void SetPropertyValue(DotEntityAttributes targetObject, PropertyInfo targetProperty)
+    private static void SetPropertyValueWithCheck(DotEntityAttributes targetObject, PropertyInfo targetProperty)
     {
-        var propertyType = (targetProperty.PropertyType.IsNullable() && targetProperty.PropertyType.IsGenericType
-                ? Nullable.GetUnderlyingType(targetProperty.PropertyType)
-                : targetProperty.PropertyType)
-         ?? throw new("Can't determine the property type.");
-
+        var propertyType = TypeHelper.Unwrap(targetProperty.PropertyType);
         if (!PropertyTypeValues.TryGetValue(propertyType, out var value))
         {
             throw new($"No test property value has been specified for type {propertyType.Name}.");
         }
 
+        // make sure the attribute does not exist before setting the value
+        var attributeKey = ((IDotEntityAttributes) targetObject).Accessor.GetPropertyKey(targetProperty);
+        var containsAttribute = targetObject.Collection.ContainsKey(attributeKey);
+        Assert.False(containsAttribute);
+
+        // set the value
         targetProperty.SetValue(targetObject, value);
+
+        // make sure the attribute does exist after setting the value
+        var attribute = targetObject.Collection.Get(attributeKey);
+        Assert.NotNull(attribute);
+        Assert.True(attribute.HasValue);
+
+        // make sure the getter uses the same key as the setter by comparing the values
+        // (this is necessary to check the auto-generated code)
+        var actualValue = targetProperty.GetValue(targetObject);
+        if (targetProperty.PropertyType.IsValueType)
+        {
+            Assert.Equal(value, actualValue);
+            Assert.Equal(value, attribute.GetValue());
+        }
+        else
+        {
+            Assert.Same(value, actualValue);
+            Assert.Same(value, attribute.GetValue());
+        }
     }
 }

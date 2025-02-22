@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Reflection;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -157,26 +155,6 @@ public class DotMemberAttributeKeyLookup
         _useCommonBaseAsLookupKey ? accessor.GetRuntimeBaseDefinition()! : accessor;
 
     /// <summary>
-    ///     Adds and updates (overwrites) the content of the current instance with the content of the specified instance.
-    /// </summary>
-    /// <param name="source">
-    ///     The source lookup whose content to copy.
-    /// </param>
-    public virtual void MergeFrom(DotMemberAttributeKeyLookup source)
-    {
-        foreach (var sourceModule in source._lookup)
-        {
-            var module = GetOrAddModule(sourceModule.Key);
-
-            foreach (var sourceItem in sourceModule.Value)
-            {
-                // metadata token is a key, DOT attribute key is a value
-                module[sourceItem.Key] = sourceItem.Value;
-            }
-        }
-    }
-
-    /// <summary>
     ///     Returns a copy of the current instance as a read only lookup.
     /// </summary>
     public virtual DotMemberAttributeKeyLookup ToReadOnly()
@@ -201,21 +179,5 @@ public class DotMemberAttributeKeyLookup
         }
 
         return result;
-    }
-
-    /// <summary>
-    ///     Merges two lookup instances.
-    /// </summary>
-    /// <param name="base">
-    ///     The initial instance to use as a base lookup.
-    /// </param>
-    /// <param name="source">
-    ///     The source lookup whose content to copy to the base instance. Overwrites all matching items of the base instance.
-    /// </param>
-    public static DotMemberAttributeKeyLookup Merge(DotMemberAttributeKeyLookup @base, DotMemberAttributeKeyLookup source)
-    {
-        var clone = new DotMemberAttributeKeyLookup(@base);
-        clone.MergeFrom(source);
-        return clone;
     }
 }

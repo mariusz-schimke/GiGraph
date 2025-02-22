@@ -20,7 +20,7 @@
 
         <Deterministic>true</Deterministic>
 
-        <Version>3.0.1</Version>
+        <Version>4.0.0</Version>
         <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
 
         <PackageId>GiGraph.Dot</PackageId>
@@ -44,9 +44,11 @@
         <RepositoryBranch>$(Branch)</RepositoryBranch>
         <RepositoryCommit>$(Commit)</RepositoryCommit>
 
-        <PackageReleaseNotes>- Synthetic biology node shape names have been improved (clarified).
+        <PackageReleaseNotes>- Nullability support has been added to the library.
 
-- Some type comments have been improved and broken links to the Graphviz documenation have been updated.
+- Replaced some reflection-based logic in the library with source generators.
+
+- Refactoring and code cleanup.
 
 See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
     </PropertyGroup>
@@ -73,6 +75,14 @@ See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
         <None Include="../../assets/icon.png" Pack="true" Visible="false" PackagePath="/" />
         <None Include="../../LICENSE" Pack="true" Visible="false" PackagePath="/" />
         <None Include="../../README.md" Pack="true" Visible="false" PackagePath="/" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\GiGraph.Dot.SourceGenerators\GiGraph.Dot.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <InternalsVisibleTo Include="GiGraph.Dot.Entities.Tests" />
     </ItemGroup>
 
 </Project>

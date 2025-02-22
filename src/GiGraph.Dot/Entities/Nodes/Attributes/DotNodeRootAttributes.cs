@@ -16,7 +16,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
-public class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<IDotNodeAttributes, DotNodeRootAttributes>, IDotNodeRootAttributes
+public partial class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<IDotNodeAttributes, DotNodeRootAttributes>, IDotNodeRootAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().BuildLazy();
 
@@ -51,59 +51,31 @@ public class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<IDotNode
     public DotNodeGeometryAttributes Geometry { get; }
     public DotNodeImageAttributes Image { get; }
 
-    [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
+    [DotAttributeKey(DotAttributeKeys.Style)]
     DotStyles? IDotNodeAttributes.Style
     {
-        get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
+        get => _attributes.GetValueAs(DotAttributeKeys.Style, out DotStyles? result) ? result : null;
+        set => _attributes.SetOrRemove(DotAttributeKeys.Style, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Comment)]
-    public virtual string? Comment
-    {
-        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial string? Comment { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.XLabel)]
-    public virtual DotLabel? ExternalLabel
-    {
-        get => GetValueAsLabel(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial DotLabel? ExternalLabel { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.LabelLoc)]
-    public virtual DotVerticalAlignment? LabelAlignment
-    {
-        get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotVerticalAlignment? LabelAlignment { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Ordering)]
-    public virtual DotEdgeOrderingMode? EdgeOrderingMode
-    {
-        get => GetValueAs<DotEdgeOrderingMode>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Shape)]
-    public virtual DotNodeShape? Shape
-    {
-        get => GetValueAs<DotNodeShape>(MethodBase.GetCurrentMethod()!, out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotNodeShape? Shape { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Group)]
-    public virtual string? GroupName
-    {
-        get => GetValueAsString(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial string? GroupName { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Root)]
-    public virtual bool? IsRoot
-    {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod()!);
-        set => SetOrRemove(MethodBase.GetCurrentMethod()!, value);
-    }
+    public virtual partial bool? IsRoot { get; set; }
 }
