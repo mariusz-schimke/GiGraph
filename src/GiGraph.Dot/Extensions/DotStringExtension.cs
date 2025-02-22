@@ -1,3 +1,4 @@
+using System.Diagnostics.Contracts;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html;
 
@@ -14,6 +15,7 @@ public static class DotStringExtension
     /// <param name="string">
     ///     The string to convert.
     /// </param>
+    [Pure]
     public static DotEscapeString AsFormattedString(this string @string) => (DotEscapedString) @string;
 
     /// <summary>
@@ -23,5 +25,6 @@ public static class DotStringExtension
     /// <param name="string">
     ///     The string to convert.
     /// </param>
+    [Pure]
     public static DotHtmlString AsHtml(this string @string) => @string;
 }

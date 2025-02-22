@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics.Contracts;
+using System.Text;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Output.Generators.Graphs;
 using GiGraph.Dot.Output.Generators.Providers;
@@ -29,6 +30,7 @@ public static class DotGraphExtension
     /// <param name="syntaxRules">
     ///     The syntax rules to use.
     /// </param>
+    [Pure]
     public static string Build(this DotGraph graph, DotFormattingOptions? formattingOptions = null,
         DotSyntaxOptions? syntaxOptions = null, DotSyntaxRules? syntaxRules = null)
     {

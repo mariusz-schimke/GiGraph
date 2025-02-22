@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Output.Generators.Providers;
+﻿using System.Diagnostics.Contracts;
+using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Writers.Graphs;
 
@@ -22,6 +23,7 @@ public class DotGraphGeneratorBuilder : IDotGraphGeneratorBuilder
     /// <param name="options">
     ///     The DOT language generation options to use for graph generation and its components.
     /// </param>
+    [Pure]
     public virtual IDotEntityGenerator<IDotGraphWriterRoot> Build(DotSyntaxRules syntaxRules, DotSyntaxOptions options)
     {
         var providers = _dotEntityGeneratorsProviderBuilder.Build(syntaxRules, options);

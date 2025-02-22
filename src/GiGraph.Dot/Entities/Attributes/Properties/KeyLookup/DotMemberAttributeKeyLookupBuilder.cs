@@ -1,3 +1,4 @@
+using System.Diagnostics.Contracts;
 using System.Reflection;
 using GiGraph.Dot.Output.Metadata;
 
@@ -21,6 +22,7 @@ public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttri
     /// <param name="readOnly">
     ///     Determines whether the built lookup should be read only.
     /// </param>
+    [Pure]
     public virtual Lazy<DotMemberAttributeKeyLookup> BuildLazy(bool readOnly = true) => new(() => Build(readOnly));
 
     /// <summary>
@@ -29,6 +31,7 @@ public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttri
     /// <param name="readOnly">
     ///     Determines whether the built lookup should be read only.
     /// </param>
+    [Pure]
     public virtual DotMemberAttributeKeyLookup Build(bool readOnly = true)
     {
         var result = new DotMemberAttributeKeyLookup();

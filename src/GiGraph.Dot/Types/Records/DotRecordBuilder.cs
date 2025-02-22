@@ -1,3 +1,4 @@
+using System.Diagnostics.Contracts;
 using GiGraph.Dot.Types.Layout;
 
 namespace GiGraph.Dot.Types.Records;
@@ -44,5 +45,6 @@ public partial class DotRecordBuilder
     ///     <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to horizontal
     ///     layouts, the top-level fields are displayed vertically.
     /// </param>
+    [Pure]
     public virtual DotRecord Build(bool flip = false) => new(_fields.ToArray(), flip);
 }

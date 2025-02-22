@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Clusters;
+﻿using System.Diagnostics.Contracts;
+using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Output.Generators.Attributes;
@@ -25,6 +26,7 @@ public class DotEntityGeneratorsProviderBuilder : IDotEntityGeneratorsProviderBu
     /// <param name="options">
     ///     The DOT language generation options to use for graph generation and its components.
     /// </param>
+    [Pure]
     public virtual IDotEntityGeneratorsProvider Build(DotSyntaxRules syntaxRules, DotSyntaxOptions options)
     {
         var provider = new DotEntityGeneratorsProvider();
