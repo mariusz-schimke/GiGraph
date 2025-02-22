@@ -1,3 +1,5 @@
+using System.Diagnostics.Contracts;
+
 namespace GiGraph.Dot.Entities.Html.Builder;
 
 /// <summary>
@@ -69,6 +71,7 @@ public partial class DotHtmlBuilder
     /// <summary>
     ///     Builds output HTML from the content of the builder.
     /// </summary>
+    [Pure]
     public virtual DotHtmlEntity Build() =>
         new DotHtmlEntity<DotHtmlEntityCollection>(
             new((IEnumerable<IDotHtmlEntity>) _entities)

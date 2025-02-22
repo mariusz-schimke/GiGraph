@@ -1,3 +1,5 @@
+using System.Diagnostics.Contracts;
+
 namespace GiGraph.Dot.Types.EscapeString;
 
 /// <summary>
@@ -127,5 +129,6 @@ public class DotFormattedTextBuilder
     /// <summary>
     ///     Returns content as formatted text that can be used as a label of an element.
     /// </summary>
+    [Pure]
     public virtual DotEscapeString Build() => new DotConcatenatedEscapeString(_items.ToArray());
 }
