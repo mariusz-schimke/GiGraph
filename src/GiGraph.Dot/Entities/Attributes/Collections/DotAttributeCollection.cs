@@ -33,6 +33,11 @@ public partial class DotAttributeCollection : IDotEntity, IDotAnnotatable
 
     protected internal string? Annotation { get; set; }
 
+    /// <summary>
+    ///     Gets the number of attributes in the collection.
+    /// </summary>
+    public int Count => _attributes.Count;
+
     string? IDotAnnotatable.Annotation
     {
         get => Annotation;
@@ -54,6 +59,14 @@ public partial class DotAttributeCollection : IDotEntity, IDotAnnotatable
     ///     The key of the attribute to remove.
     /// </param>
     public DotAttribute? Remove(string key) => _attributes.Remove(key, out var result) ? result : null;
+
+    /// <summary>
+    ///     Removes all attributes from the collection.
+    /// </summary>
+    public void Clear()
+    {
+        _attributes.Clear();
+    }
 
     /// <summary>
     ///     Determines whether the collection contains an attribute with the specified key, whose value is null.
