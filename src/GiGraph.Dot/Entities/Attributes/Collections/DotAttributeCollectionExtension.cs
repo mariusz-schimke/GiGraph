@@ -15,8 +15,6 @@ namespace GiGraph.Dot.Entities.Attributes.Collections;
 
 public static class DotAttributeCollectionExtension
 {
-    // todo: sprawdzić, czy dla wszystkich typów deklarujących implicit operator są tu konwersje
-
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="double" />. If
     ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.

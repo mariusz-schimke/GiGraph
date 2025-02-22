@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -166,8 +164,6 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
         return _attributes.Collection.Nullify(key);
     }
 
-    // todo: posprzątać tu, czyli usunąć mapowanie accessorów w słowniku
-    
     /// <summary>
     ///     Gets the DOT key of the attribute the specified property provides access to.
     /// </summary>
