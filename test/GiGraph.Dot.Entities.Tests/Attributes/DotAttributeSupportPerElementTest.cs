@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using GiGraph.Dot.Helpers;
 using GiGraph.Dot.Output.Metadata;
 using Snapshooter.Xunit;
 using Xunit;
@@ -73,10 +74,7 @@ public class DotAttributeSupportPerElementTest
                     .GroupBy(
                         groupKey =>
                         {
-                            var propertyTypeName = Nullable.GetUnderlyingType(groupKey.Property.PropertyType) is { } underlyingType
-                                ? $"{underlyingType.Name}?"
-                                : groupKey.Property.PropertyType.Name;
-
+                            var propertyTypeName = TypeHelper.GetDisplayName(groupKey.Property.PropertyType);
                             return $"{groupKey.PropertyPath}: {propertyTypeName}";
                         },
                         groupElement => groupElement.Element

@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using GiGraph.Dot.Helpers;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
@@ -76,7 +77,7 @@ public abstract class DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable,
             return true;
         }
 
-        throw new InvalidCastException($"The value of type {attributeValue.GetType().Name} cannot be accessed as {typeof(T).Name}.");
+        throw new InvalidCastException($"The value of type {attributeValue.GetType().Name} cannot be accessed as {TypeHelper.GetDisplayName<T>()}.");
     }
 
     /// <summary>

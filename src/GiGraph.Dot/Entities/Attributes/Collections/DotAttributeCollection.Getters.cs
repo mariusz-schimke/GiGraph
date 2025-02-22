@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using GiGraph.Dot.Helpers;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections;
 
@@ -25,7 +26,7 @@ public partial class DotAttributeCollection
     public virtual T? GetAs<T>(string key)
         where T : DotAttribute =>
         TryGetValue(key, out var attribute)
-            ? attribute as T ?? throw new InvalidCastException($"The '{key}' attribute of type {attribute.GetType().Name} cannot be accessed as {typeof(T).Name}.")
+            ? attribute as T ?? throw new InvalidCastException($"The '{key}' attribute of type {attribute.GetType().Name} cannot be accessed as {TypeHelper.GetDisplayName<T>()}.")
             : null;
 
     /// <summary>

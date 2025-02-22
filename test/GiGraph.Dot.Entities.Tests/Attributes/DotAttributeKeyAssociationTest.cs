@@ -6,6 +6,7 @@ using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Tests.Attributes.Helpers;
 using GiGraph.Dot.Extensions;
+using GiGraph.Dot.Helpers;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Alignment;
@@ -26,7 +27,6 @@ using GiGraph.Dot.Types.Packing;
 using GiGraph.Dot.Types.Ranks;
 using GiGraph.Dot.Types.Styling;
 using GiGraph.Dot.Types.Viewport;
-using Snapshooter.Extensions;
 using Snapshooter.Xunit;
 using Xunit;
 
@@ -121,11 +121,7 @@ public class DotAttributeKeyAssociationTest
 
     private static void SetPropertyValueWithCheck(DotEntityAttributes targetObject, PropertyInfo targetProperty)
     {
-        var propertyType = (targetProperty.PropertyType.IsNullable() && targetProperty.PropertyType.IsGenericType
-                ? Nullable.GetUnderlyingType(targetProperty.PropertyType)
-                : targetProperty.PropertyType)
-         ?? throw new("Can't determine the property type.");
-
+        var propertyType = TypeHelper.Unwrap(targetProperty.PropertyType);
         if (!PropertyTypeValues.TryGetValue(propertyType, out var value))
         {
             throw new($"No test property value has been specified for type {propertyType.Name}.");
