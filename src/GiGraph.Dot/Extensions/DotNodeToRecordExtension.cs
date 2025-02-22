@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Entities.Nodes;
+﻿using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Types.Layout;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Records;

@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Html.Text;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using GiGraph.Dot.Entities.Graphs.Collections;
+﻿using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Qualities;
 

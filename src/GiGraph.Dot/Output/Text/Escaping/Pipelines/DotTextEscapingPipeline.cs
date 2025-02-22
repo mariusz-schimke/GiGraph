@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using GiGraph.Dot.Output.Text.Escaping.Html;
+﻿using GiGraph.Dot.Output.Text.Escaping.Html;
 
 namespace GiGraph.Dot.Output.Text.Escaping.Pipelines;
 

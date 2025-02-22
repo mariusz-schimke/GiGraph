@@ -1,4 +1,3 @@
-using System.Linq;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 

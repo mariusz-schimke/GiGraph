@@ -1,4 +1,3 @@
-using System.Linq;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Types.Viewport;

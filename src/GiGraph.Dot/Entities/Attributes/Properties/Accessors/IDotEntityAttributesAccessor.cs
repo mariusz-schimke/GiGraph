@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Accessors;

@@ -1,4 +1,3 @@
-using System;
 using System.Drawing;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Graphs;

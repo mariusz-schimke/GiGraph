@@ -1,5 +1,4 @@
-﻿using System.IO;
-using GiGraph.Dot.Entities.Graphs;
+﻿using GiGraph.Dot.Entities.Graphs;
 
 namespace GiGraph.Dot.Examples.Complex;
 

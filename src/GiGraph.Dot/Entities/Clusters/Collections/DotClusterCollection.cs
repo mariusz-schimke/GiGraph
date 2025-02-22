@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using GiGraph.Dot.Entities.Graphs.Collections;
+﻿using GiGraph.Dot.Entities.Graphs.Collections;
 
 namespace GiGraph.Dot.Entities.Clusters.Collections;
 

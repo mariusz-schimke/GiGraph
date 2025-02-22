@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Html.Table;
 using GiGraph.Dot.Extensions;

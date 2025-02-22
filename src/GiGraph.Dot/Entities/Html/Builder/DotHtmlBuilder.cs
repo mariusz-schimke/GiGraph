@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace GiGraph.Dot.Entities.Html.Builder;
 
 /// <summary>

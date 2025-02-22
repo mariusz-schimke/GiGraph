@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Output.Writers.TokenWriter;

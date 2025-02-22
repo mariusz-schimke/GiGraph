@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Graphs;

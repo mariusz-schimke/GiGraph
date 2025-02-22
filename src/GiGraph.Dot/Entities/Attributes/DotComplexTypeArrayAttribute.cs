@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;

@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using GiGraph.Dot.Examples.Basic;
+﻿using GiGraph.Dot.Examples.Basic;
 using GiGraph.Dot.Extensions;
 
 var graph = HelloWorld.Generate();

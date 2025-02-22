@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Output.Qualities;
 

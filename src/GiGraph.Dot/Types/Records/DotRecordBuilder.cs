@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using GiGraph.Dot.Types.Layout;
 
 namespace GiGraph.Dot.Types.Records;

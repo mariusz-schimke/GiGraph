@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Types.EscapeString;
 
 namespace GiGraph.Dot.Types.Records;

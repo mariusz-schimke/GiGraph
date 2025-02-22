@@ -1,5 +1,3 @@
-using System;
-
 namespace GiGraph.Dot.Entities.Html.Builder;
 
 public partial class DotHtmlBuilder

@@ -1,6 +1,4 @@
-using System;
 using System.Drawing;
-using System.Linq;
 using GiGraph.Dot.Entities.Qualities;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Styling;

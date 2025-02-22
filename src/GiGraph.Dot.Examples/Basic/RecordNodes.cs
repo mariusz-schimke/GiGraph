@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Entities.Graphs;
+﻿using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;

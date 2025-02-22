@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Entities.Edges.Endpoints;
+﻿using GiGraph.Dot.Entities.Edges.Endpoints;
 
 namespace GiGraph.Dot.Entities.Edges.Collections;
 

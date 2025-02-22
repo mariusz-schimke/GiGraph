@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Output.Options;

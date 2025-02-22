@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Types.Alignment;
 

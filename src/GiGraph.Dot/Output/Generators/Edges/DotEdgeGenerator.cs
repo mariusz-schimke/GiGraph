@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Entities.Edges;
+﻿using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;

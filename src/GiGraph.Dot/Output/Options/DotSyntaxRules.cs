@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text.RegularExpressions;
 using GiGraph.Dot.Output.Text.Escaping;
 using GiGraph.Dot.Output.Text.Escaping.Pipelines;

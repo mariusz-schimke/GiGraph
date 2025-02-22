@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Html.Table;
 using Xunit;
