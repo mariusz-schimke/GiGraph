@@ -18,11 +18,11 @@ public abstract class DotAttributeCollectionGenerator<TWriter> : DotEntityGenera
     protected override void WriteEntity(DotAttributeCollection attributes, TWriter writer)
     {
         var orderedAttributes = _options.SortElements
-            ? attributes.Values
+            ? attributes
                 .Cast<IDotOrderable>()
                 .OrderBy(attribute => attribute.OrderingKey, StringComparer.InvariantCulture)
                 .Cast<DotAttribute>()
-            : attributes.Values;
+            : attributes;
 
         foreach (var attribute in orderedAttributes)
         {
