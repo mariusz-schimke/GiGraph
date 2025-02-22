@@ -4,7 +4,6 @@ using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections;
 
-// TODO: Zastosować OrderedDictionary, ale przez kompozycję, a nie dziedziczenie.
 public partial class DotAttributeCollection : IDotEntity, IDotAnnotatable
 {
     protected readonly DotAttributeFactory _attributeFactory;
