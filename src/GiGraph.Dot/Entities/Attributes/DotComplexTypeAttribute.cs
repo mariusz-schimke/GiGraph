@@ -27,5 +27,6 @@ public class DotComplexTypeAttribute<TComplex> : DotAttribute<TComplex>
     }
 
     protected internal override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
-        Value.GetDotEncodedValue(options, syntaxRules);
+        // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
+        Value?.GetDotEncodedValue(options, syntaxRules);
 }
