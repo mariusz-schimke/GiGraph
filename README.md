@@ -198,13 +198,13 @@ node.Attributes.Collection.SetValue(DotAttributeKeys.FillColor, "red:blue");
 You can also conveniently use specific types that represent attribute values to not have to care about syntactic details. For instance, the following code renders the same result as the example above:
 
 ```c#
-node.Attributes.Collection.SetComplex("fillcolor", new DotGradientColor(Color.Red, Color.Blue));
+node.Attributes.Collection.SetComplexValue("fillcolor", new DotGradientColor(Color.Red, Color.Blue));
 ```
 
 And similarly when you want to use an enumeration type:
 
 ```c#
-node.Attributes.Collection.SetEnum("shape", DotNodeShape.Circle);
+node.Attributes.Collection.SetEnumValue("shape", DotNodeShape.Circle);
 ```
 
 
@@ -212,7 +212,7 @@ node.Attributes.Collection.SetEnum("shape", DotNodeShape.Circle);
 If there is a case that you want your value to be written **as is** in the output DOT script, use the *SetRaw* method. It's similar to the first approach, but the value you provide doesn't undergo any further processing (normally, if it contains special characters, they have to be escaped so that they are interpreted correctly and don't break syntactic consistency of the output script). In this case, however, you have to take care of following the syntax rules by yourself for the provided value.
 
 ```c#
-node.Attributes.Collection.SetRaw("fillcolor", "red:blue");
+node.Attributes.Collection.SetRawValue("fillcolor", "red:blue");
 ```
 
 Note the difference between *Set* and *SetRaw* in terms of how the value is processed internally.
@@ -222,14 +222,14 @@ Note the difference between *Set* and *SetRaw* in terms of how the value is proc
 node.Attributes.Collection.SetValue("label", @"Foo ""Bar"" Baz");
 
 // output (syntax error): label = "Foo "Bar" Baz"
-node.Attributes.Collection.SetRaw("label", @"Foo ""Bar"" Baz");
+node.Attributes.Collection.SetRawValue("label", @"Foo ""Bar"" Baz");
 ```
 
 The output of the second example is syntactically incorrect because *SetRaw* doesn't apply any character escaping, and quotation marks have to be escaped with a backslash. A corrected example could look like this:
 
 ```c#
 // output: label = "Foo \"Bar\" Baz"
-node.Attributes.Collection.SetRaw("label", @"Foo \""Bar\"" Baz");
+node.Attributes.Collection.SetRawValue("label", @"Foo \""Bar\"" Baz");
 ```
 
 
