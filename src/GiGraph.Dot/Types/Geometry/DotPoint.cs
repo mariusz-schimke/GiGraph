@@ -130,7 +130,7 @@ public class DotPoint : IDotEncodable
 
     protected virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
-        var fix = true == IsFixed ? "!" : string.Empty;
+        var fix = IsFixed is true ? "!" : string.Empty;
         return $"{string.Join(",", Coordinates.Select(c => c.ToString(syntaxRules.Culture)))}{fix}";
     }
 

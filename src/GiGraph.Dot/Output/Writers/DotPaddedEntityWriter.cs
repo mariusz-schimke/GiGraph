@@ -37,7 +37,7 @@ public class DotPaddedEntityWriter
     public virtual void EndEntity(bool linger = true, bool enforceLineBreak = true)
     {
         // the assumption is that a commented attribute needs to have an empty line above and below
-        if (true == _isPadded)
+        if (_isPadded is true)
         {
             _tokenWriter.EmptyLine(linger, enforceLineBreak);
             _prependIndentation = false;

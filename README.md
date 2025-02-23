@@ -184,13 +184,13 @@ graph.Edges.Add("Foo", "Bar", edge =>
 In some cases you may come across an attribute that is not exposed as a property, but then you can still provide a key and a value for it manually. Here's an example:
 
 ```c#
-node.Attributes.Collection.Set("fillcolor", "red:blue");
+node.Attributes.Collection.SetValue("fillcolor", "red:blue");
 ```
 
 or using an attribute key const available in the *DotAttributeKeys* class:
 
 ```c#
-node.Attributes.Collection.Set(DotAttributeKeys.FillColor, "red:blue");
+node.Attributes.Collection.SetValue(DotAttributeKeys.FillColor, "red:blue");
 ```
 
 
@@ -219,7 +219,7 @@ Note the difference between *Set* and *SetRaw* in terms of how the value is proc
 
 ```c#
 // output (syntax correct): label = "Foo \"Bar\" Baz"
-node.Attributes.Collection.Set("label", @"Foo ""Bar"" Baz");
+node.Attributes.Collection.SetValue("label", @"Foo ""Bar"" Baz");
 
 // output (syntax error): label = "Foo "Bar" Baz"
 node.Attributes.Collection.SetRaw("label", @"Foo ""Bar"" Baz");

@@ -41,7 +41,7 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     public virtual DotAttribute? Get<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
     {
         var key = GetKey(property);
-        return _attributes.Collection.GetValueOrDefault(key);
+        return _attributes.Collection.Get(key);
     }
 
     /// <summary>
@@ -101,7 +101,7 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     public virtual DotRawAttribute SetRawValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
     {
         var key = GetKey(property);
-        return _attributes.Collection.SetRaw(key, value);
+        return _attributes.Collection.SetRawValue(key, value);
     }
 
     /// <summary>
@@ -113,7 +113,7 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <typeparam name="TProperty">
     ///     The type returned by the property.
     /// </typeparam>
-    public virtual bool Remove<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+    public virtual DotAttribute? Remove<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
     {
         var key = GetKey(property);
         return _attributes.Collection.Remove(key);
@@ -150,7 +150,8 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     }
 
     /// <summary>
-    ///     Adds an attribute with a null value to the collection.
+    ///     Adds an attribute with a null value to the collection. This will render as an attribute with an empty value in the output DOT
+    ///     script.
     /// </summary>
     /// <param name="property">
     ///     The property to add a null value attribute for.

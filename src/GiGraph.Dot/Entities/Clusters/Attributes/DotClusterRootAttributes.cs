@@ -41,7 +41,7 @@ public partial class DotClusterRootAttributes : DotClusterNodeRootCommonAttribut
     bool? IDotClusterAttributes.IsCluster
     {
         get => _attributes.GetValueAs(DotAttributeKeys.Cluster, out bool? result) ? result : null;
-        set => _attributes.SetOrRemove(DotAttributeKeys.Cluster, value);
+        set => _attributes.SetValueOrRemove(DotAttributeKeys.Cluster, value);
     }
 
     public DotFontAttributes Font { get; }
@@ -52,7 +52,7 @@ public partial class DotClusterRootAttributes : DotClusterNodeRootCommonAttribut
     DotStyles? IDotClusterAttributes.Style
     {
         get => _attributes.GetValueAs(DotAttributeKeys.Style, out DotStyles? result) ? result : null;
-        set => _attributes.SetOrRemove(DotAttributeKeys.Style, value);
+        set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Rank)]

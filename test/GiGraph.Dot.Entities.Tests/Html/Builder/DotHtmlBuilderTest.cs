@@ -58,7 +58,7 @@ public class DotHtmlBuilderTest
             .AppendVerticalRule()
             .AppendHtml("<custom-html></custom-html>")
             .AppendElement("custom-element", e => e.SetContent("content"))
-            .AppendVoidElement("custom-void-element", e => e.Attributes.Set("attr", 5))
+            .AppendVoidElement("custom-void-element", e => e.Attributes.SetValue("attr", 5))
             .AppendComment("comment");
 
         Snapshot.Match(

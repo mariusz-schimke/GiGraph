@@ -11,7 +11,7 @@ public partial class DotAttributeCollection
     /// <param name="key">
     ///     The key of the attribute to get.
     /// </param>
-    public virtual DotAttribute? Get(string key) => TryGetValue(key, out var attribute) ? attribute : null;
+    public virtual DotAttribute? Get(string key) => _attributes.GetValueOrDefault(key);
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns it as the specified type. If the
@@ -25,7 +25,7 @@ public partial class DotAttributeCollection
     /// </param>
     public virtual T? GetAs<T>(string key)
         where T : DotAttribute =>
-        TryGetValue(key, out var attribute)
+        _attributes.TryGetValue(key, out var attribute)
             ? attribute as T ?? throw new InvalidCastException($"The '{key}' attribute of type {attribute.GetType().Name} cannot be accessed as {TypeHelper.GetDisplayName<T>()}.")
             : null;
 
@@ -45,7 +45,7 @@ public partial class DotAttributeCollection
     public virtual bool TryGetAs<T>(string key, [MaybeNullWhen(false)] out T attribute)
         where T : DotAttribute
     {
-        if (TryGetValue(key, out var output))
+        if (_attributes.TryGetValue(key, out var output))
         {
             attribute = output as T;
             return attribute is not null;
@@ -70,7 +70,7 @@ public partial class DotAttributeCollection
     /// </param>
     public virtual bool GetValueAs<T>(string key, [MaybeNullWhen(false)] out T value)
     {
-        if (TryGetValue(key, out var attribute))
+        if (_attributes.TryGetValue(key, out var attribute))
         {
             return attribute.GetValueAs(out value);
         }
@@ -94,7 +94,7 @@ public partial class DotAttributeCollection
     /// </param>
     public virtual bool TryGetValueAs<T>(string key, [MaybeNullWhen(false)] out T value)
     {
-        if (TryGetValue(key, out var attribute))
+        if (_attributes.TryGetValue(key, out var attribute))
         {
             return attribute.TryGetValueAs(out value);
         }
