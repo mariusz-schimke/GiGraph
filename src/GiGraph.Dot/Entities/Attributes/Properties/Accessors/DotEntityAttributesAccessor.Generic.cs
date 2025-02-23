@@ -101,7 +101,7 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     public virtual DotRawAttribute SetRawValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
     {
         var key = GetKey(property);
-        return _attributes.Collection.SetRaw(key, value);
+        return _attributes.Collection.SetRawValue(key, value);
     }
 
     /// <summary>

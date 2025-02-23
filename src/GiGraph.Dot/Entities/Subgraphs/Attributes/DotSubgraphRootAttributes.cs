@@ -27,6 +27,6 @@ public partial class DotSubgraphRootAttributes : DotEntityAttributesWithMetadata
     bool? IDotSubgraphAttributes.IsCluster
     {
         get => _attributes.GetValueAs(DotAttributeKeys.Cluster, out bool? result) ? result : null;
-        set => _attributes.SetOrRemove(DotAttributeKeys.Cluster, value);
+        set => _attributes.SetValueOrRemove(DotAttributeKeys.Cluster, value);
     }
 }

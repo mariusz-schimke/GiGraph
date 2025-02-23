@@ -19,7 +19,7 @@ public class DotHtmlEntitiesTest
     public void encoded_empty_html_element_is_valid_html()
     {
         var tag = new DotHtmlElement("custom-tag-name");
-        tag.Attributes.SetEnum("align", DotHorizontalAlignment.Center);
+        tag.Attributes.SetEnumValue("align", DotHorizontalAlignment.Center);
 
         Snapshot.Match(
             ((IDotHtmlEncodable) tag).ToHtml(_syntaxOptions, _syntaxRules),
@@ -35,7 +35,7 @@ public class DotHtmlEntitiesTest
             new DotHtmlBold("bold text")
         };
 
-        tag.Attributes.SetComplex("bgcolor", new DotGradientColor(Color.Red, Color.Blue));
+        tag.Attributes.SetComplexValue("bgcolor", new DotGradientColor(Color.Red, Color.Blue));
 
         Snapshot.Match(
             ((IDotHtmlEncodable) tag).ToHtml(_syntaxOptions, _syntaxRules),
@@ -47,7 +47,7 @@ public class DotHtmlEntitiesTest
     public void encoded_html_element_name_is_upper_case()
     {
         var tag = new DotHtmlElement("custom-tag-name");
-        tag.Attributes.Set("attr1", "value1");
+        tag.Attributes.SetValue("attr1", "value1");
 
         var syntaxOptions = new DotSyntaxOptions
         {
@@ -70,7 +70,7 @@ public class DotHtmlEntitiesTest
     public void to_string_returns_html()
     {
         var tag = new DotHtmlElement("custom-tag-name");
-        tag.Attributes.SetEnum("align", DotHorizontalAlignment.Center);
+        tag.Attributes.SetEnumValue("align", DotHorizontalAlignment.Center);
 
         Assert.Equal(tag.ToHtml(), tag.ToString());
     }

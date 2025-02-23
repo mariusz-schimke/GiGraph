@@ -79,7 +79,7 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
         }
 
         result = new(result);
-        result.Set(DotAttributeKeys.Cluster, true);
+        result.SetValue(DotAttributeKeys.Cluster, true);
         return result;
     }
 
