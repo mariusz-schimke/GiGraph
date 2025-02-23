@@ -150,7 +150,8 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     }
 
     /// <summary>
-    ///     Adds an attribute with a null value to the collection.
+    ///     Adds an attribute with a null value to the collection. This will render as an attribute with an empty value in the output DOT
+    ///     script.
     /// </summary>
     /// <param name="property">
     ///     The property to add a null value attribute for.
