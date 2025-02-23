@@ -7,7 +7,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Qualities;
 
-public partial class DotStripableExtensionTest
+public partial class DotStripeFillableExtensionTest
 {
     [Fact]
     public void sets_striped_fill_on_individual_clusters()
