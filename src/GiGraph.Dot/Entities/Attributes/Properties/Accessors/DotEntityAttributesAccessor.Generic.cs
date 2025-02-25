@@ -82,8 +82,29 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     }
 
     /// <summary>
-    ///     Assigns a raw value to the specified property and returns the actual attribute added to the collection. The value is rendered
-    ///     AS IS in the output DOT script, so it has to escaped appropriately when necessary (see
+    ///     Assigns a custom value to the specified property and returns the actual attribute added to the collection. If the value
+    ///     contains any special characters, they will be escaped to make sure the output script is syntactically correct. If you don't
+    ///     want that to happen, consider using the <see cref="SetRawValue{TProperty}" /> method instead.
+    /// </summary>
+    /// <param name="property">
+    ///     The property whose value to set.
+    /// </param>
+    /// <param name="value">
+    ///     The value to assign to the property.
+    /// </param>
+    /// <typeparam name="TProperty">
+    ///     The type returned by the property.
+    /// </typeparam>
+    public virtual DotStringAttribute SetCustomValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
+    {
+        var key = GetKey(property);
+        return _attributes.Collection.SetValue(key, value);
+    }
+
+    /// <summary>
+    ///     Assigns a raw value to the specified property and returns the attribute that was added to the collection. The value is
+    ///     rendered as-is in the output DOT script, so you must ensure that it is properly escaped when necessary to maintain the
+    ///     script's syntactical correctness (see
     ///     <see href="https://www.graphviz.org/doc/info/lang.html">
     ///         documentation
     ///     </see>
