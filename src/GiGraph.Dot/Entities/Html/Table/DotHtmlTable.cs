@@ -26,7 +26,7 @@ public partial class DotHtmlTable : DotHtmlElement
     protected DotHtmlTable(DotHtmlTableAttributes attributes)
         : base("table", attributes.Collection)
     {
-        Attributes = new(attributes);
+        Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlTableAttributes, DotHtmlTableAttributes>(attributes);
     }
 
     /// <summary>

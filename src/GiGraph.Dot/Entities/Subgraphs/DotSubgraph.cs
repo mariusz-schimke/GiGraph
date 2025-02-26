@@ -33,7 +33,7 @@ public class DotSubgraph : DotSubgraphSection, IDotGraph, IDotOrderable
     ///     The rank constraints to apply to the nodes in the subgraph.
     /// </param>
     public DotSubgraph(string? id = null, DotRank? nodeRank = null)
-        : this(new(), new DotGraphSectionCollection<DotSubgraphSection>())
+        : this(new DotSubgraphSection(), new DotGraphSectionCollection<DotSubgraphSection>())
     {
         Id = id;
 

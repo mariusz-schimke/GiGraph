@@ -67,5 +67,5 @@ public partial class DotEdgeCollection
     ///     An optional initializer delegate to call for the created sequence.
     /// </param>
     public virtual DotEdgeSequence AddSequence(IEnumerable<DotEndpointDefinition> endpoints, Action<DotEdgeSequence>? init = null) =>
-        Add(new(endpoints), init);
+        Add(new DotEdgeSequence(endpoints), init);
 }

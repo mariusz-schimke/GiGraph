@@ -9,7 +9,7 @@ public abstract partial class DotNodeDefinition : IDotEntity, IDotAnnotatable, I
 {
     protected DotNodeDefinition(DotNodeRootAttributes attributes)
     {
-        Attributes = new(attributes);
+        Attributes = new DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes>(attributes);
     }
 
     /// <summary>

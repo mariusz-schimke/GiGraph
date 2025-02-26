@@ -16,7 +16,7 @@ public partial class DotHtmlElement : DotHtmlTag, IDotHtmlContentEntity
     ///     The tag name to use for the element.
     /// </param>
     public DotHtmlElement(string name)
-        : this(name, new())
+        : this(name, new DotHtmlAttributeCollection())
     {
     }
 

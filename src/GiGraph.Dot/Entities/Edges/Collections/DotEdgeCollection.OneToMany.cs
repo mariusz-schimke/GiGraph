@@ -101,5 +101,5 @@ public partial class DotEdgeCollection
     public virtual DotEdge<DotEndpoint, DotSubgraphEndpoint> AddOneToMany(
         string tailNodeId, DotSubgraph heads,
         Action<DotEdge<DotEndpoint, DotSubgraphEndpoint>>? init = null) =>
-        Add(new(tailNodeId), new(heads), init);
+        Add(new DotEndpoint(tailNodeId), new DotSubgraphEndpoint(heads), init);
 }

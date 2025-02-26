@@ -1,4 +1,5 @@
 using Bogus;
+using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.Layout;
@@ -15,7 +16,7 @@ public class DotGraphLayoutAttributesTests : DotGraphAttributeSettersTestBase<ID
     [Fact]
     public void TestSetMethodUsingReflection()
     {
-        var sourceAttributes = new DotGraphLayoutAttributes(new())
+        var sourceAttributes = new DotGraphLayoutAttributes(new DotAttributeCollection())
         {
             ConcentrateEdges = _faker.Random.Bool(),
             Direction = _faker.Random.Enum<DotLayoutDirection>(),
@@ -36,7 +37,7 @@ public class DotGraphLayoutAttributesTests : DotGraphAttributeSettersTestBase<ID
             UseGlobalRanking = _faker.Random.Bool()
         };
 
-        var targetAttributes = new DotGraphLayoutAttributes(new());
+        var targetAttributes = new DotGraphLayoutAttributes(new DotAttributeCollection());
         targetAttributes.Set(sourceAttributes);
 
         AssertAttributesNonNullAndEqual(sourceAttributes, targetAttributes);

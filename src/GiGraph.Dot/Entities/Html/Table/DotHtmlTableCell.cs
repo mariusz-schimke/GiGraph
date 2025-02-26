@@ -25,7 +25,7 @@ public partial class DotHtmlTableCell : DotHtmlElement
     protected DotHtmlTableCell(DotHtmlTableCellAttributes attributes)
         : base("td", attributes.Collection)
     {
-        Attributes = new(attributes);
+        Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlTableCellAttributes, DotHtmlTableCellAttributes>(attributes);
     }
 
     /// <summary>

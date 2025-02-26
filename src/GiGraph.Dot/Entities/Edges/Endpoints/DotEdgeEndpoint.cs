@@ -7,7 +7,7 @@ public partial class DotEdgeEndpoint
 {
     public DotEdgeEndpoint(DotEdgeEndpointAttributes attributes)
     {
-        Attributes = new(attributes);
+        Attributes = new DotEntityAttributesAccessor<IDotEdgeEndpointAttributes, DotEdgeEndpointAttributes>(attributes);
     }
 
     /// <summary>

@@ -16,7 +16,7 @@ public class DotTokenWriter
     }
 
     public DotTokenWriter(TextWriter writer, DotTokenWriterOptions options)
-        : this(writer, new(), options)
+        : this(writer, new Queue<(string?, DotTokenType)>(), options)
     {
     }
 
@@ -38,7 +38,7 @@ public class DotTokenWriter
 
     public virtual DotTokenWriter CloneWith(DotTokenWriterOptions options)
     {
-        return new(_writer, _lingerBuffer, options)
+        return new DotTokenWriter(_writer, _lingerBuffer, options)
         {
             OnBeforeAppendToken = (sender, e) => OnBeforeAppendToken?.Invoke(sender, e),
             OnAfterAppendToken = (sender, e) => OnAfterAppendToken?.Invoke(sender, e)

@@ -94,7 +94,7 @@ public class DotColor : DotColorDefinition
     }
 
     [return: NotNullIfNotNull(nameof(color))]
-    public static implicit operator DotColor?(Color? color) => color.HasValue ? new(color.Value) : null;
+    public static implicit operator DotColor?(Color? color) => color.HasValue ? new DotColor(color.Value) : null;
 
     [return: NotNullIfNotNull(nameof(color))]
     public static implicit operator Color?(DotColor? color) => color?.Color;

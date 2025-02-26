@@ -74,7 +74,7 @@ public partial class DotHtmlFont : DotHtmlElement
     protected DotHtmlFont(DotHtmlFontAttributes attributes)
         : base("font", attributes.Collection)
     {
-        Attributes = new(attributes);
+        Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlFontAttributes, DotHtmlFontAttributes>(attributes);
     }
 
     /// <summary>

@@ -38,7 +38,7 @@ public partial class DotHtmlImage : DotHtmlVoidElement
     protected DotHtmlImage(DotHtmlImageAttributes attributes)
         : base("img", attributes.Collection)
     {
-        Attributes = new(attributes);
+        Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlImageAttributes, DotHtmlImageAttributes>(attributes);
     }
 
     /// <summary>

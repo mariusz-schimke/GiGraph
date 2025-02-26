@@ -27,7 +27,7 @@ public partial class DotAttributeCollection : IDotEntity, IDotAnnotatable
     public DotAttributeCollection(DotAttributeFactory attributeFactory, IDictionary<string, DotAttribute> source)
         : this(attributeFactory)
     {
-        _attributes = new(source);
+        _attributes = new SortedDictionary<string, DotAttribute>(source);
     }
 
     protected internal string? Annotation { get; set; }

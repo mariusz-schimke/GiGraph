@@ -10,7 +10,7 @@ public partial class DotGraphClusterCollection : DotClusterCollection
     public DotGraphClusterCollection(DotGraphRootAttributes graphAttributes)
     {
         _graphAttributes = graphAttributes;
-        Attributes = new(graphAttributes.Clusters);
+        Attributes = new DotEntityAttributesAccessor<IDotGraphClustersAttributes, DotGraphClustersAttributes>(graphAttributes.Clusters);
     }
 
     /// <summary>

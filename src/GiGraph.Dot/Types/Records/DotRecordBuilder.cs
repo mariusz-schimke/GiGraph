@@ -26,7 +26,7 @@ public partial class DotRecordBuilder
     /// </param>
     public DotRecordBuilder(IEnumerable<DotRecordField> fields)
     {
-        _fields = new(fields);
+        _fields = new List<DotRecordField>(fields);
     }
 
     /// <summary>

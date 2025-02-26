@@ -22,7 +22,7 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     ///     The unique identifier of the cluster.
     /// </param>
     public DotCluster(string id)
-        : this(new(), new())
+        : this(new DotClusterSection(), new DotGraphSectionCollection<DotClusterSection>())
     {
         Id = id ?? throw new ArgumentNullException(nameof(id), "Cluster identifier must not be null.");
     }
@@ -78,7 +78,7 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
             return result;
         }
 
-        result = new(result);
+        result = new DotAttributeCollection(result);
         result.SetValue(DotAttributeKeys.Cluster, true);
         return result;
     }
