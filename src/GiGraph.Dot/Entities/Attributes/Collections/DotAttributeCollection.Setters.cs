@@ -209,7 +209,9 @@ public partial class DotAttributeCollection
     public virtual DotColorAttribute SetValue(string key, Color value) => Put(_attributeFactory.CreateColor(key, value));
 
     /// <summary>
-    ///     Adds or replaces the specified enumeration value attribute in the collection.
+    ///     Adds or replaces the specified enumeration value attribute in the collection. The value rendered in the output DOT script
+    ///     will be based on the <see cref="GiGraph.Dot.Output.Metadata.DotAttributeValue" /> attribute applied to the enumeration
+    ///     values.
     /// </summary>
     /// <param name="key">
     ///     The key of the attribute to include in the collection.

@@ -46,7 +46,7 @@
 
         <PackageReleaseNotes>- Nullability support has been added to the library.
 
-- Replaced some reflection-based logic in the library with source generators.
+- Replaced some reflection-based logic in the library with source generators to optimize performance.
 
 - Refactoring and code cleanup.
 
