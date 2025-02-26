@@ -56,6 +56,7 @@ public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttri
             var interfaceMethod = interfaceMap.InterfaceMethods[index];
             var targetMethod = interfaceMap.TargetMethods[index];
 
+            // map only setters to not store redundant data
             if (interfaceMethod.ReturnType != typeof(void))
             {
                 continue;
