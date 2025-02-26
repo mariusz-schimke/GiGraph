@@ -19,8 +19,8 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().BuildLazy();
 
     public DotEdgeRootAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new(attributes), new(attributes), new(attributes), new(attributes),
-            new(attributes), new(attributes), new(attributes), new(attributes), new(attributes)
+        : this(attributes, AttributeKeyLookup, new DotEdgeHeadAttributes(attributes), new DotEdgeTailAttributes(attributes), new DotFontAttributes(attributes), new DotHyperlinkAttributes(attributes),
+            new DotEdgeEndpointLabelsAttributes(attributes), new DotEdgeLabelHyperlinkAttributes(attributes), new DotEdgeHyperlinkAttributes(attributes), new DotEdgeStyleAttributeOptions(attributes), new DotSvgStyleSheetAttributes(attributes)
         )
     {
     }
@@ -63,7 +63,9 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
     [DotAttributeKey(DotAttributeKeys.Style)]
     DotStyles? IDotEdgeAttributes.Style
     {
+        [DotAttributeKey(DotAttributeKeys.Style)]
         get => _attributes.GetValueAs(DotAttributeKeys.Style, out DotStyles? result) ? result : null;
+        [DotAttributeKey(DotAttributeKeys.Style)]
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
 

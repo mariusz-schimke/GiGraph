@@ -6,7 +6,7 @@ using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Entities.Tests.Attributes;
+namespace GiGraph.Dot.Entities.Tests.Attributes.Factories;
 
 public static class DotElementAttributesMetadataFactory
 {

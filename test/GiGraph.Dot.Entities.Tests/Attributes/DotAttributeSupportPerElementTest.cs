@@ -1,4 +1,5 @@
 using System.Reflection;
+using GiGraph.Dot.Entities.Tests.Attributes.Factories;
 using GiGraph.Dot.Helpers;
 using GiGraph.Dot.Output.Metadata;
 using Snapshooter.Xunit;

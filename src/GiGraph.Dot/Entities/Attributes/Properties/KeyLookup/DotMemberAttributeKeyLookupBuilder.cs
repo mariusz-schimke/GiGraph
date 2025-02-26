@@ -5,7 +5,7 @@ using GiGraph.Dot.Output.Metadata;
 namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 /// <summary>
-///     Builds a lookup for properties and property accessors.
+///     Builds a lookup for property accessors.
 /// </summary>
 /// <typeparam name="TEntityAttributes">
 ///     The entity attributes type.
@@ -19,20 +19,20 @@ public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttri
     /// <summary>
     ///     Builds lazily a lookup for properties and property accessors.
     /// </summary>
-    /// <param name="readOnly">
+    /// <param name="seal">
     ///     Determines whether the built lookup should be read only.
     /// </param>
     [Pure]
-    public virtual Lazy<DotMemberAttributeKeyLookup> BuildLazy(bool readOnly = true) => new(() => Build(readOnly));
+    public virtual Lazy<DotMemberAttributeKeyLookup> BuildLazy(bool seal = true) => new(() => Build(seal));
 
     /// <summary>
     ///     Builds a lookup for properties and property accessors.
     /// </summary>
-    /// <param name="readOnly">
+    /// <param name="seal">
     ///     Determines whether the built lookup should be read only.
     /// </param>
     [Pure]
-    public virtual DotMemberAttributeKeyLookup Build(bool readOnly = true)
+    public virtual DotMemberAttributeKeyLookup Build(bool seal = true)
     {
         var result = new DotMemberAttributeKeyLookup();
 
@@ -41,81 +41,32 @@ public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttri
 
         foreach (var interfaceType in entityAttributePropertiesInterfaceTypes)
         {
-            UpdateByInterfaceMembers(result, interfaceType);
+            AddPropertyAccessors(result, interfaceType);
         }
 
-        return readOnly ? result.ToReadOnly() : result;
+        return seal ? result.Seal() : result;
     }
 
-    protected virtual void UpdateByInterfaceMembers(DotMemberAttributeKeyLookup output, Type entityAttributePropertiesInterfaceType)
+    protected virtual void AddPropertyAccessors(DotMemberAttributeKeyLookup output, Type entityAttributePropertiesInterfaceType)
     {
-        var interfaceProperties = entityAttributePropertiesInterfaceType.GetProperties(BindingFlags.Instance | BindingFlags.Public);
         var interfaceMap = typeof(TEntityAttributes).GetInterfaceMap(entityAttributePropertiesInterfaceType);
 
-        // build a temporary lookup for all types the implemented properties are declared by
-        var tempLookup = BuildWithDeclaredPropertyAccessorsOf(
-            interfaceMap.TargetMethods.Select(accessor => accessor.DeclaringType)!
-        );
-
-        // based on the previously created lookup, include base definitions of all implemented property accessors
         for (var index = 0; index < interfaceMap.TargetMethods.Length; index++)
         {
             var interfaceMethod = interfaceMap.InterfaceMethods[index];
             var targetMethod = interfaceMap.TargetMethods[index];
 
-            var key = tempLookup.GetPropertyAccessorKey(targetMethod);
-
-            // since keys won't be looked up by accessors, let's not include them in the final lookup
-            // output.SetPropertyAccessorKey(targetMethod, key);
-
-            tempLookup.SetPropertyAccessorKey(interfaceMethod, key);
-        }
-
-        // include interface properties
-        foreach (var interfaceProperty in interfaceProperties)
-        {
-            var interfacePropertyAccessor = interfaceProperty.GetMethod ?? interfaceProperty.SetMethod;
-            var key = tempLookup.GetPropertyAccessorKey(interfacePropertyAccessor!);
-            output.SetPropertyKey(interfaceProperty, key);
-        }
-    }
-
-    protected virtual DotMemberAttributeKeyLookup BuildWithDeclaredPropertyAccessorsOf(IEnumerable<Type> entityAttributesTypes)
-    {
-        // don't use the common base property as the lookup key because when overridden, the descendant property may have a different
-        // attribute key assigned, in which case it should become the final attribute key to use for the property
-        // (if a common base was used, properties with the same ancestor would overwrite one another in the lookup
-        // with the last one enforcing its attribute key as the final key)
-        var result = new DotMemberAttributeKeyLookup(useCommonBaseAsLookupKey: false);
-
-        foreach (var entityAttributesType in entityAttributesTypes.Distinct())
-        {
-            UpdateWithDeclaredPropertyAccessorsOf(result, entityAttributesType);
-        }
-
-        return result;
-    }
-
-    protected virtual void UpdateWithDeclaredPropertyAccessorsOf(DotMemberAttributeKeyLookup lookup, Type entityAttributesType)
-    {
-        var properties = entityAttributesType.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-
-        foreach (var property in properties)
-        {
-            if (property.GetCustomAttribute<DotAttributeKeyAttribute>() is not { } attribute)
+            // map only setters to not store redundant data
+            if (interfaceMethod.ReturnType != typeof(void))
             {
                 continue;
             }
 
-            if (property.GetMethod is { } getter)
-            {
-                lookup.SetPropertyAccessorKey(getter, attribute.Key);
-            }
+            var attribute = targetMethod.GetCustomAttribute<DotAttributeKeyAttribute>()
+             ?? throw new KeyNotFoundException($"No {nameof(DotAttributeKeyAttribute)} is specified on the property accessor " +
+                    $"{targetMethod.Name} of {targetMethod.DeclaringType?.Name}.");
 
-            if (property.SetMethod is { } setter)
-            {
-                lookup.SetPropertyAccessorKey(setter, attribute.Key);
-            }
+            output.SetPropertyAccessorKey(interfaceMethod, attribute.Key);
         }
     }
 }

@@ -17,7 +17,7 @@ public partial class DotClusterRootAttributes : DotClusterNodeRootCommonAttribut
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
 
     public DotClusterRootAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new(attributes), new(attributes), new(attributes), new(attributes), new(attributes))
+        : this(attributes, AttributeKeyLookup, new DotHyperlinkAttributes(attributes), new DotFontAttributes(attributes), new DotClusterStyleAttributeOptions(attributes), new DotSvgStyleSheetAttributes(attributes), new DotLabelAlignmentAttributes(attributes))
     {
     }
 
@@ -40,7 +40,9 @@ public partial class DotClusterRootAttributes : DotClusterNodeRootCommonAttribut
     [DotAttributeKey(DotAttributeKeys.Cluster)]
     bool? IDotClusterAttributes.IsCluster
     {
+        [DotAttributeKey(DotAttributeKeys.Cluster)]
         get => _attributes.GetValueAs(DotAttributeKeys.Cluster, out bool? result) ? result : null;
+        [DotAttributeKey(DotAttributeKeys.Cluster)]
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Cluster, value);
     }
 
@@ -51,7 +53,9 @@ public partial class DotClusterRootAttributes : DotClusterNodeRootCommonAttribut
     [DotAttributeKey(DotAttributeKeys.Style)]
     DotStyles? IDotClusterAttributes.Style
     {
+        [DotAttributeKey(DotAttributeKeys.Style)]
         get => _attributes.GetValueAs(DotAttributeKeys.Style, out DotStyles? result) ? result : null;
+        [DotAttributeKey(DotAttributeKeys.Style)]
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
 

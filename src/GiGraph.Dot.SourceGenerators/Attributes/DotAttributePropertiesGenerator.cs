@@ -70,6 +70,8 @@ public class DotAttributePropertiesGenerator : IIncrementalGenerator
 
         classBuilder.AppendLine("#nullable enable");
         classBuilder.AppendLine();
+        classBuilder.AppendLine("using GiGraph.Dot.Output.Metadata;");
+        classBuilder.AppendLine();
         classBuilder.AppendLine($"namespace {classSymbol.ContainingNamespace.ToDisplayString()};");
         classBuilder.AppendLine();
         classBuilder.AppendLine($"{classModifiers} partial class {classSymbol.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat)}");
@@ -81,8 +83,8 @@ public class DotAttributePropertiesGenerator : IIncrementalGenerator
 
             classBuilder.AppendLine($"    {string.Join(" ", [..property.Modifiers, property.ReturnType, property.Name])}");
             classBuilder.AppendLine("    {");
-            classBuilder.AppendLine($"        get => _attributes.GetValueAs(\"{property.DotKey}\", out {property.ReturnType} value) ? value : null;");
-            classBuilder.AppendLine($"        set => _attributes.SetValueOrRemove(\"{property.DotKey}\", value);");
+            classBuilder.AppendLine($"        [DotAttributeKey(\"{property.DotKey}\")] get => _attributes.GetValueAs(\"{property.DotKey}\", out {property.ReturnType} value) ? value : null;");
+            classBuilder.AppendLine($"        [DotAttributeKey(\"{property.DotKey}\")] set => _attributes.SetValueOrRemove(\"{property.DotKey}\", value);");
             classBuilder.AppendLine("    }");
 
             if (index < properties.Length - 1)

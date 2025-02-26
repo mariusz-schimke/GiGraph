@@ -124,7 +124,7 @@ public class DotAttributeKeyAssociationTest
         var propertyType = TypeHelper.Unwrap(targetProperty.PropertyType);
         if (!PropertyTypeValues.TryGetValue(propertyType, out var value))
         {
-            throw new($"No test property value has been specified for type {propertyType.Name}.");
+            throw new Exception($"No test property value has been specified for type {propertyType.Name}.");
         }
 
         // make sure the attribute does not exist before setting the value
@@ -135,7 +135,8 @@ public class DotAttributeKeyAssociationTest
         // set the value
         targetProperty.SetValue(targetObject, value);
 
-        // make sure the attribute does exist after setting the value
+        // make sure the attribute does exist after setting the value (this also proves that the key specified
+        // on the property accessor is the same as the one used by the getting and setting methods)
         var attribute = targetObject.Collection.Get(attributeKey);
         Assert.NotNull(attribute);
         Assert.True(attribute.HasValue);
