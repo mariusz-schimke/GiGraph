@@ -22,6 +22,6 @@ public abstract class DotEntityAttributes : IDotEntityAttributes
     protected abstract DotEntityAttributesAccessor GetAccessor();
 
     protected internal virtual string GetKey(PropertyInfo property) =>
-        // the lookup contains only interface properties and property accessors of implementing classes
-        _attributeKeyLookup.Value.GetPropertyKey(property);
+        // the lookup maps only property setters
+        _attributeKeyLookup.Value.GetPropertyAccessorKey(property.SetMethod!);
 }

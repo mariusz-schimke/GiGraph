@@ -15,8 +15,8 @@ public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDot
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().BuildLazy();
 
     public DotGraphRootAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new(attributes), new(attributes), new(attributes), new(attributes),
-            new(attributes), new(attributes), new(attributes), new(attributes)
+        : this(attributes, AttributeKeyLookup, new DotGraphClustersAttributes(attributes), new DotHyperlinkAttributes(attributes), new DotGraphFontAttributes(attributes), new DotGraphStyleAttributeOptions(attributes),
+            new DotGraphSvgStyleSheetAttributes(attributes), new DotGraphLayoutAttributes(attributes), new DotGraphCanvasAttributes(attributes), new DotLabelAlignmentAttributes(attributes)
         )
     {
     }
@@ -56,7 +56,9 @@ public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDot
     [DotAttributeKey(DotAttributeKeys.Style)]
     DotStyles? IDotGraphAttributes.Style
     {
+        [DotAttributeKey(DotAttributeKeys.Style)]
         get => _attributes.GetValueAs(DotAttributeKeys.Style, out DotStyles? result) ? result : null;
+        [DotAttributeKey(DotAttributeKeys.Style)]
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
 
