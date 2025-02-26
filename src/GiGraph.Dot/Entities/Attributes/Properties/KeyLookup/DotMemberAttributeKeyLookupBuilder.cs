@@ -19,20 +19,20 @@ public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttri
     /// <summary>
     ///     Builds lazily a lookup for properties and property accessors.
     /// </summary>
-    /// <param name="readOnly">
+    /// <param name="seal">
     ///     Determines whether the built lookup should be read only.
     /// </param>
     [Pure]
-    public virtual Lazy<DotMemberAttributeKeyLookup> BuildLazy(bool readOnly = true) => new(() => Build(readOnly));
+    public virtual Lazy<DotMemberAttributeKeyLookup> BuildLazy(bool seal = true) => new(() => Build(seal));
 
     /// <summary>
     ///     Builds a lookup for properties and property accessors.
     /// </summary>
-    /// <param name="readOnly">
+    /// <param name="seal">
     ///     Determines whether the built lookup should be read only.
     /// </param>
     [Pure]
-    public virtual DotMemberAttributeKeyLookup Build(bool readOnly = true)
+    public virtual DotMemberAttributeKeyLookup Build(bool seal = true)
     {
         var result = new DotMemberAttributeKeyLookup();
 
@@ -44,7 +44,7 @@ public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttri
             AddPropertyAccessors(result, interfaceType);
         }
 
-        return readOnly ? result.ToReadOnly() : result;
+        return seal ? result.Seal() : result;
     }
 
     protected virtual void AddPropertyAccessors(DotMemberAttributeKeyLookup output, Type entityAttributePropertiesInterfaceType)
