@@ -7,12 +7,14 @@ namespace GiGraph.Dot.Output.Text.Escaping;
 ///     be ignored, and, on the other hand, escaping trailing spaces with a backslash causes the extra separator space added at the
 ///     end to be interpreted as part of text.
 /// </summary>
-public class DotSpacePaddingEscaper : IDotTextEscaper
+public partial class DotSpacePaddingEscaper : IDotTextEscaper
 {
-    string IDotTextEscaper.Escape(string value) => Escape(value);
+    string? IDotTextEscaper.Escape(string? value) => Escape(value);
 
-    public static string Escape(string value) =>
-        value is not null
-            ? Regex.Replace(value, "(?<=^[ ]*)[ ]|[ ](?=[ ]*$)", "&#32;")
-            : null;
+    public static string? Escape(string? value) => value is not null
+        ? GetRegex().Replace(value, "&#32;")
+        : null;
+
+    [GeneratedRegex("(?<=^[ ]*)[ ]|[ ](?=[ ]*$)")]
+    private static partial Regex GetRegex();
 }

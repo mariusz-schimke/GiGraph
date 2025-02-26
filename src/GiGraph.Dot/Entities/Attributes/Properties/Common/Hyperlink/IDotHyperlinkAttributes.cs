@@ -34,12 +34,12 @@ public interface IDotHyperlinkAttributes
     ///         dominates.
     ///     </para>
     /// </summary>
-    DotEscapeString Url { get; set; }
+    DotEscapeString? Url { get; set; }
 
     /// <summary>
     ///     Synonym for <see cref="Url" /> (svg, postscript, map only).
     /// </summary>
-    DotEscapeString Href { get; set; }
+    DotEscapeString? Href { get; set; }
 
     /// <summary>
     ///     If <see cref="Url" /> is specified, this attribute determines which window of the browser is used for the URL (svg, map
@@ -49,5 +49,5 @@ public interface IDotHyperlinkAttributes
     ///     </see>
     ///     .
     /// </summary>
-    DotEscapeString Target { get; set; }
+    DotEscapeString? Target { get; set; }
 }

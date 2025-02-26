@@ -15,7 +15,7 @@ public class DotHtmlVoidElementTest
     public void encoded_html_tag_is_valid_html()
     {
         var tag = new DotHtmlVoidElement("custom-tag-name");
-        tag.Attributes.Set("attr1", "value1");
+        tag.Attributes.SetValue("attr1", "value1");
 
         Snapshot.Match(
             ((IDotHtmlEncodable) tag).ToHtml(_syntaxOptions, _syntaxRules),
@@ -27,7 +27,7 @@ public class DotHtmlVoidElementTest
     public void encoded_html_tag_name_is_upper_case()
     {
         var tag = new DotHtmlVoidElement("custom-tag-name");
-        tag.Attributes.Set("attr1", "value1");
+        tag.Attributes.SetValue("attr1", "value1");
 
         var syntaxOptions = new DotSyntaxOptions
         {
@@ -50,7 +50,7 @@ public class DotHtmlVoidElementTest
     public void encoded_html_tag_attributes_are_upper_case()
     {
         var tag = new DotHtmlVoidElement("custom-tag-name");
-        tag.Attributes.Set("attr1", "value1");
+        tag.Attributes.SetValue("attr1", "value1");
 
         var syntaxOptions = new DotSyntaxOptions
         {

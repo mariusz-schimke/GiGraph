@@ -2,7 +2,7 @@
 
 namespace GiGraph.Dot.Entities.Attributes;
 
-public abstract record DotAttribute<T> : DotAttribute
+public abstract class DotAttribute<T> : DotAttribute
 {
     protected DotAttribute(string key, T value)
         : base(key)
@@ -16,7 +16,7 @@ public abstract record DotAttribute<T> : DotAttribute
     public T Value { get; }
 
     /// <inheritdoc />
-    public override object GetValue() => Value;
+    public override object? GetValue() => Value;
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Value?.ToString();
+    protected internal override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Value?.ToString();
 }

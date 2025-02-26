@@ -12,6 +12,6 @@ public class DotGlobalNodeAttributesWriter : DotEntityWithAttributeListWriter, I
     public virtual void WriteNodeKeyword()
     {
         _tokenWriter.Keyword("node")
-           .Space(linger: true);
+            .Space(linger: true);
     }
 }

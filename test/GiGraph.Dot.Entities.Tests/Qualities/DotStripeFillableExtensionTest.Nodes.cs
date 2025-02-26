@@ -8,7 +8,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Qualities;
 
-public partial class DotStripableExtensionTest
+public partial class DotStripeFillableExtensionTest
 {
     [Fact]
     public void sets_striped_fill_on_individual_nodes()
@@ -45,15 +45,15 @@ public partial class DotStripableExtensionTest
         graph.Nodes.SetStripedFill(Color.Red, Color.Blue);
         Snapshot.Match(graph.Build(), "striped_fill_on_node_collection_params");
 
-        graph = new();
+        graph = new DotGraph();
         graph.Nodes.SetStripedFill(new DotMulticolor(Color.Red, Color.Blue));
         Snapshot.Match(graph.Build(), "striped_fill_on_node_collection_multicolor");
 
-        graph = new();
+        graph = new DotGraph();
         graph.Nodes.SetStripedFill(DotNodeShape.Rect, Color.Red, Color.Blue);
         Snapshot.Match(graph.Build(), "striped_fill_on_node_collection_params_and_shape");
 
-        graph = new();
+        graph = new DotGraph();
         graph.Nodes.SetStripedFill(DotNodeShape.Rectangle, new DotMulticolor(Color.Red, Color.Blue));
         Snapshot.Match(graph.Build(), "striped_fill_on_node_collection_multicolor_and_shape");
     }

@@ -9,14 +9,14 @@ namespace GiGraph.Dot.Entities.Html.Table;
 public partial class DotHtmlTableCell : IDotHtmlTableCellAttributes
 {
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Id" />
-    public virtual DotEscapeString Id
+    public virtual DotEscapeString? Id
     {
         get => Attributes.Implementation.Id;
         set => Attributes.Implementation.Id = value;
     }
 
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.PortName" />
-    public virtual string PortName
+    public virtual string? PortName
     {
         get => Attributes.Implementation.PortName;
         set => Attributes.Implementation.PortName = value;
@@ -44,14 +44,14 @@ public partial class DotHtmlTableCell : IDotHtmlTableCellAttributes
     }
 
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.BackgroundColor" />
-    public virtual DotColorDefinition BackgroundColor
+    public virtual DotColorDefinition? BackgroundColor
     {
         get => Attributes.Implementation.BackgroundColor;
         set => Attributes.Implementation.BackgroundColor = value;
     }
 
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.BorderColor" />
-    public virtual DotColor BorderColor
+    public virtual DotColor? BorderColor
     {
         get => Attributes.Implementation.BorderColor;
         set => Attributes.Implementation.BorderColor = value;
@@ -128,28 +128,28 @@ public partial class DotHtmlTableCell : IDotHtmlTableCellAttributes
     }
 
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Href" />
-    public virtual DotEscapeString Href
+    public virtual DotEscapeString? Href
     {
         get => Attributes.Implementation.Href;
         set => Attributes.Implementation.Href = value;
     }
 
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Target" />
-    public virtual DotEscapeString Target
+    public virtual DotEscapeString? Target
     {
         get => Attributes.Implementation.Target;
         set => Attributes.Implementation.Target = value;
     }
 
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Title" />
-    public virtual DotEscapeString Title
+    public virtual DotEscapeString? Title
     {
         get => Attributes.Implementation.Title;
         set => Attributes.Implementation.Title = value;
     }
 
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Tooltip" />
-    public virtual DotEscapeString Tooltip
+    public virtual DotEscapeString? Tooltip
     {
         get => Attributes.Implementation.Tooltip;
         set => Attributes.Implementation.Tooltip = value;

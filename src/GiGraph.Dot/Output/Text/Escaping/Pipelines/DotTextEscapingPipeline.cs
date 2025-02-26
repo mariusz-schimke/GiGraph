@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using GiGraph.Dot.Output.Text.Escaping.Html;
+﻿using GiGraph.Dot.Output.Text.Escaping.Html;
 
 namespace GiGraph.Dot.Output.Text.Escaping.Pipelines;
 
@@ -38,12 +36,12 @@ public partial class DotTextEscapingPipeline : List<IDotTextEscaper>, IDotTextEs
     {
     }
 
-    public virtual string Escape(string value) => this.Aggregate(value, (current, escaper) => escaper.Escape(current));
+    public virtual string? Escape(string? value) => this.Aggregate(value, (current, escaper) => escaper.Escape(current));
 
     /// <summary>
     ///     Creates a new pipeline that does not modify the input string in any way.
     /// </summary>
-    public static DotTextEscapingPipeline None() => new();
+    public static DotTextEscapingPipeline None() => [];
 
     /// <summary>
     ///     Creates a new pipeline that escapes backslashes and quotation marks.

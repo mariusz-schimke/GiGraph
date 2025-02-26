@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
@@ -53,7 +50,7 @@ public static class DotEntityAttributesExtension
         var propertyPathDictionary = @this.GetPathsToAttributeProperties();
 
         return propertyPathDictionary
-           .Select(item =>
+            .Select(item =>
             {
                 var metadata = DotAttributeKeys.MetadataDictionary[item.Key];
 
@@ -65,13 +62,13 @@ public static class DotEntityAttributesExtension
                     item.Value.Select(propertyInfo => propertyInfo).ToArray()
                 );
             })
-           .ToDictionary(key => key.Key, element => element);
+            .ToDictionary(key => key.Key, element => element);
     }
 
     private static IDictionary<string, PropertyInfo[]> GetPathsToAttributeProperties(this IDotEntityAttributesAccessor @this)
     {
         var output = new Dictionary<string, PropertyInfo[]>();
-        @this.GetPathsToAttributeProperties(output, basePath: Array.Empty<PropertyInfo>());
+        @this.GetPathsToAttributeProperties(output, basePath: []);
         return output;
     }
 
@@ -80,9 +77,9 @@ public static class DotEntityAttributesExtension
     {
         // get component interfaces and the properties of each of them
         var interfaceProperties = @this.InterfaceType
-           .GetInterfaces()
-           .Concat(new[] { @this.InterfaceType })
-           .SelectMany(i => i.GetProperties(BindingFlags.Instance | BindingFlags.Public));
+            .GetInterfaces()
+            .Concat([@this.InterfaceType])
+            .SelectMany(i => i.GetProperties(BindingFlags.Instance | BindingFlags.Public));
 
         // add the properties to the output asserting that each of them represents an attribute
         foreach (var interfaceProperty in interfaceProperties)
@@ -95,14 +92,14 @@ public static class DotEntityAttributesExtension
 
         // now get all nested property groups
         var nestedAttributesProperties = @this.Implementation.GetType()
-           .GetProperties(BindingFlags.Instance | BindingFlags.Public)
-           .Where(property => typeof(DotEntityAttributes).IsAssignableFrom(property.PropertyType));
+            .GetProperties(BindingFlags.Instance | BindingFlags.Public)
+            .Where(property => typeof(DotEntityAttributes).IsAssignableFrom(property.PropertyType));
 
         foreach (var nestedAttributesProperty in nestedAttributesProperties)
         {
             var currentPath = basePath.Append(nestedAttributesProperty).ToArray();
 
-            var nested = (IDotEntityAttributes) nestedAttributesProperty.GetValue(@this.Implementation);
+            var nested = (IDotEntityAttributes) nestedAttributesProperty.GetValue(@this.Implementation)!;
             nested.Accessor.GetPathsToAttributeProperties(output, currentPath);
         }
     }

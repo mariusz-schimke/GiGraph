@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
-using System.Linq;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 
@@ -10,7 +8,7 @@ namespace GiGraph.Dot.Types.Geometry;
 /// <summary>
 ///     Represents a point in an n-dimensional plain.
 /// </summary>
-public record DotPoint : IDotEncodable
+public class DotPoint : IDotEncodable
 {
     /// <summary>
     ///     Creates and initializes a new point in an n-dimensional plain.
@@ -27,7 +25,7 @@ public record DotPoint : IDotEncodable
 
         Coordinates = coordinates ?? throw new ArgumentNullException(nameof(coordinates), "Point coordinate collection must not be null.");
 
-        if (!coordinates.Any())
+        if (coordinates.Length == 0)
         {
             throw new ArgumentException("At least one coordinate has to be specified for a point.", nameof(coordinates));
         }
@@ -43,7 +41,7 @@ public record DotPoint : IDotEncodable
     ///     Determines whether the node position (if applied to nodes) should not change (input-only).
     /// </param>
     public DotPoint(IEnumerable<double> coordinates, bool? isFixed = null)
-        : this(isFixed, coordinates?.ToArray())
+        : this(isFixed, coordinates.ToArray())
     {
     }
 
@@ -132,13 +130,16 @@ public record DotPoint : IDotEncodable
 
     protected virtual string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
-        var fix = true == IsFixed ? "!" : string.Empty;
+        var fix = IsFixed is true ? "!" : string.Empty;
         return $"{string.Join(",", Coordinates.Select(c => c.ToString(syntaxRules.Culture)))}{fix}";
     }
 
-    public static implicit operator DotPoint(double? value) => value.HasValue ? new DotPoint(value.Value) : null;
+    [return: NotNullIfNotNull(nameof(value))]
+    public static implicit operator DotPoint?(double? value) => value.HasValue ? new DotPoint(value.Value) : null;
 
-    public static implicit operator DotPoint(Point? point) => point.HasValue ? new DotPoint(point.Value) : null;
+    [return: NotNullIfNotNull(nameof(point))]
+    public static implicit operator DotPoint?(Point? point) => point.HasValue ? new DotPoint(point.Value) : null;
 
-    public static implicit operator DotPoint(PointF? point) => point.HasValue ? new DotPoint(point.Value) : null;
+    [return: NotNullIfNotNull(nameof(point))]
+    public static implicit operator DotPoint?(PointF? point) => point.HasValue ? new DotPoint(point.Value) : null;
 }

@@ -1,5 +1,3 @@
-using System;
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -12,7 +10,7 @@ using GiGraph.Dot.Types.Viewport;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
-public class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<IDotGraphCanvasAttributes, DotGraphCanvasAttributes>, IDotGraphCanvasAttributes
+public partial class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<IDotGraphCanvasAttributes, DotGraphCanvasAttributes>, IDotGraphCanvasAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphCanvasAttributes, IDotGraphCanvasAttributes>().BuildLazy();
 
@@ -28,107 +26,55 @@ public class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<IDotGrap
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.BackgroundColor" />
     [DotAttributeKey(DotAttributeKeys.BgColor)]
-    public virtual DotColorDefinition BackgroundColor
-    {
-        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotColorDefinition? BackgroundColor { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.GradientFillAngle" />
     [DotAttributeKey(DotAttributeKeys.GradientAngle)]
-    public virtual int? GradientFillAngle
-    {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial int? GradientFillAngle { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.CenterDrawing" />
     [DotAttributeKey(DotAttributeKeys.Center)]
-    public virtual bool? CenterDrawing
-    {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial bool? CenterDrawing { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Orientation" />
     [DotAttributeKey(DotAttributeKeys.Orientation)]
-    public virtual DotOrientation? Orientation
-    {
-        get => GetValueAs<DotOrientation>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotOrientation? Orientation { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.OrientationAngle" />
     [DotAttributeKey(DotAttributeKeys.Rotate)]
-    public virtual int? OrientationAngle
-    {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial int? OrientationAngle { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.LandscapeOrientation" />
     [DotAttributeKey(DotAttributeKeys.Landscape)]
-    public virtual bool? LandscapeOrientation
-    {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial bool? LandscapeOrientation { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Dpi" />
     [DotAttributeKey(DotAttributeKeys.Dpi)]
-    public virtual double? Dpi
-    {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial double? Dpi { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Resolution" />
     [DotAttributeKey(DotAttributeKeys.Resolution)]
-    public virtual double? Resolution
-    {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial double? Resolution { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Size" />
     [DotAttributeKey(DotAttributeKeys.Size)]
-    public virtual DotPoint Size
-    {
-        get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotPoint? Size { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Viewport" />
     [DotAttributeKey(DotAttributeKeys.Viewport)]
-    public virtual DotViewport Viewport
-    {
-        get => GetValueAs<DotViewport>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotViewport? Viewport { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Scaling" />
     [DotAttributeKey(DotAttributeKeys.Ratio)]
-    public virtual DotGraphScalingDefinition Scaling
-    {
-        get => GetValueAsGraphScalingDefinition(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotGraphScalingDefinition? Scaling { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Margin" />
     [DotAttributeKey(DotAttributeKeys.Margin)]
-    public virtual DotPoint Margin
-    {
-        get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotPoint? Margin { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Padding" />
     [DotAttributeKey(DotAttributeKeys.Pad)]
-    public virtual DotPoint Padding
-    {
-        get => GetValueAsPoint(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotPoint? Padding { get; set; }
 
     /// <summary>
     ///     Copies canvas attributes from the specified instance.

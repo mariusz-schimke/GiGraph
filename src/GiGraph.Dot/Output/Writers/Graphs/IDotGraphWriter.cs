@@ -2,5 +2,5 @@
 
 public interface IDotGraphWriter : IDotCommonGraphWriter
 {
-    void WriteGraphDeclaration(string id, bool strict, bool quoteId);
+    void WriteGraphDeclaration(string? id, bool strict, bool quoteId);
 }

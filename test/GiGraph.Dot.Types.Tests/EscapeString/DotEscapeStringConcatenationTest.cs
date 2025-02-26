@@ -22,7 +22,7 @@ public class DotEscapeStringConcatenationTest
     [Fact]
     public void escape_string_concatenation_produces_a_valid_dot_encoded_value_when_left_side_is_null()
     {
-        var value = (DotEscapeString) null + @"\a";
+        var value = (DotEscapeString?) null + @"\a";
 
         Assert.Equal(
             @"\\a",
@@ -32,7 +32,7 @@ public class DotEscapeStringConcatenationTest
     [Fact]
     public void escape_string_concatenation_produces_a_valid_dot_encoded_value_when_right_side_is_null()
     {
-        var value = @"\a" + (DotEscapeString) null;
+        var value = @"\a" + (DotEscapeString?) null;
 
         Assert.Equal(
             @"\\a",
@@ -42,7 +42,7 @@ public class DotEscapeStringConcatenationTest
     [Fact]
     public void escape_string_concatenation_produces_an_empty_dot_encoded_value_when_both_sides_are_null()
     {
-        var value = null + (DotEscapeString) null;
+        var value = null + (DotEscapeString?) null;
 
         Assert.Equal(
             string.Empty,

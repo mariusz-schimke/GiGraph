@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Html.LineBreak;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Text;
@@ -11,7 +10,7 @@ namespace GiGraph.Dot.Entities.Html.Text;
 /// </summary>
 public class DotHtmlText : DotHtmlEntity
 {
-    protected static readonly string[] LineBreaks = { DotNewLine.Windows, DotNewLine.Unix };
+    protected static readonly string[] LineBreaks = [DotNewLine.Windows, DotNewLine.Unix];
     protected readonly string _text;
 
     /// <summary>
@@ -45,5 +44,5 @@ public class DotHtmlText : DotHtmlEntity
         return string.Join(br, lines);
     }
 
-    protected static string[] SplitMultiline(string text, string[] lineBreaks) => text?.Split(lineBreaks, StringSplitOptions.None) ?? Array.Empty<string>();
+    protected static string[] SplitMultiline(string? text, string[] lineBreaks) => text?.Split(lineBreaks, StringSplitOptions.None) ?? [];
 }

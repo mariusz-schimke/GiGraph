@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Output.Entities;
+﻿using System.Diagnostics.CodeAnalysis;
+using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Writers;
 
 namespace GiGraph.Dot.Output.Generators.Providers;
@@ -8,7 +9,7 @@ public interface IDotEntityGeneratorsProvider
     TGenerator Get<TGenerator>()
         where TGenerator : IDotEntityGenerator;
 
-    bool TryGet<TGenerator>(out TGenerator generator)
+    bool TryGet<TGenerator>([MaybeNullWhen(false)] out TGenerator generator)
         where TGenerator : IDotEntityGenerator;
 
     IDotEntityGenerator<TRequiredWriter> GetForEntity<TRequiredWriter>(IDotEntity entity)

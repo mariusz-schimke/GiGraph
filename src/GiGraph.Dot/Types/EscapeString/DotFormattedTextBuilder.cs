@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 
 namespace GiGraph.Dot.Types.EscapeString;
 
@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Types.EscapeString;
 /// </summary>
 public class DotFormattedTextBuilder
 {
-    protected readonly List<DotEscapeString> _items = new();
+    protected readonly List<DotEscapeString> _items = [];
 
     /// <summary>
     ///     Creates a new instance.
@@ -129,5 +129,6 @@ public class DotFormattedTextBuilder
     /// <summary>
     ///     Returns content as formatted text that can be used as a label of an element.
     /// </summary>
+    [Pure]
     public virtual DotEscapeString Build() => new DotConcatenatedEscapeString(_items.ToArray());
 }

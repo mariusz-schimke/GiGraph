@@ -1,5 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
-using System.Linq;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Types.Geometry;
 ///     A rectangle.
 /// </summary>
 [DotJoinableType(separator: " ")]
-public record DotRectangle : IDotEncodable
+public class DotRectangle : IDotEncodable
 {
     /// <summary>
     ///     Initializes a new rectangle instance.
@@ -60,22 +60,22 @@ public record DotRectangle : IDotEncodable
     /// <summary>
     ///     The x-coordinate of the lower-left corner in points.
     /// </summary>
-    public double X { get; init; }
+    public double X { get; }
 
     /// <summary>
     ///     The y-coordinate of the lower-left corner in points.
     /// </summary>
-    public double Y { get; init; }
+    public double Y { get; }
 
     /// <summary>
     ///     The width in points.
     /// </summary>
-    public double Width { get; init; }
+    public double Width { get; }
 
     /// <summary>
     ///     The height in points.
     /// </summary>
-    public double Height { get; init; }
+    public double Height { get; }
 
     string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
 
@@ -88,7 +88,13 @@ public record DotRectangle : IDotEncodable
         );
     }
 
-    public static implicit operator DotRectangle(Rectangle? rectangle) => rectangle.HasValue ? new DotRectangle(rectangle.Value.X, rectangle.Value.Y, rectangle.Value.Width, rectangle.Value.Height) : null;
+    [return: NotNullIfNotNull(nameof(rectangle))]
+    public static implicit operator DotRectangle?(Rectangle? rectangle) => rectangle.HasValue
+        ? new DotRectangle(rectangle.Value.X, rectangle.Value.Y, rectangle.Value.Width, rectangle.Value.Height)
+        : null;
 
-    public static implicit operator DotRectangle(RectangleF? rectangle) => rectangle.HasValue ? new DotRectangle(rectangle.Value.X, rectangle.Value.Y, rectangle.Value.Width, rectangle.Value.Height) : null;
+    [return: NotNullIfNotNull(nameof(rectangle))]
+    public static implicit operator DotRectangle?(RectangleF? rectangle) => rectangle.HasValue
+        ? new DotRectangle(rectangle.Value.X, rectangle.Value.Y, rectangle.Value.Width, rectangle.Value.Height)
+        : null;
 }

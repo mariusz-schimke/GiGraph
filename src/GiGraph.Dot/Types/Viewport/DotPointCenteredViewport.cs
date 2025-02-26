@@ -1,4 +1,3 @@
-using System.Linq;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Types.Viewport;
@@ -6,25 +5,35 @@ namespace GiGraph.Dot.Types.Viewport;
 /// <summary>
 ///     Specifies a viewport for the graph image, with a central point.
 /// </summary>
-/// <param name="Width">
+/// <param name="width">
 ///     The width of the final image, in points.
 /// </param>
-/// <param name="Height">
+/// <param name="height">
 ///     The height of the final image, in points.
 /// </param>
-/// <param name="X">
+/// <param name="x">
 ///     The x-coordinate of the center of the viewport.
 /// </param>
-/// <param name="Y">
+/// <param name="y">
 ///     The y-coordinate of the center of the viewport.
 /// </param>
-/// <param name="Zoom">
+/// <param name="zoom">
 ///     The zoom factor. The image in the original layout will be <see cref="DotViewport.Width" /> / <see cref="DotViewport.Zoom" />
 ///     by <see cref="DotViewport.Height" /> / <see cref="DotViewport.Zoom" /> points in size. By default, the zoom factor is 1.
 /// </param>
-public record DotPointCenteredViewport(double Width, double Height, double X, double Y, double Zoom = DotViewport.DefaultZoom)
-    : DotViewport(Width, Height, Zoom)
+public class DotPointCenteredViewport(double width, double height, double x, double y, double zoom = DotViewport.DefaultZoom)
+    : DotViewport(width, height, zoom)
 {
+    /// <summary>
+    ///     The x-coordinate of the center of the viewport.
+    /// </summary>
+    public double X { get; } = x;
+
+    /// <summary>
+    ///     The y-coordinate of the center of the viewport.
+    /// </summary>
+    public double Y { get; } = y;
+
     protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
         var whz = base.GetDotEncodedValue(options, syntaxRules);

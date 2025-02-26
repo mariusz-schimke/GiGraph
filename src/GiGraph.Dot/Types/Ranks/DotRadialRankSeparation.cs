@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Encoders;
 
@@ -9,7 +6,7 @@ namespace GiGraph.Dot.Types.Ranks;
 /// <summary>
 ///     Radial separation of concentric circles in twopi.
 /// </summary>
-public record DotRadialRankSeparation : DotRankSeparationDefinition
+public class DotRadialRankSeparation : DotRankSeparationDefinition
 {
     /// <summary>
     ///     Creates a new rank separation instance.
@@ -33,7 +30,7 @@ public record DotRadialRankSeparation : DotRankSeparationDefinition
     ///     remainder.
     /// </param>
     public DotRadialRankSeparation(IEnumerable<double> value)
-        : this(value?.ToArray())
+        : this(value.ToArray())
     {
     }
 

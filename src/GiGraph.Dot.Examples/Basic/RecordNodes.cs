@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Entities.Graphs;
+﻿using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
@@ -13,7 +12,7 @@ public static class RecordNodes
     {
         var graph = new DotGraph();
 
-        graph.Nodes.Add("Bar").ToRecordNode(new(
+        graph.Nodes.Add("Bar").ToRecordNode(new DotRecord(
             $"Foo{Environment.NewLine}Bar",
             new DotRecord
             (
@@ -22,7 +21,7 @@ public static class RecordNodes
                 (
                     "Garply",
                     "Waldo",
-                    new DotRecordTextField("Fred", PortName: "port1")
+                    new DotRecordTextField("Fred", portName: "port1")
                 ),
                 DotEscapeString.RightJustifyLine("Plugh")
             ),
@@ -32,21 +31,21 @@ public static class RecordNodes
 
         // you can achieve the same effect using a record builder
         graph.Nodes.Add("Baz").ToRecordNode(rb1 => rb1
-           .AppendField($"Foo{Environment.NewLine}Bar")
-           .AppendSubrecord(rb2 => rb2
-               .AppendField(tf => tf.AppendLeftJustifiedLine("Baz"))
-               .AppendSubrecord(rb3 => rb3
-                   .AppendFields("Garply", "Waldo")
-                   .AppendField("Fred", "port1")
+            .AppendField($"Foo{Environment.NewLine}Bar")
+            .AppendSubrecord(rb2 => rb2
+                .AppendField(tf => tf.AppendLeftJustifiedLine("Baz"))
+                .AppendSubrecord(rb3 => rb3
+                    .AppendFields("Garply", "Waldo")
+                    .AppendField("Fred", "port1")
                 )
-               .AppendField(tf => tf.AppendRightJustifiedLine("Plugh"))
+                .AppendField(tf => tf.AppendRightJustifiedLine("Plugh"))
             )
-           .AppendFields("Qux", "Quux")
+            .AppendFields("Qux", "Quux")
         );
 
         graph.Edges.Add("Foo", "Bar", edge =>
         {
-            edge.Head.Endpoint.Port = new("port1", DotCompassPoint.NorthEast);
+            edge.Head.Endpoint.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
         });
 
         return graph;

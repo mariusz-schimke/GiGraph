@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Output.Qualities;
 
@@ -44,7 +42,7 @@ public class DotSubgraphEndpoint : DotEndpointDefinition
     {
     }
 
-    public override string Annotation
+    public override string? Annotation
     {
         get => Subgraph.Annotation;
         set => Subgraph.Annotation = value;
@@ -59,12 +57,13 @@ public class DotSubgraphEndpoint : DotEndpointDefinition
     {
         return string.Join(" ",
             Subgraph.Nodes
-               .Cast<IDotOrderable>()
-               .Select(node => node.OrderingKey)
-               .OrderBy(key => key, StringComparer.InvariantCulture));
+                .Cast<IDotOrderable>()
+                .Select(node => node.OrderingKey)
+                .OrderBy(key => key, StringComparer.InvariantCulture));
     }
 
     // the type of endpoint may be specified explicitly as a generic param, in which case this implicit conversion may be useful
     // (e.g. graph.Edges.Add<DotSubgraphEndpoint, DotEndpoint>(DotSubgraph.FromNodes("node1", "node2"), "node3"))
-    public static implicit operator DotSubgraphEndpoint(DotSubgraph subgraph) => subgraph is not null ? new DotSubgraphEndpoint(subgraph) : null;
+    [return: NotNullIfNotNull(nameof(subgraph))]
+    public static implicit operator DotSubgraphEndpoint?(DotSubgraph? subgraph) => subgraph is not null ? new DotSubgraphEndpoint(subgraph) : null;
 }

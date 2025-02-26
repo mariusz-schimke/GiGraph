@@ -17,9 +17,9 @@ public class DotHtmlAttributeValueEscapingTest
     [Fact]
     public void string_value_is_escaped()
     {
-        var value = $"String value {SpecialChars}";
+        const string value = $"String value {SpecialChars}";
         var element = new DotHtmlVoidElement("element");
-        element.Attributes.Set("attribute", value);
+        element.Attributes.SetValue("attribute", value);
 
         Snapshot.Match(
             ((IDotHtmlEncodable) element).ToHtml(_syntaxOptions, _syntaxRules),
@@ -32,7 +32,7 @@ public class DotHtmlAttributeValueEscapingTest
     {
         var value = (DotEscapeString) $"Escape string value {SpecialChars}";
         var element = new DotHtmlVoidElement("element");
-        element.Attributes.Set("attribute", value);
+        element.Attributes.SetValue("attribute", value);
 
         Snapshot.Match(
             ((IDotHtmlEncodable) element).ToHtml(_syntaxOptions, _syntaxRules),
@@ -43,9 +43,9 @@ public class DotHtmlAttributeValueEscapingTest
     [Fact]
     public void escape_string_value_stays_as_is()
     {
-        var value = $"Unchanged value {SpecialChars}";
+        const string value = $"Unchanged value {SpecialChars}";
         var element = new DotHtmlVoidElement("element");
-        element.Attributes.SetRaw("attribute", value);
+        element.Attributes.SetRawValue("attribute", value);
 
         Snapshot.Match(
             ((IDotHtmlEncodable) element).ToHtml(_syntaxOptions, _syntaxRules),

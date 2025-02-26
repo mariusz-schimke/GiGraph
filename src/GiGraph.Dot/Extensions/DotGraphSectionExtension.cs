@@ -65,7 +65,7 @@ public static class DotGraphSectionExtension
     /// </param>
     public static void SetGradientBackground(this DotGraphSection @this, DotColor startColor, DotColor endColor, int? angle = null)
     {
-        @this.SetGradientBackground(new(startColor, endColor), angle);
+        @this.SetGradientBackground(new DotGradientColor(startColor, endColor), angle);
     }
 
     /// <summary>
@@ -104,7 +104,7 @@ public static class DotGraphSectionExtension
     /// </param>
     public static void SetRadialGradientBackground(this DotGraphSection @this, DotColor startColor, DotColor endColor, int? angle = null)
     {
-        @this.SetRadialGradientBackground(new(startColor, endColor), angle);
+        @this.SetRadialGradientBackground(new DotGradientColor(startColor, endColor), angle);
     }
 
     private static void SetGradientBackground(this DotGraphSection @this, DotGradientColor color, int? angle, bool? radial)

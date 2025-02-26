@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using GiGraph.Dot.Output.EnumHelpers;
 using GiGraph.Dot.Output.Metadata;
@@ -15,9 +12,8 @@ namespace GiGraph.Dot.Types.Tests.Enums;
 
 public class DotEnumAttributeValueKeyTest
 {
-    private static readonly HashSet<Type> IgnoredEnums = new()
-    {
-        // these enums are not expected to have any attribute names assigned
+    private static readonly HashSet<Type> IgnoredEnums =
+    [
         typeof(DotFillStyle),
         typeof(DotNodeFillStyle),
         typeof(DotClusterFillStyle),
@@ -27,21 +23,21 @@ public class DotEnumAttributeValueKeyTest
         typeof(DotLineStyle),
         typeof(DotLineWeight),
         typeof(DotFontStyles)
-    };
+    ];
 
     public static IEnumerable<object[]> EnumTypes { get; } = DotEnumsTest.GetAllEnumTypes()
-       .Where(t => !IgnoredEnums.Contains(t))
-       .Select(t => new[] { t })
-       .ToArray();
+        .Where(t => !IgnoredEnums.Contains(t))
+        .Select(t => new[] { t })
+        .ToArray();
 
     public static IEnumerable<object[]> FlagsEnumTypes { get; } = DotEnumsTest.GetAllEnumTypes()
-       .Where(t => !IgnoredEnums.Contains(t))
-       .Where(t =>
+        .Where(t => !IgnoredEnums.Contains(t))
+        .Where(t =>
             t.GetCustomAttribute<DotJoinableTypeAttribute>() is not null ||
             t.GetCustomAttribute<DotHtmlJoinableTypeAttribute>() is not null
         )
-       .Select(t => new[] { t })
-       .ToArray();
+        .Select(t => new[] { t })
+        .ToArray();
 
     [Theory]
     [MemberData(nameof(EnumTypes))]
@@ -51,10 +47,10 @@ public class DotEnumAttributeValueKeyTest
 
         foreach (var value in metadata.GetNonCompoundValues())
         {
-            var enumMember = enumType.GetMember(value.ToString()!).First();
+            var enumMember = enumType.GetMember(value.ToString()).First();
 
-            IDotAttributeValueAttribute dotAttribute = enumMember.GetCustomAttribute<DotAttributeValueAttribute>();
-            IDotAttributeValueAttribute htmlAttribute = enumMember.GetCustomAttribute<DotHtmlAttributeValueAttribute>();
+            IDotAttributeValueAttribute? dotAttribute = enumMember.GetCustomAttribute<DotAttributeValueAttribute>();
+            IDotAttributeValueAttribute? htmlAttribute = enumMember.GetCustomAttribute<DotHtmlAttributeValueAttribute>();
 
             // at least one of these attributes has to be specified
             Assert.NotNull(dotAttribute ?? htmlAttribute);
@@ -75,10 +71,10 @@ public class DotEnumAttributeValueKeyTest
 
         foreach (var value in metadata.GetCompoundValues())
         {
-            var enumMember = enumType.GetMember(value.ToString()!).First();
+            var enumMember = enumType.GetMember(value.ToString()).First();
 
-            IDotAttributeValueAttribute dotAttribute = enumMember.GetCustomAttribute<DotAttributeValueAttribute>();
-            IDotAttributeValueAttribute htmlAttribute = enumMember.GetCustomAttribute<DotHtmlAttributeValueAttribute>();
+            IDotAttributeValueAttribute? dotAttribute = enumMember.GetCustomAttribute<DotAttributeValueAttribute>();
+            IDotAttributeValueAttribute? htmlAttribute = enumMember.GetCustomAttribute<DotHtmlAttributeValueAttribute>();
 
             Assert.Null(dotAttribute?.Value ?? htmlAttribute?.Value);
         }

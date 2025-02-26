@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using GiGraph.Dot.Entities.Nodes;
+﻿using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Nodes.Collections;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
@@ -20,8 +18,8 @@ public class DotNodeCollectionGenerator : DotEntityGenerator<DotNodeCollection, 
     {
         var orderedNodes = _options.SortElements
             ? nodes.Cast<IDotOrderable>()
-               .OrderBy(node => node.OrderingKey, StringComparer.InvariantCulture)
-               .Cast<DotNodeDefinition>()
+                .OrderBy(node => node.OrderingKey, StringComparer.InvariantCulture)
+                .Cast<DotNodeDefinition>()
             : nodes;
 
         foreach (var node in orderedNodes)

@@ -1,5 +1,4 @@
-using System;
-using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GiGraph.Dot.Output.Metadata;
 
@@ -21,7 +20,7 @@ public static class DotAttributeValue
     /// <param name="sort">
     ///     Determines whether the flags of the enumeration should be sorted when possible.
     /// </param>
-    public static bool TryGetAsFlags(Enum flags, out string dotFlags, bool sort = true) =>
+    public static bool TryGetAsFlags(Enum flags, [MaybeNullWhen(false)] out string dotFlags, bool sort = true) =>
         DotAttributeValue<DotAttributeValueAttribute>.TryGetAsFlags<DotJoinableTypeAttribute>(flags, out dotFlags, sort);
 
     /// <summary>
@@ -46,7 +45,8 @@ public static class DotAttributeValue
     /// <param name="dotValue">
     ///     The returned DOT attribute value if available.
     /// </param>
-    public static bool TryGet(Enum value, out string dotValue) => DotAttributeValue<DotAttributeValueAttribute>.TryGet(value, out dotValue);
+    public static bool TryGet(Enum value, [MaybeNullWhen(false)] out string dotValue) =>
+        DotAttributeValue<DotAttributeValueAttribute>.TryGet(value, out dotValue);
 
     /// <summary>
     ///     Gets a DOT attribute value associated with the specified enumeration value.
@@ -54,7 +54,7 @@ public static class DotAttributeValue
     /// <param name="value">
     ///     The enumeration value whose associated DOT value to return.
     /// </param>
-    public static string Get(Enum value) => DotAttributeValue<DotAttributeValueAttribute>.Get(value);
+    public static string? Get(Enum value) => DotAttributeValue<DotAttributeValueAttribute>.Get(value);
 
     /// <summary>
     ///     Tries to get an enumeration value associated with the specified DOT attribute value.
@@ -68,8 +68,8 @@ public static class DotAttributeValue
     /// <typeparam name="TEnum">
     ///     The type of the enumeration whose value to search.
     /// </typeparam>
-    public static bool TryGet<TEnum>(string dotValue, out TEnum value)
-        where TEnum : Enum => DotAttributeValue<DotAttributeValueAttribute>.TryGet(dotValue, out value);
+    public static bool TryGet<TEnum>(string dotValue, [MaybeNullWhen(false)] out TEnum value)
+        where TEnum : struct, Enum => DotAttributeValue<DotAttributeValueAttribute>.TryGet(dotValue, out value);
 
     /// <summary>
     ///     Tries to get an enumeration value associated with the specified DOT attribute value.
@@ -83,7 +83,7 @@ public static class DotAttributeValue
     /// <param name="dotValue">
     ///     The DOT attribute value whose associated enumeration value to return.
     /// </param>
-    public static bool TryGet(Type enumType, string dotValue, out Enum value) =>
+    public static bool TryGet(Type enumType, string dotValue, [MaybeNullWhen(false)] out Enum value) =>
         DotAttributeValue<DotAttributeValueAttribute>.TryGet(enumType, dotValue, out value);
 
     /// <summary>
@@ -96,7 +96,7 @@ public static class DotAttributeValue
     ///     The type of the enumeration whose value to search.
     /// </typeparam>
     public static TEnum Get<TEnum>(string dotValue)
-        where TEnum : Enum => DotAttributeValue<DotAttributeValueAttribute>.Get<TEnum>(dotValue);
+        where TEnum : struct, Enum => DotAttributeValue<DotAttributeValueAttribute>.Get<TEnum>(dotValue);
 
     /// <summary>
     ///     Gets an enumeration value associated with the specified DOT attribute value.
@@ -116,8 +116,8 @@ public static class DotAttributeValue
     /// <typeparam name="TEnum">
     ///     The type of the enumeration whose value mapping to get.
     /// </typeparam>
-    public static Dictionary<TEnum, string> GetMapping<TEnum>()
-        where TEnum : Enum => DotAttributeValue<DotAttributeValueAttribute>.GetMapping<TEnum>();
+    public static Dictionary<TEnum, string?> GetMapping<TEnum>()
+        where TEnum : struct, Enum => DotAttributeValue<DotAttributeValueAttribute>.GetMapping<TEnum>();
 
     /// <summary>
     ///     Gets a dictionary where each key has a DOT attribute value assigned. Enumeration values that are not marked with the
@@ -126,5 +126,5 @@ public static class DotAttributeValue
     /// <param name="enumType">
     ///     The type of the enumeration whose value mapping to get.
     /// </param>
-    public static Dictionary<Enum, string> GetMapping(Type enumType) => DotAttributeValue<DotAttributeValueAttribute>.GetMapping(enumType);
+    public static Dictionary<Enum, string?> GetMapping(Type enumType) => DotAttributeValue<DotAttributeValueAttribute>.GetMapping(enumType);
 }

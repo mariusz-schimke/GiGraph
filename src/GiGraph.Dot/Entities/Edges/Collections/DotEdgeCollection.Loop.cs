@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Entities.Edges.Endpoints;
+﻿using GiGraph.Dot.Entities.Edges.Endpoints;
 
 namespace GiGraph.Dot.Entities.Edges.Collections;
 
@@ -14,7 +13,7 @@ public partial class DotEdgeCollection
     /// <param name="init">
     ///     An optional edge initializer delegate.
     /// </param>
-    public virtual DotEdge AddLoop(string nodeId, Action<DotEdge> init = null) => Add(new(nodeId), init);
+    public virtual DotEdge AddLoop(string nodeId, Action<DotEdge>? init = null) => Add(new DotEdge(nodeId), init);
 
     /// <summary>
     ///     Adds a loop edge that joins the specified node to itself.
@@ -25,5 +24,5 @@ public partial class DotEdgeCollection
     /// <param name="init">
     ///     An optional edge initializer delegate.
     /// </param>
-    public virtual DotEdge AddLoop(DotEndpoint endpoint, Action<DotEdge> init = null) => Add(new(endpoint), init);
+    public virtual DotEdge AddLoop(DotEndpoint endpoint, Action<DotEdge>? init = null) => Add(new DotEdge(endpoint), init);
 }

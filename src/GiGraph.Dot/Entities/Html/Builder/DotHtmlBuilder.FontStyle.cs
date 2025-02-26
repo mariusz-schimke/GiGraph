@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Types.Fonts;
 
@@ -74,7 +73,7 @@ public partial class DotHtmlBuilder
     /// </param>
     public virtual DotHtmlBuilder AppendStyled(DotFontStyles fontStyle, Action<DotHtmlBuilder> init)
     {
-        var rootElement = (IDotHtmlContentEntity) DotHtmlFontStyle.FromStyle(fontStyle, out var contentElement)
+        var rootElement = (IDotHtmlContentEntity?) DotHtmlFontStyle.FromStyle(fontStyle, out var contentElement)
          ?? new DotHtmlEntityCollection();
 
         (contentElement ?? rootElement).SetContent(init);

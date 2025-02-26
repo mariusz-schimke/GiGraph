@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Output.Text;
@@ -17,7 +16,7 @@ public static class DotTextCasing
     /// <param name="casing">
     ///     The casing to set.
     /// </param>
-    public static string SetCasing(string text, DotTextCase casing)
+    public static string? SetCasing(string? text, DotTextCase casing)
     {
         return casing switch
         {

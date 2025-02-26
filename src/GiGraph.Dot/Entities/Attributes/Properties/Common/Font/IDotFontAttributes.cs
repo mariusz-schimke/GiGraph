@@ -33,7 +33,7 @@ public interface IDotFontAttributes
     ///         fonts.
     ///     </para>
     /// </summary>
-    string Name { get; set; }
+    string? Name { get; set; }
 
     /// <summary>
     ///     Gets or sets the font size used for text (in points; 72 points per inch). Default: 14.0, minimum: 1.0.
@@ -43,5 +43,5 @@ public interface IDotFontAttributes
     /// <summary>
     ///     Gets or sets the color used for text (default: <see cref="System.Drawing.Color.Black" />).
     /// </summary>
-    DotColor Color { get; set; }
+    DotColor? Color { get; set; }
 }

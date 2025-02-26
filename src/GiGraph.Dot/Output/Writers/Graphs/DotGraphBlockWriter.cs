@@ -13,7 +13,7 @@ public abstract class DotGraphBlockWriter : DotEntityWriter
     {
         var tokenWriter = _tokenWriter.NextIndentationLevel();
         tokenWriter.BlockStart()
-           .NewLine(linger: true, enforceLineBreak: true);
+            .NewLine(linger: true, enforceLineBreak: true);
 
         return new DotGraphBodyWriter(tokenWriter, _configuration);
     }
@@ -22,6 +22,6 @@ public abstract class DotGraphBlockWriter : DotEntityWriter
     {
         _tokenWriter.ClearLingerBuffer();
         _tokenWriter.Indentation()
-           .BlockEnd();
+            .BlockEnd();
     }
 }

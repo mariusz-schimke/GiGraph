@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace GiGraph.Dot.Entities.Graphs.Collections;
 
 public class DotGraphSectionCollection<TSection> : List<TSection>
@@ -15,7 +12,7 @@ public class DotGraphSectionCollection<TSection> : List<TSection>
     /// <param name="init">
     ///     An optional section initializer delegate.
     /// </param>
-    public virtual TSection Add(TSection section, Action<TSection> init)
+    public virtual TSection Add(TSection section, Action<TSection>? init)
     {
         init?.Invoke(section);
         Add(section);
@@ -28,5 +25,5 @@ public class DotGraphSectionCollection<TSection> : List<TSection>
     /// <param name="init">
     ///     An optional section initializer delegate.
     /// </param>
-    public virtual TSection Add(Action<TSection> init = null) => Add(new(), init);
+    public virtual TSection Add(Action<TSection>? init = null) => Add(new TSection(), init);
 }

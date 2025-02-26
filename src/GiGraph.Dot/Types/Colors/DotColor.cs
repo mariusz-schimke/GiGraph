@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using GiGraph.Dot.Output.Options;
 
@@ -6,22 +7,31 @@ namespace GiGraph.Dot.Types.Colors;
 /// <summary>
 ///     Represents a single color.
 /// </summary>
-/// <param name="Color">
-///     The color to initialize the instance with.
-/// </param>
-/// <param name="Scheme">
-///     <para>
-///         The color scheme to evaluate the current color with if a named color is specified. See <see cref="DotColorSchemes" /> for
-///         supported scheme names.
-///     </para>
-///     <para>
-///         Pass null to use the color scheme set on the element, or to use the default scheme if none was set. Pass
-///         <see cref="DotColorSchemes.Default" /> to make the color be evaluated using the default
-///         <see cref="DotColorSchemes.X11" /> naming.
-///     </para>
-/// </param>
-public record DotColor(Color Color, string Scheme = null) : DotColorDefinition
+public class DotColor : DotColorDefinition
 {
+    /// <summary>
+    ///     Creates a new instance initialized with a named color.
+    /// </summary>
+    /// <param name="color">
+    ///     The color to initialize the instance with.
+    /// </param>
+    /// <param name="scheme">
+    ///     <para>
+    ///         The color scheme to evaluate the current color with if a named color is specified. See <see cref="DotColorSchemes" /> for
+    ///         supported scheme names.
+    ///     </para>
+    ///     <para>
+    ///         Pass null to use the color scheme set on the element, or to use the default scheme if none was set. Pass
+    ///         <see cref="DotColorSchemes.Default" /> to make the color be evaluated using the default
+    ///         <see cref="DotColorSchemes.X11" /> naming.
+    ///     </para>
+    /// </param>
+    public DotColor(Color color, string? scheme = null)
+    {
+        Color = color;
+        Scheme = scheme;
+    }
+
     /// <summary>
     ///     Creates a new instance initialized with a named color.
     /// </summary>
@@ -41,7 +51,7 @@ public record DotColor(Color Color, string Scheme = null) : DotColorDefinition
     ///         <see cref="DotColorSchemes.X11" /> naming.
     ///     </para>
     /// </param>
-    public DotColor(string name, string scheme = null)
+    public DotColor(string name, string? scheme = null)
         : this(Color.FromName(name), scheme)
     {
     }
@@ -49,12 +59,12 @@ public record DotColor(Color Color, string Scheme = null) : DotColorDefinition
     /// <summary>
     ///     The color.
     /// </summary>
-    public Color Color { get; init; } = Color;
+    public Color Color { get; }
 
     /// <summary>
     ///     The color scheme (see <see cref="DotColorSchemes" />).
     /// </summary>
-    public string Scheme { get; init; } = Scheme;
+    public string? Scheme { get; init; }
 
     protected internal virtual double? GetWeight() => null;
 
@@ -62,11 +72,12 @@ public record DotColor(Color Color, string Scheme = null) : DotColorDefinition
     {
         if (options.Colors.PreferName && Color.IsNamedColor)
         {
-            var scheme = Scheme is null
-                ? null
-                : Scheme == DotColorSchemes.Default
-                    ? DotColorSchemes.Default
-                    : $"/{Scheme}/";
+            var scheme = Scheme switch
+            {
+                null => null,
+                DotColorSchemes.Default => DotColorSchemes.Default,
+                _ => $"/{Scheme}/"
+            };
 
             return $"{scheme?.ToLowerInvariant()}{Color.Name.ToLowerInvariant()}";
         }
@@ -82,7 +93,9 @@ public record DotColor(Color Color, string Scheme = null) : DotColorDefinition
         return $"#{Color.R:x2}{Color.G:x2}{Color.B:x2}{alpha}";
     }
 
-    public static implicit operator DotColor(Color? color) => color.HasValue ? new DotColor(color.Value) : null;
+    [return: NotNullIfNotNull(nameof(color))]
+    public static implicit operator DotColor?(Color? color) => color.HasValue ? new DotColor(color.Value) : null;
 
-    public static implicit operator Color?(DotColor color) => color?.Color;
+    [return: NotNullIfNotNull(nameof(color))]
+    public static implicit operator Color?(DotColor? color) => color?.Color;
 }

@@ -13,13 +13,13 @@ public interface IDotHtmlTableTableCellCommonAttributes
     /// <summary>
     ///     Allows the user to specify a unique ID for the table.
     /// </summary>
-    DotEscapeString Id { get; set; }
+    DotEscapeString? Id { get; set; }
 
     /// <summary>
     ///     Attaches a port name to the object. This can be used to modify the head or tail of an edge, so that the end attaches directly
     ///     to the object.
     /// </summary>
-    string PortName { get; set; }
+    string? PortName { get; set; }
 
     /// <summary>
     ///     Specifies vertical placement. When an object is allocated more space than required, this value determines where the extra
@@ -31,13 +31,13 @@ public interface IDotHtmlTableTableCellCommonAttributes
     ///     Sets the color of the background. This color can be overridden by a the same attribute in descendents. The value can be a
     ///     single color (<see cref="System.Drawing.Color" />) or a gradient color (<see cref="DotGradientColor" />).
     /// </summary>
-    DotColorDefinition BackgroundColor { get; set; }
+    DotColorDefinition? BackgroundColor { get; set; }
 
     /// <summary>
     ///     Sets the border color of the table or cell. It can be overridden by the same attribute in descendents. By default, the border
     ///     color is determined by the corresponding node, edge or graph.
     /// </summary>
-    DotColor BorderColor { get; set; }
+    DotColor? BorderColor { get; set; }
 
     /// <summary>
     ///     Specifies the width of the border around the object in points. A value of zero indicates no border. The default is 1. The
@@ -94,7 +94,7 @@ public interface IDotHtmlTableTableCellCommonAttributes
     /// <summary>
     ///     Attaches a URL to the object.
     /// </summary>
-    DotEscapeString Href { get; set; }
+    DotEscapeString? Href { get; set; }
 
     /// <summary>
     ///     Determines which window of the browser is used for the URL if the object has one. See
@@ -103,18 +103,18 @@ public interface IDotHtmlTableTableCellCommonAttributes
     ///     </see>
     ///     .
     /// </summary>
-    DotEscapeString Target { get; set; }
+    DotEscapeString? Target { get; set; }
 
     /// <summary>
     ///     Sets the tooltip annotation attached to the element. This is used only if the element has a <see cref="Href" /> attribute.
     /// </summary>
-    DotEscapeString Title { get; set; }
+    DotEscapeString? Title { get; set; }
 
     /// <summary>
     ///     Sets the tooltip annotation attached to the element. This is used only if the element has a <see cref="Href" /> attribute. It
     ///     is an alias for <see cref="Title" />.
     /// </summary>
-    DotEscapeString Tooltip { get; set; }
+    DotEscapeString? Tooltip { get; set; }
 
     /// <summary>
     ///     Specifies style characteristics of the table or cell.

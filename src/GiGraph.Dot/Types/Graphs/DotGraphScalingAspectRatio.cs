@@ -7,10 +7,15 @@ namespace GiGraph.Dot.Types.Graphs;
 ///     dimension to achieve the requested ratio expressed as drawing height/width. For example, ratio = 2.0 makes the drawing twice
 ///     as high as it is wide.
 /// </summary>
-/// <param name="Ratio">
+/// <param name="ratio">
 ///     The aspect ratio.
 /// </param>
-public record DotGraphScalingAspectRatio(double Ratio) : DotGraphScalingDefinition
+public class DotGraphScalingAspectRatio(double ratio) : DotGraphScalingDefinition
 {
+    /// <summary>
+    ///     The aspect ratio.
+    /// </summary>
+    public double Ratio { get; } = ratio;
+
     protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Ratio.ToString(syntaxRules.Culture);
 }

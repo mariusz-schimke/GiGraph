@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using Xunit;
 
@@ -9,17 +6,17 @@ namespace GiGraph.Dot.Types.Tests.Enums;
 public class DotEnumsTest
 {
     public static IEnumerable<object[]> EnumTypes { get; } = GetAllEnumTypes()
-       .Select(t => new[] { t })
-       .ToArray();
+        .Select(t => new[] { t })
+        .ToArray();
 
     public static IEnumerable<Type> GetAllEnumTypes()
     {
         // get only the enum types used as attribute values (they belong to the Types namespace)
-        var types = Assembly.LoadFrom("GiGraph.Dot.dll")!
-           .GetTypes()
-           .Where(t => t.IsEnum)
-           .Where(t => true == t.Namespace?.StartsWith("GiGraph.Dot.Types"))
-           .ToArray();
+        var types = Assembly.LoadFrom("GiGraph.Dot.dll")
+            .GetTypes()
+            .Where(t => t.IsEnum)
+            .Where(t => t.Namespace?.StartsWith("GiGraph.Dot.Types") is true)
+            .ToArray();
 
         Assert.NotEmpty(types);
         return types;

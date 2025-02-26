@@ -1,5 +1,3 @@
-using System;
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -10,7 +8,7 @@ using GiGraph.Dot.Types.Graphs;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
-public class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAttributes, DotGraphFontAttributes>, IDotGraphFontAttributes
+public partial class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAttributes, DotGraphFontAttributes>, IDotGraphFontAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphFontAttributes, IDotGraphFontAttributes>().BuildLazy();
 
@@ -26,19 +24,11 @@ public class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAttributes,
 
     /// <inheritdoc cref="IDotGraphFontAttributes.Directories" />
     [DotAttributeKey(DotAttributeKeys.FontPath)]
-    public virtual string Directories
-    {
-        get => GetValueAsString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial string? Directories { get; set; }
 
     /// <inheritdoc cref="IDotGraphFontAttributes.Convention" />
     [DotAttributeKey(DotAttributeKeys.FontNames)]
-    public virtual DotFontConvention? Convention
-    {
-        get => GetValueAs<DotFontConvention>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotFontConvention? Convention { get; set; }
 
     /// <summary>
     ///     Sets font attributes.
@@ -58,7 +48,7 @@ public class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAttributes,
     /// <param name="convention">
     ///     The font convention to use.
     /// </param>
-    public virtual void Set(string name = null, double? size = null, DotColor color = null, string directories = null, DotFontConvention? convention = null)
+    public virtual void Set(string? name = null, double? size = null, DotColor? color = null, string? directories = null, DotFontConvention? convention = null)
     {
         base.Set(name, size, color);
         Directories = directories;

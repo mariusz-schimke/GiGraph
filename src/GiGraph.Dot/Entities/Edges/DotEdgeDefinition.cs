@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Accessors;
 using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output.Entities;
@@ -17,7 +16,7 @@ public abstract partial class DotEdgeDefinition : IDotEntity, IDotAnnotatable, I
                 ? endpoints
                 : throw new ArgumentException("At least a pair of endpoints has to be specified.", nameof(endpoints));
 
-        Attributes = new(attributes);
+        Attributes = new DotEntityRootAttributesAccessor<IDotEdgeAttributes, DotEdgeRootAttributes>(attributes);
     }
 
     /// <summary>
@@ -31,7 +30,7 @@ public abstract partial class DotEdgeDefinition : IDotEntity, IDotAnnotatable, I
     public DotEndpointDefinition[] Endpoints { get; }
 
     /// <inheritdoc cref="IDotAnnotatable.Annotation" />
-    public virtual string Annotation { get; set; }
+    public virtual string? Annotation { get; set; }
 
     string IDotOrderable.OrderingKey => GetOrderingKey();
 

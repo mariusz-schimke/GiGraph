@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
@@ -13,7 +11,7 @@ namespace GiGraph.Dot.Entities.Attributes;
 /// <typeparam name="TComplex">
 ///     A complex type that implements the <see cref="IDotEncodable" /> interface.
 /// </typeparam>
-public record DotComplexTypeArrayAttribute<TComplex> : DotAttribute<TComplex[]>
+public class DotComplexTypeArrayAttribute<TComplex> : DotAttribute<TComplex[]>
     where TComplex : IDotEncodable
 {
     /// <summary>
@@ -38,9 +36,7 @@ public record DotComplexTypeArrayAttribute<TComplex> : DotAttribute<TComplex[]>
             throw new ArgumentException($"The {complexType.Name} type is not annotated with a {nameof(DotJoinableTypeAttribute)} attribute.", nameof(Value));
         }
 
-        var encoded = (Value ?? Enumerable.Empty<TComplex>())
-           .Select(value => value.GetDotEncodedValue(options, syntaxRules));
-
+        var encoded = Value.Select(value => value.GetDotEncodedValue(options, syntaxRules));
         return string.Join(attribute.Separator, encoded);
     }
 }

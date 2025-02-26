@@ -10,5 +10,5 @@ public interface IDotEdgeHyperlinkAttributes : IDotHyperlinkAttributes
     ///     attribute is specified. Used only if <see cref="IDotHyperlinkAttributes.Url" /> is specified, or if the edge has a
     ///     <see cref="IDotEdgeRootAttributes.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Url" /> specified.
     /// </summary>
-    DotEscapeString Tooltip { get; set; }
+    DotEscapeString? Tooltip { get; set; }
 }

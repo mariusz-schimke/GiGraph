@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Html;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Html;
@@ -11,8 +10,8 @@ public class DotHtmlLabelTest
     [Fact]
     public void throws_exception_on_constructor_null_value()
     {
-        Assert.Throws<ArgumentNullException>(() => new DotHtmlLabel((IDotHtmlEntity) null));
-        Assert.Throws<ArgumentNullException>(() => new DotHtmlLabel((DotHtmlString) null));
+        Assert.Throws<ArgumentNullException>(() => new DotHtmlLabel((IDotHtmlEntity) null!));
+        Assert.Throws<ArgumentNullException>(() => new DotHtmlLabel((DotHtmlString) null!));
     }
 
     [Fact]
@@ -26,7 +25,7 @@ public class DotHtmlLabelTest
     [Fact]
     public void to_string_returns_html_for_html_entity()
     {
-        var value = "<table></table>";
+        const string value = "<table></table>";
 
         var entity = new DotHtml(value);
         DotLabel label = entity;

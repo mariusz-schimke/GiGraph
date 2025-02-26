@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Output.Options;
@@ -31,8 +29,8 @@ public abstract class DotHtmlTag : DotHtmlEntity
     {
         var result = new StringBuilder();
 
-        var attrs = Attributes.Values
-           .Select(attr =>
+        var attrs = Attributes
+            .Select(attr =>
                 $"{DotTextCasing.SetCasing(attr.Key, options.Attributes.Html.AttributeKeyCasing)}=\"{attr.GetDotEncodedValue(options, syntaxRules)}\""
             );
 
@@ -40,8 +38,8 @@ public abstract class DotHtmlTag : DotHtmlEntity
         var elementWithAttributes = string.Join(
             " ",
             Enumerable.Empty<string>()
-               .Append($"<{elementName}")
-               .Concat(attrs)
+                .Append($"<{elementName}")
+                .Concat(attrs)
         );
 
         result.Append(elementWithAttributes);
@@ -52,7 +50,7 @@ public abstract class DotHtmlTag : DotHtmlEntity
         }
         else
         {
-            result.Append(">");
+            result.Append('>');
 
             var children = GetContent().Select(child => child.ToHtml(options, syntaxRules));
             result.Append(string.Join(string.Empty, children));
@@ -63,5 +61,5 @@ public abstract class DotHtmlTag : DotHtmlEntity
         return result.ToString();
     }
 
-    protected virtual IEnumerable<IDotHtmlEntity> GetContent() => Enumerable.Empty<IDotHtmlEntity>();
+    protected virtual IEnumerable<IDotHtmlEntity> GetContent() => [];
 }

@@ -1,9 +1,7 @@
-using System;
-
 namespace GiGraph.Dot.Types.Styling;
 
 public abstract record DotClusterNodeCommonStyleProperties<TFillStyle>(TFillStyle FillStyle, DotBorderStyle BorderStyle, DotBorderWeight BorderWeight, DotCornerStyle CornerStyle, bool Invisible)
-    where TFillStyle : Enum
+    where TFillStyle : struct, Enum
 {
     /// <summary>
     ///     The fill style.

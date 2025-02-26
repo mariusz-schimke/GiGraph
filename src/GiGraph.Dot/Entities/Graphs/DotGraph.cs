@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using GiGraph.Dot.Entities.Graphs.Collections;
+﻿using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Qualities;
 
@@ -27,8 +26,8 @@ public class DotGraph : DotGraphSection, IDotGraph, IDotOrderable
     ///     Determines if the graph is strict. Strict graph forbids the creation of multi-edges, i.e., there may be at most one edge with
     ///     a given tail node and head node in the directed case.
     /// </param>
-    public DotGraph(string id, bool directed = DirectedDefault, bool strict = StrictDefault)
-        : this(new(), new DotGraphSectionCollection<DotGraphSection>())
+    public DotGraph(string? id, bool directed = DirectedDefault, bool strict = StrictDefault)
+        : this(new DotGraphSection(), new DotGraphSectionCollection<DotGraphSection>())
     {
         Id = id;
         IsDirected = directed;
@@ -91,9 +90,9 @@ public class DotGraph : DotGraphSection, IDotGraph, IDotOrderable
     /// <summary>
     ///     Gets or sets the identifier of the graph (optional).
     /// </summary>
-    public virtual string Id { get; set; }
+    public virtual string? Id { get; set; }
 
     IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 
-    string IDotOrderable.OrderingKey => Id;
+    string? IDotOrderable.OrderingKey => Id;
 }

@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.EscapeString;
 
@@ -70,7 +67,7 @@ public class DotAttributeFactory
     /// <param name="value">
     ///     The value of the attribute.
     /// </param>
-    public virtual DotDoubleArrayAttribute CreateDoubleArray(string key, IEnumerable<double> value) => CreateDoubleArray(key, value?.ToArray());
+    public virtual DotDoubleArrayAttribute CreateDoubleArray(string key, IEnumerable<double> value) => CreateDoubleArray(key, value.ToArray());
 
     /// <summary>
     ///     Creates a new color attribute.
@@ -116,7 +113,7 @@ public class DotAttributeFactory
     ///     The value of the attribute.
     /// </param>
     public virtual DotEnumAttribute<TEnum> CreateEnum<TEnum>(string key, TEnum value)
-        where TEnum : Enum => new(key, value);
+        where TEnum : struct, Enum => new(key, value);
 
     /// <summary>
     ///     Creates a new complex type attribute.
@@ -152,7 +149,7 @@ public class DotAttributeFactory
     ///     The value of the attribute.
     /// </param>
     public virtual DotComplexTypeArrayAttribute<TComplex> CreateComplexArray<TComplex>(string key, IEnumerable<TComplex> value)
-        where TComplex : IDotEncodable => CreateComplexArray(key, value?.ToArray());
+        where TComplex : IDotEncodable => CreateComplexArray(key, value.ToArray());
 
     /// <summary>
     ///     Creates a new raw value attribute.

@@ -29,7 +29,7 @@ public interface IDotNodeImageAttributes
     ///         image can be contained in a node of any shape, not just a rectangle.
     ///     </para>
     /// </summary>
-    string Path { get; set; }
+    string? Path { get; set; }
 
     /// <summary>
     ///     Controls how an image is positioned within its containing node. This only has an effect when the image is smaller than the

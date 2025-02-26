@@ -1,6 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using GiGraph.Dot.Output.EnumHelpers;
 
@@ -30,7 +28,7 @@ public static class DotAttributeValue<TAttribute>
     /// <typeparam name="TFlagsAttribute">
     ///     The type of attribute that provides metadata for the specified flags enumeration.
     /// </typeparam>
-    public static bool TryGetAsFlags<TFlagsAttribute>(Enum flags, out string dotFlags, bool sort)
+    public static bool TryGetAsFlags<TFlagsAttribute>(Enum flags, [MaybeNullWhen(false)] out string dotFlags, bool sort)
         where TFlagsAttribute : Attribute, IDotJoinableTypeAttribute
     {
         var enumType = flags.GetType();
@@ -44,12 +42,12 @@ public static class DotAttributeValue<TAttribute>
         var mapping = GetMapping(enumType);
 
         var dotFlagsEnumerable = enumValues
-           .Where(flags.HasFlag)
-           .Select(flag => mapping.TryGetValue(flag, out var value)
+            .Where(flags.HasFlag)
+            .Select(flag => mapping.TryGetValue(flag, out var value)
                 ? value
                 : throw new ArgumentException($"The value '{flag}' of the {enumType.Name} enumeration is not annotated with a {typeof(TAttribute).Name} attribute.", nameof(flags))
             )
-           .Where(value => value is not null);
+            .OfType<string>();
 
         dotFlags = string.Join(
             attribute.Separator,
@@ -88,7 +86,7 @@ public static class DotAttributeValue<TAttribute>
     /// <param name="dotValue">
     ///     The returned DOT attribute value if available.
     /// </param>
-    public static bool TryGet(Enum value, out string dotValue)
+    public static bool TryGet(Enum value, out string? dotValue)
     {
         var enumMember = value.GetType().GetMember(value.ToString()).FirstOrDefault();
 
@@ -108,7 +106,7 @@ public static class DotAttributeValue<TAttribute>
     /// <param name="value">
     ///     The enumeration value whose associated DOT value to return.
     /// </param>
-    public static string Get(Enum value) => TryGet(value, out var result)
+    public static string? Get(Enum value) => TryGet(value, out var result)
         ? result
         : throw new ArgumentException($"The value '{value}' is not a member of the {value.GetType().Name} enumeration or is not annotated with a {typeof(TAttribute).Name} attribute.", nameof(value));
 
@@ -124,11 +122,11 @@ public static class DotAttributeValue<TAttribute>
     /// <typeparam name="TEnum">
     ///     The type of the enumeration whose value to search.
     /// </typeparam>
-    public static bool TryGet<TEnum>(string dotValue, out TEnum value)
-        where TEnum : Enum
+    public static bool TryGet<TEnum>(string dotValue, [MaybeNullWhen(false)] out TEnum value)
+        where TEnum : struct, Enum
     {
         var result = TryGet(typeof(TEnum), dotValue, out var enumValue);
-        value = result ? (TEnum) enumValue : default(TEnum);
+        value = result ? (TEnum) enumValue! : default(TEnum);
         return result;
     }
 
@@ -144,19 +142,19 @@ public static class DotAttributeValue<TAttribute>
     /// <param name="dotValue">
     ///     The DOT attribute value whose associated enumeration value to return.
     /// </param>
-    public static bool TryGet(Type enumType, string dotValue, out Enum value)
+    public static bool TryGet(Type enumType, string dotValue, [MaybeNullWhen(false)] out Enum value)
     {
         var match = enumType
-           .GetFields(FieldBindingFlags)
-           .FirstOrDefault(field => field.GetCustomAttribute<TAttribute>()?.Value is { } fieldDotValue && fieldDotValue == dotValue);
+            .GetFields(FieldBindingFlags)
+            .FirstOrDefault(field => field.GetCustomAttribute<TAttribute>()?.Value is { } fieldDotValue && fieldDotValue == dotValue);
 
         if (match is not null)
         {
-            value = (Enum) match.GetValue(null);
+            value = (Enum) match.GetValue(null)!;
             return true;
         }
 
-        value = default(Enum);
+        value = null;
         return false;
     }
 
@@ -170,7 +168,7 @@ public static class DotAttributeValue<TAttribute>
     ///     The type of the enumeration whose value to search.
     /// </typeparam>
     public static TEnum Get<TEnum>(string dotValue)
-        where TEnum : Enum =>
+        where TEnum : struct, Enum =>
         (TEnum) Get(typeof(TEnum), dotValue);
 
     /// <summary>
@@ -193,11 +191,11 @@ public static class DotAttributeValue<TAttribute>
     /// <typeparam name="TEnum">
     ///     The type of the enumeration whose value mapping to get.
     /// </typeparam>
-    public static Dictionary<TEnum, string> GetMapping<TEnum>()
-        where TEnum : Enum
+    public static Dictionary<TEnum, string?> GetMapping<TEnum>()
+        where TEnum : struct, Enum
     {
         return GetMappingEnumerable(typeof(TEnum))
-           .ToDictionary(
+            .ToDictionary(
                 item => (TEnum) item.Key,
                 item => item.Value
             );
@@ -210,29 +208,29 @@ public static class DotAttributeValue<TAttribute>
     /// <param name="enumType">
     ///     The type of the enumeration whose value mapping to get.
     /// </param>
-    public static Dictionary<Enum, string> GetMapping(Type enumType)
+    public static Dictionary<Enum, string?> GetMapping(Type enumType)
     {
         return GetMappingEnumerable(enumType)
-           .ToDictionary(
+            .ToDictionary(
                 item => item.Key,
                 item => item.Value
             );
     }
 
-    private static IEnumerable<(Enum Key, string Value)> GetMappingEnumerable(Type enumType)
+    private static IEnumerable<(Enum Key, string? Value)> GetMappingEnumerable(Type enumType)
     {
         return enumType
-           .GetFields(FieldBindingFlags)
-           .Select(field =>
+            .GetFields(FieldBindingFlags)
+            .Select(field =>
             (
                 Attribute: field.GetCustomAttribute<TAttribute>(),
-                EnumValue: (Enum) field.GetValue(null)
+                EnumValue: (Enum) field.GetValue(null)!
             ))
-           .Where(result => result.Attribute is not null)
-           .Select(item =>
+            .Where(result => result.Attribute is not null)
+            .Select(item =>
             (
                 Key: item.EnumValue,
-                item.Attribute.Value
+                item.Attribute?.Value
             ));
     }
 }

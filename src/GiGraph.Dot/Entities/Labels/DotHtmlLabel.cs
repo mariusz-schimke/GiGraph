@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Html;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
@@ -44,5 +43,5 @@ public class DotHtmlLabel : DotLabel
 
     protected override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => _value.ToHtml(options, syntaxRules);
 
-    public override string ToString() => _value.ToString();
+    public override string? ToString() => _value.ToString();
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using GiGraph.Dot.Output.Qualities;
+﻿using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints;
 
@@ -17,7 +14,7 @@ public class DotEndpointGroup : DotEndpointDefinition
     ///     The identifiers of nodes to use as endpoints.
     /// </param>
     public DotEndpointGroup(params string[] nodeIds)
-        : this(nodeIds?.Select(nodeId => new DotEndpoint(nodeId)))
+        : this(nodeIds.Select(nodeId => new DotEndpoint(nodeId)))
     {
     }
 
@@ -28,7 +25,7 @@ public class DotEndpointGroup : DotEndpointDefinition
     ///     The identifiers of nodes to use as endpoints.
     /// </param>
     public DotEndpointGroup(IEnumerable<string> nodeIds)
-        : this(nodeIds?.Select(nodeId => new DotEndpoint(nodeId)))
+        : this(nodeIds.Select(nodeId => new DotEndpoint(nodeId)))
     {
     }
 
@@ -45,7 +42,7 @@ public class DotEndpointGroup : DotEndpointDefinition
             throw new ArgumentNullException(nameof(endpoints), "Endpoint collection must not be null.");
         }
 
-        Endpoints = endpoints.Any()
+        Endpoints = endpoints.Length > 0
             ? endpoints
             : throw new ArgumentException("At least one endpoint has to be specified for an endpoint group.", nameof(endpoints));
     }
@@ -57,7 +54,7 @@ public class DotEndpointGroup : DotEndpointDefinition
     ///     The endpoints to use.
     /// </param>
     public DotEndpointGroup(IEnumerable<DotEndpoint> endpoints)
-        : this(endpoints?.ToArray())
+        : this(endpoints.ToArray())
     {
     }
 
@@ -70,8 +67,8 @@ public class DotEndpointGroup : DotEndpointDefinition
     {
         return string.Join(" ",
             Endpoints
-               .Cast<IDotOrderable>()
-               .Select(endpoint => endpoint.OrderingKey)
-               .OrderBy(key => key, StringComparer.InvariantCulture));
+                .Cast<IDotOrderable>()
+                .Select(endpoint => endpoint.OrderingKey)
+                .OrderBy(key => key, StringComparer.InvariantCulture));
     }
 }

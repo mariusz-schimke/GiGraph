@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using GiGraph.Dot.Entities.Edges;
+﻿using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
@@ -22,9 +19,9 @@ public class DotEdgeGenerator : DotEntityWithAttributeListGenerator<DotEdgeDefin
         WriteAttributes(edge.Attributes.Collection, writer);
     }
 
-    protected virtual void WriteEdges(IEnumerable<DotEndpointDefinition> endpoints, IDotEdgeWriter writer)
+    protected virtual void WriteEdges(DotEndpointDefinition[] endpoints, IDotEdgeWriter writer)
     {
-        if (endpoints.Count() < 2)
+        if (endpoints.Length < 2)
         {
             throw new ArgumentException("At least a pair of endpoints has to be specified for an edge or an edge sequence.", nameof(endpoints));
         }

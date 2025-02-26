@@ -16,5 +16,5 @@ public interface IDotEncodable
     /// <param name="syntaxRules">
     ///     The DOT syntax rules to use.
     /// </param>
-    string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
+    string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 }

@@ -11,16 +11,37 @@ namespace GiGraph.Dot.Types.Records;
 ///     </see>
 ///     .
 /// </summary>
-/// <param name="Text">
-///     The text of the field.
-/// </param>
-/// <param name="PortName">
-///     The port name, that is a name that can be referred to from an edge's endpoint in order to attach the end of the edge to the
-///     current field. You can specify the port on an edge's head or tail endpoint, or, alternatively, by using a corresponding
-///     attribute for the head or tail among the attributes of the edge.
-/// </param>
-public record DotRecordTextField(DotEscapeString Text, string PortName = null) : DotRecordField
+public class DotRecordTextField : DotRecordField
 {
+    /// <summary>
+    ///     Creates a new instance of a textual record field.
+    /// </summary>
+    /// <param name="text">
+    ///     The text of the field.
+    /// </param>
+    /// <param name="portName">
+    ///     The port name, that is a name that can be referred to from an edge's endpoint in order to attach the end of the edge to the
+    ///     current field. You can specify the port on an edge's head or tail endpoint, or, alternatively, by using a corresponding
+    ///     attribute for the head or tail among the attributes of the edge.
+    /// </param>
+    public DotRecordTextField(DotEscapeString? text, string? portName = null)
+    {
+        Text = text;
+        PortName = portName;
+    }
+
+    /// <summary>
+    ///     The text of the field.
+    /// </summary>
+    public DotEscapeString? Text { get; }
+
+    /// <summary>
+    ///     The port name, that is a name that can be referred to from an edge's endpoint in order to attach the end of the edge to the
+    ///     current field. You can specify the port on an edge's head or tail endpoint, or, alternatively, by using a corresponding
+    ///     attribute for the head or tail among the attributes of the edge.
+    /// </summary>
+    public string? PortName { get; init; }
+
     protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules, bool hasParent)
     {
         var result = new StringBuilder();
@@ -28,9 +49,9 @@ public record DotRecordTextField(DotEscapeString Text, string PortName = null) :
 
         if (PortName is not null)
         {
-            result.Append("<");
+            result.Append('<');
             result.Append(syntaxRules.Attributes.RecordLabelValuePortEscaper.Escape(PortName));
-            result.Append(">");
+            result.Append('>');
             separator = " ";
         }
 

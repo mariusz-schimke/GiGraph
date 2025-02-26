@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 
 namespace GiGraph.Dot.Output.Metadata;
@@ -558,13 +555,13 @@ public static class DotAttributeKeys
     private static Dictionary<string, DotAttributeMetadata> BuildMetadataDictionary()
     {
         return typeof(DotAttributeKeys)
-           .GetFields(BindingFlags.Static | BindingFlags.Public)
-           .Select(property => new
+            .GetFields(BindingFlags.Static | BindingFlags.Public)
+            .Select(property => new
             {
-                Key = (string) property.GetValue(null),
-                Metadata = property.GetCustomAttribute<DotAttributeMetadataAttribute>()
+                Key = (string) property.GetValue(null)!,
+                Metadata = property.GetCustomAttribute<DotAttributeMetadataAttribute>()!
             })
-           .ToDictionary(
+            .ToDictionary(
                 key => key.Key,
                 element => new DotAttributeMetadata(
                     element.Key,

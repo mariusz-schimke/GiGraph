@@ -95,8 +95,13 @@ public class DotGraphScriptTest
     [Fact]
     public void renders_graph_with_html_attribute_value_in_angle_brackets()
     {
-        var graph = new DotGraph();
-        graph.Nodes.Label = "<TABLE></TABLE>".AsHtml();
+        var graph = new DotGraph
+        {
+            Nodes =
+            {
+                Label = "<TABLE></TABLE>".AsHtml()
+            }
+        };
 
         var dot = graph.Build();
         Snapshot.Match(dot, "graph_with_html_attribute.gv");
@@ -105,7 +110,7 @@ public class DotGraphScriptTest
     [Fact]
     public void renders_graph_with_appropriately_escaped_identifiers()
     {
-        var id = "a bcd \" \\ \r\n \r \n h ij < > { } | \\";
+        const string id = "a bcd \" \\ \r\n \r \n h ij < > { } | \\";
         var graph = new DotGraph(id);
 
         graph.Nodes.Add(id);

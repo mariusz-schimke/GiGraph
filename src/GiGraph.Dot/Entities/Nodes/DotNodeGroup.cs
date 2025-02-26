@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 
 namespace GiGraph.Dot.Entities.Nodes;
@@ -29,7 +26,7 @@ public class DotNodeGroup : DotNodeDefinition
     ///     The node identifiers to initialize the instance with.
     /// </param>
     public DotNodeGroup(IEnumerable<string> nodeIds)
-        : this(nodeIds?.ToArray())
+        : this(nodeIds.ToArray())
     {
     }
 
@@ -43,7 +40,7 @@ public class DotNodeGroup : DotNodeDefinition
     {
         Ids = nodeIds is null
             ? throw new ArgumentNullException(nameof(nodeIds), "Node identifier collection must not be null.")
-            : nodeIds.Any()
+            : nodeIds.Length > 0
                 ? nodeIds
                 : throw new ArgumentException("At least one node identifier has to be specified for a node group.", nameof(nodeIds));
     }

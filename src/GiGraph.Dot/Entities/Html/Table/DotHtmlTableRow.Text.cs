@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Html.Font;
 using GiGraph.Dot.Entities.Html.Text;
 using GiGraph.Dot.Types.Alignment;
@@ -17,7 +16,7 @@ public partial class DotHtmlTableRow
     /// <param name="init">
     ///     A cell initializer delegate.
     /// </param>
-    public virtual DotHtmlTableCell AddCell(string text, Action<DotHtmlTableCell> init = null) => AddCell(text, lineAlignment: null, init);
+    public virtual DotHtmlTableCell AddCell(string text, Action<DotHtmlTableCell>? init = null) => AddCell(text, lineAlignment: null, init);
 
     /// <summary>
     ///     Adds a text cell to the current row.
@@ -31,7 +30,8 @@ public partial class DotHtmlTableRow
     /// <param name="init">
     ///     A cell initializer delegate.
     /// </param>
-    public virtual DotHtmlTableCell AddCell(string text, DotHorizontalAlignment? lineAlignment, Action<DotHtmlTableCell> init = null) => Content.Add(new() { new DotHtmlText(text, lineAlignment) }, init);
+    public virtual DotHtmlTableCell AddCell(string text, DotHorizontalAlignment? lineAlignment, Action<DotHtmlTableCell>? init = null) =>
+        Content.Add([new DotHtmlText(text, lineAlignment)], init);
 
     /// <summary>
     ///     Adds a text cell to the current row.
@@ -45,7 +45,8 @@ public partial class DotHtmlTableRow
     /// <param name="init">
     ///     A cell initializer delegate.
     /// </param>
-    public virtual DotHtmlTableCell AddCell(string text, DotFont font, Action<DotHtmlTableCell> init = null) => AddCell(text, font, lineAlignment: null, init);
+    public virtual DotHtmlTableCell AddCell(string text, DotFont font, Action<DotHtmlTableCell>? init = null) =>
+        AddCell(text, font, lineAlignment: null, init);
 
     /// <summary>
     ///     Adds a text cell to the current row.
@@ -62,5 +63,6 @@ public partial class DotHtmlTableRow
     /// <param name="init">
     ///     A cell initializer delegate.
     /// </param>
-    public virtual DotHtmlTableCell AddCell(string text, DotFont font, DotHorizontalAlignment? lineAlignment, Action<DotHtmlTableCell> init = null) => Content.Add(new() { DotHtmlFont.WithText(text, font, lineAlignment) }, init);
+    public virtual DotHtmlTableCell AddCell(string text, DotFont font, DotHorizontalAlignment? lineAlignment, Action<DotHtmlTableCell>? init = null) =>
+        Content.Add([DotHtmlFont.WithText(text, font, lineAlignment)], init);
 }

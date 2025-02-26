@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-
 namespace GiGraph.Dot.Output.EnumHelpers;
 
 /// <summary>
@@ -20,7 +17,7 @@ public class DotEnumMetadata
     public DotEnumMetadata(Type enumType)
     {
         _enumType = enumType;
-        _enumValues = new(() => Enum.GetValues(_enumType).Cast<Enum>().ToArray());
+        _enumValues = new Lazy<Enum[]>(() => Enum.GetValues(_enumType).Cast<Enum>().ToArray());
     }
 
     /// <summary>
@@ -47,10 +44,10 @@ public class DotEnumMetadata
     public virtual Enum[] GetSetFlags(Enum flags)
     {
         return GetValues()
-           .Where(v => !IsCompoundValue(v))
-           .Where(v => (int) (object) v != 0)
-           .Where(flags.HasFlag)
-           .ToArray();
+            .Where(v => !IsCompoundValue(v))
+            .Where(v => (int) (object) v != 0)
+            .Where(flags.HasFlag)
+            .ToArray();
     }
 
     /// <summary>
@@ -63,8 +60,8 @@ public class DotEnumMetadata
     public virtual bool IsCompoundValue(Enum value)
     {
         return GetValues()
-           .Where(v => !Equals(v, value))
-           .Where(v => (int) (object) v != 0)
-           .Any(value.HasFlag);
+            .Where(v => !Equals(v, value))
+            .Where(v => (int) (object) v != 0)
+            .Any(value.HasFlag);
     }
 }

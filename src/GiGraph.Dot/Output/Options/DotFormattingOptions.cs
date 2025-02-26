@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Output.Text;
+﻿using GiGraph.Dot.Output.Text;
 
 namespace GiGraph.Dot.Output.Options;
 
@@ -16,12 +15,12 @@ public partial class DotFormattingOptions
     /// <summary>
     ///     Indicates if the output should be generated without line breaks.
     /// </summary>
-    public bool SingleLine { get; set; } = false;
+    public bool SingleLine { get; set; }
 
     /// <summary>
     ///     The base indentation level for the DOT output.
     /// </summary>
-    public int IndentationLevel { get; set; } = 0;
+    public int IndentationLevel { get; set; }
 
     /// <summary>
     ///     The indentation size.
@@ -69,7 +68,7 @@ public partial class DotFormattingOptions
     ///     use fails processing some special or national characters. In such case replacing them with their HTML-code equivalents might
     ///     help.
     /// </summary>
-    public Func<string, DotTokenType, string> TextEncoder { get; set; }
+    public Func<string?, DotTokenType, string?>? TextEncoder { get; set; }
 
     /// <summary>
     ///     Causes attribute lists of all types of elements to be written inline.

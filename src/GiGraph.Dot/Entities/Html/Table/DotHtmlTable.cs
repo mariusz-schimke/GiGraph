@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Entities.Html.Rule;
@@ -27,7 +26,7 @@ public partial class DotHtmlTable : DotHtmlElement
     protected DotHtmlTable(DotHtmlTableAttributes attributes)
         : base("table", attributes.Collection)
     {
-        Attributes = new(attributes);
+        Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlTableAttributes, DotHtmlTableAttributes>(attributes);
     }
 
     /// <summary>
@@ -41,7 +40,7 @@ public partial class DotHtmlTable : DotHtmlElement
     /// <param name="init">
     ///     An optional row initializer delegate.
     /// </param>
-    public virtual DotHtmlTableRow AddRow(Action<DotHtmlTableRow> init = null) => Content.Add(new(), init);
+    public virtual DotHtmlTableRow AddRow(Action<DotHtmlTableRow>? init = null) => Content.Add([], init);
 
     /// <summary>
     ///     Adds a horizontal rule to separate two neighboring rows.

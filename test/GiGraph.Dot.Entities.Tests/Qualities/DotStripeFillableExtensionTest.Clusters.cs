@@ -7,15 +7,15 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Qualities;
 
-public partial class DotStripableExtensionTest
+public partial class DotStripeFillableExtensionTest
 {
     [Fact]
     public void sets_striped_fill_on_individual_clusters()
     {
         var graph = new DotGraph();
 
-        graph.Clusters.Add().SetStripedFill(Color.Red, Color.Blue);
-        graph.Clusters.Add().SetStripedFill(new DotMulticolor(Color.Red, Color.Blue));
+        graph.Clusters.Add("").SetStripedFill(Color.Red, Color.Blue);
+        graph.Clusters.Add("").SetStripedFill(new DotMulticolor(Color.Red, Color.Blue));
 
         Snapshot.Match(graph.Build(), "striped_fill_on_individual_clusters");
     }
@@ -27,7 +27,7 @@ public partial class DotStripableExtensionTest
         graph.Clusters.SetStripedFill(Color.Red, Color.Blue);
         Snapshot.Match(graph.Build(), "striped_fill_on_cluster_collection_params");
 
-        graph = new();
+        graph = new DotGraph();
         graph.Clusters.SetStripedFill(new DotMulticolor(Color.Red, Color.Blue));
         Snapshot.Match(graph.Build(), "striped_fill_on_cluster_collection_multicolor");
     }

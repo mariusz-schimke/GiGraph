@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Styling;
 
@@ -10,7 +7,7 @@ namespace GiGraph.Dot.Types.Colors;
 /// <summary>
 ///     Represents a list of colors that may be used to generate gradient fill, multicolor stripes or wedges, or multicolor edges.
 /// </summary>
-public record DotMulticolor : DotColorDefinition
+public class DotMulticolor : DotColorDefinition
 {
     /// <summary>
     ///     <para>
@@ -70,7 +67,7 @@ public record DotMulticolor : DotColorDefinition
     ///     weights will be ignored by the visualization tool.
     /// </param>
     public DotMulticolor(IEnumerable<DotColor> colors)
-        : this(colors?.ToArray())
+        : this(colors.ToArray())
     {
     }
 
@@ -104,8 +101,8 @@ public record DotMulticolor : DotColorDefinition
     ///         <see cref="DotColorSchemes.X11" /> naming.
     ///     </para>
     /// </param>
-    public DotMulticolor(IEnumerable<Color> colors, string scheme = null)
-        : this(colors?.Select(c => new DotColor(c, scheme)))
+    public DotMulticolor(IEnumerable<Color> colors, string? scheme = null)
+        : this(colors.Select(c => new DotColor(c, scheme)))
     {
     }
 

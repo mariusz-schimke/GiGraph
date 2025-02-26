@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using GiGraph.Dot.Output.Writers.TokenWriter;
+﻿using GiGraph.Dot.Output.Writers.TokenWriter;
 
 namespace GiGraph.Dot.Output.Writers.Attributes;
 
@@ -10,13 +9,13 @@ public class DotAttributeWriter : DotEntityWriter, IDotAttributeWriter
     {
     }
 
-    public virtual void WriteAttribute(string key, bool quoteKey, string value, bool quoteValue)
+    public virtual void WriteAttribute(string key, bool quoteKey, string? value, bool quoteValue)
     {
         InitializeAttribute(key, quoteKey);
         _tokenWriter.Value(value, quoteValue);
     }
 
-    public virtual void WriteHtmlAttribute(string key, bool quoteKey, string value, bool writeInBrackets)
+    public virtual void WriteHtmlAttribute(string key, bool quoteKey, string? value, bool writeInBrackets)
     {
         InitializeAttribute(key, quoteKey);
 
@@ -43,22 +42,22 @@ public class DotAttributeWriter : DotEntityWriter, IDotAttributeWriter
         quoteValue |= valueParts.Length > 1;
         WriteAttribute(key, quoteKey, valueParts.FirstOrDefault(), quoteValue);
 
-        DotTokenWriter tokenWriter = null;
+        DotTokenWriter? tokenWriter = null;
         foreach (var valuePart in valueParts.Skip(1))
         {
             tokenWriter ??= _tokenWriter.NextIndentationLevel();
             tokenWriter.Space()
-               .StringConcatenationOperator()
-               .NewLine()
-               .Value(valuePart, quoteValue);
+                .StringConcatenationOperator()
+                .NewLine()
+                .Value(valuePart, quoteValue);
         }
     }
 
     protected virtual void InitializeAttribute(string key, bool quoteKey)
     {
         _tokenWriter.Identifier(key, quoteKey)
-           .Space()
-           .ValueAssignmentOperator()
-           .Space();
+            .Space()
+            .ValueAssignmentOperator()
+            .Space();
     }
 }

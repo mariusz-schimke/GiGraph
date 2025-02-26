@@ -21,5 +21,5 @@ public abstract class DotCommonSubgraphGenerator<TSubgraph> : DotCommonGraphGene
         WriteBody(subgraph, writer);
     }
 
-    protected abstract void WriteDeclaration(string id, IDotSubgraphWriter writer);
+    protected abstract void WriteDeclaration(string? id, IDotSubgraphWriter writer);
 }

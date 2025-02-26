@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Edges.Attributes;

@@ -67,7 +67,7 @@ public interface IDotNodeAttributes
     ///         </list>
     ///     </para>
     /// </summary>
-    DotLabel Label { get; set; }
+    DotLabel? Label { get; set; }
 
     /// <summary>
     ///     External label for the node. The label will be placed outside of the node but near it. This can be useful in DOT to avoid the
@@ -77,7 +77,7 @@ public interface IDotNodeAttributes
     ///     force placing all of them, use the <see cref="DotGraphLayoutAttributes.ForceExternalLabels" /> attribute of graph
     ///     <see cref="IDotGraphRootAttributes.Layout" />.
     /// </summary>
-    DotLabel ExternalLabel { get; set; }
+    DotLabel? ExternalLabel { get; set; }
 
     /// <summary>
     ///     Vertical placement of the label (default: <see cref="DotVerticalAlignment.Center" />). This attribute is used only when the
@@ -90,7 +90,7 @@ public interface IDotNodeAttributes
     ///     defined. Note that if the label is a record specification or an HTML-like label, the resulting tooltip may be unhelpful. In
     ///     this case, if tooltips will be generated, the user should set a tooltip attribute explicitly.
     /// </summary>
-    DotEscapeString Tooltip { get; set; }
+    DotEscapeString? Tooltip { get; set; }
 
     /// <summary>
     ///     <para>
@@ -115,7 +115,7 @@ public interface IDotNodeAttributes
     ///         <see cref="DotMulticolor" /> as a color list definition).
     ///     </para>
     /// </summary>
-    DotColorDefinition Color { get; set; }
+    DotColorDefinition? Color { get; set; }
 
     /// <summary>
     ///     <para>
@@ -132,7 +132,7 @@ public interface IDotNodeAttributes
     ///         <see cref="GradientFillAngle" /> attribute for setting a gradient angle.
     ///     </para>
     /// </summary>
-    DotColorDefinition FillColor { get; set; }
+    DotColorDefinition? FillColor { get; set; }
 
     /// <summary>
     ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
@@ -141,7 +141,7 @@ public interface IDotNodeAttributes
     ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes" /> for
     ///     supported scheme names.
     /// </summary>
-    string ColorScheme { get; set; }
+    string? ColorScheme { get; set; }
 
     /// <summary>
     ///     If a gradient fill is being used, this determines the angle of the fill. For linear fills, the colors transform along a line
@@ -165,12 +165,12 @@ public interface IDotNodeAttributes
     /// <summary>
     ///     Specifies space left around the node's label. By default, the value is (0.11, 0.055).
     /// </summary>
-    DotPoint Padding { get; set; }
+    DotPoint? Padding { get; set; }
 
     /// <summary>
     ///     Comments are inserted into output. Device-dependent.
     /// </summary>
-    string Comment { get; set; }
+    string? Comment { get; set; }
 
     /// <summary>
     ///     Determines how inedges and outedges, that is, edges with the node as their head or tail node respectively, are ordered (dot
@@ -183,7 +183,7 @@ public interface IDotNodeAttributes
     ///     The name of the group the node belongs to (dot only). If the endpoints of an edge belong to the same group (have the same
     ///     group name assigned), parameters are set to avoid crossings and keep the edges straight (dot only).
     /// </summary>
-    string GroupName { get; set; }
+    string? GroupName { get; set; }
 
     /// <summary>
     ///     Gets or sets the sorting index of the node (default: 0). If <see cref="DotGraphLayoutAttributes.PackingMode" /> of graph
@@ -232,5 +232,5 @@ public interface IDotNodeAttributes
     ///         internally-used attributes distinct, the user can include multiple image maps in the same document.
     ///     </para>
     /// </summary>
-    DotEscapeString ObjectId { get; set; }
+    DotEscapeString? ObjectId { get; set; }
 }

@@ -9,7 +9,7 @@
 ///     </see>
 ///     ). If, for instance, it contains an unescaped quotation mark, the output script will be syntactically incorrect.
 /// </summary>
-public record DotRawAttribute : DotAttribute<string>
+public class DotRawAttribute : DotAttribute<string>
 {
     /// <summary>
     ///     Creates a new instance of a raw value attribute.

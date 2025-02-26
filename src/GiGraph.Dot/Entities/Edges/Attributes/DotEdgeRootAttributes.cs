@@ -1,10 +1,7 @@
-using System;
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
@@ -17,13 +14,13 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes;
 
-public class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotEdgeAttributes, DotEdgeRootAttributes>, IDotEdgeRootAttributes
+public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotEdgeAttributes, DotEdgeRootAttributes>, IDotEdgeRootAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().BuildLazy();
 
     public DotEdgeRootAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new(attributes), new(attributes), new(attributes), new(attributes),
-            new(attributes), new(attributes), new(attributes), new(attributes), new(attributes)
+        : this(attributes, AttributeKeyLookup, new DotEdgeHeadAttributes(attributes), new DotEdgeTailAttributes(attributes), new DotFontAttributes(attributes), new DotHyperlinkAttributes(attributes),
+            new DotEdgeEndpointLabelsAttributes(attributes), new DotEdgeLabelHyperlinkAttributes(attributes), new DotEdgeHyperlinkAttributes(attributes), new DotEdgeStyleAttributeOptions(attributes), new DotSvgStyleSheetAttributes(attributes)
         )
     {
     }
@@ -63,108 +60,54 @@ public class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotEdgeAttri
     public DotEdgeStyleAttributeOptions Style { get; }
     public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
-    [DotAttributeKey(DotStyleAttributeOptions.StyleKey)]
+    [DotAttributeKey(DotAttributeKeys.Style)]
     DotStyles? IDotEdgeAttributes.Style
     {
-        get => GetValueAs<DotStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
+        [DotAttributeKey(DotAttributeKeys.Style)]
+        get => _attributes.GetValueAs(DotAttributeKeys.Style, out DotStyles? result) ? result : null;
+        [DotAttributeKey(DotAttributeKeys.Style)]
+        set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Comment)]
-    public virtual string Comment
-    {
-        get => GetValueAsString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial string? Comment { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
-    public virtual DotEscapeString Tooltip
-    {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotEscapeString? Tooltip { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Color)]
-    public virtual DotColorDefinition Color
-    {
-        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotColorDefinition? Color { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.FillColor)]
-    public virtual DotColorDefinition FillColor
-    {
-        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotColorDefinition? FillColor { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.XLabel)]
-    public virtual DotLabel ExternalLabel
-    {
-        get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotLabel? ExternalLabel { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.PenWidth)]
-    public virtual double? Width
-    {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial double? Width { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Weight)]
-    public virtual double? Weight
-    {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial double? Weight { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Len)]
-    public virtual double? Length
-    {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial double? Length { get; set; }
 
-    [DotAttributeKey(DotAttributeKeys.MinLen)]
-    public virtual int? MinLength
-    {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    [DotAttributeKeyAttribute(DotAttributeKeys.MinLen)]
+    public virtual partial int? MinLength { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.ArrowSize)]
-    public virtual double? ArrowheadScaleFactor
-    {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial double? ArrowheadScaleFactor { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Dir)]
-    public virtual DotEdgeDirections? Directions
-    {
-        get => GetValueAs<DotEdgeDirections>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotEdgeDirections? Directions { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Decorate)]
-    public virtual bool? AttachLabel
-    {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial bool? AttachLabel { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.LabelFloat)]
-    public virtual bool? AllowLabelFloating
-    {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial bool? AllowLabelFloating { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Constraint)]
-    public virtual bool? Constrain
-    {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial bool? Constrain { get; set; }
 }

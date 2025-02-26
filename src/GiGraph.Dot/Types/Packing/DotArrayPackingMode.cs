@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Types.Packing;
 /// <summary>
 ///     Array packing mode parameters.
 /// </summary>
-public record DotArrayPackingMode : DotPackingModeDefinition
+public class DotArrayPackingMode : DotPackingModeDefinition
 {
     /// <summary>
     ///     Creates a new array packing mode instance.
@@ -15,7 +15,7 @@ public record DotArrayPackingMode : DotPackingModeDefinition
     /// <param name="options">
     ///     The options to initialize the instance with.
     /// </param>
-    public DotArrayPackingMode(DotArrayPackingOptions? options)
+    public DotArrayPackingMode(DotArrayPackingOptions options)
     {
         Options = options;
     }
@@ -26,7 +26,7 @@ public record DotArrayPackingMode : DotPackingModeDefinition
     /// <param name="rankCount">
     ///     Specifies the number of columns for row-major component ordering or the number of rows for column-major component ordering.
     /// </param>
-    public DotArrayPackingMode(int? rankCount)
+    public DotArrayPackingMode(int rankCount)
     {
         RankCount = rankCount;
     }
@@ -40,22 +40,22 @@ public record DotArrayPackingMode : DotPackingModeDefinition
     /// <param name="rankCount">
     ///     Specifies the number of columns for row-major component ordering or the number of rows for column-major component ordering.
     /// </param>
-    public DotArrayPackingMode(DotArrayPackingOptions? options, int? rankCount)
-        : this(rankCount)
+    public DotArrayPackingMode(DotArrayPackingOptions options, int rankCount)
     {
         Options = options;
+        RankCount = rankCount;
     }
 
     /// <summary>
     ///     The granularity option.
     /// </summary>
-    public DotArrayPackingOptions? Options { get; init; }
+    public DotArrayPackingOptions? Options { get; }
 
     /// <summary>
     ///     The number of columns for row-major component ordering or the number of rows for column-major component ordering (see
     ///     <see cref="DotArrayPackingOptions.ColumnMajorOrder" />).
     /// </summary>
-    public int? RankCount { get; init; }
+    public int? RankCount { get; }
 
     protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
@@ -63,7 +63,7 @@ public record DotArrayPackingMode : DotPackingModeDefinition
 
         if (Options.HasValue)
         {
-            result.Append("_");
+            result.Append('_');
             result.Append(DotAttributeValue.GetAsFlags(Options.Value));
         }
 

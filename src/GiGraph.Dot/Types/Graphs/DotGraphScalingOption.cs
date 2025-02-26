@@ -6,10 +6,15 @@ namespace GiGraph.Dot.Types.Graphs;
 /// <summary>
 ///     Scaling mode of the graph drawing.
 /// </summary>
-/// <param name="Option">
+/// <param name="option">
 ///     The scaling option.
 /// </param>
-public record DotGraphScalingOption(DotGraphScaling Option) : DotGraphScalingDefinition
+public class DotGraphScalingOption(DotGraphScaling option) : DotGraphScalingDefinition
 {
-    protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => DotAttributeValue.Get(Option);
+    /// <summary>
+    ///     The scaling option.
+    /// </summary>
+    public DotGraphScaling Option { get; } = option;
+
+    protected override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => DotAttributeValue.Get(Option);
 }

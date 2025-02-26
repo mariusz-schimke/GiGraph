@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Attributes;
 /// <summary>
 ///     A double array attribute.
 /// </summary>
-public record DotDoubleArrayAttribute : DotAttribute<double[]>
+public class DotDoubleArrayAttribute : DotAttribute<double[]>
 {
     /// <summary>
     ///     Creates a new instance of the attribute.
@@ -22,5 +22,6 @@ public record DotDoubleArrayAttribute : DotAttribute<double[]>
     {
     }
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Value is not null ? DotDoubleListEncoder.Encode(Value, syntaxRules) : null;
+    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
+        DotDoubleListEncoder.Encode(Value, syntaxRules);
 }

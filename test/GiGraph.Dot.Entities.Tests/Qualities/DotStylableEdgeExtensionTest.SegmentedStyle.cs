@@ -1,4 +1,3 @@
-using System;
 using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
@@ -26,10 +25,10 @@ public partial class DotStylableEdgeExtensionTest
         var graph = new DotGraph();
 
         graph.Edges.Add("a", "b")
-           .SetSegmentedStyle(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5));
+            .SetSegmentedStyle(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5));
 
         graph.Edges.Add("c", "d")
-           .SetSegmentedStyle(new DotMulticolor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
+            .SetSegmentedStyle(new DotMulticolor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
 
         Snapshot.Match(graph.Build(), "segmented_edges");
     }
@@ -40,10 +39,10 @@ public partial class DotStylableEdgeExtensionTest
         var graph = new DotGraph();
 
         graph.Subsections.Add().Edges
-           .SetSegmentedStyle(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5));
+            .SetSegmentedStyle(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5));
 
         graph.Subsections.Add()
-           .Edges.SetSegmentedStyle(new DotMulticolor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
+            .Edges.SetSegmentedStyle(new DotMulticolor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
 
         Snapshot.Match(graph.Build(), "segmented_edge_collections");
     }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text.RegularExpressions;
 using GiGraph.Dot.Output.Text.Escaping;
 using GiGraph.Dot.Output.Text.Escaping.Pipelines;
@@ -69,7 +67,7 @@ public partial class DotSyntaxRules
     /// <param name="value">
     ///     The value to check.
     /// </param>
-    public virtual bool IsValidIdentifier(string value) =>
+    public virtual bool IsValidIdentifier(string? value) =>
         value is not null &&
         !IsKeyword(value) &&
         (

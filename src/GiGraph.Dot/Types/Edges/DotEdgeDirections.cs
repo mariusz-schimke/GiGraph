@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Output.Metadata;
+﻿using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Types.Edges;
 

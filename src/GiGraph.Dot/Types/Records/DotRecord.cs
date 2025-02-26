@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.EscapeString;
@@ -15,7 +12,7 @@ namespace GiGraph.Dot.Types.Records;
 ///     </see>
 ///     .
 /// </summary>
-public record DotRecord : DotRecordField
+public class DotRecord : DotRecordField
 {
     protected const bool FlipDefault = false;
 
@@ -65,7 +62,7 @@ public record DotRecord : DotRecordField
     ///     layouts, the top-level fields are displayed vertically.
     /// </param>
     public DotRecord(IEnumerable<DotRecordField> fields, bool flip = FlipDefault)
-        : this(flip, fields?.ToArray())
+        : this(flip, fields.ToArray())
     {
     }
 
@@ -114,7 +111,7 @@ public record DotRecord : DotRecordField
     ///     layouts, the top-level fields are displayed vertically.
     /// </param>
     public DotRecord(IEnumerable<DotEscapeString> fields, bool flip = FlipDefault)
-        : this(fields?.Select(field => new DotRecordTextField(field)), flip)
+        : this(fields.Select(field => new DotRecordTextField(field)), flip)
     {
     }
 
@@ -133,7 +130,7 @@ public record DotRecord : DotRecordField
     ///     layouts, the top-level fields are displayed vertically.
     /// </param>
     public DotRecord(IEnumerable<string> fields, bool flip = FlipDefault)
-        : this(fields?.Select(field => new DotRecordTextField(field)), flip)
+        : this(fields.Select(field => new DotRecordTextField(field)), flip)
     {
     }
 
@@ -150,7 +147,7 @@ public record DotRecord : DotRecordField
     ///     <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to horizontal
     ///     layouts, the top-level fields are displayed vertically.
     /// </summary>
-    public bool Flip { get; init; } = FlipDefault;
+    public bool Flip { get; init; }
 
     protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules, bool hasParent)
     {

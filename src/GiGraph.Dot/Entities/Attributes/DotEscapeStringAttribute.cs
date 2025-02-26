@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes;
 ///     A string attribute whose value is escaped on DOT script rendering when <see cref="DotUnescapedString" /> is used, or is
 ///     assumed to already be escaped when <see cref="DotEscapedString" /> is used.
 /// </summary>
-public record DotEscapeStringAttribute : DotAttribute<DotEscapeString>
+public class DotEscapeStringAttribute : DotAttribute<DotEscapeString>
 {
     /// <summary>
     ///     Creates a new instance of a string attribute.
@@ -24,5 +24,6 @@ public record DotEscapeStringAttribute : DotAttribute<DotEscapeString>
     {
     }
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => ((IDotEscapable) Value)?.GetEscaped(syntaxRules.Attributes.EscapeStringValueEscaper);
+    protected internal override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
+        ((IDotEscapable?) Value)?.GetEscaped(syntaxRules.Attributes.EscapeStringValueEscaper);
 }

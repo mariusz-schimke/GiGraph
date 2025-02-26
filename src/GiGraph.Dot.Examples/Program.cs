@@ -1,5 +1,4 @@
-﻿using System;
-using GiGraph.Dot.Examples.Basic;
+﻿using GiGraph.Dot.Examples.Basic;
 using GiGraph.Dot.Extensions;
 
 var graph = HelloWorld.Generate();
@@ -8,4 +7,8 @@ var graph = HelloWorld.Generate();
 Console.WriteLine(graph.Build());
 
 // or save it to a file (.gv and .dot are the default extensions)
-await graph.SaveToFileAsync("example.gv");
+var path = Path.GetFullPath("example.gv");
+await graph.SaveToFileAsync(path);
+
+Console.WriteLine();
+Console.WriteLine($"File path: {path}");

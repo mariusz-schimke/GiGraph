@@ -1,6 +1,4 @@
-﻿using System;
-using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Output.Metadata;
@@ -11,7 +9,7 @@ using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
-public abstract class DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>
+public abstract partial class DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>
     : DotHtmlElementAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>, IDotHtmlTableTableCellCommonAttributes
     where TIHtmlTableTableCellAttributeProperties : IDotHtmlTableTableCellCommonAttributes
     where THtmlTableTableCellAttributeProperties : DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>, TIHtmlTableTableCellAttributeProperties
@@ -22,128 +20,56 @@ public abstract class DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCell
     }
 
     [DotAttributeKey("id")]
-    public virtual DotEscapeString Id
-    {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotEscapeString? Id { get; set; }
 
     [DotAttributeKey("port")]
-    public virtual string PortName
-    {
-        get => GetValueAsString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial string? PortName { get; set; }
 
     [DotAttributeKey("valign")]
-    public virtual DotVerticalAlignment? VerticalAlignment
-    {
-        get => GetValueAs<DotVerticalAlignment>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotVerticalAlignment? VerticalAlignment { get; set; }
 
     [DotAttributeKey("bgcolor")]
-    public virtual DotColorDefinition BackgroundColor
-    {
-        get => GetValueAsColorDefinition(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotColorDefinition? BackgroundColor { get; set; }
 
     [DotAttributeKey("color")]
-    public virtual DotColor BorderColor
-    {
-        get => GetValueAsColor(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotColor? BorderColor { get; set; }
 
     [DotAttributeKey("border")]
-    public virtual int? BorderWidth
-    {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial int? BorderWidth { get; set; }
 
     [DotAttributeKey("cellpadding")]
-    public virtual int? CellPadding
-    {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial int? CellPadding { get; set; }
 
     [DotAttributeKey("cellspacing")]
-    public virtual int? CellSpacing
-    {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial int? CellSpacing { get; set; }
 
     [DotAttributeKey("sides")]
-    public virtual DotHtmlTableBorders? Borders
-    {
-        get => GetValueAs<DotHtmlTableBorders>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotHtmlTableBorders? Borders { get; set; }
 
     [DotAttributeKey("fixedsize")]
-    public virtual bool? FixedSize
-    {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial bool? FixedSize { get; set; }
 
     [DotAttributeKey("gradientangle")]
-    public virtual int? GradientFillAngle
-    {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial int? GradientFillAngle { get; set; }
 
     [DotAttributeKey("width")]
-    public virtual int? Width
-    {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial int? Width { get; set; }
 
     [DotAttributeKey("height")]
-    public virtual int? Height
-    {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial int? Height { get; set; }
 
     [DotAttributeKey("href")]
-    public virtual DotEscapeString Href
-    {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotEscapeString? Href { get; set; }
 
     [DotAttributeKey("target")]
-    public virtual DotEscapeString Target
-    {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotEscapeString? Target { get; set; }
 
     [DotAttributeKey("title")]
-    public virtual DotEscapeString Title
-    {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotEscapeString? Title { get; set; }
 
     [DotAttributeKey("tooltip")]
-    public virtual DotEscapeString Tooltip
-    {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotEscapeString? Tooltip { get; set; }
 
     [DotAttributeKey("style")]
-    public virtual DotHtmlTableStyles? Style
-    {
-        get => GetValueAs<DotHtmlTableStyles>(MethodBase.GetCurrentMethod(), out var result) ? result : null;
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value.HasValue, () => value!.Value);
-    }
+    public virtual partial DotHtmlTableStyles? Style { get; set; }
 }

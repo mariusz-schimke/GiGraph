@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using GiGraph.Dot.Entities.Edges;
+﻿using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Collections;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output.Generators.Providers;
@@ -21,11 +19,11 @@ public class DotEdgeCollectionGenerator : DotEntityGenerator<DotEdgeCollection, 
     {
         var orderedEdges = _options.SortElements
             ? edges.Cast<IDotOrderable>()
-               .OrderBy(edge => edge.OrderingKey, StringComparer.InvariantCulture)
-               .Cast<DotEdgeDefinition>()
+                .OrderBy(edge => edge.OrderingKey, StringComparer.InvariantCulture)
+                .Cast<DotEdgeDefinition>()
             : edges;
 
-        foreach (var edge in orderedEdges.Where(edge => edge.Endpoints.Any()))
+        foreach (var edge in orderedEdges.Where(edge => edge.Endpoints.Length > 0))
         {
             WriteEdge(edge, writer);
         }

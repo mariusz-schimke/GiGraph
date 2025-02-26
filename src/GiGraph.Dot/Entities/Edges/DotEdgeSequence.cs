@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Output.Qualities;
@@ -31,7 +28,7 @@ public class DotEdgeSequence : DotEdgeDefinition
     ///     The endpoints to initialize the instance with.
     /// </param>
     public DotEdgeSequence(IEnumerable<DotEndpointDefinition> endpoints)
-        : this(endpoints?.ToArray())
+        : this(endpoints.ToArray())
     {
     }
 
@@ -55,7 +52,7 @@ public class DotEdgeSequence : DotEdgeDefinition
     ///     The node identifiers to initialize the instance with.
     /// </param>
     public DotEdgeSequence(IEnumerable<string> nodeIds)
-        : this(nodeIds?.Select(nodeId => new DotEndpoint(nodeId)))
+        : this(nodeIds.Select(nodeId => new DotEndpoint(nodeId)))
     {
     }
 
@@ -67,8 +64,8 @@ public class DotEdgeSequence : DotEdgeDefinition
     protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes attributes)
         : base(endpoints, attributes)
     {
-        Tails = new(attributes.Tail);
-        Heads = new(attributes.Head);
+        Tails = new DotEdgeEndpoint(attributes.Tail);
+        Heads = new DotEdgeEndpoint(attributes.Head);
     }
 
     /// <summary>
@@ -87,7 +84,7 @@ public class DotEdgeSequence : DotEdgeDefinition
         (
             " ",
             Endpoints.Cast<IDotOrderable>()
-               .Select(endpoint => endpoint.OrderingKey)
+                .Select(endpoint => endpoint.OrderingKey)
         );
     }
 
@@ -101,7 +98,7 @@ public class DotEdgeSequence : DotEdgeDefinition
     /// <param name="initEndpoint">
     ///     An optional endpoint initializer to call for each created endpoint.
     /// </param>
-    public static DotEdgeSequence FromNodes(Action<DotEndpoint> initEndpoint, params string[] nodeIds) => FromNodes(nodeIds, initEndpoint);
+    public static DotEdgeSequence FromNodes(Action<DotEndpoint>? initEndpoint, params string[] nodeIds) => FromNodes(nodeIds, initEndpoint);
 
     /// <summary>
     ///     Creates a new edge sequence initialized with the specified node identifiers. At least a pair of identifiers has to be
@@ -113,9 +110,9 @@ public class DotEdgeSequence : DotEdgeDefinition
     /// <param name="initEndpoint">
     ///     An optional endpoint initializer to call for each created endpoint.
     /// </param>
-    public static DotEdgeSequence FromNodes(IEnumerable<string> nodeIds, Action<DotEndpoint> initEndpoint = null)
+    public static DotEdgeSequence FromNodes(IEnumerable<string> nodeIds, Action<DotEndpoint>? initEndpoint = null)
     {
-        return new(
+        return new DotEdgeSequence(
             nodeIds.Select(nodeId =>
             {
                 var endpoint = new DotEndpoint(nodeId);

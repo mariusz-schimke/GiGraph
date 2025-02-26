@@ -1,8 +1,11 @@
 <Project>
 
     <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <NoWarn>1701;1702;1591</NoWarn>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
 </Project>

@@ -11,7 +11,7 @@ public abstract class DotEntityStatementWriter : DotEntityWriter
         : base(tokenWriter, configuration, enforceBlockComment: true)
     {
         _useStatementDelimiter = useStatementDelimiter;
-        _paddedEntityWriter = new(tokenWriter);
+        _paddedEntityWriter = new DotPaddedEntityWriter(tokenWriter);
     }
 
     public virtual void EndStatement()

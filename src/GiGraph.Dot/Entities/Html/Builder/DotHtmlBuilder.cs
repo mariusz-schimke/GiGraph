@@ -1,5 +1,4 @@
-using System;
-using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 
 namespace GiGraph.Dot.Entities.Html.Builder;
 
@@ -15,7 +14,7 @@ public partial class DotHtmlBuilder
     /// </summary>
     public DotHtmlBuilder()
     {
-        _entities = new();
+        _entities = [];
     }
 
     /// <summary>
@@ -32,7 +31,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     A content initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder Append<TContentEntity>(TContentEntity entity, Action<DotHtmlBuilder> init = null)
+    public virtual DotHtmlBuilder Append<TContentEntity>(TContentEntity entity, Action<DotHtmlBuilder>? init = null)
         where TContentEntity : IDotHtmlContentEntity
     {
         entity.SetContent(init);
@@ -49,7 +48,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     An entity initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendEntity<TEntity>(TEntity entity, Action<TEntity> init = null)
+    public virtual DotHtmlBuilder AppendEntity<TEntity>(TEntity entity, Action<TEntity>? init = null)
         where TEntity : IDotHtmlEntity
     {
         init?.Invoke(entity);
@@ -72,8 +71,9 @@ public partial class DotHtmlBuilder
     /// <summary>
     ///     Builds output HTML from the content of the builder.
     /// </summary>
+    [Pure]
     public virtual DotHtmlEntity Build() =>
         new DotHtmlEntity<DotHtmlEntityCollection>(
-            new((IEnumerable<IDotHtmlEntity>) _entities)
+            new DotHtmlEntityCollection((IEnumerable<IDotHtmlEntity>) _entities)
         );
 }

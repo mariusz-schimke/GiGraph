@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 using GiGraph.Dot.Types.EscapeString;
@@ -38,5 +37,6 @@ public class DotTextLabel : DotLabel
     /// </summary>
     public override string ToString() => _text;
 
-    protected override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => ((IDotEscapable) _text)?.GetEscaped(syntaxRules.Attributes.EscapeStringValueEscaper);
+    protected override string? GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
+        ((IDotEscapable?) _text)?.GetEscaped(syntaxRules.Attributes.EscapeStringValueEscaper);
 }

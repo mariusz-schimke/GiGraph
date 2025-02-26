@@ -5,22 +5,27 @@ namespace GiGraph.Dot.Types.Viewport;
 /// <summary>
 ///     Specifies a viewport for the graph image, with a node as the central point.
 /// </summary>
-/// <param name="Width">
+/// <param name="width">
 ///     The width of the final image, in points.
 /// </param>
-/// <param name="Height">
+/// <param name="height">
 ///     The height of the final image, in points.
 /// </param>
-/// <param name="NodeId">
+/// <param name="nodeId">
 ///     The identifier of a node whose center should be used as the focus.
 /// </param>
-/// <param name="Zoom">
+/// <param name="zoom">
 ///     The zoom factor. The image in the original layout will be <see cref="DotViewport.Width" /> / <see cref="DotViewport.Zoom" />
 ///     by <see cref="DotViewport.Height" /> / <see cref="DotViewport.Zoom" /> points in size. By default, the zoom factor is 1.
 /// </param>
-public record DotNodeCenteredViewport(double Width, double Height, string NodeId, double Zoom = DotViewport.DefaultZoom)
-    : DotViewport(Width, Height, Zoom)
+public class DotNodeCenteredViewport(double width, double height, string nodeId, double zoom = DotViewport.DefaultZoom)
+    : DotViewport(width, height, zoom)
 {
+    /// <summary>
+    ///     The identifier of a node whose center should be used as the focus.
+    /// </summary>
+    public string NodeId { get; } = nodeId;
+
     protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
         var whz = base.GetDotEncodedValue(options, syntaxRules);
@@ -28,7 +33,7 @@ public record DotNodeCenteredViewport(double Width, double Height, string NodeId
         // Based on the Graphviz code, escaping the apostrophe is not supported, but
         // they implemented a fallback for a case when there is an apostrophe and no comma.
         // When there is both a comma and an apostrophe in the node identifier, the centering will not work.
-        return true == NodeId?.Contains("'") && false == NodeId?.Contains(",")
+        return NodeId.Contains('\'') && false == NodeId.Contains(',')
             ? $"{whz},{NodeId}"
             : $"{whz},'{NodeId}'";
     }

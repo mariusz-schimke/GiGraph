@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html;
 using Xunit;
@@ -10,23 +9,23 @@ public class DotHtmlStringTest
     [Fact]
     public void throws_exception_on_constructor_null_value()
     {
-        Assert.Throws<ArgumentNullException>(() => new DotHtmlString(null));
+        Assert.Throws<ArgumentNullException>(() => new DotHtmlString(null!));
     }
 
     [Fact]
     public void implicit_conversion_returns_null_for_null()
     {
-        DotHtmlString htmlStringValue = (string) null;
+        DotHtmlString? htmlStringValue = (string?) null;
         Assert.Null(htmlStringValue);
 
-        string stringValue = htmlStringValue;
+        string? stringValue = htmlStringValue;
         Assert.Null(stringValue);
     }
 
     [Fact]
     public void implicit_conversion_returns_original_string()
     {
-        var value = "<table></table>";
+        const string value = "<table></table>";
         DotHtmlString htmlStringValue = value;
 
         string stringValue = htmlStringValue;
@@ -40,7 +39,7 @@ public class DotHtmlStringTest
     [Fact]
     public void to_string_returns_original_value()
     {
-        var value = "<table></table>";
+        const string value = "<table></table>";
         DotHtmlString htmlStringValue = value;
         Assert.Equal(value, htmlStringValue.ToString());
     }
@@ -65,7 +64,7 @@ public class DotHtmlStringTest
     public void concatenation_works_for_string_and_html_string()
     {
         DotHtmlString value1 = "value1";
-        var value2 = "value2";
+        const string value2 = "value2";
 
         var result1 = value1 + value2;
         Assert.IsType<DotHtmlString>(result1);
@@ -78,8 +77,8 @@ public class DotHtmlStringTest
     [Fact]
     public void concatenation_of_nulls_same_as_for_string()
     {
-        DotHtmlString value1 = null;
-        DotHtmlString value2 = null;
+        DotHtmlString? value1 = null;
+        DotHtmlString? value2 = null;
 
         // null string concatenation returns an empty string instead of null, and the expected behavior below should be analogous
 

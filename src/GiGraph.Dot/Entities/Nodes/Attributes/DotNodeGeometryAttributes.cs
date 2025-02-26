@@ -1,5 +1,3 @@
-using System;
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -8,7 +6,7 @@ using GiGraph.Dot.Types.Geometry;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
-public class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata<IDotNodeGeometryAttributes, DotNodeGeometryAttributes>, IDotNodeGeometryAttributes
+public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata<IDotNodeGeometryAttributes, DotNodeGeometryAttributes>, IDotNodeGeometryAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeGeometryAttributes, IDotNodeGeometryAttributes>().BuildLazy();
 
@@ -24,51 +22,27 @@ public class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata<IDotNod
 
     /// <inheritdoc cref="IDotNodeGeometryAttributes.Sides" />
     [DotAttributeKey(DotAttributeKeys.Sides)]
-    public virtual int? Sides
-    {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial int? Sides { get; set; }
 
     /// <inheritdoc cref="IDotNodeGeometryAttributes.Regular" />
     [DotAttributeKey(DotAttributeKeys.Regular)]
-    public virtual bool? Regular
-    {
-        get => GetValueAsBool(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial bool? Regular { get; set; }
 
     /// <inheritdoc cref="IDotNodeGeometryAttributes.Peripheries" />
     [DotAttributeKey(DotAttributeKeys.Peripheries)]
-    public virtual int? Peripheries
-    {
-        get => GetValueAsInt(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial int? Peripheries { get; set; }
 
     /// <inheritdoc cref="IDotNodeGeometryAttributes.Rotation" />
     [DotAttributeKey(DotAttributeKeys.Orientation)]
-    public virtual double? Rotation
-    {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial double? Rotation { get; set; }
 
     /// <inheritdoc cref="IDotNodeGeometryAttributes.Skew" />
     [DotAttributeKey(DotAttributeKeys.Skew)]
-    public virtual double? Skew
-    {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial double? Skew { get; set; }
 
     /// <inheritdoc cref="IDotNodeGeometryAttributes.Distortion" />
     [DotAttributeKey(DotAttributeKeys.Distortion)]
-    public virtual double? Distortion
-    {
-        get => GetValueAsDouble(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial double? Distortion { get; set; }
 
     /// <summary>
     ///     Sets polygon geometry attributes.

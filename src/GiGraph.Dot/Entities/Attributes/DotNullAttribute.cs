@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Attributes;
 /// <summary>
 ///     An attribute with no value.
 /// </summary>
-public record DotNullAttribute : DotAttribute
+public class DotNullAttribute : DotAttribute
 {
     /// <summary>
     ///     Creates a new instance of the attribute.
@@ -19,7 +19,7 @@ public record DotNullAttribute : DotAttribute
     }
 
     /// <inheritdoc />
-    public override object GetValue() => null;
+    public override object? GetValue() => null;
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => null;
+    protected internal override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => null;
 }

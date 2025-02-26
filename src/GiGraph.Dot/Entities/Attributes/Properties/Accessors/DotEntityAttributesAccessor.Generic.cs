@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -38,10 +38,10 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <typeparam name="TProperty">
     ///     The type returned by the property.
     /// </typeparam>
-    public virtual DotAttribute Get<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+    public virtual DotAttribute? Get<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
     {
         var key = GetKey(property);
-        return _attributes.Collection.TryGetValue(key, out var result) ? result : null;
+        return _attributes.Collection.Get(key);
     }
 
     /// <summary>
@@ -53,10 +53,10 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <typeparam name="TProperty">
     ///     The type returned by the property.
     /// </typeparam>
-    public virtual TProperty GetValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+    public virtual TProperty? GetValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
     {
         var propertyInfo = GetProperty(property);
-        return (TProperty) propertyInfo.GetValue(_attributes);
+        return (TProperty?) propertyInfo.GetValue(_attributes);
     }
 
     /// <summary>
@@ -71,7 +71,8 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <typeparam name="TProperty">
     ///     The type returned by the property.
     /// </typeparam>
-    public virtual DotAttribute SetValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value)
+    [return: NotNullIfNotNull(nameof(value))]
+    public virtual DotAttribute? SetValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, TProperty value)
     {
         var propertyInfo = GetProperty(property);
         propertyInfo.SetValue(_attributes, value);
@@ -81,8 +82,29 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     }
 
     /// <summary>
-    ///     Assigns a raw value to the specified property and returns the actual attribute added to the collection. The value is rendered
-    ///     AS IS in the output DOT script, so it has to escaped appropriately when necessary (see
+    ///     Assigns a custom value to the specified property and returns the actual attribute added to the collection. If the value
+    ///     contains any special characters, they will be escaped to make sure the output script is syntactically correct. If you don't
+    ///     want that to happen, consider using the <see cref="SetRawValue{TProperty}" /> method instead.
+    /// </summary>
+    /// <param name="property">
+    ///     The property whose value to set.
+    /// </param>
+    /// <param name="value">
+    ///     The value to assign to the property.
+    /// </param>
+    /// <typeparam name="TProperty">
+    ///     The type returned by the property.
+    /// </typeparam>
+    public virtual DotStringAttribute SetCustomValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
+    {
+        var key = GetKey(property);
+        return _attributes.Collection.SetValue(key, value);
+    }
+
+    /// <summary>
+    ///     Assigns a raw value to the specified property and returns the attribute that was added to the collection. The value is
+    ///     rendered as-is in the output DOT script, so you must ensure that it is properly escaped when necessary to maintain the
+    ///     script's syntactical correctness (see
     ///     <see href="https://www.graphviz.org/doc/info/lang.html">
     ///         documentation
     ///     </see>
@@ -97,11 +119,10 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <typeparam name="TProperty">
     ///     The type returned by the property.
     /// </typeparam>
-    public virtual DotAttribute SetRawValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
+    public virtual DotRawAttribute SetRawValue<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property, string value)
     {
         var key = GetKey(property);
-        _attributes.Collection.SetRaw(key, value);
-        return _attributes.Collection.Get(key);
+        return _attributes.Collection.SetRawValue(key, value);
     }
 
     /// <summary>
@@ -113,7 +134,7 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <typeparam name="TProperty">
     ///     The type returned by the property.
     /// </typeparam>
-    public virtual bool Remove<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+    public virtual DotAttribute? Remove<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
     {
         var key = GetKey(property);
         return _attributes.Collection.Remove(key);
@@ -150,7 +171,8 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     }
 
     /// <summary>
-    ///     Adds an attribute with a null value to the collection.
+    ///     Adds an attribute with a null value to the collection. This will render as an attribute with an empty value in the output DOT
+    ///     script.
     /// </summary>
     /// <param name="property">
     ///     The property to add a null value attribute for.
@@ -158,11 +180,10 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <typeparam name="TProperty">
     ///     The type returned by the property.
     /// </typeparam>
-    public virtual DotAttribute Nullify<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
+    public virtual DotNullAttribute Nullify<TProperty>(Expression<Func<TIEntityAttributeProperties, TProperty>> property)
     {
         var key = GetKey(property);
-        _attributes.Collection.Nullify(key);
-        return _attributes.Collection.Get(key);
+        return _attributes.Collection.Nullify(key);
     }
 
     /// <summary>

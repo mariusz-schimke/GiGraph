@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using GiGraph.Dot.Output.Options;
 
 namespace GiGraph.Dot.Types.Arrowheads;
@@ -8,7 +5,7 @@ namespace GiGraph.Dot.Types.Arrowheads;
 /// <summary>
 ///     Defines an arrowhead composed of multiple shapes.
 /// </summary>
-public record DotCompositeArrowhead : DotArrowheadDefinition
+public class DotCompositeArrowhead : DotArrowheadDefinition
 {
     /// <summary>
     ///     Defines an arrowhead composed of multiple shapes.
@@ -38,7 +35,7 @@ public record DotCompositeArrowhead : DotArrowheadDefinition
     ///     as a separator between two consecutive shapes.
     /// </param>
     public DotCompositeArrowhead(IEnumerable<DotArrowhead> arrowheads)
-        : this(arrowheads?.ToArray())
+        : this(arrowheads.ToArray())
     {
     }
 
@@ -51,7 +48,7 @@ public record DotCompositeArrowhead : DotArrowheadDefinition
     ///     space, so it can be used as a separator between two consecutive shapes.
     /// </param>
     public DotCompositeArrowhead(IEnumerable<DotArrowheadShape> shapes)
-        : this(shapes?.Select(shape => new DotArrowhead(shape)).ToArray())
+        : this(shapes.Select(shape => new DotArrowhead(shape)).ToArray())
     {
     }
 

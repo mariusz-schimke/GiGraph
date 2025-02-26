@@ -1,6 +1,4 @@
-﻿using System;
-using System.Reflection;
-using GiGraph.Dot.Entities.Attributes.Collections;
+﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.EscapeString;
@@ -8,7 +6,7 @@ using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 
-public abstract class DotHyperlinkAttributes<TIEntityHyperlinkAttributes, TEntityHyperlinkAttributes>
+public abstract partial class DotHyperlinkAttributes<TIEntityHyperlinkAttributes, TEntityHyperlinkAttributes>
     : DotEntityAttributesWithMetadata<TIEntityHyperlinkAttributes, TEntityHyperlinkAttributes>, IDotHyperlinkAttributes
     where TIEntityHyperlinkAttributes : IDotHyperlinkAttributes
     where TEntityHyperlinkAttributes : DotHyperlinkAttributes<TIEntityHyperlinkAttributes, TEntityHyperlinkAttributes>, TIEntityHyperlinkAttributes
@@ -20,27 +18,15 @@ public abstract class DotHyperlinkAttributes<TIEntityHyperlinkAttributes, TEntit
 
     /// <inheritdoc cref="IDotHyperlinkAttributes.Url" />
     [DotAttributeKey(DotAttributeKeys.Url)]
-    public virtual DotEscapeString Url
-    {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotEscapeString? Url { get; set; }
 
     /// <inheritdoc cref="IDotHyperlinkAttributes.Href" />
     [DotAttributeKey(DotAttributeKeys.Href)]
-    public virtual DotEscapeString Href
-    {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotEscapeString? Href { get; set; }
 
     /// <inheritdoc cref="IDotHyperlinkAttributes.Target" />
     [DotAttributeKey(DotAttributeKeys.Target)]
-    public virtual DotEscapeString Target
-    {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotEscapeString? Target { get; set; }
 
     /// <summary>
     ///     Specifies hyperlink attributes.
@@ -51,13 +37,13 @@ public abstract class DotHyperlinkAttributes<TIEntityHyperlinkAttributes, TEntit
     /// <param name="target">
     ///     The target of the hyperlink. See <see cref="DotHyperlinkTargets" /> for accepted values.
     /// </param>
-    public virtual void Set(DotEscapeString url, DotEscapeString target = null)
+    public virtual void Set(DotEscapeString? url, DotEscapeString? target = null)
     {
         Url = url;
         Target = target;
     }
 
-    protected virtual void SetAll(DotEscapeString url, DotEscapeString target, DotEscapeString href)
+    protected virtual void SetAll(DotEscapeString? url, DotEscapeString? target, DotEscapeString? href)
     {
         Href = href;
         Set(url, target);

@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -9,7 +8,7 @@ using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 
-public class DotEdgeHeadHyperlinkAttributes : DotEdgeEndpointHyperlinkAttributes
+public partial class DotEdgeHeadHyperlinkAttributes : DotEdgeEndpointHyperlinkAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().BuildLazy();
 
@@ -24,21 +23,13 @@ public class DotEdgeHeadHyperlinkAttributes : DotEdgeEndpointHyperlinkAttributes
     ///     <see cref="IDotHyperlinkAttributes.Url" /> set for the edge.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.HeadUrl)]
-    public override DotEscapeString Url
-    {
-        get => base.Url;
-        set => base.Url = value;
-    }
+    public override partial DotEscapeString? Url { get; set; }
 
     /// <summary>
     ///     Synonym for <see cref="Url" /> (svg, map only).
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.HeadHref)]
-    public override DotEscapeString Href
-    {
-        get => base.Href;
-        set => base.Href = value;
-    }
+    public override partial DotEscapeString? Href { get; set; }
 
     /// <summary>
     ///     If <see cref="Url" /> is specified, this attribute determines which window of the browser is used for the URL (svg, map
@@ -47,19 +38,11 @@ public class DotEdgeHeadHyperlinkAttributes : DotEdgeEndpointHyperlinkAttributes
     ///     <see cref="IDotHyperlinkAttributes.Target" /> is used.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.HeadTarget)]
-    public override DotEscapeString Target
-    {
-        get => base.Target;
-        set => base.Target = value;
-    }
+    public override partial DotEscapeString? Target { get; set; }
 
     /// <summary>
     ///     Tooltip annotation attached to the head of an edge (svg, cmap only). This is used only if <see cref="Url" /> is specified.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.HeadTooltip)]
-    public override DotEscapeString Tooltip
-    {
-        get => base.Tooltip;
-        set => base.Tooltip = value;
-    }
+    public override partial DotEscapeString? Tooltip { get; set; }
 }

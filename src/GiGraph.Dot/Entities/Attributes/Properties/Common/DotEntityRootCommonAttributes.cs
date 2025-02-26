@@ -1,5 +1,3 @@
-using System;
-using System.Reflection;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
@@ -15,7 +13,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common;
 /// <remarks>
 ///     When adding new properties, override them in all descendant classes to set adequate XML documentation comments.
 /// </remarks>
-public abstract class DotEntityRootCommonAttributes<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>
+public abstract partial class DotEntityRootCommonAttributes<TIEntityAttributeProperties, TEntityAttributeProperties> : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>
     where TEntityAttributeProperties : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
 {
     protected DotEntityRootCommonAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup, DotHyperlinkAttributes hyperlinkAttributes)
@@ -27,23 +25,11 @@ public abstract class DotEntityRootCommonAttributes<TIEntityAttributeProperties,
     public DotHyperlinkAttributes Hyperlink { get; }
 
     [DotAttributeKey(DotAttributeKeys.Label)]
-    public virtual DotLabel Label
-    {
-        get => GetValueAsLabel(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotLabel? Label { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.ColorScheme)]
-    public virtual string ColorScheme
-    {
-        get => GetValueAsString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial string? ColorScheme { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Id)]
-    public virtual DotEscapeString ObjectId
-    {
-        get => GetValueAsEscapeString(MethodBase.GetCurrentMethod());
-        set => SetOrRemove(MethodBase.GetCurrentMethod(), value);
-    }
+    public virtual partial DotEscapeString? ObjectId { get; set; }
 }

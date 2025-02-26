@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Attributes;
 /// <summary>
 ///     Represents a single color.
 /// </summary>
-public record DotColorAttribute : DotAttribute<Color>
+public class DotColorAttribute : DotAttribute<Color>
 {
     /// <summary>
     ///     Creates a new color attribute.
@@ -24,5 +24,6 @@ public record DotColorAttribute : DotAttribute<Color>
     {
     }
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => ((IDotEncodable) new DotColor(Value)).GetDotEncodedValue(options, syntaxRules);
+    protected internal override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
+        ((IDotEncodable) new DotColor(Value)).GetDotEncodedValue(options, syntaxRules);
 }

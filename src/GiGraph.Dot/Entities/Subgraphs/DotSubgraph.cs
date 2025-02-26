@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using GiGraph.Dot.Entities.Clusters;
+﻿using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Qualities;
@@ -33,8 +32,8 @@ public class DotSubgraph : DotSubgraphSection, IDotGraph, IDotOrderable
     /// <param name="nodeRank">
     ///     The rank constraints to apply to the nodes in the subgraph.
     /// </param>
-    public DotSubgraph(string id = null, DotRank? nodeRank = null)
-        : this(new(), new DotGraphSectionCollection<DotSubgraphSection>())
+    public DotSubgraph(string? id = null, DotRank? nodeRank = null)
+        : this(new DotSubgraphSection(), new DotGraphSectionCollection<DotSubgraphSection>())
     {
         Id = id;
 
@@ -85,9 +84,9 @@ public class DotSubgraph : DotSubgraphSection, IDotGraph, IDotOrderable
     /// <summary>
     ///     Gets or sets the identifier of the subgraph (optional).
     /// </summary>
-    public virtual string Id { get; set; }
+    public virtual string? Id { get; set; }
 
-    string IDotOrderable.OrderingKey => Id;
+    string? IDotOrderable.OrderingKey => Id;
 
     /// <summary>
     ///     Creates a new subgraph, and populates it with the specified nodes.
@@ -134,7 +133,7 @@ public class DotSubgraph : DotSubgraphSection, IDotGraph, IDotOrderable
     /// <param name="id">
     ///     The identifier to assign to the subgraph.
     /// </param>
-    public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, DotRank? nodeRank = null, string id = null)
+    public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, DotRank? nodeRank = null, string? id = null)
     {
         var result = new DotSubgraph(id, nodeRank);
         result.Nodes.AddRange(nodeIds);

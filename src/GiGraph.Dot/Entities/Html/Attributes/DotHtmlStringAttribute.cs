@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Html.Attributes;
 ///     A string attribute. The value is rendered as is in the output DOT script, so the attribute can be used for any type of value,
 ///     not only for strings. For use in the context of HTML elements
 /// </summary>
-public record DotHtmlStringAttribute : DotStringAttribute
+public class DotHtmlStringAttribute : DotStringAttribute
 {
     /// <summary>
     ///     Creates a new instance of the attribute.
@@ -24,5 +24,6 @@ public record DotHtmlStringAttribute : DotStringAttribute
     {
     }
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => syntaxRules.Attributes.Html.AttributeValueEscaper.Escape(Value);
+    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
+        syntaxRules.Attributes.Html.AttributeValueEscaper.Escape(Value);
 }

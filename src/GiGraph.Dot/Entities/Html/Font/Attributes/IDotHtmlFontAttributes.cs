@@ -11,7 +11,7 @@ public interface IDotHtmlFontAttributes
     ///     Specifies the font to use within the scope of the current element. It can be overridden by a corresponding attribute in
     ///     descendents. By default, the font name is determined by the corresponding node, edge or graph.
     /// </summary>
-    string Name { get; set; }
+    string? Name { get; set; }
 
     /// <summary>
     ///     Specifies the size of the font, in points, to use within the scope of the current element. It can be overridden by a
@@ -23,5 +23,5 @@ public interface IDotHtmlFontAttributes
     ///     Sets the color of the font within the scope of the current element. It can be overridden by a corresponding attribute in
     ///     descendents. By default, the font color is determined by the corresponding node, edge or graph.
     /// </summary>
-    DotColor Color { get; set; }
+    DotColor? Color { get; set; }
 }

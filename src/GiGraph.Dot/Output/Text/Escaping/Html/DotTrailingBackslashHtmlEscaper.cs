@@ -5,10 +5,9 @@
 /// </summary>
 public class DotTrailingBackslashHtmlEscaper : IDotTextEscaper
 {
-    string IDotTextEscaper.Escape(string value) => Escape(value);
+    string? IDotTextEscaper.Escape(string? value) => Escape(value);
 
-    public static string Escape(string value) =>
-        true == value?.EndsWith("\\")
-            ? $"{value.Remove(value.Length - 1)}&#92;"
-            : value;
+    public static string? Escape(string? value) => value?.EndsWith('\\') is true
+        ? $"{value.Remove(value.Length - 1)}&#92;"
+        : value;
 }

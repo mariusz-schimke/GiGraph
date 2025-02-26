@@ -15,7 +15,7 @@ public interface IDotHtmlImageAttributes
     ///     </see>
     ///     .
     /// </summary>
-    string Source { get; set; }
+    string? Source { get; set; }
 
     /// <summary>
     ///     Specifies how the image will use any extra space available in its cell. If this attribute is undefined, the image inherits

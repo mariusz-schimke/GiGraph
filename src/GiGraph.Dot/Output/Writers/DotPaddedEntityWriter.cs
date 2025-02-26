@@ -16,7 +16,7 @@ public class DotPaddedEntityWriter
     public virtual DotTokenWriter BeginEntity(bool enforcePadding = false)
     {
         return _tokenWriter.CloneWith(
-            tw => tw.OnBeforeAppendToken = (sender, e) =>
+            tw => tw.OnBeforeAppendToken = (_, e) =>
             {
                 tw.OnBeforeAppendToken = null;
                 enforcePadding |= e.IsCommentStartToken;
@@ -37,7 +37,7 @@ public class DotPaddedEntityWriter
     public virtual void EndEntity(bool linger = true, bool enforceLineBreak = true)
     {
         // the assumption is that a commented attribute needs to have an empty line above and below
-        if (true == _isPadded)
+        if (_isPadded is true)
         {
             _tokenWriter.EmptyLine(linger, enforceLineBreak);
             _prependIndentation = false;

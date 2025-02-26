@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
 
@@ -10,8 +9,8 @@ namespace GiGraph.Dot.Entities.Attributes;
 /// <typeparam name="TEnum">
 ///     An enumeration type whose values are annotated with the <see cref="DotAttributeValueAttribute" /> attributes.
 /// </typeparam>
-public record DotEnumAttribute<TEnum> : DotAttribute<TEnum>
-    where TEnum : Enum
+public class DotEnumAttribute<TEnum> : DotAttribute<TEnum>
+    where TEnum : struct, Enum
 {
     /// <summary>
     ///     Creates a new instance of the attribute.
@@ -27,7 +26,7 @@ public record DotEnumAttribute<TEnum> : DotAttribute<TEnum>
     {
     }
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
+    protected internal override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
         DotAttributeValue.TryGetAsFlags(Value, out var result)
             ? result
             : DotAttributeValue.Get(Value);

@@ -66,7 +66,7 @@ public interface IDotGraphAttributes
     ///         </list>
     ///     </para>
     /// </summary>
-    DotLabel Label { get; set; }
+    DotLabel? Label { get; set; }
 
     /// <summary>
     ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
@@ -75,19 +75,19 @@ public interface IDotGraphAttributes
     ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes" /> for
     ///     supported scheme names.
     /// </summary>
-    string ColorScheme { get; set; }
+    string? ColorScheme { get; set; }
 
     /// <summary>
     ///     Specifies the character encoding used when interpreting string input as a text label. The default value is "UTF-8". The other
     ///     legal value is "iso-8859-1" or, equivalently, "Latin1". The charset attribute is case-insensitive. Note that if the character
     ///     encoding used in the input does not match the charset value, the resulting output may be very strange.
     /// </summary>
-    string Charset { get; set; }
+    string? Charset { get; set; }
 
     /// <summary>
     ///     Comments are inserted into output. Device-dependent.
     /// </summary>
-    string Comment { get; set; }
+    string? Comment { get; set; }
 
     /// <summary>
     ///     <para>
@@ -101,7 +101,7 @@ public interface IDotGraphAttributes
     ///         If not set, relative path names for image files will be interpreted with respect to the current working directory.
     ///     </para>
     /// </summary>
-    string ImageDirectories { get; set; }
+    string? ImageDirectories { get; set; }
 
     /// <summary>
     ///     <para>
@@ -120,7 +120,7 @@ public interface IDotGraphAttributes
     ///         is marked as the root, twopi will pick one (see the <see cref="IDotNodeAttributes.IsRoot" /> attribute on a node).
     ///     </para>
     /// </summary>
-    DotId RootNodeId { get; set; }
+    DotId? RootNodeId { get; set; }
 
     /// <summary>
     ///     <para>
@@ -142,5 +142,5 @@ public interface IDotGraphAttributes
     ///         internally-used attributes distinct, the user can include multiple image maps in the same document.
     ///     </para>
     /// </summary>
-    DotEscapeString ObjectId { get; set; }
+    DotEscapeString? ObjectId { get; set; }
 }

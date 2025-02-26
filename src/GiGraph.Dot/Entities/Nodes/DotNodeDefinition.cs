@@ -9,7 +9,7 @@ public abstract partial class DotNodeDefinition : IDotEntity, IDotAnnotatable, I
 {
     protected DotNodeDefinition(DotNodeRootAttributes attributes)
     {
-        Attributes = new(attributes);
+        Attributes = new DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes>(attributes);
     }
 
     /// <summary>
@@ -18,7 +18,7 @@ public abstract partial class DotNodeDefinition : IDotEntity, IDotAnnotatable, I
     public DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes> Attributes { get; }
 
     /// <inheritdoc cref="IDotAnnotatable.Annotation" />
-    public virtual string Annotation { get; set; }
+    public virtual string? Annotation { get; set; }
 
     string IDotOrderable.OrderingKey => GetOrderingKey();
 

@@ -17,7 +17,7 @@ public class DotEdgeTest
         Assert.True(edge.IsLoop);
         Assert.True(edge.Loops("a"));
 
-        edge = new(new DotClusterEndpoint("a"));
+        edge = new DotEdge(new DotClusterEndpoint("a"));
         Assert.True(edge.IsLoop);
         Assert.True(edge.Loops(new DotClusterEndpoint("a")));
         Assert.True(edge.Loops("a"));
@@ -30,11 +30,11 @@ public class DotEdgeTest
         Assert.False(edge.IsLoop);
         Assert.False(edge.Loops("a"));
 
-        edge = new("a", new DotClusterEndpoint("a"));
+        edge = new DotEdge("a", new DotClusterEndpoint("a"));
         Assert.False(edge.IsLoop);
         Assert.False(edge.Loops("a"));
 
-        edge = new(new DotClusterEndpoint("a"));
+        edge = new DotEdge(new DotClusterEndpoint("a"));
         Assert.False(edge.Loops(new DotEndpoint("a")));
     }
 

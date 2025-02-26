@@ -1,5 +1,3 @@
-using System;
-
 namespace GiGraph.Dot.Output.Metadata;
 
 /// <summary>
@@ -14,11 +12,11 @@ public class DotAttributeValueAttribute : Attribute, IDotAttributeValueAttribute
     /// <param name="value">
     ///     The value of the DOT attribute.
     /// </param>
-    public DotAttributeValueAttribute(string value)
+    public DotAttributeValueAttribute(string? value)
     {
         Value = value;
     }
 
     /// <inheritdoc cref="IDotAttributeValueAttribute.Value" />
-    public string Value { get; }
+    public string? Value { get; }
 }

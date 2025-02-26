@@ -15,4 +15,4 @@ namespace GiGraph.Dot.Types.Hyperlinks;
 /// <param name="Href">
 ///     Synonym for <paramref name="Url" />.
 /// </param>
-public record DotHyperlink(DotEscapeString Url = null, DotEscapeString Target = null, DotEscapeString Href = null);
+public record DotHyperlink(DotEscapeString? Url = null, DotEscapeString? Target = null, DotEscapeString? Href = null);

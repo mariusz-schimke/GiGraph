@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Attributes;
 /// <typeparam name="TComplex">
 ///     A complex type that implements the <see cref="IDotEncodable" /> interface.
 /// </typeparam>
-public record DotComplexTypeAttribute<TComplex> : DotAttribute<TComplex>
+public class DotComplexTypeAttribute<TComplex> : DotAttribute<TComplex>
     where TComplex : IDotEncodable
 {
     /// <summary>
@@ -26,5 +26,7 @@ public record DotComplexTypeAttribute<TComplex> : DotAttribute<TComplex>
     {
     }
 
-    protected internal override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Value?.GetDotEncodedValue(options, syntaxRules);
+    protected internal override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) =>
+        // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
+        Value?.GetDotEncodedValue(options, syntaxRules);
 }

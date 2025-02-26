@@ -21,5 +21,5 @@ namespace GiGraph.Dot.Types.Graphs;
 /// <param name="Convention">
 ///     The font convention to use.
 /// </param>
-public record DotGraphFont(string Name = null, double? Size = null, DotColor Color = null, string Directories = null, DotFontConvention? Convention = null)
+public record DotGraphFont(string? Name = null, double? Size = null, DotColor? Color = null, string? Directories = null, DotFontConvention? Convention = null)
     : DotFont(Name, Size, Color);

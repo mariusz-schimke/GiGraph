@@ -35,12 +35,12 @@ public abstract class DotCommonGraphSection : IDotGraphSection, IDotAnnotatable
     }
 
     protected DotCommonGraphSection(DotEntityAttributes attributes, DotClusterCollection clusters)
-        : this(attributes, new(), new(), new(), clusters)
+        : this(attributes, new DotNodeCollection(), [], new DotSubgraphCollection(), clusters)
     {
     }
 
     protected DotCommonGraphSection(DotEntityAttributes attributes)
-        : this(attributes, new())
+        : this(attributes, new DotClusterCollection())
     {
     }
 
@@ -87,7 +87,7 @@ public abstract class DotCommonGraphSection : IDotGraphSection, IDotAnnotatable
     public DotClusterCollection Clusters { get; }
 
     /// <inheritdoc cref="IDotAnnotatable.Annotation" />
-    public virtual string Annotation { get; set; }
+    public virtual string? Annotation { get; set; }
 
     DotAttributeCollection IDotGraphSection.GetAttributes(DotSyntaxOptions options) => GetAttributes(options);
     protected virtual DotAttributeCollection GetAttributes(DotSyntaxOptions options) => _attributes.Collection;

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using GiGraph.Dot.Entities.Graphs.Collections;
+﻿using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Generators.Providers;
 using GiGraph.Dot.Output.Options;
@@ -21,8 +19,8 @@ public class DotSubgraphCollectionGenerator<TSubgraph> : DotEntityGenerator<DotC
     {
         var orderedSubgraphs = _options.SortElements
             ? subgraphs.Cast<IDotOrderable>()
-               .OrderBy(subgraph => subgraph.OrderingKey, StringComparer.InvariantCulture)
-               .Cast<TSubgraph>()
+                .OrderBy(subgraph => subgraph.OrderingKey, StringComparer.InvariantCulture)
+                .Cast<TSubgraph>()
             : subgraphs;
 
         foreach (var subgraph in orderedSubgraphs)

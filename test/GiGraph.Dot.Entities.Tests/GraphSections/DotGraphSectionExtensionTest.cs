@@ -2,6 +2,7 @@ using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Colors;
 using Snapshooter.Xunit;
 using Xunit;
 
@@ -28,7 +29,7 @@ public class DotGraphSectionExtensionTest
         // this should be removed by the extension method (radial style by none)
         graph.Clusters.Style.FillStyle = DotClusterFillStyle.Radial;
 
-        graph.SetGradientBackground(new(Color.Gold, Color.DarkMagenta));
+        graph.SetGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta));
 
         // an overload (with the same result as the call above)
         graph.Subsections.Add().SetGradientBackground(Color.Gold, Color.DarkMagenta);
@@ -39,7 +40,7 @@ public class DotGraphSectionExtensionTest
                 // this setting should not be removed by the extension method called below (this is a non-radial style)
                 s.Clusters.Style.FillStyle = DotClusterFillStyle.Striped;
             })
-           .SetGradientBackground(new(Color.Gold, Color.DarkMagenta), 20);
+            .SetGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta), 20);
 
         Snapshot.Match(graph.Build(), "gradient_graph_background");
     }
@@ -51,14 +52,14 @@ public class DotGraphSectionExtensionTest
 
         // this setting should be overwritten by the extension method (a non-radial style by the radial style)
         graph.Clusters.Style.FillStyle = DotClusterFillStyle.Striped;
-        graph.SetRadialGradientBackground(new(Color.Gold, Color.DarkMagenta));
+        graph.SetRadialGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta));
 
         // an overload (with the same result as the call above)
         graph.Subsections.Add().SetRadialGradientBackground(Color.Gold, Color.DarkMagenta);
         graph.Subsections.Add().SetRadialGradientBackground(Color.Gold, Color.DarkMagenta, 10);
 
         graph.Subsections.Add()
-           .SetRadialGradientBackground(new(Color.Gold, Color.DarkMagenta), 20);
+            .SetRadialGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta), 20);
 
         Snapshot.Match(graph.Build(), "radial_gradient_graph_background");
     }

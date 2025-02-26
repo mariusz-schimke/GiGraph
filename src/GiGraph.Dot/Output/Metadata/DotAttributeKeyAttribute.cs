@@ -1,11 +1,9 @@
-using System;
-
 namespace GiGraph.Dot.Output.Metadata;
 
 /// <summary>
 ///     Assigns a DOT attribute key to a property.
 /// </summary>
-[AttributeUsage(AttributeTargets.Property)]
+[AttributeUsage(AttributeTargets.Property | AttributeTargets.Method)]
 public class DotAttributeKeyAttribute : Attribute
 {
     /// <summary>

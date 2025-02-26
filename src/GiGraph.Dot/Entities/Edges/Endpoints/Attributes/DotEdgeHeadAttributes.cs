@@ -1,4 +1,3 @@
-using System;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
@@ -9,7 +8,7 @@ using GiGraph.Dot.Types.Edges;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 
-public class DotEdgeHeadAttributes : DotEdgeEndpointAttributes
+public partial class DotEdgeHeadAttributes : DotEdgeEndpointAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadAttributes, IDotEdgeEndpointAttributes>().BuildLazy();
 
@@ -20,49 +19,25 @@ public class DotEdgeHeadAttributes : DotEdgeEndpointAttributes
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.Label" />
     [DotAttributeKey(DotAttributeKeys.HeadLabel)]
-    public override DotLabel Label
-    {
-        get => base.Label;
-        set => base.Label = value;
-    }
+    public override partial DotLabel? Label { get; set; }
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClipToNodeBoundary" />
     [DotAttributeKey(DotAttributeKeys.HeadClip)]
-    public override bool? ClipToNodeBoundary
-    {
-        get => base.ClipToNodeBoundary;
-        set => base.ClipToNodeBoundary = value;
-    }
+    public override partial bool? ClipToNodeBoundary { get; set; }
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.GroupName" />
     [DotAttributeKey(DotAttributeKeys.SameHead)]
-    public override string GroupName
-    {
-        get => base.GroupName;
-        set => base.GroupName = value;
-    }
+    public override partial string? GroupName { get; set; }
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.Port" />
     [DotAttributeKey(DotAttributeKeys.HeadPort)]
-    public override DotEndpointPort Port
-    {
-        get => base.Port;
-        set => base.Port = value;
-    }
+    public override partial DotEndpointPort? Port { get; set; }
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.ClusterId" />
     [DotAttributeKey(DotAttributeKeys.LHead)]
-    public override DotClusterId ClusterId
-    {
-        get => base.ClusterId;
-        set => base.ClusterId = value;
-    }
+    public override partial DotClusterId? ClusterId { get; set; }
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.Arrowhead" />
     [DotAttributeKey(DotAttributeKeys.Arrowhead)]
-    public override DotArrowheadDefinition Arrowhead
-    {
-        get => base.Arrowhead;
-        set => base.Arrowhead = value;
-    }
+    public override partial DotArrowheadDefinition? Arrowhead { get; set; }
 }
