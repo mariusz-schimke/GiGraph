@@ -63,7 +63,7 @@ public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttri
             }
 
             var attribute = targetMethod.GetCustomAttribute<DotAttributeKeyAttribute>()
-             ?? throw new KeyNotFoundException($"No {nameof(DotAttributeKeyAttribute)} is specified for the property accessor " +
+             ?? throw new KeyNotFoundException($"No {nameof(DotAttributeKeyAttribute)} is specified on the property accessor " +
                     $"{targetMethod.Name} of {targetMethod.DeclaringType?.Name}.");
 
             output.SetPropertyAccessorKey(interfaceMethod, attribute.Key);
