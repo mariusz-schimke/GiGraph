@@ -19,7 +19,7 @@ public static class HtmlStyledNodeText
 
             node.Label = new DotHtmlBuilder()
                 // appends a <font> element to the builder, with a custom size, color and style
-                .AppendStyledFont(new(DotFontStyles.Bold, 20, Color.RoyalBlue),
+                .AppendStyledFont(new DotStyledFont(DotFontStyles.Bold, 20, Color.RoyalBlue),
                     // specifies content of the parent <font> element
                     font => font
                         // appends any custom HTML

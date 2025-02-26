@@ -64,8 +64,8 @@ public class DotEdgeSequence : DotEdgeDefinition
     protected DotEdgeSequence(DotEndpointDefinition[] endpoints, DotEdgeRootAttributes attributes)
         : base(endpoints, attributes)
     {
-        Tails = new(attributes.Tail);
-        Heads = new(attributes.Head);
+        Tails = new DotEdgeEndpoint(attributes.Tail);
+        Heads = new DotEdgeEndpoint(attributes.Head);
     }
 
     /// <summary>
@@ -112,7 +112,7 @@ public class DotEdgeSequence : DotEdgeDefinition
     /// </param>
     public static DotEdgeSequence FromNodes(IEnumerable<string> nodeIds, Action<DotEndpoint>? initEndpoint = null)
     {
-        return new(
+        return new DotEdgeSequence(
             nodeIds.Select(nodeId =>
             {
                 var endpoint = new DotEndpoint(nodeId);

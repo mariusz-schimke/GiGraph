@@ -23,7 +23,7 @@ public abstract class DotEntityAttributes<TIEntityAttributeProperties, TEntityAt
             throw new ArgumentException($"The type {GetType().Name} is not assignable to the {typeof(TEntityAttributeProperties).Name} type specified as the type parameter.", nameof(TEntityAttributeProperties));
         }
 
-        Attributes = new(implementation);
+        Attributes = new DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAttributeProperties>(implementation);
     }
 
     /// <summary>

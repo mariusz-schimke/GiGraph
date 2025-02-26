@@ -56,14 +56,14 @@ public class DotEdge<TTail, THead> : DotEdgeDefinition
     ///     The head endpoint.
     /// </param>
     public DotEdge(TTail tail, THead head)
-        : this(tail, head, new())
+        : this(tail, head, new DotAttributeCollection())
     {
     }
 
     private DotEdge(TTail tail, THead head, DotAttributeCollection attributes)
         : this(
-            new(tail, new DotEdgeTailAttributes(attributes)),
-            new(head, new DotEdgeHeadAttributes(attributes)),
+            new DotEdgeEndpoint<TTail>(tail, new DotEdgeTailAttributes(attributes)),
+            new DotEdgeEndpoint<THead>(head, new DotEdgeHeadAttributes(attributes)),
             new DotEdgeRootAttributes(attributes)
         )
     {

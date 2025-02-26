@@ -12,7 +12,7 @@ namespace GiGraph.Dot.Entities.Html.LineBreak;
 /// </summary>
 public partial class DotHtmlLineBreak : DotHtmlVoidElement
 {
-    protected static readonly DotHtmlEntity Default = new DotHtmlReadOnlyEntity<DotHtmlLineBreak>(new());
+    protected static readonly DotHtmlEntity Default = new DotHtmlReadOnlyEntity<DotHtmlLineBreak>(new DotHtmlLineBreak());
     protected static readonly Dictionary<DotHorizontalAlignment, DotHtmlEntity> AlignedLineBreaks;
 
     static DotHtmlLineBreak()
@@ -20,7 +20,7 @@ public partial class DotHtmlLineBreak : DotHtmlVoidElement
         AlignedLineBreaks = Enum.GetValues<DotHorizontalAlignment>()
             .ToDictionary(
                 key => key,
-                value => (DotHtmlEntity) new DotHtmlReadOnlyEntity<DotHtmlLineBreak>(new(value))
+                value => (DotHtmlEntity) new DotHtmlReadOnlyEntity<DotHtmlLineBreak>(new DotHtmlLineBreak(value))
             );
     }
 
@@ -47,7 +47,7 @@ public partial class DotHtmlLineBreak : DotHtmlVoidElement
     protected DotHtmlLineBreak(DotHtmlLineBreakAttributes attributes)
         : base("br", attributes.Collection)
     {
-        Attributes = new(attributes);
+        Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlLineBreakAttributes, DotHtmlLineBreakAttributes>(attributes);
     }
 
     /// <summary>

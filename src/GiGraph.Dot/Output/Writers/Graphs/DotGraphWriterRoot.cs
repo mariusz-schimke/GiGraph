@@ -19,7 +19,7 @@ public class DotGraphWriterRoot : IDotGraphWriterRoot
     public virtual IDotGraphWriter BeginGraph(bool directed)
     {
         InitializeIndentation();
-        return new DotGraphWriter(_tokenWriter, new(directed, _formattingOptions));
+        return new DotGraphWriter(_tokenWriter, new DotEntityWriterConfiguration(directed, _formattingOptions));
     }
 
     public virtual void EndGraph()

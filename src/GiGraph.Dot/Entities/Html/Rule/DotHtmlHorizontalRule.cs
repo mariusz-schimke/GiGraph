@@ -16,5 +16,5 @@ public class DotHtmlHorizontalRule : DotHtmlRule
     /// <summary>
     ///     Gets a static instance of a horizontal rule element.
     /// </summary>
-    public static DotHtmlEntity Instance { get; } = new DotHtmlReadOnlyEntity<DotHtmlHorizontalRule>(new());
+    public static DotHtmlEntity Instance { get; } = new DotHtmlReadOnlyEntity<DotHtmlHorizontalRule>(new DotHtmlHorizontalRule());
 }

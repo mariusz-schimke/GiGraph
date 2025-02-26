@@ -65,7 +65,7 @@ public static class DotFillableExtension
     public static void SetGradientFill<T>(this T @this, DotColor startColor, DotColor endColor, int? angle = null)
         where T : IDotFillable
     {
-        @this.SetGradientFill(new(startColor, endColor), angle);
+        @this.SetGradientFill(new DotGradientColor(startColor, endColor), angle);
     }
 
     /// <summary>
@@ -104,7 +104,7 @@ public static class DotFillableExtension
     public static void SetRadialGradientFill<T>(this T @this, DotColor startColor, DotColor endColor, int? angle = null)
         where T : IDotFillable
     {
-        @this.SetRadialGradientFill(new(startColor, endColor), angle);
+        @this.SetRadialGradientFill(new DotGradientColor(startColor, endColor), angle);
     }
 
     private static void SetGradientFill<T>(this T @this, DotGradientColor color, int? angle, bool radial)

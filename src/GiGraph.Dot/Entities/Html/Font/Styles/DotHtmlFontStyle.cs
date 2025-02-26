@@ -11,12 +11,12 @@ namespace GiGraph.Dot.Entities.Html.Font.Styles;
 public abstract partial class DotHtmlFontStyle : DotHtmlElement
 {
     protected DotHtmlFontStyle(string tagName)
-        : base(tagName, new())
+        : base(tagName, new DotHtmlAttributeCollection())
     {
     }
 
     protected DotHtmlFontStyle(string tagName, string text, DotHorizontalAlignment? lineAlignment)
-        : base(tagName, new())
+        : base(tagName, new DotHtmlAttributeCollection())
     {
         SetContent(text, lineAlignment);
     }

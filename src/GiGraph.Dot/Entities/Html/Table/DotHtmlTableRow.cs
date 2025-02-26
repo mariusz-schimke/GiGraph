@@ -14,7 +14,7 @@ public partial class DotHtmlTableRow : DotHtmlElement
     ///     Initializes a new table row instance.
     /// </summary>
     public DotHtmlTableRow()
-        : this(new())
+        : this(new DotHtmlAttributeCollection())
     {
     }
 

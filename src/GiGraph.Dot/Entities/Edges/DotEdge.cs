@@ -31,7 +31,7 @@ public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     ///     The identifier of the head node.
     /// </param>
     public DotEdge(string tailNodeId, string headNodeId)
-        : this(new(tailNodeId), new DotEndpoint(headNodeId))
+        : this(new DotEndpoint(tailNodeId), new DotEndpoint(headNodeId))
     {
     }
 

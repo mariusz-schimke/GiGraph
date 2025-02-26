@@ -10,7 +10,7 @@ public partial class DotEdgeEndpointLabelsAttributes : DotEntityAttributesWithMe
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeEndpointLabelsAttributes, IDotEdgeEndpointLabelsAttributes>().BuildLazy();
 
     public DotEdgeEndpointLabelsAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new(attributes))
+        : this(attributes, AttributeKeyLookup, new DotEdgeEndpointLabelsFontAttributes(attributes))
     {
     }
 

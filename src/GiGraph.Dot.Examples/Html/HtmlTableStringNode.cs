@@ -33,10 +33,10 @@ public static class HtmlTableStringNode
         );
 
         // sets an attribute of the edge (can be set globally)
-        graph.Edges.Add("Foo", "Bar").Head.Port = new("port1", DotCompassPoint.NorthEast);
+        graph.Edges.Add("Foo", "Bar").Head.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
 
         // an equivalent method of defining a port (directly on the endpoint; cannot be set globally)
-        graph.Edges.Add("Foo", "Bar").Head.Endpoint.Port = new("port1", DotCompassPoint.NorthEast);
+        graph.Edges.Add("Foo", "Bar").Head.Endpoint.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
 
         return graph;
     }

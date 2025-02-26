@@ -38,7 +38,7 @@ public class DotAttributePropertyMetadata : DotAttributeMetadata
         : base(key, compatibleElements, compatibleLayoutEngines, compatibleOutputs)
     {
         _propertyInfoPath = propertyInfoPath;
-        _propertyPath = new(
+        _propertyPath = new Lazy<string>(
             () => string.Join(".", propertyInfoPath.Select(property => property.Name.Split('.').Last()))
         );
     }

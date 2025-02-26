@@ -16,7 +16,7 @@ public abstract partial class DotEdgeDefinition : IDotEntity, IDotAnnotatable, I
                 ? endpoints
                 : throw new ArgumentException("At least a pair of endpoints has to be specified.", nameof(endpoints));
 
-        Attributes = new(attributes);
+        Attributes = new DotEntityRootAttributesAccessor<IDotEdgeAttributes, DotEdgeRootAttributes>(attributes);
     }
 
     /// <summary>

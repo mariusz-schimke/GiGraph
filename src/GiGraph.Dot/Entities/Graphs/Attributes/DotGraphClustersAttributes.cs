@@ -13,7 +13,7 @@ public partial class DotGraphClustersAttributes : DotEntityAttributesWithMetadat
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClustersAttributes, IDotGraphClustersAttributes>().BuildLazy();
 
     public DotGraphClustersAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new(attributes))
+        : this(attributes, AttributeKeyLookup, new DotClusterStyleAttributeOptions(attributes))
     {
     }
 

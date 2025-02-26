@@ -62,7 +62,7 @@ public class DotAttributePropertiesTest
 
             if (type is null)
             {
-                throw new($"The type {sourceType.Name} is not a descendant of {nameof(DotEntityAttributes)}");
+                throw new Exception($"The type {sourceType.Name} is not a descendant of {nameof(DotEntityAttributes)}");
             }
         }
     }
@@ -129,7 +129,7 @@ public class DotAttributePropertiesTest
         }
         catch (Exception e)
         {
-            throw new($"Error writing property {targetProperty.Name}", e);
+            throw new Exception($"Error writing property {targetProperty.Name}", e);
         }
     }
 
@@ -144,7 +144,7 @@ public class DotAttributePropertiesTest
         }
         catch (Exception e)
         {
-            throw new($"Error reading property {targetProperty.Name}", e);
+            throw new Exception($"Error reading property {targetProperty.Name}", e);
         }
     }
 

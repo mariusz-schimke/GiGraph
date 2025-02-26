@@ -99,5 +99,5 @@ public partial class DotEdgeCollection
     ///     An optional initializer delegate to call for the created edge group.
     /// </param>
     public virtual DotEdge<DotSubgraphEndpoint, DotEndpoint> AddManyToOne(DotSubgraph tails, string headNodeId, Action<DotEdge<DotSubgraphEndpoint, DotEndpoint>>? init = null) =>
-        Add(new(tails), new(headNodeId), init);
+        Add(new DotSubgraphEndpoint(tails), new DotEndpoint(headNodeId), init);
 }

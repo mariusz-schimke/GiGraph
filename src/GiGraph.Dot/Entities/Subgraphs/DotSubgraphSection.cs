@@ -26,7 +26,7 @@ public partial class DotSubgraphSection : DotCommonGraphSection
     protected DotSubgraphSection(DotSubgraphRootAttributes attributes)
         : base(attributes)
     {
-        Attributes = new(attributes);
+        Attributes = new DotEntityRootAttributesAccessor<IDotSubgraphAttributes, DotSubgraphRootAttributes>(attributes);
     }
 
     /// <summary>

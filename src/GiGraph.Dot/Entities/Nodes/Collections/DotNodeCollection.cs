@@ -20,7 +20,7 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
 
     protected DotNodeCollection(DotNodeRootAttributes attributes)
     {
-        Attributes = new(attributes);
+        Attributes = new DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes>(attributes);
     }
 
     /// <summary>
@@ -90,7 +90,7 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
     /// <param name="init">
     ///     An optional initializer delegate to call for the created group.
     /// </param>
-    public virtual DotNodeGroup AddGroup(IEnumerable<string> ids, Action<DotNodeGroup>? init = null) => Add(new(ids), init);
+    public virtual DotNodeGroup AddGroup(IEnumerable<string> ids, Action<DotNodeGroup>? init = null) => Add(new DotNodeGroup(ids), init);
 
     /// <summary>
     ///     Adds nodes with the specified identifiers to the collection, and returns them.

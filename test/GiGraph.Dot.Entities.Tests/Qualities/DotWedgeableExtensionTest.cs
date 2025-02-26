@@ -45,15 +45,15 @@ public class DotWedgeableExtensionTest
         graph.Nodes.SetWedgedFill(Color.Red, Color.Blue);
         Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_params");
 
-        graph = new();
+        graph = new DotGraph();
         graph.Nodes.SetWedgedFill(new DotMulticolor(Color.Red, Color.Blue));
         Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_multicolor");
 
-        graph = new();
+        graph = new DotGraph();
         graph.Nodes.SetWedgedFill(DotNodeShape.Rect, Color.Red, Color.Blue);
         Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_params_and_shape");
 
-        graph = new();
+        graph = new DotGraph();
         graph.Nodes.SetWedgedFill(DotNodeShape.Rectangle, new DotMulticolor(Color.Red, Color.Blue));
         Snapshot.Match(graph.Build(), "wedged_fill_on_node_collection_multicolor_and_shape");
     }

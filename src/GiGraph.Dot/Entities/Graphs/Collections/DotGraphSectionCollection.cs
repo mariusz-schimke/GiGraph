@@ -25,5 +25,5 @@ public class DotGraphSectionCollection<TSection> : List<TSection>
     /// <param name="init">
     ///     An optional section initializer delegate.
     /// </param>
-    public virtual TSection Add(Action<TSection>? init = null) => Add(new(), init);
+    public virtual TSection Add(Action<TSection>? init = null) => Add(new TSection(), init);
 }
