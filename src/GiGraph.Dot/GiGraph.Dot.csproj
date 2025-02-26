@@ -46,7 +46,7 @@
 
         <PackageReleaseNotes>- Nullability support has been added to the library.
 
-- Replaced some reflection-based logic in the library with source generators to optimize performance.
+- Some reflection-based logic in the library has been replaced with source generators to optimize performance.
 
 - Refactoring and code cleanup.
 
@@ -62,6 +62,10 @@ See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
     <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     </PropertyGroup>
+
+    <ItemGroup Condition="'$(Configuration)' != 'Publish'">
+        <InternalsVisibleTo Include="GiGraph.Dot.Entities.Tests" />
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
@@ -79,10 +83,6 @@ See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
 
     <ItemGroup>
       <ProjectReference Include="..\GiGraph.Dot.SourceGenerators\GiGraph.Dot.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
-    </ItemGroup>
-    
-    <ItemGroup>
-        <InternalsVisibleTo Include="GiGraph.Dot.Entities.Tests" />
     </ItemGroup>
 
 </Project>
