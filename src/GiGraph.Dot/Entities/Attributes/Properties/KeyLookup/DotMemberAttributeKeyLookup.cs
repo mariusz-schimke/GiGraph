@@ -52,12 +52,14 @@ public class DotMemberAttributeKeyLookup
     /// </param>
     public virtual void SetPropertyAccessorKey(MethodInfo accessor, string key)
     {
-        if (!_lookup.TryAdd(accessor, key))
+        if (_lookup.ContainsKey(accessor))
         {
             throw new ArgumentException(
                 $"The attribute key for the '{accessor.Name}' property accessor of the {accessor.DeclaringType?.Name} type is already set."
             );
         }
+
+        _lookup.Add(accessor, key);
     }
 
     /// <summary>

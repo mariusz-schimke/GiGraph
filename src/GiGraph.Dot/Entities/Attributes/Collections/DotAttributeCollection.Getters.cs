@@ -11,7 +11,7 @@ public partial class DotAttributeCollection
     /// <param name="key">
     ///     The key of the attribute to get.
     /// </param>
-    public virtual DotAttribute? Get(string key) => _attributes.GetValueOrDefault(key);
+    public virtual DotAttribute? Get(string key) => _attributes.TryGetValue(key, out var attribute) ? attribute : null;
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns it as the specified type. If the
