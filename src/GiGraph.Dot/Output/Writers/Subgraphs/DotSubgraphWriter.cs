@@ -26,7 +26,7 @@ public class DotSubgraphWriter : DotGraphBlockWriter, IDotSubgraphWriter
         if (!string.IsNullOrEmpty(id))
         {
             _tokenWriter.Space();
-            _tokenWriter.Identifier(id, quoteId);
+            _tokenWriter.Identifier(id!, quoteId);
         }
 
         if (separate)

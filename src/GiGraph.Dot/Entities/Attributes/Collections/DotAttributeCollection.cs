@@ -57,7 +57,7 @@ public partial class DotAttributeCollection : IDotEntity, IDotAnnotatable
     /// <param name="key">
     ///     The key of the attribute to remove.
     /// </param>
-    public DotAttribute? Remove(string key) => _attributes.Remove(key, out var result) ? result : null;
+    public bool Remove(string key) => _attributes.Remove(key);
 
     /// <summary>
     ///     Removes all attributes from the collection.

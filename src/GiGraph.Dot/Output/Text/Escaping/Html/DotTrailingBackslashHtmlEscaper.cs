@@ -7,7 +7,7 @@ public class DotTrailingBackslashHtmlEscaper : IDotTextEscaper
 {
     string? IDotTextEscaper.Escape(string? value) => Escape(value);
 
-    public static string? Escape(string? value) => value?.EndsWith('\\') is true
+    public static string? Escape(string? value) => value?.EndsWith("\\") is true
         ? $"{value.Remove(value.Length - 1)}&#92;"
         : value;
 }

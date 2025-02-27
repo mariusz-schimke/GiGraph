@@ -22,7 +22,7 @@ public class DotGraphWriter : DotGraphBlockWriter, IDotGraphWriter
         if (!string.IsNullOrEmpty(id))
         {
             _tokenWriter.Space()
-                .Identifier(id, quoteId);
+                .Identifier(id!, quoteId);
         }
 
         _tokenWriter.NewLine();

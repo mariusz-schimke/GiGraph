@@ -17,7 +17,8 @@ public partial class DotHtmlLineBreak : DotHtmlVoidElement
 
     static DotHtmlLineBreak()
     {
-        AlignedLineBreaks = Enum.GetValues<DotHorizontalAlignment>()
+        AlignedLineBreaks = Enum.GetValues(typeof(DotHorizontalAlignment))
+            .Cast<DotHorizontalAlignment>()
             .ToDictionary(
                 key => key,
                 value => (DotHtmlEntity) new DotHtmlReadOnlyEntity<DotHtmlLineBreak>(new DotHtmlLineBreak(value))
