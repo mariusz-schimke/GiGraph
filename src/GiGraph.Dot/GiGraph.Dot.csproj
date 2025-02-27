@@ -3,6 +3,9 @@
     <!-- https://www.meziantou.net/creating-reproducible-build-in-dotnet.htm -->
 
     <PropertyGroup>
+        <!-- overrides the global setting from Directory.Build.props because it takes precedence over <TargetFrameworks> -->
+        <TargetFramework/>
+
         <TargetFrameworks>netstandard2.0;net9.0</TargetFrameworks>
         <Configurations>Debug;Release;Publish</Configurations>
         <Platforms>AnyCPU</Platforms>
