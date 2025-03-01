@@ -19,13 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{332941F6-4FF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C45F0348-82F4-4C1E-9B44-3BA16FDE0D5F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ADR", "ADR", "{5056782F-8426-44B8-88C9-AEC9C698E5F9}"
-	ProjectSection(SolutionItems) = preProject
-		src\ADR\01. Extensibility.md = src\ADR\01. Extensibility.md
-		src\ADR\02. Enumerations.md = src\ADR\02. Enumerations.md
-		src\ADR\03. Attribute key mapping.md = src\ADR\03. Attribute key mapping.md
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiGraph.Dot.SourceGenerators", "src\GiGraph.Dot.SourceGenerators\GiGraph.Dot.SourceGenerators.csproj", "{6F53DAB2-30C8-4743-8636-7D7720B8553A}"
 EndProject
 Global
@@ -79,7 +72,6 @@ Global
 		{070671C7-38EB-4274-87F1-95FA02407CBC} = {C45F0348-82F4-4C1E-9B44-3BA16FDE0D5F}
 		{7970E3B9-39DB-4206-9D76-30B497D42537} = {C45F0348-82F4-4C1E-9B44-3BA16FDE0D5F}
 		{BCA1E2F9-1ADB-44B1-BA3F-2BBCABC02CE2} = {C45F0348-82F4-4C1E-9B44-3BA16FDE0D5F}
-		{5056782F-8426-44B8-88C9-AEC9C698E5F9} = {332941F6-4FF7-4D05-88DC-4FC86062EC73}
 		{6F53DAB2-30C8-4743-8636-7D7720B8553A} = {332941F6-4FF7-4D05-88DC-4FC86062EC73}
 	EndGlobalSection
 EndGlobal
