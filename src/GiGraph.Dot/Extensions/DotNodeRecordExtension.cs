@@ -9,12 +9,12 @@ namespace GiGraph.Dot.Extensions;
 // all of them will have different labels when visualized).
 
 /// <summary>
-///     Provides extension methods for <see cref="DotNodeDefinition" />.
+///     Provides extension methods for <see cref="DotNodeDefinition"/>.
 /// </summary>
-public static class DotNodeToRoundedRecordExtension
+public static class DotNodeRecordExtension
 {
     /// <summary>
-    ///     Converts the current node to a rounded record-shaped node.
+    ///     Converts the current node to a record-shaped node with the specified content.
     /// </summary>
     /// <param name="node">
     ///     The current node.
@@ -22,14 +22,14 @@ public static class DotNodeToRoundedRecordExtension
     /// <param name="record">
     ///     The record to use as the label of the node.
     /// </param>
-    public static void ToRoundedRecordNode(this DotNodeDefinition node, DotRecord record)
+    public static void SetAsRecord(this DotNodeDefinition node, DotRecord record)
     {
-        node.Shape = DotNodeShape.RoundedRecord;
+        node.Shape = DotNodeShape.Record;
         node.Label = record;
     }
 
     /// <summary>
-    ///     Converts the current node to a rounded record-shaped node composed using a builder.
+    ///     Converts the current node to a record-shaped node with content composed using a builder.
     /// </summary>
     /// <param name="node">
     ///     The current node.
@@ -40,16 +40,16 @@ public static class DotNodeToRoundedRecordExtension
     /// <param name="flip">
     ///     Determines whether the orientation of the record should be changed from horizontal to vertical, or the other way round. The
     ///     initial orientation of a record-shaped node depends on the layout direction of the graph. If set to
-    ///     <see cref="DotLayoutDirection.TopToBottom" /> (the default) or <see cref="DotLayoutDirection.BottomToTop" />, corresponding
-    ///     to vertical layouts, the top-level fields in a record are displayed horizontally. If, however, the direction is
-    ///     <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to horizontal
+    ///     <see cref="DotLayoutDirection.TopToBottom"/> (the default) or <see cref="DotLayoutDirection.BottomToTop"/>, corresponding to
+    ///     vertical layouts, the top-level fields in a record are displayed horizontally. If, however, the direction is
+    ///     <see cref="DotLayoutDirection.LeftToRight"/> or <see cref="DotLayoutDirection.RightToLeft"/>, corresponding to horizontal
     ///     layouts, the top-level fields are displayed vertically.
     /// </param>
-    public static void ToRoundedRecordNode(this DotNodeDefinition node, Action<DotRecordBuilder> buildRecord, bool flip = false)
+    public static void SetAsRecord(this DotNodeDefinition node, Action<DotRecordBuilder> buildRecord, bool flip = false)
     {
         var builder = new DotRecordBuilder();
         buildRecord(builder);
 
-        ToRoundedRecordNode(node, builder.Build(flip));
+        SetAsRecord(node, builder.Build(flip));
     }
 }

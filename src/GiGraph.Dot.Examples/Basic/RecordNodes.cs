@@ -12,7 +12,7 @@ public static class RecordNodes
     {
         var graph = new DotGraph();
 
-        graph.Nodes.Add("Bar").ToRecordNode(new DotRecord(
+        graph.Nodes.Add("Bar").SetAsRecord(new DotRecord(
             $"Foo{Environment.NewLine}Bar",
             new DotRecord
             (
@@ -30,7 +30,7 @@ public static class RecordNodes
         ));
 
         // you can achieve the same effect using a record builder
-        graph.Nodes.Add("Baz").ToRecordNode(rb1 => rb1
+        graph.Nodes.Add("Baz").SetAsRecord(rb1 => rb1
             .AppendField($"Foo{Environment.NewLine}Bar")
             .AppendSubrecord(rb2 => rb2
                 .AppendField(tf => tf.AppendLeftJustifiedLine("Baz"))
