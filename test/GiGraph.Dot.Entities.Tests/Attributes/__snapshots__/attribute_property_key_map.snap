@@ -1,359 +1,409 @@
 ﻿{
-  "arrowhead": [
-    "Head.Arrowhead: DotArrowheadDefinition [Edge]"
-  ],
-  "arrowsize": [
-    "ArrowheadScaleFactor: Double? [Edge]"
-  ],
-  "arrowtail": [
-    "Tail.Arrowhead: DotArrowheadDefinition [Edge]"
-  ],
-  "bgcolor": [
-    "BackgroundColor: DotColorDefinition [Cluster]",
-    "Canvas.BackgroundColor: DotColorDefinition [Graph]"
-  ],
-  "center": [
-    "Canvas.CenterDrawing: Boolean? [Graph]"
-  ],
-  "charset": [
-    "Charset: String [Graph]"
-  ],
-  "class": [
-    "SvgStyleSheet.Class: String [Graph, Cluster, Node, Edge]"
-  ],
-  "cluster": [
-    "IsCluster: Boolean? [Subgraph, Cluster]"
-  ],
-  "clusterrank": [
-    "Clusters.VisualizationMode: DotClusterVisualizationMode? [Graph]"
-  ],
-  "color": [
-    "Clusters.Color: DotColorDefinition [Graph]",
-    "Color: DotColorDefinition [Cluster, Node, Edge]"
-  ],
-  "colorscheme": [
-    "ColorScheme: String [Graph, Cluster, Node, Edge]"
-  ],
-  "comment": [
-    "Comment: String [Graph, Node, Edge]"
-  ],
-  "compound": [
-    "Clusters.AllowEdgeClipping: Boolean? [Graph]"
-  ],
-  "concentrate": [
-    "Layout.ConcentrateEdges: Boolean? [Graph]"
-  ],
-  "constraint": [
-    "Constrain: Boolean? [Edge]"
-  ],
-  "decorate": [
-    "AttachLabel: Boolean? [Edge]"
-  ],
-  "dir": [
-    "Directions: DotEdgeDirections? [Edge]"
-  ],
-  "distortion": [
-    "Geometry.Distortion: Double? [Node]"
-  ],
-  "dpi": [
-    "Canvas.Dpi: Double? [Graph]"
-  ],
-  "edgehref": [
-    "EdgeHyperlink.Href: DotEscapeString [Edge]"
-  ],
-  "edgetarget": [
-    "EdgeHyperlink.Target: DotEscapeString [Edge]"
-  ],
-  "edgetooltip": [
-    "EdgeHyperlink.Tooltip: DotEscapeString [Edge]"
-  ],
-  "edgeURL": [
-    "EdgeHyperlink.Url: DotEscapeString [Edge]"
-  ],
-  "fillcolor": [
-    "Clusters.FillColor: DotColorDefinition [Graph]",
-    "FillColor: DotColorDefinition [Cluster, Node, Edge]"
-  ],
-  "fixedsize": [
-    "Size.Mode: DotNodeSizing? [Node]"
-  ],
-  "fontcolor": [
-    "Font.Color: DotColor [Graph, Cluster, Node, Edge]"
-  ],
-  "fontname": [
-    "Font.Name: String [Graph, Cluster, Node, Edge]"
-  ],
-  "fontnames": [
-    "Font.Convention: DotFontConvention? [Graph]"
-  ],
-  "fontpath": [
-    "Font.Directories: String [Graph]"
-  ],
-  "fontsize": [
-    "Font.Size: Double? [Graph, Cluster, Node, Edge]"
-  ],
-  "forcelabels": [
-    "Layout.ForceExternalLabels: Boolean? [Graph]"
-  ],
-  "gradientangle": [
-    "Canvas.GradientFillAngle: Int32? [Graph]",
-    "GradientFillAngle: Int32? [Cluster, Node]"
-  ],
-  "group": [
-    "GroupName: String [Node]"
-  ],
-  "headclip": [
-    "Head.ClipToNodeBoundary: Boolean? [Edge]"
-  ],
-  "headhref": [
-    "Head.Hyperlink.Href: DotEscapeString [Edge]"
-  ],
-  "headlabel": [
-    "Head.Label: DotLabel [Edge]"
-  ],
-  "headport": [
-    "Head.Port: DotEndpointPort [Edge]"
-  ],
-  "headtarget": [
-    "Head.Hyperlink.Target: DotEscapeString [Edge]"
-  ],
-  "headtooltip": [
-    "Head.Hyperlink.Tooltip: DotEscapeString [Edge]"
-  ],
-  "headURL": [
-    "Head.Hyperlink.Url: DotEscapeString [Edge]"
-  ],
-  "height": [
-    "Size.Height: Double? [Node]"
-  ],
-  "href": [
-    "Hyperlink.Href: DotEscapeString [Graph, Cluster, Node, Edge]"
-  ],
-  "id": [
-    "ObjectId: DotEscapeString [Graph, Cluster, Node, Edge]"
-  ],
-  "image": [
-    "Image.Path: String [Node]"
-  ],
-  "imagepath": [
-    "ImageDirectories: String [Graph]"
-  ],
-  "imagepos": [
-    "Image.Alignment: DotAlignment? [Node]"
-  ],
-  "imagescale": [
-    "Image.Scaling: DotImageScaling? [Node]"
-  ],
-  "label": [
-    "Label: DotLabel [Graph, Cluster, Node, Edge]"
-  ],
-  "labelangle": [
-    "EndpointLabels.Angle: Double? [Edge]"
-  ],
-  "labeldistance": [
-    "EndpointLabels.Distance: Double? [Edge]"
-  ],
-  "labelfloat": [
-    "AllowLabelFloating: Boolean? [Edge]"
-  ],
-  "labelfontcolor": [
-    "EndpointLabels.Font.Color: DotColor [Edge]"
-  ],
-  "labelfontname": [
-    "EndpointLabels.Font.Name: String [Edge]"
-  ],
-  "labelfontsize": [
-    "EndpointLabels.Font.Size: Double? [Edge]"
-  ],
-  "labelhref": [
-    "LabelHyperlink.Href: DotEscapeString [Edge]"
-  ],
-  "labeljust": [
-    "LabelAlignment.Horizontal: DotHorizontalAlignment? [Graph, Cluster]"
-  ],
-  "labelloc": [
-    "LabelAlignment: DotVerticalAlignment? [Node]",
-    "LabelAlignment.Vertical: DotVerticalAlignment? [Graph, Cluster]"
-  ],
-  "labeltarget": [
-    "LabelHyperlink.Target: DotEscapeString [Edge]"
-  ],
-  "labeltooltip": [
-    "LabelHyperlink.Tooltip: DotEscapeString [Edge]"
-  ],
-  "labelURL": [
-    "LabelHyperlink.Url: DotEscapeString [Edge]"
-  ],
-  "landscape": [
-    "Canvas.LandscapeOrientation: Boolean? [Graph]"
-  ],
-  "layout": [
-    "Layout.Engine: String [Graph]"
-  ],
-  "len": [
-    "Length: Double? [Edge]"
-  ],
-  "lhead": [
-    "Head.ClusterId: DotClusterId [Edge]"
-  ],
-  "ltail": [
-    "Tail.ClusterId: DotClusterId [Edge]"
-  ],
-  "margin": [
-    "Canvas.Margin: DotPoint [Graph]",
-    "Padding: DotPoint [Cluster, Node]"
-  ],
-  "mclimit": [
-    "Layout.EdgeCrossingMinimizationScaleFactor: Double? [Graph]"
-  ],
-  "minlen": [
-    "MinLength: Int32? [Edge]"
-  ],
-  "newrank": [
-    "Layout.UseGlobalRanking: Boolean? [Graph]"
-  ],
-  "nodesep": [
-    "Layout.NodeSeparation: Double? [Graph]"
-  ],
-  "oneblock": [
-    "Layout.ForceCircularLayout: Boolean? [Graph]"
-  ],
-  "ordering": [
-    "EdgeOrderingMode: DotEdgeOrderingMode? [Node]",
-    "Layout.EdgeOrderingMode: DotEdgeOrderingMode? [Graph]"
-  ],
-  "orientation": [
-    "Canvas.Orientation: DotOrientation? [Graph]",
-    "Geometry.Rotation: Double? [Node]"
-  ],
-  "pack": [
-    "Layout.Packing: DotPackingDefinition [Graph]"
-  ],
-  "packmode": [
-    "Layout.PackingMode: DotPackingModeDefinition [Graph]"
-  ],
-  "pad": [
-    "Canvas.Padding: DotPoint [Graph]"
-  ],
-  "pencolor": [
-    "BorderColor: DotColor [Cluster]",
-    "Clusters.BorderColor: DotColor [Graph]"
-  ],
-  "penwidth": [
-    "BorderWidth: Double? [Cluster, Node]",
-    "Clusters.BorderWidth: Double? [Graph]",
-    "Width: Double? [Edge]"
-  ],
-  "peripheries": [
-    "Geometry.Peripheries: Int32? [Node]",
-    "Peripheries: Int32? [Cluster]"
-  ],
-  "rank": [
-    "Layout.NodeRank: DotRank? [Graph]",
-    "NodeRank: DotRank? [Subgraph, Cluster]"
-  ],
-  "rankdir": [
-    "Layout.Direction: DotLayoutDirection? [Graph]"
-  ],
-  "ranksep": [
-    "Layout.RankSeparation: DotRankSeparationDefinition [Graph]"
-  ],
-  "ratio": [
-    "Canvas.Scaling: DotGraphScalingDefinition [Graph]"
-  ],
-  "regular": [
-    "Geometry.Regular: Boolean? [Node]"
-  ],
-  "remincross": [
-    "Layout.RepeatEdgeCrossingMinimization: Boolean? [Graph]"
-  ],
-  "resolution": [
-    "Canvas.Resolution: Double? [Graph]"
-  ],
-  "root": [
-    "IsRoot: Boolean? [Node]",
-    "RootNodeId: DotId [Graph]"
-  ],
-  "rotate": [
-    "Canvas.OrientationAngle: Int32? [Graph]"
-  ],
-  "rotation": [
-    "Layout.Rotation: Double? [Graph]"
-  ],
-  "samehead": [
-    "Head.GroupName: String [Edge]"
-  ],
-  "sametail": [
-    "Tail.GroupName: String [Edge]"
-  ],
-  "shape": [
-    "Shape: DotNodeShape? [Node]"
-  ],
-  "sides": [
-    "Geometry.Sides: Int32? [Node]"
-  ],
-  "size": [
-    "Canvas.Size: DotPoint [Graph]"
-  ],
-  "skew": [
-    "Geometry.Skew: Double? [Node]"
-  ],
-  "sortv": [
-    "Layout.SortIndex: Int32? [Graph]",
-    "SortIndex: Int32? [Cluster, Node]"
-  ],
-  "splines": [
-    "EdgeShape: DotEdgeShape? [Graph]"
-  ],
-  "style": [
-    "Style: DotStyles? [Graph, Cluster, Node, Edge]"
-  ],
-  "stylesheet": [
-    "SvgStyleSheet.Url: String [Graph]"
-  ],
-  "tailclip": [
-    "Tail.ClipToNodeBoundary: Boolean? [Edge]"
-  ],
-  "tailhref": [
-    "Tail.Hyperlink.Href: DotEscapeString [Edge]"
-  ],
-  "taillabel": [
-    "Tail.Label: DotLabel [Edge]"
-  ],
-  "tailport": [
-    "Tail.Port: DotEndpointPort [Edge]"
-  ],
-  "tailtarget": [
-    "Tail.Hyperlink.Target: DotEscapeString [Edge]"
-  ],
-  "tailtooltip": [
-    "Tail.Hyperlink.Tooltip: DotEscapeString [Edge]"
-  ],
-  "tailURL": [
-    "Tail.Hyperlink.Url: DotEscapeString [Edge]"
-  ],
-  "target": [
-    "Hyperlink.Target: DotEscapeString [Graph, Cluster, Node, Edge]"
-  ],
-  "TBbalance": [
-    "Layout.FloatingNodeRank: DotRank? [Graph]"
-  ],
-  "tooltip": [
-    "Tooltip: DotEscapeString [Cluster, Node, Edge]"
-  ],
-  "URL": [
-    "Hyperlink.Url: DotEscapeString [Graph, Cluster, Node, Edge]"
-  ],
-  "viewport": [
-    "Canvas.Viewport: DotViewport [Graph]"
-  ],
-  "weight": [
-    "Weight: Double? [Edge]"
-  ],
-  "width": [
-    "Size.Width: Double? [Node]"
-  ],
-  "xlabel": [
-    "ExternalLabel: DotLabel [Node, Edge]"
-  ]
+  "arrowhead": {
+    "Edge": "Head.Arrowhead: DotArrowheadDefinition"
+  },
+  "arrowsize": {
+    "Edge": "ArrowheadScaleFactor: Double?"
+  },
+  "arrowtail": {
+    "Edge": "Tail.Arrowhead: DotArrowheadDefinition"
+  },
+  "bgcolor": {
+    "Graph": "Canvas.BackgroundColor: DotColorDefinition",
+    "Cluster": "BackgroundColor: DotColorDefinition"
+  },
+  "center": {
+    "Graph": "Canvas.CenterDrawing: Boolean?"
+  },
+  "charset": {
+    "Graph": "Charset: String"
+  },
+  "class": {
+    "Edge": "SvgStyleSheet.Class: String",
+    "Graph": "SvgStyleSheet.Class: String",
+    "Cluster": "SvgStyleSheet.Class: String",
+    "Node": "SvgStyleSheet.Class: String"
+  },
+  "cluster": {
+    "Cluster": "IsCluster: Boolean?",
+    "Subgraph": "IsCluster: Boolean?"
+  },
+  "clusterrank": {
+    "Graph": "Clusters.VisualizationMode: DotClusterVisualizationMode?"
+  },
+  "color": {
+    "Edge": "Color: DotColorDefinition",
+    "Graph": "Clusters.Color: DotColorDefinition",
+    "Cluster": "Color: DotColorDefinition",
+    "Node": "Color: DotColorDefinition"
+  },
+  "colorscheme": {
+    "Edge": "ColorScheme: String",
+    "Graph": "ColorScheme: String",
+    "Cluster": "ColorScheme: String",
+    "Node": "ColorScheme: String"
+  },
+  "comment": {
+    "Edge": "Comment: String",
+    "Graph": "Comment: String",
+    "Node": "Comment: String"
+  },
+  "compound": {
+    "Graph": "Clusters.AllowEdgeClipping: Boolean?"
+  },
+  "concentrate": {
+    "Graph": "Layout.ConcentrateEdges: Boolean?"
+  },
+  "constraint": {
+    "Edge": "Constrain: Boolean?"
+  },
+  "decorate": {
+    "Edge": "AttachLabel: Boolean?"
+  },
+  "dir": {
+    "Edge": "Directions: DotEdgeDirections?"
+  },
+  "distortion": {
+    "Node": "Geometry.Distortion: Double?"
+  },
+  "dpi": {
+    "Graph": "Canvas.Dpi: Double?"
+  },
+  "edgehref": {
+    "Edge": "EdgeHyperlink.Href: DotEscapeString"
+  },
+  "edgetarget": {
+    "Edge": "EdgeHyperlink.Target: DotEscapeString"
+  },
+  "edgetooltip": {
+    "Edge": "EdgeHyperlink.Tooltip: DotEscapeString"
+  },
+  "edgeURL": {
+    "Edge": "EdgeHyperlink.Url: DotEscapeString"
+  },
+  "fillcolor": {
+    "Edge": "FillColor: DotColorDefinition",
+    "Graph": "Clusters.FillColor: DotColorDefinition",
+    "Cluster": "FillColor: DotColorDefinition",
+    "Node": "FillColor: DotColorDefinition"
+  },
+  "fixedsize": {
+    "Node": "Size.Mode: DotNodeSizing?"
+  },
+  "fontcolor": {
+    "Edge": "Font.Color: DotColor",
+    "Graph": "Font.Color: DotColor",
+    "Cluster": "Font.Color: DotColor",
+    "Node": "Font.Color: DotColor"
+  },
+  "fontname": {
+    "Edge": "Font.Name: String",
+    "Graph": "Font.Name: String",
+    "Cluster": "Font.Name: String",
+    "Node": "Font.Name: String"
+  },
+  "fontnames": {
+    "Graph": "Font.Convention: DotFontConvention?"
+  },
+  "fontpath": {
+    "Graph": "Font.Directories: String"
+  },
+  "fontsize": {
+    "Edge": "Font.Size: Double?",
+    "Graph": "Font.Size: Double?",
+    "Cluster": "Font.Size: Double?",
+    "Node": "Font.Size: Double?"
+  },
+  "forcelabels": {
+    "Graph": "Layout.ForceExternalLabels: Boolean?"
+  },
+  "gradientangle": {
+    "Graph": "Canvas.GradientFillAngle: Int32?",
+    "Cluster": "GradientFillAngle: Int32?",
+    "Node": "GradientFillAngle: Int32?"
+  },
+  "group": {
+    "Node": "GroupName: String"
+  },
+  "headclip": {
+    "Edge": "Head.ClipToNodeBoundary: Boolean?"
+  },
+  "headhref": {
+    "Edge": "Head.Hyperlink.Href: DotEscapeString"
+  },
+  "headlabel": {
+    "Edge": "Head.Label: DotLabel"
+  },
+  "headport": {
+    "Edge": "Head.Port: DotEndpointPort"
+  },
+  "headtarget": {
+    "Edge": "Head.Hyperlink.Target: DotEscapeString"
+  },
+  "headtooltip": {
+    "Edge": "Head.Hyperlink.Tooltip: DotEscapeString"
+  },
+  "headURL": {
+    "Edge": "Head.Hyperlink.Url: DotEscapeString"
+  },
+  "height": {
+    "Node": "Size.Height: Double?"
+  },
+  "href": {
+    "Edge": "Hyperlink.Href: DotEscapeString",
+    "Graph": "Hyperlink.Href: DotEscapeString",
+    "Cluster": "Hyperlink.Href: DotEscapeString",
+    "Node": "Hyperlink.Href: DotEscapeString"
+  },
+  "id": {
+    "Edge": "ObjectId: DotEscapeString",
+    "Graph": "ObjectId: DotEscapeString",
+    "Cluster": "ObjectId: DotEscapeString",
+    "Node": "ObjectId: DotEscapeString"
+  },
+  "image": {
+    "Node": "Image.Path: String"
+  },
+  "imagepath": {
+    "Graph": "ImageDirectories: String"
+  },
+  "imagepos": {
+    "Node": "Image.Alignment: DotAlignment?"
+  },
+  "imagescale": {
+    "Node": "Image.Scaling: DotImageScaling?"
+  },
+  "label": {
+    "Edge": "Label: DotLabel",
+    "Graph": "Label: DotLabel",
+    "Cluster": "Label: DotLabel",
+    "Node": "Label: DotLabel"
+  },
+  "labelangle": {
+    "Edge": "EndpointLabels.Angle: Double?"
+  },
+  "labeldistance": {
+    "Edge": "EndpointLabels.Distance: Double?"
+  },
+  "labelfloat": {
+    "Edge": "AllowLabelFloating: Boolean?"
+  },
+  "labelfontcolor": {
+    "Edge": "EndpointLabels.Font.Color: DotColor"
+  },
+  "labelfontname": {
+    "Edge": "EndpointLabels.Font.Name: String"
+  },
+  "labelfontsize": {
+    "Edge": "EndpointLabels.Font.Size: Double?"
+  },
+  "labelhref": {
+    "Edge": "LabelHyperlink.Href: DotEscapeString"
+  },
+  "labeljust": {
+    "Graph": "LabelAlignment.Horizontal: DotHorizontalAlignment?",
+    "Cluster": "LabelAlignment.Horizontal: DotHorizontalAlignment?"
+  },
+  "labelloc": {
+    "Graph": "LabelAlignment.Vertical: DotVerticalAlignment?",
+    "Cluster": "LabelAlignment.Vertical: DotVerticalAlignment?",
+    "Node": "LabelAlignment: DotVerticalAlignment?"
+  },
+  "labeltarget": {
+    "Edge": "LabelHyperlink.Target: DotEscapeString"
+  },
+  "labeltooltip": {
+    "Edge": "LabelHyperlink.Tooltip: DotEscapeString"
+  },
+  "labelURL": {
+    "Edge": "LabelHyperlink.Url: DotEscapeString"
+  },
+  "landscape": {
+    "Graph": "Canvas.LandscapeOrientation: Boolean?"
+  },
+  "layout": {
+    "Graph": "Layout.Engine: String"
+  },
+  "len": {
+    "Edge": "Length: Double?"
+  },
+  "lhead": {
+    "Edge": "Head.ClusterId: DotClusterId"
+  },
+  "ltail": {
+    "Edge": "Tail.ClusterId: DotClusterId"
+  },
+  "margin": {
+    "Graph": "Canvas.Margin: DotPoint",
+    "Cluster": "Padding: DotPoint",
+    "Node": "Padding: DotPoint"
+  },
+  "mclimit": {
+    "Graph": "Layout.EdgeCrossingMinimizationScaleFactor: Double?"
+  },
+  "minlen": {
+    "Edge": "MinLength: Int32?"
+  },
+  "newrank": {
+    "Graph": "Layout.UseGlobalRanking: Boolean?"
+  },
+  "nodesep": {
+    "Graph": "Layout.NodeSeparation: Double?"
+  },
+  "oneblock": {
+    "Graph": "Layout.ForceCircularLayout: Boolean?"
+  },
+  "ordering": {
+    "Graph": "Layout.EdgeOrderingMode: DotEdgeOrderingMode?",
+    "Node": "EdgeOrderingMode: DotEdgeOrderingMode?"
+  },
+  "orientation": {
+    "Graph": "Canvas.Orientation: DotOrientation?",
+    "Node": "Geometry.Rotation: Double?"
+  },
+  "pack": {
+    "Graph": "Layout.Packing: DotPackingDefinition"
+  },
+  "packmode": {
+    "Graph": "Layout.PackingMode: DotPackingModeDefinition"
+  },
+  "pad": {
+    "Graph": "Canvas.Padding: DotPoint"
+  },
+  "pencolor": {
+    "Graph": "Clusters.BorderColor: DotColor",
+    "Cluster": "BorderColor: DotColor"
+  },
+  "penwidth": {
+    "Edge": "Width: Double?",
+    "Graph": "Clusters.BorderWidth: Double?",
+    "Cluster": "BorderWidth: Double?",
+    "Node": "BorderWidth: Double?"
+  },
+  "peripheries": {
+    "Cluster": "Peripheries: Int32?",
+    "Node": "Geometry.Peripheries: Int32?"
+  },
+  "rank": {
+    "Graph": "Layout.NodeRank: DotRank?",
+    "Cluster": "NodeRank: DotRank?",
+    "Subgraph": "NodeRank: DotRank?"
+  },
+  "rankdir": {
+    "Graph": "Layout.Direction: DotLayoutDirection?"
+  },
+  "ranksep": {
+    "Graph": "Layout.RankSeparation: DotRankSeparationDefinition"
+  },
+  "ratio": {
+    "Graph": "Canvas.Scaling: DotGraphScalingDefinition"
+  },
+  "regular": {
+    "Node": "Geometry.Regular: Boolean?"
+  },
+  "remincross": {
+    "Graph": "Layout.RepeatEdgeCrossingMinimization: Boolean?"
+  },
+  "resolution": {
+    "Graph": "Canvas.Resolution: Double?"
+  },
+  "root": {
+    "Graph": "RootNodeId: DotId",
+    "Node": "IsRoot: Boolean?"
+  },
+  "rotate": {
+    "Graph": "Canvas.OrientationAngle: Int32?"
+  },
+  "rotation": {
+    "Graph": "Layout.Rotation: Double?"
+  },
+  "samehead": {
+    "Edge": "Head.GroupName: String"
+  },
+  "sametail": {
+    "Edge": "Tail.GroupName: String"
+  },
+  "shape": {
+    "Node": "Shape: DotNodeShape?"
+  },
+  "sides": {
+    "Node": "Geometry.Sides: Int32?"
+  },
+  "size": {
+    "Graph": "Canvas.Size: DotPoint"
+  },
+  "skew": {
+    "Node": "Geometry.Skew: Double?"
+  },
+  "sortv": {
+    "Graph": "Layout.SortIndex: Int32?",
+    "Cluster": "SortIndex: Int32?",
+    "Node": "SortIndex: Int32?"
+  },
+  "splines": {
+    "Graph": "EdgeShape: DotEdgeShape?"
+  },
+  "style": {
+    "Edge": "Style: DotStyles?",
+    "Graph": "Style: DotStyles?",
+    "Cluster": "Style: DotStyles?",
+    "Node": "Style: DotStyles?"
+  },
+  "stylesheet": {
+    "Graph": "SvgStyleSheet.Url: String"
+  },
+  "tailclip": {
+    "Edge": "Tail.ClipToNodeBoundary: Boolean?"
+  },
+  "tailhref": {
+    "Edge": "Tail.Hyperlink.Href: DotEscapeString"
+  },
+  "taillabel": {
+    "Edge": "Tail.Label: DotLabel"
+  },
+  "tailport": {
+    "Edge": "Tail.Port: DotEndpointPort"
+  },
+  "tailtarget": {
+    "Edge": "Tail.Hyperlink.Target: DotEscapeString"
+  },
+  "tailtooltip": {
+    "Edge": "Tail.Hyperlink.Tooltip: DotEscapeString"
+  },
+  "tailURL": {
+    "Edge": "Tail.Hyperlink.Url: DotEscapeString"
+  },
+  "target": {
+    "Edge": "Hyperlink.Target: DotEscapeString",
+    "Graph": "Hyperlink.Target: DotEscapeString",
+    "Cluster": "Hyperlink.Target: DotEscapeString",
+    "Node": "Hyperlink.Target: DotEscapeString"
+  },
+  "TBbalance": {
+    "Graph": "Layout.FloatingNodeRank: DotRank?"
+  },
+  "tooltip": {
+    "Edge": "Tooltip: DotEscapeString",
+    "Cluster": "Tooltip: DotEscapeString",
+    "Node": "Tooltip: DotEscapeString"
+  },
+  "URL": {
+    "Edge": "Hyperlink.Url: DotEscapeString",
+    "Graph": "Hyperlink.Url: DotEscapeString",
+    "Cluster": "Hyperlink.Url: DotEscapeString",
+    "Node": "Hyperlink.Url: DotEscapeString"
+  },
+  "viewport": {
+    "Graph": "Canvas.Viewport: DotViewport"
+  },
+  "weight": {
+    "Edge": "Weight: Double?"
+  },
+  "width": {
+    "Node": "Size.Width: Double?"
+  },
+  "xlabel": {
+    "Edge": "ExternalLabel: DotLabel",
+    "Node": "ExternalLabel: DotLabel"
+  }
 }

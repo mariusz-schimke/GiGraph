@@ -54,34 +54,28 @@ public class DotAttributeSupportPerElementTest
         var attributesMetadata = DotElementAttributesMetadataFactory.Create();
 
         var keyLookup = attributesMetadata
-            .SelectMany(metadata => metadata.Attributes.Select(attribute => new
-            {
-                metadata.Element,
-                attribute.Key,
-                attribute.Value.PropertyPath,
-                Property = attribute.Value.GetPropertyInfoPath().Last()
-            }))
-            .ToLookup(
-                key => key.Key,
-                element => element
+            .SelectMany(metadata => metadata.Attributes
+                .Select(attribute => new
+                {
+                    metadata.Element,
+                    attribute.Key,
+                    attribute.Value.PropertyPath,
+                    Property = attribute.Value.GetPropertyInfoPath().Last()
+                })
             )
+            .GroupBy(
+                item => item.Key
+            )
+            .OrderBy(item => item.Key)
             .ToDictionary(
-                key => key.Key,
-                element => element
-                    .OrderBy(e => e.PropertyPath, StringComparer.InvariantCulture)
-                    .GroupBy(
-                        groupKey =>
-                        {
-                            var propertyTypeName = TypeHelper.GetDisplayName(groupKey.Property.PropertyType);
-                            return $"{groupKey.PropertyPath}: {propertyTypeName}";
-                        },
-                        groupElement => groupElement.Element
-                    )
-                    .Select(property => $"{property.Key} [{property.Aggregate((current, value) => current | value)}]")
-                    .ToArray()
+                group => group.Key,
+                group => group.ToDictionary(
+                    g => g.Element,
+                    g => $"{g.PropertyPath}: {TypeHelper.GetDisplayName(g.Property.PropertyType)}"
+                )
             );
 
-        Snapshot.Match(new SortedDictionary<string, string[]>(keyLookup), "attribute_property_key_map");
+        Snapshot.Match(keyLookup, "attribute_property_key_map");
     }
 
     private static string[] GetCompatibleKeysFor(DotCompatibleElements compatibleElements)
