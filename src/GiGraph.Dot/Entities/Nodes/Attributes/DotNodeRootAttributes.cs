@@ -66,6 +66,9 @@ public partial class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<
     [DotAttributeKey(DotAttributeKeys.LabelLoc)]
     public virtual partial DotVerticalAlignment? LabelAlignment { get; set; }
 
+    [DotAttributeKey(DotAttributeKeys.NoJustify)]
+    public virtual partial bool? DisableLabelJustification { get; set; }
+
     [DotAttributeKey(DotAttributeKeys.Ordering)]
     public virtual partial DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
 

@@ -15,39 +15,39 @@ public interface IDotEdgeAttributes
 {
     /// <summary>
     ///     <para>
-    ///         Gets or sets the style of the edge (default: unset). See the descriptions of individual <see cref="DotStyles" /> values
-    ///         to learn which styles are applicable to this type of element.
+    ///         Gets or sets the style of the edge (default: unset). See the descriptions of individual <see cref="DotStyles"/> values to
+    ///         learn which styles are applicable to this type of element.
     ///     </para>
     ///     <para>
-    ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Rounded" /> |
-    ///         <see cref="DotStyles.Bold" />;
+    ///         Multiple styles can be used at once, for example: <see cref="Style"/> = <see cref="DotStyles.Rounded"/> |
+    ///         <see cref="DotStyles.Bold"/>;
     ///     </para>
     /// </summary>
     DotStyles? Style { get; set; }
 
     /// <summary>
     ///     <para>
-    ///         Gets or sets the label to display next to the edge. It may be plain text (<see cref="string" />) or HTML (
-    ///         <see cref="DotHtmlString" />). See also <see cref="DotFormattedTextBuilder" /> for text justification and simple
-    ///         formatting and <see cref="DotHtmlBuilder" /> for custom text styling and defining tables. The latter one gives the most
-    ///         possibilities (specifying font, size, color, style, images, etc.).
+    ///         Gets or sets the label to display next to the edge. It may be plain text (<see cref="string"/>) or HTML (
+    ///         <see cref="DotHtmlString"/>). See also <see cref="DotFormattedTextBuilder"/> for text justification and simple formatting
+    ///         and <see cref="DotHtmlBuilder"/> for custom text styling and defining tables. The latter one gives the most possibilities
+    ///         (specifying font, size, color, style, images, etc.).
     ///     </para>
     ///     <para>
     ///         Examples:
     ///         <list type="bullet">
     ///             <item>
     ///                 <description>
-    ///                     <see cref="Label" /> = "My label";
+    ///                     <see cref="Label"/> = "My label";
     ///                 </description>
     ///             </item>
     ///             <item>
     ///                 <description>
-    ///                     <see cref="Label" /> = new <see cref="DotHtmlBold" />("My label");
+    ///                     <see cref="Label"/> = new <see cref="DotHtmlBold"/>("My label");
     ///                 </description>
     ///             </item>
     ///             <item>
     ///                 <description>
-    ///                     <see cref="Label" /> = (<see cref="DotHtmlString" />) "&lt;b&gt;My label&lt;/b&gt;";
+    ///                     <see cref="Label"/> = (<see cref="DotHtmlString"/>) "&lt;b&gt;My label&lt;/b&gt;";
     ///                 </description>
     ///             </item>
     ///         </list>
@@ -59,12 +59,12 @@ public interface IDotEdgeAttributes
     ///     <para>
     ///         External label for the edge. The label will be placed near the center of the edge. This can be useful in dot to avoid the
     ///         occasional problem when the use of edge labels distorts the layout. For other layouts, this attribute can be viewed as a
-    ///         synonym for the <see cref="Label" /> attribute.
+    ///         synonym for the <see cref="Label"/> attribute.
     ///     </para>
     ///     <para>
     ///         These labels are added after all nodes and edges have been placed. The labels will be placed so that they do not overlap
     ///         any node or label. This means it may not be possible to place all of them. To force placing all of them, use the
-    ///         <see cref="DotGraphLayoutAttributes.ForceExternalLabels" /> attribute on the graph.
+    ///         <see cref="DotGraphLayoutAttributes.ForceExternalLabels"/> attribute on the graph.
     ///     </para>
     /// </summary>
     DotLabel? ExternalLabel { set; get; }
@@ -74,6 +74,23 @@ public interface IDotEdgeAttributes
     ///     false.
     /// </summary>
     bool? EnableLabelFloating { get; set; }
+
+    /// <summary>
+    ///     <para>
+    ///         Determines whether to justify multiline text vs the previous text line rather than the side of the container (default:
+    ///         false).
+    ///     </para>
+    ///     <para>
+    ///         By default, the justification of multi-line labels is done within the largest context that makes sense. Thus, in the
+    ///         label of a polygonal node, a left-justified line will align with the left side of the node (shifted by the prescribed
+    ///         margin). In record nodes, left-justified line will line up with the left side of the enclosing column of fields. If
+    ///         <see cref="DisableLabelJustification"/> is true, multi-line labels will be justified in the context of itself. For
+    ///         example, if <see cref="DisableLabelJustification"/> is set, the first label line is long, and the second is shorter and
+    ///         left-justified, the second will align with the left-most character in the first line, regardless of how large the node
+    ///         might be.
+    ///     </para>
+    /// </summary>
+    bool? DisableLabelJustification { get; set; }
 
     /// <summary>
     ///     Minimum edge length (rank difference between head and tail). Dot only, default: 1, minimum: 0.
@@ -89,46 +106,46 @@ public interface IDotEdgeAttributes
     ///     Weight of the edge. In dot, the heavier the weight, the shorter, straighter and more vertical the edge is. Note that weights
     ///     in dot must be integers. For twopi, a weight of 0 indicates the edge should not be used in constructing a spanning tree from
     ///     the root. For other layouts, a larger weight encourages the layout to make the edge length closer to that specified by the
-    ///     <see cref="Length" /> attribute. Default: 1. Minimum: 0 [int] (dot, twopi), 1 [double] (neato, fdp).
+    ///     <see cref="Length"/> attribute. Default: 1. Minimum: 0 [int] (dot, twopi), 1 [double] (neato, fdp).
     /// </summary>
     double? Weight { get; set; }
 
     /// <summary>
-    ///     Tooltip annotation attached to the edge (svg, cmap only). If unset, Graphviz will use the <see cref="Label" /> attribute if
+    ///     Tooltip annotation attached to the edge (svg, cmap only). If unset, Graphviz will use the <see cref="Label"/> attribute if
     ///     defined.
     /// </summary>
     DotEscapeString? Tooltip { get; set; }
 
     /// <summary>
     ///     <para>
-    ///         Gets or sets the color to use for the edge (default: <see cref="System.Drawing.Color.Black" />).
+    ///         Gets or sets the color to use for the edge (default: <see cref="System.Drawing.Color.Black"/>).
     ///     </para>
     ///     <para>
-    ///         If <see cref="DotMulticolor" /> is used, with no weighted colors in its color collection (<see cref="DotColor" /> items
+    ///         If <see cref="DotMulticolor"/> is used, with no weighted colors in its color collection (<see cref="DotColor"/> items
     ///         only), the edge is drawn using parallel splines or lines, one for each color in the list, in the order given. The head
     ///         arrow, if any, is drawn using the first color in the list, and the tail arrow, if any, the second color. This supports
     ///         the common case of drawing opposing edges, but using parallel splines instead of separately routed multiedges.
     ///     </para>
     ///     <para>
-    ///         If <see cref="DotMulticolor" /> is used with at least one weighted color (<see cref="DotWeightedColor" />), the colors
-    ///         are drawn in series, with each color being given roughly its specified fraction of the edge, expressed by the
-    ///         <see cref="DotWeightedColor.Weight" /> property.
+    ///         If <see cref="DotMulticolor"/> is used with at least one weighted color (<see cref="DotWeightedColor"/>), the colors are
+    ///         drawn in series, with each color being given roughly its specified fraction of the edge, expressed by the
+    ///         <see cref="DotWeightedColor.Weight"/> property.
     ///     </para>
     /// </summary>
     DotColorDefinition? Color { get; set; }
 
     /// <summary>
-    ///     Gets or sets the color used to fill the arrowhead, assuming it has a filled style. If <see cref="FillColor" /> is not
-    ///     defined, <see cref="Color" /> is used. If it is not defined too, the default is used, except when the output format is MIF,
-    ///     which use black by default.
+    ///     Gets or sets the color used to fill the arrowhead, assuming it has a filled style. If <see cref="FillColor"/> is not defined,
+    ///     <see cref="Color"/> is used. If it is not defined too, the default is used, except when the output format is MIF, which use
+    ///     black by default.
     /// </summary>
     DotColorDefinition? FillColor { get; set; }
 
     /// <summary>
     ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
-    ///     is set, the standard <see cref="DotColorSchemes.X11" /> naming is used. For example, if
-    ///     <see cref="DotColorSchemes.DotBrewerColorSchemes.BuGn9" /> Brewer color scheme is used, then a color named "7", e.g.
-    ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes" /> for
+    ///     is set, the standard <see cref="DotColorSchemes.X11"/> naming is used. For example, if
+    ///     <see cref="DotColorSchemes.DotBrewerColorSchemes.BuGn9"/> Brewer color scheme is used, then a color named "7", e.g.
+    ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes"/> for
     ///     supported scheme names.
     /// </summary>
     string? ColorScheme { get; set; }
@@ -146,24 +163,24 @@ public interface IDotEdgeAttributes
 
     /// <summary>
     ///     <para>
-    ///         Gets or sets edge type for drawing arrowheads. Default: <see cref="DotEdgeDirections.Forward" /> (for directed graphs),
-    ///         <see cref="DotEdgeDirections.None" /> (for undirected graphs).
+    ///         Gets or sets edge type for drawing arrowheads. Default: <see cref="DotEdgeDirections.Forward"/> (for directed graphs),
+    ///         <see cref="DotEdgeDirections.None"/> (for undirected graphs).
     ///     </para>
     ///     <para>
     ///         Indicates which ends of the edge should be decorated with an arrowhead. The actual style of the arrowhead may be
-    ///         specified using the <see cref="IDotEdgeEndpointAttributes.Arrowhead" /> attribute on the head or tail of the edge.
+    ///         specified using the <see cref="IDotEdgeEndpointAttributes.Arrowhead"/> attribute on the head or tail of the edge.
     ///     </para>
     ///     <para>
-    ///         A glyph is drawn at the head end of the edge if and only if the direction is <see cref="DotEdgeDirections.Forward" /> or
-    ///         <see cref="DotEdgeDirections.Both" />.
+    ///         A glyph is drawn at the head end of the edge if and only if the direction is <see cref="DotEdgeDirections.Forward"/> or
+    ///         <see cref="DotEdgeDirections.Both"/>.
     ///     </para>
     ///     <para>
-    ///         A glyph is drawn at the tail end of the edge if and only if the direction is <see cref="DotEdgeDirections.Backward" /> or
-    ///         <see cref="DotEdgeDirections.Both" />.
+    ///         A glyph is drawn at the tail end of the edge if and only if the direction is <see cref="DotEdgeDirections.Backward"/> or
+    ///         <see cref="DotEdgeDirections.Both"/>.
     ///     </para>
     ///     <para>
     ///         For undirected edges T -- H, one of the nodes, usually the right hand one, is treated as the head for the purpose of
-    ///         interpreting <see cref="DotEdgeDirections.Forward" /> and <see cref="DotEdgeDirections.Backward" />.
+    ///         interpreting <see cref="DotEdgeDirections.Forward"/> and <see cref="DotEdgeDirections.Backward"/>.
     ///     </para>
     /// </summary>
     DotEdgeDirections? Directions { get; set; }
@@ -194,10 +211,10 @@ public interface IDotEdgeAttributes
     ///         postscript, map only).
     ///     </para>
     ///     <para>
-    ///         Normal <see cref="DotEscapeString.NodeIdPlaceholder" />, <see cref="DotEscapeString.EdgeDefinitionPlaceholder" />,
-    ///         <see cref="DotEscapeString.GraphIdPlaceholder" /> substitutions can be applied (see
-    ///         <see cref="DotFormattedTextBuilder" />). Note, however, that <see cref="DotEscapeString.EdgeDefinitionPlaceholder" />
-    ///         does not provide a unique ID for multi-edges.
+    ///         Normal <see cref="DotEscapeString.NodeIdPlaceholder"/>, <see cref="DotEscapeString.EdgeDefinitionPlaceholder"/>,
+    ///         <see cref="DotEscapeString.GraphIdPlaceholder"/> substitutions can be applied (see <see cref="DotFormattedTextBuilder"/>
+    ///         ). Note, however, that <see cref="DotEscapeString.EdgeDefinitionPlaceholder"/> does not provide a unique ID for
+    ///         multi-edges.
     ///     </para>
     ///     <para>
     ///         If provided, it is the responsibility of the provider to keep ID values unique for its intended downstream use. If no ID

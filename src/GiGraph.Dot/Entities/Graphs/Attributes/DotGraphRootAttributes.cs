@@ -63,6 +63,9 @@ public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDot
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
 
+    [DotAttributeKey(DotAttributeKeys.NoJustify)]
+    public virtual partial bool? DisableLabelJustification { get; set; }
+
     [DotAttributeKey(DotAttributeKeys.Splines)]
     public virtual partial DotEdgeShape? EdgeShape { get; set; }
 
