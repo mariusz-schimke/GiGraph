@@ -186,7 +186,7 @@
     "Edge": "EndpointLabels.Distance: Double?"
   },
   "labelfloat": {
-    "Edge": "AllowLabelFloating: Boolean?"
+    "Edge": "EnableLabelFloating: Boolean?"
   },
   "labelfontcolor": {
     "Edge": "EndpointLabels.Font.Color: DotColor"
