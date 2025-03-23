@@ -508,7 +508,7 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot)]
     public const string TbBalance = "TBbalance";
 
-    [DotAttributeMetadata(DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.Cmap)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.Cmap)]
     public const string Tooltip = "tooltip";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, compatibleOutputs: DotCompatibleOutputs.Bitmap, isImplemented: false)]

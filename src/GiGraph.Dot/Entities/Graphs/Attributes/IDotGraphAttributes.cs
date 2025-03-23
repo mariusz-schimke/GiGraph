@@ -90,6 +90,12 @@ public interface IDotGraphAttributes
     string? Comment { get; set; }
 
     /// <summary>
+    ///     Tooltip annotation attached to the graph (svg, cmap only). If unset, Graphviz will use the <see cref="Label"/> attribute if
+    ///     defined.
+    /// </summary>
+    DotEscapeString? Tooltip { get; set; }
+
+    /// <summary>
     ///     <para>
     ///         Specifies a list of directories in which to look for image files used by nodes, referenced either by the
     ///         <see cref="DotNodeImageAttributes.Path" /> of their <see cref="IDotNodeRootAttributes.Image" /> attributes, or from the
