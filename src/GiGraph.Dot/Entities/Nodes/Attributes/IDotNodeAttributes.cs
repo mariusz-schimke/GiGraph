@@ -18,50 +18,50 @@ public interface IDotNodeAttributes
 {
     /// <summary>
     ///     <para>
-    ///         Gets or sets the style of the cluster (default: unset). See the descriptions of individual <see cref="DotStyles" />
-    ///         values to learn which styles are applicable to this type of element.
+    ///         Gets or sets the style of the cluster (default: unset). See the descriptions of individual <see cref="DotStyles"/> values
+    ///         to learn which styles are applicable to this type of element.
     ///     </para>
     ///     <para>
-    ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Rounded" /> |
-    ///         <see cref="DotStyles.Bold" />;
+    ///         Multiple styles can be used at once, for example: <see cref="Style"/> = <see cref="DotStyles.Rounded"/> |
+    ///         <see cref="DotStyles.Bold"/>;
     ///     </para>
     /// </summary>
     DotStyles? Style { get; set; }
 
     /// <summary>
     ///     <para>
-    ///         Gets or sets the label to display on the node. It may be plain text (<see cref="string" />), HTML (
-    ///         <see cref="DotHtmlString" />), or a record (<see cref="DotRecord" />) for a record-shaped node (when <see cref="Shape" />
-    ///         = <see cref="DotNodeShape.Record" /> or <see cref="Shape" /> = <see cref="DotNodeShape.RoundedRecord" />). When not
-    ///         specified, node identifier is used.
+    ///         Gets or sets the label to display on the node. It may be plain text (<see cref="string"/>), HTML (
+    ///         <see cref="DotHtmlString"/>), or a record (<see cref="DotRecord"/>) for a record-shaped node (when <see cref="Shape"/> =
+    ///         <see cref="DotNodeShape.Record"/> or <see cref="Shape"/> = <see cref="DotNodeShape.RoundedRecord"/>). When not specified,
+    ///         node identifier is used.
     ///     </para>
     ///     <para>
-    ///         See also <see cref="DotFormattedTextBuilder" /> for text justification and simple formatting,
-    ///         <see cref="DotRecordBuilder" /> for building simple tables with records, and <see cref="DotHtmlBuilder" /> for custom
-    ///         text styling and defining tables. The latter one gives the most possibilities (specifying font, size, color, style,
-    ///         images, etc.).
+    ///         See also <see cref="DotFormattedTextBuilder"/> for text justification and simple formatting,
+    ///         <see cref="DotRecordBuilder"/> for building simple tables with records, and <see cref="DotHtmlBuilder"/> for custom text
+    ///         styling and defining tables. The latter one gives the most possibilities (specifying font, size, color, style, images,
+    ///         etc.).
     ///     </para>
     ///     <para>
     ///         Examples:
     ///         <list type="bullet">
     ///             <item>
     ///                 <description>
-    ///                     <see cref="Label" /> = "My label";
+    ///                     <see cref="Label"/> = "My label";
     ///                 </description>
     ///             </item>
     ///             <item>
     ///                 <description>
-    ///                     <see cref="Label" /> = new <see cref="DotRecord" />("My field 1", "My field 2");
+    ///                     <see cref="Label"/> = new <see cref="DotRecord"/>("My field 1", "My field 2");
     ///                 </description>
     ///             </item>
     ///             <item>
     ///                 <description>
-    ///                     <see cref="Label" /> = new <see cref="DotHtmlBold" />("My label");
+    ///                     <see cref="Label"/> = new <see cref="DotHtmlBold"/>("My label");
     ///                 </description>
     ///             </item>
     ///             <item>
     ///                 <description>
-    ///                     <see cref="Label" /> = (<see cref="DotHtmlString" />) "&lt;b&gt;My label&lt;/b&gt;";
+    ///                     <see cref="Label"/> = (<see cref="DotHtmlString"/>) "&lt;b&gt;My label&lt;/b&gt;";
     ///                 </description>
     ///             </item>
     ///         </list>
@@ -72,21 +72,38 @@ public interface IDotNodeAttributes
     /// <summary>
     ///     External label for the node. The label will be placed outside of the node but near it. This can be useful in DOT to avoid the
     ///     occasional problem when the use of edge labels distorts the layout. For other layouts, this attribute can be viewed as a
-    ///     synonym for the <see cref="Label" /> attribute. These labels are added after all nodes and edges have been placed. The labels
+    ///     synonym for the <see cref="Label"/> attribute. These labels are added after all nodes and edges have been placed. The labels
     ///     will be placed so that they do not overlap any node or label. This means it may not be possible to place all of them. To
-    ///     force placing all of them, use the <see cref="DotGraphLayoutAttributes.ForceExternalLabels" /> attribute of graph
-    ///     <see cref="IDotGraphRootAttributes.Layout" />.
+    ///     force placing all of them, use the <see cref="DotGraphLayoutAttributes.ForceExternalLabels"/> attribute of graph
+    ///     <see cref="IDotGraphRootAttributes.Layout"/>.
     /// </summary>
     DotLabel? ExternalLabel { get; set; }
 
     /// <summary>
-    ///     Vertical placement of the label (default: <see cref="DotVerticalAlignment.Center" />). This attribute is used only when the
+    ///     Vertical placement of the label (default: <see cref="DotVerticalAlignment.Center"/>). This attribute is used only when the
     ///     height of the node is larger than the height of its label.
     /// </summary>
     DotVerticalAlignment? LabelAlignment { get; set; }
 
     /// <summary>
-    ///     Tooltip annotation attached to the node (svg, cmap only). If unset, Graphviz will use the <see cref="Label" /> attribute if
+    ///     <para>
+    ///         Determines whether to justify multiline text vs the previous text line rather than the side of the container (default:
+    ///         false).
+    ///     </para>
+    ///     <para>
+    ///         By default, the justification of multi-line labels is done within the largest context that makes sense. Thus, in the
+    ///         label of a polygonal node, a left-justified line will align with the left side of the node (shifted by the prescribed
+    ///         margin). In record nodes, left-justified line will line up with the left side of the enclosing column of fields. If
+    ///         <see cref="DisableLabelJustification"/> is true, multi-line labels will be justified in the context of itself. For
+    ///         example, if <see cref="DisableLabelJustification"/> is set, the first label line is long, and the second is shorter and
+    ///         left-justified, the second will align with the left-most character in the first line, regardless of how large the node
+    ///         might be.
+    ///     </para>
+    /// </summary>
+    bool? DisableLabelJustification { get; set; }
+
+    /// <summary>
+    ///     Tooltip annotation attached to the node (svg, cmap only). If unset, Graphviz will use the <see cref="Label"/> attribute if
     ///     defined. Note that if the label is a record specification or an HTML-like label, the resulting tooltip may be unhelpful. In
     ///     this case, if tooltips will be generated, the user should set a tooltip attribute explicitly.
     /// </summary>
@@ -94,25 +111,25 @@ public interface IDotNodeAttributes
 
     /// <summary>
     ///     <para>
-    ///         Gets or sets the color to use for the node (default: <see cref="System.Drawing.Color.Black" />).
+    ///         Gets or sets the color to use for the node (default: <see cref="System.Drawing.Color.Black"/>).
     ///     </para>
     ///     <para>
-    ///         If <see cref="DotGradientColor" /> is used, with no weighted colors in its parameters (<see cref="DotColor" /> items
-    ///         only), and a <see cref="DotNodeFillStyle.Normal" /> fill style is specified for the node, a linear gradient fill is done.
+    ///         If <see cref="DotGradientColor"/> is used, with no weighted colors in its parameters (<see cref="DotColor"/> items only),
+    ///         and a <see cref="DotNodeFillStyle.Normal"/> fill style is specified for the node, a linear gradient fill is done.
     ///     </para>
     ///     <para>
-    ///         If <see cref="DotGradientColor" /> is used with weighted colors (see <see cref="DotWeightedColor" />), a degenerate
-    ///         linear gradient fill is done. This essentially does a fill using two colors, with the
-    ///         <see cref="DotWeightedColor.Weight" /> specifying how much of region is filled with each color.
+    ///         If <see cref="DotGradientColor"/> is used with weighted colors (see <see cref="DotWeightedColor"/>), a degenerate linear
+    ///         gradient fill is done. This essentially does a fill using two colors, with the <see cref="DotWeightedColor.Weight"/>
+    ///         specifying how much of region is filled with each color.
     ///     </para>
     ///     <para>
-    ///         If a <see cref="DotNodeFillStyle.Radial" /> fill style is specified for the node, then a radial gradient fill is done.
-    ///         See also the <see cref="GradientFillAngle" /> attribute for setting a gradient angle.
+    ///         If a <see cref="DotNodeFillStyle.Radial"/> fill style is specified for the node, then a radial gradient fill is done. See
+    ///         also the <see cref="GradientFillAngle"/> attribute for setting a gradient angle.
     ///     </para>
     ///     <para>
     ///         These fills work with any shape. For certain shapes, fill style can be set to do fills using more than 2 colors (set the
-    ///         fill style to <see cref="DotNodeFillStyle.Striped" /> or <see cref="DotNodeFillStyle.Wedged" /> style, and use
-    ///         <see cref="DotMulticolor" /> as a color list definition).
+    ///         fill style to <see cref="DotNodeFillStyle.Striped"/> or <see cref="DotNodeFillStyle.Wedged"/> style, and use
+    ///         <see cref="DotMulticolor"/> as a color list definition).
     ///     </para>
     /// </summary>
     DotColorDefinition? Color { get; set; }
@@ -120,25 +137,24 @@ public interface IDotNodeAttributes
     /// <summary>
     ///     <para>
     ///         Gets or sets the color used to fill the background of the node, assuming that the fill style of the node is
-    ///         <see cref="DotNodeFillStyle.Normal" /> (default: <see cref="System.Drawing.Color.LightGray" />). If
-    ///         <see cref="FillColor" /> is not defined, <see cref="Color" /> is used. If it is not defined too, the default is used,
-    ///         except for <see cref="Shape" /> of <see cref="DotNodeShape.Point" />, or when the output format is MIF, which use black
-    ///         by default.
+    ///         <see cref="DotNodeFillStyle.Normal"/> (default: <see cref="System.Drawing.Color.LightGray"/>). If <see cref="FillColor"/>
+    ///         is not defined, <see cref="Color"/> is used. If it is not defined too, the default is used, except for
+    ///         <see cref="Shape"/> of <see cref="DotNodeShape.Point"/>, or when the output format is MIF, which use black by default.
     ///     </para>
     ///     <para>
-    ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
-    ///         the <see cref="DotNodeFillStyle.Radial" /> fill style to the node will cause a radial fill. If the second color is
-    ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
-    ///         <see cref="GradientFillAngle" /> attribute for setting a gradient angle.
+    ///         When <see cref="DotGradientColor"/> is used, a gradient fill is generated. By default, this is a linear fill; applying
+    ///         the <see cref="DotNodeFillStyle.Radial"/> fill style to the node will cause a radial fill. If the second color is
+    ///         <see cref="System.Drawing.Color.Empty"/>, the default color is used for it. See also the <see cref="GradientFillAngle"/>
+    ///         attribute for setting a gradient angle.
     ///     </para>
     /// </summary>
     DotColorDefinition? FillColor { get; set; }
 
     /// <summary>
     ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
-    ///     is set, the standard <see cref="DotColorSchemes.X11" /> naming is used. For example, if
-    ///     <see cref="DotColorSchemes.DotBrewerColorSchemes.BuGn9" /> Brewer color scheme is used, then a color named "7", e.g.
-    ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes" /> for
+    ///     is set, the standard <see cref="DotColorSchemes.X11"/> naming is used. For example, if
+    ///     <see cref="DotColorSchemes.DotBrewerColorSchemes.BuGn9"/> Brewer color scheme is used, then a color named "7", e.g.
+    ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes"/> for
     ///     supported scheme names.
     /// </summary>
     string? ColorScheme { get; set; }
@@ -158,7 +174,7 @@ public interface IDotNodeAttributes
     double? BorderWidth { get; set; }
 
     /// <summary>
-    ///     Gets or sets the shape of the node (default: <see cref="DotNodeShape.Ellipse" />).
+    ///     Gets or sets the shape of the node (default: <see cref="DotNodeShape.Ellipse"/>).
     /// </summary>
     DotNodeShape? Shape { get; set; }
 
@@ -186,8 +202,8 @@ public interface IDotNodeAttributes
     string? GroupName { get; set; }
 
     /// <summary>
-    ///     Gets or sets the sorting index of the node (default: 0). If <see cref="DotGraphLayoutAttributes.PackingMode" /> of graph
-    ///     <see cref="IDotGraphRootAttributes.Layout" /> indicates an array packing, this attribute specifies an insertion order among
+    ///     Gets or sets the sorting index of the node (default: 0). If <see cref="DotGraphLayoutAttributes.PackingMode"/> of graph
+    ///     <see cref="IDotGraphRootAttributes.Layout"/> indicates an array packing, this attribute specifies an insertion order among
     ///     the components, with smaller values inserted first.
     /// </summary>
     int? SortIndex { get; set; }
@@ -202,7 +218,7 @@ public interface IDotNodeAttributes
     ///         of its connected component. If not defined, twopi will pick a most central node, and circo will pick a random node.
     ///     </para>
     ///     <para>
-    ///         If the <see cref="IDotGraphAttributes.RootNodeId" /> attribute on the graph is defined as the empty string, twopi will
+    ///         If the <see cref="IDotGraphAttributes.RootNodeId"/> attribute on the graph is defined as the empty string, twopi will
     ///         reset it to name of the node picked as the root node.
     ///     </para>
     ///     <para>
@@ -218,10 +234,10 @@ public interface IDotNodeAttributes
     ///         postscript, map only).
     ///     </para>
     ///     <para>
-    ///         Normal <see cref="DotEscapeString.NodeIdPlaceholder" />, <see cref="DotEscapeString.EdgeDefinitionPlaceholder" />,
-    ///         <see cref="DotEscapeString.GraphIdPlaceholder" /> substitutions can be applied (see
-    ///         <see cref="DotFormattedTextBuilder" />). Note, however, that <see cref="DotEscapeString.EdgeDefinitionPlaceholder" />
-    ///         does not provide a unique ID for multi-edges.
+    ///         Normal <see cref="DotEscapeString.NodeIdPlaceholder"/>, <see cref="DotEscapeString.EdgeDefinitionPlaceholder"/>,
+    ///         <see cref="DotEscapeString.GraphIdPlaceholder"/> substitutions can be applied (see <see cref="DotFormattedTextBuilder"/>
+    ///         ). Note, however, that <see cref="DotEscapeString.EdgeDefinitionPlaceholder"/> does not provide a unique ID for
+    ///         multi-edges.
     ///     </para>
     ///     <para>
     ///         If provided, it is the responsibility of the provider to keep ID values unique for its intended downstream use. If no ID

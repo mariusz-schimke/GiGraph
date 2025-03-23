@@ -59,6 +59,9 @@ public partial class DotClusterRootAttributes : DotClusterNodeRootCommonAttribut
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
 
+    [DotAttributeKey(DotAttributeKeys.NoJustify)]
+    public virtual partial bool? DisableLabelJustification { get; set; }
+
     [DotAttributeKey(DotAttributeKeys.Rank)]
     public virtual partial DotRank? NodeRank { get; set; }
 

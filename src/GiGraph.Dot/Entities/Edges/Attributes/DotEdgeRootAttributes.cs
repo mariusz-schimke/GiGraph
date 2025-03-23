@@ -108,6 +108,9 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
     [DotAttributeKey(DotAttributeKeys.LabelFloat)]
     public virtual partial bool? EnableLabelFloating { get; set; }
 
+    [DotAttributeKey(DotAttributeKeys.NoJustify)]
+    public virtual partial bool? DisableLabelJustification { get; set; }
+
     [DotAttributeKey(DotAttributeKeys.Constraint)]
     public virtual partial bool? Constrain { get; set; }
 }

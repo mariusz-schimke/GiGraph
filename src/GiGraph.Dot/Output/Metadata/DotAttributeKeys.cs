@@ -309,7 +309,7 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot)]
     public const string NewRank = "newrank";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, isImplemented: false)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, isImplemented: true)]
     public const string NoJustify = "nojustify";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Neato, isImplemented: false)]

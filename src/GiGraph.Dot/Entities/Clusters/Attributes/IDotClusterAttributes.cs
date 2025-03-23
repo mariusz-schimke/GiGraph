@@ -18,39 +18,39 @@ public interface IDotClusterAttributes : IDotGraphClusterCommonAttributes
 {
     /// <summary>
     ///     <para>
-    ///         Gets or sets the style of the cluster (default: unset). See the descriptions of individual <see cref="DotStyles" />
-    ///         values to learn which styles are applicable to this type of element.
+    ///         Gets or sets the style of the cluster (default: unset). See the descriptions of individual <see cref="DotStyles"/> values
+    ///         to learn which styles are applicable to this type of element.
     ///     </para>
     ///     <para>
-    ///         Multiple styles can be used at once, for example: <see cref="Style" /> = <see cref="DotStyles.Rounded" /> |
-    ///         <see cref="DotStyles.Bold" />;
+    ///         Multiple styles can be used at once, for example: <see cref="Style"/> = <see cref="DotStyles.Rounded"/> |
+    ///         <see cref="DotStyles.Bold"/>;
     ///     </para>
     /// </summary>
     DotStyles? Style { get; set; }
 
     /// <summary>
     ///     <para>
-    ///         Gets or sets the label to display on the cluster. It may be plain text (<see cref="string" />) or HTML (
-    ///         <see cref="DotHtmlString" />). See also <see cref="DotFormattedTextBuilder" /> for text justification and simple
-    ///         formatting and <see cref="DotHtmlBuilder" /> for custom text styling and defining tables. The latter one gives the most
-    ///         possibilities (specifying font, size, color, style, images, etc.).
+    ///         Gets or sets the label to display on the cluster. It may be plain text (<see cref="string"/>) or HTML (
+    ///         <see cref="DotHtmlString"/>). See also <see cref="DotFormattedTextBuilder"/> for text justification and simple formatting
+    ///         and <see cref="DotHtmlBuilder"/> for custom text styling and defining tables. The latter one gives the most possibilities
+    ///         (specifying font, size, color, style, images, etc.).
     ///     </para>
     ///     <para>
     ///         Examples:
     ///         <list type="bullet">
     ///             <item>
     ///                 <description>
-    ///                     <see cref="Label" /> = "My label";
+    ///                     <see cref="Label"/> = "My label";
     ///                 </description>
     ///             </item>
     ///             <item>
     ///                 <description>
-    ///                     <see cref="Label" /> = new <see cref="DotHtmlBold" />("My label");
+    ///                     <see cref="Label"/> = new <see cref="DotHtmlBold"/>("My label");
     ///                 </description>
     ///             </item>
     ///             <item>
     ///                 <description>
-    ///                     <see cref="Label" /> = (<see cref="DotHtmlString" />) "&lt;b&gt;My label&lt;/b&gt;";
+    ///                     <see cref="Label"/> = (<see cref="DotHtmlString"/>) "&lt;b&gt;My label&lt;/b&gt;";
     ///                 </description>
     ///             </item>
     ///         </list>
@@ -59,31 +59,48 @@ public interface IDotClusterAttributes : IDotGraphClusterCommonAttributes
     DotLabel? Label { get; set; }
 
     /// <summary>
-    ///     Tooltip annotation attached to the cluster (svg, cmap only). If unset, Graphviz will use the <see cref="Label" /> attribute
-    ///     if defined.
+    ///     <para>
+    ///         Determines whether to justify multiline text vs the previous text line rather than the side of the container (default:
+    ///         false).
+    ///     </para>
+    ///     <para>
+    ///         By default, the justification of multi-line labels is done within the largest context that makes sense. Thus, in the
+    ///         label of a polygonal node, a left-justified line will align with the left side of the node (shifted by the prescribed
+    ///         margin). In record nodes, left-justified line will line up with the left side of the enclosing column of fields. If
+    ///         <see cref="DisableLabelJustification"/> is true, multi-line labels will be justified in the context of itself. For
+    ///         example, if <see cref="DisableLabelJustification"/> is set, the first label line is long, and the second is shorter and
+    ///         left-justified, the second will align with the left-most character in the first line, regardless of how large the node
+    ///         might be.
+    ///     </para>
+    /// </summary>
+    bool? DisableLabelJustification { get; set; }
+
+    /// <summary>
+    ///     Tooltip annotation attached to the cluster (svg, cmap only). If unset, Graphviz will use the <see cref="Label"/> attribute if
+    ///     defined.
     /// </summary>
     DotEscapeString? Tooltip { get; set; }
 
     /// <summary>
     ///     <para>
     ///         Gets or sets the background color of the cluster (default: none). Used as the initial background for the cluster. If the
-    ///         <see cref="DotClusterFillStyle.Normal" /> fill style is used for the cluster, its
-    ///         <see cref="IDotGraphClusterCommonAttributes.FillColor" /> will overlay the background color.
+    ///         <see cref="DotClusterFillStyle.Normal"/> fill style is used for the cluster, its
+    ///         <see cref="IDotGraphClusterCommonAttributes.FillColor"/> will overlay the background color.
     ///     </para>
     ///     <para>
-    ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
-    ///         the <see cref="DotClusterFillStyle.Radial" /> fill style to the cluster will cause a radial fill. If the second color is
-    ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
-    ///         <see cref="GradientFillAngle" /> attribute for setting a gradient angle.
+    ///         When <see cref="DotGradientColor"/> is used, a gradient fill is generated. By default, this is a linear fill; applying
+    ///         the <see cref="DotClusterFillStyle.Radial"/> fill style to the cluster will cause a radial fill. If the second color is
+    ///         <see cref="System.Drawing.Color.Empty"/>, the default color is used for it. See also the <see cref="GradientFillAngle"/>
+    ///         attribute for setting a gradient angle.
     ///     </para>
     /// </summary>
     DotColorDefinition? BackgroundColor { get; set; }
 
     /// <summary>
     ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
-    ///     is set, the standard <see cref="DotColorSchemes.X11" /> naming is used. For example, if
-    ///     <see cref="DotColorSchemes.DotBrewerColorSchemes.BuGn9" /> Brewer color scheme is used, then a color named "7", e.g.
-    ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes" /> for
+    ///     is set, the standard <see cref="DotColorSchemes.X11"/> naming is used. For example, if
+    ///     <see cref="DotColorSchemes.DotBrewerColorSchemes.BuGn9"/> Brewer color scheme is used, then a color named "7", e.g.
+    ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes"/> for
     ///     supported scheme names.
     /// </summary>
     string? ColorScheme { get; set; }
@@ -108,7 +125,7 @@ public interface IDotClusterAttributes : IDotGraphClusterCommonAttributes
     DotPoint? Padding { get; set; }
 
     /// <summary>
-    ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="DotGraphLayoutAttributes.PackingMode" /> indicates
+    ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="DotGraphLayoutAttributes.PackingMode"/> indicates
     ///     an array packing, this attribute specifies an insertion order among the components, with smaller values inserted first.
     /// </summary>
     int? SortIndex { get; set; }
@@ -119,10 +136,10 @@ public interface IDotClusterAttributes : IDotGraphClusterCommonAttributes
     ///         postscript, map only).
     ///     </para>
     ///     <para>
-    ///         Normal <see cref="DotEscapeString.NodeIdPlaceholder" />, <see cref="DotEscapeString.EdgeDefinitionPlaceholder" />,
-    ///         <see cref="DotEscapeString.GraphIdPlaceholder" /> substitutions can be applied (see
-    ///         <see cref="DotFormattedTextBuilder" />). Note, however, that <see cref="DotEscapeString.EdgeDefinitionPlaceholder" />
-    ///         does not provide a unique ID for multi-edges.
+    ///         Normal <see cref="DotEscapeString.NodeIdPlaceholder"/>, <see cref="DotEscapeString.EdgeDefinitionPlaceholder"/>,
+    ///         <see cref="DotEscapeString.GraphIdPlaceholder"/> substitutions can be applied (see <see cref="DotFormattedTextBuilder"/>
+    ///         ). Note, however, that <see cref="DotEscapeString.EdgeDefinitionPlaceholder"/> does not provide a unique ID for
+    ///         multi-edges.
     ///     </para>
     ///     <para>
     ///         If provided, it is the responsibility of the provider to keep ID values unique for its intended downstream use. If no ID
@@ -147,8 +164,8 @@ public interface IDotClusterAttributes : IDotGraphClusterCommonAttributes
     ///     </para>
     ///     <para>
     ///         Since this library makes a strong distinction between subgraphs and clusters (in terms of what purpose they are used for
-    ///         and what attributes are settable on each of them), you should use a <see cref="DotSubgraph" /> rather than a cluster with
-    ///         <see cref="IsCluster" /> set to <see langword="false" />.
+    ///         and what attributes are settable on each of them), you should use a <see cref="DotSubgraph"/> rather than a cluster with
+    ///         <see cref="IsCluster"/> set to <see langword="false"/>.
     ///     </para>
     /// </summary>
     bool? IsCluster { get; set; }
