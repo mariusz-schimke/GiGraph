@@ -19,7 +19,7 @@ public class DotGraphFactory
             Comment = "graph_comment",
             Clusters =
             {
-                AllowEdgeClipping = true,
+                EnableEdgeClipping = true,
                 FillColor = Color.Brown
             }
         };
@@ -121,7 +121,7 @@ public class DotGraphFactory
             },
             Clusters =
             {
-                AllowEdgeClipping = true
+                EnableEdgeClipping = true
             }
         };
 

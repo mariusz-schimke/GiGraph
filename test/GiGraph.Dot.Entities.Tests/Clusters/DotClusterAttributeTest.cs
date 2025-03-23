@@ -71,7 +71,7 @@ public class DotClusterAttributeTest
         {
             Clusters =
             {
-                AllowEdgeClipping = true
+                EnableEdgeClipping = true
             }
         };
 

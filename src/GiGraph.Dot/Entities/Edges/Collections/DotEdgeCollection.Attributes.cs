@@ -61,11 +61,11 @@ public partial class DotEdgeCollection : IDotEdgeRootAttributes
         set => Attributes.Implementation.ExternalLabel = value;
     }
 
-    /// <inheritdoc cref="IDotEdgeAttributes.AllowLabelFloating" />
-    public virtual bool? AllowLabelFloating
+    /// <inheritdoc cref="IDotEdgeAttributes.EnableLabelFloating" />
+    public virtual bool? EnableLabelFloating
     {
-        get => Attributes.Implementation.AllowLabelFloating;
-        set => Attributes.Implementation.AllowLabelFloating = value;
+        get => Attributes.Implementation.EnableLabelFloating;
+        set => Attributes.Implementation.EnableLabelFloating = value;
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.MinLength" />

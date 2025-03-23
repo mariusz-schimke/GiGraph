@@ -49,7 +49,7 @@
     "Node": "Comment: String"
   },
   "compound": {
-    "Graph": "Clusters.AllowEdgeClipping: Boolean?"
+    "Graph": "Clusters.EnableEdgeClipping: Boolean?"
   },
   "concentrate": {
     "Graph": "Layout.ConcentrateEdges: Boolean?"
@@ -186,7 +186,7 @@
     "Edge": "EndpointLabels.Distance: Double?"
   },
   "labelfloat": {
-    "Edge": "AllowLabelFloating: Boolean?"
+    "Edge": "EnableLabelFloating: Boolean?"
   },
   "labelfontcolor": {
     "Edge": "EndpointLabels.Font.Color: DotColor"
@@ -245,7 +245,7 @@
     "Edge": "MinLength: Int32?"
   },
   "newrank": {
-    "Graph": "Layout.UseGlobalRanking: Boolean?"
+    "Graph": "Layout.EnableGlobalRanking: Boolean?"
   },
   "nodesep": {
     "Graph": "Layout.NodeSeparation: Double?"

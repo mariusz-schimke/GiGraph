@@ -1351,13 +1351,13 @@ digraph
 
 ### Clusters as endpoints
 
-Clusters may be used as endpoints. In such case the edge is clipped to the cluster border instead of being connected to a node inside the cluster. To achieve that, define an edge that joins any node outside the cluster with a node inside the cluster. Then, on the same edge, assign the identifier of that cluster to the *ClusterId* attribute of the endpoint that refers to the node inside the cluster. Also, remember to enable clipping edges to cluster borders by setting the *AllowEdgeClipping* attribute for clusters on the graph. The following example presents the complete idea.
+Clusters may be used as endpoints. In such case the edge is clipped to the cluster border instead of being connected to a node inside the cluster. To achieve that, define an edge that joins any node outside the cluster with a node inside the cluster. Then, on the same edge, assign the identifier of that cluster to the *ClusterId* attribute of the endpoint that refers to the node inside the cluster. Also, remember to enable clipping edges to cluster borders by setting the *EnableEdgeClipping* attribute for clusters on the graph. The following example presents the complete idea.
 
 ```c#
 var graph = new DotGraph();
 
 // required to enable clipping edges to cluster borders
-graph.Clusters.AllowEdgeClipping = true;
+graph.Clusters.EnableEdgeClipping = true;
 
 // specify a cluster and add a node to it
 graph.Clusters.Add("Cluster1", cluster =>
@@ -1627,7 +1627,7 @@ graph.Label = "Example Flow";
 graph.Layout.Direction = DotLayoutDirection.LeftToRight;
 graph.EdgeShape = DotEdgeShape.Orthogonal;
 
-graph.Clusters.AllowEdgeClipping = true;
+graph.Clusters.EnableEdgeClipping = true;
 
 // set individual node styles
 graph.Nodes.Add("Start").Shape = DotNodeShape.Circle;

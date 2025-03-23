@@ -40,7 +40,7 @@ public partial class DotGraphClustersAttributes : DotEntityAttributesWithMetadat
     public virtual partial DotColorDefinition? FillColor { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Compound)]
-    public virtual partial bool? AllowEdgeClipping { get; set; }
+    public virtual partial bool? EnableEdgeClipping { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.ClusterRank)]
     public virtual partial DotClusterVisualizationMode? VisualizationMode { get; set; }

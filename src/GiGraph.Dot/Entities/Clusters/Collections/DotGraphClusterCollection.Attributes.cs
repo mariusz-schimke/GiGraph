@@ -11,11 +11,11 @@ public partial class DotGraphClusterCollection : IDotGraphClustersRootAttributes
     /// <inheritdoc cref="IDotGraphClustersRootAttributes.Style" />
     public DotClusterStyleAttributeOptions Style => Attributes.Implementation.Style;
 
-    /// <inheritdoc cref="IDotGraphClustersAttributes.AllowEdgeClipping" />
-    public virtual bool? AllowEdgeClipping
+    /// <inheritdoc cref="IDotGraphClustersAttributes.EnableEdgeClipping" />
+    public virtual bool? EnableEdgeClipping
     {
-        get => Attributes.Implementation.AllowEdgeClipping;
-        set => Attributes.Implementation.AllowEdgeClipping = value;
+        get => Attributes.Implementation.EnableEdgeClipping;
+        set => Attributes.Implementation.EnableEdgeClipping = value;
     }
 
     /// <inheritdoc cref="IDotGraphClustersAttributes.VisualizationMode" />
