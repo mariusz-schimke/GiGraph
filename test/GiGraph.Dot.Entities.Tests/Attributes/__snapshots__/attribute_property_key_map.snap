@@ -49,7 +49,7 @@
     "Node": "Comment: String"
   },
   "compound": {
-    "Graph": "Clusters.AllowEdgeClipping: Boolean?"
+    "Graph": "Clusters.EnableEdgeClipping: Boolean?"
   },
   "concentrate": {
     "Graph": "Layout.ConcentrateEdges: Boolean?"

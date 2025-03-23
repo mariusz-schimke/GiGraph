@@ -11,7 +11,7 @@ public interface IDotGraphClustersAttributes : IDotGraphClusterCommonAttributes
     ///     <see cref="IDotEdgeEndpointAttributes.ClusterId" /> for an edge's head or tail to attach it to the border of the cluster with
     ///     that identifier.
     /// </summary>
-    bool? AllowEdgeClipping { get; set; }
+    bool? EnableEdgeClipping { get; set; }
 
     /// <summary>
     ///     Mode used for handling clusters (dot only; default: <see cref="DotClusterVisualizationMode.Bounded" />).
