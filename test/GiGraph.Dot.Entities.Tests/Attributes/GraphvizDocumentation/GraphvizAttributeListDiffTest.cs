@@ -113,12 +113,6 @@ public class GraphvizAttributeListDiffTest
         return htmlTableRecord.CompatibleElements == metadataRecordCompatibleElements;
     }
 
-    private static string GetCellText(HtmlNode cell) => Regex.Replace(
-        HttpUtility.HtmlDecode(cell.InnerText).ReplaceLineEndings(" ").Trim(),
-        @"\s+",
-        " "
-    );
-
     private static DotCompatibleElements ExtractCompatibleElements(HtmlNode cell)
     {
         return GetCellText(cell)
@@ -127,6 +121,12 @@ public class GraphvizAttributeListDiffTest
             .Select(element => Enum.Parse<DotCompatibleElements>(element, true))
             .Aggregate((x, y) => x | y);
     }
+
+    private static string GetCellText(HtmlNode cell) => Regex.Replace(
+        HttpUtility.HtmlDecode(cell.InnerText).ReplaceLineEndings(" ").Trim(),
+        @"\s+",
+        " "
+    );
 
     private class AttributeRecord
     {
