@@ -7,6 +7,10 @@ using Xunit.Abstractions;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes.GraphvizDocumentation;
 
+/// <summary>
+///     The assumption of this test is that the HTML documentation of Graphviz attributes is up-to-date and complete. The test does
+///     not report any errors, but it prints the differences between the documentation and the metadata implementation.
+/// </summary>
 public class GraphvizAttributeListDiffTest
 {
     private readonly ITestOutputHelper _testOutputHelper;
@@ -95,7 +99,7 @@ public class GraphvizAttributeListDiffTest
 
     private static bool IsEqualCompatibilityList(AttributeRecord htmlTableRecord, DotAttributeMetadata? metadataRecord)
     {
-        // overrides
+        // overrides where the difference is intentional
         var metadataRecordCompatibleElements = metadataRecord switch
         {
             { Key: DotAttributeKeys.Color } r => r.CompatibleElements & ~DotCompatibleElements.Graph,
