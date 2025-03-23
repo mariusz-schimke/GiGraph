@@ -19,34 +19,34 @@
     "Graph": "Charset: String"
   },
   "class": {
-    "Edge": "SvgStyleSheet.Class: String",
     "Graph": "SvgStyleSheet.Class: String",
     "Cluster": "SvgStyleSheet.Class: String",
-    "Node": "SvgStyleSheet.Class: String"
+    "Node": "SvgStyleSheet.Class: String",
+    "Edge": "SvgStyleSheet.Class: String"
   },
   "cluster": {
-    "Cluster": "IsCluster: Boolean?",
-    "Subgraph": "IsCluster: Boolean?"
+    "Subgraph": "IsCluster: Boolean?",
+    "Cluster": "IsCluster: Boolean?"
   },
   "clusterrank": {
     "Graph": "Clusters.VisualizationMode: DotClusterVisualizationMode?"
   },
   "color": {
-    "Edge": "Color: DotColorDefinition",
     "Graph": "Clusters.Color: DotColorDefinition",
     "Cluster": "Color: DotColorDefinition",
-    "Node": "Color: DotColorDefinition"
+    "Node": "Color: DotColorDefinition",
+    "Edge": "Color: DotColorDefinition"
   },
   "colorscheme": {
-    "Edge": "ColorScheme: String",
     "Graph": "ColorScheme: String",
     "Cluster": "ColorScheme: String",
-    "Node": "ColorScheme: String"
+    "Node": "ColorScheme: String",
+    "Edge": "ColorScheme: String"
   },
   "comment": {
-    "Edge": "Comment: String",
     "Graph": "Comment: String",
-    "Node": "Comment: String"
+    "Node": "Comment: String",
+    "Edge": "Comment: String"
   },
   "compound": {
     "Graph": "Clusters.EnableEdgeClipping: Boolean?"
@@ -82,25 +82,25 @@
     "Edge": "EdgeHyperlink.Url: DotEscapeString"
   },
   "fillcolor": {
-    "Edge": "FillColor: DotColorDefinition",
     "Graph": "Clusters.FillColor: DotColorDefinition",
     "Cluster": "FillColor: DotColorDefinition",
-    "Node": "FillColor: DotColorDefinition"
+    "Node": "FillColor: DotColorDefinition",
+    "Edge": "FillColor: DotColorDefinition"
   },
   "fixedsize": {
     "Node": "Size.Mode: DotNodeSizing?"
   },
   "fontcolor": {
-    "Edge": "Font.Color: DotColor",
     "Graph": "Font.Color: DotColor",
     "Cluster": "Font.Color: DotColor",
-    "Node": "Font.Color: DotColor"
+    "Node": "Font.Color: DotColor",
+    "Edge": "Font.Color: DotColor"
   },
   "fontname": {
-    "Edge": "Font.Name: String",
     "Graph": "Font.Name: String",
     "Cluster": "Font.Name: String",
-    "Node": "Font.Name: String"
+    "Node": "Font.Name: String",
+    "Edge": "Font.Name: String"
   },
   "fontnames": {
     "Graph": "Font.Convention: DotFontConvention?"
@@ -109,10 +109,10 @@
     "Graph": "Font.Directories: String"
   },
   "fontsize": {
-    "Edge": "Font.Size: Double?",
     "Graph": "Font.Size: Double?",
     "Cluster": "Font.Size: Double?",
-    "Node": "Font.Size: Double?"
+    "Node": "Font.Size: Double?",
+    "Edge": "Font.Size: Double?"
   },
   "forcelabels": {
     "Graph": "Layout.ForceExternalLabels: Boolean?"
@@ -150,16 +150,16 @@
     "Node": "Size.Height: Double?"
   },
   "href": {
-    "Edge": "Hyperlink.Href: DotEscapeString",
     "Graph": "Hyperlink.Href: DotEscapeString",
     "Cluster": "Hyperlink.Href: DotEscapeString",
-    "Node": "Hyperlink.Href: DotEscapeString"
+    "Node": "Hyperlink.Href: DotEscapeString",
+    "Edge": "Hyperlink.Href: DotEscapeString"
   },
   "id": {
-    "Edge": "ObjectId: DotEscapeString",
     "Graph": "ObjectId: DotEscapeString",
     "Cluster": "ObjectId: DotEscapeString",
-    "Node": "ObjectId: DotEscapeString"
+    "Node": "ObjectId: DotEscapeString",
+    "Edge": "ObjectId: DotEscapeString"
   },
   "image": {
     "Node": "Image.Path: String"
@@ -174,10 +174,10 @@
     "Node": "Image.Scaling: DotImageScaling?"
   },
   "label": {
-    "Edge": "Label: DotLabel",
     "Graph": "Label: DotLabel",
     "Cluster": "Label: DotLabel",
-    "Node": "Label: DotLabel"
+    "Node": "Label: DotLabel",
+    "Edge": "Label: DotLabel"
   },
   "labelangle": {
     "Edge": "EndpointLabels.Angle: Double?"
@@ -251,10 +251,10 @@
     "Graph": "Layout.NodeSeparation: Double?"
   },
   "nojustify": {
-    "Edge": "DisableLabelJustification: Boolean?",
     "Graph": "DisableLabelJustification: Boolean?",
     "Cluster": "DisableLabelJustification: Boolean?",
-    "Node": "DisableLabelJustification: Boolean?"
+    "Node": "DisableLabelJustification: Boolean?",
+    "Edge": "DisableLabelJustification: Boolean?"
   },
   "oneblock": {
     "Graph": "Layout.ForceCircularLayout: Boolean?"
@@ -281,10 +281,10 @@
     "Cluster": "BorderColor: DotColor"
   },
   "penwidth": {
-    "Edge": "Width: Double?",
     "Graph": "Clusters.BorderWidth: Double?",
     "Cluster": "BorderWidth: Double?",
-    "Node": "BorderWidth: Double?"
+    "Node": "BorderWidth: Double?",
+    "Edge": "Width: Double?"
   },
   "peripheries": {
     "Cluster": "Peripheries: Int32?",
@@ -292,8 +292,8 @@
   },
   "rank": {
     "Graph": "Layout.NodeRank: DotRank?",
-    "Cluster": "NodeRank: DotRank?",
-    "Subgraph": "NodeRank: DotRank?"
+    "Subgraph": "NodeRank: DotRank?",
+    "Cluster": "NodeRank: DotRank?"
   },
   "rankdir": {
     "Graph": "Layout.Direction: DotLayoutDirection?"
@@ -350,10 +350,10 @@
     "Graph": "EdgeShape: DotEdgeShape?"
   },
   "style": {
-    "Edge": "Style: DotStyles?",
     "Graph": "Style: DotStyles?",
     "Cluster": "Style: DotStyles?",
-    "Node": "Style: DotStyles?"
+    "Node": "Style: DotStyles?",
+    "Edge": "Style: DotStyles?"
   },
   "stylesheet": {
     "Graph": "SvgStyleSheet.Url: String"
@@ -380,25 +380,25 @@
     "Edge": "Tail.Hyperlink.Url: DotEscapeString"
   },
   "target": {
-    "Edge": "Hyperlink.Target: DotEscapeString",
     "Graph": "Hyperlink.Target: DotEscapeString",
     "Cluster": "Hyperlink.Target: DotEscapeString",
-    "Node": "Hyperlink.Target: DotEscapeString"
+    "Node": "Hyperlink.Target: DotEscapeString",
+    "Edge": "Hyperlink.Target: DotEscapeString"
   },
   "TBbalance": {
     "Graph": "Layout.FloatingNodeRank: DotRank?"
   },
   "tooltip": {
-    "Edge": "Tooltip: DotEscapeString",
     "Graph": "Tooltip: DotEscapeString",
     "Cluster": "Tooltip: DotEscapeString",
-    "Node": "Tooltip: DotEscapeString"
+    "Node": "Tooltip: DotEscapeString",
+    "Edge": "Tooltip: DotEscapeString"
   },
   "URL": {
-    "Edge": "Hyperlink.Url: DotEscapeString",
     "Graph": "Hyperlink.Url: DotEscapeString",
     "Cluster": "Hyperlink.Url: DotEscapeString",
-    "Node": "Hyperlink.Url: DotEscapeString"
+    "Node": "Hyperlink.Url: DotEscapeString",
+    "Edge": "Hyperlink.Url: DotEscapeString"
   },
   "viewport": {
     "Graph": "Canvas.Viewport: DotViewport"
@@ -410,7 +410,7 @@
     "Node": "Size.Width: Double?"
   },
   "xlabel": {
-    "Edge": "ExternalLabel: DotLabel",
-    "Node": "ExternalLabel: DotLabel"
+    "Node": "ExternalLabel: DotLabel",
+    "Edge": "ExternalLabel: DotLabel"
   }
 }

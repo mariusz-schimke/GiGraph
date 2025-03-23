@@ -69,10 +69,12 @@ public class DotAttributeSupportPerElementTest
             .OrderBy(item => item.Key)
             .ToDictionary(
                 group => group.Key,
-                group => group.ToDictionary(
-                    g => g.Element,
-                    g => $"{g.PropertyPath}: {TypeHelper.GetDisplayName(g.Property.PropertyType)}"
-                )
+                group => group
+                    .OrderBy(g => g.Element)
+                    .ToDictionary(
+                        g => g.Element,
+                        g => $"{g.PropertyPath}: {TypeHelper.GetDisplayName(g.Property.PropertyType)}"
+                    )
             );
 
         Snapshot.Match(keyLookup, "attribute_property_key_map");
