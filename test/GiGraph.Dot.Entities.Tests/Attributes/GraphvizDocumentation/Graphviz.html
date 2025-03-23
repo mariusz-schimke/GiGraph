@@ -1,0 +1,2158 @@
+<table>
+    <tbody>
+    <tr>
+        <th>Name</th>
+        <th><a href="#h:uses">Used By</a></th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Minimum</th>
+        <th>Description, notes</th>
+    </tr>
+
+    <tr>
+        <td><a id="a:_background" href="/docs/attrs/background/"><code>_background</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/xdot/">xdot</a></td>
+        <td><code>&lt;none&gt;</code></td>
+        <td></td>
+        <td>
+            A string in the <a href="/docs/attr-types/xdot/"><code>xdot</code> format</a> specifying an arbitrary
+            background.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:area" href="/docs/attrs/area/"><code>area</code></a></td>
+        <td>Nodes, Clusters</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>1.0</code></td>
+        <td><code>&gt;0</code></td>
+        <td>
+            Indicates the preferred area for a node or empty cluster.
+            <a href="/docs/layouts/patchwork/">patchwork</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:arrowhead" href="/docs/attrs/arrowhead/"><code>arrowhead</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/arrowType/">arrowType</a></td>
+        <td><code>normal</code></td>
+        <td></td>
+        <td>
+            Style of arrowhead on the head node of an edge.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:arrowsize" href="/docs/attrs/arrowsize/"><code>arrowsize</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>1.0</code></td>
+        <td><code>0.0</code></td>
+        <td>
+            Multiplicative scale factor for arrowheads.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:arrowtail" href="/docs/attrs/arrowtail/"><code>arrowtail</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/arrowType/">arrowType</a></td>
+        <td><code>normal</code></td>
+        <td></td>
+        <td>
+            Style of arrowhead on the tail node of an edge.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:bb" href="/docs/attrs/bb/"><code>bb</code></a></td>
+        <td>Clusters, Graphs</td>
+        <td><a href="/docs/attr-types/rect/">rect</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Bounding box of drawing in points.
+            write only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:beautify" href="/docs/attrs/beautify/"><code>beautify</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            Whether to draw leaf nodes uniformly in a circle around the root node in sfdp..
+            <a href="/docs/layouts/sfdp/">sfdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:bgcolor" href="/docs/attrs/bgcolor/"><code>bgcolor</code></a></td>
+        <td>Graphs, Clusters</td>
+        <td><a href="/docs/attr-types/color/">color</a>, <a href="/docs/attr-types/colorList/">colorList</a></td>
+        <td><code>&lt;none&gt;</code></td>
+        <td></td>
+        <td>
+            Canvas background color.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:center" href="/docs/attrs/center/"><code>center</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            Whether to center the drawing in the output canvas.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:charset" href="/docs/attrs/charset/"><code>charset</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>"UTF-8"</code></td>
+        <td></td>
+        <td>
+            Character encoding used when interpreting string input as a text label..
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:class" href="/docs/attrs/class/"><code>class</code></a></td>
+        <td>Edges, Nodes, Clusters, Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Classnames to attach to the node, edge, graph, or cluster's SVG element.
+            <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:cluster" href="/docs/attrs/cluster/"><code>cluster</code></a></td>
+        <td>Clusters, Subgraphs</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            Whether the subgraph is a cluster.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:clusterrank" href="/docs/attrs/clusterrank/"><code>clusterrank</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/clusterMode/">clusterMode</a></td>
+        <td><code>local</code></td>
+        <td></td>
+        <td>
+            Mode used for handling clusters.
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:color" href="/docs/attrs/color/"><code>color</code></a></td>
+        <td>Edges, Nodes, Clusters</td>
+        <td><a href="/docs/attr-types/color/">color</a>, <a href="/docs/attr-types/colorList/">colorList</a></td>
+        <td><code>black</code></td>
+        <td></td>
+        <td>
+            Basic drawing color for graphics, not text.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:colorscheme" href="/docs/attrs/colorscheme/"><code>colorscheme</code></a></td>
+        <td>Edges, Nodes, Clusters, Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            A color scheme namespace: the context for interpreting color names.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:comment" href="/docs/attrs/comment/"><code>comment</code></a></td>
+        <td>Edges, Nodes, Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Comments are inserted into output.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:compound" href="/docs/attrs/compound/"><code>compound</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            If true, allow edges between clusters.
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:concentrate" href="/docs/attrs/concentrate/"><code>concentrate</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            If true, use edge concentrators.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:constraint" href="/docs/attrs/constraint/"><code>constraint</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>true</code></td>
+        <td></td>
+        <td>
+            If false, the edge is not used in ranking the nodes.
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:Damping" href="/docs/attrs/Damping/"><code>Damping</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>0.99</code></td>
+        <td><code>0.0</code></td>
+        <td>
+            Factor damping force motions..
+            <a href="/docs/layouts/neato/">neato</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:decorate" href="/docs/attrs/decorate/"><code>decorate</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            Whether to connect the edge label to the edge with a line.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:defaultdist" href="/docs/attrs/defaultdist/"><code>defaultdist</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>1+(avg. len)*sqrt(|V|)</code></td>
+        <td><code>epsilon</code></td>
+        <td>
+            The distance between nodes in separate connected components.
+            <a href="/docs/layouts/neato/">neato</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:dim" href="/docs/attrs/dim/"><code>dim</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/int/">int</a></td>
+        <td><code>2</code></td>
+        <td><code>2</code></td>
+        <td>
+            Set the number of dimensions used for the layout.
+            <a href="/docs/layouts/neato/">neato</a>, <a href="/docs/layouts/fdp/">fdp</a>, <a
+                href="/docs/layouts/sfdp/">sfdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:dimen" href="/docs/attrs/dimen/"><code>dimen</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/int/">int</a></td>
+        <td><code>2</code></td>
+        <td><code>2</code></td>
+        <td>
+            Set the number of dimensions used for rendering.
+            <a href="/docs/layouts/neato/">neato</a>, <a href="/docs/layouts/fdp/">fdp</a>, <a
+                href="/docs/layouts/sfdp/">sfdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:dir" href="/docs/attrs/dir/"><code>dir</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/dirType/">dirType</a></td>
+        <td><code>forward</code> (directed) <br><code>none</code> (undirected)</td>
+        <td></td>
+        <td>
+            Edge type for drawing arrowheads.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:diredgeconstraints" href="/docs/attrs/diredgeconstraints/"><code>diredgeconstraints</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a>, <a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            Whether to constrain most edges to point downwards.
+            <a href="/docs/layouts/neato/">neato</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:distortion" href="/docs/attrs/distortion/"><code>distortion</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>0.0</code></td>
+        <td><code>-100.0</code></td>
+        <td>
+            Distortion factor for <code><a href="/docs/attrs/shape/">shape</a>=<a href="/doc/info/shapes.html#polygon">polygon</a></code>.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:dpi" href="/docs/attrs/dpi/"><code>dpi</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>96.0</code></td>
+        <td><code>0.0</code></td>
+        <td>
+            Specifies the expected number of pixels per inch on a display device.
+            bitmap output, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:edgehref" href="/docs/attrs/edgehref/"><code>edgehref</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Synonym for <a href="/docs/attrs/edgeURL/"><code>edgeURL</code></a>.
+            map, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:edgetarget" href="/docs/attrs/edgetarget/"><code>edgetarget</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>&lt;none&gt;</code></td>
+        <td></td>
+        <td>
+            Browser window to use for the <a href="/docs/attrs/edgeURL/"><code>edgeURL</code></a> link.
+            map, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:edgetooltip" href="/docs/attrs/edgetooltip/"><code>edgetooltip</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Tooltip annotation attached to the non-label part of an edge.
+            <a href="/docs/outputs/cmap/">cmap</a>, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:edgeURL" href="/docs/attrs/edgeURL/"><code>edgeURL</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            The link for the non-label parts of an edge.
+            map, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:epsilon" href="/docs/attrs/epsilon/"><code>epsilon</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>.0001 * # nodes</code> (mode == KK) <br><code>.0001</code> (mode == major) <br><code>.01</code> (mode
+            == sgd)
+        </td>
+        <td></td>
+        <td>
+            Terminating condition.
+            <a href="/docs/layouts/neato/">neato</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:esep" href="/docs/attrs/esep/"><code>esep</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/addDouble/">addDouble</a>, <a href="/docs/attr-types/addPoint/">addPoint</a></td>
+        <td><code>+3</code></td>
+        <td></td>
+        <td>
+            Margin used around polygons for purposes of spline edge routing.
+            <a href="/docs/layouts/neato/">neato</a>, <a href="/docs/layouts/fdp/">fdp</a>, <a
+                href="/docs/layouts/sfdp/">sfdp</a>, osage, <a href="/docs/layouts/circo/">circo</a>, <a
+                href="/docs/layouts/twopi/">twopi</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:fillcolor" href="/docs/attrs/fillcolor/"><code>fillcolor</code></a></td>
+        <td>Nodes, Edges, Clusters</td>
+        <td><a href="/docs/attr-types/color/">color</a>, <a href="/docs/attr-types/colorList/">colorList</a></td>
+        <td><code>lightgrey</code> (nodes) <br><code>black</code> (clusters)</td>
+        <td></td>
+        <td>
+            Color used to fill the background of a node or cluster.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:fixedsize" href="/docs/attrs/fixedsize/"><code>fixedsize</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/bool/">bool</a>, <a href="/docs/attr-types/string/">string</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            Whether to use the specified width and height attributes to choose node size (rather than sizing to fit the
+            node contents).
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:fontcolor" href="/docs/attrs/fontcolor/"><code>fontcolor</code></a></td>
+        <td>Edges, Nodes, Graphs, Clusters</td>
+        <td><a href="/docs/attr-types/color/">color</a></td>
+        <td><code>black</code></td>
+        <td></td>
+        <td>
+            Color used for text.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:fontname" href="/docs/attrs/fontname/"><code>fontname</code></a></td>
+        <td>Edges, Nodes, Graphs, Clusters</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>"Times-Roman"</code></td>
+        <td></td>
+        <td>
+            Font used for text.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:fontnames" href="/docs/attrs/fontnames/"><code>fontnames</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Allows user control of how basic fontnames are represented in SVG output.
+            <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:fontpath" href="/docs/attrs/fontpath/"><code>fontpath</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>&lt;system-dependent&gt;</code></td>
+        <td></td>
+        <td>
+            Directory list used by <a href="https://libgd.github.io/">libgd</a> to search for bitmap fonts.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:fontsize" href="/docs/attrs/fontsize/"><code>fontsize</code></a></td>
+        <td>Edges, Nodes, Graphs, Clusters</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>14.0</code></td>
+        <td><code>1.0</code></td>
+        <td>
+            Font size, <a href="/doc/info/attrs.html#points">in points</a>, used for text.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:forcelabels" href="/docs/attrs/forcelabels/"><code>forcelabels</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>true</code></td>
+        <td></td>
+        <td>
+            Whether to force placement of all <a href="/docs/attrs/xlabel/"><code>xlabels</code></a>, even if
+            overlapping.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:gradientangle" href="/docs/attrs/gradientangle/"><code>gradientangle</code></a></td>
+        <td>Nodes, Clusters, Graphs</td>
+        <td><a href="/docs/attr-types/int/">int</a></td>
+        <td><code>0</code></td>
+        <td><code>0</code></td>
+        <td>
+            If a gradient fill is being used, this determines the angle of the fill.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:group" href="/docs/attrs/group/"><code>group</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Name for a group of nodes, for bundling edges avoiding crossings..
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:head_lp" href="/docs/attrs/head_lp/"><code>head_lp</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/point/">point</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Center position of an edge's head label.
+            write only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:headclip" href="/docs/attrs/headclip/"><code>headclip</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>true</code></td>
+        <td></td>
+        <td>
+            If true, the head of an edge is clipped to the boundary of the head node.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:headhref" href="/docs/attrs/headhref/"><code>headhref</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Synonym for <a href="/docs/attrs/headURL/"><code>headURL</code></a>.
+            map, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:headlabel" href="/docs/attrs/headlabel/"><code>headlabel</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/lblString/">lblString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Text label to be placed near head of edge.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:headport" href="/docs/attrs/headport/"><code>headport</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/portPos/">portPos</a></td>
+        <td><code>center</code></td>
+        <td></td>
+        <td>
+            Indicates where on the head node to attach the head of the edge.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:headtarget" href="/docs/attrs/headtarget/"><code>headtarget</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>&lt;none&gt;</code></td>
+        <td></td>
+        <td>
+            Browser window to use for the <a href="/docs/attrs/headURL/"><code>headURL</code></a> link.
+            map, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:headtooltip" href="/docs/attrs/headtooltip/"><code>headtooltip</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Tooltip annotation attached to the head of an edge.
+            <a href="/docs/outputs/cmap/">cmap</a>, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:headURL" href="/docs/attrs/headURL/"><code>headURL</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            If defined, <code>headURL</code> is output as part of the head label of the edge.
+            map, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:height" href="/docs/attrs/height/"><code>height</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>0.5</code></td>
+        <td><code>0.02</code></td>
+        <td>
+            Height of node, in inches.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:href" href="/docs/attrs/href/"><code>href</code></a></td>
+        <td>Graphs, Clusters, Nodes, Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Synonym for <a href="/docs/attrs/URL/"><code>URL</code></a>.
+            map, <a href="/docs/outputs/ps/">postscript</a>, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:id" href="/docs/attrs/id/"><code>id</code></a></td>
+        <td>Graphs, Clusters, Nodes, Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Identifier for graph objects.
+            map, <a href="/docs/outputs/ps/">postscript</a>, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:image" href="/docs/attrs/image/"><code>image</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Gives the name of a file containing an image to be displayed inside a node.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:imagepath" href="/docs/attrs/imagepath/"><code>imagepath</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            A list of directories in which to look for image files.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:imagepos" href="/docs/attrs/imagepos/"><code>imagepos</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>"mc"</code></td>
+        <td></td>
+        <td>
+            Controls how an image is positioned within its containing node.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:imagescale" href="/docs/attrs/imagescale/"><code>imagescale</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/bool/">bool</a>, <a href="/docs/attr-types/string/">string</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            Controls how an image fills its containing node.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:inputscale" href="/docs/attrs/inputscale/"><code>inputscale</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>&lt;none&gt;</code></td>
+        <td></td>
+        <td>
+            Scales the input <a href="/docs/attrs/pos/">positions</a> to convert between length units.
+            <a href="/docs/layouts/neato/">neato</a>, <a href="/docs/layouts/fdp/">fdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:K" href="/docs/attrs/K/"><code>K</code></a></td>
+        <td>Graphs, Clusters</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>0.3</code></td>
+        <td><code>0</code></td>
+        <td>
+            Spring constant used in virtual physical model.
+            <a href="/docs/layouts/fdp/">fdp</a>, <a href="/docs/layouts/sfdp/">sfdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:label" href="/docs/attrs/label/"><code>label</code></a></td>
+        <td>Edges, Nodes, Graphs, Clusters</td>
+        <td><a href="/docs/attr-types/lblString/">lblString</a></td>
+        <td><code>"\N"</code> (nodes) <br><code>""</code> (otherwise)</td>
+        <td></td>
+        <td>
+            Text label attached to objects.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:label_scheme" href="/docs/attrs/label_scheme/"><code>label_scheme</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/int/">int</a></td>
+        <td><code>0</code></td>
+        <td><code>0</code></td>
+        <td>
+            Whether to treat a node whose name has the form <code>|edgelabel|*</code> as a special node representing an
+            edge label..
+            <a href="/docs/layouts/sfdp/">sfdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:labelangle" href="/docs/attrs/labelangle/"><code>labelangle</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>-25.0</code></td>
+        <td><code>-180.0</code></td>
+        <td>
+            The angle (in degrees) in polar coordinates of the head &amp; tail edge labels..
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:labeldistance" href="/docs/attrs/labeldistance/"><code>labeldistance</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>1.0</code></td>
+        <td><code>0.0</code></td>
+        <td>
+            Scaling factor for the distance of <a href="/docs/attrs/headlabel/"><code>headlabel</code></a> / <a
+                href="/docs/attrs/taillabel/"><code>taillabel</code></a> from the head / tail nodes..
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:labelfloat" href="/docs/attrs/labelfloat/"><code>labelfloat</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            If true, allows edge labels to be less constrained in position.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:labelfontcolor" href="/docs/attrs/labelfontcolor/"><code>labelfontcolor</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/color/">color</a></td>
+        <td><code>black</code></td>
+        <td></td>
+        <td>
+            Color used for <a href="/docs/attrs/headlabel/"><code>headlabel</code></a> and <a
+                href="/docs/attrs/taillabel/"><code>taillabel</code></a>..
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:labelfontname" href="/docs/attrs/labelfontname/"><code>labelfontname</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>"Times-Roman"</code></td>
+        <td></td>
+        <td>
+            Font for <code>headlabel</code> and <code>taillabel</code>.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:labelfontsize" href="/docs/attrs/labelfontsize/"><code>labelfontsize</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>14.0</code></td>
+        <td><code>1.0</code></td>
+        <td>
+            Font size of <code>headlabel</code> and <code>taillabel</code>.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:labelhref" href="/docs/attrs/labelhref/"><code>labelhref</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Synonym for <a href="/docs/attrs/labelURL/"><code>labelURL</code></a>.
+            map, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:labeljust" href="/docs/attrs/labeljust/"><code>labeljust</code></a></td>
+        <td>Graphs, Clusters</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>"c"</code></td>
+        <td></td>
+        <td>
+            Justification for graph &amp; cluster labels.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:labelloc" href="/docs/attrs/labelloc/"><code>labelloc</code></a></td>
+        <td>Nodes, Graphs, Clusters</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>"t"</code> (clusters) <br><code>"b"</code> (root graphs) <br><code>"c"</code> (nodes)</td>
+        <td></td>
+        <td>
+            Vertical placement of labels for nodes, root graphs and clusters.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:labeltarget" href="/docs/attrs/labeltarget/"><code>labeltarget</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>&lt;none&gt;</code></td>
+        <td></td>
+        <td>
+            Browser window to open <a href="/docs/attrs/labelURL/"><code>labelURL</code></a> links in.
+            map, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:labeltooltip" href="/docs/attrs/labeltooltip/"><code>labeltooltip</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Tooltip annotation attached to label of an edge.
+            <a href="/docs/outputs/cmap/">cmap</a>, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:labelURL" href="/docs/attrs/labelURL/"><code>labelURL</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            If defined, <code>labelURL</code> is the link used for the label of an edge.
+            map, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:landscape" href="/docs/attrs/landscape/"><code>landscape</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            If true, the graph is rendered in landscape mode.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:layer" href="/docs/attrs/layer/"><code>layer</code></a></td>
+        <td>Edges, Nodes, Clusters</td>
+        <td><a href="/docs/attr-types/layerRange/">layerRange</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Specifies layers in which the node, edge or cluster is present.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:layerlistsep" href="/docs/attrs/layerlistsep/"><code>layerlistsep</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>","</code></td>
+        <td></td>
+        <td>
+            The separator characters used to split attributes of type <a href="/docs/attr-types/layerRange/"><code>layerRange</code></a>
+            into a list of ranges..
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:layers" href="/docs/attrs/layers/"><code>layers</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/layerList/">layerList</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            A linearly ordered list of layer names attached to the graph.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:layerselect" href="/docs/attrs/layerselect/"><code>layerselect</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/layerRange/">layerRange</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Selects a list of layers to be emitted.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:layersep" href="/docs/attrs/layersep/"><code>layersep</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>":\t "</code></td>
+        <td></td>
+        <td>
+            The separator characters for splitting the <a href="/docs/attrs/layers/"><code>layers</code></a> attribute
+            into a list of layer names..
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:layout" href="/docs/attrs/layout/"><code>layout</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Which <a href="/docs/layouts/">layout engine</a> to use.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:len" href="/docs/attrs/len/"><code>len</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>1.0</code> (neato) <br><code>0.3</code> (fdp)</td>
+        <td></td>
+        <td>
+            Preferred edge length, in inches.
+            <a href="/docs/layouts/neato/">neato</a>, <a href="/docs/layouts/fdp/">fdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:levels" href="/docs/attrs/levels/"><code>levels</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/int/">int</a></td>
+        <td><code>INT_MAX</code></td>
+        <td><code>0.0</code></td>
+        <td>
+            Number of levels allowed in the multilevel scheme.
+            <a href="/docs/layouts/sfdp/">sfdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:levelsgap" href="/docs/attrs/levelsgap/"><code>levelsgap</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>0.0</code></td>
+        <td></td>
+        <td>
+            strictness of neato level constraints.
+            <a href="/docs/layouts/neato/">neato</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:lhead" href="/docs/attrs/lhead/"><code>lhead</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Logical head of an edge.
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:lheight" href="/docs/attrs/lheight/"><code>lheight</code></a></td>
+        <td>Graphs, Clusters</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Height of graph or cluster label, in inches.
+            write only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:linelength" href="/docs/attrs/linelength/"><code>linelength</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/int/">int</a></td>
+        <td><code>128</code></td>
+        <td><code>60</code></td>
+        <td>
+            How long strings should get before overflowing to next line, for text output..
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:lp" href="/docs/attrs/lp/"><code>lp</code></a></td>
+        <td>Edges, Graphs, Clusters</td>
+        <td><a href="/docs/attr-types/point/">point</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Label center position.
+            write only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:ltail" href="/docs/attrs/ltail/"><code>ltail</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Logical tail of an edge.
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:lwidth" href="/docs/attrs/lwidth/"><code>lwidth</code></a></td>
+        <td>Graphs, Clusters</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Width of graph or cluster label, in inches.
+            write only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:margin" href="/docs/attrs/margin/"><code>margin</code></a></td>
+        <td>Nodes, Clusters, Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a>, <a href="/docs/attr-types/point/">point</a></td>
+        <td><code>&lt;device-dependent&gt;</code></td>
+        <td></td>
+        <td>
+            For graphs, this sets x and y margins of canvas, in inches.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:maxiter" href="/docs/attrs/maxiter/"><code>maxiter</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/int/">int</a></td>
+        <td><code>100 * # nodes</code> (mode == KK) <br><code>200</code> (mode == major) <br><code>30</code> (mode ==
+            sgd) <br><code>600</code> (fdp)
+        </td>
+        <td></td>
+        <td>
+            Sets the number of iterations used.
+            <a href="/docs/layouts/neato/">neato</a>, <a href="/docs/layouts/fdp/">fdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:mclimit" href="/docs/attrs/mclimit/"><code>mclimit</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>1.0</code></td>
+        <td></td>
+        <td>
+            Scale factor for mincross (mc) edge crossing minimiser parameters.
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:mindist" href="/docs/attrs/mindist/"><code>mindist</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>1.0</code></td>
+        <td><code>0.0</code></td>
+        <td>
+            Specifies the minimum separation between all nodes.
+            <a href="/docs/layouts/circo/">circo</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:minlen" href="/docs/attrs/minlen/"><code>minlen</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/int/">int</a></td>
+        <td><code>1</code></td>
+        <td><code>0</code></td>
+        <td>
+            Minimum edge length (rank difference between head and tail).
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:mode" href="/docs/attrs/mode/"><code>mode</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>major</code></td>
+        <td></td>
+        <td>
+            Technique for optimizing the layout.
+            <a href="/docs/layouts/neato/">neato</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:model" href="/docs/attrs/model/"><code>model</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>shortpath</code></td>
+        <td></td>
+        <td>
+            Specifies how the distance matrix is computed for the input graph.
+            <a href="/docs/layouts/neato/">neato</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:newrank" href="/docs/attrs/newrank/"><code>newrank</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            Whether to use a single global ranking, ignoring clusters.
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:nodesep" href="/docs/attrs/nodesep/"><code>nodesep</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>0.25</code></td>
+        <td><code>0.02</code></td>
+        <td>
+            In <code>dot</code>, <code>nodesep</code> specifies the minimum space between two adjacent nodes in the same
+            rank, in inches.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:nojustify" href="/docs/attrs/nojustify/"><code>nojustify</code></a></td>
+        <td>Graphs, Clusters, Nodes, Edges</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            Whether to justify multiline text vs the previous text line (rather than the side of the container)..
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:normalize" href="/docs/attrs/normalize/"><code>normalize</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a>, <a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            normalizes coordinates of final layout.
+            <a href="/docs/layouts/neato/">neato</a>, <a href="/docs/layouts/fdp/">fdp</a>, <a
+                href="/docs/layouts/sfdp/">sfdp</a>, <a href="/docs/layouts/twopi/">twopi</a>, <a
+                href="/docs/layouts/circo/">circo</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:notranslate" href="/docs/attrs/notranslate/"><code>notranslate</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            Whether to avoid translating layout to the origin point.
+            <a href="/docs/layouts/neato/">neato</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:nslimit" href="/docs/attrs/nslimit/"><code>nslimit</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Sets number of iterations in network simplex applications.
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:nslimit1" href="/docs/attrs/nslimit1/"><code>nslimit1</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Sets number of iterations in network simplex applications.
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:oneblock" href="/docs/attrs/oneblock/"><code>oneblock</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            Whether to draw circo graphs around one circle..
+            <a href="/docs/layouts/circo/">circo</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:ordering" href="/docs/attrs/ordering/"><code>ordering</code></a></td>
+        <td>Graphs, Nodes</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Constrains the left-to-right ordering of node edges..
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:orientation" href="/docs/attrs/orientation/"><code>orientation</code></a></td>
+        <td>Nodes, Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a>, <a href="/docs/attr-types/string/">string</a></td>
+        <td><code>0.0</code><br><code>""</code></td>
+        <td><code>-360.0</code></td>
+        <td>
+            node shape rotation angle, or graph orientation.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:outputorder" href="/docs/attrs/outputorder/"><code>outputorder</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/outputMode/">outputMode</a></td>
+        <td><code>breadthfirst</code></td>
+        <td></td>
+        <td>
+            Specify order in which nodes and edges are drawn.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:overlap" href="/docs/attrs/overlap/"><code>overlap</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a>, <a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>true</code></td>
+        <td></td>
+        <td>
+            Determines if and how node overlaps should be removed.
+            <a href="/docs/layouts/fdp/">fdp</a>, <a href="/docs/layouts/neato/">neato</a>, <a
+                href="/docs/layouts/sfdp/">sfdp</a>, <a href="/docs/layouts/circo/">circo</a>, <a
+                href="/docs/layouts/twopi/">twopi</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:overlap_scaling" href="/docs/attrs/overlap_scaling/"><code>overlap_scaling</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>-4</code></td>
+        <td><code>-1e+10</code></td>
+        <td>
+            Scale layout by factor, to reduce node overlap..
+            <a href="/docs/attrs/overlap/">prism</a>, <a href="/docs/layouts/neato/">neato</a>, <a
+                href="/docs/layouts/sfdp/">sfdp</a>, <a href="/docs/layouts/fdp/">fdp</a>, <a
+                href="/docs/layouts/circo/">circo</a>, <a href="/docs/layouts/twopi/">twopi</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:overlap_shrink" href="/docs/attrs/overlap_shrink/"><code>overlap_shrink</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>true</code></td>
+        <td></td>
+        <td>
+            Whether the overlap removal algorithm should perform a compression pass to reduce the size of the layout.
+            <a href="/docs/attrs/overlap/">prism</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:pack" href="/docs/attrs/pack/"><code>pack</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/bool/">bool</a>, <a href="/docs/attr-types/int/">int</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            Whether each connected component of the graph should be laid out separately, and then the graphs packed
+            together..
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:packmode" href="/docs/attrs/packmode/"><code>packmode</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/packMode/">packMode</a></td>
+        <td><code>node</code></td>
+        <td></td>
+        <td>
+            How connected components should be packed.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:pad" href="/docs/attrs/pad/"><code>pad</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a>, <a href="/docs/attr-types/point/">point</a></td>
+        <td><code>0.0555</code> (4 points)</td>
+        <td></td>
+        <td>
+            Inches to extend the drawing area around the minimal area needed to draw the graph.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:page" href="/docs/attrs/page/"><code>page</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a>, <a href="/docs/attr-types/point/">point</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Width and height of output pages, in inches.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:pagedir" href="/docs/attrs/pagedir/"><code>pagedir</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/pagedir/">pagedir</a></td>
+        <td><code>BL</code></td>
+        <td></td>
+        <td>
+            The order in which pages are emitted.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:pencolor" href="/docs/attrs/pencolor/"><code>pencolor</code></a></td>
+        <td>Clusters</td>
+        <td><a href="/docs/attr-types/color/">color</a></td>
+        <td><code>black</code></td>
+        <td></td>
+        <td>
+            Color used to draw the bounding box around a cluster.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:penwidth" href="/docs/attrs/penwidth/"><code>penwidth</code></a></td>
+        <td>Clusters, Nodes, Edges</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>1.0</code></td>
+        <td><code>0.0</code></td>
+        <td>
+            Specifies the width of the pen, in points, used to draw lines and curves.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:peripheries" href="/docs/attrs/peripheries/"><code>peripheries</code></a></td>
+        <td>Nodes, Clusters</td>
+        <td><a href="/docs/attr-types/int/">int</a></td>
+        <td><code>&lt;shape default&gt;</code> (nodes) <br><code>1</code> (clusters)</td>
+        <td><code>0</code></td>
+        <td>
+            Set number of peripheries used in polygonal shapes and cluster boundaries.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:pin" href="/docs/attrs/pin/"><code>pin</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            Keeps the node at the node's given input position.
+            <a href="/docs/layouts/neato/">neato</a>, <a href="/docs/layouts/fdp/">fdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:pos" href="/docs/attrs/pos/"><code>pos</code></a></td>
+        <td>Edges, Nodes</td>
+        <td><a href="/docs/attr-types/point/">point</a>, <a href="/docs/attr-types/splineType/">splineType</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Position of node, or spline control points.
+            <a href="/docs/layouts/neato/">neato</a>, <a href="/docs/layouts/fdp/">fdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:quadtree" href="/docs/attrs/quadtree/"><code>quadtree</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/quadType/">quadType</a>, <a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>normal</code></td>
+        <td></td>
+        <td>
+            Quadtree scheme to use.
+            <a href="/docs/layouts/sfdp/">sfdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:quantum" href="/docs/attrs/quantum/"><code>quantum</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>0.0</code></td>
+        <td><code>0.0</code></td>
+        <td>
+            If <code>quantum &gt; 0.0</code>, node label dimensions will be rounded to integral multiples of the
+            quantum.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:rank" href="/docs/attrs/rank/"><code>rank</code></a></td>
+        <td>Subgraphs</td>
+        <td><a href="/docs/attr-types/rankType/">rankType</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Rank constraints on the nodes in a subgraph.
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:rankdir" href="/docs/attrs/rankdir/"><code>rankdir</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/rankdir/">rankdir</a></td>
+        <td><code>TB</code></td>
+        <td></td>
+        <td>
+            Sets direction of graph layout.
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:ranksep" href="/docs/attrs/ranksep/"><code>ranksep</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a>, <a href="/docs/attr-types/doubleList/">doubleList</a></td>
+        <td><code>0.5</code> (dot) <br><code>1.0</code> (twopi)</td>
+        <td><code>0.02</code></td>
+        <td>
+            Specifies separation between ranks.
+            <a href="/docs/layouts/dot/">dot</a>, <a href="/docs/layouts/twopi/">twopi</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:ratio" href="/docs/attrs/ratio/"><code>ratio</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a>, <a href="/docs/attr-types/string/">string</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Sets the aspect ratio (drawing height/drawing width) for the drawing.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:rects" href="/docs/attrs/rects/"><code>rects</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/rect/">rect</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Rectangles for fields of records, <a href="/doc/info/attrs.html#points">in points</a>.
+            write only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:regular" href="/docs/attrs/regular/"><code>regular</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>false</code></td>
+        <td></td>
+        <td>
+            If true, force polygon to be regular..
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:remincross" href="/docs/attrs/remincross/"><code>remincross</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>true</code></td>
+        <td></td>
+        <td>
+            If there are multiple clusters, whether to run edge crossing minimization a second time..
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:repulsiveforce" href="/docs/attrs/repulsiveforce/"><code>repulsiveforce</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>1.0</code></td>
+        <td><code>0.0</code></td>
+        <td>
+            The power of the repulsive force used in an extended Fruchterman-Reingold.
+            <a href="/docs/layouts/sfdp/">sfdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:resolution" href="/docs/attrs/resolution/"><code>resolution</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>96.0</code></td>
+        <td><code>0.0</code></td>
+        <td>
+            Synonym for <a href="/docs/attrs/dpi/"><code>dpi</code></a>..
+            bitmap output, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:root" href="/docs/attrs/root/"><code>root</code></a></td>
+        <td>Graphs, Nodes</td>
+        <td><a href="/docs/attr-types/string/">string</a>, <a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>&lt;none&gt;</code> (graphs) <br><code>false</code> (nodes)</td>
+        <td></td>
+        <td>
+            Specifies nodes to be used as the center of the layout.
+            <a href="/docs/layouts/twopi/">twopi</a>, <a href="/docs/layouts/circo/">circo</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:rotate" href="/docs/attrs/rotate/"><code>rotate</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/int/">int</a></td>
+        <td><code>0</code></td>
+        <td></td>
+        <td>
+            If <code>rotate=90</code>, sets drawing orientation to landscape.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:rotation" href="/docs/attrs/rotation/"><code>rotation</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>0</code></td>
+        <td></td>
+        <td>
+            Rotates the final layout counter-clockwise by the specified number of degrees.
+            <a href="/docs/layouts/sfdp/">sfdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:samehead" href="/docs/attrs/samehead/"><code>samehead</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Edges with the same head and the same <code>samehead</code> value are aimed at the same point on the head.
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:sametail" href="/docs/attrs/sametail/"><code>sametail</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Edges with the same tail and the same <code>sametail</code> value are aimed at the same point on the tail..
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:samplepoints" href="/docs/attrs/samplepoints/"><code>samplepoints</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/int/">int</a></td>
+        <td><code>8</code> (output) <br><code>20</code> (overlap and image maps)</td>
+        <td></td>
+        <td>
+            Gives the number of points used for a circle/ellipse node.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:scale" href="/docs/attrs/scale/"><code>scale</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a>, <a href="/docs/attr-types/point/">point</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Scales layout by the given factor after the initial layout.
+            <a href="/docs/layouts/neato/">neato</a>, <a href="/docs/layouts/twopi/">twopi</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:searchsize" href="/docs/attrs/searchsize/"><code>searchsize</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/int/">int</a></td>
+        <td><code>30</code></td>
+        <td></td>
+        <td>
+            During network simplex, the maximum number of edges with negative cut values to search when looking for an
+            edge with minimum cut value..
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:sep" href="/docs/attrs/sep/"><code>sep</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/addDouble/">addDouble</a>, <a href="/docs/attr-types/addPoint/">addPoint</a></td>
+        <td><code>+4</code></td>
+        <td></td>
+        <td>
+            Margin to leave around nodes when removing node overlap.
+            <a href="/docs/layouts/fdp/">fdp</a>, <a href="/docs/layouts/neato/">neato</a>, <a
+                href="/docs/layouts/sfdp/">sfdp</a>, osage, <a href="/docs/layouts/circo/">circo</a>, <a
+                href="/docs/layouts/twopi/">twopi</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:shape" href="/docs/attrs/shape/"><code>shape</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/shape/">shape</a></td>
+        <td><code>ellipse</code></td>
+        <td></td>
+        <td>
+            Sets the <a href="/doc/info/shapes.html">shape</a> of a node.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:shapefile" href="/docs/attrs/shapefile/"><code>shapefile</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            A file containing user-supplied node content.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:showboxes" href="/docs/attrs/showboxes/"><code>showboxes</code></a></td>
+        <td>Edges, Nodes, Graphs</td>
+        <td><a href="/docs/attr-types/int/">int</a></td>
+        <td><code>0</code></td>
+        <td><code>0</code></td>
+        <td>
+            Print guide boxes for debugging.
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:sides" href="/docs/attrs/sides/"><code>sides</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/int/">int</a></td>
+        <td><code>4</code></td>
+        <td><code>0</code></td>
+        <td>
+            Number of sides when <code><a href="/docs/attrs/shape/">shape</a>=polygon</code>.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:size" href="/docs/attrs/size/"><code>size</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a>, <a href="/docs/attr-types/point/">point</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Maximum width and height of drawing, in inches.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:skew" href="/docs/attrs/skew/"><code>skew</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>0.0</code></td>
+        <td><code>-100.0</code></td>
+        <td>
+            Skew factor for <code><a href="/docs/attrs/shape/">shape</a>=polygon</code>.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:smoothing" href="/docs/attrs/smoothing/"><code>smoothing</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/smoothType/">smoothType</a></td>
+        <td><code>"none"</code></td>
+        <td></td>
+        <td>
+            Specifies a post-processing step used to smooth out an uneven distribution of nodes..
+            <a href="/docs/layouts/sfdp/">sfdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:sortv" href="/docs/attrs/sortv/"><code>sortv</code></a></td>
+        <td>Graphs, Clusters, Nodes</td>
+        <td><a href="/docs/attr-types/int/">int</a></td>
+        <td><code>0</code></td>
+        <td><code>0</code></td>
+        <td>
+            Sort order of graph components for ordering <a href="/docs/attrs/packmode/"><code>packmode</code></a>
+            packing..
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:splines" href="/docs/attrs/splines/"><code>splines</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/bool/">bool</a>, <a href="/docs/attr-types/string/">string</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Controls how, and if, edges are represented.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:start" href="/docs/attrs/start/"><code>start</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/startType/">startType</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Parameter used to determine the initial layout of nodes.
+            <a href="/docs/layouts/neato/">neato</a>, <a href="/docs/layouts/fdp/">fdp</a>, <a
+                href="/docs/layouts/sfdp/">sfdp</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:style" href="/docs/attrs/style/"><code>style</code></a></td>
+        <td>Edges, Nodes, Clusters, Graphs</td>
+        <td><a href="/docs/attr-types/style/">style</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Set style information for components of the graph.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:stylesheet" href="/docs/attrs/stylesheet/"><code>stylesheet</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            A URL or pathname specifying an XML style sheet, used in SVG output.
+            <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:tail_lp" href="/docs/attrs/tail_lp/"><code>tail_lp</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/point/">point</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Position of an edge's tail label, <a href="/doc/info/attrs.html#points">in points</a>..
+            write only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:tailclip" href="/docs/attrs/tailclip/"><code>tailclip</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td><code>true</code></td>
+        <td></td>
+        <td>
+            If true, the tail of an edge is clipped to the boundary of the tail node.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:tailhref" href="/docs/attrs/tailhref/"><code>tailhref</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Synonym for <a href="/docs/attrs/tailURL/"><code>tailURL</code></a>..
+            map, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:taillabel" href="/docs/attrs/taillabel/"><code>taillabel</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/lblString/">lblString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Text label to be placed near tail of edge.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:tailport" href="/docs/attrs/tailport/"><code>tailport</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/portPos/">portPos</a></td>
+        <td><code>center</code></td>
+        <td></td>
+        <td>
+            Indicates where on the tail node to attach the tail of the edge.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:tailtarget" href="/docs/attrs/tailtarget/"><code>tailtarget</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>&lt;none&gt;</code></td>
+        <td></td>
+        <td>
+            Browser window to use for the <a href="/docs/attrs/tailURL/"><code>tailURL</code></a> link.
+            map, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:tailtooltip" href="/docs/attrs/tailtooltip/"><code>tailtooltip</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Tooltip annotation attached to the tail of an edge.
+            <a href="/docs/outputs/cmap/">cmap</a>, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:tailURL" href="/docs/attrs/tailURL/"><code>tailURL</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            If defined, <code>tailURL</code> is output as part of the tail label of the edge.
+            map, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:target" href="/docs/attrs/target/"><code>target</code></a></td>
+        <td>Edges, Nodes, Graphs, Clusters</td>
+        <td><a href="/docs/attr-types/escString/">escString</a>, <a href="/docs/attr-types/string/">string</a></td>
+        <td><code>&lt;none&gt;</code></td>
+        <td></td>
+        <td>
+            If the object has a <a href="/docs/attrs/URL/"><code>URL</code></a>, this attribute determines which window
+            of the browser is used for the URL..
+            map, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:TBbalance" href="/docs/attrs/TBbalance/"><code>TBbalance</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td><code>''</code></td>
+        <td></td>
+        <td>
+            Which <a href="/docs/attrs/rank/">rank</a> to move floating (loose) nodes to.
+            <a href="/docs/layouts/dot/">dot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:tooltip" href="/docs/attrs/tooltip/"><code>tooltip</code></a></td>
+        <td>Nodes, Edges, Clusters, Graphs</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Tooltip (mouse hover text) attached to the node, edge, cluster, or graph.
+            <a href="/docs/outputs/cmap/">cmap</a>, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:truecolor" href="/docs/attrs/truecolor/"><code>truecolor</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/bool/">bool</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Whether internal bitmap rendering relies on a truecolor color model or uses.
+            bitmap output only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:URL" href="/docs/attrs/URL/"><code>URL</code></a></td>
+        <td>Edges, Nodes, Graphs, Clusters</td>
+        <td><a href="/docs/attr-types/escString/">escString</a></td>
+        <td><code>&lt;none&gt;</code></td>
+        <td></td>
+        <td>
+            Hyperlinks incorporated into device-dependent output.
+            map, <a href="/docs/outputs/ps/">postscript</a>, <a href="/docs/outputs/svg/">svg</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:vertices" href="/docs/attrs/vertices/"><code>vertices</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/pointList/">pointList</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Sets the coordinates of the vertices of the node's polygon, in inches.
+            write only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:viewport" href="/docs/attrs/viewport/"><code>viewport</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/viewPort/">viewPort</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            Clipping window on final drawing.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:voro_margin" href="/docs/attrs/voro_margin/"><code>voro_margin</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>0.05</code></td>
+        <td><code>0.0</code></td>
+        <td>
+            Tuning margin of Voronoi technique.
+            <a href="/docs/layouts/neato/">neato</a>, <a href="/docs/layouts/fdp/">fdp</a>, <a
+                href="/docs/layouts/sfdp/">sfdp</a>, <a href="/docs/layouts/twopi/">twopi</a>, <a
+                href="/docs/layouts/circo/">circo</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:weight" href="/docs/attrs/weight/"><code>weight</code></a></td>
+        <td>Edges</td>
+        <td><a href="/docs/attr-types/int/">int</a>, <a href="/docs/attr-types/double/">double</a></td>
+        <td><code>1</code></td>
+        <td><code>0(dot,twopi)</code><br><code>1(neato,fdp)</code></td>
+        <td>
+            Weight of edge.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:width" href="/docs/attrs/width/"><code>width</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>0.75</code></td>
+        <td><code>0.01</code></td>
+        <td>
+            Width of node, in inches.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:xdotversion" href="/docs/attrs/xdotversion/"><code>xdotversion</code></a></td>
+        <td>Graphs</td>
+        <td><a href="/docs/attr-types/string/">string</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Determines the version of <code>xdot</code> used in output.
+            <a href="/docs/outputs/canon/">xdot</a> only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:xlabel" href="/docs/attrs/xlabel/"><code>xlabel</code></a></td>
+        <td>Edges, Nodes</td>
+        <td><a href="/docs/attr-types/lblString/">lblString</a></td>
+        <td><code>""</code></td>
+        <td></td>
+        <td>
+            External label for a node or edge.
+
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:xlp" href="/docs/attrs/xlp/"><code>xlp</code></a></td>
+        <td>Nodes, Edges</td>
+        <td><a href="/docs/attr-types/point/">point</a></td>
+        <td></td>
+        <td></td>
+        <td>
+            Position of an exterior label, <a href="/doc/info/attrs.html#points">in points</a>.
+            write only.
+        </td>
+    </tr>
+
+    <tr>
+        <td><a id="a:z" href="/docs/attrs/z/"><code>z</code></a></td>
+        <td>Nodes</td>
+        <td><a href="/docs/attr-types/double/">double</a></td>
+        <td><code>0.0</code></td>
+        <td><code>-MAXFLOAT</code><br><code>-1000</code></td>
+        <td>
+            Z-coordinate value for 3D layouts and displays.
+
+        </td>
+    </tr>
+
+    </tbody>
+</table>
