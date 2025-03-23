@@ -250,6 +250,12 @@
   "nodesep": {
     "Graph": "Layout.NodeSeparation: Double?"
   },
+  "nojustify": {
+    "Edge": "DisableLabelJustification: Boolean?",
+    "Graph": "DisableLabelJustification: Boolean?",
+    "Cluster": "DisableLabelJustification: Boolean?",
+    "Node": "DisableLabelJustification: Boolean?"
+  },
   "oneblock": {
     "Graph": "Layout.ForceCircularLayout: Boolean?"
   },
