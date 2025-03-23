@@ -76,7 +76,14 @@ public partial class DotGraphSection : IDotGraphRootAttributes
         set => Attributes.Implementation.Comment = value;
     }
 
-    /// <inheritdoc cref="IDotGraphAttributes.ImageDirectories" />
+    /// <inheritdoc cref="IDotGraphAttributes.Tooltip"/>
+    public virtual DotEscapeString? Tooltip
+    {
+        get => Attributes.Implementation.Tooltip;
+        set => Attributes.Implementation.Tooltip = value;
+    }
+
+    /// <inheritdoc cref="IDotGraphAttributes.ImageDirectories"/>
     public virtual string? ImageDirectories
     {
         get => Attributes.Implementation.ImageDirectories;

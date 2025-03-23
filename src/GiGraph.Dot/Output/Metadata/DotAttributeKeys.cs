@@ -22,7 +22,7 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph, isImplemented: false)]
     public const string Background = "_background";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.None, isImplemented: false)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster, DotCompatibleLayoutEngines.None, isImplemented: false)]
     public const string Bb = "bb";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Sfdp, isImplemented: false)]
@@ -508,7 +508,7 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot)]
     public const string TbBalance = "TBbalance";
 
-    [DotAttributeMetadata(DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.Cmap)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.Cmap)]
     public const string Tooltip = "tooltip";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, compatibleOutputs: DotCompatibleOutputs.Bitmap, isImplemented: false)]

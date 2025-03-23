@@ -55,6 +55,7 @@
     stylesheet = text
     target = escape
     TBbalance = same
+    tooltip = escape
     URL = escape
     viewport = "1,2,3"
 

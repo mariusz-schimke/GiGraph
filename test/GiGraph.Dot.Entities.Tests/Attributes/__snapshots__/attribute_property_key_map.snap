@@ -384,6 +384,7 @@
   },
   "tooltip": {
     "Edge": "Tooltip: DotEscapeString",
+    "Graph": "Tooltip: DotEscapeString",
     "Cluster": "Tooltip: DotEscapeString",
     "Node": "Tooltip: DotEscapeString"
   },

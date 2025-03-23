@@ -31,7 +31,7 @@
   },
   "bb": {
     "Key": "bb",
-    "CompatibleElements": "Graph",
+    "CompatibleElements": "Graph, Cluster",
     "CompatibleLayoutEngines": "None",
     "CompatibleOutputs": "Any"
   },
@@ -991,7 +991,7 @@
   },
   "tooltip": {
     "Key": "tooltip",
-    "CompatibleElements": "Cluster, Node, Edge",
+    "CompatibleElements": "Graph, Cluster, Node, Edge",
     "CompatibleLayoutEngines": "Any",
     "CompatibleOutputs": "Svg, Cmap"
   },

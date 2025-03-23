@@ -23,7 +23,7 @@
 
         <Deterministic>true</Deterministic>
 
-        <Version>4.0.0</Version>
+        <Version>4.0.1</Version>
         <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
 
         <PackageId>GiGraph.Dot</PackageId>
@@ -47,11 +47,9 @@
         <RepositoryBranch>$(Branch)</RepositoryBranch>
         <RepositoryCommit>$(Commit)</RepositoryCommit>
 
-        <PackageReleaseNotes>- Nullability support has been added to the library.
+        <PackageReleaseNotes>- Support added for the 'tooltip' attribute on the graph level.
 
-- Some reflection-based logic in the library has been replaced with source generators to optimize performance.
-
-- Refactoring and code cleanup.
+- Minor refactoring.
 
 See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
     </PropertyGroup>

@@ -5,6 +5,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Styling;
 
@@ -76,4 +77,7 @@ public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDot
 
     [DotAttributeKey(DotAttributeKeys.Root)]
     public virtual partial DotId? RootNodeId { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.Tooltip)]
+    public virtual partial DotEscapeString? Tooltip { get; set; }
 }
