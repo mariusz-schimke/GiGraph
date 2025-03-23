@@ -7,11 +7,11 @@ using Xunit.Abstractions;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes.GraphvizDocumentation;
 
-public class GraphvizAttributeListTest
+public class GraphvizAttributeListDiffTest
 {
     private readonly ITestOutputHelper _testOutputHelper;
 
-    public GraphvizAttributeListTest(ITestOutputHelper testOutputHelper)
+    public GraphvizAttributeListDiffTest(ITestOutputHelper testOutputHelper)
     {
         _testOutputHelper = testOutputHelper;
     }
@@ -26,12 +26,15 @@ public class GraphvizAttributeListTest
         var doc = new HtmlDocument();
         doc.LoadHtml(html);
 
-        var rows = doc.DocumentNode.SelectNodes("//table//tr[position() > 1]"); // pomijamy nagłówek
-        var records = rows.Select(row => row.SelectNodes("td"))
+        // skip the first row (header)
+        var rows = doc.DocumentNode.SelectNodes("//table//tr[position() > 1]");
+
+        var records = rows
+            .Select(row => row.SelectNodes("td"))
             .Select(cells => new AttributeRecord
             {
                 Key = GetCellText(cells[0]),
-                CompatibleElements = GetCellText(cells[1]),
+                CompatibleElements = ExtractCompatibleElements(cells[1]),
                 Type = GetCellText(cells[2]),
                 DefaultValue = GetCellText(cells[3]),
                 MinValue = GetCellText(cells[4]),
@@ -41,6 +44,7 @@ public class GraphvizAttributeListTest
 
         PrintRemovedAttributes(records);
         PrintNewlyAddedAttributes(records);
+        PrintElementCompatibilityDiff(records);
     }
 
     private void PrintRemovedAttributes(Dictionary<string, AttributeRecord> records)
@@ -52,7 +56,7 @@ public class GraphvizAttributeListTest
 
         foreach (var removedAttribute in removedAttributes)
         {
-            _testOutputHelper.WriteLine($"Attribute removed from the documentation: {removedAttribute}");
+            _testOutputHelper.WriteLine($"The attribute '{removedAttribute}' was removed from the documentation.");
         }
     }
 
@@ -65,7 +69,26 @@ public class GraphvizAttributeListTest
 
         foreach (var newAttribute in newAttributes)
         {
-            _testOutputHelper.WriteLine($"A new attribute was added to the documentation: {newAttribute}");
+            _testOutputHelper.WriteLine($"A new attribute '{newAttribute}' was added to the documentation.");
+        }
+    }
+
+    private void PrintElementCompatibilityDiff(Dictionary<string, AttributeRecord> records)
+    {
+        var compatibilityListDiff = records
+            .Select(item => new
+            {
+                HtmlTableRecord = item.Value,
+                MetadataRecord = DotAttributeKeys.MetadataDictionary.GetValueOrDefault(item.Key)
+            })
+            .Where(item => item.MetadataRecord is not null)
+            .Where(item => item.HtmlTableRecord.CompatibleElements != item.MetadataRecord!.CompatibleElements)
+            .ToList();
+
+        foreach (var compatibilityListDiffItem in compatibilityListDiff)
+        {
+            _testOutputHelper.WriteLine($"The attribute '{compatibilityListDiffItem.HtmlTableRecord.Key}' defines a different compatibility list than the metadata implementation: " +
+                $"'{compatibilityListDiffItem.HtmlTableRecord.CompatibleElements}' vs '{compatibilityListDiffItem.MetadataRecord!.CompatibleElements}'.");
         }
     }
 
@@ -75,10 +98,19 @@ public class GraphvizAttributeListTest
         " "
     );
 
+    private static DotCompatibleElements ExtractCompatibleElements(HtmlNode cell)
+    {
+        return GetCellText(cell)
+            .Split(',', StringSplitOptions.TrimEntries)
+            .Select(element => element.TrimEnd('s'))
+            .Select(element => Enum.Parse<DotCompatibleElements>(element, true))
+            .Aggregate((x, y) => x | y);
+    }
+
     private class AttributeRecord
     {
         public required string Key { get; init; }
-        public required string CompatibleElements { get; init; }
+        public required DotCompatibleElements CompatibleElements { get; init; }
         public required string Type { get; init; }
         public required string DefaultValue { get; init; }
         public required string MinValue { get; init; }
