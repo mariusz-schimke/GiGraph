@@ -87,8 +87,9 @@ public class GraphvizAttributeListDiffTest
 
         foreach (var compatibilityListDiffItem in compatibilityListDiff)
         {
-            _testOutputHelper.WriteLine($"The attribute '{compatibilityListDiffItem.HtmlTableRecord.Key}' defines a different compatibility list than the metadata implementation: " +
-                $"'{compatibilityListDiffItem.HtmlTableRecord.CompatibleElements}' vs '{compatibilityListDiffItem.MetadataRecord!.CompatibleElements}'.");
+            _testOutputHelper.WriteLine($"The attribute '{compatibilityListDiffItem.HtmlTableRecord.Key}' " +
+                $"defines a different compatibility list ({compatibilityListDiffItem.HtmlTableRecord.CompatibleElements}) than the metadata implementation " +
+                $"({compatibilityListDiffItem.MetadataRecord!.CompatibleElements}).");
         }
     }
 
