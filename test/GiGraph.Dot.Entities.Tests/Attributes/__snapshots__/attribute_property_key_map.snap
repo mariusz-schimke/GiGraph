@@ -245,7 +245,7 @@
     "Edge": "MinLength: Int32?"
   },
   "newrank": {
-    "Graph": "Layout.UseGlobalRanking: Boolean?"
+    "Graph": "Layout.EnableGlobalRanking: Boolean?"
   },
   "nodesep": {
     "Graph": "Layout.NodeSeparation: Double?"

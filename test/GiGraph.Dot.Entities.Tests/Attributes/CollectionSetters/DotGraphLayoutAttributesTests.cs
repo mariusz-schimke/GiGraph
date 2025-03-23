@@ -34,7 +34,7 @@ public class DotGraphLayoutAttributesTests : DotGraphAttributeSettersTestBase<ID
             EdgeCrossingMinimizationScaleFactor = _faker.Random.Double(),
             Rotation = _faker.Random.Double(0, 360),
             SortIndex = _faker.Random.Int(),
-            UseGlobalRanking = _faker.Random.Bool()
+            EnableGlobalRanking = _faker.Random.Bool()
         };
 
         var targetAttributes = new DotGraphLayoutAttributes(new DotAttributeCollection());

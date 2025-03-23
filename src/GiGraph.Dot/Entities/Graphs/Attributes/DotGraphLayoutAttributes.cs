@@ -39,9 +39,9 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     [DotAttributeKey(DotAttributeKeys.McLimit)]
     public virtual partial double? EdgeCrossingMinimizationScaleFactor { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.UseGlobalRanking" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.EnableGlobalRanking" />
     [DotAttributeKey(DotAttributeKeys.NewRank)]
-    public virtual partial bool? UseGlobalRanking { get; set; }
+    public virtual partial bool? EnableGlobalRanking { get; set; }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeRank" />
     [DotAttributeKey(DotAttributeKeys.Rank)]
@@ -115,6 +115,6 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
         EdgeCrossingMinimizationScaleFactor = attributes.EdgeCrossingMinimizationScaleFactor;
         Rotation = attributes.Rotation;
         SortIndex = attributes.SortIndex;
-        UseGlobalRanking = attributes.UseGlobalRanking;
+        EnableGlobalRanking = attributes.EnableGlobalRanking;
     }
 }

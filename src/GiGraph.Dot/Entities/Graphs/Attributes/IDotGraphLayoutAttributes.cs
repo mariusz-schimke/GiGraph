@@ -70,7 +70,7 @@ public interface IDotGraphLayoutAttributes
     double? NodeSeparation { get; set; }
 
     /// <summary>
-    ///     Gets or sets the rank constraints on the nodes in the graph (dot only). See also <see cref="UseGlobalRanking" />.
+    ///     Gets or sets the rank constraints on the nodes in the graph (dot only). See also <see cref="EnableGlobalRanking" />.
     /// </summary>
     DotRank? NodeRank { get; set; }
 
@@ -155,7 +155,7 @@ public interface IDotGraphLayoutAttributes
     ///         constraints. See also <see cref="NodeRank" />.
     ///     </para>
     /// </summary>
-    bool? UseGlobalRanking { get; set; }
+    bool? EnableGlobalRanking { get; set; }
 
     /// <summary>
     ///     Gets or sets the sorting index of the graph (default: 0). If <see cref="PackingMode" /> indicates an array packing, this
