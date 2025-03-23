@@ -82,7 +82,7 @@ public class GraphvizAttributeListDiffTest
                 MetadataRecord = DotAttributeKeys.MetadataDictionary.GetValueOrDefault(item.Key)
             })
             .Where(item => item.MetadataRecord is not null)
-            .Where(item => item.HtmlTableRecord.CompatibleElements != item.MetadataRecord!.CompatibleElements)
+            .Where(item => !IsEqualCompatibilityList(item.HtmlTableRecord, item.MetadataRecord))
             .ToList();
 
         foreach (var compatibilityListDiffItem in compatibilityListDiff)
@@ -91,6 +91,22 @@ public class GraphvizAttributeListDiffTest
                 $"defines a different compatibility list ({compatibilityListDiffItem.HtmlTableRecord.CompatibleElements}) than the metadata implementation " +
                 $"({compatibilityListDiffItem.MetadataRecord!.CompatibleElements}).");
         }
+    }
+
+    private static bool IsEqualCompatibilityList(AttributeRecord htmlTableRecord, DotAttributeMetadata? metadataRecord)
+    {
+        // overrides
+        var metadataRecordCompatibleElements = metadataRecord switch
+        {
+            { Key: DotAttributeKeys.Color } r => r.CompatibleElements & ~DotCompatibleElements.Graph,
+            { Key: DotAttributeKeys.FillColor } r => r.CompatibleElements & ~DotCompatibleElements.Graph,
+            { Key: DotAttributeKeys.PenColor } r => r.CompatibleElements & ~DotCompatibleElements.Graph,
+            { Key: DotAttributeKeys.PenWidth } r => r.CompatibleElements & ~DotCompatibleElements.Graph,
+            { Key: DotAttributeKeys.Rank } r => r.CompatibleElements & ~DotCompatibleElements.Graph & ~DotCompatibleElements.Cluster,
+            _ => metadataRecord?.CompatibleElements
+        };
+
+        return htmlTableRecord.CompatibleElements == metadataRecordCompatibleElements;
     }
 
     private static string GetCellText(HtmlNode cell) => Regex.Replace(
