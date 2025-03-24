@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using System.Reflection;
 using GiGraph.Dot.Entities.Tests.Attributes.Factories;
 using GiGraph.Dot.Helpers;
@@ -64,17 +65,15 @@ public class DotAttributeSupportPerElementTest
                 })
             )
             .GroupBy(item => item.Key)
-            .ToDictionary(
+            .ToImmutableSortedDictionary(
                 group => group.Key,
-                group => new SortedDictionary<DotCompatibleElements, string>(
-                    group.ToDictionary(
-                        g => g.Element,
-                        g => $"{g.PropertyPath}: {TypeHelper.GetDisplayName(g.Property.PropertyType)}"
-                    ))
+                group => group.ToImmutableSortedDictionary(
+                    g => g.Element,
+                    g => $"{g.PropertyPath}: {TypeHelper.GetDisplayName(g.Property.PropertyType)}"
+                )
             );
 
-        var sortedKeyMap = new SortedDictionary<string, SortedDictionary<DotCompatibleElements, string>>(keyMap);
-        Snapshot.Match(sortedKeyMap, "attribute_property_key_map");
+        Snapshot.Match(keyMap, "attribute_property_key_map");
     }
 
     private static string[] GetCompatibleKeysFor(DotCompatibleElements compatibleElements)
