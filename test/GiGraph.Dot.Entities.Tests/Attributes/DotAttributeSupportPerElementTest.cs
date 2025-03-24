@@ -53,7 +53,7 @@ public class DotAttributeSupportPerElementTest
     {
         var attributesMetadata = DotElementAttributesMetadataFactory.Create();
 
-        var keyLookup = attributesMetadata
+        var keyMap = attributesMetadata
             .SelectMany(metadata => metadata.Attributes
                 .Select(attribute => new
                 {
@@ -63,21 +63,18 @@ public class DotAttributeSupportPerElementTest
                     Property = attribute.Value.GetPropertyInfoPath().Last()
                 })
             )
-            .GroupBy(
-                item => item.Key
-            )
-            .OrderBy(item => item.Key)
+            .GroupBy(item => item.Key)
             .ToDictionary(
                 group => group.Key,
-                group => group
-                    .OrderBy(g => g.Element)
-                    .ToDictionary(
+                group => new SortedDictionary<DotCompatibleElements, string>(
+                    group.ToDictionary(
                         g => g.Element,
                         g => $"{g.PropertyPath}: {TypeHelper.GetDisplayName(g.Property.PropertyType)}"
-                    )
+                    ))
             );
 
-        Snapshot.Match(keyLookup, "attribute_property_key_map");
+        var sortedKeyMap = new SortedDictionary<string, SortedDictionary<DotCompatibleElements, string>>(keyMap);
+        Snapshot.Match(sortedKeyMap, "attribute_property_key_map");
     }
 
     private static string[] GetCompatibleKeysFor(DotCompatibleElements compatibleElements)

@@ -53,9 +53,15 @@ public class GraphvizAttributeListDiffTest
 
     private void PrintRemovedAttributes(Dictionary<string, AttributeRecord> records)
     {
+        var ignoredAttributes = new[]
+        {
+            DotAttributeKeys.Mosek
+        };
+
         var removedAttributes = DotAttributeKeys.MetadataDictionary
             .Select(item => item.Key)
             .Where(key => !records.ContainsKey(key))
+            .Where(key => !ignoredAttributes.Contains(key))
             .ToArray();
 
         foreach (var removedAttribute in removedAttributes)
@@ -97,17 +103,17 @@ public class GraphvizAttributeListDiffTest
         }
     }
 
-    private static bool IsEqualCompatibilityList(AttributeRecord htmlTableRecord, DotAttributeMetadata? metadataRecord)
+    private static bool IsEqualCompatibilityList(AttributeRecord htmlTableRecord, DotAttributeMetadata? metadata)
     {
         // overrides where the difference is intentional
-        var metadataRecordCompatibleElements = metadataRecord switch
+        var metadataRecordCompatibleElements = metadata switch
         {
-            { Key: DotAttributeKeys.Color } r => r.CompatibleElements & ~DotCompatibleElements.Graph,
-            { Key: DotAttributeKeys.FillColor } r => r.CompatibleElements & ~DotCompatibleElements.Graph,
-            { Key: DotAttributeKeys.PenColor } r => r.CompatibleElements & ~DotCompatibleElements.Graph,
-            { Key: DotAttributeKeys.PenWidth } r => r.CompatibleElements & ~DotCompatibleElements.Graph,
-            { Key: DotAttributeKeys.Rank } r => r.CompatibleElements & ~DotCompatibleElements.Graph & ~DotCompatibleElements.Cluster,
-            _ => metadataRecord?.CompatibleElements
+            { Key: DotAttributeKeys.Color } m => m.CompatibleElements & ~DotCompatibleElements.Graph,
+            { Key: DotAttributeKeys.FillColor } m => m.CompatibleElements & ~DotCompatibleElements.Graph,
+            { Key: DotAttributeKeys.PenColor } m => m.CompatibleElements & ~DotCompatibleElements.Graph,
+            { Key: DotAttributeKeys.PenWidth } m => m.CompatibleElements & ~DotCompatibleElements.Graph,
+            { Key: DotAttributeKeys.Rank } m => m.CompatibleElements & ~DotCompatibleElements.Graph & ~DotCompatibleElements.Cluster,
+            _ => metadata?.CompatibleElements
         };
 
         return htmlTableRecord.CompatibleElements == metadataRecordCompatibleElements;
