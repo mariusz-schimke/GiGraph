@@ -9,7 +9,7 @@ public enum DotOutputOrder
 {
     /// <summary>
     ///     The simplest mode, but when the graph layout does not avoid edge-node overlap, this mode will sometimes have edges drawn over
-    ///     nodes and sometimes on top of nodes.
+    ///     nodes, and sometimes on top of nodes.
     /// </summary>
     [DotAttributeValue("breadthfirst")]
     BreadthFirst,
@@ -22,7 +22,7 @@ public enum DotOutputOrder
     NodesFirst,
 
     /// <summary>
-    ///     When specified all edges appear beneath nodes, even if the resulting drawing is ambiguous. Usually used for aesthetic
+    ///     When specified, all edges appear beneath nodes, even if the resulting drawing is ambiguous. Usually used for aesthetic
     ///     reasons.
     /// </summary>
     [DotAttributeValue("edgesfirst")]
