@@ -267,6 +267,9 @@
     "Graph": "Canvas.Orientation: DotOrientation?",
     "Node": "Geometry.Rotation: Double?"
   },
+  "outputorder": {
+    "Graph": "Layout.OutputOrder: DotOutputOrder?"
+  },
   "pack": {
     "Graph": "Layout.Packing: DotPackingDefinition"
   },

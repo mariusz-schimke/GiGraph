@@ -336,7 +336,7 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Node)]
     public const string Orientation = "orientation";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph, isImplemented: false)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph, isImplemented: true)]
     public const string OutputOrder = "outputorder";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.NotDot, isImplemented: false)]
