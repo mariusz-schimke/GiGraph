@@ -35,6 +35,7 @@
     oneblock = true
     ordering = out
     orientation = landscape
+    outputorder = edgesfirst
     pack = 12
     packmode = array_b
     pad = "1,2"

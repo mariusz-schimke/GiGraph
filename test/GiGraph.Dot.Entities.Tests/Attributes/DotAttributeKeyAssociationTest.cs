@@ -23,6 +23,7 @@ using GiGraph.Dot.Types.Images;
 using GiGraph.Dot.Types.Layout;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Orientation;
+using GiGraph.Dot.Types.Output;
 using GiGraph.Dot.Types.Packing;
 using GiGraph.Dot.Types.Ranks;
 using GiGraph.Dot.Types.Styling;
@@ -56,6 +57,7 @@ public class DotAttributeKeyAssociationTest
         { typeof(DotNodeShape), DotNodeShape.Box },
         { typeof(DotNodeSizing), DotNodeSizing.Auto },
         { typeof(DotOrientation), DotOrientation.Landscape },
+        { typeof(DotOutputOrder), DotOutputOrder.EdgesFirst },
         { typeof(DotRank), DotRank.Same },
         { typeof(DotStyles), (DotStyles) 0xff },
         { typeof(DotVerticalAlignment), DotVerticalAlignment.Bottom },
