@@ -5,14 +5,10 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 
-public abstract partial class DotStyleAttributeOptions
+// TODO: do posprzątania niepotrzebne metody
+public partial class DotStyleAttributeOptions(DotAttributeCollection attributes)
 {
-    protected readonly DotAttributeCollection _attributes;
-
-    protected DotStyleAttributeOptions(DotAttributeCollection attributes)
-    {
-        _attributes = attributes;
-    }
+    protected readonly DotAttributeCollection _attributes = attributes;
 
     // attribute used only for automatic code generation here
     [DotAttributeKey(DotAttributeKeys.Style)]
@@ -45,37 +41,37 @@ public abstract partial class DotStyleAttributeOptions
         Style = DotStyles.Default;
     }
 
-    protected virtual void Apply(DotStyles options)
+    protected virtual void SetOption(DotStyles options)
     {
         Style = Style.GetValueOrDefault(options) | options;
     }
 
-    protected virtual void Remove(DotStyles options)
+    protected virtual void ResetOption(DotStyles options)
     {
         Style &= ~options;
     }
 
-    protected virtual bool HasOptions(DotStyles options) => Style.GetValueOrDefault(DotStyles.Default).HasFlag(options);
+    public virtual bool HasOption(DotStyles option) => Style.GetValueOrDefault(DotStyles.Default).HasFlag(option);
 
-    protected virtual void ApplyOption(DotStyles option, bool set)
+    public virtual void ModifyOption(DotStyles option, bool set)
     {
         if (set)
         {
-            Apply(option);
+            SetOption(option);
         }
         else
         {
-            Remove(option);
+            ResetOption(option);
         }
     }
 
-    protected virtual void SetPart<TPart>(TPart style)
+    public virtual void SetPart<TPart>(TPart style)
         where TPart : struct, Enum
     {
         Style = DotPartialEnumMapper.ToComplete(style, Style.GetValueOrDefault(DotStyles.Default));
     }
 
-    protected virtual TPart GetPart<TPart>()
+    public virtual TPart GetPart<TPart>()
         where TPart : struct, Enum =>
         DotPartialEnumMapper.ToPartial<DotStyles, TPart>(Style.GetValueOrDefault(DotStyles.Default));
 }

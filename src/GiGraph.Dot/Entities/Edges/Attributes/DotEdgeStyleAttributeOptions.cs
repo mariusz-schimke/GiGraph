@@ -35,8 +35,8 @@ public class DotEdgeStyleAttributeOptions : DotStyleAttributeOptions
     /// </summary>
     public virtual bool Invisible
     {
-        get => HasOptions(DotStyles.Invisible);
-        set => ApplyOption(DotStyles.Invisible, value);
+        get => HasOption(DotStyles.Invisible);
+        set => ModifyOption(DotStyles.Invisible, value);
     }
 
     /// <summary>

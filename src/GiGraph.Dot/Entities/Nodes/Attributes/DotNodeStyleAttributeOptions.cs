@@ -18,8 +18,8 @@ public class DotNodeStyleAttributeOptions : DotClusterNodeCommonStyleAttributeOp
     /// </summary>
     public virtual bool Diagonals
     {
-        get => HasOptions(DotStyles.Diagonals);
-        set => ApplyOption(DotStyles.Diagonals, value);
+        get => HasOption(DotStyles.Diagonals);
+        set => ModifyOption(DotStyles.Diagonals, value);
     }
 
     /// <inheritdoc cref="DotClusterNodeCommonStyleAttributeOptions{TFillStyle,TStyleProperties}.Set" />
