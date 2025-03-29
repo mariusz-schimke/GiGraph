@@ -38,7 +38,7 @@
     "Edge": "Color: DotColorDefinition"
   },
   "colorscheme": {
-    "Graph": "ColorScheme: String",
+    "Graph": "Canvas.ColorScheme: String",
     "Cluster": "ColorScheme: String",
     "Node": "ColorScheme: String",
     "Edge": "ColorScheme: String"

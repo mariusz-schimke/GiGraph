@@ -21,6 +21,7 @@ public class DotGraphCanvasAttributesTests : DotGraphAttributeSettersTestBase<ID
         {
             BackgroundColor = Color.FromArgb(_faker.Random.Int()),
             CenterDrawing = _faker.Random.Bool(),
+            ColorScheme = _faker.Random.String(),
             Dpi = _faker.Random.Double(),
             GradientFillAngle = _faker.Random.Int(),
             LandscapeOrientation = _faker.Random.Bool(),

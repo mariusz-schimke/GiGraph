@@ -59,13 +59,6 @@ public partial class DotGraphSection : IDotGraphRootAttributes
         set => Attributes.Implementation.DisableLabelJustification = value;
     }
 
-    /// <inheritdoc cref="IDotGraphAttributes.ColorScheme"/>
-    public virtual string? ColorScheme
-    {
-        get => Attributes.Implementation.ColorScheme;
-        set => Attributes.Implementation.ColorScheme = value;
-    }
-
     /// <inheritdoc cref="IDotGraphAttributes.Charset"/>
     public virtual string? Charset
     {

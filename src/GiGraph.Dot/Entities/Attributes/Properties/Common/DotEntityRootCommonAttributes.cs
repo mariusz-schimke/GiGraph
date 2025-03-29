@@ -27,6 +27,7 @@ public abstract partial class DotEntityRootCommonAttributes<TIEntityAttributePro
     [DotAttributeKey(DotAttributeKeys.Label)]
     public virtual partial DotLabel? Label { get; set; }
 
+    // todo: remove
     [DotAttributeKey(DotAttributeKeys.ColorScheme)]
     public virtual partial string? ColorScheme { get; set; }
 

@@ -86,15 +86,6 @@ public interface IDotGraphAttributes
     bool? DisableLabelJustification { get; set; }
 
     /// <summary>
-    ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
-    ///     is set, the standard <see cref="DotColorSchemes.X11"/> naming is used. For example, if
-    ///     <see cref="DotColorSchemes.DotBrewerColorSchemes.BuGn9"/> Brewer color scheme is used, then a color named "7", e.g.
-    ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes"/> for
-    ///     supported scheme names.
-    /// </summary>
-    string? ColorScheme { get; set; }
-
-    /// <summary>
     ///     Specifies the character encoding used when interpreting string input as a text label. The default value is "UTF-8". The other
     ///     legal value is "iso-8859-1" or, equivalently, "Latin1". The charset attribute is case-insensitive. Note that if the character
     ///     encoding used in the input does not match the charset value, the resulting output may be very strange.

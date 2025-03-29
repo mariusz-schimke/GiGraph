@@ -28,10 +28,10 @@ public partial class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<
     {
         _styleAttributeOptions = styleAttributeOptions;
     }
-    
+
     /// <summary>
     ///     Gets or sets a fill style of the graph. Note that the style is shared with clusters, and that the only option applicable to
-    ///     the root graph is <see cref="DotClusterFillStyle.Radial" />.
+    ///     the root graph is <see cref="DotClusterFillStyle.Radial"/>.
     /// </summary>
     public virtual DotClusterFillStyle FillStyle
     {
@@ -39,55 +39,59 @@ public partial class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<
         set => _styleAttributeOptions.SetPart(value);
     }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.BackgroundColor" />
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.BackgroundColor"/>
     [DotAttributeKey(DotAttributeKeys.BgColor)]
     public virtual partial DotColorDefinition? BackgroundColor { get; set; }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.GradientFillAngle" />
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.ColorScheme"/>
+    [DotAttributeKey(DotAttributeKeys.ColorScheme)]
+    public virtual partial string? ColorScheme { get; set; }
+
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.GradientFillAngle"/>
     [DotAttributeKey(DotAttributeKeys.GradientAngle)]
     public virtual partial int? GradientFillAngle { get; set; }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.CenterDrawing" />
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.CenterDrawing"/>
     [DotAttributeKey(DotAttributeKeys.Center)]
     public virtual partial bool? CenterDrawing { get; set; }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.Orientation" />
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.Orientation"/>
     [DotAttributeKey(DotAttributeKeys.Orientation)]
     public virtual partial DotOrientation? Orientation { get; set; }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.OrientationAngle" />
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.OrientationAngle"/>
     [DotAttributeKey(DotAttributeKeys.Rotate)]
     public virtual partial int? OrientationAngle { get; set; }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.LandscapeOrientation" />
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.LandscapeOrientation"/>
     [DotAttributeKey(DotAttributeKeys.Landscape)]
     public virtual partial bool? LandscapeOrientation { get; set; }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.Dpi" />
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.Dpi"/>
     [DotAttributeKey(DotAttributeKeys.Dpi)]
     public virtual partial double? Dpi { get; set; }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.Resolution" />
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.Resolution"/>
     [DotAttributeKey(DotAttributeKeys.Resolution)]
     public virtual partial double? Resolution { get; set; }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.Size" />
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.Size"/>
     [DotAttributeKey(DotAttributeKeys.Size)]
     public virtual partial DotPoint? Size { get; set; }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.Viewport" />
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.Viewport"/>
     [DotAttributeKey(DotAttributeKeys.Viewport)]
     public virtual partial DotViewport? Viewport { get; set; }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.Scaling" />
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.Scaling"/>
     [DotAttributeKey(DotAttributeKeys.Ratio)]
     public virtual partial DotGraphScalingDefinition? Scaling { get; set; }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.Margin" />
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.Margin"/>
     [DotAttributeKey(DotAttributeKeys.Margin)]
     public virtual partial DotPoint? Margin { get; set; }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.Padding" />
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.Padding"/>
     [DotAttributeKey(DotAttributeKeys.Pad)]
     public virtual partial DotPoint? Padding { get; set; }
 
@@ -99,8 +103,11 @@ public partial class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<
     /// </param>
     public virtual void Set(IDotGraphCanvasAttributes attributes)
     {
+        // todo: usunąć tego typu metody z interfejsami jako parametr
+        // (tu jest pomijany FillStyle, ale czy jest uzasadnienie dla istnienia tych metod?)
         BackgroundColor = attributes.BackgroundColor;
         CenterDrawing = attributes.CenterDrawing;
+        ColorScheme = attributes.ColorScheme;
         Dpi = attributes.Dpi;
         GradientFillAngle = attributes.GradientFillAngle;
         LandscapeOrientation = attributes.LandscapeOrientation;
