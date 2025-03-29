@@ -16,7 +16,7 @@ public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDot
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().BuildLazy();
 
     public DotGraphRootAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new DotGraphClustersAttributes(attributes), new DotHyperlinkAttributes(attributes), new DotGraphFontAttributes(attributes), new DotGraphStyleAttributeOptions(attributes),
+        : this(attributes, AttributeKeyLookup, new DotGraphClustersAttributes(attributes), new DotHyperlinkAttributes(attributes), new DotGraphFontAttributes(attributes),
             new DotGraphSvgStyleSheetAttributes(attributes), new DotGraphLayoutAttributes(attributes), new DotGraphCanvasAttributes(attributes), new DotLabelAlignmentAttributes(attributes)
         )
     {
@@ -28,7 +28,6 @@ public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDot
         DotGraphClustersAttributes clusterAttributes,
         DotHyperlinkAttributes hyperlinkAttributes,
         DotGraphFontAttributes fontAttributes,
-        DotGraphStyleAttributeOptions styleAttributeOptions,
         DotGraphSvgStyleSheetAttributes svgStyleSheetAttributes,
         DotGraphLayoutAttributes layoutAttributes,
         DotGraphCanvasAttributes canvasAttributes,
@@ -38,14 +37,11 @@ public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDot
     {
         Clusters = clusterAttributes;
         Font = fontAttributes;
-        Style = styleAttributeOptions;
         SvgStyleSheet = svgStyleSheetAttributes;
         Layout = layoutAttributes;
         Canvas = canvasAttributes;
         LabelAlignment = labelAlignmentAttributes;
     }
-
-    public DotGraphStyleAttributeOptions Style { get; }
 
     public DotGraphClustersAttributes Clusters { get; }
     public DotGraphFontAttributes Font { get; }

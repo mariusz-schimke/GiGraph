@@ -5,6 +5,7 @@ using GiGraph.Dot.Types.Graphs;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
+// todo: delete this class
 public class DotGraphStyleAttributeOptions : DotStyleAttributeOptions
 {
     public DotGraphStyleAttributeOptions(DotAttributeCollection attributes)

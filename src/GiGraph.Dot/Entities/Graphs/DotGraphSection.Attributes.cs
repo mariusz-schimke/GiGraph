@@ -17,9 +17,6 @@ public partial class DotGraphSection : IDotGraphRootAttributes
     /// <inheritdoc cref="IDotGraphRootAttributes.Font"/>
     public DotGraphFontAttributes Font => Attributes.Implementation.Font;
 
-    /// <inheritdoc cref="IDotGraphRootAttributes.Style"/>
-    public DotGraphStyleAttributeOptions Style => Attributes.Implementation.Style;
-
     /// <inheritdoc cref="IDotGraphRootAttributes.SvgStyleSheet"/>
     public DotGraphSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
 
