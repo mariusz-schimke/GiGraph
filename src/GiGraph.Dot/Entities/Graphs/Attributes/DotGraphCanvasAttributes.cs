@@ -30,8 +30,12 @@ public partial class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<
     }
 
     /// <summary>
-    ///     Gets or sets a fill style of the graph. Note that the style is shared with clusters, and that the only option applicable to
-    ///     the root graph is <see cref="DotClusterFillStyle.Radial"/>.
+    ///     <para>
+    ///         Gets or sets the fill style of the graph. The only option applicable is <see cref="DotClusterFillStyle.Radial"/>.
+    ///     </para>
+    ///     <para>
+    ///         Note that this setting is shared with clusters and can't be applied independently.
+    ///     </para>
     /// </summary>
     public virtual DotClusterFillStyle FillStyle
     {
