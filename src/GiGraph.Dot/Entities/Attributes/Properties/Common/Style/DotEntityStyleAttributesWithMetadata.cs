@@ -21,13 +21,13 @@ public abstract partial class DotEntityStyleAttributesWithMetadata<TIEntityAttri
     ///     Determines if any style options are assigned to the element.
     /// </summary>
     [Pure]
-    public virtual bool AreStyleOptionsSet() => Style.HasValue;
+    public virtual bool HasAnyStyleOptions() => Style.HasValue;
 
     /// <summary>
     ///     Determines if the default style is assigned to the element.
     /// </summary>
     [Pure]
-    public virtual bool AreDefaultStyleOptionsSet() => Style == DotStyles.Default;
+    public virtual bool HasDefaultStyleOptions() => Style == DotStyles.Default;
 
     /// <summary>
     ///     Clears the style options of the element so that no style is set.
