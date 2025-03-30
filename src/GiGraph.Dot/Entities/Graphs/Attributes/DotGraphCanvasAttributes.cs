@@ -98,6 +98,17 @@ public partial class DotGraphCanvasAttributes : DotEntityStyleAttributesWithMeta
     public virtual partial DotPoint? Padding { get; set; }
 
     /// <summary>
+    ///     Applies the specified style options to the graph.
+    /// </summary>
+    /// <param name="options">
+    ///     The options to apply.
+    /// </param>
+    public virtual void SetStyleOptions(DotGraphStyleOptions options)
+    {
+        FillStyle = options.FillStyle;
+    }
+
+    /// <summary>
     ///     Copies canvas attributes from the specified instance.
     /// </summary>
     /// <param name="attributes">
@@ -105,8 +116,8 @@ public partial class DotGraphCanvasAttributes : DotEntityStyleAttributesWithMeta
     /// </param>
     public virtual void Set(IDotGraphCanvasAttributes attributes)
     {
-        // todo: usunąć tego typu metody z interfejsami jako parametr
-        // (tu jest pomijany FillStyle, ale czy jest uzasadnienie dla istnienia tych metod?)
+        //TODO: dodać takie metody na wszystkich nowo dodanych StyleAttributes
+
         BackgroundColor = attributes.BackgroundColor;
         CenterDrawing = attributes.CenterDrawing;
         ColorScheme = attributes.ColorScheme;

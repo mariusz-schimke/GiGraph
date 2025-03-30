@@ -55,9 +55,9 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <param name="options">
     ///     The options to apply.
     /// </param>
-    public virtual void Set(DotEdgeStyleProperties options)
+    public virtual void SetOptions(DotEdgeStyleOptions options)
     {
-        Set(options.LineStyle, options.LineWeight, options.Invisible);
+        SetOptions(options.LineStyle, options.LineWeight, options.Invisible);
     }
 
     /// <summary>
@@ -72,7 +72,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <param name="invisible">
     ///     Determines whether the edge should be invisible.
     /// </param>
-    public virtual void Set(DotLineStyle lineStyle = default, DotLineWeight lineWeight = default, bool invisible = false)
+    public virtual void SetOptions(DotLineStyle lineStyle = default, DotLineWeight lineWeight = default, bool invisible = false)
     {
         LineStyle = lineStyle;
         LineWeight = lineWeight;

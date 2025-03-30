@@ -17,7 +17,7 @@ public class DotClusterStyleAttributeOptionsTest
         var cluster = graph.Clusters.Add("c1");
 
         // set by class
-        cluster.Style.Set(new DotClusterStyleProperties(
+        cluster.Style.SetOptions(new DotClusterStyleOptions(
             DotClusterFillStyle.Striped,
             DotBorderStyle.Dotted,
             DotBorderWeight.Bold,
@@ -31,7 +31,7 @@ public class DotClusterStyleAttributeOptionsTest
         // cluster.Style.SetDefault();
 
         // set the same another way
-        cluster.Style.Set(
+        cluster.Style.SetOptions(
             DotClusterFillStyle.Striped,
             DotBorderStyle.Dotted,
             DotBorderWeight.Bold,

@@ -17,7 +17,7 @@ public class DotNodeStyleAttributeOptionsTest
         var node = graph.Nodes.Add("n1");
 
         // set by class
-        node.Style.Set(new DotNodeStyleProperties(
+        node.Style.SetOptions(new DotNodeStyleOptions(
             DotNodeFillStyle.Radial,
             DotBorderStyle.Dashed,
             DotBorderWeight.Bold,
@@ -32,7 +32,7 @@ public class DotNodeStyleAttributeOptionsTest
         // node.Style.SetDefault();
 
         // set the same another way
-        node.Style.Set(
+        node.Style.SetOptions(
             DotNodeFillStyle.Radial,
             DotBorderStyle.Dashed,
             DotBorderWeight.Bold,

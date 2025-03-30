@@ -81,9 +81,9 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// <param name="options">
     ///     The options to apply.
     /// </param>
-    public virtual void Set(DotClusterStyleProperties options)
+    public virtual void SetOptions(DotClusterStyleOptions options)
     {
-        Set(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Invisible);
+        SetOptions(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Invisible);
     }
 
     /// <summary>
@@ -104,7 +104,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// <param name="invisible">
     ///     Determines whether the node should be invisible.
     /// </param>
-    public virtual void Set(DotClusterFillStyle fillStyle = default, DotBorderStyle borderStyle = default,
+    public virtual void SetOptions(DotClusterFillStyle fillStyle = default, DotBorderStyle borderStyle = default,
         DotBorderWeight borderWeight = default, DotCornerStyle cornerStyle = default, bool invisible = false)
     {
         FillStyle = fillStyle;

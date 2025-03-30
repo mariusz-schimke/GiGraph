@@ -98,9 +98,9 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <param name="options">
     ///     The options to apply.
     /// </param>
-    public virtual void Set(DotNodeStyleProperties options)
+    public virtual void SetOptions(DotNodeStyleOptions options)
     {
-        Set(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Diagonals, options.Invisible);
+        SetOptions(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Diagonals, options.Invisible);
     }
 
     /// <summary>
@@ -125,7 +125,7 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <param name="invisible">
     ///     Determines whether the node should be invisible.
     /// </param>
-    public virtual void Set(DotNodeFillStyle fillStyle = default, DotBorderStyle borderStyle = default, DotBorderWeight borderWeight = default,
+    public virtual void SetOptions(DotNodeFillStyle fillStyle = default, DotBorderStyle borderStyle = default, DotBorderWeight borderWeight = default,
         DotCornerStyle cornerStyle = default, bool diagonals = false, bool invisible = false)
     {
         FillStyle = fillStyle;
