@@ -1,5 +1,5 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode;
+using GiGraph.Dot.Entities.Attributes.Properties.Common;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
@@ -7,13 +7,16 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
+using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.EscapeString;
+using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
-public partial class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<IDotNodeAttributes, DotNodeRootAttributes>, IDotNodeRootAttributes
+public partial class DotNodeRootAttributes : DotEntityRootCommonAttributes<IDotNodeAttributes, DotNodeRootAttributes>, IDotNodeRootAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().BuildLazy();
 
@@ -33,13 +36,14 @@ public partial class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<
         DotNodeSizeAttributes sizeAttributes,
         DotSvgStyleSheetAttributes svgStyleSheetAttributes
     )
-        : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
+        : base(attributes, attributeKeyLookup, hyperlinkAttributes)
     {
         Font = fontAttributes;
         Style = styleAttributeOptions;
         Image = imageAttributes;
         Geometry = geometryAttributes;
         Size = sizeAttributes;
+        SvgStyleSheet = svgStyleSheetAttributes;
     }
 
     public DotFontAttributes Font { get; }
@@ -56,6 +60,29 @@ public partial class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<
         [DotAttributeKey(DotAttributeKeys.Style)]
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
+
+    public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
+
+    [DotAttributeKey(DotAttributeKeys.Color)]
+    public virtual partial DotColorDefinition? Color { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.FillColor)]
+    public virtual partial DotColorDefinition? FillColor { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.GradientAngle)]
+    public virtual partial int? GradientFillAngle { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.PenWidth)]
+    public virtual partial double? BorderWidth { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.Tooltip)]
+    public virtual partial DotEscapeString? Tooltip { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.Margin)]
+    public virtual partial DotPoint? Padding { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.SortV)]
+    public virtual partial int? SortIndex { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Comment)]
     public virtual partial string? Comment { get; set; }

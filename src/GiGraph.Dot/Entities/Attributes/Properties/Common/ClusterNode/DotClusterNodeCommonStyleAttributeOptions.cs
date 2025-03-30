@@ -5,15 +5,11 @@ using GiGraph.Dot.Types.Styling;
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode;
 
 // todo: usunąć
-public abstract class DotClusterNodeCommonStyleAttributeOptions<TFillStyle, TStyleProperties> : DotStyleAttributeOptions
+public abstract class DotClusterNodeCommonStyleAttributeOptions<TFillStyle, TStyleProperties>(DotAttributeCollection attributes)
+    : DotStyleAttributeOptions(attributes)
     where TFillStyle : struct, Enum
     where TStyleProperties : DotClusterNodeCommonStyleProperties<TFillStyle>
 {
-    protected DotClusterNodeCommonStyleAttributeOptions(DotAttributeCollection attributes)
-        : base(attributes)
-    {
-    }
-
     /// <summary>
     ///     Gets or sets a fill style.
     /// </summary>
