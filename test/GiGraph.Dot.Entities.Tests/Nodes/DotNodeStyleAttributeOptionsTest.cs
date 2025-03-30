@@ -17,7 +17,7 @@ public class DotNodeStyleAttributeOptionsTest
         var node = graph.Nodes.Add("n1");
 
         // set by class
-        node.Style.SetOptions(new DotNodeStyleOptions(
+        node.Style.SetStyleModifiers(new DotNodeStyleModifiers(
             DotNodeFillStyle.Radial,
             DotBorderStyle.Dashed,
             DotBorderWeight.Bold,
@@ -28,10 +28,10 @@ public class DotNodeStyleAttributeOptionsTest
 
         Snapshot.Match(graph.Build(), snapshotName);
 
-        node.Style.RestoreDefaultStyleFlags();
+        node.Style.RestoreDefaultStyleModifiers();
 
         // set the same another way
-        node.Style.SetOptions(
+        node.Style.SetStyleModifiers(
             DotNodeFillStyle.Radial,
             DotBorderStyle.Dashed,
             DotBorderWeight.Bold,

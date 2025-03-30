@@ -1,9 +1,9 @@
 using GiGraph.Dot.Types.Styling;
 
-namespace GiGraph.Dot.Types.Nodes;
+namespace GiGraph.Dot.Types.Clusters;
 
 /// <summary>
-///     Node style attributes.
+///     Cluster style modifiers.
 /// </summary>
 /// <param name="FillStyle">
 ///     Fill style.
@@ -17,26 +17,21 @@ namespace GiGraph.Dot.Types.Nodes;
 /// <param name="CornerStyle">
 ///     Corner style.
 /// </param>
-/// <param name="Diagonals">
-///     Causes small chords to be drawn near the vertices of the node’s polygon or, in case of circles and ellipses, two chords near
-///     the top and the bottom of the shape.
-/// </param>
 /// <param name="Invisible">
 ///     Determines whether the element is invisible.
 /// </param>
-public record DotNodeStyleOptions(
-    DotNodeFillStyle FillStyle = default,
+public record DotClusterStyleModifiers(
+    DotClusterFillStyle FillStyle = default,
     DotBorderStyle BorderStyle = default,
     DotBorderWeight BorderWeight = default,
     DotCornerStyle CornerStyle = default,
-    bool Diagonals = false,
     bool Invisible = false
 )
 {
     /// <summary>
     ///     The fill style.
     /// </summary>
-    public DotNodeFillStyle FillStyle { get; init; } = FillStyle;
+    public DotClusterFillStyle FillStyle { get; init; } = FillStyle;
 
     /// <summary>
     ///     The border style.

@@ -32,8 +32,8 @@ public partial class DotGraphStyleAttributes : DotEntityStyleAttributesWithMetad
     /// </summary>
     public virtual DotClusterFillStyle FillStyle
     {
-        get => GetPartialStyleFlags<DotClusterFillStyle>();
-        set => SetPartialStyleFlags(value);
+        get => GetPartialStyleModifier<DotClusterFillStyle>();
+        set => SetPartialStyleModifier(value);
     }
 
     /// <inheritdoc cref="IDotGraphStyleAttributes.BackgroundColor"/>
@@ -49,13 +49,13 @@ public partial class DotGraphStyleAttributes : DotEntityStyleAttributesWithMetad
     public virtual partial int? GradientFillAngle { get; set; }
 
     /// <summary>
-    ///     Applies the specified style options to the graph.
+    ///     Applies the specified style modifiers to the graph.
     /// </summary>
-    /// <param name="options">
+    /// <param name="modifiers">
     ///     The options to apply.
     /// </param>
-    public virtual void SetStyleOptions(DotGraphStyleOptions options)
+    public virtual void SetStyleModifiers(DotGraphStyleModifiers modifiers)
     {
-        FillStyle = options.FillStyle;
+        FillStyle = modifiers.FillStyle;
     }
 }

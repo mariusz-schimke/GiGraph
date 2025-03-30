@@ -27,8 +27,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual DotNodeFillStyle FillStyle
     {
-        get => GetPartialStyleFlags<DotNodeFillStyle>();
-        set => SetPartialStyleFlags(value);
+        get => GetPartialStyleModifier<DotNodeFillStyle>();
+        set => SetPartialStyleModifier(value);
     }
 
     /// <summary>
@@ -36,8 +36,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual DotBorderStyle BorderStyle
     {
-        get => GetPartialStyleFlags<DotBorderStyle>();
-        set => SetPartialStyleFlags(value);
+        get => GetPartialStyleModifier<DotBorderStyle>();
+        set => SetPartialStyleModifier(value);
     }
 
     /// <summary>
@@ -45,8 +45,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual DotBorderWeight BorderWeight
     {
-        get => GetPartialStyleFlags<DotBorderWeight>();
-        set => SetPartialStyleFlags(value);
+        get => GetPartialStyleModifier<DotBorderWeight>();
+        set => SetPartialStyleModifier(value);
     }
 
     /// <summary>
@@ -54,8 +54,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual DotCornerStyle CornerStyle
     {
-        get => GetPartialStyleFlags<DotCornerStyle>();
-        set => SetPartialStyleFlags(value);
+        get => GetPartialStyleModifier<DotCornerStyle>();
+        set => SetPartialStyleModifier(value);
     }
 
     /// <summary>
@@ -64,8 +64,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual bool Diagonals
     {
-        get => HasStyleFlag(DotStyles.Diagonals);
-        set => ModifyStyleFlag(DotStyles.Diagonals, value);
+        get => HasStyleModifier(DotStyles.Diagonals);
+        set => SetStyleModifier(DotStyles.Diagonals, value);
     }
 
     /// <summary>
@@ -73,8 +73,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual bool Invisible
     {
-        get => HasStyleFlag(DotStyles.Invisible);
-        set => ModifyStyleFlag(DotStyles.Invisible, value);
+        get => HasStyleModifier(DotStyles.Invisible);
+        set => SetStyleModifier(DotStyles.Invisible, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Color)]
@@ -93,18 +93,18 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     public virtual partial double? BorderWidth { get; set; }
 
     /// <summary>
-    ///     Applies the specified style options.
+    ///     Applies the specified style modifiers.
     /// </summary>
-    /// <param name="options">
+    /// <param name="modifiers">
     ///     The options to apply.
     /// </param>
-    public virtual void SetOptions(DotNodeStyleOptions options)
+    public virtual void SetStyleModifiers(DotNodeStyleModifiers modifiers)
     {
-        SetOptions(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Diagonals, options.Invisible);
+        SetStyleModifiers(modifiers.FillStyle, modifiers.BorderStyle, modifiers.BorderWeight, modifiers.CornerStyle, modifiers.Diagonals, modifiers.Invisible);
     }
 
     /// <summary>
-    ///     Applies the specified style options.
+    ///     Applies the specified style modifiers.
     /// </summary>
     /// <param name="fillStyle">
     ///     The fill style to set.
@@ -125,7 +125,7 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <param name="invisible">
     ///     Determines whether the node should be invisible.
     /// </param>
-    public virtual void SetOptions(DotNodeFillStyle fillStyle = default, DotBorderStyle borderStyle = default, DotBorderWeight borderWeight = default,
+    public virtual void SetStyleModifiers(DotNodeFillStyle fillStyle = default, DotBorderStyle borderStyle = default, DotBorderWeight borderWeight = default,
         DotCornerStyle cornerStyle = default, bool diagonals = false, bool invisible = false)
     {
         FillStyle = fillStyle;
