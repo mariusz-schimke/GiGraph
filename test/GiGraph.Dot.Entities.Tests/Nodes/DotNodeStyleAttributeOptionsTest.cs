@@ -28,7 +28,7 @@ public class DotNodeStyleAttributeOptionsTest
 
         Snapshot.Match(graph.Build(), snapshotName);
 
-        node.Style.SetDefaultStyleOptions();
+        node.Style.RestoreDefaultStyleFlags();
 
         // set the same another way
         node.Style.SetOptions(

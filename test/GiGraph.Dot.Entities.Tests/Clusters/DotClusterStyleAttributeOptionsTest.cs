@@ -27,7 +27,7 @@ public class DotClusterStyleAttributeOptionsTest
 
         Snapshot.Match(graph.Build(), snapshotName);
 
-        cluster.Style.SetDefaultStyleOptions();
+        cluster.Style.RestoreDefaultStyleFlags();
 
         // set the same another way
         cluster.Style.SetOptions(
