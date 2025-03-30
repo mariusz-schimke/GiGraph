@@ -287,7 +287,7 @@
     "Graph": "Clusters.Style.BorderWidth: Double?",
     "Cluster": "Style.BorderWidth: Double?",
     "Node": "Style.BorderWidth: Double?",
-    "Edge": "Style.Width: Double?"
+    "Edge": "Style.LineWidth: Double?"
   },
   "peripheries": {
     "Cluster": "Peripheries: Int32?",

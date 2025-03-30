@@ -42,5 +42,5 @@ public interface IDotEdgeStyleAttributes
     ///     Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges. The value has no
     ///     effect on text. Default: 1.0, minimum: 0.0.
     /// </summary>
-    double? Width { get; set; }
+    double? LineWidth { get; set; }
 }

@@ -59,7 +59,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     public virtual partial DotColorDefinition? FillColor { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.PenWidth)]
-    public virtual partial double? Width { get; set; }
+    public virtual partial double? LineWidth { get; set; }
 
     /// <summary>
     ///     Applies the specified style options to the edge.
