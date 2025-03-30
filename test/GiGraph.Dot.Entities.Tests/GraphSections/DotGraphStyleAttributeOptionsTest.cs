@@ -20,6 +20,9 @@ public class DotGraphStyleAttributeOptionsTest
             DotClusterFillStyle.Striped
         ));
 
+        Assert.False(graph.Style.HasDefaultStyleModifiers());
+        Assert.False(graph.Clusters.Style.HasDefaultStyleModifiers());
+
         graph.Clusters.Style.SetStyleModifiers(new DotClusterStyleModifiers(
             DotClusterFillStyle.Striped,
             DotBorderStyle.Dotted,
@@ -30,21 +33,27 @@ public class DotGraphStyleAttributeOptionsTest
 
         Snapshot.Match(graph.Build(), snapshotName);
 
-        Assert.False(graph.Style.HasDefaultStyleModifiers());
-        Assert.False(graph.Clusters.Style.HasDefaultStyleModifiers());
         graph.Style.RestoreDefaultStyleModifiers();
         Assert.True(graph.Style.HasDefaultStyleModifiers());
         Assert.True(graph.Clusters.Style.HasDefaultStyleModifiers());
 
         // set the same another way
         graph.Clusters.Style.SetStyleModifiers(
-            DotClusterFillStyle.Striped,
+            DotClusterFillStyle.Radial, // this one is shared with one directly on the graph (see below)
             DotBorderStyle.Dotted,
             DotBorderWeight.Bold,
             DotCornerStyle.Rounded,
             true
         );
 
+        graph.Style.SetStyleModifiers(new DotGraphStyleModifiers(
+            DotClusterFillStyle.Striped // overwrites the one set on the clusters above
+        ));
+
         Snapshot.Match(graph.Build(), snapshotName);
+
+        graph.Clusters.Style.RestoreDefaultStyleModifiers();
+        Assert.True(graph.Style.HasDefaultStyleModifiers());
+        Assert.True(graph.Clusters.Style.HasDefaultStyleModifiers());
     }
 }
