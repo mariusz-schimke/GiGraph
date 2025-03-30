@@ -7,8 +7,6 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 
 public interface IDotGraphClusterCommonStyleAttributes
 {
-    // TODO: czy tu powinna byc właściwość Style, czy nie? (nie było jej, ale trzeba sprawdzić, czy teraz nie powinna być)
-    
     /// <summary>
     ///     <para>
     ///         Gets or sets the color to use for the cluster (default: <see cref="System.Drawing.Color.Black" />).
@@ -26,7 +24,7 @@ public interface IDotGraphClusterCommonStyleAttributes
     ///         If the fill style used is <see cref="DotClusterFillStyle.Radial" />, then a radial gradient fill is done. See also the
     ///         <see cref="DotGraphCanvasAttributes.GradientFillAngle" /> attribute of graph
     ///         <see cref="IDotGraphRootAttributes.Canvas" /> for setting a gradient angle globally, or its
-    ///         <see cref="IDotClusterAttributes.GradientFillAngle" /> counterpart on individual clusters.
+    ///         <see cref="IDotClusterStyleAttributes.GradientFillAngle" /> counterpart on individual clusters.
     ///     </para>
     ///     <para>
     ///         The fill style can also be set to do fills using more than 2 colors (set fill style to
@@ -40,7 +38,7 @@ public interface IDotGraphClusterCommonStyleAttributes
     ///         Gets or sets the color used to fill the background of the cluster, assuming that the
     ///         <see cref="DotClusterFillStyle.Normal" /> fill style is specified (default: <see cref="System.Drawing.Color.Black" />).
     ///         If <see cref="FillColor" /> is not defined, <see cref="Color" /> is used. If <see cref="Color" /> is not defined,
-    ///         <see cref="IDotClusterAttributes.BackgroundColor" /> is used. If it is not defined too, the default is used, except when
+    ///         <see cref="IDotClusterStyleAttributes.BackgroundColor" /> is used. If it is not defined too, the default is used, except when
     ///         the output format is MIF, which use black by default.
     ///     </para>
     ///     <para>
@@ -49,12 +47,12 @@ public interface IDotGraphClusterCommonStyleAttributes
     ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
     ///         <see cref="DotGraphCanvasAttributes.GradientFillAngle" /> attribute on graph
     ///         <see cref="IDotGraphRootAttributes.Canvas" /> for setting a gradient angle globally, or its
-    ///         <see cref="IDotClusterAttributes.GradientFillAngle" /> counterpart on individual clusters.
+    ///         <see cref="IDotClusterStyleAttributes.GradientFillAngle" /> counterpart on individual clusters.
     ///     </para>
     ///     <para>
     ///         Note that a cluster inherits the root graph's attributes if defined. Thus, if the root graph has defined a
     ///         <see cref="FillColor" />, this will override a <see cref="Color" /> or
-    ///         <see cref="IDotClusterAttributes.BackgroundColor" /> set for the cluster.
+    ///         <see cref="IDotClusterStyleAttributes.BackgroundColor" /> set for the cluster.
     ///     </para>
     /// </summary>
     DotColorDefinition? FillColor { get; set; }
@@ -69,7 +67,7 @@ public interface IDotGraphClusterCommonStyleAttributes
     ///     A color used to draw the bounding box around the cluster (default: <see cref="System.Drawing.Color.Black" />). If
     ///     <see cref="BorderColor" /> is not defined, <see cref="Color" /> is used. If this is not defined, the default is used. Note
     ///     that a cluster inherits the root graph's attributes if defined. Thus, if <see cref="BorderColor" /> is defined globally for
-    ///     clusters, it will override a <see cref="Color" /> or <see cref="IDotClusterAttributes.BackgroundColor" /> attribute set for
+    ///     clusters, it will override a <see cref="Color" /> or <see cref="IDotClusterStyleAttributes.BackgroundColor" /> attribute set for
     ///     individual clusters.
     /// </summary>
     DotColor? BorderColor { get; set; }

@@ -10,7 +10,7 @@
   },
   "bgcolor": {
     "Graph": "Canvas.BackgroundColor: DotColorDefinition",
-    "Cluster": "BackgroundColor: DotColorDefinition"
+    "Cluster": "Style.BackgroundColor: DotColorDefinition"
   },
   "center": {
     "Graph": "Canvas.CenterDrawing: Boolean?"
@@ -32,14 +32,14 @@
     "Graph": "Clusters.VisualizationMode: DotClusterVisualizationMode?"
   },
   "color": {
-    "Graph": "Clusters.Color: DotColorDefinition",
-    "Cluster": "Color: DotColorDefinition",
+    "Graph": "Clusters.Style.Color: DotColorDefinition",
+    "Cluster": "Style.Color: DotColorDefinition",
     "Node": "Color: DotColorDefinition",
     "Edge": "Color: DotColorDefinition"
   },
   "colorscheme": {
     "Graph": "Canvas.ColorScheme: String",
-    "Cluster": "ColorScheme: String",
+    "Cluster": "Style.ColorScheme: String",
     "Node": "ColorScheme: String",
     "Edge": "ColorScheme: String"
   },
@@ -82,8 +82,8 @@
     "Edge": "EdgeHyperlink.Url: DotEscapeString"
   },
   "fillcolor": {
-    "Graph": "Clusters.FillColor: DotColorDefinition",
-    "Cluster": "FillColor: DotColorDefinition",
+    "Graph": "Clusters.Style.FillColor: DotColorDefinition",
+    "Cluster": "Style.FillColor: DotColorDefinition",
     "Node": "FillColor: DotColorDefinition",
     "Edge": "FillColor: DotColorDefinition"
   },
@@ -119,7 +119,7 @@
   },
   "gradientangle": {
     "Graph": "Canvas.GradientFillAngle: Int32?",
-    "Cluster": "GradientFillAngle: Int32?",
+    "Cluster": "Style.GradientFillAngle: Int32?",
     "Node": "GradientFillAngle: Int32?"
   },
   "group": {
@@ -280,12 +280,12 @@
     "Graph": "Canvas.Padding: DotPoint"
   },
   "pencolor": {
-    "Graph": "Clusters.BorderColor: DotColor",
-    "Cluster": "BorderColor: DotColor"
+    "Graph": "Clusters.Style.BorderColor: DotColor",
+    "Cluster": "Style.BorderColor: DotColor"
   },
   "penwidth": {
-    "Graph": "Clusters.BorderWidth: Double?",
-    "Cluster": "BorderWidth: Double?",
+    "Graph": "Clusters.Style.BorderWidth: Double?",
+    "Cluster": "Style.BorderWidth: Double?",
     "Node": "BorderWidth: Double?",
     "Edge": "Width: Double?"
   },

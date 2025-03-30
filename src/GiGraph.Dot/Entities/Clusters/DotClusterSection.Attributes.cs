@@ -1,11 +1,9 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Entities.Labels;
-using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Ranks;
@@ -19,7 +17,7 @@ public partial class DotClusterSection : IDotClusterRootAttributes
     public DotFontAttributes Font => Attributes.Implementation.Font;
 
     /// <inheritdoc cref="IDotClusterRootAttributes.Style"/>
-    public DotClusterStyleAttributeOptions Style => Attributes.Implementation.Style;
+    public DotClusterStyleAttributes Style => Attributes.Implementation.Style;
 
     /// <inheritdoc cref="IDotClusterRootAttributes.LabelAlignment"/>
     public DotLabelAlignmentAttributes LabelAlignment => Attributes.Implementation.LabelAlignment;
@@ -29,34 +27,6 @@ public partial class DotClusterSection : IDotClusterRootAttributes
 
     /// <inheritdoc cref="IDotClusterRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
-
-    /// <inheritdoc cref="IDotGraphClusterCommonStyleAttributes.Color"/>
-    public virtual DotColorDefinition? Color
-    {
-        get => Attributes.Implementation.Color;
-        set => Attributes.Implementation.Color = value;
-    }
-
-    /// <inheritdoc cref="IDotGraphClusterCommonStyleAttributes.FillColor"/>
-    public virtual DotColorDefinition? FillColor
-    {
-        get => Attributes.Implementation.FillColor;
-        set => Attributes.Implementation.FillColor = value;
-    }
-
-    /// <inheritdoc cref="IDotGraphClusterCommonStyleAttributes.BorderWidth"/>
-    public virtual double? BorderWidth
-    {
-        get => Attributes.Implementation.BorderWidth;
-        set => Attributes.Implementation.BorderWidth = value;
-    }
-
-    /// <inheritdoc cref="IDotGraphClusterCommonStyleAttributes.BorderColor"/>
-    public virtual DotColor? BorderColor
-    {
-        get => Attributes.Implementation.BorderColor;
-        set => Attributes.Implementation.BorderColor = value;
-    }
 
     /// <inheritdoc cref="IDotClusterAttributes.Style"/>
     DotStyles? IDotClusterAttributes.Style
@@ -84,27 +54,6 @@ public partial class DotClusterSection : IDotClusterRootAttributes
     {
         get => Attributes.Implementation.Tooltip;
         set => Attributes.Implementation.Tooltip = value;
-    }
-
-    /// <inheritdoc cref="IDotClusterAttributes.BackgroundColor"/>
-    public virtual DotColorDefinition? BackgroundColor
-    {
-        get => Attributes.Implementation.BackgroundColor;
-        set => Attributes.Implementation.BackgroundColor = value;
-    }
-
-    /// <inheritdoc cref="IDotClusterAttributes.ColorScheme"/>
-    public virtual string? ColorScheme
-    {
-        get => Attributes.Implementation.ColorScheme;
-        set => Attributes.Implementation.ColorScheme = value;
-    }
-
-    /// <inheritdoc cref="IDotClusterAttributes.GradientFillAngle"/>
-    public virtual int? GradientFillAngle
-    {
-        get => Attributes.Implementation.GradientFillAngle;
-        set => Attributes.Implementation.GradientFillAngle = value;
     }
 
     /// <inheritdoc cref="IDotClusterAttributes.Peripheries"/>

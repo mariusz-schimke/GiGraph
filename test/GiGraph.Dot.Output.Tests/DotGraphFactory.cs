@@ -146,12 +146,12 @@ public class DotGraphFactory
         graph.Clusters.Add("cluster1", c =>
         {
             c.Annotation = "cluster comment";
-            c.Color = Color.Blue;
+            c.Style.Color = Color.Blue;
 
             c.Subsections.Add(ss =>
             {
                 ss.Annotation = "cluster subsection comment";
-                ss.Color = Color.Magenta;
+                ss.Style.Color = Color.Magenta;
             });
         });
 

@@ -7,6 +7,8 @@ using GiGraph.Dot.Types.EscapeString;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common;
 
+// todo: usunąć tę klasę, bo wydaje się, że tylko utrudnia analizę
+
 /// <summary>
 ///     Common attributes of the root graph, clusters, nodes, and edges.
 /// </summary>

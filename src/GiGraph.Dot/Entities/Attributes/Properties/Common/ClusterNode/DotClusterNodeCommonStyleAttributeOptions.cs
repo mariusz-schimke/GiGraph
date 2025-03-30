@@ -4,6 +4,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode;
 
+// todo: usunąć
 public abstract class DotClusterNodeCommonStyleAttributeOptions<TFillStyle, TStyleProperties> : DotStyleAttributeOptions
     where TFillStyle : struct, Enum
     where TStyleProperties : DotClusterNodeCommonStyleProperties<TFillStyle>

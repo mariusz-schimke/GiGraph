@@ -9,6 +9,7 @@ using GiGraph.Dot.Types.Geometry;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode;
 
+// TODO: usunąć tę klasę
 public abstract partial class DotClusterNodeRootCommonAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>
     : DotEntityRootCommonAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>
     where TEntityAttributeProperties : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
