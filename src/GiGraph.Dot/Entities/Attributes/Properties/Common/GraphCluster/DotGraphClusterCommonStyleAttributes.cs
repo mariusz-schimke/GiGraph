@@ -8,17 +8,15 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 
-public partial class DotGraphClusterCommonStyleAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>
-    : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>, IDotGraphClusterCommonStyleAttributes
+public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>(
+    DotAttributeCollection attributes,
+    Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
+    DotStyleAttributeOptions styleAttributeOptions
+)
+    : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>(attributes, attributeKeyLookup), IDotGraphClusterCommonStyleAttributes
     where TEntityAttributeProperties : DotGraphClusterCommonStyleAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
 {
-    protected readonly DotStyleAttributeOptions _styleAttributeOptions;
-
-    protected DotGraphClusterCommonStyleAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup, DotStyleAttributeOptions styleAttributeOptions)
-        : base(attributes, attributeKeyLookup)
-    {
-        _styleAttributeOptions = styleAttributeOptions;
-    }
+    protected readonly DotStyleAttributeOptions _styleAttributeOptions = styleAttributeOptions;
 
     /// <summary>
     ///     Gets or sets a fill style.

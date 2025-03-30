@@ -10,22 +10,16 @@ using GiGraph.Dot.Types.Geometry;
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode;
 
 // TODO: usunąć tę klasę
-public abstract partial class DotClusterNodeRootCommonAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>
-    : DotEntityRootCommonAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>
+public abstract partial class DotClusterNodeRootCommonAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>(
+    DotAttributeCollection attributes,
+    Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
+    DotHyperlinkAttributes hyperlinkAttributes,
+    DotSvgStyleSheetAttributes svgStyleSheetAttributes
+)
+    : DotEntityRootCommonAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>(attributes, attributeKeyLookup, hyperlinkAttributes)
     where TEntityAttributeProperties : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
 {
-    protected DotClusterNodeRootCommonAttributes(
-        DotAttributeCollection attributes,
-        Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-        DotHyperlinkAttributes hyperlinkAttributes,
-        DotSvgStyleSheetAttributes svgStyleSheetAttributes
-    )
-        : base(attributes, attributeKeyLookup, hyperlinkAttributes)
-    {
-        SvgStyleSheet = svgStyleSheetAttributes;
-    }
-
-    public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
+    public DotSvgStyleSheetAttributes SvgStyleSheet { get; } = svgStyleSheetAttributes;
 
     [DotAttributeKey(DotAttributeKeys.Color)]
     public virtual partial DotColorDefinition? Color { get; set; }
