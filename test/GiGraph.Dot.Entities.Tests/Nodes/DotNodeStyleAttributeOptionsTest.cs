@@ -28,7 +28,9 @@ public class DotNodeStyleAttributeOptionsTest
 
         Snapshot.Match(graph.Build(), snapshotName);
 
+        Assert.False(node.Style.HasDefaultStyleModifiers());
         node.Style.RestoreDefaultStyleModifiers();
+        Assert.True(node.Style.HasDefaultStyleModifiers());
 
         // set the same another way
         node.Style.SetStyleModifiers(

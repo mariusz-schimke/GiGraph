@@ -1,23 +1,26 @@
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Graphs;
 using GiGraph.Dot.Types.Styling;
 using Snapshooter.Xunit;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests.Clusters;
+namespace GiGraph.Dot.Entities.Tests.GraphSections;
 
-public class DotClusterStyleAttributeOptionsTest
+public class DotGraphStyleAttributeOptionsTest
 {
     [Fact]
     public void all_style_properties_are_specified()
     {
-        const string snapshotName = "styled_cluster";
+        const string snapshotName = "styled_graph";
         var graph = new DotGraph();
-        var cluster = graph.Clusters.Add("c1");
 
-        // set by class
-        cluster.Style.SetStyleModifiers(new DotClusterStyleModifiers(
+        graph.Style.SetStyleModifiers(new DotGraphStyleModifiers(
+            DotClusterFillStyle.Striped
+        ));
+
+        graph.Clusters.Style.SetStyleModifiers(new DotClusterStyleModifiers(
             DotClusterFillStyle.Striped,
             DotBorderStyle.Dotted,
             DotBorderWeight.Bold,
@@ -27,12 +30,14 @@ public class DotClusterStyleAttributeOptionsTest
 
         Snapshot.Match(graph.Build(), snapshotName);
 
-        Assert.False(cluster.Style.HasDefaultStyleModifiers());
-        cluster.Style.RestoreDefaultStyleModifiers();
-        Assert.True(cluster.Style.HasDefaultStyleModifiers());
-        
+        Assert.False(graph.Style.HasDefaultStyleModifiers());
+        Assert.False(graph.Clusters.Style.HasDefaultStyleModifiers());
+        graph.Style.RestoreDefaultStyleModifiers();
+        Assert.True(graph.Style.HasDefaultStyleModifiers());
+        Assert.True(graph.Clusters.Style.HasDefaultStyleModifiers());
+
         // set the same another way
-        cluster.Style.SetStyleModifiers(
+        graph.Clusters.Style.SetStyleModifiers(
             DotClusterFillStyle.Striped,
             DotBorderStyle.Dotted,
             DotBorderWeight.Bold,
