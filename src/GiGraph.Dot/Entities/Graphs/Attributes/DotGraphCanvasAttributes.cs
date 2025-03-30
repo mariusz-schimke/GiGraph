@@ -66,27 +66,4 @@ public partial class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Padding"/>
     [DotAttributeKey(DotAttributeKeys.Pad)]
     public virtual partial DotPoint? Padding { get; set; }
-
-    /// <summary>
-    ///     Copies canvas attributes from the specified instance.
-    /// </summary>
-    /// <param name="attributes">
-    ///     The instance to copy the attributes from.
-    /// </param>
-    public virtual void Set(IDotGraphCanvasAttributes attributes)
-    {
-        //TODO: dodać takie metody na wszystkich nowo dodanych StyleAttributes
-
-        CenterDrawing = attributes.CenterDrawing;
-        Dpi = attributes.Dpi;
-        LandscapeOrientation = attributes.LandscapeOrientation;
-        Margin = attributes.Margin;
-        Orientation = attributes.Orientation;
-        OrientationAngle = attributes.OrientationAngle;
-        Padding = attributes.Padding;
-        Resolution = attributes.Resolution;
-        Scaling = attributes.Scaling;
-        Size = attributes.Size;
-        Viewport = attributes.Viewport;
-    }
 }

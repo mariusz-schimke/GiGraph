@@ -16,15 +16,15 @@ public abstract partial class DotFontAttributes<TIEntityFontAttributes, TEntityF
     {
     }
 
-    /// <inheritdoc cref="IDotFontAttributes.Name" />
+    /// <inheritdoc cref="IDotFontAttributes.Name"/>
     [DotAttributeKey(DotAttributeKeys.FontName)]
     public virtual partial string? Name { get; set; }
 
-    /// <inheritdoc cref="IDotFontAttributes.Size" />
+    /// <inheritdoc cref="IDotFontAttributes.Size"/>
     [DotAttributeKey(DotAttributeKeys.FontSize)]
     public virtual partial double? Size { get; set; }
 
-    /// <inheritdoc cref="IDotFontAttributes.Color" />
+    /// <inheritdoc cref="IDotFontAttributes.Color"/>
     [DotAttributeKey(DotAttributeKeys.FontColor)]
     public virtual partial DotColor? Color { get; set; }
 
@@ -54,17 +54,6 @@ public abstract partial class DotFontAttributes<TIEntityFontAttributes, TEntityF
     ///     The attributes to set.
     /// </param>
     public virtual void Set(DotFont attributes)
-    {
-        Set(attributes.Name, attributes.Size, attributes.Color);
-    }
-
-    /// <summary>
-    ///     Copies font attributes from the specified instance.
-    /// </summary>
-    /// <param name="attributes">
-    ///     The instance to copy the attributes from.
-    /// </param>
-    public virtual void Set(IDotFontAttributes attributes)
     {
         Set(attributes.Name, attributes.Size, attributes.Color);
     }

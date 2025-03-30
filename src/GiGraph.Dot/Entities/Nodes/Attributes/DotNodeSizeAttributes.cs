@@ -21,15 +21,15 @@ public partial class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDo
     {
     }
 
-    /// <inheritdoc cref="IDotNodeSizeAttributes.Width" />
+    /// <inheritdoc cref="IDotNodeSizeAttributes.Width"/>
     [DotAttributeKey(DotAttributeKeys.Width)]
     public virtual partial double? Width { get; set; }
 
-    /// <inheritdoc cref="IDotNodeSizeAttributes.Height" />
+    /// <inheritdoc cref="IDotNodeSizeAttributes.Height"/>
     [DotAttributeKey(DotAttributeKeys.Height)]
     public virtual partial double? Height { get; set; }
 
-    /// <inheritdoc cref="IDotNodeSizeAttributes.Mode" />
+    /// <inheritdoc cref="IDotNodeSizeAttributes.Mode"/>
     [DotAttributeKey(DotAttributeKeys.FixedSize)]
     public virtual partial DotNodeSizing? Mode { get; set; }
 
@@ -84,17 +84,6 @@ public partial class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDo
     ///     The attributes to set.
     /// </param>
     public virtual void Set(DotNodeSize attributes)
-    {
-        Set(attributes.Width, attributes.Height, attributes.Mode);
-    }
-
-    /// <summary>
-    ///     Copies size attributes from the specified instance.
-    /// </summary>
-    /// <param name="attributes">
-    ///     The instance to copy the attributes from.
-    /// </param>
-    public virtual void Set(IDotNodeSizeAttributes attributes)
     {
         Set(attributes.Width, attributes.Height, attributes.Mode);
     }

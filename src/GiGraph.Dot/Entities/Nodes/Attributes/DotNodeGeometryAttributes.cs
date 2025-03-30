@@ -20,27 +20,27 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     {
     }
 
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Sides" />
+    /// <inheritdoc cref="IDotNodeGeometryAttributes.Sides"/>
     [DotAttributeKey(DotAttributeKeys.Sides)]
     public virtual partial int? Sides { get; set; }
 
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Regular" />
+    /// <inheritdoc cref="IDotNodeGeometryAttributes.Regular"/>
     [DotAttributeKey(DotAttributeKeys.Regular)]
     public virtual partial bool? Regular { get; set; }
 
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Peripheries" />
+    /// <inheritdoc cref="IDotNodeGeometryAttributes.Peripheries"/>
     [DotAttributeKey(DotAttributeKeys.Peripheries)]
     public virtual partial int? Peripheries { get; set; }
 
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Rotation" />
+    /// <inheritdoc cref="IDotNodeGeometryAttributes.Rotation"/>
     [DotAttributeKey(DotAttributeKeys.Orientation)]
     public virtual partial double? Rotation { get; set; }
 
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Skew" />
+    /// <inheritdoc cref="IDotNodeGeometryAttributes.Skew"/>
     [DotAttributeKey(DotAttributeKeys.Skew)]
     public virtual partial double? Skew { get; set; }
 
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Distortion" />
+    /// <inheritdoc cref="IDotNodeGeometryAttributes.Distortion"/>
     [DotAttributeKey(DotAttributeKeys.Distortion)]
     public virtual partial double? Distortion { get; set; }
 
@@ -82,17 +82,6 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     ///     The attributes to set.
     /// </param>
     public virtual void Set(DotPolygon attributes)
-    {
-        Set(attributes.Sides, attributes.Regular, attributes.Peripheries, attributes.Rotation, attributes.Skew, attributes.Distortion);
-    }
-
-    /// <summary>
-    ///     Copies geometry attributes from the specified instance.
-    /// </summary>
-    /// <param name="attributes">
-    ///     The instance to copy the attributes from.
-    /// </param>
-    public virtual void Set(IDotNodeGeometryAttributes attributes)
     {
         Set(attributes.Sides, attributes.Regular, attributes.Peripheries, attributes.Rotation, attributes.Skew, attributes.Distortion);
     }
