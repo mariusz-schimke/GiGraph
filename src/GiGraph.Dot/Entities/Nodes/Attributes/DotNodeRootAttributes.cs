@@ -1,5 +1,5 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
@@ -15,7 +15,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
-public partial class DotNodeRootAttributes : DotEntityRootCommonAttributes<IDotNodeAttributes, DotNodeRootAttributes>, IDotNodeRootAttributes
+public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDotNodeAttributes, DotNodeRootAttributes>, IDotNodeRootAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().BuildLazy();
 
@@ -35,7 +35,7 @@ public partial class DotNodeRootAttributes : DotEntityRootCommonAttributes<IDotN
         DotNodeSizeAttributes sizeAttributes,
         DotSvgStyleSheetAttributes svgStyleSheetAttributes
     )
-        : base(attributes, attributeKeyLookup, hyperlinkAttributes)
+        : base(attributes, attributeKeyLookup)
     {
         Font = fontAttributes;
         Style = styleAttributes;
@@ -43,6 +43,7 @@ public partial class DotNodeRootAttributes : DotEntityRootCommonAttributes<IDotN
         Geometry = geometryAttributes;
         Size = sizeAttributes;
         SvgStyleSheet = svgStyleSheetAttributes;
+        Hyperlink = hyperlinkAttributes;
     }
 
     public DotFontAttributes Font { get; }
@@ -50,6 +51,7 @@ public partial class DotNodeRootAttributes : DotEntityRootCommonAttributes<IDotN
     public DotNodeSizeAttributes Size { get; }
     public DotNodeGeometryAttributes Geometry { get; }
     public DotNodeImageAttributes Image { get; }
+    public DotHyperlinkAttributes Hyperlink { get; }
 
     [DotAttributeKey(DotAttributeKeys.Style)]
     DotStyles? IDotNodeAttributes.Style
@@ -59,6 +61,9 @@ public partial class DotNodeRootAttributes : DotEntityRootCommonAttributes<IDotN
         [DotAttributeKey(DotAttributeKeys.Style)]
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
+
+    [DotAttributeKey(DotAttributeKeys.Label)]
+    public virtual partial DotLabel? Label { get; set; }
 
     public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
@@ -94,4 +99,7 @@ public partial class DotNodeRootAttributes : DotEntityRootCommonAttributes<IDotN
 
     [DotAttributeKey(DotAttributeKeys.Root)]
     public virtual partial bool? IsRoot { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.Id)]
+    public virtual partial DotEscapeString? ObjectId { get; set; }
 }

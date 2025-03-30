@@ -1,8 +1,9 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
@@ -11,7 +12,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
-public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDotGraphAttributes, DotGraphRootAttributes>, IDotGraphRootAttributes
+public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<IDotGraphAttributes, DotGraphRootAttributes>, IDotGraphRootAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().BuildLazy();
 
@@ -33,7 +34,7 @@ public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDot
         DotGraphCanvasAttributes canvasAttributes,
         DotLabelAlignmentAttributes labelAlignmentAttributes
     )
-        : base(attributes, attributeKeyLookup, hyperlinkAttributes)
+        : base(attributes, attributeKeyLookup)
     {
         Clusters = clusterAttributes;
         Font = fontAttributes;
@@ -41,6 +42,7 @@ public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDot
         Layout = layoutAttributes;
         Canvas = canvasAttributes;
         LabelAlignment = labelAlignmentAttributes;
+        Hyperlink = hyperlinkAttributes;
     }
 
     public DotGraphClustersAttributes Clusters { get; }
@@ -49,6 +51,7 @@ public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDot
     public DotGraphLayoutAttributes Layout { get; }
     public DotGraphCanvasAttributes Canvas { get; }
     public DotLabelAlignmentAttributes LabelAlignment { get; }
+    public DotHyperlinkAttributes Hyperlink { get; }
 
     [DotAttributeKey(DotAttributeKeys.Style)]
     DotStyles? IDotGraphAttributes.Style
@@ -58,6 +61,9 @@ public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDot
         [DotAttributeKey(DotAttributeKeys.Style)]
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
+
+    [DotAttributeKey(DotAttributeKeys.Label)]
+    public virtual partial DotLabel? Label { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.NoJustify)]
     public virtual partial bool? DisableLabelJustification { get; set; }
@@ -79,4 +85,7 @@ public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDot
 
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
     public virtual partial DotEscapeString? Tooltip { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.Id)]
+    public virtual partial DotEscapeString? ObjectId { get; set; }
 }

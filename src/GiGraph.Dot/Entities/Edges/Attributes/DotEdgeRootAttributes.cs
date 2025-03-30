@@ -1,5 +1,5 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
@@ -13,7 +13,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes;
 
-public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotEdgeAttributes, DotEdgeRootAttributes>, IDotEdgeRootAttributes
+public partial class DotEdgeRootAttributes : DotEntityAttributesWithMetadata<IDotEdgeAttributes, DotEdgeRootAttributes>, IDotEdgeRootAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().BuildLazy();
 
@@ -38,13 +38,14 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
         DotEdgeStyleAttributes edgeStyleAttributes,
         DotSvgStyleSheetAttributes svgStyleSheetAttributes
     )
-        : base(attributes, attributeKeyLookup, hyperlinkAttributes)
+        : base(attributes, attributeKeyLookup)
     {
         Head = headAttributes;
         Tail = tailAttributes;
         Font = fontAttributes;
         Style = edgeStyleAttributes;
         SvgStyleSheet = svgStyleSheetAttributes;
+        Hyperlink = hyperlinkAttributes;
         EndpointLabels = endpointLabelsAttributes;
         EdgeHyperlink = edgeHyperlinkAttributes;
         LabelHyperlink = labelHyperlinkAttributes;
@@ -55,6 +56,7 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
 
     public DotFontAttributes Font { get; }
     public DotEdgeEndpointLabelsAttributes EndpointLabels { get; }
+    public DotHyperlinkAttributes Hyperlink { get; }
     public DotEdgeHyperlinkAttributes EdgeHyperlink { get; }
     public DotEdgeLabelHyperlinkAttributes LabelHyperlink { get; }
     public DotEdgeStyleAttributes Style { get; }
@@ -68,6 +70,9 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
         [DotAttributeKey(DotAttributeKeys.Style)]
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
+
+    [DotAttributeKey(DotAttributeKeys.Label)]
+    public virtual partial DotLabel? Label { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Comment)]
     public virtual partial string? Comment { get; set; }
@@ -84,7 +89,7 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
     [DotAttributeKey(DotAttributeKeys.Len)]
     public virtual partial double? Length { get; set; }
 
-    [DotAttributeKeyAttribute(DotAttributeKeys.MinLen)]
+    [DotAttributeKey(DotAttributeKeys.MinLen)]
     public virtual partial int? MinLength { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.ArrowSize)]
@@ -104,4 +109,7 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
 
     [DotAttributeKey(DotAttributeKeys.Constraint)]
     public virtual partial bool? Constrain { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.Id)]
+    public virtual partial DotEscapeString? ObjectId { get; set; }
 }
