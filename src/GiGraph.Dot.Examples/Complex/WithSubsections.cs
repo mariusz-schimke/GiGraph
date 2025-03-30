@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics.Contracts;
+using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Styling;
@@ -7,6 +8,7 @@ namespace GiGraph.Dot.Examples.Complex;
 
 public static class WithSubsections
 {
+    [Pure]
     public static DotGraph Generate()
     {
         var graph = new DotGraph();

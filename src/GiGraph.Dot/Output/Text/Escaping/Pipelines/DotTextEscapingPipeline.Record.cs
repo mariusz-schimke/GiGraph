@@ -1,4 +1,6 @@
-﻿namespace GiGraph.Dot.Output.Text.Escaping.Pipelines;
+﻿using System.Diagnostics.Contracts;
+
+namespace GiGraph.Dot.Output.Text.Escaping.Pipelines;
 
 public partial class DotTextEscapingPipeline
 {
@@ -6,12 +8,14 @@ public partial class DotTextEscapingPipeline
     ///     Creates a new pipeline that escapes fields of record labels (backslashes, quotation marks, line breaks; angle and curly
     ///     brackets, vertical bars, and spaces).
     /// </summary>
+    [Pure]
     public static DotTextEscapingPipeline ForRecordLabelField() => new(ForEscapeString(), CommonForRecordLabel());
 
     /// <summary>
     ///     Creates a new pipeline that escapes ports of record labels (backslashes, quotation marks; angle and curly brackets, vertical
     ///     bars, and spaces).
     /// </summary>
+    [Pure]
     public static DotTextEscapingPipeline ForRecordLabelPort() =>
         new(
             // when a port string ends with a backslash (<...\>), the closing angle bracket is interpreted as a content character,

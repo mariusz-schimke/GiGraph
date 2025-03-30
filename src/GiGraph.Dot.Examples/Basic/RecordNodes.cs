@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Graphs;
+﻿using System.Diagnostics.Contracts;
+using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
@@ -8,6 +9,7 @@ namespace GiGraph.Dot.Examples.Basic;
 
 public static class RecordNodes
 {
+    [Pure]
     public static DotGraph Generate()
     {
         var graph = new DotGraph();

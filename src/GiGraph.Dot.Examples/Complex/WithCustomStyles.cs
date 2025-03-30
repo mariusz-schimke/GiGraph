@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics.Contracts;
+using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Arrowheads;
@@ -12,6 +13,7 @@ namespace GiGraph.Dot.Examples.Complex;
 
 public static class WithCustomStyles
 {
+    [Pure]
     public static DotGraph Generate()
     {
         var graph = new DotGraph();

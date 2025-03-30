@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Output.Text.Escaping.Html;
+﻿using System.Diagnostics.Contracts;
+using GiGraph.Dot.Output.Text.Escaping.Html;
 
 namespace GiGraph.Dot.Output.Text.Escaping.Pipelines;
 
@@ -41,11 +42,13 @@ public partial class DotTextEscapingPipeline : List<IDotTextEscaper>, IDotTextEs
     /// <summary>
     ///     Creates a new pipeline that does not modify the input string in any way.
     /// </summary>
+    [Pure]
     public static DotTextEscapingPipeline None() => [];
 
     /// <summary>
     ///     Creates a new pipeline that escapes backslashes and quotation marks.
     /// </summary>
+    [Pure]
     public static DotTextEscapingPipeline ForString() =>
         new(
             // When a string ends with a backslash ("...\"), the closing quotation mark is interpreted as a content character,
@@ -61,6 +64,7 @@ public partial class DotTextEscapingPipeline : List<IDotTextEscaper>, IDotTextEs
     /// <summary>
     ///     Creates a new pipeline that escapes backslashes, quotation marks, and line breaks.
     /// </summary>
+    [Pure]
     public static DotTextEscapingPipeline ForEscapeString() => new(CommonForEscapeString(), new DotQuotationMarkEscaper());
 
     protected static DotTextEscapingPipeline CommonForEscapeString() =>

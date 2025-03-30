@@ -1,3 +1,5 @@
+using System.Diagnostics.Contracts;
+
 namespace GiGraph.Dot.Output.Text;
 
 /// <summary>
@@ -32,6 +34,7 @@ public static class DotNewLine
     ///     order to split text in the output DOT script into multiple lines. Does not affect the way the text is visualized (it's only
     ///     for formatting the output script, so the line continuation character and the line break do not appear in the visualization).
     /// </summary>
+    [Pure]
     public static string LineContinuation() => LineContinuation(SystemDefault);
 
     /// <summary>
@@ -42,6 +45,7 @@ public static class DotNewLine
     /// <param name="newLine">
     ///     The new line string to use.
     /// </param>
+    [Pure]
     public static string LineContinuation(string newLine) => string.IsNullOrEmpty(newLine)
         ? throw new ArgumentNullException(nameof(newLine), "A new line string has to be specified for line continuation")
         : $"{LineContinuationChar}{newLine}";
