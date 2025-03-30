@@ -1,9 +1,7 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Clusters;
-using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Graphs;
 using GiGraph.Dot.Types.Orientation;
@@ -11,8 +9,7 @@ using GiGraph.Dot.Types.Viewport;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
-// todo: przeanalizować, czy to powinno dziedziczyć po DotStyleAttributes
-public partial class DotGraphCanvasAttributes : DotEntityStyleAttributesWithMetadata<IDotGraphCanvasAttributes, DotGraphCanvasAttributes>, IDotGraphCanvasAttributes
+public partial class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<IDotGraphCanvasAttributes, DotGraphCanvasAttributes>, IDotGraphCanvasAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphCanvasAttributes, IDotGraphCanvasAttributes>().BuildLazy();
 
@@ -25,32 +22,6 @@ public partial class DotGraphCanvasAttributes : DotEntityStyleAttributesWithMeta
         : base(attributes, attributeKeyLookup)
     {
     }
-
-    /// <summary>
-    ///     <para>
-    ///         Gets or sets the fill style of the graph. The only option applicable is <see cref="DotClusterFillStyle.Radial"/>.
-    ///     </para>
-    ///     <para>
-    ///         Note that this setting is shared with clusters and can't be applied independently.
-    ///     </para>
-    /// </summary>
-    public virtual DotClusterFillStyle FillStyle
-    {
-        get => GetPartialStyle<DotClusterFillStyle>();
-        set => SetPartialStyle(value);
-    }
-
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.BackgroundColor"/>
-    [DotAttributeKey(DotAttributeKeys.BgColor)]
-    public virtual partial DotColorDefinition? BackgroundColor { get; set; }
-
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.ColorScheme"/>
-    [DotAttributeKey(DotAttributeKeys.ColorScheme)]
-    public virtual partial string? ColorScheme { get; set; }
-
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.GradientFillAngle"/>
-    [DotAttributeKey(DotAttributeKeys.GradientAngle)]
-    public virtual partial int? GradientFillAngle { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.CenterDrawing"/>
     [DotAttributeKey(DotAttributeKeys.Center)]
@@ -97,17 +68,6 @@ public partial class DotGraphCanvasAttributes : DotEntityStyleAttributesWithMeta
     public virtual partial DotPoint? Padding { get; set; }
 
     /// <summary>
-    ///     Applies the specified style options to the graph.
-    /// </summary>
-    /// <param name="options">
-    ///     The options to apply.
-    /// </param>
-    public virtual void SetStyleOptions(DotGraphStyleOptions options)
-    {
-        FillStyle = options.FillStyle;
-    }
-
-    /// <summary>
     ///     Copies canvas attributes from the specified instance.
     /// </summary>
     /// <param name="attributes">
@@ -117,11 +77,8 @@ public partial class DotGraphCanvasAttributes : DotEntityStyleAttributesWithMeta
     {
         //TODO: dodać takie metody na wszystkich nowo dodanych StyleAttributes
 
-        BackgroundColor = attributes.BackgroundColor;
         CenterDrawing = attributes.CenterDrawing;
-        ColorScheme = attributes.ColorScheme;
         Dpi = attributes.Dpi;
-        GradientFillAngle = attributes.GradientFillAngle;
         LandscapeOrientation = attributes.LandscapeOrientation;
         Margin = attributes.Margin;
         Orientation = attributes.Orientation;

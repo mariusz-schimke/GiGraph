@@ -158,7 +158,7 @@ public class DotGraphFactory
         graph.Subsections.Add(ss =>
         {
             ss.Annotation = "graph section comment";
-            ss.Canvas.BackgroundColor = Color.Blue;
+            ss.Style.BackgroundColor = Color.Blue;
             ss.Nodes.Add("section 1 node");
             ss.Edges.AddLoop("section 1 node");
         });

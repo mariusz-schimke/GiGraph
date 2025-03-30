@@ -1,4 +1,3 @@
-using System.Drawing;
 using Bogus;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Graphs.Attributes;
@@ -19,11 +18,8 @@ public class DotGraphCanvasAttributesTests : DotGraphAttributeSettersTestBase<ID
     {
         var sourceAttributes = new DotGraphCanvasAttributes(new DotAttributeCollection())
         {
-            BackgroundColor = Color.FromArgb(_faker.Random.Int()),
             CenterDrawing = _faker.Random.Bool(),
-            ColorScheme = _faker.Random.String(),
             Dpi = _faker.Random.Double(),
-            GradientFillAngle = _faker.Random.Int(),
             LandscapeOrientation = _faker.Random.Bool(),
             Margin = new DotPoint(_faker.Random.Double(), _faker.Random.Double()),
             Orientation = _faker.PickRandom<DotOrientation>(),

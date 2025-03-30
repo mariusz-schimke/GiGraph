@@ -11,6 +11,11 @@ public interface IDotGraphRootAttributes : IDotGraphAttributes
     DotGraphClustersAttributes Clusters { get; }
 
     /// <summary>
+    ///     Style attributes.
+    /// </summary>
+    new DotGraphStyleAttributes Style { get; }
+
+    /// <summary>
     ///     Font attributes.
     /// </summary>
     DotGraphFontAttributes Font { get; }

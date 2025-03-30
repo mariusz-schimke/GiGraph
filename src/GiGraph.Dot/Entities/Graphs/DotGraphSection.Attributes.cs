@@ -14,6 +14,9 @@ public partial class DotGraphSection : IDotGraphRootAttributes
     // hidden by explicit implementation because they are exposed through the Clusters collection property
     DotGraphClustersAttributes IDotGraphRootAttributes.Clusters => Attributes.Implementation.Clusters;
 
+    /// <inheritdoc cref="IDotGraphRootAttributes.Style"/>
+    public DotGraphStyleAttributes Style => Attributes.Implementation.Style;
+
     /// <inheritdoc cref="IDotGraphRootAttributes.Font"/>
     public DotGraphFontAttributes Font => Attributes.Implementation.Font;
 

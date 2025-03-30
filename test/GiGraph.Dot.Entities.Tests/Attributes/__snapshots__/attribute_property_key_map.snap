@@ -9,7 +9,7 @@
     "Edge": "Tail.Arrowhead: DotArrowheadDefinition"
   },
   "bgcolor": {
-    "Graph": "Canvas.BackgroundColor: DotColorDefinition",
+    "Graph": "Style.BackgroundColor: DotColorDefinition",
     "Cluster": "Style.BackgroundColor: DotColorDefinition"
   },
   "center": {
@@ -38,7 +38,7 @@
     "Edge": "Style.Color: DotColorDefinition"
   },
   "colorscheme": {
-    "Graph": "Canvas.ColorScheme: String",
+    "Graph": "Style.ColorScheme: String",
     "Cluster": "Style.ColorScheme: String",
     "Node": "Style.ColorScheme: String",
     "Edge": "Style.ColorScheme: String"
@@ -118,7 +118,7 @@
     "Graph": "Layout.ForceExternalLabels: Boolean?"
   },
   "gradientangle": {
-    "Graph": "Canvas.GradientFillAngle: Int32?",
+    "Graph": "Style.GradientFillAngle: Int32?",
     "Cluster": "Style.GradientFillAngle: Int32?",
     "Node": "Style.GradientFillAngle: Int32?"
   },

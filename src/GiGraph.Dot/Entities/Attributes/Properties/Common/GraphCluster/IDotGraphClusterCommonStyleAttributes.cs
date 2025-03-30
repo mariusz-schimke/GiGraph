@@ -22,7 +22,7 @@ public interface IDotGraphClusterCommonStyleAttributes
     ///     </para>
     ///     <para>
     ///         If the fill style used is <see cref="DotClusterFillStyle.Radial" />, then a radial gradient fill is done. See also the
-    ///         <see cref="DotGraphCanvasAttributes.GradientFillAngle" /> attribute of graph
+    ///         <see cref="DotGraphStyleAttributes.GradientFillAngle" /> attribute of graph
     ///         <see cref="IDotGraphRootAttributes.Canvas" /> for setting a gradient angle globally, or its
     ///         <see cref="IDotClusterStyleAttributes.GradientFillAngle" /> counterpart on individual clusters.
     ///     </para>
@@ -45,7 +45,7 @@ public interface IDotGraphClusterCommonStyleAttributes
     ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
     ///         fill style to <see cref="DotClusterFillStyle.Radial" /> will cause a radial fill. If the second color is
     ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
-    ///         <see cref="DotGraphCanvasAttributes.GradientFillAngle" /> attribute on graph
+    ///         <see cref="DotGraphStyleAttributes.GradientFillAngle" /> attribute on graph
     ///         <see cref="IDotGraphRootAttributes.Canvas" /> for setting a gradient angle globally, or its
     ///         <see cref="IDotClusterStyleAttributes.GradientFillAngle" /> counterpart on individual clusters.
     ///     </para>

@@ -17,8 +17,9 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().BuildLazy();
 
     public DotGraphRootAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new DotGraphClustersAttributes(attributes), new DotHyperlinkAttributes(attributes), new DotGraphFontAttributes(attributes),
-            new DotGraphSvgStyleSheetAttributes(attributes), new DotGraphLayoutAttributes(attributes), new DotGraphCanvasAttributes(attributes), new DotLabelAlignmentAttributes(attributes)
+        : this(attributes, AttributeKeyLookup, new DotGraphClustersAttributes(attributes), new DotGraphStyleAttributes(attributes),
+            new DotHyperlinkAttributes(attributes), new DotGraphFontAttributes(attributes), new DotGraphSvgStyleSheetAttributes(attributes),
+            new DotGraphLayoutAttributes(attributes), new DotGraphCanvasAttributes(attributes), new DotLabelAlignmentAttributes(attributes)
         )
     {
     }
@@ -27,6 +28,7 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
         DotAttributeCollection attributes,
         Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
         DotGraphClustersAttributes clusterAttributes,
+        DotGraphStyleAttributes styleAttributes,
         DotHyperlinkAttributes hyperlinkAttributes,
         DotGraphFontAttributes fontAttributes,
         DotGraphSvgStyleSheetAttributes svgStyleSheetAttributes,
@@ -37,6 +39,7 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
         : base(attributes, attributeKeyLookup)
     {
         Clusters = clusterAttributes;
+        Style = styleAttributes;
         Font = fontAttributes;
         SvgStyleSheet = svgStyleSheetAttributes;
         Layout = layoutAttributes;
@@ -46,6 +49,7 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
     }
 
     public DotGraphClustersAttributes Clusters { get; }
+    public DotGraphStyleAttributes Style { get; }
     public DotGraphFontAttributes Font { get; }
     public DotGraphSvgStyleSheetAttributes SvgStyleSheet { get; }
     public DotGraphLayoutAttributes Layout { get; }

@@ -17,7 +17,7 @@ public static class DotGraphSectionExtension
     /// </param>
     public static void SetBackground(this DotGraphSection @this, DotColor color)
     {
-        @this.Canvas.BackgroundColor = color;
+        @this.Style.BackgroundColor = color;
     }
 
     /// <summary>
@@ -114,15 +114,15 @@ public static class DotGraphSectionExtension
             // the style may also be set from the Clusters collection on graph, and radial is the only attribute
             // that applies to graph background and to cluster fill
             case true:
-                @this.Canvas.FillStyle = DotClusterFillStyle.Radial;
+                @this.Style.FillStyle = DotClusterFillStyle.Radial;
                 break;
 
-            case false when @this.Canvas.FillStyle == DotClusterFillStyle.Radial:
-                @this.Canvas.FillStyle = DotClusterFillStyle.None;
+            case false when @this.Style.FillStyle == DotClusterFillStyle.Radial:
+                @this.Style.FillStyle = DotClusterFillStyle.None;
                 break;
         }
 
-        @this.Canvas.BackgroundColor = color;
-        @this.Canvas.GradientFillAngle = angle;
+        @this.Style.BackgroundColor = color;
+        @this.Style.GradientFillAngle = angle;
     }
 }

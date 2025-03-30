@@ -114,7 +114,7 @@ public partial class DotGraphSyntaxOptionsTest
     {
         var graph = new DotGraph
         {
-            Canvas =
+            Style =
             {
                 BackgroundColor = Color.Brown
             }
