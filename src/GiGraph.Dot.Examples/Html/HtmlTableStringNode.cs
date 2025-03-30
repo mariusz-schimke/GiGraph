@@ -10,7 +10,7 @@ public static class HtmlTableStringNode
     {
         var graph = new DotGraph();
 
-        graph.Nodes.Add("Bar").ToPlainHtmlNode
+        graph.Nodes.Add("Bar").SetAsHtml
         (
             """
             <table border="0" cellborder="1" cellspacing="0" cellpadding="4">

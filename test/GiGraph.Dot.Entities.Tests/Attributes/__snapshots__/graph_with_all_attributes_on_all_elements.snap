@@ -31,9 +31,11 @@
     mclimit = 123
     newrank = true
     nodesep = 123
+    nojustify = true
     oneblock = true
     ordering = out
     orientation = landscape
+    outputorder = edgesfirst
     pack = 12
     packmode = array_b
     pad = "1,2"
@@ -55,6 +57,7 @@
     stylesheet = text
     target = escape
     TBbalance = same
+    tooltip = escape
     URL = escape
     viewport = "1,2,3"
 
@@ -82,6 +85,7 @@
         labeljust = c
         labelloc = b
         margin = "1,2"
+        nojustify = true
         pencolor = red
         penwidth = 123
         peripheries = 1234
@@ -116,6 +120,7 @@
         label = text
         labelloc = b
         margin = "1,2"
+        nojustify = true
         ordering = out
         orientation = 123
         penwidth = 123
@@ -178,6 +183,7 @@
         lhead = "cluster cluster_id"
         ltail = "cluster cluster_id"
         minlen = 1234
+        nojustify = true
         penwidth = 123
         samehead = text
         sametail = text

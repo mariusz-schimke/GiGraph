@@ -18,7 +18,7 @@ public static class WithClusters
         graph.EdgeShape = DotEdgeShape.Orthogonal;
 
         // set attributes for clusters
-        graph.Clusters.AllowEdgeClipping = true;
+        graph.Clusters.EnableEdgeClipping = true;
 
         // set individual node styles
         graph.Nodes.Add("Start").Shape = DotNodeShape.Circle;

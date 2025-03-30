@@ -12,10 +12,6 @@ For a complete documentation of the DOT language and visualization capabilities 
 
 
 
-**Built with** [.NET Standard 2.0](https://docs.microsoft.com/en-US/dotnet/standard/net-standard#net-implementation-support) (compatible with *.NET Core 2.0* and above, *.NET Framework 4.6.1* and above).
-
-
-
 **‼️ If you have any suggestions or comments, feel free to create an issue. ‼️**
 
 
@@ -543,8 +539,8 @@ The shape of a node is determined by the *Shape* attribute. By default it is an 
 ```c#
 using GiGraph.Dot.Extensions;
 
-// for convenience, just use the ToRecordNode or ToRoundedRecordNode extension method on a node
-graph.Nodes.Add("Foo").ToRecordNode(new DotRecord("Hello", "World!"));
+// for convenience, just use the SetAsRecord or SetAsRoundedRecord extension method on a node
+graph.Nodes.Add("Foo").SetAsRecord(new DotRecord("Hello", "World!"));
 
 // or set shape and label explicitly
 graph.Nodes.Add("Foo", node =>
@@ -572,7 +568,7 @@ A *DotRecord* may be composed of textual fields (*DotRecordTextField*), as well 
 using GiGraph.Dot.Extensions;
 
 // note that string is implicitly converted to DotRecordTextField here for convenience
-graph.Nodes.Add("Foo").ToRecordNode(
+graph.Nodes.Add("Foo").SetAsRecord(
     new DotRecord("Foo", new DotRecord("Bar", "Baz"), "Qux")
 );
 ```
@@ -599,13 +595,13 @@ var builder = new DotRecordBuilder()
    .AppendSubrecord("Bar", "Baz")
    .AppendField("Qux");
 
-graph.Nodes.Add("Bar").ToRecordNode(builder.Build());
+graph.Nodes.Add("Bar").SetAsRecord(builder.Build());
 ```
 
 ```c#
 using GiGraph.Dot.Extensions;
 
-graph.Nodes.Add("Bar").ToRecordNode(rb =>
+graph.Nodes.Add("Bar").SetAsRecord(rb =>
 {
     rb.AppendField("Foo")
       .AppendSubrecord("Bar", "Baz")
@@ -627,7 +623,7 @@ The fields of record nodes may have a **port** specified as well. The port may h
 
 
 ```c#
-graph.Nodes.Add("Baz").ToRecordNode(rb1 => rb1
+graph.Nodes.Add("Baz").SetAsRecord(rb1 => rb1
    .AppendField($"Foo{Environment.NewLine}Bar")
    .AppendSubrecord(rb2 => rb2
        .AppendField(tf => tf.AppendLeftJustifiedLine("Baz"))
@@ -720,7 +716,7 @@ table.AddRow(row =>
 );
 
 // sets a borderless (plain) shape of the node so that the HTML table fully determines the shape
-graph.Nodes.Add("Bar").ToHtmlTableNode(table);
+graph.Nodes.Add("Bar").SetAsHtmlTable(table);
 ```
 
 The code above renders:
@@ -741,8 +737,8 @@ An identical result may be achieved by composing the HTML table directly, as tex
 ```c#
 using GiGraph.Dot.Extensions;
 
-// the ToPlainHtmlNode extension method sets a borderless (plain) shape of the node so that the HTML table fully determines the shape
-graph.Nodes.Add("Bar").ToPlainHtmlNode
+// the SetAsHtml extension method sets a borderless (plain) shape of the node so that the HTML table fully determines the shape
+graph.Nodes.Add("Bar").SetAsHtml
 (
     @"<table border=""0"" cellborder=""1"" cellspacing=""0"" cellpadding=""4"">
         <tr>
@@ -1355,13 +1351,13 @@ digraph
 
 ### Clusters as endpoints
 
-Clusters may be used as endpoints. In such case the edge is clipped to the cluster border instead of being connected to a node inside the cluster. To achieve that, define an edge that joins any node outside the cluster with a node inside the cluster. Then, on the same edge, assign the identifier of that cluster to the *ClusterId* attribute of the endpoint that refers to the node inside the cluster. Also, remember to enable clipping edges to cluster borders by setting the *AllowEdgeClipping* attribute for clusters on the graph. The following example presents the complete idea.
+Clusters may be used as endpoints. In such case the edge is clipped to the cluster border instead of being connected to a node inside the cluster. To achieve that, define an edge that joins any node outside the cluster with a node inside the cluster. Then, on the same edge, assign the identifier of that cluster to the *ClusterId* attribute of the endpoint that refers to the node inside the cluster. Also, remember to enable clipping edges to cluster borders by setting the *EnableEdgeClipping* attribute for clusters on the graph. The following example presents the complete idea.
 
 ```c#
 var graph = new DotGraph();
 
 // required to enable clipping edges to cluster borders
-graph.Clusters.AllowEdgeClipping = true;
+graph.Clusters.EnableEdgeClipping = true;
 
 // specify a cluster and add a node to it
 graph.Clusters.Add("Cluster1", cluster =>
@@ -1631,7 +1627,7 @@ graph.Label = "Example Flow";
 graph.Layout.Direction = DotLayoutDirection.LeftToRight;
 graph.EdgeShape = DotEdgeShape.Orthogonal;
 
-graph.Clusters.AllowEdgeClipping = true;
+graph.Clusters.EnableEdgeClipping = true;
 
 // set individual node styles
 graph.Nodes.Add("Start").Shape = DotNodeShape.Circle;

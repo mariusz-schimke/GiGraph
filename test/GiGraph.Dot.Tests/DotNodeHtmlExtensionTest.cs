@@ -6,13 +6,13 @@ using Xunit;
 
 namespace GiGraph.Dot.Tests;
 
-public class DotNodeToHtmlExtensionTest
+public class DotNodeHtmlExtensionTest
 {
     [Fact]
     public void converts_node_to_plain_html_node_from_html_text()
     {
         var graph = new DotGraph();
-        graph.Nodes.Add("node1").ToPlainHtmlNode("<b>label</b>");
+        graph.Nodes.Add("node1").SetAsHtml("<b>label</b>");
 
         Snapshot.Match(
             graph.Build(),
@@ -24,7 +24,7 @@ public class DotNodeToHtmlExtensionTest
     public void converts_node_to_plain_html_node_from_html_entity()
     {
         var graph = new DotGraph();
-        graph.Nodes.Add("node1").ToPlainHtmlNode(new DotHtmlTable());
+        graph.Nodes.Add("node1").SetAsHtml(new DotHtmlTable());
 
         Snapshot.Match(
             graph.Build(),

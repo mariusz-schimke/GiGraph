@@ -3,6 +3,7 @@ using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Entities.Subgraphs.Attributes;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.Layout;
+using GiGraph.Dot.Types.Output;
 using GiGraph.Dot.Types.Packing;
 using GiGraph.Dot.Types.Ranks;
 
@@ -12,8 +13,8 @@ public interface IDotGraphLayoutAttributes
 {
     /// <summary>
     ///     <para>
-    ///         Specifies the name of the layout algorithm to use, such as dot or neato (see <see cref="DotLayoutEngines" /> for a list
-    ///         of available layout engines).
+    ///         Specifies the name of the layout algorithm to use, such as dot or neato (see <see cref="DotLayoutEngines"/> for a list of
+    ///         available layout engines).
     ///     </para>
     ///     <para>
     ///         Normally, graphs should be kept independent of a type of layout. In some cases, however, it can be convenient to embed
@@ -25,7 +26,7 @@ public interface IDotGraphLayoutAttributes
     string? Engine { get; set; }
 
     /// <summary>
-    ///     Gets or sets the direction of graph layout (dot only, default: <see cref="DotLayoutDirection.TopToBottom" />).
+    ///     Gets or sets the direction of graph layout (dot only, default: <see cref="DotLayoutDirection.TopToBottom"/>).
     /// </summary>
     DotLayoutDirection? Direction { get; set; }
 
@@ -37,7 +38,7 @@ public interface IDotGraphLayoutAttributes
     DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
 
     /// <summary>
-    ///     If true, all node <see cref="IDotNodeAttributes.ExternalLabel" /> and edge <see cref="IDotEdgeAttributes.ExternalLabel" />
+    ///     If true, all node <see cref="IDotNodeAttributes.ExternalLabel"/> and edge <see cref="IDotEdgeAttributes.ExternalLabel"/>
     ///     attributes are placed, even if there is some overlap with nodes or other labels (default: true).
     /// </summary>
     bool? ForceExternalLabels { get; set; }
@@ -70,24 +71,24 @@ public interface IDotGraphLayoutAttributes
     double? NodeSeparation { get; set; }
 
     /// <summary>
-    ///     Gets or sets the rank constraints on the nodes in the graph (dot only). See also <see cref="UseGlobalRanking" />.
+    ///     Gets or sets the rank constraints on the nodes in the graph (dot only). See also <see cref="EnableGlobalRanking"/>.
     /// </summary>
     DotRank? NodeRank { get; set; }
 
     /// <summary>
-    ///     Determines which rank to move floating (loose) nodes to. The valid options are <see cref="DotRank.Min" /> or
-    ///     <see cref="DotRank.Max" />. Otherwise, floating nodes are placed anywhere.
+    ///     Determines which rank to move floating (loose) nodes to. The valid options are <see cref="DotRank.Min"/> or
+    ///     <see cref="DotRank.Max"/>. Otherwise, floating nodes are placed anywhere.
     /// </summary>
     DotRank? FloatingNodeRank { get; set; }
 
     /// <summary>
     ///     <para>
-    ///         In dot, this gives the desired rank separation, in inches (<see cref="DotRankSeparation" />; default: 0.5, minimum: 0.02.
+    ///         In dot, this gives the desired rank separation, in inches (<see cref="DotRankSeparation"/>; default: 0.5, minimum: 0.02.
     ///         This is the minimum vertical distance between the bottom of the nodes in one rank and the tops of nodes in the next.
     ///     </para>
     ///     <para>
     ///         In twopi, this attribute specifies the radial separation of concentric circles (default: 1, minimum: 0.02). For twopi,
-    ///         this can also be a list of doubles (<see cref="DotRadialRankSeparation" />). The first double specifies the radius of the
+    ///         this can also be a list of doubles (<see cref="DotRadialRankSeparation"/>). The first double specifies the radius of the
     ///         inner circle; the second double specifies the increase in radius from the first circle to the second; etc. If there are
     ///         more circles than numbers, the last number is used as the increment for the remainder.
     ///     </para>
@@ -99,26 +100,26 @@ public interface IDotGraphLayoutAttributes
 
     /// <summary>
     ///     <para>
-    ///         If enabled (see <see cref="DotPackingToggle" />), each connected component of the graph is laid out separately, and then
+    ///         If enabled (see <see cref="DotPackingToggle"/>), each connected component of the graph is laid out separately, and then
     ///         the graphs are packed together.
     ///     </para>
     ///     <para>
-    ///         If an integral value is specified (see <see cref="DotPackingMargin" />), this is used as the size, in points, of a margin
+    ///         If an integral value is specified (see <see cref="DotPackingMargin"/>), this is used as the size, in points, of a margin
     ///         around each part; otherwise, a default margin of 8 is used.
     ///     </para>
     ///     <para>
-    ///         If disabled (see <see cref="DotPackingToggle" />), the entire graph is laid out together. The granularity and method of
-    ///         packing is influenced by the <see cref="PackingMode" /> attribute.
+    ///         If disabled (see <see cref="DotPackingToggle"/>), the entire graph is laid out together. The granularity and method of
+    ///         packing is influenced by the <see cref="PackingMode"/> attribute.
     ///     </para>
     ///     <para>
-    ///         Default: disabled (see <see cref="DotPackingToggle" />).
+    ///         Default: disabled (see <see cref="DotPackingToggle"/>).
     ///     </para>
     /// </summary>
     DotPackingDefinition? Packing { get; set; }
 
     /// <summary>
-    ///     Indicates how connected components should be packed (default: <see cref="DotPackingGranularity.Node" />). Note that
-    ///     specifying a value for this property will automatically turn on packing as though one had set <see cref="Packing" /> = true.
+    ///     Indicates how connected components should be packed (default: <see cref="DotPackingGranularity.Node"/>). Note that specifying
+    ///     a value for this property will automatically turn on packing as though one had set <see cref="Packing"/> = true.
     /// </summary>
     DotPackingModeDefinition? PackingMode { get; set; }
 
@@ -147,19 +148,24 @@ public interface IDotGraphLayoutAttributes
     ///         The original ranking algorithm in dot is recursive on clusters. This can produce fewer ranks and a more compact layout,
     ///         but sometimes at the cost of a head node being placed on a higher rank than the tail node. It also assumes that a node is
     ///         not constrained in separate, incompatible subgraphs. For example, a node cannot be in a cluster and also be constrained
-    ///         by a rank of <see cref="DotRank.Same" /> with a node not in the cluster (see
-    ///         <see cref="IDotSubgraphAttributes.NodeRank" /> on subgraph attributes).
+    ///         by a rank of <see cref="DotRank.Same"/> with a node not in the cluster (see <see cref="IDotSubgraphAttributes.NodeRank"/>
+    ///         on subgraph attributes).
     ///     </para>
     ///     <para>
     ///         This allows nodes to be subject to multiple constraints. Rank constraints will usually take precedence over edge
-    ///         constraints. See also <see cref="NodeRank" />.
+    ///         constraints. See also <see cref="NodeRank"/>.
     ///     </para>
     /// </summary>
-    bool? UseGlobalRanking { get; set; }
+    bool? EnableGlobalRanking { get; set; }
 
     /// <summary>
-    ///     Gets or sets the sorting index of the graph (default: 0). If <see cref="PackingMode" /> indicates an array packing, this
+    ///     Gets or sets the sorting index of the graph (default: 0). If <see cref="PackingMode"/> indicates an array packing, this
     ///     attribute specifies an insertion order among the components, with smaller values inserted first.
     /// </summary>
     int? SortIndex { get; set; }
+
+    /// <summary>
+    ///     Specifies the order in which nodes and edges are drawn.
+    /// </summary>
+    DotOutputOrder? OutputOrder { get; set; }
 }

@@ -5,6 +5,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Styling;
 
@@ -62,6 +63,9 @@ public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDot
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
 
+    [DotAttributeKey(DotAttributeKeys.NoJustify)]
+    public virtual partial bool? DisableLabelJustification { get; set; }
+
     [DotAttributeKey(DotAttributeKeys.Splines)]
     public virtual partial DotEdgeShape? EdgeShape { get; set; }
 
@@ -76,4 +80,7 @@ public partial class DotGraphRootAttributes : DotEntityRootCommonAttributes<IDot
 
     [DotAttributeKey(DotAttributeKeys.Root)]
     public virtual partial DotId? RootNodeId { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.Tooltip)]
+    public virtual partial DotEscapeString? Tooltip { get; set; }
 }

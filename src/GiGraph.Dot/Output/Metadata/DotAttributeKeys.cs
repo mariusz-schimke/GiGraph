@@ -22,7 +22,7 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph, isImplemented: false)]
     public const string Background = "_background";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.None, isImplemented: false)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster, DotCompatibleLayoutEngines.None, isImplemented: false)]
     public const string Bb = "bb";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Sfdp, isImplemented: false)]
@@ -309,7 +309,7 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot)]
     public const string NewRank = "newrank";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, isImplemented: false)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, isImplemented: true)]
     public const string NoJustify = "nojustify";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Neato, isImplemented: false)]
@@ -336,7 +336,7 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Node)]
     public const string Orientation = "orientation";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph, isImplemented: false)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph, isImplemented: true)]
     public const string OutputOrder = "outputorder";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.NotDot, isImplemented: false)]
@@ -508,7 +508,7 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot)]
     public const string TbBalance = "TBbalance";
 
-    [DotAttributeMetadata(DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.Cmap)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.Cmap)]
     public const string Tooltip = "tooltip";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, compatibleOutputs: DotCompatibleOutputs.Bitmap, isImplemented: false)]

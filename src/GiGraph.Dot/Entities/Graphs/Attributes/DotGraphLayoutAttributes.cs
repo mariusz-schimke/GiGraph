@@ -4,6 +4,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.Layout;
+using GiGraph.Dot.Types.Output;
 using GiGraph.Dot.Types.Packing;
 using GiGraph.Dot.Types.Ranks;
 
@@ -23,73 +24,77 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     {
     }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.FloatingNodeRank" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.FloatingNodeRank"/>
     [DotAttributeKey(DotAttributeKeys.TbBalance)]
     public virtual partial DotRank? FloatingNodeRank { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.Rotation" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.Rotation"/>
     [DotAttributeKey(DotAttributeKeys.Rotation)]
     public virtual partial double? Rotation { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.RepeatEdgeCrossingMinimization" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.RepeatEdgeCrossingMinimization"/>
     [DotAttributeKey(DotAttributeKeys.ReMinCross)]
     public virtual partial bool? RepeatEdgeCrossingMinimization { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.EdgeCrossingMinimizationScaleFactor" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.EdgeCrossingMinimizationScaleFactor"/>
     [DotAttributeKey(DotAttributeKeys.McLimit)]
     public virtual partial double? EdgeCrossingMinimizationScaleFactor { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.UseGlobalRanking" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.EnableGlobalRanking"/>
     [DotAttributeKey(DotAttributeKeys.NewRank)]
-    public virtual partial bool? UseGlobalRanking { get; set; }
+    public virtual partial bool? EnableGlobalRanking { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeRank" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeRank"/>
     [DotAttributeKey(DotAttributeKeys.Rank)]
     public virtual partial DotRank? NodeRank { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.Packing" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.Packing"/>
     [DotAttributeKey(DotAttributeKeys.Pack)]
     public virtual partial DotPackingDefinition? Packing { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.PackingMode" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.PackingMode"/>
     [DotAttributeKey(DotAttributeKeys.PackMode)]
     public virtual partial DotPackingModeDefinition? PackingMode { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeSeparation" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeSeparation"/>
     [DotAttributeKey(DotAttributeKeys.NodeSep)]
     public virtual partial double? NodeSeparation { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.RankSeparation" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.RankSeparation"/>
     [DotAttributeKey(DotAttributeKeys.RankSep)]
     public virtual partial DotRankSeparationDefinition? RankSeparation { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.ConcentrateEdges" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.ConcentrateEdges"/>
     [DotAttributeKey(DotAttributeKeys.Concentrate)]
     public virtual partial bool? ConcentrateEdges { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.Engine" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.Engine"/>
     [DotAttributeKey(DotAttributeKeys.Layout)]
     public virtual partial string? Engine { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.Direction" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.Direction"/>
     [DotAttributeKey(DotAttributeKeys.RankDir)]
     public virtual partial DotLayoutDirection? Direction { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.EdgeOrderingMode" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.EdgeOrderingMode"/>
     [DotAttributeKey(DotAttributeKeys.Ordering)]
     public virtual partial DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.ForceExternalLabels" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.ForceExternalLabels"/>
     [DotAttributeKey(DotAttributeKeys.ForceLabels)]
     public virtual partial bool? ForceExternalLabels { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.ForceCircularLayout" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.ForceCircularLayout"/>
     [DotAttributeKey(DotAttributeKeys.OneBlock)]
     public virtual partial bool? ForceCircularLayout { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.SortIndex" />
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.SortIndex"/>
     [DotAttributeKey(DotAttributeKeys.SortV)]
     public virtual partial int? SortIndex { get; set; }
+
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.OutputOrder"/>
+    [DotAttributeKey(DotAttributeKeys.OutputOrder)]
+    public virtual partial DotOutputOrder? OutputOrder { get; set; }
 
     /// <summary>
     ///     Copies layout attributes from the specified instance.
@@ -101,20 +106,21 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     {
         ConcentrateEdges = attributes.ConcentrateEdges;
         Direction = attributes.Direction;
+        EdgeCrossingMinimizationScaleFactor = attributes.EdgeCrossingMinimizationScaleFactor;
         EdgeOrderingMode = attributes.EdgeOrderingMode;
+        EnableGlobalRanking = attributes.EnableGlobalRanking;
         Engine = attributes.Engine;
-        ForceExternalLabels = attributes.ForceExternalLabels;
-        ForceCircularLayout = attributes.ForceCircularLayout;
-        NodeRank = attributes.NodeRank;
         FloatingNodeRank = attributes.FloatingNodeRank;
+        ForceCircularLayout = attributes.ForceCircularLayout;
+        ForceExternalLabels = attributes.ForceExternalLabels;
+        NodeRank = attributes.NodeRank;
         NodeSeparation = attributes.NodeSeparation;
+        OutputOrder = attributes.OutputOrder;
         Packing = attributes.Packing;
         PackingMode = attributes.PackingMode;
         RankSeparation = attributes.RankSeparation;
         RepeatEdgeCrossingMinimization = attributes.RepeatEdgeCrossingMinimization;
-        EdgeCrossingMinimizationScaleFactor = attributes.EdgeCrossingMinimizationScaleFactor;
         Rotation = attributes.Rotation;
         SortIndex = attributes.SortIndex;
-        UseGlobalRanking = attributes.UseGlobalRanking;
     }
 }
