@@ -37,16 +37,14 @@ public abstract partial class DotHyperlinkAttributes<TIEntityHyperlinkAttributes
     /// <param name="target">
     ///     The target of the hyperlink. See <see cref="DotHyperlinkTargets"/> for accepted values.
     /// </param>
-    public virtual void Set(DotEscapeString? url, DotEscapeString? target = null)
+    /// <param name="href">
+    ///     Synonym for <paramref name="url"/>.
+    /// </param>
+    public virtual void Set(DotEscapeString? url, DotEscapeString? target = null, DotEscapeString? href = null)
     {
         Url = url;
         Target = target;
-    }
-
-    protected virtual void SetAll(DotEscapeString? url, DotEscapeString? target, DotEscapeString? href)
-    {
         Href = href;
-        Set(url, target);
     }
 
     /// <summary>
@@ -57,6 +55,6 @@ public abstract partial class DotHyperlinkAttributes<TIEntityHyperlinkAttributes
     /// </param>
     public virtual void Set(DotHyperlink attributes)
     {
-        SetAll(attributes.Url, attributes.Target, attributes.Href);
+        Set(attributes.Url, attributes.Target, attributes.Href);
     }
 }
