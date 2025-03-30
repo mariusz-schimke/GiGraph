@@ -1,3 +1,4 @@
+using System.Diagnostics.Contracts;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
@@ -19,12 +20,14 @@ public abstract partial class DotEntityStyleAttributesWithMetadata<TIEntityAttri
     /// <summary>
     ///     Determines if any style is assigned to the element.
     /// </summary>
+    [Pure]
     public virtual bool HasStyleOptionsSet() => Style.HasValue;
 
     /// <summary>
     ///     Determines if the default style is assigned to the element.
     /// </summary>
-    public virtual bool HasDefaultStyleOptions() => Style == DotStyles.Default;
+    [Pure]
+    public virtual bool HasDefaultStyleOptionsSet() => Style == DotStyles.Default;
 
     /// <summary>
     ///     Clears the style options of the element so that no style is set.
@@ -53,6 +56,7 @@ public abstract partial class DotEntityStyleAttributesWithMetadata<TIEntityAttri
         Style &= ~options;
     }
 
+    [Pure]
     protected virtual bool HasStyleOption(DotStyles option) => Style.GetValueOrDefault(DotStyles.Default).HasFlag(option);
 
     protected virtual void ModifyStyleOption(DotStyles option, bool set)
@@ -73,6 +77,7 @@ public abstract partial class DotEntityStyleAttributesWithMetadata<TIEntityAttri
         Style = DotPartialEnumMapper.ToComplete(style, Style.GetValueOrDefault(DotStyles.Default));
     }
 
+    [Pure]
     protected virtual TPart GetPartialStyle<TPart>()
         where TPart : struct, Enum =>
         DotPartialEnumMapper.ToPartial<DotStyles, TPart>(Style.GetValueOrDefault(DotStyles.Default));
