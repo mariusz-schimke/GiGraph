@@ -35,7 +35,7 @@ public class DotGraphFactory
             sg.Nodes.Style.Color = Color.Chartreuse;
             sg.Nodes.Label = "nodes_label";
 
-            sg.Edges.Color = Color.Chocolate;
+            sg.Edges.Style.Color = Color.Chocolate;
             sg.Edges.Label = "edges_label";
         });
 
@@ -50,7 +50,7 @@ public class DotGraphFactory
             cluster.Nodes.Style.Color = Color.Chartreuse;
             cluster.Nodes.Label = "nodes label";
 
-            cluster.Edges.Color = Color.Chocolate;
+            cluster.Edges.Style.Color = Color.Chocolate;
             cluster.Edges.Label = "edges label";
         });
 
@@ -60,7 +60,7 @@ public class DotGraphFactory
         graph.Nodes.Style.Color = Color.Red;
         graph.Nodes.Label = "node_label";
 
-        graph.Edges.Color = Color.Blue;
+        graph.Edges.Style.Color = Color.Blue;
         graph.Edges.Label = "edge_label";
 
         graph.Nodes.Add("no_attributes");
@@ -81,7 +81,7 @@ public class DotGraphFactory
         graph.Edges.Add("node6", "node7", edge =>
         {
             edge.Tail.Endpoint.Port = new DotEndpointPort("port6", DotCompassPoint.East);
-            edge.Color = Color.Gold;
+            edge.Style.Color = Color.Gold;
             edge.Style.LineStyle = DotLineStyle.Dotted;
         });
 
@@ -93,7 +93,7 @@ public class DotGraphFactory
 
         graph.Edges.AddSequence(edge =>
         {
-            edge.Color = Color.Beige;
+            edge.Style.Color = Color.Beige;
             edge.Style.Invisible = true;
         }, "node1", "node2", "node3");
 
@@ -216,7 +216,7 @@ public class DotGraphFactory
             edge.Tail.Endpoint.Annotation = "tail";
 
             edge.Attributes.Annotation = "edge attributes";
-            edge.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
+            edge.Style.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
         });
 
         graph.Edges.AddSequence(["foo", "bar", "baz"], edge =>
@@ -229,7 +229,7 @@ public class DotGraphFactory
 
             edge.Annotation = "edge sequence comment";
             edge.Attributes.Annotation = "edge sequence attributes";
-            edge.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
+            edge.Style.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
         });
 
         // endpoint groups / endpoint subgraphs / clusters as endpoints

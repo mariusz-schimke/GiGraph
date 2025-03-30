@@ -4,7 +4,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Entities.Labels;
-using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Styling;
@@ -33,7 +32,7 @@ public partial class DotEdgeCollection : IDotEdgeRootAttributes
     public DotEdgeLabelHyperlinkAttributes LabelHyperlink => Attributes.Implementation.LabelHyperlink;
 
     /// <inheritdoc cref="IDotEdgeRootAttributes.Style"/>
-    public DotEdgeStyleAttributeOptions Style => Attributes.Implementation.Style;
+    public DotEdgeStyleAttributes Style => Attributes.Implementation.Style;
 
     /// <inheritdoc cref="IDotEdgeRootAttributes.SvgStyleSheet"/>
     public DotSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
@@ -101,34 +100,6 @@ public partial class DotEdgeCollection : IDotEdgeRootAttributes
     {
         get => Attributes.Implementation.Tooltip;
         set => Attributes.Implementation.Tooltip = value;
-    }
-
-    /// <inheritdoc cref="IDotEdgeAttributes.Color"/>
-    public virtual DotColorDefinition? Color
-    {
-        get => Attributes.Implementation.Color;
-        set => Attributes.Implementation.Color = value;
-    }
-
-    /// <inheritdoc cref="IDotEdgeAttributes.FillColor"/>
-    public virtual DotColorDefinition? FillColor
-    {
-        get => Attributes.Implementation.FillColor;
-        set => Attributes.Implementation.FillColor = value;
-    }
-
-    /// <inheritdoc cref="IDotEdgeAttributes.ColorScheme"/>
-    public virtual string? ColorScheme
-    {
-        get => Attributes.Implementation.ColorScheme;
-        set => Attributes.Implementation.ColorScheme = value;
-    }
-
-    /// <inheritdoc cref="IDotEdgeAttributes.Width"/>
-    public virtual double? Width
-    {
-        get => Attributes.Implementation.Width;
-        set => Attributes.Implementation.Width = value;
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.ArrowheadScaleFactor"/>

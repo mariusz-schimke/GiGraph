@@ -7,7 +7,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Styling;
@@ -20,7 +19,8 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
 
     public DotEdgeRootAttributes(DotAttributeCollection attributes)
         : this(attributes, AttributeKeyLookup, new DotEdgeHeadAttributes(attributes), new DotEdgeTailAttributes(attributes), new DotFontAttributes(attributes), new DotHyperlinkAttributes(attributes),
-            new DotEdgeEndpointLabelsAttributes(attributes), new DotEdgeLabelHyperlinkAttributes(attributes), new DotEdgeHyperlinkAttributes(attributes), new DotEdgeStyleAttributeOptions(attributes), new DotSvgStyleSheetAttributes(attributes)
+            new DotEdgeEndpointLabelsAttributes(attributes), new DotEdgeLabelHyperlinkAttributes(attributes), new DotEdgeHyperlinkAttributes(attributes), new DotEdgeStyleAttributes(attributes),
+            new DotSvgStyleSheetAttributes(attributes)
         )
     {
     }
@@ -35,7 +35,7 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
         DotEdgeEndpointLabelsAttributes endpointLabelsAttributes,
         DotEdgeLabelHyperlinkAttributes labelHyperlinkAttributes,
         DotEdgeHyperlinkAttributes edgeHyperlinkAttributes,
-        DotEdgeStyleAttributeOptions edgeStyleAttributeOptions,
+        DotEdgeStyleAttributes edgeStyleAttributes,
         DotSvgStyleSheetAttributes svgStyleSheetAttributes
     )
         : base(attributes, attributeKeyLookup, hyperlinkAttributes)
@@ -43,7 +43,7 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
         Head = headAttributes;
         Tail = tailAttributes;
         Font = fontAttributes;
-        Style = edgeStyleAttributeOptions;
+        Style = edgeStyleAttributes;
         SvgStyleSheet = svgStyleSheetAttributes;
         EndpointLabels = endpointLabelsAttributes;
         EdgeHyperlink = edgeHyperlinkAttributes;
@@ -57,7 +57,7 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
     public DotEdgeEndpointLabelsAttributes EndpointLabels { get; }
     public DotEdgeHyperlinkAttributes EdgeHyperlink { get; }
     public DotEdgeLabelHyperlinkAttributes LabelHyperlink { get; }
-    public DotEdgeStyleAttributeOptions Style { get; }
+    public DotEdgeStyleAttributes Style { get; }
     public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
     [DotAttributeKey(DotAttributeKeys.Style)]
@@ -75,17 +75,8 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
     public virtual partial DotEscapeString? Tooltip { get; set; }
 
-    [DotAttributeKey(DotAttributeKeys.Color)]
-    public virtual partial DotColorDefinition? Color { get; set; }
-
-    [DotAttributeKey(DotAttributeKeys.FillColor)]
-    public virtual partial DotColorDefinition? FillColor { get; set; }
-
     [DotAttributeKey(DotAttributeKeys.XLabel)]
     public virtual partial DotLabel? ExternalLabel { get; set; }
-
-    [DotAttributeKey(DotAttributeKeys.PenWidth)]
-    public virtual partial double? Width { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Weight)]
     public virtual partial double? Weight { get; set; }

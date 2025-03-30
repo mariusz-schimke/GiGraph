@@ -34,14 +34,14 @@
   "color": {
     "Graph": "Clusters.Style.Color: DotColorDefinition",
     "Cluster": "Style.Color: DotColorDefinition",
-    "Node": "Color: DotColorDefinition",
-    "Edge": "Color: DotColorDefinition"
+    "Node": "Style.Color: DotColorDefinition",
+    "Edge": "Style.Color: DotColorDefinition"
   },
   "colorscheme": {
     "Graph": "Canvas.ColorScheme: String",
     "Cluster": "Style.ColorScheme: String",
-    "Node": "ColorScheme: String",
-    "Edge": "ColorScheme: String"
+    "Node": "Style.ColorScheme: String",
+    "Edge": "Style.ColorScheme: String"
   },
   "comment": {
     "Graph": "Comment: String",
@@ -84,8 +84,8 @@
   "fillcolor": {
     "Graph": "Clusters.Style.FillColor: DotColorDefinition",
     "Cluster": "Style.FillColor: DotColorDefinition",
-    "Node": "FillColor: DotColorDefinition",
-    "Edge": "FillColor: DotColorDefinition"
+    "Node": "Style.FillColor: DotColorDefinition",
+    "Edge": "Style.FillColor: DotColorDefinition"
   },
   "fixedsize": {
     "Node": "Size.Mode: DotNodeSizing?"
@@ -120,7 +120,7 @@
   "gradientangle": {
     "Graph": "Canvas.GradientFillAngle: Int32?",
     "Cluster": "Style.GradientFillAngle: Int32?",
-    "Node": "GradientFillAngle: Int32?"
+    "Node": "Style.GradientFillAngle: Int32?"
   },
   "group": {
     "Node": "GroupName: String"
@@ -286,8 +286,8 @@
   "penwidth": {
     "Graph": "Clusters.Style.BorderWidth: Double?",
     "Cluster": "Style.BorderWidth: Double?",
-    "Node": "BorderWidth: Double?",
-    "Edge": "Width: Double?"
+    "Node": "Style.BorderWidth: Double?",
+    "Edge": "Style.Width: Double?"
   },
   "peripheries": {
     "Cluster": "Peripheries: Int32?",

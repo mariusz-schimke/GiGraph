@@ -12,7 +12,7 @@ using GiGraph.Dot.Types.Viewport;
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
 // todo: przeanalizować, czy to powinno dziedziczyć po DotStyleAttributes
-public partial class DotGraphCanvasAttributes : DotStyleAttributes<IDotGraphCanvasAttributes, DotGraphCanvasAttributes>, IDotGraphCanvasAttributes
+public partial class DotGraphCanvasAttributes : DotEntityStyleAttributesWithMetadata<IDotGraphCanvasAttributes, DotGraphCanvasAttributes>, IDotGraphCanvasAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphCanvasAttributes, IDotGraphCanvasAttributes>().BuildLazy();
 

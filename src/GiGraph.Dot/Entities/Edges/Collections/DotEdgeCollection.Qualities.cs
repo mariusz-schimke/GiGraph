@@ -7,6 +7,6 @@ namespace GiGraph.Dot.Entities.Edges.Collections;
 public partial class DotEdgeCollection : IDotStylableEdge
 {
     void IDotStylableEdge.SetStyle(DotLineStyle style) => Style.LineStyle = style;
-    void IDotStylableEdge.SetColor(DotColorDefinition color) => Color = color;
-    void IDotStylableEdge.SetWidth(double? width) => Width = width;
+    void IDotStylableEdge.SetColor(DotColorDefinition color) => Style.Color = color;
+    void IDotStylableEdge.SetWidth(double? width) => Style.Width = width;
 }

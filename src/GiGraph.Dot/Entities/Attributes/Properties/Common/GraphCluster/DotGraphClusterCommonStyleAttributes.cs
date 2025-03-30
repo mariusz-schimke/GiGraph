@@ -13,7 +13,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
     DotStyleAttributeOptions styleAttributeOptions
 )
-    : DotStyleAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>(attributes, attributeKeyLookup, styleAttributeOptions), IDotGraphClusterCommonStyleAttributes
+    : DotEntityStyleAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>(attributes, attributeKeyLookup, styleAttributeOptions), IDotGraphClusterCommonStyleAttributes
     where TEntityAttributeProperties : DotGraphClusterCommonStyleAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
 {
     /// <summary>
