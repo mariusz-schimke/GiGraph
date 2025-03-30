@@ -1,5 +1,4 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
@@ -12,10 +11,10 @@ using GiGraph.Dot.Types.Viewport;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
-public partial class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<IDotGraphCanvasAttributes, DotGraphCanvasAttributes>, IDotGraphCanvasAttributes
+// todo: przeanalizować, czy to powinno dziedziczyć po DotStyleAttributes
+public partial class DotGraphCanvasAttributes : DotStyleAttributes<IDotGraphCanvasAttributes, DotGraphCanvasAttributes>, IDotGraphCanvasAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphCanvasAttributes, IDotGraphCanvasAttributes>().BuildLazy();
-    private readonly DotStyleAttributeOptions _styleAttributeOptions;
 
     public DotGraphCanvasAttributes(DotAttributeCollection attributes)
         : this(attributes, AttributeKeyLookup, new DotStyleAttributeOptions(attributes))
@@ -24,9 +23,8 @@ public partial class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<
 
     protected DotGraphCanvasAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
         DotStyleAttributeOptions styleAttributeOptions)
-        : base(attributes, attributeKeyLookup)
+        : base(attributes, attributeKeyLookup, styleAttributeOptions)
     {
-        _styleAttributeOptions = styleAttributeOptions;
     }
 
     /// <summary>

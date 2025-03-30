@@ -13,11 +13,9 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
     DotStyleAttributeOptions styleAttributeOptions
 )
-    : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>(attributes, attributeKeyLookup), IDotGraphClusterCommonStyleAttributes
+    : DotStyleAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>(attributes, attributeKeyLookup, styleAttributeOptions), IDotGraphClusterCommonStyleAttributes
     where TEntityAttributeProperties : DotGraphClusterCommonStyleAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
 {
-    protected readonly DotStyleAttributeOptions _styleAttributeOptions = styleAttributeOptions;
-
     /// <summary>
     ///     Gets or sets a fill style.
     /// </summary>

@@ -1,5 +1,4 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
@@ -9,10 +8,9 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
-public partial class DotNodeStyleAttributes : DotEntityAttributesWithMetadata<IDotNodeStyleAttributes, DotNodeStyleAttributes>, IDotNodeStyleAttributes
+public partial class DotNodeStyleAttributes : DotStyleAttributes<IDotNodeStyleAttributes, DotNodeStyleAttributes>, IDotNodeStyleAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeStyleAttributes, IDotNodeStyleAttributes>().BuildLazy();
-    private readonly DotStyleAttributeOptions _styleAttributeOptions;
 
     public DotNodeStyleAttributes(DotAttributeCollection attributes)
         : this(attributes, AttributeKeyLookup, new DotStyleAttributeOptions(attributes))
@@ -20,9 +18,8 @@ public partial class DotNodeStyleAttributes : DotEntityAttributesWithMetadata<ID
     }
 
     protected DotNodeStyleAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup, DotStyleAttributeOptions styleAttributeOptions)
-        : base(attributes, attributeKeyLookup)
+        : base(attributes, attributeKeyLookup, styleAttributeOptions)
     {
-        _styleAttributeOptions = styleAttributeOptions;
     }
 
     /// <summary>
