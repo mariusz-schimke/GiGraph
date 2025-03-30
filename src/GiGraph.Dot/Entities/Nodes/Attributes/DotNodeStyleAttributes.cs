@@ -1,20 +1,37 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
+using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
-// todo: usunąć
-public class DotNodeStyleAttributeOptions(DotAttributeCollection attributes) : DotStyleAttributeOptions(attributes)
+public partial class DotNodeStyleAttributes : DotEntityAttributesWithMetadata<IDotNodeStyleAttributes, DotNodeStyleAttributes>, IDotNodeStyleAttributes
 {
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeStyleAttributes, IDotNodeStyleAttributes>().BuildLazy();
+    private readonly DotStyleAttributeOptions _styleAttributeOptions;
+
+    public DotNodeStyleAttributes(DotAttributeCollection attributes)
+        : this(attributes, AttributeKeyLookup, new DotStyleAttributeOptions(attributes))
+    {
+    }
+
+    protected DotNodeStyleAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup, DotStyleAttributeOptions styleAttributeOptions)
+        : base(attributes, attributeKeyLookup)
+    {
+        _styleAttributeOptions = styleAttributeOptions;
+    }
+
     /// <summary>
     ///     Gets or sets a fill style.
     /// </summary>
     public virtual DotNodeFillStyle FillStyle
     {
-        get => GetPart<DotNodeFillStyle>();
-        set => SetPart(value);
+        get => _styleAttributeOptions.GetPart<DotNodeFillStyle>();
+        set => _styleAttributeOptions.SetPart(value);
     }
 
     /// <summary>
@@ -22,8 +39,8 @@ public class DotNodeStyleAttributeOptions(DotAttributeCollection attributes) : D
     /// </summary>
     public virtual DotBorderStyle BorderStyle
     {
-        get => GetPart<DotBorderStyle>();
-        set => SetPart(value);
+        get => _styleAttributeOptions.GetPart<DotBorderStyle>();
+        set => _styleAttributeOptions.SetPart(value);
     }
 
     /// <summary>
@@ -31,8 +48,8 @@ public class DotNodeStyleAttributeOptions(DotAttributeCollection attributes) : D
     /// </summary>
     public virtual DotBorderWeight BorderWeight
     {
-        get => GetPart<DotBorderWeight>();
-        set => SetPart(value);
+        get => _styleAttributeOptions.GetPart<DotBorderWeight>();
+        set => _styleAttributeOptions.SetPart(value);
     }
 
     /// <summary>
@@ -40,8 +57,8 @@ public class DotNodeStyleAttributeOptions(DotAttributeCollection attributes) : D
     /// </summary>
     public virtual DotCornerStyle CornerStyle
     {
-        get => GetPart<DotCornerStyle>();
-        set => SetPart(value);
+        get => _styleAttributeOptions.GetPart<DotCornerStyle>();
+        set => _styleAttributeOptions.SetPart(value);
     }
 
     /// <summary>
@@ -50,8 +67,8 @@ public class DotNodeStyleAttributeOptions(DotAttributeCollection attributes) : D
     /// </summary>
     public virtual bool Diagonals
     {
-        get => HasOption(DotStyles.Diagonals);
-        set => ModifyOption(DotStyles.Diagonals, value);
+        get => _styleAttributeOptions.HasOption(DotStyles.Diagonals);
+        set => _styleAttributeOptions.ModifyOption(DotStyles.Diagonals, value);
     }
 
     /// <summary>
@@ -59,9 +76,24 @@ public class DotNodeStyleAttributeOptions(DotAttributeCollection attributes) : D
     /// </summary>
     public virtual bool Invisible
     {
-        get => HasOption(DotStyles.Invisible);
-        set => ModifyOption(DotStyles.Invisible, value);
+        get => _styleAttributeOptions.HasOption(DotStyles.Invisible);
+        set => _styleAttributeOptions.ModifyOption(DotStyles.Invisible, value);
     }
+
+    [DotAttributeKey(DotAttributeKeys.Color)]
+    public virtual partial DotColorDefinition? Color { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.ColorScheme)]
+    public virtual partial string? ColorScheme { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.FillColor)]
+    public virtual partial DotColorDefinition? FillColor { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.GradientAngle)]
+    public virtual partial int? GradientFillAngle { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.PenWidth)]
+    public virtual partial double? BorderWidth { get; set; }
 
     /// <summary>
     ///     Applies the specified style options.

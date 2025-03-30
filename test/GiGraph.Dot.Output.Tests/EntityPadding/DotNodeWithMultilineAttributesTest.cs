@@ -60,7 +60,7 @@ public class DotNodeWithMultilineAttributesTest
     {
         var graph = new DotGraph();
 
-        graph.Nodes.Add("node1").Color = Color.Red;
+        graph.Nodes.Add("node1").Style.Color = Color.Red;
         graph.Nodes.Add("node2").Font.Size = 10;
         graph.Nodes.Add("node3").Font.Name = "arial";
 
@@ -76,7 +76,7 @@ public class DotNodeWithMultilineAttributesTest
     {
         var graph = new DotGraph();
 
-        graph.Nodes.Add("node1").Color = Color.Red;
+        graph.Nodes.Add("node1").Style.Color = Color.Red;
         graph.Nodes.Add("node2");
         graph.Nodes.Add("node3");
 
@@ -94,7 +94,7 @@ public class DotNodeWithMultilineAttributesTest
 
         graph.Nodes.Add("node1");
         graph.Nodes.Add("node2");
-        graph.Nodes.Add("node3").Color = Color.Red;
+        graph.Nodes.Add("node3").Style.Color = Color.Red;
 
         var formatting = new DotFormattingOptions { Nodes = { SingleLineAttributeLists = false } };
         Snapshot.Match(graph.Build(formatting), "node_with_attributes_with_top_padding.gv");

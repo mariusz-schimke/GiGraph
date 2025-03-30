@@ -11,6 +11,6 @@ public partial class DotNodeCollection : IDotShapableNode, IDotStripeFillable, I
     void IDotShapableNode.SetShape(DotNodeShape shape) => Shape = shape;
     void IDotShapableNode.SetGeometry(DotPolygon geometry) => Geometry.Set(geometry);
     void IDotFillable.SetFillStyle(DotFillStyle style) => Style.FillStyle = (DotNodeFillStyle) style;
-    void IDotFillable.SetFillColor(DotColorDefinition color) => FillColor = color;
-    void IDotFillable.SetGradientFillAngle(int? angle) => GradientFillAngle = angle;
+    void IDotFillable.SetFillColor(DotColorDefinition color) => Style.FillColor = color;
+    void IDotFillable.SetGradientFillAngle(int? angle) => Style.GradientFillAngle = angle;
 }

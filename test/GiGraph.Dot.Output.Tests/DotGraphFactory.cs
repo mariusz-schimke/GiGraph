@@ -32,7 +32,7 @@ public class DotGraphFactory
         {
             sg.NodeRank = DotRank.Max;
 
-            sg.Nodes.Color = Color.Chartreuse;
+            sg.Nodes.Style.Color = Color.Chartreuse;
             sg.Nodes.Label = "nodes_label";
 
             sg.Edges.Color = Color.Chocolate;
@@ -47,7 +47,7 @@ public class DotGraphFactory
             cluster.Label = "cluster label";
             cluster.Padding = 10;
 
-            cluster.Nodes.Color = Color.Chartreuse;
+            cluster.Nodes.Style.Color = Color.Chartreuse;
             cluster.Nodes.Label = "nodes label";
 
             cluster.Edges.Color = Color.Chocolate;
@@ -57,7 +57,7 @@ public class DotGraphFactory
         graph.Clusters.Add("Cluster1");
 
 
-        graph.Nodes.Color = Color.Red;
+        graph.Nodes.Style.Color = Color.Red;
         graph.Nodes.Label = "node_label";
 
         graph.Edges.Color = Color.Blue;

@@ -12,9 +12,9 @@ public interface IDotNodeRootAttributes : IDotNodeAttributes
     DotFontAttributes Font { get; }
 
     /// <summary>
-    ///     Style options.
+    ///     Style attributes.
     /// </summary>
-    new DotNodeStyleAttributeOptions Style { get; }
+    new DotNodeStyleAttributes Style { get; }
 
     /// <summary>
     ///     Node size attributes.
