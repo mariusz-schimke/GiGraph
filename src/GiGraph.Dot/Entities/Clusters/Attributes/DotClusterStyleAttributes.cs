@@ -1,6 +1,5 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
@@ -12,12 +11,12 @@ public partial class DotClusterStyleAttributes : DotGraphClusterCommonStyleAttri
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterStyleAttributes, IDotClusterStyleAttributes>().BuildLazy();
 
     public DotClusterStyleAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new DotStyleAttributeOptions(attributes))
+        : base(attributes, AttributeKeyLookup)
     {
     }
 
-    protected DotClusterStyleAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup, DotStyleAttributeOptions styleAttributeOptions)
-        : base(attributes, attributeKeyLookup, styleAttributeOptions)
+    protected DotClusterStyleAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+        : base(attributes, attributeKeyLookup)
     {
     }
 

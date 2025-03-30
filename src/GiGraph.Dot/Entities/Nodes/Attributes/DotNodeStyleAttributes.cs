@@ -13,12 +13,12 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeStyleAttributes, IDotNodeStyleAttributes>().BuildLazy();
 
     public DotNodeStyleAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new DotStyleAttributeOptions(attributes))
+        : base(attributes, AttributeKeyLookup)
     {
     }
 
-    protected DotNodeStyleAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup, DotStyleAttributeOptions styleAttributeOptions)
-        : base(attributes, attributeKeyLookup, styleAttributeOptions)
+    protected DotNodeStyleAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+        : base(attributes, attributeKeyLookup)
     {
     }
 
@@ -27,8 +27,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual DotNodeFillStyle FillStyle
     {
-        get => _styleAttributeOptions.GetPart<DotNodeFillStyle>();
-        set => _styleAttributeOptions.SetPart(value);
+        get => GetPartialStyle<DotNodeFillStyle>();
+        set => SetPartialStyle(value);
     }
 
     /// <summary>
@@ -36,8 +36,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual DotBorderStyle BorderStyle
     {
-        get => _styleAttributeOptions.GetPart<DotBorderStyle>();
-        set => _styleAttributeOptions.SetPart(value);
+        get => GetPartialStyle<DotBorderStyle>();
+        set => SetPartialStyle(value);
     }
 
     /// <summary>
@@ -45,8 +45,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual DotBorderWeight BorderWeight
     {
-        get => _styleAttributeOptions.GetPart<DotBorderWeight>();
-        set => _styleAttributeOptions.SetPart(value);
+        get => GetPartialStyle<DotBorderWeight>();
+        set => SetPartialStyle(value);
     }
 
     /// <summary>
@@ -54,8 +54,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual DotCornerStyle CornerStyle
     {
-        get => _styleAttributeOptions.GetPart<DotCornerStyle>();
-        set => _styleAttributeOptions.SetPart(value);
+        get => GetPartialStyle<DotCornerStyle>();
+        set => SetPartialStyle(value);
     }
 
     /// <summary>
@@ -64,8 +64,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual bool Diagonals
     {
-        get => _styleAttributeOptions.HasOption(DotStyles.Diagonals);
-        set => _styleAttributeOptions.ModifyOption(DotStyles.Diagonals, value);
+        get => HasStyleOption(DotStyles.Diagonals);
+        set => ModifyStyleOption(DotStyles.Diagonals, value);
     }
 
     /// <summary>
@@ -73,8 +73,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual bool Invisible
     {
-        get => _styleAttributeOptions.HasOption(DotStyles.Invisible);
-        set => _styleAttributeOptions.ModifyOption(DotStyles.Invisible, value);
+        get => HasStyleOption(DotStyles.Invisible);
+        set => ModifyStyleOption(DotStyles.Invisible, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Color)]

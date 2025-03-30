@@ -10,10 +10,9 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 
 public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>(
     DotAttributeCollection attributes,
-    Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-    DotStyleAttributeOptions styleAttributeOptions
+    Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup
 )
-    : DotEntityStyleAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>(attributes, attributeKeyLookup, styleAttributeOptions), IDotGraphClusterCommonStyleAttributes
+    : DotEntityStyleAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>(attributes, attributeKeyLookup), IDotGraphClusterCommonStyleAttributes
     where TEntityAttributeProperties : DotGraphClusterCommonStyleAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
 {
     /// <summary>
@@ -21,8 +20,8 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// </summary>
     public virtual DotClusterFillStyle FillStyle
     {
-        get => _styleAttributeOptions.GetPart<DotClusterFillStyle>();
-        set => _styleAttributeOptions.SetPart(value);
+        get => GetPartialStyle<DotClusterFillStyle>();
+        set => SetPartialStyle(value);
     }
 
     /// <summary>
@@ -30,8 +29,8 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// </summary>
     public virtual DotBorderStyle BorderStyle
     {
-        get => _styleAttributeOptions.GetPart<DotBorderStyle>();
-        set => _styleAttributeOptions.SetPart(value);
+        get => GetPartialStyle<DotBorderStyle>();
+        set => SetPartialStyle(value);
     }
 
     /// <summary>
@@ -39,8 +38,8 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// </summary>
     public virtual DotBorderWeight BorderWeight
     {
-        get => _styleAttributeOptions.GetPart<DotBorderWeight>();
-        set => _styleAttributeOptions.SetPart(value);
+        get => GetPartialStyle<DotBorderWeight>();
+        set => SetPartialStyle(value);
     }
 
     /// <summary>
@@ -48,8 +47,8 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// </summary>
     public virtual DotCornerStyle CornerStyle
     {
-        get => _styleAttributeOptions.GetPart<DotCornerStyle>();
-        set => _styleAttributeOptions.SetPart(value);
+        get => GetPartialStyle<DotCornerStyle>();
+        set => SetPartialStyle(value);
     }
 
     /// <summary>
@@ -57,8 +56,8 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// </summary>
     public virtual bool Invisible
     {
-        get => _styleAttributeOptions.HasOption(DotStyles.Invisible);
-        set => _styleAttributeOptions.ModifyOption(DotStyles.Invisible, value);
+        get => HasStyleOption(DotStyles.Invisible);
+        set => ModifyStyleOption(DotStyles.Invisible, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Color)]

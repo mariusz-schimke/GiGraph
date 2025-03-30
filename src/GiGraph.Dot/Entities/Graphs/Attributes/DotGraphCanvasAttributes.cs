@@ -17,13 +17,12 @@ public partial class DotGraphCanvasAttributes : DotEntityStyleAttributesWithMeta
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphCanvasAttributes, IDotGraphCanvasAttributes>().BuildLazy();
 
     public DotGraphCanvasAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new DotStyleAttributeOptions(attributes))
+        : base(attributes, AttributeKeyLookup)
     {
     }
 
-    protected DotGraphCanvasAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-        DotStyleAttributeOptions styleAttributeOptions)
-        : base(attributes, attributeKeyLookup, styleAttributeOptions)
+    protected DotGraphCanvasAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+        : base(attributes, attributeKeyLookup)
     {
     }
 
@@ -37,8 +36,8 @@ public partial class DotGraphCanvasAttributes : DotEntityStyleAttributesWithMeta
     /// </summary>
     public virtual DotClusterFillStyle FillStyle
     {
-        get => _styleAttributeOptions.GetPart<DotClusterFillStyle>();
-        set => _styleAttributeOptions.SetPart(value);
+        get => GetPartialStyle<DotClusterFillStyle>();
+        set => SetPartialStyle(value);
     }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.BackgroundColor"/>

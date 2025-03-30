@@ -13,31 +13,31 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeStyleAttributes, IDotEdgeStyleAttributes>().BuildLazy();
 
     public DotEdgeStyleAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new DotStyleAttributeOptions(attributes))
+        : base(attributes, AttributeKeyLookup)
     {
     }
 
-    protected DotEdgeStyleAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup, DotStyleAttributeOptions styleAttributeOptions)
-        : base(attributes, attributeKeyLookup, styleAttributeOptions)
+    protected DotEdgeStyleAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+        : base(attributes, attributeKeyLookup)
     {
     }
-    
+
     /// <summary>
-    ///     Gets or sets a line style for the edge (default: <see cref="DotLineStyle.Normal" />).
+    ///     Gets or sets a line style for the edge (default: <see cref="DotLineStyle.Normal"/>).
     /// </summary>
     public virtual DotLineStyle LineStyle
     {
-        get => _styleAttributeOptions.GetPart<DotLineStyle>();
-        set => _styleAttributeOptions.SetPart(value);
+        get => GetPartialStyle<DotLineStyle>();
+        set => SetPartialStyle(value);
     }
 
     /// <summary>
-    ///     Gets or sets a line weight for the edge (default: <see cref="DotLineWeight.Normal" />).
+    ///     Gets or sets a line weight for the edge (default: <see cref="DotLineWeight.Normal"/>).
     /// </summary>
     public virtual DotLineWeight LineWeight
     {
-        get => _styleAttributeOptions.GetPart<DotLineWeight>();
-        set => _styleAttributeOptions.SetPart(value);
+        get => GetPartialStyle<DotLineWeight>();
+        set => SetPartialStyle(value);
     }
 
     /// <summary>
@@ -45,9 +45,21 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual bool Invisible
     {
-        get => _styleAttributeOptions.HasOption(DotStyles.Invisible);
-        set => _styleAttributeOptions.ModifyOption(DotStyles.Invisible, value);
+        get => HasStyleOption(DotStyles.Invisible);
+        set => ModifyStyleOption(DotStyles.Invisible, value);
     }
+
+    [DotAttributeKey(DotAttributeKeys.Color)]
+    public virtual partial DotColorDefinition? Color { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.ColorScheme)]
+    public virtual partial string? ColorScheme { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.FillColor)]
+    public virtual partial DotColorDefinition? FillColor { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.PenWidth)]
+    public virtual partial double? Width { get; set; }
 
     /// <summary>
     ///     Applies the specified style options to the edge.
@@ -78,16 +90,4 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
         LineWeight = lineWeight;
         Invisible = invisible;
     }
-
-    [DotAttributeKey(DotAttributeKeys.Color)]
-    public virtual partial DotColorDefinition? Color { get; set; }
-
-    [DotAttributeKey(DotAttributeKeys.ColorScheme)]
-    public virtual partial string? ColorScheme { get; set; }
-
-    [DotAttributeKey(DotAttributeKeys.FillColor)]
-    public virtual partial DotColorDefinition? FillColor { get; set; }
-
-    [DotAttributeKey(DotAttributeKeys.PenWidth)]
-    public virtual partial double? Width { get; set; }
 }
