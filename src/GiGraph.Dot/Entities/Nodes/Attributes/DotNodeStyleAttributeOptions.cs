@@ -71,7 +71,7 @@ public class DotNodeStyleAttributeOptions(DotAttributeCollection attributes) : D
     /// </param>
     public virtual void Set(DotNodeStyleProperties options)
     {
-        SetProperties(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Diagonals, options.Invisible);
+        Set(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Diagonals, options.Invisible);
     }
 
     /// <summary>
@@ -96,14 +96,8 @@ public class DotNodeStyleAttributeOptions(DotAttributeCollection attributes) : D
     /// <param name="invisible">
     ///     Determines whether the node should be invisible.
     /// </param>
-    public virtual void Set(DotNodeFillStyle fillStyle = default, DotBorderStyle borderStyle = default,
-        DotBorderWeight borderWeight = default, DotCornerStyle cornerStyle = default, bool diagonals = false, bool invisible = false)
-    {
-        SetProperties(fillStyle, borderStyle, borderWeight, cornerStyle, diagonals, invisible);
-    }
-
-    protected virtual void SetProperties(DotNodeFillStyle fillStyle, DotBorderStyle borderStyle, DotBorderWeight borderWeight,
-        DotCornerStyle cornerStyle, bool diagonals, bool invisible)
+    public virtual void Set(DotNodeFillStyle fillStyle = default, DotBorderStyle borderStyle = default, DotBorderWeight borderWeight = default,
+        DotCornerStyle cornerStyle = default, bool diagonals = false, bool invisible = false)
     {
         FillStyle = fillStyle;
         BorderStyle = borderStyle;

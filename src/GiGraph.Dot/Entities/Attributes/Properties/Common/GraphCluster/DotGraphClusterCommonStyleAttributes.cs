@@ -85,7 +85,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// </param>
     public virtual void Set(DotClusterStyleProperties options)
     {
-        SetProperties(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Invisible);
+        Set(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Invisible);
     }
 
     /// <summary>
@@ -108,11 +108,6 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// </param>
     public virtual void Set(DotClusterFillStyle fillStyle = default, DotBorderStyle borderStyle = default,
         DotBorderWeight borderWeight = default, DotCornerStyle cornerStyle = default, bool invisible = false)
-    {
-        SetProperties(fillStyle, borderStyle, borderWeight, cornerStyle, invisible);
-    }
-
-    protected virtual void SetProperties(DotClusterFillStyle fillStyle, DotBorderStyle borderStyle, DotBorderWeight borderWeight, DotCornerStyle cornerStyle, bool invisible)
     {
         FillStyle = fillStyle;
         BorderStyle = borderStyle;
