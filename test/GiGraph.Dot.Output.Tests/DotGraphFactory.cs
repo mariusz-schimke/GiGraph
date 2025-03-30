@@ -20,7 +20,10 @@ public class DotGraphFactory
             Clusters =
             {
                 EnableEdgeClipping = true,
-                FillColor = Color.Brown
+                Style =
+                {
+                    FillColor = Color.Brown
+                }
             }
         };
 

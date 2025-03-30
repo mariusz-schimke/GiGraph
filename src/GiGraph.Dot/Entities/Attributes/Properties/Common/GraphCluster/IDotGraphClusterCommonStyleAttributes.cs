@@ -5,8 +5,10 @@ using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 
-public interface IDotGraphClusterCommonAttributes
+public interface IDotGraphClusterCommonStyleAttributes
 {
+    // TODO: czy tu powinna byc właściwość Style, czy nie? (nie było jej, ale trzeba sprawdzić, czy teraz nie powinna być)
+    
     /// <summary>
     ///     <para>
     ///         Gets or sets the color to use for the cluster (default: <see cref="System.Drawing.Color.Black" />).

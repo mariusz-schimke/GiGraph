@@ -30,28 +30,28 @@ public partial class DotClusterSection : IDotClusterRootAttributes
     /// <inheritdoc cref="IDotClusterRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
 
-    /// <inheritdoc cref="IDotGraphClusterCommonAttributes.Color"/>
+    /// <inheritdoc cref="IDotGraphClusterCommonStyleAttributes.Color"/>
     public virtual DotColorDefinition? Color
     {
         get => Attributes.Implementation.Color;
         set => Attributes.Implementation.Color = value;
     }
 
-    /// <inheritdoc cref="IDotGraphClusterCommonAttributes.FillColor"/>
+    /// <inheritdoc cref="IDotGraphClusterCommonStyleAttributes.FillColor"/>
     public virtual DotColorDefinition? FillColor
     {
         get => Attributes.Implementation.FillColor;
         set => Attributes.Implementation.FillColor = value;
     }
 
-    /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderWidth"/>
+    /// <inheritdoc cref="IDotGraphClusterCommonStyleAttributes.BorderWidth"/>
     public virtual double? BorderWidth
     {
         get => Attributes.Implementation.BorderWidth;
         set => Attributes.Implementation.BorderWidth = value;
     }
 
-    /// <inheritdoc cref="IDotGraphClusterCommonAttributes.BorderColor"/>
+    /// <inheritdoc cref="IDotGraphClusterCommonStyleAttributes.BorderColor"/>
     public virtual DotColor? BorderColor
     {
         get => Attributes.Implementation.BorderColor;

@@ -9,6 +9,6 @@ namespace GiGraph.Dot.Entities.Clusters.Collections;
 public partial class DotGraphClusterCollection : IDotStripeFillable
 {
     void IDotFillable.SetFillStyle(DotFillStyle style) => Style.FillStyle = (DotClusterFillStyle) style;
-    void IDotFillable.SetFillColor(DotColorDefinition color) => FillColor = color;
+    void IDotFillable.SetFillColor(DotColorDefinition color) => Style.FillColor = color;
     void IDotFillable.SetGradientFillAngle(int? angle) => ((IDotGraphRootAttributes) _graphAttributes).Canvas.GradientFillAngle = angle;
 }
