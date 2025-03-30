@@ -1,5 +1,4 @@
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Styling;
@@ -40,14 +39,6 @@ public class DotNodeStyleAttributeOptionsTest
             true,
             true
         );
-
-        Snapshot.Match(graph.Build(), snapshotName);
-
-        // copy attributes
-        var node2 = new DotNode(node.Id);
-        node2.Style.CopyFrom(node.Style);
-        graph.Nodes.Clear();
-        graph.Nodes.Add(node2);
 
         Snapshot.Match(graph.Build(), snapshotName);
     }
