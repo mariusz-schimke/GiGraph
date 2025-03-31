@@ -20,38 +20,41 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().BuildLazy();
 
     public DotNodeRootAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new DotHyperlinkAttributes(attributes), new DotFontAttributes(attributes), new DotNodeStyleAttributes(attributes), new DotNodeImageAttributes(attributes), new DotNodeGeometryAttributes(attributes), new DotNodeSizeAttributes(attributes), new DotSvgStyleSheetAttributes(attributes))
+        : this(attributes, AttributeKeyLookup, new DotFontAttributes(attributes), new DotNodeGeometryAttributes(attributes), new DotHyperlinkAttributes(attributes),
+            new DotNodeImageAttributes(attributes), new DotNodeSizeAttributes(attributes), new DotNodeStyleAttributes(attributes), new DotSvgStyleSheetAttributes(attributes)
+        )
     {
     }
 
     protected DotNodeRootAttributes(
         DotAttributeCollection attributes,
         Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-        DotHyperlinkAttributes hyperlinkAttributes,
         DotFontAttributes fontAttributes,
-        DotNodeStyleAttributes styleAttributes,
-        DotNodeImageAttributes imageAttributes,
         DotNodeGeometryAttributes geometryAttributes,
+        DotHyperlinkAttributes hyperlinkAttributes,
+        DotNodeImageAttributes imageAttributes,
         DotNodeSizeAttributes sizeAttributes,
+        DotNodeStyleAttributes styleAttributes,
         DotSvgStyleSheetAttributes svgStyleSheetAttributes
     )
         : base(attributes, attributeKeyLookup)
     {
         Font = fontAttributes;
-        Style = styleAttributes;
-        Image = imageAttributes;
         Geometry = geometryAttributes;
-        Size = sizeAttributes;
-        SvgStyleSheet = svgStyleSheetAttributes;
         Hyperlink = hyperlinkAttributes;
+        Image = imageAttributes;
+        Size = sizeAttributes;
+        Style = styleAttributes;
+        SvgStyleSheet = svgStyleSheetAttributes;
     }
 
     public DotFontAttributes Font { get; }
-    public DotNodeStyleAttributes Style { get; }
-    public DotNodeSizeAttributes Size { get; }
     public DotNodeGeometryAttributes Geometry { get; }
-    public DotNodeImageAttributes Image { get; }
     public DotHyperlinkAttributes Hyperlink { get; }
+    public DotNodeImageAttributes Image { get; }
+    public DotNodeSizeAttributes Size { get; }
+    public DotNodeStyleAttributes Style { get; }
+    public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
     [DotAttributeKey(DotAttributeKeys.Style)]
     DotStyles? IDotNodeAttributes.Style
@@ -64,8 +67,6 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
 
     [DotAttributeKey(DotAttributeKeys.Label)]
     public virtual partial DotLabel? Label { get; set; }
-
-    public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
     public virtual partial DotEscapeString? Tooltip { get; set; }
