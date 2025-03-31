@@ -46,18 +46,18 @@ public interface IDotGraphLayoutAttributes
     /// <summary>
     ///     Determines whether to draw circo graphs around one circle (circo only; default: false).
     /// </summary>
-    bool? ForceCircularLayout { get; set; }
+    bool? EnableCircularLayout { get; set; }
 
     /// <summary>
     ///     Rotates the final layout counter-clockwise by the specified number of degrees (sfdp only; default: 0).
     /// </summary>
-    double? Rotation { get; set; }
+    double? RotationAngle { get; set; }
 
     /// <summary>
     ///     If true, edge concentrators are used (default: false). This merges multiedges into a single edge, and causes partially
     ///     parallel edges to share part of their paths. The latter feature is not yet available outside of dot.
     /// </summary>
-    bool? ConcentrateEdges { get; set; }
+    bool? EnableEdgeConcentration { get; set; }
 
     /// <summary>
     ///     <para>
@@ -73,13 +73,13 @@ public interface IDotGraphLayoutAttributes
     /// <summary>
     ///     Gets or sets the rank constraints on the nodes in the graph (dot only). See also <see cref="EnableGlobalRanking"/>.
     /// </summary>
-    DotRank? NodeRank { get; set; }
+    DotRankAlignment? NodeRankAlignment { get; set; }
 
     /// <summary>
-    ///     Determines which rank to move floating (loose) nodes to. The valid options are <see cref="DotRank.Min"/> or
-    ///     <see cref="DotRank.Max"/>. Otherwise, floating nodes are placed anywhere.
+    ///     Determines which rank to move floating (loose) nodes to. The valid options are <see cref="DotRankAlignment.Min"/> or
+    ///     <see cref="DotRankAlignment.Max"/>. Otherwise, floating nodes are placed anywhere.
     /// </summary>
-    DotRank? FloatingNodeRank { get; set; }
+    DotRankAlignment? FloatingNodeRankAlignment { get; set; }
 
     /// <summary>
     ///     <para>
@@ -148,12 +148,12 @@ public interface IDotGraphLayoutAttributes
     ///         The original ranking algorithm in dot is recursive on clusters. This can produce fewer ranks and a more compact layout,
     ///         but sometimes at the cost of a head node being placed on a higher rank than the tail node. It also assumes that a node is
     ///         not constrained in separate, incompatible subgraphs. For example, a node cannot be in a cluster and also be constrained
-    ///         by a rank of <see cref="DotRank.Same"/> with a node not in the cluster (see <see cref="IDotSubgraphAttributes.NodeRank"/>
+    ///         by a rank of <see cref="DotRankAlignment.Same"/> with a node not in the cluster (see <see cref="IDotSubgraphAttributes.NodeRankAlignment"/>
     ///         on subgraph attributes).
     ///     </para>
     ///     <para>
     ///         This allows nodes to be subject to multiple constraints. Rank constraints will usually take precedence over edge
-    ///         constraints. See also <see cref="NodeRank"/>.
+    ///         constraints. See also <see cref="NodeRankAlignment"/>.
     ///     </para>
     /// </summary>
     bool? EnableGlobalRanking { get; set; }

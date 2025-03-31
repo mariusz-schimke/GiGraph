@@ -74,7 +74,7 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
     public virtual partial bool? DisableLabelJustification { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Rank)]
-    public virtual partial DotRank? NodeRank { get; set; }
+    public virtual partial DotRankAlignment? NodeRankAlignment { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Peripheries)]
     public virtual partial int? Peripheries { get; set; }
