@@ -10,17 +10,17 @@ public interface IDotGraphCanvasAttributes
     /// <summary>
     ///     If true, the drawing is centered in the output canvas (default: false).
     /// </summary>
-    bool? IsCentered { get; set; }
+    bool? CenterDrawing { get; set; }
 
     /// <summary>
     ///     Sets graph orientation to landscape or portrait (default). Used only if <see cref="RotationAngle"/> is not defined. See
-    ///     also <see cref="IsLandscape"/>.
+    ///     also <see cref="LandscapeOrientation"/>.
     /// </summary>
     DotOrientation? Orientation { get; set; }
 
     /// <summary>
     ///     If 90, sets drawing orientation to landscape (default: 0). See also <see cref="Orientation"/> and
-    ///     <see cref="IsLandscape"/>.
+    ///     <see cref="LandscapeOrientation"/>.
     /// </summary>
     int? RotationAngle { get; set; }
 
@@ -28,7 +28,7 @@ public interface IDotGraphCanvasAttributes
     ///     If true, the graph is rendered in landscape mode (default: false). Synonymous with <see cref="RotationAngle"/> = 90 or
     ///     <see cref="Orientation"/> = <see cref="DotOrientation.Landscape"/>.
     /// </summary>
-    bool? IsLandscape { get; set; }
+    bool? LandscapeOrientation { get; set; }
 
     /// <summary>
     ///     Specifies the expected number of pixels per inch on a display device (svg, bitmap output only; default: 96.0, 0.0). For

@@ -23,9 +23,9 @@ public partial class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<
     {
     }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.IsCentered"/>
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.CenterDrawing"/>
     [DotAttributeKey(DotAttributeKeys.Center)]
-    public virtual partial bool? IsCentered { get; set; }
+    public virtual partial bool? CenterDrawing { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Orientation"/>
     [DotAttributeKey(DotAttributeKeys.Orientation)]
@@ -35,9 +35,9 @@ public partial class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<
     [DotAttributeKey(DotAttributeKeys.Rotate)]
     public virtual partial int? RotationAngle { get; set; }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.IsLandscape"/>
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.LandscapeOrientation"/>
     [DotAttributeKey(DotAttributeKeys.Landscape)]
-    public virtual partial bool? IsLandscape { get; set; }
+    public virtual partial bool? LandscapeOrientation { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.Dpi"/>
     [DotAttributeKey(DotAttributeKeys.Dpi)]

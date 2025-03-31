@@ -116,6 +116,8 @@ public interface IDotGraphAttributes
     /// </summary>
     string? ImageDirectories { get; set; }
 
+    // todo: move to layout!
+    
     /// <summary>
     ///     <para>
     ///         The identifier of a node that should be used as the center of the layout and the root of the generated spanning tree
