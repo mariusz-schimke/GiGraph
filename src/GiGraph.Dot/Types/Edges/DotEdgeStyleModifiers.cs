@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Styling;
 namespace GiGraph.Dot.Types.Edges;
 
 /// <summary>
-///     Edge style options.
+///     Edge style modifiers.
 /// </summary>
 /// <param name="LineStyle">
 ///     A line style.
@@ -14,4 +14,4 @@ namespace GiGraph.Dot.Types.Edges;
 /// <param name="Invisible">
 ///     Determines whether the element is invisible.
 /// </param>
-public record DotEdgeStyleProperties(DotLineStyle LineStyle = default, DotLineWeight LineWeight = default, bool Invisible = false);
+public record DotEdgeStyleModifiers(DotLineStyle LineStyle = default, DotLineWeight LineWeight = default, bool Invisible = false);

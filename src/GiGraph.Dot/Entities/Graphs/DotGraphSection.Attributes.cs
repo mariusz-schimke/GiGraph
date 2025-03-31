@@ -14,11 +14,11 @@ public partial class DotGraphSection : IDotGraphRootAttributes
     // hidden by explicit implementation because they are exposed through the Clusters collection property
     DotGraphClustersAttributes IDotGraphRootAttributes.Clusters => Attributes.Implementation.Clusters;
 
+    /// <inheritdoc cref="IDotGraphRootAttributes.Style"/>
+    public DotGraphStyleAttributes Style => Attributes.Implementation.Style;
+
     /// <inheritdoc cref="IDotGraphRootAttributes.Font"/>
     public DotGraphFontAttributes Font => Attributes.Implementation.Font;
-
-    /// <inheritdoc cref="IDotGraphRootAttributes.Style"/>
-    public DotGraphStyleAttributeOptions Style => Attributes.Implementation.Style;
 
     /// <inheritdoc cref="IDotGraphRootAttributes.SvgStyleSheet"/>
     public DotGraphSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
@@ -60,13 +60,6 @@ public partial class DotGraphSection : IDotGraphRootAttributes
     {
         get => Attributes.Implementation.DisableLabelJustification;
         set => Attributes.Implementation.DisableLabelJustification = value;
-    }
-
-    /// <inheritdoc cref="IDotGraphAttributes.ColorScheme"/>
-    public virtual string? ColorScheme
-    {
-        get => Attributes.Implementation.ColorScheme;
-        set => Attributes.Implementation.ColorScheme = value;
     }
 
     /// <inheritdoc cref="IDotGraphAttributes.Charset"/>

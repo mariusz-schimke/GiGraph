@@ -1,5 +1,4 @@
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Styling;
@@ -18,7 +17,7 @@ public class DotNodeStyleAttributeOptionsTest
         var node = graph.Nodes.Add("n1");
 
         // set by class
-        node.Style.Set(new DotNodeStyleProperties(
+        node.Style.SetStyleModifiers(new DotNodeStyleModifiers(
             DotNodeFillStyle.Radial,
             DotBorderStyle.Dashed,
             DotBorderWeight.Bold,
@@ -29,10 +28,12 @@ public class DotNodeStyleAttributeOptionsTest
 
         Snapshot.Match(graph.Build(), snapshotName);
 
-        node.Style.SetDefault();
+        Assert.False(node.Style.HasDefaultStyleModifiers());
+        node.Style.RestoreDefaultStyleModifiers();
+        Assert.True(node.Style.HasDefaultStyleModifiers());
 
         // set the same another way
-        node.Style.Set(
+        node.Style.SetStyleModifiers(
             DotNodeFillStyle.Radial,
             DotBorderStyle.Dashed,
             DotBorderWeight.Bold,
@@ -40,14 +41,6 @@ public class DotNodeStyleAttributeOptionsTest
             true,
             true
         );
-
-        Snapshot.Match(graph.Build(), snapshotName);
-
-        // copy attributes
-        var node2 = new DotNode(node.Id);
-        node2.Style.CopyFrom(node.Style);
-        graph.Nodes.Clear();
-        graph.Nodes.Add(node2);
 
         Snapshot.Match(graph.Build(), snapshotName);
     }

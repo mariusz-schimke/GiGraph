@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics.Contracts;
 using GiGraph.Dot.Output.Text.Escaping;
 
 namespace GiGraph.Dot.Types.EscapeString;
@@ -46,6 +47,7 @@ public class DotConcatenatedEscapeString : DotEscapeString, IEnumerable<DotEscap
     /// <summary>
     ///     Returns an enumerator that iterates through the collection.
     /// </summary>
+    [Pure]
     public IEnumerator<DotEscapeString?> GetEnumerator() => ((IEnumerable<DotEscapeString?>) _items).GetEnumerator();
 
     /// <summary>

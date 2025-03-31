@@ -23,7 +23,7 @@ public class DotClusterAttributeTest
             // this is to make sure the cluster attribute is used only in the root section, not in subsections
             c.Subsections.Add(s =>
             {
-                s.Color = Color.Red;
+                s.Style.Color = Color.Red;
                 s.Nodes.Add("n2");
             });
         });
@@ -52,7 +52,7 @@ public class DotClusterAttributeTest
             c.Nodes.Add("n1");
             c.Subsections.Add(s =>
             {
-                s.Color = Color.Red;
+                s.Style.Color = Color.Red;
                 s.Nodes.Add("n2");
             });
         });

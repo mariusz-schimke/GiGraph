@@ -1,5 +1,5 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
@@ -7,20 +7,20 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes;
 
-public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotEdgeAttributes, DotEdgeRootAttributes>, IDotEdgeRootAttributes
+public partial class DotEdgeRootAttributes : DotEntityAttributesWithMetadata<IDotEdgeAttributes, DotEdgeRootAttributes>, IDotEdgeRootAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().BuildLazy();
 
     public DotEdgeRootAttributes(DotAttributeCollection attributes)
         : this(attributes, AttributeKeyLookup, new DotEdgeHeadAttributes(attributes), new DotEdgeTailAttributes(attributes), new DotFontAttributes(attributes), new DotHyperlinkAttributes(attributes),
-            new DotEdgeEndpointLabelsAttributes(attributes), new DotEdgeLabelHyperlinkAttributes(attributes), new DotEdgeHyperlinkAttributes(attributes), new DotEdgeStyleAttributeOptions(attributes), new DotSvgStyleSheetAttributes(attributes)
+            new DotEdgeEndpointLabelsAttributes(attributes), new DotEdgeLabelHyperlinkAttributes(attributes), new DotEdgeHyperlinkAttributes(attributes), new DotEdgeStyleAttributes(attributes),
+            new DotSvgStyleSheetAttributes(attributes)
         )
     {
     }
@@ -35,16 +35,17 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
         DotEdgeEndpointLabelsAttributes endpointLabelsAttributes,
         DotEdgeLabelHyperlinkAttributes labelHyperlinkAttributes,
         DotEdgeHyperlinkAttributes edgeHyperlinkAttributes,
-        DotEdgeStyleAttributeOptions edgeStyleAttributeOptions,
+        DotEdgeStyleAttributes edgeStyleAttributes,
         DotSvgStyleSheetAttributes svgStyleSheetAttributes
     )
-        : base(attributes, attributeKeyLookup, hyperlinkAttributes)
+        : base(attributes, attributeKeyLookup)
     {
         Head = headAttributes;
         Tail = tailAttributes;
         Font = fontAttributes;
-        Style = edgeStyleAttributeOptions;
+        Style = edgeStyleAttributes;
         SvgStyleSheet = svgStyleSheetAttributes;
+        Hyperlink = hyperlinkAttributes;
         EndpointLabels = endpointLabelsAttributes;
         EdgeHyperlink = edgeHyperlinkAttributes;
         LabelHyperlink = labelHyperlinkAttributes;
@@ -55,9 +56,10 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
 
     public DotFontAttributes Font { get; }
     public DotEdgeEndpointLabelsAttributes EndpointLabels { get; }
+    public DotHyperlinkAttributes Hyperlink { get; }
     public DotEdgeHyperlinkAttributes EdgeHyperlink { get; }
     public DotEdgeLabelHyperlinkAttributes LabelHyperlink { get; }
-    public DotEdgeStyleAttributeOptions Style { get; }
+    public DotEdgeStyleAttributes Style { get; }
     public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
     [DotAttributeKey(DotAttributeKeys.Style)]
@@ -69,23 +71,17 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
 
+    [DotAttributeKey(DotAttributeKeys.Label)]
+    public virtual partial DotLabel? Label { get; set; }
+
     [DotAttributeKey(DotAttributeKeys.Comment)]
     public virtual partial string? Comment { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
     public virtual partial DotEscapeString? Tooltip { get; set; }
 
-    [DotAttributeKey(DotAttributeKeys.Color)]
-    public virtual partial DotColorDefinition? Color { get; set; }
-
-    [DotAttributeKey(DotAttributeKeys.FillColor)]
-    public virtual partial DotColorDefinition? FillColor { get; set; }
-
     [DotAttributeKey(DotAttributeKeys.XLabel)]
     public virtual partial DotLabel? ExternalLabel { get; set; }
-
-    [DotAttributeKey(DotAttributeKeys.PenWidth)]
-    public virtual partial double? Width { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Weight)]
     public virtual partial double? Weight { get; set; }
@@ -93,7 +89,7 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
     [DotAttributeKey(DotAttributeKeys.Len)]
     public virtual partial double? Length { get; set; }
 
-    [DotAttributeKeyAttribute(DotAttributeKeys.MinLen)]
+    [DotAttributeKey(DotAttributeKeys.MinLen)]
     public virtual partial int? MinLength { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.ArrowSize)]
@@ -113,4 +109,7 @@ public partial class DotEdgeRootAttributes : DotEntityRootCommonAttributes<IDotE
 
     [DotAttributeKey(DotAttributeKeys.Constraint)]
     public virtual partial bool? Constrain { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.Id)]
+    public virtual partial DotEscapeString? ObjectId { get; set; }
 }

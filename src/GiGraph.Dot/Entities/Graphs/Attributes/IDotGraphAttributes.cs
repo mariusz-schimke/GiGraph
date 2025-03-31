@@ -2,7 +2,6 @@
 using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Nodes.Attributes;
-using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html;
@@ -84,15 +83,6 @@ public interface IDotGraphAttributes
     ///     </para>
     /// </summary>
     bool? DisableLabelJustification { get; set; }
-
-    /// <summary>
-    ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
-    ///     is set, the standard <see cref="DotColorSchemes.X11"/> naming is used. For example, if
-    ///     <see cref="DotColorSchemes.DotBrewerColorSchemes.BuGn9"/> Brewer color scheme is used, then a color named "7", e.g.
-    ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes"/> for
-    ///     supported scheme names.
-    /// </summary>
-    string? ColorScheme { get; set; }
 
     /// <summary>
     ///     Specifies the character encoding used when interpreting string input as a text label. The default value is "UTF-8". The other

@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics.Contracts;
+using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.Layout;
@@ -8,6 +9,7 @@ namespace GiGraph.Dot.Examples.Complex;
 
 public static class WithClusters
 {
+    [Pure]
     public static DotGraph Generate()
     {
         var graph = new DotGraph();
@@ -60,7 +62,7 @@ public static class WithClusters
 
         graph.Clusters.Add(id: "Flow 1", cluster =>
         {
-            cluster.BackgroundColor = Color.Turquoise;
+            cluster.Style.BackgroundColor = Color.Turquoise;
             cluster.Label = "Flow 1";
 
             cluster.Edges.AddSequence("Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit");
@@ -69,7 +71,7 @@ public static class WithClusters
         graph.Clusters.Add(id: "Flow 2", cluster =>
         {
             cluster.Label = "Flow 2";
-            cluster.BackgroundColor = Color.Orange;
+            cluster.Style.BackgroundColor = Color.Orange;
 
             cluster.Edges.AddSequence("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");
         });

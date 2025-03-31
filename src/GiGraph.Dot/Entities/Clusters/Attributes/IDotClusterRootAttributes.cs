@@ -13,9 +13,9 @@ public interface IDotClusterRootAttributes : IDotClusterAttributes
     DotFontAttributes Font { get; }
 
     /// <summary>
-    ///     Style options.
+    ///     Style attributes.
     /// </summary>
-    new DotClusterStyleAttributeOptions Style { get; }
+    new DotClusterStyleAttributes Style { get; }
 
     /// <summary>
     ///     Horizontal and vertical label alignment options.

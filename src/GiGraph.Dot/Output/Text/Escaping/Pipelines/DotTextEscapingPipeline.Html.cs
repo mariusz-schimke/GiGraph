@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Output.Text.Escaping.Html;
+﻿using System.Diagnostics.Contracts;
+using GiGraph.Dot.Output.Text.Escaping.Html;
 
 namespace GiGraph.Dot.Output.Text.Escaping.Pipelines;
 
@@ -7,6 +8,7 @@ public partial class DotTextEscapingPipeline
     /// <summary>
     ///     Creates a new pipeline that escapes text for use as the content of an HTML element.
     /// </summary>
+    [Pure]
     public static DotTextEscapingPipeline ForHtmlElementTextContent() => new(new DotHtmlEncodeEscaper());
 
     /// <summary>
@@ -22,15 +24,18 @@ public partial class DotTextEscapingPipeline
     ///     </see>
     ///     .
     /// </remarks>
+    [Pure]
     public static DotTextEscapingPipeline ForHtmlCommentText() => ForHtmlElementTextContent();
 
     /// <summary>
     ///     Creates a new pipeline that escapes HTML attribute values in general.
     /// </summary>
+    [Pure]
     public static DotTextEscapingPipeline ForHtmlAttributeValue() => new(new DotHtmlEncodeEscaper());
 
     /// <summary>
     ///     Creates a new pipeline that escapes HTML attribute value of the escape string type.
     /// </summary>
+    [Pure]
     public static DotTextEscapingPipeline ForHtmlAttributeEscapeStringValue() => new(CommonForEscapeString(), new DotHtmlEncodeEscaper());
 }

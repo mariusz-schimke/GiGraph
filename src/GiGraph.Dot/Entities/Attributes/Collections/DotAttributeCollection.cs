@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Factories;
+﻿using System.Diagnostics.Contracts;
+using GiGraph.Dot.Entities.Attributes.Factories;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Qualities;
 
@@ -49,6 +50,7 @@ public partial class DotAttributeCollection : IDotEntity, IDotAnnotatable
     /// <param name="key">
     ///     The key of the attribute to locate.
     /// </param>
+    [Pure]
     public bool ContainsKey(string key) => _attributes.ContainsKey(key);
 
     /// <summary>

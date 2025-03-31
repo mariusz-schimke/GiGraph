@@ -17,7 +17,7 @@ public static class DotGraphSectionExtension
     /// </param>
     public static void SetBackground(this DotGraphSection @this, DotColor color)
     {
-        @this.Canvas.BackgroundColor = color;
+        @this.Style.BackgroundColor = color;
     }
 
     /// <summary>
@@ -122,7 +122,7 @@ public static class DotGraphSectionExtension
                 break;
         }
 
-        @this.Canvas.BackgroundColor = color;
-        @this.Canvas.GradientFillAngle = angle;
+        @this.Style.BackgroundColor = color;
+        @this.Style.GradientFillAngle = angle;
     }
 }

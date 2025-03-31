@@ -72,7 +72,6 @@ For a basic scenario, create a new **DotGraph** instance and use its *Edges* col
 Here's a simple *Hello World!* graph example with two nodes joined by an edge.
 
 ```c#
-using System;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 
@@ -151,7 +150,7 @@ There are over 170 different attributes listed in the [documentation](http://www
 ```c#
 graph.Label = "My graph";
 graph.Layout.Direction = DotLayoutDirection.LeftToRight;
-graph.Canvas.BackgroundColor = Color.LightGray;
+graph.Style.BackgroundColor = Color.LightGray;
 ```
 
 
@@ -161,7 +160,7 @@ graph.Nodes.Add("Foo", node =>
 {
     node.Label = "My Foo node";
     node.Style.FillStyle = DotNodeFillStyle.Normal;
-    node.FillColor = Color.Blue;
+    node.Style.FillColor = Color.Blue;
 });
 ```
 
@@ -171,7 +170,7 @@ graph.Nodes.Add("Foo", node =>
 graph.Edges.Add("Foo", "Bar", edge =>
 {
     edge.Label = "My Foo-Bar edge";
-    edge.Color = Color.Red;
+    edge.Style.Color = Color.Red;
 });
 ```
 
@@ -268,12 +267,12 @@ Node and edge attributes may be specified on the graph, on the subgraph, or on t
 
 ```c#
 // node attributes on the graph level (they apply to all nodes of the graph)
-graph.Nodes.Color = Color.Orange;
+graph.Nodes.Style.Color = Color.Orange;
 ```
 
 ```c#
 // edge attributes on the graph level (they apply to all edges of the graph)
-graph.Edges.Color = Color.Red;
+graph.Edges.Style.Color = Color.Red;
 ```
 
 ```dot
@@ -292,7 +291,7 @@ Consider the following example:
 
 ```c#
 // global node color set on the graph level
-graph.Nodes.Color = Color.Orange;
+graph.Nodes.Style.Color = Color.Orange;
 
 // this node will have the globally set color
 graph.Nodes.Add("orange");
@@ -301,7 +300,7 @@ graph.Nodes.Add("orange");
 graph.Nodes.Add("restored", node =>
 {
     // assign null to the attribute by using a lambda expression (recommended)
-    node.Attributes.Nullify(a => a.Color);
+    node.Style.Attributes.Nullify(a => a.Color);
 
     // or by specifying its key explicitly
     node.Attributes.Collection.Nullify("color");
@@ -802,7 +801,7 @@ graph.Nodes.AddGroup
 (
     nodeGroup =>
     {
-        nodeGroup.Color = Color.Orange;
+        nodeGroup.Style.Color = Color.Orange;
         nodeGroup.Shape = DotNodeShape.Hexagon;
     },
     "Foo", "Bar", "Baz"
@@ -813,7 +812,7 @@ You can also do it this way:
 
 ```c#
 var nodeGroup = new DotNodeGroup("Foo", "Bar", "Baz");
-nodeGroup.Color = Color.Orange;
+nodeGroup.Style.Color = Color.Orange;
 nodeGroup.Shape = DotNodeShape.Hexagon;
 
 graph.Nodes.Add(nodeGroup);
@@ -838,7 +837,7 @@ graph.Nodes.AddRange
 (
     node =>
     {
-        node.Color = Color.Orange;
+        node.Style.Color = Color.Orange;
         node.Shape = DotNodeShape.Hexagon;
     },
     "Foo", "Bar", "Baz"
@@ -876,7 +875,7 @@ The code below adds an edge, and specifies which sides of its endpoints it shoul
 graph.Edges.Add("Foo", "Bar", edge =>
 {
     edge.Label = "Baz";
-    edge.Color = Color.Blue;
+    edge.Style.Color = Color.Blue;
 
     // the tail and the head of the edge will be attached to the left side of the nodes
     edge.Tail.Port = DotCompassPoint.West;
@@ -912,7 +911,7 @@ edge = new DotEdge(
 );
 
 edge.Label = "Baz";
-edge.Color = Color.Blue;
+edge.Style.Color = Color.Blue;
 
 graph.Edges.Add(edge);
 ```
@@ -1130,7 +1129,7 @@ graph.Edges.AddManyToMany(
     edge =>
     {
         // attributes specified here affect all edges drawn based on this entry
-        edge.Color = Color.Red;
+        edge.Style.Color = Color.Red;
     });
 
 // the code above is equivalent to
@@ -1138,7 +1137,7 @@ var edge = new DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>(
     new DotSubgraphEndpoint("Foo", "Bar"),
     new DotSubgraphEndpoint("Baz", "Qux"));
 
-edge.Color = Color.Red;
+edge.Style.Color = Color.Red;
 
 graph.Edges.Add(edge);
 ```
@@ -1222,7 +1221,7 @@ graph.Edges.AddSequence
     edge =>
     {
         // attributes specified here affect all edges in this sequence
-        edge.Color = Color.Red;
+        edge.Style.Color = Color.Red;
     },
     "Foo",
     new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
@@ -1235,7 +1234,7 @@ var edgeSequence = new DotEdgeSequence(
     new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
     new DotEndpoint("Quux", DotCompassPoint.North));
 
-edgeSequence.Color = Color.Red;
+edgeSequence.Style.Color = Color.Red;
 
 graph.Edges.Add(edgeSequence);
 ```
@@ -1442,7 +1441,6 @@ The example below presents how individual graph elements may be customized. The 
 
 
 ```c#
-using System;
 using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
@@ -1518,7 +1516,7 @@ graph.Subgraphs.Add(sg =>
     // a rectangular node with a striped fill
     sg.Nodes.Add("STRIPED", node =>
     {
-        node.Color = Color.Transparent;
+        node.Style.Color = Color.Transparent;
 
         node.SetStripedFill(
             new DotWeightedColor(Color.Navy, 0.1),
@@ -1531,7 +1529,7 @@ graph.Subgraphs.Add(sg =>
     sg.Nodes.Add("WEDGED", node =>
     {
         node.Shape = DotNodeShape.Circle;
-        node.Color = Color.Transparent;
+        node.Style.Color = Color.Transparent;
 
         node.SetWedgedFill(
             Color.Orange,
@@ -1546,11 +1544,11 @@ graph.Subgraphs.Add(sg =>
 // a subgraph example – to override global attributes for a group of nodes and/or edges
 graph.Subgraphs.Add(sg =>
 {
-    sg.Nodes.Color = Color.RoyalBlue;
-    sg.Nodes.FillColor = Color.Orange;
+    sg.Nodes.Style.Color = Color.RoyalBlue;
+    sg.Nodes.Style.FillColor = Color.Orange;
     sg.Nodes.Shape = DotNodeShape.Circle;
 
-    sg.Edges.Color = Color.RoyalBlue;
+    sg.Edges.Style.Color = Color.RoyalBlue;
 
     sg.Edges.Add("A", "B").Label = "PLAIN COLOR";
 });
@@ -1612,7 +1610,6 @@ In order to group nodes visually by displaying them in a rectangle, embed them i
 Here's the code to generate it:
 
 ```c#
-using System;
 using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
@@ -1669,7 +1666,7 @@ graph.Edges.Add("Cluster 2 Exit", "Exit").Tail.ClusterId = "Flow 2";
 
 graph.Clusters.Add(id: "Flow 1", cluster =>
 {
-    cluster.BackgroundColor = Color.Turquoise;
+    cluster.Style.BackgroundColor = Color.Turquoise;
     cluster.Label = "Flow 1";
 
     cluster.Edges.AddSequence("Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit");
@@ -1678,7 +1675,7 @@ graph.Clusters.Add(id: "Flow 1", cluster =>
 graph.Clusters.Add(id: "Flow 2", cluster =>
 {
     cluster.Label = "Flow 2";
-    cluster.BackgroundColor = Color.Orange;
+    cluster.Style.BackgroundColor = Color.Orange;
 
     cluster.Edges.AddSequence("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");
 });
@@ -1748,7 +1745,6 @@ The nodes embedded in subgraphs with the *DotRank.Same* rank constraint are arra
 The example above is generated by the following code. 
 
 ```c#
-using System;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Options;
@@ -1995,7 +1991,7 @@ graph.Edges.Add("foo", "bar");
 graph.Subsections.Add(subsection =>
 {
     subsection.Annotation = "subsection 1 - override node color";
-    subsection.Nodes.Color = Color.Turquoise;
+    subsection.Nodes.Style.Color = Color.Turquoise;
     subsection.Edges.Add("baz", "qux");
 });
 
@@ -2075,7 +2071,7 @@ graph.Edges.Add("foo", "bar", edge =>
     edge.Tail.Endpoint.Annotation = "tail";
 
     edge.Attributes.Annotation = "edge attributes";
-    edge.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
+    edge.Style.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
 });
 
 // subsections

@@ -9,8 +9,8 @@
     "Edge": "Tail.Arrowhead: DotArrowheadDefinition"
   },
   "bgcolor": {
-    "Graph": "Canvas.BackgroundColor: DotColorDefinition",
-    "Cluster": "BackgroundColor: DotColorDefinition"
+    "Graph": "Style.BackgroundColor: DotColorDefinition",
+    "Cluster": "Style.BackgroundColor: DotColorDefinition"
   },
   "center": {
     "Graph": "Canvas.CenterDrawing: Boolean?"
@@ -32,16 +32,16 @@
     "Graph": "Clusters.VisualizationMode: DotClusterVisualizationMode?"
   },
   "color": {
-    "Graph": "Clusters.Color: DotColorDefinition",
-    "Cluster": "Color: DotColorDefinition",
-    "Node": "Color: DotColorDefinition",
-    "Edge": "Color: DotColorDefinition"
+    "Graph": "Clusters.Style.Color: DotColorDefinition",
+    "Cluster": "Style.Color: DotColorDefinition",
+    "Node": "Style.Color: DotColorDefinition",
+    "Edge": "Style.Color: DotColorDefinition"
   },
   "colorscheme": {
-    "Graph": "ColorScheme: String",
-    "Cluster": "ColorScheme: String",
-    "Node": "ColorScheme: String",
-    "Edge": "ColorScheme: String"
+    "Graph": "Style.ColorScheme: String",
+    "Cluster": "Style.ColorScheme: String",
+    "Node": "Style.ColorScheme: String",
+    "Edge": "Style.ColorScheme: String"
   },
   "comment": {
     "Graph": "Comment: String",
@@ -82,10 +82,10 @@
     "Edge": "EdgeHyperlink.Url: DotEscapeString"
   },
   "fillcolor": {
-    "Graph": "Clusters.FillColor: DotColorDefinition",
-    "Cluster": "FillColor: DotColorDefinition",
-    "Node": "FillColor: DotColorDefinition",
-    "Edge": "FillColor: DotColorDefinition"
+    "Graph": "Clusters.Style.FillColor: DotColorDefinition",
+    "Cluster": "Style.FillColor: DotColorDefinition",
+    "Node": "Style.FillColor: DotColorDefinition",
+    "Edge": "Style.FillColor: DotColorDefinition"
   },
   "fixedsize": {
     "Node": "Size.Mode: DotNodeSizing?"
@@ -118,9 +118,9 @@
     "Graph": "Layout.ForceExternalLabels: Boolean?"
   },
   "gradientangle": {
-    "Graph": "Canvas.GradientFillAngle: Int32?",
-    "Cluster": "GradientFillAngle: Int32?",
-    "Node": "GradientFillAngle: Int32?"
+    "Graph": "Style.GradientFillAngle: Int32?",
+    "Cluster": "Style.GradientFillAngle: Int32?",
+    "Node": "Style.GradientFillAngle: Int32?"
   },
   "group": {
     "Node": "GroupName: String"
@@ -280,14 +280,14 @@
     "Graph": "Canvas.Padding: DotPoint"
   },
   "pencolor": {
-    "Graph": "Clusters.BorderColor: DotColor",
-    "Cluster": "BorderColor: DotColor"
+    "Graph": "Clusters.Style.BorderColor: DotColor",
+    "Cluster": "Style.BorderColor: DotColor"
   },
   "penwidth": {
-    "Graph": "Clusters.BorderWidth: Double?",
-    "Cluster": "BorderWidth: Double?",
-    "Node": "BorderWidth: Double?",
-    "Edge": "Width: Double?"
+    "Graph": "Clusters.Style.BorderWidth: Double?",
+    "Cluster": "Style.BorderWidth: Double?",
+    "Node": "Style.BorderWidth: Double?",
+    "Edge": "Style.LineWidth: Double?"
   },
   "peripheries": {
     "Cluster": "Peripheries: Int32?",

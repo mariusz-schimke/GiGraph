@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Contracts;
 using System.Text;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
@@ -78,6 +79,7 @@ public class DotEndpointPort() : IDotEncodable
     /// <summary>
     ///     Creates a new endpoint port with no properties specified.
     /// </summary>
+    [Pure]
     public static DotEndpointPort Default() => new();
 
     [return: NotNullIfNotNull(nameof(portName))]

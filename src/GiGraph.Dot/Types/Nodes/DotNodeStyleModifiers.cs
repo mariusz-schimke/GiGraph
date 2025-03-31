@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Styling;
 namespace GiGraph.Dot.Types.Nodes;
 
 /// <summary>
-///     Node style attributes.
+///     Node style modifiers.
 /// </summary>
 /// <param name="FillStyle">
 ///     Fill style.
@@ -24,11 +24,37 @@ namespace GiGraph.Dot.Types.Nodes;
 /// <param name="Invisible">
 ///     Determines whether the element is invisible.
 /// </param>
-public record DotNodeStyleProperties(
+public record DotNodeStyleModifiers(
     DotNodeFillStyle FillStyle = default,
     DotBorderStyle BorderStyle = default,
     DotBorderWeight BorderWeight = default,
     DotCornerStyle CornerStyle = default,
     bool Diagonals = false,
     bool Invisible = false
-) : DotClusterNodeCommonStyleProperties<DotNodeFillStyle>(FillStyle, BorderStyle, BorderWeight, CornerStyle, Invisible);
+)
+{
+    /// <summary>
+    ///     The fill style.
+    /// </summary>
+    public DotNodeFillStyle FillStyle { get; init; } = FillStyle;
+
+    /// <summary>
+    ///     The border style.
+    /// </summary>
+    public DotBorderStyle BorderStyle { get; init; } = BorderStyle;
+
+    /// <summary>
+    ///     The border weight.
+    /// </summary>
+    public DotBorderWeight BorderWeight { get; init; } = BorderWeight;
+
+    /// <summary>
+    ///     The corner style.
+    /// </summary>
+    public DotCornerStyle CornerStyle { get; init; } = CornerStyle;
+
+    /// <summary>
+    ///     Determines whether the element is invisible.
+    /// </summary>
+    public bool Invisible { get; init; } = Invisible;
+}

@@ -1,5 +1,5 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
@@ -8,45 +8,53 @@ using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.EscapeString;
+using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
-public partial class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<IDotNodeAttributes, DotNodeRootAttributes>, IDotNodeRootAttributes
+public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDotNodeAttributes, DotNodeRootAttributes>, IDotNodeRootAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().BuildLazy();
 
     public DotNodeRootAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new DotHyperlinkAttributes(attributes), new DotFontAttributes(attributes), new DotNodeStyleAttributeOptions(attributes), new DotNodeImageAttributes(attributes), new DotNodeGeometryAttributes(attributes), new DotNodeSizeAttributes(attributes), new DotSvgStyleSheetAttributes(attributes))
+        : this(attributes, AttributeKeyLookup, new DotFontAttributes(attributes), new DotNodeGeometryAttributes(attributes), new DotHyperlinkAttributes(attributes),
+            new DotNodeImageAttributes(attributes), new DotNodeSizeAttributes(attributes), new DotNodeStyleAttributes(attributes), new DotSvgStyleSheetAttributes(attributes)
+        )
     {
     }
 
     protected DotNodeRootAttributes(
         DotAttributeCollection attributes,
         Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-        DotHyperlinkAttributes hyperlinkAttributes,
         DotFontAttributes fontAttributes,
-        DotNodeStyleAttributeOptions styleAttributeOptions,
-        DotNodeImageAttributes imageAttributes,
         DotNodeGeometryAttributes geometryAttributes,
+        DotHyperlinkAttributes hyperlinkAttributes,
+        DotNodeImageAttributes imageAttributes,
         DotNodeSizeAttributes sizeAttributes,
+        DotNodeStyleAttributes styleAttributes,
         DotSvgStyleSheetAttributes svgStyleSheetAttributes
     )
-        : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
+        : base(attributes, attributeKeyLookup)
     {
         Font = fontAttributes;
-        Style = styleAttributeOptions;
-        Image = imageAttributes;
         Geometry = geometryAttributes;
+        Hyperlink = hyperlinkAttributes;
+        Image = imageAttributes;
         Size = sizeAttributes;
+        Style = styleAttributes;
+        SvgStyleSheet = svgStyleSheetAttributes;
     }
 
     public DotFontAttributes Font { get; }
-    public DotNodeStyleAttributeOptions Style { get; }
-    public DotNodeSizeAttributes Size { get; }
     public DotNodeGeometryAttributes Geometry { get; }
+    public DotHyperlinkAttributes Hyperlink { get; }
     public DotNodeImageAttributes Image { get; }
+    public DotNodeSizeAttributes Size { get; }
+    public DotNodeStyleAttributes Style { get; }
+    public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
     [DotAttributeKey(DotAttributeKeys.Style)]
     DotStyles? IDotNodeAttributes.Style
@@ -56,6 +64,18 @@ public partial class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<
         [DotAttributeKey(DotAttributeKeys.Style)]
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
+
+    [DotAttributeKey(DotAttributeKeys.Label)]
+    public virtual partial DotLabel? Label { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.Tooltip)]
+    public virtual partial DotEscapeString? Tooltip { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.Margin)]
+    public virtual partial DotPoint? Padding { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.SortV)]
+    public virtual partial int? SortIndex { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Comment)]
     public virtual partial string? Comment { get; set; }
@@ -80,4 +100,7 @@ public partial class DotNodeRootAttributes : DotClusterNodeRootCommonAttributes<
 
     [DotAttributeKey(DotAttributeKeys.Root)]
     public virtual partial bool? IsRoot { get; set; }
+
+    [DotAttributeKey(DotAttributeKeys.Id)]
+    public virtual partial DotEscapeString? ObjectId { get; set; }
 }

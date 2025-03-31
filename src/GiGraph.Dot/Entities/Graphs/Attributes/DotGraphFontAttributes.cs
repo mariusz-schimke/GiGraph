@@ -22,11 +22,11 @@ public partial class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAtt
     {
     }
 
-    /// <inheritdoc cref="IDotGraphFontAttributes.Directories" />
+    /// <inheritdoc cref="IDotGraphFontAttributes.Directories"/>
     [DotAttributeKey(DotAttributeKeys.FontPath)]
     public virtual partial string? Directories { get; set; }
 
-    /// <inheritdoc cref="IDotGraphFontAttributes.Convention" />
+    /// <inheritdoc cref="IDotGraphFontAttributes.Convention"/>
     [DotAttributeKey(DotAttributeKeys.FontNames)]
     public virtual partial DotFontConvention? Convention { get; set; }
 
@@ -66,16 +66,5 @@ public partial class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAtt
         base.Set(attributes);
         Directories = attributes.Directories;
         Convention = attributes.Convention;
-    }
-
-    /// <summary>
-    ///     Copies font attributes from the specified instance.
-    /// </summary>
-    /// <param name="attributes">
-    ///     The instance to copy the attributes from.
-    /// </param>
-    public virtual void Set(IDotGraphFontAttributes attributes)
-    {
-        Set(attributes.Name, attributes.Size, attributes.Color, attributes.Directories);
     }
 }

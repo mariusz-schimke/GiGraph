@@ -23,7 +23,7 @@
 
         <Deterministic>true</Deterministic>
 
-        <Version>4.1.0</Version>
+        <Version>5.0.0</Version>
         <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
 
         <PackageId>GiGraph.Dot</PackageId>
@@ -47,11 +47,7 @@
         <RepositoryBranch>$(Branch)</RepositoryBranch>
         <RepositoryCommit>$(Commit)</RepositoryCommit>
 
-        <PackageReleaseNotes>- Support added for the 'tooltip' and 'outputorder' attributes on the graph level.
-
-- Support added for the 'nojustify' attribute on the graph, cluster, node, and edge levels.
-
-- Minor refactoring.
+        <PackageReleaseNotes>- All style-related attributes have been consolidated under the Style property of the graph and its elements. This includes attributes such as Color, FillColor, BackgroundColor, and others, which are now exposed in a more structured and consistent way.
 
 See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
     </PropertyGroup>
@@ -85,7 +81,7 @@ See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\GiGraph.Dot.SourceGenerators\GiGraph.Dot.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+        <ProjectReference Include="..\GiGraph.Dot.SourceGenerators\GiGraph.Dot.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
     </ItemGroup>
 
 </Project>
