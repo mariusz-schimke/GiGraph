@@ -65,9 +65,9 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     [DotAttributeKey(DotAttributeKeys.RankSep)]
     public virtual partial DotRankSeparationDefinition? RankSeparation { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.EnableEdgeConcentration"/>
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.ConcentrateEdges"/>
     [DotAttributeKey(DotAttributeKeys.Concentrate)]
-    public virtual partial bool? EnableEdgeConcentration { get; set; }
+    public virtual partial bool? ConcentrateEdges { get; set; }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.Engine"/>
     [DotAttributeKey(DotAttributeKeys.Layout)]
@@ -85,9 +85,9 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     [DotAttributeKey(DotAttributeKeys.ForceLabels)]
     public virtual partial bool? ForceExternalLabels { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.EnableCircularLayout"/>
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.UseCircularLayout"/>
     [DotAttributeKey(DotAttributeKeys.OneBlock)]
-    public virtual partial bool? EnableCircularLayout { get; set; }
+    public virtual partial bool? UseCircularLayout { get; set; }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.RootNodeId"/>
     [DotAttributeKey(DotAttributeKeys.Root)]

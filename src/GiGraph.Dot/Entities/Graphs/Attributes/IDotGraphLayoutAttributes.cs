@@ -47,7 +47,7 @@ public interface IDotGraphLayoutAttributes
     /// <summary>
     ///     Determines whether to draw circo graphs around one circle (circo only; default: false).
     /// </summary>
-    bool? EnableCircularLayout { get; set; }
+    bool? UseCircularLayout { get; set; }
 
     /// <summary>
     ///     <para>
@@ -77,7 +77,7 @@ public interface IDotGraphLayoutAttributes
     ///     If true, edge concentrators are used (default: false). This merges multiedges into a single edge, and causes partially
     ///     parallel edges to share part of their paths. The latter feature is not yet available outside of dot.
     /// </summary>
-    bool? EnableEdgeConcentration { get; set; }
+    bool? ConcentrateEdges { get; set; }
 
     /// <summary>
     ///     <para>

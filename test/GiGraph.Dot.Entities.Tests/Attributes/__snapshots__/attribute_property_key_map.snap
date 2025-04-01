@@ -257,7 +257,7 @@
     "Edge": "DisableLabelJustification: Boolean?"
   },
   "oneblock": {
-    "Graph": "Layout.ForceCircularLayout: Boolean?"
+    "Graph": "Layout.UseCircularLayout: Boolean?"
   },
   "ordering": {
     "Graph": "Layout.EdgeOrderingMode: DotEdgeOrderingMode?",
@@ -294,9 +294,9 @@
     "Node": "Geometry.Peripheries: Int32?"
   },
   "rank": {
-    "Graph": "Layout.NodeRank: DotRank?",
-    "Subgraph": "NodeRank: DotRank?",
-    "Cluster": "NodeRank: DotRank?"
+    "Graph": "Layout.NodeRankAlignment: DotRankAlignment?",
+    "Subgraph": "NodeRankAlignment: DotRankAlignment?",
+    "Cluster": "NodeRankAlignment: DotRankAlignment?"
   },
   "rankdir": {
     "Graph": "Layout.Direction: DotLayoutDirection?"
@@ -317,14 +317,14 @@
     "Graph": "Canvas.Resolution: Double?"
   },
   "root": {
-    "Graph": "RootNodeId: DotId",
-    "Node": "IsRoot: Boolean?"
+    "Graph": "Layout.RootNodeId: DotId",
+    "Node": "IsLayoutRoot: Boolean?"
   },
   "rotate": {
     "Graph": "Canvas.OrientationAngle: Int32?"
   },
   "rotation": {
-    "Graph": "Layout.Rotation: Double?"
+    "Graph": "Layout.RotationAngle: Double?"
   },
   "samehead": {
     "Edge": "Head.GroupName: String"
@@ -389,7 +389,7 @@
     "Edge": "Hyperlink.Target: DotEscapeString"
   },
   "TBbalance": {
-    "Graph": "Layout.FloatingNodeRank: DotRank?"
+    "Graph": "Layout.FloatingNodeRankAlignment: DotRankAlignment?"
   },
   "tooltip": {
     "Graph": "Tooltip: DotEscapeString",

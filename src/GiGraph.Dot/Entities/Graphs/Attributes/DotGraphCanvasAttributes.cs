@@ -31,9 +31,9 @@ public partial class DotGraphCanvasAttributes : DotEntityAttributesWithMetadata<
     [DotAttributeKey(DotAttributeKeys.Orientation)]
     public virtual partial DotOrientation? Orientation { get; set; }
 
-    /// <inheritdoc cref="IDotGraphCanvasAttributes.RotationAngle"/>
+    /// <inheritdoc cref="IDotGraphCanvasAttributes.OrientationAngle"/>
     [DotAttributeKey(DotAttributeKeys.Rotate)]
-    public virtual partial int? RotationAngle { get; set; }
+    public virtual partial int? OrientationAngle { get; set; }
 
     /// <inheritdoc cref="IDotGraphCanvasAttributes.LandscapeOrientation"/>
     [DotAttributeKey(DotAttributeKeys.Landscape)]
