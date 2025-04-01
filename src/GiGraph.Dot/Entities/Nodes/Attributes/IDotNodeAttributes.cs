@@ -153,7 +153,7 @@ public interface IDotNodeAttributes
     ///         of its connected component. If not defined, twopi will pick a most central node, and circo will pick a random node.
     ///     </para>
     ///     <para>
-    ///         If the <see cref="IDotGraphAttributes.RootNodeId"/> attribute on the graph is defined as the empty string, twopi will
+    ///         If the <see cref="IDotGraphLayoutAttributes.RootNodeId"/> attribute on the graph is defined as the empty string, twopi will
     ///         reset it to name of the node picked as the root node.
     ///     </para>
     ///     <para>

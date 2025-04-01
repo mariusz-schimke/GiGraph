@@ -3,6 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Layout;
 using GiGraph.Dot.Types.Output;
 using GiGraph.Dot.Types.Packing;
@@ -87,6 +88,10 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     /// <inheritdoc cref="IDotGraphLayoutAttributes.EnableCircularLayout"/>
     [DotAttributeKey(DotAttributeKeys.OneBlock)]
     public virtual partial bool? EnableCircularLayout { get; set; }
+
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.RootNodeId"/>
+    [DotAttributeKey(DotAttributeKeys.Root)]
+    public virtual partial DotId? RootNodeId { get; set; }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.SortIndex"/>
     [DotAttributeKey(DotAttributeKeys.SortV)]

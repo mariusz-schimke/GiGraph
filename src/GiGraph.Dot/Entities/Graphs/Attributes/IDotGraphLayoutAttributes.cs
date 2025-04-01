@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Entities.Subgraphs.Attributes;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Layout;
 using GiGraph.Dot.Types.Output;
 using GiGraph.Dot.Types.Packing;
@@ -47,6 +48,25 @@ public interface IDotGraphLayoutAttributes
     ///     Determines whether to draw circo graphs around one circle (circo only; default: false).
     /// </summary>
     bool? EnableCircularLayout { get; set; }
+
+    /// <summary>
+    ///     <para>
+    ///         The identifier of a node that should be used as the center of the layout and the root of the generated spanning tree
+    ///         (circo, twopi only).
+    ///     </para>
+    ///     <para>
+    ///         In twopi, root will actually be the central node. In circo, the block containing the node will be central in the drawing
+    ///         of its connected component. If not defined, twopi will pick a most central node, and circo will pick a random node.
+    ///     </para>
+    ///     <para>
+    ///         If the attribute is defined as the empty string, twopi will reset it to name of the node picked as the root node.
+    ///     </para>
+    ///     <para>
+    ///         For twopi, it is possible to have multiple roots, presumably one for each component. If more than one node in a component
+    ///         is marked as the root, twopi will pick one (see the <see cref="IDotNodeAttributes.IsLayoutRoot"/> attribute on a node).
+    ///     </para>
+    /// </summary>
+    DotId? RootNodeId { get; set; }
 
     /// <summary>
     ///     Rotates the final layout counter-clockwise by the specified number of degrees (sfdp only; default: 0).
@@ -148,8 +168,8 @@ public interface IDotGraphLayoutAttributes
     ///         The original ranking algorithm in dot is recursive on clusters. This can produce fewer ranks and a more compact layout,
     ///         but sometimes at the cost of a head node being placed on a higher rank than the tail node. It also assumes that a node is
     ///         not constrained in separate, incompatible subgraphs. For example, a node cannot be in a cluster and also be constrained
-    ///         by a rank of <see cref="DotRankAlignment.Same"/> with a node not in the cluster (see <see cref="IDotSubgraphAttributes.NodeRankAlignment"/>
-    ///         on subgraph attributes).
+    ///         by a rank of <see cref="DotRankAlignment.Same"/> with a node not in the cluster (see
+    ///         <see cref="IDotSubgraphAttributes.NodeRankAlignment"/> on subgraph attributes).
     ///     </para>
     ///     <para>
     ///         This allows nodes to be subject to multiple constraints. Rank constraints will usually take precedence over edge

@@ -7,7 +7,6 @@ using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
@@ -83,9 +82,6 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
 
     [DotAttributeKey(DotAttributeKeys.ImagePath)]
     public virtual partial string? ImageDirectories { get; set; }
-
-    [DotAttributeKey(DotAttributeKeys.Root)]
-    public virtual partial DotId? RootNodeId { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
     public virtual partial DotEscapeString? Tooltip { get; set; }

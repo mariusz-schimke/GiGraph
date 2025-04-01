@@ -26,10 +26,10 @@ public class DotIdAttributeTest
     {
         var graph = new DotGraph();
 
-        graph.Subsections.Add().RootNodeId = null;
-        graph.Subsections.Add().RootNodeId = "root";
-        graph.Subsections.Add().RootNodeId = new DotId("");
-        graph.Subsections.Add().RootNodeId = new DotClusterId("root");
+        graph.Subsections.Add().Layout.RootNodeId = null;
+        graph.Subsections.Add().Layout.RootNodeId = "root";
+        graph.Subsections.Add().Layout.RootNodeId = new DotId("");
+        graph.Subsections.Add().Layout.RootNodeId = new DotClusterId("root");
 
         Snapshot.Match(graph.Build(), "root_node_id_attribute.gv");
     }
