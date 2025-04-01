@@ -1261,20 +1261,20 @@ There are several ways you can add a subgraph to a graph, and the code below pre
 
 ```c#
 // add a subgraph with a custom content initialization
-graph.Subgraphs.Add(DotRank.Same, subgraph =>
+graph.Subgraphs.Add(DotRankAlignment.Same, subgraph =>
 {
     subgraph.Nodes.AddRange("a", "b", "c");
 });
 
 // or simply (if only nodes are going to be specified)
-graph.Subgraphs.AddWithNodes(DotRank.Same, "a", "b", "c");
+graph.Subgraphs.AddWithNodes(DotRankAlignment.Same, "a", "b", "c");
 
 // you can also create a new instance and initialize it manually
-var subgraph = new DotSubgraph(DotRank.Same);
+var subgraph = new DotSubgraph(DotRankAlignment.Same);
 subgraph.Nodes.AddRange("a", "b", "c");
 
 // or use a factory method to add nodes conveniently
-subgraph = DotSubgraph.FromNodes(DotRank.Same, "a", "b", "c");
+subgraph = DotSubgraph.FromNodes(DotRankAlignment.Same, "a", "b", "c");
 
 // global style settings are accepted as well for the elements inside
 subgraph.Nodes.Shape = DotNodeShape.Box;
@@ -1738,7 +1738,7 @@ As an example, let's place certain groups of nodes in the same ranks (columns in
 ![complex-graph-with-subgraphs](https://raw.githubusercontent.com/mariusz-schimke/GiGraph/5c8efecdc251754519cde10220cb0bf0f00d0fcf/assets/examples/complex-graph-with-subgraphs.svg)
 
 
-The nodes embedded in subgraphs with the *DotRank.Same* rank constraint are arranged in the same columns. Apart from those, the nodes *o*, *p*, and *t* in a subgraph with a rank *DotRank.Max*, are pushed together towards the rightmost border.
+The nodes embedded in subgraphs with the *DotRankAlignment.Same* rank constraint are arranged in the same columns. Apart from those, the nodes *o*, *p*, and *t* in a subgraph with a rank *DotRankAlignment.Max*, are pushed together towards the rightmost border.
 
 *❕ The ranks are vertical in these examples because the layout direction of the graph is left-to-right. When you change it to the default top-to-bottom orientation, the ranks will be oriented horizontally.*
 
@@ -1775,14 +1775,14 @@ graph.Edges.AddOneToMany("p", "t", "q");
 graph.Edges.AddOneToMany("q", "t", "r");
 
 // place the following groups of nodes in the same ranks
-graph.Subgraphs.AddWithNodes(DotRank.Same, "b", "c", "d");
-graph.Subgraphs.AddWithNodes(DotRank.Same, "e", "f", "g");
-graph.Subgraphs.AddWithNodes(DotRank.Same, "h", "i", "j", "k");
-graph.Subgraphs.AddWithNodes(DotRank.Same, "l", "m", "n");
-graph.Subgraphs.AddWithNodes(DotRank.Same, "q", "r");
+graph.Subgraphs.AddWithNodes(DotRankAlignment.Same, "b", "c", "d");
+graph.Subgraphs.AddWithNodes(DotRankAlignment.Same, "e", "f", "g");
+graph.Subgraphs.AddWithNodes(DotRankAlignment.Same, "h", "i", "j", "k");
+graph.Subgraphs.AddWithNodes(DotRankAlignment.Same, "l", "m", "n");
+graph.Subgraphs.AddWithNodes(DotRankAlignment.Same, "q", "r");
 
 // place the three nodes in the maximum rank (rightmost in this case)
-graph.Subgraphs.AddWithNodes(DotRank.Max, "o", "s", "p");
+graph.Subgraphs.AddWithNodes(DotRankAlignment.Max, "o", "s", "p");
 
 
 var options = new DotFormattingOptions
