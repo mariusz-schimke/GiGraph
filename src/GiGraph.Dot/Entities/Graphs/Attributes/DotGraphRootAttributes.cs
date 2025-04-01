@@ -7,7 +7,6 @@ using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
@@ -48,13 +47,28 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
         Hyperlink = hyperlinkAttributes;
     }
 
+    /// <inheritdoc cref="IDotGraphRootAttributes.Clusters"/>
     public DotGraphClustersAttributes Clusters { get; }
+
+    /// <inheritdoc cref="IDotGraphRootAttributes.Style"/>
     public DotGraphStyleAttributes Style { get; }
+
+    /// <inheritdoc cref="IDotGraphRootAttributes.Font"/>
     public DotGraphFontAttributes Font { get; }
+
+    /// <inheritdoc cref="IDotGraphRootAttributes.SvgStyleSheet"/>
     public DotGraphSvgStyleSheetAttributes SvgStyleSheet { get; }
+
+    /// <inheritdoc cref="IDotGraphRootAttributes.Layout"/>
     public DotGraphLayoutAttributes Layout { get; }
+
+    /// <inheritdoc cref="IDotGraphRootAttributes.Canvas"/>
     public DotGraphCanvasAttributes Canvas { get; }
+
+    /// <inheritdoc cref="IDotGraphRootAttributes.LabelAlignment"/>
     public DotLabelAlignmentAttributes LabelAlignment { get; }
+
+    /// <inheritdoc cref="IDotGraphRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink { get; }
 
     [DotAttributeKey(DotAttributeKeys.Style)]
@@ -66,30 +80,35 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
 
+    /// <inheritdoc cref="IDotGraphAttributes.Label"/>
     [DotAttributeKey(DotAttributeKeys.Label)]
     public virtual partial DotLabel? Label { get; set; }
 
+    /// <inheritdoc cref="IDotGraphAttributes.DisableLabelJustification"/>
     [DotAttributeKey(DotAttributeKeys.NoJustify)]
     public virtual partial bool? DisableLabelJustification { get; set; }
 
+    /// <inheritdoc cref="IDotGraphAttributes.EdgeShape"/>
     [DotAttributeKey(DotAttributeKeys.Splines)]
     public virtual partial DotEdgeShape? EdgeShape { get; set; }
 
+    /// <inheritdoc cref="IDotGraphAttributes.Comment"/>
     [DotAttributeKey(DotAttributeKeys.Comment)]
     public virtual partial string? Comment { get; set; }
 
+    /// <inheritdoc cref="IDotGraphAttributes.Charset"/>
     [DotAttributeKey(DotAttributeKeys.Charset)]
     public virtual partial string? Charset { get; set; }
 
+    /// <inheritdoc cref="IDotGraphAttributes.ImageDirectories"/>
     [DotAttributeKey(DotAttributeKeys.ImagePath)]
     public virtual partial string? ImageDirectories { get; set; }
 
-    [DotAttributeKey(DotAttributeKeys.Root)]
-    public virtual partial DotId? RootNodeId { get; set; }
-
+    /// <inheritdoc cref="IDotGraphAttributes.Tooltip"/>
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
     public virtual partial DotEscapeString? Tooltip { get; set; }
 
+    /// <inheritdoc cref="IDotGraphAttributes.ObjectId"/>
     [DotAttributeKey(DotAttributeKeys.Id)]
     public virtual partial DotEscapeString? ObjectId { get; set; }
 }

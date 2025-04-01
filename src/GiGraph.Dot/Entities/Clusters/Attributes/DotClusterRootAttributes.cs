@@ -52,10 +52,19 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Cluster, value);
     }
 
+    /// <inheritdoc cref="IDotClusterRootAttributes.Font"/>
     public DotFontAttributes Font { get; }
+
+    /// <inheritdoc cref="IDotClusterRootAttributes.Style"/>
     public DotClusterStyleAttributes Style { get; }
+
+    /// <inheritdoc cref="IDotClusterRootAttributes.LabelAlignment"/>
     public DotLabelAlignmentAttributes LabelAlignment { get; }
+
+    /// <inheritdoc cref="IDotClusterRootAttributes.SvgStyleSheet"/>
     public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
+
+    /// <inheritdoc cref="IDotClusterRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink { get; }
 
     [DotAttributeKey(DotAttributeKeys.Style)]
@@ -67,27 +76,35 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
 
+    /// <inheritdoc cref="IDotClusterAttributes.Label"/>
     [DotAttributeKey(DotAttributeKeys.Label)]
     public virtual partial DotLabel? Label { get; set; }
 
+    /// <inheritdoc cref="IDotClusterAttributes.DisableLabelJustification"/>
     [DotAttributeKey(DotAttributeKeys.NoJustify)]
     public virtual partial bool? DisableLabelJustification { get; set; }
 
+    /// <inheritdoc cref="IDotClusterAttributes.NodeRankAlignment"/>
     [DotAttributeKey(DotAttributeKeys.Rank)]
-    public virtual partial DotRank? NodeRank { get; set; }
+    public virtual partial DotRankAlignment? NodeRankAlignment { get; set; }
 
+    /// <inheritdoc cref="IDotClusterAttributes.Peripheries"/>
     [DotAttributeKey(DotAttributeKeys.Peripheries)]
     public virtual partial int? Peripheries { get; set; }
 
+    /// <inheritdoc cref="IDotClusterAttributes.Tooltip"/>
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
     public virtual partial DotEscapeString? Tooltip { get; set; }
 
+    /// <inheritdoc cref="IDotClusterAttributes.Padding"/>
     [DotAttributeKey(DotAttributeKeys.Margin)]
     public virtual partial DotPoint? Padding { get; set; }
 
+    /// <inheritdoc cref="IDotClusterAttributes.SortIndex"/>
     [DotAttributeKey(DotAttributeKeys.SortV)]
     public virtual partial int? SortIndex { get; set; }
 
+    /// <inheritdoc cref="IDotClusterAttributes.ObjectId"/>
     [DotAttributeKey(DotAttributeKeys.Id)]
     public virtual partial DotEscapeString? ObjectId { get; set; }
 }

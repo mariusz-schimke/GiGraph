@@ -58,7 +58,7 @@ public class DotAttributeKeyAssociationTest
         { typeof(DotNodeSizing), DotNodeSizing.Auto },
         { typeof(DotOrientation), DotOrientation.Landscape },
         { typeof(DotOutputOrder), DotOutputOrder.EdgesFirst },
-        { typeof(DotRank), DotRank.Same },
+        { typeof(DotRankAlignment), DotRankAlignment.Same },
         { typeof(DotStyles), (DotStyles) 0xff },
         { typeof(DotVerticalAlignment), DotVerticalAlignment.Bottom },
         { typeof(DotArrowheadDefinition), new DotArrowhead(DotArrowheadShape.Dot, DotArrowheadParts.Both) },

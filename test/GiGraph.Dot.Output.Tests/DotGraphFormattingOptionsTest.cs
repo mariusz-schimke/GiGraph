@@ -86,7 +86,7 @@ public class DotGraphFormattingOptionsTest
     {
         var graph = new DotGraph();
 
-        graph.Subgraphs.Add(DotRank.Max, x =>
+        graph.Subgraphs.Add(DotRankAlignment.Max, x =>
         {
             x.Nodes.Add("node").Comment = "comment";
             x.Edges.AddLoop("node").Directions = DotEdgeDirections.Backward;

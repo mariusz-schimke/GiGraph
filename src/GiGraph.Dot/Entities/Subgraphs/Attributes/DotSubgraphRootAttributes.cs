@@ -21,7 +21,7 @@ public partial class DotSubgraphRootAttributes : DotEntityAttributesWithMetadata
     }
 
     [DotAttributeKey(DotAttributeKeys.Rank)]
-    public virtual partial DotRank? NodeRank { get; set; }
+    public virtual partial DotRankAlignment? NodeRankAlignment { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Cluster)]
     bool? IDotSubgraphAttributes.IsCluster

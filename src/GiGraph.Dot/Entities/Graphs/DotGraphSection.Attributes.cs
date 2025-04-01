@@ -4,7 +4,6 @@ using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs;
@@ -88,13 +87,6 @@ public partial class DotGraphSection : IDotGraphRootAttributes
     {
         get => Attributes.Implementation.ImageDirectories;
         set => Attributes.Implementation.ImageDirectories = value;
-    }
-
-    /// <inheritdoc cref="IDotGraphAttributes.RootNodeId"/>
-    public virtual DotId? RootNodeId
-    {
-        get => Attributes.Implementation.RootNodeId;
-        set => Attributes.Implementation.RootNodeId = value;
     }
 
     /// <inheritdoc cref="IDotGraphAttributes.ObjectId"/>

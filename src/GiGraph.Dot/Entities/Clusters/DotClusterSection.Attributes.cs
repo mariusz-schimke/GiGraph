@@ -84,11 +84,11 @@ public partial class DotClusterSection : IDotClusterRootAttributes
         set => Attributes.Implementation.ObjectId = value;
     }
 
-    /// <inheritdoc cref="IDotClusterAttributes.NodeRank"/>
-    public virtual DotRank? NodeRank
+    /// <inheritdoc cref="IDotClusterAttributes.NodeRankAlignment"/>
+    public virtual DotRankAlignment? NodeRankAlignment
     {
-        get => Attributes.Implementation.NodeRank;
-        set => Attributes.Implementation.NodeRank = value;
+        get => Attributes.Implementation.NodeRankAlignment;
+        set => Attributes.Implementation.NodeRankAlignment = value;
     }
 
     /// <inheritdoc cref="IDotClusterAttributes.IsCluster"/>

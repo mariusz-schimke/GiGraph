@@ -3,6 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Layout;
 using GiGraph.Dot.Types.Output;
 using GiGraph.Dot.Types.Packing;
@@ -24,9 +25,9 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     {
     }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.FloatingNodeRank"/>
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.FloatingNodeRankAlignment"/>
     [DotAttributeKey(DotAttributeKeys.TbBalance)]
-    public virtual partial DotRank? FloatingNodeRank { get; set; }
+    public virtual partial DotRankAlignment? FloatingNodeRankAlignment { get; set; }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.Rotation"/>
     [DotAttributeKey(DotAttributeKeys.Rotation)]
@@ -44,9 +45,9 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     [DotAttributeKey(DotAttributeKeys.NewRank)]
     public virtual partial bool? EnableGlobalRanking { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeRank"/>
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeRankAlignment"/>
     [DotAttributeKey(DotAttributeKeys.Rank)]
-    public virtual partial DotRank? NodeRank { get; set; }
+    public virtual partial DotRankAlignment? NodeRankAlignment { get; set; }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.Packing"/>
     [DotAttributeKey(DotAttributeKeys.Pack)]
@@ -84,9 +85,13 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     [DotAttributeKey(DotAttributeKeys.ForceLabels)]
     public virtual partial bool? ForceExternalLabels { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.ForceCircularLayout"/>
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.UseCircularLayout"/>
     [DotAttributeKey(DotAttributeKeys.OneBlock)]
-    public virtual partial bool? ForceCircularLayout { get; set; }
+    public virtual partial bool? UseCircularLayout { get; set; }
+
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.RootNodeId"/>
+    [DotAttributeKey(DotAttributeKeys.Root)]
+    public virtual partial DotId? RootNodeId { get; set; }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.SortIndex"/>
     [DotAttributeKey(DotAttributeKeys.SortV)]
