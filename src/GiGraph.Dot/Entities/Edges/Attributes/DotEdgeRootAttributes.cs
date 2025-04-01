@@ -51,15 +51,31 @@ public partial class DotEdgeRootAttributes : DotEntityAttributesWithMetadata<IDo
         LabelHyperlink = labelHyperlinkAttributes;
     }
 
+    /// <inheritdoc cref="IDotEdgeRootAttributes.Head"/>
     public DotEdgeHeadAttributes Head { get; }
+
+    /// <inheritdoc cref="IDotEdgeRootAttributes.Tail"/>
     public DotEdgeTailAttributes Tail { get; }
 
+    /// <inheritdoc cref="IDotEdgeRootAttributes.Font"/>
     public DotFontAttributes Font { get; }
+
+    /// <inheritdoc cref="IDotEdgeRootAttributes.EndpointLabels"/>
     public DotEdgeEndpointLabelsAttributes EndpointLabels { get; }
+
+    /// <inheritdoc cref="IDotEdgeRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink { get; }
+
+    /// <inheritdoc cref="IDotEdgeRootAttributes.EdgeHyperlink"/>
     public DotEdgeHyperlinkAttributes EdgeHyperlink { get; }
+
+    /// <inheritdoc cref="IDotEdgeRootAttributes.LabelHyperlink"/>
     public DotEdgeLabelHyperlinkAttributes LabelHyperlink { get; }
+
+    /// <inheritdoc cref="IDotEdgeRootAttributes.Style"/>
     public DotEdgeStyleAttributes Style { get; }
+
+    /// <inheritdoc cref="IDotEdgeRootAttributes.SvgStyleSheet"/>
     public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
     [DotAttributeKey(DotAttributeKeys.Style)]
@@ -71,45 +87,59 @@ public partial class DotEdgeRootAttributes : DotEntityAttributesWithMetadata<IDo
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
 
+    /// <inheritdoc cref="IDotEdgeAttributes.Label"/>
     [DotAttributeKey(DotAttributeKeys.Label)]
     public virtual partial DotLabel? Label { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeAttributes.Comment"/>
     [DotAttributeKey(DotAttributeKeys.Comment)]
     public virtual partial string? Comment { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeAttributes.Tooltip"/>
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
     public virtual partial DotEscapeString? Tooltip { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeAttributes.ExternalLabel"/>
     [DotAttributeKey(DotAttributeKeys.XLabel)]
     public virtual partial DotLabel? ExternalLabel { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeAttributes.Weight"/>
     [DotAttributeKey(DotAttributeKeys.Weight)]
     public virtual partial double? Weight { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeAttributes.Length"/>
     [DotAttributeKey(DotAttributeKeys.Len)]
     public virtual partial double? Length { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeAttributes.MinLength"/>
     [DotAttributeKey(DotAttributeKeys.MinLen)]
     public virtual partial int? MinLength { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeAttributes.ArrowheadScaleFactor"/>
     [DotAttributeKey(DotAttributeKeys.ArrowSize)]
     public virtual partial double? ArrowheadScaleFactor { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeAttributes.Directions"/>
     [DotAttributeKey(DotAttributeKeys.Dir)]
     public virtual partial DotEdgeDirections? Directions { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeAttributes.AttachLabel"/>
     [DotAttributeKey(DotAttributeKeys.Decorate)]
     public virtual partial bool? AttachLabel { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeAttributes.EnableLabelFloating"/>
     [DotAttributeKey(DotAttributeKeys.LabelFloat)]
     public virtual partial bool? EnableLabelFloating { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeAttributes.DisableLabelJustification"/>
     [DotAttributeKey(DotAttributeKeys.NoJustify)]
     public virtual partial bool? DisableLabelJustification { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeAttributes.Constrain"/>
     [DotAttributeKey(DotAttributeKeys.Constraint)]
     public virtual partial bool? Constrain { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeAttributes.ObjectId"/>
     [DotAttributeKey(DotAttributeKeys.Id)]
     public virtual partial DotEscapeString? ObjectId { get; set; }
 }

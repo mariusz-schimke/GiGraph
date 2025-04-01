@@ -20,15 +20,19 @@ public partial class DotHtmlTableCellAttributes : DotHtmlTableTableCellCommonAtt
     {
     }
 
+    /// <inheritdoc cref="IDotHtmlTableCellAttributes.HorizontalAlignment"/>
     [DotAttributeKey("align")]
     public virtual partial DotHtmlTableCellHorizontalAlignment? HorizontalAlignment { get; set; }
 
+    /// <inheritdoc cref="IDotHtmlTableCellAttributes.HorizontalLineAlignment"/>
     [DotAttributeKey("balign")]
     public virtual partial DotHorizontalAlignment? HorizontalLineAlignment { get; set; }
 
+    /// <inheritdoc cref="IDotHtmlTableCellAttributes.ColumnSpan"/>
     [DotAttributeKey("colspan")]
     public virtual partial int? ColumnSpan { get; set; }
 
+    /// <inheritdoc cref="IDotHtmlTableCellAttributes.RowSpan"/>
     [DotAttributeKey("rowspan")]
     public virtual partial int? RowSpan { get; set; }
 }

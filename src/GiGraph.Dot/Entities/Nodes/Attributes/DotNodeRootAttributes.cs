@@ -48,12 +48,25 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
         SvgStyleSheet = svgStyleSheetAttributes;
     }
 
+    /// <inheritdoc cref="IDotNodeRootAttributes.Font"/>
     public DotFontAttributes Font { get; }
+
+    /// <inheritdoc cref="IDotNodeRootAttributes.Geometry"/>
     public DotNodeGeometryAttributes Geometry { get; }
+
+    /// <inheritdoc cref="IDotNodeRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink { get; }
+
+    /// <inheritdoc cref="IDotNodeRootAttributes.Image"/>
     public DotNodeImageAttributes Image { get; }
+
+    /// <inheritdoc cref="IDotNodeRootAttributes.Size"/>
     public DotNodeSizeAttributes Size { get; }
+
+    /// <inheritdoc cref="IDotNodeRootAttributes.Style"/>
     public DotNodeStyleAttributes Style { get; }
+
+    /// <inheritdoc cref="IDotNodeRootAttributes.SvgStyleSheet"/>
     public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
     [DotAttributeKey(DotAttributeKeys.Style)]
@@ -65,42 +78,55 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
 
+    /// <inheritdoc cref="IDotNodeAttributes.Label"/>
     [DotAttributeKey(DotAttributeKeys.Label)]
     public virtual partial DotLabel? Label { get; set; }
 
+    /// <inheritdoc cref="IDotNodeAttributes.Tooltip"/>
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
     public virtual partial DotEscapeString? Tooltip { get; set; }
 
+    /// <inheritdoc cref="IDotNodeAttributes.Padding"/>
     [DotAttributeKey(DotAttributeKeys.Margin)]
     public virtual partial DotPoint? Padding { get; set; }
 
+    /// <inheritdoc cref="IDotNodeAttributes.SortIndex"/>
     [DotAttributeKey(DotAttributeKeys.SortV)]
     public virtual partial int? SortIndex { get; set; }
 
+    /// <inheritdoc cref="IDotNodeAttributes.Comment"/>
     [DotAttributeKey(DotAttributeKeys.Comment)]
     public virtual partial string? Comment { get; set; }
 
+    /// <inheritdoc cref="IDotNodeAttributes.ExternalLabel"/>
     [DotAttributeKey(DotAttributeKeys.XLabel)]
     public virtual partial DotLabel? ExternalLabel { get; set; }
 
+    /// <inheritdoc cref="IDotNodeAttributes.LabelAlignment"/>
     [DotAttributeKey(DotAttributeKeys.LabelLoc)]
     public virtual partial DotVerticalAlignment? LabelAlignment { get; set; }
 
+    /// <inheritdoc cref="IDotNodeAttributes.DisableLabelJustification"/>
     [DotAttributeKey(DotAttributeKeys.NoJustify)]
     public virtual partial bool? DisableLabelJustification { get; set; }
 
+    /// <inheritdoc cref="IDotNodeAttributes.EdgeOrderingMode"/>
     [DotAttributeKey(DotAttributeKeys.Ordering)]
     public virtual partial DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
 
+    /// <inheritdoc cref="IDotNodeAttributes.Shape"/>
     [DotAttributeKey(DotAttributeKeys.Shape)]
     public virtual partial DotNodeShape? Shape { get; set; }
 
+    /// <inheritdoc cref="IDotNodeAttributes.GroupName"/>
     [DotAttributeKey(DotAttributeKeys.Group)]
     public virtual partial string? GroupName { get; set; }
 
+    /// <inheritdoc cref="IDotNodeAttributes.IsLayoutRoot"/>
     [DotAttributeKey(DotAttributeKeys.Root)]
     public virtual partial bool? IsLayoutRoot { get; set; }
 
+    /// <inheritdoc cref="IDotNodeAttributes.ObjectId"/>
     [DotAttributeKey(DotAttributeKeys.Id)]
     public virtual partial DotEscapeString? ObjectId { get; set; }
 }
