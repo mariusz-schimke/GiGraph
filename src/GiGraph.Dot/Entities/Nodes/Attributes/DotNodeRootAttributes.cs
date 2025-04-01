@@ -99,7 +99,7 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
     public virtual partial string? GroupName { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Root)]
-    public virtual partial bool? IsRoot { get; set; }
+    public virtual partial bool? IsLayoutRoot { get; set; }
 
     [DotAttributeKey(DotAttributeKeys.Id)]
     public virtual partial DotEscapeString? ObjectId { get; set; }

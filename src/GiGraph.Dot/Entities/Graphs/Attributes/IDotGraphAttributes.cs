@@ -132,7 +132,7 @@ public interface IDotGraphAttributes
     ///     </para>
     ///     <para>
     ///         For twopi, it is possible to have multiple roots, presumably one for each component. If more than one node in a component
-    ///         is marked as the root, twopi will pick one (see the <see cref="IDotNodeAttributes.IsRoot"/> attribute on a node).
+    ///         is marked as the root, twopi will pick one (see the <see cref="IDotNodeAttributes.IsLayoutRoot"/> attribute on a node).
     ///     </para>
     /// </summary>
     DotId? RootNodeId { get; set; }

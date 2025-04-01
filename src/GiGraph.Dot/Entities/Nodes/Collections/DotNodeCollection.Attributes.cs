@@ -118,11 +118,11 @@ public partial class DotNodeCollection : IDotNodeRootAttributes
         set => Attributes.Implementation.SortIndex = value;
     }
 
-    /// <inheritdoc cref="IDotNodeAttributes.IsRoot"/>
-    public virtual bool? IsRoot
+    /// <inheritdoc cref="IDotNodeAttributes.IsLayoutRoot"/>
+    public virtual bool? IsLayoutRoot
     {
-        get => Attributes.Implementation.IsRoot;
-        set => Attributes.Implementation.IsRoot = value;
+        get => Attributes.Implementation.IsLayoutRoot;
+        set => Attributes.Implementation.IsLayoutRoot = value;
     }
 
     /// <inheritdoc cref="IDotNodeAttributes.ObjectId"/>

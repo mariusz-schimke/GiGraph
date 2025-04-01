@@ -161,7 +161,7 @@ public interface IDotNodeAttributes
     ///         is marked as the root, twopi will pick one.
     ///     </para>
     /// </summary>
-    bool? IsRoot { get; set; }
+    bool? IsLayoutRoot { get; set; }
 
     /// <summary>
     ///     <para>
