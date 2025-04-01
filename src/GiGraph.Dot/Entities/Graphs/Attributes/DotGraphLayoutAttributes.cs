@@ -29,9 +29,9 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     [DotAttributeKey(DotAttributeKeys.TbBalance)]
     public virtual partial DotRankAlignment? FloatingNodeRankAlignment { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.RotationAngle"/>
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.Rotation"/>
     [DotAttributeKey(DotAttributeKeys.Rotation)]
-    public virtual partial double? RotationAngle { get; set; }
+    public virtual partial double? Rotation { get; set; }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.RepeatEdgeCrossingMinimization"/>
     [DotAttributeKey(DotAttributeKeys.ReMinCross)]

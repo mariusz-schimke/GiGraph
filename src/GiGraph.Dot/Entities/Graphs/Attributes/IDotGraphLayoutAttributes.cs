@@ -71,7 +71,7 @@ public interface IDotGraphLayoutAttributes
     /// <summary>
     ///     Rotates the final layout counter-clockwise by the specified number of degrees (sfdp only; default: 0).
     /// </summary>
-    double? RotationAngle { get; set; }
+    double? Rotation { get; set; }
 
     /// <summary>
     ///     If true, edge concentrators are used (default: false). This merges multiedges into a single edge, and causes partially

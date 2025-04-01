@@ -324,7 +324,7 @@
     "Graph": "Canvas.OrientationAngle: Int32?"
   },
   "rotation": {
-    "Graph": "Layout.RotationAngle: Double?"
+    "Graph": "Layout.Rotation: Double?"
   },
   "samehead": {
     "Edge": "Head.GroupName: String"
