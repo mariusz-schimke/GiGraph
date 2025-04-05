@@ -59,6 +59,20 @@ public class DotClusterAttributeTest
     }
 
     [Fact]
+    public void cluster_attribute_is_settable_when_no_cluster_attribute_preference_is_set()
+    {
+        const string snapshotName = "cluster_with_no_cluster_attribute_preference_and_cluster_attribute_set";
+
+        var graph = new DotGraph();
+        graph.Clusters.Add("c1", c =>
+        {
+            c.Attributes.SetValue(a => a.IsCluster, false);
+        });
+
+        Snapshot.Match(graph.Build(syntaxOptions: CreateSyntaxOptions(preferClusterAttribute: false)), snapshotName);
+    }
+
+    [Fact]
     public void cluster_with_no_cluster_attribute_preference_has_an_id_prefix_without_the_attribute()
     {
         const string snapshotName = "cluster_with_no_cluster_attribute_preference";
@@ -97,20 +111,6 @@ public class DotClusterAttributeTest
         graph.Edges.Add("n1", "n2").Head.ClusterId = "c1";
 
         Snapshot.Match(graph.Build(syntaxOptions: CreateSyntaxOptions(preferClusterAttribute)), snapshotName);
-    }
-
-    [Fact]
-    public void cluster_attribute_is_settable_when_no_cluster_attribute_preference_is_set()
-    {
-        const string snapshotName = "cluster_with_no_cluster_attribute_preference_and_cluster_attribute_set";
-
-        var graph = new DotGraph();
-        graph.Clusters.Add("c1", c =>
-        {
-            c.Attributes.SetValue(a => a.IsCluster, false);
-        });
-
-        Snapshot.Match(graph.Build(syntaxOptions: CreateSyntaxOptions(preferClusterAttribute: false)), snapshotName);
     }
 
     private static DotSyntaxOptions CreateSyntaxOptions(bool preferClusterAttribute) =>
