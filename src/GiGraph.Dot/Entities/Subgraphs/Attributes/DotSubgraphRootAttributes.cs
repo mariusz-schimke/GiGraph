@@ -20,6 +20,7 @@ public partial class DotSubgraphRootAttributes : DotEntityAttributesWithMetadata
     {
     }
 
+    /// <inheritdoc cref="IDotSubgraphAttributes.NodeRankAlignment"/>
     [DotAttributeKey(DotAttributeKeys.Rank)]
     public virtual partial DotRankAlignment? NodeRankAlignment { get; set; }
 

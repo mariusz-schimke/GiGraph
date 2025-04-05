@@ -5,9 +5,9 @@ using GiGraph.Dot.Output.Qualities;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections;
 
-public partial class DotAttributeCollection : IDotEntity, IDotAnnotatable
+public partial class DotAttributeCollection(DotAttributeFactory attributeFactory) : IDotEntity, IDotAnnotatable
 {
-    protected readonly DotAttributeFactory _attributeFactory;
+    protected readonly DotAttributeFactory _attributeFactory = attributeFactory;
     protected readonly SortedDictionary<string, DotAttribute> _attributes = new();
 
     public DotAttributeCollection()
@@ -18,11 +18,6 @@ public partial class DotAttributeCollection : IDotEntity, IDotAnnotatable
     public DotAttributeCollection(DotAttributeCollection source)
         : this(source._attributeFactory, source._attributes)
     {
-    }
-
-    public DotAttributeCollection(DotAttributeFactory attributeFactory)
-    {
-        _attributeFactory = attributeFactory;
     }
 
     public DotAttributeCollection(DotAttributeFactory attributeFactory, IDictionary<string, DotAttribute> source)
