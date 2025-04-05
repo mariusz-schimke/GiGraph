@@ -47,17 +47,17 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     ///     </para>
     ///     <para>
     ///         As far as setting global node and/or edge attributes for a specific group of elements is concerned,
-    ///         <see cref="Subgraphs" /> may be the cleaner and preferable way to achieve the effect.
+    ///         <see cref="Subgraphs"/> may be the cleaner and preferable way to achieve the effect.
     ///     </para>
     /// </summary>
     public DotGraphSectionCollection<DotClusterSection> Subsections { get; }
-
-    IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 
     /// <summary>
     ///     Gets or sets the identifier of the cluster.
     /// </summary>
     public virtual string Id { get; set; } = null!;
+
+    IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 
     string IDotOrderable.OrderingKey => Id;
 
@@ -73,7 +73,9 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     protected override DotAttributeCollection GetAttributes(DotSyntaxOptions options)
     {
         var result = base.GetAttributes(options);
-        if (!options.Clusters.PreferClusterAttribute)
+
+        // if the user sets the attribute to false explicitly, it's their choice, so let's preserve it
+        if (!options.Clusters.PreferClusterAttribute || result.ContainsKey(DotAttributeKeys.Cluster))
         {
             return result;
         }

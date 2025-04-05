@@ -15,7 +15,9 @@ public partial class DotGraphClustersAttributes : DotEntityAttributesWithMetadat
     {
     }
 
-    protected DotGraphClustersAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
+    protected DotGraphClustersAttributes(
+        DotAttributeCollection attributes,
+        Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
         DotGraphClustersStyleAttributes styleAttributes
     )
         : base(attributes, attributeKeyLookup)
@@ -23,11 +25,14 @@ public partial class DotGraphClustersAttributes : DotEntityAttributesWithMetadat
         Style = styleAttributes;
     }
 
+    /// <inheritdoc cref="IDotGraphClustersRootAttributes.Style"/>
     public DotGraphClustersStyleAttributes Style { get; }
 
+    /// <inheritdoc cref="IDotGraphClustersAttributes.EnableEdgeClipping"/>
     [DotAttributeKey(DotAttributeKeys.Compound)]
     public virtual partial bool? EnableEdgeClipping { get; set; }
 
+    /// <inheritdoc cref="IDotGraphClustersAttributes.VisualizationMode"/>
     [DotAttributeKey(DotAttributeKeys.ClusterRank)]
     public virtual partial DotClusterVisualizationMode? VisualizationMode { get; set; }
 }

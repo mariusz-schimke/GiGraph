@@ -16,9 +16,10 @@ public interface IDotSubgraphAttributes
     ///         renders a box around subgraph clusters, but doesn't draw a box around non-subgraph clusters.
     ///     </para>
     ///     <para>
-    ///         Since this library makes a strong distinction between subgraphs and clusters (in terms of what purpose they are used for
-    ///         and what attributes are settable on each of them), you should use a <see cref="DotCluster" /> rather than a subgraph with
-    ///         <see cref="IsCluster" /> set to <see langword="true" />.
+    ///         Note that this library makes a strong distinction between subgraphs and clusters (in terms of what purpose they are used
+    ///         for and what attributes are settable on each of them). Therefore, you should consider using a <see cref="DotCluster"/>
+    ///         rather than a <see cref="DotSubgraph"/> when your intention is to set the <see cref="IsCluster"/> attribute here to
+    ///         <see langword="true"/>.
     ///     </para>
     /// </summary>
     bool? IsCluster { get; set; }

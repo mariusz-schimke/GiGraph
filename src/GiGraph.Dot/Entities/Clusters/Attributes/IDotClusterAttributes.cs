@@ -3,6 +3,7 @@ using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Subgraphs;
+using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Html;
@@ -128,9 +129,13 @@ public interface IDotClusterAttributes
     ///         renders a box around subgraph clusters, but doesn't draw a box around non-subgraph clusters.
     ///     </para>
     ///     <para>
-    ///         Since this library makes a strong distinction between subgraphs and clusters (in terms of what purpose they are used for
-    ///         and what attributes are settable on each of them), you should use a <see cref="DotSubgraph"/> rather than a cluster with
-    ///         <see cref="IsCluster"/> set to <see langword="false"/>.
+    ///         For this attribute to be respected, set the <see cref="DotSyntaxOptions.ClusterOptions.PreferClusterAttribute"/> syntax
+    ///         option to <see langword="true"/> when generating the output script. In such case, the attribute will be included
+    ///         automatically on output script generation with the value of <see langword="true"/> (unless set otherwise explicitly).
+    ///         Note, however, that this library makes a strong distinction between subgraphs and clusters (in terms of what purpose they
+    ///         are used for and what attributes are settable on each of them). Therefore, you should consider using a
+    ///         <see cref="DotSubgraph"/> rather than a <see cref="DotCluster"/> when your intention is to set the
+    ///         <see cref="IsCluster"/> attribute here to <see langword="false"/>.
     ///     </para>
     /// </summary>
     bool? IsCluster { get; set; }
