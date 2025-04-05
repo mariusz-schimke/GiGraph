@@ -18,7 +18,7 @@ public interface IDotSubgraphAttributes
     ///     <para>
     ///         Note that this library makes a strong distinction between subgraphs and clusters (in terms of what purpose they are used
     ///         for and what attributes are settable on each of them). Therefore, you should consider using a <see cref="DotCluster"/>
-    ///         rather than a <see cref="DotSubgraph"/> when your intention is to set the <see cref="IsCluster"/> attribute to
+    ///         rather than a <see cref="DotSubgraph"/> when your intention is to set the <see cref="IsCluster"/> attribute here to
     ///         <see langword="true"/>.
     ///     </para>
     /// </summary>

@@ -10,7 +10,7 @@ namespace GiGraph.Dot.Entities.Tests.Clusters;
 public class DotClusterAttributeTest
 {
     [Fact]
-    public void cluster_with_a_cluster_attribute_preference_has_the_attribute_instead_of_an_id_prefix()
+    public void cluster_with_a_cluster_attribute_preference_has_the_attribute_set_to_true_instead_of_an_id_prefixed_with_cluster()
     {
         const string snapshotName = "cluster_with_cluster_attribute_preference";
 
@@ -28,11 +28,29 @@ public class DotClusterAttributeTest
             });
         });
 
-        var syntaxOptions = CreateSyntaxOptions(true);
+        // the attribute should be present in the output script with a value of true when not set explicitly
+        var syntaxOptions = CreateSyntaxOptions(preferClusterAttribute: true);
         Snapshot.Match(graph.Build(syntaxOptions: syntaxOptions), snapshotName);
 
-        // set this attribute explicitly, and it should be still overwritten with a value of true
-        cluster.Attributes.SetValue(a => a.IsCluster, false);
+        // the attribute should not be added to the collection when the graph is built
+        var isCluster = cluster.Attributes.GetValue(a => a.IsCluster);
+        Assert.Null(isCluster);
+    }
+
+    [Fact]
+    public void cluster_with_a_cluster_attribute_preference_and_the_attribute_set_to_false_should_be_written_as_is()
+    {
+        const string snapshotName = "cluster_with_cluster_attribute_preference_and_cluster_attribute_false";
+
+        var graph = new DotGraph();
+
+        var cluster = graph.Clusters.Add("c1", c =>
+        {
+            c.Attributes.SetValue(a => a.IsCluster, false);
+        });
+
+        // the attribute should be present in the output script with the value of false set above
+        var syntaxOptions = CreateSyntaxOptions(preferClusterAttribute: true);
         Snapshot.Match(graph.Build(syntaxOptions: syntaxOptions), snapshotName);
 
         // the value should stay intact after the graph is built
@@ -57,7 +75,7 @@ public class DotClusterAttributeTest
             });
         });
 
-        Snapshot.Match(graph.Build(syntaxOptions: CreateSyntaxOptions(false)), snapshotName);
+        Snapshot.Match(graph.Build(syntaxOptions: CreateSyntaxOptions(preferClusterAttribute: false)), snapshotName);
     }
 
     [Theory]
@@ -65,7 +83,7 @@ public class DotClusterAttributeTest
     [InlineData(false)]
     public void cluster_attribute_preference_determines_how_clusters_are_referred_to(bool preferClusterAttribute)
     {
-        var snapshotName = $"reference_to_cluster_with_cluster_attribute_preference_set_to_{preferClusterAttribute.ToString().ToLower()}";
+        var snapshotName = $"reference_to_cluster_with_cluster_attribute_preference_{preferClusterAttribute.ToString().ToLower()}";
 
         var graph = new DotGraph
         {
@@ -84,7 +102,7 @@ public class DotClusterAttributeTest
     [Fact]
     public void cluster_attribute_is_settable_when_no_cluster_attribute_preference_is_set()
     {
-        const string snapshotName = "cluster_with_cluster_attribute_specified_explicitly";
+        const string snapshotName = "cluster_with_no_cluster_attribute_preference_and_cluster_attribute_set";
 
         var graph = new DotGraph();
         graph.Clusters.Add("c1", c =>
@@ -92,7 +110,7 @@ public class DotClusterAttributeTest
             c.Attributes.SetValue(a => a.IsCluster, false);
         });
 
-        Snapshot.Match(graph.Build(syntaxOptions: CreateSyntaxOptions(false)), snapshotName);
+        Snapshot.Match(graph.Build(syntaxOptions: CreateSyntaxOptions(preferClusterAttribute: false)), snapshotName);
     }
 
     private static DotSyntaxOptions CreateSyntaxOptions(bool preferClusterAttribute) =>
