@@ -24,14 +24,14 @@ public class DotClusterId : DotId
     {
         const string cluster = "cluster";
 
-        if (options.Clusters.PreferClusterAttribute)
+        if (!options.Clusters.Discriminator.HasFlag(DotClusterDiscriminator.IdPrefix))
         {
             return _id;
         }
 
         return string.IsNullOrEmpty(_id)
             ? cluster
-            : $"{cluster}{options.Clusters.ClusterIdSeparator}{_id}";
+            : $"{cluster}{options.Clusters.IdPrefixSeparator}{_id}";
     }
 
     [return: NotNullIfNotNull(nameof(id))]

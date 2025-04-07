@@ -129,13 +129,18 @@ public interface IDotClusterAttributes
     ///         renders a box around subgraph clusters, but doesn't draw a box around non-subgraph clusters.
     ///     </para>
     ///     <para>
-    ///         For this attribute to be respected, set the <see cref="DotSyntaxOptions.ClusterOptions.PreferClusterAttribute"/> syntax
-    ///         option to <see langword="true"/> when generating the output script. In such case, the attribute will be included
-    ///         automatically on output script generation with the value of <see langword="true"/> (unless set otherwise explicitly).
-    ///         Note, however, that this library makes a strong distinction between subgraphs and clusters (in terms of what purpose they
-    ///         are used for and what attributes are settable on each of them). Therefore, you should consider using a
-    ///         <see cref="DotSubgraph"/> rather than a <see cref="DotCluster"/> when your intention is to set the
-    ///         <see cref="IsCluster"/> attribute here to <see langword="false"/>.
+    ///         Note: This library treats subgraphs and clusters as conceptually different types, with different intended uses and
+    ///         different sets of attributes. So if you're setting <see cref="IsCluster"/> to <see langword="false"/>, it's usually
+    ///         better to use a <see cref="DotSubgraph"/> instead of a <see cref="DotCluster"/>.
+    ///     </para>
+    ///     <para>
+    ///         To make sure this attribute is respected by Graphviz as the only cluster discriminator, set the
+    ///         <see cref="DotSyntaxOptions.ClusterOptions.Discriminator"/> property of cluster syntax options to
+    ///         <see cref="DotClusterDiscriminator.Attribute"/> when generating the output DOT script. This setting causes the attribute
+    ///         to be automatically included with a value of <see langword="true"/> in the output script in all clusters, except those
+    ///         where you explicitly set the <see cref="IsCluster"/> property to <see langword="false"/>. Also, such setting will disable
+    ///         using the "cluster" prefix in the IDs of clusters so that the attribute is the only way to identify clusters in the
+    ///         output DOT script.
     ///     </para>
     /// </summary>
     bool? IsCluster { get; set; }
