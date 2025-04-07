@@ -1926,7 +1926,7 @@ graph.Clusters.Add("C1");
 
 var options = new DotSyntaxOptions
 {
-    Clusters = { PreferClusterAttribute = true }
+    Clusters = { Discriminator = DotClusterDiscriminator.Attribute },
 };
 
 Console.WriteLine(graph.Build(syntaxOptions: options));
@@ -1943,7 +1943,7 @@ digraph
 }
 ```
 
-The *PreferClusterAttribute* is set to false by default, in which case the output script would look like this:
+The *Discriminator* is set to `DotClusterDiscriminator.IdPrefix` by default, in which case the output script would look like this:
 
 ```dot
 digraph
