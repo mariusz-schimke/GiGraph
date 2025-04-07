@@ -101,7 +101,7 @@ public partial class DotGraphSyntaxOptionsTest
         {
             Clusters =
             {
-                ClusterIdSeparator = "__"
+                IdPrefixSeparator = "__"
             }
         };
 

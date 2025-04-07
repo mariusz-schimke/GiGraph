@@ -74,8 +74,8 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     {
         var result = base.GetAttributes(options);
 
-        // if the user sets the attribute to false explicitly, it's their choice, so let's preserve it
-        if (!options.Clusters.PreferClusterAttribute || result.ContainsKey(DotAttributeKeys.Cluster))
+        // if the user sets the attribute to false explicitly, let's preserve it the way it is
+        if (!options.Clusters.Discriminator.HasFlag(DotClusterDiscriminator.Attribute) || result.ContainsKey(DotAttributeKeys.Cluster))
         {
             return result;
         }
