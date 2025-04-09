@@ -36,12 +36,12 @@ public partial class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDo
     /// <summary>
     ///     Sets size attributes.
     /// </summary>
-    /// <paramref name="width">
+    /// <param name="width">
     ///     The width to set.
-    /// </paramref>
-    /// <paramref name="height">
+    /// </param>
+    /// <param name="height">
     ///     The width to set.
-    /// </paramref>
+    /// </param>
     public virtual void Set(double? width, double? height)
     {
         Width = width;
@@ -51,15 +51,15 @@ public partial class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDo
     /// <summary>
     ///     Sets size attributes.
     /// </summary>
-    /// <paramref name="width">
+    /// <param name="width">
     ///     The width to set.
-    /// </paramref>
-    /// <paramref name="height">
+    /// </param>
+    /// <param name="height">
     ///     The width to set.
-    /// </paramref>
-    /// <paramref name="mode">
+    /// </param>
+    /// <param name="mode">
     ///     The sizing mode to set.
-    /// </paramref>
+    /// </param>
     public virtual void Set(double? width, double? height, DotNodeSizing? mode)
     {
         Set(width, height);
@@ -75,6 +75,20 @@ public partial class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDo
     public virtual void Set(DotSize attributes)
     {
         Set(attributes.Width, attributes.Height);
+    }
+
+    /// <summary>
+    ///     Sets size attributes.
+    /// </summary>
+    /// <param name="attributes">
+    ///     The attributes to set.
+    /// </param>
+    /// <param name="mode">
+    ///     The sizing mode to set.
+    /// </param>
+    public virtual void Set(DotSize attributes, DotNodeSizing? mode)
+    {
+        Set(attributes.Width, attributes.Height, mode);
     }
 
     /// <summary>
