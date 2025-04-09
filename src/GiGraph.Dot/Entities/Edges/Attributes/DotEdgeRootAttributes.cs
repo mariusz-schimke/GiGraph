@@ -123,9 +123,9 @@ public partial class DotEdgeRootAttributes : DotEntityAttributesWithMetadata<IDo
     [DotAttributeKey(DotAttributeKeys.Dir)]
     public virtual partial DotEdgeDirections? Directions { get; set; }
 
-    /// <inheritdoc cref="IDotEdgeAttributes.AttachLabel"/>
+    /// <inheritdoc cref="IDotEdgeAttributes.DrawLabelConnector"/>
     [DotAttributeKey(DotAttributeKeys.Decorate)]
-    public virtual partial bool? AttachLabel { get; set; }
+    public virtual partial bool? DrawLabelConnector { get; set; }
 
     /// <inheritdoc cref="IDotEdgeAttributes.EnableLabelFloating"/>
     [DotAttributeKey(DotAttributeKeys.LabelFloat)]

@@ -58,7 +58,7 @@
     "Edge": "Constrain: Boolean?"
   },
   "decorate": {
-    "Edge": "AttachLabel: Boolean?"
+    "Edge": "DrawLabelConnector: Boolean?"
   },
   "dir": {
     "Edge": "Directions: DotEdgeDirections?"

@@ -148,7 +148,7 @@ public interface IDotEdgeAttributes
     ///     If true, attaches label to the edge by a 2-segment polyline, underlining the label, then going to the closest point of
     ///     spline. Default: false.
     /// </summary>
-    bool? AttachLabel { get; set; }
+    bool? DrawLabelConnector { get; set; }
 
     /// <summary>
     ///     If false, the edge is not used in ranking the nodes (dot only, default: true). See

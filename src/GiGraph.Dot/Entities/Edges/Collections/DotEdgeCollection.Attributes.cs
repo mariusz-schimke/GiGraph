@@ -116,11 +116,11 @@ public partial class DotEdgeCollection : IDotEdgeRootAttributes
         set => Attributes.Implementation.Directions = value;
     }
 
-    /// <inheritdoc cref="IDotEdgeAttributes.AttachLabel"/>
-    public virtual bool? AttachLabel
+    /// <inheritdoc cref="IDotEdgeAttributes.DrawLabelConnector"/>
+    public virtual bool? DrawLabelConnector
     {
-        get => Attributes.Implementation.AttachLabel;
-        set => Attributes.Implementation.AttachLabel = value;
+        get => Attributes.Implementation.DrawLabelConnector;
+        set => Attributes.Implementation.DrawLabelConnector = value;
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.Constrain"/>
