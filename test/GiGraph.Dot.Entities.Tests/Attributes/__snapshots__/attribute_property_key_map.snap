@@ -55,7 +55,7 @@
     "Graph": "Layout.ConcentrateEdges: Boolean?"
   },
   "constraint": {
-    "Edge": "Constrain: Boolean?"
+    "Edge": "IncludeInNodeRanking: Boolean?"
   },
   "decorate": {
     "Edge": "DrawLabelConnector: Boolean?"

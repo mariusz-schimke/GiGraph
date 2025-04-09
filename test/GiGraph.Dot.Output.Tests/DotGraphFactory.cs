@@ -87,7 +87,7 @@ public class DotGraphFactory
 
         graph.Edges.AddSequence(edge =>
         {
-            edge.Constrain = true;
+            edge.IncludeInNodeRanking = true;
             edge.Style.LineStyle = DotLineStyle.Solid;
         }, "node4", DotSubgraph.FromNodes("snode1", "snode2"), "node5");
 

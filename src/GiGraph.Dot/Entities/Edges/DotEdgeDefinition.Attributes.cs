@@ -121,11 +121,11 @@ public abstract partial class DotEdgeDefinition : IDotEdgeRootAttributes
         set => Attributes.Implementation.DrawLabelConnector = value;
     }
 
-    /// <inheritdoc cref="IDotEdgeAttributes.Constrain"/>
-    public virtual bool? Constrain
+    /// <inheritdoc cref="IDotEdgeAttributes.IncludeInNodeRanking"/>
+    public virtual bool? IncludeInNodeRanking
     {
-        get => Attributes.Implementation.Constrain;
-        set => Attributes.Implementation.Constrain = value;
+        get => Attributes.Implementation.IncludeInNodeRanking;
+        set => Attributes.Implementation.IncludeInNodeRanking = value;
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.Comment"/>

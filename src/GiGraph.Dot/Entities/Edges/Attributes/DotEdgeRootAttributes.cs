@@ -135,9 +135,9 @@ public partial class DotEdgeRootAttributes : DotEntityAttributesWithMetadata<IDo
     [DotAttributeKey(DotAttributeKeys.NoJustify)]
     public virtual partial bool? DisableLabelJustification { get; set; }
 
-    /// <inheritdoc cref="IDotEdgeAttributes.Constrain"/>
+    /// <inheritdoc cref="IDotEdgeAttributes.IncludeInNodeRanking"/>
     [DotAttributeKey(DotAttributeKeys.Constraint)]
-    public virtual partial bool? Constrain { get; set; }
+    public virtual partial bool? IncludeInNodeRanking { get; set; }
 
     /// <inheritdoc cref="IDotEdgeAttributes.ObjectId"/>
     [DotAttributeKey(DotAttributeKeys.Id)]

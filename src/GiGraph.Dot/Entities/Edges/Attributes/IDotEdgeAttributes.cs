@@ -1,7 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Html.Builder;
-using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
@@ -151,13 +150,15 @@ public interface IDotEdgeAttributes
     bool? DrawLabelConnector { get; set; }
 
     /// <summary>
-    ///     If false, the edge is not used in ranking the nodes (dot only, default: true). See
-    ///     <see href="https://www.graphviz.org/docs/attrs/constraint">
-    ///         documentation
+    ///     Determines whether this edge should be included in node ranking during layout computation (i.e., whether it affects the
+    ///     relative positioning of nodes along the rank axis). Applicable only to the dot layout engine (default: true). When set to
+    ///     false, the edge is drawn, but does not influence the layout of connected nodes. See
+    ///     <see href="https://graphviz.org/docs/attrs/constraint">
+    ///         Graphviz documentation
     ///     </see>
-    ///     for more details.
+    ///     for details.
     /// </summary>
-    bool? Constrain { get; set; }
+    bool? IncludeInNodeRanking { get; set; }
 
     /// <summary>
     ///     Comments are inserted into output. Device-dependent.
