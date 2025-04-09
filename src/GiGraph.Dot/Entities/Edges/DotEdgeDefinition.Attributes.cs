@@ -100,6 +100,7 @@ public abstract partial class DotEdgeDefinition : IDotEdgeRootAttributes
         set => Attributes.Implementation.Tooltip = value;
     }
 
+    /// <inheritdoc cref="IDotEdgeAttributes.ArrowheadScaleFactor"/>
     public virtual double? ArrowheadScaleFactor
     {
         get => Attributes.Implementation.ArrowheadScaleFactor;
