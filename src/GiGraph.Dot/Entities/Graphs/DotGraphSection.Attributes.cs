@@ -4,7 +4,6 @@ using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs;
@@ -14,11 +13,11 @@ public partial class DotGraphSection : IDotGraphRootAttributes
     // hidden by explicit implementation because they are exposed through the Clusters collection property
     DotGraphClustersAttributes IDotGraphRootAttributes.Clusters => Attributes.Implementation.Clusters;
 
+    /// <inheritdoc cref="IDotGraphRootAttributes.Style"/>
+    public DotGraphStyleAttributes Style => Attributes.Implementation.Style;
+
     /// <inheritdoc cref="IDotGraphRootAttributes.Font"/>
     public DotGraphFontAttributes Font => Attributes.Implementation.Font;
-
-    /// <inheritdoc cref="IDotGraphRootAttributes.Style"/>
-    public DotGraphStyleAttributeOptions Style => Attributes.Implementation.Style;
 
     /// <inheritdoc cref="IDotGraphRootAttributes.SvgStyleSheet"/>
     public DotGraphSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
@@ -62,13 +61,6 @@ public partial class DotGraphSection : IDotGraphRootAttributes
         set => Attributes.Implementation.DisableLabelJustification = value;
     }
 
-    /// <inheritdoc cref="IDotGraphAttributes.ColorScheme"/>
-    public virtual string? ColorScheme
-    {
-        get => Attributes.Implementation.ColorScheme;
-        set => Attributes.Implementation.ColorScheme = value;
-    }
-
     /// <inheritdoc cref="IDotGraphAttributes.Charset"/>
     public virtual string? Charset
     {
@@ -95,13 +87,6 @@ public partial class DotGraphSection : IDotGraphRootAttributes
     {
         get => Attributes.Implementation.ImageDirectories;
         set => Attributes.Implementation.ImageDirectories = value;
-    }
-
-    /// <inheritdoc cref="IDotGraphAttributes.RootNodeId"/>
-    public virtual DotId? RootNodeId
-    {
-        get => Attributes.Implementation.RootNodeId;
-        set => Attributes.Implementation.RootNodeId = value;
     }
 
     /// <inheritdoc cref="IDotGraphAttributes.ObjectId"/>

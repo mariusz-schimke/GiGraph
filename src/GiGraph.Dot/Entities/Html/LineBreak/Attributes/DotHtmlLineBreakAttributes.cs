@@ -20,6 +20,7 @@ public partial class DotHtmlLineBreakAttributes : DotHtmlElementAttributes<IDotH
     {
     }
 
+    /// <inheritdoc cref="IDotHtmlLineBreakAttributes.LineAlignment"/>
     [DotAttributeKey("align")]
     public virtual partial DotHorizontalAlignment? LineAlignment { get; set; }
 }

@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics.Contracts;
+using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Arrowheads;
@@ -12,6 +13,7 @@ namespace GiGraph.Dot.Examples.Complex;
 
 public static class WithCustomStyles
 {
+    [Pure]
     public static DotGraph Generate()
     {
         var graph = new DotGraph();
@@ -79,7 +81,7 @@ public static class WithCustomStyles
             // a rectangular node with a striped fill
             sg.Nodes.Add("STRIPED", node =>
             {
-                node.Color = Color.Transparent;
+                node.Style.Color = Color.Transparent;
 
                 node.SetStripedFill(
                     new DotWeightedColor(Color.Navy, 0.1),
@@ -92,7 +94,7 @@ public static class WithCustomStyles
             sg.Nodes.Add("WEDGED", node =>
             {
                 node.Shape = DotNodeShape.Circle;
-                node.Color = Color.Transparent;
+                node.Style.Color = Color.Transparent;
 
                 node.SetWedgedFill(
                     Color.Orange,
@@ -107,11 +109,11 @@ public static class WithCustomStyles
         // a subgraph example – to override global attributes for a group of nodes and/or edges
         graph.Subgraphs.Add(sg =>
         {
-            sg.Nodes.Color = Color.RoyalBlue;
-            sg.Nodes.FillColor = Color.Orange;
+            sg.Nodes.Style.Color = Color.RoyalBlue;
+            sg.Nodes.Style.FillColor = Color.Orange;
             sg.Nodes.Shape = DotNodeShape.Circle;
 
-            sg.Edges.Color = Color.RoyalBlue;
+            sg.Edges.Style.Color = Color.RoyalBlue;
 
             sg.Edges.Add("A", "B").Label = "PLAIN COLOR";
         });

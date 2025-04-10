@@ -19,11 +19,11 @@ public partial class DotLabelAlignmentAttributes : DotEntityAttributesWithMetada
     {
     }
 
-    /// <inheritdoc cref="IDotLabelAlignmentAttributes.Horizontal" />
+    /// <inheritdoc cref="IDotLabelAlignmentAttributes.Horizontal"/>
     [DotAttributeKey(DotAttributeKeys.LabelJust)]
     public virtual partial DotHorizontalAlignment? Horizontal { get; set; }
 
-    /// <inheritdoc cref="IDotLabelAlignmentAttributes.Vertical" />
+    /// <inheritdoc cref="IDotLabelAlignmentAttributes.Vertical"/>
     [DotAttributeKey(DotAttributeKeys.LabelLoc)]
     public virtual partial DotVerticalAlignment? Vertical { get; set; }
 
@@ -62,16 +62,5 @@ public partial class DotLabelAlignmentAttributes : DotEntityAttributesWithMetada
     public virtual void Set(DotAlignmentProperties alignment)
     {
         Set(alignment.Horizontal, alignment.Vertical);
-    }
-
-    /// <summary>
-    ///     Copies label alignment attributes from the specified instance.
-    /// </summary>
-    /// <param name="attributes">
-    ///     The instance to copy the attributes from.
-    /// </param>
-    public virtual void Set(IDotLabelAlignmentAttributes attributes)
-    {
-        Set(attributes.Horizontal, attributes.Vertical);
     }
 }

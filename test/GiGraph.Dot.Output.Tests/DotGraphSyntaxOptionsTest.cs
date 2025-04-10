@@ -101,7 +101,7 @@ public partial class DotGraphSyntaxOptionsTest
         {
             Clusters =
             {
-                ClusterIdSeparator = "__"
+                IdPrefixSeparator = "__"
             }
         };
 
@@ -114,7 +114,7 @@ public partial class DotGraphSyntaxOptionsTest
     {
         var graph = new DotGraph
         {
-            Canvas =
+            Style =
             {
                 BackgroundColor = Color.Brown
             }

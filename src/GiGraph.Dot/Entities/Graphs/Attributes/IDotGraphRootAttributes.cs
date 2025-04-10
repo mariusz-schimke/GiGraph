@@ -11,14 +11,14 @@ public interface IDotGraphRootAttributes : IDotGraphAttributes
     DotGraphClustersAttributes Clusters { get; }
 
     /// <summary>
+    ///     Style attributes.
+    /// </summary>
+    new DotGraphStyleAttributes Style { get; }
+
+    /// <summary>
     ///     Font attributes.
     /// </summary>
     DotGraphFontAttributes Font { get; }
-
-    /// <summary>
-    ///     Style options. Note that the options are shared with those specified for <see cref="Clusters" />.
-    /// </summary>
-    new DotGraphStyleAttributeOptions Style { get; }
 
     /// <summary>
     ///     Style sheet attributes used for SVG output.

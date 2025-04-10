@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics.Contracts;
+using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Html.Table;
 using GiGraph.Dot.Extensions;
@@ -10,6 +11,7 @@ namespace GiGraph.Dot.Examples.Html;
 
 public static class HtmlTableNode
 {
+    [Pure]
     public static DotGraph Generate()
     {
         var graph = new DotGraph();

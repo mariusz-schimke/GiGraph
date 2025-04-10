@@ -1,6 +1,4 @@
-﻿using GiGraph.Dot.Types.Clusters;
-using GiGraph.Dot.Types.Colors;
-using GiGraph.Dot.Types.Geometry;
+﻿using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Graphs;
 using GiGraph.Dot.Types.Orientation;
 using GiGraph.Dot.Types.Viewport;
@@ -10,54 +8,25 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes;
 public interface IDotGraphCanvasAttributes
 {
     /// <summary>
-    ///     <para>
-    ///         Gets or sets the background color of the graph (default: none). Used as the background for entire canvas.
-    ///     </para>
-    ///     <para>
-    ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; applying
-    ///         the <see cref="DotClusterFillStyle.Radial" /> fill style to the graph will cause a radial fill. If the second color is
-    ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
-    ///         <see cref="GradientFillAngle" /> attribute for setting a gradient angle.
-    ///     </para>
-    ///     <para>
-    ///         For certain output formats, such as PostScript, no fill is done for the root graph unless background color is explicitly
-    ///         set. For bitmap formats, however, the bits need to be initialized to something, so the canvas is filled with white by
-    ///         default. This means that if the bitmap output is included in some other document, all of the bits within the bitmap
-    ///         bounding box will be set, overwriting whatever color or graphics were already on the page. If this effect is not desired,
-    ///         and you only want to set bits explicitly assigned in drawing the graph, set <see cref="BackgroundColor" /> =
-    ///         <see cref="System.Drawing.Color.Transparent" />.
-    ///     </para>
-    /// </summary>
-    DotColorDefinition? BackgroundColor { get; set; }
-
-    /// <summary>
-    ///     If a gradient fill is being used, this determines the angle of the fill. For linear fills, the colors transform along a line
-    ///     specified by the angle and the center of the object. For radial fills, a value of zero causes the colors to transform
-    ///     radially from the center; for non-zero values, the colors transform from a point near the object's periphery as specified by
-    ///     the value. If unset, the default angle is 0.
-    /// </summary>
-    int? GradientFillAngle { get; set; }
-
-    /// <summary>
     ///     If true, the drawing is centered in the output canvas (default: false).
     /// </summary>
     bool? CenterDrawing { get; set; }
 
     /// <summary>
-    ///     Sets graph orientation to landscape or portrait (default). Used only if <see cref="OrientationAngle" /> is not defined. See
-    ///     also <see cref="LandscapeOrientation" />.
+    ///     Sets graph orientation to landscape or portrait (default). Used only if <see cref="OrientationAngle"/> is not defined. See
+    ///     also <see cref="LandscapeOrientation"/>.
     /// </summary>
     DotOrientation? Orientation { get; set; }
 
     /// <summary>
-    ///     If 90, sets drawing orientation to landscape (default: 0). See also <see cref="Orientation" /> and
-    ///     <see cref="LandscapeOrientation" />.
+    ///     If 90, sets drawing orientation to landscape (default: 0). See also <see cref="Orientation"/> and
+    ///     <see cref="LandscapeOrientation"/>.
     /// </summary>
     int? OrientationAngle { get; set; }
 
     /// <summary>
-    ///     If true, the graph is rendered in landscape mode (default: false). Synonymous with <see cref="OrientationAngle" /> = 90 or
-    ///     <see cref="Orientation" /> = <see cref="DotOrientation.Landscape" />.
+    ///     If true, the graph is rendered in landscape mode (default: false). Synonymous with <see cref="OrientationAngle"/> = 90 or
+    ///     <see cref="Orientation"/> = <see cref="DotOrientation.Landscape"/>.
     /// </summary>
     bool? LandscapeOrientation { get; set; }
 
@@ -69,7 +38,7 @@ public interface IDotGraphCanvasAttributes
     double? Dpi { get; set; }
 
     /// <summary>
-    ///     This is a synonym for the <see cref="Dpi" /> attribute (svg, bitmap output only; default: 96.0, 0.0).
+    ///     This is a synonym for the <see cref="Dpi"/> attribute (svg, bitmap output only; default: 96.0, 0.0).
     /// </summary>
     double? Resolution { get; set; }
 
@@ -83,12 +52,12 @@ public interface IDotGraphCanvasAttributes
     ///         given size.
     ///     </para>
     ///     <para>
-    ///         If <see cref="DotPoint.IsFixed" /> is set, then the size specified is taken to be the desired size. In this case, if both
+    ///         If <see cref="DotPoint.IsFixed"/> is set, then the size specified is taken to be the desired size. In this case, if both
     ///         dimensions of the drawing are less than size, the drawing is scaled up uniformly until at least one dimension equals its
     ///         dimension in size.
     ///     </para>
     ///     <para>
-    ///         Note that there is some interaction between the <see cref="Size" /> and the <see cref="Scaling" /> attributes.
+    ///         Note that there is some interaction between the <see cref="Size"/> and the <see cref="Scaling"/> attributes.
     ///     </para>
     /// </summary>
     DotPoint? Size { get; set; }
@@ -113,7 +82,7 @@ public interface IDotGraphCanvasAttributes
     ///     <para>
     ///         Note that the margin is not part of the drawing but just empty space left around the drawing. It basically corresponds to
     ///         a translation of drawing, as would be necessary to center a drawing on a page. Nothing is actually drawn in the margin.
-    ///         To actually extend the background of a drawing, see the <see cref="Padding" /> attribute.
+    ///         To actually extend the background of a drawing, see the <see cref="Padding"/> attribute.
     ///     </para>
     /// </summary>
     DotPoint? Margin { get; set; }
@@ -121,30 +90,30 @@ public interface IDotGraphCanvasAttributes
     /// <summary>
     ///     <para>
     ///         Gets or sets the aspect ratio (drawing height / drawing width) for the drawing. Note that this is adjusted before the
-    ///         <see cref="Size" /> attribute constraints are enforced. In addition, the calculations usually ignore the node sizes, so
+    ///         <see cref="Size"/> attribute constraints are enforced. In addition, the calculations usually ignore the node sizes, so
     ///         the final drawing size may only approximate what is desired.
     ///     </para>
     ///     <para>
-    ///         If ratio is numeric (<see cref="DotGraphScalingAspectRatio" />), it is taken as the desired aspect ratio. Then, if the
+    ///         If ratio is numeric (<see cref="DotGraphScalingAspectRatio"/>), it is taken as the desired aspect ratio. Then, if the
     ///         actual aspect ratio is less than the desired ratio, the drawing height is scaled up to achieve the desired ratio; if the
     ///         actual ratio is greater than that desired ratio, the drawing width is scaled up.
     ///     </para>
     ///     <para>
-    ///         See also <see cref="DotGraphScaling" /> for non-numeric options of the ratio.
+    ///         See also <see cref="DotGraphScaling"/> for non-numeric options of the ratio.
     ///     </para>
     /// </summary>
     DotGraphScalingDefinition? Scaling { get; set; }
 
     /// <summary>
     ///     <para>
-    ///         Gets or sets the clipping window on final drawing. Supersedes any <see cref="Size" /> attribute. The width and height of
+    ///         Gets or sets the clipping window on final drawing. Supersedes any <see cref="Size"/> attribute. The width and height of
     ///         the viewport specify precisely the final size of the output.
     ///     </para>
     ///     <para>
-    ///         To specify width, height, and zoom of the final drawing, use <see cref="DotViewport" />. To also specify a central point
-    ///         of the drawing, use <see cref="DotPointCenteredViewport" />, or, to specify a node as a central point, use
-    ///         <see cref="DotNodeCenteredViewport" />. By default, the focus is the center of the graph bounding box, i.e., (bbx / 2,
-    ///         bby / 2), where "bbx, bby" is the value of the bounding box attribute bb.
+    ///         To specify width, height, and zoom of the final drawing, use <see cref="DotViewport"/>. To also specify a central point
+    ///         of the drawing, use <see cref="DotPointCenteredViewport"/>, or, to specify a node as a central point, use
+    ///         <see cref="DotNodeCenteredViewport"/>. By default, the focus is the center of the graph bounding box, i.e., (bbx / 2, bby
+    ///         / 2), where "bbx, bby" is the value of the bounding box attribute bb.
     ///     </para>
     /// </summary>
     DotViewport? Viewport { get; set; }

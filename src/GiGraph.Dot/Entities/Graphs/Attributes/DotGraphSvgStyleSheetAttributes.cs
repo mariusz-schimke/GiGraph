@@ -19,7 +19,7 @@ public partial class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttribute
     {
     }
 
-    /// <inheritdoc cref="IDotGraphSvgStyleSheetAttributes.Url" />
+    /// <inheritdoc cref="IDotGraphSvgStyleSheetAttributes.Url"/>
     [DotAttributeKey(DotAttributeKeys.SvgStyleSheet)]
     public virtual partial string? Url { get; set; }
 
@@ -36,16 +36,5 @@ public partial class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttribute
     {
         Url = url;
         Class = @class;
-    }
-
-    /// <summary>
-    ///     Copies style sheet attributes from the specified instance.
-    /// </summary>
-    /// <param name="attributes">
-    ///     The instance to copy the attributes from.
-    /// </param>
-    public virtual void Set(IDotGraphSvgStyleSheetAttributes attributes)
-    {
-        Set(attributes.Url, attributes.Class);
     }
 }

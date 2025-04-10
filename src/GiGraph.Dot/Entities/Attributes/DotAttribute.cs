@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Contracts;
 using GiGraph.Dot.Helpers;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Options;
@@ -20,7 +21,7 @@ public abstract class DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable,
 
     public virtual bool HasValue => GetValue() is not null;
 
-    /// <inheritdoc cref="IDotAnnotatable.Annotation" />
+    /// <inheritdoc cref="IDotAnnotatable.Annotation"/>
     public virtual string? Annotation { get; set; }
 
     string? IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
@@ -50,6 +51,7 @@ public abstract class DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable,
     /// <param name="key">
     ///     The key to check.
     /// </param>
+    [Pure]
     public bool HasKey(string key) => string.Equals(Key, key, StringComparison.Ordinal);
 
     /// <summary>

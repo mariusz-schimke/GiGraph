@@ -3,5 +3,11 @@
     subgraph "cluster c1"
     {
         cluster = false
+
+        n1
+
+        color = red
+
+        n2
     }
 }

@@ -16,11 +16,11 @@ public partial class DotFillableExtensionTest
         var graph = new DotGraph();
 
         graph.Clusters.Add("", c =>
-                c.Style.Set(DotClusterFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true)
+                c.Style.SetStyleModifiers(DotClusterFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true)
             )
             .SetPlainColorFill(Color.Red);
 
-        graph.Clusters.Style.Set(DotClusterFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true);
+        graph.Clusters.Style.SetStyleModifiers(DotClusterFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true);
         graph.Clusters.SetPlainColorFill(Color.Red);
 
         Snapshot.Match(graph.Build(), "gradient_fill_on_clusters_with_other_styles_set");

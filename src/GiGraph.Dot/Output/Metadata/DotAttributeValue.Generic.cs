@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Contracts;
 using System.Reflection;
 using GiGraph.Dot.Output.EnumHelpers;
 
@@ -191,6 +192,7 @@ public static class DotAttributeValue<TAttribute>
     /// <typeparam name="TEnum">
     ///     The type of the enumeration whose value mapping to get.
     /// </typeparam>
+    [Pure]
     public static Dictionary<TEnum, string?> GetMapping<TEnum>()
         where TEnum : struct, Enum
     {
