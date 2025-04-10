@@ -8,7 +8,7 @@ public interface IDotSubgraphAttributes
     /// <summary>
     ///     Gets or sets the rank constraints on the nodes in the subgraph (dot only).
     /// </summary>
-    DotRankAlignment? NodeRankAlignment { get; set; }
+    DotRank? NodeRank { get; set; }
 
     /// <summary>
     ///     <para>

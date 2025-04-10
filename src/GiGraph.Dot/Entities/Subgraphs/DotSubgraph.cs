@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Subgraphs;
 
 /// <summary>
 ///     <para>
-///         Represents a subgraph as a collection of nodes that may be constrained within one rank (see <see cref="DotRankAlignment" />). Use
+///         Represents a subgraph as a collection of nodes that may be constrained within one rank (see <see cref="DotRank" />). Use
 ///         a subgraph when you want to have more granular control on the layout or style of the nodes it contains. However, when you
 ///         want the nodes to be displayed together in a bounding box, use a cluster subgraph instead (<see cref="DotCluster" /> ).
 ///     </para>
@@ -29,28 +29,28 @@ public class DotSubgraph : DotSubgraphSection, IDotGraph, IDotOrderable
     /// <param name="id">
     ///     The identifier to assign to the subgraph.
     /// </param>
-    /// <param name="nodeRankAlignment">
+    /// <param name="nodeRank">
     ///     The rank constraints to apply to the nodes in the subgraph.
     /// </param>
-    public DotSubgraph(string? id = null, DotRankAlignment? nodeRankAlignment = null)
+    public DotSubgraph(string? id = null, DotRank? nodeRank = null)
         : this(new DotSubgraphSection(), new DotGraphSectionCollection<DotSubgraphSection>())
     {
         Id = id;
 
-        if (nodeRankAlignment.HasValue)
+        if (nodeRank.HasValue)
         {
-            NodeRankAlignment = nodeRankAlignment;
+            NodeRank = nodeRank;
         }
     }
 
     /// <summary>
     ///     Creates a new subgraph.
     /// </summary>
-    /// <param name="nodeRankAlignment">
+    /// <param name="nodeRank">
     ///     The rank constraints to apply to the nodes in the subgraph.
     /// </param>
-    public DotSubgraph(DotRankAlignment? nodeRankAlignment)
-        : this(id: null, nodeRankAlignment)
+    public DotSubgraph(DotRank? nodeRank)
+        : this(id: null, nodeRank)
     {
     }
 
@@ -94,7 +94,7 @@ public class DotSubgraph : DotSubgraphSection, IDotGraph, IDotOrderable
     /// <param name="nodeIds">
     ///     The identifiers of nodes to populate the subgraph with.
     /// </param>
-    public static DotSubgraph FromNodes(params string[] nodeIds) => FromNodes(nodeIds, nodeRankAlignment: null);
+    public static DotSubgraph FromNodes(params string[] nodeIds) => FromNodes(nodeIds, nodeRank: null);
 
     /// <summary>
     ///     Creates a new subgraph, and populates it with the specified nodes.
@@ -102,24 +102,24 @@ public class DotSubgraph : DotSubgraphSection, IDotGraph, IDotOrderable
     /// <param name="id">
     ///     The identifier to assign to the subgraph.
     /// </param>
-    /// <param name="nodeRankAlignment">
+    /// <param name="nodeRank">
     ///     The rank constraints to apply to the nodes in the subgraph.
     /// </param>
     /// <param name="nodeIds">
     ///     The identifiers of nodes to populate the subgraph with.
     /// </param>
-    public static DotSubgraph FromNodes(string id, DotRankAlignment? nodeRankAlignment, params string[] nodeIds) => FromNodes(nodeIds, nodeRankAlignment, id);
+    public static DotSubgraph FromNodes(string id, DotRank? nodeRank, params string[] nodeIds) => FromNodes(nodeIds, nodeRank, id);
 
     /// <summary>
     ///     Creates a new subgraph, and populates it with the specified nodes.
     /// </summary>
-    /// <param name="nodeRankAlignment">
+    /// <param name="nodeRank">
     ///     The rank constraints to apply to the nodes in the subgraph.
     /// </param>
     /// <param name="nodeIds">
     ///     The identifiers of nodes to populate the subgraph with.
     /// </param>
-    public static DotSubgraph FromNodes(DotRankAlignment? nodeRankAlignment, params string[] nodeIds) => FromNodes(nodeIds, nodeRankAlignment);
+    public static DotSubgraph FromNodes(DotRank? nodeRank, params string[] nodeIds) => FromNodes(nodeIds, nodeRank);
 
     /// <summary>
     ///     Creates a new subgraph, and populates it with the specified nodes.
@@ -127,15 +127,15 @@ public class DotSubgraph : DotSubgraphSection, IDotGraph, IDotOrderable
     /// <param name="nodeIds">
     ///     The identifiers of nodes to populate the subgraph with.
     /// </param>
-    /// <param name="nodeRankAlignment">
+    /// <param name="nodeRank">
     ///     The rank constraints to apply to the nodes in the subgraph.
     /// </param>
     /// <param name="id">
     ///     The identifier to assign to the subgraph.
     /// </param>
-    public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, DotRankAlignment? nodeRankAlignment = null, string? id = null)
+    public static DotSubgraph FromNodes(IEnumerable<string> nodeIds, DotRank? nodeRank = null, string? id = null)
     {
-        var result = new DotSubgraph(id, nodeRankAlignment);
+        var result = new DotSubgraph(id, nodeRank);
         result.Nodes.AddRange(nodeIds);
         return result;
     }

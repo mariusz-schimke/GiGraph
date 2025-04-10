@@ -294,9 +294,9 @@
     "Node": "Geometry.Peripheries: Int32?"
   },
   "rank": {
-    "Graph": "Layout.NodeRankAlignment: DotRankAlignment?",
-    "Subgraph": "NodeRankAlignment: DotRankAlignment?",
-    "Cluster": "NodeRankAlignment: DotRankAlignment?"
+    "Graph": "Layout.NodeRank: DotRank?",
+    "Subgraph": "NodeRank: DotRank?",
+    "Cluster": "NodeRank: DotRank?"
   },
   "rankdir": {
     "Graph": "Layout.Direction: DotLayoutDirection?"
@@ -389,7 +389,7 @@
     "Edge": "Hyperlink.Target: DotEscapeString"
   },
   "TBbalance": {
-    "Graph": "Layout.FloatingNodeRankAlignment: DotRankAlignment?"
+    "Graph": "Layout.FloatingNodeRank: DotRank?"
   },
   "tooltip": {
     "Graph": "Tooltip: DotEscapeString",

@@ -93,13 +93,13 @@ public interface IDotGraphLayoutAttributes
     /// <summary>
     ///     Gets or sets the rank constraints on the nodes in the graph (dot only). See also <see cref="EnableGlobalRanking"/>.
     /// </summary>
-    DotRankAlignment? NodeRankAlignment { get; set; }
+    DotRank? NodeRank { get; set; }
 
     /// <summary>
-    ///     Determines which rank to move floating (loose) nodes to. The valid options are <see cref="DotRankAlignment.Min"/> or
-    ///     <see cref="DotRankAlignment.Max"/>. Otherwise, floating nodes are placed anywhere.
+    ///     Determines which rank to move floating (loose) nodes to. The valid options are <see cref="DotRank.Min"/> or
+    ///     <see cref="DotRank.Max"/>. Otherwise, floating nodes are placed anywhere.
     /// </summary>
-    DotRankAlignment? FloatingNodeRankAlignment { get; set; }
+    DotRank? FloatingNodeRank { get; set; }
 
     /// <summary>
     ///     <para>
@@ -168,12 +168,12 @@ public interface IDotGraphLayoutAttributes
     ///         The original ranking algorithm in dot is recursive on clusters. This can produce fewer ranks and a more compact layout,
     ///         but sometimes at the cost of a head node being placed on a higher rank than the tail node. It also assumes that a node is
     ///         not constrained in separate, incompatible subgraphs. For example, a node cannot be in a cluster and also be constrained
-    ///         by a rank of <see cref="DotRankAlignment.Same"/> with a node not in the cluster (see
-    ///         <see cref="IDotSubgraphAttributes.NodeRankAlignment"/> on subgraph attributes).
+    ///         by a rank of <see cref="DotRank.Same"/> with a node not in the cluster (see
+    ///         <see cref="IDotSubgraphAttributes.NodeRank"/> on subgraph attributes).
     ///     </para>
     ///     <para>
     ///         This allows nodes to be subject to multiple constraints. Rank constraints will usually take precedence over edge
-    ///         constraints. See also <see cref="NodeRankAlignment"/>.
+    ///         constraints. See also <see cref="NodeRank"/>.
     ///     </para>
     /// </summary>
     bool? EnableGlobalRanking { get; set; }

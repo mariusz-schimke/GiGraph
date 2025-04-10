@@ -25,9 +25,9 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     {
     }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.FloatingNodeRankAlignment"/>
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.FloatingNodeRank"/>
     [DotAttributeKey(DotAttributeKeys.TbBalance)]
-    public virtual partial DotRankAlignment? FloatingNodeRankAlignment { get; set; }
+    public virtual partial DotRank? FloatingNodeRank { get; set; }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.Rotation"/>
     [DotAttributeKey(DotAttributeKeys.Rotation)]
@@ -45,9 +45,9 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     [DotAttributeKey(DotAttributeKeys.NewRank)]
     public virtual partial bool? EnableGlobalRanking { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeRankAlignment"/>
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.NodeRank"/>
     [DotAttributeKey(DotAttributeKeys.Rank)]
-    public virtual partial DotRankAlignment? NodeRankAlignment { get; set; }
+    public virtual partial DotRank? NodeRank { get; set; }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.Packing"/>
     [DotAttributeKey(DotAttributeKeys.Pack)]

@@ -121,7 +121,7 @@ public interface IDotClusterAttributes
     /// <summary>
     ///     Gets or sets the rank constraints on the nodes in the cluster (dot only).
     /// </summary>
-    DotRankAlignment? NodeRankAlignment { get; set; }
+    DotRank? NodeRank { get; set; }
 
     /// <summary>
     ///     <para>

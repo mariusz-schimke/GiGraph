@@ -30,7 +30,7 @@ public class DotGraphFactory
 
         graph.Subgraphs.Add("Subgraph2", sg =>
         {
-            sg.NodeRankAlignment = DotRankAlignment.Max;
+            sg.NodeRank = DotRank.Max;
 
             sg.Nodes.Style.Color = Color.Chartreuse;
             sg.Nodes.Label = "nodes_label";
@@ -134,12 +134,12 @@ public class DotGraphFactory
         graph.Subgraphs.Add(sg =>
         {
             sg.Annotation = "subgraph comment";
-            sg.NodeRankAlignment = DotRankAlignment.Min;
+            sg.NodeRank = DotRank.Min;
 
             sg.Subsections.Add(ss =>
             {
                 ss.Annotation = "subgraph subsection comment";
-                ss.NodeRankAlignment = DotRankAlignment.Max;
+                ss.NodeRank = DotRank.Max;
             });
         });
 
