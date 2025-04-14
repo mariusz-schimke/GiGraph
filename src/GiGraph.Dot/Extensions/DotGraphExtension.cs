@@ -159,9 +159,9 @@ public static class DotGraphExtension
         Encoding? encoding = null
     )
     {
-        using var streamWriter = CreateFileStreamWriter(filePath, encoding);
-        graph.WriteTo(streamWriter, formattingOptions, syntaxOptions, syntaxRules);
-        streamWriter.Flush();
+        using var fileStream = File.Create(filePath);
+        graph.Save(fileStream, formattingOptions, syntaxOptions, syntaxRules, encoding);
+        fileStream.Flush();
     }
 
     /// <summary>
@@ -195,8 +195,9 @@ public static class DotGraphExtension
         Encoding? encoding = null
     )
     {
-        using var streamWriter = CreateFileStreamWriter(filePath, encoding);
-        await WriteAsyncInternal(graph, streamWriter, formattingOptions, syntaxOptions, syntaxRules);
+        using var fileStream = File.Create(filePath);
+        await graph.SaveAsync(fileStream, formattingOptions, syntaxOptions, syntaxRules, encoding);
+        await fileStream.FlushAsync();
     }
 
     /// <summary>
@@ -265,17 +266,7 @@ public static class DotGraphExtension
     )
     {
         using var streamWriter = CreateStreamWriter(stream, encoding);
-        await WriteAsyncInternal(graph, streamWriter, formattingOptions, syntaxOptions, syntaxRules);
-    }
 
-    private static async Task WriteAsyncInternal(
-        DotGraph graph,
-        StreamWriter streamWriter,
-        DotFormattingOptions? formattingOptions,
-        DotSyntaxOptions? syntaxOptions,
-        DotSyntaxRules? syntaxRules
-    )
-    {
         // it would be better to build the graph directly to stream, but the solution does not support async building
         var output = graph.ToDotString(formattingOptions, syntaxOptions, syntaxRules);
         await streamWriter.WriteAsync(output);
@@ -288,9 +279,4 @@ public static class DotGraphExtension
         encoding ??= new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
         return new StreamWriter(stream, encoding, bufferSize: -1, leaveOpen: true);
     }
-
-    private static StreamWriter CreateFileStreamWriter(string filePath, Encoding? encoding) =>
-        encoding is not null
-            ? new StreamWriter(filePath, append: false, encoding)
-            : new StreamWriter(filePath, append: false);
 }
