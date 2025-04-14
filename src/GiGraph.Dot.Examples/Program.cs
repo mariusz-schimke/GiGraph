@@ -8,7 +8,7 @@ Console.WriteLine(graph.ToDotString());
 
 // or save it to a file (.gv and .dot are the default extensions)
 var path = Path.GetFullPath("example.gv");
-await graph.SaveToFileAsync(path);
+await graph.SaveAsync()
 
 Console.WriteLine();
 Console.WriteLine($"File path: {path}");
