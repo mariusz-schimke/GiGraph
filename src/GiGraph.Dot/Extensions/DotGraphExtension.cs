@@ -39,7 +39,7 @@ public static class DotGraphExtension
     )
     {
         using var stringWriter = new StringWriter();
-        graph.WriteTo(stringWriter, formattingOptions, syntaxOptions, syntaxRules);
+        graph.Save(stringWriter, formattingOptions, syntaxOptions, syntaxRules);
 
         stringWriter.Flush();
         return stringWriter.ToString();
@@ -63,7 +63,7 @@ public static class DotGraphExtension
     /// <param name="syntaxRules">
     ///     The syntax rules to use.
     /// </param>
-    public static void WriteTo(
+    public static void Save(
         this DotGraph graph,
         TextWriter writer,
         DotFormattingOptions? formattingOptions = null,
@@ -74,7 +74,7 @@ public static class DotGraphExtension
         var generatorsProviderBuilder = new DotEntityGeneratorsProviderBuilder();
         var graphGeneratorBuilder = new DotGraphGeneratorBuilder(generatorsProviderBuilder);
 
-        graph.WriteTo(writer, graphGeneratorBuilder, formattingOptions, syntaxOptions, syntaxRules);
+        graph.Save(writer, graphGeneratorBuilder, formattingOptions, syntaxOptions, syntaxRules);
     }
 
     /// <summary>
@@ -98,7 +98,7 @@ public static class DotGraphExtension
     /// <param name="graphGeneratorBuilder">
     ///     The graph generator builder to use in order to get the graph builder to generate the DOT output with.
     /// </param>
-    public static void WriteTo(
+    public static void Save(
         this DotGraph graph,
         TextWriter writer,
         IDotGraphGeneratorBuilder graphGeneratorBuilder,
@@ -166,7 +166,7 @@ public static class DotGraphExtension
 
     /// <summary>
     ///     Converts the specified graph to its DOT format representation and writes it to the specified file (the file will be
-    ///     overwritten if it already exists).
+    ///     overwritten if it already exists). The content is generated synchronously, but written asynchronously.
     /// </summary>
     /// <param name="graph">
     ///     The graph to convert.
@@ -231,12 +231,13 @@ public static class DotGraphExtension
     )
     {
         using var streamWriter = CreateStreamWriter(stream, encoding);
-        graph.WriteTo(streamWriter, formattingOptions, syntaxOptions, syntaxRules);
+        graph.Save(streamWriter, formattingOptions, syntaxOptions, syntaxRules);
         streamWriter.Flush();
     }
 
     /// <summary>
-    ///     Converts the specified graph to its DOT format representation and writes it to the provided stream.
+    ///     Converts the specified graph to its DOT format representation and writes it to the provided stream. The content is generated
+    ///     synchronously, but written asynchronously.
     /// </summary>
     /// <param name="graph">
     ///     The graph to convert.
