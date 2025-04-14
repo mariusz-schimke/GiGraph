@@ -16,10 +16,10 @@ namespace GiGraph.Dot.Extensions;
 public static class DotGraphExtension
 {
     /// <summary>
-    ///     Stringifies the specified graph to the DOT format.
+    ///     Converts the specified graph to its DOT format representation.
     /// </summary>
     /// <param name="graph">
-    ///     The graph to stringify.
+    ///     The graph to convert.
     /// </param>
     /// <param name="formattingOptions">
     ///     The formatting options to use.
@@ -39,20 +39,20 @@ public static class DotGraphExtension
     )
     {
         using var stringWriter = new StringWriter();
-        graph.ToDotString(stringWriter, formattingOptions, syntaxOptions, syntaxRules);
+        graph.WriteTo(stringWriter, formattingOptions, syntaxOptions, syntaxRules);
 
         stringWriter.Flush();
         return stringWriter.ToString();
     }
 
     /// <summary>
-    ///     Stringifies the specified graph to the DOT format into a stream writer.
+    ///     Converts the specified graph to its DOT format representation and writes it to the provided text writer.
     /// </summary>
     /// <param name="graph">
-    ///     The graph to stringify.
+    ///     The graph to convert.
     /// </param>
-    /// <param name="outputWriter">
-    ///     The output to write the DOT string to.
+    /// <param name="writer">
+    ///     The writer to write the DOT string to.
     /// </param>
     /// <param name="formattingOptions">
     ///     The formatting options to use.
@@ -63,9 +63,9 @@ public static class DotGraphExtension
     /// <param name="syntaxRules">
     ///     The syntax rules to use.
     /// </param>
-    public static void ToDotString(
+    public static void WriteTo(
         this DotGraph graph,
-        TextWriter outputWriter,
+        TextWriter writer,
         DotFormattingOptions? formattingOptions = null,
         DotSyntaxOptions? syntaxOptions = null,
         DotSyntaxRules? syntaxRules = null
@@ -74,17 +74,17 @@ public static class DotGraphExtension
         var generatorsProviderBuilder = new DotEntityGeneratorsProviderBuilder();
         var graphGeneratorBuilder = new DotGraphGeneratorBuilder(generatorsProviderBuilder);
 
-        graph.ToDotString(outputWriter, graphGeneratorBuilder, formattingOptions, syntaxOptions, syntaxRules);
+        graph.WriteTo(writer, graphGeneratorBuilder, formattingOptions, syntaxOptions, syntaxRules);
     }
 
     /// <summary>
-    ///     Stringifies the specified graph to the DOT format into a stream writer.
+    ///     Converts the specified graph to its DOT format representation and writes it to the provided text writer.
     /// </summary>
     /// <param name="graph">
-    ///     The graph to stringify.
+    ///     The graph to convert.
     /// </param>
-    /// <param name="outputWriter">
-    ///     The output to write the DOT string to.
+    /// <param name="writer">
+    ///     The writer to write the DOT string to.
     /// </param>
     /// <param name="formattingOptions">
     ///     The formatting options to use.
@@ -98,9 +98,9 @@ public static class DotGraphExtension
     /// <param name="graphGeneratorBuilder">
     ///     The graph generator builder to use in order to get the graph builder to generate the DOT output with.
     /// </param>
-    public static void ToDotString(
+    public static void WriteTo(
         this DotGraph graph,
-        TextWriter outputWriter,
+        TextWriter writer,
         IDotGraphGeneratorBuilder graphGeneratorBuilder,
         DotFormattingOptions? formattingOptions = null,
         DotSyntaxOptions? syntaxOptions = null,
@@ -121,7 +121,7 @@ public static class DotGraphExtension
             formattingOptions.TextEncoder
         );
 
-        var tokenWriter = new DotTokenWriter(outputWriter, tokenWriterOptions);
+        var tokenWriter = new DotTokenWriter(writer, tokenWriterOptions);
         var graphWriterRoot = new DotGraphWriterRoot(tokenWriter, formattingOptions);
 
         var graphBuilder = graphGeneratorBuilder.Build(syntaxRules, syntaxOptions);
@@ -129,11 +129,11 @@ public static class DotGraphExtension
     }
 
     /// <summary>
-    ///     Stringifies the specified graph to the DOT format and saves it to the specified file (the file will be overwritten if it
-    ///     already exists).
+    ///     Converts the specified graph to its DOT format representation and writes it to the specified file (the file will be
+    ///     overwritten if it already exists).
     /// </summary>
     /// <param name="graph">
-    ///     The graph to stringify.
+    ///     The graph to convert.
     /// </param>
     /// <param name="filePath">
     ///     The path to the file to save the graph to.
@@ -150,7 +150,7 @@ public static class DotGraphExtension
     /// <param name="encoding">
     ///     The encoding to use for the output text.
     /// </param>
-    public static void SaveToFile(
+    public static void Save(
         this DotGraph graph,
         string filePath,
         DotFormattingOptions? formattingOptions = null,
@@ -160,12 +160,33 @@ public static class DotGraphExtension
     )
     {
         using var streamWriter = CreateFileStreamWriter(filePath, encoding);
-        graph.ToDotString(streamWriter, formattingOptions, syntaxOptions, syntaxRules);
+        graph.WriteTo(streamWriter, formattingOptions, syntaxOptions, syntaxRules);
         streamWriter.Flush();
     }
 
-    /// <inheritdoc cref="SaveToFile"/>
-    public static async Task SaveToFileAsync(
+    /// <summary>
+    ///     Converts the specified graph to its DOT format representation and writes it to the specified file (the file will be
+    ///     overwritten if it already exists).
+    /// </summary>
+    /// <param name="graph">
+    ///     The graph to convert.
+    /// </param>
+    /// <param name="filePath">
+    ///     The path to the file to save the graph to.
+    /// </param>
+    /// <param name="formattingOptions">
+    ///     The formatting options to use.
+    /// </param>
+    /// <param name="syntaxOptions">
+    ///     The generation options to use.
+    /// </param>
+    /// <param name="syntaxRules">
+    ///     The syntax rules to use.
+    /// </param>
+    /// <param name="encoding">
+    ///     The encoding to use for the output text.
+    /// </param>
+    public static async Task SaveAsync(
         this DotGraph graph,
         string filePath,
         DotFormattingOptions? formattingOptions = null,
@@ -175,14 +196,14 @@ public static class DotGraphExtension
     )
     {
         using var streamWriter = CreateFileStreamWriter(filePath, encoding);
-        await WriteDotStringAsyncInternal(graph, streamWriter, formattingOptions, syntaxOptions, syntaxRules);
+        await WriteAsyncInternal(graph, streamWriter, formattingOptions, syntaxOptions, syntaxRules);
     }
 
     /// <summary>
-    ///     Stringifies the specified graph to the DOT format and saves it to the specified stream.
+    ///     Converts the specified graph to its DOT format representation and writes it to the provided stream.
     /// </summary>
     /// <param name="graph">
-    ///     The graph to stringify.
+    ///     The graph to convert.
     /// </param>
     /// <param name="stream">
     ///     The stream to write the graph to.
@@ -199,7 +220,7 @@ public static class DotGraphExtension
     /// <param name="encoding">
     ///     The encoding to use for the output text.
     /// </param>
-    public static void SaveToStream(
+    public static void Save(
         this DotGraph graph,
         Stream stream,
         DotFormattingOptions? formattingOptions = null,
@@ -209,12 +230,32 @@ public static class DotGraphExtension
     )
     {
         using var streamWriter = CreateStreamWriter(stream, encoding);
-        graph.ToDotString(streamWriter, formattingOptions, syntaxOptions, syntaxRules);
+        graph.WriteTo(streamWriter, formattingOptions, syntaxOptions, syntaxRules);
         streamWriter.Flush();
     }
 
-    /// <inheritdoc cref="SaveToStream"/>
-    public static async Task SaveToStreamAsync(
+    /// <summary>
+    ///     Converts the specified graph to its DOT format representation and writes it to the provided stream.
+    /// </summary>
+    /// <param name="graph">
+    ///     The graph to convert.
+    /// </param>
+    /// <param name="stream">
+    ///     The stream to write the graph to.
+    /// </param>
+    /// <param name="formattingOptions">
+    ///     The formatting options to use.
+    /// </param>
+    /// <param name="syntaxOptions">
+    ///     The generation options to use.
+    /// </param>
+    /// <param name="syntaxRules">
+    ///     The syntax rules to use.
+    /// </param>
+    /// <param name="encoding">
+    ///     The encoding to use for the output text.
+    /// </param>
+    public static async Task SaveAsync(
         this DotGraph graph,
         Stream stream,
         DotFormattingOptions? formattingOptions = null,
@@ -224,10 +265,10 @@ public static class DotGraphExtension
     )
     {
         using var streamWriter = CreateStreamWriter(stream, encoding);
-        await WriteDotStringAsyncInternal(graph, streamWriter, formattingOptions, syntaxOptions, syntaxRules);
+        await WriteAsyncInternal(graph, streamWriter, formattingOptions, syntaxOptions, syntaxRules);
     }
 
-    private static async Task WriteDotStringAsyncInternal(
+    private static async Task WriteAsyncInternal(
         DotGraph graph,
         StreamWriter streamWriter,
         DotFormattingOptions? formattingOptions,
