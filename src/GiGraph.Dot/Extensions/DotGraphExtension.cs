@@ -37,6 +37,7 @@ public static class DotGraphExtension
         using var stringWriter = new StringWriter();
         graph.ToDotString(stringWriter, formattingOptions, syntaxOptions, syntaxRules);
 
+        stringWriter.Flush();
         return stringWriter.ToString();
     }
 
@@ -139,6 +140,7 @@ public static class DotGraphExtension
     {
         using var streamWriter = CreateFileStreamWriter(filePath, encoding);
         graph.ToDotString(streamWriter, formattingOptions, syntaxOptions, syntaxRules);
+        streamWriter.Flush();
     }
 
     /// <summary>
@@ -174,7 +176,7 @@ public static class DotGraphExtension
         await streamWriter.FlushAsync();
     }
 
-    private static TextWriter CreateFileStreamWriter(string filePath, Encoding? encoding) =>
+    private static StreamWriter CreateFileStreamWriter(string filePath, Encoding? encoding) =>
         encoding is not null
             ? new StreamWriter(filePath, append: false, encoding)
             : new StreamWriter(filePath, append: false);
