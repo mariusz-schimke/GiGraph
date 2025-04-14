@@ -4,7 +4,7 @@ using GiGraph.Dot.Extensions;
 var graph = HelloWorld.Generate();
 
 // build a graph as string
-Console.WriteLine(graph.Build());
+Console.WriteLine(graph.ToDotString());
 
 // or save it to a file (.gv and .dot are the default extensions)
 var path = Path.GetFullPath("example.gv");

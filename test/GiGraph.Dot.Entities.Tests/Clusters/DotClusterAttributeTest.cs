@@ -16,7 +16,7 @@ public class DotClusterAttributeTest
         const string snapshotName = "cluster_with_cluster_id_prefix_as_discriminator";
 
         var graph = CreateGraphWithCluster(out _);
-        Snapshot.Match(graph.Build(syntaxOptions: CreateSyntaxOptions(DotClusterDiscriminator.IdPrefix)), snapshotName);
+        Snapshot.Match(graph.ToDotString(syntaxOptions: CreateSyntaxOptions(DotClusterDiscriminator.IdPrefix)), snapshotName);
     }
 
     [Fact]
@@ -25,7 +25,7 @@ public class DotClusterAttributeTest
         const string snapshotName = "cluster_with_cluster_id_prefix_and_cluster_attribute_as_discriminators";
 
         var graph = CreateGraphWithCluster(out _);
-        Snapshot.Match(graph.Build(syntaxOptions: CreateSyntaxOptions(DotClusterDiscriminator.IdPrefixAndAttribute)), snapshotName);
+        Snapshot.Match(graph.ToDotString(syntaxOptions: CreateSyntaxOptions(DotClusterDiscriminator.IdPrefixAndAttribute)), snapshotName);
     }
 
     [Fact]
@@ -37,7 +37,7 @@ public class DotClusterAttributeTest
 
         // the attribute should be present in the output script with a value of true when not set explicitly
         var syntaxOptions = CreateSyntaxOptions(DotClusterDiscriminator.Attribute);
-        Snapshot.Match(graph.Build(syntaxOptions: syntaxOptions), snapshotName);
+        Snapshot.Match(graph.ToDotString(syntaxOptions: syntaxOptions), snapshotName);
 
         // the attribute should not be added to the collection when the graph is built
         var isCluster = cluster.Attributes.GetValue(a => a.IsCluster);
@@ -54,7 +54,7 @@ public class DotClusterAttributeTest
 
         // the attribute should be present in the output script with the value of false set above
         var syntaxOptions = CreateSyntaxOptions(DotClusterDiscriminator.Attribute);
-        Snapshot.Match(graph.Build(syntaxOptions: syntaxOptions), snapshotName);
+        Snapshot.Match(graph.ToDotString(syntaxOptions: syntaxOptions), snapshotName);
 
         // the value should stay intact after the graph is built
         var isCluster = cluster.Attributes.GetValue(a => a.IsCluster);
@@ -69,7 +69,7 @@ public class DotClusterAttributeTest
         var graph = CreateGraphWithCluster(out var cluster);
         cluster.Attributes.SetValue(a => a.IsCluster, false);
 
-        Snapshot.Match(graph.Build(syntaxOptions: CreateSyntaxOptions(DotClusterDiscriminator.IdPrefix)), snapshotName);
+        Snapshot.Match(graph.ToDotString(syntaxOptions: CreateSyntaxOptions(DotClusterDiscriminator.IdPrefix)), snapshotName);
     }
 
     [Theory]
@@ -91,7 +91,7 @@ public class DotClusterAttributeTest
         graph.Clusters.Add("c1", c => c.Nodes.Add("n2"));
         graph.Edges.Add("n1", "n2").Head.ClusterId = "c1";
 
-        Snapshot.Match(graph.Build(syntaxOptions: CreateSyntaxOptions(discriminator)), snapshotName);
+        Snapshot.Match(graph.ToDotString(syntaxOptions: CreateSyntaxOptions(discriminator)), snapshotName);
     }
 
     private static DotGraph CreateGraphWithCluster(out DotCluster cluster)

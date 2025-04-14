@@ -15,6 +15,6 @@ public partial class DotStylableEdgeExtensionTest
         graph.Edges.SetTaperedStyle(4);
         graph.Edges.Add("a", "b").SetTaperedStyle(4);
 
-        Snapshot.Match(graph.Build(), "tapered_edge_and_edge_collection");
+        Snapshot.Match(graph.ToDotString(), "tapered_edge_and_edge_collection");
     }
 }

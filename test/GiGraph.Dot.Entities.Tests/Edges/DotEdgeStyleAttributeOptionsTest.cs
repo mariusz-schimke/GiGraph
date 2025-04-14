@@ -23,7 +23,7 @@ public class DotEdgeStyleAttributeOptionsTest
             true
         ));
 
-        Snapshot.Match(graph.Build(), snapshotName);
+        Snapshot.Match(graph.ToDotString(), snapshotName);
 
         Assert.False(edge.Style.HasDefaultStyleModifiers());
         edge.Style.RestoreDefaultStyleModifiers();
@@ -36,6 +36,6 @@ public class DotEdgeStyleAttributeOptionsTest
             true
         );
 
-        Snapshot.Match(graph.Build(), snapshotName);
+        Snapshot.Match(graph.ToDotString(), snapshotName);
     }
 }

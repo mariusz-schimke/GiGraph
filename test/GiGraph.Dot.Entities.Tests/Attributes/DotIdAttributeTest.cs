@@ -18,7 +18,7 @@ public class DotIdAttributeTest
         graph.Edges.AddLoop("node2").Head.ClusterId = "cluster1";
         graph.Edges.AddLoop("node3").Head.ClusterId = new DotClusterId("");
 
-        Snapshot.Match(graph.Build(), "cluster_id_attribute.gv");
+        Snapshot.Match(graph.ToDotString(), "cluster_id_attribute.gv");
     }
 
     [Fact]
@@ -31,6 +31,6 @@ public class DotIdAttributeTest
         graph.Subsections.Add().Layout.RootNodeId = new DotId("");
         graph.Subsections.Add().Layout.RootNodeId = new DotClusterId("root");
 
-        Snapshot.Match(graph.Build(), "root_node_id_attribute.gv");
+        Snapshot.Match(graph.ToDotString(), "root_node_id_attribute.gv");
     }
 }

@@ -15,7 +15,7 @@ public class DotNodeHtmlExtensionTest
         graph.Nodes.Add("node1").SetAsHtml("<b>label</b>");
 
         Snapshot.Match(
-            graph.Build(),
+            graph.ToDotString(),
             "graph_with_plain_html_node_from_html_string"
         );
     }
@@ -27,7 +27,7 @@ public class DotNodeHtmlExtensionTest
         graph.Nodes.Add("node1").SetAsHtml(new DotHtmlTable());
 
         Snapshot.Match(
-            graph.Build(),
+            graph.ToDotString(),
             "graph_with_plain_html_node_from_html_entity"
         );
     }

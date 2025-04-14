@@ -17,7 +17,7 @@ public partial class DotStripeFillableExtensionTest
         graph.Clusters.Add("").SetStripedFill(Color.Red, Color.Blue);
         graph.Clusters.Add("").SetStripedFill(new DotMulticolor(Color.Red, Color.Blue));
 
-        Snapshot.Match(graph.Build(), "striped_fill_on_individual_clusters");
+        Snapshot.Match(graph.ToDotString(), "striped_fill_on_individual_clusters");
     }
 
     [Fact]
@@ -25,10 +25,10 @@ public partial class DotStripeFillableExtensionTest
     {
         var graph = new DotGraph();
         graph.Clusters.SetStripedFill(Color.Red, Color.Blue);
-        Snapshot.Match(graph.Build(), "striped_fill_on_cluster_collection_params");
+        Snapshot.Match(graph.ToDotString(), "striped_fill_on_cluster_collection_params");
 
         graph = new DotGraph();
         graph.Clusters.SetStripedFill(new DotMulticolor(Color.Red, Color.Blue));
-        Snapshot.Match(graph.Build(), "striped_fill_on_cluster_collection_multicolor");
+        Snapshot.Match(graph.ToDotString(), "striped_fill_on_cluster_collection_multicolor");
     }
 }

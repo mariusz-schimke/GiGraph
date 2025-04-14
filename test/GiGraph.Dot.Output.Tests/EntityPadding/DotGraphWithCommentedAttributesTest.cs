@@ -15,10 +15,10 @@ public class DotGraphWithCommentedAttributesTest
         var graph = new DotGraph();
         graph.Font.Set("arial", 10);
 
-        Snapshot.Match(graph.Build(), "commented_graph_attribute_without_padding.gv");
+        Snapshot.Match(graph.ToDotString(), "commented_graph_attribute_without_padding.gv");
 
         var formatting = new DotFormattingOptions { SingleLine = true };
-        Snapshot.Match(graph.Build(formatting), "commented_graph_attribute_without_padding_single_line.gv");
+        Snapshot.Match(graph.ToDotString(formatting), "commented_graph_attribute_without_padding_single_line.gv");
     }
 
     [Fact]
@@ -28,10 +28,10 @@ public class DotGraphWithCommentedAttributesTest
         graph.Font.Set("arial", 10, Color.Red);
         graph.Font.Attributes.Get(x => x.Name)!.Annotation = "comment";
 
-        Snapshot.Match(graph.Build(), "commented_graph_attribute_with_top_and_bottom_padding.gv");
+        Snapshot.Match(graph.ToDotString(), "commented_graph_attribute_with_top_and_bottom_padding.gv");
 
         var formatting = new DotFormattingOptions { SingleLine = true };
-        Snapshot.Match(graph.Build(formatting), "commented_graph_attribute_with_top_and_bottom_padding_single_line.gv");
+        Snapshot.Match(graph.ToDotString(formatting), "commented_graph_attribute_with_top_and_bottom_padding_single_line.gv");
     }
 
     [Fact]
@@ -41,10 +41,10 @@ public class DotGraphWithCommentedAttributesTest
         graph.Font.Set("arial", 10, Color.Red);
         graph.Font.Attributes.Get(x => x.Color)!.Annotation = "comment";
 
-        Snapshot.Match(graph.Build(), "commented_graph_attribute_with_bottom_padding.gv");
+        Snapshot.Match(graph.ToDotString(), "commented_graph_attribute_with_bottom_padding.gv");
 
         var formatting = new DotFormattingOptions { SingleLine = true };
-        Snapshot.Match(graph.Build(formatting), "commented_graph_attribute_with_bottom_padding_single_line.gv");
+        Snapshot.Match(graph.ToDotString(formatting), "commented_graph_attribute_with_bottom_padding_single_line.gv");
     }
 
     [Fact]
@@ -54,9 +54,9 @@ public class DotGraphWithCommentedAttributesTest
         graph.Font.Set("arial", 10, Color.Red);
         graph.Font.Attributes.Get(x => x.Size)!.Annotation = "comment";
 
-        Snapshot.Match(graph.Build(), "commented_graph_attribute_with_top_padding.gv");
+        Snapshot.Match(graph.ToDotString(), "commented_graph_attribute_with_top_padding.gv");
 
         var formatting = new DotFormattingOptions { SingleLine = true };
-        Snapshot.Match(graph.Build(formatting), "commented_graph_attribute_with_top_padding_single_line.gv");
+        Snapshot.Match(graph.ToDotString(formatting), "commented_graph_attribute_with_top_padding_single_line.gv");
     }
 }

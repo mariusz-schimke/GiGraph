@@ -25,7 +25,7 @@ public class DotClusterStyleAttributeOptionsTest
             true
         ));
 
-        Snapshot.Match(graph.Build(), snapshotName);
+        Snapshot.Match(graph.ToDotString(), snapshotName);
 
         Assert.False(cluster.Style.HasDefaultStyleModifiers());
         cluster.Style.RestoreDefaultStyleModifiers();
@@ -40,6 +40,6 @@ public class DotClusterStyleAttributeOptionsTest
             true
         );
 
-        Snapshot.Match(graph.Build(), snapshotName);
+        Snapshot.Match(graph.ToDotString(), snapshotName);
     }
 }
