@@ -175,7 +175,7 @@ public static class DotGraphExtension
     )
     {
         using var streamWriter = CreateFileStreamWriter(filePath, encoding);
-        await WriteToAsync(graph, streamWriter, formattingOptions, syntaxOptions, syntaxRules);
+        await WriteDotStringAsyncInternal(graph, streamWriter, formattingOptions, syntaxOptions, syntaxRules);
     }
 
     /// <summary>
@@ -224,10 +224,10 @@ public static class DotGraphExtension
     )
     {
         using var streamWriter = CreateStreamWriter(stream, encoding);
-        await WriteToAsync(graph, streamWriter, formattingOptions, syntaxOptions, syntaxRules);
+        await WriteDotStringAsyncInternal(graph, streamWriter, formattingOptions, syntaxOptions, syntaxRules);
     }
 
-    private static async Task WriteToAsync(
+    private static async Task WriteDotStringAsyncInternal(
         DotGraph graph,
         StreamWriter streamWriter,
         DotFormattingOptions? formattingOptions,
