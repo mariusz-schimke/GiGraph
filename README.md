@@ -82,10 +82,10 @@ var graph = new DotGraph(directed: true);
 graph.Edges.Add("Hello", "World!");
 
 // build the DOT output
-Console.WriteLine(graph.Build());
+Console.WriteLine(graph.ToDotString());
 
 // (.gv and .dot are the default extensions)
-graph.SaveToFile("example.gv");
+graph.Save("example.gv");
 ```
 
 Here's what you get on the console and in the file:
@@ -1681,8 +1681,8 @@ graph.Clusters.Add(id: "Flow 2", cluster =>
 });
 
 // generate and save the DOT output
-Console.WriteLine(graph.Build());
-graph.SaveToFile("example.gv");
+Console.WriteLine(graph.ToDotString());
+graph.Save("example.gv");
 ```
 
 ```dot
@@ -1791,8 +1791,8 @@ var options = new DotFormattingOptions
 };
 
 // generate and save the DOT output
-Console.WriteLine(graph.Build(options));
-graph.SaveToFile("example.gv", options);
+Console.WriteLine(graph.ToDotString(options));
+graph.Save("example.gv", options);
 ```
 
 And here's the complete DOT output with subgraphs:
@@ -1850,8 +1850,8 @@ var options = new DotFormattingOptions
     Subgraphs = { SingleLine = true }
 };
 
-Console.WriteLine(graph.Build(options));
-graph.SaveToFile("example.gv", options);
+Console.WriteLine(graph.ToDotString(options));
+graph.Save("example.gv", options);
 ```
 
 The [hello world](#generating-a-graph) example would be rendered like this after applying the options above:
@@ -1874,8 +1874,8 @@ var options = new DotSyntaxOptions
     Attributes = { PreferQuotedValue = true }
 };
 
-Console.WriteLine(graph.Build(syntaxOptions: options));
-graph.SaveToFile("example.gv", syntaxOptions: options);
+Console.WriteLine(graph.ToDotString(syntaxOptions: options));
+graph.Save("example.gv", syntaxOptions: options);
 ```
 
 An example graph output based on the code above would be: 
@@ -1929,8 +1929,8 @@ var options = new DotSyntaxOptions
     Clusters = { Discriminator = DotClusterDiscriminator.Attribute },
 };
 
-Console.WriteLine(graph.Build(syntaxOptions: options));
-graph.SaveToFile("example.gv", syntaxOptions: options);
+Console.WriteLine(graph.ToDotString(syntaxOptions: options));
+graph.Save("example.gv", syntaxOptions: options);
 ```
 
 ```dot
