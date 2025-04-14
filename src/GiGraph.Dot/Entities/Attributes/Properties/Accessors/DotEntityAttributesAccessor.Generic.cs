@@ -104,7 +104,7 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     /// <summary>
     ///     Assigns a raw value to the specified property and returns the attribute that was added to the collection. The value is
     ///     rendered as-is in the DOT output, so you must ensure that it is properly escaped when necessary to maintain the
-    ///     script's syntactical correctness (see
+    ///     DOT output syntactical correctness (see
     ///     <see href="https://www.graphviz.org/doc/info/lang.html">
     ///         documentation
     ///     </see>
@@ -171,8 +171,7 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     }
 
     /// <summary>
-    ///     Adds an attribute with a null value to the collection. This will render as an attribute with an empty value in the output DOT
-    ///     script.
+    ///     Adds an attribute with a null value to the collection. This will render as an attribute with an empty value in the DOT output.
     /// </summary>
     /// <param name="property">
     ///     The property to add a null value attribute for.

@@ -111,8 +111,7 @@ public partial class DotAttributeCollection
     }
 
     /// <summary>
-    ///     Sets a null value for the specified attribute key. This will render as an attribute with an empty value in the output DOT
-    ///     script.
+    ///     Sets a null value for the specified attribute key. This will render as an attribute with an empty value in the DOT output.
     /// </summary>
     /// <param name="key">
     ///     The key of the attribute whose value to set.
