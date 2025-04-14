@@ -62,7 +62,7 @@ public partial class DotSyntaxOptions
     ///     <para>
     ///         Useful when the DOT output is going to be compared to its other versions, so that there are as few differences
     ///         between the scripts as possible. However, this option should be used with care because the order of elements in the
-    ///         script may affect the order they are visualized, if that matters.
+    ///         DOT output may affect the order they are visualized, if that matters.
     ///     </para>
     /// </summary>
     public bool SortElements { get; set; }

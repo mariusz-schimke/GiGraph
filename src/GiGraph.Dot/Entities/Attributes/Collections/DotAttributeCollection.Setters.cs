@@ -269,7 +269,7 @@ public partial class DotAttributeCollection
     ///     <see href="https://www.graphviz.org/doc/info/lang.html">
     ///         documentation
     ///     </see>
-    ///     ). If, for instance, it contains an unescaped quotation mark, the output script will be syntactically incorrect.
+    ///     ). If, for instance, it contains an unescaped quotation mark, the DOT output will be syntactically incorrect.
     /// </summary>
     /// <param name="key">
     ///     The key of the attribute to include in the collection.

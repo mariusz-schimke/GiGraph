@@ -35,7 +35,7 @@ public class DotClusterAttributeTest
 
         var graph = CreateGraphWithCluster(out var cluster);
 
-        // the attribute should be present in the output script with a value of true when not set explicitly
+        // the attribute should be present in the DOT output with a value of true when not set explicitly
         var syntaxOptions = CreateSyntaxOptions(DotClusterDiscriminator.Attribute);
         Snapshot.Match(graph.ToDotString(syntaxOptions: syntaxOptions), snapshotName);
 
@@ -52,7 +52,7 @@ public class DotClusterAttributeTest
         var graph = CreateGraphWithCluster(out var cluster);
         cluster.Attributes.SetValue(a => a.IsCluster, false);
 
-        // the attribute should be present in the output script with the value of false set above
+        // the attribute should be present in the DOT output with the value of false set above
         var syntaxOptions = CreateSyntaxOptions(DotClusterDiscriminator.Attribute);
         Snapshot.Match(graph.ToDotString(syntaxOptions: syntaxOptions), snapshotName);
 

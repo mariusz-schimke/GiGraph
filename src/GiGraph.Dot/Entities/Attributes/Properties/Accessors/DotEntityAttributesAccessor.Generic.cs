@@ -83,7 +83,7 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
 
     /// <summary>
     ///     Assigns a custom value to the specified property and returns the actual attribute added to the collection. If the value
-    ///     contains any special characters, they will be escaped to make sure the output script is syntactically correct. If you don't
+    ///     contains any special characters, they will be escaped to make sure the DOT output is syntactically correct. If you don't
     ///     want that to happen, consider using the <see cref="SetRawValue{TProperty}" /> method instead.
     /// </summary>
     /// <param name="property">

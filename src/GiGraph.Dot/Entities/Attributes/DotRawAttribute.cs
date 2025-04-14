@@ -7,7 +7,7 @@
 ///     <see href="https://www.graphviz.org/doc/info/lang.html">
 ///         documentation
 ///     </see>
-///     ). If, for instance, it contains an unescaped quotation mark, the output script will be syntactically incorrect.
+///     ). If, for instance, it contains an unescaped quotation mark, the DOT output will be syntactically incorrect.
 /// </summary>
 public class DotRawAttribute : DotAttribute<string>
 {

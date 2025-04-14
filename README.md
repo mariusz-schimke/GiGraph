@@ -81,7 +81,7 @@ var graph = new DotGraph(directed: true);
 // add an edge that joins two nodes: 'Hello' and 'World!'
 graph.Edges.Add("Hello", "World!");
 
-// build the output script
+// build the DOT output
 Console.WriteLine(graph.Build());
 
 // (.gv and .dot are the default extensions)
@@ -204,7 +204,7 @@ node.Attributes.Collection.SetEnumValue("shape", DotNodeShape.Circle);
 
 
 
-If there is a case that you want your value to be written **as is** in the DOT output, use the *SetRaw* method. It's similar to the first approach, but the value you provide doesn't undergo any further processing (normally, if it contains special characters, they have to be escaped so that they are interpreted correctly and don't break syntactic consistency of the output script). In this case, however, you have to take care of following the syntax rules by yourself for the provided value.
+If there is a case that you want your value to be written **as is** in the DOT output, use the *SetRaw* method. It's similar to the first approach, but the value you provide doesn't undergo any further processing (normally, if it contains special characters, they have to be escaped so that they are interpreted correctly and don't break syntactic consistency of the DOT output). In this case, however, you have to take care of following the syntax rules by yourself for the provided value.
 
 ```c#
 node.Attributes.Collection.SetRawValue("fillcolor", "red:blue");
@@ -584,7 +584,7 @@ digraph
 
 #### Record builder
 
-The *DotRecordBuilder* class facilitates building complex record nodes. To get an idea how to use it, consider the following examples that generate the same output script as the [previous one](#sub-records).
+The *DotRecordBuilder* class facilitates building complex record nodes. To get an idea how to use it, consider the following examples that generate the same DOT output as the [previous one](#sub-records).
 
 ```c#
 using GiGraph.Dot.Extensions;
@@ -794,7 +794,7 @@ digraph
 
 ### Node groups
 
-When adding nodes to a graph, subgraph, or cluster, you can use a node group, which has a shared list of attributes for all the nodes within it. To do it, use one of the overloads of the *AddGroup* method on a node collection. This way you can generate a more concise output script if that's necessary (otherwise you can just add nodes in the standard way, one by one).
+When adding nodes to a graph, subgraph, or cluster, you can use a node group, which has a shared list of attributes for all the nodes within it. To do it, use one of the overloads of the *AddGroup* method on a node collection. This way you can generate a more concise DOT output if that's necessary (otherwise you can just add nodes in the standard way, one by one).
 
 ```c#
 graph.Nodes.AddGroup
@@ -1904,7 +1904,7 @@ digraph
 
 ### Sorting elements
 
-Using mentioned **DotSyntaxOptions** and its *SortElements* property you can enable sorting elements of the output script alphabetically. This comes in handy when the graph is built based on input elements the order of which changes each time you generate the graph. Sometimes you may need to compare the output to its previous version, and in such cases you will want to distinguish only the actual semantic differences, not necessarily the lines that only moved from one place of the file to another, without changing semantics. When you enable this setting, all attribute lists, the lists of edges, nodes, subgraphs, and clusters, will always be ordered alphabetically. This way you should get more consistent outputs on every build.
+Using mentioned **DotSyntaxOptions** and its *SortElements* property you can enable sorting elements of the DOT output alphabetically. This comes in handy when the graph is built based on input elements the order of which changes each time you generate the graph. Sometimes you may need to compare the output to its previous version, and in such cases you will want to distinguish only the actual semantic differences, not necessarily the lines that only moved from one place of the file to another, without changing semantics. When you enable this setting, all attribute lists, the lists of edges, nodes, subgraphs, and clusters, will always be ordered alphabetically. This way you should get more consistent outputs on every build.
 
 *❕ Have in mind, however, that even though this feature does not affect the structure of the graph, it may affect the layout in some cases, but it won't probably matter for you in the described scenario.*
 
@@ -1943,7 +1943,7 @@ digraph
 }
 ```
 
-The *Discriminator* is set to `DotClusterDiscriminator.IdPrefix` by default, in which case the output script would look like this:
+The *Discriminator* is set to `DotClusterDiscriminator.IdPrefix` by default, in which case the DOT output would look like this:
 
 ```dot
 digraph
@@ -1972,7 +1972,7 @@ The DOT grammar, however, lets you place individual elements in the script in an
 
 The subsections, as they are called in the library, are separate groups of elements. They are written consecutively, one section after another, in the order they are added to the collection of subsections on the graph instance level. The elements in each such section, on the other hand, are written in the order mentioned earlier.
 
-⚠️ By using subsections you can split the DOT script into multiple sections, and, for instance, set different global attributes in any of them. Remember, however, that attributes set in one section have an impact on the elements that follow them in the output script. So because sections are written consecutively, setting attributes in any of them has an impact not only on the elements in that specific section, but also on elements in the sections that follow it.
+⚠️ By using subsections you can split the DOT script into multiple sections, and, for instance, set different global attributes in any of them. Remember, however, that attributes set in one section have an impact on the elements that follow them in the DOT output. So because sections are written consecutively, setting attributes in any of them has an impact not only on the elements in that specific section, but also on elements in the sections that follow it.
 
 *❗️ Note that in the majority of cases you won't need to split the DOT script into sections. They give you the flexibility to control the order individual elements or groups of elements are written, but they shouldn't normally be useful. When you want to specify attributes for specific groups of elements of the graph, consider using [subgraphs](#subgraphs) because they give you more granular control over the elements they contain, without affecting others.*
 
