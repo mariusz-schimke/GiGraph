@@ -3,7 +3,7 @@
 namespace GiGraph.Dot.Output.Options;
 
 /// <summary>
-///     Customizes output DOT script formatting.
+///     Customizes DOT output formatting.
 /// </summary>
 public partial class DotFormattingOptions
 {

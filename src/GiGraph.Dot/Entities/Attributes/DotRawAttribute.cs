@@ -1,7 +1,7 @@
 ﻿namespace GiGraph.Dot.Entities.Attributes;
 
 /// <summary>
-///     A raw value attribute. The value is rendered AS IS in the output DOT script, so the attribute can be used for any type of
+///     A raw value attribute. The value is rendered AS IS in the DOT output, so the attribute can be used for any type of
 ///     value, not only for strings. Make sure, however, that the value is escaped when necessary, following the DOT syntax rules
 ///     (see
 ///     <see href="https://www.graphviz.org/doc/info/lang.html">

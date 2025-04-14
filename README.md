@@ -67,7 +67,7 @@ For a complete documentation of the DOT language and visualization capabilities 
 
 # Generating a graph
 
-For a basic scenario, create a new **DotGraph** instance and use its *Edges* collection to define connections between nodes. In order to generate the output DOT script, call the ***Build*** extension method on the graph. And that's mostly it.
+For a basic scenario, create a new **DotGraph** instance and use its *Edges* collection to define connections between nodes. In order to generate the DOT output, call the ***Build*** extension method on the graph. And that's mostly it.
 
 Here's a simple *Hello World!* graph example with two nodes joined by an edge.
 
@@ -204,7 +204,7 @@ node.Attributes.Collection.SetEnumValue("shape", DotNodeShape.Circle);
 
 
 
-If there is a case that you want your value to be written **as is** in the output DOT script, use the *SetRaw* method. It's similar to the first approach, but the value you provide doesn't undergo any further processing (normally, if it contains special characters, they have to be escaped so that they are interpreted correctly and don't break syntactic consistency of the output script). In this case, however, you have to take care of following the syntax rules by yourself for the provided value.
+If there is a case that you want your value to be written **as is** in the DOT output, use the *SetRaw* method. It's similar to the first approach, but the value you provide doesn't undergo any further processing (normally, if it contains special characters, they have to be escaped so that they are interpreted correctly and don't break syntactic consistency of the output script). In this case, however, you have to take care of following the syntax rules by yourself for the provided value.
 
 ```c#
 node.Attributes.Collection.SetRawValue("fillcolor", "red:blue");
@@ -306,7 +306,7 @@ graph.Nodes.Add("restored", node =>
     node.Attributes.Collection.Nullify("color");
 
     // the following wouldn't do the trick because it removes the attribute from the collection,
-    // so it wouldn't appear in the output DOT script at all
+    // so it wouldn't appear in the DOT output at all
     // node.Color = null;
 });
 ```
@@ -1958,7 +1958,7 @@ digraph
 
 # Script subsections
 
-By design, the library generates the output DOT script with elements written in the following order:
+By design, the library generates the DOT output with elements written in the following order:
 
 * global graph attributes,
 * global node attributes,
@@ -1976,7 +1976,7 @@ The subsections, as they are called in the library, are separate groups of eleme
 
 *❗️ Note that in the majority of cases you won't need to split the DOT script into sections. They give you the flexibility to control the order individual elements or groups of elements are written, but they shouldn't normally be useful. When you want to specify attributes for specific groups of elements of the graph, consider using [subgraphs](#subgraphs) because they give you more granular control over the elements they contain, without affecting others.*
 
-The following example shows how the primary section (on the graph instance level), and subsections, are rendered in the output DOT script, and how their attributes impact graph visualization.
+The following example shows how the primary section (on the graph instance level), and subsections, are rendered in the DOT output, and how their attributes impact graph visualization.
 
 ```c#
 // the primary section (on the graph instance level)

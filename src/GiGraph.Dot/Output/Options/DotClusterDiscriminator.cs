@@ -1,7 +1,7 @@
 namespace GiGraph.Dot.Output.Options;
 
 /// <summary>
-///     Determines how to mark subgraphs as clusters in the output DOT script.
+///     Determines how to mark subgraphs as clusters in the DOT output.
 /// </summary>
 [Flags]
 public enum DotClusterDiscriminator

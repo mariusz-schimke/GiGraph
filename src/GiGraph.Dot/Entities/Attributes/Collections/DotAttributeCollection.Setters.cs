@@ -210,7 +210,7 @@ public partial class DotAttributeCollection
     public virtual DotColorAttribute SetValue(string key, Color value) => Put(_attributeFactory.CreateColor(key, value));
 
     /// <summary>
-    ///     Adds or replaces the specified enumeration value attribute in the collection. The value rendered in the output DOT script
+    ///     Adds or replaces the specified enumeration value attribute in the collection. The value rendered in the DOT output
     ///     will be based on the <see cref="DotAttributeValueAttribute" /> attribute applied to the enumeration values.
     /// </summary>
     /// <param name="key">
@@ -263,7 +263,7 @@ public partial class DotAttributeCollection
         Put(_attributeFactory.CreateComplexArray(key, value));
 
     /// <summary>
-    ///     Adds or replaces the specified attribute in the collection. The value is rendered AS IS in the output DOT script, so the
+    ///     Adds or replaces the specified attribute in the collection. The value is rendered AS IS in the DOT output, so the
     ///     attribute can be used for any type of value, not only for strings. Make sure, however, that the value is escaped when
     ///     necessary, following the DOT syntax rules (see
     ///     <see href="https://www.graphviz.org/doc/info/lang.html">

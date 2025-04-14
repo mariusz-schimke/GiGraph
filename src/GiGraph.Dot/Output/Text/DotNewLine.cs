@@ -18,7 +18,7 @@ public static class DotNewLine
     public const string Unix = "\n";
 
     /// <summary>
-    ///     Gets the line continuation character that can be used for string attributes in order to split text in the output DOT script
+    ///     Gets the line continuation character that can be used for string attributes in order to split text in the DOT output
     ///     into multiple lines. Has to be followed by a line break. Does not affect the way the text is visualized (it's only for
     ///     formatting the output script, so the line continuation character and the line break do not appear in the visualization).
     /// </summary>
@@ -31,7 +31,7 @@ public static class DotNewLine
 
     /// <summary>
     ///     Returns a line continuation character followed by the system-default new line string. To be used for string attributes in
-    ///     order to split text in the output DOT script into multiple lines. Does not affect the way the text is visualized (it's only
+    ///     order to split text in the DOT output into multiple lines. Does not affect the way the text is visualized (it's only
     ///     for formatting the output script, so the line continuation character and the line break do not appear in the visualization).
     /// </summary>
     [Pure]
@@ -39,7 +39,7 @@ public static class DotNewLine
 
     /// <summary>
     ///     Returns a line continuation character followed by the specified new line string. To be used for string attributes in order to
-    ///     split text in the output DOT script into multiple lines. Does not affect the way the text is visualized (it's only for
+    ///     split text in the DOT output into multiple lines. Does not affect the way the text is visualized (it's only for
     ///     formatting the output script, so the line continuation character and the line break do not appear in the visualization).
     /// </summary>
     /// <param name="newLine">

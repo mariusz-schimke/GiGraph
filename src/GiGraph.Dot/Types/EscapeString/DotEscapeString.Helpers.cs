@@ -22,7 +22,7 @@ public abstract partial class DotEscapeString
     public static DotEscapeString RightJustifyLine(DotEscapeString? text) => text + RightJustificationLineBreak;
 
     /// <summary>
-    ///     Creates a new instance initialized with the specified text. The text will be escaped on output DOT script generation to
+    ///     Creates a new instance initialized with the specified text. The text will be escaped on DOT output generation to
     ///     ensure its correct rendering.
     /// </summary>
     /// <param name="value">
@@ -32,7 +32,7 @@ public abstract partial class DotEscapeString
     public static DotEscapeString? FromString(string? value) => (DotUnescapedString?) value;
 
     /// <summary>
-    ///     Creates a new instance initialized with escaped string. The string will not be modified in any way on output DOT script
+    ///     Creates a new instance initialized with escaped string. The string will not be modified in any way on DOT output
     ///     generation, so it must follow the formatting rules described in the
     ///     <see href="https://www.graphviz.org/docs/attr-types/escString">
     ///         documentation
@@ -78,7 +78,7 @@ public abstract partial class DotEscapeString
     public static DotEscapeString Concat(IEnumerable<string?> items) => new DotConcatenatedEscapeString(items);
 
     /// <summary>
-    ///     Concatenates the specified escaped strings. The component strings will not be modified in any way on output DOT script
+    ///     Concatenates the specified escaped strings. The component strings will not be modified in any way on DOT output
     ///     generation, so they must follow the formatting rules described in the
     ///     <see href="https://www.graphviz.org/docs/attr-types/escString">
     ///         documentation
@@ -91,7 +91,7 @@ public abstract partial class DotEscapeString
     public static DotEscapeString ConcatEscapedStrings(params string?[] items) => ConcatEscapedStrings((IEnumerable<string?>) items);
 
     /// <summary>
-    ///     Concatenates the specified escaped strings. The component strings will not be modified in any way on output DOT script
+    ///     Concatenates the specified escaped strings. The component strings will not be modified in any way on DOT output
     ///     generation, so they must follow the formatting rules described in the
     ///     <see href="https://www.graphviz.org/docs/attr-types/escString">
     ///         documentation

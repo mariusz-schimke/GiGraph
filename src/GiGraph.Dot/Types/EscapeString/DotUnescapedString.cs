@@ -4,8 +4,8 @@ using GiGraph.Dot.Output.Text.Escaping;
 namespace GiGraph.Dot.Types.EscapeString;
 
 /// <summary>
-///     A string to be escaped on output DOT script generation. Contrarily to <see cref="DotEscapedString" />, the string will
-///     undergo further processing to make sure that the output DOT script is syntactically correct, and that the string is
+///     A string to be escaped on DOT output generation. Contrarily to <see cref="DotEscapedString" />, the string will
+///     undergo further processing to make sure that the DOT output is syntactically correct, and that the string is
 ///     interpreted as expected (WYSIWYG). By using this class you can be sure that the value you specify will be visualized exactly
 ///     the way it was provided (as a label, for example), even if it contains special characters (they will be escaped or replaced
 ///     with their 'safe' counterparts).
