@@ -49,7 +49,7 @@
 
         <PackageReleaseNotes>- All style-related attributes have been consolidated under the `Style` property of the graph and its elements. This includes attributes such as `Color`, `FillColor`, `BackgroundColor`, and others, which are now exposed in a more structured and consistent way.
 
-- `SaveToStream` and `SaveToStreamAsync` methods have been added for convenience.
+- Multiple `Save` and `SaveAsync` method overloads have been added, including one that saves the DOT code to stream.
 
 See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
     </PropertyGroup>
