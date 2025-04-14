@@ -24,10 +24,10 @@ public class DotGraphWithMultilineGlobalAttributesTest
             Graph = { AttributesAsStatements = false }
         };
 
-        Snapshot.Match(graph.ToDotString(formatting, syntax), "graph_with_multiline_global_graph_attribute_list.gv");
+        Snapshot.Match(graph.ToDot(formatting, syntax), "graph_with_multiline_global_graph_attribute_list.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.ToDotString(formatting, syntax), "graph_with_multiline_global_graph_attribute_list_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting, syntax), "graph_with_multiline_global_graph_attribute_list_single_line.gv");
     }
 
     [Fact]
@@ -45,10 +45,10 @@ public class DotGraphWithMultilineGlobalAttributesTest
             Graph = { AttributesAsStatements = false }
         };
 
-        Snapshot.Match(graph.ToDotString(formatting, syntax), "graph_with_single_line_global_graph_attribute_list.gv");
+        Snapshot.Match(graph.ToDot(formatting, syntax), "graph_with_single_line_global_graph_attribute_list.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.ToDotString(formatting, syntax), "graph_with_single_line_global_graph_attribute_list_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting, syntax), "graph_with_single_line_global_graph_attribute_list_single_line.gv");
     }
 
     [Fact]
@@ -66,10 +66,10 @@ public class DotGraphWithMultilineGlobalAttributesTest
             Graph = { AttributesAsStatements = false }
         };
 
-        Snapshot.Match(graph.ToDotString(formatting, syntax), "graph_with_multiline_global_node_attribute_list.gv");
+        Snapshot.Match(graph.ToDot(formatting, syntax), "graph_with_multiline_global_node_attribute_list.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.ToDotString(formatting, syntax), "graph_with_multiline_global_node_attribute_list_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting, syntax), "graph_with_multiline_global_node_attribute_list_single_line.gv");
     }
 
     [Fact]
@@ -87,10 +87,10 @@ public class DotGraphWithMultilineGlobalAttributesTest
             Graph = { AttributesAsStatements = false }
         };
 
-        Snapshot.Match(graph.ToDotString(formatting, syntax), "graph_with_multiline_global_edge_attribute_list.gv");
+        Snapshot.Match(graph.ToDot(formatting, syntax), "graph_with_multiline_global_edge_attribute_list.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.ToDotString(formatting, syntax), "graph_with_multiline_global_edge_attribute_list_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting, syntax), "graph_with_multiline_global_edge_attribute_list_single_line.gv");
     }
 
     [Fact]
@@ -108,10 +108,10 @@ public class DotGraphWithMultilineGlobalAttributesTest
             Graph = { AttributesAsStatements = false }
         };
 
-        Snapshot.Match(graph.ToDotString(formatting, syntax), "graph_with_multiline_global_attribute_lists.gv");
+        Snapshot.Match(graph.ToDot(formatting, syntax), "graph_with_multiline_global_attribute_lists.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.ToDotString(formatting, syntax), "graph_with_multiline_global_attribute_lists_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting, syntax), "graph_with_multiline_global_attribute_lists_single_line.gv");
     }
 
     private static DotGraph CreateGraph()

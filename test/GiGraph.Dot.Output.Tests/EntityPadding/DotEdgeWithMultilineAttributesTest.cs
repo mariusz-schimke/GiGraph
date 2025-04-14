@@ -20,10 +20,10 @@ public class DotEdgeWithMultilineAttributesTest
         );
 
         var formatting = new DotFormattingOptions { Edges = { SingleLineAttributeLists = false } };
-        Snapshot.Match(graph.ToDotString(formatting), "single_edge_with_multiline_attributes_without_padding.gv");
+        Snapshot.Match(graph.ToDot(formatting), "single_edge_with_multiline_attributes_without_padding.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.ToDotString(formatting), "single_edge_with_multiline_attributes_without_padding_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting), "single_edge_with_multiline_attributes_without_padding_single_line.gv");
     }
 
     [Fact]
@@ -34,10 +34,10 @@ public class DotEdgeWithMultilineAttributesTest
         graph.Edges.AddLoop("node1");
 
         var formatting = new DotFormattingOptions { Edges = { SingleLineAttributeLists = false } };
-        Snapshot.Match(graph.ToDotString(formatting), "single_edge_without_attributes_without_padding.gv");
+        Snapshot.Match(graph.ToDot(formatting), "single_edge_without_attributes_without_padding.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.ToDotString(formatting), "single_edge_without_attributes_without_padding_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting), "single_edge_without_attributes_without_padding_single_line.gv");
     }
 
     [Fact]
@@ -49,10 +49,10 @@ public class DotEdgeWithMultilineAttributesTest
         graph.Edges.AddLoop("node2");
 
         var formatting = new DotFormattingOptions { Edges = { SingleLineAttributeLists = false } };
-        Snapshot.Match(graph.ToDotString(formatting), "edges_without_attributes_without_padding.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edges_without_attributes_without_padding.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.ToDotString(formatting), "edges_without_attributes_without_padding_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edges_without_attributes_without_padding_single_line.gv");
     }
 
     [Fact]
@@ -65,10 +65,10 @@ public class DotEdgeWithMultilineAttributesTest
         graph.Edges.AddLoop("node3").Font.Name = "arial";
 
         var formatting = new DotFormattingOptions { Edges = { SingleLineAttributeLists = false } };
-        Snapshot.Match(graph.ToDotString(formatting), "edges_with_attributes_with_padding.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edges_with_attributes_with_padding.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.ToDotString(formatting), "edges_with_attributes_with_padding_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edges_with_attributes_with_padding_single_line.gv");
     }
 
     [Fact]
@@ -81,10 +81,10 @@ public class DotEdgeWithMultilineAttributesTest
         graph.Edges.AddLoop("node3");
 
         var formatting = new DotFormattingOptions { Edges = { SingleLineAttributeLists = false } };
-        Snapshot.Match(graph.ToDotString(formatting), "edge_with_attributes_with_bottom_padding.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edge_with_attributes_with_bottom_padding.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.ToDotString(formatting), "edge_with_attributes_with_bottom_padding_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edge_with_attributes_with_bottom_padding_single_line.gv");
     }
 
     [Fact]
@@ -97,9 +97,9 @@ public class DotEdgeWithMultilineAttributesTest
         graph.Edges.AddLoop("node3").Style.Color = Color.Red;
 
         var formatting = new DotFormattingOptions { Edges = { SingleLineAttributeLists = false } };
-        Snapshot.Match(graph.ToDotString(formatting), "edge_with_attributes_with_top_padding.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edge_with_attributes_with_top_padding.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.ToDotString(formatting), "edge_with_attributes_with_top_padding_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edge_with_attributes_with_top_padding_single_line.gv");
     }
 }

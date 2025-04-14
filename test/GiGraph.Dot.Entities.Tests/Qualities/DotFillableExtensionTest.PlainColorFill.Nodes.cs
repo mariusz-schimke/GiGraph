@@ -23,7 +23,7 @@ public partial class DotFillableExtensionTest
         graph.Nodes.Style.SetStyleModifiers(DotNodeFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true, true);
         graph.Nodes.SetPlainColorFill(Color.Red);
 
-        Snapshot.Match(graph.ToDotString(), "gradient_fill_on_nodes_with_other_styles_set");
+        Snapshot.Match(graph.ToDot(), "gradient_fill_on_nodes_with_other_styles_set");
     }
 
     [Fact]
@@ -31,7 +31,7 @@ public partial class DotFillableExtensionTest
     {
         var graph = new DotGraph();
         graph.Nodes.Add("node").SetPlainColorFill(Color.Red);
-        Snapshot.Match(graph.ToDotString(), "plain_color_fill_on_node");
+        Snapshot.Match(graph.ToDot(), "plain_color_fill_on_node");
     }
 
     [Fact]
@@ -39,7 +39,7 @@ public partial class DotFillableExtensionTest
     {
         var graph = new DotGraph();
         graph.Nodes.AddGroup("node1", "node2").SetPlainColorFill(Color.Red);
-        Snapshot.Match(graph.ToDotString(), "plain_color_fill_on_node_group");
+        Snapshot.Match(graph.ToDot(), "plain_color_fill_on_node_group");
     }
 
     [Fact]
@@ -47,6 +47,6 @@ public partial class DotFillableExtensionTest
     {
         var graph = new DotGraph();
         graph.Nodes.SetPlainColorFill(Color.Red);
-        Snapshot.Match(graph.ToDotString(), "plain_color_fill_on_node_collection");
+        Snapshot.Match(graph.ToDot(), "plain_color_fill_on_node_collection");
     }
 }

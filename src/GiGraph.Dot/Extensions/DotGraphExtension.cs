@@ -31,7 +31,7 @@ public static class DotGraphExtension
     ///     The syntax rules to use.
     /// </param>
     [Pure]
-    public static string ToDotString(
+    public static string ToDot(
         this DotGraph graph,
         DotFormattingOptions? formattingOptions = null,
         DotSyntaxOptions? syntaxOptions = null,
@@ -269,7 +269,7 @@ public static class DotGraphExtension
         using var streamWriter = CreateStreamWriter(stream, encoding);
 
         // it would be better to build the graph directly to stream, but the solution does not support async building
-        var output = graph.ToDotString(formattingOptions, syntaxOptions, syntaxRules);
+        var output = graph.ToDot(formattingOptions, syntaxOptions, syntaxRules);
         await streamWriter.WriteAsync(output);
         await streamWriter.FlushAsync();
     }

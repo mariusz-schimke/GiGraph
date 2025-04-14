@@ -12,7 +12,7 @@ public class DotGraphScriptTest
     public void graph_with_all_possible_elements_is_rendered_according_to_default_rules_and_options()
     {
         var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
-        var dot = graph.ToDotString();
+        var dot = graph.ToDot();
 
         Snapshot.Match(dot, "directed_graph_default_options.gv");
     }
@@ -21,7 +21,7 @@ public class DotGraphScriptTest
     public void renders_empty_graph_in_expected_format()
     {
         var graph = new DotGraph();
-        var dot = graph.ToDotString();
+        var dot = graph.ToDot();
 
         Snapshot.Match(dot, "empty_graph_default_options.gv");
     }
@@ -31,7 +31,7 @@ public class DotGraphScriptTest
     {
         var graph = DotGraphFactory.CreateSectionedGraph(directed: true);
 
-        var dot = graph.ToDotString();
+        var dot = graph.ToDot();
         Snapshot.Match(dot, "directed_sectioned_graph_default_options.gv");
     }
 
@@ -40,7 +40,7 @@ public class DotGraphScriptTest
     {
         var graph = DotGraphFactory.CreateAnnotatedGraph();
 
-        var dot = graph.ToDotString();
+        var dot = graph.ToDot();
         Snapshot.Match(dot, "annotated_graph_default_options.gv");
     }
 
@@ -61,7 +61,7 @@ public class DotGraphScriptTest
             Graph = { AttributesAsStatements = false }
         };
 
-        Snapshot.Match(graph.ToDotString(formatting, syntax), "annotated_graph_multiline_attributes.gv");
+        Snapshot.Match(graph.ToDot(formatting, syntax), "annotated_graph_multiline_attributes.gv");
     }
 
     [Fact]
@@ -70,7 +70,7 @@ public class DotGraphScriptTest
         var graph = new DotGraph();
         graph.Edges.AddLoop("a");
 
-        var dot = graph.ToDotString();
+        var dot = graph.ToDot();
         Snapshot.Match(dot, "directed_graph_edge.gv");
     }
 
@@ -80,7 +80,7 @@ public class DotGraphScriptTest
         var graph = new DotGraph(directed: false);
         graph.Edges.AddLoop("a");
 
-        var dot = graph.ToDotString();
+        var dot = graph.ToDot();
         Snapshot.Match(dot, "undirected_graph_edge.gv");
     }
 
@@ -88,7 +88,7 @@ public class DotGraphScriptTest
     public void renders_strict_directed_graph()
     {
         var graph = new DotGraph(strict: true);
-        var dot = graph.ToDotString();
+        var dot = graph.ToDot();
         Snapshot.Match(dot, "strict_directed_graph.gv");
     }
 
@@ -103,7 +103,7 @@ public class DotGraphScriptTest
             }
         };
 
-        var dot = graph.ToDotString();
+        var dot = graph.ToDot();
         Snapshot.Match(dot, "graph_with_html_attribute.gv");
     }
 
@@ -118,7 +118,7 @@ public class DotGraphScriptTest
         graph.Subgraphs.Add().Id = id;
         graph.Clusters.Add(id);
 
-        var dot = graph.ToDotString();
+        var dot = graph.ToDot();
         Snapshot.Match(dot, "graph_with_escaped_identifiers.gv");
     }
 }

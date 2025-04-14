@@ -31,7 +31,7 @@ public class DotGraphStyleAttributeOptionsTest
             true
         ));
 
-        Snapshot.Match(graph.ToDotString(), snapshotName);
+        Snapshot.Match(graph.ToDot(), snapshotName);
 
         graph.Style.RestoreDefaultStyleModifiers();
         Assert.True(graph.Style.HasDefaultStyleModifiers());
@@ -50,7 +50,7 @@ public class DotGraphStyleAttributeOptionsTest
             DotClusterFillStyle.Striped // overwrites the one set on the clusters above
         ));
 
-        Snapshot.Match(graph.ToDotString(), snapshotName);
+        Snapshot.Match(graph.ToDot(), snapshotName);
 
         graph.Clusters.Style.RestoreDefaultStyleModifiers();
         Assert.True(graph.Style.HasDefaultStyleModifiers());

@@ -26,7 +26,7 @@ public class DotNodeStyleAttributeOptionsTest
             true
         ));
 
-        Snapshot.Match(graph.ToDotString(), snapshotName);
+        Snapshot.Match(graph.ToDot(), snapshotName);
 
         Assert.False(node.Style.HasDefaultStyleModifiers());
         node.Style.RestoreDefaultStyleModifiers();
@@ -42,6 +42,6 @@ public class DotNodeStyleAttributeOptionsTest
             true
         );
 
-        Snapshot.Match(graph.ToDotString(), snapshotName);
+        Snapshot.Match(graph.ToDot(), snapshotName);
     }
 }

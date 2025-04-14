@@ -82,7 +82,7 @@ var graph = new DotGraph(directed: true);
 graph.Edges.Add("Hello", "World!");
 
 // build the DOT output
-Console.WriteLine(graph.ToDotString());
+Console.WriteLine(graph.ToDot());
 
 // (.gv and .dot are the default extensions)
 graph.Save("example.gv");
@@ -1554,7 +1554,7 @@ graph.Subgraphs.Add(sg =>
 });
 
 // generate and save the DOT output
-Console.WriteLine(graph.ToDotString());
+Console.WriteLine(graph.ToDot());
 graph.Save("example.gv");
 ```
 
@@ -1681,7 +1681,7 @@ graph.Clusters.Add(id: "Flow 2", cluster =>
 });
 
 // generate and save the DOT output
-Console.WriteLine(graph.ToDotString());
+Console.WriteLine(graph.ToDot());
 graph.Save("example.gv");
 ```
 
@@ -1791,7 +1791,7 @@ var options = new DotFormattingOptions
 };
 
 // generate and save the DOT output
-Console.WriteLine(graph.ToDotString(options));
+Console.WriteLine(graph.ToDot(options));
 graph.Save("example.gv", options);
 ```
 
@@ -1850,7 +1850,7 @@ var options = new DotFormattingOptions
     Subgraphs = { SingleLine = true }
 };
 
-Console.WriteLine(graph.ToDotString(options));
+Console.WriteLine(graph.ToDot(options));
 graph.Save("example.gv", options);
 ```
 
@@ -1874,7 +1874,7 @@ var options = new DotSyntaxOptions
     Attributes = { PreferQuotedValue = true }
 };
 
-Console.WriteLine(graph.ToDotString(syntaxOptions: options));
+Console.WriteLine(graph.ToDot(syntaxOptions: options));
 graph.Save("example.gv", syntaxOptions: options);
 ```
 
@@ -1929,7 +1929,7 @@ var options = new DotSyntaxOptions
     Clusters = { Discriminator = DotClusterDiscriminator.Attribute },
 };
 
-Console.WriteLine(graph.ToDotString(syntaxOptions: options));
+Console.WriteLine(graph.ToDot(syntaxOptions: options));
 graph.Save("example.gv", syntaxOptions: options);
 ```
 

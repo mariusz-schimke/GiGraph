@@ -18,7 +18,7 @@ public class DotGraphSectionExtensionTest
         graph.SetBackground(Color.Gold);
         graph.Subsections.Add().SetBackground(Color.Gold);
 
-        Snapshot.Match(graph.ToDotString(), "plain_graph_background");
+        Snapshot.Match(graph.ToDot(), "plain_graph_background");
     }
 
     [Fact]
@@ -42,7 +42,7 @@ public class DotGraphSectionExtensionTest
             })
             .SetGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta), 20);
 
-        Snapshot.Match(graph.ToDotString(), "gradient_graph_background");
+        Snapshot.Match(graph.ToDot(), "gradient_graph_background");
     }
 
     [Fact]
@@ -61,6 +61,6 @@ public class DotGraphSectionExtensionTest
         graph.Subsections.Add()
             .SetRadialGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta), 20);
 
-        Snapshot.Match(graph.ToDotString(), "radial_gradient_graph_background");
+        Snapshot.Match(graph.ToDot(), "radial_gradient_graph_background");
     }
 }

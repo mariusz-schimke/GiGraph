@@ -17,7 +17,7 @@ public partial class DotFillableExtensionTest
         graph.Clusters.Add("").SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
         graph.Clusters.Add("").SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
 
-        Snapshot.Match(graph.ToDotString(), "gradient_fill_on_clusters");
+        Snapshot.Match(graph.ToDot(), "gradient_fill_on_clusters");
 
         graph.Clusters.Clear();
 
@@ -25,7 +25,7 @@ public partial class DotFillableExtensionTest
         graph.Clusters.Add("").SetGradientFill(Color.Red, Color.Brown);
         graph.Clusters.Add("").SetGradientFill(Color.Red, Color.Brown, 45);
 
-        Snapshot.Match(graph.ToDotString(), "gradient_fill_on_clusters");
+        Snapshot.Match(graph.ToDot(), "gradient_fill_on_clusters");
     }
 
     [Fact]
@@ -33,7 +33,7 @@ public partial class DotFillableExtensionTest
     {
         var graph = new DotGraph();
         graph.Clusters.SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
-        Snapshot.Match(graph.ToDotString(), "gradient_fill_on_cluster_collection");
+        Snapshot.Match(graph.ToDot(), "gradient_fill_on_cluster_collection");
     }
 
     [Fact]
@@ -41,6 +41,6 @@ public partial class DotFillableExtensionTest
     {
         var graph = new DotGraph();
         graph.Clusters.SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
-        Snapshot.Match(graph.ToDotString(), "gradient_fill_on_cluster_collection_with_angle");
+        Snapshot.Match(graph.ToDot(), "gradient_fill_on_cluster_collection_with_angle");
     }
 }
