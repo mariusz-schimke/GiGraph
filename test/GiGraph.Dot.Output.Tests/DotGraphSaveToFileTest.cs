@@ -18,46 +18,55 @@ public class DotGraphSaveToFileTest : IDisposable
         }
     }
 
-    [Fact]
-    public void graph_is_saved_to_file_complete()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task graph_is_saved_to_file_complete(bool useAsync)
     {
         var graph = new DotGraph();
-        graph.Save(_tempFilePath);
-
         var dotString = graph.ToDot();
-        using var stream = new FileStream(_tempFilePath, FileMode.Open, FileAccess.Read);
 
+        if (useAsync)
+        {
+            await graph.SaveAsync(_tempFilePath);
+        }
+        else
+        {
+            graph.Save(_tempFilePath);
+        }
+
+        var dotStringFromFile = await File.ReadAllTextAsync(_tempFilePath);
         Assert.NotEmpty(dotString);
-        Assert.Equal(dotString.Length, stream.Length);
+        Assert.Equal(dotString, dotStringFromFile);
     }
 
-    [Fact]
-    public void graph_is_saved_to_file_without_bom()
+
+    [Theory]
+    [InlineData(null, false, false)] // sync without BOM
+    [InlineData(null, false, true)] // async without BOM
+    [InlineData("utf-8", true, false)] // sync with BOM
+    [InlineData("utf-8", true, true)] // async with BOM
+    public async Task graph_is_saved_to_file_bom_check(string? encodingName, bool expectBom, bool useAsync)
     {
         var graph = new DotGraph();
-
         var dotString = graph.ToDot();
         Assert.NotEmpty(dotString);
 
-        graph.Save(_tempFilePath);
+        var encoding = encodingName is null
+            ? null
+            : Encoding.GetEncoding(encodingName);
 
-        using var stream = new FileStream(_tempFilePath, FileMode.Open, FileAccess.Read);
+        if (useAsync)
+        {
+            await graph.SaveAsync(_tempFilePath, encoding: encoding);
+        }
+        else
+        {
+            graph.Save(_tempFilePath, encoding: encoding);
+        }
+
+        await using var stream = new FileStream(_tempFilePath, FileMode.Open, FileAccess.Read);
         var hasBom = EncodingHelper.HasBom(stream);
-        Assert.False(hasBom);
-    }
-
-    [Fact]
-    public void graph_is_saved_to_file_with_bom()
-    {
-        var graph = new DotGraph();
-
-        var dotString = graph.ToDot();
-        Assert.NotEmpty(dotString);
-
-        graph.Save(_tempFilePath, encoding: Encoding.UTF8);
-
-        using var stream = new FileStream(_tempFilePath, FileMode.Open, FileAccess.Read);
-        var hasBom = EncodingHelper.HasBom(stream);
-        Assert.True(hasBom);
+        Assert.Equal(expectBom, hasBom);
     }
 }

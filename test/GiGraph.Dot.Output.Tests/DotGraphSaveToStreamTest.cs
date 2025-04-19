@@ -8,49 +8,55 @@ namespace GiGraph.Dot.Output.Tests;
 
 public class DotGraphSaveToStreamTest
 {
-    [Fact]
-    public void graph_is_saved_to_stream_complete()
+    [Theory]
+    [InlineData(false)] // sync
+    [InlineData(true)] // async
+    public async Task graph_is_saved_to_stream_complete(bool useAsync)
     {
         var graph = new DotGraph();
         using var stream = new MemoryStream();
-        graph.Save(stream);
-        stream.Position = 0;
+
+        if (useAsync)
+        {
+            await graph.SaveAsync(stream);
+        }
+        else
+        {
+            graph.Save(stream);
+        }
 
         var dotString = graph.ToDot();
-
         Assert.NotEmpty(dotString);
         Assert.Equal(dotString.Length, stream.Length);
     }
 
-    [Fact]
-    public void graph_is_saved_to_stream_with_bom()
+    [Theory]
+    [InlineData(null, false, false)] // sync without BOM
+    [InlineData(null, false, true)] // async without BOM
+    [InlineData("utf-8", true, false)] // sync with BOM
+    [InlineData("utf-8", true, true)] // async with BOM
+    public async Task graph_is_saved_to_stream_bom_check(string? encodingName, bool expectBom, bool useAsync)
     {
         var graph = new DotGraph();
-
         var dotString = graph.ToDot();
         Assert.NotEmpty(dotString);
 
-        using var stream = new MemoryStream();
-        graph.Save(stream, encoding: Encoding.UTF8);
-
-        stream.Position = 0;
-        var hasBom = EncodingHelper.HasBom(stream);
-        Assert.True(hasBom);
-    }
-
-    [Fact]
-    public void graph_is_saved_to_stream_without_bom()
-    {
-        var graph = new DotGraph();
-
-        var dotString = graph.ToDot();
-        Assert.NotEmpty(dotString);
+        var encoding = encodingName is null
+            ? null
+            : Encoding.GetEncoding(encodingName);
 
         using var stream = new MemoryStream();
-        graph.Save(stream);
 
-        stream.Position = 0;
+        if (useAsync)
+        {
+            await graph.SaveAsync(stream, encoding: encoding);
+        }
+        else
+        {
+            graph.Save(stream, encoding: encoding);
+        }
+
         var hasBom = EncodingHelper.HasBom(stream);
-        Assert.False(hasBom);
+        Assert.Equal(expectBom, hasBom);
     }
 }
