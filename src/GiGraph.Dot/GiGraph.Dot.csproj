@@ -51,7 +51,9 @@
 
 - The `Build()` method on graph has been renamed to `ToDot()`, which is more descriptive of its purpose. This method generates the DOT representation of the graph.
 
-- `Save` and `SaveAsync` method overloads have been added, including one that saves the DOT output to stream.
+- Several `Save` and `SaveAsync` method overloads have been added, including ones that save the DOT output to stream.
+
+- The `SaveToFile` method has been renamed to `Save` for consistency with the new naming convention.
 
 See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
     </PropertyGroup>
