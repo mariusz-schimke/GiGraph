@@ -18,7 +18,7 @@ public partial class DotGraphSyntaxOptionsTest
         {
             SortElements = true
         };
-        var dot = graph.Build(syntaxOptions: options);
+        var dot = graph.ToDot(syntaxOptions: options);
 
         Snapshot.Match(dot, "directed_graph_sorted.gv");
     }
@@ -32,7 +32,7 @@ public partial class DotGraphSyntaxOptionsTest
         {
             PreferQuotedIdentifiers = true
         };
-        var dot = graph.Build(syntaxOptions: options);
+        var dot = graph.ToDot(syntaxOptions: options);
 
         Snapshot.Match(dot, "directed_graph_quoted_identifiers.gv");
     }
@@ -50,7 +50,7 @@ public partial class DotGraphSyntaxOptionsTest
             }
         };
 
-        var dot = graph.Build(syntaxOptions: options);
+        var dot = graph.ToDot(syntaxOptions: options);
         Snapshot.Match(dot, "annotated_graph_block_comments.gv");
     }
 
@@ -67,7 +67,7 @@ public partial class DotGraphSyntaxOptionsTest
             }
         };
 
-        var dot = graph.Build(syntaxOptions: options);
+        var dot = graph.ToDot(syntaxOptions: options);
         Snapshot.Match(dot, "annotated_graph_hash_comments.gv");
     }
 
@@ -87,7 +87,7 @@ public partial class DotGraphSyntaxOptionsTest
             Graph = { AttributesAsStatements = false }
         };
 
-        var dot = graph.Build(syntaxOptions: options);
+        var dot = graph.ToDot(syntaxOptions: options);
         Snapshot.Match(dot, "directed_graph_attributes_separator_quoted_key_quoted_value_graph_attributes_single_statement.gv");
     }
 
@@ -105,7 +105,7 @@ public partial class DotGraphSyntaxOptionsTest
             }
         };
 
-        var dot = graph.Build(syntaxOptions: options);
+        var dot = graph.ToDot(syntaxOptions: options);
         Snapshot.Match(dot, "undirected_graph_custom_cluster_id_separator.gv");
     }
 
@@ -128,7 +128,7 @@ public partial class DotGraphSyntaxOptionsTest
             }
         };
 
-        var dot = graph.Build(syntaxOptions: options);
+        var dot = graph.ToDot(syntaxOptions: options);
         Snapshot.Match(dot, "graph_with_colors_as_hex.gv");
     }
 
@@ -145,7 +145,7 @@ public partial class DotGraphSyntaxOptionsTest
             Edges = { PreferExplicitSubgraphDeclaration = true }
         };
 
-        var dot = graph.Build(syntaxOptions: options);
+        var dot = graph.ToDot(syntaxOptions: options);
         Snapshot.Match(dot, "graph_with_explicitly_declared_subgraphs.gv");
     }
 
@@ -159,7 +159,7 @@ public partial class DotGraphSyntaxOptionsTest
             PreferStatementDelimiter = true
         };
 
-        var dot = graph.Build(syntaxOptions: options);
+        var dot = graph.ToDot(syntaxOptions: options);
         Snapshot.Match(dot, "graph_with_statement_delimiters.gv");
     }
 }

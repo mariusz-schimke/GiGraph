@@ -32,7 +32,7 @@ public partial class DotStylableEdgeExtensionTest
         graph.Edges.Add("e", "f").SetMultilineStyle(Color.Red, Color.Black, Color.Green);
         graph.Edges.Add("g", "h").SetMultilineStyle(new DotMulticolor(Color.Red, Color.Black, Color.Green));
 
-        Snapshot.Match(graph.Build(), "multiline_edges");
+        Snapshot.Match(graph.ToDot(), "multiline_edges");
     }
 
     [Fact]
@@ -45,6 +45,6 @@ public partial class DotStylableEdgeExtensionTest
         graph.Subsections.Add().Edges.SetMultilineStyle(Color.Red, Color.Black, Color.Green);
         graph.Subsections.Add().Edges.SetMultilineStyle(new DotMulticolor(Color.Red, Color.Black, Color.Green));
 
-        Snapshot.Match(graph.Build(), "multiline_edge_collections");
+        Snapshot.Match(graph.ToDot(), "multiline_edge_collections");
     }
 }

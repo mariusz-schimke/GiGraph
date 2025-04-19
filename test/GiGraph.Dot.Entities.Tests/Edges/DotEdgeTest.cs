@@ -74,6 +74,6 @@ public class DotEdgeTest
             },
             "a", "b", "c");
 
-        Snapshot.Match(graph.Build(), "edge_head_and_tail_attributes");
+        Snapshot.Match(graph.ToDot(), "edge_head_and_tail_attributes");
     }
 }

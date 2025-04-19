@@ -29,7 +29,7 @@
         <PackageId>GiGraph.Dot</PackageId>
         <Title>GiGraph.Dot</Title>
         <Product>GiGraph DOT</Product>
-        <Description>A simple solution for generating graphs in the DOT language. The output is a textual script that may be visualized or converted to an image, using the Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code or online tools like https://viz-js.com or http://magjac.com/graphviz-visual-editor, where you paste a script to view its visualization.</Description>
+        <Description>A simple solution for generating graphs in the DOT language. The generated output is plain text in DOT format, which can be rendered as an image using the Graphviz software. There are handy visualization tools like Graphviz Preview for Visual Studio Code or online tools like https://viz-js.com or http://magjac.com/graphviz-visual-editor, where you paste the DOT code to view its visualization.</Description>
         <Authors>Mariusz Schimke</Authors>
         <Copyright>Copyright © 2020-2025 Mariusz Schimke</Copyright>
         <PackageTags>DOT Graphviz graph diagram visualization</PackageTags>
@@ -47,7 +47,13 @@
         <RepositoryBranch>$(Branch)</RepositoryBranch>
         <RepositoryCommit>$(Commit)</RepositoryCommit>
 
-        <PackageReleaseNotes>- All style-related attributes have been consolidated under the Style property of the graph and its elements. This includes attributes such as Color, FillColor, BackgroundColor, and others, which are now exposed in a more structured and consistent way.
+        <PackageReleaseNotes>- All style-related attributes have been consolidated under the `Style` property of the graph and its elements. This includes attributes such as `Color`, `FillColor`, `BackgroundColor`, and others, which are now exposed in a more structured and consistent way.
+
+- The `Build()` method on graph has been renamed to `ToDot()`, which is more descriptive of its purpose. This method generates the DOT representation of the graph.
+
+- Several `Save` and `SaveAsync` method overloads have been added, including ones that save the DOT output to stream.
+
+- The `SaveToFile` method has been renamed to `Save` for consistency with the new naming convention.
 
 See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
     </PropertyGroup>

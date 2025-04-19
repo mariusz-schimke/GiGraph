@@ -105,7 +105,7 @@ public class DotAttributeKeyAssociationTest
             SortElements = true
         };
 
-        Snapshot.Match(graph.Build(formatOptions, syntaxOptions), "graph_with_all_attributes_on_all_elements");
+        Snapshot.Match(graph.ToDot(formatOptions, syntaxOptions), "graph_with_all_attributes_on_all_elements");
     }
 
     private static void SetAllElementAttributesWithChecks(IDotEntityAttributesAccessor targetRootObject, DotAttributePropertyMetadata[] attributes)
