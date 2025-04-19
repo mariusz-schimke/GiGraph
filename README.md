@@ -794,7 +794,7 @@ digraph
 
 ### Node groups
 
-When adding nodes to a graph, subgraph, or cluster, you can use a node group, which has a shared list of attributes for all the nodes within it. To do it, use one of the overloads of the *AddGroup* method on a node collection. This way you can generate a more concise DOT output if that's necessary (otherwise you can just add nodes in the standard way, one by one).
+When adding nodes to a graph, subgraph, or cluster, you can use a node group, which has a shared list of attributes for all the nodes within it. To do it, use one of the overloads of the *AddGroup* method on a node collection. This way you can generate more concise DOT output if that's necessary (otherwise you can just add nodes in the standard way, one by one).
 
 ```c#
 graph.Nodes.AddGroup
