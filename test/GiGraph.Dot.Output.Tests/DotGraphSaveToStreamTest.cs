@@ -1,7 +1,7 @@
 using System.Text;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
-using GiGraph.Dot.Output.Tests.EncodingHelpers;
+using GiGraph.Dot.Output.Tests.Helpers;
 using Xunit;
 
 namespace GiGraph.Dot.Output.Tests;
@@ -14,7 +14,7 @@ public class DotGraphSaveToStreamTest
     public async Task graph_is_saved_to_stream_complete(bool useAsync)
     {
         var graph = new DotGraph();
-        using var stream = new MemoryStream();
+        await using var stream = new StreamWrapper(new MemoryStream());
 
         if (useAsync)
         {
@@ -24,6 +24,8 @@ public class DotGraphSaveToStreamTest
         {
             graph.Save(stream);
         }
+
+        Assert.True(stream.FlushCalled);
 
         var dotString = graph.ToDot();
         Assert.NotEmpty(dotString);
