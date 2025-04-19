@@ -24,7 +24,7 @@ public class DotClusterId : DotId
     {
         const string cluster = "cluster";
 
-        if (!options.Clusters.Discriminator.HasFlag(DotClusterDiscriminator.IdPrefix))
+        if (!options.Clusters.Discriminator.HasFlag(DotClusterDiscriminators.IdPrefix))
         {
             return _id;
         }

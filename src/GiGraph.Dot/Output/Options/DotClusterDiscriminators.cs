@@ -4,7 +4,7 @@ namespace GiGraph.Dot.Output.Options;
 ///     Determines how to mark subgraphs as clusters in the DOT output.
 /// </summary>
 [Flags]
-public enum DotClusterDiscriminator
+public enum DotClusterDiscriminators
 {
     /// <summary>
     ///     Use a "cluster" prefix in the ID.

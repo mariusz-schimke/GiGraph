@@ -136,7 +136,7 @@ public interface IDotClusterAttributes
     ///     <para>
     ///         To make sure this attribute is respected by Graphviz as the only cluster discriminator, set the
     ///         <see cref="DotSyntaxOptions.ClusterOptions.Discriminator"/> property of cluster syntax options to
-    ///         <see cref="DotClusterDiscriminator.Attribute"/> when generating the DOT output. This setting causes the attribute
+    ///         <see cref="DotClusterDiscriminators.Attribute"/> when generating the DOT output. This setting causes the attribute
     ///         to be automatically included with a value of <see langword="true"/> in the DOT output in all clusters, except those
     ///         where you explicitly set the <see cref="IsCluster"/> property to <see langword="false"/>. Also, such setting will disable
     ///         using the "cluster" prefix in the IDs of clusters so that the attribute is the only way to identify clusters in the

@@ -6,12 +6,12 @@ public partial class DotSyntaxOptions
     {
         /// <summary>
         ///     Determines how subgraphs are marked semantically as clusters. Since clusters are written as subgraphs in DOT syntax, this
-        ///     setting controls how they are identified as clusters by Graphviz. If set to <see cref="DotClusterDiscriminator.Attribute"/>,
+        ///     setting controls how they are identified as clusters by Graphviz. If set to <see cref="DotClusterDiscriminators.Attribute"/>,
         ///     the subgraph will include the "cluster" attribute to mark it as a cluster. If set to
-        ///     <see cref="DotClusterDiscriminator.IdPrefix"/> (default), the subgraph's ID will be prefixed with "cluster" instead. See
+        ///     <see cref="DotClusterDiscriminators.IdPrefix"/> (default), the subgraph's ID will be prefixed with "cluster" instead. See
         ///     <see cref="IdPrefixSeparator"/> for details related to the ID prefix option.
         /// </summary>
-        public DotClusterDiscriminator Discriminator { get; set; } = DotClusterDiscriminator.IdPrefix;
+        public DotClusterDiscriminators Discriminator { get; set; } = DotClusterDiscriminators.IdPrefix;
 
         /// <summary>
         ///     Cluster is a subgraph with its identifier prefixed with the "cluster" keyword or with its "cluster" attribute set to

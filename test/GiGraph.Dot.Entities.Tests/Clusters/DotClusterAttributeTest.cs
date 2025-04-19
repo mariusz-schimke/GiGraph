@@ -16,7 +16,7 @@ public class DotClusterAttributeTest
         const string snapshotName = "cluster_with_cluster_id_prefix_as_discriminator";
 
         var graph = CreateGraphWithCluster(out _);
-        Snapshot.Match(graph.ToDot(syntaxOptions: CreateSyntaxOptions(DotClusterDiscriminator.IdPrefix)), snapshotName);
+        Snapshot.Match(graph.ToDot(syntaxOptions: CreateSyntaxOptions(DotClusterDiscriminators.IdPrefix)), snapshotName);
     }
 
     [Fact]
@@ -25,7 +25,7 @@ public class DotClusterAttributeTest
         const string snapshotName = "cluster_with_cluster_id_prefix_and_cluster_attribute_as_discriminators";
 
         var graph = CreateGraphWithCluster(out _);
-        Snapshot.Match(graph.ToDot(syntaxOptions: CreateSyntaxOptions(DotClusterDiscriminator.IdPrefixAndAttribute)), snapshotName);
+        Snapshot.Match(graph.ToDot(syntaxOptions: CreateSyntaxOptions(DotClusterDiscriminators.IdPrefixAndAttribute)), snapshotName);
     }
 
     [Fact]
@@ -36,7 +36,7 @@ public class DotClusterAttributeTest
         var graph = CreateGraphWithCluster(out var cluster);
 
         // the attribute should be present in the DOT output with a value of true when not set explicitly
-        var syntaxOptions = CreateSyntaxOptions(DotClusterDiscriminator.Attribute);
+        var syntaxOptions = CreateSyntaxOptions(DotClusterDiscriminators.Attribute);
         Snapshot.Match(graph.ToDot(syntaxOptions: syntaxOptions), snapshotName);
 
         // the attribute should not be added to the collection when the graph is built
@@ -53,7 +53,7 @@ public class DotClusterAttributeTest
         cluster.Attributes.SetValue(a => a.IsCluster, false);
 
         // the attribute should be present in the DOT output with the value of false set above
-        var syntaxOptions = CreateSyntaxOptions(DotClusterDiscriminator.Attribute);
+        var syntaxOptions = CreateSyntaxOptions(DotClusterDiscriminators.Attribute);
         Snapshot.Match(graph.ToDot(syntaxOptions: syntaxOptions), snapshotName);
 
         // the value should stay intact after the graph is built
@@ -69,14 +69,14 @@ public class DotClusterAttributeTest
         var graph = CreateGraphWithCluster(out var cluster);
         cluster.Attributes.SetValue(a => a.IsCluster, false);
 
-        Snapshot.Match(graph.ToDot(syntaxOptions: CreateSyntaxOptions(DotClusterDiscriminator.IdPrefix)), snapshotName);
+        Snapshot.Match(graph.ToDot(syntaxOptions: CreateSyntaxOptions(DotClusterDiscriminators.IdPrefix)), snapshotName);
     }
 
     [Theory]
-    [InlineData(DotClusterDiscriminator.IdPrefix)]
-    [InlineData(DotClusterDiscriminator.Attribute)]
-    [InlineData(DotClusterDiscriminator.IdPrefixAndAttribute)]
-    public void cluster_attribute_preference_determines_how_clusters_are_referred_to(DotClusterDiscriminator discriminator)
+    [InlineData(DotClusterDiscriminators.IdPrefix)]
+    [InlineData(DotClusterDiscriminators.Attribute)]
+    [InlineData(DotClusterDiscriminators.IdPrefixAndAttribute)]
+    public void cluster_attribute_preference_determines_how_clusters_are_referred_to(DotClusterDiscriminators discriminator)
     {
         var snapshotName = $"id_reference_to_cluster_with_cluster_{discriminator.ToString().ToLower()}_as_discriminator";
 
@@ -118,7 +118,7 @@ public class DotClusterAttributeTest
         return graph;
     }
 
-    private static DotSyntaxOptions CreateSyntaxOptions(DotClusterDiscriminator discriminator) =>
+    private static DotSyntaxOptions CreateSyntaxOptions(DotClusterDiscriminators discriminator) =>
         new()
         {
             Clusters = { Discriminator = discriminator }
