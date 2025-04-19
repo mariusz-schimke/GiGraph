@@ -1,9 +1,11 @@
-﻿using GiGraph.Dot.Entities.Graphs;
+﻿using System.Diagnostics.Contracts;
+using GiGraph.Dot.Entities.Graphs;
 
 namespace GiGraph.Dot.Examples.Basic;
 
 public static class HelloWorld
 {
+    [Pure]
     public static DotGraph Generate()
     {
         var graph = new DotGraph();

@@ -29,10 +29,10 @@ public class DotEdgeWithSubgraphEndpointsTest
         );
 
         var formatting = new DotFormattingOptions { Edges = { SingleLineSubgraphs = false } };
-        Snapshot.Match(graph.Build(formatting), "single_edge_without_padding.gv");
+        Snapshot.Match(graph.ToDot(formatting), "single_edge_without_padding.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.Build(formatting), "single_edge_without_padding_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting), "single_edge_without_padding_single_line.gv");
     }
 
     [Fact]
@@ -58,10 +58,10 @@ public class DotEdgeWithSubgraphEndpointsTest
         graph.Edges.AddLoop("node5");
 
         var formatting = new DotFormattingOptions { Edges = { SingleLineSubgraphs = false } };
-        Snapshot.Match(graph.Build(formatting), "edges_without_padding.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edges_without_padding.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.Build(formatting), "edges_without_padding_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edges_without_padding_single_line.gv");
     }
 
     [Fact]
@@ -85,10 +85,10 @@ public class DotEdgeWithSubgraphEndpointsTest
         graph.Edges.AddLoop("node5");
 
         var formatting = new DotFormattingOptions { Edges = { SingleLineSubgraphs = false } };
-        Snapshot.Match(graph.Build(formatting), "edges_with_padding.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edges_with_padding.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.Build(formatting), "edges_with_padding_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edges_with_padding_single_line.gv");
     }
 
     [Fact]
@@ -109,10 +109,10 @@ public class DotEdgeWithSubgraphEndpointsTest
         graph.Edges.AddLoop("node5");
 
         var formatting = new DotFormattingOptions { Edges = { SingleLineSubgraphs = false } };
-        Snapshot.Match(graph.Build(formatting), "edge_with_bottom_padding.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edge_with_bottom_padding.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.Build(formatting), "edge_with_bottom_padding_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edge_with_bottom_padding_single_line.gv");
     }
 
     [Fact]
@@ -134,9 +134,9 @@ public class DotEdgeWithSubgraphEndpointsTest
 
 
         var formatting = new DotFormattingOptions { Edges = { SingleLineSubgraphs = false } };
-        Snapshot.Match(graph.Build(formatting), "edge_with_top_padding.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edge_with_top_padding.gv");
 
         formatting.SingleLine = true;
-        Snapshot.Match(graph.Build(formatting), "edge_with_top_padding_single_line.gv");
+        Snapshot.Match(graph.ToDot(formatting), "edge_with_top_padding_single_line.gv");
     }
 }

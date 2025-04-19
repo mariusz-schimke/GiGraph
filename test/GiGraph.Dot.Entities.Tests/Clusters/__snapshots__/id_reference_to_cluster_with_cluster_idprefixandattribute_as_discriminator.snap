@@ -1,0 +1,13 @@
+﻿digraph
+{
+    compound = true
+
+    subgraph "cluster c1"
+    {
+        cluster = true
+
+        n2
+    }
+
+    n1 -> n2 [ lhead = "cluster c1" ]
+}

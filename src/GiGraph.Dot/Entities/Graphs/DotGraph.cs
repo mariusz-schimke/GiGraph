@@ -70,7 +70,7 @@ public class DotGraph : DotGraphSection, IDotGraph, IDotOrderable
 
     /// <summary>
     ///     <para>
-    ///         The subsections of the graph. They appear consecutively in the output DOT script, and inherit the graph attributes, and
+    ///         The subsections of the graph. They appear consecutively in the DOT output, and inherit the graph attributes, and
     ///         the global node and/or edge attributes of their predecessors. When overridden in any subsection, the new graph attributes
     ///         and global node/edge attributes apply to the elements the section itself contains, and also to those that belong to the
     ///         sections that follow it (if any).

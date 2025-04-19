@@ -20,12 +20,15 @@ public partial class DotHtmlFontAttributes : DotHtmlElementAttributes<IDotHtmlFo
     {
     }
 
+    /// <inheritdoc cref="IDotHtmlFontAttributes.Name"/>
     [DotAttributeKey("face")]
     public virtual partial string? Name { get; set; }
 
+    /// <inheritdoc cref="IDotHtmlFontAttributes.Size"/>
     [DotAttributeKey("point-size")]
     public virtual partial double? Size { get; set; }
 
+    /// <inheritdoc cref="IDotHtmlFontAttributes.Color"/>
     [DotAttributeKey("color")]
     public virtual partial DotColor? Color { get; set; }
 }

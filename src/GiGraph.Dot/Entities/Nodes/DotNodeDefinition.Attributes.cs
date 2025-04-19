@@ -4,7 +4,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Types.Alignment;
-using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
@@ -28,7 +27,7 @@ public abstract partial class DotNodeDefinition : IDotNodeRootAttributes
     public DotNodeSizeAttributes Size => Attributes.Implementation.Size;
 
     /// <inheritdoc cref="IDotNodeRootAttributes.Style"/>
-    public DotNodeStyleAttributeOptions Style => Attributes.Implementation.Style;
+    public DotNodeStyleAttributes Style => Attributes.Implementation.Style;
 
     /// <inheritdoc cref="IDotNodeRootAttributes.SvgStyleSheet"/>
     public DotSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
@@ -77,41 +76,6 @@ public abstract partial class DotNodeDefinition : IDotNodeRootAttributes
         set => Attributes.Implementation.Tooltip = value;
     }
 
-    /// <inheritdoc cref="IDotNodeAttributes.Color"/>
-    public virtual DotColorDefinition? Color
-    {
-        get => Attributes.Implementation.Color;
-        set => Attributes.Implementation.Color = value;
-    }
-
-    /// <inheritdoc cref="IDotNodeAttributes.FillColor"/>
-    public virtual DotColorDefinition? FillColor
-    {
-        get => Attributes.Implementation.FillColor;
-        set => Attributes.Implementation.FillColor = value;
-    }
-
-    /// <inheritdoc cref="IDotNodeAttributes.ColorScheme"/>
-    public virtual string? ColorScheme
-    {
-        get => Attributes.Implementation.ColorScheme;
-        set => Attributes.Implementation.ColorScheme = value;
-    }
-
-    /// <inheritdoc cref="IDotNodeAttributes.GradientFillAngle"/>
-    public virtual int? GradientFillAngle
-    {
-        get => Attributes.Implementation.GradientFillAngle;
-        set => Attributes.Implementation.GradientFillAngle = value;
-    }
-
-    /// <inheritdoc cref="IDotNodeAttributes.BorderWidth"/>
-    public virtual double? BorderWidth
-    {
-        get => Attributes.Implementation.BorderWidth;
-        set => Attributes.Implementation.BorderWidth = value;
-    }
-
     /// <inheritdoc cref="IDotNodeAttributes.Shape"/>
     public virtual DotNodeShape? Shape
     {
@@ -154,11 +118,11 @@ public abstract partial class DotNodeDefinition : IDotNodeRootAttributes
         set => Attributes.Implementation.SortIndex = value;
     }
 
-    /// <inheritdoc cref="IDotNodeAttributes.IsRoot"/>
-    public virtual bool? IsRoot
+    /// <inheritdoc cref="IDotNodeAttributes.IsLayoutRoot"/>
+    public virtual bool? IsLayoutRoot
     {
-        get => Attributes.Implementation.IsRoot;
-        set => Attributes.Implementation.IsRoot = value;
+        get => Attributes.Implementation.IsLayoutRoot;
+        set => Attributes.Implementation.IsLayoutRoot = value;
     }
 
     /// <inheritdoc cref="IDotNodeAttributes.ObjectId"/>

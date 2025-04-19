@@ -1,4 +1,3 @@
-using GiGraph.Dot.Entities.Clusters;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Clusters;
@@ -18,7 +17,7 @@ public class DotClusterStyleAttributeOptionsTest
         var cluster = graph.Clusters.Add("c1");
 
         // set by class
-        cluster.Style.Set(new DotClusterStyleProperties(
+        cluster.Style.SetStyleModifiers(new DotClusterStyleModifiers(
             DotClusterFillStyle.Striped,
             DotBorderStyle.Dotted,
             DotBorderWeight.Bold,
@@ -26,12 +25,14 @@ public class DotClusterStyleAttributeOptionsTest
             true
         ));
 
-        Snapshot.Match(graph.Build(), snapshotName);
+        Snapshot.Match(graph.ToDot(), snapshotName);
 
-        cluster.Style.SetDefault();
-
+        Assert.False(cluster.Style.HasDefaultStyleModifiers());
+        cluster.Style.RestoreDefaultStyleModifiers();
+        Assert.True(cluster.Style.HasDefaultStyleModifiers());
+        
         // set the same another way
-        cluster.Style.Set(
+        cluster.Style.SetStyleModifiers(
             DotClusterFillStyle.Striped,
             DotBorderStyle.Dotted,
             DotBorderWeight.Bold,
@@ -39,14 +40,6 @@ public class DotClusterStyleAttributeOptionsTest
             true
         );
 
-        Snapshot.Match(graph.Build(), snapshotName);
-
-        // copy attributes
-        var cluster2 = new DotCluster(cluster.Id);
-        cluster2.Style.CopyFrom(cluster.Style);
-        graph.Clusters.Clear();
-        graph.Clusters.Add(cluster2);
-
-        Snapshot.Match(graph.Build(), snapshotName);
+        Snapshot.Match(graph.ToDot(), snapshotName);
     }
 }

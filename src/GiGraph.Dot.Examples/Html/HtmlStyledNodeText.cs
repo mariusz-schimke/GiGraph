@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics.Contracts;
+using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Extensions;
@@ -9,6 +10,7 @@ namespace GiGraph.Dot.Examples.Html;
 
 public static class HtmlStyledNodeText
 {
+    [Pure]
     public static DotGraph Generate()
     {
         var graph = new DotGraph();
@@ -40,7 +42,7 @@ public static class HtmlStyledNodeText
         {
             node.Shape = DotNodeShape.Rectangle;
 
-            // the AsHtml() method just casts the string to DotHtmlString so that it is interpreted as HTML when the output script is generated
+            // the AsHtml() method just casts the string to DotHtmlString so that it is interpreted as HTML when the DOT output is generated
             node.Label = """<font color="royalblue" point-size="20"><b>&bull; Foo <font color="black">Bar</font></b></font><br/><i><u>Baz</u></i>""".AsHtml();
         });
 

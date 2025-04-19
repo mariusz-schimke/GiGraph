@@ -83,7 +83,7 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
 
     /// <summary>
     ///     Assigns a custom value to the specified property and returns the actual attribute added to the collection. If the value
-    ///     contains any special characters, they will be escaped to make sure the output script is syntactically correct. If you don't
+    ///     contains any special characters, they will be escaped to make sure the DOT output is syntactically correct. If you don't
     ///     want that to happen, consider using the <see cref="SetRawValue{TProperty}" /> method instead.
     /// </summary>
     /// <param name="property">
@@ -103,8 +103,8 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
 
     /// <summary>
     ///     Assigns a raw value to the specified property and returns the attribute that was added to the collection. The value is
-    ///     rendered as-is in the output DOT script, so you must ensure that it is properly escaped when necessary to maintain the
-    ///     script's syntactical correctness (see
+    ///     rendered as-is in the DOT output, so you must ensure that it is properly escaped when necessary to maintain the
+    ///     DOT output syntactical correctness (see
     ///     <see href="https://www.graphviz.org/doc/info/lang.html">
     ///         documentation
     ///     </see>
@@ -171,8 +171,7 @@ public class DotEntityAttributesAccessor<TIEntityAttributeProperties, TEntityAtt
     }
 
     /// <summary>
-    ///     Adds an attribute with a null value to the collection. This will render as an attribute with an empty value in the output DOT
-    ///     script.
+    ///     Adds an attribute with a null value to the collection. This will render as an attribute with an empty value in the DOT output.
     /// </summary>
     /// <param name="property">
     ///     The property to add a null value attribute for.

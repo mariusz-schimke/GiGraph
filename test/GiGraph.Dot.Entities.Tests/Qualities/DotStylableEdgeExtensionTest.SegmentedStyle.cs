@@ -30,7 +30,7 @@ public partial class DotStylableEdgeExtensionTest
         graph.Edges.Add("c", "d")
             .SetSegmentedStyle(new DotMulticolor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
 
-        Snapshot.Match(graph.Build(), "segmented_edges");
+        Snapshot.Match(graph.ToDot(), "segmented_edges");
     }
 
     [Fact]
@@ -44,6 +44,6 @@ public partial class DotStylableEdgeExtensionTest
         graph.Subsections.Add()
             .Edges.SetSegmentedStyle(new DotMulticolor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
 
-        Snapshot.Match(graph.Build(), "segmented_edge_collections");
+        Snapshot.Match(graph.ToDot(), "segmented_edge_collections");
     }
 }

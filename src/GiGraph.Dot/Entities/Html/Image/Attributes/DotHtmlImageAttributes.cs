@@ -20,9 +20,11 @@ public partial class DotHtmlImageAttributes : DotHtmlElementAttributes<IDotHtmlI
     {
     }
 
+    /// <inheritdoc cref="IDotHtmlImageAttributes.Source"/>
     [DotAttributeKey("src")]
     public virtual partial string? Source { get; set; }
 
+    /// <inheritdoc cref="IDotHtmlImageAttributes.Scaling"/>
     [DotAttributeKey("scale")]
     public virtual partial DotImageScaling? Scaling { get; set; }
 }

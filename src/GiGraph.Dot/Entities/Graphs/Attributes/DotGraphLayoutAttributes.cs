@@ -3,6 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Layout;
 using GiGraph.Dot.Types.Output;
 using GiGraph.Dot.Types.Packing;
@@ -84,9 +85,13 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     [DotAttributeKey(DotAttributeKeys.ForceLabels)]
     public virtual partial bool? ForceExternalLabels { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.ForceCircularLayout"/>
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.UseCircularLayout"/>
     [DotAttributeKey(DotAttributeKeys.OneBlock)]
-    public virtual partial bool? ForceCircularLayout { get; set; }
+    public virtual partial bool? UseCircularLayout { get; set; }
+
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.RootNodeId"/>
+    [DotAttributeKey(DotAttributeKeys.Root)]
+    public virtual partial DotId? RootNodeId { get; set; }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.SortIndex"/>
     [DotAttributeKey(DotAttributeKeys.SortV)]
@@ -95,32 +100,4 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     /// <inheritdoc cref="IDotGraphLayoutAttributes.OutputOrder"/>
     [DotAttributeKey(DotAttributeKeys.OutputOrder)]
     public virtual partial DotOutputOrder? OutputOrder { get; set; }
-
-    /// <summary>
-    ///     Copies layout attributes from the specified instance.
-    /// </summary>
-    /// <param name="attributes">
-    ///     The instance to copy the attributes from.
-    /// </param>
-    public virtual void Set(IDotGraphLayoutAttributes attributes)
-    {
-        ConcentrateEdges = attributes.ConcentrateEdges;
-        Direction = attributes.Direction;
-        EdgeCrossingMinimizationScaleFactor = attributes.EdgeCrossingMinimizationScaleFactor;
-        EdgeOrderingMode = attributes.EdgeOrderingMode;
-        EnableGlobalRanking = attributes.EnableGlobalRanking;
-        Engine = attributes.Engine;
-        FloatingNodeRank = attributes.FloatingNodeRank;
-        ForceCircularLayout = attributes.ForceCircularLayout;
-        ForceExternalLabels = attributes.ForceExternalLabels;
-        NodeRank = attributes.NodeRank;
-        NodeSeparation = attributes.NodeSeparation;
-        OutputOrder = attributes.OutputOrder;
-        Packing = attributes.Packing;
-        PackingMode = attributes.PackingMode;
-        RankSeparation = attributes.RankSeparation;
-        RepeatEdgeCrossingMinimization = attributes.RepeatEdgeCrossingMinimization;
-        Rotation = attributes.Rotation;
-        SortIndex = attributes.SortIndex;
-    }
 }

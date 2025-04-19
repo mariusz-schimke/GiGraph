@@ -17,7 +17,7 @@ public partial class DotGraphSyntaxOptionsTest
             Graph = { AttributesAsStatements = true }
         };
 
-        var dot = graph.Build(syntaxOptions: options);
+        var dot = graph.ToDot(syntaxOptions: options);
         Snapshot.Match(dot, "graph_attributes_as_statements.gv");
     }
 
@@ -31,7 +31,7 @@ public partial class DotGraphSyntaxOptionsTest
             Graph = { AttributesAsStatements = false }
         };
 
-        var dot = graph.Build(syntaxOptions: options);
+        var dot = graph.ToDot(syntaxOptions: options);
         Snapshot.Match(dot, "graph_attributes_as_list.gv");
     }
 
@@ -45,7 +45,7 @@ public partial class DotGraphSyntaxOptionsTest
             Clusters = { AttributesAsStatements = true }
         };
 
-        var dot = graph.Build(syntaxOptions: options);
+        var dot = graph.ToDot(syntaxOptions: options);
         Snapshot.Match(dot, "graph_attributes_in_cluster_as_statements.gv");
     }
 
@@ -59,7 +59,7 @@ public partial class DotGraphSyntaxOptionsTest
             Clusters = { AttributesAsStatements = false }
         };
 
-        var dot = graph.Build(syntaxOptions: options);
+        var dot = graph.ToDot(syntaxOptions: options);
         Snapshot.Match(dot, "graph_attributes_in_cluster_as_list.gv");
     }
 
@@ -73,7 +73,7 @@ public partial class DotGraphSyntaxOptionsTest
             Subgraphs = { AttributesAsStatements = true }
         };
 
-        var dot = graph.Build(syntaxOptions: options);
+        var dot = graph.ToDot(syntaxOptions: options);
         Snapshot.Match(dot, "graph_attributes_in_subgraph_as_statements.gv");
     }
 
@@ -87,7 +87,7 @@ public partial class DotGraphSyntaxOptionsTest
             Subgraphs = { AttributesAsStatements = false }
         };
 
-        var dot = graph.Build(syntaxOptions: options);
+        var dot = graph.ToDot(syntaxOptions: options);
         Snapshot.Match(dot, "graph_attributes_in_subgraph_as_list.gv");
     }
 }

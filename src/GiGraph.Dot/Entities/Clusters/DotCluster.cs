@@ -35,7 +35,7 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
 
     /// <summary>
     ///     <para>
-    ///         The subsections of the graph. They appear consecutively in the output DOT script, and inherit the graph attributes, and
+    ///         The subsections of the graph. They appear consecutively in the DOT output, and inherit the graph attributes, and
     ///         the global node and/or edge attributes of their predecessors. When overridden in any subsection, the new graph attributes
     ///         and global node/edge attributes apply to the elements the section itself contains, and also to those that belong to the
     ///         sections that follow it (if any).
@@ -47,17 +47,17 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     ///     </para>
     ///     <para>
     ///         As far as setting global node and/or edge attributes for a specific group of elements is concerned,
-    ///         <see cref="Subgraphs" /> may be the cleaner and preferable way to achieve the effect.
+    ///         <see cref="Subgraphs"/> may be the cleaner and preferable way to achieve the effect.
     ///     </para>
     /// </summary>
     public DotGraphSectionCollection<DotClusterSection> Subsections { get; }
-
-    IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 
     /// <summary>
     ///     Gets or sets the identifier of the cluster.
     /// </summary>
     public virtual string Id { get; set; } = null!;
+
+    IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 
     string IDotOrderable.OrderingKey => Id;
 
@@ -73,7 +73,9 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     protected override DotAttributeCollection GetAttributes(DotSyntaxOptions options)
     {
         var result = base.GetAttributes(options);
-        if (!options.Clusters.PreferClusterAttribute)
+
+        // if the user sets the attribute to false explicitly, let's preserve it the way it is
+        if (!options.Clusters.Discriminator.HasFlag(DotClusterDiscriminators.Attribute) || result.ContainsKey(DotAttributeKeys.Cluster))
         {
             return result;
         }
