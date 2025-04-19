@@ -1,4 +1,5 @@
 using System.Text;
+using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Tests.EncodingHelpers;
 using Xunit;
@@ -10,7 +11,7 @@ public class DotGraphSaveToStreamTest
     [Fact]
     public void graph_is_saved_to_stream_complete()
     {
-        var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
+        var graph = new DotGraph();
         using var stream = new MemoryStream();
         graph.Save(stream);
         stream.Position = 0;
@@ -24,7 +25,7 @@ public class DotGraphSaveToStreamTest
     [Fact]
     public void graph_is_saved_to_stream_with_bom()
     {
-        var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
+        var graph = new DotGraph();
 
         var dotString = graph.ToDot();
         Assert.NotEmpty(dotString);
@@ -40,7 +41,7 @@ public class DotGraphSaveToStreamTest
     [Fact]
     public void graph_is_saved_to_stream_without_bom()
     {
-        var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
+        var graph = new DotGraph();
 
         var dotString = graph.ToDot();
         Assert.NotEmpty(dotString);

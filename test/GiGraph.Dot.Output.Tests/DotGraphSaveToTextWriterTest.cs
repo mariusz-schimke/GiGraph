@@ -1,4 +1,5 @@
 using System.Text;
+using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using Xunit;
 
@@ -9,7 +10,7 @@ public class DotGraphSaveToTextWriterTest
     [Fact]
     public void graph_is_saved_to_text_writer_without_flush()
     {
-        var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
+        var graph = new DotGraph();
 
         var dotString = graph.ToDot();
         Assert.NotEmpty(dotString);

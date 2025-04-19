@@ -1,4 +1,5 @@
 using System.Text;
+using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Tests.EncodingHelpers;
 using Xunit;
@@ -20,8 +21,7 @@ public class DotGraphSaveToFileTest : IDisposable
     [Fact]
     public void graph_is_saved_to_file_complete()
     {
-        var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
-
+        var graph = new DotGraph();
         graph.Save(_tempFilePath);
 
         var dotString = graph.ToDot();
@@ -34,7 +34,7 @@ public class DotGraphSaveToFileTest : IDisposable
     [Fact]
     public void graph_is_saved_to_file_without_bom()
     {
-        var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
+        var graph = new DotGraph();
 
         var dotString = graph.ToDot();
         Assert.NotEmpty(dotString);
@@ -49,7 +49,7 @@ public class DotGraphSaveToFileTest : IDisposable
     [Fact]
     public void graph_is_saved_to_file_with_bom()
     {
-        var graph = DotGraphFactory.CreateCompleteGraph(directed: true);
+        var graph = new DotGraph();
 
         var dotString = graph.ToDot();
         Assert.NotEmpty(dotString);
