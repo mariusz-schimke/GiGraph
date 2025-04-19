@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Types.Packing;
 ///     If true, each connected component of the graph is laid out separately, and then the graphs are packed together. If false, the
 ///     entire graph is laid out together.
 /// </param>
-public class DotPackingToggle(bool enabled) : DotPackingDefinition
+public class DotPackingEnabled(bool enabled) : DotPackingDefinition
 {
     /// <summary>
     ///     If true, each connected component of the graph is laid out separately, and then the graphs are packed together. If false, the

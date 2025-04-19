@@ -120,7 +120,7 @@ public interface IDotGraphLayoutAttributes
 
     /// <summary>
     ///     <para>
-    ///         If enabled (see <see cref="DotPackingToggle"/>), each connected component of the graph is laid out separately, and then
+    ///         If enabled (see <see cref="DotPackingEnabled"/>), each connected component of the graph is laid out separately, and then
     ///         the graphs are packed together.
     ///     </para>
     ///     <para>
@@ -128,11 +128,11 @@ public interface IDotGraphLayoutAttributes
     ///         around each part; otherwise, a default margin of 8 is used.
     ///     </para>
     ///     <para>
-    ///         If disabled (see <see cref="DotPackingToggle"/>), the entire graph is laid out together. The granularity and method of
+    ///         If disabled (see <see cref="DotPackingEnabled"/>), the entire graph is laid out together. The granularity and method of
     ///         packing is influenced by the <see cref="PackingMode"/> attribute.
     ///     </para>
     ///     <para>
-    ///         Default: disabled (see <see cref="DotPackingToggle"/>).
+    ///         Default: disabled (see <see cref="DotPackingEnabled"/>).
     ///     </para>
     /// </summary>
     DotPackingDefinition? Packing { get; set; }
