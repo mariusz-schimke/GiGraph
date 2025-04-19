@@ -1,7 +1,7 @@
 using System.Text;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
-using GiGraph.Dot.Output.Tests.EncodingHelpers;
+using GiGraph.Dot.Output.Tests.Helpers;
 using Xunit;
 
 namespace GiGraph.Dot.Output.Tests;

@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Html.Table;
 using GiGraph.Dot.Types.Styling;
 using Xunit;
 
-namespace GiGraph.Dot.Output.Tests.EnumHelpers;
+namespace GiGraph.Dot.Output.Tests;
 
 public class DotEnumMetadataTest
 {

@@ -1,7 +1,7 @@
 using System.Text;
 using Xunit;
 
-namespace GiGraph.Dot.Output.Tests.EncodingHelpers;
+namespace GiGraph.Dot.Output.Tests.Helpers;
 
 internal static class EncodingHelper
 {
