@@ -16,10 +16,10 @@ namespace GiGraph.Dot.Extensions;
 public static class DotGraphExtension
 {
     /// <summary>
-    ///     Converts the specified graph to its DOT format representation.
+    ///     Converts the graph to its DOT format representation.
     /// </summary>
     /// <param name="graph">
-    ///     The graph to convert.
+    ///     The graph to convert to the DOT format.
     /// </param>
     /// <param name="formattingOptions">
     ///     The formatting options to use.
@@ -46,10 +46,10 @@ public static class DotGraphExtension
     }
 
     /// <summary>
-    ///     Converts the specified graph to its DOT format representation and writes it to the provided text writer.
+    ///     Writes the DOT format representation of the graph to the provided text writer.
     /// </summary>
     /// <param name="graph">
-    ///     The graph to convert.
+    ///     The graph to convert to the DOT format.
     /// </param>
     /// <param name="writer">
     ///     The writer to write the DOT string to.
@@ -78,10 +78,11 @@ public static class DotGraphExtension
     }
 
     /// <summary>
-    ///     Converts the specified graph to its DOT format representation and writes it to the provided text writer.
+    ///     Writes the DOT format representation of the graph to the provided text writer. Allows specifying a custom graph generator
+    ///     builder.
     /// </summary>
     /// <param name="graph">
-    ///     The graph to convert.
+    ///     The graph to convert to the DOT format.
     /// </param>
     /// <param name="writer">
     ///     The writer to write the DOT string to.
@@ -129,11 +130,10 @@ public static class DotGraphExtension
     }
 
     /// <summary>
-    ///     Converts the specified graph to its DOT format representation and writes it to the specified file (the file will be
-    ///     overwritten if it already exists).
+    ///     Writes the DOT format representation of the graph to the specified file (the file will be overwritten if it already exists).
     /// </summary>
     /// <param name="graph">
-    ///     The graph to convert.
+    ///     The graph to convert to the DOT format.
     /// </param>
     /// <param name="filePath">
     ///     The path to the file to save the graph to.
@@ -165,11 +165,11 @@ public static class DotGraphExtension
     }
 
     /// <summary>
-    ///     Converts the specified graph to its DOT format representation and writes it to the specified file (the file will be
-    ///     overwritten if it already exists). The content is generated synchronously, but written asynchronously.
+    ///     Writes the DOT format representation of the graph to the specified file (the file will be overwritten if it already exists).
+    ///     The complete output is generated synchronously in memory and then written asynchronously to the specified file.
     /// </summary>
     /// <param name="graph">
-    ///     The graph to convert.
+    ///     The graph to convert to the DOT format.
     /// </param>
     /// <param name="filePath">
     ///     The path to the file to save the graph to.
@@ -201,10 +201,10 @@ public static class DotGraphExtension
     }
 
     /// <summary>
-    ///     Converts the specified graph to its DOT format representation and writes it to the provided stream.
+    ///     Writes the DOT format representation of the graph to the provided stream.
     /// </summary>
     /// <param name="graph">
-    ///     The graph to convert.
+    ///     The graph to convert to the DOT format.
     /// </param>
     /// <param name="stream">
     ///     The stream to write the graph to.
@@ -236,11 +236,11 @@ public static class DotGraphExtension
     }
 
     /// <summary>
-    ///     Converts the specified graph to its DOT format representation and writes it to the provided stream. The content is generated
-    ///     synchronously, but written asynchronously.
+    ///     Converts the specified graph to its DOT format representation and writes it to the provided stream. The complete output is
+    ///     generated synchronously in memory and then written asynchronously to the specified stream.
     /// </summary>
     /// <param name="graph">
-    ///     The graph to convert.
+    ///     The graph to convert to the DOT format.
     /// </param>
     /// <param name="stream">
     ///     The stream to write the graph to.
