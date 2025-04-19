@@ -11,6 +11,7 @@ internal static class EncodingHelper
         Assert.NotEmpty(bom);
 
         var buffer = new byte[bom.Length];
+        stream.Position = 0;
         stream.ReadExactly(buffer, 0, buffer.Length);
 
         return buffer.SequenceEqual(bom);
