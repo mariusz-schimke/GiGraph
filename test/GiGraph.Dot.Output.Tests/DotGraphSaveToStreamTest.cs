@@ -1,10 +1,11 @@
 using System.Text;
 using GiGraph.Dot.Extensions;
+using GiGraph.Dot.Output.Tests.EncodingHelpers;
 using Xunit;
 
 namespace GiGraph.Dot.Output.Tests;
 
-public partial class DotGraphSaveTest
+public class DotGraphSaveToStreamTest
 {
     [Fact]
     public void graph_is_saved_to_stream_complete()
@@ -32,7 +33,7 @@ public partial class DotGraphSaveTest
         graph.Save(stream, encoding: Encoding.UTF8);
 
         stream.Position = 0;
-        var hasBom = HasBom(stream);
+        var hasBom = EncodingHelper.HasBom(stream);
         Assert.True(hasBom);
     }
 
@@ -48,7 +49,7 @@ public partial class DotGraphSaveTest
         graph.Save(stream);
 
         stream.Position = 0;
-        var hasBom = HasBom(stream);
+        var hasBom = EncodingHelper.HasBom(stream);
         Assert.False(hasBom);
     }
 }

@@ -1,11 +1,22 @@
 using System.Text;
 using GiGraph.Dot.Extensions;
+using GiGraph.Dot.Output.Tests.EncodingHelpers;
 using Xunit;
 
 namespace GiGraph.Dot.Output.Tests;
 
-public partial class DotGraphSaveTest
+public class DotGraphSaveToFileTest : IDisposable
 {
+    private readonly string _tempFilePath = "test.gv";
+
+    void IDisposable.Dispose()
+    {
+        if (File.Exists(_tempFilePath))
+        {
+            File.Delete(_tempFilePath);
+        }
+    }
+
     [Fact]
     public void graph_is_saved_to_file_complete()
     {
@@ -31,7 +42,7 @@ public partial class DotGraphSaveTest
         graph.Save(_tempFilePath);
 
         using var stream = new FileStream(_tempFilePath, FileMode.Open, FileAccess.Read);
-        var hasBom = HasBom(stream);
+        var hasBom = EncodingHelper.HasBom(stream);
         Assert.False(hasBom);
     }
 
@@ -46,7 +57,7 @@ public partial class DotGraphSaveTest
         graph.Save(_tempFilePath, encoding: Encoding.UTF8);
 
         using var stream = new FileStream(_tempFilePath, FileMode.Open, FileAccess.Read);
-        var hasBom = HasBom(stream);
+        var hasBom = EncodingHelper.HasBom(stream);
         Assert.True(hasBom);
     }
 }
