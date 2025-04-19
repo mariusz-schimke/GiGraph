@@ -6,7 +6,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Output.Tests;
 
-public class DotGraphScriptTest
+public class DotGraphOutputTest
 {
     [Fact]
     public void graph_with_all_possible_elements_is_rendered_according_to_default_rules_and_options()
