@@ -67,7 +67,7 @@ For a complete documentation of the DOT language and visualization capabilities 
 
 # Generating a graph
 
-For a basic scenario, create a new **DotGraph** instance and use its *Edges* collection to define connections between nodes. In order to generate the DOT output, call the ***Build*** extension method on the graph. And that's mostly it.
+For a basic scenario, create a new **DotGraph** instance and use its *Edges* collection to define connections between nodes. In order to generate the DOT output, call the ***ToDot*** extension method on the graph. And that's mostly it.
 
 Here's a simple *Hello World!* graph example with two nodes joined by an edge.
 
@@ -1840,7 +1840,7 @@ The DOT generation engine of the library supports setting custom preferences for
 
 ## Formatting preferences
 
-Formatting preferences may be modified using the **DotFormattingOptions** class. If you want to change the indentation level, the indentation character, set a custom line break character/sequence, or generate the output as a single line, pass a customized formatting options instance to the **Build** or **SaveToFile** method on a graph instance.
+Formatting preferences may be modified using the **DotFormattingOptions** class. If you want to change the indentation level, the indentation character, set a custom line break character/sequence, or generate the output as a single line, pass a customized formatting options instance to the **ToDot** or **Save** method on a graph instance.
 
 ```c#
 var options = new DotFormattingOptions
