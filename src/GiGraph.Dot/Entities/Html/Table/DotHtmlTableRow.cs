@@ -58,6 +58,33 @@ public partial class DotHtmlTableRow : DotHtmlElement
         Content.Add([new DotHtmlImage(source, scaling)], init);
 
     /// <summary>
+    ///     Adds a cell with a nested table to the current row.
+    /// </summary>
+    /// <param name="buildTable">
+    ///     A table initializer delegate.
+    /// </param>
+    public virtual DotHtmlTableCell AddTableCell(Action<DotHtmlTable> buildTable)
+    {
+        var table = new DotHtmlTable();
+        buildTable(table);
+        return Content.Add<DotHtmlTableCell>([table], init: null);
+    }
+
+    /// <summary>
+    ///     Adds a cell with a nested table to the current row.
+    /// </summary>
+    /// <param name="init">
+    ///     A cell and table initializer delegate.
+    /// </param>
+    public virtual DotHtmlTableCell AddTableCell(Action<DotHtmlTableCell, DotHtmlTable> init)
+    {
+        var table = new DotHtmlTable();
+        var cell = Content.Add<DotHtmlTableCell>([table], init: null);
+        init(cell, table);
+        return cell;
+    }
+
+    /// <summary>
     ///     Adds a vertical rule to separate two neighboring cells.
     /// </summary>
     public virtual DotHtmlVerticalRule AddVerticalRule() => Content.Add(new DotHtmlVerticalRule(), init: null);

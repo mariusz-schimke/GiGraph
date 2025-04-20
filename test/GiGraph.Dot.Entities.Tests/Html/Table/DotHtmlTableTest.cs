@@ -74,27 +74,36 @@ public class DotHtmlTableTest
         };
 
         table.AddRow(row =>
-        {
-            row.AddCell(cell => cell.Id = "cellId1");
+            {
+                row.AddCell(cell => cell.Id = "cellId1");
 
-            row.AddCell("cell2", cell => cell.Id = "cellId2");
-            row.AddCell("cell2\n", DotHorizontalAlignment.Left, cell => cell.Id = "cellId2");
+                row.AddCell("cell2", cell => cell.Id = "cellId2");
+                row.AddCell("cell2\n", DotHorizontalAlignment.Left, cell => cell.Id = "cellId2");
 
-            row.AddCell("cell3", font, cell => cell.Id = "cell3");
-            row.AddCell("cell3\n", font, DotHorizontalAlignment.Center, cell => cell.Id = "cell3");
+                row.AddCell("cell3", font, cell => cell.Id = "cell3");
+                row.AddCell("cell3\n", font, DotHorizontalAlignment.Center, cell => cell.Id = "cell3");
 
-            row.AddCell("cell4", styledFont.Style!.Value, cell => cell.Id = "cell4");
-            row.AddCell("cell4\n", styledFont.Style.Value, DotHorizontalAlignment.Right, cell => cell.Id = "cell4");
+                row.AddCell("cell4", styledFont.Style!.Value, cell => cell.Id = "cell4");
+                row.AddCell("cell4\n", styledFont.Style.Value, DotHorizontalAlignment.Right, cell => cell.Id = "cell4");
 
-            row.AddCell("cell5", styledFont, cell => cell.Id = "cell5");
-            row.AddCell("cell5\n", styledFont, DotHorizontalAlignment.Right, cell => cell.Id = "cell5");
+                row.AddCell("cell5", styledFont, cell => cell.Id = "cell5");
+                row.AddCell("cell5\n", styledFont, DotHorizontalAlignment.Right, cell => cell.Id = "cell5");
 
-            row.AddCell(new DotHtmlElement("custom"), cell => cell.Id = "customId");
+                row.AddCell(new DotHtmlElement("custom"), cell => cell.Id = "customId");
 
-            row.AddVerticalRule();
+                row.AddVerticalRule();
 
-            row.AddImageCell("image.png", DotImageScaling.None, cell => cell.Id = "img-cell");
-        });
+                row.AddImageCell("image.png", DotImageScaling.None, cell => cell.Id = "img-cell");
+
+                row.AddTableCell(t => t.Id = "table-in-cell6").Id = "cell6";
+                row.AddTableCell((c, t) =>
+                    {
+                        c.Id = "cell7";
+                        t.Id = "table-in-cell7";
+                    }
+                );
+            }
+        );
 
         table.AddHorizontalRule();
 
