@@ -16,7 +16,7 @@ public enum DotPackingGranularity
 
     /// <summary>
     ///     Guarantees that top-level clusters are kept intact. What effect a value has also depends on the layout algorithm. For
-    ///     example, neato does not support clusters, so a value of <see cref="Cluster" /> will have the same e"ect as the default "node"
+    ///     example, neato does not support clusters, so a value of <see cref="Cluster"/> will have the same effect as the default "node"
     ///     value.
     /// </summary>
     [DotAttributeValue("clust")]
