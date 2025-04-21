@@ -51,4 +51,9 @@ public interface IDotEdgeRootAttributes : IDotEdgeAttributes
     ///     Hyperlink attributes.
     /// </summary>
     DotHyperlinkAttributes Hyperlink { get; }
+
+    /// <summary>
+    ///     Layout attributes.
+    /// </summary>
+    DotEdgeLayoutAttributes Layout { get; }
 }

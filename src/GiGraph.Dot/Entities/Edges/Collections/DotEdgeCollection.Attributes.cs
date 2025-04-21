@@ -40,6 +40,9 @@ public partial class DotEdgeCollection : IDotEdgeRootAttributes
     /// <inheritdoc cref="IDotEdgeRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
 
+    /// <inheritdoc cref="IDotEdgeRootAttributes.Layout"/>
+    public DotEdgeLayoutAttributes Layout => Attributes.Implementation.Layout;
+
     DotStyles? IDotEdgeAttributes.Style
     {
         get => ((IDotEdgeAttributes) Attributes.Implementation).Style;
@@ -60,39 +63,11 @@ public partial class DotEdgeCollection : IDotEdgeRootAttributes
         set => Attributes.Implementation.ExternalLabel = value;
     }
 
-    /// <inheritdoc cref="IDotEdgeAttributes.EnableLabelFloating"/>
-    public virtual bool? EnableLabelFloating
-    {
-        get => Attributes.Implementation.EnableLabelFloating;
-        set => Attributes.Implementation.EnableLabelFloating = value;
-    }
-
     /// <inheritdoc cref="IDotEdgeAttributes.DisableLabelJustification"/>
     public virtual bool? DisableLabelJustification
     {
         get => Attributes.Implementation.DisableLabelJustification;
         set => Attributes.Implementation.DisableLabelJustification = value;
-    }
-
-    /// <inheritdoc cref="IDotEdgeAttributes.MinLength"/>
-    public virtual int? MinLength
-    {
-        get => Attributes.Implementation.MinLength;
-        set => Attributes.Implementation.MinLength = value;
-    }
-
-    /// <inheritdoc cref="IDotEdgeAttributes.Length"/>
-    public virtual double? Length
-    {
-        get => Attributes.Implementation.Length;
-        set => Attributes.Implementation.Length = value;
-    }
-
-    /// <inheritdoc cref="IDotEdgeAttributes.Weight"/>
-    public virtual double? Weight
-    {
-        get => Attributes.Implementation.Weight;
-        set => Attributes.Implementation.Weight = value;
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.Tooltip"/>
@@ -114,13 +89,6 @@ public partial class DotEdgeCollection : IDotEdgeRootAttributes
     {
         get => Attributes.Implementation.DrawLabelConnector;
         set => Attributes.Implementation.DrawLabelConnector = value;
-    }
-
-    /// <inheritdoc cref="IDotEdgeAttributes.IncludeInNodeRanking"/>
-    public virtual bool? IncludeInNodeRanking
-    {
-        get => Attributes.Implementation.IncludeInNodeRanking;
-        set => Attributes.Implementation.IncludeInNodeRanking = value;
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.Comment"/>

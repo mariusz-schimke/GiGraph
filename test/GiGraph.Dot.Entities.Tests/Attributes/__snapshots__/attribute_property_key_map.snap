@@ -55,7 +55,7 @@
     "Graph": "Layout.ConcentrateEdges: Boolean?"
   },
   "constraint": {
-    "Edge": "IncludeInNodeRanking: Boolean?"
+    "Edge": "Layout.IncludeInNodeRanking: Boolean?"
   },
   "decorate": {
     "Edge": "DrawLabelConnector: Boolean?"
@@ -186,7 +186,7 @@
     "Edge": "EndpointLabels.Distance: Double?"
   },
   "labelfloat": {
-    "Edge": "EnableLabelFloating: Boolean?"
+    "Edge": "Layout.EnableLabelFloating: Boolean?"
   },
   "labelfontcolor": {
     "Edge": "EndpointLabels.Font.Color: DotColor"
@@ -225,7 +225,7 @@
     "Graph": "Layout.Engine: String"
   },
   "len": {
-    "Edge": "Length: Double?"
+    "Edge": "Layout.Length: Double?"
   },
   "lhead": {
     "Edge": "Head.ClusterId: DotClusterId"
@@ -242,7 +242,7 @@
     "Graph": "Layout.EdgeCrossingMinimizationScaleFactor: Double?"
   },
   "minlen": {
-    "Edge": "MinLength: Int32?"
+    "Edge": "Layout.MinLength: Int32?"
   },
   "newrank": {
     "Graph": "Layout.EnableGlobalRanking: Boolean?"
@@ -407,7 +407,7 @@
     "Graph": "Canvas.Viewport: DotViewport"
   },
   "weight": {
-    "Edge": "Weight: Double?"
+    "Edge": "Layout.Weight: Double?"
   },
   "width": {
     "Node": "Size.Width: Double?"
