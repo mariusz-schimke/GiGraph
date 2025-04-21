@@ -17,7 +17,7 @@ public static class WithClusters
         // set graph attributes
         graph.Label = "Example Flow";
         graph.Layout.Direction = DotLayoutDirection.LeftToRight;
-        graph.EdgeShape = DotEdgeShape.Orthogonal;
+        graph.Layout.EdgeShape = DotEdgeShape.Orthogonal;
 
         // set attributes for clusters
         graph.Clusters.EnableEdgeClipping = true;

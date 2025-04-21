@@ -5,7 +5,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Styling;
 
@@ -16,9 +15,17 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphRootAttributes, IDotGraphAttributes>().BuildLazy();
 
     public DotGraphRootAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new DotGraphClustersAttributes(attributes), new DotGraphStyleAttributes(attributes),
-            new DotHyperlinkAttributes(attributes), new DotGraphFontAttributes(attributes), new DotGraphSvgStyleSheetAttributes(attributes),
-            new DotGraphLayoutAttributes(attributes), new DotGraphCanvasAttributes(attributes), new DotLabelAlignmentAttributes(attributes)
+        : this(
+            attributes,
+            AttributeKeyLookup,
+            new DotGraphClustersAttributes(attributes),
+            new DotGraphStyleAttributes(attributes),
+            new DotHyperlinkAttributes(attributes),
+            new DotGraphFontAttributes(attributes),
+            new DotGraphSvgStyleSheetAttributes(attributes),
+            new DotGraphLayoutAttributes(attributes),
+            new DotGraphCanvasAttributes(attributes),
+            new DotLabelAlignmentAttributes(attributes)
         )
     {
     }
@@ -87,10 +94,6 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
     /// <inheritdoc cref="IDotGraphAttributes.DisableLabelJustification"/>
     [DotAttributeKey(DotAttributeKeys.NoJustify)]
     public virtual partial bool? DisableLabelJustification { get; set; }
-
-    /// <inheritdoc cref="IDotGraphAttributes.EdgeShape"/>
-    [DotAttributeKey(DotAttributeKeys.Splines)]
-    public virtual partial DotEdgeShape? EdgeShape { get; set; }
 
     /// <inheritdoc cref="IDotGraphAttributes.Comment"/>
     [DotAttributeKey(DotAttributeKeys.Comment)]

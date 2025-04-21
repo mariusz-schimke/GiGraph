@@ -350,7 +350,7 @@
     "Node": "Layout.SortIndex: Int32?"
   },
   "splines": {
-    "Graph": "EdgeShape: DotEdgeShape?"
+    "Graph": "Layout.EdgeShape: DotEdgeShape?"
   },
   "style": {
     "Graph": "Style: DotStyles?",

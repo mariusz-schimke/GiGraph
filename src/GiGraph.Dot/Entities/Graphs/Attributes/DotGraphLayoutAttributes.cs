@@ -81,6 +81,10 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     [DotAttributeKey(DotAttributeKeys.Ordering)]
     public virtual partial DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
 
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.EdgeShape"/>
+    [DotAttributeKey(DotAttributeKeys.Splines)]
+    public virtual partial DotEdgeShape? EdgeShape { get; set; }
+
     /// <inheritdoc cref="IDotGraphLayoutAttributes.ForceExternalLabels"/>
     [DotAttributeKey(DotAttributeKeys.ForceLabels)]
     public virtual partial bool? ForceExternalLabels { get; set; }

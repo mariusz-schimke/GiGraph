@@ -2,7 +2,6 @@
 using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Labels;
-using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Styling;
 
@@ -38,13 +37,6 @@ public partial class DotGraphSection : IDotGraphRootAttributes
     {
         get => ((IDotGraphAttributes) Attributes.Implementation).Style;
         set => ((IDotGraphAttributes) Attributes.Implementation).Style = value;
-    }
-
-    /// <inheritdoc cref="IDotGraphAttributes.EdgeShape"/>
-    public virtual DotEdgeShape? EdgeShape
-    {
-        get => Attributes.Implementation.EdgeShape;
-        set => Attributes.Implementation.EdgeShape = value;
     }
 
     /// <inheritdoc cref="IDotGraphAttributes.Label"/>

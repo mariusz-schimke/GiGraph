@@ -1622,7 +1622,7 @@ var graph = new DotGraph(directed: true);
 // set graph attributes
 graph.Label = "Example Flow";
 graph.Layout.Direction = DotLayoutDirection.LeftToRight;
-graph.EdgeShape = DotEdgeShape.Orthogonal;
+graph.Layout.EdgeShape = DotEdgeShape.Orthogonal;
 
 graph.Clusters.EnableEdgeClipping = true;
 
