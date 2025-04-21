@@ -1,11 +1,11 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes;
 
-public partial class DotEdgeLayoutAttributes : DotEntityStyleAttributesWithMetadata<IDotEdgeLayoutAttributes, DotEdgeLayoutAttributes>, IDotEdgeLayoutAttributes
+public partial class DotEdgeLayoutAttributes : DotEntityAttributesWithMetadata<IDotEdgeLayoutAttributes, DotEdgeLayoutAttributes>, IDotEdgeLayoutAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeLayoutAttributes, IDotEdgeLayoutAttributes>().BuildLazy();
 

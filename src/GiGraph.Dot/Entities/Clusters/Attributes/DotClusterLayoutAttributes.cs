@@ -1,12 +1,12 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes;
 
-public partial class DotClusterLayoutAttributes : DotGraphClusterCommonStyleAttributes<IDotClusterLayoutAttributes, DotClusterLayoutAttributes>, IDotClusterLayoutAttributes
+public partial class DotClusterLayoutAttributes : DotEntityAttributesWithMetadata<IDotClusterLayoutAttributes, DotClusterLayoutAttributes>, IDotClusterLayoutAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterLayoutAttributes, IDotClusterLayoutAttributes>().BuildLazy();
 
