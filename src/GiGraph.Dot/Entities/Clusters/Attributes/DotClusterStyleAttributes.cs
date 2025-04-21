@@ -20,12 +20,15 @@ public partial class DotClusterStyleAttributes : DotGraphClusterCommonStyleAttri
     {
     }
 
+    /// <inheritdoc cref="IDotClusterStyleAttributes.ColorScheme"/>
     [DotAttributeKey(DotAttributeKeys.ColorScheme)]
     public virtual partial string? ColorScheme { get; set; }
 
+    /// <inheritdoc cref="IDotClusterStyleAttributes.GradientFillAngle"/>
     [DotAttributeKey(DotAttributeKeys.GradientAngle)]
     public virtual partial int? GradientFillAngle { get; set; }
 
+    /// <inheritdoc cref="IDotClusterStyleAttributes.BackgroundColor"/>
     [DotAttributeKey(DotAttributeKeys.BgColor)]
     public virtual partial DotColorDefinition? BackgroundColor { get; set; }
 }

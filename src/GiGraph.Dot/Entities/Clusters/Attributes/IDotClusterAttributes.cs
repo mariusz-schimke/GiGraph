@@ -1,5 +1,4 @@
-﻿using GiGraph.Dot.Entities.Graphs.Attributes;
-using GiGraph.Dot.Entities.Html.Builder;
+﻿using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Subgraphs;
@@ -7,7 +6,6 @@ using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Html;
-using GiGraph.Dot.Types.Ranks;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes;
@@ -91,12 +89,6 @@ public interface IDotClusterAttributes
     DotPoint? Padding { get; set; }
 
     /// <summary>
-    ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="DotGraphLayoutAttributes.PackingMode"/> indicates
-    ///     an array packing, this attribute specifies an insertion order among the components, with smaller values inserted first.
-    /// </summary>
-    int? SortIndex { get; set; }
-
-    /// <summary>
     ///     <para>
     ///         Allows the graph author to provide an identifier for graph objects which is to be included in the output (svg,
     ///         postscript, map only).
@@ -119,11 +111,6 @@ public interface IDotClusterAttributes
     DotEscapeString? ObjectId { get; set; }
 
     /// <summary>
-    ///     Gets or sets the rank constraints on the nodes in the cluster (dot only).
-    /// </summary>
-    DotRank? NodeRank { get; set; }
-
-    /// <summary>
     ///     <para>
     ///         Determines whether the subgraph is a cluster (default false). Subgraph clusters are rendered differently, e.g. dot
     ///         renders a box around subgraph clusters, but doesn't draw a box around non-subgraph clusters.
@@ -136,11 +123,10 @@ public interface IDotClusterAttributes
     ///     <para>
     ///         To make sure this attribute is respected by Graphviz as the only cluster discriminator, set the
     ///         <see cref="DotSyntaxOptions.ClusterOptions.Discriminator"/> property of cluster syntax options to
-    ///         <see cref="DotClusterDiscriminators.Attribute"/> when generating the DOT output. This setting causes the attribute
-    ///         to be automatically included with a value of <see langword="true"/> in the DOT output in all clusters, except those
-    ///         where you explicitly set the <see cref="IsCluster"/> property to <see langword="false"/>. Also, such setting will disable
-    ///         using the "cluster" prefix in the IDs of clusters so that the attribute is the only way to identify clusters in the
-    ///         DOT output.
+    ///         <see cref="DotClusterDiscriminators.Attribute"/> when generating the DOT output. This setting causes the attribute to be
+    ///         automatically included with a value of <see langword="true"/> in the DOT output in all clusters, except those where you
+    ///         explicitly set the <see cref="IsCluster"/> property to <see langword="false"/>. Also, such setting will disable using the
+    ///         "cluster" prefix in the IDs of clusters so that the attribute is the only way to identify clusters in the DOT output.
     ///     </para>
     /// </summary>
     bool? IsCluster { get; set; }

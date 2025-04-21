@@ -31,4 +31,9 @@ public interface IDotClusterRootAttributes : IDotClusterAttributes
     ///     Hyperlink attributes.
     /// </summary>
     DotHyperlinkAttributes Hyperlink { get; }
+
+    /// <summary>
+    ///     Layout attributes.
+    /// </summary>
+    DotClusterLayoutAttributes Layout { get; }
 }

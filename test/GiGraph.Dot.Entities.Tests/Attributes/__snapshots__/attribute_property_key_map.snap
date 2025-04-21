@@ -296,7 +296,7 @@
   "rank": {
     "Graph": "Layout.NodeRank: DotRank?",
     "Subgraph": "NodeRank: DotRank?",
-    "Cluster": "NodeRank: DotRank?"
+    "Cluster": "Layout.NodeRank: DotRank?"
   },
   "rankdir": {
     "Graph": "Layout.Direction: DotLayoutDirection?"
@@ -346,7 +346,7 @@
   },
   "sortv": {
     "Graph": "Layout.SortIndex: Int32?",
-    "Cluster": "SortIndex: Int32?",
+    "Cluster": "Layout.SortIndex: Int32?",
     "Node": "Layout.SortIndex: Int32?"
   },
   "splines": {

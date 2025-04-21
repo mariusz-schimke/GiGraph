@@ -6,7 +6,6 @@ using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
-using GiGraph.Dot.Types.Ranks;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters;
@@ -27,6 +26,9 @@ public partial class DotClusterSection : IDotClusterRootAttributes
 
     /// <inheritdoc cref="IDotClusterRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
+
+    /// <inheritdoc cref="IDotClusterRootAttributes.Layout"/>
+    public DotClusterLayoutAttributes Layout => Attributes.Implementation.Layout;
 
     /// <inheritdoc cref="IDotClusterAttributes.Style"/>
     DotStyles? IDotClusterAttributes.Style
@@ -70,25 +72,11 @@ public partial class DotClusterSection : IDotClusterRootAttributes
         set => Attributes.Implementation.Padding = value;
     }
 
-    /// <inheritdoc cref="IDotClusterAttributes.SortIndex"/>
-    public virtual int? SortIndex
-    {
-        get => Attributes.Implementation.SortIndex;
-        set => Attributes.Implementation.SortIndex = value;
-    }
-
     /// <inheritdoc cref="IDotClusterAttributes.ObjectId"/>
     public virtual DotEscapeString? ObjectId
     {
         get => Attributes.Implementation.ObjectId;
         set => Attributes.Implementation.ObjectId = value;
-    }
-
-    /// <inheritdoc cref="IDotClusterAttributes.NodeRank"/>
-    public virtual DotRank? NodeRank
-    {
-        get => Attributes.Implementation.NodeRank;
-        set => Attributes.Implementation.NodeRank = value;
     }
 
     /// <inheritdoc cref="IDotClusterAttributes.IsCluster"/>

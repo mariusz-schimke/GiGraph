@@ -9,7 +9,6 @@ using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
-using GiGraph.Dot.Types.Ranks;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes;
@@ -19,8 +18,15 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
 
     public DotClusterRootAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new DotHyperlinkAttributes(attributes), new DotFontAttributes(attributes),
-            new DotClusterStyleAttributes(attributes), new DotSvgStyleSheetAttributes(attributes), new DotLabelAlignmentAttributes(attributes)
+        : this(
+            attributes,
+            AttributeKeyLookup,
+            new DotHyperlinkAttributes(attributes),
+            new DotFontAttributes(attributes),
+            new DotClusterStyleAttributes(attributes),
+            new DotSvgStyleSheetAttributes(attributes),
+            new DotLabelAlignmentAttributes(attributes),
+            new DotClusterLayoutAttributes(attributes)
         )
     {
     }
@@ -32,7 +38,8 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
         DotFontAttributes fontAttributes,
         DotClusterStyleAttributes styleAttributes,
         DotSvgStyleSheetAttributes svgStyleSheetAttributes,
-        DotLabelAlignmentAttributes labelAlignmentAttributes
+        DotLabelAlignmentAttributes labelAlignmentAttributes,
+        DotClusterLayoutAttributes layoutAttributes
     )
         : base(attributes, attributeKeyLookup)
     {
@@ -41,6 +48,7 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
         LabelAlignment = labelAlignmentAttributes;
         SvgStyleSheet = svgStyleSheetAttributes;
         Hyperlink = hyperlinkAttributes;
+        Layout = layoutAttributes;
     }
 
     [DotAttributeKey(DotAttributeKeys.Cluster)]
@@ -67,6 +75,9 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
     /// <inheritdoc cref="IDotClusterRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink { get; }
 
+    /// <inheritdoc cref="IDotClusterRootAttributes.Layout"/>
+    public DotClusterLayoutAttributes Layout { get; }
+
     [DotAttributeKey(DotAttributeKeys.Style)]
     DotStyles? IDotClusterAttributes.Style
     {
@@ -84,10 +95,6 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
     [DotAttributeKey(DotAttributeKeys.NoJustify)]
     public virtual partial bool? DisableLabelJustification { get; set; }
 
-    /// <inheritdoc cref="IDotClusterAttributes.NodeRank"/>
-    [DotAttributeKey(DotAttributeKeys.Rank)]
-    public virtual partial DotRank? NodeRank { get; set; }
-
     /// <inheritdoc cref="IDotClusterAttributes.Peripheries"/>
     [DotAttributeKey(DotAttributeKeys.Peripheries)]
     public virtual partial int? Peripheries { get; set; }
@@ -99,10 +106,6 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
     /// <inheritdoc cref="IDotClusterAttributes.Padding"/>
     [DotAttributeKey(DotAttributeKeys.Margin)]
     public virtual partial DotPoint? Padding { get; set; }
-
-    /// <inheritdoc cref="IDotClusterAttributes.SortIndex"/>
-    [DotAttributeKey(DotAttributeKeys.SortV)]
-    public virtual partial int? SortIndex { get; set; }
 
     /// <inheritdoc cref="IDotClusterAttributes.ObjectId"/>
     [DotAttributeKey(DotAttributeKeys.Id)]
