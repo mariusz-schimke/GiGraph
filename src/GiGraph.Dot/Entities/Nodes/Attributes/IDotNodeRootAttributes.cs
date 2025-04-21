@@ -22,7 +22,7 @@ public interface IDotNodeRootAttributes : IDotNodeAttributes
     DotNodeSizeAttributes Size { get; }
 
     /// <summary>
-    ///     Node geometry attributes applicable if the <see cref="IDotNodeAttributes.Shape" /> is polygonal.
+    ///     Node geometry attributes applicable if the <see cref="IDotNodeAttributes.Shape"/> is polygonal.
     /// </summary>
     DotNodeGeometryAttributes Geometry { get; }
 
@@ -40,4 +40,9 @@ public interface IDotNodeRootAttributes : IDotNodeAttributes
     ///     Hyperlink attributes.
     /// </summary>
     DotHyperlinkAttributes Hyperlink { get; }
+
+    /// <summary>
+    ///     Layout attributes.
+    /// </summary>
+    DotNodeLayoutAttributes Layout { get; }
 }

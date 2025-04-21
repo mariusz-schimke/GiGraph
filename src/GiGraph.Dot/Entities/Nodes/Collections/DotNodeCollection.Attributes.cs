@@ -4,7 +4,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Types.Alignment;
-using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Nodes;
@@ -34,6 +33,9 @@ public partial class DotNodeCollection : IDotNodeRootAttributes
 
     /// <inheritdoc cref="IDotNodeRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
+
+    /// <inheritdoc cref="IDotNodeRootAttributes.Layout"/>
+    public DotNodeLayoutAttributes Layout => Attributes.Implementation.Layout;
 
     DotStyles? IDotNodeAttributes.Style
     {
@@ -95,34 +97,6 @@ public partial class DotNodeCollection : IDotNodeRootAttributes
     {
         get => Attributes.Implementation.Comment;
         set => Attributes.Implementation.Comment = value;
-    }
-
-    /// <inheritdoc cref="IDotNodeAttributes.EdgeOrderingMode"/>
-    public virtual DotEdgeOrderingMode? EdgeOrderingMode
-    {
-        get => Attributes.Implementation.EdgeOrderingMode;
-        set => Attributes.Implementation.EdgeOrderingMode = value;
-    }
-
-    /// <inheritdoc cref="IDotNodeAttributes.GroupName"/>
-    public virtual string? GroupName
-    {
-        get => Attributes.Implementation.GroupName;
-        set => Attributes.Implementation.GroupName = value;
-    }
-
-    /// <inheritdoc cref="IDotNodeAttributes.SortIndex"/>
-    public virtual int? SortIndex
-    {
-        get => Attributes.Implementation.SortIndex;
-        set => Attributes.Implementation.SortIndex = value;
-    }
-
-    /// <inheritdoc cref="IDotNodeAttributes.IsLayoutRoot"/>
-    public virtual bool? IsLayoutRoot
-    {
-        get => Attributes.Implementation.IsLayoutRoot;
-        set => Attributes.Implementation.IsLayoutRoot = value;
     }
 
     /// <inheritdoc cref="IDotNodeAttributes.ObjectId"/>

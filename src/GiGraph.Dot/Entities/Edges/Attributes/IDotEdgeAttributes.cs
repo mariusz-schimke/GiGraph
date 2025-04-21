@@ -66,7 +66,7 @@ public interface IDotEdgeAttributes
     ///         <see cref="DotGraphLayoutAttributes.ForceExternalLabels"/> attribute on the graph.
     ///     </para>
     /// </summary>
-    DotLabel? ExternalLabel { set; get; }
+    DotLabel? ExternalLabel { get; set; }
 
     /// <summary>
     ///     If true, allows edge labels to be less constrained in position. In particular, it may appear on top of other edges. Default:

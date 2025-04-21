@@ -7,7 +7,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
-using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Nodes;
@@ -20,8 +19,17 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeRootAttributes, IDotNodeAttributes>().BuildLazy();
 
     public DotNodeRootAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new DotFontAttributes(attributes), new DotNodeGeometryAttributes(attributes), new DotHyperlinkAttributes(attributes),
-            new DotNodeImageAttributes(attributes), new DotNodeSizeAttributes(attributes), new DotNodeStyleAttributes(attributes), new DotSvgStyleSheetAttributes(attributes)
+        : this(
+            attributes,
+            AttributeKeyLookup,
+            new DotFontAttributes(attributes),
+            new DotNodeGeometryAttributes(attributes),
+            new DotHyperlinkAttributes(attributes),
+            new DotNodeImageAttributes(attributes),
+            new DotNodeSizeAttributes(attributes),
+            new DotNodeStyleAttributes(attributes),
+            new DotSvgStyleSheetAttributes(attributes),
+            new DotNodeLayoutAttributes(attributes)
         )
     {
     }
@@ -35,7 +43,8 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
         DotNodeImageAttributes imageAttributes,
         DotNodeSizeAttributes sizeAttributes,
         DotNodeStyleAttributes styleAttributes,
-        DotSvgStyleSheetAttributes svgStyleSheetAttributes
+        DotSvgStyleSheetAttributes svgStyleSheetAttributes,
+        DotNodeLayoutAttributes layoutAttributes
     )
         : base(attributes, attributeKeyLookup)
     {
@@ -46,6 +55,7 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
         Size = sizeAttributes;
         Style = styleAttributes;
         SvgStyleSheet = svgStyleSheetAttributes;
+        Layout = layoutAttributes;
     }
 
     /// <inheritdoc cref="IDotNodeRootAttributes.Font"/>
@@ -69,6 +79,9 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
     /// <inheritdoc cref="IDotNodeRootAttributes.SvgStyleSheet"/>
     public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
+    /// <inheritdoc cref="IDotNodeRootAttributes.Layout"/>
+    public DotNodeLayoutAttributes Layout { get; }
+
     [DotAttributeKey(DotAttributeKeys.Style)]
     DotStyles? IDotNodeAttributes.Style
     {
@@ -90,10 +103,6 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
     [DotAttributeKey(DotAttributeKeys.Margin)]
     public virtual partial DotPoint? Padding { get; set; }
 
-    /// <inheritdoc cref="IDotNodeAttributes.SortIndex"/>
-    [DotAttributeKey(DotAttributeKeys.SortV)]
-    public virtual partial int? SortIndex { get; set; }
-
     /// <inheritdoc cref="IDotNodeAttributes.Comment"/>
     [DotAttributeKey(DotAttributeKeys.Comment)]
     public virtual partial string? Comment { get; set; }
@@ -110,21 +119,9 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
     [DotAttributeKey(DotAttributeKeys.NoJustify)]
     public virtual partial bool? DisableLabelJustification { get; set; }
 
-    /// <inheritdoc cref="IDotNodeAttributes.EdgeOrderingMode"/>
-    [DotAttributeKey(DotAttributeKeys.Ordering)]
-    public virtual partial DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
-
     /// <inheritdoc cref="IDotNodeAttributes.Shape"/>
     [DotAttributeKey(DotAttributeKeys.Shape)]
     public virtual partial DotNodeShape? Shape { get; set; }
-
-    /// <inheritdoc cref="IDotNodeAttributes.GroupName"/>
-    [DotAttributeKey(DotAttributeKeys.Group)]
-    public virtual partial string? GroupName { get; set; }
-
-    /// <inheritdoc cref="IDotNodeAttributes.IsLayoutRoot"/>
-    [DotAttributeKey(DotAttributeKeys.Root)]
-    public virtual partial bool? IsLayoutRoot { get; set; }
 
     /// <inheritdoc cref="IDotNodeAttributes.ObjectId"/>
     [DotAttributeKey(DotAttributeKeys.Id)]
